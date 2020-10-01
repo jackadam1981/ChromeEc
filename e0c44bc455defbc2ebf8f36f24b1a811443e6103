@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "62679a61_35b18ea0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-01T21:11:30Z",
+      "side": 1,
+      "message": "Ah, I\u0027d missed that the file is already half-designed to remove the Try.SRC states. \n\nI\u0027m hoping we can keep the number of ifdef\u0027s in the file to a minimum.  The state transitions to undefined states definitely need ifdef\u0027d out, but I\u0027m not as certain about some of these supporting functions and their related variables (ex. pd_try_src).\n\nAnyone else have opinions here?",
+      "parentUuid": "b948e884_8ea66a7f",
+      "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaef0fba_49ae761b",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 32
