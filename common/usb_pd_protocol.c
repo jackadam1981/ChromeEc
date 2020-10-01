@@ -829,7 +829,14 @@ static inline void set_state(int port, enum pd_states next_state)
 		 * DFP as SoCs have special signals when they are the UFP ports
 		 * (e.g. OTG signals)
 		 */
+// TODO: Not for DRD DFP's like ServoV4 !!
+// Forcing ServoV4 as DFP will make us mux the FASTBOOT path.
+// ... which in turn kills uServo micro port, too.
+	#ifdef CONFIG_USBC_SS_MUX_DFP_ONLY
 		pd_execute_data_swap(port, PD_ROLE_DFP);
+	#else
+		pd_execute_data_swap(port, PD_ROLE_DISCONNECTED);
+	#endif
 #ifdef CONFIG_USBC_SS_MUX
 		usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_DISCONNECT,
 			    pd[port].polarity);
@@ -3399,9 +3406,16 @@ void pd_task(void *u)
 							  PD_ROLE_VCONN_OFF);
 #endif /* CONFIG_USBC_VCONN */
 #ifdef CONFIG_USBC_SS_MUX
+	#ifdef CONFIG_USBC_SS_MUX_DFP_ONLY
 					usb_mux_set(port, USB_PD_MUX_NONE,
 						    USB_SWITCH_DISCONNECT,
 						    pd[port].polarity);
+	#else
+					usb_mux_set(port, USB_PD_MUX_USB_ENABLED,
+						    USB_SWITCH_CONNECT,
+						    pd[port].polarity);
+	#endif
+
 #endif /* CONFIG_USBC_SS_MUX */
 					break;
 				}
