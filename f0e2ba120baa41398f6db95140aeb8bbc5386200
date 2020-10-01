@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "db808cee_7423f89e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:14:41Z",
+      "side": 1,
+      "message": "Splitting CL now. Please stand by for the correction.\n\nPlease let me know when to move review process to \"firmware-eve-9584.B\" branch.\n\nI apologize for being a novice and accidentally submitting to Master.",
+      "parentUuid": "6c43d8ba_4581f184",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f0bc226_dc01a29e",
         "filename": "board/eve/usb_pd_policy.c",
         "patchSetId": 2
