@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb342aa4_c472c781",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "Thank you for not only citing issue, but providing method to fix! I will learn and add this to \"GIT GUD\" doc.",
+      "parentUuid": "35b30bcc_be5fa6f5",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c43d8ba_4581f184",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "fda31abf_8617f2f7",
+        "filename": "board/eve/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "This may prove difficult. Ideally I would port over the entire modular FSM-driven mechanic from TCPMv2. But validation would be unconstrained, and change would be non-trivial.\n\nI attempted to strike a balance between \"fixing critical defects\" and \"keeping changes as compartmentalized as possible\". Deltas as relatively small. Thus are less likely to introduce major user-unexpected regressions.\n\nProper fix (as cited in submission) is full TCPMv2 port. I will carry over my compliance fixes on ToT.",
+      "parentUuid": "9f0bc226_dc01a29e",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "424f1ced_7ada9d2b",
         "filename": "board/eve/usb_pd_policy.c",
         "patchSetId": 2
@@ -64,6 +100,24 @@
       "writtenOn": "2020-09-30T18:37:52Z",
       "side": 1,
       "message": "Why is MF preferred being ignored? I\u0027d recommend using our updated implementation of these functions in the ToT version of usb_pd_alt_mode_dfp.c.\n\nAlso, don\u0027t leave in commented code; just delete them.",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12041e16_62d0c38a",
+        "filename": "board/eve/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "\u003e Why is MF preferred being ignored?\n\nChange is partially correcting `usb_mux_set()` call for DP AltMode compliance. Partially logic and nomenclature correction.\n\nNomenclature: Per DP VESA AltMode spec, `mf_pref` bit specifies the /preference/ of the dock. This preference is overridden by host\u0027s ultimate selection. Logic in `pd_dfp_dp_get_pin_mode()` drives this mf_sel.\n\nCompliance: DP AltMode dictates we place \"pins to be reconfigured\" into safe mode pre-Configure. And only mux them post-ACK. Previously we were muxing /all/ lanes at /Configure/ time. Also the fact we were taking out USB3 lanes inappropriately on PinD configure, as cited in b:139708494#comment6 . mf_sel logic compares to MultiFunction PinConfig states, accounting for DP deprecation of A,B,E,F.\n\nLogic: Was flawed in that a \"mf\u003d1, Pin\u003dC\" host would cause the mux to be set inappropriately despite \"Pin\u003dC\" being used. This is due to erroneous logic in `pd_dfp_dp_get_pin_mode()`. Described in `Table 5-7: DFP_U Pin Assignment Selection Mandates`.\n\n\u003e I\u0027d recommend using our updated implementation of these functions in the ToT version of usb_pd_alt_mode_dfp.c\n\nI am unsure how to cleanly \"cherry-pick\" the entire file. The patch series is quite lengthy, and was refactored multiple times. It is even a different file.\n\nHow should I approach this? Should I \"copy and paste\" the contents and say \"forklifting to ToT\"?",
+      "parentUuid": "424f1ced_7ada9d2b",
       "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "284bdd1e_5eaf9786",
+        "filename": "board/eve/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "Ack\n\nPardon my unfamiliarity with Manual of Style.",
+      "parentUuid": "d2b282fa_2b71dabb",
+      "range": {
+        "startLine": 378,
+        "startChar": 15,
+        "endLine": 378,
+        "endChar": 16
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1d833da_6d34e50a",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -107,6 +185,24 @@
       "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f768fb83_46a4cba3",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b1d833da_6d34e50a",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +229,30 @@
     },
     {
       "key": {
+        "uuid": "207b344a_0891e4a5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "Ack\n\nThank you again for teaching, not merely citing.",
+      "parentUuid": "18719610_ae3acb24",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 38
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14b7206c_c1b165fd",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -144,6 +264,24 @@
       "writtenOn": "2020-09-30T18:37:52Z",
       "side": 1,
       "message": "What\u0027s this delay for?",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0026e5a4_f23152c9",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "Compliance + Logic.\n\nCompliance: To be robust, DP VESA spec dictates Generation threshold \u003e\u003e Detection threshold. Current code logic incorrectly uses \u003cdetection\u003e 2ms HPD IRQ debounce. We should be using \u003cgeneration\u003e 3ms HPD Level debounce per VESA spec.\n\nLogic: Resetting the chip /theoretically/ puts HPD into 44k PD Input mode. This may not be enough to discharge leakage currents. This low level ensures AP detects a full HPD disconnect prior to potentially Hi-Z\u0027ing the line by asserting RESET_L.\n\nAsserting a low firmly avoids phantom connections.",
+      "parentUuid": "14b7206c_c1b165fd",
       "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -196,6 +334,54 @@
     },
     {
       "key": {
+        "uuid": "a29399e5_8006d1cf",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4fc8965f_95b66b7d",
+      "range": {
+        "startLine": 201,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 5
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c4c91b9_5fd9aa98",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0cc7c520_7c75e6e9",
+      "range": {
+        "startLine": 201,
+        "startChar": 53,
+        "endLine": 201,
+        "endChar": 54
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20326f8a_4f1f2e44",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -219,6 +405,30 @@
     },
     {
       "key": {
+        "uuid": "a40ac70c_654b2294",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "20326f8a_4f1f2e44",
+      "range": {
+        "startLine": 210,
+        "startChar": 15,
+        "endLine": 210,
+        "endChar": 36
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a04fea6f_5919f084",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -239,6 +449,30 @@
       "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a020f32_d76222f1",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:09:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a04fea6f_5919f084",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 58
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
