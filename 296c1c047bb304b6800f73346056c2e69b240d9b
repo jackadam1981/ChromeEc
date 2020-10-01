@@ -22,6 +22,23 @@
       "revId": "296c1c047bb304b6800f73346056c2e69b240d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cdf0855_524d4068",
+        "filename": "baseboard/intelrvp/chg_usb_pd_mecc_0_9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-01T09:52:40Z",
+      "side": 1,
+      "message": "might as well move this call inside the \u0027if\u0027 above.\ni don\u0027t want to think about whether there\u0027s a case\nwhere port \u003d\u003d CONFIG_USB_PD_PORT_MAX_COUNT",
+      "revId": "296c1c047bb304b6800f73346056c2e69b240d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
