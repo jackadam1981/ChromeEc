@@ -207,6 +207,24 @@
       "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161ed03a_4b6a7623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-01T00:51:40Z",
+      "side": 1,
+      "message": "You can do:\n\n#ifdef CONFIG_BOARD_WADDLEDEE\nDECLARE_HOOK(HOOK_CHIPSET_HARD_OFF, hook_shutdown, HOOK_PRIO_LAST);\n#else\nDECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, hook_shutdown, HOOK_PRIO_LAST);\n#endif",
+      "parentUuid": "ea74f0e3_90dbf5c1",
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
