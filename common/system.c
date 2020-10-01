@@ -877,6 +877,37 @@ int system_is_manual_recovery(void)
 	return host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 }
 
+void system_reset_hard(int reset_flags)
+{
+	/*
+	 * Reboot the PD chip(s) as well, but first suspend the ports
+	 * if this board has PD tasks running so they don't query the
+	 * TCPCs while they reset.
+	 */
+	if (IS_ENABLED(HAS_TASK_PD_C0)) {
+		int port;
+
+		for (port = 0; port < board_get_usb_pd_port_count(); port++)
+			pd_set_suspend(port, 1);
+
+		/*
+		 * Give enough time to apply CC Open and brown out if
+		 * we are running with out a battery.
+		 */
+		msleep(20);
+	}
+
+	/* Reset external PD chips. */
+	if (IS_ENABLED(HAS_TASK_PDCMD) || IS_ENABLED(CONFIG_HAS_TASK_PD_INT))
+		board_reset_pd_mcu();
+
+	CPRINTS(__func__);
+	cflush();
+
+	system_reset(SYSTEM_RESET_HARD | reset_flags);
+	/* That shouldn't return... */
+}
+
 /**
  * Handle a pending reboot command.
  */
@@ -891,33 +922,7 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_JUMP_RW:
 		return system_run_image_copy(system_get_active_copy());
 	case EC_REBOOT_COLD:
-		/*
-		 * Reboot the PD chip(s) as well, but first suspend the ports
-		 * if this board has PD tasks running so they don't query the
-		 * TCPCs while they reset.
-		 */
-		if (IS_ENABLED(HAS_TASK_PD_C0)) {
-			int port;
-
-			for (port = 0; port < board_get_usb_pd_port_count();
-			     port++)
-				pd_set_suspend(port, 1);
-
-			/*
-			 * Give enough time to apply CC Open and brown out if
-			 * we are running with out a battery.
-			 */
-			msleep(20);
-		}
-
-		/* Reset external PD chips. */
-		if (IS_ENABLED(HAS_TASK_PDCMD) ||
-		    IS_ENABLED(CONFIG_HAS_TASK_PD_INT))
-			board_reset_pd_mcu();
-
-		cflush();
-		system_reset(SYSTEM_RESET_HARD);
-		/* That shouldn't return... */
+		system_reset_hard(0);
 		return EC_ERROR_UNKNOWN;
 	case EC_REBOOT_DISABLE_JUMP:
 		system_disable_jump();

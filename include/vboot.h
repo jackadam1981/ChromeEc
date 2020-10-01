@@ -62,6 +62,17 @@ int vboot_verify(const uint8_t *data, int len,
 		 const struct rsa_public_key *key, const uint8_t *sig);
 
 /**
+ * Check if the system is in recovery mode or not.
+ *
+ * system_is_manual_recovery checks EC_HOST_EVENT_KEYBOARD_RECOVERY, which is
+ * cleared by the AP after successful entry to the recovery mode. This flag is
+ * persistent (until reset or sysjump).
+ *
+ * @return true if the system is in recovery mode or false otherwise.
+ */
+bool vboot_in_recovery(void);
+
+/**
  * Entry point of EC EFS
  */
 void vboot_main(void);

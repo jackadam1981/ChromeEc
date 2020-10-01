@@ -18,6 +18,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "vboot.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SWITCH, outstr)
@@ -160,6 +161,9 @@ static void power_button_change_deferred(void)
 		power_button_is_stable = 1;
 		return;
 	}
+
+	if (IS_ENABLED(CONFIG_VBOOT_EFS2) && new_pressed && vboot_in_recovery())
+		system_reset_hard(SYSTEM_RESET_LEAVE_AP_OFF);
 
 	debounced_power_pressed = new_pressed;
 	power_button_is_stable = 1;
