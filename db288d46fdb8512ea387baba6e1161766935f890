@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f9422c6_99cefb5d",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-01T21:50:18Z",
+      "side": 1,
+      "message": "i\u0027m skeptical about whether this API should even exist since\nit implements a read-modify-write operation over I2C.\nthis makes sense when the target device can change the state\nof registers, but here it only doubles I2C traffic as used\nin later patches.\n\ncertainly, in patches stacked on this, the desired state\nof the GPIOs should be kept locally and only a write\noperation is required to set the GPIOs on the expander.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "db288d46fdb8512ea387baba6e1161766935f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
