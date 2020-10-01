@@ -52,6 +52,24 @@
       "revId": "2ff15f4495ef2351058ab0ef84ef5451e5f946b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae3afa7_213c5bef",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-01T07:55:39Z",
+      "side": 1,
+      "message": "understood. we may need to revisit this if we run into a situation where\na project updates to A2 silicon between builds and it\u0027s not feasible to\ndecommission previous boards. alternatively, we\u0027ve handled significant\nincompatibilities by creating a new \"variant\" when more elegant solutions\nweren\u0027t practical.",
+      "parentUuid": "098cac37_36a234ff",
+      "revId": "2ff15f4495ef2351058ab0ef84ef5451e5f946b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
