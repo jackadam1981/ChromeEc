@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "298878b7_ff2f735d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-10-01T04:30:52Z",
+      "side": 1,
+      "message": "During honeybuns platform bringup, I wanted to build with type-c only support and I did not have try.src enabled either (host port wants to be sink-ufp). I found some issues. This CL has the fixes I made so that I can build with type-c only support.",
+      "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
