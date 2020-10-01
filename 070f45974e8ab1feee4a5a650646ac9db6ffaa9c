@@ -16,6 +16,149 @@
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "906ad34d_2c4f24cb",
+        "filename": "baseboard/intelrvp/chg_usb_pd_mecc_1_0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-01T09:55:35Z",
+      "side": 1,
+      "message": "we now use system_jumped_late() instead in most of our code\nsince we enabled EFS2 on some boards. it\u0027s probably what you\nshould use now, so please double check if you really need to\nuse system_jumped_to_this_image().",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f5831df_fd7f5836",
+        "filename": "baseboard/intelrvp/chg_usb_pd_mecc_1_0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-01T09:55:35Z",
+      "side": 1,
+      "message": "this looks a bit fragile. will port really have a\nvalid port number when you get here?",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49102c02_701854fd",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-01T09:55:35Z",
+      "side": 1,
+      "message": "please do not use .usb23 and TYPE_C_PORT_*_USB2*_NUM.\n\nthis is basically already gone from other boards:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2427632",
+      "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be47dfe8_de26535d",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-01T09:55:35Z",
+      "side": 1,
+      "message": "you might want to add helper functions to simplify\nioexpander calls.\n\nalso, the patch (2435172) that introduces the pca9675 driver\nsynthesizers update by reading over i2c before writing\nthe new value over i2c. we can do better by maintaining the\nstate of the 4 pins here and always write the desired\nvalue to the IO expander without relying on it to\nmaintain state.",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 295,
+        "endChar": 0
+      },
+      "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aaab5b7_416a6459",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-01T09:55:35Z",
+      "side": 1,
+      "message": "what does the 2nd \u0027p\u0027 in the filename stand for?\nP series SoC?",
+      "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de6a770_6155e894",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-01T09:55:35Z",
+      "side": 1,
+      "message": "we can drop these.\n\nthis is basically already gone from other boards:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2427632",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 36
+      },
+      "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a8eb08_e8fc7e53",
+        "filename": "board/adlrvpp_ite/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-01T09:55:35Z",
+      "side": 1,
+      "message": "we know this from line 11",
+      "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
