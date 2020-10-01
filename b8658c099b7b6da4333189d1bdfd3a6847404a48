@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6549f9fb_0bfef8b6",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-01T15:41:01Z",
+      "side": 1,
+      "message": "Is this the function which will ultimately cause USB safe state to be set?  If so, safe state should be called before we send the ExitMode VDM, not after we got the exit ACK\u0027d.  Correct me if I\u0027m following this wrong.\n\nIt seems like the most straightforward thing would be to move away from the common exit code for TBT, and just expressly set USB safe state when we know we\u0027re setting up the exit mode in this module.  Then the data structures can continue to be cleared here after the exit completes, but we\u0027d already have set safe state correctly.",
+      "revId": "b8658c099b7b6da4333189d1bdfd3a6847404a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
