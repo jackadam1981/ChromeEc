@@ -70,6 +70,24 @@
       "revId": "425b4e9775769de3361544e75bc7fe7ec0c2b22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32c5da36_b0c43331",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-10-01T11:47:36Z",
+      "side": 1,
+      "message": "Raised cross bug: b:169814014 for expansion of IOexpander functionaity.\nAlso, updated in patchset2 with comment as TODO  before pca9675_update_pins() declaration.",
+      "parentUuid": "bb3b58da_d916865c",
+      "revId": "425b4e9775769de3361544e75bc7fe7ec0c2b22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
