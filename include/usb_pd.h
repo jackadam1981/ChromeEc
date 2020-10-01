@@ -210,6 +210,7 @@ enum pd_rx_errors {
 #define PD_T_SRC_RECOVER           (760*MSEC) /* between 660ms and 1000ms */
 #define PD_T_SRC_RECOVER_MAX      (1000*MSEC) /* 1000ms */
 #define PD_T_SRC_TURN_ON           (275*MSEC) /* 275ms */
+#define PD_T_SRC_READY	           (285*MSEC) /* 285ms */
 #define PD_T_SAFE_0V               (650*MSEC) /* 650ms */
 #define PD_T_NO_RESPONSE          (5500*MSEC) /* between 4.5s and 5.5s */
 #define PD_T_BIST_TRANSMIT          (50*MSEC) /* 50ms (for task_wait arg) */
@@ -927,17 +928,38 @@ enum pd_states {
 enum pd_dual_role_states {
 	/* While disconnected, toggle between src and sink */
 	PD_DRP_TOGGLE_ON,
-	/* Stay in src until disconnect, then stay in sink forever */
+	/*
+	* Stay in src until disconnect, then stay in sink forever
+	* 
+	* TODO: This is a historically mis-named behavior better titled
+	* DRP_TOGGLE_TO_SINK. It conflates a true DRP with "no power
+	* role preference" with a DRP with "explicit policy".
+	* 
+	* Leaving as-is for legacy support purposes.
+	*/
 	PD_DRP_TOGGLE_OFF,
-	/* Stay in current power role, don't switch. No auto-toggle support */
+	/*
+	* Stay in current power role, don't switch. No auto-toggle support
+	*
+	* TODO: If DRP_TOGGLE_OFF were correctly named, FREEZE should also
+	* cause ports to REJECT PR_SWAPs. As-coded, this is instead the sole
+	* role allowing a "no preference" device to operate correctly and
+	* PR_SWAP without any TCPMv1-induced line error.
+	*
+	* Leaving as-is for legacy support purposes.
+	*/
 	PD_DRP_FREEZE,
-	/* Switch to sink */
+	/* Switch to sink, and reject any SNK->SRC PR_SWAPs */
 	PD_DRP_FORCE_SINK,
-	/* Switch to source */
+	/* Switch to source, and reject any SRC->SNK PR_SWAPs */
 	PD_DRP_FORCE_SOURCE,
-	//TODO: Add "PD_DRP_FORCE_LOCK -- FREEZE but permanent"
-	//TODO: Add "PD_DRP_TOGGLE_TO_SRC"
-	//TODO: Rename PD_DRP_TOGGLE_OFF to PD_DRP_TOGGLE_TO_SNK
+	/*
+	* TODO: Rename PD_DRP_TOGGLE_OFF to PD_DRP_TOGGLE_TO_SINK
+	* TODO: Add true PD_DRP_TOGGLE_OFF "no-preference" state
+	* TODO: Ensure true DRP_FREEZE state rejects PR_SWAPs
+	* TODO: Add code ensuring FORCE_* cannot /initiate/ PR_SWAP
+	*       This results in line-open state on TCPMv1 at PS_RDY#2
+	*/
 };
 
 /*
@@ -2740,6 +2762,13 @@ void pd_set_src_caps(int port, int cnt, uint32_t *src_caps);
  * @param port USB-C port number
  */
 bool pd_get_partner_usb_comm_capable(int port);
+
+/**
+ * Return true if partner port is in explicit USB-PD contract.
+ *
+ * @param port USB-C port number
+ */
+bool pd_get_partner_explicit_contract(int port);
 
 /**
  * Return true if PD is in disconnect state
