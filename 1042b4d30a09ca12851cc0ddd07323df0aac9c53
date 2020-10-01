@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67ad52b1_4879d92b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-10-01T16:48:55Z",
+      "side": 1,
+      "message": "Tried this with [1] and it looks good. Before, if I started serovd on port 9997, then 9998, then tried to flash 9997, it would go to the wrong place. Now, it flashed the right thing.\n\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/third_party/hdctools/+/2439779",
+      "revId": "1042b4d30a09ca12851cc0ddd07323df0aac9c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
