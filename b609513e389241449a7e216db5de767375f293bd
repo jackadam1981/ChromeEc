@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "58bd2fc4_94c425bf",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-01T16:30:00Z",
+      "side": 1,
+      "message": "I must be misunderstanding something in the call flow then.  I\u0027d thought this line would check the response_size we set, and error out of it was too big: http://cs/chromeos_public/src/platform/ec/common/host_command.c?l\u003d208\u0026rcl\u003dd543cbe84912f722b19f8e624d9d31254d5bed7f",
+      "parentUuid": "bc2eb8bb_cd40184e",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6644b650_0a3caa8b",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 2

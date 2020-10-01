@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9aef3897_e90a2a99",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6394,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-01T16:30:00Z",
+      "side": 1,
+      "message": "Can do.  I\u0027ll make closing out version 0 a part of the overall TYPEC_STATUS command since I suspect it\u0027ll be in use in the AP fairly soon after it\u0027s finalized.",
+      "parentUuid": "119fef35_1a209341",
+      "range": {
+        "startLine": 6394,
+        "startChar": 8,
+        "endLine": 6394,
+        "endChar": 34
+      },
+      "revId": "8e070ee93c6daa63393addc0eb1d3686df0871fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a511c86_4881b262",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -82,6 +106,30 @@
       "writtenOn": "2020-10-01T16:27:46Z",
       "side": 1,
       "message": "Nit: I suggest sop_prime_connected to avoid mistyping later.",
+      "range": {
+        "startLine": 6471,
+        "startChar": 9,
+        "endLine": 6471,
+        "endChar": 23
+      },
+      "revId": "8e070ee93c6daa63393addc0eb1d3686df0871fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30352164_c8a7122d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6471,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-01T16:30:00Z",
+      "side": 1,
+      "message": "I\u0027m contemplating removing this, and leaving a reserved field since I thought of another use and it\u0027s redundant with the discovery data (uint8_t for number of source caps, another uint8_t for number of sink caps).\n\nThoughts?",
+      "parentUuid": "ed7b4338_d01477b9",
       "range": {
         "startLine": 6471,
         "startChar": 9,
