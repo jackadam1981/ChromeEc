@@ -22,6 +22,30 @@
       "revId": "2ade952d23b738c469eb6d2edee6d2c776c00821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ea4b1b_db54ea9e",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-01T05:14:26Z",
+      "side": 1,
+      "message": "Good catch. We do want to keep the ability to add platform/ec to ZEPHYR_MODULES without actually enabling it, so added the ifdef",
+      "parentUuid": "c7ec0800_94bea1b7",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "2ade952d23b738c469eb6d2edee6d2c776c00821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
