@@ -57,6 +57,30 @@
       "revId": "8cd0f4fd2a6bf23f0e53a8fa856b904abbeccffd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eed9a7e_71f0d91d",
+        "filename": "baseboard/intelrvp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-10-01T13:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e918a981_366b2297",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "8cd0f4fd2a6bf23f0e53a8fa856b904abbeccffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
