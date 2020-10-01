@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d568bce5_c01df673",
+        "filename": "baseboard/intelrvp/chg_usb_pd_mecc_0_9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-01T16:56:35Z",
+      "side": 1,
+      "message": "remove the variable",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 15
+      },
+      "revId": "4edab9f338084ec0aa1332e32aea92a8f573f4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670ed2c4_5232e0d9",
+        "filename": "baseboard/intelrvp/chg_usb_pd_mecc_0_9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-01T16:56:35Z",
+      "side": 1,
+      "message": "i",
+      "range": {
+        "startLine": 79,
+        "startChar": 34,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "4edab9f338084ec0aa1332e32aea92a8f573f4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
