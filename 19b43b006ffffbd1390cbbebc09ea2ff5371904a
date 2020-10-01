@@ -16,6 +16,23 @@
       "revId": "19b43b006ffffbd1390cbbebc09ea2ff5371904a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56f85c21_ef80ddac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-01T15:39:24Z",
+      "side": 1,
+      "message": "Isn\u0027t it atomic_and in Zephyr APIs?\n\nWhat\u0027s the value in renaming the deprecated APIs to be named a little closer to Zephyr APIs? Our goal is just to get rid of all the deprecated_* functions anyway...",
+      "revId": "19b43b006ffffbd1390cbbebc09ea2ff5371904a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
