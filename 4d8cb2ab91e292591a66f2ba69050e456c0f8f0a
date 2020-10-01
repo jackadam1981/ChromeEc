@@ -225,6 +225,24 @@
       "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f43f2ac5_33f28124",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-01T15:49:50Z",
+      "side": 1,
+      "message": "I hope we can avoid the special carve out for dedede boards. If we do, I am sure this is going to come back and be a problem for future platforms as well.",
+      "parentUuid": "161ed03a_4b6a7623",
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
