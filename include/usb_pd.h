@@ -210,6 +210,7 @@ enum pd_rx_errors {
 #define PD_T_SRC_RECOVER           (760*MSEC) /* between 660ms and 1000ms */
 #define PD_T_SRC_RECOVER_MAX      (1000*MSEC) /* 1000ms */
 #define PD_T_SRC_TURN_ON           (275*MSEC) /* 275ms */
+#define PD_T_SRC_READY	           (285*MSEC) /* 285ms */
 #define PD_T_SAFE_0V               (650*MSEC) /* 650ms */
 #define PD_T_NO_RESPONSE          (5500*MSEC) /* between 4.5s and 5.5s */
 #define PD_T_BIST_TRANSMIT          (50*MSEC) /* 50ms (for task_wait arg) */
