@@ -46,6 +46,30 @@
       "revId": "b632746191bb2e6a4ecec2e9ee6becc31fec2b14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b42d7f8a_ee2b3c8f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5301,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-01T16:48:34Z",
+      "side": 1,
+      "message": "AFAIK, producing and using an integer-typed bit mask with an enum as one of the inputs is totally valid. Assigning an unenumerated value to an enum-typed variable, e.g. a function argument, could produce an out-of-range assignment, if the value is outside the range of the underlying enum type. However, if the value is a bitwise OR of enumerated values, that isn\u0027t possible. That\u0027s why I\u0027m generally comfortable with using enums to define bit fields. This is a nit, though.",
+      "parentUuid": "bff687f9_7099cb35",
+      "range": {
+        "startLine": 5297,
+        "startChar": 0,
+        "endLine": 5301,
+        "endChar": 31
+      },
+      "revId": "b632746191bb2e6a4ecec2e9ee6becc31fec2b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
