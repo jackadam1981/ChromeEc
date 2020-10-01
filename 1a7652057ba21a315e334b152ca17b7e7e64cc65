@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "548fc997_e2f95bee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-01T18:13:30Z",
+      "side": 1,
+      "message": "This doesn\u0027t work because AP can shut down differently. If AP shuts down differently, EC would stay in RO. So, we do have to hook shutdown instead of power button press.",
+      "revId": "1a7652057ba21a315e334b152ca17b7e7e64cc65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
