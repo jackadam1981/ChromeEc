@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f11ac3c_c7582bc1",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-01T17:25:47Z",
+      "side": 1,
+      "message": "Unnecessary",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "c022e6817083b1c3b14607b44d1c3bca5b94f818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe5f9b94_e44baf3f",
+        "filename": "include/usb_tbt_alt_mode.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-01T17:25:47Z",
+      "side": 1,
+      "message": "Is this accurate?",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "c022e6817083b1c3b14607b44d1c3bca5b94f818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6215875b_a0ee6c57",
+        "filename": "include/usb_tbt_alt_mode.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-01T17:25:47Z",
+      "side": 1,
+      "message": "Nit: For this and the other functions like it, \"Informs the DPM,\" is kind of a weird way of putting it, in that it specifies the calling module. How about, \"Checks whether the * is done.\"?",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "c022e6817083b1c3b14607b44d1c3bca5b94f818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

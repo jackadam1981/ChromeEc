@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "276c4c84_eddd5c7d",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-01T17:25:47Z",
+      "side": 1,
+      "message": "Ack. My expectation is that, eventually, we will move the DPM code into its own task, but the alt mode modules should come with it, so there shouldn\u0027t be any need to synchronize operations between the DPM and alt mode modules. I don\u0027t think anything else should be accessing these flags.",
+      "parentUuid": "c0c97e06_e201b93f",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 59
+      },
+      "revId": "6017689ed59b904bc0f711d9a77b91a5941448b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71e06844_d262eec4",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 8
