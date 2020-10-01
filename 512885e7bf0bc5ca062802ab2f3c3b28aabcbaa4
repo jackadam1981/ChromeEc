@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a283671_87806d3c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T01:23:23Z",
+      "side": 1,
+      "message": "I have some concerns about boards that use GPIO to drive HPD, and potential drive fight.\n\nThis patch should /not/ be cherrypicked to non-EVE branches. Eve doesn\u0027t use GPIO.\nOr should I gate this statement with `#if_def CONFIG_USB_PD_DP_HPD_GPIO`?",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 38
+      },
+      "revId": "512885e7bf0bc5ca062802ab2f3c3b28aabcbaa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
