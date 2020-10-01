@@ -399,10 +399,13 @@ mux_state_t get_mux_mode_to_set(int port)
 	 * If the SoC is down, then we disconnect the MUX to save power since
 	 * no one cares about the data lines.
 	 */
+
+	CPRINTS("PASS1");
 	if (IS_ENABLED(CONFIG_POWER_COMMON) &&
 	    chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
 		return USB_PD_MUX_NONE;
 
+	CPRINTS("PASS2");
 	/*
 	 * When PD stack is disconnected, then mux should be disconnected, which
 	 * is also what happens in the set_state disconnection code. Once the
@@ -412,21 +415,41 @@ mux_state_t get_mux_mode_to_set(int port)
 	if (pd_is_disconnected(port))
 		return USB_PD_MUX_NONE;
 
+	CPRINTS("PASS3");
 	/* If new data role isn't DFP & we only support DFP, also disconnect. */
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
 	    IS_ENABLED(CONFIG_USBC_SS_MUX_DFP_ONLY) &&
 	    pd_get_data_role(port) != PD_ROLE_DFP)
 		return USB_PD_MUX_NONE;
 
+	CPRINTS("PASS4");
 	/*
 	 * If the power role is sink and the partner device is not capable
 	 * of USB communication then disconnect.
 	 */
+
+// TODO: This is provably wrong for non-PD things. (No USB-PD = no CommCap flag.)
+// Base logic is also wrong for TCPMv1 DFP's -- when UFP says "REQUEST CommCap=0".
+	#if 0
+
+	uint8_t flags;
+	/*
+	 * If there is no contract in place (or if we fail to read the flags),
+	 * there is no need to shut off the mux.
+	 */
+	if (pd_get_saved_port_flags(port, &flags) != EC_SUCCESS ||
+	    !(flags & PD_FLAGS_EXPLICIT_CONTRACT))
+		flags |= PD_FLAGS_PARTNER_USB_COMM;
+
+
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
 	    pd_get_power_role(port) == PD_ROLE_SINK &&
 	    !pd_get_partner_usb_comm_capable(port))
+	    //!(flags & PD_FLAGS_PARTNER_USB_COMM)
 		return USB_PD_MUX_NONE;
+	#endif
 
+	CPRINTS("PASS5");
 	/* Otherwise connect mux since we are in S3+ */
 	return USB_PD_MUX_USB_ENABLED;
 }
@@ -439,6 +462,7 @@ void set_usb_mux_with_current_data_role(int port)
 				(mux_mode == USB_PD_MUX_NONE) ?
 				USB_SWITCH_DISCONNECT : USB_SWITCH_CONNECT;
 
+		CPRINTS("I WAS TOLD TO SET MUX TO 0x%x", mux_mode);
 		usb_mux_set(port, mux_mode, usb_switch_mode,
 				pd_get_polarity(port));
 	}
