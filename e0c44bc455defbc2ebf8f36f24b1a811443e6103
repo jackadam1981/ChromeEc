@@ -16,6 +16,57 @@
       "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24f63fad_9fe79b3e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-01T15:28:38Z",
+      "side": 1,
+      "message": "It seems like the intent was to be able to compile without this config, based on the \"IS_ENABLED\" usage below.  What kind of build errors do you see without Try.SRC enabled?\n\nAlso, if we go the route of making Try.SRC optional and adding ifdefs, that would potentially free up devices from needing a couple of states (Try.SRC and TryWait.SNK).  Not a big flash win, but something.",
+      "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaef0fba_49ae761b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-01T15:28:38Z",
+      "side": 1,
+      "message": "Should this just be overridable?",
+      "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3741dd4f_67800aad",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 2478,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-01T15:28:38Z",
+      "side": 1,
+      "message": "I\u0027m assuming IS_ENABLED() wouldn\u0027t work because it wouldn\u0027t link?\n\nAlternatively, this could be pulled into the PE\u0027s HOOK_USB_PD_DISCONNECT code instead so the TC doesn\u0027t need to directly interact with the PE as much",
+      "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
