@@ -22,6 +22,30 @@
       "revId": "db288d46fdb8512ea387baba6e1161766935f890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f5afa5f_77bed0e8",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-01T22:54:04Z",
+      "side": 1,
+      "message": "ACK.\nI have attached TCPC-AIC schematics in the bug.\ncurrently we don\u0027t have a usage of input gpio for this IO-Expander, we might use I2C_PD_RT1_INT_N for retimer (its TBD). \nTo reduce the pin count on the MECC related to TCSS, there are some spare\npins left for future use too.",
+      "parentUuid": "8f9422c6_99cefb5d",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "db288d46fdb8512ea387baba6e1161766935f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
