@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "32c4b893_3aaeeb68",
+        "filename": "board/eve/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-01T00:13:09Z",
+      "side": 1,
+      "message": "Correction: PinConfig E still remains.\n\n\u003e 3.1 Pin Assignment Overview\n\u003e Note:  Pin assignments A, B, and F have been deprecated.",
+      "parentUuid": "12041e16_62d0c38a",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2b282fa_2b71dabb",
         "filename": "board/eve/usb_pd_policy.c",
         "patchSetId": 2
