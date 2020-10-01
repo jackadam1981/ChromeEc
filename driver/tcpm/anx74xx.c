@@ -8,6 +8,7 @@
 /* Type-C port manager for Analogix's anx74xx chips */
 
 #include "anx74xx.h"
+#include "console.h"
 #include "task.h"
 #include "tcpci.h"
 #include "tcpm.h"
@@ -22,6 +23,9 @@
 #error "ANX74xx is using part of standard TCPCI control"
 #error "Please upgrade your board configuration"
 #endif
+
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 struct anx_state {
 	int	polarity;
@@ -138,6 +142,21 @@ static void anx74xx_set_power_mode(int port, int mode)
 		/* Update the cable det signal */
 		anx74xx_update_cable_det(port, mode);
 	} else {
+		/*
+		* Lower HPD signal in case of disconnect due to VBUS crash.
+		*
+		* Important caveats:
+		* 1.) HPD block VDDIO is unpowered during "LPM"
+		* 2.) Be wary of "drive fight" risks with EC
+		*/
+		anx74xx_tcpc_clear_hpd_status(port);
+		/*
+		* The DFP_U, when a DP Source device, shall ensure that HPD_Low is
+		* maintained for a minimum of 3ms to ensure that its DPTX (e.g.,
+		* GPU) sees an HPD disconnect event (and not an IRQ_HPD).
+		*/
+		usleep(HPD_USTREAM_DEBOUNCE_LVL);
+
 		/* Update cable cable det signal */
 		anx74xx_update_cable_det(port, mode);
 		/*
@@ -187,11 +206,22 @@ void anx74xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	int reg;
 
 	tcpc_read(port, ANX74XX_REG_HPD_CTRL_0, &reg);
+
+	if (!!(reg & ANX74XX_REG_HPD_OUT_DATA) ^ !!(hpd_lvl))
+		/* enforce 2-ms delay between HPD level changes */
+		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+
 	if (hpd_lvl)
 		reg |= ANX74XX_REG_HPD_OUT_DATA;
 	else
 		reg &= ~ANX74XX_REG_HPD_OUT_DATA;
+
+	CPRINTS("C%d: HPD lvl:%d irq:%d",port, hpd_lvl, hpd_irq);
 	tcpc_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
+
+	/* Do not attempt sending an IRQ at LOW */
+	if(!hpd_lvl)
+		return;
 
 	if (hpd_irq) {
 		uint64_t now = get_time().val;
@@ -280,6 +310,9 @@ static int anx74xx_tcpm_mux_exit(int port)
 		return EC_ERROR_UNKNOWN;
 	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg & 0xf))
 		return EC_ERROR_UNKNOWN;
+
+	/* Clear HPD status to LOW */
+	anx74xx_tcpc_clear_hpd_status(port);
 
 	/* Clear Bit[7:0] R_SWITCH */
 	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_1, 0x0))
@@ -598,7 +631,10 @@ static int anx74xx_tcpm_get_cc(int port, int *cc1, int *cc2)
 	 */
 	*cc2 = anx74xx_check_cc_type(reg >> 4);
 
-	/* clear HPD status*/
+	/*
+	* Clear HPD status
+	* WARNING: This may not engage if VBUS crashes instead
+	*/
 	if (!(*cc1) && !(*cc2)) {
 		anx74xx_tcpc_clear_hpd_status(port);
 #ifdef CONFIG_USB_PD_TCPM_MUX
