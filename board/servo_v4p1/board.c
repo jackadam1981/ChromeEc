@@ -436,6 +436,7 @@ static void board_init(void)
 	default:
 		break;
 	}
+	CPRINTS("Board ID is %d",board_id_det());
 	vbus_dischrg_en(0);
 
 #ifdef SECTION_IS_RO
