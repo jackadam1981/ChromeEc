@@ -70,6 +70,30 @@
       "revId": "0281e331e263988e5b8d2964e93dff26201fea4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b64c9bc_7579e0e3",
+        "filename": "board/drawcia/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-01T16:47:24Z",
+      "side": 1,
+      "message": "Added an assert in the unit test mock in the previous CL.  So no build may pass without at least that updated, and it has a comment pointing to other likely update locations (like this one)",
+      "parentUuid": "b28f1222_b2aeaa17",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 1
+      },
+      "revId": "0281e331e263988e5b8d2964e93dff26201fea4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
