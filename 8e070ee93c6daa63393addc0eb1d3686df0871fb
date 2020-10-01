@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "119fef35_1a209341",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6394,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-01T16:04:15Z",
+      "side": 1,
+      "message": "Also might be worth staying that this is in development and the response format can still change for version-0 of this command.\n\nBut a bug reminder to remove that  message and finalized the repose version-0 structure.",
+      "range": {
+        "startLine": 6394,
+        "startChar": 8,
+        "endLine": 6394,
+        "endChar": 34
+      },
+      "revId": "8e070ee93c6daa63393addc0eb1d3686df0871fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
