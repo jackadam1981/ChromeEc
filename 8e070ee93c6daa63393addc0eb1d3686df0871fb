@@ -22,6 +22,75 @@
       "revId": "8e070ee93c6daa63393addc0eb1d3686df0871fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a511c86_4881b262",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6401,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-01T16:27:46Z",
+      "side": 1,
+      "message": "Nit: The newline here doesn\u0027t match the one in the following comment.",
+      "range": {
+        "startLine": 6400,
+        "startChar": 3,
+        "endLine": 6401,
+        "endChar": 34
+      },
+      "revId": "8e070ee93c6daa63393addc0eb1d3686df0871fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b229f58_7a7b8e3f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6412,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-01T16:27:46Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 6412,
+        "startChar": 31,
+        "endLine": 6412,
+        "endChar": 40
+      },
+      "revId": "8e070ee93c6daa63393addc0eb1d3686df0871fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed7b4338_d01477b9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6471,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-01T16:27:46Z",
+      "side": 1,
+      "message": "Nit: I suggest sop_prime_connected to avoid mistyping later.",
+      "range": {
+        "startLine": 6471,
+        "startChar": 9,
+        "endLine": 6471,
+        "endChar": 23
+      },
+      "revId": "8e070ee93c6daa63393addc0eb1d3686df0871fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
