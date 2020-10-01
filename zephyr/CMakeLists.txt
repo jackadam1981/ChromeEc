@@ -14,7 +14,7 @@ if(NOT DEFINED ZEPHYR_CURRENT_MODULE_DIR)
           system for non-Zephyr builds.")
 endif()
 
-set(PLATFORM_EC "${ZEPHYR_CURRENT_MODULE_DIR}/.." CACHE PATH
+set(PLATFORM_EC "${ZEPHYR_CURRENT_MODULE_DIR}" CACHE PATH
     "Path to the platform/ec repo.")
 
 zephyr_include_directories_ifdef(
@@ -27,5 +27,4 @@ zephyr_include_directories_ifdef(
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim/src")
 
 # Shimmed modules
-zephyr_sources_ifdef(CONFIG_PLATFORM_EC "${PLATFORM_EC}/common/util.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_TIMER "${PLATFORM_EC}/common/timer.c")
