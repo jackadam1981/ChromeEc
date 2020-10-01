@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "b948e884_8ea66a7f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-10-01T16:19:10Z",
+      "side": 1,
+      "message": "Yes, the IS_ENABLED is used in various places, but there are still issues.\n\n/* Generate a compiler error if invalid states are referenced */\n#ifndef CONFIG_USB_PD_TRY_SRC\n#define TC_TRY_SRC\tTC_TRY_SRC_UNDEFINED\n#define TC_TRY_WAIT_SNK\tTC_TRY_WAIT_SNK_UNDEFINED\n#endif\n\nBecause the try.src states only exist if the config option is defined, then these statements cause issues.\n\nset_state_tc(port, tryWait ? TC_TRY_WAIT_SNK : TC_UNATTACHED_SNK);\n\nTC_TRY_WAIT_SNK is defined as TC_TRY_WAIT_SNK_UNDEFINED\n\nIn this particular function, I believe the issues that variables like pd_try_src_override don\u0027t exist so you get compiler errors.",
+      "parentUuid": "24f63fad_9fe79b3e",
+      "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaef0fba_49ae761b",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 32
@@ -47,6 +65,24 @@
       "writtenOn": "2020-10-01T15:28:38Z",
       "side": 1,
       "message": "Should this just be overridable?",
+      "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "570ed662_e3dc2766",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-10-01T16:19:10Z",
+      "side": 1,
+      "message": "Yes, I do think that would work for this issue.",
+      "parentUuid": "eaef0fba_49ae761b",
       "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
