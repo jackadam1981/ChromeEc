@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b46e649e_cecdeca4",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-01T15:45:17Z",
+      "side": 1,
+      "message": "source",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 48
+      },
+      "revId": "b860ec81ba0d25a04c4acf4d15edd2425e7eb206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f3a840_5bd527b6",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-01T15:45:17Z",
+      "side": 1,
+      "message": "/* TODO (b/169814014): Implement code to fit \"struct ioexpander_drv\" */",
+      "revId": "b860ec81ba0d25a04c4acf4d15edd2425e7eb206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053585af_f3334c62",
+        "filename": "driver/ioexpander/pca9675.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-01T15:45:17Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 3
+      },
+      "revId": "b860ec81ba0d25a04c4acf4d15edd2425e7eb206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
