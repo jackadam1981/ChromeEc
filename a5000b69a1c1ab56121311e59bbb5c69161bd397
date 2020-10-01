@@ -34,6 +34,24 @@
       "revId": "a5000b69a1c1ab56121311e59bbb5c69161bd397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db627e6a_bc291f8d",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-01T17:15:36Z",
+      "side": 1,
+      "message": "\u003e Technically, we should go back and forth between safe and USB during exit as we send each message.\n\nCan you think of a practical reason for this, or do you think it\u0027s just a spec quirk?",
+      "parentUuid": "4a34f766_935c7f82",
+      "revId": "a5000b69a1c1ab56121311e59bbb5c69161bd397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

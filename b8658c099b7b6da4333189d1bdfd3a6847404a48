@@ -16,6 +16,24 @@
       "revId": "b8658c099b7b6da4333189d1bdfd3a6847404a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a1b946_2237ebcb",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-01T17:15:36Z",
+      "side": 1,
+      "message": "As of Patchset 10, the call chain is\nintel_vdm_acked-\u003epd_dfp_exit_mode-\u003esvdm_tbt_compat_exit_mode\n-\u003eusb_mux_set_safe_mode,\nand you\u0027re right: That makes the safe mode timing wrong. The story is similar for DP.\n\nAlso as of this patchset, pd_dfp_exit_mode does very little that is generic and mostly serves as a shim between mode-specific code for the same mode. IMO, it has been confusing and unintuitive/impossible to use correctly for a long time. I would be in favor of its complete removal. But we shouldn\u0027t do that in the CL, if we can help it. This review has already increased in scope a fair amount.",
+      "parentUuid": "6549f9fb_0bfef8b6",
+      "revId": "b8658c099b7b6da4333189d1bdfd3a6847404a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
