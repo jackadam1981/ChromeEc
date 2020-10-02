@@ -302,35 +302,21 @@ void vboot_main(void)
 	CPRINTS("Exit");
 }
 
-void hook_shutdown(void)
+static void hook_shutdown(void)
 {
 	CPRINTS("%s", __func__);
 
-	/*
-	 * We filter the cases which can be interfered with if we execute
-	 * system_reset in HOOK_CHIPSET_SHUTDOWN context. Most cases are
-	 * filtered out by system_is_in_rw (e.g. system_common_shutdown,
-	 * check_pending_cutoff).
-	 */
 	if (system_is_in_rw())
 		return;
 
 	/*
-	 * We can't reset here because it'll completely tear down the power
-	 * and disturb the PCH's power sequence. We instead sysjump.
-	 *
-	 * Note that this does not reduce the security. Even if it's hijacked in
-	 * NO_BOOT mode, an RO still needs to go through a cold reset to clear
-	 * NO_BOOT flag since Cr50 rejects to switch from NO_BOOT to NORMAL.
-	 * If a spoofed matching hash is passed to Cr50, Cr50 would reset EC.
+	 * EC_RESET_FLAG_STAY_IN_RO indicates we were told to stay in RO. So, we
+	 * don't reset (in order to stay in RO for whatever reason).
 	 */
-	system_set_reset_flags(EC_RESET_FLAG_AP_IDLE);
-	verify_and_jump();
+	if (system_get_reset_flags() & EC_RESET_FLAG_STAY_IN_RO)
+		return;
+
+	/* Reset with AP_OFF to respect G3. */
+	system_reset_hard(SYSTEM_RESET_LEAVE_AP_OFF);
 }
-/*
- * There can be hooks which are needed to set external chips to a certain state
- * in S5. If the initial state (i.e. AP_OFF state) is different from what those
- * hooks realize, they need to be considered. This hook runs last (i.e.
- * HOOK_PRIO_LAST) to make our landing on S5 as mild as possible.
- */
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, hook_shutdown, HOOK_PRIO_LAST);
+DECLARE_HOOK(HOOK_CHIPSET_HARD_OFF, hook_shutdown, HOOK_PRIO_LAST);
