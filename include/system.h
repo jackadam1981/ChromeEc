@@ -48,6 +48,15 @@ void system_common_pre_init(void);
 int system_is_manual_recovery(void);
 
 /**
+ * Hard reset (a.k.a. cold reboot) system.
+ *
+ * Call this instead of system_reset for proper & clean hard reset.
+ *
+ * @param reset_flags SYSTEM_RESET_* in addition to SYSTEM_RESET_HARD.
+ */
+void system_reset_hard(int reset_flags);
+
+/**
  * System common re-initialization; called to reset persistent state
  * left by system_common_pre_init().  This is useful for testing
  * scenarios calling system_common_pre_init() multiple times.

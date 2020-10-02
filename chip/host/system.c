@@ -95,6 +95,11 @@ static void save_reset_flags(uint32_t flags)
 	release_persistent_storage(f);
 }
 
+void chip_save_reset_flags(uint32_t flags)
+{
+	save_reset_flags(flags);
+}
+
 static uint32_t load_reset_flags(void)
 {
 	FILE *f = get_persistent_storage("reset_flags", "rb");
