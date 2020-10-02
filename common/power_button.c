@@ -6,6 +6,7 @@
 /* Power button module for Chrome EC */
 
 #include "button.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -144,6 +145,29 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pb_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT - 1);
 #endif
 
+static void reset_to_exit_recovery_mode(void)
+{
+	/*
+	 * If PB is pressed during S5->G3 transition, we'll catch it here.
+	 *
+	 * EC_RESET_FLAG_STAY_IN_RO indicates we were told to stay in RO (for
+	 * the recovery hack). So, we don't reset (in order to stay in RO and
+	 * continue to boot in recovery mode).
+	 */
+	if (!(system_get_reset_flags() & EC_RESET_FLAG_STAY_IN_RO) &&
+			chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+			!system_is_in_rw())
+		system_reset_hard(0);
+
+	/*
+	 * EC_RESET_FLAG_STAY_IN_RO is (currently) specifically used to set
+	 * EC_HOST_EVENT_KEYBOARD_RECOVERY to emulate manual recovery entry.
+	 * Thus, it's cleared here, which is when AP is about to boot
+	 * (in recovery mode).
+	 */
+	system_clear_reset_flags(EC_RESET_FLAG_STAY_IN_RO);
+}
+
 /**
  * Handle debounced power button changing state.
  */
@@ -160,6 +184,9 @@ static void power_button_change_deferred(void)
 		power_button_is_stable = 1;
 		return;
 	}
+
+	if (IS_ENABLED(CONFIG_VBOOT_EFS2) && new_pressed)
+		reset_to_exit_recovery_mode();
 
 	debounced_power_pressed = new_pressed;
 	power_button_is_stable = 1;
