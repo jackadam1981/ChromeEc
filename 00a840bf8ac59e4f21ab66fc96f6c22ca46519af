@@ -25,6 +25,121 @@
     },
     {
       "key": {
+        "uuid": "a4c75f7c_143db195",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-02T16:17:34Z",
+      "side": 1,
+      "message": "FLAGS_baudrate (variable created here) is never used.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "00a840bf8ac59e4f21ab66fc96f6c22ca46519af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f04841f8_28dc34ea",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-02T16:17:34Z",
+      "side": 1,
+      "message": "This can just be \n\n \"$(basename \"${dev}\")\"\n\n(bug in our original code)",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "00a840bf8ac59e4f21ab66fc96f6c22ca46519af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2efe6bb8_83526e67",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-02T16:17:34Z",
+      "side": 1,
+      "message": "prefer \"\u003d\u003d\" here for string comparison",
+      "range": {
+        "startLine": 145,
+        "startChar": 23,
+        "endLine": 145,
+        "endChar": 26
+      },
+      "revId": "00a840bf8ac59e4f21ab66fc96f6c22ca46519af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d3a6cf_502efc28",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-02T16:17:34Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 180,
+        "startChar": 22,
+        "endLine": 180,
+        "endChar": 26
+      },
+      "revId": "00a840bf8ac59e4f21ab66fc96f6c22ca46519af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae92653_a28e6d37",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-02T16:17:34Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 205,
+        "startChar": 23,
+        "endLine": 205,
+        "endChar": 26
+      },
+      "revId": "00a840bf8ac59e4f21ab66fc96f6c22ca46519af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8375049a_cfa98bb5",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 3
@@ -45,6 +160,30 @@
       "revId": "00a840bf8ac59e4f21ab66fc96f6c22ca46519af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d537a85_c26a6356",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-02T16:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8375049a_cfa98bb5",
+      "range": {
+        "startLine": 224,
+        "startChar": 9,
+        "endLine": 224,
+        "endChar": 19
+      },
+      "revId": "00a840bf8ac59e4f21ab66fc96f6c22ca46519af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
