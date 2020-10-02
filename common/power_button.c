@@ -6,6 +6,7 @@
 /* Power button module for Chrome EC */
 
 #include "button.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -160,6 +161,13 @@ static void power_button_change_deferred(void)
 		power_button_is_stable = 1;
 		return;
 	}
+
+	/* If PB is pressed during S5->G3 transition, we'll catch it here. */
+	if (IS_ENABLED(CONFIG_VBOOT_EFS2) &&
+			new_pressed &&
+			chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+			!system_is_in_rw())
+		system_reset_hard(0);
 
 	debounced_power_pressed = new_pressed;
 	power_button_is_stable = 1;
