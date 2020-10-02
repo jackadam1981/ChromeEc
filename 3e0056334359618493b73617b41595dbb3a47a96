@@ -16,6 +16,23 @@
       "revId": "3e0056334359618493b73617b41595dbb3a47a96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf98daa3_fd616c35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-02T22:38:46Z",
+      "side": 1,
+      "message": "In the future, we may want to set __stdlib_compat for zephyr so that we can re-include this util.c file.  Or split into util.c and stdlib.c.",
+      "revId": "3e0056334359618493b73617b41595dbb3a47a96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
