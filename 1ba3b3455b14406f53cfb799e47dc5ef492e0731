@@ -16,6 +16,75 @@
       "revId": "1ba3b3455b14406f53cfb799e47dc5ef492e0731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "648bf533_cd3d12a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-02T15:12:17Z",
+      "side": 1,
+      "message": "Is this change ready for review, or still a work in progress?",
+      "parentUuid": "e7d75384_b654c19a",
+      "revId": "1ba3b3455b14406f53cfb799e47dc5ef492e0731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69a63f04_4839c3d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-02T15:12:17Z",
+      "side": 1,
+      "message": "Is this change ready for review, or still a work in progress as the status would indicate? ",
+      "revId": "1ba3b3455b14406f53cfb799e47dc5ef492e0731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9029941a_d7c245ee",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-02T15:12:17Z",
+      "side": 1,
+      "message": "Why the large scope for all three of these variables?  It seems like the current button state is the only thing which is needed outside adc_vol_key_press_check()",
+      "revId": "1ba3b3455b14406f53cfb799e47dc5ef492e0731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c480de_92b49237",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-02T15:12:17Z",
+      "side": 1,
+      "message": "nit: unnecessary, since it should already be 0 in this clause",
+      "revId": "1ba3b3455b14406f53cfb799e47dc5ef492e0731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
