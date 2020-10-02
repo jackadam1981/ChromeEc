@@ -6015,13 +6015,20 @@ static void pe_dr_src_get_source_cap_run(int port)
 				uint32_t *payload =
 					(uint32_t *)rx_emsg[port].buf;
 
+				/* Copy source caps to public array */
+				pd_set_src_caps(port, cnt, payload);
+
 				/*
 				 * Unconstrained power by the partner should
 				 * be enough to request a PR_Swap to use their
-				 * power instead of our battery
+				 * power instead of our battery.
+				 * NOTE: Checking for UP_PSWAP override to
+				 * leave the power mode alone if we are in a
+				 * testing condition.
 				 */
-				pd_set_src_caps(port, cnt, payload);
-				if (pe[port].src_caps[0] &
+				if (tc_get_up_pswap_override() ==
+						UP_PSWAP_ALLOWED &&
+				    pe[port].src_caps[0] &
 						PDO_FIXED_UNCONSTRAINED) {
 					pe[port].src_snk_pr_swap_counter = 0;
 					PE_SET_DPM_REQUEST(port,

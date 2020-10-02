@@ -46,6 +46,11 @@ void tc_request_power_swap(int port)
 	/* Do nothing */
 }
 
+enum up_pswap_override_t tc_get_up_pswap_override(void)
+{
+	return UP_PSWAP_ALLOWED;
+}
+
 void pd_set_vbus_discharge(int port, int enable)
 {
 	gpio_set_level(GPIO_USB_C0_DISCHARGE, enable);

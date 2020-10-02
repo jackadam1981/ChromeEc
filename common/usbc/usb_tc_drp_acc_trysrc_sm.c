@@ -467,6 +467,10 @@ static volatile enum try_src_override_t pd_try_src_override;
 static void pd_update_try_source(void);
 #endif
 
+/* Unconstrained Power Override state */
+static volatile enum up_pswap_override_t pd_up_pswap_override =
+							UP_PSWAP_ALLOWED;
+
 static void sink_stop_drawing_current(int port);
 
 static bool is_try_src_enabled(int port)
@@ -936,6 +940,23 @@ void tc_try_src_override(enum try_src_override_t ov)
 enum try_src_override_t tc_get_try_src_override(void)
 {
 	return pd_try_src_override;
+}
+
+void tc_up_pswap_override(enum up_pswap_override_t en)
+{
+	switch (en) {
+	case UP_PSWAP_DISABLED: /* 0 */
+		pd_up_pswap_override = UP_PSWAP_DISABLED;
+		break;
+	case UP_PSWAP_ALLOWED: /* 1 */
+	default:
+		pd_up_pswap_override = UP_PSWAP_ALLOWED;
+	}
+}
+
+enum up_pswap_override_t tc_get_up_pswap_override(void)
+{
+	return pd_up_pswap_override;
 }
 
 void tc_snk_power_off(int port)

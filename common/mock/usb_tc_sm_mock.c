@@ -102,6 +102,11 @@ void tc_partner_dr_power(int port, int en)
 void tc_partner_unconstrainedpower(int port, int en)
 {}
 
+enum up_pswap_override_t tc_get_up_pswap_override(void)
+{
+	return UP_PSWAP_ALLOWED;
+}
+
 void tc_partner_usb_comm(int port, int en)
 {}
 
