@@ -11,6 +11,8 @@ CHIP_VARIANT:=stm32f412
 
 board-y=board.o fpsensor_detect.o
 
+# Do not build rsa test because this board uses RSA exponent 3 and the rsa test
+# will fail on device.
 test-list-y=\
        aes \
        compile_time_macros \
@@ -22,7 +24,6 @@ test-list-y=\
        pingpong \
        rollback \
        rollback_entropy \
-       rsa \
        rsa3 \
        rtc \
        scratchpad \
