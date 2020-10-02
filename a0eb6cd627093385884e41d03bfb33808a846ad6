@@ -46,6 +46,30 @@
       "revId": "a0eb6cd627093385884e41d03bfb33808a846ad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "194a0167_9ea028a3",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-02T19:12:03Z",
+      "side": 0,
+      "message": "On current ToT, when I\u0027m running a board with SW sync disabled and hook_shutdown() executes, the end result of the hook is that the RW verification fails and so my board stays in RO.  \n\nWith this change, would boots with SW sync disabled always hard reset the EC on entry to G3?",
+      "parentUuid": "17b3e492_454b77cc",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 19
+      },
+      "revId": "a0eb6cd627093385884e41d03bfb33808a846ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
