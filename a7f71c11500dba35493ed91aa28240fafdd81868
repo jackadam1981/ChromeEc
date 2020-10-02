@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25f89444_d99b7904",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-10-02T10:04:02Z",
+      "side": 1,
+      "message": "well it\u0027s mostly because I think symmetry is beauty, I can delete the 3072-F4 case",
+      "parentUuid": "c8affa84_3d568551",
+      "revId": "a7f71c11500dba35493ed91aa28240fafdd81868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38888d99_6093f834",
         "filename": "test/rsa.c",
         "patchSetId": 3
