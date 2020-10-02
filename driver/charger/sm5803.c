@@ -935,8 +935,27 @@ void sm5803_handle_interrupt(int chgnum)
 		return;
 	}
 
-	if (int_reg & SM5803_INT4_CHG_FAIL)
-		CPRINTS("%s %d: CHG_FAIL_INT fired!!!", CHARGER_NAME, chgnum);
+	if (int_reg & SM5803_INT4_CHG_FAIL) {
+		int status_reg;
+
+		act_chg = charge_manager_get_active_charge_port();
+		chg_read8(chgnum, SM5803_REG_STATUS_CHG_REG, &status_reg);
+		CPRINTS("%s %d: CHG_FAIL_INT fired.  Status 0x%02x",
+			CHARGER_NAME, chgnum, status_reg);
+
+		/* Write 1 to clear status interrupts */
+		chg_write8(chgnum, SM5803_REG_STATUS_CHG_REG, status_reg);
+
+		/*
+		 * If a survivable fault happened, re-start sinking on the
+		 * active charger.
+		 */
+		if (status_reg & SM5803_STATUS_CHG_OV_ITEMP)
+			sm5803_vbus_sink_enable(act_chg, 1);
+		else if ((status_reg & SM5803_STATUS_CHG_OV_VBAT) &&
+						act_chg == CHARGER_PRIMARY)
+			sm5803_vbus_sink_enable(act_chg, 1);
+	}
 
 	if (int_reg & SM5803_INT4_CHG_DONE)
 		CPRINTS("%s %d: CHG_DONE_INT fired!!!", CHARGER_NAME, chgnum);
