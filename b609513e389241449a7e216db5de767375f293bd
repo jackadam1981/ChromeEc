@@ -138,6 +138,30 @@
     },
     {
       "key": {
+        "uuid": "96d891e1_8bd44402",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-02T17:10:45Z",
+      "side": 1,
+      "message": "Fair enough.  Check added.",
+      "parentUuid": "15a3c6c1_715f83f5",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6644b650_0a3caa8b",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 2
