@@ -6,6 +6,7 @@
 /* Power button module for Chrome EC */
 
 #include "button.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -144,6 +145,30 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pb_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT - 1);
 #endif
 
+static void reset_to_exit_ro(void)
+{
+	/*
+	 * We only care if PB is pressed in S5. We have another hook on G3 entry
+	 * to do a hard reset.
+	 */
+	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
+
+	/*
+	 * EC_RESET_FLAG_STAY_IN_RO indicates we were told to stay in RO. So, we
+	 * don't reset (in order to stay in RO and continue to boot in recovery
+	 * mode).
+	 */
+	if (system_get_reset_flags() & EC_RESET_FLAG_STAY_IN_RO)
+		return;
+
+	/*
+	 * After reset, we'll jump to RW (by EFS) and continue to boot,
+	 * respecting the PB press.
+	 */
+	system_reset_hard(0);
+}
+
 /**
  * Handle debounced power button changing state.
  */
@@ -160,6 +185,9 @@ static void power_button_change_deferred(void)
 		power_button_is_stable = 1;
 		return;
 	}
+
+	if (IS_ENABLED(CONFIG_VBOOT_EFS2) && new_pressed && !system_is_in_rw())
+		reset_to_exit_ro();
 
 	debounced_power_pressed = new_pressed;
 	power_button_is_stable = 1;
