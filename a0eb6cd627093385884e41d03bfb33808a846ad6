@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4097dfe_f34b5a6d",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-02T17:17:27Z",
+      "side": 0,
+      "message": "If we\u0027re not longer verifying and jumping, will we be hard resetting developer boots with SW sync disabled that go into G3?  That might complicate CL testing for EC devs.  Is there any way for the EC to know we should skip the hard reset in this case?",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 19
+      },
+      "revId": "a0eb6cd627093385884e41d03bfb33808a846ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
