@@ -22,6 +22,30 @@
       "revId": "a0eb6cd627093385884e41d03bfb33808a846ad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17b3e492_454b77cc",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-02T18:38:23Z",
+      "side": 0,
+      "message": "Can you help me understand \"hard resetting developer boots with SW sync disabled that go into G3\"?",
+      "parentUuid": "a4097dfe_f34b5a6d",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 19
+      },
+      "revId": "a0eb6cd627093385884e41d03bfb33808a846ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
