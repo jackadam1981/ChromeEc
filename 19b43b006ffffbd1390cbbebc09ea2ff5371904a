@@ -33,6 +33,24 @@
       "revId": "19b43b006ffffbd1390cbbebc09ea2ff5371904a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "547160c8_7adc4582",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-10-02T06:09:06Z",
+      "side": 1,
+      "message": "No, atomic_and in Zephyr performs pure bitwise \"and\" while our atomic_clear_bits(new)/atomic_clear(old) clears selected bits in the mask.\nActually\n(EC) atomic_clear_bits(\u0026var, mask) \u003d atomic  atomic_and(\u0026var, ~mask) (Zephyr)\n\nThe main goal is not to be named closer to Zephyr, but to avoid collision on naming. \nEC\u0027s atomic_clear(old) !\u003d Zephyr\u0027s atomic_clear\nThe functions work differently so we have to distinguish them.",
+      "parentUuid": "56f85c21_ef80ddac",
+      "revId": "19b43b006ffffbd1390cbbebc09ea2ff5371904a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
