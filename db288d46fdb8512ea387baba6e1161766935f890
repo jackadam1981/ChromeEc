@@ -46,6 +46,30 @@
       "revId": "db288d46fdb8512ea387baba6e1161766935f890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e8d97c_b9f20f60",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-02T06:58:05Z",
+      "side": 1,
+      "message": "i was thinking about the pca9675 driver (ignoring the EC io expander API for a moment).\nthe driver could easily maintain a mask of input vs. output pins. \nthe update_pins call would have to test if the requested\n\"setpins\" and \"clearpins\" are within the output-only set. if so,\nuse the cached output pin states, apply setpins/clearpins and write\nthe result to the pca9675 and update local copy.\nthe datasheet states that input pins should be\nwritten as \u00271\u0027, but it\u0027s not clear if that\u0027s required on every\nwrite to the registers or only initialization (setup as input).\nit may be that when there is a mix of in/out pins in a register,\nwe need to write \u00271\u0027 for the bits representing input pins.\n\nin any case, this should be pretty straight forward to implement and verify.",
+      "parentUuid": "6f5afa5f_77bed0e8",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "db288d46fdb8512ea387baba6e1161766935f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
