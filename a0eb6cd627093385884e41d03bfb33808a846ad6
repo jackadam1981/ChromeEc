@@ -70,6 +70,30 @@
       "revId": "a0eb6cd627093385884e41d03bfb33808a846ad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "401e5d6c_4f2074cf",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-02T20:14:10Z",
+      "side": 0,
+      "message": "I assume a local EC image is flashed, Hmir doesn\u0027t match, and soft sync is disabled.\n\nAfter a hard reset, EC stays in RO (because Hmir !\u003d Heff) and the OS boots. When the system shuts down, the G3 hook will trigger a hard reset and EFS2 will fail (again). So, EC will stay in RO. \n\nA RO copy will respect AP_OFF (or no AP_OFF). So, you should get the same behavior as when EFS2 is successful in terms of whether the system stays off or boots after hard resets.",
+      "parentUuid": "194a0167_9ea028a3",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 19
+      },
+      "revId": "a0eb6cd627093385884e41d03bfb33808a846ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
