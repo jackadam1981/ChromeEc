@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2d496fc_d6798d45",
+        "filename": "driver/mp4245.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-02T02:28:30Z",
+      "side": 1,
+      "message": "It\u0027s 2020 😉",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1502fb3f6d3d8c84f1a306833546e178fe625487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b98364_80e411af",
+        "filename": "driver/mp4245.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-02T02:28:30Z",
+      "side": 1,
+      "message": "Maybe add \u0027Buck-Boost converter\u0027 to be consistent.",
+      "range": {
+        "startLine": 6,
+        "startChar": 13,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "1502fb3f6d3d8c84f1a306833546e178fe625487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62f2b507_1136d833",
+        "filename": "driver/mp4245.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-02T02:28:30Z",
+      "side": 1,
+      "message": "nit: keep in alphabetical order",
+      "revId": "1502fb3f6d3d8c84f1a306833546e178fe625487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a704044e_e1799bf8",
+        "filename": "driver/mp4245.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-02T02:28:30Z",
+      "side": 1,
+      "message": "Not used?",
+      "revId": "1502fb3f6d3d8c84f1a306833546e178fe625487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85b45848_2f79c9ed",
+        "filename": "driver/mp4245.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-02T02:28:30Z",
+      "side": 1,
+      "message": "nit: move to header",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "1502fb3f6d3d8c84f1a306833546e178fe625487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ecb483_bbcbe650",
+        "filename": "driver/mp4245.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-02T02:28:30Z",
+      "side": 1,
+      "message": "nit: change to \u0027\u003c\u0027. \u0027[\u0027 indicates an optional argument usually, where as the chevron indicates a required argument.\n\nAlso, it\u0027s missing the closing chevron at the end of the line.",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 5
+      },
+      "revId": "1502fb3f6d3d8c84f1a306833546e178fe625487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
