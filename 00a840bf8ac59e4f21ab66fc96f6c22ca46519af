@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8375049a_cfa98bb5",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-10-02T03:59:21Z",
+      "side": 1,
+      "message": "This will change based on SoC. I will  work on adding a platform based ttySX binder.",
+      "range": {
+        "startLine": 224,
+        "startChar": 9,
+        "endLine": 224,
+        "endChar": 19
+      },
+      "revId": "00a840bf8ac59e4f21ab66fc96f6c22ca46519af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a900f78b_48cecb08",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-10-02T03:59:21Z",
+      "side": 1,
+      "message": "Not clear why we unbind here again.",
+      "range": {
+        "startLine": 268,
+        "startChar": 4,
+        "endLine": 268,
+        "endChar": 59
+      },
+      "revId": "00a840bf8ac59e4f21ab66fc96f6c22ca46519af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
