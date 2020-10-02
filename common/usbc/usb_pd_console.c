@@ -55,6 +55,18 @@ test_export_static int command_pd(int argc, char **argv)
 			ccprintf("Try.SRC Forced %s\n", ov ? "ON" : "OFF");
 
 		return EC_SUCCESS;
+	} else if (!strcasecmp(argv[1], "up_pswap")) {
+		enum up_pswap_override_t en = tc_get_up_pswap_override();
+
+		if (argc >= 3) {
+			en = strtoi(argv[2], &e, 10);
+			if (*e || en > UP_PSWAP_ALLOWED)
+				return EC_ERROR_PARAM3;
+			tc_up_pswap_override(en);
+		}
+
+		ccprintf("UP_PSwap %s\n", en ? "ON" : "OFF");
+		return EC_SUCCESS;
 	} else if (!strcasecmp(argv[1], "version")) {
 		ccprintf("%d\n", PD_STACK_VERSION);
 		return EC_SUCCESS;
@@ -184,6 +196,7 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 #ifdef CONFIG_USB_PD_TRY_SRC
 	"\ntrysrc [0|1|2]"
 #endif
+	"\nup_pswap [0|1]"
 	"\n\t<port> state"
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	"|tx|charger|dev"

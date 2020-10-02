@@ -18,6 +18,11 @@ enum try_src_override_t {
 	TRY_SRC_NO_OVERRIDE
 };
 
+enum up_pswap_override_t {
+	UP_PSWAP_DISABLED,
+	UP_PSWAP_ALLOWED
+};
+
 /*
  * Type C supply voltage (mV)
  *
@@ -348,6 +353,22 @@ void tc_try_src_override(enum try_src_override_t ov);
  *		TRY_SRC_NO_OVERRIDE - TypeC state machine controls TrySrc
  */
 enum try_src_override_t tc_get_try_src_override(void);
+
+/**
+ * Allow system to override the control of Unconstrained Power Attach PR_Swap
+ *
+ * @param en	UP_PSWAP_DISABLED - UPower Attach PR_Swap is disabled
+ *		UP_PSWAP_ALLOWED - UPower Attach PR_Swap is allowed
+ */
+void tc_up_pswap_override(enum up_pswap_override_t en);
+
+/**
+ * Get state of up_pswap_override
+ *
+ * @return	UP_PSWAP_DISABLED - UPower Attach PR_Swap is disabled
+ *		UP_PSWAP_ALLOWED - UPower Attach PR_Swap is allowed
+ */
+enum up_pswap_override_t tc_get_up_pswap_override(void);
 
 /**
  * Returns the name of the current typeC state
