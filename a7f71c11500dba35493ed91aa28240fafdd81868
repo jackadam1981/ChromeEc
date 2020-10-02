@@ -51,6 +51,29 @@
       "revId": "a7f71c11500dba35493ed91aa28240fafdd81868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32b0d4c0_0b54c735",
+        "filename": "test/rsa3072-3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-02T22:26:46Z",
+      "side": 1,
+      "message": "Is this in the PATH in the chroot? Otherwise, probably good to put the full path.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "a7f71c11500dba35493ed91aa28240fafdd81868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
