@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "69c0db61_43cf5435",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-10-03T00:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25f89444_d99b7904",
+      "revId": "a7f71c11500dba35493ed91aa28240fafdd81868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38888d99_6093f834",
         "filename": "test/rsa.c",
         "patchSetId": 3
@@ -74,6 +92,30 @@
       "revId": "a7f71c11500dba35493ed91aa28240fafdd81868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8319b2cf_0d9185fa",
+        "filename": "test/rsa3072-3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-10-03T00:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32b0d4c0_0b54c735",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "a7f71c11500dba35493ed91aa28240fafdd81868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
