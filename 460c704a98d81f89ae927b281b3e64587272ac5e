@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14ed3c64_cee411df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-10-03T07:35:21Z",
+      "side": 1,
+      "message": "Hey Diana,\n\nWhat is the deprecation plan regarding USB_PD_CONTROL? This will help determine how we can introduce usage of TYPEC_STATUS in the kernel driver.\n\nSince the contents of USB_PD_CONTROL will now be split between TYPEC_STATUS and TYPEC_DISCOVERY (te latter will provide what was earlier control_flags, cable_speed and cable_gen), having USB_PD_CONTROL around will help us transition more smoothly to TYPEC_STATUS+TYPEC_DISCOVERY usage in kernel (we can first introduce TYPEC_STATUS, and then TYPEC_DISCOVERY).\n\nIf not, then we can determine what\u0027s the best way to integrate the new commands.\n\nBest regards,",
+      "revId": "460c704a98d81f89ae927b281b3e64587272ac5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
