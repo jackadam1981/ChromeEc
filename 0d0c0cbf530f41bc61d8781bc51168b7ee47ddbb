@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5413b3aa_e726dd6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-03T02:25:09Z",
+      "side": 1,
+      "message": "Flagging potential iLoadStepRate concerns for posterity.\n\n* Some HW fast-ramping methods will OCP partners and cause Type-C disconnect..\n* Some boards don\u0027t have HW ramp, so must use SW or will cause Type-C disconnect.\n\nDeferring and monitoring for long term stability impact.",
+      "revId": "0d0c0cbf530f41bc61d8781bc51168b7ee47ddbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
