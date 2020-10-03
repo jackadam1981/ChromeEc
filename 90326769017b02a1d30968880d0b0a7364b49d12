@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab9fda05_8016ecac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-10-03T00:35:37Z",
+      "side": 1,
+      "message": "Just a nit",
+      "revId": "90326769017b02a1d30968880d0b0a7364b49d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a333562_f2da71a9",
+        "filename": "test/rsa3072-3.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-10-03T00:35:37Z",
+      "side": 1,
+      "message": "This assume board architecture \u003d\u003d host architecture.\n\nWhich package does this file come from? Maybe, just tell the use the emerge the right package in their chroot? (sudo emerge ...)",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "90326769017b02a1d30968880d0b0a7364b49d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
