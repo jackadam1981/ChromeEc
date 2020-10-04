@@ -34,6 +34,24 @@
       "revId": "2b5a8635e78a2200edd3f8e891e9f362be135a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6860a18_56b5b7d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2020-10-04T15:31:32Z",
+      "side": 1,
+      "message": "\u003e We test keyboard function in factory, 48/4000 fail in test keyboard function about KSO2.keyboard test no function when press about kso2 matrix.\nafter measure voltage, we find that voltage is too low cause h1 can not send signal\n\u003e We verify this new code, all fail machine can pass keyboard function test",
+      "parentUuid": "7e836c38_f8b31191",
+      "revId": "2b5a8635e78a2200edd3f8e891e9f362be135a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
