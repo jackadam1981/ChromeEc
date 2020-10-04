@@ -16,6 +16,24 @@
       "revId": "2b5a8635e78a2200edd3f8e891e9f362be135a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e836c38_f8b31191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2020-10-04T15:27:34Z",
+      "side": 1,
+      "message": "We test keyboard function in factory, 48/4000 fail in test keyboard function about KSO2.\nWe verify this new code, all fail machine can pass keyboard function test",
+      "parentUuid": "6b188ea6_85b76ea9",
+      "revId": "2b5a8635e78a2200edd3f8e891e9f362be135a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
