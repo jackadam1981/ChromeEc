@@ -33,6 +33,236 @@
       "revId": "2d23089f4f313158f242c1f37606230372765c8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80c1ac4_e4cf1811",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-10-04T00:20:09Z",
+      "side": 1,
+      "message": "nit: do we need it even with CR50_DEV?\nwas useful for developing, I guess. can be dropped now?",
+      "range": {
+        "startLine": 277,
+        "startChar": 11,
+        "endLine": 277,
+        "endChar": 36
+      },
+      "revId": "2d23089f4f313158f242c1f37606230372765c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e53884_7fc33b95",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-10-04T00:20:09Z",
+      "side": 1,
+      "message": "nit: same here (and at the end of this function). do we need to have it in CR50_DEV after initial development is over?\nwe already have u2f_print_state() available from console in CR50_DEV case.",
+      "range": {
+        "startLine": 353,
+        "startChar": 11,
+        "endLine": 353,
+        "endChar": 26
+      },
+      "revId": "2d23089f4f313158f242c1f37606230372765c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "116f8fc1_a3dcc0a9",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-10-04T00:20:09Z",
+      "side": 1,
+      "message": "nit identation: either double-tab or align with prev line parameters.",
+      "range": {
+        "startLine": 951,
+        "startChar": 4,
+        "endLine": 951,
+        "endChar": 9
+      },
+      "revId": "2d23089f4f313158f242c1f37606230372765c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1507e617_b834c689",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-10-04T00:20:09Z",
+      "side": 1,
+      "message": "nit: this never happens, right? so can delete?\n\nand if we want to later make fips_set_policy() available to prod cr50 again, creating fake keys at the end of this function should be put back under #ifdef",
+      "range": {
+        "startLine": 1024,
+        "startChar": 0,
+        "endLine": 1024,
+        "endChar": 16
+      },
+      "revId": "2d23089f4f313158f242c1f37606230372765c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cbc020c_8d6b170d",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-10-04T00:20:09Z",
+      "side": 1,
+      "message": "stale comment?",
+      "range": {
+        "startLine": 1035,
+        "startChar": 0,
+        "endLine": 1035,
+        "endChar": 73
+      },
+      "revId": "2d23089f4f313158f242c1f37606230372765c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5872e29f_3e9e959e",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-10-04T00:20:09Z",
+      "side": 1,
+      "message": "I forgot: do we want to allow running tests on prod cr50 through CCD console? why?",
+      "range": {
+        "startLine": 1083,
+        "startChar": 25,
+        "endLine": 1083,
+        "endChar": 29
+      },
+      "revId": "2d23089f4f313158f242c1f37606230372765c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f29bce8e_fdb20fd6",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-10-04T00:20:09Z",
+      "side": 1,
+      "message": "nit: applies only to CR50_DEV",
+      "range": {
+        "startLine": 1114,
+        "startChar": 43,
+        "endLine": 1114,
+        "endChar": 58
+      },
+      "revId": "2d23089f4f313158f242c1f37606230372765c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "718755b9_72bf7e1f",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-10-04T00:20:09Z",
+      "side": 1,
+      "message": "nit: typo: !.",
+      "range": {
+        "startLine": 222,
+        "startChar": 58,
+        "endLine": 222,
+        "endChar": 60
+      },
+      "revId": "2d23089f4f313158f242c1f37606230372765c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a21da59_d397943f",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-10-04T00:20:09Z",
+      "side": 1,
+      "message": "nit: can we save on one commit and do it once at the end in case both U2F_KEK and UF_KH_SALT need to be created? we won\u0027t start using the newly created salts before this function returns, so sudden reset is not an issue.",
+      "range": {
+        "startLine": 241,
+        "startChar": 8,
+        "endLine": 241,
+        "endChar": 22
+      },
+      "revId": "2d23089f4f313158f242c1f37606230372765c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e4e418a_8dca175c",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-10-04T00:20:09Z",
+      "side": 1,
+      "message": "don\u0027t we need to have them implemented before landing?",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 33
+      },
+      "revId": "2d23089f4f313158f242c1f37606230372765c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
