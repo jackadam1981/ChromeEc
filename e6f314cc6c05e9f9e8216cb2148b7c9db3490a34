@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd36f605_3777f753",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-10-05T13:29:19Z",
+      "side": 1,
+      "message": "As for nds32 and riscv - ATM, I\u0027m not able to verify the code, because I\u0027m don\u0027t access to chromebook with minute-ia. Would anybody be able to test that? I can send code that I\u0027ve used for testing for other architectures.\n\nI\u0027ve checked generated asm and it looks pretty good.\n",
+      "revId": "e6f314cc6c05e9f9e8216cb2148b7c9db3490a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
