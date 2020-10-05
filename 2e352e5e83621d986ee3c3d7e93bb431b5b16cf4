@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "902c6b37_1fc6a66e",
+        "filename": "common/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-05T23:20:23Z",
+      "side": 1,
+      "message": "Actually, this is no longer true. I need to check the flashrom path.",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 164,
+        "endChar": 35
+      },
+      "revId": "2e352e5e83621d986ee3c3d7e93bb431b5b16cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
