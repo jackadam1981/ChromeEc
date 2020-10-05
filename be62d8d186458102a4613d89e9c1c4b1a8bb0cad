@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c73d2f17_6949939c",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-05T23:23:47Z",
+      "side": 1,
+      "message": "Not sure if you need this CPRINTS. The EC prints a whole bunch of stuff when it starts, and unless it\u0027s something meaningful or giving an error, I would not put this in.",
+      "range": {
+        "startLine": 958,
+        "startChar": 11,
+        "endLine": 958,
+        "endChar": 26
+      },
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad28dce5_68cf3cb3",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-05T23:23:47Z",
+      "side": 1,
+      "message": "So the error checking on the calls to oz554_set_config are not much use, since nothing is being done and the following calls are still run.\nMy suggestion is to skip the error checks and instead put a clearer error message\ndirectly in oz554_set_config e.g in driver/led/oz554.c line 127:\n\n   if (i \u003e\u003d oz554_conf_size) {\n                /* Matching offset not found */\n                CPRINTS(\"oz554: offset %d not found\", i);   \n                return EC_ERROR_INVAL;\n    }",
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5820a24_488b059f",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-05T23:23:47Z",
+      "side": 1,
+      "message": "extra break",
+      "range": {
+        "startLine": 965,
+        "startChar": 2,
+        "endLine": 965,
+        "endChar": 7
+      },
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d47e7dd_7d768471",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-05T23:23:47Z",
+      "side": 1,
+      "message": "Don\u0027t need the underscore. Maybe \u0027Unknown panel\u0027 should be printed to indicate that the panel config is not done.",
+      "range": {
+        "startLine": 977,
+        "startChar": 11,
+        "endLine": 977,
+        "endChar": 24
+      },
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e7bd22_0217c1c7",
+        "filename": "board/dooly/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-05T23:23:47Z",
+      "side": 1,
+      "message": "Blank line added.",
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
