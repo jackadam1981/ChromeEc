@@ -33,6 +33,46 @@
       "revId": "3140498f1dd7451cbc796a67c309a45a4b0079af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fee2adb1_9c08bb8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-10-05T08:06:22Z",
+      "side": 1,
+      "message": "@Dawid, I can verify this CL. Can you upload your test code as child CL? (Actually, I think the new added atomic operations should work properly because they are all operating under interrupts disabled)",
+      "revId": "3140498f1dd7451cbc796a67c309a45a4b0079af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9005ea89_5f565368",
+        "filename": "core/nds32/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-10-05T08:06:22Z",
+      "side": 1,
+      "message": "We need to mark \"addr\" argument volatile or build failure in charge_manager_source_port():\n\ncommon/charge_manager.c: In function \u0027charge_manager_source_port\u0027:\ncommon/charge_manager.c:1251:24: error: passing argument 1 of \u0027atomic_or\u0027 discards \u0027volatile\u0027 qualifier from pointer target type [-Werror\u003ddiscarded-qualifiers]\n   deprecated_atomic_or(\u0026source_port_bitmap, 1 \u003c\u003c port);\n                        ^~~~~~~~~~~~~~~~~~~\nIn file included from common/charge_manager.c:7:\ncore/nds32/atomic.h:33:48: note: expected \u0027atomic_t *\u0027 {aka \u0027int *\u0027} but argument is of type \u0027volatile uint32_t *\u0027 {aka \u0027volatile unsigned int *\u0027}\n static inline atomic_val_t atomic_or(atomic_t *addr, atomic_val_t bits)\n                                      ~~~~~~~~~~^~~~",
+      "range": {
+        "startLine": 33,
+        "startChar": 37,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "3140498f1dd7451cbc796a67c309a45a4b0079af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
