@@ -16,6 +16,24 @@
       "revId": "460c704a98d81f89ae927b281b3e64587272ac5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "050917f2_f7ec364e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-05T15:00:47Z",
+      "side": 1,
+      "message": "We plan to only remove USB_PD_CONTROL once consumers are ready for it, and once the new commands fulfill all the deprecated command uses.  TYPEC_STATUS is nearly where I want it to be, but TYPEC_CONTROL will need some more sub-commands to provide the same functionality as USB_PD_CONTROL.\n\nSo we\u0027ll just plan to coordinate with the kernel, and I believe I also need to take a look at FAFT and see if anything is relying on \"usbpd\".",
+      "parentUuid": "14ed3c64_cee411df",
+      "revId": "460c704a98d81f89ae927b281b3e64587272ac5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
