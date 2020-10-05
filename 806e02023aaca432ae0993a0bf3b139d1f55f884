@@ -22,6 +22,30 @@
       "revId": "806e02023aaca432ae0993a0bf3b139d1f55f884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1bcd68b_9a7e0493",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-10-05T08:04:59Z",
+      "side": 1,
+      "message": "\u003e Would you mind including the datasheet with this on the bug?  The one I could locate (which was about a year old) listed 16 mV for the LSB in MaxChargeVoltage\n\nDatasheet is uploaded.",
+      "parentUuid": "b339f476_6ae63711",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "806e02023aaca432ae0993a0bf3b139d1f55f884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
