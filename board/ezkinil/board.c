@@ -443,10 +443,22 @@ static void hdmi_hpd_handler(void)
 
 	gpio_set_level(GPIO_DP1_HPD, hpd);
 	ccprints("HDMI HPD %d", hpd);
+
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON) && hpd) {
+		ioex_set_level(IOEX_HDMI_DATA_EN_DB, 1);
+		ioex_set_level(IOEX_HDMI_POWER_EN_DB, 1);
+		msleep(PI3HDX1204_POWER_ON_DELAY_MS);
+	}
+
 	pi3hdx1204_enable(I2C_PORT_TCPC1,
 			  PI3HDX1204_I2C_ADDR_FLAGS,
 			  chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON)
 			  && hpd);
+
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON) && !hpd) {
+		ioex_set_level(IOEX_HDMI_POWER_EN_DB, 0);
+		ioex_set_level(IOEX_HDMI_DATA_EN_DB, 0);
+	}
 }
 DECLARE_DEFERRED(hdmi_hpd_handler);
 
