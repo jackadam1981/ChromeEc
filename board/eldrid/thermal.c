@@ -17,6 +17,60 @@
 #define CPUTS(outstr) cputs(CC_THERMAL, outstr)
 #define CPRINTS(format, args...) cprints(CC_THERMAL, format, ## args)
 
+/******************************************************************************/
+/* EC thermal management configuration */
+
+/*
+ * Tiger Lake specifies 100 C as maximum TDP temperature.  THRMTRIP# occurs at
+ * 130 C.  However, sensor is located next to DDR, so we need to use the lower
+ * DDR temperature limit (85 C)
+ */
+const static struct ec_thermal_config thermal_cpu = {
+	.temp_host = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
+	},
+	.temp_host_release = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(60),
+	},
+	.temp_fan_off = C_TO_K(35),
+	.temp_fan_max = C_TO_K(50),
+};
+
+/*
+ * Inductor limits - used for both charger and PP3300 regulator
+ *
+ * Need to use the lower of the charger IC, PP3300 regulator, and the inductors
+ *
+ * Charger max recommended temperature 100C, max absolute temperature 125C
+ * PP3300 regulator: operating range -40 C to 145 C
+ *
+ * Inductors: limit of 125c
+ * PCB: limit is 80c
+ */
+const static struct ec_thermal_config thermal_inductor = {
+	.temp_host = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
+	},
+	.temp_host_release = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
+	},
+	.temp_fan_off = C_TO_K(40),
+	.temp_fan_max = C_TO_K(55),
+};
+
+
+struct ec_thermal_config thermal_params[] = {
+	[TEMP_SENSOR_1_CHARGER]			= thermal_inductor,
+	[TEMP_SENSOR_2_PP3300_REGULATOR]	= thermal_inductor,
+	[TEMP_SENSOR_3_DDR_SOC]			= thermal_cpu,
+	[TEMP_SENSOR_4_FAN]			= thermal_cpu,
+};
+BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+/******************************************************************************/
+
 struct fan_step {
 	/*
 	 * Sensor 1~4 trigger point, set -1 if we're not using this
@@ -41,51 +95,51 @@ struct fan_step {
 static const struct fan_step fan_table[] = {
 	{
 		/* level 0 */
-		.on = {-1, -1, 36, -1},
+		.on = {-1, -1, 34, -1},
 		.off = {-1, -1, 0, -1},
 		.rpm = {0},
 	},
 	{
 		/* level 1 */
-		.on = {-1, -1, 38, -1},
-		.off = {-1, -1, 36, -1},
-		.rpm = {2000},
+		.on = {-1, -1, 37, -1},
+		.off = {-1, -1, 34, -1},
+		.rpm = {2800},
 	},
 	{
 		/* level 2 */
-		.on = {-1, -1, 41, -1},
-		.off = {-1, -1, 39, -1},
-		.rpm = {2600},
+		.on = {-1, -1, 40, -1},
+		.off = {-1, -1, 37, -1},
+		.rpm = {3200},
 	},
 	{
 		/* level 3 */
 		.on = {-1, -1, 44, -1},
 		.off = {-1, -1, 42, -1},
-		.rpm = {3000},
+		.rpm = {3500},
 	},
 	{
 		/* level 4 */
-		.on = {-1, -1, 46, -1},
-		.off = {-1, -1, 44, -1},
-		.rpm = {3300},
+		.on = {-1, -1, 48, -1},
+		.off = {-1, -1, 46, -1},
+		.rpm = {4000},
 	},
 	{
 		/* level 5 */
-		.on = {-1, -1, 49, -1},
-		.off = {-1, -1, 47, -1},
-		.rpm = {3600},
+		.on = {-1, -1, 52, -1},
+		.off = {-1, -1, 50, -1},
+		.rpm = {4600},
 	},
 	{
 		/* level 6 */
-		.on = {-1, -1, 51, -1},
-		.off = {-1, -1, 49, -1},
-		.rpm = {4200},
+		.on = {-1, -1, 56, -1},
+		.off = {-1, -1, 54, -1},
+		.rpm = {5100},
 	},
 	{
 		/* level 7 */
-		.on = {-1, -1, 55, -1},
-		.off = {-1, -1, 52, -1},
-		.rpm = {4700},
+		.on = {-1, -1, 60, -1},
+		.off = {-1, -1, 58, -1},
+		.rpm = {5100},
 	},
 };
 
