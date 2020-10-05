@@ -87,6 +87,29 @@
       "revId": "1042b4d30a09ca12851cc0ddd07323df0aac9c53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "675b9d46_6259532a",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-10-05T22:39:18Z",
+      "side": 1,
+      "message": "nit: could we split this into a second CL, as the above cleanly prepare for this, but it\u0027s technically an application of your new code paths",
+      "range": {
+        "startLine": 1204,
+        "startChar": 0,
+        "endLine": 1208,
+        "endChar": 26
+      },
+      "revId": "1042b4d30a09ca12851cc0ddd07323df0aac9c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
