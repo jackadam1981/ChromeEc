@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ef66450_ad448353",
+        "filename": "common/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-05T20:26:02Z",
+      "side": 1,
+      "message": "This might break `dut-control power_state:rec`. It does the following:\n\n    \nreboot ap-off\nhostevent set 0x4000\npowerbtn\n\n\nI think we\u0027d end up in a normal boot after the hard reset.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 23
+      },
+      "revId": "93d1aabc8d42a11ca61203e20ee9a6b9be0fc676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
