@@ -22,6 +22,23 @@
       "revId": "ebe3a001243c38b2364283808ff2b942ebefde0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ac2a772_4ab796fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-05T21:36:39Z",
+      "side": 1,
+      "message": "Ideally this CL should be placed after the common code support for wake from trackpoint.",
+      "revId": "ebe3a001243c38b2364283808ff2b942ebefde0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
