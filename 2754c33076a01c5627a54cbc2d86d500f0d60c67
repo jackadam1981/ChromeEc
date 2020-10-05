@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "793a53e6_05092a95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-05T15:16:52Z",
+      "side": 1,
+      "message": "I am completely onboard with this and added the CL as a backup in case we needed to pass PD_FAFT today, as it was presented to me. I don\u0027t believe the servo_v4 changes are being made very quickly. My alternate approach of rejecting the PR_Swap request from the DUT has been on the TODO list for a over a year.\n\nhttps://b.corp.google.com/issues/139065787",
+      "parentUuid": "b55b6bb8_169a4c44",
+      "revId": "2754c33076a01c5627a54cbc2d86d500f0d60c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffaafebf_4f9c26f5",
         "filename": "common/usbc/usb_pd_console.c",
         "patchSetId": 1
@@ -50,6 +68,24 @@
       "revId": "2754c33076a01c5627a54cbc2d86d500f0d60c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6fdcd04_c8d080fb",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-05T15:16:52Z",
+      "side": 1,
+      "message": "I was following \"pd trysrc\" and they didn\u0027t bother to check the lower limit.  I will add it here.",
+      "parentUuid": "ffaafebf_4f9c26f5",
+      "revId": "2754c33076a01c5627a54cbc2d86d500f0d60c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
