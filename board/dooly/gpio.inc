@@ -42,6 +42,10 @@ GPIO_INT(USB_C0_TCPPC_INT_ODL, PIN(E, 0), GPIO_INT_FALLING, ppc_interrupt)
 GPIO_INT(USB_C0_TCPC_INT_ODL,  PIN(6, 2), GPIO_INT_FALLING, tcpc_alert_event)
 GPIO_INT(USB_C1_TCPPC_INT_ODL, PIN(D, 6), GPIO_INT_FALLING, ppc_interrupt)
 GPIO_INT(USB_C1_TCPC_INT_ODL,  PIN(3, 2), GPIO_INT_FALLING, tcpc_alert_event)
+
+/* Sensor Interrupts */
+GPIO_INT(EALS_GSENSOR_INT_ODL, PIN(9, 6), GPIO_INT_FALLING, tcs3400_interrupt)
+
 /*
  * Directly connected recovery button.
  */
@@ -147,7 +151,6 @@ UNUSED(PIN(9, 5))						/* H10 TP54 */
 UNUSED(PIN(4, 0))						/* E4  TP56 */
 UNUSED(PIN(B, 1))						/* F8  TP59 */
 UNUSED(PIN(5, 0))						/* G4 NC */
-UNUSED(PIN(9, 6))						/* M12 TP998 */
 UNUSED(PIN(0, 7))						/* E8  TP991 */
 UNUSED(PIN(0, 6))						/* B10 TP992 */
 UNUSED(PIN(E, 4))						/* H8  TP993 */
