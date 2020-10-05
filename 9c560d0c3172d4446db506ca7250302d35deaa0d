@@ -16,6 +16,23 @@
       "revId": "9c560d0c3172d4446db506ca7250302d35deaa0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3db5c3e1_69172253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-05T09:34:07Z",
+      "side": 1,
+      "message": "Non-PD (aka \"analog\" Type-C) USB3 devices and hosts are also adversely affected.\n\nIn cleanup CL will also add bounds checking for presence of `PD_FLAGS_EXPLICIT_CONTRACT`.",
+      "revId": "9c560d0c3172d4446db506ca7250302d35deaa0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
