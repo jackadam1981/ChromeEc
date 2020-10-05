@@ -111,6 +111,9 @@ static enum ec_status hc_typec_control(struct host_cmd_handler_args *args)
 	case TYPEC_CONTROL_COMMAND_CLEAR_EVENTS:
 		pd_clear_events(p->port, p->clear_events_mask);
 		break;
+	case TYPEC_CONTROL_COMMAND_ENTER_MODE: {
+		return pd_request_enter_mode(p->port, p->mode_to_enter);
+		}
 	default:
 		return EC_RES_INVALID_PARAM;
 	}
@@ -129,26 +132,24 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 	if (p->port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
 
-	if (args->response_max < sizeof(*r))
-		return EC_RES_RESPONSE_TOO_BIG;
-
 	args->response_size = sizeof(*r);
 
 	r->pd_enabled = pd_comm_is_enabled(p->port);
-	r->dev_connected = pd_is_connected(p->port);
-	r->sop_connected = pd_capable(p->port);
 
 	r->power_role = pd_get_power_role(p->port);
 	r->data_role = pd_get_data_role(p->port);
 	r->vconn_role = pd_get_vconn_state(p->port) ? PD_ROLE_VCONN_SRC :
 						      PD_ROLE_VCONN_OFF;
 	r->polarity = pd_get_polarity(p->port);
-	r->cc_state = pd_get_task_cc_state(p->port);
+	r->cc_state =  pd_get_task_cc_state(p->port);
 	r->dp_pin = get_dp_pin_mode(p->port);
 	r->mux_state = usb_mux_get(p->port);
 
 	tc_state_name = pd_get_task_state_name(p->port);
-	strzcpy(r->tc_state, tc_state_name, sizeof(r->tc_state));
+	if (tc_state_name)
+		strzcpy(r->tc_state, tc_state_name, sizeof(r->tc_state));
+	else
+		r->tc_state[0] = '\0';
 
 	r->events = pd_get_events(p->port);
 

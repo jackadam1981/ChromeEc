@@ -6374,6 +6374,15 @@ struct ec_response_typec_discovery {
 enum typec_control_command {
 	TYPEC_CONTROL_COMMAND_EXIT_MODES,
 	TYPEC_CONTROL_COMMAND_CLEAR_EVENTS,
+	TYPEC_CONTROL_COMMAND_ENTER_MODE,
+};
+
+/* Modes (USB or alternate) that a type-C port may enter. */
+enum typec_mode {
+	TYPEC_MODE_NONE,
+	TYPEC_MODE_DP,
+	TYPEC_MODE_TBT,
+	TYPEC_MODE_USB4,
 };
 
 struct ec_params_typec_control {
@@ -6388,6 +6397,7 @@ struct ec_params_typec_control {
 	 */
 	union {
 		uint32_t clear_events_mask;
+		uint8_t mode_to_enter;      /* enum typec_mode */
 		uint8_t placeholder[128];
 	};
 } __ec_align1;

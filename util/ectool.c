@@ -9477,9 +9477,13 @@ int cmd_typec_control(int argc, char *argv[])
 		fprintf(stderr,
 			"Usage: %s <port> <command> [args]\n"
 			"  <port> is the type-c port to query\n"
-			"  <type> is one of:\n"
+			"  <command> is one of:\n"
 			"    0: Exit modes\n"
-			"    1: Clear events\n", argv[0]);
+			"    1: Clear events\n"
+			"        args: <event mask>\n"
+			"    2: Enter mode\n"
+			"        args: <1: DP, 2:TBT, 3:USB4>",
+			argv[0]);
 		return -1;
 	}
 
@@ -9495,7 +9499,8 @@ int cmd_typec_control(int argc, char *argv[])
 		return -1;
 	}
 
-	if (p.command == TYPEC_CONTROL_COMMAND_CLEAR_EVENTS) {
+	switch (p.command) {
+	case TYPEC_CONTROL_COMMAND_CLEAR_EVENTS:
 		if (argc < 4) {
 			fprintf(stderr, "Missing event mask\n");
 			return -1;
@@ -9504,6 +9509,19 @@ int cmd_typec_control(int argc, char *argv[])
 		p.clear_events_mask = strtol(argv[3], &endptr, 0);
 		if (endptr && *endptr) {
 			fprintf(stderr, "Bad event mask\n");
+			return -1;
+		}
+		break;
+	case TYPEC_CONTROL_COMMAND_ENTER_MODE:
+		if (argc < 4) {
+			fprintf(stderr, "Missing mode\n");
+			return -1;
+		}
+
+		/* TODO: This conversion can truncate. Do we care? */
+		p.mode_to_enter = strtol(argv[3], &endptr, 0);
+		if (endptr && *endptr) {
+			fprintf(stderr, "Bad mode\n");
 			return -1;
 		}
 	}

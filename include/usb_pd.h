@@ -2603,6 +2603,8 @@ uint32_t pd_get_events(int port);
  */
 void pd_clear_events(int port, uint32_t clear_mask);
 
+enum ec_status pd_request_enter_mode(int port, enum typec_mode mode);
+
 /**
  * Get port partner data swap capable status
  *
