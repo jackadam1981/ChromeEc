@@ -70,6 +70,24 @@
       "revId": "2b5a8635e78a2200edd3f8e891e9f362be135a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e3fd315_d3bb3760",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-10-05T03:38:43Z",
+      "side": 1,
+      "message": "@Diana, because we didn\u0027t change the logic of keyboard scan. So we just need to ensure H1 is able to detect EC\u0027s KSO2 signal and inverting it and output to keyboard:\nTo measure H1\u0027s DIOR3 (EC output to H1) and DIOR9 (H1 output to keyboard) at the same time with oscilloscope. When EC drives DIOR3 to low, H1 should drive DIOR9 to high. And when EC drives DIOR3 to high (with this change, we will get 3.3V on it instead of 2.xV), H1 should drive DIOR9 to low.\n\nThe keys on KSO2 won\u0027t work if we hit this issue.",
+      "parentUuid": "e7858ccb_c8c1fa1b",
+      "revId": "2b5a8635e78a2200edd3f8e891e9f362be135a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
