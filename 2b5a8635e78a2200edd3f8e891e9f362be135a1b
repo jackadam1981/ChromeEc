@@ -52,6 +52,24 @@
       "revId": "2b5a8635e78a2200edd3f8e891e9f362be135a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7858ccb_c8c1fa1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2020-10-05T01:33:57Z",
+      "side": 1,
+      "message": "Other devices setting also push pull in KSO2, so we modify our code in KSO2",
+      "parentUuid": "e6860a18_56b5b7d8",
+      "revId": "2b5a8635e78a2200edd3f8e891e9f362be135a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
