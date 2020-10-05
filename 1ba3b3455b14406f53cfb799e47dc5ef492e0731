@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "b8461a1a_f80e0335",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-10-05T03:23:21Z",
+      "side": 1,
+      "message": "yes, I think it don\u0027t be define large scope, it seems unit8_t",
+      "parentUuid": "9029941a_d7c245ee",
+      "revId": "1ba3b3455b14406f53cfb799e47dc5ef492e0731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05c480de_92b49237",
         "filename": "board/magolor/board.c",
         "patchSetId": 2
@@ -82,6 +100,24 @@
       "writtenOn": "2020-10-02T15:12:17Z",
       "side": 1,
       "message": "nit: unnecessary, since it should already be 0 in this clause",
+      "revId": "1ba3b3455b14406f53cfb799e47dc5ef492e0731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8188846a_57aafc01",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-10-05T03:23:21Z",
+      "side": 1,
+      "message": "I think it is the initial condition , to init state variable\nIt is ok to remove the scope",
+      "parentUuid": "05c480de_92b49237",
       "revId": "1ba3b3455b14406f53cfb799e47dc5ef492e0731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
