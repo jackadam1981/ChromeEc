@@ -108,6 +108,30 @@
       "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29b0b7c4_46ca4720",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-05T21:53:45Z",
+      "side": 1,
+      "message": "Can this be, EC code is trying to move away from #if\n\n        if (IS_ENABLED(CONFIG_DEVICE_EVENT) \u0026\u0026\n            chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {\n                device_set_single_event(EC_DEVICE_EVENT_TRACKPAD);\n                return;\n        }",
+      "parentUuid": "684121e5_fee6701c",
+      "range": {
+        "startLine": 961,
+        "startChar": 0,
+        "endLine": 961,
+        "endChar": 1
+      },
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
