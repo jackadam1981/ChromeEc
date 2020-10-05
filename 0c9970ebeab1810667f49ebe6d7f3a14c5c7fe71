@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "855d603f_39a37251",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-05T10:51:36Z",
+      "side": 1,
+      "message": "Flagging this \"DFP when N/C\" setting is causing issues for \"UFP capable\" devices using TCPMv1, such as ServoV4p1.\n\nServoV4p1 is a FOSS debug tool that acts as a \"DRD\u003d1 DTP\u003d1 CommCap\u003d1\" device in both directions. USB3 as UFP, USB2 as DFP. If forcefully configured into \"DFP\" role on disconnect, rather than proper \"Disconnected\" , it enters a \"FastBoot\" path that incorrectly routes USB lanes to a nonexistent DUT (much in the same way as an A-to-C cable would.) As an aside, it implicitly breaks uServo Type-A port functionality when Servo is \"unplugged from DUT\".\n\nWill submit a cleanup CL to try to address underlying concerns.\n\nWe may have to ensure all usb_mux drivers properly handle \"Disconnected\" state. This is actually /required/ per USB-IF compliance requirements: \"Type-C Functional MOI\" TD.4.1.1 and TD.4.11.1 which govern D+/D- isolation behavior.",
+      "revId": "0c9970ebeab1810667f49ebe6d7f3a14c5c7fe71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
