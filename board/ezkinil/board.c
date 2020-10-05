@@ -436,6 +436,31 @@ static int check_hdmi_hpd_status(void)
 	return hpd;
 }
 
+static void board_hdmi_power_enable(int enable)
+{
+	int data_en;
+
+	if (enable) {
+		ioex_set_level(IOEX_HDMI_DATA_EN_DB, 1);
+		if (ec_config_has_hdmi_retimer_pi3hdx1204()) {
+			ioex_set_level(IOEX_HDMI_POWER_EN_DB, 1);
+			msleep(PI3HDX1204_POWER_ON_DELAY_MS);
+		}
+	}
+
+	ioex_get_level(IOEX_HDMI_DATA_EN_DB, &data_en);
+	if (ec_config_has_hdmi_retimer_pi3hdx1204() && data_en)
+		pi3hdx1204_enable(I2C_PORT_TCPC1,
+				  PI3HDX1204_I2C_ADDR_FLAGS,
+				  enable);
+
+	if (!enable) {
+		if (ec_config_has_hdmi_retimer_pi3hdx1204())
+			ioex_set_level(IOEX_HDMI_POWER_EN_DB, 0);
+		ioex_set_level(IOEX_HDMI_DATA_EN_DB, 0);
+	}
+}
+
 static void hdmi_hpd_handler(void)
 {
 	/* Pass HPD through from DB OPT1 HDMI connector to AP's DP1. */
@@ -443,10 +468,9 @@ static void hdmi_hpd_handler(void)
 
 	gpio_set_level(GPIO_DP1_HPD, hpd);
 	ccprints("HDMI HPD %d", hpd);
-	pi3hdx1204_enable(I2C_PORT_TCPC1,
-			  PI3HDX1204_I2C_ADDR_FLAGS,
-			  chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON)
-			  && hpd);
+
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON))
+		board_hdmi_power_enable(hpd);
 }
 DECLARE_DEFERRED(hdmi_hpd_handler);
 
@@ -469,15 +493,8 @@ void hdmi_hpd_interrupt_v2(enum ioex_signal signal)
 static void board_chipset_resume(void)
 {
 	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 1);
-	ioex_set_level(IOEX_HDMI_DATA_EN_DB, 1);
 
-	if (ec_config_has_hdmi_retimer_pi3hdx1204()) {
-		ioex_set_level(IOEX_HDMI_POWER_EN_DB, 1);
-		msleep(PI3HDX1204_POWER_ON_DELAY_MS);
-		pi3hdx1204_enable(I2C_PORT_TCPC1,
-				  PI3HDX1204_I2C_ADDR_FLAGS,
-				  check_hdmi_hpd_status());
-	}
+	board_hdmi_power_enable(check_hdmi_hpd_status());
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -485,14 +502,7 @@ static void board_chipset_suspend(void)
 {
 	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
 
-	if (ec_config_has_hdmi_retimer_pi3hdx1204()) {
-		pi3hdx1204_enable(I2C_PORT_TCPC1,
-				  PI3HDX1204_I2C_ADDR_FLAGS,
-				  0);
-		ioex_set_level(IOEX_HDMI_POWER_EN_DB, 0);
-	}
-
-	ioex_set_level(IOEX_HDMI_DATA_EN_DB, 0);
+	board_hdmi_power_enable(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
