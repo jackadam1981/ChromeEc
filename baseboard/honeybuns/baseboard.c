@@ -96,6 +96,7 @@ void board_reset_pd_mcu(void)
 void baseboard_trigger_hpd_irq(void)
 {
 	pd_send_hpd(0, hpd_irq);
+	CPRINTS("hpd: irq detected");
 }
 DECLARE_DEFERRED(baseboard_trigger_hpd_irq);
 
@@ -109,6 +110,8 @@ void baseboard_trigger_hpd_chg(void)
 
 	if (!hpd_override)
 		pd_send_hpd(0, (level) ? hpd_high : hpd_low);
+
+	CPRINTS("hpd: new level = %d", level);
 }
 DECLARE_DEFERRED(baseboard_trigger_hpd_chg);
 
