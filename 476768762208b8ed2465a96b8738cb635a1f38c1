@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2929d8a_4675aa4c",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-05T18:14:44Z",
+      "side": 1,
+      "message": "Maybe also flush earlier just in case we do brown out?",
+      "revId": "476768762208b8ed2465a96b8738cb635a1f38c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
