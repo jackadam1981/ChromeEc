@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "b55b6bb8_169a4c44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-05T15:04:16Z",
+      "side": 1,
+      "message": "As discussed in bug, my preference is to fix the test (and servo_v4) to not set \"unconstrained power\", rather than adding this new PD command to TCPMv2.",
+      "revId": "2754c33076a01c5627a54cbc2d86d500f0d60c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffaafebf_4f9c26f5",
         "filename": "common/usbc/usb_pd_console.c",
         "patchSetId": 1
