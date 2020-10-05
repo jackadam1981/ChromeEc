@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4152aac7_6de91841",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-05T21:35:44Z",
+      "side": 1,
+      "message": "This is actually PS2 trackpoint",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00189922_adbfea0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-05T21:35:44Z",
+      "side": 1,
+      "message": "Can you please capture some more details in the commit message:\n1. Device Event is used to trigger wake. \n - So, the AP is expected to enable the wake mask for it.\n - Any board that is using this is expected to define CONFIG_DEVICE_EVENT in EC.\n\n2. This device event is triggered only when the chipset is suspended to avoid SCIs from being triggered in S0.",
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c81e1df6_68fb8518",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-05T21:35:44Z",
+      "side": 1,
+      "message": "zork",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe46523_de0b3f01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-05T21:35:44Z",
+      "side": 1,
+      "message": "It would be good to capture what was tested.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684121e5_fee6701c",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-05T21:35:44Z",
+      "side": 1,
+      "message": "#ifdef and #endif are not indented. So, this tab will have to be removed here and on line 964 below.",
+      "range": {
+        "startLine": 961,
+        "startChar": 0,
+        "endLine": 961,
+        "endChar": 1
+      },
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
