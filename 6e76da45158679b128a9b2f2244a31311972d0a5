@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c2ebff62_4664fb32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2020-10-05T03:24:07Z",
+      "side": 1,
+      "message": "On my sku 1 proto board, git pull to the newest (10/05), and then cherry pick this CL. The DUT can enter G3 after shutting down.",
+      "parentUuid": "fbe42e61_13f15d88",
+      "revId": "6e76da45158679b128a9b2f2244a31311972d0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab96263c_28ececb3",
         "filename": "board/madoo/board.c",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "6e76da45158679b128a9b2f2244a31311972d0a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b18f6cfc_5f44236a",
+        "filename": "board/madoo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2020-10-05T03:24:07Z",
+      "side": 1,
+      "message": "typo, fixed.",
+      "parentUuid": "ab96263c_28ececb3",
+      "range": {
+        "startLine": 403,
+        "startChar": 29,
+        "endLine": 403,
+        "endChar": 36
+      },
+      "revId": "6e76da45158679b128a9b2f2244a31311972d0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
