@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c664937d_9d151805",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-10-05T09:38:50Z",
+      "side": 1,
+      "message": "This one replaces atomic_* functions with the new ones. You have just check if basic functionalities of EC work, just booting DUT should be fine.",
+      "revId": "773fa280ad4fe5a03220ebd065918d29372c2e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
