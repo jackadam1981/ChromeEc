@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "4565391c_ad066d55",
+        "filename": "board/npcx9_evb/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-10-05T11:03:47Z",
+      "side": 1,
+      "message": "Done by removing it.",
+      "parentUuid": "a08ccceb_f31c9bf1",
+      "revId": "d4519c8562e9ba51beb857dd1094da06f036f029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcf3b96b_bcfe324a",
         "filename": "board/npcx9_evb/board.h",
         "patchSetId": 2
@@ -56,6 +74,30 @@
       "revId": "d4519c8562e9ba51beb857dd1094da06f036f029",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dffc0bf2_ff29946c",
+        "filename": "board/npcx9_evb/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-10-05T11:03:47Z",
+      "side": 1,
+      "message": "Done by removing it.",
+      "parentUuid": "dcf3b96b_bcfe324a",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "d4519c8562e9ba51beb857dd1094da06f036f029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
