@@ -724,6 +724,9 @@ static void sm5803_disable_runtime_low_power_mode(void)
 	reg &= ~SM5803_CLOCK_SEL_LOW;
 	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
 
+	/* Turn on GPADCs to default */
+	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1, 0xF3);
+
 	/* Enable ADC sigma delta */
 	rv |= chg_read8(chgnum, SM5803_REG_CC_CONFIG1, &reg);
 	reg |= SM5803_CC_CONFIG1_SD_PWRUP;
@@ -750,10 +753,9 @@ static void sm5803_enable_runtime_low_power_mode(void)
 			chgnum);
 		return;
 	}
-	/* Slow the clock speed */
-	rv |= main_read8(chgnum, SM5803_REG_CLOCK_SEL, &reg);
-	reg |= SM5803_CLOCK_SEL_LOW;
-	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
+	/* Turn off GPADCs */
+	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1, 0);
+	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG2, 0);
 
 	/* Disable ADC sigma delta */
 	rv |= chg_read8(chgnum, SM5803_REG_CC_CONFIG1, &reg);
@@ -767,6 +769,11 @@ static void sm5803_enable_runtime_low_power_mode(void)
 		reg &= ~SM5803_PHOT1_COMPARATOR_EN;
 		rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
 	}
+
+	/* Slow the clock speed */
+	rv |= main_read8(chgnum, SM5803_REG_CLOCK_SEL, &reg);
+	reg |= SM5803_CLOCK_SEL_LOW;
+	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
 
 	if (rv)
 		CPRINTS("%s %d: Failed to set in enable runtime LPM",
