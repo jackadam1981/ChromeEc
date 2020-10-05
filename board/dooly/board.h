@@ -20,6 +20,32 @@
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
 
+/* Sensor */
+#define CONFIG_ACCEL_INTERRUPTS
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
+/* FIFO size is in power of 2. */
+#define CONFIG_ACCEL_FIFO_SIZE 256
+/* Depends on how fast the AP boots and typical ODRs */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+
+/* BMA253 accelerometer */
+#define CONFIG_ACCEL_BMA255
+#define CONFIG_CMD_ACCELS
+
+/* TCS3400 ALS */
+#define CONFIG_ALS
+#define ALS_COUNT	1
+#define CONFIG_ALS_TCS3400
+#define CONFIG_ALS_TCS3400_INT_EVENT\
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
+
+/* Sensors without hardware FIFO are in forced mode */
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	(BIT(SCREEN_ACCEL) | BIT(CLEAR_ALS))
+
+#define CONFIG_LID_ANGLE_SENSOR_LID		SCREEN_ACCEL
+
 /* EC Defines */
 #define CONFIG_ADC
 #define CONFIG_BOARD_HAS_RTC_RESET
@@ -181,6 +207,7 @@
 #define I2C_PORT_EEPROM		NPCX_I2C_PORT7_0
 #define I2C_ADDR_EEPROM_FLAGS	0x50
 #define I2C_PORT_BACKLIGHT	NPCX_I2C_PORT7_0
+#define I2C_PORT_SENSORS	NPCX_I2C_PORT0_0
 
 /*
  * LED backlight controller
@@ -234,6 +261,13 @@ enum temp_sensor_id {
 	TEMP_SENSOR_1,
 	TEMP_SENSOR_2,
 	TEMP_SENSOR_COUNT
+};
+
+enum sensor_id {
+	SCREEN_ACCEL = 0,
+	CLEAR_ALS,
+	RGB_ALS,
+	SENSOR_COUNT,
 };
 
 
