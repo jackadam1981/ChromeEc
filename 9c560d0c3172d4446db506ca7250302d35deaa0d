@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c3d713b_acc1fe86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-05T09:27:12Z",
+      "side": 1,
+      "message": "Flagging this caused a regression with certain adapters. Many USB-PD sink devices in the ecosystem improperly diverge USB-PD responses. They set \"USB Comm Cap\" as \"0\" in SRC_CAP, but \"1\" in REQUEST.\n\nThis \"Jekyll/Hyde\"behavior causes some devices, like iPad Pro 2018, to \"not work\" with DUT depending on which orientation (SRC or SNK) they latch as out of DRP.\n\nThis also causes some issues with \"UFP\" devices using TCPMv1 stack, such as ServoV4p1 -- a debug tool which acts as a \"DRD\u003d1 DRP\u003d1 CommCap\u003d1\" in both directions. (USB3 as UFP, USB2 as DFP.)\n\nPursuing a cleanup CL shortly.",
+      "revId": "9c560d0c3172d4446db506ca7250302d35deaa0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
