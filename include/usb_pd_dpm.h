@@ -11,6 +11,9 @@
 #ifndef __CROS_EC_USB_DPM_H
 #define __CROS_EC_USB_DPM_H
 
+#include "ec_commands.h"
+#include "usb_pd_tcpm.h"
+
 /*
  * Initializes DPM state for a port.
  *
@@ -25,6 +28,8 @@ void dpm_init(int port);
  * @param port USB-C port number
  */
 void dpm_set_mode_entry_done(int port);
+
+void dpm_set_mode_enter_request(int port, enum typec_mode mode);
 
 /*
  * Informs the DPM that Exit Mode request is received
