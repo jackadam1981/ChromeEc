@@ -16,6 +16,24 @@
       "revId": "188934ab09deec0ae1939536a165fd1a88483d8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd175904_1b9ffa9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-06T15:02:49Z",
+      "side": 1,
+      "message": "I\u0027m surprised BIT(x) isn\u0027t supported.  I\u0027d thought we added it to octopus here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1631301",
+      "parentUuid": "ec82d889_5c168005",
+      "revId": "188934ab09deec0ae1939536a165fd1a88483d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
