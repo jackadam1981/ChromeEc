@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "678bb903_1bd00ae6",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-06T09:33:14Z",
+      "side": 1,
+      "message": "Printing something out on boot time is marginally useful.\nThis could be figured out by looking at the GPIO signals using the gpioget command, but I take your point.",
+      "parentUuid": "4cb771c4_af8e3145",
+      "range": {
+        "startLine": 958,
+        "startChar": 11,
+        "endLine": 958,
+        "endChar": 26
+      },
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad28dce5_68cf3cb3",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "ad28dce5_68cf3cb3",
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4391b7dc_9c47e4b9",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-06T09:33:14Z",
+      "side": 1,
+      "message": "I can\u0027t see the change to driver/led/oz554.c",
+      "parentUuid": "f216a53d_2013e3dc",
       "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -167,6 +209,30 @@
       "side": 1,
       "message": "This also for debug purpose.",
       "parentUuid": "5d47e7dd_7d768471",
+      "range": {
+        "startLine": 977,
+        "startChar": 11,
+        "endLine": 977,
+        "endChar": 24
+      },
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6a0ce0_6cdd8ca7",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-06T09:33:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1591d445_8e811add",
       "range": {
         "startLine": 977,
         "startChar": 11,
