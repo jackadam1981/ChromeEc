@@ -22,6 +22,30 @@
       "revId": "2e352e5e83621d986ee3c3d7e93bb431b5b16cf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf23dbb9_2618300f",
+        "filename": "common/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-06T01:00:29Z",
+      "side": 1,
+      "message": "If the host executes EC_CMD_REBOOT_EC with EC_REBOOT_JUMP_RO and the system shuts down, the PB press in S5 would not trigger a hard reset. I don\u0027t think this is unexpected. The same is the case for EC_REBOOT_FLAG_ON_AP_SHUTDOWN.\n\nWhen the host executes EC_CMD_REBOOT_EC with EC_REBOOT_JUMP_RO, EC jumps to RO and EC_RESET_FLAG_STAY_IN_RO is set.",
+      "parentUuid": "902c6b37_1fc6a66e",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 164,
+        "endChar": 35
+      },
+      "revId": "2e352e5e83621d986ee3c3d7e93bb431b5b16cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
