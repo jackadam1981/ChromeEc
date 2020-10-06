@@ -22,6 +22,30 @@
       },
       "revId": "393f6c50af639c67dea6c595c71664b8b701b8e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ba93fc_fbb64819",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-10-06T20:35:12Z",
+      "side": 1,
+      "message": "servo_v2, servo_micro (standalone w/o servo_v4), and c2d2 (standalone w/o servo_v4) should all follow this branch.\n\nThis branch is a no-op in this CL, since ACTIVE_DEVICE is only used when line 408 matches.  I haven\u0027t tested with servo_v2, but I don\u0027t see how this CL could break it.  I\u0027ll gladly accept the rollback if I\u0027m wrong about that!\n\nAFAICT, the only setup this CL might break is one that matches line 408, which seems to be a 3 servo setup that I\u0027m totally unfamiliar with.  I\u0027m pretty confident this won\u0027t break it though, as active_v4_device should always work when line 402 matches.",
+      "parentUuid": "ac8210b7_ff054437",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 30
+      },
+      "revId": "393f6c50af639c67dea6c595c71664b8b701b8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
