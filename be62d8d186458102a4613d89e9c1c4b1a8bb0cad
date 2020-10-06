@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "c73d2f17_6949939c",
         "filename": "board/dooly/board.c",
@@ -20,10 +21,34 @@
         "endChar": 26
       },
       "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb771c4_af8e3145",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-10-06T09:14:13Z",
+      "side": 1,
+      "message": "I think we\u0027ll need to know which panel attached on the DUT for debug purpose.",
+      "parentUuid": "c73d2f17_6949939c",
+      "range": {
+        "startLine": 958,
+        "startChar": 11,
+        "endLine": 958,
+        "endChar": 26
+      },
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "ad28dce5_68cf3cb3",
         "filename": "board/dooly/board.c",
@@ -37,10 +62,28 @@
       "side": 1,
       "message": "So the error checking on the calls to oz554_set_config are not much use, since nothing is being done and the following calls are still run.\nMy suggestion is to skip the error checks and instead put a clearer error message\ndirectly in oz554_set_config e.g in driver/led/oz554.c line 127:\n\n   if (i \u003e\u003d oz554_conf_size) {\n                /* Matching offset not found */\n                CPRINTS(\"oz554: offset %d not found\", i);   \n                return EC_ERROR_INVAL;\n    }",
       "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f216a53d_2013e3dc",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-10-06T09:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad28dce5_68cf3cb3",
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "c5820a24_488b059f",
         "filename": "board/dooly/board.c",
@@ -60,10 +103,34 @@
         "endChar": 7
       },
       "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42e8e113_f8ea3e9c",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-10-06T09:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5820a24_488b059f",
+      "range": {
+        "startLine": 965,
+        "startChar": 2,
+        "endLine": 965,
+        "endChar": 7
+      },
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "5d47e7dd_7d768471",
         "filename": "board/dooly/board.c",
@@ -83,10 +150,34 @@
         "endChar": 24
       },
       "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1591d445_8e811add",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-10-06T09:14:13Z",
+      "side": 1,
+      "message": "This also for debug purpose.",
+      "parentUuid": "5d47e7dd_7d768471",
+      "range": {
+        "startLine": 977,
+        "startChar": 11,
+        "endLine": 977,
+        "endChar": 24
+      },
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "01e7bd22_0217c1c7",
         "filename": "board/dooly/gpio.inc",
@@ -100,8 +191,25 @@
       "side": 1,
       "message": "Blank line added.",
       "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e903b10_cda4aa67",
+        "filename": "board/dooly/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-10-06T09:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01e7bd22_0217c1c7",
+      "revId": "be62d8d186458102a4613d89e9c1c4b1a8bb0cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
