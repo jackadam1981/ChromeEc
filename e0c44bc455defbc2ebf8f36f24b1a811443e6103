@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "298878b7_ff2f735d",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "During honeybuns platform bringup, I wanted to build with type-c only support and I did not have try.src enabled either (host port wants to be sink-ufp). I found some issues. This CL has the fixes I made so that I can build with type-c only support.",
       "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "24f63fad_9fe79b3e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "It seems like the intent was to be able to compile without this config, based on the \"IS_ENABLED\" usage below.  What kind of build errors do you see without Try.SRC enabled?\n\nAlso, if we go the route of making Try.SRC optional and adding ifdefs, that would potentially free up devices from needing a couple of states (Try.SRC and TryWait.SNK).  Not a big flash win, but something.",
       "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b948e884_8ea66a7f",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
@@ -49,10 +50,10 @@
       "message": "Yes, the IS_ENABLED is used in various places, but there are still issues.\n\n/* Generate a compiler error if invalid states are referenced */\n#ifndef CONFIG_USB_PD_TRY_SRC\n#define TC_TRY_SRC\tTC_TRY_SRC_UNDEFINED\n#define TC_TRY_WAIT_SNK\tTC_TRY_WAIT_SNK_UNDEFINED\n#endif\n\nBecause the try.src states only exist if the config option is defined, then these statements cause issues.\n\nset_state_tc(port, tryWait ? TC_TRY_WAIT_SNK : TC_UNATTACHED_SNK);\n\nTC_TRY_WAIT_SNK is defined as TC_TRY_WAIT_SNK_UNDEFINED\n\nIn this particular function, I believe the issues that variables like pd_try_src_override don\u0027t exist so you get compiler errors.",
       "parentUuid": "24f63fad_9fe79b3e",
       "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "62679a61_35b18ea0",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
@@ -67,10 +68,10 @@
       "message": "Ah, I\u0027d missed that the file is already half-designed to remove the Try.SRC states. \n\nI\u0027m hoping we can keep the number of ifdef\u0027s in the file to a minimum.  The state transitions to undefined states definitely need ifdef\u0027d out, but I\u0027m not as certain about some of these supporting functions and their related variables (ex. pd_try_src).\n\nAnyone else have opinions here?",
       "parentUuid": "b948e884_8ea66a7f",
       "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "6a93dbc7_0d655f5b",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
@@ -85,10 +86,28 @@
       "message": "I think if the states themselves are being compiled out, it makes sense to remove the supporting functions and variables. Otherwise, we\u0027re just wasting space for no reason.",
       "parentUuid": "62679a61_35b18ea0",
       "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2624ae5_ca8e7359",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-10-06T17:55:05Z",
+      "side": 1,
+      "message": "I can\u0027t think of a cleaner way to fix this without putting the states/variables/functions in both cases.",
+      "parentUuid": "6a93dbc7_0d655f5b",
+      "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "eaef0fba_49ae761b",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
@@ -102,10 +121,10 @@
       "side": 1,
       "message": "Should this just be overridable?",
       "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "570ed662_e3dc2766",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
@@ -120,10 +139,28 @@
       "message": "Yes, I do think that would work for this issue.",
       "parentUuid": "eaef0fba_49ae761b",
       "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c629749a_05a2d0bb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-10-06T17:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "570ed662_e3dc2766",
+      "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3741dd4f_67800aad",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
@@ -137,8 +174,25 @@
       "side": 1,
       "message": "I\u0027m assuming IS_ENABLED() wouldn\u0027t work because it wouldn\u0027t link?\n\nAlternatively, this could be pulled into the PE\u0027s HOOK_USB_PD_DISCONNECT code instead so the TC doesn\u0027t need to directly interact with the PE as much",
       "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051185d1_c1fdd860",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 2478,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-10-06T17:55:05Z",
+      "side": 1,
+      "message": "I moved these 2 functions into the HOOK_USB_PD_DISCONNECT as suggested.",
+      "parentUuid": "3741dd4f_67800aad",
+      "revId": "e0c44bc455defbc2ebf8f36f24b1a811443e6103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
