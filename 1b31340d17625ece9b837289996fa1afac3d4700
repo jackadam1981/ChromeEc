@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "087e5dad_f36b9fcd",
         "filename": "driver/charger/sm5803.c",
@@ -20,10 +21,10 @@
         "endChar": 1
       },
       "revId": "1b31340d17625ece9b837289996fa1afac3d4700",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a23d54e4_847479b3",
         "filename": "driver/charger/sm5803.c",
@@ -44,8 +45,31 @@
         "endChar": 1
       },
       "revId": "1b31340d17625ece9b837289996fa1afac3d4700",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "157c11a7_566ea4d5",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-06T19:22:48Z",
+      "side": 1,
+      "message": "Maybe for the over temp, 30s? 1s for everything else?",
+      "parentUuid": "a23d54e4_847479b3",
+      "range": {
+        "startLine": 949,
+        "startChar": 0,
+        "endLine": 960,
+        "endChar": 1
+      },
+      "revId": "1b31340d17625ece9b837289996fa1afac3d4700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
