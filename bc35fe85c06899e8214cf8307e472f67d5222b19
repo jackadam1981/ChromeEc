@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "4152aac7_6de91841",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,34 @@
         "endChar": 35
       },
       "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fce9f212_4e679e10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-10-06T18:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4152aac7_6de91841",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "00189922_adbfea0c",
         "filename": "/COMMIT_MSG",
@@ -37,10 +62,28 @@
       "side": 1,
       "message": "Can you please capture some more details in the commit message:\n1. Device Event is used to trigger wake. \n - So, the AP is expected to enable the wake mask for it.\n - Any board that is using this is expected to define CONFIG_DEVICE_EVENT in EC.\n\n2. This device event is triggered only when the chipset is suspended to avoid SCIs from being triggered in S0.",
       "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0380362a_56b83649",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-10-06T18:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00189922_adbfea0c",
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "c81e1df6_68fb8518",
         "filename": "/COMMIT_MSG",
@@ -60,10 +103,34 @@
         "endChar": 11
       },
       "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1426acb9_7ab7a0ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-10-06T18:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c81e1df6_68fb8518",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "ffe46523_de0b3f01",
         "filename": "/COMMIT_MSG",
@@ -83,10 +150,34 @@
         "endChar": 9
       },
       "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce754a01_1b0df4bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-10-06T18:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffe46523_de0b3f01",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "684121e5_fee6701c",
         "filename": "common/keyboard_8042.c",
@@ -106,10 +197,10 @@
         "endChar": 1
       },
       "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "29b0b7c4_46ca4720",
         "filename": "common/keyboard_8042.c",
@@ -130,8 +221,31 @@
         "endChar": 1
       },
       "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24273cf2_5eb1eaaa",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-10-06T18:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29b0b7c4_46ca4720",
+      "range": {
+        "startLine": 961,
+        "startChar": 0,
+        "endLine": 961,
+        "endChar": 1
+      },
+      "revId": "bc35fe85c06899e8214cf8307e472f67d5222b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
