@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "686bfe29_3465b95a",
         "filename": "/COMMIT_MSG",
@@ -14,10 +15,28 @@
       "side": 1,
       "message": "Can you please add the reason for the change i.e. this is required to trigger wake from trackpoint which is indicated using a device event to host.",
       "revId": "ebe3a001243c38b2364283808ff2b942ebefde0c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0363d778_b894d586",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-10-06T18:11:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "686bfe29_3465b95a",
+      "revId": "ebe3a001243c38b2364283808ff2b942ebefde0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "9e965e92_a4e7e785",
         "filename": "/COMMIT_MSG",
@@ -37,10 +56,10 @@
         "endChar": 11
       },
       "revId": "ebe3a001243c38b2364283808ff2b942ebefde0c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0f4d00a5_a58abc80",
         "filename": "/COMMIT_MSG",
@@ -61,10 +80,34 @@
         "endChar": 11
       },
       "revId": "ebe3a001243c38b2364283808ff2b942ebefde0c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "567392dc_d33eb54a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-10-06T18:11:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f4d00a5_a58abc80",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "ebe3a001243c38b2364283808ff2b942ebefde0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "2ac2a772_4ab796fa",
         "filename": "/PATCHSET_LEVEL",
@@ -78,8 +121,7 @@
       "side": 1,
       "message": "Ideally this CL should be placed after the common code support for wake from trackpoint.",
       "revId": "ebe3a001243c38b2364283808ff2b942ebefde0c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
