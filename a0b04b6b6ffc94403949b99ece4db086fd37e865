@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcd79f33_344767b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-06T00:17:54Z",
+      "side": 1,
+      "message": "If you resolve the comment, this looks fine.",
+      "revId": "a0b04b6b6ffc94403949b99ece4db086fd37e865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f60e28_c68feae0",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-06T00:17:54Z",
+      "side": 1,
+      "message": "Can we keep this where it was before the \"exit 1\" above? I\u0027m worried that in the failure SPI case we won\u0027t try to restore the state completely. You can keep the \"ectool --name\u003dcros_fp version\" here though.",
+      "range": {
+        "startLine": 293,
+        "startChar": 4,
+        "endLine": 298,
+        "endChar": 6
+      },
+      "revId": "a0b04b6b6ffc94403949b99ece4db086fd37e865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
