@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ec7af8e_0b93a2a4",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-10-06T09:39:45Z",
+      "side": 1,
+      "message": "I am sorry that I don\u0027t reply earlier because I were in vacation last Thur. and Fri.\nIn npcx9, the PSL hibernation can wake up from timeout via LCT module.\nThis function is already implemented in the CL:2435164.\nAdd the guard \"#ifndef NPCX_LCT_SUPPORT\" here so we can use the LCT timeout to wake up from PSL hibernation in npcx9.",
+      "range": {
+        "startLine": 1074,
+        "startChar": 2,
+        "endLine": 1078,
+        "endChar": 3
+      },
+      "revId": "54a10bd3295c065c146931a51284252da606f945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
