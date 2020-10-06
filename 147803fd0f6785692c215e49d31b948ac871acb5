@@ -22,6 +22,30 @@
       "revId": "147803fd0f6785692c215e49d31b948ac871acb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a1c83e1_0ec9041b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 6347,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-06T15:15:34Z",
+      "side": 1,
+      "message": "Nope, we weren\u0027t planning on storing and sending up the VDM header.  Would you need it?",
+      "parentUuid": "d0824969_24c8c355",
+      "range": {
+        "startLine": 6347,
+        "startChar": 9,
+        "endLine": 6347,
+        "endChar": 23
+      },
+      "revId": "147803fd0f6785692c215e49d31b948ac871acb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
