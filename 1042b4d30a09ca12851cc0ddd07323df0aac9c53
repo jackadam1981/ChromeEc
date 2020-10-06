@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "67ad52b1_4879d92b",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Tried this with [1] and it looks good. Before, if I started serovd on port 9997, then 9998, then tried to flash 9997, it would go to the wrong place. Now, it flashed the right thing.\n\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/third_party/hdctools/+/2439779",
       "revId": "1042b4d30a09ca12851cc0ddd07323df0aac9c53",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "c3c60c5d_9828e599",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,10 @@
       "message": "Thanks for testing!\n\n[Side note: Turns out presubmit here doesn\u0027t like Tested-by:, so I\u0027ll just leave it with your V+1.]",
       "parentUuid": "67ad52b1_4879d92b",
       "revId": "1042b4d30a09ca12851cc0ddd07323df0aac9c53",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "bf3bf043_f702bbf1",
         "filename": "/PATCHSET_LEVEL",
@@ -49,10 +50,10 @@
       "side": 1,
       "message": "I think you need a CR+2 from the owners (cros-ec-reviewers).",
       "revId": "1042b4d30a09ca12851cc0ddd07323df0aac9c53",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "146c6f08_00cbcca5",
         "filename": "/PATCHSET_LEVEL",
@@ -67,10 +68,10 @@
       "message": "Ah, you are one of ec owners. Sorry, Matthew. Then, I think Ruben can give CR+2.",
       "parentUuid": "bf3bf043_f702bbf1",
       "revId": "1042b4d30a09ca12851cc0ddd07323df0aac9c53",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "7c9dcc78_3953cf90",
         "filename": "/PATCHSET_LEVEL",
@@ -85,10 +86,10 @@
       "message": "FWIW, at this point you are probably more qualified to review flash_ec changes than anyone. 😊",
       "parentUuid": "146c6f08_00cbcca5",
       "revId": "1042b4d30a09ca12851cc0ddd07323df0aac9c53",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "675b9d46_6259532a",
         "filename": "util/flash_ec",
@@ -108,8 +109,31 @@
         "endChar": 26
       },
       "revId": "1042b4d30a09ca12851cc0ddd07323df0aac9c53",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e1654f_7d1da510",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-10-06T18:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "675b9d46_6259532a",
+      "range": {
+        "startLine": 1204,
+        "startChar": 0,
+        "endLine": 1208,
+        "endChar": 26
+      },
+      "revId": "1042b4d30a09ca12851cc0ddd07323df0aac9c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
