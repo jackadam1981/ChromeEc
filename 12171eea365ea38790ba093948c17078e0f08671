@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e0c2b7_7725df4d",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-06T20:14:35Z",
+      "side": 1,
+      "message": "Why are we returning early? I think we should retain the same behavior as before here i.e. empty the queue?",
+      "range": {
+        "startLine": 964,
+        "startChar": 2,
+        "endLine": 964,
+        "endChar": 8
+      },
+      "revId": "12171eea365ea38790ba093948c17078e0f08671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
