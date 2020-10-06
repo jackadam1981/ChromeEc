@@ -165,8 +165,8 @@ const static struct ec_thermal_config thermal_cpu = {
 	.temp_host_release = {
 		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
 	},
-	.temp_fan_off = C_TO_K(35),
-	.temp_fan_max = C_TO_K(50),
+	.temp_fan_off = C_TO_K(40),
+	.temp_fan_max = C_TO_K(55),
 };
 
 /*
