@@ -1,7 +1,6 @@
 {
   "comments": [
     {
-      "unresolved": true,
       "key": {
         "uuid": "d0824969_24c8c355",
         "filename": "include/ec_commands.h",
@@ -21,10 +20,10 @@
         "endChar": 23
       },
       "revId": "147803fd0f6785692c215e49d31b948ac871acb5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
       "key": {
         "uuid": "8a1c83e1_0ec9041b",
         "filename": "include/ec_commands.h",
@@ -45,10 +44,10 @@
         "endChar": 23
       },
       "revId": "147803fd0f6785692c215e49d31b948ac871acb5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
-      "unresolved": true,
       "key": {
         "uuid": "e96c2047_6e9cd7c7",
         "filename": "include/ec_commands.h",
@@ -69,7 +68,32 @@
         "endChar": 23
       },
       "revId": "147803fd0f6785692c215e49d31b948ac871acb5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b566fb_e89dd889",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 6347,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-06T17:04:48Z",
+      "side": 1,
+      "message": "No problem :)",
+      "parentUuid": "e96c2047_6e9cd7c7",
+      "range": {
+        "startLine": 6347,
+        "startChar": 9,
+        "endLine": 6347,
+        "endChar": 23
+      },
+      "revId": "147803fd0f6785692c215e49d31b948ac871acb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
