@@ -36,6 +36,41 @@
     },
     {
       "key": {
+        "uuid": "a31fe488_a59b0e82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-10-06T03:49:34Z",
+      "side": 1,
+      "message": "There was a GPIO direction change in middle of loop which is not needed as for duration of STM32mon, GPIO should be in out direction controlled by script. Later we release it anyways.",
+      "parentUuid": "6bf65b58_8bfe5041",
+      "revId": "a0b04b6b6ffc94403949b99ece4db086fd37e865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19ed994e_5a043cf5",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-10-06T03:49:34Z",
+      "side": 1,
+      "message": "Changing pin direction here is causing pin to loose control and based on SOC and pullup, STM32 can go into some weird state if this pin is floating. Removing this GPIO direction change so we can control voltage on that pin throughout STM32mon execution.",
+      "revId": "a0b04b6b6ffc94403949b99ece4db086fd37e865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99f60e28_c68feae0",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 5
@@ -56,6 +91,30 @@
       "revId": "a0b04b6b6ffc94403949b99ece4db086fd37e865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab568368_6b8de1c4",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-10-06T03:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f60e28_c68feae0",
+      "range": {
+        "startLine": 293,
+        "startChar": 4,
+        "endLine": 298,
+        "endChar": 6
+      },
+      "revId": "a0b04b6b6ffc94403949b99ece4db086fd37e865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
