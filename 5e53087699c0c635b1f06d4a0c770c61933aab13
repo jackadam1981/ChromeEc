@@ -39,6 +39,30 @@
       "revId": "5e53087699c0c635b1f06d4a0c770c61933aab13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4409f82_2ef3127d",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-10-06T01:55:22Z",
+      "side": 1,
+      "message": "Haven\u0027t seen that case, but there is no harm in doing that.",
+      "parentUuid": "a2ad8bea_54dc47b5",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 38
+      },
+      "revId": "5e53087699c0c635b1f06d4a0c770c61933aab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
