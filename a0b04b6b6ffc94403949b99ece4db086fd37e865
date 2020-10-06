@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "6bf65b58_8bfe5041",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-10-06T01:12:57Z",
+      "side": 1,
+      "message": "For record, I tried this script locally and I couldn\u0027t succeed in flashing unless I use these commands from Bhanu https://paste.googleplex.com/6604516301471744. I think Bhanu is going to add some fixes before landing this",
+      "revId": "a0b04b6b6ffc94403949b99ece4db086fd37e865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99f60e28_c68feae0",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 5
