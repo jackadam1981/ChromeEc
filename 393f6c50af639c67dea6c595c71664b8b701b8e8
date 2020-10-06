@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac8210b7_ff054437",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-10-06T19:25:34Z",
+      "side": 1,
+      "message": "What cases other than \u0027servo_micro\u0027 could be hitting here?\nHave you tested it with servo_v2? or servo_v2 doesn\u0027t support ITE flash?",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 30
+      },
+      "revId": "393f6c50af639c67dea6c595c71664b8b701b8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
