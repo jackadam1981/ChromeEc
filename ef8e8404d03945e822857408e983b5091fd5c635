@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "147b6fef_de44fa63",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "The code looks fine, but I have questions about where this is coming from.",
       "revId": "ef8e8404d03945e822857408e983b5091fd5c635",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fbe30478_4d8eadc3",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -31,8 +32,25 @@
       "side": 1,
       "message": "This same check seems to be described (somewhat ambiguously) in Type-C Rev 2.0, Figure F-1.\n\nIs this a separate document? If so, how does one obtain it? Does this document override the description of TBT3 alt mode in Appendix F?\n\nAlso, are the alt mode entry procedure and requirements for TBT4 (as distinct from TBT3) described in this document?",
       "revId": "ef8e8404d03945e822857408e983b5091fd5c635",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4963646b_f568694d",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-10-07T17:59:34Z",
+      "side": 1,
+      "message": "Hi Abe, this modified PD flow is in separate document. We just got approval to share the document with Google since it\u0027s not official released. Vikas is going to go through the release procedure. Will update you once it\u0027s done.",
+      "parentUuid": "fbe30478_4d8eadc3",
+      "revId": "ef8e8404d03945e822857408e983b5091fd5c635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
