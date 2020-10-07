@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "6272638c_bb2bb9b1",
         "filename": "common/usbc/usb_pe_drp_sm.c",
@@ -14,8 +15,25 @@
       "side": 1,
       "message": "Add a TODO for setting state correctly for soft reset here",
       "revId": "d93d0118a65d0fd0036836f3bd6299f331ef6124",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb28c63c_9d3646d3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4125,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-10-07T06:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6272638c_bb2bb9b1",
+      "revId": "d93d0118a65d0fd0036836f3bd6299f331ef6124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
