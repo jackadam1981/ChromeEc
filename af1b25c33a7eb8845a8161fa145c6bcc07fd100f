@@ -16,6 +16,24 @@
       "message": "Does the spec offer any guidance on this one?",
       "revId": "af1b25c33a7eb8845a8161fa145c6bcc07fd100f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "372d4ff9_0a7c1151",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-07T01:06:32Z",
+      "side": 1,
+      "message": "If this is coming from Evaluate_Capabilities then it has to go through error recovery. If we have just put a request out there because we want to do something asynchronous to the machine, then a discard will just requeue the request and we will pick it up later if needed.",
+      "parentUuid": "7db2ecf3_11310a09",
+      "revId": "af1b25c33a7eb8845a8161fa145c6bcc07fd100f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
