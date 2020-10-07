@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ada6768_37cec2a9",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2020-10-07T04:49:14Z",
+      "side": 1,
+      "message": "If \"\u0026\u0026 !defined(TEST_BUILD)\" is not removed, there is build error because chg_chips \u0026 chg_cnt is not implemented.",
+      "parentUuid": "4516424e_51fe7109",
+      "revId": "e222ebf84ea1a31c046e1e96fcd20e12b932b2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29f77f8a_9b337bbb",
         "filename": "driver/charger/isl923x.h",
         "patchSetId": 5
