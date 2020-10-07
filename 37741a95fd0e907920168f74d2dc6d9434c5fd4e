@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24949bf3_bd5e855d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-07T01:17:15Z",
+      "side": 1,
+      "message": "Thanks for the contribution and address the comment.",
+      "revId": "37741a95fd0e907920168f74d2dc6d9434c5fd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe33cc7_536a05b6",
+        "filename": "baseboard/octopus/cbi_ssfc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-07T01:17:15Z",
+      "side": 1,
+      "message": "Please specify the bit range just followed the style above.",
+      "revId": "37741a95fd0e907920168f74d2dc6d9434c5fd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a96d6f4_cfe7beb1",
+        "filename": "baseboard/octopus/cbi_ssfc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-07T01:17:15Z",
+      "side": 1,
+      "message": "(8, 6)?",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "37741a95fd0e907920168f74d2dc6d9434c5fd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
