@@ -22,6 +22,30 @@
       },
       "revId": "54a10bd3295c065c146931a51284252da606f945",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9e7f38_1ec93769",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-07T09:52:06Z",
+      "side": 1,
+      "message": "updated in:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2454985",
+      "parentUuid": "8ec7af8e_0b93a2a4",
+      "range": {
+        "startLine": 1074,
+        "startChar": 2,
+        "endLine": 1078,
+        "endChar": 3
+      },
+      "revId": "54a10bd3295c065c146931a51284252da606f945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
