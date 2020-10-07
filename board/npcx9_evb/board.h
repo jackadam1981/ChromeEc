@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_SHA256_HW_ACCELERATE
+
 /* EC modules */
 #define CONFIG_ADC
 #define CONFIG_PWM
