@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0282de8c_5cd810cb",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-07T01:29:29Z",
+      "side": 1,
+      "message": "Will BQ25710 need this as well? Since it is not for BQ26703?",
+      "range": {
+        "startLine": 310,
+        "startChar": 9,
+        "endLine": 310,
+        "endChar": 38
+      },
+      "revId": "866e2619f8e1b72fedb26f4032a4d26ba168db97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1351f49c_d7289725",
+        "filename": "board/casta/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-07T01:29:29Z",
+      "side": 1,
+      "message": "What does 1 mean? Or just mention that we start from original source - isl923x.",
+      "range": {
+        "startLine": 93,
+        "startChar": 41,
+        "endLine": 93,
+        "endChar": 42
+      },
+      "revId": "866e2619f8e1b72fedb26f4032a4d26ba168db97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "256a5478_2db79d75",
+        "filename": "board/casta/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-07T01:29:29Z",
+      "side": 1,
+      "message": "i2c initialization was moved to very early stage before hook task so default would be enough now.",
+      "range": {
+        "startLine": 168,
+        "startChar": 46,
+        "endLine": 168,
+        "endChar": 58
+      },
+      "revId": "866e2619f8e1b72fedb26f4032a4d26ba168db97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e6281c_fe3e2c82",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-07T01:29:29Z",
+      "side": 1,
+      "message": "Why do we need to move them explicitly? same as others.",
+      "revId": "866e2619f8e1b72fedb26f4032a4d26ba168db97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
