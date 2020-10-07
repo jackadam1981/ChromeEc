@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19d4ef3_6c03194d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-07T22:05:51Z",
+      "side": 1,
+      "message": "Verified the RTC wake. The keyboard press is a wake source from S3, but not a wake source from G3/hibernate.",
+      "parentUuid": "2a7a8005_7ec9a853",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "753b2706db23985bb4bb2693bb7260ba9d662190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "303ddae8_5f7e3282",
