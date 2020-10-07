@@ -73,6 +73,24 @@
       "message": "add this:\npca9675_read(port, i2c_addr_flags, \u0026pin_val);",
       "revId": "cda552d9d6dace411282af434101d7efe1fafb69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd64803a_eaf618a6",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-07T20:50:33Z",
+      "side": 1,
+      "message": "add it after the write",
+      "parentUuid": "dce3e588_d04c431f",
+      "revId": "cda552d9d6dace411282af434101d7efe1fafb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
