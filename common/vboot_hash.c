@@ -11,6 +11,7 @@
 #include "flash.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "hwtimer.h"
 #include "sha256.h"
 #include "shared_mem.h"
 #include "stdbool.h"
@@ -323,6 +324,18 @@ int vboot_get_rw_hash(const uint8_t **dst)
 	*dst = hash;
 	return rv;
 }
+static int command_rw_hash(int argc, char **argv)
+{
+	const uint8_t *rw_hash;
+	uint32_t timestamp;
+
+	timestamp = __hw_clock_source_read();
+	vboot_get_rw_hash(&rw_hash);
+	timestamp = __hw_clock_source_read() - timestamp;
+	ccprintf("Time Used(block): %d us\n", timestamp);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(rw_hash, command_rw_hash, "", "");
 
 #ifdef CONFIG_SAVE_VBOOT_HASH
 
