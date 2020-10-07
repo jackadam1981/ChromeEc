@@ -69,6 +69,24 @@
       "parentUuid": "4963646b_f568694d",
       "revId": "ef8e8404d03945e822857408e983b5091fd5c635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c9f0266_67343f3d",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-10-07T22:28:34Z",
+      "side": 1,
+      "message": "Download from here: https://cdrdv2.intel.com/v1/dl/getContent/627444; this flow also includes linear redriver cable.",
+      "parentUuid": "4963646b_f568694d",
+      "revId": "ef8e8404d03945e822857408e983b5091fd5c635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
