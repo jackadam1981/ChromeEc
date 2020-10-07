@@ -34,6 +34,24 @@
       "parentUuid": "cba93034_3c76f9e7",
       "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7278cf3_83ba03f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-07T21:40:13Z",
+      "side": 1,
+      "message": "This looks like the correct approach based on vendor feedback.  If it\u0027s testing well, then we can go with it.",
+      "parentUuid": "1ed3d398_cd9a6217",
+      "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
