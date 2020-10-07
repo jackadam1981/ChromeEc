@@ -453,6 +453,25 @@ __override const struct ec_response_keybd_config
 	return &delbin_kb;
 }
 
+static void ps8811_init(void)
+{
+	int rv;
+
+	rv = i2c_write8(I2C_PORT_USB_1_MIX, 0x29, 0x73, 0x04);
+	rv |= i2c_write8(I2C_PORT_USB_1_MIX, 0x29, 0xA4, 0x03);
+	rv |= i2c_write8(I2C_PORT_USB_1_MIX, 0x29, 0xA5, 0x84);
+	rv |= i2c_write8(I2C_PORT_USB_1_MIX, 0x29, 0xA6, 0x16);
+
+	if (rv)
+		CPRINTS("PS8811 init failed!");
+}
+
+static void board_chipset_startup(void)
+{
+	ps8811_init();
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
+
 /* Called on AP S0ix -> S0 transition */
 static void board_chipset_resume(void)
 {
