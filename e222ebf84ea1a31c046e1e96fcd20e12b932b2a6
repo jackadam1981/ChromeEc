@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4516424e_51fe7109",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-07T02:05:32Z",
+      "side": 1,
+      "message": "may I know why \"\u0026\u0026 !defined(TEST_BUILD)\" is removed?",
+      "revId": "e222ebf84ea1a31c046e1e96fcd20e12b932b2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f77f8a_9b337bbb",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-07T02:05:32Z",
+      "side": 1,
+      "message": "The postfix - _FLAGS is not introduced in octopus firmware branch so this change will break other board like fleex. Same as others.",
+      "revId": "e222ebf84ea1a31c046e1e96fcd20e12b932b2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
