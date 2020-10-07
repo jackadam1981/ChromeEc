@@ -22,6 +22,30 @@
       },
       "revId": "70f80ac7958b9b4007d27798e0b68ebe878a71be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf41f6df_5febdd53",
+        "filename": "board/coachz/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-07T22:06:27Z",
+      "side": 1,
+      "message": "Removed the \u0027?\u0027.",
+      "parentUuid": "4f345d84_28fe6b49",
+      "range": {
+        "startLine": 62,
+        "startChar": 70,
+        "endLine": 62,
+        "endChar": 71
+      },
+      "revId": "70f80ac7958b9b4007d27798e0b68ebe878a71be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
