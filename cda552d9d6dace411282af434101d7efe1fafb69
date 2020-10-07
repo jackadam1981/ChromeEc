@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c85efb95_d4ea14ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-07T21:06:11Z",
+      "side": 1,
+      "message": "the input/output mask needs to be used to determine if a pin needs\nto be read live from the device. if it\u0027s an input pin, then it needs\nto be read form the device. if it\u0027s an output pin, the desired state\nof that pin should always be determined by the driver, not whatever\nvalue is read from the device. in theory, if there\u0027s ever an i2c read\nerror, you\u0027d corrupt the state of the output pin even though the\ndriver can keep a master copy of the requested state of the output\npins.",
+      "parentUuid": "83987d6e_41ef8a5b",
+      "revId": "cda552d9d6dace411282af434101d7efe1fafb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "406450be_f298c15d",
         "filename": "driver/ioexpander/pca9675.c",
         "patchSetId": 4
