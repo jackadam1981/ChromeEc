@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5e034c5_1b366373",
+        "filename": "chip/npcx/sha256_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-07T11:31:15Z",
+      "side": 1,
+      "message": "may i suggest:\n\nstruct ncl_sha {\n\t/* Get the SHA context size required by SHA APIs. */\n\tuint32_t (*get_context_size)(void);\n\n\t/* Initial SHA context. */\n\tenum ncl_status (*init_context)(void *ctx);\n\n\t/* Finalize SHA context. */\n\tenum ncl_status (*finalize_context)(void *ctx);\n\n\t/* Initiate the SHA hardware module and setups needed parameters. */\n\tenum ncl_status (*init)(void *ctx);\n\n\t/*\n\t * Prepare the context buffer for a SHA calculation -  by loading the initial\n\t * SHA-256/384/512 parameters.\n\t */\n\tenum ncl_status (*start)(void *ctx, enum ncl_sha_type type);\n\n\t/*\n\t * Updates the SHA calculation with the additional data. When the function\n\t * returns, the hardware and memory buffer shall be ready to accept new data\n\t * buffers for SHA calculation and changes to the data in data buffer should\n\t * no longer effect the SHA calculation.\n\t */\n\tenum ncl_status (*update)(void *ctx, const uint8_t *data,\n\t\t\t\t\t\t  uint32_t Len);\n\n\t/* Return the SHA result (digest.) */\n\tenum ncl_status (*finish)(void *ctx, uint8_t *hashDigest);\n\n\tuintptr_t reserved;\n\n\t/* Power on/off the SHA module. */\n\tenum ncl_status (*power)(void *ctx, uint8_t enable);\n\n\t/* Reset the SHA hardware and terminate any in-progress operations. */\n\tenum ncl_status (*reset)(void *ctx);\n};\n\n#define NCL_SHA ((const struct ncl_sha *)NCL_SHA_BASE_ADDR)\n\n\nthen, API usage is:\n\n\tNCL_SHA-\u003einit_context(...);\n\n\nP.S. pick a better struct name if one comes to mind 😊",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "cf4ce5b7d8a0215bbeca1e74711c2aec2bd5ff98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3503270_0de0a3c2",
+        "filename": "chip/npcx/sha256_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-07T11:31:15Z",
+      "side": 1,
+      "message": "do we need a note on the hmac_SHA256() API about the\nincreased stack size since this is half of TASK_STACK_SIZE?",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 28
+      },
+      "revId": "cf4ce5b7d8a0215bbeca1e74711c2aec2bd5ff98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
