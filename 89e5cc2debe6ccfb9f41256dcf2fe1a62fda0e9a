@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effad4cd_7539d60d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-07T22:23:03Z",
+      "side": 1,
+      "message": "I finally traced down the EC code causing our problems jumping in S5 and have a fix up here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2458841\n\nSo we can continue to jump in S5 if that\u0027s the most stable point for it, or we can pursue hard resetting.  What\u0027s your preference at this point? ",
+      "revId": "89e5cc2debe6ccfb9f41256dcf2fe1a62fda0e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
