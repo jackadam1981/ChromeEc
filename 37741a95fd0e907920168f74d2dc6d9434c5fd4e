@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a43e01c_d683920c",
+        "filename": "baseboard/octopus/cbi_ssfc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-10-07T05:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbe33cc7_536a05b6",
+      "revId": "37741a95fd0e907920168f74d2dc6d9434c5fd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a96d6f4_cfe7beb1",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-10-07T01:17:15Z",
       "side": 1,
       "message": "(8, 6)?",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "37741a95fd0e907920168f74d2dc6d9434c5fd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0d549f_4af8ab3d",
+        "filename": "baseboard/octopus/cbi_ssfc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-10-07T05:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a96d6f4_cfe7beb1",
       "range": {
         "startLine": 44,
         "startChar": 27,
