@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83987d6e_41ef8a5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-07T20:46:19Z",
+      "side": 1,
+      "message": "Hi Caveh,\nI think old logic looks okay as caching the pin value might be error prone if pins have to be configured as input",
+      "revId": "cda552d9d6dace411282af434101d7efe1fafb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406450be_f298c15d",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-07T20:46:19Z",
+      "side": 1,
+      "message": "/* cache the I/O expander GPIO pins */",
+      "revId": "cda552d9d6dace411282af434101d7efe1fafb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ab088f_2ff3bd7f",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-07T20:46:19Z",
+      "side": 1,
+      "message": "how about cache_pin_val?",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "cda552d9d6dace411282af434101d7efe1fafb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce3e588_d04c431f",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-07T20:46:19Z",
+      "side": 1,
+      "message": "add this:\npca9675_read(port, i2c_addr_flags, \u0026pin_val);",
+      "revId": "cda552d9d6dace411282af434101d7efe1fafb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
