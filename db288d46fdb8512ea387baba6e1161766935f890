@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "8f9422c6_99cefb5d",
         "filename": "driver/ioexpander/pca9675.c",
@@ -20,10 +21,10 @@
         "endChar": 23
       },
       "revId": "db288d46fdb8512ea387baba6e1161766935f890",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "6f5afa5f_77bed0e8",
         "filename": "driver/ioexpander/pca9675.c",
@@ -44,10 +45,10 @@
         "endChar": 23
       },
       "revId": "db288d46fdb8512ea387baba6e1161766935f890",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "29e8d97c_b9f20f60",
         "filename": "driver/ioexpander/pca9675.c",
@@ -68,8 +69,31 @@
         "endChar": 23
       },
       "revId": "db288d46fdb8512ea387baba6e1161766935f890",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aa9c91e_17464254",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-07T19:50:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29e8d97c_b9f20f60",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "db288d46fdb8512ea387baba6e1161766935f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
