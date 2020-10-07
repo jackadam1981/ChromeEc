@@ -34,6 +34,24 @@
       "parentUuid": "7db2ecf3_11310a09",
       "revId": "af1b25c33a7eb8845a8161fa145c6bcc07fd100f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c473083d_ffc4f3e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-07T01:12:56Z",
+      "side": 1,
+      "message": "I think the spec guides in the following:\n\n6.8.1 Soft Reset and Protocol Error\nA Soft_Reset Message is used to cause a Soft Reset of protocol communication when this has broken down in some way. It Shall Not have any impact on power supply operation, but is used to correct a Protocol Error occurring during an Atomic Message Sequence (AMS). The Soft Reset May be triggered by either Port Partner in response to the Protocol Error.\nProtocol Errors are any unexpected Message during an AMS. If the first Message in an AMS has been passed to the Protocol Layer by the Policy Engine but has not yet been sent (GoodCRC Message not received) when the Protocol Error occurs, the Policy Engine Shall Not issue a Soft Reset but Shall return to the PE_SNK_Ready or PE_SRC_Ready state and then process the incoming Message. If the Protocol Error occurs during an Interruptible AMS then the Policy Engine Shall Not issue a Soft Reset but Shall return to the PE_SNK_Ready or PE_SRC_Ready state and then process the incoming Message. If the incoming Message is an Unexpected Message received in the PE_SNK_Ready or PE_SRC_Ready state the Policy Engine Shall issue a Soft Reset. If the Protocol Error occurs during a Non-interruptible AMS this Shall lead to a Soft Reset in order to re-synchronize the Policy Engine state machines (see Section 8.3.3.4) except when the voltage is transition when a Protocol Error Shall lead to a Hard Reset (see Section 6.6.11.4 and Section 8.3.3.2). Details of Interruptible and Non-interruptible AMS’s can be found in Section 8.3.2.1.3.\nAn Unrecognized or Unsupported Message received in the PE_SNK_Ready or PE_SRC_Ready states, Shall Not cause a Soft_Reset Message to be generated but instead a Not_Supported Message Shall be generated. A Soft_Reset Message Shall be sent regardless of the Rp value either SinkTxOk or SinkTxNG if it is the correct\nresponse in that state. Note: this means that a Soft_Reset Message can be sent during an AMS regardless of the Rp value either SinkTxOk or SinkTxNG when responding to a Protocol Error.\nTable 6-65 and Table 6-66 summarize the responses that Shall be made to an incoming Message including VDMs.",
+      "parentUuid": "372d4ff9_0a7c1151",
+      "revId": "af1b25c33a7eb8845a8161fa145c6bcc07fd100f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
