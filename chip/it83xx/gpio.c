@@ -524,13 +524,11 @@ void gpio_kbs_pin_gpio_mode(uint32_t port, uint32_t mask, uint32_t flags)
 		*kbs_gpio_ctrl_regs[idx].gpio_out |= mask;
 	} else {
 		*kbs_gpio_ctrl_regs[idx].gpio_out &= ~mask;
-#if defined(CHIP_FAMILY_IT8XXX1) || defined(CHIP_FAMILY_IT8XXX2)
 		if (flags & GPIO_PULL_UP)
 			IT83XX_GPIO_GPOT(port) |= mask;
 		else
 			/* No internal pullup and pulldown */
 			IT83XX_GPIO_GPOT(port) &= ~mask;
-#endif
 	}
 }
 

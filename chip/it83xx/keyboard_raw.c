@@ -10,6 +10,7 @@
 #include "task.h"
 #include "irq_chip.h"
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define KSOH_PIN_MASK (((1 << (KEYBOARD_COLS_MAX - 8)) - 1) & 0xff)
 
 /*
@@ -150,4 +151,9 @@ void keyboard_raw_interrupt(void)
 
 	/* Wake the scan task */
 	task_wake(TASK_ID_KEYSCAN);
+}
+
+int keyboard_raw_is_input_low(int port, int id)
+{
+	return !(IT83XX_GPIO_DATA_MIRROR(port) & BIT(id));
 }
