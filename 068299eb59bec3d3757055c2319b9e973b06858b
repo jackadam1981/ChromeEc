@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3675beac_69bf3415",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-08T15:41:02Z",
+      "side": 1,
+      "message": "Change to \"tSinkAdj (60ms)\".",
+      "range": {
+        "startLine": 196,
+        "startChar": 14,
+        "endLine": 196,
+        "endChar": 22
+      },
+      "revId": "068299eb59bec3d3757055c2319b9e973b06858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f4d45f3_628b66cf",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-08T15:41:02Z",
+      "side": 1,
+      "message": "We might need to track when tSinkAdj has expired after increasing current here.  We want to ensure we don\u0027t try lowering the current again before the partner adjusts.",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 216,
+        "endChar": 15
+      },
+      "revId": "068299eb59bec3d3757055c2319b9e973b06858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
