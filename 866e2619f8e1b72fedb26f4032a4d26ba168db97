@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "423418c7_d60fd37f",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-08T11:07:07Z",
+      "side": 1,
+      "message": "Then could you add config of BQ25710 directly since CONFIG_CHARGER_RUNTIME_CONFIG can indicate any chargers?",
+      "parentUuid": "a53465a9_ad8cb67e",
+      "range": {
+        "startLine": 310,
+        "startChar": 9,
+        "endLine": 310,
+        "endChar": 38
+      },
+      "revId": "866e2619f8e1b72fedb26f4032a4d26ba168db97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1351f49c_d7289725",
         "filename": "board/casta/board.c",
         "patchSetId": 3
@@ -179,6 +203,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99528bb5_3898d03d",
+        "filename": "board/casta/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-08T11:07:07Z",
+      "side": 1,
+      "message": "* You are right to make sure driver update before calling charger driver.\n* And I think charger_chips_init is what you indicated instead of charger_init()?\n* And priority of charger_chips_init is HOOK_PRIO_INIT_I2C + 1 which is the same here so should we move this one to higher priority further? like HOOK_PRIO_INIT_I2C since i2c_init is called in main.c already?",
+      "parentUuid": "cd8d2877_0b224c72",
+      "range": {
+        "startLine": 168,
+        "startChar": 46,
+        "endLine": 168,
+        "endChar": 58
+      },
+      "revId": "866e2619f8e1b72fedb26f4032a4d26ba168db97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27199560_1dec3c72",
         "filename": "board/casta/board.h",
         "patchSetId": 3
@@ -208,6 +256,24 @@
       "side": 1,
       "message": "There is only 1 charger on system, it is either ISL9238 or BQ25710.",
       "parentUuid": "27199560_1dec3c72",
+      "revId": "866e2619f8e1b72fedb26f4032a4d26ba168db97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6819b042_a56b4eb6",
+        "filename": "board/casta/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-08T11:07:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6291b7f2_370d9a2d",
       "revId": "866e2619f8e1b72fedb26f4032a4d26ba168db97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -243,6 +309,24 @@
       "side": 1,
       "message": "several .h files are included together when CONFIG_CHARGER_RUNTIME_CONFIG is defined.\nso the parameter can not be defined on .h file.",
       "parentUuid": "99e6281c_fe3e2c82",
+      "revId": "866e2619f8e1b72fedb26f4032a4d26ba168db97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78282cb8_7998ac7e",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-08T11:07:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e4b5a032_cbb4338b",
       "revId": "866e2619f8e1b72fedb26f4032a4d26ba168db97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
