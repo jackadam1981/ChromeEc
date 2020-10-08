@@ -79,9 +79,9 @@ enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 		return EC_RES_INVALID_PARAM;
 	}
 
-	CPRINTS("C%d: entering mode with flags 0x%x", port, dpm[port].flags);
 	DPM_CLR_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE);
 	DPM_CLR_FLAG(port, DPM_FLAG_EXIT_REQUEST);
+	CPRINTS("C%d: entering mode with flags 0x%x", port, dpm[port].flags);
 
 	return EC_RES_SUCCESS;
 }
