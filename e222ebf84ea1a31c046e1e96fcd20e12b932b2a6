@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ba96d96_11a03a1b",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-08T12:27:08Z",
+      "side": 1,
+      "message": "* In this case, the build of board/host/charger.c will be failed since there is also a chg_chips[] for mock driver? And it is under TEST_BUILD.\n* On the other hand, if TEST_BUILD is defined in tests build then most boards will be failed.\n* As a result, it seems to me this CL of ToT was with this issue already.",
+      "parentUuid": "8ada6768_37cec2a9",
+      "revId": "e222ebf84ea1a31c046e1e96fcd20e12b932b2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29f77f8a_9b337bbb",
         "filename": "driver/charger/isl923x.h",
         "patchSetId": 5
@@ -49,6 +67,24 @@
       "writtenOn": "2020-10-07T02:05:32Z",
       "side": 1,
       "message": "The postfix - _FLAGS is not introduced in octopus firmware branch so this change will break other board like fleex. Same as others.",
+      "revId": "e222ebf84ea1a31c046e1e96fcd20e12b932b2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa9bb88_72afa57c",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-08T12:27:08Z",
+      "side": 1,
+      "message": "At least this one should be addressed for not breaking other octopus EC boards.",
+      "parentUuid": "29f77f8a_9b337bbb",
       "revId": "e222ebf84ea1a31c046e1e96fcd20e12b932b2a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
