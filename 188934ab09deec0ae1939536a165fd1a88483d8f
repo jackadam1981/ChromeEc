@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "ec82d889_5c168005",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Fix conflict (BIT(x) macro isn\u0027t supported on the branch)",
       "revId": "188934ab09deec0ae1939536a165fd1a88483d8f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "fd175904_1b9ffa9e",
         "filename": "/PATCHSET_LEVEL",
@@ -32,8 +33,25 @@
       "message": "I\u0027m surprised BIT(x) isn\u0027t supported.  I\u0027d thought we added it to octopus here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1631301",
       "parentUuid": "ec82d889_5c168005",
       "revId": "188934ab09deec0ae1939536a165fd1a88483d8f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f8f54f8_734240c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-10-08T03:19:54Z",
+      "side": 1,
+      "message": "Sorry, I missed that.\nI go back to patch 1, and apply cherry-pick\u0027s changes to fix the conflict and include compile_time_macros header to build FW image.",
+      "parentUuid": "fd175904_1b9ffa9e",
+      "revId": "188934ab09deec0ae1939536a165fd1a88483d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
