@@ -34,6 +34,24 @@
       "parentUuid": "effad4cd_7539d60d",
       "revId": "89e5cc2debe6ccfb9f41256dcf2fe1a62fda0e9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a121e3_a7ff4daf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-08T18:41:08Z",
+      "side": 1,
+      "message": "This makes a board without a battery or with a depleted battery reboot after shutdown to G3 because AP_OFF would be lost. I\u0027m not sure how much we care about this corner case of the corner case. Anyway, it\u0027s not a clear winner...",
+      "parentUuid": "a179c32b_6d8419f4",
+      "revId": "89e5cc2debe6ccfb9f41256dcf2fe1a62fda0e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
