@@ -16,6 +16,29 @@
       "message": "How about this?",
       "revId": "f01eea56c78b6fc7fe1a5b4985044bfbd0980be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fd1dd1a_7c332216",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-10-08T04:54:11Z",
+      "side": 1,
+      "message": "1. If we retry here, does EC (FPMCU) know that it has to resend last image chunk again.\n2. On my setup i only see 1st 160 chars on image and rest 159 lines are all 0s",
+      "range": {
+        "startLine": 1945,
+        "startChar": 0,
+        "endLine": 1949,
+        "endChar": 0
+      },
+      "revId": "f01eea56c78b6fc7fe1a5b4985044bfbd0980be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
