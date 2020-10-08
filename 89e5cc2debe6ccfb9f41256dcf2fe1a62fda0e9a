@@ -16,6 +16,24 @@
       "message": "I finally traced down the EC code causing our problems jumping in S5 and have a fix up here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2458841\n\nSo we can continue to jump in S5 if that\u0027s the most stable point for it, or we can pursue hard resetting.  What\u0027s your preference at this point? ",
       "revId": "89e5cc2debe6ccfb9f41256dcf2fe1a62fda0e9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a179c32b_6d8419f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-08T15:54:42Z",
+      "side": 1,
+      "message": "Resetting is cleaner in terms of eliminating corner cases. Switching to hard reset here is a step forward to getting rid of a late jump. EFS2 was designed to run EC  all in RO or (almost) all in RW. \n\nI didn\u0027t think of combining a PB hook and a G3 hook when I was fixing chromium:1045209.\n\nAlso, hard reset is probably better in the long run when we\u0027re making EFS2 default. The sysjump fix (S5 sysjump) actually requires some trick within the power sequencing, which varies soc to soc.\n\nAnother late jump case is for handling communication errors between EC and Cr50. I left it because I wasn\u0027t sure how much we can trust ec-cr50-comm physically. Once we learn it\u0027s reliable, we can get rid of that as well.",
+      "parentUuid": "effad4cd_7539d60d",
+      "revId": "89e5cc2debe6ccfb9f41256dcf2fe1a62fda0e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
