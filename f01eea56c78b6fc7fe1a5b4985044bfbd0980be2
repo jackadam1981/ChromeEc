@@ -39,6 +39,30 @@
       },
       "revId": "f01eea56c78b6fc7fe1a5b4985044bfbd0980be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b47b37d_9d3c3ec6",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-10-08T17:12:13Z",
+      "side": 1,
+      "message": "1. FpFrame parameters specify which chunk it wants (p.offset). FPMCU just returns the chunk at that offset: https://source.corp.google.com/chromeos_public/src/platform/ec/common/fpsensor/fpsensor.c;l\u003d401. You can read in whatever order you want and repeat as you like.\n\n2. Isn\u0027t that what happens when you normally do \"ectool --name\u003dcros_fp fpframe\"?",
+      "parentUuid": "8fd1dd1a_7c332216",
+      "range": {
+        "startLine": 1945,
+        "startChar": 0,
+        "endLine": 1949,
+        "endChar": 0
+      },
+      "revId": "f01eea56c78b6fc7fe1a5b4985044bfbd0980be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
