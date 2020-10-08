@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1f9c7ba_1539862f",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-08T19:05:52Z",
+      "side": 1,
+      "message": "as this chip doent have masks to set i/p or o/p pin we must read the register all the time before writing otherwise we might write wrong info.\nstatic variable is backup to ensure we dont return when i2C read fails.",
+      "parentUuid": "e015bd47_d74774fe",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 60
+      },
+      "revId": "a1a316327a17f0289f43904bb76e947da9bb4947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bee21f4_7cc10b16",
         "filename": "driver/ioexpander/pca9675.c",
         "patchSetId": 6
