@@ -63,6 +63,30 @@
       },
       "revId": "f01eea56c78b6fc7fe1a5b4985044bfbd0980be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "830e4614_56dd2ea4",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-10-08T19:26:40Z",
+      "side": 1,
+      "message": "1. Thanks for explanation on the first point. \n2. I have added https://b.corp.google.com/issues/169783567#comment5 frames before and after. hopefully this will give you some clues.",
+      "parentUuid": "3b47b37d_9d3c3ec6",
+      "range": {
+        "startLine": 1945,
+        "startChar": 0,
+        "endLine": 1949,
+        "endChar": 0
+      },
+      "revId": "f01eea56c78b6fc7fe1a5b4985044bfbd0980be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
