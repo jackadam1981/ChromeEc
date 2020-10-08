@@ -108,9 +108,14 @@ static void dpm_clear_mode_exit_request(int port)
 	DPM_CLR_FLAG(port, DPM_FLAG_EXIT_REQUEST);
 }
 
+/*
+ * Returns true if the current policy requests that the EC try to enter this
+ * mode on this port. If the EC is in charge of policy, the answer is always
+ * yes.
+ */
 static bool dpm_mode_entry_requested(int port, enum typec_mode mode)
 {
-	/* If the AP isn't driving, the EC can do what it wants. */
+	/* If the AP isn't controlling policy, the EC is. */
 	if (!IS_ENABLED(CONFIG_HOSTCMD_TYPEC))
 		return true;
 
@@ -167,15 +172,17 @@ void dpm_vdm_naked(int port, enum tcpm_transmit_type type, uint16_t svid,
 }
 
 /*
- * The call to this function requests that the PE send one VDM, whichever is
- * next in the mode entry sequence. This only happens if preconditions for mode
- * entry are met.
+ * Requests that the PE send one VDM, whichever is next in the mode entry
+ * sequence. This only happens if preconditions for mode entry are met. If the
+ * TYPEC host commands are enabled, the AP gates these decisions.
  */
 static void dpm_attempt_mode_entry(int port)
 {
 	int vdo_count = 0;
 	uint32_t vdm[VDO_MAX_SIZE];
 	enum tcpm_transmit_type tx_type = TCPC_TX_SOP;
+	bool enter_mode_requested = IS_ENABLED(CONFIG_HOSTCMD_TYPEC) ?
+		false : true;
 
 	if (pd_get_data_role(port) != PD_ROLE_DFP)
 		return;
@@ -206,23 +213,32 @@ static void dpm_attempt_mode_entry(int port)
 	/* If not, check if they support Thunderbolt alt mode. */
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
 	    pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP, USB_VID_INTEL) &&
-			dpm_mode_entry_requested(port, TYPEC_MODE_TBT))
+			dpm_mode_entry_requested(port, TYPEC_MODE_TBT)) {
+		enter_mode_requested = true;
 		vdo_count = tbt_setup_next_vdm(port,
 			ARRAY_SIZE(vdm), vdm, &tx_type);
+	}
 
 	/* If not, check if they support DisplayPort alt mode. */
 	if (vdo_count == 0 && !DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE) &&
 	    pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP,
 				USB_SID_DISPLAYPORT) &&
-	    dpm_mode_entry_requested(port, TYPEC_MODE_DP))
+	    dpm_mode_entry_requested(port, TYPEC_MODE_DP)) {
+		enter_mode_requested = true;
 		vdo_count = dp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+	}
 
 	/*
-	 * If the PE didn't discover any supported alternate mode, just mark
-	 * setup done and get out of here.
+	 * If the PE didn't discover any supported (requested) alternate mode,
+	 * just mark setup done and get out of here.
 	 */
 	if (vdo_count == 0 && !DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE)) {
-		CPRINTS("C%d: No supported alt mode discovered", port);
+		if (enter_mode_requested)
+			CPRINTS("C%d: No supported alt mode discovered", port);
+		/*
+		 * If the AP did not request mode entry, it may do so in the
+		 * future, but the DPM is done trying for now.
+		 */
 		dpm_set_mode_entry_done(port);
 		return;
 	}

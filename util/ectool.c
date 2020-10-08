@@ -9482,7 +9482,7 @@ int cmd_typec_control(int argc, char *argv[])
 			"    1: Clear events\n"
 			"        args: <event mask>\n"
 			"    2: Enter mode\n"
-			"        args: <1: DP, 2:TBT, 3:USB4>",
+			"        args: <1: DP, 2:TBT, 3:USB4>\n",
 			argv[0]);
 		return -1;
 	}
