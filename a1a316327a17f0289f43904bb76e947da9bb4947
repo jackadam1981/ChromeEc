@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e015bd47_d74774fe",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-10-08T18:22:03Z",
+      "side": 1,
+      "message": "Agree, that driver cant decide bw i/p or o/p pin as it may vary for boards. But in that case, i guess, we cannot decide to do an i2c read based on i/p or o/p pin mask . In that case, I think i2c read must be done once only at the time of initialization to decide initial value of cache_pin_val ?",
+      "parentUuid": "3fd52a41_744f6feb",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 60
+      },
+      "revId": "a1a316327a17f0289f43904bb76e947da9bb4947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bee21f4_7cc10b16",
         "filename": "driver/ioexpander/pca9675.c",
         "patchSetId": 6
