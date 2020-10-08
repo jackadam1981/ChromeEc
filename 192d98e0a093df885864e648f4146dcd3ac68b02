@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "acdfc61e_da2db6dd",
         "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
@@ -20,8 +21,31 @@
         "endChar": 24
       },
       "revId": "192d98e0a093df885864e648f4146dcd3ac68b02",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0196b7_2100753e",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-10-08T00:09:30Z",
+      "side": 1,
+      "message": "Done, but hitting the following build failure:\nhttps://paste.googleplex.com/5699840630587392\nhttps://paste.googleplex.com/4860436450115584 (with -n)",
+      "parentUuid": "acdfc61e_da2db6dd",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 24
+      },
+      "revId": "192d98e0a093df885864e648f4146dcd3ac68b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

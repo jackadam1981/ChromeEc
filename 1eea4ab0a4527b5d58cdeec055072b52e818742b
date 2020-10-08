@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "cd2f1408_f2b1acf4",
         "filename": "test/build.mk",
@@ -20,8 +21,31 @@
         "endChar": 35
       },
       "revId": "1eea4ab0a4527b5d58cdeec055072b52e818742b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eafc0ad_9b467836",
+        "filename": "test/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-10-08T00:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd2f1408_f2b1acf4",
+      "range": {
+        "startLine": 36,
+        "startChar": 18,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "1eea4ab0a4527b5d58cdeec055072b52e818742b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
