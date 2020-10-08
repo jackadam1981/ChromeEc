@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16552d1a_c0c486e4",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-10-08T19:22:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d1f9c7ba_1539862f",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 60
+      },
+      "revId": "a1a316327a17f0289f43904bb76e947da9bb4947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bee21f4_7cc10b16",
@@ -118,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "278cce14_fbb1f879",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-10-08T19:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bee21f4_7cc10b16",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "a1a316327a17f0289f43904bb76e947da9bb4947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e88bcaa_42889d46",
@@ -131,6 +179,30 @@
       "writtenOn": "2020-10-08T18:06:37Z",
       "side": 1,
       "message": "you can remove this now as we have read at line 57",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "a1a316327a17f0289f43904bb76e947da9bb4947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd77f6b7_4c8984ab",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-10-08T19:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e88bcaa_42889d46",
       "range": {
         "startLine": 74,
         "startChar": 1,
