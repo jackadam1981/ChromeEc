@@ -618,6 +618,8 @@ static void board_chipset_resume(void)
 				  PI3HDX1204_I2C_ADDR_FLAGS,
 				  check_hdmi_hpd_status());
 	}
+
+	tmp432_set_power(TMP432_POWER_ON);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -635,6 +637,8 @@ static void board_chipset_suspend(void)
 	}
 
 	ioex_set_level(IOEX_HDMI_DATA_EN_DB, 0);
+
+	tmp432_set_power(TMP432_POWER_OFF);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
