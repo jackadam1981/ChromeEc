@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ec727a_1581225c",
+        "filename": "chip/npcx/sha256_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-10-08T07:11:04Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. It makes the code more clean and easy to read.\nAlso, the struct name is already good enough.",
+      "parentUuid": "b5e034c5_1b366373",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "cf4ce5b7d8a0215bbeca1e74711c2aec2bd5ff98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3503270_0de0a3c2",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-07T11:31:15Z",
       "side": 1,
       "message": "do we need a note on the hmac_SHA256() API about the\nincreased stack size since this is half of TASK_STACK_SIZE?",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 28
+      },
+      "revId": "cf4ce5b7d8a0215bbeca1e74711c2aec2bd5ff98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "181a650b_1b7c34a8",
+        "filename": "chip/npcx/sha256_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-10-08T07:11:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3503270_0de0a3c2",
       "range": {
         "startLine": 127,
         "startChar": 1,
