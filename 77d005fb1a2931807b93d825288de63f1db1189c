@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef1655ba_ce380875",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-08T22:38:01Z",
+      "side": 1,
+      "message": "Do we plan to care if we\u0027re already in an active mode? Or take more of a \"kernel knows best\" approach?",
+      "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83bdae2c_09af129f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-08T22:38:01Z",
+      "side": 1,
+      "message": "If we\u0027re not DFP at the time of the entry request, do we keep it queued up and ready to go when we are DFP then?",
+      "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "782532c3_deb8f25b",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-08T22:38:01Z",
+      "side": 1,
+      "message": "Basing on an old copy of my CL stack, I\u0027m guessing?",
+      "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92240f4c_4a815ae7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6377,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-08T22:38:01Z",
+      "side": 1,
+      "message": "What does \"none\" represent?",
+      "range": {
+        "startLine": 6377,
+        "startChar": 1,
+        "endLine": 6377,
+        "endChar": 17
+      },
+      "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
