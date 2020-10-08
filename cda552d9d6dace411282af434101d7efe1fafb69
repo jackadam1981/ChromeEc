@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39b967cc_689b22cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-08T22:13:40Z",
+      "side": 1,
+      "message": "Maintaining an input/output mask is going to work better with the ioexpander module. The ioexapnder module is really just an extension of the GPIO module, where any pin you\u0027re going to use must have it\u0027s mode (input/output) configured before reading/writing the pin.",
+      "parentUuid": "3cafe1f3_75806a59",
+      "revId": "cda552d9d6dace411282af434101d7efe1fafb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "406450be_f298c15d",
         "filename": "driver/ioexpander/pca9675.c",
         "patchSetId": 4
