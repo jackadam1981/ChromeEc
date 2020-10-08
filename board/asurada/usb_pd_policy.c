@@ -158,9 +158,6 @@ __override void svdm_exit_dp_mode(int port)
 	if (port == USB_PD_PORT_TCPC_MST)
 		baseboard_mst_enable_control(port, 0);
 #endif
-#ifdef CONFIG_USB_PD_TCPMV2
-	dp_teardown(port);
-#endif
 }
 
 int pd_snk_is_vbus_provided(int port)
