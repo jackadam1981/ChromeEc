@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26492def_e7e2676b",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-10-08T18:11:11Z",
+      "side": 1,
+      "message": "This mask pin is what is used to decide, if update requested pin is an i/p pin.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 45
+      },
+      "revId": "a1a316327a17f0289f43904bb76e947da9bb4947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fd52a41_744f6feb",
         "filename": "driver/ioexpander/pca9675.c",
         "patchSetId": 6
