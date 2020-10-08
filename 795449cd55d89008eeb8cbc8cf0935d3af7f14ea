@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f147772_97a5fc67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-10-08T10:09:08Z",
+      "side": 1,
+      "message": "There was an internal discussion about every cherry-picked CL should be built successfully so ideally this fix should be in the CL:2364342 directly. Due to the urgency this time, I would +2 first but it would be not the normal case. Thanks. ",
+      "revId": "795449cd55d89008eeb8cbc8cf0935d3af7f14ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
