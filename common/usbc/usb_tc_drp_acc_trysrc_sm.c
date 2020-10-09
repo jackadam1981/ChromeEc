@@ -1449,7 +1449,11 @@ static void set_state_tc(const int port, const enum usb_tc_state new_state)
 /* Get the current TypeC state. */
 test_export_static enum usb_tc_state get_state_tc(const int port)
 {
-	return tc[port].ctx.current - &tc_states[0];
+	/* Default to returning 0 if no state has actually been set yet */
+	if (tc[port].ctx.current == NULL)
+		return 0;
+	else
+		return tc[port].ctx.current - &tc_states[0];
 }
 
 /* Get the previous TypeC state. */
