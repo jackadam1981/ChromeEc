@@ -182,6 +182,8 @@ enum usb_tc_state {
 	TC_LOW_POWER_MODE,
 	TC_CT_UNATTACHED_SNK,
 	TC_CT_ATTACHED_SNK,
+
+	TC_STATE_COUNT,
 };
 /* Forward declare the full list of states. This is indexed by usb_tc_state */
 static const struct usb_state tc_states[];
@@ -261,6 +263,8 @@ static const char * const tc_state_names[] = {
 	[TC_CC_OPEN] = "SS:CC_OPEN",
 	[TC_CC_RD] = "SS:CC_RD",
 	[TC_CC_RP] = "SS:CC_RP",
+
+	[TC_STATE_COUNT] = "",
 };
 #else
 /*
@@ -1469,7 +1473,11 @@ static void set_state_tc(const int port, const enum usb_tc_state new_state)
 /* Get the current TypeC state. */
 test_export_static enum usb_tc_state get_state_tc(const int port)
 {
-	return tc[port].ctx.current - &tc_states[0];
+	/* Default to returning TC_STATE_COUNT if no state has been set */
+	if (tc[port].ctx.current == NULL)
+		return TC_STATE_COUNT;
+	else
+		return tc[port].ctx.current - &tc_states[0];
 }
 
 /* Get the previous TypeC state. */
@@ -3673,6 +3681,5 @@ const struct test_sm_data test_tc_sm_data[] = {
 		.names_size = ARRAY_SIZE(tc_state_names),
 	},
 };
-BUILD_ASSERT(ARRAY_SIZE(tc_states) == ARRAY_SIZE(tc_state_names));
 const int test_tc_sm_data_size = ARRAY_SIZE(test_tc_sm_data);
 #endif
