@@ -117,6 +117,30 @@
       },
       "revId": "068299eb59bec3d3757055c2319b9e973b06858b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c78c2c8a_e5e2a4e6",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-09T15:49:25Z",
+      "side": 1,
+      "message": "Oddly, there\u0027s also no delay given when transitioning from Power3.0.SNK to Power1.5.SNK.  I\u0027m uncertain if that\u0027s just a copy/paste type of oversight though.",
+      "parentUuid": "d1a3f7be_d91df973",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 216,
+        "endChar": 15
+      },
+      "revId": "068299eb59bec3d3757055c2319b9e973b06858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
