@@ -651,7 +651,7 @@ static void tusb1064_tcpm_hook_connect(void)
 	// TODO: Put this in a mux driver (for UFP)!
 	CPRINTS("HOOK data role is [%d] [st%d] [%s]", current_data, pd_get_task_state(port), pd_get_task_state_name(port));
 
-#if 0
+#if 1
 /* Hold off on this -- see if we can fix TCPMv1 */
 	/* Needed because HOOK is called before data_role_set() */
 	switch(pd_get_task_state(port)){
