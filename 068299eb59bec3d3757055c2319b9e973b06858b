@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed070bba_04ae0dc5",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-09T15:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3675beac_69bf3415",
+      "range": {
+        "startLine": 196,
+        "startChar": 14,
+        "endLine": 196,
+        "endChar": 22
+      },
+      "revId": "068299eb59bec3d3757055c2319b9e973b06858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f4d45f3_628b66cf",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-08T15:41:02Z",
       "side": 1,
       "message": "We might need to track when tSinkAdj has expired after increasing current here.  We want to ensure we don\u0027t try lowering the current again before the partner adjusts.",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 216,
+        "endChar": 15
+      },
+      "revId": "068299eb59bec3d3757055c2319b9e973b06858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "569856f1_83d8561a",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-09T15:19:40Z",
+      "side": 1,
+      "message": "I think tSinkAdj is mostly applicable for lowering power consumption on our end.  If we\u0027ve allocated 3.0A to a partner and they haven\u0027t taken advantage of it yet, we\u0027re still within our available power budget.  It\u0027s that transition down where we need to be prepared to continue sourcing 3.0A for 60 ms after the partner is notified.",
+      "parentUuid": "2f4d45f3_628b66cf",
       "range": {
         "startLine": 215,
         "startChar": 8,
