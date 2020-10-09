@@ -87,6 +87,30 @@
       },
       "revId": "f01eea56c78b6fc7fe1a5b4985044bfbd0980be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79848efc_22205194",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-10-09T19:28:13Z",
+      "side": 1,
+      "message": "2. It\u0027s indeed my bug. Thanks for checking.",
+      "parentUuid": "830e4614_56dd2ea4",
+      "range": {
+        "startLine": 1945,
+        "startChar": 0,
+        "endLine": 1949,
+        "endChar": 0
+      },
+      "revId": "f01eea56c78b6fc7fe1a5b4985044bfbd0980be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
