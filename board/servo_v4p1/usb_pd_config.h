@@ -15,14 +15,16 @@
 #ifndef __CROS_EC_USB_PD_CONFIG_H
 #define __CROS_EC_USB_PD_CONFIG_H
 
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 /* NOTES: Servo V4 and glados equivalents:
  *	Glados		Servo V4
  *	C0		CHG
  *	C1		DUT
- *
+ *	C2		HOSTCHG
  */
-#define CHG 0
-#define DUT 1
+// Moved to ServoV4p1 board.h
 
 /* Timer selection for baseband PD communication */
 #define TIM_CLOCK_PD_TX_CHG 16
@@ -98,7 +100,7 @@
 #define SPI_REGS(p) ((p) ? STM32_SPI2_REGS : STM32_SPI1_REGS)
 static inline void spi_enable_clock(int port)
 {
-	if (port == 0)
+	if (port == CHG)
 		STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;
 	else
 		STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
@@ -134,7 +136,7 @@ static inline void spi_enable_clock(int port)
 /* the pins used for communication need to be hi-speed */
 static inline void pd_set_pins_speed(int port)
 {
-	if (port == 0) {
+	if (port == CHG) {
 		/* 40 MHz pin speed on SPI PB3&4,
 		 * (USB_CHG_TX_CLKIN & USB_CHG_CC1_TX_DATA)
 		 */
@@ -156,7 +158,7 @@ static inline void pd_set_pins_speed(int port)
 /* Reset SPI peripheral used for TX */
 static inline void pd_tx_spi_reset(int port)
 {
-	if (port == 0) {
+	if (port == CHG) {
 		/* Reset SPI1 */
 		STM32_RCC_APB2RSTR |= BIT(12);
 		STM32_RCC_APB2RSTR &= ~BIT(12);
@@ -179,28 +181,89 @@ static const uint8_t ref_gpio[2 /* port */][2 /* polarity */] = {
 /* Drive the CC line from the TX block */
 static inline void pd_tx_enable(int port, int polarity)
 {
+
+/*
+* WARNING:
+* Unlike Twinkie, which is hard-coded to transmit on both CC lines,
+* this board attempts to derive polarity. Due to some dubious code
+* commits, polarity is undefined in SNK.DTS.Unoriented state.
+*
+* Copy and paste Twinkie's logic here for reliability and function.
+* Refer to "enum tcpc_cc_polarity" in usb_pd_tcpm.h
+* 
+* TODO: Refactor crrev/c/2022914
+*/
+
+#if 0
+	/* Transmit on both CC lines */
+	gpio_set_level(GPIO_CC2_TX_EN, 1);
+	gpio_set_level(GPIO_CC1_TX_EN, 1);
+	/* TX_DATA on PA6 is now connected to SPI1 */
+	gpio_set_alternate_function(GPIO_A, 0x0040, 0);
+	/* TX_DATA on PB4 is now connected to SPI1 */
+	gpio_set_alternate_function(GPIO_B, 0x0010, 0);
+#endif
+
+
 #ifndef VIF_BUILD /* genvif doesn't like tricks with GPIO macros */
-	const struct gpio_info *tx = gpio_list + tx_gpio[port][polarity];
-	const struct gpio_info *ref = gpio_list + ref_gpio[port][polarity];
+	const struct gpio_info *tx, *tx_alt;
+	const struct gpio_info *ref, *ref_alt;
 
-	/* use directly GPIO registers, latency before the PD preamble is key */
+	if (polarity <= POLARITY_CC2) {
+		tx = gpio_list + tx_gpio[port][polarity];
+		ref = gpio_list + ref_gpio[port][polarity];
 
-	/* switch the TX pin Mode from Input (00) to Alternate (10) for SPI */
-	STM32_GPIO_MODER(tx->port) |= 2 << ((31 - __builtin_clz(tx->mask)) * 2);
-	/* switch the ref pin Mode from analog (11) to Out (01) for low level */
-	STM32_GPIO_MODER(ref->port) &=
-		~(2 << ((31 - __builtin_clz(ref->mask)) * 2));
+		/* use directly GPIO registers, latency before the PD preamble is key */
+
+		/* switch the TX pin Mode from Input (00) to Alternate (10) for SPI */
+		STM32_GPIO_MODER(tx->port) |=
+			2 << ((31 - __builtin_clz(tx->mask)) * 2);
+		/* switch the ref pin Mode from analog (11) to Out (01) for low level */
+		STM32_GPIO_MODER(ref->port) &=
+			~(2 << ((31 - __builtin_clz(ref->mask)) * 2));
+	} else {
+		tx = gpio_list + tx_gpio[port][POLARITY_CC1];
+		ref = gpio_list + ref_gpio[port][POLARITY_CC1];
+
+		tx_alt = gpio_list + tx_gpio[port][POLARITY_CC2];
+		ref_alt = gpio_list + ref_gpio[port][POLARITY_CC2];
+
+		STM32_GPIO_MODER(tx->port) |=
+			2 << ((31 - __builtin_clz(tx->mask)) * 2);
+		STM32_GPIO_MODER(tx_alt->port) |=
+			2 << ((31 - __builtin_clz(tx_alt->mask)) * 2);
+		STM32_GPIO_MODER(ref->port) &=
+			~(2 << ((31 - __builtin_clz(ref->mask)) * 2));
+		STM32_GPIO_MODER(ref_alt->port) &=
+			~(2 << ((31 - __builtin_clz(ref_alt->mask)) * 2));
+	}
 #endif /* !VIF_BUILD */
 }
 
 /* Put the TX driver in Hi-Z state */
 static inline void pd_tx_disable(int port, int polarity)
 {
-	const struct gpio_info *tx = gpio_list + tx_gpio[port][polarity];
-	const struct gpio_info *ref = gpio_list + ref_gpio[port][polarity];
+	const struct gpio_info *tx, *tx_alt;
+	const struct gpio_info *ref, *ref_alt;
 
-	gpio_set_flags_by_mask(tx->port, tx->mask, GPIO_INPUT);
-	gpio_set_flags_by_mask(ref->port, ref->mask, GPIO_ANALOG);
+	if (polarity <= POLARITY_CC2) {
+		tx = gpio_list + tx_gpio[port][polarity];
+		ref = gpio_list + ref_gpio[port][polarity];
+
+		gpio_set_flags_by_mask(tx->port, tx->mask, GPIO_INPUT);
+		gpio_set_flags_by_mask(ref->port, ref->mask, GPIO_ANALOG);
+	} else {
+		tx = gpio_list + tx_gpio[port][POLARITY_CC1];
+		ref = gpio_list + ref_gpio[port][POLARITY_CC1];
+
+		tx_alt = gpio_list + tx_gpio[port][POLARITY_CC2];
+		ref_alt = gpio_list + ref_gpio[port][POLARITY_CC2];
+
+		gpio_set_flags_by_mask(tx->port, tx->mask, GPIO_INPUT);
+		gpio_set_flags_by_mask(tx_alt->port, tx_alt->mask, GPIO_INPUT);
+		gpio_set_flags_by_mask(ref->port, ref->mask, GPIO_ANALOG);
+		gpio_set_flags_by_mask(ref_alt->port, ref_alt->mask, GPIO_ANALOG);
+	}
 }
 
 /* we know the plug polarity, do the right configuration */
@@ -211,15 +274,15 @@ static inline void pd_select_polarity(int port, int polarity)
 	/* Use window mode so that COMP1 and COMP2 share non-inverting input */
 	val |= STM32_COMP_CMP1EN | STM32_COMP_CMP2EN | STM32_COMP_WNDWEN;
 
-	if (port == 0) {
+	if (port == CHG) {
 		/* CHG use the right comparator inverted input for COMP2 */
 		STM32_COMP_CSR = (val & ~STM32_COMP_CMP2INSEL_MASK) |
-			(polarity ? STM32_COMP_CMP2INSEL_INM4  /* PA4: C0_CC2 */
+			(polarity_rm_dts(polarity) ? STM32_COMP_CMP2INSEL_INM4  /* PA4: C0_CC2 */
 				  : STM32_COMP_CMP2INSEL_INM6);/* PA2: C0_CC1 */
 	} else {
 		/* DUT use the right comparator inverted input for COMP1 */
 		STM32_COMP_CSR = (val & ~STM32_COMP_CMP1INSEL_MASK) |
-			(polarity ? STM32_COMP_CMP1INSEL_INM5  /* PA5: C1_CC2 */
+			(polarity_rm_dts(polarity) ? STM32_COMP_CMP1INSEL_INM5  /* PA5: C1_CC2 */
 			 : STM32_COMP_CMP1INSEL_INM6);/* PA0: C1_CC1 */
 	}
 }
