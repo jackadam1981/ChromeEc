@@ -356,6 +356,8 @@ int pd_start_tx(int port, int polarity, int bit_len)
 	 * Call this last before enabling timer in order to meet spec on
 	 * timing between enabling TX and clocking out bits.
 	 */
+	// ServoV4p1 debug
+	// [THIS BREAKS UNORIENTED, COPY TWINKIE]
 	pd_tx_enable(port, polarity);
 
 	/* Start counting at 300Khz*/
