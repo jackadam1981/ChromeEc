@@ -46,7 +46,7 @@ where you need to avoid it.
 
 The hardware interrupt requests are connected to the interruption handling *C*
 routines declared by the `DECLARE_IRQ` macros, through some chip/core specific
-mechanisms (e.g. depending whether we have a vectored interrupt controller,
+mechanisms (e.g. depending on whether we have a vectored interrupt controller,
 slave interrupt controllers...)
 
 The interrupts can be nested (ie interrupted by a higher priority interrupt).
@@ -54,7 +54,7 @@ All the interrupt vectors are assigned a priority as defined in their
 `DECLARE_IRQ` macro. The number of available priority level is
 architecture-specific (e.g. 4 on Cortex-M0, 8 on Cortex-M3/M4) and several
 interrupt handlers can have the same priority. An interrupt handler can only be
-interrupted by an handler having a priority **strictly** **greater** than its
+interrupted by a handler having a priority **strictly** **greater** than its
 own.
 
 In most cases, the exceptions (e.g data/prefetch aborts, software interrupt) can
@@ -84,7 +84,7 @@ The two typical use-cases are:
 -   a task sends a message to another task (simply use some common memory
     structures [see explanation](#single-address-space) and want it to process
     it now.
--   an hardware IRQ occurred and we need to do some long processing to respond
+-   a hardware IRQ occurred, and we need to do some long processing to respond
     to it (e.g. an I2C transaction). The associated interrupt handler cannot do
     it (for latency reason), so it will raise an event to ask a task to do it.
 
@@ -94,7 +94,7 @@ through the `task_wait_event()` and `task_wait_event_mask()` primitives.
 ### Scheduling and preemption
 
 The system has a global bitmap[1] called `tasks_ready` containing one bit per
-task and indicating whether or not it is *ready* *to* *run* (ie want/need to be
+task and indicating whether it is *ready* *to* *run* (ie want/need to be
 scheduled). The task ready bit can only be cleared when it's calling itself one
 of the functions explicitly triggering a re-scheduling (e.g. `task_wait_event()`
 or `task_set_event()`) **and** it has no pending event. The task ready bit is
@@ -123,7 +123,7 @@ can happen:
     returning to the interrupt task.
 -   a task sets an event on another task. The runtime will trigger a software
     interrupt to force a re-scheduling at its exit.
--   the running task voluntarily relinguish its current execution rights by
+-   the running task voluntarily relinquish its current execution rights by
     calling `task_wait_event()` or a similar function. This will call the
     software interrupt similarly to the previous case.
 
@@ -144,7 +144,7 @@ The HOOKS task has a list of deferred functions and their next deadline. Every
 time it is waken up, it runs through the list and calls the ones whose deadline
 is expired. Before going back to sleep, it arms a timer to the closest deadline.
 The deferred functions can be created using the `DECLARED_DEFERRED()` macro.
-Similarly the HOOK_SECOND and HOOK_TICK hooks are called periodically by the
+Similarly, the HOOK_SECOND and HOOK_TICK hooks are called periodically by the
 HOOKS task loop (the *tick* duration is platform-defined and shorter than the
 second).
 
@@ -152,7 +152,7 @@ Note: be specially careful about priority inversions when accessing resources
 protected by a mutex (e.g. a shared I2C controller) in a deferred function.
 Indeed being the lowest priority task, it might be de-scheduled for long time
 and starve higher priority tasks trying to access the resource given there is no
-priority boosting implemented for this case. Also be careful about long delays
+priority boosting implemented for this case. Also, be careful about long delays
 (> x 100us) in hook or deferred function handlers, since those will starve other
 hooks of execution time. It is better to implement a state machine where you set
 up a subsequent call to a deferred function than have a long delay in your
@@ -170,12 +170,12 @@ guarantees that all tasks are getting some run time during the watchdog period.
 Note: that's also why one should not sprinkle its code with `watchdog_reload()`
 to paper over long-running routine issues.
 
-To help debugging bad sequences triggering watchdog reboots, most platforms
+To help debug bad sequences triggering watchdog reboots, most platforms
 implement a warning mechanism defined under `CONFIG_WATCHDOG_HELP`. It's a timer
 firing at the middle of the watchdog period if it hasn't been petted by then,
 and dumping on the console the current state of the execution mainly to help
-finding a stuck task or handler. The normal execution is resumed though after
-this alert.
+find a stuck task or handler. The normal execution is resumed though after this
+alert.
 
 ### Startup
 
@@ -190,7 +190,7 @@ The startup sequence goes through the following steps:
     protection if any, gpios in their default state, prepare the interrupt
     controller, set the clocks, then timers, enable interrupts, init the debug
     UART and the watchdog.
--   finally start tasks.
+-   finally, start tasks.
 
 For the tasks startup, initially only the HOOKS task is marked as ready, so it
 is the first to start and can call all the HOOK_INIT handlers performing
@@ -198,13 +198,13 @@ initializations before actually executing any real task code. Then all tasks are
 marked as ready, and the highest priority one is given the control.
 
 During all the startup sequence until the control is given the first task, we
-are using a speciak stack called 'system stack' which will be later re-used as
+are using a special stack called 'system stack' which will be later re-used as
 the interrupts and exception stack.
 
 To prepare the first context switch, the code in `task_pre_init()` is stuffing
-all the tasks stacks with a *fake* saved context whose program counter is
-containing the task start address and the stack pointer is pointing to its
-reserved stack space.
+all the tasks stacks with a *fake* saved context whose program counter contains
+the task start address, and the stack pointer is pointing to its reserved stack
+space.
 
 ### locking and atomicity
 
@@ -215,7 +215,7 @@ The atomic variables are 32-bit integers (which can usually be loaded/stored
 atomically on the architecture we are supporting). The `atomic.h` headers
 include primitives to do atomically various bit and arithmetic operations using
 either load-linked/load-exclusive, store-conditional/store-exclusive or simple
-depending what is available.
+depending on what is available.
 
 The mutexes are actually statically allocated binary semaphores. In case of
 contention, they will make the waiting task sleep (removing its ready bit) and
@@ -226,7 +226,7 @@ inversion phenomenon.
 
 Given the runtime is running on single core CPU, spinlocks would be equivalent
 to masking interrupts with `interrupt_disable()` spinlocks, but it's strongly
-discouraged to avoid harming the real-time characterics of the runtime.
+discouraged to avoid harming the real-time characteristics of the runtime.
 
 ## Time
 
@@ -235,11 +235,11 @@ discouraged to avoid harming the real-time characterics of the runtime.
 In the runtime, the time is accounted everywhere using a **64-bit**
 **microsecond** count since the microcontroller **cold** **boot**.
 
-Note: The runtime has no notion of wall-time/date, even though a few platform
+Note: The runtime has no notion of wall-time/date, even though a few platforms
 have an RTC inside the microcontroller.
 
 These microsecond timestamps are implemented in the code using the `timestamp_t`
-type and the current timestamp is returned by the `get_time()` function.
+type, and the current timestamp is returned by the `get_time()` function.
 
 The time-keeping is preferably implemented using a 32-bit hardware free running
 counter at 1Mhz plus a 32-bit word in memory keeping track of the high word of
@@ -247,7 +247,7 @@ the 64-bit absolute time. This word is incremented by the 32-bit timer rollback
 interrupt.
 
 Note: as a consequence of this implementation, when the 64-bit timestamp is read
-in interrupt context in an handler having a higher priority than the timer IRQ
+in interrupt context in a handler having a higher priority than the timer IRQ
 (which is somewhat rare), the high 32-bit word might be incoherent (off by one).
 
 ### timer event
@@ -276,10 +276,10 @@ differentiate executable area (eg `.code`) from writable area (eg `.bss` or
 `.data`) as there is a **single** **privilege** level for all execution
 contexts.
 
-As all the memory is implicitely shared between the task, the inter-task
+As all the memory is implicitly shared between the task, the inter-task
 communication can be done by simply writing the data structures in memory and
 using events to wake the other task (given we properly thought the concurrent
-accesses on thoses structures).
+accesses on those structures).
 
 ### heap
 
