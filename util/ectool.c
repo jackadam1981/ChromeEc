@@ -9692,6 +9692,15 @@ int cmd_typec_status(int argc, char *argv[])
 
 	printf("Port events: 0x%08x\n", r->events);
 
+	if (r->sop_revision)
+		printf("SOP  PD Rev: %d.%d\n", (r->sop_revision >> 12) & 0xF,
+		       (r->sop_revision >> 8) & 0xF);
+
+	if (r->sop_prime_revision)
+		printf("SOP' PD Rev: %d.%d\n",
+		       (r->sop_prime_revision >> 12) & 0xF,
+		       (r->sop_prime_revision >> 8) & 0xF);
+
 	return 0;
 }
 
