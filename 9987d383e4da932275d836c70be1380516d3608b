@@ -16,6 +16,29 @@
       "message": "OK I think this works properly now. PTAL",
       "revId": "9987d383e4da932275d836c70be1380516d3608b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b30de32_c872c90d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1950,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-10-09T22:12:13Z",
+      "side": 1,
+      "message": "nit: use MSEC macro for readability?",
+      "range": {
+        "startLine": 1950,
+        "startChar": 3,
+        "endLine": 1950,
+        "endChar": 18
+      },
+      "revId": "9987d383e4da932275d836c70be1380516d3608b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
