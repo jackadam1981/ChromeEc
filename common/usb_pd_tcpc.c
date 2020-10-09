@@ -371,6 +371,7 @@ static int send_hard_reset(int port)
 	/* Ensure that we have a final edge */
 	off = pd_write_last_edge(port, off);
 	/* Transmit the packet */
+	// ServoV4p1 Debug
 	if (pd_start_tx(port, pd[port].polarity, off) < 0)
 		return PD_TX_ERR_COLLISION;
 	pd_tx_done(port, pd[port].polarity);

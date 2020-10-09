@@ -4586,6 +4586,7 @@ void pd_task(void *u)
 			if (hard_reset_sent)
 				break;
 
+			//ServoV4p1: This pd_transmit() is failing in PDSNKDTS
 			if (pd_transmit(port, TCPC_TX_HARD_RESET, 0, NULL,
 				AMS_START) < 0) {
 				/*
