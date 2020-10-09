@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "6549f9fb_0bfef8b6",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Is this the function which will ultimately cause USB safe state to be set?  If so, safe state should be called before we send the ExitMode VDM, not after we got the exit ACK\u0027d.  Correct me if I\u0027m following this wrong.\n\nIt seems like the most straightforward thing would be to move away from the common exit code for TBT, and just expressly set USB safe state when we know we\u0027re setting up the exit mode in this module.  Then the data structures can continue to be cleared here after the exit completes, but we\u0027d already have set safe state correctly.",
       "revId": "b8658c099b7b6da4333189d1bdfd3a6847404a48",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "95a1b946_2237ebcb",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -32,8 +33,25 @@
       "message": "As of Patchset 10, the call chain is\nintel_vdm_acked-\u003epd_dfp_exit_mode-\u003esvdm_tbt_compat_exit_mode\n-\u003eusb_mux_set_safe_mode,\nand you\u0027re right: That makes the safe mode timing wrong. The story is similar for DP.\n\nAlso as of this patchset, pd_dfp_exit_mode does very little that is generic and mostly serves as a shim between mode-specific code for the same mode. IMO, it has been confusing and unintuitive/impossible to use correctly for a long time. I would be in favor of its complete removal. But we shouldn\u0027t do that in the CL, if we can help it. This review has already increased in scope a fair amount.",
       "parentUuid": "6549f9fb_0bfef8b6",
       "revId": "b8658c099b7b6da4333189d1bdfd3a6847404a48",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb62a2c_ce966adc",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-09T00:11:20Z",
+      "side": 1,
+      "message": "Ack. I have added a TODO. And I\u0027ll add a follow up patch set to address this issue",
+      "parentUuid": "95a1b946_2237ebcb",
+      "revId": "b8658c099b7b6da4333189d1bdfd3a6847404a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

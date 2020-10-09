@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "e68a091c_9855c50d",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Diana: The AMS diagrams indicate that we should change the mux similarly during SOP Exit Mode and cable plug Exit Mode, but I don\u0027t think mux settings are partner-specific. Does that mean that we should go back and forth between safe mode and USB mode during a multistep exit? Or should we only do each of these things once?",
       "revId": "a5000b69a1c1ab56121311e59bbb5c69161bd397",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4a34f766_935c7f82",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -32,10 +33,10 @@
       "message": "Technically, we should go back and forth between safe and USB during exit as we send each message.  Practically, we\u0027re sending them one right after the other so it should probably be fine to set safe when we start exiting, and then set USB when we\u0027re done.",
       "parentUuid": "e68a091c_9855c50d",
       "revId": "a5000b69a1c1ab56121311e59bbb5c69161bd397",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "db627e6a_bc291f8d",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -50,8 +51,25 @@
       "message": "\u003e Technically, we should go back and forth between safe and USB during exit as we send each message.\n\nCan you think of a practical reason for this, or do you think it\u0027s just a spec quirk?",
       "parentUuid": "4a34f766_935c7f82",
       "revId": "a5000b69a1c1ab56121311e59bbb5c69161bd397",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d6f3f17_a1e7cb92",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-09T00:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db627e6a_bc291f8d",
+      "revId": "a5000b69a1c1ab56121311e59bbb5c69161bd397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
