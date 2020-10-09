@@ -93,6 +93,30 @@
       },
       "revId": "068299eb59bec3d3757055c2319b9e973b06858b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a3f7be_d91df973",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-09T15:43:31Z",
+      "side": 1,
+      "message": "Looks like the spec backs you up here.  When exiting from the Power1.5.SNK state, the tSinkAdj is only needed when transitioning to PowerDefault.SNK. There\u0027s no delay specified when transitioning from Power1.5.SNK to Power3.0.SNK.",
+      "parentUuid": "569856f1_83d8561a",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 216,
+        "endChar": 15
+      },
+      "revId": "068299eb59bec3d3757055c2319b9e973b06858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
