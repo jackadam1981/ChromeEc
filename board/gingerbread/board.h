@@ -23,7 +23,7 @@
 
 /* USB Type C and USB PD defines */
 #define USB_PD_PORT_HOST   0
-#define USB_PD_PORT_UF   1
+#define USB_PD_PORT_DP   1
 
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_MUX_TUSB1064
