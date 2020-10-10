@@ -934,7 +934,7 @@ void pd_transmit_complete(int port, int status)
 static int pd_transmit(int port, enum tcpm_transmit_type type,
 		       uint16_t header, const uint32_t *data, enum ams_seq ams)
 {
-	int evt;
+	uint32_t evt;
 	int res;
 #ifdef CONFIG_USB_PD_REV30
 	int sink_ng = 0;
@@ -997,16 +997,38 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 		}
 	}
 #endif
+	(port==CHG || 1)?CPRINTS("C%d: <AXE>",port):0;
 	tcpm_transmit(port, type, header, data);
 
-	/* Wait until TX is complete */
-	evt = task_wait_event_mask(PD_EVENT_TX, PD_T_TCPC_TX_TIMEOUT);
+	//do {
+		/* Wait until TX is complete */
+		evt = task_wait_event_mask(PD_EVENT_TX, PD_T_TCPC_TX_TIMEOUT);
+	//} while
 
-	if (evt & TASK_EVENT_TIMER)
+	if (evt & TASK_EVENT_TIMER){
+		(port==CHG || 1)?CPRINTS("C%d: <TIM> %d",port, pd[port].tx_status):0;
 		return -1;
+	}
 
-	/* TODO: give different error condition for failed vs discarded */
-	res = pd[port].tx_status == TCPC_TX_COMPLETE_SUCCESS ? 1 : -1;
+	/*
+	* TODO: give different error condition for failed vs discarded
+	*
+	* enum tcpc_transmit_complete {
+	* TCPC_TX_UNSET = -1,
+	* TCPC_TX_COMPLETE_SUCCESS =   0,
+	* TCPC_TX_COMPLETE_DISCARDED = 1,
+	* TCPC_TX_COMPLETE_FAILED =    2,
+	*/
+
+	//ServoV4p1 debug
+	if (pd[port].tx_status == TCPC_TX_COMPLETE_SUCCESS) {
+		res=1;
+		(port==CHG || 1)?CPRINTS("C%d: <ACK> %d",port, pd[port].tx_status):0;
+	}
+	else {
+		res=-1;
+		(port==CHG || 1)?CPRINTS("C%d: <NAK> %d",port, pd[port].tx_status):0;
+	}
 
 #ifdef CONFIG_USB_PD_REV30
 	/* If the AMS transaction failed to start, reset CC to OK */
@@ -3142,12 +3164,18 @@ void pd_task(void *u)
 				/* Determine the polarity. */
 				tcpm_get_cc(port, &cc1, &cc2);
 				if (pd[port].power_role == PD_ROLE_SINK) {
-					pd[port].polarity =
-						get_snk_polarity(cc1, cc2);
+					// TODO: Fix this for SnkDTS ServoV4p1
+					// Below is a hack just to move ball forward
+					if (cc_is_src_dbg_acc(cc1,cc2)){
+						pd[port].polarity =
+							board_get_src_dts_polarity(port);
+					} else {
+						pd[port].polarity =
+							get_snk_polarity(cc1, cc2);
+					}
 				} else if (cc_is_snk_dbg_acc(cc1, cc2)) {
 					pd[port].polarity =
-						board_get_src_dts_polarity(
-								port);
+						board_get_src_dts_polarity(port);
 				} else {
 					pd[port].polarity =
 						get_src_polarity(cc1, cc2);
@@ -3501,7 +3529,7 @@ void pd_task(void *u)
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				break;
 			}
-#ifdef CONFIG_USB_PD_TCPM_TCPCI
+#if defined(CONFIG_USB_PD_TCPM_TCPCI) || defined(CONFIG_USB_PD_TCPM_STUB)
 			/*
 			 * After transmitting hard reset, TCPM writes
 			 * to RECEIVE_DETECT register to enable
@@ -3509,7 +3537,7 @@ void pd_task(void *u)
 			 */
 			if (pd_comm_is_enabled(port))
 				tcpm_set_rx_enable(port, 1);
-#endif /* CONFIG_USB_PD_TCPM_TCPCI */
+#endif /* CONFIG_USB_PD_TCPM_TCPCI  || CONFIG_USB_PD_TCPM_STUB */
 
 			set_state(port, PD_STATE_SRC_STARTUP);
 			break;
@@ -3955,6 +3983,7 @@ void pd_task(void *u)
 
 			/* Source connection monitoring */
 			if (!cc_is_open(cc1, cc2)) {
+				//ServoV4p1 debug
 				pd[port].cc_state = PD_CC_NONE;
 				hard_reset_count = 0;
 				new_cc_state = PD_CC_NONE;
@@ -4014,8 +4043,8 @@ void pd_task(void *u)
 			tcpm_get_cc(port, &cc1, &cc2);
 
 			// HACKHACKHACK: Debug print
-			//if(port==0)
-			//	CPRINTS("C%d: ADC read cc1 [%d] cc2 [%d]",port,cc1,cc2);
+			if(port==DUT)
+				CPRINTS("C%d: ADC read cc1 [%d] cc2 [%d]",port,cc1,cc2);
 
 			if (cc_is_rp(cc1) && cc_is_rp(cc2)) {
 				/* Debug accessory */
@@ -4066,8 +4095,29 @@ void pd_task(void *u)
 			/* We are attached */
 			if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
 				hook_notify(HOOK_USB_PD_CONNECT);
-			pd[port].polarity = get_snk_polarity(cc1, cc2);
+
+			/*
+			* ========================
+			* THIS IS THE BROKEN PART
+			* pd 1 state in snkdts mode
+			* =======================
+			*/
+
+			// TODO: Fix this for SnkDTS ServoV4p1
+			// Below is a hack just to move ball forward
+			// Should be get_snk_dts polarity
+			if (cc_is_src_dbg_acc(cc1,cc2)){
+				pd[port].polarity =
+					board_get_src_dts_polarity(port);
+			} else {
+				pd[port].polarity =
+					get_snk_polarity(cc1, cc2);
+			}
+			//pd[port].polarity = get_snk_polarity(cc1, cc2);
+
 			pd_set_polarity(port, pd[port].polarity);
+
+			CPRINTS("C%d: I SAW POLARITY [%d]",port, pd[port].polarity);
 			/* reset message ID  on connection */
 			pd[port].msg_id = 0;
 			/* initial data role for sink is UFP */
@@ -4163,7 +4213,11 @@ void pd_task(void *u)
 			/* Wait for source cap expired only if we are enabled */
 			if ((pd[port].last_state != pd[port].task_state)
 			    && pd_comm_is_enabled(port)) {
-#ifdef CONFIG_USB_PD_TCPM_TCPCI
+
+				CPRINTS("I'm here, did nothing. ==========>");
+				/* If type-C connection, then update the TCPC RX enable */
+
+#if defined(CONFIG_USB_PD_TCPM_TCPCI) || defined(CONFIG_USB_PD_TCPM_STUB)
 				/*
 				 * If we come from hard reset recover state,
 				 * then we can process the source capabilities
@@ -4171,9 +4225,11 @@ void pd_task(void *u)
 				 * receiving function.
 				 */
 				if (pd[port].last_state ==
-				    PD_STATE_SNK_HARD_RESET_RECOVER)
+				    PD_STATE_SNK_HARD_RESET_RECOVER) {
+					CPRINTS("==> DBG1");
 					tcpm_set_rx_enable(port, 1);
-#endif /* CONFIG_USB_PD_TCPM_TCPCI */
+				}
+#endif /* CONFIG_USB_PD_TCPM_TCPCI  || CONFIG_USB_PD_TCPM_STUB */
 #ifdef CONFIG_USB_PD_RESET_MIN_BATT_SOC
 				/*
 				 * If the battery has not met a configured safe
@@ -5086,6 +5142,13 @@ void pd_set_external_voltage_limit(int port, int mv)
 		pd[port].new_power_request = 1;
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	}
+}
+
+int pd_get_external_voltage_limit(int port)
+{
+	/* TODO: Do we not have a per-port max voltage? ServoV4p1 */
+	int max_volt = pd_get_max_voltage();
+	return max_volt;
 }
 
 void pd_update_contract(int port)
