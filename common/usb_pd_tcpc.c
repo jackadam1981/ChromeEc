@@ -36,7 +36,7 @@
  * Note that higher log level causes timing changes and thus may affect
  * performance.
  */
-static int debug_level;
+static int debug_level=2;
 
 static struct mutex pd_crc_lock;
 #else
@@ -190,6 +190,7 @@ static const uint8_t dec4b5b[] = {
 #define TYPE_C_SRC_500_THRESHOLD	PD_SRC_RD_THRESHOLD
 #define TYPE_C_SRC_1500_THRESHOLD	660  /* mV */
 #define TYPE_C_SRC_3000_THRESHOLD	1230 /* mV */
+#define TYPE_C_SRC_VCONN_THRESHOLD	2040 /* mV */
 
 /* Convert TCPC Alert register to index into pd.alert[] */
 #define ALERT_REG_TO_INDEX(reg) (reg - TCPC_REG_ALERT)
@@ -383,6 +384,7 @@ static int send_hard_reset(int port)
 static int send_validate_message(int port, uint16_t header,
 				 const uint32_t *data)
 {
+	//TWINKIE ServoV4p1 phy
 	int r;
 	static uint32_t payload[7];
 	uint8_t expected_msg_id = PD_HEADER_ID(header);
@@ -444,6 +446,8 @@ static int send_validate_message(int port, uint16_t header,
 				/* got the GoodCRC we were expecting */
 				/* do not catch last edges as a new packet */
 				udelay(20);
+				// SERVOV4P1 THIS DELAY IS TOO MUCH!
+				// Try tEnddriveBMC 23 -> tInterFrameGap 
 				return bit_len;
 			} else {
 				/*
@@ -806,7 +810,11 @@ static int cc_voltage_to_status(int port, int cc_volt, int cc_sel)
 	}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	else if (pd[port].cc_pull == TYPEC_CC_RD) {
-		if (cc_volt >= TYPE_C_SRC_3000_THRESHOLD)
+		// TODO: This bugs out if VCONN is applied on Rd line
+		// Add an error handler case for that scenario
+		if (cc_volt >= TYPE_C_SRC_VCONN_THRESHOLD)
+			return TYPEC_CC_VOLT_OPEN;
+		else if (cc_volt >= TYPE_C_SRC_3000_THRESHOLD)
 			return TYPEC_CC_VOLT_RP_3_0;
 		else if (cc_volt >= TYPE_C_SRC_1500_THRESHOLD)
 			return TYPEC_CC_VOLT_RP_1_5;
