@@ -397,7 +397,7 @@ static void dut_activate_charge(void)
 		//hook_call_deferred(&fix_role_state_data, 200 * MSEC);
 		//usleep(2000);
 
-		//pd_set_dual_role(DUT, get_dual_role_of_src());
+		
 		//pd_update_contract(DUT);
 
 		/*
@@ -411,6 +411,7 @@ static void dut_activate_charge(void)
 
 			/* Remove Rp/Rd on both CC lines */
 			/* ROLE_CONTROL  Open (Disconnect or don’t care) */
+			CPRINTS("dut_activate_charge(1): ALLOW PD IS %d",0);
 			pd_comm_enable(DUT, 0);			
 			pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
 
@@ -421,11 +422,15 @@ static void dut_activate_charge(void)
 			usleep(PD_T_ERROR_RECOVERY);
 		//============================================
 
+
 		if (!(cc_config & CC_ENABLE_DRP))
 			pd_set_host_mode(DUT, 1);
 
-
-//		do_cc(cc_config);
+		#if 0
+		/* Don't do this here, it doesn't work */
+		pd_set_dual_role(DUT, get_dual_role_of_src());
+		#endif
+		// do_cc(cc_config);
 		//We need to use do_cc to get a disconnect here
 		// (Ideally need a cleaner transition)
 		// See BELOW comment.
@@ -447,7 +452,7 @@ static void dut_activate_charge(void)
 		*/
 
 		allow_pd=is_pd_allowed();
-		CPRINTS("dut_activate_charge: ALLOW PD IS %d",allow_pd);
+		CPRINTS("dut_activate_charge(2): ALLOW PD IS %d",allow_pd);
 		pd_comm_enable(DUT,allow_pd);
 
 		pd_update_contract(DUT);
@@ -459,6 +464,7 @@ static void board_manage_dut_port(void)
 {
 	enum pd_dual_role_states preferred_drp;
 	enum pd_dual_role_states current_drp;
+	enum pd_power_role current_power;
 	int allow_pd=0;
 
 	/*
@@ -477,6 +483,14 @@ static void board_manage_dut_port(void)
 		preferred_drp = get_dual_role_of_src();
 
 	current_drp = pd_get_dual_role(DUT);
+	current_power = pd_get_power_role(DUT);
+
+	CPRINTS("board_manage_dut_port:\n" \
+		    "    curr_drp [%d] pref_drp [%d]\n" \
+			"    curr_pow [%d] pref_pow [%d]\n",  \
+			current_drp, preferred_drp, current_power, is_charge_through_allowed());
+
+	/* WARNING! Do not add  || current_power != is_charge_through_allowed() */
 
 	if (current_drp != preferred_drp) {
 		/* Update role. */
@@ -527,6 +541,7 @@ static void board_manage_dut_port(void)
 			/* Cancel any pending function calls */
 			hook_call_deferred(&dut_activate_charge_data, -1);
 			hook_call_deferred(&dut_activate_charge_data, 2000 * MSEC);
+			CPRINTS("board_manage_dut_port: Trying to activate_charge");
 		}
 	}
 
@@ -550,24 +565,28 @@ static void update_ports(void)
 		/* CHG Vbus has dropped, so become SNK. */
 		chg_pdo_cnt = 0;
 
-		// TODO: This is a workaround to prevent infinite HARD_RESETs
-		// when booting ServoV4p1 with no PSU (disable PD on FORCE_SNK)
-		
-/*
-		if(!is_charge_through_allowed() && !(cc_config & CC_SNK_WITH_PD)){
-			CPRINTS("WORKAROUND TURNING OFF PD");
-			pd_comm_enable(DUT, 0);
-		}
-*/
-
 	} else {
 		/* Advertise the 'best' PDOs at various discrete voltages */
 		if (active_charge_supplier == CHARGE_SUPPLIER_PD) {
 			src_index = 0;
 			snk_index = -1;
 
+			/*
+			* TODO: This code artificially limits PDO to entries in
+			* pd_src_voltages_mv table defined at top.
+			*
+			* This is artificially incorrect and overconstrainted.
+			*
+			* Allow non-standard PDO objects so long as they are valid.
+			* See: crrev/c/730877 for where this ham started.
+			*
+			* This needs to be rearchitected from scratch. :(
+			* Needs to support Variable PDO conversion.
+			*/
+
 			for (i = 0; i < ARRAY_SIZE(pd_src_voltages_mv); ++i) {
-				/* Adhere to board voltage limits */
+
+				/* Adhere to user-set max voltage limit */
 				if (pd_src_voltages_mv[i] >
 				    max_supported_voltage())
 					break;
@@ -651,7 +670,7 @@ static void tusb1064_tcpm_hook_connect(void)
 	// TODO: Put this in a mux driver (for UFP)!
 	CPRINTS("HOOK data role is [%d] [st%d] [%s]", current_data, pd_get_task_state(port), pd_get_task_state_name(port));
 
-#if 1
+#if 0
 /* Hold off on this -- see if we can fix TCPMv1 */
 	/* Needed because HOOK is called before data_role_set() */
 	switch(pd_get_task_state(port)){
@@ -677,9 +696,12 @@ static void tusb1064_tcpm_hook_connect(void)
 	// TODO: Add is_pd_allowed() call here to properly handle policy
 	// HACKHACKHACK: we should have a callback... this returns too fast.
 #endif
+
+#if 1
 	allow_pd = is_pd_allowed();
 	CPRINTS("HOOK: ALLOW PD IS %d",allow_pd);
 	pd_comm_enable(DUT, allow_pd);
+#endif
 
 	return;
 }
@@ -701,8 +723,9 @@ static void tusb1064_tcpm_hook_disconnect(void)
 
 	/* TODO: Re-init mux properly until HOOK method is deprecated */
 	/* Investigate proper solution rearchitecting TCPMv1 */
+	#if 0
 	init_tusb1064(1);
-
+	#endif
 
 	CPRINTS("RESET A FEELING on port (%d)!",port);
 	//mux_state_t muxptr* = &usb_muxes[port];
@@ -747,14 +770,19 @@ static void tusb1064_tcpm_hook_disconnect(void)
 	if (is_charge_through_allowed()){
 		preferred_drp = get_dual_role_of_src();
 
-		if (current_power == PD_ROLE_SINK) {
+		if (current_power == PD_ROLE_SINK ) {
 
 		// This initial call MUST be DRP_FORCE_SOURCE to trigger clean state transition.
-		pd_set_dual_role(DUT, PD_DRP_FORCE_SOURCE);
-		//pd_set_dual_role(DUT, get_dual_role_of_src());
+		pd_set_dual_role(DUT, PD_DRP_FORCE_SOURCE); //works
 
+			//dut_activate_charge(); [Doesn't work]
+			//board_manage_dut_port(); [Doesn't work]
+
+		// THIS WAS BREAKING THINGS
+		#if 0
 		//============ FORCE A DISCONNECT ============
 			pd_power_supply_reset(DUT);
+
 
 			/* Remove Rp/Rd on both CC lines */
 			/* ROLE_CONTROL  Open (Disconnect or don’t care) */
@@ -767,26 +795,38 @@ static void tusb1064_tcpm_hook_disconnect(void)
 			 */
 			usleep(PD_T_ERROR_RECOVERY);
 		//============================================
+		#endif
 
+
+		
+	#if 0	
+		/* This doesn't work for some reason. */
 		if (!(cc_config & CC_ENABLE_DRP))
 			pd_set_rp_rd(DUT, TYPEC_CC_RP, rp_value_stored);
-
-
+		//task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE, 0);
+		pd_set_dual_role(DUT, get_dual_role_of_src());
+	#endif
+	#if 1
 		allow_pd=is_pd_allowed();
 		CPRINTS("HOOK RESET: ALLOW PD IS %d",allow_pd);
-		pd_comm_enable(DUT,0);
-		CPRINTS("RESET PD allowed [%d] Power [%d] DRP [%d] DRP-Pref [%d] CC_CONFIG [0x%x]", allow_pd, current_power, current_drp, preferred_drp, cc_config);
+		pd_comm_enable(DUT,allow_pd);
+	#else
+		allow_pd=pd_comm_is_enabled(DUT);
+	#endif
+		CPRINTS("RESET PD enabled [%d] Power [%d] DRP [%d] DRP-Pref [%d] CC_CONFIG [0x%x]", allow_pd, current_power, current_drp, preferred_drp, cc_config);
 
 		/*
 		 * Update PD contract to reflect new available CHG
 		 * voltage/current values.
 		 */
-
+		// THIS WAS CAUSING MYSERTY SRC_CAP ON DISCONNECT
+		#if 0
 		pd_update_contract(DUT);
+		#endif
 		}
 	}
 
-	board_manage_dut_port();
+	//board_manage_dut_port();
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, tusb1064_tcpm_hook_disconnect, HOOK_PRIO_DEFAULT);
 #endif
@@ -795,16 +835,19 @@ DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, tusb1064_tcpm_hook_disconnect, HOOK_PRIO_DE
 
 int board_set_active_charge_port(int charge_port)
 {
+	/* WARNING! Do not change this statement; causes a bootloop */
 	if (charge_port == DUT)
 		return -1;
 
 	active_charge_port = charge_port;
 	update_ports();
 
-	if (!charge_port_is_active())
+	if (!charge_port_is_active()) {
 		/* Don't negotiate > 5V, except in lockstep with DUT */
 		pd_set_external_voltage_limit(CHG, PD_MIN_MV);
 
+		CPRINTS("C%d: board_set_active triggered!",CHG);
+	}
 	return 0;
 }
 
@@ -828,8 +871,11 @@ __override uint8_t board_get_src_dts_polarity(int port)
 	 * When servo configured as srcdts, the CC polarity is based
 	 * on the flags.
 	 */
-	if (port == DUT)
-		return !!(cc_config & CC_POLARITY);
+	if (port == DUT){
+		/* This is to work around 4-polarity hack */
+		return ( (!(cc_config & CC_DISABLE_DTS))<<1 | !!(cc_config & CC_POLARITY));
+	}
+		
 
 	return 0;
 }
@@ -961,6 +1007,7 @@ int pd_adc_read(int port, int cc)
 {
 	int mv = -2;
 	bool secondary;
+	enum pd_power_role current_power;
 	// TODO: This needs to be rewritten to use dynamic
 	// per port in question. Not hardcoded single one.
 
@@ -983,6 +1030,19 @@ int pd_adc_read(int port, int cc)
 		 */
 		switch(cc_pull_stored){
 		case TYPEC_CC_OPEN:
+			/*
+			* Necessary logic for CC_OPEN whre Rp state is lost 
+			* Chains backward into cc_voltage_to_status() to vOpen.
+			*/
+			current_power = pd_get_power_role(port);
+			switch (current_power){
+			case PD_ROLE_SINK:
+				mv=-3;
+			break;
+			case PD_ROLE_SOURCE:
+				mv=3303;
+			break;
+			}
 		case TYPEC_CC_RA_RD:
 		case TYPEC_CC_RD:
 		case TYPEC_CC_RA:
@@ -1416,6 +1476,12 @@ int pd_set_power_supply_ready(int port)
 
 		vbus[DUT].mv = vbus[CHG].mv;
 		vbus[DUT].ma = vbus[CHG].mv;
+
+		/*
+		* Hook into VBUS ON activity to switch to Freeze.
+		* This fixes PR_SWAP ability
+		*/
+
 		pd_set_dual_role(DUT, get_dual_role_of_src());
 	} else {
 		vbus[DUT].mv = 0;
@@ -1438,8 +1504,24 @@ void pd_power_supply_reset(int port)
 	chg_power_select(CHG_POWER_OFF);
 	dut_chg_en(0);
 
-	/* DUT is lost, back to 5V limit on CHG */
-	pd_set_external_voltage_limit(CHG, PD_MIN_MV);
+	/*
+	* Don't cause a race condition by hammering the PD task.
+	* 
+	* TODO: We do not (currently) have per-port max voltage support.
+	* pd_get_external_voltage_limit() is a stubbed wrapper.
+	*/
+
+	if (pd_get_external_voltage_limit(port) != PD_MIN_MV){
+		CPRINTS("C%d:psu_reset touching PD task",port);
+
+		/* DUT is lost, back to 5V limit on CHG */
+		pd_set_external_voltage_limit(CHG, PD_MIN_MV);
+		msleep(100);
+	}
+	else {
+		CPRINTS("C%d:psu_reset interdicted!",port);
+		msleep(100);
+	}
 }
 
 int pd_snk_is_vbus_provided(int port)
@@ -1481,6 +1563,7 @@ __override int pd_check_power_swap(int port)
 	switch(current_power){
 	case PD_ROLE_SOURCE:
 		/*
+		// OBSOLETE -- IGNORE
 		if (pd_get_dual_role(port) != PD_DRP_FORCE_SOURCE)
 			ret=1;
 		*/
@@ -1766,7 +1849,7 @@ const uint32_t vdo_ama = VDO_AMA(CONFIG_USB_PD_IDENTITY_HW_VERS,
 static int svdm_response_identity(int port, uint32_t *payload)
 {
 	int dp_supported;
-#if 0
+#if 1
 	// TODO: Per USB-IF NAK should not be done here.
 	// "Modes supported" should be a fixed item.
 	// Move this to EnterMode check.
@@ -1808,13 +1891,13 @@ static int svdm_response_modes(int port, uint32_t *payload)
 	vdo_dp_mode[0] =
 		VDO_MODE_DP(0,             /* UFP pin cfg supported: none */
 			    alt_dp_config_pins(),  /* DFP pin */
-			    1,             /* no usb2.0 signalling in AMode */
+			    0,             /* 1= No usb2.0 signalling in AMode */
 			    alt_dp_config_cable(), /* plug or receptacle */
 			    MODE_DP_V13,   /* DPv1.3 Support, no Gen2 */
 			    MODE_DP_SNK);  /* Its a sink only */
 
 
-#if 0
+#if 1
 	/* CCD uses the SBU lines; don't enable DP when dts-mode enabled */
 	// TODO: This shouldn't be handled here.
 	// It should be handled in EnterMode per USB-IF
@@ -2043,25 +2126,48 @@ static void do_cc(int cc_config_new)
 	int dualrole;
 	int allow_pd;
 
-	//TODO: This is clunky and calls itself
-	// Clean this up to callback itself or something
-	// HACKHACKHACK
-
 	if (cc_config_new != cc_config) {
 
-		/* Run if CC not previously detach */
-		if (!(cc_config & CC_DETACH_FAR)) {
-			/* Force detach */
-			pd_power_supply_reset(DUT);
+		/* Run if CC_CONFIG is not currently in Detach FSM state */
 
-	//		/* Always set to 0 here so both CC lines are changed */
-	//		cc_config &= ~(CC_DISABLE_DTS | CC_ALLOW_SRC);
-	//Typo and logic?
+		if (!(cc_config & CC_DETACH_FAR)) {
+			/* Simulate a "natural" detach via faked ADC reads */
+			/* To instead do a Force Detach use TCPCM + Rp-Open */
+
+			/*
+			* TODO: We were encountering a race condition in the
+			* pd_transmit() function in usb_pd_protocol.c file when
+			* we reset PD supply /before/ applying RpOpen.
+			*
+			* (b/170057526) This also stops the "Mystery SRC_CAP"
+			* right before Rp open+open is applied, wedging TCPMv2.
+			*
+			* TODO: maybe actually be the HOOK function doing it!
+			*/
 
 			/* Remove Rp/Rd on both CC lines */
 			/* ROLE_CONTROL  Open (Disconnect or don’t care) */
 			pd_comm_enable(DUT, 0);			
 			pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+
+			/*
+			* Add an arbitrary delay to avoid race condition
+			* Using: 6.3.5.5 Force Detach (S4)
+			*/
+			usleep(PD_T_SRC_DISCONNECT);
+
+
+			// TODO: This should be "Vbus off" only in one spot!
+			#if 1
+			// MAGIC PRINTF! DO NOT REMOVE!
+			CPRINTS("do_cc -> pr_reset");
+			pd_power_supply_reset(DUT);
+			CPRINTS("do_cc -> DONE_reset");
+			#endif
+
+			/* Always set to 0 here so both CC lines are changed */
+			//cc_config &= ~(CC_DISABLE_DTS | CC_ALLOW_SRC);
+			//Typo? Logic? Why is this here?
 
 			/*
 			 * If just changing mode (cc keeps enabled), give some
@@ -2071,12 +2177,19 @@ static void do_cc(int cc_config_new)
 				usleep(PD_T_ERROR_RECOVERY);
 		}
 
-		if ((cc_config & ~cc_config_new) & CC_DISABLE_DTS) {
+		if (cc_config_new & CC_DETACH_FAR) {
+			/* If we're "off", re-enable CCD detect by default */
+			CPRINTS("<<CCD RST by default");
+			ccd_enable(1);
+			ext_hpd_detection_enable(0);			
+		} else if ((cc_config & ~cc_config_new) & CC_DISABLE_DTS) {
 			/* DTS-disabled -> DTS-enabled */
+			CPRINTS("<<CCD ACK by setting");
 			ccd_enable(1);
 			ext_hpd_detection_enable(0);
 		} else if ((cc_config_new & ~cc_config) & CC_DISABLE_DTS) {
 			/* DTS-enabled -> DTS-disabled */
+			CPRINTS("<<CCD NAK by setting");
 			ccd_enable(0);
 			if (!(alt_dp_config & ALT_DP_OVERRIDE_HPD))
 				ext_hpd_detection_enable(1);
@@ -2090,8 +2203,16 @@ static void do_cc(int cc_config_new)
 			chargeable = is_charge_through_allowed();
 			dualrole = chargeable ? get_dual_role_of_src() :
 						PD_DRP_FORCE_SINK;
+
+
+			if (is_charge_through_allowed() &&
+				!is_charge_through_enabled()) {
+				pd_set_dual_role(DUT, PD_DRP_FORCE_SOURCE);
+			}
+			
+			// This only actually does anything for FORCE_SINK
+			// TODO: Double check this later.
 			pd_set_dual_role(DUT, dualrole);
-			//usleep(200000);	//Give PD task time to tick
 
 
 			/*
@@ -2185,7 +2306,9 @@ static int command_cc(int argc, char **argv)
 		return EC_ERROR_PARAM3;
 
 	do_cc(cc_config_new);
+	#if 0
 	print_cc_mode();
+	#endif
 
 	return EC_SUCCESS;
 }
