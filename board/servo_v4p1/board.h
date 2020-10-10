@@ -189,9 +189,9 @@
 #define CONFIG_USB_PD_TCPM_STUB
 #undef CONFIG_USB_PD_PULLUP
 #define CONFIG_USB_PD_PULLUP TYPEC_RP_USB
+/* Default pull for board should not be Rp3a0 due to Cr50 */
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_ALT_MODE
-
 #define CONFIG_USB_PD_DEBUG_LEVEL 3
 #define CONFIG_I2C_DEBUG
 
@@ -215,6 +215,10 @@ CONFIG_USBC_USB_SWITCH_UFP_SUPPORT is implied, let's test that config.h code
 */
 #define CONFIG_USBC_USB_SWITCH_DFP_SUPPORT
 #endif
+
+/*This is needed to recover PD Comm after HARD_RESETs */
+/* #define CONFIG_USB_PD_TCPM_TCPCI */
+
 
 #define SERVO_DEFAULT_CONFIG  CONF_PDSRCDTS(CC_UNCONSTRAINED_POWER | CC_PRS_ANY)
 /*

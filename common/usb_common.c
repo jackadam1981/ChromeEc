@@ -185,6 +185,19 @@ typec_current_t usb_get_typec_current_limit(enum tcpc_cc_polarity polarity,
 	return charge;
 }
 
+
+#if 0
+/* Detected resistor values of port partner */
+enum tcpc_cc_voltage_status {
+	TYPEC_CC_VOLT_OPEN = 0,
+	TYPEC_CC_VOLT_RA = 1,	  /* Port partner is applying Ra */
+	TYPEC_CC_VOLT_RD = 2,	  /* Port partner is applying Rd */
+	TYPEC_CC_VOLT_RP_DEF = 5, /* Port partner is applying Rp (0.5A) */
+	TYPEC_CC_VOLT_RP_1_5 = 6, /* Port partner is applying Rp (1.5A) */
+	TYPEC_CC_VOLT_RP_3_0 = 7, /* Port partner is applying Rp (3.0A) */
+};
+#endif
+
 enum tcpc_cc_polarity get_snk_polarity(enum tcpc_cc_voltage_status cc1,
 	enum tcpc_cc_voltage_status cc2)
 {
@@ -203,6 +216,16 @@ enum tcpc_cc_polarity get_snk_polarity(enum tcpc_cc_voltage_status cc1,
 enum tcpc_cc_polarity get_src_polarity(enum tcpc_cc_voltage_status cc1,
 	enum tcpc_cc_voltage_status cc2)
 {
+	// TODO: Fix this to account for SinkDTS polarity (Rd+Rd)
+	// Some boards apply VCONN blindly on a random Rd and break this
+	//
+	// But spec says "one in Ra".
+	// So abide by spec here as "Ra" <"Rd"
+	// Can fix cc_is_snk_dbg_acc() function later
+
+	if (cc_is_snk_dbg_acc(cc1,cc2))
+		return (cc2 > cc1) ? POLARITY_CC1_DTS : POLARITY_CC2_DTS;
+
 	return (cc1 == TYPEC_CC_VOLT_RD) ? POLARITY_CC1 : POLARITY_CC2;
 }
 

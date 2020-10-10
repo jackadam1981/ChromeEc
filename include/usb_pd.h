@@ -1487,6 +1487,16 @@ void pd_request_source_voltage(int port, int mv);
  */
 void pd_set_external_voltage_limit(int port, int mv);
 
+
+/**
+ * Get a voltage limit from the PD source.
+ * TODO: This is currently not supported uniquely per-port.
+ *
+ * @param port USB-C port number
+ * @preturn mv limit voltage in millivolts (TODO: for all ports)
+ */
+int pd_get_external_voltage_limit(int port);
+
 /**
  * Set the PD input current limit.
  *
