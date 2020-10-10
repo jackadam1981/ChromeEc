@@ -1144,8 +1144,6 @@ void tcpci_tcpc_alert(int port)
 		return;
 	}
 
-	
-
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)
 		tcpm_alert_ext_status(port, &alert_ext);
@@ -1222,8 +1220,6 @@ void tcpci_tcpc_alert(int port)
 				/* CC status cchanged, wake task */
 				pd_event |= PD_EVENT_CC;
 		} else {
-			CPRINTS("tcpc[%d]: alert = 0x%04x, cc1 = %d, cc2 = %d",
-				port, alert, cc1, cc2);
 			/* CC status changed, wake task */
 			pd_event |= PD_EVENT_CC;
 		}
