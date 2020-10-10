@@ -281,6 +281,7 @@ static inline void pd_select_polarity(int port, int polarity)
 				  : STM32_COMP_CMP2INSEL_INM6);/* PA2: C0_CC1 */
 	} else {
 		/* DUT use the right comparator inverted input for COMP1 */
+		// THIS RIGHT HERE needs to be fixed. Ignore passed polarity use our own.
 		STM32_COMP_CSR = (val & ~STM32_COMP_CMP1INSEL_MASK) |
 			(polarity_rm_dts(polarity) ? STM32_COMP_CMP1INSEL_INM5  /* PA5: C1_CC2 */
 			 : STM32_COMP_CMP1INSEL_INM6);/* PA0: C1_CC1 */

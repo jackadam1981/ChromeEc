@@ -189,6 +189,7 @@
 #define CONFIG_USB_PD_TCPM_STUB
 #undef CONFIG_USB_PD_PULLUP
 #define CONFIG_USB_PD_PULLUP TYPEC_RP_USB
+/* Default pull for board should not be Rp3a0 due to Cr50 */
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_ALT_MODE
 
