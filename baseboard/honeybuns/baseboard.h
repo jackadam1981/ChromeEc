@@ -167,7 +167,7 @@ enum usb_strings {
 #define CONFIG_USBC_PPC_VCONN
 #define CONFIG_USBC_PPC_DEDICATED_INT
 /* #define CONFIG_CMD_PPC_DUMP */
-#define CONFIG_CMD_TCPC_DUMP
+/* #define CONFIG_CMD_TCPC_DUMP */
 
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
