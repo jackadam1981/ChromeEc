@@ -967,7 +967,13 @@ uint32_t get_enter_usb_msg_payload(int port)
 				CABLE_TYPE_ACTIVE_REDRIVER;
 		}
 	} else {
-		eudo.cable_type = CABLE_TYPE_PASSIVE;
+		cable_mode_resp.raw_value =
+			pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
+
+		eudo.cable_type = cable_mode_resp.tbt_cable_ptype ==
+				  TBT_CABLE_PTYPE_ACABLE ?
+				  CABLE_TYPE_ACTIVE_REDRIVER :
+				  CABLE_TYPE_PASSIVE;
 	}
 
 	switch (disc->identity.product_t1.p_rev20.vbus_cur) {
