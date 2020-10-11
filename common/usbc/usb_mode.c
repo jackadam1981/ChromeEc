@@ -51,25 +51,40 @@ enum usb4_states {
 
 /* Ref: TBT4 PD discovery flow
  *
- * Structured
- * VDM version ------- <2.0 --------|
- *     |                            |
- *     >=2.0                        |
- *     |                            |
- * VDO version  ----- <1.3 ----- Modal op? - No -|
- *     |                            |            |
- *     >=1.3                        y            |
- *     |                            |            |
- * Enter USB4                    TBT SVID? - No -|
- * (SOP',SOP'',SOP)                 |            |
- *                                  y            |
- *                                  |            |
- *                       - y - Gen4 cable? - No -|
- *                      |                        |
- *              Enter mode TBT          Exit USB4 mode
- *              (SOP', SOP")
- *                      |
- *                Enter USB4 (SOP)
+ *                            Cable type
+ *                                 |
+ *            |-------- Passive ---|---- Active -----|
+ *            |                                      |
+ *      USB Highest Speed                Structured VDM version
+ *            |                                      |
+ *    --------|-------|-------|           |- >=2.0 - |- <2.0 -|
+ *    |       |       |       |           |                   |
+ *  >=Gen3   Gen2  USB2.0   Gen 1    VDO version - <1.3 - Modal op? - N -|
+ *    |       |       |       |           |                   |          |
+ * Enter USB  |   Exit USB4   |         >=1.3                 y          |
+ * SOP  with  |               |           |                   |          |
+ * Gen3 cable |               |     Enter USB4 SOP''      TBT SVID? - N -|
+ * speed      |               |           |                   |          |
+ *            |               |     Enter USB4 SOP'           y          |
+ *         Is modal op?       |           |                   |          |
+ *            |               |           |      - y - Gen4 cable? - No -|
+ *            y               |           |      |                       |
+ *            |               |           |  Enter mode TBT SOP''    Exit USB4
+ *       Is TBT SVID? -- N -- |           |      |
+ *            |               |           |  Enter mode TBT SOP'
+ *            y     Enter USB4 SOP with   |      |
+ *            |     Gen2 cable speed      |      |
+ *            |                           |      |
+ *  Is Discover mode SOP'           Enter USB4 SOP as per cable speed
+ *           B25? ----- N -----|
+ *            |                |
+ *            y                |
+ *            |                |
+ *     Enter TBT SOP'          |
+ *            |                |
+ *            |----------------|
+ *            |
+ * Enter USB4 SOP as per cable speed
  */
 
 static enum usb4_states usb4_state[CONFIG_USB_PD_PORT_MAX_COUNT];
@@ -127,26 +142,22 @@ bool enter_usb_is_capable(int port)
 	const struct pd_discovery *disc =
 			pd_get_am_discovery(port, TCPC_TX_SOP);
 	struct pd_discovery *disc_sop_prime;
-
-	/* TODO: b/156749387 Add support for LRD cable */
+	union tbt_mode_resp_cable cable_mode_resp;
 
 	if (!IS_ENABLED(CONFIG_USB_PD_USB4) ||
 	    !PD_PRODUCT_IS_USB4(disc->identity.product_t1.raw_value) ||
 	    usb4_state[port] == USB4_INACTIVE ||
-	    (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE &&
-	     get_usb4_cable_speed(port) < USB_R30_SS_U32_U40_GEN1))
+	    get_usb4_cable_speed(port) < USB_R30_SS_U32_U40_GEN1)
 		return false;
 
 	disc_sop_prime = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+	cable_mode_resp.raw_value =
+			pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
 
 	if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE &&
 	   (pd_get_vdo_ver(port, TCPC_TX_SOP_PRIME) < VDM_VER20 ||
 	    disc_sop_prime->identity.product_t1.a_rev30.vdo_version <
 							VERSION_1_3)) {
-		union tbt_mode_resp_cable cable_mode_resp = {
-			.raw_value =
-				pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME) };
-
 		if (disc->identity.idh.modal_support &&
 		    pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME) &&
 		    cable_mode_resp.tbt_rounded ==
@@ -155,7 +166,11 @@ bool enter_usb_is_capable(int port)
 			usb4_state[port] = USB4_ENTER_SOP;
 		else
 			return false;
-	} else if (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) {
+	} else if (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE &&
+		   get_usb4_cable_speed(port) > USB_R30_SS_U32_U40_GEN1) {
+		if (cable_mode_resp.tbt_cable_ptype == TBT_CABLE_PTYPE_ACABLE &&
+		    !tbt_cable_entry_is_done(port))
+			return false;
 		usb4_state[port] = USB4_ENTER_SOP;
 	}
 

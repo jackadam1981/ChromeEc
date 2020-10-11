@@ -124,7 +124,9 @@ union tbt_mode_resp_device {
 /*
  * Table F-11 TBT3 Cable Discover Mode VDO Responses
  * -------------------------------------------------------------
- * <31:24> : Reserved
+ * <31:26> : Reserved
+ * <25>    : Cable product type
+ * <24>    : Reserved
  * <23>    : Active Cable Plug Link Training
  *           0 = Active with bi-directional LSRX1 communication or when Passive
  *           1 = Active with uni-directional LSRX1 communication
@@ -148,6 +150,11 @@ union tbt_mode_resp_device {
  * <15:0>  : TBT Alternate Mode
  *           0x0001 = TBT Mode
  */
+enum tbt_cable_product_type {
+	TBT_CABLE_PTYPE_PCABLE,
+	TBT_CABLE_PTYPE_ACABLE,
+};
+
 enum tbt_compat_cable_speed {
 	TBT_SS_RES_0,
 	TBT_SS_U31_GEN1,
@@ -189,7 +196,9 @@ union tbt_mode_resp_cable {
 		enum tbt_cable_type tbt_cable : 1;
 		enum usb_retimer_type retimer_type : 1;
 		enum link_lsrx_comm lsrx_comm : 1;
-		uint8_t reserved0 : 8;
+		uint8_t reserved1 : 1;
+		enum tbt_cable_product_type tbt_cable_ptype : 1;
+		uint8_t reserved0 : 6;
 	};
 	uint32_t raw_value;
 };
