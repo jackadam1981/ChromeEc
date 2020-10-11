@@ -495,11 +495,35 @@ static int board_ps8818_mux_set(const struct usb_mux *me,
 	return rv;
 }
 
+/*
+ * PS8802 set mux tuning.
+ * Adds in board specific gain and DP lane count configuration
+ */
+static int ps8802_tune_mux(const struct usb_mux *mux)
+{
+	int rv = EC_SUCCESS;
+
+	/* Boost the USB gain */
+	rv = ps8802_i2c_field_update16(mux,
+				PS8802_REG_PAGE2,
+				PS8802_REG2_USB_SSEQ_LEVEL,
+				PS8802_USBEQ_LEVEL_UP_MASK,
+				PS8802_USBEQ_LEVEL_UP_20DB);
+
+	rv = ps8802_i2c_field_update16(mux,
+				PS8802_REG_PAGE2,
+				PS8802_REG2_USB_CEQ_LEVEL,
+				PS8802_USBEQ_LEVEL_UP_MASK,
+				PS8802_USBEQ_LEVEL_UP_20DB);
+	return rv;
+}
+
 const struct usb_mux usbc1_ps8802 = {
 	.usb_port = USBC_PORT_C1,
 	.i2c_port = I2C_PORT_TCPC1,
 	.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
 	.driver = &ps8802_usb_mux_driver,
+	.board_init = &ps8802_tune_mux,
 	.board_set = &board_ps8802_mux_set,
 };
 const struct usb_mux usbc1_ps8818 = {
