@@ -683,6 +683,7 @@ bool is_usb2_cable_support(int port)
 		pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
 
 	return disc->identity.idh.product_type == IDH_PTYPE_PCABLE ||
+	       pd_get_vdo_ver(port, TCPC_TX_SOP_PRIME) < VDM_VER20 ||
 	       disc->identity.product_t2.a2_rev30.usb_20_support ==
 							USB2_SUPPORTED;
 }
@@ -844,24 +845,16 @@ int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 	enter_dev_mode.vendor_spec_b1 = dev_mode_resp.vendor_spec_b1;
 	enter_dev_mode.vendor_spec_b0 = dev_mode_resp.vendor_spec_b0;
 	enter_dev_mode.intel_spec_b0 = dev_mode_resp.intel_spec_b0;
-	enter_dev_mode.cable =
-		get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE ?
-			TBT_ENTER_PASSIVE_CABLE : TBT_ENTER_ACTIVE_CABLE;
 
-	if (get_tbt_cable_speed(port) == TBT_SS_TBT_GEN3) {
-		enter_dev_mode.lsrx_comm =
-			cable_mode_resp.lsrx_comm;
-		enter_dev_mode.retimer_type =
-			cable_mode_resp.retimer_type;
-		enter_dev_mode.tbt_cable =
-			cable_mode_resp.tbt_cable;
-		enter_dev_mode.tbt_rounded =
-			cable_mode_resp.tbt_rounded;
-		enter_dev_mode.tbt_cable_speed =
-			cable_mode_resp.tbt_cable_speed;
-	} else {
-		enter_dev_mode.tbt_cable_speed = TBT_SS_U32_GEN1_GEN2;
-	}
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE ||
+	    cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE)
+		enter_dev_mode.cable = TBT_ENTER_ACTIVE_CABLE;
+
+	enter_dev_mode.lsrx_comm = cable_mode_resp.lsrx_comm;
+	enter_dev_mode.retimer_type = cable_mode_resp.retimer_type;
+	enter_dev_mode.tbt_cable = cable_mode_resp.tbt_cable;
+	enter_dev_mode.tbt_rounded = cable_mode_resp.tbt_rounded;
+	enter_dev_mode.tbt_cable_speed = get_tbt_cable_speed(port);
 	enter_dev_mode.tbt_alt_mode = TBT_ALTERNATE_MODE;
 
 	payload[1] = enter_dev_mode.raw_value;
@@ -967,7 +960,12 @@ uint32_t get_enter_usb_msg_payload(int port)
 				CABLE_TYPE_ACTIVE_REDRIVER;
 		}
 	} else {
-		eudo.cable_type = CABLE_TYPE_PASSIVE;
+		cable_mode_resp.raw_value =
+			pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
+
+		eudo.cable_type =
+			cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE ?
+			CABLE_TYPE_ACTIVE_REDRIVER : CABLE_TYPE_PASSIVE;
 	}
 
 	switch (disc->identity.product_t1.p_rev20.vbus_cur) {
@@ -1151,7 +1149,7 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	}
 
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
-	if (irq & !lvl) {
+	if (irq && !lvl) {
 		/*
 		 * IRQ can only be generated when the level is high, because
 		 * the IRQ is signaled by a short low pulse from the high level.
@@ -1160,7 +1158,7 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 		return 0; /* nak */
 	}
 
-	if (irq & cur_lvl) {
+	if (irq && cur_lvl) {
 		uint64_t now = get_time().val;
 		/* wait for the minimum spacing between IRQ_HPD if needed */
 		if (now < svdm_hpd_deadline[port])
