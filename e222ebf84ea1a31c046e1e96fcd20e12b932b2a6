@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8def2577_8a761f6d",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2020-10-12T11:26:25Z",
+      "side": 1,
+      "message": "The error is occured when \u0027make -j12 tests\u0027 is executed on firmware branch.\nWhen I run \u0027FW_NAME\u003dcasta emerge-octopus chromeos-ec\u0027 on master branch there is no error and I can\u0027t find \u0027make -j12 tests\u0027 on logs.\nWhen I execute \u0027make -j12 tests\u0027 on master, same error is occured.\nDo you have any idea to solve this?",
+      "parentUuid": "7ba96d96_11a03a1b",
+      "revId": "e222ebf84ea1a31c046e1e96fcd20e12b932b2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29f77f8a_9b337bbb",
         "filename": "driver/charger/isl923x.h",
         "patchSetId": 5
