@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f223c5a_911badf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-12T21:55:57Z",
+      "side": 1,
+      "message": "I like this much better. thank you",
+      "revId": "9649b1c9efb95713317c6524e87e77596ad04012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cafa5371_eb8aa056",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-12T21:55:57Z",
+      "side": 1,
+      "message": "nit: remove comma, this must be the last entry",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 16
+      },
+      "revId": "9649b1c9efb95713317c6524e87e77596ad04012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
