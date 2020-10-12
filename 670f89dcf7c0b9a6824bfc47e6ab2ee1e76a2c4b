@@ -51,6 +51,24 @@
       "parentUuid": "bb1e8955_eb04f923",
       "revId": "670f89dcf7c0b9a6824bfc47e6ab2ee1e76a2c4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbbbadae_41af044b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-12T23:01:34Z",
+      "side": 1,
+      "message": "Seeing as there\u0027s already deprecated_atomic* in the tree, I guess I\u0027m a little late here, but my question is why did we add these functions in the first place?",
+      "parentUuid": "09b1df70_7509ffaf",
+      "revId": "670f89dcf7c0b9a6824bfc47e6ab2ee1e76a2c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
