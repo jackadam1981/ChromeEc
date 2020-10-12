@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f1f7de_0ca8b455",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-12T13:44:06Z",
+      "side": 1,
+      "message": "I was going to hold off while we limit merges into this branch looking for a stable RO image but this change will only affect woomax, so I will leave it to you on whether you feel it should go in now or not.",
+      "revId": "f33b9d7716101c42199f7c119242185d58fb409a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
