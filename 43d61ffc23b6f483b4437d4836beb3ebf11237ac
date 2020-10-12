@@ -159,6 +159,30 @@
       },
       "revId": "43d61ffc23b6f483b4437d4836beb3ebf11237ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec037f15_cd595786",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-12T19:43:57Z",
+      "side": 1,
+      "message": "What about making a TC_STATE_COUNT enum and returning that instead? Then we don\u0027t run the risk of aliasing the first state when it was erroneous.\n\nWe could make the array for char have an entry for TC_STATE_COUNT as \"\" which only costs us 4 bytes.",
+      "parentUuid": "54bbc018_366b15f1",
+      "range": {
+        "startLine": 1454,
+        "startChar": 9,
+        "endLine": 1454,
+        "endChar": 10
+      },
+      "revId": "43d61ffc23b6f483b4437d4836beb3ebf11237ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
