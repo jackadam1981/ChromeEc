@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "cfd04a4d_82d37f03",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "This isn\u0027t a clean revert. You should first revert 7766098000110567b5e551a05b5d91ef85b29f3c, then this reverts cleanly.",
       "revId": "498a75548bc4c0bd2bb9e8f5235251829eed146b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "1b1ff626_d3caefc9",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,10 @@
       "message": "I thought we were discussing moving this same behavior into G3, instead of removing it entirely?",
       "parentUuid": "cfd04a4d_82d37f03",
       "revId": "498a75548bc4c0bd2bb9e8f5235251829eed146b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "c467989d_16832ce3",
         "filename": "/PATCHSET_LEVEL",
@@ -50,8 +51,25 @@
       "message": "I\u0027ll defer to you, Diana. Not sure if Maulik was just trying to test out an alternative, or proposing this as the official short-term fix.",
       "parentUuid": "1b1ff626_d3caefc9",
       "revId": "498a75548bc4c0bd2bb9e8f5235251829eed146b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c15f524f_87515956",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1253211
+      },
+      "writtenOn": "2020-10-12T13:45:31Z",
+      "side": 1,
+      "message": "Hi Evan/Diana,\nYes, I was trying to see if we can push this as a short term fix or we should look for an alternative. If you feel this is not correct path, please let me know..I\u0027ll mark it as WIP and use it internally until proper fix arrives.",
+      "parentUuid": "c467989d_16832ce3",
+      "revId": "498a75548bc4c0bd2bb9e8f5235251829eed146b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
