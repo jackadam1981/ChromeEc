@@ -291,6 +291,7 @@ void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
 	int port = me->usb_port;
 
 	dp_set_hpd(me, hpd_lvl);
+	ccprints("dp_set_hpd: %d", hpd_lvl);
 
 	if (hpd_irq) {
 		uint64_t now = get_time().val;
