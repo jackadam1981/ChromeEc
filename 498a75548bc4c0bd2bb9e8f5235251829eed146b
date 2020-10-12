@@ -70,6 +70,24 @@
       "parentUuid": "c467989d_16832ce3",
       "revId": "498a75548bc4c0bd2bb9e8f5235251829eed146b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14deaacb_3029c006",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-12T17:47:05Z",
+      "side": 1,
+      "message": "Does the fix in this CL not help your boards? https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2458841",
+      "parentUuid": "c15f524f_87515956",
+      "revId": "498a75548bc4c0bd2bb9e8f5235251829eed146b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
