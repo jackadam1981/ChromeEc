@@ -83,7 +83,8 @@
 
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
-#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
+#define USBC_PORT_C0_BB_RETIMER_I2C_ADDR	0x40
+#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x41
 
 /* USB Type A Features */
 #define USB_PORT_COUNT			1
