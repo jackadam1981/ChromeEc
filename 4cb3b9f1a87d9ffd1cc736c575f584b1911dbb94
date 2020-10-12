@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c69a836_c630ccca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-12T20:06:06Z",
+      "side": 1,
+      "message": "does PD FAFT pass? Can you add that if it is (or which tests are yet to pass)",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "4cb3b9f1a87d9ffd1cc736c575f584b1911dbb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "66341bd3_50ee95ac",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-10-07T13:05:00Z",
       "side": 1,
       "message": "Hi,\n\nThis commit enables TCPMv2/PD2.0 support on eve. Eve still have some bugs which are not critical, but I think it is save to enable this on ToT now.",
+      "revId": "4cb3b9f1a87d9ffd1cc736c575f584b1911dbb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f7c6352_4b8e7d3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-12T20:06:06Z",
+      "side": 1,
+      "message": "I am okay submitting this, let\u0027s just document the testing we have done on Eve with TCPMv2 in the commit message.",
       "revId": "4cb3b9f1a87d9ffd1cc736c575f584b1911dbb94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
