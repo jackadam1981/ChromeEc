@@ -16,6 +16,24 @@
       "message": "Hi,\n\nThis commit is to save RAM for TCPMv2/PD2.0 support. I\u0027m using this for a while and I haven\u0027t noticed any negative effects.",
       "revId": "9cd37fd4e124d5a600813c5b3a3544ac6596d521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66602aa6_b7e094cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-12T20:04:47Z",
+      "side": 1,
+      "message": "Have you opening any sensor APPs on Chrome OS on Eve. Reducing the sensor fifo size might have negative impacts there.\n\nTo be use, we should really run the CTS test on EVE with this change. (https://source.android.com/compatibility/cts)",
+      "parentUuid": "16872927_0de63416",
+      "revId": "9cd37fd4e124d5a600813c5b3a3544ac6596d521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
