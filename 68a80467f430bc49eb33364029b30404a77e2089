@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "5146e5f4_f3933921",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "This is lame, but out gettime format string just don\u0027t work with the shell_ implementation of print. I have not idea why there are two different parses honestly. Seems like something that needs to be fixed upstream",
       "revId": "68a80467f430bc49eb33364029b30404a77e2089",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "bf56d309_c5c64d42",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "annoying as printk may not be attached to the same uart as the console (e.g., on posix ec there are two uarts)\n\nWe should definitely revert this when shell_vprintf uses the same vsnprintf as printk (upstream).",
       "revId": "68a80467f430bc49eb33364029b30404a77e2089",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "2e2aae05_766efa4b",
         "filename": "/PATCHSET_LEVEL",
@@ -48,8 +49,25 @@
       "side": 1,
       "message": "Can we file a bug for reverting this CL?",
       "revId": "68a80467f430bc49eb33364029b30404a77e2089",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a0b3d39_613d3929",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-12T19:58:58Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2e2aae05_766efa4b",
+      "revId": "68a80467f430bc49eb33364029b30404a77e2089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
