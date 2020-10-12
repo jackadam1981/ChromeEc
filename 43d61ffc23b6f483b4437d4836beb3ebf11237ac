@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc75ac2a_43853050",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-12T13:47:17Z",
+      "side": 1,
+      "message": "Can you make this a TC_\u003cstate\u003e instead of 0?  Is TC_CC_OPEN the correct state for not attached?",
+      "range": {
+        "startLine": 1454,
+        "startChar": 9,
+        "endLine": 1454,
+        "endChar": 10
+      },
+      "revId": "43d61ffc23b6f483b4437d4836beb3ebf11237ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
