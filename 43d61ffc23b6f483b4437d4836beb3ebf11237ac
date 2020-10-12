@@ -22,6 +22,30 @@
       },
       "revId": "43d61ffc23b6f483b4437d4836beb3ebf11237ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "629ce3b4_262cebbe",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-12T15:11:50Z",
+      "side": 1,
+      "message": "I could go either way.  There\u0027s not really a \"correct\" state when the task hasn\u0027t actually started up yet, I\u0027m mostly aiming to have a valid value for things to use and 0 will be present in all non-zero arrays. \n\nI was also considering whether we should have an invalid/uninitialized state enum defined, but that might go against the overall design to have an \"empty\" state for this purpose.",
+      "parentUuid": "dc75ac2a_43853050",
+      "range": {
+        "startLine": 1454,
+        "startChar": 9,
+        "endLine": 1454,
+        "endChar": 10
+      },
+      "revId": "43d61ffc23b6f483b4437d4836beb3ebf11237ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
