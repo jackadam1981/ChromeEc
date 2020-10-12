@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18b0b6dc_88389bb0",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-12T23:32:24Z",
+      "side": 1,
+      "message": "will replace this with current I/o values variable",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "28877b72926f7b6c2d41f409d95845f4df3b0112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e077d5_85c5977b",
+        "filename": "driver/ioexpander/pca9675.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-12T23:32:24Z",
+      "side": 1,
+      "message": "will add one more variable to track current value of output pins",
+      "revId": "28877b72926f7b6c2d41f409d95845f4df3b0112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
