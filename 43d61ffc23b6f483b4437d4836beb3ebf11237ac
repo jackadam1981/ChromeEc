@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47fcb29c_61b01db7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-12T17:12:48Z",
+      "side": 1,
+      "message": "This LGTM; I\u0027m ok with just the \u00270\u0027 return.",
+      "revId": "43d61ffc23b6f483b4437d4836beb3ebf11237ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc75ac2a_43853050",
@@ -62,6 +79,30 @@
       "side": 1,
       "message": "I think an unattached/invalid/uninitialized/not_running state would be appropriate. I know it does not have an actual state but I think this will be cleaner.",
       "parentUuid": "629ce3b4_262cebbe",
+      "range": {
+        "startLine": 1454,
+        "startChar": 9,
+        "endLine": 1454,
+        "endChar": 10
+      },
+      "revId": "43d61ffc23b6f483b4437d4836beb3ebf11237ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "551c2cb9_a8ccf8b6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-12T17:12:48Z",
+      "side": 1,
+      "message": "Wouldn\u0027t that be a waste of space? I\u0027m not sure of the value of adding the extra overhead of a (relatively) unused state. TCPMv2 already consumes a lot of space as it is.",
+      "parentUuid": "e7a8311c_4ec78866",
       "range": {
         "startLine": 1454,
         "startChar": 9,
