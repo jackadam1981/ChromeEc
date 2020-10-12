@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eceff8a7_aad73f76",
+        "filename": "baseboard/intelrvp/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-12T20:03:18Z",
+      "side": 1,
+      "message": "let\u0027s avoid the \u0027\\\u0027 line wrapping:\n\nbaseboard-$(CONFIG_INTEL_RVP_MECC_VERSION_0_9)+\u003dchg_usb_pd_mecc_0_9.o\nbaseboard-$(CONFIG_INTEL_RVP_MECC_VERSION_0_9)+\u003dusb_pd_policy_mecc_0_9.o",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "89c67777324d8382de36128352ddb8682ef86aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
