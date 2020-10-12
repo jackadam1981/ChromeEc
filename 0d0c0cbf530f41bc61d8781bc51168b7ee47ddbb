@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "5413b3aa_e726dd6c",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Flagging potential iLoadStepRate concerns for posterity.\n\n* Some HW fast-ramping methods will OCP partners and cause Type-C disconnect..\n* Some boards don\u0027t have HW ramp, so must use SW or will cause Type-C disconnect.\n\nDeferring and monitoring for long term stability impact.",
       "revId": "0d0c0cbf530f41bc61d8781bc51168b7ee47ddbb",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "14b5834b_39d26313",
         "filename": "/PATCHSET_LEVEL",
@@ -32,8 +33,25 @@
       "message": "The HW ramping is a method to not brown-out supplies by backing off the current draw if the input voltage droops. This is a \u0027soft\u0027 current limit where the source will limit/clamp its current by lowering output voltage. I believe the BC1.2 parts we use will \u0027pulse\u0027 the vbus to keep the current down. Ramping will not prevent a \u0027hard\u0027 current limit, which will just disable VBUS.\n\nThis is different from slew rate control, which limits the rate of change in current on insertion and avoids OCP/current overshoot due to inrush, that is still there; and I think that is what you\u0027re worried about with iLoadStepRate.\n\nIf the source can supply the current it claims, this change won\u0027t break anything. The charge ramping only allows us to use sources which can\u0027t source the current they claim.",
       "parentUuid": "5413b3aa_e726dd6c",
       "revId": "0d0c0cbf530f41bc61d8781bc51168b7ee47ddbb",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a3072a_5c5954a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-12T23:34:39Z",
+      "side": 1,
+      "message": "* Constant Current OCP (\"Clamp\")\n* Hiccup OCP (BC1.2)\n\nRoger, ACK, and TYVM.\nPublic context: crbug.com/1041782",
+      "parentUuid": "14b5834b_39d26313",
+      "revId": "0d0c0cbf530f41bc61d8781bc51168b7ee47ddbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
