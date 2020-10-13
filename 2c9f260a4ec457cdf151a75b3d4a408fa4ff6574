@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49494425_e1f50b12",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-13T00:30:25Z",
+      "side": 1,
+      "message": "This will always be expired. Are you forgetting to use the failure interval somewhere?",
+      "revId": "2c9f260a4ec457cdf151a75b3d4a408fa4ff6574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
