@@ -193,6 +193,23 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
 static int board_tusb544_mux_set(const struct usb_mux *me,
 				mux_state_t mux_state)
 {
+	int rv = EC_SUCCESS;
+
+	/* USB specific config */
+	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+		/* Boost the USB gain */
+		rv = tusb544_write(me,
+					TUSB544_REG_USB3_1_1,
+					TUSB544_USB3_COMPLIANCE_CTRL_DFP);
+
+		rv = tusb544_write(me,
+					TUSB544_REG_USB3_1_2,
+					TUSB544_USB3_COMPLIANCE_CTRL_DFP);
+
+		if (rv)
+			return rv;
+	}
+
 	if (mux_state & USB_PD_MUX_DP_ENABLED) {
 		/* Enable IN_HPD on the DB */
 		gpio_or_ioex_set_level(board_usbc1_retimer_inhpd, 1);
@@ -200,6 +217,7 @@ static int board_tusb544_mux_set(const struct usb_mux *me,
 		/* Disable IN_HPD on the DB */
 		gpio_or_ioex_set_level(board_usbc1_retimer_inhpd, 0);
 	}
+
 	return EC_SUCCESS;
 }
 

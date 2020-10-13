@@ -17,6 +17,13 @@
 #define TUSB544_GEN4_EQ_OVRD	BIT(4)
 #define TUSB544_GEN4_SWAP_SEL	BIT(5)
 
+#define TUSB544_REG_USB3_1_1 0x20
+#define TUSB544_REG_USB3_1_2 0x21
+#define TUSB544_USB3_COMPLIANCE_CTRL_DEFAULT 0x00
+#define TUSB544_USB3_COMPLIANCE_CTRL_DFP 0x01
+#define TUSB544_USB3_COMPLIANCE_CTRL_UFP 0x10
+#define TUSB544_USB3_COMPLIANCE_CTRL_DISABLE 0x11
+
 enum tusb544_ct_sel {
 	TUSB544_CTL_SEL_DISABLED,
 	TUSB544_CTL_SEL_USB_ONLY,
@@ -47,5 +54,7 @@ enum tusb544_dir_sel {
 #define TUSB544_DP4_AUX_SNOOP_DISABLE	BIT(7)
 
 extern const struct usb_mux_driver tusb544_drv;
+
+int tusb544_write(const struct usb_mux *me, int offset, int data);
 
 #endif

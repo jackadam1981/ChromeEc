@@ -8,7 +8,7 @@
 #include "tusb544.h"
 #include "usb_mux.h"
 
-static int tusb544_write(const struct usb_mux *me, int offset, int data)
+int tusb544_write(const struct usb_mux *me, int offset, int data)
 {
 	return i2c_write8(me->i2c_port,
 			  me->i2c_addr_flags,
