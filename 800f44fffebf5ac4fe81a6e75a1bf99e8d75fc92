@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e13964c_bc183268",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-13T10:00:36Z",
+      "side": 1,
+      "message": "inadvertently",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "800f44fffebf5ac4fe81a6e75a1bf99e8d75fc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf06816b_3d0749f1",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-13T10:00:36Z",
+      "side": 1,
+      "message": "my reading of the datasheet is that this\nneeds to be written to address 0, not i2c_addr_flags.\nand, only 1 byte of data.",
+      "range": {
+        "startLine": 66,
+        "startChar": 26,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "800f44fffebf5ac4fe81a6e75a1bf99e8d75fc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
