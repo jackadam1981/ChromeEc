@@ -33,6 +33,23 @@
       "message": "Holding while investigating an SBU muxing issue on VOLTEER.",
       "revId": "3b4c106fc5523b6150538245037cddd3fa967bf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19740ae1_15a116bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-13T18:58:11Z",
+      "side": 1,
+      "message": "b/170751674 was unrelated to this code and not a regression.\nVerified +1. But should fix above, and verify on other platforms like DRAWLAT.\n\nAttempting to do so as soon as I have a moment, but independent confirmation appreciated.",
+      "revId": "3b4c106fc5523b6150538245037cddd3fa967bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
