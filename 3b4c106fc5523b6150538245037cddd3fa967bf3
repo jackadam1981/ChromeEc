@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc612aa_504738a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-13T10:19:51Z",
+      "side": 1,
+      "message": "This is the formalized version of the patches referenced.\nNote I took the liberty to (forcefully) include better HPD + DP logging.\n\nIf someone takes this fix, they *MUST* take the logging along with it.\nI am hesitant to split it any further from the Active Cable CL for that reason.",
+      "revId": "3b4c106fc5523b6150538245037cddd3fa967bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
