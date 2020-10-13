@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b04774cd_5486d685",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-13T17:56:33Z",
+      "side": 1,
+      "message": "nit:verify",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "e7d03f8f039264747e12af5b8b9cc8ca3379b7ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea15c27_63a8a528",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-13T17:56:33Z",
+      "side": 1,
+      "message": "Instead of duplicating this, please instead add the ps8818_i2c_field_update8 for RX_PHY to variant_trembyle.c and use a new #define for the value to set, which can be 85 ohm for morphius and default 112 ohm for others.",
+      "revId": "e7d03f8f039264747e12af5b8b9cc8ca3379b7ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "623bb2b9_d1c51288",
         "filename": "driver/retimer/ps8818.h",
         "patchSetId": 2
@@ -14,6 +54,30 @@
       "writtenOn": "2020-10-13T14:43:50Z",
       "side": 1,
       "message": "This is a PAGE 1 register, it should be placed in that section above the PAGE 2 registers. Defined constants should be in upper case. _OHM",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "e7d03f8f039264747e12af5b8b9cc8ca3379b7ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b88517_5553be33",
+        "filename": "driver/retimer/ps8818.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-13T17:56:33Z",
+      "side": 1,
+      "message": "Also to align with existing definitions, I suggest:\n\n#define PS8818_REG1_RX_PHY\t0x6D\n#define PS8818_RX_INPUT_TERM_112_OHM\t(0 \u003c\u003c 6)\n#define PS8818_RX_INPUT_TERM_104_OHM\t(1 \u003c\u003c 6)\n#define PS8818_RX_INPUT_TERM_96_OHM\t(2 \u003c\u003c 6)\n#define PS8818_RX_INPUT_TERM_85_OHM\t(3 \u003c\u003c 6)\n#define PS8818_RX_INPUT_TERM_MASK\t(3 \u003c\u003c 6)",
+      "parentUuid": "623bb2b9_d1c51288",
       "range": {
         "startLine": 81,
         "startChar": 0,
