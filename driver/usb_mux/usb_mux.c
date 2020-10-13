@@ -281,6 +281,7 @@ void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
 	mux_state_t mux_state;
 	const struct usb_mux *mux_ptr = &usb_muxes[port];
 
+	CPRINTS("Attempting HPD_UPDATE port %d lvl %d irq %d",port,hpd_lvl,hpd_irq);
 	if (port >= board_get_usb_pd_port_count()) {
 		return;
 	}
@@ -290,6 +291,7 @@ void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
 			mux_ptr->hpd_update(mux_ptr, hpd_lvl, hpd_irq);
 
 	if (!configure_mux(port, USB_MUX_GET_MODE, &mux_state)) {
+		CPRINTS("Attempting CONFIGURE_MUX port %d mux_state %d",port,mux_state);
 		mux_state |= (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
 			     (hpd_irq ? USB_PD_MUX_HPD_IRQ : 0);
 		configure_mux(port, USB_MUX_SET_MODE, &mux_state);
