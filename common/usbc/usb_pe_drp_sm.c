@@ -3843,6 +3843,17 @@ static void pe_drs_send_swap_run(int port)
 			} else if ((type == PD_CTRL_REJECT) ||
 					(type == PD_CTRL_WAIT) ||
 					(type == PD_CTRL_NOT_SUPPORTED)) {
+				/*
+				 * On receiving an ACCEPT for data role swap,
+				 * the mux state is updated according to the
+				 * port partner's USB capability and port's
+				 * current data role.
+				 * On receiving a REJECT or timeout, even if
+				 * the data role remains unchanged, we still
+				 * need to update the mux with port partner's
+				 * USB capability.
+				 */
+				set_usb_mux_with_current_data_role(port);
 				pe_set_ready_state(port);
 				return;
 			}
@@ -3855,8 +3866,10 @@ static void pe_drs_send_swap_run(int port)
 	 *   2) Message was discarded.
 	 */
 	if ((msg_check & PE_MSG_DISCARDED) ||
-	    get_time().val > pe[port].sender_response_timer)
+	    get_time().val > pe[port].sender_response_timer) {
+		set_usb_mux_with_current_data_role(port);
 		pe_set_ready_state(port);
+	}
 }
 
 /**
