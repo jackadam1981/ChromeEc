@@ -22,6 +22,30 @@
       },
       "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff914b86_1ed98b65",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-13T23:26:05Z",
+      "side": 1,
+      "message": "This code is only used for the case pd_disabled_on_init is 1. The pd_disabled_on_init was assigned to 1 only if CONFIG_SYSTEM_UNLOCKED is defined and CONFIG_VBOOT_EFS2 is not defined, i.e. the line 623.\n\nIn alternative, we can move the if clause inside the function, like:\n\n    if (IS_ENABLED(CONFIG_SYSTEM_UNLOCKED) \u0026\u0026 !IS_ENABLED(CONFIG_VBOOT_EFS2)) {\n        if (pd_disabled_on_init \u0026\u0026 ...\n\n    }\n\nRemoving the if clause (outside or inside) also works. I can make it if you prefer.",
+      "parentUuid": "37fad9ff_6a74a643",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 590,
+        "endChar": 35
+      },
+      "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
