@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8768d3f_5dade5d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-13T14:46:24Z",
+      "side": 1,
+      "message": "We shutdown on over temperature to save the system.  Wouldn\u0027t keeping the system up if it has AC defeating the goal?  Wouldn\u0027t we still have heat transfer off the circuits, even if we did shut off charging to the battery. This feels wrong to me but will hand this to Edward to review and correct me if I am wrong.",
+      "revId": "71689af2b5ac175ab002436b2a86c47a101d858a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
