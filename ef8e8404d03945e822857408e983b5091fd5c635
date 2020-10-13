@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e269ee33_2db505b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-13T16:19:18Z",
+      "side": 1,
+      "message": "LGTM modulo citation nit.",
+      "revId": "ef8e8404d03945e822857408e983b5091fd5c635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbe30478_4d8eadc3",
@@ -85,6 +102,24 @@
       "side": 1,
       "message": "Download from here: https://cdrdv2.intel.com/v1/dl/getContent/627444; this flow also includes linear redriver cable.",
       "parentUuid": "4963646b_f568694d",
+      "revId": "ef8e8404d03945e822857408e983b5091fd5c635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbd4b95a_d28166b5",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-13T16:19:18Z",
+      "side": 1,
+      "message": "Nit: I would argue that the more relevant citation is Figure 2, which describes entering TBT mode for the cable and port partner. Figure 1 describes entering TBT mode for the cable and USB4 mode for the port partner, which this codebase currently does not support.\n\nIt would also be nice if this comment cited the application note version. Since it is currently in draft form, I assume it is expected to change in the foreseeable future.",
+      "parentUuid": "3c9f0266_67343f3d",
       "revId": "ef8e8404d03945e822857408e983b5091fd5c635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
