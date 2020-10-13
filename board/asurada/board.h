@@ -166,9 +166,7 @@
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_CMD_ACCELS
 
-#define CONFIG_MAG_BMI_BMM150
-#define CONFIG_MAG_CALIBRATE
-
+#ifdef BOARD_ASURADA
 #define ALS_COUNT 1
 #define CONFIG_ALS_TCS3400
 #define CONFIG_ALS_TCS3400_INT_EVENT \
@@ -176,6 +174,7 @@
 #define CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT
 
 #define CONFIG_ACCEL_FORCE_MODE_MASK BIT(CLEAR_ALS)
+#endif
 
 /* SPI / Host Command */
 #undef CONFIG_HOSTCMD_DEBUG_MODE
@@ -262,10 +261,11 @@ enum board_sub_board {
 enum sensor_id {
 	BASE_ACCEL = 0,
 	BASE_GYRO,
-	BASE_MAG,
 	LID_ACCEL,
+#ifdef BOARD_ASURADA
 	CLEAR_ALS,
 	RGB_ALS,
+#endif
 	SENSOR_COUNT,
 };
 
