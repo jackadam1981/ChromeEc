@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37fad9ff_6a74a643",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-13T22:31:05Z",
+      "side": 1,
+      "message": "Why is this guarded with CONFIG_SYSTEM_UNLOCKED? It seems that this code would be pertinent even if that option is not enabled.\n\nIt may be better to check if the system is unlocked instead of the hard guard here.",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 590,
+        "endChar": 35
+      },
+      "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
