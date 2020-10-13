@@ -50,6 +50,7 @@
 #define CONFIG_USB_MUX_IT5205
 
 #define CONFIG_LED_ONOFF_STATES
+#define CONFIG_LED_ONOFF_STATES_BAT_LOW 10
 #define CONFIG_LED_POWER_LED
 #define CONFIG_LED_COMMON
 
@@ -142,6 +143,7 @@ int board_is_sourcing_vbus(int port);
 
 /* returns the i2c port number of charger */
 int board_get_charger_i2c(void);
+int board_get_sku_id(void);
 
 #endif /* !__ASSEMBLER__ */
 
