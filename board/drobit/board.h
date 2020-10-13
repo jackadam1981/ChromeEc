@@ -49,6 +49,8 @@
 #define CONFIG_LED_PWM_COUNT 1
 
 /* Keyboard features */
+#define CONFIG_KEYBOARD_VIVALDI
+#define CONFIG_KEYBOARD_REFRESH_ROW3
 
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_PD_PORT_MAX_COUNT			2
