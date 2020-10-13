@@ -22,6 +22,30 @@
       },
       "revId": "35d4878be99ea52c4008df0385eb696135f53139",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4468b3e_2155c0b8",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-10-13T23:11:50Z",
+      "side": 1,
+      "message": "Yes, that was unintentional. I\u0027ll upload a new patchset ASAP",
+      "parentUuid": "9201f07e_7b23a2e4",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 71
+      },
+      "revId": "35d4878be99ea52c4008df0385eb696135f53139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
