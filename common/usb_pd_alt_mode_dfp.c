@@ -229,8 +229,11 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
 	struct svdm_amode_data *modep;
 	uint32_t mode_caps;
 
-	if (mode_idx == -1)
+	if (mode_idx == -1) {
+		CPRINTS("C%d: Invalid opos %d index -1 SVID %x",
+				port, opos, svid);
 		return 0;
+	}
 	modep = &pd_get_partner_active_modes(port, type)->amodes[mode_idx];
 
 	if (!opos) {
@@ -239,13 +242,17 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
 	} else if (opos <= modep->data->mode_cnt) {
 		modep->opos = opos;
 	} else {
-		CPRINTS("C%d: Invalid opos %d for SVID %x", port, opos, svid);
+		CPRINTS("C%d: Invalid opos %d for SVID %x",
+				port, opos, svid);
 		return 0;
 	}
 
 	mode_caps = modep->data->mode_vdo[modep->opos - 1];
-	if (modep->fx->enter(port, mode_caps) == -1)
+	if (modep->fx->enter(port, mode_caps) == -1) {
+		CPRINTS("C%d: Bad mode_caps opos %d index -1 SVID %x",
+				port, opos, svid);
 		return 0;
+	}
 
 	/*
 	 * Strictly speaking, this should only happen when the request
@@ -989,7 +996,20 @@ __overridable void svdm_safe_dp_mode(int port)
 	dp_flags[port] = 0;
 	dp_status[port] = 0;
 
-	usb_mux_set_safe_mode(port);
+	/*
+	 * Spec dictates SSUSB muxig be handled in DP Configure.
+	 * Remove it from here, and place it there.
+	 */
+	usb_mux_hpd_update(port, 0, 0);
+
+	/* Isolate the SBU lines. */
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+		ppc_set_sbu(port, 0);
+
+	/*
+	 * Do not call usb_mux_set_safe_mode(port);
+	 * That is too aggressive in isolating lines for DP.
+	 */
 }
 
 __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
@@ -1051,25 +1071,56 @@ __overridable uint8_t get_dp_pin_mode(int port)
 __overridable int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
-	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
 	uint8_t pin_mode = get_dp_pin_mode(port);
-	mux_state_t mux_mode;
+
+	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
+	int mf_sel = !!(pin_mode & MODE_DP_PIN_MF_MASK);
+	/* crrev/c/2442194: Pin mode selected may override MF_PREF */
+
+	mux_state_t curr_mux_mode = usb_mux_get(port);
+	mux_state_t pref_mux_mode;
+	mux_state_t safe_mux_mode;
+
+	/*
+	 * Multi-function operation is only allowed if that pin config is
+	 * supported. This is remedied by using mf_sel instead of mf_pref.
+	 */
+
+	pref_mux_mode = curr_mux_mode & ~USB_PD_MUX_DOCK;
+	pref_mux_mode |= (mf_sel) ?	USB_PD_MUX_DOCK : USB_PD_MUX_DP_ENABLED;
+
+	CPRINTS("C%d: dp cfg pin 0x%x mux 0x%x mf 0x%x",
+			port, pin_mode, pref_mux_mode, mf_pref);
 
 	if (!pin_mode)
 		return 0;
 
 	/*
-	 * Multi-function operation is only allowed if that pin config is
-	 * supported.
+	 * Per VESA DP AltMode Spec, set pins "to be reconfigured" to
+	 * "Safe Mode" prior to sending DP Configure command.
+	 *
+	 * Note we do not know the current state of the mux; the port
+	 * partner may be "CommCap=0" with USB muxes disconnected.
+	 *
+	 * As a result, use a Read-Modify-Write strategy to only isolate
+	 * the signals "potentially" being re-routed to DP.
+	 *
+	 * TODO: Check "USB2 required for operation" bit for setting
+	 * USB2.0 switch state in conjunction with COMM_CAP flag. Both
+	 * typically "set wrong" by DUT in ecosystem, Therefore
+	 * DontCare'd in totality here. Maintain existing state.
+	 *
+	 *    BIT(7) USB 2.0 Signaling Not Used
+	 *    In DP Configuration USB2 [Not Used=1 | May Use=0]
+	 *	 && pd_get_partner_usb_comm_capable()
 	 */
-	mux_mode = ((pin_mode & MODE_DP_PIN_MF_MASK) && mf_pref) ?
-		USB_PD_MUX_DOCK : USB_PD_MUX_DP_ENABLED;
-	CPRINTS("pin_mode: %x, mf: %d, mux: %d", pin_mode, mf_pref, mux_mode);
 
-	/* Connect the SBU and USB lines to the connector. */
-	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
-		ppc_set_sbu(port, 1);
-	usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT, pd_get_polarity(port));
+	safe_mux_mode = (mf_sel) ?
+		curr_mux_mode & ~USB_PD_MUX_DP_ENABLED :
+		curr_mux_mode & ~USB_PD_MUX_DOCK;
+
+	usb_mux_set(port, safe_mux_mode, USB_SWITCH_RESTORE,
+		pd_get_polarity(port));
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));
@@ -1094,18 +1145,62 @@ int svdm_get_hpd_gpio(int port)
 
 __overridable void svdm_dp_post_config(int port)
 {
-	dp_flags[port] |= DP_FLAGS_DP_ON;
-	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
+	uint8_t pin_mode = get_dp_pin_mode(port);
+
+	int hpd_cached = !!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING);
+	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
+	int mf_sel = !!(pin_mode & MODE_DP_PIN_MF_MASK);
+	/* crrev/c/2442194: Pin mode selected may override MF_PREF */
+
+	mux_state_t curr_mux_mode = usb_mux_get(port);
+	mux_state_t pref_mux_mode;
+
+	/*
+	 * Multi-function operation is only allowed if that pin config is
+	 * supported. This is remedied by using mf_sel instead of mf_pref.
+	 */
+
+	pref_mux_mode = curr_mux_mode & ~USB_PD_MUX_DOCK;
+	pref_mux_mode |= (mf_sel) ?	USB_PD_MUX_DOCK : USB_PD_MUX_DP_ENABLED;
+
+	CPRINTS("C%d: dp mux pin 0x%x mux 0x%x mf 0x%x",
+			port, pin_mode, pref_mux_mode, mf_pref);
+
+	if (!pin_mode)
 		return;
 
+	/*
+	 * Per VESA DP AltMode Spec, set pins "to be reconfigured" to
+	 * "DP Mode" after receiving ACK to DP Configure command.
+	 */
+
+	/* Connect the SBU and USB lines to the connector. */
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+		ppc_set_sbu(port, 1);
+
+	usb_mux_set(port, pref_mux_mode, USB_SWITCH_RESTORE,
+		pd_get_polarity(port));
+
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
-	svdm_set_hpd_gpio(port, 1);
+	svdm_set_hpd_gpio(port, 0);
+#endif /* CONFIG_USB_PD_DP_HPD_GPIO */
+	usb_mux_hpd_update(port, 0, 0);
+
+	/* Sleep 3ms minimum per HPD replaying per spec */
+	/* This should be FSM timeout in hpd_update(), but code is broken */
+	/* usleep(3000); */
+
+	dp_flags[port] |= DP_FLAGS_DP_ON;
+	CPRINTS("C%d: unbuf HPD lvl %d irq 0)", port, hpd_cached);
+
+#ifdef CONFIG_USB_PD_DP_HPD_GPIO
+	svdm_set_hpd_gpio(port, hpd_cached);
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
-	usb_mux_hpd_update(port, 1, 0);
+	usb_mux_hpd_update(port, hpd_cached, 0);
 
 #ifdef USB_PD_PORT_TCPC_MST
 	if (port == USB_PD_PORT_TCPC_MST)
@@ -1121,6 +1216,7 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	int cur_lvl = svdm_get_hpd_gpio(port);
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
+	CPRINTS("C%d: dp_attn lvl %d irq %d", port, lvl, irq);
 	dp_status[port] = payload[1];
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
@@ -1134,8 +1230,11 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 
 	/* Its initial DP status message prior to config */
 	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
+		CPRINTS("C%d: buff HPD lvl %d irq %d", port, lvl, irq);
 		if (lvl)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
+		else
+			dp_flags[port] &= ~DP_FLAGS_HPD_HI_PENDING;
 		return 1;
 	}
 
@@ -1167,6 +1266,7 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
+	CPRINTS("C%d: usb_mux_hpd_update (lvl %d irq %d)", port, lvl, irq);
 	usb_mux_hpd_update(port, lvl, irq);
 
 #ifdef USB_PD_PORT_TCPC_MST
@@ -1181,6 +1281,20 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 __overridable void svdm_exit_dp_mode(int port)
 {
 	svdm_safe_dp_mode(port);
+	set_usb_mux_with_current_data_role(port);
+
+	/*
+	 * 5.2.6 DisplayPort Exit Mode Command
+	 *
+	 * If the UFP_U receives an Exit Mode Command request when in
+	 * DisplayPort Configuration, the UFP_U shall change to USB
+	 * Configuration and then continue with theother actions that
+	 * the UFP_U performs after receiving an Exit Mode Command request
+	 *
+	 * Note: Receipt of an Exit Mode Command request while not configured in
+	 * USB Configuration indicates an error in the DFP_U
+	 */
+
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
 	svdm_set_hpd_gpio(port, 0);
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
