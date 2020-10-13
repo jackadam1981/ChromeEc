@@ -88,6 +88,24 @@
       "parentUuid": "c15f524f_87515956",
       "revId": "498a75548bc4c0bd2bb9e8f5235251829eed146b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2977db0f_d3c951b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1253211
+      },
+      "writtenOn": "2020-10-13T04:20:17Z",
+      "side": 1,
+      "message": "Yes Diana. we were trying with other fix and that was working\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2415172\n\nRecently, we saw that with latest CPFE it also works, so I have abandon this patch.",
+      "parentUuid": "14deaacb_3029c006",
+      "revId": "498a75548bc4c0bd2bb9e8f5235251829eed146b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
