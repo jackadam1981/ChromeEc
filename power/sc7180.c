@@ -1030,6 +1030,12 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S0S3:
 		cancel_power_button_timer();
 
+		/*
+		 * Call SUSPEND hooks only if we haven't notified listeners of
+		 * S3 suspend.
+		 */
+		sleep_notify_transition(SLEEP_NOTIFY_SUSPEND,
+					HOOK_CHIPSET_SUSPEND);
 #ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
 		/*
 		 * Pair with the HOOK_CHIPSET_RESUME_INIT, i.e. disabling SPI
@@ -1037,20 +1043,14 @@ enum power_state power_handle_state(enum power_state state)
 		 *
 		 * If shutdown from an on state, notify the SUSPEND hooks too;
 		 * otherwise (suspend from S0), the normal SUSPEND hook will
-		 * be notified afterward.
+		 * be notified in the above sleep_notify_transition() call.
 		 */
-		hook_notify(HOOK_CHIPSET_SUSPEND_COMPLETE);
 		if (shutdown_from_on)
 			hook_notify(HOOK_CHIPSET_SUSPEND);
+		hook_notify(HOOK_CHIPSET_SUSPEND_COMPLETE);
 #else
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 #endif
-		/*
-		 * Call SUSPEND hooks only if we haven't notified listeners of
-		 * S3 suspend.
-		 */
-		sleep_notify_transition(SLEEP_NOTIFY_SUSPEND,
-					HOOK_CHIPSET_SUSPEND);
 		sleep_suspend_transition();
 
 		enable_sleep(SLEEP_MASK_AP_RUN);
