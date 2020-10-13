@@ -33,6 +33,24 @@
       "message": "I don\u0027t understand this TODO comment?",
       "revId": "32a816e25f3ccdbf549a566392d023208a9079ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f5831a4_f76b395a",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-10-13T04:01:17Z",
+      "side": 1,
+      "message": "Removed, was left over from previous patchset.",
+      "parentUuid": "e8b20a44_e81c4194",
+      "revId": "32a816e25f3ccdbf549a566392d023208a9079ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
