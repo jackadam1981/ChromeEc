@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "1c5d1d11_95b83a7a",
         "filename": "common/usbc/dp_alt_mode.c",
@@ -20,10 +21,10 @@
         "endChar": 28
       },
       "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f3d754a5_953ab186",
         "filename": "common/usbc/dp_alt_mode.c",
@@ -44,10 +45,10 @@
         "endChar": 28
       },
       "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "1a10918c_3f4c3bff",
         "filename": "common/usbc/dp_alt_mode.c",
@@ -68,10 +69,10 @@
         "endChar": 28
       },
       "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "001ecd57_22f0390d",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -91,10 +92,10 @@
         "endChar": 1
       },
       "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3702c5b2_dea1f758",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -115,10 +116,10 @@
         "endChar": 1
       },
       "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b5766496_999287f7",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -139,10 +140,34 @@
         "endChar": 1
       },
       "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bfaf2f7_9cf7c6db",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-13T16:30:42Z",
+      "side": 1,
+      "message": "Although I would personally prefer inline functions for this purpose, Vijay is right that we generally use macros, and this CL should keep doing that.",
+      "parentUuid": "b5766496_999287f7",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "285747e8_6590e8a4",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -156,10 +181,10 @@
       "side": 1,
       "message": "tbt_state[]\ncan this be used efficiently instead of new variable?",
       "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5a785495_9adecfa3",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -174,10 +199,10 @@
       "message": "same as DP",
       "parentUuid": "285747e8_6590e8a4",
       "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "c0b98ec0_d3804a31",
         "filename": "common/usbc/tbt_alt_mode.c",
@@ -192,8 +217,7 @@
       "message": "Done",
       "parentUuid": "5a785495_9adecfa3",
       "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
