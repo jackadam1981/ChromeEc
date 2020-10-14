@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e2b690_9f30b6d2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-10-14T03:18:52Z",
+      "side": 1,
+      "message": "nit: Let\u0027s use a consistent format.\n\n /**\n  * Return if battery is capable of powering the system \n  *\n  * @return true if capable of, else false.\n  */",
+      "range": {
+        "startLine": 1000,
+        "startChar": 0,
+        "endLine": 1000,
+        "endChar": 3
+      },
+      "revId": "e420e75614397fbf543e8a2c95c41d8ede6e1392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
