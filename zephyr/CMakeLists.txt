@@ -36,3 +36,4 @@ add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim/src")
 
 # Shimmed modules
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_TIMER "${PLATFORM_EC}/common/timer.c")
+zephyr_sources_ifdef(CONFIG_SHELL "${PLATFORM_EC}/common/gpio_commands.c")
