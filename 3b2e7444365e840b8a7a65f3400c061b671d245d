@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9418b33e_e48d2c6c",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-14T14:05:10Z",
+      "side": 1,
+      "message": "Won\u0027t be needed and can go back to being static",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 13
+      },
+      "revId": "3b2e7444365e840b8a7a65f3400c061b671d245d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f52f278e_8dea5d09",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-14T14:05:10Z",
+      "side": 1,
+      "message": "It is looking good. I think what Edward wanted to see on this was to not have an __overridable function in zork/variant_trembyle.c but instead have you define something like CONFIG_PS8818_RX_INPUT_TERM that is defaulted to undefined in config.h, and then variant_trembyle can define it for the common as PS8818_RX_INPUT_TERM_112_OHM and morphius/board.h can redefine it to be PS8818_RX_INPUT_TERM_85_OHM.  Then this function will only be defined in one location that is still used in a common manner.\n\nIt may turn out that you can start in config.h as defaulting this to PS8818_RX_INPUT_TERM_112_OHM and then you would only have to undef and then define to being 85_OHM in morphius/board.h",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 35
+      },
+      "revId": "3b2e7444365e840b8a7a65f3400c061b671d245d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eebc48aa_f9585637",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-14T14:05:10Z",
+      "side": 1,
+      "message": "Won\u0027t be needed",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "3b2e7444365e840b8a7a65f3400c061b671d245d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8324f8b_6f6e3dd3",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-14T14:05:10Z",
+      "side": 1,
+      "message": "Use the common code in variant with the defined CONFIG value to guide how it should be adjusted for morphius.",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 1
+      },
+      "revId": "3b2e7444365e840b8a7a65f3400c061b671d245d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
