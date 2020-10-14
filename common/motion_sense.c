@@ -1436,6 +1436,45 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		args->response_size = sizeof(out->get_activity);
 		break;
 	}
+	case MOTIONSENSE_CMD_SPOOF_ACTIVITY: {
+		ret = EC_RES_SUCCESS;
+		switch (in->spoof_activity.activity) {
+#ifdef CONFIG_BODY_DETECTION
+		case MOTIONSENSE_ACTIVITY_BODY_DETECTION:
+			switch (in->spoof_activity.spoof_enable) {
+			case MOTIONSENSE_SPOOF_MODE_DISABLE:
+				/* Disable spoofing. */
+				body_detect_set_spoof(false);
+				break;
+			case MOTIONSENSE_SPOOF_MODE_CUSTOM:
+				/* Enable spoofing, but use provided state */
+				body_detect_set_spoof(true);
+				body_detect_change_state(
+					in->spoof_activity.state, true);
+				break;
+			case MOTIONSENSE_SPOOF_MODE_LOCK_CURRENT:
+				/* Enable spoofing, but lock to current state */
+				body_detect_set_spoof(true);
+				break;
+			case MOTIONSENSE_SPOOF_MODE_QUERY:
+				/* Query the spoof status of the activity. */
+				out->spoof_activity.ret =
+					body_detect_get_spoof();
+				args->response_size =
+					sizeof(out->spoof_activity);
+				break;
+			default:
+				return EC_RES_INVALID_PARAM;
+			}
+			break;
+#endif
+		default:
+			ret = EC_RES_INVALID_PARAM;
+		}
+		if (ret != EC_RES_SUCCESS)
+			return ret;
+		break;
+	}
 #endif /* defined(CONFIG_GESTURE_HOST_DETECTION) */
 
 #ifdef CONFIG_ACCEL_SPOOF_MODE
