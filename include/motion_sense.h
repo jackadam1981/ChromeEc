@@ -319,6 +319,7 @@ enum motionsensor_orientation motion_sense_remap_orientation(
 #define ALL_MOTION_SENSORS (MOTION_SENSE_ACTIVITY_SENSOR_ID + 1)
 #define MAX_MOTION_SENSORS (SENSOR_COUNT + 1)
 #else
+#define MOTION_SENSE_ACTIVITY_SENSOR_ID 0
 #define ALL_MOTION_SENSORS (motion_sensor_count)
 #define MAX_MOTION_SENSORS (SENSOR_COUNT)
 #endif

@@ -2668,7 +2668,6 @@ enum motionsensor_activity {
 };
 
 struct ec_motion_sense_activity {
-	uint8_t sensor_num;
 	uint8_t activity; /* one of enum motionsensor_activity */
 	uint8_t enable;   /* 1: enable, 0: disable */
 	uint8_t reserved;
@@ -2751,7 +2750,7 @@ struct ec_params_motion_sense {
 		 */
 		struct __ec_todo_unpacked {
 			uint8_t sensor_num;
-		} info, info_3, info_4, data, fifo_flush, list_activities;
+		} info, info_3, info_4, data, fifo_flush;
 
 		/*
 		 * Used for MOTIONSENSE_CMD_PERFORM_CALIB:
@@ -2908,9 +2907,24 @@ struct ec_params_motion_sense {
 		 * Used for MOTIONSENSE_CMD_GET_ACTIVITY.
 		 */
 		struct __ec_todo_unpacked {
-			uint8_t sensor_num;
 			uint8_t activity;  /* enum motionsensor_activity */
 		} get_activity;
+
+		/*
+		 * Used for MOTIONSENSE_CMD_SPOOF activity.
+		 */
+		struct __ec_todo_packed {
+			uint8_t sensor_id;
+
+			/* See enum motionsense_spoof_mode. */
+			uint8_t spoof_enable;
+
+			/* enum motionsensor_activity */
+			uint8_t activity;
+
+			/* spoof activity state */
+			uint8_t state;
+		} spoof_activity;
 	};
 } __ec_todo_packed;
 
@@ -3010,7 +3024,7 @@ struct ec_response_motion_sense {
 			/* Current value of the parameter queried. */
 			int32_t ret;
 		} ec_rate, sensor_odr, sensor_range, kb_wake_angle,
-		  fifo_int_enable, spoof;
+		  fifo_int_enable, spoof, spoof_activity;
 
 		/*
 		 * Used for MOTIONSENSE_CMD_SENSOR_OFFSET,
