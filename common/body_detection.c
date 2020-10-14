@@ -29,6 +29,7 @@ static enum body_detect_states motion_state = BODY_DETECTION_OFF_BODY;
 
 static bool history_initialized;
 static bool body_detect_enable;
+static bool spoof_enable;
 
 static struct body_detect_motion_data
 {
@@ -90,7 +91,7 @@ static int calculate_motion_confidence(uint64_t var)
 }
 
 /* Change the motion state and commit the change to AP. */
-void body_detect_change_state(enum body_detect_states state)
+void body_detect_change_state(enum body_detect_states state, bool spoof)
 {
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 	struct ec_response_motion_sensor_data vector = {
@@ -99,6 +100,11 @@ void body_detect_change_state(enum body_detect_states state)
 		.state = state,
 		.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID,
 	};
+#endif
+	if (spoof_enable && !spoof)
+		return;
+
+#ifdef CONFIG_GESTURE_HOST_DETECTION
 	motion_sense_fifo_stage_data(&vector, NULL, 0,
 			__hw_clock_source_read());
 	motion_sense_fifo_commit_data();
@@ -173,7 +179,7 @@ void body_detect_reset(void)
 	int resolution = body_sensor->drv->get_resolution(body_sensor);
 	int rms_noise = body_sensor->drv->get_rms_noise(body_sensor);
 
-	body_detect_change_state(BODY_DETECTION_ON_BODY);
+	body_detect_change_state(BODY_DETECTION_ON_BODY, false);
 	/*
 	 * The sensor is suspended since its ODR is 0,
 	 * there is no need to reset until sensor is up again
@@ -208,7 +214,7 @@ void body_detect(void)
 	switch (motion_state) {
 	case BODY_DETECTION_OFF_BODY:
 		if (motion_confidence > CONFIG_BODY_DETECTION_ON_BODY_CON)
-			body_detect_change_state(BODY_DETECTION_ON_BODY);
+			body_detect_change_state(BODY_DETECTION_ON_BODY, false);
 		break;
 	case BODY_DETECTION_ON_BODY:
 		stationary_timeframe += 1;
@@ -218,7 +224,8 @@ void body_detect(void)
 		/* if no motion for enough time, change state to off_body */
 		if (stationary_timeframe >=
 		    CONFIG_BODY_DETECTION_STATIONARY_DURATION * window_size)
-			body_detect_change_state(BODY_DETECTION_OFF_BODY);
+			body_detect_change_state(BODY_DETECTION_OFF_BODY,
+						 false);
 		break;
 	}
 }
@@ -226,10 +233,23 @@ void body_detect(void)
 void body_detect_set_enable(int enable)
 {
 	body_detect_enable = enable;
-	body_detect_change_state(BODY_DETECTION_ON_BODY);
+	body_detect_change_state(BODY_DETECTION_ON_BODY, false);
 }
 
 int body_detect_get_enable(void)
 {
 	return body_detect_enable;
+}
+
+void body_detect_set_spoof(int enable)
+{
+	spoof_enable = enable;
+	/* After disabling spoof mode, commit current state. */
+	if (!enable)
+		body_detect_change_state(motion_state, false);
+}
+
+bool body_detect_get_spoof(void)
+{
+	return spoof_enable;
 }
