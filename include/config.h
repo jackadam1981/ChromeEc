@@ -4113,6 +4113,12 @@
 #undef CONFIG_USB_PD_PCIE_TUNNELING
 
 /*
+ * Enable if DUT is capable of vPRO i.e. Intel enhanced security, improved
+ * performance and remote management of devices.
+ */
+#undef CONFIG_USB_PD_HOST_VPRO_CAPABLE
+
+/*
  * The following two macros are ASCII text strings that matches what appears
  * in the USB-IF Product Registration form for this device. These macros are
  * used during VIF generation and they form the product name in the
