@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61bd90a5_ac63371d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-14T20:54:38Z",
+      "side": 1,
+      "message": "The change itself LGTM, I\u0027d just rebase this on its own over ToT. Also, as mentioned by seanpaul@ in gfx meeting, please expand upon the commit message.\n\nAlso, please point to the bug.",
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6aea148_41ed2308",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-14T20:54:38Z",
+      "side": 1,
+      "message": "nit: use `CPRINTS`. You also won\u0027t need the trailing newline.",
+      "range": {
+        "startLine": 1178,
+        "startChar": 9,
+        "endLine": 1178,
+        "endChar": 10
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f85f9c_08831b35",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-14T20:54:38Z",
+      "side": 1,
+      "message": "Also, not you, but once we suspend the port, I don\u0027t see where we actually drain the queue with the old and now invalid messages? I see this done for TCPMv1 in the suspend state, but I don\u0027t see the parallel in TCPMv2.",
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
