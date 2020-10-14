@@ -556,6 +556,16 @@ static int it83xx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_USB_PD_DECODE_SOP
+static int it83xx_tcpm_decode_sop_prime_disable(int port)
+{
+	IT83XX_USBPD_PDMSR(port) &= ~(USBPD_REG_MASK_SOPP_ENABLE |
+				      USBPD_REG_MASK_SOPPP_ENABLE);
+
+	return EC_SUCCESS;
+}
+#endif
+
 static int it83xx_tcpm_set_vconn(int port, int enable)
 {
 	/*
@@ -822,6 +832,9 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.select_rp_value	= &it83xx_tcpm_select_rp_value,
 	.set_cc			= &it83xx_tcpm_set_cc,
 	.set_polarity		= &it83xx_tcpm_set_polarity,
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	.sop_prime_disable	= &it83xx_tcpm_decode_sop_prime_disable,
+#endif
 	.set_vconn		= &it83xx_tcpm_set_vconn,
 	.set_msg_header		= &it83xx_tcpm_set_msg_header,
 	.set_rx_enable		= &it83xx_tcpm_set_rx_enable,
