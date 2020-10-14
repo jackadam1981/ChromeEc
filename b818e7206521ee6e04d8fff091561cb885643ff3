@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73edc1d2_220bc847",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-14T18:45:38Z",
+      "side": 1,
+      "message": "Also set USBPD_REG_MASK_SOPPP_ENABLE here to support active cables.",
+      "range": {
+        "startLine": 585,
+        "startChar": 5,
+        "endLine": 585,
+        "endChar": 31
+      },
+      "revId": "b818e7206521ee6e04d8fff091561cb885643ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f8a14ad_06141c03",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-14T18:45:38Z",
+      "side": 1,
+      "message": "Also clear USBPD_REG_MASK_SOPPP_ENABLE here.",
+      "range": {
+        "startLine": 597,
+        "startChar": 6,
+        "endLine": 597,
+        "endChar": 32
+      },
+      "revId": "b818e7206521ee6e04d8fff091561cb885643ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70dee400_e79e3d8c",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-14T18:45:38Z",
+      "side": 1,
+      "message": "Also set USBPD_REG_MASK_SOPPP_RX_ENABLE.",
+      "range": {
+        "startLine": 507,
+        "startChar": 6,
+        "endLine": 507,
+        "endChar": 35
+      },
+      "revId": "b818e7206521ee6e04d8fff091561cb885643ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb95b61d_3503996e",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-14T18:45:38Z",
+      "side": 1,
+      "message": "Also clear USBPD_REG_MASK_SOPPP_RX_ENABLE.",
+      "range": {
+        "startLine": 517,
+        "startChar": 6,
+        "endLine": 517,
+        "endChar": 35
+      },
+      "revId": "b818e7206521ee6e04d8fff091561cb885643ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
