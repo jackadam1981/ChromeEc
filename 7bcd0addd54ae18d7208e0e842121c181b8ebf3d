@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25dff8cf_0b44e168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-10-14T03:29:23Z",
+      "side": 1,
+      "message": "Ruibin, Do we need our own implementation of sop_prime_disable()?\n(EC starts an I2C trancation in tcpci_tcpm_sop_prime_disable(), but I think we don\u0027t need it)",
+      "revId": "7bcd0addd54ae18d7208e0e842121c181b8ebf3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
