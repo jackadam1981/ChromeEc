@@ -834,6 +834,9 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode	= &it83xx_tcpm_enter_low_power_mode,
 #endif
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	.sop_prime_disable	= &tcpci_tcpm_sop_prime_disable,
+#endif
 #ifdef CONFIG_USB_PD_FRS_TCPC
 	.set_frs_enable		= &it83xx_tcpm_set_frs_enable,
 #endif
