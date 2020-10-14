@@ -9588,7 +9588,7 @@ int cmd_typec_status(int argc, char *argv[])
 	struct ec_response_typec_status *r =
 				(struct ec_response_typec_status *)ec_inbuf;
 	char *endptr;
-	int rv;
+	int rv, i;
 	char *desc;
 
 	if (argc != 2) {
@@ -9700,6 +9700,39 @@ int cmd_typec_status(int argc, char *argv[])
 		printf("SOP' PD Rev: %d.%d\n",
 		       (r->sop_prime_revision >> 12) & 0xF,
 		       (r->sop_prime_revision >> 8) & 0xF);
+
+	for (i = 0; i < r->source_cap_count; i++) {
+		uint32_t pdo = r->source_cap_pdos[i];
+		int pdo_type = pdo >> 30 & 0x3;
+
+		if (i == 0)
+			printf("Source Capabilities:\n");
+
+		if (pdo_type == 0) {
+			printf("    Fixed: %dmV %dmA %s%s%s%s\n",
+			       (pdo >> 10 & 0x3FF) * 50,
+			       (pdo & 0x3FF) * 10,
+			       pdo & BIT(29) ? "DRP " : "",
+			       pdo & BIT(27) ? "UP " : "",
+			       pdo & BIT(26) ? "USB " : "",
+			       pdo & BIT(25) ? "DRD" : "");
+		} else if (pdo_type == 1) {
+			printf("    Battery: max %dmV min %dmV max %dmW\n",
+			       (pdo >> 20 & 0x3FF) * 50,
+			       (pdo >> 10 & 0x3FF) * 50,
+			       (pdo & 0x3FF) * 250);
+		} else if (pdo_type == 2) {
+			printf("    Variable: max %dmV min %dmV max %dmA\n",
+			       (pdo >> 20 & 0x3FF) * 50,
+			       (pdo >> 10 & 0x3FF) * 50,
+			       (pdo & 0x3FF) * 10);
+		} else {
+			printf("    Augmented: max %dmV min %dmV max %dmA\n",
+			       (pdo >> 17 & 0xFF) * 100,
+			       (pdo >> 8 & 0xFF) * 100,
+			       (pdo & 0x7F) * 50);
+		}
+	}
 
 	return 0;
 }

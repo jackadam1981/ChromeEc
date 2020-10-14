@@ -6480,7 +6480,7 @@ struct ec_response_typec_status {
 	uint8_t pd_enabled;		/* PD communication enabled - bool */
 	uint8_t dev_connected;		/* Device connected - bool */
 	uint8_t sop_connected;		/* Device is SOP PD capable - bool */
-	uint8_t reserved1;		/* Reserved for future use */
+	uint8_t source_cap_count;	/* Number of Source Cap PDOs */
 
 	uint8_t power_role;		/* enum pd_power_role */
 	uint8_t data_role;		/* enum pd_data_role */
@@ -6508,7 +6508,9 @@ struct ec_response_typec_status {
 	uint16_t sop_revision;
 	uint16_t sop_prime_revision;
 
-	/* TODO(b/167700356): Add sink and source cap PDOs */
+	uint32_t source_cap_pdos[7];	/* Max 7 PDOs can be present */
+
+	/* TODO(b/167700356): Add sink cap PDOs */
 } __ec_align1;
 
 /*****************************************************************************/
