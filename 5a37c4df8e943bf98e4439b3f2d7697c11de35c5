@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46ffa84a_88007b04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-10-14T02:38:00Z",
+      "side": 1,
+      "message": "also add b:169026662",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37fad9ff_6a74a643",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
