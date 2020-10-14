@@ -110,6 +110,24 @@
       "message": "Could we perhaps use `system_is_locked()` instead?",
       "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e3e7c1_8286dcde",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-14T18:48:33Z",
+      "side": 1,
+      "message": "I checked this is the difference between TCPMv1 and TCPMv2.\n\nTCPMv1 uses `system_is_locked()`; and TCPMv2 uses `IS_ENABLED(CONFIG_SYSTEM_UNLOCKED)`.\n\nI guess this change was designed for the \"Expected Development Flow\" described in http://go/pd-efs2. It helps simplifying the flow, like no dependency on the WP status.\n\n+jettrink@ to confirm",
+      "parentUuid": "1048b8e9_03086912",
+      "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
