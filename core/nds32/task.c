@@ -608,6 +608,8 @@ void __ram_code mutex_lock(struct mutex *mtx)
 	/* critical section with interrupts off */
 	interrupt_disable();
 	mtx->waiters |= id;
+	ccprints("====================");
+	ccprints("lock-mtx->waiters=0x%x", mtx->waiters);
 	while (1) {
 		if (!mtx->lock) { /* we got it ! */
 			mtx->lock = 2;
@@ -618,6 +620,7 @@ void __ram_code mutex_lock(struct mutex *mtx)
 		} else { /* Contention on the mutex */
 			/* end of critical section : re-enable interrupts */
 			interrupt_enable();
+			ccprints("Sleep waiting");
 			/* Sleep waiting for our turn */
 			task_wait_event_mask(TASK_EVENT_MUTEX, 0);
 			/* re-enter critical section */
@@ -631,9 +634,11 @@ void __ram_code mutex_unlock(struct mutex *mtx)
 	uint32_t waiters;
 	task_ *tsk = current_task;
 
+	waiters = mtx->waiters;
+	ccprints("unlock-waiters=0x%x", waiters);
+	ccprints("unlock-mtx->waiters=0x%x", mtx->waiters);
 	/* give back the lock */
 	mtx->lock = 0;
-	waiters = mtx->waiters;
 
 	while (waiters) {
 		task_id_t id = __fls(waiters);
