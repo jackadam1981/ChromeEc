@@ -27,9 +27,37 @@
 
 static uint8_t pd_int_task_id[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/*
+ * Check whether port has PD_INT task
+ * Return: true = not 0, false = 0
+ */
+static int port_has_pd_int_task(int port)
+{
+	int pd_int_task_mask = 0;
+
+#if defined(HAS_TASK_PD_INT_C0)
+	pd_int_task_mask |= BIT(0);
+#endif
+
+#if defined(HAS_TASK_PD_INT_C1)
+	pd_int_task_mask |= BIT(1);
+#endif
+
+#if defined(HAS_TASK_PD_INT_C2)
+	pd_int_task_mask |= BIT(2);
+#endif
+
+#if defined(HAS_TASK_PD_INT_C3)
+	pd_int_task_mask |= BIT(3);
+#endif
+
+	return (pd_int_task_mask & (1 << port));
+}
+
 void schedule_deferred_pd_interrupt(const int port)
 {
-	task_set_event(pd_int_task_id[port], PD_PROCESS_INTERRUPT, 0);
+	if (port_has_pd_int_task(port))
+		task_set_event(pd_int_task_id[port], PD_PROCESS_INTERRUPT, 0);
 }
 
 /*
