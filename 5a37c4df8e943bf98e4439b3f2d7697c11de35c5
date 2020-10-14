@@ -69,6 +69,47 @@
       },
       "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006d79f1_d1b653a4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-14T17:30:50Z",
+      "side": 1,
+      "message": "I think instead of CONFIG_SYSTEM_UNLOCKED, maybe use `system_is_locked()` instead.",
+      "parentUuid": "ff914b86_1ed98b65",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 590,
+        "endChar": 35
+      },
+      "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1048b8e9_03086912",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-14T17:30:50Z",
+      "side": 1,
+      "message": "Could we perhaps use `system_is_locked()` instead?",
+      "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
