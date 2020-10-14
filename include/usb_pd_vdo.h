@@ -73,6 +73,7 @@ struct product_vdo {
  *           100b…111b = Reserved, Shall Not be used
  */
 #define PD_PRODUCT_IS_USB4(vdo) ((vdo) >> 27 & 0x1)
+#define PD_PRODUCT_IS_TBT3(vdo) ((vdo) >> 3 & 0x1)
 
 /*****************************************************************************/
 /*

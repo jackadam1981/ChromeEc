@@ -4109,6 +4109,9 @@
 /* Enable PCIE tunneling if Thunderbolt-Compatible mode is enabled*/
 #undef CONFIG_USB_PD_PCIE_TUNNELING
 
+/* Enable if DUT is vPro capable */
+#undef CONFIG_USB_PD_HOST_VRO_CAPABLE
+
 /*
  * The following two macros are ASCII text strings that matches what appears
  * in the USB-IF Product Registration form for this device. These macros are
