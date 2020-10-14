@@ -274,8 +274,9 @@ static uint8_t get_pd_control_flags(int port)
 			USB_PD_CTRL_TBT_LEGACY_ADAPTER : 0) |
 		(cable_resp.tbt_cable == TBT_CABLE_OPTICAL ?
 			USB_PD_CTRL_OPTICAL_CABLE : 0) |
-		(cable_resp.retimer_type == USB_RETIMER ?
-			USB_PD_CTRL_ACTIVE_CABLE : 0);
+		(get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE ||
+		(cable_resp.tbt_active_passive == TBT_CABLE_ACTIVE ?
+			USB_PD_CTRL_ACTIVE_CABLE : 0));
 }
 
 static uint8_t pd_get_role_flags(int port)
