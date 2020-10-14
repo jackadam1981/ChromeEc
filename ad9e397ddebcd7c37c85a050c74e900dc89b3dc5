@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca0e218_dac13890",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-14T10:53:44Z",
+      "side": 1,
+      "message": "Some minor fix-ups.. OK to commit once they are fixed.\n",
+      "revId": "ad9e397ddebcd7c37c85a050c74e900dc89b3dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "309dbf59_f33fc866",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-14T10:53:44Z",
+      "side": 1,
+      "message": "Maybe name this g_accel_mutex (there is no lid)",
+      "range": {
+        "startLine": 57,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "ad9e397ddebcd7c37c85a050c74e900dc89b3dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c6a4968_bc24d78e",
+        "filename": "board/dooly/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-10-14T10:53:44Z",
+      "side": 1,
+      "message": "Can you move this declaration to under line 203?",
+      "revId": "ad9e397ddebcd7c37c85a050c74e900dc89b3dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
