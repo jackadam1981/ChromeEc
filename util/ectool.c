@@ -9582,6 +9582,42 @@ int cmd_typec_discovery(int argc, char *argv[])
 	return 0;
 }
 
+/* Print shared fields of sink and source cap PDOs */
+static inline void print_pdo_fixed(uint32_t pdo)
+{
+	printf("    Fixed: %dmV %dmA %s%s%s%s",
+	       (pdo >> 10 & 0x3FF) * 50,
+	       (pdo & 0x3FF) * 10,
+	       pdo & BIT(29) ? "DRP " : "",
+	       pdo & BIT(27) ? "UP " : "",
+	       pdo & BIT(26) ? "USB " : "",
+	       pdo & BIT(25) ? "DRD" : "");
+}
+
+static inline void print_pdo_battery(uint32_t pdo)
+{
+	printf("    Battery: max %dmV min %dmV %dmW\n",
+	       (pdo >> 20 & 0x3FF) * 50,
+	       (pdo >> 10 & 0x3FF) * 50,
+	       (pdo & 0x3FF) * 250);
+}
+
+static inline void print_pdo_variable(uint32_t pdo)
+{
+	printf("    Variable: max %dmV min %dmV %dmA\n",
+	       (pdo >> 20 & 0x3FF) * 50,
+	       (pdo >> 10 & 0x3FF) * 50,
+	       (pdo & 0x3FF) * 10);
+}
+
+static inline void print_pdo_augmented(uint32_t pdo)
+{
+	printf("    Augmented: max %dmV min %dmV %dmA\n",
+	       (pdo >> 17 & 0xFF) * 100,
+	       (pdo >> 8 & 0xFF) * 100,
+	       (pdo & 0x7F) * 50);
+}
+
 int cmd_typec_status(int argc, char *argv[])
 {
 	struct ec_params_typec_status p;
@@ -9709,28 +9745,33 @@ int cmd_typec_status(int argc, char *argv[])
 			printf("Source Capabilities:\n");
 
 		if (pdo_type == 0) {
-			printf("    Fixed: %dmV %dmA %s%s%s%s\n",
-			       (pdo >> 10 & 0x3FF) * 50,
-			       (pdo & 0x3FF) * 10,
-			       pdo & BIT(29) ? "DRP " : "",
-			       pdo & BIT(27) ? "UP " : "",
-			       pdo & BIT(26) ? "USB " : "",
-			       pdo & BIT(25) ? "DRD" : "");
+			print_pdo_fixed(pdo);
+			printf("\n");
 		} else if (pdo_type == 1) {
-			printf("    Battery: max %dmV min %dmV %dmW\n",
-			       (pdo >> 20 & 0x3FF) * 50,
-			       (pdo >> 10 & 0x3FF) * 50,
-			       (pdo & 0x3FF) * 250);
+			print_pdo_battery(pdo);
 		} else if (pdo_type == 2) {
-			printf("    Variable: max %dmV min %dmV %dmA\n",
-			       (pdo >> 20 & 0x3FF) * 50,
-			       (pdo >> 10 & 0x3FF) * 50,
-			       (pdo & 0x3FF) * 10);
+			print_pdo_variable(pdo);
 		} else {
-			printf("    Augmented: max %dmV min %dmV %dmA\n",
-			       (pdo >> 17 & 0xFF) * 100,
-			       (pdo >> 8 & 0xFF) * 100,
-			       (pdo & 0x7F) * 50);
+			print_pdo_augmented(pdo);
+		}
+	}
+
+	for (i = 0; i < r->sink_cap_count; i++) {
+		uint32_t pdo = r->sink_cap_pdos[i];
+		int pdo_type = pdo >> 30 & 0x3;
+
+		if (i == 0)
+			printf("Sink Capabilities:\n");
+
+		if (pdo_type == 0) {
+			print_pdo_fixed(pdo);
+			printf("%s\n", (pdo >> 23 & 0x3) ? "FRS" : "");
+		} else if (pdo_type == 1) {
+			print_pdo_battery(pdo);
+		} else if (pdo_type == 2) {
+			print_pdo_variable(pdo);
+		} else {
+			print_pdo_augmented(pdo);
 		}
 	}
 
