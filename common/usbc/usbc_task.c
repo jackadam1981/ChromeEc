@@ -39,6 +39,33 @@
 
 static uint8_t paused[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/*
+ * Check whether port has PD_INT task
+ * Return: true = not 0, false = 0
+ */
+__maybe_unused static int port_has_pd_int_task(int port)
+{
+	int pd_int_task_mask = 0;
+
+#if defined(HAS_TASK_PD_INT_C0)
+	pd_int_task_mask |= BIT(0);
+#endif
+
+#if defined(HAS_TASK_PD_INT_C1)
+	pd_int_task_mask |= BIT(1);
+#endif
+
+#if defined(HAS_TASK_PD_INT_C2)
+	pd_int_task_mask |= BIT(2);
+#endif
+
+#if defined(HAS_TASK_PD_INT_C3)
+	pd_int_task_mask |= BIT(3);
+#endif
+
+	return (pd_int_task_mask & (1 << port));
+}
+
 void tc_pause_event_loop(int port)
 {
 	paused[port] = 1;
@@ -69,8 +96,10 @@ static void pd_task_init(int port)
 	 * Otherwise future interrupts will never fire because another edge
 	 * never happens. Note this needs to happen after set_state() is called.
 	 */
-	if (IS_ENABLED(CONFIG_HAS_TASK_PD_INT))
-		schedule_deferred_pd_interrupt(port);
+	if (IS_ENABLED(CONFIG_HAS_TASK_PD_INT)) {
+		if (port_has_pd_int_task(port))
+			schedule_deferred_pd_interrupt(port);
+	}
 }
 
 static bool pd_task_loop(int port)
