@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d6657c_ca7765c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-14T14:49:09Z",
+      "side": 1,
+      "message": "I used your CL as a base and did what I think Edward was requesting.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2469613",
+      "revId": "3b2e7444365e840b8a7a65f3400c061b671d245d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9418b33e_e48d2c6c",
