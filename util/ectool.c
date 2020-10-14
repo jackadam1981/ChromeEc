@@ -9582,6 +9582,87 @@ int cmd_typec_discovery(int argc, char *argv[])
 	return 0;
 }
 
+/* Print shared fields of sink and source cap PDOs */
+static inline void print_pdo_fixed(uint32_t pdo)
+{
+	/*
+	 * From Table 6-9 and Table 6-14 PD Rev 3.0 Ver 2.0
+	 *
+	 * <31:30> : Fixed Supply
+	 * <29>    : Dual-Role Power
+	 * <28>    : SNK/SRC dependent
+	 * <27>    : Unconstrained Power
+	 * <26>    : USB Communications Capable
+	 * <25>    : Dual-Role Data
+	 * <24:20> : SNK/SRC dependent
+	 * <19:10> : Voltage in 50mV Units
+	 * <9:0>   : Maximum Current in 10mA units
+	 */
+	printf("    Fixed: %dmV %dmA %s%s%s%s",
+	       (pdo >> 10 & 0x3FF) * 50,
+	       (pdo & 0x3FF) * 10,
+	       pdo & BIT(29) ? "DRP " : "",
+	       pdo & BIT(27) ? "UP " : "",
+	       pdo & BIT(26) ? "USB " : "",
+	       pdo & BIT(25) ? "DRD" : "");
+}
+
+static inline void print_pdo_battery(uint32_t pdo)
+{
+	/*
+	 * From Table 6-12 and Table 6-16 PD Rev 3.0 Ver 2.0
+	 *
+	 * <31:30> : Battery
+	 * <29:20> : Maximum Voltage in 50mV units
+	 * <19:10> : Minimum Voltage in 50mV units
+	 * <9:0>   : Maximum Allowable Power in 250mW units
+	 */
+	printf("    Battery: max %dmV min %dmV max %dmW\n",
+	       (pdo >> 20 & 0x3FF) * 50,
+	       (pdo >> 10 & 0x3FF) * 50,
+	       (pdo & 0x3FF) * 250);
+}
+
+static inline void print_pdo_variable(uint32_t pdo)
+{
+	/*
+	 * From Table 6-11 and Table 6-15 PD Rev 3.0 Ver 2.0
+	 *
+	 * <31:30> : Variable Supply (non-Battery)
+	 * <29:20> : Maximum Voltage in 50mV units
+	 * <19:10> : Minimum Voltage in 50mV units
+	 * <9:0>   : Operational Current in 10mA units
+	 */
+	printf("    Variable: max %dmV min %dmV max %dmA\n",
+	       (pdo >> 20 & 0x3FF) * 50,
+	       (pdo >> 10 & 0x3FF) * 50,
+	       (pdo & 0x3FF) * 10);
+}
+
+static inline void print_pdo_augmented(uint32_t pdo)
+{
+	/*
+	 * From Table 6-13 and Table 6-16 PD Rev 3.0 Ver 2.0
+	 *
+	 * Note this type is reserved in PD 2.0, and only one type of APDO is
+	 * supported as of the cited version.
+	 *
+	 * <31:30> : Augmented Power Data Object
+	 * <29:28> : Programmable Power Supply
+	 * <27>    : PPS Power Limited
+	 * <26:25> : Reserved
+	 * <24:17> : Maximum Voltage in 100mV increments
+	 * <16>    : Reserved
+	 * <15:8>  : Minimum Voltage in 100mV increments
+	 * <7>     : Reserved
+	 * <6:0>   : Maximum Current in 50mA increments
+	 */
+	printf("    Augmented: max %dmV min %dmV max %dmA\n",
+	       (pdo >> 17 & 0xFF) * 100,
+	       (pdo >> 8 & 0xFF) * 100,
+	       (pdo & 0x7F) * 50);
+}
+
 int cmd_typec_status(int argc, char *argv[])
 {
 	struct ec_params_typec_status p;
@@ -9702,6 +9783,11 @@ int cmd_typec_status(int argc, char *argv[])
 		       (r->sop_prime_revision >> 8) & 0xF);
 
 	for (i = 0; i < r->source_cap_count; i++) {
+		/*
+		 * Bits 31:30 always indicate the type of PDO
+		 *
+		 * Table 6-7 PD Rev 3.0 Ver 2.0
+		 */
 		uint32_t pdo = r->source_cap_pdos[i];
 		int pdo_type = pdo >> 30 & 0x3;
 
@@ -9709,28 +9795,39 @@ int cmd_typec_status(int argc, char *argv[])
 			printf("Source Capabilities:\n");
 
 		if (pdo_type == 0) {
-			printf("    Fixed: %dmV %dmA %s%s%s%s\n",
-			       (pdo >> 10 & 0x3FF) * 50,
-			       (pdo & 0x3FF) * 10,
-			       pdo & BIT(29) ? "DRP " : "",
-			       pdo & BIT(27) ? "UP " : "",
-			       pdo & BIT(26) ? "USB " : "",
-			       pdo & BIT(25) ? "DRD" : "");
+			print_pdo_fixed(pdo);
+			printf("\n");
 		} else if (pdo_type == 1) {
-			printf("    Battery: max %dmV min %dmV max %dmW\n",
-			       (pdo >> 20 & 0x3FF) * 50,
-			       (pdo >> 10 & 0x3FF) * 50,
-			       (pdo & 0x3FF) * 250);
+			print_pdo_battery(pdo);
 		} else if (pdo_type == 2) {
-			printf("    Variable: max %dmV min %dmV max %dmA\n",
-			       (pdo >> 20 & 0x3FF) * 50,
-			       (pdo >> 10 & 0x3FF) * 50,
-			       (pdo & 0x3FF) * 10);
+			print_pdo_variable(pdo);
 		} else {
-			printf("    Augmented: max %dmV min %dmV max %dmA\n",
-			       (pdo >> 17 & 0xFF) * 100,
-			       (pdo >> 8 & 0xFF) * 100,
-			       (pdo & 0x7F) * 50);
+			print_pdo_augmented(pdo);
+		}
+	}
+
+	for (i = 0; i < r->sink_cap_count; i++) {
+		/*
+		 * Bits 31:30 always indicate the type of PDO
+		 *
+		 * Table 6-7 PD Rev 3.0 Ver 2.0
+		 */
+		uint32_t pdo = r->sink_cap_pdos[i];
+		int pdo_type = pdo >> 30 & 0x3;
+
+		if (i == 0)
+			printf("Sink Capabilities:\n");
+
+		if (pdo_type == 0) {
+			print_pdo_fixed(pdo);
+			/* Note: FRS bits are reserved in PD 2.0 spec */
+			printf("%s\n", (pdo >> 23 & 0x3) ? "FRS" : "");
+		} else if (pdo_type == 1) {
+			print_pdo_battery(pdo);
+		} else if (pdo_type == 2) {
+			print_pdo_variable(pdo);
+		} else {
+			print_pdo_augmented(pdo);
 		}
 	}
 
