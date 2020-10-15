@@ -34,6 +34,24 @@
       "parentUuid": "735ae799_01fb50c5",
       "revId": "d31a8e4b5ac2def50650690a76cb13c3ec834bae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a4d38b_130269a7",
+        "filename": "board/morphius/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-15T21:53:05Z",
+      "side": 0,
+      "message": "I like this version better. Don\u0027t read the sensors if we are not going to use the values and don\u0027t use the values unless the sensors read without issue",
+      "parentUuid": "7d85a46d_15d77eef",
+      "revId": "d31a8e4b5ac2def50650690a76cb13c3ec834bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
