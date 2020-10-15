@@ -12,6 +12,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "intc.h"
 #include "registers.h"
 #include "spi.h"
 #include "system.h"
@@ -42,8 +43,10 @@ static const uint8_t out_preamble[EC_SPI_PREAMBLE_LENGTH] = {
 };
 
 /* Store read and write data buffer */
-static uint8_t in_msg[SPI_RX_MAX_FIFO_SIZE] __aligned(4);
-static uint8_t out_msg[SPI_TX_MAX_FIFO_SIZE] __aligned(4);
+static uint8_t in_msg[SPI_RX_MAX_FIFO_SIZE] __aligned(4)
+				__attribute__((section(".h2ram.pool.spislv")));
+static uint8_t out_msg[SPI_TX_MAX_FIFO_SIZE] __aligned(4)
+				__attribute__((section(".h2ram.pool.spislv")));
 
 /* Parameters used by host protocols */
 static struct host_packet spi_packet;
@@ -74,7 +77,7 @@ static void spi_set_state(int state)
 	/* SPI slave state machine */
 	spi_slv_state = state;
 	/* Response spi slave state */
-	IT83XX_SPI_SPISRDR = spi_response_state[state];
+	IT83XX_SPI_SPISRDR = 0xff;
 }
 
 static void reset_rx_fifo(void)
@@ -285,16 +288,36 @@ void spi_slv_int_handler(void)
 		 */
 		if (IT83XX_SPI_ISR & IT83XX_SPI_RX_REACH) {
 			/* Disable Rx byte reach interrupt */
-			IT83XX_SPI_IMR |= IT83XX_SPI_RX_REACH;
+			//IT83XX_SPI_IMR |= IT83XX_SPI_RX_REACH;
 			/* write clear slave status */
-			IT83XX_SPI_ISR = IT83XX_SPI_RX_REACH;
+			//IT83XX_SPI_ISR = IT83XX_SPI_RX_REACH;
 			/* Parse header for version of spi-protocol */
-			spi_parse_header();
+			//spi_parse_header();
+			//CPRINTS("FIFO full");
+			spi_host_request_data(in_msg, 16);
+			/* End Rx FIFO access */
+			IT83XX_SPI_TXRXFAR = 0x00;
+			/* Rx FIFO reset and count monitor reset */
+			IT83XX_SPI_FCR = IT83XX_SPI_RXFR | IT83XX_SPI_RXFCMR;
+			IT83XX_SPI_ISR = IT83XX_SPI_RX_REACH;
+#ifdef SECTION_IS_RO
+			emmc_isr();
+#endif
+			//IT83XX_SPI_IMR &= ~IT83XX_SPI_RX_REACH;
+			//IT83XX_SPI_ISR = 0xff;
+//#ifdef SECTION_IS_RO
+//			task_wake(TASK_ID_EMMC);
+//#endif
 		}
 	}
 
 	/* Clear the interrupt status */
 	task_clear_pending_irq(IT83XX_IRQ_SPI_SLAVE);
+}
+
+uint32_t *spi_get_in_msg(void)
+{
+	return (uint32_t *)in_msg;
 }
 
 static void spi_init(void)
@@ -330,8 +353,10 @@ static void spi_init(void)
 		IT83XX_SPI_TCCB1 = (offset >> 8) & 0xff;
 		IT83XX_SPI_TCCB0 = offset & 0xff;
 	} else {
-		IT83XX_SPI_FTCB1R = (SPI_RX_MAX_FIFO_SIZE >> 8) & 0xff;
-		IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE & 0xff;
+		//IT83XX_SPI_FTCB1R = (SPI_RX_MAX_FIFO_SIZE >> 8) & 0xff;
+		//IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE & 0xff;
+		IT83XX_SPI_FTCB1R = 0;
+		IT83XX_SPI_FTCB0R = 128;
 	}
 	/* Rx valid length interrupt enabled */
 	if (IS_ENABLED(IT83XX_SPI_RX_VALID_INT))

@@ -41,7 +41,9 @@ MEMORY
 	 */
 	ILM (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
 
-#if defined(CONFIG_HOSTCMD_X86) || defined(CONFIG_I2C_SLAVE)
+#if defined(CONFIG_HOSTCMD_X86) || \
+    defined(CONFIG_I2C_SLAVE)   || \
+    defined(CONFIG_SPI)
 	H2RAM (rw) : ORIGIN = CONFIG_H2RAM_BASE, LENGTH = CONFIG_H2RAM_SIZE
 #endif
 #else
@@ -341,15 +343,23 @@ SECTIONS
 #endif
 
 #if defined(CHIP_FAMILY_IT8XXX2)
-#if defined(CONFIG_HOSTCMD_X86) || defined(CONFIG_I2C_SLAVE)
+#if defined(CONFIG_HOSTCMD_X86) || \
+    defined(CONFIG_I2C_SLAVE)   || \
+    defined(CONFIG_SPI)
 	.h2ram (NOLOAD) : {
+#ifdef CONFIG_HOSTCMD_X86
 		. += CONFIG_H2RAM_HOST_LPC_IO_BASE;
 		*(.h2ram.pool.hostcmd)
 		. = ALIGN(256);
 		*(.h2ram.pool.acpiec)
+#endif
 #ifdef CONFIG_I2C_SLAVE
 		. = ALIGN(256);
 		*(.h2ram.pool.i2cslv)
+#endif
+#ifdef CONFIG_SPI
+		. = ALIGN(256);
+		*(.h2ram.pool.spislv)
 #endif
 		__h2ram_end = .;
 	} > H2RAM
