@@ -4546,6 +4546,15 @@ static void pe_handle_custom_vdm_request_entry(int port)
 
 	print_current_state(port);
 
+	/* Only handle custom requests for SVID Google */
+	if (PD_VDO_VID(*payload) != USB_VID_GOOGLE) {
+		if (prl_get_rev(port, TCPC_TX_SOP) > PD_REV20)
+			set_state_pe(port, PE_SEND_NOT_SUPPORTED);
+		else
+			pe_set_ready_state(port);
+		return;
+	}
+
 	/* This is an Interruptible AMS */
 	PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 
