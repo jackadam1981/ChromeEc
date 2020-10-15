@@ -52,6 +52,57 @@
       "parentUuid": "4475628f_e2bee5db",
       "revId": "3176a1837870d427568bd891225f6f4610995cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4bae840_21d900e3",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-15T23:07:56Z",
+      "side": 1,
+      "message": "What should this return if called when we\u0027re not the appropriate data and/or vconn role to fully enter mode?",
+      "revId": "3176a1837870d427568bd891225f6f4610995cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c951049_94381ef7",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-15T23:07:56Z",
+      "side": 1,
+      "message": "I\u0027m uncertain what to think of having this host command as a separate CONFIG.  Do we think there will be boards which want to report STATUS and DISCOVERY for the AP, but won\u0027t need to do other actions like clear events?",
+      "revId": "3176a1837870d427568bd891225f6f4610995cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d4de4ac_045e85ef",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6377,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-15T23:07:56Z",
+      "side": 1,
+      "message": "What does \"none\" represent?",
+      "revId": "3176a1837870d427568bd891225f6f4610995cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
