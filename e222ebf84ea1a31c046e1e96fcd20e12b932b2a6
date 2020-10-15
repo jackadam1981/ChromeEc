@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ee7875c_19cce9ec",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-15T22:30:24Z",
+      "side": 1,
+      "message": "In my setup, \u0027make tests\u0027 passes (with this CL and !defined(TEST_BUILD)). Can you sync and try again? Do you have other patches in your local branch?",
+      "parentUuid": "8def2577_8a761f6d",
+      "revId": "e222ebf84ea1a31c046e1e96fcd20e12b932b2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29f77f8a_9b337bbb",
         "filename": "driver/charger/isl923x.h",
         "patchSetId": 5

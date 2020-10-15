@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30afca27_33cde943",
+        "filename": "common/charger.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-15T22:30:24Z",
+      "side": 1,
+      "message": "BD9995X_ADDR_FLAGS is the new format. Why do you go backward?",
+      "range": {
+        "startLine": 244,
+        "startChar": 20,
+        "endLine": 244,
+        "endChar": 32
+      },
+      "revId": "e77b3cd98121056a26ea34db3f91f3981ff71441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
