@@ -436,6 +436,9 @@ void __ram_code espi_fw_reset_module(void)
 
 void espi_reset_pin_asserted_interrupt(enum gpio_signal signal)
 {
+	int reg = IT83XX_GCTRL_SPCTRL1;
+
+	ccprints("SPCTRL1 = 0x%x", reg);
 #ifdef IT83XX_ESPI_RESET_MODULE_BY_FW
 	espi_fw_reset_module();
 	/*
@@ -445,6 +448,8 @@ void espi_reset_pin_asserted_interrupt(enum gpio_signal signal)
 	 */
 	IT83XX_GCTRL_SPCTRL1 |= 0xC2;
 #endif
+	reg = IT83XX_GCTRL_SPCTRL1;
+	ccprints("SPCTRL1 = 0x%x", reg);
 	/* reset vw_index_flag when espi_reset# asserted. */
 	espi_reset_vw_index_flags();
 }
