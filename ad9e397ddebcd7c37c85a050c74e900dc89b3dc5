@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "963cb3a3_68034f50",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-10-15T01:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309dbf59_f33fc866",
+      "range": {
+        "startLine": 57,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "ad9e397ddebcd7c37c85a050c74e900dc89b3dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c6a4968_bc24d78e",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-10-14T10:53:44Z",
       "side": 1,
       "message": "Can you move this declaration to under line 203?",
+      "revId": "ad9e397ddebcd7c37c85a050c74e900dc89b3dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72309b2a_01f3fdf7",
+        "filename": "board/dooly/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-10-15T01:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c6a4968_bc24d78e",
       "revId": "ad9e397ddebcd7c37c85a050c74e900dc89b3dc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
