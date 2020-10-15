@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab49cb9_2a9378fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-15T20:59:48Z",
+      "side": 1,
+      "message": "I think it would be more natural to handle this in pd_custom_vdm. Right now, that function doesn\u0027t check for the Google VID, which seems wrong.\n\npe_handle_custom_vdm_request_entry looks like it just leaves us int this state until we time out if there\u0027s nothing to respond with, which also seems wrong.\n\nYou could kill two birds with one stone by making pd_custom_vdm return 0 (VDOs) if the request doesn\u0027t use the Google VID and then making pe_handle_custom_vdm_request_entry either ignore or send Not Supported (as in the current patchset) if pd_custom_vdm returns 0.",
+      "revId": "a0c5c44185b078fb6060ca042ae25896fc2a96af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
