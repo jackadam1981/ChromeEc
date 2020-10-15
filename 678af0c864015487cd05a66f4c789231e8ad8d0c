@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5949f928_26b507b4",
+        "filename": "board/casta/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-15T21:19:29Z",
+      "side": 1,
+      "message": "I think it\u0027s cleaner to do this in the baseboard.c.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 56
+      },
+      "revId": "678af0c864015487cd05a66f4c789231e8ad8d0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb79b40_6ca77e16",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-15T21:19:29Z",
+      "side": 1,
+      "message": "I think we should put \u0027int sense_register_ac\u0027 in struct charger_config_t.\n\nAnother option is to replace all CONFIG_CHARGER_SENSE_RESISTOR_AC with CONFIG_CHARGER_SENSE_RESISTOR_AC_BQ25710 in bq25710.c.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "678af0c864015487cd05a66f4c789231e8ad8d0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce982d20_6914255c",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-15T21:19:29Z",
+      "side": 1,
+      "message": "Same comment as bq25710.h.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "678af0c864015487cd05a66f4c789231e8ad8d0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
