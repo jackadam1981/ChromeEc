@@ -22,6 +22,30 @@
       },
       "revId": "3cc9769030c3247c6ff10e3749f7b45d7f622622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84bd4b3d_db0d4f1d",
+        "filename": "driver/ln9310.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-10-15T21:40:45Z",
+      "side": 1,
+      "message": "Doh! I just saw the point of the mask in here. Totally missed the fact that it was representing just LB_DELTA.",
+      "parentUuid": "f0f45757_38d7e523",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 32
+      },
+      "revId": "3cc9769030c3247c6ff10e3749f7b45d7f622622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

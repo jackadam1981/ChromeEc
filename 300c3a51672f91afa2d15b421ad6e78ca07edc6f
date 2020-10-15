@@ -16,6 +16,46 @@
       "message": "I made the changes for SELECT_EXT_5V_FOR_VDR in this CL.",
       "revId": "300c3a51672f91afa2d15b421ad6e78ca07edc6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "380d8e39_876c41ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-10-15T21:40:45Z",
+      "side": 1,
+      "message": "Sean: Please either change the commit message here to include your change as well, or just make a separate child commit with your SELECT_EXT_5V_FOR_VDR changes.",
+      "revId": "300c3a51672f91afa2d15b421ad6e78ca07edc6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96b685f_40951d71",
+        "filename": "driver/ln9310.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-10-15T21:40:45Z",
+      "side": 1,
+      "message": "How about just #define LN9310_STARTUP_SELECT_EXT_5V_FOR_VDR\t0x08\n\nthen later on:\n\nfield_update8(LN9310_REG_STARTUP_CTRL,\n\t\t      LN9310_STARTUP_SELECT_EXT_5V_FOR_VDR,\n\t\t      0);",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 54
+      },
+      "revId": "300c3a51672f91afa2d15b421ad6e78ca07edc6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
