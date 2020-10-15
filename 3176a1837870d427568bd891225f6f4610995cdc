@@ -16,6 +16,24 @@
       "message": "The way the gating currently works is that, if the TYPEC_CONTROL host command is defined, the EC will wait for the AP to tell it to enter a mode. Otherwise, it will just do it. The rollout mechanism in this scenario would be that kernel development proceeds with modified EC images that enable the command, but ToT doesn\u0027t define it. The kernel would then check the associated feature flag to see whether it needed to send a host command. Once the kernel was ready at ToT, we\u0027d flip the EC config to enable the host command.\n\nI can see some downsides to this, so I open the floor to ideas for better gating mechanisms. My first thought was to make dpm_mode_entry_requested always return true until we\u0027re ready to set the feature flag, but I wasn\u0027t sure what our policy was on committing dead code, and I wanted the body of that function to get reviewed.",
       "revId": "3176a1837870d427568bd891225f6f4610995cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4475628f_e2bee5db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-10-15T19:15:41Z",
+      "side": 1,
+      "message": "Hi Abe,\n\nThanks for the patch.\n\n\u003e  Once the kernel was ready at ToT, we\u0027d flip the EC config to enable the host command.\n\nTo clarify, we\u0027d be sending the EC command from the user space directly (mode entry via sysfs is still WIP upstream, especially when one includes USB4 which is an almost-alt-mode). That said this approach sounds good.\n\n\u003e I can see some downsides to this\n\nCould you elaborate on what these are? (I\u0027m not familiar with EC branch management so will put this question down to my ignorance :) )",
+      "parentUuid": "7434aed9_a6ac05ee",
+      "revId": "3176a1837870d427568bd891225f6f4610995cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
