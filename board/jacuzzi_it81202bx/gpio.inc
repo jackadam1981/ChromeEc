@@ -1,0 +1,91 @@
+/* -*- mode:c -*-
+ *
+ * Copyright 2020 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/*
+ * Declare symbolic names for all the GPIOs that we care about.
+ * Note: Those with interrupt handlers must be declared first.
+ */
+
+/* Interrupts */
+GPIO_INT(USB_C0_PD_INT_ODL, PIN(A, 0), GPIO_INT_FALLING | GPIO_PULL_UP,
+         tcpc_alert_event)
+GPIO_INT(POWER_BUTTON_L,    PIN(A, 1), GPIO_INT_BOTH | GPIO_PULL_UP,
+         power_button_interrupt) /* EC_PWR_BTN_ODL */
+GPIO_INT(AP_IN_SLEEP_L,     PIN(A, 2), GPIO_INT_BOTH | GPIO_PULL_DOWN,
+         power_signal_interrupt)
+GPIO_INT(PMIC_EC_RESETB,    PIN(A, 3), GPIO_INT_BOTH | GPIO_PULL_DOWN,
+         power_signal_interrupt)
+GPIO_INT(WARM_RESET_REQ,    PIN(A, 7), GPIO_INT_RISING | GPIO_PULL_DOWN,
+         chipset_reset_request_interrupt)
+GPIO_INT_RW(ACCEL_INT_ODL,  PIN(E, 1), GPIO_INT_FALLING | GPIO_SEL_1P8V | GPIO_PULL_UP,
+         bmi160_interrupt)
+GPIO_INT_RO(BOOTBLOCK_EN_L, PIN(E, 3), GPIO_INT_RISING, ap_jump_to_bl)
+GPIO_INT(SPI0_CS,           PIN(M, 5), GPIO_INT_FALLING,
+         spi_event)        /* SPI slave Chip Select -- AP_SPI_EC_CS_L */
+GPIO_INT(LID_OPEN,          PIN(E, 4), GPIO_INT_BOTH,
+         lid_interrupt)
+GPIO_INT(AC_PRESENT,        PIN(I, 0), GPIO_INT_BOTH,
+         extpower_interrupt) /* ACOK_OD */
+GPIO_INT(BC12_EC_INT_ODL,   PIN(I, 1), GPIO_INT_FALLING,
+         bc12_interrupt)
+GPIO_INT(AP_EC_WATCHDOG_L,  PIN(I, 3), GPIO_INT_FALLING,
+         chipset_watchdog_interrupt)
+GPIO_INT(TABLET_MODE_L,     PIN(I, 4), GPIO_INT_BOTH,
+         gmr_tablet_switch_isr)
+GPIO_INT(UART1_RX,          PIN(B, 0), GPIO_INT_FALLING,
+         uart_deepsleep_interrupt) /* UART_DEBUG_TX_EC_RX */
+
+GPIO(I2C_A_SCL,              PIN(B, 3), GPIO_INPUT)
+GPIO(I2C_A_SDA,              PIN(B, 4), GPIO_INPUT)
+GPIO(I2C_B_SCL,              PIN(C, 1), GPIO_INPUT)
+GPIO(I2C_B_SDA,              PIN(C, 2), GPIO_INPUT)
+GPIO(I2C_C_SCL,              PIN(F, 6), GPIO_INPUT)
+GPIO(I2C_C_SDA,              PIN(F, 7), GPIO_INPUT)
+GPIO(I2C_E_SCL,              PIN(A, 4), GPIO_INPUT)
+GPIO(I2C_E_SDA,              PIN(A, 5), GPIO_INPUT)
+UNIMPLEMENTED(ALS_RGB_INT_ODL)
+UNIMPLEMENTED(AP_SYS_RST_L)
+UNIMPLEMENTED(PMIC_WATCHDOG_L)
+UNIMPLEMENTED(PMIC_EN_ODL)
+UNIMPLEMENTED(BOARD_ID)
+UNIMPLEMENTED(EC_SKU_ID)
+UNIMPLEMENTED(WP)
+UNIMPLEMENTED(BOOT0)
+UNIMPLEMENTED(CCD_MODE_ODL)
+UNIMPLEMENTED(EC_BATT_PRES_ODL)
+UNIMPLEMENTED(EC_BL_EN_OD)
+UNIMPLEMENTED(EN_USBA_5V)
+UNIMPLEMENTED(EC_SENSOR_SPI_MISO)
+UNIMPLEMENTED(EC_SENSOR_SPI_MOSI)
+UNIMPLEMENTED(EC_SENSOR_SPI_NSS)
+UNIMPLEMENTED(EC_SENSOR_SPI_CK)
+UNIMPLEMENTED(ENTERING_RW)
+UNIMPLEMENTED(EC_INT_L)
+UNIMPLEMENTED(EC_BOARD_ID_EN_L)
+UNIMPLEMENTED(USB_C0_HPD_OD)
+UNIMPLEMENTED(USB_C0_DISCHARGE)
+UNIMPLEMENTED(LED_BLUE)
+UNIMPLEMENTED(LED_GREEN)
+UNIMPLEMENTED(LED_ORANGE)
+UNIMPLEMENTED(EN_PP1800_S5_L)
+UNIMPLEMENTED(EN_PP5000_USBC)
+UNIMPLEMENTED(PMIC_FORCE_RESET_ODL)
+UNIMPLEMENTED(EN_USBC_CHARGE_L)
+
+/* Alternate functions GPIO definitions */
+/* I2C */
+ALTERNATE(PIN_MASK(B, 0x18), 1, MODULE_I2C, GPIO_PULL_UP) /* I2C A */
+ALTERNATE(PIN_MASK(C, 0x06), 1, MODULE_I2C, GPIO_PULL_UP) /* I2C B */
+ALTERNATE(PIN_MASK(F, 0xC0), 1, MODULE_I2C, GPIO_PULL_UP) /* I2C C */
+/* ADC */
+ALTERNATE(PIN_MASK(I, 0x60), 0, MODULE_ADC, 0)  /* ADC 5,6 */
+/* UART */
+ALTERNATE(PIN_MASK(B, 0x03), 1, MODULE_UART, 0) /* EC to Servo */
+/* EMMC SPI SLAVE M2:CLK, M3:CMD, M6:DATA0 */
+ALTERNATE(PIN_MASK(M, 0x4C), 0, MODULE_SPI_FLASH,  0)
+/* SPI */
+ALTERNATE(PIN_MASK(M, 0x33), 0, MODULE_SPI, 0) /* SPI for communication */

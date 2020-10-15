@@ -12,6 +12,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "intc.h"
 #include "registers.h"
 #include "spi.h"
 #include "system.h"
@@ -42,8 +43,10 @@ static const uint8_t out_preamble[EC_SPI_PREAMBLE_LENGTH] = {
 };
 
 /* Store read and write data buffer */
-static uint8_t in_msg[SPI_RX_MAX_FIFO_SIZE] __aligned(4);
-static uint8_t out_msg[SPI_TX_MAX_FIFO_SIZE] __aligned(4);
+static uint8_t in_msg[SPI_RX_MAX_FIFO_SIZE] __aligned(4)
+				__attribute__((section(".h2ram.pool.spislv")));
+static uint8_t out_msg[SPI_TX_MAX_FIFO_SIZE] __aligned(4)
+				__attribute__((section(".h2ram.pool.spislv")));
 
 /* Parameters used by host protocols */
 static struct host_packet spi_packet;
@@ -235,6 +238,19 @@ void spi_event(enum gpio_signal signal)
 
 void spi_slv_int_handler(void)
 {
+	if (IT83XX_SPI_ISR & IT83XX_SPI_RX_FIFO_FULL) {
+		spi_host_request_data(in_msg, 16);
+		/* End Rx FIFO access */
+		IT83XX_SPI_TXRXFAR = 0x00;
+		/* Rx FIFO reset and count monitor reset */
+		IT83XX_SPI_FCR = IT83XX_SPI_RXFR | IT83XX_SPI_RXFCMR;
+		IT83XX_SPI_ISR = IT83XX_SPI_RX_FIFO_FULL;
+#ifdef SECTION_IS_RO
+		emmc_isr();
+#endif
+		return;
+	}
+
 	/*
 	 * The status of SPI end detection interrupt bit is set, it
 	 * means that host command parse has been completed and AP
@@ -295,6 +311,11 @@ void spi_slv_int_handler(void)
 
 	/* Clear the interrupt status */
 	task_clear_pending_irq(IT83XX_IRQ_SPI_SLAVE);
+}
+
+uint32_t *spi_get_in_msg(void)
+{
+	return (uint32_t *)in_msg;
 }
 
 static void spi_init(void)
