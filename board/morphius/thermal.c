@@ -497,6 +497,9 @@ void thermal_protect(void)
 {
 	int thermal_sensor1, thermal_sensor2;
 
+	if (!chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND))
+		return;
+
 	temp_sensor_read(TEMP_SENSOR_5V_REGULATOR, &thermal_sensor1);
 	temp_sensor_read(TEMP_SENSOR_CPU, &thermal_sensor2);
 
