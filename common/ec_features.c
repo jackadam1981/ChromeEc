@@ -138,6 +138,9 @@ uint32_t get_feature_flags1(void)
 #ifdef CHIP_ISH
 		| EC_FEATURE_MASK_1(EC_FEATURE_ISH)
 #endif
+#ifdef CONFIG_HOSTCMD_TYPEC_CONTROL
+		| EC_FEATURE_TYPEC_REQUIRE_AP_MODE_ENTRY
+#endif
 		;
 	return board_override_feature_flags1(result);
 }
