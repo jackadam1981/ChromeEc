@@ -33,6 +33,52 @@
       "message": "Chen-Tsung, Please help to review this Cl,thanks",
       "revId": "eaf1221475d9a31a15804384e950d712a15c3b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0b7a0ba_b330050f",
+        "filename": "board/cerise/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-10-15T03:43:16Z",
+      "side": 1,
+      "message": "Please correct the indent in all the three led_dexcriptor tables.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "eaf1221475d9a31a15804384e950d712a15c3b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f0830f0_c4481428",
+        "filename": "board/cerise/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-10-15T03:43:16Z",
+      "side": 1,
+      "message": "Please move the enum BOARD_SKU_ID to board.h, then we can make it more clear with \u0027if (board_get_sku_id() \u003d\u003d BOARD_SKU_ID_XXX)\u0027.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 24
+      },
+      "revId": "eaf1221475d9a31a15804384e950d712a15c3b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
