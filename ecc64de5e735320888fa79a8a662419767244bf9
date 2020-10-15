@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4336a16_a5b4cc11",
+        "filename": "board/berknip/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-15T15:41:19Z",
+      "side": 1,
+      "message": "Since this is used in the generic driver code and not in device specific, it may make sense to have this as a CONFIG_ define",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "ecc64de5e735320888fa79a8a662419767244bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8826b4_d516eaae",
+        "filename": "driver/retimer/tusb544.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-15T15:41:19Z",
+      "side": 1,
+      "message": "I am not sure I like the way this is done and will leave this to Edward for the final call. At a minimum it should be using \"if (IS_ENABLED(TUSB544_GEN4_EQ_OVRD))\" instead of the #ifdef",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "ecc64de5e735320888fa79a8a662419767244bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ccc07e_10e0b3a4",
+        "filename": "driver/retimer/tusb544.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-15T15:41:19Z",
+      "side": 1,
+      "message": "nit: I am a real fan of aligning the register offsets on a column so they all stand out and then indenting one more tab on the possible register values to set them aside from the register offsets but have them all stand out as being what they are.  Can you reformat all of these register and register values?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "ecc64de5e735320888fa79a8a662419767244bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
