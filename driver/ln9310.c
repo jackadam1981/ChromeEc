@@ -204,6 +204,11 @@ void ln9310_init(void)
 		      LN9310_TIMER_OP_SELF_SYNC_EN_MASK,
 		      LN9310_TIMER_OP_SELF_SYNC_EN_ON);
 
+	/* Use VIN for VDR. The following usleep will give circuit time to settle */
+	field_update8(LN9310_REG_STARTUP_CTRL,
+		      LN9310_STARTUP_SELECT_EXT_5V_FOR_VDR_MASK,
+		      LN9310_STARTUP_SELECT_EXT_5V_FOR_VDR_OFF);
+
 	usleep(LN9310_CDC_DELAY);
 	CPRINTS("LN9310 OP_MODE Update method: Self-sync");
 
