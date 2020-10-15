@@ -97,6 +97,7 @@ DECLARE_HOST_COMMAND(EC_CMD_TYPEC_DISCOVERY,
 		     hc_typec_discovery,
 		     EC_VER_MASK(0));
 
+#ifdef CONFIG_HOSTCMD_TYPEC_CONTROL
 static enum ec_status hc_typec_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_typec_control *p = args->params;
@@ -111,6 +112,9 @@ static enum ec_status hc_typec_control(struct host_cmd_handler_args *args)
 	case TYPEC_CONTROL_COMMAND_CLEAR_EVENTS:
 		pd_clear_events(p->port, p->clear_events_mask);
 		break;
+	case TYPEC_CONTROL_COMMAND_ENTER_MODE: {
+		return pd_request_enter_mode(p->port, p->mode_to_enter);
+		}
 	default:
 		return EC_RES_INVALID_PARAM;
 	}
@@ -119,6 +123,7 @@ static enum ec_status hc_typec_control(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_TYPEC_CONTROL, hc_typec_control, EC_VER_MASK(0));
+#endif
 
 static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 {
