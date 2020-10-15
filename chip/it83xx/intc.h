@@ -45,6 +45,8 @@ void espi_enable_pad(int enable);
 void espi_init(void);
 void clock_cpu_standby(void);
 void spi_slv_int_handler(void);
+uint32_t *spi_get_in_msg(void);
+void emmc_isr(void);
 #if defined(CONFIG_HOSTCMD_X86) && defined(HAS_TASK_KEYPROTO)
 void lpc_kbc_ibf_interrupt(void);
 void lpc_kbc_obe_interrupt(void);
