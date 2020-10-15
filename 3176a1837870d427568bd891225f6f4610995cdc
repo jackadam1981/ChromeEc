@@ -34,6 +34,24 @@
       "parentUuid": "7434aed9_a6ac05ee",
       "revId": "3176a1837870d427568bd891225f6f4610995cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68cd928_97275ef6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-15T19:50:31Z",
+      "side": 1,
+      "message": "\u003e Could you elaborate on what these are?\n\nThe one that most immediately comes to mind is that people who wanted to develop against these features would have to build their own ECs.\n\nThis would also be different than the process for the other Type-C commands so far, where the EC feature sits there and waits for the AP to use it.",
+      "parentUuid": "4475628f_e2bee5db",
+      "revId": "3176a1837870d427568bd891225f6f4610995cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
