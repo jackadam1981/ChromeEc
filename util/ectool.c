@@ -9470,6 +9470,7 @@ int cmd_pd_write_log(int argc, char *argv[])
 int cmd_typec_control(int argc, char *argv[])
 {
 	struct ec_params_typec_control p;
+	long conversion_result;
 	char *endptr;
 	int rv;
 
@@ -9477,9 +9478,13 @@ int cmd_typec_control(int argc, char *argv[])
 		fprintf(stderr,
 			"Usage: %s <port> <command> [args]\n"
 			"  <port> is the type-c port to query\n"
-			"  <type> is one of:\n"
+			"  <command> is one of:\n"
 			"    0: Exit modes\n"
-			"    1: Clear events\n", argv[0]);
+			"    1: Clear events\n"
+			"        args: <event mask>\n"
+			"    2: Enter mode\n"
+			"        args: <0: DP, 1:TBT, 2:USB4>\n",
+			argv[0]);
 		return -1;
 	}
 
@@ -9495,7 +9500,8 @@ int cmd_typec_control(int argc, char *argv[])
 		return -1;
 	}
 
-	if (p.command == TYPEC_CONTROL_COMMAND_CLEAR_EVENTS) {
+	switch (p.command) {
+	case TYPEC_CONTROL_COMMAND_CLEAR_EVENTS:
 		if (argc < 4) {
 			fprintf(stderr, "Missing event mask\n");
 			return -1;
@@ -9506,6 +9512,20 @@ int cmd_typec_control(int argc, char *argv[])
 			fprintf(stderr, "Bad event mask\n");
 			return -1;
 		}
+		break;
+	case TYPEC_CONTROL_COMMAND_ENTER_MODE:
+		if (argc < 4) {
+			fprintf(stderr, "Missing mode\n");
+			return -1;
+		}
+
+		conversion_result = strtol(argv[3], &endptr, 0);
+		if ((endptr && *endptr) || conversion_result > UINT8_MAX ||
+				conversion_result < 0) {
+			fprintf(stderr, "Bad mode\n");
+			return -1;
+		}
+		p.mode_to_enter = conversion_result;
 	}
 
 	rv = ec_command(EC_CMD_TYPEC_CONTROL, 0, &p, sizeof(p),
