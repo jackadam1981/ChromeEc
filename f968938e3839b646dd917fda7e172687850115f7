@@ -50,6 +50,24 @@
       "message": "Since this is only used inside baseboard/zork, lets remove it from include/config.h, and rename to ZORK_PS8818_RX_INPUT_TERM.",
       "revId": "f968938e3839b646dd917fda7e172687850115f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e7d49b_168beecf",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4226,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-15T04:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df24665f_6ba690e6",
+      "revId": "f968938e3839b646dd917fda7e172687850115f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
