@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b7cf5b5_aca18905",
+        "filename": "board/eldrid/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-15T18:12:00Z",
+      "side": 1,
+      "message": "This logic should only be used with reworked Volteers. If Eldrid has decided to use RT1715, we should just change tcpc_config directly going forward. If we still want to support older boards that use the TUSB422, we should make changes based on reading the board ID. See board_cbi_init in board/volteer/board.c.",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 3
+      },
+      "revId": "b0ab4d1c9b641f8829617207c760956b44b537fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
