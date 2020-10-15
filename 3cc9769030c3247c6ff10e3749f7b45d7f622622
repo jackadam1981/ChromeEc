@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f45757_38d7e523",
+        "filename": "driver/ln9310.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1448257
+      },
+      "writtenOn": "2020-10-15T21:36:33Z",
+      "side": 1,
+      "message": "If I understand the coding style correctly, we should break up LB_DELTA_MASK into\n\n#define LN9310_LB_DELTA_MASK\t\t0x38\n#define LN9310_LB_MIN_FREQ_EN_MASK\t0x04\n\nand then add \n\n#define LN9310_LB_MIN_FREQ_EN_ON\t0x04\n\nIn the field_update8 operation, we would then perform LN9310_LB_DELTA_MASK | LN9310_LB_MIN_FREQ_EN_MASK operation",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 32
+      },
+      "revId": "3cc9769030c3247c6ff10e3749f7b45d7f622622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
