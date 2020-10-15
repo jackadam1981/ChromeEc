@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735ae799_01fb50c5",
+        "filename": "board/morphius/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-15T21:25:55Z",
+      "side": 0,
+      "message": "Do these have EC_ERROR_NOT_POWERED returns you could be checking?  That\u0027s what we configured with some of our temperature sensors that are ADCs on a GPIO rail that may be off",
+      "revId": "d31a8e4b5ac2def50650690a76cb13c3ec834bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
