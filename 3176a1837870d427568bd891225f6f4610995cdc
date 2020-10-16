@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceadeaf0_aad4a4c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-10-16T00:30:48Z",
+      "side": 1,
+      "message": "Thanks for the explanation!\n\n\u003e \n\u003e The one that most immediately comes to mind is that people who wanted to develop against these features would have to build their own ECs.\n\nIf it\u0027s just us (i.e Chrome platform), then I think that\u0027s alright; since this feature ultimately move the entry decision from EC to the AP, some coordination between the AP and EC images is un-avoidable, unless one wants to have a device on CPFE broken. It sounds like as long the feature flag is only added after the corresponding code that checks for that feature lands in the userspace, it should be fine.\n\n(thinking of external/non-Google EC developers)\nOne thing to note is that once the feature flag is added, the AP will *need* to send the AP this command telling it which mode to enter. I know it\u0027s obvious, but I wonder if this needs to be communicated in the EC documentation in some way (since it is a departure from previous behaviour here).\n\nWDYT?\n\n\u003e \n\u003e This would also be different than the process for the other Type-C commands so far, where the EC feature sits there and waits for the AP to use it.\n\nI see.\nYeah I think the difference is that the previous EC commands were informational, whereas this one affects the TCPM behaviour, hence the requirement for co-ordination.",
+      "parentUuid": "c68cd928_97275ef6",
+      "revId": "3176a1837870d427568bd891225f6f4610995cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4bae840_21d900e3",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 4
