@@ -26,6 +26,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5df7698_e424627a",
+        "filename": "board/berknip/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-16T02:07:54Z",
+      "side": 1,
+      "message": "\"#undef CONFIG_TUSB544_EQ_BY_REGISTER\" in config.h sounds good.",
+      "parentUuid": "d4336a16_a5b4cc11",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "ecc64de5e735320888fa79a8a662419767244bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83482298_49069eec",
+        "filename": "driver/retimer/tusb544.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-16T02:07:54Z",
+      "side": 1,
+      "message": "Looks like this can stay static, no new calls added.",
+      "revId": "ecc64de5e735320888fa79a8a662419767244bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b8826b4_d516eaae",
         "filename": "driver/retimer/tusb544.c",
         "patchSetId": 3
@@ -49,6 +90,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c105d3f_01f1e549",
+        "filename": "driver/retimer/tusb544.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-16T02:07:54Z",
+      "side": 1,
+      "message": "Change to:\n\tif (IS_ENABLED(CONFIG_TUSB544_EQ_BY_REGISTER))\n\t\treg |\u003d TUSB544_GEN4_EQ_OVRD;",
+      "parentUuid": "5b8826b4_d516eaae",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "ecc64de5e735320888fa79a8a662419767244bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc92c55_1effe34a",
+        "filename": "driver/retimer/tusb544.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-16T02:07:54Z",
+      "side": 1,
+      "message": "Change to TUSB544_EQ_RX_MASK",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "ecc64de5e735320888fa79a8a662419767244bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34ccc07e_10e0b3a4",
         "filename": "driver/retimer/tusb544.h",
         "patchSetId": 3
@@ -65,6 +153,29 @@
         "startChar": 0,
         "endLine": 58,
         "endChar": 42
+      },
+      "revId": "ecc64de5e735320888fa79a8a662419767244bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10ffec6_8dd579f4",
+        "filename": "driver/retimer/tusb544.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-16T02:07:54Z",
+      "side": 1,
+      "message": "Change to TUSB544_EQ_TX_MASK",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 35
       },
       "revId": "ecc64de5e735320888fa79a8a662419767244bf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
