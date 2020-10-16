@@ -16,6 +16,24 @@
       "message": "Do you want to note PD 3.0 only or check the PD rev before printing this?",
       "revId": "73bab27ef9c5287cafa418cb5accd77167b7d079",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c597762_b3594db2",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9768,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-16T22:56:24Z",
+      "side": 1,
+      "message": "I\u0027ll note it in the comments.  I\u0027m hoping the human reading the output will know/understand that they should only expect FRS bits to be set in PD 3.0",
+      "parentUuid": "84985592_1d748fb1",
+      "revId": "73bab27ef9c5287cafa418cb5accd77167b7d079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
