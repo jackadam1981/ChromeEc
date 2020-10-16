@@ -248,7 +248,7 @@ static void board_spi_enable(void)
 	 * Pin mux spi peripheral away from emmc, since RO might have
 	 * left them there.
 	 */
-	gpio_config_module(MODULE_SPI_FLASH, 0);
+	//gpio_config_module(MODULE_SPI_FLASH, 0);
 
 	/* Enable clocks to SPI2 module. */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;

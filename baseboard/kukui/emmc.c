@@ -190,6 +190,8 @@ void emmc_cmd_interrupt(enum gpio_signal signal)
 
 static void emmc_init_spi(void)
 {
+	return;
+
 #if EMMC_SPI_PORT == 1
 	/* Reset SPI */
 	STM32_RCC_APB2RSTR |= STM32_RCC_PB2_SPI1;
@@ -233,6 +235,8 @@ DECLARE_DEFERRED(emmc_check_status);
 
 static void emmc_enable_spi(void)
 {
+	return;
+
 	if (emmc_enabled)
 		return;
 
@@ -247,7 +251,7 @@ static void emmc_enable_spi(void)
 	 * selected.
 	 */
 	gpio_disable_interrupt(GPIO_SPI1_NSS);
-	gpio_enable_interrupt(GPIO_EMMC_CMD);
+	//gpio_enable_interrupt(GPIO_EMMC_CMD);
 
 	emmc_enabled = 1;
 	CPRINTS("emmc enabled");
@@ -261,13 +265,15 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, emmc_enable_spi, HOOK_PRIO_FIRST);
 
 static void emmc_disable_spi(void)
 {
+	return;
+
 	if (!emmc_enabled)
 		return;
 
 	/* Cancel check hook. */
 	hook_call_deferred(&emmc_check_status_data, -1);
 
-	gpio_disable_interrupt(GPIO_EMMC_CMD);
+	//gpio_disable_interrupt(GPIO_EMMC_CMD);
 	/*
 	 * EMMC_CMD and SPI1_NSS share EXTI15, so re-enable interrupt on
 	 * SPI1_NSS to reconfigure the interrupt selection.
@@ -292,6 +298,8 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, emmc_disable_spi, HOOK_PRIO_FIRST);
 
 static void emmc_check_status(void)
 {
+	return;
+
 	/* Bootblock switch disabled, switch off emulation */
 	if (gpio_get_level(GPIO_BOOTBLOCK_EN_L) == 1) {
 		emmc_disable_spi();
@@ -315,6 +323,9 @@ void emmc_task(void *u)
 	enum emmc_cmd cmd;
 	/* Are we currently transmitting data? */
 	int tx = 0;
+
+	while (1)
+		task_wait_event(-1);
 
 	rxdma = dma_get_channel(STM32_DMAC_SPI_EMMC_RX);
 

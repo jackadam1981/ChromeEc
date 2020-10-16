@@ -23,8 +23,10 @@ GPIO_INT(WARM_RESET_REQ,    PIN(A, 3),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          chipset_reset_request_interrupt)
 GPIO_INT_RW(ACCEL_INT_ODL,  PIN(A, 4), GPIO_INT_FALLING | GPIO_SEL_1P8V | GPIO_PULL_UP,
          bmi160_interrupt)
+#if 0
 GPIO_INT_RO(EMMC_CMD,       PIN(B, 15), GPIO_INT_FALLING,
          emmc_cmd_interrupt)
+#endif
 GPIO_INT(SPI1_NSS,          PIN(A, 15), GPIO_INT_BOTH | GPIO_PULL_UP,
          spi_event) /* SPI_AP_EC_CS_L */
 GPIO_INT(LID_OPEN,          PIN(C, 5),  GPIO_INT_BOTH,
@@ -83,6 +85,10 @@ GPIO(USB_C0_HPD_OD,        PIN(F, 1),  GPIO_ODR_LOW)
 GPIO(BOOTBLOCK_EN_L,       PIN(C, 1),  GPIO_ODR_HIGH)
 GPIO(USB_C0_DISCHARGE,     PIN(B, 6),  GPIO_OUT_LOW)
 
+GPIO(B13,                  PIN(B, 13), GPIO_INPUT)
+GPIO(B14,                  PIN(B, 14), GPIO_INPUT)
+GPIO(B15,                  PIN(B, 15), GPIO_INPUT)
+
 IOEX(LED_BLUE,             EXPIN(0, 1, 4), GPIO_OUT_HIGH)      /* LED BLUE */
 IOEX(LED_GREEN,            EXPIN(0, 1, 3), GPIO_OUT_HIGH)      /* LED GREEN */
 IOEX(LED_ORANGE,           EXPIN(0, 1, 2), GPIO_OUT_HIGH)      /* LED ORANGE */
@@ -120,7 +126,7 @@ ALTERNATE(PIN_MASK(A, 0x8000), 0, MODULE_SPI,        0)
 /* Shared between slave for emmc and master for bmi160 */
 /* They're mutually exclusive with gpio_config_module. */
 /* EMMC SPI SLAVE: PB13/14/15 */
-ALTERNATE(PIN_MASK(B, 0xE000), 0, MODULE_SPI_FLASH,  0)
+//ALTERNATE(PIN_MASK(B, 0xE000), 0, MODULE_SPI_FLASH,  0)
 /* SENSORS SPI MASTER: PB10, PB12, PC2, PC3 */
 ALTERNATE(PIN_MASK(B, 0x0400), 5, MODULE_SPI_MASTER, 0)
 ALTERNATE(PIN_MASK(C, 0x000C), 1, MODULE_SPI_MASTER, 0)

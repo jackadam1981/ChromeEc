@@ -715,8 +715,12 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 			rv = EC_RES_INVALID_COMMAND;
 		else if (!(EC_VER_MASK(args->version) & cmd->version_mask))
 			rv = EC_RES_INVALID_VERSION;
-		else
+		else {
+			ccprints("!!!EC got a command from AP, reboot!!!");
+			cflush();
+			system_reset(SYSTEM_RESET_HARD);
 			rv = cmd->handler(args);
+		}
 	}
 
 	if (rv != EC_RES_SUCCESS)
