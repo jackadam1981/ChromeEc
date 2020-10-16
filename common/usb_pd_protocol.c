@@ -998,7 +998,8 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 		}
 	}
 #endif
-	(port==CHG || 1)?CPRINTS("C%d: <AXE>",port):0;
+	//SERVOV4P1 HACKHACKHACK
+	//(port==CHG || 1)?CPRINTS("C%d: <AXE>",port):0;
 	tcpm_transmit(port, type, header, data);
 
 	//do {
@@ -1007,7 +1008,7 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 	//} while
 
 	if (evt & TASK_EVENT_TIMER){
-		(port==CHG || 1)?CPRINTS("C%d: <TIM> %d",port, pd[port].tx_status):0;
+	//	(port==CHG || 1)?CPRINTS("C%d: <TIM> %d",port, pd[port].tx_status):0;
 		return -1;
 	}
 
@@ -1024,11 +1025,11 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 	//ServoV4p1 debug
 	if (pd[port].tx_status == TCPC_TX_COMPLETE_SUCCESS) {
 		res=1;
-		(port==CHG || 1)?CPRINTS("C%d: <ACK> %d",port, pd[port].tx_status):0;
+	//	(port==CHG || 1)?CPRINTS("C%d: <ACK> %d",port, pd[port].tx_status):0;
 	}
 	else {
 		res=-1;
-		(port==CHG || 1)?CPRINTS("C%d: <NAK> %d",port, pd[port].tx_status):0;
+	//	(port==CHG || 1)?CPRINTS("C%d: <NAK> %d",port, pd[port].tx_status):0;
 	}
 
 #ifdef CONFIG_USB_PD_REV30
@@ -1261,11 +1262,20 @@ static int send_battery_status(int port,  uint32_t *payload)
 static void send_sink_cap(int port)
 {
 	int bit_len;
+
+#if defined(CONFIG_USB_PD_DYNAMIC_SNK_CAP)
+	const uint32_t *snk_pdo;
+	const int snk_pdo_cnt = board_get_snk_cap(&snk_pdo, port);
+#else
+	const uint32_t *snk_pdo = pd_snk_pdo;
+	const int snk_pdo_cnt = pd_snk_pdo_cnt;
+#endif
+
 	uint16_t header = PD_HEADER(PD_DATA_SINK_CAP, pd[port].power_role,
-			pd[port].data_role, pd[port].msg_id, pd_snk_pdo_cnt,
+			pd[port].data_role, pd[port].msg_id, snk_pdo_cnt,
 			pd_get_rev(port, TCPC_TX_SOP), 0);
 
-	bit_len = pd_transmit(port, TCPC_TX_SOP, header, pd_snk_pdo,
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, snk_pdo,
 			      AMS_RESPONSE);
 	if (debug_level >= 2)
 		CPRINTF("C%d snkCAP>%d\n", port, bit_len);
@@ -1661,7 +1671,8 @@ static void handle_data_request(int port, uint32_t head,
 				/* explicit contract is now in place */
 				pd[port].flags |= PD_FLAGS_EXPLICIT_CONTRACT;
 
-				CPRINTS("REQUEST PAYLOAD IS 0x%x",payload[0]);
+				// HACKHACKHACK
+				/* CPRINTS("REQUEST PAYLOAD IS 0x%x",payload[0]); */
 				/* Update CommCap flag based on REQUEST */
 				if (payload[0] & RDO_COMM_CAP)
 					pd[port].flags |= PD_FLAGS_PARTNER_USB_COMM;
@@ -2756,6 +2767,15 @@ __overridable uint8_t board_get_src_dts_polarity(int port)
 	 * If the port in SRC DTS, the polarity is determined by the board,
 	 * i.e. what Rp impedance the CC lines are pulled. If this function
 	 * is not overridden, assume CC1 is primary.
+	 */
+	return 0;
+}
+
+__overridable int board_get_snk_cap(const uint32_t **snk_pdo, const int port)
+{
+	/*
+	 * Override to return dynamic SNK_CAP messages, namely for
+	 * UNCONSTRAINED_POWER bit or other flags based on dynamic state.
 	 */
 	return 0;
 }
