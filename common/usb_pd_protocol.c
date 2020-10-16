@@ -998,7 +998,8 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 		}
 	}
 #endif
-	(port==CHG || 1)?CPRINTS("C%d: <AXE>",port):0;
+	//SERVOV4P1 HACKHACKHACK
+	//(port==CHG || 1)?CPRINTS("C%d: <AXE>",port):0;
 	tcpm_transmit(port, type, header, data);
 
 	//do {
@@ -1007,7 +1008,7 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 	//} while
 
 	if (evt & TASK_EVENT_TIMER){
-		(port==CHG || 1)?CPRINTS("C%d: <TIM> %d",port, pd[port].tx_status):0;
+	//	(port==CHG || 1)?CPRINTS("C%d: <TIM> %d",port, pd[port].tx_status):0;
 		return -1;
 	}
 
@@ -1024,11 +1025,11 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 	//ServoV4p1 debug
 	if (pd[port].tx_status == TCPC_TX_COMPLETE_SUCCESS) {
 		res=1;
-		(port==CHG || 1)?CPRINTS("C%d: <ACK> %d",port, pd[port].tx_status):0;
+	//	(port==CHG || 1)?CPRINTS("C%d: <ACK> %d",port, pd[port].tx_status):0;
 	}
 	else {
 		res=-1;
-		(port==CHG || 1)?CPRINTS("C%d: <NAK> %d",port, pd[port].tx_status):0;
+	//	(port==CHG || 1)?CPRINTS("C%d: <NAK> %d",port, pd[port].tx_status):0;
 	}
 
 #ifdef CONFIG_USB_PD_REV30
@@ -1661,7 +1662,8 @@ static void handle_data_request(int port, uint32_t head,
 				/* explicit contract is now in place */
 				pd[port].flags |= PD_FLAGS_EXPLICIT_CONTRACT;
 
-				CPRINTS("REQUEST PAYLOAD IS 0x%x",payload[0]);
+				// HACKHACKHACK
+				/* CPRINTS("REQUEST PAYLOAD IS 0x%x",payload[0]); */
 				/* Update CommCap flag based on REQUEST */
 				if (payload[0] & RDO_COMM_CAP)
 					pd[port].flags |= PD_FLAGS_PARTNER_USB_COMM;
