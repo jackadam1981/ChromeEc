@@ -423,7 +423,14 @@ void get_mux_switch_mode_to_set(int port, mux_state_t* newMux,
 	 * If the SoC is down, then we disconnect the MUX to save power since
 	 * no one cares about the data lines.
 	 */
-	CPRINTS("PASS1");
+
+	CPRINTS("=====> Debug [DR: %d] [Expl: %d] [CommCap: %d]",
+		IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE),
+		pd_get_partner_explicit_contract(port),
+		pd_get_partner_usb_comm_capable(port));
+
+	//HACKHACKHACK ServoV4p1//
+	//CPRINTS("PASS1");
 	if (IS_ENABLED(CONFIG_POWER_COMMON) &&
 	    chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)){
 		*newMux=USB_PD_MUX_NONE;
@@ -431,7 +438,7 @@ void get_mux_switch_mode_to_set(int port, mux_state_t* newMux,
 		return;
 	}
 
-	CPRINTS("PASS2");
+	//CPRINTS("PASS2");
 	/*
 	 * When PD stack is disconnected, then mux should be disconnected, which
 	 * is also what happens in the set_state disconnection code. Once the
@@ -444,7 +451,7 @@ void get_mux_switch_mode_to_set(int port, mux_state_t* newMux,
 		return;
 	}
 
-	CPRINTS("PASS2.5");
+	//CPRINTS("PASS2.5");
 	/*
 	 * If and Only If:
 	 * (a) we're in an explicit USB-PD contract
@@ -462,11 +469,6 @@ void get_mux_switch_mode_to_set(int port, mux_state_t* newMux,
 	 * Placement and relative order of this if() statement also matters.
 	 */
 
-	CPRINTS("=====> Debug [DR: %d] [Expl: %d] [CommCap: %d]",
-			IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE),
-			pd_get_partner_explicit_contract(port),
-			pd_get_partner_usb_comm_capable(port));
-
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
 	    	pd_get_partner_explicit_contract(port) &&
 	    	!pd_get_partner_usb_comm_capable(port)) {
@@ -475,7 +477,7 @@ void get_mux_switch_mode_to_set(int port, mux_state_t* newMux,
 		return;
 	}
 
-	CPRINTS("PASS3");
+	//CPRINTS("PASS3");
 	/* If new data role isn't DFP & we only support DFP, also disconnect. */
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
 	    	IS_ENABLED(CONFIG_USBC_SS_MUX_DFP_ONLY) &&
@@ -491,7 +493,7 @@ void get_mux_switch_mode_to_set(int port, mux_state_t* newMux,
 		return;
 	}
 
-	CPRINTS("PASS3.5");
+	//CPRINTS("PASS3.5");
 	/* If new data role isn't UFP & we only support UFP, also disconnect. */
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
 	    	IS_ENABLED(CONFIG_USBC_SS_MUX_UFP_ONLY) &&

@@ -267,11 +267,13 @@ static int is_charge_through_enabled(void)
 	if(	pd_get_dual_role(DUT) == PD_DRP_FORCE_SOURCE ||
 		pd_get_dual_role(DUT) == PD_DRP_TOGGLE_ON ||
 		(pd_get_dual_role(DUT) == PD_DRP_FREEZE &&
+			pd_get_power_role(DUT) == PD_ROLE_SOURCE) ||
+		(pd_get_dual_role(DUT) == PD_DRP_TOGGLE_OFF &&
 			pd_get_power_role(DUT) == PD_ROLE_SOURCE)){
 		return 1;
 	}
 	else
-		// ON OFF FREEZE SINK SRC
+		// OFF TOGGLE-OFF(SNK)
 		return 0;
 }
 
@@ -477,16 +479,34 @@ static void board_manage_dut_port(void)
 	 * contract if it is connected.
 	 */
 
-	/* Assume the default value of Rd */
-	preferred_drp = PD_DRP_FORCE_SINK;
+	/* Assume the default value of FREEZE (keep current) */
+	preferred_drp = PD_DRP_FREEZE;
 	// TODO: This should be handled in get_dual_role_of_src()
+
+
+	current_drp = pd_get_dual_role(DUT);
+	current_power = pd_get_power_role(DUT);
 
 	/* If VBUS charge through is available, mark as such. */
 	if (is_charge_through_allowed())
 		preferred_drp = get_dual_role_of_src();
+	else if (!charge_port_is_active() && current_power != PD_ROLE_SINK)
+		preferred_drp = PD_DRP_FORCE_SINK;
 
-	current_drp = pd_get_dual_role(DUT);
-	current_power = pd_get_power_role(DUT);
+#if 0
+enum pd_dual_role_states {
+	/* While disconnected, toggle between src and sink */
+	PD_DRP_TOGGLE_ON,
+	/* Stay in src until disconnect, then stay in sink forever */
+	PD_DRP_TOGGLE_OFF,
+	/* Stay in current power role, don't switch. No auto-toggle support */
+	PD_DRP_FREEZE,
+	/* Switch to sink */
+	PD_DRP_FORCE_SINK,
+	/* Switch to source */
+	PD_DRP_FORCE_SOURCE,
+};
+#endif
 
 	CPRINTS("board_manage_dut_port:\n" \
 		    "    curr_drp [%d] pref_drp [%d]\n" \
@@ -654,7 +674,9 @@ static void tusb1064_tcpm_hook_connect(void)
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 	//int reg;
 	int allow_pd=0;
+	//int chargeable=0;
 	enum pd_data_role current_data;
+	enum pd_dual_role_states current_drp;
 
 	/* TODO: Leave gratuitous warning in until HOOK method is deprecated. */
 	/* Investigate proper solution rearchitecting TCPMv1 */
@@ -668,6 +690,8 @@ static void tusb1064_tcpm_hook_connect(void)
 	}
 
 	current_data = pd_get_data_role(port);
+	//chargeable = is_charge_through_allowed();
+	current_drp = pd_get_dual_role(DUT);
 
 	/* Handle various mux connect cases */
 	// TODO: Put this in a mux driver (for UFP)!
@@ -698,6 +722,17 @@ static void tusb1064_tcpm_hook_connect(void)
 	
 	// TODO: Add is_pd_allowed() call here to properly handle policy
 	// HACKHACKHACK: we should have a callback... this returns too fast.
+#endif
+
+#if 1
+		/*
+		* Hook into VBUS ON activity to switch to Freeze.
+		* This fixes PR_SWAP ability
+		*/
+		if (current_drp == PD_DRP_FORCE_SINK ||
+				current_drp == PD_DRP_FORCE_SOURCE)
+			pd_set_dual_role(DUT, PD_DRP_FREEZE);
+
 #endif
 
 #if 1
@@ -1008,7 +1043,7 @@ int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel)
 
 int pd_adc_read(int port, int cc)
 {
-	int mv = -2;
+	int mv = -6;
 	bool secondary;
 	enum pd_power_role current_power;
 	// TODO: This needs to be rewritten to use dynamic
@@ -1018,46 +1053,6 @@ int pd_adc_read(int port, int cc)
 	if (port == CHG) {
 		mv = adc_read_channel(cc ? ADC_CHG_CC2_PD : ADC_CHG_CC1_PD);
 		//CPRINTS("ADC port CHG [%d] cc [%d] mv [%d]",port,cc,mv);
-		return mv;
-	}
-
-	if (cc_config & CC_DETACH_FAR) {
-		/*
-		 * When emulating detach, fake the voltage on CC to 0 to avoid
-		 * triggering some debounce logic.
-		 *
-		 * The servo v4 makes Rd/Rp open but the DUT may present Rd/Rp
-		 * alternatively that makes the voltage on CC falls into some
-		 * unexpected range and triggers the PD state machine switching
-		 * between SNK_DISCONNECTED and SNK_DISCONNECTED_DEBOUNCE.
-		 */
-		switch(cc_pull_stored){
-		case TYPEC_CC_OPEN:
-			/*
-			* Necessary logic for CC_OPEN whre Rp state is lost 
-			* Chains backward into cc_voltage_to_status() to vOpen.
-			*/
-			current_power = pd_get_power_role(port);
-			switch (current_power){
-			case PD_ROLE_SINK:
-				mv=-3;
-			break;
-			case PD_ROLE_SOURCE:
-				mv=3303;
-			break;
-			}
-		case TYPEC_CC_RA_RD:
-		case TYPEC_CC_RD:
-		case TYPEC_CC_RA:
-			mv=-1;
-			break;
-		case TYPEC_CC_RP:
-			mv=3301;
-			break;
-		default:
-			mv=-2;
-			break;
-		}
 		return mv;
 	}
 
@@ -1079,24 +1074,104 @@ int pd_adc_read(int port, int cc)
 		secondary = false;
 
 	mv = adc_read_channel(cc ? ADC_DUT_CC2_PD : ADC_DUT_CC1_PD);
+	current_power = pd_get_power_role(port);
 
-	// Override values as necessary to not break FSM
-	// AND don't fake DTS SRC/SNK readings
+	/* Falsify values as necessary to not break FSM */
+	/* And to emulate various ServoV4p1 functions */
 
-	if (cc_config & CC_DISABLE_DTS) {	
+	if (cc_config & CC_DETACH_NEAR ||
+			cc_pull_stored == TYPEC_CC_OPEN ) {
+		/* If simulating a "servo-side cable detach" */
+
 		switch(cc_pull_stored){
 		case TYPEC_CC_OPEN:
+			switch (current_power){
+			case PD_ROLE_SINK:
+				mv=-1;
+			break;
+			case PD_ROLE_SOURCE:
+				mv=3301;
+			break;
+			}
+		case TYPEC_CC_RA_RD:
+		case TYPEC_CC_RD:
+		case TYPEC_CC_RA:
 			mv=-1;
 			break;
+		case TYPEC_CC_RP:
+			mv=3301;
+			break;
+		default:
+			mv=-3;
+			break;
+		}
+		return mv;
+	}
+
+	if (cc_config & CC_DETACH_FAR) {
+		/* If simulating a "DUT-side cable detach" */
+
+		switch(cc_pull_stored){
+		case TYPEC_CC_OPEN:
+			switch (current_power){
+			case PD_ROLE_SINK:
+				mv=-1;
+			break;
+			case PD_ROLE_SOURCE:
+				mv=3301;
+			break;
+			}
+		case TYPEC_CC_RA_RD:
+		case TYPEC_CC_RD:
+		case TYPEC_CC_RA:
+			mv=-1;
+			break;
+		case TYPEC_CC_RP:
+			if (cc_config & CC_DISABLE_DTS &&
+					cc_config & CC_EMCA_SERVO &&
+					secondary)
+				mv=pd_src_rd_threshold[rp_value_stored]/2;
+				//Roughly simulate eMarker vRa @ rp_value
+			else
+				mv=3301;
+			break;
+		default:
+			mv=-3;
+			break;
+		}
+		return mv;
+	}
+
+	if (cc_config & CC_DISABLE_DTS) {	
+		/* If DTS is enabled, report normally */
+
+		/*
+		 * Also check for the "Vconn sourcing" bug
+		 * [TCPMv1] b/168859497
+		 * [TCPMv2] b/168940172
+		 * Borrow revised logic from usb_pd_tcpc.c
+		 */
+
+		switch(cc_pull_stored){
+		case TYPEC_CC_OPEN:
+			switch (current_power){
+			case PD_ROLE_SINK:
+				mv=-1;
+			break;
+			case PD_ROLE_SOURCE:
+				mv=3301;
+			break;
+			}
+		break;
 		case TYPEC_CC_RD:
 		case TYPEC_CC_RA_RD:
 			if(secondary)
 				mv=-1;
-			break;			
+		break;			
 		case TYPEC_CC_RA:
 			// This is audio accessory
 			// We may not want to fake this.
-			break;
+		break;
 		case TYPEC_CC_RP:
 			if(secondary){
 				if(cc_config & CC_EMCA_SERVO)
@@ -1105,14 +1180,19 @@ int pd_adc_read(int port, int cc)
 				else
 					mv=3301;
 			}	
-			break;
+		break;
 		default:
-			mv=-2;
-			break;
+			mv=-3;
+		break;
 		}
+		return mv;
 	}
 	
-	//CPRINTS("ADC port DUT [%d] cc [%d] mv [%d]",port,cc,mv);
+	/*
+	 * DTS falls through here.
+	 * Report accurately or check for Vconn bug
+	 */
+	// CPRINTS("ADC ERROR! port DUT [%d] cc [%d] mv [%d]",port,cc,mv);
 	return mv;
 }
 
@@ -1484,8 +1564,10 @@ int pd_set_power_supply_ready(int port)
 		* Hook into VBUS ON activity to switch to Freeze.
 		* This fixes PR_SWAP ability
 		*/
-
+/*
 		pd_set_dual_role(DUT, get_dual_role_of_src());
+		//NOT NOW, NOT HERE
+*/
 	} else {
 		vbus[DUT].mv = 0;
 		vbus[DUT].ma = 0;
@@ -1531,6 +1613,12 @@ int pd_snk_is_vbus_provided(int port)
 {
 	return gpio_get_level(port ? GPIO_USB_DET_PP_DUT :
 				     GPIO_USB_DET_PP_CHG);
+}
+
+__override int pd_check_vconn_swap(int port)
+{
+	/* TODO: Check to see if we can enable VCONN on ServoV4p1 */
+	return 0;
 }
 
 __override int pd_check_power_swap(int port)
@@ -2139,14 +2227,41 @@ static void do_cc(int cc_config_new)
 	int chargeable;
 	int dualrole;
 	int allow_pd;
+	int cc_config_old=cc_config;
 
-	if (cc_config_new != cc_config) {
+	/* (1) */
+	if (cc_config_new != cc_config_old) {
 
-		/* Run if CC_CONFIG is not currently in Detach FSM state */
+		/* If we are not [currently] in Detach state, force one briefly */
+		//if (!(cc_config & CC_DETACH_FAR) && !(cc_config & CC_DETACH_NEAR)) {
 
-		if (!(cc_config & CC_DETACH_FAR)) {
-			/* Simulate a "natural" detach via faked ADC reads */
-			/* To instead do a Force Detach use TCPCM + Rp-Open */
+		/*
+		 * (1) If there is a change in CC config state
+		 * (2) And we are going:
+		 *   (a) Non-Detach-->Detach 
+		 *   (a) Non-Detach<->Non-Detach
+		 *   (b) DTS<->Non-DTS
+		 *   (b) Detached DTS<->Detached Non-DTS (full detach)
+		 *
+		 * (3) Simulate a brief Detach event (appropriate the mode)
+		 *   (a) DTS<->[DTS|Non-DTS] gets FAR SIDE detach
+		 *   (b) Non-DTS<->Non-DTS:
+		 *      (i) EMCA<->NonEMCA gets FAR SIDE detach
+		 *     (ii) SameCable<->SameCable gets NEAR SIDE detatch
+		 *
+		 * (3b) is debateable, but exposes more bugs, so is used.
+		 * User can always manually override by "cc off".
+		 *      
+		 */
+
+		/* (2) */
+		if ( !(cc_config_old & CC_DETACH_ANY) ||
+			  ((cc_config_old ^ cc_config_new) & CC_DISABLE_DTS) ) {
+
+			/*
+			 * Simulate a physical detach via "faked" ADC reads + Hi-Z
+			 * (To instead force DUT-level Detach, use TCPCM + Rp-Open)
+			 */
 
 			/*
 			* TODO: We were encountering a race condition in the
@@ -2159,10 +2274,40 @@ static void do_cc(int cc_config_new)
 			* TODO: maybe actually be the HOOK function doing it!
 			*/
 
-			/* Remove Rp/Rd on both CC lines */
+			/* Remove Rp/Rd on appropriate CC lines */
 			/* ROLE_CONTROL  Open (Disconnect or don’t care) */
-			pd_comm_enable(DUT, 0);			
-			pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+			pd_comm_enable(DUT, 0);
+
+
+			/*
+			 * NOTE: Per (2) no Detach flags are set in cc_config_old
+			 * except if we're transitiong into/out of DTS -- in which
+			 * case CC_DETACH_FAR takes priority.
+			 */
+
+
+			/* (3) */
+			if ( !(cc_config_old & CC_DISABLE_DTS) ||
+					!(cc_config_new & CC_DISABLE_DTS)  ){
+				/* (a) DTS on either side */
+				cc_config |= CC_DETACH_FAR;
+				CPRINTS("Doing 3a 0x%x", cc_config);
+				pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+			} else  {
+				/* (b) Non-DTS both sides */
+				if ( (cc_config_old ^ cc_config_new) & CC_EMCA_SERVO ){
+					/* (i) EMCA mode changes */
+					cc_config |= CC_DETACH_FAR;
+					CPRINTS("Doing 3bi 0x%x", cc_config);
+					pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+				}
+				else {
+					/* (ii) SameCable both sides */
+					cc_config |= CC_DETACH_NEAR;
+					CPRINTS("Doing 3bii 0x%x", cc_config);
+					pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+				}
+			}
 
 			/*
 			* Add an arbitrary delay to avoid race condition
@@ -2179,20 +2324,17 @@ static void do_cc(int cc_config_new)
 			CPRINTS("do_cc -> DONE_reset");
 			#endif
 
-			/* Always set to 0 here so both CC lines are changed */
-			//cc_config &= ~(CC_DISABLE_DTS | CC_ALLOW_SRC);
-			//Typo? Logic? Why is this here?
-
 			/*
-			 * If just changing mode (cc keeps enabled), give some
-			 * time for DUT to detach, use tErrorRecovery.
+			 * If new cc_config is not a Detach state, allow time
+			 * for DUT to recognize the detach. Use tErrorRecovery.
 			 */
-			if (!(cc_config_new & CC_DETACH_FAR))
+			if (!(cc_config_new & CC_DETACH_ANY))
 				usleep(PD_T_ERROR_RECOVERY);
 		}
 #if 1
-/* Servo innfinite flappy toggling */
-		if ((cc_config_new & ~cc_config) & CC_DETACH_FAR) {
+/* Servo infinite flappy toggling */
+		if ((cc_config_new & ~cc_config_old) & CC_DETACH_FAR ||
+			(cc_config_new & ~cc_config_old) & CC_DETACH_NEAR) {
 			/* Detach off -> Detach on */
 			/* If we're "off", re-enable CCD detect by default */
 			CPRINTS("<<CCD RST by default");
@@ -2200,12 +2342,12 @@ static void do_cc(int cc_config_new)
 			ext_hpd_detection_enable(0);			
 		} else
 #endif
-		if ((cc_config & ~cc_config_new) & CC_DISABLE_DTS) {
+		if ((cc_config_old & ~cc_config_new) & CC_DISABLE_DTS) {
 			/* DTS-disabled -> DTS-enabled */
 			CPRINTS("<<CCD ACK by setting");
 			ccd_enable(1);
 			ext_hpd_detection_enable(0);
-		} else if ((cc_config_new & ~cc_config) & CC_DISABLE_DTS) {
+		} else if ((cc_config_new & ~cc_config_old) & CC_DISABLE_DTS) {
 			/* DTS-enabled -> DTS-disabled */
 			CPRINTS("<<CCD NAK by setting");
 			ccd_enable(0);
@@ -2213,7 +2355,7 @@ static void do_cc(int cc_config_new)
 				ext_hpd_detection_enable(1);
 		} 
 #if 1
-		else if ((cc_config & cc_config_new) & CC_DISABLE_DTS) {
+		else if ((cc_config_old & cc_config_new) & CC_DISABLE_DTS) {
 			/* DTS-disabled -> DTS-disabled */
 			CPRINTS("<<CCD NIX by refresh");
 			ccd_enable(0);
@@ -2225,7 +2367,7 @@ static void do_cc(int cc_config_new)
 		/* Accept new cc_config value */
 		cc_config = cc_config_new;
 
-		if (!(cc_config & CC_DETACH_FAR)) {
+		if (!(cc_config & CC_DETACH_ANY)) {
 			/* Can we source? */
 			chargeable = is_charge_through_allowed();
 			dualrole = chargeable ? get_dual_role_of_src() :
@@ -2238,8 +2380,8 @@ static void do_cc(int cc_config_new)
 			}
 			
 			// This only actually does anything for FORCE_SINK
-			// TODO: Double check this later.
-			pd_set_dual_role(DUT, dualrole);
+			// TODO: Ensure FORCE_SINK transitions to FREEZE
+			// pd_set_dual_role(DUT, dualrole);
 
 
 			/*
@@ -2260,8 +2402,8 @@ static void do_cc(int cc_config_new)
 			 * CC_SNK_WITH_PD to force enabling PD comm.
 			 */
 
-			//TODO: This is wrong, we need "is_pd_allowed()" function
-			//allow_pd = (cc_config & CC_SNK_WITH_PD) || CC_DISABLE_DTS || chargeable;
+			// TODO: Fix this for FREEZE
+			pd_set_dual_role(DUT, dualrole);
 			allow_pd = is_pd_allowed();
 			CPRINTS("do_cc: ALLOW PD IS %d",allow_pd);
 			pd_comm_enable(DUT, allow_pd);
@@ -2292,7 +2434,9 @@ static int command_cc(int argc, char **argv)
 	} else if (!strcasecmp(argv[1], "replug")) {
 		cc_config_new &= ~CC_DETACH_NEAR;
 	} else {
+		/* Why do we connect by default on CC command? */
 		cc_config_new &= ~CC_DETACH_FAR;
+		cc_config_new &= ~CC_DETACH_NEAR;
 		if (!strcasecmp(argv[1], "src"))
 			cc_config_new = CONF_SRC(cc_config_new);
 		else if (!strcasecmp(argv[1], "pdsrc"))
