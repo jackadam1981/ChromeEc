@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca48644d_5bd1751b",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-16T22:55:52Z",
+      "side": 1,
+      "message": "I don\u0027t think we\u0027re safe to copy past the source cap count here.  The PD task appears to just fill in its structure with as many caps are valid from the partner, so I imagine the remaining fields may be leftover junk from other connections.",
+      "parentUuid": "c3f8f606_53116816",
+      "range": {
+        "startLine": 163,
+        "startChar": 37,
+        "endLine": 163,
+        "endChar": 45
+      },
+      "revId": "3a450cc6b47ee580c16cb941eb2f01871f304543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18d5be4d_15d97568",
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76df0f7f_ee5219c5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6483,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-16T22:55:52Z",
+      "side": 1,
+      "message": "The organization mostly spawned from there being two intuitive groups of 3 (old enabled flags and port roles) and from there rounding them out with source and sink cap counts.  Any alternative suggestions?",
+      "parentUuid": "18d5be4d_15d97568",
+      "revId": "3a450cc6b47ee580c16cb941eb2f01871f304543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d312a98f_850ccf79",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -71,6 +113,24 @@
       "writtenOn": "2020-10-16T19:46:34Z",
       "side": 1,
       "message": "A bit field struct is probably overkill for this application, but a spec citation might be nice.",
+      "revId": "3a450cc6b47ee580c16cb941eb2f01871f304543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b933942f_16647aec",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9706,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-16T22:55:52Z",
+      "side": 1,
+      "message": "Done.  All comments are added in the sink cap follow-on for ease of merging",
+      "parentUuid": "d312a98f_850ccf79",
       "revId": "3a450cc6b47ee580c16cb941eb2f01871f304543",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74faf8b4_ee7f61b8",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9725,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-16T22:55:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d8f0584_79b132c1",
+      "range": {
+        "startLine": 9725,
+        "startChar": 42,
+        "endLine": 9725,
+        "endChar": 43
+      },
+      "revId": "3a450cc6b47ee580c16cb941eb2f01871f304543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fb98758_01be9b68",
@@ -111,6 +195,30 @@
       "writtenOn": "2020-10-16T19:46:34Z",
       "side": 1,
       "message": "Do you think the command needs to note that this is only for PD 3.0?",
+      "range": {
+        "startLine": 9730,
+        "startChar": 0,
+        "endLine": 9734,
+        "endChar": 3
+      },
+      "revId": "3a450cc6b47ee580c16cb941eb2f01871f304543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17c6455e_a63bf891",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9734,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-16T22:55:52Z",
+      "side": 1,
+      "message": "We can note it in the ectool comments.  I\u0027m trying to balance making the ectool output helpful without hitting tool over-thinking issues",
+      "parentUuid": "2fb98758_01be9b68",
       "range": {
         "startLine": 9730,
         "startChar": 0,
