@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b7c5fb_a6cbe525",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-16T16:51:11Z",
+      "side": 1,
+      "message": "Does this apply to BQ25710, too?",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 47
+      },
+      "revId": "f8a446145147f3e3a56f1bee2cf8ee60d64d8f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097a7172_327d2e6a",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-16T16:51:11Z",
+      "side": 1,
+      "message": "This is redundant now because you added CONFIG_CHARGER_ISL9238.\n\nIf this isn\u0027t applicable to BQ25710, we need to use SSFC_CHARGER_BQ25710.",
+      "range": {
+        "startLine": 309,
+        "startChar": 12,
+        "endLine": 309,
+        "endChar": 43
+      },
+      "revId": "f8a446145147f3e3a56f1bee2cf8ee60d64d8f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
