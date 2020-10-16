@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12c0038_71680557",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-16T15:36:41Z",
+      "side": 1,
+      "message": "The logic here seems fine. I\u0027m unclear on why this is now only being done for port 0. LGTM to unblock.",
+      "revId": "78985be526e4bcad8a521fb0437a3b840e9a1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
