@@ -22,6 +22,30 @@
       },
       "revId": "e77b3cd98121056a26ea34db3f91f3981ff71441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5541d77e_9f89ca86",
+        "filename": "common/charger.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2020-10-16T09:57:31Z",
+      "side": 1,
+      "message": "_FLAGS is not used on firmware-octopus-11297.B.\nPlease check Macro Chen\u0027s comment on Patchset 5",
+      "parentUuid": "30afca27_33cde943",
+      "range": {
+        "startLine": 244,
+        "startChar": 20,
+        "endLine": 244,
+        "endChar": 32
+      },
+      "revId": "e77b3cd98121056a26ea34db3f91f3981ff71441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

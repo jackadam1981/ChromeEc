@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "364afa56_9b3c5093",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2020-10-16T09:57:31Z",
+      "side": 1,
+      "message": "Do you build it on firmware-octopus-11297.B branch?",
+      "parentUuid": "4ee7875c_19cce9ec",
+      "revId": "e222ebf84ea1a31c046e1e96fcd20e12b932b2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29f77f8a_9b337bbb",
         "filename": "driver/charger/isl923x.h",
         "patchSetId": 5
