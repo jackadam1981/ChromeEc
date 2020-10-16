@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a1d9884_65ac2324",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-10-16T03:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "350b77b6_c8ff8d36",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 31
+      },
+      "revId": "0232ef7df348d092f0b5200774c49af588b28ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca05d0a0_3600fce3",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-15T21:52:29Z",
       "side": 1,
       "message": "Change to\n    __maybe_unused static int it83xx_tcpm_decode_sop_prime_disable(int port)",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 57
+      },
+      "revId": "0232ef7df348d092f0b5200774c49af588b28ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "151513d6_d15d01ad",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-10-16T03:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca05d0a0_3600fce3",
       "range": {
         "startLine": 560,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f56b3d0_b95c1e85",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-10-16T03:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "903e011e_1e0943fd",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 6
+      },
+      "revId": "0232ef7df348d092f0b5200774c49af588b28ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd047f8f_4a7717c6",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-10-15T21:52:29Z",
       "side": 1,
       "message": "Delete.",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 31
+      },
+      "revId": "0232ef7df348d092f0b5200774c49af588b28ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6bda8d_17cd88a1",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-10-16T03:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd047f8f_4a7717c6",
       "range": {
         "startLine": 481,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf33c107_63d90fbe",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-10-16T03:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "566e2934_a7eaa11a",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 10
+      },
+      "revId": "0232ef7df348d092f0b5200774c49af588b28ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "739df010_eabb61e4",
@@ -146,6 +266,30 @@
       "writtenOn": "2020-10-15T21:52:29Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 6
+      },
+      "revId": "0232ef7df348d092f0b5200774c49af588b28ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308f9acc_786fb64b",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-10-16T03:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "739df010_eabb61e4",
       "range": {
         "startLine": 489,
         "startChar": 0,
