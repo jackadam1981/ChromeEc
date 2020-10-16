@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f2e6883_66334326",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-16T21:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46ffa84a_88007b04",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37fad9ff_6a74a643",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e4732d_cf376fd1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-16T21:37:10Z",
+      "side": 1,
+      "message": "I removed the #ifdef. Made it consistent with the `pd_comm_allowed_by_policy()`.",
+      "parentUuid": "006d79f1_d1b653a4",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 590,
+        "endChar": 35
+      },
+      "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1048b8e9_03086912",
@@ -126,6 +174,24 @@
       "side": 1,
       "message": "I checked this is the difference between TCPMv1 and TCPMv2.\n\nTCPMv1 uses `system_is_locked()`; and TCPMv2 uses `IS_ENABLED(CONFIG_SYSTEM_UNLOCKED)`.\n\nI guess this change was designed for the \"Expected Development Flow\" described in http://go/pd-efs2. It helps simplifying the flow, like no dependency on the WP status.\n\n+jettrink@ to confirm",
       "parentUuid": "1048b8e9_03086912",
+      "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f401af3a_34270fe7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-16T21:37:10Z",
+      "side": 1,
+      "message": "After thinking more on the topic, the development flow (for EFS2) is like:\n 1. unlocked (+ disable_softsync)\n 2. locked + disable_softsync\n 3. locked + softsync\n\nIt intentionally avoids the case:\n 4. unlocked + softsync\n\nThe (4) has a chance of brownout if no battery. As the unlocked will enable PD in RO, after sysjump to RW, the existing PD contract doesn\u0027t carry forward to RW and PD state enters the ErrorRecovery state.\n\nUsing the CONFIG option can explicitly control the development flow. If use the `system_is_locked()`, the WP state has many factors and it may get to the (4) case.\n\nBTW, this CL keeps this unlocked decision logic unchanged.",
+      "parentUuid": "87e3e7c1_8286dcde",
       "revId": "5a37c4df8e943bf98e4439b3f2d7697c11de35c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
