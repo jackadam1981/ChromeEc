@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c61840ce_0848fba5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-16T23:26:53Z",
+      "side": 1,
+      "message": "What I\u0027m envisioning for the near term is that an Enter Mode request when we\u0027re already in a mode will result in a failed Enter Mode, and we\u0027ll generate a notification for that (TBD). Right now, I think that will happen due to NAK from the partner, because none of our supported modes are mutually compatible. If we supported mutually compatible modes, presumably, we would allow the AP to direct us to enter them simultaneously.\n\nAnyway, when the AP finds out about the failure, it can request an Exit Mode and then try the Enter Mode again. That would be more consistent with the approach we ultimately want where the AP is composing VDMs, and we\u0027re just sending them.\n\nWe could make the Enter Mode command automatically exit whatever mode we were already in first, but AFAIK, nobody has asked for that, and it seems like an unnecessarily smart API to me.",
+      "parentUuid": "ef1655ba_ce380875",
+      "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83bdae2c_09af129f",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-08T22:38:01Z",
       "side": 1,
       "message": "If we\u0027re not DFP at the time of the entry request, do we keep it queued up and ready to go when we are DFP then?",
+      "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad06a061_43c8ef2f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-16T23:26:53Z",
+      "side": 1,
+      "message": "We probably shouldn\u0027t queue it up until we\u0027re DFP. That seems surprising. I started thinking about detecting the UFP condition in the host command, but that would introduce synchronization issues that I don\u0027t really want to deal with. The DPM already has code that immediately bails out if we\u0027re not DFP, and we can just augment that with code to notify the AP that the request was discarded.\n\nThe AP will have to deal with asynchronous failure notifications anyway, so I don\u0027t think this will complicate things much from that end.",
+      "parentUuid": "83bdae2c_09af129f",
       "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48dea5b1_f1ad8dff",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-16T23:26:53Z",
+      "side": 1,
+      "message": "Yeah. I think I cleaned all of this up.",
+      "parentUuid": "782532c3_deb8f25b",
+      "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92240f4c_4a815ae7",
@@ -65,6 +119,30 @@
       "writtenOn": "2020-10-08T22:38:01Z",
       "side": 1,
       "message": "What does \"none\" represent?",
+      "range": {
+        "startLine": 6377,
+        "startChar": 1,
+        "endLine": 6377,
+        "endChar": 17
+      },
+      "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224d3bb1_8bacf89a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6377,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-16T23:26:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92240f4c_4a815ae7",
       "range": {
         "startLine": 6377,
         "startChar": 1,
