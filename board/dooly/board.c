@@ -281,7 +281,7 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_FAN]        = { .channel = 5,
 				.flags = PWM_CONFIG_OPEN_DRAIN,
 				.freq = 25000},
-	[PWM_CH_LED_WHITE]  = { .channel = 0,
+	[PWM_CH_LED_WHITE]  = { .channel = 2,
 				.flags = PWM_CONFIG_ACTIVE_LOW |
 					 PWM_CONFIG_DSLEEP,
 				.freq = 2000 },
@@ -514,6 +514,8 @@ static void board_init(void)
 	memmap_batt_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
 	*memmap_batt_flags |= EC_BATT_FLAG_AC_PRESENT;
 
+	if (board_version >= 1)
+		buttons[BUTTON_VOLUME_DOWN].gpio = GPIO_EC_VOLDN_BTN_ODL_V1;
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
