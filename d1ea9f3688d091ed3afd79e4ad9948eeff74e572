@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5be05668_f2c47a16",
+        "filename": "board/cerise/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-10-16T10:13:57Z",
+      "side": 1,
+      "message": "Seems always false\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/baseboard/kukui/baseboard.h#85\n\nSo, we never disable adc in both board_get_sku_id() and board_get_version()...",
+      "parentUuid": "8135a552_28fffff3",
+      "range": {
+        "startLine": 503,
+        "startChar": 5,
+        "endLine": 503,
+        "endChar": 47
+      },
+      "revId": "d1ea9f3688d091ed3afd79e4ad9948eeff74e572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cce35465_46c462da",
         "filename": "board/cerise/board.c",
         "patchSetId": 3
