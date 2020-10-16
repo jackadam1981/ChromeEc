@@ -16,6 +16,24 @@
       "message": "Do we do reviews for cherry-picks now? It used to be the picker who sets +2 in such cases iirc.",
       "revId": "ef14457ed19ba5616296a887461b12ae6e245a11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6020f216_dd3ec9de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2020-10-16T02:18:06Z",
+      "side": 1,
+      "message": "the reviewers are added automatically during cherry-pick by gerrit, I\u0027m not sure if there is a way to stop this behavior.  I\u0027m still verifying these changes by local builds, I will self +2 and merge the changes after that.",
+      "parentUuid": "16cfa4ee_a13243b9",
+      "revId": "ef14457ed19ba5616296a887461b12ae6e245a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
