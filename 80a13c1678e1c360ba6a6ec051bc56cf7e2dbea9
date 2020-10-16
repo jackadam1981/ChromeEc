@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5135b9_c1da082a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-16T21:47:06Z",
+      "side": 1,
+      "message": "I won\u0027t hold this up anymore, but I\u0027m just worried about RW breaking the connection, by either HardReset or invoking ErrorRecovery before the DCHG FET is enabled.",
+      "revId": "80a13c1678e1c360ba6a6ec051bc56cf7e2dbea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
