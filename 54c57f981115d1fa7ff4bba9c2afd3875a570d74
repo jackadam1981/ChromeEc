@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "533e750d_cd96024c",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-16T20:05:44Z",
+      "side": 1,
+      "message": "oaky you can remove below comment \n/* USB4 flow for Active cable */",
+      "parentUuid": "c072914b_bb428ff5",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 5
+      },
+      "revId": "54c57f981115d1fa7ff4bba9c2afd3875a570d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0751b658_895a2b38",
         "filename": "include/usb_mode.h",
         "patchSetId": 8
