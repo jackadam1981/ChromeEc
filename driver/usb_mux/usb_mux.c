@@ -21,7 +21,9 @@
 #define CPRINTF(format, args...)
 #endif
 
-static int enable_debug_prints=1;
+//ServoV4p1
+//static int enable_debug_prints=1;
+static int enable_debug_prints=0;
 
 /*
  * Flags will reset to 0 after sysjump; This works for current flags as LPM will

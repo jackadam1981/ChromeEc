@@ -184,6 +184,7 @@
 #define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DYNAMIC_SRC_CAP
+#define CONFIG_USB_PD_DYNAMIC_SNK_CAP
 #define CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
@@ -192,7 +193,9 @@
 /* Default pull for board should not be Rp3a0 due to Cr50 */
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_ALT_MODE
+#if 0
 #define CONFIG_USB_PD_DEBUG_LEVEL 3
+#endif
 #define CONFIG_I2C_DEBUG
 
 /* Don't automatically change roles */
@@ -214,13 +217,19 @@
 CONFIG_USBC_USB_SWITCH_UFP_SUPPORT is implied, let's test that config.h code
 */
 #define CONFIG_USBC_USB_SWITCH_DFP_SUPPORT
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+#define PD_VCONN_SWAP_DELAY 5000 
+
+#undef CONFIG_USB_PD_DECODE_SOP
+/* This is HIGHLY unstable at the moment */
 #endif
 
 /*This is needed to recover PD Comm after HARD_RESETs */
 /* #define CONFIG_USB_PD_TCPM_TCPCI */
 
 
-#define SERVO_DEFAULT_CONFIG  CONF_PDSRCDTS(CC_UNCONSTRAINED_POWER | CC_PRS_ANY)
+#define SERVO_DEFAULT_CONFIG  CONF_PDSRCDTS(CC_UNCONSTRAINED_POWER | CC_PRS_ANY | CC_EMCA_SERVO)
 /*
 #define SERVO_DEFAULT_CONFIG CONF_SET_CLEAR(0, \
 		CC_ALLOW_SRC | CC_POLARITY | CC_DISABLE_DTS | CC_EMCA_SERVO | CC_SNK_WITH_PD | CC_SRC_WITH_PD, \
@@ -388,5 +397,18 @@ void ext_hpd_detection_enable(int enable);
  * @param enable Enable CCD if true, otherwise disable
  */
 void ccd_enable(int enable);
+
+
+/**
+ * Gets polling state 0/1
+ */
+int is_ccd_polling(void);
+
+
+/**
+ * Gets ccd mux state 0/1
+ */
+int is_ccd_connected(void);
+
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */

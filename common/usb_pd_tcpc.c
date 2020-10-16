@@ -36,7 +36,8 @@
  * Note that higher log level causes timing changes and thus may affect
  * performance.
  */
-static int debug_level=2;
+//static int debug_level=2;
+static int debug_level=0;
 
 static struct mutex pd_crc_lock;
 #else
