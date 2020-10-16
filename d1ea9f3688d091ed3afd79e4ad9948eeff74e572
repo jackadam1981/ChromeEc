@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce35465_46c462da",
+        "filename": "board/cerise/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-10-16T09:32:59Z",
+      "side": 1,
+      "message": "adc_disable() is called in both board_get_sku_id() and board_get_version()(https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/baseboard/kukui/baseboard.c#134).\n\nIf we call adc_disable() first in one of them, can adc_read_channel() still work in the other?",
+      "revId": "d1ea9f3688d091ed3afd79e4ad9948eeff74e572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
