@@ -57,8 +57,6 @@ GPIO(QSIP_ON,               PIN(5, 0), GPIO_OUT_LOW)   /* Not used, for non-swit
 /* Power enables */
 GPIO(HIBERNATE_L,           PIN(5, 2), GPIO_OUT_HIGH)  /* EC hibernate */
 GPIO(SWITCHCAP_ON,          PIN(D, 5), GPIO_OUT_LOW)   /* Enable switch cap */
-/* TODO(waihong): Remove it. The VBOB switch is for backup. */
-GPIO(VBOB_EN,               PIN(D, 3), GPIO_OUT_LOW)   /* Enable VBOB */
 GPIO(EN_PP3300_A,           PIN(A, 6), GPIO_OUT_LOW)   /* Enable PP3300 */
 GPIO(EN_PP5000_A,           PIN(6, 7), GPIO_OUT_LOW)   /* Enable PP5000 */
 GPIO(EC_BL_DISABLE_L,       PIN(B, 6), GPIO_OUT_LOW)   /* Backlight disable signal from EC */
@@ -75,7 +73,6 @@ GPIO(DP_MUX_OE_L,           PIN(9, 6), GPIO_OUT_HIGH)  /* DP mux enable */
 GPIO(DP_MUX_SEL,            PIN(4, 5), GPIO_OUT_HIGH)  /* DP mux selection: L:C0, H:C1 */
 GPIO(DP_HOT_PLUG_DET,       PIN(9, 5), GPIO_OUT_LOW)   /* DP HPD to AP */
 /* TODO(waihong): Remove it from schematic. No use. */
-GPIO(USBC_MUX_CONF0,        PIN(5, 1), GPIO_INPUT)
 GPIO(USB_C0_VBUS_DET_L,     PIN(6, 2), GPIO_INPUT)     /* Deprecated BC1.2 VBUS detection on port-0 */
 
 
@@ -131,6 +128,33 @@ GPIO(SKU_ID2,               PIN(D, 4), GPIO_INPUT)
  * high-Z. Set pull-down to avoid floating.
  */
 GPIO(DA9313_GPIO0,          PIN(E, 2), GPIO_INPUT | GPIO_PULL_DOWN) /* Switchcap GPIO0 */
+
+/* Unused GPIOs, NC. Apply PU for power saving */
+GPIO(UNUSED_GPIO51,         PIN(5, 1), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOD0,         PIN(D, 0), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOF2,         PIN(F, 3), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO04,         PIN(0, 4), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOC0,         PIN(C, 0), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOA7,         PIN(A, 7), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO83,         PIN(8, 3), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO81,         PIN(8, 1), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO37,         PIN(3, 7), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO76,         PIN(7, 6), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO34,         PIN(3, 4), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOC5,         PIN(C, 5), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOC6,         PIN(C, 6), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO73,         PIN(7, 3), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOD7,         PIN(D, 7), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOA5,         PIN(A, 5), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOB0,         PIN(B, 0), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO94,         PIN(9, 4), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOB1,         PIN(B, 1), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO62,         PIN(6, 2), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOE4,         PIN(E, 4), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOF5,         PIN(F, 5), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO35,         PIN(3, 5), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO97,         PIN(9, 7), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOD3,         PIN(D, 3), GPIO_INPUT | GPIO_PULL_UP)
 
 /* Alternate functions GPIO definitions */
 ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)            /* UART (GPIO64/65) */
