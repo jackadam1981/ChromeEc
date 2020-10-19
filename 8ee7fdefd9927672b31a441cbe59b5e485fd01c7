@@ -16,6 +16,24 @@
       "message": "Please help merge this to fw branch. thanks.",
       "revId": "8ee7fdefd9927672b31a441cbe59b5e485fd01c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1535719c_e99e6cff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-19T14:03:58Z",
+      "side": 1,
+      "message": "I have reviewed it, as I wrote it. It needs to be in the branch for FSI. Is this required for RO? There is a temporary freeze until RO is selected and set before extra CLs are being merged into this branch. If you believe this is required to be in RO, then please indicate the reason.",
+      "parentUuid": "93ed307f_1bf24d1e",
+      "revId": "8ee7fdefd9927672b31a441cbe59b5e485fd01c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
