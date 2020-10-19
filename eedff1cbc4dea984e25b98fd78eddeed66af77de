@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d055cda_ba3138c1",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-19T17:02:30Z",
+      "side": 1,
+      "message": "Between #ifdef CONFIG_ACCEL_SPOOF_MODE to save space when needed.",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d31df8c_c66ee950",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-19T17:02:30Z",
+      "side": 1,
+      "message": "Between #ifdef CONFIG_ACCEL_SPOOF_MODE to save space when needed.",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfd21c3a_2e66fb12",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-19T17:02:30Z",
+      "side": 1,
+      "message": "Between #ifdef CONFIG_ACCEL_SPOOF_MODE to save space when needed.",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0585b97d_58f5524f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2542,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-19T17:02:30Z",
+      "side": 1,
+      "message": "Don\u0027t add another command, override MOTIONSENSE_CMD_SPOOF instead: you can use the gesture sensor as sensor num and overload spoof data structure.",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
