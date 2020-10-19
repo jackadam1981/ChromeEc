@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f939bd8_229a2be5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-19T20:24:23Z",
+      "side": 1,
+      "message": "I really like how you broke up your CLs!",
+      "revId": "9286c054ce65d625d2c4cb210d885054911ea1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0499058_7a15e511",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9718,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-19T20:24:23Z",
+      "side": 1,
+      "message": "I feel like these should be #define\u0027d in a ec_commands.h to help callers parse the expected data format",
+      "range": {
+        "startLine": 9715,
+        "startChar": 3,
+        "endLine": 9718,
+        "endChar": 31
+      },
+      "revId": "9286c054ce65d625d2c4cb210d885054911ea1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
