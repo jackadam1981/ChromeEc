@@ -113,11 +113,17 @@ GPIO(M2_SSD_PLA,		PIN(7, 0), GPIO_INPUT)		/* SSD power-loss acknowledgment */
 GPIO(CCD_MODE_ODL,		PIN(E, 5), GPIO_INPUT)		/* Case Closed Debug Mode */
 GPIO(EC_SLP_S0IX,		PIN(7, 2), GPIO_INPUT | GPIO_PULL_UP)
 
-/* Unused signals */
+/*
+* Unused signals; generally, these should be configured as input/internal PU to
+ * save power.
+*/
 GPIO(UNUSED_GPIO41,		PIN(4, 1), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(UNUSED_GPIOF2,		PIN(F, 2), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(UNUSED_GPIO96,		PIN(9, 6), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(UNUSED_GPIO34,		PIN(3, 4), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(EC_GP_SEL0_ODL,		PIN(B, 6), GPIO_OUTPUT | GPIO_PULL_UP) /* Cannot be configured as input */
+GPIO(CHARGER_INT_L,		PIN(7, 3), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(CPU_C10_GATE_L,		PIN(6, 7), GPIO_INPUT)                 /* Has an on-board pull-down. */
 /* Only connected to test points */
 GPIO(EC_KB_BL_EN,		PIN(8, 6), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(EC_ESPI_ALERT_L,		PIN(5, 7), GPIO_INPUT | GPIO_PULL_UP)
