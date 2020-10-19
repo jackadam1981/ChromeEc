@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-#undef QUICHE_BOARD_P1
+#define QUICHE_BOARD_P1
 
 /* Baseboard features */
 #include "baseboard.h"
