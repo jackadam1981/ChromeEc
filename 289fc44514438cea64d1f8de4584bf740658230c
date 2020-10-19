@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5ad97b_2aafb04b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-10-19T21:51:24Z",
+      "side": 1,
+      "message": "What about CS? I ",
+      "revId": "289fc44514438cea64d1f8de4584bf740658230c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3041ffe3_7986eff7",
+        "filename": "board/coachz/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-10-19T21:51:24Z",
+      "side": 1,
+      "message": "Threw me off for a second that I couldn\u0027t find CS. It\u0027s further up since it\u0027s an INT.",
+      "revId": "289fc44514438cea64d1f8de4584bf740658230c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
