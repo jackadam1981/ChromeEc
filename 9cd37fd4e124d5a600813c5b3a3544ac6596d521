@@ -34,6 +34,24 @@
       "parentUuid": "16872927_0de63416",
       "revId": "9cd37fd4e124d5a600813c5b3a3544ac6596d521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac709f59_90a99332",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-10-19T15:26:07Z",
+      "side": 1,
+      "message": "I ran CtsSensorTestCases module. All tests passed. 531 of 562 passed during first attempt, remaining 31 passed during second attempt.",
+      "parentUuid": "66602aa6_b7e094cf",
+      "revId": "9cd37fd4e124d5a600813c5b3a3544ac6596d521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
