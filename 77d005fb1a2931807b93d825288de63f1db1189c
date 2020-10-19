@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab938ee1_8745eff5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-19T15:46:54Z",
+      "side": 1,
+      "message": "That makes sense.  And agreed, performing automatic exit mode seems like too much of an overreach for the API.",
+      "parentUuid": "c61840ce_0848fba5",
+      "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83bdae2c_09af129f",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "We probably shouldn\u0027t queue it up until we\u0027re DFP. That seems surprising. I started thinking about detecting the UFP condition in the host command, but that would introduce synchronization issues that I don\u0027t really want to deal with. The DPM already has code that immediately bails out if we\u0027re not DFP, and we can just augment that with code to notify the AP that the request was discarded.\n\nThe AP will have to deal with asynchronous failure notifications anyway, so I don\u0027t think this will complicate things much from that end.",
       "parentUuid": "83bdae2c_09af129f",
+      "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "195d18b7_b1a4bb26",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-19T15:46:54Z",
+      "side": 1,
+      "message": "The asynchronous notification to the AP sounds good to me.",
+      "parentUuid": "ad06a061_43c8ef2f",
       "revId": "77d005fb1a2931807b93d825288de63f1db1189c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
