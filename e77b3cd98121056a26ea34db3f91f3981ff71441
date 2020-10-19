@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07370ef4_a7db67a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2020-10-19T23:43:03Z",
+      "side": 1,
+      "message": "\u003e Can you answer this question? Is there any other places you changed from the original tot patch?\n\nI remove changes on boards that is not in octopus.\nI have changed I2C address that is defined as 7bits to 8bits\nbecause octopus\u0027s slave address is 8bits.\nTo fix some build errors(ISL9238 \u0026 BQ25710), I refer original octopus project and hatch project because BQ25710 is used in kohaku \u0026 nightfury.",
+      "parentUuid": "046eb86b_5db651da",
+      "revId": "e77b3cd98121056a26ea34db3f91f3981ff71441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30afca27_33cde943",
