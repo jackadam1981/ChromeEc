@@ -93,6 +93,30 @@
       },
       "revId": "f8a446145147f3e3a56f1bee2cf8ee60d64d8f79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2050b01_466e4e6d",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-19T21:15:23Z",
+      "side": 1,
+      "message": "nit:\n\n  if (IS_ENABLED(CONFIG_CHARGER_BQ25710) \u0026\u0026 \n      IS_ENABLED(CONFIG_CHARGER_ISL9238)) \n        charge_ma \u003d (charge_ma * 95) / 100;\n\nis preferred.",
+      "parentUuid": "84a1beaf_bec939dc",
+      "range": {
+        "startLine": 309,
+        "startChar": 12,
+        "endLine": 309,
+        "endChar": 43
+      },
+      "revId": "f8a446145147f3e3a56f1bee2cf8ee60d64d8f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
