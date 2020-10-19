@@ -79,6 +79,30 @@
       },
       "revId": "8fb14a8251bcddc481ca8f3ad3e836fc4d493e4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e41d6c8b_34d95570",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9696,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-19T20:31:05Z",
+      "side": 1,
+      "message": "What about bit field structs like we have in the USB header files? It\u0027s a shame we can\u0027t just use those.",
+      "parentUuid": "2a601de1_16875658",
+      "range": {
+        "startLine": 9696,
+        "startChar": 34,
+        "endLine": 9696,
+        "endChar": 63
+      },
+      "revId": "8fb14a8251bcddc481ca8f3ad3e836fc4d493e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
