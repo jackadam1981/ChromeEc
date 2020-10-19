@@ -34,6 +34,24 @@
       "parentUuid": "93ed307f_1bf24d1e",
       "revId": "8ee7fdefd9927672b31a441cbe59b5e485fd01c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc21f3d9_2e71bf16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1191834
+      },
+      "writtenOn": "2020-10-19T14:19:49Z",
+      "side": 1,
+      "message": "There are other fw fixed need to get into RO, so we might as well get this change in?",
+      "parentUuid": "1535719c_e99e6cff",
+      "revId": "8ee7fdefd9927672b31a441cbe59b5e485fd01c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
