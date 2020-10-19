@@ -345,7 +345,7 @@ int stm32gx_ucpd_init(int port)
 
 	/* Make sure CC1/CC2 pins PB4/PB6 are set for analog mode */
 	moder_reg = STM32_GPIO_MODER(GPIO_B);
-	moder_reg |= 0x330;
+	moder_reg |= 0x3300;
 	STM32_GPIO_MODER(GPIO_B) = moder_reg;
 	/*
 	 * CFGR1 must be written when UCPD peripheral is disabled. Note that
