@@ -16,6 +16,24 @@
       "message": "Although this works fine on ampton BMI160, my concern is that the BMI160 doesn\u0027t enter the normal mode until the odr is set. AFAIK, It still needs msleep() in writing while Init(), right?\n\nOn the other hand, since the BMI260 enters the normal mode in init_config(), you\u0027re right, we don\u0027t need the msleep afterwards.",
       "revId": "2f3980f0cc1064c38ef77f1535b91cbfc43390b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced6250e_99305e7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-19T17:38:26Z",
+      "side": 1,
+      "message": "1 - if it is only need for init, we should not had msleep for every write. But in init() only\n2 - if it was needed on BMI160, given we are using it for a while, it does not seeem to be a problem. We already have a msleep to get out of reset (https://source.corp.google.com/chromeos_public/src/platform/ec/driver/accelgyro_bmi160.c;rcl\u003d90c79d90699268d31a3a2d8f48af5955e493005b;l\u003d608), and out of suspend when we set the ODR.",
+      "parentUuid": "899e517f_07b4d6ca",
+      "revId": "2f3980f0cc1064c38ef77f1535b91cbfc43390b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
