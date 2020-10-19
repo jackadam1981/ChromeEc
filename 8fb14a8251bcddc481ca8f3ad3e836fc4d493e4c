@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06789acd_029ac1de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-19T20:21:21Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "8fb14a8251bcddc481ca8f3ad3e836fc4d493e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b63b28a_d3fc928b",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-19T20:21:21Z",
+      "side": 1,
+      "message": "The +1 and \u003c\u003c 12 need to be explained in comments (or a helper function)",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 58
+      },
+      "revId": "8fb14a8251bcddc481ca8f3ad3e836fc4d493e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "525ab78c_197a4b25",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6505,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-19T20:21:21Z",
+      "side": 1,
+      "message": "nit: can you give an example like 0x3200 for version 3.2",
+      "revId": "8fb14a8251bcddc481ca8f3ad3e836fc4d493e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a601de1_16875658",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9696,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-19T20:21:21Z",
+      "side": 1,
+      "message": "seeing this multiple time, I think we should have some inline helper function or defines for these extractions",
+      "range": {
+        "startLine": 9696,
+        "startChar": 34,
+        "endLine": 9696,
+        "endChar": 63
+      },
+      "revId": "8fb14a8251bcddc481ca8f3ad3e836fc4d493e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
