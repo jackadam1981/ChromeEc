@@ -16,6 +16,23 @@
       "message": "Please verify the temperature sensors are still functional by running \u0027temps\u0027 from the EC console.",
       "revId": "7818e2b7be854204945e1c9d6d0738899cfa337b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06de4af4_8fe37c29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-19T18:59:32Z",
+      "side": 1,
+      "message": "We should either upload changes for other boards, or open bugs for all the variants to make similar change.",
+      "revId": "7818e2b7be854204945e1c9d6d0738899cfa337b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
