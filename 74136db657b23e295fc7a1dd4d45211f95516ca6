@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fb995ab_919633c4",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-19T19:40:43Z",
+      "side": 1,
+      "message": "do we need compiler barriers here to ensure that reading waiters happens after setting lock. I don\u0027t think that is guaranteed without compiler barriers (otherwise various compiler may optimize the code in a different order). These variables aren\u0027t even volatile so the compiler is free to change the happens before order.\n\nWe also need a comment here explaining that we need to read to waiters after giving the lock back otherwise we might miss a waiter between the two calls",
+      "range": {
+        "startLine": 636,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 24
+      },
+      "revId": "74136db657b23e295fc7a1dd4d45211f95516ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
