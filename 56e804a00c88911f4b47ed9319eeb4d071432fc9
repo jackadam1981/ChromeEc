@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0de94590_ac2a0dce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-10-19T21:49:46Z",
+      "side": 1,
+      "message": "Can confirm, this is a great idea for power savings.",
+      "revId": "56e804a00c88911f4b47ed9319eeb4d071432fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bbb5e1_224ee57c",
+        "filename": "board/lazor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-10-19T21:49:46Z",
+      "side": 1,
+      "message": "Heh. Interesting to have a block like this full of UNNAMEDs.\n\nIs this something we could do in the gpio driver instead (pull up a gpio that hasn\u0027t been configured)? That way all boards could benefit from this without changing the gpio.inc.",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 18
+      },
+      "revId": "56e804a00c88911f4b47ed9319eeb4d071432fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
