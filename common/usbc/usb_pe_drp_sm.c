@@ -1514,6 +1514,18 @@ static void pe_prl_execute_hard_reset(int port)
 	prl_execute_hard_reset(port);
 }
 
+/* Returns true after a PE state change, false otherwise. */
+static bool port_try_data_role_swap(int port)
+{
+	if (pe[port].dr_swap_attempt_counter < N_DR_SWAP_ATTEMPT_COUNT) {
+		pe[port].dr_swap_attempt_counter++;
+		PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
+		set_state_pe(port, get_last_state_pe(port));
+		return true;
+	}
+	return false;
+}
+
 /* The function returns true if there is a PE state change, false otherwise */
 static bool port_try_vconn_swap(int port)
 {
@@ -1580,7 +1592,7 @@ static bool pe_attempt_port_discovery(int port)
 	 */
 	if (get_time().val > pe[port].discover_identity_timer) {
 		if (pd_get_identity_discovery(port, TCPC_TX_SOP_PRIME) ==
-				PD_DISC_NEEDED && pe_can_send_sop_prime(port)) {
+				PD_DISC_NEEDED) {
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 			return true;
@@ -1604,14 +1616,12 @@ static bool pe_attempt_port_discovery(int port)
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
 			return true;
 		} else if (pd_get_svids_discovery(port, TCPC_TX_SOP_PRIME)
-				== PD_DISC_NEEDED &&
-				pe_can_send_sop_prime(port)) {
+				== PD_DISC_NEEDED) {
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
 			return true;
 		} else if (pd_get_modes_discovery(port, TCPC_TX_SOP_PRIME) ==
-				PD_DISC_NEEDED &&
-				pe_can_send_sop_prime(port)) {
+				PD_DISC_NEEDED) {
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
 			return true;
@@ -4690,10 +4700,20 @@ static void pe_vdm_send_request_entry(int port)
 	}
 
 	if ((pe[port].tx_type == TCPC_TX_SOP_PRIME ||
-	     pe[port].tx_type == TCPC_TX_SOP_PRIME_PRIME) &&
-	     !tc_is_vconn_src(port)) {
-		if (port_try_vconn_swap(port))
-			return;
+	     pe[port].tx_type == TCPC_TX_SOP_PRIME_PRIME)) {
+		/*
+		 * Try to ensure that the port can communicate with the cable
+		 * plug. If these efforts fail, the child state will bail out
+		 * before sending a message.
+		 */
+		if (!tc_is_vconn_src(port)) {
+			if (port_try_vconn_swap(port))
+				return;
+		} else if (prl_get_rev(port, TCPC_TX_SOP) == PD_REV20 &&
+				pe[port].data_role != PD_ROLE_DFP) {
+			if (port_try_data_role_swap(port))
+				return;
+		}
 	}
 
 	/* All VDM sequences are Interruptible */
@@ -4767,7 +4787,11 @@ static void pe_vdm_identity_request_cbl_entry(int port)
 
 	print_current_state(port);
 
-	if (!tc_is_vconn_src(port)) {
+	if (!pe_can_send_sop_prime(port)) {
+		/*
+		 * The parent state already tried to enable SOP' traffic. If it
+		 * is still disabled, there's nothing left to try.
+		 */
 		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 		set_state_pe(port, get_last_state_pe(port));
 		return;
@@ -5028,7 +5052,11 @@ static void pe_init_vdm_svids_request_entry(int port)
 	print_current_state(port);
 
 	if (pe[port].tx_type == TCPC_TX_SOP_PRIME &&
-	    !tc_is_vconn_src(port)) {
+	    !pe_can_send_sop_prime(port)) {
+		/*
+		 * The parent state already tried to enable SOP' traffic. If it
+		 * is still disabled, there's nothing left to try.
+		 */
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 		set_state_pe(port, get_last_state_pe(port));
 		return;
@@ -5126,7 +5154,11 @@ static void pe_init_vdm_modes_request_entry(int port)
 	print_current_state(port);
 
 	if (pe[port].tx_type == TCPC_TX_SOP_PRIME &&
-	    !tc_is_vconn_src(port)) {
+	    !pe_can_send_sop_prime(port)) {
+		/*
+		 * The parent state already tried to enable SOP' traffic. If it
+		 * is still disabled, there's nothing left to try.
+		 */
 		pd_set_modes_discovery(port, pe[port].tx_type, svid,
 				PD_DISC_FAIL);
 		set_state_pe(port, get_last_state_pe(port));
@@ -5223,7 +5255,11 @@ static void pe_vdm_request_dpm_entry(int port)
 
 	if ((pe[port].tx_type == TCPC_TX_SOP_PRIME ||
 	     pe[port].tx_type == TCPC_TX_SOP_PRIME_PRIME) &&
-	     !tc_is_vconn_src(port)) {
+	     !pe_can_send_sop_prime(port)) {
+		/*
+		 * The parent state already tried to enable SOP' traffic. If it
+		 * is still disabled, there's nothing left to try.
+		 */
 		dpm_vdm_naked(port, pe[port].tx_type,
 			      PD_VDO_VID(pe[port].vdm_data[0]),
 			      PD_VDO_CMD(pe[port].vdm_data[0]));
