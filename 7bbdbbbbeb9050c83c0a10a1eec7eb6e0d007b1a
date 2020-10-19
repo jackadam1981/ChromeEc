@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9031756_970a08d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-19T20:11:07Z",
+      "side": 1,
+      "message": "Looks good, just a comment about casting.\n\nAlso, can you make a follow up CL that remove the depreciated version?",
+      "revId": "7bbdbbbbeb9050c83c0a10a1eec7eb6e0d007b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d72d375_1423692f",
+        "filename": "chip/stm32/usart_info_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-19T20:11:07Z",
+      "side": 1,
+      "message": "can you just cast the rx_dropped to uint32 (thus casting from volatile unint32 to uint32?)",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "7bbdbbbbeb9050c83c0a10a1eec7eb6e0d007b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
