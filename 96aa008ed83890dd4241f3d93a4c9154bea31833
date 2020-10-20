@@ -51,6 +51,24 @@
       "message": "nit: add a comment to specify why we\u0027re choosing to fail here since it might not be immediately obvious to a reader that the parent is handling max attempts to vconn swap\n\nIt also seems like there might be some asymmetry here for the data role? We may be incapable of sending the request because we\u0027re the UFP on a PD 2.0 connection.  For SOP, we\u0027d keep the discovery status as NEEDED and keep checking to see if we can discover, whereas here we\u0027ll set FAIL for all SOP\u0027 disvoery.  I assume it\u0027s generally unlikely that a partner who refused to swap data roles earlier would suddenly decide later to swap and let us run discovery, but I do think it would be worth keeping our behavior consistent for such a case (i.e. trying to discover everything, or not trying to discover at all)",
       "revId": "96aa008ed83890dd4241f3d93a4c9154bea31833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf480cd9_16c084df",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4768,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-20T16:54:46Z",
+      "side": 1,
+      "message": "Comment: Done.\n\nI added essentially symmetrical code for the data role for cable plug traffic. I didn\u0027t do anything for the conditions before an explicit contract is in place, because I don\u0027t think there\u0027s anything we can do at that point to remedy them, and I don\u0027t think the pe_attempt_port_discovery will run at that time anyway.\n\nI\u0027m not sure if you also wanted me to try to fix the data role before giving up on SOP discovery in PD 2.0. I think that has some symmetry arguments in its favor, but it could bear to be its own CL.\n\nI note that the role swap logic in pe_attempt_port_discovery purports to be a policy decision. With the addition of on-demand VCONN Swaps, we still technically have a policy of trying to become VCONN Source once before discovery, but it isn\u0027t really an important policy. It could be removed without a practical change in behavior. Conceivably, we could get to the point where the same is true WRT data role. In any case, putting this logic in the discovery function seems a bit arbitrary at this point. The real policy decision is setting the flags at startup, and maybe those should just be checked in the ready states.\n\nHow far do you want me to go with this?",
+      "parentUuid": "756dce8c_53a49619",
+      "revId": "96aa008ed83890dd4241f3d93a4c9154bea31833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
