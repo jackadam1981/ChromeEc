@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb9890f9_058e458f",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-10-20T21:47:40Z",
+      "side": 1,
+      "message": "I\u0027ll make the adjustment mentioned in CL:2486867",
+      "parentUuid": "e3d3c2b8_a8d77b5c",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "dcd80284d9da818ca9311041e03e6d7aa0170749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75cf9895_88dee22c",
         "filename": "extra/tigertool/ecusb/pty_driver.py",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-20T20:48:18Z",
       "side": 1,
       "message": "Why shorten this to 10ms?\n\nLet\u0027s say the servo has a lot of output to send, but it\u0027s not an endless stream, it\u0027s just a big chunk to get through.  Ideally _flush() will wait for all of that output up until flush_timeout.  Is there any risk of hitting the 10ms timeout between chunks / packets of output?\n\nWhat if the expect regexp is changed to one that never matches?  Could we avoid the loop and just call .expect() once with the total timeout (1 second)?  I\u0027m thinking something like this:\n\nFLUSH_TIMEOUT_S \u003d 1.0\n_NO_MATCH_RE \u003d re.compile(r\u0027$.\u0027)\n\n...\n\n  def _flush(self):\n    if self._child.sendline(\u0027\u0027) !\u003d 1:\n      raise ptyError(\u0027Failed to send newline.\u0027)\n    try:\n      self._child.expect(_NO_MATCH_RE, timeout\u003dFLUSH_TIMEOUT_S)\n    except (pexpect.TIMEOUT, pexpect.EOF):\n      pass\n    except (OSError, IOError) as e:\n      if e.errno not in (errno.EAGAIN, errno.EWOULDBLOCK):\n        raise\n    else:\n      raise AssertionError(\u0027regexp {!r} unexpectedly matched, this is a bug\u0027.format(NO_MATCH_RE.pattern))",
+      "revId": "dcd80284d9da818ca9311041e03e6d7aa0170749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de42e6b2_90449ac8",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-10-20T21:47:40Z",
+      "side": 1,
+      "message": "I\u0027m trying to keep the 2 pty drivers somewhat consistent. The 10ms change has been in place there since 2018.",
+      "parentUuid": "75cf9895_88dee22c",
       "revId": "dcd80284d9da818ca9311041e03e6d7aa0170749",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
