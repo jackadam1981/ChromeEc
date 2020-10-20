@@ -63,6 +63,30 @@
       },
       "revId": "56e804a00c88911f4b47ed9319eeb4d071432fc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c42c611_8f03400a",
+        "filename": "board/lazor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-10-20T00:53:31Z",
+      "side": 1,
+      "message": "I would argue that it\u0027s not good practice to flash something to a board without controlling (hence defined) all the GPIOs. HiZ on a pin might not be safe either.",
+      "parentUuid": "86ab00e9_79b22711",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 18
+      },
+      "revId": "56e804a00c88911f4b47ed9319eeb4d071432fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
