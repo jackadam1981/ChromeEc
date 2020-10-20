@@ -34,6 +34,24 @@
       "parentUuid": "899e517f_07b4d6ca",
       "revId": "2f3980f0cc1064c38ef77f1535b91cbfc43390b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d11000_5c506687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-20T10:18:46Z",
+      "side": 1,
+      "message": "I found that one bmi_write8() takes about 0.4ms without msleep(), maybe this is why there are no bug. Not sure if there will be write error in the config_interrupt() in some other board.",
+      "parentUuid": "ced6250e_99305e7e",
+      "revId": "2f3980f0cc1064c38ef77f1535b91cbfc43390b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
