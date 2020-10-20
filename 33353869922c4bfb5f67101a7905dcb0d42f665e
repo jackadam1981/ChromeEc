@@ -16,6 +16,24 @@
       "message": "This is logical OR or bitwise OR?\nCan you explain what you are trying to do here?",
       "revId": "33353869922c4bfb5f67101a7905dcb0d42f665e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd7d48e_166256e4",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-20T16:37:27Z",
+      "side": 1,
+      "message": "We set Bit 0 (of return byte) if it\u0027s an active cable or active/passive bit of Discover Mode SOP\u0027 (B25) is 1.",
+      "parentUuid": "c2e3e01d_177f87a9",
+      "revId": "33353869922c4bfb5f67101a7905dcb0d42f665e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
