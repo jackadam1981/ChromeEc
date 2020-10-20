@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3edc8fa6_153ed667",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-10-20T12:57:20Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure if this is reasonable. If the code is executed faster than the OV duration, what will happen? ie. when you set this register, the OV in VBAT is still there. Besides, is this handle valid for every case since the OVP may happen any time IIUC?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 49
+      },
+      "revId": "8326ad3f5f7b1e4883b9f6694de4ccf2dc0d1262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
