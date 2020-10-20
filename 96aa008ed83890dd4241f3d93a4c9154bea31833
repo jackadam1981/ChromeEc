@@ -105,6 +105,24 @@
       "parentUuid": "64b5fde9_62d23788",
       "revId": "96aa008ed83890dd4241f3d93a4c9154bea31833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9a1973_6dd308ad",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4768,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T17:52:45Z",
+      "side": 1,
+      "message": "Yeah, I think it should be fine to back out the DFP change here.  Our data roles aren\u0027t nearly as volatile as Vconn since we can flat-out reject swap requests.",
+      "parentUuid": "0a720a65_7a3355af",
+      "revId": "96aa008ed83890dd4241f3d93a4c9154bea31833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
