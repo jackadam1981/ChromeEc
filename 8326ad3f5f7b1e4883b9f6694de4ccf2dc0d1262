@@ -22,6 +22,30 @@
       },
       "revId": "8326ad3f5f7b1e4883b9f6694de4ccf2dc0d1262",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a86030_ff513489",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-20T18:33:01Z",
+      "side": 1,
+      "message": "The CC1_BPS and CC2_BPS bits can be cleared individually when FRS is enabled, so the state of these bits needs to be tracked.\n\nZhuohao is correct that if VBAT_OVP is still ongoing, then the re-enable of CCx_BPS needs to be deferred until VBAT_OVP is clear.\n\nPsuedo-code:\n    if (regval \u0026 SYV682X_CONTROL_4_VBAT_OVP) {\n        /* Set ovp_recovery_needed for port */\n        hook_call_deferred(\u0026syv682x_vbat_ovp_deferred_data, delay);\n    }\n\n    syv682x_vbat_ovp_deferred ()\n    {\n        /* For all ports */\n        if (ovp_recovery_needed)\n            if (reg4 \u0026 SYV682X_CONTROL_4_VBAT_OVP)\n                /* VBAT_OVP still present, retry recovery */\n                hook_call_deferred(\u0026syv682x_vbat_ovp_deferred_data, delay);\n            else\n                /* Clear ovp_recovery_needed */\n                /* Set CCx_BPS bits\n    }",
+      "parentUuid": "3edc8fa6_153ed667",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 49
+      },
+      "revId": "8326ad3f5f7b1e4883b9f6694de4ccf2dc0d1262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
