@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b158243_5e650df3",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-20T16:32:03Z",
+      "side": 1,
+      "message": "we can splut spoof in spoof for accel and spoof for activities, but let\u0027s not complicate more: we enable any spoof features when there space in the EC, but they are the first one to go when flash space is thight.",
+      "parentUuid": "ef0e3fb3_7a071631",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d31df8c_c66ee950",
         "filename": "common/body_detection.c",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I think this can make developer more easy to use activity-related motionsense command. Using only MOTIONSENSE_CMD_SPOOF is okay, but I\u0027m curious that why is adding another command bad? Space or code complexity problem?",
       "parentUuid": "0585b97d_58f5524f",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e41a697a_1f2a5d80",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2542,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-20T16:32:03Z",
+      "side": 1,
+      "message": "SPOOF command has been written to be generic enough to apply to all sensors. Adding another similar command does seem redundant.",
+      "parentUuid": "8712a769_d5d1f790",
       "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
