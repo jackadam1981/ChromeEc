@@ -268,6 +268,10 @@ static void syv682x_handle_control_4_interrupt(int port, int regval)
 	/* This should never happen unless something really bad happened */
 	if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
 		ppc_prints("VBAT OVP!", port);
+		/* Re-init register CONTROL_4 CC1_BPS and CC2_BPS */
+		read_reg(port, SYV682X_CONTROL_4_REG, &regval);
+		regval |= SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS;
+		write_reg(port, SYV682X_CONTROL_4_REG, regval);
 	}
 }
 
