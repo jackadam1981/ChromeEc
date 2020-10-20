@@ -5905,6 +5905,7 @@ static void pe_vcs_send_ps_rdy_swap_run(int port)
 
 			send_ctrl_msg(port, TCPC_TX_SOP_PRIME,
 					  PD_CTRL_SOFT_RESET);
+
 			pe[port].sub = PE_SUB1;
 		}
 		break;
