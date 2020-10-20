@@ -39,6 +39,30 @@
       },
       "revId": "56e804a00c88911f4b47ed9319eeb4d071432fc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ab00e9_79b22711",
+        "filename": "board/lazor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-20T00:48:44Z",
+      "side": 1,
+      "message": "This implies changing the default from INPUT to INPUT + PU. For early bring-up, people may not have time to define all the GPIOs and just define several they are interested, enabling PU automatically may have other unwanted behaviors, e.g. overriding the external pull-down.",
+      "parentUuid": "a2bbb5e1_224ee57c",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 18
+      },
+      "revId": "56e804a00c88911f4b47ed9319eeb4d071432fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
