@@ -34,6 +34,23 @@
       "parentUuid": "c46b9a4c_d3a3bc6b",
       "revId": "96aa008ed83890dd4241f3d93a4c9154bea31833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "756dce8c_53a49619",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4768,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T15:37:57Z",
+      "side": 1,
+      "message": "nit: add a comment to specify why we\u0027re choosing to fail here since it might not be immediately obvious to a reader that the parent is handling max attempts to vconn swap\n\nIt also seems like there might be some asymmetry here for the data role? We may be incapable of sending the request because we\u0027re the UFP on a PD 2.0 connection.  For SOP, we\u0027d keep the discovery status as NEEDED and keep checking to see if we can discover, whereas here we\u0027ll set FAIL for all SOP\u0027 disvoery.  I assume it\u0027s generally unlikely that a partner who refused to swap data roles earlier would suddenly decide later to swap and let us run discovery, but I do think it would be worth keeping our behavior consistent for such a case (i.e. trying to discover everything, or not trying to discover at all)",
+      "revId": "96aa008ed83890dd4241f3d93a4c9154bea31833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
