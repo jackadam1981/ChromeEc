@@ -31,6 +31,7 @@
 static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 static uint8_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 static timestamp_t oc_timer[CONFIG_USB_PD_PORT_MAX_COUNT];
+static int ovp_recovery_needed;
 
 #define SYV682X_VBUS_DET_THRESH_MV		4000
 /* Longest time that can be programmed in DSG_TIME field */
@@ -258,8 +259,34 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	}
 }
 
+static void syv682x_vbat_ovp_deferred(void)
+{
+	int port, regval;
+
+	for (port = 0; port < 2; port++) {
+		if (ovp_recovery_needed & (1 << port)) {
+			read_reg(port, SYV682X_CONTROL_4_REG, &regval);
+			if (regval & SYV682X_CONTROL_4_CC_FRS) {
+				regval |= SYV682X_CONTROL_4_CC1_BPS
+					 | SYV682X_CONTROL_4_CC2_BPS;
+				write_reg(port, SYV682X_CONTROL_4_REG, regval);
+			} else {
+				regval |=
+				      flags[port] & SYV682X_FLAGS_CC_POLARITY ?
+						SYV682X_CONTROL_4_CC2_BPS :
+						SYV682X_CONTROL_4_CC1_BPS;
+			}
+			ovp_recovery_needed &= ~(1 << port);
+			write_reg(port, SYV682X_CONTROL_4_REG, regval);
+		}
+	}
+}
+DECLARE_DEFERRED(syv682x_vbat_ovp_deferred);
+
 static void syv682x_handle_control_4_interrupt(int port, int regval)
 {
+	int delay = 1 * MSEC;
+
 	if (syv682x_interrupt_filter(port, regval, SYV682X_CONTROL_4_VCONN_OCP,
 				     SYV682X_FLAGS_VCONN_OCP)) {
 		ppc_prints("VCONN OC!", port);
@@ -268,6 +295,8 @@ static void syv682x_handle_control_4_interrupt(int port, int regval)
 	/* This should never happen unless something really bad happened */
 	if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
 		ppc_prints("VBAT OVP!", port);
+		ovp_recovery_needed |= 1 << port;
+		hook_call_deferred(&syv682x_vbat_ovp_deferred_data, delay);
 	}
 }
 
@@ -602,6 +631,8 @@ static int syv682x_init(int port)
 	int regval;
 	int status, control_1;
 	enum tcpc_rp_value initial_current_limit;
+
+	ovp_recovery_needed = 0;
 
 	rv = read_reg(port, SYV682X_STATUS_REG, &status);
 	if (rv)
