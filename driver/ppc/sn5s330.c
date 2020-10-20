@@ -667,6 +667,10 @@ static void sn5s330_handle_interrupt(int port)
 		if (rise & SN5S330_ILIM_PP1_MASK)
 			pd_handle_overcurrent(port);
 
+		/* Notify the system about the overcurrent event. */
+		if (rise & SN5S330_REV_DET_PP2_MASK)
+			pd_execute_hard_reset(port);
+
 		/* Clear the interrupt sources. */
 		write_reg(port, SN5S330_INT_TRIP_RISE_REG1, rise);
 		write_reg(port, SN5S330_INT_TRIP_FALL_REG1, fall);

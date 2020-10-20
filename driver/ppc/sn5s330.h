@@ -134,7 +134,7 @@ enum sn5s330_pp_idx {
  * longer present.
  */
 #define SN5S330_ILIM_PP1_MASK BIT(4)
-
+#define SN5S330_REV_DET_PP2_MASK BIT(7)
 /*
  * INT_MASK_RISE/FALL_EDGE2
  *

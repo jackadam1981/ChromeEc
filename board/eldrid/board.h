@@ -86,6 +86,7 @@
 /* USBC PPC*/
 #define CONFIG_USBC_PPC_SN5S330		/* USBC port C0 */
 #define CONFIG_USBC_PPC_SYV682X		/* USBC port C1 */
+#define CONFIG_I2C_DEBUG
 
 /* BC 1.2 */
 
