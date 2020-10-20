@@ -1,5 +1,6 @@
 #include "common.h"
 #include "i2c.h"
+#include "ps8xxx.h"
 #include "usb_mux.h"
 #include "tcpci.h"
 
@@ -65,6 +66,7 @@ int ps8755_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 		ccprints("ps8755_mux_set: FLIP");
 		reg |= TCPC_REG_CONFIG_STD_OUTPUT_CONNECTOR_FLIPPED;
 		firmcmd |= TCPC_REG_FLIPPED_MUX_SWITCH;
+		firmcmd &= 0xfe;
 	}
 
 	/* Parameter is port only */
@@ -75,7 +77,14 @@ int ps8755_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 	} else {
 		ccprints("write TCPC_REG_CONFIG_STD_OUTPUT value 0x%x success", reg);
 	}
-	return ps8755_write_firmcmd(me, firmcmd);
+	rv = ps8755_write_firmcmd(me, firmcmd);
+	if (rv != EC_SUCCESS) {
+		return rv;
+	}
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		me->hpd_update(me, 1, 1);
+	}
+	return EC_SUCCESS;
 }
 
 const struct usb_mux_driver ps8755_usb_mux_driver = {

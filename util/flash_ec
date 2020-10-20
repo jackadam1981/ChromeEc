@@ -419,7 +419,7 @@ servo_has_cold_reset() {
 }
 
 servo_has_dut_i2c_mux() {
-	dut_control -i dut_i2c_mux >/dev/null 2>&1
+	dut_control -i dut_i2c_mu >/dev/null 2>&1
 }
 
 servo_ec_hard_reset_or_die() {

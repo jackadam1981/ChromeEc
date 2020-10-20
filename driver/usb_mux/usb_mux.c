@@ -95,14 +95,17 @@ static int configure_mux(int port,
 
 		case USB_MUX_SET_MODE:
 			lcl_state = *mux_state;
+			// ccprints("configure_mux: USB_MUX_SET_MODE");
 
 			if (mux_ptr->flags & USB_MUX_FLAG_SET_WITHOUT_FLIP)
 				lcl_state &= ~USB_PD_MUX_POLARITY_INVERTED;
 
 			if (drv && drv->set) {
 				rv = drv->set(mux_ptr, lcl_state);
-				if (rv)
+				if (rv) {
+					// ccprints("drv->set() failed: %d", rv);
 					break;
+				}
 			}
 
 			/* Apply board specific setting */

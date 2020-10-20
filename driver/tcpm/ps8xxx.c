@@ -240,6 +240,7 @@ static int dp_set_hpd(const struct usb_mux *me, int enable)
 		reg |= IN_HPD;
 	else
 		reg &= ~IN_HPD;
+	ccprints("dp_set_hpd: %d - write %02x to MUX_IN_HPD_ASSERTION_REG", enable, reg);
 	return mux_write(me, MUX_IN_HPD_ASSERTION_REG, reg);
 }
 
@@ -255,6 +256,7 @@ static int dp_set_irq(const struct usb_mux *me, int enable)
 		reg |= HPD_IRQ;
 	else
 		reg &= ~HPD_IRQ;
+	ccprints("dp_set_irq: %d - write %02x to MUX_IN_HPD_ASSERTION_REG", enable, reg);
 	return mux_write(me, MUX_IN_HPD_ASSERTION_REG, reg);
 }
 
@@ -291,7 +293,6 @@ void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
 	int port = me->usb_port;
 
 	dp_set_hpd(me, hpd_lvl);
-	ccprints("dp_set_hpd: %d", hpd_lvl);
 
 	if (hpd_irq) {
 		uint64_t now = get_time().val;
