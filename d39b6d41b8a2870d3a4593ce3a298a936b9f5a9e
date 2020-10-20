@@ -16,6 +16,24 @@
       "message": "So, I was incorrect in my example, wouldn\u0027t version 3.2 actually be 0x2200 instead?",
       "revId": "d39b6d41b8a2870d3a4593ce3a298a936b9f5a9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c84e953_cd29a00b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6516,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T18:32:01Z",
+      "side": 1,
+      "message": "Nope, the BCD should be straightforward, no +1 needed to decode.\n\nThe +1 in the SET is to compensate for the PD Sepcification Revision field being zero-based and the PD versioning being 1-based. (i.e. 0 \u003d PD 1.0)",
+      "parentUuid": "b74773be_2eb82e27",
+      "revId": "d39b6d41b8a2870d3a4593ce3a298a936b9f5a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
