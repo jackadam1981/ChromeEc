@@ -33,6 +33,24 @@
       "message": "Should schedule_deferred_pd_interrupt() instead check for a valid task ID before setting the event?  That would protect us from hitting this situation if other call locations are added",
       "revId": "d0213257062e5a3d4373a5bf1414854fda495bb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37846d9b_dcb0c717",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-10-20T06:00:52Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right.",
+      "parentUuid": "967e7b64_db34e240",
+      "revId": "d0213257062e5a3d4373a5bf1414854fda495bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
