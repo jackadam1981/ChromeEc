@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06210d04_ce03a6a3",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T20:40:16Z",
+      "side": 1,
+      "message": "nit: update comment",
+      "revId": "20fd825fe1c49759d6586b094767114364036d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa7fa42_52c8f10f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T20:40:16Z",
+      "side": 1,
+      "message": "nit: why is it that DP is the only clause that cares whether the ENTRY_DONE flag is set?",
+      "revId": "20fd825fe1c49759d6586b094767114364036d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce82f0d_0b8eb47a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T20:40:16Z",
+      "side": 1,
+      "message": "Do we also end up here if the AP requested an invalid mode (ex. DP with a partner that doesn\u0027t report having the DP SID)?  And if so, should there be a TODO to notify of the failure?",
+      "revId": "20fd825fe1c49759d6586b094767114364036d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93cda99c_47751cbf",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3909,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T20:40:16Z",
+      "side": 1,
+      "message": "enter?",
+      "range": {
+        "startLine": 3909,
+        "startChar": 9,
+        "endLine": 3909,
+        "endChar": 10
+      },
+      "revId": "20fd825fe1c49759d6586b094767114364036d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b1e567b_5fe052f3",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3911,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T20:40:16Z",
+      "side": 1,
+      "message": "Boards without an AP (ex. honeybuns) will always need the automatic entry behavior though, right?  Or at that point, would we just use the presence of host commands as the indicator for automatic mode entry?",
+      "range": {
+        "startLine": 3911,
+        "startChar": 40,
+        "endLine": 3911,
+        "endChar": 57
+      },
+      "revId": "20fd825fe1c49759d6586b094767114364036d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
