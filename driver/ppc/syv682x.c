@@ -258,8 +258,34 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	}
 }
 
+static void syv682x_vbat_ovp_deferred(void)
+{
+	int port, regval;
+	uint32_t pending = deprecated_atomic_read_clear(&irq_pending);
+
+	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+		if (BIT(port) & pending) {
+			read_reg(port, SYV682X_CONTROL_4_REG, &regval);
+			if (regval & SYV682X_CONTROL_4_CC_FRS) {
+				regval |= SYV682X_CONTROL_4_CC1_BPS
+					 | SYV682X_CONTROL_4_CC2_BPS;
+				write_reg(port, SYV682X_CONTROL_4_REG, regval);
+			} else {
+				regval |=
+				      flags[port] & SYV682X_FLAGS_CC_POLARITY ?
+						SYV682X_CONTROL_4_CC2_BPS :
+						SYV682X_CONTROL_4_CC1_BPS;
+			}
+			write_reg(port, SYV682X_CONTROL_4_REG, regval);
+		}
+	}
+}
+DECLARE_DEFERRED(syv682x_vbat_ovp_deferred);
+
 static void syv682x_handle_control_4_interrupt(int port, int regval)
 {
+	int delay = 1 * MSEC;
+
 	if (syv682x_interrupt_filter(port, regval, SYV682X_CONTROL_4_VCONN_OCP,
 				     SYV682X_FLAGS_VCONN_OCP)) {
 		ppc_prints("VCONN OC!", port);
@@ -268,6 +294,8 @@ static void syv682x_handle_control_4_interrupt(int port, int regval)
 	/* This should never happen unless something really bad happened */
 	if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
 		ppc_prints("VBAT OVP!", port);
+		deprecated_atomic_or(&irq_pending, BIT(port));
+		hook_call_deferred(&syv682x_vbat_ovp_deferred_data, delay);
 	}
 }
 
