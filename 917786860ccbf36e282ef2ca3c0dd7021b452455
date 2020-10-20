@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c0f7c0_5c4a21f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-20T20:53:54Z",
+      "side": 1,
+      "message": "looking good, mostly minor nits 😎",
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa973532_60e5589d",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-20T20:53:54Z",
+      "side": 1,
+      "message": "These can be removed now, as they are defined above, right?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 72
+      },
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb693109_4b07cfcf",
+        "filename": "zephyr/shim/include/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-20T20:53:54Z",
+      "side": 1,
+      "message": "do we need devicetree.h?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6251d423_96358e9b",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-20T20:53:54Z",
+      "side": 1,
+      "message": "can this be a member of struct gpio_config that we don\u0027t need the two arrays?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14831d31_685db3e9",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-20T20:53:54Z",
+      "side": 1,
+      "message": "can we use ARRAY_SIZE(configs) instead?",
+      "range": {
+        "startLine": 120,
+        "startChar": 24,
+        "endLine": 120,
+        "endChar": 34
+      },
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad401119_f320b849",
+        "filename": "zephyr/shim/src/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-20T20:53:54Z",
+      "side": 1,
+      "message": "nit: extra blank line?",
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52eb5a10_983d61fe",
+        "filename": "zephyr/shim/src/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-20T20:53:54Z",
+      "side": 1,
+      "message": "I guess it\u0027s fine. Wish we figured out a way to get just what we needed from utils.c",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
