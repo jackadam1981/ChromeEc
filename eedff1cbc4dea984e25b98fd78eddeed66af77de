@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef0e3fb3_7a071631",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-20T07:54:18Z",
+      "side": 1,
+      "message": "My thought is that we can have the spoof_activity indepentant of the spoof since that we are not going to care about the accel data while spoofing activity. And, we won\u0027t need to define CONFIG_ACCEL_SPOOF_MODE to use the spoof_activity.(Maybe adding CONFIG_BODY_DETECTION_SPOOF_MODE to enable/disable spoofing body_detection, if needed later).",
+      "parentUuid": "8d055cda_ba3138c1",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d31df8c_c66ee950",
         "filename": "common/body_detection.c",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2020-10-19T17:02:30Z",
       "side": 1,
       "message": "Don\u0027t add another command, override MOTIONSENSE_CMD_SPOOF instead: you can use the gesture sensor as sensor num and overload spoof data structure.",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8712a769_d5d1f790",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2542,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-20T07:54:18Z",
+      "side": 1,
+      "message": "I think this can make developer more easy to use activity-related motionsense command. Using only MOTIONSENSE_CMD_SPOOF is okay, but I\u0027m curious that why is adding another command bad? Space or code complexity problem?",
+      "parentUuid": "0585b97d_58f5524f",
       "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
