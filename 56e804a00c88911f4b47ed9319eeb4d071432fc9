@@ -87,6 +87,30 @@
       },
       "revId": "56e804a00c88911f4b47ed9319eeb4d071432fc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14823198_fe2a8cb4",
+        "filename": "board/lazor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-20T20:16:44Z",
+      "side": 1,
+      "message": "I made a change on the GPIO driver to apply PU for all the unused pins, i.e. CL:2488214.\n\nIn the gpio.inc, define them using the UNUSED() macro. Other boards can benefit from it if they have the UNUSED() pins defined properly.",
+      "parentUuid": "9c42c611_8f03400a",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 18
+      },
+      "revId": "56e804a00c88911f4b47ed9319eeb4d071432fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
