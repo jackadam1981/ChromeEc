@@ -69,6 +69,24 @@
       "parentUuid": "756dce8c_53a49619",
       "revId": "96aa008ed83890dd4241f3d93a4c9154bea31833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b5fde9_62d23788",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4768,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T17:13:52Z",
+      "side": 1,
+      "message": "Yes, before a contract there\u0027s definitely nothing we can/should be doing if we\u0027re not source.\n\nI was mostly wondering if we should either similarly mark SOP discovery FAILED when we\u0027re a PD 2.0 UFP, or if we should leave SOP\u0027 as NEEDED in that case (though then we\u0027d transition in and out of the discovery states a lot for SOP\u0027)\n\nAll the swaps (vconn, data, power, etc.) need to start moving into the DPM for our per-port policy driver. I have this on my own TODO list after finishing up the currently spec\u0027d notifications for the AP, so you don\u0027t need to take it any further than you\u0027d like to.",
+      "parentUuid": "cf480cd9_16c084df",
+      "revId": "96aa008ed83890dd4241f3d93a4c9154bea31833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
