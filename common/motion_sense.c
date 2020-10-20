@@ -728,7 +728,7 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 	if (has_data_read) {
 #ifdef CONFIG_GESTURE_SW_DETECTION
 		/* Run gesture recognition engine */
-		if (sensor_num == CONFIG_GESTURE_SENSOR_DOUBLE_TAP)
+		if (sensor_num == CONFIG_GESTURE_TAP_SENSOR)
 			gesture_calc(event);
 #endif
 #ifdef CONFIG_BODY_DETECTION
