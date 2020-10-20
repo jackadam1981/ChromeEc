@@ -574,10 +574,12 @@ static void sm5803_init(int chgnum)
 		rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1, reg);
 	}
 
-	/* Set default input current */
-	reg = SM5803_CURRENT_TO_REG(CONFIG_CHARGER_INPUT_CURRENT)
-		& SM5803_CHG_ILIM_RAW;
-	rv |= chg_write8(chgnum, SM5803_REG_CHG_ILIM, reg);
+	/* Set default input current only if battery is present */
+	if (battery_is_present() == BP_YES) {
+		reg = SM5803_CURRENT_TO_REG(CONFIG_CHARGER_INPUT_CURRENT)
+			& SM5803_CHG_ILIM_RAW;
+		rv |= chg_write8(chgnum, SM5803_REG_CHG_ILIM, reg);
+	}
 
 	/* Configure charger insertion interrupts */
 	rv |= main_write8(chgnum, SM5803_REG_INT1_EN, SM5803_INT1_CHG);
