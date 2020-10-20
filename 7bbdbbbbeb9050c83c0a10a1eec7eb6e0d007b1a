@@ -39,6 +39,30 @@
       },
       "revId": "7bbdbbbbeb9050c83c0a10a1eec7eb6e0d007b1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d69ec9f_f8ba95f9",
+        "filename": "chip/stm32/usart_info_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-10-20T11:15:47Z",
+      "side": 1,
+      "message": "Sure, it is more clear now. My first thought was to cast to \"struct usart_state *\", because volatile comes from \"struct usart_state volatile *state\".",
+      "parentUuid": "2d72d375_1423692f",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "7bbdbbbbeb9050c83c0a10a1eec7eb6e0d007b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
