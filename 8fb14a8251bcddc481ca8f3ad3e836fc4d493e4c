@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7afcee75_1dc8c259",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T15:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b63b28a_d3fc928b",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 58
+      },
+      "revId": "8fb14a8251bcddc481ca8f3ad3e836fc4d493e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "525ab78c_197a4b25",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-10-19T20:21:21Z",
       "side": 1,
       "message": "nit: can you give an example like 0x3200 for version 3.2",
+      "revId": "8fb14a8251bcddc481ca8f3ad3e836fc4d493e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac985b4_8fc967ec",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6505,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T15:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "525ab78c_197a4b25",
       "revId": "8fb14a8251bcddc481ca8f3ad3e836fc4d493e4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -95,6 +137,30 @@
       "side": 1,
       "message": "What about bit field structs like we have in the USB header files? It\u0027s a shame we can\u0027t just use those.",
       "parentUuid": "2a601de1_16875658",
+      "range": {
+        "startLine": 9696,
+        "startChar": 34,
+        "endLine": 9696,
+        "endChar": 63
+      },
+      "revId": "8fb14a8251bcddc481ca8f3ad3e836fc4d493e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d19eccb_f51e62ac",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9696,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T15:05:10Z",
+      "side": 1,
+      "message": "I don\u0027t believe the bit fields play well when crossing different compilers and architectures.  So it\u0027s macro time :)",
+      "parentUuid": "e41d6c8b_34d95570",
       "range": {
         "startLine": 9696,
         "startChar": 34,
