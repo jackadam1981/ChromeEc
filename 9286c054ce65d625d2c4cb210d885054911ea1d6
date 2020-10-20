@@ -39,6 +39,30 @@
       },
       "revId": "9286c054ce65d625d2c4cb210d885054911ea1d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "822c1211_70b3eb29",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9718,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-20T15:07:29Z",
+      "side": 1,
+      "message": "We\u0027ll define them with the qualifier that the specs are the ultimate source of truth",
+      "parentUuid": "e0499058_7a15e511",
+      "range": {
+        "startLine": 9715,
+        "startChar": 3,
+        "endLine": 9718,
+        "endChar": 31
+      },
+      "revId": "9286c054ce65d625d2c4cb210d885054911ea1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
