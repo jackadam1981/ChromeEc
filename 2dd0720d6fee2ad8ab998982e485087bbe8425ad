@@ -16,6 +16,24 @@
       "message": "nit: logic could be simplified to if (pd_int_task_id[port] !\u003d 0)",
       "revId": "2dd0720d6fee2ad8ab998982e485087bbe8425ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f146643_f770fc49",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-10-21T05:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1fe87ee_9798865b",
+      "revId": "2dd0720d6fee2ad8ab998982e485087bbe8425ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
