@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d5fb472_2cb4e3d0",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-21T10:44:02Z",
+      "side": 1,
+      "message": "Could IS_ENABLED() be used with a function? At least when I tried, it returned false for an existing function.",
+      "range": {
+        "startLine": 474,
+        "startChar": 16,
+        "endLine": 474,
+        "endChar": 43
+      },
+      "revId": "36ebd9f1f47195596599f7fe1e894dd691a91899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
