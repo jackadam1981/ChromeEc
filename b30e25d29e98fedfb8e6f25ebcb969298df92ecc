@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28e95452_cca8fab7",
+        "filename": "driver/accel_kionix.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-21T22:22:16Z",
+      "side": 1,
+      "message": "I remove it, the ptr can be used for set and get.",
+      "parentUuid": "8a248183_b3dfb34f",
+      "revId": "b30e25d29e98fedfb8e6f25ebcb969298df92ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69c3bfa5_a2d26832",
         "filename": "driver/accel_kionix.h",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-21T10:29:13Z",
       "side": 1,
       "message": "((struct kionix_accel_data *)(_sensor-\u003edrv_data))-\u003eorientation); } \\",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 66
+      },
+      "revId": "b30e25d29e98fedfb8e6f25ebcb969298df92ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf285ee5_42b6edb8",
+        "filename": "driver/accel_kionix.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-21T22:22:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69c3bfa5_a2d26832",
       "range": {
         "startLine": 89,
         "startChar": 1,
@@ -71,6 +113,30 @@
       "writtenOn": "2020-10-21T10:29:13Z",
       "side": 1,
       "message": "BMI_GET_DATA(_sensor)-\u003eorientation); } \\",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "b30e25d29e98fedfb8e6f25ebcb969298df92ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e029f888_5f45a3f3",
+        "filename": "driver/accelgyro_bmi_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-21T22:22:16Z",
+      "side": 1,
+      "message": "Adding CONFIG_BMI_ORIENTATION_SENSOR to eve reveal more problem. New CL coming in.",
+      "parentUuid": "c2deb31a_2f40b2f4",
       "range": {
         "startLine": 97,
         "startChar": 1,
