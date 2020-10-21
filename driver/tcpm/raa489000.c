@@ -177,6 +177,11 @@ int raa489000_init(int port)
 		board_set_active_charge_port(port);
 	}
 
+	rv = tcpc_write16(port, RAA489000_VBUS_OCP_UV_THRESHOLD,
+				RAA489000_OCP_THRESHOLD_VALUE);
+	if (rv)
+		CPRINTS("c%d: failed to set OCP threshold", port);
+
 	return rv;
 }
 
