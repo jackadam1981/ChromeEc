@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d77531_d82c1830",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-21T22:01:36Z",
+      "side": 1,
+      "message": "Agreed that it makes sense to check most failure cases after the HC in the PD task itself.\n\nSo circling back to the original question, is this the point where we\u0027d need to notify the AP of mode entry failure if they select a mode that the partner doesn\u0027t support?",
+      "parentUuid": "538791ed_88b0b5c0",
+      "revId": "20fd825fe1c49759d6586b094767114364036d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93cda99c_47751cbf",
