@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c79dd99b_8f222a5f",
+        "filename": "board/cerise/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2020-10-21T07:57:16Z",
+      "side": 1,
+      "message": "it is always true, so i will remove this",
+      "parentUuid": "5be05668_f2c47a16",
+      "range": {
+        "startLine": 503,
+        "startChar": 5,
+        "endLine": 503,
+        "endChar": 47
+      },
+      "revId": "d1ea9f3688d091ed3afd79e4ad9948eeff74e572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cce35465_46c462da",
         "filename": "board/cerise/board.c",
         "patchSetId": 3
@@ -61,6 +85,24 @@
       "writtenOn": "2020-10-16T09:32:59Z",
       "side": 1,
       "message": "adc_disable() is called in both board_get_sku_id() and board_get_version()(https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/baseboard/kukui/baseboard.c#134).\n\nIf we call adc_disable() first in one of them, can adc_read_channel() still work in the other?",
+      "revId": "d1ea9f3688d091ed3afd79e4ad9948eeff74e572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ec7244_c1b20ecb",
+        "filename": "board/cerise/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2020-10-21T07:57:16Z",
+      "side": 1,
+      "message": "yes, adc_read_channel() can enable adc again",
+      "parentUuid": "cce35465_46c462da",
       "revId": "d1ea9f3688d091ed3afd79e4ad9948eeff74e572",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
