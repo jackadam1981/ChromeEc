@@ -4275,6 +4275,9 @@
 #undef CONFIG_USB_PD_VBUS_DETECT_PPC
 #undef CONFIG_USB_PD_VBUS_DETECT_NONE
 
+/* Detect voltage level of overcurrent protection during Sourcing VBUS */
+#undef CONFIG_OCP_THRESHOLD_VALUE
+
 /* Define if the there is a separate ADC channel for each USB-C Vbus voltage */
 #undef CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
 
