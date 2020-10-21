@@ -365,6 +365,13 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 	 */
 	if (product_id[port] == PS8805_PRODUCT_ID ||
 	    product_id[port] == PS8815_PRODUCT_ID) {
+		/*
+		 * Set Look4Connection command before setting pull.
+		 * See b/169632095.
+		 */
+		rv |= tcpc_write(port, TCPC_REG_COMMAND,
+				 TCPC_REG_COMMAND_LOOK4CONNECTION);
+
 		/* Check CC_STATUS for the current pull */
 		rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
 		if (status & TCPC_REG_CC_STATUS_CONNECT_RESULT_MASK) {
@@ -377,10 +384,6 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 
 		/* Set auto drp toggle, starting with the opposite pull */
 		rv |= tcpci_set_role_ctrl(port, 1, TYPEC_RP_USB, opposite_pull);
-
-		/* Set Look4Connection command */
-		rv |= tcpc_write(port, TCPC_REG_COMMAND,
-				 TCPC_REG_COMMAND_LOOK4CONNECTION);
 
 		return rv;
 	} else {
