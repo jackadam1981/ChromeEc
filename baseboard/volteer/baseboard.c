@@ -324,3 +324,42 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 	return voltage < ISL9241_BC12_MIN_VOLTAGE;
 }
 
+#define VCCIN_PWR_TIME (1000 * MSEC)
+/*
+ * There is no EC driver for the IVMP9 regulator, so the registers are hardcoded
+ * here.
+ */
+static int board_read_core_power(int argc, char **argv)
+{
+	int power = 0;
+	int voltage = 0;
+	int count = 0;
+	int rv;
+	int tmp;
+	uint64_t end_time;
+
+	end_time = get_time().val + VCCIN_PWR_TIME;
+	while (get_time().val < end_time) {
+		/* Current power in units of 1W/LSB */
+		rv = i2c_read16(I2C_PORT_EEPROM, 0x20, 0x96, &tmp);
+		if (rv)
+			return rv;
+		power = power + (tmp & 0x1ff);
+		/* Output voltage in units of 3.125mV/LSB */
+		rv = i2c_read16(I2C_PORT_EEPROM, 0x20, 0x8B, &tmp);
+		if (rv)
+			return rv;
+		tmp = tmp & 0x3FF;
+		voltage = voltage + tmp;
+		count = count + 1;
+		msleep(1);
+	}
+	power = (power * 1000) / count;
+	/* VOUT is 3.125mV/LSB; 1000/3.125=320 */
+	voltage = ((voltage * 1000) / count) / 320;
+	CPRINTS("VCCIN Power = %dmW", power);
+	CPRINTS("VCCIN = %dmV", voltage);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(vccin_pwr, board_read_core_power, "",
+			"Read the VCCIN power output");
