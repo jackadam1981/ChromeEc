@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f2a9373_8cc6d856",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-21T16:46:00Z",
+      "side": 1,
+      "message": "Yes, but they are just comments here. I think is helps the reader understand why there are gaps in the BIT sequence.\n\nI like having them here in line for extra clarity, but if we hate them, I can remove them",
+      "parentUuid": "fa973532_60e5589d",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 72
+      },
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb693109_4b07cfcf",
         "filename": "zephyr/shim/include/board.h",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-20T20:53:54Z",
       "side": 1,
       "message": "do we need devicetree.h?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b9dad33_c81d7d9f",
+        "filename": "zephyr/shim/include/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-21T16:46:00Z",
+      "side": 1,
+      "message": "Yes we do, this #if was a late add to ensure posix-ec worked as well 😊. Done.",
+      "parentUuid": "fb693109_4b07cfcf",
       "range": {
         "startLine": 12,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "640952ce_5ac65c2f",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-21T16:46:00Z",
+      "side": 1,
+      "message": "One of them can go in FLASH and the other goes in RAM.\n\nSince ram is more limited, let\u0027s try to keep as much in flash as we can. Also this is a pretty common paradigm in Zephyr for exactly this reason.\n\n(I would love to have this all at build time, but the device lookup is runtime only)",
+      "parentUuid": "6251d423_96358e9b",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14831d31_685db3e9",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-10-20T20:53:54Z",
       "side": 1,
       "message": "can we use ARRAY_SIZE(configs) instead?",
+      "range": {
+        "startLine": 120,
+        "startChar": 24,
+        "endLine": 120,
+        "endChar": 34
+      },
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f71ce938_180bf274",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-21T16:46:00Z",
+      "side": 1,
+      "message": "Done. (I went back on forth on this anyway). Also, using ARRAY_SIZE gets ride of the static checker warning, so we don\u0027t need the empty item when there is no named_gpios node defined (yay!)",
+      "parentUuid": "14831d31_685db3e9",
       "range": {
         "startLine": 120,
         "startChar": 24,
@@ -129,6 +225,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "894e4b70_ce6bb58f",
+        "filename": "zephyr/shim/src/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-21T16:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad401119_f320b849",
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "52eb5a10_983d61fe",
         "filename": "zephyr/shim/src/util.c",
         "patchSetId": 2
@@ -140,6 +254,30 @@
       "writtenOn": "2020-10-20T20:53:54Z",
       "side": 1,
       "message": "I guess it\u0027s fine. Wish we figured out a way to get just what we needed from utils.c",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "917786860ccbf36e282ef2ca3c0dd7021b452455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a80ec2ce_c6d8f0fe",
+        "filename": "zephyr/shim/src/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-21T16:46:00Z",
+      "side": 1,
+      "message": "Agreed. but this implementation isn\u0027t really going to change so it isn\u0027t really worth the effort to try and single source this as much as it pains me too.",
+      "parentUuid": "52eb5a10_983d61fe",
       "range": {
         "startLine": 18,
         "startChar": 4,
