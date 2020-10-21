@@ -160,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b770ef_4f5080cb",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-21T22:15:42Z",
+      "side": 1,
+      "message": "OK, I take your point now. Added a TODO.",
+      "parentUuid": "d2d77531_d82c1830",
+      "revId": "20fd825fe1c49759d6586b094767114364036d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93cda99c_47751cbf",
