@@ -148,7 +148,7 @@ const char help_str[] =
 	"      Sets the fingerprint sensor context\n"
 	"  fpencstatus\n"
 	"      Prints status of Fingerprint sensor encryption engine\n"
-	"  fpframe\n"
+	"  fpframe <chunk size> <total size> [raw] \n"
 	"      Retrieve the finger image as a PGM image\n"
 	"  fpinfo\n"
 	"      Prints information about the Fingerprint sensor\n"
@@ -1899,7 +1899,8 @@ int cmd_apreset(int argc, char *argv[])
  * if case of error. The caller must call free() once it no longer needs the
  * buffer.
  */
-static void *fp_download_frame(struct ec_response_fp_info *info, int index)
+static void *fp_download_frame(struct ec_response_fp_info *info, int index,
+				size_t chunk_size, size_t total_size)
 {
 	struct ec_params_fp_frame p;
 	int rv = 0;
@@ -1921,13 +1922,9 @@ static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 		return NULL;
 
 	if (index == FP_FRAME_INDEX_SIMPLE_IMAGE) {
-		size = (size_t)info->width * info->bpp/8 * info->height;
 		index = FP_FRAME_INDEX_RAW_IMAGE;
-	} else if (index == FP_FRAME_INDEX_RAW_IMAGE) {
-		size = info->frame_size;
-	} else {
-		size = info->template_size;
 	}
+	size = total_size;
 
 	buffer = malloc(size);
 	if (!buffer) {
@@ -1937,8 +1934,10 @@ static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 
 	ptr = buffer;
 	p.offset = index << FP_FRAME_INDEX_SHIFT;
+	if (chunk_size > ec_max_insize)
+		chunk_size = ec_max_insize;
 	while (size) {
-		stride = MIN(ec_max_insize, size);
+		stride = MIN(chunk_size, size);
 		p.size = stride;
 		num_attempts = 0;
 		while (num_attempts < max_attempts) {
@@ -2203,11 +2202,18 @@ int cmd_fp_enc_status(int argc, char *argv[])
 int cmd_fp_frame(int argc, char *argv[])
 {
 	struct ec_response_fp_info r;
-	int idx = (argc == 2 && !strcasecmp(argv[1], "raw")) ?
+	int idx = (argc == 4 && !strcasecmp(argv[3], "raw")) ?
 		FP_FRAME_INDEX_RAW_IMAGE : FP_FRAME_INDEX_SIMPLE_IMAGE;
-	void *buffer = fp_download_frame(&r, idx);
-	uint8_t *ptr = buffer;
+	size_t chunk_size;
+	size_t total_size;
+	void *buffer;
+	uint8_t *ptr;
 	int x, y;
+
+	sscanf(argv[1], "%zu", &chunk_size);
+	sscanf(argv[2], "%zu", &total_size);
+	buffer = fp_download_frame(&r, idx, chunk_size, total_size);
+	ptr = buffer;
 
 	if (!buffer) {
 		fprintf(stderr, "Failed to get FP sensor frame\n");
@@ -2223,8 +2229,11 @@ int cmd_fp_frame(int argc, char *argv[])
 	printf("P2\n%d %d\n%d\n", r.width, r.height, (1 << r.bpp) - 1);
 
 	for (y = 0; y < r.height; y++) {
-		for (x = 0; x < r.width; x++, ptr++)
+		for (x = 0; x < r.width; x++, ptr++) {
+			if (ptr - (uint8_t*)buffer >= total_size)
+				goto frame_done;
 			printf("%d ", *ptr);
+		}
 		printf("\n");
 	}
 	printf("# END OF FILE\n");
@@ -2254,7 +2263,8 @@ int cmd_fp_template(int argc, char *argv[])
 
 	idx = strtol(argv[1], &e, 0);
 	if (!(e && *e)) {
-		buffer = fp_download_frame(&r, idx + 1);
+		/* Arbitrary value */
+		buffer = fp_download_frame(&r, idx + 1, 256, 1024);
 		if (!buffer) {
 			fprintf(stderr, "Failed to get FP template %d\n", idx);
 			return -1;
