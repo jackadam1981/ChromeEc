@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca889fb4_b1af2922",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-21T20:56:10Z",
+      "side": 1,
+      "message": "Will pd_request_enter_mode be expanding to check partner SVIDs then?  And does that open up a synchronization issue akin to the DFP check that\u0027s being done later?",
+      "parentUuid": "ec69f178_7e610e40",
+      "revId": "20fd825fe1c49759d6586b094767114364036d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93cda99c_47751cbf",
         "filename": "include/config.h",
         "patchSetId": 6
