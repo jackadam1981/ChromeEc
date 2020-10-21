@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "202614c4_a15db601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-21T00:37:01Z",
+      "side": 1,
+      "message": "Verified on rev-3, which changes TCPC to PS8805. The PD functions work fine: sink (5V, 20V), source, DP alt-mode, dead-battery, CCD, etc.\n\nLet\u0027s merge in it to remove the bring-up features. Running faft_bios_ro_qual and faft_ec_fw_qual requires these features unset.",
+      "revId": "d32ccf905c7c65d5e7aff010d8e71dd9837507e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
