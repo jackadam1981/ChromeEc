@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29959c7_8cb9bb27",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-21T21:26:58Z",
+      "side": 1,
+      "message": "\u003e \"divice\" is a possible misspelling of \"device\".\n\nPlease fix.",
+      "parentUuid": "04f27ff9_2759ed10",
+      "range": {
+        "startLine": 27,
+        "startChar": 11,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "e527b2fd557fc365a34a1d6b863e3d5d7cf132b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
