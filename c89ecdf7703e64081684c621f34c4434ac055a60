@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74cdc8a9_beda7de3",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-21T18:14:22Z",
+      "side": 1,
+      "message": "Looking at the parent CL, the tbt_cable_entry_is_done() happens before completing TBT_ENTER_SOP.  Does the BB require configuration before TBT_ENTER_SOP completes?\n\nIf this section is to configure BB cable attributes, then bit 19 (vPro) should move outside of this block.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 38
+      },
+      "revId": "c89ecdf7703e64081684c621f34c4434ac055a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78bdcd58_0ca53807",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-21T18:14:22Z",
+      "side": 1,
+      "message": "Should this be guarded with (mux_state \u0026 USB_PD_MUX_TBT_COMPAT_ENABLED) instead?",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 0
+      },
+      "revId": "c89ecdf7703e64081684c621f34c4434ac055a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5734d50_60a6b097",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-21T18:14:22Z",
+      "side": 1,
+      "message": "Does this need to be a config option? There\u0027s practically no code savings, are there scenarios where a board definitely should not enable vPro_Dock in the BB?",
+      "range": {
+        "startLine": 4115,
+        "startChar": 0,
+        "endLine": 4119,
+        "endChar": 38
+      },
+      "revId": "c89ecdf7703e64081684c621f34c4434ac055a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85c1197_908efd2c",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-21T18:14:22Z",
+      "side": 1,
+      "message": "Nit - use BIT(0) here (and for IS_USB4 macro), which lines up better with the spec.",
+      "range": {
+        "startLine": 76,
+        "startChar": 46,
+        "endLine": 76,
+        "endChar": 49
+      },
+      "revId": "c89ecdf7703e64081684c621f34c4434ac055a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
