@@ -52,6 +52,24 @@
       "parentUuid": "1749b11f_7b9d1649",
       "revId": "6913c9decb7940f6a4f176b2be88b09878b4a55b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "772e0f4b_40e06a89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-21T21:27:19Z",
+      "side": 1,
+      "message": "I\u0027m a fan of \"initiator/responder\" like the PD spec uses for VDMs as it describes the relationship well, but I\u0027ll go with whatever we\u0027re standardizing to.  It seems like host/target has more potential for naming confusion or collisions, so controller/peripheral makes sense to me.",
+      "parentUuid": "192b5252_a3c1ca69",
+      "revId": "6913c9decb7940f6a4f176b2be88b09878b4a55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
