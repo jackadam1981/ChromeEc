@@ -94,6 +94,30 @@
       },
       "revId": "8326ad3f5f7b1e4883b9f6694de4ccf2dc0d1262",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fea3fe_1a27a5e5",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-21T20:43:50Z",
+      "side": 1,
+      "message": "The interrupt processing is currently being done from the HOOKS task. I2C register read/writes are already locked with a mutex, so there is no issue with register access.  Any flags used to track the CCx_BPS setting will need to use the atomic operations similar to the irq_pending flag.",
+      "parentUuid": "f6aa0076_8170e2a4",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 49
+      },
+      "revId": "8326ad3f5f7b1e4883b9f6694de4ccf2dc0d1262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
