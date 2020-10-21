@@ -81,15 +81,13 @@ extern struct i2c_stress_test_dev kionix_i2c_stress_test_dev;
 	(((struct kionix_accel_data *)(_sensor->drv_data))->orientation != \
 	((struct kionix_accel_data *)(_sensor->drv_data))->last_orientation)
 
-#define GET_ORIENTATION(_sensor) \
-	(((struct kionix_accel_data *)(_sensor->drv_data))->orientation)
+#define ORIENTATION_PTR(_sensor) \
+	(&((struct kionix_accel_data *)(_sensor->drv_data))->orientation)
 
-#define SET_ORIENTATION(_sensor, _val) \
-	(((struct kionix_accel_data *)(_sensor->drv_data))->orientation = _val)
-
-#define SET_ORIENTATION_UPDATED(_sensor) \
+#define ORIENTATION_UPDATED(_sensor) do { \
 	(((struct kionix_accel_data *)(_sensor->drv_data))->last_orientation = \
-	((struct kionix_accel_data *)(_sensor->drv_data))->orientation)
+	((struct kionix_accel_data *)(_sensor->drv_data))->orientation) \
+while (0)
 #endif
 
 #endif /* __CROS_EC_ACCEL_KIONIX_H */

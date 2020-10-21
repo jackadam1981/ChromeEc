@@ -89,15 +89,13 @@ struct bmi_drv_data_t {
 	(BMI_GET_DATA(_sensor)->orientation != \
 	BMI_GET_DATA(_sensor)->last_orientation)
 
-#define GET_ORIENTATION(_sensor) \
-	(BMI_GET_DATA(_sensor)->orientation)
+#define ORIENTATION_PTR(_sensor) \
+	(&BMI_GET_DATA(_sensor)->orientation)
 
-#define SET_ORIENTATION(_sensor, _val) \
-	(BMI_GET_DATA(_sensor)->orientation = _val)
-
-#define SET_ORIENTATION_UPDATED(_sensor) \
+#define ORIENTATION_UPDATED(_sensor) do { \
 	(BMI_GET_DATA(_sensor)->last_orientation = \
-	BMI_GET_DATA(_sensor)->orientation)
+	BMI_GET_DATA(_sensor)->orientation) \
+while (0)
 #endif
 
 #define BMI_ACC_DATA(v) (BMI160_ACC_X_L_G + \

@@ -5148,6 +5148,10 @@
 #error CONFIG_ACCEL_FIFO must be defined to use hw orientation sensor support
 #endif
 #define CONFIG_ORIENTATION_SENSOR
+#else
+#define ORIENTATION_CHANGED(_) (false)
+#define ORIENTATION_PTR(_) ((enum motionsensor_orientation *)NULL)
+#define ORIENTATION_UPDATED(_)
 #endif
 
 /*****************************************************************************/
@@ -5804,6 +5808,12 @@
 #define CONFIG_BODY_DETECTION_OFF_BODY_CON        10  /* % */
 #define CONFIG_BODY_DETECTION_STATIONARY_DURATION 15  /* second */
 #endif /* ifndef(CONFIG_BODY_DETECTION_CUSTOM) */
+#else /* CONFIG_BODY_DETECTION */
+#ifdef CONFIG_BODY_DETECTION_SENSOR
+#error "Unexpected body detection property set"
+#else
+#define CONFIG_BODY_DETECTION_SENSOR 0
+#endif
 #endif /* CONFIG_BODY_DETECTION */
 
 /* To be able to use IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP) */
@@ -5818,6 +5828,48 @@
 #else
 #define CONFIG_GESTURE_TAP_MAX_INTERSTICE_T 0
 #endif
+#ifdef CONFIG_GESTURE_TAP_SENSOR
+#error "Unexpected double tap property set"
+#else
+#define CONFIG_GESTURE_TAP_SENSOR 0
+#endif
 #endif /* CONFIG_GESTURE_SENSOR_DOUBLE_TAP */
+
+#ifndef CONFIG_GESTURE_DETECTION
+#ifdef CONFIG_GESTURE_DETECTION_MASK
+#error "Unexpected gesture property set"
+#else
+#define CONFIG_GESTURE_DETECTION_MASK 0
+#endif
+#endif /* CONFIG_GESTURE_DETECTION */
+
+#ifndef CONFIG_GESTURE_SIGMO
+#ifdef CONFIG_GESTURE_SIGMO_SENSOR
+#error "Unexpected gesture property set"
+#else
+#define CONFIG_GESTURE_SIGMO_SENSOR 0
+#endif
+#endif /* CONFIG_GESTURE_SIGMO */
+
+#ifndef CONFIG_LID_ANGLE
+#ifdef CONFIG_LID_ANGLE_SENSOR_BASE
+#error "Unexpected lid property set"
+#else
+#define CONFIG_LID_ANGLE_SENSOR_BASE 0
+#endif
+#ifdef CONFIG_LID_ANGLE_SENSOR_LID
+#error "Unexpected lid property set"
+#else
+#define CONFIG_LID_ANGLE_SENSOR_LID 0
+#endif
+#endif /* CONFIG_LID_ANGLE */
+
+#ifndef CONFIG_ALS
+#ifdef ALS_COUNT
+#error "Unexpected ALS_COUNT set"
+#else
+#define ALS_COUNT 0
+#endif
+#endif /* CONFIG_ALS */
 
 #endif  /* __CROS_EC_CONFIG_H */
