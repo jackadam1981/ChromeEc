@@ -2775,6 +2775,7 @@ int cmd_stress_test(int argc, char *argv[])
 {
 	int i;
 	bool reboot = false;
+	bool maxframe = false;
 	time_t now;
 	time_t start_time, last_update_time;
 	unsigned int rand_seed = 0;
@@ -2799,6 +2800,8 @@ int cmd_stress_test(int argc, char *argv[])
 			return 0;
 		} else if (strcmp(argv[i], "reboot") == 0) {
 			reboot = true;
+		} else if (strcmp(argv[i], "maxframe") == 0) {
+			maxframe = true;
 		} else {
 			fprintf(stderr, "Error - Unknown argument '%s'\n",
 				argv[i]);
@@ -2830,79 +2833,101 @@ int cmd_stress_test(int argc, char *argv[])
 		struct ec_response_flash_protect flash_r;
 		struct ec_params_hello hello_p;
 		struct ec_response_hello hello_r;
+		struct ec_response_fp_info r;
+		void *buffer;
 
-		/* Request EC Version Strings */
-		rv = ec_command(EC_CMD_GET_VERSION, 0,
-				NULL, 0, &ver_r, sizeof(ver_r));
-		if (rv < 0) {
-			failures++;
-			perror("ERROR: EC_CMD_GET_VERSION failed");
+		if (maxframe == 0) {
+			/* Request EC Version Strings */
+			rv = ec_command(EC_CMD_GET_VERSION, 0,
+					NULL, 0, &ver_r, sizeof(ver_r));
+			if (rv < 0) {
+				failures++;
+				perror("ERROR: EC_CMD_GET_VERSION failed");
+			}
+			ver_r.version_string_ro[sizeof(ver_r.version_string_ro) - 1]
+				= '\0';
+			ver_r.version_string_rw[sizeof(ver_r.version_string_rw) - 1]
+				= '\0';
+			if (strlen(ver_r.version_string_ro) == 0) {
+				failures++;
+				fprintf(stderr, "RO version string is empty\n");
+			}
+			if (strlen(ver_r.version_string_rw) == 0) {
+				failures++;
+				fprintf(stderr, "RW version string is empty\n");
+			}
+
+			usleep(rand_r(&rand_seed) % max_sleep_usec);
+
+			/* Request EC Build String */
+			rv = ec_command(EC_CMD_GET_BUILD_INFO, 0,
+					NULL, 0, ec_inbuf, ec_max_insize);
+			if (rv < 0) {
+				failures++;
+				perror("ERROR: EC_CMD_GET_BUILD_INFO failed");
+			}
+			build_string[ec_max_insize - 1] = '\0';
+			if (strlen(build_string) == 0) {
+				failures++;
+				fprintf(stderr, "Build string is empty\n");
+			}
+
+			usleep(rand_r(&rand_seed) % max_sleep_usec);
+
+			/* Request Flash Protect Status */
+			rv = ec_command(EC_CMD_FLASH_PROTECT, EC_VER_FLASH_PROTECT,
+					&flash_p, sizeof(flash_p), &flash_r,
+					sizeof(flash_r));
+			if (rv < 0) {
+				failures++;
+				perror("ERROR: EC_CMD_FLASH_PROTECT failed");
+			}
+
+			usleep(rand_r(&rand_seed) % max_sleep_usec);
+
+			/* Request Hello */
+			hello_p.in_data = 0xa0b0c0d0;
+			rv = ec_command(EC_CMD_HELLO, 0, &hello_p, sizeof(hello_p),
+					&hello_r, sizeof(hello_r));
+			if (rv < 0) {
+				failures++;
+				perror("ERROR: EC_CMD_HELLO failed");
+			}
+			if (hello_r.out_data != HELLO_RESP(hello_p.in_data)) {
+				failures++;
+				fprintf(stderr, "Hello response was invalid.\n");
+			}
+
+			usleep(rand_r(&rand_seed) % max_sleep_usec);
+
+			if ((attempt % loop_update_interval) == 0) {
+				now = time(NULL);
+				printf("Update: attempt %" PRIu64 " round %" PRIu64
+					" | took %.f seconds\n",
+					attempt, round,
+					difftime(now, last_update_time));
+				last_update_time = now;
+			}
+		} else {
+			buffer = fp_download_frame(&r, FP_FRAME_INDEX_SIMPLE_IMAGE);
+
+			if (!buffer) {
+				failures++;
+				fprintf(stderr, "ERROR: Failed to get FP sensor frame\n");
+			}
+
+			free(buffer);
+
+			if ((attempt % 100) == 0) {
+				now = time(NULL);
+				printf("Update: attempt %" PRIu64 " round %" PRIu64
+					" | took %.f seconds\n",
+					attempt, round,
+					difftime(now, last_update_time));
+				last_update_time = now;
+			}
 		}
-		ver_r.version_string_ro[sizeof(ver_r.version_string_ro) - 1]
-			= '\0';
-		ver_r.version_string_rw[sizeof(ver_r.version_string_rw) - 1]
-			= '\0';
-		if (strlen(ver_r.version_string_ro) == 0) {
-			failures++;
-			fprintf(stderr, "RO version string is empty\n");
-		}
-		if (strlen(ver_r.version_string_rw) == 0) {
-			failures++;
-			fprintf(stderr, "RW version string is empty\n");
-		}
-
-		usleep(rand_r(&rand_seed) % max_sleep_usec);
-
-		/* Request EC Build String */
-		rv = ec_command(EC_CMD_GET_BUILD_INFO, 0,
-				NULL, 0, ec_inbuf, ec_max_insize);
-		if (rv < 0) {
-			failures++;
-			perror("ERROR: EC_CMD_GET_BUILD_INFO failed");
-		}
-		build_string[ec_max_insize - 1] = '\0';
-		if (strlen(build_string) == 0) {
-			failures++;
-			fprintf(stderr, "Build string is empty\n");
-		}
-
-		usleep(rand_r(&rand_seed) % max_sleep_usec);
-
-		/* Request Flash Protect Status */
-		rv = ec_command(EC_CMD_FLASH_PROTECT, EC_VER_FLASH_PROTECT,
-				&flash_p, sizeof(flash_p), &flash_r,
-				sizeof(flash_r));
-		if (rv < 0) {
-			failures++;
-			perror("ERROR: EC_CMD_FLASH_PROTECT failed");
-		}
-
-		usleep(rand_r(&rand_seed) % max_sleep_usec);
-
-		/* Request Hello */
-		hello_p.in_data = 0xa0b0c0d0;
-		rv = ec_command(EC_CMD_HELLO, 0, &hello_p, sizeof(hello_p),
-				&hello_r, sizeof(hello_r));
-		if (rv < 0) {
-			failures++;
-			perror("ERROR: EC_CMD_HELLO failed");
-		}
-		if (hello_r.out_data != HELLO_RESP(hello_p.in_data)) {
-			failures++;
-			fprintf(stderr, "Hello response was invalid.\n");
-		}
-
-		usleep(rand_r(&rand_seed) % max_sleep_usec);
-
-		if ((attempt % loop_update_interval) == 0) {
-			now = time(NULL);
-			printf("Update: attempt %" PRIu64 " round %" PRIu64
-			       " | took %.f seconds\n",
-			       attempt, round,
-			       difftime(now, last_update_time));
-			last_update_time = now;
-		}
-
+ 
 		if (attempt++ == UINT64_MAX)
 			round++;
 	}
