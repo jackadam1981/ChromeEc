@@ -57,6 +57,7 @@
 #define CONFIG_USB_PD_VBUS_DETECT_TCPC
 #define CONFIG_USB_PD_DISCHARGE_TCPC
 #define CONFIG_USB_PD_TCPC_LOW_POWER
+#define CONFIG_OCP_THRESHOLD_VALUE 0x0050 /* 2V */
 
 /* Variant references the TCPCs to determine Vbus sourcing */
 #define CONFIG_USB_PD_5V_EN_CUSTOM
