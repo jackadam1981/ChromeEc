@@ -34,6 +34,24 @@
       "parentUuid": "bf3f66bf_53b6dc8e",
       "revId": "6913c9decb7940f6a4f176b2be88b09878b4a55b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "192b5252_a3c1ca69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-21T21:13:53Z",
+      "side": 1,
+      "message": "AFAIK, we decided to go with either host/target (https://docs.opentitan.org/hw/ip/i2c/doc/) or controller/peripheral (like SPI). I like the latter because it\u0027s same as SPI.\n\nWe can leave register names unchanged (until datasheets are updated as well).",
+      "parentUuid": "1749b11f_7b9d1649",
+      "revId": "6913c9decb7940f6a4f176b2be88b09878b4a55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
