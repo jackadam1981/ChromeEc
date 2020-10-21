@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5aa8448_b39a47d6",
+        "filename": "driver/retimer/tusb544.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-21T14:22:53Z",
+      "side": 1,
+      "message": "The problem that this conditional compile was addressing was a project included this file and did not include usb_mux.h.  I would prefer adding \u0027#include \"usb_mux.h\"\u0027 at the top of this header file rather than do this.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 36
+      },
+      "revId": "61a50aebf63fcd5d4fe42e0d7b744236c96261bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
