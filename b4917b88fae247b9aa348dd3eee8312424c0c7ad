@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7600b83e_da72450f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-21T19:20:50Z",
+      "side": 1,
+      "message": "Is this no longer needed? Seems pretty old but it never merged.",
+      "revId": "b4917b88fae247b9aa348dd3eee8312424c0c7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "6ba7708a_bc8e26e4",
         "filename": "driver/accelgyro_lsm6dsm.c",
@@ -20,8 +38,7 @@
         "endChar": 18
       },
       "revId": "b4917b88fae247b9aa348dd3eee8312424c0c7ad",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
