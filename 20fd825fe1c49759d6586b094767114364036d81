@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "538791ed_88b0b5c0",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-21T21:49:20Z",
+      "side": 1,
+      "message": "I only intend for pd_request_enter_mode to fail early in ways that were guaranteed never to succeed or that allow the subsequent code to avoid checking them again, e.g. invalid mode enums. In particular, current roles or partner state could theoretically change between queuing the request and executing it. I think it\u0027s best not to check that stuff until we\u0027re actually executing the request. And in general, if we already have a check for something that would trigger a failed mode entry, I don\u0027t think we need to check for that thing early in the command.",
+      "parentUuid": "ca889fb4_b1af2922",
+      "revId": "20fd825fe1c49759d6586b094767114364036d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93cda99c_47751cbf",
