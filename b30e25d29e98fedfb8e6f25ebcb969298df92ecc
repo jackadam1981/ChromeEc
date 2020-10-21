@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a248183_b3dfb34f",
+        "filename": "driver/accel_kionix.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-21T10:29:13Z",
+      "side": 1,
+      "message": "SET_ORIENTATION in accel_kionix.c needs to be replaced.",
+      "revId": "b30e25d29e98fedfb8e6f25ebcb969298df92ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c3bfa5_a2d26832",
+        "filename": "driver/accel_kionix.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-21T10:29:13Z",
+      "side": 1,
+      "message": "((struct kionix_accel_data *)(_sensor-\u003edrv_data))-\u003eorientation); } \\",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 66
+      },
+      "revId": "b30e25d29e98fedfb8e6f25ebcb969298df92ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f6bee9_00e6b30e",
+        "filename": "driver/accelgyro_bmi_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-21T10:29:13Z",
+      "side": 1,
+      "message": "SET_ORIENTATION in accelgyro_bmi160.c needs to be replaced.",
+      "revId": "b30e25d29e98fedfb8e6f25ebcb969298df92ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2deb31a_2f40b2f4",
+        "filename": "driver/accelgyro_bmi_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-21T10:29:13Z",
+      "side": 1,
+      "message": "BMI_GET_DATA(_sensor)-\u003eorientation); } \\",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "b30e25d29e98fedfb8e6f25ebcb969298df92ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
