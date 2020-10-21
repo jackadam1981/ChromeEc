@@ -598,6 +598,10 @@ static struct policy_engine {
 	uint32_t vdm_data[VDO_HDR_SIZE + VDO_MAX_SIZE];
 	uint8_t vdm_ack_min_data_objects;
 
+	uint32_t vdm_atten_cnt;
+	uint32_t vdm_atten_data[VDO_HDR_SIZE + VDO_MAX_SIZE];
+	uint8_t vdm_atten_ack_min_data_objects;
+
 	/* Timers */
 
 	/*
@@ -1375,6 +1379,26 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
+void pd_send_dp_atten(int port, uint32_t vid, int cmd, const uint32_t *data,
+						int count)
+{
+	/* Copy VDM Header */
+	pe[port].vdm_atten_data[0] = VDO(vid, ((vid & USB_SID_PD) == USB_SID_PD) ?
+				1 : (PD_VDO_CMD(cmd) <= CMD_ATTENTION),
+				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
+				| cmd);
+
+	/* Copy Data after VDM Header */
+	memcpy((pe[port].vdm_atten_data + 1), data, count << 2);
+
+	pe[port].vdm_atten_cnt = count + 1;
+
+	pe[port].tx_type = TCPC_TX_SOP;
+	pd_dpm_request(port, DPM_REQUEST_DP_ATTENTION);
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+}
+
 static void pe_handle_detach(void)
 {
 	const int port = TASK_ID_TO_PD_PORT(task_get_current());
@@ -1492,6 +1516,15 @@ static bool common_src_snk_dpm_requests(int port)
 		pe_set_dpm_curr_request(port,
 					DPM_REQUEST_GET_SNK_CAPS);
 		set_state_pe(port, PE_DR_GET_SINK_CAP);
+		return true;
+	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DP_ATTENTION)) {
+		pe_set_dpm_curr_request(port, DPM_REQUEST_DP_ATTENTION);
+		/* copy data */
+		memcpy(pe[port].vdm_data, pe[port].vdm_atten_data,
+		       pe[port].vdm_atten_cnt << 2);
+		pe[port].vdm_cnt = pe[port].vdm_atten_cnt;
+		pe[port].tx_type = TCPC_TX_SOP;
+		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return true;
 	}
 	return false;
