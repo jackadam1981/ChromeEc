@@ -1002,6 +1002,7 @@ enum pd_dpm_request {
 	DPM_REQUEST_SOP_PRIME_SOFT_RESET_SEND   = BIT(20),
 	DPM_REQUEST_FRS_DET_ENABLE		= BIT(21),
 	DPM_REQUEST_FRS_DET_DISABLE		= BIT(22),
+	DPM_REQUEST_DP_ATTENTION                = BIT(23),
 };
 
 /**
@@ -2325,6 +2326,8 @@ void pd_log_recv_vdm(int port, int cnt, uint32_t *payload);
  * @param count    number of data objects in payload
  */
 void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
+		 int count);
+void pd_send_dp_atten(int port, uint32_t vid, int cmd, const uint32_t *data,
 		 int count);
 
 /**
