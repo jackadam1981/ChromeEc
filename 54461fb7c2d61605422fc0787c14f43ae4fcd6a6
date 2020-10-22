@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c695b3e3_27ce73f1",
+        "filename": "baseboard/intelrvp/ite_ec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-10-22T15:54:49Z",
+      "side": 1,
+      "message": "usage of IS_ENABLED(..) will result in else part compilable, which will result in compilation error for below gpios as we are not using them.\nDefining board_pd_vconn_ctrl()as an overidable function which does nothing in board.c also will still have the function of this file too as compilable resulting in error for below gpios.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "54461fb7c2d61605422fc0787c14f43ae4fcd6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
