@@ -43,7 +43,7 @@ struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 #ifdef SECTION_IS_RW
 static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	PD_DRP_TOGGLE_ON,
-	PD_DRP_FORCE_SOURCE,
+	PD_DRP_TOGGLE_ON,
 };
 
 static void ppc_interrupt(enum gpio_signal signal)
@@ -92,8 +92,8 @@ void hpd_interrupt(enum gpio_signal signal)
 const struct power_seq board_power_seq[] = {
 	{GPIO_EN_AC_JACK,               1, 20},
 	{GPIO_EN_PP5000_A,              1, 31},
-	{GPIO_EN_PP3300_B,              1, 1},
-	{GPIO_MST_LP_CTL_L,             1, 100},
+	{GPIO_MST_LP_CTL_L,             1, 0},
+	{GPIO_EN_PP3300_B,              1, 100},
 	{GPIO_EN_BB,                    1, 30},
 	{GPIO_EN_PP1100_A,              1, 30},
 	{GPIO_EN_PP1050_A,              1, 30},
