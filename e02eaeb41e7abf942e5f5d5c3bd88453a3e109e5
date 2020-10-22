@@ -16,6 +16,23 @@
       "message": "I don\u0027t think that\u0027s the quite the right constraint to add here. The default current limit should always be fine, but if the supplier hasn\u0027t actually changed, we should leave it alone. e.g. Having a check for !system_jumped_to_this_image() would be better in my opinion. ",
       "revId": "e02eaeb41e7abf942e5f5d5c3bd88453a3e109e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd38b3c_16ffc88e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-22T22:19:00Z",
+      "side": 1,
+      "message": "The same logic may apply to other parts of the init which we don\u0027t expect to change.",
+      "revId": "e02eaeb41e7abf942e5f5d5c3bd88453a3e109e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
