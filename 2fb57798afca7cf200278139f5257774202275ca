@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf94d3ac_f4f3b2be",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-22T22:41:33Z",
+      "side": 1,
+      "message": "Do we still need it?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "2fb57798afca7cf200278139f5257774202275ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ab8323_fe783af3",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-22T22:41:33Z",
+      "side": 1,
+      "message": "Nit: Line",
+      "revId": "2fb57798afca7cf200278139f5257774202275ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7674543_94540449",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-22T22:41:33Z",
+      "side": 1,
+      "message": "Sort it alphabetically?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "2fb57798afca7cf200278139f5257774202275ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5430a3d6_9590a07a",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-22T22:41:33Z",
+      "side": 1,
+      "message": "Nit: Line",
+      "revId": "2fb57798afca7cf200278139f5257774202275ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
