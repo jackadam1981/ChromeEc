@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f62eb4_ff30f800",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-22T23:50:19Z",
+      "side": 1,
+      "message": "I don\u0027t see it on my Trogdor/Lazor, which uses PS8805.\n\nTried the case wihtout this CL: G3 (my board has some other issue of entering S3) -\u003e plug a SNK -\u003e going to S0 -\u003e SNK device can be detected.",
+      "parentUuid": "241196c8_156a6220",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "d4072879bd2337e965adef7f2d6949efaf0146f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "75e5d7ec_38a73507",
@@ -37,6 +61,23 @@
       "writtenOn": "2020-10-22T21:03:40Z",
       "side": 1,
       "message": "Wai-Hong, can you verify this on a platform with a PS8805 TCPC?",
+      "revId": "d4072879bd2337e965adef7f2d6949efaf0146f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf3618b_2e9a6aac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-22T23:50:19Z",
+      "side": 1,
+      "message": "Tr",
       "revId": "d4072879bd2337e965adef7f2d6949efaf0146f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
