@@ -5,6 +5,7 @@
 
 /* System hooks for Chrome EC */
 
+#include "adc.h"
 #include "atomic.h"
 #include "console.h"
 #include "hooks.h"
@@ -111,7 +112,6 @@ void hook_notify(enum hook_type type)
 	uint64_t start_time = get_time().val;
 	uint64_t run_time;
 #endif
-
 	CPRINTS("hook notify %d", type);
 
 	start = hook_list[type].start;
@@ -190,6 +190,10 @@ void hook_task(void *u)
 		uint64_t t = get_time().val;
 		int next = 0;
 		int i;
+
+		int mv;
+		mv = adc_read_channel(ADC_VBUSSA);
+		ccprints("ADC_CH0=%dmv",mv);
 
 		/* Handle deferred routines */
 		for (i = 0; i < DEFERRED_FUNCS_COUNT; i++) {
