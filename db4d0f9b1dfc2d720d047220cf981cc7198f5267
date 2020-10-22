@@ -16,6 +16,24 @@
       "message": "is this generalizable to intel platforms (moving forward?)",
       "revId": "db4d0f9b1dfc2d720d047220cf981cc7198f5267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2235f407_65a0a06e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-10-22T00:15:09Z",
+      "side": 1,
+      "message": "As-is? This would work for IMVP9 platforms that use this core regulator although I\u0027m confident it could be extended to all Intel platforms pretty easily.\n\nIs this a feature we would like to have on all platforms? If so we should probably make it a little more formal than this.",
+      "parentUuid": "ff4321a9_b1d42fa2",
+      "revId": "db4d0f9b1dfc2d720d047220cf981cc7198f5267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
