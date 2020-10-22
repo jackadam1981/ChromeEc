@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e801749_a0406ade",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-22T16:14:45Z",
+      "side": 1,
+      "message": "I will test zephyr build for you",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "38f0242abc38bab71031724d255ddd361b380e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2764d66e_7076b7d3",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-22T16:14:45Z",
+      "side": 1,
+      "message": "I think this comment can just be removed",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "38f0242abc38bab71031724d255ddd361b380e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "134522ed_07b99370",
@@ -14,6 +60,30 @@
       "writtenOn": "2020-10-22T13:22:48Z",
       "side": 1,
       "message": "Maybe, it would be good to rename this one to just atomic_clear in the future.",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "38f0242abc38bab71031724d255ddd361b380e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3abee1e_8e336331",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-22T16:14:45Z",
+      "side": 1,
+      "message": "Agreed. I thought this was the goal?",
+      "parentUuid": "134522ed_07b99370",
       "range": {
         "startLine": 20,
         "startChar": 27,
