@@ -4873,6 +4873,9 @@
  */
 #undef CONFIG_ZEPHYR
 
+/* This build is for a zephyr test. */
+#undef CONFIG_ZTEST
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
