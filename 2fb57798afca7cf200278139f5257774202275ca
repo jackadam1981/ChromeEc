@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21515a95_865e9170",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-22T23:05:27Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the correct bug reference. This bug is about Zephyr gpio shims",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "2fb57798afca7cf200278139f5257774202275ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf94d3ac_f4f3b2be",
         "filename": "common/usb_pd_host_cmd.c",
         "patchSetId": 10
