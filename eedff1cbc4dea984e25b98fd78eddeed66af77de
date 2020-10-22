@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a7c4ff_1d8b83d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-22T18:47:01Z",
+      "side": 1,
+      "message": "I pretty much agree with what\u0027s been said.",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d055cda_ba3138c1",
@@ -50,6 +67,24 @@
       "side": 1,
       "message": "we can splut spoof in spoof for accel and spoof for activities, but let\u0027s not complicate more: we enable any spoof features when there space in the EC, but they are the first one to go when flash space is thight.",
       "parentUuid": "ef0e3fb3_7a071631",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc6677f_34b694ac",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-22T18:47:01Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "3b158243_5e650df3",
       "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +172,24 @@
       "side": 1,
       "message": "SPOOF command has been written to be generic enough to apply to all sensors. Adding another similar command does seem redundant.",
       "parentUuid": "8712a769_d5d1f790",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d68c3101_7c436223",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2542,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-22T18:47:01Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "e41a697a_1f2a5d80",
       "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
