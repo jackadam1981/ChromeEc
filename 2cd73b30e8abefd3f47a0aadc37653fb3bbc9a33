@@ -33,6 +33,24 @@
       "message": "Missing not? Should be (!system_is_locked())",
       "revId": "2cd73b30e8abefd3f47a0aadc37653fb3bbc9a33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1c368b_b38d344d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-22T21:37:59Z",
+      "side": 1,
+      "message": "Definitely. Thanks! That is what I get for not testing it.",
+      "parentUuid": "37c31c74_ffe477d3",
+      "revId": "2cd73b30e8abefd3f47a0aadc37653fb3bbc9a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
