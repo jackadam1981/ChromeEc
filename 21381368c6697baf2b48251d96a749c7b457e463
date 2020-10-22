@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1781f3ce_94bb34dc",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-10-22T02:51:49Z",
+      "side": 1,
+      "message": "The logic here doesn\u0027t follow what Keith suggestion. Could you please double check?",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 50
+      },
+      "revId": "21381368c6697baf2b48251d96a749c7b457e463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
