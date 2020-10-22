@@ -118,6 +118,30 @@
       },
       "revId": "8326ad3f5f7b1e4883b9f6694de4ccf2dc0d1262",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9c27e0_6f5ed21c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-10-22T01:30:57Z",
+      "side": 1,
+      "message": "Thanks Keith for the detail!",
+      "parentUuid": "91fea3fe_1a27a5e5",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 49
+      },
+      "revId": "8326ad3f5f7b1e4883b9f6694de4ccf2dc0d1262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
