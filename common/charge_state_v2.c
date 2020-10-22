@@ -730,6 +730,25 @@ static void charge_allocate_input_current_limit(void)
 }
 #endif /* CONFIG_EC_EC_COMM_BATTERY_MASTER */
 
+static void battery_memmap_fill_etc(void)
+{
+	int year, month, day;
+
+#ifdef CONFIG_BATTERY_V2
+	if (*host_get_memmap(EC_MEMMAP_BATT_INDEX) != BATT_IDX_MAIN)
+		return;
+#endif
+
+	/* Manufacture date */
+	if (!battery_manufacture_date(&year, &month, &day)) {
+		uint8_t *v = host_get_memmap(EC_MEMMAP_BATT_MFDT);
+
+		v[0] = (uint8_t)day;
+		v[1] = (uint8_t)month;
+		v[2] = (uint8_t)(year - 1980);
+	}
+}
+
 #ifndef CONFIG_BATTERY_V2
 /* Returns zero if every item was updated. */
 static int update_static_battery_info(void)
@@ -737,6 +756,7 @@ static int update_static_battery_info(void)
 	char *batt_str;
 	int batt_serial;
 	uint8_t batt_flags = 0;
+
 	/*
 	 * The return values have type enum ec_error_list, but EC_SUCCESS is
 	 * zero. We'll just look for any failures so we can try them all again.
@@ -787,6 +807,9 @@ static int update_static_battery_info(void)
 	if (extpower_is_present())
 		batt_flags |= EC_BATT_FLAG_AC_PRESENT;
 	*host_get_memmap(EC_MEMMAP_BATT_FLAG) = batt_flags;
+
+	/* fill rest */
+	battery_memmap_fill_etc();
 
 	if (rv)
 		problem(PR_STATIC_UPDATE, rv);
@@ -940,6 +963,7 @@ static int update_static_battery_info(void)
 
 #ifdef HAS_TASK_HOSTCMD
 	battery_memmap_refresh(BATT_IDX_MAIN);
+	battery_memmap_fill_etc();
 #endif
 
 	return rv;
