@@ -117,7 +117,8 @@ extern "C" {
 #define EC_MEMMAP_SWITCHES_VERSION 0x25 /* Version of data in 0x30 - 0x33 */
 #define EC_MEMMAP_EVENTS_VERSION   0x26 /* Version of data in 0x34 - 0x3f */
 #define EC_MEMMAP_HOST_CMD_FLAGS   0x27 /* Host cmd interface flags (8 bits) */
-/* Unused 0x28 - 0x2f */
+#define EC_MEMMAP_MFDT             0x28 /* Manufacture Date (24 bits) */
+/* Unused 0x2b - 0x2f */
 #define EC_MEMMAP_SWITCHES         0x30	/* 8 bits */
 /* Unused 0x31 - 0x33 */
 #define EC_MEMMAP_HOST_EVENTS      0x34 /* 64 bits */
