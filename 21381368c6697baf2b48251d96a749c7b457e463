@@ -22,6 +22,30 @@
       },
       "revId": "21381368c6697baf2b48251d96a749c7b457e463",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1dfdb45_2f0f41a5",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2020-10-22T07:53:18Z",
+      "side": 1,
+      "message": "Hi Zhuohao,\nSorry, I don\u0027t how do i access CCx_BPS setting correctly here.\nCould you refer example to me? Thank.",
+      "parentUuid": "1781f3ce_94bb34dc",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 50
+      },
+      "revId": "21381368c6697baf2b48251d96a749c7b457e463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
