@@ -16,6 +16,52 @@
       "message": "Sorry, I thought this was already reviewed and didn\u0027t realize it needed my OWNERs approval. I only looked at the fpsensor.c and fpsensor_state.c files, but those look fine.",
       "revId": "696f63f0b6c1dbccba8bc8d18924360cef85455a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b207529_3f435c4e",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-22T02:06:19Z",
+      "side": 1,
+      "message": "something is wrong here 😕\n\natomic_or should not be a recurisve function",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "696f63f0b6c1dbccba8bc8d18924360cef85455a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2198a96_612db97d",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-22T02:06:19Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "696f63f0b6c1dbccba8bc8d18924360cef85455a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
