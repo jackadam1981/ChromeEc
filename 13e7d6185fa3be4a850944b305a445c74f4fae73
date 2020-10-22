@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7a5a0c7_f009c57a",
+        "filename": "board/madoo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-22T17:24:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e5b293b3_4faa151c",
+      "range": {
+        "startLine": 60,
+        "startChar": 45,
+        "endLine": 60,
+        "endChar": 48
+      },
+      "revId": "13e7d6185fa3be4a850944b305a445c74f4fae73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eecee618_48efe58a",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "I am not sure what do you mean. Do you mean don\u0027t put #undef here or don\u0027t even use CONFIG? I thought config.h is the right place for all the defines, and each board/project can select the ones they need.",
       "parentUuid": "eecee618_48efe58a",
+      "range": {
+        "startLine": 4279,
+        "startChar": 0,
+        "endLine": 4279,
+        "endChar": 33
+      },
+      "revId": "13e7d6185fa3be4a850944b305a445c74f4fae73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8997f983_341a5595",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4279,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-22T17:24:24Z",
+      "side": 1,
+      "message": "You are correct in that config.h is the place for all defines, but I would expect that this value should not be board specific.",
+      "parentUuid": "ff3ab291_16c37dec",
       "range": {
         "startLine": 4279,
         "startChar": 0,
