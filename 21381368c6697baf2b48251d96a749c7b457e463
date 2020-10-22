@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ab8f4a_38a35f6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-22T18:51:22Z",
+      "side": 1,
+      "message": "I moved the discussion over to the bug b:171156342",
+      "revId": "21381368c6697baf2b48251d96a749c7b457e463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920da33a_c9ed08a0",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-22T18:51:22Z",
+      "side": 1,
+      "message": "You need to create a separate variable to track VBAT OVP recovery.\n\nstatic uint32_t vbat_ovp; /* Bitmask of ports requiring VBAT OVP recovery */",
+      "range": {
+        "startLine": 264,
+        "startChar": 50,
+        "endLine": 264,
+        "endChar": 61
+      },
+      "revId": "21381368c6697baf2b48251d96a749c7b457e463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1781f3ce_94bb34dc",
