@@ -52,6 +52,8 @@ CONFIG_FILE = 'include/config.h'
 # Specific files which the checker should ignore.
 ALLOWLIST = [CONFIG_FILE, 'util/config_option_check.py']
 
+ALLOW_PATTERN = re.compile('zephyr/.*')
+
 def obtain_current_config_options():
   """Obtains current config options from include/config.h.
 
@@ -304,7 +306,7 @@ def get_hunks():
       match = filename_re.search(line)
       if match:
         filename = match.groups(1)[0]
-        if filename in ALLOWLIST:
+        if filename in ALLOWLIST or ALLOW_PATTERN.match(filename):
           # Skip the file if it's allowlisted.
           current_state = state.NEW_FILE
         else:
