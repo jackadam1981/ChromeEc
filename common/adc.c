@@ -42,6 +42,24 @@ static int print_one_adc(int channel)
 	return EC_SUCCESS;
 }
 
+#include "task.h"
+#include "timer.h"
+static int command_adcmutex(int argc, char **argv)
+{
+	int mv;
+
+	while(1){
+		mv = adc_read_channel(ADC_VBUSSB);
+		ccprints("ADC_CH1=%dmv",mv);
+		task_wait_event(500*MSEC);
+	}
+	return EC_SUCCESS;
+
+}
+DECLARE_CONSOLE_COMMAND(adcmutex, command_adcmutex,
+			"[name]",
+			"Print ADC channel(s)");
+
 static int command_adc(int argc, char **argv)
 {
 	int i, ret;
