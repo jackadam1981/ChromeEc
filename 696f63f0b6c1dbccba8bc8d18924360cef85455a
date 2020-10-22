@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84037504_b6872eb4",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-10-22T13:11:00Z",
+      "side": 1,
+      "message": "At this point, I think we can just use atomic functions from Zephyr.\n\nI don\u0027t know how I can test it properly.\nI tried \"emerge-betty chromeos-zephyr-2_3\", but it seems the build doesn\u0027t include my changes.",
+      "parentUuid": "1b207529_3f435c4e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "696f63f0b6c1dbccba8bc8d18924360cef85455a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2198a96_612db97d",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-22T02:06:19Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "696f63f0b6c1dbccba8bc8d18924360cef85455a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bd793d_59b36dd3",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-10-22T13:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2198a96_612db97d",
       "range": {
         "startLine": 29,
         "startChar": 1,
