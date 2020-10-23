@@ -145,6 +145,29 @@
       "message": "maybe other access of role-control resolve the case in 8805. \nlogic for CL looks ok here.",
       "revId": "d4072879bd2337e965adef7f2d6949efaf0146f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80270e44_c5d4f83f",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-23T20:33:18Z",
+      "side": 1,
+      "message": "BTW, changing this order violates the USB port controller spec. This is the snippet from the spec:\n```\nThe TCPM may configure the TCPC to autonomously toggle the Rp/Rd. The TCPM shall write B6 (DRP) \u003d1b and the starting value of Rp/Rd to B3..0 (CC1/CC2) to indicate DRP autonomous toggling mode to the TCPC. The TCPC shall not start the DRP toggling until subsequently the TCPM writes to the COMMAND register to start the DRP toggling. Refer to Figure 4-11.\n```\n\nI am reading the bug to understand the problem.",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 39
+      },
+      "revId": "d4072879bd2337e965adef7f2d6949efaf0146f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
