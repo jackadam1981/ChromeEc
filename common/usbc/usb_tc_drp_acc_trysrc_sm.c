@@ -848,14 +848,6 @@ void tc_pr_swap_complete(int port, bool success)
 	} else {
 		/* PR Swap is no longer in progress */
 		TC_CLR_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
-
-		/*
-		 * AutoDischargeDisconnect was turned off near the SNK->SRC
-		 * PR-Swap message. If the swap was a success, Vbus should be
-		 * valid, so re-enable AutoDischargeDisconnect
-		 */
-		if (success)
-			tcpm_enable_auto_discharge_disconnect(port, 1);
 	}
 }
 
@@ -1260,8 +1252,6 @@ static bool tc_perform_snk_hard_reset(int port)
 			tc[port].cc_debounce = get_time().val;
 			sink_power_sub_states(port);
 
-			/* Power is back, Enable AutoDischargeDisconnect */
-			tcpm_enable_auto_discharge_disconnect(port, 1);
 			return true;
 		}
 		/*
@@ -2227,9 +2217,6 @@ static void tc_attached_snk_entry(const int port)
 				CAP_DUALROLE : CAP_DEDICATED);
 		}
 
-		/* Attached.SNK - enable AutoDischargeDisconnect */
-		tcpm_enable_auto_discharge_disconnect(port, 1);
-
 		/* Apply Rd */
 		typec_update_cc(port);
 	}
@@ -2269,15 +2256,6 @@ static void tc_attached_snk_run(const int port)
 	    tc[port].vbus_debounce_time < get_time().val) {
 		/* PR Swap is no longer in progress */
 		TC_CLR_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
-
-		/*
-		 * AutoDischargeDisconnect was turned off when we
-		 * hit Safe0V on SRC->SNK PR-Swap. We now are done
-		 * with the swap and should have Vbus, so re-enable
-		 * AutoDischargeDisconnect.
-		 */
-		if (pd_is_vbus_present(port))
-			tcpm_enable_auto_discharge_disconnect(port, 1);
 	}
 
 	/*
@@ -2686,9 +2664,6 @@ static void tc_attached_src_entry(const int port)
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
 		}
 
-		/* Attached.SRC - enable AutoDischargeDisconnect */
-		tcpm_enable_auto_discharge_disconnect(port, 1);
-
 		/* Apply Rp */
 		typec_update_cc(port);
 
@@ -2728,9 +2703,6 @@ static void tc_attached_src_entry(const int port)
 			usb_mux_set(port, USB_PD_MUX_NONE,
 			USB_SWITCH_DISCONNECT, tc[port].polarity);
 	}
-
-	/* Attached.SRC - enable AutoDischargeDisconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
 
 	/* Apply Rp */
 	typec_update_cc(port);

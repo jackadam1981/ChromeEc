@@ -361,3 +361,19 @@ __override int charge_is_consuming_full_input_current(void)
 {
 	return 1;
 }
+
+static void usb_pd_connect_delay(void)
+{
+	int port;
+	for (port = 0; port < USBC_PORT_COUNT; port++) {
+		if (pd_is_connected(port))
+			tcpm_enable_auto_discharge_disconnect(port, 1);
+	}
+}
+DECLARE_DEFERRED(usb_pd_connect_delay);
+
+static void usb_pd_connect(void)
+{
+	hook_call_deferred(&usb_pd_connect_delay_data, 500 * MSEC);
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_pd_connect, HOOK_PRIO_DEFAULT);
