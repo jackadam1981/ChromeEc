@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c4526321_a52c50c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-23T20:02:55Z",
+      "side": 1,
+      "message": "Hi Wai-Hong and Aseda,\nSee my comment on b:169632095.  Connecting a SNK during G3 is eventually detected without this change, but there is a long delay before it happens.",
+      "parentUuid": "9afea313_3546f095",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "d4072879bd2337e965adef7f2d6949efaf0146f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "75e5d7ec_38a73507",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
