@@ -224,6 +224,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1009d28b_c6938737",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "For the sake of clarity, can you note that 1) this only applies when we\u0027ve entered into USB4 in SOP and TBT with the cable plug, and 2) this is only a temporary behavior until we implement Data Reset?",
+      "parentUuid": "c12c5b2d_ed4a1a97",
+      "revId": "8a4653adfe59ac311ed9be64f5f89a16de3d72c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d0c9a3ce_b3188795",

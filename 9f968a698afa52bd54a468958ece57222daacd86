@@ -1,0 +1,371 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d012e6ee_8c7d9ccc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "Nit: Here and elsewhere, Thunderbolt",
+      "range": {
+        "startLine": 58,
+        "startChar": 39,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4baa53a6_7d99aaee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "Nit: comma",
+      "range": {
+        "startLine": 59,
+        "startChar": 47,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1bcc2b3_d8b83c9d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "Nit: comma goes before \"since.\"",
+      "range": {
+        "startLine": 939,
+        "startChar": 9,
+        "endLine": 939,
+        "endChar": 10
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c63c54b_84389ae6",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "What will Data Reset do to change this? Isn\u0027t this the logic for entering USB4 mode?",
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4ebd79_a988c7b0",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "I don\u0027t see this function doing anything else to actually change the port state. It\u0027s just generating an EUDO. I think it would make more sense to set the mux in enter_usb_accepted or enter_usb_setup_next_msg, analogously to how it is done in tbt_alt_mode.c.",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 944,
+        "endChar": 30
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b572d9_bee4d2cc",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "This probably deserves a comment.",
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea22c9c1_205b0e5c",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "This deviates from the flowchart in the app note in a few ways. For instance, it only contains logic for the cable discovery results, and it doesn\u0027t show the port sending Enter USB for USB 3.2 or USB 2.0 if the cable doesn\u0027t support modal operation. Is this intentional?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7302a889_66cff4e8",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "Unnecessary",
+      "range": {
+        "startLine": 155,
+        "startChar": 18,
+        "endLine": 155,
+        "endChar": 33
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4175c7f_74419a71",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "This can be declared in a smaller scope on line 175.",
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "675f1dc8_37dada4d",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "Nit: I don\u0027t think a separate function is necessary here. You\u0027re probing as deeply into this structure without one on line 180.",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 34
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b5d244_baa11242",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "nit: SVID",
+      "range": {
+        "startLine": 192,
+        "startChar": 19,
+        "endLine": 192,
+        "endChar": 23
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df782ffb_dd2e1c8a",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "For clarity, can you list each of these criteria with a newline between each one, and put them in the same order as the code clauses?",
+      "range": {
+        "startLine": 191,
+        "startChar": 13,
+        "endLine": 193,
+        "endChar": 60
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae8c574c_86b16fe4",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "Nit: period",
+      "range": {
+        "startLine": 193,
+        "startChar": 59,
+        "endLine": 193,
+        "endChar": 60
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a6e5e3a_75d18961",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "TODO: Check this logic after looking at tbt_cable_entry_is_done",
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a1a0ee_962cbfe8",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "Is there a way to 1) put these cases in the natural order of the messages they will generate and 2) not use fall-through?",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 48
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f10a26_426259af",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "I think it would be helpful to have a comment around here noting that, in the enter_usb_is_active case, we\u0027ll be leaving USB4 active in SOP (until the TODO is fixed).",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 38
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f01312b1_2d0eee31",
+        "filename": "include/usb_mode.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-23T21:14:11Z",
+      "side": 1,
+      "message": "For the sake of clarity, this should mirror the comment in tbt_alt_mode.c.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
