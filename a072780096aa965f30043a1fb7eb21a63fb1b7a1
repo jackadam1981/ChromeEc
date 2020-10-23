@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f653909_15bdbf05",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-23T17:37:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1a533f81_7d2944bd",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "a072780096aa965f30043a1fb7eb21a63fb1b7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "092bcfd8_60a794c1",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-23T16:32:50Z",
       "side": 1,
       "message": "we need to #include \"gpio.h\" for this?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "a072780096aa965f30043a1fb7eb21a63fb1b7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "829fce93_35edfd5a",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-23T17:37:24Z",
+      "side": 1,
+      "message": "We do already at the top #include \u003cgpio.h\u003e",
+      "parentUuid": "092bcfd8_60a794c1",
       "range": {
         "startLine": 58,
         "startChar": 1,
@@ -101,6 +149,30 @@
       "side": 1,
       "message": "Actually that function idea is not great.\n\nCan we just export the gpio_interrupts symbol and terminate the list with a NULL entry?",
       "parentUuid": "2d4a4512_2137db6b",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "a072780096aa965f30043a1fb7eb21a63fb1b7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d828257d_cc92a0fe",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-23T17:37:24Z",
+      "side": 1,
+      "message": "I went back and forth on whether to use a extern array or not.\n\nSince some project don\u0027t have GPIOs (like posix-ec), we would need to provide a weak declaration (or provide an empty one for posix-ec).\n\nWe would also need to create another c file for GPIO stuff for each project.\n\nIt is nice to have all of the gpio stitching code for a project in the single gpio_map.h file instead of it being spread across two files.\n\nI know there is some macro use here (which in general I am not that big of a fan of), but it is pretty similar to how the gpios are defined in gpio.inc today, and that seems pretty worth while.\n\nWithout defines, we have to use extern or weak and have to break up the gpio configuration between multiple files. Using the defines seems like the least bad option to me",
+      "parentUuid": "e26ebecb_f3f17493",
       "range": {
         "startLine": 78,
         "startChar": 0,
