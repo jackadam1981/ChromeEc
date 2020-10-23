@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35e3159_4746bf31",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-23T15:49:52Z",
+      "side": 1,
+      "message": "GPIO45 is used as an ADC channel, but not a temperature sensor.  Can you file a bug for the ODM?",
+      "range": {
+        "startLine": 182,
+        "startChar": 40,
+        "endLine": 182,
+        "endChar": 46
+      },
+      "revId": "7aea73c78367e43e384226b9d272c565074f9e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
