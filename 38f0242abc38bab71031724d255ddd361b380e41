@@ -140,6 +140,30 @@
       },
       "revId": "38f0242abc38bab71031724d255ddd361b380e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10257bd8_46a16499",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-23T20:52:43Z",
+      "side": 1,
+      "message": "Agreed, and the one above could also be renamed, so there was no need for the Zephyr atomic shim. All of the code just worked with the zephyr atomic definitions.",
+      "parentUuid": "134522ed_07b99370",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "38f0242abc38bab71031724d255ddd361b380e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
