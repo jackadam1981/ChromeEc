@@ -85,6 +85,30 @@
       },
       "revId": "a072780096aa965f30043a1fb7eb21a63fb1b7a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e26ebecb_f3f17493",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-23T16:33:54Z",
+      "side": 1,
+      "message": "Actually that function idea is not great.\n\nCan we just export the gpio_interrupts symbol and terminate the list with a NULL entry?",
+      "parentUuid": "2d4a4512_2137db6b",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "a072780096aa965f30043a1fb7eb21a63fb1b7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
