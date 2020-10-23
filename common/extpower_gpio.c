@@ -12,6 +12,8 @@
 #include "host_command.h"
 #include "timer.h"
 
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 static int debounced_extpower_presence;
 
 int extpower_is_present(void)
@@ -28,7 +30,7 @@ static void extpower_deferred(void)
 
 	if (extpower_presence == debounced_extpower_presence)
 		return;
-
+	CPRINTS("[SC] AC=%d", extpower_presence);
 	debounced_extpower_presence = extpower_presence;
 	extpower_handle_update(extpower_presence);
 
