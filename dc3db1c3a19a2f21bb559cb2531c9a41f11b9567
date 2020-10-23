@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b57146_11c570db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2020-10-23T18:06:36Z",
+      "side": 1,
+      "message": "I guess TBT docks are also tested with these changes.",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f228db_73e73403",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2020-10-23T18:06:36Z",
+      "side": 1,
+      "message": "some minor comments...",
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e3b0b0a_3e810b8b",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2020-10-23T18:06:36Z",
+      "side": 1,
+      "message": "This is already defined in timer.h.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d27d897_77a1a09e",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2020-10-23T18:06:36Z",
+      "side": 1,
+      "message": "space around this?\nThink this can be merged into the preceding line.",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

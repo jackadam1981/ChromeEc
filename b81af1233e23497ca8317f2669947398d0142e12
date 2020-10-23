@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fcaa99b_3a04cfe1",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2020-10-23T18:06:36Z",
+      "side": 0,
+      "message": "I think it would be cleaner if revert the original patch that introduced this change and have the remaining changes as part of this CL.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 3
+      },
+      "revId": "b81af1233e23497ca8317f2669947398d0142e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
