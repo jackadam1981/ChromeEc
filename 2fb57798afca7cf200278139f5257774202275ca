@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52c6d41f_2570d530",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2020-10-23T16:52:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "21515a95_865e9170",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "2fb57798afca7cf200278139f5257774202275ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf94d3ac_f4f3b2be",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-22T22:41:33Z",
       "side": 1,
       "message": "Do we still need it?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "2fb57798afca7cf200278139f5257774202275ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "250236b6_c2ff304d",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2020-10-23T16:52:12Z",
+      "side": 1,
+      "message": "Ack. Removed this.",
+      "parentUuid": "bf94d3ac_f4f3b2be",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "187dd063_39e5c8df",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2020-10-23T16:52:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0ab8323_fe783af3",
+      "revId": "2fb57798afca7cf200278139f5257774202275ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7674543_94540449",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d4470a_8449005e",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2020-10-23T16:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7674543_94540449",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "2fb57798afca7cf200278139f5257774202275ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5430a3d6_9590a07a",
@@ -100,6 +190,24 @@
       "writtenOn": "2020-10-22T22:41:33Z",
       "side": 1,
       "message": "Nit: Line",
+      "revId": "2fb57798afca7cf200278139f5257774202275ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b14b05c_d1fc6e78",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2020-10-23T16:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5430a3d6_9590a07a",
       "revId": "2fb57798afca7cf200278139f5257774202275ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
