@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a95cb3f_5b6d3059",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-10-23T05:58:41Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "1e801749_a0406ade",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "38f0242abc38bab71031724d255ddd361b380e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2764d66e_7076b7d3",
         "filename": "zephyr/shim/include/atomic.h",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-22T16:14:45Z",
       "side": 1,
       "message": "I think this comment can just be removed",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "38f0242abc38bab71031724d255ddd361b380e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "130c17cc_c64ea7e5",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-10-23T05:58:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2764d66e_7076b7d3",
       "range": {
         "startLine": 10,
         "startChar": 0,
