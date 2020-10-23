@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9afea313_3546f095",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1439543
+      },
+      "writtenOn": "2020-10-23T00:40:25Z",
+      "side": 1,
+      "message": "maybe other access of role-control resolve the case in 8805. \nlogic for CL ok here.",
+      "parentUuid": "47f62eb4_ff30f800",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "d4072879bd2337e965adef7f2d6949efaf0146f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "75e5d7ec_38a73507",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -78,6 +102,23 @@
       "writtenOn": "2020-10-22T23:50:19Z",
       "side": 1,
       "message": "Tr",
+      "revId": "d4072879bd2337e965adef7f2d6949efaf0146f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3dee70_f88b212f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1439543
+      },
+      "writtenOn": "2020-10-23T00:40:25Z",
+      "side": 1,
+      "message": "maybe other access of role-control resolve the case in 8805. \nlogic for CL looks ok here.",
       "revId": "d4072879bd2337e965adef7f2d6949efaf0146f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
