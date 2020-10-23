@@ -13,6 +13,7 @@
 
 /* Optional features */
 #define CONFIG_DAC
+#define CONFIG_ADC
 
 #ifndef __ASSEMBLER__
 
