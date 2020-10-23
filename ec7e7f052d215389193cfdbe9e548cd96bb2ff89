@@ -39,6 +39,30 @@
       },
       "revId": "ec7e7f052d215389193cfdbe9e548cd96bb2ff89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed2f311_7d593b2a",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-10-23T05:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8ae731c_15acf0dc",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "ec7e7f052d215389193cfdbe9e548cd96bb2ff89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
