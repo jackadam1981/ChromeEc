@@ -168,6 +168,8 @@ void fips_set_callbacks(const struct fips_vtable *vtable);
  */
 void fips_power_on(void);
 
+void fips_fail(void);
+
 #ifdef __cplusplus
 }
 #endif
