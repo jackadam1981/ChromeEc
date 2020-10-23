@@ -548,3 +548,11 @@ int ppc_get_alert_status(int port)
 	else
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
+
+static void battery_log_second(void)
+{
+	struct batt_params batt_new = {0};
+	battery_get_params(&batt_new);
+	CPRINTS("voltage=%d mV, current=%d mA, RSOC=%d", batt_new.voltage, batt_new.current, batt_new.state_of_charge);
+}
+DECLARE_HOOK(HOOK_SECOND, battery_log_second, HOOK_PRIO_DEFAULT);

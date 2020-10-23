@@ -91,7 +91,6 @@ GPIO(USB_A_LOW_PWR_OD,		PIN(6, 6), GPIO_ODR_LOW)	/* Don't limit USB-A charging b
  * so it's safe to define GPIOs compatible with both designs.
  * TODO (b/149858568): remove board ID=0 support.
  */
-GPIO(USB_C1_RT_RST_ODL_BOARDID_0,	PIN(3, 2), GPIO_ODR_LOW) /* USB_C1 Reset on boards without board ID */
 GPIO(USB_C1_RT_RST_ODL,			PIN(8, 3), GPIO_ODR_LOW) /* USB_C1 Reset on boards board ID >=1 */
 GPIO(USB_C0_OC_ODL,			PIN(B, 1), GPIO_ODR_HIGH)
 GPIO(USB_C1_OC_ODL,			PIN(5, 0), GPIO_ODR_HIGH)

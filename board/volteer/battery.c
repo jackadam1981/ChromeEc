@@ -36,9 +36,9 @@ const struct board_batt_params board_battery_info[] = {
 	/*
 	 * Battery info provided by ODM on b/143477210, comment #11
 	 */
-	[BATTERY_LGC011] = {
+	[BATTERY_SIMPLO_HIGHPOWER] = {
 		.fuel_gauge = {
-			.manuf_name = "LGC",
+			.manuf_name = "333-1D-11-A",
 			.ship_mode = {
 				.reg_addr = 0x00,
 				.reg_data = { 0x10, 0x10 },
@@ -65,4 +65,4 @@ const struct board_batt_params board_battery_info[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
-const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_LGC011;
+const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SIMPLO_HIGHPOWER;

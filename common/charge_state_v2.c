@@ -2573,7 +2573,7 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_charge_control *p = args->params;
 	int rv;
-
+	CPRINTS("[SC] p->mode=%d", p->mode);
 	rv = set_chg_ctrl_mode(p->mode);
 	if (rv != EC_SUCCESS)
 		return EC_RES_ERROR;
