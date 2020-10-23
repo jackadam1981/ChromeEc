@@ -164,6 +164,30 @@
       },
       "revId": "38f0242abc38bab71031724d255ddd361b380e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d06f3f4_30c30e09",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-23T20:53:17Z",
+      "side": 1,
+      "message": "Ha, I guess this comment never replied from a few days ago.",
+      "parentUuid": "10257bd8_46a16499",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "38f0242abc38bab71031724d255ddd361b380e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
