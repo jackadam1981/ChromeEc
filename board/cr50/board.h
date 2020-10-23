@@ -488,6 +488,14 @@ void board_cfg_reg_write(unsigned int value);
  */
 unsigned int board_cfg_reg_read(void);
 
+bool pcr0_reset(void);
+bool pcr0_extend(const uint8_t *extend_value);
+uint8_t *pcr0_read(void);
+void pcr0_dump(void);
+void pcr0_list(void);
+void ph_control(int enable);
+void ph_dump(void);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */
