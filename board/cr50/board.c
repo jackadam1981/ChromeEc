@@ -965,6 +965,10 @@ static void board_init(void)
 	init_runlevel(PERMISSION_MEDIUM);
 
 	/* Run FIPS power-on tests to enable crypto. */
+	if (GREG32(PMU, PWRDN_SCRATCH22) == 0xBEBEBEBE) {
+		GREG32(PMU, PWRDN_SCRATCH22) = 0xAA556633;
+		fips_fail();
+	}
 	fips_power_on();
 	/* Initialize NvMem partitions */
 	nvmem_init();
@@ -2022,3 +2026,128 @@ uint32_t board_cfg_reg_read(void)
 {
 	return GREG32(PMU, PWRDN_SCRATCH21);
 }
+
+const uint8_t *boot_state_value(bool recovery_mode, bool dev_mode);
+const uint8_t *sha256_digest(const uint8_t *extend_value);
+
+#ifndef CRYPTO_TEST_SETUP
+
+/**
+ * Console command to get/set PCR0
+ */
+static int command_pcr0(int argc, char **argv)
+{
+	if (argc > 1) {
+		const uint8_t *value;
+		bool reset_only = false;
+		int rec;
+		int dev;
+
+		if (argc == 2 && !strcasecmp("list", argv[1])) {
+			pcr0_list();
+			return EC_SUCCESS;
+		}
+
+		if (argc == 2 && !strcasecmp("reset", argv[1])) {
+			reset_only = true;
+		} else if (argc == 3 && parse_bool(argv[1], &rec) &&
+				parse_bool(argv[2], &dev)) {
+			value = boot_state_value(rec, dev);
+		} else
+			return EC_ERROR_PARAM1;
+
+		if (!pcr0_reset()) {
+			ccprintf("Resetting PCR0 failed");
+			return EC_ERROR_UNKNOWN;
+		}
+		if (!reset_only) {
+			if (!pcr0_extend(value)) {
+				ccprintf("Extending PCR0 failed");
+				return EC_ERROR_UNKNOWN;
+			}
+		}
+	}
+	pcr0_dump();
+
+	return EC_SUCCESS;
+
+}
+DECLARE_SAFE_CONSOLE_COMMAND(pcr0, command_pcr0,
+	"[<recovery dev> | reset | list]",
+	"Read PCR0, extend it with the value for (recovery, dev) or reset to 0");
+
+/**
+ * Console command to enable/disable platform hierarchy
+ */
+static int command_ph(int argc, char **argv)
+{
+	if (argc > 1) {
+		int enable;
+
+		if (parse_bool(argv[1], &enable))
+			ph_control(enable);
+		else
+			return EC_ERROR_PARAM1;
+	}
+	ph_dump();
+
+	return EC_SUCCESS;
+
+}
+DECLARE_SAFE_CONSOLE_COMMAND(ph, command_ph,
+	"[true|false]",
+	"Get / set Platform Hierarchy status (enabled/disabled)");
+
+/**
+ * Console command to delete FWMP
+ */
+static int command_delfwmp(int argc, char **argv)
+{
+	delete_fwmp();
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(delfwmp, command_delfwmp,
+	"",
+	"Delete FWMP");
+
+/**
+ * Console command to reset TPM app
+ */
+static int command_resettpm(int argc, char **argv)
+{
+	tpm_reset_request(1, 0);
+	call_startup();
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(resettpm, command_resettpm,
+	"",
+	"Reset TPM");
+
+/**
+ * Console command to fail FIPS on next resume
+ */
+static int command_failfips(int argc, char **argv)
+{
+	fail_fips();
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(failfips, command_failfips,
+	"",
+	"Fail FIPS after S3");
+
+/**
+ * Console command to delete FWMP
+ */
+static int command_chkfwmp(int argc, char **argv)
+{
+	check_fwmp();
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(chkfwmp, command_chkfwmp,
+	"",
+	"Check FWMP");
+
+#endif /* !CRYPTO_TEST_SETUP*/
