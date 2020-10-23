@@ -33,6 +33,24 @@
       "message": "The same logic may apply to other parts of the init which we don\u0027t expect to change.",
       "revId": "e02eaeb41e7abf942e5f5d5c3bd88453a3e109e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3028b9ae_6aaa36e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-23T03:19:56Z",
+      "side": 1,
+      "message": "Would that work with EFS2 though?  We\u0027ll nearly always be running inits for the first time after a sysjump to RW",
+      "parentUuid": "514db2d6_f99a6c1a",
+      "revId": "e02eaeb41e7abf942e5f5d5c3bd88453a3e109e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
