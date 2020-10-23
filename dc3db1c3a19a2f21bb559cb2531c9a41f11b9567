@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5c4348e_f335f135",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-23T19:10:51Z",
+      "side": 1,
+      "message": "virtual mux: Wait for mux config ACK from the kernel",
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60b57146_11c570db",
         "filename": "/COMMIT_MSG",
         "patchSetId": 11
@@ -24,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c046a5_f89989ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-23T19:10:51Z",
+      "side": 1,
+      "message": "USB3 detected as USB3?",
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "62f228db_73e73403",
@@ -37,6 +71,29 @@
       "writtenOn": "2020-10-23T18:06:36Z",
       "side": 1,
       "message": "some minor comments...",
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6b33c3_2baeb276",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-23T19:10:51Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 3
+      },
       "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -66,6 +123,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0649e0e_34d11fc3",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-23T19:10:51Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 71
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ed81e9_4ff6bc47",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-23T19:10:51Z",
+      "side": 1,
+      "message": "explain the rationale behind this",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d27d897_77a1a09e",
         "filename": "driver/usb_mux/virtual.c",
         "patchSetId": 11
@@ -82,6 +185,29 @@
         "startChar": 9,
         "endLine": 45,
         "endChar": 10
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a646fe8_024ebf4f",
+        "filename": "include/task.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-23T19:10:51Z",
+      "side": 1,
+      "message": "both are sharing same bit",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 35
       },
       "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
