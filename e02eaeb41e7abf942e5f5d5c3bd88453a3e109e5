@@ -51,6 +51,24 @@
       "parentUuid": "514db2d6_f99a6c1a",
       "revId": "e02eaeb41e7abf942e5f5d5c3bd88453a3e109e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ec416a_e6e9dd5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-23T21:29:44Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s a good point. I was still thinking of pre-EFS systems. I think we still want the spirit of it though; that being it should only be run one time. \n\nIn the normal case, that would be once we jump to RW. Or, if we\u0027re staying in RO for recovery for example.\n\nMaybe we could use a sysjump tag to indicate if the init has been completed?",
+      "parentUuid": "3028b9ae_6aaa36e2",
+      "revId": "e02eaeb41e7abf942e5f5d5c3bd88453a3e109e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
