@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d78b81_0c40b37f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-23T09:06:16Z",
+      "side": 1,
+      "message": "1. Remove leading extra space.\n2. Should this line \"Use for waking up host.\" and next line \"Which sensor to look for double tap recognition.\" be swaped.",
+      "range": {
+        "startLine": 1998,
+        "startChar": 3,
+        "endLine": 1998,
+        "endChar": 4
+      },
+      "revId": "9550f283bad9537b5aab79a2fb730e5a6efebd8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
