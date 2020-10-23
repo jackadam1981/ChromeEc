@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6018cdeb_711e200f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-23T08:53:04Z",
+      "side": 1,
+      "message": "\u003e \"enbaled\" is a possible misspelling of \"enabled\".\n\nPlease fix.",
+      "parentUuid": "8322e890_245f7eaf",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "dcd8ecfcf75f74682ff23ff39507bef4c90f4ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d0d5af_a9588053",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-10-23T08:53:04Z",
+      "side": 1,
+      "message": "LGTM, but please fix the typo.",
+      "revId": "dcd8ecfcf75f74682ff23ff39507bef4c90f4ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
