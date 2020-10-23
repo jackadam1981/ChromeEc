@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36645c79_c3985f30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-23T16:20:32Z",
+      "side": 1,
+      "message": "See CL:2495006 for how to express EC_CROS_GPIO_INTERRUPT.\n\nI am open to ideas of where to put the comment for EC_CROS_GPIO_INTERRUPT that explains how to use it.",
+      "revId": "a072780096aa965f30043a1fb7eb21a63fb1b7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
