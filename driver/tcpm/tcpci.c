@@ -77,7 +77,7 @@ STATIC_IF(DEBUG_I2C_FAULT_LAST_WRITE_OP)
  * helpful.  Defining DEBUG_GET_CC will output a line that gives
  * this useful information
  */
-#undef DEBUG_GET_CC
+//#undef DEBUG_GET_CC
 
 struct get_cc_values {
 	int cc1;
@@ -92,7 +92,7 @@ STATIC_IF(DEBUG_GET_CC)
  * Seeing RoleCtrl updates can help determine why GetCC is not
  * working as it should be.
  */
-#undef DEBUG_ROLE_CTRL_UPDATES
+//#undef DEBUG_ROLE_CTRL_UPDATES
 
 /****************************************************************************/
 
@@ -113,6 +113,17 @@ static int tcpc_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Cached RP role values */
 static int cached_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+/*
+ * Prevent direct reads of CC_STATUS except following an ALERT.CCStatus
+ * interrupt.
+ *
+ * Section 4.4.6.1 CC_STATUS of the USB Port Controller specification indicates
+ * that TCPMs that use polling rather than Alerts should assume data in
+ * CC_STATUS is not valid for a delay following updates to ROLE_CONTROL.
+ * The required delay is vendor specific so we only use Alerts.
+ */
+static volatile int cached_cc_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
@@ -429,6 +440,12 @@ int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
 	if (rv)
 		return rv;
+
+	/*
+	 * Make a local copy of the cached CC status to avoid race conditions
+	 * with new ALERT.CCStatus interrupts.
+	 */
+	status = cached_cc_status[port];
 
 	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
 	if (rv)
@@ -1129,6 +1146,63 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 	}
 }
 
+static int tcpci_check_cc_status(int port, uint32_t *pd_event)
+{
+	int status;
+	int rv;
+
+	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+	if (rv)
+		return rv;
+
+	if (IS_ENABLED(DEBUG_GET_CC))
+		CPRINTS("C%d: CC_STATUS interrupt, old 0x%02x new 0x%02x",
+			port, cached_cc_status[port], status);
+
+	cached_cc_status[port] = status;
+
+	/*
+	 * From Figure 4-20 in the Rev 2.0 spec, if CC.Looking4Connection
+	 * is set, service alerts other than CcStatus.
+	 *
+	 * From Figure 4-21 Source Disconnect, CC.Looking4Connection will
+	 * be clear after a connection is established, so this check is also
+	 * safe when a connection is active.
+	 */
+	if (status & TCPC_REG_CC_STATUS_LOOK4CONNECTION_MASK) {
+		if (IS_ENABLED(DEBUG_GET_CC))
+			CPRINTS("C%d: Looking4Connection set, skip CC_STATUS",
+				port);
+		return rv;
+	}
+
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {
+		enum tcpc_cc_voltage_status cc1;
+		enum tcpc_cc_voltage_status cc2;
+
+		/*
+		 * Some TCPCs generate CC Alerts when
+		 * drp auto toggle is active and nothing
+		 * is connected to the port. So, get the
+		 * CC line status and only generate a
+		 * PD_EVENT_CC if something is connected.
+		 */
+		rv = tcpci_tcpm_get_cc(port, &cc1, &cc2);
+		if (rv)
+			return rv;
+
+		if (pd_event && !cc_is_open(cc1, cc2)) {
+			/* CC status changed, wake task */
+			*pd_event |= PD_EVENT_CC;
+		}
+	} else if (pd_event) {
+		/* CC status changed, wake task */
+		*pd_event |= PD_EVENT_CC;
+	}
+
+	return rv;
+}
+
 /*
  * Don't let the TCPC try to pull from the RX buffer forever. We typical only
  * have 1 or 2 messages waiting.
@@ -1151,6 +1225,10 @@ void tcpci_tcpc_alert(int port)
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)
 		tcpm_alert_ext_status(port, &alert_ext);
+
+	if (IS_ENABLED(DEBUG_GET_CC))
+		CPRINTS("C%d: ALERT 0x%02x ALERT_EXT 0x%02x", port, alert,
+			alert_ext);
 
 	/* Clear any pending faults */
 	if (alert & TCPC_REG_ALERT_FAULT) {
@@ -1204,6 +1282,9 @@ void tcpci_tcpc_alert(int port)
 		tcpc_write(port, TCPC_REG_ALERT_EXT, alert_ext);
 	if (alert)
 		tcpc_write16(port, TCPC_REG_ALERT, alert);
+
+	if (alert & TCPC_REG_ALERT_CC_STATUS)
+		tcpci_check_cc_status(port, &pd_event);
 
 	if (alert & TCPC_REG_ALERT_CC_STATUS) {
 		if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {
@@ -1438,6 +1519,12 @@ int tcpci_tcpm_init(int port)
 		TCPC_REG_ALERT_POWER_STATUS | TCPC_REG_ALERT_EXT_STATUS,
 		NULL);
 
+	/*
+	 * Force an update to the cached CC_STATUS in case the TCPC doesn't
+	 * generate a CC_STATUS changed interrupt later
+	 */
+	tcpci_check_cc_status(port, NULL);
+	
 	error = init_alert_mask(port);
 	if (error)
 		return error;

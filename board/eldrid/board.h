@@ -86,7 +86,9 @@
 /* USBC PPC*/
 #define CONFIG_USBC_PPC_SN5S330		/* USBC port C0 */
 #define CONFIG_USBC_PPC_SYV682X		/* USBC port C1 */
-
+#define DEBUG_GET_CC
+#define DEBUG_ROLE_CTRL_UPDATES
+#define CONFIG_CHARGE_MANAGER_EXTERNAL_POWER_LIMIT
 /* BC 1.2 */
 
 /* Volume Button feature */

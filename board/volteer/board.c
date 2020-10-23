@@ -5,6 +5,7 @@
 
 /* Volteer board-specific configuration */
 #include "bb_retimer.h"
+#include "battery.h"
 #include "button.h"
 #include "common.h"
 #include "accelgyro.h"
@@ -458,16 +459,6 @@ __override void board_cbi_init(void)
 {
 	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
 
-	/* Reconfigure Volteer GPIOs based on the board ID */
-	if (get_board_id() == 0) {
-		CPRINTS("Configuring GPIOs for board ID 0");
-		CPRINTS("VOLUME_UP button disabled");
-
-		/* Reassign USB_C1_RT_RST_ODL */
-		bb_controls[USBC_PORT_C1].retimer_rst_gpio =
-			GPIO_USB_C1_RT_RST_ODL_BOARDID_0;
-		ps8xxx_rst_odl = GPIO_USB_C1_RT_RST_ODL_BOARDID_0;
-	}
 	config_port_discrete_tcpc(0);
 	switch (usb_db) {
 	case DB_USB_ABSENT:
@@ -648,3 +639,12 @@ int ppc_get_alert_status(int port)
 	else
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
+
+static void battery_log_second(void)
+{
+	struct batt_params batt_new = {0};
+	battery_get_params(&batt_new);
+	CPRINTS("voltage=%d mV, current=%d mA, RSOC=%d", batt_new.voltage, batt_new.current, batt_new.state_of_charge);
+}
+DECLARE_HOOK(HOOK_SECOND, battery_log_second, HOOK_PRIO_DEFAULT);
+

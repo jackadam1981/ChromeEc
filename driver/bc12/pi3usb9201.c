@@ -140,6 +140,7 @@ static void bc12_update_supplier(enum charge_supplier supplier, int port,
 	 * charge manager table entry for that supplier type needs to be cleared
 	 * out.
 	 */
+	CPRINTS("[SC] bc12_update_supplier, supplier=%d, port=%d", supplier, port);
 	if (bc12_supplier[port] != CHARGE_SUPPLIER_NONE)
 		charge_manager_update_charge(bc12_supplier[port], port, NULL);
 	/* Now update the current supplier type */

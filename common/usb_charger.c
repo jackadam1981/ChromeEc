@@ -25,6 +25,8 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+
 static void update_vbus_supplier(int port, int vbus_level)
 {
 	struct charge_port_info charge = {0};
@@ -33,7 +35,7 @@ static void update_vbus_supplier(int port, int vbus_level)
 		charge.voltage = USB_CHARGER_VOLTAGE_MV;
 		charge.current = USB_CHARGER_MIN_CURR_MA;
 	}
-
+	CPRINTS("[SC] update_vbus_supplier");
 	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, port, &charge);
 }
 

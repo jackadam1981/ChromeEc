@@ -99,9 +99,13 @@ void chg_ramp_charge_supplier_change(int port, int supplier, int current,
 	active_port = port;
 	active_sup = supplier;
 	active_vtg = voltage;
-
+	CPRINTS("[SC] active_port=%d", active_port);
+	CPRINTS("[SC] active_sup=%d", active_sup);
 	/* Set min and max input current limit based on if ramp is allowed */
 	if (chg_ramp_allowed(active_port, active_sup)) {
+		CPRINTS("[SC] min_icl=%d", min_icl);
+		CPRINTS("[SC] max_icl=%d", max_icl);
+
 		min_icl = RAMP_CURR_START_MA;
 		max_icl = chg_ramp_max(active_port, active_sup, current);
 	} else {
@@ -185,6 +189,7 @@ void chg_ramp_task(void *u)
 			 * OC event (check if we lost VBUS and it came back
 			 * within OC_RECOVER_MAX_TIME).
 			 */
+			CPRINTS("[SC] CHG_RAMP_CHARGE_DETECT_DELAY");
 			if (ramp_st_prev != ramp_st ||
 			    active_port != last_active_port) {
 				last_active_port = active_port;
@@ -217,7 +222,7 @@ void chg_ramp_task(void *u)
 		case CHG_RAMP_OVERCURRENT_DETECT:
 			/* Check if we should ramp or go straight to stable */
 			task_wait_time = SECOND;
-
+			CPRINTS("[SC] CHG_RAMP_OVERCURRENT_DETECT");
 			/* Skip ramp for specific suppliers */
 			if (!chg_ramp_allowed(active_port, active_sup)) {
 				active_icl_new = min_icl;
@@ -261,7 +266,7 @@ void chg_ramp_task(void *u)
 		case CHG_RAMP_RAMP:
 			/* Keep ramping until we find the limit */
 			task_wait_time = RAMP_CURR_DELAY;
-
+			CPRINTS("[SC] CHG_RAMP_RAMP");
 			/* Pause ramping if we are not drawing full current */
 			if (!charge_is_consuming_full_input_current()) {
 				task_wait_time = CURRENT_DRAW_DELAY;
@@ -339,6 +344,7 @@ void chg_ramp_task(void *u)
 				active_port, ramp_st, min_icl, active_icl);
 			/* Set the input current limit */
 			lim = chg_ramp_get_current_limit();
+			CPRINTS("[SC] lim=%d", lim);
 			board_set_charge_limit(active_port, active_sup, lim,
 					       lim, active_vtg);
 		}

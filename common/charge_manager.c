@@ -688,7 +688,7 @@ static void charge_manager_refresh(void)
 	/* Hunt for an acceptable charge port */
 	while (1) {
 		charge_manager_get_best_charge_port(&new_port, &new_supplier);
-
+		CPRINTS("[SC] refresh: new_port=%d, new_supplier=%d", new_port, new_supplier);
 		if (!left_safe_mode && new_port == CHARGE_PORT_NONE)
 			return;
 
@@ -759,7 +759,8 @@ static void charge_manager_refresh(void)
 		new_charge_voltage =
 			available_charge[new_supplier][new_port].voltage;
 	}
-
+	CPRINTS("[SC] refresh: new_charge_voltage=%d", new_charge_voltage);
+	CPRINTS("[SC] refresh: new_charge_current=%d", new_charge_current);
 	/* Change the charge limit + charge port/supplier if modified. */
 	if (new_port != charge_port || new_charge_current != charge_current ||
 	    new_supplier != charge_supplier) {
@@ -885,7 +886,7 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 		CPRINTS("%s: p%d invalid", __func__, port);
 		return;
 	}
-
+	CPRINTS("[SC] charge_manager_make_change");
 	/* Determine if this is a change which can affect charge status */
 	switch (change) {
 	case CHANGE_CHARGE:
@@ -990,6 +991,7 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 
 	charge.current = max_ma;
 	charge.voltage = supply_voltage;
+	CPRINTS("[SC] pd_set_input_current_limit");
 	charge_manager_update_charge(CHARGE_SUPPLIER_PD, port, &charge);
 }
 
@@ -1032,7 +1034,7 @@ void typec_set_input_current_limit(int port, typec_current_t max_ma,
 	if (charge.current < 1500)
 		supplier = CHARGE_SUPPLIER_TYPEC_UNDER_1_5A;
 #endif /* CHARGE_MANAGER_BC12 */
-
+	CPRINTS("[SC] typec_set_input_current_limit");
 	charge_manager_update_charge(supplier, port, &charge);
 
 	/*
@@ -1052,6 +1054,7 @@ void charge_manager_update_charge(int supplier,
 	struct charge_port_info zero = {0};
 	if (!charge)
 		charge = &zero;
+	CPRINTS("[SC] update_charge:");
 	charge_manager_make_change(CHANGE_CHARGE, supplier, port, charge);
 }
 
@@ -1085,7 +1088,9 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 {
 	if (!is_valid_port(port))
 		return;
-
+	CPRINTS("[SC] charge_manager_set_ceil, port=%d", port);
+	CPRINTS("[SC] charge_manager_set_ceil, requestor=%d", requestor);
+	CPRINTS("[SC] charge_manager_set_ceil, ceil=%d", ceil);
 	if (charge_ceil[port][requestor] != ceil) {
 		charge_ceil[port][requestor] = ceil;
 		if (port == charge_port && charge_manager_is_seeded())
@@ -1107,6 +1112,8 @@ void charge_manager_force_ceil(int port, int ceil)
 	 * Now inform charge_manager so it stays in sync with the state of
 	 * the world.
 	 */
+	CPRINTS("[SC] _force_ceil, ceil=%d", ceil);
+	CPRINTS("[SC] _force_ceil, charge_current_uncapped=%d", charge_current_uncapped);
 	charge_manager_set_ceil(port, CEIL_REQUESTOR_PD, ceil);
 }
 

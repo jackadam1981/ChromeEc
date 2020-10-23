@@ -989,7 +989,7 @@ void tc_src_power_off(int port)
 {
 	/* Remove VBUS */
 	pd_power_supply_reset(port);
-
+	CPRINTS("[SC] _src_power_off");
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
 		charge_manager_set_ceil(port, CEIL_REQUESTOR_PD,
 					CHARGE_CEIL_NONE);
@@ -1603,6 +1603,7 @@ static void sink_stop_drawing_current(int port)
 	pd_set_input_current_limit(port, 0, 0);
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
+		CPRINTS("[SC] _stop_drawing_current");
 		typec_set_input_current_limit(port, 0, 0);
 		charge_manager_set_ceil(port,
 				CEIL_REQUESTOR_PD, CHARGE_CEIL_NONE);
