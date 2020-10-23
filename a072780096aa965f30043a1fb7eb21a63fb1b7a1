@@ -16,6 +16,75 @@
       "message": "See CL:2495006 for how to express EC_CROS_GPIO_INTERRUPT.\n\nI am open to ideas of where to put the comment for EC_CROS_GPIO_INTERRUPT that explains how to use it.",
       "revId": "a072780096aa965f30043a1fb7eb21a63fb1b7a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a533f81_7d2944bd",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-23T16:32:50Z",
+      "side": 1,
+      "message": "can these unrelated style changes go in their own CL?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "a072780096aa965f30043a1fb7eb21a63fb1b7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092bcfd8_60a794c1",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-23T16:32:50Z",
+      "side": 1,
+      "message": "we need to #include \"gpio.h\" for this?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "a072780096aa965f30043a1fb7eb21a63fb1b7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4a4512_2137db6b",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-23T16:32:50Z",
+      "side": 1,
+      "message": "instead of this macro trickery and carrying around #defines, why not the project just either export the gpio_interrupts symbol?\n\nedit: oh, I see you want to use ARRAY_SIZE below.\n\nwhat if instead each project exports a get_gpio_interrupts(struct gpio_signal_callback **interrupts_out, size_t *size_out)?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "a072780096aa965f30043a1fb7eb21a63fb1b7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
