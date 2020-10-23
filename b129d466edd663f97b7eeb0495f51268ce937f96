@@ -20,6 +20,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bc088aa_e4a1e782",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-23T20:59:51Z",
+      "side": 1,
+      "message": "I see your point. This CL does carve out specific factory requirements that no customer should ever end up in. The BBRAM stuff had more than a few missed synchronization issues that could happen on customer machines.\n\nDo you think this is fragile for factory use case too even?",
+      "parentUuid": "e97aea02_d432ab88",
+      "revId": "b129d466edd663f97b7eeb0495f51268ce937f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af2aa25_df200f86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-23T20:59:51Z",
+      "side": 1,
+      "message": "Let\u0027s wait on Aseda feedback though",
+      "revId": "b129d466edd663f97b7eeb0495f51268ce937f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "563864e7_ad70a1d7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
