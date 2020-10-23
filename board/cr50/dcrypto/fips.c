@@ -773,6 +773,12 @@ void fips_power_up_tests(void)
 		fips_set_status(FIPS_MODE_ACTIVE);
 }
 
+void fips_fail(void) 
+{
+	_fips_status = FIPS_FATAL_SHA256 | FIPS_POWER_UP_TEST_DONE;
+	fips_set_status(_fips_status);
+}
+
 void fips_power_on(void)
 {
 	fips_last_kat_test_duration = -1ULL;
