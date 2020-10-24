@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f6c7056_0057696c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-24T06:08:38Z",
+      "side": 1,
+      "message": "Roger. Will edit and clean up to match proper code-ettiquite. Thank you!",
+      "parentUuid": "d6aea148_41ed2308",
+      "range": {
+        "startLine": 1178,
+        "startChar": 9,
+        "endLine": 1178,
+        "endChar": 10
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68f85f9c_08831b35",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 4
@@ -54,6 +78,24 @@
       "writtenOn": "2020-10-14T20:54:38Z",
       "side": 1,
       "message": "Also, not you, but once we suspend the port, I don\u0027t see where we actually drain the queue with the old and now invalid messages? I see this done for TCPMv1 in the suspend state, but I don\u0027t see the parallel in TCPMv2.",
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89e40ed3_1a7457dc",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-24T06:08:38Z",
+      "side": 1,
+      "message": "Please see b/156138479 for how this manifests on (TCPMv2 + TCPMv1). Despite belief, no draining occurs in TCPMv1. Rather -- local RX buffer may be serviced, **but remote TCPC RX buffer is still enqueueing messages while being ignored**.\n\nThese remote messages are then all handled at once when I2C is reconnencted (seconds) later, resulting in massive logjarm/corruption/desync.\n\n```\nPort resumes...\nBut we\u0027re handling STALE vdm:attn messages from before the d/c...?\n```\n\nWe\u0027ve long since D/C\u0027ed due to ramifications from \"hanging up\" on the port. We abruptly ceased communication with the TCPC, without turning off SOP\u0027 response. So the queue starts to (inappropriately) handle after the resume.\n\nI can repeat this test on TCPMv2 if it would help. Or on different TCPC with different remote RX buffering behavior. I suspect similar misbehavior exists.",
+      "parentUuid": "68f85f9c_08831b35",
       "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
