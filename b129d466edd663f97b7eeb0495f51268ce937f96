@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88618aae_da323d91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-24T01:10:09Z",
+      "side": 1,
+      "message": "It\u0027s just something to be aware of. Depending on the port partner, it might end up with *us* getting HardReset instead since we all of a sudden stopped talking. (e.g. a random incoming SrcCap)\n\nThe customer machine (state) generally shouldn\u0027t be running PD in RO, so the normal use case shouldn\u0027t have anything to save. If there were other cases, I\u0027m not aware of them.\n\nEssentially, we\u0027re trading corner cases, but it seems much more fragile in my opinion.\n\nAn example I just thought of: I think this would require an individual to unplug and replug the cable after flashing an image in system. Otherwise, after the new image runs, the EC thinks there\u0027s VBUS present (but no SrcCap so we would HardReset, and now we go into non-PD mode), but VBUS could still be at some higher voltage. What if the previous contract was 9V/2A, but the EC sees Rp3? The EC would set the input current limit to 3A, and now we could potentially overdraw a contract. However, since there\u0027s no substantial sink present, that\u0027s probably not likely. But maybe a U-series x86 with a sink on other ports. idk\n\nOr, if it wasn\u0027t just a pure charger, but a dongle with an HDMI port, the external display won\u0027t work following the restart.",
+      "parentUuid": "0bc088aa_e4a1e782",
+      "revId": "b129d466edd663f97b7eeb0495f51268ce937f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "563864e7_ad70a1d7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
