@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "8c917b87_f1af7306",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Caveh is the ADL EC lead.",
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "906ad34d_2c4f24cb",
         "filename": "baseboard/intelrvp/chg_usb_pd_mecc_1_0.c",
@@ -37,10 +38,10 @@
         "endChar": 33
       },
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "0a88c8d2_2d8b56a3",
         "filename": "baseboard/intelrvp/chg_usb_pd_mecc_1_0.c",
@@ -61,10 +62,10 @@
         "endChar": 33
       },
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5f5831df_fd7f5836",
         "filename": "baseboard/intelrvp/chg_usb_pd_mecc_1_0.c",
@@ -84,10 +85,10 @@
         "endChar": 36
       },
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ef3eb44a_2024ee57",
         "filename": "baseboard/intelrvp/chg_usb_pd_mecc_1_0.c",
@@ -108,10 +109,34 @@
         "endChar": 36
       },
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4847383_6c67a7bd",
+        "filename": "baseboard/intelrvp/chg_usb_pd_mecc_1_0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-24T03:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3eb44a_2024ee57",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "49102c02_701854fd",
         "filename": "board/adlrvpp_ite/board.c",
@@ -125,10 +150,10 @@
       "side": 1,
       "message": "please do not use .usb23 and TYPE_C_PORT_*_USB2*_NUM.\n\nthis is basically already gone from other boards:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2427632",
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c907e2d6_4592867e",
         "filename": "board/adlrvpp_ite/board.c",
@@ -143,10 +168,10 @@
       "message": "For the timebeing, guarded using - #ifdef CONFIG_INTEL_VIRTUAL_MUX",
       "parentUuid": "49102c02_701854fd",
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "be47dfe8_de26535d",
         "filename": "board/adlrvpp_ite/board.c",
@@ -166,10 +191,10 @@
         "endChar": 0
       },
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f19b31bb_0c91eba7",
         "filename": "board/adlrvpp_ite/board.c",
@@ -190,10 +215,10 @@
         "endChar": 0
       },
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4aaab5b7_416a6459",
         "filename": "board/adlrvpp_ite/board.h",
@@ -207,10 +232,10 @@
       "side": 1,
       "message": "what does the 2nd \u0027p\u0027 in the filename stand for?\nP series SoC?",
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9c4633a1_22516f43",
         "filename": "board/adlrvpp_ite/board.h",
@@ -225,10 +250,28 @@
       "message": "yes!P is one specific series. \nHere, naming pattern kept similar to tglrvpu_ite.",
       "parentUuid": "4aaab5b7_416a6459",
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd23dca_74f91918",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-10-24T03:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c4633a1_22516f43",
+      "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "4de6a770_6155e894",
         "filename": "board/adlrvpp_ite/board.h",
@@ -248,10 +291,10 @@
         "endChar": 36
       },
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "bc6e249f_36667a9f",
         "filename": "board/adlrvpp_ite/board.h",
@@ -272,10 +315,10 @@
         "endChar": 36
       },
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c9a8eb08_e8fc7e53",
         "filename": "board/adlrvpp_ite/build.mk",
@@ -289,10 +332,10 @@
       "side": 1,
       "message": "we know this from line 11",
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "9bdd545a_30732e09",
         "filename": "board/adlrvpp_ite/build.mk",
@@ -307,8 +350,7 @@
       "message": "Ack",
       "parentUuid": "c9a8eb08_e8fc7e53",
       "revId": "070f45974e8ab1feee4a5a650646ac9db6ffaa9c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
