@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f03a8e6_11b7d225",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-10-24T06:14:41Z",
+      "side": 1,
+      "message": "Affirmative. As clarification, this CL was part of an experimental and mandatory series necessary to enact compliance with \"VESA DisplayPort over Type-C v2.0 (Active Cable section)\" and \"Apple MWP32AM/A Thunderbolt 3 Pro Cable (2 m)\".\n\nThis mitigation was not originally intended to be submitted a \"formal fix\" for this issue. It architecturally goes much deeper due to EC RTOS scheduling. See b/155517411 (WNF) for full context on why the issue is \"infeasible\" at its root.\n\nI am unsure for manual of style for citing bugs that are (WNF) as BUG\u003d. Will clean up and refile. Thank you for the guidance!",
+      "parentUuid": "61bd90a5_ac63371d",
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6aea148_41ed2308",
