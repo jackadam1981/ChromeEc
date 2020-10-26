@@ -546,12 +546,26 @@ void board_hibernate(void)
 		return;
 
 	/*
+	 * To support hibernate from ectool, keyboard, and console,
+	 * ensure that the AP is fully shutdown before hibernating.
+	 */
+#ifdef HAS_TASK_CHIPSET
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_BOARD_CUSTOM);
+#endif
+
+	/*
 	 * Enable the PPC power sink path before EC enters hibernate;
 	 * otherwise, ACOK won't go High and can't wake EC up. Check the
 	 * bug b/170324206 for details.
 	 */
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
 		ppc_vbus_sink_enable(i, 1);
+
+	/*
+	 * The AP chipset state machine needs time to work through
+	 * the transitions.
+	 */
+	msleep(300);
 }
 
 __override uint16_t board_get_ps8xxx_product_id(int port)
