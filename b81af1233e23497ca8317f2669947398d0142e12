@@ -22,6 +22,30 @@
       },
       "revId": "b81af1233e23497ca8317f2669947398d0142e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80abb209_d23726e9",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-26T18:09:46Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "9fcaa99b_3a04cfe1",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 3
+      },
+      "revId": "b81af1233e23497ca8317f2669947398d0142e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -100,6 +100,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff7ef778_8d672dfe",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-26T18:09:46Z",
+      "side": 1,
+      "message": "Hi Amara, yes this is needed, we have been testing with this to match the internal guideline spec, where retimer is configured first.",
+      "parentUuid": "84a8d1fd_e7cb7836",
+      "range": {
+        "startLine": 596,
+        "startChar": 3,
+        "endLine": 596,
+        "endChar": 12
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c6b33c3_2baeb276",
         "filename": "board/volteer/board.c",
         "patchSetId": 11
@@ -123,6 +147,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efee7040_6a08f76b",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-26T18:09:46Z",
+      "side": 1,
+      "message": "Yes, same as above.",
+      "parentUuid": "6c6b33c3_2baeb276",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 3
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e3b0b0a_3e810b8b",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 11
@@ -134,6 +182,30 @@
       "writtenOn": "2020-10-23T18:06:36Z",
       "side": 1,
       "message": "This is already defined in timer.h.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "478743fb_f4b3d59a",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-26T18:09:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e3b0b0a_3e810b8b",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -169,6 +241,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edcf9eaa_4e5df650",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-26T18:09:46Z",
+      "side": 1,
+      "message": "This code needs needs to be checked in with the kernel code has dependency. Utkarsh, working on the kernel patch for review. It is sending for all modes.",
+      "parentUuid": "228389b9_4be90cd8",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 1
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0649e0e_34d11fc3",
         "filename": "driver/usb_mux/virtual.c",
         "patchSetId": 11
@@ -180,6 +276,30 @@
       "writtenOn": "2020-10-23T19:10:51Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 71
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e082bae3_1ccbed9e",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-26T18:09:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e0649e0e_34d11fc3",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -230,6 +350,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5148100d_1e336746",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-26T18:09:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66ed81e9_4ff6bc47",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d27d897_77a1a09e",
@@ -253,6 +397,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "784d8d6f_44736596",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-26T18:09:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1d27d897_77a1a09e",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a646fe8_024ebf4f",
@@ -266,6 +434,30 @@
       "writtenOn": "2020-10-23T19:10:51Z",
       "side": 1,
       "message": "both are sharing same bit",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e7c68a8_e4d1d3c9",
+        "filename": "include/task.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-26T18:09:46Z",
+      "side": 1,
+      "message": "Good catch. Will update the patch.",
+      "parentUuid": "7a646fe8_024ebf4f",
       "range": {
         "startLine": 60,
         "startChar": 0,
