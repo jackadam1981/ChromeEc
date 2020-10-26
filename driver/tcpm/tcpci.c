@@ -941,6 +941,7 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 {
 	int reg = TCPC_REG_TX_DATA;
 	int rv, cnt = 4*PD_HEADER_CNT(header);
+	uint8_t total_count;
 
 	/* If not SOP* transmission, just write to the transmit register */
 	if (type >= NUM_SOP_STAR_TYPES) {
@@ -952,6 +953,9 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 			TCPC_REG_TRANSMIT_SET_WITHOUT_RETRY(type));
 	}
 
+	tcpc_lock(port, 1);
+	CPRINTS("TCPC %d: transmit start", port);
+
 	if (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0) {
 		/*
 		 * In TCPCI Rev 2.0, TX_BYTE_CNT and TX_BUF_BYTE_X are the same
@@ -960,7 +964,6 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 		reg = TCPC_REG_TX_BUFFER;
 		/* TX_BYTE_CNT includes extra bytes for message header */
 		cnt += sizeof(header);
-		tcpc_lock(port, 1);
 		rv = tcpc_xfer_unlocked(port, (uint8_t *)&reg, 1, NULL, 0,
 					I2C_XFER_START);
 		rv |= tcpc_xfer_unlocked(port, (uint8_t *)&cnt, 1, NULL, 0, 0);
@@ -974,29 +977,43 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 			rv |= tcpc_xfer_unlocked(port, (uint8_t *)&header,
 					sizeof(header), NULL, 0, I2C_XFER_STOP);
 		}
-		tcpc_lock(port, 0);
 
 		/* If tcpc write fails, return error */
 		if (rv)
-			return rv;
+			goto tx_early_exit;
 	} else {
 		/* TX_BYTE_CNT includes extra bytes for message header */
-		rv = tcpc_write(port, TCPC_REG_TX_BYTE_CNT,
-				cnt + sizeof(header));
-
-		rv |= tcpc_write16(port, TCPC_REG_TX_HDR, header);
+		reg = TCPC_REG_TX_BYTE_CNT;
+		rv = tcpc_xfer_unlocked(port, (uint8_t *)&reg, 1, NULL, 0,
+			I2C_XFER_START);
+		total_count = cnt + sizeof(header);
+		rv |= tcpc_xfer_unlocked(port, &total_count, 1, NULL, 0,
+			I2C_XFER_STOP);
 
 		/* If tcpc write fails, return error */
 		if (rv)
-			return rv;
+			goto tx_early_exit;
+
+		reg = TCPC_REG_TX_HDR;
+		rv = tcpc_xfer_unlocked(port, (uint8_t *)&reg, 1, NULL, 0,
+			I2C_XFER_START);
+		rv |= tcpc_xfer_unlocked(port, (uint8_t *)&header, 2, NULL, 0,
+			I2C_XFER_STOP);
+
+		if (rv)
+			goto tx_early_exit;
 
 		if (cnt > 0) {
-			rv = tcpc_write_block(port, reg, (const uint8_t *)data,
-					      cnt);
+			reg = TCPC_REG_TX_DATA;
+			rv = tcpc_xfer_unlocked(port, (uint8_t *)&reg, 1, NULL,
+				0, I2C_XFER_START);
+
+			rv |= tcpc_xfer_unlocked(port, (const uint8_t *)data,
+				cnt, NULL, 0, I2C_XFER_STOP);
 
 			/* If tcpc write fails, return error */
 			if (rv)
-				return rv;
+				goto tx_early_exit;
 		}
 	}
 
@@ -1007,8 +1024,18 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 	 * The retry count used is dependent on the maximum PD revision
 	 * supported at build time.
 	 */
-	return tcpc_write(port, TCPC_REG_TRANSMIT,
-			  TCPC_REG_TRANSMIT_SET_WITH_RETRY(type));
+	reg = TCPC_REG_TRANSMIT;
+	rv = tcpc_xfer_unlocked(port, (uint8_t *)&reg, 1, NULL, 0,
+		I2C_XFER_START);
+	total_count = TCPC_REG_TRANSMIT_SET_WITH_RETRY(type);
+	rv |= tcpc_xfer_unlocked(port, &total_count, 1, NULL, 0,
+		I2C_XFER_STOP);
+
+tx_early_exit:
+	CPRINTS("TCPC %d: transmit end", port);
+
+	tcpc_lock(port, 0);
+	return rv;
 }
 
 /*
@@ -1141,6 +1168,8 @@ void tcpci_tcpc_alert(int port)
 	int alert_ext = 0;
 	int failed_attempts;
 	uint32_t pd_event = 0;
+
+	CPRINTS("C%d: TCPC alert", port);
 
 	/* Read the Alert register from the TCPC */
 	if (tcpm_alert_status(port, &alert)) {

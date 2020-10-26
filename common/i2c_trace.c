@@ -23,6 +23,20 @@ struct i2c_trace_range {
 
 static struct i2c_trace_range trace_entries[8];
 
+bool i2c_trace_is_enabled(int port, uint16_t slave_addr_flags)
+{
+	size_t i;
+	uint16_t addr = I2C_GET_ADDR(slave_addr_flags);
+
+	for (i = 0; i < ARRAY_SIZE(trace_entries); i++)
+		if (trace_entries[i].enabled
+		    && trace_entries[i].port == port
+		    && trace_entries[i].slave_addr_lo <= addr
+		    && trace_entries[i].slave_addr_hi >= addr)
+			return true;
+	return false;
+}
+
 void i2c_trace_notify(int port, uint16_t slave_addr_flags,
 		      const uint8_t *out_data, size_t out_size,
 		      const uint8_t *in_data, size_t in_size)

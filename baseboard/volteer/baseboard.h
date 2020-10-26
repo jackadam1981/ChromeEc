@@ -10,6 +10,8 @@
 
 #include <stdbool.h>
 
+#define CONFIG_I2C_DEBUG
+
 /*
  * By default, enable all console messages excepted HC
  */
