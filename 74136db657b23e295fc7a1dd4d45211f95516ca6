@@ -22,6 +22,30 @@
       },
       "revId": "74136db657b23e295fc7a1dd4d45211f95516ca6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd192a7_7b398144",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-10-26T08:12:41Z",
+      "side": 1,
+      "message": "Done. Using inline assembly to prevent compiler reordering.",
+      "parentUuid": "5fb995ab_919633c4",
+      "range": {
+        "startLine": 636,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 24
+      },
+      "revId": "74136db657b23e295fc7a1dd4d45211f95516ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
