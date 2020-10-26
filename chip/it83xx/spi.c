@@ -77,14 +77,6 @@ static void spi_set_state(int state)
 	IT83XX_SPI_SPISRDR = spi_response_state[state];
 }
 
-static void reset_rx_fifo(void)
-{
-	/* End Rx FIFO access */
-	IT83XX_SPI_TXRXFAR = 0x00;
-	/* Rx FIFO reset and count monitor reset */
-	IT83XX_SPI_FCR = IT83XX_SPI_RXFR | IT83XX_SPI_RXFCMR;
-}
-
 /* This routine handles spi received unexcepted data */
 static void spi_bad_received_data(int count)
 {
@@ -242,9 +234,6 @@ void spi_slv_int_handler(void)
 	 * EC responded data, then AP ended the transaction.
 	 */
 	if (IT83XX_SPI_ISR & IT83XX_SPI_ENDDETECTINT) {
-		/* Reset fifo and prepare to receive next transaction */
-		if (!IS_ENABLED(IT83XX_SPI_AUTO_RESET_RX_FIFO))
-			reset_rx_fifo();
 		/* Enable Rx byte reach interrupt */
 		if (!IS_ENABLED(IT83XX_SPI_RX_VALID_INT))
 			IT83XX_SPI_IMR &= ~IT83XX_SPI_RX_REACH;
@@ -342,17 +331,14 @@ static void spi_init(void)
 	 * bit3 : Rx FIFO1 will not be overwrited once it's full.
 	 * bit0 : Rx FIFO1/FIFO2 will reset after each CS_N goes high.
 	 */
-	if (IS_ENABLED(IT83XX_SPI_AUTO_RESET_RX_FIFO))
-		IT83XX_SPI_GCR2 = IT83XX_SPI_RXF2OC | IT83XX_SPI_RXF1OC
-					| IT83XX_SPI_RXFAR;
+	IT83XX_SPI_GCR2 = IT83XX_SPI_RXF2OC | IT83XX_SPI_RXF1OC
+				| IT83XX_SPI_RXFAR;
 	/*
 	 * Interrupt mask register (0b:Enable, 1b:Mask)
 	 * bit5 : Rx byte reach interrupt mask
 	 * bit2 : SPI end detection interrupt mask
 	 */
 	IT83XX_SPI_IMR &= ~IT83XX_SPI_EDIM;
-	/* Reset fifo and prepare to for next transaction */
-	reset_rx_fifo();
 	/* Enable Rx byte reach interrupt */
 	if (!IS_ENABLED(IT83XX_SPI_RX_VALID_INT))
 		IT83XX_SPI_IMR &= ~IT83XX_SPI_RX_REACH;
