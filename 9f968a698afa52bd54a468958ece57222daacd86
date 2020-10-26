@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55dbb541_d4af1c21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d012e6ee_8c7d9ccc",
+      "range": {
+        "startLine": 58,
+        "startChar": 39,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4baa53a6_7d99aaee",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-23T21:14:11Z",
       "side": 1,
       "message": "Nit: comma",
+      "range": {
+        "startLine": 59,
+        "startChar": 47,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1908cc00_9b5303f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4baa53a6_7d99aaee",
       "range": {
         "startLine": 59,
         "startChar": 47,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f115df5b_5cb1897c",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bcc2b3_d8b83c9d",
+      "range": {
+        "startLine": 939,
+        "startChar": 9,
+        "endLine": 939,
+        "endChar": 10
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c63c54b_84389ae6",
@@ -83,6 +155,24 @@
       "writtenOn": "2020-10-23T21:14:11Z",
       "side": 1,
       "message": "What will Data Reset do to change this? Isn\u0027t this the logic for entering USB4 mode?",
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f546ca5b_c80431bf",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8c63c54b_84389ae6",
       "revId": "9f968a698afa52bd54a468958ece57222daacd86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb12f2db_a9032415",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done, though for tbt_alt_mode.c, we set the safe state in enter_tbt_compat_mode() - which sets the Thunderbolt payload and returns the size of the payload.",
+      "parentUuid": "7d4ebd79_a988c7b0",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 944,
+        "endChar": 30
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85b572d9_bee4d2cc",
@@ -127,6 +241,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28709643_1045f6db",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85b572d9_bee4d2cc",
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea22c9c1_205b0e5c",
@@ -140,6 +272,30 @@
       "writtenOn": "2020-10-23T21:14:11Z",
       "side": 1,
       "message": "This deviates from the flowchart in the app note in a few ways. For instance, it only contains logic for the cable discovery results, and it doesn\u0027t show the port sending Enter USB for USB 3.2 or USB 2.0 if the cable doesn\u0027t support modal operation. Is this intentional?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1984127_d1298d39",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Yes. Since we are already in USB3.2/USB2.0 mode depending on port partner, it\u0027s not mandatory to resend Enter USB for USB3.2/USB2.0.\n\nAlso, by not entering into USB mode, the port can also check if the port-partner supports DP and fall back on DP instead of USB3.2/USB2.0",
+      "parentUuid": "ea22c9c1_205b0e5c",
       "range": {
         "startLine": 51,
         "startChar": 0,
@@ -173,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c709eb_836d1b2f",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7302a889_66cff4e8",
+      "range": {
+        "startLine": 155,
+        "startChar": 18,
+        "endLine": 155,
+        "endChar": 33
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4175c7f_74419a71",
@@ -186,6 +366,24 @@
       "writtenOn": "2020-10-23T21:14:11Z",
       "side": 1,
       "message": "This can be declared in a smaller scope on line 175.",
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09badfe_3336efec",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4175c7f_74419a71",
       "revId": "9f968a698afa52bd54a468958ece57222daacd86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -215,6 +413,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "405a8c28_cb512eb3",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "I am unable to fit the line within 80 chars",
+      "parentUuid": "675f1dc8_37dada4d",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 34
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3b5d244_baa11242",
         "filename": "common/usbc/usb_mode.c",
         "patchSetId": 15
@@ -226,6 +448,30 @@
       "writtenOn": "2020-10-23T21:14:11Z",
       "side": 1,
       "message": "nit: SVID",
+      "range": {
+        "startLine": 192,
+        "startChar": 19,
+        "endLine": 192,
+        "endChar": 23
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb41ee1_c5baf478",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b5d244_baa11242",
       "range": {
         "startLine": 192,
         "startChar": 19,
@@ -282,6 +528,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b89c73f_57a5a9c6",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae8c574c_86b16fe4",
+      "range": {
+        "startLine": 193,
+        "startChar": 59,
+        "endLine": 193,
+        "endChar": 60
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6070eb58_eb21736f",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df782ffb_dd2e1c8a",
+      "range": {
+        "startLine": 191,
+        "startChar": 13,
+        "endLine": 193,
+        "endChar": 60
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a6e5e3a_75d18961",
@@ -301,6 +595,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b089dd07_94f45b1d",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "We will never come here unless enter_usb_is_capable() is true - In dpm.c file, we check for enter_usb_is_capable(port). If true, we request DPM_REQUEST_ENTER_USB() - which requests for enter_usb_setup_next_msg()\n\nAnd for passive cables, we don\u0027t check for tbt_cable_entry_is_done(). so adding it might disturb the passive cable flow?\n\nShould I still add it?",
+      "parentUuid": "1a6e5e3a_75d18961",
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6a1a0ee_962cbfe8",
         "filename": "common/usbc/usb_mode.c",
         "patchSetId": 15
@@ -312,6 +624,30 @@
       "writtenOn": "2020-10-23T21:14:11Z",
       "side": 1,
       "message": "Is there a way to 1) put these cases in the natural order of the messages they will generate and 2) not use fall-through?",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 48
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b5b17c_d21c8845",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6a1a0ee_962cbfe8",
       "range": {
         "startLine": 257,
         "startChar": 1,
@@ -345,6 +681,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce29ea9c_e19efce1",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32f10a26_426259af",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 38
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f01312b1_2d0eee31",
@@ -358,6 +718,30 @@
       "writtenOn": "2020-10-23T21:14:11Z",
       "side": 1,
       "message": "For the sake of clarity, this should mirror the comment in tbt_alt_mode.c.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bff1343_26385a6f",
+        "filename": "include/usb_mode.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-26T20:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f01312b1_2d0eee31",
       "range": {
         "startLine": 43,
         "startChar": 3,
