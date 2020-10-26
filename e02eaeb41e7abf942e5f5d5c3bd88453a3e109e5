@@ -69,6 +69,24 @@
       "parentUuid": "3028b9ae_6aaa36e2",
       "revId": "e02eaeb41e7abf942e5f5d5c3bd88453a3e109e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2983a2ed_90b0982f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-26T15:12:42Z",
+      "side": 1,
+      "message": "That does sound good; I\u0027ll work on a sysjump tag.  I don\u0027t know that we want to be running the inits on the charger chips when we\u0027re at 15V anyway.",
+      "parentUuid": "01ec416a_e6e9dd5f",
+      "revId": "e02eaeb41e7abf942e5f5d5c3bd88453a3e109e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
