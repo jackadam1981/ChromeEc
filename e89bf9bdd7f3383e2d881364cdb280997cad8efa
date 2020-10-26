@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35896df4_ffc50287",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-26T17:51:58Z",
+      "side": 1,
+      "message": "Please update the the comment to justify the thresholds used below.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "e89bf9bdd7f3383e2d881364cdb280997cad8efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9240f0ef_9d0d3ec2",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-26T17:51:58Z",
+      "side": 1,
+      "message": "These thresholds are identical to the thermal_cpu definition above.  You can eliminate this definition.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "e89bf9bdd7f3383e2d881364cdb280997cad8efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
