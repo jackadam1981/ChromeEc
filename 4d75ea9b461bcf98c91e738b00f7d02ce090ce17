@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7737f4_37d040fb",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-26T18:49:39Z",
+      "side": 1,
+      "message": "shouldn\u0027t we just have a Kconfig depends on CONFIG_PLATFORM_EC to CONFIG_CROS_EC?",
+      "range": {
+        "startLine": 8,
+        "startChar": 21,
+        "endLine": 8,
+        "endChar": 35
+      },
+      "revId": "4d75ea9b461bcf98c91e738b00f7d02ce090ce17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
