@@ -77,6 +77,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84a8d1fd_e7cb7836",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-10-26T08:41:45Z",
+      "side": 1,
+      "message": "is this file changes required? ideally the delay logic works if we send message first to Mux after that to retimer. The base code is doing that. New code retimer is configuring first after that sending the Mux request. Is it correct? These changes are not required. I think Vijay also pointing the same.",
+      "range": {
+        "startLine": 596,
+        "startChar": 3,
+        "endLine": 596,
+        "endChar": 12
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c6b33c3_2baeb276",
         "filename": "board/volteer/board.c",
         "patchSetId": 11
@@ -123,6 +146,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "228389b9_4be90cd8",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-10-26T08:41:45Z",
+      "side": 1,
+      "message": "I think there are multiple issues as follows:\n(1). Backward compatibility issue, with old kernel driver connector class code where there is no subcmd and latest EC. in this case p-\u003esubcmd will be junk, is it correct?\n(2). is connector class code sends the USB_PD_MUX_RESPONSE only for safe mode response or for all modes?\nideally the subcmd should be 16 bit, last 8 bit for USB_PD_MUX_RESPONSE. how do we know the response is for which mux config? So bit 0 is for USB, bit 1 for disconnect, 2 for safe mode...",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 1
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0649e0e_34d11fc3",
         "filename": "driver/usb_mux/virtual.c",
         "patchSetId": 11
@@ -140,6 +186,23 @@
         "endLine": 29,
         "endChar": 71
       },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a904612_ad0f78ef",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-10-26T08:41:45Z",
+      "side": 1,
+      "message": "(1). why wait_count is defined static variable as 2? are we waiting for 200 msec? There is no for loop how do we achieve 200msec?\n\n(2). These changes are not required for the ports where there is no bb_retimer, is it taken care here?",
       "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
