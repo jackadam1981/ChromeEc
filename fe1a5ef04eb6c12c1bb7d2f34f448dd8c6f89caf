@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "473ce98c_9c335687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-26T18:04:25Z",
+      "side": 1,
+      "message": "Thanks for updating this!\n\nHave you tried the vif file generated from this in the GRL?",
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7497dfc_81822369",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-26T18:04:25Z",
+      "side": 1,
+      "message": "doesn\u0027t need to be passed by reference, right? It should be the same level coming in as going  out",
+      "range": {
+        "startLine": 121,
+        "startChar": 42,
+        "endLine": 121,
+        "endChar": 52
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee88497_49bc740e",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-26T18:04:25Z",
+      "side": 1,
+      "message": "whoa, malloc! I haven\u0027t seen this is a while!  (nothing is wrong here)",
+      "range": {
+        "startLine": 460,
+        "startChar": 8,
+        "endLine": 460,
+        "endChar": 14
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ced0fd8_22f63d7f",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-26T18:04:25Z",
+      "side": 1,
+      "message": "maybe just file a bug for this. Sam isn\u0027t going to come back to this",
+      "range": {
+        "startLine": 1112,
+        "startChar": 9,
+        "endLine": 1112,
+        "endChar": 15
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff0d10da_28f50460",
+        "filename": "util/genvif.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-26T18:04:25Z",
+      "side": 1,
+      "message": "Is this a left over developer note to yourself?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 3
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c2b6f9_9378859a",
+        "filename": "util/genvif.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-26T18:04:25Z",
+      "side": 1,
+      "message": "If these enum value correspond to the VIF specification, can you say that in a comment. Also if they do, can you specify the value for each enum value?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "562ef00d_4e1ac06d",
+        "filename": "util/genvif.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-26T18:04:25Z",
+      "side": 1,
+      "message": "can you name this enum (and other is this file)?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
