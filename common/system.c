@@ -945,6 +945,24 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	}
 }
 
+void system_enter_hibernate(int seconds, int microseconds)
+{
+	/*
+	 * If chipset is already off, then call system_hibernate directly. Else,
+	 * let chipset_task bring down the power rails and transition to proper
+	 * state before system_hibernate is called.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		system_hibernate(seconds, microseconds);
+	else {
+		reboot_at_shutdown = EC_REBOOT_HIBERNATE;
+		hibernate_seconds = seconds;
+		hibernate_microseconds = microseconds;
+
+		chipset_force_shutdown(CHIPSET_SHUTDOWN_CONSOLE_CMD);
+	}
+}
+
 /*****************************************************************************/
 /* Hooks */
 
@@ -1081,20 +1099,7 @@ __maybe_unused static int command_hibernate(int argc, char **argv)
 	} else
 		ccprintf("Hibernating until wake pin asserted.\n");
 
-	/*
-	 * If chipset is already off, then call system_hibernate directly. Else,
-	 * let chipset_task bring down the power rails and transition to proper
-	 * state before system_hibernate is called.
-	 */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		system_hibernate(seconds, microseconds);
-	else {
-		reboot_at_shutdown = EC_REBOOT_HIBERNATE;
-		hibernate_seconds = seconds;
-		hibernate_microseconds = microseconds;
-
-		chipset_force_shutdown(CHIPSET_SHUTDOWN_CONSOLE_CMD);
-	}
+	system_enter_hibernate(seconds, microseconds);
 
 	return EC_SUCCESS;
 }
