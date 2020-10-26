@@ -1432,14 +1432,39 @@ static int command_i2cxfer(int argc, char **argv)
 			return EC_ERROR_PARAM5;
 	}
 
+#ifdef GL3590_I2C_ADDR
+/* GL3590 doesn't support repeated start sequence. Issue a dummy write first,
+ * then wait at least 300us and issue start-read-stop sequence (without typical
+ * write with an offset). This chip doesn't support 2-byte offsets.
+ */
+	if ((!strcasecmp(argv[1], "r") ||
+	    !strcasecmp(argv[1], "r16") ||
+	    !strcasecmp(argv[1], "rlen")) &&
+	    (addr_flags == GL3590_I2C_ADDR)) {
+		if (offset_size != 1)
+			return EC_ERROR_PARAM4;
+
+		rv = i2c_xfer(port, addr_flags,
+			      (uint8_t *)&offset, 1, NULL, 0);
+		udelay(400);
+	}
+#endif
+
 	if (strcasecmp(argv[1], "r") == 0) {
 		/* 8-bit read */
 		if (offset_size == 2)
 			rv = i2c_read_offset16(port, addr_flags,
 					       offset, &v, 1);
-		else
-			rv = i2c_read8(port, addr_flags,
-				       offset, &v);
+		else {
+#ifdef GL3590_I2C_ADDR
+			if (addr_flags == GL3590_I2C_ADDR)
+				rv = i2c_xfer(port, addr_flags,
+					NULL, 0, (uint8_t *)&v, 1);
+			else
+#endif
+				rv = i2c_read8(port, addr_flags,
+					       offset, &v);
+		}
 		if (!rv)
 			ccprintf("0x%02x [%d]\n", v, v);
 
@@ -1449,8 +1474,14 @@ static int command_i2cxfer(int argc, char **argv)
 			rv = i2c_read_offset16(port, addr_flags,
 					       offset, &v, 2);
 		else
-			rv = i2c_read16(port, addr_flags,
-					offset, &v);
+#ifdef GL3590_I2C_ADDR
+			if (addr_flags == GL3590_I2C_ADDR)
+				rv = i2c_xfer(port, addr_flags,
+					NULL, 0, (uint8_t *)&v, 2);
+			else
+#endif
+				rv = i2c_read16(port, addr_flags,
+						offset, &v);
 		if (!rv)
 			ccprintf("0x%04x [%d]\n", v, v);
 
@@ -1458,10 +1489,14 @@ static int command_i2cxfer(int argc, char **argv)
 		/* Arbitrary length read; param5 = len */
 		if (argc < 6 || v < 0 || v > sizeof(data))
 			return EC_ERROR_PARAM5;
-
-		rv = i2c_xfer(port, addr_flags,
-			      (uint8_t *)&offset, 1, data, v);
-
+#ifdef GL3590_I2C_ADDR
+		if (addr_flags == GL3590_I2C_ADDR)
+			rv = i2c_xfer(port, addr_flags,
+				NULL, 0, data, v);
+		else
+#endif
+			rv = i2c_xfer(port, addr_flags,
+				      (uint8_t *)&offset, 1, data, v);
 		if (!rv)
 			ccprintf("Data: %ph\n", HEX_BUF(data, v));
 
