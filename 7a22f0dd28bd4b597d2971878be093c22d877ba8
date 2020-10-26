@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab600898_6a0ff4cc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5914,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-26T18:14:52Z",
+      "side": 1,
+      "message": "This needs to be split into a separate CL with justification why this is needed.",
+      "range": {
+        "startLine": 5912,
+        "startChar": 0,
+        "endLine": 5914,
+        "endChar": 28
+      },
+      "revId": "7a22f0dd28bd4b597d2971878be093c22d877ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6188506d_b0ec0537",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-26T18:14:52Z",
+      "side": 1,
+      "message": "Why not also add support for SOP\u0027\u0027 (Sync-1, sync-3, sync-1, sync-3)? This is needed for active cable support.",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 873,
+        "endChar": 24
+      },
+      "revId": "7a22f0dd28bd4b597d2971878be093c22d877ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
