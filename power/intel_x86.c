@@ -208,7 +208,9 @@ static void handle_chipset_reset(void)
 	if (chipset_in_state(CHIPSET_STATE_STANDBY)) {
 		CPRINTS("chipset reset: exit s0ix");
 		power_reset_host_sleep_state();
+#ifndef CONFIG_ZEPHYR
 		task_wake(TASK_ID_CHIPSET);
+#endif
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
@@ -578,7 +580,9 @@ __override void power_chipset_handle_host_sleep_event(
 		 * listeners need to be notified of chipset resume.
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_RESUME);
+#ifndef CONFIG_ZEPHYR
 		task_wake(TASK_ID_CHIPSET);
+#endif
 		lpc_s0ix_resume_restore_masks();
 		power_signal_disable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 		sleep_complete_resume(ctx);

@@ -14,9 +14,17 @@ enum gpio_signal {
 #if DT_NODE_EXISTS(DT_PATH(named_gpios))
 	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_SIGNAL_WITH_COMMA)
 #endif
-	GPIO_COUNT
+	GPIO_COUNT,
+	GPIO_LIMIT = 0x0FFF,
 };
 #undef GPIO_SIGNAL_WITH_COMMA
+
+enum ioex_signal {
+	IOEX_SIGNAL_START = GPIO_LIMIT + 1,
+	__IOEX_PLACEHOLDER = GPIO_LIMIT,
+	IOEX_SIGNAL_END,
+	IOEX_LIMIT = 0x1FFF,
+};
 
 /** @brief Converts a node identifier under named gpios to enum
  *
