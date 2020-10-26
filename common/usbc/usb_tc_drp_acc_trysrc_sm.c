@@ -2264,11 +2264,11 @@ static void tc_attached_snk_entry(const int port)
 				CAP_DUALROLE : CAP_DEDICATED);
 		}
 
-		/* Attached.SNK - enable AutoDischargeDisconnect */
-		tcpm_enable_auto_discharge_disconnect(port, 1);
-
 		/* Apply Rd */
 		typec_update_cc(port);
+
+		/* Attached.SNK - enable AutoDischargeDisconnect */
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 	}
 
 	tc[port].cc_debounce = 0;
