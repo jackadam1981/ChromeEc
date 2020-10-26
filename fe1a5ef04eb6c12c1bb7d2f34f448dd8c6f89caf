@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72bf3f84_d00233d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-26T19:33:36Z",
+      "side": 1,
+      "message": "I have not had time to work on GRL. I did this over the weekend to make sure I got the base done during the only spare cycles that I currently have.",
+      "parentUuid": "473ce98c_9c335687",
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7497dfc_81822369",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-26T18:04:25Z",
       "side": 1,
       "message": "doesn\u0027t need to be passed by reference, right? It should be the same level coming in as going  out",
+      "range": {
+        "startLine": 121,
+        "startChar": 42,
+        "endLine": 121,
+        "endChar": 52
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7e04628_88a3ce0b",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-26T19:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7497dfc_81822369",
       "range": {
         "startLine": 121,
         "startChar": 42,
@@ -87,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "760d6aa8_c33c705e",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-26T19:33:36Z",
+      "side": 1,
+      "message": "I am not sure the comment needs to even be there... There are a lot of places that things will change to handle other project needs. If this changes for a board, then that would be a good time to add that feature change in.",
+      "parentUuid": "4ced0fd8_22f63d7f",
+      "range": {
+        "startLine": 1112,
+        "startChar": 9,
+        "endLine": 1112,
+        "endChar": 15
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff0d10da_28f50460",
@@ -100,6 +166,30 @@
       "writtenOn": "2020-10-26T18:04:25Z",
       "side": 1,
       "message": "Is this a left over developer note to yourself?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 3
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba7bd5f_b3a0e0ed",
+        "filename": "util/genvif.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-26T19:33:36Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "ff0d10da_28f50460",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -133,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f00adaa_dfbc73b5",
+        "filename": "util/genvif.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-26T19:33:36Z",
+      "side": 1,
+      "message": "These are not in the vif spec and used only internally to know the state of the port type. usb_speed is and I will document that as well as setting a known value. I moved both of these over to genvif.c",
+      "parentUuid": "d0c2b6f9_9378859a",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "562ef00d_4e1ac06d",
@@ -146,6 +260,30 @@
       "writtenOn": "2020-10-26T18:04:25Z",
       "side": 1,
       "message": "can you name this enum (and other is this file)?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "fe1a5ef04eb6c12c1bb7d2f34f448dd8c6f89caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6914e36_6208f7a9",
+        "filename": "util/genvif.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-26T19:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "562ef00d_4e1ac06d",
       "range": {
         "startLine": 49,
         "startChar": 0,
