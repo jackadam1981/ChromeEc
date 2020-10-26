@@ -16,6 +16,40 @@
       "message": "This looks good to me. Adding Keith and Diana to verify this does not break their devices. This is a +2 for Zork but the location of AutoDischargeDisconnect varies for TCPC chips.",
       "revId": "761bb9a73333dba58cdf4ff146790f7af9575d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48058370_cc059df3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-26T22:16:14Z",
+      "side": 1,
+      "message": "I can try this on my waddledoo in the next day or so to ensure this plays nicely.  Does TCPCI not specify a required ordering between these registers being set? ",
+      "revId": "761bb9a73333dba58cdf4ff146790f7af9575d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a7ae28e_9becd6c7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2270,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-26T22:16:14Z",
+      "side": 1,
+      "message": "Assuming this is a great place to enable this always and forever, include a comment telling future generations of the wisdom in this ordering",
+      "revId": "761bb9a73333dba58cdf4ff146790f7af9575d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
