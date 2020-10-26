@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98162bf2_1da7e3eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-26T19:22:37Z",
+      "side": 1,
+      "message": "There\u0027s no doubt that this is less complex, just wanted to point out the fragility.",
+      "parentUuid": "9f56f81b_abcf753d",
+      "revId": "b129d466edd663f97b7eeb0495f51268ce937f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "563864e7_ad70a1d7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
