@@ -124,6 +124,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "257a3eb1_ce022354",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-26T22:13:21Z",
+      "side": 1,
+      "message": "I think this would be past the intended level of detail for the flow chart, but we could add an FAQ for it.",
+      "parentUuid": "507bdfd5_c734339c",
+      "revId": "b129d466edd663f97b7eeb0495f51268ce937f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7d7529_e0ddba84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-26T22:13:21Z",
+      "side": 1,
+      "message": "Acknowledged as fragile, and I\u0027d like to strongly discourage the ODMs from keeping the port in this state past EC flashing time.\n\nI think the best approach would be to encourage the ODMs to reboot the EC after flashing it.  That way, the EC will set open and brown out and then not set open next boot, and we\u0027ll have a nice fresh PD contract in place.  This should be a consistent approach as long as we know the RW portion of the next boot after brown out will be able to catch the partner\u0027s source caps.",
+      "parentUuid": "98162bf2_1da7e3eb",
+      "revId": "b129d466edd663f97b7eeb0495f51268ce937f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "563864e7_ad70a1d7",
@@ -137,6 +173,24 @@
       "writtenOn": "2020-10-22T22:33:21Z",
       "side": 1,
       "message": "Maybe add a brief print describing what\u0027s about to happen and why.",
+      "revId": "b129d466edd663f97b7eeb0495f51268ce937f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8184c08c_2708c6de",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3280,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-26T22:13:21Z",
+      "side": 1,
+      "message": "Done.  Also included that it\u0027s recommended to reboot the EC in case the factory wants to run anything like DP over this port after flashing the EC.",
+      "parentUuid": "563864e7_ad70a1d7",
       "revId": "b129d466edd663f97b7eeb0495f51268ce937f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
