@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f56f81b_abcf753d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-26T15:26:12Z",
+      "side": 1,
+      "message": "Most of my desire to avoid the BBRAM flags is related to having to do many bug fixes for situations where we were maintaining DP alt mode contracts over sysjumps and EC resets in the factory.\n\nIf we can decide on some conditions such that, the majority of the time, we\u0027re still forcing new connections by setting the error recovery state, then we could create a no-battery BBRAM carve-out to use here.  I\u0027m not certain the extent to which we want to cover the usages such as alternate modes, which are becoming progressively more complex to enter and exit as we add new technologies.  I do worry that if we add BBRAM for no-battery flashing, we\u0027ll get attempts to use them for less necessary situations as well.  \n\nI should note that octopus will need something similar to this hard reset avoidance logic for depleted battery boots, though in that case we would have only had a type-c contract from RO when we delay hard resetting so Rp will still be a valid current indication.",
+      "parentUuid": "88618aae_da323d91",
+      "revId": "b129d466edd663f97b7eeb0495f51268ce937f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "563864e7_ad70a1d7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
