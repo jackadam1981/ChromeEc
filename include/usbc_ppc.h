@@ -91,7 +91,7 @@ struct ppc_drv {
 	 * @return EC_SUCCESS on success, error otherwise.
 	 */
 	int (*set_vbus_source_current_limit)(int port, enum tcpc_rp_value rp);
-
+	int (*scott_poweroff)(int port, int enable);
 	/**
 	 * Discharge PD VBUS on src/sink disconnect & power role swap
 	 *
