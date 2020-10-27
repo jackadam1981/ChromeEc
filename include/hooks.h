@@ -235,6 +235,12 @@ enum hook_type {
 	 * USB PD cc connection event.
 	 */
 	HOOK_USB_PD_CONNECT,
+
+	/*
+	 * Not a hook type (instead the number of hooks). This should
+	 * always be placed at the end of this enumeration.
+	 */
+	HOOK_TYPE_COUNT,
 };
 
 struct hook_data {
@@ -258,6 +264,9 @@ struct hook_data {
  */
 void hook_notify(enum hook_type type);
 
+#if defined(CONFIG_ZEPHYR)
+#include "zephyr_hooks_shim.h"
+#elif defined(CONFIG_COMMON_RUNTIME)
 struct deferred_data {
 	/* Deferred function pointer */
 	void (*routine)(void);
@@ -279,12 +288,6 @@ struct deferred_data {
  */
 int hook_call_deferred(const struct deferred_data *data, int us);
 
-/*
- * Hooks are not currently supported by the Zephyr shim.
- * TODO(b/168799177): Implement compatible DECLARE_HOOK macro for
- * Zephyr OS.
- */
-#if defined(CONFIG_COMMON_RUNTIME) && !defined(CONFIG_ZEPHYR)
 /**
  * Register a hook routine.
  *
@@ -342,6 +345,7 @@ int hook_call_deferred(const struct deferred_data *data, int us);
 	__attribute__((section(".rodata.deferred")))			\
 	     = {routine}
 #else  /* !defined(CONFIG_COMMON_RUNTIME) || defined(CONFIG_ZEPHYR) */
+#define hook_call_deferred(unused1, unused2) -1
 #define DECLARE_HOOK(t, func, p)				\
 	void CONCAT2(unused_hook_, func)(void) { func(); }
 #define DECLARE_DEFERRED(func)					\
