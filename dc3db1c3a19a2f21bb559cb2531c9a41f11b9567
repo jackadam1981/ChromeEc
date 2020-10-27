@@ -148,6 +148,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "739737a8_397b0b31",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-27T17:56:27Z",
+      "side": 1,
+      "message": "Hi Amara,\nIt is true that still retimer gets notified first due to the lag for SoC programming but with ACK mechanism added this will not be the case anymore, as we do want that retimer is programmed first from EC, matching the spec guidelines it is cleaner to add this change. Agreed, need to make changes to all the boards. I will update that.",
+      "parentUuid": "3c7444c8_35cadb12",
+      "range": {
+        "startLine": 596,
+        "startChar": 3,
+        "endLine": 596,
+        "endChar": 12
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c6b33c3_2baeb276",
         "filename": "board/volteer/board.c",
         "patchSetId": 11
@@ -365,6 +389,24 @@
       "side": 1,
       "message": "Divya, Ayushee\nplease reply for the above queries/issues.",
       "parentUuid": "1a904612_ad0f78ef",
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fb3ca2f_9c080a8b",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-27T17:56:27Z",
+      "side": 1,
+      "message": "Hi Amara, I will add the BB retimer only config in the next patchset. \nThis patch is not waiting for 200msec. 100msec is timeout in case no ACK is received from the kernel. In normal cases the ACK will be returned much earlier than that. The value 2 for the count is to ensure waiting for the ACK from kernel for safe state and one following this state. I will add comment for the same in the code.",
+      "parentUuid": "16536958_3a7b5e5a",
       "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
