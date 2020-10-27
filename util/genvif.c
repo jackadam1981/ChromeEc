@@ -24,6 +24,12 @@
 
 #include "genvif.h"
 
+#define VIF_APP_VENDOR_VALUE	"Google"
+#define VIF_APP_NAME_VALUE	"EC GENVIF"
+#define VIF_APP_VERSION_VALUE	"3.0.0.3"
+#define VENDOR_NAME_VALUE	"Google"
+
+
 const uint32_t *src_pdo;
 uint32_t src_pdo_cnt;
 
@@ -415,6 +421,8 @@ static void vif_output_xml(FILE *vif_file, struct vif_t *vif)
 {
 	int level = 0;
 
+	vif_out_str(vif_file, level,
+		"<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 	vif_out_str(vif_file, level++,
 		"<VIF xmlns=\"http://usb.org/VendorInfoFile.xsd\">");
 
@@ -433,9 +441,9 @@ static void vif_output_xml(FILE *vif_file, struct vif_t *vif)
  * VIF Structure Initialization Helper Functions
  */
 static void set_vif_field(struct vif_field_t *vif_field,
-			char *name,
-			char *tag_value,
-			char *str_value)
+			const char *name,
+			const char *tag_value,
+			const char *str_value)
 {
 	char *ptr;
 
@@ -456,8 +464,8 @@ static void set_vif_field(struct vif_field_t *vif_field,
 	}
 }
 __maybe_unused static void set_vif_field_b(struct vif_field_t *vif_field,
-			char *name,
-			bool val)
+			const char *name,
+			const bool val)
 {
 	if (val)
 		set_vif_field(vif_field, name, "true", "YES");
@@ -465,9 +473,9 @@ __maybe_unused static void set_vif_field_b(struct vif_field_t *vif_field,
 		set_vif_field(vif_field, name, "false", "NO");
 }
 __maybe_unused static void set_vif_field_stis(struct vif_field_t *vif_field,
-			char *name,
-			char *tag_value,
-			int str_value)
+			const char *name,
+			const char *tag_value,
+			const int str_value)
 {
 	char str_str[80];
 
@@ -475,9 +483,9 @@ __maybe_unused static void set_vif_field_stis(struct vif_field_t *vif_field,
 	set_vif_field(vif_field, name, tag_value, str_str);
 }
 __maybe_unused static void set_vif_field_itss(struct vif_field_t *vif_field,
-			char *name,
-			int tag_value,
-			char *str_value)
+			const char *name,
+			const int tag_value,
+			const char *str_value)
 {
 	char str_tag[80];
 
@@ -485,9 +493,9 @@ __maybe_unused static void set_vif_field_itss(struct vif_field_t *vif_field,
 	set_vif_field(vif_field, name, str_tag, str_value);
 }
 __maybe_unused static void set_vif_field_itis(struct vif_field_t *vif_field,
-			char *name,
-			int tag_value,
-			int str_value)
+			const char *name,
+			const int tag_value,
+			const int str_value)
 {
 	char str_tag[80];
 	char str_str[80];
@@ -504,10 +512,201 @@ __maybe_unused static void set_vif_field_itis(struct vif_field_t *vif_field,
 /*****************************************************************************
  * VIF Structure Initialization from Config Functions
  */
+/*
+ * Fields that are not currently being initialized
+ *
+ * vif_cableSVIDModeList
+ *	SVID_Mode_Enter				booleanFieldType
+ *	SVID_Mode_Recog_Mask			numericFieldType
+ *	SVID_Mode_Recog_Value			numericFieldType
+ *
+ * vif_cableSVIDList
+ *	SVID					numericFieldType
+ *	SVID_Modes_Fixed			booleanFieldType
+ *	SVID_Num_Modes_Min			numericFieldType
+ *	SVID_Num_Modes_Max			numericFieldType
+ *
+ * vif_sopSVIDModeList
+ *	SVID_Mode_Enter_SOP			booleanFieldType
+ *	SVID_Mode_Recog_Mask_SOP		numericFieldType
+ *	SVID_Mode_Recog_Value_SOP		numericFieldType
+ *
+ * vif_sopSVIDList
+ *	SVID_SOP				numericFieldType
+ *	SVID_Modes_Fixed_SOP			booleanFieldType
+ *	SVID_Num_Modes_Min_SOP			numericFieldType
+ *	SVID_Num_Modes_Max_SOP			numericFieldType
+ *
+ * vif_srcPdoList
+ *	Src_PD_OCP_OC_Debounce			numericFieldType
+ *	Src_PD_OCP_OC_Threshold			numericFieldType
+ *	Src_PD_OCP_UV_Debounce			numericFieldType
+ *	Src_PD_OCP_UV_Threshold_Type		numericFieldType
+ *	Src_PD_OCP_UV_Threshold			numericFieldType
+ *
+ * vif_PCIeEndpointListType
+ *	USB4_PCIe_Endpoint_Vendor_ID		numericFieldType
+ *	USB4_PCIe_Endpoint_Device_ID		numericFieldType
+ *	USB4_PCIe_Endpoint_Class_Code		numericFieldType
+ *
+ * vif_Usb4RouterListType
+ *	USB4_Router_ID				numericFieldType
+ *	USB4_Silicon_VID			numericFieldType
+ *	USB4_Num_Lane_Adapters			numericFieldType
+ *	USB4_Num_USB3_DN_Adapters		numericFieldType
+ *	USB4_Num_DP_IN_Adapters			numericFieldType
+ *	USB4_Num_DP_OUT_Adapters		numericFieldType
+ *	USB4_Num_PCIe_DN_Adapters		numericFieldType
+ *	USB4_TBT3_Not_Supported			numericFieldType
+ *	USB4_PCIe_Wake_Supported		booleanFieldType
+ *	USB4_USB3_Wake_Supported		booleanFieldType
+ *	USB4_Num_Unused_Adapters		numericFieldType
+ *	USB4_TBT3_VID				numericFieldType
+ *	USB4_PCIe_Switch_Vendor_ID		numericFieldType
+ *	USB4_PCIe_Switch_Device_ID		numericFieldType
+ *	USB4_Num_PCIe_Endpoints			numericFieldType
+ *
+ * vif_Component
+ *	USB4_Supported				booleanFieldType
+ *	PD_Spec_Revision_Major			numericFieldType
+ *	PD_Spec_Revision_Minor			numericFieldType
+ *	PD_Spec_Version_Major			numericFieldType
+ *	PD_Spec_Version_Minor			numericFieldType
+ *	Manufacturer_Info_VID_Port		numericFieldType
+ *	ID_Header_Connector_Type_SOP		numericFieldType
+ *	USB4_Router_Index			numericFieldType
+ *	USB4_Lane_0_Adapter			numericFieldType
+ *	USB4_Max_Speed				numericFieldType
+ *	USB4_DFP_Supported			booleanFieldType
+ *	USB4_UFP_Supported			booleanFieldType
+ *	USB4_USB3_Tunneling_Supported		booleanFieldType
+ *	USB4_DP_Tunneling_Supported		booleanFieldType
+ *	USB4_PCIe_Tunneling_Supported		booleanFieldType
+ *	USB4_TBT3_Compatibility_Supported	booleanFieldType
+ *	USB4_CL1_State_Supported		booleanFieldType
+ *	USB4_CL2_State_Supported		booleanFieldType
+ *	USB4_Num_Retimers			numericFieldType
+ *	USB4_DP_Bit_Rate			numericFieldType
+ *	USB4_Num_DP_Lanes			numericFieldType
+ *	Host_Supports_USB_Data			booleanFieldType
+ *	Host_Speed				numericFieldType
+ *	Host_Contains_Captive_Retimer		booleanFieldType
+ *	Host_Truncates_DP_For_tDHPResponse	booleanFieldType
+ *	Host_Gen1x1_tLinkTurnaround		numericFieldType
+ *	Host_Gen2x1_tLinkTurnaround		numericFieldType
+ *	Host_Is_Embedded			booleanFieldType
+ *	Host_Suspend_Supported			booleanFieldType
+ *	Is_DFP_On_Hub				booleanFieldType
+ *	Hub_Port_Number				numericFieldType
+ *	Device_Supports_USB_Data		booleanFieldType
+ *	Device_Contains_Captive_Retimer		booleanFieldType
+ *	Device_Truncates_DP_For_tDHPResponse	booleanFieldType
+ *	Device_Gen1x1_tLinkTurnaround		numericFieldType
+ *	Device_Gen2x1_tLinkTurnaround		numericFieldType
+ *	BC_1_2_Charging_Port_Type		numericFieldType
+ *	FR_Swap_Type_C_Current_Capability_As_Initial_Sink numericFieldType
+ *	Master_Port				booleanFieldType
+ *	Requests_PR_Swap_As_Snk			booleanFieldType
+ *	FR_Swap_Supported_As_Initial_Sink	booleanFieldType
+ *	XID_SOP					numericFieldType
+ *	Data_Capable_As_USB_Host_SOP		booleanFieldType
+ *	Data_Capable_As_USB_Device_SOP		booleanFieldType
+ *	Product_Type_UFP_SOP			numericFieldType
+ *	Product_Type_DFP_SOP			numericFieldType
+ *	DFP_VDO_Port_Number			numericFieldType
+ *	Modal_Operation_Supported_SOP		booleanFieldType
+ *	USB_VID_SOP				numericFieldType
+ *	PID_SOP					numericFieldType
+ *	bcdDevice_SOP				numericFieldType
+ *	SVID_Fixed_SOP				booleanFieldType
+ *	Num_SVIDs_Min_SOP			numericFieldType
+ *	Num_SVIDs_Max_SOP			numericFieldType
+ *	AMA_HW_Vers				numericFieldType
+ *	AMA_FW_Vers				numericFieldType
+ *	AMA_VCONN_Reqd				booleanFieldType
+ *	AMA_VCONN_Power				booleanFieldType
+ *	AMA_VBUS_Reqd				booleanFieldType
+ *	AMA_Superspeed_Support			numericFieldType
+ *	Product_Total_Source_Power_mW		numericFieldType
+ *	Port_Source_Power_Type			numericFieldType
+ *	Port_Source_Power_Gang			nonEmptyString
+ *	Port_Source_Power_Gang_Max_Power	numericFieldType
+ *	XID					numericFieldType
+ *	Data_Capable_As_USB_Host		booleanFieldType
+ *	Data_Capable_As_USB_Device		booleanFieldType
+ *	Product_Type				numericFieldType
+ *	Modal_Operation_Supported		booleanFieldType
+ *	USB_VID					numericFieldType
+ *	PID					numericFieldType
+ *	bcdDevice				numericFieldType
+ *	Cable_HW_Vers				numericFieldType
+ *	Cable_FW_Vers				numericFieldType
+ *	Type_C_To_Type_A_B_C			numericFieldType
+ *	Type_C_To_Type_C_Capt_Vdm_V2		numericFieldType
+ *	Cable_Latency				numericFieldType
+ *	Cable_Termination_Type			numericFieldType
+ *	VBUS_Through_Cable			booleanFieldType
+ *	Cable_VBUS_Current			numericFieldType
+ *	Cable_Superspeed_Support		numericFieldType
+ *	Cable_USB_Highest_Speed			numericFieldType
+ *	Max_VBUS_Voltage_Vdm_V2			numericFieldType
+ *	Manufacturer_Info_VID			numericFieldType
+ *	Chunking_Implemented			booleanFieldType
+ *	Security_Msgs_Supported			booleanFieldType
+ *	ID_Header_Connector_Type		numericFieldType
+ *	SVID_Fixed				booleanFieldType
+ *	Cable_Num_SVIDs_Min			numericFieldType
+ *	Cable_Num_SVIDs_Max			numericFieldType
+ *	VPD_HW_Vers				numericFieldType
+ *	VPD_FW_Vers				numericFieldType
+ *	VPD_Max_VBUS_Voltage			numericFieldType
+ *	VPD_Charge_Through_Support		booleanFieldType
+ *	VPD_Charge_Through_Current		numericFieldType
+ *	VPD_VBUS_Impedance			numericFieldType
+ *	VPD_Ground_Impedance			numericFieldType
+ *	Cable_SOP_PP_Controller			booleanFieldType
+ *	SBU_Supported				booleanFieldType
+ *	SBU_Type				numericFieldType
+ *	Active_Cable_Operating_Temp_Support	booleanFieldType
+ *	Active_Cable_Max_Operating_Temp		numericFieldType
+ *	Active_Cable_Shutdown_Temp_Support	booleanFieldType
+ *	Active_Cable_Shutdown_Temp		numericFieldType
+ *	Active_Cable_U3_CLd_Power		numericFieldType
+ *	Active_Cable_U3_U0_Trans_Mode		numericFieldType
+ *	Active_Cable_Physical_Connection	numericFieldType
+ *	Active_Cable_Active_Element		numericFieldType
+ *	Active_Cable_USB4_Support		booleanFieldType
+ *	Active_Cable_USB2_Hub_Hops_Consumed	numericFieldType
+ *	Active_Cable_USB2_Supported		booleanFieldType
+ *	Active_Cable_USB32_Supported		booleanFieldType
+ *	Active_Cable_USB_Lanes			numericFieldType
+ *	Active_Cable_Optically_Isolated		booleanFieldType
+ *	Active_Cable_USB_Gen			numericFieldType
+ *	Repeater_One_Type			numericFieldType
+ *	Repeater_Two_Type			numericFieldType
+ *
+ * vif_Product
+ *	Product_VID				numericFieldType
+ *	USB4_Dock				booleanFieldType
+ *	USB4_Num_Internal_Host_Controllers	numericFieldType
+ *	USB4_Num_PCIe_DN_Bridges		numericFieldType
+ *	USB4_Audio_Supported			booleanFieldType
+ *	USB4_HID_Supported			booleanFieldType
+ *	USB4_Printer_Supported			booleanFieldType
+ *	USB4_Mass_Storage_Supported		booleanFieldType
+ *	USB4_Video_Supported			booleanFieldType
+ *	USB4_Comms_Networking_Supported		booleanFieldType
+ *	USB4_Media_Transfer_Protocol_Supported	booleanFieldType
+ *	USB4_Smart_Card_Supported		booleanFieldType
+ *	USB4_Still_Image_Capture_Supported	booleanFieldType
+ *	USB4_Monitor_Device_Supported		booleanFieldType
+ */
+
 __maybe_unused static int32_t set_vif_snk_pdo(struct vif_snkPdoList_t *snkPdo,
 					      uint32_t pdo)
 {
 	int32_t power;
+	char str[40];
 
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_FIXED) {
 		uint32_t current = pdo & 0x3ff;
@@ -517,13 +716,15 @@ __maybe_unused static int32_t set_vif_snk_pdo(struct vif_snkPdoList_t *snkPdo,
 
 		set_vif_field(&snkPdo->vif_field[Snk_PDO_Supply_Type],
 				"Snk_PDO_Supply_Type",
-				"0", NULL);
+				"0", "Fixed");
+		sprintf(str, "%dmV", voltage * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Voltage],
 				"Snk_PDO_Voltage",
-				voltage, NULL);
+				voltage, str);
+		sprintf(str, "%dmA", current * 10);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Op_Current],
 				"Snk_PDO_Op_Current",
-				current, NULL);
+				current, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 		uint32_t max_voltage = (pdo >> 20) & 0x3ff;
@@ -533,16 +734,19 @@ __maybe_unused static int32_t set_vif_snk_pdo(struct vif_snkPdoList_t *snkPdo,
 
 		set_vif_field(&snkPdo->vif_field[Snk_PDO_Supply_Type],
 				"Snk_PDO_Supply_Type",
-				"1", NULL);
+				"1", "Battery");
+		sprintf(str, "%dmV", min_voltage * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Min_Voltage],
 				"Snk_PDO_Min_Voltage",
-				min_voltage, NULL);
+				min_voltage, str);
+		sprintf(str, "%dmV", max_voltage * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Max_Voltage],
 				"Snk_PDO_Max_Voltage",
-				max_voltage, NULL);
+				max_voltage, str);
+		sprintf(str, "%dmW", power * 250);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Op_Power],
 				"Snk_PDO_Op_Power",
-				power, NULL);
+				power, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_VARIABLE) {
 		uint32_t max_voltage = (pdo >> 20) & 0x3ff;
@@ -553,16 +757,19 @@ __maybe_unused static int32_t set_vif_snk_pdo(struct vif_snkPdoList_t *snkPdo,
 
 		set_vif_field(&snkPdo->vif_field[Snk_PDO_Supply_Type],
 				"Snk_PDO_Supply_Type",
-				"2", NULL);
+				"2", "Variable (non-battery)");
+		sprintf(str, "%dmV", min_voltage * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Min_Voltage],
 				"Snk_PDO_Min_Voltage",
-				min_voltage, NULL);
+				min_voltage, str);
+		sprintf(str, "%dmV", min_voltage * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Max_Voltage],
 				"Snk_PDO_Max_Voltage",
-				max_voltage, NULL);
+				max_voltage, str);
+		sprintf(str, "%dmA", current * 10);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Op_Current],
 				"Snk_PDO_Op_Current",
-				current, NULL);
+				current, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
 		uint32_t pps = (pdo >> 28) & 3;
@@ -577,16 +784,19 @@ __maybe_unused static int32_t set_vif_snk_pdo(struct vif_snkPdoList_t *snkPdo,
 
 		set_vif_field(&snkPdo->vif_field[Snk_PDO_Supply_Type],
 				"Snk_PDO_Supply_Type",
-				"3", NULL);
+				"3", "PPS");
+		sprintf(str, "%dmA", pps_current * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Op_Current],
 				"Snk_PDO_Op_Current",
-				pps_current, NULL);
+				pps_current, str);
+		sprintf(str, "%dmV", pps_min_voltage * 100);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Min_Voltage],
 				"Snk_PDO_Min_Voltage",
-				pps_min_voltage, NULL);
+				pps_min_voltage, str);
+		sprintf(str, "%dmV", pps_max_voltage * 100);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Max_Voltage],
 				"Snk_PDO_Max_Voltage",
-				pps_max_voltage, NULL);
+				pps_max_voltage, str);
 	} else {
 		fprintf(stderr, "ERROR: Invalid PDO_TYPE %d.\n", pdo);
 		return -1;
@@ -599,6 +809,7 @@ __maybe_unused static int32_t set_vif_src_pdo(struct vif_srcPdoList_t *srcPdo,
 					      uint32_t pdo)
 {
 	int32_t power;
+	char str[40];
 
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_FIXED) {
 		uint32_t current = pdo & 0x3ff;
@@ -608,16 +819,18 @@ __maybe_unused static int32_t set_vif_src_pdo(struct vif_srcPdoList_t *srcPdo,
 
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Supply_Type],
 				"Src_PDO_Supply_Type",
-				"0", NULL);
+				"0", "Fixed");
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Peak_Current],
 				"Src_PDO_Peak_Current",
-				"0", NULL);
+				"0", "100% IOC");
+		sprintf(str, "%dmV", voltage * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Voltage],
 				"Src_PDO_Voltage",
-				voltage, NULL);
+				voltage, str);
+		sprintf(str, "%dmA", current * 10);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Current],
 				"Src_PDO_Max_Current",
-				current, NULL);
+				current, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 		uint32_t max_voltage = (pdo >> 20) & 0x3ff;
@@ -627,16 +840,19 @@ __maybe_unused static int32_t set_vif_src_pdo(struct vif_srcPdoList_t *srcPdo,
 
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Supply_Type],
 				"Src_PDO_Supply_Type",
-				"1", NULL);
+				"1", "Battery");
+		sprintf(str, "%dmV", min_voltage * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Min_Voltage],
 				"Src_PDO_Min_Voltage",
-				min_voltage, NULL);
+				min_voltage, str);
+		sprintf(str, "%dmV", max_voltage * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Voltage],
 				"Src_PDO_Max_Voltage",
-				max_voltage, NULL);
+				max_voltage, str);
+		sprintf(str, "%dmW", power * 250);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Power],
 				"Src_PDO_Max_Power",
-				power, NULL);
+				power, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_VARIABLE) {
 		uint32_t max_voltage = (pdo >> 20) & 0x3ff;
@@ -647,19 +863,22 @@ __maybe_unused static int32_t set_vif_src_pdo(struct vif_srcPdoList_t *srcPdo,
 
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Supply_Type],
 				"Src_PDO_Supply_Type",
-				"2", NULL);
+				"2", "Variable (non-battery)");
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Peak_Current],
 				"Src_PDO_Peak_Current",
-				"0", NULL);
+				"0", "100% IOC");
+		sprintf(str, "%dmV", min_voltage * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Min_Voltage],
 				"Src_PDO_Min_Voltage",
-				min_voltage, NULL);
+				min_voltage, str);
+		sprintf(str, "%dmV", max_voltage * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Voltage],
 				"Src_PDO_Max_Voltage",
-				max_voltage, NULL);
+				max_voltage, str);
+		sprintf(str, "%dmA", current * 10);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Current],
 				"Src_PDO_Max_Current",
-				current, NULL);
+				current, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
 		uint32_t pps = (pdo >> 28) & 3;
@@ -674,16 +893,19 @@ __maybe_unused static int32_t set_vif_src_pdo(struct vif_srcPdoList_t *srcPdo,
 
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Supply_Type],
 				"Src_PDO_Supply_Type",
-				"3", NULL);
+				"3", "PPS");
+		sprintf(str, "%dmA", pps_current * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Current],
 				"Src_PDO_Max_Current",
-				pps_current, NULL);
+				pps_current, str);
+		sprintf(str, "%dmV", pps_min_voltage * 100);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Min_Voltage],
 				"Src_PDO_Min_Voltage",
-				pps_min_voltage, NULL);
+				pps_min_voltage, str);
+		sprintf(str, "%dmV", pps_max_voltage * 100);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Min_Voltage],
 				"Src_PDO_Min_Voltage",
-				pps_max_voltage, NULL);
+				pps_max_voltage, str);
 
 	} else {
 		fprintf(stderr, "ERROR: Invalid PDO_TYPE %d.\n", pdo);
@@ -725,40 +947,56 @@ static int gen_vif(const char *name,
 	set_vif_field(&vif_fields[VIF_Specification],
 			"VIF_Specification",
 			NULL,
-			"Version 3.12");
+			"3.12");
 
 	set_vif_field(&vif_fields[VIF_App_Vendor],
 			"Vendor",
 			NULL,
-			"Google");
+			VIF_APP_VENDOR_VALUE);
 
 	set_vif_field(&vif_fields[VIF_App_Name],
 			"Name",
 			NULL,
-			(char *)vif_producer);
+			VIF_APP_NAME_VALUE);
 
 	set_vif_field(&vif_fields[VIF_App_Version],
 			"Version",
 			NULL,
-			"3.0.0.2");
+			VIF_APP_VERSION_VALUE);
 
 	set_vif_field(&vif_fields[Vendor_Name],
 			"Vendor_Name",
 			NULL,
-			"Google");
+			VENDOR_NAME_VALUE);
 
 	#if defined(CONFIG_USB_PD_MODEL_PART_NUMBER)
-		set_vif_field_stis(&vif_fields[Model_Part_Number],
+		set_vif_field(&vif_fields[Model_Part_Number],
 				"Model_Part_Number",
 				NULL,
 				CONFIG_USB_PD_MODEL_PART_NUMBER);
+	#else
+		if (board && strlen(board) > 0)
+			set_vif_field(&vif_fields[Model_Part_Number],
+					"Model_Part_Number",
+					NULL,
+					board);
+		else
+			set_vif_field(&vif_fields[Model_Part_Number],
+					"Model_Part_Number",
+					NULL,
+					"FIX-ME");
 	#endif
 
 	#if defined(CONFIG_USB_PD_PRODUCT_REVISION)
-		set_vif_field_stis(&vif_fields[Product_Revision],
+		set_vif_field(&vif_fields[Product_Revision],
 				"Product_Revision",
 				NULL,
 				CONFIG_USB_PD_PRODUCT_REVISION);
+	#else
+		set_vif_field(&vif_fields[Product_Revision],
+				"Product_Revision",
+				NULL,
+				"FIX-ME");
 	#endif
 
 	#if defined(CONFIG_USB_PD_TID)
@@ -766,6 +1004,11 @@ static int gen_vif(const char *name,
 				"TID",
 				NULL,
 				CONFIG_USB_PD_TID);
+	#else
+		set_vif_field_stis(&vif_fields[TID],
+				"TID",
+				NULL,
+				12345);
 	#endif
 
 	set_vif_field(&vif_fields[VIF_Product_Type],
@@ -781,15 +1024,16 @@ static int gen_vif(const char *name,
 	/* VIF/Product */
 	vif_fields = vif.Product.vif_field;
 
+
+	/* VIF/Component[0] */
+	vif_fields = vif.Component[0].vif_field;
+
 	#if defined(CONFIG_USB_PD_PORT_LABEL)
 		set_vif_field_stis(&vif_fields[Port_Label],
 				"Port_Label",
 				NULL,
 				CONFIG_USB_PD_PORT_LABEL);
 	#endif
-
-	/* VIF/Component[0] */
-	vif_fields = vif.Component[0].vif_field;
 
 	set_vif_field(&vif_fields[Connector_Type],
 			"Connector_Type",
@@ -842,9 +1086,10 @@ static int gen_vif(const char *name,
 			"Port_Battery_Powered",
 			IS_ENABLED(CONFIG_BATTERY));
 
-	set_vif_field_b(&vif_fields[BC_1_2_Support],
+	set_vif_field(&vif_fields[BC_1_2_Support],
 			"BC_1_2_Support",
-			false);
+			"0",
+			"None");
 
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) || IS_ENABLED(CONFIG_USB_PRL_SM))
 		set_vif_field(&vif_fields[PD_Specification_Revision],
@@ -1019,9 +1264,15 @@ static int gen_vif(const char *name,
 	set_vif_field_b(&vif_fields[Type_C_Supports_VCONN_Powered_Accessory],
 			"Type_C_Supports_VCONN_Powered_Accessory",
 			false);
+
+	set_vif_field_b(&vif_fields[Type_C_Is_VCONN_Powered_Accessory],
+			"Type_C_Is_VCONN_Powered_Accessory",
+			false);
+
 	set_vif_field_b(&vif_fields[Type_C_Is_Debug_Target_SRC],
 			"Type_C_Is_Debug_Target_SRC",
 			true);
+
 	set_vif_field_b(&vif_fields[Type_C_Is_Debug_Target_SNK],
 			"Type_C_Is_Debug_Target_SNK",
 			true);
@@ -1034,6 +1285,7 @@ static int gen_vif(const char *name,
 	set_vif_field_b(&vif_fields[Type_C_Is_Alt_Mode_Controller],
 			"Type_C_Is_Alt_Mode_Controller",
 			false);
+
 
 	#if defined(USB_DEV_CLASS) && defined(USB_CLASS_BILLBOARD)
 		set_vif_field_b(&vif_fields[Type_C_Can_Act_As_Device],
@@ -1083,6 +1335,7 @@ static int gen_vif(const char *name,
 	set_vif_field_b(&vif_fields[Type_C_Port_On_Hub],
 			"Type_C_Port_On_Hub",
 			false);
+
 	set_vif_field_b(&vif_fields[Type_C_Supports_Audio_Accessory],
 			"Type_C_Supports_Audio_Accessory",
 			false);
