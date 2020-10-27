@@ -12,7 +12,6 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
-#include "mkbp_event.h"
 #include "registers.h"
 #include "rsa.h"
 #include "sha256.h"
