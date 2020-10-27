@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4632aba_779630a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-10-27T18:36:22Z",
+      "side": 1,
+      "message": "This CL can be closed. The issue was fixed on the servo_updater side which was dependant on old servod uart logic that waited indefinitely when any uart traffic occurs.",
+      "revId": "a3ea29dc6425c938d91b70cf75ab2cef5f7cc1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
