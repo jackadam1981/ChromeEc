@@ -270,6 +270,9 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 
 static void syv682x_handle_control_4_interrupt(int port, int regval)
 {
+	int rv;
+	int regval1;
+
 	if (syv682x_interrupt_filter(port, regval, SYV682X_CONTROL_4_VCONN_OCP,
 				     SYV682X_FLAGS_VCONN_OCP)) {
 		ppc_prints("VCONN OC!", port);
@@ -278,6 +281,12 @@ static void syv682x_handle_control_4_interrupt(int port, int regval)
 	/* This should never happen unless something really bad happened */
 	if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
 		ppc_prints("VBAT OVP!", port);
+		rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval1);
+		if (rv)
+			CPRINTS("[SC] ERROR");
+		regval1 |= SYV682X_CONTROL_1_PWR_ENB;
+		write_reg(port, SYV682X_CONTROL_1_REG, regval1);
+		pd_execute_hard_reset(port);
 	}
 }
 
@@ -462,6 +471,23 @@ static int syv682x_dump(int port)
 	return EC_SUCCESS;
 }
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
+
+static int syv682x_scott_power_off(int port, int enable)
+{
+	int regval1;
+	int rv;
+	CPRINTS("[SC] syv682x_scott_power_off");
+	rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval1);
+	if (rv)
+		return rv;
+
+	regval1 |= SYV682X_CONTROL_1_PWR_ENB;
+	write_reg(port, SYV682X_CONTROL_1_REG, regval1);
+	
+	pd_execute_hard_reset(port);
+
+	return 1;
+}
 
 static void syv682x_interrupt_delayed(int port, int delay);
 
@@ -729,4 +755,5 @@ const struct ppc_drv syv682x_drv = {
 #ifdef CONFIG_USBC_PPC_VCONN
 	.set_vconn = &syv682x_set_vconn,
 #endif
+	.scott_poweroff = &syv682x_scott_power_off,
 };
