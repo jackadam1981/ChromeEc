@@ -415,6 +415,8 @@ static void vif_output_xml(FILE *vif_file, struct vif_t *vif)
 {
 	int level = 0;
 
+	vif_out_str(vif_file, level,
+		"<?xml version=\"1\" encoding=\"UTF-8\"?>");
 	vif_out_str(vif_file, level++,
 		"<VIF xmlns=\"http://usb.org/VendorInfoFile.xsd\">");
 
@@ -433,9 +435,9 @@ static void vif_output_xml(FILE *vif_file, struct vif_t *vif)
  * VIF Structure Initialization Helper Functions
  */
 static void set_vif_field(struct vif_field_t *vif_field,
-			char *name,
-			char *tag_value,
-			char *str_value)
+			const char *name,
+			const char *tag_value,
+			const char *str_value)
 {
 	char *ptr;
 
@@ -456,8 +458,8 @@ static void set_vif_field(struct vif_field_t *vif_field,
 	}
 }
 __maybe_unused static void set_vif_field_b(struct vif_field_t *vif_field,
-			char *name,
-			bool val)
+			const char *name,
+			const bool val)
 {
 	if (val)
 		set_vif_field(vif_field, name, "true", "YES");
@@ -465,9 +467,9 @@ __maybe_unused static void set_vif_field_b(struct vif_field_t *vif_field,
 		set_vif_field(vif_field, name, "false", "NO");
 }
 __maybe_unused static void set_vif_field_stis(struct vif_field_t *vif_field,
-			char *name,
-			char *tag_value,
-			int str_value)
+			const char *name,
+			const char *tag_value,
+			const int str_value)
 {
 	char str_str[80];
 
@@ -475,9 +477,9 @@ __maybe_unused static void set_vif_field_stis(struct vif_field_t *vif_field,
 	set_vif_field(vif_field, name, tag_value, str_str);
 }
 __maybe_unused static void set_vif_field_itss(struct vif_field_t *vif_field,
-			char *name,
-			int tag_value,
-			char *str_value)
+			const char *name,
+			const int tag_value,
+			const char *str_value)
 {
 	char str_tag[80];
 
@@ -485,9 +487,9 @@ __maybe_unused static void set_vif_field_itss(struct vif_field_t *vif_field,
 	set_vif_field(vif_field, name, str_tag, str_value);
 }
 __maybe_unused static void set_vif_field_itis(struct vif_field_t *vif_field,
-			char *name,
-			int tag_value,
-			int str_value)
+			const char *name,
+			const int tag_value,
+			const int str_value)
 {
 	char str_tag[80];
 	char str_str[80];
@@ -508,6 +510,7 @@ __maybe_unused static int32_t set_vif_snk_pdo(struct vif_snkPdoList_t *snkPdo,
 					      uint32_t pdo)
 {
 	int32_t power;
+	char str[40];
 
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_FIXED) {
 		uint32_t current = pdo & 0x3ff;
@@ -517,13 +520,15 @@ __maybe_unused static int32_t set_vif_snk_pdo(struct vif_snkPdoList_t *snkPdo,
 
 		set_vif_field(&snkPdo->vif_field[Snk_PDO_Supply_Type],
 				"Snk_PDO_Supply_Type",
-				"0", NULL);
+				"0", "Fixed");
+		sprintf(str, "%dmV", voltage * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Voltage],
 				"Snk_PDO_Voltage",
-				voltage, NULL);
+				voltage, str);
+		sprintf(str, "%dmA", current * 10);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Op_Current],
 				"Snk_PDO_Op_Current",
-				current, NULL);
+				current, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 		uint32_t max_voltage = (pdo >> 20) & 0x3ff;
@@ -533,16 +538,19 @@ __maybe_unused static int32_t set_vif_snk_pdo(struct vif_snkPdoList_t *snkPdo,
 
 		set_vif_field(&snkPdo->vif_field[Snk_PDO_Supply_Type],
 				"Snk_PDO_Supply_Type",
-				"1", NULL);
+				"1", "Battery");
+		sprintf(str, "%dmV", min_voltage * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Min_Voltage],
 				"Snk_PDO_Min_Voltage",
-				min_voltage, NULL);
+				min_voltage, str);
+		sprintf(str, "%dmV", max_voltage * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Max_Voltage],
 				"Snk_PDO_Max_Voltage",
-				max_voltage, NULL);
+				max_voltage, str);
+		sprintf(str, "%dmW", power * 250);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Op_Power],
 				"Snk_PDO_Op_Power",
-				power, NULL);
+				power, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_VARIABLE) {
 		uint32_t max_voltage = (pdo >> 20) & 0x3ff;
@@ -553,16 +561,19 @@ __maybe_unused static int32_t set_vif_snk_pdo(struct vif_snkPdoList_t *snkPdo,
 
 		set_vif_field(&snkPdo->vif_field[Snk_PDO_Supply_Type],
 				"Snk_PDO_Supply_Type",
-				"2", NULL);
+				"2", "Variable (non-battery)");
+		sprintf(str, "%dmV", min_voltage * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Min_Voltage],
 				"Snk_PDO_Min_Voltage",
-				min_voltage, NULL);
+				min_voltage, str);
+		sprintf(str, "%dmV", min_voltage * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Max_Voltage],
 				"Snk_PDO_Max_Voltage",
-				max_voltage, NULL);
+				max_voltage, str);
+		sprintf(str, "%dmA", current * 10);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Op_Current],
 				"Snk_PDO_Op_Current",
-				current, NULL);
+				current, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
 		uint32_t pps = (pdo >> 28) & 3;
@@ -577,16 +588,19 @@ __maybe_unused static int32_t set_vif_snk_pdo(struct vif_snkPdoList_t *snkPdo,
 
 		set_vif_field(&snkPdo->vif_field[Snk_PDO_Supply_Type],
 				"Snk_PDO_Supply_Type",
-				"3", NULL);
+				"3", "PPS");
+		sprintf(str, "%dmA", pps_current * 50);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Op_Current],
 				"Snk_PDO_Op_Current",
-				pps_current, NULL);
+				pps_current, str);
+		sprintf(str, "%dmV", pps_min_voltage * 100);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Min_Voltage],
 				"Snk_PDO_Min_Voltage",
-				pps_min_voltage, NULL);
+				pps_min_voltage, str);
+		sprintf(str, "%dmV", pps_max_voltage * 100);
 		set_vif_field_itss(&snkPdo->vif_field[Snk_PDO_Max_Voltage],
 				"Snk_PDO_Max_Voltage",
-				pps_max_voltage, NULL);
+				pps_max_voltage, str);
 	} else {
 		fprintf(stderr, "ERROR: Invalid PDO_TYPE %d.\n", pdo);
 		return -1;
@@ -599,6 +613,7 @@ __maybe_unused static int32_t set_vif_src_pdo(struct vif_srcPdoList_t *srcPdo,
 					      uint32_t pdo)
 {
 	int32_t power;
+	char str[40];
 
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_FIXED) {
 		uint32_t current = pdo & 0x3ff;
@@ -608,16 +623,18 @@ __maybe_unused static int32_t set_vif_src_pdo(struct vif_srcPdoList_t *srcPdo,
 
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Supply_Type],
 				"Src_PDO_Supply_Type",
-				"0", NULL);
+				"0", "Fixed");
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Peak_Current],
 				"Src_PDO_Peak_Current",
-				"0", NULL);
+				"0", "100% IOC");
+		sprintf(str, "%dmV", voltage * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Voltage],
 				"Src_PDO_Voltage",
-				voltage, NULL);
+				voltage, str);
+		sprintf(str, "%dmA", current * 10);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Current],
 				"Src_PDO_Max_Current",
-				current, NULL);
+				current, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 		uint32_t max_voltage = (pdo >> 20) & 0x3ff;
@@ -627,16 +644,19 @@ __maybe_unused static int32_t set_vif_src_pdo(struct vif_srcPdoList_t *srcPdo,
 
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Supply_Type],
 				"Src_PDO_Supply_Type",
-				"1", NULL);
+				"1", "Battery");
+		sprintf(str, "%dmV", min_voltage * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Min_Voltage],
 				"Src_PDO_Min_Voltage",
-				min_voltage, NULL);
+				min_voltage, str);
+		sprintf(str, "%dmV", max_voltage * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Voltage],
 				"Src_PDO_Max_Voltage",
-				max_voltage, NULL);
+				max_voltage, str);
+		sprintf(str, "%dmW", power * 250);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Power],
 				"Src_PDO_Max_Power",
-				power, NULL);
+				power, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_VARIABLE) {
 		uint32_t max_voltage = (pdo >> 20) & 0x3ff;
@@ -647,19 +667,22 @@ __maybe_unused static int32_t set_vif_src_pdo(struct vif_srcPdoList_t *srcPdo,
 
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Supply_Type],
 				"Src_PDO_Supply_Type",
-				"2", NULL);
+				"2", "Variable (non-battery)");
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Peak_Current],
 				"Src_PDO_Peak_Current",
-				"0", NULL);
+				"0", "100% IOC");
+		sprintf(str, "%dmV", min_voltage * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Min_Voltage],
 				"Src_PDO_Min_Voltage",
-				min_voltage, NULL);
+				min_voltage, str);
+		sprintf(str, "%dmV", max_voltage * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Voltage],
 				"Src_PDO_Max_Voltage",
-				max_voltage, NULL);
+				max_voltage, str);
+		sprintf(str, "%dmA", current * 10);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Current],
 				"Src_PDO_Max_Current",
-				current, NULL);
+				current, str);
 
 	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
 		uint32_t pps = (pdo >> 28) & 3;
@@ -674,16 +697,19 @@ __maybe_unused static int32_t set_vif_src_pdo(struct vif_srcPdoList_t *srcPdo,
 
 		set_vif_field(&srcPdo->vif_field[Src_PDO_Supply_Type],
 				"Src_PDO_Supply_Type",
-				"3", NULL);
+				"3", "PPS");
+		sprintf(str, "%dmA", pps_current * 50);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Max_Current],
 				"Src_PDO_Max_Current",
-				pps_current, NULL);
+				pps_current, str);
+		sprintf(str, "%dmV", pps_min_voltage * 100);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Min_Voltage],
 				"Src_PDO_Min_Voltage",
-				pps_min_voltage, NULL);
+				pps_min_voltage, str);
+		sprintf(str, "%dmV", pps_max_voltage * 100);
 		set_vif_field_itss(&srcPdo->vif_field[Src_PDO_Min_Voltage],
 				"Src_PDO_Min_Voltage",
-				pps_max_voltage, NULL);
+				pps_max_voltage, str);
 
 	} else {
 		fprintf(stderr, "ERROR: Invalid PDO_TYPE %d.\n", pdo);
@@ -725,7 +751,7 @@ static int gen_vif(const char *name,
 	set_vif_field(&vif_fields[VIF_Specification],
 			"VIF_Specification",
 			NULL,
-			"Version 3.12");
+			"3.12");
 
 	set_vif_field(&vif_fields[VIF_App_Vendor],
 			"Vendor",
@@ -735,12 +761,12 @@ static int gen_vif(const char *name,
 	set_vif_field(&vif_fields[VIF_App_Name],
 			"Name",
 			NULL,
-			(char *)vif_producer);
+			vif_producer);
 
 	set_vif_field(&vif_fields[VIF_App_Version],
 			"Version",
 			NULL,
-			"3.0.0.2");
+			"3.0.0.3");
 
 	set_vif_field(&vif_fields[Vendor_Name],
 			"Vendor_Name",
@@ -748,17 +774,33 @@ static int gen_vif(const char *name,
 			"Google");
 
 	#if defined(CONFIG_USB_PD_MODEL_PART_NUMBER)
-		set_vif_field_stis(&vif_fields[Model_Part_Number],
+		set_vif_field(&vif_fields[Model_Part_Number],
 				"Model_Part_Number",
 				NULL,
 				CONFIG_USB_PD_MODEL_PART_NUMBER);
+	#else
+		if (board && strlen(board) > 0)
+			set_vif_field(&vif_fields[Model_Part_Number],
+					"Model_Part_Number",
+					NULL,
+					board);
+		else
+			set_vif_field(&vif_fields[Model_Part_Number],
+					"Model_Part_Number",
+					NULL,
+					"FIX-ME");
 	#endif
 
 	#if defined(CONFIG_USB_PD_PRODUCT_REVISION)
-		set_vif_field_stis(&vif_fields[Product_Revision],
+		set_vif_field(&vif_fields[Product_Revision],
 				"Product_Revision",
 				NULL,
 				CONFIG_USB_PD_PRODUCT_REVISION);
+	#else
+		set_vif_field(&vif_fields[Product_Revision],
+				"Product_Revision",
+				NULL,
+				"FIX-ME");
 	#endif
 
 	#if defined(CONFIG_USB_PD_TID)
@@ -766,6 +808,11 @@ static int gen_vif(const char *name,
 				"TID",
 				NULL,
 				CONFIG_USB_PD_TID);
+	#else
+		set_vif_field_stis(&vif_fields[TID],
+				"TID",
+				NULL,
+				12345);
 	#endif
 
 	set_vif_field(&vif_fields[VIF_Product_Type],
@@ -781,15 +828,16 @@ static int gen_vif(const char *name,
 	/* VIF/Product */
 	vif_fields = vif.Product.vif_field;
 
+
+	/* VIF/Component[0] */
+	vif_fields = vif.Component[0].vif_field;
+
 	#if defined(CONFIG_USB_PD_PORT_LABEL)
 		set_vif_field_stis(&vif_fields[Port_Label],
 				"Port_Label",
 				NULL,
 				CONFIG_USB_PD_PORT_LABEL);
 	#endif
-
-	/* VIF/Component[0] */
-	vif_fields = vif.Component[0].vif_field;
 
 	set_vif_field(&vif_fields[Connector_Type],
 			"Connector_Type",
@@ -842,9 +890,10 @@ static int gen_vif(const char *name,
 			"Port_Battery_Powered",
 			IS_ENABLED(CONFIG_BATTERY));
 
-	set_vif_field_b(&vif_fields[BC_1_2_Support],
+	set_vif_field(&vif_fields[BC_1_2_Support],
 			"BC_1_2_Support",
-			false);
+			"0",
+			"None");
 
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) || IS_ENABLED(CONFIG_USB_PRL_SM))
 		set_vif_field(&vif_fields[PD_Specification_Revision],
@@ -1019,9 +1068,15 @@ static int gen_vif(const char *name,
 	set_vif_field_b(&vif_fields[Type_C_Supports_VCONN_Powered_Accessory],
 			"Type_C_Supports_VCONN_Powered_Accessory",
 			false);
+
+	set_vif_field_b(&vif_fields[Type_C_Is_VCONN_Powered_Accessory],
+			"Type_C_Is_VCONN_Powered_Accessory",
+			false);
+
 	set_vif_field_b(&vif_fields[Type_C_Is_Debug_Target_SRC],
 			"Type_C_Is_Debug_Target_SRC",
 			true);
+
 	set_vif_field_b(&vif_fields[Type_C_Is_Debug_Target_SNK],
 			"Type_C_Is_Debug_Target_SNK",
 			true);
@@ -1034,6 +1089,7 @@ static int gen_vif(const char *name,
 	set_vif_field_b(&vif_fields[Type_C_Is_Alt_Mode_Controller],
 			"Type_C_Is_Alt_Mode_Controller",
 			false);
+
 
 	#if defined(USB_DEV_CLASS) && defined(USB_CLASS_BILLBOARD)
 		set_vif_field_b(&vif_fields[Type_C_Can_Act_As_Device],
@@ -1083,6 +1139,7 @@ static int gen_vif(const char *name,
 	set_vif_field_b(&vif_fields[Type_C_Port_On_Hub],
 			"Type_C_Port_On_Hub",
 			false);
+
 	set_vif_field_b(&vif_fields[Type_C_Supports_Audio_Accessory],
 			"Type_C_Supports_Audio_Accessory",
 			false);
