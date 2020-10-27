@@ -548,3 +548,18 @@ int ppc_get_alert_status(int port)
 	else
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
+/*
+int aa = 0;
+static void battery_log_second(void)
+{
+	const struct ppc_config_t *ppc;
+	int port = 1;
+	
+	ppc = &ppc_chips[port];
+	aa++;
+	CPRINTS("[SC] aa=%d", aa);
+	if(aa>200)
+		ppc->drv->scott_poweroff(port, 1);
+}
+DECLARE_HOOK(HOOK_SECOND, battery_log_second, HOOK_PRIO_DEFAULT);
+*/
