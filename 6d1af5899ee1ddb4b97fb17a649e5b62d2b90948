@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6af7ec8_e6c15b0d",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-27T16:44:34Z",
+      "side": 1,
+      "message": "Can we make the entire BB retimer driver dependent on TCPMv2 instead? With the RVP moved over to TCPMv2, are there any platforms on TCPMv1 that still need the BB retimer.",
+      "range": {
+        "startLine": 182,
+        "startChar": 6,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "6d1af5899ee1ddb4b97fb17a649e5b62d2b90948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4423413_7b19d92a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-27T16:44:34Z",
+      "side": 1,
+      "message": "Please delete - this check should be redundant with (mux_state \u0026 USB_PD_MUX_USB4_ENABLED).",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 39
+      },
+      "revId": "6d1af5899ee1ddb4b97fb17a649e5b62d2b90948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d7779d_7908f391",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-27T16:44:34Z",
+      "side": 1,
+      "message": "Does this need to be set for UFP mode as well?  If so, please move to retimer_set_state() at line 432. Also, datasheet says to set this bit after other TBT fields are set.  Does this mean two writes to the connection state register are required?",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 0
+      },
+      "revId": "6d1af5899ee1ddb4b97fb17a649e5b62d2b90948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45fa4408_435efb90",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-27T16:44:34Z",
+      "side": 1,
+      "message": "Nit - also change to BIT(0).",
+      "range": {
+        "startLine": 75,
+        "startChar": 47,
+        "endLine": 75,
+        "endChar": 50
+      },
+      "revId": "6d1af5899ee1ddb4b97fb17a649e5b62d2b90948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
