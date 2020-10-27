@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3aee342_6de01ebd",
+        "filename": "board/elemi/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-10-27T06:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fac4adc7_fbf1cc11",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "cbf7b5d46f15879d590db5898cfcf8a1d21f344a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1349e1f_fa223192",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-26T21:12:17Z",
       "side": 1,
       "message": "I suggest creating additional macros so that this code can is independent of the actual HOOK interval time.\n\n    #define LED_CYCLE_TIME_MS   (2 * 1000)\n    #define LED_TICKS_PER_CYCLE (LED_CYCLE_TIME_MS / HOOT_TICK_INTERVAL_MS)\n    #define LED_ON_TIME_MS      (1 * 1000)\n    #define LED_ON_TICKS        (LED_ON_TIME_MS / HOOK_TICK_INTERVAL_MS)",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "cbf7b5d46f15879d590db5898cfcf8a1d21f344a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5fa5e66_57056392",
+        "filename": "board/elemi/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-10-27T06:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1349e1f_fa223192",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ae3076_6c1f1846",
+        "filename": "board/elemi/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-10-27T06:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d904a4fb_c5a72b7b",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "cbf7b5d46f15879d590db5898cfcf8a1d21f344a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f85a9aaa_03ea3dfe",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-26T21:12:17Z",
       "side": 1,
       "message": "Nit: \"doesn\u0027t\"",
+      "range": {
+        "startLine": 140,
+        "startChar": 43,
+        "endLine": 140,
+        "endChar": 48
+      },
+      "revId": "cbf7b5d46f15879d590db5898cfcf8a1d21f344a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c17521_f2a085a2",
+        "filename": "board/elemi/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-10-27T06:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f85a9aaa_03ea3dfe",
       "range": {
         "startLine": 140,
         "startChar": 43,
