@@ -124,6 +124,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c7444c8_35cadb12",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-10-27T08:15:47Z",
+      "side": 1,
+      "message": "Thanks for reply. But no need of doing the current code change reason as follows.\nEven though the base code sending Mux config message first followed but retimer configuration, but actual HW configuration is happening retimer first followed by Mux because of mux config delays. is it still required ? \n\nI think we need to avoid board level changes as it expects similar changes for all types boards.",
+      "parentUuid": "ff7ef778_8d672dfe",
+      "range": {
+        "startLine": 596,
+        "startChar": 3,
+        "endLine": 596,
+        "endChar": 12
+      },
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c6b33c3_2baeb276",
         "filename": "board/volteer/board.c",
         "patchSetId": 11
@@ -323,6 +347,24 @@
       "writtenOn": "2020-10-26T08:41:45Z",
       "side": 1,
       "message": "(1). why wait_count is defined static variable as 2? are we waiting for 200 msec? There is no for loop how do we achieve 200msec?\n\n(2). These changes are not required for the ports where there is no bb_retimer, is it taken care here?",
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16536958_3a7b5e5a",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-10-27T08:15:47Z",
+      "side": 1,
+      "message": "Divya, Ayushee\nplease reply for the above queries/issues.",
+      "parentUuid": "1a904612_ad0f78ef",
       "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
