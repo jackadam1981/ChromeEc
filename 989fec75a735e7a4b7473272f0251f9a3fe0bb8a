@@ -88,6 +88,24 @@
       "parentUuid": "dae33eac_7fd011da",
       "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d03145e_cce04bc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-27T21:24:07Z",
+      "side": 1,
+      "message": "On my new Drawcia, I see issues connecting to chargers on the type-c ports and with USB-A on the DB with this change. \n\nDo we still need these power savings?  I\u0027m clarifying with the vendor whether our current approach from ToT is okay to use since I don\u0027t yet understand the ordering requirement between turning off the GPADCs and slowing the clock.",
+      "parentUuid": "13ea9d6a_aaac0366",
+      "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
