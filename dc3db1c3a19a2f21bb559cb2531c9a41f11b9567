@@ -413,6 +413,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23cedf3e_d757ee02",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-10-27T18:00:51Z",
+      "side": 1,
+      "message": "it is static variable, so next config time the value will be 1. Please check. Any reason why it should be static variable.",
+      "parentUuid": "0fb3ca2f_9c080a8b",
+      "revId": "dc3db1c3a19a2f21bb559cb2531c9a41f11b9567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66ed81e9_4ff6bc47",
         "filename": "driver/usb_mux/virtual.c",
         "patchSetId": 11
