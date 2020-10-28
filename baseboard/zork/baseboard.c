@@ -29,6 +29,7 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "mkbp_event.h"
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
@@ -53,6 +54,8 @@
  * charger (see b/67964166).
  */
 #define BC12_MIN_VOLTAGE 4500
+
+static bool wake_ap_on_dp = true;
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,
@@ -79,11 +82,20 @@ __overridable int board_aoz1380_set_vbus_source_current_limit(int port,
 	return rv;
 }
 
+static void baseboard_chipset_suspend_delay(void)
+{
+	wake_ap_on_dp = true;
+}
+DECLARE_DEFERRED(baseboard_chipset_suspend_delay);
+
 static void baseboard_chipset_suspend(void)
 {
 	/* Disable display and keyboard backlights. */
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 1);
 	ioex_set_level(IOEX_KB_BL_EN, 0);
+	/* Wait 500ms before allowing DP event to cause resume. */
+	wake_ap_on_dp = false;
+	hook_call_deferred(&baseboard_chipset_suspend_delay_data, (500 * MSEC));
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, baseboard_chipset_suspend,
 	     HOOK_PRIO_DEFAULT);
@@ -360,4 +372,17 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 __override int charge_is_consuming_full_input_current(void)
 {
 	return 1;
+}
+
+/*
+ * b/167949458: Suppress setting the host event for 500ms after entering S3.
+ * Otherwise turning off the MST hub in S3 (via IOEX_HDMI_DATA_EN_DB) causes
+ * a VDM:Attention that immediately wakes us back up from S3.
+ */
+__override void pd_notify_dp_alt_mode_entry(void)
+{
+	if (wake_ap_on_dp) {
+		ccprints("Notifying AP of DP Alt Mode Entry...");
+		mkbp_send_event(EC_MKBP_EVENT_DP_ALT_MODE_ENTERED);
+	}
 }
