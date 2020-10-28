@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50275d6_7a144ce8",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T17:57:54Z",
+      "side": 1,
+      "message": "yep you are right. Thanks for double checking!",
+      "parentUuid": "901a6852_25e1641f",
+      "range": {
+        "startLine": 719,
+        "startChar": 14,
+        "endLine": 719,
+        "endChar": 45
+      },
+      "revId": "7a12c7a4b7a59fc6411e6ca0859550837b42a541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "805765ef_e4e5f5a2",
