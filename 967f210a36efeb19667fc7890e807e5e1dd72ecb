@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "706e68ec_720c4604",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-28T16:16:31Z",
+      "side": 1,
+      "message": "I should not remove the `#include \"mkbp_event.h\"` from common/usb_pd_policy.c. It is still used. Fixed in the latest patchset.",
+      "revId": "967f210a36efeb19667fc7890e807e5e1dd72ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
