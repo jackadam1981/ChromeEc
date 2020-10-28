@@ -41,4 +41,11 @@
 
 #endif  /* CONFIG_PLATFORM_EC_TIMER */
 
+#ifdef CONFIG_PLATFORM_EC_I2C
+#define CONFIG_I2C
+#ifdef CHIP_FAMILY_NPCX7
+#include "config_chip-npcx7.h"
+#endif /* CHIP_FAMILY_NPCX7 */
+#endif /* CONFIG_PLATFORM_EC_I2C */
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
