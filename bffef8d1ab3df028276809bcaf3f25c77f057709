@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c240f37_5d9c1b2b",
+        "filename": "board/adlrvpp_ite/gpio.inc",
+        "patchSetId": 16
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-28T19:10:37Z",
+      "side": 1,
+      "message": "Just a question - this signal is connected on the MECC board.  Is it not connected on the ADLRVP motherboard? Is Intel testing both the physical SLP_S3/SLP_4 in addition to virtual wires?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "bffef8d1ab3df028276809bcaf3f25c77f057709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
