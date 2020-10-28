@@ -4990,8 +4990,12 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 	}
 
 	/* Do not attempt further discovery if identity discovery failed. */
-	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL)
+	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL) {
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		pe_notify_event(port, pe[port].tx_type == TCPC_TX_SOP ?
+				PD_STATUS_EVENT_SOP_DISC_DONE :
+				PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
+	}
 }
 
 /**
@@ -5049,10 +5053,6 @@ static void pe_init_port_vdm_identity_request_run(int port)
 	case VDM_RESULT_NAK:
 		/* PE_INIT_PORT_VDM_IDENTITY_NAKed embedded here */
 		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
-		/*
-		 * Note: AP is only notified of discovery complete when
-		 * something was found (at least one ACK)
-		 */
 		break;
 	}
 
@@ -5077,8 +5077,12 @@ static void pe_init_port_vdm_identity_request_exit(int port)
 	}
 
 	/* Do not attempt further discovery if identity discovery failed. */
-	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL)
+	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL) {
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		pe_notify_event(port, pe[port].tx_type == TCPC_TX_SOP ?
+				PD_STATUS_EVENT_SOP_DISC_DONE :
+				PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
+	}
 }
 
 /**
