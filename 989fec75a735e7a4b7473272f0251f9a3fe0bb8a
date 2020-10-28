@@ -142,6 +142,24 @@
       "parentUuid": "5d03145e_cce04bc6",
       "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0e5865_34eb8a6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-28T15:19:17Z",
+      "side": 1,
+      "message": "Had charger connections tested well with this change before?  I realized there will be a timing issue turning off the GPADCs here because we need them up to read the Vbus ADC before the connect hook will run.  They\u0027d need to be re-enabled earlier in the TC connection process, before this hook.",
+      "parentUuid": "47784b45_5610e21e",
+      "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
