@@ -22,6 +22,30 @@
       },
       "revId": "22426b320bf6070e28fa975e6b43d48c3f4c9753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a95bd5_da11dd6b",
+        "filename": "board/elemi/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-10-28T02:34:21Z",
+      "side": 1,
+      "message": "Confirmed with battery vendor, this is cell operating temperature range, but we should follow pack ambient temperature range.",
+      "parentUuid": "501a20df_503e33b6",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "22426b320bf6070e28fa975e6b43d48c3f4c9753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
