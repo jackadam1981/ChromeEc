@@ -106,6 +106,42 @@
       "parentUuid": "13ea9d6a_aaac0366",
       "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c637efa_17a66e1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-10-28T01:55:48Z",
+      "side": 1,
+      "message": "\u003eDo we still need these power savings?\nWe are seeing ~7-8mW power savings with this change.\nlet\u0027s wait for the response from the vendor and decide on this.",
+      "parentUuid": "5d03145e_cce04bc6",
+      "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47784b45_5610e21e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-10-28T01:55:48Z",
+      "side": 1,
+      "message": "\u003eDo we still need these power savings?\nWe are seeing ~7-8mW power savings with this change.\nlet\u0027s wait for the response from the vendor and decide on this.",
+      "parentUuid": "5d03145e_cce04bc6",
+      "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
