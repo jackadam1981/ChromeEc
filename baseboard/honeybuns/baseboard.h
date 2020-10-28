@@ -47,7 +47,7 @@
 
 #define CONFIG_RO_MEM_OFF	0
 #define CONFIG_RO_STORAGE_OFF	0
-#define CONFIG_RO_SIZE		(40*1024)
+#define CONFIG_RO_SIZE		(64*1024)
 
 #define CONFIG_RW_MEM_OFF	(CONFIG_RO_SIZE + CONFIG_RO_MEM_OFF)
 #define CONFIG_RW_STORAGE_OFF	0
@@ -73,8 +73,8 @@
 #undef CONFIG_CMD_SLEEPMASK_SET
 
 /* Save more code space */
-#define CONFIG_COMMON_GPIO_SHORTNAMES
-#define CONFIG_LTO
+/* #define CONFIG_COMMON_GPIO_SHORTNAMES */
+/* #define CONFIG_LTO */
 
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
@@ -166,7 +166,7 @@ enum usb_strings {
 #define CONFIG_USBC_PPC_SN5S330
 #define CONFIG_USBC_PPC_VCONN
 #define CONFIG_USBC_PPC_DEDICATED_INT
-/* #define CONFIG_CMD_PPC_DUMP */
+#define CONFIG_CMD_PPC_DUMP
 /* #define CONFIG_CMD_TCPC_DUMP */
 
 #define CONFIG_USBC_VCONN
