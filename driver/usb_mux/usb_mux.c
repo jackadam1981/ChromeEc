@@ -9,6 +9,8 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "task.h"
+#include "timer.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -387,4 +389,19 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,
 		     hc_usb_pd_mux_info,
+		     EC_VER_MASK(0));
+
+static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_mux_ack *p = args->params;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
+		return EC_RES_INVALID_COMMAND;
+
+	task_set_event(PD_PORT_TO_TASK_ID(p->port),
+		       PD_EVENT_AP_MUX_DONE, 0);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_ACK,
+		     hc_usb_pd_mux_ack,
 		     EC_VER_MASK(0));
