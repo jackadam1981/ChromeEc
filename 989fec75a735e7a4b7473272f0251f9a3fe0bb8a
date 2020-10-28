@@ -178,6 +178,24 @@
       "parentUuid": "6f0e5865_34eb8a6d",
       "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40aa0144_fbc3018c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-28T20:35:44Z",
+      "side": 1,
+      "message": "Every charger connection I try with this patch seems to get stuck in AttachWait.SNK because the Vbus ADC isn\u0027t showing a high enough voltage. The suspend/resume path wouldn\u0027t work as a solution here, since we need the Vbus ADC running earlier in connections and chargers may be plugged in during suspend.  We could always leave the Vbus ADC on, and we\u0027ll get spurious ADC readings after our clock change. \n\nI\u0027m going to check on how we\u0027re doing for our power numbers to assess how essential this is.",
+      "parentUuid": "f410b6fb_10d29104",
+      "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
