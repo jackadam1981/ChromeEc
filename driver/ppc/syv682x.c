@@ -268,6 +268,8 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	}
 }
 
+static int syv682x_init(int port);
+
 static void syv682x_handle_control_4_interrupt(int port, int regval)
 {
 	if (syv682x_interrupt_filter(port, regval, SYV682X_CONTROL_4_VCONN_OCP,
@@ -275,9 +277,14 @@ static void syv682x_handle_control_4_interrupt(int port, int regval)
 		ppc_prints("VCONN OC!", port);
 	}
 
-	/* This should never happen unless something really bad happened */
+	/*
+	 * On VBAT OVP, CC/VCONN are cut. Re-enable before sending the hard
+	 * reset.
+	 */
 	if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
 		ppc_prints("VBAT OVP!", port);
+		syv682x_init(port);
+		pd_handle_cc_overvoltage(port);
 	}
 }
 
