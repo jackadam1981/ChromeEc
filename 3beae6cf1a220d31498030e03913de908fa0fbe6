@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fd79b0_2c972637",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T16:53:35Z",
+      "side": 1,
+      "message": "Nevermind. I see the explanation of this in the previous CL.",
+      "parentUuid": "2d90581c_7c414cd1",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 278,
+        "endChar": 54
+      },
+      "revId": "3beae6cf1a220d31498030e03913de908fa0fbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "866b4cef_14c29b23",
