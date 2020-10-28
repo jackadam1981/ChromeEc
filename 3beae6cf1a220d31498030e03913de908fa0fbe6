@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d90581c_7c414cd1",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T16:37:31Z",
+      "side": 1,
+      "message": "Would it be compliant for these values not to match? Have you observed this?",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 278,
+        "endChar": 54
+      },
+      "revId": "3beae6cf1a220d31498030e03913de908fa0fbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "866b4cef_14c29b23",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T16:37:31Z",
+      "side": 1,
+      "message": "Nit: This is getting a little long and has a lot of line breaks for one line. It might be easier to read as a series of |\u003d lines.",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 34
+      },
+      "revId": "3beae6cf1a220d31498030e03913de908fa0fbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
