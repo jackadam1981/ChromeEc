@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "e994d2da_e195fae4",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Ed proposed a similar change a few months ago. We had some resistance then, but I think we are okay to make this sort of change now.\n\nEd do you have any thoughts since you have thought about this before?",
       "revId": "72cfb665368c5303448c5ed61b477afb240603cd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "182e27d9_00caec70",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,10 @@
       "message": "\"a few months ago\", actually a few years ago :)\nI abandoned CL:1058432 after CR-1 from Randall and Vincent, so see their comments.\nI currently use CL:1940783 for my local builds when I want reliable console output.",
       "parentUuid": "e994d2da_e195fae4",
       "revId": "72cfb665368c5303448c5ed61b477afb240603cd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "28c8ea8c_3111ea64",
         "filename": "/PATCHSET_LEVEL",
@@ -50,8 +51,25 @@
       "message": "RISCV core has an atomic instruction \"csrrc\" to read and clear bits in CSR register. So on RISCV core, there is no race condition between read int_mask and interrupt disable.\n\nOn NDS32, I knew we have race condition in the sequence, so we have only two int_mask settings (interrupt enable/disable).\nTwo situation to be considered:\n- The sequence is invoked in interrupt disabled, no race condition here.\n- EC hits the race condition, this means EC saved int_mask as interrupt enable (because interrupt not yet disabled, interrupt still can be fired).\nSo EC can restore interrupt after critical section.",
       "parentUuid": "182e27d9_00caec70",
       "revId": "72cfb665368c5303448c5ed61b477afb240603cd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cab3f023_fb9b1187",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T16:30:36Z",
+      "side": 1,
+      "message": "Dino, I really think we can avoid adding the new functions (e.g. interrupt_enable_arch) and make the existing interrupt_enable and interrupt_disable allow for nesting (similar to Ed\u0027s testing CL:1940783).\n\nI think we can just make a very similar change in all of the core files to have a counter for the number of nested interrupt disable calls. That way all existing code gets to take advantage of these nesting interrupts and we don\u0027t have to have a special set of functions for that.\n\nWhat are your thoughts on this approach?",
+      "parentUuid": "28c8ea8c_3111ea64",
+      "revId": "72cfb665368c5303448c5ed61b477afb240603cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
