@@ -56,4 +56,16 @@ config PLATFORM_EC_TIMER_CMD_WAITMS
 
 endif # PLATFORM_EC_TIMER
 
+menuconfig PLATFORM_EC_I2C
+	bool "Enable the EC i2c module"
+	default y
+	help
+	  Enable compilation of the EC i2c module
+
+if PLATFORM_EC_I2C
+
+# TODO add i2c specific configs here.
+
+endif # PLATFORM_EC_I2C
+
 endif # PLATFORM_EC
