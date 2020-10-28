@@ -16,6 +16,52 @@
       "message": "I\u0027ve only been able to build with this so far, until I have the jlink I don\u0027t believe I\u0027ll be able to verify the i2c shim.",
       "revId": "05e62aa6a73482f9fa3aaa4f5048dc1e03a16388",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf238767_24ab856e",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T17:33:40Z",
+      "side": 1,
+      "message": "this the right idea of what we want to do in terms of program executions.\n\nInstead of forking in this code, let\u0027s take one of two paths\n\n1) not include i2c_master.c at all in the zephyr build and have the i2c shim provide these i2c_read and i2c_write interfaces.\n2) include the i2c_master.c file and just shim at the `chip_i2c_xfer` level and have the shim provide that function, which would then be implemented with zephyr APIs\n\nNote I think option 1 will be easier since there are less dependencies there.\n\nEither options though we will need to track that we are including some i2c unwedging/recovery support. I can\u0027t remember if Zephyr already provides this or not.\n\nWe also need to ensure that multiple tasks/threads are serialized when the call into i2c_read APIs. I don\u0027t know if Zephyr does this already or not either.",
+      "range": {
+        "startLine": 723,
+        "startChar": 2,
+        "endLine": 725,
+        "endChar": 13
+      },
+      "revId": "05e62aa6a73482f9fa3aaa4f5048dc1e03a16388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a294d2cc_ceade59e",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T17:33:40Z",
+      "side": 1,
+      "message": "we should be able to preload these device pointers with a SYS_INIT macro definitions",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 39
+      },
+      "revId": "05e62aa6a73482f9fa3aaa4f5048dc1e03a16388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
