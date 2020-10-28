@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89b1442e_bf579e7a",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T15:19:22Z",
+      "side": 1,
+      "message": "I feel like we should start adding our own Kconfig options now. We would only want to include the icelake.c if we were try to compile for icelake or tigerlake",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "a03b5579826c063e88270534b6303a158a3af297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af8648d_93cd3293",
+        "filename": "zephyr/shim/include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T15:19:22Z",
+      "side": 1,
+      "message": "what did we need these for?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "a03b5579826c063e88270534b6303a158a3af297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
