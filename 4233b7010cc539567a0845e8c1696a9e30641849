@@ -16,6 +16,24 @@
       "message": "Anyone with a GRL and a desire to run some battery tests, feel free :) \n\nLooking back at the PD traces from the bug, I also noticed we\u0027re not filling in our VID correctly and we\u0027re currently sending nonsense for our battery status capacity. ",
       "revId": "4233b7010cc539567a0845e8c1696a9e30641849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cff1b3_53b20a26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-28T20:41:06Z",
+      "side": 1,
+      "message": "I hear Abe will have a GRL tester tomorrow 😉\nVID is now correct, after my CL lands.  Other fields you pointed out will be corrected ASAP.",
+      "parentUuid": "66758b42_4f476386",
+      "revId": "4233b7010cc539567a0845e8c1696a9e30641849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
