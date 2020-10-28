@@ -22,6 +22,30 @@
       },
       "revId": "bffef8d1ab3df028276809bcaf3f25c77f057709",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8c0d03_0c451611",
+        "filename": "board/adlrvpp_ite/gpio.inc",
+        "patchSetId": 16
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-10-28T19:39:35Z",
+      "side": 1,
+      "message": "Hi Keith, this is present on both MECC \u0026 Motherboard.\nGlitch handling is done by additional h/w circuit on the MB hence we don\u0027t use these lines with MECC EC.\nSOC physical Sx lines are connected to LEDs. \nIts only a manual testing by EC team.\nOther teams use these physical lines as some of the peripheral power rails are handled using these lines.",
+      "parentUuid": "2c240f37_5d9c1b2b",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "bffef8d1ab3df028276809bcaf3f25c77f057709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
