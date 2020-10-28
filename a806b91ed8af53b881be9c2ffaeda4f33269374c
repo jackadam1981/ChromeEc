@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8bc432d_19605f65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-28T16:25:50Z",
+      "side": 1,
+      "message": "This happens only when EC enables PD in RO then jumps to RW, right? I think we can eliminate this path. That is, we will deal with only the two cases:\n\n1. PD in RO. Stay in RO until next hard reset.\n2. No PD in RO. Jump to RW.\n\n(And I assume jump-to-RO is an option only for developers.)\n\nThis is basically how I\u0027m suggesting we deal with https://b.corp.google.com/issues/168169691, too.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "a806b91ed8af53b881be9c2ffaeda4f33269374c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de97e0a6_ad843529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-28T16:25:50Z",
+      "side": 1,
+      "message": "-1 to hold it until we close the discussion.",
+      "revId": "a806b91ed8af53b881be9c2ffaeda4f33269374c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
