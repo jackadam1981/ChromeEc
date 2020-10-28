@@ -437,6 +437,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0624f692_52584aa7",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "If that\u0027s the only reason for the extra function, I would suggest using a temporary variable to store the value of disc_sop_prime-\u003eidentity or some field thereof and then use that to compare usb_40_support to USB4_SUPPORTED.",
+      "parentUuid": "405a8c28_cb512eb3",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 34
+      },
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3b5d244_baa11242",
         "filename": "common/usbc/usb_mode.c",
         "patchSetId": 15
@@ -607,6 +631,24 @@
       "side": 1,
       "message": "We will never come here unless enter_usb_is_capable() is true - In dpm.c file, we check for enter_usb_is_capable(port). If true, we request DPM_REQUEST_ENTER_USB() - which requests for enter_usb_setup_next_msg()\n\nAnd for passive cables, we don\u0027t check for tbt_cable_entry_is_done(). so adding it might disturb the passive cable flow?\n\nShould I still add it?",
       "parentUuid": "1a6e5e3a_75d18961",
+      "revId": "9f968a698afa52bd54a468958ece57222daacd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8791b423_549ac41a",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "Ignore this. I was leaving myself a note during the code review and forgot to delete it before replying.",
+      "parentUuid": "b089dd07_94f45b1d",
       "revId": "9f968a698afa52bd54a468958ece57222daacd86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

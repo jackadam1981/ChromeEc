@@ -277,6 +277,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "869e6283_37e47ec5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "\u003e Am I remembering correctly that we said we wanted to wait to support the TBT cable/USB4 port partner combo until the AP was handling mode entry?\n\nFollowup from OOB discussion: We will support the TBT cable/USB4 port combo in the EC.",
+      "parentUuid": "d0c9a3ce_b3188795",
+      "revId": "8a4653adfe59ac311ed9be64f5f89a16de3d72c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6698c21b_60ad9fc6",

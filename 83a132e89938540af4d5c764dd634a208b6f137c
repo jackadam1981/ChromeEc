@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f320f5_bc53f666",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "I think this is heading in the right direction. The alt mode modules are less coupled. It would be nice if they were completely decoupled, but that may be too pie in the sky.\n\nDiana: Anything to add to my structural comments?",
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c4f8b1_a1dbfe8d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "Nit: Using a local variable to shorten this and have more readable line breaks wouldn\u0027t be the worst thing in the world.",
+      "range": {
+        "startLine": 946,
+        "startChar": 10,
+        "endLine": 946,
+        "endChar": 59
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "694ef70b_0c528b5a",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "I think this should have one more level of indentation.",
+      "range": {
+        "startLine": 951,
+        "startChar": 3,
+        "endLine": 951,
+        "endChar": 22
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5fd92de_3ea7953a",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "Nit: In the absence of a reason to do otherwise, put these in the order that they were defined above.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 47
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b4ff0b_6743e670",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "This comment seems redundant with the one in intel_vdm_acked, and it doesn\u0027t seem to explain any of the below logic.",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 41
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf643ed_0cd99ac2",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "This check is unnecessary. This file only gets built if CONFIG_USB_PD_USB4 is enabled. Out of scope for this review, but these conditions are getting pretty long.",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 36
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d6e949_5661805d",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "It\u0027s not obvious to me where the check for TBT entry done should go. That\u0027s answering a different question than \"are the cable and partner capable of entering USB4?\" It\u0027s a bit unintuitive that enter_usb_is_capable would return different values at different times for the same discovery results. I\u0027m not sure yet what would be the clearest way to handle this.\n\nIf the USB and TBT modules could be decoupled, that would be ideal.",
+      "range": {
+        "startLine": 199,
+        "startChar": 6,
+        "endLine": 199,
+        "endChar": 36
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04570aa4_ff865947",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "1. The organization of this function is getting a bit hard to follow intuitively. How about something like this?\n\nif (usb4_state \u003d\u003d USB4_INACTIVE)\n  return false;\n\nif (SOP ID doesn\u0027t support USB4)\n  return false;\n\nif (passive cable) {\n  if (speed too low)\n    return false;\n} else if (active cable) {\n  if (high VDM/VDO versions and cable does not support USB4)\n    return false;\n  else /* low VDM versions */ {\n    if (does not support TBT and TBT entry is not done)\n      return false;\n  }\n}\n\n2. The entire cable section could also be its own function (perhaps expanding enter_usb_cable_is_capable). I think that might improve things, because the TCPM and partner state work best as return-false-early, but the cable state might be clearer as return-true-early.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 13
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07837460_c883cb24",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "I don\u0027t see this in the Enter USB AMS diagrams in 8.3.2.15 (in contrast to the Enter Mode diagrams in 8.3.2.13). Do we need to do this here?",
+      "range": {
+        "startLine": 261,
+        "startChar": 3,
+        "endLine": 265,
+        "endChar": 31
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d63e9951_324eaa47",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 36
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e8b3a7_08344594",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "Nit: This TODO is now redundant.",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 62
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403e8f96_77d172e7",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "This function appears to only be used to decide not to print out TBT alt mode logs when exiting while USB4 is enabled. I\u0027m not sure we actually need to do that. We are literally exiting TBT alt mode for the cable at this time, so the log lines wouldn\u0027t be incorrect. I don\u0027t really have a problem with this choice, but it also seems like this function isn\u0027t really necessary. Up to you.",
+      "range": {
+        "startLine": 297,
+        "startChar": 7,
+        "endLine": 297,
+        "endChar": 26
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4cdd22e_ab5d93f9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 5534,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T22:36:11Z",
+      "side": 1,
+      "message": "After trying a VCONN Swap, we still need to check pe_can_send_sop_prime before we send traffic to the cable plug.\n\nNit: This should come before enter_usb_setup_next_msg. There\u0027s no reason to generate the message if we\u0027re going to VCONN Swap before sending it.",
+      "range": {
+        "startLine": 5529,
+        "startChar": 1,
+        "endLine": 5534,
+        "endChar": 2
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
