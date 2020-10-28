@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5b130d4_5c96ed9a",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T15:16:00Z",
+      "side": 1,
+      "message": "now it is \n\n!defined(RUNTIME) \u0026\u0026 !defined(ZEPHYR)",
+      "range": {
+        "startLine": 347,
+        "startChar": 7,
+        "endLine": 347,
+        "endChar": 70
+      },
+      "revId": "50c64c2d607a3a9b9c12cc7b22d57257f05cf41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0005e928_6d87c3a4",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T15:16:00Z",
+      "side": 1,
+      "message": "what about post kernel?",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "50c64c2d607a3a9b9c12cc7b22d57257f05cf41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b48b707_1bbd7bc6",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T15:16:00Z",
+      "side": 1,
+      "message": "We need to ensure that the priority of this thread is less than the priority of the other shimmed threads. Please add a TODO for with the task shimming bug (171741620).\n\nSo much of our platform/ec code assumes that the deferred calls get the lowest priority",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "50c64c2d607a3a9b9c12cc7b22d57257f05cf41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a94cb7_4ee054dc",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T15:16:00Z",
+      "side": 1,
+      "message": "I think we could add a small unit test around the setup_hook and hook_notify that test priority order insertion, etc.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "50c64c2d607a3a9b9c12cc7b22d57257f05cf41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f814ed_104e1984",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T15:16:00Z",
+      "side": 1,
+      "message": "we need another TODO here for task shim. This priority needs to be before we start all of the other tasks. That is guaranteed by platform/ec code today.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "50c64c2d607a3a9b9c12cc7b22d57257f05cf41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
