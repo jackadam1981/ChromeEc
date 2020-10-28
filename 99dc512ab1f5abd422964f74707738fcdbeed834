@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7c9c9b0_cf80f8b9",
+        "filename": "chip/it83xx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-28T16:01:13Z",
+      "side": 1,
+      "message": "Does \"events\" still need to be checked for the ADC done bit, or will the adc_data_valid() only return true when the ADC reading finished successfully?",
+      "revId": "99dc512ab1f5abd422964f74707738fcdbeed834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2aa5637_a36df18f",
         "filename": "chip/it83xx/adc.c",
         "patchSetId": 2
