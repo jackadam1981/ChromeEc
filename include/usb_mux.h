@@ -18,6 +18,8 @@
 #define USB_MUX_FLAG_NOT_TCPC BIT(0) /* TCPC/MUX device used only as MUX */
 #define USB_MUX_FLAG_SET_WITHOUT_FLIP BIT(1) /* SET should not flip */
 
+/* Used for PD task to wait for MUX configured notification from kernel */
+#define TASK_EVENT_MUX_DONE(port) TASK_EVENT_CUSTOM_BIT(1 << port)
 /*
  * USB-C mux state
  *
