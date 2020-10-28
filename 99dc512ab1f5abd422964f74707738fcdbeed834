@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2aa5637_a36df18f",
+        "filename": "chip/it83xx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-28T15:41:08Z",
+      "side": 1,
+      "message": "It looks like there is still a race condition here, but I don\u0027t think there is. We should add the comment that the atomic clear must happen after setting task_waiting to invalid",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 30
+      },
+      "revId": "99dc512ab1f5abd422964f74707738fcdbeed834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
