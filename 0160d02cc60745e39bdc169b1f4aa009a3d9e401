@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e41e91b_bc9f9c57",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-28T20:48:51Z",
+      "side": 1,
+      "message": "+1 on moving this declaration to the top of the file.",
+      "parentUuid": "8d01ac11_67c7932c",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 34
+      },
+      "revId": "0160d02cc60745e39bdc169b1f4aa009a3d9e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06ae59f4_19da69c8",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 1
