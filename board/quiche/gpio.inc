@@ -12,7 +12,12 @@
 GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
 GPIO_INT(USBC_DP_MUX_ALERT_ODL,  PIN(B,  1),      GPIO_INT_FALLING | GPIO_PULL_UP, tcpc_alert_event)
 GPIO_INT(USBC_DP_PPC_INT_ODL,    PIN(E,  7),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
-GPIO_INT(DDI_MST_IN_HPD,         PIN(F,  0),       GPIO_INT_BOTH, hpd_interrupt)
+#ifdef QUICHE_BOARD_P1
+GPIO_INT(DDI_MST_IN_HPD,         PIN(C,  14),     GPIO_INT_BOTH, hpd_interrupt)
+#else
+GPIO_INT(DDI_MST_IN_HPD,         PIN(F,  0),      GPIO_INT_BOTH, hpd_interrupt)
+#endif
+GPIO_INT(USBC_UF_MUX_VBUS_EN,    PIN(C,  12),     GPIO_INT_BOTH, board_uf_manage_vbus_interrupt)
 #endif
 
 /* Power sequencing signals */
@@ -30,6 +35,9 @@ GPIO(EN_PP5000_HSPORT,              PIN(D,  0), GPIO_OUT_LOW)
 /* MST Hub signals */
 GPIO(MST_LP_CTL_L,                  PIN(D, 10), GPIO_ODR_LOW)
 GPIO(MST_RST_L,                     PIN(E, 14), GPIO_ODR_LOW)
+#ifdef QUICHE_BOARD_P1
+GPIO(MST_HUB_LANE_SWITCH,           PIN(C, 15), GPIO_OUT_HIGH)
+#endif
 
 /* Display Demux signals */
 GPIO(DEMUX_DUAL_DP_MODE,            PIN(B,  0), GPIO_OUT_LOW)
