@@ -17,8 +17,14 @@
 /* USB Type C and USB PD defines */
 #define USB_PD_PORT_HOST   0
 #define USB_PD_PORT_DP   1
+#define USB_PD_PORT_UF   2
 
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+/*
+ * Only the host and display usbc ports are usb-pd capable. There is a 3rd usbc
+ * port, but this is type-c capable only. Only the PPC for this port needs to be
+ * controlled by FW.
+ */
+#define CONFIG_USB_PD_PORT_MAX_COUNT 3
 #define CONFIG_USB_MUX_PS8822
 
 #define CONFIG_USB_PID 0x5048
@@ -26,13 +32,10 @@
 #define CONFIG_USB_PD_IDENTITY_HW_VERS 1
 #define CONFIG_USB_PD_IDENTITY_SW_VERS 1
 
-/* USB Type A Features */
-
-
 /* I2C port names */
 #define I2C_PORT_I2C1		0
 #define I2C_PORT_I2C2		1
-#define I2C_PORT_I2C3	2
+#define I2C_PORT_I2C3		2
 /* Required symbolic I2C port names */
 #define I2C_PORT_MP4245 I2C_PORT_I2C3
 #define I2C_PORT_EEPROM I2C_PORT_I2C3
