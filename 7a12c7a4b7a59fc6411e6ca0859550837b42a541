@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "901a6852_25e1641f",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-28T17:51:53Z",
+      "side": 1,
+      "message": "3000mA * 5000mV \u003d\u003e 15000000\n15000000 / 1000 \u003d\u003e 15000mW",
+      "parentUuid": "fce8bb52_a769c345",
+      "range": {
+        "startLine": 719,
+        "startChar": 14,
+        "endLine": 719,
+        "endChar": 45
+      },
+      "revId": "7a12c7a4b7a59fc6411e6ca0859550837b42a541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "805765ef_e4e5f5a2",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-28T17:43:39Z",
       "side": 1,
       "message": "something doesn\u0027t seem right here. Is this min or max?",
+      "range": {
+        "startLine": 935,
+        "startChar": 2,
+        "endLine": 938,
+        "endChar": 26
+      },
+      "revId": "7a12c7a4b7a59fc6411e6ca0859550837b42a541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b894d9db_969ef0f2",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-28T17:51:53Z",
+      "side": 1,
+      "message": "missed it... I will fix. bad copy paste 😞",
+      "parentUuid": "805765ef_e4e5f5a2",
       "range": {
         "startLine": 935,
         "startChar": 2,
