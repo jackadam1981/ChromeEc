@@ -89,4 +89,20 @@ config PLATFORM_EC_HOOKS
 	  hook_call_deferred to Zephyr's work queues, and a compatible
 	  DECLARE_HOOK implementation.
 
+menuconfig PLATFORM_EC_I2C
+	bool "Enable the EC i2c module"
+	default y
+	help
+	  Enable compilation of the EC i2c module. Once enabled, it will be
+	  possible to make calls using the old platform/ec i2c APIs defined
+	  in include/i2c.h and implemented in common/i2c_master.c. Doing so
+	  should make shimming other platform/ec modules which rely on i2c
+	  communication "just work" without requiring any further code changes.
+
+if PLATFORM_EC_I2C
+
+# TODO add i2c-specific configs here.
+
+endif # PLATFORM_EC_I2C
+
 endif # PLATFORM_EC
