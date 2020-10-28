@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c86ca1f0_e1643557",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T16:31:13Z",
+      "side": 1,
+      "message": "Should this be a todo?",
+      "range": {
+        "startLine": 516,
+        "startChar": 3,
+        "endLine": 516,
+        "endChar": 50
+      },
+      "revId": "71349c0ed1592b34caea75138d044e94742f4592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1005a7ae_77b81e7a",
         "filename": "util/genvif.c",
         "patchSetId": 3
@@ -59,6 +82,76 @@
         "startChar": 2,
         "endLine": 778,
         "endChar": 36
+      },
+      "revId": "71349c0ed1592b34caea75138d044e94742f4592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b7b13d_9eb66e50",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T16:31:13Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "8fc3e265_e0cef63b",
+      "range": {
+        "startLine": 776,
+        "startChar": 2,
+        "endLine": 778,
+        "endChar": 36
+      },
+      "revId": "71349c0ed1592b34caea75138d044e94742f4592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0649ace2_d13cc3f7",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T16:31:13Z",
+      "side": 1,
+      "message": "Is this a callout for manual editing after generation or for a future code change that will generate this value?",
+      "range": {
+        "startLine": 987,
+        "startChar": 5,
+        "endLine": 987,
+        "endChar": 12
+      },
+      "revId": "71349c0ed1592b34caea75138d044e94742f4592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6900b5f3_78887e6a",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-28T16:31:13Z",
+      "side": 1,
+      "message": "Nit: This could just apply to the last argument. Does IS_ENABLED work in util/?",
+      "range": {
+        "startLine": 990,
+        "startChar": 1,
+        "endLine": 990,
+        "endChar": 44
       },
       "revId": "71349c0ed1592b34caea75138d044e94742f4592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
