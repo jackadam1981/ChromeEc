@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "506264b1_b175ce58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-28T19:17:44Z",
+      "side": 1,
+      "message": "This happens when we flash the ITE EC from the OS in the factory.  So the sequence there would be:\n- system boots (EFS2 jumps from RO to RW)\n- ODM starts \"flashrom -p ec -w ec.bin\"\n- flashrom jumps the EC between images in order to update the EC code\n\nI believe flashrom will be jumping the EC to RO to write the RW section, and then back to RW to write the RO section. \n\nI don\u0027t know how realistic it is to remove the no-battery EC flash case for dedede.  We have a WP jumper, so the battery shouldn\u0027t need to be removed in order to write RO.  However, it sounds like there are at least a few RMA and SMT flows which typically run with no battery.",
+      "parentUuid": "f8bc432d_19605f65",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "a806b91ed8af53b881be9c2ffaeda4f33269374c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "de97e0a6_ad843529",
