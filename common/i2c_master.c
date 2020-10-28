@@ -30,9 +30,22 @@
 #define UNWEDGE_SCL_ATTEMPTS  10
 #define UNWEDGE_SDA_ATTEMPTS  3
 
+#ifdef CONFIG_ZEPHYR
+/* Pass logging to Zephyr's logging infrastructure. */
+#include <logging/log.h>
+LOG_MODULE_REGISTER(i2c_leader, CONFIG_LOG_DEFAULT_LEVEL);
+#define CC_I2C
+#define CPUTS(outstr) do {} while (0)
+#define CPRINTS(format, args...) LOG_INF(format, ##args)
+#define CPRINTF(format, args...) LOG_INF(format, ##args)
+
+#include <drivers/i2c.h>
+#include "i2c/i2c.h"
+#else
 #define CPUTS(outstr) cputs(CC_I2C, outstr)
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
+#endif /* CONFIG_ZEPHYR */
 
 /* Only chips with multi-port controllers will define I2C_CONTROLLER_COUNT */
 #ifndef I2C_CONTROLLER_COUNT
@@ -43,11 +56,26 @@
 #define I2C_BITBANG_PORT_COUNT 0
 #endif
 
-static struct mutex port_mutex[I2C_CONTROLLER_COUNT + I2C_BITBANG_PORT_COUNT];
+static mutex_t port_mutex[I2C_CONTROLLER_COUNT + I2C_BITBANG_PORT_COUNT];
 /* A bitmap of the controllers which are currently servicing a request. */
 static uint32_t i2c_port_active_list;
 BUILD_ASSERT(ARRAY_SIZE(port_mutex) < 32);
 static uint8_t port_protected[I2C_PORT_COUNT + I2C_BITBANG_PORT_COUNT];
+
+#ifdef CONFIG_ZEPHYR
+static int init_port_mutex(const struct device *dev)
+{
+	size_t i;
+
+	ARG_UNUSED(dev);
+
+	for (i = 0; i < ARRAY_SIZE(port_mutex); ++i)
+		k_mutex_init(port_mutex + i);
+
+	return 0;
+}
+SYS_INIT(init_port_mutex, APPLICATION, 99);
+#endif /* CONFIG_ZEPHYR */
 
 /**
  * Non-deterministically test the lock status of the port.  If another task
@@ -67,6 +95,16 @@ static int i2c_port_is_locked(int port)
 
 	return (i2c_port_active_list >> port) & 1;
 }
+
+/*
+ * If we're building for zephyr we don't need this struct as it is handled in
+ * devicetree. We'll need this stub for now to get it to build without having
+ * to shim board/${BOARD}/board.c.
+ */
+#ifdef CONFIG_ZEPHYR
+const struct i2c_port_t i2c_ports[] = {};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+#endif /* CONFIG_ZEPHYR */
 
 
 const struct i2c_port_t *get_i2c_port(const int port)
@@ -89,10 +127,10 @@ const struct i2c_port_t *get_i2c_port(const int port)
 	return NULL;
 }
 
-static int chip_i2c_xfer_with_notify(const int port,
-				     const uint16_t slave_addr_flags,
-				     const uint8_t *out, int out_size,
-				     uint8_t *in, int in_size, int flags)
+__maybe_unused static int chip_i2c_xfer_with_notify(
+	const int port, const uint16_t slave_addr_flags,
+	const uint8_t *out, int out_size,
+	uint8_t *in, int in_size, int flags)
 {
 	int ret;
 	uint16_t addr_flags = slave_addr_flags;
@@ -165,7 +203,9 @@ int i2c_xfer_unlocked(const int port,
 	int i;
 	int ret = EC_SUCCESS;
 
+#ifndef CONFIG_ZEPHYR
 	uint16_t addr_flags = slave_addr_flags & ~I2C_FLAG_PEC;
+#endif
 
 	if (!i2c_port_is_locked(port)) {
 		CPUTS("Access I2C without lock!");
@@ -173,7 +213,11 @@ int i2c_xfer_unlocked(const int port,
 	}
 
 	for (i = 0; i <= CONFIG_I2C_NACK_RETRY_COUNT; i++) {
-#ifdef CONFIG_I2C_XFER_LARGE_READ
+#ifdef CONFIG_ZEPHYR
+		ret = i2c_write_read(i2c_get_device_for_port(port),
+				     slave_addr_flags, out, out_size, in,
+				     in_size);
+#elif defined(CONFIG_I2C_XFER_LARGE_READ)
 		ret = i2c_xfer_no_retry(port, addr_flags,
 					    out, out_size, in,
 					    in_size, flags);
@@ -206,33 +250,35 @@ int i2c_xfer(const int port,
 
 void i2c_lock(int port, int lock)
 {
+	uint32_t irq_lock_key;
+
 #ifdef CONFIG_I2C_MULTI_PORT_CONTROLLER
 	/* Lock the controller, not the port */
 	port = i2c_port_to_controller(port);
 #endif
-	if (port < 0)
+	if (port < 0 || port >= ARRAY_SIZE(port_mutex))
 		return;
 
 	if (lock) {
 		mutex_lock(port_mutex + port);
 
 		/* Disable interrupt during changing counter for preemption. */
-		interrupt_disable();
+		irq_lock_key = interrupt_disable();
 
 		i2c_port_active_list |= 1 << port;
 		/* Ec cannot enter sleep if there's any i2c port active. */
 		disable_sleep(SLEEP_MASK_I2C_MASTER);
 
-		interrupt_enable();
+		interrupt_enable(irq_lock_key);
 	} else {
-		interrupt_disable();
+		irq_lock_key = interrupt_disable();
 
 		i2c_port_active_list &= ~BIT(port);
 		/* Once there is no i2c port active, enable sleep bit of i2c. */
 		if (!i2c_port_active_list)
 			enable_sleep(SLEEP_MASK_I2C_MASTER);
 
-		interrupt_enable();
+		interrupt_enable(irq_lock_key);
 
 		mutex_unlock(port_mutex + port);
 	}
@@ -248,8 +294,8 @@ void i2c_prepare_sysjump(void)
 }
 
 /* i2c_readN with optional error checking */
-static int i2c_read(const int port, const uint16_t slave_addr_flags,
-			uint8_t reg, uint8_t *in, int in_size)
+static int platform_ec_i2c_read(const int port, const uint16_t slave_addr_flags,
+				uint8_t reg, uint8_t *in, int in_size)
 {
 	if (!IS_ENABLED(CONFIG_SMBUS_PEC) && I2C_USE_PEC(slave_addr_flags))
 		return EC_ERROR_UNIMPLEMENTED;
@@ -257,7 +303,7 @@ static int i2c_read(const int port, const uint16_t slave_addr_flags,
 	if (IS_ENABLED(CONFIG_SMBUS_PEC) && I2C_USE_PEC(slave_addr_flags)) {
 		int i, rv;
 		/* addr_8bit = 7 bit addr_flags + 1 bit r/w */
-		uint8_t addr_8bit = I2C_GET_ADDR(slave_addr_flags) << 1;
+		uint8_t addr_8bit = I2C_STRIP_FLAGS(slave_addr_flags) << 1;
 		uint8_t out[3] = {addr_8bit, reg, addr_8bit | 1};
 		uint8_t pec_local = 0, pec_remote;
 
@@ -289,15 +335,16 @@ static int i2c_read(const int port, const uint16_t slave_addr_flags,
 }
 
 /* i2c_writeN with optional error checking */
-static int i2c_write(const int port, const uint16_t slave_addr_flags,
-			 const uint8_t *out, int out_size)
+static int platform_ec_i2c_write(const int port,
+				 const uint16_t slave_addr_flags,
+				 const uint8_t *out, int out_size)
 {
 	if (!IS_ENABLED(CONFIG_SMBUS_PEC) && I2C_USE_PEC(slave_addr_flags))
 		return EC_ERROR_UNIMPLEMENTED;
 
 	if (IS_ENABLED(CONFIG_SMBUS_PEC) && I2C_USE_PEC(slave_addr_flags)) {
 		int i, rv;
-		uint8_t addr_8bit = I2C_GET_ADDR(slave_addr_flags) << 1;
+		uint8_t addr_8bit = I2C_STRIP_FLAGS(slave_addr_flags) << 1;
 		uint8_t pec;
 
 		pec = crc8(&addr_8bit, 1);
@@ -334,7 +381,8 @@ int i2c_read32(const int port,
 
 	reg = offset & 0xff;
 	/* I2C read 32-bit word: transmit 8-bit offset, and read 32bits */
-	rv = i2c_read(port, slave_addr_flags, reg, buf, sizeof(uint32_t));
+	rv = platform_ec_i2c_read(port, slave_addr_flags, reg, buf,
+				  sizeof(uint32_t));
 
 	if (rv)
 		return rv;
@@ -369,7 +417,8 @@ int i2c_write32(const int port,
 		buf[4] = (data >> 24) & 0xff;
 	}
 
-	return i2c_write(port, slave_addr_flags, buf, sizeof(uint32_t) + 1);
+	return platform_ec_i2c_write(port, slave_addr_flags, buf,
+				     sizeof(uint32_t) + 1);
 }
 
 int i2c_read16(const int port,
@@ -381,7 +430,8 @@ int i2c_read16(const int port,
 
 	reg = offset & 0xff;
 	/* I2C read 16-bit word: transmit 8-bit offset, and read 16bits */
-	rv = i2c_read(port, slave_addr_flags, reg, buf, sizeof(uint16_t));
+	rv = platform_ec_i2c_read(port, slave_addr_flags, reg, buf,
+				  sizeof(uint16_t));
 
 	if (rv)
 		return rv;
@@ -410,7 +460,8 @@ int i2c_write16(const int port,
 		buf[2] = (data >> 8) & 0xff;
 	}
 
-	return i2c_write(port, slave_addr_flags, buf, 1 + sizeof(uint16_t));
+	return platform_ec_i2c_write(port, slave_addr_flags, buf,
+				     1 + sizeof(uint16_t));
 }
 
 int i2c_read8(const int port,
@@ -423,7 +474,8 @@ int i2c_read8(const int port,
 
 	reg = offset;
 
-	rv = i2c_read(port, slave_addr_flags, reg, &buf, sizeof(uint8_t));
+	rv = platform_ec_i2c_read(port, slave_addr_flags, reg, &buf,
+				  sizeof(uint8_t));
 	if (!rv)
 		*data = buf;
 
@@ -439,7 +491,7 @@ int i2c_write8(const int port,
 	buf[0] = offset;
 	buf[1] = data;
 
-	return i2c_write(port, slave_addr_flags, buf, sizeof(buf));
+	return platform_ec_i2c_write(port, slave_addr_flags, buf, sizeof(buf));
 }
 
 int i2c_update8(const int port,
@@ -599,7 +651,11 @@ int i2c_read_offset16_block(const int port,
 	addr[0] = (offset >> 8) & 0xff;
 	addr[1] = offset & 0xff;
 
-	return i2c_xfer(port, slave_addr_flags, addr, 2, data, len);
+	if (IS_ENABLED(CONFIG_ZEPHYR))
+		return i2c_write_read(i2c_get_device_for_port(port),
+				      slave_addr_flags, addr, 2, data, len);
+	else
+		return i2c_xfer(port, slave_addr_flags, addr, 2, data, len);
 }
 
 int i2c_write_offset16_block(const int port,
@@ -660,7 +716,8 @@ int i2c_read_string(const int port,
 
 		if (IS_ENABLED(CONFIG_SMBUS_PEC) &&
 				I2C_USE_PEC(slave_addr_flags)) {
-			uint8_t addr_8bit = I2C_GET_ADDR(slave_addr_flags) << 1;
+			uint8_t addr_8bit =
+				I2C_STRIP_FLAGS(slave_addr_flags) << 1;
 			uint8_t out[3] = {addr_8bit, reg, addr_8bit | 1};
 			uint8_t pec, pec_remote;
 
@@ -713,14 +770,20 @@ int i2c_read_string(const int port,
 	return rv;
 }
 
-int i2c_read_block(const int port,
-		   const uint16_t slave_addr_flags,
-		   int offset, uint8_t *data, int len)
+int i2c_read_block(const int port, const uint16_t slave_addr_flags, int offset,
+		   uint8_t *data, int len)
 {
 	int rv;
 	uint8_t reg_address = offset;
 
-	rv = i2c_xfer(port, slave_addr_flags, &reg_address, 1, data, len);
+	if (IS_ENABLED(CONFIG_ZEPHYR)) {
+		rv = i2c_write_read(i2c_get_device_for_port(port),
+				    slave_addr_flags, &reg_address, 1, data,
+				    len);
+	} else {
+		rv = i2c_xfer(port, slave_addr_flags, &reg_address, 1, data,
+			      len);
+	}
 	return rv;
 }
 
@@ -735,7 +798,7 @@ int i2c_write_block(const int port,
 		return EC_ERROR_UNIMPLEMENTED;
 
 	if (IS_ENABLED(CONFIG_SMBUS_PEC) && I2C_USE_PEC(slave_addr_flags)) {
-		uint8_t addr_8bit = I2C_GET_ADDR(slave_addr_flags) << 1;
+		uint8_t addr_8bit = I2C_STRIP_FLAGS(slave_addr_flags) << 1;
 
 		pec = crc8(&addr_8bit, sizeof(uint8_t));
 		pec = crc8_arg(data, len, pec);
@@ -1114,7 +1177,8 @@ static enum ec_status i2c_command_passthru(struct host_cmd_handler_args *args)
 
 	/* Loop and process messages */
 	resp->i2c_status = 0;
-	out = args->params + sizeof(*params) + params->num_msgs * sizeof(*msg);
+	out = (uint8_t *)args->params + sizeof(*params) +
+		params->num_msgs * sizeof(*msg);
 	in_len = 0;
 
 	for (resp->num_msgs = 0, msg = params->msg;
@@ -1224,7 +1288,7 @@ static void i2c_passthru_protect_tcpc_ports(void)
 
 	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 		/* TCPC tunnel not configured. No need to protect anything */
-		if (!I2C_GET_ADDR(tcpc_config[i].i2c_info.addr_flags))
+		if (!I2C_STRIP_FLAGS(tcpc_config[i].i2c_info.addr_flags))
 			continue;
 		i2c_passthru_protect_port(tcpc_config[i].i2c_info.port);
 	}
