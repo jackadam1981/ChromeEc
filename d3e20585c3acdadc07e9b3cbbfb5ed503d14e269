@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a3ead8_9e5f6b4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-28T23:34:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9457a49_b8d2e928",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "d3e20585c3acdadc07e9b3cbbfb5ed503d14e269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6738843e_d1bd3460",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-28T18:34:27Z",
       "side": 1,
       "message": "IS_ENABLED(CONFIG_USBC_RETIMER_INTEL_BB) \u0026\u0026",
+      "range": {
+        "startLine": 379,
+        "startChar": 5,
+        "endLine": 379,
+        "endChar": 6
+      },
+      "revId": "d3e20585c3acdadc07e9b3cbbfb5ed503d14e269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f53c6c_1434c961",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-28T23:34:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6738843e_d1bd3460",
       "range": {
         "startLine": 379,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c08c833_3f399ffb",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-28T23:34:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b758f632_2b3edda7",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "d3e20585c3acdadc07e9b3cbbfb5ed503d14e269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89ca06ac_fd74ef95",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-28T18:34:27Z",
       "side": 1,
       "message": "rephrase ?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "d3e20585c3acdadc07e9b3cbbfb5ed503d14e269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00f54fe_3a15a119",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-28T23:34:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "89ca06ac_fd74ef95",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77fb650e_c63a6e3f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5700,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-28T23:34:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62404687_c43d01fa",
+      "range": {
+        "startLine": 5700,
+        "startChar": 0,
+        "endLine": 5700,
+        "endChar": 46
+      },
+      "revId": "d3e20585c3acdadc07e9b3cbbfb5ed503d14e269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b0b0fcc_90367353",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-10-28T18:34:27Z",
       "side": 1,
       "message": "may not be needed.\n\nadd some info",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "d3e20585c3acdadc07e9b3cbbfb5ed503d14e269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87d8c7e4_f5655360",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-10-28T23:34:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b0b0fcc_90367353",
       "range": {
         "startLine": 20,
         "startChar": 0,
