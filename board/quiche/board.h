@@ -19,8 +19,14 @@
 /* USB Type C and USB PD defines */
 #define USB_PD_PORT_HOST   0
 #define USB_PD_PORT_DP   1
+#define USB_PD_PORT_UF   2
 
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+/*
+ * Only the host and display usbc ports are usb-pd capable. There is a 3rd usbc
+ * port, but this is type-c capable only. Only the PPC for this port needs to be
+ * controlled by FW.
+ */
+#define CONFIG_USB_PD_PORT_MAX_COUNT 3
 
 #define CONFIG_USB_MUX_PS8822
 
