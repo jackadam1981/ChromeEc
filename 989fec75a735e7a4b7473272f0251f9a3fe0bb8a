@@ -160,6 +160,24 @@
       "parentUuid": "47784b45_5610e21e",
       "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f410b6fb_10d29104",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-10-28T17:55:21Z",
+      "side": 1,
+      "message": "Diana, \nIn my limited testing charger looks good.\nShould we move this change under suspend/resume path instead of runtime ? and is the sequencing is correct ?",
+      "parentUuid": "6f0e5865_34eb8a6d",
+      "revId": "989fec75a735e7a4b7473272f0251f9a3fe0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
