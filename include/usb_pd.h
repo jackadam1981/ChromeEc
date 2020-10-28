@@ -66,6 +66,8 @@ enum pd_rx_errors {
 #define PD_EVENT_RX_HARD_RESET		TASK_EVENT_CUSTOM_BIT(11)
 /* First free event on PD task */
 #define PD_EVENT_FIRST_FREE_BIT		12
+/* MUX configured notification event */
+#define PD_EVENT_AP_MUX_DONE(port)	TASK_EVENT_CUSTOM_BIT(13 + port)
 
 /* Ensure TCPC is out of low power mode before handling these events. */
 #define PD_EXIT_LOW_POWER_EVENT_MASK \
