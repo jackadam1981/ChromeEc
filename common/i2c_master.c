@@ -713,14 +713,20 @@ int i2c_read_string(const int port,
 	return rv;
 }
 
-int i2c_read_block(const int port,
-		   const uint16_t slave_addr_flags,
-		   int offset, uint8_t *data, int len)
+int i2c_read_block(const int port, const uint16_t slave_addr_flags, int offset,
+		   uint8_t *data, int len)
 {
 	int rv;
 	uint8_t reg_address = offset;
 
-	rv = i2c_xfer(port, slave_addr_flags, &reg_address, 1, data, len);
+	if (IS_ENABLED(CONFIG_ZEPHYR)) {
+		rv = i2c_write_read(i2c_get_device_for_port(port),
+				    slave_addr_flags, &reg_address, 1, data,
+				    len);
+	} else {
+		rv = i2c_xfer(port, slave_addr_flags, &reg_address, 1, data,
+			      len);
+	}
 	return rv;
 }
 
