@@ -79,6 +79,20 @@ void hpd_interrupt(enum gpio_signal signal)
 {
 	usb_pd_hpd_edge_event(signal);
 }
+
+void board_uf_manage_vbus(void)
+{
+	int level = gpio_get_level(GPIO_USBC_UF_MUX_VBUS_EN);
+
+	ppc_vbus_source_enable(USB_PD_PORT_UF, level);
+	CPRINTS("C2: Vbus %s", level ? "on" : "off");
+}
+DECLARE_DEFERRED(board_uf_manage_vbus);
+
+static void board_uf_manage_vbus_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&board_uf_manage_vbus_data, 500);
+}
 #endif
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -181,6 +195,11 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_addr_flags = SN5S330_ADDR2_FLAGS,
 		.drv = &sn5s330_drv
 	},
+	[USB_PD_PORT_UF] = {
+		.i2c_port = I2C_PORT_I2C3,
+		.i2c_addr_flags = SN5S330_ADDR1_FLAGS,
+		.drv = &sn5s330_drv
+	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
@@ -199,6 +218,8 @@ void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
+	/* Enable VBUS control interrupt for C2 */
+	gpio_enable_interrupt(GPIO_USBC_UF_MUX_VBUS_EN);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -212,6 +233,67 @@ static void board_init(void)
 {
 	usb_mux_hpd_update(1, 0, 0);
 
+}
+
+static void board_config_usbc_uf_ppc(void)
+{
+	int vbus_level;
+
+	/*
+	 * This port is not usb-pd capable, but there is a ppc which must be
+	 * initialized, and keep the VBUS switch enabled.
+	 */
+	ppc_init(USB_PD_PORT_UF);
+	vbus_level = gpio_get_level(GPIO_USBC_UF_MUX_VBUS_EN);
+
+	CPRINTS("usbc: UF PPC configured. VBUS = %s",
+		vbus_level ? "on" : "off");
+
+	/*
+	 * Check intial state as there there may not be an edge event after
+	 * interrupts are enabled if the port is attached at EC reboot time.
+	 */
+	ppc_vbus_source_enable(USB_PD_PORT_UF, vbus_level);
+}
+DECLARE_DEFERRED(board_config_usbc_uf_ppc);
+
+static int command_c2(int argc, char **argv)
+{
+	int en = 0;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "on")) {
+		en = 1;
+	} else if (!strcasecmp(argv[1], "off")) {
+		en = 0;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+	ppc_vbus_source_enable(USB_PD_PORT_UF, en);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(c2, command_c2,
+			"<on|off>",
+			"C2 PPC");
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+}
+
+#endif /* #ifdef SECTION_IS_RW */
+
+static void board_init(void)
+{
+#ifdef SECTION_IS_RW
+	board_select_drp_mode();
+	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
+	hook_call_deferred(&board_config_usbc_uf_ppc_data, 10 * MSEC);
+#endif
+>>>>>>> 6bf775e605 (quiche: Add support for C2 usbc port)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
