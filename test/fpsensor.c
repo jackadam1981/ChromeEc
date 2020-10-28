@@ -27,8 +27,16 @@ test_static int test_validate_fp_buffer_offset_failure_overflow(void)
 
 void run_test(int argc, char **argv)
 {
-	test_validate_fp_buffer_offset_success();
-	test_validate_fp_buffer_offset_failure_no_overflow();
-	test_validate_fp_buffer_offset_failure_overflow();
-	test_print_result();
+	if (IS_ENABLED(HAS_TASK_FPSENSOR)) {
+		test_validate_fp_buffer_offset_success();
+		test_validate_fp_buffer_offset_failure_no_overflow();
+		test_validate_fp_buffer_offset_failure_overflow();
+		test_print_result();
+		return;
+	}
+
+	/* TODO(b/171924356): The "emulator" build only builds RO and the
+	 *  functions used in the tests are only in RW.
+	 */
+	/* test_fail(); */
 }
