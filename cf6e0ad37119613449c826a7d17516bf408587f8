@@ -16,6 +16,24 @@
       "message": "Shall we see how this goes?\nTom has some concerns in b/168521645#comment80 but maybe we can do Daisuke\u0027s idea of \"Prevent RO from jumping to RW after enabling PD.\" later on.",
       "revId": "cf6e0ad37119613449c826a7d17516bf408587f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7541d1_546319da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-29T16:18:07Z",
+      "side": 1,
+      "message": "I am a little hesitance to submit this if this isn\u0027t really address the issue at hand. It doesn\u0027t look like anyone has tested it.",
+      "parentUuid": "6ffbd624_ec740dbf",
+      "revId": "cf6e0ad37119613449c826a7d17516bf408587f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
