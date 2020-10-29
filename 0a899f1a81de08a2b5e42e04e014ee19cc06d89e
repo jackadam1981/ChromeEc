@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t chip specific quirks be handled in chip_i2c_* ?",
       "revId": "0a899f1a81de08a2b5e42e04e014ee19cc06d89e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3509416_eb8ff801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-10-29T06:55:00Z",
+      "side": 1,
+      "message": "Actually chip_i2c_* code is used for i2c master implementation, like chip/stm/i2c-stm32f0, chip/npcx/i2c and so on. So chip in this context is usually uC being the only master on the bus.\n\nGL3590 is a slave device, thus I don\u0027t think that master-specific i2c compilation unit is a good place to put such quirk (actually I should do this for every uC then).\n\nThat being said, it wasn\u0027t a trivial task to select the proper layer in EC i2c stack to put such a change. I selected top level i2c-master, which is common for all the masters regardless its type.",
+      "parentUuid": "02b1143c_c3fca89e",
+      "revId": "0a899f1a81de08a2b5e42e04e014ee19cc06d89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
