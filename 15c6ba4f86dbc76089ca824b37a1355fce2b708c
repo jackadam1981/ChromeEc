@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "351708bd_1932e12c",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-29T22:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43489951_847c8030",
+      "revId": "15c6ba4f86dbc76089ca824b37a1355fce2b708c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50e5124f_2cf0e59b",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-29T01:09:56Z",
       "side": 1,
       "message": "ccprints/f is only for the console channel.",
+      "range": {
+        "startLine": 385,
+        "startChar": 2,
+        "endLine": 385,
+        "endChar": 10
+      },
+      "revId": "15c6ba4f86dbc76089ca824b37a1355fce2b708c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af1f3e3f_e4ca6cf9",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-29T22:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e5124f_2cf0e59b",
       "range": {
         "startLine": 385,
         "startChar": 2,
