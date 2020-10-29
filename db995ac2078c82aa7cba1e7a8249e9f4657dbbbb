@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62db75af_0c7637f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-29T22:57:19Z",
+      "side": 1,
+      "message": "describe exact command, DUT used.",
+      "revId": "db995ac2078c82aa7cba1e7a8249e9f4657dbbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "313c1945_0a6844da",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2753,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-29T22:57:19Z",
+      "side": 1,
+      "message": "needed?",
+      "revId": "db995ac2078c82aa7cba1e7a8249e9f4657dbbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7173937_61ad1d9b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2914,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-29T22:57:19Z",
+      "side": 1,
+      "message": "Used for MOTIONSENSE_CMD_SPOOF, when spoofing an activity.",
+      "revId": "db995ac2078c82aa7cba1e7a8249e9f4657dbbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2adb93_6808af54",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2927,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-29T22:57:19Z",
+      "side": 1,
+      "message": "consider merging spoof and spoof_activity in a union.",
+      "revId": "db995ac2078c82aa7cba1e7a8249e9f4657dbbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

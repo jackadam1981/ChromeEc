@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b1d9a4_8d40fed4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2671,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-29T22:57:19Z",
+      "side": 0,
+      "message": "you can\u0027t remove a field, you are breaking backward compatibility.",
+      "revId": "3cba51e9e807e7015d81c2891c47ea4c59587a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
