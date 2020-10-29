@@ -2269,6 +2269,9 @@
  */
 #undef CONFIG_HIBERNATE_PSL_VCC1_RST_WAKEUP
 
+/* Compensate for RTC after hibernater wake-up. */
+#undef CONFIG_HIBERNATE_PSL_COMPENSATE_RTC
+
 /*
  * Chip supports a 64-bit hardware timer and implements
  * __hw_clock_source_read64 and __hw_clock_source_set64.
@@ -5818,5 +5821,10 @@
 #define CONFIG_BODY_DETECTION_STATIONARY_DURATION 15  /* second */
 #endif /* ifndef(CONFIG_BODY_DETECTION_CUSTOM) */
 #endif /* CONFIG_BODY_DETECTION */
+
+#if defined(CONFIG_HIBERNATE_PSL) && defined(NPCX_LCT_SUPPORT) && \
+	(defined(CONFIG_CMD_RTC) || defined(CONFIG_HOSTCMD_RTC))
+#define CONFIG_HIBERNATE_PSL_COMPENSATE_RTC
+#endif
 
 #endif  /* __CROS_EC_CONFIG_H */
