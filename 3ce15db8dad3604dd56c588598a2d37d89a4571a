@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f3469ed2_6257fbad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-29T14:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d675bd10_335c8e5e",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "3ce15db8dad3604dd56c588598a2d37d89a4571a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "075489a1_277b9112",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-28T23:17:12Z",
       "side": 1,
       "message": "Do we want to also set this for SVIDs and modes NAKs?",
+      "revId": "3ce15db8dad3604dd56c588598a2d37d89a4571a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10cbc2be_b20b473d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-29T14:59:19Z",
+      "side": 1,
+      "message": "Already covered that case in pe_init_vdm_svids_request_exit() and I believe pe_init_vdm_modes_request_exit() should also notify on NAK since it notifies once modes discovery is no longer \"needed\"",
+      "parentUuid": "075489a1_277b9112",
       "revId": "3ce15db8dad3604dd56c588598a2d37d89a4571a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
