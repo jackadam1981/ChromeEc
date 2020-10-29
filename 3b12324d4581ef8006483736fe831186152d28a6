@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c61f8073_fdf9d5e0",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-29T22:36:10Z",
+      "side": 1,
+      "message": "I don\u0027t understand the purpose of this.\n\nAlso how with the mutex get initialized in shim code? Most platform/ec code declares static struct mutex in the file that it needed it?",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 29
+      },
+      "revId": "3b12324d4581ef8006483736fe831186152d28a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
