@@ -2281,6 +2281,16 @@
 #undef CONFIG_HIBERNATE_PSL_VCC1_RST_WAKEUP
 
 /*
+ * Compensate the elapsed time for the RTC which couldn't work in hibernate PSL
+ * after hibernation wake-up. This option is enabled automatically when enabling
+ * all the following configs:
+ *   (1) CONFIG_HIBERNATE_PSL
+ *   (2) CONFIG_CMD_RTC or CONFIG_HOSTCMD_RTC
+ * Currently, NPCX9 supports LCT to compensate the elapsed time for the RTC.
+ */
+#undef CONFIG_HIBERNATE_PSL_COMPENSATE_RTC
+
+/*
  * Chip supports a 64-bit hardware timer and implements
  * __hw_clock_source_read64 and __hw_clock_source_set64.
  *
