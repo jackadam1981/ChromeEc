@@ -51,6 +51,24 @@
       "message": "I posted to the bug but it seems got lost.\n\nThis CL will enable PD in RO when EFS2 is used and the system is unlocked. So in RO a PD contract is established. When sysjump to RW and the current PD stack implementation doesn\u0027t carry over the PD contract across RO-\u003eRW, it will cause brownout (PD hard reset) on the dead-battery scenario, by either DUT explicitly going to the ErrorRecovery state or some unknown protocol error.",
       "revId": "cf6e0ad37119613449c826a7d17516bf408587f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "957d2fe3_80751ae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-29T17:46:33Z",
+      "side": 1,
+      "message": "Rationale is posted here: https://b.corp.google.com/issues/168521645#comment91.",
+      "parentUuid": "04b58cd1_311abc25",
+      "revId": "cf6e0ad37119613449c826a7d17516bf408587f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
