@@ -66,6 +66,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96e22893_45db2c45",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-29T16:58:33Z",
+      "side": 1,
+      "message": "What context are these cable parameters being used in?  I\u0027m hoping as we move forward to shift all of these types of calculations over to the AP, as we\u0027re fully supplying them will all the discovery information we\u0027ve gathered.",
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5fd92de_3ea7953a",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 16
@@ -105,6 +122,29 @@
         "startChar": 0,
         "endLine": 418,
         "endChar": 41
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab46598_1ea71b11",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-29T16:58:33Z",
+      "side": 1,
+      "message": "Always returns true",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 42
       },
       "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -204,6 +244,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3a5e1e2_af0f2f0d",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-29T16:58:33Z",
+      "side": 1,
+      "message": "Are these checks necessary?  Is this state ever entered with a passive cable?",
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d63e9951_324eaa47",
         "filename": "common/usbc/usb_mode.c",
         "patchSetId": 16
@@ -273,6 +330,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c472aa7_675dda1b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 5521,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-29T16:58:33Z",
+      "side": 1,
+      "message": "It looks like not all conditions in enter_usb_setup_next_msg() will fill in the tx_type.  Should it be set to a known value before passing it in, or is this guaranteed to be set to a known value before this function is called?",
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4cdd22e_ab5d93f9",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 16
@@ -290,6 +364,23 @@
         "endLine": 5534,
         "endChar": 2
       },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c79f7d3_4ec4ccfe",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 5547,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-29T16:58:33Z",
+      "side": 1,
+      "message": "Redundant with entry check?",
       "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
