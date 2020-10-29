@@ -92,7 +92,8 @@ struct charger_drv {
 					       int *voltage);
 
 	/* Set desired input current value */
-	enum ec_error_list (*set_input_current)(int chgnum, int input_current);
+	enum ec_error_list (*set_input_current_limit)(int chgnum,
+						      int input_current);
 
 	/* Get actual input current value */
 	enum ec_error_list (*get_input_current)(int chgnum, int *input_current);
@@ -256,7 +257,8 @@ int charger_get_system_power(void);
 /* Other parameters that may be charger-specific, but are common so far. */
 
 /* Set desired input current value */
-enum ec_error_list charger_set_input_current(int chgnum, int input_current);
+enum ec_error_list charger_set_input_current_limit(int chgnum,
+						   int input_current);
 
 /*
  * Get actual input current value.
