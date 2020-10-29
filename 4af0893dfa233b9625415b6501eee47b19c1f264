@@ -81,6 +81,24 @@
       "parentUuid": "3d4aae04_5e457101",
       "revId": "4af0893dfa233b9625415b6501eee47b19c1f264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de915091_45670a4b",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-29T21:49:34Z",
+      "side": 1,
+      "message": "I don\u0027t feel strongly either way. I could turn this into:\n\n__maybe_unused static inline uint32_t irq_lock(void)\n{\n  interrupt_disable();\n  return 0;\n}\n\n__maybe_unsused static inline void irq_unlock(uint32_t key)\n{\n  interrupt_enable();\n}\n\nSimon, would that be what you\u0027re looking for?",
+      "parentUuid": "29cca7a7_886f08a0",
+      "revId": "4af0893dfa233b9625415b6501eee47b19c1f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
