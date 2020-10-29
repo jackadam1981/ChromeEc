@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae90848b_33f23ba1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-29T18:38:12Z",
+      "side": 1,
+      "message": "Some boards (like \"willow\") failed to build the images. Please check. Make sure it passes \"make buildall -j\".",
+      "revId": "6f31500c8473a72d1cdd7bc2a3a9543db02ec205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
