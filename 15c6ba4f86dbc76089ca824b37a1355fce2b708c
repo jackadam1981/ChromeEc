@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43489951_847c8030",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-29T01:09:56Z",
+      "side": 1,
+      "message": "I\u0027d narrow the scope to help reduce the race condition. Essentially only do this when you\u0027re in DP alt mode already.",
+      "revId": "15c6ba4f86dbc76089ca824b37a1355fce2b708c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e5124f_2cf0e59b",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-29T01:09:56Z",
+      "side": 1,
+      "message": "ccprints/f is only for the console channel.",
+      "range": {
+        "startLine": 385,
+        "startChar": 2,
+        "endLine": 385,
+        "endChar": 10
+      },
+      "revId": "15c6ba4f86dbc76089ca824b37a1355fce2b708c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
