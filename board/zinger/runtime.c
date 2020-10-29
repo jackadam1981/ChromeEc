@@ -57,12 +57,13 @@ void task_clear_pending_irq(int irq)
 	CPU_NVIC_UNPEND(0) = 1 << irq;
 }
 
-void interrupt_disable(void)
+uint32_t interrupt_disable(void)
 {
 	asm("cpsid i");
+	return 0;
 }
 
-void interrupt_enable(void)
+void interrupt_enable(uint32_t key)
 {
 	asm("cpsie i");
 }

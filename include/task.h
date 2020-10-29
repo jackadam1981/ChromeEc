@@ -71,13 +71,17 @@
  *
  * This might break the system so think really hard before using these. There
  * are usually better ways of accomplishing this.
+ *
+ * @return a key representing the state of the CPU prior to the disable.
  */
-void interrupt_disable(void);
+uint32_t interrupt_disable(void);
 
 /**
  * Enable CPU interrupt bit.
+ *
+ * @param key The key returned by {@link interrupt_disable}.
  */
-void interrupt_enable(void);
+void interrupt_enable(uint32_t key);
 
 /**
  * Return true if we are in interrupt context.

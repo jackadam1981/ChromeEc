@@ -124,14 +124,15 @@ int in_interrupt_context(void)
 	return !!in_interrupt;
 }
 
-void interrupt_disable(void)
+uint32_t interrupt_disable(void)
 {
 	pthread_mutex_lock(&interrupt_lock);
 	interrupt_disabled = 1;
 	pthread_mutex_unlock(&interrupt_lock);
+	return 0;
 }
 
-void interrupt_enable(void)
+void interrupt_enable(uint32_t key)
 {
 	pthread_mutex_lock(&interrupt_lock);
 	interrupt_disabled = 0;

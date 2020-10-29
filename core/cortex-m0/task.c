@@ -151,12 +151,13 @@ static inline task_ *__task_id_to_ptr(task_id_t id)
 	return tasks + id;
 }
 
-void interrupt_disable(void)
+uint32_t interrupt_disable(void)
 {
 	asm("cpsid i");
+	return 0;
 }
 
-void interrupt_enable(void)
+void interrupt_enable(uint32_t key)
 {
 	asm("cpsie i");
 }
