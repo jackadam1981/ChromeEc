@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f2f946e_bb30cb42",
+        "filename": "chip/it83xx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-10-29T06:47:08Z",
+      "side": 1,
+      "message": "The adc_data_valid() will only return true when the ADC reading finished successfully.",
+      "parentUuid": "c7c9c9b0_cf80f8b9",
+      "revId": "99dc512ab1f5abd422964f74707738fcdbeed834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2aa5637_a36df18f",
         "filename": "chip/it83xx/adc.c",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-28T15:41:08Z",
       "side": 1,
       "message": "It looks like there is still a race condition here, but I don\u0027t think there is. We should add the comment that the atomic clear must happen after setting task_waiting to invalid",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 30
+      },
+      "revId": "99dc512ab1f5abd422964f74707738fcdbeed834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6d42372_4d74880b",
+        "filename": "chip/it83xx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-10-29T06:47:08Z",
+      "side": 1,
+      "message": "comment added.",
+      "parentUuid": "e2aa5637_a36df18f",
       "range": {
         "startLine": 152,
         "startChar": 1,
