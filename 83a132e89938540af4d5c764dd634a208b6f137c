@@ -147,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4f532a_847c13df",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-29T18:47:16Z",
+      "side": 1,
+      "message": "What is the AP using this information for?",
+      "parentUuid": "90593784_ef12efd8",
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5fd92de_3ea7953a",
