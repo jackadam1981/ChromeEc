@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7fab703_ae962110",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-10-29T11:14:56Z",
+      "side": 1,
+      "message": "It might need to call the gpio_set_alternate_function below gpio_set_flags_by_mask.\nTo make sure all the pin is switched to GPIO. (Such as what is done at line 600.)",
+      "range": {
+        "startLine": 620,
+        "startChar": 1,
+        "endLine": 623,
+        "endChar": 1
+      },
+      "revId": "9973e586043c2b6a79bca8472cce48305fbe3bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
