@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be483b2f_ed1788e9",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-29T23:28:53Z",
+      "side": 1,
+      "message": "range (on the host thread), will not interrupt read (one the task thread), so it should not happen.",
+      "parentUuid": "5f6ba9bc_4d873376",
+      "range": {
+        "startLine": 508,
+        "startChar": 2,
+        "endLine": 508,
+        "endChar": 52
+      },
+      "revId": "ef5bae77c9961a12f8b24625824c2604537aee4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d30d846_d4652b8d",
         "filename": "driver/stm_mems_common.c",
         "patchSetId": 3
