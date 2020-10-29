@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b77a55_5d6fe416",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-29T19:33:02Z",
+      "side": 1,
+      "message": "How is this testing in terms of timing when the EC is driving?  Are we near tEnterUSB, or will the EC probably need to pre-emptively data reset to ensure we meet tEnterUSB?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "74077330c425729738d6dda6036b9d6361ecf9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
