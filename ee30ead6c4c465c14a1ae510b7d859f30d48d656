@@ -16,6 +16,29 @@
       "message": "There are still some references in this files that will need updated, but I\u0027m planning to work on it one CONFIG or enum value at a time to keep reviews simple when they need to include a lot of files. ",
       "revId": "ee30ead6c4c465c14a1ae510b7d859f30d48d656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abfdb9e_ce02d91d",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-10-29T22:52:39Z",
+      "side": 1,
+      "message": "What do you think about simplifying it to addr_flags and remove the redundancy?",
+      "range": {
+        "startLine": 449,
+        "startChar": 49,
+        "endLine": 449,
+        "endChar": 59
+      },
+      "revId": "ee30ead6c4c465c14a1ae510b7d859f30d48d656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
