@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b1143c_c3fca89e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-29T01:11:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t chip specific quirks be handled in chip_i2c_* ?",
+      "revId": "0a899f1a81de08a2b5e42e04e014ee19cc06d89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
