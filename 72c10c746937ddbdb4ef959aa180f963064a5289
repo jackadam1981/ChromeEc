@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "567ba63a_71cca760",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-29T21:05:45Z",
+      "side": 1,
+      "message": "Please add additional context here:\n\"Disable Vivaldi keyboard since Vivaldi currently does not allow for side volume buttons to be distinguished from keyboard volume F9/F10 keys. This is necessary so that Chrome can ignore F9/F10 in tablet mode, but side volume buttons still work.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "72c10c746937ddbdb4ef959aa180f963064a5289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce8a68d2_b7cad987",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-29T21:05:45Z",
+      "side": 1,
+      "message": "Please confirm that side-buttons work in clamshell and tablet mode and that F9/F10 only work in clamshell.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "72c10c746937ddbdb4ef959aa180f963064a5289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc01ad6c_a2733281",
+        "filename": "board/eldrid/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-29T21:05:45Z",
+      "side": 1,
+      "message": "Update the comment to reference b:170966461\n\nTODO(b/170966461): Re-enable Vivaldi keyboard once 8042 and MKBP drivers can coexist",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "72c10c746937ddbdb4ef959aa180f963064a5289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
