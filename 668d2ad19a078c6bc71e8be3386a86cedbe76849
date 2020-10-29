@@ -22,6 +22,30 @@
       },
       "revId": "668d2ad19a078c6bc71e8be3386a86cedbe76849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef642471_d737dc2e",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-10-29T22:32:48Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s the right or desired logic as you\u0027d still want to take care of events on C0.",
+      "parentUuid": "4c6c17ca_a20310c0",
+      "range": {
+        "startLine": 789,
+        "startChar": 1,
+        "endLine": 789,
+        "endChar": 42
+      },
+      "revId": "668d2ad19a078c6bc71e8be3386a86cedbe76849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
