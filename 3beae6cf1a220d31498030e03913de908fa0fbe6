@@ -69,6 +69,30 @@
       },
       "revId": "3beae6cf1a220d31498030e03913de908fa0fbe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28336e7e_39f3ebc2",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-29T18:17:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "866b4cef_14c29b23",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 34
+      },
+      "revId": "3beae6cf1a220d31498030e03913de908fa0fbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
