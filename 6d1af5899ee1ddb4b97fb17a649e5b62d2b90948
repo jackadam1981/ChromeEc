@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c823f66e_f9debed0",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-29T20:20:09Z",
+      "side": 1,
+      "message": "Can you file a bug to remove the tglrvpu_ite_tcpmv1 build when it\u0027s no longer needed?  Reference the bug here.",
+      "parentUuid": "739c8896_66b9fdf4",
+      "range": {
+        "startLine": 182,
+        "startChar": 6,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "6d1af5899ee1ddb4b97fb17a649e5b62d2b90948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4423413_7b19d92a",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 5
