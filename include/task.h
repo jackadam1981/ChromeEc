@@ -79,6 +79,14 @@ void interrupt_disable(void);
  */
 void interrupt_enable(void);
 
+#ifndef CONFIG_ZEPHYR
+#define irq_lock() ({ \
+	interrupt_disable() ; \
+	0; \
+	})
+#define irq_unlock(key) interrupt_enable()
+#endif /* CONFIG_ZEPHYR */
+
 /**
  * Return true if we are in interrupt context.
  */
