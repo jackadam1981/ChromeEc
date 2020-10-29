@@ -165,6 +165,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b54e4e_b9607419",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-29T19:35:47Z",
+      "side": 1,
+      "message": "Setting the mux",
+      "parentUuid": "6b4f532a_847c13df",
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5fd92de_3ea7953a",

@@ -22,6 +22,30 @@
       },
       "revId": "74077330c425729738d6dda6036b9d6361ecf9d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f25074f_55d87909",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-29T19:35:47Z",
+      "side": 1,
+      "message": "EC needs to data reset to ensure tEnterUSB is met, we are not within tEnterUSB as of now",
+      "parentUuid": "d0b77a55_5d6fe416",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "74077330c425729738d6dda6036b9d6361ecf9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
