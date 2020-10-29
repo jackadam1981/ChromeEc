@@ -28,9 +28,6 @@
 #endif
 #endif /* CONFIG_ZEPHYR */
 
-/* Task identifier (8 bits) */
-typedef uint8_t task_id_t;
-
 /**
  * enumerate all tasks in the priority order
  *
@@ -56,9 +53,9 @@ enum {
 #ifdef EMU_BUILD
 	TASK_ID_TEST_RUNNER,
 #endif
-#endif  /* CONFIG_ZEPHYR */
 	/* Number of tasks */
 	TASK_ID_COUNT,
+#endif  /* CONFIG_ZEPHYR */
 	/* Special task identifiers */
 #ifdef EMU_BUILD
 	TASK_ID_INT_GEN = 0xfe, /* interrupt generator */

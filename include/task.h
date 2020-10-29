@@ -8,9 +8,16 @@
 #ifndef __CROS_EC_TASK_H
 #define __CROS_EC_TASK_H
 
+#ifndef CONFIG_ZEPHYR
 #include "common.h"
 #include "compile_time_macros.h"
 #include "task_id.h"
+#else
+#include "shimmed_task_ids.h"
+#endif
+
+/* Task identifier (8 bits) */
+typedef uint8_t task_id_t;
 
 /* Task event bitmasks */
 /* Tasks may use the bits in TASK_EVENT_CUSTOM_BIT for their own events */
