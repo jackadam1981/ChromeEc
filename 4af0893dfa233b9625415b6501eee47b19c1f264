@@ -39,6 +39,24 @@
       "message": "Wondering if static inline would be better?",
       "revId": "4af0893dfa233b9625415b6501eee47b19c1f264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29cca7a7_886f08a0",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-10-29T20:36:12Z",
+      "side": 1,
+      "message": "If we make it a static inline, and the module that includes it doesn\u0027t happen to call it, we\u0027ll get a compiler warning. I think we should leave it as a macro.",
+      "parentUuid": "3d4aae04_5e457101",
+      "revId": "4af0893dfa233b9625415b6501eee47b19c1f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
