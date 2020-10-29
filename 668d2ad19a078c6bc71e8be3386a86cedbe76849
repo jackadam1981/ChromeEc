@@ -46,6 +46,30 @@
       },
       "revId": "668d2ad19a078c6bc71e8be3386a86cedbe76849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c89b7c6_6e15aa57",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-29T22:42:43Z",
+      "side": 1,
+      "message": "agreed. I was thinking the function was going to be used just to catch ignoring or not ignoring C1 and C0 didn\u0027t have to do anything... I see what it is doing now. thanks",
+      "parentUuid": "ef642471_d737dc2e",
+      "range": {
+        "startLine": 789,
+        "startChar": 1,
+        "endLine": 789,
+        "endChar": 42
+      },
+      "revId": "668d2ad19a078c6bc71e8be3386a86cedbe76849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
