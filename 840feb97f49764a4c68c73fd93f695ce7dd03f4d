@@ -49,6 +49,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b62f97e6_8960fc31",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-10-29T22:57:12Z",
+      "side": 1,
+      "message": "Is there any way you can use K_MUTEX_DEFINE when CONFIG_ZEPHYR is defined? Then you don\u0027t need the init_port_mutex block below.",
+      "revId": "840feb97f49764a4c68c73fd93f695ce7dd03f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbdef0b9_dd90f10d",
         "filename": "zephyr/Kconfig",
         "patchSetId": 3
