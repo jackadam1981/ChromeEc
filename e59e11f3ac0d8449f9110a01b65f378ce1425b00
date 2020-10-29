@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1973b9ac_5f0ca14b",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-29T22:37:16Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we need to add this when we aren\u0027t compiling with Zephyr",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "e59e11f3ac0d8449f9110a01b65f378ce1425b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
