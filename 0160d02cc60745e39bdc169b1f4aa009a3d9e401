@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "284da5b2_fe196d31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-10-30T17:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d3197ad_3b10479c",
+      "range": {
+        "startLine": 9,
+        "startChar": 66,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "0160d02cc60745e39bdc169b1f4aa009a3d9e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51dab483_65249991",
@@ -38,6 +62,30 @@
       "side": 1,
       "message": "\u003e \"sucessful\" is a possible misspelling of \"successful\".\n\nPlease fix.",
       "parentUuid": "16fd96d4_c279b4a1",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "0160d02cc60745e39bdc169b1f4aa009a3d9e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4418d49c_0d60a580",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-10-30T17:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51dab483_65249991",
       "range": {
         "startLine": 13,
         "startChar": 39,
@@ -95,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad6e60c_7d8808e7",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-10-30T17:26:34Z",
+      "side": 1,
+      "message": "Done. I took the opportunity to move another similar declaration to the top.",
+      "parentUuid": "1e41e91b_bc9f9c57",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 34
+      },
+      "revId": "0160d02cc60745e39bdc169b1f4aa009a3d9e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06ae59f4_19da69c8",
@@ -108,6 +180,30 @@
       "writtenOn": "2020-10-28T16:18:17Z",
       "side": 1,
       "message": "It might be good to have a brief note here about why a less drastic response than reinitializing the PPC isn\u0027t a good choice here. I was going to suggest that until I read through the bug.",
+      "range": {
+        "startLine": 281,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 10
+      },
+      "revId": "0160d02cc60745e39bdc169b1f4aa009a3d9e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b5c00b_c3751b81",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-10-30T17:26:34Z",
+      "side": 1,
+      "message": "I threw my rationale in here, if we would rather go down the CC-reconfiguration route we should discuss in the bug.",
+      "parentUuid": "06ae59f4_19da69c8",
       "range": {
         "startLine": 281,
         "startChar": 4,
