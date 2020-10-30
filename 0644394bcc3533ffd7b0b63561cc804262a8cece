@@ -22,6 +22,30 @@
       },
       "revId": "0644394bcc3533ffd7b0b63561cc804262a8cece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c8c870_79bc5480",
+        "filename": "include/task.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T16:40:21Z",
+      "side": 1,
+      "message": "Yup, that\u0027s the idea, as we touch files to start migrating things over to irq_*.\n\nDone, b/172060699",
+      "parentUuid": "e17d1a8d_7eb836bf",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 26
+      },
+      "revId": "0644394bcc3533ffd7b0b63561cc804262a8cece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
