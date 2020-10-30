@@ -16,6 +16,24 @@
       "message": "When spoof mode is enabled by \u0027ectool motionsense spoof 1\", every call to online_calibration_process_data will trigger sending an event: has_new_calibration_values is set to true.\nDo you want to replace with a one off? The event will be sent once, and the tester has to toogle the spoof mode?\nectool motionsense spoof 1  --\u003e send one\nectool motionsense spoof 0\nectool motionsense spoof 1  --\u003e send one\nectool motionsense spoof 0\n...",
       "revId": "fd89387262f9b0b794f88217837123878c244a30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b260980a_4e697705",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T04:09:36Z",
+      "side": 1,
+      "message": "Interesting, I was looking at this from the side of connecting to the ec uart and sending the accelspoof command with the values. I\u0027m open to either. If you\u0027d like the toggle to trigger this I guess we should:\n\n- Add online_calibration_spoof_next_data(void) that would set a static bool to tell us that the next spoof data should be used as the calibration value.\n- Here (in online_calibration_process_data) check for spoof data AND that bit, if both checks pass use the data as calibration data and set the bool back to false.\n- Update the console command command_accelspoof in motion_sense.c to call online_calibration_spoof_next_data() if spoofing was turned on.\n\nIs that what you had in mind?",
+      "parentUuid": "8a2bbd85_50ac9b55",
+      "revId": "fd89387262f9b0b794f88217837123878c244a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
