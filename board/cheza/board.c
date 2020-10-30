@@ -35,6 +35,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+#include "usbc_ocp.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
