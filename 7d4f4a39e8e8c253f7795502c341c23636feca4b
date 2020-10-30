@@ -16,6 +16,29 @@
       "message": "Hi Chen-Tsung,\nPlease help to review the CL, thanks!",
       "revId": "7d4f4a39e8e8c253f7795502c341c23636feca4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcdf4d4e_8767ce74",
+        "filename": "board/kakadu/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-10-30T02:58:35Z",
+      "side": 1,
+      "message": "Do we really need these?\nSeems they are for kukui no krane.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "7d4f4a39e8e8c253f7795502c341c23636feca4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
