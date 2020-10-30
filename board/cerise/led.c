@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Power and battery LED control for Damu
+ * Power and battery LED control for Cerise
  */
 #include "common.h"
 #include "ioexpander.h"
@@ -114,11 +114,16 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	return EC_SUCCESS;
 }
 
+static int get_ec_sku_id = BOARD_SKU_ID_REV1;
+
 static void cerise_led_init(void)
 {
 	int i;
 
-	if (board_get_sku_id() == BOARD_SKU_ID_REV0) {
+	if (get_ec_sku_id != BOARD_SKU_ID_REV0)
+		get_ec_sku_id = board_get_sku_id();
+
+	if (get_ec_sku_id == BOARD_SKU_ID_REV0) {
 		for (i = 0; i < LED_NUM_PHASES; i++) {
 			led_bat_state_table[STATE_DISCHARGE_S0][i] =
 				led_bat_clamshell[STATE_DISCHARGE_S0][i];
