@@ -22,6 +22,30 @@
       },
       "revId": "31471865279c503e9ab1aea3e68566feb9b57937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097fd217_52eca187",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-10-30T19:47:42Z",
+      "side": 1,
+      "message": "The reason I didn\u0027t is that VBAT_OVP is always cleared on the 1st read in our case, since the overvoltage is tied to CC. Since it disables the CC channel, and the CC needs to be enabled to trigger this OVP, once OVP is triggered it won\u0027t trigger again until we re-enable CC. That is why we only see the 1 print on the OVP traces from Delbin, and is similar to how OCP is triggered (by design, once OCP is triggered, overcurrent is no longer present).\n\nWe may want to put in a retry limit like we have for OCP. VBAT OVP will be spammed if there is a persistent cause of the overvoltage on CC (like shorted to 20V). That is currently rate-limited by the interrupt handler for the syv682.",
+      "parentUuid": "af8c1739_27b270cf",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 43
+      },
+      "revId": "31471865279c503e9ab1aea3e68566feb9b57937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
