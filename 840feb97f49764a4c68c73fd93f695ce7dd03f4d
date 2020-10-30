@@ -130,6 +130,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58819da_df60fc52",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-10-30T22:04:34Z",
+      "side": 1,
+      "message": "I don\u0027t like the array idea, either.\nIf there were a way to use DT_FOREACH_CHILD, that would be nice, but I don\u0027t think we have a devicetree here, so the approach that you have right now is fine.",
+      "parentUuid": "f331b3de_7cefc841",
+      "revId": "840feb97f49764a4c68c73fd93f695ce7dd03f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbdef0b9_dd90f10d",
