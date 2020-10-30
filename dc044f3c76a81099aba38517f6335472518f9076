@@ -33,6 +33,24 @@
       "message": "I know this is the new style, but can you please confirm that LTO gets rid of zed_kb structure on other hammer boards? (look at ec.RW.smap IIRC)",
       "revId": "dc044f3c76a81099aba38517f6335472518f9076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5418f0a6_2ccd8de9",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-10-30T09:44:40Z",
+      "side": 1,
+      "message": "yes, only one match from grep.\n\n$ grep -rI zed_kb build/\nbuild/zed/RW/ec.RW.smap:08015c5a r zed_kb",
+      "parentUuid": "23745633_b787301d",
+      "revId": "dc044f3c76a81099aba38517f6335472518f9076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
