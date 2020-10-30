@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50576e08_b4dc424a",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T17:56:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be483b2f_ed1788e9",
+      "range": {
+        "startLine": 508,
+        "startChar": 2,
+        "endLine": 508,
+        "endChar": 52
+      },
+      "revId": "ef5bae77c9961a12f8b24625824c2604537aee4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d30d846_d4652b8d",
