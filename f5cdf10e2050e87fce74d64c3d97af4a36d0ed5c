@@ -87,6 +87,30 @@
       },
       "revId": "f5cdf10e2050e87fce74d64c3d97af4a36d0ed5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "428fdf36_dd491fd5",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T18:58:36Z",
+      "side": 1,
+      "message": "Will do a larger rename when I get buildall working again to verify. b/172067439",
+      "parentUuid": "7fa6cb1f_69334792",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "f5cdf10e2050e87fce74d64c3d97af4a36d0ed5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
