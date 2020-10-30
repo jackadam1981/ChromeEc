@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8c1739_27b270cf",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-10-30T19:05:26Z",
+      "side": 1,
+      "message": "We should check that VBAT_OVP is no longer set in the register before starting recovery. Since we\u0027re now doing a full init of the PPC on the error, you could just poll for VBAT_OVP to clear, similar to the syv682x_wait_for_ready().\n\nThe over voltage response time is 100ns - so polling for up to 10 ms seems like plenty.",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 43
+      },
+      "revId": "31471865279c503e9ab1aea3e68566feb9b57937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
