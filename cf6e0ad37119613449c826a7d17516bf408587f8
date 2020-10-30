@@ -105,6 +105,23 @@
       "parentUuid": "6b7541d1_546319da",
       "revId": "cf6e0ad37119613449c826a7d17516bf408587f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6c0576_2de31533",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-10-30T21:57:36Z",
+      "side": 1,
+      "message": "Morphius is able to boot to recovery screen with battery unplugged.",
+      "revId": "cf6e0ad37119613449c826a7d17516bf408587f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
