@@ -16,6 +16,24 @@
       "message": "BTW, search_blocked_words.sh can tell how happy it is about slave.",
       "revId": "891ff563df0ff96568c27ad9f66bb75b5fb5642d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7a3197_3954027c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-30T22:01:54Z",
+      "side": 1,
+      "message": "Thanks for the pointer!  Looks like this stack gets us to having 2 files done, with 184 left to go.  I\u0027ll try putting up a few CLs a week to move the i2c code along",
+      "parentUuid": "3beed3a4_34181a7b",
+      "revId": "891ff563df0ff96568c27ad9f66bb75b5fb5642d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
