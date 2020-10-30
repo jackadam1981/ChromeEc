@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be7c5a5_591cf6a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-10-30T09:46:50Z",
+      "side": 1,
+      "message": "Can you elaborate more about the root cause and how a cached get_ec_sku_id fix it?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "ebb523ed6e55bb6b98aed36b1733fada7165445f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0ea31da5_57bcb31e",
