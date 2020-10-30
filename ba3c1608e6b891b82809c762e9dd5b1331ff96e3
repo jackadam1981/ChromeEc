@@ -262,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93f5168f_b2492e82",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T19:17:41Z",
+      "side": 1,
+      "message": "I\u0027ll dig into this a bit more and see if we can get rid of this.",
+      "parentUuid": "785e2acd_d6807338",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 56
+      },
+      "revId": "ba3c1608e6b891b82809c762e9dd5b1331ff96e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b446be7a_2915887c",
         "filename": "zephyr/shim/include/i2c/i2c.h",
         "patchSetId": 5
