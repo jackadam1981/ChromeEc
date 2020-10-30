@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73693e52_eeb31b8a",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-10-30T23:04:43Z",
+      "side": 1,
+      "message": "Where does this Gen2 branch diverge from Gen3 and Gen1?  So far in my reading, it seems like it\u0027s bit 25 that makes the code flow difference here.  Is that correct for all USB speeds?",
+      "revId": "867cdd784925e98dccd8dfd059c3829280b8e0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
