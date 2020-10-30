@@ -22,6 +22,30 @@
       },
       "revId": "e59e11f3ac0d8449f9110a01b65f378ce1425b00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c7d9dd_fb79fc66",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T03:10:38Z",
+      "side": 1,
+      "message": "The idea is that i2c_master.c (and others) will start calling irq_lock() and irq_unlock(key) instead of interrupt_disable() and interrupt_enable(). So when building with Zephyr we\u0027ll call the Zephyr API versions. When building normally, we\u0027ll basically re-route irq_lock() to interrupt_disable() and irq_unlock() to interrupt_enable(). This way the code can just migrate to the Zephyr API bit by bit and not break.",
+      "parentUuid": "1973b9ac_5f0ca14b",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "e59e11f3ac0d8449f9110a01b65f378ce1425b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
