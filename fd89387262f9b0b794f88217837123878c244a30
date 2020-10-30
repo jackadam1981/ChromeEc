@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2bbd85_50ac9b55",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-10-30T00:52:46Z",
+      "side": 1,
+      "message": "When spoof mode is enabled by \u0027ectool motionsense spoof 1\", every call to online_calibration_process_data will trigger sending an event: has_new_calibration_values is set to true.\nDo you want to replace with a one off? The event will be sent once, and the tester has to toogle the spoof mode?\nectool motionsense spoof 1  --\u003e send one\nectool motionsense spoof 0\nectool motionsense spoof 1  --\u003e send one\nectool motionsense spoof 0\n...",
+      "revId": "fd89387262f9b0b794f88217837123878c244a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
