@@ -16,6 +16,24 @@
       "message": "nit: use (!pd_is_vbus_present(port)) here to mirror PS_STATE2?",
       "revId": "d48b166ff7aa8a8b574e6307560b2b1e358a9742",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a370ccab_1c62ac68",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-10-30T18:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d32d386_bc472c31",
+      "revId": "d48b166ff7aa8a8b574e6307560b2b1e358a9742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
