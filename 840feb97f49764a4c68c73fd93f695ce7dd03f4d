@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb7625b1_2ab54918",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T15:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6319041a_918e4d09",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "840feb97f49764a4c68c73fd93f695ce7dd03f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41cb0807_dd9226db",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-29T20:28:05Z",
       "side": 1,
       "message": "Needs a commit message",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "840feb97f49764a4c68c73fd93f695ce7dd03f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c704677_5180713c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T15:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41cb0807_dd9226db",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f331b3de_7cefc841",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T15:34:02Z",
+      "side": 1,
+      "message": "It doesn\u0027t appear that zephyr has a way to initialize an array of mutexes (I\u0027ll be super happy if you can find an example that proves me wrong on this but I haven\u0027t been able to find anything).\n\nThe only thing I\u0027ve been able to think of (which I really didn\u0027t like but might be worth seeing if we can upstream) is a macro to do this by: declaring N static mutexes via K_MUTEX_DEFINE, then declaring the array of static mutex_t *mutex_list[] which will point to those. This didn\u0027t seem worth it (yet).",
+      "parentUuid": "b62f97e6_8960fc31",
+      "revId": "840feb97f49764a4c68c73fd93f695ce7dd03f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbdef0b9_dd90f10d",
         "filename": "zephyr/Kconfig",
         "patchSetId": 3
@@ -77,6 +143,30 @@
       "writtenOn": "2020-10-29T20:28:05Z",
       "side": 1,
       "message": "I feel it is worth adding more detail here, explaining what the module does and how to use I2C once it is enabled",
+      "range": {
+        "startLine": 63,
+        "startChar": 32,
+        "endLine": 63,
+        "endChar": 35
+      },
+      "revId": "840feb97f49764a4c68c73fd93f695ce7dd03f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ba8996_f8622645",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T15:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbdef0b9_dd90f10d",
       "range": {
         "startLine": 63,
         "startChar": 32,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d83629_65feac35",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T15:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3083f572_c36bea6f",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "840feb97f49764a4c68c73fd93f695ce7dd03f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f412d487_f1389f59",
@@ -123,6 +237,30 @@
       "writtenOn": "2020-10-29T20:28:05Z",
       "side": 1,
       "message": "Should this be in this CL? It isn\u0027t mentioned in the commit message",
+      "range": {
+        "startLine": 15,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "840feb97f49764a4c68c73fd93f695ce7dd03f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a01b8d_600467f0",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-10-30T15:34:02Z",
+      "side": 1,
+      "message": "Split into another CL",
+      "parentUuid": "f412d487_f1389f59",
       "range": {
         "startLine": 15,
         "startChar": 9,
