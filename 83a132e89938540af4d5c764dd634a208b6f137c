@@ -420,6 +420,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39bd27e1_f596e6d2",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-30T00:36:32Z",
+      "side": 1,
+      "message": "As of patchset 17, TBT calls into USB4 decide whether to stop after cable entry and let USB4 take over, and USB4 calls into TBT to see whether cable entry is done. These flows are a little bit hard for me to reason about. I didn\u0027t even realize that the call from USB4 to TBT happens inside the call from TBT to USB4 until now.\n\nIdeally, the mode modules would operate independently of each other. The USB4/TBT combo is a weird aspect of the standard, and there will probably be some weirdness in the code associated with it, but hopefully it can be isolated. If all mode-crossing logic stays in the DPM, that would be good.\n\n1. I mentioned above that it\u0027s surprising for enter_usb_cable_is_capable to return different values at different times when the cable didn\u0027t change, based on tbt_cable_entry_is_done. enter_usb_cable_is_capable is called\na) from the TBT module, at a time when cable entry has just finished, and\nb) from the DPM to see if we should try to enter USB4.\n\nI think this could be simplified by\na) not calling tbt_cable_entry_is_done from enter_usb_cable_is_capable and changing the contract of enter_usb_cable_is_capable to only report what is known from cable properties,\nb) calling tbt_cable_entry_is_done directly from the DPM to decide whether to attempt USB4 entry, and\nc) not including usb_tbt_alt_mode.h in this file.\n\n2. The TBT module calls into the _is_capable functions in the USB4 module to decide whether to leave the TBT module in the enter-SOP state or the exit-SOP\u0027\u0027 state for next call to tbt_setup_next_vdm. If the DPM works as expected, I don\u0027t think this call will ever happen. The next time the DPM runs, it will see that the cable is setup for TBT, and USB4 is supported, and it will attempt to Enter_USB SOP. At some point later, it may attempt to generate VDMs to exit TBT, but it will call tbt_exit_mode_request before doing so.\n\nI think this could be simplified by\na) not calling enter_usb_*_is_capable from intel_vdm_acked and leaving the TBT machine in enter-SOP state regardless of whether USB4 entry is possible,\nb) setting the state to an appropriate Exit Mode state in tbt_exit_mode_request, and\nc) not including usb_mode.h from tbt_alt_mode.c.\n\nI think the above changes would a) reduce the complexity of the TBT and USB4 modules and b) keep the policy decision of whether to enter into this combo mode entirely within the DPM.",
+      "parentUuid": "4993737f_7e2bb605",
+      "range": {
+        "startLine": 199,
+        "startChar": 6,
+        "endLine": 199,
+        "endChar": 36
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04570aa4_ff865947",
         "filename": "common/usbc/usb_mode.c",
         "patchSetId": 16
@@ -502,6 +526,30 @@
       "side": 1,
       "message": "Reference for this is the TBT4 PD spec",
       "parentUuid": "07837460_c883cb24",
+      "range": {
+        "startLine": 261,
+        "startChar": 3,
+        "endLine": 265,
+        "endChar": 31
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c53050b8_2a0a97e5",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-30T00:36:32Z",
+      "side": 1,
+      "message": "I\u0027m unfamiliar with that document. Would you mind citing it by name in the code?",
+      "parentUuid": "efa7b53f_297321d6",
       "range": {
         "startLine": 261,
         "startChar": 3,
@@ -801,6 +849,24 @@
       "side": 1,
       "message": "We\u0027ll have build errors if I remove it",
       "parentUuid": "4c79f7d3_4ec4ccfe",
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c57b5c_fae99bee",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 5547,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-10-30T00:36:32Z",
+      "side": 1,
+      "message": "Right now, we build this state even if USB4 isn\u0027t configured. It would be more consistent with our other states for optional features to only build/enter the state if we enable the feature. If the code was structured that way, we wouldn\u0027t need these checks here.\n\nThat\u0027s a job for another CL, though.",
+      "parentUuid": "f2f71b29_faabe0bb",
       "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
