@@ -214,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7efec7cc_01b8b6e0",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-30T17:43:24Z",
+      "side": 1,
+      "message": "Sorry, I meant chip/.\n\nWe (by design) don\u0027t want to shim anything under chip/, board/, baseboard/, or core/.",
+      "parentUuid": "020b84ac_c519c5a8",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 56
+      },
+      "revId": "ba3c1608e6b891b82809c762e9dd5b1331ff96e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b446be7a_2915887c",
         "filename": "zephyr/shim/include/i2c/i2c.h",
         "patchSetId": 5
