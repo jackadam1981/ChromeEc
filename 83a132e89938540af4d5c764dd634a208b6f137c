@@ -442,6 +442,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b0754e_69033562",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-30T21:30:21Z",
+      "side": 1,
+      "message": "Thanks for the detailed explanation. Makes sense to not let TBT/USB4 interfere and let the DPM decide on what mode to enter.",
+      "parentUuid": "39bd27e1_f596e6d2",
+      "range": {
+        "startLine": 199,
+        "startChar": 6,
+        "endLine": 199,
+        "endChar": 36
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04570aa4_ff865947",
@@ -550,6 +574,30 @@
       "side": 1,
       "message": "I\u0027m unfamiliar with that document. Would you mind citing it by name in the code?",
       "parentUuid": "efa7b53f_297321d6",
+      "range": {
+        "startLine": 261,
+        "startChar": 3,
+        "endLine": 265,
+        "endChar": 31
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf642e8_8783fada",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-10-30T21:30:21Z",
+      "side": 1,
+      "message": "TBT4 PD discovery flow - Figure 1. Main discovery flow: Says to move the Ridge to safe state before entering USB4 SOP.",
+      "parentUuid": "c53050b8_2a0a97e5",
       "range": {
         "startLine": 261,
         "startChar": 3,
