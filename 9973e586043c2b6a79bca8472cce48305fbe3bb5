@@ -22,6 +22,30 @@
       },
       "revId": "9973e586043c2b6a79bca8472cce48305fbe3bb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a88f7687_39f519d2",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-10-30T00:02:43Z",
+      "side": 1,
+      "message": "I filed a patch for it:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2508862",
+      "parentUuid": "c7fab703_ae962110",
+      "range": {
+        "startLine": 620,
+        "startChar": 1,
+        "endLine": 623,
+        "endChar": 1
+      },
+      "revId": "9973e586043c2b6a79bca8472cce48305fbe3bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
