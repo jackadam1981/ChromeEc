@@ -68,6 +68,98 @@
       },
       "revId": "ba3c1608e6b891b82809c762e9dd5b1331ff96e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6509f50_ddcf2348",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-30T16:07:19Z",
+      "side": 1,
+      "message": "was this a name-conflict with Zephyr code? can we just rename it instead of making two names?",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "ba3c1608e6b891b82809c762e9dd5b1331ff96e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50df7da_5fa30ecf",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-30T16:07:19Z",
+      "side": 1,
+      "message": "is this avoidable? I thought we wanted to avoid shimming code under shim/ at all costs?\n\neven if it means moving code to common/?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 56
+      },
+      "revId": "ba3c1608e6b891b82809c762e9dd5b1331ff96e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b446be7a_2915887c",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-30T16:07:19Z",
+      "side": 1,
+      "message": "Just write chip/npcx/registers-npcx7.h, no need for CS link",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 167
+      },
+      "revId": "ba3c1608e6b891b82809c762e9dd5b1331ff96e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e53fa5c_23b9523e",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-10-30T16:07:19Z",
+      "side": 1,
+      "message": "NULL (in all caps)",
+      "range": {
+        "startLine": 24,
+        "startChar": 50,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "ba3c1608e6b891b82809c762e9dd5b1331ff96e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
