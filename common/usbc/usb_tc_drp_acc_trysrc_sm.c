@@ -1366,6 +1366,7 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 void tc_state_init(int port)
 {
 	enum usb_tc_state first_state;
+	enum tcpc_cc_voltage_status cc1, cc2;
 
 	/* For test builds, replicate static initialization */
 	if (IS_ENABLED(TEST_BUILD)) {
@@ -1404,18 +1405,37 @@ void tc_state_init(int port)
 	else /* CHIPSET_STATE_ON */
 		pd_set_dual_role_and_event(port, PD_DRP_TOGGLE_ON, 0);
 
-	/*
-	 * If we just lost power, don't apply CC open. Otherwise we would boot
-	 * loop, and if this is a fresh power on, then we know there isn't any
-	 * stale PD state as well.
-	 */
+	tcpm_get_cc(port, &cc1, &cc2);
+
 	if (system_get_reset_flags() &
 	    (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON)) {
+		/*
+		 * We just lost power, don't apply CC open. Otherwise we would
+		 * boot loop, or this could be a fresh power on, then we know
+		 * there isn't any stale PD state as well.
+		 */
 		first_state = TC_UNATTACHED_SNK;
 
 		/* Turn off any previous sourcing */
 		tc_src_power_off(port);
 		set_vconn(port, 0);
+	} else if (cc_is_at_least_one_rd(cc1, cc2) &&
+			(system_get_reset_flags() & EC_RESET_FLAG_SYSJUMP) &&
+			!battery_is_present()) {
+		/*
+		 * We sysjumped and found battery isn't present. Such port on
+		 * Chromebooks is necessarily a sink. Thus, we skip CC open to
+		 * avoid a brownout.
+		 *
+		 * This is basically the equivalent logic of TCPMv1 which checks
+		 * a previous contract in BBRAM. TCPMv2 doesn't store previous
+		 * contract in BBRAM.
+		 *
+		 * If there is a contract, it'll be inherited. If there is no
+		 * contract, we'll be using Type-C power. Running on type-c
+		 * power without battery shouldn't be possible, though.
+		 */
+		first_state = TC_ATTACHED_SNK;
 	} else {
 		first_state = TC_ERROR_RECOVERY;
 	}
