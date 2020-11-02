@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ea0b09_5378c2bf",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-02T20:40:44Z",
+      "side": 1,
+      "message": "is mutex_t available in platform/ec code?",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "21b5f828dabf216617a3496de209b5a1e43e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36b3a5ef_f2bb913a",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-02T20:40:44Z",
+      "side": 1,
+      "message": "can we make these unrelated whitespace changes in a separate CL?",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 22
+      },
+      "revId": "21b5f828dabf216617a3496de209b5a1e43e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2440eea_4f9802d5",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-02T20:40:44Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "21b5f828dabf216617a3496de209b5a1e43e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea308c2_dd9bb745",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-02T20:40:44Z",
+      "side": 1,
+      "message": "system headers (aka zephyr headers) should always come before EC headers.\n\nso this should be\n\n    #include \u003csys/util.h\u003e\n\n    #include \"i2c/i2c.h\"\n    #include \"registers.h\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "21b5f828dabf216617a3496de209b5a1e43e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
