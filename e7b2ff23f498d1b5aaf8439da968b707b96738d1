@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc79e29a_eb8c3102",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-02T23:04:04Z",
+      "side": 1,
+      "message": "Roughly 25% or so initially, but then it becomes self-selecting in a way. The standard deviation continues to narrow and ends up becoming 0 and than that resistance is locked.\n\nhttp://screen/7y8h52hrcAQGxYc",
+      "parentUuid": "1c17ff8e_b60d9973",
+      "revId": "e7b2ff23f498d1b5aaf8439da968b707b96738d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5519128b_b8249957",
         "filename": "common/ocpc.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-02T17:40:17Z",
       "side": 1,
       "message": "nit: would initial samples make more sense?  We\u0027re not attempting to judge validity until after we\u0027re seeded; the first ones just kind of get a free pass to fill in the array.  \n\nAlso, any particular reason you want to fill the array twice before being seeded?",
+      "revId": "e7b2ff23f498d1b5aaf8439da968b707b96738d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c8ebd7_e285203d",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-02T23:04:04Z",
+      "side": 1,
+      "message": "Ah yeah, initial makes more sense for exactly that reason. I can rename it.\n\nI wanted to fill it twice in order to allow charging to ramp up and stabilize.",
+      "parentUuid": "5519128b_b8249957",
       "revId": "e7b2ff23f498d1b5aaf8439da968b707b96738d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
