@@ -181,8 +181,7 @@ static const char * const prl_hr_state_names[] = {
 		= "PRL_HR_WAIT_FOR_PE_HARD_RESET_COMPLETE",
 };
 
-#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
-static const char * const rch_state_names[] = {
+__maybe_unused static const char * const rch_state_names[] = {
 	[RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER]
 		= "RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER",
 	[RCH_PASS_UP_MESSAGE] = "RCH_PASS_UP_MESSAGE",
@@ -192,7 +191,7 @@ static const char * const rch_state_names[] = {
 	[RCH_REPORT_ERROR] = "RCH_REPORT_ERROR",
 };
 
-static const char * const tch_state_names[] = {
+__maybe_unused static const char * const tch_state_names[] = {
 	[TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE]
 		= "TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE",
 	[TCH_WAIT_FOR_TRANSMISSION_COMPLETE]
@@ -204,16 +203,13 @@ static const char * const tch_state_names[] = {
 	[TCH_MESSAGE_SENT] = "TCH_MESSAGE_SENT",
 	[TCH_REPORT_ERROR] = "TCH_REPORT_ERROR",
 };
-#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 /* Forward declare full list of states. Index by above enums. */
 static const struct usb_state prl_tx_states[];
 static const struct usb_state prl_hr_states[];
 
-#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
-static const struct usb_state rch_states[];
-static const struct usb_state tch_states[];
-#endif /* CONFIG_USB_PD_REV30 */
+__maybe_unused static const struct usb_state rch_states[];
+__maybe_unused static const struct usb_state tch_states[];
 
 /* Chunked Rx State Machine Object */
 static struct rx_chunked {
@@ -394,9 +390,8 @@ static void print_current_prl_hr_state(const int port)
 /* Set the chunked Rx statemachine to a new state. */
 static void set_state_rch(const int port, const enum usb_rch_state new_state)
 {
-#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
-	set_state(port, &rch[port].ctx, &rch_states[new_state]);
-#endif /* CONFIG_USB_PD_REV30 */
+	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES))
+		set_state(port, &rch[port].ctx, &rch_states[new_state]);
 }
 
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
@@ -418,19 +413,17 @@ static void print_current_rch_state(const int port)
 /* Set the chunked Tx statemachine to a new state. */
 static void set_state_tch(const int port, const enum usb_tch_state new_state)
 {
-#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
-	set_state(port, &tch[port].ctx, &tch_states[new_state]);
-#endif /* CONFIG_USB_PD_REV30 */
+	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES))
+		set_state(port, &tch[port].ctx, &tch_states[new_state]);
 }
 
 /* Get the chunked Tx statemachine's current state. */
 test_export_static enum usb_tch_state tch_get_state(const int port)
 {
-#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
-	return tch[port].ctx.current - &tch_states[0];
-#else
-	return 0;
-#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES))
+		return tch[port].ctx.current - &tch_states[0];
+	else
+		return 0;
 }
 
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
@@ -490,10 +483,10 @@ static void prl_init(int port)
 	prl_tx[port].last_xmit_type = TCPC_TX_SOP;
 	prl_tx[port].xmit_status = TCPC_TX_UNSET;
 
-#ifdef CONFIG_USB_PD_REV30
-	tch[port].flags = 0;
-	rch[port].flags = 0;
-#endif /* CONFIG_USB_PD_REV30 */
+	if (IS_ENABLED(CONFIG_USB_PD_REV30)) {
+		tch[port].flags = 0;
+		rch[port].flags = 0;
+	}
 
 	pdmsg[port].flags = 0;
 
@@ -508,13 +501,13 @@ static void prl_init(int port)
 	prl_tx[port].ctx = cleared;
 	set_state_prl_tx(port, PRL_TX_PHY_LAYER_RESET);
 
-#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
-	rch[port].ctx = cleared;
-	set_state_rch(port, RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER);
+	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
+		rch[port].ctx = cleared;
+		set_state_rch(port, RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER);
 
-	tch[port].ctx = cleared;
-	set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
-#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+		tch[port].ctx = cleared;
+		set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
+	}
 
 	prl_hr[port].ctx = cleared;
 	set_state_prl_hr(port, PRL_HR_WAIT_FOR_REQUEST);
@@ -657,31 +650,32 @@ void prl_run(int port, int evt, int en)
 		/* Run Protocol Layer Message Reception */
 		prl_rx_wait_for_phy_message(port, evt);
 
-#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
-		/*
-		 * Run RX Chunked state machine after prl_rx. This is what
-		 * informs the PE of incoming message. Its input is prl_rx
-		 */
-		run_state(port, &rch[port].ctx);
+		if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
+			/*
+			 * Run RX Chunked state machine after prl_rx. This is
+			 * what informs the PE of incoming message. Its input
+			 * is prl_rx
+			 */
+			run_state(port, &rch[port].ctx);
 
-		/*
-		 * Run TX Chunked state machine before prl_tx in case we need
-		 * to split an extended message and prl_tx can send it for us
-		 */
-		run_state(port, &tch[port].ctx);
-#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+			/*
+			 * Run TX Chunked state machine before prl_tx in case
+			 * we need to split an extended message and prl_tx can
+			 * send it for us
+			 */
+			run_state(port, &tch[port].ctx);
+		}
 
 		/* Run Protocol Layer Message Transmission state machine */
 		run_state(port, &prl_tx[port].ctx);
 
-#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
-		/*
-		 * Run TX Chunked state machine again after prl_tx so we can
-		 * handle passing TX_COMPLETE (or failure) up to PE in a single
-		 * iteration.
-		 */
-		run_state(port, &tch[port].ctx);
-#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+		if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES))
+			/*
+			 * Run TX Chunked state machine again after prl_tx so
+			 * we can handle passing TX_COMPLETE (or failure) up
+			 * to PE in a single iteration.
+			 */
+			run_state(port, &tch[port].ctx);
 
 		/* Run Protocol Layer Hard Reset state machine */
 		run_state(port, &prl_hr[port].ctx);
@@ -1181,10 +1175,10 @@ static void prl_hr_reset_layer_entry(const int port)
 	 */
 	set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
 
-#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
-	tch[port].flags = 0;
-	rch[port].flags = 0;
-#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
+		tch[port].flags = 0;
+		rch[port].flags = 0;
+	}
 
 	pdmsg[port].flags = 0;
 
@@ -2168,9 +2162,9 @@ static const struct usb_state prl_hr_states[] = {
 	},
 };
 
-#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 /* All necessary Chunked Rx states (Section 6.11.2.1.2) */
-static const struct usb_state rch_states[] = {
+__maybe_unused static const struct usb_state rch_states[] = {
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER] = {
 		.entry  = rch_wait_for_message_from_protocol_layer_entry,
 		.run    = rch_wait_for_message_from_protocol_layer_run,
@@ -2194,10 +2188,12 @@ static const struct usb_state rch_states[] = {
 		.entry  = rch_report_error_entry,
 		.run    = rch_report_error_run,
 	},
+#endif
 };
 
 /* All necessary Chunked Tx states (Section 6.11.2.1.3) */
-static const struct usb_state tch_states[] = {
+__maybe_unused static const struct usb_state tch_states[] = {
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE] = {
 		.entry  = tch_wait_for_message_request_from_pe_entry,
 		.run    = tch_wait_for_message_request_from_pe_run,
@@ -2228,8 +2224,8 @@ static const struct usb_state tch_states[] = {
 	[TCH_REPORT_ERROR] = {
 		.entry  = tch_report_error_entry,
 	},
+#endif
 };
-#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 #ifdef TEST_BUILD
 
