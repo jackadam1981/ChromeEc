@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b36dab02_8f6a9069",
+        "filename": "common/irq_shim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-02T22:21:26Z",
+      "side": 1,
+      "message": "I am confused how this statement applies then?\n\n\"Once migration to the Zephyr APIs is complete, this file can be removed and the implementation of Zephyr APIs can be used directly.\"\n\nIf this is for platform/ec OS instead of for Zephyr, then we can\u0027t remove this file, right?",
+      "parentUuid": "bf86ae3d_c203fb98",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "05fe21ebda6f736dc04575bd52975dcd0a799750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ed6ece5_49f1878d",
         "filename": "common/irq_shim.c",
         "patchSetId": 2
