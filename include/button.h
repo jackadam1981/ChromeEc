@@ -103,4 +103,11 @@ int button_is_adc_detected(enum gpio_signal gpio);
  */
 int adc_to_physical_value(enum gpio_signal gpio);
 
+/*
+ * Check whether device is booted in recovery mode.
+ *
+ * Returns 1 if booted in recovery.
+ */
+int is_recovery_boot(void);
+
 #endif  /* __CROS_EC_BUTTON_H */
