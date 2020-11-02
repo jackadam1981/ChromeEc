@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edc90158_7ffd2962",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-02T07:33:25Z",
+      "side": 1,
+      "message": "over 80 characters",
+      "range": {
+        "startLine": 392,
+        "startChar": 52,
+        "endLine": 392,
+        "endChar": 60
+      },
+      "revId": "994f2004b4e759435f04918133436e6da2cef2a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
