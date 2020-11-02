@@ -87,7 +87,7 @@ static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
 }
 
 #ifdef CONFIG_BOARD_HAS_RTC_RESET
-static void intel_x86_rtc_reset(void)
+void intel_x86_rtc_reset(void)
 {
 	CPRINTS("Asserting RTCRST# to PCH");
 	gpio_set_level(GPIO_PCH_RTCRST, 1);

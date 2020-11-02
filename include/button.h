@@ -12,6 +12,7 @@
 #include "compile_time_macros.h"
 #include "gpio.h"
 #include "ec_commands.h"
+#include "stdbool.h"
 
 #define BUTTON_FLAG_ACTIVE_HIGH  BIT(0)
 #define BUTTON_FLAG_DISABLED     BIT(1)   /* Button disabled */
@@ -102,5 +103,12 @@ int button_is_adc_detected(enum gpio_signal gpio);
  * Returns the physical state of the button.
  */
 int adc_to_physical_value(enum gpio_signal gpio);
+
+/*
+ * Check whether device is booted in recovery mode.
+ *
+ * Returns true if booted in recovery else false.
+ */
+bool is_recovery_boot(void);
 
 #endif  /* __CROS_EC_BUTTON_H */

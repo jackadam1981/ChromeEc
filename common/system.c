@@ -5,6 +5,7 @@
 
 /* System module for Chrome EC : common functions */
 #include "battery.h"
+#include "button.h"
 #include "charge_manager.h"
 #include "chipset.h"
 #include "clock.h"
@@ -18,6 +19,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
+#include "intel_x86.h"
 #include "keyboard_scan.h"
 #include "lpc.h"
 #include "otp.h"
@@ -1291,6 +1293,12 @@ static int command_reboot(int argc, char **argv)
 			flags |= SYSTEM_RESET_PRESERVE_FLAGS;
 		} else if (!strcasecmp(argv[i], "wait-ext")) {
 			flags |= SYSTEM_RESET_WAIT_EXT;
+#ifdef CONFIG_BOARD_HAS_RTC_RESET
+		} else if (!strcasecmp(argv[i], "rtcreset")) {
+			if (!system_is_in_rw() && (is_recovery_boot() ||
+			    !system_jumped_to_this_image()))
+				intel_x86_rtc_reset();
+#endif
 		} else
 			return EC_ERROR_PARAM1 + i - 1;
 	}
@@ -1309,6 +1317,9 @@ static int command_reboot(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(
 	reboot, command_reboot,
 	"[hard|soft] [preserve] [ap-off] [wait-ext] [cancel] [ap-off-in-ro]"
+#ifdef CONFIG_BOARD_HAS_RTC_RESET
+	" [rtcreset]"
+#endif
 	" [ro]",
 	"Reboot the EC");
 
