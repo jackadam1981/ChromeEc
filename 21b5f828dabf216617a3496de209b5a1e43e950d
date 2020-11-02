@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c485d023_06f44094",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T20:54:54Z",
+      "side": 1,
+      "message": "A few minor comments otherwise LGTM",
+      "revId": "21b5f828dabf216617a3496de209b5a1e43e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1ea0b09_5378c2bf",
@@ -83,6 +100,30 @@
       "writtenOn": "2020-11-02T20:40:44Z",
       "side": 1,
       "message": "system headers (aka zephyr headers) should always come before EC headers.\n\nso this should be\n\n    #include \u003csys/util.h\u003e\n\n    #include \"i2c/i2c.h\"\n    #include \"registers.h\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "21b5f828dabf216617a3496de209b5a1e43e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707b07fa_fd5b6412",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T20:54:54Z",
+      "side": 1,
+      "message": "I am fine if that is true, why is that true? We should also add that nugget of information to our shimmining doc.",
+      "parentUuid": "aea308c2_dd9bb745",
       "range": {
         "startLine": 9,
         "startChar": 0,
