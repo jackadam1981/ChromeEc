@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b92cce_111f24ff",
+        "filename": "board/drobit/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-11-02T12:26:30Z",
+      "side": 0,
+      "message": "Please move this to the \"Unused signals\" gpio setting and set it to  GPIO_INPUT | GPIO_PULL_UP",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "4170ffcb8ba7ba7bcefdcd7c4c8f21b8366576df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
