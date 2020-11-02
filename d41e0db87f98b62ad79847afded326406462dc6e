@@ -371,6 +371,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bd62d09_da4f98d2",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T20:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "150a0c25_0c055303",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebda904c_5bbdf2e5",
