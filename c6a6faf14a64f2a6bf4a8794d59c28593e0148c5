@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094a183e_5665e1a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-02T17:48:03Z",
+      "side": 1,
+      "message": "Are there any driver changes needed here as well?  Usually chargers implementing CONFIG_CHARGE_RAMP_HW define a set of functions to set the HW ramp, indicate when it\u0027s stable, etc.",
+      "revId": "c6a6faf14a64f2a6bf4a8794d59c28593e0148c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
