@@ -610,6 +610,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a47f5b7_1805ccaa",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-02T16:44:06Z",
+      "side": 1,
+      "message": "In that case, can you cite TBT4 PD Discover Flow in a comment?\n\nBut before you do that, I\u0027ve been confused so far about the use of the term \"ridge\" in the TBT4 PD Discovery Flow app note. What is the ridge? How do you get \"mux\" from \"ridge\"?",
+      "parentUuid": "ebf642e8_8783fada",
+      "range": {
+        "startLine": 261,
+        "startChar": 3,
+        "endLine": 265,
+        "endChar": 31
+      },
+      "revId": "83a132e89938540af4d5c764dd634a208b6f137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3a5e1e2_af0f2f0d",
         "filename": "common/usbc/usb_mode.c",
         "patchSetId": 16

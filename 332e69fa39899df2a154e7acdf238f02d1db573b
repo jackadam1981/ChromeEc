@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "393f800d_b9f86585",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-02T16:44:06Z",
+      "side": 1,
+      "message": "Does exiting TBT mode after just entering with the cable work with this patchset? I might have expected tbt_exit_mode_request to update the state in TBT_ENTER_SOP_PRIME_PRIME. (Ideally, the logic there would be as general as possible.)\n\nCan you add exit-mode testing to the TEST\u003d line in the commit message?",
+      "range": {
+        "startLine": 223,
+        "startChar": 2,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "332e69fa39899df2a154e7acdf238f02d1db573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be77a4e_6bf7b95a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-02T16:44:06Z",
+      "side": 1,
+      "message": "Nit: an",
+      "range": {
+        "startLine": 230,
+        "startChar": 13,
+        "endLine": 230,
+        "endChar": 14
+      },
+      "revId": "332e69fa39899df2a154e7acdf238f02d1db573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
