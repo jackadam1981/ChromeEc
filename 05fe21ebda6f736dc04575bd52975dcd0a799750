@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c5f3204_2ec1d0b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T22:19:12Z",
+      "side": 1,
+      "message": "Seems on the write path to me",
+      "revId": "05fe21ebda6f736dc04575bd52975dcd0a799750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ff5d3ca_45f5a1a1",
@@ -19,6 +36,99 @@
         "startChar": 0,
         "endLine": 10,
         "endChar": 12
+      },
+      "revId": "05fe21ebda6f736dc04575bd52975dcd0a799750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf86ae3d_c203fb98",
+        "filename": "common/irq_shim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T22:19:12Z",
+      "side": 1,
+      "message": "this is something we want in common platform/code. We are going to move over to irq_lock/unlock API in platform/ec.\n\nWe should probably call this just irq_locking.c or something like that instead.",
+      "parentUuid": "3ff5d3ca_45f5a1a1",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "05fe21ebda6f736dc04575bd52975dcd0a799750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed6ece5_49f1878d",
+        "filename": "common/irq_shim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T22:19:12Z",
+      "side": 1,
+      "message": "we should use atomic_add and return the return of that atomic operation. (or just return lock_count++; since we just disabled interrupts)\n\nWe also don\u0027t need to guard against this overflow since we would have a stack overflow a long time before this ever occured",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 14
+      },
+      "revId": "05fe21ebda6f736dc04575bd52975dcd0a799750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a6f634_c3312a85",
+        "filename": "common/irq_shim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T22:19:12Z",
+      "side": 1,
+      "message": "maybe atomic decrement instead? why not just always use key. We should expect the caller to write the code correctly (or give some warning if we detect otherwise).\n\nWe should say why are are using MIN here instead of just using key or decrementing (in a comment)",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "05fe21ebda6f736dc04575bd52975dcd0a799750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed6341d2_f6a4c250",
+        "filename": "common/irq_shim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T22:19:12Z",
+      "side": 1,
+      "message": "nit: can we say (lock_count \u003d\u003d 0); it is more descriptive of what we want since it is a counter.",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 16
       },
       "revId": "05fe21ebda6f736dc04575bd52975dcd0a799750",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
