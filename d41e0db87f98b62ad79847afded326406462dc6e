@@ -1,6 +1,138 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb6e9938_7e8fb6d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "This looks like this is really coming along!",
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59fed2f4_993b3b92",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "I think this is too late, let\u0027s make this POST_KERNEL 50 or something.\n\nThe reason is because other system_init might actually call into i2c peripherals to set stuff up (like CBI EEPROM access to determine which SKU the device is).\n\nIf upstream already doesn\u0027t have one, it would probably be worth while to create a tool that printed out every sys_init and their corresponding priority to ensure from a birds eye view that it was all sequenced correctly (this would be a low prioirty task -- can you open a low priority issue to track this tool?)",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2beca89_9d81347c",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "why can\u0027t we clear the PEC flag for zephyr? Seems this would mess stuff up for Zephyr (PEC is another layer on top of I2C that specifies a certain CRC protocol, etc).",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 6
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2344bf51_2f946cbd",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "Let\u0027s shim in irq_lock into interrupt enabled/disable instead; otherwise we are going to have to change a decent amount of code\n\nI don\u0027t think that our current platofrm/ec code ever nest the interrupts more than 2 or 3 levels. We could implement disabled_interrupts to call irq_lock and save the key in a static buffer[4] then unwind with the appropriate irq_key in interrupt_enable. Platform/ec is already trying to move to nestable interreupt enable/diable calls",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 25
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd05d71_ba6c1a3f",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need these complication definitions, right? We shouldn\u0027t be compiling any chip code in platform/ec that would need these definitions.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba21f41_fa02ab18",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "I get why we need the include files, but why do we need the chip sources?",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72f6066b_35212550",
@@ -19,6 +151,121 @@
         "startChar": 37,
         "endLine": 24,
         "endChar": 52
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f48a990_825c13f1",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "what is cmake_match_1? I have never see this thing before. Can you add some explanation of what and why here please?",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebda904c_5bbdf2e5",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "You should be able to use COND_CODE_1 here instead.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c302cb73_72229c2b",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this define. This will be handled by the define tree seeing that i2c device to not okay (or undefined even)",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 28
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "944e056b_e2ba68f1",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "too late, let\u0027s make this POST_KERNEL 51 (after the mutex)",
+      "range": {
+        "startLine": 110,
+        "startChar": 31,
+        "endLine": 110,
+        "endChar": 48
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df07b426_b77b099f",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-02T16:10:21Z",
+      "side": 1,
+      "message": "this doesn\u0027t belong here (hopefully we don\u0027t need it, but if we do then CMakeList.txt instead?)",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 30
       },
       "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
