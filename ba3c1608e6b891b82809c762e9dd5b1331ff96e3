@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4fbdc5b_06301ce8",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T05:50:42Z",
+      "side": 1,
+      "message": "Resolved (needed to sync zephyr/main/v2.4)",
+      "parentUuid": "f6988724_9b008e7f",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 56
+      },
+      "revId": "ba3c1608e6b891b82809c762e9dd5b1331ff96e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2d084e0_4e1807a4",
