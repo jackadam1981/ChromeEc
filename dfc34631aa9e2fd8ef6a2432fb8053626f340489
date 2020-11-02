@@ -86,6 +86,24 @@
       "parentUuid": "6edd05f7_f67047ac",
       "revId": "dfc34631aa9e2fd8ef6a2432fb8053626f340489",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c013c4b3_a63ba411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-11-02T21:59:40Z",
+      "side": 1,
+      "message": "It\u0027s tied to a specific python rsa module version. The name changes from randomized_primality_testing to miller_rabin_primality_testing.\nOutside the chroot pip3 install rsa installs 4.0. Which has the new name (miller_rabin_primality_testing)\nInside the chroot we use rsa.__version__\u00273.2.3\u0027 which uses the old name (randomized_primality_testing).\n\nI am not entirely sure how to install rsa version 3.2.3 outside the chroot, but we can modify the instructions for that and change the script to only use randomized_primality_testing",
+      "parentUuid": "f8574d64_c78ba2e3",
+      "revId": "dfc34631aa9e2fd8ef6a2432fb8053626f340489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
