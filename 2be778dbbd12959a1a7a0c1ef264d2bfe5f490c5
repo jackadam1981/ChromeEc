@@ -16,6 +16,52 @@
       "message": "Hi Chen-Tsung,Ting Shen\nPlease help to review the CL, thanks!",
       "revId": "2be778dbbd12959a1a7a0c1ef264d2bfe5f490c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fe43375_ec491ef2",
+        "filename": "board/kakadu/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-11-02T01:31:41Z",
+      "side": 1,
+      "message": "kakadu",
+      "range": {
+        "startLine": 30,
+        "startChar": 12,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "2be778dbbd12959a1a7a0c1ef264d2bfe5f490c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8239783_b854f902",
+        "filename": "board/kakadu/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-11-02T01:31:41Z",
+      "side": 1,
+      "message": "kakadu",
+      "range": {
+        "startLine": 117,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 17
+      },
+      "revId": "2be778dbbd12959a1a7a0c1ef264d2bfe5f490c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
