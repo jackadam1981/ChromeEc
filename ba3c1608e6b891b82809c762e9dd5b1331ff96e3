@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6988724_9b008e7f",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T05:20:02Z",
+      "side": 1,
+      "message": "Thanks this actually uncovered another issue, our config.h was running `#undef CONFIG_I2C` which is why I was able to build everything except was missing CC_I2C from the shim. When I re-introduce CONFIG_I2C I\u0027m getting issues building zephyr\u0027s arch/arm/core/aarch32/cpu_idle.S\n\nI\u0027ll continue exploring tomorrow",
+      "parentUuid": "8cf429f5_776a0290",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 56
+      },
+      "revId": "ba3c1608e6b891b82809c762e9dd5b1331ff96e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2d084e0_4e1807a4",
         "filename": "common/i2c_master.c",
         "patchSetId": 5
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "I\u0027ll dig into this a bit more and see if we can get rid of this.",
       "parentUuid": "785e2acd_d6807338",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 56
+      },
+      "revId": "ba3c1608e6b891b82809c762e9dd5b1331ff96e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa8c7bab_7a1c8d58",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T05:20:02Z",
+      "side": 1,
+      "message": "OK, looked into this a bit more and I don\u0027t think it\u0027s worth to translate this file to Zephyr yet. The implementation of chip/npcx/i2c-npcx7.c is basically details of devicetree but for the platform/ec enum style instead of struct device *. I think that doing this here would just complicate the CL prior to us knowing for sure that everything works as is.\n\nSee http://cs/chromeos_public/src/platform/ec/chip/npcx/i2c-npcx7.c?l\u003d1 for reference.\n\nAdding comments for this.",
+      "parentUuid": "93f5168f_b2492e82",
       "range": {
         "startLine": 16,
         "startChar": 0,
