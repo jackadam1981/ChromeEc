@@ -187,18 +187,21 @@ static void button_check_hw_reinit_required(void)
 #endif
 }
 
-static int is_recovery_boot(void)
+#endif /* CONFIG_BUTTON_TRIGGERED_RECOVERY */
+
+bool is_recovery_boot(void)
 {
 	if (system_jumped_to_this_image())
 		return 0;
 	if (!(system_get_reset_flags() &
 	    (EC_RESET_FLAG_RESET_PIN | EC_RESET_FLAG_POWER_ON)))
 		return 0;
+#ifdef CONFIG_BUTTON_TRIGGERED_RECOVERY
 	if (!is_recovery_button_pressed())
 		return 0;
+#endif
 	return 1;
 }
-#endif /* CONFIG_BUTTON_TRIGGERED_RECOVERY */
 
 static void button_reset(enum button button_type,
 	const struct button_config *button)
