@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88ca38d2_07e03082",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "Done (b/172239550)",
+      "parentUuid": "59fed2f4_993b3b92",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2beca89_9d81347c",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-02T16:10:21Z",
       "side": 1,
       "message": "why can\u0027t we clear the PEC flag for zephyr? Seems this would mess stuff up for Zephyr (PEC is another layer on top of I2C that specifies a certain CRC protocol, etc).",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 6
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e627f24_028f0401",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d2beca89_9d81347c",
       "range": {
         "startLine": 196,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aad1e91_8a6791d0",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "Discussion moved to b/172060699",
+      "parentUuid": "2344bf51_2f946cbd",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 25
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcd05d71_ba6c1a3f",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07d8c4a9_7577a055",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "It is needed in the header chip/npcx/registers.h and other headers, see http://cs/chromeos_public/src/platform/ec/chip/npcx/registers.h?l\u003d1659\u0026rcl\u003d1ba3b3d64b0cc58c107a5d24079999deea0bb03b",
+      "parentUuid": "bcd05d71_ba6c1a3f",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aba21f41_fa02ab18",
@@ -123,6 +219,30 @@
       "writtenOn": "2020-11-02T16:10:21Z",
       "side": 1,
       "message": "I get why we need the include files, but why do we need the chip sources?",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d4620d_55226d65",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "The source here defines a few things about the ports which are still used (such as translating the port to the controller and some basic properties about the port). This is basically replicated code to device tree\u0027s information. The migration for this will take place later as it\u0027s really just redundant information. Once migrated this will no longer need to be chip specific since the information is encoded in device tree. I just wanted more time to let the pattern emerge before committing to a migration.",
+      "parentUuid": "aba21f41_fa02ab18",
       "range": {
         "startLine": 23,
         "startChar": 1,
@@ -179,6 +299,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5d1638_053b2ca6",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "It will only if we use MATCHES inside this if statement. I think that\u0027s pretty unlikely and will result in a very quick error since most likely the file using the new match content will not exist. Feel free to reopen if you\u0027d like me to cache this in a local variable.",
+      "parentUuid": "72f6066b_35212550",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb9c706_ae24b0d6",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "It\u0027s just the first capture group from the above MATCHES. Adding the comment.",
+      "parentUuid": "8f48a990_825c13f1",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebda904c_5bbdf2e5",
@@ -192,6 +360,30 @@
       "writtenOn": "2020-11-02T16:10:21Z",
       "side": 1,
       "message": "You should be able to use COND_CODE_1 here instead.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb37e924_a3362542",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "Super cool, didn\u0027t notice that one!",
+      "parentUuid": "ebda904c_5bbdf2e5",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0189ba4a_a766b373",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "This is the platform/ec chip define. So if this isn\u0027t defined then NPCX_I2C_PORT4_0 isn\u0027t defined which will mess up the indexing.\n\nSee http://cs/chromeos_public/src/platform/ec/chip/npcx/registers-npcx7.h?l\u003d266\u0026rcl\u003d1ba3b3d64b0cc58c107a5d24079999deea0bb03b",
+      "parentUuid": "c302cb73_72229c2b",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 28
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "944e056b_e2ba68f1",
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5639306e_440d3ee9",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "944e056b_e2ba68f1",
+      "range": {
+        "startLine": 110,
+        "startChar": 31,
+        "endLine": 110,
+        "endChar": 48
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df07b426_b77b099f",
@@ -261,6 +501,30 @@
       "writtenOn": "2020-11-02T16:10:21Z",
       "side": 1,
       "message": "this doesn\u0027t belong here (hopefully we don\u0027t need it, but if we do then CMakeList.txt instead?)",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e082f48_eac83a80",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-02T17:48:47Z",
+      "side": 1,
+      "message": "So this is an issue because we\u0027re overriding config_chip.h. So what\u0027s happening is normally we\u0027d load chip/npcx/config_chip.h which would load the chip specific things. Now we don\u0027t really want ALL of the platform/ec chip specific things in zephyr so we replaced it with the shim version. But in order to not just rewrite everything we still need some of the functionality in config_chip.h which for npcx was to include the chip family specific header which then defines a bunch of things which will (eventually) be replaced by a combination of devicetree lookups and KConfig options.",
+      "parentUuid": "df07b426_b77b099f",
       "range": {
         "startLine": 46,
         "startChar": 1,
