@@ -288,22 +288,18 @@ static inline void tcpc_discharge_vbus(int port, int enable)
 	tcpc_config[port].drv->tcpc_discharge_vbus(port, enable);
 }
 
-#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 static inline int tcpm_auto_toggle_supported(int port)
 {
-	return !!tcpc_config[port].drv->drp_toggle;
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE))
+		return !!tcpc_config[port].drv->drp_toggle;
+	else
+		return false;
 }
 
 static inline int tcpm_enable_drp_toggle(int port)
 {
 	return tcpc_config[port].drv->drp_toggle(port);
 }
-#else
-static inline int tcpm_auto_toggle_supported(int port)
-{
-	return false;
-}
-#endif
 
 static inline int tcpm_debug_accessory(int port, bool enable)
 {
@@ -321,12 +317,10 @@ static inline int tcpm_debug_detach(int port)
 	return EC_SUCCESS;
 }
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static inline int tcpm_enter_low_power_mode(int port)
 {
 	return tcpc_config[port].drv->enter_low_power_mode(port);
 }
-#endif
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
 static inline int tcpc_i2c_read(const int port, const uint16_t addr_flags,

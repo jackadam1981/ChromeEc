@@ -365,8 +365,6 @@ const char *tc_get_current_state(int port);
  */
 uint32_t tc_get_flags(int port);
 
-#ifdef CONFIG_USB_CTVPD
-
 /**
  * Resets the charge-through support timer. This can be
  * called many times but the support timer will only
@@ -376,12 +374,8 @@ uint32_t tc_get_flags(int port);
  */
 void tc_reset_support_timer(int port);
 
-#else
-
 /**
  *
  */
 void tc_ctvpd_detected(int port);
-#endif /* CONFIG_USB_CTVPD */
 #endif /* __CROS_EC_USB_TC_H */
-

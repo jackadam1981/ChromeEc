@@ -334,7 +334,6 @@ struct tcpm_drv {
 	 */
 	int (*debug_detach)(int port);
 
-#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	/**
 	 * Enable TCPC auto DRP toggling.
 	 *
@@ -343,7 +342,6 @@ struct tcpm_drv {
 	 * @return EC_SUCCESS or error
 	 */
 	int (*drp_toggle)(int port);
-#endif
 
 	/**
 	 * Get firmware version.
@@ -401,7 +399,6 @@ struct tcpm_drv {
 	int (*set_src_ctrl)(int port, int enable);
 #endif
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	/**
 	 * Instructs the TCPC to enter into low power mode.
 	 *
@@ -413,7 +410,6 @@ struct tcpm_drv {
 	 * @return EC_SUCCESS or error
 	 */
 	int (*enter_low_power_mode)(int port);
-#endif
 
 #ifdef CONFIG_USB_PD_FRS_TCPC
 	/**
