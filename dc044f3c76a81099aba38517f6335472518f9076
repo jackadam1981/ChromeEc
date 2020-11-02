@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ff5e27_dafcaa32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-02T02:00:38Z",
+      "side": 1,
+      "message": "I think this looks ok. But see also the email thread with seobrien and dtor.",
+      "revId": "dc044f3c76a81099aba38517f6335472518f9076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23745633_b787301d",
@@ -49,6 +66,57 @@
       "side": 1,
       "message": "yes, only one match from grep.\n\n$ grep -rI zed_kb build/\nbuild/zed/RW/ec.RW.smap:08015c5a r zed_kb",
       "parentUuid": "23745633_b787301d",
+      "revId": "dc044f3c76a81099aba38517f6335472518f9076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44b81ed_4e0664df",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-02T02:00:38Z",
+      "side": 1,
+      "message": "TIL\n\n\"Interpretation of Usage, Usage Minimum or Usage Maximum items vary as a\nfunction of the item’s bSize field. If the bSize field \u003d 3 then the item is\ninterpreted as a 32 bit unsigned value where the high order 16 bits defines the\nUsage Page and the low order 16 bits defines the Usage ID. 32 bit usage items\nthat define both the Usage Page and Usage ID are often referred to as\n“Extended” Usages\"",
+      "revId": "dc044f3c76a81099aba38517f6335472518f9076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec86463d_76bddb80",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-02T02:00:38Z",
+      "side": 1,
+      "message": "All checked, all correct.",
+      "revId": "dc044f3c76a81099aba38517f6335472518f9076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2afe4d98_98ab9de8",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-02T02:00:38Z",
+      "side": 1,
+      "message": "add KEYBOARD_TOP_ROW_DESC here too",
       "revId": "dc044f3c76a81099aba38517f6335472518f9076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
