@@ -63,4 +63,18 @@ static inline uint32_t clear_csr(uint32_t reg, uint32_t bit)
 #define   CSR_MCTREN_CG		BIT(7)
 #define   CSR_MCTREN_MPU	BIT(8)
 
+/* MPU */
+#define CSR_MPU_ENTRY_EN	(0x9c0)
+#define CSR_MPU_LITCM		(0x9dc)
+#define CSR_MPU_LDTCM		(0x9dd)
+#define CSR_MPU_HITCM 		(0x9de)
+#define CSR_MPU_HDTCM		(0x9df)
+#define CSR_MPU_L(n)		(0x9e0 + n)
+#define CSR_MPU_H(n)		(0x9f0 + n)
+#define   CSR_MPU_ATTR_P	5
+#define   CSR_MPU_ATTR_R	6
+#define   CSR_MPU_ATTR_W	7
+#define   CSR_MPU_ATTR_C	8
+#define   CSR_MPU_ATTR_B	9
+
 #endif /* __CROS_EC_CSR_H */
