@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97237fe6_ff40c7c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-02T18:41:30Z",
+      "side": 1,
+      "message": "Duplicate bug number.",
+      "range": {
+        "startLine": 67,
+        "startChar": 17,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "332e69fa39899df2a154e7acdf238f02d1db573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "393f800d_b9f86585",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 18
