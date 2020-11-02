@@ -50,6 +50,24 @@
       "message": "Can the appropriate python module be installed outside chroot?\n\nNot a biggie, but I think it would be preferable to use the same test in both cases",
       "revId": "dfc34631aa9e2fd8ef6a2432fb8053626f340489",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6edd05f7_f67047ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-11-02T21:33:16Z",
+      "side": 1,
+      "message": "I can install the correct RSA module outside of the chroot, but we should modify instructions to install a specific rsa version.\n\n\nI\u0027m also fine just saying we don\u0027t support running outside of the chroot, since the setup is so specific.",
+      "parentUuid": "b267ffc7_1bf85763",
+      "revId": "dfc34631aa9e2fd8ef6a2432fb8053626f340489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
