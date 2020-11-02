@@ -94,7 +94,7 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	board_before_rsmrst(0);
 	GPIO_SET_LEVEL(GPIO_PCH_RSMRST_L, 0);
 	board_after_rsmrst(0);
-
+	usleep(300);
 	/* Turn off DSW_PWROK to meet tPCH14 */
 	GPIO_SET_LEVEL(GPIO_PCH_DSW_PWROK, 0);
 
