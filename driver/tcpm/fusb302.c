@@ -607,6 +607,24 @@ static int fusb302_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	return 0;
 }
 
+__maybe_unused static int fusb302_tcpm_decode_sop_prime_enable(int port,
+								bool enable)
+{
+	int reg;
+
+	if (tcpc_read(port, TCPC_REG_CONTROL1, &reg))
+		return EC_ERROR_UNKNOWN;
+
+	if (enable)
+		reg |= (TCPC_REG_CONTROL1_ENSOP1 |
+				TCPC_REG_CONTROL1_ENSOP2);
+	else
+		reg &= ~(TCPC_REG_CONTROL1_ENSOP1 |
+			TCPC_REG_CONTROL1_ENSOP2);
+
+	return tcpc_write(port, TCPC_REG_CONTROL1, reg);
+}
+
 static int fusb302_tcpm_set_vconn(int port, int enable)
 {
 	/*
@@ -628,12 +646,9 @@ static int fusb302_tcpm_set_vconn(int port, int enable)
 
 #ifdef CONFIG_USB_PD_DECODE_SOP
 		if (state[port].rx_enable) {
-			if (tcpc_read(port, TCPC_REG_CONTROL1, &reg))
+			if (fusb302_tcpm_decode_sop_prime_enable(port,
+								true))
 				return EC_ERROR_UNKNOWN;
-
-			reg |= (TCPC_REG_CONTROL1_ENSOP1 |
-				TCPC_REG_CONTROL1_ENSOP2);
-			tcpc_write(port, TCPC_REG_CONTROL1, reg);
 		}
 #endif
 	} else {
@@ -648,12 +663,9 @@ static int fusb302_tcpm_set_vconn(int port, int enable)
 
 #ifdef CONFIG_USB_PD_DECODE_SOP
 		if (state[port].rx_enable) {
-			if (tcpc_read(port, TCPC_REG_CONTROL1, &reg))
+			if (fusb302_tcpm_decode_sop_prime_enable(port,
+								false))
 				return EC_ERROR_UNKNOWN;
-
-			reg &= ~(TCPC_REG_CONTROL1_ENSOP1 |
-				TCPC_REG_CONTROL1_ENSOP2);
-			tcpc_write(port, TCPC_REG_CONTROL1, reg);
 		}
 #endif
 	}
@@ -1177,6 +1189,9 @@ const struct tcpm_drv fusb302_tcpm_drv = {
 	.select_rp_value	= &fusb302_tcpm_select_rp_value,
 	.set_cc			= &fusb302_tcpm_set_cc,
 	.set_polarity		= &fusb302_tcpm_set_polarity,
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	.sop_prime_enable	= &fusb302_tcpm_decode_sop_prime_enable,
+#endif
 	.set_vconn		= &fusb302_tcpm_set_vconn,
 	.set_msg_header		= &fusb302_tcpm_set_msg_header,
 	.set_rx_enable		= &fusb302_tcpm_set_rx_enable,
