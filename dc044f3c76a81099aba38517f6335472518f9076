@@ -119,6 +119,24 @@
       "message": "add KEYBOARD_TOP_ROW_DESC here too",
       "revId": "dc044f3c76a81099aba38517f6335472518f9076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b241e6_c14fd5fe",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-11-03T06:42:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2afe4d98_98ab9de8",
+      "revId": "dc044f3c76a81099aba38517f6335472518f9076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
