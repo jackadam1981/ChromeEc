@@ -70,6 +70,30 @@
       },
       "revId": "2be325be2495dba11c85aa8d4e4e7cfab24f12c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6afed28b_756b8ce7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-03T16:20:24Z",
+      "side": 1,
+      "message": "\u003e I think so. What do you see instead (if you run flashrom without battery)?\n\nI see the reset flag persisting on sysjump with no battery, ex.: \n20-11-03 09:07:59.673 +sysjump rw\n20-11-03 09:08:01.967 [Image: RW, drawcia_v2.0.5945-0438542f26 2020-11-02 03:55:23 dzigterman@ziggy]\n20-11-03 09:08:01.976 [Reset cause: reset-pin power-on sysjump ap-idle initial-pwr]\n\nSo then the TC state starts as Unattached.SNK: \n20-11-03 09:08:02.121 [166.280238 C1: PD comm policy enabled]\n20-11-03 09:08:02.139 [166.301947 C1: Unattached.SNK]\n20-11-03 09:08:02.143 [166.308298 C1: PE_SNK_Startup]\n20-11-03 09:08:02.147 [166.312041 C1: AttachWait.SNK]\n20-11-03 09:08:02.251 [166.416848 C1: Attached.SNK]\n20-11-03 09:08:02.260 [166.425641 C1: PE_SNK_Startup]\n20-11-03 09:08:02.264 [166.430667 C1: PE_SNK_Discovery]\n20-11-03 09:08:02.267 [166.434824 C1: PE_SNK_Wait_for_Capabilities]\n20-11-03 09:08:02.759 [167.037671 C1: PE_SNK_Hard_Reset]\n\u003cbrown out\u003e\n\n\u003e Yes, the intention is to skip waiting for source caps by starting from ATTACHED_SNK.\n\nThe TC starting state is independent of the PE\u0027s starting state, by and large.  We\u0027d have to start the PE state in PE_SNK_READY to skip waiting for source capabilities.  There would be a risk to putting the PE into PE_SNK_READY because we would still allow PD communication, and could very well end up with the PE deciding to hard reset if any of its communications encounter a failure.  It would be safer to either disable PD, or put the PE into PE_SNK_DISABLED.",
+      "parentUuid": "bcab4a3b_64fe970b",
+      "range": {
+        "startLine": 1438,
+        "startChar": 2,
+        "endLine": 1438,
+        "endChar": 32
+      },
+      "revId": "2be325be2495dba11c85aa8d4e4e7cfab24f12c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
