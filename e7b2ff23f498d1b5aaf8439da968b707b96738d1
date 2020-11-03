@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d55f16_b85af8fc",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-03T00:34:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc79e29a_eb8c3102",
+      "revId": "e7b2ff23f498d1b5aaf8439da968b707b96738d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5519128b_b8249957",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Ah yeah, initial makes more sense for exactly that reason. I can rename it.\n\nI wanted to fill it twice in order to allow charging to ramp up and stabilize.",
       "parentUuid": "5519128b_b8249957",
+      "revId": "e7b2ff23f498d1b5aaf8439da968b707b96738d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66050d79_9672bb0e",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-03T00:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8c8ebd7_e285203d",
       "revId": "e7b2ff23f498d1b5aaf8439da968b707b96738d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
