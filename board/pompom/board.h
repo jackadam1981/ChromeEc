@@ -23,6 +23,9 @@
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE (512 * 1024)  /* 512KB internal spi flash */
 
+/* Charger: limit max input current to 2.9A */
+#define CONFIG_CHARGER_MAX_INPUT_CURRENT 2900
+
 /* Keyboard */
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_PWM_KBLIGHT
