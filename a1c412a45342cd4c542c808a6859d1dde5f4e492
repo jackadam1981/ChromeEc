@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5e1d335_a34ac6c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-03T23:58:39Z",
+      "side": 1,
+      "message": "I need to pull a few platform/ec CLs out of this CL, but the task shim is working if anyone would like to try it out because they were blocked on it.\n\nThere are also some presubmit warning I need to address; I will clean this up tomorrow\n\nI will let you know when this is officially ready for review.",
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
