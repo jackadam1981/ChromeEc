@@ -34,6 +34,24 @@
       "parentUuid": "8a2bbd85_50ac9b55",
       "revId": "fd89387262f9b0b794f88217837123878c244a30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791eaf6b_d432927f",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-03T18:01:30Z",
+      "side": 1,
+      "message": "Another alternative is to add a new console command next to accelspoof such as sensorocal (sensor online calibrate) which will do this and use another flag instead of the spoof mode.",
+      "parentUuid": "b260980a_4e697705",
+      "revId": "fd89387262f9b0b794f88217837123878c244a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
