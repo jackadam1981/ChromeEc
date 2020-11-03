@@ -51,4 +51,15 @@ struct pi3dpx1207_usb_control {
 };
 extern const struct pi3dpx1207_usb_control pi3dpx1207_controls[];
 
+enum pi3dpx1207_usb_conf {
+	USB_DP = 0,
+	USB_DP_INV,
+	USB,
+	USB_INV,
+	DP,
+	DP_INV
+};
+
+extern uint8_t *pi3dpx1207_eq[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 #endif /* __CROS_EC_USB_RETIMER_PI3PDX1207_H */

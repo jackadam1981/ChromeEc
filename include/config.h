@@ -4234,6 +4234,9 @@
 #undef CONFIG_USBC_RETIMER_PS8818
 #undef CONFIG_USBC_RETIMER_TUSB544
 
+/* Type-C retimer PI3DPX1207 EQ fine tune */
+#undef CONFIG_PI3DPX1207_EQ
+
 /* Allow run-time configuration of the Burnside Bridge driver structure */
 #undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
 

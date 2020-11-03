@@ -98,6 +98,11 @@ static int pi3dpx1207_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 	const int gpio_enable = pi3dpx1207_controls[port].enable_gpio;
 	const int gpio_dp_enable = pi3dpx1207_controls[port].dp_enable_gpio;
 
+#ifdef CONFIG_PI3DPX1207_EQ
+	int i;
+	enum pi3dpx1207_usb_conf usb_mode = 0;
+#endif
+
 	/* USB */
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		gpio_or_ioex_set_level(gpio_enable, 1);
@@ -107,6 +112,11 @@ static int pi3dpx1207_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 			mode_val |= (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 					? PI3DPX1207_MODE_CONF_USB_DP_FLIP
 					: PI3DPX1207_MODE_CONF_USB_DP;
+#ifdef CONFIG_PI3DPX1207_EQ
+			usb_mode = (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+					? USB_DP_INV
+					: USB_DP;
+#endif
 		}
 		/* USB without DP */
 		else {
@@ -114,6 +124,11 @@ static int pi3dpx1207_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 			mode_val |= (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 					? PI3DPX1207_MODE_CONF_USB_FLIP
 					: PI3DPX1207_MODE_CONF_USB;
+#ifdef CONFIG_PI3DPX1207_EQ
+			usb_mode = (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+					? USB_INV
+					: USB;
+#endif
 		}
 	}
 	/* DP without USB */
@@ -123,6 +138,11 @@ static int pi3dpx1207_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 		mode_val |= (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 				? PI3DPX1207_MODE_CONF_DP_FLIP
 				: PI3DPX1207_MODE_CONF_DP;
+#ifdef CONFIG_PI3DPX1207_EQ
+		usb_mode = (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+				? DP_INV
+				: DP;
+#endif
 	}
 	/* Nothing enabled, power down the retimer */
 	else {
@@ -132,6 +152,13 @@ static int pi3dpx1207_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 
 	/* Write the retimer config byte */
 	rv = pi3dpx1207_i2c_write(me, PI3DPX1207_MODE_OFFSET, mode_val);
+
+#ifdef CONFIG_PI3DPX1207_EQ
+	for (i = 0; i < 13; i++) {
+		rv |= pi3dpx1207_i2c_write(me, i,
+			*(pi3dpx1207_eq[port]+i+usb_mode*13));
+	}
+#endif
 	return rv;
 }
 
