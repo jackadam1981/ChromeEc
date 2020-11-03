@@ -278,6 +278,7 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
+#ifdef HAS_TASK_MOTIONSENSE
 /* Sensor Mutexes */
 static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
@@ -363,6 +364,8 @@ struct motion_sensor_t motion_sensors[] = {
 };
 
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+#endif
 
 /* Thermistors */
 const struct temp_sensor_t temp_sensors[] = {
