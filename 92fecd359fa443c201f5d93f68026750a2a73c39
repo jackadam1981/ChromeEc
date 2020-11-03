@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ccdd507_2f42d24e",
+        "filename": "board/drobit/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-03T00:45:38Z",
+      "side": 1,
+      "message": "It\u0027s okay to configure as unused for now, but note this signal is the retimer reset on C0 and will need to be configured when USB support is updated for Drobit.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "92fecd359fa443c201f5d93f68026750a2a73c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
