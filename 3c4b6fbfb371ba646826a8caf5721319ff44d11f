@@ -16,6 +16,24 @@
       "message": "Patchset 3 passes TD.PD.SRC3.E9 Battery Status Fields Checks Invalid Battery Reference and TD.PD.SRC3.E17 Battery Capabilities Fields Check Invalid Battery Reference on Volteer.",
       "revId": "3c4b6fbfb371ba646826a8caf5721319ff44d11f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5bdedc_721542cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-03T16:01:56Z",
+      "side": 1,
+      "message": "Excellent.  Thanks for validating.  I\u0027ll work on the timely tests later this week.",
+      "parentUuid": "a4a6797e_d0554157",
+      "revId": "3c4b6fbfb371ba646826a8caf5721319ff44d11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
