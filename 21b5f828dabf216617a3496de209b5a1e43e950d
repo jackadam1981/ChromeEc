@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1e7143_33893676",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-03T17:16:03Z",
+      "side": 1,
+      "message": "Yes, part of the migration for mutex was to unite the two `struct mutex` from platform/ec and `struct k_mutex` from Zephyr. See http://cs/chromeos_public/src/platform/ec/include/task.h?l\u003d366\u0026rcl\u003dbf2d7da23cb9c3316bd746226c90ff05d1071f9f",
+      "parentUuid": "d1ea0b09_5378c2bf",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "21b5f828dabf216617a3496de209b5a1e43e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36b3a5ef_f2bb913a",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0c09de_9590c308",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-03T17:16:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "36b3a5ef_f2bb913a",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 22
+      },
+      "revId": "21b5f828dabf216617a3496de209b5a1e43e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2440eea_4f9802d5",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-11-02T20:40:44Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "21b5f828dabf216617a3496de209b5a1e43e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29bc9a7_2df63078",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-03T17:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2440eea_4f9802d5",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -124,6 +196,30 @@
       "side": 1,
       "message": "I am fine if that is true, why is that true? We should also add that nugget of information to our shimmining doc.",
       "parentUuid": "aea308c2_dd9bb745",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "21b5f828dabf216617a3496de209b5a1e43e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1538fbcf_7a28646c",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-03T17:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "707b07fa_fd5b6412",
       "range": {
         "startLine": 9,
         "startChar": 0,

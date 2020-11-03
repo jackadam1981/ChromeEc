@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c010abd_bd02f54e",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-03T17:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf703a80_99146054",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 25
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcd05d71_ba6c1a3f",
@@ -244,6 +268,30 @@
       "side": 1,
       "message": "Ah, I understand, can you add that as a comment here saying why we need them (because we are using chip specific header files that branches their definitions based on these defines)",
       "parentUuid": "07d8c4a9_7577a055",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d9b31a_831a9800",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-03T17:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae968ac3_efaa448b",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -561,6 +609,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e134c69f_d9767b36",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-03T17:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12885822_b8eb1824",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 28
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "944e056b_e2ba68f1",
@@ -669,6 +741,30 @@
       "side": 1,
       "message": "Oh I see, can we just move this out of the i2c section then? Since including this file is more about the npcx register for that variant than it is about I2C.\n\nWe can add a comment saying something to the effect that we are override config_chip but still want to include chip specific content (very similar to your explanation in this comment thread)",
       "parentUuid": "3e082f48_eac83a80",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "d41e0db87f98b62ad79847afded326406462dc6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "374bf812_e70a8c15",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-03T17:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75cbb50f_4b08c71d",
       "range": {
         "startLine": 46,
         "startChar": 1,
