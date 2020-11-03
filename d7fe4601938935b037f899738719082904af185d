@@ -22,6 +22,30 @@
       },
       "revId": "d7fe4601938935b037f899738719082904af185d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e0c679c_8887dd8a",
+        "filename": "common/irq_locking.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-03T20:23:13Z",
+      "side": 1,
+      "message": "E.g., if we migrate to the zephyr apis, then remove this file, the EC won\u0027t build?",
+      "parentUuid": "3386a44c_6413ba43",
+      "range": {
+        "startLine": 8,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "d7fe4601938935b037f899738719082904af185d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
