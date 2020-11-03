@@ -22,6 +22,30 @@
       },
       "revId": "92fecd359fa443c201f5d93f68026750a2a73c39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08caf7c6_43bd2b16",
+        "filename": "board/drobit/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2020-11-03T01:42:19Z",
+      "side": 1,
+      "message": "Yes, we will modify it for retimer reset using.",
+      "parentUuid": "5ccdd507_2f42d24e",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "92fecd359fa443c201f5d93f68026750a2a73c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
