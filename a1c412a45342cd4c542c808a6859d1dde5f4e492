@@ -16,6 +16,178 @@
       "message": "I need to pull a few platform/ec CLs out of this CL, but the task shim is working if anyone would like to try it out because they were blocked on it.\n\nThere are also some presubmit warning I need to address; I will clean this up tomorrow\n\nI will let you know when this is officially ready for review.",
       "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0035347_5bf413a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-04T00:21:48Z",
+      "side": 1,
+      "message": "overall looking to be going in the right direction 😎",
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eb67d29_7e08e222",
+        "filename": "include/task.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-04T00:21:48Z",
+      "side": 1,
+      "message": "all of these headers are compatible with the zephyr shim, so it\u0027s not clear to me that we should be skipping them.\n\nMaybe just this\n\n  #ifdef CONFIG_ZEPHYR\n  #include \"shimmed_task_ids.h\"\n  #endif",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39d9fd8_9b41601d",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-04T00:21:48Z",
+      "side": 1,
+      "message": "remvoe extra blank lines (so there\u0027s only one)",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c25ae31_8e2eef2d",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-04T00:21:48Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606f1530_fc9d88f0",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-04T00:21:48Z",
+      "side": 1,
+      "message": "indentation issues? run clang-format",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 22
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914a243b_684d9938",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-04T00:21:48Z",
+      "side": 1,
+      "message": "checkpatch should yell about needing blank lines after declarations?",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 21
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f901a8_94019c31",
+        "filename": "zephyr/test/base32/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-04T00:21:48Z",
+      "side": 1,
+      "message": "this needs to be a separate CL?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 23
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6aafa7_29d8ea85",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-04T00:21:48Z",
+      "side": 1,
+      "message": "thanks for the tests \u003d)",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 14
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
