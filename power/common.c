@@ -77,10 +77,14 @@ static int pause_in_s5;
 #endif
 
 static bool want_reboot_ap_at_g3;/* Want to reboot AP from G3? */
+static uint64_t delay;	/* Want to reboot AP from G3 with delay? */
 
 static enum ec_status
 host_command_reboot_ap_on_g3(struct host_cmd_handler_args *args)
 {
+	const struct ec_params_reboot_ap_on_g3 *cmd = args->params;
+	/* Store user delay to wait in G3 state */
+	delay = cmd->delay;
 	/* Store request for processing at g3 */
 	want_reboot_ap_at_g3 = true;
 
@@ -419,8 +423,19 @@ static enum power_state power_common_state(enum power_state state)
 	switch (state) {
 	case POWER_G3:
 		if (want_g3_exit || want_reboot_ap_at_g3) {
+			uint64_t i;
+
 			want_g3_exit = 0;
 			want_reboot_ap_at_g3 = false;
+			delay = delay * MSEC;
+			/*
+			 * G3->S0 transition should happen only after the
+			 * user specified delay. Hence, wait until the
+			 * user specified delay times out.
+			 */
+			for (i = 0; i < delay; i += 100)
+				msleep(100);
+			delay = 0;
 
 			return POWER_G3S5;
 		}

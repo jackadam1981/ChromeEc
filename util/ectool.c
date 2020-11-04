@@ -1194,9 +1194,21 @@ int cmd_reboot_ec(int argc, char *argv[])
 
 int cmd_reboot_ap_on_g3(int argc, char *argv[])
 {
+	struct ec_params_reboot_ap_on_g3 p;
 	int rv;
+	char *e;
 
-	rv = ec_command(EC_CMD_REBOOT_AP_ON_G3, 0, NULL, 0, NULL, 0);
+	if (argc < 2) {
+		p.delay = 0;
+	} else {
+		p.delay = strtol(argv[1], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "invalid number\n");
+			return -1;
+		}
+	}
+
+	rv = ec_command(EC_CMD_REBOOT_AP_ON_G3, 0, &p, sizeof(p), NULL, 0);
 	return (rv < 0 ? rv : 0);
 }
 
