@@ -34,6 +34,29 @@
       "parentUuid": "a4a6797e_d0554157",
       "revId": "3c4b6fbfb371ba646826a8caf5721319ff44d11f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e5bf35_83d7c92d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3543,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:37:33Z",
+      "side": 1,
+      "message": "all of these index could really benefit from #define with names (or a struct with uint8_t fields)",
+      "range": {
+        "startLine": 3543,
+        "startChar": 6,
+        "endLine": 3543,
+        "endChar": 7
+      },
+      "revId": "3c4b6fbfb371ba646826a8caf5721319ff44d11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
