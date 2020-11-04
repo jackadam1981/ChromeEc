@@ -630,7 +630,6 @@ __maybe_unused static void set_vif_field_itis(struct vif_field_t *vif_field,
  *	DFP_VDO_Port_Number			numericFieldType
  *	Modal_Operation_Supported_SOP		booleanFieldType
  *	USB_VID_SOP				numericFieldType
- *	PID_SOP					numericFieldType
  *	bcdDevice_SOP				numericFieldType
  *	SVID_Fixed_SOP				booleanFieldType
  *	Num_SVIDs_Min_SOP			numericFieldType
@@ -1801,6 +1800,25 @@ static int gen_vif(const char *name,
 		set_vif_field_b(&vif_fields[FR_Swap_Supported_As_Initial_Sink],
 				"FR_Swap_Supported_As_Initial_Sink",
 				IS_ENABLED(CONFIG_USB_PD_FRS));
+
+	/*********************************************************************
+	 * SOP Discovery Fields
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_TCPMV2)) {
+		char hex_str[10];
+
+		#if defined(USB_PID_GOOGLE)
+			sprintf(hex_str, "%04X", USB_PID_GOOGLE);
+			set_vif_field_itss(&vif_fields[PID_SOP],
+					"PID_SOP",
+					USB_PID_GOOGLE, hex_str);
+		#else
+			sprintf(hex_str, "%04X", DEFAULT_MISSING_PID);
+			set_vif_field_itss(&vif_fields[PID_SOP],
+					"PID_SOP",
+					DEFAULT_MISSING_PID, hex_str);
+		#endif
+	}
 
 	/*********************************************************************
 	 * Battery Charging 1.2 Fields
