@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ea96a9_5abe9992",
+        "filename": "include/task.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:18:37Z",
+      "side": 1,
+      "message": "I was able to not add anything here in the end.",
+      "parentUuid": "4eb67d29_7e08e222",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a39d9fd8_9b41601d",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-11-04T00:21:48Z",
       "side": 1,
       "message": "remvoe extra blank lines (so there\u0027s only one)",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "280771d9_ac1dcdb4",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a39d9fd8_9b41601d",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe14ef9_52e049f7",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c25ae31_8e2eef2d",
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "606f1530_fc9d88f0",
@@ -111,6 +177,30 @@
       "writtenOn": "2020-11-04T00:21:48Z",
       "side": 1,
       "message": "indentation issues? run clang-format",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 22
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1a708a9_b5d72ad5",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "606f1530_fc9d88f0",
       "range": {
         "startLine": 94,
         "startChar": 5,
@@ -144,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ec531e_9b2b778b",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "914a243b_684d9938",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 21
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8f901a8_94019c31",
@@ -167,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cd55e6a_7eb5ff12",
+        "filename": "zephyr/test/base32/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f901a8_94019c31",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 23
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac6aafa7_29d8ea85",
@@ -180,6 +318,30 @@
       "writtenOn": "2020-11-04T00:21:48Z",
       "side": 1,
       "message": "thanks for the tests \u003d)",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 14
+      },
+      "revId": "a1c412a45342cd4c542c808a6859d1dde5f4e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d02b33_d51e1d71",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:18:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac6aafa7_29d8ea85",
       "range": {
         "startLine": 190,
         "startChar": 5,

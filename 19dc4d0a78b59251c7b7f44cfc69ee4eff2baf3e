@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45ac7119_267635fa",
+        "filename": "zephyr/test/tasks/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:18:37Z",
+      "side": 1,
+      "message": "@Jack/Yuval: Can we single source this list of include files somehow. We aren\u0027t using the platform/ec/zephyr/CmakeList.txt file here since it isn\u0027t being compiled in.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "19dc4d0a78b59251c7b7f44cfc69ee4eff2baf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
