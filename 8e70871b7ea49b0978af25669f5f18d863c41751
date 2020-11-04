@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1764437_f341d065",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:30:05Z",
+      "side": 1,
+      "message": "nit: why did you not put these with the other includes, i.e. why are they after the #defines?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "8e70871b7ea49b0978af25669f5f18d863c41751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
