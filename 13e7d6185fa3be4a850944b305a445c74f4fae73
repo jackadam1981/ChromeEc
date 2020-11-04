@@ -213,6 +213,30 @@
       },
       "revId": "13e7d6185fa3be4a850944b305a445c74f4fae73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8258f7a7_cedd22e9",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4279,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-04T04:49:35Z",
+      "side": 1,
+      "message": "It belongs in the driver code. Every project using that part should be using the same setting. OCP voltage level should depend on the negotiated voltage. That shouldn\u0027t be affected by which board is using the part.",
+      "parentUuid": "d6eb447b_4fb5dea5",
+      "range": {
+        "startLine": 4279,
+        "startChar": 0,
+        "endLine": 4279,
+        "endChar": 33
+      },
+      "revId": "13e7d6185fa3be4a850944b305a445c74f4fae73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
