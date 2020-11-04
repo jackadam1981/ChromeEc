@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed268375_d58af086",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-04T23:35:26Z",
+      "side": 1,
+      "message": "This ultimately won\u0027t be the supported flow, so I\u0027m just curious: Are we staying in USB4 mode for SOP through the reboot? And it works normally after we reenter TBT3 on the cable?",
+      "range": {
+        "startLine": 70,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 49
+      },
+      "revId": "dcba5e0de4a5b1c692281648192565bf2028683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "733ab0ef_c8abfeb6",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-04T23:35:26Z",
+      "side": 1,
+      "message": "This probably deserves a comment.",
+      "revId": "dcba5e0de4a5b1c692281648192565bf2028683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
