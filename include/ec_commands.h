@@ -6024,6 +6024,10 @@ struct ec_response_locate_chip {
  */
 #define EC_CMD_REBOOT_AP_ON_G3 0x0127
 
+struct ec_params_reboot_ap_on_g3 {
+	uint32_t delay;	/*configurable delay in seconds in G3 state*/
+} __ec_align4;
+
 /*****************************************************************************/
 /* Get PD port capabilities
  *
