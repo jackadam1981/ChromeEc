@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc66cfc9_864133db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-11-04T17:22:05Z",
+      "side": 1,
+      "message": "We can not change the ODR when the sensors are marked as not active.\nThey may not be powered on and can not be touched.",
+      "revId": "b2ede070684c4f029603dc5b1a82315bad0608c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
