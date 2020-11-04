@@ -228,6 +228,7 @@ extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
 
 int baseboard_usbc_init(int port);
+int baseboard_ppc_enable_sink_path(int port);
 
 #endif /* !__ASSEMBLER__ */
 
