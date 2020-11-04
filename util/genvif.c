@@ -29,6 +29,8 @@
 #define VIF_APP_VERSION_VALUE	"3.0.0.5"
 #define VENDOR_NAME_VALUE	"Google"
 
+#define DEFAULT_MISSING_TID	0xFFFF
+#define DEFAULT_MISSING_PID	0xFFFF
 
 const uint32_t *src_pdo;
 uint32_t src_pdo_cnt;
@@ -1055,10 +1057,10 @@ static int gen_vif(const char *name,
 				NULL,
 				CONFIG_USB_PD_TID);
 	#else
-		set_vif_field(&vif_fields[TID],
+		set_vif_field_stis(&vif_fields[TID],
 				"TID",
 				NULL,
-				"12345");
+				DEFAULT_MISSING_TID);
 	#endif
 
 	set_vif_field(&vif_fields[VIF_Product_Type],
@@ -1315,16 +1317,23 @@ static int gen_vif(const char *name,
 			"Manufacturer_Info_Supported_Port",
 			IS_ENABLED(CONFIG_USB_PD_MANUFACTURER_INFO));
 
-	#if defined(USB_PID_GOOGLE)
 	{
 		char hex_str[10];
 
-		sprintf(hex_str, "%04X", USB_PID_GOOGLE);
-		set_vif_field_itss(&vif_fields[Manufacturer_Info_PID_Port],
-			      "Manufacturer_Info_PID_Port",
-			      USB_PID_GOOGLE, hex_str);
+		#if defined(USB_PID_GOOGLE)
+			sprintf(hex_str, "%04X", USB_PID_GOOGLE);
+			set_vif_field_itss(&vif_fields[
+					Manufacturer_Info_PID_Port],
+					"Manufacturer_Info_PID_Port",
+					USB_PID_GOOGLE, hex_str);
+		#else
+			sprintf(hex_str, "%04X", DEFAULT_MISSING_PID);
+			set_vif_field_itss(&vif_fields[
+					Manufacturer_Info_PID_Port],
+					"Manufacturer_Info_PID_Port",
+					DEFAULT_MISSING_PID, hex_str);
+		#endif
 	}
-	#endif
 
 	set_vif_field_b(&vif_fields[Security_Msgs_Supported_SOP],
 			"Security_Msgs_Supported_SOP",
