@@ -28,6 +28,40 @@ config ZEPHYR
 	  This should always be enabled.  It's a workaround for
 	  config.h not being available in some headers.
 
+menuconfig PLATFORM_EC_KEYBOARD
+	bool "Enable keybaord support"
+	default y
+	help
+	  Enable compilation of support for scanning a keyboard and providing
+	  the resulting input to the AP over the host interface. This consists
+	  of a keyboard-scanning task which provides key scans via it calling
+	  keyboard_state_changed() (for i8042) or its client calling
+	  keyboard_scan_get_state() (for MKBP).
+
+choice "Protocol select"
+	prompt "Select the keyboard protocol to use"
+
+config PLATFORM_EC_KEYBOARD_PROTOCOL_8042
+	bool "i8042"
+	help
+	  Use the i8042 protocol to communicate with the AP. This dates from the
+	  Intel 8042 keyboard controller chip released in 1976. It uses two-way
+	  communication via a few 8-bit registers, allowing key codes to be
+	  sent to the AP when keys are pressed and released.
+
+	  See here for docs: https://wiki.osdev.org/%228042%22_PS/2_Controller
+
+config PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP
+	bool "MKBP"
+	help
+	  Use the Matrix Keyboard Protocol (MKBP) communicate withe the AP. This
+	  was invented specifically for the Chrome OS EC to reduce code size on
+	  the EC side. The EC provides raw keyboard scan information (a matrix
+	  of row/column bits where 1 means that key is pressed) to the AP. The
+	  AP is responsible for decoding this information into keyscan codes.
+
+endchoice # PLATFORM_EC_KEYBOARD
+
 menuconfig PLATFORM_EC_TIMER
 	bool "Enable the EC timer module"
 	default y

@@ -5,6 +5,8 @@
  * 8042 keyboard protocol
  */
 
+#include "config.h"
+// #define CONFIG_KEYBOARD_PROTOCOL_8042
 #include "chipset.h"
 #include "button.h"
 #include "common.h"
@@ -25,6 +27,10 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+
+#ifndef CONFIG_KEYBOARD_PROTOCOL_8042
+#error "bad"
+#endif
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_KEYBOARD, outstr)
@@ -68,7 +74,7 @@ enum scancode_set_list {
  * Mutex to control write access to the to-host buffer head.  Don't need to
  * mutex the tail because reads are only done in one place.
  */
-static struct mutex to_host_mutex;
+static mutex_t to_host_mutex;
 
 /* Queue command/data to the host */
 enum {
