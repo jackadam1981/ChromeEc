@@ -3039,6 +3039,11 @@
  */
 #undef CONFIG_PERIPHERAL_CHARGER
 
+/*
+ * Enable NXP CTN730 driver
+ */
+#undef CONFIG_CTN730
+
 /*****************************************************************************/
 /* PMU config */
 
