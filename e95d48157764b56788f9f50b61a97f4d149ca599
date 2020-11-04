@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "547f6430_6cbb09a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:34:18Z",
+      "side": 1,
+      "message": "Can you address the small nit and carry the +2",
+      "revId": "e95d48157764b56788f9f50b61a97f4d149ca599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0fc4b1f_c225a442",
+        "filename": "common/irq_locking.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:34:18Z",
+      "side": 1,
+      "message": "last nit: this can move to be a local static within irq_lock since the unlock will just enable when it gets a 0 as a input.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "e95d48157764b56788f9f50b61a97f4d149ca599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
