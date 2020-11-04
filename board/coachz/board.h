@@ -50,6 +50,11 @@
 #define GPIO_WP_L GPIO_EC_FLASH_WP_ODL
 #define GPIO_PMIC_RESIN_L GPIO_PM845_RESIN_L
 
+/* WLC pins */
+#define GPIO_PCHG_P0 GPIO_WLC_IRQ_CONN
+#define CONFIG_PERIPHERAL_CHARGER
+#define CONFIG_CTN730
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
