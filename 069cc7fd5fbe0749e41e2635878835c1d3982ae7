@@ -16,6 +16,24 @@
       "message": "How many are we actually getting?",
       "revId": "069cc7fd5fbe0749e41e2635878835c1d3982ae7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c85925e_aa37fbc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-04T21:37:42Z",
+      "side": 1,
+      "message": "One per suspend entry, and we typically had about 4 of those per minute when the suspend stress test is going.  I think it\u0027s randomized so we could make a higher ceiling if we\u0027re worried.",
+      "parentUuid": "1958ea9c_61a419f9",
+      "revId": "069cc7fd5fbe0749e41e2635878835c1d3982ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
