@@ -22,6 +22,30 @@
       },
       "revId": "f48c28e78806fede673da4e9d289e3e9efccd88e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dfb7172_81f15a21",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1808,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-04T19:49:29Z",
+      "side": 1,
+      "message": "I will limit it to the only product\u0027s chip you mentioned that does \"BOTH\" (CONFIG_BC12_DETECT_PI3USB9201)",
+      "parentUuid": "926fc1ba_5ccf0882",
+      "range": {
+        "startLine": 1808,
+        "startChar": 5,
+        "endLine": 1808,
+        "endChar": 44
+      },
+      "revId": "f48c28e78806fede673da4e9d289e3e9efccd88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
