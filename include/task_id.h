@@ -28,9 +28,6 @@
 #endif
 #endif /* CONFIG_ZEPHYR */
 
-/* Task identifier (8 bits) */
-typedef uint8_t task_id_t;
-
 /**
  * enumerate all tasks in the priority order
  *

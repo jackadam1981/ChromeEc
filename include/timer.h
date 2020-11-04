@@ -9,7 +9,7 @@
 #define __CROS_EC_TIMER_H
 
 #include "common.h"
-#include "task_id.h"
+#include "task.h"
 
 /* Time units in microseconds */
 #define MSEC         1000
