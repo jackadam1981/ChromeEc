@@ -46,6 +46,30 @@
       },
       "revId": "d7fe4601938935b037f899738719082904af185d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "352acf74_9f5e3401",
+        "filename": "common/irq_locking.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-04T18:02:30Z",
+      "side": 1,
+      "message": "Once everything is built with Zephyr (years from now) we\u0027ll be using the zephyr/main/v?.?/include/irq.h definition of irq_lock which is:\n\n#define irq_lock() arch_irq_lock()\n\nThen implementation will be upstreamed for the various architectures instead of implemented in platform/ec like interrupt_disable and interrupt_enable. API is probably the wrong term here. I\u0027ll update to Zephyr architecture implementation instead.",
+      "parentUuid": "0e0c679c_8887dd8a",
+      "range": {
+        "startLine": 8,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "d7fe4601938935b037f899738719082904af185d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
