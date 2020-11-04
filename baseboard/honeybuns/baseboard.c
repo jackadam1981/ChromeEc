@@ -49,10 +49,12 @@ static void baseboard_init(void)
 	system_clear_reset_flags(EC_RESET_FLAG_POWER_ON);
 	/* Make certain SN5S330 PPC does full initialization */
 	system_set_reset_flags(EC_RESET_FLAG_EFS);
+	/* Enable sink path to remove dead battery Rd in PPC */
+	baseboard_ppc_enable_sink_path(USB_PD_PORT_HOST);
 #else
 	/* Set up host port usbc to present Rd on CC lines */
 	if(baseboard_usbc_init(USB_PD_PORT_HOST))
 		CPRINTS("usbc: Failed to set up sink path");
 #endif
 }
-DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_INIT_I2C + 1);
