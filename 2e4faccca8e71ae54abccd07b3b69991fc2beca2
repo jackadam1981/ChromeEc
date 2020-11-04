@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea406df_16602e3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-04T22:02:13Z",
+      "side": 1,
+      "message": "Is there an easy way to see the sizes before and after?",
+      "parentUuid": "ce0e69d9_d2cc7a7b",
+      "revId": "2e4faccca8e71ae54abccd07b3b69991fc2beca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47192f08_2c4aefc4",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-04T21:39:55Z",
       "side": 1,
       "message": "should this be in this CL?",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 27
+      },
+      "revId": "2e4faccca8e71ae54abccd07b3b69991fc2beca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc29e3a_d9787e01",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-04T22:02:13Z",
+      "side": 1,
+      "message": "yes. It is required to get rid of a #if",
+      "parentUuid": "47192f08_2c4aefc4",
       "range": {
         "startLine": 449,
         "startChar": 8,
