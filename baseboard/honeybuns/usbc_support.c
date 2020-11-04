@@ -127,8 +127,12 @@ int baseboard_usbc_init(int port)
 {
 	int rv;
 
-	/* Initialize ucpd and apply Rd to CC lines */
-	baseboard_ucpd_apply_rd(port);
+	/*
+	 * Initialize ucpd and apply Rd to CC lines in RO only. In RW, full
+	 * ucpd_init function will be called and this step is not required.
+	 */
+	if (!system_is_in_rw())
+		baseboard_ucpd_apply_rd(port);
 	/* Initialize ppc to enable sink path */
 	rv = baseboard_ppc_enable_sink_path(port);
 
