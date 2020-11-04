@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926fc1ba_5ccf0882",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1808,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-11-04T19:40:56Z",
+      "side": 1,
+      "message": "IIRC Max14637 cannot advert BC1.2. Only detect. (b/147833952)\nShould this case be in the else() statement to leave field blank?\n\nReason being, field is set to \"1: Portable Device\" in above,\nso setting \"Charging_Port_Type\" here (\"unsettable option\") may cause an error.",
+      "range": {
+        "startLine": 1808,
+        "startChar": 5,
+        "endLine": 1808,
+        "endChar": 44
+      },
+      "revId": "f48c28e78806fede673da4e9d289e3e9efccd88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
