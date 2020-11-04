@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f692e3_8536989a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-11-04T17:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97237fe6_ff40c7c0",
+      "range": {
+        "startLine": 67,
+        "startChar": 17,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "332e69fa39899df2a154e7acdf238f02d1db573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "393f800d_b9f86585",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab941aec_c6def120",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-11-04T17:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "393f800d_b9f86585",
+      "range": {
+        "startLine": 223,
+        "startChar": 2,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "332e69fa39899df2a154e7acdf238f02d1db573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2be77a4e_6bf7b95a",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-02T16:44:06Z",
       "side": 1,
       "message": "Nit: an",
+      "range": {
+        "startLine": 230,
+        "startChar": 13,
+        "endLine": 230,
+        "endChar": 14
+      },
+      "revId": "332e69fa39899df2a154e7acdf238f02d1db573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6cdcc6_a8527384",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-11-04T17:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be77a4e_6bf7b95a",
       "range": {
         "startLine": 230,
         "startChar": 13,
