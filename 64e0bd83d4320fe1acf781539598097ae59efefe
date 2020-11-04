@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fba3b4b0_267cb01c",
+        "filename": "include/task_id.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:45:17Z",
+      "side": 1,
+      "message": "Why, and how do we know when to use one versus the other? They always seem to work the same for me, and it really seems like a mistake that there are two almost identical ways to include\n\nI am fine having a standard and sticking to it, we just need to define it",
+      "parentUuid": "843da19e_743b295c",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "64e0bd83d4320fe1acf781539598097ae59efefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d42d8737_e34da6ed",
         "filename": "zephyr/shim/include/board.h",
         "patchSetId": 4
@@ -100,6 +124,30 @@
       "writtenOn": "2020-11-04T21:36:04Z",
       "side": 1,
       "message": "which header do we get this from? we should make sure it\u0027s included directly",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 39
+      },
+      "revId": "64e0bd83d4320fe1acf781539598097ae59efefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "272d9ebe_68737fd0",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:45:17Z",
+      "side": 1,
+      "message": "Replaced it with a ##",
+      "parentUuid": "6e0dde78_47c0222e",
       "range": {
         "startLine": 20,
         "startChar": 31,
