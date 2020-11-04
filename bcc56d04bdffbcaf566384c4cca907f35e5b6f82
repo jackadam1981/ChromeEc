@@ -22,6 +22,46 @@
       },
       "revId": "bcc56d04bdffbcaf566384c4cca907f35e5b6f82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59724155_f3432050",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-04T23:59:55Z",
+      "side": 1,
+      "message": "I don\u0027t think this makes sense?  Boards porting to TCPMv2 will have the PRL defined but won\u0027t necessarily be running PD 3.0",
+      "range": {
+        "startLine": 1168,
+        "startChar": 40,
+        "endLine": 1168,
+        "endChar": 69
+      },
+      "revId": "bcc56d04bdffbcaf566384c4cca907f35e5b6f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ed9502_4aaa72c8",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-04T23:59:55Z",
+      "side": 1,
+      "message": "Where does USB_PID_GOOGLE come from?  I can\u0027t seem to find it in any .h files or .c files.",
+      "revId": "bcc56d04bdffbcaf566384c4cca907f35e5b6f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
