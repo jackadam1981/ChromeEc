@@ -226,6 +226,55 @@ enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
 {
 	return pd_dual_role_init[port];
 }
+
+static int board_ppc_disable_dead_battery(void)
+{
+	int reg = SN5S330_FUNC_SET4;
+	int regval;
+	int rv;
+	int port = USB_PD_PORT_HOST;
+
+	/* Get Func 4 register to read CC_EN bit */
+	rv = i2c_read8(ppc_chips[port].i2c_port,
+			 ppc_chips[port].i2c_addr_flags,
+			 reg,
+			 &regval);
+
+	/*
+	 * If i2c interface is responsive, then remove dead battery resistors
+	 * and connect the CC lines.
+	 */
+	if (!rv) {
+		regval |= SN5S330_CC_EN;
+		CPRINTS("ppc: func_set4 = %x", regval);
+		rv = i2c_write8(ppc_chips[port].i2c_port,
+				ppc_chips[port].i2c_addr_flags,
+				reg,
+				regval);
+	}
+
+	return rv;
+}
+
+static void board_ppc_force_detach(void)
+{
+	int i;
+
+	/*
+	 * When not powered, if VBUS is applied, then the PPC will power up in
+	 * dead battery mode. This can result in the host attaching in SRC
+	 * mode. If there is not event to force a detach, then there is no
+	 * USB-PD messaging. To avoid this case, always remove the dead battery
+	 * resistors (which connects CC lines) at initialization time. Attempt
+	 * this up to 10 times since there may be some delay before the digital
+	 * core/i2c interface will respond.
+	 */
+	for (i = 0; i < 10; i++) {
+		if (board_ppc_disable_dead_battery() == EC_SUCCESS)
+			break;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_ppc_force_detach, HOOK_PRIO_INIT_I2C + 1);
 #endif
 
 static void board_init(void)
