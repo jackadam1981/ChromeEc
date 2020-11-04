@@ -6020,12 +6020,19 @@ struct ec_response_locate_chip {
  *
  * This command is used for validation purpose, where the AP needs to be
  * returned back to S0 state from G3 state without using the servo to trigger
- * wake events.For this,there is no request or response struct.
- *
- * Order of command usage:
- * ectool reboot_ap_on_g3 && shutdown -h now
+ * wake events.
+ * - With command version 0:
+ * AP reboots immediately from G3
+ * command usage: ectool reboot_ap_on_g3 && shutdown -h now
+ * - With command version 1:
+ * AP reboots after the user specified delay
+ * command usage: ectool reboot_ap_on_g3 | <delay> && shutdown -h now
  */
 #define EC_CMD_REBOOT_AP_ON_G3 0x0127
+
+struct ec_params_reboot_ap_on_g3_v1 {
+	uint32_t delay;	/* configurable delay in seconds in G3 state */
+} __ec_align4;
 
 /*****************************************************************************/
 /* Get PD port capabilities
