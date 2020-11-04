@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce0e69d9_d2cc7a7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:39:55Z",
+      "side": 1,
+      "message": "How this keep the flash size the same for boards on ToT? Can you include that in the test description for this CL?",
+      "revId": "2e4faccca8e71ae54abccd07b3b69991fc2beca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47192f08_2c4aefc4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-04T21:39:55Z",
+      "side": 1,
+      "message": "should this be in this CL?",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 27
+      },
+      "revId": "2e4faccca8e71ae54abccd07b3b69991fc2beca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
