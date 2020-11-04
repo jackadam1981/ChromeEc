@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac88a2f_ab583b1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-11-04T21:49:25Z",
+      "side": 1,
+      "message": "Hi Matthew, I rebased it, I\u0027m asking a few people to run tests with this CL just to validate if it addressed some of the issues we\u0027ve seen but the old CCD detection was present causing other unrelated issues.",
+      "revId": "301b9cdeb2ca71956f75bb596bf176c5fbc1cedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
