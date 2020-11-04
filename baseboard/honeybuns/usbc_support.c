@@ -78,7 +78,7 @@ static int write_reg(uint8_t port, int reg, int regval)
 			  regval);
 }
 
-static int baseboard_ppc_enable_sink_path(int port)
+int baseboard_ppc_enable_sink_path(int port)
 {
 	int regval;
 	int status;
