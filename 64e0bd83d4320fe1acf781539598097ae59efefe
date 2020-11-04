@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a28ca0d_ce7a1212",
+        "filename": "include/task_id.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-04T21:56:14Z",
+      "side": 1,
+      "message": "In general, \"system/library headers\" go in pointy brackets, and your application\u0027s headers in quotes.  The ordering is system/library headers, in alphabetical order, then a blank line, then your program\u0027s headers.\n\nZephyr\u0027s headers most closely correspond to \"system/library\" headers here, and would make that consistent with existing platform/ec conventions... I can add this to the shimming how-to doc so it\u0027s documented.",
+      "parentUuid": "fba3b4b0_267cb01c",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "64e0bd83d4320fe1acf781539598097ae59efefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d42d8737_e34da6ed",
         "filename": "zephyr/shim/include/board.h",
         "patchSetId": 4
