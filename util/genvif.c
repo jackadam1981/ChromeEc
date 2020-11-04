@@ -622,7 +622,6 @@ __maybe_unused static void set_vif_field_itis(struct vif_field_t *vif_field,
  *	Device_Truncates_DP_For_tDHPResponse	booleanFieldType
  *	Device_Gen1x1_tLinkTurnaround		numericFieldType
  *	Device_Gen2x1_tLinkTurnaround		numericFieldType
- *	BC_1_2_Charging_Port_Type		numericFieldType
  *	XID_SOP					numericFieldType
  *	Data_Capable_As_USB_Host_SOP		booleanFieldType
  *	Data_Capable_As_USB_Device_SOP		booleanFieldType
@@ -1159,10 +1158,45 @@ static int gen_vif(const char *name,
 			"Port_Battery_Powered",
 			IS_ENABLED(CONFIG_BATTERY));
 
-	set_vif_field(&vif_fields[BC_1_2_Support],
-			"BC_1_2_Support",
-			"0",
-			"None");
+	{
+		int bc = 0;
+
+		if (IS_ENABLED(CONFIG_BC12_DETECT_MAX14637))
+			bc = 1;
+		if (IS_ENABLED(CONFIG_BC12_DETECT_MT6360))
+			bc = 1;
+		if (IS_ENABLED(CONFIG_BC12_DETECT_PI3USB9281))
+			bc = 1;
+		if (IS_ENABLED(CONFIG_BC12_DETECT_PI3USB9201))
+			bc = 3;
+
+		switch (bc) {
+		case 0:
+			set_vif_field(&vif_fields[BC_1_2_Support],
+					"BC_1_2_Support",
+					"0",
+					"None");
+			break;
+		case 1:
+			set_vif_field(&vif_fields[BC_1_2_Support],
+					"BC_1_2_Support",
+					"1",
+					"Portable Device");
+			break;
+		case 2:
+			set_vif_field(&vif_fields[BC_1_2_Support],
+					"BC_1_2_Support",
+					"2",
+					"Charging Port");
+			break;
+		case 3:
+			set_vif_field(&vif_fields[BC_1_2_Support],
+					"BC_1_2_Support",
+					"3",
+					"Both");
+			break;
+		}
+	}
 
 	/*********************************************************************
 	 * General PD Fields
@@ -1767,6 +1801,18 @@ static int gen_vif(const char *name,
 		set_vif_field_b(&vif_fields[FR_Swap_Supported_As_Initial_Sink],
 				"FR_Swap_Supported_As_Initial_Sink",
 				IS_ENABLED(CONFIG_USB_PD_FRS));
+
+	/*********************************************************************
+	 * Battery Charging 1.2 Fields
+	 */
+	if (IS_ENABLED(CONFIG_BC12_DETECT_MAX14637) ||
+	    IS_ENABLED(CONFIG_BC12_DETECT_MT6360) ||
+	    IS_ENABLED(CONFIG_BC12_DETECT_PI3USB9281) ||
+	    IS_ENABLED(CONFIG_BC12_DETECT_PI3USB9201))
+		set_vif_field(&vif_fields[BC_1_2_Charging_Port_Type],
+				"BC_1_2_Charging_Port_Type",
+				"1",
+				"CDP");
 
 	/*********************************************************************
 	 * Product Power Fields
