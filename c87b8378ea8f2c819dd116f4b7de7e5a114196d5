@@ -16,6 +16,24 @@
       "message": "Vijay, Ayushee, Li can you comment? Can we make this change BB retimer specific instead of Board specific?",
       "revId": "c87b8378ea8f2c819dd116f4b7de7e5a114196d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78249df3_49d3b801",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-05T01:43:24Z",
+      "side": 1,
+      "message": "Agree.\nMay be we need to change the driver itself so that it doesn\u0027t confuse\n\nchange:\n\nchange \"const struct usb_mux *next_mux\" to \"retimer_driver\"\nand fix it in caller functions too",
+      "parentUuid": "05df2f0a_58064a76",
+      "revId": "c87b8378ea8f2c819dd116f4b7de7e5a114196d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
