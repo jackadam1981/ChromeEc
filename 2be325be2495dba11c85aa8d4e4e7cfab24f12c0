@@ -94,6 +94,30 @@
       },
       "revId": "2be325be2495dba11c85aa8d4e4e7cfab24f12c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb60975_073e4221",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-05T05:28:35Z",
+      "side": 1,
+      "message": "Sounds like TC_ATTACHED_SNK + PE_SNK_READY is what I meant. Basically, that\u0027s where an established PD connection sits, right?\n\nIf we disable PD, we don\u0027t handle messages from the source. So, there is a chance that would upset the source, who then would pull a trigger.",
+      "parentUuid": "6afed28b_756b8ce7",
+      "range": {
+        "startLine": 1438,
+        "startChar": 2,
+        "endLine": 1438,
+        "endChar": 32
+      },
+      "revId": "2be325be2495dba11c85aa8d4e4e7cfab24f12c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
