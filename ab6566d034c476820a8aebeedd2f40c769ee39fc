@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f142c1_4f4a3ddc",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T17:10:44Z",
+      "side": 1,
+      "message": "this is actually a little racy. If two threads were calling hook_call_deferred on the same object one of them would init, but the other would submit to the queue before submitting. I think we need to handle this init in SYS_INIT",
+      "range": {
+        "startLine": 50,
+        "startChar": 6,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
