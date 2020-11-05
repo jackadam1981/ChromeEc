@@ -16,6 +16,24 @@
       "message": "We have been shimming in the util functions that are needed by platform/ec code that are not provided by zephyr in this file: https://source.corp.google.com/chromeos_public/src/platform/ec/zephyr/shim/src/util.c\n\nWhat issues were you running into?\n",
       "revId": "606db9e6ae907230ec4e2e4a1a457c7f5f66dbcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "593ade6c_14f223e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T19:13:28Z",
+      "side": 1,
+      "message": "OK I see.\n\nI found I could not include util.h but I\u0027ve worked around that and done a different CL.",
+      "parentUuid": "c0378366_d3477daf",
+      "revId": "606db9e6ae907230ec4e2e4a1a457c7f5f66dbcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
