@@ -16,6 +16,24 @@
       "message": "In VIF terms, is Google the PID or VID?  We have CONFIG_USB_PID for the PID we present in things like the battery capabilities",
       "revId": "6130b925386e05147283fb1e2f692f056980c906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3c1f23_a3c1778e",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:16:02Z",
+      "side": 1,
+      "message": "Google is the VID. I think we should be using CONFIG_USB_PID here.",
+      "parentUuid": "83e37bc7_4afa1bed",
+      "revId": "6130b925386e05147283fb1e2f692f056980c906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
