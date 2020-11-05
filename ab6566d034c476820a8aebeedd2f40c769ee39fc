@@ -3,6 +3,183 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1939833c_cf9443c2",
+        "filename": "include/hooks.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "neither",
+      "range": {
+        "startLine": 364,
+        "startChar": 51,
+        "endLine": 364,
+        "endChar": 55
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b0e5500_a3e37422",
+        "filename": "include/hooks.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "nor",
+      "range": {
+        "startLine": 365,
+        "startChar": 25,
+        "endLine": 365,
+        "endChar": 28
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6caac4a8_2c7f5a5e",
+        "filename": "include/hooks.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "is defined",
+      "range": {
+        "startLine": 365,
+        "startChar": 54,
+        "endLine": 365,
+        "endChar": 67
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb9ee4c_b5eff36e",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "struct comment and memory comments",
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f26e3fe4_57677dc9",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "comment with args",
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bbb7b43_65bc1c4a",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "comment",
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4187615_dc60cd83",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b6e167f_98c5c343",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "no hyphen after an adverb",
+      "range": {
+        "startLine": 44,
+        "startChar": 29,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12590606_45a1d55a",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "comment",
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87f142c1_4f4a3ddc",
         "filename": "zephyr/shim/src/hooks.c",
         "patchSetId": 3
@@ -19,6 +196,52 @@
         "startChar": 6,
         "endLine": 52,
         "endChar": 35
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3664a621_bbea4c8d",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "gosh I really don\u0027t like periods at the end of comments :-)",
+      "range": {
+        "startLine": 76,
+        "startChar": 20,
+        "endLine": 76,
+        "endChar": 21
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5711991b_5de8857a",
+        "filename": "zephyr/test/hooks/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T18:19:13Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this word",
+      "range": {
+        "startLine": 8,
+        "startChar": 27,
+        "endLine": 8,
+        "endChar": 37
       },
       "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
