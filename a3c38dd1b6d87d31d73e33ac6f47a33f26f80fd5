@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa93e3e_6f0b2530",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T19:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d7ab5b3_562b75c8",
+      "range": {
+        "startLine": 1162,
+        "startChar": 0,
+        "endLine": 1162,
+        "endChar": 13
+      },
+      "revId": "a3c38dd1b6d87d31d73e33ac6f47a33f26f80fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "939b9ea2_84fc916f",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-05T19:22:14Z",
       "side": 1,
       "message": "Use the bc value here instead.",
+      "range": {
+        "startLine": 1808,
+        "startChar": 0,
+        "endLine": 1808,
+        "endChar": 47
+      },
+      "revId": "a3c38dd1b6d87d31d73e33ac6f47a33f26f80fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "092a302a_49b14b36",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1808,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T19:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "939b9ea2_84fc916f",
       "range": {
         "startLine": 1808,
         "startChar": 0,
