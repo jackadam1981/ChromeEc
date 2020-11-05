@@ -105,6 +105,30 @@
       },
       "revId": "e754f1c4ef177306b3fb232eae46dd8a59fa85b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11a0049_f691332a",
+        "filename": "util/genvif.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T23:42:29Z",
+      "side": 1,
+      "message": "This is not a generic \"BOTH\".\n\n1. BC_1_2_Support: represented by bc_support, is whether we are both a \"Portable Device\" and a \"Charging Port\".\n2. BC_1_2_Charging_Port_Type: only valid for \"Charging Port\" or \"Portable Device and Charging Port\" (BOTH), which is indicated by bc_support.  The options of this are DCP charging port type, CDP charging port type or BOTH DCP and CDP charging port type.",
+      "parentUuid": "dfda832d_0251c63f",
+      "range": {
+        "startLine": 1818,
+        "startChar": 19,
+        "endLine": 1818,
+        "endChar": 38
+      },
+      "revId": "e754f1c4ef177306b3fb232eae46dd8a59fa85b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
