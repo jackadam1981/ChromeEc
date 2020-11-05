@@ -16,6 +16,24 @@
       "message": "I have checkout this CL to kukui_firmware branch, and test cerise DC S5 power consumption fail",
       "revId": "b9e8bbbdd606a608ef6a47da1f3792a38ec29ccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da50381_aefe8917",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-11-05T18:32:21Z",
+      "side": 1,
+      "message": "Can you confirm the sensors are powered off in S5? If there are powered on, we need a change in board.c",
+      "parentUuid": "b6a4e55d_bbbea44e",
+      "revId": "b9e8bbbdd606a608ef6a47da1f3792a38ec29ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
