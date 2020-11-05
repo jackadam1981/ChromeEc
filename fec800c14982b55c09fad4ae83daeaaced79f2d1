@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8c064f_5afb4c48",
+        "filename": "include/util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T21:49:54Z",
+      "side": 1,
+      "message": "TODO(...)",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 14
+      },
+      "revId": "fec800c14982b55c09fad4ae83daeaaced79f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc24b57c_1fadd985",
+        "filename": "zephyr/shim/src/util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T21:49:54Z",
+      "side": 1,
+      "message": "This can be removed.  I don\u0027t think parse_bool is provided by anyone else.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "fec800c14982b55c09fad4ae83daeaaced79f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
