@@ -16,6 +16,24 @@
       "message": "I think you should be able to do the tuning in board.c without touching driver/retimer/pi3dpx1207.c/h.\nSee board_ps8818_mux_set() in baseboard/zork/variant_trembyle.c for an example, and create a similar board_pi3dpx1207_mux_set() in board/woomax/board.c.",
       "revId": "f9e08b68801f28ce492ced2af18010e227036934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50bd88c7_eab7a48c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-11-05T03:00:54Z",
+      "side": 1,
+      "message": "Got it. I will check it.\nThanks.",
+      "parentUuid": "d87db185_b063e6cf",
+      "revId": "f9e08b68801f28ce492ced2af18010e227036934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
