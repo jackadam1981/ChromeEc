@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33887126_e324a254",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T21:51:43Z",
+      "side": 1,
+      "message": "No files from platform/ec should ever compile without CONFIG_PLATFORM_EC",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "279bd67b5aa080019e9a1297c68f1e8a5193587e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
