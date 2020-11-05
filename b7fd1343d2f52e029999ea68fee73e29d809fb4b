@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f0ffcf31_3403ce1b",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T23:17:58Z",
+      "side": 1,
+      "message": "I am bumping as I add more things... When we are complete, I would suggest jumping it to 3.0.1.0. In the mean time I would like to know about where people are when they hand me back a VIF file.",
+      "parentUuid": "6025bf20_b5d4346d",
+      "revId": "b7fd1343d2f52e029999ea68fee73e29d809fb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cb7601bd_14fe7d82",
         "filename": "util/genvif.c",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-05T22:46:24Z",
       "side": 1,
       "message": "This function is ~800 lines long and going to get longer as we support more fields. There are a number of subordinate scopes added just for readability. It might not be a bad idea to split it into a function for each VIF spec chapter in another CL.",
+      "revId": "b7fd1343d2f52e029999ea68fee73e29d809fb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e49f48cc_1ff0ded0",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T23:17:58Z",
+      "side": 1,
+      "message": "The original code made almost every field its own function, which felt really on the overkill side. I can see breaking this up into smaller pieces.",
+      "parentUuid": "cb7601bd_14fe7d82",
       "revId": "b7fd1343d2f52e029999ea68fee73e29d809fb4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5311ff27_b4c00f97",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1712,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T23:17:58Z",
+      "side": 1,
+      "message": "The conditions may change as we correct values. I would rather keep things simple since we are not constrained by the normal firmware footprint.",
+      "parentUuid": "f1f9b118_3577c059",
+      "range": {
+        "startLine": 1711,
+        "startChar": 4,
+        "endLine": 1712,
+        "endChar": 34
+      },
+      "revId": "b7fd1343d2f52e029999ea68fee73e29d809fb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33538602_242b125d",
@@ -71,6 +131,30 @@
       "writtenOn": "2020-11-05T22:46:24Z",
       "side": 1,
       "message": "Nit: \"Dual Role\" for easier spec searching.",
+      "range": {
+        "startLine": 1737,
+        "startChar": 7,
+        "endLine": 1737,
+        "endChar": 10
+      },
+      "revId": "b7fd1343d2f52e029999ea68fee73e29d809fb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81917881_c81a22e6",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1737,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T23:17:58Z",
+      "side": 1,
+      "message": "Good catch. I thought I had all of the section names as they are in the spec and missed this one. Thanks.",
+      "parentUuid": "33538602_242b125d",
       "range": {
         "startLine": 1737,
         "startChar": 7,
