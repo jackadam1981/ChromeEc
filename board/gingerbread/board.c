@@ -43,8 +43,7 @@
 #ifdef SECTION_IS_RW
 static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	PD_DRP_TOGGLE_ON,
-	PD_DRP_TOGGLE_ON,
-	//PD_DRP_FORCE_SOURCE,
+	PD_DRP_FORCE_SOURCE,
 };
 
 static void ppc_interrupt(enum gpio_signal signal)
@@ -195,9 +194,24 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+void board_reset_pd_mcu(void)
+{
+	cprints(CC_SYSTEM, "Resetting TCPCs...");
+	cflush();
+	gpio_set_level(GPIO_USBC_DP_PD_RST_L, 0);
+	gpio_set_level(GPIO_USBC_UF_RESET_L, 0);
+	msleep(PS8805_FW_INIT_DELAY_MS);
+	gpio_set_level(GPIO_USBC_DP_PD_RST_L, 1);
+	gpio_set_level(GPIO_USBC_UF_RESET_L, 1);
+	msleep(PS8805_FW_INIT_DELAY_MS);
+}
+
+
 /* Power Delivery and charging functions */
 void board_tcpc_init(void)
 {
+	board_reset_pd_mcu();
+
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
 
@@ -207,29 +221,16 @@ void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
 
 }
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
-static void board_select_drp_mode(void)
-{
-	int port;
-
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		pd_set_dual_role(port, pd_dual_role_init[port]);
-		CPRINTS("quiche[p%d]: drp_state = %d", port,
-			pd_get_dual_role(port));
-	}
-	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
-	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
-	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
-}
-DECLARE_DEFERRED(board_select_drp_mode);
 
 static void board_init(void)
 {
 #ifdef SECTION_IS_RW
-	board_select_drp_mode();
-	/* TODO */
-	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
+	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
+
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
