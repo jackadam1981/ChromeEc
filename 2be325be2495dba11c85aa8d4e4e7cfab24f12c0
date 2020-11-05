@@ -118,6 +118,30 @@
       },
       "revId": "2be325be2495dba11c85aa8d4e4e7cfab24f12c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a0f88c_5168fb5d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-05T16:26:31Z",
+      "side": 1,
+      "message": "Yes, established PD sits at Attached.SNK and PE_SNK_READY.\n\nAgreed, disabling PD isn\u0027t a foolproof method either.  It would likely be okay with most chargers that don\u0027t send anything past initial negotiation, but we could hit issues if something like a dock was attached which may be trying to send us Vconn swaps and VDMs.  \n\nHowever, enabling PD without knowing our previous data role is equally risky, as one packet with an incorrect data role *should* trigger the port partner to go into type-c error recovery which will also remove Vbus.",
+      "parentUuid": "cbb60975_073e4221",
+      "range": {
+        "startLine": 1438,
+        "startChar": 2,
+        "endLine": 1438,
+        "endChar": 32
+      },
+      "revId": "2be325be2495dba11c85aa8d4e4e7cfab24f12c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
