@@ -1,0 +1,320 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9477227_72332dae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "Nit: Line length",
+      "range": {
+        "startLine": 11,
+        "startChar": 72,
+        "endLine": 11,
+        "endChar": 73
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c5ee50_23d6751c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "re?",
+      "range": {
+        "startLine": 44,
+        "startChar": 54,
+        "endLine": 44,
+        "endChar": 56
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e55737_77f4ad8b",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "We still need to set TBT_ENTER_PASSIVE_CABLE in the else case.",
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75453302_5cae9726",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "Have we checked whether this exists here?",
+      "range": {
+        "startLine": 964,
+        "startChar": 3,
+        "endLine": 964,
+        "endChar": 22
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051015c5_1befa46f",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "Nit: I think this would be easier to read with the check all on one line.",
+      "range": {
+        "startLine": 966,
+        "startChar": 20,
+        "endLine": 967,
+        "endChar": 23
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e3bd983_2d9c7875",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "This is most similar to the existing check for the IDH cable type and should be placed next to it, before the check for SOP type.",
+      "range": {
+        "startLine": 186,
+        "startChar": 6,
+        "endLine": 186,
+        "endChar": 61
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "756351f8_30867cf0",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "The condition would read more naturally with this part coming first.",
+      "range": {
+        "startLine": 233,
+        "startChar": 6,
+        "endLine": 233,
+        "endChar": 47
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7d2a3d_8c11673a",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "Is it possible to switch these two branches? The chart reads more naturally that way.",
+      "range": {
+        "startLine": 59,
+        "startChar": 18,
+        "endLine": 59,
+        "endChar": 33
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34180b1e_c60da26c",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "I didn\u0027t notice this until now, but how does it make sense to enter with Gen 2 speed when the cable reported its highest speed as Gen 1?",
+      "range": {
+        "startLine": 72,
+        "startChar": 30,
+        "endLine": 72,
+        "endChar": 34
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b2fcef_d7931261",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "Here and elsewhere in comments and strings, can you consistently use prime marks instead of spelling out \"prime\"?",
+      "range": {
+        "startLine": 79,
+        "startChar": 19,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d39906_6086799d",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "Here and elsewhere, TBT Mode VDO",
+      "range": {
+        "startLine": 90,
+        "startChar": 55,
+        "endLine": 90,
+        "endChar": 68
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64c3cfb_e18739e5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "At this point, I don\u0027t think we\u0027ve checked that this object exists.",
+      "range": {
+        "startLine": 226,
+        "startChar": 16,
+        "endLine": 227,
+        "endChar": 27
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ecd9ef_614243f2",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "\"TBT mode VDO\"",
+      "range": {
+        "startLine": 230,
+        "startChar": 33,
+        "endLine": 230,
+        "endChar": 46
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8301c038_7b8ff4b5",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T00:11:43Z",
+      "side": 1,
+      "message": "This is now redundant.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 48
+      },
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
