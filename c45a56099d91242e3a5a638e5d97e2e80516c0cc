@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d51510_82551435",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T20:59:48Z",
+      "side": 1,
+      "message": "let\u0027s create a tracking bug for the todo, otherwise lgtm",
+      "revId": "c45a56099d91242e3a5a638e5d97e2e80516c0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14054f55_1208285b",
+        "filename": "include/util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T20:59:48Z",
+      "side": 1,
+      "message": "can you open a new tracking bug and add it to comment so we don\u0027t forget to update platform/ec\n\n(go/cros-zephyr-bugs)\n\nIt doesn\u0027t looks like it will be too much trouble to update the platform/ec code",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 14
+      },
+      "revId": "c45a56099d91242e3a5a638e5d97e2e80516c0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
