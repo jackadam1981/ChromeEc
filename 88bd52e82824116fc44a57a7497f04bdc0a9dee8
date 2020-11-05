@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "302f0949_b2fbae49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T21:56:01Z",
+      "side": 1,
+      "message": "The typical zephyr style appears to be useing spaces for alignment in CMakeLists files.\n\nCan we follow that convention?\n\nSee here for an example: cs/chromeos_public/src/third_party/zephyr/main/v2.3/CMakeLists.txt?l\u003d29",
+      "revId": "88bd52e82824116fc44a57a7497f04bdc0a9dee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
