@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7ab5b3_562b75c8",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-05T19:22:14Z",
+      "side": 1,
+      "message": "Make this an an enum, and then reuse the bc local variable to set BC_1_2_Charging_Port_Type below.",
+      "range": {
+        "startLine": 1162,
+        "startChar": 0,
+        "endLine": 1162,
+        "endChar": 13
+      },
+      "revId": "a3c38dd1b6d87d31d73e33ac6f47a33f26f80fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "939b9ea2_84fc916f",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1808,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-05T19:22:14Z",
+      "side": 1,
+      "message": "Use the bc value here instead.",
+      "range": {
+        "startLine": 1808,
+        "startChar": 0,
+        "endLine": 1808,
+        "endChar": 47
+      },
+      "revId": "a3c38dd1b6d87d31d73e33ac6f47a33f26f80fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
