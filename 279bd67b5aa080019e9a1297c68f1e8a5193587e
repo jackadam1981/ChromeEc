@@ -46,6 +46,30 @@
       },
       "revId": "279bd67b5aa080019e9a1297c68f1e8a5193587e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3a19a3_472b5811",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T22:04:47Z",
+      "side": 1,
+      "message": "It\u0027s typical to allow modules to be inserted into ZEPHYR_MODULES without actually doing anything. Usually a Kconfig option is required beyond that.\n\nSee hal_stm32 or cmsis modules for an example",
+      "parentUuid": "c9a1f6f4_2651d702",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "279bd67b5aa080019e9a1297c68f1e8a5193587e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
