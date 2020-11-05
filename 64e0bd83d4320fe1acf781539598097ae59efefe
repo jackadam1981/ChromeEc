@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2277692_aca586cd",
+        "filename": "include/task_id.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T16:07:23Z",
+      "side": 1,
+      "message": "Let\u0027s add to the how-to doc. Updated.",
+      "parentUuid": "2a28ca0d_ce7a1212",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "64e0bd83d4320fe1acf781539598097ae59efefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d42d8737_e34da6ed",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5a02f6_5d21f006",
+        "filename": "zephyr/shim/include/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T16:07:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d42d8737_e34da6ed",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "64e0bd83d4320fe1acf781539598097ae59efefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08304d4e_8ef24b11",
@@ -125,6 +173,30 @@
       "writtenOn": "2020-11-04T21:36:04Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "64e0bd83d4320fe1acf781539598097ae59efefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67d1a6c3_e395ef07",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T16:07:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08304d4e_8ef24b11",
       "range": {
         "startLine": 14,
         "startChar": 9,
@@ -205,6 +277,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "328dbfa9_00ff2fff",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T16:07:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f8d1929_e61c6fc1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "64e0bd83d4320fe1acf781539598097ae59efefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7999fd9d_3d0812a6",
@@ -218,6 +314,30 @@
       "writtenOn": "2020-11-04T21:36:04Z",
       "side": 1,
       "message": "quotes and blank lines after system headers",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 17
+      },
+      "revId": "64e0bd83d4320fe1acf781539598097ae59efefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8af290d_68eb9b72",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T16:07:23Z",
+      "side": 1,
+      "message": "task.h is a system header; I did alphabetize though.",
+      "parentUuid": "7999fd9d_3d0812a6",
       "range": {
         "startLine": 8,
         "startChar": 0,
