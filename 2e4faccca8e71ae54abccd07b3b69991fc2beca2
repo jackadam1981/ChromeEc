@@ -135,6 +135,30 @@
       },
       "revId": "2e4faccca8e71ae54abccd07b3b69991fc2beca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81af7c73_0ba14591",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T06:26:02Z",
+      "side": 1,
+      "message": "Decided to undo that change and remove the line",
+      "parentUuid": "cfc29e3a_d9787e01",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 27
+      },
+      "revId": "2e4faccca8e71ae54abccd07b3b69991fc2beca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
