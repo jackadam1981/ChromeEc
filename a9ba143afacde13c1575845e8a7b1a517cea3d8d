@@ -130,6 +130,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7890fae3_96a3eb5b",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T22:13:08Z",
+      "side": 1,
+      "message": "I missed that.",
+      "parentUuid": "239eea3e_50591d47",
+      "revId": "a9ba143afacde13c1575845e8a7b1a517cea3d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75453302_5cae9726",
