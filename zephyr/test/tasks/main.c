@@ -4,8 +4,9 @@
  */
 
 #include <kernel.h>
-#include <task.h>
 #include <ztest.h>
+
+#include "task.h"
 
 /* Second for platform/ec task API (in microseconds). */
 #define TASK_SEC(s) (s * 1000 * 1000)
