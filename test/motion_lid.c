@@ -182,6 +182,9 @@ static int test_lid_angle(void)
 	hook_notify(HOOK_CHIPSET_SHUTDOWN);
 	TEST_ASSERT(sensor_active == SENSOR_ACTIVE_S5);
 	TEST_ASSERT(accel_get_data_rate(lid) == 0);
+	TEST_ASSERT(base->collection_rate == 0);
+	TEST_ASSERT(lid->collection_rate == 0);
+
 
 	/* Go to S0 state */
 	hook_notify(HOOK_CHIPSET_SUSPEND);
@@ -189,6 +192,8 @@ static int test_lid_angle(void)
 	msleep(1000);
 	TEST_ASSERT(sensor_active == SENSOR_ACTIVE_S0);
 	TEST_ASSERT(accel_get_data_rate(lid) == 119000);
+	TEST_ASSERT(base->collection_rate != 0);
+	TEST_ASSERT(lid->collection_rate != 0);
 
 	/*
 	 * Set the base accelerometer as if it were sitting flat on a desk
@@ -327,6 +332,14 @@ static int test_lid_angle(void)
 	lid->xyz[Z] = -1 * ONE_G_MEASURED * 0.9848;
 	wait_for_valid_sample();
 	TEST_ASSERT(motion_lid_get_angle() == 10);
+
+	hook_notify(HOOK_CHIPSET_SHUTDOWN);
+	msleep(1000);
+	TEST_ASSERT(sensor_active == SENSOR_ACTIVE_S5);
+	/* Base ODR is 0, collection rate is 0. */
+	TEST_ASSERT(base->collection_rate == 0);
+	/* Lid is powered off, collection rate is 0. */
+	TEST_ASSERT(lid->collection_rate == 0);
 
 	return EC_SUCCESS;
 }
