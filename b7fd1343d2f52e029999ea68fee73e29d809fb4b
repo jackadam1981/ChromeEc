@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9d1703c3_26fa1a62",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T23:43:14Z",
+      "side": 1,
+      "message": "It looks like the spec leaves the format of this up to us, so I guess whatever is the most helpful for you works.",
+      "parentUuid": "f0ffcf31_3403ce1b",
+      "revId": "b7fd1343d2f52e029999ea68fee73e29d809fb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cb7601bd_14fe7d82",
         "filename": "util/genvif.c",
         "patchSetId": 3
