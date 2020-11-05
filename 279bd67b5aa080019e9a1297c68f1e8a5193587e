@@ -22,6 +22,30 @@
       },
       "revId": "279bd67b5aa080019e9a1297c68f1e8a5193587e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a1f6f4_2651d702",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T22:02:47Z",
+      "side": 1,
+      "message": "Why would we have this module at all, in that case?",
+      "parentUuid": "33887126_e324a254",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "279bd67b5aa080019e9a1297c68f1e8a5193587e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
