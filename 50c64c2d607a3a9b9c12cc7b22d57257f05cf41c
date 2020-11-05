@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da85434_fb30987b",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T02:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5b130d4_5c96ed9a",
+      "range": {
+        "startLine": 347,
+        "startChar": 7,
+        "endLine": 347,
+        "endChar": 70
+      },
+      "revId": "50c64c2d607a3a9b9c12cc7b22d57257f05cf41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0005e928_6d87c3a4",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-28T15:16:00Z",
       "side": 1,
       "message": "what about post kernel?",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "50c64c2d607a3a9b9c12cc7b22d57257f05cf41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2a0384_3aaf5631",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T02:48:54Z",
+      "side": 1,
+      "message": "EC is the application, so I think application init is the better place\n\nI guess if we need it post-kernel, then we do that later when it\u0027s actually needed",
+      "parentUuid": "0005e928_6d87c3a4",
       "range": {
         "startLine": 59,
         "startChar": 30,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed2beebb_0a85e725",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T02:48:54Z",
+      "side": 1,
+      "message": "Better than a TODO, I just fixed the priority 😊",
+      "parentUuid": "3b48b707_1bbd7bc6",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "50c64c2d607a3a9b9c12cc7b22d57257f05cf41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9a94cb7_4ee054dc",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c85a1646_a84ce828",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T02:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9a94cb7_4ee054dc",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "50c64c2d607a3a9b9c12cc7b22d57257f05cf41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17f814ed_104e1984",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-10-28T15:16:00Z",
       "side": 1,
       "message": "we need another TODO here for task shim. This priority needs to be before we start all of the other tasks. That is guaranteed by platform/ec code today.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "50c64c2d607a3a9b9c12cc7b22d57257f05cf41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd678bb_09e6b29f",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T02:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17f814ed_104e1984",
       "range": {
         "startLine": 72,
         "startChar": 1,
