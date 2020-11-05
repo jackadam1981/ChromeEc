@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6025bf20_b5d4346d",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T22:46:24Z",
+      "side": 1,
+      "message": "Is there a schema for this number, or do we just bump it when it feels right?",
+      "revId": "b7fd1343d2f52e029999ea68fee73e29d809fb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7601bd_14fe7d82",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T22:46:24Z",
+      "side": 1,
+      "message": "This function is ~800 lines long and going to get longer as we support more fields. There are a number of subordinate scopes added just for readability. It might not be a bad idea to split it into a function for each VIF spec chapter in another CL.",
+      "revId": "b7fd1343d2f52e029999ea68fee73e29d809fb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f9b118_3577c059",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1712,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T22:46:24Z",
+      "side": 1,
+      "message": "What is the rationale for repeating this condition for each field? It doesn\u0027t seem like the combined condition gets in the way of having them in the same order as the VIF spec.",
+      "range": {
+        "startLine": 1711,
+        "startChar": 4,
+        "endLine": 1712,
+        "endChar": 34
+      },
+      "revId": "b7fd1343d2f52e029999ea68fee73e29d809fb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33538602_242b125d",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1737,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T22:46:24Z",
+      "side": 1,
+      "message": "Nit: \"Dual Role\" for easier spec searching.",
+      "range": {
+        "startLine": 1737,
+        "startChar": 7,
+        "endLine": 1737,
+        "endChar": 10
+      },
+      "revId": "b7fd1343d2f52e029999ea68fee73e29d809fb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
