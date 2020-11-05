@@ -39,6 +39,30 @@
       },
       "revId": "e95d48157764b56788f9f50b61a97f4d149ca599",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897bbebd_433717ea",
+        "filename": "common/irq_locking.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-05T18:37:30Z",
+      "side": 1,
+      "message": "But we also need to override lock_count in irq_unlock. I\u0027m not sure there\u0027s a way to do that with local static is there?",
+      "parentUuid": "d0fc4b1f_c225a442",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "e95d48157764b56788f9f50b61a97f4d149ca599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
