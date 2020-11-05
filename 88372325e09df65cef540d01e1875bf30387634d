@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74702f84_014e2ab5",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-11-05T04:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d0050f6_345e4703",
+      "range": {
+        "startLine": 197,
+        "startChar": 11,
+        "endLine": 197,
+        "endChar": 37
+      },
+      "revId": "88372325e09df65cef540d01e1875bf30387634d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5eacac1_9c372165",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-05T01:35:20Z",
       "side": 1,
       "message": "how about (Cable type:)",
+      "range": {
+        "startLine": 211,
+        "startChar": 12,
+        "endLine": 211,
+        "endChar": 31
+      },
+      "revId": "88372325e09df65cef540d01e1875bf30387634d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b4517d_aba3f957",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-11-05T04:16:18Z",
+      "side": 1,
+      "message": "We already have cable type for Discover Identity SOP\u0027",
+      "parentUuid": "b5eacac1_9c372165",
       "range": {
         "startLine": 211,
         "startChar": 12,
