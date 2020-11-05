@@ -51,6 +51,11 @@
 
 #endif  /* CONFIG_PLATFORM_EC_TIMER */
 
+#undef CONFIG_KEYBOARD_COL2_INVERTED
+#ifdef CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED
+#define CONFIG_KEYBOARD_COL2_INVERTED
+#endif  /* CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED */
+
 /*
  * Load the chip family specific header. Normally for npcx, this would be done
  * by chip/npcx/config_chip.h but since this file is replacing that header

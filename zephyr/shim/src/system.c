@@ -221,3 +221,14 @@ __test_only void system_override_jdata(void *test_jdata)
 {
 	jdata = (struct jump_data *)test_jdata;
 }
+
+/* TODO: b/172676906 - implement hibernate */
+void system_enter_hibernate(uint32_t seconds, uint32_t microseconds)
+{
+	
+}
+
+int system_jumped_late(void)
+{
+	return !(reset_flags & EC_RESET_FLAG_EFS) && jumped_to_image;
+}
