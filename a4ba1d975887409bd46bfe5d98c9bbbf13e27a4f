@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure what the ultimate product plan is for this feature, but in the near term, I would also expect CONFIG_USB_PD_TBT_COMPAT_MODE to enable responding to discovery as a DFP.",
       "revId": "a4ba1d975887409bd46bfe5d98c9bbbf13e27a4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fa5c4f2_6d43247d",
+        "filename": "util/genvif.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T23:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14985182_82e8a6dc",
+      "revId": "a4ba1d975887409bd46bfe5d98c9bbbf13e27a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
