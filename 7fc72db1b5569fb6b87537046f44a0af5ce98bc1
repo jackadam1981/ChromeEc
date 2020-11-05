@@ -16,6 +16,24 @@
       "message": "Why is this specific to TCPMv2?",
       "revId": "7fc72db1b5569fb6b87537046f44a0af5ce98bc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e52714b4_7ddd4581",
+        "filename": "util/genvif.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T23:18:54Z",
+      "side": 1,
+      "message": "I am basing all of my changes on the request from the coordinated bug\n\nShould be set to:\nPID of the CB board (for TCPMv2)",
+      "parentUuid": "37b96ee4_75ae9e7f",
+      "revId": "7fc72db1b5569fb6b87537046f44a0af5ce98bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
