@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b61cbefb_fdd9ecdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "938ec7fa_2807bbf1",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf988c98_ba0b8a3e",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-05T17:47:23Z",
       "side": 1,
       "message": "preempt",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8232b31_72523c6f",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf988c98_ba0b8a3e",
       "range": {
         "startLine": 14,
         "startChar": 41,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde42116_33734afa",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0c41ca1_0a17f556",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c878eed_ab46e8c3",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-05T16:14:35Z",
       "side": 1,
       "message": "this should be static?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 56
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e38c44_56a2c574",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "yes, good catch.",
+      "parentUuid": "2c878eed_ab46e8c3",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5519b9_c08ea3c9",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54640b7b_36932997",
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60c279dd_96c7b24f",
@@ -123,6 +237,30 @@
       "writtenOn": "2020-11-05T17:47:23Z",
       "side": 1,
       "message": "Wait?",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 8
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "123501b8_b53189f1",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60c279dd_96c7b24f",
       "range": {
         "startLine": 94,
         "startChar": 4,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f23b067f_b47cb7f1",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "I have been using Zephyr style for the Zephyr shim. Neither option is really that great in the platform/ec repository.\n\nI honestly prefer always having {}. I thinking it avoids coding errors.",
+      "parentUuid": "2ba1d6b9_4bd04d63",
+      "range": {
+        "startLine": 100,
+        "startChar": 20,
+        "endLine": 100,
+        "endChar": 21
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f125707_e6395f31",
@@ -169,6 +331,30 @@
       "writtenOn": "2020-11-05T17:47:23Z",
       "side": 1,
       "message": "This is fine, but I do wonder why we need 64-bit timeouts\nIf this is microseconds then 4 billion of them is over an hour",
+      "range": {
+        "startLine": 126,
+        "startChar": 7,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b9dad8_7884dc1f",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "Well that is the return type of k_uptime_ticks, so we would lose precision otherwise.\n\n(I have also code timing issues thinking we would never have waits over an hour before, and using int64 just prevents most of them)",
+      "parentUuid": "5f125707_e6395f31",
       "range": {
         "startLine": 126,
         "startChar": 7,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "251a71e4_91d4ce51",
+        "filename": "zephyr/test/tasks/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "I don\u0027t actually want to pull in the repo (or at least I don\u0027t want to pull in any of the source files. The only files I want compiled in are the file under test and the test main).\n\nHowever, I did try working with zmake, but I couldn\u0027t get it to work where I didn\u0027t define these here.\n\nCONFIG_ZEPHYR comes from chip_config.h but I really don\u0027t want that either.\n\nI have a zmake.yaml file, but I can\u0027t get it to work with zephyr toolchain. I can get it to work with the arm-none-eabi toolchain. I am leaving it out of the CL for now since the arm toolchain doesn\u0027t really make sense for a native_posix build ;)",
+      "parentUuid": "68d6e25a_648afeb5",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a94d013_176ed820",
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35586c0c_827b5378",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a94d013_176ed820",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "080ab83a_8700ac0b",
@@ -238,6 +472,30 @@
       "writtenOn": "2020-11-05T17:47:23Z",
       "side": 1,
       "message": "exercises",
+      "range": {
+        "startLine": 166,
+        "startChar": 18,
+        "endLine": 166,
+        "endChar": 27
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5efe97fe_8e3ada24",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "080ab83a_8700ac0b",
       "range": {
         "startLine": 166,
         "startChar": 18,
