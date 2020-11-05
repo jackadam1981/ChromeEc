@@ -42,11 +42,14 @@ zephyr_sources_ifdef(CONFIG_SHELL               "${PLATFORM_EC}/common/gpio_comm
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_HOSTCMD "${PLATFORM_EC}/common/host_command.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_HOSTCMD "${PLATFORM_EC}/common/host_event_commands.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_I2C     "${PLATFORM_EC}/common/i2c_master.c")
-zephyr_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_8042
-                                                "${PLATFORM_EC}/common/keyboard_8042.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_LID_SWITCH
                                                 "${PLATFORM_EC}/common/lid_switch.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_POWER_BUTTON
                                                 "${PLATFORM_EC}/common/power_button.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD
+                                                "${PLATFORM_EC}/common/keyboard_scan.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_8042
+                                                "${PLATFORM_EC}/common/keyboard_8042.c"
+                                                "${PLATFORM_EC}/common/keyboard_8042_sharedlib.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC         "${PLATFORM_EC}/common/queue.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_TIMER   "${PLATFORM_EC}/common/timer.c")

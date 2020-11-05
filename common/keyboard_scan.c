@@ -26,6 +26,11 @@
 #include "usb_api.h"
 #include "util.h"
 
+#ifdef CONFIG_ZEPHYR
+void system_enter_hibernate(uint32_t seconds, uint32_t microseconds) {}
+int system_jumped_late(void) { return 0; }
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_KEYSCAN, outstr)
 #define CPRINTF(format, args...) cprintf(CC_KEYSCAN, format, ## args)
@@ -769,6 +774,9 @@ void keyboard_scan_task(void *u)
 	int wait_time;
 	uint32_t local_disable_scanning = 0;
 
+	if (IS_ENABLED(CONFIG_ZEPHYR))
+		keyboard_scan_init();
+
 	print_state(debounced_state, "init state");
 
 	keyboard_raw_task_start();
@@ -872,7 +880,10 @@ static void keyboard_lid_change(void)
 		keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_CLOSED);
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, keyboard_lid_change, HOOK_PRIO_DEFAULT);
+/* TODO: b/172676906 - Cannot execute task functions in HOOK_INIT yet! */
+#ifndef CONFIG_ZEPHYR
 DECLARE_HOOK(HOOK_INIT, keyboard_lid_change, HOOK_PRIO_INIT_LID + 1);
+#endif
 
 #endif
 
