@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d37ff6_62674a9e",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-05T17:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc6677f_34b694ac",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d31df8c_c66ee950",
@@ -106,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffe5f53b_4475cd8c",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-05T17:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d31df8c_c66ee950",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfd21c3a_2e66fb12",
@@ -119,6 +155,24 @@
       "writtenOn": "2020-10-19T17:02:30Z",
       "side": 1,
       "message": "Between #ifdef CONFIG_ACCEL_SPOOF_MODE to save space when needed.",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2946104_fb6efa13",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-05T17:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd21c3a_2e66fb12",
       "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +244,24 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "e41a697a_1f2a5d80",
+      "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "487293fa_2d1aff01",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2542,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-11-05T17:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d68c3101_7c436223",
       "revId": "eedff1cbc4dea984e25b98fd78eddeed66af77de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
