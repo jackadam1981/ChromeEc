@@ -71,9 +71,23 @@ struct mutex g_sensor_mutex;
  */
 test_export_static enum chipset_state_mask sensor_active;
 
+<<<<<<< HEAD   (b66709 Stern: Remove power_led and EC_SKU_ID)
 #ifdef CONFIG_ACCEL_SPOOF_MODE
 static void print_spoof_mode_status(int id);
 #endif /* defined(CONFIG_ACCEL_SPOOF_MODE) */
+=======
+/*
+ * Motion task interval. It does not have to be a global variable,
+ * but it allows to be tested.
+ */
+test_export_static int wait_us;
+
+STATIC_IF(CONFIG_ACCEL_SPOOF_MODE) void print_spoof_mode_status(int id);
+STATIC_IF(CONFIG_GESTURE_DETECTION) void check_and_queue_gestures(
+		uint32_t *event);
+STATIC_IF(CONFIG_MOTION_FILL_LPC_SENSE_DATA) void update_sense_data(
+		uint8_t *lpc_status, int *psample_id);
+>>>>>>> CHANGE (3c630c motion_sense: Stop collection when sensor is powered down)
 
 /* Flags to control whether to send an ODR change event for a sensor */
 static uint32_t odr_event_required;
@@ -167,13 +181,13 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 		BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr));
 #endif
 	mutex_lock(&g_sensor_mutex);
+	odr = sensor->drv->get_data_rate(sensor);
 	if (ap_odr_mhz)
 		/*
 		 * In case the AP want to run the sensors faster than it can,
 		 * be sure we don't see the ratio to 0.
 		 */
-		sensor->oversampling_ratio = MAX(1,
-			sensor->drv->get_data_rate(sensor) / ap_odr_mhz);
+		sensor->oversampling_ratio = MAX(1, odr / ap_odr_mhz);
 	else
 		sensor->oversampling_ratio = 0;
 
@@ -181,7 +195,6 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 	 * Reset last collection: the last collection may be so much in the past
 	 * it may appear to be in the future.
 	 */
-	odr = sensor->drv->get_data_rate(sensor);
 	sensor->collection_rate = odr > 0 ? SECOND * 1000 / odr : 0;
 	sensor->next_collection = ts.le.lo + sensor->collection_rate;
 	sensor->oversampling = 0;
@@ -395,8 +408,10 @@ static void motion_sense_switch_sensor_rate(void)
 			}
 		} else {
 			/* The sensors are being powered off */
-			if (sensor->state == SENSOR_INITIALIZED)
+			if (sensor->state == SENSOR_INITIALIZED) {
+				sensor->collection_rate = 0;
 				sensor->state = SENSOR_NOT_INITIALIZED;
+			}
 		}
 	}
 	motion_sense_set_motion_intervals();
@@ -824,7 +839,11 @@ static void check_and_queue_gestures(uint32_t *event)
  */
 void motion_sense_task(void *u)
 {
+<<<<<<< HEAD   (b66709 Stern: Remove power_led and EC_SKU_ID)
 	int i, ret, wait_us;
+=======
+	int i, ret, sample_id = 0;
+>>>>>>> CHANGE (3c630c motion_sense: Stop collection when sensor is powered down)
 	timestamp_t ts_begin_task, ts_end_task;
 	int32_t time_diff;
 	uint32_t event = 0;
