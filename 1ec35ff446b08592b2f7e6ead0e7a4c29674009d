@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c78301_3bbd25aa",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T19:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a3ee76c_022f98af",
+      "range": {
+        "startLine": 972,
+        "startChar": 1,
+        "endLine": 972,
+        "endChar": 9
+      },
+      "revId": "1ec35ff446b08592b2f7e6ead0e7a4c29674009d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39e0ac7d_5c2d902a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "502f0e9b_9b8ce781",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1683,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T19:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39e0ac7d_5c2d902a",
+      "range": {
+        "startLine": 1683,
+        "startChar": 2,
+        "endLine": 1683,
+        "endChar": 10
+      },
+      "revId": "1ec35ff446b08592b2f7e6ead0e7a4c29674009d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "986a87b6_04dc005f",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-05T19:09:40Z",
       "side": 1,
       "message": "Should this also be guarded with the same checks as the other PD Sink Fields?",
+      "range": {
+        "startLine": 1723,
+        "startChar": 0,
+        "endLine": 1727,
+        "endChar": 0
+      },
+      "revId": "1ec35ff446b08592b2f7e6ead0e7a4c29674009d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ff9ec4_449203e8",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1727,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-05T19:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "986a87b6_04dc005f",
       "range": {
         "startLine": 1723,
         "startChar": 0,
