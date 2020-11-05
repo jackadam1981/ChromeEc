@@ -26,6 +26,12 @@
 #include "usb_api.h"
 #include "util.h"
 
+#ifdef CONFIG_ZEPHYR
+void system_enter_hibernate(uint32_t seconds, uint32_t microseconds) {}
+int lid_is_open(void) { return 0; }
+int system_jumped_late(void) { return 0; }
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_KEYSCAN, outstr)
 #define CPRINTF(format, args...) cprintf(CC_KEYSCAN, format, ## args)
@@ -768,6 +774,9 @@ void keyboard_scan_task(void *u)
 	timestamp_t poll_deadline, start;
 	int wait_time;
 	uint32_t local_disable_scanning = 0;
+
+	if (IS_ENABLED(CONFIG_ZEPHYR))
+		keyboard_scan_init();
 
 	print_state(debounced_state, "init state");
 
