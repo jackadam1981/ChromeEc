@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43372859_6354de21",
+        "filename": "util/genvif.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T22:58:42Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these support both?",
+      "revId": "e754f1c4ef177306b3fb232eae46dd8a59fa85b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a74642_dbb0ebf5",
+        "filename": "util/genvif.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T22:58:42Z",
+      "side": 1,
+      "message": "Why would we not set \"both\" if it\u0027s both?",
+      "range": {
+        "startLine": 1818,
+        "startChar": 19,
+        "endLine": 1818,
+        "endChar": 38
+      },
+      "revId": "e754f1c4ef177306b3fb232eae46dd8a59fa85b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
