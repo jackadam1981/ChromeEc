@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1dde0f4_99211e80",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-05T18:18:21Z",
+      "side": 1,
+      "message": "Mixing ifdef an non-idef version make it more difficult to read. I also think we could tab over the file names to make them easier to read.\n\nNot a blocker, just something to think about",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "7bd3046cb9fbc6049057877d0a5e829f6eed4630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
