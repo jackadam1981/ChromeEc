@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fc4a68_2cbbd9cb",
+        "filename": "include/hooks.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1939833c_cf9443c2",
+      "range": {
+        "startLine": 364,
+        "startChar": 51,
+        "endLine": 364,
+        "endChar": 55
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b0e5500_a3e37422",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bcfb410_2bdcfb36",
+        "filename": "include/hooks.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6caac4a8_2c7f5a5e",
+      "range": {
+        "startLine": 365,
+        "startChar": 54,
+        "endLine": 365,
+        "endChar": 67
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00d2e7f8_7569e2f6",
+        "filename": "include/hooks.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b0e5500_a3e37422",
+      "range": {
+        "startLine": 365,
+        "startChar": 25,
+        "endLine": 365,
+        "endChar": 28
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eb9ee4c_b5eff36e",
@@ -83,6 +155,24 @@
       "writtenOn": "2020-11-05T18:19:13Z",
       "side": 1,
       "message": "struct comment and memory comments",
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3587a39_7c457e34",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb9ee4c_b5eff36e",
       "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de46c8cc_87a09913",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26e3fe4_57677dc9",
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bbb7b43_65bc1c4a",
@@ -121,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3db7173c_bf65512b",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bbb7b43_65bc1c4a",
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4187615_dc60cd83",
@@ -134,6 +260,24 @@
       "writtenOn": "2020-11-05T18:19:13Z",
       "side": 1,
       "message": "here too",
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "877ed774_ad4d2697",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4187615_dc60cd83",
       "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb8ad616_b46ec751",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b6e167f_98c5c343",
+      "range": {
+        "startLine": 44,
+        "startChar": 29,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12590606_45a1d55a",
@@ -174,6 +342,24 @@
       "writtenOn": "2020-11-05T18:19:13Z",
       "side": 1,
       "message": "comment",
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "403a07c6_e278250f",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12590606_45a1d55a",
       "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -237,6 +423,30 @@
       "writtenOn": "2020-11-05T18:19:13Z",
       "side": 1,
       "message": "I don\u0027t think you need this word",
+      "range": {
+        "startLine": 8,
+        "startChar": 27,
+        "endLine": 8,
+        "endChar": 37
+      },
+      "revId": "ab6566d034c476820a8aebeedd2f40c769ee39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7436f895_c36e8179",
+        "filename": "zephyr/test/hooks/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5711991b_5de8857a",
       "range": {
         "startLine": 8,
         "startChar": 27,

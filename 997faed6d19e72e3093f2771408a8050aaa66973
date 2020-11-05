@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94d93db6_e12422b8",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baa8e583_7342bb96",
+      "range": {
+        "startLine": 278,
+        "startChar": 39,
+        "endLine": 278,
+        "endChar": 49
+      },
+      "revId": "997faed6d19e72e3093f2771408a8050aaa66973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85699659_285d6dbe",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-05T16:22:54Z",
       "side": 1,
       "message": "can you add one more test to ensure that repeated calls to delay keeps pushing out deferred function?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "997faed6d19e72e3093f2771408a8050aaa66973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e263d475_2bfe9b64",
+        "filename": "zephyr/test/hooks/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-05T19:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85699659_285d6dbe",
       "range": {
         "startLine": 88,
         "startChar": 0,
