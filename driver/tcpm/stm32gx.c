@@ -102,8 +102,15 @@ static int stm32gx_tcpm_transmit(int port,
 			uint16_t header,
 			const uint32_t *data)
 {
-	/* TODO(b/167601672): Need to implement this for USB-PD support */
-	return EC_SUCCESS;
+	int rv;
+	/* static int modulo_counter; */
+	//board_debug_gpio(TRIGGER_1, 1);
+	/* if (modulo_counter++ < 5) */
+	/* 	ucpd_info(0); */
+	rv = stm32gx_ucpd_transmit(port, type, header, data);
+	//board_debug_gpio(TRIGGER_1, 0);
+
+	return rv;
 }
 
 static int stm32gx_tcpm_sop_prime_disable(int port)
@@ -140,7 +147,6 @@ const struct tcpm_drv stm32gx_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DECODE_SOP
        .sop_prime_disable      = &stm32gx_tcpm_sop_prime_disable,
 #endif
-
 	.set_vconn		= &stm32gx_tcpm_set_vconn,
 	.set_msg_header		= &stm32gx_tcpm_set_msg_header,
 	.set_rx_enable		= &stm32gx_tcpm_set_rx_enable,
