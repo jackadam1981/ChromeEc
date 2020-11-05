@@ -81,6 +81,30 @@
       },
       "revId": "e754f1c4ef177306b3fb232eae46dd8a59fa85b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfda832d_0251c63f",
+        "filename": "util/genvif.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-05T23:33:11Z",
+      "side": 1,
+      "message": "Per VIF spec 3.2.15 Battery Charging 1.2 Fields, 2 \"Both\" is an option. To me, the most natural reading is that if we support both, the VIF should say \"Both.\"",
+      "parentUuid": "3c00ce7c_e7832019",
+      "range": {
+        "startLine": 1818,
+        "startChar": 19,
+        "endLine": 1818,
+        "endChar": 38
+      },
+      "revId": "e754f1c4ef177306b3fb232eae46dd8a59fa85b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
