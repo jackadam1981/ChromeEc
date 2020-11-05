@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "938ec7fa_2807bbf1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T17:47:23Z",
+      "side": 1,
+      "message": "How do I run it?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf988c98_ba0b8a3e",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T17:47:23Z",
+      "side": 1,
+      "message": "preempt",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c41ca1_0a17f556",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T17:47:23Z",
+      "side": 1,
+      "message": "Should have comments for each member",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c878eed_ab46e8c3",
         "filename": "zephyr/shim/src/tasks.c",
         "patchSetId": 6
@@ -26,6 +95,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54640b7b_36932997",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T17:47:23Z",
+      "side": 1,
+      "message": "Why the extra blank line here and at 87?",
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c279dd_96c7b24f",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T17:47:23Z",
+      "side": 1,
+      "message": "Wait?",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 8
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba1d6b9_4bd04d63",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T17:47:23Z",
+      "side": 1,
+      "message": "Do we use that sill Zephyr style also, or kernel style?",
+      "range": {
+        "startLine": 100,
+        "startChar": 20,
+        "endLine": 100,
+        "endChar": 21
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f125707_e6395f31",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T17:47:23Z",
+      "side": 1,
+      "message": "This is fine, but I do wonder why we need 64-bit timeouts\nIf this is microseconds then 4 billion of them is over an hour",
+      "range": {
+        "startLine": 126,
+        "startChar": 7,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68d6e25a_648afeb5",
         "filename": "zephyr/test/tasks/CMakeLists.txt",
         "patchSetId": 6
@@ -42,6 +197,52 @@
         "startChar": 0,
         "endLine": 15,
         "endChar": 50
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a94d013_176ed820",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T17:47:23Z",
+      "side": 1,
+      "message": "no space",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "080ab83a_8700ac0b",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-05T17:47:23Z",
+      "side": 1,
+      "message": "exercises",
+      "range": {
+        "startLine": 166,
+        "startChar": 18,
+        "endLine": 166,
+        "endChar": 27
       },
       "revId": "048bb28cb5b317a56fabc41616a5f3d982241598",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
