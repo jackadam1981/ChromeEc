@@ -4,6 +4,7 @@
  */
 
 #include "atomic.h"
+#include "byteorder.h"
 #include "clock.h"
 #include "common.h"
 #include "config.h"
@@ -238,6 +239,16 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID_KEYBOARD, 02) = {
 	0x75, 0x01, /* Report Size (1) */				\
 	0x81, 0x01, /* Input (Constant), ;1-bit padding */
 
+#define KEYBOARD_TOP_ROW_FEATURE_DESC					\
+	0xa1, 0x02, /* Collection (Logical) */				\
+	0x05, 0x0a, /*   Usage Page (Ordinal) */			\
+	0x19, 0x01, /*   Usage Minimum (1) */				\
+	0x29, 0x00, /*   Usage Maximum (patch later) */			\
+	0x95, 0x00, /*   Report Count (patch later) */			\
+	0x75, 0x20, /*   Report Size (32) */				\
+	0xb1, 0x03, /*   Feature (Cnst,Var,Abs) */			\
+	0xc0,       /* End Collection */
+
 /*
  * Vendor-defined Usage Page 0xffd1:
  *  - 0x18: Assistant key
@@ -316,6 +327,7 @@ static const uint8_t report_desc[] = {
 
 #ifdef CONFIG_USB_HID_KEYBOARD_VIVALDI
 	KEYBOARD_TOP_ROW_DESC
+	KEYBOARD_TOP_ROW_FEATURE_DESC
 #endif
 	0xC0        /* End Collection */
 };
@@ -334,6 +346,7 @@ static const uint8_t report_desc_with_backlight[] = {
 
 #ifdef CONFIG_USB_HID_KEYBOARD_VIVALDI
 	KEYBOARD_TOP_ROW_DESC
+	KEYBOARD_TOP_ROW_FEATURE_DESC
 #endif
 	KEYBOARD_BACKLIGHT_DESC
 
@@ -472,10 +485,26 @@ USB_DECLARE_EP(USB_EP_HID_KEYBOARD, hid_keyboard_tx,
 #endif
 	       hid_keyboard_event);
 
+static uint32_t feature_report[12];
+static size_t feature_report_size;
+
+static int hid_keyboard_get_report(uint8_t report_id, uint8_t report_type,
+				   const uint8_t **buffer_ptr, int *buffer_size)
+{
+	if (IS_ENABLED(CONFIG_USB_HID_KEYBOARD_VIVALDI) && report_type == 3) {
+		*buffer_ptr = (uint8_t *)feature_report;
+		*buffer_size = feature_report_size;
+		return 0;
+	}
+
+	return -1;
+}
+
 static struct usb_hid_config_t hid_config_kb = {
 	.report_desc = report_desc,
 	.report_size = sizeof(report_desc),
 	.hid_desc = &hid_desc_kb,
+	.get_report = &hid_keyboard_get_report,
 };
 
 static int hid_keyboard_iface_request(usb_uint *ep0_buf_rx,
@@ -775,4 +804,32 @@ void usb_hid_keyboard_init(void)
 }
 /* This needs to happen before usb_init (HOOK_PRIO_DEFAULT) */
 DECLARE_HOOK(HOOK_INIT, usb_hid_keyboard_init, HOOK_PRIO_DEFAULT - 1);
+#endif
+
+#ifdef CONFIG_USB_HID_KEYBOARD_VIVALDI
+void usb_hid_vivaldi_init(void)
+{
+	const struct ec_response_keybd_config *config =
+		board_vivaldi_keybd_config();
+	int num_keys = config ? config->num_top_row_keys : 0;
+
+	/* TODO: fill keys */
+	feature_report[0] = 0x000C0224;
+	feature_report[1] = 0x000C0227;
+	feature_report_size = num_keys * sizeof(uint32_t);
+
+	for (int i = 0; i < sizeof(report_desc) - 4; i++) {
+		if (report_desc[i] == 0x29 && report_desc[i + 1] == 0x00 &&
+		    report_desc[i + 2] == 0x95 && report_desc[i + 3] == 0x00) {
+			CPRINTF("patch at index %d\n", i);
+			set_descriptor_patch(USB_DESC_KEYBOARD_FEATURE_SIZE_0,
+				&report_desc[i], 0x29 + (num_keys << 8));
+			set_descriptor_patch(USB_DESC_KEYBOARD_FEATURE_SIZE_1,
+				&report_desc[i + 2], 0x95 + (num_keys << 8));
+			break;
+		}
+	}
+}
+/* This needs to happen before usb_init (HOOK_PRIO_DEFAULT) */
+DECLARE_HOOK(HOOK_INIT, usb_hid_vivaldi_init, HOOK_PRIO_DEFAULT - 1);
 #endif
