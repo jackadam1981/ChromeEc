@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b66946a_e32f19ff",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-06T21:51:21Z",
+      "side": 1,
+      "message": "should we also\n\n| GPIO_INT_ENABLE\n\n?",
+      "range": {
+        "startLine": 237,
+        "startChar": 7,
+        "endLine": 237,
+        "endChar": 43
+      },
+      "revId": "3e69bebcfd7675f4f52d6049183ce60d70a3b558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
