@@ -636,7 +636,6 @@ __maybe_unused static void set_vif_field_itis(struct vif_field_t *vif_field,
  *	Device_Truncates_DP_For_tDHPResponse	booleanFieldType
  *	Device_Gen1x1_tLinkTurnaround		numericFieldType
  *	Device_Gen2x1_tLinkTurnaround		numericFieldType
- *	XID_SOP					numericFieldType
  *	Data_Capable_As_USB_Host_SOP		booleanFieldType
  *	Data_Capable_As_USB_Device_SOP		booleanFieldType
  *	Product_Type_UFP_SOP			numericFieldType
@@ -1834,21 +1833,24 @@ static void init_vif_component_pd_dual_role_fields(
 static void init_vif_component_sop_discovery_fields(
 			struct vif_field_t *vif_fields)
 {
-	if (IS_ENABLED(CONFIG_USB_PD_TCPMV2)) {
-		char hex_str[10];
+	char hex_str[10];
 
-		#if defined(CONFIG_USB_PID)
-			sprintf(hex_str, "%04X", CONFIG_USB_PID);
-			set_vif_field_itss(&vif_fields[PID_SOP],
-					"PID_SOP",
-					CONFIG_USB_PID, hex_str);
-		#else
-			sprintf(hex_str, "%04X", DEFAULT_MISSING_PID);
-			set_vif_field_itss(&vif_fields[PID_SOP],
-					"PID_SOP",
-					DEFAULT_MISSING_PID, hex_str);
-		#endif
-	}
+	set_vif_field(&vif_fields[XID_SOP],
+			"XID_SOP",
+			"0",
+			"0");
+
+	#if defined(CONFIG_USB_PID)
+		sprintf(hex_str, "%04X", CONFIG_USB_PID);
+		set_vif_field_itss(&vif_fields[PID_SOP],
+				"PID_SOP",
+				CONFIG_USB_PID, hex_str);
+	#else
+		sprintf(hex_str, "%04X", DEFAULT_MISSING_PID);
+		set_vif_field_itss(&vif_fields[PID_SOP],
+				"PID_SOP",
+				DEFAULT_MISSING_PID, hex_str);
+	#endif
 }
 
 /*********************************************************************
