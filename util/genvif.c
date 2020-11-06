@@ -1314,14 +1314,20 @@ static int gen_vif(const char *name,
 				supports_to_ufp);
 	}
 
-	if (is_src())
+	{
+		int32_t dedicated_charge_port_count = 0;
+
+		#ifdef CONFIG_DEDICATED_CHARGE_PORT_COUNT
+			dedicated_charge_port_count =
+					CONFIG_DEDICATED_CHARGE_PORT_COUNT;
+		#endif
+
 		set_vif_field_b(&vif_fields[Unconstrained_Power],
 				"Unconstrained_Power",
-				src_pdo[0] & PDO_FIXED_UNCONSTRAINED);
-	else
-		set_vif_field_b(&vif_fields[Unconstrained_Power],
-				"Unconstrained_Power",
-				false);
+				(is_src() &&
+				 ((dedicated_charge_port_count > 0) ||
+				  (src_pdo[0] & PDO_FIXED_UNCONSTRAINED))));
+	}
 
 	set_vif_field_b(&vif_fields[VCONN_Swap_To_On_Supported],
 			"VCONN_Swap_To_On_Supported",
