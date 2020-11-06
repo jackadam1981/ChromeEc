@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dff9dae0_acdef939",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-06T19:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "152680d5_4caece7e",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 36
+      },
+      "revId": "78684c3ceac6afea6e9e911bcc240827213f49d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07ae6511_556297ca",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-06T18:29:56Z",
       "side": 1,
       "message": "I don\u0027t see where they are made into zephyr sub commands; is it in another CL?\n\nAlso it is worth noting that changing these in console sub-commands may end up making FAFT testing more difficult since the invocation on the EC UART would be different. I do like the sub commands approach much more though; I just want to point out that we are making more work for ourselves on the testing interface side.",
+      "range": {
+        "startLine": 60,
+        "startChar": 59,
+        "endLine": 60,
+        "endChar": 70
+      },
+      "revId": "78684c3ceac6afea6e9e911bcc240827213f49d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7bc221f_9321d21b",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-06T19:31:39Z",
+      "side": 1,
+      "message": "The subcommand code is at the bottom and already works.\n\nOK I added a note in the commit message.\n\nPerhaps I should file a bug to change FAFT to use the 8042 command? It is present in ECOS also.",
+      "parentUuid": "07ae6511_556297ca",
       "range": {
         "startLine": 60,
         "startChar": 59,
