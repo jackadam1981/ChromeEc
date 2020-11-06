@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d926c460_291dd367",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-06T20:49:08Z",
+      "side": 1,
+      "message": "one nit",
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41064c1f_1e00381d",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-06T20:49:08Z",
+      "side": 1,
+      "message": "This should use spaces and line up with the \"$ above",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
