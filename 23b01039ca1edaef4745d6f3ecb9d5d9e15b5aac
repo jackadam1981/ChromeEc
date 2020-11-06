@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "054f867c_8024e249",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-06T19:53:25Z",
+      "side": 1,
+      "message": "comments in the bug say this should be \"\u003e 1\" and other comments believe it should be \"\u003e\u003d 1\", please clarify.",
+      "range": {
+        "startLine": 1328,
+        "startChar": 7,
+        "endLine": 1328,
+        "endChar": 38
+      },
+      "revId": "23b01039ca1edaef4745d6f3ecb9d5d9e15b5aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
