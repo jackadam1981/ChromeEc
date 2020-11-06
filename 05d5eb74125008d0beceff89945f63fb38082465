@@ -22,6 +22,30 @@
       },
       "revId": "05d5eb74125008d0beceff89945f63fb38082465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba90cb7e_2f557d20",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-06T21:47:09Z",
+      "side": 0,
+      "message": "No Application hooks get call before main() is called.\n\nSince we arent\u0027 using C++, there is actually very little different between POST_KERNEL and APPLICATION. We should probably just standardize on application",
+      "parentUuid": "70be5f49_99fbe305",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "05d5eb74125008d0beceff89945f63fb38082465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
