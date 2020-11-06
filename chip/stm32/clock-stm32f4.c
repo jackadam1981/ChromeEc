@@ -452,3 +452,24 @@ static int command_clock(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(clock, command_clock,
 			"hsi | hse | pll", "Set clock source");
+
+static int command_stop(int argc, char **argv)
+{
+	ccputs("STOP forever...\n");
+	cflush();
+
+	asm volatile("cpsid i");
+	/* set deep sleep bit */
+	CPU_SCB_SYSCTRL |= 0x4;
+	/* ensure outstanding memory transactions complete */
+	asm volatile("dsb");
+	asm("wfi");
+
+	CPU_SCB_SYSCTRL &= ~0x4;
+	asm volatile("cpsie i");
+
+	ccputs("back? oh no...\n");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(stop, command_stop,
+			"", "Test low power baseline");
