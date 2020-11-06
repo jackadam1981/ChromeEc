@@ -99,6 +99,24 @@
       "parentUuid": "6523c2cb_6daa8bd3",
       "revId": "1395ed84f3309cafb4aa09dff4b8521f797892a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5e3708_f99ffa39",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-06T18:59:07Z",
+      "side": 1,
+      "message": "ACK\nhttp://www.silego.com/uploads/Products/product_264/SLG7NT4192_DS_r011_05272013.pdf\npage 2: SYS_PWROK is and of ALL_SYS_PWRGD with 2.5ms delay",
+      "parentUuid": "8afcd8f3_f59e9ed6",
+      "revId": "1395ed84f3309cafb4aa09dff4b8521f797892a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
