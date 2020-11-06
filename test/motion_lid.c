@@ -30,7 +30,7 @@ extern int wait_us;
 #define TEST_LID_EC_RATE (10 * MSEC)
 
 /*
- * Time in ms to wait for the task to read the vectors.
+ * Time in us to wait for the task to read the vectors.
  */
 #define TEST_LID_SLEEP_RATE (TEST_LID_EC_RATE / 5)
 
@@ -100,11 +100,6 @@ struct motion_sensor_t motion_sensors[] = {
 		.rot_standard_ref = NULL,
 		.default_range = 2,  /* g, enough for laptop. */
 		.config = {
-			/* AP: by default shutdown all sensors */
-			[SENSOR_CONFIG_AP] = {
-				.odr = 0,
-				.ec_rate = 0,
-			},
 			/* EC use accel for angle detection */
 			[SENSOR_CONFIG_EC_S0] = {
 				.odr = 119000 | ROUND_UP_FLAG,
@@ -115,15 +110,11 @@ struct motion_sensor_t motion_sensors[] = {
 				.odr = 119000 | ROUND_UP_FLAG,
 				.ec_rate = TEST_LID_EC_RATE * 100,
 			},
-			[SENSOR_CONFIG_EC_S5] = {
-				.odr = 0,
-				.ec_rate = 0,
-			},
 		},
 	},
 	[LID] = {
 		.name = "lid",
-		.active_mask = SENSOR_ACTIVE_S0,
+		.active_mask = SENSOR_ACTIVE_S0_S3,
 		.chip = MOTIONSENSE_CHIP_KXCJ9,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_LID,
@@ -131,11 +122,6 @@ struct motion_sensor_t motion_sensors[] = {
 		.rot_standard_ref = NULL,
 		.default_range = 2,  /* g, enough for laptop. */
 		.config = {
-			/* AP: by default shutdown all sensors */
-			[SENSOR_CONFIG_AP] = {
-				.odr = 0,
-				.ec_rate = 0,
-			},
 			/* EC use accel for angle detection */
 			[SENSOR_CONFIG_EC_S0] = {
 				.odr = 119000 | ROUND_UP_FLAG,
@@ -145,10 +131,6 @@ struct motion_sensor_t motion_sensors[] = {
 			[SENSOR_CONFIG_EC_S3] = {
 				.odr = 200000 | ROUND_UP_FLAG,
 				.ec_rate = TEST_LID_EC_RATE * 100,
-			},
-			[SENSOR_CONFIG_EC_S5] = {
-				.odr = 0,
-				.ec_rate = 0,
 			},
 		},
 	},
@@ -164,7 +146,6 @@ static void wait_for_valid_sample(void)
 
 	sample = *lpc_status & EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK;
 	usleep(TEST_LID_EC_RATE);
-	task_wake(TASK_ID_MOTIONSENSE);
 	while ((*lpc_status & EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK) == sample)
 		usleep(TEST_LID_SLEEP_RATE);
 }
@@ -179,6 +160,8 @@ static int test_lid_angle(void)
 
 	/* We don't have TASK_CHIP so simulate init ourselves */
 	hook_notify(HOOK_CHIPSET_SHUTDOWN);
+	/* Wait for the sensor task to start */
+	msleep(50);
 	TEST_ASSERT(sensor_active == SENSOR_ACTIVE_S5);
 	TEST_ASSERT(accel_get_data_rate(lid) == 0);
 	TEST_ASSERT(base->collection_rate == 0);
@@ -188,7 +171,7 @@ static int test_lid_angle(void)
 	/* Go to S0 state */
 	hook_notify(HOOK_CHIPSET_SUSPEND);
 	hook_notify(HOOK_CHIPSET_RESUME);
-	msleep(1000);
+	msleep(50);
 	TEST_ASSERT(sensor_active == SENSOR_ACTIVE_S0);
 	TEST_ASSERT(accel_get_data_rate(lid) == 119000);
 	TEST_ASSERT(base->collection_rate != 0);
@@ -206,12 +189,6 @@ static int test_lid_angle(void)
 	lid->xyz[Y] = 0;
 	lid->xyz[Z] = -1000;
 	gpio_set_level(GPIO_LID_OPEN, 0);
-	/* Initial wake up, like init does */
-	task_wake(TASK_ID_MOTIONSENSE);
-
-	/* wait for the EC sampling period to expire   */
-	msleep(TEST_LID_EC_RATE);
-	task_wake(TASK_ID_MOTIONSENSE);
 
 	wait_for_valid_sample();
 	TEST_ASSERT(motion_lid_get_angle() == 0);
