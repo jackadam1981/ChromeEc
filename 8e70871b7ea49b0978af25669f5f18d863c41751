@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c398211_4147a4ce",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-06T20:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1764437_f341d065",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "8e70871b7ea49b0978af25669f5f18d863c41751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bb3037a_b981c000",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e01f4e_650f2473",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-06T20:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bb3037a_b981c000",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 26
+      },
+      "revId": "8e70871b7ea49b0978af25669f5f18d863c41751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95efc1b8_2b8a2b49",
@@ -101,6 +149,30 @@
       "writtenOn": "2020-11-05T18:11:19Z",
       "side": 1,
       "message": "-",
+      "range": {
+        "startLine": 71,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 15
+      },
+      "revId": "8e70871b7ea49b0978af25669f5f18d863c41751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1e22f1_38cd621b",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-06T20:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95efc1b8_2b8a2b49",
       "range": {
         "startLine": 71,
         "startChar": 13,
