@@ -16,6 +16,24 @@
       "message": "Unfortunate. puts(3) outputs a newline. gotta love consistency 😞",
       "revId": "3f9b75672aa973a5c4f897d80c19701024617f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f809a85c_d28a4683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-06T23:12:10Z",
+      "side": 1,
+      "message": "Yes that has always bugged me. It doesn\u0027t in Zephyr or U-Boot. Unix got most things right.",
+      "parentUuid": "6bcdbd7e_1c36b8a7",
+      "revId": "3f9b75672aa973a5c4f897d80c19701024617f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
