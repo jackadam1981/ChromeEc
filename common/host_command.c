@@ -370,6 +370,10 @@ host_packet_bad:
  */
 static const struct host_command *find_host_command(int command)
 {
+	if (IS_ENABLED(CONFIG_ZEPHYR)) {
+		/* TODO(b/172678200): shim host commands for Zephyr */
+		return NULL;
+	}
 #ifdef CONFIG_HOSTCMD_SECTION_SORTED
 	const struct host_command *l, *r, *m;
 	uint32_t num;
