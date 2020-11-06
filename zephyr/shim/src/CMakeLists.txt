@@ -3,6 +3,7 @@
 # found in the LICENSE file.
 
 zephyr_sources(console.c)
+zephyr_sources(hostcmd.c)
 zephyr_sources(util.c)
 zephyr_sources(gpio.c)
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_HOOKS hooks.c)
