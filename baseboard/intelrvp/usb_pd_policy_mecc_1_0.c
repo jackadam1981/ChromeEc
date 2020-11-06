@@ -76,5 +76,9 @@ int pd_snk_is_vbus_provided(int port)
 
 int board_vbus_source_enabled(int port)
 {
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
 	return (port != DEDICATED_CHARGE_PORT && ppc_is_sourcing_vbus(port));
+#else
+	return ppc_is_sourcing_vbus(port);
+#endif
 }
