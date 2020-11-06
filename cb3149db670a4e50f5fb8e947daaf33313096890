@@ -16,6 +16,24 @@
       "message": "oh wow, we left this out of baseboard.h?!\n\ni hope this was just an oversight - i really wouldn\u0027t this\nsort of thing to behave differently among variants.\n\ncould you add this to volteer/baseboard.h and remove\nit from the variants? you can run util/compare_build.sh\nto verify that the resulting builds are identical after\nmoving the define to baseboard.h.\n",
       "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9571ea3b_80f7fae0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1418383
+      },
+      "writtenOn": "2020-11-06T11:14:32Z",
+      "side": 1,
+      "message": "hi,caveh,\n\nI try to add this EFS2 define to volteer/baseboard.h, but it will make the build board \"trondo\" fail, it seems like there is no GPIO_PACKET_MODE_EN of trondo\u0027s gpio\n\nThe error message is \"common/vboot/efs2.c:58:17: error: \u0027GPIO_PACKET_MODE_EN\u0027 undeclared did you mean \u0027GPIO_TABLET_MODE_L\u0027? gpio_set_level(GPIO_PACKET_MODE_EN, enable ? 1 : 0);\"",
+      "parentUuid": "29670b28_44114333",
+      "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
