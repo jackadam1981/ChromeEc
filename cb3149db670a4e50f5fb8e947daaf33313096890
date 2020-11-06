@@ -34,6 +34,24 @@
       "parentUuid": "29670b28_44114333",
       "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce8aad25_bd790d3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-06T16:43:22Z",
+      "side": 1,
+      "message": "That GPIO was added to Trondo in https://crrev.com/c/2519965, which merged yesterday. You should be able to build after syncing to the latest ToT.",
+      "parentUuid": "9571ea3b_80f7fae0",
+      "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
