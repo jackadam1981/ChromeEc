@@ -108,8 +108,8 @@ int hid_iface_request(usb_uint *ep0_buf_rx, usb_uint *ep0_buf_tx,
 		if (report_left == 0)
 			return -1;
 		report_size = MIN(USB_MAX_PACKET_SIZE, report_left);
-		memcpy_to_usbram((void *) usb_sram_addr(ep0_buf_tx),
-				 report_ptr, report_size);
+		/* TODO: patch report descriptor instead of all packets */
+		memcpy_to_usbram_ep0_patch(report_ptr, report_size);
 		btable_ep[0].tx_count = report_size;
 		report_left -= report_size;
 		report_ptr += report_size;
