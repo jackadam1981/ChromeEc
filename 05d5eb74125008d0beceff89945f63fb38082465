@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70be5f49_99fbe305",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-06T21:39:53Z",
+      "side": 0,
+      "message": "I think this will be some trouble here.\n\nRight now we rely on SYS_INIT to setup all of the DECLARE_HOOKS in the hook_registry.  Won\u0027t main get called before the APPLICATION sys inits?",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "05d5eb74125008d0beceff89945f63fb38082465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
