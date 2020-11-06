@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "888c4cc6_610201cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-06T21:54:23Z",
+      "side": 1,
+      "message": "called",
+      "range": {
+        "startLine": 11,
+        "startChar": 35,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "1ad9cb594f33dad2dc535386476c05c1e88adb8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "53cad155_4773b083",
@@ -49,6 +72,29 @@
       "side": 1,
       "message": "There are effectively the same for use (see comment below)",
       "parentUuid": "b4bd8feb_650b1cbe",
+      "revId": "1ad9cb594f33dad2dc535386476c05c1e88adb8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f662dd26_b7c0191f",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-06T21:54:23Z",
+      "side": 1,
+      "message": "normally",
+      "range": {
+        "startLine": 193,
+        "startChar": 38,
+        "endLine": 193,
+        "endChar": 44
+      },
       "revId": "1ad9cb594f33dad2dc535386476c05c1e88adb8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

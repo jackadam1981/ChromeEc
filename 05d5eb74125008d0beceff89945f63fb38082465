@@ -46,6 +46,30 @@
       },
       "revId": "05d5eb74125008d0beceff89945f63fb38082465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc0e1d3b_fafb7f5a",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-06T21:54:23Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "ba90cb7e_2f557d20",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "05d5eb74125008d0beceff89945f63fb38082465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
