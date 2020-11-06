@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38b0e79a_518f3a2a",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-06T21:16:42Z",
+      "side": 1,
+      "message": "Oh yes please, by filename is how we are doing it at present",
+      "parentUuid": "fbdccb3b_4d4739c4",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30d9f837_e8e9e320",
         "filename": "zephyr/Kconfig",
         "patchSetId": 12
