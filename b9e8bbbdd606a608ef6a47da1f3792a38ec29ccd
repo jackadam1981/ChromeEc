@@ -34,6 +34,24 @@
       "parentUuid": "b6a4e55d_bbbea44e",
       "revId": "b9e8bbbdd606a608ef6a47da1f3792a38ec29ccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef72c713_990e4c74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-11-06T01:38:18Z",
+      "side": 1,
+      "message": "Another check is to be sure wait_us is at -1 when in S5, and check with the console command task that the motion task is not scheduled.",
+      "parentUuid": "3da50381_aefe8917",
+      "revId": "b9e8bbbdd606a608ef6a47da1f3792a38ec29ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
