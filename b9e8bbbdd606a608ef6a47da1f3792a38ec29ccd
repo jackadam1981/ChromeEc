@@ -52,6 +52,24 @@
       "parentUuid": "3da50381_aefe8917",
       "revId": "b9e8bbbdd606a608ef6a47da1f3792a38ec29ccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d836ba_46fad478",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2020-11-06T03:43:24Z",
+      "side": 1,
+      "message": "1. Can you confirm the sensors are powered off in S5?\n\nyes, they are powerd off,after we shutdown,then plug out the accel_lid sensor,the power consumption is also over spec, and EE has confirmed that the sensor is out of power\n\n2. Another check is to be sure wait_us is at -1 when in S5, and check with the console command task that the motion task is not scheduled\n\nyes,when wait_us is -1 ,through ec console cmd \u0027taskinfo\u0027 , we can see the task time will not increase.",
+      "parentUuid": "ef72c713_990e4c74",
+      "revId": "b9e8bbbdd606a608ef6a47da1f3792a38ec29ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
