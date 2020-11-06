@@ -22,6 +22,30 @@
       },
       "revId": "ac18527ec22b6906c532f4c423fc082fdeb73880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7202ba92_34a16574",
+        "filename": "board/dooly/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-11-06T05:35:19Z",
+      "side": 1,
+      "message": "I\u0027ll upload another CL, once OEM define the behavior on red LED.",
+      "parentUuid": "fcfc36e2_777c4935",
+      "range": {
+        "startLine": 196,
+        "startChar": 31,
+        "endLine": 196,
+        "endChar": 40
+      },
+      "revId": "ac18527ec22b6906c532f4c423fc082fdeb73880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
