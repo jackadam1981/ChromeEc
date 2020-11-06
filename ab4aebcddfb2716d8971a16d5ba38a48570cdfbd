@@ -63,6 +63,75 @@
       },
       "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d9f837_e8e9e320",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-06T20:54:46Z",
+      "side": 1,
+      "message": "Until we need i2c-suboptions, this should just be a config, not menuconfig\n\nalso can we add \"depends on I2C\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 23
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc2e8ed_aee67f50",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-06T20:54:46Z",
+      "side": 1,
+      "message": "can you run clang-format on this file?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e3e00b_57ac0181",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-06T20:54:46Z",
+      "side": 1,
+      "message": "zephyr_sources_ifdef(CONFIG_PLATFORM_EC_I2C ...)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
