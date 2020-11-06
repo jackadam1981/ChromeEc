@@ -34,6 +34,12 @@
 #error "Invalid board"
 #endif
 
+/* Vivaldi keyboard */
+#ifdef BOARD_ZED
+#define CONFIG_USB_HID_KEYBOARD_VIVALDI
+#define CONFIG_USB_HID_KB_NUM_TOP_ROW_KEYS 10
+#endif
+
 #ifdef SECTION_IS_RW
 
 /* Touchpad interface, firmware size and physical dimension. */
@@ -83,7 +89,6 @@
 /* Enable to send heatmap to AP */
 #define CONFIG_USB_ISOCHRONOUS
 #elif defined(BOARD_ZED)
-#define CONFIG_USB_HID_KEYBOARD_VIVALDI
 /* TODO: update correct parameters */
 #define HAS_I2C_TOUCHPAD
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3207
