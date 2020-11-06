@@ -115,4 +115,12 @@ config PLATFORM_EC_LID_SWITCH
 	  commands in platform/ec.  This requires a GPIO named
 	  GPIO_LID_OPEN to be defined in gpio_map.h.
 
+config PLATFORM_EC_POWER_BUTTON
+	bool "Enable the power button module"
+	depends on PLATFORM_EC_HOSTCMD
+	help
+	  Enable shimming the power button implementation and related
+	  commands in platform/ec.  This requires a GPIO named
+	  GPIO_POWER_BUTTON_L in gpio_map.h.
+
 endif # PLATFORM_EC
