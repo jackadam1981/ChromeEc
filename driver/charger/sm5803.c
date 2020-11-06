@@ -1484,6 +1484,35 @@ static enum ec_error_list sm5803_set_vsys_compensation(int chgnum,
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
+/* Hardware current ramping (aka DPM: Dynamic Power Management) */
+
+#ifdef CONFIG_CHARGE_RAMP_HW
+static enum ec_error_list sm5803_set_hw_ramp(int chgnum, int enable)
+{
+	return 0;
+}
+
+static int sm5803_ramp_is_stable(int chgnum)
+{
+	return 0;
+}
+
+static int sm5803_ramp_is_detected(int chgnum)
+{
+	return 1;
+}
+
+static int sm5803_ramp_get_current_limit(int chgnum)
+{
+	int rv;
+	int input_current = 0;
+
+	rv = sm5803_get_input_current(chgnum, &input_current);
+
+	return rv ? -1 : input_current;
+}
+#endif /* CONFIG_CHARGE_RAMP_HW */
+
 #ifdef CONFIG_CMD_CHARGER_DUMP
 static int command_sm5803_dump(int argc, char **argv)
 {
@@ -1554,4 +1583,10 @@ const struct charger_drv sm5803_drv = {
 	.enable_otg_power = &sm5803_enable_otg_power,
 	.is_sourcing_otg_power = &sm5803_is_sourcing_otg_power,
 	.set_vsys_compensation = &sm5803_set_vsys_compensation,
+#ifdef CONFIG_CHARGE_RAMP_HW
+	.set_hw_ramp = &sm5803_set_hw_ramp,
+	.ramp_is_stable = &sm5803_ramp_is_stable,
+	.ramp_is_detected = &sm5803_ramp_is_detected,
+	.ramp_get_current_limit = &sm5803_ramp_get_current_limit,
+#endif
 };
