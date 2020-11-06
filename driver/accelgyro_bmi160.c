@@ -514,8 +514,7 @@ void bmi160_interrupt(enum gpio_signal signal)
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
 		last_interrupt_timestamp = __hw_clock_source_read();
 
-	task_set_event(TASK_ID_MOTIONSENSE,
-		       CONFIG_ACCELGYRO_BMI160_INT_EVENT, 0);
+	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCELGYRO_BMI160_INT_EVENT);
 }
 
 /**
@@ -701,7 +700,7 @@ static int init(const struct motion_sensor_t *s)
 		 * BMI160 was in management mode.
 		 */
 		task_set_event(TASK_ID_MOTIONSENSE,
-				CONFIG_ACCELGYRO_BMI160_INT_EVENT, 0);
+			       CONFIG_ACCELGYRO_BMI160_INT_EVENT);
 	}
 #endif
 
