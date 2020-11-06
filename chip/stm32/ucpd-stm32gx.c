@@ -70,7 +70,7 @@ void stm32gx_ucpd1_irq(void)
 	uint32_t sr = STM32_UCPD_SR(port);
 
 	if (sr & (STM32_UCPD_SR_TYPECEVT1 | STM32_UCPD_SR_TYPECEVT2)) {
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC);
 	}
 	/* Clear interrupts now that PD events have been set */
 	STM32_UCPD_ICR(port) = sr;
