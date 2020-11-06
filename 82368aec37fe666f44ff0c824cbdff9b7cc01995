@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9c64d2_852c1e9d",
+        "filename": "baseboard/intelrvp/chg_usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-11-06T22:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb82accf_279f81de",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "82368aec37fe666f44ff0c824cbdff9b7cc01995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0dc9125_23306cd0",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-06T21:43:49Z",
       "side": 1,
       "message": "You can eliminate the #ifdefs by using the updated is_typec_port()\n\n    if (is_typec_port(port))\n        return ppc_is_sourcing_vbus(port);\n    return 0;",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "82368aec37fe666f44ff0c824cbdff9b7cc01995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b5a2de_13c0e9c4",
+        "filename": "baseboard/intelrvp/usb_pd_policy_mecc_1_0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-11-06T22:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0dc9125_23306cd0",
       "range": {
         "startLine": 79,
         "startChar": 0,
