@@ -93,6 +93,30 @@
       },
       "revId": "78684c3ceac6afea6e9e911bcc240827213f49d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24340037_5880d4f8",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-06T21:57:37Z",
+      "side": 1,
+      "message": "Ah, didn\u0027t realize that.\n\n\nLooks like faft doesn\u0027t use the 8042 command directly actually. I was thinking this was general keyboard commands. We are probably not causing our selves any more trouble and we get nice sub commands!",
+      "parentUuid": "a7bc221f_9321d21b",
+      "range": {
+        "startLine": 60,
+        "startChar": 59,
+        "endLine": 60,
+        "endChar": 70
+      },
+      "revId": "78684c3ceac6afea6e9e911bcc240827213f49d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
