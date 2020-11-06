@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d3832e9_f05781af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-06T22:03:03Z",
+      "side": 1,
+      "message": "Looks good. just a few minor things to address it looks like",
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c7da1c_ce011526",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-06T22:03:03Z",
+      "side": 1,
+      "message": "this shouldn\u0027t go in this CL, right? I think it snuck in again",
+      "range": {
+        "startLine": 236,
+        "startChar": 11,
+        "endLine": 236,
+        "endChar": 23
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41064c1f_1e00381d",
@@ -148,6 +188,30 @@
       "writtenOn": "2020-11-06T20:54:46Z",
       "side": 1,
       "message": "zephyr_sources_ifdef(CONFIG_PLATFORM_EC_I2C ...)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0758508f_1a551703",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-06T22:03:03Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "39e3e00b_57ac0181",
       "range": {
         "startLine": 8,
         "startChar": 0,
