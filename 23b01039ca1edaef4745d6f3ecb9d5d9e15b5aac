@@ -22,6 +22,30 @@
       },
       "revId": "23b01039ca1edaef4745d6f3ecb9d5d9e15b5aac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da562a4_437edcf0",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-06T20:03:14Z",
+      "side": 1,
+      "message": "making this \"\u003e 0\" to follow other comments in other similar bugs.",
+      "parentUuid": "054f867c_8024e249",
+      "range": {
+        "startLine": 1328,
+        "startChar": 7,
+        "endLine": 1328,
+        "endChar": 38
+      },
+      "revId": "23b01039ca1edaef4745d6f3ecb9d5d9e15b5aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
