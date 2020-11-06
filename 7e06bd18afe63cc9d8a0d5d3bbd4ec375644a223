@@ -22,6 +22,30 @@
       },
       "revId": "7e06bd18afe63cc9d8a0d5d3bbd4ec375644a223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de650d04_1b3a3ad9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-06T23:12:14Z",
+      "side": 1,
+      "message": "Well base32 appears to not be building for Ztest since it\u0027s broken on ToT right now due to simon\u0027s changes:\n\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c: In function ‘keyboard_host_write’:\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c:238:12: error: ‘TASK_ID_KEYPROTO’ undeclared (first use in this function)\n  task_wake(TASK_ID_KEYPROTO);\n            ^\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c:238:12: note: each undeclared identifier is reported only once for each function it appears in\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c: In function ‘i8042_send_to_host’:\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c:301:12: error: ‘TASK_ID_KEYPROTO’ undeclared (first use in this function)\n  task_wake(TASK_ID_KEYPROTO);\n            ^\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c: In function ‘keyboard_state_changed’:\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c:470:13: error: ‘TASK_ID_KEYPROTO’ undeclared (first use in this function)\n   task_wake(TASK_ID_KEYPROTO);\n             ^\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c: In function ‘handle_mouse_data’:\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c:575:3: warning: implicit declaration of function ‘send_aux_data_to_device’ [-Wimplicit-function-declaration]\n   send_aux_data_to_device(data);\n   ^\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c: In function ‘keyboard_update_button’:\n/tmp/build2/modules/ec-shim/common/keyboard_8042.c:1045:13: error: ‘TASK_ID_KEYPROTO’ undeclared (first use in this function)\n   task_wake(TASK_ID_KEYPROTO);\n\nSo not broken any more than it already was.\n\nbuildall passed.",
+      "parentUuid": "89ceb1e8_9ae8b845",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "7e06bd18afe63cc9d8a0d5d3bbd4ec375644a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
