@@ -305,6 +305,7 @@ void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)
 void clock_enable_module(enum module_id module, int enable)
 {
 	if (module == MODULE_FAST_CPU) {
+		ccprintf("Fast CPU %d\n", enable);
 		/* the PLL would be off in low power mode, disable it */
 		if (enable)
 			disable_sleep(SLEEP_MASK_PLL);
@@ -455,8 +456,25 @@ static int dsleep_recovery_margin_us = 1000000;
 
 void low_power_init(void)
 {
+	/* do not clock unneeded peripherals in Sleep mode */
+#if 0
+	STM32_RCC_AHB1LPENR = 0;
+	STM32_RCC_AHB2LPENR = 0;
+	STM32_RCC_AHB3LPENR = 0;
+	STM32_RCC_APB1LPENR = (1<<0) /* TIM2 */ | (1<<17) /* USART2 */;
+	STM32_RCC_APB2LPENR = 0;
+#else /* equals to enable clocks */
+	STM32_RCC_AHB1LPENR = 0x00600003; /* DMA1+2 GPIO_A GPIO_B */
+	STM32_RCC_AHB2LPENR = 0; /* AHB2ENR 0x00000000 */
+	STM32_RCC_AHB3LPENR = 0; /* AHB3ENR 0x00000000 */
+	STM32_RCC_APB1LPENR = 0x10024401; /* PWR USART2 SPI2 RTC TIM2 */
+	STM32_RCC_APB2LPENR = 0x0000d000; /* EXTIT SYSCFG SPI1 */
+#endif
+
 	/* Turn off the main regulator during stop mode */
 	STM32_PWR_CR |= (1 << 0) /* LPDS */;
+	/*  Low-power regulator in Low Voltage and Flash memory in deep sleep */
+	STM32_PWR_CR |= (1 << 10) /* LPLVDS */;
 }
 
 void clock_refresh_console_in_use(void)
@@ -551,8 +569,10 @@ DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
 static int command_clock(int argc, char **argv)
 {
 	if (argc >= 2) {
-		if (!strcasecmp(argv[1], "hsi"))
+		if (!strcasecmp(argv[1], "hsi")) {
 			clock_set_osc(OSC_HSI);
+			enable_sleep(SLEEP_MASK_PLL);
+		}
 #ifdef CONFIG_STM32_CLOCK_HSE_HZ
 		else if (!strcasecmp(argv[1], "hse"))
 			clock_set_osc(OSC_HSE);
@@ -567,3 +587,24 @@ static int command_clock(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(clock, command_clock,
 			"hsi | hse | pll", "Set clock source");
+
+static int command_stop(int argc, char **argv)
+{
+	ccputs("STOP forever...\n");
+	cflush();
+
+	asm volatile("cpsid i");
+	/* set deep sleep bit */
+	CPU_SCB_SYSCTRL |= 0x4;
+	/* ensure outstanding memory transactions complete */
+	asm volatile("dsb");
+	asm("wfi");
+
+	CPU_SCB_SYSCTRL &= ~0x4;
+	asm volatile("cpsie i");
+
+	ccputs("back? oh no...\n");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(stop, command_stop,
+			"", "Test low power baseline");
