@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f803350b_01b14ec3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-11-06T13:45:23Z",
+      "side": 1,
+      "message": "I guess the patch is not urgent, so I will wait with merging it until the commented issue is resolved.",
+      "revId": "75fe7f8dceb038463f50497fcc136944c060f3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e61f41_79e3743f",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-11-06T13:45:23Z",
+      "side": 1,
+      "message": "As in the comment, I get the error\n\nbuild/it8xxx2_evb/RW/chip/it83xx/adc.o: in function `adc_enable_channel\u0027:\n/home/dn/trunk/src/platform/ec/chip/it83xx/adc.c:91:(.text.adc_read_channel+0xc0): relocation truncated to fit: R_RISCV_RVC_JUMP against symbol `task_get_current\u0027 defined in .ram_code section in build/it8xxx2_evb/RW/core/riscv-rv32i/task.o\n\nfor \"make BOARD\u003dit8xxx2_evb\".\nWith the function the issue does not occur.\nDo you know anyone who can help with this easily(riscv/it8xx2 stuff) or I should debug it by myself?",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 67
+      },
+      "revId": "75fe7f8dceb038463f50497fcc136944c060f3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
