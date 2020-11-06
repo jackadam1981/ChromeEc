@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53cad155_4773b083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-06T21:33:24Z",
+      "side": 1,
+      "message": "I realized that we can\u0027t actually use SYS_INIT for everything we have been so far. I switched it to call from main. This will let us sequencing things in main properly (e.g. vboot).",
+      "revId": "1ad9cb594f33dad2dc535386476c05c1e88adb8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
