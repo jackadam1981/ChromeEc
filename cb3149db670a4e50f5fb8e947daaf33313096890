@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29670b28_44114333",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-11-06T07:49:05Z",
+      "side": 1,
+      "message": "oh wow, we left this out of baseboard.h?!\n\ni hope this was just an oversight - i really wouldn\u0027t this\nsort of thing to behave differently among variants.\n\ncould you add this to volteer/baseboard.h and remove\nit from the variants? you can run util/compare_build.sh\nto verify that the resulting builds are identical after\nmoving the define to baseboard.h.\n",
+      "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
