@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bab0472a_25dbe50a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-06T22:14:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "888c4cc6_610201cd",
+      "range": {
+        "startLine": 11,
+        "startChar": 35,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "1ad9cb594f33dad2dc535386476c05c1e88adb8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "53cad155_4773b083",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -89,6 +113,30 @@
       "writtenOn": "2020-11-06T21:54:23Z",
       "side": 1,
       "message": "normally",
+      "range": {
+        "startLine": 193,
+        "startChar": 38,
+        "endLine": 193,
+        "endChar": 44
+      },
+      "revId": "1ad9cb594f33dad2dc535386476c05c1e88adb8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d13a9d_e1cf88fa",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-06T22:14:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f662dd26_b7c0191f",
       "range": {
         "startLine": 193,
         "startChar": 38,
