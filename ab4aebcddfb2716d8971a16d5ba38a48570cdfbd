@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f994b5b_969b7e6d",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-07T18:13:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19c7da1c_ce011526",
+      "range": {
+        "startLine": 236,
+        "startChar": 11,
+        "endLine": 236,
+        "endChar": 23
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41064c1f_1e00381d",
@@ -129,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d73d8392_52574aa9",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-07T18:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38b0e79a_518f3a2a",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30d9f837_e8e9e320",
@@ -152,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2974a6b_dd4ba4d2",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-07T18:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30d9f837_e8e9e320",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 23
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfc2e8ed_aee67f50",
@@ -165,6 +237,30 @@
       "writtenOn": "2020-11-06T20:54:46Z",
       "side": 1,
       "message": "can you run clang-format on this file?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53025c9e_b1c5ad61",
+        "filename": "zephyr/shim/chip/npcx/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-07T18:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc2e8ed_aee67f50",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -212,6 +308,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "39e3e00b_57ac0181",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "ab4aebcddfb2716d8971a16d5ba38a48570cdfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d548d020_090f78f1",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-07T18:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0758508f_1a551703",
       "range": {
         "startLine": 8,
         "startChar": 0,
