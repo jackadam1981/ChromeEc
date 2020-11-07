@@ -70,6 +70,24 @@
       "parentUuid": "ce8aad25_bd790d3b",
       "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5189d2d2_494f3e53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-11-07T04:34:42Z",
+      "side": 1,
+      "message": "sad, looks like we missed trondo - trondo should be running EFS2 as well.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2523307\n\nlet\u0027s get that fixed before moving EFS2 into baseboard.h.\n\nit\u0027s better to land this patch, then follow up with a\nclean-up patch to consolidate EFS2 in baseboard.h",
+      "parentUuid": "f4e74a70_a2864982",
+      "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
