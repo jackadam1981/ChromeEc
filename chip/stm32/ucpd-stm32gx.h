@@ -54,6 +54,11 @@ enum ucpd_tx_ordset {
 					(UCPD_SYNC2<<15u)),
 };
 
+/* TX mode message types */
+#define STM32_UCPD_CR_TXMODE_DEF     0
+#define STM32_UCPD_CR_TXMODE_CBL_RST 1
+#define STM32_UCPD_CR_TXMODE_BIST    2
+
 /**
  * STM32Gx UCPD implementation of tcpci .init method
  *
@@ -107,5 +112,48 @@ int stm32gx_ucpd_set_cc(int usbc_port, int cc_pull, int rp);
  * @return EC_SUCCESS
  */
 int stm32gx_ucpd_set_polarity(int usbc_port, enum tcpc_cc_polarity polarity);
+
+/**
+ * STM32Gx UCPD implementation of tcpci .set_rx_enable method
+ *
+ * @param usbc_port -> USB-C Port number
+ * @param enable -> on/off for USB-PD messages
+ * @return EC_SUCCESS
+ */
+int stm32gx_ucpd_set_rx_enable(int port, int enable);
+
+/**
+ * STM32Gx UCPD implementation of tcpci .set_msg_header method
+ *
+ * @param usbc_port -> USB-C Port number
+ * @param power_role -> port's current power role
+ * @param data_role -> port's current data role
+ * @return EC_SUCCESS
+ */
+int stm32gx_ucpd_set_msg_header(int port, int power_role, int data_role);
+
+/**
+ * STM32Gx UCPD implementation of tcpci .transmit method
+ *
+ * @param usbc_port -> USB-C Port number
+ * @param type -> SOP/SOP'/SOP'' etc
+ * @param header -> usb pd message header
+ * @param *data -> pointer to message contents
+ * @return EC_SUCCESS
+ */
+int stm32gx_ucpd_transmit(int port,
+			enum tcpm_transmit_type type,
+			uint16_t header,
+			  const uint32_t *data);
+
+/**
+ * STM32Gx UCPD implementation of tcpci .get_message_raw method
+ *
+ * @param usbc_port -> USB-C Port number
+ * @param *payload -> pointer to where message should be written
+ * @param *head -> pointer to message header
+ * @return EC_SUCCESS
+ */
+int stm32gx_ucpd_get_message_raw(int port, uint32_t *payload, int *head);
 
 #endif /* __CROS_EC_UCPD_STM32GX_H */
