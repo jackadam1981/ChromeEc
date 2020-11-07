@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c705f970_d01b99f8",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-11-07T00:01:59Z",
+      "side": 1,
+      "message": "Double pull should be OK right?",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "210078e2326c172bf530a06acd262e15ca00013a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
