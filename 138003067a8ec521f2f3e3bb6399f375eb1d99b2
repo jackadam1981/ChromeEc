@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95b27f3_c506a6ef",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6964,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-07T01:40:31Z",
+      "side": 1,
+      "message": "Using \"_v2\" for \"hostcmd v1 battery static info\" seems a bit confusing.",
+      "revId": "138003067a8ec521f2f3e3bb6399f375eb1d99b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf2ac198_fb0766f4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6979,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-07T01:40:31Z",
+      "side": 1,
+      "message": "Any reason for 12? Add a #define for it?",
+      "range": {
+        "startLine": 6979,
+        "startChar": 23,
+        "endLine": 6979,
+        "endChar": 25
+      },
+      "revId": "138003067a8ec521f2f3e3bb6399f375eb1d99b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
