@@ -52,6 +52,24 @@
       "parentUuid": "9571ea3b_80f7fae0",
       "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e74a70_a2864982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1418383
+      },
+      "writtenOn": "2020-11-07T03:50:52Z",
+      "side": 1,
+      "message": "hi. Abe,\nDoes it need to add \"#define GPIO_PACKET_MODE_EN  GPIO_EC_H1_PACKET_MODE\" in board/trondo/board.h ?",
+      "parentUuid": "ce8aad25_bd790d3b",
+      "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
