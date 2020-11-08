@@ -16,6 +16,23 @@
       "message": "carrying +2 after minor change (switched weird linker symbols to a straightforward IS_ENABLED)",
       "revId": "298b71accd3a94fdca72fa638481f92ceca17cb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e25b5ef_87899994",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-08T15:19:55Z",
+      "side": 1,
+      "message": "chromeos-ec-0.0.2-r8520: \u001b[01m\u001b[Kcommon/host_command.c:400:2:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[KISO C90 forbids mixed declarations and code [\u001b[01;31m\u001b[K-Werror\u003ddeclaration-after-statement\u001b[m\u001b[K]\n",
+      "revId": "298b71accd3a94fdca72fa638481f92ceca17cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
