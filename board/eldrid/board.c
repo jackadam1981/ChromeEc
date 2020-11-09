@@ -24,6 +24,7 @@
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "isl9241.h"
 #include "keyboard_raw.h"
 #include "lid_switch.h"
 #include "keyboard_scan.h"
@@ -134,6 +135,12 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 					CONFIG_CHARGER_INPUT_CURRENT),
 					charge_mv);
 }
+
+static void set_ac_prochot(void)
+{
+	isl9241_set_ac_prochot(CHARGER_SOLO, ELDRID_AC_PROCHOT_CURRENT_MA);
+}
+DECLARE_HOOK(HOOK_INIT, set_ac_prochot, HOOK_PRIO_DEFAULT);
 
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
