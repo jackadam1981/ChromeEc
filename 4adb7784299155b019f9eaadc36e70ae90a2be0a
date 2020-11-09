@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231a9fbb_97811546",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-09T22:44:49Z",
+      "side": 1,
+      "message": "Rename seems fine but formatting needs fixed in some spots....",
+      "revId": "4adb7784299155b019f9eaadc36e70ae90a2be0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "030c6070_c4146ee4",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-09T22:44:49Z",
+      "side": 1,
+      "message": "indentation on the following line needs corrected now that line above was.\n\nYou can use clang_format_patch.py to automatically correct this.",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 57
+      },
+      "revId": "4adb7784299155b019f9eaadc36e70ae90a2be0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c707aa71_e3314276",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-09T22:44:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "4adb7784299155b019f9eaadc36e70ae90a2be0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f43baf8f_2743728a",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-09T22:44:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 211,
+        "endChar": 4
+      },
+      "revId": "4adb7784299155b019f9eaadc36e70ae90a2be0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
