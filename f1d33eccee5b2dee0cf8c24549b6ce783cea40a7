@@ -22,6 +22,30 @@
       },
       "revId": "f1d33eccee5b2dee0cf8c24549b6ce783cea40a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cb64be_3d34d2e0",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-09T23:13:31Z",
+      "side": 1,
+      "message": "We can add a choice if it becomes one later :)\n\nNo need to for now....",
+      "parentUuid": "a8273ddc_bc9e837b",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "f1d33eccee5b2dee0cf8c24549b6ce783cea40a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
