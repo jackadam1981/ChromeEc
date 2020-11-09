@@ -1360,7 +1360,7 @@ static void init_vif_component_general_pd_fields(
 			"Manufacturer_Info_Supported_Port",
 			IS_ENABLED(CONFIG_USB_PD_MANUFACTURER_INFO));
 
-	{
+	if (IS_ENABLED(CONFIG_USB_PD_MANUFACTURER_INFO)) {
 		char hex_str[10];
 
 		#if defined(CONFIG_USB_PID)
