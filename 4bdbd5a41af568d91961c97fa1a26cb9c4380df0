@@ -16,6 +16,24 @@
       "message": "Hi Dino, thank you for looking into this. Along with the new efforts to migrate the EC over to Zephyr (https://www.zephyrproject.org/) we\u0027ve started migrating towards their API which is to use irq_lock and irq_unlock. For now these have been stubbed and simply call down into interrupt_disable and interrupt_enable but eventually we\u0027ll remove the underlying interrupt_* calls. For now we\u0027ll add some basic support for nesting interrupt toggles which should suffice (I\u0027ll make sure to CC you on these changes) but we\u0027ll be migrating the API over to the Zephyr one.",
       "revId": "4bdbd5a41af568d91961c97fa1a26cb9c4380df0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c41aae8_b10e9e27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-11-09T03:25:34Z",
+      "side": 1,
+      "message": "Got it, thank you Yuval.",
+      "parentUuid": "d5f54929_d92c1b56",
+      "revId": "4bdbd5a41af568d91961c97fa1a26cb9c4380df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
