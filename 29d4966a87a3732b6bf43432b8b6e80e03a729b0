@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f38f686_23162e6a",
+        "filename": "util/genvif.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-09T19:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2360e7e_e5cdd848",
+      "range": {
+        "startLine": 1358,
+        "startChar": 0,
+        "endLine": 1358,
+        "endChar": 51
+      },
+      "revId": "29d4966a87a3732b6bf43432b8b6e80e03a729b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baa6a18a_eba183ab",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89b3369d_97a1bfb3",
+        "filename": "util/genvif.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-09T19:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baa6a18a_eba183ab",
+      "range": {
+        "startLine": 1361,
+        "startChar": 0,
+        "endLine": 1365,
+        "endChar": 0
+      },
+      "revId": "29d4966a87a3732b6bf43432b8b6e80e03a729b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4094fd7e_4836e11f",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-09T18:40:57Z",
       "side": 1,
       "message": "Nit - change guard to early exit.  \n    if (!TPCMV2) return",
+      "range": {
+        "startLine": 1891,
+        "startChar": 0,
+        "endLine": 1891,
+        "endChar": 40
+      },
+      "revId": "29d4966a87a3732b6bf43432b8b6e80e03a729b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "face21a9_048895d0",
+        "filename": "util/genvif.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1891,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-09T19:59:25Z",
+      "side": 1,
+      "message": "I am not sure this guard needs to exist.  It gets removed in XID_SOP CL",
+      "parentUuid": "4094fd7e_4836e11f",
       "range": {
         "startLine": 1891,
         "startChar": 0,
