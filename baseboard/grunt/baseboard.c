@@ -406,6 +406,13 @@ static void baseboard_chipset_shutdown(void)
 {
 	/* Disable sensor power (lid accel, gyro) in S5. */
 	gpio_set_level(GPIO_EN_PP1800_SENSOR, 0);
+	/*
+	 * Disable USB-C port 0 VBUS source. This is normally done for us,
+	 * except if DTS (debug accessory) is connected. Our SN5S330 PPC needs
+	 * PP1_EN=0 before 5V power is turned off in G3 so that SBU remains
+	 * connected for CCD.
+	 */
+	ppc_vbus_source_enable(0, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
