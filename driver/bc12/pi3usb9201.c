@@ -274,6 +274,9 @@ static void pi3usb9201_usb_charger_task(const int port)
 				 * completed.
 				 */
 				bc12_update_charge_manager(port, client);
+			else
+				bc12_update_charge_manager(port,
+					1 << (CHG_RESERVED));
 			if (!rv && host) {
 				/*
 				 * Switch to SDP after device is plugged in to
