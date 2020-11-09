@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2360e7e_e5cdd848",
+        "filename": "util/genvif.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-09T18:40:57Z",
+      "side": 1,
+      "message": "Move this to another CL.",
+      "range": {
+        "startLine": 1358,
+        "startChar": 0,
+        "endLine": 1358,
+        "endChar": 51
+      },
+      "revId": "29d4966a87a3732b6bf43432b8b6e80e03a729b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baa6a18a_eba183ab",
+        "filename": "util/genvif.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-09T18:40:57Z",
+      "side": 1,
+      "message": "Same - move to a separate CL.",
+      "range": {
+        "startLine": 1361,
+        "startChar": 0,
+        "endLine": 1365,
+        "endChar": 0
+      },
+      "revId": "29d4966a87a3732b6bf43432b8b6e80e03a729b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4094fd7e_4836e11f",
+        "filename": "util/genvif.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1891,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-09T18:40:57Z",
+      "side": 1,
+      "message": "Nit - change guard to early exit.  \n    if (!TPCMV2) return",
+      "range": {
+        "startLine": 1891,
+        "startChar": 0,
+        "endLine": 1891,
+        "endChar": 40
+      },
+      "revId": "29d4966a87a3732b6bf43432b8b6e80e03a729b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
