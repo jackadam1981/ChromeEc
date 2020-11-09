@@ -29,7 +29,7 @@
 #include "usb_emsg.h"
 #include "usb_sm.h"
 #include "usbc_ppc.h"
-
+#include "usb_charge.h"
 /*
  * USB Policy Engine Sink / Source module
  *
@@ -2218,6 +2218,18 @@ static void extended_message_not_supported(int port, uint32_t *payload)
 static void pe_src_ready_entry(int port)
 {
 	print_current_state(port);
+
+	/* Update BC12 status */
+	if (IS_ENABLED(CONFIG_BC12_DETECT_PI3USB9201)) {
+		if (port == 0)
+			task_set_event(TASK_ID_USB_CHG_P0,
+				USB_CHG_EVENT_BC12, 0);
+#if (CONFIG_USB_PD_PORT_MAX_COUNT > 1)
+		else if (port == 1)
+			task_set_event(TASK_ID_USB_CHG_P1,
+				USB_CHG_EVENT_BC12, 0);
+#endif
+	}
 
 	/* Ensure any message send flags are cleaned up */
 	PE_CLR_FLAG(port, PE_FLAGS_READY_CLR);
