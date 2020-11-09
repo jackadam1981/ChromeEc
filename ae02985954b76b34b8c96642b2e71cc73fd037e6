@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bbd75b_cd62cd27",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-09T20:40:11Z",
+      "side": 1,
+      "message": "Nit - this is cleaner if you use the CONFIG_USB_PD_MANUFACTURER_INFO once. For example\n\n    if (IS_ENABLED(CONFIG_USB_PD_MANUFACTURER_INFO))\n        Manfacturer_Info_Supported_Port \u003d 1\n        Manufacturer_Info_PID_Port \u003d PID\n    else\n        Manfacturer_Info_Supported_Port \u003d 0\n\nBut this is just my preference.",
+      "range": {
+        "startLine": 1363,
+        "startChar": 0,
+        "endLine": 1363,
+        "endChar": 51
+      },
+      "revId": "ae02985954b76b34b8c96642b2e71cc73fd037e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
