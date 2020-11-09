@@ -39,6 +39,30 @@
       },
       "revId": "6042f9e9325b8030c8955cb6a9131c981de60dc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdcb38c0_ca415a49",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-11-09T07:10:12Z",
+      "side": 1,
+      "message": "Copied comment from patchet 1:\n\nAs in the comment, I get the error\n\nbuild/it8xxx2_evb/RW/chip/it83xx/adc.o: in function `adc_enable_channel\u0027:\n/home/dn/trunk/src/platform/ec/chip/it83xx/adc.c:91:(.text.adc_read_channel+0xc0): relocation truncated to fit: R_RISCV_RVC_JUMP against symbol `task_get_current\u0027 defined in .ram_code section in build/it8xxx2_evb/RW/core/riscv-rv32i/task.o\n\nfor \"make BOARD\u003dit8xxx2_evb\".\nWith the \"remove_me\" function which is never called the issue does not occur.\nDo you know anyone who can help with this easily(riscv/it8xx2 stuff) or I should debug it by myself?",
+      "parentUuid": "b2d1dffd_e7b8f87a",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 0
+      },
+      "revId": "6042f9e9325b8030c8955cb6a9131c981de60dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
