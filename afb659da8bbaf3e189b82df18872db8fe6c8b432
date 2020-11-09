@@ -34,6 +34,40 @@
       "parentUuid": "cf576d32_51c9ea76",
       "revId": "afb659da8bbaf3e189b82df18872db8fe6c8b432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7becd7eb_0118c563",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-09T22:38:43Z",
+      "side": 1,
+      "message": "Please see the comment in board.h and rebase this change to fix the compile error.",
+      "revId": "afb659da8bbaf3e189b82df18872db8fe6c8b432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f091ab5_bea2215a",
+        "filename": "board/drobit/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-09T22:38:43Z",
+      "side": 1,
+      "message": "Due to CL:2488937, you also need to this line to fix the compile error.\n    #undef CONFIG_ACCEL_FIFO_SIZE",
+      "revId": "afb659da8bbaf3e189b82df18872db8fe6c8b432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
