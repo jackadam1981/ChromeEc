@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26932de5_68d4277d",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-09T16:56:15Z",
+      "side": 1,
+      "message": "See comment on bug - I think this is only true if CONFIG_CHARGER is not used.\n\nA comment here or in the commit message detailing the conditions in which we want t set unconstrained power would be helpful.",
+      "range": {
+        "startLine": 1328,
+        "startChar": 6,
+        "endLine": 1328,
+        "endChar": 39
+      },
+      "revId": "a30cc8dcbbbb39ca2f87458da8d192d46b6a7626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
