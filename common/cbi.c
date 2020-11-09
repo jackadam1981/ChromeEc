@@ -26,7 +26,7 @@
  */
 uint8_t cbi_crc8(const struct cbi_header *h)
 {
-	return crc8((uint8_t *)&h->crc + 1,
+	return cros_crc8((uint8_t *)&h->crc + 1,
 		    h->total_size - sizeof(h->magic) - sizeof(h->crc));
 }
 
