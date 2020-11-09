@@ -22,6 +22,30 @@
       },
       "revId": "a30cc8dcbbbb39ca2f87458da8d192d46b6a7626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2074e0db_eea94287",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-09T17:38:38Z",
+      "side": 1,
+      "message": "CONFIG_CHARGER added to the condition and split it up for easier readability",
+      "parentUuid": "26932de5_68d4277d",
+      "range": {
+        "startLine": 1328,
+        "startChar": 6,
+        "endLine": 1328,
+        "endChar": 39
+      },
+      "revId": "a30cc8dcbbbb39ca2f87458da8d192d46b6a7626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
