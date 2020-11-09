@@ -4,12 +4,17 @@
  */
 
 /* Volteer board-specific configuration */
+#include "battery.h"
+#include "battery_smart.h"
 #include "button.h"
 #include "common.h"
 #include "accelgyro.h"
+#include "board.h"
 #include "cbi_ec_fw_config.h"
+#include "charger.h"
 #include "charge_state_v2.h"
 #include "driver/accel_bma2x2.h"
+#include "driver/charger/isl9241.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/sn5s330.h"
@@ -47,6 +52,8 @@
 #include "gpio_list.h" /* Must come after other header files. */
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
+
+static int fake_state_of_charge = -1;
 
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {
@@ -545,3 +552,111 @@ int ppc_get_alert_status(int port)
 	else
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
+
+
+/*static int battery_supports_pec(void)
+{
+	static int supports_pec = -1;
+
+	if (!IS_ENABLED(CONFIG_SMBUS_PEC))
+		return 0;
+
+	if (supports_pec < 0) {
+		int spec_info;
+		int rv = i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				    SB_SPECIFICATION_INFO, &spec_info);
+		if (rv)
+			return 0;
+
+		supports_pec = (BATTERY_SPEC_VERSION(spec_info) ==
+				BATTERY_SPEC_VER_1_1_WITH_PEC);
+		CPRINTS("battery supports pec: %d", supports_pec);
+	}
+	return supports_pec;
+}*/
+
+/*test_mockable int sb_read(int cmd, int *param)
+{
+	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
+
+#ifdef CONFIG_BATTERY_CUT_OFF
+
+	if (battery_is_cut_off())
+		return EC_RES_ACCESS_DENIED;
+#endif
+	if (battery_supports_pec())
+		addr_flags |= I2C_FLAG_PEC;
+
+	return i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+}*/
+
+/*inline enum ec_error_list isl9241_read(int chgnum, int offset,
+					      int *value)
+{
+	return i2c_read16(chg_chips[chgnum].i2c_port,
+			  chg_chips[chgnum].i2c_addr_flags,
+			  offset, value);
+}*/
+
+static enum ec_status
+host_command_get_chg_info(struct host_cmd_handler_args *args)
+//static void host_command_get_chg_info(void)
+{
+	const struct ec_params_get_chg_info *p = args->params;
+	struct ec_response_get_chg_info *r1 = args->response;
+	struct batt_params batt_new = {0};
+	int voltage=0;
+	int current=0;
+	int cycle_count=0;
+
+
+	if(p->index !=0)
+		return EC_RES_SUCCESS;
+
+	/* RSOC */
+	if (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge)
+	    && fake_state_of_charge < 0)
+		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
+	r1->RSOC = batt_new.state_of_charge;
+
+	/*Get battery current and voltage*/
+	if (sb_read(SB_VOLTAGE, &batt_new.voltage))
+		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
+	r1->charge_voltage = batt_new.voltage;
+
+	if (sb_read(SB_CURRENT, &batt_new.current))
+		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
+	else
+		batt_new.current = (int16_t)batt_new.current;
+	r1->charge_current = batt_new.current;
+
+	i2c_read16(I2C_PORT_CHARGER,
+			  ISL9241_ADDR_FLAGS,
+			  ISL9241_REG_CHG_CURRENT_LIMIT, &current);
+	r1->ChargingCurrent = current;
+
+	i2c_read16(I2C_PORT_CHARGER,
+			  ISL9241_ADDR_FLAGS,
+			  ISL9241_REG_MAX_SYSTEM_VOLTAGE, &voltage);
+	r1->ChargingVoltage = voltage;
+
+	sb_read(SB_REMAINING_CAPACITY, &batt_new.remaining_capacity);
+	r1->remaining_capacity = batt_new.remaining_capacity;
+
+	sb_read(SB_FULL_CHARGE_CAPACITY, &batt_new.full_capacity);
+	r1->full_capacity = batt_new.full_capacity;
+
+	sb_read(SB_CYCLE_COUNT, &cycle_count);
+	r1->cycle_count = cycle_count;
+
+	if (sb_read(SB_TEMPERATURE, &batt_new.temperature))
+		batt_new.flags |= BATT_FLAG_BAD_TEMPERATURE;
+	r1->temp = batt_new.temperature;
+
+	battery_compensate_params(&batt_new);
+	r1->RSOC_dis = batt_new.display_charge;
+
+	args->response_size = sizeof(*r1);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_CHARGER_INFO, host_command_get_chg_info, EC_VER_MASK(0));

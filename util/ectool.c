@@ -10146,8 +10146,22 @@ int cmd_cec(int argc, char *argv[])
 	return -1;
 }
 
+int cmd_eldrid(int argc, char *argv[])
+{
+	struct ec_params_get_chg_info p;
+	struct ec_response_get_chg_info r;
+	int rv;
+	p.index=0;
+	rv = ec_command(EC_CMD_GET_CHARGER_INFO, 0, &p, sizeof(p), &r, sizeof(r));
+	printf("Current:%d mA, Voltage:%d mV, RemainCapacity:%d mAh/mWh, display:%d.%d %%, calculate: %d %%\n",
+		r.charge_current, r.charge_voltage, r.remaining_capacity, r.RSOC_dis/10,r.RSOC_dis%10 , r.RSOC);
+
+	return rv;
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
+	{"eldrid", cmd_eldrid},
 	{"adcread", cmd_adc_read},
 	{"addentropy", cmd_add_entropy},
 	{"apreset", cmd_apreset},
