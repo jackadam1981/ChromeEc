@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3646e055_13a8ea7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-09T19:09:25Z",
+      "side": 1,
+      "message": "This works to avoid breaking CCD, but platform_ServoPowerStateController test still fails. I\u0027m not sure why yet.",
+      "revId": "4cba26fce5d61e0f1bab82be4801343e8c2bf34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
