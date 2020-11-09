@@ -8,6 +8,7 @@
 #include "common.h"
 #include "console.h"
 #include "crc.h"
+#include "crc8.h"
 #include "test_util.h"
 #include "util.h"
 
