@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb763e4_2cedf224",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-09T04:11:36Z",
+      "side": 1,
+      "message": "I don\u0027t currently have a device with a magnetometer available to me but if we added a unit test to reproduce the error and show that it passed with this change would that suffice to give it the Verified +1?",
+      "revId": "b4917b88fae247b9aa348dd3eee8312424c0c7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba7708a_bc8e26e4",
