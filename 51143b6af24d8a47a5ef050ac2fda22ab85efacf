@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c9a5d7_85b75b39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-09T19:24:31Z",
+      "side": 1,
+      "message": "Also, please check all code paths that call usb_mux_set_safe_mode() and ensure that blocking for 112.5 ms will not disrupt any PD timing requirements.\n\nI\u0027ll note the usb_mux_set() function includes this comment.  The mux ACK handshake may require breaking out mux operations into a task separate from the PD task.\n\n/*\n * TODO(crbug.com/505480): Setting muxes often involves I2C transcations,\n * which can block. Consider implementing an asynchronous task.\n */\n",
+      "revId": "51143b6af24d8a47a5ef050ac2fda22ab85efacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f553c188_6c1c17b9",
