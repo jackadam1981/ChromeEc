@@ -267,8 +267,8 @@ static void force_mkbp_if_events(void)
 
 	mutex_lock(&state.lock);
 	if (state.interrupt == INTERRUPT_ACTIVE) {
+		state.interrupt = INTERRUPT_INACTIVE;
 		if (++state.failed_attempts < 3) {
-			state.interrupt = INTERRUPT_INACTIVE;
 			toggled = 1;
 		}
 	}
