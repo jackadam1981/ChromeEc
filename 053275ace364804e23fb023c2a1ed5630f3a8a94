@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "99754c6d_252b157a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-10T05:08:57Z",
+      "side": 1,
+      "message": "file another crosbug , looks like its very old",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f248ed4_2f3a47c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-10T05:08:57Z",
+      "side": 1,
+      "message": "use one",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 64
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0ebd27e3_b6f3641a",
@@ -14,6 +60,29 @@
       "writtenOn": "2020-11-10T02:57:59Z",
       "side": 1,
       "message": "Please review the changes",
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb07a3b_630f40bf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6027,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-10T05:08:57Z",
+      "side": 1,
+      "message": "refer comments from Keith here. may be need to increase the version \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2366127/13/include/ec_commands.h",
+      "range": {
+        "startLine": 6027,
+        "startChar": 7,
+        "endLine": 6027,
+        "endChar": 33
+      },
       "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
