@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ba4f12_6e82e567",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-10T16:33:20Z",
+      "side": 1,
+      "message": "BRANCH\u003dnone",
+      "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b6f9da_d61ebc0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-10T16:33:20Z",
+      "side": 1,
+      "message": "This is redundant with the following line.",
+      "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a0635a_240ec48b",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-10T16:33:20Z",
+      "side": 1,
+      "message": "The existing values only use 1 bit. Are more layouts expected? If so, how many?",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
