@@ -267,17 +267,46 @@ static void force_mkbp_if_events(void)
 
 	mutex_lock(&state.lock);
 	if (state.interrupt == INTERRUPT_ACTIVE) {
-		if (++state.failed_attempts < 3) {
-			state.interrupt = INTERRUPT_INACTIVE;
+		/*
+		 * It is safe to mark interrupt state as INACTIVE, because
+		 * force_mkbp_with_events() function can be only scheduled by
+		 * activate_mkbp_with_event() which will set interrupt state
+		 * to ACTIVE (and allow to increment failed_attempts counter).
+		 * After 3 attempts, we are setting interrupt state to INACTIVE
+		 * but we are not going to call activate_mkbp_with_events().
+		 * This was meant to unblock MKBP interrupt mechanism for new
+		 * events.
+		 */
+		state.interrupt = INTERRUPT_INACTIVE;
+		/*
+		 * Failed attempts counter is cleared only when AP pulls all
+		 * of events or we exceed number of attempts, so marking
+		 * interrupt as INACTIVE doesn't affect failed_attempts counter.
+		 * If we need to send interrupt once again
+		 * activate_mkbp_with_events() will set interrupt state to active
+		 * before this function will be called.
+		 */
+		if (++state.failed_attempts < 3)
 			toggled = 1;
+		else {
+			/*
+			 * If we exceed maximum number of failed attempts we
+			 * will stop trying to send MKBP interrupt for current
+			 * event (toggled == 0), but leaving possibility to
+			 * send MKBP interrupts for future events (state of
+			 * interrupt makred as inactive). Future events should
+			 * have a chance to be sent 3 times, so we should clear
+			 * failed attempts counter now
+			 */
+			state.failed_attempts = 0;
 		}
 	}
 	mutex_unlock(&state.lock);
 
-	if (toggled)
+	if (toggled) {
 		CPRINTS("MKBP not cleared within threshold, toggling.");
-
-	activate_mkbp_with_events(0);
+		activate_mkbp_with_events(0);
+	}
 }
 
 test_mockable int mkbp_send_event(uint8_t event_type)
