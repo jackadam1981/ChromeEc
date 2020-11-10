@@ -43,7 +43,7 @@
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 #include "util.h"
-
+#include "isl9241.h"
 #include "gpio_list.h" /* Must come after other header files. */
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
@@ -133,6 +133,36 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 	charge_set_input_current_limit(MAX(charge_ma,
 					CONFIG_CHARGER_INPUT_CURRENT),
 					charge_mv);
+}
+
+static inline enum ec_error_list isl9241_read(int chgnum, int offset,
+					      int *value)
+{
+	return i2c_read16(chg_chips[chgnum].i2c_port,
+			  chg_chips[chgnum].i2c_addr_flags,
+			  offset, value);
+}
+
+__overridable void board_set_prochot(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	int lim;
+	int reg;
+	isl9241_read(0, ISL9241_REG_IADP_ADC_RESULTS, &reg);
+
+	/* LSB value of register = 22.2mA */
+	lim = (reg * 222) / 10;
+
+	if (max_ma * charge_mv >= 50000000) {
+		if(lim > 3100) {
+			gpio_set_level(GPIO_CPU_PROCHOT, 0);
+		}
+	} else {
+		if(lim > 2800) {
+			gpio_set_level(GPIO_CPU_PROCHOT, 0);
+		}
+	}
+	
 }
 
 /******************************************************************************/
