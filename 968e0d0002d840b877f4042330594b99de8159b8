@@ -16,6 +16,29 @@
       "message": "Resolved the review comments. Please review the changes further.",
       "revId": "968e0d0002d840b877f4042330594b99de8159b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e41f9788_ecf23ccb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6027,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-10T21:07:37Z",
+      "side": 1,
+      "message": "refer this example, do multiple versions. Sync up with Sooraj\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/usb_pd_host_cmd.c#299",
+      "range": {
+        "startLine": 6027,
+        "startChar": 7,
+        "endLine": 6027,
+        "endChar": 33
+      },
+      "revId": "968e0d0002d840b877f4042330594b99de8159b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
