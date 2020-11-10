@@ -1,0 +1,170 @@
+/* -*- mode:c -*-
+ *
+ * Copyright 2019 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Intel TGL-U-RVP-ITE board-specific configuration */
+
+/*
+ * Declare symbolic names for all the GPIOs that we care about.
+ * Note: Those with interrupt handlers must be declared first.
+ */
+
+/* Power sequencing interrupts */
+GPIO_INT(DSW_PWROK_EC,		PIN(C, 0), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(ALL_SYS_PWRGD_EC,	PIN(F, 0), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(RSMRST_PWRGD_EC,	PIN(F, 1), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(PM_SLP_SUS_EC, 	PIN(K, 2), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(PCH_SLP_S0_N,		PIN(G, 6), GPIO_INT_BOTH, power_signal_interrupt)
+#ifndef CONFIG_HOSTCMD_ESPI_VW_SLP_S3
+GPIO_INT(SLP_S3_R_L,		PIN(F, 2), GPIO_INT_BOTH, power_signal_interrupt)
+#endif
+#ifndef CONFIG_HOSTCMD_ESPI_VW_SLP_S4
+GPIO_INT(SLP_S4_R_L,		PIN(F, 3), GPIO_INT_BOTH, power_signal_interrupt)
+#endif
+
+/* Button interrupts */
+GPIO_INT(VOLUME_UP,	PIN(D, 5), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
+GPIO_INT(VOL_DN_EC,	PIN(D, 6), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
+GPIO_INT(SMC_LID,	PIN(E, 2), GPIO_INT_BOTH | GPIO_PULL_UP, lid_interrupt)
+GPIO_INT(MECH_PWR_BTN_ODL,	PIN(E, 4), GPIO_INT_BOTH, power_button_interrupt)
+
+GPIO_INT(BC_ACOK_EC,	PIN(A, 7), GPIO_INT_BOTH, extpower_interrupt)
+
+GPIO_INT(UART_SERVO_TX_EC_RX_EC, PIN(B, 0), GPIO_INT_FALLING, uart_deepsleep_interrupt)	/* UART1 RX input */
+
+GPIO_INT(EC_WP_ODL,	PIN(I, 4), GPIO_INT_BOTH, switch_interrupt)		/* EC_WP_ODL */
+
+#ifdef CONFIG_HOSTCMD_ESPI
+/* enable 1.8v input of EC's espi_reset pin, and then this pin takes effect. */
+GPIO_INT(ESPI_R,	PIN(D, 2), GPIO_INT_FALLING | GPIO_SEL_1P8V, espi_reset_pin_asserted_interrupt) /* eSPI_reset# */
+#endif
+
+GPIO_INT(SLATE_MODE_INDICATION, PIN(K, 1), GPIO_INT_BOTH, gmr_tablet_switch_isr)
+
+/* DC Jack presence coming from +VADP_OUT */
+GPIO_INT(STD_ADP_PRSNT,	PIN(J, 2), GPIO_INT_BOTH, board_dc_jack_interrupt)
+
+/* Power sequencing GPIOs */
+GPIO(PROCHOT_EC,	PIN(B, 2), GPIO_INPUT)
+GPIO(SYS_RST_ODL_EC,	PIN(B, 6), GPIO_ODR_HIGH)
+GPIO(PM_RSMRST_EC,	PIN(C, 6), GPIO_OUT_LOW)
+GPIO(PM_PWRBTN_N,	PIN(D, 0), GPIO_ODR_HIGH)
+GPIO(EC_SPI_OE_N,	PIN(I, 2), GPIO_OUT_LOW)
+/*
+ * PCH_SYS_PWROK is an input, driven by the Silego chip. The common x86
+ * power sequencing expects that PCH_SYS_PWROK is an output and will drive
+ * this signal if GPIO_PCH_SYS_PWROK is configured. Map this pin as no-connect
+ * so that state can be monitored using the console.
+ */
+GPIO(PCH_PWROK_EC_R,	PIN(K, 4), GPIO_INPUT)
+GPIO(EC_DS4,		PIN(L, 4), GPIO_OUT_LOW)
+UNIMPLEMENTED(EN_PP5000)
+
+/* Host communication GPIOs */
+GPIO(PCH_WAKE_N,	PIN(J, 0), GPIO_ODR_HIGH)
+
+/* Battery present */
+GPIO(BAT_DET_EC,	PIN(K, 0), GPIO_INPUT)
+
+/* LED */
+GPIO(LED_1_L_EC,	PIN(A, 6), GPIO_OUT_HIGH)
+GPIO(LED_2_L_EC,	PIN(A, 3), GPIO_OUT_HIGH)
+
+/* FAN control pins */
+GPIO(EC_THRM_SEN_PWRGATE_N,	PIN(K, 6), GPIO_OUT_LOW)
+
+/* H1 pins */
+GPIO(CCD_MODE_ODL,	PIN(B, 5), GPIO_INPUT)
+GPIO(EC_ENTERING_RW_EC,	PIN(C, 5), GPIO_OUT_LOW)
+/* ME_GE_TO_ME_EC pin is re-purposed for H1 Packet Mode indication */
+GPIO(ME_G3_TO_ME_EC,	PIN(H, 3), GPIO_OUT_LOW)
+
+/*
+ * I2C pins should be configure as inputs until I2C module is
+ * initialized. This will avoid driving the lines unintentionally.
+ */
+GPIO(EC_I2C_PROG_SCL,	PIN(B, 3), GPIO_INPUT)
+GPIO(EC_I2C_PROG_SDA,	PIN(B, 4), GPIO_INPUT)
+GPIO(SMB_BS_CLK,	PIN(C, 1), GPIO_INPUT)
+GPIO(SMB_BS_DATA,	PIN(C, 2), GPIO_INPUT)
+GPIO(RETIMER_CLK_EC,	PIN(E, 0), GPIO_INPUT)
+GPIO(RETIMER_DATA_EC,	PIN(E, 7), GPIO_INPUT)
+
+/* Unused GPIOs */
+#ifndef CONFIG_HOSTCMD_ESPI
+GPIO(ESPI_R,	PIN(D, 2), GPIO_INPUT)
+GPIO(PLT_RST_L,		PIN(E, 3), GPIO_INPUT)
+#endif
+
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SLP_S3
+GPIO(NC_SLP_S3_R_L,	PIN(F, 2), GPIO_INPUT)
+#endif
+
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SLP_S4
+GPIO(NC_SLP_S4_R_L,	PIN(F, 3), GPIO_INPUT)
+#endif
+
+GPIO(ILIM_2,			PIN(A, 0), GPIO_INPUT)
+GPIO(USB_C1_BC12_CHG_DET_L,	PIN(A, 1), GPIO_INPUT)
+GPIO(USB_C2_BC12_CHG_DET_L,	PIN(B, 7), GPIO_INPUT)
+GPIO(SMC_SHUTDOWN,		PIN(C, 3), GPIO_INPUT)
+GPIO(RETIMER_LS_EN_2,		PIN(C, 4), GPIO_INPUT)
+GPIO(USB_A_CHG_EN,		PIN(D, 1), GPIO_INPUT)
+GPIO(HPD2,			PIN(D, 3), GPIO_INPUT)
+GPIO(VBUS_2_R,			PIN(D, 4), GPIO_INPUT)
+GPIO(SUSWARN,			PIN(E, 1), GPIO_INPUT)
+GPIO(SD_CARD_DETECT,		PIN(E, 5), GPIO_INPUT)
+GPIO(HPD1,			PIN(E, 6), GPIO_INPUT)
+GPIO(USBC_RETIMER_ALRT_P2,	PIN(G, 0), GPIO_INPUT)
+GPIO(SRC_EN2,			PIN(G, 1), GPIO_INPUT)
+GPIO(USBC_LDO_SHUTDOWN,		PIN(G, 2), GPIO_INPUT)
+GPIO(BATT_DISABLE_EC,		PIN(H, 0), GPIO_INPUT)
+GPIO(USB_C1_BC12_VBUS_EN_EC,	PIN(H, 4), GPIO_INPUT)
+GPIO(RETIMER_FORCE_PWR_2,	PIN(H, 5), GPIO_INPUT)
+GPIO(SNK_EN1,			PIN(H, 6), GPIO_INPUT)
+GPIO(SLP_S0_CS_N,		PIN(I, 0), GPIO_INPUT)
+GPIO(EC_BASE_DET_ADC_AND_WAKE_L,PIN(I, 3), GPIO_INPUT)
+GPIO(SNK_EN2,			PIN(I, 5), GPIO_INPUT)
+GPIO(USBC_RETIMER_ALRT_P1_R,	PIN(I, 7), GPIO_INPUT)
+GPIO(RETIMER_LS_EN_1,		PIN(J, 1), GPIO_INPUT)
+GPIO(RETIMER_FORCE_PWR_1,	PIN(J, 3), GPIO_INPUT)
+GPIO(RETIMER_RESET_N_2,		PIN(J, 4), GPIO_INPUT)
+GPIO(RETIMER_RESET_N_1,		PIN(J, 5), GPIO_INPUT)
+GPIO(USB_C2_BC12_VBUS_EN_EC,	PIN(J, 6), GPIO_INPUT)
+GPIO(USB_A_5V_EN,		PIN(K, 3), GPIO_INPUT)
+GPIO(FRS_EN2,			PIN(K, 5), GPIO_INPUT)
+GPIO(TBT_RESET_N2,		PIN(K, 7), GPIO_INPUT)
+GPIO(SRC_EN1,			PIN(L, 1), GPIO_INPUT)
+GPIO(SMC_ONOFF_N,		PIN(L, 3), GPIO_INPUT) /* Power button interrupt without H1 */
+GPIO(VBUS_1_R,			PIN(L, 5), GPIO_INPUT)
+GPIO(STARTUP_LATCH_SET,		PIN(L, 6), GPIO_INPUT)
+GPIO(FRS_EN1,			PIN(L, 7), GPIO_INPUT)
+GPIO(ILIM_1_EC,			PIN(M, 6), GPIO_INPUT)
+GPIO(TBT_RESET_N1,		PIN(KSO_H, 7), GPIO_INPUT)
+
+/* Unused I2C lines */
+GPIO(SML1_CLK,		PIN(A, 4), GPIO_INPUT)
+GPIO(SML1_DATA,		PIN(A, 5), GPIO_INPUT)
+GPIO(SMB_THRM_CK,	PIN(C, 7), GPIO_INPUT)
+GPIO(SMB_THRM_DATA,	PIN(F, 7), GPIO_INPUT)
+GPIO(CC1_2,		PIN(H, 1), GPIO_INPUT)
+GPIO(CC2_2,		PIN(H, 2), GPIO_INPUT)
+
+/* Alternate pins for I2C */
+ALTERNATE(PIN_MASK(B, BIT(3) | BIT(4)), GPIO_ALT_FUNC_DEFAULT, MODULE_I2C, GPIO_FLAG_NONE)	/* I2C A SCL/SDA B3/B4 */
+ALTERNATE(PIN_MASK(C, BIT(1) | BIT(2)), GPIO_ALT_FUNC_DEFAULT, MODULE_I2C, GPIO_FLAG_NONE)	/* I2C B SCL/SDA C1/C2 */
+ALTERNATE(PIN_MASK(E, BIT(0) | BIT(7)), GPIO_ALT_FUNC_DEFAULT, MODULE_I2C, GPIO_FLAG_NONE)	/* I2C E SCL/SDA E0/E7 */
+
+/* Alternate pins for UART */
+ALTERNATE(PIN_MASK(B, BIT(0) | BIT(1)), GPIO_ALT_FUNC_DEFAULT, MODULE_UART, GPIO_PULL_UP) /* UART1 B0/B1 */
+
+/* Alternate pins for ADC */
+ALTERNATE(PIN_MASK(I, BIT(1) | BIT(6)), GPIO_ALT_FUNC_DEFAULT, MODULE_ADC, GPIO_FLAG_NONE)	/* ADC 1,6 -> I1,I6 */
+ALTERNATE(PIN_MASK(L, BIT(0) | BIT(2)), GPIO_ALT_FUNC_DEFAULT, MODULE_ADC, GPIO_FLAG_NONE)	/* ADC 13,15 -> L0,L2 */
+
+/* Alternate pins for FAN */
+ALTERNATE(PIN_MASK(A, BIT(2)), GPIO_ALT_FUNC_DEFAULT, MODULE_PWM, GPIO_FLAG_NONE)	/* PWM2 A2 */
+ALTERNATE(PIN_MASK(D, BIT(7)), GPIO_ALT_FUNC_DEFAULT, MODULE_PWM, GPIO_FLAG_NONE)	/* TACH1A D7 */
