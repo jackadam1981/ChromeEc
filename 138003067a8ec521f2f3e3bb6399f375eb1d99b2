@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95285b55_8342e5fe",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6964,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-10T00:24:15Z",
+      "side": 1,
+      "message": "Changed to _v1.",
+      "parentUuid": "f95b27f3_c506a6ef",
+      "revId": "138003067a8ec521f2f3e3bb6399f375eb1d99b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf2ac198_fb0766f4",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-07T01:40:31Z",
       "side": 1,
       "message": "Any reason for 12? Add a #define for it?",
+      "range": {
+        "startLine": 6979,
+        "startChar": 23,
+        "endLine": 6979,
+        "endChar": 25
+      },
+      "revId": "138003067a8ec521f2f3e3bb6399f375eb1d99b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "222c0c83_e9b9ad0f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6979,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-10T00:24:15Z",
+      "side": 1,
+      "message": "12 is convenient because it grows the whole struct by a nice round 16 bytes. Adding a named constant seems unnecessary because it will either be misleading like EC_COMM_TEXT_MAX is now (at least if the size changes again later) or specific to the point that it\u0027s not helpful (given sizeof() can be used to get the buffer size).",
+      "parentUuid": "cf2ac198_fb0766f4",
       "range": {
         "startLine": 6979,
         "startChar": 23,
