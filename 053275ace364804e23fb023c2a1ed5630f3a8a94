@@ -16,6 +16,98 @@
       "message": "Please review the changes",
       "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "595bcb35_69b1c716",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6028,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-10T05:02:40Z",
+      "side": 1,
+      "message": "coding guidelines",
+      "range": {
+        "startLine": 6028,
+        "startChar": 17,
+        "endLine": 6028,
+        "endChar": 62
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac63d0b_e726ea3c",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-10T05:02:40Z",
+      "side": 1,
+      "message": "coding guidelines",
+      "range": {
+        "startLine": 80,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0277b3a2_36fe3be9",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-10T05:02:40Z",
+      "side": 1,
+      "message": "to wait in G3 state",
+      "range": {
+        "startLine": 86,
+        "startChar": 21,
+        "endLine": 86,
+        "endChar": 41
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39af4e7e_8f464932",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-10T05:02:40Z",
+      "side": 1,
+      "message": "Hence, wait until the user specified delay times out.",
+      "range": {
+        "startLine": 433,
+        "startChar": 28,
+        "endLine": 435,
+        "endChar": 53
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
