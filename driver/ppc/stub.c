@@ -52,10 +52,7 @@ static int ppc_stub_is_vbus_present(int port)
 {
 	int vbus;
 
-	CPRINTS("ppc[%d]: check vbus level start", port);
-	cflush();
 	vbus = tcpm_check_vbus_level(port, VBUS_PRESENT);
-	CPRINTS("ppc_stub: vbus = %d", vbus);
 
 	return vbus;
 }
