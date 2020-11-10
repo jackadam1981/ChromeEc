@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c449179d_4c97996e",
+        "filename": "test/crc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-10T00:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d071ae_8b33137c",
+      "range": {
+        "startLine": 69,
+        "startChar": 52,
+        "endLine": 69,
+        "endChar": 53
+      },
+      "revId": "b9b7b1adec7a77379806afd179a60246e65118db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19e40e55_7ccb432d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4436ae5e_fe446059",
+        "filename": "zephyr/test/crc/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-10T00:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19e40e55_7ccb432d",
+      "range": {
+        "startLine": 14,
+        "startChar": 52,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "b9b7b1adec7a77379806afd179a60246e65118db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d58b093c_a5a4d76e",
@@ -60,6 +108,24 @@
       "writtenOn": "2020-11-09T22:46:40Z",
       "side": 1,
       "message": "remove extra blank line",
+      "revId": "b9b7b1adec7a77379806afd179a60246e65118db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab512e97_28a93ced",
+        "filename": "zephyr/test/crc/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-10T00:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d58b093c_a5a4d76e",
       "revId": "b9b7b1adec7a77379806afd179a60246e65118db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
