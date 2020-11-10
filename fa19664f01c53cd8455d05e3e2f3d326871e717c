@@ -16,6 +16,23 @@
       "message": "LGTM, will direct to EC owners to check and approve. thanks! ",
       "revId": "fa19664f01c53cd8455d05e3e2f3d326871e717c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5043d35_217031c0",
+        "filename": "board/metaknight/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-10T16:09:35Z",
+      "side": 1,
+      "message": "Please include cfet_mask and cfet_off_val if available for this battery.  We\u0027ve started using these fields for OCPC behavior.",
+      "revId": "fa19664f01c53cd8455d05e3e2f3d326871e717c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
