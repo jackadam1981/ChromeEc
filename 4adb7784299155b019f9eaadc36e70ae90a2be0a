@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0930b10d_17b05f01",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-10T00:44:15Z",
+      "side": 1,
+      "message": "Done.\n\nI don\u0027t seem to have clang_format_patch.py",
+      "parentUuid": "030c6070_c4146ee4",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 57
+      },
+      "revId": "4adb7784299155b019f9eaadc36e70ae90a2be0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c707aa71_e3314276",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0c3b69_791e030e",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-10T00:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c707aa71_e3314276",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "4adb7784299155b019f9eaadc36e70ae90a2be0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f43baf8f_2743728a",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-11-09T22:44:49Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 211,
+        "endChar": 4
+      },
+      "revId": "4adb7784299155b019f9eaadc36e70ae90a2be0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3902b36_e8dff041",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-10T00:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f43baf8f_2743728a",
       "range": {
         "startLine": 211,
         "startChar": 3,
