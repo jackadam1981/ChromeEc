@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d17c2529_11f6f1b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-11-10T00:35:46Z",
+      "side": 1,
+      "message": "Sure, is there any auto test or something that can be run to verify this.",
+      "parentUuid": "25c9a5d7_85b75b39",
+      "revId": "51143b6af24d8a47a5ef050ac2fda22ab85efacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f553c188_6c1c17b9",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-09T19:13:31Z",
       "side": 1,
       "message": "Why is this code is waiting for 2 ACKs from the AP when setting safe mode?  This also means there is a total of 200ms (actually 225ms) if the AP takes a panic.\n\nThis code also needs an assert that the current task is a PD task.\n    \tassert(port \u003d\u003d TASK_ID_TO_PD_PORT(task_get_current()));",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "51143b6af24d8a47a5ef050ac2fda22ab85efacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f69b33b_7bda6dab",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-11-10T00:35:46Z",
+      "side": 1,
+      "message": "So 2 ACKS needed as entry and exit from safe is modified to achieve the synchronization. 100ms value can be tuned down.",
+      "parentUuid": "f553c188_6c1c17b9",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ec36ef_47b492eb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5709,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-11-10T00:35:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "327a8a5f_f25f8fa4",
+      "range": {
+        "startLine": 5700,
+        "startChar": 0,
+        "endLine": 5709,
+        "endChar": 0
+      },
+      "revId": "51143b6af24d8a47a5ef050ac2fda22ab85efacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1455712_e85f6a27",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-11-09T19:13:31Z",
       "side": 1,
       "message": "This belongs in usb_pd.h with the other custom  events supported by the PD tasks.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "51143b6af24d8a47a5ef050ac2fda22ab85efacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87b2afee_78419804",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-11-10T00:35:46Z",
+      "side": 1,
+      "message": "Ack. Will update this.",
+      "parentUuid": "a1455712_e85f6a27",
       "range": {
         "startLine": 21,
         "startChar": 0,
