@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df80c320_52fb1353",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-10T17:49:30Z",
+      "side": 1,
+      "message": "Moved discussion over to b:161327513",
+      "parentUuid": "4f69b33b_7bda6dab",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "51143b6af24d8a47a5ef050ac2fda22ab85efacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "327a8a5f_f25f8fa4",
         "filename": "include/ec_commands.h",
         "patchSetId": 13
