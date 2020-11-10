@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc1fd50_57f20948",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-10T18:03:11Z",
+      "side": 1,
+      "message": "This CL breaks completely honeybuns and any device that doesn\u0027t have try.src enabled. I Please see https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2247115 \n\nDid you test any device that did not have CONFIG_USB_PD_TRY_SRC not enabled?",
+      "revId": "cb5058d798c53a8cb46c7cf67c2cf77f76670f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
