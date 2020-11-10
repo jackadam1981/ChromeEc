@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3135a6b_1ba41035",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-10T20:59:22Z",
+      "side": 1,
+      "message": "what doesn\u0027t it set state.interrupt to INACTIVE?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f18972fa_07f6af98",
@@ -14,6 +37,29 @@
       "writtenOn": "2020-11-10T16:37:14Z",
       "side": 1,
       "message": "Hi!\n\nThis is fix for issue metioned in https://buganizer.corp.google.com/issues/162254118#comment62",
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d2ce7b3_649c993c",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-10T20:59:22Z",
+      "side": 1,
+      "message": "this change doesn\u0027t seem correct. This is effectively ignoring the 3 failed attempt retry count.",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 36
+      },
       "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
