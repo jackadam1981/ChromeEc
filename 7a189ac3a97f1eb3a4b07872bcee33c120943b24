@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b1aa8c_337d4281",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-11-10T18:13:37Z",
+      "side": 1,
+      "message": "New RW is 0x8800 (34KiB).\n\nRegarding the RO size for servo - actually I believe that this should be bigger than RW, since most functionalites are there, correct? I mean, usually one is not jumping to RW on servo.",
+      "parentUuid": "2e9d4eff_88b74e51",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "7a189ac3a97f1eb3a4b07872bcee33c120943b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "21c81564_01011cda",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-11-10T17:30:52Z",
       "side": 1,
       "message": "Few minor questions: What happens to the persistent space and does the servo_updater json need to be updated to reflect these changes?",
+      "revId": "7a189ac3a97f1eb3a4b07872bcee33c120943b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e7bf49_1fec4675",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-11-10T18:13:37Z",
+      "side": 1,
+      "message": "By persistent space you mean pstate region (4KiB) right RO section? This is moved accordingly at the RO_OFFSET + RO_SIZE, thus us changed with this commit.\n\nFrankly, I have verified experimentally that updater is working fine - updated firmware was working correctly. I would need to check this, whether json should be updated also.",
+      "parentUuid": "801ebb23_ea9ee0c1",
       "revId": "7a189ac3a97f1eb3a4b07872bcee33c120943b24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
