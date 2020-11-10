@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "032343e9_c489736b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1369618
+      },
+      "writtenOn": "2020-11-10T18:37:59Z",
+      "side": 1,
+      "message": "Raised new crossbug b:172885634",
+      "parentUuid": "99754c6d_252b157a",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f248ed4_2f3a47c9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-10T05:08:57Z",
       "side": 1,
       "message": "use one",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 64
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eecf4485_e57325af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1369618
+      },
+      "writtenOn": "2020-11-10T18:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f248ed4_2f3a47c9",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75a67df8_811fe6bc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6027,
+      "author": {
+        "id": 1369618
+      },
+      "writtenOn": "2020-11-10T18:37:59Z",
+      "side": 1,
+      "message": "Generated ectool using this gerrit and checked with old ec image, there is no error seen while using the reboot_ap_on_g3 command. Even we give delay there is no error thrown. Basically delay provided are not used anywhere in the old code.",
+      "parentUuid": "feb07a3b_630f40bf",
+      "range": {
+        "startLine": 6027,
+        "startChar": 7,
+        "endLine": 6027,
+        "endChar": 33
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "595bcb35_69b1c716",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-10T05:02:40Z",
       "side": 1,
       "message": "coding guidelines",
+      "range": {
+        "startLine": 6028,
+        "startChar": 17,
+        "endLine": 6028,
+        "endChar": 62
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803ea522_fa49d2f9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6028,
+      "author": {
+        "id": 1369618
+      },
+      "writtenOn": "2020-11-10T18:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "595bcb35_69b1c716",
       "range": {
         "startLine": 6028,
         "startChar": 17,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e8bbc8_11deefc2",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1369618
+      },
+      "writtenOn": "2020-11-10T18:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ac63d0b_e726ea3c",
+      "range": {
+        "startLine": 80,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0277b3a2_36fe3be9",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ffde51_0b50b9d7",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1369618
+      },
+      "writtenOn": "2020-11-10T18:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0277b3a2_36fe3be9",
+      "range": {
+        "startLine": 86,
+        "startChar": 21,
+        "endLine": 86,
+        "endChar": 41
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39af4e7e_8f464932",
@@ -169,6 +313,30 @@
       "writtenOn": "2020-11-10T05:02:40Z",
       "side": 1,
       "message": "Hence, wait until the user specified delay times out.",
+      "range": {
+        "startLine": 433,
+        "startChar": 28,
+        "endLine": 435,
+        "endChar": 53
+      },
+      "revId": "053275ace364804e23fb023c2a1ed5630f3a8a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8851a394_69f92007",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1369618
+      },
+      "writtenOn": "2020-11-10T18:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39af4e7e_8f464932",
       "range": {
         "startLine": 433,
         "startChar": 28,
