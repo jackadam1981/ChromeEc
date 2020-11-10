@@ -16,6 +16,24 @@
       "message": "This CL breaks completely honeybuns and any device that doesn\u0027t have try.src enabled. I Please see https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2247115 \n\nDid you test any device that did not have CONFIG_USB_PD_TRY_SRC not enabled?",
       "revId": "cb5058d798c53a8cb46c7cf67c2cf77f76670f3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "244fe68a_0797e1f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-10T18:51:13Z",
+      "side": 1,
+      "message": "There are a couple of things that not having CONFIG_USB_PD_TRY_SRC does.  I can undef that in Morphius and use the following changes to make this work.\n\n~/CrOS/src/platform/ec$ git diff\ndiff --git a/common/usbc/usb_tc_drp_acc_trysrc_sm.c b/common/usbc/usb_tc_drp_acc_trysrc_sm.c\nindex caf421fb5..63ac50145 100644\n--- a/common/usbc/usb_tc_drp_acc_trysrc_sm.c\n+++ b/common/usbc/usb_tc_drp_acc_trysrc_sm.c\n@@ -356,12 +356,6 @@ void print_flag(int set_or_clear, int flag)\n }\n #endif /* DEBUG_PRINT_FLAG_AND_EVENT_NAMES */\n \n-/* Generate a compiler error if invalid states are referenced */\n-#ifndef CONFIG_USB_PD_TRY_SRC\n-#define TC_TRY_SRC     TC_TRY_SRC_UNDEFINED\n-#define TC_TRY_WAIT_SNK        TC_TRY_WAIT_SNK_UNDEFINED\n-#endif\n-\n static struct type_c {\n        /* state machine context */\n        struct sm_ctx ctx;\n@@ -456,12 +450,10 @@ static void pd_update_dual_role_config(int port);\n static void set_state_tc(const int port, const enum usb_tc_state new_state);\n test_export_static enum usb_tc_state get_state_tc(const int port);\n \n-#ifdef CONFIG_USB_PD_TRY_SRC\n /* Enable variable for Try.SRC states */\n-static uint32_t pd_try_src;\n-static volatile enum try_src_override_t pd_try_src_override;\n-static void pd_update_try_source(void);\n-#endif\n+__maybe_unused static uint32_t pd_try_src;\n+__maybe_unused static volatile enum try_src_override_t pd_try_src_override;\n+__maybe_unused static void pd_update_try_source(void);\n \n static void sink_stop_drawing_current(int port);\n \n@@ -1597,13 +1589,13 @@ static void sink_stop_drawing_current(int port)\n        }\n }\n \n-#ifdef CONFIG_USB_PD_TRY_SRC\n-static void pd_update_try_source(void)\n+__maybe_unused static void pd_update_try_source(void)\n {\n-       tc_enable_try_src(pd_is_try_source_capable());\n+       #ifdef CONFIG_USB_PD_TRY_SRC\n+               tc_enable_try_src(pd_is_try_source_capable());\n+       #endif\n }\n DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pd_update_try_source, HOOK_PRIO_DEFAULT);\n-#endif /* CONFIG_USB_PD_TRY_SRC */\n \n static void set_vconn(int port, int enable)\n {",
+      "parentUuid": "3bc1fd50_57f20948",
+      "revId": "cb5058d798c53a8cb46c7cf67c2cf77f76670f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
