@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ae725e_db1cfcc5",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-10T15:54:55Z",
+      "side": 1,
+      "message": "This section verifying 0x5c could probably be removed at this point.  It was present because there was a fear we were losing this init value and causing chip failures, but I don\u0027t believe we\u0027ve ever seen a bug filed for it.",
+      "revId": "889d89a3033b0976f64a77e5d0ce4922c271093a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3977c1af_4a4ad31c",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-10T15:54:55Z",
+      "side": 1,
+      "message": "nit: add a comment noting why we\u0027ve gone with no-op functions for these",
+      "revId": "889d89a3033b0976f64a77e5d0ce4922c271093a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
