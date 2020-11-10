@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ba4b3a_c295758e",
+        "filename": "board/dooly/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-11-10T04:29:47Z",
+      "side": 1,
+      "message": "You can actually select multiple bits here i.e (C, 0x18)\nPuff separates them out; I don\u0027t think it matters much, however.",
+      "range": {
+        "startLine": 137,
+        "startChar": 22,
+        "endLine": 137,
+        "endChar": 26
+      },
+      "revId": "36101988ea7fefbaa6b1c6c53cc86705011cc9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
