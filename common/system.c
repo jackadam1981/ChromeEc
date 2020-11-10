@@ -50,7 +50,7 @@
 struct jump_tag {
 	uint16_t tag;		/* Tag ID */
 	uint8_t data_size;	/* Size of data which follows */
-	uint8_t data_version;	/* Data version */
+	uint8_t data_version	/* Data version */
 
 	/* Followed by data_size bytes of data */
 };
