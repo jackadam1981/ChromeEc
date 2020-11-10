@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "454ffe57_5749f810",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-10T21:24:09Z",
+      "side": 1,
+      "message": "Why remove this ADC? It makes it back to GPIO.\n\nYou have to describe the intention in detail in the CL description or file a bug for it.",
+      "revId": "879187637aa533316eab024356c05da37b747cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
