@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c1d90f0_dbbe3554",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-10T19:13:11Z",
+      "side": 1,
+      "message": "Actually, the branch should be \"firmware-volteer-13521.B-master\" to indicate that this needs to be cherry-picked into the Volteer firmware branch.",
+      "parentUuid": "21ba4f12_6e82e567",
+      "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52b6f9da_d61ebc0b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -31,6 +49,29 @@
       "writtenOn": "2020-11-10T16:33:20Z",
       "side": 1,
       "message": "This is redundant with the following line.",
+      "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791aff77_b60f4dd3",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-10T19:13:11Z",
+      "side": 1,
+      "message": "The volteer/program.star file lists the options as \"KB_LAYOUT_DEFAULT\" and \"KB_LAYOUT_1\". Because this file is shared by all Volteer designs, we want the names match volteer/program.star instead of the names used in eldrid/config.star.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 17
+      },
       "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
