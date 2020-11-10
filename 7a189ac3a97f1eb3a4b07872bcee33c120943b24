@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e9d4eff_88b74e51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-10T16:46:18Z",
+      "side": 1,
+      "message": "What is the new size of RW?\n\nHonestly the RO for servo device doesn\u0027t need to be that large. It just needs to be able to handle the flash procedures. Honeybuns reduce the RO size quite a bit (talk with scollyer@)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "7a189ac3a97f1eb3a4b07872bcee33c120943b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "21c81564_01011cda",
