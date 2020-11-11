@@ -301,6 +301,126 @@ static void setup_mux(void)
 	}
 }
 
+uint8_t pi3dpx1207_picasso_eq[] = {
+	/*usb_dp*/
+	0x13, 0x11, 0x20, 0x62, 0x06, 0x5B, 0x5B,
+	0x07, 0x03, 0x40, 0xFC, 0x42, 0x71,
+	/*usb_dp_in */
+	0x13, 0x11, 0x20, 0x72, 0x06, 0x03, 0x07,
+	0x5B, 0x5B, 0x23, 0xFC, 0x42, 0x71,
+	/*usb*/
+	0x13, 0x11, 0x20, 0x42, 0x00, 0x03, 0x07,
+	0x07, 0x03, 0x00, 0x42, 0x42, 0x71,
+	/*usb_inv*/
+	0x13, 0x11, 0x20, 0x52, 0x00, 0x03, 0x07,
+	0x07, 0x03, 0x02, 0x42, 0x42, 0x71,
+	/*dp*/
+	0x13, 0x11, 0x20, 0x22, 0x06, 0x5B, 0x5B,
+	0x5B, 0x5B, 0x60, 0xFC, 0xFC, 0x71,
+	/*dp_inv*/
+	0x13, 0x11, 0x20, 0x32, 0x06, 0x5B, 0x5B,
+	0x5B, 0x5B, 0x63, 0xFC, 0xFC, 0x71,
+};
+uint8_t pi3dpx1207_dali_eq[] = {
+	/*usb_dp*/
+	0x13, 0x11, 0x20, 0x62, 0x06, 0x5B, 0x5B,
+	0x07, 0x07, 0x40, 0xFC, 0x42, 0x71,
+	/*usb_dp_inv*/
+	0x13, 0x11, 0x20, 0x72, 0x06, 0x07, 0x07,
+	0x5B, 0x5B, 0x23, 0xFC, 0x42, 0x71,
+	/*usb*/
+	0x13, 0x11, 0x20, 0x42, 0x00, 0x07, 0x07,
+	0x07, 0x07, 0x00, 0x42, 0x42, 0x71,
+	/*usb_inv*/
+	0x13, 0x11, 0x20, 0x52, 0x00, 0x07, 0x07,
+	0x07, 0x07, 0x02, 0x42, 0x42, 0x71,
+	/*dp*/
+	0x13, 0x11, 0x20, 0x22, 0x06, 0x5B, 0x5B,
+	0x5B, 0x5B, 0x60, 0xFC, 0xFC, 0x71,
+	/*dp_inv*/
+	0x13, 0x11, 0x20, 0x32, 0x06, 0x5B, 0x5B,
+	0x5B, 0x5B, 0x63, 0xFC, 0xFC, 0x71,
+};
+
+uint8_t *pi3dpx1207_eq[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+#define I2C_MAX_RETRIES 2
+/* Stack space is limited, so put the buffer somewhere else */
+static uint8_t buf[PI3DPX1207_NUM_REGISTERS];
+
+static int pi3dpx1207_i2c_write(const struct usb_mux *me,
+				uint8_t offset,
+				uint8_t val)
+{
+	int rv = EC_SUCCESS;
+	int attempt;
+
+	if (offset >= PI3DPX1207_NUM_REGISTERS)
+		return EC_ERROR_INVAL;
+
+	if (offset > 0) {
+		attempt = 0;
+		do {
+			attempt++;
+			rv = i2c_xfer(me->i2c_port, me->i2c_addr_flags,
+					NULL, 0, buf, offset);
+		} while ((rv != EC_SUCCESS) && (attempt < I2C_MAX_RETRIES));
+	}
+
+	if (rv == EC_SUCCESS) {
+		buf[offset] = val;
+
+		attempt = 0;
+		do {
+			attempt++;
+			rv = i2c_xfer(me->i2c_port, me->i2c_addr_flags,
+					buf, offset + 1, NULL, 0);
+		} while ((rv != EC_SUCCESS) && (attempt < I2C_MAX_RETRIES));
+	}
+	return rv;
+}
+
+static int board_pi3dpx1207_mux_set(const struct usb_mux *me,
+		mux_state_t mux_state)
+{
+	int  rv = EC_SUCCESS;
+	const int port = me->usb_port;
+	int i;
+	enum pi3dpx1207_usb_conf usb_mode = 0;
+
+	/* USB */
+	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+		/* USB with DP */
+		if (mux_state & USB_PD_MUX_DP_ENABLED) {
+			usb_mode = (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+					? USB_DP_INV
+					: USB_DP;
+		}
+		/* USB without DP */
+		else {
+			usb_mode = (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+					? USB_INV
+					: USB;
+		}
+	}
+	/* DP without USB */
+	else if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		usb_mode = (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+				? DP_INV
+				: DP;
+	}
+	/* Nothing enabled */
+	else
+		return EC_SUCCESS;
+
+	/* Write the retimer config byte */
+	for (i = 0; i < 13; i++) {
+		rv |= pi3dpx1207_i2c_write(me, i,
+			*(pi3dpx1207_eq[port]+i+usb_mode*13));
+	}
+	return rv;
+}
+
 const struct pi3dpx1207_usb_control pi3dpx1207_controls[] = {
 	[USBC_PORT_C0] = {
 		.enable_gpio = IOEX_USB_C0_DATA_EN,
@@ -316,6 +436,7 @@ const struct usb_mux usbc0_pi3dpx1207_usb_retimer = {
 	.i2c_port = I2C_PORT_TCPC0,
 	.i2c_addr_flags = PI3DPX1207_I2C_ADDR_FLAGS,
 	.driver = &pi3dpx1207_usb_retimer,
+	.board_set = &board_pi3dpx1207_mux_set,
 };
 
 struct usb_mux usb_muxes[] = {
@@ -353,6 +474,11 @@ static void setup_fw_config(void)
 		gpio_enable_interrupt(GPIO_DP1_HPD_EC_IN);
 
 	setup_mux();
+
+	if (ec_config_has_usbc1_retimer_ps8802())
+		pi3dpx1207_eq[USBC_PORT_C0] = (uint8_t *)pi3dpx1207_dali_eq;
+	else
+		pi3dpx1207_eq[USBC_PORT_C0] = (uint8_t *)pi3dpx1207_picasso_eq;
 }
 /* Use HOOK_PRIO_INIT_I2C + 2 to be after ioex_init(). */
 DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);

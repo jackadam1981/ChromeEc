@@ -112,6 +112,15 @@ enum usba_port {
 	USBA_PORT_COUNT
 };
 
+enum pi3dpx1207_usb_conf {
+	USB_DP = 0,
+	USB_DP_INV,
+	USB,
+	USB_INV,
+	DP,
+	DP_INV
+};
+
 /*****************************************************************************
  * CBI EC FW Configuration
  */
