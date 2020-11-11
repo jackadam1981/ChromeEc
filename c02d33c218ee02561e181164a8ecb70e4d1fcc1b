@@ -16,6 +16,23 @@
       "message": "Sorry, I never clicked send on this response. Is this CL still active anyway?",
       "revId": "c02d33c218ee02561e181164a8ecb70e4d1fcc1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8570d56_9430933d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-11-11T09:12:01Z",
+      "side": 1,
+      "message": "I will change to use irq_lock and irq_unlock once all cores support them.",
+      "revId": "c02d33c218ee02561e181164a8ecb70e4d1fcc1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
