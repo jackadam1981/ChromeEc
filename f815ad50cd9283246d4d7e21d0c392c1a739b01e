@@ -16,6 +16,24 @@
       "message": "Did you find this necessary to compile?  I thought Boten always had the motionsense task defined",
       "revId": "f815ad50cd9283246d4d7e21d0c392c1a739b01e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1950dd4f_956d94c0",
+        "filename": "board/boten/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1418383
+      },
+      "writtenOn": "2020-11-11T08:32:24Z",
+      "side": 1,
+      "message": "Thanks,I have removed this defied.\ndone",
+      "parentUuid": "497fbc1c_9d293484",
+      "revId": "f815ad50cd9283246d4d7e21d0c392c1a739b01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
