@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d8f9d8a_0c9171a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-11T19:54:15Z",
+      "side": 1,
+      "message": "-1 as a speed bump, I just had one question.",
+      "revId": "5d429cabb4300e9b2e5f7a95b7a2e9fe76b5c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c98ab66_c3163bc9",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-11T19:54:15Z",
+      "side": 1,
+      "message": "There\u0027s a bit, DPM_INT in the INT REQ 3 register, which says it would be set if the DPM loop is triggered. I wonder if we could use that here?",
+      "range": {
+        "startLine": 1499,
+        "startChar": 0,
+        "endLine": 1499,
+        "endChar": 9
+      },
+      "revId": "5d429cabb4300e9b2e5f7a95b7a2e9fe76b5c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
