@@ -181,6 +181,30 @@
       },
       "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0e2e78_df23da38",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-11T16:17:00Z",
+      "side": 1,
+      "message": "It\u0027s best to keep volteer/program.star and volteer/cbi_ec_fw_config.h in sync.  program.star should be considered the \"source of truth\" with cbi_ec_fw_config.h updated only after program.star is updated.",
+      "parentUuid": "a55f714e_0d94ef99",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
