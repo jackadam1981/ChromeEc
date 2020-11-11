@@ -22,6 +22,30 @@
       },
       "revId": "9ea0b933aa47bc4d65ea304a87c0c2e9405cbd3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf43dc42_f5c4d064",
+        "filename": "board/tglrvpu_ite/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-11T20:47:59Z",
+      "side": 1,
+      "message": "I mean \n#define CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT (3000 + 1500 * (CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT - 1))",
+      "parentUuid": "858f294c_e551cd2c",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 48
+      },
+      "revId": "9ea0b933aa47bc4d65ea304a87c0c2e9405cbd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
