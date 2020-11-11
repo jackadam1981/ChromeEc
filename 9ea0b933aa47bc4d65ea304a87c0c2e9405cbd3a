@@ -46,6 +46,30 @@
       },
       "revId": "9ea0b933aa47bc4d65ea304a87c0c2e9405cbd3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef6ed1c_ec3a4e04",
+        "filename": "board/tglrvpu_ite/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-11T20:54:08Z",
+      "side": 1,
+      "message": "I think it\u0027s good to be explicit about the total current limit.  For instance, if someone copies the volteer reference, and then updates the CONFIG_USB_PD_PORT_MAX_COUNT from 2 to 3, the build will fail until they also update the max current.  Hopefully this will help the developer realize the impact of changing the number of type-C ports.",
+      "parentUuid": "cf43dc42_f5c4d064",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 48
+      },
+      "revId": "9ea0b933aa47bc4d65ea304a87c0c2e9405cbd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
