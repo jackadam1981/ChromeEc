@@ -10,3 +10,4 @@ CHIP:=mt8192_scp
 CHIP_VARIANT:=mt8192
 
 board-y=board.o
+board-y+=dram_test.o
