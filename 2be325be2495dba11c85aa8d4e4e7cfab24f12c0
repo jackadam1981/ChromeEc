@@ -142,6 +142,30 @@
       },
       "revId": "2be325be2495dba11c85aa8d4e4e7cfab24f12c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3be437_7c840d57",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-11T17:06:03Z",
+      "side": 1,
+      "message": "We\u0027re approaching the timeline where we need this functional for FSI.  What would you think of either disallowing hard resets (CL:2493111) or disabling PD altogether?\n\nI worry about risking data role mismatches if we allow PD without any knowledge of our previous data role.",
+      "parentUuid": "68a0f88c_5168fb5d",
+      "range": {
+        "startLine": 1438,
+        "startChar": 2,
+        "endLine": 1438,
+        "endChar": 32
+      },
+      "revId": "2be325be2495dba11c85aa8d4e4e7cfab24f12c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
