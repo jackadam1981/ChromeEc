@@ -1005,7 +1005,7 @@ __overridable void board_power_5v_enable(int enable)
 
 /* 5V enable request bitmask from various tasks. */
 static uint32_t pwr_5v_en_req;
-static struct mutex pwr_5v_ctl_mtx;
+static mutex_t pwr_5v_ctl_mtx;
 
 void power_5v_enable(task_id_t tid, int enable)
 {
