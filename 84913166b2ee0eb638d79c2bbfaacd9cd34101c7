@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "467a7ae1_fb095078",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454622
+      },
+      "writtenOn": "2020-11-11T08:32:08Z",
+      "side": 1,
+      "message": "Please change the status to active",
+      "revId": "84913166b2ee0eb638d79c2bbfaacd9cd34101c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acac2d8c_d637e58d",
+        "filename": "board/boten/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1454622
+      },
+      "writtenOn": "2020-11-11T08:32:08Z",
+      "side": 1,
+      "message": "Reduce one line",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 0
+      },
+      "revId": "84913166b2ee0eb638d79c2bbfaacd9cd34101c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
