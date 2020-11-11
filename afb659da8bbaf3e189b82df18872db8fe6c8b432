@@ -68,6 +68,24 @@
       "message": "Due to CL:2488937, you also need to this line to fix the compile error.\n    #undef CONFIG_ACCEL_FIFO_SIZE",
       "revId": "afb659da8bbaf3e189b82df18872db8fe6c8b432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7912dbb_7824a36e",
+        "filename": "board/drobit/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2020-11-11T06:37:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f091ab5_bea2215a",
+      "revId": "afb659da8bbaf3e189b82df18872db8fe6c8b432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
