@@ -34,6 +34,24 @@
       "parentUuid": "12d5e1c5_e3d5def0",
       "revId": "27c8b0b741b286e712391a21bb3d6e7a3453ae63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7345ebb_288ce9f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-11T16:47:56Z",
+      "side": 1,
+      "message": "Is there another bug that captures this discussion?  The linked bug is for \"microcode in field update\".  This CL only adds a new EC console command, which is not exposed to coreboot, kernel, or user (at least not without enabling developer mode).\n\nCan you elaborate on the conditions that need recovery, and what are the required recovery actions?  If this is recovery that needs to be initiated by kernel and/or coreboot, the RTCRST needs to be exposed through the EC_CMD_REBOOT_EC command or the \"ectool reboot_ec\" command.",
+      "parentUuid": "5753722b_e72ee590",
+      "revId": "27c8b0b741b286e712391a21bb3d6e7a3453ae63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
