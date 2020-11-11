@@ -22,6 +22,30 @@
       },
       "revId": "51a0199ff27d57654979f60895b772ae08becb08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fcc3d0_022c24de",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-11T17:51:16Z",
+      "side": 1,
+      "message": "Ohh, this is a typo. Should be PS8751, no change.",
+      "parentUuid": "f936e794_207d14fd",
+      "range": {
+        "startLine": 490,
+        "startChar": 24,
+        "endLine": 490,
+        "endChar": 31
+      },
+      "revId": "51a0199ff27d57654979f60895b772ae08becb08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
