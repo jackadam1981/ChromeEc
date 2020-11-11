@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5bfa6f3_02c8e5f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-11-11T00:08:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1d90f0_dbbe3554",
+      "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52b6f9da_d61ebc0b",
@@ -49,6 +67,24 @@
       "writtenOn": "2020-11-10T16:33:20Z",
       "side": 1,
       "message": "This is redundant with the following line.",
+      "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "726934ee_f9a89165",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-11-11T00:08:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52b6f9da_d61ebc0b",
       "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -76,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "166e5203_37ff6262",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-11-11T00:08:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "791aff77_b60f4dd3",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53a0635a_240ec48b",
@@ -89,6 +149,30 @@
       "writtenOn": "2020-11-10T16:33:20Z",
       "side": 1,
       "message": "The existing values only use 1 bit. Are more layouts expected? If so, how many?",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "f8937be3d8218653a8fcf86f391e9227093122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a55f714e_0d94ef99",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-11-11T00:08:59Z",
+      "side": 1,
+      "message": "Follow volteer/program.star, there may have potentially 4 different layouts(US/US2/UK/JP). But we only need to change scan code when using US2 keyboard. Should I add reset 2 layouts into \"enum ec_cfg_keyboard_layout\"?",
+      "parentUuid": "53a0635a_240ec48b",
       "range": {
         "startLine": 61,
         "startChar": 43,
