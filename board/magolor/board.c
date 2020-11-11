@@ -19,7 +19,6 @@
 #include "temp_sensor.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
-#include "driver/retimer/nb7v904m.h"
 #include "driver/tcpm/raa489000.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/usb_mux/pi3usb3x532.h"
@@ -192,6 +191,18 @@ void board_reset_pd_mcu(void)
 	 * unsure if we actually want to do that or not yet.
 	 */
 }
+
+/* Called on AP S5 -> S3 transition */
+static void board_chipset_startup(void)
+{
+	/* Switch PS8762 I2C Address to 0x50*/
+	if (i2c_write8(I2C_PORT_SUB_USB_C1, 0x0A, 0xB0, 0x50) == EC_SUCCESS)
+		CPRINTS("Switch PS8762 address to 0x50");
+	else if (i2c_write8(I2C_PORT_SUB_USB_C1,
+		0x0A, 0xB0, 0x50) != EC_SUCCESS)
+		CPRINTS("Switch PS8762 address to 0x50 Failed");
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void reconfigure_5v_gpio(void)
 {
@@ -508,13 +519,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
-const struct usb_mux usbc1_retimer = {
-	.usb_port = 1,
-	.i2c_port = I2C_PORT_SUB_USB_C1,
-	.i2c_addr_flags = NB7V904M_I2C_ADDR0,
-	.driver = &nb7v904m_usb_redriver_drv,
-};
-
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
@@ -525,7 +529,7 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 1,
 		.i2c_port = I2C_PORT_SUB_USB_C1,
-		.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
+		.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS_REBASE,
 		.driver = &ps8802_usb_mux_driver,
 	}
 };
