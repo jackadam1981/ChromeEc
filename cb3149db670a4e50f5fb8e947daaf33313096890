@@ -146,6 +146,24 @@
       "message": "hi,Caveh, Refer to your other CL(lingcod/malefor/halvor),so we still keep the \"EFS2 enable\" in lindar/board.h instead of moving to baseboard.h ,right ?",
       "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "503874dc_24c8b6da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-11-11T04:36:45Z",
+      "side": 1,
+      "message": "ya, let\u0027s do this in board.h for now.\n\nthere were more boards that didn\u0027t have EFS2 enabled than\ni thought and they are with different partners, so different\ngroups need to verify the change on their device.\n\nafter all the variant boards have EFS2 enabled, then we can\nsubmit a patch to move EFS2 into baseboard.h.",
+      "parentUuid": "420f37e7_68938fba",
+      "revId": "cb3149db670a4e50f5fb8e947daaf33313096890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
