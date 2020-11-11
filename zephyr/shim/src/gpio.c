@@ -285,3 +285,20 @@ int gpio_disable_interrupt(enum gpio_signal signal)
 
 	return rv;
 }
+
+void gpio_reset(enum gpio_signal signal)
+{
+	if (signal >= ARRAY_SIZE(configs))
+		return;
+
+	gpio_pin_configure(data[signal].dev, configs[signal].pin,
+			   configs[signal].init_flags);
+}
+
+void gpio_set_flags(enum gpio_signal signal, int flags)
+{
+	if (signal >= ARRAY_SIZE(configs))
+		return;
+
+	gpio_pin_configure(data[signal].dev, configs[signal].pin, flags);
+}
