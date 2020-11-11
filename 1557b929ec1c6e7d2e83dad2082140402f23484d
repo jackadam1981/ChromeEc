@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f59ec31c_6a6480ff",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-11T16:12:27Z",
+      "side": 0,
+      "message": "The original idea of setting these defines to the UNDEFINED values was to give the compiler something to complain about if the states were used when Try is not being used.  If you add the following, it will compile correctly and still catch invalid uses of Try during link time if try states are used when try is not enabled.  The IS_ENABLED code just needs to know the type. It will optimize it out but has to be valid\n\n#ifndef CONFIG_USB_PD_TRY_SRC\nextern int TC_TRY_SRC_UNDEFINED;\nextern int TC_TRY_WAIT_SNK_UNDEFINED;\n#define TC_TRY_SRC\tTC_TRY_SRC_UNDEFINED\n#define TC_TRY_WAIT_SNK\tTC_TRY_WAIT_SNK_UNDEFINED\n#endif",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 1
+      },
+      "revId": "1557b929ec1c6e7d2e83dad2082140402f23484d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
