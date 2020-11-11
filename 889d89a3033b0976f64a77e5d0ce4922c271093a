@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50773e6d_47ac7e9c",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-11T08:57:56Z",
+      "side": 1,
+      "message": "Ok, let\u0027s remove this.",
+      "parentUuid": "a8ae725e_db1cfcc5",
+      "revId": "889d89a3033b0976f64a77e5d0ce4922c271093a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3977c1af_4a4ad31c",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-10T15:54:55Z",
       "side": 1,
       "message": "nit: add a comment noting why we\u0027ve gone with no-op functions for these",
+      "revId": "889d89a3033b0976f64a77e5d0ce4922c271093a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1390c09a_3e3b1e89",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-11T08:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3977c1af_4a4ad31c",
       "revId": "889d89a3033b0976f64a77e5d0ce4922c271093a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
