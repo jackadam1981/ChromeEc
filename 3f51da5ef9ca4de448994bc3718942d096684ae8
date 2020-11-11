@@ -22,6 +22,30 @@
       },
       "revId": "3f51da5ef9ca4de448994bc3718942d096684ae8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c84091c_7490e788",
+        "filename": "include/util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-11T17:34:12Z",
+      "side": 1,
+      "message": "It will, but I want to do it is a follow up CL for zephyr shim since I need to do something else to accompany the change. See child change",
+      "parentUuid": "b3f428bd_51e57864",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "3f51da5ef9ca4de448994bc3718942d096684ae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
