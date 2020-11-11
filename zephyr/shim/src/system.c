@@ -215,6 +215,12 @@ int system_jumped_to_this_image(void)
 	return jumped_to_image;
 }
 
+void system_hibernate(uint32_t seconds, uint32_t microseconds)
+{
+	k_sleep(Z_TIMEOUT_MS(seconds * 1000));
+	k_sleep(Z_TIMEOUT_US(microseconds));
+}
+
 __test_only void system_common_reset_state(void)
 {
 	jdata = 0;
