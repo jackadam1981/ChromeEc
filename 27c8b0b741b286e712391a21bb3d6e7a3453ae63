@@ -16,6 +16,24 @@
       "message": "I don\u0027t see how this change is related to b:149547271. What\u0027s rationale for providing a new option to the \"reboot\" command, and why is this only allowed in RO and recovery mode?",
       "revId": "27c8b0b741b286e712391a21bb3d6e7a3453ae63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5753722b_e72ee590",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456367
+      },
+      "writtenOn": "2020-11-11T02:56:22Z",
+      "side": 1,
+      "message": "Requirement was to add an option to reset RTCRST for any recovery purpose, so instead of adding a new command thought it would be better to be add it as part of reboot command.\nDoing this only as part of RO came as a security requirement from Google.",
+      "parentUuid": "12d5e1c5_e3d5def0",
+      "revId": "27c8b0b741b286e712391a21bb3d6e7a3453ae63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
