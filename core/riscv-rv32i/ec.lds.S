@@ -82,6 +82,12 @@ SECTIONS
 		ASSERT((__flash_dma_size < IT83XX_ILM_BLOCK_SIZE),
 		       "__flash_dma_size < IT83XX_ILM_BLOCK_SIZE");
 		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
+		/*
+		 * Add 2K bytes gap, so compiler will use signed 20-bit
+		 * jump instruction when a ram_code section function is called
+		 * to section of text.
+		 */
+		. += 0x800;
 
 		__flash_text_start = .;
 #endif
