@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dc98b0eb_8ffa76e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-11-11T23:41:51Z",
+      "side": 1,
+      "message": "Thanks for the proposal, please see v3.\n\nRegarding your question, I believe that servo firmware significantly differs from normal chromebook\u0027s one. For example RO and RW are only naming conventions and we don\u0027t have Write Protection or concept of unchangeable firmware part.\n\nThat being said, I don\u0027t see much benefit in changing one part of something which is eventually \"not normal\" or \"not standard\" and won\u0027t be anywhere in the near future.",
+      "parentUuid": "eb7a74bc_1799375a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "7a189ac3a97f1eb3a4b07872bcee33c120943b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "21c81564_01011cda",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
