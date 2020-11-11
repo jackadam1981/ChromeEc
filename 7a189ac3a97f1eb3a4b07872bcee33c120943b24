@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7a74bc_1799375a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-11-11T20:14:52Z",
+      "side": 1,
+      "message": "Correct, the layout of Servo_v4p1 appears to have reversed the normal RO and RW convention. A lot of EC code bases had very small RO and a larger RW. I\u0027m don\u0027t know why this choice was chosen other than Servo_v4 didn\u0027t normally jump out of RO except during updates but it\u0027s hard to reverse now without erasing every device\u0027s serial and mac.\n\nIt isn\u0027t needed to adjust the region size for this particular issue. More features can be disabled from the unused region which for the moment is RW. Things like the I2C_XFER command which was enlarged are unused:\n\nI\u0027d suggest the following change on the board.h file since we don\u0027t need I2C to do an update.\n\n#else\n+#undef CONFIG_CMD_I2C_XFER\n#undef CONFIG_USB_POWER_DELIVERY\n#endif /* SECTION_IS_RO */\n\n\nIf we want to switch systems over to the more normal convention of a large RW and small RO, we\u0027ll be erasing any persistent data on the devices. Right now there are about 40 dogfooders who would be impacted so it\u0027s not great, but becomes impossible once the 5K units are built next month.",
+      "parentUuid": "b1b1aa8c_337d4281",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "7a189ac3a97f1eb3a4b07872bcee33c120943b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "21c81564_01011cda",
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "By persistent space you mean pstate region (4KiB) right RO section? This is moved accordingly at the RO_OFFSET + RO_SIZE, thus us changed with this commit.\n\nFrankly, I have verified experimentally that updater is working fine - updated firmware was working correctly. I would need to check this, whether json should be updated also.",
       "parentUuid": "801ebb23_ea9ee0c1",
+      "revId": "7a189ac3a97f1eb3a4b07872bcee33c120943b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fcde894_f899b2df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-11-11T20:14:52Z",
+      "side": 1,
+      "message": "I\u0027ll double check what the json and updater are doing. Doesn\u0027t seem like the validation on the regions is correct which has been benign so far.",
+      "parentUuid": "52e7bf49_1fec4675",
       "revId": "7a189ac3a97f1eb3a4b07872bcee33c120943b24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
