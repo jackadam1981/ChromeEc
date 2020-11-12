@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74e2a9ba_9be6ac40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-12T17:33:44Z",
+      "side": 1,
+      "message": "The hardware builds were what was missing from the ec-cq-builder and cq-orchestrator. It is actually a really rare change to non break buildall but to actually break the hardware test build. Luck find so soon after making the switch over!",
+      "revId": "3d0679461574f2ef146dcdcd050968dc8cd35d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
