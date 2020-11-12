@@ -48,6 +48,7 @@
 
 /* Configures various charger options */
 #define ISL9241_REG_CONTROL1		0x3C
+#define ISL9241_CONTROL1_PSYS	BIT(3)
 #define ISL9241_CONTROL1_LEARN_MODE	BIT(12)
 
 /* Configures various charger options */
@@ -67,6 +68,8 @@
 /* 12 - Two-Level Adapter Current Limit */
 #define ISL9241_CONTROL2_TWO_LEVEL_ADP_CURR	BIT(12)
 /* 10:9 PROCHOT# debounce time in uS */
+#define ISL9241_CONTROL2_PROCHOT_DEBOUNCE_7	0
+#define ISL9241_CONTROL2_PROCHOT_DEBOUNCE_500	(2 << 9)
 #define ISL9241_CONTROL2_PROCHOT_DEBOUNCE_1000	(3 << 9)
 
 /* MinSystemVoltage [13:6] 8-bit (0x0000h = disables all battery charging) */
@@ -101,6 +104,7 @@
 
 #define ISL9241_REG_CONTROL4		0x4E
 /* 13: Enable VSYS slew rate control (0 - disable, 1 - enable) */
+#define ISL9241_CONTROL4_PSYS_Rsense_Ratio    BIT(11)
 #define ISL9241_CONTROL4_SLEW_RATE_CTRL     BIT(13)
 
 #define ISL9241_REG_CONTROL5		0x4F
@@ -133,5 +137,6 @@ extern const struct charger_drv isl9241_drv;
  * @return EC_SUCCESS or error
  */
 int isl9241_set_ac_prochot(int chgnum, int ma);
+int isl9241_set_dc_prochot(int chgnum, int ma);
 
 #endif /* __CROS_EC_ISL9241_H */

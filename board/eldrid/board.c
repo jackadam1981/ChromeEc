@@ -44,6 +44,7 @@
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "isl9241.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -77,6 +78,7 @@ static void board_init(void)
 {
 	pwm_enable(PWM_CH_LED4_SIDESEL, 1);
 	pwm_set_duty(PWM_CH_LED4_SIDESEL, 100);
+	isl9241_set_dc_prochot(0, 5120);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -136,6 +138,23 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 					charge_mv);
 }
 
+static inline enum ec_error_list isl9241_read(int chgnum, int offset,
+					      int *value)
+{
+	return i2c_read16(chg_chips[chgnum].i2c_port,
+			  chg_chips[chgnum].i2c_addr_flags,
+			  offset, value);
+}
+
+__overridable void board_set_prochot(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+
+	if (max_ma * charge_mv >= 50000000)
+		isl9241_set_ac_prochot(0, 3072);
+	else
+		isl9241_set_ac_prochot(0, 2816);
+}
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
 
