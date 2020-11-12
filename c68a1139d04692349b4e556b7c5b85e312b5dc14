@@ -33,6 +33,29 @@
       "message": "Hi Ting Shen, \nplease help to reviewer this CL, thanks.",
       "revId": "c68a1139d04692349b4e556b7c5b85e312b5dc14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25829d62_3a13cab0",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-11-12T04:36:56Z",
+      "side": 1,
+      "message": "please give the register 0x3f and 0x52 a name\n\ne.g.\n#define REG_DATA_FLASH_BLOCK 0x3f\n#define MANUFACTURER_INFO 0x52 (I\u0027m not very sure what\u0027s this)",
+      "range": {
+        "startLine": 115,
+        "startChar": 21,
+        "endLine": 115,
+        "endChar": 25
+      },
+      "revId": "c68a1139d04692349b4e556b7c5b85e312b5dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
