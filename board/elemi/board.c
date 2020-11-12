@@ -4,7 +4,6 @@
  */
 
 /* Elemi board-specific configuration */
-#include "bb_retimer.h"
 #include "button.h"
 #include "common.h"
 #include "accelgyro.h"
@@ -15,7 +14,6 @@
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/ppc/syv682x.h"
-#include "driver/retimer/bb_retimer.h"
 #include "driver/sync.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/rt1715.h"
@@ -68,29 +66,14 @@ struct keyboard_scan_config keyscan_config = {
 
 /******************************************************************************/
 /*
- * FW_CONFIG defaults for Volteer if the CBI data is not initialized.
+ * FW_CONFIG defaults for Elemi if the CBI data is not initialized.
  */
 union volteer_cbi_fw_config fw_config_defaults = {
-	.usb_db = DB_USB4_GEN2,
+	.usb_db = DB_USB3_ACTIVE,
 };
 
 __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 {
-	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
-
-	if (port == USBC_PORT_C1) {
-		if (usb_db == DB_USB4_GEN2) {
-			/*
-			 * Older boards violate 205mm trace length prior
-			 * to connection to the re-timer and only support up
-			 * to GEN2 speeds.
-			 */
-			return TBT_SS_U32_GEN1_GEN2;
-		} else if (usb_db == DB_USB4_GEN3) {
-			return TBT_SS_TBT_GEN3;
-		}
-	}
-
 	/*
 	 * Thunderbolt-compatible mode not supported
 	 *
@@ -98,21 +81,6 @@ __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 	 * Need to fix once USB-C feature set is known for Volteer.
 	 */
 	return TBT_SS_RES_0;
-}
-
-__override bool board_is_tbt_usb4_port(int port)
-{
-	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
-
-	/*
-	 * Volteer reference design only supports TBT & USB4 on port 1
-	 * if the USB4 DB is present.
-	 *
-	 * TODO (b/147732807): All the USB-C ports need to support same
-	 * features. Need to fix once USB-C feature set is known for Volteer.
-	 */
-	return ((port == USBC_PORT_C1)
-		&& ((usb_db == DB_USB4_GEN2) || (usb_db == DB_USB4_GEN3)));
 }
 
 /******************************************************************************/
@@ -291,7 +259,7 @@ static void kb_backlight_disable(void)
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kb_backlight_disable, HOOK_PRIO_DEFAULT);
 
 /******************************************************************************/
-/* Volteer specific USB daughter-board configuration */
+/* Elemi specific USB daughter-board configuration */
 
 /* USBC TCPC configuration for USB3 daughter board */
 static const struct tcpc_config_t tcpc_config_p1_usb3 = {
@@ -321,12 +289,6 @@ static const struct usb_mux mux_config_p1_usb3_active = {
 	.driver = &virtual_usb_mux_driver,
 	.hpd_update = &virtual_hpd_update,
 	.next_mux = &usbc1_usb3_db_retimer,
-};
-
-static const struct usb_mux mux_config_p1_usb3_passive = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
 };
 
 /******************************************************************************/
@@ -391,19 +353,6 @@ static void config_db_usb3_active(void)
 	usb_muxes[USBC_PORT_C1] = mux_config_p1_usb3_active;
 }
 
-/*
- * Set up support for the passive USB3 daughterboard:
- *   TUSB422 TCPC (already the default)
- *   PI3USB9201 BC 1.2 chip (already the default)
- *   Silergy SYV682A PPC (already the default)
- *   Virtual mux without stacked retimer
- */
-
-static void config_db_usb3_passive(void)
-{
-	usb_muxes[USBC_PORT_C1] = mux_config_p1_usb3_passive;
-}
-
 static void config_port_discrete_tcpc(int port)
 {
 	/*
@@ -436,25 +385,9 @@ __override void board_cbi_init(void)
 
 	config_port_discrete_tcpc(0);
 	switch (usb_db) {
-	case DB_USB_ABSENT:
-		CPRINTS("%sNone", db_type_prefix);
-		break;
-	case DB_USB4_GEN2:
-		config_port_discrete_tcpc(1);
-		CPRINTS("%sUSB4 Gen1/2", db_type_prefix);
-		break;
-	case DB_USB4_GEN3:
-		config_port_discrete_tcpc(1);
-		CPRINTS("%sUSB4 Gen3", db_type_prefix);
-		break;
 	case DB_USB3_ACTIVE:
 		config_db_usb3_active();
 		CPRINTS("%sUSB3 Active", db_type_prefix);
-		break;
-	case DB_USB3_PASSIVE:
-		config_db_usb3_passive();
-		config_port_discrete_tcpc(1);
-		CPRINTS("%sUSB3 Passive", db_type_prefix);
 		break;
 	default:
 		CPRINTS("%sID %d not supported", db_type_prefix, usb_db);
@@ -536,12 +469,6 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
 
 /******************************************************************************/
 /* USBC mux configuration - Tiger Lake includes internal mux */
-struct usb_mux usbc1_usb4_db_retimer = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &bb_usb_retimer,
-	.i2c_port = I2C_PORT_USB_1_MIX,
-	.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
-};
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
@@ -552,21 +479,9 @@ struct usb_mux usb_muxes[] = {
 		.usb_port = USBC_PORT_C1,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
-		.next_mux = &usbc1_usb4_db_retimer,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
-
-struct bb_usb_control bb_controls[] = {
-	[USBC_PORT_C0] = {
-		/* USB-C port 0 doesn't have a retimer */
-	},
-	[USBC_PORT_C1] = {
-		.usb_ls_en_gpio = GPIO_USB_C1_LS_EN,
-		.retimer_rst_gpio = GPIO_USB_C1_RT_RST_ODL,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
 
 static void board_tcpc_init(void)
 {
