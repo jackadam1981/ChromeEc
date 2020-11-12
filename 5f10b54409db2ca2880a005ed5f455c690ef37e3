@@ -16,6 +16,29 @@
       "message": "Check TCPC init ready and PPC init\u0027d",
       "revId": "5f10b54409db2ca2880a005ed5f455c690ef37e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2233ca82_08dc97ba",
+        "filename": "board/drobit/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2020-11-12T12:34:52Z",
+      "side": 1,
+      "message": "#include \"driver/tcpm/rt1715.h\"\n#include \"driver/tcpm/tcpci.h\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "5f10b54409db2ca2880a005ed5f455c690ef37e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
