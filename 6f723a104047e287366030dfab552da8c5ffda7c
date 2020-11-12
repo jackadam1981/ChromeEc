@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "030d9d7a_a782f02c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2032,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-12T16:49:00Z",
+      "side": 1,
+      "message": "Done.  For naming, since this should never be called from outside the stack I made it a \"tc_\" level function.  \n\nAt some point, I\u0027d like to inventory that we follow our best practice of ensuring all \"pd_\" functions are things that are safe to call from other tasks.  But that might be easiest once we can deprecate TCPMv1 on ToT.",
+      "parentUuid": "5be2cb45_96df7591",
+      "range": {
+        "startLine": 2019,
+        "startChar": 0,
+        "endLine": 2032,
+        "endChar": 0
+      },
+      "revId": "6f723a104047e287366030dfab552da8c5ffda7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53f12ee9_7c506f88",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-12T01:09:43Z",
       "side": 1,
       "message": "I suggest changing function names to be prefixed with \"usbc_ocp_\".",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "6f723a104047e287366030dfab552da8c5ffda7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46962e91_0875113f",
+        "filename": "include/usbc_ocp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-12T16:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53f12ee9_7c506f88",
       "range": {
         "startLine": 17,
         "startChar": 4,
