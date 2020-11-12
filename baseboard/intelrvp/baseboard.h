@@ -214,7 +214,7 @@ enum battery_type {
 
 /* Define typical operating power */
 #define PD_OPERATING_POWER_MW  15000
-#define PD_MAX_CURRENT_MA      3000
+#define PD_MAX_CURRENT_MA      5000
 #define PD_MAX_VOLTAGE_MV      20000
 #define DC_JACK_MAX_VOLTAGE_MV 19000
 
