@@ -323,11 +323,58 @@ static enum ec_error_list isl9241_discharge_on_ac(int chgnum, int enable)
 int isl9241_set_ac_prochot(int chgnum, int ma)
 {
 	int rv;
-	uint16_t reg = AC_CURRENT_TO_REG(ma);
+	uint16_t reg;
+
+	/*
+	 * The register reserves bits [6:0] and bits [15:13].
+	 * This routine should ensure these bits are not set
+	 * before writing the register.
+	 */
+	if (ma > ISL9241_AC_PROCHOT_CURRENT_MAX) {
+		CPRINTF("%s: invalid current (%d mA), limiting to maximum value\n", 
+			CHARGER_NAME, ma);
+		ma = ISL9241_AC_PROCHOT_CURRENT_MAX;
+	} else if (ma < ISL9241_AC_PROCHOT_CURRENT_MIN) {
+		CPRINTF("%s: invalid current (%d mA), round up by minimum value\n", 
+			CHARGER_NAME, ma);
+		ma = ISL9241_AC_PROCHOT_CURRENT_MIN;
+	} else {
+		ma &= ~(ISL9241_REG_AC_PROCHOT_L_LIM | ISL9241_REG_AC_PROCHOT_H_LIM);
+	}
+
+	reg = AC_CURRENT_TO_REG(ma);
 
 	rv = isl9241_write(chgnum, ISL9241_REG_AC_PROCHOT, reg);
 	if (rv)
 		CPRINTF("set_ac_prochot failed (%d)\n", rv);
+	
+	return rv;
+}
+
+int isl9241_set_dc_prochot(int chgnum, int ma)
+{
+	int rv;
+
+	/*
+	 * The register reserves bits [7:0] and bits [15:14].
+	 * This routine should ensure these bits are not set
+	 * before writing the register.
+	 */
+	if (ma > ISL9241_DC_PROCHOT_CURRENT_MAX) {
+		CPRINTF("%s: invalid current (%d mA), limiting to maximum value\n", 
+			CHARGER_NAME, ma);
+		ma = ISL9241_DC_PROCHOT_CURRENT_MAX;
+	} else if (ma < ISL9241_DC_PROCHOT_CURRENT_MIN) {
+		CPRINTF("%s: invalid current (%d mA), , round up by minimum value\n", 
+			CHARGER_NAME, ma);
+		ma = ISL9241_DC_PROCHOT_CURRENT_MIN;
+	} else {
+		ma &= ~(ISL9241_REG_DC_PROCHOT_L_LIM | ISL9241_REG_DC_PROCHOT_H_LIM);
+	}
+
+	rv = isl9241_write(chgnum, ISL9241_REG_DC_PROCHOT, ma);
+	if (rv)
+		CPRINTF("set_dc_prochot failed (%d)\n", rv);
 
 	return rv;
 }
