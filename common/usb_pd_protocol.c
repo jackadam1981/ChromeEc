@@ -2279,7 +2279,7 @@ static void pd_update_dual_role_config(int port)
 	 * disconnected state).
 	 */
 	if (pd[port].power_role == PD_ROLE_SOURCE &&
-	    ((drp_state[port] == PD_DRP_FORCE_SINK && !pd_ts_dts_plugged(port))
+	    (drp_state[port] == PD_DRP_FORCE_SINK
 	     || (drp_state[port] == PD_DRP_TOGGLE_OFF
 		 && pd[port].task_state == PD_STATE_SRC_DISCONNECTED))) {
 		pd_set_power_role(port, PD_ROLE_SINK);
