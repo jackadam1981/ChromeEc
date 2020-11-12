@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0466ee6_2c4e0fe0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-11-12T16:01:28Z",
+      "side": 1,
+      "message": "After 3 attempts to generate MKBP interrupt this function is not changing state.interrupt to INTERRUPT_INACTIVE. As a result calling activate_mkbp_with_events() doesn\u0027t set MKBP interrupt and doesn\u0027t schedule force_mkbp_if_events() to be called by hook task. So we end up in INTERRUPT_ACTIVE, kernel is not able to respond (it is still rebooting) and we are neither able to repeat MKBP interrupt nor send next one.",
+      "parentUuid": "f3135a6b_1ba41035",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f18972fa_07f6af98",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-10T20:59:22Z",
       "side": 1,
       "message": "this change doesn\u0027t seem correct. This is effectively ignoring the 3 failed attempt retry count.",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 36
+      },
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e9eff8e_1a84b9a7",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-11-12T16:01:28Z",
+      "side": 1,
+      "message": "Yes, you are right. I just wanted to discuss if it is right direction for solving this problem.\n\nI was thinking a bit about this and it would be better to change force_mkbp_if_events() function to:\n\n\n static void force_mkbp_if_events(void)\n {\n         int toggled \u003d 0;\n \n         mutex_lock(\u0026state.lock);\n         if (state.interrupt \u003d\u003d INTERRUPT_ACTIVE) {\n                 state.interrupt \u003d INTERRUPT_INACTIVE;\n                 if (++state.failed_attempts \u003c 3)\n                         toggled \u003d 1;\n         }\n         mutex_unlock(\u0026state.lock);\n \n         if (toggled) {\n                 CPRINTS(\"MKBP not cleared within threshold, toggling.\");\n                 activate_mkbp_with_events(0);\n         }\n }\n\n\nMain difference is that this code doesn\u0027t ignore failed_attempts count and leaves INACTIVE interrupt state.\nLet me know what do you think about this.",
+      "parentUuid": "5d2ce7b3_649c993c",
       "range": {
         "startLine": 270,
         "startChar": 2,
