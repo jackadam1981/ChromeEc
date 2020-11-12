@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51728d02_57abb9b3",
+        "filename": "test/test_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-12T17:36:14Z",
+      "side": 1,
+      "message": "FYI, this is what caused the build breakage.\n\nBloonchipper doesn\u0027t normally include the CRC8 library but pretty much everything else does, that is why buildall was successful but the hardware image build was not.",
+      "range": {
+        "startLine": 223,
+        "startChar": 8,
+        "endLine": 223,
+        "endChar": 19
+      },
+      "revId": "a8721bd869ac76f0e0d8999dc48c8eea621a9391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
