@@ -16,6 +16,52 @@
       "message": "Please review the changes.",
       "revId": "88f155b0eee428c96f47bf1961ccaf2736ef8429",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a19204_564bd569",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6029,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-12T19:31:42Z",
+      "side": 1,
+      "message": "- With command version 0:\n   AP reboots immediately from G3\n   command usage: ectool reboot_ap_on_g3 \u0026\u0026 shutdown -h now\n\n - With command version 1:\n   AP reboots after the user specified delay\n   command usage: ectool reboot_ap_on_g3 | \u003cdelay\u003e \u0026\u0026 shutdown -h now",
+      "range": {
+        "startLine": 6021,
+        "startChar": 0,
+        "endLine": 6029,
+        "endChar": 3
+      },
+      "revId": "88f155b0eee428c96f47bf1961ccaf2736ef8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a46dd4_f3a9ffb7",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-12T19:31:42Z",
+      "side": 1,
+      "message": "specified",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "88f155b0eee428c96f47bf1961ccaf2736ef8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
