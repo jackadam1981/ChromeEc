@@ -268,7 +268,6 @@ int board_set_active_charge_port(int charge_port);
  */
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv);
-
 /**
  * Get whether the port is sourcing power on VBUS.
  *
