@@ -22,6 +22,30 @@
       },
       "revId": "f4b4cb8ef5f2ce35ada73b35596b699bbb161249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f91d1f54_a3838970",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-12T17:17:14Z",
+      "side": 0,
+      "message": "on a second thought do this to reduce lot of changes\n#if PD_MAX_CURRENT_MA ((PD_MAX_POWER_MW/PD_MAX_VOLTAGE_MV) * 1000)",
+      "parentUuid": "8b5418c8_ab7565e5",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 36
+      },
+      "revId": "f4b4cb8ef5f2ce35ada73b35596b699bbb161249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
