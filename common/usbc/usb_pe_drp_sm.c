@@ -303,6 +303,7 @@ enum usb_pe_state {
 	PE_GIVE_BATTERY_CAP,
 	PE_GIVE_BATTERY_STATUS,
 	PE_SEND_ALERT,
+	PE_GIVE_SOURCE_CAP_EXT,
 	PE_SRC_CHUNK_RECEIVED,
 	PE_SNK_CHUNK_RECEIVED,
 };
@@ -426,6 +427,7 @@ __maybe_unused static const char * const pe_state_names[] = {
 	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
 	[PE_SEND_ALERT] = "PE_Send_Alert",
+	[PE_GIVE_SOURCE_CAP_EXT] = "PE_Give_Source_Cap_Ext",
 #else
 	[PE_SRC_CHUNK_RECEIVED] = "PE_SRC_Chunk_Received",
 	[PE_SNK_CHUNK_RECEIVED] = "PE_SNK_Chunk_Received",
@@ -2304,6 +2306,9 @@ static void pe_src_ready_run(int port)
 			case PD_CTRL_GET_SOURCE_CAP:
 				set_state_pe(port, PE_SRC_SEND_CAPABILITIES);
 				return;
+			case PD_CTRL_GET_SOURCE_CAP_EXT:
+				set_state_pe(port, PE_GIVE_SOURCE_CAP_EXT);
+				return;
 			case PD_CTRL_GET_SINK_CAP:
 				set_state_pe(port, PE_SNK_GIVE_SINK_CAP);
 				return;
@@ -3095,6 +3100,9 @@ static void pe_snk_ready_run(int port)
 			case PD_CTRL_GET_SOURCE_CAP:
 				set_state_pe(port, PE_DR_SNK_GIVE_SOURCE_CAP);
 				return;
+			case PD_CTRL_GET_SOURCE_CAP_EXT:
+				set_state_pe(port, PE_GIVE_SOURCE_CAP_EXT);
+				return;
 			case PD_CTRL_GET_SINK_CAP:
 				set_state_pe(port, PE_SNK_GIVE_SINK_CAP);
 				return;
@@ -3530,6 +3538,41 @@ static void pe_src_ping_run(int port)
 }
 
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
+/**
+ * PE_SRC_Give_Source_Cat_Ext
+ */
+static void pe_give_source_cap_ext_entry(int port)
+{
+	uint16_t *msg = (uint16_t *)tx_emsg[port].buf;
+
+	print_current_state(port);
+
+	/* Set VID */
+	msg[BCDB_VID] = USB_VID_GOOGLE;
+
+	/* Set PID */
+	msg[BCDB_PID] = CONFIG_USB_PID;
+
+	/*
+	 * Lazily fill in our battery info by just populating 1's in the rest of
+	 * the packet
+	 */
+	memset(msg+2, 0x01, 20);
+
+	/* Extended Source Cap data is 24 bytes */
+	tx_emsg[port].len = 24;
+
+	send_ext_data_msg(port, TCPC_TX_SOP, PD_EXT_BATTERY_CAP);
+}
+
+static void pe_give_source_cap_ext_run(int port)
+{
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe_set_ready_state(port);
+	}
+}
+
 /**
  * PE_Give_Battery_Cap
  */
@@ -6608,6 +6651,10 @@ static const struct usb_state pe_states[] = {
 	[PE_SEND_ALERT] = {
 		.entry = pe_send_alert_entry,
 		.run   = pe_send_alert_run,
+	},
+	[PE_GIVE_SOURCE_CAP_EXT] = {
+		.entry = pe_give_source_cap_ext_entry,
+		.run   = pe_give_source_cap_ext_run,
 	},
 #else
 	[PE_SRC_CHUNK_RECEIVED] = {
