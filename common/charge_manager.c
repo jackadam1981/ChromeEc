@@ -778,7 +778,8 @@ static void charge_manager_refresh(void)
 					new_charge_current_uncapped,
 					new_charge_voltage);
 #endif /* HAS_TASK_CHG_RAMP */
-
+		board_set_prochot(new_port, new_supplier, new_charge_current,
+			new_charge_current_uncapped, new_charge_voltage);
 		power_changed = 1;
 
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
