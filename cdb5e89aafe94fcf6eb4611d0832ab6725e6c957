@@ -199,6 +199,30 @@
       },
       "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35eb7f53_28220528",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-11-12T21:34:24Z",
+      "side": 1,
+      "message": "If we are talking about your code - when we are changing state.interrupt to INACTIVE defer_again is false, so it calls activate_mkbp_with_events() which sets state.interrupt to ACTIVE again.\n\nIn my code from comment #2 in this discussion setting state.interrupt to INACTIVE is OK, because force_mkbp_if_events() is scheduled by activate_mkbp_with_event() (which sets state.interrupt to ACTIVE also). To be honest I don\u0027t know what is wrong with code I posted in comment #2.",
+      "parentUuid": "e91911d4_d582730c",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 36
+      },
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
