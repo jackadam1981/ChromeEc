@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b5418c8_ab7565e5",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-12T16:43:48Z",
+      "side": 0,
+      "message": "move these to respective boards as only ADLRVP needs 100W",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 36
+      },
+      "revId": "f4b4cb8ef5f2ce35ada73b35596b699bbb161249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
