@@ -76,6 +76,7 @@ static void board_init(void)
 {
 	pwm_enable(PWM_CH_LED4_SIDESEL, 1);
 	pwm_set_duty(PWM_CH_LED4_SIDESEL, 100);
+	isl9241_set_dc_prochot(0, 6144);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -135,6 +136,33 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 					charge_mv);
 }
 
+static inline enum ec_error_list isl9241_read(int chgnum, int offset,
+					      int *value)
+{
+	return i2c_read16(chg_chips[chgnum].i2c_port,
+			  chg_chips[chgnum].i2c_addr_flags,
+			  offset, value);
+}
+
+__overridable void board_set_prochot(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	int lim;
+	int reg;
+	isl9241_read(0, ISL9241_REG_IADP_ADC_RESULTS, &reg);
+
+	/* LSB value of register = 22.2mA */
+	lim = (reg * 222) / 10;
+
+	if (max_ma * charge_mv >= 50000000) {
+		isl9241_set_ac_prochot(0, 1536)
+		}
+	} else {
+		isl9241_set_ac_prochot(0, 1408)
+		}
+	}
+	
+}
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
 

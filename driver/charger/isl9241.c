@@ -332,6 +332,18 @@ int isl9241_set_ac_prochot(int chgnum, int ma)
 	return rv;
 }
 
+int isl9241_set_dc_prochot(int chgnum, int ma)
+{
+	int rv;
+	uint16_t reg = DC_CURRENT_TO_REG(ma);
+
+	rv = isl9241_write(chgnum, ISL9241_REG_DC_PROCHOT, reg);
+	if (rv)
+		CPRINTF("set_dc_prochot failed (%d)", rv);
+
+	return rv;
+}
+
 /*****************************************************************************/
 /* ISL-9241 initialization */
 static void isl9241_init(int chgnum)
