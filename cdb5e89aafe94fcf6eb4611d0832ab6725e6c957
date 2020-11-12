@@ -175,6 +175,30 @@
       },
       "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91911d4_d582730c",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-12T21:17:07Z",
+      "side": 1,
+      "message": "What I am missing is after we set state.interrupt to INACTIVE how does the count increase on the next deferred call. It won\u0027t enter that if condition.\n\nIf we can write a version without the failed_attempts counter, it would probably be better overall since that extra complexity isn\u0027t likely needed",
+      "parentUuid": "9cff0018_1254ba49",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 36
+      },
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
