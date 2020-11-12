@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "845ac113_327030db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-11-12T10:02:01Z",
+      "side": 1,
+      "message": "To save memory(for some board, the build failed due to lack of space), I\u0027ve put the raw option in #ifdef block.",
+      "revId": "7d4fe6fa65c4d5a955a642f02ed8301aa8126e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
