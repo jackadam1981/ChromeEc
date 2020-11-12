@@ -110,6 +110,30 @@
       },
       "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e06327a_14904680",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-12T16:56:17Z",
+      "side": 1,
+      "message": "After thinking about this some more, maybe we should just have the deferred function defer itself while it is waiting and not go through the activate_mkvp_with_events function. How does this code work:\n\nstatic void force_mkbp_if_events(void)\n{\n\tbool failed_all_attempts \u003d false;\n\tbool defer_again \u003d false;\n\n\tmutex_lock(\u0026state.lock);\n\tif (state.interrupt \u003d\u003d INTERRUPT_ACTIVE) {\n\t\tif (++state.failed_attempts \u003c 3) {\n\t\t\tstate.interrupt \u003d INTERRUPT_INACTIVE;\n\t\t\tfailed_all_attempts \u003d true;\n\t\t} else {\n\t\t\tdefer_again \u003d true;\n\t\t}\n\t}\n\tmutex_unlock(\u0026state.lock);\n\n\tif (failed_all_attempts)\n\t\tCPRINTS(\"MKBP not cleared within threshold, toggling.\");\n\n\t/*\n\t * If we are still waiting for the active interrupt to clear (due to\n\t * the AP reading the value), then check again until we run out of\n\t * attempts.\n\t *\n\t * If we are not deferring this function again, that means the initial\n\t * rising edge of MKBP failed or we ran our of time (attempts) waiting\n\t * for the AP to read the MKBP values after a successfully sent rising\n\t * edge for MKBP interrupt.\n\t */\n\tif (defer_again)\n\t\thook_call_deferred(\u0026force_mkbp_if_events_data, SECOND);\n\telse\n\t\tactivate_mkbp_with_events(0);\n}",
+      "parentUuid": "2e9eff8e_1a84b9a7",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 36
+      },
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
