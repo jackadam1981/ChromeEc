@@ -223,6 +223,30 @@
       },
       "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714d13f5_47b5a797",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-12T21:49:36Z",
+      "side": 1,
+      "message": "I can see it why it is okay now, we need more comments explaining more of the system then.\n\nPlease explain in your comment that we are marking it as inactive, but active_mkpb_with_events will set it as active again if there are still events waiting (which should be the case)\n\nAlso note that failed_attempts is only reset when the AP actually pulls all of the events, so that is why it is okay to mark it as inactive and rely on the counter still.\n\n\nFrom a gpio-based MKBP system, there is still something weird going on (even in the ToT version). When we are marking the state as inactive, in the failure case, we are not deasserting the mkbp interrupt gpio to the AP. That means that the state.interrupt is getting out of sync with the actual gpio signal. The gpio will only gets set back to low when the AP pulls all of the events. (This might also be worth putting in a comment too -- I could go either way)",
+      "parentUuid": "35eb7f53_28220528",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 36
+      },
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
