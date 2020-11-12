@@ -332,6 +332,17 @@ int isl9241_set_ac_prochot(int chgnum, int ma)
 	return rv;
 }
 
+int isl9241_set_dc_prochot(int chgnum, int ma)
+{
+	int rv;
+
+	rv = isl9241_write(chgnum, ISL9241_REG_DC_PROCHOT, ma);
+	if (rv)
+		CPRINTF("set_dc_prochot failed (%d)", rv);
+
+	return rv;
+}
+
 /*****************************************************************************/
 /* ISL-9241 initialization */
 static void isl9241_init(int chgnum)
@@ -362,7 +373,7 @@ static void isl9241_init(int chgnum)
 	if (isl9241_update(chgnum, ISL9241_REG_CONTROL2,
 			   (ISL9241_CONTROL2_TRICKLE_CHG_CURR(
 				bi->precharge_current) |
-			    ISL9241_CONTROL2_PROCHOT_DEBOUNCE_1000),
+			    ISL9241_CONTROL2_PROCHOT_DEBOUNCE_7),
 			   MASK_SET))
 		goto init_fail;
 
