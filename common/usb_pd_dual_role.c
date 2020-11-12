@@ -43,6 +43,7 @@ static struct allow_list_pair allow_list[] = {
 	{USB_VID_HP, USB_PID_HP_ELITE_E233_MONITOR},
 	{USB_VID_HP, USB_PID_HP_E244D_DOCK_MONITOR},
 	{USB_VID_HP, USB_PID_HP_E274D_DOCK_MONITOR},
+	{USB_VID_HP, USB_PID_HP_ESSENTIAL_POWER_BANK},
 };
 static int allow_list_count = ARRAY_SIZE(allow_list);
 
