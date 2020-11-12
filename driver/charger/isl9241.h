@@ -67,6 +67,7 @@
 /* 12 - Two-Level Adapter Current Limit */
 #define ISL9241_CONTROL2_TWO_LEVEL_ADP_CURR	BIT(12)
 /* 10:9 PROCHOT# debounce time in uS */
+#define ISL9241_CONTROL2_PROCHOT_DEBOUNCE_500	(2 << 9)
 #define ISL9241_CONTROL2_PROCHOT_DEBOUNCE_1000	(3 << 9)
 
 /* MinSystemVoltage [13:6] 8-bit (0x0000h = disables all battery charging) */
