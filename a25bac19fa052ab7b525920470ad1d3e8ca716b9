@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83643fff_b568e2f8",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-12T18:27:40Z",
+      "side": 1,
+      "message": "As I look at patches for the different boards, it seems like this would be more obviously correct as something like (3000 + (CONFIG_USB_PD_PORT_MAX_COUNT - 1) * 1500). This is an odd config item, because instead of it having a default value, charge manager has a default behavior if it isn\u0027t defined.",
+      "range": {
+        "startLine": 138,
+        "startChar": 48,
+        "endLine": 138,
+        "endChar": 52
+      },
+      "revId": "a25bac19fa052ab7b525920470ad1d3e8ca716b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
