@@ -332,6 +332,17 @@ int isl9241_set_ac_prochot(int chgnum, int ma)
 	return rv;
 }
 
+int isl9241_set_dc_prochot(int chgnum, int ma)
+{
+	int rv;
+
+	rv = isl9241_write(chgnum, ISL9241_REG_DC_PROCHOT, ma);
+	if (rv)
+		CPRINTF("set_dc_prochot failed (%d)", rv);
+
+	return rv;
+}
+
 /*****************************************************************************/
 /* ISL-9241 initialization */
 static void isl9241_init(int chgnum)
@@ -354,6 +365,10 @@ static void isl9241_init(int chgnum)
 			  bi->voltage_min))
 		goto init_fail;
 
+ 	if (isl9241_update(chgnum, ISL9241_REG_CONTROL1,
+         	   	 ISL9241_CONTROL1_PSYS,
+         	   	 MASK_SET))
+    		goto init_fail;
 	/*
 	 * Set control2 register to
 	 * [15:13]: Trickle Charging Current (battery pre-charge current)
@@ -362,7 +377,7 @@ static void isl9241_init(int chgnum)
 	if (isl9241_update(chgnum, ISL9241_REG_CONTROL2,
 			   (ISL9241_CONTROL2_TRICKLE_CHG_CURR(
 				bi->precharge_current) |
-			    ISL9241_CONTROL2_PROCHOT_DEBOUNCE_1000),
+			    ISL9241_CONTROL2_PROCHOT_DEBOUNCE_7),
 			   MASK_SET))
 		goto init_fail;
 
@@ -380,7 +395,7 @@ static void isl9241_init(int chgnum)
 	 * [13]: Slew rate control enable (sets VSYS ramp to 8mV/us)
 	 */
 	if (isl9241_update(chgnum, ISL9241_REG_CONTROL4,
-			   ISL9241_CONTROL4_SLEW_RATE_CTRL,
+			   ISL9241_CONTROL4_SLEW_RATE_CTRL | ISL9241_CONTROL4_PSYS_Rsense_Ratio,
 			   MASK_SET))
 		goto init_fail;
 
