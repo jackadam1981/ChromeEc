@@ -22,6 +22,30 @@
       },
       "revId": "89ba8ce9d4b77d0ac5ec3c61f23faa5a918bff2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9306da_11f1e118",
+        "filename": "zephyr/test/hooks/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-12T00:23:09Z",
+      "side": 1,
+      "message": "I opened a bug (b/173022225) about this. I think it makes sense to put it here since it shouldn\u0027t ever change and it allows zephyr build system to build without Zmake a little easier.",
+      "parentUuid": "353ca06b_1f145a05",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 22
+      },
+      "revId": "89ba8ce9d4b77d0ac5ec3c61f23faa5a918bff2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
