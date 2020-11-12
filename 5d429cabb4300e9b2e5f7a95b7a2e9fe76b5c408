@@ -39,6 +39,30 @@
       },
       "revId": "5d429cabb4300e9b2e5f7a95b7a2e9fe76b5c408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e52d2e_741f6b43",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-12T01:42:51Z",
+      "side": 1,
+      "message": "Thanks Aseda, we probably can use this bit, but seeems chg_ramp_is_detected is dummy for hw ramp. Are we still need to apply this bit?",
+      "parentUuid": "2c98ab66_c3163bc9",
+      "range": {
+        "startLine": 1499,
+        "startChar": 0,
+        "endLine": 1499,
+        "endChar": 9
+      },
+      "revId": "5d429cabb4300e9b2e5f7a95b7a2e9fe76b5c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
