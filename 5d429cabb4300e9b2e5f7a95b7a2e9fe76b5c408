@@ -63,6 +63,30 @@
       },
       "revId": "5d429cabb4300e9b2e5f7a95b7a2e9fe76b5c408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3d7a1d_7556bb0b",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-12T02:12:48Z",
+      "side": 1,
+      "message": "If this is the case, then we should probably remove it from all drivers.",
+      "parentUuid": "f4e52d2e_741f6b43",
+      "range": {
+        "startLine": 1499,
+        "startChar": 0,
+        "endLine": 1499,
+        "endChar": 9
+      },
+      "revId": "5d429cabb4300e9b2e5f7a95b7a2e9fe76b5c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
