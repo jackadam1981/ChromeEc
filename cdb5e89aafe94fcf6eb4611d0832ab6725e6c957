@@ -65,6 +65,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a9bf4b0_33b18e5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-12T17:03:20Z",
+      "side": 1,
+      "message": "We could also get rid of the 3 second wait for failed attempts and just call it failed after 1 second and remove the stat.failed_attempts field. That would make is more simple and most likely just as effective (and fix this bug)",
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d2ce7b3_649c993c",
