@@ -22,6 +22,30 @@
       },
       "revId": "a25bac19fa052ab7b525920470ad1d3e8ca716b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44764cb_27fa8c2f",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-12T19:04:06Z",
+      "side": 1,
+      "message": "I considered using a common definition, but I wanted it to be obvious to future developers that if the port count changes, this impacts the max current.  As implemented, change port count only will generate a compile error in charge_manager.c.",
+      "parentUuid": "83643fff_b568e2f8",
+      "range": {
+        "startLine": 138,
+        "startChar": 48,
+        "endLine": 138,
+        "endChar": 52
+      },
+      "revId": "a25bac19fa052ab7b525920470ad1d3e8ca716b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
