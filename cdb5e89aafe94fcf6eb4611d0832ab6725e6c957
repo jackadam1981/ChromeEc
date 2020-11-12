@@ -151,6 +151,30 @@
       },
       "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cff0018_1254ba49",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-11-12T18:04:23Z",
+      "side": 1,
+      "message": "I replaced implementation with your code and it doesn\u0027t fix my issue. After 3 failed attempts defer_again will be always true (if state of interrupt is ACTIVE of course). In your code state of interrupt needs do be changed by other function (just like in current code).\n\nI belive the first if statement should look like this (failed_all_attempts variable name helped ;D):\n\n\t\tif (++state.failed_attempts \u003c 3) {\n\t\t\tdefer_again \u003d true;\n\t\t} else {\n\t\t\tstate.interrupt \u003d INTERRUPT_INACTIVE;\n\t\t\tfailed_all_attempts \u003d true;\n\t\t}\n\nIt works but:\n- failed_attempts variable doesn\u0027t count attempts but how many times we checked if kernel responded\n- After three checks, we are always setting state of interrupt to INACTIVE and calling activate_mkbp_with_event() (ignoring retry limit, just like my first version)",
+      "parentUuid": "3e06327a_14904680",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 36
+      },
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
