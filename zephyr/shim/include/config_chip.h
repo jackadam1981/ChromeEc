@@ -60,7 +60,9 @@
  */
 #ifdef CHIP_FAMILY_NPCX7
 #include "config_chip-npcx7.h"
-#endif /* CHIP_FAMILY_NPCX7 */
+#elif defined(CONFIG_SOC_POSIX)
+#include "config_host.h"
+#endif /* Chip specific configuration header. */
 
 #ifdef CONFIG_PLATFORM_EC_I2C
 #define CONFIG_I2C
