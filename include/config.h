@@ -4379,6 +4379,7 @@
 #undef CONFIG_USB_PD_TCPM_RT1715
 #undef CONFIG_USB_PD_TCPM_FUSB307
 #undef CONFIG_USB_PD_TCPM_STM32GX
+#undef CONFIG_USB_PD_TCPM_PPC_CCGXXF
 
 /* PS8XXX series are all supported by a single driver with a build time config
  * listed below (CONFIG_USB_PD_TCPM_PS*) defined to enable the specific product.
@@ -5546,6 +5547,15 @@
 	!defined(CONFIG_SYV682X_NO_CC)
 #undef CONFIG_USB_PD_TCPC_VCONN
 #endif
+#endif
+
+/* CCGXXF standard default defines */
+#if defined(CONFIG_USB_PD_TCPM_PPC_CCGXXF)
+#define CONFIG_USB_PD_DISCHARGE_TCPC
+#define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define CONFIG_USB_PD_TCPC_LOW_POWER
+#define CONFIG_USB_PD_VBUS_DETECT_TCPC
+#define CONFIG_USBC_PPC
 #endif
 
 /*****************************************************************************/
