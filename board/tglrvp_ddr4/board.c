@@ -7,7 +7,10 @@
 
 #include "bb_retimer.h"
 #include "button.h"
-#include "ccgxxf.h"
+#include "driver/tcpm/ccgxxf.h"
+#include "driver/tcpm/ccgxxf.h"
+#include "driver/tcpm/tcpci.h"
+#include "driver/tcpm/tcpm.h"
 #include "common.h"
 #include "charger.h"
 #include "fan.h"
@@ -80,7 +83,8 @@ const struct tcpc_config_t tcpc_config[] = {
 			.port = I2C_PORT_TYPEC,
 			.addr_flags = CCGXXF_I2C_ADDR1_FLAGS,
 		},
-		.drv = &ccgxxf_tcpm_drv
+		.drv = &ccgxxf_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0, /* CY_UPD */
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);

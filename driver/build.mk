@@ -152,6 +152,7 @@ driver-$(CONFIG_USB_PD_TCPM_NCT38XX)+=tcpm/nct38xx.o
 driver-$(CONFIG_USB_PD_TCPM_RAA489000)+=tcpm/raa489000.o
 driver-$(CONFIG_USB_PD_TCPM_FUSB307)+=tcpm/fusb307.o
 driver-$(CONFIG_USB_PD_TCPM_STM32GX)+=tcpm/stm32gx.o
+driver-$(CONFIG_USB_PD_TCPM_PPC_CCGXXF)+=tcpm/ccgxxf.o
 
 # Type-C Retimer drivers
 driver-$(CONFIG_USBC_RETIMER_INTEL_BB)+=retimer/bb_retimer.o
