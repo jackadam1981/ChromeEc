@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba486b75_3e80782f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-13T15:55:29Z",
+      "side": 1,
+      "message": "I think this could really use some unit tests with golden xml files and expected results. This would also ensure that we wouldn\u0027t introduce any regressions as we update this vif file generation process",
+      "revId": "cd6728a329bbdefe7bf1eb8e9fb66505cd9bbfbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
