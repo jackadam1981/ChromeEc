@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e7929c1_91c3621c",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1458269
+      },
+      "writtenOn": "2020-11-13T05:17:12Z",
+      "side": 1,
+      "message": "When LED_HALF_ONE_SEC is set as 500, the amber led blinks with every per 400ms.",
+      "parentUuid": "87d05875_dee169b3",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "fb322c80c860951b7370333021b3e6f8ae452df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9baaed90_ec2a244f",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-12T23:23:55Z",
       "side": 1,
       "message": "A `break` is required at the end of a case.",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "fb322c80c860951b7370333021b3e6f8ae452df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e77fe2a7_89f858d5",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1458269
+      },
+      "writtenOn": "2020-11-13T05:17:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9baaed90_ec2a244f",
       "range": {
         "startLine": 96,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cdfc92e_0c382e9e",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1458269
+      },
+      "writtenOn": "2020-11-13T05:17:12Z",
+      "side": 1,
+      "message": "This is requirement that when system is in S3 and battery level is less than 10%, blink amber led, or blink white led.",
+      "parentUuid": "c86c20b0_ef4edeba",
+      "range": {
+        "startLine": 107,
+        "startChar": 13,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "fb322c80c860951b7370333021b3e6f8ae452df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9db3b5f_3d0ed182",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc43d466_d349f9a8",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1458269
+      },
+      "writtenOn": "2020-11-13T05:17:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9db3b5f_3d0ed182",
+      "range": {
+        "startLine": 111,
+        "startChar": 9,
+        "endLine": 111,
+        "endChar": 53
+      },
+      "revId": "fb322c80c860951b7370333021b3e6f8ae452df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "febb535e_177abe3a",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-11-12T23:23:55Z",
       "side": 1,
       "message": "It is the same as the above PWR_STATE_DISCHARGE_FULL case, right? combine them?",
+      "range": {
+        "startLine": 150,
+        "startChar": 6,
+        "endLine": 150,
+        "endChar": 32
+      },
+      "revId": "fb322c80c860951b7370333021b3e6f8ae452df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa277506_d1cc0bb1",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1458269
+      },
+      "writtenOn": "2020-11-13T05:17:12Z",
+      "side": 1,
+      "message": "All right, combine them.",
+      "parentUuid": "febb535e_177abe3a",
       "range": {
         "startLine": 150,
         "startChar": 6,
