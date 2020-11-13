@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524d5892_00ebfebb",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-13T20:01:03Z",
+      "side": 1,
+      "message": "They cover all the else cases, right? The if clause is unnecessary.",
+      "range": {
+        "startLine": 94,
+        "startChar": 9,
+        "endLine": 95,
+        "endChar": 55
+      },
+      "revId": "7e49cb0eac4e200e0c60384d4f8f78f7f8d39465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9557d140_e944d690",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-13T20:01:03Z",
+      "side": 1,
+      "message": "Do you want fully charged but no AC plug showing solid white on? If no, the extpower_is_present() check is still needed.",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "7e49cb0eac4e200e0c60384d4f8f78f7f8d39465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
