@@ -68,6 +68,24 @@
       "parentUuid": "234c3707_1f0f37d3",
       "revId": "28acecaf4020eabe3c661b7f96f3e416debf900d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "588dc7e4_a47514b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-11-13T15:21:32Z",
+      "side": 1,
+      "message": "Please don\u0027t abandon this CL; your life will be much easier if you let the automation do its work.\n\nThat said, if lantis is so close to drawcia, it may make sense for you to copy the drawcia files on top of these files and manually upload a new patchset. The change-id and CL number will remain the same, which is what really matters to new_variant.py. After uploading the new patchset, continue using new_variant.py to finish the automation steps.",
+      "parentUuid": "4b147357_58d956ff",
+      "revId": "28acecaf4020eabe3c661b7f96f3e416debf900d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
