@@ -2501,6 +2501,9 @@
 /* To define it, if I2C channel C and PECI used at the same time. */
 #undef CONFIG_IT83XX_SMCLK2_ON_GPC7
 
+/* Enable to tune cc physical parameters by FW (ex.rising, falling time) */
+#undef CONFIG_IT83XX_TUNE_CC_PHY
+
 /*
  * Enable the corresponding config option, according to EC's VCC is connected
  * to 1.8V or 3.3V
