@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2444814_ac539313",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6029,
+      "author": {
+        "id": 1369618
+      },
+      "writtenOn": "2020-11-13T03:45:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01a19204_564bd569",
+      "range": {
+        "startLine": 6021,
+        "startChar": 0,
+        "endLine": 6029,
+        "endChar": 3
+      },
+      "revId": "88f155b0eee428c96f47bf1961ccaf2736ef8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29a46dd4_f3a9ffb7",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-12T19:31:42Z",
       "side": 1,
       "message": "specified",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "88f155b0eee428c96f47bf1961ccaf2736ef8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a34ebee_2ed8ade7",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1369618
+      },
+      "writtenOn": "2020-11-13T03:45:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29a46dd4_f3a9ffb7",
       "range": {
         "startLine": 94,
         "startChar": 15,
