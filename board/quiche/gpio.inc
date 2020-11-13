@@ -12,7 +12,7 @@
 GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
 GPIO_INT(USBC_DP_MUX_ALERT_ODL,  PIN(B,  1),      GPIO_INT_FALLING | GPIO_PULL_UP, tcpc_alert_event)
 GPIO_INT(USBC_DP_PPC_INT_ODL,    PIN(E,  7),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
-#ifdef QUICHE_BOARD_P1
+#ifdef BOARD_P1
 GPIO_INT(DDI_MST_IN_HPD,         PIN(C,  14),     GPIO_INT_BOTH, hpd_interrupt)
 #else
 GPIO_INT(DDI_MST_IN_HPD,         PIN(F,  0),      GPIO_INT_BOTH, hpd_interrupt)
@@ -23,7 +23,7 @@ GPIO_INT(USBC_UF_MUX_VBUS_EN,    PIN(C,  12),     GPIO_INT_BOTH, board_uf_manage
 /* Power sequencing signals */
 GPIO(PWR_BTN,                       PIN(A,  0), GPIO_INPUT)
 GPIO(EN_AC_JACK,                    PIN(A,  1), GPIO_OUT_LOW)
-#ifdef QUICHE_BOARD_P1
+#ifdef BOARD_P1
 GPIO(EN_BB,                         PIN(A,  8), GPIO_OUT_LOW)
 #else
 GPIO(EN_BB,                         PIN(A, 10), GPIO_OUT_LOW)
@@ -39,7 +39,7 @@ GPIO(EN_PP5000_HSPORT,              PIN(D,  0), GPIO_OUT_LOW)
 /* MST Hub signals */
 GPIO(MST_LP_CTL_L,                  PIN(D, 10), GPIO_ODR_LOW)
 GPIO(MST_RST_L,                     PIN(E, 14), GPIO_ODR_LOW)
-#ifdef QUICHE_BOARD_P1
+#ifdef BOARD_P1
 GPIO(MST_HUB_LANE_SWITCH,           PIN(C, 15), GPIO_OUT_HIGH)
 #endif
 
@@ -58,14 +58,14 @@ GPIO(USBC_UF_RESET_L,               PIN(D,  2), GPIO_ODR_LOW)
 
 /* USB Hubs signals */
 GPIO(EC_HUB2_RESET_L,               PIN(C,  5), GPIO_ODR_LOW)
-#ifdef QUICHE_BOARD_P1
+#ifdef BOARD_P1
 GPIO(EC_HUB3_RESET_L,               PIN(B, 10), GPIO_ODR_LOW)
 #else
 GPIO(EC_HUB3_RESET_L,               PIN(C, 10), GPIO_ODR_LOW)
 #endif
 
 /* USB-A Current limit switches, set default to 1.5A */
-#ifdef QUICHE_BOARD_P1
+#ifdef BOARD_P1
 GPIO(EC_DFU_MUX_CTRL,               PIN(C,  2), GPIO_OUT_HIGH)
 GPIO(EC_STATUS_LED1,                PIN(C,  0), GPIO_OUT_HIGH)
 GPIO(EC_STATUS_LED2,                PIN(C,  1), GPIO_OUT_HIGH)
@@ -86,7 +86,7 @@ GPIO(EC_FLASH_WP_ODL,               PIN(A,  3), GPIO_ODR_HIGH)
 GPIO(EC_WP_L,                       PIN(E, 11), GPIO_INT_BOTH)
 
 /* UART Bus */
-#ifdef QUICHE_BOARD_P1
+#ifdef BOARD_P1
 GPIO(EC_UART_TX,                    PIN(C, 10), GPIO_INT_BOTH)
 GPIO(EC_UART_RX,                    PIN(C, 11), GPIO_INT_BOTH)
 #else
@@ -101,7 +101,7 @@ GPIO(EC_UART_RX,                    PIN(B, 10), GPIO_INT_BOTH)
  */
 GPIO(EC_I2C1_SCL,                   PIN(A, 15),  GPIO_ODR_HIGH)
 GPIO(EC_I2C1_SDA,                   PIN(B,  7),  GPIO_ODR_HIGH)
-#ifndef QUICHE_BOARD_P1
+#ifndef BOARD_P1
 GPIO(EC_I2C2_SDA,                   PIN(A,  8),  GPIO_ODR_HIGH)
 GPIO(EC_I2C2_SCL,                   PIN(A,  9),  GPIO_ODR_HIGH)
 #endif
@@ -123,7 +123,7 @@ ALTERNATE(PIN_MASK(C, 0x0C00),  7, MODULE_UART,  GPIO_PULL_UP)
  */
 ALTERNATE(PIN_MASK(B, 0x0080),  4, MODULE_I2C,   GPIO_OPEN_DRAIN)
 ALTERNATE(PIN_MASK(A, 0X8000),  4, MODULE_I2C,   GPIO_OPEN_DRAIN)
-#ifndef QUICHE_BOARD_P1
+#ifndef BOARD_P1
 ALTERNATE(PIN_MASK(A, 0x0300),  4, MODULE_I2C,   GPIO_OPEN_DRAIN)
 #endif
 ALTERNATE(PIN_MASK(C, 0x0300),  8, MODULE_I2C,   GPIO_OPEN_DRAIN)
