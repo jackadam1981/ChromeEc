@@ -744,6 +744,11 @@ static void it83xx_init(enum usbpd_port port, int role)
 			     IT83XX_USBPD_CC_PIN_CONFIG2 :
 			     IT83XX_USBPD_CC_PIN_CONFIG);
 
+#ifdef CONFIG_IT83XX_TUNE_CC_PHY
+	/* Tune cc physical parameters */
+	IT83XX_USBPD_CCPSR3_RISE = cc_parameter_list.rising_time;
+	IT83XX_USBPD_CCPSR4_FALL = cc_parameter_list.falling_time;
+#endif
 	/* Reset and disable HW auto generate message header */
 	IT83XX_USBPD_PDMSR(port) &= ~USBPD_REG_MASK_DISABLE_AUTO_GEN_TX_HEADER;
 	USBPD_SW_RESET(port);
