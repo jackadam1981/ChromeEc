@@ -40,7 +40,7 @@
 #ifdef SECTION_IS_RW
 static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	PD_DRP_TOGGLE_ON,
-	PD_DRP_TOGGLE_ON,
+	PD_DRP_FORCE_SOURCE,
 };
 
 static void ppc_interrupt(enum gpio_signal signal)
@@ -199,10 +199,24 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+void board_reset_pd_mcu(void)
+{
+	cprints(CC_SYSTEM, "Resetting TCPCs...");
+	cflush();
+	gpio_set_level(GPIO_USBC_DP_PD_RST_L, 0);
+	gpio_set_level(GPIO_USBC_UF_RESET_L, 0);
+	msleep(PS8805_FW_INIT_DELAY_MS);
+	gpio_set_level(GPIO_USBC_DP_PD_RST_L, 1);
+	gpio_set_level(GPIO_USBC_UF_RESET_L, 1);
+	msleep(PS8805_FW_INIT_DELAY_MS);
+}
+
 
 /* Power Delivery and charging functions */
 void board_tcpc_init(void)
 {
+	board_reset_pd_mcu();
+
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USBC_DP_PPC_INT_ODL);
@@ -213,7 +227,7 @@ void board_tcpc_init(void)
 	/* Enable VBUS control interrupt for C2 */
 	gpio_enable_interrupt(GPIO_USBC_UF_MUX_VBUS_EN);
 }
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
 enum pd_dual_role_states tc_get_initial_drp_mode(int port)
 {
@@ -272,7 +286,9 @@ DECLARE_HOOK(HOOK_INIT, board_ppc_force_detach, HOOK_PRIO_INIT_I2C + 1);
 
 static void board_init(void)
 {
-
+	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
 }
 
 static void board_config_usbc_uf_ppc(void)
@@ -329,11 +345,9 @@ __override uint8_t board_get_usb_pd_port_count(void)
 static void board_init(void)
 {
 #ifdef SECTION_IS_RW
-	board_select_drp_mode();
-	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
+	hook_call_deferred(&board_select_drp_mode_data, 40 * MSEC);
 	hook_call_deferred(&board_config_usbc_uf_ppc_data, 10 * MSEC);
 #endif
->>>>>>> 6bf775e605 (quiche: Add support for C2 usbc port)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
