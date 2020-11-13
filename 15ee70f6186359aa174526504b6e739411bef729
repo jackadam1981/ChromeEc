@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fe83c2_4011582a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-11-13T06:23:22Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me how this pin will be used.\nWhat toggles it?\nI thought that the EDID would only be written in the factory, and not in the field.\nSo why do we need to have a bit that disables the write protect?\n",
+      "revId": "15ee70f6186359aa174526504b6e739411bef729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b5b228_98914de8",
+        "filename": "board/dooly/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-11-13T06:23:22Z",
+      "side": 1,
+      "message": "The CL description talks about disabling write protect rather than enabling write.\nTo be consistent, maybe the comment should be \u0027EDID write protect control\u0027\nAnd the name should perhaps be EC_EDID_WP_DISABLE_L\nAnd the other comment \u0027LOW to disable EDID WP\u0027",
+      "range": {
+        "startLine": 154,
+        "startChar": 14,
+        "endLine": 154,
+        "endChar": 21
+      },
+      "revId": "15ee70f6186359aa174526504b6e739411bef729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6654529d_f48529c2",
+        "filename": "board/dooly/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-11-13T06:23:22Z",
+      "side": 1,
+      "message": "Please align comment with the other comments.",
+      "revId": "15ee70f6186359aa174526504b6e739411bef729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
