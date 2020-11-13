@@ -73,6 +73,30 @@
       },
       "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e49409_a38d0242",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-11-13T22:17:40Z",
+      "side": 1,
+      "message": "If activate_mkbp_with_events() were outside if (like it is in currently used implementation) it would cause infinite loop when host is not responding. Currently used implementation of this function calls activate_mkbp_with_events() even when state of interrupt is not changed to INACTIVE, which is a bit weird for me - calling activate with ACTIVE state does nothing.\n\nIn this code we are not calling activate_mkbp_with_events() when failed_attempts \u003e\u003d 3 (so we will try 3 times actually), but we left interrupt in INACTIVE state which won\u0027t block sending MKBP interrupt in the future.\n\nI\u0027m worried about one thing: after three attempts to send MKBP interrupt, when someone calls activate_mkbp_with_events() failed_attempts equals 3, so there will be only one attempt instead of three (and failed_attempts will be incremented to 4). If this is a problem, we can set failed_attempts to 0 when toggled variable is 0.",
+      "parentUuid": "396a9175_37e7691d",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 27
+      },
+      "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
