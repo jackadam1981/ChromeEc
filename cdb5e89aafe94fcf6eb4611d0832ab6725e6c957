@@ -247,6 +247,30 @@
       },
       "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c7e184_639eac0e",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-11-13T16:12:09Z",
+      "side": 1,
+      "message": "I have uploaded code from comment #2 and added comments as requested. Could you tell me if this version satisfies you? If there are doubts with this, please let me know.",
+      "parentUuid": "714d13f5_47b5a797",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 36
+      },
+      "revId": "cdb5e89aafe94fcf6eb4611d0832ab6725e6c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
