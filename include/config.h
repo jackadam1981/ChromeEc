@@ -4282,6 +4282,7 @@
 #undef CONFIG_USB_PD_TCPM_RT1715
 #undef CONFIG_USB_PD_TCPM_FUSB307
 #undef CONFIG_USB_PD_TCPM_STM32GX
+#undef CONFIG_USB_PD_TCPM_PPC_CCGXXF
 
 /* PS8XXX series are all supported by a single driver with a build time config
  * listed below (CONFIG_USB_PD_TCPM_PS*) defined to enable the specific product.
@@ -5376,6 +5377,16 @@
 /* The SYV682X supports VCONN and needs to be informed of CC polarity */
 #if defined(CONFIG_USBC_PPC_SYV682X)
 #define CONFIG_USBC_PPC_POLARITY
+#define CONFIG_USBC_PPC_VCONN
+#endif
+
+/* TODO */
+#if defined(CONFIG_USB_PD_TCPM_PPC_CCGXXF)
+#define CONFIG_USB_PD_DISCHARGE_PPC
+#define CONFIG_USB_PD_VBUS_DETECT_PPC
+#define CONFIG_USBC_PPC
+#define CONFIG_USBC_PPC_POLARITY
+#define CONFIG_USBC_PPC_SBU
 #define CONFIG_USBC_PPC_VCONN
 #endif
 
