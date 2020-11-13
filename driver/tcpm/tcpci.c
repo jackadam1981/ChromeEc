@@ -64,14 +64,14 @@ STATIC_IF(DEBUG_I2C_FAULT_LAST_WRITE_OP)
  * and disable to help better understand any AutoDischargeDisconnect
  * issues.
  */
-#undef DEBUG_AUTO_DISCHARGE_DISCONNECT
+#define DEBUG_AUTO_DISCHARGE_DISCONNECT
 
 /*
  * ForcedDischarge debug to help coordinate with AutoDischarge.
  * Defining DEBUG_FORCED_DISCHARGE will output a line for each enable
  * and disable to help better understand any Discharge issues.
  */
-#undef DEBUG_FORCED_DISCHARGE
+#define DEBUG_FORCED_DISCHARGE
 
 /*
  * Seeing the CC Status and ROLE Control registers as well as the
@@ -79,7 +79,7 @@ STATIC_IF(DEBUG_I2C_FAULT_LAST_WRITE_OP)
  * helpful.  Defining DEBUG_GET_CC will output a line that gives
  * this useful information
  */
-#undef DEBUG_GET_CC
+#define DEBUG_GET_CC
 
 struct get_cc_values {
 	int cc1;

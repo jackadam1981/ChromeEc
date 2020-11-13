@@ -100,6 +100,7 @@
 /* Enable VCONN */
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
+/* #define CONFIG_USBC_PPC_VCONN 			 CY_UPD */
 #define PD_VCONN_SWAP_DELAY		5000 /* us */
 
 /* Enabling Thunderbolt-compatible mode */
