@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0130579f_f8db5c61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-13T21:37:31Z",
+      "side": 1,
+      "message": "Could you also add a driver function to set the new i2c address? As much as possible, I\u0027d prefer to keep the register accesses for the chips within the drivers for the chips. ",
+      "revId": "ea27ec65af357fdf42c8a92f498e530e03e64573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
