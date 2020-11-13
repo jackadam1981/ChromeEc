@@ -43,7 +43,7 @@ struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 #ifdef SECTION_IS_RW
 static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	PD_DRP_TOGGLE_ON,
-	PD_DRP_TOGGLE_ON,
+	PD_DRP_FORCE_SOURCE,
 };
 
 static void ppc_interrupt(enum gpio_signal signal)
@@ -202,10 +202,24 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+void board_reset_pd_mcu(void)
+{
+	cprints(CC_SYSTEM, "Resetting TCPCs...");
+	cflush();
+	gpio_set_level(GPIO_USBC_DP_PD_RST_L, 0);
+	gpio_set_level(GPIO_USBC_UF_RESET_L, 0);
+	msleep(PS8805_FW_INIT_DELAY_MS);
+	gpio_set_level(GPIO_USBC_DP_PD_RST_L, 1);
+	gpio_set_level(GPIO_USBC_UF_RESET_L, 1);
+	msleep(PS8805_FW_INIT_DELAY_MS);
+}
+
 
 /* Power Delivery and charging functions */
 void board_tcpc_init(void)
 {
+	board_reset_pd_mcu();
+
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USBC_DP_PPC_INT_ODL);
@@ -216,7 +230,7 @@ void board_tcpc_init(void)
 	/* Enable VBUS control interrupt for C2 */
 	gpio_enable_interrupt(GPIO_USBC_UF_MUX_VBUS_EN);
 }
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
 static int board_ppc_disable_dead_battery(void)
 {
@@ -276,6 +290,8 @@ static void board_select_drp_mode(void)
 	 * as the default role of sink only.
 	 */
 	int port;
+
+	//board_debug_gpio(TRIGGER_2, 0);
 
 	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
 		pd_set_dual_role(port, pd_dual_role_init[port]);
@@ -343,8 +359,7 @@ __override uint8_t board_get_usb_pd_port_count(void)
 static void board_init(void)
 {
 #ifdef SECTION_IS_RW
-	board_select_drp_mode();
-	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
+	hook_call_deferred(&board_select_drp_mode_data, 40 * MSEC);
 	hook_call_deferred(&board_config_usbc_uf_ppc_data, 10 * MSEC);
 #endif
 }
