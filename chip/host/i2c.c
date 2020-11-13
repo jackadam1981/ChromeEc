@@ -5,6 +5,7 @@
  * Mock I2C driver for unit test.
  */
 
+#include "common.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "i2c_private.h"
@@ -64,7 +65,7 @@ int test_attach_i2c(const int port, const uint16_t slave_addr_flags)
 	return EC_SUCCESS;
 }
 
-static int test_check_detached(const int port,
+__maybe_unused static int test_check_detached(const int port,
 			       const uint16_t slave_addr_flags)
 {
 	int i;
@@ -77,6 +78,7 @@ static int test_check_detached(const int port,
 	return 0;
 }
 
+#ifndef CONFIG_ZEPHYR
 int chip_i2c_xfer(const int port, const uint16_t slave_addr_flags,
 		  const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags)
@@ -95,6 +97,7 @@ int chip_i2c_xfer(const int port, const uint16_t slave_addr_flags,
 	}
 	return EC_ERROR_UNKNOWN;
 }
+#endif /* CONFIG_ZEPHYR */
 
 int chip_i2c_set_freq(int port, enum i2c_freq freq)
 {
