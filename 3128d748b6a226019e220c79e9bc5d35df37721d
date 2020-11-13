@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50abafe9_82c473ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-13T21:50:14Z",
+      "side": 1,
+      "message": "Ah, I see.  So this should be done right after we enable the sub-rails? And it\u0027s preferred to do this over i2c rather than use the ADDR pin on the chip?",
+      "parentUuid": "3dd0c60c_8bde078d",
+      "revId": "3128d748b6a226019e220c79e9bc5d35df37721d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "076820f0_3f46a0b6",
@@ -48,6 +66,23 @@
       "writtenOn": "2020-11-11T16:38:08Z",
       "side": 1,
       "message": "Why on startup?  Wouldn\u0027t we want to prevent the i2c address conflict as soon as possible?  So likely early in init before we attempt any communication with the charger chip?",
+      "revId": "3128d748b6a226019e220c79e9bc5d35df37721d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae6fc819_dd71b26e",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-13T21:50:14Z",
+      "side": 1,
+      "message": "Can be removed.  This was copied over from Waddledoo\u0027s early board support",
       "revId": "3128d748b6a226019e220c79e9bc5d35df37721d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
