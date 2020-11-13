@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748406a4_7c346882",
+        "filename": "board/drobit/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-13T18:23:20Z",
+      "side": 1,
+      "message": "Should be DB_USB4_GEN3.",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "e765f20a2924a8a173c2ddb6659c98855afd4ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0f1376_267d7a4b",
+        "filename": "board/drobit/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-13T18:23:20Z",
+      "side": 1,
+      "message": "You can delete both of these functions and use the default implementation found in usb_pd_alt_mode_dfp.c",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "e765f20a2924a8a173c2ddb6659c98855afd4ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
