@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c1b73c6_18e616a8",
+        "filename": "board/hammer/variants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1178142
+      },
+      "writtenOn": "2020-11-13T17:49:40Z",
+      "side": 1,
+      "message": "It looks like there are 16 top row keys below, not 10",
+      "revId": "978c47b706e550acc657cb3ffc2964798e20a63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f92f6b_2a2846c5",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1178142
+      },
+      "writtenOn": "2020-11-13T17:49:40Z",
+      "side": 1,
+      "message": "You need to set the \"Top row list\" usage before the logical collection:\n0x06, 0xd1, 0xff, // USAGE_PAGE (Google)\n0x09, 0x01,       // USAGE (Top Row List)",
+      "revId": "978c47b706e550acc657cb3ffc2964798e20a63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12473310_a590ace8",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1178142
+      },
+      "writtenOn": "2020-11-13T17:49:40Z",
+      "side": 1,
+      "message": "I see, so only the first 10 items in the action_key list are physically in the top row?",
+      "revId": "978c47b706e550acc657cb3ffc2964798e20a63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
