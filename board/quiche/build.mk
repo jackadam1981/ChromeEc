@@ -8,7 +8,11 @@
 
 CHIP:=stm32
 CHIP_FAMILY:=stm32g4
+ifdef BOARD_P1
+CHIP_VARIANT:=stm32g473xc
+else
 CHIP_VARIANT:=stm32g431xb
+endif
 BASEBOARD:=honeybuns
 
 board-y=board.o
