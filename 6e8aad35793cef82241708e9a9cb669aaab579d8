@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "012304ff_29ae7065",
+        "filename": "board/elemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6230959d_cc2f99e7",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dca56d3f_3ac2924e",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-12T17:20:20Z",
       "side": 1,
       "message": "This info should be added directly into the tcpc_config[] array at line 454 and then you can delete tcpc_config_p1_usb3.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 2
+      },
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a241cb_8287952a",
+        "filename": "board/elemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca56d3f_3ac2924e",
       "range": {
         "startLine": 269,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd46d7d_c032b30b",
+        "filename": "board/elemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b38b0cc_b86d2d5e",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 36
+      },
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8131e7cd_67ce6e39",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-12T17:20:20Z",
       "side": 1,
       "message": "This can be deleted by updating tcpc_config[] and usb_muxes[] with the correct data for Elemi.",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 0
+      },
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f6ecfe9_bcd225ba",
+        "filename": "board/elemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8131e7cd_67ce6e39",
       "range": {
         "startLine": 348,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d7e090_12cf51dd",
+        "filename": "board/elemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae12074_0a7ed422",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 0
+      },
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67fcd474_b9bebe5d",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-11-12T17:20:20Z",
       "side": 1,
       "message": "Make this static once you disable CONFIG_USB_PD_TCPC_RUNTIME_CONFIG.",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 38
+      },
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b84fd7_010408c9",
+        "filename": "board/elemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67fcd474_b9bebe5d",
       "range": {
         "startLine": 454,
         "startChar": 0,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "baf46177_15de57c7",
+        "filename": "board/elemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "OK, I will remove config_port_discrete_tcpc() and set default to RT1715.",
+      "parentUuid": "081edcfe_d4d51a42",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 3
+      },
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "018d7213_d0312469",
         "filename": "board/elemi/board.c",
         "patchSetId": 3
@@ -175,6 +343,30 @@
       "writtenOn": "2020-11-12T17:20:20Z",
       "side": 1,
       "message": "Replace with PS8815 configuration from above.",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 0
+      },
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d5bb8c_f5f4adc9",
+        "filename": "board/elemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "018d7213_d0312469",
       "range": {
         "startLine": 463,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b1a6f1_46916dd9",
+        "filename": "board/elemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "636eb4c1_8ab43cfa",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 30
+      },
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bd67ac4_09a37715",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffebfde8_eceb09a4",
+        "filename": "board/elemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd67ac4_09a37715",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 0
+      },
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "780a4b68_b44add4c",
@@ -244,6 +484,24 @@
       "writtenOn": "2020-11-12T17:20:20Z",
       "side": 1,
       "message": "Because the TCPC, PPC, MUX configuration is fixed on Elemi, you can add:\n    #undef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG\n    #undef CONFIG_USB_MUX_RUNTIME_CONFIG",
+      "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61dd199b_cffd48d3",
+        "filename": "board/elemi/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-13T03:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "780a4b68_b44add4c",
       "revId": "6e8aad35793cef82241708e9a9cb669aaab579d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
