@@ -4117,6 +4117,9 @@
  */
 #undef CONFIG_USB_PD_TBT_COMPAT_MODE
 
+/* Enable to tune cc physical parameters by FW (ex.rising, falling time) */
+#undef CONFIG_USB_PD_TUNE_CC_PHY
+
 /* Enable to enter into USB4 mode between two port partners */
 #undef CONFIG_USB_PD_USB4
 
