@@ -145,7 +145,9 @@
 /* Enable the new USB-C PD stack */
 #define CONFIG_USB_PD_TCPMV2
 #define CONFIG_USB_DRP_ACC_TRYSRC
-#define CONFIG_USB_PD_REV30
+#define CONFIG_USB_PD_TCPC_LOW_POWER		/* CY_UPD undef for test */
+#define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE     /* CY_UPD for test */
+#undef CONFIG_USB_PD_REV30	/* CY_UPD */
 
 /*
  * TODO(b/158572770): TCPMv2: Conserve flash space
