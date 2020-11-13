@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae85d93_77a03c57",
+        "filename": "board/drawcia/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-13T20:19:02Z",
+      "side": 1,
+      "message": "Could we start adding in the .cfet_mask and .cfet_off_val for these batteries as well?  We\u0027ve started using those in the OCPC algorithm and it would be good to have them for completeness",
+      "revId": "9b34b64a2363ce1714f31612ed18f428d34ef91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
