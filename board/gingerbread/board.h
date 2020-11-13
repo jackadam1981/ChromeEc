@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-#define GINGERBREAD_BOARD_P1
+#undef BOARD_P1
 
 /* Baseboard features */
 #include "baseboard.h"
@@ -42,7 +42,7 @@
 #define I2C_PORT_I2C2		1
 #define I2C_PORT_I2C3	2
 /* Required symbolic I2C port names */
-#ifdef GINGERBREAD_BOARD_P1
+#ifdef BOARD_P1
 #define I2C_PORT_MP4245 I2C_PORT_I2C3
 #else
 #define I2C_PORT_MP4245 I2C_PORT_I2C2
