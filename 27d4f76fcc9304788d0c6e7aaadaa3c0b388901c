@@ -16,6 +16,46 @@
       "message": "This version is my proposal during discussion with comments added as Jett requested.",
       "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a78bd1d5_ade9329a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-13T21:09:08Z",
+      "side": 1,
+      "message": "Comment look good. Thank you for adding them",
+      "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "396a9175_37e7691d",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-13T21:09:08Z",
+      "side": 1,
+      "message": "I thought we always wanted to do this otherwise we won\u0027t try to set to ACTIVE again, right? (and we won\u0027t try 3 times - unless someone else calls activate for us -- but we shouldn\u0027t rely on that)",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 27
+      },
+      "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
