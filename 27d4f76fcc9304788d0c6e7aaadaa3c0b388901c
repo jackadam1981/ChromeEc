@@ -97,6 +97,30 @@
       },
       "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81b5b638_522b94ad",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-13T23:41:09Z",
+      "side": 1,
+      "message": "We were calling activate_mkph_with_event even under the INACTIVE state since that means that setting the actual rising edge for the mkbp interrupt failed, and we want to try again to set that state, once a second until the AP can receive the rising edge of the mkbp event (no limit).\n\nI like the idea of clearing the failed attempts when we toggle too. That seems correct to me.",
+      "parentUuid": "25e49409_a38d0242",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 27
+      },
+      "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
