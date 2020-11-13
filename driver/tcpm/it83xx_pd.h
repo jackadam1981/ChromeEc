@@ -202,6 +202,8 @@
 #define USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE      BIT(1)
 #define USBPD_REG_PLUG_IN_OUT_DETECT_STAT         BIT(0)
 #define IT83XX_USBPD_CCPSR0(p)      REG8(IT83XX_USBPD_BASE(p)+0x70)
+#define IT83XX_USBPD_CCPSR3_RISE(p) REG8(IT83XX_USBPD_BASE(p)+0x73)
+#define IT83XX_USBPD_CCPSR4_FALL(p) REG8(IT83XX_USBPD_BASE(p)+0x74)
 #endif /* !defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX) */
 
 /*
@@ -396,6 +398,12 @@ struct usbpd_ctrl_t {
 	uint8_t irq;
 };
 
+/* Data structure for board to adjust pd port rising and falling time */
+struct cc_para_t {
+	uint8_t rising_time;
+	uint8_t falling_time;
+};
+
 extern const struct usbpd_ctrl_t usbpd_ctrl_regs[];
 extern const struct tcpm_drv it83xx_tcpm_drv;
 void it83xx_Rd_5_1K_only_for_hibernate(int port);
@@ -404,5 +412,9 @@ void it83xx_clear_tx_error_status(enum usbpd_port port);
 void it83xx_get_tx_error_status(enum usbpd_port port);
 #endif
 void switch_plug_out_type(enum usbpd_port port);
+#ifdef CONFIG_IT83XX_TUNE_CC_PHY
+/* Board-level callback function to get tuning parameters */
+extern const struct cc_para_t *board_get_cc_tuning_parameter(int port);
+#endif
 
 #endif /* __CROS_EC_DRIVER_TCPM_IT83XX_H */
