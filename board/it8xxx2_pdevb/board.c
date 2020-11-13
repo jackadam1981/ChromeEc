@@ -177,3 +177,8 @@ const struct adc_t adc_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+const struct cc_para_t cc_parameter_list = {
+	.rising_time = 0x01,
+	.falling_time = 0x01,
+};
