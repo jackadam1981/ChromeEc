@@ -84,8 +84,10 @@ extern uint64_t __deferred_until[];
 extern uint64_t __deferred_until_end[];
 
 /* I2C fake devices for unit testing */
+#ifndef CONFIG_ZEPHYR
 extern const struct test_i2c_xfer __test_i2c_xfer[];
 extern const struct test_i2c_xfer __test_i2c_xfer_end[];
+#endif /* CONFIG_ZEPHYR */
 
 /* Host commands */
 extern const struct host_command __hcmds[];

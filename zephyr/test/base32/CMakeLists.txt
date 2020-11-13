@@ -21,3 +21,5 @@ zephyr_include_directories(
 # Include test file, test under test and console dependency
 target_sources(app PRIVATE "${PLATFORM_EC}/test/base32.c")
 target_sources(app PRIVATE "${PLATFORM_EC}/common/base32.c")
+
+add_subdirectory("${PLATFORM_EC}/zephyr/shim/chip" CMAKE_CURRENT_BINARY_DIR)

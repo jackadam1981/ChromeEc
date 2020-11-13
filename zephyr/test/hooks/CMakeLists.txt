@@ -25,3 +25,5 @@ zephyr_include_directories(
 target_sources(app PRIVATE hooks.c)
 target_sources(app PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../../shim/src/hooks.c")
 target_sources(app PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../../shim/src/console.c")
+
+add_subdirectory("${PLATFORM_EC}/zephyr/shim/chip" CMAKE_CURRENT_BINARY_DIR)

@@ -6,6 +6,9 @@
 if (DEFINED CONFIG_SOC_NPCX7M6FB)
 	set(CHIP_FAMILY "NPCX7")
 	set(CHIP_VARIANT "NPCX7M6FB")
+elseif (DEFINED CONFIG_SOC_POSIX)
+	zephyr_include_directories(host)
+	set(chip_specific_i2c_impl "host/i2c.c")
 endif()
 
 # Add compile definitions for CHIP_FAMILY_ and CHIP_VARIANT_, these are used

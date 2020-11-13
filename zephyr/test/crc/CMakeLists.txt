@@ -15,3 +15,5 @@ zephyr_include_directories("${PLATFORM_EC}/include")
 # Include the test source and the file under test
 target_sources(app PRIVATE main.c)
 target_sources(app PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../../shim/src/crc.c")
+
+add_subdirectory("${PLATFORM_EC}/zephyr/shim/chip" CMAKE_CURRENT_BINARY_DIR)
