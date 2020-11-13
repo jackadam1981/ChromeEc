@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e626f852_cf3c8ee0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-11-13T22:14:06Z",
+      "side": 1,
+      "message": "Looks to me that that this is a kernel bug. The driver should call cros_ec_get_next_event() at or near probe time. We do already call this function in cros_ec_report_events_during_suspend(), to be sure the EC is not stuck when it sends MKBP events while the AP is suspended.\n\nLet me work on a kernel patch. We could even simplify this code, and assume the host always pump out the MKBP events.",
+      "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "396a9175_37e7691d",
