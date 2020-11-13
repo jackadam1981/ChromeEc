@@ -17,7 +17,7 @@
 const struct i2c_port_t i2c_ports[] = {};
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-int i2c_get_line_levels(int port)
+test_mockable int i2c_get_line_levels(int port)
 {
 	return I2C_LINE_IDLE;
 }
