@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-#define QUICHE_BOARD_P1
+#define BOARD_P1
 
 /* Baseboard features */
 #include "baseboard.h"
@@ -44,7 +44,7 @@
 #define I2C_PORT_I2C2		1
 #define I2C_PORT_I2C3	2
 /* Required symbolic I2C port names */
-#ifdef QUICHE_BOARD_P1
+#ifdef BOARD_P1
 #define I2C_PORT_MP4245 I2C_PORT_I2C3
 #else
 #define I2C_PORT_MP4245 I2C_PORT_I2C2
@@ -56,7 +56,7 @@
 
 #include "registers.h"
 
-#ifdef QUICHE_BOARD_P1
+#ifdef BOARD_P1
 #define GPIO_TRIGGER_1 GPIO_EC_STATUS_LED1
 #define GPIO_TRIGGER_2 GPIO_TP41
 #else
