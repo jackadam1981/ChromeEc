@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd0c60c_8bde078d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1439543
+      },
+      "writtenOn": "2020-11-13T08:29:50Z",
+      "side": 1,
+      "message": "Re Dianna, \nSuggesting the address-change on start up is to make sure PS8762\u0027s I2C_address can be changed in every power cycle. Because the new address will not be stored after power cycle.",
+      "revId": "3128d748b6a226019e220c79e9bc5d35df37721d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "076820f0_3f46a0b6",
