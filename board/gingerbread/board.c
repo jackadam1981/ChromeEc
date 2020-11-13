@@ -194,9 +194,24 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+void board_reset_pd_mcu(void)
+{
+	cprints(CC_SYSTEM, "Resetting TCPCs...");
+	cflush();
+	gpio_set_level(GPIO_USBC_DP_PD_RST_L, 0);
+	gpio_set_level(GPIO_USBC_UF_RESET_L, 0);
+	msleep(PS8805_FW_INIT_DELAY_MS);
+	gpio_set_level(GPIO_USBC_DP_PD_RST_L, 1);
+	gpio_set_level(GPIO_USBC_UF_RESET_L, 1);
+	msleep(PS8805_FW_INIT_DELAY_MS);
+}
+
+
 /* Power Delivery and charging functions */
 void board_tcpc_init(void)
 {
+	board_reset_pd_mcu();
+
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
 
