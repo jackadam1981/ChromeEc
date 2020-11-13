@@ -103,9 +103,7 @@ GPIO(EC_H1_PACKET_MODE,		PIN(7, 5), GPIO_OUT_LOW)	/* H1 Packet Mode */
 GPIO(M2_SSD_PLN,		PIN(A, 0), GPIO_ODR_HIGH)	/* SSD power-loss notification */
 GPIO(M2_SSD_PLA,		PIN(7, 0), GPIO_INPUT)		/* SSD power-loss acknowledgment */
 GPIO(CCD_MODE_ODL,		PIN(E, 5), GPIO_INPUT)		/* Case Closed Debug Mode */
-
-/* Only connected to test points */
-GPIO(EC_KB_BL_EN,		PIN(8, 6), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(EC_KB_BL_EN,		PIN(8, 6), GPIO_OUT_LOW)
 
 /*
  * eDP backlight - both PCH and EC have enable pins that must be high
