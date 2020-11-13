@@ -492,6 +492,7 @@ int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 
 int tcpci_tcpm_set_cc(int port, int pull)
 {
+	int rv;
 	int role = TCPC_REG_ROLE_CTRL_SET(0,
 					  tcpci_get_cached_rp(port),
 					  pull, pull);
@@ -499,19 +500,26 @@ int tcpci_tcpm_set_cc(int port, int pull)
 	if (IS_ENABLED(DEBUG_ROLE_CTRL_UPDATES))
 		CPRINTS("C%d: SET_CC pull=%d role=0x%X", port, pull, role);
 
-	return tcpc_write(port, TCPC_REG_ROLE_CTRL, role);
+	rv = tcpc_write(port, TCPC_REG_ROLE_CTRL, role);
+	msleep(1);
+
+	return rv;
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 int tcpci_set_role_ctrl(int port, int toggle, int rp, int pull)
 {
+	int rv;
 	int role = TCPC_REG_ROLE_CTRL_SET(toggle, rp, pull, pull);
 
 	if (IS_ENABLED(DEBUG_ROLE_CTRL_UPDATES))
 		CPRINTS("C%d: SET_ROLE_CTRL toggle=%d rp=%d pull=%d role=0x%X",
 			port, toggle, rp, pull, role);
 
-	return tcpc_write(port, TCPC_REG_ROLE_CTRL, role);
+	rv = tcpc_write(port, TCPC_REG_ROLE_CTRL, role);
+	msleep(1);
+
+	return rv;
 }
 
 int tcpci_tcpc_drp_toggle(int port)
