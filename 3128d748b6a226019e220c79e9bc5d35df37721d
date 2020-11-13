@@ -50,6 +50,24 @@
       "message": "New address flags should go into the driver header file.  This could likely be two CLs: one to add a function to the driver to allow the address change, and one to the board to use that driver function",
       "revId": "3128d748b6a226019e220c79e9bc5d35df37721d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce839203_6418445c",
+        "filename": "board/magolor/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-11-13T07:42:49Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2537517\n\nThe driver header definition.",
+      "parentUuid": "e4ef6ae4_f0875234",
+      "revId": "3128d748b6a226019e220c79e9bc5d35df37721d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
