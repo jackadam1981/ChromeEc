@@ -16,6 +16,23 @@
       "message": "Add EC owners to help review. thanks! ",
       "revId": "32875a2f9ee61b8443b4e9d53f3b4c9b56792267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45092947_5c32888e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2020-11-15T14:03:07Z",
+      "side": 1,
+      "message": "It seems the EC is oversize with this change\n\nfailed log: \n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/metaknight/RW/ec.RW.elf section `.data\u0027 will not fit in region `FLASH\u0027\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: No room left in the flash\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: region `FLASH\u0027 overflowed by 384 bytes\n  CC      RW/common/uptime.o\ncollect2: error: ld returned 1 exit status\nmake[2]: *** [Makefile.rules:522: build/metaknight/RW/ec.RW.elf] Error 1\nmake[1]: *** [Makefile.rules:247: proj-metaknight] Error 2\nmake[1]: *** Waiting for unfinished jobs....\n\n",
+      "revId": "32875a2f9ee61b8443b4e9d53f3b4c9b56792267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
