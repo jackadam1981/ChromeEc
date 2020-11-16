@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ec3a35e_2b7696b9",
+        "filename": "board/hammer/variants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-16T01:26:48Z",
+      "side": 1,
+      "message": "(64*1024) for consistency?",
+      "range": {
+        "startLine": 94,
+        "startChar": 37,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "e54d6efac4e9242b9e9783e2e33063e9d88b72f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80bfb02d_16e0b88b",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-16T01:26:48Z",
+      "side": 1,
+      "message": "Drop this since we don\u0027t support ic_type 0x15.",
+      "range": {
+        "startLine": 300,
+        "startChar": 22,
+        "endLine": 300,
+        "endChar": 40
+      },
+      "revId": "e54d6efac4e9242b9e9783e2e33063e9d88b72f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f93cd3_2ceb8a35",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-16T01:26:48Z",
+      "side": 1,
+      "message": "Just be careful that the stack size is large enough. (also, variable size arrays on the stack are often considered harmful -- e.g. in the kernel they are forbidden)\n\nWe might want to use shared_mem_acquire instead.\n\nHowever, is there a way to avoid a copy? Maybe we can do 3 i2c_xfer?",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 50
+      },
+      "revId": "e54d6efac4e9242b9e9783e2e33063e9d88b72f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "635cec63_eadb5285",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-16T01:26:48Z",
+      "side": 1,
+      "message": "used to be 20, is it intentional to pick 30 now?",
+      "range": {
+        "startLine": 545,
+        "startChar": 47,
+        "endLine": 545,
+        "endChar": 49
+      },
+      "revId": "e54d6efac4e9242b9e9783e2e33063e9d88b72f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
