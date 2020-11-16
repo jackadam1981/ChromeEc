@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95ea8253_3f705ca8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:20:38Z",
+      "side": 1,
+      "message": "don\u0027t we need to put this on the Trogdor firmware branch ?",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef1df68_565dfb12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:20:38Z",
+      "side": 1,
+      "message": "a few comments while exploring the feature",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84df28e3_91fc9250",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:20:38Z",
+      "side": 1,
+      "message": "DOWNLOAD_MODE is 0x01 ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9608484d_402eb00f",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:20:38Z",
+      "side": 1,
+      "message": "I thought we admitted long time ago that this code-base is fully little-endian.\nIs this useful ?",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "734c90d5_4172554d",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:20:38Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to do this.\nwe haven\u0027t implemented the console print as a blocking function likely on purpose.",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adc4997d_9bbfff72",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:20:38Z",
+      "side": 1,
+      "message": "is this some kind of safety layer ?",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358a0977_54dbe446",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:20:38Z",
+      "side": 1,
+      "message": "isn\u0027t 1 second a long delay wrt the watchdog ?",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0411b665_df986f7e",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3043,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:20:38Z",
+      "side": 1,
+      "message": "worth mentioning what this device is",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
