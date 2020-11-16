@@ -93,6 +93,30 @@
       },
       "revId": "7e49cb0eac4e200e0c60384d4f8f78f7f8d39465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f32e97_dea84820",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-16T18:39:44Z",
+      "side": 1,
+      "message": "Please double confirm it. When AP is shutdown, the LED is still ON, even no AC? This is kind-of weird and is wasting power.",
+      "parentUuid": "8b8143db_9511003c",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "7e49cb0eac4e200e0c60384d4f8f78f7f8d39465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

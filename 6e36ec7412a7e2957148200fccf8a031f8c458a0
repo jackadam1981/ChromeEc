@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3fd6d84_c8f48329",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-16T18:39:44Z",
+      "side": 1,
+      "message": "I meant to remove these conditions. Is there any compilation error?",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 55
+      },
+      "revId": "6e36ec7412a7e2957148200fccf8a031f8c458a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
