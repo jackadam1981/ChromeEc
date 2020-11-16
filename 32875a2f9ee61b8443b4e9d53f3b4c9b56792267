@@ -50,6 +50,23 @@
       "message": "After discussing with Dio, confirmed Metaknight proto SMT is still with NPCX796FC0BX which is not suit for latest dedede design guidance now(https://chromeos.google.com/partner/dlm/docs/reference-designs/dedede/dedede_ref_kit/dedede-ComponentGuidelines.pdf) \n\nWill discuss internally first to come out a way for how to proceed later. ",
       "revId": "32875a2f9ee61b8443b4e9d53f3b4c9b56792267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5296fe02_672e6a6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-16T16:47:22Z",
+      "side": 1,
+      "message": "Consider adding \"#define CONFIG_CHIP_INIT_ROM_REGION\" to free up some flash space.  You can also undefine the TCPCI dump command or charger dump command to thelp as well.",
+      "revId": "32875a2f9ee61b8443b4e9d53f3b4c9b56792267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
