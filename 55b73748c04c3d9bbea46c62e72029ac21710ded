@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1040a045_7ca00e28",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:29:40Z",
+      "side": 1,
+      "message": "Can we really get multiple IRQs without consuming them ?",
+      "revId": "55b73748c04c3d9bbea46c62e72029ac21710ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13fb86d_926920c6",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:29:40Z",
+      "side": 1,
+      "message": "task_wake is just a specialized form of task_set_event, calling them both seems wrong",
+      "revId": "55b73748c04c3d9bbea46c62e72029ac21710ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caa4081b_3fd99e5e",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:29:40Z",
+      "side": 1,
+      "message": "this is approximately if (argc !\u003d 2)   ;-)",
+      "revId": "55b73748c04c3d9bbea46c62e72029ac21710ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4cc20d_0747a58e",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:29:40Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "55b73748c04c3d9bbea46c62e72029ac21710ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dbd28e2_17453701",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-16T14:29:40Z",
+      "side": 1,
+      "message": "this structure is mixing read-only values (e.g. point to the driver or hw configuration)\nand runtime RW state. Memory-wise this might be expensive depending the platform you are running on (e.g. flash based MCU), it would be nicer to split them properly.",
+      "revId": "55b73748c04c3d9bbea46c62e72029ac21710ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
