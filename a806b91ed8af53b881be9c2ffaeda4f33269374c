@@ -87,6 +87,29 @@
       "message": "-1 to hold it until we close the discussion.",
       "revId": "a806b91ed8af53b881be9c2ffaeda4f33269374c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bf2dd84_6bdd1bb3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-16T22:54:26Z",
+      "side": 1,
+      "message": "(as discussed) we\u0027re already dealing with a specific path, why don\u0027t we add RESET_SYSJUMP to the condition?",
+      "range": {
+        "startLine": 3276,
+        "startChar": 0,
+        "endLine": 3278,
+        "endChar": 55
+      },
+      "revId": "a806b91ed8af53b881be9c2ffaeda4f33269374c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
