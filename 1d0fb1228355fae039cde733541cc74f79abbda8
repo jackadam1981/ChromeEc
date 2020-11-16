@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7ca661_3856f002",
+        "filename": "board/asurada_scp/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-16T08:54:36Z",
+      "side": 1,
+      "message": "How about using \"\u0026\" which is clearer?\n  \n  CONFIG_IPC_SHARED_OBJ_ADDR \u0026 (~(0x400-1))",
+      "range": {
+        "startLine": 32,
+        "startChar": 25,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "1d0fb1228355fae039cde733541cc74f79abbda8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
