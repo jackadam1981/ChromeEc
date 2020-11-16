@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6b066a_165b2eed",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-16T01:13:15Z",
+      "side": 1,
+      "message": "just to make sure, why are we not starting with flags here?",
+      "range": {
+        "startLine": 158,
+        "startChar": 18,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "b0aace3bdcda40ce49e91c6f1ebe05455efb967e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe8c2422_181969a7",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2325,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-16T01:13:15Z",
+      "side": 1,
+      "message": "nit: LARGE_TRANSFER?",
+      "range": {
+        "startLine": 2325,
+        "startChar": 29,
+        "endLine": 2325,
+        "endChar": 31
+      },
+      "revId": "b0aace3bdcda40ce49e91c6f1ebe05455efb967e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
