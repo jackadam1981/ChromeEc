@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68fca288_ad18f9aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-16T20:00:06Z",
+      "side": 1,
+      "message": "Trogdor SoC only supports one DP path. There are two approaches.\n\n(1) When a port enters DP alt-mode, it blocks the other port to enter DP alt-mode.\n(2) When a port receives HPD high, it ignores the other port HPD signals.\n\nIf doing (1), plugging a Type-C dongle with HDMI port, even no monitor connected, blocks the other port. It really confuses users. When they plug a monitor the other port, it doesn\u0027t work. They don\u0027t know the Type-C dongle blocks the DP path, even no monitor is connected.\n\nTrogdor does the (2) approach.",
+      "parentUuid": "331ef705_83ca5df6",
+      "revId": "33bf350c8f649f2702da17e289e8edd105db98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb97cb40_4f423881",
         "filename": "baseboard/trogdor/usb_pd_policy.c",
         "patchSetId": 1
