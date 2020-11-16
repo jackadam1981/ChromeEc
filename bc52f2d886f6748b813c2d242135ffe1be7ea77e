@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3520d230_88c74a3b",
+        "filename": "chip/host/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-16T19:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c371c07_5d8e04e4",
+      "range": {
+        "startLine": 69,
+        "startChar": 10,
+        "endLine": 69,
+        "endChar": 42
+      },
+      "revId": "bc52f2d886f6748b813c2d242135ffe1be7ea77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72078598_9951b03a",
@@ -60,6 +84,30 @@
       "writtenOn": "2020-11-16T17:36:14Z",
       "side": 1,
       "message": "this is in chip/, so this file should never be allowed to compile in the Zephyr shim anyway.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "bc52f2d886f6748b813c2d242135ffe1be7ea77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8429d5f7_4e2d7869",
+        "filename": "chip/host/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-16T19:29:10Z",
+      "side": 1,
+      "message": "This is a side effect of our platform/ec code not using the same compilational units all throughout. We currently leverage some default implementation of i2c in chip/npcx as it mirrors 1:1 what is already in device tree. Unfortunately, host/ doesn\u0027t do that and includes this function in the same compilational unit as the rest of the functions we\u0027d like to keep the same. That\u0027s why it is being removed for zephyr builds.",
+      "parentUuid": "72078598_9951b03a",
       "range": {
         "startLine": 81,
         "startChar": 0,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de061dc6_904974b6",
+        "filename": "include/link_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-16T19:29:10Z",
+      "side": 1,
+      "message": "These do cause a build error, struct test_i2c_xfer is defined in platform/ec/include/test_utils.h and is removed for CONFIG_ZTEST. So we\u0027re getting an unknown type.",
+      "parentUuid": "27eeafa6_fec712a9",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "bc52f2d886f6748b813c2d242135ffe1be7ea77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8e71ca6_f003ad26",
@@ -106,6 +178,30 @@
       "writtenOn": "2020-11-16T17:36:14Z",
       "side": 1,
       "message": "why is this needed?\n\nshould it be __test_mockable?",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "bc52f2d886f6748b813c2d242135ffe1be7ea77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9cff258_18a218df",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-16T19:29:10Z",
+      "side": 1,
+      "message": "Much cleaner, thanks, forgot about that.",
+      "parentUuid": "c8e71ca6_f003ad26",
       "range": {
         "startLine": 20,
         "startChar": 8,
