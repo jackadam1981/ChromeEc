@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e29d7ea_8089f834",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-16T20:17:24Z",
+      "side": 1,
+      "message": "Ah yeah, that is a really good point and further complicates things. \u003e\u003c\n\nI mean, I guess users will be confused if they try to use 2 displays anyways, but the case you describe is far worse.\n\nThat being said, I guess HPD is all we can go with. I _really_ don\u0027t like this, but what can we do... \n\nI\u0027m seeing a whole can of worms here. If a port is unplugged, I don\u0027t expect switching to automatically work to the other display. (Does it?) Wouldn\u0027t link training have to occur for the 2nd link?\n\nAlso, I assume that AUX is muxed as well? Or is it just the ML0-3 display lanes?\n\nAnyways, I will take a closer look today.",
+      "parentUuid": "68fca288_ad18f9aa",
+      "revId": "33bf350c8f649f2702da17e289e8edd105db98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb97cb40_4f423881",
         "filename": "baseboard/trogdor/usb_pd_policy.c",
         "patchSetId": 1
