@@ -51,6 +51,29 @@
       "message": "I\u0027m wondering if maybe it would be best to not enter DP Alt Mode on the second port if one is already being used. What do you think?\n\nThis is messy and not ideal... 😞",
       "revId": "33bf350c8f649f2702da17e289e8edd105db98ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb97cb40_4f423881",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-11-16T19:49:36Z",
+      "side": 1,
+      "message": "We cannot \"NAK\" VDM:Attention. Thus I suggest this location is inappropriate.\n\nDue to unfortunate quirk of CrOS EC code, this function is handler for both VDM:Status (pre-set HPD) and  VDM:Attention (immediate HPD) which feed into DP \"logical HPD\" queuing mechanism.\n\n[This \"logical HPD queueing\" currently does not exist. Thus we\u0027re not spec compliant. Quirks like this contribute to that. See b/159761215]\n\nThus this would \"terminate flow\" at the VDM:DPStatus message. Not send a NAK; just cease further operations. So \"NAK\" is a bit of a misnomer. (We\u0027re not /sending/ a VDM:NAK.)\n\nInstead I would suggest either:\n(a) not EnterModing in the first place\n(b) being clever [and following spec] by EnterModing but instead PinConfig\u0027ing into \"USB Pin Congiguration\" by honoring the DP VESA spec.\n\n(b) is perfectly allowed and possible. You set bits (1:0) in VDM:Configure to (\"00b \u003d Set configuration for USB.a\") and bits (15:8) to (\"08h \u003d Select Pin Assignment D.d\") or (\"00h \u003d De-select pin assignment.\").\n\nI\u0027m a bit fuzzier on \"USB Configuration\" and \"de-select  pin\", but this would allow us to \"internally track\" logical HPD status of the remote link (see comment above) since we\u0027ve EnterModed and are receiving (VDM:Attention) HPD info. While honoring DP spec by informing the partner we are DP-capable -- but not using it just yet.\n\n(This will shake out a lot of bugs with VESA noncompliant DUT, however. Be warned. It\u0027s like Benson\u0027s dynamic Rp. Yes, it is in-spec, but devices react poorly to it because they\u0027re made poorly.)",
+      "range": {
+        "startLine": 152,
+        "startChar": 15,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "33bf350c8f649f2702da17e289e8edd105db98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
