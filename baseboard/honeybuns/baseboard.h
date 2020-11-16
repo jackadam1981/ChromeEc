@@ -174,8 +174,8 @@ enum usb_strings {
 #define CONFIG_USBC_PPC_DEDICATED_INT
 #ifdef BOARD_P1
 #define CONFIG_CMD_PPC_DUMP
-#define CONFIG_CMD_TCPC_DUMP
 #endif
+#define CONFIG_CMD_TCPC_DUMP
 
 #define CONFIG_STM32G4_UCPD_DEBUG
 

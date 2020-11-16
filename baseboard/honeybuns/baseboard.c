@@ -87,7 +87,7 @@ static void baseboard_init(void)
 	baseboard_set_usbc_sink_mode();
 #endif
 }
-DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT/* HOOK_PRIO_INIT_I2C + 1 */);
 
 #ifdef SECTION_IS_RW
 void baseboard_trigger_hpd_irq(void)
