@@ -33,6 +33,24 @@
       "message": "Remove do while loop, just call i2c_xfer once. No retry should be needed since pi3dpx1207_set_mux() will have already woken the chip before board_pi3dpx1207_mux_set() is called.\nThen can get rid of pi3dpx1207_i2c_write_eq() and just call i2c_xfer() directly below in board_pi3dpx1207_mux_set().",
       "revId": "412a980c8723fe6ac84e8f2be7c98398ceb0a0d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9888412d_ad6c8527",
+        "filename": "board/woomax/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-11-16T02:12:46Z",
+      "side": 1,
+      "message": "Understood. I removed pi3dpx1207_i2c_write_eq() and call i2c_xfer() by your suggestion. Thanks for comment.",
+      "parentUuid": "1f5309cc_02c72614",
+      "revId": "412a980c8723fe6ac84e8f2be7c98398ceb0a0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
