@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e226d1e8_8a6672bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-11-16T21:01:22Z",
+      "side": 1,
+      "message": "this should say \"driver: bmi: \", it\u0027s misleading to say it only affects pompom, since many other boards will be affected by this driver change.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "77c388edbc4cafea961c9e72b807f17ddecf39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f2fbc5_7dbace1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-11-16T21:01:22Z",
+      "side": 1,
+      "message": "+Gwendal, Why did you remove that init sleep in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2483357\nSeems to be needed at least here.",
+      "revId": "77c388edbc4cafea961c9e72b807f17ddecf39fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
