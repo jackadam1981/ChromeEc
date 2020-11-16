@@ -205,6 +205,30 @@
       },
       "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "178b3bd4_c3a4195a",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-11-16T17:44:40Z",
+      "side": 1,
+      "message": "I also think that we should retry in that case. Thanks for pointing this out. I will upload fixed version of this patch tomorrow.",
+      "parentUuid": "aa94d3e7_e2ad8f6c",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 27
+      },
+      "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
