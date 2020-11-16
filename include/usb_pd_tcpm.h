@@ -227,15 +227,16 @@ struct tcpm_drv {
 
 #ifdef CONFIG_USB_PD_DECODE_SOP
 	/**
-	 * Disable receive of SOP' and SOP'' messages. This is provided
+	 * Control receive of SOP' and SOP'' messages. This is provided
 	 * separately from set_vconn so that we can preemptively disable
-	 * receipt of SOP' messages during a VCONN swap.
+	 * receipt of SOP' messages during a VCONN swap, or disable during spans
+	 * when port partners may erroneously be sending cable messages.
 	 *
 	 * @param port Type-C port number
 	 *
 	 * @return EC_SUCCESS or error
 	 */
-	int (*sop_prime_disable)(int port);
+	int (*sop_prime_enable)(int port, int enable);
 #endif
 
 	/**
