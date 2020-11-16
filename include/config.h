@@ -2051,8 +2051,8 @@
  * from the EC, so it may be necessary to wait some time period before
  * reconfiguring after a transition.
  */
-#define CONFIG_MOTION_SENSE_SUSPEND_DELAY_US 0
-#define CONFIG_MOTION_SENSE_RESUME_DELAY_US 0
+#undef CONFIG_MOTION_SENSE_SUSPEND_DELAY_US
+#undef CONFIG_MOTION_SENSE_RESUME_DELAY_US
 
 /* Define motion sensor count in board layer */
 #undef CONFIG_DYNAMIC_MOTION_SENSOR_COUNT

@@ -159,7 +159,6 @@
  * Time taken by V1P8U rail to go down from S3 is 30ms to 60ms hence defer
  * the sensor switching after 60ms.
  */
-#undef CONFIG_MOTION_SENSE_SUSPEND_DELAY_US
 #define CONFIG_MOTION_SENSE_SUSPEND_DELAY_US (MSEC * 60)
 
 #define CONFIG_FLASH_SIZE 524288

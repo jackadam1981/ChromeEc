@@ -49,7 +49,6 @@
 /*
  * Slew rate on the PP1800_SENSOR load switch requires a short delay on startup.
  */
-#undef  CONFIG_MOTION_SENSE_RESUME_DELAY_US
 #define CONFIG_MOTION_SENSE_RESUME_DELAY_US (10 * MSEC)
 
 /* Second set of sensor drivers */
