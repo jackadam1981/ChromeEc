@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68dc2df6_fb2e6280",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-11-16T21:51:03Z",
+      "side": 1,
+      "message": "HPD is problematic because some dongles (WWCB approved Belkin F2CU038btBLK) flag HPD\u003dHigh, but utilize DP spec DPCD \"sinks present\u003d0\" register.\n\nThis spec-compliant optional behavior has caused problems before on this platform.\n\nAlso, many USB-C \"Data only\" docks actually claim to be DP sink endpoints since they recycle PD chipset code with \"fully populated\" video docks. We presented slides on this exact problem at USB DevDays 2019:\nhttps://usb.org/document-library/demystifying-usb-cr-using-linuxs-usb-type-cr-connector-class\n\nThus, with current suggested approaches, I fear a user with a \"data dock\" may inadvertently break display function on the other port, based on order of insertion.",
+      "parentUuid": "2e29d7ea_8089f834",
+      "revId": "33bf350c8f649f2702da17e289e8edd105db98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb97cb40_4f423881",
         "filename": "baseboard/trogdor/usb_pd_policy.c",
         "patchSetId": 1
