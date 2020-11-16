@@ -105,6 +105,24 @@
       "parentUuid": "d9004b61_4c0c4d4b",
       "revId": "0263b733e341f2e0657df7d3828ae4d2c9438669",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecfad49c_c4d702b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-16T16:12:37Z",
+      "side": 1,
+      "message": "CL uploaded here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2540390\n\nI don\u0027t anticipate pushing it to ToT for a while because there are some boards I need to free flash space on before it will build for everything.",
+      "parentUuid": "5a55f0d8_65fb6e8b",
+      "revId": "0263b733e341f2e0657df7d3828ae4d2c9438669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
