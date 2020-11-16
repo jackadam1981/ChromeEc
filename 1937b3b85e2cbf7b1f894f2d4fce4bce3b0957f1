@@ -16,6 +16,23 @@
       "message": "It\u0027s better to document the commit message here as well.",
       "revId": "1937b3b85e2cbf7b1f894f2d4fce4bce3b0957f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9786e4fb_c9c930a1",
+        "filename": "board/asurada_scp/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-16T13:38:45Z",
+      "side": 1,
+      "message": "All the MPU entries have R/W (permit read and write?), are they still protected?",
+      "revId": "1937b3b85e2cbf7b1f894f2d4fce4bce3b0957f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
