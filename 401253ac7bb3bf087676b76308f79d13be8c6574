@@ -16,6 +16,23 @@
       "message": "Hi Michael, if the changes are verified, please mark V+1 and CQ+2",
       "revId": "401253ac7bb3bf087676b76308f79d13be8c6574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e74e6cf3_76f9c97a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2020-11-16T06:09:58Z",
+      "side": 1,
+      "message": "Check EC log, the battery can found.\nCheck battery cut-off function is workable.",
+      "revId": "401253ac7bb3bf087676b76308f79d13be8c6574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
