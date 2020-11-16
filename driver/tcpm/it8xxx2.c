@@ -51,26 +51,44 @@ const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 BUILD_ASSERT(ARRAY_SIZE(usbpd_ctrl_regs) >= IT83XX_USBPD_PHY_PORT_COUNT);
 
 /*
- * This function disables integrated pd module and enables 5.1K resistor for
- * dead battery. A EC reset or calling _init() is able to re-active pd module.
+ * Disable cc analog and pd digital module, but only left Rd_5.1K (Not
+ * Rd_DB) analog module alive to assert Rd on CCs. EC reset or calling
+ * _init() are able to re-active cc and pd.
  */
-void it83xx_disable_pd_module(int port)
+void it83xx_Rd_5_1K_only_for_hibernate(int port)
 {
 	uint8_t cc_config = (port == USBPD_PORT_C ?
 			     IT83XX_USBPD_CC_PIN_CONFIG2 :
 			     IT83XX_USBPD_CC_PIN_CONFIG);
 
-	/* This only apply to PD port. */
+	/* This only apply to active PD port */
 	if (*usbpd_ctrl_regs[port].cc1 == cc_config &&
 	    *usbpd_ctrl_regs[port].cc2 == cc_config) {
-		/* Disable PD Tx and Rx BMC PHY */
+		/* Disable PD Tx and Rx PHY */
 		IT83XX_USBPD_PDGCR(port) &= ~USBPD_REG_MASK_BMC_PHY;
-		/* Disable CC module */
-		it83xx_disable_cc_module(port);
-		/* Connect 5.1K dead battery resistor to CC */
-		IT83XX_USBPD_CCPSR(port) &=
-				~(USBPD_REG_MASK_DISCONNECT_5_1K_CC2_DB |
-				  USBPD_REG_MASK_DISCONNECT_5_1K_CC1_DB);
+		/* Disable CCs voltage detector */
+		IT83XX_USBPD_CCGCR(port) |=
+			USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR;
+		/* Select Rp reserved value for not current leakage */
+		IT83XX_USBPD_CCGCR(port) |=
+			USBPD_REG_MASK_CC_SELECT_RP_RESERVED;
+		/*
+		 * Connect CCs analog module (ex.UP/RD/DET/TX/RX), and
+		 * connect CCs 5.1K to GND, and
+		 * CCs assert Rd
+		 */
+		IT83XX_USBPD_CCCSR(port) &=
+			~(USBPD_REG_MASK_CC2_DISCONNECT |
+			  USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND |
+			  USBPD_REG_MASK_CC1_DISCONNECT |
+			  USBPD_REG_MASK_CC1_DISCONNECT_5_1K_TO_GND |
+			  USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT);
+		/* Disconnect CCs 5V tolerant */
+		IT83XX_USBPD_CCPSR(port) |=
+			(USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
+			 USBPD_REG_MASK_DISCONNECT_POWER_CC1);
+		/* Enable CCs analog module */
+		IT83XX_USBPD_CCGCR(port) &= ~USBPD_REG_MASK_DISABLE_CC;
 	}
 }
 
@@ -148,6 +166,17 @@ static int it83xx_tcpm_get_message_raw(int port, uint32_t *buf, int *head)
 
 	/* Store header */
 	*head = IT83XX_USBPD_RMH(port);
+
+	/*
+	 * BIT[6:4] SOP type of Rx message
+	 * 000b=SOP, 001b=SOP', 010b=SOP", 011b=Debug SOP', 100b=Debug SOP"
+	 * 101b=HRDRST, 110b=CBLRST
+	 * 000b~100b is aligned to enum pd_msg_type.
+	 *
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+		*head |= PD_HEADER_SOP((IT83XX_USBPD_MTSR0(port) >> 4) & 0x7);
+
 	/* Check data message */
 	if (cnt)
 		memcpy(buf, (uint32_t *)&IT83XX_USBPD_RDO(port), cnt * 4);
@@ -460,6 +489,19 @@ static int it83xx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	return EC_SUCCESS;
 }
 
+__maybe_unused static int it83xx_tcpm_decode_sop_prime_enable(int port,
+							      bool enable)
+{
+	if (enable)
+		IT83XX_USBPD_PDCSR1(port) |= (USBPD_REG_MASK_SOPP_RX_ENABLE |
+					      USBPD_REG_MASK_SOPPP_RX_ENABLE);
+	else
+		IT83XX_USBPD_PDCSR1(port) &= ~(USBPD_REG_MASK_SOPP_RX_ENABLE |
+					       USBPD_REG_MASK_SOPPP_RX_ENABLE);
+
+	return EC_SUCCESS;
+}
+
 static int it83xx_tcpm_set_vconn(int port, int enable)
 {
 	/*
@@ -474,9 +516,10 @@ static int it83xx_tcpm_set_vconn(int port, int enable)
 			 */
 			it83xx_enable_vconn(port, enable);
 			if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
-				/* Enable tcpc receive SOP' packet */
+				/* Enable tcpc receive SOP' and SOP'' packet */
 				IT83XX_USBPD_PDCSR1(port) |=
-					 USBPD_REG_MASK_SOPP_RX_ENABLE;
+					 (USBPD_REG_MASK_SOPP_RX_ENABLE |
+					  USBPD_REG_MASK_SOPPP_RX_ENABLE);
 		}
 		/* Turn on/off vconn power switch. */
 		board_pd_vconn_ctrl(port,
@@ -484,9 +527,9 @@ static int it83xx_tcpm_set_vconn(int port, int enable)
 				    USBPD_CC_PIN_2 : USBPD_CC_PIN_1, enable);
 		if (!enable) {
 			if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
-				/* Disable tcpc receive SOP' packet */
-				IT83XX_USBPD_PDCSR1(port) &=
-					~USBPD_REG_MASK_SOPP_RX_ENABLE;
+				/* Disable tcpc receive SOP' and SOP'' packet */
+				it83xx_tcpm_decode_sop_prime_enable(port,
+								    false);
 			/*
 			 * We need to make sure cc voltage detector is enabled
 			 * after vconn is turned off to avoid the potential risk
@@ -732,9 +775,6 @@ static void it83xx_init(enum usbpd_port port, int role)
 	it83xx_set_power_role(port, role);
 	/* Disable vconn: connect cc analog module, disable cc 5v tolerant */
 	it83xx_enable_vconn(port, 0);
-	/* Disconnect CC with 5.1K DB resister to GND */
-	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_5_1K_CC2_DB |
-				     USBPD_REG_MASK_DISCONNECT_5_1K_CC1_DB);
 	/* Enable tx done and hard reset detect interrupt */
 	IT83XX_USBPD_IMR(port) &= ~(USBPD_REG_MASK_MSG_TX_DONE |
 				    USBPD_REG_MASK_HARD_RESET_DETECT);
@@ -756,6 +796,13 @@ static void it83xx_init(enum usbpd_port port, int role)
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 	task_enable_irq(usbpd_ctrl_regs[port].irq);
 	USBPD_START(port);
+	/*
+	 * Disconnect CCs Rd_DB from GND
+	 * NOTE: CCs assert both Rd_5.1k and Rd_DB from USBPD_START() to
+	 *       disconnect Rd_DB about 1.5us.
+	 */
+	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_5_1K_CC2_DB |
+				     USBPD_REG_MASK_DISCONNECT_5_1K_CC1_DB);
 }
 
 static int it83xx_tcpm_init(int port)
@@ -819,6 +866,9 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.select_rp_value	= &it83xx_tcpm_select_rp_value,
 	.set_cc			= &it83xx_tcpm_set_cc,
 	.set_polarity		= &it83xx_tcpm_set_polarity,
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	.sop_prime_enable	= &it83xx_tcpm_decode_sop_prime_enable,
+#endif
 	.set_vconn		= &it83xx_tcpm_set_vconn,
 	.set_msg_header		= &it83xx_tcpm_set_msg_header,
 	.set_rx_enable		= &it83xx_tcpm_set_rx_enable,
