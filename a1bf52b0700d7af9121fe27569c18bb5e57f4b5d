@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "727215d8_4d3d729d",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-11-16T23:59:44Z",
+      "side": 1,
+      "message": "Ah, nvm: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2543112/1/board/coachz/board.c#114",
+      "parentUuid": "58931a17_1b6dc431",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 14
+      },
+      "revId": "a1bf52b0700d7af9121fe27569c18bb5e57f4b5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffca2c5c_423af335",
         "filename": "board/coachz/board.c",
         "patchSetId": 1
