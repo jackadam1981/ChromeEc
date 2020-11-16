@@ -16,6 +16,24 @@
       "message": "hi Gwendal， i test this patch and find the collect rate cannot be set to 0 when powerd down，because the motion_sense_suspend function called hook_call_deferred function which caused the collect rate could not set to 0",
       "revId": "5c276d4933da9c8d001330d78e4cfa9cffb1638f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0950ce47_f85f31ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-11-16T22:44:20Z",
+      "side": 1,
+      "message": "So what is happening:\n- we enter S3: \n  motion_sense_suspend() called,\n    motion_sense_switch_sensor_rate_data() triggered with a 0ms delay (CONFIG_MOTION_SENSE_SUSPEND_DELAY_US)\n- while waiting, we enter S5:\n    when motion_sense_switch_sensor_rate_data is finally called, the sensors are not touchable anymore, so the ODR is not changed.\n\n\n1. It should not matter if we set the collection rate (ODR) to 0 or not when the sensor power line are switch off in S5, the sensor will never interrupt us anymore.\nCan you confirm that\n- 1.1 wait_us is at -1 in S5\n- 1.2 be sure the BMI160 is also power off in S5, in addition to LIS2DWL. You can try to access their WHOAMI register via i2c. \n\n2. In any case, I uploaded a new patch that may address the issue (crrev.com/c/2541892). Let me know if that helps.\n\nI confirmed on another DUT(volteer) that when the sensors are off in S5, with this patch, motion_sense task is not woken up. [using taskinfo from the EC console].",
+      "parentUuid": "02f00c16_40b5545b",
+      "revId": "5c276d4933da9c8d001330d78e4cfa9cffb1638f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
