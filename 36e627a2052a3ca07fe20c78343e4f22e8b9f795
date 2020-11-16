@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffd5b81d_5995ff7d",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-16T13:00:28Z",
+      "side": 1,
+      "message": "this is really hacky... do we have a mapping for encoded machine code to the original MRV asm?",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebc47aee_a3d28fd0",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-16T13:00:28Z",
+      "side": 1,
+      "message": "This seems not aligned to the addr % 4?\n\nShould it be:\n\n addr \u0026 (BIT(5)-1)",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 51
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3061b6a6_b8041c40",
         "filename": "chip/mt8192_scp/cache.h",
         "patchSetId": 11
@@ -36,6 +82,29 @@
         "startChar": 4,
         "endLine": 33,
         "endChar": 33
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654f0345_a824502f",
+        "filename": "chip/mt8192_scp/csr.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-16T13:00:28Z",
+      "side": 1,
+      "message": "It doesn\u0027t need parenthesis for a pure value, also below.",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 32
       },
       "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
