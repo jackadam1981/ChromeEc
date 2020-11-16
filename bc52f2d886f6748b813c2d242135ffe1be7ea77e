@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef01f7d_3bb035a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-16T17:36:14Z",
+      "side": 1,
+      "message": "native_posix",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "bc52f2d886f6748b813c2d242135ffe1be7ea77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c371c07_5d8e04e4",
+        "filename": "chip/host/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-16T17:36:14Z",
+      "side": 1,
+      "message": "indentation needs updated on this line now that you changed the line above",
+      "range": {
+        "startLine": 69,
+        "startChar": 10,
+        "endLine": 69,
+        "endChar": 42
+      },
+      "revId": "bc52f2d886f6748b813c2d242135ffe1be7ea77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72078598_9951b03a",
+        "filename": "chip/host/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-16T17:36:14Z",
+      "side": 1,
+      "message": "this is in chip/, so this file should never be allowed to compile in the Zephyr shim anyway.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "bc52f2d886f6748b813c2d242135ffe1be7ea77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27eeafa6_fec712a9",
+        "filename": "include/link_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-16T17:36:14Z",
+      "side": 1,
+      "message": "having these declarations will not cause build issues ... you don\u0027t need to guard with an ifndef",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "bc52f2d886f6748b813c2d242135ffe1be7ea77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e71ca6_f003ad26",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-16T17:36:14Z",
+      "side": 1,
+      "message": "why is this needed?\n\nshould it be __test_mockable?",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "bc52f2d886f6748b813c2d242135ffe1be7ea77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
