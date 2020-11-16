@@ -47,22 +47,34 @@ const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 BUILD_ASSERT(ARRAY_SIZE(usbpd_ctrl_regs) == IT83XX_USBPD_PHY_PORT_COUNT);
 
 /*
- * This function disables integrated pd module and enables 5.1K resistor for
- * dead battery. A EC reset or calling _init() is able to re-active pd module.
+ * Disable cc analog and pd digital module, but only left Rd_5.1K (Not
+ * Dead Battery) analog module alive to assert Rd on CCs. EC reset or
+ * calling _init() are able to re-active cc and pd.
  */
-void it83xx_disable_pd_module(int port)
+void it83xx_Rd_5_1K_only_for_hibernate(int port)
 {
-	/* This only apply to PD port. */
+	/* This only apply to active PD port */
 	if (*usbpd_ctrl_regs[port].cc1 == IT83XX_USBPD_CC_PIN_CONFIG &&
 		*usbpd_ctrl_regs[port].cc2 == IT83XX_USBPD_CC_PIN_CONFIG) {
 		/* Disable PD PHY */
 		IT83XX_USBPD_GCR(port) &= ~(BIT(0) | BIT(4));
-		/* Power down CC1/CC2 */
-		IT83XX_USBPD_CCGCR(port) |= 0x1f;
-		/* Disable CC1/CC2 voltage detector */
-		IT83XX_USBPD_CCCSR(port) = 0xff;
-		/* Connect 5.1K resistor to CC1/CC2 for dead battery. */
-		IT83XX_USBPD_CCPSR(port) = 0x33;
+		/*
+		 * Disable CCs voltage detector, and
+		 * connect CCs analog module (ex.UP/RD/DET/TX/RX), and
+		 * connect CCs 5.1K to GND
+		 */
+		IT83XX_USBPD_CCCSR(port) = 0x22;
+		/* Disconnect CCs 5V tolerant */
+		IT83XX_USBPD_CCPSR(port) |=
+			(USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
+			 USBPD_REG_MASK_DISCONNECT_POWER_CC1);
+		/*
+		 * Select Rp reserved value for not current leakage, and
+		 * CCs assert Rd, and
+		 * enable CCs analog module
+		 */
+		IT83XX_USBPD_BMCSR(port) &= ~0x08;
+		IT83XX_USBPD_CCGCR(port) &= ~0x1f;
 	}
 }
 
@@ -421,7 +433,6 @@ static void it83xx_init(enum usbpd_port port, int role)
 	 */
 	IT83XX_USBPD_TCDCR(port) = USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
 #endif
-	IT83XX_USBPD_CCPSR(port) = 0xff;
 	/* cc connect */
 	IT83XX_USBPD_CCCSR(port) = 0;
 	/* disable vconn */
@@ -434,6 +445,13 @@ static void it83xx_init(enum usbpd_port port, int role)
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 	task_enable_irq(usbpd_ctrl_regs[port].irq);
 	USBPD_START(port);
+	/*
+	 * Disconnect CCs Rd_DB from GND
+	 * NOTE: CCs assert both Rd_5.1k and Rd_DB from USBPD_START() to
+	 *       disconnect Rd_DB about 1.5us.
+	 */
+	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_5_1K_CC2_DB |
+				     USBPD_REG_MASK_DISCONNECT_5_1K_CC1_DB);
 }
 
 static void it83xx_select_polarity(enum usbpd_port port,
@@ -538,6 +556,19 @@ static int it83xx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	return EC_SUCCESS;
 }
 
+__maybe_unused static int it83xx_tcpm_decode_sop_prime_enable(int port,
+							      bool enable)
+{
+	if (enable)
+		IT83XX_USBPD_PDMSR(port) |= (USBPD_REG_MASK_SOPP_ENABLE |
+					     USBPD_REG_MASK_SOPPP_ENABLE);
+	else
+		IT83XX_USBPD_PDMSR(port) &= ~(USBPD_REG_MASK_SOPP_ENABLE |
+					      USBPD_REG_MASK_SOPPP_ENABLE);
+
+	return EC_SUCCESS;
+}
+
 static int it83xx_tcpm_set_vconn(int port, int enable)
 {
 	/*
@@ -552,9 +583,10 @@ static int it83xx_tcpm_set_vconn(int port, int enable)
 			 */
 			it83xx_enable_vconn(port, enable);
 			if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
-				/* Enable tcpc receive SOP' packet */
+				/* Enable tcpc receive SOP' and SOP'' packet */
 				IT83XX_USBPD_PDMSR(port) |=
-					USBPD_REG_MASK_SOPP_ENABLE;
+					(USBPD_REG_MASK_SOPP_ENABLE |
+					 USBPD_REG_MASK_SOPPP_ENABLE);
 		}
 
 		/* Turn on/off vconn power switch. */
@@ -563,10 +595,10 @@ static int it83xx_tcpm_set_vconn(int port, int enable)
 				USBPD_CC_PIN_2 : USBPD_CC_PIN_1, enable);
 
 		if (!enable) {
-			/* Disable tcpc receive SOP' packet */
+			/* Disable tcpc receive SOP' and SOP'' packet */
 			if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
-				IT83XX_USBPD_PDMSR(port) &=
-					~USBPD_REG_MASK_SOPP_ENABLE;
+				it83xx_tcpm_decode_sop_prime_enable(port,
+								    false);
 			/*
 			 * We need to make sure cc voltage detector is enabled
 			 * after vconn is turned off to avoid the potential risk
@@ -804,6 +836,9 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.select_rp_value	= &it83xx_tcpm_select_rp_value,
 	.set_cc			= &it83xx_tcpm_set_cc,
 	.set_polarity		= &it83xx_tcpm_set_polarity,
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	.sop_prime_enable	= &it83xx_tcpm_decode_sop_prime_enable,
+#endif
 	.set_vconn		= &it83xx_tcpm_set_vconn,
 	.set_msg_header		= &it83xx_tcpm_set_msg_header,
 	.set_rx_enable		= &it83xx_tcpm_set_rx_enable,
