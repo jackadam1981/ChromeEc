@@ -4336,6 +4336,9 @@
 /* Define if tcpc on the board supports VBUS measurement */
 #undef CONFIG_USB_PD_VBUS_MEASURE_TCPC
 
+/* Define if tcpc on the board supports VBUS measurement */
+#undef CONFIG_USB_PD_VBUS_ALERT_TCPC
+
 /* Define the type-c port controller I2C base address. */
 #define CONFIG_TCPC_I2C_BASE_ADDR_FLAGS 0x4E
 
