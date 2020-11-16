@@ -28,5 +28,5 @@ int clock_get_freq(void)
 		return -EIO;
 	}
 
-	return 0;
+	return rate;
 }

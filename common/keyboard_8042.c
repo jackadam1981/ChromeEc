@@ -56,7 +56,6 @@ void lpc_keyboard_resume_irq(void) {}
 int lpc_keyboard_has_char(void) { return 0; }
 void lpc_keyboard_put_char(uint8_t chr, int send_irq) {}
 int lpc_keyboard_input_pending(void) { return 0; }
-
 #endif
 
 static enum {

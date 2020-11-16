@@ -880,7 +880,10 @@ static void keyboard_lid_change(void)
 		keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_CLOSED);
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, keyboard_lid_change, HOOK_PRIO_DEFAULT);
+/* TODO: b/172676906 - Cannot execute task functions in HOOK_INIT yet! */
+#ifndef CONFIG_ZEPHYR
 DECLARE_HOOK(HOOK_INIT, keyboard_lid_change, HOOK_PRIO_INIT_LID + 1);
+#endif
 
 #endif
 

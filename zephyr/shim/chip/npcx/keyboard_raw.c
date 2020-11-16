@@ -82,6 +82,9 @@ void keyboard_raw_enable_interrupt(int enable)
 		LOG_ERR("%s: no cros_kb_raw device!", __func__);
 }
 
+/**
+ * Return true if the current value of the given input GPIO port is zero
+ */
 int keyboard_raw_is_input_low(int port, int id)
 {
 	const struct device *io_dev = npcx_get_gpio_dev(port);
