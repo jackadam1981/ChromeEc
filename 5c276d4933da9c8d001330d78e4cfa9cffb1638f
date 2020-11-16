@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f00c16_40b5545b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2020-11-16T03:34:37Z",
+      "side": 1,
+      "message": "hi Gwendal， i test this patch and find the collect rate cannot be set to 0 when powerd down，because the motion_sense_suspend function called hook_call_deferred function which caused the collect rate could not set to 0",
+      "revId": "5c276d4933da9c8d001330d78e4cfa9cffb1638f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
