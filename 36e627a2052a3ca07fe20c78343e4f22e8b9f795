@@ -108,6 +108,29 @@
       },
       "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1235dde9_32031828",
+        "filename": "chip/mt8192_scp/csr.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-16T13:23:33Z",
+      "side": 1,
+      "message": "Could you add comments for the MPU attrs?\n\nIt seems different from ARM.\n\n\bA attr is set means the operation is permitted?",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
