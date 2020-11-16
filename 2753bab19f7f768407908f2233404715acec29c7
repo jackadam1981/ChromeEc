@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485f9607_2857de67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-11-16T23:11:54Z",
+      "side": 1,
+      "message": "So the underlying question here is to decide if we should maintain the same fw_config fields\nas Puff. I think there is an advantage in doing so, in terms of factory config, tooling etc.\nThe Boxster configs for dooly already use the Puff configs, so the tooling already expects the fw_config to be the same as Puff. In which case, we should ensure that the fw_config for dooly correctly matches the barrel jack that ships with the unit.\nOverriding this means we can never support any other barrel jack rating, which may be a problem in the future.\nWe should ensure that the EVT units ship with the correct fw_config, and potentially we can put a check here if the board_version indicates a pre-EVT, we can override the value.\n",
+      "revId": "2753bab19f7f768407908f2233404715acec29c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
