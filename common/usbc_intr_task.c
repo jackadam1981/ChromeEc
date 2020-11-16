@@ -48,10 +48,12 @@ void pd_interrupt_handler_task(void *p)
 {
 	const int port = (int) ((intptr_t) p);
 	const int port_mask = (PD_STATUS_TCPC_ALERT_0 << port);
+#if 0
 	struct {
 		int count;
 		timestamp_t time;
 	} storm_tracker[CONFIG_USB_PD_PORT_MAX_COUNT] = {};
+#endif
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
@@ -80,10 +82,13 @@ void pd_interrupt_handler_task(void *p)
 			 */
 			while ((tcpc_get_alert_status() & port_mask) &&
 					pd_is_port_enabled(port)) {
+#if 0
 				timestamp_t now;
+#endif
 
 				tcpc_alert(port);
 
+#if 0
 				now = get_time();
 				if (timestamp_expired(storm_tracker[port].time,
 						      &now)) {
@@ -105,6 +110,7 @@ void pd_interrupt_handler_task(void *p)
 					pd_set_suspend(port, 1);
 					pd_deferred_resume(port);
 				}
+#endif
 			}
 		}
 	}
