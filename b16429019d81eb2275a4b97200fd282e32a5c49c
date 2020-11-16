@@ -16,6 +16,24 @@
       "message": "Is this for testing or to make it easier to generate the vif file for volteer?\n\nIf it is for testing, then I think we shouldn\u0027t use a real board and we should make an automated test  to ensure that we can build and test in the CQ.\n\nIf this is to make it easier to generate the vif file for volteer, then we should add a README.md that describes what the file is (and why the file name) and how to use it to generate the real vif file that you want to use with a compliance tester.",
       "revId": "b16429019d81eb2275a4b97200fd282e32a5c49c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4812b2_0c69c34c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-16T18:54:06Z",
+      "side": 1,
+      "message": "This is to help Volteer. They are hand generating their VIF files and this uses genvif to create what they are doing. It documents how to verify that the two are the same and this is not the unit test, although it will be quite similar.",
+      "parentUuid": "93d934aa_26396a9e",
+      "revId": "b16429019d81eb2275a4b97200fd282e32a5c49c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
