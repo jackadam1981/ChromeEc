@@ -157,6 +157,30 @@
       },
       "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75268498_f77a51e7",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-11-16T11:26:56Z",
+      "side": 1,
+      "message": "I uploaded patch with clearing failed attempts when we reached maximum number of attempts (improved comments too). Now we have to decide if we want to merge this fix for EC together with fix for kernel (implemented by Gwendal), or only fix for kernel.",
+      "parentUuid": "81b5b638_522b94ad",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 27
+      },
+      "revId": "27d4f76fcc9304788d0c6e7aaadaa3c0b388901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
