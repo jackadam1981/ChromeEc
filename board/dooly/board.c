@@ -834,12 +834,10 @@ void board_enable_s0_rails(int enable)
 
 unsigned int ec_config_get_bj_power(void)
 {
-	unsigned int bj =
-		(fw_config & EC_CFG_BJ_POWER_MASK) >> EC_CFG_BJ_POWER_L;
-	/* Out of range value defaults to 0 */
-	if (bj >= ARRAY_SIZE(bj_power))
-		bj = 0;
-	return bj;
+/* Alawys return 1,
+ * Dooly only ship with 90w barrel type adapter.
+ */
+	return 1;
 }
 
 unsigned int ec_config_get_thermal_solution(void)
