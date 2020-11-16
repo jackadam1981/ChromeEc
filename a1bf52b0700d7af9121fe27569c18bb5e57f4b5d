@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58931a17_1b6dc431",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-11-16T23:58:09Z",
+      "side": 1,
+      "message": "I find \"ks\" to be too cyptic, my mind first jumped on keyscan.",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 14
+      },
+      "revId": "a1bf52b0700d7af9121fe27569c18bb5e57f4b5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffca2c5c_423af335",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-11-16T23:58:09Z",
+      "side": 1,
+      "message": "I suggest having a printf in here while it\u0027s a TODO. I don\u0027t have to respin it, just something I found useful in the past when doing temporary stuff like this.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 49
+      },
+      "revId": "a1bf52b0700d7af9121fe27569c18bb5e57f4b5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab3da6b_cd7b9e92",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-11-16T23:58:09Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you enable the new interrupts too?",
+      "revId": "a1bf52b0700d7af9121fe27569c18bb5e57f4b5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
