@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9814d3f9_9215b1eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-11-16T04:05:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09dadbda_bb536cfe",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "0263b733e341f2e0657df7d3828ae4d2c9438669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d9004b61_4c0c4d4b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-13T18:11:28Z",
       "side": 1,
       "message": "Dino, would you mind taking a look at b/172460745 and giving an opinion as to whether this CL will affect that issue?  ",
+      "revId": "0263b733e341f2e0657df7d3828ae4d2c9438669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a55f0d8_65fb6e8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-11-16T04:05:58Z",
+      "side": 1,
+      "message": "This CL is made to save latency of fetching code from flash and will not affect the issue.\n\nAfter looking at the issue, I think that EC gets stuck in task_wait_event_mask() called from cbi_fw_config_init(). (maybe in mutex_lock() or chip_i2c_xfer())\nBecause only idle and hooks tasks are enabled while HOOK_INIT. EC will stay in idle task forever if hooks task suspend itself and no event to wake it up.\n\nCan you push your local change which is able to be reproduced the symptom? So I can click checkout to download CLs and reproducing the symptom.",
+      "parentUuid": "d9004b61_4c0c4d4b",
       "revId": "0263b733e341f2e0657df7d3828ae4d2c9438669",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
