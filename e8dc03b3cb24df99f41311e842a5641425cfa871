@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ee85ac_d84ace25",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-11-16T14:55:26Z",
+      "side": 1,
+      "message": "Is there any spec to set minimum time here? Thanks.",
+      "revId": "e8dc03b3cb24df99f41311e842a5641425cfa871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "195127a6_4a1b6545",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-11-16T14:55:26Z",
+      "side": 1,
+      "message": "Do we need to make sure power_5v_enable is enabled here? Otherwise this chip might not be able to have power?",
+      "revId": "e8dc03b3cb24df99f41311e842a5641425cfa871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
