@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "992f0be0_2bd642a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-16T23:32:11Z",
+      "side": 1,
+      "message": "It might be nice if the component name refactor was split out from the override implementation, since they are each quite a bit of code.\n\nI also worry that the XML parser is a lot of code for us to maintain for that purpose, and it would be nice if we could just use a third-party library. However, I don\u0027t want to get in the way of this feature for solely that reason.",
+      "revId": "b3e3e6959f30daa6b3bbba7af830e73b3213fe32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
