@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6236bb9b_167c11f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-16T18:59:32Z",
+      "side": 1,
+      "message": "Specify the actual delay you tested here.  e.g. \"ectool reboot_ap_on_g3 5\".",
+      "range": {
+        "startLine": 15,
+        "startChar": 42,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "3938bb72bf6e1a671e35d23aec3c6888437f29f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3b1d7689_72831bf0",
@@ -14,6 +37,98 @@
       "writtenOn": "2020-11-16T10:27:28Z",
       "side": 1,
       "message": "resolved the review comments and uploaded the new patch, Please review further.",
+      "revId": "3938bb72bf6e1a671e35d23aec3c6888437f29f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087b0418_cee68ebb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 6040,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-16T18:59:32Z",
+      "side": 1,
+      "message": "Delete.  Usage is just \"ectool reboot_ap_on_g3 \u003cdelay\u003e\"",
+      "range": {
+        "startLine": 6040,
+        "startChar": 41,
+        "endLine": 6040,
+        "endChar": 43
+      },
+      "revId": "3938bb72bf6e1a671e35d23aec3c6888437f29f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e87e6692_6abbec3f",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-16T18:59:32Z",
+      "side": 1,
+      "message": "Why not just use the following?\n    if (reboot_ap_at_g3_delay)\n        msleep(reboot_ap_at_g3_delay);",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 16
+      },
+      "revId": "3938bb72bf6e1a671e35d23aec3c6888437f29f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ea69fe_dd508f31",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-16T18:59:32Z",
+      "side": 1,
+      "message": "Brackets are used to indicated optional arguments.  This should be \"reboot_ap_on_g3 [\u003cdelay\u003e]\".",
+      "range": {
+        "startLine": 262,
+        "startChar": 4,
+        "endLine": 262,
+        "endChar": 29
+      },
+      "revId": "3938bb72bf6e1a671e35d23aec3c6888437f29f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3efe621_f0871337",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-16T18:59:32Z",
+      "side": 1,
+      "message": "You should note that the delay is in seconds in the help.\n\n\"Requests that the EC will automatically reboot the AP after a configurable number of seconds the next time we enter the G3 power state.\"",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 0
+      },
       "revId": "3938bb72bf6e1a671e35d23aec3c6888437f29f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
