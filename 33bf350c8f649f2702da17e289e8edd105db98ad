@@ -74,6 +74,30 @@
       },
       "revId": "33bf350c8f649f2702da17e289e8edd105db98ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc88c0a8_292187ff",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-11-16T19:53:23Z",
+      "side": 1,
+      "message": "CR-1 removed since it was merely procedural/academic.\n\n(1) I do not feel strongly enough to block on it. I respect Waihong\u0027s call.\n(2) \"Don\u0027t make perfect the enemy of good\".\n(3) Realistic deadlines",
+      "parentUuid": "bb97cb40_4f423881",
+      "range": {
+        "startLine": 152,
+        "startChar": 15,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "33bf350c8f649f2702da17e289e8edd105db98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
