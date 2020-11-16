@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "118e5ecd_9e99a6a8",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1458269
+      },
+      "writtenOn": "2020-11-16T03:11:00Z",
+      "side": 1,
+      "message": "Yes, use \"else\" instead of \"else if\".",
+      "parentUuid": "524d5892_00ebfebb",
+      "range": {
+        "startLine": 94,
+        "startChar": 9,
+        "endLine": 95,
+        "endChar": 55
+      },
+      "revId": "7e49cb0eac4e200e0c60384d4f8f78f7f8d39465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9557d140_e944d690",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-13T20:01:03Z",
       "side": 1,
       "message": "Do you want fully charged but no AC plug showing solid white on? If no, the extpower_is_present() check is still needed.",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "7e49cb0eac4e200e0c60384d4f8f78f7f8d39465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b8143db_9511003c",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1458269
+      },
+      "writtenOn": "2020-11-16T03:11:00Z",
+      "side": 1,
+      "message": "Yes, the requirement is that while battery is full without AC, system shows solid white on.",
+      "parentUuid": "9557d140_e944d690",
       "range": {
         "startLine": 121,
         "startChar": 6,
