@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0068a33c_fdf0603e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-16T22:10:28Z",
+      "side": 1,
+      "message": "The http://go/cheza_typec doc has some explanation of this single-DP port design.\n\nI think the SoC should do a new link training when the HPD low pulse is longer than some IRQ interval. This low pulse will trigger a HPD low VDM message so the EC logic will switch the DP path.\n\nThere are a lot of other considerations on switching monitor. For example, two monitor plugged, when the first monitor connector becomes loosen that triggers HPD low, switching to the second monitor is not intended.\n\nSo I am still not convinced to implement switching the DP path based on HPD signal. It is still a TODO. Maybe the current no-op approach is better, that requires the user to unplug the dongle that disconnects the Type-C connection.\n\nThere are two external muxes, one for DP lanes and one for AUX.",
+      "parentUuid": "68dc2df6_fb2e6280",
+      "revId": "33bf350c8f649f2702da17e289e8edd105db98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb97cb40_4f423881",
         "filename": "baseboard/trogdor/usb_pd_policy.c",
         "patchSetId": 1
@@ -144,6 +162,30 @@
       "side": 1,
       "message": "CR-1 removed since it was merely procedural/academic.\n\n(1) I do not feel strongly enough to block on it. I respect Waihong\u0027s call.\n(2) \"Don\u0027t make perfect the enemy of good\".\n(3) Realistic deadlines",
       "parentUuid": "bb97cb40_4f423881",
+      "range": {
+        "startLine": 152,
+        "startChar": 15,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "33bf350c8f649f2702da17e289e8edd105db98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4cd1254_d8c30e7a",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-16T22:10:28Z",
+      "side": 1,
+      "message": "I should not use \"NACK\". The VDM:Attention has no response. I will change the terminology.\n\nTrogdor is like (b). It responses the pin selection but defers the pin configuration until HPD is high. When receives a HPD high, the TCPC mux and the extra DP mux are configured before EC regenerates the HPD signal to SoC.\n\nOn the second monitor port, it ignores the HPD signal. The monitor may keep sending some HPD IRQs and some HPD low and high pulses and then timeout.",
+      "parentUuid": "fc88c0a8_292187ff",
       "range": {
         "startLine": 152,
         "startChar": 15,
