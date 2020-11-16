@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc05b976_58232c29",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-16T15:08:14Z",
+      "side": 1,
+      "message": "SB_DEVICE_CHEMISTRY? I can\u0027t find where DEVICE_CHEMISTRY is defined.",
+      "range": {
+        "startLine": 292,
+        "startChar": 6,
+        "endLine": 292,
+        "endChar": 22
+      },
+      "revId": "32f1b535dbc1a65154561b7c19aec585e730d671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
