@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "eaec60f1_12c999c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-16T20:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95ea8253_3f705ca8",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fef1df68_565dfb12",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8839eb74_cd57da3b",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-16T20:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84df28e3_91fc9250",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9608484d_402eb00f",
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d919c1c_2da0e472",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-16T20:50:02Z",
+      "side": 1,
+      "message": "Done. Added BUILD_ASSERT instead in case this driver is ported to somewhere in the future.",
+      "parentUuid": "9608484d_402eb00f",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "734c90d5_4172554d",
@@ -88,6 +148,24 @@
       "writtenOn": "2020-11-16T14:20:38Z",
       "side": 1,
       "message": "I don\u0027t think we want to do this.\nwe haven\u0027t implemented the console print as a blocking function likely on purpose.",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6d0862_d493ebe6",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-16T20:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "734c90d5_4172554d",
       "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1acc0100_df1a3a67",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-16T20:50:02Z",
+      "side": 1,
+      "message": "When dumping raw i2c data, this memset will tell us whether the chip returned anything or not. A random value on the stack will make it unclear.",
+      "parentUuid": "adc4997d_9bbfff72",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "358a0977_54dbe446",
         "filename": "driver/nfc/ctn730.c",
         "patchSetId": 2
@@ -122,6 +218,24 @@
       "writtenOn": "2020-11-16T14:20:38Z",
       "side": 1,
       "message": "isn\u0027t 1 second a long delay wrt the watchdog ?",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b44fe17_704cfa95",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-16T20:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "358a0977_54dbe446",
       "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +253,24 @@
       "writtenOn": "2020-11-16T14:20:38Z",
       "side": 1,
       "message": "worth mentioning what this device is",
+      "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00587ce6_d09fcab0",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3043,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-16T20:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0411b665_df986f7e",
       "revId": "b7e9d1cfe3bd81f18db579cdbbbf3762d6761330",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
