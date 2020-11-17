@@ -122,6 +122,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "285024c2_7137cd06",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:28:41Z",
+      "side": 1,
+      "message": "Should this have a buffer overrun check similar to the rx function?  Also, should the driver note we\u0027re choosing to only use chunked extended messages?  Looks like the chip could support unchunked extended messages",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b79b2e8f_75b3c47a",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 41
@@ -133,6 +150,165 @@
       "writtenOn": "2020-11-17T00:36:44Z",
       "side": 1,
       "message": "Should any of the receives be enabled before the TC has decided we\u0027re attached?   Do they cause us to generate GoodCRCs, or just set us up to detect things?\n\nAlso, unless you have a cable e-mark I don\u0027t think cable reset is needed",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b534a78_eca0c208",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:28:41Z",
+      "side": 1,
+      "message": "Missing the rest of the sentence?",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3c93b0_26e57624",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:28:41Z",
+      "side": 1,
+      "message": "We wouldn\u0027t expect to see type \u003e\u003d TCPC_TX_HARD_RESET in this clause, right?  All of the types in this switch segment are \u003c that value",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc23bf63_e9f808db",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:28:41Z",
+      "side": 1,
+      "message": "Where does failure get reported if we were waiting on a GoodCRC and didn\u0027t get one?",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd667db1_c0f24682",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:28:41Z",
+      "side": 1,
+      "message": "nit: consider naming to the tx_source to avoid type confusion with the transmit type",
+      "range": {
+        "startLine": 606,
+        "startChar": 37,
+        "endLine": 606,
+        "endChar": 41
+      },
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7e8082_2addd0ca",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:28:41Z",
+      "side": 1,
+      "message": "This bit depends on SOP/SOP\u0027 type.  Same with data role",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0191cd27_1e6ecbc0",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:28:41Z",
+      "side": 1,
+      "message": "Need SOP\u0027 support",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1badbaeb_3b3393f5",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:28:41Z",
+      "side": 1,
+      "message": "Our enum we\u0027re using here is defined in the TCPCI spec though, so we\u0027ll need to ensure we\u0027re keeping this matched between drivers.  It looks like they match well here, but notes would be good to leave in the driver in case these start to diverge.",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05366649_d3225d59",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:28:41Z",
+      "side": 1,
+      "message": "Side question, does this chip or similar ones support multiple ports?  That might be good to leave notes about since it looks like the current driver is written for only one port.\n\nDoes the port have to be 0 necessarily?  The task is taking a port variable.  Or is that a convention you plan to enforce in the driver that any on-chip ports are first?",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76da7f35_7ef86eeb",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:28:41Z",
+      "side": 1,
+      "message": "So this is where the driver needs to be doing some of the PRL states we currently count on TCPCs to do.  Here, we\u0027ll need to implement PRL_Tx_Match_MessageID State to verify the GoodCRC is for the right msgid.  \n\nRelated question, does the hardware implement retires for you when the partner doesn\u0027t GoodCRC, or does the driver need to do this as well?  We\u0027re currently counting on the TCPCs to retry for us, since retrying from the EC PRL is too slow to match compliance requirements on chromebooks at least.",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
