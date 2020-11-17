@@ -51,6 +51,24 @@
       "parentUuid": "e09a917e_2b10edab",
       "revId": "0350c1bbc3e5491d52523566f0a2724a10346362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abdd80b3_78be9e41",
+        "filename": "test/genvif/.gitignore",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-17T17:18:04Z",
+      "side": 1,
+      "message": "So do you want to add more to the over_test_vif to cover the test other fields like USB4?\n\n\ngitignore is fine, I was hoping we could reuse the build directory, or maybe we can have a build directory in this folder and have one gitignore. Not support important though, just thinking out loud.",
+      "parentUuid": "e1180cd9_c54633f6",
+      "revId": "0350c1bbc3e5491d52523566f0a2724a10346362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
