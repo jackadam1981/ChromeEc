@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa5f594_44c46779",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-17T07:16:27Z",
+      "side": 1,
+      "message": "Done\n\nI am not a big fan of inline keyword.  If it is only a suggestion for compiler.  I would defer to compiler to decide.",
+      "parentUuid": "220241fb_47feae3a",
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffd5b81d_5995ff7d",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-16T13:00:28Z",
       "side": 1,
       "message": "this is really hacky... do we have a mapping for encoded machine code to the original MRV asm?",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0659e1d_42bf5c2b",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-17T07:16:27Z",
+      "side": 1,
+      "message": "I am afraid not.  This is what MTK provided us.\n\nSee cache_op.c in b/156222459#comment14",
+      "parentUuid": "ffd5b81d_5995ff7d",
       "range": {
         "startLine": 31,
         "startChar": 15,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1d7349_1b9c2a5a",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-17T07:16:27Z",
+      "side": 1,
+      "message": "Done\n\nThanks, a big bug here.",
+      "parentUuid": "ebc47aee_a3d28fd0",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 51
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3061b6a6_b8041c40",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-11-16T06:28:32Z",
       "side": 1,
       "message": "cache_writebaack_dcache_range\n            ^^ 1 a only? ,-)",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86ee6e9b_e791fde8",
+        "filename": "chip/mt8192_scp/cache.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-17T07:16:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3061b6a6_b8041c40",
       "range": {
         "startLine": 33,
         "startChar": 4,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2be1a2c7_8f221f53",
+        "filename": "chip/mt8192_scp/csr.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-17T07:16:27Z",
+      "side": 1,
+      "message": "NACK.  For neat purpose, I would like to preserve the parenthesis.",
+      "parentUuid": "654f0345_a824502f",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1235dde9_32031828",
         "filename": "chip/mt8192_scp/csr.h",
         "patchSetId": 11
@@ -123,6 +237,30 @@
       "writtenOn": "2020-11-16T13:23:33Z",
       "side": 1,
       "message": "Could you add comments for the MPU attrs?\n\nIt seems different from ARM.\n\n\bA attr is set means the operation is permitted?",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a4b97a_ed1f3029",
+        "filename": "chip/mt8192_scp/csr.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-17T07:16:27Z",
+      "side": 1,
+      "message": "Done\n\nAnd it should be MTK-specific.",
+      "parentUuid": "1235dde9_32031828",
       "range": {
         "startLine": 74,
         "startChar": 10,
