@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c49ef25_f7017d90",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T18:30:14Z",
+      "side": 0,
+      "message": "Create a bug and add a TODO here to add the PS8815 driver in a separate CL.",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 0
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4751e8ad_5821e00b",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T18:30:14Z",
+      "side": 0,
+      "message": "Configure as an used signal with GPIO_INPUT|GPIO_PULL_UP to prevent leakage during low power modes.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 56
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ecbc1cd_707d9e0f",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T18:30:14Z",
+      "side": 0,
+      "message": "Do not delete the unused signals.  This configuration is needed to save power.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a884c11a_e775bc75",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T18:30:14Z",
+      "side": 0,
+      "message": "Leave configured as GPIO_INPUT|GPIO_PULL_UP.  Can be moved to unused section above.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 60
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c586a63b_83f66500",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T18:30:14Z",
+      "side": 0,
+      "message": "Moved into unused GPIO section with same options (input/pullup)",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
