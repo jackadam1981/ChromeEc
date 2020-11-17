@@ -88,6 +88,24 @@
       "parentUuid": "052c3bf9_b5a43cdb",
       "revId": "cd6728a329bbdefe7bf1eb8e9fb66505cd9bbfbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "186c842d_d2c5bbc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-17T19:44:23Z",
+      "side": 1,
+      "message": "CL that runs genvif unit test is up and runs during \"make buildall\"",
+      "parentUuid": "f7a90dbe_4bad0ad2",
+      "revId": "cd6728a329bbdefe7bf1eb8e9fb66505cd9bbfbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
