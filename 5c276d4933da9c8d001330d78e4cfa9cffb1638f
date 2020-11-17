@@ -34,6 +34,24 @@
       "parentUuid": "02f00c16_40b5545b",
       "revId": "5c276d4933da9c8d001330d78e4cfa9cffb1638f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d08579_fa7702d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2020-11-17T08:50:52Z",
+      "side": 1,
+      "message": "1.1 if collection rate is not equal 0，motion sense task will not enter idle\n1.2 BMI160 and LIS2DWL is really powerd off\n\n2.This new CL will cause the machine to fail to shut down and will automatically restart when I set #undef CONFIG_MOTION_SENSE_SUSPEND_DELAY_US in cerise/board.h",
+      "parentUuid": "0950ce47_f85f31ab",
+      "revId": "5c276d4933da9c8d001330d78e4cfa9cffb1638f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
