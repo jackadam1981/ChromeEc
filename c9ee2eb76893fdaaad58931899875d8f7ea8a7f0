@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e3cf45_ef34bfad",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-17T16:07:49Z",
+      "side": 1,
+      "message": "we should add these to zephyr/shim/src/system.c instead of here.",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 15
+      },
+      "revId": "c9ee2eb76893fdaaad58931899875d8f7ea8a7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "195ecff5_115c984e",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-17T16:07:49Z",
+      "side": 1,
+      "message": "we should put this in the main.c in the zephyr-chrome repository (I think before the INIT_HOOKS call even)",
+      "range": {
+        "startLine": 777,
+        "startChar": 1,
+        "endLine": 779,
+        "endChar": 0
+      },
+      "revId": "c9ee2eb76893fdaaad58931899875d8f7ea8a7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0462a6_bd5e7f2d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-17T16:07:49Z",
+      "side": 1,
+      "message": "HOOT_INIT should work now.",
+      "range": {
+        "startLine": 883,
+        "startChar": 0,
+        "endLine": 883,
+        "endChar": 71
+      },
+      "revId": "c9ee2eb76893fdaaad58931899875d8f7ea8a7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
