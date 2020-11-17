@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf1a8437_6c76cbb8",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-17T07:49:24Z",
+      "side": 1,
+      "message": "Actually in this case we _almost_ want to use some force_inline keyword, as this is not a suggestion ,-)",
+      "parentUuid": "8aa5f594_44c46779",
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffd5b81d_5995ff7d",
