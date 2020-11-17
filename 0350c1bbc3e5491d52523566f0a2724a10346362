@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94094300_a67bf051",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-17T17:04:56Z",
+      "side": 1,
+      "message": "This seems great! I look forward to it being hooked into the `make runtests` path (which will include it in the buildall path)",
+      "revId": "0350c1bbc3e5491d52523566f0a2724a10346362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e09a917e_2b10edab",
+        "filename": "test/genvif/.gitignore",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-17T17:04:56Z",
+      "side": 1,
+      "message": "do we need these ignores? Could we do this in the build folder instead?\n\nNot trying to push too hard, more curious what we can do here",
+      "revId": "0350c1bbc3e5491d52523566f0a2724a10346362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
