@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe2a098_9aa86d7f",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-17T10:48:29Z",
+      "side": 1,
+      "message": "Technically, this relies on big-endianess, but since we\u0027re unlikely to ever have little-endian EC, maybe that\u0027s ok.",
+      "revId": "093eaa0b50251deeea9e4dd844b6de066ab63ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

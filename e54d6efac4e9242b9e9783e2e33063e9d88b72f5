@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c59e68_b77a4254",
+        "filename": "board/hammer/variants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-17T10:48:29Z",
+      "side": 1,
+      "message": "Kilobytes ,-) Now if there is a kilobyte macro I\u0027ll take it ,-)",
+      "parentUuid": "aeb78086_c8939a97",
+      "range": {
+        "startLine": 94,
+        "startChar": 37,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "e54d6efac4e9242b9e9783e2e33063e9d88b72f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80bfb02d_16e0b88b",
@@ -142,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e48698_1bfe2216",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-17T10:48:29Z",
+      "side": 1,
+      "message": "awesome thanks.",
+      "parentUuid": "1321729f_6caa808c",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 50
+      },
+      "revId": "e54d6efac4e9242b9e9783e2e33063e9d88b72f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "635cec63_eadb5285",
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "typo, it\u0027s 35 actually.\nhttps://elixir.bootlin.com/linux/latest/source/drivers/input/mouse/elan_i2c_i2c.c#L654",
       "parentUuid": "635cec63_eadb5285",
+      "range": {
+        "startLine": 545,
+        "startChar": 47,
+        "endLine": 545,
+        "endChar": 49
+      },
+      "revId": "e54d6efac4e9242b9e9783e2e33063e9d88b72f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803ed38d_96c357d4",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-17T10:48:29Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "355f80e9_1d3c0972",
       "range": {
         "startLine": 545,
         "startChar": 47,
