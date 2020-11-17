@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67bcd79b_d470e7f1",
+        "filename": "board/asurada_scp/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-17T07:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3b5d691_2b0a9534",
+      "revId": "1937b3b85e2cbf7b1f894f2d4fce4bce3b0957f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9786e4fb_c9c930a1",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-16T13:38:45Z",
       "side": 1,
       "message": "All the MPU entries have R/W (permit read and write?), are they still protected?",
+      "revId": "1937b3b85e2cbf7b1f894f2d4fce4bce3b0957f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "125e7303_47b7a6a2",
+        "filename": "board/asurada_scp/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-17T07:16:40Z",
+      "side": 1,
+      "message": "I don\u0027t use this for protecting anything.  But for L2TCM \"cacheable\".\n\nI think we cannot (and don\u0027t need to for now) protect until we narrow down the memory sections into smaller pieces.\n(For example, for AP domain, section A is RO and section B is RW.)\n(For SCP sys domain, it makes sense to grant all RW.)",
+      "parentUuid": "9786e4fb_c9c930a1",
       "revId": "1937b3b85e2cbf7b1f894f2d4fce4bce3b0957f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
