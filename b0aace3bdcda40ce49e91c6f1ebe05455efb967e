@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd98e830_6f7a8cbd",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-11-17T04:52:32Z",
+      "side": 1,
+      "message": "Do you mean something like this?\n\nint out_flags \u003d flags;\nif (offset !\u003d 0)\n    out_flags \u0026\u003d ~I2C_XFER_START;\nif (!(in_size \u003d\u003d 0 \u0026\u0026 offset + chunk_size \u003d\u003d out_size))\n    out_flags \u0026\u003d ~I2C_XFER_STOP;\n\nI think this is hard to read, and we still need to revisit this part every time a new flag is added.\n\nOriginal code also initializes out_flags with almost-zero (line 156).",
+      "parentUuid": "5c6b066a_165b2eed",
+      "range": {
+        "startLine": 158,
+        "startChar": 18,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "b0aace3bdcda40ce49e91c6f1ebe05455efb967e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe8c2422_181969a7",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-16T01:13:15Z",
       "side": 1,
       "message": "nit: LARGE_TRANSFER?",
+      "range": {
+        "startLine": 2325,
+        "startChar": 29,
+        "endLine": 2325,
+        "endChar": 31
+      },
+      "revId": "b0aace3bdcda40ce49e91c6f1ebe05455efb967e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d376261_b71db612",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2325,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-11-17T04:52:32Z",
+      "side": 1,
+      "message": "it\u0027s RW currently. or do you think TRANSFER is better?",
+      "parentUuid": "fe8c2422_181969a7",
       "range": {
         "startLine": 2325,
         "startChar": 29,
