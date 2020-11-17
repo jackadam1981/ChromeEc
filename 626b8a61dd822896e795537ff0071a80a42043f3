@@ -22,6 +22,30 @@
       },
       "revId": "626b8a61dd822896e795537ff0071a80a42043f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e83dd9f_c89465e9",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T23:14:53Z",
+      "side": 1,
+      "message": "I don\u0027t think calling msleep(0) is supported.  msleep() calls usleep(), which asserts that sleep time is non-zero.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/73b90bcb/common/timer.c#181",
+      "parentUuid": "d6bc8b81_a2d6d064",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 377,
+        "endChar": 12
+      },
+      "revId": "626b8a61dd822896e795537ff0071a80a42043f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
