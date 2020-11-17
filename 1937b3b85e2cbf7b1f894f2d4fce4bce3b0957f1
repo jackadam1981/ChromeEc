@@ -87,6 +87,24 @@
       "parentUuid": "125e7303_47b7a6a2",
       "revId": "1937b3b85e2cbf7b1f894f2d4fce4bce3b0957f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1e29f5_03741716",
+        "filename": "board/asurada_scp/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-17T07:46:27Z",
+      "side": 1,
+      "message": "No\n\nWe need to specify all addresses SCP would access to MPU, or it stucks when accessing them...\n\nIn short, to enable cacheable L2TCM, all other entries should be added too.",
+      "parentUuid": "5bd153b4_7f01c6e9",
+      "revId": "1937b3b85e2cbf7b1f894f2d4fce4bce3b0957f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
