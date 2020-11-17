@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5064b522_bbeeb71c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-11-17T21:28:22Z",
+      "side": 1,
+      "message": "\u003e If HPD were to go low for awhile, and we had HPD\u003d1 on the other port, maybe we could mux the other way and force the necessary low period to restart link training.\n\nI think proper fix is we need to pipe this information up to AP/GFX layer. DisplayPort layer (necessarily now, with Active Cables) needs to be transport/EC/PD-aware. Falsifying a HPD is a bit of a \"kludge\" due to our lacking this awareness. (Or logical DP state tracking per \"3.9.2 HPD Conversion\" in VESA DP over Type-C AltMode v2.0 which explicitly covers this scenario.)\n\nFor example: we currently do not honor HPD_WAIT from there. And we may be violating this requirement because we \"permanently tie logical HPD (PD) \u003c-\u003e physical HPD (GPIO)\".\n\n\u003e When DisplayPort Configuration is not selected and the converter is driving its HPD output\n\u003e low, the converter shall track HPD’s current state, ready for appropriatee indication when\n\u003e DisplayPort Configuration is subsequently selected.\n\nSo in order to be spec compliant, perhaps more difficult piping is needed. In the interest of time, merely documenting and moving on.",
+      "parentUuid": "cdbb3767_67192d68",
+      "revId": "33bf350c8f649f2702da17e289e8edd105db98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb97cb40_4f423881",
         "filename": "baseboard/trogdor/usb_pd_policy.c",
         "patchSetId": 1
