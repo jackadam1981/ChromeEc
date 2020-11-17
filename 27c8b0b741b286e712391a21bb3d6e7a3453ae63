@@ -52,6 +52,24 @@
       "parentUuid": "5753722b_e72ee590",
       "revId": "27c8b0b741b286e712391a21bb3d6e7a3453ae63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f396d083_0ac8bd77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456367
+      },
+      "writtenOn": "2020-11-17T06:15:56Z",
+      "side": 1,
+      "message": "Hi Keith,\nThis requirement was not captured in any of the crosbug. The requirement came with certain assumptions.\nCurrently as the #RTCRST can be reset using the gpioset alternatively, it is being explored if this changes are really required. I will move this change to WIP for now until it is clear.",
+      "parentUuid": "c7345ebb_288ce9f9",
+      "revId": "27c8b0b741b286e712391a21bb3d6e7a3453ae63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
