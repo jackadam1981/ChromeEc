@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e720b65c_4a7bc64a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:33:51Z",
+      "side": 1,
+      "message": "Did you test servo as a sink over shutdowns, hibernate, EC reboots, etc.?  Or I suppose run a FAFT test that covers enough of those cases (maybe setup?)",
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
