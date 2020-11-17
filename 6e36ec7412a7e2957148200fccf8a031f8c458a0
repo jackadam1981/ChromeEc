@@ -22,6 +22,30 @@
       },
       "revId": "6e36ec7412a7e2957148200fccf8a031f8c458a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df1fc47b_986dc7f4",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1458269
+      },
+      "writtenOn": "2020-11-17T03:07:35Z",
+      "side": 1,
+      "message": "Remove these conditions, codes are compiled successfully with no error.",
+      "parentUuid": "b3fd6d84_c8f48329",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 55
+      },
+      "revId": "6e36ec7412a7e2957148200fccf8a031f8c458a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

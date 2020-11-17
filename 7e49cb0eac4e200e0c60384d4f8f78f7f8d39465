@@ -117,6 +117,30 @@
       },
       "revId": "7e49cb0eac4e200e0c60384d4f8f78f7f8d39465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ecaf03_253e9e15",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1458269
+      },
+      "writtenOn": "2020-11-17T03:07:35Z",
+      "side": 1,
+      "message": "OK, get it, Battery white LED is on solid with AC only while battery is charged full.",
+      "parentUuid": "53f32e97_dea84820",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "7e49cb0eac4e200e0c60384d4f8f78f7f8d39465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
