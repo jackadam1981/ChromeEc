@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd2ab0a_8a2824fa",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:46:32Z",
+      "side": 1,
+      "message": "Will there be any need for charge manager type port balancing, or can the board always supply 3A on any sourcing ports?",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73acc2b7_f51e2990",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:46:32Z",
+      "side": 1,
+      "message": "Since this is being interpreted as non-zero \u003d interrupt asserted, probably return 0",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f328f31c_71aaf76f",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 42
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T17:46:32Z",
+      "side": 1,
+      "message": "Looks like UART_TX on the pinout spreadsheet? Or does it need updated?",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
