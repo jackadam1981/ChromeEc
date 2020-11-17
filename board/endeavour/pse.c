@@ -48,6 +48,7 @@
 #define LTC4291_OPMD_AUTO	0xFF
 #define LTC4291_DISENA_ALL	0x0F
 #define LTC4291_DETENA_ALL	0xFF
+#define LTC4291_PWRPB_OFF_ALL	0xF0
 #define LTC4291_ID		0x64
 #define LTC4291_DEVID		0x38
 #define LTC4291_HPMD_MIN	0x00
@@ -169,6 +170,20 @@ static void pse_init(void)
 		CPRINTS("PSE init done");
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, pse_init, HOOK_PRIO_DEFAULT);
+
+static void pse_reset(void)
+{
+	int err;
+
+	/* Request power off on all ports. */
+	err = I2C_PSE_WRITE(PWRPB, LTC4291_PWRPB_OFF_ALL);
+	if (err != 0)
+		CPRINTS("PSE reset failed: %d", err);
+	else
+		CPRINTS("PSE reset done");
+}
+
+DECLARE_HOOK(HOOK_CHIPSET_RESET, pse_reset, HOOK_PRIO_DEFAULT);
 
 static int command_pse(int argc, char **argv)
 {
