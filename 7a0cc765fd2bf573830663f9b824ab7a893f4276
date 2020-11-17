@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e0641f_718e3480",
+        "filename": "include/common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-17T17:44:17Z",
+      "side": 1,
+      "message": "for the host command we had EC_RES_IN_PROGRESS\nmaybe we want something closer for the terminology",
+      "revId": "7a0cc765fd2bf573830663f9b824ab7a893f4276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
