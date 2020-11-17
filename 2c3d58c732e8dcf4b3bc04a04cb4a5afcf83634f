@@ -22,6 +22,30 @@
       },
       "revId": "2c3d58c732e8dcf4b3bc04a04cb4a5afcf83634f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0472edb_5c8460c3",
+        "filename": "util/genvif.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1853,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-17T00:40:45Z",
+      "side": 1,
+      "message": "This is always the ownership of the program writing the file",
+      "parentUuid": "9aef7383_11245f25",
+      "range": {
+        "startLine": 1836,
+        "startChar": 0,
+        "endLine": 1853,
+        "endChar": 25
+      },
+      "revId": "2c3d58c732e8dcf4b3bc04a04cb4a5afcf83634f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
