@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2617b06d_822b32ba",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2655,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T02:51:38Z",
+      "side": 1,
+      "message": "Is there any chance we could attempt to send an SOP\u0027 message while SOP\u0027 is disabled?  Or are SOP\u0027 messages only possible from the PE_SNK_READY and PE_SRC_READY states?",
+      "range": {
+        "startLine": 2654,
+        "startChar": 0,
+        "endLine": 2655,
+        "endChar": 34
+      },
+      "revId": "041d7556a959a017fe916bb19a20188412ddb0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
