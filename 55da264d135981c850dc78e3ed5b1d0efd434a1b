@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d004339a_7ae07ebe",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-17T17:36:18Z",
+      "side": 1,
+      "message": "typo? disable ?",
+      "revId": "55da264d135981c850dc78e3ed5b1d0efd434a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd7b332_32435cea",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-17T17:36:18Z",
+      "side": 1,
+      "message": "Why DEVICE_LOST send me back to ENABLED ?",
+      "revId": "55da264d135981c850dc78e3ed5b1d0efd434a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdb4f492_98946352",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-17T17:36:18Z",
+      "side": 1,
+      "message": "where is this used or the queue actually configured ?\nmy grep-foo is weak, cannot find it",
+      "revId": "55da264d135981c850dc78e3ed5b1d0efd434a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

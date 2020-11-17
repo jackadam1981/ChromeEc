@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "faede04e_6c9cb0cd",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-17T17:36:18Z",
+      "side": 1,
+      "message": "Ok,\nIMO using queues is still usually wasteful as they are difficult to size.\ne.g. here, we can have 1 IRQ (then it\u0027s corresponding external event ?) AND 1 external event at most ? not really more ?",
+      "parentUuid": "9646bef4_3b86c9d4",
+      "revId": "55b73748c04c3d9bbea46c62e72029ac21710ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e13fb86d_926920c6",
         "filename": "common/peripheral_charger.c",
         "patchSetId": 3
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "argc is 2 for status dump and 3 for \u0027init\u0027 and \u0027enable\u0027. Updated the help text.",
       "parentUuid": "caa4081b_3fd99e5e",
+      "revId": "55b73748c04c3d9bbea46c62e72029ac21710ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e60deeb1_7544dd03",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-17T17:36:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0c922761_11729d32",
       "revId": "55b73748c04c3d9bbea46c62e72029ac21710ded",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
