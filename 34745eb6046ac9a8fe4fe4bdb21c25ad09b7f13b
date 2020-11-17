@@ -16,6 +16,24 @@
       "message": "This passed TD.PD.SRC3.E7 when combined with another CL to hack in an Extended Battery Capabilities response.",
       "revId": "34745eb6046ac9a8fe4fe4bdb21c25ad09b7f13b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a18097f_d8d4eb11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T23:53:49Z",
+      "side": 1,
+      "message": "Does TD.PD.SRC3.E15 also pass?",
+      "parentUuid": "eb8d031c_a95e03d2",
+      "revId": "34745eb6046ac9a8fe4fe4bdb21c25ad09b7f13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
