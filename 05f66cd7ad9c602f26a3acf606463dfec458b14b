@@ -16,6 +16,24 @@
       "message": "Where do we set the output ILIM?",
       "revId": "05f66cd7ad9c602f26a3acf606463dfec458b14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0895455b_85fadb8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T15:57:26Z",
+      "side": 1,
+      "message": "In this driver, sm5803_set_otg_current_voltage() which gets called from the board\u0027s typec_set_source_current_limit(), called from charge_manager_source_port(), called from board\u0027s pd_set_power_supply_ready/reset()... \n\nSo in the OCP case, the hard reset path will cause the limit to go down to 1.5A, then back up to whatever we can do with current policy after the reset completes. I\u0027m not sure the limit between fault and resuming the port matters since Vbus is switched off. \n\nIs that what you\u0027re going for?",
+      "parentUuid": "c7df3b6d_4c800b11",
+      "revId": "05f66cd7ad9c602f26a3acf606463dfec458b14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
