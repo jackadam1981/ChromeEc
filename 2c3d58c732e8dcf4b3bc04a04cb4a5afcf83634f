@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aef7383_11245f25",
+        "filename": "util/genvif.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1853,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-17T00:33:48Z",
+      "side": 1,
+      "message": "If someone tries to override these fields, it might be good to generate a warning. Otherwise, this behavior could be confusing. That doesn\u0027t need to happen in this CL, though.",
+      "range": {
+        "startLine": 1836,
+        "startChar": 0,
+        "endLine": 1853,
+        "endChar": 25
+      },
+      "revId": "2c3d58c732e8dcf4b3bc04a04cb4a5afcf83634f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
