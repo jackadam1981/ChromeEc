@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3db96c3_0e40ae4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T18:41:37Z",
+      "side": 1,
+      "message": "Typo: \"control\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "0e474531641569490838119f0741fc84eecce1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d701aac4_76ed7f11",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T18:41:37Z",
+      "side": 1,
+      "message": "Also configure GPIOC2 as an unused pin.",
+      "revId": "0e474531641569490838119f0741fc84eecce1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
