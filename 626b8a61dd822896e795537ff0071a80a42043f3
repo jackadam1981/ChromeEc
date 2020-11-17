@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6bc8b81_a2d6d064",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-17T20:28:42Z",
+      "side": 1,
+      "message": "Nit: As a slight simplification, the array could be an array of delay values, defaulting to 0, and msleep could be called unconditionally here.",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 377,
+        "endChar": 12
+      },
+      "revId": "626b8a61dd822896e795537ff0071a80a42043f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
