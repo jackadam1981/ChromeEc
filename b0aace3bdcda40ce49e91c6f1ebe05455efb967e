@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "362a47d6_7f2b11ed",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-11-17T04:58:33Z",
+      "side": 1,
+      "message": "ahhh... bug",
+      "parentUuid": "479c8d51_30029162",
+      "revId": "b0aace3bdcda40ce49e91c6f1ebe05455efb967e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe8c2422_181969a7",
         "filename": "include/config.h",
         "patchSetId": 2
