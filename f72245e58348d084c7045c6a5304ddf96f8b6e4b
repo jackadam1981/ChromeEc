@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95bcacf6_8d761746",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-17T22:59:27Z",
+      "side": 0,
+      "message": "This change is actually a bug fix to ignore the HPD Low.\n\nWe ignored the HPD High in the above if clause, line 195~197. Should do the same For the HPD Low, i.e. the else clause, something like\n\n    } else {\n        if (is_dp_muxable(port)) {\n            ...\n        } else {\n            /* TODO(waihong): Info user? */\n            CPRINTS(\"p%d: The other port is already muxed.\", port);\n            return 0;\n        }\n    }\n\nTo simplify this duplicated code, move this 3 line statement at the beginning, that is the change.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "f72245e58348d084c7045c6a5304ddf96f8b6e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
