@@ -22,6 +22,30 @@
       },
       "revId": "64e5a6c31a94f5703c365788f36a72e917a48483",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2420114_f696aef4",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T23:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "202cfd2e_72f3b9da",
+      "range": {
+        "startLine": 196,
+        "startChar": 50,
+        "endLine": 196,
+        "endChar": 60
+      },
+      "revId": "64e5a6c31a94f5703c365788f36a72e917a48483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
