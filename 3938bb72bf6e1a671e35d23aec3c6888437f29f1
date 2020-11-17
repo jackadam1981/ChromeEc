@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c0999aa_86fcb2f2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 6040,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T23:22:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "83cbf87b_8018482d",
+      "range": {
+        "startLine": 6040,
+        "startChar": 41,
+        "endLine": 6040,
+        "endChar": 43
+      },
+      "revId": "3938bb72bf6e1a671e35d23aec3c6888437f29f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e87e6692_6abbec3f",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "msleep for more than 3 secs results into Watchdog expiry. So added loop to avoid it.",
       "parentUuid": "e87e6692_6abbec3f",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 16
+      },
+      "revId": "3938bb72bf6e1a671e35d23aec3c6888437f29f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d523f51_fcaac7cb",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T23:22:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "85935cc6_d3a24531",
       "range": {
         "startLine": 447,
         "startChar": 0,
