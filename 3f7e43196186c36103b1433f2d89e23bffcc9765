@@ -16,6 +16,41 @@
       "message": "Hi Aseda, do you have any concern of this patch ?",
       "revId": "3f7e43196186c36103b1433f2d89e23bffcc9765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f3fa5e0_c7648783",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-17T02:04:14Z",
+      "side": 1,
+      "message": "Sorry for the delay. It\u0027s now in the right place, but we\u0027ll need to set up the current limits appropriately. We can send this CL with a 3A current limit. (I think it should be 3.08A instead of 3.2A) But really, we need to change that limit depending up our source caps.",
+      "parentUuid": "5960af2e_66e2ea58",
+      "revId": "3f7e43196186c36103b1433f2d89e23bffcc9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c04d36_89f7ea07",
+        "filename": "driver/tcpm/raa489000.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-17T02:04:14Z",
+      "side": 1,
+      "message": "Since we are fixed 5V source, shouldn\u0027t this be 4.75V? The min for vSrcNew is 0.95*{PDO voltage}.",
+      "revId": "3f7e43196186c36103b1433f2d89e23bffcc9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
