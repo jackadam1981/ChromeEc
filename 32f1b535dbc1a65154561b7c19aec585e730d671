@@ -22,6 +22,30 @@
       },
       "revId": "32f1b535dbc1a65154561b7c19aec585e730d671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79602703_a1f36e1c",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-11-17T05:33:06Z",
+      "side": 1,
+      "message": "Ack, thanks!",
+      "parentUuid": "cc05b976_58232c29",
+      "range": {
+        "startLine": 292,
+        "startChar": 6,
+        "endLine": 292,
+        "endChar": 22
+      },
+      "revId": "32f1b535dbc1a65154561b7c19aec585e730d671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
