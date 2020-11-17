@@ -69,6 +69,24 @@
       "parentUuid": "e1180cd9_c54633f6",
       "revId": "0350c1bbc3e5491d52523566f0a2724a10346362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "270f9486_f90d06ff",
+        "filename": "test/genvif/.gitignore",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-17T17:29:36Z",
+      "side": 1,
+      "message": "There are an infinite number of combinations. This is probably more of an add as things need to be verified.  All of the fields that are possible in VIF3.12 are present in the structure, so adding USB4 or anything else is exactly the same in genvif.  I will look into add overrides to show delete and add so modify is not the only rule being presented.  I will add comments to it as well to show those get consumed correctly.\n\nThis can be run outside of buildall and that would presume build/\u003c???\u003e/util/.... exists and after a \"make clobber\" it does not.",
+      "parentUuid": "abdd80b3_78be9e41",
+      "revId": "0350c1bbc3e5491d52523566f0a2724a10346362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
