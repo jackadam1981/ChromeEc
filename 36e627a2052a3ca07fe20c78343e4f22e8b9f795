@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ccedc4_569a1960",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-17T07:38:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0659e1d_42bf5c2b",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebc47aee_a3d28fd0",
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "NACK.  For neat purpose, I would like to preserve the parenthesis.",
       "parentUuid": "654f0345_a824502f",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "36e627a2052a3ca07fe20c78343e4f22e8b9f795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "861b30d6_ddf99f34",
+        "filename": "chip/mt8192_scp/csr.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-17T07:38:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2be1a2c7_8f221f53",
       "range": {
         "startLine": 67,
         "startChar": 25,
