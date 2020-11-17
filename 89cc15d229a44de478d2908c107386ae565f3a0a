@@ -16,6 +16,24 @@
       "message": "So I am unsure here of the security aspects of this - I\u0027m going to ask one of our flashrom folks to talk a quick look and give me their view on this.\n",
       "revId": "89cc15d229a44de478d2908c107386ae565f3a0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d0a5aa_cd13c991",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2020-11-17T00:16:41Z",
+      "side": 1,
+      "message": "You are right to be worried about such things however I think in this case it should be fine as the display is a limited environment and is not considered a trusted part of the boot flow execution.\n\nAn actor with such access would have already compromised control over the EC and therefore impacted a key part of the root of trust of the system therefore the small EEPROM space in the display panel would be inconsequential and certainly not a entry vector. Malformed EDID\u0027s can just as easily come though a open display connector as well so the content isn\u0027t considered trusted either.",
+      "parentUuid": "f36754c7_cb6da049",
+      "revId": "89cc15d229a44de478d2908c107386ae565f3a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
