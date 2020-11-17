@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a7dd6b9_eb87185e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-11-17T06:04:38Z",
+      "side": 1,
+      "message": "I think you need to use ec_cfg_has_keyboard_backlight() to determine either the board has keyboard light or not.",
+      "revId": "0058793a6d59785786c4bf5c090111a96585bfe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
