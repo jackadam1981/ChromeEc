@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7d868d9_1151057f",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-17T00:06:44Z",
+      "side": 1,
+      "message": "Right. The following CL is more clear and addresses the comments.\n\nI simply breaks the large CL down. This CL does not focus on the interrupt.",
+      "parentUuid": "727215d8_4d3d729d",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 14
+      },
+      "revId": "a1bf52b0700d7af9121fe27569c18bb5e57f4b5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffca2c5c_423af335",
         "filename": "board/coachz/board.c",
         "patchSetId": 1
