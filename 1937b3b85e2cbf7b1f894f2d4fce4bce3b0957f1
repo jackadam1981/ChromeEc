@@ -69,6 +69,24 @@
       "parentUuid": "9786e4fb_c9c930a1",
       "revId": "1937b3b85e2cbf7b1f894f2d4fce4bce3b0957f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd153b4_7f01c6e9",
+        "filename": "board/asurada_scp/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-17T07:41:47Z",
+      "side": 1,
+      "message": "If this is not going to protect anything for now, it seems we can just drop all the entries here until we need to enable MPU, and only leave SCP SRAM cacheable.",
+      "parentUuid": "125e7303_47b7a6a2",
+      "revId": "1937b3b85e2cbf7b1f894f2d4fce4bce3b0957f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
