@@ -87,6 +87,24 @@
       "parentUuid": "abdd80b3_78be9e41",
       "revId": "0350c1bbc3e5491d52523566f0a2724a10346362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "975fbc7c_2c8923ff",
+        "filename": "test/genvif/.gitignore",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-17T19:43:19Z",
+      "side": 1,
+      "message": "added override example for add, remove and modify.  It also runs in \"make buildall\" now.",
+      "parentUuid": "270f9486_f90d06ff",
+      "revId": "0350c1bbc3e5491d52523566f0a2724a10346362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
