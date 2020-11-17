@@ -141,6 +141,30 @@
       },
       "revId": "7e49cb0eac4e200e0c60384d4f8f78f7f8d39465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d5fd5e_3fd89096",
+        "filename": "board/coachz/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1458269
+      },
+      "writtenOn": "2020-11-17T05:58:58Z",
+      "side": 1,
+      "message": "enum charge_state charge_get_state(void)\n{\n\tswitch (curr.state) {\n\tcase ST_IDLE:\n\t\tif (battery_seems_to_be_dead || curr.batt.is_present \u003d\u003d BP_NO)\n\t\t\treturn PWR_STATE_ERROR;\n\t\treturn PWR_STATE_IDLE;\n\tcase ST_DISCHARGE:\n#ifdef CONFIG_PWR_STATE_DISCHARGE_FULL\n\t\tif (battery_near_full())\n\t\t\treturn PWR_STATE_DISCHARGE_FULL;\n\t\telse\n#endif\n\t\t\treturn PWR_STATE_DISCHARGE;\n\tcase ST_CHARGE:\n\t\t/* The only difference here is what the LEDs display. */\n\t\tif (battery_near_full())\n\t\t\treturn PWR_STATE_CHARGE_NEAR_FULL;\n\t\telse\n\t\t\treturn PWR_STATE_CHARGE;\n\tcase ST_PRECHARGE:\n\t\t/* we\u0027re in battery discovery mode */\n\t\treturn PWR_STATE_IDLE;\n\tdefault:\n\t\t/* Anything else can be considered an error for LED purposes */\n\t\treturn PWR_STATE_ERROR;\n\t}\n}\nPLease check the codes about battery charging status. PWR_STATE_CHARGE_NEAR_FULL inckudes AC on.",
+      "parentUuid": "b1ecaf03_253e9e15",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "7e49cb0eac4e200e0c60384d4f8f78f7f8d39465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
