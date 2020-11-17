@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d282f36_9e388879",
+        "filename": "board/hammer/variants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1178142
+      },
+      "writtenOn": "2020-11-17T17:58:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c1b73c6_18e616a8",
+      "revId": "978c47b706e550acc657cb3ffc2964798e20a63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6f92f6b_2a2846c5",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Yes only 10 keys (https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/hammer/board.c#333)",
       "parentUuid": "12473310_a590ace8",
+      "revId": "978c47b706e550acc657cb3ffc2964798e20a63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3493c68_beeb7905",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1178142
+      },
+      "writtenOn": "2020-11-17T17:58:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "198a291a_6d098b7e",
       "revId": "978c47b706e550acc657cb3ffc2964798e20a63d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
