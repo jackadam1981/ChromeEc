@@ -123,6 +123,24 @@
       "parentUuid": "5a55f0d8_65fb6e8b",
       "revId": "0263b733e341f2e0657df7d3828ae4d2c9438669",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7253fc6c_fd350e91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-11-17T13:24:21Z",
+      "side": 1,
+      "message": "This change also free space of text for functions. Because we pull two functions from section of text to __ramcode.",
+      "parentUuid": "ecfad49c_c4d702b8",
+      "revId": "0263b733e341f2e0657df7d3828ae4d2c9438669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
