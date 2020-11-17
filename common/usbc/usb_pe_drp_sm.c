@@ -4459,7 +4459,7 @@ __maybe_unused static void pe_prs_frs_shared_exit(int port)
 }
 
 /**
- * BIST TX
+ * PE_BIST_TX
  */
 static void pe_bist_tx_entry(int port)
 {
@@ -4469,9 +4469,9 @@ static void pe_bist_tx_entry(int port)
 	print_current_state(port);
 
 	/*
-	 * See section 6.4.3.6 BIST Carrier Mode 2:
+	 * See PD 3.0 section 6.4.3.1 BIST Carrier Mode 2:
 	 * With a BIST Carrier Mode 2 BIST Data Object, the UUT Shall send out
-	 * a continuous string of alternating "1"s and “0”s.
+	 * a continuous string of BMC-encoded alternating "1"s and “0”s.
 	 * The UUT Shall exit the Continuous BIST Mode within tBISTContMode of
 	 * this Continuous BIST Mode being enabled.
 	 */
@@ -4481,11 +4481,12 @@ static void pe_bist_tx_entry(int port)
 					get_time().val + PD_T_BIST_CONT_MODE;
 	}
 	/*
-	 * See section 6.4.3.9 BIST Test Data:
+	 * See PD 3.0 section 6.4.3.2 BIST Test Data:
 	 * With a BIST Test Data BIST Data Object, the UUT Shall return a
 	 * GoodCRC Message and Shall enter a test mode in which it sends no
 	 * further Messages except for GoodCRC Messages in response to received
-	 * Messages.
+	 * Messages.... The test Shall be ended by sending Hard Reset Signaling
+	 * to reset the UUT.
 	 */
 	else if (mode == BIST_TEST_DATA)
 		pe[port].bist_cont_mode_timer = TIMER_DISABLED;
@@ -4511,7 +4512,7 @@ static void pe_bist_tx_run(int port)
 }
 
 /**
- * BIST RX
+ * PE_BIST_RX
  */
 static void pe_bist_rx_entry(int port)
 {
