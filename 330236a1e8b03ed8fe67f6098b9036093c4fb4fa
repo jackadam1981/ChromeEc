@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24f67a5_3ad25c6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T00:36:44Z",
+      "side": 1,
+      "message": "Okay, halfway through and I should be able to review the other half tomorrow",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2133267_bf702fb1",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T00:36:44Z",
+      "side": 1,
+      "message": "Is TXUNDI needed as well?",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec27bcd_55728dba",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T00:36:44Z",
+      "side": 1,
+      "message": "nit: enum pd_data_role and enum pd_power_role?",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7e00b4_05524e76",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T00:36:44Z",
+      "side": 1,
+      "message": "nit: SOP_PRIME is how we\u0027ve been annotating in the codebase, generally",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19f63cb_6064bd04",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T00:36:44Z",
+      "side": 1,
+      "message": "Comment says to back up 1, but code is backing up 2?  Is that because msg_log_idx is the next empty slot, and one back is the received GoodCRC?",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f71d0913_692dda59",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T00:36:44Z",
+      "side": 1,
+      "message": "nit: comment that it\u0027s the end of CONFIG_STM32G4_UCPD_DEBUG",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fef8996_46be42c1",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T00:36:44Z",
+      "side": 1,
+      "message": "Check ext \u003d\u003d 0 as well",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b79b2e8f_75b3c47a",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T00:36:44Z",
+      "side": 1,
+      "message": "Should any of the receives be enabled before the TC has decided we\u0027re attached?   Do they cause us to generate GoodCRCs, or just set us up to detect things?\n\nAlso, unless you have a cable e-mark I don\u0027t think cable reset is needed",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5516169c_4c1b218f",
+        "filename": "chip/stm32/ucpd-stm32gx.h",
+        "patchSetId": 41
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-17T00:36:44Z",
+      "side": 1,
+      "message": "nit: should these be in registers-stm32g4.h with the rest of the register defines?",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
