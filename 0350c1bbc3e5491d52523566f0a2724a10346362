@@ -33,6 +33,24 @@
       "message": "do we need these ignores? Could we do this in the build folder instead?\n\nNot trying to push too hard, more curious what we can do here",
       "revId": "0350c1bbc3e5491d52523566f0a2724a10346362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1180cd9_c54633f6",
+        "filename": "test/genvif/.gitignore",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-17T17:12:55Z",
+      "side": 1,
+      "message": "ignores are so you don\u0027t have locally compiled genvif and the generated vif files showing up on git status.\n\nAdding CONFIG_s to board.h will allow for a more realistic VIF output for our device.\n\nChanging over_test_vif.xml allows you to add/delete/force a change for the generated VIF.  In this example I just have forcing a change of Model_Part_Number, Product_Revision and TID.  The sample that I did for Volteer added entire USB4 sections and removed tags that would normally be blindly created",
+      "parentUuid": "e09a917e_2b10edab",
+      "revId": "0350c1bbc3e5491d52523566f0a2724a10346362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
