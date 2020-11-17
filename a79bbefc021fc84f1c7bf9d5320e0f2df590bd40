@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce1147fc_8767cd7d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T19:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ecd1bd2_86406603",
+      "range": {
+        "startLine": 512,
+        "startChar": 30,
+        "endLine": 512,
+        "endChar": 36
+      },
+      "revId": "a79bbefc021fc84f1c7bf9d5320e0f2df590bd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "268bc23a_67db53b6",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-17T17:36:22Z",
       "side": 1,
       "message": "I was told when an actual value is expected, even if it is the default values as in this case, that the \u003d \u003cvalue\u003e should be included on each line.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 11
+      },
+      "revId": "a79bbefc021fc84f1c7bf9d5320e0f2df590bd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9c8840_f46668dd",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-17T19:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268bc23a_67db53b6",
       "range": {
         "startLine": 52,
         "startChar": 0,
