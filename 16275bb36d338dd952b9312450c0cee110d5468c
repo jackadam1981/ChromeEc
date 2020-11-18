@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763ff582_1a63a530",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-11-18T07:56:57Z",
+      "side": 1,
+      "message": "In other driver, we use the calculated reg_val to generate normalized_rate.",
+      "revId": "16275bb36d338dd952b9312450c0cee110d5468c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466f223d_56da4e7c",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-11-18T07:56:57Z",
+      "side": 1,
+      "message": "This test can be removed since we set reg_val to LIS2DW12_ODR_12HZ_VAL line 365.",
+      "revId": "16275bb36d338dd952b9312450c0cee110d5468c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
