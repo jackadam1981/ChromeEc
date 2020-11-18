@@ -10,6 +10,7 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "i2c.h"
 #include "ps8xxx.h"
 #include "task.h"
 #include "tcpci.h"
@@ -29,6 +30,8 @@ STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 	int sop_prime_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 	int rx_en[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+static bool bist_test_mode_active[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define TCPC_FLAGS_VSAFE0V(_flags) \
 	((_flags & TCPC_FLAGS_TCPCI_REV2_0) && \
@@ -868,6 +871,32 @@ struct queue {
 };
 static struct queue cached_messages[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+static bool tcpm_packet_is_bist_data(const struct cached_tcpm_message *message)
+{
+	return PD_HEADER_CNT(message->header) > 0 &&
+		!PD_HEADER_EXT(message->header) &&
+		PD_HEADER_TYPE(message->header) == PD_DATA_BIST &&
+		BIST_MODE(message->payload[0]) == BIST_TEST_DATA;
+}
+
+static enum ec_error_list tcpm_set_bist_test_mode(const int port)
+{
+	CPRINTS("Setting BIST mode");
+	bist_test_mode_active[port] = true;
+	/* TODO: Clear this on hard reset */
+	return tcpc_update8(port, TCPC_REG_TCPC_CTRL,
+			TCPC_REG_TCPC_CTRL_BIST_TEST_MODE, MASK_SET);
+}
+
+/* based on tcpci_rev2_0_tcpm_get_message_raw */
+static int tcpm_discard_message(int port)
+{
+	/* Clear the alert bit without copying anything */
+	tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_RX_STATUS);
+
+	return EC_SUCCESS;
+}
+
 /* Note this method can be called from an interrupt context. */
 int tcpm_enqueue_message(const int port)
 {
@@ -881,6 +910,16 @@ int tcpm_enqueue_message(const int port)
 		return EC_ERROR_OVERFLOW;
 	}
 
+	if (bist_test_mode_active[port]) {
+		rv = tcpm_discard_message(port);
+		if (rv) {
+			CPRINTS("C%d: Could not retrieve RX message (%d)", port,
+					rv);
+			return rv;
+		}
+		return EC_SUCCESS;
+	}
+
 	/* Blank any old message, just in case. */
 	memset(head, 0, sizeof(*head));
 	/* Call the raw driver without caching */
@@ -890,6 +929,13 @@ int tcpm_enqueue_message(const int port)
 		CPRINTS("C%d: Could not retrieve RX message (%d)", port, rv);
 		return rv;
 	}
+
+	/*
+	 * Forward the first BIST Test Data packet to the PE; ignore all
+	 * subsequent such packets if possible.
+	 */
+	if (tcpm_packet_is_bist_data(head))
+		tcpm_set_bist_test_mode(port);
 
 	/* Increment atomically to ensure get_message_raw happens-before */
 	atomic_add(&q->head, 1);
@@ -1234,6 +1280,7 @@ void tcpci_tcpc_alert(int port)
 	if (alert & TCPC_REG_ALERT_RX_HARD_RST) {
 		/* hard reset received */
 		CPRINTS("C%d Hard Reset received", port);
+		bist_test_mode_active[port] = false;
 		pd_event |= PD_EVENT_RX_HARD_RESET;
 	}
 
