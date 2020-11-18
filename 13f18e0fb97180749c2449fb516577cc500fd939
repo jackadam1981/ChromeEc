@@ -46,6 +46,30 @@
       },
       "revId": "13f18e0fb97180749c2449fb516577cc500fd939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c02194e_783b87dc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-18T21:22:21Z",
+      "side": 1,
+      "message": "I guess this is not a big deal either way. This could cause a few actions executed on one gsctool invocation, but in this case it\u0027s not a problem.",
+      "parentUuid": "e8623abd_37619ea3",
+      "range": {
+        "startLine": 2106,
+        "startChar": 1,
+        "endLine": 2106,
+        "endChar": 10
+      },
+      "revId": "13f18e0fb97180749c2449fb516577cc500fd939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
