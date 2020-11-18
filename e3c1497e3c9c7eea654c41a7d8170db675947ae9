@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20afa45d_446cea8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-18T04:56:08Z",
+      "side": 1,
+      "message": "Missed that one; done.",
+      "parentUuid": "e9443cb1_e8f14d35",
+      "revId": "e3c1497e3c9c7eea654c41a7d8170db675947ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71f7a2e4_c4f2ca36",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-18T03:38:02Z",
       "side": 1,
       "message": "So, you\u0027re saying this is true because \u0027current_task - tasks\u0027 happens to be  equal to TASK_ID_CONSOLE on dalboz? The crash is happening in __schedule(0, 0)?",
+      "range": {
+        "startLine": 505,
+        "startChar": 32,
+        "endLine": 505,
+        "endChar": 59
+      },
+      "revId": "e3c1497e3c9c7eea654c41a7d8170db675947ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e10dbd_0b11438e",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-18T04:56:08Z",
+      "side": 1,
+      "message": "The crash definitely looks like it\u0027s inside __schedule for reasons stated on the bug. `tasks` is static so we don\u0027t get a symbol out, but the constraint for hitting the crash is actually if `(uint8_t)(current_task - tasks)` \u003d\u003d TASK_ID_CONSOLE since task_id_t is fixed to 8 bits wide.\n\nInspecting symbols at a8dec10c9da00eca5284ee34246fdeadf1ba9179 (where the crash is reproducible), scratchpad (the initial value for current_task) is at 200b1e84 and tasks appears to be at 200b0590. Taking the exact sequence of operations from the disassembly of task_get_current:\n\n    \u003e\u003e\u003e scratchpad \u003d 0x200b1e84\n    \u003e\u003e\u003e tasks \u003d 0x200b0590\n    \u003e\u003e\u003e (((scratchpad - tasks) \u003e\u003e 3) * 0xAAAAAAAB) \u0026 0xFF\n    10\n\n[It turns out that naively dividing the raw pointer difference by 24 (the post-alignment size of the task_ struct) yields a different result, so it\u0027s important to do the same multiply-by-reciprocal operation as the compiler synthesizes to do the division by 24!]",
+      "parentUuid": "71f7a2e4_c4f2ca36",
       "range": {
         "startLine": 505,
         "startChar": 32,
