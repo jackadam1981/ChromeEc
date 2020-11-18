@@ -1526,6 +1526,14 @@ static enum usb_tc_state get_last_state_tc(const int port)
 
 static void print_current_state(const int port)
 {
+	enum usb_tc_state state = get_state_tc(port);
+
+	if ((IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&
+			state == TC_DRP_AUTO_TOGGLE) ||
+			(IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER) &&
+			state == TC_LOW_POWER_MODE))
+		return;
+
 	if (IS_ENABLED(USB_PD_DEBUG_LABELS))
 		CPRINTS_L1("C%d: %s", port, tc_state_names[get_state_tc(port)]);
 	else
@@ -3112,7 +3120,7 @@ __maybe_unused static void tc_low_power_mode_run(const int port)
 			tc[port].low_power_exit_time = now
 				+ PD_LPM_EXIT_DEBOUNCE_US;
 		} else if (now > tc[port].low_power_exit_time) {
-			CPRINTS("C%d: Exit Low Power Mode", port);
+			/* CPRINTS("C%d: Exit Low Power Mode", port); */
 			check_drp_connection(port);
 		}
 		return;
