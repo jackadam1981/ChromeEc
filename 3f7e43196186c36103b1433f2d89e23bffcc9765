@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "274740fc_987e879a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2020-11-18T06:51:38Z",
+      "side": 1,
+      "message": "I thought in the scenario that when the voltage is lower than OCP_THRESHOLD (4.75V), charger IC will assert 1F \u003c3\u003e which will disable all output voltage. In this case, we won\u0027t have any current going on the port. I am not sure why do we need to set up current limit here?",
+      "parentUuid": "2f3fa5e0_c7648783",
+      "revId": "3f7e43196186c36103b1433f2d89e23bffcc9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89c04d36_89f7ea07",
@@ -49,6 +67,24 @@
       "writtenOn": "2020-11-17T02:04:14Z",
       "side": 1,
       "message": "Since we are fixed 5V source, shouldn\u0027t this be 4.75V? The min for vSrcNew is 0.95*{PDO voltage}.",
+      "revId": "3f7e43196186c36103b1433f2d89e23bffcc9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed543bd3_d76c0135",
+        "filename": "driver/tcpm/raa489000.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2020-11-18T06:51:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89c04d36_89f7ea07",
       "revId": "3f7e43196186c36103b1433f2d89e23bffcc9765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
