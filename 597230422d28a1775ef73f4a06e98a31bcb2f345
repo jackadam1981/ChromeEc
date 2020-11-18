@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "64142bf8_6133cbd1",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Can you add a unit test for this? See https://chromium.googlesource.com/chromiumos/platform/ec/+/424ca6d7b31e2f627adb83629ec07467d871b421/test/mpu.c for what we did for the FPMCU.\n\nWe\u0027ll need to run the FPMCU unit tests for the MPU to make sure they still pass (above link).\n\nYou could do this yourself with a dragonclaw dev board and servo micro (http://go/cros-fingerprint-dev-boards). We\u0027re working on automating these in the lab, but it\u0027s not done yet: http://b/158580909.",
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "89662ac2_759a135f",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,10 @@
       "message": "I don\u0027t know if it\u0027s possible to run a test on the device, since flashing the result of https://crrev.com/c/2437576/1 (make BOARD\u003ddalboz test-mpu \u0026\u0026 flash_ec --board dalboz --image build/dalboz/mpu/mpu.bin) just gives me a dead EC.\n\nWe don\u0027t have any dragonclaw boards here in Sydney, but I\u0027m working on getting some. If you or somebody who has a dragonclaw board could run the test for me that would be quickest.",
       "parentUuid": "64142bf8_6133cbd1",
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2ce28f69_aa7c04b4",
         "filename": "/PATCHSET_LEVEL",
@@ -50,10 +51,28 @@
       "message": "My dragonclaw is having issues, so I had to request another. The warehouse is moving, so cannot ship until Oct 15 unless it is a P0. Let me know how critical this is.\n\nyichengli@ should also have the same setup so he might be able to run it.",
       "parentUuid": "89662ac2_759a135f",
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9050a83_de63456b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-18T00:07:54Z",
+      "side": 1,
+      "message": "Finally got to run the test on dragonclaw, which uncovered an issue where regions with base address 0 couldn\u0027t be configured. That\u0027s fixed now, and the test passes.",
+      "parentUuid": "2ce28f69_aa7c04b4",
+      "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "9991473f_3b9988a1",
         "filename": "core/cortex-m/mpu.c",
@@ -73,10 +92,10 @@
         "endChar": 1
       },
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "749532d2_375700e5",
         "filename": "core/cortex-m/mpu.c",
@@ -97,10 +116,10 @@
         "endChar": 1
       },
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "edd5e4a1_cd77d8ba",
         "filename": "core/cortex-m/mpu.c",
@@ -121,10 +140,10 @@
         "endChar": 1
       },
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "17a465aa_091ffd22",
         "filename": "core/cortex-m/mpu.c",
@@ -145,10 +164,10 @@
         "endChar": 1
       },
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "bf1e6fe3_f49611e7",
         "filename": "core/cortex-m/mpu.c",
@@ -169,10 +188,10 @@
         "endChar": 1
       },
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ceaf729c_095f0027",
         "filename": "core/cortex-m/mpu.c",
@@ -186,10 +205,10 @@
       "side": 1,
       "message": "could be:\n\n   uint8_t natural_alignment \u003d MIN(alignment_log2(addr), alignment_log2(size));\n\nNot sure if natural_alignment is the best name; min_alignment may be better, but I\u0027m not too fussed.",
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "d75a3ebe_1a26a6cc",
         "filename": "core/cortex-m/mpu.c",
@@ -204,8 +223,7 @@
       "message": "ARM documentation refers to natural alignment, which is where that terminology choice came from. Seems clear enough that it\u0027s the minimum of the two, so I prefer to keep it as is.",
       "parentUuid": "ceaf729c_095f0027",
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
