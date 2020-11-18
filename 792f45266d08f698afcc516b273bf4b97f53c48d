@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e72d48_caec6363",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-18T02:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ede69cd6_da0e8f1c",
+      "revId": "792f45266d08f698afcc516b273bf4b97f53c48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3219493c_118d9733",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-17T18:06:22Z",
       "side": 1,
       "message": "we can move this below (l.171) as a common print for both l.162 and here",
+      "revId": "792f45266d08f698afcc516b273bf4b97f53c48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb071d0_160a51a7",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-18T02:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3219493c_118d9733",
       "revId": "792f45266d08f698afcc516b273bf4b97f53c48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e91c366_ed4be97b",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-18T02:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "436319a7_1d0c10b9",
+      "revId": "792f45266d08f698afcc516b273bf4b97f53c48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce5a395a_932b7baa",
@@ -65,6 +119,24 @@
       "writtenOn": "2020-11-17T18:06:22Z",
       "side": 1,
       "message": "the pointer is actually larger than the content itself, and the whole business of passing later buf both from its header content and as a re-usable buffer is kind of obfuscated / difficult to grab at first.\n\nwhy just having a plain \u0027struct ctn730 header\u0027 here.\nand let _payload_response / _payload_event allocate whatever buffer they need ?\nI don\u0027t really see how the current version is more optimized ?",
+      "revId": "792f45266d08f698afcc516b273bf4b97f53c48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd854736_969464ce",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-18T02:10:20Z",
+      "side": 1,
+      "message": "Done. \n\nPS3 looks a bit redundant now because buf size is checked in two places. struct ctn730_msg and buf are on the stack separately. I agree this is less obfuscated.",
+      "parentUuid": "ce5a395a_932b7baa",
       "revId": "792f45266d08f698afcc516b273bf4b97f53c48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
