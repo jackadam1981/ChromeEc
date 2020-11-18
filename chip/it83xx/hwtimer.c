@@ -119,16 +119,16 @@ void __hw_clock_source_set(uint32_t ts)
 
 void __hw_clock_event_set(uint32_t deadline)
 {
-	uint32_t wait;
+	int32_t wait;
 	/* bit0, disable event timer */
 	IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) &= ~BIT(0);
 	/* w/c interrupt status */
 	event_timer_clear_pending_isr();
 	/* microseconds to timer counter */
 	wait = deadline - __hw_clock_source_read();
-	IT83XX_ETWD_ETXCNTLR(EVENT_EXT_TIMER) =
-		wait < EVENT_TIMER_COUNT_TO_US(0xffffffff) ?
-		EVENT_TIMER_US_TO_COUNT(wait) : 0xffffffff;
+	if (wait <= 0)
+		return;
+	IT83XX_ETWD_ETXCNTLR(EVENT_EXT_TIMER) = EVENT_TIMER_US_TO_COUNT(wait);
 	/* enable and re-start timer */
 	IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) |= 0x03;
 	task_enable_irq(et_ctrl_regs[EVENT_EXT_TIMER].irq);

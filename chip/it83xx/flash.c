@@ -19,6 +19,7 @@
 
 #define FLASH_DMA_START ((uint32_t) &__flash_dma_start)
 #define FLASH_DMA_CODE __attribute__((section(".flash_direct_map")))
+#define FLASH_ILM0_ADDR ((uint32_t) &__ilm0_ram_code)
 
 /* erase size of sector is 1KB or 4KB */
 #define FLASH_SECTOR_ERASE_SIZE CONFIG_FLASH_ERASE_SIZE
@@ -47,15 +48,16 @@
 /* Read status register */
 #define FLASH_CMD_RS           0x05
 
+#if (CONFIG_FLASH_SIZE == 0x80000) && defined(CHIP_CORE_NDS32)
+/* Apply workaround of the issue (b:111808417) */
+#define IMMU_CACHE_TAG_INVALID
 #define FLASH_TEXT_START ((uint32_t) &__flash_text_start)
 /* The default tag index of immu. */
 #define IMMU_TAG_INDEX_BY_DEFAULT 0x7E000
 /* immu cache size is 8K bytes. */
 #define IMMU_SIZE                 0x2000
-
-#if (CONFIG_FLASH_SIZE == 0x80000) && defined(CHIP_CORE_NDS32)
-/* Apply workaround of the issue (b:111808417) */
-#define IMMU_CACHE_TAG_INVALID
+#else
+#define IMMU_TAG_INDEX_BY_DEFAULT 0xffffffff
 #endif
 
 static int stuck_locked;
@@ -633,6 +635,38 @@ uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
 	return ret;
 }
 
+static void flash_enable_ilm0(void)
+{
+#ifdef CHIP_CORE_RISCV
+	/* Make sure no interrupt while enable static cache */
+	interrupt_disable();
+
+	/* Invalid ILM0 */
+	IT83XX_GCTRL_RVILMCR0 &= ~ILMCR_ILM0_ENABLE;
+	IT83XX_SMFI_SCAR0H = BIT(3);
+	/* copy code to ram */
+	memcpy((void *)CHIP_RAMCODE_ILM0,
+		(const void *)FLASH_ILM0_ADDR,
+		IT83XX_ILM_BLOCK_SIZE);
+	/*
+	 * Enable ILM0
+	 * Set the logic memory address(flash code of RO/RW) in flash
+	 * by programming the register SCAR0x bit19-bit0.
+	 */
+	IT83XX_SMFI_SCAR0L = FLASH_ILM0_ADDR & 0xff;
+	IT83XX_SMFI_SCAR0M = (FLASH_ILM0_ADDR >> 8) & 0xff;
+	IT83XX_SMFI_SCAR0H = (FLASH_ILM0_ADDR >> 16) & 0x7;
+	if (FLASH_ILM0_ADDR & BIT(19))
+		IT83XX_SMFI_SCAR0H |= BIT(7);
+	else
+		IT83XX_SMFI_SCAR0H &= ~BIT(7);
+	/* enable ILM 0 */
+	IT83XX_GCTRL_RVILMCR0 |= ILMCR_ILM0_ENABLE;
+
+	interrupt_enable();
+#endif
+}
+
 static void flash_code_static_dma(void)
 {
 
@@ -696,6 +730,9 @@ int flash_pre_init(void)
 	if (IS_ENABLED(IT83XX_CHIP_FLASH_IS_KGD))
 		IT83XX_SMFI_FLHCTRL6R |= IT83XX_SMFI_MASK_ECINDPP;
 	flash_code_static_dma();
+
+	if (IS_ENABLED(CHIP_CORE_RISCV))
+		flash_enable_ilm0();
 
 	reset_flags = system_get_reset_flags();
 	prot_flags = flash_get_protect();
