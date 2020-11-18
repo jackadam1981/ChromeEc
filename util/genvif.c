@@ -2513,9 +2513,29 @@ static void init_vif_component_fields(struct vif_field_t *vif_fields,
 		"2",
 		"Type-C®");
 
-	set_vif_field_b(&vif_fields[USB4_Supported],
-		vif_component_name[USB4_Supported],
-		IS_ENABLED(CONFIG_USB_PD_USB4));
+	{
+		bool usb4_supported;
+
+		/* Determine if we are DRP, SRC or SNK */
+		if (!get_vif_field_tag_bool(&vif_fields[USB4_Supported],
+					&usb4_supported))
+			usb4_supported = IS_ENABLED(CONFIG_USB_PD_USB4);
+
+		if (usb4_supported) {
+			set_vif_field_b(&vif_fields[USB4_Supported],
+				vif_component_name[USB4_Supported],
+				true);
+
+			set_vif_field_itss(&vif_fields[USB4_Router_Index],
+				vif_component_name[USB4_Router_Index],
+				component_index,
+				NULL);
+		} else {
+			set_vif_field_b(&vif_fields[USB4_Supported],
+				vif_component_name[USB4_Supported],
+				false);
+		}
+	}
 
 	set_vif_field_b(&vif_fields[USB_PD_Support],
 		vif_component_name[USB_PD_Support],
