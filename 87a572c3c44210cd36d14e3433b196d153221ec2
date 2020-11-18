@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ddcb3a0_c01f627d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-18T18:03:25Z",
+      "side": 1,
+      "message": "Please be respectful of our partner code.  We have successful platforms running on this core and it has worked very well for us.",
+      "parentUuid": "8e42a273_8bb141d7",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -83,6 +101,24 @@
       "writtenOn": "2020-11-18T07:59:05Z",
       "side": 1,
       "message": "the lack of check was decided on purpose very long time ago (\u003e 6 years) because this is a really critical path. Instead there was the ASSERT() above protected by CONFIG_DEBUG_BRINGUP to ensure no incorrect usage where slipping",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71a8af5_ca9386b2",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-18T18:03:25Z",
+      "side": 1,
+      "message": "I can see an argument for keeping this path as speedy as possible, but at the same time if another caller uses this incorrectly then we can get into a deeply undesirable state of just bootlooping the EC until battery drains.  We\u0027d need to be very confident that our FW testing has caught all possibilities of this happening before any release without a check like this.",
+      "parentUuid": "b306fc8a_f9e41ea0",
       "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
