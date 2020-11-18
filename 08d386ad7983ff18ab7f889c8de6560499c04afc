@@ -46,6 +46,30 @@
       },
       "revId": "08d386ad7983ff18ab7f889c8de6560499c04afc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0fa736_db9b7dea",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-11-18T07:29:34Z",
+      "side": 1,
+      "message": "!SENSOR_ACTIVE(sensor) is similar to  sensor-\u003ecollection_rate, because in motion_sense_switch_sensor_rate(), when   !SENSOR_ACTIVE(sensor) we set sensor-\u003ecollection_rate  to 0.\n\nHowever, the proposed change is cleaner, as we use SENSOR_ACTIVE(sensor) test elsewhere.",
+      "parentUuid": "958c5e49_d57b83b7",
+      "range": {
+        "startLine": 946,
+        "startChar": 6,
+        "endLine": 946,
+        "endChar": 35
+      },
+      "revId": "08d386ad7983ff18ab7f889c8de6560499c04afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
