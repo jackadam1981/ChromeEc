@@ -3038,7 +3038,7 @@ static void init_vif_component_usb_type_c_fields(
 static void init_vif_component_usb_data_ufp_fields(
 			struct vif_field_t *vif_fields)
 {
-	int ds = USB_2;
+	enum usb_speed ds = USB_GEN11;
 
 	switch (ds) {
 	case USB_2:
@@ -3066,10 +3066,6 @@ static void init_vif_component_usb_data_ufp_fields(
 			vif_component_name[Device_Speed],
 			USB_GEN22, "USB 3.2 GEN 2x2");
 		break;
-	default:
-		set_vif_field_itss(&vif_fields[Device_Speed],
-			vif_component_name[Device_Speed],
-			ds, NULL);
 	}
 }
 
@@ -3093,7 +3089,7 @@ static void init_vif_component_usb_data_ufp_fields(
 static void init_vif_component_usb_data_dfp_fields(
 			struct vif_field_t *vif_fields)
 {
-	int ds = USB_2;
+	enum usb_speed ds = USB_GEN11;
 
 	switch (ds) {
 	case USB_2:
@@ -3121,10 +3117,6 @@ static void init_vif_component_usb_data_dfp_fields(
 			vif_component_name[Host_Speed],
 			USB_GEN22, "USB 3.2 GEN 2x2");
 		break;
-	default:
-		set_vif_field_itss(&vif_fields[Host_Speed],
-			vif_component_name[Host_Speed],
-			ds, NULL);
 	}
 
 	set_vif_field_b(&vif_fields[Host_Contains_Captive_Retimer],
