@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3384b84c_fbbfedf4",
+        "filename": "chip/npcx/gpio_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-11-18T23:56:39Z",
+      "side": 1,
+      "message": "@CH - your thoughts?",
+      "parentUuid": "03b629ef_c396db73",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "746d73aa33dc648e1c62e087607fe6003fbacefc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab2b3c07_3118f9e5",
         "filename": "chip/npcx/gpio_chip-npcx9.h",
         "patchSetId": 1
