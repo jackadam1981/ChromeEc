@@ -22,6 +22,30 @@
       },
       "revId": "c56fa34e884c0ef192c89fa5800570ca81152112",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bfa1ff_ac92375e",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-18T23:36:48Z",
+      "side": 1,
+      "message": "The usage is right here, I think you just missed it:\n\n\t\t.irq_handler \u003d cb, \\",
+      "parentUuid": "efffb823_15ebe921",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 23
+      },
+      "revId": "c56fa34e884c0ef192c89fa5800570ca81152112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
