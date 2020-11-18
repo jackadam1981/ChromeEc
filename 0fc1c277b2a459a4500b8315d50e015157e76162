@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f14dc821_ad7398e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-18T18:47:51Z",
+      "side": 1,
+      "message": "On Grunt, is the EN_PP5000 controlled by EC? or some discrete circuitry?\n\nIn many other boards, the EN_PP5000 is controlled by EC. The PD task is actually one of the consumers of the PP5000 rails. We can define the CONFIG_POWER_PP5000_CONTROL and add the dependency in the board-special pd_set_power_supply_ready(). So as long as the PD is sourcing power, the PP5000 rail won\u0027t be turned off, i.e. VBUS keeping high.",
+      "parentUuid": "2db07e28_d33c7254",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e720b65c_4a7bc64a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
