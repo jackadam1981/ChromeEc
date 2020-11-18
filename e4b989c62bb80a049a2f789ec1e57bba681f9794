@@ -37,6 +37,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63dc2e4a_0e0f053b",
+        "filename": "board/gingerbread/gpio.inc",
+        "patchSetId": 42
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-18T02:29:19Z",
+      "side": 1,
+      "message": "Why is the rising edge of interest?",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 63
+      },
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b25ea5f_031a3742",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-18T02:29:19Z",
+      "side": 1,
+      "message": "This seems a little racy. Could you leverage CONFIG_USB_PD_INITIAL_DRP_STATE instead?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 0
+      },
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bce56bd_cd095e76",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-18T02:29:19Z",
+      "side": 1,
+      "message": "Same here; Non-zero means that there\u0027s an interrupt pending.",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f328f31c_71aaf76f",
         "filename": "board/quiche/gpio.inc",
         "patchSetId": 42
