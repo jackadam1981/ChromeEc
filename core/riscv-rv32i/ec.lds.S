@@ -69,10 +69,12 @@ SECTIONS
 		. = ALIGN(4);
 		KEEP(STRINGIFY(OUTDIR/core/CORE/init.o) (.text.vectirq))
 		KEEP(STRINGIFY(OUTDIR/core/CORE/init.o) (.text))
-#if defined(CHIP_FAMILY_IT8XXX2)
-		KEEP(*(.flash_direct_map))
+
 		. = ALIGN(16);
 		KEEP(*(.ram_code))
+
+#if defined(CHIP_FAMILY_IT8XXX2)
+		KEEP(*(.flash_direct_map))
 
 		__flash_dma_size = . - __flash_dma_start;
 		ASSERT((__flash_dma_size < IT83XX_ILM_BLOCK_SIZE),
