@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50664354_36b82912",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-18T19:16:11Z",
+      "side": 1,
+      "message": "Right, my understanding is that it\u0027s the current draw that would cause VBUS to sag. If VBUS sags beneath OCP_THRESHOLD, then sourcing will cease.\n\nI\u0027m assuming that the sagging occurs once the current draw exceeds the VBUS_CURRENT_TARGET (register 0x92). Our Source Capabilities advertisements can change from 5V/3A to 5V/1.5A depending if another sink is present in the system. That\u0027s why I suggested that we put in place the 3.08A limit for now instead of the default of 3.2A.\n\nLater on we\u0027ll need to update that depending on what we\u0027re currently advertising, but that is out of scope of this CL.\n\nDoes that make sense?",
+      "parentUuid": "274740fc_987e879a",
+      "revId": "3f7e43196186c36103b1433f2d89e23bffcc9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89c04d36_89f7ea07",
