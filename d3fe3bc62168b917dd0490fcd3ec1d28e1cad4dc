@@ -234,6 +234,30 @@
       },
       "revId": "d3fe3bc62168b917dd0490fcd3ec1d28e1cad4dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4b5f36_367851d2",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-18T09:29:04Z",
+      "side": 1,
+      "message": "What is controlling the voltage of GPIO97? Are we stuffing/unstuffing a resistor to match the PPC? Or the PPCs set it low or high? I hope the latter is the case. Maybe you can share the schematic (on the bug).",
+      "parentUuid": "54306539_84e71e9b",
+      "range": {
+        "startLine": 155,
+        "startChar": 38,
+        "endLine": 155,
+        "endChar": 52
+      },
+      "revId": "d3fe3bc62168b917dd0490fcd3ec1d28e1cad4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
