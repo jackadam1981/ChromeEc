@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87730d47_604acaa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-18T16:28:58Z",
+      "side": 1,
+      "message": "You need to also add this to the drobit/board.h\n\n/*\n * The RAM and flash size combination on the the NPCX797FC does not leave\n * any unused flash space that can be used to store the .init_rom section.\n */\n#undef CONFIG_CHIP_INIT_ROM_REGION\n",
+      "revId": "030b528c2626d28c8fc2a55924c264dad2952df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
