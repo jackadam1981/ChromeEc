@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc33df06_897aa268",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-18T17:35:28Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "7d33c6c4_f5f0e85a",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 0
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4751e8ad_5821e00b",
@@ -226,6 +250,30 @@
       "side": 0,
       "message": "Will move this to another CL.",
       "parentUuid": "c586a63b_83f66500",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda6bf20_793b8be4",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-18T17:35:28Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "c3fb2a7d_7cff7ba4",
       "range": {
         "startLine": 131,
         "startChar": 0,
