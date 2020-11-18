@@ -184,7 +184,7 @@ task_id_t task_get_current(void)
 	if (IS_ENABLED(CONFIG_DEBUG_BRINGUP))
 		ASSERT(task_start_called() != 1);
 
-	return current_task - tasks;
+	return task_start_called() ? current_task - tasks : TASK_ID_INVALID;
 }
 
 const char *task_get_name(task_id_t tskid)
