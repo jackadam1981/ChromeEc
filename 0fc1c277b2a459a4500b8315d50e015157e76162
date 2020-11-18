@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccee434f_0eb7ccd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-18T21:20:21Z",
+      "side": 1,
+      "message": "If we can do this without breaking test behavior, I\u0027d say it would make sense to treat the debug hardware as much like real port partners as possible, including turning Vbus off for consistency. \n\nAt a minimum, I know we need to re-visit and ensure that on platforms which can source in G3, we don\u0027t leave Vbus on as we hibernate since I\u0027ve definitely contemplated a change like this to cover that scenario (b/165676824)",
+      "parentUuid": "f14dc821_ad7398e5",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e720b65c_4a7bc64a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
