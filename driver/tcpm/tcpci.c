@@ -10,6 +10,8 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "hooks.h"
+#include "i2c.h"
 #include "ps8xxx.h"
 #include "task.h"
 #include "tcpci.h"
@@ -29,6 +31,9 @@ STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 	bool sop_prime_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 	int rx_en[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+/* Indicates whether each port is currently in BIST Test Mode. */
+static bool bist_test_mode_active[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define TCPC_FLAGS_VSAFE0V(_flags) \
 	((_flags & TCPC_FLAGS_TCPCI_REV2_0) && \
@@ -864,6 +869,56 @@ struct queue {
 };
 static struct queue cached_messages[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Returns true if message is of type BIST Test Data, false otherwise. */
+static bool tcpm_message_is_bist_data(const struct cached_tcpm_message *message)
+{
+	return PD_HEADER_CNT(message->header) > 0 &&
+		!PD_HEADER_EXT(message->header) &&
+		PD_HEADER_TYPE(message->header) == PD_DATA_BIST &&
+		BIST_MODE(message->payload[0]) == BIST_TEST_DATA;
+}
+
+/**
+ * Controls BIST Test Mode in the TCPC and associated behavior changes. Disables
+ * message Rx alerts while the port is in Test Mode. See TCPCI r2.0, v1.2,
+ * section 4.4.5.1 TCPC_CONTROL.
+ *
+ * @param port   USB-C port number
+ * @param enable true to enter BIST Test Mode; false to exit BIST Test Mode
+ * @return EC_SUCCESS or error code
+ */
+static enum ec_error_list tcpci_set_bist_test_mode(const int port,
+		const bool enable)
+{
+	int rv;
+
+	CPRINTS("C%d: Set BIST mode %d", port, enable);
+	bist_test_mode_active[port] = enable;
+	rv = tcpc_update8(port, TCPC_REG_TCPC_CTRL,
+			TCPC_REG_TCPC_CTRL_BIST_TEST_MODE,
+			enable ? MASK_SET : MASK_CLR);
+	rv |= tcpc_update16(port, TCPC_REG_ALERT_MASK,
+			TCPC_REG_ALERT_RX_STATUS, enable ? MASK_CLR : MASK_SET);
+	return rv;
+}
+
+/* If the port was in BIST Test Mode, a detach should cause it to exit. */
+static void tcpm_disable_bist_test_mode(void)
+{
+	tcpci_set_bist_test_mode(TASK_ID_TO_PD_PORT(task_get_current()), false);
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, tcpm_disable_bist_test_mode,
+		HOOK_PRIO_DEFAULT);
+
+/* based on tcpci_rev2_0_tcpm_get_message_raw */
+static int tcpm_discard_message(int port)
+{
+	/* Clear the alert bit without copying anything */
+	tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_RX_STATUS);
+
+	return EC_SUCCESS;
+}
+
 /* Note this method can be called from an interrupt context. */
 int tcpm_enqueue_message(const int port)
 {
@@ -877,6 +932,16 @@ int tcpm_enqueue_message(const int port)
 		return EC_ERROR_OVERFLOW;
 	}
 
+	if (bist_test_mode_active[port]) {
+		rv = tcpm_discard_message(port);
+		if (rv) {
+			CPRINTS("C%d: Could not retrieve RX message (%d)", port,
+					rv);
+			return rv;
+		}
+		return EC_SUCCESS;
+	}
+
 	/* Blank any old message, just in case. */
 	memset(head, 0, sizeof(*head));
 	/* Call the raw driver without caching */
@@ -886,6 +951,13 @@ int tcpm_enqueue_message(const int port)
 		CPRINTS("C%d: Could not retrieve RX message (%d)", port, rv);
 		return rv;
 	}
+
+	/*
+	 * Forward the first BIST Test Data packet to the PE; ignore all
+	 * subsequent such packets if possible.
+	 */
+	if (tcpm_message_is_bist_data(head))
+		tcpci_set_bist_test_mode(port, true);
 
 	/* Increment atomically to ensure get_message_raw happens-before */
 	atomic_add(&q->head, 1);
@@ -1230,6 +1302,11 @@ void tcpci_tcpc_alert(int port)
 	if (alert & TCPC_REG_ALERT_RX_HARD_RST) {
 		/* hard reset received */
 		CPRINTS("C%d Hard Reset received", port);
+		/*
+		 * If the port was in BIST Test Mode, a Hard Reset should cause
+		 * it to exit. See PD 3.0 section 6.4.3.2 BIST Test Data.
+		 */
+		tcpci_set_bist_test_mode(port, false);
 		pd_event |= PD_EVENT_RX_HARD_RESET;
 	}
 
