@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbedaf8d_e59719b5",
+        "filename": "common/extension.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-18T21:10:39Z",
+      "side": 1,
+      "message": "why is this guarded by CR50_DEV?",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "c2467f89d8c2b7a48c229db74c3f727dac2872d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
