@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46bb8adf_562435c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-18T09:26:17Z",
+      "side": 1,
+      "message": "This CL breaks Asurada SCP.",
+      "revId": "1dcfc09283df045a0071d549d90de04bd90a60f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7970b4e_8c4a6f23",
+        "filename": "core/riscv-rv32i/switch.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-18T09:26:17Z",
+      "side": 1,
+      "message": "It will put the following code to .ram_code...\n\nBut only...\n\n#if defined(CHIP_FAMILY_IT8XXX2)\n                KEEP(*(.flash_direct_map))\n                . \u003d ALIGN(16);\n                KEEP(*(.ram_code))\n...",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "1dcfc09283df045a0071d549d90de04bd90a60f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
