@@ -32,7 +32,7 @@
 #include "usbc_ppc.h"
 #include "version.h"
 
-#define USBC_EVENT_TIMEOUT (5 * MSEC)
+#define USBC_EVENT_TIMEOUT (500 * MSEC)
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
