@@ -258,6 +258,30 @@
       },
       "revId": "d3fe3bc62168b917dd0490fcd3ec1d28e1cad4dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8a92d3_c377edbb",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-11-18T10:16:23Z",
+      "side": 1,
+      "message": "Power Well is 3.3V of GPIO97, and pull high voltage is PP3300_EC. I attach the GPIO97 schematic into the issue tracker. Please refer b/160139798#comment69",
+      "parentUuid": "0e4b5f36_367851d2",
+      "range": {
+        "startLine": 155,
+        "startChar": 38,
+        "endLine": 155,
+        "endChar": 52
+      },
+      "revId": "d3fe3bc62168b917dd0490fcd3ec1d28e1cad4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
