@@ -33,6 +33,24 @@
       "message": "I\u0027ve uploaded CL:2546989 which should fix the flash size issue on the Kukui based platforms.",
       "revId": "7b66c3650d1cd6ba927740fc4c742dcd21764026",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed57a6f0_2e7fea61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-18T17:38:25Z",
+      "side": 1,
+      "message": "Thanks Keith, we need similar fix for flapjack board too",
+      "parentUuid": "2c920d94_9dc5f902",
+      "revId": "7b66c3650d1cd6ba927740fc4c742dcd21764026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
