@@ -16,6 +16,47 @@
       "message": "Please give CR+2,CQ+1 one more time. Another patchset for a new board galtic was needed.",
       "revId": "77d6612fa249a661cc6c49bd152fc4bb11e9d372",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf4b18a_e6de40ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-18T16:30:34Z",
+      "side": 1,
+      "message": "+1 for FP-related code. See typo though.",
+      "revId": "77d6612fa249a661cc6c49bd152fc4bb11e9d372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b179e768_6b669ecb",
+        "filename": "common/timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-18T16:30:34Z",
+      "side": 1,
+      "message": "\u003e \"taks\" is a possible misspelling of \"task\" or \"tasks\".\n\nPlease fix.",
+      "parentUuid": "1fe80afb_61a4a3d6",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "77d6612fa249a661cc6c49bd152fc4bb11e9d372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
