@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9292ba_d51ebd95",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-18T17:55:27Z",
+      "side": 1,
+      "message": "Nit - add a comment indicating enum is defined by gpio_signal.h",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "5fd64bb51ca33ab4c261378cd6072f7fdc823dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
