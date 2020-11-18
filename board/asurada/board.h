@@ -23,7 +23,7 @@
 /* For Rev0 only */
 #define CONFIG_IT83XX_VCC_1P8V
 #else
-#define CONFIG_IT83XX_VCC_3P3V
+#define CONFIG_IT83XX_VCC_1P8V
 #endif
 /*
  * TODO: Remove this option once the VBAT no longer keeps high when
