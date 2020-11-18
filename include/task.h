@@ -161,6 +161,8 @@ static inline void task_wake(task_id_t tskid)
 
 /**
  * Return the identifier of the task currently running.
+ *
+ * If task_start() has not yet been called, returns TASK_ID_INVALID.
  */
 task_id_t task_get_current(void);
 
