@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57de741c_bba79103",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-18T21:07:21Z",
+      "side": 1,
+      "message": "TOO_MANY_RANGES would be clearer in case someone is tryging to match error number to the enum to figure out what\u0027s wrong",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 15
+      },
+      "revId": "4a77f0026f4b5c1d75fbda7a0e6ca3725e9c9294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
