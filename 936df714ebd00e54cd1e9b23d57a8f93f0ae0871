@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d33c6c4_f5f0e85a",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-11-18T09:09:15Z",
+      "side": 0,
+      "message": "I will move this to another CL.",
+      "parentUuid": "9c49ef25_f7017d90",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 0
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4751e8ad_5821e00b",
         "filename": "board/voema/gpio.inc",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-17T18:30:14Z",
       "side": 0,
       "message": "Configure as an used signal with GPIO_INPUT|GPIO_PULL_UP to prevent leakage during low power modes.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 56
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69d3f74_ee86f1fa",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-11-18T09:09:15Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "4751e8ad_5821e00b",
       "range": {
         "startLine": 106,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26f65b4d_9f6788d5",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-11-18T09:09:15Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "3ecbc1cd_707d9e0f",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a884c11a_e775bc75",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32b0975_295d48bb",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-11-18T09:09:15Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "a884c11a_e775bc75",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 60
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c586a63b_83f66500",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-11-17T18:30:14Z",
       "side": 0,
       "message": "Moved into unused GPIO section with same options (input/pullup)",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "936df714ebd00e54cd1e9b23d57a8f93f0ae0871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fb2a7d_7cff7ba4",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-11-18T09:09:15Z",
+      "side": 0,
+      "message": "Will move this to another CL.",
+      "parentUuid": "c586a63b_83f66500",
       "range": {
         "startLine": 131,
         "startChar": 0,
