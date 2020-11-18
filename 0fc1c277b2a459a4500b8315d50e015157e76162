@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c40dea5e_e84a0db7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-18T22:41:02Z",
+      "side": 1,
+      "message": "Since one of the reasons for setting v4 to sink is for power testing, it seems like VBUS and EN_PP5000 might affect that testing.",
+      "parentUuid": "ccee434f_0eb7ccd7",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e720b65c_4a7bc64a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -103,6 +127,24 @@
       "side": 1,
       "message": "Agree to test servo v4 being a `snkdts` and AP in S5. I\u0027d expect CrOS switching Rp to Rd will make the CC voltage drop to 0. H1 will disconnect CCD mode if it doesn\u0027t detect CC voltage in some expected ranges.",
       "parentUuid": "e720b65c_4a7bc64a",
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4205193_041ee75b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-18T22:41:02Z",
+      "side": 1,
+      "message": "I\u0027ll do some testing of this.",
+      "parentUuid": "8b43a15c_fc093ead",
       "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
