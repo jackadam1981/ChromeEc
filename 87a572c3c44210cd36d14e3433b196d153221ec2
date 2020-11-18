@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e42a273_8bb141d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-18T07:59:05Z",
+      "side": 1,
+      "message": "sure nds32 is full of bad ideas",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49b54917_376edce5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-18T07:59:05Z",
+      "side": 1,
+      "message": "was the caller fixed ?",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25a121e_7123e44d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-18T07:59:05Z",
+      "side": 1,
+      "message": "it will still trigger the assertion here ?\nseems you have changed only half of the convention",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b306fc8a_f9e41ea0",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-18T07:59:05Z",
+      "side": 1,
+      "message": "the lack of check was decided on purpose very long time ago (\u003e 6 years) because this is a really critical path. Instead there was the ASSERT() above protected by CONFIG_DEBUG_BRINGUP to ensure no incorrect usage where slipping",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
