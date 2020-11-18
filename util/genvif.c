@@ -483,7 +483,6 @@ static bool is_src(void)
 	int override_value;
 	bool was_overridden;
 
-	/* Determine if we are DRP, SRC or SNK */
 	was_overridden = get_vif_field_tag_number(
 				&vif.Component[component_index]
 					.vif_field[Type_C_State_Machine],
@@ -637,6 +636,19 @@ static bool can_act_as_host(void)
 
 	return (!(IS_ENABLED(CONFIG_USB_CTVPD) ||
 		IS_ENABLED(CONFIG_USB_VPD)));
+}
+
+static bool is_usb4_supported(void)
+{
+	bool usb4_supported;
+
+	if (!get_vif_field_tag_bool(
+			&vif.Component[component_index]
+				.vif_field[USB4_Supported],
+			&usb4_supported))
+		usb4_supported = IS_ENABLED(CONFIG_USB_PD_USB4);
+
+	return usb4_supported;
 }
 
 static void init_src_pdos(void)
@@ -2513,9 +2525,29 @@ static void init_vif_component_fields(struct vif_field_t *vif_fields,
 		"2",
 		"Type-C®");
 
-	set_vif_field_b(&vif_fields[USB4_Supported],
-		vif_component_name[USB4_Supported],
-		IS_ENABLED(CONFIG_USB_PD_USB4));
+	/* Determine if we are DRP, SRC or SNK */
+	if (is_usb4_supported()) {
+		int router_index;
+
+		set_vif_field_b(&vif_fields[USB4_Supported],
+			vif_component_name[USB4_Supported],
+			true);
+
+		if (!get_vif_field_tag_number(
+				&vif.Product.USB4RouterList[0]
+					.vif_field[USB4_Router_ID],
+				&router_index)) {
+			router_index = 0;
+		}
+		set_vif_field_itss(&vif_fields[USB4_Router_Index],
+			vif_component_name[USB4_Router_Index],
+			router_index,
+			NULL);
+	} else {
+		set_vif_field_b(&vif_fields[USB4_Supported],
+			vif_component_name[USB4_Supported],
+			false);
+	}
 
 	set_vif_field_b(&vif_fields[USB_PD_Support],
 		vif_component_name[USB_PD_Support],
