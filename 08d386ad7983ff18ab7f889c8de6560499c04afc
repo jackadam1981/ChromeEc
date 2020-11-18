@@ -70,6 +70,30 @@
       },
       "revId": "08d386ad7983ff18ab7f889c8de6560499c04afc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70aa0de6_e2ebcfc5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-11-18T07:43:54Z",
+      "side": 1,
+      "message": "Actually, SENSOR_ACTIVE(sensor) is not correct either. If the sensor is powered but suspended (ODR \u003d 0), we should also leave wait_us to -1.",
+      "parentUuid": "ea0fa736_db9b7dea",
+      "range": {
+        "startLine": 946,
+        "startChar": 6,
+        "endLine": 946,
+        "endChar": 35
+      },
+      "revId": "08d386ad7983ff18ab7f889c8de6560499c04afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
