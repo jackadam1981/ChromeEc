@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e16a970_93eb4c4c",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-18T10:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1e3cf45_ef34bfad",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 15
+      },
+      "revId": "c9ee2eb76893fdaaad58931899875d8f7ea8a7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "195ecff5_115c984e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0350ae_d9dd808d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-18T10:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195ecff5_115c984e",
+      "range": {
+        "startLine": 777,
+        "startChar": 1,
+        "endLine": 779,
+        "endChar": 0
+      },
+      "revId": "c9ee2eb76893fdaaad58931899875d8f7ea8a7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b0462a6_bd5e7f2d",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-17T16:07:49Z",
       "side": 1,
       "message": "HOOT_INIT should work now.",
+      "range": {
+        "startLine": 883,
+        "startChar": 0,
+        "endLine": 883,
+        "endChar": 71
+      },
+      "revId": "c9ee2eb76893fdaaad58931899875d8f7ea8a7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89db48e4_d63602c3",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-18T10:01:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b0462a6_bd5e7f2d",
       "range": {
         "startLine": 883,
         "startChar": 0,
