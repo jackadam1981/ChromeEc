@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96edfa6a_76971ffe",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-18T02:09:48Z",
+      "side": 1,
+      "message": "Here we attempted to enable a disabled port but failed. So, the comment is what I meant.",
+      "parentUuid": "d004339a_7ae07ebe",
+      "revId": "55da264d135981c850dc78e3ed5b1d0efd434a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcd7b332_32435cea",
         "filename": "common/peripheral_charger.c",
         "patchSetId": 4
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a88fd205_72226d69",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-18T02:09:48Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "dcd7b332_32435cea",
+      "revId": "55da264d135981c850dc78e3ed5b1d0efd434a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdb4f492_98946352",
         "filename": "include/peripheral_charger.h",
         "patchSetId": 4
@@ -48,6 +84,24 @@
       "writtenOn": "2020-11-17T17:36:18Z",
       "side": 1,
       "message": "where is this used or the queue actually configured ?\nmy grep-foo is weak, cannot find it",
+      "revId": "55da264d135981c850dc78e3ed5b1d0efd434a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf2d6596_0fec00aa",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-18T02:09:48Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2538540/3/board/coachz/board.c#58",
+      "parentUuid": "fdb4f492_98946352",
       "revId": "55da264d135981c850dc78e3ed5b1d0efd434a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

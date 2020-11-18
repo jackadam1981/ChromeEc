@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c8f207f_f8f3f1d1",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-18T02:09:48Z",
+      "side": 1,
+      "message": "Ack.\n\n----- \u003e8 ------\n\nFYI: When I was developing the SM, I speculated several options, including  \u0027struct pchg\u0027 with \u0027bool irq\u0027 and \u0027enum pchg_event event\u0027. I realized the sm needs to process events in the chronological order because I didn\u0027t want to give priority to any particular event or IRQ. Also, I didn\u0027t want to drop two back-to-back internal events. So, I ended up with a queue of size 8. \n\nWe may drop events under extreme conditions but at this point the limitation doesn\u0027t look significantly more restrictive than the other limitations we already have everywhere else.\n\nI need to come back and revise the queue if the assumption is found different. I\u0027m not very eager to find a perfect or better design until I have a device with multiple pchg ports.",
+      "parentUuid": "faede04e_6c9cb0cd",
+      "revId": "55b73748c04c3d9bbea46c62e72029ac21710ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e13fb86d_926920c6",
         "filename": "common/peripheral_charger.c",
         "patchSetId": 3
