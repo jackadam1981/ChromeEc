@@ -435,6 +435,14 @@ enum power_state power_handle_state(enum power_state state)
 	return state;
 }
 
+static int run_s3_hooks(int argc, char **argv)
+{
+	hook_notify(HOOK_CHIPSET_SUSPEND);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(s3hooks, run_s3_hooks, "", "");
+
 static void power_button_changed(void)
 {
 	if (power_button_is_pressed()) {
