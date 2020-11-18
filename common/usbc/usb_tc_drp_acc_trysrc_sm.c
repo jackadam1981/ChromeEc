@@ -1421,7 +1421,9 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 
 	res = tcpm_init(port);
 
+#if 0
 	CPRINTS("C%d: TCPC init %s", port, res ? "failed" : "ready");
+#endif
 
 	/*
 	 * Update the Rp Value. We don't need to update CC lines though as that
@@ -1637,6 +1639,14 @@ static enum usb_tc_state get_last_state_tc(const int port)
 
 static void print_current_state(const int port)
 {
+	enum usb_tc_state state = get_state_tc(port);
+
+	if ((IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&
+			state == TC_DRP_AUTO_TOGGLE) ||
+			(IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER) &&
+			state == TC_LOW_POWER_MODE))
+		return;
+
 	if (IS_ENABLED(USB_PD_DEBUG_LABELS))
 		CPRINTS_L1("C%d: %s", port, tc_state_names[get_state_tc(port)]);
 	else
@@ -1905,7 +1915,9 @@ static __maybe_unused int reset_device_and_notify(int port)
 	TC_CLR_FLAG(port, TC_FLAGS_LPM_ENGAGED);
 	tc_start_event_loop(port);
 
+#if 0
 	CPRINTS("C%d: TCPC init %s", port, rv ? "failed!" : "ready");
+#endif
 
 	/*
 	 * Before getting the other tasks that are waiting, clear the reset
@@ -2066,13 +2078,17 @@ static void tc_disabled_run(const int port)
 
 static void tc_disabled_exit(const int port)
 {
+#if 0
 	int rv;
+#endif
 
 	tc_start_event_loop(port);
 	TC_CLR_FLAG(port, TC_FLAGS_SUSPENDED);
 
-	rv = tcpm_init(port);
+	/*rv = */tcpm_init(port);
+#if 0
 	CPRINTS("C%d: TCPC init %s", port, rv ? "failed!" : "ready");
+#endif
 }
 
 /**
@@ -3327,7 +3343,9 @@ __maybe_unused static void tc_low_power_mode_run(const int port)
 					PD_LPM_EXIT_DEBOUNCE_US);
 		} else if (pd_timer_is_expired(port,
 					       TC_TIMER_LOW_POWER_EXIT_TIME)) {
+#if 0
 			CPRINTS("C%d: Exit Low Power Mode", port);
+#endif
 			check_drp_connection(port);
 		}
 		return;
@@ -3338,7 +3356,9 @@ __maybe_unused static void tc_low_power_mode_run(const int port)
 				PD_LPM_DEBOUNCE_US);
 
 	if (pd_timer_is_expired(port, TC_TIMER_LOW_POWER_TIME)) {
+#if 0
 		CPRINTS("C%d: TCPC Enter Low Power Mode", port);
+#endif
 		TC_SET_FLAG(port, TC_FLAGS_LPM_ENGAGED);
 		TC_SET_FLAG(port, TC_FLAGS_LPM_TRANSITION);
 		tcpm_enter_low_power_mode(port);
