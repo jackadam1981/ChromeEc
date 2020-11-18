@@ -66,6 +66,7 @@
  */
 #define TCPC_REG_TCPC_CTRL_EN_LOOK4CONNECTION_ALERT  BIT(6)
 #define TCPC_REG_TCPC_CTRL_DEBUG_ACC_CONTROL         BIT(4)
+#define TCPC_REG_TCPC_CTRL_BIST_TEST_MODE            BIT(1)
 
 #define TCPC_REG_ROLE_CTRL         0x1a
 #define TCPC_REG_ROLE_CTRL_DRP_MASK                    BIT(6)
