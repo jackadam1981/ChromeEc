@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0887584_8ee2f3d6",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-11-18T09:19:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b8b4ef4b_c3ce8e91",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "d3fe3bc62168b917dd0490fcd3ec1d28e1cad4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea60485c_426ebed6",
         "filename": "board/fleex/board.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-17T17:56:51Z",
       "side": 1,
       "message": "ppc_chips[USB_PD_PORT_TCPC_0] \u003d ppc_syv682x_port0;\nppc_chips[USB_PD_PORT_TCPC_1] \u003d ppc_syv682x_port1;",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "d3fe3bc62168b917dd0490fcd3ec1d28e1cad4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc6c598_76ebbbbe",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-11-18T09:19:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ea60485c_426ebed6",
       "range": {
         "startLine": 78,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29f9b0ec_56787599",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-11-18T09:19:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "beee662c_389a836f",
+      "range": {
+        "startLine": 94,
+        "startChar": 21,
+        "endLine": 94,
+        "endChar": 22
+      },
+      "revId": "d3fe3bc62168b917dd0490fcd3ec1d28e1cad4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7872cc87_805d855a",
         "filename": "board/fleex/board.c",
         "patchSetId": 1
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca144059_2ea5d066",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-11-18T09:19:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7872cc87_805d855a",
+      "range": {
+        "startLine": 331,
+        "startChar": 13,
+        "endLine": 331,
+        "endChar": 14
+      },
+      "revId": "d3fe3bc62168b917dd0490fcd3ec1d28e1cad4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03ac5598_35a2b809",
         "filename": "board/fleex/gpio.inc",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2020-11-17T17:56:51Z",
       "side": 1,
       "message": "Why do you need this? There is no external PD or PU? How does the schematic look?",
+      "range": {
+        "startLine": 155,
+        "startChar": 38,
+        "endLine": 155,
+        "endChar": 52
+      },
+      "revId": "d3fe3bc62168b917dd0490fcd3ec1d28e1cad4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54306539_84e71e9b",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-11-18T09:19:30Z",
+      "side": 1,
+      "message": "For NXP MB, there is no Pull UP R5700 and Pull Down R5701. To prevent the EC get floating state, so it should be enable on-chip pull down.\nFor Silergy MB, will Pull UP R5700.",
+      "parentUuid": "03ac5598_35a2b809",
       "range": {
         "startLine": 155,
         "startChar": 38,
