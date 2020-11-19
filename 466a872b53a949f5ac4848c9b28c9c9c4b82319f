@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f328ff7_457dc339",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T17:02:19Z",
+      "side": 1,
+      "message": "We need to go through a  platform/ec -\u003e Zephyr GPIO flags. There is a function that goes the other way now. Which flags are we trying to set?",
+      "range": {
+        "startLine": 303,
+        "startChar": 59,
+        "endLine": 303,
+        "endChar": 64
+      },
+      "revId": "466a872b53a949f5ac4848c9b28c9c9c4b82319f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
