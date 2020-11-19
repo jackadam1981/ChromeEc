@@ -424,9 +424,41 @@ static const struct usb_mux mux_config_p1_usb3 = {
 	.next_mux = &usbc1_usb3_db_retimer,
 };
 
+static void ps8815_reset(void)
+{
+	int val;
+
+	gpio_set_level(GPIO_USB_C1_RT_RST_ODL, 0);
+	msleep(GENERIC_MAX(PS8XXX_RESET_DELAY_MS,
+			   PS8815_PWR_H_RST_H_DELAY_MS));
+	gpio_set_level(GPIO_USB_C1_RT_RST_ODL, 1);
+	msleep(PS8815_FW_INIT_DELAY_MS);
+
+	/*
+	 * b/144397088
+	 * ps8815 firmware 0x01 needs special configuration
+	 */
+
+	CPRINTS("%s: patching ps8815 registers", __func__);
+
+	if (i2c_read8(I2C_PORT_USB_C1,
+		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
+		CPRINTS("ps8815: reg 0x0f was %02x", val);
+
+	if (i2c_write8(I2C_PORT_USB_C1,
+		       PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, 0x31) == EC_SUCCESS)
+		CPRINTS("ps8815: reg 0x0f set to 0x31");
+
+	if (i2c_read8(I2C_PORT_USB_C1,
+		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
+		CPRINTS("ps8815: reg 0x0f now %02x", val);
+}
+
 void board_reset_pd_mcu(void)
 {
 	/* TODO(b/159024035): Malefor: check USB PD reset operation */
+	ps8815_reset();
+	usb_mux_hpd_update(USBC_PORT_C1, 0, 0);
 }
 
 __override void board_cbi_init(void)
@@ -507,12 +539,6 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
 
 /******************************************************************************/
 /* USBC mux configuration - Tiger Lake includes internal mux */
-struct usb_mux usbc1_usb4_db_retimer = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &bb_usb_retimer,
-	.i2c_port = I2C_PORT_USB_1_MIX,
-	.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
-};
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
@@ -523,7 +549,6 @@ struct usb_mux usb_muxes[] = {
 		.usb_port = USBC_PORT_C1,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
-		.next_mux = &usbc1_usb4_db_retimer,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
