@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a580b7_89abd46b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T21:18:11Z",
+      "side": 1,
+      "message": "Thanks Eric - I believe when the TCPC and retimers were originally updated on Delbin, the tcpc_config[] and usb_muxes[] was still defined in volteer/baseboard.c.  The comments are to clean up technical debt that you didn\u0027t cause.",
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbedcf61_c0a74113",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T21:18:11Z",
+      "side": 1,
+      "message": "Move this initialization directly into the tcpc_config[] array at line 434.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 0
+      },
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d1c1846_89d8200c",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T21:18:11Z",
+      "side": 1,
+      "message": "Move this into usb_muxes[] array.",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 0
+      },
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342a289c_7de2dba5",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T21:18:11Z",
+      "side": 1,
+      "message": "Move into the usb_muxes[] array.",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d23723a_f764e8ff",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T21:18:11Z",
+      "side": 1,
+      "message": "This can be deleted once the tcpc_config[] and usb_muxes[] is initialized with the correct data.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 0
+      },
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5034a28e_63935381",
+        "filename": "board/delbin/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T21:18:11Z",
+      "side": 1,
+      "message": "Add:\n   #undef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG\n   #undef CONFIG_USB_MUX_RUNTIME_CONFIG",
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
