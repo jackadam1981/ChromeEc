@@ -1,0 +1,475 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "febf0983_a736f5ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "nit: jason.guo@quanta.corp-partner.google.com",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 49
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82763ff8_ff330d5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "TEST should be on puff firmware branch.",
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e7c772e_9d602f03",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "int count_200ms_ticks \u003d 0;\nint one_second \u003d 0;",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 41
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7185944f_468a36bd",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "+tab to align",
+      "range": {
+        "startLine": 622,
+        "startChar": 1,
+        "endLine": 622,
+        "endChar": 30
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "144af3ee_c5503780",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "+tab to align",
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e468f846_a8c54de5",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "add blank",
+      "range": {
+        "startLine": 645,
+        "startChar": 3,
+        "endLine": 645,
+        "endChar": 4
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fec3928_b11fae41",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "add blank",
+      "range": {
+        "startLine": 645,
+        "startChar": 25,
+        "endLine": 645,
+        "endChar": 26
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "451683df_4fb99295",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "add blank",
+      "range": {
+        "startLine": 648,
+        "startChar": 2,
+        "endLine": 648,
+        "endChar": 4
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df6e951d_5485f560",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "add blank",
+      "range": {
+        "startLine": 648,
+        "startChar": 11,
+        "endLine": 648,
+        "endChar": 13
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73b8f9b_5ddf04c0",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "add blank",
+      "range": {
+        "startLine": 649,
+        "startChar": 21,
+        "endLine": 649,
+        "endChar": 22
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d62778cc_404f7532",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "remove blank",
+      "range": {
+        "startLine": 649,
+        "startChar": 19,
+        "endLine": 649,
+        "endChar": 20
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b196bee_839adc89",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "add blank",
+      "range": {
+        "startLine": 649,
+        "startChar": 4,
+        "endLine": 649,
+        "endChar": 5
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1cbfc39_ccae23d9",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "same above",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 650,
+        "endChar": 6
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5e926c_53d1abb1",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "same above",
+      "range": {
+        "startLine": 650,
+        "startChar": 38,
+        "endLine": 650,
+        "endChar": 39
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47422403_29aaa7b3",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "same above",
+      "range": {
+        "startLine": 654,
+        "startChar": 47,
+        "endLine": 654,
+        "endChar": 48
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8aae0d3_dfb512c9",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "same above",
+      "range": {
+        "startLine": 654,
+        "startChar": 10,
+        "endLine": 654,
+        "endChar": 11
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b14068_da3aff62",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "move up to line 658 and add blank",
+      "range": {
+        "startLine": 659,
+        "startChar": 2,
+        "endLine": 659,
+        "endChar": 7
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce3249e3_93a79c34",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "same above",
+      "range": {
+        "startLine": 660,
+        "startChar": 5,
+        "endLine": 660,
+        "endChar": 6
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "144ebf19_9ad1eb16",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "same above",
+      "range": {
+        "startLine": 660,
+        "startChar": 38,
+        "endLine": 660,
+        "endChar": 39
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d010bc22_35c1d42d",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "same above",
+      "range": {
+        "startLine": 663,
+        "startChar": 3,
+        "endLine": 663,
+        "endChar": 10
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3655e8d0_e1a88092",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-11-19T09:33:13Z",
+      "side": 1,
+      "message": "same above",
+      "range": {
+        "startLine": 663,
+        "startChar": 47,
+        "endLine": 663,
+        "endChar": 48
+      },
+      "revId": "1a5e5dbec93f7ed2ee0a2b23bcd7bc968323cc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
