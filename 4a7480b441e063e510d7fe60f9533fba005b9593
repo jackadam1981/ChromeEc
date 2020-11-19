@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9deac424_8ca73623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-19T00:48:33Z",
+      "side": 1,
+      "message": "One minor suggestion though feel free to ignore if it\u0027s not feasible and/or too much work.",
+      "revId": "4a7480b441e063e510d7fe60f9533fba005b9593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0b7c37_c065a9d3",
+        "filename": "zephyr/shim/include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-19T00:48:33Z",
+      "side": 1,
+      "message": "Likely not worth it, just want to bring it up. AFAIK we try to scope names to the file since... no namespace... maybe rename things (I know it would require a rename in platform/ec) to gpio_ioex_signal?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "4a7480b441e063e510d7fe60f9533fba005b9593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
