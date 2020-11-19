@@ -16,6 +16,24 @@
       "message": "While crrev.com/c/2545912 fixes the observed problem at a lower level, I think it\u0027s appropriate to also make this change since there are no documented requirements on use of these functions (so attempting to disable tasks could cause visible errors later even if it doesn\u0027t now).",
       "revId": "cb8c11e7639804b6cde5c3e9fc77369c17395b20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d24b0e1b_b4006b5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T16:47:05Z",
+      "side": 1,
+      "message": "I agree.",
+      "parentUuid": "4779225d_1e10b198",
+      "revId": "cb8c11e7639804b6cde5c3e9fc77369c17395b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
