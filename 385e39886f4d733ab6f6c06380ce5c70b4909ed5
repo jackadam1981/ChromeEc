@@ -16,6 +16,29 @@
       "message": "Waiting on specification on b:173534296.",
       "revId": "385e39886f4d733ab6f6c06380ce5c70b4909ed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e897cb_9f745c35",
+        "filename": "board/drobit/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-11-19T08:59:06Z",
+      "side": 1,
+      "message": "Is this 11550mV?",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "385e39886f4d733ab6f6c06380ce5c70b4909ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
