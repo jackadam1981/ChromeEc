@@ -46,6 +46,30 @@
       },
       "revId": "c56fa34e884c0ef192c89fa5800570ca81152112",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e9acac_8a4c1d06",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-19T00:45:35Z",
+      "side": 1,
+      "message": "Oh, I see, so this is instead of defining and assigning the function pointer at the same place you\u0027re taking care of the common functionality here. Gotcha.",
+      "parentUuid": "54bfa1ff_ac92375e",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 23
+      },
+      "revId": "c56fa34e884c0ef192c89fa5800570ca81152112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
