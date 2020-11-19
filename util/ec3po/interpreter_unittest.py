@@ -17,8 +17,8 @@ import unittest
 
 import six
 
-import interpreter
-import threadproc_shim
+from . import interpreter
+from . import threadproc_shim
 
 
 def GetBuiltins(func):

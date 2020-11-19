@@ -30,8 +30,8 @@ import traceback
 
 import six
 
-import interpreter
-import threadproc_shim
+from . import interpreter
+from . import threadproc_shim
 
 
 PROMPT = b'> '
