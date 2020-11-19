@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6299ca1f_cf17c1b4",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-19T04:49:44Z",
+      "side": 1,
+      "message": "I\u0027m assuming the concern here is an overflow so you can\u0027t just combine the two numbers? Looks like under the hood this is getting mapped to a struct holding either a uint32_t or int64_t so I think you can just combine the two into a single k_sleep?\n\nAlso, do we need to guarantee the duration of the sleep? k_sleep returns the remaining duration in ms if it was woken up.",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 37
+      },
+      "revId": "77302249ef7cfdceaef52eb39339dbf3860cd0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
