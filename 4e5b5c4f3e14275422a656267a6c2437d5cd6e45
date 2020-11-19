@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a72817_b4352d8d",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-19T05:09:46Z",
+      "side": 1,
+      "message": "You\u0027ll also need to call k_mutex_init(pwr_5v_ctl_mtx);\n\nWe might want to also add K_MUTEX_DEFINE to platform/ec/include/task.h to stream line the static instances here (previous use case was an array so it needed a separate init call).",
+      "range": {
+        "startLine": 1008,
+        "startChar": 7,
+        "endLine": 1008,
+        "endChar": 14
+      },
+      "revId": "4e5b5c4f3e14275422a656267a6c2437d5cd6e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe268b81_721c724e",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-19T05:09:46Z",
+      "side": 1,
+      "message": "nit: sort",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "4e5b5c4f3e14275422a656267a6c2437d5cd6e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
