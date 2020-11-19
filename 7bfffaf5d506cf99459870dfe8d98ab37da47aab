@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc04fa7_1465e2ac",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T05:22:55Z",
+      "side": 1,
+      "message": "It\u0027s needed for making static checker for posix-ec build happy... going to retain the existing style (see the other functions in this file).",
+      "parentUuid": "5240a364_72c77d17",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 9
+      },
+      "revId": "7bfffaf5d506cf99459870dfe8d98ab37da47aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4730f716_86f3874b",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-19T04:23:27Z",
       "side": 1,
       "message": "Same question here.",
+      "range": {
+        "startLine": 300,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 9
+      },
+      "revId": "7bfffaf5d506cf99459870dfe8d98ab37da47aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abdf446b_dc9cf0a6",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T05:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4730f716_86f3874b",
       "range": {
         "startLine": 300,
         "startChar": 1,
