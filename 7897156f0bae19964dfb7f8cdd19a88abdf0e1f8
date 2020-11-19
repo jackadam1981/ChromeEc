@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "902a795b_a4ca941a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T17:11:01Z",
+      "side": 1,
+      "message": "Looks good, just a few bound checks and moving the eSPI startup to main.c instead",
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d65a6a_c1825230",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T17:11:01Z",
+      "side": 1,
+      "message": "nit: rename to CASE_CROS_2_ZEPHYR\n\nand\n\nCASE_ZEPHYR_2_CROS",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13f124a_bdca4769",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T17:11:01Z",
+      "side": 1,
+      "message": "check that it is good otherwise you will get an out-of-bounds access below",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca82ba5_c0d19cfc",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T17:11:01Z",
+      "side": 1,
+      "message": "can we move this into main.c\u0027s sequencing instead please?",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9390706_40f7452a",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T17:11:01Z",
+      "side": 1,
+      "message": "check bounds",
+      "range": {
+        "startLine": 178,
+        "startChar": 34,
+        "endLine": 178,
+        "endChar": 63
+      },
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1065ec5_e51fcec9",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T17:11:01Z",
+      "side": 1,
+      "message": "check bounds",
+      "range": {
+        "startLine": 189,
+        "startChar": 26,
+        "endLine": 189,
+        "endChar": 50
+      },
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
