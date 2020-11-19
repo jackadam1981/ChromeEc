@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70f21f8_f5cdb520",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T05:21:39Z",
+      "side": 1,
+      "message": "\"es...\" comes before \"ex...\"? This is correct as is.\n\nThe alphabetization is by file name, not by config option.",
+      "parentUuid": "d9f69377_5135b7b5",
+      "range": {
+        "startLine": 38,
+        "startChar": 21,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "a489690002a1f33a0591471b6c0bcc69b61760b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e83bbee0_21bfea29",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a036a55d_0d52955a",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T05:21:39Z",
+      "side": 1,
+      "message": "Ack, there are no docstrings in this file 😊 ... there are just comments.\n\nKerneldoc does not use \"@param\" and \"@return\", that\u0027s a doxygen thing, which I think moving to that was abandoned in platform/ec.",
+      "parentUuid": "e83bbee0_21bfea29",
+      "revId": "a489690002a1f33a0591471b6c0bcc69b61760b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbbafd07_fe555391",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-11-19T05:03:56Z",
       "side": 1,
       "message": "I\u0027m assuming there\u0027s a reasonable max value here? Can we use a bitmap (uint32_t) instead?",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "a489690002a1f33a0591471b6c0bcc69b61760b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "506d4190_64b0946a",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T05:21:39Z",
+      "side": 1,
+      "message": "Ack ... avoiding premature optimization.\n\nIf we need the bytes later we can figure out a different solution.",
+      "parentUuid": "bbbafd07_fe555391",
       "range": {
         "startLine": 90,
         "startChar": 37,
