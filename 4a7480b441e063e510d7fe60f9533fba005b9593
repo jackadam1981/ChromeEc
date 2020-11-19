@@ -39,6 +39,30 @@
       },
       "revId": "4a7480b441e063e510d7fe60f9533fba005b9593",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec05f58_19a3888e",
+        "filename": "zephyr/shim/include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T02:08:36Z",
+      "side": 1,
+      "message": "This was done to match the existing name in platform/ec.  Global renames in platform/ec should definitely be done in a separate CL.",
+      "parentUuid": "7e0b7c37_c065a9d3",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "4a7480b441e063e510d7fe60f9533fba005b9593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
