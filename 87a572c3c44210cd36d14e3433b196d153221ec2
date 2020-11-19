@@ -211,6 +211,24 @@
       "parentUuid": "5d84b1ce_05fb82d0",
       "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fdc4ccc_1e6cf8a4",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-19T18:03:18Z",
+      "side": 1,
+      "message": "That may not have fixed the case we hit here though, right?  Since EFS2 was calling in through task_disable_task() which would use the internal version?  Or would all externally usable functions in this be made safe, and then anything calling internally should already be checked? \n\nI keep wondering if we could set up a unit test to verify the EC main thread doesn\u0027t call into these task functions before task_start? That could provide us enough testing safety to keep the call speedy, assuming we can get sufficient coverage of all the different CONFIG options that can happen during EC startup.",
+      "parentUuid": "c9c49fe1_56e15208",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
