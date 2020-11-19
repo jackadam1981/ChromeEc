@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad886bba_06d2440c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6697,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-19T23:14:42Z",
+      "side": 1,
+      "message": "Nit: TCPM tests do this a lot. There should probably be a bug for it.",
+      "range": {
+        "startLine": 6697,
+        "startChar": 3,
+        "endLine": 6697,
+        "endChar": 7
+      },
+      "revId": "2d2a5aa40fa31f477e9d30b23f4e69016f8e806e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
