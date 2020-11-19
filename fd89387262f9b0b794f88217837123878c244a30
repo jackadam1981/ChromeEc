@@ -70,6 +70,29 @@
       "parentUuid": "791eaf6b_d432927f",
       "revId": "fd89387262f9b0b794f88217837123878c244a30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1889f73a_57b5565b",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T20:58:17Z",
+      "side": 1,
+      "message": "would it help to assign this to a variable to avoid the cast? Just a thought for readability.",
+      "range": {
+        "startLine": 375,
+        "startChar": 6,
+        "endLine": 376,
+        "endChar": 38
+      },
+      "revId": "fd89387262f9b0b794f88217837123878c244a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
