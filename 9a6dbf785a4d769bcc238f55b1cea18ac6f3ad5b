@@ -16,6 +16,24 @@
       "message": "Right now (and previously), this always goes to the same case. Is it expected that ds will become a parameter when the tool supports getting that from the config?",
       "revId": "9a6dbf785a4d769bcc238f55b1cea18ac6f3ad5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ffdf96_aec487e4",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3041,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-19T00:25:14Z",
+      "side": 1,
+      "message": "It is unclear by the bug on how the actual speed is supposed to be determined. The most common is USB_GEN11.  The least common of the actually used values is USB_2.  I added the code to document the values and it allows this one liner to adjust to handle CONFIG_ processing of other values when this relationship is understood.",
+      "parentUuid": "639648a0_c82b5b12",
+      "revId": "9a6dbf785a4d769bcc238f55b1cea18ac6f3ad5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
