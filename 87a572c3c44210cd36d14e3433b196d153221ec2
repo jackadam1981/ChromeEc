@@ -193,6 +193,24 @@
       "parentUuid": "b71a8af5_ca9386b2",
       "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c49fe1_56e15208",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-19T17:47:10Z",
+      "side": 1,
+      "message": "One way to improve the situation is to separate task_get_current to _task_get_current (internal \u0026 fast) and task_get_current (external \u0026 safe).\n\nFor example, all TCPM code can call the safe version because they don\u0027t care about 3 instructions. Some task APIs such as task_disable_task can also call the safe version for the same reason.\n\nsvc_handler has already its own:\n\n\t\t/*\n\t\t * Remove our own ready bit (current - tasks is same as\n\t\t * task_get_current())\n\t\t */\n\t\ttasks_ready \u0026\u003d ~(1 \u003c\u003c (current - tasks));\n\nprobably because it knows it\u0027s in a critical path.",
+      "parentUuid": "5d84b1ce_05fb82d0",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
