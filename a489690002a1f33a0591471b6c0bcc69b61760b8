@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f69377_5135b7b5",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-19T05:03:56Z",
+      "side": 1,
+      "message": "nit: move down one to keep alphabetized.",
+      "range": {
+        "startLine": 38,
+        "startChar": 21,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "a489690002a1f33a0591471b6c0bcc69b61760b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83bbee0_21bfea29",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-19T05:03:56Z",
+      "side": 1,
+      "message": "Through this file, lets stay consistent with how we\u0027ve been documenting things and use the kdoc double star style with @param and @return labels.",
+      "revId": "a489690002a1f33a0591471b6c0bcc69b61760b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbbafd07_fe555391",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-19T05:03:56Z",
+      "side": 1,
+      "message": "I\u0027m assuming there\u0027s a reasonable max value here? Can we use a bitmap (uint32_t) instead?",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "a489690002a1f33a0591471b6c0bcc69b61760b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
