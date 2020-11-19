@@ -81,6 +81,30 @@
       },
       "revId": "77d6612fa249a661cc6c49bd152fc4bb11e9d372",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a7e590_84af5f1f",
+        "filename": "common/timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-19T00:31:58Z",
+      "side": 1,
+      "message": "Fixing in followup CL is fine",
+      "parentUuid": "8e965ba0_c6cbd030",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "77d6612fa249a661cc6c49bd152fc4bb11e9d372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
