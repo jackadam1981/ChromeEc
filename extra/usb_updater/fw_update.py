@@ -257,7 +257,11 @@ class Supdate(object):
       offset += pagesize
 
       # Validate that the micro thinks it successfully wrote the data.
+<<<<<<< HEAD   (2b9666 boten: add motion sensor interrupt config and matrices)
       read = self.wr_command("", read_count=4)
+=======
+      read = self.wr_command(''.encode(), read_count=4)
+>>>>>>> CHANGE (6e0750 fw_update: fix python3 incompatibility)
       result = struct.unpack("<I", read)
       result = result[0]
       if result != 0:
