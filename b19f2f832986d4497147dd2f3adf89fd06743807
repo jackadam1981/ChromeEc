@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49989d75_859776e0",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T17:03:31Z",
+      "side": 1,
+      "message": "shouldn\u0027t we only have one sleep call?\n\nIf this the final solution, or do we need to come back an revisit this?",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 37
+      },
+      "revId": "b19f2f832986d4497147dd2f3adf89fd06743807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
