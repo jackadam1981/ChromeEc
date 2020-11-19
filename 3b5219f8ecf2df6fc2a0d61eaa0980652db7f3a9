@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ffb7fa_d95d39ab",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-19T00:24:25Z",
+      "side": 1,
+      "message": "😞 yes",
+      "parentUuid": "f5c8d99b_ecfee98b",
+      "range": {
+        "startLine": 646,
+        "startChar": 1,
+        "endLine": 646,
+        "endChar": 42
+      },
+      "revId": "3b5219f8ecf2df6fc2a0d61eaa0980652db7f3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7c8e1e6_d6d2f424",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-19T00:06:05Z",
       "side": 1,
       "message": "Will USB4_Router_ID be initialized in another CL?",
+      "range": {
+        "startLine": 2539,
+        "startChar": 16,
+        "endLine": 2539,
+        "endChar": 30
+      },
+      "revId": "3b5219f8ecf2df6fc2a0d61eaa0980652db7f3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6960e4c7_0dc4d83a",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2539,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-19T00:24:25Z",
+      "side": 1,
+      "message": "All of the field indexes, whether we use them or not, are already defined in genvif.h\n\nThe field itself is with all of the other USB4 fields and in another CL.  This will pick up an override like I added already to the volteer override to verify it is working.",
+      "parentUuid": "a7c8e1e6_d6d2f424",
       "range": {
         "startLine": 2539,
         "startChar": 16,
