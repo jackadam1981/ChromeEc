@@ -45,6 +45,30 @@
       },
       "revId": "4e5b5c4f3e14275422a656267a6c2437d5cd6e45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83646080_468e83fb",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T05:32:58Z",
+      "side": 1,
+      "message": "Ack, this list is sorted by file name, not by ifdef, for which \"power\" comes after \"common\" ;)",
+      "parentUuid": "fe268b81_721c724e",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "4e5b5c4f3e14275422a656267a6c2437d5cd6e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
