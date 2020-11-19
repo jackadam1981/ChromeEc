@@ -16,6 +16,24 @@
       "message": "I was using the component_index for the router_index. I believe, after a conversation with Abe, this field is actually based on the Product Router_ID.  Made a change to use this, if it exists or using the default of 0.",
       "revId": "fe0b963ff047673c4851de8a2b7ed70cfed6975e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1926d0d7_bcd0a158",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-19T00:06:05Z",
+      "side": 1,
+      "message": "Further evidence: Relationship among USB4 fields described in VIF spec section 3.2.1.4 USB4 Products.",
+      "parentUuid": "7cc745a5_7b853df5",
+      "revId": "fe0b963ff047673c4851de8a2b7ed70cfed6975e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
