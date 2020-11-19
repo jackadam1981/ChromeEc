@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51820fd_73448de4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T02:07:26Z",
+      "side": 1,
+      "message": "Looks like we are struggling to keep up with an ever-evolving codebase 😞\n\nboard/lantis/board.c: In function \u0027notify_c0_chips\u0027:\nboard/lantis/board.c:61:2: error: too many arguments to function \u0027task_set_event\u0027\n  task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);\n  ^~~~~~~~~~~~~~\nIn file included from core/nds32/atomic.h:13,\n                 from include/system.h:13,\n                 from board/lantis/board.c:33:\ninclude/task.h:150:10: note: declared here\n uint32_t task_set_event(task_id_t tskid, uint32_t event);\n          ^~~~~~~~~~~~~~\nboard/lantis/board.c: In function \u0027notify_c1_chips\u0027:\nboard/lantis/board.c:96:2: error: too many arguments to function \u0027task_set_event\u0027\n  task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);\n  ^~~~~~~~~~~~~~\nIn file included from core/nds32/atomic.h:13,\n                 from include/system.h:13,\n                 from board/lantis/board.c:33:\ninclude/task.h:150:10: note: declared here\n uint32_t task_set_event(task_id_t tskid, uint32_t event);\n          ^~~~~~~~~~~~~~",
+      "revId": "77d6612fa249a661cc6c49bd152fc4bb11e9d372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b179e768_6b669ecb",
