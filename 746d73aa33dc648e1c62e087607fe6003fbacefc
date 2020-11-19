@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d520cc50_ca0d13bb",
+        "filename": "chip/npcx/gpio_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T16:53:53Z",
+      "side": 1,
+      "message": "In my opinion, _ENABLE more intuitive to the reader, but we can follow the existing convention from NPCX7.",
+      "parentUuid": "6d254b25_fe714ced",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "746d73aa33dc648e1c62e087607fe6003fbacefc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab2b3c07_3118f9e5",
