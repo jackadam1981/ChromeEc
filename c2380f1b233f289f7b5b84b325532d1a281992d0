@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "503d676a_969b5172",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-11-19T15:11:54Z",
+      "side": 1,
+      "message": "To match other EC conventions, disable function is renamed as enabled, with the help of new parameter.\nCL merged yesterday with this change(CL : https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2542864 ). Hence, adding corresponding change for this driver, in this CL itself.",
+      "revId": "c2380f1b233f289f7b5b84b325532d1a281992d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
