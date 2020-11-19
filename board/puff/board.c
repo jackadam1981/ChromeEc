@@ -570,6 +570,10 @@ void board_reset_pd_mcu(void)
 		msleep(BOARD_TCPC_C0_RESET_POST_DELAY);
 }
 
+int test_port;
+int count_200ms_ticks;
+int one_second;
+
 int board_set_active_charge_port(int port)
 {
 	CPRINTS("Requested charge port change to %d", port);
@@ -617,10 +621,12 @@ int board_set_active_charge_port(int port)
 
 	switch (port) {
 	case CHARGE_PORT_TYPEC0:
+	test_port = CHARGE_PORT_TYPEC0;
 		/* TODO(b/143975429) need to touch the PD controller? */
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
 		break;
 	case CHARGE_PORT_BARRELJACK:
+	test_port = CHARGE_PORT_BARRELJACK;
 		/* Make sure BJ adapter is sourcing power */
 		if (gpio_get_level(GPIO_BJ_ADP_PRESENT_L))
 			return EC_ERROR_INVAL;
@@ -633,6 +639,32 @@ int board_set_active_charge_port(int port)
 
 	return EC_SUCCESS;
 }
+/* Called by hook task every TICK */
+static void test_tick(void)
+{
+	count_200ms_ticks++;
+	/* 1SECOND */
+	if (count_200ms_ticks > 4) {
+		one_second++;
+		count_200ms_ticks = 0;
+		/* 5SECOND */
+		if (one_second > 5) {
+			if (test_port == CHARGE_PORT_TYPEC0) {
+				gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 0);
+				one_second = 0;
+			} else if (test_port == CHARGE_PORT_BARRELJACK) {
+				gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
+				one_second = 0;
+			}
+		} else {
+			if (test_port == CHARGE_PORT_TYPEC0)
+				gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
+			else if (test_port == CHARGE_PORT_BARRELJACK)
+				gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 0);
+		}
+	}
+}
+DECLARE_HOOK(HOOK_TICK, test_tick, HOOK_PRIO_DEFAULT);
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
