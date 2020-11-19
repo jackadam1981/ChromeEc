@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e44152e8_82a97e52",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-19T17:09:35Z",
+      "side": 1,
+      "message": "Can this be reconfigured right after we turn on the sub-rails on the DB (ex. in board_power_5v_enable when called with enable\u003d\u003d1)?  That would ensure we have a minimum amount of time spent with the potential overlapping addresses.",
+      "revId": "9ef0b24f91350e3233164137595fde651abb28ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c8cad1_103f4b08",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-19T17:09:35Z",
+      "side": 1,
+      "message": "Any particular reason you attempt to configure the address a second time if the first fails?",
+      "revId": "9ef0b24f91350e3233164137595fde651abb28ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
