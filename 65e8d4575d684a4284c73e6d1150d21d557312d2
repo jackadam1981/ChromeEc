@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6998f7d8_38adbfdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T17:14:46Z",
+      "side": 1,
+      "message": "Nice!!!!",
+      "revId": "65e8d4575d684a4284c73e6d1150d21d557312d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366b161a_04752dc4",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T17:14:46Z",
+      "side": 1,
+      "message": "This need to be initialized now\n\nPOST_KERNEL SYS_INIT should be fine",
+      "range": {
+        "startLine": 1008,
+        "startChar": 7,
+        "endLine": 1008,
+        "endChar": 29
+      },
+      "revId": "65e8d4575d684a4284c73e6d1150d21d557312d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
