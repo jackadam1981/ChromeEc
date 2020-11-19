@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5baebc71_bf51af3c",
+        "filename": "zephyr/shim/chip/npcx/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T15:49:57Z",
+      "side": 1,
+      "message": "this should be with the headers above",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c259347c_2f3e6a22",
+        "filename": "zephyr/shim/chip/npcx/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T15:49:57Z",
+      "side": 1,
+      "message": "indentation needs fixed",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e63e8a_8b6eb648",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T15:49:57Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd800f2f_1cfa5fe3",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T15:49:57Z",
+      "side": 1,
+      "message": "put with the headers above",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e107ffce_05317198",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T15:49:57Z",
+      "side": 1,
+      "message": "you can put braces on the if when the else has them for balance",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 7
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8987a350_0d7e7bd6",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-19T15:49:57Z",
+      "side": 1,
+      "message": "separate CL?",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 1
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
