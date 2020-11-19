@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c224e4_0d7ada75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-19T06:29:11Z",
+      "side": 1,
+      "message": "Switch back the .ram_code position (just realized ram_code usage in Asurada SCP will be different)\n\n\nUse another more correct way to fix the issue",
+      "revId": "0fea201942bfff51008e4c7a326ce5a529cea6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
