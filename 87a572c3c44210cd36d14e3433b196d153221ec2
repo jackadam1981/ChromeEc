@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dda01eb_6e17bf5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-19T08:09:14Z",
+      "side": 1,
+      "message": "\u003e Please be respectful of our partner code. \n\nFor what it worth as a metric for our \u0027partner code\u0027:\n$ git blame core/nds32/task.c  | cut -c13-30 | sort | uniq -c | sort -rn\n    445 Vincent Palatin   \n    262 Dino Li           \n     14 Shawn Nematbakhsh \n[...]",
+      "parentUuid": "e522f5f2_1a4305c2",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49b54917_376edce5",
