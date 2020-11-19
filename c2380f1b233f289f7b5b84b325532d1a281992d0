@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc5234d_468552ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T19:34:17Z",
+      "side": 1,
+      "message": "enable",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "c2380f1b233f289f7b5b84b325532d1a281992d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28cc6c5e_917baef2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T19:34:17Z",
+      "side": 1,
+      "message": "enable",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "c2380f1b233f289f7b5b84b325532d1a281992d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001be0f8_4ce6c7bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T19:34:17Z",
+      "side": 1,
+      "message": "enable",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "c2380f1b233f289f7b5b84b325532d1a281992d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "503d676a_969b5172",
@@ -14,6 +83,29 @@
       "writtenOn": "2020-11-19T15:11:54Z",
       "side": 1,
       "message": "To match other EC conventions, disable function is renamed as enabled, with the help of new parameter.\nCL merged yesterday with this change(CL : https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2542864 ). Hence, adding corresponding change for this driver, in this CL itself.",
+      "revId": "c2380f1b233f289f7b5b84b325532d1a281992d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf4319e_5a9ed2dc",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-19T19:34:17Z",
+      "side": 1,
+      "message": "Does this compile if you use IS_ENABLED()?",
+      "range": {
+        "startLine": 647,
+        "startChar": 0,
+        "endLine": 647,
+        "endChar": 31
+      },
       "revId": "c2380f1b233f289f7b5b84b325532d1a281992d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
