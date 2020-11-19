@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639648a0_c82b5b12",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3041,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-19T00:08:59Z",
+      "side": 1,
+      "message": "Right now (and previously), this always goes to the same case. Is it expected that ds will become a parameter when the tool supports getting that from the config?",
+      "revId": "9a6dbf785a4d769bcc238f55b1cea18ac6f3ad5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
