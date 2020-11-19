@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d254b25_fe714ced",
+        "filename": "chip/npcx/gpio_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1264388
+      },
+      "writtenOn": "2020-11-19T02:46:16Z",
+      "side": 1,
+      "message": "I think it should be fine to change it to NPCX9_PWM1_ENABLE without assigning a value. But it change the convention. (i.e. in npcx7, we use NPCX7_PWM_SEL 0|1 to \ntell if the board needs to use PWM1 or not). If you want to change this, remember not to use \"#define   NPCX9_PWM1_ENABLE  0\" if you don\u0027t need PWM1. (Especially when you copy the board.h file uses npcx7. )",
+      "parentUuid": "3384b84c_fbbfedf4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "746d73aa33dc648e1c62e087607fe6003fbacefc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab2b3c07_3118f9e5",
         "filename": "chip/npcx/gpio_chip-npcx9.h",
         "patchSetId": 1
