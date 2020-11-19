@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ecdeb8e_ac450c43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-19T02:10:37Z",
+      "side": 1,
+      "message": "nit: also add CL:2535899",
+      "revId": "6a9f9838a4bc25e444090eae8231cc82eb53536d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "20b7d60a_746fd9bd",
@@ -14,6 +31,29 @@
       "writtenOn": "2020-11-18T09:41:49Z",
       "side": 1,
       "message": "One side note: Asurada SCP is going to use .ram_code soon.  So I decide to move it to common part instead of partially reverted.",
+      "revId": "6a9f9838a4bc25e444090eae8231cc82eb53536d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b6dac0_993057d4",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-11-19T02:10:37Z",
+      "side": 1,
+      "message": "I am unsure if switching .ram_code and .flash_direct_map is fine on ite chips. (also, to be consisten for the code address, it\u0027s better also revise core/nds32/ec.lds.S as well)",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 28
+      },
       "revId": "6a9f9838a4bc25e444090eae8231cc82eb53536d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
