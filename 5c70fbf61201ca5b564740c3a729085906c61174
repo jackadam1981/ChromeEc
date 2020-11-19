@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9245a56_f0455fce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-11-19T23:35:14Z",
+      "side": 1,
+      "message": "Thanks for pointing that out, that actually got us some more space.",
+      "parentUuid": "e8a580b7_89abd46b",
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbedcf61_c0a74113",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-19T21:18:11Z",
       "side": 1,
       "message": "Move this initialization directly into the tcpc_config[] array at line 434.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 0
+      },
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b020cd2_0ef06e08",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-11-19T23:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbedcf61_c0a74113",
       "range": {
         "startLine": 238,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24efae27_59140205",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-11-19T23:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d1c1846_89d8200c",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 0
+      },
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "342a289c_7de2dba5",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-11-19T21:18:11Z",
       "side": 1,
       "message": "Move into the usb_muxes[] array.",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e823fc_861af5df",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-11-19T23:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "342a289c_7de2dba5",
       "range": {
         "startLine": 278,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42779d4b_a4f9e6a9",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-11-19T23:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d23723a_f764e8ff",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 0
+      },
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5034a28e_63935381",
@@ -123,6 +237,24 @@
       "writtenOn": "2020-11-19T21:18:11Z",
       "side": 1,
       "message": "Add:\n   #undef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG\n   #undef CONFIG_USB_MUX_RUNTIME_CONFIG",
+      "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b6e29c_82f09087",
+        "filename": "board/delbin/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-11-19T23:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5034a28e_63935381",
       "revId": "5c70fbf61201ca5b564740c3a729085906c61174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
