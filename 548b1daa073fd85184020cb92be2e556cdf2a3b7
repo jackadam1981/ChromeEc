@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b80edc45_370b9f07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-19T23:54:51Z",
+      "side": 1,
+      "message": "is the allow_list still used?  I don\u0027t see you removing it or even pruning the HP devices that should not be needed with this change",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "548b1daa073fd85184020cb92be2e556cdf2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec8131b_d24cceca",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-19T23:54:51Z",
+      "side": 1,
+      "message": "Can this be a define PD3_MAX_VOLTAGE_MV or something of that nature?",
+      "range": {
+        "startLine": 1478,
+        "startChar": 35,
+        "endLine": 1478,
+        "endChar": 40
+      },
+      "revId": "548b1daa073fd85184020cb92be2e556cdf2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ed51cc_50c43b3a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-19T23:54:51Z",
+      "side": 1,
+      "message": "Can this be a define to indicate this is the minimum to auto_allow_list?",
+      "range": {
+        "startLine": 1484,
+        "startChar": 16,
+        "endLine": 1484,
+        "endChar": 21
+      },
+      "revId": "548b1daa073fd85184020cb92be2e556cdf2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
