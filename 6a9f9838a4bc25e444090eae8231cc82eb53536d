@@ -56,6 +56,30 @@
       },
       "revId": "6a9f9838a4bc25e444090eae8231cc82eb53536d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "199c89a7_978837cc",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2020-11-19T03:01:59Z",
+      "side": 1,
+      "message": "This change is fine with me.",
+      "parentUuid": "e9b6dac0_993057d4",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "6a9f9838a4bc25e444090eae8231cc82eb53536d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
