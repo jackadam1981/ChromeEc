@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6efc762d_e7b62cba",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-19T23:32:13Z",
+      "side": 1,
+      "message": "Nit: too, period.\n\nSince the choice is still arbitrary, it might be good to mention that 400 ms was empirically too large.",
+      "range": {
+        "startLine": 225,
+        "startChar": 39,
+        "endLine": 226,
+        "endChar": 61
+      },
+      "revId": "ded97ac3b0d361d6ba7f7ff5fa18e92f4bfb2886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
