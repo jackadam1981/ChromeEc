@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68de9466_e9d3b061",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T16:53:17Z",
+      "side": 1,
+      "message": "Look very close. Thank you!",
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65272f97_03ad06bd",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T16:53:17Z",
+      "side": 1,
+      "message": "We are hoping to keep this list alphabetized by the filepath, can you re-order these files to make that hold true, please?",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5baebc71_bf51af3c",
@@ -88,6 +128,29 @@
         "startChar": 0,
         "endLine": 14,
         "endChar": 24
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a25e69_0a1cee49",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-19T16:53:17Z",
+      "side": 1,
+      "message": "Can we name these function for what they do a little more. What initialization is happening here? Enabling interrupts?",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 28
       },
       "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
