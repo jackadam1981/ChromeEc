@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e522f5f2_1a4305c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-19T00:27:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ddcb3a0_c01f627d",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49b54917_376edce5",
@@ -88,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29cd76cf_82787cf5",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-19T00:27:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f25a121e_7123e44d",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b306fc8a_f9e41ea0",
@@ -119,6 +155,24 @@
       "side": 1,
       "message": "I can see an argument for keeping this path as speedy as possible, but at the same time if another caller uses this incorrectly then we can get into a deeply undesirable state of just bootlooping the EC until battery drains.  We\u0027d need to be very confident that our FW testing has caught all possibilities of this happening before any release without a check like this.",
       "parentUuid": "b306fc8a_f9e41ea0",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d84b1ce_05fb82d0",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-19T00:27:47Z",
+      "side": 1,
+      "message": "I agree that the cost of this check seems well worth accepting given the cost of error (as that\u0027s kind of the unstated premise of the change). Most developers don\u0027t work with CONFIG_DEBUG_BRINGUP enabled so the existing guard will often fail to catch misuse, and uncaught misuse will not always be obvious (as in this case where failures only occur when we get unlucky with placement of values in RAM).\n\nLooking at it more critically, I believe the status quo is actually Undefined Behavior: pointer arithmetic between scratchpad and tasks is undefined because they do not refer to members of the same array (C99 6.5.6.8). There is no compiler option in use to make this defined (nor do I believe one exists), so I\u0027d say this counts as a bug even though no compiler currently seems to have a problem with it.\n\nConcretely, this change increases the happy path on cortex-m from 9 instructions to 12, and I believe this could be reduced to 10 or 11 by making some changes to how scheduler data is declared in order to improve memory locality if it were important. The most critical user of this function (based on a quick scan) appears to be the scheduler itself or maybe mutex functions, which I believe are not so critical as to warrant retaining a bug in exchange for a few tens of nanoseconds of CPU time per invocation.",
+      "parentUuid": "b71a8af5_ca9386b2",
       "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
