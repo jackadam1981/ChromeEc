@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8603ca9a_aeb05e05",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-11-20T05:08:50Z",
+      "side": 1,
+      "message": "From Vendor suggest 15 ms delay time.",
+      "parentUuid": "f84676fc_4ba65ac5",
+      "revId": "9ef0b24f91350e3233164137595fde651abb28ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9c8cad1_103f4b08",
         "filename": "board/magolor/board.c",
         "patchSetId": 3
