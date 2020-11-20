@@ -22,6 +22,30 @@
       },
       "revId": "f820e8d21d61291bac7bba6c1a69739ce3f6080e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c38aaf0d_b2c1b5e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-11-20T23:03:17Z",
+      "side": 1,
+      "message": "It\u0027s an open discussion: https://docs.google.com/document/d/1PwKTeHrixfLfxYeytbJ6eloA4SR4sAnqVxi5qcEre1k/edit?resourcekey\u003d0-fWpsP3fFUZAQwGQ9TnIydg\n\nLeaning towards making guybrush and mancomb separate baseboards. 1) This aligns with the overlays. 2) There\u0027s going to be a bunch of differences between the the two and copy-paste for the shared bits isn\u0027t hard.",
+      "parentUuid": "afb8b9d1_bbb167df",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "f820e8d21d61291bac7bba6c1a69739ce3f6080e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
