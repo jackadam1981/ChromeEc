@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98efd959_5b51ddbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-11-20T14:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28cc6c5e_917baef2",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "c2380f1b233f289f7b5b84b325532d1a281992d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "001be0f8_4ce6c7bf",
@@ -60,6 +84,30 @@
       "writtenOn": "2020-11-19T19:34:17Z",
       "side": 1,
       "message": "enable",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "c2380f1b233f289f7b5b84b325532d1a281992d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83524219_d5d1f52b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-11-20T14:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "001be0f8_4ce6c7bf",
       "range": {
         "startLine": 10,
         "startChar": 43,
@@ -100,6 +148,30 @@
       "writtenOn": "2020-11-19T19:34:17Z",
       "side": 1,
       "message": "Does this compile if you use IS_ENABLED()?",
+      "range": {
+        "startLine": 647,
+        "startChar": 0,
+        "endLine": 647,
+        "endChar": 31
+      },
+      "revId": "c2380f1b233f289f7b5b84b325532d1a281992d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc22acb_d69a6d80",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-11-20T14:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcf4319e_5a9ed2dc",
       "range": {
         "startLine": 647,
         "startChar": 0,
