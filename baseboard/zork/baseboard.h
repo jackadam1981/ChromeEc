@@ -345,6 +345,9 @@ extern const struct thermistor_info thermistor_info;
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
 
+/* Delay between AP resume and MST hub power-on to ensure AP sees HPD. */
+#define RTD2141B_POWER_ON_DELAY_MS 800
+
 void mst_hpd_interrupt(enum ioex_signal signal);
 void sbu_fault_interrupt(enum ioex_signal signal);
 
