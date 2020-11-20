@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4abc3196_4c815136",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-20T00:32:55Z",
+      "side": 1,
+      "message": "It\u0027ll be used in TCPMv1 until it\u0027s deprecated, so I\u0027m leaving the current list as-is in the common code.  It\u0027s no longer compiled in for TCPMv2 boards though, so they\u0027re on average saving 180 bytes of flash space.",
+      "parentUuid": "b80edc45_370b9f07",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "548b1daa073fd85184020cb92be2e556cdf2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ec8131b_d24cceca",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bace55f7_78937be1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-20T00:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec8131b_d24cceca",
+      "range": {
+        "startLine": 1478,
+        "startChar": 35,
+        "endLine": 1478,
+        "endChar": 40
+      },
+      "revId": "548b1daa073fd85184020cb92be2e556cdf2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21ed51cc_50c43b3a",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-19T23:54:51Z",
       "side": 1,
       "message": "Can this be a define to indicate this is the minimum to auto_allow_list?",
+      "range": {
+        "startLine": 1484,
+        "startChar": 16,
+        "endLine": 1484,
+        "endChar": 21
+      },
+      "revId": "548b1daa073fd85184020cb92be2e556cdf2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ffcbb4_3414dbf5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-20T00:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21ed51cc_50c43b3a",
       "range": {
         "startLine": 1484,
         "startChar": 16,
