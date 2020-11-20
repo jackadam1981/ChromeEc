@@ -97,7 +97,7 @@ static void prochot_input_deferred(void)
 
 	debounced_prochot_in = prochot_in;
 
-	if (debounced_prochot_in) {
+	if (debounced_prochot_in && chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		CPRINTS("External PROCHOT assertion detected");
 #ifdef CONFIG_FANS
 		dptf_set_fan_duty_target(100);
