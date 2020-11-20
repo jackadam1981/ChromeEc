@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354c349f_20e7b657",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2020-11-20T13:57:16Z",
+      "side": 1,
+      "message": "issue `ectool gpioset EC_CHG_LED_R_Y 1` via VT2, \nand check `ectool gpioget EC_CHG_LED_R_Y \u003d 1`.\nissue `ectool gpioset EC_CHG_LED_R_W 1` via VT2, \nand check `ectool gpioget EC_CHG_LED_R_W \u003d 1`",
+      "revId": "14ab27651b16a98caf393d22ecd8f556b2d4e752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
