@@ -89,22 +89,48 @@ static int check_hdmi_hpd_status(void)
  * Board suspend / resume
  */
 
-static void board_chipset_resume(void)
+static void pi3hdx1204_power_on_deferred(void)
+{
+	pi3hdx1204_enable(I2C_PORT_TCPC1,
+			  PI3HDX1204_I2C_ADDR_FLAGS,
+			  check_hdmi_hpd_status());
+}
+DECLARE_DEFERRED(pi3hdx1204_power_on_deferred);
+
+static void rtd2141b_power_on_deferred(void)
 {
 	ioex_set_level(IOEX_HDMI_DATA_EN_DB, 1);
+}
+DECLARE_DEFERRED(rtd2141b_power_on_deferred);
+
+static void board_chipset_resume(void)
+{
+
+	/*
+	 * Delay MST hub power-on to ensure AP will receive HPD pulse after
+	 * resume and not miss it.
+	 */
+	if (ec_config_has_mst_hub_rtd2141b())
+		hook_call_deferred(&rtd2141b_power_on_deferred_data,
+				   RTD2141B_POWER_ON_DELAY_MS * 1000);
+	else
+		ioex_set_level(IOEX_HDMI_DATA_EN_DB, 1);
 
 	if (ec_config_has_hdmi_retimer_pi3hdx1204()) {
 		ioex_set_level(IOEX_HDMI_POWER_EN_DB, 1);
-		msleep(PI3HDX1204_POWER_ON_DELAY_MS);
-		pi3hdx1204_enable(I2C_PORT_TCPC1,
-				  PI3HDX1204_I2C_ADDR_FLAGS,
-				  check_hdmi_hpd_status());
+		/* Debounce HDMI HPD */
+		hook_call_deferred(&pi3hdx1204_power_on_deferred_data,
+				   PI3HDX1204_POWER_ON_DELAY_MS * 1000);
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
 static void board_chipset_suspend(void)
 {
+	/* Cancel any pending enables from resume */
+	hook_call_deferred(&rtd2141b_power_on_deferred_data, -1);
+	hook_call_deferred(&pi3hdx1204_power_on_deferred_data, -1);
+
 	if (ec_config_has_hdmi_retimer_pi3hdx1204()) {
 		pi3hdx1204_enable(I2C_PORT_TCPC1,
 				  PI3HDX1204_I2C_ADDR_FLAGS,
