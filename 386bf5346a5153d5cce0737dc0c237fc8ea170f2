@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc53f52c_4828c5b2",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-20T18:45:46Z",
+      "side": 1,
+      "message": "probably worth a comment saying this doesn\u0027t do anything for platform/ec code. Might trip some people up",
+      "range": {
+        "startLine": 1033,
+        "startChar": 1,
+        "endLine": 1033,
+        "endChar": 13
+      },
+      "revId": "386bf5346a5153d5cce0737dc0c237fc8ea170f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
