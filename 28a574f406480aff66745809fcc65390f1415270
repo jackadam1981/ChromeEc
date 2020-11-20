@@ -16,6 +16,23 @@
       "message": "This needs added to the zmake.yaml json schema, or schema verification will fail.",
       "revId": "28a574f406480aff66745809fcc65390f1415270",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8917863_f5847d9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-20T20:48:33Z",
+      "side": 1,
+      "message": "I think you will need to modify the schema first",
+      "revId": "28a574f406480aff66745809fcc65390f1415270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
