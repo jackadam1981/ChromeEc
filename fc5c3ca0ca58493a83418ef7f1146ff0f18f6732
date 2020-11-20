@@ -16,6 +16,24 @@
       "message": "Should this be board configurable, or is this the only option?  Or are there a fixed set of possible values?",
       "revId": "fc5c3ca0ca58493a83418ef7f1146ff0f18f6732",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbc8a85_2f57998f",
+        "filename": "driver/retimer/ps8802.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-11-20T01:08:42Z",
+      "side": 1,
+      "message": "We ask the vendor,\nThat is fixed set of values",
+      "parentUuid": "5ae3b7f7_fd6ef4d3",
+      "revId": "fc5c3ca0ca58493a83418ef7f1146ff0f18f6732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
