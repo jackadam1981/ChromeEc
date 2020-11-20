@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#define _GNU_SOURCE /* for asprintf */
+// #define _GNU_SOURCE /* for asprintf */
 
 #include <errno.h>
 #include <fcntl.h>
@@ -85,9 +85,9 @@ static int ec_command_i2c_3(int command, int version,
 			insize, ec_max_insize);
 		return -EC_RES_ERROR;
 	}
-	req_len = I2C_REQUEST_HEADER_SIZE + sizeof(struct ec_host_request)
-		+ outsize;
-	req_buf = calloc(1, req_len);
+	req_len = I2C_REQUEST_HEADER_SIZE + sizeof(struct ec_host_request) +
+		  outsize;
+	req_buf = static_cast<uint8_t *>(calloc(1, req_len));
 	if (!req_buf)
 		goto done;
 
@@ -100,8 +100,8 @@ static int ec_command_i2c_3(int command, int version,
 	req->reserved = 0;
 	req->data_len = outsize;
 
-	memcpy(&req_buf[I2C_REQUEST_HEADER_SIZE
-			+ sizeof(struct ec_host_request)],
+	memcpy(&req_buf[I2C_REQUEST_HEADER_SIZE +
+			sizeof(struct ec_host_request)],
 	       outdata, outsize);
 
 	req->checksum =
@@ -111,11 +111,11 @@ static int ec_command_i2c_3(int command, int version,
 	i2c_msg.addr = EC_I2C_ADDR;
 	i2c_msg.flags = 0;
 	i2c_msg.len = req_len;
-	i2c_msg.buf = (char *)req_buf;
+	i2c_msg.buf = req_buf;
 
-	resp_len = I2C_RESPONSE_HEADER_SIZE + sizeof(struct ec_host_response)
-		+ insize;
-	resp_buf = calloc(1, resp_len);
+	resp_len = I2C_RESPONSE_HEADER_SIZE + sizeof(struct ec_host_response) +
+		   insize;
+	resp_buf = static_cast<uint8_t *>(calloc(1, resp_len));
 	if (!resp_buf)
 		goto done;
 	memset(resp_buf, 0, resp_len);
@@ -133,19 +133,19 @@ static int ec_command_i2c_3(int command, int version,
 	data.nmsgs = 1;
 	error = ioctl(i2c_fd, I2C_RDWR, &data);
 	if (error < 0) {
-		fprintf(stderr, "I2C write failed: %d (err: %d, %s)\n",
-			error, errno, strerror(errno));
+		fprintf(stderr, "I2C write failed: %d (err: %d, %s)\n", error,
+			errno, strerror(errno));
 		goto done;
 	}
 
 	i2c_msg.addr = EC_I2C_ADDR;
 	i2c_msg.flags = I2C_M_RD;
 	i2c_msg.len = resp_len;
-	i2c_msg.buf = (char *)resp_buf;
+	i2c_msg.buf = resp_buf;
 	error = ioctl(i2c_fd, I2C_RDWR, &data);
 	if (error < 0) {
-		fprintf(stderr, "I2C read failed: %d (err: %d, %s)\n",
-			error, errno, strerror(errno));
+		fprintf(stderr, "I2C read failed: %d (err: %d, %s)\n", error,
+			errno, strerror(errno));
 		goto done;
 	}
 

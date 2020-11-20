@@ -78,8 +78,8 @@ static int keyscan_read_fdt_matrix(struct keyscan_info *keyscan,
 		return -1;
 	}
 	keyscan->matrix_count = buf.st_size / 4;
-	keyscan->matrix = calloc(keyscan->matrix_count,
-				 sizeof(*keyscan->matrix));
+	keyscan->matrix = static_cast<matrix_entry *>(
+		calloc(keyscan->matrix_count, sizeof(*keyscan->matrix)));
 	if (!keyscan->matrix) {
 		fprintf(stderr, "Out of memory for key matrix\n");
 		return -1;
@@ -205,7 +205,8 @@ static int keyscan_add_to_scan(struct keyscan_info *keyscan, char **keysp,
 
 	/* Convert keycode to key if needed */
 	if (keycode == -1) {
-		pos = strchr(kbd_plain_xlate, key);
+		pos = reinterpret_cast<uint8_t *>(
+			strchr((char *)kbd_plain_xlate, key));
 		if (!pos) {
 			fprintf(stderr, "Key '%c' not found in xlate table\n",
 				key);
@@ -267,8 +268,9 @@ static int keyscan_process_keys(struct keyscan_info *keyscan, int linenum,
 
 		size = test->item_alloced * sizeof(struct keyscan_test_item);
 		new_size = size + KEYSCAN_ALLOC_STEP *
-			sizeof(struct keyscan_test_item);
-		test->items = realloc(test->items, new_size);
+					  sizeof(struct keyscan_test_item);
+		test->items = static_cast<keyscan_test_item *>(
+			realloc(test->items, new_size));
 		if (!test->items) {
 			fprintf(stderr, "Out of memory realloc()\n");
 			return -1;
@@ -335,10 +337,10 @@ static enum keyscan_cmd keyscan_read_cmd(const char *str, int len)
 
 	for (i = 0; i < KEYSCAN_CMD_COUNT; i++) {
 		if (!strncmp(keyscan_cmd_name[i], str, len))
-			return i;
+			return static_cast<keyscan_cmd>(i);
 	}
 
-	return -1;
+	return static_cast<keyscan_cmd>(-1);
 }
 
 /**
@@ -584,7 +586,7 @@ static int run_test(struct keyscan_info *keyscan, struct keyscan_test *test)
 
 	/* Ask EC for results */
 	size = sizeof(*resp) + test->item_count;
-	resp = malloc(size);
+	resp = static_cast<ec_result_keyscan_seq_ctrl *>(malloc(size));
 	if (!resp) {
 		fprintf(stderr, "Out of memory for results\n");
 		return -1;
@@ -592,8 +594,8 @@ static int run_test(struct keyscan_info *keyscan, struct keyscan_test *test)
 	ctrl.cmd = EC_KEYSCAN_SEQ_COLLECT;
 	ctrl.collect.start_item = 0;
 	ctrl.collect.num_items = test->item_count;
-	rv = ec_command(EC_CMD_KEYSCAN_SEQ_CTRL, 0, &ctrl, sizeof(ctrl),
-			resp, size);
+	rv = ec_command(EC_CMD_KEYSCAN_SEQ_CTRL, 0, &ctrl, sizeof(ctrl), resp,
+			size);
 	if (rv < 0)
 		return rv;
 

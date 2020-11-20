@@ -15,6 +15,8 @@
 #include <unistd.h>
 #include <signal.h>
 #include <stdbool.h>
+#include <string>
+#include <limits>
 
 #include "battery.h"
 #include "comm-host.h"
@@ -32,6 +34,9 @@
 #include "misc_util.h"
 #include "panic.h"
 #include "usb_pd.h"
+
+/* Allow the use of C99 array designators */
+// #pragma GCC diagnostic ignored "-Wc99-designator"
 
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
@@ -775,15 +780,15 @@ int cmd_hostsleepstate(int argc, char *argv[])
 int cmd_test(int argc, char *argv[])
 {
 	struct ec_params_test_protocol p = {
-		.buf = "0123456789abcdef0123456789ABCDEF"
+		.buf = "0123456789abcdef0123456789ABCDE"
 	};
+	p.buf[sizeof(p.buf) - 1] = 'F';
 	struct ec_response_test_protocol r;
 	int rv, version = 0;
 	char *e;
 
 	if (argc < 3) {
-		fprintf(stderr, "Usage: %s result length [version]\n",
-			argv[0]);
+		fprintf(stderr, "Usage: %s result length [version]\n", argv[0]);
 		return -1;
 	}
 
@@ -1351,7 +1356,7 @@ int cmd_rand(int argc, char *argv[])
 		return -1;
 	}
 
-	r = ec_inbuf;
+	r = static_cast<ec_response_rand_num *>(ec_inbuf);
 
 	for (i = 0; i < num_bytes; i += ec_max_insize) {
 		p.num_rand_bytes = ec_max_insize;
@@ -1409,11 +1414,11 @@ int cmd_flash_read(int argc, char *argv[])
 	int offset, size;
 	int rv;
 	char *e;
-	char *buf;
+	uint8_t *buf;
 
 	if (argc < 4) {
-		fprintf(stderr,
-			"Usage: %s <offset> <size> <filename>\n", argv[0]);
+		fprintf(stderr, "Usage: %s <offset> <size> <filename>\n",
+			argv[0]);
 		return -1;
 	}
 	offset = strtol(argv[1], &e, 0);
@@ -1428,7 +1433,7 @@ int cmd_flash_read(int argc, char *argv[])
 	}
 	printf("Reading %d bytes at offset %d...\n", size, offset);
 
-	buf = (char *)malloc(size);
+	buf = (uint8_t *)malloc(size);
 	if (!buf) {
 		fprintf(stderr, "Unable to allocate buffer.\n");
 		return -1;
@@ -1441,7 +1446,7 @@ int cmd_flash_read(int argc, char *argv[])
 		return rv;
 	}
 
-	rv = write_file(argv[3], buf, size);
+	rv = write_file(argv[3], reinterpret_cast<const char *>(buf), size);
 	free(buf);
 	if (rv)
 		return rv;
@@ -1476,7 +1481,8 @@ int cmd_flash_write(int argc, char *argv[])
 	printf("Writing to offset %d...\n", offset);
 
 	/* Write data in chunks */
-	rv = ec_flash_write(buf, offset, size);
+	rv = ec_flash_write(reinterpret_cast<const uint8_t *>(buf), offset,
+			    size);
 
 	free(buf);
 
@@ -1830,6 +1836,7 @@ int cmd_rwsig(int argc, char **argv)
 }
 
 enum sysinfo_fields {
+	SYSINFO_FIELD_NONE = 0,
 	SYSINFO_FIELD_RESET_FLAGS = BIT(0),
 	SYSINFO_FIELD_CURRENT_IMAGE = BIT(1),
 	SYSINFO_FIELD_FLAGS = BIT(2),
@@ -1854,7 +1861,7 @@ static int sysinfo(struct ec_response_sysinfo *info)
 int cmd_sysinfo(int argc, char **argv)
 {
 	struct ec_response_sysinfo r;
-	enum sysinfo_fields fields = 0;
+	enum sysinfo_fields fields = sysinfo_fields::SYSINFO_FIELD_NONE;
 	bool print_prefix = false;
 
 	if (argc != 1 && argc != 2)
@@ -1984,7 +1991,7 @@ static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 		return NULL;
 	}
 
-	ptr = buffer;
+	ptr = static_cast<uint8_t *>(buffer);
 	p.offset = index << FP_FRAME_INDEX_SHIFT;
 	while (size) {
 		stride = MIN(ec_max_insize, size);
@@ -1992,8 +1999,8 @@ static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 		num_attempts = 0;
 		while (num_attempts < max_attempts) {
 			num_attempts++;
-			rv = ec_command(EC_CMD_FP_FRAME, 0, &p, sizeof(p),
-					ptr, stride);
+			rv = ec_command(EC_CMD_FP_FRAME, 0, &p, sizeof(p), ptr,
+					stride);
 			if (rv >= 0)
 				break;
 			if (rv == -EECRESULT - EC_RES_ACCESS_DENIED)
@@ -2255,8 +2262,9 @@ int cmd_fp_frame(int argc, char *argv[])
 {
 	struct ec_response_fp_info r;
 	int idx = (argc == 2 && !strcasecmp(argv[1], "raw")) ?
-		FP_FRAME_INDEX_RAW_IMAGE : FP_FRAME_INDEX_SIMPLE_IMAGE;
-	void *buffer = fp_download_frame(&r, idx);
+				FP_FRAME_INDEX_RAW_IMAGE :
+				FP_FRAME_INDEX_SIMPLE_IMAGE;
+	uint8_t *buffer = static_cast<uint8_t *>(fp_download_frame(&r, idx));
 	uint8_t *ptr = buffer;
 	int x, y;
 
@@ -2287,14 +2295,15 @@ frame_done:
 int cmd_fp_template(int argc, char *argv[])
 {
 	struct ec_response_fp_info r;
-	struct ec_params_fp_template *p = ec_outbuf;
+	struct ec_params_fp_template *p =
+		static_cast<ec_params_fp_template *>(ec_outbuf);
 	/* TODO(b/78544921): removing 32 bits is a workaround for the MCU bug */
-	int max_chunk = ec_max_outsize
-			- offsetof(struct ec_params_fp_template, data) - 4;
+	int max_chunk = ec_max_outsize -
+			offsetof(struct ec_params_fp_template, data) - 4;
 	int idx = -1;
 	char *e;
 	int size;
-	void *buffer = NULL;
+	char *buffer = NULL;
 	uint32_t offset = 0;
 	int rv = 0;
 
@@ -2305,7 +2314,7 @@ int cmd_fp_template(int argc, char *argv[])
 
 	idx = strtol(argv[1], &e, 0);
 	if (!(e && *e)) {
-		buffer = fp_download_frame(&r, idx + 1);
+		buffer = static_cast<char *>(fp_download_frame(&r, idx + 1));
 		if (!buffer) {
 			fprintf(stderr, "Failed to get FP template %d\n", idx);
 			return -1;
@@ -2750,8 +2759,10 @@ static void cmd_smart_discharge_usage(const char *command)
 
 int cmd_smart_discharge(int argc, char *argv[])
 {
-	struct ec_params_smart_discharge *p = ec_outbuf;
-	struct ec_response_smart_discharge *r = ec_inbuf;
+	struct ec_params_smart_discharge *p =
+		static_cast<ec_params_smart_discharge *>(ec_outbuf);
+	struct ec_response_smart_discharge *r =
+		static_cast<ec_response_smart_discharge *>(ec_inbuf);
 	uint32_t cap;
 	char *e;
 	int rv;
@@ -5522,7 +5533,7 @@ static int cmd_motionsense(int argc, char **argv)
 			uint32_t number_data;
 			struct ec_response_motion_sensor_data data[512];
 		} fifo_read_buffer = {
-			.number_data = -1,
+			.number_data = std::numeric_limits<uint32_t>::max(),
 		};
 		int print_data = 0,  max_data = strtol(argv[2], &e, 0);
 
@@ -6483,7 +6494,7 @@ int cmd_panic_info(int argc, char *argv[])
 		return 0;
 	}
 
-	return parse_panic_info(ec_inbuf, rv);
+	return parse_panic_info(static_cast<char*>(ec_inbuf), rv);
 }
 
 
@@ -7285,7 +7296,7 @@ int cmd_i2c_xfer(int argc, char *argv[])
 	write_len = argc;
 
 	if (write_len) {
-		write_buf = malloc(write_len);
+		write_buf = static_cast<uint8_t *>(malloc(write_len));
 		if (write_buf == NULL)
 			return -1;
 		for (i = 0; i < write_len; i++) {
@@ -8163,7 +8174,7 @@ static int cmd_cbi(int argc, char *argv[])
 	}
 
 	/* Tag */
-	tag = strtol(argv[2], &e, 0);
+	tag = static_cast<cbi_data_tag>(strtol(argv[2], &e, 0));
 	if (e && *e) {
 		fprintf(stderr, "Bad tag\n");
 		return -1;
@@ -8194,7 +8205,8 @@ static int cmd_cbi(int argc, char *argv[])
 		if (cmd_cbi_is_string_field(tag)) {
 			printf("%.*s", rv, (const char *)ec_inbuf);
 		} else {
-			const uint8_t * const buffer = ec_inbuf;
+			const uint8_t * const buffer =
+				static_cast<const uint8_t *const>(ec_inbuf);
 			uint64_t int_value = 0;
                         for(i = 0; i < rv; i++)
 				int_value |= (uint64_t)buffer[i] << (i * 8);
@@ -8228,7 +8240,7 @@ static int cmd_cbi(int argc, char *argv[])
 
 		if (cmd_cbi_is_string_field(tag)) {
 			val_ptr = argv[3];
-			size = strlen(val_ptr) + 1;
+			size = strlen(static_cast<char *>(val_ptr)) + 1;
 		} else {
 			val = strtoul(argv[3], &e, 0);
 			/* strtoul sets an errno for invalid input. If the value
@@ -8821,16 +8833,16 @@ static int cmd_keyconfig(int argc, char *argv[])
 }
 
 static const char * const mkbp_button_strings[] = {
-	[EC_MKBP_POWER_BUTTON] = "Power",
-	[EC_MKBP_VOL_UP] = "Volume up",
-	[EC_MKBP_VOL_DOWN] = "Volume down",
-	[EC_MKBP_RECOVERY] = "Recovery",
+	"Power", /* EC_MKBP_POWER_BUTTON */
+	"Volume up", /* EC_MKBP_VOL_UP */
+	"Volume down", /* EC_MKBP_VOL_DOWN */
+	"Recovery", /* EC_MKBP_RECOVERY */
 };
 
-static const char * const mkbp_switch_strings[] = {
-	[EC_MKBP_LID_OPEN] = "Lid open",
-	[EC_MKBP_TABLET_MODE] = "Tablet mode",
-	[EC_MKBP_BASE_ATTACHED] = "Base attached",
+static const char *const mkbp_switch_strings[] = {
+	"Lid open", /* EC_MKBP_LID_OPEN */
+	"Tablet mode", /* EC_MKBP_TABLET_MODE */
+	"Base attached", /* EC_MKBP_BASE_ATTACHED */
 };
 
 static int cmd_mkbp_get(int argc, char *argv[])
@@ -9041,22 +9053,24 @@ static int cmd_tmp006cal_v0(int idx, int argc, char *argv[])
 static int cmd_tmp006cal_v1(int idx, int argc, char *argv[])
 {
 	struct ec_params_tmp006_get_calibration pg;
-	struct ec_response_tmp006_get_calibration_v1 *rg = ec_inbuf;
-	struct ec_params_tmp006_set_calibration_v1 *ps = ec_outbuf;
+	struct ec_response_tmp006_get_calibration_v1 *rg =
+		static_cast<ec_response_tmp006_get_calibration_v1 *>(ec_inbuf);
+	struct ec_params_tmp006_set_calibration_v1 *ps =
+		static_cast<ec_params_tmp006_set_calibration_v1 *>(ec_outbuf);
 	float val;
 	char *e;
 	int i, rv, cmdsize;
 
 	/* Algorithm 1 parameter names */
-	static const char * const alg1_pname[] = {
-		"s0", "a1", "a2", "b0", "b1", "b2", "c2",
-		"d0", "d1", "ds", "e0", "e1",
+	static const char *const alg1_pname[] = {
+		"s0", "a1", "a2", "b0", "b1", "b2",
+		"c2", "d0", "d1", "ds", "e0", "e1",
 	};
 
 	/* Get current values */
 	pg.index = idx;
-	rv = ec_command(EC_CMD_TMP006_GET_CALIBRATION, 1,
-			&pg, sizeof(pg), rg, ec_max_insize);
+	rv = ec_command(EC_CMD_TMP006_GET_CALIBRATION, 1, &pg, sizeof(pg), rg,
+			ec_max_insize);
 	if (rv < 0)
 		return rv;
 
@@ -9233,18 +9247,17 @@ int cmd_port80_read(int argc, char *argv[])
 	if (!ec_cmd_version_supported(EC_CMD_PORT80_READ, cmdver)) {
 		/* fall back to last boot */
 		struct ec_response_port80_last_boot r;
-		rv = ec_command(EC_CMD_PORT80_LAST_BOOT, 0,
-				NULL, 0, &r, sizeof(r));
+		rv = ec_command(EC_CMD_PORT80_LAST_BOOT, 0, NULL, 0, &r,
+				sizeof(r));
 		fprintf(stderr, "Last boot %2x\n", r.code);
 		printf("done.\n");
 		return 0;
 	}
 
-
 	/* read writes and history_size */
 	p.subcmd = EC_PORT80_GET_INFO;
-	rv = ec_command(EC_CMD_PORT80_READ, cmdver,
-			&p, sizeof(p), &rsp, sizeof(rsp));
+	rv = ec_command(EC_CMD_PORT80_READ, cmdver, &p, sizeof(p), &rsp,
+			sizeof(rsp));
 	if (rv < 0) {
 		fprintf(stderr, "Read error at writes\n");
 		return rv;
@@ -9252,7 +9265,8 @@ int cmd_port80_read(int argc, char *argv[])
 	writes = rsp.get_info.writes;
 	history_size = rsp.get_info.history_size;
 
-	history = malloc(history_size*sizeof(uint16_t));
+	history = static_cast<uint16_t *>(
+		malloc(history_size * sizeof(uint16_t)));
 	if (!history) {
 		fprintf(stderr, "Unable to allocate buffer.\n");
 		return -1;
@@ -9426,8 +9440,10 @@ static int cmd_pchg_wait_event(int port, uint32_t expected)
 static int cmd_pchg_update(int port, uint32_t address, uint32_t version,
 			   const char *filename)
 {
-	struct ec_params_pchg_update *p = ec_outbuf;
-	struct ec_response_pchg_update *r = ec_inbuf;
+	struct ec_params_pchg_update *p =
+		static_cast<ec_params_pchg_update *>(ec_outbuf);
+	struct ec_response_pchg_update *r =
+		static_cast<ec_response_pchg_update *>(ec_inbuf);
 	FILE *fp;
 	size_t len, total;
 	int progress = 0;
@@ -9568,7 +9584,8 @@ static int cmd_pchg(int argc, char *argv[])
 		return cmd_pchg_info(&r);
 	} else if (argc == 3 && !strcmp(argv[2], "reset")) {
 		/* Usage.3 */
-		struct ec_params_pchg_update *u = ec_outbuf;
+		struct ec_params_pchg_update *u =
+			static_cast<ec_params_pchg_update *>(ec_outbuf);
 
 		u->cmd = EC_PCHG_UPDATE_CMD_RESET_TO_NORMAL;
 		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, u, sizeof(*u), NULL, 0);
@@ -9989,15 +10006,16 @@ int cmd_typec_status(int argc, char *argv[])
 {
 	struct ec_params_typec_status p;
 	struct ec_response_typec_status *r =
-				(struct ec_response_typec_status *)ec_inbuf;
+		(struct ec_response_typec_status *)ec_inbuf;
 	char *endptr;
 	int rv, i;
-	char *desc;
+	std::string desc;
 
 	if (argc != 2) {
 		fprintf(stderr,
 			"Usage: %s <port>\n"
-			"  <port> is the type-c port to query\n", argv[0]);
+			"  <port> is the type-c port to query\n",
+			argv[0]);
 		return -1;
 	}
 
@@ -10050,7 +10068,7 @@ int cmd_typec_status(int argc, char *argv[])
 		desc = "UNKNOWN";
 		break;
 	}
-	printf("CC State: %s\n", desc);
+	printf("CC State: %s\n", desc.c_str());
 
 	if (r->dp_pin) {
 		switch (r->dp_pin) {
@@ -10076,7 +10094,7 @@ int cmd_typec_status(int argc, char *argv[])
 			desc = "UNKNOWN";
 			break;
 		}
-		printf("DP pin mode: %s\n", desc);
+		printf("DP pin mode: %s\n", desc.c_str());
 	}
 
 	if (r->mux_state) {
@@ -10178,11 +10196,11 @@ int cmd_tp_frame_get(int argc, char* argv[])
 	uint32_t remaining = 0, offset = 0;
 	int rv = EC_SUCCESS;
 	uint8_t *data;
-	struct ec_response_tp_frame_info* r;
+	struct ec_response_tp_frame_info *r;
 	struct ec_params_tp_frame_get p;
 
-	data = malloc(ec_max_insize);
-	r = malloc(ec_max_insize);
+	data = static_cast<uint8_t *>(malloc(ec_max_insize));
+	r = static_cast<ec_response_tp_frame_info *>(malloc(ec_max_insize));
 
 	if (data == NULL || r == NULL) {
 		fprintf(stderr, "Couldn't allocate memory.\n");
