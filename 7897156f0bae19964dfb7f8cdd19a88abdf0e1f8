@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "070b2613_d878f441",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T18:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2d65a6a_c1825230",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f13f124a_bdca4769",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-19T17:11:01Z",
       "side": 1,
       "message": "check that it is good otherwise you will get an out-of-bounds access below",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57436779_0965600e",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T18:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f13f124a_bdca4769",
       "range": {
         "startLine": 97,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26f97997_bea1c039",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T18:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca82ba5_c0d19cfc",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9390706_40f7452a",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "652e8d52_51b9629a",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T18:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9390706_40f7452a",
+      "range": {
+        "startLine": 178,
+        "startChar": 34,
+        "endLine": 178,
+        "endChar": 63
+      },
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1065ec5_e51fcec9",
@@ -123,6 +219,30 @@
       "writtenOn": "2020-11-19T17:11:01Z",
       "side": 1,
       "message": "check bounds",
+      "range": {
+        "startLine": 189,
+        "startChar": 26,
+        "endLine": 189,
+        "endChar": 50
+      },
+      "revId": "7897156f0bae19964dfb7f8cdd19a88abdf0e1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e87c8c1e_043b9d5f",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T18:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1065ec5_e51fcec9",
       "range": {
         "startLine": 189,
         "startChar": 26,
