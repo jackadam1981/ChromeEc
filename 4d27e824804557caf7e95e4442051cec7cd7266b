@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd075da4_96c771f4",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-20T09:18:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65272f97_03ad06bd",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5baebc71_bf51af3c",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-19T15:49:57Z",
       "side": 1,
       "message": "this should be with the headers above",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c58d3028_c518568a",
+        "filename": "zephyr/shim/chip/npcx/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-20T09:18:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5baebc71_bf51af3c",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5a01b8_a1be4a6c",
+        "filename": "zephyr/shim/chip/npcx/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-20T09:18:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c259347c_2f3e6a22",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20e63e8a_8b6eb648",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c07b926_cd61a1a9",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-20T09:18:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20e63e8a_8b6eb648",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd800f2f_1cfa5fe3",
@@ -123,6 +219,30 @@
       "writtenOn": "2020-11-19T15:49:57Z",
       "side": 1,
       "message": "put with the headers above",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c43b2b16_8d9dc7e8",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-20T09:18:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd800f2f_1cfa5fe3",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9be115a3_06ee87c5",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-20T09:18:56Z",
+      "side": 1,
+      "message": "I modify to use keyboard_raw_enable_interrupt().",
+      "parentUuid": "29a25e69_0a1cee49",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e107ffce_05317198",
         "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
         "patchSetId": 6
@@ -169,6 +313,30 @@
       "writtenOn": "2020-11-19T15:49:57Z",
       "side": 1,
       "message": "you can put braces on the if when the else has them for balance",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 7
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "054d5ef6_673d0616",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-20T09:18:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e107ffce_05317198",
       "range": {
         "startLine": 68,
         "startChar": 1,
@@ -192,6 +360,30 @@
       "writtenOn": "2020-11-19T15:49:57Z",
       "side": 1,
       "message": "separate CL?",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 1
+      },
+      "revId": "4d27e824804557caf7e95e4442051cec7cd7266b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27831b84_da6ed55c",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-20T09:18:56Z",
+      "side": 1,
+      "message": "I move it to another CL.",
+      "parentUuid": "8987a350_0d7e7bd6",
       "range": {
         "startLine": 224,
         "startChar": 0,
