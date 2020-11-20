@@ -22,6 +22,30 @@
       },
       "revId": "b19f2f832986d4497147dd2f3adf89fd06743807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b27933_9611a8e3",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T18:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49989d75_859776e0",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 37
+      },
+      "revId": "b19f2f832986d4497147dd2f3adf89fd06743807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
