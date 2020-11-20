@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a58f16_db8718cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368294
+      },
+      "writtenOn": "2020-11-20T09:44:13Z",
+      "side": 1,
+      "message": "For the make buildall command on latest mainline without my changes i can see the following errors.\n\n\n  VIF     reef_it8320_vif.xml\n/opt/coreboot-sdk/lib/gcc/nds32le-elf/8.3.0/../../../../nds32le-elf/bin/ld: __flash_dma_size \u003c IT83XX_ILM_BLOCK_SIZE\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile.rules:522: build/reef_it8320/RW/ec.RW.elf] Error 1\nmake: *** Waiting for unfinished jobs....\n/opt/coreboot-sdk/lib/gcc/nds32le-elf/8.3.0/../../../../nds32le-elf/bin/ld: __flash_dma_size \u003c IT83XX_ILM_BLOCK_SIZE\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile.rules:527: build/reef_it8320/RO/ec.RO.elf] Error 1\n\nMaybe the fix is needed for this to reef_it8320",
+      "revId": "4d258dc830f9e2a34d93c2b97afb83f0acf166eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
