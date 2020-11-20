@@ -10,7 +10,6 @@
 
 #include "common.h"
 #include "ec_commands.h"
-enum power_state;
 
 /* Args for host command handler */
 struct host_cmd_handler_args {
