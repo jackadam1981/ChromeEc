@@ -15,6 +15,8 @@
 #include <unistd.h>
 #include <signal.h>
 #include <stdbool.h>
+#include <string>
+#include <limits>
 
 #include "battery.h"
 #include "comm-host.h"
@@ -32,6 +34,7 @@
 #include "misc_util.h"
 #include "panic.h"
 #include "usb_pd.h"
+
 
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
@@ -783,8 +786,7 @@ int cmd_test(int argc, char *argv[])
 	char *e;
 
 	if (argc < 3) {
-		fprintf(stderr, "Usage: %s result length [version]\n",
-			argv[0]);
+		fprintf(stderr, "Usage: %s result length [version]\n", argv[0]);
 		return -1;
 	}
 
@@ -1413,8 +1415,8 @@ int cmd_flash_read(int argc, char *argv[])
 	uint8_t *buf;
 
 	if (argc < 4) {
-		fprintf(stderr,
-			"Usage: %s <offset> <size> <filename>\n", argv[0]);
+		fprintf(stderr, "Usage: %s <offset> <size> <filename>\n",
+			argv[0]);
 		return -1;
 	}
 	offset = strtol(argv[1], &e, 0);
@@ -1995,8 +1997,8 @@ static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 		num_attempts = 0;
 		while (num_attempts < max_attempts) {
 			num_attempts++;
-			rv = ec_command(EC_CMD_FP_FRAME, 0, &p, sizeof(p),
-					ptr, stride);
+			rv = ec_command(EC_CMD_FP_FRAME, 0, &p, sizeof(p), ptr,
+					stride);
 			if (rv >= 0)
 				break;
 			if (rv == -EECRESULT - EC_RES_ACCESS_DENIED)
@@ -5528,7 +5530,7 @@ static int cmd_motionsense(int argc, char **argv)
 			uint32_t number_data;
 			struct ec_response_motion_sensor_data data[512];
 		} fifo_read_buffer = {
-			.number_data = -1,
+			.number_data = std::numeric_limits<uint32_t>::max(),
 		};
 		int print_data = 0,  max_data = strtol(argv[2], &e, 0);
 
@@ -9057,15 +9059,15 @@ static int cmd_tmp006cal_v1(int idx, int argc, char *argv[])
 	int i, rv, cmdsize;
 
 	/* Algorithm 1 parameter names */
-	static const char * const alg1_pname[] = {
-		"s0", "a1", "a2", "b0", "b1", "b2", "c2",
-		"d0", "d1", "ds", "e0", "e1",
+	static const char *const alg1_pname[] = {
+		"s0", "a1", "a2", "b0", "b1", "b2",
+		"c2", "d0", "d1", "ds", "e0", "e1",
 	};
 
 	/* Get current values */
 	pg.index = idx;
-	rv = ec_command(EC_CMD_TMP006_GET_CALIBRATION, 1,
-			&pg, sizeof(pg), rg, ec_max_insize);
+	rv = ec_command(EC_CMD_TMP006_GET_CALIBRATION, 1, &pg, sizeof(pg), rg,
+			ec_max_insize);
 	if (rv < 0)
 		return rv;
 
@@ -9242,18 +9244,17 @@ int cmd_port80_read(int argc, char *argv[])
 	if (!ec_cmd_version_supported(EC_CMD_PORT80_READ, cmdver)) {
 		/* fall back to last boot */
 		struct ec_response_port80_last_boot r;
-		rv = ec_command(EC_CMD_PORT80_LAST_BOOT, 0,
-				NULL, 0, &r, sizeof(r));
+		rv = ec_command(EC_CMD_PORT80_LAST_BOOT, 0, NULL, 0, &r,
+				sizeof(r));
 		fprintf(stderr, "Last boot %2x\n", r.code);
 		printf("done.\n");
 		return 0;
 	}
 
-
 	/* read writes and history_size */
 	p.subcmd = EC_PORT80_GET_INFO;
-	rv = ec_command(EC_CMD_PORT80_READ, cmdver,
-			&p, sizeof(p), &rsp, sizeof(rsp));
+	rv = ec_command(EC_CMD_PORT80_READ, cmdver, &p, sizeof(p), &rsp,
+			sizeof(rsp));
 	if (rv < 0) {
 		fprintf(stderr, "Read error at writes\n");
 		return rv;
@@ -10005,12 +10006,13 @@ int cmd_typec_status(int argc, char *argv[])
 				(struct ec_response_typec_status *)ec_inbuf;
 	char *endptr;
 	int rv, i;
-	char *desc;
+	std::string desc;
 
 	if (argc != 2) {
 		fprintf(stderr,
 			"Usage: %s <port>\n"
-			"  <port> is the type-c port to query\n", argv[0]);
+			"  <port> is the type-c port to query\n",
+			argv[0]);
 		return -1;
 	}
 
@@ -10063,7 +10065,7 @@ int cmd_typec_status(int argc, char *argv[])
 		desc = "UNKNOWN";
 		break;
 	}
-	printf("CC State: %s\n", desc);
+	printf("CC State: %s\n", desc.c_str());
 
 	if (r->dp_pin) {
 		switch (r->dp_pin) {
@@ -10089,7 +10091,7 @@ int cmd_typec_status(int argc, char *argv[])
 			desc = "UNKNOWN";
 			break;
 		}
-		printf("DP pin mode: %s\n", desc);
+		printf("DP pin mode: %s\n", desc.c_str());
 	}
 
 	if (r->mux_state) {
