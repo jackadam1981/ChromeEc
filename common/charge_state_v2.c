@@ -32,7 +32,10 @@
 #define CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US \
 	(CONFIG_BATTERY_CRITICAL_SHUTDOWN_TIMEOUT * SECOND)
 #define PRECHARGE_TIMEOUT_US (PRECHARGE_TIMEOUT * SECOND)
-#define LFCC_EVENT_THRESH 5 /* Full-capacity change reqd for host event */
+
+/* Full-capacity change beyond these thresholds are ignored for host event. */
+#define LFCC_THRESH_LOW  5
+#define LFCC_THRESH_HIGH 100
 
 /* Prior to negotiating PD, most PD chargers advertise 15W */
 #ifndef CONFIG_CHARGER_LIMIT_POWER_ENFORCE_RO_THRESH
@@ -121,6 +124,16 @@ static void problem(enum problem_type p, int v)
 	problems_exist = 1;
 }
 
+static void clear_dynamic_battery_info(void)
+{
+	/* These values shouldn't need to be reset unless battery is swapped. */
+	*(int *)host_get_memmap(EC_MEMMAP_BATT_VOLT) = 0;
+	*(int *)host_get_memmap(EC_MEMMAP_BATT_RATE) = 0;
+	*(int *)host_get_memmap(EC_MEMMAP_BATT_CAP) = 0;
+	*(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC) = 0;
+	*host_get_memmap(EC_MEMMAP_BATT_FLAG) = 0;
+}
+
 /* Returns zero if every item was updated. */
 static int update_static_battery_info(void)
 {
@@ -168,13 +181,6 @@ static int update_static_battery_info(void)
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_TYPE);
 	rv |= battery_device_chemistry(batt_str, EC_MEMMAP_TEXT_MAX);
 
-	/* Zero the dynamic entries. They'll come next. */
-	*(int *)host_get_memmap(EC_MEMMAP_BATT_VOLT) = 0;
-	*(int *)host_get_memmap(EC_MEMMAP_BATT_RATE) = 0;
-	*(int *)host_get_memmap(EC_MEMMAP_BATT_CAP) = 0;
-	*(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC) = 0;
-	*host_get_memmap(EC_MEMMAP_BATT_FLAG) = 0;
-
 	if (rv)
 		problem(PR_STATIC_UPDATE, rv);
 	else
@@ -182,6 +188,32 @@ static int update_static_battery_info(void)
 		*host_get_memmap(EC_MEMMAP_BATTERY_VERSION) = 1;
 
 	return rv;
+}
+
+static int should_update_full_capacity(const struct batt_params *batt, int lfcc)
+{
+	if (batt->flags & BATT_FLAG_BAD_FULL_CAPACITY)
+		return 0;
+
+	/*
+	 * Battery was just connected or EC was just reset or sysjumped.
+	 * Believe whatever gas-gauge says. No other choice.
+	 * TODO: Should exclude sysjump, probably.
+	 */
+	if (lfcc == 0)
+		return 1;
+
+	/* Filter out big changes. Full capacity shouldn't change too much. */
+	if (batt->full_capacity <= (lfcc - LFCC_THRESH_HIGH)
+			|| batt->full_capacity >= (lfcc + LFCC_THRESH_HIGH))
+		return 0;
+
+	/* Filter out small changes. */
+	if ((lfcc - LFCC_THRESH_LOW) <= batt->full_capacity
+			&& batt->full_capacity <= (lfcc + LFCC_THRESH_LOW))
+		return 0;
+
+	return 1;
 }
 
 static void update_dynamic_battery_info(void)
@@ -237,9 +269,7 @@ static void update_dynamic_battery_info(void)
 			*memmap_cap = curr.batt.remaining_capacity;
 	}
 
-	if (!(curr.batt.flags & BATT_FLAG_BAD_FULL_CAPACITY) &&
-	    (curr.batt.full_capacity <= (*memmap_lfcc - LFCC_EVENT_THRESH) ||
-	     curr.batt.full_capacity >= (*memmap_lfcc + LFCC_EVENT_THRESH))) {
+	if (should_update_full_capacity(&curr.batt, *memmap_lfcc)) {
 		*memmap_lfcc = curr.batt.full_capacity;
 		/* Poke the AP if the full_capacity changes. */
 		send_batt_info_event++;
@@ -612,6 +642,9 @@ void charger_task(void)
 	prev_bp = curr.batt.is_present;
 	curr.desired_input_current = get_desired_input_current(prev_bp, info);
 
+	/* Not sure if this is needed or should be called here. */
+	clear_dynamic_battery_info();
+
 	while (1) {
 
 #ifdef CONFIG_SB_FIRMWARE_UPDATE
@@ -699,6 +732,7 @@ void charger_task(void)
 			curr.state = ST_IDLE;
 			curr.batt_is_charging = 0;
 			battery_was_removed = 1;
+			clear_dynamic_battery_info();
 			goto wait_for_it;
 		}
 
