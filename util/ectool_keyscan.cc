@@ -593,8 +593,8 @@ static int run_test(struct keyscan_info *keyscan, struct keyscan_test *test)
 	ctrl.cmd = EC_KEYSCAN_SEQ_COLLECT;
 	ctrl.collect.start_item = 0;
 	ctrl.collect.num_items = test->item_count;
-	rv = ec_command(EC_CMD_KEYSCAN_SEQ_CTRL, 0, &ctrl, sizeof(ctrl),
-			resp, size);
+	rv = ec_command(EC_CMD_KEYSCAN_SEQ_CTRL, 0, &ctrl, sizeof(ctrl), resp,
+			size);
 	if (rv < 0)
 		return rv;
 

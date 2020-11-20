@@ -9,6 +9,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <chrono>
+#include <thread>
+
 #include "comm-host.h"
 #include "misc_util.h"
 #include "timer.h"
@@ -222,7 +225,8 @@ int ec_flash_erase_async(int offset, int size)
 		 *
 		 * See https://crrev.com/c/511805 for details.
 		 */
-		usleep(ERASE_ASYNC_WAIT);
+		std::this_thread::sleep_for(
+			std::chrono::microseconds(ERASE_ASYNC_WAIT));
 		timeout += ERASE_ASYNC_WAIT;
 		p.cmd = FLASH_ERASE_GET_RESULT;
 		rv = ec_command(EC_CMD_FLASH_ERASE, 1, &p, sizeof(p), NULL, 0);
