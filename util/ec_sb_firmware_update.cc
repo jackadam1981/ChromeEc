@@ -79,7 +79,7 @@ enum {
 struct fw_update_ctrl {
 	uint32_t flags; /* fw update control flags */
 	int size;    /* size of battery firmware image */
-	char *ptr;   /* current read pointer of the firmware image */
+	uint8_t *ptr;   /* current read pointer of the firmware image */
 	int  offset; /* current block write offset */
 	struct sb_fw_header *fw_img_hdr; /*pointer to firmware image header*/
 	struct sb_fw_update_status status;
@@ -240,16 +240,17 @@ static void log_msg(struct fw_update_ctrl *fw_update,
 }
 
 
-static char *read_fw_image(struct fw_update_ctrl *fw_update)
+static uint8_t *read_fw_image(struct fw_update_ctrl *fw_update)
 {
 	int size;
-	char *buf;
+	uint8_t *buf;
 	fw_update->size = 0;
 	fw_update->ptr = NULL;
 	fw_update->fw_img_hdr = (struct sb_fw_header *)NULL;
 
 	/* Read the input file */
-	buf = read_file(fw_update->image_name, &size);
+	buf = reinterpret_cast<uint8_t *>(
+		read_file(fw_update->image_name, &size));
 	if (!buf)
 		return NULL;
 
