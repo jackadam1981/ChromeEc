@@ -8,7 +8,7 @@
 
 #include <linux/ioctl.h>
 #include <linux/types.h>
-#include "ec_commands.h"
+#include "include/ec_commands.h"
 
 #ifdef __cplusplus
 extern "C" {

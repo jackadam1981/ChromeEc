@@ -102,8 +102,8 @@ static int ec_command_i2c_3(int command, int version,
 	req->reserved = 0;
 	req->data_len = outsize;
 
-	memcpy(&req_buf[I2C_REQUEST_HEADER_SIZE
-			+ sizeof(struct ec_host_request)],
+	memcpy(&req_buf[I2C_REQUEST_HEADER_SIZE +
+			sizeof(struct ec_host_request)],
 	       outdata, outsize);
 
 	req->checksum =
