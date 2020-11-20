@@ -83,6 +83,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc82fb7c_627c2a18",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-20T20:02:54Z",
+      "side": 1,
+      "message": "I don\u0027t see anything here that\u0027s chip specific can this go under zephyr/shim/src?",
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a93d6734_2d468458",
         "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
         "patchSetId": 7
@@ -122,6 +139,29 @@
         "startChar": 0,
         "endLine": 14,
         "endChar": 53
+      },
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9540836_6589372b",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-11-20T20:02:54Z",
+      "side": 1,
+      "message": "nit: just use\nif (cros_kb_raw_dev)",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 25
       },
       "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
