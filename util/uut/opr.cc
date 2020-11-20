@@ -20,7 +20,7 @@
 #include "com_port.h"
 #include "cmd.h"
 #include "main.h"
-#include "misc_util.h"
+#include "util/misc_util.h"
 #include "opr.h"
 
 /*----------------------------------------------------------------------------
