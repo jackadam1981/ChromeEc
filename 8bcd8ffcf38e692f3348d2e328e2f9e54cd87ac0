@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fed097b_c27cb372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-20T23:03:38Z",
+      "side": 1,
+      "message": "For another CL: It seems like this code might benefit from a generic function to either return the value of a field or of some expression if that field isn\u0027t set.",
+      "revId": "8bcd8ffcf38e692f3348d2e328e2f9e54cd87ac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
