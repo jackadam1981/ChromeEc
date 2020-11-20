@@ -97,7 +97,14 @@ static void prochot_input_deferred(void)
 
 	debounced_prochot_in = prochot_in;
 
-	if (debounced_prochot_in) {
+	/*
+	 * b/173180788 Confirmed from Intel internal that SLP_S3# asserts low
+	 * about 10us before PROCHOT# asserts low, which means that
+	 * the CPU is already in reset and therefore the PROCHOT#
+	 * asserting low is normal behavior and not a concern
+	 * for PROCHOT# event.
+	 */
+	if (debounced_prochot_in && !chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		CPRINTS("External PROCHOT assertion detected");
 #ifdef CONFIG_FANS
 		dptf_set_fan_duty_target(100);
