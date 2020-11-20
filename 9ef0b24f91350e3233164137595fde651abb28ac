@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f84676fc_4ba65ac5",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-20T02:28:57Z",
+      "side": 1,
+      "message": "I wonder if there\u0027s some time required for the part to power on. Have you tried delaying a bit?",
+      "parentUuid": "8ce65069_fc608ecf",
+      "revId": "9ef0b24f91350e3233164137595fde651abb28ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9c8cad1_103f4b08",
         "filename": "board/magolor/board.c",
         "patchSetId": 3
