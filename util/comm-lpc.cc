@@ -225,16 +225,16 @@ static int ec_command_lpc_3(int command, int version,
 static int ec_readmem_lpc(int offset, int bytes, void *dest)
 {
 	int i = offset;
-	char *s = dest;
+	char *s = static_cast<char *>(dest);
 	int cnt = 0;
 
 	if (offset >= EC_MEMMAP_SIZE - bytes)
 		return -1;
 
-	if (bytes) {				/* fixed length */
+	if (bytes) { /* fixed length */
 		for (; cnt < bytes; i++, s++, cnt++)
 			*s = inb(EC_LPC_ADDR_MEMMAP + i);
-	} else {				/* string */
+	} else { /* string */
 		for (; i < EC_MEMMAP_SIZE; i++, s++) {
 			*s = inb(EC_LPC_ADDR_MEMMAP + i);
 			cnt++;
