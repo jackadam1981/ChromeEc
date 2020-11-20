@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a797eb_1aeb6ff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T15:49:34Z",
+      "side": 1,
+      "message": "looks good modulo the minor style things below",
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea6a14a7_d9c829a7",
+        "filename": "zephyr/shim/chip/npcx/clock.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T15:49:34Z",
+      "side": 1,
+      "message": "logging/log.h should be sorted in list",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e10507_a93756ab",
+        "filename": "zephyr/shim/chip/npcx/clock.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T15:49:34Z",
+      "side": 1,
+      "message": "blank line after includes (before LOG_MODULE_REGISTER)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a93d6734_2d468458",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T15:49:34Z",
+      "side": 1,
+      "message": "logging/log.h should be sorted alphabetically in the list",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37bffca_2bec919e",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T15:49:34Z",
+      "side": 1,
+      "message": "should go after includes below",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
