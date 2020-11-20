@@ -22,6 +22,30 @@
       },
       "revId": "466a872b53a949f5ac4848c9b28c9c9c4b82319f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cbd0d18_bc99df02",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T18:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f328ff7_457dc339",
+      "range": {
+        "startLine": 303,
+        "startChar": 59,
+        "endLine": 303,
+        "endChar": 64
+      },
+      "revId": "466a872b53a949f5ac4848c9b28c9c9c4b82319f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
