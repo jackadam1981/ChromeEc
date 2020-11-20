@@ -22,6 +22,30 @@
       },
       "revId": "2d2a5aa40fa31f477e9d30b23f4e69016f8e806e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4cb9d8b_9c3dd58d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6697,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-20T17:03:15Z",
+      "side": 1,
+      "message": "Okay, took all my hopes and dreams for the PE unit test and shoved them into a bug.",
+      "parentUuid": "ad886bba_06d2440c",
+      "range": {
+        "startLine": 6697,
+        "startChar": 3,
+        "endLine": 6697,
+        "endChar": 7
+      },
+      "revId": "2d2a5aa40fa31f477e9d30b23f4e69016f8e806e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
