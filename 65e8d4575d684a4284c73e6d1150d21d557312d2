@@ -39,6 +39,30 @@
       },
       "revId": "65e8d4575d684a4284c73e6d1150d21d557312d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f33e3e16_82a936ce",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-20T18:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "366b161a_04752dc4",
+      "range": {
+        "startLine": 1008,
+        "startChar": 7,
+        "endLine": 1008,
+        "endChar": 29
+      },
+      "revId": "65e8d4575d684a4284c73e6d1150d21d557312d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
