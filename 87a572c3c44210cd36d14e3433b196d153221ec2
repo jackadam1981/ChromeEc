@@ -229,6 +229,24 @@
       "parentUuid": "c9c49fe1_56e15208",
       "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2281df6a_c5a1f655",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-20T00:58:02Z",
+      "side": 1,
+      "message": "It looks to me like with svc_handler already doing the equivalent of calling an unsafe variant there\u0027s no significant need to actually create one. I spotted a few usages that ensure they\u0027re run in a task context by other means which could be converted but don\u0027t seem performance-critical, and the other usages seem like they aren\u0027t both verifiably safe and performance-critical.\n\nPerformance tuning beyond the immediate users of task_get_task would need to expose unsafe variants of related functions such as mutex_lock, which seems like a lot of complexity for small (possibly irrelevant) benefit.\n\nTesting sounds like it would be fragile, since it would be easy to add config options that wouldn\u0027t be covered and could reintroduce errors in some configurations.",
+      "parentUuid": "4fdc4ccc_1e6cf8a4",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
