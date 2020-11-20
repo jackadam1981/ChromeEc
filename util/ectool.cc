@@ -15,6 +15,8 @@
 #include <unistd.h>
 #include <signal.h>
 #include <stdbool.h>
+#include <string>
+#include <limits>
 
 #include "battery.h"
 #include "comm-host.h"
@@ -27,7 +29,8 @@
 #include "ectool.h"
 #include "i2c.h"
 #include "lightbar.h"
-#include "lock/gec_lock.h"
+// FIXME
+// #include "lock/gec_lock.h"
 #include "misc_util.h"
 #include "panic.h"
 #include "usb_pd.h"
@@ -750,15 +753,15 @@ int cmd_hostsleepstate(int argc, char *argv[])
 int cmd_test(int argc, char *argv[])
 {
 	struct ec_params_test_protocol p = {
-		.buf = "0123456789abcdef0123456789ABCDEF"
+		.buf = "0123456789abcdef0123456789ABCDE"
 	};
+	p.buf[sizeof(p.buf) - 1] = 'F';
 	struct ec_response_test_protocol r;
 	int rv, version = 0;
 	char *e;
 
 	if (argc < 3) {
-		fprintf(stderr, "Usage: %s result length [version]\n",
-			argv[0]);
+		fprintf(stderr, "Usage: %s result length [version]\n", argv[0]);
 		return -1;
 	}
 
@@ -814,51 +817,52 @@ int cmd_s5(int argc, char *argv[])
 }
 
 static const char * const ec_feature_names[] = {
-	[EC_FEATURE_LIMITED] = "Limited image, load RW for more",
-	[EC_FEATURE_FLASH] = "Flash",
-	[EC_FEATURE_PWM_FAN] = "Direct Fan power management",
-	[EC_FEATURE_PWM_KEYB] = "Keyboard backlight",
-	[EC_FEATURE_LIGHTBAR] = "Lightbar",
-	[EC_FEATURE_LED] = "LED",
-	[EC_FEATURE_MOTION_SENSE] = "Motion Sensors",
-	[EC_FEATURE_KEYB] = "Keyboard",
-	[EC_FEATURE_PSTORE] = "Host Permanent Storage",
-	[EC_FEATURE_PORT80] = "BIOS Port 80h access",
-	[EC_FEATURE_THERMAL] = "Thermal management",
-	[EC_FEATURE_BKLIGHT_SWITCH] = "Switch backlight on/off",
-	[EC_FEATURE_WIFI_SWITCH] = "Switch wifi on/off",
-	[EC_FEATURE_HOST_EVENTS] = "Host event",
-	[EC_FEATURE_GPIO] = "GPIO",
-	[EC_FEATURE_I2C] = "I2C master",
-	[EC_FEATURE_CHARGER] = "Charger",
-	[EC_FEATURE_BATTERY] = "Simple Battery",
-	[EC_FEATURE_SMART_BATTERY] = "Smart Battery",
-	[EC_FEATURE_HANG_DETECT] = "Host hang detection",
-	[EC_FEATURE_PMU] = "Power Management",
-	[EC_FEATURE_SUB_MCU] = "Control downstream MCU",
-	[EC_FEATURE_USB_PD] = "USB Cros Power Delivery",
-	[EC_FEATURE_USB_MUX] = "USB Multiplexer",
-	[EC_FEATURE_MOTION_SENSE_FIFO] = "FIFO for Motion Sensors events",
-	[EC_FEATURE_VSTORE] = "Temporary secure vstore",
-	[EC_FEATURE_USBC_SS_MUX_VIRTUAL] = "Host-controlled USB-C SS mux",
-	[EC_FEATURE_RTC] = "Real-time clock",
-	[EC_FEATURE_FINGERPRINT] = "Fingerprint",
-	[EC_FEATURE_TOUCHPAD] = "Touchpad",
-	[EC_FEATURE_RWSIG] = "RWSIG task",
-	[EC_FEATURE_DEVICE_EVENT] = "Device events reporting",
-	[EC_FEATURE_UNIFIED_WAKE_MASKS] = "Unified wake masks for LPC/eSPI",
-	[EC_FEATURE_HOST_EVENT64] = "64-bit host events",
-	[EC_FEATURE_EXEC_IN_RAM] = "Execute code in RAM",
-	[EC_FEATURE_CEC] = "Consumer Electronics Control",
-	[EC_FEATURE_MOTION_SENSE_TIGHT_TIMESTAMPS] =
-		"Tight timestamp for sensors events",
-	[EC_FEATURE_REFINED_TABLET_MODE_HYSTERESIS] =
-		"Refined tablet mode hysteresis",
-	[EC_FEATURE_EFS2] = "Early Firmware Selection v2",
-	[EC_FEATURE_ISH] = "Intel Integrated Sensor Hub",
-	[EC_FEATURE_TYPEC_CMD] = "TCPMv2 Type-C commands",
-	[EC_FEATURE_TYPEC_REQUIRE_AP_MODE_ENTRY] =
-		"Host-controlled Type-C mode entry",
+	"Limited image, load RW for more", /* EC_FEATURE_LIMITED */
+	"Flash", /* EC_FEATURE_FLASH */
+	"Direct Fan power management", /* EC_FEATURE_PWM_FAN */
+	"Keyboard backlight", /* EC_FEATURE_PWM_KEYB */
+	"Lightbar", /* EC_FEATURE_LIGHTBAR  */
+	"LED", /* EC_FEATURE_LED */
+	"Motion Sensors", /* EC_FEATURE_MOTION_SENSE */
+	"Keyboard", /* EC_FEATURE_KEYB */
+	"Host Permanent Storage", /* EC_FEATURE_PSTORE */
+	"BIOS Port 80h access", /* EC_FEATURE_PORT80 */
+	"Thermal management", /* EC_FEATURE_THERMAL */
+	"Switch backlight on/off", /* EC_FEATURE_BKLIGHT_SWITCH */
+	"Switch wifi on/off", /* [EC_FEATURE_WIFI_SWITCH] */
+	"Host event", /* [EC_FEATURE_HOST_EVENTS] */
+	"GPIO", /* [EC_FEATURE_GPIO] */
+	"I2C master", /* [EC_FEATURE_I2C] */
+	"Charger", /* [EC_FEATURE_CHARGER] */
+	"Simple Battery", /* [EC_FEATURE_BATTERY] */
+	"Smart Battery", /* [EC_FEATURE_SMART_BATTERY] */
+	"Host hang detection", /* [EC_FEATURE_HANG_DETECT] */
+	"Power Management", /* [EC_FEATURE_PMU] */
+	"Control downstream MCU", /* [EC_FEATURE_SUB_MCU] */
+	"USB Cros Power Delivery", /* [EC_FEATURE_USB_PD] */
+	"USB Multiplexer", /* [EC_FEATURE_USB_MUX] */
+	"FIFO for Motion Sensors events", /* [EC_FEATURE_MOTION_SENSE_FIFO] */
+	"Temporary secure vstore", /* [EC_FEATURE_VSTORE] */
+	"Host-controlled USB-C SS mux", /* [EC_FEATURE_USBC_SS_MUX_VIRTUAL] */
+	"Real-time clock", /* [EC_FEATURE_RTC] */
+	"Fingerprint", /* [EC_FEATURE_FINGERPRINT] */
+	"Touchpad", /* [EC_FEATURE_TOUCHPAD] */
+	"RWSIG task", /* [EC_FEATURE_RWSIG] */
+	"Device events reporting", /* [EC_FEATURE_DEVICE_EVENT] */
+	"Unified wake masks for LPC/eSPI", /* [EC_FEATURE_UNIFIED_WAKE_MASKS] */
+	"64-bit host events", /* [EC_FEATURE_HOST_EVENT64] */
+	"Execute code in RAM", /* [EC_FEATURE_EXEC_IN_RAM] */
+	"Consumer Electronics Control", /* [EC_FEATURE_CEC] */
+	"Tight timestamp for sensors events", /* [EC_FEATURE_MOTION_SENSE_TIGHT_TIMESTAMPS]
+					       */
+	"Refined tablet mode hysteresis", /* [EC_FEATURE_REFINED_TABLET_MODE_HYSTERESIS]
+					   */
+	"Early Firmware Selection v2", /* [EC_FEATURE_EFS2] */
+	"Intel Integrated Sensor Hub", /* [EC_FEATURE_ISH] */
+	"TCPMv2 Type-C commands", /* [EC_FEATURE_TYPEC_CMD] */
+	"Host-controlled Type-C mode entry", /*
+					      * [EC_FEATURE_TYPEC_REQUIRE_AP_MODE_ENTRY]
+					      */
 };
 
 int cmd_inventory(int argc, char *argv[])
@@ -1307,7 +1311,7 @@ int cmd_rand(int argc, char *argv[])
 		return -1;
 	}
 
-	r = ec_inbuf;
+	r = static_cast<ec_response_rand_num *>(ec_inbuf);
 
 	for (i = 0; i < num_bytes; i += ec_max_insize) {
 		p.num_rand_bytes = ec_max_insize;
@@ -1365,11 +1369,11 @@ int cmd_flash_read(int argc, char *argv[])
 	int offset, size;
 	int rv;
 	char *e;
-	char *buf;
+	uint8_t *buf;
 
 	if (argc < 4) {
-		fprintf(stderr,
-			"Usage: %s <offset> <size> <filename>\n", argv[0]);
+		fprintf(stderr, "Usage: %s <offset> <size> <filename>\n",
+			argv[0]);
 		return -1;
 	}
 	offset = strtol(argv[1], &e, 0);
@@ -1384,7 +1388,7 @@ int cmd_flash_read(int argc, char *argv[])
 	}
 	printf("Reading %d bytes at offset %d...\n", size, offset);
 
-	buf = (char *)malloc(size);
+	buf = (uint8_t *)malloc(size);
 	if (!buf) {
 		fprintf(stderr, "Unable to allocate buffer.\n");
 		return -1;
@@ -1397,7 +1401,7 @@ int cmd_flash_read(int argc, char *argv[])
 		return rv;
 	}
 
-	rv = write_file(argv[3], buf, size);
+	rv = write_file(argv[3], reinterpret_cast<const char *>(buf), size);
 	free(buf);
 	if (rv)
 		return rv;
@@ -1432,7 +1436,8 @@ int cmd_flash_write(int argc, char *argv[])
 	printf("Writing to offset %d...\n", offset);
 
 	/* Write data in chunks */
-	rv = ec_flash_write(buf, offset, size);
+	rv = ec_flash_write(reinterpret_cast<const uint8_t *>(buf), offset,
+			    size);
 
 	free(buf);
 
@@ -1786,6 +1791,7 @@ int cmd_rwsig(int argc, char **argv)
 }
 
 enum sysinfo_fields {
+	SYSINFO_FIELD_NONE = 0,
 	SYSINFO_FIELD_RESET_FLAGS = BIT(0),
 	SYSINFO_FIELD_CURRENT_IMAGE = BIT(1),
 	SYSINFO_FIELD_FLAGS = BIT(2),
@@ -1811,7 +1817,7 @@ static int sysinfo(struct ec_response_sysinfo *info)
 int cmd_sysinfo(int argc, char **argv)
 {
 	struct ec_response_sysinfo r;
-	enum sysinfo_fields fields = 0;
+	enum sysinfo_fields fields = sysinfo_fields::SYSINFO_FIELD_NONE;
 	bool print_prefix = false;
 
 	if (argc != 1 && argc != 2)
@@ -1940,7 +1946,7 @@ static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 		return NULL;
 	}
 
-	ptr = buffer;
+	ptr = static_cast<uint8_t *>(buffer);
 	p.offset = index << FP_FRAME_INDEX_SHIFT;
 	while (size) {
 		stride = MIN(ec_max_insize, size);
@@ -1948,8 +1954,8 @@ static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 		num_attempts = 0;
 		while (num_attempts < max_attempts) {
 			num_attempts++;
-			rv = ec_command(EC_CMD_FP_FRAME, 0, &p, sizeof(p),
-					ptr, stride);
+			rv = ec_command(EC_CMD_FP_FRAME, 0, &p, sizeof(p), ptr,
+					stride);
 			if (rv >= 0)
 				break;
 			if (rv == -EECRESULT - EC_RES_ACCESS_DENIED)
@@ -2209,8 +2215,9 @@ int cmd_fp_frame(int argc, char *argv[])
 {
 	struct ec_response_fp_info r;
 	int idx = (argc == 2 && !strcasecmp(argv[1], "raw")) ?
-		FP_FRAME_INDEX_RAW_IMAGE : FP_FRAME_INDEX_SIMPLE_IMAGE;
-	void *buffer = fp_download_frame(&r, idx);
+				FP_FRAME_INDEX_RAW_IMAGE :
+				FP_FRAME_INDEX_SIMPLE_IMAGE;
+	uint8_t *buffer = static_cast<uint8_t *>(fp_download_frame(&r, idx));
 	uint8_t *ptr = buffer;
 	int x, y;
 
@@ -2241,14 +2248,15 @@ frame_done:
 int cmd_fp_template(int argc, char *argv[])
 {
 	struct ec_response_fp_info r;
-	struct ec_params_fp_template *p = ec_outbuf;
+	struct ec_params_fp_template *p =
+		static_cast<ec_params_fp_template *>(ec_outbuf);
 	/* TODO(b/78544921): removing 32 bits is a workaround for the MCU bug */
-	int max_chunk = ec_max_outsize
-			- offsetof(struct ec_params_fp_template, data) - 4;
+	int max_chunk = ec_max_outsize -
+			offsetof(struct ec_params_fp_template, data) - 4;
 	int idx = -1;
 	char *e;
 	int size;
-	void *buffer = NULL;
+	char *buffer = NULL;
 	uint32_t offset = 0;
 	int rv = 0;
 
@@ -2259,7 +2267,7 @@ int cmd_fp_template(int argc, char *argv[])
 
 	idx = strtol(argv[1], &e, 0);
 	if (!(e && *e)) {
-		buffer = fp_download_frame(&r, idx + 1);
+		buffer = static_cast<char *>(fp_download_frame(&r, idx + 1));
 		if (!buffer) {
 			fprintf(stderr, "Failed to get FP template %d\n", idx);
 			return -1;
@@ -2704,8 +2712,10 @@ static void cmd_smart_discharge_usage(const char *command)
 
 int cmd_smart_discharge(int argc, char *argv[])
 {
-	struct ec_params_smart_discharge *p = ec_outbuf;
-	struct ec_response_smart_discharge *r = ec_inbuf;
+	struct ec_params_smart_discharge *p =
+		static_cast<ec_params_smart_discharge *>(ec_outbuf);
+	struct ec_response_smart_discharge *r =
+		static_cast<ec_response_smart_discharge *>(ec_inbuf);
 	uint32_t cap;
 	char *e;
 	int rv;
@@ -5476,7 +5486,7 @@ static int cmd_motionsense(int argc, char **argv)
 			uint32_t number_data;
 			struct ec_response_motion_sensor_data data[512];
 		} fifo_read_buffer = {
-			.number_data = -1,
+			.number_data = std::numeric_limits<uint32_t>::max(),
 		};
 		int print_data = 0,  max_data = strtol(argv[2], &e, 0);
 
@@ -7240,7 +7250,7 @@ int cmd_i2c_xfer(int argc, char *argv[])
 	write_len = argc;
 
 	if (write_len) {
-		write_buf = malloc(write_len);
+		write_buf = static_cast<uint8_t *>(malloc(write_len));
 		if (write_buf == NULL)
 			return -1;
 		for (i = 0; i < write_len; i++) {
@@ -8117,7 +8127,7 @@ static int cmd_cbi(int argc, char *argv[])
 	}
 
 	/* Tag */
-	tag = strtol(argv[2], &e, 0);
+	tag = static_cast<cbi_data_tag>(strtol(argv[2], &e, 0));
 	if (e && *e) {
 		fprintf(stderr, "Bad tag\n");
 		return -1;
@@ -8148,7 +8158,8 @@ static int cmd_cbi(int argc, char *argv[])
 		if (cmd_cbi_is_string_field(tag)) {
 			printf("%.*s", rv, (const char *)ec_inbuf);
 		} else {
-			const uint8_t * const buffer = ec_inbuf;
+			const uint8_t *const buffer =
+				static_cast<const uint8_t *const>(ec_inbuf);
 
 			if (rv <= sizeof(uint32_t)) {
 				uint32_t int_value = 0;
@@ -8184,7 +8195,7 @@ static int cmd_cbi(int argc, char *argv[])
 
 		if (cmd_cbi_is_string_field(tag)) {
 			val_ptr = argv[3];
-			size = strlen(val_ptr) + 1;
+			size = strlen(static_cast<char *>(val_ptr)) + 1;
 		} else {
 			val = strtol(argv[3], &e, 0);
 			if (e && *e) {
@@ -8763,16 +8774,16 @@ static int cmd_keyconfig(int argc, char *argv[])
 }
 
 static const char * const mkbp_button_strings[] = {
-	[EC_MKBP_POWER_BUTTON] = "Power",
-	[EC_MKBP_VOL_UP] = "Volume up",
-	[EC_MKBP_VOL_DOWN] = "Volume down",
-	[EC_MKBP_RECOVERY] = "Recovery",
+	"Power", /* EC_MKBP_POWER_BUTTON */
+	"Volume up", /* EC_MKBP_VOL_UP */
+	"Volume down", /* EC_MKBP_VOL_DOWN */
+	"Recovery", /* EC_MKBP_RECOVERY */
 };
 
-static const char * const mkbp_switch_strings[] = {
-	[EC_MKBP_LID_OPEN] = "Lid open",
-	[EC_MKBP_TABLET_MODE] = "Tablet mode",
-	[EC_MKBP_BASE_ATTACHED] = "Base attached",
+static const char *const mkbp_switch_strings[] = {
+	"Lid open", /* EC_MKBP_LID_OPEN */
+	"Tablet mode", /* EC_MKBP_TABLET_MODE */
+	"Base attached", /* EC_MKBP_BASE_ATTACHED */
 };
 
 static int cmd_mkbp_get(int argc, char *argv[])
@@ -8983,22 +8994,24 @@ static int cmd_tmp006cal_v0(int idx, int argc, char *argv[])
 static int cmd_tmp006cal_v1(int idx, int argc, char *argv[])
 {
 	struct ec_params_tmp006_get_calibration pg;
-	struct ec_response_tmp006_get_calibration_v1 *rg = ec_inbuf;
-	struct ec_params_tmp006_set_calibration_v1 *ps = ec_outbuf;
+	struct ec_response_tmp006_get_calibration_v1 *rg =
+		static_cast<ec_response_tmp006_get_calibration_v1 *>(ec_inbuf);
+	struct ec_params_tmp006_set_calibration_v1 *ps =
+		static_cast<ec_params_tmp006_set_calibration_v1 *>(ec_outbuf);
 	float val;
 	char *e;
 	int i, rv, cmdsize;
 
 	/* Algorithm 1 parameter names */
-	static const char * const alg1_pname[] = {
-		"s0", "a1", "a2", "b0", "b1", "b2", "c2",
-		"d0", "d1", "ds", "e0", "e1",
+	static const char *const alg1_pname[] = {
+		"s0", "a1", "a2", "b0", "b1", "b2",
+		"c2", "d0", "d1", "ds", "e0", "e1",
 	};
 
 	/* Get current values */
 	pg.index = idx;
-	rv = ec_command(EC_CMD_TMP006_GET_CALIBRATION, 1,
-			&pg, sizeof(pg), rg, ec_max_insize);
+	rv = ec_command(EC_CMD_TMP006_GET_CALIBRATION, 1, &pg, sizeof(pg), rg,
+			ec_max_insize);
 	if (rv < 0)
 		return rv;
 
@@ -9175,18 +9188,17 @@ int cmd_port80_read(int argc, char *argv[])
 	if (!ec_cmd_version_supported(EC_CMD_PORT80_READ, cmdver)) {
 		/* fall back to last boot */
 		struct ec_response_port80_last_boot r;
-		rv = ec_command(EC_CMD_PORT80_LAST_BOOT, 0,
-				NULL, 0, &r, sizeof(r));
+		rv = ec_command(EC_CMD_PORT80_LAST_BOOT, 0, NULL, 0, &r,
+				sizeof(r));
 		fprintf(stderr, "Last boot %2x\n", r.code);
 		printf("done.\n");
 		return 0;
 	}
 
-
 	/* read writes and history_size */
 	p.subcmd = EC_PORT80_GET_INFO;
-	rv = ec_command(EC_CMD_PORT80_READ, cmdver,
-			&p, sizeof(p), &rsp, sizeof(rsp));
+	rv = ec_command(EC_CMD_PORT80_READ, cmdver, &p, sizeof(p), &rsp,
+			sizeof(rsp));
 	if (rv < 0) {
 		fprintf(stderr, "Read error at writes\n");
 		return rv;
@@ -9194,7 +9206,8 @@ int cmd_port80_read(int argc, char *argv[])
 	writes = rsp.get_info.writes;
 	history_size = rsp.get_info.history_size;
 
-	history = malloc(history_size*sizeof(uint16_t));
+	history = static_cast<uint16_t *>(
+		malloc(history_size * sizeof(uint16_t)));
 	if (!history) {
 		fprintf(stderr, "Unable to allocate buffer.\n");
 		return -1;
@@ -9696,15 +9709,16 @@ int cmd_typec_status(int argc, char *argv[])
 {
 	struct ec_params_typec_status p;
 	struct ec_response_typec_status *r =
-				(struct ec_response_typec_status *)ec_inbuf;
+		(struct ec_response_typec_status *)ec_inbuf;
 	char *endptr;
 	int rv, i;
-	char *desc;
+	std::string desc;
 
 	if (argc != 2) {
 		fprintf(stderr,
 			"Usage: %s <port>\n"
-			"  <port> is the type-c port to query\n", argv[0]);
+			"  <port> is the type-c port to query\n",
+			argv[0]);
 		return -1;
 	}
 
@@ -9757,7 +9771,7 @@ int cmd_typec_status(int argc, char *argv[])
 		desc = "UNKNOWN";
 		break;
 	}
-	printf("CC State: %s\n", desc);
+	printf("CC State: %s\n", desc.c_str());
 
 	if (r->dp_pin) {
 		switch (r->dp_pin) {
@@ -9783,7 +9797,7 @@ int cmd_typec_status(int argc, char *argv[])
 			desc = "UNKNOWN";
 			break;
 		}
-		printf("DP pin mode: %s\n", desc);
+		printf("DP pin mode: %s\n", desc.c_str());
 	}
 
 	if (r->mux_state) {
@@ -9885,11 +9899,11 @@ int cmd_tp_frame_get(int argc, char* argv[])
 	uint32_t remaining = 0, offset = 0;
 	int rv = EC_SUCCESS;
 	uint8_t *data;
-	struct ec_response_tp_frame_info* r;
+	struct ec_response_tp_frame_info *r;
 	struct ec_params_tp_frame_get p;
 
-	data = malloc(ec_max_insize);
-	r = malloc(ec_max_insize);
+	data = static_cast<uint8_t *>(malloc(ec_max_insize));
+	r = static_cast<ec_response_tp_frame_info *>(malloc(ec_max_insize));
 
 	if (data == NULL || r == NULL) {
 		fprintf(stderr, "Couldn't allocate memory.\n");
@@ -10439,11 +10453,14 @@ int main(int argc, char *argv[])
 
 	/* Prefer /dev method, which supports built-in mutex */
 	if (!(interfaces & COMM_DEV) || comm_init_dev(device_name)) {
+		// FIXME
+#if 0
 		/* If dev is excluded or isn't supported, find alternative */
 		if (acquire_gec_lock(GEC_LOCK_TIMEOUT_SECS) < 0) {
 			fprintf(stderr, "Could not acquire GEC lock.\n");
 			exit(1);
 		}
+#endif
 		if (comm_init_alt(interfaces, device_name, i2c_bus)) {
 			fprintf(stderr, "Couldn't find EC\n");
 			goto out;
@@ -10468,6 +10485,7 @@ int main(int argc, char *argv[])
 	print_help(argv[0], 0);
 
 out:
-	release_gec_lock();
+	// FIXME
+	// release_gec_lock();
 	return !!rv;
 }
