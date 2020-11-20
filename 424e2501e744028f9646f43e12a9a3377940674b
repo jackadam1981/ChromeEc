@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8b0f59_3f2843fd",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-20T23:07:43Z",
+      "side": 1,
+      "message": "Nit: These constants should be spelled \"SIDESEL.\"",
+      "range": {
+        "startLine": 75,
+        "startChar": 6,
+        "endLine": 75,
+        "endChar": 25
+      },
+      "revId": "424e2501e744028f9646f43e12a9a3377940674b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
