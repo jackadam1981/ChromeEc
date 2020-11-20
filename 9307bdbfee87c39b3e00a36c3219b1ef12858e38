@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d138f840_db1fe786",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-20T16:33:23Z",
+      "side": 1,
+      "message": "can you do this through a board_ callback instead, please? Function API boundaries are easier to trace than structure dependencies most of the time.",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 45
+      },
+      "revId": "9307bdbfee87c39b3e00a36c3219b1ef12858e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0303839_ad1b63fd",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2504,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-20T16:33:23Z",
+      "side": 1,
+      "message": "Please specified what is required of the board to provide when defining this. e.g. Board must define board_get_cc_tuning_parameter(int port) function.",
+      "range": {
+        "startLine": 2504,
+        "startChar": 3,
+        "endLine": 2504,
+        "endChar": 71
+      },
+      "revId": "9307bdbfee87c39b3e00a36c3219b1ef12858e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
