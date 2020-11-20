@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ce65069_fc608ecf",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-11-20T02:21:55Z",
+      "side": 1,
+      "message": "I try put board_power_5v_enable, to config ps8802 i2c address,\nBut ec write i2c to ps8762, will got failed, \nDose have other entry?",
+      "parentUuid": "88422ad6_b23493e5",
+      "revId": "9ef0b24f91350e3233164137595fde651abb28ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9c8cad1_103f4b08",
         "filename": "board/magolor/board.c",
         "patchSetId": 3
