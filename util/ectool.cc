@@ -15,6 +15,8 @@
 #include <unistd.h>
 #include <signal.h>
 #include <stdbool.h>
+#include <string>
+#include <limits>
 
 #include "battery.h"
 #include "comm-host.h"
@@ -9058,7 +9060,7 @@ static int cmd_tmp006cal_v1(int idx, int argc, char *argv[])
 	int i, rv, cmdsize;
 
 	/* Algorithm 1 parameter names */
-	static const char * const alg1_pname[] = {
+	static const char *const alg1_pname[] = {
 		"s0", "a1", "a2", "b0", "b1", "b2", "c2",
 		"d0", "d1", "ds", "e0", "e1",
 	};
@@ -9243,18 +9245,17 @@ int cmd_port80_read(int argc, char *argv[])
 	if (!ec_cmd_version_supported(EC_CMD_PORT80_READ, cmdver)) {
 		/* fall back to last boot */
 		struct ec_response_port80_last_boot r;
-		rv = ec_command(EC_CMD_PORT80_LAST_BOOT, 0,
-				NULL, 0, &r, sizeof(r));
+		rv = ec_command(EC_CMD_PORT80_LAST_BOOT, 0, NULL, 0, &r,
+				sizeof(r));
 		fprintf(stderr, "Last boot %2x\n", r.code);
 		printf("done.\n");
 		return 0;
 	}
 
-
 	/* read writes and history_size */
 	p.subcmd = EC_PORT80_GET_INFO;
-	rv = ec_command(EC_CMD_PORT80_READ, cmdver,
-			&p, sizeof(p), &rsp, sizeof(rsp));
+	rv = ec_command(EC_CMD_PORT80_READ, cmdver, &p, sizeof(p), &rsp,
+			sizeof(rsp));
 	if (rv < 0) {
 		fprintf(stderr, "Read error at writes\n");
 		return rv;
@@ -10011,7 +10012,8 @@ int cmd_typec_status(int argc, char *argv[])
 	if (argc != 2) {
 		fprintf(stderr,
 			"Usage: %s <port>\n"
-			"  <port> is the type-c port to query\n", argv[0]);
+			"  <port> is the type-c port to query\n",
+			argv[0]);
 		return -1;
 	}
 
