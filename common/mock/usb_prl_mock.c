@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Fake Protocol Layer module.
+ * Mock Protocol Layer module.
  */
 #include <string.h>
 #include "common.h"
@@ -10,6 +10,7 @@
 #include "usb_pe_sm.h"
 #include "usb_prl_sm.h"
 #include "mock/usb_prl_mock.h"
+#include "test_util.h"
 
 #ifndef TEST_BUILD
 #error "Mocks should only be in the test build."
@@ -22,6 +23,7 @@ struct extended_msg tx_emsg[CONFIG_USB_PD_PORT_MAX_COUNT];
 struct mock_prl_port_t {
 	enum pd_ctrl_msg_type last_ctrl_msg;
 	enum pd_data_msg_type last_data_msg_type;
+	enum tcpm_transmit_type last_transmit_type;
 	bool message_sent;
 	bool message_received;
 	int pe_error;
@@ -77,12 +79,16 @@ void prl_send_ctrl_msg(int port, enum tcpm_transmit_type type,
 	enum pd_ctrl_msg_type msg)
 {
 	mock_prl_port[port].last_ctrl_msg = msg;
+	mock_prl_port[port].last_data_msg_type = 0;
+	mock_prl_port[port].last_transmit_type = type;
 }
 
 void prl_send_data_msg(int port, enum tcpm_transmit_type type,
 	enum pd_data_msg_type msg)
 {
 	mock_prl_port[port].last_data_msg_type = msg;
+	mock_prl_port[port].last_ctrl_msg = 0;
+	mock_prl_port[port].last_transmit_type = type;
 }
 
 void prl_send_ext_data_msg(int port, enum tcpm_transmit_type type,
@@ -94,43 +100,55 @@ void prl_set_rev(int port, enum tcpm_transmit_type partner,
 {}
 
 
-enum pd_ctrl_msg_type fake_prl_get_last_sent_ctrl_msg(int port)
+int mock_prl_test_last_sent_msg(int port,
+				enum tcpm_transmit_type tx_type,
+				enum pd_ctrl_msg_type ctrl_msg,
+				enum pd_data_msg_type data_msg)
+{
+	TEST_EQ(mock_prl_port[port].last_transmit_type,
+		tx_type, "%d");
+	TEST_EQ(mock_prl_port[port].last_ctrl_msg,
+		ctrl_msg, "%d");
+	TEST_EQ(mock_prl_port[port].last_data_msg_type,
+		data_msg, "%d");
+	mock_prl_clear_last_sent_msg(port);
+	return EC_SUCCESS;
+}
+
+enum pd_ctrl_msg_type mock_prl_get_last_sent_ctrl_msg(int port)
 {
 	enum pd_ctrl_msg_type last = mock_prl_port[port].last_ctrl_msg;
 
-	fake_prl_clear_last_sent_ctrl_msg(port);
+	mock_prl_clear_last_sent_msg(port);
 	return last;
 }
 
-void fake_prl_clear_last_sent_ctrl_msg(int port)
-{
-	mock_prl_port[port].last_ctrl_msg = 0;
-}
-
-enum pd_data_msg_type fake_prl_get_last_sent_data_msg_type(int port)
+enum pd_data_msg_type mock_prl_get_last_sent_data_msg_type(int port)
 {
 	enum pd_data_msg_type last = mock_prl_port[port].last_data_msg_type;
 
-	fake_prl_clear_last_sent_data_msg(port);
+	mock_prl_clear_last_sent_msg(port);
 	return last;
 }
 
-void fake_prl_clear_last_sent_data_msg(int port)
+void mock_prl_clear_last_sent_msg(int port)
 {
 	mock_prl_port[port].last_data_msg_type = 0;
+	mock_prl_port[port].last_ctrl_msg = 0;
+	mock_prl_port[port].last_transmit_type = -1;
 }
 
-void fake_prl_message_sent(int port)
+void mock_prl_message_sent(int port)
 {
 	mock_prl_port[port].message_sent = 1;
 }
 
-void fake_prl_message_received(int port)
+void mock_prl_message_received(int port)
 {
 	mock_prl_port[port].message_received = 1;
 }
 
-void fake_prl_report_error(int port, enum pe_error e)
+void mock_prl_report_error(int port, enum pe_error e)
 {
 	mock_prl_port[port].pe_error = e;
 }
