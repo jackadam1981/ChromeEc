@@ -72,8 +72,91 @@ test_static void rx_message(enum pd_msg_type sop,
 	mock_prl_message_received(PORT0);
 }
 
+test_static int test_send_caps_error_before_connected(void)
+{
+	/* Enable PE as source, expect SOURCE_CAP. */
+	mock_pd_port[PORT0].power_role = PD_ROLE_SOURCE;
+	mock_tc_port[PORT0].pd_enable = 1;
+	mock_tc_port[PORT0].vconn_src = true;
+	task_wait_event(10 * MSEC);
+	TEST_EQ(mock_prl_test_last_sent_msg(PORT0, TCPC_TX_SOP,
+					    0, PD_DATA_SOURCE_CAP),
+		EC_SUCCESS, "%d");
 
-test_static int test_send_caps_error(void)
+	/* Simulate error sending SOURCE_CAP. */
+	mock_prl_report_error(PORT0, ERR_TCH_XMIT);
+	task_wait_event(20 * MSEC);
+
+	/* Expect VENDOR_DEF for cable identity, reply NOT_SUPPORTED. */
+	TEST_EQ(mock_prl_test_last_sent_msg(PORT0, TCPC_TX_SOP_PRIME,
+					    0, PD_DATA_VENDOR_DEF),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+	task_wait_event(10 * MSEC);
+	rx_message(PD_MSG_SOP_PRIME, PD_CTRL_NOT_SUPPORTED, 0,
+		   PD_ROLE_SINK, PD_ROLE_UFP, 0);
+	task_wait_event(200 * MSEC);
+
+	/* Expect SOURCE_CAP again. */
+	TEST_EQ(mock_prl_test_last_sent_msg(PORT0, TCPC_TX_SOP,
+					    0, PD_DATA_SOURCE_CAP),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+	task_wait_event(10 * MSEC);
+
+	/* REQUEST 5V, expect ACCEPT, PS_RDY. */
+	rx_message(PD_MSG_SOP, 0, PD_DATA_REQUEST,
+		   PD_ROLE_SINK, PD_ROLE_UFP, RDO_FIXED(1, 500, 500, 0));
+	task_wait_event(10 * MSEC);
+	TEST_EQ(mock_prl_test_last_sent_msg(PORT0, TCPC_TX_SOP,
+					    PD_CTRL_ACCEPT, 0),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+	task_wait_event(10 * MSEC);
+	TEST_EQ(mock_prl_test_last_sent_msg(PORT0, TCPC_TX_SOP,
+					    PD_CTRL_PS_RDY, 0),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+	task_wait_event(30 * MSEC);
+
+	/* Expect VENDOR_DEF for partner identity, reply NOT_SUPPORTED. */
+	TEST_EQ(mock_prl_test_last_sent_msg(PORT0, TCPC_TX_SOP,
+					    0, PD_DATA_VENDOR_DEF),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+	task_wait_event(10 * MSEC);
+	rx_message(PD_MSG_SOP, PD_CTRL_NOT_SUPPORTED, 0,
+		   PD_ROLE_SINK, PD_ROLE_UFP, 0);
+	task_wait_event(30 * MSEC);
+
+	/* Expect GET_SOURCE_CAP, reply NOT_SUPPORTED. */
+	TEST_EQ(mock_prl_test_last_sent_msg(PORT0, TCPC_TX_SOP,
+					    PD_CTRL_GET_SOURCE_CAP, 0),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+	task_wait_event(10 * MSEC);
+	rx_message(PD_MSG_SOP, PD_CTRL_NOT_SUPPORTED, 0,
+		   PD_ROLE_SINK, PD_ROLE_UFP, 0);
+	task_wait_event(30 * MSEC);
+
+	/*
+	 * Expect GET_SINK_CAP, reply with a simple Sink Cap since sink partners
+	 * must support this message.
+	 */
+	TEST_EQ(mock_prl_test_last_sent_msg(PORT0, TCPC_TX_SOP,
+					    PD_CTRL_GET_SINK_CAP, 0),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+	task_wait_event(10 * MSEC);
+	rx_message(PD_MSG_SOP, 0, PD_DATA_SINK_CAP,
+		   PD_ROLE_SINK, PD_ROLE_UFP,
+		   PDO_FIXED(5000, 500, PDO_FIXED_COMM_CAP));
+	task_wait_event(200 * MSEC);
+
+	return EC_SUCCESS;
+}
+
+test_static int test_send_caps_error_when_connected(void)
 {
 	/* Enable PE as source, expect SOURCE_CAP. */
 	mock_pd_port[PORT0].power_role = PD_ROLE_SOURCE;
@@ -180,7 +263,8 @@ void run_test(int argc, char **argv)
 {
 	test_reset();
 
-	RUN_TEST(test_send_caps_error);
+	RUN_TEST(test_send_caps_error_before_connected);
+	RUN_TEST(test_send_caps_error_when_connected);
 
 	/* Do basic state machine validity checks last. */
 	RUN_TEST(test_pe_no_parent_cycles);
