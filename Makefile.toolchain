@@ -44,6 +44,9 @@ HOSTCC?=$(CCACHE) $(HOST_CROSS_COMPILE)gcc
 HOSTCXX?=$(CCACHE) $(HOST_CROSS_COMPILE)g++
 PROTOC?=protoc
 
+#FIXME: Don't use EXTRA_CFLAGS
+EXTRA_CFLAGS+=-pg
+
 C_WARN = -Wstrict-prototypes -Wdeclaration-after-statement -Wno-pointer-sign
 COMMON_WARN = -Wall -Wundef -Werror -Werror-implicit-function-declaration \
 	-Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member \
