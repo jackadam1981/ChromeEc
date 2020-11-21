@@ -147,6 +147,24 @@
       "parentUuid": "8b43a15c_fc093ead",
       "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6bc5c41_859def55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-21T02:23:54Z",
+      "side": 1,
+      "message": "H1 shouldn\u0027t disconnect as we set `rddkeepalive` when servod starts up.",
+      "parentUuid": "e4205193_041ee75b",
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
