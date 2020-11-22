@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4cd4b0_533e3caa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2020-11-22T04:12:43Z",
+      "side": 1,
+      "message": "hi Gwendal： I test this patch 10 times in kukui.12573.B firmware branch and motion_sense task can be in idle state.  In TOT master branch ,Dut cannot boot,so i cannot verify.",
+      "revId": "863e425adab388d89f88eaf27d6c0822ac1e42fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
