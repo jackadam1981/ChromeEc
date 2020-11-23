@@ -431,6 +431,8 @@ static int dsleep_recovery_margin_us = 1000000;
 
 /* STOP_MODE_LATENCY: delay to wake up from STOP mode with main regulator off */
 #define STOP_MODE_LATENCY 50 /* us */
+/* PLL_LOCK_LATENCY: delay to switch from HSI to PLL */
+#define PLL_LOCK_LATENCY 150 /* us */
 /*
  * SET_RTC_MATCH_DELAY: max time to set RTC match alarm. If we set the alarm
  * in the past, it will never wake up and cause a watchdog.
@@ -462,11 +464,17 @@ void __idle(void)
 		next_delay = __hw_clock_event_get() - t0.le.lo;
 
 		if (DEEP_SLEEP_ALLOWED &&
-		    (next_delay > (STOP_MODE_LATENCY + SET_RTC_MATCH_DELAY))) {
+		    (next_delay > (STOP_MODE_LATENCY + PLL_LOCK_LATENCY +
+				   SET_RTC_MATCH_DELAY))) {
 			/* Deep-sleep in STOP mode */
 			idle_dsleep_cnt++;
 
 			/*uart_enable_wakeup(1); NOT SUPPORTED on STM32F4*/
+
+			/* Switch to HSI */
+			clock_switch_osc(OSC_HSI);
+			/* Turn off the PLL1 to save power */
+			clock_enable_osc(OSC_PLL, false);
 
 			/* Set deep sleep bit */
 			CPU_SCB_SYSCTRL |= 0x4;
@@ -487,6 +495,11 @@ void __idle(void)
 			rtc_diff = get_rtc_diff(&rtc0, &rtc1);
 			t0.val = t0.val + rtc_diff;
 			force_time(t0);
+
+			/* turn on PLL and wait until it's ready */
+			clock_enable_osc(OSC_PLL, true);
+			/* Switch to PLL */
+			clock_switch_osc(OSC_PLL);
 
 			/* Record time spent in deep sleep. */
 			idle_dsleep_time_us += rtc_diff;
