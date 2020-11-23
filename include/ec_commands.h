@@ -6642,6 +6642,32 @@ struct ec_response_typec_status {
 	uint32_t sink_cap_pdos[7];	/* Max 7 PDOs can be present */
 } __ec_align1;
 
+/**
+ * Get the number of peripheral charge ports
+ */
+#define EC_CMD_PCHG_COUNT 0x0134
+
+#define EC_PCHG_MAX_PORTS 8
+
+struct ec_response_pchg_count {
+	uint8_t port_count;
+} __ec_align1;
+
+/**
+ * Get the status of a peripheral charge port
+ */
+#define EC_CMD_PCHG_STATUS 0x0135
+
+struct ec_params_pchg_status {
+	uint8_t port;
+} __ec_align1;
+
+struct ec_response_pchg_status {
+	uint8_t state; /* enum pchg_state state */
+	uint8_t battery_percentage;
+	uint32_t error; /* enum pchg_error */
+} __ec_align2;
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
