@@ -85,6 +85,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bc8b620_88006e99",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-11-23T18:19:02Z",
+      "side": 1,
+      "message": "Could you add more detail to this comment on how clearing the alert register \"Mitigates EC circular RX buffer overflow\".",
+      "range": {
+        "startLine": 1179,
+        "startChar": 6,
+        "endLine": 1179,
+        "endChar": 35
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf444d08_4fc62fd9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-11-23T18:19:02Z",
+      "side": 1,
+      "message": "Maybe you should check for failure here too and ++failed_attempts if it does.",
+      "range": {
+        "startLine": 1181,
+        "startChar": 4,
+        "endLine": 1181,
+        "endChar": 16
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68f85f9c_08831b35",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 4
@@ -114,6 +160,24 @@
       "side": 1,
       "message": "Please see b/156138479 for how this manifests on (TCPMv2 + TCPMv1). Despite belief, no draining occurs in TCPMv1. Rather -- local RX buffer may be serviced, **but remote TCPC RX buffer is still enqueueing messages while being ignored**.\n\nThese remote messages are then all handled at once when I2C is reconnencted (seconds) later, resulting in massive logjarm/corruption/desync.\n\n```\nPort resumes...\nBut we\u0027re handling STALE vdm:attn messages from before the d/c...?\n```\n\nWe\u0027ve long since D/C\u0027ed due to ramifications from \"hanging up\" on the port. We abruptly ceased communication with the TCPC, without turning off SOP\u0027 response. So the queue starts to (inappropriately) handle after the resume.\n\nI can repeat this test on TCPMv2 if it would help. Or on different TCPC with different remote RX buffering behavior. I suspect similar misbehavior exists.",
       "parentUuid": "68f85f9c_08831b35",
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a13e13_0dd169b3",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-11-23T18:19:02Z",
+      "side": 1,
+      "message": "TCPMv1 does drain the queue. See the snippet from TCPMv1 below:\n\"\n                        rstatus \u003d tcpm_release(port);\n                        if (rstatus !\u003d 0 \u0026\u0026 rstatus !\u003d EC_ERROR_UNIMPLEMENTED)\n                                tcpc_prints(\"release failed!\", port);\n#endif\n                        /* Drain any outstanding software message queues. */\n                        tcpm_clear_pending_messages(port);\n\n                        /* Wait for resume */\n                        while (pd[port].task_state \u003d\u003d PD_STATE_SUSPENDED) {\n\"\nWe should add the same to TCPMv2. Something like the following:\n\nstatic void tc_disabled_entry(const int port)\n{\n    print_current_state(port);\n\n    /* Drain any outstanding software message queues. */\n    tcpm_clear_pending_messages(port);\n}",
+      "parentUuid": "89e40ed3_1a7457dc",
       "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
