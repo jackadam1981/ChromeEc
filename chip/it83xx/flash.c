@@ -561,10 +561,16 @@ int flash_physical_protect_now(int all)
 	}
 
 	/*
-	 * bit[0], eflash protect lock register which can only be write 1 and
-	 * only be cleared by power-on reset.
+	 * Enable the lock bit of flash's protection registers only if chip
+	 * supports software hard reset (console command: reboot hard) which
+	 * is able to reset the lock bit.
 	 */
-	IT83XX_GCTRL_EPLR |= 0x01;
+	if (IS_ENABLED(IT83XX_ETWD_HW_RESET_SUPPORT))
+		/*
+		 * bit[0], eflash protect lock register which can only be
+		 * write 1 and only be cleared by power-on reset.
+		 */
+		IT83XX_GCTRL_EPLR |= 0x01;
 
 	return EC_SUCCESS;
 }
@@ -728,14 +734,22 @@ int flash_pre_init(void)
 						   EC_FLASH_PROTECT_RO_NOW);
 			if (rv)
 				return rv;
-
-			/* Re-read flags */
-			prot_flags = flash_get_protect();
 		}
 	} else {
 		/* Don't want RO flash protected */
 		unwanted_prot_flags |= EC_FLASH_PROTECT_RO_NOW;
+		/*
+		 * Clear flash write protect registers manually if chip isn't
+		 * able to reset the registers with hard reset from software.
+		 */
+		if (!IS_ENABLED(IT83XX_ETWD_HW_RESET_SUPPORT) &&
+			(reset_flags & EC_RESET_FLAG_HARD))
+			for (int i = 0; i < 32; i++)
+				IT83XX_GCTRL_EWPR0PFEC(i) = 0;
 	}
+
+	/* Re-read flags */
+	prot_flags = flash_get_protect();
 
 	/* If there are no unwanted flags, done */
 	if (!(prot_flags & unwanted_prot_flags))
