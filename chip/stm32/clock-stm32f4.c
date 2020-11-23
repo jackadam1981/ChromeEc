@@ -305,6 +305,7 @@ void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)
 void clock_enable_module(enum module_id module, int enable)
 {
 	if (module == MODULE_FAST_CPU) {
+		ccprintf("Fast CPU %d\n", enable);
 		/* the PLL would be off in low power mode, disable it */
 		if (enable)
 			disable_sleep(SLEEP_MASK_PLL);
@@ -544,3 +545,49 @@ DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
 			"",
 			"Print last idle stats");
 #endif /* CONFIG_LOW_POWER_IDLE */
+
+/*****************************************************************************/
+/* Console commands */
+
+static int command_clock(int argc, char **argv)
+{
+	if (argc >= 2) {
+		if (!strcasecmp(argv[1], "hsi")) {
+			clock_set_osc(OSC_HSI);
+			enable_sleep(SLEEP_MASK_PLL);
+		}
+#ifdef CONFIG_STM32_CLOCK_HSE_HZ
+		else if (!strcasecmp(argv[1], "hse"))
+			clock_set_osc(OSC_HSE);
+#endif /* CONFIG_STM32_CLOCK_HSE_HZ */
+		else if (!strcasecmp(argv[1], "pll"))
+			clock_set_osc(OSC_PLL);
+		else
+			return EC_ERROR_PARAM1;
+	}
+	ccprintf("Clock frequency is now %d Hz\n", clock_get_cpu_freq());
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(clock, command_clock,
+			"hsi | hse | pll", "Set clock source");
+
+static int command_stop(int argc, char **argv)
+{
+	ccputs("STOP forever...\n");
+	cflush();
+
+	asm volatile("cpsid i");
+	/* set deep sleep bit */
+	CPU_SCB_SYSCTRL |= 0x4;
+	/* ensure outstanding memory transactions complete */
+	asm volatile("dsb");
+	asm("wfi");
+
+	CPU_SCB_SYSCTRL &= ~0x4;
+	asm volatile("cpsie i");
+
+	ccputs("back? oh no...\n");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(stop, command_stop,
+			"", "Test low power baseline");
