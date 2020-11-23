@@ -45,13 +45,22 @@
 #define ULTRA_TASK_STACK_SIZE 1056
 #define TRENTA_TASK_STACK_SIZE 1184
 
+/* L1TCM settings */
+#if 0
+#define __RAM_CODE_SECTION_NAME ".l1tcm.text"
+#define __ram_code __attribute__((section(__RAM_CODE_SECTION_NAME)))
+#else
+#define __ram_code
+#endif
+#define CONFIG_L1TCM_BASE 0x70000000
+#define CONFIG_L1TCM_SIZE 0x8000
+#define CONFIG_L1TCM_BASE_LOAD 0x10700000
+
 /* TODO: need to confirm, placeholder */
 #define GPIO_PIN(num) ((num) / 32), ((num) % 32)
 #define GPIO_PIN_MASK(p, m) .port = (p), .mask = (m)
 #undef CONFIG_TASK_PROFILING
 /* TODO: not yet supported */
 #undef CONFIG_MPU
-/* TODO: core/riscv-rv32i pollution */
-#define __ram_code
 
 #endif /* __CROS_EC_CONFIG_CHIP_H */
