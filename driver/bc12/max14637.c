@@ -53,6 +53,7 @@ static int is_chg_det_activated(const struct max14637_config_t * const cfg)
 static void activate_chip_enable(
 	const struct max14637_config_t * const cfg, const int enable)
 {
+	CPRINTS("Debug - max detecting enable %d", enable);
 	gpio_set_level(
 		cfg->chip_enable_pin,
 		!!enable ^ !!(cfg->flags & MAX14637_FLAGS_ENABLE_ACTIVE_LOW));
@@ -81,7 +82,7 @@ static void bc12_detect(const int port)
 	 */
 	msleep(100);
 	activate_chip_enable(cfg, 0);
-	msleep(1);
+	msleep(100);
 	activate_chip_enable(cfg, 1);
 
 	new_chg.voltage = USB_CHARGER_VOLTAGE_MV;
@@ -130,11 +131,13 @@ static void detect_or_power_down_ic(const int port)
 	vbus_present = pd_snk_is_vbus_provided(port);
 #endif /* !defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) */
 
+	CPRINTS("C%d Debug - max detecting vbus %d", port, vbus_present);
 	if (vbus_present) {
 #if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
 		/* Turn on the 5V rail to allow the chip to be powered. */
 		power_5v_enable(task_get_current(), 1);
 #endif
+		CPRINTS("C%d Debug - max detecting pd role %d", port, pd_get_role(port));
 		if (pd_get_role(port) == PD_ROLE_SINK)
 			bc12_detect(port);
 	} else {
@@ -161,13 +164,16 @@ void usb_charger_task(void *u)
 	 */
 	activate_chip_enable(cfg, 1);
 	/* Check whether bc1.2 client mode detection needs to be triggered */
+	CPRINTS("C%d Debug - usb chg task init", port);
 	detect_or_power_down_ic(port);
 
 	while (1) {
 		evt = task_wait_event(-1);
 
-		if (evt & USB_CHG_EVENT_VBUS)
+		if (evt & USB_CHG_EVENT_VBUS) {
+			CPRINTS("C%d Debug - usb chg task gets event", port);
 			detect_or_power_down_ic(port);
+		}
 	}
 }
 

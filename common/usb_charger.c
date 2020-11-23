@@ -24,6 +24,8 @@
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 static void update_vbus_supplier(int port, int vbus_level)
 {
 	struct charge_port_info charge = {0};
@@ -71,6 +73,7 @@ void usb_charger_vbus_change(int port, int vbus_level)
 
 #ifdef HAS_TASK_USB_CHG_P0
 	/* USB Charger task(s) */
+	CPRINTS("C%d DEBUG - set event to usb chg task", port);
 	task_set_event(USB_CHG_PORT_TO_TASK_ID(port), USB_CHG_EVENT_VBUS, 0);
 #endif
 
