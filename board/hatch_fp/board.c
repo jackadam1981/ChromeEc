@@ -36,17 +36,20 @@ static void ap_deferred(void)
 {
 	/*
 	 * in S3:   SLP_S3_L is 0 and SLP_S0_L is X.
-	 * in S0ix: SLP_S3_L is X and SLP_S0_L is 0.
+	 * in S0ix: SLP_S3_L is 1 and SLP_S0_L is 0.
 	 * in S0:   SLP_S3_L is 1 and SLP_S0_L is 1.
 	 * in S5/G3, the FP MCU should not be running.
+	 *
+	 * Some platforms (Zork) have a broken SLP_S0_L (stuck to 0 in S0)
+	 * for now, only uses SLP_S3_L for the AP state.
+	 * This won't save power on platforms using only S0ix (e.g. Hatch).
 	 */
-	int running = gpio_get_level(GPIO_PCH_SLP_S3_L)
-			&& gpio_get_level(GPIO_PCH_SLP_S0_L);
+	int running = gpio_get_level(GPIO_PCH_SLP_S3_L);
 
 	if (running) { /* S0 */
 		disable_sleep(SLEEP_MASK_AP_RUN);
 		hook_notify(HOOK_CHIPSET_RESUME);
-	} else { /* S0ix/S3 */
+	} else { /* S3 */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 		enable_sleep(SLEEP_MASK_AP_RUN);
 	}
@@ -86,6 +89,9 @@ static void configure_fp_sensor_spi(void)
 static void board_init(void)
 {
 	enum fp_transport_type ret_transport = get_fp_transport_type();
+
+	/* Run until the first S3 entry */
+	disable_sleep(SLEEP_MASK_AP_RUN);
 
 	/* Configure and enable SPI as master for FP sensor */
 	configure_fp_sensor_spi();
