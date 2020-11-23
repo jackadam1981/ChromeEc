@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4884ca3a_63eeb8c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1439543
+      },
+      "writtenOn": "2020-11-23T01:21:07Z",
+      "side": 1,
+      "message": "@Dianna, actually this should be done before you need to access the PS8762 with new address. Using I2C is necessary, because we need to configure the new address that is not defined by addr-pin",
+      "parentUuid": "50abafe9_82c473ad",
+      "revId": "3128d748b6a226019e220c79e9bc5d35df37721d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "076820f0_3f46a0b6",
