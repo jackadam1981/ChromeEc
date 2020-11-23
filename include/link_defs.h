@@ -115,6 +115,13 @@ extern const void *__data_lma_start;
 extern const void *__data_start;
 extern const void *__data_end;
 
+/* L1TCM image sections. */
+extern const void *__l1tcm_data_lma_start;
+extern void *__l1tcm_data_start;
+extern void *__l1tcm_data_end;
+extern void *__l1tcm_bss_start;
+extern void *__l1tcm_bss_end;
+
 /* DRAM image sections. */
 extern const void *__dram_data_lma_start;
 extern void *__dram_data_start;
