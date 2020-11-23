@@ -16,6 +16,24 @@
       "message": "I\u0027m only mildly familiar with the queue implementation\nbut either bad event can happen (IRQ when you enqueue something from host) and we need to fix it now, or it cannot and we won\u0027t need TODO",
       "revId": "c9ae614e7af1aeefc629a653849b52894c1b92a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "881b1e63_b10e583d",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-23T17:07:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a6771c7_264a2f75",
+      "revId": "c9ae614e7af1aeefc629a653849b52894c1b92a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
