@@ -39,6 +39,30 @@
       },
       "revId": "385e39886f4d733ab6f6c06380ce5c70b4909ed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a01373_981e4ae2",
+        "filename": "board/drobit/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2020-11-23T01:20:59Z",
+      "side": 1,
+      "message": "Yes. Base on b:173534296 #4, thw nominal voltage is 11.55V.\nI will modify it and upload code. Thanks.",
+      "parentUuid": "d6e897cb_9f745c35",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "385e39886f4d733ab6f6c06380ce5c70b4909ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
