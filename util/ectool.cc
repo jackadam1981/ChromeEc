@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "compiler.h"
+
 #include <assert.h>
 #include <ctype.h>
 #include <errno.h>
@@ -37,6 +39,8 @@
 #include "usb_pd.h"
 
 #include <libec/add_entropy_command.h>
+
+#include <libec/versions_command.h>
 
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
@@ -980,33 +984,10 @@ int cmd_inventory(int argc, char *argv[])
 	return 0;
 }
 
-static int get_cmdversions_v0(uint8_t cmd, uint32_t *version_mask)
-{
-	struct ec_params_get_cmd_versions p;
-	struct ec_response_get_cmd_versions r;
-	int rv;
-
-	p.cmd = cmd;
-	rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 0, &p, sizeof(p), &r,
-			sizeof(r));
-	if (rv < 0) {
-		if (rv == -EC_RES_INVALID_PARAM)
-			printf("Command 0x%02x not supported by EC.\n", cmd);
-
-		return rv;
-	}
-
-	*version_mask = r.version_mask;
-	return 0;
-}
-
 int cmd_cmdversions(int argc, char *argv[])
 {
-	struct ec_params_get_cmd_versions_v1 p;
-	struct ec_response_get_cmd_versions r;
 	char *e;
 	int cmd;
-	int rv;
 
 	if (argc < 2) {
 		fprintf(stderr, "Usage: %s <cmd>\n", argv[0]);
@@ -1018,37 +999,15 @@ int cmd_cmdversions(int argc, char *argv[])
 		return -1;
 	}
 
-	if (cmd > 0xff) {
-		/* Ensure the EC support GET_CMD_VERSIONS v1. */
-		rv = get_cmdversions_v0(EC_CMD_GET_CMD_VERSIONS,
-					&r.version_mask);
-		if (rv < 0)
-			return rv;
-
-		if (!(r.version_mask & EC_VER_MASK(1))) {
-			printf("16 bits cmdversions not supported by EC.\n");
-			return -1;
-		}
-
-		/* Use GET_CMD_VERSIONS v1. */
-		p.cmd = cmd;
-		rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 1, &p, sizeof(p), &r,
-				sizeof(r));
-		if (rv < 0) {
-			if (rv == -EC_RES_INVALID_PARAM)
-				printf("Command 0x%02x not supported by EC.\n",
-				       cmd);
-
-			return rv;
-		}
-	} else {
-		rv = get_cmdversions_v0(cmd, &r.version_mask);
-		if (rv < 0)
-			return rv;
+	ec::VersionsCommand versions_command(cmd);
+	if (!versions_command.Run(get_fd())) {
+		fprintf(stderr, "Failed to run versions command\n");
+		return -1;
 	}
 
-	printf("Command 0x%02x supports version mask 0x%08x\n", cmd,
-	       r.version_mask);
+	printf("Command 0x%02x supports version mask 0x%08x\n",
+	       versions_command.CommandCode(),
+	       versions_command.Resp()->version_mask);
 	return 0;
 }
 
