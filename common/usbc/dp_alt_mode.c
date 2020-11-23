@@ -194,6 +194,26 @@ void dp_vdm_naked(int port, enum tcpm_transmit_type type, uint8_t vdm_cmd)
 	}
 }
 
+#ifdef BOARD_ELDRID
+int hp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
+{
+	int vdo_count_ret;
+
+		vdm[0] = pd_dfp_enter_mode(port, TCPC_TX_SOP,
+				USB_VID_HP, 0);
+		CPRINTS("[SC] hp_setup_next_vdm");
+		CPRINTS("[SC] vdm[0]=%d", vdm[0]);
+		if (vdm[0] == 0)
+			return -1;
+		/* CMDT_INIT is 0, so this is a no-op */
+		vdm[0] |= VDO_CMDT(CMDT_INIT);
+		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		vdo_count_ret = 1;
+
+	return vdo_count_ret;
+}
+#endif
+
 int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 {
 	const struct svdm_amode_data *modep = pd_get_amode_data(port,
