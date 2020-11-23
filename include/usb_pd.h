@@ -1072,6 +1072,21 @@ bool pd_get_partner_dual_role_power(int port);
  */
 bool pd_get_partner_unconstr_power(int port);
 
+/**
+ * Check if poower role swap may be needed on AP resume.
+ *
+ * @param port USB-C Port number
+ */
+void pd_resume_check_pr_swap_needed(int port);
+
+/**
+ * Determine if the partner device can be our source
+ *
+ * pdo_cnt Number of PDOs
+ * pdos Array of PDOs
+ */
+bool pd_can_source_from_device(const int pdo_cnt, const uint32_t *pdos);
+
 /* Control Message type */
 enum pd_ctrl_msg_type {
 	/* 0 Reserved */
