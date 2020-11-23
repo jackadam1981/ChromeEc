@@ -39,6 +39,24 @@
       "message": "Should we just put a guard for the caller?",
       "revId": "8af4d851feb0fe422c46d2f0b1f8d968182ee5c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d960b050_15f92c15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-11-23T19:08:23Z",
+      "side": 1,
+      "message": "Given (almost) all other drivers have a set_range(), obsessed with code size, I did not.",
+      "parentUuid": "90ca9317_a4d8c987",
+      "revId": "8af4d851feb0fe422c46d2f0b1f8d968182ee5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
