@@ -578,6 +578,7 @@ void tc_request_power_swap(int port)
 /* Flag to indicate PD comm is disabled on init */
 static int pd_disabled_on_init;
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 static void pd_update_pd_comm(void)
 {
 	int i;
@@ -594,6 +595,7 @@ static void pd_update_pd_comm(void)
 	}
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pd_update_pd_comm, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 static bool pd_comm_allowed_by_policy(void)
 {
@@ -2281,9 +2283,13 @@ static void tc_attached_snk_entry(const int port)
 								cc1, cc2);
 			typec_set_input_current_limit(port,
 					tc[port].typec_curr, TYPE_C_VOLTAGE);
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 			charge_manager_update_dualrole(port,
 				pd_is_port_partner_dualrole(port) ?
 				CAP_DUALROLE : CAP_DEDICATED);
+#else
+			charge_manager_update_dualrole(port, CAP_DEDICATED);
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 		}
 
 		/* Apply Rd */

@@ -530,9 +530,11 @@ static void charge_manager_switch_to_source(int port)
 	if (!is_pd_port(port))
 		return;
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 	/* If connected to dual-role device, then ask for a swap */
 	if (dualrole_capability[port] == CAP_DUALROLE && is_sink(port))
 		pd_request_power_swap(port);
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 }
 
 /**
@@ -1134,6 +1136,7 @@ int charge_manager_set_override(int port)
 				hook_call_deferred(
 					&charge_manager_refresh_data, 0);
 		}
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 	}
 	/*
 	 * If the attached device is capable of being a sink, request a
@@ -1146,6 +1149,7 @@ int charge_manager_set_override(int port)
 		hook_call_deferred(&charge_override_timeout_data,
 				   POWER_SWAP_TIMEOUT);
 		pd_request_power_swap(port);
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 	/* Can't charge from requested port -- return error. */
 	} else
 		retval = EC_ERROR_INVAL;
