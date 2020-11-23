@@ -210,6 +210,8 @@ const char help_str[] =
 	"      Prints saved panic info\n"
 	"  pause_in_s5 [on|off]\n"
 	"      Whether or not the AP should pause in S5 on shutdown\n"
+	"  pchg [<port> [reset/init/enable/disable]]\n"
+	"      Get and set peripheral charge port info & status\n"
 	"  pdcontrol [suspend|resume|reset|disable|on]\n"
 	"      Controls the PD chip\n"
 	"  pdchipinfo <port>\n"
@@ -9328,6 +9330,73 @@ int cmd_charge_port_override(int argc, char *argv[])
 	return 0;
 }
 
+static void cmd_pchg_help(char *cmd)
+{
+	fprintf(stderr,
+	"  Usage1: %s\n"
+	"  Usage2: %s <port>\n"
+	"  Usage3: %s <port> reset/init/enable/disable\n"
+	"    <port> is a peripheral port number.\n"
+	"  Usage1 prints the number of ports.\n"
+	"  Usage2 prints the status of a port.\n"
+	"  Usage3 resets, initializes, enables, or disables a port.\n",
+	cmd, cmd, cmd);
+}
+
+int cmd_pchg(int argc, char *argv[])
+{
+	int port, port_count;
+	char *e;
+	int rv;
+	struct ec_response_pchg_count *rsp_count = ec_inbuf;
+
+	rv = ec_command(EC_CMD_PCHG_COUNT, 0, NULL, 0, ec_inbuf, ec_max_insize);
+	if (rv < 0) {
+		fprintf(stderr, "Error code: %d\n", rv);
+		return rv;
+	}
+	port_count = rsp_count->port_count;
+
+	if (argc == 1) {
+		/* Usage1 */
+		printf("%d\n", port_count);
+		return 0;
+	}
+
+	port = strtol(argv[1], &e, 0);
+	if ((e && *e) || port >= port_count) {
+		fprintf(stderr, "Bad port index\n");
+		return -1;
+	}
+
+	if (argc < 3) {
+		/* Usage2 */
+		struct ec_params_pchg_status *p = ec_outbuf;
+		struct ec_response_pchg_status *r = ec_inbuf;
+
+		p->port = port;
+		rv = ec_command(EC_CMD_PCHG_STATUS, 0, ec_outbuf, sizeof(*p),
+				ec_inbuf, ec_max_insize);
+		if (rv < 0) {
+			fprintf(stderr, "Error code: %d\n", rv);
+			return rv;
+		}
+
+		printf("State: %d\n", r->state);
+		printf("Battery: %d%%\n", r->battery_percentage);
+		printf("Flags: 0x%x\n", r->error);
+	} else if (argc < 4) {
+		/* Usage3 */
+		fprintf(stderr, "Usage3 not implemented\n");
+		return -1;
+	}
+
+	fprintf(stderr, "Invalid parameter count\n");
+	cmd_pchg_help(argv[0]);
+
+	return -1;
+}
+
 int cmd_pd_log(int argc, char *argv[])
 {
 	union {
@@ -10296,6 +10365,7 @@ const struct command commands[] = {
 	{"nextevent", cmd_next_event},
 	{"panicinfo", cmd_panic_info},
 	{"pause_in_s5", cmd_s5},
+	{"pchg", cmd_pchg},
 	{"pdgetmode", cmd_pd_get_amode},
 	{"pdsetmode", cmd_pd_set_amode},
 	{"port80read", cmd_port80_read},
