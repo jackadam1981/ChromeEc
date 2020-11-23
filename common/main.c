@@ -96,6 +96,12 @@ test_mockable __keep int main(void)
 	system_pre_init();
 	system_common_pre_init();
 
+#ifdef CONFIG_L1TCM_BASE
+	memset(&__l1tcm_bss_start, 0,
+	       (uintptr_t)(&__l1tcm_bss_end) - (uintptr_t)(&__l1tcm_bss_start));
+	memcpy(&__l1tcm_data_start, &__l1tcm_data_lma_start,
+	       (uintptr_t)(&__l1tcm_data_end) - (uintptr_t)(&__l1tcm_data_start));
+#endif
 #ifdef CONFIG_DRAM_BASE
 	/* Now that DRAM is initialized, clear up DRAM .bss, copy .data over. */
 	memset(&__dram_bss_start, 0,
