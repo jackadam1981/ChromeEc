@@ -20,6 +20,7 @@
  * Page 0 = 0x028, Page 1 = 0x29, Page 2 = 0x2A.
  */
 #define PS8802_I2C_ADDR_FLAGS_CUSTOM	0x28
+#define PS8802_I2C_ADDR_FLAGS_CUSTOM_PAGE2_ADDR	0x2A
 
 /*
  * PAGE 0 Register Definitions
@@ -73,6 +74,7 @@
 #define PS8802_P1_ADDR			0x0A
 #define PS8802_ADDR_CFG			0xB0
 #define PS8802_I2C_SLAV_ADDR	0x50
+#define PS8802_Standby_Mode		0xaa
 
 extern const struct usb_mux_driver ps8802_usb_mux_driver;
 
@@ -86,5 +88,6 @@ int ps8802_i2c_field_update8(const struct usb_mux *me, int page, int offset,
 int ps8802_i2c_field_update16(const struct usb_mux *me, int page, int offset,
 			     uint16_t field_mask, uint16_t set_value);
 int ps8802_chg_i2c_addr(int i2c_port);
+int ps8802_usb_standby(int i2c_port, int i2c_addr);
 
 #endif /* __CROS_EC_USB_RETIMER_PS8802_H */
