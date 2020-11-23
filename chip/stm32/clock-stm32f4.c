@@ -445,7 +445,7 @@ static uint64_t idle_dsleep_time_us;
 static int dsleep_recovery_margin_us = 1000000;
 
 /* STOP_MODE_LATENCY: delay to wake up from STOP mode with main regulator off */
-#define STOP_MODE_LATENCY 50 /* us */
+#define STOP_MODE_LATENCY 250 /* us */
 /*
  * SET_RTC_MATCH_DELAY: max time to set RTC match alarm. If we set the alarm
  * in the past, it will never wake up and cause a watchdog.
@@ -457,6 +457,8 @@ void low_power_init(void)
 {
 	/* Turn off the main regulator during stop mode */
 	STM32_PWR_CR |= (1 << 0) /* LPDS */;
+	/*  Low-power regulator in Low Voltage and Flash memory in deep sleep */
+	STM32_PWR_CR |= (1 << 10) /* LPLVDS */;
 }
 
 void clock_refresh_console_in_use(void)
