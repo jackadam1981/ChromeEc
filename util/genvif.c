@@ -616,11 +616,11 @@ static bool can_act_as_device(void)
 	if (was_overridden)
 		return override_value;
 
-	#if defined(USB_DEV_CLASS) && defined(USB_CLASS_BILLBOARD)
-		return (USB_DEV_CLASS == USB_CLASS_BILLBOARD);
-	#else
-		return false;
-	#endif
+#if defined(USB_DEV_CLASS) && defined(USB_CLASS_BILLBOARD)
+	return (USB_DEV_CLASS == USB_CLASS_BILLBOARD);
+#else
+	return false;
+#endif
 }
 
 static bool can_act_as_host(void)
