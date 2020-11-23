@@ -288,3 +288,16 @@ int ps8802_chg_i2c_addr(int i2c_port)
 
 	return rv;
 }
+
+/*
+ * Setting operation mode to standby mode
+ */
+int ps8802_usb_standby(int i2c_port, int i2c_addr)
+{
+	int rv;
+
+	rv = i2c_write8(i2c_port,
+			i2c_addr, PS8802_REG2_MODE, PS8802_Standby_Mode);
+
+	return rv;
+}
