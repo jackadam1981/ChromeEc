@@ -232,6 +232,15 @@ void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
+enum pd_dual_role_states board_pd_get_drp_mode(int port)
+{
+	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
+
+	return pd_dual_role_init[port];
+}
+
 static int board_ppc_disable_dead_battery(void)
 {
 	int reg = SN5S330_FUNC_SET4;
@@ -280,30 +289,6 @@ static void board_ppc_force_detach(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_ppc_force_detach, HOOK_PRIO_INIT_I2C + 1);
-
-static void board_select_drp_mode(void)
-{
-	/*
-	 * Host port should operate as a dual role port. If it attaches as a
-	 * sink, then it will trigger a PRS to end up as a SRC UFP. The port's
-	 * DRP state only needs to be set once, after it's initialized in TCPMv2
-	 * as the default role of sink only.
-	 */
-	int port;
-
-	//board_debug_gpio(TRIGGER_2, 0);
-
-	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
-		pd_set_dual_role(port, pd_dual_role_init[port]);
-		CPRINTS("quiche[p%d]: drp_state = %d", port,
-			pd_get_dual_role(port));
-	}
-	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
-	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
-	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
-}
-DECLARE_DEFERRED(board_select_drp_mode);
-
 
 static void board_config_usbc_uf_ppc(void)
 {
@@ -359,7 +344,6 @@ __override uint8_t board_get_usb_pd_port_count(void)
 static void board_init(void)
 {
 #ifdef SECTION_IS_RW
-	hook_call_deferred(&board_select_drp_mode_data, 40 * MSEC);
 	hook_call_deferred(&board_config_usbc_uf_ppc_data, 10 * MSEC);
 #endif
 }
