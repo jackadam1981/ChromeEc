@@ -292,3 +292,8 @@ int comm_init_dev(const char *device_name)
 
 	return 0;
 }
+
+int get_fd()
+{
+	return fd;
+}
