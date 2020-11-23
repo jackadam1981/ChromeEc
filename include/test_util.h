@@ -11,6 +11,7 @@
 #ifdef CONFIG_ZTEST
 
 #include <ztest.h>
+#include "ec_tasks.h"
 
 /*
  * We need these macros so that a test can be built for either Ztest or the
@@ -23,6 +24,9 @@
  */
 #define EC_TEST_RETURN void
 #define EC_SUCCESS
+
+/* Zephyr threads have three void pointers as parameters */
+#define TASK_PARAMS void *p1, void *p2, void *p3
 
 #else /* CONFIG_ZTEST */
 
@@ -328,6 +332,9 @@ int test_attach_i2c(const int port, const uint16_t addr_flags);
  * asserts in the test fails.
  */
 #define EC_TEST_RETURN int
+
+/* An EC task only has one void parameter */
+#define TASK_PARAMS void *p1
 
 /*
  * Map the Ztest assertions onto EC assertions. There are two significant
