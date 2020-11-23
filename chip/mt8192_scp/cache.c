@@ -120,10 +120,13 @@ void cache_init(void)
 	cache_invalidate_dcache();
 
 	/* set L1TCM MPU */
+#define HANG 1
+#if HANG == 1
 	write_csr(CSR_MPU_LITCM, CONFIG_L1TCM_BASE);
 	write_csr(CSR_MPU_HITCM, CONFIG_L1TCM_BASE + CONFIG_L1TCM_SIZE);
 	write_csr(CSR_MPU_LDTCM, CONFIG_L1TCM_BASE);
 	write_csr(CSR_MPU_HDTCM, CONFIG_L1TCM_BASE + CONFIG_L1TCM_SIZE);
+#endif
 
 	/* set mpu entries
 	 *

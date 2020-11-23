@@ -20,4 +20,19 @@ struct mpu_entry mpu_entries[NR_MPU_ENTRIES] = {
 	{0x10000000, 0x11400000, MPU_ATTR_C | MPU_ATTR_W | MPU_ATTR_R},
 };
 
+#include "util.h"
+#include "console.h"
+__attribute__((section(".l1tcm")))
+int gg = 0x321;
+
+int x(int argc, char **argv)
+{
+	ccprints("123: %x", gg);
+
+	cflush();
+	return 0;
+}
+
+DECLARE_SAFE_CONSOLE_COMMAND(x, x, NULL, "test");
+
 #include "gpio_list.h"
