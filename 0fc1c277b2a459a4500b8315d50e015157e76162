@@ -165,6 +165,24 @@
       "parentUuid": "e4205193_041ee75b",
       "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc09474_54b36c83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-23T22:49:01Z",
+      "side": 1,
+      "message": "But `rddkeepalive` is not a prerequisite of running FAFT and lab deployment, yet.\n\nI think `rddkeepalive` is more like a trick to debug CCD issue. If we want to make `rddkeepalive` official, need to evaluate any test coverage is sacrificed and any side-effect, like power measurement, false alarm bugs on CCD/servo detection, etc. I don\u0027t object to this path, but need wider audiences to comment (need a bug to track).\n\nThe crrev.com/c/277275 actually still serves its original purpose. The CCD connection keeps connected, without needing any trick. I said missing VBUS is not perfect. Why don\u0027t we fix the VBUS? Some approaches are:\n* on DUT side, use CONFIG_POWER_PP5000_CONTROL and add the PD task dependency, so PP5000 is still on in S5;\n* or on servo v4 side, make servo v4 act like 1st-generation Susy-Q, which is powered by external VBUS, so servo v4 won\u0027t complain.",
+      "parentUuid": "a6bc5c41_859def55",
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
