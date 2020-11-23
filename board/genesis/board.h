@@ -134,16 +134,11 @@
 
 /* USB type C */
 #define CONFIG_USB_PD_TCPMV2 /* Use TCPMv2 */
-#define CONFIG_USB_PD_REV30 /* Enable PD 3.0 functionality */
 #define CONFIG_USB_PD_DECODE_SOP
 #undef CONFIG_USB_CHARGER
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PID		0x5040
-#define CONFIG_USB_PD_ALT_MODE
-#define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_DISCHARGE_PPC
-#define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_VBUS_DETECT_PPC
@@ -157,7 +152,6 @@
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
 #define CONFIG_USBC_VCONN
-#define CONFIG_USBC_VCONN_SWAP
 
 #define USB_PD_PORT_TCPC_0	0
 #define BOARD_TCPC_C0_RESET_HOLD_DELAY ANX74XX_RESET_HOLD_MS
@@ -167,6 +161,15 @@
 #define CONFIG_USB_PORT_POWER_DUMB
 /* There are five ports, but power enable is ganged across all of them. */
 #define USB_PORT_COUNT 1
+
+/* Disable PD */
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PD_REV30
+#undef CONFIG_HOSTCMD_FLASHPD
+#undef CONFIG_USB_PD_TRY_SRC
+#undef CONFIG_USB_PD_INITIAL_DRP_STATE
+#define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SOURCE
 
 /* I2C Bus Configuration */
 #define CONFIG_I2C
@@ -285,5 +288,7 @@ unsigned int ec_config_get_thermal_solution(void);
  * common_intel_x86_handle_rsmrst.
  */
 #define GPIO_RSMRST_L_PGOOD	GPIO_PCH_RSMRST_L
+
+#define CONFIG_BRINGUP
 
 #endif /* __CROS_EC_BOARD_H */
