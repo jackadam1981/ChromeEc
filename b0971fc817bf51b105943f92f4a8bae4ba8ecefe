@@ -22,6 +22,30 @@
       },
       "revId": "b0971fc817bf51b105943f92f4a8bae4ba8ecefe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2fe61f9_8e9f79ee",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-23T23:53:51Z",
+      "side": 1,
+      "message": "typically you want the tag value\u003d\"X\" value. Other times there is a value in the comment portion.  I am not 100% sure how these are going to be used and added more than I need in order to try to catch as many possible uses as I could. Generally the number that we want is in the tag.  Just as with boolean it is typical to get the value\u003d\"true\"/\"false\" but left the option of there being a comment value only of YES/NO to make the same decision.\n\nSo the order we will take the values will be tag value, comment value and then default value. Generally the tag/comment values are most useful for overrides",
+      "parentUuid": "0da0850b_c17b33b3",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 431,
+        "endChar": 50
+      },
+      "revId": "b0971fc817bf51b105943f92f4a8bae4ba8ecefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
