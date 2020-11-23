@@ -345,7 +345,6 @@ __override uint8_t board_get_usb_pd_port_count(void)
 static void board_init(void)
 {
 #ifdef SECTION_IS_RW
-	hook_call_deferred(&board_select_drp_mode_data, 40 * MSEC);
 	hook_call_deferred(&board_config_usbc_uf_ppc_data, 10 * MSEC);
 #endif
 }
