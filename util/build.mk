@@ -38,6 +38,10 @@ ec_sb_firmware_update-objs=ec_sb_firmware_update.o $(comm-objs) misc_util.o
 ec_sb_firmware_update-objs+=powerd_lock.o
 lbplay-objs=lbplay.o $(comm-objs)
 
+CXXFLAGS+=--sysroot=/build/hatch
+CXXFLAGS+=$(shell pkg-config-hatch --cflags libec)
+CXXFLAGS+=$(shell pkg-config-hatch --libs libec)
+
 $(out)/util/ectool: $(out)/ec_version.h
 
 $(out)/util/stm32mon: $(out)/ec_version.h
