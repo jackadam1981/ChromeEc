@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfcbbc3a_d9e519a6",
+        "filename": "zephyr/shim/chip/npcx/clock.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-23T10:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea6a14a7_d9c829a7",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13e10507_a93756ab",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-11-20T15:49:34Z",
       "side": 1,
       "message": "blank line after includes (before LOG_MODULE_REGISTER)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a3c38f_c8441440",
+        "filename": "zephyr/shim/chip/npcx/clock.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-23T10:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13e10507_a93756ab",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -100,6 +148,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51e5af5e_8f6ea122",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-23T10:40:37Z",
+      "side": 1,
+      "message": "Actually, keyboard_raw_is_input_low() invokes the chip specific function(npcx_get_gpio_dev()). npcx_get_gpio_dev() is not the Zephyr GPIO driver API which may not support by other chips. If \"keyboard_raw.c\" sould move to zephyr/shim/src, I think we should add another common API for npcx_get_gpio_dev().",
+      "parentUuid": "fc82fb7c_627c2a18",
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a93d6734_2d468458",
         "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
         "patchSetId": 7
@@ -111,6 +177,30 @@
       "writtenOn": "2020-11-20T15:49:34Z",
       "side": 1,
       "message": "logging/log.h should be sorted alphabetically in the list",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec74705_3976430f",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-23T10:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a93d6734_2d468458",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -144,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb93a593_fd3c1e63",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-23T10:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c37bffca_2bec919e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9540836_6589372b",
@@ -157,6 +271,30 @@
       "writtenOn": "2020-11-20T20:02:54Z",
       "side": 1,
       "message": "nit: just use\nif (cros_kb_raw_dev)",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 25
+      },
+      "revId": "d4d0172cc06cc5472f9f69a6e64a2a2406e6a228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "923efbd7_5cc390e9",
+        "filename": "zephyr/shim/chip/npcx/keyboard_raw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-11-23T10:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9540836_6589372b",
       "range": {
         "startLine": 75,
         "startChar": 5,
