@@ -3,6 +3,33 @@
  * found in the LICENSE file.
  */
 
+#include "compiler.h"
+
+/* Workaround for compilation error with openssl:
+ * /usr/include/openssl/crypto.h:322:1: error: use of undeclared identifier
+ * '__noreturn__'
+ * ossl_noreturn void OPENSSL_die(const char *assertion, const char *file, int
+ * line);
+ * ^
+ * /usr/include/openssl/e_os2.h:285:40: note: expanded from macro
+ * 'ossl_noreturn'
+ * #  define ossl_noreturn __attribute__((noreturn))
+ *                                        ^
+ * /usr/lib64/clang/13.0.0/include/stdnoreturn.h:13:18: note: expanded from
+ * macro 'noreturn' #define noreturn _Noreturn
+ *                  ^
+ * /usr/include/sys/cdefs.h:578:37: note: expanded from macro '_Noreturn'
+ * #  define _Noreturn __attribute__ ((__noreturn__))
+ *
+ * The warning is a litle confusing, but the problem is that it gets expanded as
+ * __attribute__((__attribute__ ((__noreturn__))))
+ * void OPENSSL_die(const char *assertion, const char *file, int line);
+ */
+#include <openssl/e_os2.h>
+DISABLE_CLANG_WARNING("-Wmacro-redefined")
+#define ossl_noreturn __attribute__((__noreturn__))
+ENABLE_CLANG_WARNING("-Wmacro-redefined")
+
 #include <assert.h>
 #include <ctype.h>
 #include <errno.h>
@@ -35,6 +62,7 @@
 #include "panic.h"
 #include "usb_pd.h"
 
+#include <libec/versions_command.h>
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
 
@@ -1006,11 +1034,8 @@ static int get_cmdversions_v0(uint8_t cmd, uint32_t *version_mask)
 
 int cmd_cmdversions(int argc, char *argv[])
 {
-	struct ec_params_get_cmd_versions_v1 p;
-	struct ec_response_get_cmd_versions r;
 	char *e;
 	int cmd;
-	int rv;
 
 	if (argc < 2) {
 		fprintf(stderr, "Usage: %s <cmd>\n", argv[0]);
@@ -1022,37 +1047,15 @@ int cmd_cmdversions(int argc, char *argv[])
 		return -1;
 	}
 
-	if (cmd > 0xff) {
-		/* Ensure the EC support GET_CMD_VERSIONS v1. */
-		rv = get_cmdversions_v0(EC_CMD_GET_CMD_VERSIONS,
-					&r.version_mask);
-		if (rv < 0)
-			return rv;
-
-		if (!(r.version_mask & EC_VER_MASK(1))) {
-			printf("16 bits cmdversions not supported by EC.\n");
-			return -1;
-		}
-
-		/* Use GET_CMD_VERSIONS v1. */
-		p.cmd = cmd;
-		rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 1, &p, sizeof(p), &r,
-				sizeof(r));
-		if (rv < 0) {
-			if (rv == -EC_RES_INVALID_PARAM)
-				printf("Command 0x%02x not supported by EC.\n",
-				       cmd);
-
-			return rv;
-		}
-	} else {
-		rv = get_cmdversions_v0(cmd, &r.version_mask);
-		if (rv < 0)
-			return rv;
+	ec::VersionsCommand versions_command(cmd);
+	if (!versions_command.Run(get_fd())) {
+		fprintf(stderr, "Failed to run versions command\n");
+		return -1;
 	}
 
-	printf("Command 0x%02x supports version mask 0x%08x\n", cmd,
-	       r.version_mask);
+	printf("Command 0x%02x supports version mask 0x%08x\n",
+	       versions_command.CommandCode(),
+	       versions_command.Resp()->version_mask);
 	return 0;
 }
 
