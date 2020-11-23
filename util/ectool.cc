@@ -35,7 +35,8 @@
 #include "panic.h"
 #include "usb_pd.h"
 
-/* Allow the use of C99 array designators */
+#include <libec/versions_command.h>
+
 // #pragma GCC diagnostic ignored "-Wc99-designator"
 
 /* Maximum flash size (16 MB, conservative) */
@@ -922,11 +923,13 @@ int cmd_inventory(int argc, char *argv[])
 
 int cmd_cmdversions(int argc, char *argv[])
 {
+#if 0
 	struct ec_params_get_cmd_versions p;
 	struct ec_response_get_cmd_versions r;
+	int rv;
+#endif
 	char *e;
 	int cmd;
-	int rv;
 
 	if (argc < 2) {
 		fprintf(stderr, "Usage: %s <cmd>\n", argv[0]);
@@ -938,6 +941,7 @@ int cmd_cmdversions(int argc, char *argv[])
 		return -1;
 	}
 
+#if 0
 	p.cmd = cmd;
 	rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 0, &p, sizeof(p),
 			&r, sizeof(r));
@@ -947,9 +951,16 @@ int cmd_cmdversions(int argc, char *argv[])
 
 		return rv;
 	}
+#endif
+	ec::VersionsCommand versions_command(cmd);
+	if (!versions_command.Run(get_fd())) {
+		// FIXME
+		return -1;
+	}
 
 	printf("Command 0x%02x supports version mask 0x%08x\n",
-	       cmd, r.version_mask);
+	       versions_command.CommandCode(),
+	       versions_command.Resp()->version_mask);
 	return 0;
 }
 
