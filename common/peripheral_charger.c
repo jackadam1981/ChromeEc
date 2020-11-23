@@ -6,6 +6,7 @@
 #include "atomic.h"
 #include "common.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "peripheral_charger.h"
 #include "queue.h"
 #include "stdbool.h"
@@ -328,6 +329,39 @@ void pchg_task(void *u)
 		task_wait_event(-1);
 	}
 }
+
+static enum ec_status hc_pchg_count(struct host_cmd_handler_args *args)
+{
+	struct ec_response_pchg_count *r = args->response;
+
+	r->port_count = pchg_count;
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PCHG_COUNT, hc_pchg_count, EC_VER_MASK(0));
+
+static enum ec_status hc_pchg_status(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_pchg_status *p = args->params;
+	struct ec_response_pchg_status *r = args->response;
+	int port = p->port;
+	struct pchg *ctx;
+
+	if (port >= pchg_count)
+		return EC_RES_INVALID_PARAM;
+
+	ctx = &pchgs[port];
+
+	r->state = ctx->state;
+	r->battery_percentage = ctx->battery_percent;
+	r->error = ctx->error;
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PCHG_STATUS, hc_pchg_status, EC_VER_MASK(0));
 
 static int cc_pchg(int argc, char **argv)
 {
