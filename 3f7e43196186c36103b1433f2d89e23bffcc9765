@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "281436a8_d6869435",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2020-11-23T05:37:12Z",
+      "side": 1,
+      "message": "Yes, it makes sense. Thanks for clarifying it. \n\nBut the VBUS_CURRENT_TARGET (0x92) has 32mA LSB; therefore, we can only do 3.072 (0x60) or 3.104 (0x61). I put 3.104A for now. \n\nLet me know if the value is ok.",
+      "parentUuid": "50664354_36b82912",
+      "revId": "3f7e43196186c36103b1433f2d89e23bffcc9765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89c04d36_89f7ea07",
