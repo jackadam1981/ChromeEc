@@ -73,6 +73,7 @@
 #define PS8802_P1_ADDR			0x0A
 #define PS8802_ADDR_CFG			0xB0
 #define PS8802_I2C_SLAV_ADDR	0x50
+#define PS8802_STANDBY_MODE		0xAA
 
 extern const struct usb_mux_driver ps8802_usb_mux_driver;
 
