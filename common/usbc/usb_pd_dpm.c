@@ -262,6 +262,13 @@ static void dpm_attempt_mode_entry(int port)
 		enter_mode_requested = true;
 		vdo_count = dp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
 	}
+#ifdef BOARD_ELDRID
+	else if (pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP,
+				USB_VID_HP)) {
+		vdo_count = hp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+		CPRINTS(" ===== USB_VID_HP enter= %d", vdo_count);
+    }
+#endif
 
 	/*
 	 * If the PE didn't discover any supported (requested) alternate mode,
