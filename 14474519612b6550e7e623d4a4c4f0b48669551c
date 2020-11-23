@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d225b4a4_40e55d86",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-23T17:10:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00ee235a_d8bb80dd",
+      "revId": "14474519612b6550e7e623d4a4c4f0b48669551c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d1a49b3_4a812c0b",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1afac61d_5d12a8ab",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-23T17:10:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1a49b3_4a812c0b",
+      "revId": "14474519612b6550e7e623d4a4c4f0b48669551c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c20030e4_d1ad8500",
@@ -48,6 +84,24 @@
       "writtenOn": "2020-11-23T10:58:06Z",
       "side": 1,
       "message": "what was the idea behind get_error_info() ? it\u0027s not doing much here and in the common code.",
+      "revId": "14474519612b6550e7e623d4a4c4f0b48669551c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51bf2382_4fa34cab",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-23T17:10:38Z",
+      "side": 1,
+      "message": "Removed.\n\nI\u0027ll add it when I decide how to handle errors.",
+      "parentUuid": "c20030e4_d1ad8500",
       "revId": "14474519612b6550e7e623d4a4c4f0b48669551c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
