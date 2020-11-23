@@ -112,10 +112,19 @@ void cache_init(void)
 	/* enable i$, d$ */
 	set_csr(CSR_MCTREN, CSR_MCTREN_ICACHE);
 	set_csr(CSR_MCTREN, CSR_MCTREN_DCACHE);
+	/* enable L1 ITCM, DTCM */
+	set_csr(CSR_MCTREN, CSR_MCTREN_ITCM);
+	set_csr(CSR_MCTREN, CSR_MCTREN_DTCM);
 
 	/* invalidate icache and dcache */
 	cache_invalidate_icache();
 	cache_invalidate_dcache();
+
+	/* set L1TCM MPU */
+	write_csr(CSR_MPU_LITCM, CONFIG_L1TCM_BASE);
+	write_csr(CSR_MPU_HITCM, CONFIG_L1TCM_BASE + CONFIG_L1TCM_SIZE);
+	write_csr(CSR_MPU_LDTCM, CONFIG_L1TCM_BASE);
+	write_csr(CSR_MPU_HDTCM, CONFIG_L1TCM_BASE + CONFIG_L1TCM_SIZE);
 
 	/* set mpu entries
 	 *
