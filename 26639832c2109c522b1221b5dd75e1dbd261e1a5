@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "976863e0_5cbdc234",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-23T17:13:58Z",
+      "side": 1,
+      "message": "does this work with an edge-trigger GPIO interrupt ?\nie we are going to lose it ?",
+      "revId": "26639832c2109c522b1221b5dd75e1dbd261e1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
