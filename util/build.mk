@@ -39,6 +39,10 @@ ec_sb_firmware_update-objs=ec_sb_firmware_update.o $(comm-objs) misc_util.o
 ec_sb_firmware_update-objs+=powerd_lock.o
 lbplay-objs=lbplay.o $(comm-objs)
 
+# Requires "sudo emerge libec" in the chroot first.
+HOST_CXXFLAGS+=$(shell pkg-config --cflags libec)
+HOST_CXXFLAGS+=$(shell pkg-config --libs libec)
+
 util/ectool.cc: $(out)/ec_version.h
 
 ec_parse_panicinfo-objs=ec_parse_panicinfo.o ec_panicinfo.o
