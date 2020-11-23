@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00ee235a_d8bb80dd",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-23T10:58:06Z",
+      "side": 1,
+      "message": "nit: the _ms suffix above vs the /* msec */ comment is not terribly consistent.",
+      "revId": "14474519612b6550e7e623d4a4c4f0b48669551c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1a49b3_4a812c0b",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-23T10:58:06Z",
+      "side": 1,
+      "message": "I\u0027m afraid you will hit here the inconsistent requirements of the toolchain team (e.g. crrev.com/c/2553749 )\nYou might want to use a define rather than a const int.",
+      "revId": "14474519612b6550e7e623d4a4c4f0b48669551c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20030e4_d1ad8500",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-23T10:58:06Z",
+      "side": 1,
+      "message": "what was the idea behind get_error_info() ? it\u0027s not doing much here and in the common code.",
+      "revId": "14474519612b6550e7e623d4a4c4f0b48669551c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
