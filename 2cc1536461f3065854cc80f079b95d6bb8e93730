@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49afaf7_5b3a62c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-23T21:55:03Z",
+      "side": 1,
+      "message": "Ccan you add a link to the table of contents (sitemap): https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/docs/sitemap.md#fingerprint-mcu-fpmcu ?",
+      "revId": "2cc1536461f3065854cc80f079b95d6bb8e93730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63461898_5cb440c7",
+        "filename": "docs/fingerprint/fingerprint-firmware-testing-for-partners.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-23T21:55:03Z",
+      "side": 1,
+      "message": "nit: \"Chrome OS\"",
+      "range": {
+        "startLine": 4,
+        "startChar": 8,
+        "endLine": 4,
+        "endChar": 16
+      },
+      "revId": "2cc1536461f3065854cc80f079b95d6bb8e93730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eaad7b8_f94cad30",
+        "filename": "docs/fingerprint/fingerprint-firmware-testing-for-partners.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-23T21:55:03Z",
+      "side": 1,
+      "message": "Maybe add something like:\n\n It may be possible to use a virtual machine, but that is not a configuration we test.\n\nI found that many of the partners use Windows, so they use a virtual machine to run Linux.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "2cc1536461f3065854cc80f079b95d6bb8e93730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e50dc71_b3e6bf28",
+        "filename": "docs/fingerprint/fingerprint-firmware-testing-for-partners.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-23T21:55:03Z",
+      "side": 1,
+      "message": "Can we link to https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/docs/servo.md ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "2cc1536461f3065854cc80f079b95d6bb8e93730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39e70cb_cf22eee3",
+        "filename": "docs/fingerprint/fingerprint-firmware-testing-for-partners.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-11-23T21:55:03Z",
+      "side": 1,
+      "message": "Can we link to https://chromium.googlesource.com/chromiumos/docs/+/master/developer_mode.md ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 30,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "2cc1536461f3065854cc80f079b95d6bb8e93730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
