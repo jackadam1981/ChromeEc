@@ -16,6 +16,8 @@
 #define STRINGIFY(name)  STRINGIFY0(name)
 #define FW_IMAGE(sect,suffix) \
 	STRINGIFY(FW_FILE(FINAL_OUTDIR,PROJECT,sect,suffix,))
+#define FW_IMAGE_L1TCM(sect,suffix) \
+	STRINGIFY(FW_FILE(FINAL_OUTDIR,PROJECT,sect,suffix,.l1tcm))
 #define FW_IMAGE_DRAM(sect,suffix) \
 	STRINGIFY(FW_FILE(FINAL_OUTDIR,PROJECT,sect,suffix,.dram))
 #define FW_IMAGE_SIGN(sect,suffix) \
@@ -61,6 +63,11 @@
 #ifdef CONFIG_IPI
 .section .ipi_buffer, "aw"
 .space (CONFIG_IPC_SHARED_OBJ_BUF_SIZE + 8) * 2, 0
+#endif
+
+#ifdef CONFIG_L1TCM_BASE
+.section .image.RW.l1tcm, "awx"
+.incbin FW_IMAGE_L1TCM(RW,)
 #endif
 
 #ifdef CONFIG_DRAM_BASE
