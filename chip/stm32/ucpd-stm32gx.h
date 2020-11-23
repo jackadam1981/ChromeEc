@@ -27,31 +27,36 @@ enum ucpd_tx_ordset {
 				(UCPD_SYNC1<<5u) |
 				(UCPD_SYNC1<<10u) |
 				(UCPD_SYNC2<<15u)),
-	TX_ORDERSET_SOP1 =	(UCPD_SYNC1 |
+
+	TX_ORDERSET_SOP_PRIME =	(UCPD_SYNC1 |
 				(UCPD_SYNC1<<5u) |
 				(UCPD_SYNC3<<10u) |
 				(UCPD_SYNC3<<15u)),
-	TX_ORDERSET_SOP2 =	(UCPD_SYNC1 |
+
+	TX_ORDERSET_SOP_PRIME_PRIME =	(UCPD_SYNC1 |
 				(UCPD_SYNC3<<5u) |
 				(UCPD_SYNC1<<10u) |
 				(UCPD_SYNC3<<15u)),
+
+	TX_ORDERSET_SOP_PRIME_DEBUG =	(UCPD_SYNC1 |
+					(UCPD_RST2<<5u) |
+					(UCPD_RST2<<10u) |
+					(UCPD_SYNC3<<15u)),
+
+	TX_ORDERSET_SOP_PRIME_PRIME_DEBUG =	(UCPD_SYNC1 |
+					(UCPD_RST2<<5u) |
+					(UCPD_SYNC3<<10u) |
+					(UCPD_SYNC2<<15u)),
+
 	TX_ORDERSET_HARD_RESET =	(UCPD_RST1  |
 					(UCPD_RST1<<5u) |
 					(UCPD_RST1<<10u)  |
 					(UCPD_RST2<<15u)),
-	TX_ORDERSET_CABLE_RESET =
-					(UCPD_RST1 |
+
+	TX_ORDERSET_CABLE_RESET =	(UCPD_RST1 |
 					(UCPD_SYNC1<<5u) |
 					(UCPD_RST1<<10u)  |
 					(UCPD_SYNC3<<15u)),
-	TX_ORDERSET_SOP1_DEBUG =	(UCPD_SYNC1 |
-					(UCPD_RST2<<5u) |
-					(UCPD_RST2<<10u) |
-					(UCPD_SYNC3<<15u)),
-	TX_ORDERSET_SOP2_DEBUG =	(UCPD_SYNC1 |
-					(UCPD_RST2<<5u) |
-					(UCPD_SYNC3<<10u) |
-					(UCPD_SYNC2<<15u)),
 };
 
 /* TX mode message types */

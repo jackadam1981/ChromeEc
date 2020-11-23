@@ -67,38 +67,65 @@
 #define UCPD_ANASUB_TO_RP(r) ((r - 1) & 0x3)
 #define UCPD_RP_TO_ANASUB(r) ((r + 1) & 0x3)
 
-#define TCPM_TX_MASK BIT(SRC_TCPM)
-#define UCPD_TX_MASK BIT(SRC_UCPD)
-
 struct msg_header_info {
 	enum pd_power_role pr;
 	enum pd_data_role dr;
 };
 static struct msg_header_info msg_header;
 
+/* States for managing tx messages in ucpd task */
+enum ucpd_state {
+	STATE_IDLE,
+	STATE_ACTIVE_TCPM,
+	STATE_ACTIVE_CRC,
+	STATE_HARD_RESET,
+	STATE_WAIT_CRC_ACK,
+};
+
 /* Events for pd_interrupt_handler_task */
-#define UCPD_GOOD_CRC_PENDING   BIT(0)
-#define UCPD_TCPM_MSG_PENDING   BIT(1)
-#define UCPD_TX_COMPLETE        BIT(2)
-#define UCPD_RX_GOOD_CRC        BIT(3)
-#define UCPD_TX_MSG_SUCCESS     BIT(4)
+#define UCPD_EVT_GOOD_CRC_REQ   BIT(0)
+#define UCPD_EVT_TCPM_MSG_REQ   BIT(1)
+#define UCPD_EVT_HR_REQ         BIT(2)
+#define UCPD_EVT_TX_MSG_FAIL    BIT(3)
+#define UCPD_EVT_TX_MSG_SUCCESS BIT(4)
+#define UCPD_EVT_HR_DONE        BIT(5)
+#define UCPD_EVT_HR_FAIL        BIT(6)
+#define UCPD_EVT_RX_GOOD_CRC    BIT(7)
+#define UCPD_EVT_DEBUG          BIT(8)
 
-enum ucpd_tx_src {
-	SRC_UCPD,
-	SRC_TCPM,
-	SRC_TOTAL
+#define UCPD_T_RECEIVE_US (1 * MSEC)
+#define UCPD_N_RETRY_COUNT 2
+
+enum ucpd_tx_msg {
+	TX_MSG_NONE = -1,
+	TX_MSG_TCPM = 0,
+	TX_MSG_GOOD_CRC = 1,
+	TX_MSG_TOTAL = 2,
 };
 
-struct ucpd_msg {
+#define MSG_TCPM_MASK BIT(TX_MSG_TCPM)
+#define MSG_GOOD_CRC_MASK BIT(TX_MSG_GOOD_CRC)
+
+union buffer {
+	uint16_t header;
+	uint8_t msg[UCPD_BUF_LEN];
+};
+
+struct ucpd_tx_desc {
 	enum tcpm_transmit_type type;
-	int len;
-	uint8_t buf[UCPD_BUF_LEN];
+	int msg_len;
+	int msg_index;
+	union buffer data;
 };
 
-static struct ucpd_msg ucpd_tx_buffers[SRC_TOTAL];
-static int ucpd_tx_byte_count;
-static uint8_t *ucpd_tx_data_buf;
-static uint8_t ucpd_tx_msg_id;
+struct ucpd_tx_desc ucpd_tx_buffers[TX_MSG_TOTAL];
+struct ucpd_tx_desc *ucpd_tx_active_buffer;
+static int ucpd_crc_id;
+static int ucpd_tx_request;
+static int ucpd_timeout_us;
+static enum ucpd_state ucpd_tx_state;
+static int msg_id_match;
+static int tx_retry_count;
 
 static int ucpd_rx_byte_count;
 static uint8_t ucpd_rx_buffer[UCPD_BUF_LEN];
@@ -107,10 +134,10 @@ static int ucpd_txorderset[] = {
 	TX_ORDERSET_SOP,
 	TX_ORDERSET_SOP_PRIME,
 	TX_ORDERSET_SOP_PRIME_PRIME,
-	TX_ORDERSET_HARD_RESET,
-	TX_ORDERSET_CABLE_RESET,
 	TX_ORDERSET_SOP_PRIME_DEBUG,
 	TX_ORDERSET_SOP_PRIME_PRIME_DEBUG,
+	TX_ORDERSET_HARD_RESET,
+	TX_ORDERSET_CABLE_RESET,
 };
 
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
@@ -130,11 +157,31 @@ static int msg_log_cnt;
 static int msg_log_idx;
 static struct msg_info msg_log[MSG_LOG_LEN];
 
+#define UCPD_CC_STRING_LEN 5
+
+static char ccx[4][UCPD_CC_STRING_LEN] = {
+	"Ra",
+	"Rp",
+	"Rd",
+	"Open",
+};
+static char rp_string[][8] = {
+	"Rp_usb",
+	"Rp_1.5",
+	"Rp_3.0",
+	"Open",
+};
+static int ucpd_sr_cc_event;
+static int ucpd_cc_set_save;
+static int ucpd_cc_change_log;
+
+static int ucpd_is_cc_pull_active(int port, enum usbpd_cc_pin cc_line);
+
 static void ucpd_log_add_msg(uint16_t header, int dir)
 {
 	uint32_t ts = __hw_clock_source_read();
 	int idx = msg_log_idx;
-	uint8_t *buf = dir ? ucpd_rx_buffer : ucpd_tx_data_buf;
+	uint8_t *buf = dir ? ucpd_rx_buffer : ucpd_tx_active_buffer->data.msg;
 
 	if (msg_log_cnt++ < MSG_LOG_LEN) {
 		msg_log[idx].header = header;
@@ -164,6 +211,61 @@ static void ucpd_log_mark_crc(void)
 			msg_log[msg_log_idx -2].crc = 1;
 	}
 }
+
+static void ucpd_cc_status(int port)
+{
+	int rc = stm32gx_ucpd_get_role_control(port);
+	int cc1_pull, cc2_pull;
+	enum tcpc_cc_voltage_status v_cc1, v_cc2;
+	int rv;
+	char *rp_name;
+
+	cc1_pull = ucpd_is_cc_pull_active(port, 0) ? rc & 0x3 : 3;
+	cc2_pull = ucpd_is_cc_pull_active(port, 1) ? (rc >> 2) & 0x3 : 3;
+
+	rv = stm32gx_ucpd_get_cc(port,&v_cc1, &v_cc2);
+	rp_name = rp_string[(rc >> 4) % 0x3];
+	ccprintf("\tcc1\t = %s\n\tcc2\t = %s\n\tRp\t = %s\n",
+		 ccx[cc1_pull], ccx[cc2_pull], rp_name);
+	if (!rv)
+		ccprintf("\tcc1_v\t = %d\n\tcc2_v\t = %d\n", v_cc1, v_cc2);
+}
+
+void ucpd_cc_detect_notify_enable(int enable)
+{
+	ucpd_cc_change_log = enable;
+}
+
+static void ucpd_log_invalidate_entry(void)
+{
+	if (msg_log_idx < (MSG_LOG_LEN - 1)) {
+		int idx = msg_log_idx;
+
+		msg_log[idx].header = 0xabcd;
+		msg_log[idx].ts = __hw_clock_source_read();
+		msg_log[idx].dir = 0;
+		msg_log[idx].comp = 0;
+		msg_log[idx].crc = 0;
+		msg_log_cnt++;
+		msg_log_idx++;
+	}
+}
+static void ucpd_cc_change_notify(void)
+{
+	if (ucpd_cc_change_log) {
+		board_debug_gpio(TRIGGER_2, 1);
+		ucpd_log_invalidate_entry();
+
+		ccprintf("vstate: cc1 = %x, cc2 = %x, Rp = %d\n",
+			 (ucpd_sr_cc_event >> STM32_UCPD_SR_VSTATE_CC1_SHIFT) & 0x3,
+			 (ucpd_sr_cc_event >> STM32_UCPD_SR_VSTATE_CC2_SHIFT) & 0x3,
+			 (ucpd_cc_set_save >> STM32_UCPD_CR_ANASUBMODE_SHIFT) & 0x3);
+		ucpd_cc_status(0);
+		board_debug_gpio(TRIGGER_2, 0);
+	}
+}
+DECLARE_DEFERRED(ucpd_cc_change_notify);
+
 #endif /* CONFIG_STM32G4_UCPD_DEBUG */
 
 static int ucpd_msg_is_good_crc(uint16_t header)
@@ -190,9 +292,19 @@ static void ucpd_port_enable(int port, int enable)
 		STM32_UCPD_CFGR1(port) &= ~STM32_UCPD_CFGR1_UCPDEN;
 }
 
+static int ucpd_is_cc_pull_active(int port, enum usbpd_cc_pin cc_line)
+{
+	int cc_enable = STM32_UCPD_CR(port) & STM32_UCPD_CR_CCENABLE_MASK >>
+		STM32_UCPD_CR_CCENABLE_SHIFT;
+
+	return ((cc_enable >> cc_line) & 0x1);
+}
+
 static void ucpd_tx_data_byte(int port)
 {
-	STM32_UCPD_TXDR(port) =  ucpd_tx_data_buf[ucpd_tx_byte_count++];
+	int index = ucpd_tx_active_buffer->msg_index++;
+
+	STM32_UCPD_TXDR(port) = ucpd_tx_active_buffer->data.msg[index];
 }
 
 static void ucpd_rx_data_byte(int port)
@@ -485,29 +597,16 @@ int stm32gx_ucpd_set_msg_header(int port, int power_role, int data_role)
 	return EC_SUCCESS;
 }
 
-static int stm32gx_ucpd_start_transmit(int port, int src)
+static int stm32gx_ucpd_start_transmit(int port, enum ucpd_tx_msg msg_type)
 {
-	enum ucpd_tx_ordset orderset;
 	enum tcpm_transmit_type type;
-	uint16_t *header = (uint16_t *)ucpd_tx_data_buf;
 
-	/* Start message transmission */
+	/* Select the correct tx desciptor */
+	ucpd_tx_active_buffer = &ucpd_tx_buffers[msg_type];
+	type = ucpd_tx_active_buffer->type;
 
-	/* set up tx data pointer */
-	ucpd_tx_data_buf = ucpd_tx_buffers[src].buf;
-	ucpd_tx_byte_count = 0;
-	type = ucpd_tx_buffers[src].type;
-	/*
-	 * First check if transmit_type is hard reset or cable reset. These
-	 * messages are triggered via bits in CR and don't need to be written to
-	 * TXDR to cause transmit. Must also check for TX_BIST_MODE here as
-	 * well.
-	 *
-	 * The transmission type in ucpd is controlled via the
-	 */
-	switch (type) {
-	case TCPC_TX_HARD_RESET:
-		/*
+	if (type == TCPC_TX_HARD_RESET) {
+				/*
 		 * From RM0440 45.4.4:
 		 * In order to facilitate generation of a Hard Reset, a special
 		 * code of TXMODE field is used. No other fields need to be
@@ -518,74 +617,196 @@ static int stm32gx_ucpd_start_transmit(int port, int src)
 		 * sequence and directly appending an EOP K-code sequence. No
 		 * specific interrupt is generated relating to this truncation
 		 * event.
+		 *
+		 * Because Hard Reset can interrupt ongoing Tx operations, it is
+		 * started differently than all other tx messages. Only need to
+		 * enable hard reset interrupts, and then set a bit in the CR
+		 * register to initiate.
 		 */
 		/* Enable interrupt for Hard Reset sent/discarded */
 		STM32_UCPD_IMR(port) |= STM32_UCPD_IMR_HRSTDISCIE |
 			STM32_UCPD_IMR_HRSTSENTIE;
 		/* Initiate Hard Reset */
 		STM32_UCPD_CR(port) |= STM32_UCPD_CR_TXHRST;
-		break;
-	case TCPC_TX_CABLE_RESET:
-		/* TODO(b/): Add support to send cable reset */
-		CPRINTS("ucpd: cable reset ctrl msg");
-		break;
-	case TCPC_TX_BIST_MODE_2:
-		CPRINTS("ucpd: Bist ctrl msg");
-		/* Clear TX mode */
-		STM32_UCPD_CR(port) &= ~STM32_UCPD_CR_TXMODE_MASK;
-		/* Select BIST mode */
-		STM32_UCPD_CR(port) |= STM32_UCPD_CR_TXMODE_BIST;
-		break;
-	case TCPC_TX_SOP:
-	case TCPC_TX_SOP_PRIME:
-	case TCPC_TX_SOP_PRIME_PRIME:
-	case TCPC_TX_SOP_DEBUG_PRIME:
-	case TCPC_TX_SOP_DEBUG_PRIME_PRIME:
+	} else if (type != TCPC_TX_INVALID) {
+		int msg_len = 0;
+		int mode;
+
 		/*
 		 * These types are normal transmission, TXMODE = 0. To transmit
 		 * regular message, control or data, requires the following:
-		 *     1. Set TXMODE = 0
+		 *     1. Set TXMODE:
+		 *          Normal -> 0
+		 *          Cable Reset -> 1
+		 *          Bist -> 2
 		 *     2. Set TX_ORDSETR based on message type
 		 *     3. Set TX_PAYSZR which must account for 2 bytes of header
 		 *     4. Configure DMA (optional if DMA is desired)
 		 *     5. Enable transmit interrupts
 		 *     6. Start TX by setting TXSEND in CR
+		 *
 		 */
-		/* Clear TX mode */
-		STM32_UCPD_CR(port) &= ~STM32_UCPD_CR_TXMODE_MASK;
-		/* Index into ordset enum (skip 2 resets in debug type) */
-		orderset = (type >= TCPC_TX_HARD_RESET) ? type += 2 : type;
-		STM32_UCPD_TX_ORDSETR(port) = ucpd_txorderset[orderset];
+
 		/*
 		 * Set tx length parameter (in bytes). Note the count field in
 		 * the header is number of 32 bit objects. Also, the length
 		 * field must account for the 2 header bytes.
 		 */
-		STM32_UCPD_TX_PAYSZR(port) = ucpd_tx_buffers[src].len;
+		if (type == TCPC_TX_BIST_MODE_2) {
+			mode = STM32_UCPD_CR_TXMODE_BIST;
+		} else if (type == TCPC_TX_CABLE_RESET) {
+			mode = STM32_UCPD_CR_TXMODE_CBL_RST;
+		} else {
+			mode = STM32_UCPD_CR_TXMODE_DEF;
+			msg_len = ucpd_tx_active_buffer->msg_len;
+		}
 
-		/* Save message ID for GoodCRC match */
-		if (src == SRC_TCPM)
-			ucpd_tx_msg_id = PD_HEADER_ID(header);
+		STM32_UCPD_TX_PAYSZR(port) = msg_len;
+
+		/* Set tx mode */
+		STM32_UCPD_CR(port) &= ~STM32_UCPD_CR_TXMODE_MASK;
+		STM32_UCPD_CR(port) |= STM32_UCPD_CR_TXMODE_VAL(mode);
+
+		/* Index into ordset enum for start of packet */
+		if (type <= TCPC_TX_CABLE_RESET )
+			STM32_UCPD_TX_ORDSETR(port) = ucpd_txorderset[type];
+		else
+			STM32_UCPD_TX_ORDSETR(port) =
+				ucpd_txorderset[TX_ORDERSET_SOP];
+
+		/* Reset msg byte index */
+		ucpd_tx_active_buffer-> msg_index = 0;
 
 		/* Enable interrupts */
 		ucpd_tx_interrupts_enable(port, 1);
 
 		/* Trigger ucpd peripheral to start pd message transmit */
 		STM32_UCPD_CR(port) |= STM32_UCPD_CR_TXSEND;
+
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+		ucpd_log_add_msg(ucpd_tx_active_buffer->data.header, 0);
+#endif
+	}
+
+	return EC_SUCCESS;
+}
+
+static void ucpd_set_tx_state(enum ucpd_state state)
+{
+	ucpd_tx_state = state;
+}
+
+static void ucpd_manage_tx(int port, int evt)
+{
+	enum ucpd_tx_msg msg_src = TX_MSG_NONE;
+
+	if (evt & UCPD_EVT_HR_REQ) {
+		ucpd_set_tx_state(STATE_HARD_RESET);
+		msg_src = MSG_TCPM_MASK;
+	}
+
+	switch (ucpd_tx_state) {
+	case STATE_IDLE:
+		if (ucpd_tx_request & MSG_GOOD_CRC_MASK) {
+			ucpd_set_tx_state(STATE_ACTIVE_CRC);
+			msg_src = TX_MSG_GOOD_CRC;
+		} else if (ucpd_tx_request & MSG_TCPM_MASK) {
+			uint16_t hdr;
+
+			ucpd_set_tx_state(STATE_ACTIVE_TCPM);
+			msg_src = TX_MSG_TCPM;
+			/* Save msgID required for GoodCRC check */
+			hdr = ucpd_tx_buffers[TX_MSG_TCPM].data.header;
+			msg_id_match = PD_HEADER_ID(hdr);
+		}
+
+		/* If state is not idle, then start tx message */
+		if (ucpd_tx_state != STATE_IDLE) {
+			ucpd_tx_request &= ~(1 << msg_src);
+			tx_retry_count = 0;
+		}
 		break;
-	case TCPC_TX_INVALID:
+
+	case STATE_ACTIVE_TCPM:
+		/*
+		 * Check if tx msg has finsihed. For TCPM messages
+		 * transmit is not complete until a GoodCRC message
+		 * matching the msgID just sent is received. But, a tx
+		 * message can fail due to collision or underrun,
+		 * etc. If that failure occurs, dont' wait for GoodCrc
+		 * and just go to failure path.
+		 */
+		if (evt & UCPD_EVT_TX_MSG_SUCCESS) {
+			ucpd_set_tx_state(STATE_WAIT_CRC_ACK);
+			ucpd_timeout_us = UCPD_T_RECEIVE_US;
+		} else if (evt & UCPD_EVT_TX_MSG_FAIL) {
+			if (tx_retry_count < UCPD_N_RETRY_COUNT) {
+				/*
+				 * Tx attempt failed. Remain in this
+				 * state, but trigger new tx attempt.
+				 */
+				msg_src = TX_MSG_TCPM;
+				tx_retry_count++;
+			} else {
+				ucpd_set_tx_state(STATE_IDLE);
+				pd_transmit_complete(
+					port, TCPC_TX_COMPLETE_FAILED);
+			}
+		}
 		break;
-	default:
-		CPRINTS("ucpd: unknown message type %d", type);
+
+	case STATE_ACTIVE_CRC:
+		if (evt & UCPD_EVT_TX_MSG_SUCCESS) {
+			ucpd_set_tx_state(STATE_IDLE);
+		} else if (evt & UCPD_EVT_TX_MSG_FAIL) {
+			/* Can I retry GoodCRC if tx fails? */
+			ucpd_set_tx_state(STATE_IDLE);
+		}
+		break;
+
+	case STATE_WAIT_CRC_ACK:
+		if (evt & UCPD_EVT_RX_GOOD_CRC &&
+		    ucpd_crc_id == msg_id_match) {
+			/* GoodCRC with matching ID was received */
+			pd_transmit_complete(port,
+					     TCPC_TX_COMPLETE_SUCCESS);
+			ucpd_set_tx_state(STATE_IDLE);
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+			ucpd_log_mark_crc();
+#endif
+		} else if ((evt & UCPD_EVT_RX_GOOD_CRC) ||
+			   (evt & TASK_EVENT_TIMER)) {
+			/* GoodCRC w/out match or timeout waiting */
+			if (tx_retry_count < UCPD_N_RETRY_COUNT) {
+				ucpd_set_tx_state(STATE_ACTIVE_TCPM);
+				msg_src = TX_MSG_TCPM;
+				tx_retry_count++;
+			} else {
+				ucpd_set_tx_state(STATE_IDLE);
+				pd_transmit_complete(port,
+						     TCPC_TX_COMPLETE_FAILED);
+			}
+		}
+		break;
+
+	case STATE_HARD_RESET:
+		if (evt & UCPD_EVT_HR_DONE) {
+			/* HR complete, reset tx state values */
+			ucpd_set_tx_state(STATE_IDLE);
+			ucpd_tx_request = 0;
+			tx_retry_count = 0;
+		} else if (evt & UCPD_EVT_HR_FAIL) {
+			ucpd_set_tx_state(STATE_IDLE);
+			ucpd_tx_request = 0;
+			tx_retry_count = 0;
+		}
 		break;
 	}
 
-#ifdef CONFIG_STM32G4_UCPD_DEBUG
-	if (type != TCPC_TX_HARD_RESET)
-		ucpd_log_add_msg(*header, 0);
-#endif
-
-	return EC_SUCCESS;
+	/* If msg_src is valid, then start transmit */
+	if (msg_src > TX_MSG_NONE) {
+		stm32gx_ucpd_start_transmit(port, msg_src);
+	}
 }
 
 /*
@@ -597,12 +818,15 @@ static int stm32gx_ucpd_start_transmit(int port, int src)
 void ucpd_task(void *p)
 {
 	const int port = (int) ((intptr_t) p);
-	static int ucpd_tx_active = 0;
-	static int ucpd_tx_pending = 0;
-	static int ucpd_tx_wait_good_crc = 0;
+
+	/* Init variables used to manage tx process */
+	ucpd_tx_request = 0;
+	tx_retry_count = 0;
+	ucpd_tx_state = STATE_IDLE;
+	ucpd_timeout_us = -1;
 
 	while (1) {
-		const int evt = task_wait_event(-1);
+		int evt = task_wait_event(ucpd_timeout_us);
 
 		/*
 		 * USB-PD messages are intiated in TCPM stack (PRL
@@ -616,39 +840,32 @@ void ucpd_task(void *p)
 		 * then a transmit message will be started upon request. The ISR
 		 * routine sets the event to indicate that the transmit
 		 * operation is complete.
+		 *
+		 * Hard reset requests are sent as a TCPM message, but in terms
+		 * of the ucpd transmitter, they are treated as a 3rd tx msg
+		 * source since they can interrupt an ongoing tx msg, and there
+		 * is no requirement to wait for a GoodCRC reply message.
 		 */
 
-		if (evt & UCPD_GOOD_CRC_PENDING)
-			ucpd_tx_pending |= UCPD_TX_MASK;
+		/* Assume there is no timer for next task wake */
+		ucpd_timeout_us = -1;
 
-		if (evt & UCPD_TCPM_MSG_PENDING)
-			ucpd_tx_pending |= TCPM_TX_MASK;
-
-		if (evt & UCPD_TX_COMPLETE)
-			ucpd_tx_active = 0;
-
-		if (evt & UCPD_TX_MSG_SUCCESS)
-			ucpd_tx_wait_good_crc = 1;
-
-		if ((evt & UCPD_RX_GOOD_CRC) && ucpd_tx_wait_good_crc) {
-			pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
-			ucpd_tx_wait_good_crc = 0;
+		if (evt & UCPD_EVT_DEBUG) {
+			CPRINTS("ucpd: tx_req = %x, state = %d",
+				ucpd_tx_request, ucpd_tx_state);
+			continue;
 		}
 
-		if (!ucpd_tx_active && ucpd_tx_pending) {
-			enum ucpd_tx_src tx_src;
+		if (evt & UCPD_EVT_GOOD_CRC_REQ)
+			ucpd_tx_request |= MSG_GOOD_CRC_MASK;
 
-			/* Extract which transmit path is being used */
-			tx_src = ucpd_tx_pending & UCPD_TX_MASK ?
-				SRC_UCPD : SRC_TCPM;
-			ucpd_tx_wait_good_crc = 0;
-			/* Initiate the USB-PD message transmit */
-			stm32gx_ucpd_start_transmit(port, tx_src);
-			/* Prevent another USB-PD message from starting */
-			ucpd_tx_active = 1;
-			/* This transmit path is now clear */
-			ucpd_tx_pending &= ~(1 << type);
-		}
+		if (evt & UCPD_EVT_TCPM_MSG_REQ)
+			ucpd_tx_request |= MSG_TCPM_MASK;
+
+		do {
+			ucpd_manage_tx(port, evt);
+			evt = 0;
+		} while (ucpd_tx_request && ucpd_tx_state == STATE_IDLE);
 	}
 }
 
@@ -657,7 +874,6 @@ static void ucpd_send_good_crc(int port, uint16_t rx_header)
 	int msg_id;
 	int rev_id;
 	uint16_t tx_header;
-	uint8_t *buf = ucpd_tx_buffers[SRC_UCPD].buf;
 	enum tcpm_transmit_type tx_type;
 
 	/*
@@ -686,19 +902,19 @@ static void ucpd_send_good_crc(int port, uint16_t rx_header)
 	tx_header = PD_HEADER(PD_CTRL_GOOD_CRC, msg_header.pr, msg_header.dr,
 			      msg_id, 0, rev_id, 0);
 
-	ucpd_tx_buffers[SRC_UCPD].len = 2;
+	/* Good CRC is header with no other objects */
+	ucpd_tx_buffers[TX_MSG_GOOD_CRC].msg_len = 2;
+	ucpd_tx_buffers[TX_MSG_GOOD_CRC].data.header = tx_header;
 	/*
 	 * Get the rx ordered set code just detected. SOP -> SOP''_Debug are in
 	 * the same order as enum tcpm_transmit_type and so can be used
 	 * directly.
 	 */
-	tx_type = STM32_UCPD_RXORDSETR(port) & STM32_UCPD_RXORDSETR_MASK;
-	ucpd_tx_buffers[SRC_UCPD].type = tx_type;
-	/* Copy data to ucpd data buffer */
-	memcpy(buf, (uint8_t *)&tx_header, 2);
+	tx_type = STM32_UCPD_RX_ORDSETR(port) & STM32_UCPD_RXORDSETR_MASK;
+	ucpd_tx_buffers[TX_MSG_GOOD_CRC].type = tx_type;
 
 	/* Notify ucpd task that a GoodCRC message tx request is pending */
-	task_set_event(TASK_ID_UCPD, UCPD_GOOD_CRC_PENDING, 0);
+	task_set_event(TASK_ID_UCPD, UCPD_EVT_GOOD_CRC_REQ, 0);
 }
 
 int stm32gx_ucpd_transmit(int port,
@@ -706,18 +922,22 @@ int stm32gx_ucpd_transmit(int port,
 			  uint16_t header,
 			  const uint32_t *data)
 {
-	uint8_t *buf = ucpd_tx_buffers[SRC_TCPM].buf;
+	/* Length in bytes = (4 * object len) + 2 header byes */
+	int len = (PD_HEADER_CNT(header) << 2) + 2;
 
-	/* Length in bytes 4 * object len + 2 header byes */
-	ucpd_tx_buffers[SRC_TCPM].len = (PD_HEADER_CNT(header) << 2) + 2;
-	ucpd_tx_buffers[SRC_TCPM].type = type;
-	/* Copy data to ucpd data buffer */
-	memcpy(buf, (uint8_t *)&header, 2);
-	memcpy(buf + 2, (uint8_t *)data,
-	       PD_HEADER_CNT(header) << 2);
+	if (len > UCPD_BUF_LEN)
+		return EC_ERROR_OVERFLOW;
+
+	/* Store tx msg info in TCPM msg descriptor */
+	ucpd_tx_buffers[TX_MSG_TCPM].msg_len = len;
+	ucpd_tx_buffers[TX_MSG_TCPM].type = type;
+	ucpd_tx_buffers[TX_MSG_TCPM].data.header = header;
+	/* Copy msg objects to ucpd data buffer, after 2 header bytes */
+	memcpy(ucpd_tx_buffers[TX_MSG_TCPM].data.msg + 2, (uint8_t *)data,
+	       len - 2);
 
 	/* Notify ucpd task that a TCPM message tx request is pending */
-	task_set_event(TASK_ID_UCPD, UCPD_TCPM_MSG_PENDING, 0);
+	task_set_event(TASK_ID_UCPD, UCPD_EVT_TCPM_MSG_REQ, 0);
 
 	return EC_SUCCESS;
 }
@@ -778,28 +998,28 @@ void stm32gx_ucpd1_irq(void)
 	 * machine that transmit operation is complete.
 	 */
 	if (sr & tx_done_mask) {
-		/* Transmit is complete */
-		task_set_event(TASK_ID_UCPD, UCPD_TX_COMPLETE, 0);
+		/* Check for tx message complete */
+		if (sr & STM32_UCPD_SR_TXMSGSENT) {
+			task_set_event(TASK_ID_UCPD, UCPD_EVT_TX_MSG_SUCCESS,
+				       0);
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+			ucpd_log_mark_tx_comp();
+#endif
+		} else if (sr & (STM32_UCPD_SR_TXMSGABT |
+			       STM32_UCPD_SR_TXMSGDISC |STM32_UCPD_SR_TXUND)) {
+			task_set_event(TASK_ID_UCPD, UCPD_EVT_TX_MSG_FAIL, 0);
+		} else if (sr & STM32_UCPD_SR_HRSTSENT) {
+			task_set_event(TASK_ID_UCPD, UCPD_EVT_HR_DONE, 0);
+		} else if (sr & STM32_UCPD_SR_HRSTDISC) {
+			task_set_event(TASK_ID_UCPD, UCPD_EVT_HR_FAIL, 0);
+		}
 		/* Disable Tx interrupts */
-		ucpd_tx_interrupts_enable(port, 1);
+		ucpd_tx_interrupts_enable(port, 0);
 	}
 
 	/* Check for data register empty */
 	if (sr & STM32_UCPD_SR_TXIS)
 		ucpd_tx_data_byte(port);
-
-	/* Check for tx message complete */
-	if (sr & STM32_UCPD_SR_TXMSGSENT) {
-		task_set_event(TASK_ID_UCPD, UCPD_TX_MSG_SUCCESS, 0);
-#ifdef CONFIG_STM32G4_UCPD_DEBUG
-		ucpd_log_mark_tx_comp();
-#endif
-	}
-
-	/* USB-PD message tx failed, notify TCPM layer */
-	if (sr & (STM32_UCPD_SR_TXMSGABT | STM32_UCPD_SR_TXMSGDISC)) {
-		pd_transmit_complete(port, TCPC_TX_COMPLETE_FAILED);
-	}
 
 	/* Check for Rx Events */
 	/* Check first for start of new message */
@@ -830,20 +1050,11 @@ void stm32gx_ucpd1_irq(void)
 				/* Send GoodCRC message (if required) */
 				ucpd_send_good_crc(port, *rx_header);
 			} else {
-				/* Verify msg_id matches */
-				if (ucpd_tx_msg_id == PD_HEADER_ID(rx_header)) {
-				/*
-				 * GoodCRC message received. Notify tcpm layer
-				 * that transmit is complete.
-				 */
-					task_set_event(TASK_ID_UCPD,
-						       UCPD_RX_GOOD_CRC, 0);
-#ifdef CONFIG_STM32G4_UCPD_DEBUG
-					ucpd_log_mark_crc();
-#endif
-				}
+				task_set_event(TASK_ID_UCPD,
+						       UCPD_EVT_RX_GOOD_CRC, 0);
+				ucpd_crc_id = PD_HEADER_ID(*rx_header);
 			}
-		};
+		}
 	}
 	/* Check for fault conditions */
 	if (sr & STM32_UCPD_SR_RXHRSTDET) {
@@ -860,6 +1071,7 @@ DECLARE_IRQ(STM32_IRQ_UCPD1, stm32gx_ucpd1_irq, 1);
 
 
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
+
 static char ctrl_names[][10] = {
 	"rsvd",
 	"GoodCRC",
@@ -1015,6 +1227,7 @@ static int command_ucpd(int argc, char **argv)
 		stm32gx_ucpd_init(port);
 	} else if (!strcasecmp(argv[1], "info")) {
 		ucpd_info(port);
+		task_set_event(TASK_ID_UCPD, UCPD_EVT_DEBUG, 0);
 	} else if (!strcasecmp(argv[1], "tc")) {
 		if (!strcasecmp(argv[2], "on"))
 			ucpd_cc_change_log = 1;
