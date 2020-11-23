@@ -81,6 +81,14 @@ void pe_got_hard_reset(int port);
 void pe_got_soft_reset(int port);
 
 /**
+ * Determine if the partner device should be our source
+ *
+ * pdo_cnt Number of PDOs
+ * pdos Array of PDOs
+ */
+bool pe_source_from_device(const int pdo_cnt, const uint32_t *pdos);
+
+/**
  * Informs the Policy Engine that a hard reset was sent.
  *
  * @param port USB-C port number
