@@ -1645,6 +1645,21 @@
 #undef CONFIG_DMA_HELP
 
 /*
+ * If the board supports L1TCM, base L1TCM address for the chip, where we
+ * want to load extra code/data (address from chip address space).
+ */
+#undef CONFIG_L1TCM_BASE
+
+/*
+ * If the board supports L1TCM, base L1TCM address to load extra code/data
+ * (if loaded by AP, this is the AP physical address space).
+ */
+#undef CONFIG_L1TCM_BASE_LOAD
+
+/* L1TCM size */
+#undef CONFIG_L1TCM_BASE_SIZE
+
+/*
  * If the board supports DRAM, base DRAM address for the chip, where we want
  * to load extra code/data (address from chip address space).
  */
