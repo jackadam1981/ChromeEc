@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eafd4a9f_1d6f53b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-24T03:48:42Z",
+      "side": 1,
+      "message": "Why are we now conditionally locking the registers? I don\u0027t have time to dig right now, but will do so tomorrow. The -2 is because at first glance, this seems like the wrong thing to do.",
+      "revId": "e0257248210f6c6007f29521568bac80cec945f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
