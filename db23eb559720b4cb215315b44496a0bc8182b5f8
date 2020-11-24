@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eab2cff_ab99b723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-24T19:33:51Z",
+      "side": 1,
+      "message": "Note for future reference: TCPMv1 did this via PD_FLAGS_CHECK_PR_ROLE and pd_check_pr_role(), and this was missing from TCPMv2.",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e346b3fe_52eb3196",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-24T19:33:51Z",
+      "side": 1,
+      "message": "make static?",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d968fb_23d0f9a4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-24T19:33:51Z",
+      "side": 1,
+      "message": "I thought we would want to call pd_check_pr_role(), like TCPMv1.",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5de8be_f8484396",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3539,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-24T19:33:51Z",
+      "side": 1,
+      "message": "Is it safe to do this from the hook, or do we need to use a flag/event to switch to PD task?",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
