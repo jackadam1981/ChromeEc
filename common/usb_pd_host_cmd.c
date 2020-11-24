@@ -276,8 +276,9 @@ static uint8_t get_pd_control_flags(int port)
 			 USB_PD_CTRL_OPTICAL_CABLE : 0;
 	control_flags |= device_resp.tbt_adapter == TBT_ADAPTER_TBT2_LEGACY ?
 			 USB_PD_CTRL_TBT_LEGACY_ADAPTER : 0;
-	control_flags |= cable_resp.lsrx_comm == UNIDIR_LSRX_COMM ?
-			 USB_PD_CTRL_ACTIVE_LINK_UNIDIR : 0;
+	control_flags |=
+		cable_get_lsrx_training_direction(port) == UNIDIR_LSRX_COMM ?
+		USB_PD_CTRL_ACTIVE_LINK_UNIDIR : 0;
 
 	return control_flags;
 }

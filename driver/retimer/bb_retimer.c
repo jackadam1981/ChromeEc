@@ -211,9 +211,7 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		 * 1 - Active with uni-directional LSRX communication
 		 * Set to "0" when passive cable plug
 		 */
-		if ((cable_type == IDH_PTYPE_ACABLE ||
-		     cable_resp.tbt_active_passive == TBT_CABLE_ACTIVE) &&
-		     cable_resp.lsrx_comm == UNIDIR_LSRX_COMM)
+		if (cable_get_lsrx_training_direction(port) == UNIDIR_LSRX_COMM)
 			*set_retimer_con |= BB_RETIMER_TBT_ACTIVE_LINK_TRAINING;
 
 		/*
