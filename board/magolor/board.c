@@ -234,8 +234,12 @@ static void set_5v_gpio(int level)
 static void ps8762_chaddr_deferred(void)
 {
 	/* Switch PS8762 I2C Address to 0x50*/
-	if (ps8802_chg_i2c_addr(I2C_PORT_SUB_USB_C1) == EC_SUCCESS)
+	if (ps8802_chg_i2c_addr(I2C_PORT_SUB_USB_C1) == EC_SUCCESS){
 		CPRINTS("Switch PS8762 address to 0x50 success");
+		if (ps8802_usb_standby(I2C_PORT_SUB_USB_C1,
+			PS8802_I2C_ADDR_FLAGS_CUSTOM_PAGE2_ADDR)== EC_SUCCESS)
+			CPRINTS("Setting Ps8762 standby mode success");
+	}
 	else
 		CPRINTS("Switch PS8762 address to 0x50 failed");
 }
