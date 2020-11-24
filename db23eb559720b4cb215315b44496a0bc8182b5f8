@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1da5c16d_b93eb819",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-24T20:05:41Z",
+      "side": 1,
+      "message": "It is used elsewhere. It is correct to not be static",
+      "parentUuid": "e346b3fe_52eb3196",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9d968fb_23d0f9a4",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b63b54_a76d2a54",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-24T20:05:41Z",
+      "side": 1,
+      "message": "pd_check_pr_role is TCPMv1. That did the same thing in the TCPMv1 way but this uses what will be a common TCPMv2 policy, pd_can_source_from_device, function to determine when we should swap or not.",
+      "parentUuid": "e9d968fb_23d0f9a4",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c5de8be_f8484396",
@@ -65,6 +101,24 @@
       "writtenOn": "2020-11-24T19:33:51Z",
       "side": 1,
       "message": "Is it safe to do this from the hook, or do we need to use a flag/event to switch to PD task?",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d7f4a4_bc671d49",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3539,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-24T20:05:41Z",
+      "side": 1,
+      "message": "This will either do nothing or will set a DPM request to be performed at READY.",
+      "parentUuid": "7c5de8be_f8484396",
       "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
