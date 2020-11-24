@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a13952_a3d79428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-24T04:04:41Z",
+      "side": 1,
+      "message": "Increased delay to 2 seconds since 800ms doesn\u0027t seem long enough and it seems longer delays will in general be more reliable.",
+      "revId": "2aa7ffd12d30b2eca12e6a60de4759263680f8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
