@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d5b187_fe824c21",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-24T19:33:18Z",
+      "side": 0,
+      "message": "Does the old logic here not end up being equivalent? \n\nWe set CAP_DUALROLE if !pd_can_source_from_device() in pe_update_src_pdo_flags(), right?  Or am I missing a case?",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
