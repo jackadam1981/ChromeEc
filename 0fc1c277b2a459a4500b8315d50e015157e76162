@@ -183,6 +183,24 @@
       "parentUuid": "a6bc5c41_859def55",
       "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ecb4f1_787f08e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-24T03:07:09Z",
+      "side": 1,
+      "message": "If it wasn\u0027t explicit, it should be. We already establish it as a the default when servod is launched which would be the case for FAFT and the lab. I\u0027m not sure what else besides documentation would make it more explicit. The reason it was introduced in the first place was because normal Type-C behaviour including DRP toggling as well as USB PD traffic caused the CC line voltages to be out of range for the Rd detector block in H1. This would cause false disconnections. See b/35586249 for more background. It\u0027s not servo v4 complaining, it\u0027s the voltage going out of range on H1. The smaug implementation preceded H1 so I assume that it works differently.\n\nThe problem with fixing VBUS is that not every platform can source VBUS in S5 even if we wanted to. Some devices use the signal that generally indicates the ACPI S5 power state as the enable to the enable pin on the voltage regulator that generates VBUS \u0026 VCONN.",
+      "parentUuid": "8bc09474_54b36c83",
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
