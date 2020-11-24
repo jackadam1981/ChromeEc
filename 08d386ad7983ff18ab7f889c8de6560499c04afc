@@ -118,6 +118,30 @@
       },
       "revId": "08d386ad7983ff18ab7f889c8de6560499c04afc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b2ad1a_009f644d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-24T23:59:34Z",
+      "side": 1,
+      "message": "!SENSOR_ACTIVE(...) should be similar to zero collection rate, therefore, I don\u0027t think it\u0027s needed to add the extra check.",
+      "parentUuid": "3df6490a_8a8105a0",
+      "range": {
+        "startLine": 946,
+        "startChar": 6,
+        "endLine": 946,
+        "endChar": 35
+      },
+      "revId": "08d386ad7983ff18ab7f889c8de6560499c04afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
