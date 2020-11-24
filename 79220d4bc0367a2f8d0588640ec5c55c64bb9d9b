@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f47dc039_5758b3bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-24T16:28:20Z",
+      "side": 1,
+      "message": "I was out of the office 2020-11-21 and 2020-11-23.\n\nYou can use the email alias cros-volteer-reviewers@google.com to get the attention of the correct people in Google to review changes.\n\nAlso, please have someone else from Quanta review changes before adding Google reviewers.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/firmware_code_reviews.md#guidelines-for-partner-code-reviews",
+      "revId": "79220d4bc0367a2f8d0588640ec5c55c64bb9d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dfc6588_4370810c",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-24T16:28:20Z",
+      "side": 1,
+      "message": "Nit - move this definition to just before the usb_muxes[] definition.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 0
+      },
+      "revId": "79220d4bc0367a2f8d0588640ec5c55c64bb9d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9b431d_3ad57853",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-24T16:28:20Z",
+      "side": 1,
+      "message": "Port 0 also uses a PPC compatible with the syv682x driver.",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 22
+      },
+      "revId": "79220d4bc0367a2f8d0588640ec5c55c64bb9d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccc3a813_32149932",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-24T16:28:20Z",
+      "side": 1,
+      "message": "You need to include the .flags field for the PS8xxx to enable TCPCI revision 2.0 and enable a workaround for the PS8815.\n\n    .flags \u003d TCPC_FLAGS_TCPCI_REV2_0 | TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V,",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 26
+      },
+      "revId": "79220d4bc0367a2f8d0588640ec5c55c64bb9d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02e672ab_e40e95a0",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-24T16:28:20Z",
+      "side": 1,
+      "message": "Also add GPIOF3 to the unused list.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 58
+      },
+      "revId": "79220d4bc0367a2f8d0588640ec5c55c64bb9d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
