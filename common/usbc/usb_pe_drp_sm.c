@@ -1037,6 +1037,23 @@ uint32_t pd_get_events(int port)
 	return pe[port].events;
 }
 
+void pe_set_snk_caps(int port, int cnt, uint32_t *snk_caps)
+{
+	pe[port].snk_cap_cnt = cnt;
+
+	memcpy(pe[port].snk_caps, snk_caps, sizeof(uint32_t) * cnt);
+}
+
+const uint32_t * const pd_get_snk_caps(int port)
+{
+	return pe[port].snk_caps;
+}
+
+uint8_t pd_get_snk_cap_cnt(int port)
+{
+	return pe[port].snk_cap_cnt;
+}
+
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 /*
  * Determine if this port may communicate with the cable plug.
