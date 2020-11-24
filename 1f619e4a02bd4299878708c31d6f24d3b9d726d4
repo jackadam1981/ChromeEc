@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "987681eb_39ede279",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-11-24T20:40:08Z",
+      "side": 1,
+      "message": "There are two FIFO queues. One on TCPC, one in EC. When EC FIFO is full, it tight-loops here. The #ALERT line from TCPC is left asserted causing watchdog.\n\nThis NOOP read \"discards\" the message from the TCPC FIFO when there is no more room in EC FIFO. This clears the #ALERT, rather than tight-looping.",
+      "parentUuid": "1bc8b620_88006e99",
+      "range": {
+        "startLine": 1179,
+        "startChar": 6,
+        "endLine": 1179,
+        "endChar": 35
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf444d08_4fc62fd9",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 4
@@ -119,6 +143,30 @@
       "writtenOn": "2020-11-23T18:19:02Z",
       "side": 1,
       "message": "Maybe you should check for failure here too and ++failed_attempts if it does.",
+      "range": {
+        "startLine": 1181,
+        "startChar": 4,
+        "endLine": 1181,
+        "endChar": 16
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77b5c83_511b664e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-11-24T20:40:08Z",
+      "side": 1,
+      "message": "`failed_attempts` are already incremented in line 1170 \"per operation\".\n\n`failed_attempts` is intended to signify failure to enqueue packet in the EC FIFO.\nIncrementing for \"I2C transfer fail\" (to clear) may be double-counting, and not appropriate.\n\nThis is also a blind \"delete the TCPC FIFO message\" write. We assume success. Separate error handling. Please see line 1205. We don\u0027t check for failure there either.\n\nMessage alerts only populate the `alert` register, not the `extended` register.",
+      "parentUuid": "cf444d08_4fc62fd9",
       "range": {
         "startLine": 1181,
         "startChar": 4,
@@ -178,6 +226,24 @@
       "side": 1,
       "message": "TCPMv1 does drain the queue. See the snippet from TCPMv1 below:\n\"\n                        rstatus \u003d tcpm_release(port);\n                        if (rstatus !\u003d 0 \u0026\u0026 rstatus !\u003d EC_ERROR_UNIMPLEMENTED)\n                                tcpc_prints(\"release failed!\", port);\n#endif\n                        /* Drain any outstanding software message queues. */\n                        tcpm_clear_pending_messages(port);\n\n                        /* Wait for resume */\n                        while (pd[port].task_state \u003d\u003d PD_STATE_SUSPENDED) {\n\"\nWe should add the same to TCPMv2. Something like the following:\n\nstatic void tc_disabled_entry(const int port)\n{\n    print_current_state(port);\n\n    /* Drain any outstanding software message queues. */\n    tcpm_clear_pending_messages(port);\n}",
       "parentUuid": "89e40ed3_1a7457dc",
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0dc8894_fa85c788",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-11-24T20:40:08Z",
+      "side": 1,
+      "message": "Adding on, is there a way to flush TCPC FIFO? Do we even have a command for that?\n\nPer b/156138479 we are handling stale `VDM:Attention` messages after \"resume\". Resulting in internal HPD line state corruption in some instances.\n\n[Rhetorical] What would happen if we attempted handling a stale `SRC_CAP` message from TCPC FIFO, but for some reason the partner PDO object numbers changed between connection attempts? Say, 9v Variable Voltage PDO#2 was replaced by 20v PDO#2?\n\nTCPC FIFO should probably be flushed as well.",
+      "parentUuid": "d6a13e13_0dd169b3",
       "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
