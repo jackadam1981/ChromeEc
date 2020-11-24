@@ -531,8 +531,16 @@ static void charge_manager_switch_to_source(int port)
 		return;
 
 	/* If connected to dual-role device, then ask for a swap */
-	if (dualrole_capability[port] == CAP_DUALROLE && is_sink(port))
-		pd_request_power_swap(port);
+	if (IS_ENABLED(CONFIG_USB_PD_TCPMV2)) {
+		if (is_sink(port) &&
+		    !pd_can_source_from_device(pd_get_src_cap_cnt(port),
+					       pd_get_src_caps(port)))
+			pd_request_power_swap(port);
+	} else {
+		if (is_sink(port) &&
+		    dualrole_capability[port] == CAP_DUALROLE)
+			pd_request_power_swap(port);
+	}
 }
 
 /**
