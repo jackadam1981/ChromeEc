@@ -51,6 +51,24 @@
       "parentUuid": "78e81015_45e48eb4",
       "revId": "02bc4e24a37b0c1c53131b1057691de57cf71746",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8000538d_014e7cb2",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-24T20:04:29Z",
+      "side": 1,
+      "message": "Makes sense.  Note that this is why the test keeps going so it\u0027s clear in the comments",
+      "parentUuid": "c54f6ecd_ac7a0649",
+      "revId": "02bc4e24a37b0c1c53131b1057691de57cf71746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
