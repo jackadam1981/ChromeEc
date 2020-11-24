@@ -16,6 +16,24 @@
       "message": "Why are we now conditionally locking the registers? I don\u0027t have time to dig right now, but will do so tomorrow. The -2 is because at first glance, this seems like the wrong thing to do.",
       "revId": "e0257248210f6c6007f29521568bac80cec945f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de10783_9a8c1d06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-11-24T05:55:44Z",
+      "side": 1,
+      "message": "Because the new introduced test item of firmware_WriteProtectFunc in March is using \"reboot hard\" command to reset EC to unlock WP.\nBut on it8320dx, the hard reset from software isn\u0027t able to unlock the flash WP registers (it8xxx2 series can unlock the registers with \"reboot hard\"). So we only lock the registers if they can be reset with reboot hard command.\n\nOr we need change firmware_WriteProtectFunc to use cold reset instead of reboot hard to pass the test.",
+      "parentUuid": "eafd4a9f_1d6f53b6",
+      "revId": "e0257248210f6c6007f29521568bac80cec945f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
