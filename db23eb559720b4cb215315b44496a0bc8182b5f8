@@ -52,6 +52,24 @@
       "parentUuid": "94909855_e2260660",
       "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca451d81_437e0df1",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-24T20:31:55Z",
+      "side": 0,
+      "message": "removed the call into pd_can_source_from_device and using the old method for charge manager.",
+      "parentUuid": "1357a49e_cfcb209c",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
