@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c393f691_ed497220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-24T20:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eab2cff_ab99b723",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e346b3fe_52eb3196",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "It is used elsewhere. It is correct to not be static",
       "parentUuid": "e346b3fe_52eb3196",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2341e0f7_caee5206",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-24T20:33:07Z",
+      "side": 1,
+      "message": "removed the change that I was making in the charge manager and made this static",
+      "parentUuid": "1da5c16d_b93eb819",
       "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
