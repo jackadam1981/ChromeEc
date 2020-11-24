@@ -312,6 +312,24 @@
       "parentUuid": "a0dc8894_fa85c788",
       "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff84f90_d3f88871",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-11-24T22:22:48Z",
+      "side": 1,
+      "message": "Could not find documentation in TCPCI spec. \"FIFO\" is only mentioned twice.\n\nFurthermore, it seems TCPC may not be honoring some requirements from TCPCI 2.0v1.\n\n\u003e 4.7.4 Receiving SOP* USB PD Messages with Less than or Equal to 128 Data Bytes\n\u003e \n\u003e  If an overflow has occurred, the TCPC will have set the\n\u003e ALERT.RxBufferOverflow register, therefore the TCPC will not send the GoodCRC to\n\u003e other received messages until the TCPM clears the Message Received alert.\n\u003e \n\u003e The TCPM should always clear the Rx Buffer Overflow and Message Received bits at the\n\u003e same time. Otherwise there could be a scenario where the Rx Buffer Overflow bit\n\u003e remains set even though the TCPM has just cleared one of the messages in the buffer. \n\n(1) I do not see any mention at all of TCPC_REG_ALERT_RX_BUF_OVF beyond the tcpci.h header file. Or handling/clearing of `ALERT.RxBufferOverflow` in our EC codebase. This seems to be an architectural deficiency unrelated to this CL.\n\n[go/cs \"TCPC_REG_ALERT_RX_BUF_OVF\" ec + \"TCPC_ALERT_RX_BUF_OVF\" kernel]\n\n(2) I do not see any method in Vendor-Proprietary TCPC datasheets on how to clear this internal FIFO. Another architectural deficiency.\n\nThe suggested method for \"port suspend\" should involve: (a) disabling SOP* message reception via RxDetect register (b) setting CC Hi-Z Disabled state [yes, killing connection] (c) flushing the message queue manually or resetting the TCPC [as necessary] (d) turning off interrupt handler on EC pin for TCPC [and hope it\u0027s not shared].\n\nCurrently we do not do (a) (b) (c) or (d). That is beyond the scope of this emergent CL.",
+      "parentUuid": "13041ebe_4e9c2749",
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
