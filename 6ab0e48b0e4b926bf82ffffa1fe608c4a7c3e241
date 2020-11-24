@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0704f27b_14b65031",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-24T23:05:07Z",
+      "side": 1,
+      "message": "I think it would be better if we modified the driver to add the power saving mode. You can use the enter_low_power_mode method.\n\nOnce implemented, this CL shouldn\u0027t be needed at all right?",
+      "revId": "6ab0e48b0e4b926bf82ffffa1fe608c4a7c3e241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0309ec9e_c99d5ca6",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-24T23:05:07Z",
+      "side": 1,
+      "message": "nit: add a space between closing parenthesis and open brace.",
+      "range": {
+        "startLine": 237,
+        "startChar": 60,
+        "endLine": 237,
+        "endChar": 61
+      },
+      "revId": "6ab0e48b0e4b926bf82ffffa1fe608c4a7c3e241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f55a9d9a_63e70816",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-24T23:05:07Z",
+      "side": 1,
+      "message": "nit: add space before that equal sign",
+      "range": {
+        "startLine": 240,
+        "startChar": 43,
+        "endLine": 240,
+        "endChar": 44
+      },
+      "revId": "6ab0e48b0e4b926bf82ffffa1fe608c4a7c3e241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2911c5_e3240b04",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-24T23:05:07Z",
+      "side": 1,
+      "message": "This should be done by the common usb_mux driver framework.",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 50
+      },
+      "revId": "6ab0e48b0e4b926bf82ffffa1fe608c4a7c3e241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
