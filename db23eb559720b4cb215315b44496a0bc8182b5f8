@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81247630_e01a8aaa",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-24T20:12:16Z",
+      "side": 1,
+      "message": "The TCPMv1 way was to set a flag to check when we were in ready and then perform the DPM request for PR Swap when it was seen. This takes out the middle layer and performs the same action.",
+      "parentUuid": "71b63b54_a76d2a54",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c5de8be_f8484396",
