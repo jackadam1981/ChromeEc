@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89d184b5_409f1343",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-11-24T05:19:16Z",
+      "side": 1,
+      "message": "Seems like this is an option that has only 4 possible values.\nCould you document these values using a #define or enum?\nSomething like:\n\n```\nenum \u003ctbd\u003e {\n  IT83XX_TX_PRE_DRIVING_TIME_SOMETHING \u003d 0x0,\n  ...\n};\n```",
+      "revId": "5095b79c867d416c8f6d93f9ca9b3b3be0af6769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
