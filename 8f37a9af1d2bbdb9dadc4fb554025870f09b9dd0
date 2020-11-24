@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9a77f1f_575b1bc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 43
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "I think I have addressed all the comments. I did redesign the transmit path to support auto-retry and did a some refactoring of the tx variables to support that. \n\nI removed the block of code that is related to debug features for the driver. There are still some calls (not being compiled) into the debug routines. The remainder of the debug code is in the next CL in the stack.",
+      "revId": "8f37a9af1d2bbdb9dadc4fb554025870f09b9dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

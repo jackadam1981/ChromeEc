@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0aa6c6d7_296b8622",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "Yes, I think this should be included. I might have been thinking that since data was being added via ISR and the message was already avail prior to start of TX, that a data underrun is just so unlikely to happen.",
+      "parentUuid": "a2133267_bf702fb1",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ec27bcd_55728dba",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 41
@@ -48,6 +66,24 @@
       "writtenOn": "2020-11-17T00:36:44Z",
       "side": 1,
       "message": "nit: enum pd_data_role and enum pd_power_role?",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db9bf739_c4bf178c",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ec27bcd_55728dba",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2020-11-17T00:36:44Z",
       "side": 1,
       "message": "nit: SOP_PRIME is how we\u0027ve been annotating in the codebase, generally",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f9cd076_8d18d5a2",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e7e00b4_05524e76",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edcb61c2_921708b8",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "I think the comment is just out of date. I don\u0027t think I changed how I handled GoodCRC messages in the debug log. This section of code will be gone when I upload the patchset. I wanted all the debug code in a different CL",
+      "parentUuid": "e19f63cb_6064bd04",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f71d0913_692dda59",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 41
@@ -105,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "787957c0_6665c680",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "I\u0027m actually going to pull the debug code out of this CL. I had separated the debug code into a subsequent CL, but looks like I still left one portion in.",
+      "parentUuid": "f71d0913_692dda59",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fef8996_46be42c1",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 41
@@ -116,6 +206,24 @@
       "writtenOn": "2020-11-17T00:36:44Z",
       "side": 1,
       "message": "Check ext \u003d\u003d 0 as well",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38815e13_cb272ea0",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fef8996_46be42c1",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +247,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d370b22_84102496",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "I added a buffer length check for tx messages and a comment where the buffer length is defined that clarifies the chunked message assumption.",
+      "parentUuid": "285024c2_7137cd06",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b79b2e8f_75b3c47a",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 41
@@ -150,6 +276,24 @@
       "writtenOn": "2020-11-17T00:36:44Z",
       "side": 1,
       "message": "Should any of the receives be enabled before the TC has decided we\u0027re attached?   Do they cause us to generate GoodCRCs, or just set us up to detect things?\n\nAlso, unless you have a cable e-mark I don\u0027t think cable reset is needed",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af6830e3_9c4d5c91",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "This register just sets up which message types will be received. But, the receiver on/off control is done via a bit in the control register.\n\nHoneybuns does not have a captive cable. Is this what you mean by cable reset not being required?",
+      "parentUuid": "b79b2e8f_75b3c47a",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +317,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "635443fe_aedc2550",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "I modified this routine to fix the 2 cases that weren\u0027t being handled and match up better with the tx state machine design.",
+      "parentUuid": "9b534a78_eca0c208",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b3c93b0_26e57624",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 41
@@ -184,6 +346,24 @@
       "writtenOn": "2020-11-17T17:28:41Z",
       "side": 1,
       "message": "We wouldn\u0027t expect to see type \u003e\u003d TCPC_TX_HARD_RESET in this clause, right?  All of the types in this switch segment are \u003c that value",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1de2307_0cf8de36",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "This was being done to map between enum tcpm_transmit_type and the order of the txorderset table which had hard/cable reset in between SOP\u0027\u0027 and SOP\u0027_Debug. The tx orderset table followed stm32g4 documentation, but that could be moved easily enough. I fixed the table order to match that of enum tcpm_transmit_type so now it can be used directly.",
+      "parentUuid": "9b3c93b0_26e57624",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -230,6 +410,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b055d78_f99ae0f9",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "Yeah naming this has caused me great consternation 😊. I knew type was a bit confusing, then went with source but that\u0027s confusing because of the src/snk power roles. I landed on enum ucpd_tx_msg and I use msg_src as the variable to track which type of message is being sent and which message descriptor to use.",
+      "parentUuid": "fd667db1_c0f24682",
+      "range": {
+        "startLine": 606,
+        "startChar": 37,
+        "endLine": 606,
+        "endChar": 41
+      },
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f7e8082_2addd0ca",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 41
@@ -241,6 +445,24 @@
       "writtenOn": "2020-11-17T17:28:41Z",
       "side": 1,
       "message": "This bit depends on SOP/SOP\u0027 type.  Same with data role",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a8426a_282e0a92",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "I added (SOP) in the comment to be clear that this is the PD header definition for SOP",
+      "parentUuid": "9f7e8082_2addd0ca",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -264,6 +486,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f2e63b9_7abf6ad6",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "Good catch. Without PD3.0 and a preferred data role of UFP, GoodCRCs weren\u0027t being used so I hadn\u0027t noticed this wrong. The correct value to use will always be in STM32_UCPD_RX_ORDSETR which contains the start of packet value for the most recent detected message.",
+      "parentUuid": "0191cd27_1e6ecbc0",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1badbaeb_3b3393f5",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 41
@@ -275,6 +515,24 @@
       "writtenOn": "2020-11-17T17:28:41Z",
       "side": 1,
       "message": "Our enum we\u0027re using here is defined in the TCPCI spec though, so we\u0027ll need to ensure we\u0027re keeping this matched between drivers.  It looks like they match well here, but notes would be good to leave in the driver in case these start to diverge.",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee49c8f_65524078",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "I think I copied this comment from somewhere else. The part that isn\u0027t in the spec is allocating 2 extra bytes for the header to store this info.",
+      "parentUuid": "1badbaeb_3b3393f5",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -298,6 +556,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52cc0b99_dbec5be7",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "This version of the chip only supports one UCPD port. The G0 does support 2 ports and my intention was to make the driver. I will add another TODO for now. My plan was to include some macros that maps PD port number to UCPC port number. In addition my thought was to replace \u0027port\u0027 in the function prototypes with \u0027usbc_port\u0027 then all ucpd register accesses can remain \u0027port\u0027 as they are now.\n\nThis is not an issue for honeybuns as there is only 1 ucpd port and that\u0027s used for the host port which is port 0 as well. But, for the driver to be complete, it needs the change I mentioned.",
+      "parentUuid": "05366649_d3225d59",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76da7f35_7ef86eeb",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 41
@@ -315,6 +591,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2aff439a_a4e2d64b",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "I have added a check now to ensure that a GoodCRC isn\u0027t validated without matching the expected msgID. \n\nIn addition, the ucpd task now has a state machine implementation to support the auto-retry requirement. UCPD isn\u0027t a TCPC so the driver does need to do some things which we assume are handled in the TCPC.",
+      "parentUuid": "76da7f35_7ef86eeb",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5516169c_4c1b218f",
         "filename": "chip/stm32/ucpd-stm32gx.h",
         "patchSetId": 41
@@ -326,6 +620,24 @@
       "writtenOn": "2020-11-17T00:36:44Z",
       "side": 1,
       "message": "nit: should these be in registers-stm32g4.h with the rest of the register defines?",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d877c9_3fb2110e",
+        "filename": "chip/stm32/ucpd-stm32gx.h",
+        "patchSetId": 41
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:49:07Z",
+      "side": 1,
+      "message": "I had them there at first, didn\u0027t have a very strong reason to move them here other than I didn\u0027t have any other changes to the registers file.",
+      "parentUuid": "5516169c_4c1b218f",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
