@@ -322,8 +322,9 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 {
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
-	int port = me->usb_port;
+	int val = 0;
 
+	int port = me->usb_port;
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
 	 * 0 - No connection present
@@ -415,8 +416,12 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		retimer_set_state_ufp(mux_state, &set_retimer_con);
 
 	/* Writing the register4 */
-	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+	val = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);
+	if (val)
+		CPRINTS("\nC%d: BB write I2C error %d\n", port, val);
+
+	return val;
 }
 
 static int retimer_low_power_mode(const struct usb_mux *me)
