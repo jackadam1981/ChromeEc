@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0567d205_4540f585",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:45:27Z",
+      "side": 1,
+      "message": "There are some controls for current limits on the type-A ports. My understanding is that the host port will always be able to supply 3A and there is no need to change the current limit from the default value.",
+      "parentUuid": "9fd2ab0a_8a2824fa",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73acc2b7_f51e2990",
         "filename": "board/gingerbread/board.c",
         "patchSetId": 42
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-17T17:46:32Z",
       "side": 1,
       "message": "Since this is being interpreted as non-zero \u003d interrupt asserted, probably return 0",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2146723_24b2e4d5",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73acc2b7_f51e2990",
       "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2020-11-18T02:29:19Z",
       "side": 1,
       "message": "Why is the rising edge of interest?",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 63
+      },
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f4453e6_ea2cfc9d",
+        "filename": "board/gingerbread/gpio.inc",
+        "patchSetId": 42
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:45:27Z",
+      "side": 1,
+      "message": "I think this is just a copy/paste error. I have changed it.",
+      "parentUuid": "63dc2e4a_0e0f053b",
       "range": {
         "startLine": 11,
         "startChar": 50,
@@ -83,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ee569da_698e7a90",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:45:27Z",
+      "side": 1,
+      "message": "I can\u0027t use the config option here because the desired default value changes per port. This piece of code was added more as a quick modification to set DRP outside of having a chipset hook. Later in the stack, I have CL that fixes some issues in usbc related to setting the default power role.\n\nNote, that our TCPMv2 very much assumes a typical chromebook port. I have a CL that fixes this along with force_source (which currently is broken in TOT TCPMv2). I added a #ifdef guard for chipset_task around the code that assumes there is a chipset task that will control the DRP state and the #else path includes an overridable function to return desired starting port role so there is no timing uncertainty.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2541882",
+      "parentUuid": "9b25ea5f_031a3742",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 0
+      },
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bce56bd_cd095e76",
         "filename": "board/quiche/board.c",
         "patchSetId": 42
@@ -94,6 +178,24 @@
       "writtenOn": "2020-11-18T02:29:19Z",
       "side": 1,
       "message": "Same here; Non-zero means that there\u0027s an interrupt pending.",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08166e55_77ec468d",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bce56bd_cd095e76",
       "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +213,24 @@
       "writtenOn": "2020-11-17T17:46:32Z",
       "side": 1,
       "message": "Looks like UART_TX on the pinout spreadsheet? Or does it need updated?",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c651e8_b89b8b2b",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 42
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-11-24T16:45:27Z",
+      "side": 1,
+      "message": "There was some rework on the board. There are a few CLs later in the stack that reflect when gingerbread is brought up. I had to move gingerbread support earlier in the stack so I could add usbc/pd configs in baseboard.h and still have make buildall work properly.",
+      "parentUuid": "f328f31c_71aaf76f",
       "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
