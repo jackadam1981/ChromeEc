@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8dc8f30_950a8f47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-24T00:49:39Z",
+      "side": 1,
+      "message": "Puff runs EFS2 so it can be affected by the bug this fixes. Not a critical fix because bad builds quickly make themselves evident when they fail to run at all.",
+      "revId": "31a105afe8d7b14c0f8b6860af854052a2bb4154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
