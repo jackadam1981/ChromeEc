@@ -424,6 +424,11 @@ static const struct usb_mux mux_config_p1_usb3 = {
 	.next_mux = &usbc1_usb3_db_retimer,
 };
 
+/* USB-A charging control */
+const int usb_port_enable[USB_PORT_COUNT] = {
+	GPIO_EN_PP5000_USBA,
+};
+
 static void ps8815_reset(void)
 {
 	int val;
