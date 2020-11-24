@@ -63,6 +63,8 @@
 #define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
 
 /* USB Type A Features */
+#define USB_PORT_COUNT			1
+#define CONFIG_USB_PORT_POWER_DUMB
 
 /* USBC PPC*/
 #define CONFIG_USBC_PPC_SN5S330		/* USBC port C0 */
