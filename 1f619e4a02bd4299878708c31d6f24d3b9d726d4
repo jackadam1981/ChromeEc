@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a1b2745_e8d368b3",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-11-24T21:27:31Z",
+      "side": 1,
+      "message": "Okay, could you add this to the comment.",
+      "parentUuid": "987681eb_39ede279",
+      "range": {
+        "startLine": 1179,
+        "startChar": 6,
+        "endLine": 1179,
+        "endChar": 35
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf444d08_4fc62fd9",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 4
@@ -167,6 +191,30 @@
       "side": 1,
       "message": "`failed_attempts` are already incremented in line 1170 \"per operation\".\n\n`failed_attempts` is intended to signify failure to enqueue packet in the EC FIFO.\nIncrementing for \"I2C transfer fail\" (to clear) may be double-counting, and not appropriate.\n\nThis is also a blind \"delete the TCPC FIFO message\" write. We assume success. Separate error handling. Please see line 1205. We don\u0027t check for failure there either.\n\nMessage alerts only populate the `alert` register, not the `extended` register.",
       "parentUuid": "cf444d08_4fc62fd9",
+      "range": {
+        "startLine": 1181,
+        "startChar": 4,
+        "endLine": 1181,
+        "endChar": 16
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761cb91a_ff2e3748",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-11-24T21:27:31Z",
+      "side": 1,
+      "message": "Maybe create a comment from your reply to explain why we don\u0027t need to check return value on line 1181.",
+      "parentUuid": "d77b5c83_511b664e",
       "range": {
         "startLine": 1181,
         "startChar": 4,
@@ -244,6 +292,24 @@
       "side": 1,
       "message": "Adding on, is there a way to flush TCPC FIFO? Do we even have a command for that?\n\nPer b/156138479 we are handling stale `VDM:Attention` messages after \"resume\". Resulting in internal HPD line state corruption in some instances.\n\n[Rhetorical] What would happen if we attempted handling a stale `SRC_CAP` message from TCPC FIFO, but for some reason the partner PDO object numbers changed between connection attempts? Say, 9v Variable Voltage PDO#2 was replaced by 20v PDO#2?\n\nTCPC FIFO should probably be flushed as well.",
       "parentUuid": "d6a13e13_0dd169b3",
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13041ebe_4e9c2749",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-11-24T21:27:31Z",
+      "side": 1,
+      "message": "If a \"Flush TCPC FIFO\" command exists, I\u0027d expect it to be documented in the TCPCI spec. Or we could modify tcpm_clear_pending_messages to read the tcpc\u0027s fifo until it\u0027s empty.",
+      "parentUuid": "a0dc8894_fa85c788",
       "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
