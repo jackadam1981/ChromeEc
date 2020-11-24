@@ -16,6 +16,24 @@
       "message": "Please split this patch to two patches. ie. the usb type-a bc1.2 charging and tcpc reset.",
       "revId": "8b9acc262be77a2b5f4140bc5c3c7c448ebd87c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9596f7b_11811218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1418383
+      },
+      "writtenOn": "2020-11-24T12:38:01Z",
+      "side": 1,
+      "message": "OK,we have uploaded another CL:https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2557759/1\n\ndone",
+      "parentUuid": "5911af8a_78e5a1c6",
+      "revId": "8b9acc262be77a2b5f4140bc5c3c7c448ebd87c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
