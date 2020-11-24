@@ -34,6 +34,24 @@
       "parentUuid": "21d5b187_fe824c21",
       "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1357a49e_cfcb209c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-24T20:13:13Z",
+      "side": 0,
+      "message": "What do you see breaking on TCPMv2 without this change?  Based on the flag sets I see in pe_update_src_pdo_flags() I would expect the current code to be OK.  Unless I\u0027m missing a case?",
+      "parentUuid": "94909855_e2260660",
+      "revId": "db23eb559720b4cb215315b44496a0bc8182b5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
