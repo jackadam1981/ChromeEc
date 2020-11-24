@@ -811,6 +811,40 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
 		max_tbt_speed : cable_mode_resp.tbt_cable_speed;
 }
 
+enum link_lsrx_comm get_lsrx_comm_capability(int port)
+{
+	union tbt_mode_resp_cable cable_mode_resp;
+	const struct pd_discovery *disc =
+			pd_get_am_discovery(port, TCPC_TX_SOP);
+
+	/*
+	 * Ref: USB4 specification, table 13-7 Lane Attributes.
+	 * For the sideband channel of a router to operate as a USB4
+	 * sideband channel, the link over an active cable should be
+	 * unidirectional.
+	 * Since, USB4 active cable might not support Intel SVID, return
+	 * their link communication capability as unidirectional.
+	 *
+	 * Ref: USB Type-C Cable and Connector Specification,
+	 * table F-14 TBT3 Cable Functional Difference Summary
+	 * For passive cables, link training is don't care
+	 */
+	if (pd_get_rev(port, TCPC_TX_SOP_PRIME) == PD_REV30 &&
+	    PD_PRODUCT_IS_USB4(disc->identity.product_t1.raw_value)) {
+		const struct pd_discovery *disc_sop_prime =
+			pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+		const union active_cable_vdo2_rev30 a2_rev30 =
+				disc_sop_prime->identity.product_t2.a2_rev30;
+
+		if (a2_rev30.usb_40_support == USB4_SUPPORTED)
+			return UNIDIR_LSRX_COMM;
+	}
+
+	cable_mode_resp.raw_value =
+			pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
+	return cable_mode_resp.lsrx_comm;
+}
+
 int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 			uint32_t *payload)
 {

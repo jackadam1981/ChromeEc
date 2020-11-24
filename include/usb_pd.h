@@ -2179,6 +2179,15 @@ int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 			uint32_t *payload);
 
 /**
+ * Returns the link communication capability for Thunderbolt and USB4 cables
+ *
+ * @param port      USB-C port number
+ * @return          UNIDIR_LSRX_COMM for USB4 cables
+ *                  According to Discover Mode SOP' bit23 for Thunderbolt cables
+ */
+enum link_lsrx_comm get_lsrx_comm_capability(int port);
+
+/**
  * Return maximum allowed speed for Thunderbolt-compatible mode
  *
  * NOTE: Chromebooks require that all USB-C ports support the same features,

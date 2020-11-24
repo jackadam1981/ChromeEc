@@ -65,15 +65,15 @@ enum usb4_states {
  *            |        |    mode      >=1.3                   |             |
  *    Is modal op?     |    entry     |                       y             |
  *            |        |            Cable USB4  - N           |             |
- *            y        |            support?      |       Gen4 cable? - N - Skip
- *            |        |               |      Skip USB4       |             USB4
- *    Is TBT SVID? -N- Enter           |      mode entry      |             mode
- *            |       USB4 SOP         |                      |            entry
- *            y       with Gen2        y                      |
- *            |       cable speed      |                      |
- *            |                        |                      |
- *    Is Discover mode                 |                      |
- *    SOP' B25? - N - Enter      Enter USB4 mode              |
+ *            y        |            support?      |       Gen4 cable? - N --|
+ *            |        |               |      Skip USB4       |             |
+ *    Is TBT SVID? -N- Enter           |      mode entry      y             |
+ *            |       USB4 SOP         |                      |             |
+ *            y       with Gen2        y                  Is unidirection   |
+ *            |       cable speed      |                     LSRX? -- N -- Skip
+ *            |                        |                      |            USB4
+ *    Is Discover mode                 |                      |            mode
+ *    SOP' B25? - N - Enter      Enter USB4 mode              |            entry
  *            |     USB4 SOP     (SOP, SOP', SOP'')           |
  *            |     with speed                                |
  *            y     from TBT mode                             |
@@ -189,6 +189,12 @@ bool enter_usb_cable_is_capable(int port)
 		 * doesn't support modal operation or
 		 * doesn't support Intel SVID or
 		 * doesn't have rounded support.
+		 * doesn't support unidirectional LSRX
+		 *
+		 * For the The sideband channel of a router to operate as a USB4
+		 * sideband channel, the link over an active cable should be
+		 * unidirectional.
+		 * Ref: Table 13-7. Lane Attributes from USB4 specification.
 		 */
 		} else {
 			const struct pd_discovery *disc =
@@ -201,7 +207,8 @@ bool enter_usb_cable_is_capable(int port)
 			   !pd_is_mode_discovered_for_svid(port,
 					TCPC_TX_SOP_PRIME, USB_VID_INTEL) ||
 			    cable_mode_resp.tbt_rounded !=
-					TBT_GEN3_GEN4_ROUNDED_NON_ROUNDED)
+					TBT_GEN3_GEN4_ROUNDED_NON_ROUNDED ||
+			    cable_mode_resp.lsrx_comm != UNIDIR_LSRX_COMM)
 				return false;
 		}
 	}
