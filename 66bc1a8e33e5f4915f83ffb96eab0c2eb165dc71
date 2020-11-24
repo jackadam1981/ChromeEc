@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec11c3c_47046f84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-24T21:32:50Z",
+      "side": 1,
+      "message": "Search_blocked_words.sh stats before this CL stack:\nmaster                   1094     251           9\nslave                    1207     183           5\n\nAnd after:\nmaster                   1088     248           7\nslave                    1106     180           4\n",
+      "revId": "66bc1a8e33e5f4915f83ffb96eab0c2eb165dc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
