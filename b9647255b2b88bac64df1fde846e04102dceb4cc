@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee50874_b61c3e3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-24T20:51:16Z",
+      "side": 1,
+      "message": "Add a build target for \"magolor_legacy\" using the old EC.  You can use this CL as an example for how to create it from a symbolic link to magolor\u0027s board: \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2364332",
+      "revId": "b9647255b2b88bac64df1fde846e04102dceb4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
