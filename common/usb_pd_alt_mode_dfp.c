@@ -15,6 +15,7 @@
 #include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
 #include "usb_tbt_alt_mode.h"
 #include "usbc_ppc.h"
@@ -813,6 +814,32 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
 
 	return max_tbt_speed < cable_mode_resp.tbt_cable_speed ?
 		max_tbt_speed : cable_mode_resp.tbt_cable_speed;
+}
+
+enum link_lsrx_comm get_lsrx_comm_capability(int port)
+{
+	union tbt_mode_resp_cable cable_mode_resp = {
+		.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME)};
+	const struct pd_discovery *disc =
+			pd_get_am_discovery(port, TCPC_TX_SOP);
+
+	/*
+	 * Ref: USB4 specification, table 13-7 Lane Attributes.
+	 * The sideband channel of router shall operate as a USB4 sideband
+	 * channel if the link is over either a passive cable or an active
+	 * cable with unidirectional re-timers.
+	 *
+	 * Ref: USB Type-C Cable and Connector Specification,
+	 * table F-14 TBT3 Cable Functional Difference Summary
+	 * For passive cables, and non-USB4/non-Thunderbolt modes,
+	 * the link training is don't care.
+	 */
+	if (PD_PRODUCT_IS_USB4(disc->identity.product_t1.raw_value) &&
+	   (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE ||
+	    cable_mode_resp.tbt_active_passive != TBT_CABLE_ACTIVE))
+		return UNIDIR_LSRX_COMM;
+
+	return cable_mode_resp.lsrx_comm;
 }
 
 int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
