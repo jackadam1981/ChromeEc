@@ -16,6 +16,24 @@
       "message": "Add EC owners to check FW branch merge. Thanks! \n\nQuick question - why there is a \"-master\" append on the FW branch name? thanks! ",
       "revId": "ee9449ff85cf89063c0b911f363d204da191529b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89af0844_76f9e8fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-24T20:03:11Z",
+      "side": 1,
+      "message": "\"master\" is the name I see appended if I try to \"git checkout firmware-dedede\" and use \u003ctab\u003e\u003ctab\u003e to see options: \n\n# git checkout firmware-dedede-13606.B-\nfirmware-dedede-13606.B-cr50_stab   firmware-dedede-13606.B-master \n\nShould it be named differently?",
+      "parentUuid": "c1140ce8_e71d0fb9",
+      "revId": "ee9449ff85cf89063c0b911f363d204da191529b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
