@@ -1025,8 +1025,8 @@ static void tc_set_partner_role(int port, enum ppc_device_role role)
 
 void pd_set_suspend(int port, int suspend)
 {
-	if (pd_is_port_enabled(port) == !suspend)
-		return;
+	// if (pd_is_port_enabled(port) == !suspend)
+	//	return;
 
 	/* Track if we are suspended or not */
 	if (suspend) {
@@ -3513,19 +3513,39 @@ void tc_set_debug_level(enum debug_level debug_level)
 #endif
 }
 
+int gindex = 0;
+
 void tc_run(const int port)
 {
+	mux_state_t mux_state = usb_mux_get(port);
+
 	/*
 	 * If pd_set_suspend SUSPEND state changes to
 	 * be suspended then we need to go directly to
 	 * DISABLED
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_SUSPEND)) {
-		/* Invalidate a contract, if there is one */
-		if (IS_ENABLED(CONFIG_USB_PE_SM))
-			pe_invalidate_explicit_contract(port);
+		if (get_state_tc(port) != TC_DISABLED) {
 
-		set_state_tc(port, TC_DISABLED);
+			/*
+			 * Put the USB mux into safe mode. This has the desired side
+			 * effect of also taking the USB mux out of low power mode
+			 * allowing firmware updates for mux/retimers while suspended.
+			 */
+			usb_mux_set_usb_mode(port);
+			set_state_tc(port, TC_DISABLED);
+			gindex++;
+		} else {
+
+			if ((gindex == 2) && (mux_state & USB_PD_MUX_USB_ENABLED)) {
+				/* Invalidate a contract, if there is one */
+				pe_invalidate_explicit_contract(port);
+				usb_mux_set_safe_mode(port);
+			} else if ((gindex == 3) && (mux_state & USB_PD_MUX_SAFE_MODE)) {
+				usb_mux_set_tbt_mode(port);
+			}
+			gindex++;
+		}
 	}
 
 	run_state(port, &tc[port].ctx);

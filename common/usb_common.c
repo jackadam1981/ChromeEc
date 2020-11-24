@@ -445,6 +445,22 @@ void set_usb_mux_with_current_data_role(int port)
 	}
 }
 
+void usb_mux_set_usb_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		usb_mux_set(port, USB_PD_MUX_USB_ENABLED,
+			USB_SWITCH_CONNECT, pd_get_polarity(port));
+	}
+}
+
+void usb_mux_set_tbt_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		usb_mux_set(port, USB_PD_MUX_TBT_COMPAT_ENABLED,
+			USB_SWITCH_CONNECT, pd_get_polarity(port));
+	}
+}
+
 void usb_mux_set_safe_mode(int port)
 {
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {

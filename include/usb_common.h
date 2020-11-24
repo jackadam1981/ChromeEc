@@ -172,6 +172,8 @@ void set_usb_mux_with_current_data_role(int port);
  * @param port The PD port number
  */
 void usb_mux_set_safe_mode(int port);
+void usb_mux_set_usb_mode(int port);
+void usb_mux_set_tbt_mode(int port);
 
 /**
  * Get the PD flags stored in BB Ram
