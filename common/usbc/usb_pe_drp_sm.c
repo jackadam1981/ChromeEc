@@ -4669,6 +4669,24 @@ static void pe_snk_give_sink_cap_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 		pe_set_ready_state(port);
 	}
+
+	/*
+	 * On outgoing discard, soft reset with SOP of incoming message
+	 *
+	 * See Table 6-65 Response to an incoming Message (except VDM) in PD 3.0
+	 * Version 2.0 Specification.
+	 */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED) &&
+				PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		enum tcpm_transmit_type sop =
+				PD_HEADER_GET_SOP(rx_emsg[port].header);
+
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_DISCARDED);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		pe_send_soft_reset(port, sop);
+		return;
+	}
 }
 
 /**
