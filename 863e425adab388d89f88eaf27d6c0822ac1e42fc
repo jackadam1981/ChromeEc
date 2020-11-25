@@ -52,6 +52,23 @@
       "parentUuid": "fc5fd3fd_1f64af4f",
       "revId": "863e425adab388d89f88eaf27d6c0822ac1e42fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3826d928_b6ec5baf",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-25T01:04:48Z",
+      "side": 1,
+      "message": "Shall we add assertions then?",
+      "revId": "863e425adab388d89f88eaf27d6c0822ac1e42fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
