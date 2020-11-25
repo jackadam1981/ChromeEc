@@ -201,6 +201,24 @@
       "parentUuid": "8bc09474_54b36c83",
       "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "068cb8dd_19fbea6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-25T15:59:39Z",
+      "side": 1,
+      "message": "I didn\u0027t aware that servod init calls `rddkeepalive`. This may explain some mysterious behaviors when I saw, like measuring power, testing DP alt-mode (the CCD_MODE_ODL mux blocking the SBU lines).\n\nAgree that the `rddkeepalive` is currently a decent workaround for this kind of CC out of voltage issues. When moving to Servo v4.1, the DAC is a better workaround for this issue. It doesn\u0027t leave DUT in a CCD always-connected state, even CCD is not used. We may deprecate the `rddkeepalive` that time.\n\nSince the `rddkeepalive` is already in place, I don\u0027t object to pushing this CL, which helps aligning the CrOS power sourcing policy between debug accessories and normal devices, as long as Edward does the tests in case anything is missing.",
+      "parentUuid": "f7ecb4f1_787f08e4",
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
