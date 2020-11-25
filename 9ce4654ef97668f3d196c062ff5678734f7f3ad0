@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2793c296_2def5a2f",
+        "filename": "board/tgly_mecc10/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-25T00:40:38Z",
+      "side": 1,
+      "message": "ACK, high level info is merged here\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/baseboard/intelrvp/README.md",
+      "parentUuid": "828131a5_28111cc2",
+      "revId": "9ce4654ef97668f3d196c062ff5678734f7f3ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed4424e3_b8d8c9ee",
         "filename": "board/tgly_mecc10/board.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-25T00:04:08Z",
       "side": 1,
       "message": "1. Shouldn\u0027t the code be refactored in baseboard and board specific changes?\n2. Is this code applicable only for Nuvoton EC or generic for all ECs?\n3. TGL-Y with MECC1.0 is not really a board, but more of a configuration. Should this really be a #define configuration option?",
+      "revId": "9ce4654ef97668f3d196c062ff5678734f7f3ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62957f99_8c748410",
+        "filename": "board/tgly_mecc10/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-25T00:40:38Z",
+      "side": 1,
+      "message": "1. yes, for ADL code we will plan to add common code in baseboard\n2. Its ITE specific added as a reference to Nuvoton so that they can add similar code. Changes will be minimum\n3. Yes, its not a POR hence added as independent code to avoid confusion",
+      "parentUuid": "ed4424e3_b8d8c9ee",
       "revId": "9ce4654ef97668f3d196c062ff5678734f7f3ad0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
