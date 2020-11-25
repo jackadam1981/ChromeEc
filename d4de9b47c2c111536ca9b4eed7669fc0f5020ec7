@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ced44b_7761acf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-11-25T23:02:52Z",
+      "side": 1,
+      "message": "Hi!\n\nAfter CL:2542865 was merged EC crashes during PDTrySrc test. Reason is simple - implementation of sop_prime_enable() was not provided for anx74xx. This patch adds default implementation, used by other ANX drivers too.",
+      "revId": "d4de9b47c2c111536ca9b4eed7669fc0f5020ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
