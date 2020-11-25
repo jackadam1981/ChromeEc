@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09022327_28bd789e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1435675
+      },
+      "writtenOn": "2020-11-25T07:37:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cef2205d_37f2c728",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "3d7f68bd76f222961699b6ac6f27c19e344b06d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11cb21ea_1d8825a4",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-24T03:57:02Z",
       "side": 1,
       "message": "This is should be part number and match AVL part number.",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "3d7f68bd76f222961699b6ac6f27c19e344b06d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55daf5c6_615884e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1435675
+      },
+      "writtenOn": "2020-11-25T07:37:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11cb21ea_1d8825a4",
       "range": {
         "startLine": 16,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c2a569_84940de7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1435675
+      },
+      "writtenOn": "2020-11-25T07:37:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e5f6f69_25afebde",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "3d7f68bd76f222961699b6ac6f27c19e344b06d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "771fed24_31fd3198",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-24T03:55:15Z",
       "side": 1,
       "message": "No need this.",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 10
+      },
+      "revId": "3d7f68bd76f222961699b6ac6f27c19e344b06d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1127d60c_85a64163",
+        "filename": "board/gumboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1435675
+      },
+      "writtenOn": "2020-11-25T07:37:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "771fed24_31fd3198",
       "range": {
         "startLine": 180,
         "startChar": 4,
