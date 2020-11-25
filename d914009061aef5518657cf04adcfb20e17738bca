@@ -16,6 +16,24 @@
       "message": "Comparing this to TCPMv1\u0027s pd_check_pr_role(), I see a couple of differences:\n1) TCPMv1 would only switch if both us and partner have dualrole enabled.\n2) TCPMv1 would swap from source to sink.",
       "revId": "d914009061aef5518657cf04adcfb20e17738bca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9b21a3_c5a523f7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-25T03:40:41Z",
+      "side": 1,
+      "message": "pd_check_pr_role is the combination of pd_resume_check_pr_swap_needed, pd_can_source_from_device and chipset resume. Chipset resume is the place that we will be going from non-DRP to being DRP, so the check for us was not needed in this function. The code in pd_can_source_from_device checks the PDO for the partner DRP.\n\nWe don\u0027t need or want to perform the source to sink in the resume check. On connection we will not have SrcCaps from the partner until we go through state PE_DR_SRC_GET_SOURCE_CAP. This will wait until we get the READY and then will get SrcCaps to determine if UP is enabled and we will PR_Swap there. The TCPMv1 way will not work the same way in TCPMv2 but the case is covered.",
+      "parentUuid": "98a4d12b_b90d9faa",
+      "revId": "d914009061aef5518657cf04adcfb20e17738bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
