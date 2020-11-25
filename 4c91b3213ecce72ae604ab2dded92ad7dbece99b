@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e62998fc_59d93057",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-25T17:32:46Z",
+      "side": 1,
+      "message": "Can we remove the prefix? Isn\u0027t \u0027addr_flags\u0027 enough? I think this is a good time to remove the redundancy.",
+      "range": {
+        "startLine": 110,
+        "startChar": 32,
+        "endLine": 110,
+        "endChar": 53
+      },
+      "revId": "4c91b3213ecce72ae604ab2dded92ad7dbece99b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
