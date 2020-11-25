@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "857e40b0_e729f602",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-11-25T17:11:09Z",
+      "side": 1,
+      "message": "I believe the reason the ASSERT was wrapped by DEBUG_BRINGUP is that we didn\u0027t want ASSERT to appear in corner cases. There is a chance that the ASSERT will appear in a corner case which we run into only after RO is shipped. Is this concern negligible or no longer real?\n\n-------- \u003e8 ---------\n\nWe want task_get_current to be optimized and safe but as we all know those two virtues contradict. I think the current code is looking in the right direction. Why don\u0027t we improve it? Removing the DEBUG_BRINGUP guard is a change of direction from my perspective.\n\n(I\u0027m rewriting the idea I posted on Nov 19 because it seems it wasn\u0027t fully read.)\n\nin task.c:\n\n  task_id_t task_get_current_slow(void)\n  {\n  \treturn  task_start_called() ? current_task - tasks : TASK_ID_INVALID;\n  }\n\nin task.h:\n\n  /* This returns an unexpected result before tasks start. */\n  inline task_id_t task_get_current_unsafe(void)\n  {\n  \treturn current_task - tasks;\n  }\n\nThe idea is nobody wants to call *_slow in a critical path and nobody wants to call *_unsafe unless it\u0027s necessary. (Even though I feel \u0027_slow\u0027 suffix isn\u0027t as necessary as \u0027_unsafe\u0027. So, I\u0027m ok with task_get_current and task_get_current_unsafe.)\n\n\u003e That may not have fixed the case we hit here though, right?  Since EFS2 was\n\u003e calling in through task_disable_task() which would use the internal version?\n\nIt should have fixed the EFS2 case because task_disable_task will call the safe version:\n\n  void task_disable_task(task_id_t tskid)\n  {\n  \tatomic_clear_bits(\u0026tasks_enabled, BIT(tskid));\n  \tif (!in_interrupt_context() \u0026\u0026 tskid \u003d\u003d task_get_current_slow())\n  \t\t__schedule(0, 0);\n  }\n\nYes, there is a chance that task_disable_task will be called in a critical path (and we can\u0027t keep adding _slow prefix to the callers hierarchically). So, we need to be careful when we\u0027re touching the code in critical path. That\u0027s the trade-off. I think it\u0027s easier than making sure all corner cases (with ASSERT) are exercised before release.",
+      "parentUuid": "5de17385_4883edd5",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
