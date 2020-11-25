@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8618b0e8_c7d5c1b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-25T02:36:56Z",
+      "side": 1,
+      "message": "The alternative might be to remove the CONFIG_DEBUG_BRINGUP guard and always enable the assertion. I don\u0027t expect that would be any more expensive performance-wise than the current conditional, but it would have a small additional cost in code size.\n\nOtherwise it sounds like there\u0027s follow-up work to be done in investigating ways the testing could be improved, right?",
+      "parentUuid": "8be14fc3_d6984d56",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
