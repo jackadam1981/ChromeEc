@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828131a5_28111cc2",
+        "filename": "board/tgly_mecc10/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-11-25T00:04:08Z",
+      "side": 1,
+      "message": "It will be good to document high level difference in MECC 1.0 architecture as comment.",
+      "revId": "9ce4654ef97668f3d196c062ff5678734f7f3ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed4424e3_b8d8c9ee",
+        "filename": "board/tgly_mecc10/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-11-25T00:04:08Z",
+      "side": 1,
+      "message": "1. Shouldn\u0027t the code be refactored in baseboard and board specific changes?\n2. Is this code applicable only for Nuvoton EC or generic for all ECs?\n3. TGL-Y with MECC1.0 is not really a board, but more of a configuration. Should this really be a #define configuration option?",
+      "revId": "9ce4654ef97668f3d196c062ff5678734f7f3ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
