@@ -152,6 +152,7 @@
 
 #define I2C_ADDR_EEPROM_FLAGS	0x50
 #define CONFIG_I2C_CONTROLLER
+#define CONFIG_I2C_DEBUG
 
 
 #ifndef __ASSEMBLER__
