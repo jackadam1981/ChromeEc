@@ -2750,27 +2750,35 @@ static void init_vif_component_general_pd_fields(
 			is_usb_comms_capable());
 
 	{
-		bool supports_to_dfp = true;
+		bool supports_to_dfp;
 
-		if (type == DRP || type == SNK)
-			/*
-			 * DR_Swap_To_DFP_Supported requires
-			 *    Type_C_Can_Act_As_Host to be YES
-			 */
-			supports_to_dfp &= can_act_as_host();
-
-		if (type == DRP)
-			/*
-			 * DR_Swap_To_DFP_Supported requires
-			 *    Type_C_Can_Act_As_Device to be NO
-			 */
-			supports_to_dfp &= !can_act_as_device();
-		else if (type == SRC)
+		switch (type) {
+		case SRC:
 			/*
 			 * DR_Swap_To_DFP_Supported requires
 			 *    Type_C_Can_Act_As_Device to be YES
 			 */
-			supports_to_dfp &= can_act_as_device();
+			supports_to_dfp = can_act_as_device();
+			break;
+		case SNK:
+			/*
+			 * DR_Swap_To_DFP_Supported requires
+			 *    Type_C_Can_Act_As_Host to be YES OR
+			 *    Type_C_Is_Alt_Mode_Controller to be YES
+			 */
+			supports_to_dfp = (can_act_as_host() ||
+					   is_alt_mode_controller());
+			break;
+		case DRP:
+			/*
+			 * DR_Swap_To_DFP_Supported requires
+			 *    Type_C_Can_Act_As_Host to be YES AND
+			 *    Type_C_Can_Act_As_Device to be NO
+			 */
+			supports_to_dfp = (can_act_as_host() &&
+					   !can_act_as_device());
+			break;
+		}
 
 		set_vif_field_b(&vif_fields[DR_Swap_To_DFP_Supported],
 			vif_component_name[DR_Swap_To_DFP_Supported],
