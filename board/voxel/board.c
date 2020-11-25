@@ -191,14 +191,14 @@ const struct i2c_port_t i2c_ports[] = {
 	{
 		.name = "usb_0_mix",
 		.port = I2C_PORT_USB_0_MIX,
-		.kbps = 100,
+		.kbps = 400,
 		.scl = GPIO_EC_I2C3_USB_1_MIX_SCL,
 		.sda = GPIO_EC_I2C3_USB_1_MIX_SDA,
 	},
 	{
 		.name = "usb_1_mix",
 		.port = I2C_PORT_USB_1_MIX,
-		.kbps = 100,
+		.kbps = 400,
 		.scl = GPIO_EC_I2C4_USB_1_MIX_SCL,
 		.sda = GPIO_EC_I2C4_USB_1_MIX_SDA,
 	},
@@ -361,30 +361,31 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
 
 /******************************************************************************/
 /* USBC mux configuration - Tiger Lake includes internal mux */
-struct usb_mux usbc0_usb4_db_retimer = {
+struct usb_mux usbc0_tcss = {
 	.usb_port = USBC_PORT_C0,
-	.driver = &bb_usb_retimer,
-	.i2c_port = I2C_PORT_USB_0_MIX,
-	.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
+	.driver = &virtual_usb_mux_driver,
 };
-struct usb_mux usbc1_usb4_db_retimer = {
+struct usb_mux usbc1_tcss = {
 	.usb_port = USBC_PORT_C1,
-	.driver = &bb_usb_retimer,
-	.i2c_port = I2C_PORT_USB_1_MIX,
-	.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
+	.driver = &virtual_usb_mux_driver,
 };
+
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
-		.driver = &virtual_usb_mux_driver,
+		.driver = &bb_usb_retimer,
+		.i2c_port = I2C_PORT_USB_0_MIX,
+		.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
 		.hpd_update = &virtual_hpd_update,
-		.next_mux = &usbc0_usb4_db_retimer,
+		.next_mux = &usbc0_tcss,
 	},
 	[USBC_PORT_C1] = {
 		.usb_port = USBC_PORT_C1,
-		.driver = &virtual_usb_mux_driver,
+		.driver = &bb_usb_retimer,
+		.i2c_port = I2C_PORT_USB_1_MIX,
+		.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
 		.hpd_update = &virtual_hpd_update,
-		.next_mux = &usbc1_usb4_db_retimer,
+		.next_mux = &usbc1_tcss,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);

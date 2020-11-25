@@ -71,7 +71,8 @@ static int bb_retimer_write(const struct usb_mux *me,
 			    const uint8_t offset, uint32_t data)
 {
 	uint8_t buf[BB_RETIMER_WRITE_SIZE];
-
+	int rv;
+	int i;
 	/*
 	 * Write sequence
 	 * Slave Addr(w)
@@ -87,9 +88,14 @@ static int bb_retimer_write(const struct usb_mux *me,
 	buf[4] = (data >> 16) & 0xFF;
 	buf[5] = (data >> 24) & 0xFF;
 
-	return i2c_xfer(me->i2c_port,
-			me->i2c_addr_flags,
-			buf, BB_RETIMER_WRITE_SIZE, NULL, 0);
+	for (i = 0; i < 100; i++) {
+		rv = i2c_xfer(me->i2c_port, me->i2c_addr_flags, buf,
+			      BB_RETIMER_WRITE_SIZE, NULL, 0);
+		if (rv == EC_SUCCESS)
+			return EC_SUCCESS;
+		msleep(1);
+	}
+	return EC_ERROR_BUSY;
 }
 
 __overridable void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
@@ -330,7 +336,7 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 	 * mode.
 	 */
 }
-
+static int retimer_init(const struct usb_mux *me);
 /**
  * Driver interface functions
  */
@@ -339,6 +345,8 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
+	int rv = 1;
+
 	/*
 	 * TODO(b/161327513): Remove this once we have final fix for
 	 * the Type-C MFD degradation issue.
@@ -444,9 +452,15 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	else
 		retimer_set_state_ufp(mux_state, &set_retimer_con);
 
+	bb_retimer_power_handle(me, 0);
+	rv = retimer_init(me);
+	if (rv)
+		return rv;
 	/* Writing the register4 */
-	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);
+	msleep(100);
+	return rv;
 }
 
 static int retimer_low_power_mode(const struct usb_mux *me)
