@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ba6547_41773b83",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2804,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-25T23:41:14Z",
+      "side": 1,
+      "message": "Nit: These comments invert the relationship described in the the spec and implemented in the code. DR_Swap_To_UFP_Supported doesn\u0027t require Type_C_Can_Act_As_Device to be YES and Type_C_Can_Act_As_Host to be NO. Type_C_Can_Act_As_Device as YES and Type_C_Can_Act_As_Host as NO require DR_Swap_To_UFP_Supported to be YES.",
+      "range": {
+        "startLine": 2802,
+        "startChar": 5,
+        "endLine": 2804,
+        "endChar": 40
+      },
+      "revId": "c7bbecafda78d8307dfff15801e686f73137ad10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
