@@ -87,6 +87,24 @@
       "parentUuid": "62957f99_8c748410",
       "revId": "9ce4654ef97668f3d196c062ff5678734f7f3ad0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab4a50f0_e9be450b",
+        "filename": "board/tgly_mecc10/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-11-25T00:55:24Z",
+      "side": 1,
+      "message": "ACK, I thought about it but the board name becomes too big and also we don\u0027t plan to merge it.\nwould you prefer it to be tgly_ite_mecc10?",
+      "parentUuid": "a8da7d9b_f9572c56",
+      "revId": "9ce4654ef97668f3d196c062ff5678734f7f3ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
