@@ -69,6 +69,24 @@
       "parentUuid": "ed4424e3_b8d8c9ee",
       "revId": "9ce4654ef97668f3d196c062ff5678734f7f3ad0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8da7d9b_f9572c56",
+        "filename": "board/tgly_mecc10/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-11-25T00:46:51Z",
+      "side": 1,
+      "message": "2. Shouldn\u0027t this say ite in the board specific then?\ntgly_ite_mecc10 instead of tgly_mecc10. Even if we don\u0027t expect any other EC other than ITE to be enabled on TGL RVP, I think having ite in the board will make more sense.",
+      "parentUuid": "62957f99_8c748410",
+      "revId": "9ce4654ef97668f3d196c062ff5678734f7f3ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
