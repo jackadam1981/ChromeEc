@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5de17385_4883edd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-25T07:43:37Z",
+      "side": 1,
+      "message": "Indeed, unconditionally enabling the assertion seems a better trade-off.\nWe would detect 100% of the bad cases and as you mentioned, it\u0027s not costing more than your previous solution.",
+      "parentUuid": "8618b0e8_c7d5c1b9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
