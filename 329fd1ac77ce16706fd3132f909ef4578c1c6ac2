@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "050c4d4d_186dc05a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-25T00:32:23Z",
+      "side": 1,
+      "message": "Is there an updated schematic you can share on a bug?",
+      "revId": "329fd1ac77ce16706fd3132f909ef4578c1c6ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091efa21_ecb8bdd6",
+        "filename": "board/elemi/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-25T00:32:23Z",
+      "side": 1,
+      "message": "Is there an external pull-up on these signals?  Are these signals 3.3V or 1.8V?",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 82
+      },
+      "revId": "329fd1ac77ce16706fd3132f909ef4578c1c6ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
