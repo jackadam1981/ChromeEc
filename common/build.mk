@@ -113,6 +113,7 @@ common-$(CONFIG_PECI_COMMON)+=peci.o
 common-$(CONFIG_PERIPHERAL_CHARGER)+=peripheral_charger.o
 common-$(CONFIG_POWER_BUTTON)+=power_button.o
 common-$(CONFIG_POWER_BUTTON_X86)+=power_button_x86.o
+common-$(CONFIG_PROF)+=prof.o
 common-$(CONFIG_PSTORE)+=pstore_commands.o
 common-$(CONFIG_PWM)+=pwm.o
 common-$(CONFIG_PWM_KBLIGHT)+=pwm_kblight.o
@@ -208,6 +209,13 @@ endif
 ifneq ($(CONFIG_RSA_OPTIMIZED),)
 $(out)/RW/common/rsa.o: CFLAGS+=-O3
 $(out)/RO/common/rsa.o: CFLAGS+=-O3
+endif
+
+ifneq ($(CONFIG_PROF),)
+CFLAGS+=-pg
+
+#riscv64-elf-gcc: error: unrecognized command line option '-fprofile-filter-files=main.c'
+#CFLAGS+=-fprofile-filter-files=main\.c
 endif
 
 # AES-GCM code needs C99, else we'd have to move many variables declarations

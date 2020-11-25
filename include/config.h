@@ -1756,6 +1756,9 @@
 /* Base address of program memory (physical address of AP) */
 #undef CONFIG_PROGRAM_MEMORY_BASE_LOAD
 
+/* Profiling */
+#undef CONFIG_PROF
+
 /*
  * EC code can reside on internal or external storage. Only one of these
  * CONFIGs should be defined. CONFIG_INTERNAL_STORAGE implies XIP
