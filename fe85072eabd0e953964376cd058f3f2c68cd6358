@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ea36fc4_78900231",
+        "filename": "driver/retimer/ps8802.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-11-25T08:57:16Z",
+      "side": 1,
+      "message": "update it,\nThanks.",
+      "parentUuid": "add2c480_4a2d4bdc",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 27
+      },
+      "revId": "fe85072eabd0e953964376cd058f3f2c68cd6358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a895a092_c31dc880",
         "filename": "driver/retimer/ps8802.h",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-24T03:50:20Z",
       "side": 1,
       "message": "please add some documentation to the header.",
+      "revId": "fe85072eabd0e953964376cd058f3f2c68cd6358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ecffb87_18f4e8e8",
+        "filename": "driver/retimer/ps8802.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-11-25T08:57:16Z",
+      "side": 1,
+      "message": "has deleted it,\nThanks.",
+      "parentUuid": "a895a092_c31dc880",
       "revId": "fe85072eabd0e953964376cd058f3f2c68cd6358",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

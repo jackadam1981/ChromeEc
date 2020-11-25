@@ -16,6 +16,24 @@
       "message": "This structure provides a field for .enter_low_power_mode.  Would it make sense to have standby mode activated in that driver infrastructure?",
       "revId": "5e3ff7b30e7313aec7144d9ffdf166e0900e7435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f56195_d345d72e",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-11-25T08:57:16Z",
+      "side": 0,
+      "message": "We test Set3 enter_low_power_mode method, It was workable to\nenter power saving mode",
+      "parentUuid": "aeaa9e0b_cd66947c",
+      "revId": "5e3ff7b30e7313aec7144d9ffdf166e0900e7435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
