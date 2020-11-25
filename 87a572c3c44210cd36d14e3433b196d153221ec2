@@ -74,6 +74,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8be14fc3_d6984d56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-25T00:39:46Z",
+      "side": 1,
+      "message": "But with this fix, the caller may have gone unnoticed correct? It kind of feels like we\u0027re papering over a subset of failures; I ideally we\u0027d have the assertion catch it. I wonder if perhaps we could have unit tests run with and without `CONFIG_DEBUG_BRINGUP` enabled. Better still, if we ever get to a point where we\u0027re running nightly testing with actual hardware, flash the two builds on DUTs for better coverage.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -121,6 +144,23 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "f1287e66_2e6aad1c",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e420880_6d3dd211",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-25T00:39:46Z",
+      "side": 1,
+      "message": "I\u0027m concerned that we\u0027re papering over a subset of failures. However, I think we could address my concern if we can run tests with CONFIG_DEBUG_BRINGUP to catch more callers.",
       "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
