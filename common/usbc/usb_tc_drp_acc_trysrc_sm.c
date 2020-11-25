@@ -1152,19 +1152,22 @@ static void bc12_role_change_handler(int port, enum pd_data_role prev_data_role,
 	if (!IS_ENABLED(CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER))
 		return;
 
+	/* only wake task up on a role change */
+	if (!role_changed)
+		return;
+
 	/* Get the data role of our device */
 	switch (data_role) {
 	case PD_ROLE_UFP:
-		/* Only trigger BC12 detection on a role change */
-		if (role_changed)
-			event = USB_CHG_EVENT_DR_UFP;
+		/* trigger BC12 detection */
+		event = USB_CHG_EVENT_DR_UFP;
 		break;
 	case PD_ROLE_DFP:
-		/* Only trigger BC12 host mode on a role change */
-		if (role_changed)
-			event = USB_CHG_EVENT_DR_DFP;
+		/* trigger BC12 host mode */
+		event = USB_CHG_EVENT_DR_DFP;
 		break;
 	case PD_ROLE_DISCONNECTED:
+		/* trigger BC12 power down */
 		event = USB_CHG_EVENT_CC_OPEN;
 		break;
 	default:
