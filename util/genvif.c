@@ -678,6 +678,13 @@ static bool is_usb_comms_capable(void)
 			       IS_ENABLED(CONFIG_USB_CTVPD))));
 }
 
+static bool is_alt_mode_controller(void)
+{
+	return get_vif_bool(&vif.Component[component_index]
+				.vif_field[Type_C_Is_Alt_Mode_Controller],
+			    IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP));
+}
+
 static bool does_respond_to_discov_sop_ufp(void)
 {
 	return get_vif_bool(&vif.Component[component_index]
@@ -2771,27 +2778,35 @@ static void init_vif_component_general_pd_fields(
 	}
 
 	{
-		bool supports_to_ufp = true;
+		bool supports_to_ufp;
 
-		if (type == DRP || type == SRC)
+		switch (type) {
+		case SRC:
 			/*
 			 * DR_Swap_To_UFP_Supported requires
 			 *    Type_C_Can_Act_As_Device to be YES
 			 */
-			supports_to_ufp &= can_act_as_device();
-
-		if (type == DRP)
+			supports_to_ufp = can_act_as_device();
+			break;
+		case SNK:
 			/*
 			 * DR_Swap_To_UFP_Supported requires
+			 *    Type_C_Can_Act_As_Host to be YES OR
+			 *    Type_C_Is_Alt_Mode_Controller to be YES
+			 */
+			supports_to_ufp = (can_act_as_host() ||
+					   is_alt_mode_controller());
+			break;
+		case DRP:
+			/*
+			 * DR_Swap_To_UFP_Supported requires
+			 *    Type_C_Can_Act_As_Device to be YES AND
 			 *    Type_C_Can_Act_As_Host to be NO
 			 */
-			supports_to_ufp &= !can_act_as_host();
-		else if (type == SNK)
-			/*
-			 * DR_Swap_To_DFP_Supported requires
-			 *    Type_C_Can_Act_As_Host to be YES
-			 */
-			supports_to_ufp &= can_act_as_host();
+			supports_to_ufp = (can_act_as_device() &&
+					   !can_act_as_host());
+			break;
+		}
 
 		set_vif_field_b(&vif_fields[DR_Swap_To_UFP_Supported],
 			vif_component_name[DR_Swap_To_UFP_Supported],
@@ -3010,7 +3025,7 @@ static void init_vif_component_usb_type_c_fields(
 
 	set_vif_field_b(&vif_fields[Type_C_Is_Alt_Mode_Controller],
 		vif_component_name[Type_C_Is_Alt_Mode_Controller],
-		IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP));
+		is_alt_mode_controller());
 
 	if (can_act_as_device()) {
 		set_vif_field_b(&vif_fields[Type_C_Can_Act_As_Device],
