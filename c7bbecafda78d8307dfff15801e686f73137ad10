@@ -22,6 +22,30 @@
       },
       "revId": "c7bbecafda78d8307dfff15801e686f73137ad10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94514c0_d696e913",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2804,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-11-25T23:47:30Z",
+      "side": 1,
+      "message": "In order for DR_Swap_To_UFP_Supported to be YES, then it is required for Type_C_Can_Act_As_Device to be YES and Type_C_Can_Act_As_Host to be NO.",
+      "parentUuid": "68ba6547_41773b83",
+      "range": {
+        "startLine": 2802,
+        "startChar": 5,
+        "endLine": 2804,
+        "endChar": 40
+      },
+      "revId": "c7bbecafda78d8307dfff15801e686f73137ad10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
