@@ -124,7 +124,25 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO
 
+<<<<<<< HEAD   (8cefe3 lantis: Remove C1 current limitation)
+=======
+/* Volume Button feature */
+#define CONFIG_ADC_BUTTONS
+#define CONFIG_VOLUME_BUTTONS
+#define GPIO_VOLUME_UP_L GPIO_VOLUP_BTN_ODL
+#define GPIO_VOLUME_DOWN_L GPIO_VOLDN_BTN_ODL
+
+#ifdef BOARD_METAKNIGHT_LEGACY
+/* this change saves 1656 bytes of RW flash space */
+>>>>>>> CHANGE (d8ba78 Metaknight: Change EC chip from NPCX796FC0BX to NPCX797FC0BX)
 #define CONFIG_CHIP_INIT_ROM_REGION
+#else
+/*
+ * The RAM and flash size combination on the the NPCX797FC does not leave
+ * any unused flash space that can be used to store the .init_rom section.
+ */
+#undef CONFIG_CHIP_INIT_ROM_REGION
+#endif
 
 #ifndef __ASSEMBLER__
 
