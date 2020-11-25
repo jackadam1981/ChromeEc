@@ -34,6 +34,24 @@
       "parentUuid": "98a4d12b_b90d9faa",
       "revId": "d914009061aef5518657cf04adcfb20e17738bca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52ecc59_77dee339",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-25T16:02:18Z",
+      "side": 1,
+      "message": "Thanks, I think the new logic makes sense for TCPMv2.",
+      "parentUuid": "9b9b21a3_c5a523f7",
+      "revId": "d914009061aef5518657cf04adcfb20e17738bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
