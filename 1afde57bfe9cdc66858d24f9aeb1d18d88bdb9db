@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9dc788_1585f019",
+        "filename": "board/eldrid/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-25T18:37:26Z",
+      "side": 1,
+      "message": "Needs to be #ifndef BOARD_ELDRID_NPCX796FC",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "1afde57bfe9cdc66858d24f9aeb1d18d88bdb9db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
