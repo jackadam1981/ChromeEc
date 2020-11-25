@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "410fb40b_bac22db0",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-11-25T14:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dfc6588_4370810c",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 0
+      },
+      "revId": "79220d4bc0367a2f8d0588640ec5c55c64bb9d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd9b431d_3ad57853",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-24T16:28:20Z",
       "side": 1,
       "message": "Port 0 also uses a PPC compatible with the syv682x driver.",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 22
+      },
+      "revId": "79220d4bc0367a2f8d0588640ec5c55c64bb9d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b91480e4_ff23be7d",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-11-25T14:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd9b431d_3ad57853",
       "range": {
         "startLine": 252,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c05a7f0_915a6065",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-11-25T14:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccc3a813_32149932",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 26
+      },
+      "revId": "79220d4bc0367a2f8d0588640ec5c55c64bb9d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02e672ab_e40e95a0",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-24T16:28:20Z",
       "side": 1,
       "message": "Also add GPIOF3 to the unused list.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 58
+      },
+      "revId": "79220d4bc0367a2f8d0588640ec5c55c64bb9d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba39755a_82d3c045",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-11-25T14:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02e672ab_e40e95a0",
       "range": {
         "startLine": 111,
         "startChar": 0,
