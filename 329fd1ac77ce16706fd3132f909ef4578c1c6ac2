@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c15e5e71_0141e7aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-25T18:54:54Z",
+      "side": 1,
+      "message": "To clarify, the latest schematic shows connections to the sensors, but all the sensor components are not stuffed?",
+      "parentUuid": "4040b594_124b5620",
+      "revId": "329fd1ac77ce16706fd3132f909ef4578c1c6ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "091efa21_ecb8bdd6",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Yes, should external pull-up 1.8V",
       "parentUuid": "091efa21_ecb8bdd6",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 82
+      },
+      "revId": "329fd1ac77ce16706fd3132f909ef4578c1c6ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c0a7e8_6ca8f345",
+        "filename": "board/elemi/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-25T18:54:54Z",
+      "side": 1,
+      "message": "I think you need to add GPIO_SEL_1P8V on these pins since the external pull-up is to 1.8V.",
+      "parentUuid": "6207d662_ed773464",
       "range": {
         "startLine": 110,
         "startChar": 0,
