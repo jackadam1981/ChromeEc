@@ -34,6 +34,24 @@
       "parentUuid": "c1140ce8_e71d0fb9",
       "revId": "ee9449ff85cf89063c0b911f363d204da191529b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f96308_91f7f88a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-11-25T00:01:07Z",
+      "side": 1,
+      "message": "It seems with the advent of the cr50_stab branches, this seems to be the convention. I\u0027m not sure why each firmware branch has a cr50_stab branch as well though.",
+      "parentUuid": "89af0844_76f9e8fa",
+      "revId": "ee9449ff85cf89063c0b911f363d204da191529b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
