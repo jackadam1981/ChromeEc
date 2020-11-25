@@ -88,8 +88,10 @@
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 
 /* Sensor console commands */
+#if 0
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
+#endif
 
 /* Thermal features */
 #define CONFIG_FANS			FAN_CH_COUNT
@@ -149,11 +151,13 @@
  * TODO(b/158572770): TCPMv2: Conserve flash space
  * Add these console commands as flash space permits.
  */
+#if 0
 #undef CONFIG_CMD_HCDEBUG
 #undef CONFIG_CMD_ACCELS
 #undef CONFIG_CMD_ACCEL_INFO
 #undef CONFIG_CMD_ACCELSPOOF
 #undef CONFIG_CMD_PPC_DUMP
+#endif
 
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_ALT_MODE
@@ -169,8 +173,10 @@
 #define CONFIG_USB_PD_TCPM_TUSB422	/* USBC port C0 */
 #define CONFIG_USB_PD_TCPM_PS8815	/* USBC port USB3 DB */
 #define CONFIG_USB_PD_TCPM_MUX
+#if 0
 #define CONFIG_HOSTCMD_PD_CONTROL		/* Needed for TCPC FW update */
 #define CONFIG_CMD_USB_PD_PE
+#endif
 
 /*
  * Because of the CSE Lite, an extra cold AP reset is needed, and older cr50
@@ -212,7 +218,9 @@
 #define CONFIG_USBC_VCONN_SWAP
 
 /* Enabling SOP* communication */
+#if 0
 #define CONFIG_CMD_USB_PD_CABLE
+#endif
 #define CONFIG_USB_PD_DECODE_SOP
 
 /* UART COMMAND */
