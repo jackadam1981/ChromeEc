@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6089348_b8d8104d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-11-25T19:17:56Z",
+      "side": 1,
+      "message": "Please specify \"BUG\u003d\" and \"TEST\u003d\".",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "15dbbb367ba543e8cfa9b0af1effe817c87ed73d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d26fda20_127fbb6e",
@@ -14,6 +37,47 @@
       "writtenOn": "2020-11-25T18:58:56Z",
       "side": 1,
       "message": "Hi Namyoon,\n\nthis change is similar to the one you have made for iteflash, but for a different reason: from what I understand, build-util is supposed to collect the tools used for building EC, and ec_uartd isn\u0027t used during the build. Since it fails to build on _very_ old Linux systems (I test Debian/jessie for upstream coreboot builds which include some limited EC building) I\u0027m taking it out, but I\u0027m not sure if host-util is the right bucket to put it in instead.\n\nI\u0027d appreciate your review.",
+      "revId": "15dbbb367ba543e8cfa9b0af1effe817c87ed73d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d438243_3131d7c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-11-25T19:17:56Z",
+      "side": 1,
+      "message": "lgtm, but I just don\u0027t have a good knowledge about ec_uartd. I\u0027m asking tbroch@ (one of ec_uartd contributors) for review.",
+      "parentUuid": "d26fda20_127fbb6e",
+      "revId": "15dbbb367ba543e8cfa9b0af1effe817c87ed73d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22ace535_3946348f",
+        "filename": "util/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-11-25T19:17:56Z",
+      "side": 1,
+      "message": "build-util-bi\u003decst",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
       "revId": "15dbbb367ba543e8cfa9b0af1effe817c87ed73d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
