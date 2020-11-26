@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab67bab_785895ff",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-26T08:20:22Z",
+      "side": 1,
+      "message": "we can implement it with the good old trick, by setting back the USART as GPIOs and wake-up on the EXTI.\nBut given the latency, we would need some special handling on the host side, so it\u0027s currently out of the scope of this improvement",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
