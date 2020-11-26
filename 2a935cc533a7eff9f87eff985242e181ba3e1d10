@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2948800b_e9dbbf25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1379412
+      },
+      "writtenOn": "2020-11-26T09:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a578ed38_93c58cbb",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "2a935cc533a7eff9f87eff985242e181ba3e1d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acf23ec2_c4149605",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-17T16:58:08Z",
       "side": 1,
       "message": "i think new bug is better so that we can attach latest schematics there",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "2a935cc533a7eff9f87eff985242e181ba3e1d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3007a85e_a5482c58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1379412
+      },
+      "writtenOn": "2020-11-26T09:44:07Z",
+      "side": 1,
+      "message": "https://partnerissuetracker.corp.google.com/issues/174290307",
+      "parentUuid": "acf23ec2_c4149605",
       "range": {
         "startLine": 10,
         "startChar": 6,
