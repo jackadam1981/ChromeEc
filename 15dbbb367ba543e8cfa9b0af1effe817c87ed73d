@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf8bdecd_985564b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-26T07:49:44Z",
+      "side": 1,
+      "message": "IMO here build/host/target is the same as in cross-compiler triplets.\nit was \u0027build\u0027 because it was supposed to run in the x86_64 chroot on the developer workstation rather than \u0027host\u0027 which is the chromebook AP (x64_64 or ARM64 depending on the machine)\n\nTBH here this tool is no longer used, it was mainly used for the TI EC dev board (which is long gone). it is replaced by the hdctools in all current configurations (servod based development).\nMaybe just removing it would be less confusing than building it for host.",
+      "parentUuid": "2d438243_3131d7c2",
+      "revId": "15dbbb367ba543e8cfa9b0af1effe817c87ed73d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22ace535_3946348f",
         "filename": "util/build.mk",
         "patchSetId": 1
