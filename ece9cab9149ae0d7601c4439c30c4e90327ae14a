@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01264b6d_2a4275c8",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-26T09:34:09Z",
+      "side": 1,
+      "message": "I don\u0027t actually know why we need the padding in EC FW.  But yes, I would ignore it.\n\n(kernel also loads this extra bytes)",
+      "parentUuid": "1840d59e_13b4604b",
+      "revId": "ece9cab9149ae0d7601c4439c30c4e90327ae14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6028891f_14c63364",
         "filename": "common/firmware_image.lds.S",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-26T00:32:55Z",
       "side": 1,
       "message": "Would it be better to define a\nIMAGE_PADDING_AT ?",
+      "revId": "ece9cab9149ae0d7601c4439c30c4e90327ae14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d87e55fe_3e69bf46",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-26T09:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6028891f_14c63364",
       "revId": "ece9cab9149ae0d7601c4439c30c4e90327ae14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
