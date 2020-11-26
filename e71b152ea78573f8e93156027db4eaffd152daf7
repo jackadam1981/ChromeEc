@@ -33,6 +33,57 @@
       "message": "ping",
       "revId": "e71b152ea78573f8e93156027db4eaffd152daf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cddf97df_d77d1e3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-26T00:15:46Z",
+      "side": 1,
+      "message": "Sorry for the delay.",
+      "revId": "e71b152ea78573f8e93156027db4eaffd152daf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7676226d_8befa3e0",
+        "filename": "board/hammer/variants.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-26T00:15:46Z",
+      "side": 1,
+      "message": "Any reason you moved this out of SECTION_IS_RW? None of the keyboard scanning code should be built in RO?",
+      "revId": "e71b152ea78573f8e93156027db4eaffd152daf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b979c4f_6c35b1c7",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-26T00:15:46Z",
+      "side": 1,
+      "message": "Mind defining this in usb_hid.h? (a bit similar to what the touchpad does for the special get_report extensions):\n\n#define REPORT_ID_FEATURE          0x03",
+      "revId": "e71b152ea78573f8e93156027db4eaffd152daf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
