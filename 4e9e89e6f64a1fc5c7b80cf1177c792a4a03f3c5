@@ -1,0 +1,260 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2401b8a9_58c0d2b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "Mostly talking to myself, a few questions.\n\nWould have been easier to split the no-op changes to a separate CL but I think I managed to review, nevertheless ,-)",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a6103c_0867cc82",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "Note to self: Moved from config_hispeed_clock.",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7fbc90_b55992fe",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "Note to self: Moved from config_hispeed_clock.",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b2b707_e3062f63",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "Moved from config_hispeed_clock, looks good.",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d7e818_eff258f1",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "Looks reasonable.",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c08b3b_71da9cbf",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "What is this?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e79553_8973bad2",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "looks good",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 1
+      },
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ab17b4_82e8e346",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "note to self: PLL case matches what we did before.",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca44935_d10101c3",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "Maybe, can you add 1 or 2 more macros for the latency with HSI/HSE input?\n\ne.g.\n\n#define STM32_FLASH_ACR_LATENCY_SLOW  0\n\nAlso, looking at Table 6, just to confirm, we are at 3.3V right?",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91271b3c_820ab87d",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "Add an assertion ifndef?\n\nOr maybe OSC_HSE should not even exist if CONFIG_STM32_CLOCK_HSE_HZ is not set?",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0edd0fe5_d954323a",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "Okay, this is a bit subtle... clock-f.c does set this exact value, before we init the PLL, so we should be good in the init case.\n\nThe programming manual suggests to read back STM32_FLASH_ACR (step 2), should we do that?",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c656a46_96230d10",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "Note to self, hardcoded values for HSE. Ok.\n\nOr maybe you can call clock_enable_osc?",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819f00e6_2546d2b1",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "This used to be 40kHz.",
+      "range": {
+        "startLine": 337,
+        "startChar": 18,
+        "endLine": 337,
+        "endChar": 35
+      },
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f065bf7_a07b8c20",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T00:48:08Z",
+      "side": 1,
+      "message": "Note to self: this used to be in config_hispeed_clock, but looks ok as rtc_init is called right after config_hispeed_clock anyway.",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
