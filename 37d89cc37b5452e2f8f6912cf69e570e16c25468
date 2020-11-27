@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "debdf01a_36d7019a",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-11-27T11:58:11Z",
+      "side": 1,
+      "message": "Why don\u0027t just change it to GPIO_USB_C1_RT_RST_ODL?",
+      "range": {
+        "startLine": 433,
+        "startChar": 16,
+        "endLine": 433,
+        "endChar": 30
+      },
+      "revId": "37d89cc37b5452e2f8f6912cf69e570e16c25468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b717df_85abaf6a",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-11-27T11:58:11Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 436,
+        "startChar": 16,
+        "endLine": 436,
+        "endChar": 30
+      },
+      "revId": "37d89cc37b5452e2f8f6912cf69e570e16c25468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
