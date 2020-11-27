@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca3d9725_9aad1fe9",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T18:01:36Z",
+      "side": 1,
+      "message": "the code is us_to_rtcss() is actually doing a rounding error which sometimes ends up with a negative number written in a (unsigned) register... boom no RTC alarm firing.\nI will upload a separate fix for this one.",
+      "parentUuid": "3d429418_9f39dc92",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80d8078e_094fde7a",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
