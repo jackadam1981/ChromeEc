@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aba75270_0d302b2c",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:09:53Z",
+      "side": 1,
+      "message": "No, I\u0027m relying on the fact that the flash latency for PLL is worst/more conservative than HSI, so HSI will work with PLL flashing latency setting, and changing the setting will take about the same time as running with a worst-case setting (due to i-cache indeed)",
+      "parentUuid": "1998ffad_5e7a6368",
+      "revId": "ad4ba725cdbac430f9d82c206ddb8d481baa30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a918117_6b22b9dc",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 1
