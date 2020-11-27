@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f32be648_351e1ca1",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:07:55Z",
+      "side": 1,
+      "message": "I tried the various possible modes (for the regulator and the flash) none of my measurements match the datasheet including this one ... \nthat says this one is a bit too conservative, I might reduce it a little",
+      "parentUuid": "b2159778_d0c12992",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5826b8b9_46c216e6",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d429418_9f39dc92",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:07:55Z",
+      "side": 1,
+      "message": "Measurements for this one,\nmy long term testing is still showing a RTC issue (often after 6 to 15 hours), this number might be too short or actually something is incorrect in the (pre-existing) RTC code. still painfully debugging this",
+      "parentUuid": "5826b8b9_46c216e6",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80d8078e_094fde7a",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -48,6 +84,30 @@
       "writtenOn": "2020-11-27T01:02:51Z",
       "side": 1,
       "message": "this value should be in a header file.",
+      "range": {
+        "startLine": 444,
+        "startChar": 17,
+        "endLine": 445,
+        "endChar": 1
+      },
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6133067_f7aa24ba",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:07:55Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "80d8078e_094fde7a",
       "range": {
         "startLine": 444,
         "startChar": 17,
@@ -95,6 +155,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "366870bb_400fb10f",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:07:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure we ever want to implement it, but I can still add the TODO to document what is lacking in the hardware and the proposed workaround.\n\nFor automated testing, seems to work on Zork with its crude S3\nFor the fancier platforms with S0ix, I definitely need to check this",
+      "parentUuid": "c4915e10_f0d96ae0",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ce46f61_034e1279",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -106,6 +184,24 @@
       "writtenOn": "2020-11-27T01:02:51Z",
       "side": 1,
       "message": "similar to what stm32h7 does",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd29065b_b1750ca1",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:07:55Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "0ce46f61_034e1279",
       "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
