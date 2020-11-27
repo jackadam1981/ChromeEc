@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b28157e_6ca3c792",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T08:42:32Z",
+      "side": 1,
+      "message": "Just formatting nit.",
+      "revId": "a74aaab6d74a9d27fe1043be1f0b1f32494dd82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ad5da44_a12dd089",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T08:42:32Z",
+      "side": 1,
+      "message": "doesn\u0027t fit in one line?",
+      "revId": "a74aaab6d74a9d27fe1043be1f0b1f32494dd82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

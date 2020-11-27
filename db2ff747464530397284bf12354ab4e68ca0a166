@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bef3711c_da7a475c",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T08:42:32Z",
+      "side": 1,
+      "message": "thanks, looks clearer now.",
+      "parentUuid": "a5dd30d1_a1ea33c3",
+      "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3970ce5_348dbcf3",
         "filename": "chip/mt8192_scp/cache.c",
         "patchSetId": 1
