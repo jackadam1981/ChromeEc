@@ -22,6 +22,30 @@
       },
       "revId": "513823715e65fe5cad8c0b65f868edcc9ef157f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a50aedfe_f6bc032d",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-27T05:24:34Z",
+      "side": 1,
+      "message": "NACK, there are multiple blocks for _RO_AT, _RW_AT, _RW_B_AT above.\n\nMerging _PADDING_AT into them wouldn\u0027t get it easier to read and maintain.",
+      "parentUuid": "76194030_26c191ee",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "513823715e65fe5cad8c0b65f868edcc9ef157f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
