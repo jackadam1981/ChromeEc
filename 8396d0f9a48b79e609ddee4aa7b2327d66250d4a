@@ -33,6 +33,24 @@
       "message": "I see the code for HSE, but where do we enable/wait for the HSI?\n\n(okay, enabled by default, so we should be ok)",
       "revId": "8396d0f9a48b79e609ddee4aa7b2327d66250d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa619eb_60e27236",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:01:29Z",
+      "side": 0,
+      "message": "Yes on the STM32, HSI is the default clock at startup and we never touch it (before and after this change)\nThis invariant might be interesting to document somewhere",
+      "parentUuid": "a2b83588_2047de3c",
+      "revId": "8396d0f9a48b79e609ddee4aa7b2327d66250d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

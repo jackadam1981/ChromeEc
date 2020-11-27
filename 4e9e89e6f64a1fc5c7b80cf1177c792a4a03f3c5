@@ -20,6 +20,41 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c47faab7_040391aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:01:29Z",
+      "side": 1,
+      "message": "Great, thanks for your over-the-top review",
+      "parentUuid": "2401b8a9_58c0d2b0",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "593e7da9_2e9bae41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:01:29Z",
+      "side": 1,
+      "message": "Thanks for the careful review",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "35a6103c_0867cc82",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -109,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd8d7f6_1091ef1e",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:01:29Z",
+      "side": 1,
+      "message": "a useful function to display the CPU clock frequency in the clock debug console commands\nbut those commands are gone ... I should remove this",
+      "parentUuid": "54c08b3b_71da9cbf",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "10e79553_8973bad2",
@@ -168,6 +227,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f284f4e_0014f77e",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:01:29Z",
+      "side": 1,
+      "message": "Yes we are at 3.3V\nI will add the macros for latency configuration",
+      "parentUuid": "2ca44935_d10101c3",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91271b3c_820ab87d",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -179,6 +256,24 @@
       "writtenOn": "2020-11-27T00:48:08Z",
       "side": 1,
       "message": "Add an assertion ifndef?\n\nOr maybe OSC_HSE should not even exist if CONFIG_STM32_CLOCK_HSE_HZ is not set?",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3dace33_0bf1074f",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:01:29Z",
+      "side": 1,
+      "message": "Basically the idea is either you have an external crystal/oscillator connected to the HSE input and its frequency is defined in CONFIG_STM32_CLOCK_HSE_HZ (e.g. polyberry/sweetberry)\nor you have nothing and you cannot use HSE (which is about 0 Hz)",
+      "parentUuid": "91271b3c_820ab87d",
       "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -202,6 +297,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24466826_32f0c282",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:01:29Z",
+      "side": 1,
+      "message": "it\u0027s probably safer, I will add it.",
+      "parentUuid": "0edd0fe5_d954323a",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c656a46_96230d10",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -219,6 +332,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94274b2a_9f4519c6",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:01:29Z",
+      "side": 1,
+      "message": "sure, I should update this to clock_enable_osc(OSC_HSE, 1);",
+      "parentUuid": "0c656a46_96230d10",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "819f00e6_2546d2b1",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -230,6 +361,30 @@
       "writtenOn": "2020-11-27T00:48:08Z",
       "side": 1,
       "message": "This used to be 40kHz.",
+      "range": {
+        "startLine": 337,
+        "startChar": 18,
+        "endLine": 337,
+        "endChar": 35
+      },
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "967736c6_820c71ed",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:01:29Z",
+      "side": 1,
+      "message": "Yes, I forgot to put a note in the description.\nThe datasheet of the STM32F412 disagrees here and says its 32kHz (contrary to \nSTM32F0)",
+      "parentUuid": "819f00e6_2546d2b1",
       "range": {
         "startLine": 337,
         "startChar": 18,
