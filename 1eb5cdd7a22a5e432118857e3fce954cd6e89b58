@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2159778_d0c12992",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T01:02:51Z",
+      "side": 1,
+      "message": "DS says 20.8 max 28.0. But I\u0027m ok with being conservative.",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5826b8b9_46c216e6",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T01:02:51Z",
+      "side": 1,
+      "message": "Maybe more out of curiosity, how did you pick this?",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d8078e_094fde7a",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T01:02:51Z",
+      "side": 1,
+      "message": "this value should be in a header file.",
+      "range": {
+        "startLine": 444,
+        "startChar": 17,
+        "endLine": 445,
+        "endChar": 1
+      },
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fab67bab_785895ff",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -14,6 +71,41 @@
       "writtenOn": "2020-11-26T08:20:22Z",
       "side": 1,
       "message": "we can implement it with the good old trick, by setting back the USART as GPIOs and wake-up on the EXTI.\nBut given the latency, we would need some special handling on the host side, so it\u0027s currently out of the scope of this improvement",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4915e10_f0d96ae0",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T01:02:51Z",
+      "side": 1,
+      "message": "Add a TODO+bug number?\n\n(also, would be good to check this doesn\u0027t break automated testing...)",
+      "parentUuid": "fab67bab_785895ff",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce46f61_034e1279",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T01:02:51Z",
+      "side": 1,
+      "message": "similar to what stm32h7 does",
       "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
