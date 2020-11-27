@@ -170,6 +170,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "32505036_c92eb4f5",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T19:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efd8d7f6_1091ef1e",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "10e79553_8973bad2",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -239,6 +263,24 @@
       "side": 1,
       "message": "Yes we are at 3.3V\nI will add the macros for latency configuration",
       "parentUuid": "2ca44935_d10101c3",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64cfe39_522d2fed",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T19:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f284f4e_0014f77e",
       "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -313,6 +355,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "268af53e_fa3f10db",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T19:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24466826_32f0c282",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c656a46_96230d10",
@@ -344,6 +404,24 @@
       "side": 1,
       "message": "sure, I should update this to clock_enable_osc(OSC_HSE, 1);",
       "parentUuid": "0c656a46_96230d10",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78297344_d2ee403e",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T19:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94274b2a_9f4519c6",
       "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
