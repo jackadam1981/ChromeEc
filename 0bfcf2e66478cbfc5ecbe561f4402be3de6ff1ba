@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9fbee7c_030a5b5d",
+        "filename": "board/dirinboz/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-11-27T03:54:22Z",
+      "side": 1,
+      "message": "It\u0027s confusing to set these values to what looks like their own inverse. I\u0027d prefer to remove the LED_BAT_ON_LVL and LED_BAT_OFF_LVL constants completely and simply write 0 or 1 here.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "0bfcf2e66478cbfc5ecbe561f4402be3de6ff1ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
