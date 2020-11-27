@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ce5907_e49282c1",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T19:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6133067_f7aa24ba",
+      "range": {
+        "startLine": 444,
+        "startChar": 17,
+        "endLine": 445,
+        "endChar": 1
+      },
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fab67bab_785895ff",
@@ -185,6 +209,24 @@
       "side": 1,
       "message": "I\u0027m not sure we ever want to implement it, but I can still add the TODO to document what is lacking in the hardware and the proposed workaround.\n\nFor automated testing, seems to work on Zork with its crude S3\nFor the fancier platforms with S0ix, I definitely need to check this",
       "parentUuid": "c4915e10_f0d96ae0",
+      "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ee7f1b_8597f42c",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T19:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "366870bb_400fb10f",
       "revId": "1eb5cdd7a22a5e432118857e3fce954cd6e89b58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
