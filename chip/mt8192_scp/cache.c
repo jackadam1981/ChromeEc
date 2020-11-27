@@ -6,6 +6,7 @@
 #include "cache.h"
 #include "common.h"
 #include "compile_time_macros.h"
+#include "console.h"
 #include "csr.h"
 #include "util.h"
 
@@ -140,3 +141,152 @@ void cache_init(void)
 	/* fence */
 	asm volatile ("fence.i" ::: "memory");
 }
+
+#ifdef DEBUG
+/*
+ * I for I-cache
+ * D for D-cache
+ * C for control transfer
+ */
+static enum {
+	PMU_SELECT_I = 0,
+	PMU_SELECT_D,
+	PMU_SELECT_C
+} pmu_select;
+
+int command_enable_pmu(int argc, char **argv)
+{
+	static const char * const selectors[] = {
+		[PMU_SELECT_I] = "I",
+		[PMU_SELECT_D] = "D",
+		[PMU_SELECT_C] = "C",
+	};
+	int i;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM1;
+
+	for (i = 0; i < ARRAY_SIZE(selectors); ++i) {
+		if (strcasecmp(argv[1], selectors[i]) == 0) {
+			pmu_select = i;
+			break;
+		}
+	}
+	if (i >= ARRAY_SIZE(selectors))
+		return EC_ERROR_PARAM1;
+
+	ccprintf("select \"%s\"\n", selectors[pmu_select]);
+
+	/* disable all PMU */
+	clear_csr(CSR_PMU_MPMUCTR,
+		  CSR_PMU_MPMUCTR_C | CSR_PMU_MPMUCTR_I |
+		  CSR_PMU_MPMUCTR_H3 | CSR_PMU_MPMUCTR_H4 |
+		  CSR_PMU_MPMUCTR_H5);
+
+	/* reset cycle count */
+	write_csr(CSR_PMU_MCYCLE, 0);
+	write_csr(CSR_PMU_MCYCLEH, 0);
+	/* reset retired-instruction count */
+	write_csr(CSR_PMU_MINSTRET, 0);
+	write_csr(CSR_PMU_MINSTRETH, 0);
+	/* reset counter{3,4,5} */
+	write_csr(CSR_PMU_MHPMCOUNTER3, 0);
+	write_csr(CSR_PMU_MHPMCOUNTER3H, 0);
+	write_csr(CSR_PMU_MHPMCOUNTER4, 0);
+	write_csr(CSR_PMU_MHPMCOUNTER4H, 0);
+	write_csr(CSR_PMU_MHPMCOUNTER5, 0);
+	write_csr(CSR_PMU_MHPMCOUNTER5H, 0);
+
+	/* select different event IDs for counter{3,4,5} */
+	switch (pmu_select) {
+	case PMU_SELECT_I:
+		write_csr(CSR_PMU_MHPMEVENT3, 1);
+		write_csr(CSR_PMU_MHPMEVENT4, 3);
+		write_csr(CSR_PMU_MHPMEVENT5, 5);
+		break;
+	case PMU_SELECT_D:
+		write_csr(CSR_PMU_MHPMEVENT3, 11);
+		write_csr(CSR_PMU_MHPMEVENT4, 12);
+		write_csr(CSR_PMU_MHPMEVENT5, 14);
+		break;
+	case PMU_SELECT_C:
+		write_csr(CSR_PMU_MHPMEVENT3, 27);
+		write_csr(CSR_PMU_MHPMEVENT4, 28);
+		write_csr(CSR_PMU_MHPMEVENT5, 29);
+		break;
+	}
+
+	/* enable all PMU */
+	set_csr(CSR_PMU_MPMUCTR,
+		CSR_PMU_MPMUCTR_C | CSR_PMU_MPMUCTR_I |
+		CSR_PMU_MPMUCTR_H3 | CSR_PMU_MPMUCTR_H4 |
+		CSR_PMU_MPMUCTR_H5);
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(enable_pmu, command_enable_pmu,
+			     "[I | D | C]", "Enable PMU");
+
+int command_disable_pmu(int argc, char **argv)
+{
+	clear_csr(CSR_PMU_MPMUCTR,
+		  CSR_PMU_MPMUCTR_C | CSR_PMU_MPMUCTR_I |
+		  CSR_PMU_MPMUCTR_H3 | CSR_PMU_MPMUCTR_H4 |
+		  CSR_PMU_MPMUCTR_H5);
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(disable_pmu, command_disable_pmu,
+			     NULL, "Disable PMU");
+
+int command_show_pmu(int argc, char **argv)
+{
+	uint64_t val3, val4, val5, p3, p4;
+
+	val3 = ((uint64_t)read_csr(CSR_PMU_MCYCLEH) << 32) |
+			read_csr(CSR_PMU_MCYCLE);
+	ccprintf("cycles: %lld\n", val3);
+
+	val3 = ((uint64_t)read_csr(CSR_PMU_MINSTRETH) << 32) |
+			read_csr(CSR_PMU_MINSTRET);
+	ccprintf("retired instructions: %lld\n", val3);
+
+	val3 = ((uint64_t)read_csr(CSR_PMU_MHPMCOUNTER3H) << 32) |
+			read_csr(CSR_PMU_MHPMCOUNTER3);
+	val4 = ((uint64_t)read_csr(CSR_PMU_MHPMCOUNTER4H) << 32) |
+			read_csr(CSR_PMU_MHPMCOUNTER4);
+	val5 = ((uint64_t)read_csr(CSR_PMU_MHPMCOUNTER5H) << 32) |
+			read_csr(CSR_PMU_MHPMCOUNTER5);
+
+	if (val3 + val4) {
+		p3 = val3 * 10000 / (val3 + val4);
+		p4 = val4 * 10000 / (val3 + val4);
+	} else {
+		p3 = p4 = 0;
+	}
+
+	switch (pmu_select) {
+	case PMU_SELECT_I:
+		ccprintf("I-cache:\n");
+		ccprintf("  hit: %lld (%lld.%lld%%)\n", val3, p3/100, p3%100);
+		ccprintf("  miss: %lld (%lld.%lld%%)\n", val4, p4/100, p4%100);
+		ccprintf("non-cacheable I: %lld\n", val5);
+		break;
+	case PMU_SELECT_D:
+		ccprintf("D-cache:\n");
+		ccprintf("  hit: %lld (%lld.%lld%%)\n", val3, p3/100, p3%100);
+		ccprintf("  miss: %lld (%lld.%lld%%)\n", val4, p4/100, p4%100);
+		ccprintf("non-cacheable D: %lld\n", val5);
+		break;
+	case PMU_SELECT_C:
+		ccprintf("control transfer:\n");
+		ccprintf("  instructions: %lld\n", val3);
+		ccprintf("  miss-predict: %lld (%lld.%lld%%)\n",
+			 val4, p4/100, p4%100);
+		ccprintf("interrupts: %lld\n", val5);
+		break;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(show_pmu, command_show_pmu, NULL, "Show PMU");
+#endif
