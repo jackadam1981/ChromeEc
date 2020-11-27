@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5dd30d1_a1ea33c3",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-27T07:57:49Z",
+      "side": 1,
+      "message": "Control transfer instructions\n(e.g. https://docs.oracle.com/cd/E19120-01/open.solaris/817-5477/eoizl/index.html)\n\nMTK\u0027s document also use the term.  I can put some more info for this item.",
+      "parentUuid": "5b8159b4_b4a9da7b",
+      "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3970ce5_348dbcf3",
         "filename": "chip/mt8192_scp/cache.c",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-27T06:00:29Z",
       "side": 1,
       "message": "Document the meaning of each of those? (access/miss/etc etc)",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 36
+      },
+      "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6121bdf1_8db414dc",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-27T07:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3970ce5_348dbcf3",
       "range": {
         "startLine": 203,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbd3954_c90b5981",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-27T07:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2593d881_16fa8085",
+      "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff906afe_97a7cc56",
@@ -71,6 +131,24 @@
       "writtenOn": "2020-11-27T06:00:29Z",
       "side": 1,
       "message": "I think this is total accesses, not hit count?\n\n(so the percentage should be p4 \u003d val4 / val3 ?)",
+      "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef8904d_dc9303a3",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-11-27T07:57:49Z",
+      "side": 1,
+      "message": "Done\n\nYeah, I was misunderstanding the wording in MTK\u0027s doc.",
+      "parentUuid": "ff906afe_97a7cc56",
       "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
