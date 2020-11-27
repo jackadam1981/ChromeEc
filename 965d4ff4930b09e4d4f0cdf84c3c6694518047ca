@@ -22,6 +22,30 @@
       },
       "revId": "965d4ff4930b09e4d4f0cdf84c3c6694518047ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ba5f21_82406e22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-11-27T08:12:03Z",
+      "side": 1,
+      "message": "not sure we have a firm rule here,\nbloonchipper is a symlink and hatch_fp the real board directory but at the same time, bloonchipper is the real reference design, hatch_fp was just the \u0027first\u0027 implementation and now I think in the current release process we might use the bloonchipper firmware on all boards.",
+      "parentUuid": "d6a93f12_8e806839",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "965d4ff4930b09e4d4f0cdf84c3c6694518047ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
