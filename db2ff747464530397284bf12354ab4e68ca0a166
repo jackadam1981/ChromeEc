@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8159b4_b4a9da7b",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T06:00:29Z",
+      "side": 1,
+      "message": "what is a control transfer?! (I see from the code below, just wonder if you can clarify a bit more here)\n\ncontrol flow counters maybe?",
+      "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3970ce5_348dbcf3",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T06:00:29Z",
+      "side": 1,
+      "message": "Document the meaning of each of those? (access/miss/etc etc)",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 36
+      },
+      "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2593d881_16fa8085",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T06:00:29Z",
+      "side": 1,
+      "message": "p3/p4 can be simpler 32-bit `int` right?",
+      "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff906afe_97a7cc56",
+        "filename": "chip/mt8192_scp/cache.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T06:00:29Z",
+      "side": 1,
+      "message": "I think this is total accesses, not hit count?\n\n(so the percentage should be p4 \u003d val4 / val3 ?)",
+      "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968ebe91_67272965",
+        "filename": "chip/mt8192_scp/csr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-27T06:00:29Z",
+      "side": 1,
+      "message": "I\u0027m ok since you did it above already, but there is no need to put parentheses around single values.",
+      "range": {
+        "startLine": 88,
+        "startChar": 25,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "db2ff747464530397284bf12354ab4e68ca0a166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
