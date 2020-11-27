@@ -108,7 +108,7 @@ int pd_check_vconn_swap(int port)
 	 * VCONN is provided directly by the battery (PPVAR_SYS)
 	 * but use the same rules as power swap.
 	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
+	return pd_check_power_swap(port);
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */
