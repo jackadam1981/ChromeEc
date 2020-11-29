@@ -320,6 +320,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa55e33_1a5c6c6c",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-29T05:52:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d3dace33_0bf1074f",
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0edd0fe5_d954323a",
@@ -463,6 +481,30 @@
       "side": 1,
       "message": "Yes, I forgot to put a note in the description.\nThe datasheet of the STM32F412 disagrees here and says its 32kHz (contrary to \nSTM32F0)",
       "parentUuid": "819f00e6_2546d2b1",
+      "range": {
+        "startLine": 337,
+        "startChar": 18,
+        "endLine": 337,
+        "endChar": 35
+      },
+      "revId": "4e9e89e6f64a1fc5c7b80cf1177c792a4a03f3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b959e875_e516d928",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-11-29T05:52:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "967736c6_820c71ed",
       "range": {
         "startLine": 337,
         "startChar": 18,
