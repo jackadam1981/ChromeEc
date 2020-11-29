@@ -70,6 +70,30 @@
       },
       "revId": "f820e8d21d61291bac7bba6c1a69739ce3f6080e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e8255d1_f5f93669",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-11-29T00:33:44Z",
+      "side": 1,
+      "message": "The proposal is to keep them separate this time, let me know if you disagree. This aligns with the overlays in https://chrome-internal-review.googlesource.com/c/chromeos/overlays/overlay-guybrush-private/+/3428194.",
+      "parentUuid": "5f607ed1_2b5b514c",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "f820e8d21d61291bac7bba6c1a69739ce3f6080e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
