@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "274be024_3ee47083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-11-30T17:07:02Z",
+      "side": 1,
+      "message": "Thanks for the sharing, Vincent!\n+1 on your suggestion (ec_uartd removal).",
+      "parentUuid": "bf8bdecd_985564b1",
+      "revId": "15dbbb367ba543e8cfa9b0af1effe817c87ed73d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22ace535_3946348f",
         "filename": "util/build.mk",
         "patchSetId": 1
@@ -162,6 +180,30 @@
       "side": 1,
       "message": "Sorry, Patrick. My first comment was not quite correct.\n\nShouldn\u0027t we define build-util-bin first above this unconditionally, and leave this line unchanged?\n\nI see several \"build-util-bin+\u003d...\" lines below.",
       "parentUuid": "dfc6d483_52f61fc8",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "15dbbb367ba543e8cfa9b0af1effe817c87ed73d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8da7d45_88b05e82",
+        "filename": "util/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-11-30T17:07:02Z",
+      "side": 1,
+      "message": "It doesn\u0027t do any harm to append to an undefined variable. I\u0027m taking my comment back.",
+      "parentUuid": "a6debdda_df84f90c",
       "range": {
         "startLine": 13,
         "startChar": 0,
