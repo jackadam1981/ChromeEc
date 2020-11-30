@@ -16,6 +16,24 @@
       "message": "Sam/Abe, I\u0027m curious if this helps with any of the issues where we are too slow.",
       "revId": "24abafbb1c8c19336af6c71a9999a6bba234e70f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be36c78_25fd3642",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-11-30T18:20:47Z",
+      "side": 1,
+      "message": "I have a Docking test where I can use the servoV4.1 in DP mode to send Attention messages at different intervals. Our stacks seem to function well at approx. 5ms but not lower. I tested this CL and it didn\u0027t have an impact; 5ms seems to be the lower limit. Even changing the loop time from 5ms to 2ms didn\u0027t make a difference.\nI also tested the TCPMv1 stack and it too could not keep up with receiving messages at an interval less than 5ms. Please see this bug for details https://buganizer.corp.google.com/issues/155517411. It describes my test and all logs and Total Phase traces can be accessed.",
+      "parentUuid": "45dc788a_e5455905",
+      "revId": "24abafbb1c8c19336af6c71a9999a6bba234e70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
