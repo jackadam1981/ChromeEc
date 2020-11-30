@@ -4147,8 +4147,13 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 
 			PE_SET_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE);
 			set_state_pe(port, PE_SNK_STARTUP);
-			return;
+		} else {
+			/*
+			 * Unexpected message during PR_Swap: Protocol Error
+			 */
+			pe_send_soft_reset(port, type);
 		}
+		return;
 	}
 
 	/*
