@@ -34,6 +34,24 @@
       "parentUuid": "45dc788a_e5455905",
       "revId": "24abafbb1c8c19336af6c71a9999a6bba234e70f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93dddfb9_065a68d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-11-30T19:08:15Z",
+      "side": 1,
+      "message": "We have a few compliance tests that we currently fail due to incorrect timing, but none of them are on the scale where I would expect this to make a difference. The only one where we\u0027re off by less than 10 ms is TD.PD.SRC.E5 (too slow by 8 ms), and this CL chain doesn\u0027t make a difference. For the others, we\u0027re off by 10s or 100s of ms.",
+      "parentUuid": "2be36c78_25fd3642",
+      "revId": "24abafbb1c8c19336af6c71a9999a6bba234e70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
