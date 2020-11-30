@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e30776aa_f0b517f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-11-30T17:06:57Z",
+      "side": 1,
+      "message": "Let\u0027s not block forward progress, but this system shim is looking more like a copy of the actual system file. We should start thinking about compiling in the system.c file at some point.",
+      "revId": "1e5d290ac016229737030b7e4a2eb47a786c55d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
