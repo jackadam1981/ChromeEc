@@ -4147,8 +4147,15 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 
 			PE_SET_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE);
 			set_state_pe(port, PE_SNK_STARTUP);
-			return;
+		} else {
+			/*
+			 * USB PD 3.0 6.8.1:
+			 * Receiving an unexpected message shall be responded
+			 * to with a soft reset message.
+			 */
+			pe_send_soft_reset(port, type);
 		}
+		return;
 	}
 
 	/*
