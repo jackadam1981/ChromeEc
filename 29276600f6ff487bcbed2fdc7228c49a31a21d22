@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd1b503e_cc886d1c",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-30T19:08:38Z",
+      "side": 1,
+      "message": "Please add a macro for the I2C address to driver/retimer/ps8811.h\n\nChange the PS8811_I2C_ADDR_FLAGS to \n    #define PS8811_I2C_ADDR0_FLAGS  0x28\n    #define PS8811_I2C_ADDR1_FLAGS  0x30\n    #define PS8811_I2C_ADDR2_FLAGS  0x70\n    #define PS8811_I2C_ADDR3_FLAGS  0x72\n  \nIn this file reference the I2C address as:\n    PS8811_I2C_ADDR0_FLAGS+PS8811_REG_PAGE1",
+      "revId": "29276600f6ff487bcbed2fdc7228c49a31a21d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13dd2bd9_522932df",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-30T19:08:38Z",
+      "side": 1,
+      "message": "Please add some comment describing what this is doing.  I added a comment on the bug to get more information from Parade.",
+      "revId": "29276600f6ff487bcbed2fdc7228c49a31a21d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
