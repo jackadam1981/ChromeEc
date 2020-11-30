@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb99682_780911e6",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-11-30T17:25:59Z",
+      "side": 1,
+      "message": "The default is n anyway so you can drop this line",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 10
+      },
+      "revId": "8e52cf360ea79b654d6dde1db21cf8da69974e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
