@@ -2739,13 +2739,13 @@ static void pe_snk_startup_entry(int port)
 		 */
 		PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
 		PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
-
-		/*
-		 * Set up to get Device Policy Manager to
-		 * request Sink Capabilities
-		 */
-		pd_dpm_request(port, DPM_REQUEST_GET_SNK_CAPS);
 	}
+
+	/*
+	 * Set up to Device Policy Manager to request Sink Capabilities, to
+	 * evaluate fast role swap capability.
+	 */
+	pd_dpm_request(port, DPM_REQUEST_GET_SNK_CAPS);
 }
 
 static void pe_snk_startup_run(int port)
