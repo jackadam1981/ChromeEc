@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deeac92a_abd71832",
+        "filename": "board/eldrid/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-30T21:01:46Z",
+      "side": 1,
+      "message": "Should be \"7us\".",
+      "range": {
+        "startLine": 102,
+        "startChar": 53,
+        "endLine": 102,
+        "endChar": 58
+      },
+      "revId": "0f95b91714fc49509d203dc77c99800feac4c71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1b9e24e_775d1813",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-30T21:01:46Z",
+      "side": 1,
+      "message": "This function could also use checks to ensure only valid bits are written.  See set_dc_prochot comments.",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 46
+      },
+      "revId": "0f95b91714fc49509d203dc77c99800feac4c71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad4fe429_bc3a5c91",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-30T21:01:46Z",
+      "side": 1,
+      "message": "The register reserves bits [7:0] and bits [15:14].  This routine should ensure these bits are not set before writing the register.  \n\nIf bits 7:0 are set, it probably makes sense to round up by 256mA and always clear bit 7:0 before writing.\n\nThe DCProcHot limit is 12.8A (0x3200), so limiting to this value will ensure bits 15:14 are not written.",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 56
+      },
+      "revId": "0f95b91714fc49509d203dc77c99800feac4c71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61960b25_9490e2f8",
+        "filename": "driver/charger/isl9241.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-30T21:01:46Z",
+      "side": 1,
+      "message": "Use GENMASK(10,9) instead.",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "0f95b91714fc49509d203dc77c99800feac4c71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
