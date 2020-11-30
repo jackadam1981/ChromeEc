@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf400dde_b5b1acac",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-11-30T21:37:24Z",
+      "side": 1,
+      "message": "Nit: ChromeOS is in the process of a language cleanup (COIL). Removing usages of \u0027slave\u0027 doesn\u0027t add any ambiguity here or in the \u0027i2c_slave_addr\u0027 usages.",
+      "revId": "59e2e489e44240383faeb4d162d535660cf90a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1cd1023_e979cd54",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-11-30T21:37:24Z",
+      "side": 1,
+      "message": "This should be \u0027(buf \u0026 GL3590_INT_PENDING) \u003d\u003d 0\u0027 since the field is a bitfield with b1-b7 reserved.",
+      "revId": "59e2e489e44240383faeb4d162d535660cf90a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e364543_ad92aea2",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-11-30T21:37:24Z",
+      "side": 1,
+      "message": "Nit: Whitespace between control blocks improves legibility.",
+      "revId": "59e2e489e44240383faeb4d162d535660cf90a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b449a34_54b04f3d",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-11-30T21:37:24Z",
+      "side": 1,
+      "message": "An unknown value should likely print it\u0027s result.",
+      "revId": "59e2e489e44240383faeb4d162d535660cf90a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "104040d6_8f94243d",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-11-30T21:37:24Z",
+      "side": 1,
+      "message": "This check should really just be if (res_reg[1]) {...} since the port is identified by any non-zero value.",
+      "revId": "59e2e489e44240383faeb4d162d535660cf90a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
