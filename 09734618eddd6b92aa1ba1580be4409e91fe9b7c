@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1699103_e7fe2388",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4154,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-11-30T19:45:38Z",
+      "side": 1,
+      "message": "Don\u0027t we usually do soft reset on unexpected message?\neg in pe_snk_ready_run:\n\t/*\n\t * USB PD 3.0 6.8.1:\n\t * Receiving an unexpected message shall be responded\n\t * to with a soft reset message.\n\t */",
+      "revId": "09734618eddd6b92aa1ba1580be4409e91fe9b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
