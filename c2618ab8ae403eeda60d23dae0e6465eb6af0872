@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898066a2_662d493a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-30T18:18:08Z",
+      "side": 1,
+      "message": "As a follow on CL, please remove USB4 support and Burnside Bridge support.\n\nSee CL:2551217 as an example of removing USB4 support and cleaning up the TCPC, PPC, and USB mux configuration.",
+      "revId": "c2618ab8ae403eeda60d23dae0e6465eb6af0872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f98e44_59496fec",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-11-30T18:18:08Z",
+      "side": 1,
+      "message": "Delete this comment.",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 63
+      },
+      "revId": "c2618ab8ae403eeda60d23dae0e6465eb6af0872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
