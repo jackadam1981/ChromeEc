@@ -459,6 +459,14 @@ static int syv682x_set_vconn(int port, int enable)
 	 */
 	syv682x_handle_control_4_interrupt(port, regval);
 
+	/*
+	 * Exit if there was a VBAT OVP, since this results in a hard reset and
+	 * PPC re-init. Do not exit on a VCONN OC, since that alert won't affect
+	 * VCONN immediately.
+	 */
+	if (regval & SYV682X_CONTROL_4_VBAT_OVP)
+		return EC_SUCCESS;
+
 	regval &= ~(SYV682X_CONTROL_4_VCONN2 | SYV682X_CONTROL_4_VCONN1);
 	if (enable) {
 		regval |= flags[port] & SYV682X_FLAGS_CC_POLARITY ?
