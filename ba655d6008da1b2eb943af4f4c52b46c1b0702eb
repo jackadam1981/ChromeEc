@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84de7d5d_eba6e9fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-30T16:03:36Z",
+      "side": 1,
+      "message": "TCPMv2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "ba655d6008da1b2eb943af4f4c52b46c1b0702eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c19178f_763b207a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-11-30T16:03:36Z",
+      "side": 1,
+      "message": "In this scenario, is it that we don\u0027t have the sink caps in sink ready, or do we need to process them again when we start up as a sink?  Since they\u0027re stored, I would expect us to only need to re-read the sink capabilities as we start up and there wouldn\u0027t be a need for additional PD traffic.",
+      "revId": "ba655d6008da1b2eb943af4f4c52b46c1b0702eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
