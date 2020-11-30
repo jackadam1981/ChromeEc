@@ -22,6 +22,53 @@
       },
       "revId": "7754bc79de6ef6c24544be67bdf60afe72c4509b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db066c97_00e24680",
+        "filename": "board/coachz/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-30T21:26:59Z",
+      "side": 1,
+      "message": "Right. Should remove it too.",
+      "parentUuid": "c3a9a7b4_494c2563",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "7754bc79de6ef6c24544be67bdf60afe72c4509b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9153a158_47026dfb",
+        "filename": "board/coachz/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-11-30T21:26:59Z",
+      "side": 1,
+      "message": "Nit: Could you move them in the order of pinouts, according to the schematic? That helps people to compare the schematic to see anything missing.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 17
+      },
+      "revId": "7754bc79de6ef6c24544be67bdf60afe72c4509b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
