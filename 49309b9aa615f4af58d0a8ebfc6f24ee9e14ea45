@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd51c577_47b5e19a",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-01T17:19:58Z",
+      "side": 1,
+      "message": "nit: you could reduce the scope of this and make it a const static within the board_get_cc_tuning_paramters itself.\n\n---\nYou don\u0027t have to make this change unless you want to. It is completely fine either way.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 2
+      },
+      "revId": "49309b9aa615f4af58d0a8ebfc6f24ee9e14ea45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
