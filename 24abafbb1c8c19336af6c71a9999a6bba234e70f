@@ -70,6 +70,24 @@
       "parentUuid": "93dddfb9_065a68d3",
       "revId": "24abafbb1c8c19336af6c71a9999a6bba234e70f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bce678b_6d9636f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-12-01T18:44:56Z",
+      "side": 1,
+      "message": "Actually I think we should revert this CL and start removing unnecessary uses of task_wake and task_set_event. I\u0027ve been investigating areas where the stack runs slow and one cause was due to over use of task_wake and task_set_event. Please see this bug for details https://buganizer.corp.google.com/issues/155517411. The short answer is, it takes approximately 0.1ms for each call to those functions and this adds up fast when you consider all the places where they\u0027er used.\n\nFor example, the TCPM driver calls task_set_event, then PRL calls task_wake, then Policy Engine calls task_wake, all while TypeC layer is calling task_wake with each cc read and I\u0027m sure I missed a few other.",
+      "parentUuid": "d902df92_d40e42ff",
+      "revId": "24abafbb1c8c19336af6c71a9999a6bba234e70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
