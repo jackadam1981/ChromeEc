@@ -140,6 +140,30 @@
       },
       "revId": "e8067fd747042117d79007b9484ba43eae660480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffad9212_a7e98539",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-01T17:17:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f1fb343_ff1abb2b",
+      "range": {
+        "startLine": 205,
+        "startChar": 12,
+        "endLine": 205,
+        "endChar": 13
+      },
+      "revId": "e8067fd747042117d79007b9484ba43eae660480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
