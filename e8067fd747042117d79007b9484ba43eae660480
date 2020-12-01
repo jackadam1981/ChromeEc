@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74da2726_9eace3d1",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-01T15:19:28Z",
+      "side": 1,
+      "message": "Yeah, this was a quick hack just as a demo so I can bring it up at today\u0027s meeting. I figured this would be either a Kconfig or defined in \"shimmed_tasks.h\".\n\nHAS_TASK_KEYSCAN is set in config_chip.h in this CL. I do agree that we need a more unified way of doing things here. Added to agenda for today to discuss.",
+      "parentUuid": "c7bf0171_82b84bd1",
+      "range": {
+        "startLine": 24,
+        "startChar": 47,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "e8067fd747042117d79007b9484ba43eae660480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e2760d9_87382dc2",
         "filename": "zephyr/shim/include/shimmed_task_id.h",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-01T14:53:45Z",
       "side": 1,
       "message": "on accident?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "e8067fd747042117d79007b9484ba43eae660480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d6ebf5_bb2b7f8c",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-01T15:19:28Z",
+      "side": 1,
+      "message": "Yes, will fix.",
+      "parentUuid": "1e2760d9_87382dc2",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-01T14:53:45Z",
       "side": 1,
       "message": "oops, how did it even compile before? can we move to another cl?",
+      "range": {
+        "startLine": 205,
+        "startChar": 12,
+        "endLine": 205,
+        "endChar": 13
+      },
+      "revId": "e8067fd747042117d79007b9484ba43eae660480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f1fb343_ff1abb2b",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-01T15:19:28Z",
+      "side": 1,
+      "message": "Yup, will split this off.",
+      "parentUuid": "6ccbd8a0_5de64240",
       "range": {
         "startLine": 205,
         "startChar": 12,
