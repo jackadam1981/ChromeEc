@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7bf0171_82b84bd1",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-01T14:53:45Z",
+      "side": 1,
+      "message": "how do we vary stack sizes per-project?\n\nshould we make these Kconfig options?\n\ne.g., CONFIG_PLATFORM_EC_CHIPSET_TASK_STACK_SIZE\n\nAlong the same lines, should the HAS_TASK_* be generated from Kconfig options as well?",
+      "range": {
+        "startLine": 24,
+        "startChar": 47,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "e8067fd747042117d79007b9484ba43eae660480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e2760d9_87382dc2",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-01T14:53:45Z",
+      "side": 1,
+      "message": "on accident?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "e8067fd747042117d79007b9484ba43eae660480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ccbd8a0_5de64240",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-01T14:53:45Z",
+      "side": 1,
+      "message": "oops, how did it even compile before? can we move to another cl?",
+      "range": {
+        "startLine": 205,
+        "startChar": 12,
+        "endLine": 205,
+        "endChar": 13
+      },
+      "revId": "e8067fd747042117d79007b9484ba43eae660480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
