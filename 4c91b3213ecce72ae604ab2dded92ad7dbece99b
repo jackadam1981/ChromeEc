@@ -46,6 +46,30 @@
       },
       "revId": "4c91b3213ecce72ae604ab2dded92ad7dbece99b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e83f53_0c424b1a",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-01T16:07:53Z",
+      "side": 1,
+      "message": "Local variables don\u0027t need as much clarification as API parameters. So, renaming the local variable (e.g. af, addr, etc.) seems the better option.",
+      "parentUuid": "540c69c6_431d0089",
+      "range": {
+        "startLine": 110,
+        "startChar": 32,
+        "endLine": 110,
+        "endChar": 53
+      },
+      "revId": "4c91b3213ecce72ae604ab2dded92ad7dbece99b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
