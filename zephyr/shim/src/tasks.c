@@ -7,7 +7,7 @@
 #include <init.h>
 #include <sys/atomic.h>
 
-#include "shimmed_tasks.h"
+#include "common.h"
 #include "task.h"
 
 /* We need to ensure that is one lower priority for the deferred task */
