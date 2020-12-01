@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ff0b90_d8421742",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-01T21:22:52Z",
+      "side": 1,
+      "message": "This is patterned after the analogous hooks in the drivers for ITE on-chip TCPCs, which leaves two questions in my mind:\n\n1. How does it correctly select the right port? Doesn\u0027t this run in the hooks task? This seems to work, but I don\u0027t understand how.\n\n2. Because this performs I2C transactions, does it need to delegate the work back to the PD task? If so, how long should the Rube Goldberg machine be? The most fully decomposed version I could think of would be this:\nTC SM calls into TCPM library on detach -\u003e TCPM library wraps driver function -\u003e TCPCI driver function handles turning off BIST mode and reenabling Rx alert.",
+      "range": {
+        "startLine": 906,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 21
+      },
+      "revId": "886c3620c3af85ad3d5c37bef7a934fee6198d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b127d85c_9dd7cf1b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-01T21:22:52Z",
+      "side": 1,
+      "message": "This is redundant with disabling the Rx interrupt, and just doing this doesn\u0027t always keep using from watchdog timeouts during long BIST tests.\n\nNathan: Is it OK for us to just disable interrupts and exclude this part?",
+      "range": {
+        "startLine": 935,
+        "startChar": 1,
+        "endLine": 943,
+        "endChar": 2
+      },
+      "revId": "886c3620c3af85ad3d5c37bef7a934fee6198d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
