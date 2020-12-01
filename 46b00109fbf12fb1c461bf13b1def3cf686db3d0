@@ -16,6 +16,23 @@
       "message": "b/172985020 is the issue reported by octopus devices due to CL:2437575",
       "revId": "46b00109fbf12fb1c461bf13b1def3cf686db3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f79f1239_7f594207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-12-01T03:10:33Z",
+      "side": 1,
+      "message": "Got positive result with this CL. Please refer b/172985020#comment26 test result.",
+      "revId": "46b00109fbf12fb1c461bf13b1def3cf686db3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
