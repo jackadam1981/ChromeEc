@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e46abe22_dbe33a06",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4493,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-01T17:24:01Z",
+      "side": 1,
+      "message": "nit: can you add _MS suffix so we know the units",
+      "range": {
+        "startLine": 4493,
+        "startChar": 8,
+        "endLine": 4493,
+        "endChar": 49
+      },
+      "revId": "c8e898e21603815b6960091241ff7beb27104fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
