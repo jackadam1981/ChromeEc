@@ -16,6 +16,23 @@
       "message": "I have test this CL in kukui branch，and have the same problem.",
       "revId": "48f1d6ef150ebbd4d15981f70fb53f3ccd9808e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6aa3e1e_e418165a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-01T06:49:30Z",
+      "side": 1,
+      "message": "Vconn swap should not be bounded to the power_swap\u0027s capability.",
+      "revId": "48f1d6ef150ebbd4d15981f70fb53f3ccd9808e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
