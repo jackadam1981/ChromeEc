@@ -148,8 +148,7 @@
 	#define CONFIG_USB_DRP_ACC_TRYSRC
 
 	 /* Enable TCPMv2 Fast Role Swap */
-	 /* Turn off until FRSwap is working */
-	#undef CONFIG_USB_PD_FRS_TCPC
+	#define CONFIG_USB_PD_FRS_TCPC
 #endif
 
 #define CONFIG_HOSTCMD_PD_CONTROL
