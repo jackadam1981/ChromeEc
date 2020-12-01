@@ -57,6 +57,24 @@
       "parentUuid": "3c19178f_763b207a",
       "revId": "ba655d6008da1b2eb943af4f4c52b46c1b0702eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b158012_8a534d92",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-01T00:37:01Z",
+      "side": 1,
+      "message": "We should probably only be enabling FRS detection in the HW when we\u0027re a sink to reduce our likelihood of false positive detection while we\u0027re sourcing.  I definitely missed thinking through that case when expanding the sink caps retrieval.\n\nCould we enable FRS either:\n- when we get the sink caps as a sink and see FRS support OR\n- when we start up as a sink and have sink caps indicating FRS support\n\nAnd then we should probably disable it when going back to sourcing, if that happens for some reason.\n\nFor when our explicit contract is invalidated, I think we can assume the partner sink capabilities will remain the same over hard resets and swaps.  I would be somewhat surprised if they changed in these cases, but everyone reads the spec differently so we could see some partners doing this.",
+      "parentUuid": "a2af315f_f77209f4",
+      "revId": "ba655d6008da1b2eb943af4f4c52b46c1b0702eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
