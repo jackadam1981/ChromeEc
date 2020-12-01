@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3245af99_4c6e3509",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2020-12-01T00:55:56Z",
+      "side": 1,
+      "message": "Could you also update strongbad.json?\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/fw-testing-configs/+/2490609/4/strongbad.json",
+      "revId": "7754bc79de6ef6c24544be67bdf60afe72c4509b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3a9a7b4_494c2563",
