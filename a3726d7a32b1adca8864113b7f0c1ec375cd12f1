@@ -34,6 +34,24 @@
       "parentUuid": "16b4821d_a8bf6c5d",
       "revId": "a3726d7a32b1adca8864113b7f0c1ec375cd12f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24b158f7_313d876f",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-01T21:35:54Z",
+      "side": 1,
+      "message": "Yeah, I was just thinking a busy loop.",
+      "parentUuid": "26e23148_d0261860",
+      "revId": "a3726d7a32b1adca8864113b7f0c1ec375cd12f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
