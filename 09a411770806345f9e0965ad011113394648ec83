@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c095dfe5_8fb02956",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-01T17:21:56Z",
+      "side": 1,
+      "message": "A better approach is to create a softlink from the delbin_npcx796fc directory to the delbin target.  This way both board types stay up to date with the only change is the EC chip type.\n\nSee CL:2354804 for an example.  In this example, the new board type was for the 797 part, and the original volteer board keeps using the 796 part.",
+      "revId": "09a411770806345f9e0965ad011113394648ec83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
