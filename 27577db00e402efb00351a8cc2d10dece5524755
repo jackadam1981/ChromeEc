@@ -52,6 +52,24 @@
       "parentUuid": "557a9d45_0b18c000",
       "revId": "27577db00e402efb00351a8cc2d10dece5524755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85bcafa2_839db43c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-01T19:11:36Z",
+      "side": 1,
+      "message": "Yes.\n\nWe have acknowleded this will be an issue util infra can get us a supported toolchain, so I guess we just have to deal with it.",
+      "parentUuid": "aa8bb1d7_2a66b8d8",
+      "revId": "27577db00e402efb00351a8cc2d10dece5524755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
