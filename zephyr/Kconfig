@@ -47,7 +47,7 @@ menuconfig PLATFORM_EC_KEYBOARD
 	  the resulting input to the AP over the host interface. This consists
 	  of a keyboard-scanning task which provides key scans via it calling
 	  keyboard_state_changed() (for i8042) or its client calling
-	  keyboard_scan_get_state() (for MKBP).
+	  keyboard_scan_get_state() (for MKBP). This implies HAS_TASK_KEYSCAN.
 
 if PLATFORM_EC_KEYBOARD
 
