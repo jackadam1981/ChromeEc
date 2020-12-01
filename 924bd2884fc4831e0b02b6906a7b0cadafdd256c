@@ -39,6 +39,30 @@
       },
       "revId": "924bd2884fc4831e0b02b6906a7b0cadafdd256c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3cd798_2595a6df",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4689,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-01T05:10:18Z",
+      "side": 1,
+      "message": "Can do.  I\u0027ll annotate to make it clear what scenarios it\u0027s appropriate for",
+      "parentUuid": "530a2eec_a22fc332",
+      "range": {
+        "startLine": 4679,
+        "startChar": 1,
+        "endLine": 4689,
+        "endChar": 2
+      },
+      "revId": "924bd2884fc4831e0b02b6906a7b0cadafdd256c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
