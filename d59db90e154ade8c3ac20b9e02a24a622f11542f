@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e0451f_750ca4a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-01T17:23:15Z",
+      "side": 1,
+      "message": "Is this a gerrit bug or does this commit message need word wrapping?",
+      "range": {
+        "startLine": 9,
+        "startChar": 58,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "d59db90e154ade8c3ac20b9e02a24a622f11542f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b94ead_b17530dd",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-01T17:23:15Z",
+      "side": 1,
+      "message": "Missing newline?",
+      "range": {
+        "startLine": 43,
+        "startChar": 19,
+        "endLine": 43,
+        "endChar": 32
+      },
+      "revId": "d59db90e154ade8c3ac20b9e02a24a622f11542f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
