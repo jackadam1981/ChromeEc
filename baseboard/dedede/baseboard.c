@@ -238,6 +238,16 @@ void board_hibernate_late(void)
 	 * the EC.
 	 */
 	gpio_set_level(GPIO_EN_SLP_Z, 1);
+
+	/*
+	 * Still awake despite turning on zombie state?  Reset with AP off is
+	 * the best we can do in this situation.
+	 */
+	system_reset(SYSTEM_RESET_LEAVE_AP_OFF);
+
+	/* Await our reset */
+	while (1)
+		;
 }
 
 int board_is_i2c_port_powered(int port)
