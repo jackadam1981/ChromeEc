@@ -96,6 +96,26 @@
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #endif  /* CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED */
 
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ
+#define HAS_TASK_CHIPSET 1
+#endif /* CONFIG_PLATFORM_EC_POWERSEQ */
+
+#ifdef CONFIG_PLATFORM_EC_HOSTCMD
+#define HAS_TASK_HOSTCMD 1
+#endif /* CONFIG_PLATFORM_EC_HOSTCMD */
+
+#ifdef CONFIG_PLATFORM_EC_KEYBOARD
+#define HAS_TASK_KEYSCAN 1
+#endif /* CONFIG_PLATFORM_EC_KEYBOARD */
+
+#ifdef CONFIG_HAS_TASK_KEYPROTO
+#define HAS_TASK_KEYPROTO 1
+#endif /* CONFIG_HAS_TASK_KEYPROTO */
+
+#ifdef CONFIG_HAS_TASK_POWERBTN
+#define HAS_TASK_POWERBTN 1
+#endif /* CONFIG_HAS_TASK_POWERBTN */
+
 /*
  * Load the chip family specific header. Normally for npcx, this would be done
  * by chip/npcx/config_chip.h but since this file is replacing that header
