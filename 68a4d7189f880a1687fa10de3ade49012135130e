@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfdd6a60_d836030c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4156,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-01T00:12:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be the SOP of the incoming message?",
+      "range": {
+        "startLine": 4156,
+        "startChar": 28,
+        "endLine": 4156,
+        "endChar": 32
+      },
+      "revId": "68a4d7189f880a1687fa10de3ade49012135130e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
