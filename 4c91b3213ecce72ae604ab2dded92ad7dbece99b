@@ -22,6 +22,30 @@
       },
       "revId": "4c91b3213ecce72ae604ab2dded92ad7dbece99b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540c69c6_431d0089",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-01T00:09:40Z",
+      "side": 1,
+      "message": "Generally, yes.  For a few functions, there is a local addr_flags already which will have I2C_FLAG_PEC added sometimes.  So one of the variables needs a different name.  I\u0027m open to suggestions as to which should be considered the \"addr_flags\" and which should have a different name.",
+      "parentUuid": "e62998fc_59d93057",
+      "range": {
+        "startLine": 110,
+        "startChar": 32,
+        "endLine": 110,
+        "endChar": 53
+      },
+      "revId": "4c91b3213ecce72ae604ab2dded92ad7dbece99b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
