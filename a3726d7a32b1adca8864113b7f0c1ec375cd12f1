@@ -16,6 +16,24 @@
       "message": "Should we wait a little bit before doing so?",
       "revId": "a3726d7a32b1adca8864113b7f0c1ec375cd12f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e23148_d0261860",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-01T20:51:56Z",
+      "side": 1,
+      "message": "We could try, but by this point in the hibernate sequence all the interrupts are disabled and I\u0027d assume we need to re-enable some in order to sleep?  Or we could have some kind of busy loop that\u0027s just incrementing an integer for a while.",
+      "parentUuid": "16b4821d_a8bf6c5d",
+      "revId": "a3726d7a32b1adca8864113b7f0c1ec375cd12f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
