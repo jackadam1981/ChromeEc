@@ -260,12 +260,9 @@ int charger_get_system_power(void);
 
 /* Other parameters that may be charger-specific, but are common so far. */
 
-/* Set desired input current value */
+/* Get/set desired input current value */
 enum ec_error_list charger_set_input_current_limit(int chgnum,
 						   int input_current);
-
-
-/* Get input current limit from the charger */
 enum ec_error_list charger_get_input_current_limit(int chgnum,
 						   int *input_current);
 /*
