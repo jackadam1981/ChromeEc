@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3495e0a_dfb08cc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-01T05:12:43Z",
+      "side": 1,
+      "message": "Should we also test coming out of cutoff with a charger on C1 since that\u0027s how the units will be shipping out from the factory? And any other scenarios we\u0027re concerned about factory units encountering?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "2ca6cd9d70e165cefe8209f57976b1a2390ca363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "83e26436_6ecd375f",
