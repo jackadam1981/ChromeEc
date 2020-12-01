@@ -93,6 +93,24 @@
       "parentUuid": "9b158012_8a534d92",
       "revId": "ba655d6008da1b2eb943af4f4c52b46c1b0702eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3cb01ec_17be65f3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-01T04:42:51Z",
+      "side": 1,
+      "message": "Sounds like a good plan for this CL.  \n\nLonger-term we\u0027ll finish that TODO to evaluate whether we can supply the FRS current, and we\u0027ll most likely have a module in the DPM evaluating our ability to enable FRS based on our current source-out load",
+      "parentUuid": "5f5070eb_ce71c645",
+      "revId": "ba655d6008da1b2eb943af4f4c52b46c1b0702eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
