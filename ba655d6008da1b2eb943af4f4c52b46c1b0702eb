@@ -75,6 +75,24 @@
       "parentUuid": "a2af315f_f77209f4",
       "revId": "ba655d6008da1b2eb943af4f4c52b46c1b0702eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5070eb_ce71c645",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-12-01T01:29:46Z",
+      "side": 1,
+      "message": "\u003e when we get the sink caps as a sink and see FRS support\n\nWe will often connect initially as source and get sink caps then later become the sink, so that\u0027s what this change is currently doing: ensuring we get sink caps as a sink so FRS gets enabled. Though we don\u0027t currently check whether we\u0027re a sink to set the FRS flag.\n\n\u003e when we start up as a sink and have sink caps indicating FRS support\n\nIf we were a sink on initial startup then we won\u0027t have sink caps indicating FRS support until DPM_REQUEST_GET_SINK_CAPS is handled in pe_snk_ready_run(). We\u0027d have to evaluate sink caps in pe_snk_ready_entry() to ensure we notice if sink caps aren\u0027t already known.\n\nThis would mean we want to have pe_snk_ready_entry() first check that sink caps are present and then evaluate them to enable FRS if appropriate, doing nothing if they\u0027re not known. Evaluation can be skipped if FRS is already enabled.\npe_snk_ready_run() will handle DPM_REQUEST_GET_SINK_CAPS and ultimately trigger pe_snk_ready_entry() when transitioning back to PE_SNK_Ready from PE_DR_SNK_Get_Sink_Cap to evaluate caps once they\u0027re known.",
+      "parentUuid": "9b158012_8a534d92",
+      "revId": "ba655d6008da1b2eb943af4f4c52b46c1b0702eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
