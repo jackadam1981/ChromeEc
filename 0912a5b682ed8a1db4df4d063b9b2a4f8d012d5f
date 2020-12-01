@@ -16,6 +16,24 @@
       "message": "I know nothing about those, might be best to run by somebody like Furquan.",
       "revId": "0912a5b682ed8a1db4df4d063b9b2a4f8d012d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253ed7b0_dd91e2fe",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-01T03:45:26Z",
+      "side": 1,
+      "message": "The above comment block correctly captures the behavior of the sleep signals on current Intel and AMD platforms.\n\nWhat is the power difference in S0ix? All Intel platforms use only S0ix. So, this will result in power regression on all those platforms.",
+      "parentUuid": "6ea99457_66434414",
+      "revId": "0912a5b682ed8a1db4df4d063b9b2a4f8d012d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
