@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c52f2cc_fac31bdc",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-12-01T04:07:48Z",
+      "side": 1,
+      "message": "Done. Does need \"__maybe_unused\" with function declaration?",
+      "parentUuid": "275c4c4e_9338da85",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 6
+      },
+      "revId": "5bb6fa3f0701c1b145f201f1ea138fc131e79a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea751c58_d91d567e",
         "filename": "driver/tcpm/it8xxx2.c",
         "patchSetId": 8
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-30T17:11:01Z",
       "side": 1,
       "message": "If you always define the function in the header file (without the ifdef gaurds), then you can use if (IS_ENABLE(..)) { } here instead",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 754,
+        "endChar": 6
+      },
+      "revId": "5bb6fa3f0701c1b145f201f1ea138fc131e79a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9849356b_cd7ecadd",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-12-01T04:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea751c58_d91d567e",
       "range": {
         "startLine": 746,
         "startChar": 0,
