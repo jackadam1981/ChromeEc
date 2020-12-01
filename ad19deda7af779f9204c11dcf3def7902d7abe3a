@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4566c73e_f93868c9",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-01T20:53:05Z",
+      "side": 1,
+      "message": "Nit - replace with a single macro.\n\n    #define ISL9241_REG_AC_PROCHOT_MASK GENMASK(12,7)\n    ma \u0026\u003d ISL9241_REG_AC_PROCHOT_MASK;",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 33
+      },
+      "revId": "ad19deda7af779f9204c11dcf3def7902d7abe3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36c3276f_372d2f42",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-01T20:53:05Z",
+      "side": 1,
+      "message": "The max and min checks need to be done against the value that will be written to the register.  Move this conversion before the max/min checks.\n\nFor example:\n\n    reg \u003d AC_CURRENT_TO_REG(ma);\n    if (reg \u003e AC_MAX)\n        reg \u003d ISL9241_AC_PROCHOT_CURRENT_MAX;\n    else if (reg \u003c AC_MIN)\n        reg \u003d ISL9241_AC_PROCHOT_CURRENT_MIN;\n    else\n        reg \u0026\u003d ISL9241_REG_AC_PROCHOT_MASK;",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 29
+      },
+      "revId": "ad19deda7af779f9204c11dcf3def7902d7abe3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15aeb5d_a5727449",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-01T20:53:05Z",
+      "side": 1,
+      "message": "Nit - replace with a single valid mask:\n\n    #define ISL9241_REG_DC_PROCHOT_MASK  GENMASK(13,8)\n    ma \u0026\u003d ISL9241_REG_DC_PROCHOT_MASK;",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 33
+      },
+      "revId": "ad19deda7af779f9204c11dcf3def7902d7abe3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
