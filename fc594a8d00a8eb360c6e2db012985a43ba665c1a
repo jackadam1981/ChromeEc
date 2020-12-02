@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "146b5dab_bb89625d",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T05:26:01Z",
+      "side": 1,
+      "message": "nit: would this be first_cv_trip?  Also, perhaps I\u0027ve forgotten the phase transitions but I thought we\u0027d only transition through CV trip once, so what is first_time helping here?",
+      "range": {
+        "startLine": 307,
+        "startChar": 33,
+        "endLine": 307,
+        "endChar": 43
+      },
+      "revId": "fc594a8d00a8eb360c6e2db012985a43ba665c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
