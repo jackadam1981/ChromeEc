@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "003cd3f0_6a3c0841",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-02T17:52:42Z",
+      "side": 1,
+      "message": "Just finished FAFT_PD test suite. All test passed except PDVbusRequest (though I had to rerun some tests separately).",
+      "revId": "82358d65d7bf1f0509dbfae3916b4d269119f696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
