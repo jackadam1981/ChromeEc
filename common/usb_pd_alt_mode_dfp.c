@@ -1089,7 +1089,8 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 	 */
 	mux_mode = ((pin_mode & MODE_DP_PIN_MF_MASK) && mf_pref) ?
 		USB_PD_MUX_DOCK : USB_PD_MUX_DP_ENABLED;
-	CPRINTS("pin_mode: %x, mf: %d, mux: %d", pin_mode, mf_pref, mux_mode);
+	CPRINTS("alt-dp[%d]: pin_mode: %x, mf: %d, mux: %d",
+		port, pin_mode, mf_pref, mux_mode);
 
 	/* Connect the SBU and USB lines to the connector. */
 	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
@@ -1121,8 +1122,10 @@ int svdm_get_hpd_gpio(int port)
 __overridable void svdm_dp_post_config(int port)
 {
 	dp_flags[port] |= DP_FLAGS_DP_ON;
-	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
+	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING)) {
+		CPRINTS("svdm[%d]: post_cfg: hi pend not set, exit!", port);
 		return;
+	}
 
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
 	svdm_set_hpd_gpio(port, 1);
@@ -1131,6 +1134,7 @@ __overridable void svdm_dp_post_config(int port)
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
+	CPRINTS("svdm[%d]: post_cfg: updating hpd", port);
 	usb_mux_hpd_update(port, 1, 0);
 
 #ifdef USB_PD_PORT_TCPC_MST
@@ -1148,6 +1152,9 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
 	dp_status[port] = payload[1];
+
+	CPRINTS("svdm[%d]: cmd = %d, dp_attention = %x", port,
+		PD_VDO_CMD(payload[0]), payload[1]);
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
 	    (irq || lvl))
@@ -1193,6 +1200,8 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
+	CPRINTS("svdm[%d]: attention: hpd_update: lvl = %d, irq = %d",
+		port, lvl, irq);
 	usb_mux_hpd_update(port, lvl, irq);
 
 #ifdef USB_PD_PORT_TCPC_MST
