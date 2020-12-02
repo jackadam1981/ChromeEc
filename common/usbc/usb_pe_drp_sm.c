@@ -911,9 +911,6 @@ int pe_is_explicit_contract(int port)
 
 void pe_message_received(int port)
 {
-	/* This should only be called from the PD task */
-	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
-
 	PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }

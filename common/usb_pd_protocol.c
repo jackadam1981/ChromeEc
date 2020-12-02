@@ -293,6 +293,11 @@ static struct pd_protocol {
 	 * When we can give up on a HARD_RESET transmission.
 	 */
 	uint64_t hard_reset_complete_timer;
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+	bool incoming_packet;
+	uint32_t header;
+	uint32_t payload[7];
+#endif /* CONFIG_USB_PD_MSG_DIRECT_COPY */
 } pd[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #ifdef CONFIG_USB_PD_TCPMV1_DEBUG
@@ -919,8 +924,13 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 	 /* Don't try to transmit anything until we have processed
 	  * all RX messages.
 	  */
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+	if (pd[port].incoming_packet)
+		return -1;
+#else
 	if (tcpm_has_pending_message(port))
 		return -1;
+#endif 
 
 #ifdef CONFIG_USB_PD_REV30
 	/* Source-coordinated collision avoidance */
@@ -2824,14 +2834,29 @@ static void pd_send_enter_usb(int port, int *timeout)
 	set_state(port, PD_STATE_ENTER_USB);
 }
 
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+void pd_get_message_buffer(const int port, uint32_t **header, uint32_t **payload)
+{
+	*header = &pd[port].header;
+	*payload = pd[port].payload;
+}
+
+void pd_rx_message_received(int port) {
+	pd[port].incoming_packet = true;
+}
+#endif /* CONFIG_USB_PD_MSG_DIRECT_COPY */
+
 void pd_task(void *u)
 {
+#ifndef CONFIG_USB_PD_MSG_DIRECT_COPY
 	uint32_t head;
-	int port = TASK_ID_TO_PD_PORT(task_get_current());
 	uint32_t payload[7];
+	int incoming_packet = 0;
+#endif
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
 	int timeout = 10*MSEC;
 	enum tcpc_cc_voltage_status cc1, cc2;
-	int res, incoming_packet = 0;
+	int res;
 	int hard_reset_count = 0;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	uint64_t next_role_swap = PD_T_DRP_SNK;
@@ -2853,6 +2878,10 @@ void pd_task(void *u)
 	int caps_count = 0, hard_reset_sent = 0;
 	int snk_cap_count = 0;
 	int evt;
+
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+	pd[port].incoming_packet = false;
+#endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	/*
@@ -3178,20 +3207,31 @@ void pd_task(void *u)
 			pd_execute_hard_reset(port);
 
 		/* process any potential incoming message */
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+		if (pd[port].incoming_packet) {
+			pd[port].incoming_packet = false;
+			/* Consume duplicate message ID. */
+			if (!consume_repeat_message(port,pd[port].header)
+				)
+				handle_request(port, pd[port].header,
+							pd[port].payload);
+		}
+
+#else
 		incoming_packet = tcpm_has_pending_message(port);
 		if (incoming_packet) {
 			/* Dequeue and consume duplicate message ID. */
 			if (tcpm_dequeue_message(port, payload, &head) ==
-								EC_SUCCESS
+							EC_SUCCESS
 			    && !consume_repeat_message(port, head)
 			   )
 				handle_request(port, head, payload);
-
-			/* Check if there are any more messages */
+				/* Check if there are any more messages */
 			if (tcpm_has_pending_message(port))
 				task_set_event(PD_PORT_TO_TASK_ID(port),
-					       TASK_EVENT_WAKE, 0);
+				       TASK_EVENT_WAKE, 0);
 		}
+#endif /* CONFIG_USB_PD_MSG_DIRECT_COPY */
 
 		if (pd[port].req_suspend_state)
 			set_state(port, PD_STATE_SUSPENDED);
@@ -3632,8 +3672,11 @@ void pd_task(void *u)
 			 * incoming packet or if VDO response pending to avoid
 			 * collisions.
 			 */
-			if (incoming_packet ||
-			    (pd[port].vdm_state == VDM_STATE_BUSY))
+			if ((pd[port].vdm_state == VDM_STATE_BUSY)
+#ifndef CONFIG_USB_PD_MSG_DIRECT_COPY
+				|| incoming_packet
+#endif
+				)
 				break;
 
 			/* Send updated source capabilities to our partner */
@@ -3849,8 +3892,12 @@ void pd_task(void *u)
 			if (rstatus != 0 && rstatus != EC_ERROR_UNIMPLEMENTED)
 				tcpc_prints("release failed!", port);
 #endif
-			/* Drain any outstanding software message queues. */
-			tcpm_clear_pending_messages(port);
+			if (!IS_ENABLED(CONFIG_USB_PD_MSG_DIRECT_COPY))
+				/*
+				 * Drain any outstanding software message
+				 * queues.
+				 */
+				tcpm_clear_pending_messages(port);
 
 			/* Wait for resume */
 			while (pd[port].task_state == PD_STATE_SUSPENDED) {
@@ -4281,8 +4328,11 @@ void pd_task(void *u)
 			 * incoming packet or if VDO response pending to avoid
 			 * collisions.
 			 */
-			if (incoming_packet ||
-			    (pd[port].vdm_state == VDM_STATE_BUSY))
+			if ((pd[port].vdm_state == VDM_STATE_BUSY)
+#ifndef CONFIG_USB_PD_MSG_DIRECT_COPY
+				|| incoming_packet
+#endif
+				)
 				break;
 
 			/* Check for new power to request */

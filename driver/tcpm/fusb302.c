@@ -1032,8 +1032,29 @@ void fusb302_tcpc_alert(int port)
 		/* (this interrupt fires after the GoodCRC finishes) */
 		if (state[port].rx_enable) {
 			/* Pull all RX messages from TCPC into EC memory */
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+			if (!fusb302_rx_fifo_is_empty(port)) {
+				uint32_t *header;
+				uint32_t *payload;
+
+				/* Get the stack's pd message buffers */
+				pd_get_message_buffer(port, &header, &payload);
+				/*
+				 * Copy the received pd message to the
+				 * buffers
+				 */
+				tcpc_config[port].drv->get_message_raw(port,
+							payload, header);
+				/*
+				 * Inform the stack that an RX message was
+				 * received
+				 */
+				pd_rx_message_received(port);
+			}
+#else
 			while (!fusb302_rx_fifo_is_empty(port))
-				tcpm_enqueue_message(port);
+					tcpm_enqueue_message(port);
+#endif
 		} else {
 			/* flush rx fifo if rx isn't enabled */
 			fusb302_flush_rx_fifo(port);

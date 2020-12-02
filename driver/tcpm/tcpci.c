@@ -844,6 +844,7 @@ int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 	return tcpci_rev1_0_tcpm_get_message_raw(port, payload, head);
 }
 
+#ifndef CONFIG_USB_PD_MSG_DIRECT_COPY
 /* Cache depth needs to be power of 2 */
 /* TODO: Keep track of the high water mark */
 #define CACHE_DEPTH BIT(3)
@@ -931,6 +932,7 @@ void tcpm_clear_pending_messages(int port)
 
 	q->tail = q->head;
 }
+#endif /* !CONFIG_USB_PD_MSG_DIRECT_COPY */
 
 int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 			uint16_t header, const uint32_t *data)
@@ -1135,7 +1137,6 @@ void tcpci_tcpc_alert(int port)
 {
 	int alert = 0;
 	int alert_ext = 0;
-	int failed_attempts;
 	uint32_t pd_event = 0;
 
 	/* Read the Alert register from the TCPC */
@@ -1169,28 +1170,55 @@ void tcpci_tcpc_alert(int port)
 					   TCPC_TX_COMPLETE_SUCCESS :
 					   TCPC_TX_COMPLETE_FAILED);
 
-	/* Pull all RX messages from TCPC into EC memory */
-	failed_attempts = 0;
-	while (alert & TCPC_REG_ALERT_RX_STATUS) {
-		if (tcpm_enqueue_message(port))
-			++failed_attempts;
-		if (tcpm_alert_status(port, &alert))
-			++failed_attempts;
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+	/* Pull an RX messages from TCPC into EC memory */
+	if (alert & TCPC_REG_ALERT_RX_STATUS) {
+		uint32_t *header;
+		uint32_t *payload;
 
-		/* Ensure we don't loop endlessly */
-		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
-			CPRINTS("C%d Cannot consume RX buffer after %d failed attempts!",
-				port, failed_attempts);
-			/*
-			 * The port is in a bad state, we don't want to consume
-			 * all EC resources so suspend the port for a little
-			 * while.
+		/* Remove me. For Debug only */
+		ccprintf("A: %lld\n", get_time().val);
+
+		/* Get the stack's pd message buffers */
+		pd_get_message_buffer(port, &header, &payload);
+		/* Copy the received pd message to the buffers */
+		tcpc_config[port].drv->get_message_raw(port, payload, header);
+		/* Inform the stack that an RX message was received */
+		pd_rx_message_received(port);
+	}
+#else
+	{
+		int failed_attempts = 0;
+
+		/* Pull all RX messages from TCPC into EC memory */
+		while (alert & TCPC_REG_ALERT_RX_STATUS) {
+			/* Remove me. For Debug only */
+			/* NOTE: Under normal load this is okay because
+			 * no more than one message gets queued.
 			 */
-			pd_set_suspend(port, 1);
-			pd_deferred_resume(port);
-			return;
+			ccprintf("A: %lld\n", get_time().val);
+			if (tcpm_enqueue_message(port))
+				++failed_attempts;
+			if (tcpm_alert_status(port, &alert))
+				++failed_attempts;
+
+			/* Ensure we don't loop endlessly */
+			if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
+				CPRINTS("C%d Cannot consume RX buffer after \
+						%d failed attempts!",
+						port, failed_attempts);
+				/*
+				 * The port is in a bad state, we don't want to
+				 * consume all EC resources so suspend the port
+				 * for a little while.
+				 */
+				pd_set_suspend(port, 1);
+				pd_deferred_resume(port);
+				return;
+			}
 		}
 	}
+#endif /* CONFIG_USB_PD_MSG_DIRECT_COPY */
 
 	/*
 	 * Clear all pending alert bits. Ext first because ALERT.AlertExtended
