@@ -2613,6 +2613,23 @@ void pd_execute_hard_reset(int port);
 void pd_transmit_complete(int port, int status);
 
 /**
+ * Signal to the Policy Engine that a PD message was received
+ *
+ * @param port USB-C port number
+ */
+void pd_rx_message_received(int port);
+
+/**
+ * Called by the TCPC driver when a PD message is received.
+ *
+ * @param port USB-C port number
+ * @param header pointer to where the message header is stored
+ * @param payload pointer to where the message payload is stoard
+ */
+void pd_get_message_buffer(int port, uint32_t **header,
+        uint32_t **payload);
+
+/**
  * Get port polarity.
  *
  * @param port USB-C port number

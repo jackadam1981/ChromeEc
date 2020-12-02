@@ -966,7 +966,6 @@ static int anx74xx_tcpm_transmit(int port, enum tcpm_transmit_type type,
 void anx74xx_tcpc_alert(int port)
 {
 	int reg;
-	int failed_attempts;
 
 	/* Clear soft irq bit */
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_3,
@@ -984,27 +983,46 @@ void anx74xx_tcpc_alert(int port)
 		pd_transmit_complete(port, TCPC_TX_COMPLETE_FAILED);
 
 	/* Pull all RX messages from TCPC into EC memory */
-	failed_attempts = 0;
-	while (reg & ANX74XX_REG_IRQ_CC_MSG_INT) {
-		if (tcpm_enqueue_message(port))
-			++failed_attempts;
-		if (tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg))
-			++failed_attempts;
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+	if (reg & ANX74XX_REG_IRQ_CC_MSG_INT) {
+		uint32_t *header;
+		uint32_t *payload;
 
-		/* Ensure we don't loop endlessly */
-		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
-			CPRINTF("C%d Cannot consume RX buffer after %d failed "
-				"attempts!", port, failed_attempts);
-			/*
-			 * The port is in a bad state, we don't want to consume
-			 * all EC resources so suspend the port for a little
-			 * while.
-			 */
-			pd_set_suspend(port, 1);
-			pd_deferred_resume(port);
-			return;
+		/* Get the stack's pd message buffers */
+		pd_get_message_buffer(port, &header, &payload);
+		/* Copy the received pd message to the buffers */
+		tcpc_config[port].drv->get_message_raw(port, payload, header);
+		/* Inform the stack that an RX message was received */
+		pd_rx_message_received(port);
+	}
+#else
+	{
+		int failed_attempts = 0;
+
+		while (reg & ANX74XX_REG_IRQ_CC_MSG_INT) {
+			if (tcpm_enqueue_message(port))
+				++failed_attempts;
+			if (tcpc_read(port,
+				ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg))
+				++failed_attempts;
+
+			/* Ensure we don't loop endlessly */
+			if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
+				CPRINTS("C%d Cannot consume RX buffer after \
+						%d failed attempts!",
+						port, failed_attempts);
+				/*
+				 * The port is in a bad state, we don't want to
+				 * consume all EC resources so suspend the port
+				 * for a little while.
+				 */
+				pd_set_suspend(port, 1);
+				pd_deferred_resume(port);
+				return;
+			}
 		}
 	}
+#endif /* CONFIG_USB_PD_MSG_DIRECT_COPY */
 
 	/* Clear all pending alerts */
 	tcpc_write(port, ANX74XX_REG_RECVD_MSG_INT, reg);

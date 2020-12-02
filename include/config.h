@@ -3877,6 +3877,12 @@
 #undef CONFIG_HAS_TASK_PD_INT
 
 /*
+ * Enables direct copying of PD messages from TCPC to the
+ * Protocol Layer Buffers.
+ */
+#undef CONFIG_USB_PD_MSG_DIRECT_COPY
+
+/*
  * Enables USB Power Delivery
  *
  * When this config option is enabled, one of the following must be enabled:

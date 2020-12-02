@@ -44,7 +44,20 @@ static void chip_pd_irq(enum usbpd_port port)
 	}
 
 	if (USBPD_IS_RX_DONE(port)) {
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+		uint32_t *header;
+		uint32_t *payload;
+
+		/* Get the stack's pd message buffers */
+		pd_get_message_buffer(port, &header, &payload);
+		/* Copy the received pd message to the buffers */
+		tcpc_config[port].drv->get_message_raw(port,
+							payload, header);
+		/* Inform the stack that an RX message was received */
+		pd_rx_message_received(port);
+#else
 		tcpm_enqueue_message(port);
+#endif /* CONFIG_USB_PD_MSG_DIRECT_COPY */
 		/* clear RX done interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
 	}

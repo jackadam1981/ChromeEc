@@ -301,7 +301,9 @@ struct extended_msg tx_emsg[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Common Protocol Layer Message Transmission */
 static void prl_tx_construct_message(int port);
+#ifndef CONFIG_USB_PD_MSG_DIRECT_COPY
 static void prl_rx_wait_for_phy_message(const int port, int evt);
+#endif
 static void prl_copy_msg_to_buffer(int port);
 
 #ifndef CONFIG_USB_PD_REV30
@@ -649,8 +651,10 @@ void prl_run(int port, int evt, int en)
 			break;
 		}
 
+#ifndef CONFIG_USB_PD_MSG_DIRECT_COPY
 		/* Run Protocol Layer Message Reception */
 		prl_rx_wait_for_phy_message(port, evt);
+#endif
 
 		if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
 			/*
@@ -1938,16 +1942,27 @@ static void tch_report_error_entry(const int port)
 	set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
 }
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+void pd_get_message_buffer(const int port, uint32_t **header, uint32_t **payload)
+{
+	*header = &rx_emsg[port].header;
+	*payload = pdmsg[port].rx_chk_buf;
+}
 
 /*
  * Protocol Layer Message Reception State Machine
  */
+void pd_rx_message_received(int port)
+#else
 static void prl_rx_wait_for_phy_message(const int port, int evt)
-{
-	uint32_t header;
+#endif /* CONFIG_USB_PD_MSG_DIRECT_COPY */
+{	
 	uint8_t type;
 	uint8_t cnt;
 	int8_t msid;
+
+#ifndef CONFIG_USB_PD_MSG_DIRECT_COPY
+	uint32_t header;
 
 	/*
 	 * If PD3, wait for the RX chunk SM to copy the pdmsg into the extended
@@ -1967,6 +1982,13 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	cnt = PD_HEADER_CNT(header);
 	msid = PD_HEADER_ID(header);
 	prl_rx[port].sop = PD_HEADER_GET_SOP(header);
+#else
+	type = PD_HEADER_TYPE(rx_emsg[port].header);
+	cnt = PD_HEADER_CNT(rx_emsg[port].header);
+	msid = PD_HEADER_ID(rx_emsg[port].header);
+	prl_rx[port].sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+
+#endif /* CONFIG_USB_PD_MSG_DIRECT_COPY */
 
 	/* Make sure an incorrect count doesn't overflow the chunk buffer */
 	if (cnt > CHK_BUF_SIZE)
@@ -1977,7 +1999,11 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		prl_debug_level >= DEBUG_LEVEL_3) {
 		int p;
 
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+		ccprintf("C%d: RECV %04x/%d ", port, rx_emsg[port].header, cnt);
+#else
 		ccprintf("C%d: RECV %04x/%d ", port, header, cnt);
+#endif
 		for (p = 0; p < cnt; p++)
 			ccprintf("[%d]%08x ", p, pdmsg[port].rx_chk_buf[p]);
 		ccprintf("\n");
@@ -1989,8 +2015,13 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	 */
 	if (!IS_ENABLED(CONFIG_USB_CTVPD) &&
 	    !IS_ENABLED(CONFIG_USB_VPD) &&
+#ifdef CONFIG_USB_PD_MSG_DIRECT_COPY
+		PD_HEADER_GET_SOP(rx_emsg[port].header) != PD_MSG_SOP &&
+	    PD_HEADER_PROLE(rx_emsg[port].header) == PD_PLUG_FROM_DFP_UFP)
+#else
 	    PD_HEADER_GET_SOP(header) != PD_MSG_SOP &&
 	    PD_HEADER_PROLE(header) == PD_PLUG_FROM_DFP_UFP)
+#endif /* CONFIG_USB_PD_MSG_DIRECT_COPY */
 		return;
 
 	/* Handle incoming soft reset as special case */
@@ -2020,7 +2051,6 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		 * the PE's outgoing ACCEPT message to the soft reset.
 		 */
 		pe_got_soft_reset(port);
-
 		return;
 	}
 
@@ -2099,6 +2129,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		pe_message_received(port);
 	}
 
+	ccprintf("B: %lld\n", get_time().val);
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 

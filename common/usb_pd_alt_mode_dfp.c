@@ -459,8 +459,10 @@ void pd_set_identity_discovery(int port, enum tcpm_transmit_type type,
 			       enum pd_discovery_state disc)
 {
 	struct pd_discovery *pd = pd_get_am_discovery(port, type);
-
-	pd->identity_discovery = disc;
+	if (IS_ENABLED(CONFIG_USB_PD_MSG_DIRECT_COPY) && pd)
+		pd->identity_discovery = disc;
+	else
+		pd->identity_discovery = disc;
 }
 
 enum pd_discovery_state pd_get_identity_discovery(int port,
