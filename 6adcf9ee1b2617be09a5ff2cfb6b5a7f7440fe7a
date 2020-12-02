@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87bde9c5_29d154d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-12-02T21:36:32Z",
+      "side": 1,
+      "message": "Plan is to change factory tool to use ectool (instead of ACPI) to read longer battery names, so merge this now.",
+      "revId": "6adcf9ee1b2617be09a5ff2cfb6b5a7f7440fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
