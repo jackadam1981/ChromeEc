@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35e13e51_69d18547",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-02T20:15:18Z",
+      "side": 1,
+      "message": "Regardless of the RS1 value, only bits 12:7 can be written to the ACProchot# register.  The minimum register value is 0x0080 and the maximum is 0x1900.\n\nWhen RS\u003d20, the minimum current is 128 mA and the maximum is 6.4A.\nWhen RS\u003d10, the minimum current is 256 mA and the maximum is 12.8A.\n\nI confirmed the ISL9241 prevents writes less than 0x0080 and greater than 0x1900, even if the PSYS ratio is set to 1:1.\n\n    \u003e i2cx r16 9 9 0x4e       \n    0x2800 [10240]         // PSYS ratio 1:1\n    \u003e i2cx r16 9 9 0x47\n    0x0c00 [3072]\n    \u003e i2cx w16 9 9 0x47 0x1980\n    \u003e i2cx r16 9 9 0x47       \n    0x1900 [6400]          // Write value clamped to 0x1900\n    \u003e i2cx w16 9 9 0x47 0x1880\n    \u003e i2cx r16 9 9 0x47       \n    0x1880 [6400]          // Setting \n\nThe maximum register value 0x1900, corresponds to 6.4A  (RS1\u003d20) and 12.8A (RS1\u003d10).\n\nSo it\u0027s probably best to check the limits as follows:\n\n    if (ma \u003e AC_REG_TO_CURRENT(ISL9241_AC_PROCHOT_CURRENT_MAX))\n        reg \u003d ISL9241_AC_PROCHOT_CURRENT_MAX;\n    else if (ma \u003c AC_REG_TO_CURRENT(ISL9241_AC_PROCHOT_CURRENT_MIN))\n        reg \u003d ISL9241_AC_PROCHOT_CURRENT_MIN;\n    else\n        reg \u003d AC_CURRENT_TO_REG(ma);\n\nMasking the valid bits appears to be unneeded because the ISL9241 already does this automatically.\n\nThe min/max checks are still useful so user\u0027s know if they attempt to set the prochot value outside the limits.",
+      "parentUuid": "6fbe6229_5e439d10",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 29
+      },
+      "revId": "ad19deda7af779f9204c11dcf3def7902d7abe3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a15aeb5d_a5727449",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 23
