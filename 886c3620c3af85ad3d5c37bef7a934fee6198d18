@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "305a2b15_4b9fdcba",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T23:56:20Z",
+      "side": 1,
+      "message": "Hooks run from the task which calls hook_notify, so in this case it would be the PD task going about the i2c transaction.",
+      "parentUuid": "b3ff0b90_d8421742",
+      "range": {
+        "startLine": 906,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 21
+      },
+      "revId": "886c3620c3af85ad3d5c37bef7a934fee6198d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b127d85c_9dd7cf1b",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 2
