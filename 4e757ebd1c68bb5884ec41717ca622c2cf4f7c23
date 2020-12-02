@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c3d890_84f68250",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-12-02T16:57:31Z",
+      "side": 1,
+      "message": "add correct test result , make sure USB3 , DP, TBT gets detected",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "4e757ebd1c68bb5884ec41717ca622c2cf4f7c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a7f85a_386a19e5",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-12-02T16:57:31Z",
+      "side": 1,
+      "message": "enable CBI and keep the board info in EEPROM.\nRun time decide what kind of RVP and add use respective structures",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "4e757ebd1c68bb5884ec41717ca622c2cf4f7c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
