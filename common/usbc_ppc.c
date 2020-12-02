@@ -199,6 +199,7 @@ int ppc_vbus_sink_enable(int port, int enable)
 		return EC_ERROR_INVAL;
 	}
 
+	CPRINTS("ppc_vbus_sink_enable(%d, %d)", port, enable);
 	ppc = &ppc_chips[port];
 	if (ppc->drv->vbus_sink_enable)
 		rv = ppc->drv->vbus_sink_enable(port, enable);

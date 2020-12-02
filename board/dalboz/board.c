@@ -532,7 +532,11 @@ void bc12_interrupt(enum gpio_signal signal)
 int board_pd_set_frs_enable(int port, int enable)
 {
 	int rv = EC_SUCCESS;
+	int fon_value;
 
+	cprints(CC_CHARGER, "board_tcpc_fast_role_swap_enable(%d, %d)", port, enable);
+	ioex_get_level(IOEX_USB_C0_TCPC_FASTSW_CTL_EN, &fon_value);
+	cprints(CC_CHARGER, "C0 FON = %d", fon_value);
 	/* Use the TCPC to enable fast switch when FRS included */
 	if (port == USBC_PORT_C0) {
 		rv = ioex_set_level(IOEX_USB_C0_TCPC_FASTSW_CTL_EN,
@@ -541,6 +545,8 @@ int board_pd_set_frs_enable(int port, int enable)
 		rv = ioex_set_level(IOEX_USB_C1_TCPC_FASTSW_CTL_EN,
 				    !!enable);
 	}
+	// HACK: wait for the PPC to be ready to handle FRS
+	usleep(1000);
 
 	return rv;
 }
@@ -608,6 +614,9 @@ static void setup_fw_config(void)
 		/* Gyro is not present, don't allow line to float */
 		gpio_set_flags(GPIO_6AXIS_INT_L, GPIO_INPUT | GPIO_PULL_DOWN);
 	}
+
+	cprints(CC_CHARGER, "HACK: setup_fw_config enable C0 FRS for PPC");
+	ioex_set_level(IOEX_USB_C0_TCPC_FASTSW_CTL_EN, 1);
 }
 /*
  * Use HOOK_PRIO_INIT_I2C + 2 to be after ioex_init().
