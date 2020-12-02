@@ -1164,6 +1164,8 @@ void tcpci_tcpc_alert(int port)
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)
 		tcpm_alert_ext_status(port, &alert_ext);
 
+	CPRINTS("C%d alert %04X ext %04X", port, alert, alert_ext);
+
 	/* Clear any pending faults */
 	if (alert & TCPC_REG_ALERT_FAULT) {
 		int fault;

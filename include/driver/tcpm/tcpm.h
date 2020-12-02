@@ -375,8 +375,12 @@ static inline int tcpm_set_frs_enable(int port, int enable)
 	 * if it is handled by the tcpci for the tcpc chipset
 	 */
 	tcpc = tcpc_config[port].drv;
-	if (tcpc->set_frs_enable)
+	if (tcpc->set_frs_enable) {
+		cprints(CC_CHARGER,
+			"tcpc driver has FRS enable, setting enable=%d",
+			enable);
 		rv = tcpc->set_frs_enable(port, enable);
+	}
 	return rv;
 }
 #endif /* defined(CONFIG_USB_PD_FRS_TCPC) */

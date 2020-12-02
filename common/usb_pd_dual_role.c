@@ -59,8 +59,11 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 	/* max voltage is always limited by this boards max request */
 	max_mv = MIN(max_mv, PD_MAX_VOLTAGE_MV);
 
+	cprints(CC_CHARGER, "pd_find_pdo_index wants %d uW, up to %d V", desired_uw, max_mv);
+
 	/* Get max power that is under our max voltage input */
 	for (i = 0; i < src_cap_cnt; i++) {
+		cprints(CC_CHARGER, "consider cap %d, %x", i, src_caps[i]);
 		/* its an unsupported Augmented PDO (PD3.0) */
 		if ((src_caps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)
 			continue;
@@ -317,6 +320,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 
 void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 {
+	cprints(CC_CHARGER, "pd_process_source_cap port %d", port);
 	pd_set_src_caps(port, cnt, src_caps);
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
