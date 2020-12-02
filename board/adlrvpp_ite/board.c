@@ -193,18 +193,42 @@ BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == CONFIG_USB_PD_PORT_MAX_COUNT);
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 /* USB-C retimer Configuration */
-struct usb_mux usbc0_retimer = {
-	.usb_port = TYPE_C_PORT_0,
-	.driver = &bb_usb_retimer,
-	.i2c_port = I2C_PORT_TYPEC_0,
-	.i2c_addr_flags = I2C_PORT0_BB_RETIMER_ADDR,
+struct usb_mux usbc0_retimer[] = {
+	[RETIMER_1] = {
+		.usb_port = TYPE_C_PORT_0,
+		.driver = &bb_usb_retimer,
+		.i2c_port = I2C_PORT_TYPEC_0,
+		.i2c_addr_flags = I2C_PORT0_BB_RETIMER1_ADDR,
+	},
+#ifdef CONFIG_DDR5
+	[RETIMER_2] = {
+		.usb_port = TYPE_C_PORT_0,
+		.driver = &bb_usb_retimer,
+		.i2c_port = I2C_PORT_TYPEC_0,
+		.i2c_addr_flags = I2C_PORT0_BB_RETIMER2_ADDR,
+	},
+#endif
 };
-struct usb_mux usbc1_retimer = {
-	.usb_port = TYPE_C_PORT_1,
-	.driver = &bb_usb_retimer,
-	.i2c_port = I2C_PORT_TYPEC_1,
-	.i2c_addr_flags = I2C_PORT1_BB_RETIMER_ADDR,
+BUILD_ASSERT(ARRAY_SIZE(usbc0_retimer) == CONFIG_TCPC_P0_BBRETIMER_MAX_COUNT);
+
+struct usb_mux usbc1_retimer[] = {
+	[RETIMER_1] = {
+		.usb_port = TYPE_C_PORT_1,
+		.driver = &bb_usb_retimer,
+		.i2c_port = I2C_PORT_TYPEC_1,
+		.i2c_addr_flags = I2C_PORT1_BB_RETIMER1_ADDR,
+	},
+#ifdef CONFIG_DDR5
+	[RETIMER_2] = {
+		.usb_port = TYPE_C_PORT_1,
+		.driver = &bb_usb_retimer,
+		.i2c_port = I2C_PORT_TYPEC_1,
+		.i2c_addr_flags = I2C_PORT1_BB_RETIMER2_ADDR,
+	},
+#endif
 };
+BUILD_ASSERT(ARRAY_SIZE(usbc1_retimer) == CONFIG_TCPC_P1_BBRETIMER_MAX_COUNT);
+
 struct usb_mux usbc2_retimer = {
 	.usb_port = TYPE_C_PORT_2,
 	.driver = &bb_usb_retimer,
@@ -224,13 +248,13 @@ const struct usb_mux usb_muxes[] = {
 		.usb_port = TYPE_C_PORT_0,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
-		.next_mux = &usbc0_retimer,
+		.next_mux = &usbc0_retimer[RETIMER_1],
 	},
 	[TYPE_C_PORT_1] = {
 		.usb_port = TYPE_C_PORT_1,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
-		.next_mux = &usbc1_retimer,
+		.next_mux = &usbc1_retimer[RETIMER_1],
 	},
 	[TYPE_C_PORT_2] = {
 		.usb_port = TYPE_C_PORT_2,
