@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1f913821_be6565cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-02T08:40:15Z",
+      "side": 1,
+      "message": "Pushing the feature excepted the last CL enabling it",
+      "revId": "2dc171dfed5297edaca1a77203f0de169573cd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d9c2ea71_c44f5831",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 1
