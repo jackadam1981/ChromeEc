@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7731251a_ad6c13a2",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-12-02T07:35:00Z",
+      "side": 1,
+      "message": "Should be SLAVE_GET_SPI_ADDR?",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 21
+      },
+      "revId": "b5613d0f007651f9b5adeb498150bf51672984f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4caedca8_f34d5c24",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-12-02T07:35:00Z",
+      "side": 1,
+      "message": "The same",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 157,
+        "endChar": 21
+      },
+      "revId": "b5613d0f007651f9b5adeb498150bf51672984f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19845d3_bc1680bf",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-12-02T07:35:00Z",
+      "side": 1,
+      "message": "The same",
+      "range": {
+        "startLine": 201,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 21
+      },
+      "revId": "b5613d0f007651f9b5adeb498150bf51672984f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
