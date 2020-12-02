@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d6f7de4_2a619e5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-02T08:41:15Z",
+      "side": 1,
+      "message": "long running testing seems fine on Morphius (zork)",
+      "revId": "0912a5b682ed8a1db4df4d063b9b2a4f8d012d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ea99457_66434414",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "The above comment block correctly captures the behavior of the sleep signals on current Intel and AMD platforms.\n\nWhat is the power difference in S0ix? All Intel platforms use only S0ix. So, this will result in power regression on all those platforms.",
       "parentUuid": "6ea99457_66434414",
+      "revId": "0912a5b682ed8a1db4df4d063b9b2a4f8d012d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7e46456_930f21ed",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-02T08:41:15Z",
+      "side": 1,
+      "message": "right now, there is NO power management for the FPMCU on Hatch.\nit\u0027s still the case after this version of the patch ... no regression but still 20mW wasted. \nI\u0027m working on validating the S0ix version, I will enable it afterwards (once the discussion in b/130561737 how to handle the opposite polarity on SLP_S0_L between Zork and Hatch has concluded something)",
+      "parentUuid": "253ed7b0_dd91e2fe",
       "revId": "0912a5b682ed8a1db4df4d063b9b2a4f8d012d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
