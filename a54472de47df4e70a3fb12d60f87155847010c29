@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e159a5_285cf7d0",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3477,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-02T12:28:17Z",
+      "side": 1,
+      "message": "As I recall, the USB-IF VIF Generator complains when you feed a tag that should have been ignored by testers. I think it is best to exclude these whenever possible",
+      "parentUuid": "0b38b246_b759d1a4",
+      "range": {
+        "startLine": 3475,
+        "startChar": 1,
+        "endLine": 3477,
+        "endChar": 9
+      },
+      "revId": "a54472de47df4e70a3fb12d60f87155847010c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1566dd81_25b54c45",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-02T00:31:47Z",
       "side": 1,
       "message": "config.h has CONFIG_USB_BCD_DEV.",
+      "range": {
+        "startLine": 3524,
+        "startChar": 13,
+        "endLine": 3524,
+        "endChar": 34
+      },
+      "revId": "a54472de47df4e70a3fb12d60f87155847010c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "596d80d2_220c6015",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3524,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-02T12:28:17Z",
+      "side": 1,
+      "message": "Didn\u0027t see it there... Expected it to not actually exist 😄",
+      "parentUuid": "1566dd81_25b54c45",
       "range": {
         "startLine": 3524,
         "startChar": 13,
