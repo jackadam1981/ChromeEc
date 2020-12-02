@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7750cca3_19301876",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4618,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T23:43:26Z",
+      "side": 1,
+      "message": "I suspect this decision would be best left to the PE, given the requirements.  The PE has to be \"in the know\" anyway to get into the right state, and it can boss around the TCPC accordingly while doing so.",
+      "parentUuid": "53c495ec_2bd3cd1f",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7943a549_bf1c4ba9",
@@ -107,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c06351e_f9d0de3d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4641,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T23:43:26Z",
+      "side": 1,
+      "message": "Will the TCPC not reliably provide us with our first BIST message?  That\u0027s all we need during entry to ignore unsupported modes, correct?",
+      "parentUuid": "db17558f_1f305906",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aeed14ad_7feef699",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -136,6 +172,24 @@
       "side": 1,
       "message": "I actually don\u0027t know why we have this. It\u0027s only used by a DPM request that nobody ever sends.",
       "parentUuid": "aeed14ad_7feef699",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f7c071_aaf277e5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4664,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T23:43:26Z",
+      "side": 1,
+      "message": "I\u0027m trying to envision what value we could get out of acting as a tester.  It could start a sequence on another Chromebook, but then how on earth would we validate the carrier bits?",
+      "parentUuid": "da6bdab3_031bbd74",
       "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
