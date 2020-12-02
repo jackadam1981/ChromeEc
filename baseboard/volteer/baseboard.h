@@ -63,7 +63,9 @@
 #define CONFIG_BOARD_HAS_RTC_RESET
 
 /* Common Keyboard Defines */
+#if 0
 #define CONFIG_CMD_KEYBOARD
+#endif
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_KEYPAD
@@ -135,7 +137,9 @@
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 
 /* Common LED defines */
+#if 0
 #define CONFIG_LED_COMMON
+#endif
 
 /* EDP back-light control defines */
 #define CONFIG_BACKLIGHT_LID

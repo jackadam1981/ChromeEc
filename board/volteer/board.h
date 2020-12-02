@@ -28,9 +28,11 @@
 #define CONFIG_POWER_PP5000_CONTROL
 
 /* LED defines */
+#if 0
 #define CONFIG_LED_PWM
 /* Although there are 2 LEDs, they are both controlled by the same lines. */
 #define CONFIG_LED_PWM_COUNT 1
+#endif
 
 /* Keyboard features */
 

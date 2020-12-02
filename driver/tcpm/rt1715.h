@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_USB_PD_TCPM_RT1715_H
 #define __CROS_EC_USB_PD_TCPM_RT1715_H
 
+#define RT1715_VENDOR_ID 0x29CF
+
 /* RT1715 Private RegMap */
 
 #define RT1715_REG_PHY_CTRL1			0x80
