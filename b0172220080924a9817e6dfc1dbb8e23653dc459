@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5877e88b_0483ed7d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-02T16:46:12Z",
+      "side": 1,
+      "message": "No. Per my comment on a previous patchset, this is redundant with disabling Rx alerts.",
+      "parentUuid": "920b8f0b_ee6eaae0",
+      "revId": "b0172220080924a9817e6dfc1dbb8e23653dc459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a86999b_0b9b9c68",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-02T16:26:48Z",
       "side": 1,
       "message": "How would you feel about the PE dictating that the TCPM enter/exit BIST mode, rather than having the TCPCI code do it?  This seems like higher-level logic than we usually expect drivers to contain, and would reduce the need to duplicate the logic for when to enable/disable between TCPC drivers that don\u0027t use TCPCI",
+      "range": {
+        "startLine": 958,
+        "startChar": 0,
+        "endLine": 959,
+        "endChar": 40
+      },
+      "revId": "b0172220080924a9817e6dfc1dbb8e23653dc459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a32029_71fb8d83",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-02T16:46:12Z",
+      "side": 1,
+      "message": "I talk some about alternate code arrangements in a comment on a previous patchset. At a high level, it makes sense to me that this would be a policy-level decision and TCPC-agnostic, but here are some things that make me question that:\n\n1. AFAIK, we don\u0027t get to make a policy decision about how to respond to BIST Test Data traffic. We can choose how to implement receiving it, but ...\n\n2. The specified PE behavior doesn\u0027t intersect with plain old BIST Test Data at all. I think the PE would need to be at least aware of Shared Test Mode, but we don\u0027t currently implement shared capacity port groups (see PD 6.4.3.3). Our PE currently has BIST-related states, but they are outside the spec. I think the primary function they serve now is to keep the PE from interrupting a BIST test with whatever it might otherwise decide to send.\n\n3. The specified behavior in response to plain old BIST Test Data is described in the PRL, and it\u0027s a part of the PRL that\u0027s contained within TCPCs that implement TCPCI.\n\n4. I\u0027m not very familiar with our TCPC ecosystem outside TCPCI, and I don\u0027t know if they tend to contain mechanisms similar to the ones I\u0027m using here. Do you know if they would lend themselves to a driver API that could be shared with TCPCI drivers?",
+      "parentUuid": "6a86999b_0b9b9c68",
       "range": {
         "startLine": 958,
         "startChar": 0,
