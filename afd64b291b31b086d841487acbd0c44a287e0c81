@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a45b076a_69e0e792",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T16:38:18Z",
+      "side": 1,
+      "message": "Comments look good, but I think the PE states themselves will need some changes.",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0b58a9_0abb0ebe",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4611,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T16:38:18Z",
+      "side": 1,
+      "message": "nit: reference PE_BIST_Carrier_Mode state for serachability? \n\nI don\u0027t seem to see a similar state to reference for BIST test data so I\u0027m uncertain how the spec envisions that working. Practically speaking, it makes sense to keep it in a separate state, if only to easily prevent us from breaking the requirement of sending no further messages via a stray DPM request or outstanding discovery item.",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b73433_7cd85d26",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4618,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T16:38:18Z",
+      "side": 1,
+      "message": "This can also be a follow-up CL, but I\u0027m not seeing the requirement of \"When a Port receives a BIST Message BIST Data Object for a BIST Mode when not operating at vSafe5V, the BIST\nMessage Shall be Ignored\" being checked.  I leave it to you whether that belongs in READY or the entry state",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7943a549_bf1c4ba9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4641,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T16:38:18Z",
+      "side": 1,
+      "message": "This can be a follow-up CL, but we should return to ready if we hit a mode we don\u0027t support.  Otherwise I don\u0027t see how we\u0027d ever exit this state short of a hard reset/disconnect.  You can cite \"When a Port receives a BIST Message BIST Data Object for a BIST Mode it does not support the BIST Message Shall be Ignored.\"",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeed14ad_7feef699",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4664,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T16:38:18Z",
+      "side": 1,
+      "message": "nit: include a comment about how/why/when we\u0027d want to act as a tester?",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
