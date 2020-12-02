@@ -682,3 +682,36 @@ enum ec_error_list charger_set_vsys_compensation(int chgnum,
 	 */
 	return EC_ERROR_UNIMPLEMENTED;
 }
+
+static int command_curr(int argc, char **argv)
+{
+	int chgnum = 0, curr, curr_limit;
+	char *e;
+
+	if (argc != 2 && argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	chgnum = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	if (argc == 2) {
+		if (!charger_get_input_current_limit(chgnum, &curr))
+			ccprintf("curr_limit = %dmA\n", curr);
+
+		if (!charger_get_input_current(chgnum, &curr))
+			ccprintf("curr       = %dmA\n", curr);
+	}
+
+	if (argc == 3) {
+		curr_limit = strtoi(argv[2], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM2;
+		if (charger_set_input_current_limit(chgnum, curr_limit))
+			return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(curr, command_curr, "[chgnum] [mv]",
+			     "Print/set input current");
