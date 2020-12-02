@@ -6434,7 +6434,9 @@ static void pe_dr_src_get_source_cap_run(int port)
 					(uint32_t *)rx_emsg[port].buf;
 
 				pd_set_src_caps(port, cnt, payload);
-				if (pd_can_source_from_device(cnt, payload))
+				if (pd_can_source_from_device(cnt, payload) &&
+				    (pd_get_dual_role(port) !=
+				     PD_DRP_FORCE_SOURCE))
 					pd_request_power_swap(port);
 
 				/*
