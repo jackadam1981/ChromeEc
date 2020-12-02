@@ -661,3 +661,16 @@ enum ec_error_list charger_set_vsys_compensation(int chgnum,
 	 */
 	return EC_ERROR_UNIMPLEMENTED;
 }
+
+enum ec_error_list charger_is_icl_reached(int chgnum, bool *reached)
+{
+		if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
+		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
+		return EC_ERROR_INVAL;
+	}
+
+	if (chg_chips[chgnum].drv->is_icl_reached)
+		return chg_chips[chgnum].drv->is_icl_reached(chgnum, reached);
+
+	return EC_ERROR_UNIMPLEMENTED;
+}
