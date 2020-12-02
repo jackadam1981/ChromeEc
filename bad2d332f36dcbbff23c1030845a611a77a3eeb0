@@ -22,6 +22,30 @@
       },
       "revId": "bad2d332f36dcbbff23c1030845a611a77a3eeb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f78394d_2e3e5bcc",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3139,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-02T00:40:12Z",
+      "side": 1,
+      "message": "Actually, I guess if we intend at some point to use these VIFs for Type-A port testing, that statement might stop being true.",
+      "parentUuid": "1ab752d9_f344d2b3",
+      "range": {
+        "startLine": 3138,
+        "startChar": 4,
+        "endLine": 3139,
+        "endChar": 17
+      },
+      "revId": "bad2d332f36dcbbff23c1030845a611a77a3eeb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
