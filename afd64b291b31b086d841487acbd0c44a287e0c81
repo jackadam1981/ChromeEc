@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c495ec_2bd3cd1f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4618,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-02T16:58:47Z",
+      "side": 1,
+      "message": "Re: your comment on the next CL about the PE deciding to put the TCPC in BIST mode, implementing this requirement might be what pushes the decision up into the PE.\n\nI\u0027ll note that I don\u0027t think we have the ability to control which BIST Messages the TCPC does and does not ignore.",
+      "parentUuid": "e6b73433_7cd85d26",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7943a549_bf1c4ba9",
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db17558f_1f305906",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4641,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-02T16:58:47Z",
+      "side": 1,
+      "message": "I think I agree, but here, as above, we may be constrained by what the TCPC does for us.\n\nCarrier mode has a timer, and there is an escape hatch for shared test mode. (We can exit \"if the tester makes a request that exceeds the capabilities of the UUT.)\n\nThe only specified way to get out of test data mode is to receive a Hard Reset. The GRL tester tends to use a disconnect, which also seems like a good time to get out of test mode.",
+      "parentUuid": "7943a549_bf1c4ba9",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aeed14ad_7feef699",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -82,6 +118,24 @@
       "writtenOn": "2020-12-02T16:38:18Z",
       "side": 1,
       "message": "nit: include a comment about how/why/when we\u0027d want to act as a tester?",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6bdab3_031bbd74",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4664,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-02T16:58:47Z",
+      "side": 1,
+      "message": "I actually don\u0027t know why we have this. It\u0027s only used by a DPM request that nobody ever sends.",
+      "parentUuid": "aeed14ad_7feef699",
       "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
