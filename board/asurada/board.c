@@ -119,9 +119,10 @@ __override void board_hibernate_late(void)
 
 	isl9238c_hibernate(CHARGER_SOLO);
 
+	/* Turn off power and wait 1 second. */
 	gpio_set_level(GPIO_EN_SLP_Z, 1);
 
-	/* should not reach here */
+	/* Should not reach here */
 	__builtin_unreachable();
 }
 
