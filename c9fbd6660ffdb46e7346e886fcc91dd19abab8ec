@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11034a5f_edc07288",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T05:02:33Z",
+      "side": 1,
+      "message": "What did testing yield?  Do we still need to maintain higher spacing pre-contract?",
+      "parentUuid": "7ec4b50c_16814936",
+      "revId": "c9fbd6660ffdb46e7346e886fcc91dd19abab8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d40756d4_7038c848",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1

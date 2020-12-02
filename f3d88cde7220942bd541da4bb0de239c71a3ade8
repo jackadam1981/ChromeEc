@@ -16,6 +16,29 @@
       "message": "Now verified on TBT3 loopback device.",
       "revId": "f3d88cde7220942bd541da4bb0de239c71a3ade8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48dadb1a_8b132b61",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T05:02:33Z",
+      "side": 1,
+      "message": "nit: extra should",
+      "range": {
+        "startLine": 195,
+        "startChar": 20,
+        "endLine": 195,
+        "endChar": 26
+      },
+      "revId": "f3d88cde7220942bd541da4bb0de239c71a3ade8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
