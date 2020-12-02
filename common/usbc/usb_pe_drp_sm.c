@@ -953,6 +953,7 @@ void pe_got_hard_reset(int port)
  */
 void pd_got_frs_signal(int port)
 {
+	cprints(CC_CHARGER, "FRS SIGNALLED, flagging FRS on port %d", port);
 	PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
 	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE, 0);
 }
@@ -976,10 +977,13 @@ static void pe_set_frs_enable(int port, int enable)
 	if (IS_ENABLED(CONFIG_USB_PD_FRS)) {
 		int current = PE_CHK_FLAG(port,
 					  PE_FLAGS_FAST_ROLE_SWAP_ENABLED);
+		cprints(CC_CHARGER, "current FRS flag = %d, want = %d", current, enable);
 
 		/* Request an FRS change, only if the state has changed */
 		if (!!current != !!enable) {
+			cprints(CC_CHARGER, "requesting TCPM set FRS enable = %d", enable);
 			pd_set_frs_enable(port, enable);
+
 			if (enable)
 				PE_SET_FLAG(port,
 					    PE_FLAGS_FAST_ROLE_SWAP_ENABLED);
