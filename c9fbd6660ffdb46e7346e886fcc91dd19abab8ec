@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a490f409_c4211dce",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-02T17:51:01Z",
+      "side": 1,
+      "message": "I did confirm the TBT3 device won\u0027t respond to SOP\u0027 until a contract is in place. \nThe extra spacing doesn\u0027t help or hurt explicitly for this device.  Because this change only sends 2 SOP\u0027 messages precontract, we might was well give the cable some extra time when it doesn\u0027t respond on the first message.\n\nThe best argument for always using tDiscoverIdentity spacing is probably code simplicity.",
+      "parentUuid": "11034a5f_edc07288",
+      "revId": "c9fbd6660ffdb46e7346e886fcc91dd19abab8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d40756d4_7038c848",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
