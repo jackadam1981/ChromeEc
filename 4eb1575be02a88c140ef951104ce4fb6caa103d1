@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d147121d_66140570",
+        "filename": "board/boldar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-12-02T16:42:35Z",
+      "side": 1,
+      "message": "follow RVP values\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/baseboard/intelrvp/baseboard.c#142",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 28
+      },
+      "revId": "4eb1575be02a88c140ef951104ce4fb6caa103d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15846acb_e5d1be6a",
+        "filename": "board/boldar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-12-02T16:42:35Z",
+      "side": 1,
+      "message": "same as above\n\nthis will ensure fan runs always to avoid heating issues",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 28
+      },
+      "revId": "4eb1575be02a88c140ef951104ce4fb6caa103d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
