@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920b8f0b_ee6eaae0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T16:26:48Z",
+      "side": 1,
+      "message": "Do we still get RX alerts then even though we\u0027ve masked them off during testing?",
+      "revId": "b0172220080924a9817e6dfc1dbb8e23653dc459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a86999b_0b9b9c68",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T16:26:48Z",
+      "side": 1,
+      "message": "How would you feel about the PE dictating that the TCPM enter/exit BIST mode, rather than having the TCPCI code do it?  This seems like higher-level logic than we usually expect drivers to contain, and would reduce the need to duplicate the logic for when to enable/disable between TCPC drivers that don\u0027t use TCPCI",
+      "range": {
+        "startLine": 958,
+        "startChar": 0,
+        "endLine": 959,
+        "endChar": 40
+      },
+      "revId": "b0172220080924a9817e6dfc1dbb8e23653dc459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
