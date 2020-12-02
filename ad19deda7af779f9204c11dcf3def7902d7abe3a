@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "653a9ff3_957bb9dd",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-12-02T01:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4566c73e_f93868c9",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 33
+      },
+      "revId": "ad19deda7af779f9204c11dcf3def7902d7abe3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36c3276f_372d2f42",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fbe6229_5e439d10",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-12-02T01:26:58Z",
+      "side": 1,
+      "message": "In eldrid, BOARD_RS1\u003d10. So if we set AC_PROCHOT\u003d128mA, after convert it will become 64mA and block by reg \u0026\u003d ISL9241_REG_AC_PROCHOT_MASK. \n\nConvert first, will cause wrong value.\nSet AC_PROCHOT\u003d128mA, convert and become to 64mA. 64mA \u003c AC_MIN, it will set 128mA to charger.\nSet AC_PROCHOT\u003d6912mA(larger than AC_MAX), convert and become to 3456mA. It will not block by if (reg \u003e AC_MAX).",
+      "parentUuid": "36c3276f_372d2f42",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 29
+      },
+      "revId": "ad19deda7af779f9204c11dcf3def7902d7abe3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a15aeb5d_a5727449",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 23
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-01T20:53:05Z",
       "side": 1,
       "message": "Nit - replace with a single valid mask:\n\n    #define ISL9241_REG_DC_PROCHOT_MASK  GENMASK(13,8)\n    ma \u0026\u003d ISL9241_REG_DC_PROCHOT_MASK;",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 33
+      },
+      "revId": "ad19deda7af779f9204c11dcf3def7902d7abe3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7af1898_70cf3834",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-12-02T01:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a15aeb5d_a5727449",
       "range": {
         "startLine": 373,
         "startChar": 0,
