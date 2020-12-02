@@ -16,6 +16,24 @@
       "message": "Search_blocked_words.sh stats before this CL stack:\nmaster                   1094     251           9\nslave                    1207     183           5\n\nAnd after:\nmaster                   1088     248           7\nslave                    1106     180           4\n",
       "revId": "66bc1a8e33e5f4915f83ffb96eab0c2eb165dc71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad8ade8_bdd45de5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-02T18:26:53Z",
+      "side": 1,
+      "message": "nice. maybe you can even paste this to the CL description.",
+      "parentUuid": "eec11c3c_47046f84",
+      "revId": "66bc1a8e33e5f4915f83ffb96eab0c2eb165dc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
