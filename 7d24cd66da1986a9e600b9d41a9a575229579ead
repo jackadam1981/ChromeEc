@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29fac99a_06e86727",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T05:18:41Z",
+      "side": 1,
+      "message": "nit: might be more clear to check !\u003d success.  I know it\u0027s functionally the same, but with \"is\" in the function name it might easily mis-read as the return being the bool",
+      "revId": "7d24cd66da1986a9e600b9d41a9a575229579ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c88c18d_a44fd63d",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-02T05:18:41Z",
+      "side": 1,
+      "message": "else false?  Or am I missing where this would get reset to false later if needed?  Also, why go with a static rather than a local variable?",
+      "revId": "7d24cd66da1986a9e600b9d41a9a575229579ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
