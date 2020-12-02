@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9c3da7_cad96f92",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-02T18:25:00Z",
+      "side": 1,
+      "message": "nit: I feel the name is overloaded. I understand you\u0027re trying to increase the readability but the flexibility is sacrificed. If we ever want to manipulate other flags, we would need to change the name again.",
+      "range": {
+        "startLine": 115,
+        "startChar": 10,
+        "endLine": 115,
+        "endChar": 19
+      },
+      "revId": "2d3297c18213b8b2634cb25ba58003000a5ec647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
