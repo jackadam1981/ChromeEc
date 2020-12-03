@@ -10,6 +10,13 @@
 
 #include "baseboard.h"
 
+/* On-body detection */
+#define CONFIG_BODY_DETECTION
+#define CONFIG_BODY_DETECTION_SENSOR LID_ACCEL
+#define CONFIG_GESTURE_DETECTION
+#define CONFIG_GESTURE_DETECTION_MASK BIT(CONFIG_BODY_DETECTION_SENSOR)
+#define CONFIG_GESTURE_HOST_DETECTION
+
 /* TODO(waihong): Remove the following bringup features */
 #define CONFIG_BRINGUP
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands. */
