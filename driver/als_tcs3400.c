@@ -396,22 +396,28 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 	int32_t xyz_data[3] = { 0, 0, 0 };
 	uint16_t raw_data[CRGB_COUNT]; /* holds raw CRGB assembled from buf[] */
 	int *last_v;
-	int32_t lux, data = 0;
-	int i, ret;
+	int32_t lux = 0;
+	int ret;
 
-	i = 20;	/* 400ms max */
-	while (i--) {
-		/* Make sure data is valid */
-		ret = tcs3400_i2c_read8(s, TCS_I2C_STATUS, &data);
-		if (ret)
-			return ret;
-		if (data & TCS_I2C_STATUS_RGBC_VALID)
-			break;
-		msleep(20);
-	}
-	if (i < 0) {
-		CPRINTS("RGBC invalid (0x%x)", data);
-		return EC_ERROR_UNCHANGED;
+	if (IS_ENABLED(CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT)) {
+		int i = 20;	/* 400ms max */
+		int32_t status;
+
+		while (i--) {
+			/* Make sure data is valid */
+			ret = tcs3400_i2c_read8(s, TCS_I2C_STATUS, &status);
+			if (ret)
+				return ret;
+			if (status & (TCS_I2C_STATUS_RGBC_VALID |
+				      TCS_I2C_STATUS_ALS_IRQ |
+				      TCS_I2C_STATUS_ALS_SATURATED))
+				break;
+			msleep(20);
+		}
+		if (i < 0) {
+			CPRINTS("RGBC invalid (0x%x)", status);
+			return EC_ERROR_UNCHANGED;
+		}
 	}
 
 	/* Read the light registers */
@@ -429,8 +435,9 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 
 	/* if clear channel data changed, send illuminance upstream */
 	last_v = s->raw_xyz;
-	if ((raw_data[CLEAR_CRGB_IDX] != TCS_SATURATION_LEVEL) &&
-	    (last_v[X] != lux)) {
+	if (is_calibration ||
+	    ((raw_data[CLEAR_CRGB_IDX] != TCS_SATURATION_LEVEL) &&
+	     (last_v[X] != lux))) {
 		if (is_spoof(s))
 			last_v[X] = s->spoof_xyz[X];
 		else
@@ -451,11 +458,12 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 	 * send it upstream
 	 */
 	last_v = rgb_s->raw_xyz;
-	if (((last_v[X] != xyz_data[X]) || (last_v[Y] != xyz_data[Y]) ||
-		(last_v[Z] != xyz_data[Z])) &&
-		((raw_data[RED_CRGB_IDX] != TCS_SATURATION_LEVEL) &&
-		(raw_data[BLUE_CRGB_IDX] != TCS_SATURATION_LEVEL) &&
-		(raw_data[GREEN_CRGB_IDX] != TCS_SATURATION_LEVEL))) {
+	if (is_calibration ||
+	    (((last_v[X] != xyz_data[X]) || (last_v[Y] != xyz_data[Y]) ||
+	     (last_v[Z] != xyz_data[Z])) &&
+	     ((raw_data[RED_CRGB_IDX] != TCS_SATURATION_LEVEL) &&
+	      (raw_data[BLUE_CRGB_IDX] != TCS_SATURATION_LEVEL) &&
+	      (raw_data[GREEN_CRGB_IDX] != TCS_SATURATION_LEVEL)))) {
 
 		if (is_spoof(rgb_s)) {
 			memcpy(last_v, rgb_s->spoof_xyz, sizeof(rgb_s->spoof_xyz));
@@ -520,10 +528,10 @@ static int tcs3400_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	if (ret)
 		return ret;
 
-	if ((status & TCS_I2C_STATUS_RGBC_VALID) ||
-			((status & TCS_I2C_STATUS_ALS_IRQ) &&
-			(status & TCS_I2C_STATUS_ALS_SATURATED)) ||
-			IS_ENABLED(CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT)) {
+	if ((status & (TCS_I2C_STATUS_RGBC_VALID |
+		       TCS_I2C_STATUS_ALS_IRQ |
+		       TCS_I2C_STATUS_ALS_SATURATED)) ||
+	    IS_ENABLED(CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT)) {
 		ret = tcs3400_post_events(s, last_interrupt_timestamp);
 		if (ret)
 			return ret;
