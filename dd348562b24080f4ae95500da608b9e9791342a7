@@ -121,6 +121,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "03b798d0_fbe6f125",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2020-12-03T05:11:57Z",
+      "side": 1,
+      "message": "I modified the typo.",
+      "parentUuid": "a2239634_403f34ca",
+      "range": {
+        "startLine": 9,
+        "startChar": 29,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "dd348562b24080f4ae95500da608b9e9791342a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e2e7e006_09eff9ac",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
