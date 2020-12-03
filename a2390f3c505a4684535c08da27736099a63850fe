@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "154b07b0_94d139f4",
+        "filename": "board/sasuke/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T04:50:35Z",
+      "side": 0,
+      "message": "Remove PWM section if these will just be on/off LEDs",
+      "revId": "a2390f3c505a4684535c08da27736099a63850fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

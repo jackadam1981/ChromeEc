@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa15f38_f03779d9",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T04:50:35Z",
+      "side": 1,
+      "message": "Can this be undefined in your board files instead?",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0d82e9_7f88aa57",
+        "filename": "board/sasuke/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T04:50:35Z",
+      "side": 1,
+      "message": "Is this function needed at all with no motion sensors?",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b72ac6_70502cd8",
+        "filename": "board/sasuke/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T04:50:35Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be necessary to create a board-specific variant",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c7cc59_98846b72",
+        "filename": "board/sasuke/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T04:50:35Z",
+      "side": 1,
+      "message": "CONFIG_LED_ONOFF_STATES?",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "557fe8ac_de7e7069",
+        "filename": "board/sasuke/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T04:50:35Z",
+      "side": 1,
+      "message": "What do you need this for?",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9126a234_c33a0e72",
+        "filename": "board/sasuke/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T04:50:35Z",
+      "side": 1,
+      "message": "sasuke",
+      "range": {
+        "startLine": 5,
+        "startChar": 36,
+        "endLine": 5,
+        "endChar": 43
+      },
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1345340_aab9c9dd",
+        "filename": "board/sasuke/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T04:50:35Z",
+      "side": 1,
+      "message": "sasuke",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eedd5fce_2743ec5a",
+        "filename": "board/sasuke/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T04:50:35Z",
+      "side": 1,
+      "message": "Will this apply to sasuke as well?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
