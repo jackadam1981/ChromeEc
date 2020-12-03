@@ -312,7 +312,9 @@ void battery_get_params(struct batt_params *batt)
 		batt->flags |= BATT_FLAG_RESPONSIVE;
 		batt->is_present = BP_YES;
 	} else {
-		batt->is_present = BP_NOT_SURE;
+
+	/* If all of those reads error, the battery is not present */
+		batt->is_present = BP_NO;
 	}
 
 	v = 0;
