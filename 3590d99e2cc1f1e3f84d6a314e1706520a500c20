@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c821b1f_c5748394",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-03T22:04:40Z",
+      "side": 0,
+      "message": "This looks easier to read for me (and shorter too). Why do you want to split? We can have it even if CONFIG_CMD_CHARGER_ADC_AMON_BMON isn\u0027t defined.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 2
+      },
+      "revId": "3590d99e2cc1f1e3f84d6a314e1706520a500c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

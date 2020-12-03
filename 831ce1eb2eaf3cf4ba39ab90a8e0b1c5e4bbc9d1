@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05367cd8_39718d52",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-03T22:04:40Z",
+      "side": 1,
+      "message": "This is nice to do. Why don\u0027t we do that in the API instead? Your current implementation of charger_get_input_current in CL:2569084 passes \u003cinput_current\u003e directly to the drivers.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 44
+      },
+      "revId": "831ce1eb2eaf3cf4ba39ab90a8e0b1c5e4bbc9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0bead00_80be44b2",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-03T22:04:40Z",
+      "side": 1,
+      "message": "rv for consistency?",
+      "range": {
+        "startLine": 255,
+        "startChar": 5,
+        "endLine": 255,
+        "endChar": 8
+      },
+      "revId": "831ce1eb2eaf3cf4ba39ab90a8e0b1c5e4bbc9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
