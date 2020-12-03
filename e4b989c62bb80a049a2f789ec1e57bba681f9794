@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e3daa21_a1ed42a5",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:42:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0567d205_4540f585",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73acc2b7_f51e2990",
@@ -244,6 +262,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6525be9d_1b2cf45d",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:42:35Z",
+      "side": 1,
+      "message": "Yup, looks like it\u0027s still needed here",
+      "parentUuid": "20e39c55_6fdc23c3",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f328f31c_71aaf76f",
         "filename": "board/quiche/gpio.inc",
         "patchSetId": 42
@@ -273,6 +309,24 @@
       "side": 1,
       "message": "There was some rework on the board. There are a few CLs later in the stack that reflect when gingerbread is brought up. I had to move gingerbread support earlier in the stack so I could add usbc/pd configs in baseboard.h and still have make buildall work properly.",
       "parentUuid": "f328f31c_71aaf76f",
+      "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c22e462_ceec203f",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 42
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:42:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6c651e8_b89b8b2b",
       "revId": "e4b989c62bb80a049a2f789ec1e57bba681f9794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
