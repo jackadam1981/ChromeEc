@@ -225,8 +225,8 @@ enum sm5803_charger_modes {
 #define SM5803_REG_CHG_ILIM		0x24
 #define SM5803_CHG_ILIM_RAW		GENMASK(4, 0)
 #define SM5803_CURRENT_STEP		100
-#define SM5803_REG_TO_CURRENT(r)	(r * SM5803_CURRENT_STEP)
-#define SM5803_CURRENT_TO_REG(c)	(c / SM5803_CURRENT_STEP)
+#define SM5803_REG_TO_CURRENT(r)	((r) * SM5803_CURRENT_STEP)
+#define SM5803_CURRENT_TO_REG(c)	((c) / SM5803_CURRENT_STEP)
 
 /*
  * DPM Voltage loop regulation contains the 8 bits with MSB register
