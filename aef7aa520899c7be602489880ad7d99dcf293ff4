@@ -16,6 +16,29 @@
       "message": "Definitely an improvement. Thanks!",
       "revId": "aef7aa520899c7be602489880ad7d99dcf293ff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dcb8d51_493eb37b",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-03T19:49:20Z",
+      "side": 1,
+      "message": "Note that in the current EC code, the task stack sizes vary based on the EC chipset used.  If we want to follow that model, then we\u0027ll eventually need a Kconfig for each chipset that overrides the shared defaults.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "aef7aa520899c7be602489880ad7d99dcf293ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
