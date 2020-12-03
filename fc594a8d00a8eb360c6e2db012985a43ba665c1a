@@ -22,6 +22,30 @@
       },
       "revId": "fc594a8d00a8eb360c6e2db012985a43ba665c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd27082_de34fa2b",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-03T09:53:42Z",
+      "side": 1,
+      "message": "This is pretty much Domenico\u0027s code as is. I don\u0027t think first_time is needed at all. CV_TRIP was supposed to be the \"first time\".",
+      "parentUuid": "146b5dab_bb89625d",
+      "range": {
+        "startLine": 307,
+        "startChar": 33,
+        "endLine": 307,
+        "endChar": 43
+      },
+      "revId": "fc594a8d00a8eb360c6e2db012985a43ba665c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
