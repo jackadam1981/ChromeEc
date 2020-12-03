@@ -89,8 +89,8 @@ const struct fan_conf fan_conf_0 = {
  *    5900 x 1.07 x 0.30 = 1894, round up to 1900
  */
 const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 1900,
-	.rpm_start = 1900,
+	.rpm_min = 3300,
+	.rpm_start = 3300,
 	.rpm_max = 5900,
 };
 
@@ -111,14 +111,14 @@ const struct fan_t fans[FAN_CH_COUNT] = {
  */
 const static struct ec_thermal_config thermal_cpu = {
 	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(85),
 	},
 	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
 	},
-	.temp_fan_off = C_TO_K(35),
-	.temp_fan_max = C_TO_K(50),
+	.temp_fan_off = C_TO_K(25),
+	.temp_fan_max = C_TO_K(75),
 };
 
 /*
@@ -135,13 +135,13 @@ const static struct ec_thermal_config thermal_cpu = {
 const static struct ec_thermal_config thermal_inductor = {
 	.temp_host = {
 		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(85),
 	},
 	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
 	},
-	.temp_fan_off = C_TO_K(40),
-	.temp_fan_max = C_TO_K(55),
+	.temp_fan_off = C_TO_K(25),
+	.temp_fan_max = C_TO_K(75),
 };
 
 
