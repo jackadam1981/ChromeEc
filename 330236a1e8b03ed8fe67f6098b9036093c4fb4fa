@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50741e45_4ec961f5",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aa6c6d7_296b8622",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ec27bcd_55728dba",
@@ -158,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cde6c4b_8477a0e8",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "edcb61c2_921708b8",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f71d0913_692dda59",
@@ -189,6 +225,24 @@
       "side": 1,
       "message": "I\u0027m actually going to pull the debug code out of this CL. I had separated the debug code into a subsequent CL, but looks like I still left one portion in.",
       "parentUuid": "f71d0913_692dda59",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ebf77a_cf07ffa4",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "787957c0_6665c680",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -263,6 +317,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b05419_b2bf58ce",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d370b22_84102496",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b79b2e8f_75b3c47a",
@@ -294,6 +366,24 @@
       "side": 1,
       "message": "This register just sets up which message types will be received. But, the receiver on/off control is done via a bit in the control register.\n\nHoneybuns does not have a captive cable. Is this what you mean by cable reset not being required?",
       "parentUuid": "b79b2e8f_75b3c47a",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d88cc9_d8077a18",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Ah, makes sense.\n\nYes, we wouldn\u0027t expect to ever receive cable resets if we aren\u0027t a cable.",
+      "parentUuid": "af6830e3_9c4d5c91",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -333,6 +423,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc682c57_0503ebea",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "635443fe_aedc2550",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b3c93b0_26e57624",
@@ -368,6 +476,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14384025_39eda28f",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1de2307_0cf8de36",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc23bf63_e9f808db",
@@ -381,6 +507,24 @@
       "writtenOn": "2020-11-17T17:28:41Z",
       "side": 1,
       "message": "Where does failure get reported if we were waiting on a GoodCRC and didn\u0027t get one?",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "503a873d_8b65fcc8",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc23bf63_e9f808db",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -432,6 +576,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4bbf40_6029231b",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b055d78_f99ae0f9",
+      "range": {
+        "startLine": 606,
+        "startChar": 37,
+        "endLine": 606,
+        "endChar": 41
+      },
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f7e8082_2addd0ca",
@@ -463,6 +631,24 @@
       "side": 1,
       "message": "I added (SOP) in the comment to be clear that this is the PD header definition for SOP",
       "parentUuid": "9f7e8082_2addd0ca",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "797e0868_a5acdfe2",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4a8426a_282e0a92",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -537,6 +723,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c2061e3_094b6c60",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cee49c8f_65524078",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05366649_d3225d59",
@@ -568,6 +772,24 @@
       "side": 1,
       "message": "This version of the chip only supports one UCPD port. The G0 does support 2 ports and my intention was to make the driver. I will add another TODO for now. My plan was to include some macros that maps PD port number to UCPC port number. In addition my thought was to replace \u0027port\u0027 in the function prototypes with \u0027usbc_port\u0027 then all ucpd register accesses can remain \u0027port\u0027 as they are now.\n\nThis is not an issue for honeybuns as there is only 1 ucpd port and that\u0027s used for the host port which is port 0 as well. But, for the driver to be complete, it needs the change I mentioned.",
       "parentUuid": "05366649_d3225d59",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe4b9644_5ff3f208",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52cc0b99_dbec5be7",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -607,6 +829,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09c7c561_f10b6858",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aff439a_a4e2d64b",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5516169c_4c1b218f",
@@ -638,6 +878,24 @@
       "side": 1,
       "message": "I had them there at first, didn\u0027t have a very strong reason to move them here other than I didn\u0027t have any other changes to the registers file.",
       "parentUuid": "5516169c_4c1b218f",
+      "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3a5ded_fc82b6df",
+        "filename": "chip/stm32/ucpd-stm32gx.h",
+        "patchSetId": 41
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-03T05:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63d877c9_3fb2110e",
       "revId": "330236a1e8b03ed8fe67f6098b9036093c4fb4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
