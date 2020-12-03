@@ -39,6 +39,30 @@
       },
       "revId": "aef7aa520899c7be602489880ad7d99dcf293ff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "447588e3_f7e72a01",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-03T23:34:40Z",
+      "side": 1,
+      "message": "Yup, each project/board can override this in the prj.conf file.",
+      "parentUuid": "2dcb8d51_493eb37b",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "aef7aa520899c7be602489880ad7d99dcf293ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
