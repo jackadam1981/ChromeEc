@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85eea258_1acf7d42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-03T08:05:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e8e0451f_750ca4a3",
+      "range": {
+        "startLine": 9,
+        "startChar": 58,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "d59db90e154ade8c3ac20b9e02a24a622f11542f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3b94ead_b17530dd",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-01T17:23:15Z",
       "side": 1,
       "message": "Missing newline?",
+      "range": {
+        "startLine": 43,
+        "startChar": 19,
+        "endLine": 43,
+        "endChar": 32
+      },
+      "revId": "d59db90e154ade8c3ac20b9e02a24a622f11542f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b76cd51c_2a9c8cd2",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-03T08:05:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3b94ead_b17530dd",
       "range": {
         "startLine": 43,
         "startChar": 19,
