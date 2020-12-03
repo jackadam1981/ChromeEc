@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d9bb5f_e0953fb5",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2020-12-03T05:56:40Z",
+      "side": 1,
+      "message": "Please note this new behavior of only verifying RGBC_VALID in case of CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT in the commit comment.",
+      "range": {
+        "startLine": 402,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 57
+      },
+      "revId": "08c3b1f54eb040e80842e7b32e62303d3123451d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e0cbba4_43b8cea7",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2020-12-03T05:56:40Z",
+      "side": 1,
+      "message": "Do we ever see TCS_I2C_STATUS_ALS_IRQ with CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT ?",
+      "range": {
+        "startLine": 412,
+        "startChar": 10,
+        "endLine": 412,
+        "endChar": 32
+      },
+      "revId": "08c3b1f54eb040e80842e7b32e62303d3123451d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5920d235_a08d39f9",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2020-12-03T05:56:40Z",
+      "side": 1,
+      "message": "Was the change in logic here intentional?  It used to accept TCS_I2C_STATUS_ALS_IRQ as an event posting condition only when it was accompanied by TCS_I2C_STATUS_ALS_SATURATED.",
+      "range": {
+        "startLine": 531,
+        "startChar": 16,
+        "endLine": 533,
+        "endChar": 37
+      },
+      "revId": "08c3b1f54eb040e80842e7b32e62303d3123451d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
