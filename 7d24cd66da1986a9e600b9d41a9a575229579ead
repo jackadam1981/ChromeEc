@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0064ad_56f4820c",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-03T09:53:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29fac99a_06e86727",
+      "revId": "7d24cd66da1986a9e600b9d41a9a575229579ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c88c18d_a44fd63d",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-02T05:18:41Z",
       "side": 1,
       "message": "else false?  Or am I missing where this would get reset to false later if needed?  Also, why go with a static rather than a local variable?",
+      "revId": "7d24cd66da1986a9e600b9d41a9a575229579ead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b70c2c_49305998",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-03T09:53:10Z",
+      "side": 1,
+      "message": "No you\u0027re correct. It shouldn\u0027t be static; I had forgotten to remove that.",
+      "parentUuid": "0c88c18d_a44fd63d",
       "revId": "7d24cd66da1986a9e600b9d41a9a575229579ead",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
