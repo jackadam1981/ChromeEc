@@ -16,6 +16,41 @@
       "message": "The overall looks good to me. However, the spec mentions that the brightness should be in the range 5-10 lux, does the current setting match the spec? If not, you probably need to use the pwm0,1,2 to control the led brightness.",
       "revId": "74d79eda0d354e54ac780baa5f74b8484fd1384b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3c2e26_854d5dfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-03T16:40:05Z",
+      "side": 1,
+      "message": "Please also update the comments for the LED colors at line 131 in lindar/gpio.inc.  LED_1 is now white and LED_2 is orange/amber, correct?",
+      "revId": "74d79eda0d354e54ac780baa5f74b8484fd1384b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644d84af_8d47dbc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-03T16:40:05Z",
+      "side": 1,
+      "message": "If the brightness isn\u0027t correct, I recommend changing the LEDs to PWM control as a separate CL.",
+      "parentUuid": "45a8b868_60adad8d",
+      "revId": "74d79eda0d354e54ac780baa5f74b8484fd1384b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
