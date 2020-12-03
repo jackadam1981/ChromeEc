@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29091192_5cb1cee3",
+        "filename": "zephyr/shim/src/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-03T23:02:29Z",
+      "side": 1,
+      "message": "I suppose we can\u0027t use hexdump_buf() or similar?",
+      "revId": "82c5d2130f49bb9833ffce3e670ec82b0c3be166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
