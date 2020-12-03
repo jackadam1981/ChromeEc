@@ -773,6 +773,47 @@ DECLARE_HOOK(HOOK_USB_PD_CONNECT,
 		sm5803_disable_runtime_low_power_mode,
 		HOOK_PRIO_FIRST);
 
+static enum ec_error_list sm5803_enable_linear_charge(int chgnum, bool enable)
+{
+	int rv;
+	int regval;
+
+	if (enable) {
+		rv = main_read8(chgnum, SM5803_REG_SWITCHER_CONF, &regval);
+		rv |= SM5803_SW_BCK_BST_CONF_AUTO;
+		rv |= main_write8(chgnum, SM5803_REG_SWITCHER_CONF, regval);
+		rv |= test_write8(chgnum, 0x44, 0x20);
+		rv = main_read8(chgnum, SM5803_REG_SWITCHER_CONF, &regval);
+		rv &= ~SM5803_SW_BCK_BST_CONF_AUTO;
+		rv |= main_write8(chgnum, SM5803_REG_SWITCHER_CONF, regval);
+
+		/* Precharge thresholds have already set up as a part of init */
+
+		/* Enable linear charge mode. */
+		rv |= sm5803_flow1_update(chgnum,
+					  SM5803_FLOW1_LINEAR_CHARGE_EN,
+					 MASK_SET);
+		rv |= chg_read8(chgnum, SM5803_REG_FLOW3, &regval);
+		regval |= BIT(6) | BIT(5) | BIT(4);
+		rv |= chg_write8(chgnum, SM5803_REG_FLOW3, regval);
+	} else {
+		rv = sm5803_flow1_update(chgnum,
+					 SM5803_FLOW1_LINEAR_CHARGE_EN,
+					 MASK_CLR);
+		rv |= sm5803_flow2_update(chgnum,
+					  SM5803_FLOW2_AUTO_ENABLED,
+					  MASK_CLR);
+		rv |= chg_read8(chgnum, SM5803_REG_FLOW3, &regval);
+		regval &= ~(BIT(6) | BIT(5) | BIT(4) |
+			    SM5803_FLOW3_SWITCH_BCK_BST);
+		rv |= main_read8(chgnum, SM5803_REG_SWITCHER_CONF, &regval);
+		regval |= SM5803_SW_BCK_BST_CONF_AUTO;
+		rv |= main_write8(chgnum, SM5803_REG_SWITCHER_CONF, regval);
+	}
+
+	return rv;
+}
+
 static void sm5803_enable_runtime_low_power_mode(void)
 {
 	enum ec_error_list rv;
@@ -1626,6 +1667,7 @@ const struct charger_drv sm5803_drv = {
 	.is_sourcing_otg_power = &sm5803_is_sourcing_otg_power,
 	.set_vsys_compensation = &sm5803_set_vsys_compensation,
 	.is_icl_reached = &sm5803_is_input_current_limit_reached,
+	.enable_linear_charge = &sm5803_enable_linear_charge,
 #ifdef CONFIG_CHARGE_RAMP_HW
 	.set_hw_ramp = &sm5803_set_hw_ramp,
 	.ramp_is_stable = &sm5803_ramp_is_stable,
