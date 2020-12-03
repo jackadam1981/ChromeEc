@@ -111,7 +111,7 @@
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 
-#define CONFIG_ACCEL_BMA255		/* Lid accel */
+#define CONFIG_ACCEL_KX022			/* Lid accel */
 #define CONFIG_ACCELGYRO_BMI160		/* Base accel */
 
 /* Lid operates in forced mode, base in FIFO */

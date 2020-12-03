@@ -13,8 +13,8 @@
 #include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
-#include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
+#include "driver/accel_kionix.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "temp_sensor.h"
 #include "driver/bc12/pi3usb9201.h"
@@ -351,8 +351,8 @@ static struct mutex g_base_mutex;
 
 /* Matrices to rotate accelerometers into the standard reference. */
 static const mat33_fp_t lid_standard_ref = {
-	{ FLOAT_TO_FP(1), 0, 0},
-	{ 0, FLOAT_TO_FP(-1), 0},
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
@@ -362,28 +362,30 @@ static const mat33_fp_t base_standard_ref = {
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
-static struct accelgyro_saved_data_t g_bma253_data;
+//static struct accelgyro_saved_data_t g_bma253_data;
+static struct kionix_accel_data g_kx022_data;
 static struct bmi_drv_data_t g_bmi160_data;
 
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
 		.name = "Lid Accel",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_BMA255,
+		.chip = MOTIONSENSE_CHIP_KX022,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_LID,
-		.drv = &bma2x2_accel_drv,
+		.drv = &kionix_accel_drv,
 		.mutex = &g_lid_mutex,
-		.drv_data = &g_bma253_data,
+		.drv_data = &g_kx022_data,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = BMA2x2_I2C_ADDR1_FLAGS,
+		.i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
 		.rot_standard_ref = &lid_standard_ref,
 		.default_range = 2,
-		.min_frequency = BMA255_ACCEL_MIN_FREQ,
-		.max_frequency = BMA255_ACCEL_MAX_FREQ,
+		.min_frequency = KX022_ACCEL_MIN_FREQ,
+		.max_frequency = KX022_ACCEL_MAX_FREQ,
 		.config = {
 			[SENSOR_CONFIG_EC_S0] = {
 				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100,
 			},
 			[SENSOR_CONFIG_EC_S3] = {
 				.odr = 10000 | ROUND_UP_FLAG,
