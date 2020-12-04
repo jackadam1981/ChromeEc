@@ -33,6 +33,46 @@
       "message": "Hi Ting Shen,\ncould you help to review the CL, thanks.",
       "revId": "48623f2713c506a696c41ba4dd781a963314c18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ab4504_e993c2f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-12-04T04:15:14Z",
+      "side": 1,
+      "message": "can you explain more about the issue you encountered?",
+      "revId": "48623f2713c506a696c41ba4dd781a963314c18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f55813d_a288ec5f",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-12-04T04:15:14Z",
+      "side": 1,
+      "message": "indent this line",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 1
+      },
+      "revId": "48623f2713c506a696c41ba4dd781a963314c18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
