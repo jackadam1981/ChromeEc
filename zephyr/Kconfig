@@ -12,6 +12,8 @@ menuconfig PLATFORM_EC
 
 if PLATFORM_EC
 
+rsource "Kconfig.powerseq"
+
 # Below is a hack to use CONFIG_ZEPHYR in platform/ec code before
 # config.h has been included.  There is some tricky ordering in some
 # header files that we cannot use config.h (e.g., common.h and
@@ -64,6 +66,15 @@ config PLATFORM_EC_KEYBOARD_PROTOCOL_8042
 
 endchoice # PLATFORM_EC_KEYBOARD
 
+config PLATFORM_EC_KEYBOARD_COL2_INVERTED
+	bool "A mechanism for passing KSO2 to H1 which inverts the signal."
+	help
+	  This option enables a mechanism for passing the column 2
+	  to H1 which inverts the signal. The signal passing through H1
+	  adds more delay. Need a larger delay value. Otherwise, pressing
+	  Refresh key will also trigger T key, which is in the next scanning
+	  column line. See http://b/156007029.
+
 endif # PLATFORM_EC_KEYBOARD
 
 config PLATFORM_EC_CONSOLE_CMD_KEYBOARD_8042
@@ -107,6 +118,29 @@ config PLATFORM_EC_TIMER_CMD_WAITMS
 
 endif # PLATFORM_EC_TIMER
 
+menuconfig PLATFORM_EC_ESPI
+	bool "Enable eSPI compatibility in platform/ec"
+	depends on ESPI && AP
+	default y
+	help
+	  Enable eSPI shim layer.
+
+if PLATFORM_EC_ESPI
+
+config PLATFORM_EC_ESPI_VW_SLP_S3
+	bool "SLP_S3 is an eSPI virtual wire instead of a GPIO"
+	help
+	  For power sequencing, use an eSPI virtual wire instead of
+	  defining GPIO_PCH_SLP_S3 in gpio_map.h.
+
+config PLATFORM_EC_ESPI_VW_SLP_S4
+	bool "SLP_S4 is an eSPI virtual wire instead of a GPIO"
+	help
+	  For power sequencing, use an eSPI virtual wire instead of
+	  defining GPIO_PCH_SLP_S4 in gpio_map.h.
+
+endif # PLATFORM_EC_ESPI
+
 config PLATFORM_EC_HOOKS
 	bool "Enable hooks and deferred compatibility shim"
 	default y
@@ -137,6 +171,13 @@ config PLATFORM_EC_I2C
 	  in include/i2c.h and implemented in common/i2c_master.c. Doing so
 	  should make shimming other platform/ec modules which rely on i2c
 	  communication "just work" without requiring any further code changes.
+
+config PLATFORM_EC_PORT80
+	bool "Enable the port80 module"
+	default y if AP_X86 && PLATFORM_EC_POWERSEQ
+	help
+	  Enable the port80 module, which will buffer calls to port_80_write and
+	  occasionally print when there's new writes.
 
 config PLATFORM_EC_POWER_BUTTON
 	bool "Enable the power button module"

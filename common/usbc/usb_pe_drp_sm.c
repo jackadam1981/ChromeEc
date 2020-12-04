@@ -182,11 +182,23 @@
 #define N_DISCOVER_IDENTITY_COUNT 6
 
 /*
- * tDiscoverIdentity is only defined while an explicit contract is in place.
- * To support captive cable devices that power the SOP' responder from VBUS
- * instead of VCONN stretch out the SOP' Discover Identity messages when
- * no contract is present. 200 ms provides about 1 second for the cable
- * to power up (200 * 5 retries).
+ * It is permitted to send SOP' Discover Identity messages before a PD contract
+ * is in place. However, this is only beneficial if the cable powers up quickly
+ * solely from VCONN. Limit the number of retries without a contract to
+ * ensure we attempt some cable discovery after a contract is in place.
+ */
+#define N_DISCOVER_IDENTITY_PRECONTRACT_LIMIT	2
+
+/*
+ * Once this limit of SOP' Discover Identity messages has been set, downgrade
+ * to PD 2.0 in case the cable is non-compliant about GoodCRC-ing higher
+ * revisions.  This limit should be higher than the precontract limit.
+ */
+#define N_DISCOVER_IDENTITY_PD3_0_LIMIT		4
+
+/*
+ * tDiscoverIdentity is only defined while an explicit contract is in place, so
+ * extend the interval between retries pre-contract.
  */
 #define PE_T_DISCOVER_IDENTITY_NO_CONTRACT	(200*MSEC)
 
@@ -915,6 +927,7 @@ void pe_message_received(int port)
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
 	PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
 void pe_hard_reset_sent(int port)
@@ -954,7 +967,7 @@ void pe_got_hard_reset(int port)
 void pd_got_frs_signal(int port)
 {
 	PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
-	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE, 0);
+	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
 /*
@@ -1170,6 +1183,7 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 				get_state_pe(port) == PE_VCS_SEND_PS_RDY_SWAP)
 			) {
 		PE_SET_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		task_wake(PD_PORT_TO_TASK_ID(port));
 		return;
 	}
 
@@ -1208,6 +1222,58 @@ void pe_got_soft_reset(int port)
 	set_state_pe(port, PE_SOFT_RESET);
 }
 
+static bool pd_can_source_from_device(const int pdo_cnt, const uint32_t *pdos)
+{
+	/* Don't attempt to source from a device we have no SrcCaps from */
+	if (pdo_cnt == 0)
+		return false;
+
+	/*
+	 * Treat device as a dedicated charger (meaning we should charge
+	 * from it) if:
+	 *   - it does not support power swap, or
+	 *   - it is unconstrained power, or
+	 *   - it presents at least 27 W of available power
+	 */
+
+	/* Unconstrained Power or NOT Dual Role Power we can charge from */
+	if (pdos[0] & PDO_FIXED_UNCONSTRAINED ||
+	    (pdos[0] & PDO_FIXED_DUAL_ROLE) == 0)
+		return true;
+
+	/* [virtual] allow_list */
+	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
+		uint32_t max_ma, max_mv, max_pdo, max_mw;
+
+		/*
+		 * Get max power that the partner offers (not necessarily what
+		 * this board will request)
+		 */
+		pd_find_pdo_index(pdo_cnt, pdos,
+				  PD_REV3_MAX_VOLTAGE,
+				  &max_pdo);
+		pd_extract_pdo_power(max_pdo, &max_ma, &max_mv);
+		max_mw = max_ma * max_mv / 1000;
+
+		if (max_mw >= PD_DRP_CHARGE_POWER_MIN)
+			return true;
+	}
+	return false;
+}
+
+void pd_resume_check_pr_swap_needed(int port)
+{
+	/*
+	 * Explicit contract, current power role of SNK and the device
+	 * indicates it should not power us then trigger a PR_Swap
+	 */
+	if (pe_is_explicit_contract(port) &&
+	    pd_get_power_role(port) == PD_ROLE_SINK &&
+	    !pd_can_source_from_device(pd_get_src_cap_cnt(port),
+				       pd_get_src_caps(port)))
+		pd_dpm_request(port, DPM_REQUEST_PR_SWAP);
+}
+
 void pd_dpm_request(int port, enum pd_dpm_request req)
 {
 	PE_SET_DPM_REQUEST(port, req);
@@ -1235,6 +1301,7 @@ void pe_message_sent(int port)
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
 	PE_SET_FLAG(port, PE_FLAGS_TX_COMPLETE);
+	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
 void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
@@ -1482,28 +1549,8 @@ static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
 	else
 		tc_partner_dr_data(port, 0);
 
-	/*
-	 * Treat device as a dedicated charger (meaning we should charge
-	 * from it) if:
-	 *   - it does not support power swap, or
-	 *   - it is unconstrained power, or
-	 *   - it presents at least 27 W of available power
-	 */
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
-		uint32_t max_ma, max_mv, max_pdo, max_mw;
-
-		/*
-		 * Get max power that the partner offers (not necessarily what
-		 * this board will request)
-		 */
-		pd_find_pdo_index(pdo_cnt, pdos, PD_REV3_MAX_VOLTAGE,
-				  &max_pdo);
-		pd_extract_pdo_power(max_pdo, &max_ma, &max_mv);
-		max_mw = max_ma*max_mv/1000;
-
-		if (!(pdos[0] & PDO_FIXED_DUAL_ROLE) ||
-		    (pdos[0] & PDO_FIXED_UNCONSTRAINED) ||
-		    max_mw >= PD_DRP_CHARGE_POWER_MIN) {
+		if (pd_can_source_from_device(pdo_cnt, pdos)) {
 			PE_CLR_FLAG(port, PE_FLAGS_PORT_PARTNER_IS_DUALROLE);
 			charge_manager_update_dualrole(port, CAP_DEDICATED);
 		} else {
@@ -1911,7 +1958,9 @@ static void pe_src_discovery_run(int port)
 	 */
 	if (pd_get_identity_discovery(port, TCPC_TX_SOP_PRIME) == PD_DISC_NEEDED
 			&& get_time().val > pe[port].discover_identity_timer
-			&& pe_can_send_sop_prime(port)) {
+			&& pe_can_send_sop_prime(port)
+			&& (pe[port].discover_identity_counter <
+				N_DISCOVER_IDENTITY_PRECONTRACT_LIMIT)) {
 		pe[port].tx_type = TCPC_TX_SOP_PRIME;
 		set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 		return;
@@ -2174,7 +2223,6 @@ static void pe_src_transition_supply_run(int port)
 
 		if (PE_CHK_FLAG(port, PE_FLAGS_PS_READY)) {
 			PE_CLR_FLAG(port, PE_FLAGS_PS_READY);
-			/* NOTE: Second pass through this code block */
 
 			/*
 			 * Set first message flag to trigger a wait and add
@@ -2184,6 +2232,7 @@ static void pe_src_transition_supply_run(int port)
 			if (!pe_is_explicit_contract(port))
 				PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
 
+			/* NOTE: Second pass through this code block */
 			/* Explicit Contract is now in place */
 			pe_set_explicit_contract(port);
 
@@ -4085,10 +4134,6 @@ static void pe_prs_src_snk_wait_source_on_entry(int port)
 
 static void pe_prs_src_snk_wait_source_on_run(int port)
 {
-	int type;
-	int cnt;
-	int ext;
-
 	if (pe[port].ps_source_timer == TIMER_DISABLED &&
 			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
@@ -4103,20 +4148,28 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	 *   1) A PS_RDY Message is received.
 	 */
 	if (pe[port].ps_source_timer != TIMER_DISABLED &&
-			PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		int type = PD_HEADER_TYPE(rx_emsg[port].header);
+		int cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		int ext = PD_HEADER_EXT(rx_emsg[port].header);
 
-		type = PD_HEADER_TYPE(rx_emsg[port].header);
-		cnt = PD_HEADER_CNT(rx_emsg[port].header);
-		ext = PD_HEADER_EXT(rx_emsg[port].header);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		if ((ext == 0) && (cnt == 0) && (type == PD_CTRL_PS_RDY)) {
 			pe[port].ps_source_timer = TIMER_DISABLED;
 
 			PE_SET_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE);
 			set_state_pe(port, PE_SNK_STARTUP);
-			return;
+		} else {
+			int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+			/*
+			 * USB PD 3.0 6.8.1:
+			 * Receiving an unexpected message shall be responded
+			 * to with a soft reset message.
+			 */
+			pe_send_soft_reset(port, sop);
 		}
+		return;
 	}
 
 	/*
@@ -5029,10 +5082,10 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 		pd_set_identity_discovery(port, pe[port].tx_type,
 				PD_DISC_FAIL);
 	else if (pe[port].discover_identity_counter ==
-					(N_DISCOVER_IDENTITY_COUNT / 2))
+			N_DISCOVER_IDENTITY_PD3_0_LIMIT)
 		/*
-		 * Downgrade to PD 2.0 if the partner hasn't replied halfway
-		 * through discovery as well, in case the cable is
+		 * Downgrade to PD 2.0 if the partner hasn't replied before
+		 * all retries are exhausted in case the cable is
 		 * non-compliant about GoodCRC-ing higher revisions
 		 */
 		prl_set_rev(port, TCPC_TX_SOP_PRIME, PD_REV20);
@@ -6277,18 +6330,9 @@ static void pe_dr_src_get_source_cap_run(int port)
 				uint32_t *payload =
 					(uint32_t *)rx_emsg[port].buf;
 
-				/*
-				 * Unconstrained power by the partner should
-				 * be enough to request a PR_Swap to use their
-				 * power instead of our battery
-				 */
 				pd_set_src_caps(port, cnt, payload);
-				if (pe[port].src_caps[0] &
-						PDO_FIXED_UNCONSTRAINED) {
-					pe[port].src_snk_pr_swap_counter = 0;
-					PE_SET_DPM_REQUEST(port,
-							DPM_REQUEST_PR_SWAP);
-				}
+				if (pd_can_source_from_device(cnt, payload))
+					pd_request_power_swap(port);
 
 				set_state_pe(port, PE_SRC_READY);
 			} else if (type == PD_CTRL_REJECT ||
