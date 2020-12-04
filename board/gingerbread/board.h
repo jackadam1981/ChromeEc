@@ -16,7 +16,7 @@
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
-#undef CONFIG_WP_ACTIVE_HIGH
+#define CONFIG_WP_ACTIVE_HIGH
 
 /* Console */
 #define CONFIG_UART_CONSOLE 3
