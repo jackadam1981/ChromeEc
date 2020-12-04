@@ -71,6 +71,7 @@
 #define USBPD_REG_MASK_SEND_BIST_MODE_2           BIT(5)
 #define IT83XX_USBPD_MTSR1(p)     REG8(IT83XX_USBPD_BASE(p)+0x1A)
 #define IT83XX_USBPD_VDMMCSR(p)   REG8(IT83XX_USBPD_BASE(p)+0x1B)
+#define USBPD_REG_MASK_HARD_RESET_DECODE          BIT(0)
 #define IT83XX_USBPD_MRSR(p)      REG8(IT83XX_USBPD_BASE(p)+0x1C)
 #define USBPD_REG_GET_SOP_TYPE_RX(mrsr)           (((mrsr) >> 4) & 0x7)
 #define USBPD_REG_MASK_RX_MSG_VALID               BIT(0)
