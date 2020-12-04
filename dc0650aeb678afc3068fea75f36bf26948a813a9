@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be5e312_2c32298f",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-04T17:33:15Z",
+      "side": 1,
+      "message": "nit: The datasheet says AdapterCurrentLimit1. So, you probably also want to rename it to \n ISL923X_REG_ADAPTER_CURRENT_LIMIT1 (and _LIMIT2).",
+      "range": {
+        "startLine": 163,
+        "startChar": 26,
+        "endLine": 163,
+        "endChar": 54
+      },
+      "revId": "dc0650aeb678afc3068fea75f36bf26948a813a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5973937_fe6fd2df",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-04T17:33:15Z",
+      "side": 1,
+      "message": "nit: two tabs",
+      "range": {
+        "startLine": 690,
+        "startChar": 2,
+        "endLine": 690,
+        "endChar": 7
+      },
+      "revId": "dc0650aeb678afc3068fea75f36bf26948a813a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
