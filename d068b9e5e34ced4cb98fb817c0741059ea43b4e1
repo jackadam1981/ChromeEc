@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444cdd80_7f6088da",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-04T05:19:50Z",
+      "side": 1,
+      "message": "Needs initialized to false?  Or it needs an \"else\" to initialize to false later on for the path of current \u003c95%.  Either way.",
+      "revId": "d068b9e5e34ced4cb98fb817c0741059ea43b4e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
