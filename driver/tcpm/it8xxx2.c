@@ -607,7 +607,11 @@ static int it83xx_tcpm_transmit(int port,
 			const uint32_t *data)
 {
 	int status = TCPC_TX_COMPLETE_FAILED;
+	/* BMC PHY was enabled */
+	int bmc_en = IT83XX_USBPD_PDGCR(port) & USBPD_REG_MASK_BMC_PHY;
 
+	/* Ensure BMC is enabled to transmit message. */
+	USBPD_ENABLE_BMC_PHY(port);
 	switch (type) {
 	case TCPC_TX_SOP:
 	case TCPC_TX_SOP_PRIME:
@@ -633,6 +637,8 @@ static int it83xx_tcpm_transmit(int port,
 		status = TCPC_TX_COMPLETE_FAILED;
 		break;
 	}
+	/* TX done, disable BMC if RX wasn't enabled. */
+	IT83XX_USBPD_PDGCR(port) &= bmc_en ? 0xff : ~USBPD_REG_MASK_BMC_PHY;
 	pd_transmit_complete(port, status);
 
 	return EC_SUCCESS;
