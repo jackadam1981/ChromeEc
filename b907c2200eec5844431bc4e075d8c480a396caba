@@ -22,6 +22,30 @@
       },
       "revId": "b907c2200eec5844431bc4e075d8c480a396caba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6fa6c0_2d174c6b",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-04T19:43:10Z",
+      "side": 1,
+      "message": "Should I move it in this CL? Where too?",
+      "parentUuid": "70f9451f_820441e0",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "b907c2200eec5844431bc4e075d8c480a396caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
