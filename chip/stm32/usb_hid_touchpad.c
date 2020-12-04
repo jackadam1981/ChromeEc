@@ -392,6 +392,14 @@ static void hid_touchpad_event(enum usb_ep_event evt)
 USB_DECLARE_EP(USB_EP_HID_TOUCHPAD, hid_touchpad_tx, hid_touchpad_tx,
 	       hid_touchpad_event);
 
+/* send an empty package to the host */
+static void send_empty_package(void)
+{
+	STM32_TOGGLE_EP(USB_EP_HID_KEYBOARD, EP_TX_MASK,
+				EP_TX_VALID, 0);
+}
+DECLARE_DEFERRED(send_empty_package);
+
 static int get_report(uint8_t report_id, uint8_t report_type,
 		      const uint8_t **buffer_ptr,
 		      int *buffer_size)
@@ -404,6 +412,8 @@ static int get_report(uint8_t report_id, uint8_t report_type,
 	case REPORT_ID_DEVICE_CERT:
 		*buffer_ptr = device_cert_response;
 		*buffer_size = MIN(sizeof(device_cert_response), *buffer_size);
+		/* call send_empty_package() after 100us. */
+		hook_call_deferred(&send_empty_package_data, 100);
 		return 0;
 	}
 	return -1;
