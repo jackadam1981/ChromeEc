@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83c7da9_57febf98",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-12-04T00:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa15f38_f03779d9",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df0d82e9_7f88aa57",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-03T04:50:35Z",
       "side": 1,
       "message": "Is this function needed at all with no motion sensors?",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a51f91_2b18a938",
+        "filename": "board/sasuke/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-12-04T00:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0d82e9_7f88aa57",
       "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc8f2114_5699d7a3",
+        "filename": "board/sasuke/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-12-04T00:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5b72ac6_70502cd8",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9c7cc59_98846b72",
@@ -65,6 +119,24 @@
       "writtenOn": "2020-12-03T04:50:35Z",
       "side": 1,
       "message": "CONFIG_LED_ONOFF_STATES?",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed30ed5a_ecd1069a",
+        "filename": "board/sasuke/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-12-04T00:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c7cc59_98846b72",
       "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a79367_f2b66f2b",
+        "filename": "board/sasuke/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-12-04T00:57:56Z",
+      "side": 1,
+      "message": "fp_sqrtf() is used in common/ocpc.c.\nIf we do not define this, following error is shown.\n\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/sasuke/RW/common/ocpc.o: in function `calc_resistance_stats\u0027:\n/home/ybha-partner/trunk/src/platform/ec/common/ocpc.c:94: undefined reference to `fp_sqrtf\u0027",
+      "parentUuid": "557fe8ac_de7e7069",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9126a234_c33a0e72",
@@ -99,6 +189,30 @@
       "writtenOn": "2020-12-03T04:50:35Z",
       "side": 1,
       "message": "sasuke",
+      "range": {
+        "startLine": 5,
+        "startChar": 36,
+        "endLine": 5,
+        "endChar": 43
+      },
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb23d23_905775be",
+        "filename": "board/sasuke/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-12-04T00:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9126a234_c33a0e72",
       "range": {
         "startLine": 5,
         "startChar": 36,
@@ -132,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9969e43c_2cd9076e",
+        "filename": "board/sasuke/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-12-04T00:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1345340_aab9c9dd",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eedd5fce_2743ec5a",
@@ -145,6 +283,30 @@
       "writtenOn": "2020-12-03T04:50:35Z",
       "side": 1,
       "message": "Will this apply to sasuke as well?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f919ba_f40fc947",
+        "filename": "board/sasuke/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-12-04T00:57:56Z",
+      "side": 1,
+      "message": "Yes. sasuke use 3-in-1 LED",
+      "parentUuid": "eedd5fce_2743ec5a",
       "range": {
         "startLine": 80,
         "startChar": 0,
