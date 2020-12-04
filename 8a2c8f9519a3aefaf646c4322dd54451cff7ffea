@@ -3,6 +3,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5a9949ea_76a8d5c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-04T21:45:58Z",
+      "side": 1,
+      "message": "\u003e \"conencted\" is a possible misspelling of \"connected\".\n\nPlease fix.",
+      "parentUuid": "d6b8b75a_da270a1e",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "8a2c8f9519a3aefaf646c4322dd54451cff7ffea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "69062b54_927887f2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
