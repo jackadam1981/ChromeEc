@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f9451f_820441e0",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-04T19:41:41Z",
+      "side": 1,
+      "message": "oops this should never had landed in config.h",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "b907c2200eec5844431bc4e075d8c480a396caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
