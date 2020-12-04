@@ -16,6 +16,24 @@
       "message": "I suppose we can\u0027t use hexdump_buf() or similar?",
       "revId": "82c5d2130f49bb9833ffce3e670ec82b0c3be166",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b265a95b_fa585a6c",
+        "filename": "zephyr/shim/src/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-04T17:21:11Z",
+      "side": 1,
+      "message": "It does work but it much uglier. Also we haven\u0027t enabled CONFIG_LOG\u003dy yet as it take ~10KB of flash. I did add a comment to the code though.\n\n\nHere is an example existing dump:\n 43 42 49 e3 00 00 2c 00 00 01 01 02 04 02 00 00 |CBI...,.........|\n 00 03 10 4b 34 55 36 45 33 53 34 41 41 2d 4d 47 |...K4U6E3S4AA-MG|\n 43 4c 00 07 01 02 06 04 01 00 00 00 ff ff ff ff |CL..............|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff |................|\n\nvs hexdump_buf:\n\n[00:00:03.348,000] \u003cinf\u003e util: CBI                                 \n43 42 49 e3 00 00 2c 00  00 01 01 02 04 02 00 00 |CBI...,. ........\n[00:00:03.349,000] \u003cinf\u003e util: CBI                                 \n00 03 10 4b 34 55 36 45  33 53 34 41 41 2d 4d 47 |...K4U6E 3S4AA-MG\n[00:00:03.349,000] \u003cinf\u003e util: CBI                                 \n43 4c 00 07 01 02 06 04  01 00 00 00 ff ff ff ff |CL...... ........\n[00:00:03.350,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.351,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.351,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.352,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.353,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.353,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.354,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.355,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.356,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.356,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.357,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.358,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........\n[00:00:03.358,000] \u003cinf\u003e util: CBI                                 \nff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff |........ ........",
+      "parentUuid": "29091192_5cb1cee3",
+      "revId": "82c5d2130f49bb9833ffce3e670ec82b0c3be166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
