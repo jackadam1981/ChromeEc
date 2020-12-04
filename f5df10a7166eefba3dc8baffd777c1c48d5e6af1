@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4122aaf_5b1a6a06",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2020-12-04T04:30:26Z",
+      "side": 1,
+      "message": "Please change the name of this variable so it does not get confused with the status parameter that gets passed to tcs3400_post_events().  I beleive you will need to update the routine-scoped status varibale with the results of the status obtained from this loop on exit (see comment on line 484 below).",
+      "range": {
+        "startLine": 402,
+        "startChar": 10,
+        "endLine": 402,
+        "endChar": 16
+      },
+      "revId": "f5df10a7166eefba3dc8baffd777c1c48d5e6af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b58ffbd_5fbac058",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2020-12-04T04:30:26Z",
+      "side": 1,
+      "message": "If status is not yet set upon entering tcs3400_post_event (in case of CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT), the loop at line 404 would cycle until it\u0027s valid (or exit and never reach this spot).  However, status would change back once it leaves the scope of the block of code starting on line 400 such that it would end up passing an older status to tcs3400_adjust_sensor_for_saturation().",
+      "range": {
+        "startLine": 484,
+        "startChar": 20,
+        "endLine": 484,
+        "endChar": 26
+      },
+      "revId": "f5df10a7166eefba3dc8baffd777c1c48d5e6af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
