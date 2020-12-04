@@ -101,7 +101,7 @@ class Interpreter(object):
     interpreter_prefix = ('%s - ' % name) if name else ''
     logger = logging.getLogger('%sEC3PO.Interpreter' % interpreter_prefix)
     self.logger = LoggerAdapter(logger, {'pty': ec_uart_pty})
-    self.ec_uart_pty = open(ec_uart_pty, 'ab+')
+    self.ec_uart_pty = open(ec_uart_pty, 'wb+', buffering=0)
     self.ec_uart_pty_name = ec_uart_pty
     self.cmd_pipe = cmd_pipe
     self.dbg_pipe = dbg_pipe
@@ -223,7 +223,7 @@ class Interpreter(object):
       if not self.connected:
         self.logger.debug('UART reconnect request.')
         # Reopen the PTY.
-        fileobj = open(self.ec_uart_pty_name, 'ab+')
+        fileobj = open(self.ec_uart_pty_name, 'wb+', buffering=0)
         self.logger.debug('fileobj: %r', fileobj)
         self.ec_uart_pty = fileobj
         # Add the descriptor to the inputs.
