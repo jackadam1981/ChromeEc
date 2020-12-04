@@ -22,6 +22,30 @@
       },
       "revId": "3590d99e2cc1f1e3f84d6a314e1706520a500c20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62fe3fc4_4bc26ffe",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-04T07:46:14Z",
+      "side": 0,
+      "message": "The register (ISL923X_REG_ADAPTER_CURRENT) reports the current limit, rather than input current, so I have to re-write this part.\n\nThe new function doesn\u0027t have much similar code, so I seprate them into two functions.\n\nAlso, a board should have a ADC enum `ADC_AMON_BMON` to use get_amon_bmon function or get a compilation error for not finding the symbol.",
+      "parentUuid": "9c821b1f_c5748394",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 2
+      },
+      "revId": "3590d99e2cc1f1e3f84d6a314e1706520a500c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

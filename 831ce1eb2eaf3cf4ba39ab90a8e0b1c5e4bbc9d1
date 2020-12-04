@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81d76bc7_e8febe39",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-04T07:46:14Z",
+      "side": 1,
+      "message": "Not sure what do you mean here, but I can have more explaination here:\nCL:2569084 implements charger_get_input_current_limit (has _limit suffix), and we need to interpret the read register value by the AC_REG_TO_CURRENT macro.\n\nDid I miss anything?",
+      "parentUuid": "05367cd8_39718d52",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 44
+      },
+      "revId": "831ce1eb2eaf3cf4ba39ab90a8e0b1c5e4bbc9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0bead00_80be44b2",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-03T22:04:40Z",
       "side": 1,
       "message": "rv for consistency?",
+      "range": {
+        "startLine": 255,
+        "startChar": 5,
+        "endLine": 255,
+        "endChar": 8
+      },
+      "revId": "831ce1eb2eaf3cf4ba39ab90a8e0b1c5e4bbc9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e81e61_1d0f18be",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-04T07:46:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0bead00_80be44b2",
       "range": {
         "startLine": 255,
         "startChar": 5,
