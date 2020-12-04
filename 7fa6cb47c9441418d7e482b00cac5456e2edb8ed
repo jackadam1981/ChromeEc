@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2afc626_0c3baebb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2747,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-04T17:00:23Z",
+      "side": 0,
+      "message": "nit: consider leaving this here for symmetry with the source path.  I do see there\u0027s an addition to SNK ready which will cover this case, but I\u0027m slightly concerned about looping with non-compliant DRP partners which violate the requirement to support sink caps when sourcing.  I can\u0027t say that I\u0027ve specifically seen any of these, but I wouldn\u0027t be surprised if there were at least a few given the size and variety of the ecosystem.",
+      "revId": "7fa6cb47c9441418d7e482b00cac5456e2edb8ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce3d5b9_de182918",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-04T17:00:23Z",
+      "side": 1,
+      "message": "Also return without FRS config, to save space on non-FRS boards.",
+      "revId": "1f7b31ecdb219ce37416ef667182e0799fd05e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b007a8_d3a50695",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-04T17:00:23Z",
+      "side": 1,
+      "message": "nit: could add a note that this would be non-compliant.  It\u0027s a requirement for Capabilities messages than \"the vSafe5V Fixed Supply Object Shall always be the first object\"",
+      "revId": "1f7b31ecdb219ce37416ef667182e0799fd05e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0628d29_c53cfc9e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-04T17:00:23Z",
+      "side": 1,
+      "message": "Check for CONFIG_USB_PD_FRS as well since we don\u0027t need this logic on non-FRS boards",
+      "revId": "1f7b31ecdb219ce37416ef667182e0799fd05e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
