@@ -39,6 +39,30 @@
       },
       "revId": "e87c5c58fa4ceaec2dd63a67faed2f644b8b6e79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63de9421_637bae6a",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2020-12-04T07:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0857f29_f516d101",
+      "range": {
+        "startLine": 269,
+        "startChar": 9,
+        "endLine": 269,
+        "endChar": 20
+      },
+      "revId": "e87c5c58fa4ceaec2dd63a67faed2f644b8b6e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
