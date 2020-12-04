@@ -46,6 +46,30 @@
       },
       "revId": "a343f1a468800561444eaa0b6fbeef417ba87418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f44dac8_0590232d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-12-04T18:04:01Z",
+      "side": 1,
+      "message": "We can treat it similar to VBUS if you want, I followed the sn5s330\u0027s policy here. My opinion is it isn\u0027t needed though. If the device/cable is drawing over 3W on VCONN (max. allowed is 1.5W) for more than 100ms, then we should just give up. I think in this situation, SOP\u0027 timing out isn\u0027t a bad outcome; wouldn\u0027t that just result in it appearing that we have a passive cable?\n\nThe only situation we would see a VCONN OCP is a short circuit or a grossly non-compliant USB device. This isn\u0027t necessarily the case with VBUS, since the VBUS current limit is only 1.1X the nominal current, and the nature of VBUS-powered devices could be spiky. The VCONN limit is 2X, with the 100ms deglitch this is extremely permissive already.\n\nI think a fast VCS is probably out of scope for this change, the corner case that addresses is pretty specific.\n\nThe spec does touch on this by the way (robust source operation).",
+      "parentUuid": "664d4fe9_155a1d89",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 21
+      },
+      "revId": "a343f1a468800561444eaa0b6fbeef417ba87418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
