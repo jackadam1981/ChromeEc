@@ -40,6 +40,11 @@
 #define PD_IT83XX_VCONN_TURN_OFF_DELAY_US 500
 #endif
 
+STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
+	bool sop_prime_en[IT83XX_USBPD_PHY_PORT_COUNT];
+STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
+	int rx_en[IT83XX_USBPD_PHY_PORT_COUNT];
+
 const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 	{&IT83XX_GPIO_GPCRF4, &IT83XX_GPIO_GPCRF5, IT83XX_IRQ_USBPD0},
 	{&IT83XX_GPIO_GPCRH1, &IT83XX_GPIO_GPCRH2, IT83XX_IRQ_USBPD1},
@@ -404,12 +409,6 @@ static void it83xx_init(enum usbpd_port port, int role)
 	 */
 	IT83XX_USBPD_BMCSR(port) = (IT83XX_USBPD_BMCSR(port) & ~0x70) |
 					((CONFIG_PD_RETRY_COUNT + 1) << 4);
-	/* set SOP: receive SOP message only.
-	 * bit[7]: SOP" support enable.
-	 * bit[6]: SOP' support enable.
-	 * bit[5]: SOP  support enable.
-	 */
-	IT83XX_USBPD_PDMSR(port) = USBPD_REG_MASK_SOP_ENABLE;
 	/* W/C status */
 	IT83XX_USBPD_ISR(port) = 0xff;
 	/* enable cc, select cc1 and Rd. */
@@ -559,12 +558,19 @@ static int it83xx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 __maybe_unused static int it83xx_tcpm_decode_sop_prime_enable(int port,
 							      bool enable)
 {
-	if (enable)
-		IT83XX_USBPD_PDMSR(port) |= (USBPD_REG_MASK_SOPP_ENABLE |
-					     USBPD_REG_MASK_SOPPP_ENABLE);
-	else
-		IT83XX_USBPD_PDMSR(port) &= ~(USBPD_REG_MASK_SOPP_ENABLE |
-					      USBPD_REG_MASK_SOPPP_ENABLE);
+	/* Save SOP'/SOP'' enable state */
+	sop_prime_en[port] = enable;
+
+	if (rx_en[port]) {
+		if (enable)
+			IT83XX_USBPD_PDMSR(port) |=
+				(USBPD_REG_MASK_SOPP_ENABLE |
+				 USBPD_REG_MASK_SOPPP_ENABLE);
+		else
+			IT83XX_USBPD_PDMSR(port) &=
+				~(USBPD_REG_MASK_SOPP_ENABLE |
+				  USBPD_REG_MASK_SOPPP_ENABLE);
+	}
 
 	return EC_SUCCESS;
 }
@@ -584,9 +590,7 @@ static int it83xx_tcpm_set_vconn(int port, int enable)
 			it83xx_enable_vconn(port, enable);
 			if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 				/* Enable tcpc receive SOP' and SOP'' packet */
-				IT83XX_USBPD_PDMSR(port) |=
-					(USBPD_REG_MASK_SOPP_ENABLE |
-					 USBPD_REG_MASK_SOPPP_ENABLE);
+				it83xx_tcpm_decode_sop_prime_enable(port, true);
 		}
 
 		/* Turn on/off vconn power switch. */
@@ -636,12 +640,23 @@ static int it83xx_tcpm_set_rx_enable(int port, int enable)
 	int i;
 	bool prevent_deep_sleep = false;
 
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+		/* Save rx_on */
+		rx_en[port] = enable;
+
 	if (enable) {
 		IT83XX_USBPD_IMR(port) &= ~USBPD_REG_MASK_MSG_RX_DONE;
-		USBPD_ENABLE_BMC_PHY(port);
+		IT83XX_USBPD_PDMSR(port) |= USBPD_REG_MASK_SOP_ENABLE;
+		IT83XX_USBPD_VDMMCSR(port) |= USBPD_REG_MASK_HARD_RESET_DECODE;
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+			it83xx_tcpm_decode_sop_prime_enable(port,
+							    sop_prime_en[port]);
 	} else {
 		IT83XX_USBPD_IMR(port) |= USBPD_REG_MASK_MSG_RX_DONE;
-		USBPD_DISABLE_BMC_PHY(port);
+		IT83XX_USBPD_PDMSR(port) &= ~(USBPD_REG_MASK_SOP_ENABLE |
+					      USBPD_REG_MASK_SOPP_ENABLE |
+					      USBPD_REG_MASK_SOPPP_ENABLE);
+		IT83XX_USBPD_VDMMCSR(port) &= ~USBPD_REG_MASK_HARD_RESET_DECODE;
 	}
 
 	/*
@@ -806,6 +821,9 @@ static void it83xx_tcpm_hook_connect(void)
 	 * out or the SNK disable detect, so TCPMv1 needn't hook connection.
 	 */
 	it83xx_tcpm_switch_plug_out_type(port);
+
+	/* Enable PD PHY Tx and Rx module since TypeC has connected. */
+	USBPD_ENABLE_BMC_PHY(port);
 }
 
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, it83xx_tcpm_hook_connect, HOOK_PRIO_DEFAULT);
@@ -825,6 +843,16 @@ static void it83xx_tcpm_sw_reset(void)
 
 	/* exit BIST test data mode */
 	USBPD_SW_RESET(port);
+
+	/*
+	 * Since TypeC has disconnected, disable PD PHY Tx and Rx module
+	 * for better power consumption, and init rx status.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
+		sop_prime_en[port] = 0;
+		rx_en[port] = 0;
+	}
+	USBPD_DISABLE_BMC_PHY(port);
 }
 
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, it83xx_tcpm_sw_reset, HOOK_PRIO_DEFAULT);
