@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9fc11e9_13bfa836",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-04T01:16:23Z",
+      "side": 1,
+      "message": "Seems like we should notify the TCPM that VCONN has been disabled. The TCPM doesn\u0027t really expect this state though. If we just tell the TC state machine that VCONN is off, when the PE attempts to send an SOP\u0027, it will attempt a VCONN swap, but the partner will reject it because the partner isn\u0027t VCONN source.\n\nI guess as is, when the TCPC attempts to send an SOP\u0027 when VCONN is off (but the TC thinks it\u0027s on), the message will just timeout.\n\nAbe, what do you think?",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 21
+      },
+      "revId": "a343f1a468800561444eaa0b6fbeef417ba87418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
