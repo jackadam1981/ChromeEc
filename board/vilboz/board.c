@@ -418,12 +418,38 @@ static void wwan_lte_startup(void)
 	/* Turn on WWAN LTE function as we go into S0 from S5. */
 	gpio_set_level(GPIO_LTE_EN, 1);
 	gpio_set_level(GPIO_LTE_W_DISABLE_L, 1);
+	msleep(10);
+	gpio_set_level(GPIO_LTE_FCPO, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, wwan_lte_startup, HOOK_PRIO_DEFAULT + 1);
+
+static void wwan_lte_resume(void)
+{
+	/* Turn on WWAN LTE function as we go into S0 from S3. */
+	gpio_set_level(GPIO_LTE_EN, 1);
+	gpio_set_level(GPIO_LTE_W_DISABLE_L, 1);
+	msleep(10);
+	gpio_set_level(GPIO_LTE_FCPO, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, wwan_lte_resume, HOOK_PRIO_DEFAULT + 1);
+
+static void wwan_lte_suspend(void)
+{
+	/* Turn off WWAN LTE function as we go into S3 from S0. */
+	msleep(20);
+	gpio_set_level(GPIO_LTE_FCPO, 0);
+	msleep(100);
+	gpio_set_level(GPIO_LTE_EN, 0);
+	gpio_set_level(GPIO_LTE_W_DISABLE_L, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, wwan_lte_suspend, HOOK_PRIO_DEFAULT + 1);
 
 static void wwan_lte_shutdown(void)
 {
 	/* Turn off WWAN LTE function as we go back to S5. */
+	msleep(20);
+	gpio_set_level(GPIO_LTE_FCPO, 0);
+	msleep(100);
 	gpio_set_level(GPIO_LTE_EN, 0);
 	gpio_set_level(GPIO_LTE_W_DISABLE_L, 0);
 }
