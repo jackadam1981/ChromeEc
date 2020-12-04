@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41addb42_84c47a60",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-04T07:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63b5e3f2_d67fb882",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 2
+      },
+      "revId": "3590d99e2cc1f1e3f84d6a314e1706520a500c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c53fccca_2964c937",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-03T21:47:32Z",
       "side": 1,
       "message": "Can you please add a doxgen function description (i.e. /** ... */)?",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 46
+      },
+      "revId": "3590d99e2cc1f1e3f84d6a314e1706520a500c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22e25163_ac1fd1d2",
+        "filename": "include/charger.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-04T07:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c53fccca_2964c937",
       "range": {
         "startLine": 268,
         "startChar": 0,
