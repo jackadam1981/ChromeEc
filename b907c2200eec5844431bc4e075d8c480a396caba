@@ -46,6 +46,30 @@
       },
       "revId": "b907c2200eec5844431bc4e075d8c480a396caba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d7af7b_eee7ea2d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-04T21:34:55Z",
+      "side": 1,
+      "message": "would it work in i2c/i2c.h?\n\nIf not we can handle later",
+      "parentUuid": "6f6fa6c0_2d174c6b",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "b907c2200eec5844431bc4e075d8c480a396caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
