@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6201af6_c1155bfc",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-12-04T10:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a09e6511_82490349",
+      "range": {
+        "startLine": 54,
+        "startChar": 19,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "779dbf3cc0b9c628d4005ba2aca45bb29c75741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdf3fb6d_021ad6f4",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-03T05:39:02Z",
       "side": 1,
       "message": "30 if you want to include the header?",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "779dbf3cc0b9c628d4005ba2aca45bb29c75741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6110306c_b739969e",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-12-04T10:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdf3fb6d_021ad6f4",
       "range": {
         "startLine": 58,
         "startChar": 21,
@@ -83,6 +131,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcbda120_effe7373",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-12-04T10:26:00Z",
+      "side": 1,
+      "message": "Yes, there are 2-3 statements that are in this CL. I had to do all of the refactor work at the end of the stack, then pull the changes back to this point. So the debug calls got pulled back in here.\n\nThey aren\u0027t compiled in, and the next CL in the stack adds the debug support to the driver.",
+      "parentUuid": "198d5b44_6bef9da0",
+      "revId": "779dbf3cc0b9c628d4005ba2aca45bb29c75741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f5090d7_7023bcac",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 44
@@ -94,6 +160,30 @@
       "writtenOn": "2020-12-03T05:39:02Z",
       "side": 1,
       "message": "\u003c\u003d\n\nFun side note, the retry count would actually be 3 if we were running PD 2.0.  I assume the odds for that are small, but could be worth ifdef-ing the retry define",
+      "range": {
+        "startLine": 589,
+        "startChar": 22,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "779dbf3cc0b9c628d4005ba2aca45bb29c75741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24bb8d1c_f2d35360",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-12-04T10:26:00Z",
+      "side": 1,
+      "message": "I modified the macro based on PD2.0 vs PD3.0. I still think though this should be \u003c and not \u003c\u003d. It will have already failed once to get to this point, so I want to allow up to 2 more attempts. The retry count gets updated after check of the counter.",
+      "parentUuid": "3f5090d7_7023bcac",
       "range": {
         "startLine": 589,
         "startChar": 22,
@@ -123,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73c08ece_82cfca8a",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-12-04T10:26:00Z",
+      "side": 1,
+      "message": "I added an EC console log for this very unexpected event.",
+      "parentUuid": "53362ba6_bcc1359d",
+      "revId": "779dbf3cc0b9c628d4005ba2aca45bb29c75741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d347d08_0c84a461",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 44
@@ -134,6 +242,30 @@
       "writtenOn": "2020-12-03T05:39:02Z",
       "side": 1,
       "message": "If GoodCRC-ing SOP\u0027 or SOP\u0027\u0027, this should always be 0.  Same with data role, as it would be reserved",
+      "range": {
+        "startLine": 756,
+        "startChar": 40,
+        "endLine": 756,
+        "endChar": 54
+      },
+      "revId": "779dbf3cc0b9c628d4005ba2aca45bb29c75741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3150109_8460d0f4",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-12-04T10:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d347d08_0c84a461",
       "range": {
         "startLine": 756,
         "startChar": 40,

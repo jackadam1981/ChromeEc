@@ -16,6 +16,54 @@
       "message": "I think I have addressed all the comments. I did redesign the transmit path to support auto-retry and did a some refactoring of the tx variables to support that. \n\nI removed the block of code that is related to debug features for the driver. There are still some calls (not being compiled) into the debug routines. The remainder of the debug code is in the next CL in the stack.",
       "revId": "8f37a9af1d2bbdb9dadc4fb554025870f09b9dd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba2a71d_97ea85c6",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-12-04T10:26:00Z",
+      "side": 1,
+      "message": "\u003e \"suports\" is a possible misspelling of \"supports\".\n\nPlease fix.",
+      "parentUuid": "5d847401_474323b1",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "8f37a9af1d2bbdb9dadc4fb554025870f09b9dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d1feaa0_96cf51e5",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-12-04T10:26:00Z",
+      "side": 1,
+      "message": "\u003e \"desciptor\" is a possible misspelling of \"descriptor\".\n\nPlease fix.",
+      "parentUuid": "e39fb245_8dcb224c",
+      "range": {
+        "startLine": 450,
+        "startChar": 26,
+        "endLine": 450,
+        "endChar": 35
+      },
+      "revId": "8f37a9af1d2bbdb9dadc4fb554025870f09b9dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
