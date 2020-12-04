@@ -33,6 +33,29 @@
       "message": "i have verified this CL and b:174324375 can be fixed",
       "revId": "f4552574c4ac2d78b0e2ea0f12c8f301045d8746",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9715da8d_cce9571a",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-12-04T03:14:11Z",
+      "side": 1,
+      "message": "Do we want to support this kind of sources/dongles when battery pack is removed?\nEg. RMA or battery failures",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "f4552574c4ac2d78b0e2ea0f12c8f301045d8746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
