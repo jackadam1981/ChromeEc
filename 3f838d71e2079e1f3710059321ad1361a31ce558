@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccbf3ae2_2682b751",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-04T19:41:23Z",
+      "side": 1,
+      "message": "Not AFAIK\nhttp://cs/chromeos_public/src/platform/ec/zephyr/shim/src/CMakeLists.txt?l\u003d15",
+      "parentUuid": "65f00321_49f18d4a",
+      "revId": "3f838d71e2079e1f3710059321ad1361a31ce558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adab86e0_708e9758",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-04T18:56:11Z",
       "side": 1,
       "message": "shouldn\u0027t this be unconditional now?\n\ni.e., this can just be #ifdef CONFIG_ZEPHYR?",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "3f838d71e2079e1f3710059321ad1361a31ce558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ed5ab2_304d024b",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-04T19:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adab86e0_708e9758",
       "range": {
         "startLine": 26,
         "startChar": 7,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbd2cbf_b32a6756",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-04T19:41:23Z",
+      "side": 1,
+      "message": "It breaks zephyr/test/tasks",
+      "parentUuid": "a91df923_7cf9474f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "3f838d71e2079e1f3710059321ad1361a31ce558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da261c21_185e0423",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-12-04T17:07:40Z",
       "side": 1,
       "message": "We won\u0027t need this BUILD_ASSERT any more since it is single source",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "3f838d71e2079e1f3710059321ad1361a31ce558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cedc31ab_587a6e90",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-04T19:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da261c21_185e0423",
       "range": {
         "startLine": 17,
         "startChar": 0,
