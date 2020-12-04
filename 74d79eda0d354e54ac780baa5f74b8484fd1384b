@@ -51,6 +51,24 @@
       "parentUuid": "45a8b868_60adad8d",
       "revId": "74d79eda0d354e54ac780baa5f74b8484fd1384b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32c39f5b_06e23236",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2020-12-04T06:50:54Z",
+      "side": 1,
+      "message": "I sync with PM \u0026 EE, it shouldn\u0027t add PWM about the LED brightness. The range is for machine testing when add the shell in the future, it does not for adjustable.",
+      "parentUuid": "644d84af_8d47dbc7",
+      "revId": "74d79eda0d354e54ac780baa5f74b8484fd1384b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
