@@ -46,6 +46,30 @@
       },
       "revId": "b40d9d4e22317000787adbd699ae73e9cb729133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b4388b_9614d1a8",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-04T20:35:10Z",
+      "side": 1,
+      "message": "+1 on config name",
+      "parentUuid": "092595f6_445db136",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 88
+      },
+      "revId": "b40d9d4e22317000787adbd699ae73e9cb729133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
