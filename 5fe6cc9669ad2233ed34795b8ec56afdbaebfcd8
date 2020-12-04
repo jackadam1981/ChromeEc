@@ -33,6 +33,24 @@
       "message": "Confirmed that firmware is not being built in factory branch so this cherry-pick is not needed.",
       "revId": "5fe6cc9669ad2233ed34795b8ec56afdbaebfcd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19204755_7666385d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426283
+      },
+      "writtenOn": "2020-12-04T02:02:24Z",
+      "side": 1,
+      "message": "Thanks YH, let me abandon the CL.",
+      "parentUuid": "a1611884_102df03c",
+      "revId": "5fe6cc9669ad2233ed34795b8ec56afdbaebfcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
