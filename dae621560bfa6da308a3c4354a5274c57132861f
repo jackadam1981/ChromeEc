@@ -16,6 +16,23 @@
       "message": "Hi Chen-Tsung, \nplease help to reviewer this CL, thanks.",
       "revId": "dae621560bfa6da308a3c4354a5274c57132861f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b7c6da5_dbe24ef3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-12-04T01:59:51Z",
+      "side": 1,
+      "message": "Since we are trying to fix 2 issues, it should be seperated into 2 CLs.",
+      "revId": "dae621560bfa6da308a3c4354a5274c57132861f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
