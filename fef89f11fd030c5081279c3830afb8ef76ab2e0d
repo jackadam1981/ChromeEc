@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27e043c8_d166f277",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1440307
+      },
+      "writtenOn": "2020-12-04T15:28:22Z",
+      "side": 1,
+      "message": "the command rv |\u003d SM5803_SW_BCK_BST_CONF_AUTO; needs to be replaced by\nmain_write8(chgnum,0x1F,0x01) \n\nthe command rv \u0026\u003d ~SM5803_SW_BCK_BST_CONF_AUTO; needs to be replaced by\nmain_write8(chgnum,0x1F,0x00)",
+      "parentUuid": "1b42bbfa_bcd8c406",
+      "revId": "fef89f11fd030c5081279c3830afb8ef76ab2e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80e06280_b87050a0",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
