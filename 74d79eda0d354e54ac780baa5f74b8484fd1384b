@@ -69,6 +69,24 @@
       "parentUuid": "644d84af_8d47dbc7",
       "revId": "74d79eda0d354e54ac780baa5f74b8484fd1384b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51eaea7f_2f1419d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-12-04T11:40:26Z",
+      "side": 1,
+      "message": "If the LED brightness is acceptable or the OEM agree to waive it, i\u0027m fine with this patch.\n\nBTW, the PWM is from the EC, why don\u0027t use it if it is needed?",
+      "parentUuid": "32c39f5b_06e23236",
+      "revId": "74d79eda0d354e54ac780baa5f74b8484fd1384b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
