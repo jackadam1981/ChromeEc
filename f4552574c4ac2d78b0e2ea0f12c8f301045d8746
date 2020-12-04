@@ -80,6 +80,30 @@
       },
       "revId": "f4552574c4ac2d78b0e2ea0f12c8f301045d8746",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36f777e9_7413d390",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-12-04T07:50:07Z",
+      "side": 1,
+      "message": "Yeah I don\u0027t have any idea why we should check battery presence before accepting VCONN swap.\n\nFor kukui/jacuzzi families, separating VCONN swap from power roles should be fine.\nPlease correct me if you find any cases.",
+      "parentUuid": "51c29365_21d323a7",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "f4552574c4ac2d78b0e2ea0f12c8f301045d8746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
