@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b84326_165f42ac",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-04T02:33:26Z",
+      "side": 1,
+      "message": "let\u0027s use GENMASK:\n\nGENMASK(7,0)",
+      "range": {
+        "startLine": 661,
+        "startChar": 40,
+        "endLine": 661,
+        "endChar": 44
+      },
+      "revId": "1b8e579553c63ffee8bff69e856de6fb84b7010c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3163cf16_9480c19b",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-04T02:33:26Z",
+      "side": 1,
+      "message": "GENMASK(7,0)",
+      "range": {
+        "startLine": 662,
+        "startChar": 47,
+        "endLine": 662,
+        "endChar": 51
+      },
+      "revId": "1b8e579553c63ffee8bff69e856de6fb84b7010c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35270e6_0a986be8",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-04T02:33:26Z",
+      "side": 1,
+      "message": "GENMASK(2,0)",
+      "range": {
+        "startLine": 663,
+        "startChar": 48,
+        "endLine": 663,
+        "endChar": 51
+      },
+      "revId": "1b8e579553c63ffee8bff69e856de6fb84b7010c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b37fba28_20170e9e",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-04T02:33:26Z",
+      "side": 1,
+      "message": "What happen if i2c.o and hwtimer.o excceds 4k here?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 22
+      },
+      "revId": "1b8e579553c63ffee8bff69e856de6fb84b7010c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
