@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5af3a7e_df784288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1440307
+      },
+      "writtenOn": "2020-12-04T16:25:48Z",
+      "side": 1,
+      "message": "I misread the code.",
+      "revId": "e0123f3c7bb8a8c92f0c5f07888f03d3d92cc4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3bc28922_2833cfec",
         "filename": "common/ocpc.c",
         "patchSetId": 2
@@ -14,6 +31,24 @@
       "writtenOn": "2020-12-04T16:07:36Z",
       "side": 1,
       "message": "the command\nocpc_precharge_enable(false); is executed instantaneously \nwhile the command ocpc-\u003elast_vsys \u003d batt.voltage has to wait the end of the function, it means that the BFET is fully on while VSYS is still high. The side effect is high current in the battery and firing of Input current limit in DB",
+      "revId": "e0123f3c7bb8a8c92f0c5f07888f03d3d92cc4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358fed0d_f278f70f",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1440307
+      },
+      "writtenOn": "2020-12-04T16:25:48Z",
+      "side": 1,
+      "message": "Do not consider previous comment",
+      "parentUuid": "3bc28922_2833cfec",
       "revId": "e0123f3c7bb8a8c92f0c5f07888f03d3d92cc4f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
