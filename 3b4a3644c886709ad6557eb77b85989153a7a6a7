@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "268d7c58_a5050d9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-04T16:39:49Z",
+      "side": 1,
+      "message": "FYI, you don\u0027t need to Code-Review+1 your own changes. It doesn\u0027t do anything. You will need to Verified+1 before submitting, indicating that you have done the things listed in the TEST\u003d line.",
+      "revId": "3b4a3644c886709ad6557eb77b85989153a7a6a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c1b844_d3435216",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-04T16:39:49Z",
+      "side": 1,
+      "message": "Nit: Line break here per EC style. I think checkpatch.pl should warn about this. Are you uploading with repo upload?",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "3b4a3644c886709ad6557eb77b85989153a7a6a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
