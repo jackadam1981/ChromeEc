@@ -1,4 +1,4 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+6# Copyright 2020 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -40,7 +40,8 @@ add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
 # supported by all boards and emulators (including unit tests) using the shim
 # layer.
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC         "${PLATFORM_EC}/common/base32.c"
-                                                "${PLATFORM_EC}/common/queue.c")
+                                                "${PLATFORM_EC}/common/queue.c"
+                                                "${PLATFORM_EC}/common/shared_mem.c")
 
 # Now include files that depend on or relate to other CONFIG options, sorted by
 # CONFIG
