@@ -2503,6 +2503,13 @@
 #undef CONFIG_IT83XX_SMCLK2_ON_GPC7
 
 /*
+ * Enable board to tune cc physical parameters (ex.rising, falling time).
+ * NOTE: board must define board_get_cc_tuning_parameter(enum usbpd_port port)
+ *       function.
+ */
+#undef CONFIG_IT83XX_TUNE_CC_PHY
+
+/*
  * Enable the corresponding config option, according to EC's VCC is connected
  * to 1.8V or 3.3V
  */
@@ -3045,6 +3052,18 @@
  * become unreliable if temperature exceeds this limit.
  */
 #undef CONFIG_PECI_TJMAX
+
+/*
+ * Enable peripheral charge manager (e.g. NFC/WLC, WPC Qi)
+ */
+#undef CONFIG_PERIPHERAL_CHARGER
+
+/*
+ * Enable CTN730 driver
+ *
+ * CTN730 is NXP's NFC/WLC power transmitter (a.k.a. poller).
+ */
+#undef CONFIG_CTN730
 
 /*****************************************************************************/
 /* PMU config */
@@ -4062,8 +4081,8 @@
 #undef CONFIG_USB_PD_IDENTITY_HW_VERS
 #undef CONFIG_USB_PD_IDENTITY_SW_VERS
 
-/* USB PD MCU slave address for host commands */
-#define CONFIG_USB_PD_I2C_SLAVE_ADDR_FLAGS 0x1E
+/* USB PD MCU I2C address for host commands */
+#define CONFIG_USB_PD_I2C_ADDR_FLAGS 0x1E
 
 /* Define if using internal comparator for PD receive */
 #undef CONFIG_USB_PD_INTERNAL_COMP
@@ -4251,6 +4270,9 @@
 #undef CONFIG_USBC_RETIMER_PS8802
 #undef CONFIG_USBC_RETIMER_PS8818
 #undef CONFIG_USBC_RETIMER_TUSB544
+
+/* Enable retimer TUSB544 tune EQ setting by register  */
+#undef CONFIG_TUSB544_EQ_BY_REGISTER
 
 /* Allow run-time configuration of the Burnside Bridge driver structure */
 #undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
@@ -4504,8 +4526,14 @@
 /* Support USB HID keyboard backlight. */
 #undef CONFIG_USB_HID_KEYBOARD_BACKLIGHT
 
-/* Support vivaldi compatible HID keyboard */
+/*
+ * Support vivaldi compatible HID keyboard.
+ * If defined, the board must implement a function board_vivaldi_keybd_config(),
+ * and define a macro CONFIG_USB_HID_KB_NUM_TOP_ROW_KEYS which is equal to
+ * board_vivaldi_keybd_config()->num_top_row_keys.
+ */
 #undef CONFIG_USB_HID_KEYBOARD_VIVALDI
+#undef CONFIG_USB_HID_KB_NUM_TOP_ROW_KEYS
 
 /* Support USB HID touchpad interface. */
 #undef CONFIG_USB_HID_TOUCHPAD
@@ -4934,7 +4962,12 @@
 #define CONFIG_HOST_ESPI_VW_POWER_SIGNAL
 #endif
 
-#if defined(CONFIG_HOST_ESPI_VW_POWER_SIGNAL) && !defined(CONFIG_HOSTCMD_ESPI)
+/*
+ * Note that in Zephyr OS, eSPI can be enabled for virtual wires
+ * without using eSPI for host commands.
+ */
+#if (!defined(CONFIG_ZEPHYR) && defined(CONFIG_HOST_ESPI_VW_POWER_SIGNAL) && \
+     !defined(CONFIG_HOSTCMD_ESPI))
 #error Must enable eSPI to enable virtual wires.
 #endif
 
