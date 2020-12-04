@@ -18,6 +18,7 @@
 #include "system.h"
 #include "task.h"
 #include "uart.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "usb_descriptor.h"
@@ -344,6 +345,7 @@ __override uint8_t board_get_usb_pd_port_count(void)
 static void board_init(void)
 {
 #ifdef SECTION_IS_RW
+	usb_mux_hpd_update(1, 0, 0);
 	hook_call_deferred(&board_config_usbc_uf_ppc_data, 10 * MSEC);
 #endif
 }
