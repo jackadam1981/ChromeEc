@@ -22,6 +22,30 @@
       },
       "revId": "a343f1a468800561444eaa0b6fbeef417ba87418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664d4fe9_155a1d89",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-04T17:09:07Z",
+      "side": 1,
+      "message": "If we\u0027re VCONN Source but not providing VCONN, and we attempt a VCONN Swap, the partner *may* Reject it. It could also Accept it, with the result that the partner would start sourcing VCONN. If we thought we were also doing an off-to-on VCONN Swap, I think we would treat the partner\u0027s PS_RDY as an Unexpected message and issue a Soft Reset. I can\u0027t immediately tell what the specified path back to normal is (or if there is one), but it\u0027s not a good situation to get into. Even if we never attempted a VCONN Swap, we\u0027d be confused about sourcing VCONN for the duration of the connection. Also, if this somehow happens after we\u0027ve entered a mode that depends on an active cable, that mode might stop working.\n\nI think we should probably treat this similarly to a VBUS OC event. I think it would take a Hard Reset to get us back on the same page with the partner, and I don\u0027t see how we would continue to act as a completely normal PD partner in the meantime.\n\nIf we have enough time before we overheat to attempt to swap away VCONN, we could try that, and the partner might be able to keep the cable up while we recover from this. That would have to override the policy decision about whether to be VCONN Source at the time, which might be more trouble than it\u0027s worth.",
+      "parentUuid": "a9fc11e9_13bfa836",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 21
+      },
+      "revId": "a343f1a468800561444eaa0b6fbeef417ba87418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
