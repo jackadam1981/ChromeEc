@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6712687_f0814bef",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-04T16:53:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db766e5_5e29f7e7",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "a2a5935388a8eb4e2c1299967bad27b65c164d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3635aa3b_8f2501d1",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-04T16:08:37Z",
       "side": 1,
       "message": "do we really want projects to be able to define their own task list?\n\nI would vote to remove this feature and only add it if we really need",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "a2a5935388a8eb4e2c1299967bad27b65c164d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f46e3664_30185c27",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-04T16:53:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3635aa3b_8f2501d1",
       "range": {
         "startLine": 20,
         "startChar": 0,
