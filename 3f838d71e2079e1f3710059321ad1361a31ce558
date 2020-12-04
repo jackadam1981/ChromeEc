@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f00321_49f18d4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-04T18:56:11Z",
+      "side": 1,
+      "message": "can we get rid of CONFIG_SHIMMED_TASKS now?",
+      "revId": "3f838d71e2079e1f3710059321ad1361a31ce558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adab86e0_708e9758",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-04T18:56:11Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be unconditional now?\n\ni.e., this can just be #ifdef CONFIG_ZEPHYR?",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "3f838d71e2079e1f3710059321ad1361a31ce558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91df923_7cf9474f",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-04T18:56:11Z",
+      "side": 1,
+      "message": "how does this interfere with the tests?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "3f838d71e2079e1f3710059321ad1361a31ce558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da261c21_185e0423",
