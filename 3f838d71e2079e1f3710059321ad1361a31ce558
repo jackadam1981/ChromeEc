@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da261c21_185e0423",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-04T17:07:40Z",
+      "side": 1,
+      "message": "We won\u0027t need this BUILD_ASSERT any more since it is single source",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "3f838d71e2079e1f3710059321ad1361a31ce558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
