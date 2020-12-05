@@ -46,6 +46,30 @@
       },
       "revId": "c87c881cd940cc0335f28a8aadbe304e5e291f1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e55441_efd92656",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-05T02:32:23Z",
+      "side": 1,
+      "message": "Yes, I can make a fix up comment to make it a bit more accurate.",
+      "parentUuid": "7c59a6b5_66d3bbae",
+      "range": {
+        "startLine": 379,
+        "startChar": 4,
+        "endLine": 380,
+        "endChar": 19
+      },
+      "revId": "c87c881cd940cc0335f28a8aadbe304e5e291f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
