@@ -796,7 +796,9 @@ class Console(object):
     """Retrieve an item from the OOBM queue and process it."""
     item = self.oobm_queue.get()
     self.logger.debug('OOBM cmd: %s', item)
-    cmd = item.split(b' ')
+    # We want to make sure the item is in binary in both py2 and py3
+    item = item.encode()
+    cmd = item.split(' '.encode())
 
     if cmd[0] == b'loglevel':
       # An integer is required in order to set the log level.
