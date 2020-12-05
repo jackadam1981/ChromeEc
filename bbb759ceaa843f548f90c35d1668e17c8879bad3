@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bff5b4e_aff5561a",
+        "filename": "common/device_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-05T18:45:29Z",
+      "side": 1,
+      "message": "Do we want to bother the host even if there is no mask change (because the event is disabled)?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "bbb759ceaa843f548f90c35d1668e17c8879bad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
