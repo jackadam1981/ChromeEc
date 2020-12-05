@@ -34,6 +34,24 @@
       "parentUuid": "05df2f0a_58064a76",
       "revId": "c87b8378ea8f2c819dd116f4b7de7e5a114196d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5ef630c_66ee90fc",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-05T00:44:52Z",
+      "side": 1,
+      "message": "I missed this comment. Let me add the change",
+      "parentUuid": "78249df3_49d3b801",
+      "revId": "c87b8378ea8f2c819dd116f4b7de7e5a114196d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
