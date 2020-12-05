@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6142d5a8_93e91870",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-12-05T05:27:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c40dea5e_e84a0db7",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e720b65c_4a7bc64a",
@@ -235,6 +259,24 @@
       "side": 1,
       "message": "I will run the tests mentioned in this thread to double check for any surprises.\nIf you can think of any other test that would be good to run please add it here.",
       "parentUuid": "068cb8dd_19fbea6b",
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a46e34_d7899e03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-12-05T05:27:26Z",
+      "side": 1,
+      "message": "Tested and didn\u0027t find any new issues with this.\nWe do rely on rddkeepalive to keep CCD mode on, but I also realized that we already relied on it for servo_v4_role:snk in S5. The exception being removed here only helped for servo_v4_role:snk in S0.",
+      "parentUuid": "65fef297_7f3902cd",
       "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
