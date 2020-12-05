@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a73ecf_35a301ae",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-05T00:03:44Z",
+      "side": 1,
+      "message": "Does this also need re-set to 0 somewhere else in case we stop charging between setting the 3 seconds and hitting the timestamp expired (ex. unplug in that timeframe)?",
+      "range": {
+        "startLine": 339,
+        "startChar": 5,
+        "endLine": 339,
+        "endChar": 28
+      },
+      "revId": "11c70acf6e49699a2422357e6319d6cb6d36cb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
