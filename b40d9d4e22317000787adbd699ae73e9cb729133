@@ -70,6 +70,30 @@
       },
       "revId": "b40d9d4e22317000787adbd699ae73e9cb729133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4366c92_5e1dbe97",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-05T01:04:23Z",
+      "side": 1,
+      "message": "sounds good. let\u0027s split it out of this CL though",
+      "parentUuid": "a6b4388b_9614d1a8",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 88
+      },
+      "revId": "b40d9d4e22317000787adbd699ae73e9cb729133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
