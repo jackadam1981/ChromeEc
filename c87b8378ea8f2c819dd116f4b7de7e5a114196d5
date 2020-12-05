@@ -52,6 +52,24 @@
       "parentUuid": "78249df3_49d3b801",
       "revId": "c87b8378ea8f2c819dd116f4b7de7e5a114196d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "075ad5c8_0cf5ca20",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-05T00:55:16Z",
+      "side": 1,
+      "message": "The caller function has a for loop - It sets the usb_mux and then we hop on to the next link of the mux\u0027s linked list. So we have the .next_mux. So we can traverse the linked list in reverse order in the driver or change the links in board file.\n\nFirst link on TOT is mux and second link is the retimer.",
+      "parentUuid": "e5ef630c_66ee90fc",
+      "revId": "c87b8378ea8f2c819dd116f4b7de7e5a114196d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
