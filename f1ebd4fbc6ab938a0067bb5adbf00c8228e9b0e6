@@ -16,6 +16,24 @@
       "message": "Hi Ayushee, how about this approach.\nAdd a host command to configure retimer from Kernel?\nMay be in future we can route the retimer I2C lines to SOC and Kernel/Coreboot can directly configure the retimer from MUX driver?",
       "revId": "f1ebd4fbc6ab938a0067bb5adbf00c8228e9b0e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddd26a06_677de211",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-05T00:44:11Z",
+      "side": 1,
+      "message": "We configure the retimer first and then the Mux. So I don\u0027t think it\u0027s a good idea to have an AP command specifically for BB retimer",
+      "parentUuid": "26ad5fc5_9db84211",
+      "revId": "f1ebd4fbc6ab938a0067bb5adbf00c8228e9b0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

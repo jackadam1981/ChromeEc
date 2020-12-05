@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57da038b_b39793d8",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-05T00:44:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df80c320_52fb1353",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "51143b6af24d8a47a5ef050ac2fda22ab85efacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "327a8a5f_f25f8fa4",
