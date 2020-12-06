@@ -160,6 +160,70 @@ static void protect_blocks(uint32_t blocks)
 	commit_optb();
 }
 
+
+/*
+ * Helper function definitions for consistency with F4 to enable flash
+ * physical unitesting
+ */
+void unlock_flash_control_register(void)
+{
+	/* Call unlock function with bank 0; ignore return value */
+	unlock(0);
+}
+
+void unlock_flash_option_bytes(void)
+{
+	/* Call unlock option bytes method; ignore return value */
+	unlock_optb();
+}
+
+void disable_flash_option_bytes(void)
+{
+	ignore_bus_fault(1);
+	/*
+	 * Writing anything other than the pre-defined keys to the option key
+	 * register results in a bus fault and the register being locked until
+	 * reboot (even with a further correct key write).
+	 */
+	STM32_FLASH_OPTKEYR(0) = 0xffffffff;
+	ignore_bus_fault(0);
+}
+
+void disable_flash_control_register(void)
+{
+	ignore_bus_fault(1);
+	/*
+	 * Writing anything other than the pre-defined keys to a key
+	 * register results in a bus fault and the register being locked until
+	 * reboot (even with a further correct key write).
+	 */
+	STM32_FLASH_KEYR(0) = 0xffffffff;
+	STM32_FLASH_KEYR(1) = 0xffffffff;
+	ignore_bus_fault(0);
+}
+
+void lock_flash_control_register(void)
+{
+	/* Call lock method with bank 0; no return value */
+	lock(0);
+}
+
+void lock_flash_option_bytes(void)
+{
+	/* Call commit option bytes method; ignore return value */
+	commit_optb();
+}
+
+bool flash_option_bytes_locked(void)
+{
+	return !!(STM32_FLASH_OPTCR(0) & FLASH_OPTCR_OPTLOCK);
+}
+
+bool flash_control_register_locked(void)
+{
+	return !!(STM32_FLASH_CR(0) & FLASH_CR_LOCK);
+}
+
 /*
  * If RDP as PSTATE option is defined, use that as 'Write Protect enabled' flag:
  * it makes no sense to be able to unlock RO, as that'd allow flashing
@@ -414,9 +478,7 @@ int flash_physical_protect_now(int all)
 	ignore_bus_fault(1);
 
 	if (all) {
-		/* cannot do any write/erase access until next reboot */
-		STM32_FLASH_KEYR(0) = 0xffffffff;
-		STM32_FLASH_KEYR(1) = 0xffffffff;
+		disable_flash_control_register();
 		access_disabled = 1;
 	}
 	/* cannot modify the WP bits in the option bytes until reboot */
