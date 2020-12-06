@@ -35,6 +35,9 @@ zephyr_include_directories_ifdef(
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
 
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC         "${PLATFORM_EC}/common/base32.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY "${PLATFORM_EC}/common/battery.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY_SMART
+                                                "${PLATFORM_EC}/driver/battery/smart.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_CBI     "${PLATFORM_EC}/common/cbi.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ
                                                 "${PLATFORM_EC}/common/chipset.c")
