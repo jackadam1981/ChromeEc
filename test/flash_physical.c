@@ -63,6 +63,8 @@ test_static int test_disable_option_bytes(void)
 
 	unlock_flash_option_bytes();
 
+	asm volatile("dsb; isb");
+
 	ignore_bus_fault(0);
 
 	/* Option bytes should still be locked. */
@@ -103,6 +105,8 @@ test_static int test_disable_flash_control_register(void)
 
 	unlock_flash_control_register();
 
+	asm volatile("dsb; isb");
+
 	ignore_bus_fault(0);
 
 	/* Control register should still be locked. */
@@ -123,15 +127,10 @@ void run_test(int argc, char **argv)
 {
 	ccprintf("Running flash physical test\n");
 	RUN_TEST(test_flash_config);
-	/*
-	 * TODO(b/157692395): These should be implemented for the STM32H743 as
-	 * well.
-	 */
-#if defined(CHIP_VARIANT_STM32F412)
+
 	RUN_TEST(test_lock_option_bytes);
 	RUN_TEST(test_disable_option_bytes);
 	RUN_TEST(test_lock_flash_control_register);
 	RUN_TEST(test_disable_flash_control_register);
-#endif
 	test_print_result();
 }
