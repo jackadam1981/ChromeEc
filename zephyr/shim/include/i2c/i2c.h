@@ -42,4 +42,11 @@ I2C_PORT_COUNT
  */
 const struct device *i2c_get_device_for_port(const int port);
 
+/**
+ * @brief initialize I2C buses
+ *
+ * @eturn: 0 upon success, or <0 upon failure.
+ */
+int zephyr_shim_setup_i2c(void);
+
 #endif /* ZEPHYR_CHROME_I2C_I2C_H */
