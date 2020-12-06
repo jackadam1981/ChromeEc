@@ -123,8 +123,7 @@ static int unlock_optb(void)
 		 */
 		ignore_bus_fault(1);
 
-		STM32_FLASH_OPTKEYR(0) = FLASH_OPTKEYR_KEY1;
-		STM32_FLASH_OPTKEYR(0) = FLASH_OPTKEYR_KEY2;
+		unlock_flash_option_bytes();
 		asm volatile("dsb; isb");
 		ignore_bus_fault(0);
 	}
@@ -144,7 +143,7 @@ static int commit_optb(void)
 	while (STM32_FLASH_OPTSR_CUR(0) & FLASH_OPTSR_BUSY && timeout-- > 0)
 		;
 
-	STM32_FLASH_OPTCR(0) |= FLASH_OPTCR_OPTLOCK;
+	lock_flash_option_bytes();
 	lock(0);
 
 	return (timeout > 0) ? EC_SUCCESS : EC_ERROR_TIMEOUT;
@@ -158,6 +157,71 @@ static void protect_blocks(uint32_t blocks)
 	STM32_FLASH_WPSN_PRG(1) &= ~((blocks >> BLOCKS_PER_HWBANK)
 				& BLOCKS_HWBANK_MASK);
 	commit_optb();
+}
+
+
+/*
+ * Helper function definitions for consistency with F4 to enable flash
+ * physical unitesting
+ */
+void unlock_flash_control_register(void)
+{
+	/* Call unlock function with bank 0; ignore return value */
+	unlock(0);
+}
+
+void unlock_flash_option_bytes(void)
+{
+	/* Consecutively program values. Ref: RM0433:4.9.2 */
+	STM32_FLASH_OPTKEYR(0) = FLASH_OPTKEYR_KEY1;
+	STM32_FLASH_OPTKEYR(0) = FLASH_OPTKEYR_KEY2;
+}
+
+void disable_flash_option_bytes(void)
+{
+	ignore_bus_fault(1);
+	/*
+	 * Writing anything other than the pre-defined keys to the option key
+	 * register results in a bus fault and the register being locked until
+	 * reboot (even with a further correct key write).
+	 */
+	STM32_FLASH_OPTKEYR(0) = 0xffffffff;
+	ignore_bus_fault(0);
+}
+
+void disable_flash_control_register(void)
+{
+	ignore_bus_fault(1);
+	/*
+	 * Writing anything other than the pre-defined keys to a key
+	 * register results in a bus fault and the register being locked until
+	 * reboot (even with a further correct key write).
+	 */
+	STM32_FLASH_KEYR(0) = 0xffffffff;
+	STM32_FLASH_KEYR(1) = 0xffffffff;
+	ignore_bus_fault(0);
+}
+
+void lock_flash_control_register(void)
+{
+	/* Call lock method with bank 0; no return value */
+	lock(0);
+}
+
+void lock_flash_option_bytes(void)
+{
+	/* Consecutively program values. Ref: RM0433:4.9.3 */
+	STM32_FLASH_OPTCR(0) |= FLASH_OPTCR_OPTLOCK;
+}
+
+bool flash_option_bytes_locked(void)
+{
+	return !!(STM32_FLASH_OPTCR(0) & FLASH_OPTCR_OPTLOCK);
+}
+
+bool flash_control_register_locked(void)
+{
+	return !!(STM32_FLASH_CR(0) & FLASH_CR_LOCK);
 }
 
 /*
@@ -414,9 +478,7 @@ int flash_physical_protect_now(int all)
 	ignore_bus_fault(1);
 
 	if (all) {
-		/* cannot do any write/erase access until next reboot */
-		STM32_FLASH_KEYR(0) = 0xffffffff;
-		STM32_FLASH_KEYR(1) = 0xffffffff;
+		disable_flash_control_register();
 		access_disabled = 1;
 	}
 	/* cannot modify the WP bits in the option bytes until reboot */
