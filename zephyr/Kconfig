@@ -12,6 +12,7 @@ menuconfig PLATFORM_EC
 
 if PLATFORM_EC
 
+rsource "Kconfig.battery"
 rsource "Kconfig.powerseq"
 rsource "Kconfig.tasks"
 
@@ -36,6 +37,7 @@ config ZEPHYR
 # corresponding EC CONFIG if this Kconfig is enabled.
 #
 # Please keep these in alphabetical order
+
 
 config PLATFORM_EC_CBI
 	bool "Enable the CBI EEPROM module"
