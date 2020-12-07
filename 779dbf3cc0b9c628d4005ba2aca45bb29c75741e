@@ -147,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "019631bb_298edff6",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-07T17:37:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fcbda120_effe7373",
+      "revId": "779dbf3cc0b9c628d4005ba2aca45bb29c75741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f5090d7_7023bcac",
@@ -194,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5477dc27_3585eff2",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-07T17:37:11Z",
+      "side": 1,
+      "message": "I think you\u0027re right here. Thanks",
+      "parentUuid": "24bb8d1c_f2d35360",
+      "range": {
+        "startLine": 589,
+        "startChar": 22,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "779dbf3cc0b9c628d4005ba2aca45bb29c75741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53362ba6_bcc1359d",
@@ -225,6 +267,24 @@
       "side": 1,
       "message": "I added an EC console log for this very unexpected event.",
       "parentUuid": "53362ba6_bcc1359d",
+      "revId": "779dbf3cc0b9c628d4005ba2aca45bb29c75741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d629d6c6_f7e3c8bb",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-07T17:37:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73c08ece_82cfca8a",
       "revId": "779dbf3cc0b9c628d4005ba2aca45bb29c75741e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
