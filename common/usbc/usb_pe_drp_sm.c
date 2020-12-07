@@ -1204,13 +1204,12 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 	 *     response.
 	 */
 	CPRINTS("Flags %x, err %u", pe[port].flags, e);
-	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS) ||
-			e == ERR_TCH_XMIT ||
-			(!PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)
-			 /*
-			  * Not sure how this could happen outside the
-			  * conditions described above.
-			  */)) {
+	/* All error types besides transmit errors are Protocol Errors. */
+	if ((e != ERR_TCH_XMIT &&
+				!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
+			|| e == ERR_TCH_XMIT
+			|| (!PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT) &&
+				type == TCPC_TX_SOP)) {
 		CPRINTS("soft reset");
 		pe_send_soft_reset(port, type);
 	}
