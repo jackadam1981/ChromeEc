@@ -8,6 +8,7 @@
 #include "common.h"
 #include "console.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "mock/usb_pd_mock.h"
 #include "memory.h"
 
@@ -98,4 +99,9 @@ void pd_request_vconn_swap_on(int port)
 __overridable bool pd_alt_mode_capable(int port)
 {
 	return false;
+}
+
+__overridable int pd_get_rev(int port, enum tcpm_transmit_type type)
+{
+	return IS_ENABLED(CONFIG_USB_PD_REV30) ? PD_REV30 : PD_REV20;
 }
