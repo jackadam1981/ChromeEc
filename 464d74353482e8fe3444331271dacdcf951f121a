@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8d8bfac_2f4cf986",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-07T18:45:07Z",
+      "side": 1,
+      "message": "nit: Missing space",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "464d74353482e8fe3444331271dacdcf951f121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2e8c24f9_7c305a89",
@@ -14,6 +37,52 @@
       "writtenOn": "2020-12-06T19:43:09Z",
       "side": 1,
       "message": "First attempt at supporting flash unit test helper functions for H7. Still need to actually test on Dartmonkey. ",
+      "revId": "464d74353482e8fe3444331271dacdcf951f121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47ecec2_3dc8ac83",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-07T18:45:07Z",
+      "side": 1,
+      "message": "nit: Start with a \"/*\" line like the other multiline comments",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "464d74353482e8fe3444331271dacdcf951f121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ccd85e_fe2c9ee7",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-07T18:45:07Z",
+      "side": 1,
+      "message": "Unnecessary comment IMHO, same for lock_flash_option_bytes()",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 52
+      },
       "revId": "464d74353482e8fe3444331271dacdcf951f121a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
