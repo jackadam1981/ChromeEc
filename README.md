@@ -8,7 +8,7 @@ The Chromium OS project includes open source software for embedded controllers
 (EC) used in recent ARM and x86 based Chromebooks. This software includes a
 lightweight, multitasking OS with modules for power sequencing, keyboard
 control, thermal control, battery charging, and verified boot. The EC software
-is written in C and supports [a variety of micro-controllers](https://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/).
+is written in C and supports [a variety of micro-controllers](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/chip/).
 
 This document is a guide to help make you familiar with the EC code, current
 features, and the process for submitting code patches.
@@ -207,7 +207,7 @@ The generated EC binary from emerge is found at:
 ```
 
 The ebuild file used by Chromium OS is found
-[here](https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/chromeos-base/chromeos-ec/chromeos-ec-9999.ebuild):
+[here](https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/HEAD/chromeos-base/chromeos-ec/chromeos-ec-9999.ebuild):
 
 ```bash
 (chroot) $ ~/trunk/src/third_party/chromiumos-overlay/chromeos-base/chromeos-ec/chromeos-ec-9999.ebuild
@@ -290,7 +290,7 @@ This turns on the following flags:
 *   `GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC`
 
 The `GBB` (Google Binary Block) flags are defined in the
-[vboot_reference source](https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/master/firmware/include/gbb_header.h).
+[vboot_reference source](https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/HEAD/firmware/include/gbb_header.h).
 A varying subset of these flags are implemented and/or relevant for any
 particular board.
 
@@ -391,7 +391,7 @@ in priority order if more than one callback needs to be run. There are also
 hooks for running functions periodically: `HOOK_TICK` (fires every
 `HOOK_TICK_INVERVAL` ms which varies by EC chip) and `HOOK_SECOND`. See
 hook_type in
-[include/hooks.h](https://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/hooks.h)
+[include/hooks.h](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/include/hooks.h)
 for a complete list.
 
 ### Deferred Functions
@@ -432,7 +432,7 @@ void some_interrupt(enum gpio_signal signal)
 While there is no heap, there is a shared memory buffer that can be borrowed
 temporarily (ideally before a context switch). The size of the buffer depends on
 the EC chip being used. The buffer can only be used by one task at a time. See
-[common/shared_mem.c](https://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/shared_mem.c)
+[common/shared_mem.c](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/shared_mem.c)
 for more information. At present (May 2014), this buffer is only used by debug
 commands.
 
@@ -463,7 +463,7 @@ Other style notes:
     not use globals to pass information between modules without accessors. For
     module scope, accessors are not needed.
 1.  If you add a new `#define` config option to the code, please document it in
-    [include/config.h](https://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/config.h)
+    [include/config.h](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/include/config.h)
     with an `#undef` statement and descriptive comment.
 1.  The Chromium copyright header must be included at the top of new files in
     all contributions to the Chromium project:

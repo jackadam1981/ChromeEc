@@ -38,7 +38,7 @@ requires us to add some Zephyr specific code in a `zephyr` directory in the
 platform/ec for future development and work on migrating the platform/ec-module
 code out of the module directory and into a first-class Zephyr code format -- in
 the local
-[Chrome Zephyr repo](https://chromium.googlesource.com/chromiumos/platform/zephyr-chrome/+/refs/heads/master)
+[Chrome Zephyr repo](https://chromium.googlesource.com/chromiumos/platform/zephyr-chrome/+/HEAD)
 and ultimately [upstream](https://github.com/zephyrproject-rtos/zephyr).
 
 For platform/ec code that is stable and not under active development, the Zephyr
