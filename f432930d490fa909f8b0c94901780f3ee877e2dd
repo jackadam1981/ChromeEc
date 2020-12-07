@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b08c036a_4f103d04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-07T17:39:11Z",
+      "side": 1,
+      "message": "I also tried this patch with the StarTech dongle that causes VCONN OC spike. Verified that VCONN OC spike is detected, but that VCONN_OCP goes away on its own and the code handles it correctly.",
+      "revId": "f432930d490fa909f8b0c94901780f3ee877e2dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
