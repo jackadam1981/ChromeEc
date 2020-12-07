@@ -8,6 +8,11 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/* Console: Disable USB charge channel by default since it generates enough
+ * UART spam to impact boot */
+#undef CC_DEFAULT
+#define CC_DEFAULT (CC_ALL & ~CC_MASK(CC_USBCHARGE))
+
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
