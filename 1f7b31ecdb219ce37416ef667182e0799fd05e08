@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ed60b9_27af8675",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-12-07T02:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce3d5b9_de182918",
+      "revId": "1f7b31ecdb219ce37416ef667182e0799fd05e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9b007a8_d3a50695",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb9aa86_e230673c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-12-07T02:49:19Z",
+      "side": 1,
+      "message": "This requirement is also observed in the caller of this function, but I\u0027ve noted that hitting this case indicates either the caller or partner is wrong.",
+      "parentUuid": "f9b007a8_d3a50695",
+      "revId": "1f7b31ecdb219ce37416ef667182e0799fd05e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0628d29_c53cfc9e",
@@ -48,6 +84,24 @@
       "writtenOn": "2020-12-04T17:00:23Z",
       "side": 1,
       "message": "Check for CONFIG_USB_PD_FRS as well since we don\u0027t need this logic on non-FRS boards",
+      "revId": "1f7b31ecdb219ce37416ef667182e0799fd05e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b1618e2_c627f678",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3135,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-12-07T02:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0628d29_c53cfc9e",
       "revId": "1f7b31ecdb219ce37416ef667182e0799fd05e08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
