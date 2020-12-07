@@ -22,6 +22,30 @@
       },
       "revId": "770f8db6aa33b0b2ebf113160a59b6634a8e139e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de60282a_99892f8b",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-07T21:16:24Z",
+      "side": 1,
+      "message": "The most recent table in the bug doesn\u0027t describe a methodology for computing these numbers, but this comment describes a methodology for computing the earlier numbers. If the comment can be modified to accurately describe the current methodology with the current numbers, then I think it would be useful to retain it.\n\nIt may be that the current numbers were derived empirically, and it isn\u0027t very useful to explain the process here, in which case I\u0027m fine with deleting the comment.",
+      "parentUuid": "b4b6c008_589b672d",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "770f8db6aa33b0b2ebf113160a59b6634a8e139e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
