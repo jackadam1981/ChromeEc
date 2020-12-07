@@ -29,8 +29,13 @@
  * then redefined here to so it's more clear which signal is being used for
  * which purpose.
  */
-#define GPIO_LID_OPEN		GPIO_EC_LID_OPEN
-#define GPIO_WP_L		GPIO_EC_WP_L
+#define GPIO_WP_L			GPIO_EC_WP_L
+#define GPIO_POWER_BUTTON_L		GPIO_MECH_PWR_BTN_ODL
+#define GPIO_AC_PRESENT			GPIO_ACOK_OD
+#define GPIO_SYS_RESET_L		GPIO_EC_SYS_RST_L
+#define GPIO_PCH_PWRBTN_L		GPIO_EC_SOC_PWR_BTN_L
+#define GPIO_VOLUME_UP_L		GPIO_VOLUP_BTN_ODL
+#define GPIO_VOLUME_DOWN_L		GPIO_VOLDN_BTN_ODL
 
 /* Motion sensing drivers */
 
