@@ -1182,6 +1182,7 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 			(IS_ENABLED(CONFIG_USBC_VCONN) &&
 				get_state_pe(port) == PE_VCS_SEND_PS_RDY_SWAP)
 			) {
+		CPRINTS("custom handling");
 		PE_SET_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		task_wake(PD_PORT_TO_TASK_ID(port));
 		return;
@@ -1191,14 +1192,26 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 	 * See section 8.3.3.4.1.1 PE_SRC_Send_Soft_Reset State:
 	 *
 	 * The PE_Send_Soft_Reset state shall be entered from
-	 * any state when a Protocol Error is detected by
-	 * Protocol Layer during a Non-Interruptible AMS or when
-	 * Message has not been sent after retries. When an explicit
-	 * contract is not in effect.  Otherwise go to PE_Snk/Src_Ready
+	 * any state when
+	 * * A Protocol Error is detected by Protocol Layer during a
+	 *   Non-Interruptible AMS or
+	 * * A message has not been sent after retries or
+	 * * When not in an explicit contract and
+	 *   * Protocol Errors occurred on SOP during an Interruptible AMS or
+	 *   * Protocol Errors occurred on SOP during any AMS where the first
+	 *     Message in the sequence has not yet been sent i.e. an unexpected
+	 *     Message is received instead of the expected GoodCRC Message
+	 *     response.
 	 */
-	if (!PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT) &&
-			(!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS)
-			 || (e == ERR_TCH_XMIT))) {
+	CPRINTS("Flags %x, err %u", pe[port].flags, e);
+	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS) ||
+			e == ERR_TCH_XMIT ||
+			(!PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)
+			 /*
+			  * Not sure how this could happen outside the
+			  * conditions described above.
+			  */)) {
+		CPRINTS("soft reset");
 		pe_send_soft_reset(port, type);
 	}
 	/*
@@ -1206,6 +1219,7 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 	 * Error during an Interruptible AMS.
 	 */
 	else {
+		CPRINTS("Ready");
 		pe_set_ready_state(port);
 	}
 }
