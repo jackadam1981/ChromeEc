@@ -125,7 +125,8 @@ const struct power_seq board_power_seq[] = {
 	{GPIO_DEMUX_DUAL_DP_RESET_N,    1, 100},
 	{GPIO_DEMUX_DP_HDMI_PD_N,       1, 10},
 	{GPIO_DEMUX_DUAL_DP_MODE,       1, 10},
-	{GPIO_DEMUX_DP_HDMI_MODE,       1, 1},
+	{GPIO_DEMUX_DP_HDMI_MODE,       1, 5},
+	{GPIO_EC_DFU_MUX_CTRL,          0, 0},
 };
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
 
@@ -383,18 +384,35 @@ void board_overcurrent_event(int port, int is_overcurrented)
 }
 #endif
 
-void board_debug_gpio(int trigger, int enable)
+static void board_debug_gpio_1_pulse(void)
+{
+	gpio_set_level(GPIO_TRIGGER_1, 0);
+}
+DECLARE_DEFERRED(board_debug_gpio_1_pulse);
+
+static void board_debug_gpio_2_pulse(void)
+{
+	gpio_set_level(GPIO_TRIGGER_2, 0);
+}
+DECLARE_DEFERRED(board_debug_gpio_2_pulse);
+
+void board_debug_gpio(int trigger, int enable, int pulse_usec)
 {
 	switch (trigger) {
 	case TRIGGER_1:
 		gpio_set_level(GPIO_TRIGGER_1, enable);
+		if (pulse_usec)
+			hook_call_deferred(&board_debug_gpio_1_pulse_data,
+					   pulse_usec);
 		break;
 	case TRIGGER_2:
 		gpio_set_level(GPIO_TRIGGER_2, enable);
+		if (pulse_usec)
+			hook_call_deferred(&board_debug_gpio_2_pulse_data,
+					   pulse_usec);
 		break;
 	default:
 		CPRINTS("bad debug gpio selection");
 		break;
 	}
 }
-

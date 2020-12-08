@@ -383,7 +383,7 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 #endif
 		rv = 1;
 		pd_log_event(PD_EVENT_VIDEO_DP_MODE, 0, 1, NULL);
-		/* Entering ALT-DP mode, enable DP connection in demux */
+		baseboard_hpd_converter_enable(1);
 	} else if ((PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) &&
 		   (PD_VDO_OPOS(payload[0]) == OPOS_GFU)) {
 #ifndef TCPM_V2_ALT_MODE
@@ -432,6 +432,7 @@ static int svdm_exit_mode(int port, uint32_t *payload)
 #endif
 		/* Configure demux to disable DP mode */
 		svdm_configure_demux(port, 0, 0);
+		baseboard_hpd_converter_enable(0);
 		pd_log_event(PD_EVENT_VIDEO_DP_MODE, 0, 0, NULL);
 	} else if (PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) {
 #ifndef TCPM_V2_ALT_MODE
