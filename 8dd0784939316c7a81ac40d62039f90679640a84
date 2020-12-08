@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5193c83_04612ca7",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-08T16:58:08Z",
+      "side": 1,
+      "message": "This needs a check that this is being called from a PD task before doing the task_wait().\n\n    assert(port \u003d\u003d TASK_ID_TO_PD_PORT(task_get_current()));",
+      "revId": "8dd0784939316c7a81ac40d62039f90679640a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d82b80_4ecf8090",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-08T16:58:08Z",
+      "side": 1,
+      "message": "Rename to follow PD_ convention.  How about PD_EVENT_AP_MUX_DONE?",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "8dd0784939316c7a81ac40d62039f90679640a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

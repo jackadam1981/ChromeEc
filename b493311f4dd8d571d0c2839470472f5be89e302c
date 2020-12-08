@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb60a91_5cbad96f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-08T16:58:08Z",
+      "side": 0,
+      "message": "This should probably be in a separate CL.  Is there any dependency on this change with the TCSS and the ACK message?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 0
+      },
+      "revId": "b493311f4dd8d571d0c2839470472f5be89e302c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
