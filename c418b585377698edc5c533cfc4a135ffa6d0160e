@@ -16,6 +16,24 @@
       "message": "Is this how mocks are supposed to be used, or am I setting up my build incorrectly?",
       "revId": "c418b585377698edc5c533cfc4a135ffa6d0160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "316109bb_20b6c602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-12-08T17:06:32Z",
+      "side": 1,
+      "message": "If you need the mocks to return different answers, you can either override them in your test, or (the better choice) you can modify them to return data from a variable that has a reasonable default and the tests can change the variable as needed.",
+      "parentUuid": "7049e872_1e42b50b",
+      "revId": "c418b585377698edc5c533cfc4a135ffa6d0160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
