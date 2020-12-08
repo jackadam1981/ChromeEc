@@ -22,6 +22,30 @@
       },
       "revId": "53f706811ea1389bb00e4f6f41973484b9e58dac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61cf39eb_7a7c6dfc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-08T16:43:22Z",
+      "side": 1,
+      "message": "I\u0027m honestly uncertain what SOP interruptible AMS we could be running without an explicit contract. The only interruptible AMS I know of that runs outside explicit contracts would be cable discovery.  \n\nI\u0027d assume the other one would be covering issues with unexpected SOPs in the middle of things like power role swaps or initial power negotiation, though if we didn\u0027t receive a GoodCRC it seems those would be covered by the \"message not sent after retries\" check.",
+      "parentUuid": "50a65a04_7400d163",
+      "range": {
+        "startLine": 1209,
+        "startChar": 6,
+        "endLine": 1210,
+        "endChar": 25
+      },
+      "revId": "53f706811ea1389bb00e4f6f41973484b9e58dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
