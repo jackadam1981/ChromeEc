@@ -176,6 +176,7 @@ enum usb_strings {
 #ifdef BOARD_P1
 #define CONFIG_CMD_PPC_DUMP
 #define CONFIG_STM32G4_UCPD_DEBUG
+#define CONFIG_USB_PD_REV30
 #endif
 #define CONFIG_CMD_TCPC_DUMP
 #endif
@@ -261,6 +262,7 @@ enum adc_channel {
 
 extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
+extern void baseboard_hpd_converter_enable(int enable);
 extern void baseboard_manage_hpd_event(int signal);
 
 #endif /* !__ASSEMBLER__ */
