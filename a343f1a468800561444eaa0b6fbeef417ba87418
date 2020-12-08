@@ -70,6 +70,30 @@
       },
       "revId": "a343f1a468800561444eaa0b6fbeef417ba87418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4346ff96_4f176503",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-08T16:39:46Z",
+      "side": 1,
+      "message": "Re: just giving up, I think that\u0027s in the spirit of the spec\u0027s recommendation to Hard Reset, although I think that section is written with VBUS primarily in mind.\n\nHypothetically, if this happened after the cable had responded to a message, and we timed out during subsequent cable communication due to not sourcing VCONN, we would try to Soft Reset the cable, and we would eventually send a Hard Reset. (That\u0027s wrong. We have a bug open to implement Cable Reset.) I think the much more likely scenario is that this would happen immediately upon attach, so I\u0027m not super worried about that.\n\nOnce we have Cable Reset working, I think the end result of this happening at any point would be for us to just stop trying to talk to the cable.",
+      "parentUuid": "1f44dac8_0590232d",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 21
+      },
+      "revId": "a343f1a468800561444eaa0b6fbeef417ba87418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
