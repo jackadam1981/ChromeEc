@@ -697,6 +697,7 @@ void prl_set_rev(int port, enum tcpm_transmit_type type,
 enum pd_rev_type prl_get_rev(int port, enum tcpm_transmit_type type)
 {
 	/* We only store revisions for SOP* types. */
+	CPRINTS("type %d num %d", type, NUM_SOP_STAR_TYPES);
 	ASSERT(type < NUM_SOP_STAR_TYPES);
 
 	return pdmsg[port].rev[type];
