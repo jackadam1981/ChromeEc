@@ -91,7 +91,7 @@ static void board_uf_manage_vbus_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&board_uf_manage_vbus_data, 500);
 }
-#endif
+#endif /* SECTION_IS_RW */
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -122,7 +122,8 @@ const struct power_seq board_power_seq[] = {
 	{GPIO_DEMUX_DUAL_DP_RESET_N,    1, 100},
 	{GPIO_DEMUX_DP_HDMI_PD_N,       1, 10},
 	{GPIO_DEMUX_DUAL_DP_MODE,       1, 10},
-	{GPIO_DEMUX_DP_HDMI_MODE,       1, 1},
+	{GPIO_DEMUX_DP_HDMI_MODE,       1, 5},
+	{GPIO_EC_DFU_MUX_CTRL,          0, 0},
 };
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
 
@@ -283,15 +284,10 @@ static void board_ppc_force_detach(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_ppc_force_detach, HOOK_PRIO_INIT_I2C + 1);
-#endif
+#endif /* SECTION_IS_RW */
 
-static void board_init(void)
-{
-	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
-	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
-	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
-}
 
+#ifdef SECTION_IS_RW
 static void board_config_usbc_uf_ppc(void)
 {
 	int vbus_level;
@@ -348,6 +344,9 @@ static void board_init(void)
 #ifdef SECTION_IS_RW
 	usb_mux_hpd_update(1, 0, 0);
 	hook_call_deferred(&board_config_usbc_uf_ppc_data, 10 * MSEC);
+	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
@@ -384,18 +383,35 @@ void board_overcurrent_event(int port, int is_overcurrented)
 }
 #endif
 
-void board_debug_gpio(int trigger, int enable)
+static void board_debug_gpio_1_pulse(void)
+{
+	gpio_set_level(GPIO_TRIGGER_1, 0);
+}
+DECLARE_DEFERRED(board_debug_gpio_1_pulse);
+
+static void board_debug_gpio_2_pulse(void)
+{
+	gpio_set_level(GPIO_TRIGGER_2, 0);
+}
+DECLARE_DEFERRED(board_debug_gpio_2_pulse);
+
+void board_debug_gpio(int trigger, int enable, int pulse_usec)
 {
 	switch (trigger) {
 	case TRIGGER_1:
 		gpio_set_level(GPIO_TRIGGER_1, enable);
+		if (pulse_usec)
+			hook_call_deferred(&board_debug_gpio_1_pulse_data,
+					   pulse_usec);
 		break;
 	case TRIGGER_2:
 		gpio_set_level(GPIO_TRIGGER_2, enable);
+		if (pulse_usec)
+			hook_call_deferred(&board_debug_gpio_2_pulse_data,
+					   pulse_usec);
 		break;
 	default:
 		CPRINTS("bad debug gpio selection");
 		break;
 	}
 }
-

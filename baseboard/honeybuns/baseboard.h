@@ -158,8 +158,7 @@ enum usb_strings {
 #define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DYNAMIC_SRC_CAP
-#define CONFIG_USB_PD_PORT_MAX_COUNT 1
-#define CONFIG_USB_PD_DYNAMIC_SRC_CAP
+#define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_PS8805
 #define CONFIG_USB_PD_TCPM_STM32GX
@@ -175,9 +174,9 @@ enum usb_strings {
 #ifdef BOARD_P1
 #define CONFIG_CMD_PPC_DUMP
 #define CONFIG_STM32G4_UCPD_DEBUG
+#define CONFIG_USB_PD_REV30
 #endif
 #define CONFIG_CMD_TCPC_DUMP
-#endif
 
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
@@ -259,6 +258,7 @@ enum adc_channel {
 
 extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
+extern void baseboard_hpd_converter_enable(int enable);
 extern void baseboard_manage_hpd_event(int signal);
 
 #endif /* !__ASSEMBLER__ */
