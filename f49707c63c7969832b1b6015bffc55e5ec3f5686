@@ -56,6 +56,30 @@
       },
       "revId": "f49707c63c7969832b1b6015bffc55e5ec3f5686",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2579e28f_e05834ec",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-08T22:53:24Z",
+      "side": 1,
+      "message": "Either way is fine with me. Are their any power implications for one way or another?\n\ne.g., same as STM32F412: https://chromium.googlesource.com/chromiumos/platform/ec/+/b5b7e4500c407e57e4d734bbd42b3a100dd08e96/board/hatch_fp/gpio.inc#27",
+      "parentUuid": "b52237af_5ff89f94",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "f49707c63c7969832b1b6015bffc55e5ec3f5686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
