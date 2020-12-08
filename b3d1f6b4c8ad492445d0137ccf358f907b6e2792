@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "843f9a33_8cf198a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-12-08T01:41:24Z",
+      "side": 1,
+      "message": "Looks good to restore the original function. But I am not clear why it affects the PD DRP state. Does octopus (casta) have  CONFIG_POWER_SLEEP_FAILURE_DETECTION defined?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "b3d1f6b4c8ad492445d0137ccf358f907b6e2792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a43694fa_76dfa597",
