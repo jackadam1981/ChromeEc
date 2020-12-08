@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "173cd7f2_7155c6f1",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-08T07:15:22Z",
+      "side": 1,
+      "message": "returns 0 directly",
+      "range": {
+        "startLine": 357,
+        "startChar": 9,
+        "endLine": 357,
+        "endChar": 10
+      },
+      "revId": "e281544aabc8e4e088e012d6f9bda4028460a67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4bc92b3_a3759ebf",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-08T07:15:22Z",
+      "side": 1,
+      "message": "the API doesn\u0027t use ec_error_list, return 0 directly.",
+      "range": {
+        "startLine": 590,
+        "startChar": 9,
+        "endLine": 590,
+        "endChar": 10
+      },
+      "revId": "e281544aabc8e4e088e012d6f9bda4028460a67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
