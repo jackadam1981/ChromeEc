@@ -175,7 +175,7 @@ enum pwm_channel {
 
 /* List of possible batteries */
 enum battery_type {
-	BATTERY_POWER_TECH,
+	BATTERY_SDI,
 	BATTERY_TYPE_COUNT,
 };
 
