@@ -34,6 +34,24 @@
       "parentUuid": "ae255873_3e59b3cc",
       "revId": "33abef532e72fa80a9d30dd7422da7e4a05d3773",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8342b7d_3e03b512",
+        "filename": "test/test_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-08T17:59:33Z",
+      "side": 1,
+      "message": "Yeah, we can leave a TODO somewhere to track this removal",
+      "parentUuid": "79162311_c89e4f6c",
+      "revId": "33abef532e72fa80a9d30dd7422da7e4a05d3773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
