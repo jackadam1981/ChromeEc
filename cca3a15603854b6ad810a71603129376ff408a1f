@@ -16,6 +16,24 @@
       "message": "Is this is the path forward, we should submit an identical copy to nocturne_fp first and then make the changes.",
       "revId": "cca3a15603854b6ad810a71603129376ff408a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b250b1d_fcefa92e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-08T23:28:29Z",
+      "side": 1,
+      "message": "Also, if this is the path forward, then we should remove the ro_workarounds and submit RO fixes for RDP1.",
+      "parentUuid": "be82e55c_e27f346c",
+      "revId": "cca3a15603854b6ad810a71603129376ff408a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
