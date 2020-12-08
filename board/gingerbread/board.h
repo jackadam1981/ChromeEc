@@ -75,7 +75,7 @@ enum  debug_gpio {
 	TRIGGER_2,
 };
 
-void board_debug_gpio(int trigger, int enable);
+void board_debug_gpio(int trigger, int enable, int pulse_usec);
 
 #endif /* !__ASSEMBLER__ */
 
