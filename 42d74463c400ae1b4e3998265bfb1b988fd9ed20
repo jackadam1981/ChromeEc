@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "912af8d3_a2c298c2",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-12-08T09:00:57Z",
+      "side": 1,
+      "message": "Maybe there is the better way as following.\n\n#if !defined(VARIANT_DEDEDE_EC_SASUKE)",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 32
+      },
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd440fc_0eae3b9b",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-12-08T09:00:57Z",
+      "side": 1,
+      "message": "Maybe there is the better way as following.\n\n#if !defined(VARIANT_DEDEDE_EC_SASUKE)",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 32
+      },
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fa15f38_f03779d9",
@@ -172,6 +218,29 @@
       "side": 1,
       "message": "fp_sqrtf() is used in common/ocpc.c.\nIf we do not define this, following error is shown.\n\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/sasuke/RW/common/ocpc.o: in function `calc_resistance_stats\u0027:\n/home/ybha-partner/trunk/src/platform/ec/common/ocpc.c:94: undefined reference to `fp_sqrtf\u0027",
       "parentUuid": "557fe8ac_de7e7069",
+      "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "450d9d57_09f4d8e3",
+        "filename": "board/sasuke/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-12-08T09:00:57Z",
+      "side": 1,
+      "message": "Please remove these settings.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 59
+      },
       "revId": "42d74463c400ae1b4e3998265bfb1b988fd9ed20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
