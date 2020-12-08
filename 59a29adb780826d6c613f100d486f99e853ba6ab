@@ -16,6 +16,24 @@
       "message": "can i download this onto my google docs?",
       "revId": "59a29adb780826d6c613f100d486f99e853ba6ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5520cd_47e6d024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-08T20:22:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you\u0027re asking. There are Docs plugins to import Markdown with formatting.\n\nNote that this is a cherry pick to a firmware branch. This CL has already been in master for a few days.",
+      "parentUuid": "f5031f33_2231fd27",
+      "revId": "59a29adb780826d6c613f100d486f99e853ba6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
