@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb0e0310_8417e72c",
+        "filename": "common/ec_features.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-12-08T20:15:52Z",
+      "side": 1,
+      "message": "I suspect there should be a separate CONFIG for this, rather than making it dependent on _USBC_RETIMER_INTEL_BB directly....",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 35
+      },
+      "revId": "8dd0784939316c7a81ac40d62039f90679640a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5193c83_04612ca7",
         "filename": "driver/usb_mux/virtual.c",
         "patchSetId": 18
