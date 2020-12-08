@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f31a53d_daa6aab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-08T15:23:39Z",
+      "side": 1,
+      "message": "I am not sure why I have this to review. Being on CrOS Platform EC, I don\u0027t use any of this and have no idea what is correct or not.\n\nI get the straight master-\u003eHEAD transition but the refs/heads/master-\u003eHEAD seems refs/heads/HEAD would have been more correct.  I am going to +2 it and hope this has been tested out with the new links.",
+      "revId": "83c4d41b076ccc12a3e66988b654ac4af18708aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
