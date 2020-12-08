@@ -16,6 +16,24 @@
       "message": "Should we be removing this define entirely?  Or are there cases where it\u0027s still desired to use it?",
       "revId": "33abef532e72fa80a9d30dd7422da7e4a05d3773",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79162311_c89e4f6c",
+        "filename": "test/test_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-08T16:56:15Z",
+      "side": 1,
+      "message": "IMO, we should remove it entirely. There are non-TCPCI drivers that still use it. I think the soft TCPC does too. I\u0027m not that familiar with them, so I figured I\u0027d leave that for another CL. If that\u0027s OK with you, I can add a TODO here.",
+      "parentUuid": "ae255873_3e59b3cc",
+      "revId": "33abef532e72fa80a9d30dd7422da7e4a05d3773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
