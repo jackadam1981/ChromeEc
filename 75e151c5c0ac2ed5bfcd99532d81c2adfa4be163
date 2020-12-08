@@ -46,6 +46,30 @@
       },
       "revId": "75e151c5c0ac2ed5bfcd99532d81c2adfa4be163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13de8ec4_9a1b8a62",
+        "filename": "common/charger.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-08T04:25:53Z",
+      "side": 1,
+      "message": "Sounds good. I believe returning EC_ERROR_UNIMPLEMENTED on function pointer check is definitely cleaner.",
+      "parentUuid": "e672cbb6_d2fc7aea",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 11
+      },
+      "revId": "75e151c5c0ac2ed5bfcd99532d81c2adfa4be163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
