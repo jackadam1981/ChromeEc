@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
 #include "hooks.h"
 #include "mock/tcpci_i2c_mock.h"
 #include "mock/usb_mux_mock.h"
@@ -15,6 +16,8 @@
 #include "usb_prl_sm.h"
 
 #define PORT0 0
+
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 enum mock_cc_state {
 	MOCK_CC_SRC_OPEN = 0,
@@ -288,6 +291,8 @@ __maybe_unused static int test_retry_count_sop(void)
 	 *
 	 * Source Caps is SOP message which should be retried at TCPC layer
 	 */
+	CPRINTS("rev %d retry count %d", IS_ENABLED(CONFIG_USB_PD_REV30),
+			CONFIG_PD_RETRY_COUNT);
 	TEST_EQ(verify_tcpci_tx_retry_count(TCPC_TX_SOP, CONFIG_PD_RETRY_COUNT),
 		EC_SUCCESS, "%d");
 	return EC_SUCCESS;
