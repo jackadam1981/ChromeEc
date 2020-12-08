@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "54cd0b6d_20199e14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-08T07:49:07Z",
+      "side": 1,
+      "message": "It doesn\u0027t.\n\n grep -r \"define CONFIG_POWER_SLEEP_FAILURE_DETECTION\" .\n ./baseboard/dedede/baseboard.h:#define CONFIG_POWER_SLEEP_FAILURE_DETECTION\n ./baseboard/hatch/baseboard.h:#define CONFIG_POWER_SLEEP_FAILURE_DETECTION\n ./baseboard/trogdor/baseboard.h:#define CONFIG_POWER_SLEEP_FAILURE_DETECTION\n ./baseboard/volteer/baseboard.h:#define CONFIG_POWER_SLEEP_FAILURE_DETECTION\n ./board/ambassador/board.h:#define CONFIG_POWER_SLEEP_FAILURE_DETECTION\n ./board/dooly/board.h:#define CONFIG_POWER_SLEEP_FAILURE_DETECTION\n ./board/puff/board.h:#define CONFIG_POWER_SLEEP_FAILURE_DETECTION\n ./board/genesis/board.h:#define CONFIG_POWER_SLEEP_FAILURE_DETECTION",
+      "parentUuid": "843f9a33_8cf198a3",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "b3d1f6b4c8ad492445d0137ccf358f907b6e2792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a43694fa_76dfa597",
