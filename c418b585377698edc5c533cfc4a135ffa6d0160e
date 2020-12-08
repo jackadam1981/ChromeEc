@@ -34,6 +34,24 @@
       "parentUuid": "7049e872_1e42b50b",
       "revId": "c418b585377698edc5c533cfc4a135ffa6d0160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4571d700_57527828",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-08T17:27:10Z",
+      "side": 1,
+      "message": "So the idea is not that the mocks are weakly linked to allow the library to link against the libraries that contain the real definitions?",
+      "parentUuid": "316109bb_20b6c602",
+      "revId": "c418b585377698edc5c533cfc4a135ffa6d0160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
