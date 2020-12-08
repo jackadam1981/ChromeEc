@@ -22,6 +22,30 @@
       },
       "revId": "75e151c5c0ac2ed5bfcd99532d81c2adfa4be163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e672cbb6_d2fc7aea",
+        "filename": "common/charger.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-08T03:48:09Z",
+      "side": 1,
+      "message": "They style follows all the rest API\u0027s convention. I prefer stay as is, and have a separate CL to rewrite this.",
+      "parentUuid": "df69ab50_a86047fb",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 11
+      },
+      "revId": "75e151c5c0ac2ed5bfcd99532d81c2adfa4be163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
