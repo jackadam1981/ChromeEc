@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85403a65_1f665cab",
+        "filename": "board/galtic/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-08T17:35:01Z",
+      "side": 0,
+      "message": "Please maintain the interrupt line sharing logic.  The line will still be shared between multiple chips, and we need to guard against it being stuck low and unserviced.",
+      "revId": "e15638c6df92680fa6694ef76c09ee2b71963dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1004aea_3043ecf1",
+        "filename": "board/galtic/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-08T17:35:01Z",
+      "side": 0,
+      "message": "Also maintain init checks on the interrupt lines",
+      "revId": "e15638c6df92680fa6694ef76c09ee2b71963dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
