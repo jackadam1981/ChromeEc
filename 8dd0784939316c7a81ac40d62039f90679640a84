@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c58bee_280665d1",
+        "filename": "common/ec_features.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-08T22:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb0e0310_8417e72c",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 35
+      },
+      "revId": "8dd0784939316c7a81ac40d62039f90679640a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5193c83_04612ca7",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd0053a7_04575388",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-08T22:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5193c83_04612ca7",
+      "revId": "8dd0784939316c7a81ac40d62039f90679640a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5d82b80_4ecf8090",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-12-08T16:58:08Z",
       "side": 1,
       "message": "Rename to follow PD_ convention.  How about PD_EVENT_AP_MUX_DONE?",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "8dd0784939316c7a81ac40d62039f90679640a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8139a27_d3516e94",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-08T22:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5d82b80_4ecf8090",
       "range": {
         "startLine": 70,
         "startChar": 8,
