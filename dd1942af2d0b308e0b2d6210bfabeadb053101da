@@ -34,6 +34,24 @@
       "parentUuid": "7bafce0b_5e2fa67d",
       "revId": "dd1942af2d0b308e0b2d6210bfabeadb053101da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5da6dd7e_857b507e",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-08T17:24:08Z",
+      "side": 0,
+      "message": "Yup.  I would expect it hasn\u0027t come up yet because most recently developed boards use chargers that define this function.  The ones I see without it are fairly old (ex. jerry, samus)",
+      "parentUuid": "7bafce0b_5e2fa67d",
+      "revId": "dd1942af2d0b308e0b2d6210bfabeadb053101da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
