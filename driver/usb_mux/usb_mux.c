@@ -9,6 +9,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "timer.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -284,6 +285,8 @@ void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
 	if (port >= board_get_usb_pd_port_count()) {
 		return;
 	}
+
+	board_debug_gpio(TRIGGER_1, 1, 100 * MSEC);
 
 	for (; mux_ptr; mux_ptr = mux_ptr->next_mux)
 		if (mux_ptr->hpd_update)
