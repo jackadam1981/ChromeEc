@@ -70,6 +70,30 @@
       },
       "revId": "770f8db6aa33b0b2ebf113160a59b6634a8e139e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9b2cc1_ecfdad02",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-08T21:02:51Z",
+      "side": 1,
+      "message": "Alright. I could quibble about grammar, but I think this comment will be sufficient for future readers to figure out what\u0027s going on.",
+      "parentUuid": "7962457f_9da08b86",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "770f8db6aa33b0b2ebf113160a59b6634a8e139e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
