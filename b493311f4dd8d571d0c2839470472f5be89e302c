@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04740edb_669ce115",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-08T22:51:33Z",
+      "side": 1,
+      "message": "Correct. I changed all the boards using BB retimer.",
+      "parentUuid": "69e55fb0_43c1e598",
+      "revId": "b493311f4dd8d571d0c2839470472f5be89e302c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc3e457f_b30b3f4a",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-08T16:57:55Z",
       "side": 1,
       "message": "I suggest calling this the usbc1_tcss_usb_mux. And update the comment to reference that the Type C Subsystem mux (TCSS) is internal to TGL.",
+      "range": {
+        "startLine": 560,
+        "startChar": 15,
+        "endLine": 560,
+        "endChar": 30
+      },
+      "revId": "b493311f4dd8d571d0c2839470472f5be89e302c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65f512a_67e572f1",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-08T22:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc3e457f_b30b3f4a",
       "range": {
         "startLine": 560,
         "startChar": 15,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1001c125_1af68426",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-08T22:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75858697_fffe0c1b",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 1
+      },
+      "revId": "b493311f4dd8d571d0c2839470472f5be89e302c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "539a53cf_add86e70",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-12-08T16:57:55Z",
       "side": 1,
       "message": "See naming suggestion in volteer/board.c",
+      "range": {
+        "startLine": 364,
+        "startChar": 15,
+        "endLine": 364,
+        "endChar": 36
+      },
+      "revId": "b493311f4dd8d571d0c2839470472f5be89e302c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5728874f_4582b8b9",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-08T22:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "539a53cf_add86e70",
       "range": {
         "startLine": 364,
         "startChar": 15,
