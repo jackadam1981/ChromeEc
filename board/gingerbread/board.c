@@ -19,6 +19,7 @@
 #include "switch.h"
 #include "system.h"
 #include "task.h"
+#include "timer.h"
 #include "uart.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
@@ -271,14 +272,32 @@ void board_overcurrent_event(int port, int is_overcurrented)
 
 #endif
 
-void board_debug_gpio(int trigger, int enable)
+static void board_debug_gpio_1_pulse(void)
+{
+	gpio_set_level(GPIO_TRIGGER_1, 0);
+}
+DECLARE_DEFERRED(board_debug_gpio_1_pulse);
+
+static void board_debug_gpio_2_pulse(void)
+{
+	gpio_set_level(GPIO_TRIGGER_2, 0);
+}
+DECLARE_DEFERRED(board_debug_gpio_2_pulse);
+
+void board_debug_gpio(int trigger, int enable, int pulse_usec)
 {
 	switch (trigger) {
 	case TRIGGER_1:
 		gpio_set_level(GPIO_TRIGGER_1, enable);
+		if (pulse_usec)
+			hook_call_deferred(&board_debug_gpio_1_pulse_data,
+					   pulse_usec);
 		break;
 	case TRIGGER_2:
 		gpio_set_level(GPIO_TRIGGER_2, enable);
+		if (pulse_usec)
+			hook_call_deferred(&board_debug_gpio_2_pulse_data,
+					   pulse_usec);
 		break;
 	default:
 		CPRINTS("bad debug gpio selection");
