@@ -80,6 +80,30 @@
       },
       "revId": "f49707c63c7969832b1b6015bffc55e5ec3f5686",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c87761c_4e3e55d4",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-08T23:26:29Z",
+      "side": 1,
+      "message": "Unfortunately, the power savings (gpio clocks and analog input) for gpios is only implemented for the F4 currently. That being said, we can implement this for the H7.\n\nSetting to Analog Input\ngithub.com/coreboot/chrome-ec/blob/master/chip/stm32/gpio.c#L73\nOnly turn on gpio clocks for used ports\ngithub.com/coreboot/chrome-ec/blob/master/chip/stm32/gpio-stm32f4.c#L39\n\n---\n\nLet\u0027s go comment only for now. We can change to UNUSED when we actually implement it.",
+      "parentUuid": "2579e28f_e05834ec",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "f49707c63c7969832b1b6015bffc55e5ec3f5686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
