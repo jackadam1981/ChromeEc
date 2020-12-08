@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "task.h"
+#include "timer.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
