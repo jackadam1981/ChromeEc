@@ -36,7 +36,7 @@ GPIO(STATUS_LED1,                   PIN(A, 2),  GPIO_OUT_HIGH)
 GPIO(STATUS_LED2,                   PIN(B, 12), GPIO_OUT_HIGH)
 
 /* MST Hub signals */
-GPIO(MST_LP_CTL_L,                  PIN(B, 9),  GPIO_ODR_LOW)
+GPIO(MST_LP_CTL_L,                  PIN(B, 9),  GPIO_OUT_LOW)
 GPIO(MST_RST_L,                     PIN(B, 3),  GPIO_ODR_LOW)
 #ifdef BOARD_P1
 GPIO(MST_HUB_LANE_SWITCH,           PIN(C, 15), GPIO_OUT_HIGH)
