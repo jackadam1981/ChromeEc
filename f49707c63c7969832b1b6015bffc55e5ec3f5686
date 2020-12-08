@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094cf3ab_7cae5047",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-08T16:55:52Z",
+      "side": 1,
+      "message": "I originally wanted to remove these, but then I became worried that we would forget that these lines are physically driven on old designs....sooo I added a note instead documenting this legacy behavior",
+      "revId": "f49707c63c7969832b1b6015bffc55e5ec3f5686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
