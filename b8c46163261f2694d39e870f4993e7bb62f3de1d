@@ -39,6 +39,30 @@
       },
       "revId": "b8c46163261f2694d39e870f4993e7bb62f3de1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2428b402_6dd5c8bf",
+        "filename": "board/guybrush/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-08T22:34:29Z",
+      "side": 1,
+      "message": "I don\u0027t think it adds much value when there\u0027s only a few bits in the mask, but this is really helpful for the keyboard signals signals that have several bits!",
+      "parentUuid": "c61539d8_f3cc9a5d",
+      "range": {
+        "startLine": 97,
+        "startChar": 22,
+        "endLine": 97,
+        "endChar": 34
+      },
+      "revId": "b8c46163261f2694d39e870f4993e7bb62f3de1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
