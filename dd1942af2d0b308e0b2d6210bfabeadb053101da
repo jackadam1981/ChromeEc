@@ -16,6 +16,24 @@
       "message": "this should be a bug",
       "revId": "dd1942af2d0b308e0b2d6210bfabeadb053101da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c40593d_16d3fb80",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-08T17:22:32Z",
+      "side": 0,
+      "message": "nice catch",
+      "parentUuid": "7bafce0b_5e2fa67d",
+      "revId": "dd1942af2d0b308e0b2d6210bfabeadb053101da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
