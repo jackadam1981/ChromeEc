@@ -506,14 +506,21 @@ static void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 }
 
 
+uint32_t last_sts;
+uint32_t checked_sts;
 /* TODO: data_size is between 1 and 64, but is not trustworthy! We must return
  * that many bytes, but not leak any secrets if data_size is larger than
  * it should be. Return 0x00 or 0xff or whatever the spec says instead. */
 void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 {
 	int i;
+	int print = 0;
 
-	CPRINTF("%s(0x%06x, %d)", __func__, regaddr, data_size);
+	if (regaddr != TPM_STS || !checked_sts) {
+		CPRINTF("%s(0x%06x, %d)", __func__, regaddr, data_size);
+		print = 1;
+		checked_sts = regaddr == TPM_STS ? 1 : 0;
+	}
 	switch (regaddr) {
 	case TPM_DID_VID:
 		copy_bytes(dest, data_size, (GOOGLE_DID << 16) | GOOGLE_VID);
@@ -528,8 +535,16 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 		copy_bytes(dest, data_size, tpm_.regs.access);
 		break;
 	case TPM_STS:
-		CPRINTF(" %x", tpm_.regs.sts);
+		if (!print && last_sts != tpm_.regs.sts) {
+			CPRINTF("sts_change(%d)(0x%06x, %d)", checked_sts,
+				regaddr, data_size);
+			print = 1;
+		}
+		if (print)
+			CPRINTF(" %x", tpm_.regs.sts);
 		copy_bytes(dest, data_size, tpm_.regs.sts);
+		checked_sts++;
+		last_sts = tpm_.regs.sts;
 		break;
 	case TPM_DATA_FIFO:
 		fifo_reg_read(dest, data_size);
@@ -562,7 +577,8 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 		CPRINTS("%s(0x%06x, %d) => ??", __func__, regaddr, data_size);
 		return;
 	}
-	CPRINTF("\n");
+	if (print)
+		CPRINTF("\n");
 }
 
 static __preserved interface_control_func if_start;
