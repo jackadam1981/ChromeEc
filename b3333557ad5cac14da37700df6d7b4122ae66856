@@ -16,6 +16,46 @@
       "message": "It\u0027s hard to reproduce the impact on the v1 changes, but this change already improves reliability quite a bit on the current firmware on micro/v4/sweetberry. So we should get it in, deploy it, check if \u0027old ones\u0027 are still failing, and then adjust accordingly",
       "revId": "b3333557ad5cac14da37700df6d7b4122ae66856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb16e2d8_323f1391",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2020-12-09T02:08:33Z",
+      "side": 1,
+      "message": "% comment",
+      "revId": "b3333557ad5cac14da37700df6d7b4122ae66856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6748eb7_1bf9e106",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2020-12-09T02:08:33Z",
+      "side": 1,
+      "message": "missed to pass serialno?",
+      "range": {
+        "startLine": 259,
+        "startChar": 49,
+        "endLine": 259,
+        "endChar": 50
+      },
+      "revId": "b3333557ad5cac14da37700df6d7b4122ae66856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
