@@ -297,6 +297,24 @@
       "parentUuid": "e0a46e34_d7899e03",
       "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcd5b787_ada5c7b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-12-09T20:13:12Z",
+      "side": 1,
+      "message": "Sorry, that wasn\u0027t clear. What I meant was that the exception removed here only happens on S5 entry, so servo_v4_role:snk must have already happened, before S5 entry, so during S0. If servo_v4_role:snk happens after we are already in S5, then this CL doesn\u0027t have any effect, and we were already relying on rddkeepalive to keep CCD working.",
+      "parentUuid": "6bf421d4_483047be",
+      "revId": "0fc1c277b2a459a4500b8315d50e015157e76162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
