@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8501bdb5_a44ec4e9",
+        "filename": "board/galtic/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-09T07:27:33Z",
+      "side": 0,
+      "message": "Understood. I will keep the interrupt line sharing logic.",
+      "parentUuid": "85403a65_1f665cab",
+      "revId": "e15638c6df92680fa6694ef76c09ee2b71963dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1004aea_3043ecf1",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-08T17:35:01Z",
       "side": 0,
       "message": "Also maintain init checks on the interrupt lines",
+      "revId": "e15638c6df92680fa6694ef76c09ee2b71963dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34df3d06_b5ca2173",
+        "filename": "board/galtic/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-09T07:27:33Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "e1004aea_3043ecf1",
       "revId": "e15638c6df92680fa6694ef76c09ee2b71963dc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
