@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe58782_14f073a9",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-09T22:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66dd49a4_d6f00f27",
+      "range": {
+        "startLine": 541,
+        "startChar": 3,
+        "endLine": 541,
+        "endChar": 13
+      },
+      "revId": "568199c084c43f7ce2074126850e07561f637a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be8c9d24_9977ff00",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "516beeee_33c82596",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-09T22:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be8c9d24_9977ff00",
+      "range": {
+        "startLine": 544,
+        "startChar": 5,
+        "endLine": 544,
+        "endChar": 12
+      },
+      "revId": "568199c084c43f7ce2074126850e07561f637a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32c416a3_a1abf6b0",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-09T22:24:18Z",
       "side": 1,
       "message": "anther nit: you can set checked_sts to 1 in line 542 an put this increment in the else clause of the if in line 541.",
+      "range": {
+        "startLine": 546,
+        "startChar": 2,
+        "endLine": 546,
+        "endChar": 15
+      },
+      "revId": "568199c084c43f7ce2074126850e07561f637a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd72910_5114e59e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-09T22:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32c416a3_a1abf6b0",
       "range": {
         "startLine": 546,
         "startChar": 2,
