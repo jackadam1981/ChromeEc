@@ -22,6 +22,30 @@
       },
       "revId": "0888695a870c9314d6024612b17be51c9e3adfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181e1d98_19407ca5",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-09T23:40:41Z",
+      "side": 1,
+      "message": "No. When I came across this, the way I thought it was supposed to work is that the mocks would be weakly linked, and that would allow this layer-spanning mock library to link against different combinations of layers under test. My conversation with Paul so far makes me think that this wasn\u0027t the intention, but I await further explanation from him on how this is supposed to be used.\n\nThe direct impetus for doing this was linking this against usb_typec_drp_acc_trysrc after adding a mock of pd_get_rev to this file.",
+      "parentUuid": "f644448b_c280adc1",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "0888695a870c9314d6024612b17be51c9e3adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
