@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "613d32da_ff1d8d31",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6668,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-09T08:05:04Z",
+      "side": 1,
+      "message": "what we put the fields in an order fitting the natural alignment of those integers ?\nie \u0027error\u0027 at the beginning so it is aligned.",
+      "revId": "5e76871a5902a58ff13b0141d9d7c8d7b6abae1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da46a5b2_770375fa",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9338,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-09T08:05:04Z",
+      "side": 1,
+      "message": "this part is not implemented, we should probably skip it for now\nditto in the usage string above",
+      "revId": "5e76871a5902a58ff13b0141d9d7c8d7b6abae1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274fffa1_1a0c3b02",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9355,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-09T08:05:04Z",
+      "side": 1,
+      "message": "it\u0027s not a terribly helpful message, maybe we want to know that we failed to get the number of pchg.",
+      "revId": "5e76871a5902a58ff13b0141d9d7c8d7b6abae1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0053a7a6_fe605463",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9385,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-09T08:05:04Z",
+      "side": 1,
+      "message": "don\u0027t we need some kind of decoding too ?",
+      "revId": "5e76871a5902a58ff13b0141d9d7c8d7b6abae1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
