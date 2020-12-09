@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d0a8d94_582b7149",
+        "filename": "board/drobit/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-09T07:45:17Z",
+      "side": 1,
+      "message": "Got it, I will check with them and reply as soon as possible.",
+      "parentUuid": "db789f7b_a0889b90",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "bfa9315d851ed82dce90dd2b4e235f6cb11f2f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a09f9529_dd16a16d",
         "filename": "board/drobit/led.c",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1afb1240_7af366a4",
+        "filename": "board/drobit/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-09T07:45:17Z",
+      "side": 1,
+      "message": "I will remove it. Thanks.",
+      "parentUuid": "a09f9529_dd16a16d",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 64
+      },
+      "revId": "bfa9315d851ed82dce90dd2b4e235f6cb11f2f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d33279d_bebe0293",
         "filename": "board/drobit/led.c",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-08T09:57:13Z",
       "side": 1,
       "message": "May i know why this is needed? Do you meet any battery error state in your device?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 1
+      },
+      "revId": "bfa9315d851ed82dce90dd2b4e235f6cb11f2f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fec8406_114845bc",
+        "filename": "board/drobit/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-09T07:45:17Z",
+      "side": 1,
+      "message": "It will become battery error state with some condition, such as battery not exist or battery present with I2C fail,\nI verify it with AC only condition.\nThanks.",
+      "parentUuid": "2d33279d_bebe0293",
       "range": {
         "startLine": 82,
         "startChar": 0,
