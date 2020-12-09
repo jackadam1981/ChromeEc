@@ -22,6 +22,30 @@
       },
       "revId": "da195e8468aaa0687a52abd14bb10a74b17f7445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2feaa17b_20c9823f",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T20:44:53Z",
+      "side": 1,
+      "message": "ah, I see that you use checked_sts as the counter of accesses. \n \nSetting it to zero each time when you print sts value should be sufficient.\n\n\nalso, the variables should be static, and can be defined inside the function.",
+      "parentUuid": "9a43e58b_ea45f0f4",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 522,
+        "endChar": 43
+      },
+      "revId": "da195e8468aaa0687a52abd14bb10a74b17f7445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
