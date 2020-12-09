@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "689f94ff_8d86efe4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6668,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-09T18:23:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "613d32da_ff1d8d31",
+      "revId": "5e76871a5902a58ff13b0141d9d7c8d7b6abae1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da46a5b2_770375fa",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-09T08:05:04Z",
       "side": 1,
       "message": "this part is not implemented, we should probably skip it for now\nditto in the usage string above",
+      "revId": "5e76871a5902a58ff13b0141d9d7c8d7b6abae1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae6a15e_27160c94",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9338,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-09T18:23:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da46a5b2_770375fa",
       "revId": "5e76871a5902a58ff13b0141d9d7c8d7b6abae1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5a45725_a1c30d59",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9355,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-09T18:23:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "274fffa1_1a0c3b02",
+      "revId": "5e76871a5902a58ff13b0141d9d7c8d7b6abae1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0053a7a6_fe605463",
@@ -65,6 +119,24 @@
       "writtenOn": "2020-12-09T08:05:04Z",
       "side": 1,
       "message": "don\u0027t we need some kind of decoding too ?",
+      "revId": "5e76871a5902a58ff13b0141d9d7c8d7b6abae1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5652a341_e4eb619b",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9385,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-09T18:23:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0053a7a6_fe605463",
       "revId": "5e76871a5902a58ff13b0141d9d7c8d7b6abae1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
