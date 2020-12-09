@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a43e58b_ea45f0f4",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T20:25:40Z",
+      "side": 1,
+      "message": "this is the same as\n\nchecked_sts \u003d reagaddr \u003d\u003d\u003d TPM_STS;\n\nAlso, I am not sure what is the purpose of keeping the checked_sts variable - it will be set as soon as the first STS read happens and remain set after that?\n\nHow about not using this variable, and just rely of last_sts change. Note that STS will never be set to zero, so you will always print the first value.",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 522,
+        "endChar": 43
+      },
+      "revId": "da195e8468aaa0687a52abd14bb10a74b17f7445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
