@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fcd34aa_a55945d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-12-09T01:08:57Z",
+      "side": 1,
+      "message": "It\u0027s hard to reproduce the impact on the v1 changes, but this change already improves reliability quite a bit on the current firmware on micro/v4/sweetberry. So we should get it in, deploy it, check if \u0027old ones\u0027 are still failing, and then adjust accordingly",
+      "revId": "b3333557ad5cac14da37700df6d7b4122ae66856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
