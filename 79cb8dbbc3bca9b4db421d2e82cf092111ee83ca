@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a7d36fb_2c029a1d",
+        "filename": "board/woomax/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-09T15:58:42Z",
+      "side": 1,
+      "message": "can you define and use a named constant indicating this is the length of the EQ settings for a specific mode? I will leave the naming to you but something like EQ_MODE_VALUES would be better than 13",
+      "range": {
+        "startLine": 388,
+        "startChar": 37,
+        "endLine": 388,
+        "endChar": 39
+      },
+      "revId": "79cb8dbbc3bca9b4db421d2e82cf092111ee83ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
