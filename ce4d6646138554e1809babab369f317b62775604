@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6272a73f_a1bae0b9",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-09T18:50:07Z",
+      "side": 1,
+      "message": "I guess you\u0027ll need to write a new header chip/stm32/flash-stm32h7.h and add the function declarations so that the test can find them. When you do that please also add a reference to the Reference Manual like https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2220735/4/chip/stm32/flash-f.h",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 3
+      },
+      "revId": "ce4d6646138554e1809babab369f317b62775604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed1749f_c38a6238",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-09T18:50:07Z",
+      "side": 1,
+      "message": "I wonder if it works if we do this as !!(STM32_FLASH_CR(0) \u0026 FLASH_CR_LOCK) \u0026\u0026 !!(STM32_FLASH_CR(1) \u0026 FLASH_CR_LOCK) and lock/unlock both banks in {lock,unlock}_flash_control_register. If that works, we want to do that so that we test both banks.",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 224,
+        "endChar": 46
+      },
+      "revId": "ce4d6646138554e1809babab369f317b62775604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
