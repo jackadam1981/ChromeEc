@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13339fd3_b3ef84b7",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-09T17:26:46Z",
+      "side": 1,
+      "message": "shouldn\u0027t all the \"CONFIG_PLATFORM_EC\u0027s be together?\n\nbase32.c\nextpower_common.c\nqueue.c\n\nprobably up top?",
+      "range": {
+        "startLine": 42,
+        "startChar": 21,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "a8a199bd0b824f95e35524374e95057743058dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7f175a_f59e16c7",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-09T17:26:46Z",
+      "side": 1,
+      "message": "multiple files can be listed in one.\n\nso can handle like this instead:\n\n\nzephyr_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_INTEL\n                                        \"...power_button_x86.c\"\n                                        \"...intel_x86.c\")",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 83
+      },
+      "revId": "a8a199bd0b824f95e35524374e95057743058dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
