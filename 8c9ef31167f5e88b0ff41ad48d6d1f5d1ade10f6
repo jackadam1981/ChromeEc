@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c72b7c9_c4f06f12",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-12-09T00:02:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this check for CONFIG_USB_MUX_AP_ACK_REQUEST?",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 45
+      },
+      "revId": "8c9ef31167f5e88b0ff41ad48d6d1f5d1ade10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
