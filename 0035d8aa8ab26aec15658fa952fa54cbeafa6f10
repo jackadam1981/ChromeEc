@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4863fc1_1668ee07",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-09T17:34:30Z",
+      "side": 1,
+      "message": "given this is not a PLATFORM_EC option, I would move to zephyr-chrome instead",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "0035d8aa8ab26aec15658fa952fa54cbeafa6f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe2d7c99_1d93ba17",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-09T17:34:30Z",
+      "side": 1,
+      "message": "Does this require i2c?\n\nWith default y keep in mind that it will be enabled for native_posix board, which has no i2c",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 10
+      },
+      "revId": "0035d8aa8ab26aec15658fa952fa54cbeafa6f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c9df89_ade1c310",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-09T17:34:30Z",
+      "side": 1,
+      "message": "Probably factor into a separate file (Kconfig.battery) and rsource that?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "0035d8aa8ab26aec15658fa952fa54cbeafa6f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
