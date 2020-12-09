@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7fced1_bf4abe95",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-09T23:59:47Z",
+      "side": 1,
+      "message": "This and a whole lot more log lines should become %r while you\u0027re at it, for better clarity when there\u0027s a str vs bytes expectation mismatch.\n\nGranted %s and %r for bytes are the same, so that provides some clarity, but then it\u0027s just inconsistent should these end up printing a str.",
+      "range": {
+        "startLine": 798,
+        "startChar": 33,
+        "endLine": 798,
+        "endChar": 35
+      },
+      "revId": "c61ac49ccc134a626e22b2a08f994ecaf2fcb214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe5154dd_13fa39e8",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-09T23:59:47Z",
+      "side": 1,
+      "message": "If you keep this, add a comment above the line that creates self.oobm_queue documenting that it should contain str (not bytes).\n\nI\u0027m having trouble reconciling this with the other code in this file.  I see \"self.oobm_queue.put(self.pending_oobm_cmd)\" as the only place anything is added to the queue, and pending_oobm_cmd is initialized to bytes, and has a variable named \"tmp_bytes\" appended to it.\n\nWhy is a str correct \u0026 expected here?  I\u0027m wondering if str are getting introduced somewhere where they shouldn\u0027t.",
+      "revId": "c61ac49ccc134a626e22b2a08f994ecaf2fcb214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c88509_80629daf",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-09T23:59:47Z",
+      "side": 1,
+      "message": "Just do b\u0027 \u0027",
+      "range": {
+        "startLine": 801,
+        "startChar": 21,
+        "endLine": 801,
+        "endChar": 33
+      },
+      "revId": "c61ac49ccc134a626e22b2a08f994ecaf2fcb214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
