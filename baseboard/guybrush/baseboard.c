@@ -6,6 +6,16 @@
 /* Guybrush family-specific configuration */
 
 #include "gpio.h"
+#include "spi.h"
+
+/* Wake Sources */
+const enum gpio_signal hibernate_wake_pins[] = {
+	GPIO_LID_OPEN,
+	GPIO_AC_PRESENT,
+	GPIO_POWER_BUTTON_L,
+};
+const int hibernate_wake_pins_used =  ARRAY_SIZE(hibernate_wake_pins);
+
 
 void sbu_fault_interrupt(enum ioex_signal signal)
 {
