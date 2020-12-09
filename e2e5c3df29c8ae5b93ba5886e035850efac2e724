@@ -16,6 +16,24 @@
       "message": "Why would we be calling `ocpc_config_secondary_charger` if there\u0027s no charger?",
       "revId": "e2e5c3df29c8ae5b93ba5886e035850efac2e724",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa11c3f_0fe0b28f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-09T19:10:37Z",
+      "side": 1,
+      "message": "This is the current limit used regularly by charger_get_params(), which will call this function on chgnum \u003d 0 for non-OCPC systems and the active charger for OCPC.  \n\nocpc_config_secondary_charger() will call the function immediately below this one, which we could have print an error for a negative charger number.",
+      "parentUuid": "4c914b94_377a777d",
+      "revId": "e2e5c3df29c8ae5b93ba5886e035850efac2e724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
