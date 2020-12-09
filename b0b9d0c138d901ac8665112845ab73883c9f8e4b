@@ -22,6 +22,30 @@
       },
       "revId": "b0b9d0c138d901ac8665112845ab73883c9f8e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a816dbd_0222a947",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-09T21:49:52Z",
+      "side": 1,
+      "message": "Maybe. Do we care what the status is when we first get it? Because currently it prints the initial value and then it prints the value once it changes.",
+      "parentUuid": "71e3d3ea_7052c95d",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 0
+      },
+      "revId": "b0b9d0c138d901ac8665112845ab73883c9f8e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
