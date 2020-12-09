@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a75aa573_0ca50877",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2020-12-09T15:56:26Z",
+      "side": 1,
+      "message": "You\u0027re right. It seems like the S was deleted when doing indentation/whitespaces cleanup before submission.",
+      "parentUuid": "7731251a_ad6c13a2",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 21
+      },
+      "revId": "b5613d0f007651f9b5adeb498150bf51672984f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4caedca8_f34d5c24",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27583217_5cfb1671",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2020-12-09T15:56:26Z",
+      "side": 1,
+      "message": "Same issue here, S missing.",
+      "parentUuid": "4caedca8_f34d5c24",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 157,
+        "endChar": 21
+      },
+      "revId": "b5613d0f007651f9b5adeb498150bf51672984f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d19845d3_bc1680bf",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-02T07:35:00Z",
       "side": 1,
       "message": "The same",
+      "range": {
+        "startLine": 201,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 21
+      },
+      "revId": "b5613d0f007651f9b5adeb498150bf51672984f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6bba66_7b7dfac2",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2020-12-09T15:56:26Z",
+      "side": 1,
+      "message": "Same issue here, S missing.",
+      "parentUuid": "d19845d3_bc1680bf",
       "range": {
         "startLine": 201,
         "startChar": 4,
