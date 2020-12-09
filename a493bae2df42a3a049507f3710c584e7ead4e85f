@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3045089a_30aca5f1",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-09T23:59:59Z",
+      "side": 1,
+      "message": "common/battery.c doesn\u0027t directly depend on I2C, but the individual battery drivers do depend on I2C.  Same for chargers.\n\nI would prefer the I2C dependency is placed with each battery/charger driver, but I\u0027m okay with putting the dependency in the parent.  In theory we could have batteries connected over another interface (1-wire, I3C) in the future.\n\nAlso, chromeboxes have I2C, so this default won\u0027t work in that use case.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "a493bae2df42a3a049507f3710c584e7ead4e85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
