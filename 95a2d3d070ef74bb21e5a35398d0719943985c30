@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "026bc003_e121f783",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T22:56:54Z",
+      "side": 1,
+      "message": "ah, good point, we don\u0027t print any other register values anyways.\n\njust another nit - a missing \\n but otherwise looks good.",
+      "revId": "95a2d3d070ef74bb21e5a35398d0719943985c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38888b2d_9ca30df9",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T22:56:54Z",
+      "side": 1,
+      "message": "need to add a \\n here",
+      "range": {
+        "startLine": 578,
+        "startChar": 31,
+        "endLine": 578,
+        "endChar": 32
+      },
+      "revId": "95a2d3d070ef74bb21e5a35398d0719943985c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
