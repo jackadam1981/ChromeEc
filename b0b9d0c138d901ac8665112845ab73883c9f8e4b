@@ -70,6 +70,30 @@
       },
       "revId": "b0b9d0c138d901ac8665112845ab73883c9f8e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe5e4390_c4cabb1c",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-09T22:09:19Z",
+      "side": 1,
+      "message": "Ok I modified things a bit, so now the initial value is printed and cr50 prints it when it changes. The initial value prints (0). I don\u0027t know if there\u0027s a more intuitive format for this data.\n[2020-12-09 14:07:19.828] tpm_get_status(0)(0x000018, 1) 4001fd0",
+      "parentUuid": "9070753e_e25b662d",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 0
+      },
+      "revId": "b0b9d0c138d901ac8665112845ab73883c9f8e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
