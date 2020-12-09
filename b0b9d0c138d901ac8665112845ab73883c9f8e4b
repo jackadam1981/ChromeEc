@@ -46,6 +46,30 @@
       },
       "revId": "b0b9d0c138d901ac8665112845ab73883c9f8e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9070753e_e25b662d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T21:58:03Z",
+      "side": 1,
+      "message": "we can count on status never being zero (unless there is a very crude TPM state machine bug), so the first value will always be printed because last_sts will be zero. \n\nor we can preset last_sts to say 0xff - it could never be 0xff even if there is a bug.",
+      "parentUuid": "5a816dbd_0222a947",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 0
+      },
+      "revId": "b0b9d0c138d901ac8665112845ab73883c9f8e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
