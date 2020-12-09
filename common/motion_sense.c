@@ -729,6 +729,7 @@ static void check_and_queue_gestures(uint32_t *event)
 	const struct motion_sensor_t *sensor;
 #endif
 
+<<<<<<< HEAD   (bd0188 eve: Move board level TCPC init to happen in pd_task init)
 #ifdef CONFIG_GESTURE_SW_DETECTION
 	/* Run gesture recognition engine */
 	gesture_calc(event);
@@ -756,6 +757,25 @@ static void check_and_queue_gestures(uint32_t *event)
 					     __hw_clock_source_read());
 		motion_sense_fifo_commit_data();
 #endif
+=======
+			/*
+			 * Send events to the FIFO
+			 * AP is ignoring double tap event, do no wake up and no
+			 * automatic disable.
+			 */
+			if (IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP_FOR_HOST))
+				vector.flags = MOTIONSENSE_SENSOR_FLAG_WAKEUP;
+			else
+				vector.flags = 0;
+			vector.activity_data.activity =
+					MOTIONSENSE_ACTIVITY_DOUBLE_TAP;
+			vector.activity_data.state = 1 /* triggered */;
+			vector.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID;
+			motion_sense_fifo_stage_data(&vector, NULL, 0,
+					__hw_clock_source_read());
+			motion_sense_fifo_commit_data();
+		}
+>>>>>>> CHANGE (b5b267 ec_commands: add struct ec_response_activity_data)
 		/* Call board specific function to process tap */
 		sensor_board_proc_double_tap();
 	}
@@ -767,6 +787,7 @@ static void check_and_queue_gestures(uint32_t *event)
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 		struct ec_response_motion_sensor_data vector;
 
+<<<<<<< HEAD   (bd0188 eve: Move board level TCPC init to happen in pd_task init)
 		/* Send events to the FIFO */
 		vector.flags = MOTIONSENSE_SENSOR_FLAG_WAKEUP;
 		vector.activity = MOTIONSENSE_ACTIVITY_SIG_MOTION;
@@ -776,6 +797,18 @@ static void check_and_queue_gestures(uint32_t *event)
 				__hw_clock_source_read());
 		motion_sense_fifo_commit_data();
 #endif
+=======
+			/* Send events to the FIFO */
+			vector.flags = MOTIONSENSE_SENSOR_FLAG_WAKEUP;
+			vector.activity_data.activity =
+					MOTIONSENSE_ACTIVITY_SIG_MOTION;
+			vector.activity_data.state = 1 /* triggered */;
+			vector.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID;
+			motion_sense_fifo_stage_data(&vector, NULL, 0,
+					__hw_clock_source_read());
+			motion_sense_fifo_commit_data();
+		}
+>>>>>>> CHANGE (b5b267 ec_commands: add struct ec_response_activity_data)
 		/* Disable further detection */
 		activity_sensor = &motion_sensors[CONFIG_GESTURE_SIGMO];
 		activity_sensor->drv->manage_activity(
@@ -785,6 +818,7 @@ static void check_and_queue_gestures(uint32_t *event)
 	}
 #endif
 
+<<<<<<< HEAD   (bd0188 eve: Move board level TCPC init to happen in pd_task init)
 #ifdef CONFIG_ORIENTATION_SENSOR
 	sensor = &motion_sensors[LID_ACCEL];
 	if (SENSOR_ACTIVE(sensor) && (sensor->state == SENSOR_INITIALIZED)) {
@@ -793,7 +827,18 @@ static void check_and_queue_gestures(uint32_t *event)
 			.activity = MOTIONSENSE_ACTIVITY_ORIENTATION,
 			.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID,
 		};
+=======
+		if (SENSOR_ACTIVE(sensor) &&
+				(sensor->state == SENSOR_INITIALIZED)) {
+			struct ec_response_motion_sensor_data vector = {
+				.flags = 0,
+				.activity_data.activity =
+					MOTIONSENSE_ACTIVITY_ORIENTATION,
+				.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID,
+			};
+>>>>>>> CHANGE (b5b267 ec_commands: add struct ec_response_activity_data)
 
+<<<<<<< HEAD   (bd0188 eve: Move board level TCPC init to happen in pd_task init)
 		mutex_lock(sensor->mutex);
 		if (ORIENTATION_CHANGED(sensor) && (GET_ORIENTATION(sensor) !=
 				MOTIONSENSE_ORIENTATION_UNKNOWN)) {
@@ -804,13 +849,34 @@ static void check_and_queue_gestures(uint32_t *event)
 #ifdef CONFIG_DEBUG_ORIENTATION
 			{
 				static const char * const mode_strs[] = {
+=======
+			mutex_lock(sensor->mutex);
+			if (motion_orientation_changed(sensor) &&
+					(*motion_orientation_ptr(sensor) !=
+					 MOTIONSENSE_ORIENTATION_UNKNOWN)) {
+				motion_orientation_update(sensor);
+				vector.activity_data.state =
+					*motion_orientation_ptr(sensor);
+				motion_sense_fifo_stage_data(&vector, NULL, 0,
+						__hw_clock_source_read());
+				motion_sense_fifo_commit_data();
+				if (IS_ENABLED(CONFIG_DEBUG_ORIENTATION)) {
+					static const char * const mode[] = {
+>>>>>>> CHANGE (b5b267 ec_commands: add struct ec_response_activity_data)
 						"Landscape",
 						"Portrait",
 						"Inv_Portrait",
 						"Inv_Landscape",
 						"Unknown"
+<<<<<<< HEAD   (bd0188 eve: Move board level TCPC init to happen in pd_task init)
 				};
 				CPRINTS(mode_strs[GET_ORIENTATION(sensor)]);
+=======
+					};
+					CPRINTS(mode[
+						vector.activity_data.state]);
+				}
+>>>>>>> CHANGE (b5b267 ec_commands: add struct ec_response_activity_data)
 			}
 #endif
 		}
