@@ -3,6 +3,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4b1f56a4_576ec6fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-09T23:12:28Z",
+      "side": 1,
+      "message": "\u003e \"modifes\" is a possible misspelling of \"modifies\".\n\nDone.",
+      "parentUuid": "3f8f635c_a6cb047f",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "95a2d3d070ef74bb21e5a35398d0719943985c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "026bc003_e121f783",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -31,6 +55,30 @@
       "writtenOn": "2020-12-09T22:56:54Z",
       "side": 1,
       "message": "need to add a \\n here",
+      "range": {
+        "startLine": 578,
+        "startChar": 31,
+        "endLine": 578,
+        "endChar": 32
+      },
+      "revId": "95a2d3d070ef74bb21e5a35398d0719943985c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4bee7c0_411e6903",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-09T23:12:28Z",
+      "side": 1,
+      "message": "CPRINTS adds the \\n automatically. It also adds a timestamp. I guess this is supposed to rarely happen, so it\u0027s fine if it looks different.",
+      "parentUuid": "38888b2d_9ca30df9",
       "range": {
         "startLine": 578,
         "startChar": 31,
