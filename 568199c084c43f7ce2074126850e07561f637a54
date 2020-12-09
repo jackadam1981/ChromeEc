@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66dd49a4_d6f00f27",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T22:24:18Z",
+      "side": 1,
+      "message": "don\u0027t need this if CPRINTF() from line 545 is moved here, just add an \"\\n\" in  the end.",
+      "range": {
+        "startLine": 541,
+        "startChar": 3,
+        "endLine": 541,
+        "endChar": 13
+      },
+      "revId": "568199c084c43f7ce2074126850e07561f637a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be8c9d24_9977ff00",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T22:24:18Z",
+      "side": 1,
+      "message": "why do you need to check the \u0027print\u0027 value separately, you can print add CPRINTF() in the if() of line 538.",
+      "range": {
+        "startLine": 544,
+        "startChar": 5,
+        "endLine": 544,
+        "endChar": 12
+      },
+      "revId": "568199c084c43f7ce2074126850e07561f637a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c416a3_a1abf6b0",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T22:24:18Z",
+      "side": 1,
+      "message": "anther nit: you can set checked_sts to 1 in line 542 an put this increment in the else clause of the if in line 541.",
+      "range": {
+        "startLine": 546,
+        "startChar": 2,
+        "endLine": 546,
+        "endChar": 15
+      },
+      "revId": "568199c084c43f7ce2074126850e07561f637a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
