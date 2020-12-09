@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c914b94_377a777d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-09T17:44:20Z",
+      "side": 1,
+      "message": "Why would we be calling `ocpc_config_secondary_charger` if there\u0027s no charger?",
+      "revId": "e2e5c3df29c8ae5b93ba5886e035850efac2e724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
