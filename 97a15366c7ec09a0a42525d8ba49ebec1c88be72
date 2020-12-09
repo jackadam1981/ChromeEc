@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92be6325_16d3842e",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-09T08:18:27Z",
+      "side": 1,
+      "message": "Why would you need different types of event, if it ended up doing a PCHG_STATUS on each port ?",
+      "revId": "97a15366c7ec09a0a42525d8ba49ebec1c88be72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
