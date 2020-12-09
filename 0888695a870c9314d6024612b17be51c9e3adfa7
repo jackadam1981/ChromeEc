@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f644448b_c280adc1",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-09T21:01:22Z",
+      "side": 1,
+      "message": "is there an __override_proto somewhere for all of these?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "0888695a870c9314d6024612b17be51c9e3adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
