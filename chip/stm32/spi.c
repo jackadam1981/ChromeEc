@@ -397,6 +397,7 @@ static void spi_send_response(struct host_cmd_handler_args *args)
 	/* Transmit the reply */
 	txdma = dma_get_channel(STM32_DMAC_SPI1_TX);
 	reply(txdma, result, args->response, args->response_size);
+	jeawifjiew
 
 	/*
 	 * Before the state is set to SENDING, any CS de-assertion would
@@ -666,8 +667,14 @@ static void spi_init(void)
 
 	/* Reset the SPI Peripheral to clear any existing weird states. */
 	/* Fix for bug chrome-os-partner:31390 */
+
 	enabled = 0;
 	state = SPI_STATE_DISABLED;
+
+	/* DMA was enabled, stop that in case it still talks to the SPI. */
+	if (was_enabled)
+		dma_disable(STM32_DMAC_SPI1_TX);
+
 	STM32_RCC_APB2RSTR |= STM32_RCC_PB2_SPI1;
 	STM32_RCC_APB2RSTR &= ~STM32_RCC_PB2_SPI1;
 
