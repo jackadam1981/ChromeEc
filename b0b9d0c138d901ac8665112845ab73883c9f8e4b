@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e3d3ea_7052c95d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T21:46:46Z",
+      "side": 1,
+      "message": "is it really needed to check checked_sts here?\n\nThe logic here could be:\n\nif (reg !\u003d TPM_STS) {\n   print \u003d 1;\n   CPRINTF(...)\n} else {\n   print \u003d 0;\n}\n\n\nand in line 538\n\nchecked_sts++;   // maybe rename to something sts_read_count\nif (last_sts !\u003d tpm_.regs_sts) {\n  CPRINTF(..) // add the \\n here instead of line 582\n  checked_sts \u003d 0;\n  last_sts \u003d tpm_.regs_sts;\n}",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 0
+      },
+      "revId": "b0b9d0c138d901ac8665112845ab73883c9f8e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
