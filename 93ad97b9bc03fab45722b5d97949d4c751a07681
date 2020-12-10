@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "389fa1f5_43d62288",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-10T22:05:37Z",
+      "side": 1,
+      "message": "a good test would check both H1 and D2 and will verify various RO/RW permutations.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c8d12075_15fc4ab7",
@@ -14,6 +37,75 @@
       "writtenOn": "2020-12-10T21:16:34Z",
       "side": 1,
       "message": "What is the procedure for landing this on platform/ec first (or at all)?\n\nI haven\u0027t verified that this still works with CR50 image update, but I will before I land. I wanted to get feedback on the CL in the meantime.\n\nThank you!",
+      "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b35e47e_08722587",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-10T22:05:37Z",
+      "side": 1,
+      "message": "all these  checks belong in valid_header()",
+      "range": {
+        "startLine": 1012,
+        "startChar": 0,
+        "endLine": 1037,
+        "endChar": 2
+      },
+      "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bec82c7_a160e6f9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-10T22:05:37Z",
+      "side": 1,
+      "message": "why does this logic have to change? The RO slots are not at variable offsets.",
+      "range": {
+        "startLine": 1164,
+        "startChar": 10,
+        "endLine": 1169,
+        "endChar": 13
+      },
+      "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3bec552_9511685e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-10T22:05:37Z",
+      "side": 1,
+      "message": "this logic does not apply to D2",
+      "range": {
+        "startLine": 1342,
+        "startChar": 11,
+        "endLine": 1345,
+        "endChar": 39
+      },
       "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

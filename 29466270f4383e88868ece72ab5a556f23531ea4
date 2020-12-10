@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "db5909d5_4f34ad1e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-10T22:05:37Z",
+      "side": 0,
+      "message": "why do you remove the \u0027continue\u0027 here? \n\nplease keep it, as it reduces indentation of the following code.",
+      "range": {
+        "startLine": 1014,
+        "startChar": 2,
+        "endLine": 1014,
+        "endChar": 12
+      },
+      "revId": "29466270f4383e88868ece72ab5a556f23531ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "212190b0_e95d4ea3",
