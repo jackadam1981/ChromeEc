@@ -51,6 +51,24 @@
       "message": "Here you are defaulting to GEN1_GEN2 whereas pre the spec you should look at Bit 0..2 for the capability. Did I misunderstood? Isn\u0027t this information stored in a structure somewhere to grab it?\n\n000b (not allowed for TBT certified cables)\n001b (USB r3.1 Gen1)\n010b (USB r3.1 Gen1 and Gen2) Use for TBT3 Passive Cable\n011 - 111b Reserved",
       "revId": "b415edcc06eb4517c13ddf96458f595a547a8c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02644434_35141b67",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-10T17:41:57Z",
+      "side": 1,
+      "message": "Flow: Ref: USB Type-C Cable and Connector Specification: fig F-1:\n\nDiscover Identity SOP\u0027 response says that the cable is superspeed.\n        |\nDiscover SVID SOP\u0027 -- No response/Doesn\u0027t support Intel SVID - Enter TBT with \n        |                                                      cable speed \nDiscover Mode SOP\u0027                                             to TBT Gen1/Gen2\n        |\nEnter TBT with speed from Discover Mode SOP\u0027\n\nThe speed from Discover identity SOP\u0027 and discover Mode SOP\u0027 is different. Identity gives info if cable supports superspeed (b2:0), Discover mode SOP\u0027 gives tbt speed(b18:16).\n\nHope this helps!",
+      "parentUuid": "90bddecb_42134fcc",
+      "revId": "b415edcc06eb4517c13ddf96458f595a547a8c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
