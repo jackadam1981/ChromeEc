@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf76393_f383a0c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-10T15:55:39Z",
+      "side": 1,
+      "message": "Setting BUG\u003dnone is allowed, especially for small changes like this.  So you don\u0027t always have to create bugs for each CL.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "35a10e4cbbae5befcd60615654ef8f1a22d1df2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
