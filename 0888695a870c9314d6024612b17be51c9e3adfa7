@@ -46,6 +46,30 @@
       },
       "revId": "0888695a870c9314d6024612b17be51c9e3adfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44af720_9f134313",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-10T15:51:56Z",
+      "side": 1,
+      "message": "It does not feel clean. The idea of __overridable/__override_proto was they would both exist if there was a chance of overriding and __override when it was overridden. This seems like it is abusing the intent in order to get weak added to the mock version.\n\nI will leave this to you and Paul.",
+      "parentUuid": "181e1d98_19407ca5",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "0888695a870c9314d6024612b17be51c9e3adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
