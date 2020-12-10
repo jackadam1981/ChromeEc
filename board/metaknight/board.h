@@ -133,6 +133,10 @@
 #ifdef BOARD_METAKNIGHT_LEGACY
 /* this change saves 1656 bytes of RW flash space */
 #define CONFIG_CHIP_INIT_ROM_REGION
+<<<<<<< HEAD   (d13f73 lantis: Update LED configuration)
+=======
+#define CONFIG_DEBUG_ASSERT_BRIEF
+>>>>>>> BRANCH (c9d96b chgstv2: OCPC: Don't always touch primary charger)
 #else
 /*
  * The RAM and flash size combination on the the NPCX797FC does not leave
