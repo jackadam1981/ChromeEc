@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27383ed6_b4982e46",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T20:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79d81519_d2cc172a",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3c7c4e8_78243b95",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "It is not. Good catch!",
       "parentUuid": "d3c7c4e8_78243b95",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 39
+      },
+      "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dd55642_6e12d431",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T20:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7a7dacb_0e02b9cf",
       "range": {
         "startLine": 39,
         "startChar": 36,
@@ -142,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49fbbc61_27ab0652",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T20:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80be0cd_a44de62d",
+      "range": {
+        "startLine": 51,
+        "startChar": 41,
+        "endLine": 51,
+        "endChar": 46
+      },
+      "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4853c0c5_fbd112bf",
@@ -173,6 +245,24 @@
       "side": 1,
       "message": "Yes, gmr_tablet_switch_isr makes sense.",
       "parentUuid": "4853c0c5_fbd112bf",
+      "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d03f76e_eb4a955d",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T20:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae90a6a1_c894452d",
       "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
