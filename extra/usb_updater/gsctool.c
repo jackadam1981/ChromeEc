@@ -912,7 +912,18 @@ enum upgrade_status {
 			   */
 };
 
-/* This array describes all four sections of the new image. */
+/* Index to refer to a section within sections array */
+enum section {
+	RO_A,
+	RW_A,
+	RO_B,
+	RW_B,
+};
+
+/*
+ * This array describes all four sections of the new image. Defaults are for
+ * H1 images. D2 images are scanned for SignedHeaders in the image
+ */
 static struct {
 	const char *name;
 	uint32_t    offset;
@@ -921,11 +932,152 @@ static struct {
 	struct signed_header_version shv;
 	uint32_t keyid;
 } sections[] = {
-	{"RO_A", CONFIG_RO_MEM_OFF, CONFIG_RO_SIZE},
-	{"RW_A", CONFIG_RW_MEM_OFF, CONFIG_RW_SIZE},
-	{"RO_B", CHIP_RO_B_MEM_OFF, CONFIG_RO_SIZE},
-	{"RW_B", CONFIG_RW_B_MEM_OFF, CONFIG_RW_SIZE}
+	[RO_A] = {"RO_A", CONFIG_RO_MEM_OFF, CONFIG_RO_SIZE},
+	[RW_A] = {"RW_A", CONFIG_RW_MEM_OFF, CONFIG_RW_SIZE},
+	[RO_B] = {"RO_B", CHIP_RO_B_MEM_OFF, CONFIG_RO_SIZE},
+	[RW_B] = {"RW_B", CONFIG_RW_B_MEM_OFF, CONFIG_RW_SIZE}
 };
+
+/*
+ * Remove these definitions so a developer doesn't accidentally use them in
+ * the future. All lookups should go through the sections array.
+ */
+#undef CONFIG_RO_MEM_OFF
+#undef CONFIG_RW_MEM_OFF
+#undef CHIP_RO_B_MEM_OFF
+#undef CONFIG_RW_B_MEM_OFF
+#undef CONFIG_RO_SIZE
+#undef CONFIG_RW_SIZE
+#undef CONFIG_FLASH_SIZE
+
+/* Returns true if the specified header is valid */
+static bool valid_header(const struct SignedHeader *const h, const size_t size)
+{
+	if (h->image_size > size)
+		return false;
+
+	/*
+	 * Both Rx base and Ro base are the memory mapped address, but they
+	 * should have the same offset. The rx section starts after the header.
+	 */
+	if (h->rx_base != h->ro_base + sizeof(struct SignedHeader))
+		return false;
+
+	/* Ensure each section falls within full size */
+	if (h->ro_max - h->ro_base > size)
+		return false;
+
+	if (h->rx_max - h->rx_base > size)
+		return false;
+
+	return true;
+}
+
+/* Rounds and address up to the next 16KB boundary if not one already */
+static inline uint32_t round_up_16kb(const uint32_t addr)
+{
+	const uint32_t mask = (16 * 1024) - 1;
+
+	return (addr + mask) & ~mask;
+}
+
+static const struct SignedHeader *as_header(const void *image, uint32_t offset)
+{
+	return (void *)((uintptr_t)image + offset);
+}
+
+/* Returns the RW header or -1 if one cannot be found */
+static int32_t find_rw_header(const void *image, uint32_t offset,
+			      const uint32_t end)
+{
+	offset = round_up_16kb(offset);
+
+	while (offset < end) {
+		if (valid_header(as_header(image, offset), end - offset))
+			return offset;
+		offset = round_up_16kb(offset + 1);
+	}
+
+	return -1;
+}
+
+/* Return true if we located headers and set sections correctly */
+static bool locate_headers(const void *image, const uint32_t size)
+{
+	/* Offset 0 should be RO A header */
+	const struct SignedHeader *h = as_header(image, 0);
+	const uint32_t slot_a_end = size / 2;
+	int32_t rw_offset;
+
+	if (size < sizeof(struct SignedHeader))
+		return false;
+
+	/* Magic of -1 for Haven images. */
+	if (h->magic == 0xFFFFFFFF) {
+		/* H1 images are all 512 KB */
+		if (size != 512 * 1024) {
+			fprintf(stderr, "\nERROR: Image file is not 512 KB\n");
+			return false;
+		}
+
+		/* The defaults are all set correctly. Nothing more to do. */
+		return true;
+	}
+
+	/* Magic of -3 for Dauntless images. We don't support other types yet */
+	if (h->magic != 0xFFFFFFFD) {
+		fprintf(stderr, "\nERROR: Not H1 or D2 images\n");
+		return false;
+	}
+
+	/* D2 images are all 1 MB */
+	if (size != 1024 * 1024) {
+		fprintf(stderr, "\nERROR: Image file is not 1 MB\n");
+		return false;
+	}
+
+	/* Validate the RO_A header */
+	if (!valid_header(h, slot_a_end)) {
+		fprintf(stderr, "\nERROR: RO_A header is invalid\n");
+		return false;
+	}
+	sections[RO_A].offset = 0;
+	sections[RO_A].size = round_up_16kb(h->image_size);
+
+	/* Find RW_A */
+	rw_offset = find_rw_header(
+		image, sections[RO_A].offset + sections[RO_A].size, slot_a_end);
+	if (rw_offset == -1) {
+		fprintf(stderr, "\nERROR: RW_A header cannot be found\n");
+		return false;
+	}
+	sections[RW_A].offset = rw_offset;
+	sections[RW_A].size =
+		round_up_16kb(as_header(image, rw_offset)->image_size);
+
+	/* Validate the RO_B header */
+	h = as_header(image, slot_a_end);
+	if (!valid_header(h, size - slot_a_end)) {
+		fprintf(stderr, "\nERROR: RO_B header is invalid\n");
+		return false;
+	}
+	sections[RO_B].offset = slot_a_end;
+	sections[RO_B].size = round_up_16kb(h->image_size);
+
+	/* Find RW_B */
+	rw_offset = find_rw_header(
+		image, sections[RO_B].offset + sections[RO_B].size, size);
+	if (rw_offset == -1) {
+		fprintf(stderr, "\nERROR: RW_B header cannot be found\n");
+		return false;
+	}
+	sections[RW_B].offset = rw_offset;
+	sections[RW_B].size =
+		round_up_16kb(as_header(image, rw_offset)->image_size);
+
+	/* We found all of the headers and updated offset/size in sections */
+	return true;
+}
 
 /*
  * Scan the new image and retrieve versions of all four sections, two RO and
@@ -990,13 +1142,11 @@ static void pick_sections(struct transfer_descriptor *td)
 	size_t i;
 
 	for (i = 0; i < ARRAY_SIZE(sections); i++) {
-		uint32_t offset = sections[i].offset;
-
-		if ((offset == CONFIG_RW_MEM_OFF) ||
-		    (offset == CONFIG_RW_B_MEM_OFF)) {
-
-			/* Skip currently active section. */
-			if (offset != td->rw_offset)
+		if ((i == RW_A) || (i == RW_B)) {
+			/* Skip currently active RW section. */
+			bool active_rw_slot_b = td->rw_offset <
+						sections[RO_B].offset;
+			if ((i == RW_B) == active_rw_slot_b)
 				continue;
 			/*
 			 * Ok, this would be the RW section to transfer to the
@@ -1011,20 +1161,21 @@ static void pick_sections(struct transfer_descriptor *td)
 			if (a_newer_than_b(&sections[i].shv, &targ.shv[1]) ||
 			    !td->upstart_mode)
 				sections[i].ustatus = needed;
-			continue;
+		} else {
+			/* Skip currently active RO section. */
+			bool active_ro_slot_b = td->ro_offset <
+						sections[RO_B].offset;
+			if ((i == RO_B) == active_ro_slot_b)
+				continue;
+			/*
+			 * Ok, this would be the RO section to transfer to the
+			 * device. Is it newer in the new image than the running
+			 * RO section on the device?
+			 */
+			if (a_newer_than_b(&sections[i].shv, &targ.shv[0]) ||
+			    td->force_ro)
+				sections[i].ustatus = needed;
 		}
-
-		/* Skip currently active section. */
-		if (offset != td->ro_offset)
-			continue;
-		/*
-		 * Ok, this would be the RO section to transfer to the device.
-		 * Is it newer in the new image than the running RO section on
-		 * the device?
-		 */
-		if (a_newer_than_b(&sections[i].shv, &targ.shv[0]) ||
-		    td->force_ro)
-			sections[i].ustatus = needed;
 	}
 }
 
@@ -1207,41 +1358,31 @@ static int transfer_image(struct transfer_descriptor *td,
 	 * section is updated before the RO. The array below keeps sections
 	 * offsets in the required order.
 	 */
-	const size_t update_order[] = {CONFIG_RW_MEM_OFF,
-				       CONFIG_RW_B_MEM_OFF,
-				       CONFIG_RO_MEM_OFF,
-				       CHIP_RO_B_MEM_OFF};
+	const size_t update_order[] = { RW_A, RW_B, RO_A, RO_B };
 
 	for (j = 0; j < ARRAY_SIZE(update_order); j++) {
-		size_t i;
+		const size_t i = update_order[j];
 
-		for (i = 0; i < ARRAY_SIZE(sections); i++) {
-			if (sections[i].offset != update_order[j])
-				continue;
-
-			if (sections[i].ustatus != needed)
-				break;
-			if (num_txed_sections && needs_delay) {
-				/*
-				 * Delays more than 5 seconds cause the update
-				 * to timeout. End the update before the delay
-				 * and set it up after to recover from the
-				 * timeout.
-				 */
-				if (td->ep_type == usb_xfer)
-					send_done(&td->uep);
-				printf("Waiting %ds for %s update.\n",
-				       NEXT_SECTION_DELAY, sections[i].name);
-				sleep(NEXT_SECTION_DELAY);
-				setup_connection(td);
-			}
-
-			transfer_section(td,
-					 data + sections[i].offset,
-					 sections[i].offset,
-					 sections[i].size);
-			num_txed_sections++;
+		if (sections[i].ustatus != needed)
+			continue;
+		if (num_txed_sections && needs_delay) {
+			/*
+			 * Delays more than 5 seconds cause the update
+			 * to timeout. End the update before the delay
+			 * and set it up after to recover from the
+			 * timeout.
+			 */
+			if (td->ep_type == usb_xfer)
+				send_done(&td->uep);
+			printf("Waiting %ds for %s update.\n",
+			       NEXT_SECTION_DELAY, sections[i].name);
+			sleep(NEXT_SECTION_DELAY);
+			setup_connection(td);
 		}
+
+		transfer_section(td, data + sections[i].offset,
+				 sections[i].offset, sections[i].size);
+		num_txed_sections++;
 	}
 
 	if (!num_txed_sections)
@@ -1521,17 +1662,6 @@ static int show_headers_versions(const void *image, bool show_machine_output)
 	 * and RW. The 2 slots should have identical FW versions and board
 	 * IDs.
 	 */
-	const struct {
-		const char *name;
-		uint32_t offset;
-	} sections[] = {
-		/* Slot A. */
-		{"RO", CONFIG_RO_MEM_OFF},
-		{"RW", CONFIG_RW_MEM_OFF},
-		/* Slot B. */
-		{"RO", CHIP_RO_B_MEM_OFF},
-		{"RW", CONFIG_RW_B_MEM_OFF}
-	};
 	const size_t kNumSlots = 2;
 	const size_t kNumSectionsPerSlot = 2;
 
@@ -3054,11 +3184,10 @@ int main(int argc, char *argv[])
 		data = get_file_or_die(argv[optind], &data_len);
 		printf("read %zd(%#zx) bytes from %s\n",
 		       data_len, data_len, argv[optind]);
-		if (data_len != CONFIG_FLASH_SIZE) {
-			fprintf(stderr, "Image file is not %d bytes\n",
-				CONFIG_FLASH_SIZE);
+
+		/* Validate image size and locate headers within image */
+		if (!locate_headers(data, data_len))
 			exit(update_error);
-		}
 
 		fetch_header_versions(data);
 
