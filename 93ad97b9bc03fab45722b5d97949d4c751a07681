@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d12075_15fc4ab7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-10T21:16:34Z",
+      "side": 1,
+      "message": "What is the procedure for landing this on platform/ec first (or at all)?\n\nI haven\u0027t verified that this still works with CR50 image update, but I will before I land. I wanted to get feedback on the CL in the meantime.\n\nThank you!",
+      "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
