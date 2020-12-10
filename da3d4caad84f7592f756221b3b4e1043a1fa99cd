@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f902ac_ca3660fd",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-12-10T10:16:23Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "d15c7626_f0609413",
+      "revId": "da3d4caad84f7592f756221b3b4e1043a1fa99cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0665f42c_1f9ae4c3",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85898ee2_94dfb347",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-12-10T10:16:23Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "0665f42c_1f9ae4c3",
+      "revId": "da3d4caad84f7592f756221b3b4e1043a1fa99cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ad08c12_321e20e8",
@@ -48,6 +84,24 @@
       "writtenOn": "2020-12-07T00:10:29Z",
       "side": 1,
       "message": "Same as startup/resume, only one of suspend or shutdown should be used.",
+      "revId": "da3d4caad84f7592f756221b3b4e1043a1fa99cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c1a8669_a9b3e4a9",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-12-10T10:16:23Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "1ad08c12_321e20e8",
       "revId": "da3d4caad84f7592f756221b3b4e1043a1fa99cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
