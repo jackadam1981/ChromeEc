@@ -34,6 +34,23 @@
       "parentUuid": "c7838a44_00bc6ae9",
       "revId": "b415edcc06eb4517c13ddf96458f595a547a8c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90bddecb_42134fcc",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-12-10T17:30:49Z",
+      "side": 1,
+      "message": "Here you are defaulting to GEN1_GEN2 whereas pre the spec you should look at Bit 0..2 for the capability. Did I misunderstood? Isn\u0027t this information stored in a structure somewhere to grab it?\n\n000b (not allowed for TBT certified cables)\n001b (USB r3.1 Gen1)\n010b (USB r3.1 Gen1 and Gen2) Use for TBT3 Passive Cable\n011 - 111b Reserved",
+      "revId": "b415edcc06eb4517c13ddf96458f595a547a8c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
