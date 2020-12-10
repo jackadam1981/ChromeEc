@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844c71ba_e51c6f09",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-10T20:08:37Z",
+      "side": 1,
+      "message": "As written, this could miss a real PROCHOT assertion that occurs after powering up the AP.\n\nI think a better check is:\n\t/*\n\t * b/173180788 Confirmed from Intel internal that SLP_S3# asserts low\n\t * about 10us before PROCHOT# asserts low, which means that\n\t * the CPU is already in reset and therefore the PROCHOT#\n\t * asserting low is normal behavior and not a concern\n\t * for PROCHOT# event.  Ignore all PROCHOT changes while the AP is off\n\t */\n     if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))\n         return;\n\n    debounced_prochot_in \u003d prochot_in;\n\n    if (debounced_prochot_in) {\n    /* etc */",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 0
+      },
+      "revId": "51e7a4e7187e4c356db8769e806ff94ca3d535a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
