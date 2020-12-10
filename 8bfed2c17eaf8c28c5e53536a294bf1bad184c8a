@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98aa5656_79025531",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-12-10T16:18:39Z",
+      "side": 1,
+      "message": "I think you can create two files, ktd2064.c and ktd2064.h. And put all the register control name in ktd2064.h. Besides, without the lightbar behavior, it is hard to review this CL.",
+      "revId": "8bfed2c17eaf8c28c5e53536a294bf1bad184c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bcbdd58_f9b4e30e",
+        "filename": "board/lindar/lindar_lightbar.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-12-10T16:18:39Z",
+      "side": 1,
+      "message": "remove one tab",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 33
+      },
+      "revId": "8bfed2c17eaf8c28c5e53536a294bf1bad184c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c112da09_41a8f866",
+        "filename": "board/lindar/lindar_lightbar.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-12-10T16:18:39Z",
+      "side": 1,
+      "message": "Why do you need to add this? Please explain it.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 0
+      },
+      "revId": "8bfed2c17eaf8c28c5e53536a294bf1bad184c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
