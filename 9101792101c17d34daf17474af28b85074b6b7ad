@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3926ed28_35025899",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-10T21:54:02Z",
+      "side": 1,
+      "message": "Agreed - please put this assert at the beginning of the function.  If there are code paths calling USB mux outside the PD task, we want to identify those.",
+      "parentUuid": "787a4164_dd5a96e8",
+      "revId": "9101792101c17d34daf17474af28b85074b6b7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "14e0ad20_88b0b2cc",
