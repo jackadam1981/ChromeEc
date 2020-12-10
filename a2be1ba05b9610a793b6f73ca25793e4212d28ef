@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79d81519_d2cc172a",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T19:15:43Z",
+      "side": 1,
+      "message": "Yep, the net moved. I\u0027ll update with latest schematic.",
+      "parentUuid": "b9c07959_c9f4d86d",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3c7c4e8_78243b95",
         "filename": "baseboard/guybrush/base_gpio.inc",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-10T18:49:07Z",
       "side": 1,
       "message": "Is this one open drain?  I was guessing not based on the net name and schematics but I could definitely be wrong here",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 39
+      },
+      "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a7dacb_0e02b9cf",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T19:15:43Z",
+      "side": 1,
+      "message": "It is not. Good catch!",
+      "parentUuid": "d3c7c4e8_78243b95",
       "range": {
         "startLine": 39,
         "startChar": 36,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f80be0cd_a44de62d",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T19:15:43Z",
+      "side": 1,
+      "message": "Yes, good catch!",
+      "parentUuid": "1cfd9485_5d079022",
+      "range": {
+        "startLine": 51,
+        "startChar": 41,
+        "endLine": 51,
+        "endChar": 46
+      },
+      "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4853c0c5_fbd112bf",
         "filename": "baseboard/guybrush/base_gpio.inc",
         "patchSetId": 7
@@ -89,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae90a6a1_c894452d",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T19:15:43Z",
+      "side": 1,
+      "message": "Yes, gmr_tablet_switch_isr makes sense.",
+      "parentUuid": "4853c0c5_fbd112bf",
+      "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3773db54_820bfa8a",
         "filename": "baseboard/guybrush/base_gpio.inc",
         "patchSetId": 7
@@ -100,6 +190,24 @@
       "writtenOn": "2020-12-10T18:49:07Z",
       "side": 1,
       "message": "EC_FAN_SPEED doesn\u0027t appear to be on one of the PWM channels",
+      "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5eb9fa6_2aa59da9",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T19:15:43Z",
+      "side": 1,
+      "message": "It\u0027s a tach input. I\u0027m following the pattern I see on other boards, like zork.",
+      "parentUuid": "3773db54_820bfa8a",
       "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
