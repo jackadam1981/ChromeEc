@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5e54456_11e999c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-10T01:49:27Z",
+      "side": 1,
+      "message": "What actually changed between py2 and py3 here?  Py3 buffering requires seek() or tell() for some reason?  (Buffering should need neither, but maybe someone reimplementing it felt otherwise...)  I guess making this unbuffered should be fine.\n\nThe need to switch away from \u0027a\u0027 is strange though.  That should just result in O_APPEND, which should be ignored by tty (including pty) implementation.  AFAICT that\u0027s the case, it really is ignored:\n\nhttps://source.chromium.org/search?q\u003dcase:yes%20O_APPEND\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fthird_party%2Fkernel%2Fv5.4%2Fdrivers%2Ftty%2F\nhttps://source.chromium.org/search?q\u003dcase:yes%20f_flags\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fthird_party%2Fkernel%2Fv5.4%2Fdrivers%2Ftty%2F\n\nIs py3 actually attempting to seek on the file, whereas py2 did the correct thing and only passed O_APPEND?\n\nDigging through cpython source history leads to:\nhttps://bugs.python.org/issue27805\n\nIs CrOS SDK py3 too old for the fix?  I would request the relevant team upgrade us, looks like the fix got backported to 3.7 and 3.8 branches, so hopefully just a \"patch\" version uprev (of major.minor.patch versioning scheme).\n\nFailing that, I\u0027d mildly prefer \u0027r+b\u0027 over \u0027w+b\u0027, with a TODO to revert back to \u0027a+b\u0027 after py3 uprev.  Link to the Python bug for context.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "1230d4861cfa9508224045412e4b12a7eea7462d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
