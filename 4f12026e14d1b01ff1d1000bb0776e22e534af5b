@@ -22,6 +22,30 @@
       },
       "revId": "4f12026e14d1b01ff1d1000bb0776e22e534af5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abcf8778_30f00271",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-10T20:19:02Z",
+      "side": 1,
+      "message": "Yes there\u0027s an issue with battery cutoff on a detachable device. Having this print would let us know if cutoff is failing because the buttons aren\u0027t pressed correctly or if the 5 second AC disconnect isn\u0027t happening.\nhttps://buganizer.corp.google.com/issues/175287237",
+      "parentUuid": "1172368c_61c66d6e",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "4f12026e14d1b01ff1d1000bb0776e22e534af5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
