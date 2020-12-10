@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab04b00_16caa9e3",
+        "filename": "board/servo_v4p1/tusb1064.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-10T08:23:45Z",
+      "side": 0,
+      "message": "There is an assumption that we are not supporting PVT (REV0) servoV4.1 with this code. I wonder if we should add extra logic to query board_id in this case, but AFAIU this old boards won\u0027t be used in high volumes - actually I don\u0027t even have one at my office.",
+      "revId": "b208ebb26cf76e0c28e6aa324a45019789b7a0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
