@@ -794,21 +794,44 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
 {
 	union tbt_mode_resp_cable cable_mode_resp = {
 		.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME) };
-	enum tbt_compat_cable_speed max_tbt_speed =
+	enum tbt_compat_cable_speed max_board_tbt_speed =
 				board_get_max_tbt_speed(port);
+	enum tbt_compat_cable_speed tbt_cable_speed;
 
 	/*
-	 * Ref: USB Type-C Cable and Connector Specification,
-	 * figure F-1 TBT3 Discovery Flow.
-	 * If cable doesn't have Intel SVID, limit Thunderbolt cable speed to
-	 * Passive Gen 2 cable speed.
+	 * If the cable doesn't support Intel SVID or doesn't respond to
+	 * discover svid SOP', enter Thunderbolt mode according to the
+	 * Discover Idenitity SOP' response.
+	 * Ref: TBT4 PD Discovery Flow Application Notes Revision 0.9
 	 */
-	if (!cable_mode_resp.raw_value)
-		return max_tbt_speed < TBT_SS_U32_GEN1_GEN2 ?
-			max_tbt_speed : TBT_SS_U32_GEN1_GEN2;
+	if (!cable_mode_resp.raw_value) {
+		struct pd_discovery *disc =
+			pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
 
-	return max_tbt_speed < cable_mode_resp.tbt_cable_speed ?
-		max_tbt_speed : cable_mode_resp.tbt_cable_speed;
+		if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+		   is_rev3_vdo(port, TCPC_TX_SOP_PRIME)) {
+			/*
+			 * Convert revision 3 cable speed into equivalent
+			 * Thunderbolt speed.
+			 */
+			tbt_cable_speed =
+				disc->identity.product_t1.p_rev30.ss ==
+					USB_R30_SS_U40_GEN3 ?
+					TBT_SS_TBT_GEN3 : TBT_SS_U32_GEN1_GEN2;
+		} else {
+			/*
+			 * Convert revision 2 cable speed into equivalent
+			 * Thunderbolt speed.
+			 */
+			tbt_cable_speed = disc->identity.product_t1.p_rev20.ss >
+						USB_R20_SS_U31_GEN1 ?
+						TBT_SS_U32_GEN1_GEN2 : 0;
+		}
+	} else
+		tbt_cable_speed = cable_mode_resp.tbt_cable_speed;
+
+	return max_board_tbt_speed < tbt_cable_speed ?
+		max_board_tbt_speed : tbt_cable_speed;
 }
 
 int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
@@ -873,13 +896,9 @@ enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
 	return cable_mode_resp.tbt_rounded;
 }
 
-/* Return the current cable speed received from Cable Discover Mode command */
 __overridable enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 {
-	union tbt_mode_resp_cable cable_mode_resp = {
-		.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME) };
-
-	return cable_mode_resp.tbt_cable_speed;
+	return TBT_SS_TBT_GEN3;
 }
 /*
  * ############################################################################
