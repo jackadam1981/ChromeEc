@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7761e79a_daf2a323",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T22:45:46Z",
+      "side": 1,
+      "message": "Nit: You can put the lines checking rv immediately after the ones that set it.",
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b878567_abdba88c",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 1
@@ -37,6 +54,30 @@
       "writtenOn": "2020-12-10T17:30:23Z",
       "side": 1,
       "message": "The formula is helpful, but update comment to also include the actual delay getting programmed (200ms).  Do this for TTCPC_FILTER and DRP_TOGGLE_CYCLE too.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19e3103_a3429cfe",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T22:45:46Z",
+      "side": 1,
+      "message": "Since this macro is only being used to set one value, it might be more readable to just define macros like RT1715_REG_ISCRST_EN \u003d 1 \u003c\u003c 7 and RT1715_REG_I2CRST_TOUT_200MS \u003d 0xf.",
+      "parentUuid": "4b878567_abdba88c",
       "range": {
         "startLine": 48,
         "startChar": 1,
@@ -95,6 +136,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ff415f7_1f13312d",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T22:45:46Z",
+      "side": 1,
+      "message": "Can you comment at a high level what this function does and why? And also describe the meaning of the cc_res parameter? (i.e. what does \"res\" stand for?)",
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1529734_b2565a47",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T22:45:46Z",
+      "side": 1,
+      "message": "#include usb_pd_tcpm.h",
+      "range": {
+        "startLine": 91,
+        "startChar": 15,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5fd4902_3ca3f146",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T22:45:46Z",
+      "side": 1,
+      "message": "Do you mean TCPCI rev 1.0? Compared to rev 2.0, I found the same definition for CC_STATUS. Can you elaborate on this comment generally?",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 64
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91327bef_889c2b2c",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 1
@@ -141,6 +245,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83d9df54_966e76e4",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T22:45:46Z",
+      "side": 1,
+      "message": "Other than setting the CC params at the end, this function appears very similar to the version in tcpci.c. Can you explain what\u0027s different here?",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa8e25b_2f35c01e",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T22:45:46Z",
+      "side": 1,
+      "message": "rt1715_polarity is already an int.\n\nIf this variable matches the polarity value passed to tcpci_tcpm_set_polarity, shouldn\u0027t polarity \u003d 0 indicate CC1 and polarity \u003d 1 indicate CC2?",
+      "range": {
+        "startLine": 148,
+        "startChar": 34,
+        "endLine": 148,
+        "endChar": 68
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53801f59_25aa9af4",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T22:45:46Z",
+      "side": 1,
+      "message": "Why is this being done here? cc1 and cc2 are not subsequently used. If the goal is to obtain the side effects of rt1715_get_cc, then those side effects should be encapsulated in their own function.",
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2784bb5_65209228",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T22:45:46Z",
+      "side": 1,
+      "message": "No need to change the indentation here.",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 45
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86635cfe_60e20ca3",
         "filename": "driver/tcpm/rt1715.h",
         "patchSetId": 1
@@ -152,6 +342,30 @@
       "writtenOn": "2020-12-10T17:30:23Z",
       "side": 1,
       "message": "Nit - Add white space between each register and align the bitfield specifiers.\n\n\n    #define RT1715_REG_VENDOR_5                 0x9B\n    #define RT1715_REG_VENDOR_5_SHUTDOWN_OFF    BIT(5)\n    #define RT1715_REG_VENDOR_5_ENEXTMSG        BIT(4)\n\n    #define RT1715_REG_VENDOR_7                 0xA0\n    #define RT1715_REG_VENDOR_7_SOFT_RESET      BIT(0)\n    /* etc */",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7db2756_d915cdc4",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T22:45:46Z",
+      "side": 1,
+      "message": "Likewise, don\u0027t delete the blank lines that are already between the existing sections.",
+      "parentUuid": "86635cfe_60e20ca3",
       "range": {
         "startLine": 11,
         "startChar": 0,
