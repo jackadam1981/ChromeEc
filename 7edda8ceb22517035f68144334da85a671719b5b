@@ -16,6 +16,57 @@
       "message": "done.",
       "revId": "7edda8ceb22517035f68144334da85a671719b5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94925015_3326f6e2",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-12-10T23:48:36Z",
+      "side": 1,
+      "message": "Each of these suspend/resume functions should cancel any pending deferred calls going the other direction to ensure they won\u0027t interfere. If the system resumes immediately after suspending, LTE might be left powered off because lte_power_suspend() could be called after lte_power_resume().\n\n    hook_call_deferred(\u0026lte_function_suspend_data, -1);\n    hook_call_deferred(\u0026lte_power_suspend_data, -1);\n    lte_power_resume();\n    hook_call_deferred(\u0026lte_function_resume_data, 10 * MSEC);",
+      "revId": "7edda8ceb22517035f68144334da85a671719b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e4a15d_ffed7958",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-12-10T23:48:36Z",
+      "side": 1,
+      "message": "No reason to defer this if it runs immediately; inline that function.",
+      "revId": "7edda8ceb22517035f68144334da85a671719b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3de4ba48_6e2c2811",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-12-10T23:48:36Z",
+      "side": 1,
+      "message": "Deferred calls may have significant timing jitter; lte_function_suspend should schedule the deferred call to lte_power_suspend to ensure the delay between the two is not shorter than intended.",
+      "revId": "7edda8ceb22517035f68144334da85a671719b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
