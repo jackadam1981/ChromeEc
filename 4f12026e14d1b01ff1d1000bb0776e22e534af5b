@@ -46,6 +46,30 @@
       },
       "revId": "4f12026e14d1b01ff1d1000bb0776e22e534af5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e9dffb9_037840b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-10T20:20:09Z",
+      "side": 1,
+      "message": "If we don\u0027t see the message, the buttons aren\u0027t pressed. If we do, then AC isn\u0027t disconnected for 5 seconds.",
+      "parentUuid": "abcf8778_30f00271",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "4f12026e14d1b01ff1d1000bb0776e22e534af5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
