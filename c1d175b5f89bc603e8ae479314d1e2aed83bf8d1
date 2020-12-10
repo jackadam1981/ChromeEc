@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d3a825_1e1134ed",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-10T16:48:21Z",
+      "side": 1,
+      "message": "common functionality which is supported by all boards and emulators (including unit tests) using the shim layer",
+      "range": {
+        "startLine": 37,
+        "startChar": 27,
+        "endLine": 37,
+        "endChar": 63
+      },
+      "revId": "c1d175b5f89bc603e8ae479314d1e2aed83bf8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a0f70a0_37bf9ad9",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-10T16:48:21Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be above with CONFIG_PLATFORM_EC?",
+      "range": {
+        "startLine": 47,
+        "startChar": 48,
+        "endLine": 47,
+        "endChar": 89
+      },
+      "revId": "c1d175b5f89bc603e8ae479314d1e2aed83bf8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
