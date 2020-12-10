@@ -39,6 +39,24 @@
       "message": "I don\u0027t think it\u0027s needed anymore? See https://crrev.com/c/2582819",
       "revId": "7eb12bb9ae8cf6938c02e112b187bbd39533b19c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eeb07e4_5f7f8e2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-10T16:25:40Z",
+      "side": 1,
+      "message": "Thanks, that CL is much better presuming we can fix the CBI issues.",
+      "parentUuid": "15ccf784_f29ede32",
+      "revId": "7eb12bb9ae8cf6938c02e112b187bbd39533b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
