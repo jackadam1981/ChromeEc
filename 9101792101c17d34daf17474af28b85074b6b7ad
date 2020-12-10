@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb98e0f_9159a867",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T21:20:32Z",
+      "side": 1,
+      "message": "What is being included from here?",
+      "revId": "9101792101c17d34daf17474af28b85074b6b7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "787a4164_dd5a96e8",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T21:20:32Z",
+      "side": 1,
+      "message": "I\u0027d imagine we want this to fail as fast as possible, so we should put it near the beginning of the function.",
+      "revId": "9101792101c17d34daf17474af28b85074b6b7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e0ad20_88b0b2cc",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T21:20:32Z",
+      "side": 1,
+      "message": "This creates a fairly long race window where we know that the return value of usb_mux_get won\u0027t match the most recently set value with usb_mux_set. I don\u0027t see any obvious negative consequences of that, but it might be worth commenting.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "9101792101c17d34daf17474af28b85074b6b7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
