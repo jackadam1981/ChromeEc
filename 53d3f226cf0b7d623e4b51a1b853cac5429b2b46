@@ -33,6 +33,47 @@
       "message": "I\u0027ve seen a lot of gpio.inc files with:\n\n/* Declare symbolic names for all the GPIOs that we care about.\n * Note: Those with interrupt handlers must be declared first. */\n\nIs this not the case anymore?",
       "revId": "53d3f226cf0b7d623e4b51a1b853cac5429b2b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e47cc2e9_26581409",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T16:12:33Z",
+      "side": 1,
+      "message": "Fixed here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2056498",
+      "parentUuid": "d022bfb3_56e591e2",
+      "revId": "53d3f226cf0b7d623e4b51a1b853cac5429b2b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b60ece8_85474b6c",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-10T16:12:33Z",
+      "side": 1,
+      "message": "Sensor Event.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 94
+      },
+      "revId": "53d3f226cf0b7d623e4b51a1b853cac5429b2b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
