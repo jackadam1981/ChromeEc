@@ -300,6 +300,24 @@
       "parentUuid": "3773db54_820bfa8a",
       "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e55a01_5b0819a8",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-10T20:56:08Z",
+      "side": 1,
+      "message": "Okay.  I haven\u0027t worked on a platform with a fan before but we\u0027ll take zork\u0027s word for it :)",
+      "parentUuid": "e5eb9fa6_2aa59da9",
+      "revId": "a2be1ba05b9610a793b6f73ca25793e4212d28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
