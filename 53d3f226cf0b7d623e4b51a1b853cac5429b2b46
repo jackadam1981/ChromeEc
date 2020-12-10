@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a758173e_ecc76328",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-10T00:06:14Z",
+      "side": 1,
+      "message": "I got partway through and can finish review tomorrow.  One question to start with",
+      "revId": "53d3f226cf0b7d623e4b51a1b853cac5429b2b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d022bfb3_56e591e2",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-10T00:06:14Z",
+      "side": 1,
+      "message": "I\u0027ve seen a lot of gpio.inc files with:\n\n/* Declare symbolic names for all the GPIOs that we care about.\n * Note: Those with interrupt handlers must be declared first. */\n\nIs this not the case anymore?",
+      "revId": "53d3f226cf0b7d623e4b51a1b853cac5429b2b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
