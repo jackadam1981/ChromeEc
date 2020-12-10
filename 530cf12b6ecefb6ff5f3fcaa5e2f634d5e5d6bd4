@@ -16,6 +16,24 @@
       "message": "Ran faft_ec on drawlat. All but 2 tests passed.\n\n- firmware_ECHash # Test needs to be updated to handle EC SW Sync disabled\n- firmware_ECCharging # Battery actual current is too high.\n\nThe EC charging failure seems to actually have uncovered a long standing bug on the SM5803. When charging from the MB, the `charger` command output shows 0 for I_bat even though I_bat from the fuel gauge is non-zero.\n\nThis isn\u0027t particularly breaking anything, so I\u0027m suggesting we move forward with this initial merge. I\u0027ll file a bug for both issues though.",
       "revId": "530cf12b6ecefb6ff5f3fcaa5e2f634d5e5d6bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a9291e5_3c5d767e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-10T16:26:51Z",
+      "side": 1,
+      "message": "Strange.  Would this be causing problems for OCPC? \n\nI see the charger_dump 0 output agreeing with the low current in \"charger\". \n\ncharger_dump 0\n20-12-10 09:22:52.073 [0xC4] \u003d 0x00\n20-12-10 09:22:52.076 [0xC5] \u003d 0x02 \n\ncharger\n20-12-10 09:21:59.063   I_batt:    14 (   0 -  6300, 100)\n\nbattery\n20-12-10 09:20:26.986   I:         0x067b \u003d 1659 mA(CHG)",
+      "parentUuid": "71eec7c7_2dce97a2",
+      "revId": "530cf12b6ecefb6ff5f3fcaa5e2f634d5e5d6bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
