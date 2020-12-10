@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7838a44_00bc6ae9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-12-10T07:00:46Z",
+      "side": 1,
+      "message": "The case you handled is when cable responds with SVID but doesn’t support Intel SVID. what about the case when there is no response to SVID at all? In this case discover identity bit 0..2 should be used to decide on the speed supported etc",
+      "revId": "b415edcc06eb4517c13ddf96458f595a547a8c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
