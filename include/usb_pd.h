@@ -2186,7 +2186,7 @@ int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 			uint32_t *payload);
 
 /**
- * Return maximum allowed speed for Thunderbolt-compatible mode
+ * Return maximum speed supported by the port to enter into Thunderbolt mode
  *
  * NOTE: Chromebooks require that all USB-C ports support the same features,
  * so the maximum speed returned by this function should be set to the lowest

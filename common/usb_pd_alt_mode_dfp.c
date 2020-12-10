@@ -873,13 +873,9 @@ enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
 	return cable_mode_resp.tbt_rounded;
 }
 
-/* Return the current cable speed received from Cable Discover Mode command */
 __overridable enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 {
-	union tbt_mode_resp_cable cable_mode_resp = {
-		.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME) };
-
-	return cable_mode_resp.tbt_cable_speed;
+	return TBT_SS_TBT_GEN3;
 }
 /*
  * ############################################################################
