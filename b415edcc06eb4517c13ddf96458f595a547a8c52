@@ -123,6 +123,24 @@
       "parentUuid": "6c4fad4e_e6e9bdcf",
       "revId": "b415edcc06eb4517c13ddf96458f595a547a8c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b77a16_3c84e79b",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-10T20:58:02Z",
+      "side": 1,
+      "message": "uploading a new patch. I was referring the cable and connector spec - Which says to directly downgrade to TBT gen 1/gen2 speed",
+      "parentUuid": "4b10c718_e9da2cad",
+      "revId": "b415edcc06eb4517c13ddf96458f595a547a8c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
