@@ -189,12 +189,24 @@ enum {
 	ALT_GROUP_COUNT
 };
 
+/*
+ * TODO(b/175248959): this file should not be compiled for Zephyr, as
+ * it exists in the chip/ directory.  Conflicting definitions were
+ * guarded out.
+ */
+#ifdef CONFIG_ZEPHYR
+/* Clear out the Zephyr definitoin, since it's not compatible. */
+#undef NPCX_DEVALT
+#endif
+
 #define NPCX_DEVALT(n)			REG8(NPCX_SCFG_BASE_ADDR + 0x010 + (n))
 
+#ifndef CONFIG_ZEPHYR
 #define NPCX_LV_GPIO_CTL_ADDR(n)	(((n) < 5) ? \
 					(NPCX_SCFG_BASE_ADDR + 0x02A + (n)) :\
 					(NPCX_SCFG_BASE_ADDR + 0x026))
 #define NPCX_LV_GPIO_CTL(n)		REG8(NPCX_LV_GPIO_CTL_ADDR(n))
+#endif /* CONFIG_ZEPHYR */
 
 /* pin-mux for I2C */
 #define NPCX_DEVALT2_I2C0_0_SL		0
@@ -473,6 +485,7 @@ enum {
 #endif
 
 /* MIWU registers */
+#ifndef CONFIG_ZEPHYR
 #define NPCX_WKEDG_ADDR(port, n)	(NPCX_MIWU_BASE_ADDR(port) + 0x00 + \
 					((n) * 2L) + ((n) < 5 ? 0 : 0x1E))
 #define NPCX_WKAEDG_ADDR(port, n)	(NPCX_MIWU_BASE_ADDR(port) + 0x01 + \
@@ -494,6 +507,7 @@ enum {
 #define NPCX_WKEN(port, n)		REG8(NPCX_WKEN_ADDR(port, n))
 #define NPCX_WKINEN(port, n)		REG8(NPCX_WKINEN_ADDR(port, n))
 #define NPCX_WKMOD(port, n)		REG8(NPCX_WKMOD_ADDR(port, n))
+#endif /* CONFIG_ZEPHYR */
 
 /* UART registers and functions */
 #if NPCX_UART_MODULE2
