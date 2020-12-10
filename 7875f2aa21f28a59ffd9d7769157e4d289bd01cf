@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc027a94_0f0cac46",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T05:13:42Z",
+      "side": 1,
+      "message": "Is this going to be used other than in the BB driver? It seems like most of the preliminary checks in here are already known to the driver at the time that it calls this.\n\nI think the name and description of this function could be clearer, but I\u0027ll reserve comment until I have a better idea of what it needs to do.",
+      "revId": "7875f2aa21f28a59ffd9d7769157e4d289bd01cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0d809d1_a628eb4a",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T05:13:42Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this also be a don\u0027t care if we\u0027re not running PD 3.0, or the port partner doesn\u0027t support USB4?",
+      "range": {
+        "startLine": 830,
+        "startChar": 4,
+        "endLine": 830,
+        "endChar": 51
+      },
+      "revId": "7875f2aa21f28a59ffd9d7769157e4d289bd01cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bce231d_744e1dcd",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-10T05:13:42Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 194,
+        "startChar": 13,
+        "endLine": 194,
+        "endChar": 16
+      },
+      "revId": "7875f2aa21f28a59ffd9d7769157e4d289bd01cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
