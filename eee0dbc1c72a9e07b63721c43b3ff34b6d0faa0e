@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecbe3f11_428b77dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-10T17:55:12Z",
+      "side": 1,
+      "message": "I see no functional change (as far as npcx goes). LPC_SYSJUMP_VERSION is the same. So, it should be compatible with the RO in the field.",
+      "revId": "eee0dbc1c72a9e07b63721c43b3ff34b6d0faa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
