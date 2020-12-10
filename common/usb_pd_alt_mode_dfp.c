@@ -879,7 +879,14 @@ __overridable enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 	union tbt_mode_resp_cable cable_mode_resp = {
 		.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME) };
 
-	return cable_mode_resp.tbt_cable_speed;
+	/*
+	 * Ref: USB Type-C Cable and Connector Specification,
+	 * figure F-1 TBT3 Discovery Flow.
+	 * If cable doesn't have Intel SVID, limit Thunderbolt cable speed to
+	 * Passive Gen 2 cable speed.
+	 */
+	return cable_mode_resp.raw_value ?
+		cable_mode_resp.tbt_cable_speed : TBT_SS_U32_GEN1_GEN2;
 }
 /*
  * ############################################################################
