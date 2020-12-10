@@ -10,20 +10,36 @@
 
 #include "common.h"
 #include "compile_time_macros.h"
+
+/*
+ * TODO(b/175248959): this file should not be compiled for Zephyr, as
+ * it exists in the chip/ directory.  Conflicting definitions were
+ * guarded out.
+ */
+#ifdef CONFIG_ZEPHYR
+#include <reg/reg_access.h>
+#include <reg/reg_def.h>
+#include <soc.h>
+#else
 #include "clock_chip.h"
+#endif
 
 /******************************************************************************/
 /*
  * Macro Functions
  */
 /* Bit functions */
+#ifndef CONFIG_ZEPHYR
+#define IS_BIT_SET(reg, bit)        (((reg) >> (bit)) & (0x1))
+#endif /* CONFIG_ZEPHYR */
+
 #define SET_BIT(reg, bit)           ((reg) |= (0x1 << (bit)))
 #define CLEAR_BIT(reg, bit)         ((reg) &= (~(0x1 << (bit))))
-#define IS_BIT_SET(reg, bit)        (((reg) >> (bit)) & (0x1))
 #define UPDATE_BIT(reg, bit, cond)  {	if (cond) \
 						SET_BIT(reg, bit); \
 					else \
 						CLEAR_BIT(reg, bit); }
+#ifndef CONFIG_ZEPHYR
 /* Field functions */
 #define GET_POS_FIELD(pos, size)    pos
 #define GET_SIZE_FIELD(pos, size)   size
@@ -39,6 +55,7 @@
 #define _SET_FIELD_(reg, f_pos, f_size, value) \
 	((reg) = ((reg) & (~(((1 << (f_size))-1) << (f_pos)))) \
 			| ((value) << (f_pos)))
+#endif /* CONFIG_ZEPHYR */
 
 /******************************************************************************/
 /*
@@ -620,6 +637,7 @@ enum {
 
 /******************************************************************************/
 /* Power Management Controller (PMC) Registers */
+#ifndef CONFIG_ZEPHYR
 #define NPCX_PMCSR                     REG8(NPCX_PMC_BASE_ADDR + 0x000)
 #define NPCX_ENIDL_CTL                 REG8(NPCX_PMC_BASE_ADDR + 0x003)
 #define NPCX_DISIDL_CTL                REG8(NPCX_PMC_BASE_ADDR + 0x004)
@@ -628,6 +646,7 @@ enum {
 			(NPCX_PMC_BASE_ADDR + 0x008 + (offset)) : \
 			(NPCX_PMC_BASE_ADDR + 0x024))
 #define NPCX_PWDWN_CTL(offset)         REG8(NPCX_PWDWN_CTL_ADDR(offset))
+#endif /* CONFIG_ZEPHYR */
 
 /* PMC register fields */
 #define NPCX_PMCSR_DI_INSTW              0
