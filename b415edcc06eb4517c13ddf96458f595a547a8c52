@@ -87,6 +87,24 @@
       "parentUuid": "02644434_35141b67",
       "revId": "b415edcc06eb4517c13ddf96458f595a547a8c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4fad4e_e6e9bdcf",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-10T19:43:05Z",
+      "side": 1,
+      "message": "If cable supports superspeed, but not intel svid, we covert discover VDO sop\u0027[b2:0] bits to tbt equivalent speed. Else we use speed from Discover mode SOP\u0027[b18:16]",
+      "parentUuid": "a98b1e9f_5b44dff8",
+      "revId": "b415edcc06eb4517c13ddf96458f595a547a8c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
