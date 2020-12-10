@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06ec503_23131b08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-10T01:19:36Z",
+      "side": 1,
+      "message": "Unit tests are failing with:\n\n```\n(cr) (dedede-merge-2020-dec-09) aaboagye@aaboagye ~/trunk/src/platform/ec $ ls .failedboards/\ntest-usb_pe_drp  test-usb_pe_drp_noextended  test-usb_pe_drp_old_noextended\n```",
+      "revId": "45885f094ecfe96065cdd596bc02ff5abee0b87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
