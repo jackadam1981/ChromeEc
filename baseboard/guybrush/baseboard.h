@@ -22,12 +22,16 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
-/* EC Config Defines */
+/* Power Config */
+#undef  CONFIG_EXTPOWER_DEBOUNCE_MS
+#define CONFIG_EXTPOWER_DEBOUNCE_MS 200
+#define CONFIG_EXTPOWER_GPIO
+#define CONFIG_POWER_COMMON
+#define CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
-#define CONFIG_EXTPOWER_GPIO
-#define CONFIG_VOLUME_BUTTONS
 
+/* Flash Config */
 /* See config_chip-npcx9.h for SPI flash configuration */
 #undef CONFIG_SPI_FLASH /* Don't enable external flash interface */
 
@@ -48,6 +52,9 @@
 /* Host communication */
 
 /* Chipset config */
+#define CONFIG_CHIPSET_STONEY
+#define CONFIG_CHIPSET_CAN_THROTTLE
+#define CONFIG_CHIPSET_RESET_HOOK
 
 /* Common Keyboard Defines */
 
@@ -69,7 +76,8 @@
 
 /* I2C Bus Configuration */
 
-/* Volume Button feature */
+/* Volume Button Config */
+#define CONFIG_VOLUME_BUTTONS
 
 /* Fan features */
 

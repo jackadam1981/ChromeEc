@@ -6,6 +6,7 @@
 /* Guybrush family-specific configuration */
 
 #include "gpio.h"
+#include "system.h"
 
 /* Wake Sources */
 const enum gpio_signal hibernate_wake_pins[] = {
