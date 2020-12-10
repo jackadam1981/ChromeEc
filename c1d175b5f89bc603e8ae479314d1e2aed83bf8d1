@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96d2bd50_87838bdc",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-10T17:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48d3a825_1e1134ed",
+      "range": {
+        "startLine": 37,
+        "startChar": 27,
+        "endLine": 37,
+        "endChar": 63
+      },
+      "revId": "c1d175b5f89bc603e8ae479314d1e2aed83bf8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a0f70a0_37bf9ad9",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-10T16:48:21Z",
       "side": 1,
       "message": "shouldn\u0027t this be above with CONFIG_PLATFORM_EC?",
+      "range": {
+        "startLine": 47,
+        "startChar": 48,
+        "endLine": 47,
+        "endChar": 89
+      },
+      "revId": "c1d175b5f89bc603e8ae479314d1e2aed83bf8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4acff152_07d36287",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-10T17:13:40Z",
+      "side": 1,
+      "message": "Not the way I am thinking at present, which (as described above) has related configs kept together in this section.\n\nThe ones at the top of those with no \u0027buddies\u0027",
+      "parentUuid": "7a0f70a0_37bf9ad9",
       "range": {
         "startLine": 47,
         "startChar": 48,
