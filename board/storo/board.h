@@ -15,6 +15,8 @@
 /* System unlocked in early development */
 #define CONFIG_SYSTEM_UNLOCKED
 
+/* EC console commands */
+#define CONFIG_CMD_TCPC_DUMP
 #define CONFIG_CMD_CHARGER_DUMP
 
 /* Battery */
@@ -24,40 +26,53 @@
 #define CONFIG_BC12_DETECT_PI3USB9201
 
 /* Charger */
-#define CONFIG_CHARGER_SM5803		/* C0 and C1: Charger */
-#define CONFIG_USB_PD_VBUS_DETECT_CHARGER
-#define CONFIG_USB_PD_5V_CHARGER_CTRL
-#define CONFIG_CHARGER_OTG
-#undef  CONFIG_CHARGER_SINGLE_CHIP
+#define CONFIG_CHARGER_RAA489000
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
+#define CONFIG_CHARGER_SENSE_RESISTOR 10
+#define CONFIG_OCPC_DEF_RBATT_MOHMS 22 /* R_DS(on) 11.6mOhm + 10mOhm sns rstr */
 #define CONFIG_OCPC
-#define CONFIG_OCPC_DEF_RBATT_MOHMS 21 /* R_DS(on) 10.7mOhm + 10mOhm sns rstr */
+#undef  CONFIG_CHARGER_SINGLE_CHIP
 
 /*
  * GPIO for C1 interrupts, for baseboard use
  *
- * Note this will only be valid for board revision 1
+ * Note this line might already have its pull up disabled for HDMI DBs, but
+ * it should be fine to set again before z-state.
  */
-#define GPIO_USB_C1_INT_ODL GPIO_USB_C1_INT_V1_ODL
+#define GPIO_USB_C1_INT_ODL GPIO_SUB_C1_INT_EN_RAILS_ODL
 
 /* LED */
 #define CONFIG_LED_PWM
 #define CONFIG_LED_PWM_COUNT 1
+#undef CONFIG_LED_PWM_NEAR_FULL_COLOR
+#undef CONFIG_LED_PWM_SOC_ON_COLOR
+#undef CONFIG_LED_PWM_SOC_SUSPEND_COLOR
+#undef CONFIG_LED_PWM_LOW_BATT_COLOR
+#define CONFIG_LED_PWM_NEAR_FULL_COLOR EC_LED_COLOR_WHITE
+#define CONFIG_LED_PWM_SOC_ON_COLOR EC_LED_COLOR_WHITE
+#define CONFIG_LED_PWM_SOC_SUSPEND_COLOR EC_LED_COLOR_WHITE
+#define CONFIG_LED_PWM_LOW_BATT_COLOR EC_LED_COLOR_AMBER
 
 /* PWM */
 #define CONFIG_PWM
+#define I2C_PORT_ACCEL      I2C_PORT_SENSOR
 
 /* Sensors */
-#define CONFIG_ACCEL_KX022		/* Lid accel */
-#define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
-/* Sensors without hardware FIFO are in forced mode */
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
+
+#define CONFIG_ACCEL_BMA255		/* Lid accel */
+#define CONFIG_ACCELGYRO_BMI160	/* Base accel */
+
+/* Lid operates in forced mode, base in FIFO */
 #define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
+#define CONFIG_ACCEL_FIFO
+#define CONFIG_ACCEL_FIFO_SIZE 256	/* Must be a power of 2 */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 
 #define CONFIG_ACCEL_INTERRUPTS
-/* Enable sensor fifo, must also define the _SIZE and _THRES */
-#define CONFIG_ACCEL_FIFO
-/* Power of 2 - Too large of a fifo causes too much timestamp jitter */
-#define CONFIG_ACCEL_FIFO_SIZE 256
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+#define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_UPDATE
@@ -70,9 +85,27 @@
 
 /* TCPC */
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
-#define CONFIG_USB_PD_TCPM_ITE_ON_CHIP	/* C0: ITE EC TCPC */
-#define CONFIG_USB_PD_TCPM_ANX7447	/* C1: ANX TCPC + Mux */
-#define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT 1
+#define CONFIG_USB_PD_TCPM_RAA489000
+
+/* USB defines specific to external TCPCs */
+#define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define CONFIG_USB_PD_VBUS_DETECT_TCPC
+#define CONFIG_USB_PD_DISCHARGE_TCPC
+#define CONFIG_USB_PD_TCPC_LOW_POWER
+
+/* Variant references the TCPCs to determine Vbus sourcing */
+#define CONFIG_USB_PD_5V_EN_CUSTOM
+
+#undef PD_POWER_SUPPLY_TURN_ON_DELAY
+#undef PD_POWER_SUPPLY_TURN_OFF_DELAY
+#undef PD_VCONN_SWAP_DELAY
+/* 20% margin added for these timings */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY	13080	/* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY	16080	/* us */
+#define PD_VCONN_SWAP_DELAY		787	/* us */
+
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
 
 /* Thermistors */
 #define CONFIG_TEMP_SENSOR
@@ -86,6 +119,8 @@
 
 #define CONFIG_USBC_RETIMER_TUSB544		/* C1 Redriver: TUSB544 */
 
+#define I2C_ADDR_EEPROM_FLAGS 0x50 /* 7b address */
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -98,10 +133,8 @@ enum chg_id {
 };
 
 enum pwm_channel {
-	PWM_CH_KBLIGHT,
-	PWM_CH_LED_RED,
-	PWM_CH_LED_GREEN,
-	PWM_CH_LED_BLUE,
+	PWM_CH_LED_AMBER,
+	PWM_CH_LED_WHITE,
 	PWM_CH_COUNT,
 };
 
@@ -118,13 +151,14 @@ enum adc_channel {
 	ADC_VSNS_PP3300_A,     /* ADC0 */
 	ADC_TEMP_SENSOR_1,     /* ADC2 */
 	ADC_TEMP_SENSOR_2,     /* ADC3 */
-	ADC_SUB_ANALOG,        /* ADC13 */
+	ADC_TEMP_SENSOR_3,     /* ADC15*/
 	ADC_CH_COUNT
 };
 
 enum temp_sensor_id {
 	TEMP_SENSOR_1,
 	TEMP_SENSOR_2,
+	TEMP_SENSOR_3,
 	TEMP_SENSOR_COUNT
 };
 
