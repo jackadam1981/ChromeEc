@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4911afb7_5e20e9b1",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-10T17:30:23Z",
+      "side": 1,
+      "message": "This needs to be an array of [CONFIG_USB_PD_PORT_MAX_COUNT] to track polarity for each port.",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b878567_abdba88c",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-10T17:30:23Z",
+      "side": 1,
+      "message": "The formula is helpful, but update comment to also include the actual delay getting programmed (200ms).  Do this for TTCPC_FILTER and DRP_TOGGLE_CYCLE too.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0057c3a_888967e1",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-10T17:30:23Z",
+      "side": 1,
+      "message": "Please document that this register write is doing.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8815bbd6_eea1c3d7",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-10T17:30:23Z",
+      "side": 1,
+      "message": "Please document that this register write is doing.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 51
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91327bef_889c2b2c",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-10T17:30:23Z",
+      "side": 1,
+      "message": "Return if error.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 49
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b1fc8c_ea9abf5f",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-10T17:30:23Z",
+      "side": 1,
+      "message": "Should be TCPC_REG_ROLE_CTRL_CC1()",
+      "range": {
+        "startLine": 140,
+        "startChar": 11,
+        "endLine": 140,
+        "endChar": 33
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86635cfe_60e20ca3",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-10T17:30:23Z",
+      "side": 1,
+      "message": "Nit - Add white space between each register and align the bitfield specifiers.\n\n\n    #define RT1715_REG_VENDOR_5                 0x9B\n    #define RT1715_REG_VENDOR_5_SHUTDOWN_OFF    BIT(5)\n    #define RT1715_REG_VENDOR_5_ENEXTMSG        BIT(4)\n\n    #define RT1715_REG_VENDOR_7                 0xA0\n    #define RT1715_REG_VENDOR_7_SOFT_RESET      BIT(0)\n    /* etc */",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
