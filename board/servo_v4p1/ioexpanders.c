@@ -51,10 +51,10 @@ int init_ioexpanders(void)
 	 * BIT-3 (BOARD_ID)                | I   | x
 	 * BIT-4 (BOARD ID)                | I   | x
 	 * BIT-5 (BOARD_ID)                | I   | x
-	 * BIT-6 (CMUX_EN)                 | O   | 1
+	 * BIT-6 (VBUS_DISCHRG_EN)         | O   | 0
 	 * BIT-7 (DONGLE_DET)              | I   | x
 	 */
-	ret = tca6416a_write_byte(1, TCA6416A_OUT_PORT_1, 0x40);
+	ret = tca6416a_write_byte(1, TCA6416A_OUT_PORT_1, 0x0);
 	if (ret != EC_SUCCESS)
 		return ret;
 
@@ -104,20 +104,20 @@ int init_ioexpanders(void)
 	 * Init TCA6424A, PORT 2
 	 * NAME                      | DIR | Initial setting
 	 * ------------------------------------------------
-	 * BIT-0 (VBUS_DISCHRG_EN)   | O   | 0
+	 * BIT-0 (HOST_CHRG_DET)     | I   | x
 	 * BIT-1 (USBH_PWRDN_L)      | O   | 1
 	 * BIT-2 (UNUSED)            | I   | x
 	 * BIT-3 (UNUSED)            | I   | x
 	 * BIT-4 (UNUSED)            | I   | x
 	 * BIT-5 (UNUSED)            | I   | x
-	 * BIT-6 (UNUSED)            | I   | x
+	 * BIT-6 (SYS_PWR_IRQ_ODL)   | I   | x
 	 * BIT-7 (DBG_LED_K_ODL)     | O   | 0
 	 */
 	ret = tca6424a_write_byte(1, TCA6424A_OUT_PORT_2, 0x02);
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	ret = tca6424a_write_byte(1, TCA6424A_DIR_PORT_2, 0x7c);
+	ret = tca6424a_write_byte(1, TCA6424A_DIR_PORT_2, 0x7d);
 	if (ret != EC_SUCCESS)
 		return ret;
 
@@ -235,14 +235,14 @@ inline int board_id_det(void)
 	return (id >> 3) & 0x7;
 }
 
-inline int cmux_en(int en)
-{
-	return tca6416a_write_bit(1, TCA6416A_OUT_PORT_1, 6, en);
-}
-
 inline int dongle_det(void)
 {
 	return tca6416a_read_bit(1, TCA6416A_IN_PORT_1, 7);
+}
+
+inline int get_host_chrg_det(void)
+{
+	return tca6424a_read_bit(1, TCA6424A_IN_PORT_2, 0);
 }
 
 inline int en_pp5000_alt_3p3(int en)
@@ -298,7 +298,7 @@ inline int read_faults(void)
 
 inline int vbus_dischrg_en(int en)
 {
-	return tca6424a_write_bit(1, TCA6424A_OUT_PORT_2, 0, en);
+	return tca6416a_write_bit(1, TCA6416A_OUT_PORT_1, 6, en);
 }
 
 inline int usbh_pwrdn_l(int en)
