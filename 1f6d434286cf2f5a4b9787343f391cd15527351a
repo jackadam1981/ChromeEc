@@ -46,6 +46,30 @@
       },
       "revId": "1f6d434286cf2f5a4b9787343f391cd15527351a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4114804c_15d4a332",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-11T22:22:17Z",
+      "side": 1,
+      "message": "That sounds right from a non-embedded perspective... In I2C and SPI, the one which  initiates a session is (formerly) called master and the one which waits for a contact is (formerly) called slave.\n\nI2C went for master/slave -\u003e controller/peripheral. Maybe it suites better here as well?\n\n+drinkcat@",
+      "parentUuid": "d62e0b73_a54ea4de",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "1f6d434286cf2f5a4b9787343f391cd15527351a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
