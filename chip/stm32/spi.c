@@ -668,6 +668,14 @@ static void spi_init(void)
 	/* Fix for bug chrome-os-partner:31390 */
 	enabled = 0;
 	state = SPI_STATE_DISABLED;
+
+	if (was_enabled) {
+		/* rewind DMA buffer */
+		dma_get_channel(STM32_DMAC_SPI1_TX)->cndtr = 0;
+		/* disable DMA */
+		dma_disable(STM32_DMAC_SPI1_TX);
+	}
+
 	STM32_RCC_APB2RSTR |= STM32_RCC_PB2_SPI1;
 	STM32_RCC_APB2RSTR &= ~STM32_RCC_PB2_SPI1;
 
