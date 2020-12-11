@@ -16,6 +16,24 @@
       "message": "Which FAFT test is broken? We might be able to use custom rules to pass the test?",
       "revId": "e2e020123e1e9b71d40717030c50576fbf1f6207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2629285_78ef602e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-12-11T01:24:00Z",
+      "side": 1,
+      "message": "PDVbusRequest fails.\n\n\nMain reason for revert is to respect to user\u0027s control, if someone explicitly sets max voltage, ec should not overwrite the number (or at least not doing this periodically).",
+      "parentUuid": "2379ab78_fa04cc7b",
+      "revId": "e2e020123e1e9b71d40717030c50576fbf1f6207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
