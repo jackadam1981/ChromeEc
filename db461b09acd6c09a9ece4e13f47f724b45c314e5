@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c70e5bb_34821d62",
+        "filename": "common/mock/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-12-11T22:41:10Z",
+      "side": 0,
+      "message": "Agreed; once this is complete, common/mock/usb_pd_mock.c should be deleted.",
+      "parentUuid": "1d66464c_f9d0b489",
+      "revId": "db461b09acd6c09a9ece4e13f47f724b45c314e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6116d38_e94d9017",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 4
