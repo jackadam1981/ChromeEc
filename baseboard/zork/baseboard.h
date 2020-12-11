@@ -86,6 +86,7 @@
  * but that feature of ISL9241 is broken (b/160287056) so we have to use
  * CONFIG_CHARGE_RAMP_SW instead.
  */
+#undef CONFIG_CHARGE_RAMP_HW
 #define CONFIG_CHARGE_RAMP_SW
 
 #define CONFIG_CHIPSET_STONEY

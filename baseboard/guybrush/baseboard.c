@@ -7,12 +7,27 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "battery_fuel_gauge.h"
 #include "chipset.h"
+#include "charge_manager.h"
+#include "charge_ramp.h"
+#include "charge_state.h"
+#include "charge_state_v2.h"
+#include "charger.h"
+#include "driver/ppc/aoz1380.h"
+#include "driver/ppc/nx20p348x.h"
+#include "driver/tcpm/nct38xx.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "isl9241.h"
+#include "nct38xx.h"
+#include "pi3usb9201.h"
 #include "power.h"
 #include "temp_sensor.h"
 #include "thermal.h"
+#include "usb_mux.h"
+#include "usb_pd_tcpm.h"
+#include "usbc_ppc.h"
 
 /* Wake Sources */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -199,6 +214,168 @@ __overridable struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
+/*
+ * Battery info for all Guybrush battery types. Note that the fields
+ * start_charging_min/max and charging_min/max are not used for the charger.
+ * The effective temperature limits are given by discharging_min/max_c.
+ *
+ * Fuel Gauge (FG) parameters which are used for determining if the battery
+ * is connected, the appropriate ship mode (battery cutoff) command, and the
+ * charge/discharge FETs status.
+ *
+ * Ship mode (battery cutoff) requires 2 writes to the appropriate smart battery
+ * register. For some batteries, the charge/discharge FET bits are set when
+ * charging/discharging is active, in other types, these bits set mean that
+ * charging/discharging is disabled. Therefore, in addition to the mask for
+ * these bits, a disconnect value must be specified. Note that for TI fuel
+ * gauge, the charge/discharge FET status is found in Operation Status (0x54),
+ * but a read of Manufacturer Access (0x00) will return the lower 16 bits of
+ * Operation status which contains the FET status bits.
+ *
+ * The assumption for battery types supported is that the charge/discharge FET
+ * status can be read with a sb_read() command and therefore, only the register
+ * address, mask, and disconnect value need to be provided.
+ */
+const struct board_batt_params board_battery_info[] = {
+	/* AP19B8M */
+	[BATTERY_AP19B8M] = {
+		.fuel_gauge = {
+			.manuf_name = "LGC KT0030G024",
+			.ship_mode = {
+				.reg_addr = 0x3A,
+				.reg_data = { 0xC574, 0xC574 },
+			},
+			.fet = {
+				.reg_addr = 0x43,
+				.reg_mask = 0x0001,
+				.disconnect_val = 0x0,
+			}
+		},
+		.batt_info = {
+			.voltage_max          = 13350,
+			.voltage_normal       = 11610,
+			.voltage_min          = 9000,
+			.precharge_current    = 256,
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 50,
+			.charging_min_c       = 0,
+			.charging_max_c       = 60,
+			.discharging_min_c    = -20,
+			.discharging_max_c    = 75,
+		},
+	},
+	/* AP18C7M */
+	[BATTERY_AP18C7M] = {
+		.fuel_gauge = {
+			.manuf_name = "SMP KT00407008",
+			.ship_mode = {
+				.reg_addr = 0x3A,
+				.reg_data = { 0xC574, 0xC574 },
+			},
+			.fet = {
+				.mfgacc_support = 1,
+				.reg_addr = 0x0,
+				.reg_mask = 0x0002,
+				.disconnect_val = 0x0000,
+			}
+		},
+		.batt_info = {
+			.voltage_max          = 17600,
+			.voltage_normal       = 15400,
+			.voltage_min          = 12000,
+			.precharge_current    = 256,
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 45,
+			.charging_min_c       = 0,
+			.charging_max_c       = 60,
+			.discharging_min_c    = -20,
+			.discharging_max_c    = 70,
+		},
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
+
+const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_AP19B8M;
+
+const struct charger_config_t chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = ISL9241_ADDR_FLAGS,
+		.drv = &isl9241_drv,
+	},
+};
+
+const struct tcpc_config_t tcpc_config[] = {
+	[USBC_PORT_C0] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC0,
+			.addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
+		},
+		.drv = &nct38xx_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
+	[USBC_PORT_C1] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC1,
+			.addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
+		},
+		.drv = &nct38xx_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
+BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
+
+const int usb_port_enable[USBA_PORT_COUNT] = {
+	IOEX_EN_PP5000_USB_A0_VBUS,
+	IOEX_EN_PP5000_USB_A1_VBUS_DB,
+};
+
+struct ppc_config_t ppc_chips[] = {
+	[USBC_PORT_C0] = {
+		/* Device does not talk I2C */
+		.drv = &aoz1380_drv
+	},
+
+	[USBC_PORT_C1] = {
+		.i2c_port = I2C_PORT_TCPC1,
+		.i2c_addr_flags = NX20P3483_ADDR1_FLAGS,
+		.drv = &nx20p348x_drv
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+
+const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
+	[USBC_PORT_C0] = {
+		.i2c_port = I2C_PORT_TCPC0,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
+	},
+
+	[USBC_PORT_C1] = {
+		.i2c_port = I2C_PORT_TCPC1,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
+
+struct usb_mux usb_muxes[] = {
+	[USBC_PORT_C0] = {
+		/* TODO: FIll in FP6 USB Mux configuration */
+	},
+	[USBC_PORT_C1] = {
+		/* TODO: Fill in dynamically */
+	}
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
+
+int board_set_active_charge_port(int port)
+{
+
+	return EC_SUCCESS;
+}
 
 int board_is_i2c_port_powered(int port)
 {
@@ -214,6 +391,24 @@ int board_is_i2c_port_powered(int port)
 	default:
 		return 1;
 	}
+}
+
+/*
+ * In the AOZ1380 PPC, there are no programmable features.  We use
+ * the attached NCT3807 to control a GPIO to indicate 1A5 or 3A0
+ * current limits.
+ */
+__overridable int board_aoz1380_set_vbus_source_current_limit(int port,
+						enum tcpc_rp_value rp)
+{
+	/* TODO */
+	return 0;
+}
+
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	/* TODO */
 }
 
 void sbu_fault_interrupt(enum ioex_signal signal)
@@ -240,4 +435,10 @@ int baseboard_get_temp(int idx, int *temp_ptr)
 {
 	/* TODO */
 	return 0;
+}
+
+int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
+{
+	/* TODO */
+	return false;
 }

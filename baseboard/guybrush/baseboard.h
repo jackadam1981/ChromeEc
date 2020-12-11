@@ -47,7 +47,7 @@
 /* Thermal Config */
 #define CONFIG_ADC
 #define CONFIG_THROTTLE_AP
-/* TODO: Enable SBI TSI CPU Temp sensor after i2c config */
+/* TODO: Enable SBI-TSI CPU Temp sensor after i2c config */
 #undef CONFIG_TEMP_SENSOR_SB_TSI
 #define GPIO_CPU_PROCHOT	GPIO_PROCHOT_ODL
 
@@ -70,14 +70,116 @@
 #define CONFIG_GMR_TABLET_MODE
 #define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE
 
-/* Common charger defines */
+/* Battery Config */
+#define CONFIG_BATTERY_PRESENT_GPIO	GPIO_EC_BATT_PRES_ODL
+#define CONFIG_BATTERY_CUT_OFF
+#define CONFIG_BATTERY_FUEL_GAUGE
+#define CONFIG_BATTERY_REVIVE_DISCONNECT
+#define CONFIG_BATTERY_SMART
+#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_COUNT 1
+#define CONFIG_HOSTCMD_BATTERY_V2
+#define CONFIG_BC12_DETECT_PI3USB9201
 
-/* Common battery defines */
+/* Charger Config */
+#define CONFIG_CHARGER
+#define CONFIG_CHARGE_MANAGER
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHARGER_INPUT_CURRENT 512
+#define CONFIG_CHARGER_ISL9241
+#define CONFIG_CHARGER_SENSE_RESISTOR 10
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
+/*
+ * We would prefer to use CONFIG_CHARGE_RAMP_HW to enable legacy BC1.2 charging
+ * but that feature of ISL9241 is broken (b/160287056) so we have to use
+ * CONFIG_CHARGE_RAMP_SW instead.
+ */
+#define CONFIG_CHARGE_RAMP_SW
 
-/* USB Type C and USB PD defines */
+/* USB Type C and USB PD config */
 #define CONFIG_IO_EXPANDER_PORT_COUNT USBC_PORT_COUNT
+#define CONFIG_USB_PD_REV30
+/* Enable the TCPMv2 PD stack */
+#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_PD_DECODE_SOP
+#define CONFIG_USB_DRP_ACC_TRYSRC
+/* Enable TCPMv2 Fast Role Swap */
+#define CONFIG_USB_PD_FRS_TCPC
+#define CONFIG_HOSTCMD_PD_CONTROL
+#define CONFIG_CMD_TCPC_DUMP
+#define CONFIG_USB_CHARGER
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_ALT_MODE
+#define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USB_PD_COMM_LOCKED
+#define CONFIG_USB_PD_DISCHARGE_TCPC
+#define CONFIG_USB_PD_DP_HPD_GPIO
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define CONFIG_USB_PD_LOGGING
+#define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
+#define CONFIG_USB_PD_TCPC_LOW_POWER
+#define CONFIG_USB_PD_TCPM_MUX
+#define CONFIG_USB_PD_TCPM_NCT38XX
+#define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_TRY_SRC
+#define CONFIG_USB_PD_VBUS_DETECT_TCPC
+#define CONFIG_USBC_PPC
+#define CONFIG_USBC_PPC_SBU
+#define CONFIG_USBC_PPC_AOZ1380
+#define CONFIG_USBC_RETIMER_PI3HDX1204
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USBC_SS_MUX_DFP_ONLY
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+#define CONFIG_USB_MUX_AMD_FP5
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USBC_PPC_NX20P3483
+#define CONFIG_USBC_RETIMER_PS8802
+#define CONFIG_USBC_RETIMER_PS8818
+#define CONFIG_IO_EXPANDER_PORT_COUNT USBC_PORT_COUNT
+#define CONFIG_USB_MUX_RUNTIME_CONFIG
+#define GPIO_USB_C0_DP_HPD GPIO_USB_C0_HPD
+#define GPIO_USB_C1_DP_HPD GPIO_USB_C1_HPD
+
+/* USB-A config */
+#define GPIO_USB1_ILIM_SEL IOEX_USB_A0_LIMIT_SDP
+#define GPIO_USB2_ILIM_SEL IOEX_USB_A1_LIMIT_SDP_DB
+
+/*
+ * USB ID
+ *
+ * This is allocated specifically for Guybrush
+ * http://google3/hardware/standards/usb/
+ */
+#define CONFIG_USB_PID 0x504D
+
+/* USB-A config */
+#define USB_PORT_COUNT USBA_PORT_COUNT
+#define CONFIG_USB_PORT_POWER_SMART
+#define CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY
+#define CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE USB_CHARGE_MODE_CDP
+#define CONFIG_USB_PORT_POWER_SMART_INVERTED
+
+#define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
+#define PD_VCONN_SWAP_DELAY		5000 /* us */
+
+#define PD_OPERATING_POWER_MW	15000
+#define PD_MAX_POWER_MW		65000
+#define PD_MAX_CURRENT_MA	3250
+#define PD_MAX_VOLTAGE_MV	20000
+
+/*
+ * EC will boot AP to depthcharge if: (BAT >= 4%) || (AC >= 50W)
+ * CONFIG_CHARGER_LIMIT_* is not set, so there is no additional restriction on
+ * Depthcharge to boot OS.
+ */
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON			4
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON		50000
 
 /* USB Type A Features */
+
 
 /* BC 1.2 */
 
@@ -122,11 +224,17 @@ enum power_signal {
 	POWER_SIGNAL_COUNT,
 };
 
-/* USB-C ports */
+/* US ports */
 enum usbc_port {
 	USBC_PORT_C0 = 0,
 	USBC_PORT_C1,
 	USBC_PORT_COUNT
+};
+
+enum usba_port {
+	USBA_PORT_A0 = 0,
+	USBA_PORT_A1,
+	USBA_PORT_COUNT
 };
 
 enum adc_channel {
@@ -143,6 +251,14 @@ enum temp_sensor_id {
 	TEMP_SENSOR_CPU,
 	TEMP_SENSOR_COUNT
 };
+
+enum battery_type {
+	BATTERY_AP19B8M,
+	BATTERY_AP18C7M,
+	BATTERY_TYPE_COUNT,
+};
+
+
 
 /* Common definition for the USB PD interrupt handlers. */
 void tcpc_alert_event(enum gpio_signal signal);
