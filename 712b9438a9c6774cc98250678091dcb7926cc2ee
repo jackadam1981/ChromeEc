@@ -219,6 +219,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe891b1f_ddeee251",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1475908
+      },
+      "writtenOn": "2020-12-11T12:15:03Z",
+      "side": 1,
+      "message": "This function is used to select the CC PHY noise filter voltage level according to current CC voltage level. cc_res parameter means the CC voltage level and our device cc role is source or sink.",
+      "parentUuid": "2ff415f7_1f13312d",
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1529734_b2565a47",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 1
