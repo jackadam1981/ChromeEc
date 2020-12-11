@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b1c020_202e6e4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-11T11:12:57Z",
+      "side": 1,
+      "message": "Please consider splitting this patch into smaller logical changes.",
+      "revId": "70f8c2e19f444801f00933ecb6bac871be77fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dceca1c9_2c8d6394",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-11T11:12:57Z",
+      "side": 1,
+      "message": "Should this be /* C1 */ ?",
+      "range": {
+        "startLine": 198,
+        "startChar": 32,
+        "endLine": 198,
+        "endChar": 38
+      },
+      "revId": "70f8c2e19f444801f00933ecb6bac871be77fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e060119_152e8a27",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-11T11:12:57Z",
+      "side": 1,
+      "message": "Can we move DUT_ACTIVE_CC_OPEN from all cases before switch and override necessary things in cases?\n\nCheck pd_set_rp_rd() we are disconnecting resistors there. Looks like code duplication.",
+      "range": {
+        "startLine": 563,
+        "startChar": 1,
+        "endLine": 566,
+        "endChar": 26
+      },
+      "revId": "70f8c2e19f444801f00933ecb6bac871be77fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7788faa0_bdb5b601",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-11T11:12:57Z",
+      "side": 1,
+      "message": "Use usb_mux_get() instead of talking with device directly.",
+      "revId": "70f8c2e19f444801f00933ecb6bac871be77fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73fba5e_86d5e2c4",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-11T11:12:57Z",
+      "side": 1,
+      "message": "Use usb_mux_*() functions family instead of directly talking with device.",
+      "range": {
+        "startLine": 1091,
+        "startChar": 0,
+        "endLine": 1091,
+        "endChar": 38
+      },
+      "revId": "70f8c2e19f444801f00933ecb6bac871be77fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
