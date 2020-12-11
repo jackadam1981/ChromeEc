@@ -158,4 +158,7 @@ int stm32gx_ucpd_transmit(int port,
  */
 int stm32gx_ucpd_get_message_raw(int port, uint32_t *payload, int *head);
 
+
+void ucpd_cc_detect_notify_enable(int enable);
+
 #endif /* __CROS_EC_UCPD_STM32GX_H */
