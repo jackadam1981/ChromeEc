@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08acda39_7b3ed293",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-11T00:35:44Z",
+      "side": 1,
+      "message": "My mistake on the copy and paste.\n\nThis should be (remove the negate operator)\n\n    if (chipset_in_state(CHIPSET_STATE_ANY_OFF))\n\nCan you test this change out on a board and update the commit message?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "8cb43d7550e719b7d5ff23fd491e610e19a59c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
