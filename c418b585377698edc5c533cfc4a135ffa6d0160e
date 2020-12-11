@@ -70,6 +70,24 @@
       "parentUuid": "4571d700_57527828",
       "revId": "c418b585377698edc5c533cfc4a135ffa6d0160e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6257886f_20e46e2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-11T20:21:38Z",
+      "side": 1,
+      "message": "I rearranged the mocks so that they are in the mock library corresponding to the library with the real definition. This avoids multiple definitions when building tests without having to define mocks weakly.",
+      "parentUuid": "023b66d4_15eae0f5",
+      "revId": "c418b585377698edc5c533cfc4a135ffa6d0160e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
