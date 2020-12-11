@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26140d35_cf10edab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-11T02:02:10Z",
+      "side": 1,
+      "message": "Got it. Thanks for notify.",
+      "parentUuid": "fc17006d_c5d5b4f8",
+      "revId": "30e57d0dc4833b9db450782992128b6ca3225ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fff47423_f96234b7",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-10T18:33:55Z",
       "side": 1,
       "message": "change to \"const struct\" after adding #undef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG to board.h",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 6
+      },
+      "revId": "30e57d0dc4833b9db450782992128b6ca3225ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a00364_d8c9e681",
+        "filename": "board/copano/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-11T02:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fff47423_f96234b7",
       "range": {
         "startLine": 314,
         "startChar": 0,
