@@ -22,6 +22,30 @@
       },
       "revId": "1230d4861cfa9508224045412e4b12a7eea7462d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ea17432_efe5c080",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-12-11T01:41:26Z",
+      "side": 1,
+      "message": "I tried now again without buffering\u003d0, and I get\n\nio.UnsupportedOperation: File or stream is not seekable, only coming across this\nhttps://bugs.python.org/issue20074\n\nfor the other part, it seems that we use python3.6 in the sdk (and on chromebooks). So I\u0027m not sure we can gate on that being updated.\nI\u0027ll take your advice and do `r+b` with a link to the python issue and a note to retest \u0026 remove if/when we move past 3.6",
+      "parentUuid": "b5e54456_11e999c1",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "1230d4861cfa9508224045412e4b12a7eea7462d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
