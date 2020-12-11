@@ -315,6 +315,11 @@ static void setup_for_transaction(void)
 	/* clear this as soon as possible */
 	setup_transaction_later = 0;
 
+	/* Stop sending response, if any */
+	dma_get_channel(STM32_DMAC_SPI1_TX)->cndtr = 0;
+
+	dma_disable(STM32_DMAC_SPI1_TX);
+
 #ifndef CHIP_FAMILY_STM32H7 /* H7 is not ready to set status here */
 	/* Not ready to receive yet */
 	tx_status(EC_SPI_NOT_READY);
@@ -323,19 +328,20 @@ static void setup_for_transaction(void)
 	/* We are no longer actively processing a transaction */
 	state = SPI_STATE_PREPARE_RX;
 
-	/* Stop sending response, if any */
-	dma_disable(STM32_DMAC_SPI1_TX);
-
 	/*
 	 * Read dummy bytes in case there are some pending; this prevents the
 	 * receive DMA from getting that byte right when we start it.
 	 */
 	dummy = SPI_RXDR;
+	SPI_TXDR = 0;
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32L4)
 	/* 4 Bytes makes sure the RX FIFO on the F0 is empty as well. */
 	dummy = spi->dr;
 	dummy = spi->dr;
 	dummy = spi->dr;
+	spi->dr= 0;
+	spi->dr= 0;
+	spi->dr= 0;
 #endif
 
 	/* Start DMA */
@@ -468,6 +474,7 @@ void spi_event(enum gpio_signal signal)
 {
 	dma_chan_t *rxdma;
 	uint16_t i;
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
 
 	/* If not enabled, ignore glitches on NSS */
 	if (!enabled)
@@ -477,6 +484,21 @@ void spi_event(enum gpio_signal signal)
 	if (gpio_get_level(GPIO_SPI1_NSS)) {
 		enable_sleep(SLEEP_MASK_SPI);
 
+		/*
+		 * NSS is high (CS is deasserted), which means we can't
+		 * do TX, disable it anyway.
+		 */
+		/* rewind DMA buffer */
+		dma_get_channel(STM32_DMAC_SPI1_TX)->cndtr = 0;
+		/* disable DMA */
+		dma_disable(STM32_DMAC_SPI1_TX);
+
+		SPI_TXDR = 0;
+#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32L4)
+		spi->dr = 0;
+		spi->dr = 0;
+		spi->dr = 0;
+#endif
 		/*
 		 * If the buffer is still used by the host command, postpone
 		 * the DMA rx setup.
@@ -668,6 +690,12 @@ static void spi_init(void)
 	/* Fix for bug chrome-os-partner:31390 */
 	enabled = 0;
 	state = SPI_STATE_DISABLED;
+
+	/* rewind DMA buffer */
+	dma_get_channel(STM32_DMAC_SPI1_TX)->cndtr = 0;
+	/* disable DMA */
+	dma_disable(STM32_DMAC_SPI1_TX);
+
 	STM32_RCC_APB2RSTR |= STM32_RCC_PB2_SPI1;
 	STM32_RCC_APB2RSTR &= ~STM32_RCC_PB2_SPI1;
 
