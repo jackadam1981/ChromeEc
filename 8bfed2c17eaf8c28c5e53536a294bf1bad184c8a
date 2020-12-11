@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7713219b_8127a631",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2020-12-11T06:45:02Z",
+      "side": 1,
+      "message": "Will I create two files in \"ec/driver/led/\" folder or in \"ec/board/lindar/\"? This CL only for lightbar basic function, ex. on, off, LED color setting, .. etc. If I get the lightbar behavior SPEC, I will create other CL to modify that.",
+      "parentUuid": "98aa5656_79025531",
+      "revId": "8bfed2c17eaf8c28c5e53536a294bf1bad184c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bcbdd58_f9b4e30e",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-10T16:18:39Z",
       "side": 1,
       "message": "remove one tab",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 33
+      },
+      "revId": "8bfed2c17eaf8c28c5e53536a294bf1bad184c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59da8e40_570beefb",
+        "filename": "board/lindar/lindar_lightbar.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2020-12-11T06:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bcbdd58_f9b4e30e",
       "range": {
         "startLine": 150,
         "startChar": 0,
