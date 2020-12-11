@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5bcc3a5_c4f61b0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-11T20:31:43Z",
+      "side": 1,
+      "message": "Verified this on my end with the latest packing changes. Seems to work.\n\n20-12-11 13:16:07.392 \u003e shmem\n20-12-11 13:16:16.081 Total:           6828\n20-12-11 13:16:16.084 Allocated:          0\n20-12-11 13:16:16.085 Free:            6828\n20-12-11 13:16:16.086 Max free buf:    6828\n20-12-11 13:16:16.088 Max allocated:   2048",
+      "revId": "9f5f28f4aa2fff3a64af745d87fdde927f87b9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
