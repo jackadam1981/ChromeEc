@@ -451,7 +451,9 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 
 static int retimer_low_power_mode(const struct usb_mux *me)
 {
+#if 0
 	bb_retimer_power_handle(me, 0);
+#endif
 	return EC_SUCCESS;
 }
 
