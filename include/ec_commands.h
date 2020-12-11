@@ -56,7 +56,7 @@ extern "C" {
 #define BIT_ULL(nr)     (1ULL << (nr))
 #endif
 
-#ifndef GENMASK
+#if !defined(GENMASK) && !defined(CONFIG_ZEPHYR)
 #define GENMASK(h, l) (((BIT(h) << 1) - 1) ^ (BIT(l) - 1))
 #endif
 
