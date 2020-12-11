@@ -16,6 +16,23 @@
       "message": "Ready to review, thanks.",
       "revId": "cf124448e3a13f4cfc1714f336f102375f794ced",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d5fb1e_0c4a9b75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-11T19:10:48Z",
+      "side": 1,
+      "message": "Could we not use the already existent PD_VCONN_SWAP_DELAY? It\u0027s also board configurable.",
+      "revId": "cf124448e3a13f4cfc1714f336f102375f794ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
