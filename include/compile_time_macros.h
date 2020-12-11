@@ -84,6 +84,8 @@
 #ifndef CONFIG_ZEPHYR
 #define GENMASK(h, l)     (((BIT(h)<<1)     - 1) ^ (BIT(l)     - 1))
 #endif
+#ifndef GENMASK_ULL
 #define GENMASK_ULL(h, l) (((BIT_ULL(h)<<1) - 1) ^ (BIT_ULL(l) - 1))
+#endif
 
 #endif /* __CROS_EC_COMPILE_TIME_MACROS_H */
