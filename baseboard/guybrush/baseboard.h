@@ -45,6 +45,10 @@
 #define GPIO_EN_PWR_A		GPIO_EN_PWR_Z1
 
 /* Thermal Config */
+#define CONFIG_ADC
+#define CONFIG_THROTTLE_AP
+/* TODO: Enable SBI TSI CPU Temp sensor after i2c config */
+#undef CONFIG_TEMP_SENSOR_SB_TSI
 #define GPIO_CPU_PROCHOT	GPIO_PROCHOT_ODL
 
 /* Flash Config */
@@ -125,11 +129,28 @@ enum usbc_port {
 	USBC_PORT_COUNT
 };
 
+enum adc_channel {
+	ADC_TEMP_SENSOR_SOC = 0,
+	ADC_TEMP_SENSOR_CHARGER,
+	ADC_TEMP_SENSOR_MEMORY,
+	ADC_CH_COUNT
+};
+
+enum temp_sensor_id {
+	TEMP_SENSOR_SOC = 0,
+	TEMP_SENSOR_CHARGER,
+	TEMP_SENSOR_MEMORY,
+	TEMP_SENSOR_CPU,
+	TEMP_SENSOR_COUNT
+};
+
 /* Common definition for the USB PD interrupt handlers. */
 void tcpc_alert_event(enum gpio_signal signal);
 void bc12_interrupt(enum gpio_signal signal);
 void ppc_interrupt(enum gpio_signal signal);
 void sbu_fault_interrupt(enum ioex_signal signal);
+
+int baseboard_get_temp(int idx, int *temp_ptr);
 
 #endif /* !__ASSEMBLER__ */
 
