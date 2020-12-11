@@ -16,6 +16,24 @@
       "message": "This isn\u0027t needed anymore as I have already merged ToT into the branch. See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2582993",
       "revId": "2aa8b7ee5ee9c38f3eb3ea1584a432185f3a0f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d277f3b3_bf21ce4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-11T02:25:09Z",
+      "side": 1,
+      "message": "Going forward, I\u0027ll be doing periodic merges of ToT into the branch, initially weekly. If you need a CL to land in the branch sooner, just let me know and I can do one as soon as possible.",
+      "parentUuid": "dc1fce2e_41751d17",
+      "revId": "2aa8b7ee5ee9c38f3eb3ea1584a432185f3a0f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
