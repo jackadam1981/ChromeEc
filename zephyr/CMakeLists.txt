@@ -81,4 +81,44 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_INTEL
                                                 "${PLATFORM_EC}/power/intel_x86.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_TIMER   "${PLATFORM_EC}/common/timer.c")
 
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_POWER_DELIVERY
+                                                "${PLATFORM_EC}/common/usb_common.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_CHARGE_MANAGER
+                                                "${PLATFORM_EC}/common/charger.c"
+                                                "${PLATFORM_EC}/common/charge_manager.c"
+                                                "${PLATFORM_EC}/common/charge_state_v2.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC_OCP
+                                                "${PLATFORM_EC}/common/usbc_ocp.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_DUAL_ROLE
+                                                "${PLATFORM_EC}/common/usb_pd_dual_role.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_HOST_CMD
+                                                "${PLATFORM_EC}/common/usb_pd_host_cmd.c")
+
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TCPMV2
+                                                "${PLATFORM_EC}/common/usbc/usb_sm.c"
+                                                "${PLATFORM_EC}/common/usbc/usbc_task.c")
+
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_VPD "${PLATFORM_EC}/common/usbc/usb_tc_vpd_sm.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_CTVPD
+                                                "${PLATFORM_EC}/common/usbc/usb_tc_ctvpd_sm.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_DRP_ACC_TRYSRC
+                                                "${PLATFORM_EC}/common/usbc/usb_tc_drp_acc_trysrc_sm.c"
+                                                "${PLATFORM_EC}/common/usbc/usb_pe_drp_sm.c"
+                                                "${PLATFORM_EC}/common/usbc/usb_pd_dpm.c"
+                                                "${PLATFORM_EC}/common/usbc/dp_alt_mode.c")
+
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PRL_SM
+                                                "${PLATFORM_EC}/common/usbc/usb_prl_sm.c")
+
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC_PPC
+                                                "${PLATFORM_EC}/common/usbc_ppc.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC_PPC_SN5S330
+                                                "${PLATFORM_EC}/driver/ppc/sn5s330.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC_PPC_SYV682X
+                                                "${PLATFORM_EC}/driver/ppc/syv682x.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TCPM_TUSB422
+                                                "${PLATFORM_EC}/driver/tcpm/tusb422.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TCPM_TCPCI
+                                                "${PLATFORM_EC}/driver/tcpm/tcpci.c")
+
 zephyr_sources_ifdef(CONFIG_SHELL               "${PLATFORM_EC}/common/gpio_commands.c")
