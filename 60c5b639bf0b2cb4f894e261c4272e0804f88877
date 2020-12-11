@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6cb57d5_19bc91e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-11T11:19:36Z",
+      "side": 1,
+      "message": "Can we move tusb1064 driver to driver/usb_mux/ ?",
+      "revId": "60c5b639bf0b2cb4f894e261c4272e0804f88877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "326e955b_682e5637",
