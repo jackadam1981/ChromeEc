@@ -1522,10 +1522,10 @@
 /* Support for EC-EC communication */
 
 /*
- * Board is master or slave in EC-EC communication.
+ * Board is client or server in EC-EC communication.
  */
-#undef CONFIG_EC_EC_COMM_MASTER
-#undef CONFIG_EC_EC_COMM_SLAVE
+#undef CONFIG_EC_EC_COMM_CLIENT
+#undef CONFIG_EC_EC_COMM_SERVER
 
 /*
  * Board support battery-related functions in EC-EC communication.
@@ -5335,7 +5335,7 @@
  * Define derived configuration options for EC-EC communication
  */
 #ifdef CONFIG_EC_EC_COMM_BATTERY
-#ifdef CONFIG_EC_EC_COMM_MASTER
+#ifdef CONFIG_EC_EC_COMM_CLIENT
 #define CONFIG_EC_EC_COMM_BATTERY_MASTER
 #define CONFIG_BATTERY_V2
 #define CONFIG_BATTERY_COUNT 2
