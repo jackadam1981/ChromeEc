@@ -33,6 +33,23 @@
       "message": "Looking good with my port partners on drawcia. Requesting Aseda\u0027s review as well since we\u0027re very close to RO lock",
       "revId": "6aedf961a10338fd9b9f5ad77387eadbb75561db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6536fcf_ff60c75d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-11T21:01:47Z",
+      "side": 1,
+      "message": "There\u0027s a slight change in that we won\u0027t necessarily enter deep sleep if there\u0027s a partner connected but RX_EN is disabled. However, the power savings are likely minimal compared to what we\u0027d be sourcing or if we\u0027re charging, it\u0027s insignificant.",
+      "revId": "6aedf961a10338fd9b9f5ad77387eadbb75561db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
