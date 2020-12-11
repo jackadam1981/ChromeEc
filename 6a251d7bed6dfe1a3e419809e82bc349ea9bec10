@@ -16,6 +16,24 @@
       "message": "Hi Michael, \n\nPlease read https://issuetracker.google.com/169739041#comment4\n\nHi Aseda,\n\nWill you please help to guide what to do if ODM had already done the cherry-pick? Thanks! ",
       "revId": "6a251d7bed6dfe1a3e419809e82bc349ea9bec10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f047685e_65f170aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-11T20:30:22Z",
+      "side": 1,
+      "message": "Hi Michael, no need to do this cherry-pick. The patch will be included in the next merge as it has landed on ToT.",
+      "parentUuid": "b53fbdb8_b293f541",
+      "revId": "6a251d7bed6dfe1a3e419809e82bc349ea9bec10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
