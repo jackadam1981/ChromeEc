@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde48a4b_271c4d6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-11T20:07:17Z",
+      "side": 1,
+      "message": "You should also send an image to H1 from gsctool via ccd.\n\nWe do have the firmware.GSCtool tast test , but it only verifies gsctool can get the fw version from cr50 from the AP.\n\nAnd the faft-cr50 nightly runs use gsctool from TOT to update cr50.\n\nWe don\u0027t have any tests to verify that gsctool does the 60s delay between the RW and RO update. I can verify that.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "a14a1eb8a1ad9b464f6d96ad2185f79e7f24dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "385410d9_7ae6921e",
@@ -14,6 +37,29 @@
       "writtenOn": "2020-12-11T19:30:08Z",
       "side": 1,
       "message": "looks good, a few more comments.\n\n\nAs for testing - I am not sure, Mary will know if there is a test for gsctool, I\u0027m afraid there none, and it would be great to have one.\n\nTo speed up things I can manually test the permutations on H1 once you are done with the changes.",
+      "revId": "a14a1eb8a1ad9b464f6d96ad2185f79e7f24dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51074f98_20020080",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-12-11T20:07:17Z",
+      "side": 1,
+      "message": "DBG images don\u0027t necessarily have valid RO headers. The update shouldn\u0027t fail.",
+      "range": {
+        "startLine": 1024,
+        "startChar": 0,
+        "endLine": 1024,
+        "endChar": 55
+      },
       "revId": "a14a1eb8a1ad9b464f6d96ad2185f79e7f24dd7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
