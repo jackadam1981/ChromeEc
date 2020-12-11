@@ -1,4 +1,4 @@
-/* Copyright 2017 The Chromium OS Authors. All rights reserved.
+/* Copyright 2020 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -21,7 +21,7 @@
 #define CONFIG_SPI_FLASH
 
 /*
- * MEC17xx BootROM uses two 4-byte TAG's at SPI offset 0x0 and 0x04.
+ * MEC170x/MEC152x BootROM uses two 4-byte TAG's at SPI offset 0x0 and 0x04.
  * One valid TAG must be present.
  * TAG's point to a Header which must be located on a 256 byte
  * boundary anywhere in the flash (24-bit addressing).
@@ -84,10 +84,11 @@
  * parameter --payload_offset of pack_ec.py in build.mk!
  * Two 4-byte TAG's exist at offset 0 and 4 in the SPI flash device.
  * We only use first TAG pointing to LFW + EC_RO.
- * Header size is 128 bytes. Firmware binary is located immediately
- * after the header.
+ * MEC170x Header size is 128 bytes.
+ * MEC152x Header size is 320 bytes.
+ * Firmware binary is located immediately after the header.
  * Second half of SPI flash contains:
- * Header(128 bytes) + EC_RW
+ * Header(128/320 bytes) + EC_RW
  * EC flash erase/write commands check alginment base on
  * CONFIG_FLASH_ERASE_SIZE defined in config_chip.h
  * NOTE: EC_RO and EC_RW must start at CONFIG_FLASH_ERASE_SIZE or
@@ -95,7 +96,11 @@
  */
 #define CONFIG_BOOT_HEADER_STORAGE_OFF		0x1000
 #define CONFIG_RW_BOOT_HEADER_STORAGE_OFF	0
+#ifdef CHIP_FAMILY_MEC152X
+#define CONFIG_BOOT_HEADER_STORAGE_SIZE		0x140
+#else
 #define CONFIG_BOOT_HEADER_STORAGE_SIZE		0x80
+#endif
 #define CONFIG_RW_BOOT_HEADER_STORAGE_SIZE	0
 
 /* Loader / lfw image immediately follows the boot header on SPI */

@@ -1462,8 +1462,8 @@ void espi_init(void)
 	MCHP_ESPI_PC_STATUS = 0xfffffffful;
 	MCHP_ESPI_OOB_RX_STATUS = 0xfffffffful;
 	MCHP_ESPI_FC_STATUS = 0xfffffffful;
-	MCHP_INT_DISABLE(MCHP_ESPI_GIRQ) = 0x1FFul;
-	MCHP_INT_SOURCE(MCHP_ESPI_GIRQ) = 0x1FFul;
+	MCHP_INT_DISABLE(MCHP_ESPI_GIRQ) = 0xfffffffful;
+	MCHP_INT_SOURCE(MCHP_ESPI_GIRQ) = 0xfffffffful;
 
 	task_enable_irq(MCHP_IRQ_ESPI_PC);
 	task_enable_irq(MCHP_IRQ_ESPI_OOB_UP);
@@ -1488,7 +1488,6 @@ void espi_init(void)
 
 
 #ifdef CONFIG_MCHP_ESPI_EC_CMD
-/* TODO */
 static int command_espi(int argc, char **argv)
 {
 	uint32_t chan, w0, w1, w2;

@@ -98,12 +98,12 @@ void gpio_set_level(enum gpio_signal signal, int value)
 
 /*
  * Add support for new #ifdef CONFIG_CMD_GPIO_POWER_DOWN.
- * If GPIO_POWER_DONW flag is set force GPIO Control to
+ * If GPIO_POWER_DOWN flag is set force GPIO Control to
  * GPIO input, interrupt detect disabled, power control field
  * in bits[3:2]=10b.
  * NOTE: if interrupt detect is enabled when pin is powered down
  * then a false edge may be detected.
- *
+ * NOTE 2: MEC152x family implements input pad disable (bit[15]=1).
  */
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
@@ -117,15 +117,25 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 
 #ifdef CONFIG_GPIO_POWER_DOWN
 		if (flags & GPIO_POWER_DOWN) {
+#ifdef CHIP_FAMILY_MEC152X
+			val = (MCHP_GPIO_CTRL_PWR_OFF
+				| MCHP_GPIO_INTDET_DISABLED
+				| MCHP_GPIO_CTRL_DIS_INPUT_BIT);
+#else
 			val = (MCHP_GPIO_CTRL_PWR_OFF +
 					MCHP_GPIO_INTDET_DISABLED);
+#endif
 			MCHP_GPIO_CTL(port, i) = val;
 			continue;
 		}
 #endif
+#ifdef CHIP_FAMILY_MEC152X
+		val &= ~(MCHP_GPIO_CTRL_PWR_MASK
+			 | MCHP_GPIO_CTRL_DIS_INPUT_BIT);
+#else
 		val &= ~(MCHP_GPIO_CTRL_PWR_MASK);
+#endif
 		val |= MCHP_GPIO_CTRL_PWR_VTR;
-
 		/*
 		 * Select open drain first, so that we don't
 		 * glitch the signal when changing the line to
@@ -193,9 +203,14 @@ void gpio_power_off_by_mask(uint32_t port, uint32_t mask)
 	while (mask) {
 		i = GPIO_MASK_TO_NUM(mask);
 		mask &= ~BIT(i);
-
-		MCHP_GPIO_CTL(port, i) = (MCHP_GPIO_CTRL_PWR_OFF +
+#ifdef CHIP_FAMILY_MEC152X
+		MCHP_GPIO_CTL(port, i) = (MCHP_GPIO_CTRL_PWR_OFF
+					  | MCHP_GPIO_INTDET_DISABLED
+					  | MCHP_GPIO_CTRL_DIS_INPUT_BIT);
+#else
+		MCHP_GPIO_CTL(port, i) = (MCHP_GPIO_CTRL_PWR_OFF |
 					MCHP_GPIO_INTDET_DISABLED);
+#endif
 	}
 }
 
@@ -208,10 +223,14 @@ int gpio_power_off(enum gpio_signal signal)
 
 	i = GPIO_MASK_TO_NUM(gpio_list[signal].mask);
 	port = gpio_list[signal].port;
-
-	MCHP_GPIO_CTL(port, i) = (MCHP_GPIO_CTRL_PWR_OFF +
-			MCHP_GPIO_INTDET_DISABLED);
-
+#ifdef CHIP_FAMILY_MEC152X
+	MCHP_GPIO_CTL(port, i) = (MCHP_GPIO_CTRL_PWR_OFF
+				  | MCHP_GPIO_INTDET_DISABLED
+				  | MCHP_GPIO_CTRL_DIS_INPUT_BIT);
+#else
+	MCHP_GPIO_CTL(port, i) = (MCHP_GPIO_CTRL_PWR_OFF
+				  | MCHP_GPIO_INTDET_DISABLED);
+#endif
 	return EC_SUCCESS;
 }
 

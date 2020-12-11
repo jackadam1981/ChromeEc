@@ -30,6 +30,14 @@
 
 #include "ec_lfw.h"
 
+#if CONFIG_UART_CONSOLE == 2
+#define UART_ID 2
+#elif CONFIG_UART_CONSOLE == 1
+#define UART_ID 1
+#else
+#define UART_ID 0
+#endif
+
 /*
  * Check if LFW build is pulling in GPSPI which is not
  * used for EC firmware SPI flash access.
@@ -246,9 +254,9 @@ void uart_write_c(char c)
 		uart_write_c('\r');
 
 	/* Wait for space in transmit FIFO. */
-	while (!(MCHP_UART_LSR(0) & BIT(5)))
+	while (!(MCHP_UART_LSR(UART_ID) & BIT(5)))
 		;
-	MCHP_UART_TB(0) = c;
+	MCHP_UART_TB(UART_ID) = c;
 }
 
 void uart_puts(const char *str)
@@ -282,31 +290,31 @@ void jump_to_image(uintptr_t init_addr)
 void uart_init(void)
 {
 	/* Set UART to reset on VCC1_RESET instaed of nSIO_RESET */
-	MCHP_UART_CFG(0) &= ~BIT(1);
+	MCHP_UART_CFG(UART_ID) &= ~BIT(1);
 
 	/* Baud rate = 115200. 1.8432MHz clock. Divisor = 1 */
 
 	/* Set CLK_SRC = 0 */
-	MCHP_UART_CFG(0) &= ~BIT(0);
+	MCHP_UART_CFG(UART_ID) &= ~BIT(0);
 
 	/* Set DLAB = 1 */
-	MCHP_UART_LCR(0) |= BIT(7);
+	MCHP_UART_LCR(UART_ID) |= BIT(7);
 
 	/* PBRG0/PBRG1 */
-	MCHP_UART_PBRG0(0) = 1;
-	MCHP_UART_PBRG1(0) = 0;
+	MCHP_UART_PBRG0(UART_ID) = 1;
+	MCHP_UART_PBRG1(UART_ID) = 0;
 
 	/* Set DLAB = 0 */
-	MCHP_UART_LCR(0) &= ~BIT(7);
+	MCHP_UART_LCR(UART_ID) &= ~BIT(7);
 
 	/* Set word length to 8-bit */
-	MCHP_UART_LCR(0) |= BIT(0) | BIT(1);
+	MCHP_UART_LCR(UART_ID) |= BIT(0) | BIT(1);
 
 	/* Enable FIFO */
-	MCHP_UART_FCR(0) = BIT(0);
+	MCHP_UART_FCR(UART_ID) = BIT(0);
 
 	/* Activate UART */
-	MCHP_UART_ACT(0) |= BIT(0);
+	MCHP_UART_ACT(UART_ID) |= BIT(0);
 
 	gpio_config_module(MODULE_UART, 1);
 }
@@ -319,7 +327,7 @@ void system_init(void)
 {
 	uint32_t wdt_sts = MCHP_VBAT_STS & MCHP_VBAT_STS_ANY_RST;
 	uint32_t rst_sts = MCHP_PCR_PWR_RST_STS &
-				MCHP_PWR_RST_STS_VTR;
+				MCHP_PWR_RST_STS_SYS;
 
 	trace12(0, LFW, 0,
 		"VBAT_STS = 0x%08x  PCR_PWR_RST_STS = 0x%08x",

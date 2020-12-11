@@ -33,6 +33,14 @@
 #endif
 #endif
 
+#undef  CONFIG_UART_CONSOLE
+/*
+ * CONFIG_UART_CONSOLE
+ *   0 - EC UART0
+ *   1 - EC UART1
+ */
+#define CONFIG_UART_CONSOLE 0
+
 /*
  * DEBUG: Add CRC32 in last 4 bytes of EC_RO/RW binaries
  * in SPI. LFW will use DMA CRC32 HW to check data integrity.

@@ -17,6 +17,22 @@
 #define CPUTS(outstr) cputs(CC_DMA, outstr)
 #define CPRINTS(format, args...) cprints(CC_DMA, format, ## args)
 
+struct MCHP_dma_chan {
+	uint32_t act;		/* Activate */
+	uint32_t mem_start;	/* Memory start address */
+	uint32_t mem_end;	/* Memory end address */
+	uint32_t dev;		/* Device address */
+	uint32_t ctrl;		/* Control */
+	uint32_t int_status;	/* Interrupt status */
+	uint32_t int_enabled;	/* Interrupt enabled */
+	uint32_t chfsm;		/* channel fsm read-only */
+	uint32_t alu_en;	/* channels 0 & 1 only */
+	uint32_t alu_data;	/* channels 0 & 1 only */
+	uint32_t alu_sts;	/* channel 0 only */
+	uint32_t alu_ro;	/* channel 0 only */
+	uint32_t rsvd[4];	/* 0x30 - 0x3F */
+};
+
 dma_chan_t *dma_get_channel(enum dma_channel channel)
 {
 	dma_chan_t *pd = NULL;

@@ -39,12 +39,23 @@ enum hibdata_index {
 	HIBDATA_INDEX_PD2,		/* USB-PD2 saved port state */
 };
 
+/*
+ * TODO - The current logic will set EC_RESET_FLAG_RESET_PIN flag
+ * even if the reset was caused by WDT. MEC1701 HW RESET_SYS status
+ * goes active for any of the following:
+ *	RESET_VTR: power rail change
+ *	WDT Event: WDT timed out
+ *	FW triggered chip reset: SYSRESETREQ or PCR sys reset bit
+ * The code does check WDT status in the VBAT PFR register.
+ * Is it correct to report both EC_RESET_FLAG_RESET_PIN and
+ * EC_RESET_FLAG_WATCHDOG on a WDT only reset?
+ */
 static void check_reset_cause(void)
 {
 	uint32_t status = MCHP_VBAT_STS;
 	uint32_t flags = 0;
 	uint32_t rst_sts = MCHP_PCR_PWR_RST_STS &
-				(MCHP_PWR_RST_STS_VTR |
+				(MCHP_PWR_RST_STS_SYS |
 				MCHP_PWR_RST_STS_VBAT);
 
 	trace12(0, MEC, 0,
@@ -60,9 +71,12 @@ static void check_reset_cause(void)
 	trace11(0, MEC, 0, "  PCR PWRST = 0x%08X", MCHP_PCR_PWR_RST_STS);
 
 	/*
-	 * BIT[6] determine VTR reset
+	 * BIT[6] determine if RESET_SYS asserted.
+	 * RESET_SYS will assert on VTR reset, WDT reset, or
+	 * firmware triggering a reset using Cortex-M4 SYSRESETREQ
+	 * or MCHP PCR system reset register.
 	 */
-	if (rst_sts & MCHP_PWR_RST_STS_VTR)
+	if (rst_sts & MCHP_PWR_RST_STS_SYS)
 		flags |= EC_RESET_FLAG_RESET_PIN;
 
 
@@ -197,7 +211,7 @@ void system_pre_init(void)
 	 * NOTE: GIRQ22 wake for AHB peripherals not processor.
 	 */
 	MCHP_INT_BLK_DIS = 0xfffffffful;
-	MCHP_INT_BLK_EN = (0x1Ful << 8) + (0x07ul << 24);
+	MCHP_INT_BLK_EN = MCHP_INT_AGGR_ONLY_BITMAP;
 
 	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
 }
@@ -263,6 +277,7 @@ const char *system_get_chip_vendor(void)
 	return "mchp";
 }
 
+#ifdef CHIP_VARIANT_MEC1701
 /*
  * MEC1701H Chip ID = 0x2D
  *              Rev = 0x82
@@ -276,6 +291,46 @@ const char *system_get_chip_name(void)
 		return "unknown";
 	}
 }
+#endif
+
+#ifdef CHIP_FAMILY_MEC152X
+/*
+ * MEC152x family implements chip ID as a 32-bit
+ * register where:
+ * b[31:16] = 16-bit Device ID
+ * b[15:8] = 8-bit Sub ID
+ * b[7:0] = Revision
+ *
+ * MEC1521-128 WFBGA 0023_33_xxh
+ * MEC1521-144 WFBGA 0023_34_xxh
+ * MEC1523-144 WFBGA 0023_B4_xxh
+ * MEC1527-144 WFBGA 0023_74_xxh
+ * MEC1527-128 WFBGA 0023_73_xxh
+ */
+const char *system_get_chip_name(void)
+{
+	switch (MCHP_CHIP_DEVRID32 & ~(MCHP_CHIP_REV_MASK)) {
+	case 0x00201400: /* 144 pin rev A? */
+		return "mec1503_revA";
+	case 0x00203400: /* 144 pin */
+		return "mec1501";
+	case 0x00207400: /* 144 pin */
+		return "mec1507";
+	case 0x00208400: /* 144 pin */
+		return "mec1503";
+	case 0x00233300: /* 128 pin */
+	case 0x00233400: /* 144 pin */
+		return "mec1521";
+	case 0x0023B400: /* 144 pin */
+		return "mec1523";
+	case 0x00237300: /* 128 pin */
+	case 0x00237400: /* 144 pin */
+		return "mec1527";
+	default:
+		return "unknown";
+	}
+}
+#endif
 
 static char to_hex(int x)
 {
@@ -381,12 +436,12 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	MCHP_EC_JTAG_EN &= ~1;
 
 	/* Stop watchdog */
-	MCHP_WDG_CTL &= ~1;
+	MCHP_WDG_CTL &= ~(MCHP_WDT_CTL_ENABLE);
 
 	/* Stop timers */
 	MCHP_TMR32_CTL(0) &= ~1;
 	MCHP_TMR32_CTL(1) &= ~1;
-	for (i = 0; i < MCHP_TMR16_MAX; i++)
+	for (i = 0; i < MCHP_TMR16_INSTANCES; i++)
 		MCHP_TMR16_CTL(i) &= ~1;
 
 	/* Power down ADC */
@@ -424,8 +479,11 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 		system_set_htimer_alarm(seconds, microseconds);
 		interrupt_enable();
 	} else {
-		/* Not using hibernation timer. Disable 32KHz clock */
-		MCHP_VBAT_CE &= ~0x2;
+		/*
+		 * Not using hibernation timer.
+		 * Disable external 32KHz clock input.
+		 */
+		MCHP_VBAT_CE &= ~(MCHP_VBAT_CE_32K_DOMAIN_32KHZ_IN_PIN);
 	}
 
 	/*

@@ -141,18 +141,67 @@ static struct {
 	uint8_t lines;
 } cdata[I2C_CONTROLLER_COUNT];
 
+static const uint16_t i2c_ctrl_nvic_id[MCHP_I2C_CTRL_MAX] = {
+	MCHP_IRQ_I2C_0,
+	MCHP_IRQ_I2C_1,
+	MCHP_IRQ_I2C_2,
+	MCHP_IRQ_I2C_3,
+#if defined(CHIP_FAMILY_MEC152X)
+	MCHP_IRQ_I2C_4,
+	MCHP_IRQ_I2C_5,
+	MCHP_IRQ_I2C_6,
+	MCHP_IRQ_I2C_7
+#endif
+};
+
 static const uint16_t i2c_controller_pcr[MCHP_I2C_CTRL_MAX] = {
 	MCHP_PCR_I2C0,
 	MCHP_PCR_I2C1,
 	MCHP_PCR_I2C2,
-	MCHP_PCR_I2C3
+	MCHP_PCR_I2C3,
+#if defined(CHIP_FAMILY_MEC152X)
+	MCHP_PCR_I2C4,
+	MCHP_PCR_I2C5,
+	MCHP_PCR_I2C6,
+	MCHP_PCR_I2C7,
+#endif
 };
+
+static uintptr_t i2c_ctrl_base_addr[MCHP_I2C_CTRL_MAX] = {
+	MCHP_I2C0_BASE,
+	MCHP_I2C1_BASE,
+	MCHP_I2C2_BASE,
+	MCHP_I2C3_BASE,
+#if defined(CHIP_FAMILY_MEC152X)
+	MCHP_I2C4_BASE,
+	/* NOTE: 5-7 do not implement network layer hardware */
+	MCHP_I2C5_BASE,
+	MCHP_I2C6_BASE,
+	MCHP_I2C7_BASE
+#endif
+};
+
+static uintptr_t chip_i2c_ctrl_base(int controller)
+{
+	if ((controller < 0) || (controller >= MCHP_I2C_CTRL_MAX))
+		return 0;
+
+	return i2c_ctrl_base_addr[controller];
+}
 
 static int chip_i2c_is_controller_valid(int controller)
 {
 	if ((controller < 0) || (controller >= MCHP_I2C_CTRL_MAX))
 		return 0;
 	return 1;
+}
+
+static uint32_t chip_i2c_ctrl_nvic_id(int controller)
+{
+	if ((controller < 0) || (controller >= MCHP_I2C_CTRL_MAX))
+		return 0;
+
+	return (uint32_t)i2c_ctrl_nvic_id[controller];
 }
 
 static void i2c_ctrl_slp_en(int controller, int sleep_en)
@@ -258,25 +307,28 @@ static const struct i2c_bus_clk *get_supported_speed_idx(int req_kbps)
 static void configure_controller_speed(int controller, int kbps)
 {
 	const struct i2c_bus_clk *p;
+	uintptr_t raddr;
+
+	raddr = chip_i2c_ctrl_base(controller);
 
 	p = get_supported_speed_idx(kbps);
-	MCHP_I2C_BUS_CLK(controller) = p->bus_clk;
+	MCHP_I2C_BUS_CLK(raddr) = p->bus_clk;
 
 	if (p->freq_khz > 400) { /* Fast mode plus */
-		MCHP_I2C_DATA_TIM(controller) = SPEED_1MHZ_DATA_TIMING;
-		MCHP_I2C_DATA_TIM_2(controller) = SPEED_1MHZ_DATA_TIMING_2;
-		MCHP_I2C_IDLE_SCALE(controller) = SPEED_1MHZ_IDLE_SCALING;
-		MCHP_I2C_TOUT_SCALE(controller) = SPEED_1MHZ_TIMEOUT_SCALING;
+		MCHP_I2C_DATA_TIM(raddr) = SPEED_1MHZ_DATA_TIMING;
+		MCHP_I2C_DATA_TIM_2(raddr) = SPEED_1MHZ_DATA_TIMING_2;
+		MCHP_I2C_IDLE_SCALE(raddr) = SPEED_1MHZ_IDLE_SCALING;
+		MCHP_I2C_TOUT_SCALE(raddr) = SPEED_1MHZ_TIMEOUT_SCALING;
 	} else if (p->freq_khz > 100) { /* Fast mode */
-		MCHP_I2C_DATA_TIM(controller) = SPEED_400KHZ_DATA_TIMING;
-		MCHP_I2C_DATA_TIM_2(controller) = SPEED_400KHZ_DATA_TIMING_2;
-		MCHP_I2C_IDLE_SCALE(controller) = SPEED_400KHZ_IDLE_SCALING;
-		MCHP_I2C_TOUT_SCALE(controller) = SPEED_400KHZ_TIMEOUT_SCALING;
+		MCHP_I2C_DATA_TIM(raddr) = SPEED_400KHZ_DATA_TIMING;
+		MCHP_I2C_DATA_TIM_2(raddr) = SPEED_400KHZ_DATA_TIMING_2;
+		MCHP_I2C_IDLE_SCALE(raddr) = SPEED_400KHZ_IDLE_SCALING;
+		MCHP_I2C_TOUT_SCALE(raddr) = SPEED_400KHZ_TIMEOUT_SCALING;
 	} else { /* Standard mode */
-		MCHP_I2C_DATA_TIM(controller) = SPEED_100KHZ_DATA_TIMING;
-		MCHP_I2C_DATA_TIM_2(controller) = SPEED_100KHZ_DATA_TIMING_2;
-		MCHP_I2C_IDLE_SCALE(controller) = SPEED_100KHZ_IDLE_SCALING;
-		MCHP_I2C_TOUT_SCALE(controller) = SPEED_100KHZ_TIMEOUT_SCALING;
+		MCHP_I2C_DATA_TIM(raddr) = SPEED_100KHZ_DATA_TIMING;
+		MCHP_I2C_DATA_TIM_2(raddr) = SPEED_100KHZ_DATA_TIMING_2;
+		MCHP_I2C_IDLE_SCALE(raddr) = SPEED_100KHZ_IDLE_SCALING;
+		MCHP_I2C_TOUT_SCALE(raddr) = SPEED_100KHZ_TIMEOUT_SCALING;
 	}
 }
 
@@ -286,19 +338,23 @@ static void configure_controller_speed(int controller, int kbps)
  */
 static void enable_controller_irq(int controller)
 {
+	uint32_t nvic_id = chip_i2c_ctrl_nvic_id(controller);
+
 	MCHP_INT_ENABLE(MCHP_I2C_GIRQ) =
 			MCHP_I2C_GIRQ_BIT(controller);
-	task_enable_irq(MCHP_IRQ_I2C_0 + controller);
+	task_enable_irq(nvic_id);
 }
 
 static void disable_controller_irq(int controller)
 {
+	uint32_t nvic_id = chip_i2c_ctrl_nvic_id(controller);
+
 	MCHP_INT_DISABLE(MCHP_I2C_GIRQ) =
 			MCHP_I2C_GIRQ_BIT(controller);
 	/* read back into read-only reg. to insure disable takes effect */
 	MCHP_INT_BLK_IRQ = MCHP_INT_DISABLE(MCHP_I2C_GIRQ);
-	task_disable_irq(MCHP_IRQ_I2C_0 + controller);
-	task_clear_pending_irq(MCHP_IRQ_I2C_0 + controller);
+	task_disable_irq(nvic_id);
+	task_clear_pending_irq(nvic_id);
 }
 
 /*
@@ -307,7 +363,9 @@ static void disable_controller_irq(int controller)
  */
 static void configure_controller(int controller, int port, int kbps)
 {
-	if (!chip_i2c_is_controller_valid(controller))
+	uintptr_t raddr = chip_i2c_ctrl_base(controller);
+
+	if (raddr == 0)
 		return;
 
 	disable_controller_irq(controller);
@@ -315,36 +373,41 @@ static void configure_controller(int controller, int port, int kbps)
 			MCHP_I2C_GIRQ_BIT(controller);
 
 	/* set to default except for port select field b[3:0] */
-	MCHP_I2C_CONFIG(controller) = (uint32_t)(port & 0xf);
-	MCHP_I2C_CTRL(controller) = CTRL_PIN;
+	MCHP_I2C_CONFIG(raddr) = (uint32_t)(port & 0xf);
+	MCHP_I2C_CTRL(raddr) = CTRL_PIN;
 
 	/* Set both controller slave addresses to 0 the
 	 * general call address. We disable general call
 	 * below.
 	 */
-	MCHP_I2C_OWN_ADDR(controller) = 0;
+	MCHP_I2C_OWN_ADDR(raddr) = 0;
 
 	configure_controller_speed(controller, kbps);
 
 	/* Controller timings done, clear RO status, enable
 	 * output, and ACK generation.
 	 */
-	MCHP_I2C_CTRL(controller) = CTRL_PIN | CTRL_ESO | CTRL_ACK;
+	MCHP_I2C_CTRL(raddr) = CTRL_PIN | CTRL_ESO | CTRL_ACK;
 
 	/* filter enable, disable General Call */
-	MCHP_I2C_CONFIG(controller) |= CFG_FEN + CFG_GC_DIS;
+	MCHP_I2C_CONFIG(raddr) |= CFG_FEN + CFG_GC_DIS;
 	/* enable controller */
-	MCHP_I2C_CONFIG(controller) |= CFG_ENABLE;
+	MCHP_I2C_CONFIG(raddr) |= CFG_ENABLE;
 }
 
 static void reset_controller(int controller)
 {
 	int i;
+	uintptr_t raddr;
+
+	raddr = chip_i2c_ctrl_base(controller);
+	if (raddr == 0)
+		return;
 
 	/* Reset asserted for at least one AHB clock */
-	MCHP_I2C_CONFIG(controller) |= BIT(9);
+	MCHP_I2C_CONFIG(raddr) |= BIT(9);
 	MCHP_EC_ID_RO = 0;
-	MCHP_I2C_CONFIG(controller) &= ~BIT(9);
+	MCHP_I2C_CONFIG(raddr) &= ~BIT(9);
 
 	for (i = 0; i < i2c_ports_used; ++i)
 		if (controller == i2c_port_to_controller(i2c_ports[i].port)) {
@@ -383,10 +446,11 @@ static int wait_for_interrupt(int controller, int timeout)
 
 static int wait_idle(int controller)
 {
-	uint8_t sts = MCHP_I2C_STATUS(controller);
+	uintptr_t raddr = chip_i2c_ctrl_base(controller);
 	uint64_t block_timeout = get_time().val + I2C_WAIT_BLOCKING_TIMEOUT_US;
 	uint64_t task_timeout = block_timeout + cdata[controller].timeout_us;
 	int rv = 0;
+	uint8_t sts = MCHP_I2C_STATUS(raddr);
 
 	while (!(sts & STS_NBB)) {
 		if (rv)
@@ -394,7 +458,7 @@ static int wait_idle(int controller)
 		if (get_time().val > block_timeout)
 			rv = wait_for_interrupt(controller,
 					task_timeout - get_time().val);
-		sts = MCHP_I2C_STATUS(controller);
+		sts = MCHP_I2C_STATUS(raddr);
 	}
 
 	if (sts & (STS_BER | STS_LAB))
@@ -423,13 +487,15 @@ static int wait_byte_done(int controller, uint8_t mask, uint8_t expected)
 {
 	uint64_t block_timeout;
 	uint64_t task_timeout;
+	uintptr_t raddr;
 	int rv;
 	uint8_t sts;
 
 	rv = 0;
+	raddr = chip_i2c_ctrl_base(controller);
 	block_timeout = get_time().val + I2C_WAIT_BLOCKING_TIMEOUT_US;
 	task_timeout = block_timeout + cdata[controller].timeout_us;
-	sts = MCHP_I2C_STATUS(controller);
+	sts = MCHP_I2C_STATUS(raddr);
 	cdata[controller].hwsts = sts;
 	while (sts & STS_PIN) {
 		if (rv)
@@ -438,7 +504,7 @@ static int wait_byte_done(int controller, uint8_t mask, uint8_t expected)
 			rv = wait_for_interrupt(controller,
 					task_timeout - get_time().val);
 		}
-		sts = MCHP_I2C_STATUS(controller);
+		sts = MCHP_I2C_STATUS(raddr);
 		cdata[controller].hwsts = sts;
 	}
 
@@ -459,14 +525,16 @@ static int wait_byte_done(int controller, uint8_t mask, uint8_t expected)
 static void select_port(int port, int controller)
 {
 	uint32_t port_sel;
+	uintptr_t raddr;
 
+	raddr = chip_i2c_ctrl_base(controller);
 	port_sel = (uint32_t)(port & 0x0f);
-	if ((MCHP_I2C_CONFIG(controller) & 0x0f) == port_sel)
+	if ((MCHP_I2C_CONFIG(raddr) & 0x0f) == port_sel)
 		return;
 
-	MCHP_I2C_CONFIG(controller) |= BIT(9);
+	MCHP_I2C_CONFIG(raddr) |= BIT(9);
 	MCHP_EC_ID_RO = 0; /* extra write to read-only as delay */
-	MCHP_I2C_CONFIG(controller) &= ~BIT(9);
+	MCHP_I2C_CONFIG(raddr) &= ~BIT(9);
 	configure_controller(controller, port_sel, i2c_ports[port].kbps);
 }
 
@@ -493,10 +561,13 @@ static uint32_t get_line_level(int port)
  */
 static int i2c_check_recover(int port, int controller)
 {
+	uintptr_t raddr;
 	uint32_t lines;
 	uint8_t reg;
+
+	raddr = chip_i2c_ctrl_base(controller);
 	lines = get_line_level(port);
-	reg = MCHP_I2C_STATUS(controller);
+	reg = MCHP_I2C_STATUS(raddr);
 
 	if ((((reg & (STS_BER | STS_LAB)) || !(reg & STS_NBB)) ||
 			(lines != I2C_LINE_IDLE))) {
@@ -516,7 +587,7 @@ static int i2c_check_recover(int port, int controller)
 		 * that the slave will see the new start condition below.
 		 */
 		usleep(1000);
-		reg = MCHP_I2C_STATUS(controller);
+		reg = MCHP_I2C_STATUS(raddr);
 		lines = get_line_level(port);
 		if ((reg & (STS_BER | STS_LAB)) || !(reg & STS_NBB) ||
 				(lines != I2C_LINE_IDLE))
@@ -539,15 +610,17 @@ static inline void push_in_buf(uint8_t **in, uint8_t val, int skip)
  */
 static int i2c_mtx(int ctrl)
 {
+	uintptr_t raddr;
 	int i, rv;
 
+	raddr = chip_i2c_ctrl_base(ctrl);
 	rv = EC_SUCCESS;
 	cdata[ctrl].flags |= (1ul << 1);
 	if (cdata[ctrl].xflags & I2C_XFER_START) {
 		cdata[ctrl].flags |= (1ul << 2);
-		MCHP_I2C_DATA(ctrl) = cdata[ctrl].slv_addr_8bit;
+		MCHP_I2C_DATA(raddr) = cdata[ctrl].slv_addr_8bit;
 		/* Clock out the slave address, sending START bit */
-		MCHP_I2C_CTRL(ctrl) = CTRL_PIN | CTRL_ESO | CTRL_ENI |
+		MCHP_I2C_CTRL(raddr) = CTRL_PIN | CTRL_ESO | CTRL_ENI |
 			CTRL_ACK | CTRL_STA;
 		cdata[ctrl].transaction_state = I2C_TRANSACTION_OPEN;
 	}
@@ -561,13 +634,13 @@ static int i2c_mtx(int ctrl)
 			return rv;
 		}
 		cdata[ctrl].flags |= (1ul << 15);
-		MCHP_I2C_DATA(ctrl) = cdata[ctrl].outp[i];
+		MCHP_I2C_DATA(raddr) = cdata[ctrl].outp[i];
 	}
 
 	rv = wait_byte_done(ctrl, 0xff, 0x00);
 	if (rv) {
 		cdata[ctrl].flags |= (1ul << 18);
-		MCHP_I2C_CTRL(ctrl) = CTRL_PIN | CTRL_ESO | CTRL_ENI |
+		MCHP_I2C_CTRL(raddr) = CTRL_PIN | CTRL_ESO | CTRL_ENI |
 			CTRL_STO | CTRL_ACK;
 		return rv;
 	}
@@ -579,7 +652,7 @@ static int i2c_mtx(int ctrl)
 	if ((cdata[ctrl].xflags & I2C_XFER_STOP) &&
 			(cdata[ctrl].in_size == 0)) {
 		cdata[ctrl].flags |= (1ul << 3);
-		MCHP_I2C_CTRL(ctrl) = CTRL_PIN | CTRL_ESO |
+		MCHP_I2C_CTRL(raddr) = CTRL_PIN | CTRL_ESO |
 			CTRL_STO | CTRL_ACK;
 		cdata[ctrl].transaction_state = I2C_TRANSACTION_STOPPED;
 	}
@@ -619,21 +692,24 @@ static int i2c_mtx(int ctrl)
  */
 static int i2c_mrx_start(int ctrl)
 {
-	uint8_t u8;
+	uintptr_t raddr;
 	int rv;
+	uint8_t u8;
+
+	raddr = chip_i2c_ctrl_base(ctrl);
 
 	cdata[ctrl].flags |= (1ul << 4);
 	u8 = CTRL_ESO | CTRL_ENI | CTRL_STA | CTRL_ACK;
 	if (cdata[ctrl].transaction_state == I2C_TRANSACTION_OPEN) {
 		cdata[ctrl].flags |= (1ul << 5);
 		/* Repeated-START then address */
-		MCHP_I2C_CTRL(ctrl) = u8;
+		MCHP_I2C_CTRL(raddr) = u8;
 	}
-	MCHP_I2C_DATA(ctrl) = cdata[ctrl].slv_addr_8bit | 0x01;
+	MCHP_I2C_DATA(raddr) = cdata[ctrl].slv_addr_8bit | 0x01;
 	if (cdata[ctrl].transaction_state == I2C_TRANSACTION_STOPPED) {
 		cdata[ctrl].flags |= (1ul << 6);
 		/* address then START */
-		MCHP_I2C_CTRL(ctrl) = u8 | CTRL_PIN;
+		MCHP_I2C_CTRL(raddr) = u8 | CTRL_PIN;
 	}
 	cdata[ctrl].transaction_state = I2C_TRANSACTION_OPEN;
 	/* Controller generates START, transmits data(address) capturing
@@ -646,7 +722,7 @@ static int i2c_mrx_start(int ctrl)
 	rv = wait_byte_done(ctrl, 0xff, 0x00);
 	if (rv) {
 		cdata[ctrl].flags |= (1ul << 19);
-		MCHP_I2C_CTRL(ctrl) = CTRL_PIN | CTRL_ESO |
+		MCHP_I2C_CTRL(raddr) = CTRL_PIN | CTRL_ESO |
 			CTRL_STO | CTRL_ACK;
 		return rv;
 	}
@@ -658,14 +734,14 @@ static int i2c_mrx_start(int ctrl)
 	if (cdata[ctrl].xflags & I2C_XFER_STOP &&
 			(cdata[ctrl].in_size < 2)) {
 		cdata[ctrl].flags |= (1ul << 9);
-		MCHP_I2C_CTRL(ctrl) = CTRL_ESO | CTRL_ENI;
+		MCHP_I2C_CTRL(raddr) = CTRL_ESO | CTRL_ENI;
 	}
 	/*
 	 * Read & discard slave address.
 	 * Generates clocks for next data
 	 */
 	cdata[ctrl].flags |= (1ul << 10);
-	u8 = MCHP_I2C_DATA(ctrl);
+	u8 = MCHP_I2C_DATA(raddr);
 	return rv;
 }
 /*
@@ -686,27 +762,30 @@ static int i2c_mrx_data(int ctrl)
 	uint32_t stop = (uint32_t)cdata[ctrl].xflags & I2C_XFER_STOP;
 	uint8_t *pdest = cdata[ctrl].inp;
 	int rv;
+	uintptr_t raddr;
+
+	raddr = chip_i2c_ctrl_base(ctrl);
 
 	cdata[ctrl].flags |= (1ul << 11);
 	while (nrx) {
 		rv = wait_byte_done(ctrl, 0xff, 0x00);
 		if (rv) {
 			cdata[ctrl].flags |= (1ul << 20);
-			MCHP_I2C_CTRL(ctrl) = CTRL_PIN | CTRL_ESO |
+			MCHP_I2C_CTRL(raddr) = CTRL_PIN | CTRL_ESO |
 				CTRL_STO | CTRL_ACK;
 			return rv;
 		}
 		if (stop) {
 			if (nrx == 2) {
 				cdata[ctrl].flags |= (1ul << 12);
-				MCHP_I2C_CTRL(ctrl) = CTRL_ESO | CTRL_ENI;
+				MCHP_I2C_CTRL(raddr) = CTRL_ESO | CTRL_ENI;
 			} else if (nrx == 1) {
 				cdata[ctrl].flags |= (1ul << 13);
-				MCHP_I2C_CTRL(ctrl) = CTRL_PIN | CTRL_ESO |
+				MCHP_I2C_CTRL(raddr) = CTRL_PIN | CTRL_ESO |
 					CTRL_STO | CTRL_ACK;
 			}
 		}
-		*pdest++ = MCHP_I2C_DATA(ctrl);
+		*pdest++ = MCHP_I2C_DATA(raddr);
 		nrx--;
 	}
 	cdata[ctrl].flags |= (1ul << 14);
@@ -722,12 +801,17 @@ int chip_i2c_xfer(int port, uint16_t slave_addr_flags,
 {
 	int ctrl;
 	int ret_done;
+	uintptr_t raddr;
 
 	if (out_size == 0 && in_size == 0)
 		return EC_SUCCESS;
 
 	ctrl = i2c_port_to_controller(port);
 	if (ctrl < 0)
+		return EC_ERROR_INVAL;
+
+	raddr = chip_i2c_ctrl_base(ctrl);
+	if (raddr == 0)
 		return EC_ERROR_INVAL;
 
 	cdata[ctrl].flags = (1ul << 0);
@@ -780,7 +864,7 @@ int chip_i2c_xfer(int port, uint16_t slave_addr_flags,
 		wait_idle(ctrl);
 
 	/* Check for error conditions */
-	if (MCHP_I2C_STATUS(ctrl) & (STS_LAB | STS_BER)) {
+	if (MCHP_I2C_STATUS(raddr) & (STS_LAB | STS_BER)) {
 		cdata[ctrl].flags |= (1ul << 21);
 		goto err_chip_i2c_xfer;
 	}
@@ -789,15 +873,15 @@ int chip_i2c_xfer(int port, uint16_t slave_addr_flags,
 
 err_chip_i2c_xfer:
 	cdata[ctrl].flags |= (1ul << 22);
-	cdata[ctrl].hwsts2 = MCHP_I2C_STATUS(ctrl); /* record status */
+	cdata[ctrl].hwsts2 = MCHP_I2C_STATUS(raddr); /* record status */
 	/* NOTE: writing I2C.Ctrl.PIN=1 will clear all bits
 	 * except NBB in I2C.Status
 	 */
-	MCHP_I2C_CTRL(ctrl) = CTRL_PIN | CTRL_ESO |
+	MCHP_I2C_CTRL(raddr) = CTRL_PIN | CTRL_ESO |
 				       CTRL_STO | CTRL_ACK;
 	cdata[ctrl].transaction_state = I2C_TRANSACTION_STOPPED;
 	/* record status after STOP */
-	cdata[ctrl].hwsts4 = MCHP_I2C_STATUS(ctrl);
+	cdata[ctrl].hwsts4 = MCHP_I2C_STATUS(raddr);
 
 	/* record line levels.
 	 * Note line levels may reflect STOP condition
@@ -934,6 +1018,7 @@ static void handle_interrupt(int controller)
 {
 	uint32_t r;
 	int id = cdata[controller].task_waiting;
+	uintptr_t raddr = chip_i2c_ctrl_base(controller);
 
 	/*
 	 * Write to control register interferes with I2C transaction.
@@ -941,10 +1026,10 @@ static void handle_interrupt(int controller)
 	 * we want to wait for STS_PIN/STS_NBB.
 	 */
 	disable_controller_irq(controller);
-	cdata[controller].hwsts3 = MCHP_I2C_STATUS(controller);
+	cdata[controller].hwsts3 = MCHP_I2C_STATUS(raddr);
 	/* Clear all interrupt status */
-	r = MCHP_I2C_COMPLETE(controller);
-	MCHP_I2C_COMPLETE(controller) = r;
+	r = MCHP_I2C_COMPLETE(raddr);
+	MCHP_I2C_COMPLETE(raddr) = r;
 	cdata[controller].i2c_complete = r;
 	MCHP_INT_SOURCE(MCHP_I2C_GIRQ) = MCHP_I2C_GIRQ_BIT(controller);
 
@@ -957,8 +1042,20 @@ void i2c0_interrupt(void) { handle_interrupt(0); }
 void i2c1_interrupt(void) { handle_interrupt(1); }
 void i2c2_interrupt(void) { handle_interrupt(2); }
 void i2c3_interrupt(void) { handle_interrupt(3); }
+#if defined(CHIP_FAMILY_MEC152X)
+void i2c4_interrupt(void) { handle_interrupt(4); }
+void i2c5_interrupt(void) { handle_interrupt(5); }
+void i2c6_interrupt(void) { handle_interrupt(6); }
+void i2c7_interrupt(void) { handle_interrupt(7); }
+#endif
 
 DECLARE_IRQ(MCHP_IRQ_I2C_0, i2c0_interrupt, 2);
 DECLARE_IRQ(MCHP_IRQ_I2C_1, i2c1_interrupt, 2);
 DECLARE_IRQ(MCHP_IRQ_I2C_2, i2c2_interrupt, 2);
 DECLARE_IRQ(MCHP_IRQ_I2C_3, i2c3_interrupt, 2);
+#if defined(CHIP_FAMILY_MEC152X)
+DECLARE_IRQ(MCHP_IRQ_I2C_4, i2c4_interrupt, 2);
+DECLARE_IRQ(MCHP_IRQ_I2C_5, i2c5_interrupt, 2);
+DECLARE_IRQ(MCHP_IRQ_I2C_6, i2c6_interrupt, 2);
+DECLARE_IRQ(MCHP_IRQ_I2C_7, i2c7_interrupt, 2);
+#endif

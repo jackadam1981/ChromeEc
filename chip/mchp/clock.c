@@ -98,23 +98,26 @@ void clock_init(void)
 
 	trace0(0, MEC, 0, "Clock Init");
 
+#ifdef CONFIG_CLOCK_SRC_EXTERNAL
 #ifdef CONFIG_CLOCK_CRYSTAL
-	/* XOSEL: 0 = Parallel resonant crystal */
-	MCHP_VBAT_CE &= ~(1ul << 3);
+	MCHP_VBAT_CE = MCHP_VBAT_CE_XOSEL_PAR
+			| MCHP_VBAT_CE_ALWAYS_ON_32K_SRC_CRYSTAL;
+#else
+	/* 32KHz 50% duty waveform on 32KHZ_IN pin */
+	MCHP_VBAT_CE = MCHP_VBAT_CE_32K_DOMAIN_32KHZ_IN_PIN
+			| MCHP_VBAT_CE_ALWAYS_ON_32K_SRC_INT;
+#endif
 
 #else
-	/* XOSEL: 1 = Single ended clock source */
-	MCHP_VBAT_CE |= (1ul << 3);
+	/* Use internal silicon 32KHz OSC */
+	MCHP_VBAT_CE = MCHP_VBAT_CE_32K_DOMAIN_ALWAYS_ON
+			| MCHP_VBAT_CE_ALWAYS_ON_32K_SRC_INT;
 #endif
 
-	/* 32K clock enable */
-	MCHP_VBAT_CE = (MCHP_VBAT_CE & ~(0x03)) | (1ul << 2);
-
-#ifdef CONFIG_CLOCK_CRYSTAL
-	/* Wait for crystal to stabilize (OSC_LOCK == 1) */
+	/* Wait for PLL to lock onto 32KHz source (OSC_LOCK == 1) */
 	while (!(MCHP_PCR_CHIP_OSC_ID & 0x100))
 		;
-#endif
+
 	trace0(0, MEC, 0, "PLL OSC is Locked");
 #ifndef LFW
 	unused = shared_mem_size();
@@ -155,10 +158,8 @@ void htimer_init(void)
 {
 	MCHP_PCR_SLP_DIS_DEV(MCHP_PCR_HTMR0);
 	MCHP_HTIMER_PRELOAD(0) = 0; /* disable at beginning */
-	MCHP_INT_SOURCE(MCHP_HTIMER_GIRQ) =
-			MCHP_HTIMER_GIRQ_BIT(0);
-	MCHP_INT_ENABLE(MCHP_HTIMER_GIRQ) =
-			MCHP_HTIMER_GIRQ_BIT(0);
+	MCHP_INT_SOURCE(MCHP_HTIMER_GIRQ) = MCHP_HTIMER_GIRQ_BIT(0);
+	MCHP_INT_ENABLE(MCHP_HTIMER_GIRQ) = MCHP_HTIMER_GIRQ_BIT(0);
 
 	task_enable_irq(MCHP_IRQ_HTIMER0);
 }
@@ -564,7 +565,7 @@ void __idle(void)
 				clock_wait_cycles(1);
 
 				if (LOW_SPEED_DEEP_SLEEP_ALLOWED)
-					CPRINTS("MEC1701 Disable console "
+					CPRINTS("MEC Disable console "
 						"in deepsleep");
 			}
 
