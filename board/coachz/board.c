@@ -319,8 +319,8 @@ static struct bmi_drv_data_t g_bmi160_data;
 
 /* Matrix to rotate accelerometer into standard reference frame */
 const mat33_fp_t lid_standard_ref = {
-	{ 0, FLOAT_TO_FP(1), 0},
-	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ FLOAT_TO_FP(1), 0, 0},
 	{ 0,  0, FLOAT_TO_FP(1)}
 };
 
@@ -603,27 +603,5 @@ uint16_t tcpc_get_alert_status(void)
 			status |= PD_STATUS_TCPC_ALERT_1;
 
 	return status;
-}
-
-int battery_get_vendor_param(uint32_t param, uint32_t *value)
-{
-	int rv;
-	uint8_t data[16] = {};
-
-	/* only allow reading 0x70~0x7F, 16 byte data */
-	if (param < 0x70 || param >= 0x80)
-		return EC_ERROR_ACCESS_DENIED;
-
-	rv = sb_read_string(0x70, data, sizeof(data));
-	if (rv)
-		return rv;
-
-	*value = data[param - 0x70];
-	return EC_SUCCESS;
-}
-
-int battery_set_vendor_param(uint32_t param, uint32_t value)
-{
-	return EC_ERROR_UNIMPLEMENTED;
 }
 
