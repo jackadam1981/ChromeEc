@@ -67,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83c7990c_ce047277",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-11T19:30:08Z",
+      "side": 1,
+      "message": "this check seems to have been left behind?",
+      "range": {
+        "startLine": 1012,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 0
+      },
+      "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b35e47e_08722587",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
