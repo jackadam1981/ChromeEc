@@ -663,6 +663,7 @@ static void tc_detached(int port)
 	tcpm_debug_accessory(port, 0);
 }
 
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 static inline void pd_set_dual_role_and_event(int port,
 				enum pd_dual_role_states state, uint32_t event)
 {
@@ -679,6 +680,7 @@ void pd_set_dual_role(int port, enum pd_dual_role_states state)
 {
 	pd_set_dual_role_and_event(port, state, PD_EVENT_UPDATE_DUAL_ROLE);
 }
+#endif
 
 bool pd_get_partner_data_swap_capable(int port)
 {
@@ -1428,6 +1430,7 @@ void tc_state_init(int port)
 	 */
 	tc_policy_pd_enable(port, pd_comm_allowed_by_policy());
 
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 	/* Set dual-role state based on chipset power state */
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		pd_set_dual_role_and_event(port, PD_DRP_FORCE_SINK, 0);
@@ -1435,6 +1438,7 @@ void tc_state_init(int port)
 		pd_set_dual_role_and_event(port, pd_get_drp_state_in_suspend(), 0);
 	else /* CHIPSET_STATE_ON */
 		pd_set_dual_role_and_event(port, PD_DRP_TOGGLE_ON, 0);
+#endif
 
 	/*
 	 * If we just lost power, don't apply CC open. Otherwise we would boot
@@ -1640,7 +1644,7 @@ static void sink_stop_drawing_current(int port)
 
 static void pd_update_try_source(void)
 {
-#ifdef CONFIG_USB_PD_TRY_SRC
+#if defined(CONFIG_USB_PD_TRY_SRC) && defined(CONFIG_USB_PD_DUAL_ROLE)
 	tc_enable_try_src(pd_is_try_source_capable());
 #endif
 }
@@ -3543,10 +3547,12 @@ static void pd_chipset_resume(void)
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		pd_resume_check_pr_swap_needed(i);
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 		pd_set_dual_role_and_event(i,
 					   PD_DRP_TOGGLE_ON,
 					   PD_EVENT_UPDATE_DUAL_ROLE
 					   | PD_EVENT_POWER_STATE_CHANGE);
+#endif
 	}
 
 	CPRINTS("PD:S3->S0");
@@ -3555,6 +3561,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_chipset_resume, HOOK_PRIO_DEFAULT);
 
 static void pd_chipset_suspend(void)
 {
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
@@ -3563,6 +3570,7 @@ static void pd_chipset_suspend(void)
 					   PD_EVENT_UPDATE_DUAL_ROLE
 					   | PD_EVENT_POWER_STATE_CHANGE);
 	}
+#endif
 
 	CPRINTS("PD:S0->S3");
 }
@@ -3574,10 +3582,12 @@ static void pd_chipset_startup(void)
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		set_usb_mux_with_current_data_role(i);
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 		pd_set_dual_role_and_event(i,
 					   pd_get_drp_state_in_suspend(),
 					   PD_EVENT_UPDATE_DUAL_ROLE
 					   | PD_EVENT_POWER_STATE_CHANGE);
+#endif
 		/*
 		 * Request port discovery to restore any
 		 * alt modes.
@@ -3594,6 +3604,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void pd_chipset_shutdown(void)
 {
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
@@ -3602,6 +3613,7 @@ static void pd_chipset_shutdown(void)
 					   PD_EVENT_UPDATE_DUAL_ROLE
 					   | PD_EVENT_POWER_STATE_CHANGE);
 	}
+#endif
 
 	CPRINTS("PD:S3->S5");
 }

@@ -1241,6 +1241,7 @@ static bool pd_can_source_from_device(const int pdo_cnt, const uint32_t *pdos)
 	    (pdos[0] & PDO_FIXED_DUAL_ROLE) == 0)
 		return true;
 
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 	/* [virtual] allow_list */
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 		uint32_t max_ma, max_mv, max_pdo, max_mw;
@@ -1258,6 +1259,7 @@ static bool pd_can_source_from_device(const int pdo_cnt, const uint32_t *pdos)
 		if (max_mw >= PD_DRP_CHARGE_POWER_MIN)
 			return true;
 	}
+#endif
 	return false;
 }
 
@@ -1486,6 +1488,7 @@ static void send_source_cap(int port)
 	send_data_msg(port, TCPC_TX_SOP, PD_DATA_SOURCE_CAP);
 }
 
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 /*
  * Request desired charge voltage from source.
  */
@@ -1513,6 +1516,7 @@ static void pe_send_request_msg(int port)
 	memcpy(tx_emsg[port].buf, (uint8_t *)&rdo, tx_emsg[port].len);
 	send_data_msg(port, TCPC_TX_SOP, PD_DATA_REQUEST);
 }
+#endif
 
 static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
 {
@@ -2865,13 +2869,16 @@ static void pe_snk_evaluate_capability_entry(int port)
 
 	pe_update_src_pdo_flags(port, num, pdo);
 
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 	/* Evaluate the options based on supplied capabilities */
 	pd_process_source_cap(port, pe[port].src_cap_cnt, pe[port].src_caps);
+#endif
 
 	/* Device Policy Response Received */
 	set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
 }
 
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 /**
  * PE_SNK_Select_Capability State
  */
@@ -3003,6 +3010,7 @@ static void pe_snk_select_capability_run(int port)
 	if (get_time().val > pe[port].sender_response_timer)
 		set_state_pe(port, PE_SNK_HARD_RESET);
 }
+#endif
 
 /**
  * PE_SNK_Transition_Sink State
@@ -6540,10 +6548,12 @@ static const struct usb_state pe_states[] = {
 	[PE_SNK_EVALUATE_CAPABILITY] = {
 		.entry = pe_snk_evaluate_capability_entry,
 	},
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 	[PE_SNK_SELECT_CAPABILITY] = {
 		.entry = pe_snk_select_capability_entry,
 		.run = pe_snk_select_capability_run,
 	},
+#endif
 	[PE_SNK_READY] = {
 		.entry = pe_snk_ready_entry,
 		.run   = pe_snk_ready_run,
