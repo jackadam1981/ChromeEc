@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d66464c_f9d0b489",
+        "filename": "common/mock/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-11T20:28:50Z",
+      "side": 0,
+      "message": "Is the PD mock file also being deleted?",
+      "revId": "db461b09acd6c09a9ece4e13f47f724b45c314e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6116d38_e94d9017",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-11T20:28:50Z",
+      "side": 0,
+      "message": "Intentional non-unit test change here?",
+      "revId": "db461b09acd6c09a9ece4e13f47f724b45c314e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bffd0a6_be90a293",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-11T20:28:50Z",
+      "side": 0,
+      "message": "I have one additional request which may need to be a TODO (also you\u0027ll need to rebase off my CL from yesterday: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2585749).  \n\nIn order to support the TC being standalone code, I\u0027d like us to remove all pd_ and pe_ definitions from the unit test, and ensure it never adds mocks or fakes for any of the upper layers to its test suite.  At the moment, we just have honeybuns running TC only on ToT, but once it adds PD support I want the TC unit test to be the build component enforcing that the TC must function as a standalone.",
+      "revId": "db461b09acd6c09a9ece4e13f47f724b45c314e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
