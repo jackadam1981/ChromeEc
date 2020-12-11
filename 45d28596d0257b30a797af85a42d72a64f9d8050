@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e34032_6cce6a6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-11T02:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13b1d2c2_b8c2fdf3",
+      "revId": "45d28596d0257b30a797af85a42d72a64f9d8050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "656ab33c_b90a30f4",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-09T18:18:41Z",
       "side": 1,
       "message": "I think it is safer to define 2 new struct motion_sensor_t then do\n\tmotion_sensors[BASE_ACCEL] \u003d icm426xx_base_accel;\n\tmotion_sensors[BASE_GYRO] \u003d icm426xx_base_gyro;\nSee example in board/treeya/board.c",
+      "revId": "45d28596d0257b30a797af85a42d72a64f9d8050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b40e1322_e428aa10",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-11T02:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "656ab33c_b90a30f4",
       "revId": "45d28596d0257b30a797af85a42d72a64f9d8050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
