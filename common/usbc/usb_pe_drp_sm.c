@@ -15,7 +15,7 @@
 #include "stdbool.h"
 #include "system.h"
 #include "task.h"
-#include "tcpm.h"
+#include "../driver/tcpm/tcpm.h"
 #include "util.h"
 #include "usb_common.h"
 #include "usb_dp_alt_mode.h"
@@ -445,6 +445,7 @@ __maybe_unused static const char * const pe_state_names[] = {
 #endif /* CONFIG_USB_PD_REV30 */
 };
 
+#ifndef CONFIG_ZEPHYR  /* TODO: This does not build at present */
 #ifndef CONFIG_USBC_VCONN
 GEN_NOT_SUPPORTED(PE_VCS_EVALUATE_SWAP);
 #define PE_VCS_EVALUATE_SWAP PE_VCS_EVALUATE_SWAP_NOT_SUPPORTED
@@ -487,6 +488,7 @@ GEN_NOT_SUPPORTED(PE_SRC_CHUNK_RECEIVED);
 GEN_NOT_SUPPORTED(PE_SNK_CHUNK_RECEIVED);
 #define PE_SNK_CHUNK_RECEIVED PE_SNK_CHUNK_RECEIVED_NOT_SUPPORTED
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+#endif /* !CONFIG_ZEPHYR */
 
 /*
  * This enum is used to implement a state machine consisting of at most

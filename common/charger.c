@@ -16,6 +16,11 @@
 #include "util.h"
 #include "hooks.h"
 
+#ifdef CONFIG_ZEPHYR
+/* TODO: Move to the shim header so it is always included */
+#include <ctype.h>
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)

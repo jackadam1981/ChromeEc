@@ -10,7 +10,7 @@
 #include "hooks.h"
 #include "system.h"
 #include "task.h"
-#include "tcpm.h"
+#include "../driver/tcpm/tcpm.h"
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
@@ -185,6 +185,7 @@ enum usb_tc_state {
 /* Forward declare the full list of states. This is indexed by usb_tc_state */
 static const struct usb_state tc_states[];
 
+#ifndef CONFIG_ZEPHYR
 /*
  * Remove all of the states that aren't support at link time. This allows
  * IS_ENABLED to work.
@@ -205,6 +206,7 @@ GEN_NOT_SUPPORTED(TC_CT_UNATTACHED_SNK);
 GEN_NOT_SUPPORTED(TC_CT_ATTACHED_SNK);
 #define TC_CT_ATTACHED_SNK TC_CT_ATTACHED_SNK_NOT_SUPPORTED
 #endif /* CONFIG_USB_PE_SM */
+#endif /* CONFIG_ZEPHYR */
 
 /*
  * We will use DEBUG LABELS if we will be able to print (COMMON RUNTIME)
@@ -2210,11 +2212,13 @@ static void tc_attach_wait_snk_run(const int port)
 			set_state_tc(port, TC_ATTACHED_SNK);
 		}
 
+#ifndef CONFIG_ZEPHYR /* TODO */
 		if (IS_ENABLED(CONFIG_USB_PE_SM) &&
 				IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 			hook_call_deferred(&pd_usb_billboard_deferred_data,
 								PD_T_AME);
 		}
+#endif
 	}
 }
 

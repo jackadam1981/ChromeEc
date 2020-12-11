@@ -32,21 +32,67 @@ config PLATFORM_EC_BATTERY_SMART
 
 endchoice
 
+choice "Battery presence detection"
+	prompt "Method to use to detect the battery"
+	help
+	  This selects the method to use to detect the presence of a battery.
+
+	  Battery detection is important since it can be used to indicate that
+	  the case is open, so security features can be disabled. It is also
+	  useful to report to the user when the battery is missing, e.g. with
+	  a desktop icon.
+
+config PLATFORM_EC_BATTERY_PRESENT_CUSTOM
+	bool "Call a board-provided function"
+	help
+	  Use this method to provide a board-provided battery_is_present()
+	  function to determine whether the battery is currently present.
+	  This should be implemented in the board code and can use any
+	  reasonable method to detect the battery.
+
+config PLATFORM_EC_BATTERY_PRESENT_GPIO
+	bool "Check a GPIO"
+	help
+	  Use this method if a GPIO signals whether the battery is present. The
+	  GPIO should read low if the battery is present, high if absent,
+
+	  TODO:
+	  The actual GPIO to use is not defined by this option. Perhaps this
+	  needs to be placed in the devicetree.
+
+endchoice  # battery presence
+
 choice "Charger select"
 	prompt "Select the charger to use"
 	help
 	  Select the battery charger IC used on the board. Only one charger may
 	  be selected.
 
-config PLATFORM_EC_CHARGER_ISL9237
-	bool "Use the ISL9237 charger"
+config PLATFORM_EC_CHARGER_ISL9241
+	bool "Use the ISL9241 Buck-Boost Configurable Battery Charger"
 	depends on PLATFORM_EC_I2C
 	help
-	  Enables a driver for the ISL9237 VCD Battery Charger. This is a
-	  buck-boost, narrow-output-voltage charger supporting an input voltage
-	  of 3.2-23.4V and output of 2.4 V-13.8V. It provides an I2C interace
+	  The Renesas Electronics ISL9241 supports both Narrow Voltage Direct
+	  Charging (NVDC) and Hybrid Power Buck-Boost (HPBB/Bypass) charging,
+	  switching between the modes under firmware control. It supports a
+	  bypass mode using a controller's firmware that allows the adapter to
+	  provide power directly to the system. The charger provides the
+	  charging function, system bus regulation, and protection features
+	  using only NFETs for tablet, ultrabook, and notebook platforms.
+	  The ISL9241 takes input power from a wide range of DC power
+	  sources including conventional AC/DC charger adapters, USB Type-C
+	  power ports, and travel adapters. It can safely charge battery packs
+	  with up to 4-series cell Li-ion batterie. It provides an I2C interface
 	  for configuration.
 
 endchoice
+
+config PLATFORM_EC_BATTERY_FUEL_GAUGE
+	bool "Board supplies battery info"
+	help
+	  Select this when the board supplies the fuel gauge and battery
+	  information for each supported battery. This information is then used
+	  for battery cut off and to check the charge/discharge FET status.
+	  The board should provide board_battery_info[] for this purpose.
 
 endif # PLATFORM_EC_BATTERY

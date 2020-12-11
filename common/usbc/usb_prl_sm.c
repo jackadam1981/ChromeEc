@@ -19,7 +19,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
-#include "tcpm.h"
+#include "../driver/tcpm/tcpm.h"
 #include "util.h"
 #include "usb_charge.h"
 #include "usb_mux.h"
@@ -304,6 +304,7 @@ static void prl_tx_construct_message(int port);
 static void prl_rx_wait_for_phy_message(const int port, int evt);
 static void prl_copy_msg_to_buffer(int port);
 
+#ifndef CONFIG_ZEPHYR /* TODO: This does not build at present */
 #ifndef CONFIG_USB_PD_REV30
 GEN_NOT_SUPPORTED(PRL_TX_SRC_SOURCE_TX);
 #define PRL_TX_SRC_SOURCE_TX PRL_TX_SRC_SOURCE_TX_NOT_SUPPORTED
@@ -345,7 +346,7 @@ GEN_NOT_SUPPORTED(TCH_MESSAGE_SENT);
 GEN_NOT_SUPPORTED(TCH_REPORT_ERROR);
 #define TCH_REPORT_ERROR TCH_REPORT_ERROR_NOT_SUPPORTED
 #endif /* !CONFIG_USB_PD_REV30 */
-
+#endif /* !CONFIG_ZEPHYR */
 
 /* Set the protocol transmit statemachine to a new state. */
 static void set_state_prl_tx(const int port,

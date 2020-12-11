@@ -2358,7 +2358,12 @@ void pd_send_hpd(int port, enum hpd_event hpd);
 /**
  * Enable USB Billboard Device.
  */
+#ifdef CONFIG_ZEPHYR
+extern struct deferred_data pd_usb_billboard_deferred_data;
+#else
 extern const struct deferred_data pd_usb_billboard_deferred_data;
+#endif /* CONFIG_ZEPHYR */
+
 /* --- Physical layer functions : chip specific --- */
 
 /* Packet preparation/retrieval */
