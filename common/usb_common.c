@@ -697,6 +697,7 @@ __overridable bool vboot_allow_usb_pd(void)
 	return false;
 }
 
+#ifndef CONFIG_ZEPHYR  /* TODO */
 /* VDM utility functions */
 static void pd_usb_billboard_deferred(void)
 {
@@ -714,6 +715,7 @@ static void pd_usb_billboard_deferred(void)
 	}
 }
 DECLARE_DEFERRED(pd_usb_billboard_deferred);
+#endif /* CONFIG_ZEPHYR */
 
 #ifdef CONFIG_USB_PD_DISCHARGE
 static void gpio_discharge_vbus(int port, int enable)
@@ -736,8 +738,13 @@ static void gpio_discharge_vbus(int port, int enable)
 
 void pd_set_vbus_discharge(int port, int enable)
 {
-	static struct mutex discharge_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
+	static mutex_t discharge_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
+	static bool inited[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+	if (!inited[port]) {
+		(void)k_mutex_init(&discharge_lock[port]);
+		inited[port] = true;
+	}
 	if (port >= board_get_usb_pd_port_count())
 		return;
 
