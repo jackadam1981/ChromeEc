@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eaf724a_20d44cab",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-12-11T21:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d7fced1_bf4abe95",
+      "range": {
+        "startLine": 798,
+        "startChar": 33,
+        "endLine": 798,
+        "endChar": 35
+      },
+      "revId": "c61ac49ccc134a626e22b2a08f994ecaf2fcb214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe5154dd_13fa39e8",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5afcc2a_77bd9df3",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-12-11T21:04:43Z",
+      "side": 1,
+      "message": "you\u0027re right, it\u0027s in servod, that we\u0027re just sending in a string it seems. I\u0027ll keep this change to just do \u0027%r\u0027 above then. I\u0027ll change some more before V+1 on this one",
+      "parentUuid": "fe5154dd_13fa39e8",
+      "revId": "c61ac49ccc134a626e22b2a08f994ecaf2fcb214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2c88509_80629daf",
         "filename": "util/ec3po/console.py",
         "patchSetId": 1
@@ -54,6 +96,30 @@
       "writtenOn": "2020-12-09T23:59:47Z",
       "side": 1,
       "message": "Just do b\u0027 \u0027",
+      "range": {
+        "startLine": 801,
+        "startChar": 21,
+        "endLine": 801,
+        "endChar": 33
+      },
+      "revId": "c61ac49ccc134a626e22b2a08f994ecaf2fcb214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a33f1dee_0af799b8",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-12-11T21:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2c88509_80629daf",
       "range": {
         "startLine": 801,
         "startChar": 21,
