@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b7097b0d_4f26873c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-11T19:08:34Z",
+      "side": 0,
+      "message": "I liked the symmetry of RO and RW being similar; I don\u0027t need to do it, so I reverted it.",
+      "parentUuid": "db5909d5_4f34ad1e",
+      "range": {
+        "startLine": 1014,
+        "startChar": 2,
+        "endLine": 1014,
+        "endChar": 12
+      },
+      "revId": "29466270f4383e88868ece72ab5a556f23531ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "212190b0_e95d4ea3",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1

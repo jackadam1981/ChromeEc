@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5cd91a_cf12dbb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-11T19:08:34Z",
+      "side": 1,
+      "message": "Agreed. I was also thinking this would be good for unit tests too. Are there any unit tests for gscool already I can add to?\n\nFor testing H1, how do you recommend I do the testing? I don\u0027t have the ability to sign H1 RO/RW images, right?",
+      "parentUuid": "389fa1f5_43d62288",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c8d12075_15fc4ab7",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "220c4f24_e763bb0a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-11T19:08:34Z",
+      "side": 1,
+      "message": "I moved what I could up, but this method should be checking the size of the file binary. The valid header only checks if the header if valid.",
+      "parentUuid": "4b35e47e_08722587",
+      "range": {
+        "startLine": 1012,
+        "startChar": 0,
+        "endLine": 1037,
+        "endChar": 2
+      },
+      "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bec82c7_a160e6f9",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8916768a_b29efcec",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-11T19:08:34Z",
+      "side": 1,
+      "message": "True, Reverted. I like the symmetry :)",
+      "parentUuid": "2bec82c7_a160e6f9",
+      "range": {
+        "startLine": 1164,
+        "startChar": 10,
+        "endLine": 1169,
+        "endChar": 13
+      },
+      "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3bec552_9511685e",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-12-10T22:05:37Z",
       "side": 1,
       "message": "this logic does not apply to D2",
+      "range": {
+        "startLine": 1342,
+        "startChar": 11,
+        "endLine": 1345,
+        "endChar": 39
+      },
+      "revId": "93ad97b9bc03fab45722b5d97949d4c751a07681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1449fd5_6db46c23",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-11T19:08:34Z",
+      "side": 1,
+      "message": "Good catch, updated.",
+      "parentUuid": "e3bec552_9511685e",
       "range": {
         "startLine": 1342,
         "startChar": 11,
