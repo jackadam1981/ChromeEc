@@ -33,6 +33,24 @@
       "message": " common/ec_ec_comm_server.c: In function \u0027ec_ec_comm_server_task\u0027:\n common/ec_ec_comm_server.c:298:6: error: \u0027battery_static\u0027 undeclared (first use in this function); did you mean \u0027battery_status\u0027?\n      \u0026battery_static[BATT_IDX_MAIN],\n       ^~~~~~~~~~~~~~\n       battery_status\n common/ec_ec_comm_server.c:298:6: note: each undeclared identifier is reported only once for each function it appears in\n common/ec_ec_comm_server.c:304:6: error: \u0027battery_dynamic\u0027 undeclared (first use in this function); did you mean \u0027battery_status\u0027?\n      \u0026battery_dynamic[BATT_IDX_MAIN],\n       ^~~~~~~~~~~~~~~\n       battery_status\n common/ec_ec_comm_server.c: At top level:\n cc1: error: unrecognized command line option \u0027-Wno-address-of-packed-member\u0027 [-Werror]\n cc1: all warnings being treated as errors\n make[2]: *** [Makefile.rules:555: build/wand/RW/common/ec_ec_comm_server.o] Error 1\n make[1]: *** [Makefile.rules:247: proj-wand] Error 2\n\nI guess we missed something renames...",
       "revId": "df71857571773aadde503934b90e9546d3cb9bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc9b6ebf_c2b9bc31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-12T05:45:11Z",
+      "side": 1,
+      "message": "*something (or *some renames)",
+      "parentUuid": "9befbc07_6151657a",
+      "revId": "df71857571773aadde503934b90e9546d3cb9bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
