@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d825e08f_ab76ee06",
+        "filename": "include/i2c_peripheral.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-12T17:11:25Z",
+      "side": 1,
+      "message": "+1 on __CROS_EC_I2C_PERIPHERAL_H for consistency with the codebase.",
+      "range": {
+        "startLine": 8,
+        "startChar": 21,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "c1dc2a8f92ee7fb67f17206f1ee4259bcbbd3cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10b5351_73433731",
+        "filename": "include/i2c_peripheral.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-12T17:11:25Z",
+      "side": 1,
+      "message": "+1 on \u0027addr\u0027 for consistency.",
+      "range": {
+        "startLine": 15,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "c1dc2a8f92ee7fb67f17206f1ee4259bcbbd3cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
