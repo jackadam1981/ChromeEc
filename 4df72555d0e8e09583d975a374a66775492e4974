@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66fa4ca_63d08dbd",
+        "filename": "common/ec_ec_comm_client.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T04:06:01Z",
+      "side": 1,
+      "message": "Oh wow. Thanks for catching this!",
+      "parentUuid": "095594ff_3cf927cb",
+      "range": {
+        "startLine": 25,
+        "startChar": 51,
+        "endLine": 25,
+        "endChar": 57
+      },
+      "revId": "4df72555d0e8e09583d975a374a66775492e4974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "267c8e6c_0c8dc961",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d3532ed_dbd66033",
+        "filename": "common/ec_ec_comm_client.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T04:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "267c8e6c_0c8dc961",
+      "range": {
+        "startLine": 116,
+        "startChar": 43,
+        "endLine": 116,
+        "endChar": 49
+      },
+      "revId": "4df72555d0e8e09583d975a374a66775492e4974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f54494e0_bf6195ba",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-12T03:50:32Z",
       "side": 1,
       "message": "server",
+      "range": {
+        "startLine": 121,
+        "startChar": 63,
+        "endLine": 121,
+        "endChar": 69
+      },
+      "revId": "4df72555d0e8e09583d975a374a66775492e4974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ba13b5_fe040af1",
+        "filename": "common/ec_ec_comm_client.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T04:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f54494e0_bf6195ba",
       "range": {
         "startLine": 121,
         "startChar": 63,
