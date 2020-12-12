@@ -56,6 +56,30 @@
       },
       "revId": "edfa8e4e7054b279f2c5343a4531a5801ccd0f4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90520abe_599af6a3",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T19:09:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5df86bf6_ebc49607",
+      "range": {
+        "startLine": 175,
+        "startChar": 10,
+        "endLine": 175,
+        "endChar": 21
+      },
+      "revId": "edfa8e4e7054b279f2c5343a4531a5801ccd0f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
