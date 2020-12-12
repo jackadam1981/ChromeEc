@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52f39d90_762b16b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-12T17:18:44Z",
+      "side": 1,
+      "message": "+1 on periph.",
+      "parentUuid": "6a0b4f8f_f4872a56",
+      "revId": "677eef631f2b6c58553dd79b6c434726686dbb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18e38124_0c96ceca",
         "filename": "chip/it83xx/i2c_peripheral.c",
         "patchSetId": 2
