@@ -16,6 +16,46 @@
       "message": "Thank you for all the reviews!",
       "revId": "edfa8e4e7054b279f2c5343a4531a5801ccd0f4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "275a3d35_8471bd5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-12T19:05:24Z",
+      "side": 1,
+      "message": "Just one nit.",
+      "revId": "edfa8e4e7054b279f2c5343a4531a5801ccd0f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df86bf6_ebc49607",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-12T19:05:24Z",
+      "side": 1,
+      "message": "addr_flags",
+      "range": {
+        "startLine": 175,
+        "startChar": 10,
+        "endLine": 175,
+        "endChar": 21
+      },
+      "revId": "edfa8e4e7054b279f2c5343a4531a5801ccd0f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
