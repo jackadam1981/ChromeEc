@@ -70,6 +70,30 @@
       },
       "revId": "1f6d434286cf2f5a4b9787343f391cd15527351a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4997d13b_4de84faf",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-12T03:46:41Z",
+      "side": 1,
+      "message": "I actually like client/server, especially given that the protocol is fairly high level could potentially run over different underlying protocols (UART is what we have now, but it could be something else).",
+      "parentUuid": "4114804c_15d4a332",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "1f6d434286cf2f5a4b9787343f391cd15527351a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
