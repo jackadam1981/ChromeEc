@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "041587f8_748d0589",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T18:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "539cfb85_203da728",
+      "range": {
+        "startLine": 102,
+        "startChar": 21,
+        "endLine": 102,
+        "endChar": 38
+      },
+      "revId": "141d613175ed001965aa96dbc63bbb05ef91ebfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15a3d3ea_7c2e23ef",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-12T18:29:07Z",
       "side": 1,
       "message": "\u003caddr_flags\u003e",
+      "range": {
+        "startLine": 294,
+        "startChar": 4,
+        "endLine": 294,
+        "endChar": 14
+      },
+      "revId": "141d613175ed001965aa96dbc63bbb05ef91ebfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af1fd9cb_72172466",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T18:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15a3d3ea_7c2e23ef",
       "range": {
         "startLine": 294,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb8eebfb_07558333",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T18:59:00Z",
+      "side": 1,
+      "message": "Done in a separate commit in this chain",
+      "parentUuid": "00546085_82a1da7f",
+      "range": {
+        "startLine": 513,
+        "startChar": 8,
+        "endLine": 513,
+        "endChar": 9
+      },
+      "revId": "141d613175ed001965aa96dbc63bbb05ef91ebfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85fcac77_cb4ca426",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-12T18:29:07Z",
       "side": 1,
       "message": "Please match.",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "141d613175ed001965aa96dbc63bbb05ef91ebfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aeeff6f_afb0372c",
+        "filename": "include/i2c_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T18:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fcac77_cb4ca426",
       "range": {
         "startLine": 24,
         "startChar": 10,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5de1c2d_d290c3e6",
+        "filename": "include/i2c_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T18:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd96ce0d_84f3c2ba",
+      "range": {
+        "startLine": 33,
+        "startChar": 19,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "141d613175ed001965aa96dbc63bbb05ef91ebfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f52b9a9e_02ded655",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-12-12T18:29:07Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 311,
+        "startChar": 51,
+        "endLine": 311,
+        "endChar": 58
+      },
+      "revId": "141d613175ed001965aa96dbc63bbb05ef91ebfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2176f1d2_99e594ee",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T18:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f52b9a9e_02ded655",
       "range": {
         "startLine": 311,
         "startChar": 51,
