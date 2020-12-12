@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a4179c7_b04cbb16",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T04:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b611e45_7a1bca0d",
+      "revId": "742316f22e36427499fac6ec92bada9c6af30fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c51063b8_611da068",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-12T03:54:12Z",
       "side": 1,
       "message": "nope, still BATTERY ,-)",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "742316f22e36427499fac6ec92bada9c6af30fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c48e97a5_9c68ed35",
+        "filename": "board/poppy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T04:05:42Z",
+      "side": 1,
+      "message": "Thanks for the catch!",
+      "parentUuid": "c51063b8_611da068",
       "range": {
         "startLine": 82,
         "startChar": 8,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "217f5972_a96144f9",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5338,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T04:05:42Z",
+      "side": 1,
+      "message": "m4r-\u003eClient, s3e -\u003e server",
+      "parentUuid": "19c5d1bb_ba9e9cf5",
+      "range": {
+        "startLine": 5338,
+        "startChar": 25,
+        "endLine": 5338,
+        "endChar": 31
+      },
+      "revId": "742316f22e36427499fac6ec92bada9c6af30fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dd9ce0e_c6eae202",
@@ -77,6 +143,24 @@
       "writtenOn": "2020-12-12T04:01:25Z",
       "side": 1,
       "message": "Is this option changing as well?",
+      "revId": "742316f22e36427499fac6ec92bada9c6af30fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611c5cfe_9ca02f32",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5339,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-12T04:05:42Z",
+      "side": 1,
+      "message": "I didn\u0027t touch this one. Will try to get rid of this instance in a separate commit.",
+      "parentUuid": "2dd9ce0e_c6eae202",
       "revId": "742316f22e36427499fac6ec92bada9c6af30fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
