@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "120c5e8d_4cd2bdba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-12T03:57:51Z",
+      "side": 1,
+      "message": "How do folks feel about periph vs perif? I get the phonetic shortening, but it sticks out to me. Just my personal opinion.",
+      "revId": "677eef631f2b6c58553dd79b6c434726686dbb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e38124_0c96ceca",
+        "filename": "chip/it83xx/i2c_peripheral.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-12T03:57:51Z",
+      "side": 1,
+      "message": "Controller",
+      "range": {
+        "startLine": 95,
+        "startChar": 6,
+        "endLine": 95,
+        "endChar": 12
+      },
+      "revId": "677eef631f2b6c58553dd79b6c434726686dbb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7581ece_509cc7d2",
+        "filename": "chip/it83xx/i2c_peripheral.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-12T03:57:51Z",
+      "side": 1,
+      "message": "Controller",
+      "range": {
+        "startLine": 119,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "677eef631f2b6c58553dd79b6c434726686dbb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b88c4b7_93289319",
+        "filename": "chip/it83xx/i2c_peripheral.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-12T03:57:51Z",
+      "side": 1,
+      "message": "Controller",
+      "range": {
+        "startLine": 153,
+        "startChar": 6,
+        "endLine": 153,
+        "endChar": 12
+      },
+      "revId": "677eef631f2b6c58553dd79b6c434726686dbb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
