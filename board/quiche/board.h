@@ -18,10 +18,11 @@
 #define USB_PD_PORT_HOST   0
 #define USB_PD_PORT_DP   1
 
+#define CONFIG_USB_MUX_PS8822
+
 /* USB Type A Features */
 
 /* BC 1.2 */
-
 
 #ifndef __ASSEMBLER__
 
@@ -29,6 +30,14 @@
 
 #define GPIO_TRIGGER_1 GPIO_USB3_A3_CDP_EN
 #define GPIO_TRIGGER_2 GPIO_USB3_A4_CDP_EN
+
+
+enum  debug_gpio {
+	TRIGGER_1 = 0,
+	TRIGGER_2,
+};
+
+void board_debug_gpio(int trigger, int enable);
 
 #endif /* !__ASSEMBLER__ */
 

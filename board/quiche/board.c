@@ -10,6 +10,7 @@
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/stm32gx.h"
 #include "driver/tcpm/tcpci.h"
+#include "driver/usb_mux/ps8822.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "switch.h"
@@ -69,6 +70,11 @@ const struct power_seq board_power_seq[] = {
 
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
 
+static void board_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
+{
+
+}
+
 /* TCPCs */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
@@ -80,8 +86,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.usb_port = USB_PD_PORT_HOST,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
+		.driver = & ps8822_usb_mux_driver,
+		.hpd_update = &board_hpd_update,
 	},
 };
 
@@ -103,22 +109,15 @@ void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
-static void board_select_drp_mode(void)
+enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
 {
-	/*
-	 * Host port should operate as a dual role port. If it attaches as a
-	 * sink, then it will trigger a PRS to end up as a SRC UFP. The port's
-	 * DRP state only needs to be set once, after it's initialized in TCPMv2
-	 * as the default role of sink only.
-	 */
-	pd_set_dual_role(USB_PD_PORT_HOST, PD_DRP_TOGGLE_ON);
-	CPRINTS("ucpd: set drp toggle on");
+	/* Only port 0 so far, request DRP toggle */
+	return PD_DRP_TOGGLE_ON;
 }
-DECLARE_DEFERRED(board_select_drp_mode);
 
 static void board_init(void)
 {
-	hook_call_deferred(&board_select_drp_mode_data, 50 * MSEC);
+
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -133,4 +132,12 @@ int ppc_get_alert_status(int port)
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* TODO(b/174825406): check correct operation for honeybuns */
+}
+
+void board_debug_gpio(int trigger, int enable)
+{
+	enum gpio_signal signal = (trigger == TRIGGER_1) ?
+		GPIO_TRIGGER_1 : GPIO_TRIGGER_2;
+
+	gpio_set_level(signal, enable);
 }
