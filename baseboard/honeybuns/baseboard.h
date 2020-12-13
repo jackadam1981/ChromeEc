@@ -40,7 +40,6 @@
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_CMD_CBI
 
-
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_TCPMV2
@@ -48,11 +47,11 @@
 /* No AP on any honeybuns variants */
 #undef CONFIG_USB_PD_HOST_CMD
 
-/* TODO(b/167711550): Temporarily support type-c mode only */
-#undef CONFIG_USB_PRL_SM
-#undef CONFIG_USB_PE_SM
-
+#define CONFIG_USB_PD_ALT_MODE
+#define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_DYNAMIC_SRC_CAP
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_STM32GX
@@ -73,9 +72,8 @@
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USB_MUX_VIRTUAL
 
-
 /* Define typical operating power and max power. */
-#define PD_MAX_VOLTAGE_MV     20000
+#define PD_MAX_VOLTAGE_MV     5000
 #define PD_MAX_CURRENT_MA     3000
 #define PD_MAX_POWER_MW       45000
 #define PD_OPERATING_POWER_MW 15000
@@ -90,9 +88,14 @@
 /* I2C Bus Configuration */
 #define CONFIG_I2C
 #define CONFIG_I2C_CONTROLLER
+
 #define I2C_PORT_USBC		0
 #define I2C_PORT_MST		1
 #define I2C_PORT_EEPROM	2
+#define I2C_PORT_MP4245 I2C_PORT_MST
+
+#define CONFIG_MP4245
+#define MP4245_SLAVE_ADDR MP4245_I2C_ADDR_0_FLAGS
 
 /*
  * Macros for GPIO signals used in common code that don't match the
