@@ -30,6 +30,14 @@
 #define GPIO_TRIGGER_1 GPIO_USB3_A3_CDP_EN
 #define GPIO_TRIGGER_2 GPIO_USB3_A4_CDP_EN
 
+
+enum  debug_gpio {
+	TRIGGER_1 = 0,
+	TRIGGER_2,
+};
+
+void board_debug_gpio(int trigger, int enable);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
