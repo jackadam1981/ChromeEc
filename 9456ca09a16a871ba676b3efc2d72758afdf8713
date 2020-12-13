@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b5121b_60bbe3d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-12-13T23:47:25Z",
+      "side": 1,
+      "message": "This is meant to be the permanent solution, so let\u0027s not call it a hack.",
+      "revId": "9456ca09a16a871ba676b3efc2d72758afdf8713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "32e7b34a_640bd16a",
@@ -14,6 +31,23 @@
       "writtenOn": "2020-12-10T22:12:42Z",
       "side": 1,
       "message": "I\u0027m adding Peter Marheine, who designed and implemented the power sequencing for Puff.\nHe is the subject matter expert here.",
+      "revId": "9456ca09a16a871ba676b3efc2d72758afdf8713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a017fd_11b057b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-12-13T23:47:25Z",
+      "side": 1,
+      "message": "From further investigation, C10 gate response time on dooly is measurably slower than puff; significantly out of spec. Since power draw without C10 gating is acceptable, this seems fine.",
       "revId": "9456ca09a16a871ba676b3efc2d72758afdf8713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
