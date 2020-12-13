@@ -103,22 +103,15 @@ void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
-static void board_select_drp_mode(void)
+enum pd_dual_role_states tc_get_initial_drp_mode(int port)
 {
-	/*
-	 * Host port should operate as a dual role port. If it attaches as a
-	 * sink, then it will trigger a PRS to end up as a SRC UFP. The port's
-	 * DRP state only needs to be set once, after it's initialized in TCPMv2
-	 * as the default role of sink only.
-	 */
-	pd_set_dual_role(USB_PD_PORT_HOST, PD_DRP_TOGGLE_ON);
-	CPRINTS("ucpd: set drp toggle on");
+	/* Only port 0 so far, request DRP toggle */
+	return PD_DRP_TOGGLE_ON;
 }
-DECLARE_DEFERRED(board_select_drp_mode);
 
 static void board_init(void)
 {
-	hook_call_deferred(&board_select_drp_mode_data, 50 * MSEC);
+
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -133,4 +126,12 @@ int ppc_get_alert_status(int port)
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* TODO(b/174825406): check correct operation for honeybuns */
+}
+
+void board_debug_gpio(int trigger, int enable)
+{
+	enum gpio_signal signal = (trigger == TRIGGER_1) ?
+		GPIO_TRIGGER_1 : GPIO_TRIGGER_2;
+
+	gpio_set_level(signal, enable);
 }
