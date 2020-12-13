@@ -136,7 +136,7 @@ __maybe_unused static int chip_i2c_xfer_with_notify(
 
 	if (IS_ENABLED(CONFIG_I2C_DEBUG)) {
 		i2c_trace_notify(port, slave_addr_flags, out, out_size,
-				 in, in_size);
+				 in, in_size, ret);
 	}
 
 	return ret;

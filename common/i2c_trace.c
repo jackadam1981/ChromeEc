@@ -25,7 +25,8 @@ static struct i2c_trace_range trace_entries[8];
 
 void i2c_trace_notify(int port, uint16_t slave_addr_flags,
 		      const uint8_t *out_data, size_t out_size,
-		      const uint8_t *in_data, size_t in_size)
+		      const uint8_t *in_data, size_t in_size,
+		      int rv)
 {
 	size_t i;
 	uint16_t addr = I2C_STRIP_FLAGS(slave_addr_flags);
@@ -39,18 +40,19 @@ void i2c_trace_notify(int port, uint16_t slave_addr_flags,
 	return;
 
 trace_enabled:
-	CPRINTF("i2c: %d:0x%X ", port, addr);
+	CPRINTF("{%02X%02Xw", port, addr);
 	if (out_size) {
-		CPRINTF("wr ");
 		for (i = 0; i < out_size; i++)
-			CPRINTF("0x%02X ", out_data[i]);
+			CPRINTF("%02X", out_data[i]);
 	}
+	CPRINTF("r");
 	if (in_size) {
-		CPRINTF("  rd ");
 		for (i = 0; i < in_size; i++)
-			CPRINTF("0x%02X ", in_data[i]);
+			CPRINTF("%02X", in_data[i]);
 	}
-	CPRINTF("\n");
+	if (rv)
+		CPRINTF("e%02X", rv);
+	CPRINTF("}");
 }
 
 static int command_i2ctrace_list(void)

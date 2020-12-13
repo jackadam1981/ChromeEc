@@ -21,6 +21,8 @@
 
 #define PROMPT "> "
 
+extern int tx_overflow_count;
+
 #ifdef CONFIG_EXPERIMENTAL_CONSOLE
 #define EC_SYN 0xEC
 #define EC_ACK 0xC0
@@ -536,7 +538,7 @@ static void console_handle_char(int c)
 
 #ifndef CONFIG_EXPERIMENTAL_CONSOLE
 		/* Reprint prompt */
-		ccputs(PROMPT);
+		ccprintf("%d %s", tx_overflow_count, PROMPT);
 #endif /* !defined(CONFIG_EXPERIMENTAL_CONSOLE) */
 		break;
 

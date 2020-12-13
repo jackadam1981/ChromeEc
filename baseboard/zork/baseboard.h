@@ -237,7 +237,9 @@
 
 /* Increase console output buffer since we have the RAM available. */
 #undef CONFIG_UART_TX_BUF_SIZE
-#define CONFIG_UART_TX_BUF_SIZE 4096
+#define CONFIG_UART_TX_BUF_SIZE 0x2000
+
+#define CONFIG_I2C_DEBUG
 
 #define I2C_PORT_TCPC0		NPCX_I2C_PORT0_0
 #define I2C_PORT_USBA0		NPCX_I2C_PORT0_0

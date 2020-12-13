@@ -53,6 +53,7 @@ static int tx_snapshot_tail;
 static int tx_last_snapshot_head;
 static int tx_next_snapshot_head;
 static int tx_checksum __preserved_logs(tx_checksum);
+int tx_overflow_count;
 
 static int uart_buffer_calc_checksum(void)
 {
@@ -90,9 +91,14 @@ static int __tx_char_raw(void *context, int c)
 	uart_write_char(c);
 #else
 
+	interrupt_disable();
+
 	tx_buf_next = TX_BUF_NEXT(tx_buf_head);
-	if (tx_buf_next == tx_buf_tail)
+	if (tx_buf_next == tx_buf_tail) {
+		tx_overflow_count++;
+		interrupt_enable();
 		return 1;
+	}
 
 	/*
 	 * If we do a READ_RECENT, the buffer may have wrapped around, and
@@ -115,6 +121,7 @@ static int __tx_char_raw(void *context, int c)
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS))
 		tx_checksum = uart_buffer_calc_checksum();
 #endif
+	interrupt_enable();
 	return 0;
 }
 

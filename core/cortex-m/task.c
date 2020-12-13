@@ -217,14 +217,19 @@ static inline task_ *__task_id_to_ptr(task_id_t id)
 	return tasks + id;
 }
 
+static int interrupt_disable_count;
+
 void interrupt_disable(void)
 {
 	asm("cpsid i");
+	interrupt_disable_count++;
 }
-
 void interrupt_enable(void)
 {
-	asm("cpsie i");
+	if (interrupt_disable_count > 0)
+		interrupt_disable_count--;
+	if (interrupt_disable_count == 0)
+		asm("cpsie i");
 }
 
 inline int in_interrupt_context(void)
