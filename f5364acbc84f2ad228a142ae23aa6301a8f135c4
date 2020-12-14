@@ -16,6 +16,46 @@
       "message": "Clearing some comments that have been resolved. Herman, when you upload a patchset, please reply on the resolved comments and click \"resolved\" so that we know where to look at. Otherwise unresolved comments just pile up.",
       "revId": "f5364acbc84f2ad228a142ae23aa6301a8f135c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0737cd98_a84cbc08",
+        "filename": "driver/fingerprint/elan/build.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-14T23:30:30Z",
+      "side": 1,
+      "message": "nit: You can create a chained \"else if\" by using the following syntax without the extra \"endif\":\n\nelse ifeq ($(CONFIG_FP_SENSOR_ELAN515),rw)\n\nhttps://www.gnu.org/software/make/manual/html_node/Conditional-Syntax.html\n\n---\n\n\nifeq ($(CONFIG_FP_SENSOR_ELAN80),rw)\nSENSOR\u003delan_80\nELANLIB\u003dlib$(SENSOR).a\nelse ifeq ($(CONFIG_FP_SENSOR_ELAN515),rw)\nSENSOR\u003delan_515\nELANLIB\u003dlib$(SENSOR).a\nendif",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "f5364acbc84f2ad228a142ae23aa6301a8f135c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf298d7_77e71df6",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-14T23:30:30Z",
+      "side": 1,
+      "message": "nit: Newline needed",
+      "revId": "f5364acbc84f2ad228a142ae23aa6301a8f135c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

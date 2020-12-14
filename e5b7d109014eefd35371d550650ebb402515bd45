@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f43513_41bbf0f1",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-14T23:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40e60b7a_bee8b46c",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "225dc934_cdaca7bb",
@@ -84,6 +108,30 @@
       "writtenOn": "2020-05-12T22:08:16Z",
       "side": 1,
       "message": "This need to be made generic enough to be able to handle FPC and Elan",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f301ed88_375f4756",
+        "filename": "driver/fingerprint/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-14T23:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "225dc934_cdaca7bb",
       "range": {
         "startLine": 10,
         "startChar": 0,
