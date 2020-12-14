@@ -122,6 +122,30 @@
       },
       "revId": "2b2b9069028920687387ee30d272fdadbbe01ccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185e5083_ac1c571d",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-12-14T22:08:46Z",
+      "side": 1,
+      "message": "I think it would be good to add CONFIG_I2C_BUS_MAY_BE_UNPOWERED, don\u0027t remember any good reason for not doing so on Zork.",
+      "parentUuid": "991e2b84_737f882e",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "2b2b9069028920687387ee30d272fdadbbe01ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
