@@ -570,7 +570,19 @@ static void sm5803_init(int chgnum)
 	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
 
 	/* Turn on GPADCs to default */
-	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1, 0xF3);
+	reg = SM5803_GPADCC1_TINT_EN     |
+	      SM5803_GPADCC1_VSYS_EN     |
+	      SM5803_GPADCC1_VCHGPWR_EN  |
+	      SM5803_GPADCC1_VBUS_EN     |
+	      SM5803_GPADCC1_IBAT_DIS_EN |
+	      SM5803_GPADCC1_VBATSNSP_EN;
+	/*
+	 * Only the primary charger has a sense resistor to measure battery
+	 * current.
+	 */
+	if (chgnum == CHARGER_PRIMARY)
+		reg |= SM5803_GPADCC1_IBAT_CHG_EN;
+	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1, reg);
 
 	/* Enable Psys DAC */
 	rv |= meas_read8(chgnum, SM5803_REG_PSYS1, &reg);
