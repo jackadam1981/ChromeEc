@@ -1364,10 +1364,14 @@ void pe_got_soft_reset(int port)
 	set_state_pe(port, PE_SOFT_RESET);
 }
 
-static bool pd_can_source_from_device(const int pdo_cnt, const uint32_t *pdos)
+static bool pd_can_source_from_device(int port, const int pdo_cnt,
+				      const uint32_t *pdos)
 {
-	/* Don't attempt to source from a device we have no SrcCaps from */
-	if (pdo_cnt == 0)
+	/*
+	 * Don't attempt to source from a device we have no SrcCaps from. Or, if
+	 * drp_state is FORCE_SOURCE then don't attempt a PRS.
+	 */
+	if (pdo_cnt == 0 || pd_get_dual_role(port) == PD_DRP_FORCE_SOURCE)
 		return false;
 
 	/*
@@ -1411,7 +1415,7 @@ void pd_resume_check_pr_swap_needed(int port)
 	 */
 	if (pe_is_explicit_contract(port) &&
 	    pd_get_power_role(port) == PD_ROLE_SINK &&
-	    !pd_can_source_from_device(pd_get_src_cap_cnt(port),
+	    !pd_can_source_from_device(port, pd_get_src_cap_cnt(port),
 				       pd_get_src_caps(port)))
 		pd_dpm_request(port, DPM_REQUEST_PR_SWAP);
 }
@@ -1698,7 +1702,7 @@ static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
 		return;
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
-		if (pd_can_source_from_device(pdo_cnt, pdos)) {
+		if (pd_can_source_from_device(port, pdo_cnt, pdos)) {
 			PE_CLR_FLAG(port, PE_FLAGS_PORT_PARTNER_IS_DUALROLE);
 			charge_manager_update_dualrole(port, CAP_DEDICATED);
 		} else {
@@ -6587,7 +6591,8 @@ static void pe_dr_src_get_source_cap_run(int port)
 					(uint32_t *)rx_emsg[port].buf;
 
 				pd_set_src_caps(port, cnt, payload);
-				if (pd_can_source_from_device(cnt, payload))
+				if (pd_can_source_from_device(port, cnt,
+							      payload))
 					pd_request_power_swap(port);
 
 				/*
