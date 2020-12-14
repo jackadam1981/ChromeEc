@@ -224,27 +224,19 @@ void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
-static void board_select_drp_mode(void)
+enum pd_dual_role_states board_pd_get_drp_mode(int port)
 {
-	int port;
-
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		pd_set_dual_role(port, pd_dual_role_init[port]);
-		CPRINTS("quiche[p%d]: drp_state = %d", port,
-			pd_get_dual_role(port));
-	}
 	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
 	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
 	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
+
+	return pd_dual_role_init[port];
 }
-DECLARE_DEFERRED(board_select_drp_mode);
 
 static void board_init(void)
 {
 #ifdef SECTION_IS_RW
-	//board_select_drp_mode();
-	/* TODO */
-	hook_call_deferred(&board_select_drp_mode_data, 40 * MSEC);
+
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
