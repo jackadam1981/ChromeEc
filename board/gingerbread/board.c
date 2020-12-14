@@ -223,6 +223,11 @@ void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
+enum pd_dual_role_states board_pd_get_drp_mode(int port)
+{
+
+	return pd_dual_role_init[port];
+}
 
 static void board_init(void)
 {
@@ -230,7 +235,6 @@ static void board_init(void)
 	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
 	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
 	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
-
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
