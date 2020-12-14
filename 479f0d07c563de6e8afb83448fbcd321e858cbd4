@@ -16,6 +16,24 @@
       "message": "Why do we need this patch? It looks like you haven\u0027t used it in the dependency patch.",
       "revId": "479f0d07c563de6e8afb83448fbcd321e858cbd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e38b81_6ae92f3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-12-14T10:39:50Z",
+      "side": 1,
+      "message": "My bad, the second patch is using \"i2c_field_update8\"",
+      "parentUuid": "33ec108b_1d83f0e9",
+      "revId": "479f0d07c563de6e8afb83448fbcd321e858cbd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
