@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bfa4303_2ac5d540",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-14T22:35:49Z",
+      "side": 1,
+      "message": "Herman, you can use ../../repohooks/clang-format.py --fix --commit \u003cthis commit\u003e to fix all the tabs, spaces and alignment.\n\n\"update_bitmap\" should be exactly aligned with \"templ\"; that requires two spaces in addition to the 3 tabs you are doing in PS11. Please use repohooks/clang-format.py to fix all of these.",
+      "parentUuid": "b9945526_e5f7d9a5",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 6
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c3576f6_ec714d35",
         "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
         "patchSetId": 9
