@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-#undef BOARD_P1
+#define BOARD_P1
 
 /* Baseboard features */
 #include "baseboard.h"
@@ -16,7 +16,7 @@
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
-#define CONFIG_WP_ACTIVE_HIGH
+#undef CONFIG_WP_ACTIVE_HIGH
 
 /* Console */
 #define CONFIG_UART_CONSOLE 3
@@ -30,6 +30,7 @@
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_MUX_TUSB1064
 #define CONFIG_USBC_PPC_STUB
+#define CONFIG_USB_PD_VBUS_ALERT_TCPC
 
 #define CONFIG_USB_PID 0x5049
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
