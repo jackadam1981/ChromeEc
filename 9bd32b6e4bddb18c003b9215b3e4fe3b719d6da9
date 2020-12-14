@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5ca82d_0dd58e76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-14T21:39:03Z",
+      "side": 1,
+      "message": "landing to unbreak build\n\n2020-12-14 14:36:02,810 - Zmake/ERROR: /mnt/host/source/src/platform/zephyr-chrome/projects/experimental/volteer/prj.conf:21: warning: attempt to assign the value \u0027y\u0027 to the undefined symbol PLATFORM_EC_BATTERY\n2020-12-14 14:36:02,810 - Zmake/ERROR: /mnt/host/source/src/platform/zephyr-chrome/projects/experimental/volteer/prj.conf:22: warning: attempt to assign the value \u0027y\u0027 to the undefined symbol PLATFORM_EC_BATTERY_SMART\n2020-12-14 14:36:02,810 - Zmake/ERROR: error: Aborting due to Kconfig warnings\n",
+      "revId": "9bd32b6e4bddb18c003b9215b3e4fe3b719d6da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
