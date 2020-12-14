@@ -315,7 +315,7 @@ static int init_alert_mask(int port)
 	mask = TCPC_REG_ALERT_TX_SUCCESS | TCPC_REG_ALERT_TX_FAILED |
 		TCPC_REG_ALERT_TX_DISCARDED | TCPC_REG_ALERT_RX_STATUS |
 		TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+#ifdef CONFIG_USB_PD_VBUS_ALERT_TCPC
 		| TCPC_REG_ALERT_POWER_STATUS
 #endif
 		;
@@ -351,7 +351,7 @@ static int init_power_status_mask(int port)
 	uint8_t mask;
 	int rv;
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+#ifdef CONFIG_USB_PD_VBUS_ALERT_TCPC
 	mask = TCPC_REG_POWER_STATUS_VBUS_PRES;
 #else
 	mask = 0;
@@ -708,7 +708,6 @@ int tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 }
 #endif
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level)
 {
 	if (level == VBUS_SAFE0V)
@@ -718,7 +717,6 @@ bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level)
 	else
 		return !(tcpc_vbus[port] & BIT(VBUS_PRESENT));
 }
-#endif
 
 struct cached_tcpm_message {
 	uint32_t header;
@@ -1100,6 +1098,7 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 
 		/* Determine reason for power status change */
 		tcpci_tcpm_get_power_status(port, &pwr_status);
+		CPRINTS("tcpci[%d]: power status = %x", port, pwr_status);
 		if (pwr_status & TCPC_REG_POWER_STATUS_VBUS_PRES)
 			/* Safe0V=0 and Present=1 */
 			tcpc_vbus[port] = BIT(VBUS_PRESENT);
@@ -1754,9 +1753,7 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 	.init			= &tcpci_tcpm_init,
 	.release		= &tcpci_tcpm_release,
 	.get_cc			= &tcpci_tcpm_get_cc,
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
-#endif
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,
