@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "160e94cb_5d1e9f31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-14T18:16:52Z",
+      "side": 1,
+      "message": "This disables the entire keyboard at all times in tablet mode which is not desired. In S0, all keypresses must be sent to the AP. The AP is the one to decide which keys are ignored.",
+      "revId": "b2de20e73746a16e5bb8b9fb3fc93b7db54f00bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
