@@ -22,6 +22,30 @@
       },
       "revId": "bb5c04c00ec715eb0d549ca3326e77e1bc313559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "558435f4_ae66efb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-12-14T03:22:07Z",
+      "side": 1,
+      "message": "I found symbol of __flash_text_start is unnecessary in linker script of risc-v core when implementing the child CL. So I made this CL to remove the symbol.\nShould I fill the bug number (b:111808417) which we have closed?",
+      "parentUuid": "b33912a3_f5891c9b",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "bb5c04c00ec715eb0d549ca3326e77e1bc313559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
