@@ -22,6 +22,30 @@
       },
       "revId": "68580e6db27a987d845cdc424291434e03735555",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8496e75a_3f7eae4c",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-14T19:34:01Z",
+      "side": 1,
+      "message": "If cable doesn\u0027t support Intel SVID and is an active cable, we do not enter into TBT mode - We already have this implemented in tbt_alt_mode.c.\n\nAdded the TBT gen1/gen2 part",
+      "parentUuid": "e905a5a3_82e9d0a0",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 0
+      },
+      "revId": "68580e6db27a987d845cdc424291434e03735555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
