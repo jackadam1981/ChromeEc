@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7745e3b5_f8c5ac29",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-12-14T18:39:47Z",
+      "side": 1,
+      "message": "\u003e \"Becuase\" is a possible misspelling of \"Because\".\n\nPlease fix.",
+      "parentUuid": "6ee00929_b0853fdc",
+      "range": {
+        "startLine": 242,
+        "startChar": 18,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
