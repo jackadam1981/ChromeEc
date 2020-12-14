@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caffb6b3_30979dfa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T18:52:45Z",
+      "side": 1,
+      "message": "The new format for Cq-Depend is \u0027chromium:2530517\u0027.  This should fix the merge problems between this CL and the kernel CL.\n\nSee https://chromium.googlesource.com/chromiumos/docs/+/refs/heads/master/contributing.md#cq-depend",
+      "range": {
+        "startLine": 26,
+        "startChar": 11,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "9e0158fec27478b04254684d2f5e0c6aea10ec32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
