@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2057f6e7_d9ce0fb9",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29ae520a_7ea98674",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7761e79a_daf2a323",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Fixed at patchset 2.",
       "parentUuid": "7761e79a_daf2a323",
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c89353_c23831bc",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "They are still there in patchset 2, for example on lines 33, 41, 51, and several others.",
+      "parentUuid": "f0785ca5_12a732e3",
       "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +186,30 @@
       "side": 1,
       "message": "Modified and updated at patchset 2",
       "parentUuid": "e19e3103_a3429cfe",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08f3c3ce_b1bd42fc",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "I see that this comment has been moved to the header file in patchset 2. With the improved macro names, it is no longer required here. You can delete it.",
+      "parentUuid": "748d0c68_0f06a5b3",
       "range": {
         "startLine": 48,
         "startChar": 1,
@@ -237,6 +303,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe465525_6ee753b9",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "Please add the following comment above the function:\n/*\n * Selects the CC PHY noise filter voltage level according to the current\n * CC voltage level.\n *\n * @param cc_level The CC voltage level for the port\u0027s current role\n * @return EC_SUCCESS if writes succeed; failure code otherwise\n */\n\nAnd please change the parameter name to cc_level.",
+      "parentUuid": "fe891b1f_ddeee251",
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1529734_b2565a47",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 1
@@ -272,6 +356,30 @@
       "side": 1,
       "message": "add #include \"usb_pd_tcpm.h\" at patchset 2",
       "parentUuid": "e1529734_b2565a47",
+      "range": {
+        "startLine": 91,
+        "startChar": 15,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f9d9a5_6e098fab",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cca82804_5bd16efc",
       "range": {
         "startLine": 91,
         "startChar": 15,
@@ -331,6 +439,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "611f5f91_0fb4297d",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "In its PD_INTERFACE_REV register, the RT1715 purports to comply with TCPCI revision 1.0, version 1.0. Is this incorrect?\n\nIt sounds like DRP_STATUS and DRP_RESULT have the same meaning in TCPCI 0.6 as those bits do in TCPCI 1.0 and 2.0, but 1.0 and 2.0 use the names Looking4Connection and ConnectResult, respectively.\n\nThe logic of your statement above about TCPCI 0.6 and of this code appears to be the following: If ROLE_CONTROL.DRP is set, then we should use CC_STATUS to determine CC state; if DRP is not set, we should use ROLE_CONTROL. From what I can see, that remains accurate in TCPCI rev 2.0, v1.2, and that is what tcpci.c does.\n\nIf this code actually needs to do something different than tcpci.c with respect to these registers, please update the comment above to refer to TCPCI 0.6 instead of USB PD 1.0.",
+      "parentUuid": "b29c0622_159627c0",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 64
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91327bef_889c2b2c",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 1
@@ -366,6 +498,30 @@
       "side": 1,
       "message": "Fixed at patchset 2.",
       "parentUuid": "91327bef_889c2b2c",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 49
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "319cdcf4_ed55eb5e",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f97480c_9aee7f30",
       "range": {
         "startLine": 134,
         "startChar": 0,
@@ -413,6 +569,30 @@
       "side": 1,
       "message": "Fixed at patchset 2.",
       "parentUuid": "70b1fc8c_ea9abf5f",
+      "range": {
+        "startLine": 140,
+        "startChar": 11,
+        "endLine": 140,
+        "endChar": 33
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2b0295_1bb326fa",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71cea96c_d9a1876b",
       "range": {
         "startLine": 140,
         "startChar": 11,
@@ -519,6 +699,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "076df4b5_979c356e",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "What about polarity \u003d\u003d 1 indicating CC2? Am I missing something?",
+      "parentUuid": "dfaa815e_254ce767",
+      "range": {
+        "startLine": 148,
+        "startChar": 34,
+        "endLine": 148,
+        "endChar": 68
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53801f59_25aa9af4",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 1
@@ -571,6 +775,30 @@
       "side": 1,
       "message": "Fixed at patchset 2",
       "parentUuid": "f2784bb5_65209228",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 45
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3deb6e9b_5a468f11",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "This line didn\u0027t change in patchset 2.",
+      "parentUuid": "e4efe9b5_53b54eef",
       "range": {
         "startLine": 195,
         "startChar": 2,

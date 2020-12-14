@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd46178_bf5af94c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "With this patchset, I was able to pass TDA.2.1.2.1, which is excellent.\n\nPlease add the following line to the commit message:\nTEST\u003dPass TDA.2.1.2.1 BMC PHY RX BUSIDL with Volteer+RT1715",
+      "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b373778_9228449d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "This passes the bus idle test. Great job!\n\nJacky, a few notes on using Gerrit:\n* If you\u0027re responding to a comment to say that you did what it asked, please check the \"Resolved\" box to indicate that it\u0027s done. The box should change color.\n* I see some things here that I think should have failed our pre-upload checks, which makes me suspect that you\u0027re not running them when you upload. You should be uploading with repo upload to run pre-upload checks. Have you been uploading with git push instead?\n* There are still some unresolved comments from previous patchsets. You can see them by clicking the \"Comments\" button above the list of files.",
+      "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c51598_0f6fe589",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "Nit: Don\u0027t remove the blank lines around this line.",
+      "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b99d2e2_13b123a0",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "There should still be a blank line between the includes and what follows.",
+      "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "254eb105_ea6d3b09",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "No need to add this blank line.",
+      "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3287d51_8cf37a6f",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-14T22:14:29Z",
+      "side": 1,
+      "message": "If the register is called I2CRST_CTRL, then the register values should start with RT1715_REG_I2CRST_CTRL_.",
+      "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
