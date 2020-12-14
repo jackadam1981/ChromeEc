@@ -75,6 +75,24 @@
       "parentUuid": "3fd1fbbe_71dd16cd",
       "revId": "f1c69f9f3da12a0a647f2bbb2b5670b5ed3399f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67be3b5b_6583af15",
+        "filename": "board/boten/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-14T18:42:39Z",
+      "side": 1,
+      "message": "```\n@return VBUS is detected\n```\n\nThe current documentation for pd_snk_is_vbus_provided *is* kind of vague. However, a quick glance thru the definitions seems to suggest that most if not all return 0 or 1. We should probably clarify the expectation there.\n\nAlthough, that being said, that shouldn\u0027t have caused a problem for extpower_is_present().\n\nAlso, actually looking at the test failure, the `chgstate` console command just dumps the value of extpower is present, but the test was assuming it\u0027d be 0 or 1. I\u0027d say we should fix the test to match the API expectations. Or the alternative is to fix the console command since I\u0027d expect most people would assume ac\u003d0 or 1. \n\nTo summarize:\n\n- Clarify header documentation for pd_snk_is_vbus_provided to say return 1 if provided, 0 if not.\n- Fix the dedede implementations of that.\n- Fix `chgstate` to remap from non-zero to ac\u003d1",
+      "parentUuid": "f74f801f_f99e6146",
+      "revId": "f1c69f9f3da12a0a647f2bbb2b5670b5ed3399f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
