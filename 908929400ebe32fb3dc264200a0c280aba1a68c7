@@ -34,6 +34,24 @@
       "parentUuid": "98734be5_1633bb96",
       "revId": "908929400ebe32fb3dc264200a0c280aba1a68c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f497ca8_78db0c08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-14T18:55:10Z",
+      "side": 1,
+      "message": "You can check out what I did on octopus NPCX boards here: b/112309201\n\nIt\u0027s tricky because once you remove the panic path, there\u0027s a big decrease in all reported uses until you start linking all the drivers in.  Then at that point, I think it was usually the i2c error path that would expand out to be the new largest stack user.  And then we ended up making nearly everything VENTI anyway.  \n\nSo really, if we have space and are suspicious of any tasks we should go for increasing them.",
+      "parentUuid": "e4920bc4_0351e37b",
+      "revId": "908929400ebe32fb3dc264200a0c280aba1a68c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
