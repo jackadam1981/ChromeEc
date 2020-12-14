@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e905a5a3_82e9d0a0",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T16:58:10Z",
+      "side": 1,
+      "message": "The 3 specifications don\u0027t appear to be fully in agreement on the supported speed here.\n\nThe \"USB Type-C Cable/Connector spec\" indicates the highest speed supported for non Intel SVID is Gen2.  See figure F-1.\n\nThe \"TBT Interconnect Spec USB Type-C TBT Altnernate Mode\" says \"use Cable Discover ID responses\" for non Intel SVID or no response.\n\nFrom the \"TBT4 PD Discovery Flow\" doc, Figure 2 TBT3 Alt mode discovery sub-flow says \"EnterTBT mode with speed from cable b2..0 of VDO1\".  However, next box in flow chart (accept) shows \"TBT mode - 10 Gbps for Gen 2 and Gen1 cable speed\".  No mention of Gen3 so only gen1/gen2 support appears implied by the text..\n\nAlso, what about USB2.0 only for this path?\n\nSeems like both the PD2.0 and PD3.0 paths should be setting TBT Gen1/Gen2, if not USB2.0.",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 0
+      },
+      "revId": "68580e6db27a987d845cdc424291434e03735555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
