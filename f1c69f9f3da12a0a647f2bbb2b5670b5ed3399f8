@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b4d2881_c14ed061",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-14T18:06:37Z",
+      "side": 1,
+      "message": "nit: The commit message subject should be a brief description of the fix, not the problem.",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "f1c69f9f3da12a0a647f2bbb2b5670b5ed3399f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc92d25b_14619739",
         "filename": "board/boten/usb_pd_policy.c",
         "patchSetId": 1
@@ -14,6 +37,24 @@
       "writtenOn": "2020-12-14T17:25:46Z",
       "side": 1,
       "message": "Which calling function here is expecting a 0/1 return value?  We should probably note this in the corresponding .h definition since I think a fair amount of EC code will expect zero/non-zero returns to work for truth indicators. We are trying to move towards bool in newer APIs, but there are a lot of \"int\" returns still in the codebase.",
+      "revId": "f1c69f9f3da12a0a647f2bbb2b5670b5ed3399f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd1fbbe_71dd16cd",
+        "filename": "board/boten/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-14T18:06:37Z",
+      "side": 1,
+      "message": "One case that I see is our `extpower_is_present` implementation.\n\n```\nint extpower_is_present(void)\n{\n\tint vbus_present \u003d 0;\n\tint port;\n\n\t/*\n\t * Boards define pd_snk_is_vbus_provided() with something appropriate\n\t * for their hardware\n\t */\n\tfor (port \u003d 0; port \u003c board_get_usb_pd_port_count(); port++)\n\t\tif (pd_get_power_role(port) \u003d\u003d PD_ROLE_SINK)\n\t\t\tvbus_present |\u003d pd_snk_is_vbus_provided(port);\n\n\treturn vbus_present;\n}\n```",
+      "parentUuid": "fc92d25b_14619739",
       "revId": "f1c69f9f3da12a0a647f2bbb2b5670b5ed3399f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
