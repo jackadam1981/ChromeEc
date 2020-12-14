@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "d1f03d17_cb3b21c7",
         "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
@@ -21,10 +22,10 @@
         "endChar": 30
       },
       "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "77046842_fc63a3b9",
         "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
@@ -45,10 +46,58 @@
         "endChar": 18
       },
       "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "480e40ca_d5d1f14b",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-14T22:28:30Z",
+      "side": 1,
+      "message": "Fixed in PS11",
+      "parentUuid": "d1f03d17_cb3b21c7",
+      "range": {
+        "startLine": 37,
+        "startChar": 23,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32fdd33a_d97f8a92",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-14T22:28:30Z",
+      "side": 1,
+      "message": "Fixed in PS11",
+      "parentUuid": "77046842_fc63a3b9",
+      "range": {
+        "startLine": 37,
+        "startChar": 10,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "6ed4b494_b29d395b",
         "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
@@ -69,10 +118,34 @@
         "endChar": 43
       },
       "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e889aa1_c6070a2b",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-14T22:28:30Z",
+      "side": 1,
+      "message": "Fixed in PS11",
+      "parentUuid": "6ed4b494_b29d395b",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "29efafd0_5a7a6f50",
         "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
@@ -93,10 +166,34 @@
         "endChar": 41
       },
       "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d6c3d4c_fd611b60",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-14T22:28:30Z",
+      "side": 1,
+      "message": "Fixed in PS11",
+      "parentUuid": "29efafd0_5a7a6f50",
+      "range": {
+        "startLine": 40,
+        "startChar": 34,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "37af825c_a14070b9",
         "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
@@ -117,10 +214,34 @@
         "endChar": 42
       },
       "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e60a1d_3288912b",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-14T22:28:30Z",
+      "side": 1,
+      "message": "Fixed in PS11",
+      "parentUuid": "37af825c_a14070b9",
+      "range": {
+        "startLine": 42,
+        "startChar": 36,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "6b09233b_6afff389",
         "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
@@ -141,8 +262,31 @@
         "endChar": 9
       },
       "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa26865a_0f965010",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-14T22:28:30Z",
+      "side": 1,
+      "message": "Fixed in PS11",
+      "parentUuid": "6b09233b_6afff389",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "5629c7878bed138f0e85fa1ddc7dcbc82617e8da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

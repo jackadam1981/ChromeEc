@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "14224bf4_07bef9f6",
         "filename": "driver/fingerprint/elan/elan_private.c",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "I think all the functions in this file are too abstract. The only code that is secret is the matching algorithm. The rest of the code should be publicly visible, since it\u0027s just SPI transactions to issue commands to the sensor.\n\nFor example, see https://chromium.googlesource.com/chromiumos/platform/ec/+/8a5596cc2094df9b18b33d04d2d1301ad7caa3d4/driver/fingerprint/fpc/bep/fpc_private.c#104 and https://chromium.googlesource.com/chromiumos/platform/ec/+/8a5596cc2094df9b18b33d04d2d1301ad7caa3d4/driver/fingerprint/fpc/bep/fpc_private.c#117.\n\nWe expect the same thing here. Otherwise, it\u0027s very hard for anyone except Elan to debug.",
       "revId": "8a5596cc2094df9b18b33d04d2d1301ad7caa3d4",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a8dff495_5f039e38",
         "filename": "driver/fingerprint/elan/elan_setting.h",
@@ -37,8 +38,31 @@
         "endChar": 40
       },
       "revId": "8a5596cc2094df9b18b33d04d2d1301ad7caa3d4",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55d8607_8bbd16f4",
+        "filename": "driver/fingerprint/elan/elan_setting.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-14T22:28:30Z",
+      "side": 1,
+      "message": "Fixed in PS11",
+      "parentUuid": "a8dff495_5f039e38",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "8a5596cc2094df9b18b33d04d2d1301ad7caa3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

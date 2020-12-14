@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "2e28b045_4d84eaad",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,34 @@
         "endChar": 116
       },
       "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0bf40b_1d99c566",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-14T22:28:30Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "2e28b045_4d84eaad",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 116
+      },
+      "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "40e60b7a_bee8b46c",
         "filename": "common/fpsensor/fpsensor.c",
@@ -43,10 +68,10 @@
         "endChar": 30
       },
       "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "225dc934_cdaca7bb",
         "filename": "driver/fingerprint/build.mk",
@@ -66,10 +91,10 @@
         "endChar": 44
       },
       "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c72ff12f_a28a15bb",
         "filename": "driver/fingerprint/elan/build.mk",
@@ -89,10 +114,10 @@
         "endChar": 16
       },
       "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "84eaed61_b52acf88",
         "filename": "driver/fingerprint/elan/build.mk",
@@ -113,10 +138,10 @@
         "endChar": 16
       },
       "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "be6315a9_142a6f9b",
         "filename": "driver/fingerprint/elan/elan_private.c",
@@ -136,10 +161,10 @@
         "endChar": 17
       },
       "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "48d7f072_5b49ca5a",
         "filename": "driver/fingerprint/elan/elan_private.c",
@@ -160,10 +185,10 @@
         "endChar": 17
       },
       "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "00679d37_68f1bd75",
         "filename": "driver/fingerprint/elan/elan_setting.h",
@@ -183,10 +208,10 @@
         "endChar": 17
       },
       "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "3b0752a4_3f112227",
         "filename": "driver/fingerprint/elan/elan_setting.h",
@@ -207,8 +232,7 @@
         "endChar": 17
       },
       "revId": "e5b7d109014eefd35371d550650ebb402515bd45",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
