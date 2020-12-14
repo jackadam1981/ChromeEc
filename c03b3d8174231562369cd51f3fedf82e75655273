@@ -16,6 +16,24 @@
       "message": "A side note for any changes that alter file names or CONFIG options: please include someone from the zephyr project on the CC.  Since the CQ doesn\u0027t build zephyr, I\u0027ve inadvertently broken their build in the past with COIL changes on our i2c stack",
       "revId": "c03b3d8174231562369cd51f3fedf82e75655273",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d2a16e8_8a8b6b05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-12-14T17:11:52Z",
+      "side": 1,
+      "message": "That\u0027s fair. I ran zmake build and things seem to be fine. @jrosenth, let me know if anything is broken. Hopefully, we can get zephyr builds added to firmware-ec-cq soon.",
+      "parentUuid": "8f0081e1_3873d83b",
+      "revId": "c03b3d8174231562369cd51f3fedf82e75655273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
