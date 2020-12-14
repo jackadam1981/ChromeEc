@@ -39,6 +39,13 @@
 #define CONFIG_CHARGER_ISL9241
 /* Hardware based charge ramp is broken in the ISL9241 (b/169350714) */
 #define CONFIG_CHARGE_RAMP_SW
+
+/* TODO: Move to devicetree? For now, include these charger defines here */
+#define CONFIG_CHARGER_SENSE_RESISTOR		10
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHARGER_INPUT_CURRENT		512
 #endif
 
 #undef CONFIG_BATTERY_SMART
