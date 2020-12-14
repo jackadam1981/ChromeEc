@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc92d25b_14619739",
+        "filename": "board/boten/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-14T17:25:46Z",
+      "side": 1,
+      "message": "Which calling function here is expecting a 0/1 return value?  We should probably note this in the corresponding .h definition since I think a fair amount of EC code will expect zero/non-zero returns to work for truth indicators. We are trying to move towards bool in newer APIs, but there are a lot of \"int\" returns still in the codebase.",
+      "revId": "f1c69f9f3da12a0a647f2bbb2b5670b5ed3399f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
