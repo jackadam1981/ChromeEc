@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2638bf_f6d4938f",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-14T23:11:01Z",
+      "side": 1,
+      "message": "usb mux and sensor i2c are connected to PP3300_S5, so I expect that means unpowered in Z1 aka G3.",
+      "range": {
+        "startLine": 116,
+        "startChar": 48,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "c34439a20d8504aa8a7de57147b7a3b5d599bd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2d0bed_de245bfa",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-14T23:11:01Z",
+      "side": 1,
+      "message": "SOC_SIC/SID are connected to PP3300_S0.",
+      "revId": "c34439a20d8504aa8a7de57147b7a3b5d599bd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
