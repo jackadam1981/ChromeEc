@@ -98,6 +98,30 @@
       },
       "revId": "2b2b9069028920687387ee30d272fdadbbe01ccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "991e2b84_737f882e",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-14T22:00:26Z",
+      "side": 1,
+      "message": "I think Ed\u0027s OoO?  At least, I see that on the Aloha calendar. \n\nIf you want a worst-case example without this config, you can check out b/116774375 or b/153195490.  They\u0027re usually related to hitting some specific timing window where you access one of the buses right around a power change.",
+      "parentUuid": "3aa4c605_afda1083",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "2b2b9069028920687387ee30d272fdadbbe01ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
