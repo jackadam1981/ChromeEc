@@ -3048,6 +3048,14 @@ __override_proto uint8_t board_get_usb_pd_port_count(void);
 __override_proto bool board_is_usb_pd_port_present(int port);
 
 /**
+ * Get board specific usb pd port count
+ *
+ * @return <= CONFIG_USB_PD_PORT_MAX_COUNT if configured in board file,
+ *         else return CONFIG_USB_PD_PORT_MAX_COUNT
+ */
+__override_proto enum pd_dual_role_states board_pd_get_drp_mode(int port);
+
+/**
  * Resets external PD chips including TCPCs and MCUs.
  *
  * Boards must provide this when PDCMD (PD MCUs case) or PD INT (TCPC case)
