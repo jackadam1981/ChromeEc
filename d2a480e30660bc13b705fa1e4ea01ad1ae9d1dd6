@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb438fc5_f2c1f207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2020-12-14T21:35:16Z",
+      "side": 1,
+      "message": "CQ seems to be failing?\n\ndriver/usb_mux/usb_mux.c: In function \u0027hc_usb_pd_mux_ack\u0027:\ndriver/usb_mux/usb_mux.c:395:41: error: unused variable \u0027p\u0027 [-Werror\u003dunused-variable]\n  const struct ec_params_usb_pd_mux_ack *p \u003d args-\u003eparams;\n                                         ^\ndriver/usb_mux/usb_mux.c: At top level:\ncc1: error: unrecognized command line option \u0027-Wno-address-of-packed-member\u0027 [-Werror]\ncc1: all warnings being treated as errors\nmake[2]: *** [Makefile.rules:555: build/gingerbread/RW/driver/usb_mux/usb_mux.o] Error 1\nmake[1]: *** [Makefile.rules:247: proj-gingerbread] Error 2\nmake[1]: *** Waiting for unfinished jobs....",
+      "revId": "d2a480e30660bc13b705fa1e4ea01ad1ae9d1dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
