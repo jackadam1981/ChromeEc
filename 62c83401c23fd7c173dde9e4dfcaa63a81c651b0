@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5904bc0b_72174761",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-14T19:03:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "225ea364_ce357710",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "62c83401c23fd7c173dde9e4dfcaa63a81c651b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dda7dc3c_fe3ff8e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-14T16:16:11Z",
       "side": 1,
       "message": "Comment refers to the ISL9241 charger, but the config option is for the ISL9237.  Volteer uses the ISL9241.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "62c83401c23fd7c173dde9e4dfcaa63a81c651b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed10a4a6_0fa82f58",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-14T19:03:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dda7dc3c_fe3ff8e6",
       "range": {
         "startLine": 40,
         "startChar": 0,
