@@ -3053,6 +3053,14 @@ __override_proto bool board_is_usb_pd_port_present(int port);
 __override_proto void board_process_pd_alert(int port);
 
 /**
+ * Get 
+ *
+ * @return 
+ */
+__override_proto enum pd_dual_role_states board_pd_get_drp_mode(int port);
+
+
+/**
  * Resets external PD chips including TCPCs and MCUs.
  *
  * Boards must provide this when PDCMD (PD MCUs case) or PD INT (TCPC case)
