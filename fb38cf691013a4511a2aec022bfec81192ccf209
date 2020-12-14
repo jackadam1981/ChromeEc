@@ -16,6 +16,69 @@
       "message": "Hello guys. Please review ASAP.",
       "revId": "fb38cf691013a4511a2aec022bfec81192ccf209",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "538247d3_fc863ac1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-14T15:39:08Z",
+      "side": 1,
+      "message": "Please fix issues in a followup CL unless they you can make this changes in this CL without getting too many more merge conflict issues because of the time delay.\n\nThe issues are just with comments and consistency in a test.",
+      "revId": "fb38cf691013a4511a2aec022bfec81192ccf209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde1cf24_24dba116",
+        "filename": "cts/mutex/th.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-14T15:39:08Z",
+      "side": 1,
+      "message": "why wait_event(0) here and wait_event(-1) in cts/task/dut.c? Should they be the same?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "fb38cf691013a4511a2aec022bfec81192ccf209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27cc39a7_d64331a4",
+        "filename": "include/task.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-14T15:39:08Z",
+      "side": 1,
+      "message": "you need to remove this comment. If you have to do it in a followup CL becuase of merge conflicts that is fine with me.",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 23
+      },
+      "revId": "fb38cf691013a4511a2aec022bfec81192ccf209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
