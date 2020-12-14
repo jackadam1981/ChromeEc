@@ -268,4 +268,54 @@ __override void svdm_exit_dp_mode(int port)
 		gpio_set_level(GPIO_DP_HOT_PLUG_DET, 0);
 	}
 }
+
+#define FAKE_HPD_STEP_COUNT 4
+
+static int command_fake_hpd(int argc, char **argv)
+{
+	enum gpio_signal hpd = GPIO_DP_HOT_PLUG_DET;
+	int levels[FAKE_HPD_STEP_COUNT];
+	int delays[FAKE_HPD_STEP_COUNT] = {0};
+	uint64_t timestamps[FAKE_HPD_STEP_COUNT];
+	int step, i;
+
+	if (argc < 2 || argc > FAKE_HPD_STEP_COUNT * 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	for (step = 0, i = 1; i < argc; step++, i++) {
+		if (!strncmp(argv[i], "h", 1))
+			levels[step] = 1;
+		else if (!strncmp(argv[i], "l", 1))
+			levels[step] = 0;
+		else
+			return EC_ERROR_PARAM1 + i - 1;
+
+		i++;
+		if (i < argc) {
+			char *e;
+			int delay;
+
+			delay = strtoi(argv[i], &e, 0);
+			if (*e)
+				return EC_ERROR_PARAM1 + i - 1;
+			delays[step] = delay;
+		}
+	}
+
+	for (i = 0; i < step; i++) {
+		timestamps[i] = get_time().val;
+		gpio_set_level(hpd, levels[i]);
+		if (delays[i])
+			usleep(delays[i]);
+	}
+
+	for (i = 0; i < step; i++)
+		CPRINTF("  %.6lld  HPD => %d\n", timestamps[i], levels[i]);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(hpd, command_fake_hpd,
+			"<h|l|usec>..",
+			"fake HPD signal sequence");
+
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
