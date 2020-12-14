@@ -57,6 +57,24 @@
       "parentUuid": "fc92d25b_14619739",
       "revId": "f1c69f9f3da12a0a647f2bbb2b5670b5ed3399f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f74f801f_f99e6146",
+        "filename": "board/boten/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-14T18:11:40Z",
+      "side": 1,
+      "message": "Should the solution be at the extpower_is_present() level then?  Currently, it\u0027s defined as:\n\n* Return non-zero if external power is present.\n\nin include/extpower.h.  I feel like we should have clear API expectations here as to what can return just \"non-zero\" and what specifically is expecting a 1 (though I defer to you as the EC core owner :) )",
+      "parentUuid": "3fd1fbbe_71dd16cd",
+      "revId": "f1c69f9f3da12a0a647f2bbb2b5670b5ed3399f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
