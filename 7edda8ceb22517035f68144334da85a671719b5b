@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d372bce_1081f54c",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-12-14T10:07:26Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "94925015_3326f6e2",
+      "revId": "7edda8ceb22517035f68144334da85a671719b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94e4a15d_ffed7958",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "826136a2_ce856d4e",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-12-14T10:07:26Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "94e4a15d_ffed7958",
+      "revId": "7edda8ceb22517035f68144334da85a671719b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3de4ba48_6e2c2811",
@@ -65,6 +101,24 @@
       "writtenOn": "2020-12-10T23:48:36Z",
       "side": 1,
       "message": "Deferred calls may have significant timing jitter; lte_function_suspend should schedule the deferred call to lte_power_suspend to ensure the delay between the two is not shorter than intended.",
+      "revId": "7edda8ceb22517035f68144334da85a671719b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63cac75c_9792613a",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-12-14T10:07:26Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "3de4ba48_6e2c2811",
       "revId": "7edda8ceb22517035f68144334da85a671719b5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
