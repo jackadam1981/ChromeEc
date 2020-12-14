@@ -1,0 +1,406 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b1b6c8_d2375293",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "I have more review to do on the KConfig stuff, but there\u0027s enough comments here to get started.",
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428ffe34_0079de2b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "It would be a smaller change to add \"${PLATFORM_EC}/driver/tcpm\" to the zephyr include directories (zephyr/CMakeLists.txt).",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d6f78b0_f6145bd3",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Needs a bug.",
+      "range": {
+        "startLine": 694,
+        "startChar": 26,
+        "endLine": 694,
+        "endChar": 30
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4187215d_c006a654",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Needs same bug.",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 21
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2919862e_da8ea516",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Needs bug#.",
+      "range": {
+        "startLine": 448,
+        "startChar": 26,
+        "endLine": 448,
+        "endChar": 30
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5468ad67_604e83b5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Bug #.",
+      "range": {
+        "startLine": 307,
+        "startChar": 25,
+        "endLine": 307,
+        "endChar": 29
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f29f9e_103d36e1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "TODO: b/",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 21
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f3751b5_e4191593",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Bug #",
+      "range": {
+        "startLine": 2215,
+        "startChar": 25,
+        "endLine": 2215,
+        "endChar": 29
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d36aef21_1ebb74f9",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "TODO bug#",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98fca85c_fb9dc6cc",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Add \"${PLATFORM_EC}/driver/ppc\" to CMakeLists.txt.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3cd2056_50098689",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2361,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "TODO bug#",
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83108cf4_8d4f2339",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Redundant with previous entry - needs to be fixed in the KConfig definition?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 80
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4685d1_223bc141",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "I assume this will be cleaned up with a rebase.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79867c68_2bc2a838",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Type-C",
+      "range": {
+        "startLine": 11,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a28bdae2_25c6c8e9",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Suggest text.\n\n\"USB-C is widely used on modern Chromebooks and the EC\u0027s role is to negotiate power contracts (for sourcing or sinking power over USB. The EC is also responsible for discovery of the capabilities of attached USB-C partners and enabling alternate operational modes, including Display Port, Thunderbolt, and USB4.\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3691b46_dcbd17cb",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Note - the EC charge manager isn\u0027t dependent on USB-C.\n\nThe EC charge manager manages charging the battery from all supported power sources.  This includes dedicated charge ports (such as a barrel jack connector), BC1.2 (Battery Charging 1.2) sources, and USB-C sources. When multiple charge sources are connected to a Chromebook simultaneously, the charge manager is responsible for picking the best source.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77c65b6_ee89aff7",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "Let\u0027s set the default to 512 since that is the minimum for USB-C.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be73124f_50dbf52a",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-14T20:02:04Z",
+      "side": 1,
+      "message": "\"USB-C overcurrent protection: Enable this detect when a connect USB-C partner draws too much power from the Chromebook and automatically shut off power to the USB-C partner.\"\n\nSide note - there are a lot acronyms in the USB-C config options.  It would be helpful if we spell out the acronyms when we can.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
