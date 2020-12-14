@@ -315,7 +315,7 @@ static int init_alert_mask(int port)
 	mask = TCPC_REG_ALERT_TX_SUCCESS | TCPC_REG_ALERT_TX_FAILED |
 		TCPC_REG_ALERT_TX_DISCARDED | TCPC_REG_ALERT_RX_STATUS |
 		TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+#ifdef CONFIG_USB_PD_VBUS_ALERT_TCPC
 		| TCPC_REG_ALERT_POWER_STATUS
 #endif
 		;
@@ -351,7 +351,7 @@ static int init_power_status_mask(int port)
 	uint8_t mask;
 	int rv;
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+#ifdef CONFIG_USB_PD_VBUS_ALERT_TCPC
 	mask = TCPC_REG_POWER_STATUS_VBUS_PRES;
 #else
 	mask = 0;
@@ -1110,6 +1110,7 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 
 		/* Determine reason for power status change */
 		tcpci_tcpm_get_power_status(port, &pwr_status);
+		CPRINTS("tcpci[%d]: power status = %x", port, pwr_status);
 		if (pwr_status & TCPC_REG_POWER_STATUS_VBUS_PRES)
 			/* Safe0V=0 and Present=1 */
 			tcpc_vbus[port] = BIT(VBUS_PRESENT);
