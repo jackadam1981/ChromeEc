@@ -106,6 +106,24 @@
       "parentUuid": "bf98dbcf_e825a674",
       "revId": "9c2a78b428d49b50d3178cef1f3ff89199d1fe42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "352e2b15_436d49bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-15T22:19:10Z",
+      "side": 1,
+      "message": "OK I found it. I really don\u0027t like this though. I think the default should work and -t should be used for the coreboot-sdk for now. Can\u0027t we make the ebuilds do that?",
+      "parentUuid": "3e776e95_f15f5103",
+      "revId": "9c2a78b428d49b50d3178cef1f3ff89199d1fe42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
