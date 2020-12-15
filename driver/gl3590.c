@@ -2,6 +2,7 @@
 #include <i2c.h>
 #include <system.h>
 #include <util.h>
+#include <pwr_defs.h>
 
 #include <gl3590.h>
 
@@ -141,4 +142,44 @@ exit:
 	/* Try to clear interrupt */
 	buf = GL3590_INT_CLEAR;
 	gl3590_write(hub, GL3590_INT_REG, &buf, sizeof(buf));
+}
+
+int gl3590_ufp_pwr(int hub, struct pwr_con_t *pwr)
+{
+	uint8_t hub_sts, hub_mode;
+	int rv = 0;
+
+	if (gl3590_read(hub, GL3590_HUB_STS_REG, &hub_sts, sizeof(hub_sts))) {
+		ccprintf("Error reading HUB_STS %d\n", rv);
+		return -1;
+	}
+
+	pwr->volts = 5;
+
+	switch ((hub_sts & GL3590_HUB_STS_HOST_PWR_MASK) >> GL3590_HUB_STS_HOST_PWR_SHIFT) {
+	case GL3590_DEFAULT_HOST_PWR_SRC:
+		if (gl3590_read(hub, GL3590_HUB_MODE_REG, &hub_mode, sizeof(hub_mode))) {
+			ccprintf("Error reading HUB_MODE %d\n", rv);
+			return -1;
+		}
+		if (hub_mode & GL3590_HUB_MODE_USB3_EN) {
+			pwr->milli_amps = 900;
+			return 0;
+		} else if (hub_mode & GL3590_HUB_MODE_USB2_EN) {
+			pwr->milli_amps = 500;
+			return 0;
+		} else {
+			ccprintf("GL3590: Neither USB3 nor USB2 hubs configured\n");
+			return -1;
+		}
+	case GL3590_1_5_A_HOST_PWR_SRC:
+		pwr->milli_amps = 1500;
+		return 0;
+	case GL3590_3_0_A_HOST_PWR_SRC:
+		pwr->milli_amps = 3000;
+		return 0;
+	default:
+		ccprintf("GL3590: Unkown host power source %d\n", hub_sts);
+		return -1;
+	}
 }
