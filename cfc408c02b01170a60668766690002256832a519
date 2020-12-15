@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da8bb8ad_7aed998c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2020-12-15T00:47:29Z",
+      "side": 1,
+      "message": "LGTM pending comment nit.",
+      "revId": "cfc408c02b01170a60668766690002256832a519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0d7b79_9edc483f",
+        "filename": "board/genesis/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2020-12-15T00:47:29Z",
+      "side": 1,
+      "message": "Current belief is this was a red herring and the SO-DIMM DDR module vendor/model is to blame. I\u0027d remove this comment and mention it\u0027s simply to reduce log spam temporarily until we remove the unnecessary USB-PD driver.\n\nMind filing a bug to track the USB-PD work specifically and link it in a TODO here?",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "cfc408c02b01170a60668766690002256832a519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
