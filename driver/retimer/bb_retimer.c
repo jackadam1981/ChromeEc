@@ -36,9 +36,6 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-/* Mutex for shared NVM access */
-static struct mutex bb_nvm_mutex;
-
 /**
  * Utility functions
  */
@@ -104,8 +101,6 @@ __overridable void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 		 * lock enabling the retimer until the current retimer request
 		 * is complete.
 		 */
-		mutex_lock(&bb_nvm_mutex);
-
 		gpio_set_level(control->usb_ls_en_gpio, 1);
 		/*
 		 * Tpw, minimum time from VCC to RESET_N de-assertion is 100us.
@@ -115,11 +110,11 @@ __overridable void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 		 */
 		msleep(1);
 		gpio_set_level(control->retimer_rst_gpio, 1);
-
-		/* Allow 20ms time for the retimer to be initialized. */
-		msleep(20);
-
-		mutex_unlock(&bb_nvm_mutex);
+		/*
+		 * Allow 1ms time for the retimer to power up lc_domain
+		 * which powers I2C controller within retimer
+		 */
+		msleep(1);
 	} else {
 		gpio_set_level(control->retimer_rst_gpio, 0);
 		msleep(1);
@@ -323,6 +318,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
+	int rv;
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
@@ -415,8 +411,11 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		retimer_set_state_ufp(mux_state, &set_retimer_con);
 
 	/* Writing the register4 */
-	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);
+	if (rv)
+		CPRINTS("C%d: Retimer I2C write err=%d", me->usb_port, rv);
+	return rv;
 }
 
 static int retimer_low_power_mode(const struct usb_mux *me)
@@ -439,20 +438,30 @@ static int retimer_init(const struct usb_mux *me)
 
 	bb_retimer_power_handle(me, 1);
 
+	/*
+	 * This I2C message will trigger retimer's internal init sequence
+	 * if its a NAK, sleep and resend same I2C
+	 */
 	rv = bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
-	if (rv)
-		return rv;
-	if (data != BB_RETIMER_VENDOR_ID)
-		return EC_ERROR_UNKNOWN;
+	if (rv) {
+		/*
+		 * TODO: 20ms is enough for single retimer and single flash
+		 */
+		msleep(40);
+		rv = bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
+		if (rv)
+			return rv;
+
+		if (data != BB_RETIMER_VENDOR_ID)
+			return EC_ERROR_INVAL;
+	}
 
 	rv = bb_retimer_read(me, BB_RETIMER_REG_DEVICE_ID, &data);
-	if (rv)
-		return rv;
 
-	if (data != BB_RETIMER_DEVICE_ID)
-		return EC_ERROR_UNKNOWN;
+	if (!rv && (data != BB_RETIMER_DEVICE_ID))
+		rv = EC_ERROR_INVAL;
 
-	return EC_SUCCESS;
+	return rv;
 }
 
 const struct usb_mux_driver bb_usb_retimer = {
