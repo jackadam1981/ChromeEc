@@ -16,6 +16,24 @@
       "message": "Hi Aseda,\nWill you regulate update CLs to dedede branch? or should we cherry-pick CL by ourselves? ",
       "revId": "5dae32c32c37977b949250c9329053363e003d72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac263b73_5695458c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-15T00:59:06Z",
+      "side": 1,
+      "message": "Hi Devin, we will regulate the EC CLs to the dedede branch. Initially, we aim to do them weekly, but will slow down some time after that. If you are in an urgent need of a merge, you can request one at any time. I plan to do another merge this evening.",
+      "parentUuid": "bf21a746_a44c594c",
+      "revId": "5dae32c32c37977b949250c9329053363e003d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
