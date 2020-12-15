@@ -834,7 +834,10 @@ static void charge_manager_refresh(void)
 #endif
 
 	/* New power requests must be set only after updating the globals. */
-	if (is_pd_port(updated_new_port))
+	if (is_pd_port(updated_new_port) &&
+	    (pd_get_requested_voltage(updated_new_port) != charge_voltage ||
+	     pd_get_requested_current(updated_new_port) !=
+	     charge_current_uncapped)) {
 		pd_set_new_power_request(updated_new_port);
 	if (is_pd_port(updated_old_port))
 		pd_set_new_power_request(updated_old_port);
