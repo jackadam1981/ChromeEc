@@ -365,6 +365,12 @@ const char *tc_get_current_state(int port);
  */
 uint32_t tc_get_flags(int port);
 
+/* USB retimer firmware update flag
+ *
+ * @param port USB-C port number
+ */
+void tc_usb_firmware_fw_update_set_flag(int port);
+
 #ifdef CONFIG_USB_CTVPD
 
 /**
