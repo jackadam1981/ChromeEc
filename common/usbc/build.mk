@@ -38,6 +38,9 @@ endif # CONFIG_USB_PE_SM
 
 endif # CONFIG_USB_PD_TCPMV2
 
+# Retimer firmware update
+all-obj-$(CONFIG_USBC_SS_MUX)+=$(_usbc_dir)usb_retimer_fw_update.o
+
 # For testing
 all-obj-$(CONFIG_TEST_USB_PE_SM)+=$(_usbc_dir)usb_pe_drp_sm.o
 all-obj-$(CONFIG_TEST_SM)+=$(_usbc_dir)usb_sm.o
