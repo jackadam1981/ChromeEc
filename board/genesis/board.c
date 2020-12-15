@@ -15,10 +15,6 @@
 #include "core/cortex-m/cpu.h"
 #include "cros_board_info.h"
 #include "driver/ina3221.h"
-#include "driver/ppc/sn5s330.h"
-#include "driver/tcpm/anx7447.h"
-#include "driver/tcpm/ps8xxx.h"
-#include "driver/tcpm/tcpci.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "fan.h"
@@ -42,8 +38,6 @@
 #include "uart.h"
 #include "usb_charge.h"
 #include "usb_common.h"
-#include "usb_pd.h"
-#include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -51,42 +45,6 @@
 
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
-
-static void ppc_interrupt(enum gpio_signal signal)
-{
-	if (signal == GPIO_USB_C0_TCPPC_INT_ODL)
-		sn5s330_interrupt(0);
-}
-
-int ppc_get_alert_status(int port)
-{
-	return gpio_get_level(GPIO_USB_C0_TCPPC_INT_ODL) == 0;
-}
-
-static void tcpc_alert_event(enum gpio_signal signal)
-{
-	if (signal == GPIO_USB_C0_TCPC_INT_ODL)
-		schedule_deferred_pd_interrupt(0);
-}
-
-uint16_t tcpc_get_alert_status(void)
-{
-	uint16_t status = 0;
-	int level;
-
-	/*
-	 * Check which port has the ALERT line set and ignore if that TCPC has
-	 * its reset line active.
-	 */
-	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
-		level = !!(tcpc_config[USB_PD_PORT_TCPC_0].flags &
-			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
-		if (gpio_get_level(GPIO_USB_C0_TCPC_RST) != level)
-			status |= PD_STATUS_TCPC_ALERT_0;
-	}
-
-	return status;
-}
 
 /* Called when the charge manager has switched to a new port. */
 void board_set_charge_limit(int port, int supplier, int charge_ma,
@@ -271,27 +229,6 @@ const struct pwm_t pwm_channels[] = {
 				.flags = PWM_CONFIG_OPEN_DRAIN |
 					 PWM_CONFIG_DSLEEP,
 				.freq = 2000 },
-};
-
-/******************************************************************************/
-/* USB-C TCPC Configuration */
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	[USB_PD_PORT_TCPC_0] = {
-		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
-			.port = I2C_PORT_TCPC0,
-			.addr_flags = AN7447_TCPC0_I2C_ADDR_FLAGS,
-		},
-		.drv = &anx7447_tcpm_drv,
-		.flags = TCPC_FLAGS_RESET_ACTIVE_HIGH,
-	},
-};
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	[USB_PD_PORT_TCPC_0] = {
-		.usb_port = USB_PD_PORT_TCPC_0,
-		.driver = &anx7447_usb_mux_driver,
-		.hpd_update = &anx7447_tcpc_update_hpd_status,
-	},
 };
 
 /******************************************************************************/
@@ -492,90 +429,16 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-static void board_chipset_startup(void)
-{
-	/*
-	 * Workaround to restore VBUS on PPC.
-	 * PP1 is sourced from PP5000_A, and when the CPU shuts down and
-	 * this rail drops, the PPC will internally turn off PP1_EN.
-	 * When the CPU starts again, and the rail is restored, the PPC
-	 * does not turn PP1_EN on again, causing VBUS to stay turned off.
-	 * The workaround is to check whether the PPC is sourcing VBUS, and
-	 * if so, make sure it is enabled.
-	 */
-	if (ppc_is_sourcing_vbus(0))
-		ppc_vbus_source_enable(0, 1);
-}
-DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup,
-	     HOOK_PRIO_DEFAULT);
 /******************************************************************************/
-/* USB-C PPC Configuration */
-struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	[USB_PD_PORT_TCPC_0] = {
-		.i2c_port = I2C_PORT_PPC0,
-		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
-		.drv = &sn5s330_drv
-	},
-};
-unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
-
 /* USB-A port control */
 const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_PP5000_USB_VBUS,
 };
 
-/* Power Delivery and charging functions */
-static void board_tcpc_init(void)
-{
-	/*
-	 * Reset TCPC if we have had a system reset.
-	 * With EFSv2, it is possible to be in RW without
-	 * having reset the TCPC.
-	 */
-	if (system_get_reset_flags() & EC_RESET_FLAG_POWER_ON)
-		board_reset_pd_mcu();
-	/* Enable TCPC interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_TCPPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
-	/* Enable other overcurrent interrupts */
-	gpio_enable_interrupt(GPIO_HDMI_CONN0_OC_ODL);
-	gpio_enable_interrupt(GPIO_HDMI_CONN1_OC_ODL);
-	gpio_enable_interrupt(GPIO_USB_A0_OC_ODL);
-	gpio_enable_interrupt(GPIO_USB_A1_OC_ODL);
-	gpio_enable_interrupt(GPIO_USB_A2_OC_ODL);
-	gpio_enable_interrupt(GPIO_USB_A3_OC_ODL);
-	if (ec_config_get_usb4_present()) {
-		/*
-		 * By default configured as output low.
-		 */
-		gpio_set_flags(GPIO_USB_A4_OC_ODL,
-			       GPIO_INPUT | GPIO_INT_BOTH);
-		gpio_enable_interrupt(GPIO_USB_A4_OC_ODL);
-	} else {
-		/* Ensure no interrupts from pin */
-		gpio_disable_interrupt(GPIO_USB_A4_OC_ODL);
-	}
-
-}
-/* Make sure this is called after fw_config is initialised */
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
-
 int64_t get_time_dsw_pwrok(void)
 {
 	/* DSW_PWROK is turned on before EC was powered. */
 	return -20 * MSEC;
-}
-
-void board_reset_pd_mcu(void)
-{
-	int level = !!(tcpc_config[USB_PD_PORT_TCPC_0].flags &
-		       TCPC_FLAGS_RESET_ACTIVE_HIGH);
-
-	gpio_set_level(GPIO_USB_C0_TCPC_RST, level);
-	msleep(BOARD_TCPC_C0_RESET_HOLD_DELAY);
-	gpio_set_level(GPIO_USB_C0_TCPC_RST, !level);
-	if (BOARD_TCPC_C0_RESET_POST_DELAY)
-		msleep(BOARD_TCPC_C0_RESET_POST_DELAY);
 }
 
 int board_set_active_charge_port(int port)
@@ -597,10 +460,6 @@ int board_set_active_charge_port(int port)
 
 	if (port == charge_manager_get_active_charge_port())
 		return EC_SUCCESS;
-
-	/* Don't charge from a source port */
-	if (board_vbus_source_enabled(port))
-		return EC_ERROR_INVAL;
 
 	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		int bj_active, bj_requested;
@@ -640,15 +499,6 @@ int board_set_active_charge_port(int port)
 	}
 
 	return EC_SUCCESS;
-}
-
-void board_overcurrent_event(int port, int is_overcurrented)
-{
-	/* Check that port number is valid. */
-	if ((port < 0) || (port >= CONFIG_USB_PD_PORT_MAX_COUNT))
-		return;
-	usbc_overcurrent = is_overcurrented;
-	update_5v_usage();
 }
 
 int extpower_is_present(void)
@@ -858,16 +708,6 @@ static void power_monitor(void)
 					gap += POWER_GAIN_TYPE_A;
 			}
 			/*
-			 * If the type-C port is sourcing power,
-			 * check whether it should be throttled.
-			 */
-			if (ppc_is_sourcing_vbus(0) && gap <= 0) {
-				new_state |= THROT_TYPE_C;
-				headroom_5v += PWR_C_HIGH - PWR_C_LOW;
-				if (!(current_state & THROT_TYPE_C))
-					gap += POWER_GAIN_TYPE_C;
-			}
-			/*
 			 * As a last resort, turn on PROCHOT to
 			 * throttle the CPU.
 			 */
@@ -928,14 +768,6 @@ static void power_monitor(void)
 		int prochot = (new_state & THROT_PROCHOT) ? 0 : 1;
 
 		gpio_set_level(GPIO_EC_PROCHOT_ODL, prochot);
-	}
-	if (diff & THROT_TYPE_C) {
-		enum tcpc_rp_value rp = (new_state & THROT_TYPE_C)
-			? TYPEC_RP_1A5 : TYPEC_RP_3A0;
-
-		ppc_set_vbus_source_current_limit(0, rp);
-		tcpm_select_rp_value(0, rp);
-		pd_update_contract(0);
 	}
 	if (diff & THROT_TYPE_A) {
 		int typea_bc = (new_state & THROT_TYPE_A) ? 1 : 0;
