@@ -11,6 +11,10 @@
 #include "pwm.h"
 #include "util.h"
 
+#ifdef CONFIG_ZEPHYR
+#include "pwm/pwm.h"
+#endif
+
 #ifdef CONFIG_PWM
 
 /*
@@ -162,6 +166,7 @@ DECLARE_CONSOLE_COMMAND(pwmduty, cc_pwm_duty,
 			"Get/set PWM duty cycles ");
 #endif /* CONFIG_PWM */
 
+#ifndef CONFIG_ZEPHYR
 /* Initialize all PWM pins as functional */
 static void pwm_pin_init(void)
 {
@@ -169,3 +174,4 @@ static void pwm_pin_init(void)
 }
 /* HOOK_PRIO_INIT_PWM may be used for chip PWM unit init, so use PRIO + 1 */
 DECLARE_HOOK(HOOK_INIT, pwm_pin_init, HOOK_PRIO_INIT_PWM + 1);
+#endif /* CONFIG_ZEPHYR */
