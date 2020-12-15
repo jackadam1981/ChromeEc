@@ -610,6 +610,12 @@ static void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
+__override int bb_retimer_fw_update_query_port(void)
+{
+	/* USBC_PORT_C1 has burnside bridge retimer */
+	return 0x02;
+}
+
 /******************************************************************************/
 /* TCPC support routines */
 uint16_t tcpc_get_alert_status(void)

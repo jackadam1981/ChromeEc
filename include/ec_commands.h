@@ -426,6 +426,52 @@ extern "C" {
 #define EC_ACPI_MEM_USB_PORT_POWER 0x13
 
 /*
+ * Burnside Bridge Retimer firmware update.
+ * Read:
+ *      Result of last operation AP requested
+ * Write:
+ *      bits[3:0]: USB-C port number
+ *      bits[7:4]: Operation requested by AP
+ *
+ * To update BB retimer firmware, AP needs set up TBT Alt mode.
+ * AP requests operations in this sequence:
+ * 1. Query which ports have BB retimer
+ * Read the query result, each bit represents one port
+ * 2. Suspend specified PD port's task
+ * 3. Query current MUX mode
+ * 4. Set TBT Alt mode based on current MUX mode.
+ * If NDA (no device attached) case, AP requests EC to enter USB mode ->
+ * enter Safe mode -> enter TBT mode -> update firmware -> disconnect MUX ->
+ * resume PD task.
+ * If DA (DP Alt mode), AP requests EC to disconnect MUX -> enter USB mode ->
+ * enter Safe mode -> enter TBT mode -> update firmware -> disconnect MUX ->
+ * resume PD task (PD task re-discover and set up DP Alt mode).
+ * If DA (TBT Alt mode), AP updates firmware directly -> disconnect MUX ->
+ * resume PD task (PD task re-discover and set up TBT Alt mode).
+ * If DA (USB3 mode), AP requests EC enter Safe mode -> enter TBT mode ->
+ * update firmware -> disconnect MUX -> resume PD task (PD task re-discover
+ * and set up USB3 mode).
+ *
+ */
+#define EC_ACPI_MEM_BB_RETIMER_FW_UPDATE 0x14
+
+#define BB_RETIMER_FW_UPDATE_OP_SHIFT 4
+#define BB_RETIMER_FW_UPDATE_INVALID_MUX 0xff
+/* BB retimer firmware update operations */
+#define BB_RETIMER_FW_UPDATE_PORT_INFO  0 /* Which ports has BB retimer */
+#define BB_RETIMER_FW_UPDATE_PD_SUSPEND 1 /* Suspend PD port */
+#define BB_RETIMER_FW_UPDATE_PD_RESUME  2 /* Resume PD port  */
+#define BB_RETIMER_FW_UPDATE_GET_MUX    3 /* Read current USB MUX  */
+#define BB_RETIMER_FW_UPDATE_SET_USB    4 /* Set MUX to USB mode   */
+#define BB_RETIMER_FW_UPDATE_SET_SAFE   5 /* Set MUX to Safe mode  */
+#define BB_RETIMER_FW_UPDATE_SET_TBT    6 /* Set MUX to TBT mode   */
+#define BB_RETIMER_FW_UPDATE_DISCONNECT 7 /* Set MUX to disconnect */
+
+#define EC_ACPI_MEM_BB_RETIMER_PORT(x)   (x & 0x0f)
+#define EC_ACPI_MEM_BB_RETIMER_OP(x) \
+	((x & 0xf0) >> BB_RETIMER_FW_UPDATE_OP_SHIFT)
+
+/*
  * ACPI addresses 0x20 - 0xff map to EC_MEMMAP offset 0x00 - 0xdf.  This data
  * is read-only from the AP.  Added in EC_ACPI_MEM_VERSION 2.
  */
