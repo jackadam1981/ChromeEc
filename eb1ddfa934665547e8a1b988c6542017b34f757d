@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dab77ede_51db73a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-15T18:24:43Z",
+      "side": 1,
+      "message": "Do you think we should add usb_retimer_fw_update.c in driver/retimer directory - since it is bb retimer specific file? Also, we can rename it bb_retimer_fw_update.c",
+      "revId": "eb1ddfa934665547e8a1b988c6542017b34f757d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
