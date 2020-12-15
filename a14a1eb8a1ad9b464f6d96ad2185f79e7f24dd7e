@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc47d41_9dfd4af7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-15T18:31:19Z",
+      "side": 1,
+      "message": "It changes the code to only validate that the image size for H1 images is 512KB. I tested with your invalid cr50 image and I get the same results as before.",
+      "parentUuid": "51074f98_20020080",
+      "range": {
+        "startLine": 1024,
+        "startChar": 0,
+        "endLine": 1024,
+        "endChar": 55
+      },
+      "revId": "a14a1eb8a1ad9b464f6d96ad2185f79e7f24dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77617c7e_2ba2fbaa",
@@ -87,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce098d5d_ce863d90",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-15T18:31:19Z",
+      "side": 1,
+      "message": "The starting address of RW has to be rounded, and I just got a little over zealous with my rounding. The old behavior was to send the entire section (not just the image size). I was just  keeping with sending some extra 0xFF padding at the end of RO.\n\nWe can just send the image size instead. Updated.",
+      "parentUuid": "77617c7e_2ba2fbaa",
+      "range": {
+        "startLine": 1054,
+        "startChar": 24,
+        "endLine": 1054,
+        "endChar": 45
+      },
+      "revId": "a14a1eb8a1ad9b464f6d96ad2185f79e7f24dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97944e14_ddca8933",
@@ -100,6 +148,30 @@
       "writtenOn": "2020-12-11T19:30:08Z",
       "side": 1,
       "message": "type here and in line 1385 should be \u0027enum section\u0027",
+      "range": {
+        "startLine": 1382,
+        "startChar": 7,
+        "endLine": 1382,
+        "endChar": 13
+      },
+      "revId": "a14a1eb8a1ad9b464f6d96ad2185f79e7f24dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "943fb9f4_45c43ca2",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-12-15T18:31:19Z",
+      "side": 1,
+      "message": "Done. (Thanks for the thorough review!)",
+      "parentUuid": "97944e14_ddca8933",
       "range": {
         "startLine": 1382,
         "startChar": 7,
