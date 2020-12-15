@@ -43,6 +43,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10694baa_54909ebb",
+        "filename": "driver/fingerprint/elan/build.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-15T00:32:59Z",
+      "side": 1,
+      "message": "You\u0027ll need to either change this to $(_elan_cur_dir)/../../../private/fingerprint/elan, or move everything after line 17 to ec/private/fingerprint/elan/build.mk.",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "f5364acbc84f2ad228a142ae23aa6301a8f135c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3419d763_6d47815f",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-15T00:32:59Z",
+      "side": 1,
+      "message": "We also have definition for fp_maintenance() which is for checking defective pixels: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/include/fpsensor.h#158.\n\nPlease either add definition that links to your private library, or add a stub implementation like:\n\n  /**\n   * Stub implementation of fp_maintenance().\n   *\n   * @return EC_SUCCESS on success otherwise error.\n   */\n  int fp_maintenance(void)\n  {\n         return EC_SUCCESS;\n  }",
+      "revId": "f5364acbc84f2ad228a142ae23aa6301a8f135c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddf298d7_77e71df6",
         "filename": "driver/fingerprint/elan/elan_sensor.h",
         "patchSetId": 11
