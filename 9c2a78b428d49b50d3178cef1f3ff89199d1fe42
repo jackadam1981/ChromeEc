@@ -52,6 +52,24 @@
       "parentUuid": "c2ef64ea_57b73c0f",
       "revId": "9c2a78b428d49b50d3178cef1f3ff89199d1fe42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da355246_c38e0297",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-15T21:18:11Z",
+      "side": 1,
+      "message": "llvm toolchain is fully working for posix-ec stuff, so no reason to use the zephyr toolchain\n\nif you want to override to zephyr toolchain, you can. just pass \"-t zephyr\". but really there\u0027s no reason to.",
+      "parentUuid": "a8ae46d4_c60b1544",
+      "revId": "9c2a78b428d49b50d3178cef1f3ff89199d1fe42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
