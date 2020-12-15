@@ -108,4 +108,12 @@ int ina2xx_get_current(uint8_t idx);
 /* Return power in milliWatts */
 int ina2xx_get_power(uint8_t idx);
 
+int ina2xx_get_mask(uint8_t idx);
+
+int ina2xx_set_mask(uint8_t idx, uint16_t mask);
+
+int ina2xx_get_alert(uint8_t idx);
+
+int ina2xx_set_alert(uint8_t idx, uint16_t alert);
+
 #endif /* __CROS_EC_INA2XX_H */
