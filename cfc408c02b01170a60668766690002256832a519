@@ -39,6 +39,30 @@
       },
       "revId": "cfc408c02b01170a60668766690002256832a519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2af28b_393af5d3",
+        "filename": "board/genesis/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1471367
+      },
+      "writtenOn": "2020-12-15T01:56:12Z",
+      "side": 1,
+      "message": "Agreed.\n\nWIP CL which removes the USB-PD stack entirely (and still boots to \"Starting kernel\") is here: https://crrev.com/c/2591791",
+      "parentUuid": "4c0d7b79_9edc483f",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "cfc408c02b01170a60668766690002256832a519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
