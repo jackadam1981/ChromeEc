@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7c5f450_bf890d63",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-15T20:17:15Z",
+      "side": 1,
+      "message": "Is the 10 byte limitation a matter of space mostly?  Or are you uninterested in storing much past the header and a couple of objects?",
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d529c531_a5c6ec64",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-15T20:17:15Z",
+      "side": 1,
+      "message": "occurs",
+      "range": {
+        "startLine": 226,
+        "startChar": 53,
+        "endLine": 226,
+        "endChar": 59
+      },
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7745e3b5_f8c5ac29",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 15
@@ -21,6 +61,109 @@
         "endLine": 242,
         "endChar": 25
       },
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1144ff4a_935ad294",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-15T20:17:15Z",
+      "side": 1,
+      "message": "Did the role control call already take care of the cc_pull_active check?",
+      "range": {
+        "startLine": 260,
+        "startChar": 12,
+        "endLine": 260,
+        "endChar": 34
+      },
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e115109f_f040a1bd",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-15T20:17:15Z",
+      "side": 1,
+      "message": "used?",
+      "range": {
+        "startLine": 280,
+        "startChar": 21,
+        "endLine": 280,
+        "endChar": 25
+      },
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4069c812_e92355ba",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-15T20:17:15Z",
+      "side": 1,
+      "message": "I don\u0027t think I see where ucpd_sr_cc_event is being set?",
+      "range": {
+        "startLine": 313,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 33
+      },
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14cea3e3_ef45582a",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-15T20:17:15Z",
+      "side": 1,
+      "message": "Control messages past this not considered to be on interest?",
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad4b9ae_8a86ec20",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-15T20:17:15Z",
+      "side": 1,
+      "message": "Might want VDM when debugging as well, if you have space",
       "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
