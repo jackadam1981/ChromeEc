@@ -4326,6 +4326,23 @@
 #undef CONFIG_USBC_RETIMER_PS8818
 #undef CONFIG_USBC_RETIMER_TUSB544
 
+/*
+ * Define this to enable Type-C retimer firmware update. Each Type-C retimer
+ * indicates its capability of supporting firmware update in usb_mux_driver.
+ * This feature is available to TCPMv2 PD stack, also requires
+ * CONFIG_USBC_SS_MUX is enabled.
+ * This feature includes changes in EC, Coreboot and Kernel. During AP boot
+ * up, AP scans each PD port for retimers if no Type-C device attached;
+ * and firmware update can be performed on retimers showing up in AP
+ * thunderbolt device entries. If PD port has device attached, no retimer
+ * scan on that port.
+ */
+#undef CONFIG_USBC_RETIMER_FW_UPDATE
+#if (defined(CONFIG_USBC_RETIMER_FW_UPDATE) && \
+	(!(defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USBC_SS_MUX))))
+#error Retimer firmware update requires TCPMv2 and USBC_SS_MUX
+#endif
+
 /* Enable retimer TUSB544 tune EQ setting by register  */
 #undef CONFIG_TUSB544_EQ_BY_REGISTER
 
