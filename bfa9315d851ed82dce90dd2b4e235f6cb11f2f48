@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "947cdc5c_e4af5ca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-15T11:57:34Z",
+      "side": 1,
+      "message": "Sorry. OEM update marketing spec, but it miss the battery low condition.\nI will ask again.",
+      "parentUuid": "2f64d1f2_3ae4624b",
+      "revId": "bfa9315d851ed82dce90dd2b4e235f6cb11f2f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db789f7b_a0889b90",
         "filename": "board/drobit/board.h",
         "patchSetId": 1
