@@ -8,16 +8,17 @@
 #include "common.h"
 #include "console.h"
 #include "dptf.h"
+#include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "keyboard_backlight.h"
 #include "lpc.h"
-#include "ec_commands.h"
-#include "tablet_mode.h"
 #include "pwm.h"
 #include "timer.h"
+#include "tablet_mode.h"
 #include "usb_charge.h"
+#include "usb_common.h"
 #include "util.h"
 
 /* Console output macros */
@@ -281,6 +282,12 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			}
 #endif
 
+#ifdef CONFIG_USBC_SS_MUX
+		case EC_ACPI_MEM_BB_RETIMER_FW_UPDATE:
+			result = bb_retimer_fw_update_query_port();
+			CPRINTS("acpi retimer fw update query: 0x%X", result);
+			break;
+#endif
 		default:
 			result = acpi_read(acpi_addr);
 			break;
@@ -352,7 +359,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		case EC_ACPI_MEM_USB_PORT_POWER: {
 			int i;
 			int mode_field = data;
-			const int port_count = MIN(8, USB_PORT_COUNT);
+			const int port_count = MIN(4, USB_PORT_COUNT);
 
 			/*
 			 * Read the port power bit field (with max size 8 bits)
@@ -375,6 +382,14 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			}
 			break;
 			}
+#endif
+
+#ifdef CONFIG_USBC_SS_MUX
+		case EC_ACPI_MEM_BB_RETIMER_FW_UPDATE:
+			bb_retimer_fw_update_set_mode(
+				EC_ACPI_MEM_BB_RETIMER_PORT(data),
+				EC_ACPI_MEM_BB_RETIMER_MODE(data));
+			break;
 #endif
 
 		default:
