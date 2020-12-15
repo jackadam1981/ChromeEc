@@ -12,6 +12,10 @@
 #include "extpower.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
+#include "driver/accelgyro_icm_common.h"
+#include "driver/accelgyro_icm426xx.h"
+#include "driver/accel_kionix.h"
+#include "driver/accel_kx022.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -286,8 +290,16 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 static struct mutex g_base_mutex;
 static struct mutex g_lid_mutex;
 
+static struct kionix_accel_data g_kx022_data;
 static struct bmi_drv_data_t g_bmi160_data;
+static struct icm_drv_data_t g_icm426xx_data;
 static struct accelgyro_saved_data_t g_bma255_data;
+
+enum base_accelgyro_type {
+	BASE_GYRO_NONE = 0,
+	BASE_GYRO_BMI160 = 1,
+	BASE_GYRO_ICM426XX = 2,
+};
 
 /* Matrix to rotate accelerometer into standard reference frame */
 const mat33_fp_t base_standard_ref = {
@@ -379,6 +391,77 @@ struct motion_sensor_t motion_sensors[] = {
 };
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
+struct motion_sensor_t kx022_lid_accel = {
+	.name = "Lid Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_KX022,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_LID,
+	.drv = &kionix_accel_drv,
+	.mutex = &g_lid_mutex,
+	.drv_data = &g_kx022_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
+	.rot_standard_ref = &lid_standard_ref,
+	.default_range = 2, /* g, enough for laptop. */
+	.min_frequency = KX022_ACCEL_MIN_FREQ,
+	.max_frequency = KX022_ACCEL_MAX_FREQ,
+	.config = {
+		 /* EC use accel for angle detection */
+		 [SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		 },
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+	},
+};
+
+struct motion_sensor_t icm426xx_base_accel = {
+	.name = "Base Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_ICM426XX,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &icm426xx_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_icm426xx_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
+	.default_range = 2, /* g, enough for laptop */
+	.rot_standard_ref = &base_standard_ref,
+	.min_frequency = ICM426XX_ACCEL_MIN_FREQ,
+	.max_frequency = ICM426XX_ACCEL_MAX_FREQ,
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+	},
+};
+
+struct motion_sensor_t icm426xx_base_gyro = {
+	.name = "Base Gyro",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_ICM426XX,
+	.type = MOTIONSENSE_TYPE_GYRO,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &icm426xx_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_icm426xx_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
+	.default_range = 1000, /* dps */
+	.rot_standard_ref = &base_standard_ref,
+	.min_frequency = ICM426XX_GYRO_MIN_FREQ,
+	.max_frequency = ICM426XX_GYRO_MAX_FREQ,
+};
+
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
 void lid_angle_peripheral_enable(int enable)
@@ -414,6 +497,51 @@ enum battery_cell_type board_get_battery_cell_type(void)
 	return BATTERY_CELL_TYPE_UNKNOWN;
 }
 
+static int base_accelgyro_config;
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	switch (base_accelgyro_config) {
+	case BASE_GYRO_ICM426XX:
+		icm426xx_interrupt(signal);
+		break;
+	case BASE_GYRO_BMI160:
+	default:
+		bmi160_interrupt(signal);
+		break;
+	}
+}
+
+static void board_detect_motionsensor(void)
+{
+	uint8_t tmp;
+	int ret;
+	int val;
+
+	/* Check lid accel chip */
+	i2c_lock(I2C_PORT_SENSOR, 1);
+	ret = i2c_xfer_unlocked(I2C_PORT_SENSOR, KX022_ADDR1_FLAGS,
+		NULL, 0, &tmp, 1, I2C_XFER_SINGLE);
+	if (!ret)
+		motion_sensors[LID_ACCEL] = kx022_lid_accel;
+
+	CPRINTS("Lid Accel: %s", ret ? "BMA255" : "KX022");
+
+	i2c_lock(I2C_PORT_SENSOR, 0);
+
+	/* Check base accelgyro chip */
+	ret = icm_read8(&icm426xx_base_accel, ICM426XX_REG_WHO_AM_I, &val);
+	if (val == ICM426XX_CHIP_ICM40608) {
+		motion_sensors[BASE_ACCEL] = icm426xx_base_accel;
+		motion_sensors[BASE_GYRO] = icm426xx_base_gyro;
+	}
+
+	base_accelgyro_config = (val == ICM426XX_CHIP_ICM40608)
+		 ? BASE_GYRO_ICM426XX : BASE_GYRO_BMI160;
+	CPRINTS("Base Accelgyro: %s", (val == ICM426XX_CHIP_ICM40608)
+		 ? "ICM40608" : "BMI160");
+}
+
 static void board_update_sensor_config_from_sku(void)
 {
 	if (board_is_clamshell()) {
@@ -425,6 +553,7 @@ static void board_update_sensor_config_from_sku(void)
 		gpio_set_flags(GPIO_LID_ACCEL_INT_L,
 			       GPIO_INPUT | GPIO_PULL_DOWN);
 	} else {
+		board_detect_motionsensor();
 		motion_sensor_count = ARRAY_SIZE(motion_sensors);
 		/* Enable interrupt for the base accel sensor */
 		gpio_enable_interrupt(GPIO_ACCEL_GYRO_INT_L);
