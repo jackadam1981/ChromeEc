@@ -141,15 +141,23 @@ enum charge_manager_change_type {
 
 static int is_pd_port(int port)
 {
+#ifdef CONFIG_USB_POWER_DELIVERY
 	return port >= 0 && port < board_get_usb_pd_port_count();
+#else
+	return 0;
+#endif
 }
 
 static int is_sink(int port)
 {
+#ifdef CONFIG_USB_POWER_DELIVERY
 	if (!is_pd_port(port))
 		return board_charge_port_is_sink(port);
 
 	return pd_get_power_role(port) == PD_ROLE_SINK;
+#else
+	return 0;
+#endif
 }
 
 /**
@@ -164,10 +172,12 @@ static int is_valid_port(int port)
 	if (port < 0 || port >= CHARGE_PORT_COUNT)
 		return 0;
 
+#ifdef CONFIG_USB_POWER_DELIVERY
 	/* Check if the port falls in the hole */
 	if (port >= board_get_usb_pd_port_count() &&
 	    port < CONFIG_USB_PD_PORT_MAX_COUNT)
 		return 0;
+#endif
 	return 1;
 }
 
@@ -839,9 +849,12 @@ static void charge_manager_refresh(void)
 	if (is_pd_port(updated_old_port))
 		pd_set_new_power_request(updated_old_port);
 
-	if (power_changed)
+	if (power_changed) {
 		/* notify host of power info change */
+#ifdef CONFIG_USB_POWER_DELIVERY
 		pd_send_host_event(PD_EVENT_POWER_CHANGE);
+#endif
+	}
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
@@ -851,7 +864,9 @@ DECLARE_DEFERRED(charge_manager_refresh);
 static void charge_override_timeout(void)
 {
 	delayed_override_port = OVERRIDE_OFF;
+#ifdef CONFIG_USB_POWER_DELIVERY
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+#endif
 }
 DECLARE_DEFERRED(charge_override_timeout);
 
@@ -861,7 +876,9 @@ DECLARE_DEFERRED(charge_override_timeout);
 static void charger_detect_debounced(void)
 {
 	/* Inform host that charger detection is debounced. */
+#ifdef CONFIG_USB_POWER_DELIVERY
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+#endif
 }
 DECLARE_DEFERRED(charger_detect_debounced);
 
@@ -1135,6 +1152,7 @@ int charge_manager_set_override(int port)
 					&charge_manager_refresh_data, 0);
 		}
 	}
+#ifdef CONFIG_USB_POWER_DELIVERY
 	/*
 	 * If the attached device is capable of being a sink, request a
 	 * power swap and set the delayed override for swap completion.
@@ -1147,7 +1165,9 @@ int charge_manager_set_override(int port)
 				   POWER_SWAP_TIMEOUT);
 		pd_request_power_swap(port);
 	/* Can't charge from requested port -- return error. */
-	} else
+	}
+#endif
+	else
 		retval = EC_ERROR_INVAL;
 
 	return retval;

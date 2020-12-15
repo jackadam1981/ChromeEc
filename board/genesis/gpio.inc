@@ -37,9 +37,6 @@ GPIO_INT(PG_PP950_VCCIO_OD,    PIN(1, 7), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(SLP_S0_L,             PIN(D, 5), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(IMVP8_VRRDY_OD,       PIN(1, 6), GPIO_INT_BOTH, power_signal_interrupt)
 
-/* Other interrupts */
-GPIO_INT(USB_C0_TCPPC_INT_ODL, PIN(E, 0), GPIO_INT_FALLING, ppc_interrupt)
-GPIO_INT(USB_C0_TCPC_INT_ODL,  PIN(6, 2), GPIO_INT_FALLING, tcpc_alert_event)
 /*
  * Directly connected recovery button (not available on some boards).
  */
