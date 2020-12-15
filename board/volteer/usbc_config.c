@@ -232,6 +232,12 @@ struct bb_usb_control bb_controls[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
 
+__override int bb_retimer_fw_update_query_port(void)
+{
+	/* USBC_PORT_C1 has burnside bridge retimer */
+	return 0x02;
+}
+
 static void ps8815_reset(void)
 {
 	int val;
