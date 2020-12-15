@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbaa2ca6_8fe4dd06",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-15T00:17:33Z",
+      "side": 1,
+      "message": "Should this be consolidated up with the other writes to SM5803_REG_GPADC_CONFIG1?",
+      "revId": "894f4936e0d6be4c183bf8d255a326a7a58e5da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
