@@ -46,6 +46,30 @@
       },
       "revId": "68580e6db27a987d845cdc424291434e03735555",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c036b16f_13ff8f49",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-15T01:11:51Z",
+      "side": 1,
+      "message": "The logic in tbt_mode_is_supported() and get_tbt_cable_speed() combined now looks correct.\n\nHowever, get_tbt_cable_speed() is called by the BB retimer and by the EC_CMD_USB_PD_CONTROL host command.  It might make sense to move the is_tbt_cable_superspeed() call into get_tbt_cable_speed().\n\nFor a passive cable, USB2.0 cable, the BB driver will think the cable speed is GEN1/GEN2.  This can be fixed in a separate CL.",
+      "parentUuid": "8496e75a_3f7eae4c",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 0
+      },
+      "revId": "68580e6db27a987d845cdc424291434e03735555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
