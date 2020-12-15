@@ -124,6 +124,24 @@
       "parentUuid": "3e776e95_f15f5103",
       "revId": "9c2a78b428d49b50d3178cef1f3ff89199d1fe42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee9714d_ded3e5e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-15T22:30:20Z",
+      "side": 1,
+      "message": "ebuilds non-existent right now\n\nfor CQ we use firmware_builder.py which will just call \"zmake testall\"",
+      "parentUuid": "352e2b15_436d49bb",
+      "revId": "9c2a78b428d49b50d3178cef1f3ff89199d1fe42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
