@@ -116,8 +116,7 @@ __overridable void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 		msleep(1);
 		gpio_set_level(control->retimer_rst_gpio, 1);
 
-		/* Allow 20ms time for the retimer to be initialized. */
-		msleep(20);
+		msleep(1);
 
 		mutex_unlock(&bb_nvm_mutex);
 	} else {
@@ -439,11 +438,14 @@ static int retimer_init(const struct usb_mux *me)
 
 	bb_retimer_power_handle(me, 1);
 
+	/* This I2C message will trigger retimer's internal init sequence */
 	rv = bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
-	if (rv)
-		return rv;
-	if (data != BB_RETIMER_VENDOR_ID)
-		return EC_ERROR_UNKNOWN;
+
+	/*
+	 * For shared nvm between two retimers, allow 40ms delay
+	 * TODO: Add for variants with single flash for a retimer
+	 */
+	msleep(40);
 
 	rv = bb_retimer_read(me, BB_RETIMER_REG_DEVICE_ID, &data);
 	if (rv)
