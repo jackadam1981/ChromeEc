@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure on this one as I wonder about compatibility with Zephyr toolchain...I\u0027m OK with it if Keith is",
       "revId": "9c2a78b428d49b50d3178cef1f3ff89199d1fe42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ef64ea_57b73c0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-15T20:12:52Z",
+      "side": 1,
+      "message": "I see we have two choices:\n\n1. Continue to use zephyr toolchain, which is not available in the chroot, meaning the tests cannot be run in the CQ\n2. Use the LLVM toolchain, for which all current tests are passing, meaning the tests can be run in the CQ",
+      "parentUuid": "354f9e1a_7e227149",
+      "revId": "9c2a78b428d49b50d3178cef1f3ff89199d1fe42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
