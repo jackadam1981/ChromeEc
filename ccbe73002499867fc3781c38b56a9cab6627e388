@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda730b9_9954f91f",
+        "filename": "common/mock/usb_pe_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-15T03:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f89c5c94_7b0d2222",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "ccbe73002499867fc3781c38b56a9cab6627e388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "683f767b_07e3485d",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-12T01:25:38Z",
       "side": 1,
       "message": "please remove; it\u0027s no longer needed",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 13
+      },
+      "revId": "ccbe73002499867fc3781c38b56a9cab6627e388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e143352_f13cd339",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-15T03:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "683f767b_07e3485d",
       "range": {
         "startLine": 165,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f641ae25_7ca26b75",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-15T03:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9960f213_7c14eb74",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 13
+      },
+      "revId": "ccbe73002499867fc3781c38b56a9cab6627e388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a6b09c4_2e69b9b0",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-12-12T01:25:38Z",
       "side": 1,
       "message": "please remove; it\u0027s no longer needed",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 13
+      },
+      "revId": "ccbe73002499867fc3781c38b56a9cab6627e388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d7191bc_80d4cd61",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-15T03:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a6b09c4_2e69b9b0",
       "range": {
         "startLine": 174,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47eb031f_150651ce",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-15T03:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9371f912_cb25e780",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "ccbe73002499867fc3781c38b56a9cab6627e388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0f195ae_f8932bd8",
@@ -146,6 +266,30 @@
       "writtenOn": "2020-12-12T01:25:38Z",
       "side": 1,
       "message": "please remove; it\u0027s no longer needed",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 13
+      },
+      "revId": "ccbe73002499867fc3781c38b56a9cab6627e388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33d328ab_a05140bc",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-15T03:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0f195ae_f8932bd8",
       "range": {
         "startLine": 188,
         "startChar": 0,
