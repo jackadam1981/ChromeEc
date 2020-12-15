@@ -116,6 +116,8 @@ void print_flag(int port, int set_or_clear, int flag);
 #define TC_FLAGS_SUSPEND                BIT(17)
 /* Flag to indicate the port current limit has changed */
 #define TC_FLAGS_UPDATE_CURRENT		BIT(18)
+/* Flag for retimer firmware update */
+#define TC_FLAGS_USB_RETIMER_FW_UPDATE   BIT(19)
 
 /*
  * Clear all flags except TC_FLAGS_LPM_ENGAGED and TC_FLAGS_SUSPEND.
@@ -300,6 +302,7 @@ static struct bit_name flag_bit_names[] = {
 	{ TC_FLAGS_CHECK_CONNECTION, "CHECK_CONNECTION" },
 	{ TC_FLAGS_SUSPEND, "SUSPEND" },
 	{ TC_FLAGS_UPDATE_CURRENT, "UPDATE_CURRENT" },
+	{ TC_FLAGS_USB_RETIMER_FW_UPDATE, "USB_RETIMER_FW_UPDATE" },
 };
 
 static struct bit_name event_bit_names[] = {
@@ -1734,13 +1737,14 @@ __maybe_unused static void handle_new_power_state(int port)
 			 * boots up
 			 */
 			dpm_set_mode_exit_request(port);
+
+			/*
+			 * The following function will disconnect both USB and
+			 * DP mux, as the chipset is transitioning to OFF.
+			 */
+			set_usb_mux_with_current_data_role(port);
 		}
 	}
-	/*
-	 * Set the USB mux according to the new power state.  If the chipset
-	 * is transitioning to OFF, this disconnects USB and DP mux.
-	 */
-	set_usb_mux_with_current_data_role(port);
 }
 
 #if defined(CONFIG_USB_PD_ALT_MODE) && !defined(CONFIG_USB_PD_ALT_MODE_DFP)
@@ -2242,11 +2246,13 @@ static void tc_attach_wait_snk_run(const int port)
 			set_state_tc(port, TC_ATTACHED_SNK);
 		}
 
+#ifndef CONFIG_ZEPHYR /* TODO(b/176110981) */
 		if (IS_ENABLED(CONFIG_USB_PE_SM) &&
 				IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 			hook_call_deferred(&pd_usb_billboard_deferred_data,
 								PD_T_AME);
 		}
+#endif
 	}
 }
 
@@ -3547,6 +3553,11 @@ void tc_set_debug_level(enum debug_level debug_level)
 #endif
 }
 
+void tc_usb_firmware_fw_update_set_flag(int port)
+{
+	TC_SET_FLAG(port, TC_FLAGS_USB_RETIMER_FW_UPDATE);
+}
+
 void tc_run(const int port)
 {
 	/*
@@ -3560,6 +3571,11 @@ void tc_run(const int port)
 			pe_invalidate_explicit_contract(port);
 
 		set_state_tc(port, TC_DISABLED);
+
+		if (TC_CHK_FLAG(port, TC_FLAGS_USB_RETIMER_FW_UPDATE)) {
+			TC_CLR_FLAG(port, TC_FLAGS_USB_RETIMER_FW_UPDATE);
+			usb_retimer_fw_update_process_mux_op(port);
+		}
 	}
 
 	run_state(port, &tc[port].ctx);
@@ -3603,6 +3619,7 @@ static void pd_chipset_startup(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		set_usb_mux_with_current_data_role(i);
 		pd_set_dual_role_and_event(i,
 					   pd_get_drp_state_in_suspend(),
 					   PD_EVENT_UPDATE_DUAL_ROLE
