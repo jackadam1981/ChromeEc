@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4633c8dc_99090008",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-15T15:16:22Z",
+      "side": 1,
+      "message": "Resolve.",
+      "parentUuid": "7c2d0bed_de245bfa",
+      "revId": "c34439a20d8504aa8a7de57147b7a3b5d599bd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3636b16_675a12f2",
@@ -102,6 +120,30 @@
       "side": 1,
       "message": "That would imply the bus is unpowered in S0ix, which i\u0027m not sure is true. I\u0027ll followup.",
       "parentUuid": "d3636b16_675a12f2",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 26
+      },
+      "revId": "c34439a20d8504aa8a7de57147b7a3b5d599bd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be09259_ac00da14",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-15T15:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3bca9c02_7c4bfe8b",
       "range": {
         "startLine": 121,
         "startChar": 5,

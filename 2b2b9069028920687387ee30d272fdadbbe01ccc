@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32c2dc8e_863debae",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-15T15:16:22Z",
+      "side": 1,
+      "message": "Charlie, please confirm that PP3300_S0 is still powered when SLP_S3_S0I3_L is asserted.",
+      "parentUuid": "5d265fbf_45029e45",
+      "revId": "2b2b9069028920687387ee30d272fdadbbe01ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9408f8ce_9f1f4e05",
         "filename": "baseboard/guybrush/baseboard.h",
         "patchSetId": 1
@@ -138,6 +156,30 @@
       "side": 1,
       "message": "I think it would be good to add CONFIG_I2C_BUS_MAY_BE_UNPOWERED, don\u0027t remember any good reason for not doing so on Zork.",
       "parentUuid": "991e2b84_737f882e",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "2b2b9069028920687387ee30d272fdadbbe01ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9ed30f_837bdb7d",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-15T15:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "185e5083_ac1c571d",
       "range": {
         "startLine": 81,
         "startChar": 0,
