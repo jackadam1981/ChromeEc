@@ -118,9 +118,12 @@ void print_flag(int port, int set_or_clear, int flag);
 #define TC_FLAGS_UPDATE_CURRENT		BIT(18)
 /* Flag to indicate USB mux should be updated */
 #define TC_FLAGS_UPDATE_USB_MUX		BIT(19)
+/* Flag for retimer firmware update */
+#define TC_FLAGS_USB_RETIMER_FW_UPDATE_RUN     BIT(20)
+#define TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN BIT(21)
 
 /* For checking flag_bit_names[] array */
-#define TC_FLAGS_COUNT			20
+#define TC_FLAGS_COUNT			22
 
 /*
  * Clear all flags except TC_FLAGS_LPM_ENGAGED and TC_FLAGS_SUSPEND.
@@ -306,6 +309,10 @@ static struct bit_name flag_bit_names[] = {
 	{ TC_FLAGS_SUSPEND, "SUSPEND" },
 	{ TC_FLAGS_UPDATE_CURRENT, "UPDATE_CURRENT" },
 	{ TC_FLAGS_UPDATE_USB_MUX, "UPDATE_USB_MUX" },
+	{ TC_FLAGS_USB_RETIMER_FW_UPDATE_RUN,
+			"USB_RETIMER_FW_UPDATE_RUN" },
+	{ TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN,
+			"USB_RETIMER_FW_UPDATE_LTD_RUN" },
 };
 BUILD_ASSERT(ARRAY_SIZE(flag_bit_names) == TC_FLAGS_COUNT);
 
@@ -3562,6 +3569,16 @@ void tc_set_debug_level(enum debug_level debug_level)
 #endif
 }
 
+void tc_usb_firmware_fw_update_limited_run(int port)
+{
+	TC_SET_FLAG(port, TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN);
+}
+
+void tc_usb_firmware_fw_update_run(int port)
+{
+	TC_SET_FLAG(port, TC_FLAGS_USB_RETIMER_FW_UPDATE_RUN);
+}
+
 void tc_run(const int port)
 {
 	/*
@@ -3575,6 +3592,18 @@ void tc_run(const int port)
 			pe_invalidate_explicit_contract(port);
 
 		set_state_tc(port, TC_DISABLED);
+
+		if (TC_CHK_FLAG(port,
+				TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN)) {
+			TC_CLR_FLAG(port,
+				TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN);
+			usb_retimer_fw_update_process_op_cb(port);
+		}
+	}
+
+	if (TC_CHK_FLAG(port, TC_FLAGS_USB_RETIMER_FW_UPDATE_RUN)) {
+		TC_CLR_FLAG(port, TC_FLAGS_USB_RETIMER_FW_UPDATE_RUN);
+		usb_retimer_fw_update_process_op_cb(port);
 	}
 
 	run_state(port, &tc[port].ctx);
