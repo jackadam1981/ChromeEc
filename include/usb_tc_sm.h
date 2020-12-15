@@ -365,6 +365,9 @@ const char *tc_get_current_state(int port);
  */
 uint32_t tc_get_flags(int port);
 
+/* BB retimer firmware update flag */
+void tc_bb_firmware_fw_update_set_flag(int port);
+
 #ifdef CONFIG_USB_CTVPD
 
 /**

@@ -116,6 +116,8 @@ void print_flag(int port, int set_or_clear, int flag);
 #define TC_FLAGS_SUSPEND                BIT(17)
 /* Flag to indicate the port current limit has changed */
 #define TC_FLAGS_UPDATE_CURRENT		BIT(18)
+/* Flag for Burnside Bridge retimer firmware update */
+#define TC_FLAGS_BB_RETIMER_FW_UPDATE   BIT(19)
 
 /*
  * Clear all flags except TC_FLAGS_LPM_ENGAGED and TC_FLAGS_SUSPEND.
@@ -300,6 +302,7 @@ static struct bit_name flag_bit_names[] = {
 	{ TC_FLAGS_CHECK_CONNECTION, "CHECK_CONNECTION" },
 	{ TC_FLAGS_SUSPEND, "SUSPEND" },
 	{ TC_FLAGS_UPDATE_CURRENT, "UPDATE_CURRENT" },
+	{ TC_FLAGS_BB_RETIMER_FW_UPDATE, "BB_RETIMER_FW_UPDATE" },
 };
 
 static struct bit_name event_bit_names[] = {
@@ -3550,6 +3553,11 @@ void tc_set_debug_level(enum debug_level debug_level)
 #endif
 }
 
+void tc_bb_firmware_fw_update_set_flag(int port)
+{
+	TC_SET_FLAG(port, TC_FLAGS_BB_RETIMER_FW_UPDATE);
+}
+
 void tc_run(const int port)
 {
 	/*
@@ -3563,6 +3571,11 @@ void tc_run(const int port)
 			pe_invalidate_explicit_contract(port);
 
 		set_state_tc(port, TC_DISABLED);
+
+		if (TC_CHK_FLAG(port, TC_FLAGS_BB_RETIMER_FW_UPDATE)) {
+			TC_CLR_FLAG(port, TC_FLAGS_BB_RETIMER_FW_UPDATE);
+			bb_retimer_fw_update_process_mux_op(port);
+		}
 	}
 
 	run_state(port, &tc[port].ctx);
