@@ -200,4 +200,29 @@ void pd_update_saved_port_flags(int port, uint8_t flag, uint8_t do_set);
  * @return EC_SUCCESS on success else EC_ERROR_INVAL
  */
 int pd_build_alert_msg(uint32_t *msg, uint32_t *len, enum pd_power_role pr);
+
+/*
+ * Query USB-C ports state for burnside bridge retimer firmware update.
+ *
+ * @return Bits[3:0]: represent port 0-3; bit 0 is port 0.
+ *         1 - Burnside bridge retimer in this port;
+ *         0 - not bb retimer.
+ *         Bits[7:4]: represent port 0-3; bit 4 is port 0.
+ *         1 - Port has TBT/USB4 mux set;
+ *         0 - mux is USB, DP, or none.
+ */
+__override_proto int bb_retimer_fw_update_query_port(void);
+
+/**
+ * During burnside bridge retimer firmware update, set retimer/mux to AP
+ * requested mode
+ *
+ * @param port USB-C port number
+ * @param mode
+ *           0 - EC_ACPI_MEM_BB_RETIMER_DISCONNECT
+ *           1 - EC_ACPI_MEM_BB_RETIMER_USB
+ *           2 - EC_ACPI_MEM_BB_RETIMER_SAFE
+ *           3 - EC_ACPI_MEM_BB_RETIMER_TBT
+ */
+void bb_retimer_fw_update_set_mode(int port, int mode);
 #endif /* __CROS_EC_USB_COMMON_H */

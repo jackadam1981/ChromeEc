@@ -419,6 +419,32 @@ extern "C" {
 #define EC_ACPI_MEM_USB_PORT_POWER 0x13
 
 /*
+ * Burnside Bridge Retimer firmware update.
+ * Read:
+ *      Bits[3:0]: port has burnside bridge retimer or not
+ *      bit 0 = 1 if USB-C port 0 has burnside bridge retimer
+ *      bit 1 = 1 if USB-C port 1 has burnside bridge retimer
+ *       ...
+ *      Bits[7:4]: port has TBT/USB4 mux set or not
+ * Write:
+ *      bits[3:0]: USB-C port number to set retiemr/usb mux
+ *                 for burnside bridge firmware update, 1-based.
+ *      bits[7:4]: retimer/mux mode
+ *      0 - Disconnect
+ *      1 - Set USB mode
+ *      2 - Set safe mode
+ *      3 - Set TBT mode
+ */
+#define EC_ACPI_MEM_BB_RETIMER_FW_UPDATE	0x14
+#define EC_ACPI_MEM_BB_RETIMER_DISCONNECT	0
+#define EC_ACPI_MEM_BB_RETIMER_USB		1
+#define EC_ACPI_MEM_BB_RETIMER_SAFE		2
+#define EC_ACPI_MEM_BB_RETIMER_TBT		3
+/* convert 1-based USB-C port number to 0-based */
+#define EC_ACPI_MEM_BB_RETIMER_PORT(x)	((x & 0x0f) - 1)
+#define EC_ACPI_MEM_BB_RETIMER_MODE(x)	((x & 0xf0) >> 4)
+
+/*
  * ACPI addresses 0x20 - 0xff map to EC_MEMMAP offset 0x00 - 0xdf.  This data
  * is read-only from the AP.  Added in EC_ACPI_MEM_VERSION 2.
  */

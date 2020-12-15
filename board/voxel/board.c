@@ -399,6 +399,27 @@ static void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
+__override int bb_retimer_fw_update_query_port(void)
+{
+	int i;
+	mux_state_t mux_state = 0;
+	int result = 0;
+
+	/* Both USBC_PORT_C0 and USBC_PORT_C1 have burnside bridge retimer */
+	result = BIT(0) | BIT(1);
+
+	for (i = USBC_PORT_C0; i < USBC_PORT_COUNT; i++) {
+		mux_state = usb_mux_get(i);
+		if (mux_state != USB_PD_MUX_NONE)
+			result |= BIT(i + 4);
+	}
+	CPRINTS("retimer fw update query: mux state: 0x%x, result 0x%x",
+			mux_state, result);
+
+	return result;
+}
+
+
 /******************************************************************************/
 /* TCPC support routines */
 uint16_t tcpc_get_alert_status(void)
