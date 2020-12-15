@@ -263,6 +263,18 @@ out:
 	return rv;
 }
 
+static int isl923x_is_sourcing_otg_power(int chgnum, int port)
+{
+	enum ec_error_list rv;
+	int val;
+
+	rv = raw_read16(chgnum, ISL923X_REG_CONTROL1, &val);
+	if (rv)
+		return 0;
+
+	return (val & ISL923X_C1_OTG);
+}
+
 /*
  * TODO(b:67920792): OTG is not implemented for ISL9237 that has different
  * register scale and range.
@@ -1273,6 +1285,7 @@ const struct charger_drv isl923x_drv = {
 	.set_mode = &isl923x_set_mode,
 #if defined(CONFIG_CHARGER_OTG) && defined(CHARGER_ISL9238X)
 	.enable_otg_power = &isl923x_enable_otg_power,
+	.is_sourcing_otg_power = &isl923x_is_sourcing_otg_power,
 	.set_otg_current_voltage = &isl923x_set_otg_current_voltage,
 #endif
 	.get_current = &isl923x_get_current,
