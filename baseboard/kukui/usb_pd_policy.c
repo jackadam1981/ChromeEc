@@ -79,7 +79,8 @@ void pd_power_supply_reset(int port)
 	if (port != CHARGE_PORT_USB_C)
 		return;
 
-	prev_en = vbus_en;
+	prev_en = charger_is_sourcing_otg_power(port);
+
 	/* Disable VBUS */
 	vbus_en = 0;
 	/* Enable discharge if we were previously sourcing 5V */
