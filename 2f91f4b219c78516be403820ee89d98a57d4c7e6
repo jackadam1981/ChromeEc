@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34b5645_dcb00e59",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-15T20:48:21Z",
+      "side": 1,
+      "message": "nit: false",
+      "range": {
+        "startLine": 440,
+        "startChar": 29,
+        "endLine": 440,
+        "endChar": 30
+      },
+      "revId": "2f91f4b219c78516be403820ee89d98a57d4c7e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8a44ca8_61f37756",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-15T20:48:21Z",
+      "side": 1,
+      "message": "Seems like this needs an \"else if (goodcrc)\", right?  Otherwise if the partner is cable probing, we might declare the DiscoverIdentity SOP\u0027 a GoodCRC receive event?",
+      "range": {
+        "startLine": 1153,
+        "startChar": 0,
+        "endLine": 1155,
+        "endChar": 43
+      },
+      "revId": "2f91f4b219c78516be403820ee89d98a57d4c7e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
