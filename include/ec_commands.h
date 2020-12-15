@@ -419,6 +419,18 @@ extern "C" {
 #define EC_ACPI_MEM_USB_PORT_POWER 0x13
 
 /*
+ * Burnside Bridge Retimer firmware update.
+ * Read:
+ *      Result of last operation AP requested
+ * Write:
+ *      bits[3:0]: USB-C port number
+ *      bits[7:4]: Operation requested by AP
+ */
+#define EC_ACPI_MEM_BB_RETIMER_FW_UPDATE 0x14
+#define EC_ACPI_MEM_BB_RETIMER_PORT(x)   (x & 0x0f)
+#define EC_ACPI_MEM_BB_RETIMER_OP(x)     ((x & 0xf0) >> 4)
+
+/*
  * ACPI addresses 0x20 - 0xff map to EC_MEMMAP offset 0x00 - 0xdf.  This data
  * is read-only from the AP.  Added in EC_ACPI_MEM_VERSION 2.
  */

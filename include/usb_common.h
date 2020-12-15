@@ -200,4 +200,42 @@ void pd_update_saved_port_flags(int port, uint8_t flag, uint8_t do_set);
  * @return EC_SUCCESS on success else EC_ERROR_INVAL
  */
 int pd_build_alert_msg(uint32_t *msg, uint32_t *len, enum pd_power_role pr);
+
+/**
+ * Query USB-C ports state for burnside bridge retimer firmware update.
+ * Support up to 8 ports.
+ *
+ * @return Bits[7:0]: represent PD ports 0-7
+ *         1 - Burnside bridge retimer in this port;
+ *         0 - not BB retimer.
+ */
+__override_proto int bb_retimer_fw_update_query_port(void);
+
+/**
+ * During burnside bridge retimer firmware update, process operateion
+ * requested by AP
+ *
+ * @param port USB-C port number
+ * @param op
+ *       0 - BB_RETIMER_FW_UPDATE_PORT_INFO
+ *       1 - BB_RETIMER_FW_UPDATE_PD_SUSPEND
+ *       2 - BB_RETIMER_FW_UPDATE_PD_RESUME
+ *       3 - BB_RETIMER_FW_UPDATE_GET_MUX
+ *       4 - BB_RETIMER_FW_UPDATE_SET_USB
+ *       5 - BB_RETIMER_FW_UPDATE_SET_SAFE
+ *       6 - BB_RETIMER_FW_UPDATE_SET_TBT
+ *       7 - BB_RETIMER_FW_UPDATE_DISCONNECT
+ */
+void bb_retimer_fw_update_process_op(int port, int op);
+
+/**
+ * Result of last BB retimer firmware update operation requested
+ * by AP. Pass the result to AP via EC_CMD_ACPI_READ
+ */
+int bb_retimer_fw_update_get_result(void);
+
+/**
+ * Called by PD task to process mux operation
+ */
+void bb_retimer_fw_update_process_mux_op(int port);
 #endif /* __CROS_EC_USB_COMMON_H */
