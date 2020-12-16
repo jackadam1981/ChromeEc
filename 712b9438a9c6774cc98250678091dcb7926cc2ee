@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac8f9b7_5f1524d0",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-16T06:12:20Z",
+      "side": 1,
+      "message": "Modified and updated at patchset 5",
+      "parentUuid": "40c89353_c23831bc",
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b878567_abdba88c",
@@ -210,6 +228,30 @@
       "side": 1,
       "message": "I see that this comment has been moved to the header file in patchset 2. With the improved macro names, it is no longer required here. You can delete it.",
       "parentUuid": "748d0c68_0f06a5b3",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "630de6af_2cd2fa3c",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-16T06:12:20Z",
+      "side": 1,
+      "message": "Modified and updated at patchset 5",
+      "parentUuid": "08f3c3ce_b1bd42fc",
       "range": {
         "startLine": 48,
         "startChar": 1,
@@ -315,6 +357,24 @@
       "side": 1,
       "message": "Please add the following comment above the function:\n/*\n * Selects the CC PHY noise filter voltage level according to the current\n * CC voltage level.\n *\n * @param cc_level The CC voltage level for the port\u0027s current role\n * @return EC_SUCCESS if writes succeed; failure code otherwise\n */\n\nAnd please change the parameter name to cc_level.",
       "parentUuid": "fe891b1f_ddeee251",
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65ff1ae_b1ed6208",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-16T06:12:20Z",
+      "side": 1,
+      "message": "Modified and updated at patchset 5",
+      "parentUuid": "fe465525_6ee753b9",
       "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -721,6 +781,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55748720_a14bbd85",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-16T06:12:20Z",
+      "side": 1,
+      "message": "Fixed at patchset 5",
+      "parentUuid": "076df4b5_979c356e",
+      "range": {
+        "startLine": 148,
+        "startChar": 34,
+        "endLine": 148,
+        "endChar": 68
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53801f59_25aa9af4",
@@ -799,6 +883,30 @@
       "side": 1,
       "message": "This line didn\u0027t change in patchset 2.",
       "parentUuid": "e4efe9b5_53b54eef",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 45
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ff05d0_bbe4b659",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-16T06:12:20Z",
+      "side": 1,
+      "message": "Modified and updated at patchset 5",
+      "parentUuid": "3deb6e9b_5a468f11",
       "range": {
         "startLine": 195,
         "startChar": 2,
