@@ -129,6 +129,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68fba9a5_ac74d04f",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-16T17:40:57Z",
+      "side": 1,
+      "message": "The test still passes with this simpler implementation. Please change it to that.",
+      "parentUuid": "e65a268a_86f3c43f",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 2
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df2e9d3b_594d0420",
         "filename": "driver/tcpm/rt1715.h",
         "patchSetId": 6
