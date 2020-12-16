@@ -807,6 +807,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fefa9236_b9249c02",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-16T17:08:29Z",
+      "side": 1,
+      "message": "Patchset 5 bases the BMCIO_RXDZSEL setting on the opposite CC pin, but both patchsets pass TDA.2.1.2.1. If I remove this line, it fails TDA.2.1.2.1, so it\u0027s obviously important. Can you comment on why switching which CC line we check doesn\u0027t break the behavior?",
+      "parentUuid": "55748720_a14bbd85",
+      "range": {
+        "startLine": 148,
+        "startChar": 34,
+        "endLine": 148,
+        "endChar": 68
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53801f59_25aa9af4",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 1
@@ -978,6 +1002,30 @@
       "side": 1,
       "message": "Fixed at patchset 2.",
       "parentUuid": "b7db2756_d915cdc4",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5edfe0_339a58a9",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-16T17:08:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "510c966f_5c00c232",
       "range": {
         "startLine": 11,
         "startChar": 0,

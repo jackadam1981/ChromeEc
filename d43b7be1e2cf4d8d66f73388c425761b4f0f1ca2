@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54cb4fb3_8619864a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-16T17:08:29Z",
+      "side": 1,
+      "message": "The code style looks fine. Please respond to the outstanding comments on the overall logic of this CL, summarized here:\n\n1. Why are the register values in rt1715_tcpci_tcpm_init set to what they are?\n\n2. Can you confirm explicitly that RT1715 conforms to TCPCI 0.6 and not TCPCI rev 1.0, v1.0, even though its PD_INTERFACE_REV register indicates the latter?\n\n3. How does the logic in rt1715_get_cc materially differ from tcpci_tcpm_get_cc?\n\n4. Patchset 5 switches which CC line we check to set the noise rejection values but doesn\u0027t break the test. Can you explain why?\n\n5. Why does rt1715_set_polarity call rt1715_get_cc?\n\n6. Do the bits in BMCIO_RXDZSEL need to be set in two separate transactions?",
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d52877_6723a5aa",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-16T17:08:29Z",
+      "side": 1,
+      "message": "Nit: This comment would be more helpful next to the macro definition. It can be removed here.",
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d832d801_82b78798",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-16T17:08:29Z",
+      "side": 1,
+      "message": "Is it necessary to write these bits separately, or can they be written in one transaction?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 55
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
