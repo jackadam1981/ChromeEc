@@ -16,6 +16,24 @@
       "message": "I\u0027m okay with the change, but can you explain more about why these functions need inline?\nThanks.",
       "revId": "e757f2b86abd223aa62689ed3a9268161671305f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7246449f_9509f4c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-12-16T04:06:10Z",
+      "side": 1,
+      "message": "The CL is neutral which is mainly for the next CL:2592299 to enforce memory barrier (must be inline).",
+      "parentUuid": "4e3c5c31_89478119",
+      "revId": "e757f2b86abd223aa62689ed3a9268161671305f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
