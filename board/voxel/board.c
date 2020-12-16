@@ -11,6 +11,7 @@
 #include "cbi_ec_fw_config.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/accelgyro_icm426xx.h"
 #include "driver/als_tcs3400.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/syv682x.h"
