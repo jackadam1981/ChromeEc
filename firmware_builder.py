@@ -11,12 +11,24 @@ This is the entry point for the custom firmware builder workflow recipe.
 import argparse
 import multiprocessing
 import os
+import pathlib
 import subprocess
 import sys
 
 from google.protobuf import json_format
 
 from chromite.api.gen.chromite.api import firmware_pb2
+
+
+def run_zephyr_builder(opts):
+    """Run the Zephyr firmware_builder.py with appropriate options"""
+    zephyr_chrome = (pathlib.Path(__file__).resolve().parent.parent
+                     / 'zephyr-chrome')
+    subcommand = opts.func.__name__
+
+    subprocess.run([zephyr_chrome / 'firmware_builder.py', subcommand],
+                   cwd=zephyr_chrome, check=True)
+
 
 def build(opts):
     """Builds all EC firmware targets"""
@@ -26,6 +38,9 @@ def build(opts):
         f.write(json_format.MessageToJson(metrics))
     subprocess.run(['make', 'buildall_only', '-j{}'.format(opts.cpus)],
                    cwd=os.path.dirname(__file__), check=True)
+
+    # Verify Zephyr builds
+    run_zephyr_builder(opts)
 
 
 def test(opts):
@@ -45,6 +60,9 @@ def test(opts):
     subprocess.run(
         ['make', 'BOARD=bloonchipper', 'tests', '-j{}'.format(opts.cpus)],
         cwd=os.path.dirname(__file__), check=True)
+
+    # Verify Zephyr unit tests
+    run_zephyr_builder(opts)
 
 
 def main(args):
