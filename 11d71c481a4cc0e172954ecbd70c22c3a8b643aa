@@ -52,6 +52,24 @@
       "parentUuid": "095a92ee_a9fc844b",
       "revId": "11d71c481a4cc0e172954ecbd70c22c3a8b643aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "555ac79a_a01bf709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-12-16T07:05:49Z",
+      "side": 1,
+      "message": "Then maybe try system_add_jump_tag / system_get_jump_tag like this..?\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/usb_port_power_dumb.c#121",
+      "parentUuid": "16b156ae_ba3b56ad",
+      "revId": "11d71c481a4cc0e172954ecbd70c22c3a8b643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
