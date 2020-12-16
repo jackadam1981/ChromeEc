@@ -21,7 +21,12 @@
 
 LOG_MODULE_REGISTER(espi_shim, CONFIG_ESPI_LOG_LEVEL);
 
+static struct host_packet lpc_packet;
+static struct host_cmd_handler_args host_cmd_args;
+static uint8_t host_cmd_flags; /* Flags from host command */
+static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
+static struct ec_lpc_host_args *lpc_host_args;
 
 /*
  * A mapping of platform/ec signals to Zephyr virtual wires.
@@ -120,6 +125,8 @@ static void espi_vwire_handler(const struct device *dev,
 	}
 }
 
+static void handle_host_write(uint32_t data);
+
 static void espi_peripheral_handler(const struct device *dev,
 				    struct espi_callback *cb,
 				    struct espi_event event)
@@ -129,6 +136,11 @@ static void espi_peripheral_handler(const struct device *dev,
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_PORT80) &&
 	    event_type == ESPI_PERIPHERAL_DEBUG_PORT80) {
 		port_80_write(event.evt_data);
+	}
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD) &&
+	    event_type == ESPI_PERIPHERAL_EC_HOST_CMD) {
+		handle_host_write(event.evt_data);
 	}
 }
 
@@ -331,6 +343,12 @@ void lpc_update_host_event_status(void)
 
 static void host_command_init(void)
 {
+	uint32_t shm_mem_host_cmd;
+
+	espi_read_lpc_request(espi_dev, ECUSTOM_HOST_CMD_GET_PARAM_MEMORY,
+			      &shm_mem_host_cmd);
+	lpc_host_args = (struct ec_lpc_host_args *)shm_mem_host_cmd;
+
 	/* We support LPC args and version 3 protocol */
 	*(lpc_get_memmap_range() + EC_MEMMAP_HOST_CMD_FLAGS) =
 		EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED |
@@ -343,3 +361,101 @@ static void host_command_init(void)
 }
 
 DECLARE_HOOK(HOOK_INIT, host_command_init, HOOK_PRIO_INIT_LPC);
+
+static void lpc_send_response(struct host_cmd_handler_args *args)
+{
+	uint8_t *out;
+	uint32_t data;
+	int size = args->response_size;
+	int csum;
+	int i;
+
+	/* Ignore in-progress on LPC since interface is synchronous anyway */
+	if (args->result == EC_RES_IN_PROGRESS)
+		return;
+
+	/* Handle negative size */
+	if (size < 0) {
+		args->result = EC_RES_INVALID_RESPONSE;
+		size = 0;
+	}
+
+	/* New-style response */
+	lpc_host_args->flags = (host_cmd_flags & ~EC_HOST_ARGS_FLAG_FROM_HOST) |
+			       EC_HOST_ARGS_FLAG_TO_HOST;
+
+	lpc_host_args->data_size = size;
+
+	csum = args->command + lpc_host_args->flags +
+	       lpc_host_args->command_version + lpc_host_args->data_size;
+
+	for (i = 0, out = (uint8_t *)args->response; i < size; i++, out++)
+		csum += *out;
+
+	lpc_host_args->checksum = (uint8_t)csum;
+
+	/* Fail if response doesn't fit in the param buffer */
+	if (size > EC_PROTO2_MAX_PARAM_SIZE)
+		args->result = EC_RES_INVALID_RESPONSE;
+
+	/* Write result to the data byte.  This sets the TOH status bit. */
+	data = args->result;
+	espi_write_lpc_request(espi_dev, ECUSTOM_HOST_CMD_SEND_RESULT, &data);
+}
+
+static void lpc_send_response_packet(struct host_packet *pkt)
+{
+	uint32_t data;
+	/* Ignore in-progress on LPC since interface is synchronous anyway */
+	if (pkt->driver_result == EC_RES_IN_PROGRESS)
+		return;
+
+	/* Write result to the data byte.  This sets the TOH status bit. */
+	data = pkt->driver_result;
+	espi_write_lpc_request(espi_dev, ECUSTOM_HOST_CMD_SEND_RESULT, &data);
+}
+
+static void handle_host_write(uint32_t data)
+{
+	uint32_t shm_mem_host_cmd;
+	/*
+	 * Read the command byte.  This clears the FRMH bit in
+	 * the status byte.
+	 */
+	host_cmd_args.command = data & 0xff;
+
+	host_cmd_args.result = EC_RES_SUCCESS;
+	host_cmd_args.send_response = lpc_send_response;
+	host_cmd_flags = lpc_host_args->flags;
+
+	/* See if we have an old or new style command */
+	if (host_cmd_args.command == EC_COMMAND_PROTOCOL_3) {
+		espi_read_lpc_request(espi_dev,
+				      ECUSTOM_HOST_CMD_GET_PARAM_MEMORY,
+				      &shm_mem_host_cmd);
+
+		lpc_packet.send_response = lpc_send_response_packet;
+
+		lpc_packet.request = (const void *)shm_mem_host_cmd;
+		lpc_packet.request_temp = params_copy;
+		lpc_packet.request_max = sizeof(params_copy);
+		/* Don't know the request size so pass in the entire buffer */
+		lpc_packet.request_size = EC_LPC_HOST_PACKET_SIZE;
+
+		lpc_packet.response = (void *)shm_mem_host_cmd;
+		lpc_packet.response_max = EC_LPC_HOST_PACKET_SIZE;
+		lpc_packet.response_size = 0;
+
+		lpc_packet.driver_result = EC_RES_SUCCESS;
+
+		host_packet_receive(&lpc_packet);
+		return;
+
+	} else {
+		/* Old style command, now unsupported */
+		host_cmd_args.result = EC_RES_INVALID_COMMAND;
+	}
+
+	/* Hand off to host command handler */
+	host_command_received(&host_cmd_args);
+}
