@@ -16,6 +16,24 @@
       "message": "Nice. I just started looking at adding a test for TD.PD.SNK3.E12.Soft_Reset so I\u0027ll try adding that on top of this.",
       "revId": "2f03eb75762f406503618fa3557e9242e7f1bbd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03de32bc_5aa2d2f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-16T21:39:26Z",
+      "side": 1,
+      "message": "Perfect. I would like the mock to change at some point to have a DUT/partner interface so some of the magic is more understandable and then expand it to cover more TCPC... but this is a good start",
+      "parentUuid": "954620c6_2786629f",
+      "revId": "2f03eb75762f406503618fa3557e9242e7f1bbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
