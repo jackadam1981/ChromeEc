@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebbdc97_eef1f3dc",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-16T18:00:26Z",
+      "side": 1,
+      "message": "Changed to a TODO.",
+      "parentUuid": "5c80c143_de7ee0d5",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 30
+      },
+      "revId": "87778952a49b256f024ce45a2f1e21a566f3c09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ff4672d_c14dc6e7",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f1f80b_92aac462",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-16T18:00:26Z",
+      "side": 1,
+      "message": "Typo, good catch. I\u0027ll add more comments.",
+      "parentUuid": "2ff4672d_c14dc6e7",
+      "range": {
+        "startLine": 227,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 5
+      },
+      "revId": "87778952a49b256f024ce45a2f1e21a566f3c09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "734306f3_1e1e5f90",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-16T15:59:40Z",
       "side": 1,
       "message": "this is undefined in config.h, why here as well?",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "87778952a49b256f024ce45a2f1e21a566f3c09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2733c27c_da199d1f",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2020-12-16T18:00:26Z",
+      "side": 1,
+      "message": "Oops, that was an experiment.",
+      "parentUuid": "734306f3_1e1e5f90",
       "range": {
         "startLine": 89,
         "startChar": 7,
