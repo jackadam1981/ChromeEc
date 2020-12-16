@@ -106,6 +106,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d13c94a2_dcc74acb",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-16T18:01:00Z",
+      "side": 1,
+      "message": "This code is writing 2 separate registers so this should be fine.",
+      "parentUuid": "d832d801_82b78798",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 55
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e65a268a_86f3c43f",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 6
