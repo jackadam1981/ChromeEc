@@ -22,6 +22,30 @@
       },
       "revId": "b34d920f92244f5b2ff21b79b0a08049a2351775",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "420f922a_0b0e60fd",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-16T00:03:47Z",
+      "side": 1,
+      "message": "The vendor said that they will add a note in a future revision of the datasheet.",
+      "parentUuid": "b4bb1585_73d838c3",
+      "range": {
+        "startLine": 188,
+        "startChar": 40,
+        "endLine": 188,
+        "endChar": 60
+      },
+      "revId": "b34d920f92244f5b2ff21b79b0a08049a2351775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
