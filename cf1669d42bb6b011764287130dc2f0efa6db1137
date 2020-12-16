@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74afc117_6aa6ec14",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-12-16T20:12:39Z",
+      "side": 1,
+      "message": "Better to name it with _icm426xx, which is more meaningful. And rename the original with _bmi160.",
+      "range": {
+        "startLine": 311,
+        "startChar": 34,
+        "endLine": 311,
+        "endChar": 36
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057d4774_fb88a7d7",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-12-16T20:12:39Z",
+      "side": 1,
+      "message": "Why not use i2c_xfer() instead, which does i2c_lock()?",
+      "range": {
+        "startLine": 534,
+        "startChar": 1,
+        "endLine": 534,
+        "endChar": 9
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6948c0ee_bf030848",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-12-16T20:12:39Z",
+      "side": 1,
+      "message": "What does this sequence mean?",
+      "range": {
+        "startLine": 536,
+        "startChar": 2,
+        "endLine": 536,
+        "endChar": 19
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7642f734_14063d3b",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-12-16T20:12:39Z",
+      "side": 1,
+      "message": "Please make sure if this works. Some motion sensor takes longer time to boot up. The I2C xfer may not be responded.",
+      "range": {
+        "startLine": 537,
+        "startChar": 5,
+        "endLine": 537,
+        "endChar": 9
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
