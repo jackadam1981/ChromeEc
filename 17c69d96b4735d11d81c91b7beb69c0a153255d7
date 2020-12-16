@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3192f15e_aff9cf06",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-16T06:03:46Z",
+      "side": 1,
+      "message": "Modified and updated at patchset 5",
+      "parentUuid": "d7c51598_0f6fe589",
+      "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b99d2e2_13b123a0",
@@ -65,6 +83,24 @@
       "writtenOn": "2020-12-14T22:14:29Z",
       "side": 1,
       "message": "There should still be a blank line between the includes and what follows.",
+      "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5503d46c_44c3eb96",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-16T06:03:46Z",
+      "side": 1,
+      "message": "Modified and updated at patchset 5",
+      "parentUuid": "4b99d2e2_13b123a0",
       "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b843ae0a_6f269707",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-16T06:03:46Z",
+      "side": 1,
+      "message": "Modified and updated at patchset 5",
+      "parentUuid": "254eb105_ea6d3b09",
+      "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3287d51_8cf37a6f",
@@ -99,6 +153,24 @@
       "writtenOn": "2020-12-14T22:14:29Z",
       "side": 1,
       "message": "If the register is called I2CRST_CTRL, then the register values should start with RT1715_REG_I2CRST_CTRL_.",
+      "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a06d71_27182523",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-16T06:03:46Z",
+      "side": 1,
+      "message": "Modified and updated at patchset 5",
+      "parentUuid": "e3287d51_8cf37a6f",
       "revId": "17c69d96b4735d11d81c91b7beb69c0a153255d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
