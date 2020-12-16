@@ -34,6 +34,24 @@
       "parentUuid": "6b1176c4_a704bd4d",
       "revId": "11d71c481a4cc0e172954ecbd70c22c3a8b643aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16b156ae_ba3b56ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-12-16T06:34:47Z",
+      "side": 1,
+      "message": "This is not work if I replaced vbus_en to charger_is_sourcing_otg_power(), there is a logic from common\\usb_pd_policy.c pd_set_vbus_discharge() will abort discharging while sysjump. Does any recommend for this?",
+      "parentUuid": "095a92ee_a9fc844b",
+      "revId": "11d71c481a4cc0e172954ecbd70c22c3a8b643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
