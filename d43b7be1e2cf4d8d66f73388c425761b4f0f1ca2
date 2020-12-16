@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68c3baf7_3b2d0618",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-16T17:16:21Z",
+      "side": 1,
+      "message": "Both PHY control updates need some documentation.  Ideally, the comment would provide the rationale for setting the PHY registers to something besides the default.\n\nAt a bare minimum, add a comment indicating \"Set PHY control registers to Richtek recommended values\".",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 51
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d560cc_d7c4986f",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-16T17:16:21Z",
+      "side": 1,
+      "message": "Can you add a bit definition for this in the rt1715.h?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d832d801_82b78798",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 6
@@ -53,6 +99,52 @@
         "startChar": 0,
         "endLine": 111,
         "endChar": 55
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e65a268a_86f3c43f",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-16T17:16:21Z",
+      "side": 1,
+      "message": "This logic appears to be almost identical to the tcpci_tcpm_get_cc() routine.\n\nThe one change is this function always checks CC1 state when DRP is off, while tcpci_tcpm_get_cc() checks both CC1 and CC2 state.\n\nAccording the comment at line 151, the CC1/CC2 states are the same when DRP is off, so I would expect both tcpci_tcpm_get_cc() and this function to generate the same cc1 and cc2 return values.\n\nAre the issues resolved if this routine is changed to:\n\n    static int rt1715_get_cc()\n    {\n        rv \u003d tcpci_tcpm_get_cc(port, cc1, cc2);\n        if (rv)\n            return rv;\n        rv \u003d rt1715_init_cc_params(port, rt1715_polarity[port] ? *cc2 : *cc1);\n    }",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 2
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2e9d3b_594d0420",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-16T17:16:21Z",
+      "side": 1,
+      "message": "Nit - because this is a single bit field, you could delete the \"_MASK\" suffix.",
+      "range": {
+        "startLine": 23,
+        "startChar": 32,
+        "endLine": 23,
+        "endChar": 37
       },
       "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
