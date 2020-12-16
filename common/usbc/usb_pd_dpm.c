@@ -13,6 +13,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "system.h"
+#include "task.h"
 #include "tcpm.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_mode.h"
@@ -342,3 +343,149 @@ void dpm_run(int port)
 	else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE))
 		dpm_attempt_mode_entry(port);
 }
+
+/*
+ * Source-out policy variables and APIs
+ *
+ * Priority for the available 3.0 A ports is given in the following order:
+ * - sink partners which report requiring > 1.5 A in their Sink_Capabilities
+ */
+
+/*
+ * Bitmasks of port numbers in each following category
+ *
+ * Note: request bitmasks should be accessed atomically as other ports may alter
+ * them
+ */
+static uint32_t max_claimed;
+static struct mutex max_claimed_lock;
+
+static uint32_t max_sink_requested;	/* Ports with PD sink needing > 1.5A */
+
+#define LOWEST_PORT(p) __builtin_ctz(p)  /* Undefined behavior if p == 0 */
+
+/*
+ * Note: cannot use popcount, as not all architectures have an equivalent
+ * assembly instruction to it.
+ */
+static int count_port_bits(uint32_t bitmask)
+{
+	int i, total = 0;
+
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		if (bitmask & BIT(i))
+			total++;
+	}
+
+	return total;
+}
+
+/* TODO(b/141690755): Move to config.h */
+#define CONFIG_USB_PD_3A_PORTS	1
+
+enum port_update_action {
+	ADD_3A_SINK,
+	REMOVE_3A_SINK,
+};
+
+/*
+ * Centralized, mutex-controlled updates to the claimed 3.0 A ports
+ */
+static void update_ports(int port, enum port_update_action action)
+{
+	mutex_lock(&max_claimed_lock);
+
+	if (action == ADD_3A_SINK) {
+		if (!(BIT(port) & max_claimed)) {
+			if (count_port_bits(max_claimed) <
+			    CONFIG_USB_PD_3A_PORTS) {
+				atomic_or(&max_claimed, BIT(port));
+
+				typec_set_source_current_limit(port,
+							       TYPEC_RP_3A0);
+				typec_select_src_current_limit_rp(port,
+								  TYPEC_RP_3A0);
+				pd_update_contract(port);
+			}
+			/* TODO(b/141690755): Check lower priority claims */
+		}
+	} else if (action == REMOVE_3A_SINK) {
+		if (BIT(port) & max_claimed) {
+			uint32_t ports_waiting;
+
+			atomic_clear_bits(&max_claimed, BIT(port));
+
+			/*
+			 * Reallocate 3 A to other sink ports, lowest number
+			 * getting priority
+			 */
+			ports_waiting = max_sink_requested & ~max_claimed;
+			if (ports_waiting) {
+				int new_port = LOWEST_PORT(ports_waiting);
+
+				atomic_or(&max_claimed, BIT(new_port));
+
+				typec_set_source_current_limit(new_port,
+							       TYPEC_RP_3A0);
+				typec_select_src_current_limit_rp(new_port,
+								  TYPEC_RP_3A0);
+				pd_update_contract(new_port);
+			}
+			/* TODO(b/141690755): Check lower priority ports */
+		}
+	}
+
+	mutex_unlock(&max_claimed_lock);
+}
+
+/* Process sink's first Sink_Capabilities PDO for port current consideration */
+void dpm_evaluate_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
+{
+	/* Verify partner supplied valid vSafe5V fixed object first */
+	if ((vsafe5v_pdo & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
+		return;
+
+	if (PDO_FIXED_VOLTAGE(vsafe5v_pdo) != 5000)
+		return;
+
+	/* Valid PDO to process, so evaluate whether > 1.5 A is needed */
+	if (PDO_FIXED_CURRENT(vsafe5v_pdo) <= 1500)
+		return;
+
+	atomic_or(&max_sink_requested, BIT(port));
+
+	update_ports(port, ADD_3A_SINK);
+}
+
+void dpm_remove_sink(int port)
+{
+	if (!(BIT(port) & max_sink_requested))
+		return;
+
+	atomic_clear_bits(&max_sink_requested, BIT(port));
+
+	update_ports(port, REMOVE_3A_SINK);
+}
+
+#if defined(CONFIG_USB_PD_DYNAMIC_SRC_CAP) || \
+		defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)
+/*
+ * Charge manager APIs
+ * TODO(b/141690755): Remove and replace with DPM calls
+ */
+void charge_manager_source_port(int port, int enable)
+{
+	/* No-op present for linking */
+}
+
+int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
+{
+	if (max_claimed & BIT(port)) {
+		*src_pdo = pd_src_pdo_max;
+		return pd_src_pdo_max_cnt;
+	}
+
+	*src_pdo = pd_src_pdo;
+	return pd_src_pdo_cnt;
+}
+#endif
