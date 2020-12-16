@@ -16,6 +16,75 @@
       "message": "Hey, here\u0027s the minimal needed to get basic USB PD configured. I plan to break this up if possible, but I wanted to check if you have any opinions on how it\u0027s organized.",
       "revId": "87778952a49b256f024ce45a2f1e21a566f3c09f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c80c143_de7ee0d5",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-16T15:59:40Z",
+      "side": 1,
+      "message": "not sure we want to enable this for bringup... I don\u0027t think it is reliably working on any platform yet.",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 30
+      },
+      "revId": "87778952a49b256f024ce45a2f1e21a566f3c09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff4672d_c14dc6e7",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-16T15:59:40Z",
+      "side": 1,
+      "message": "Not sure why this was changed. Seems additional comments for enums below would be better.  Possibly USB and below Sensor and Battery",
+      "range": {
+        "startLine": 227,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 5
+      },
+      "revId": "87778952a49b256f024ce45a2f1e21a566f3c09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "734306f3_1e1e5f90",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-16T15:59:40Z",
+      "side": 1,
+      "message": "this is undefined in config.h, why here as well?",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "87778952a49b256f024ce45a2f1e21a566f3c09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
