@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a64e778_c129d018",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-16T18:46:28Z",
+      "side": 1,
+      "message": "post comment change, feel free to carry over the +2",
+      "revId": "97813711da86b17d15f3e187b362433a8a0f5709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af66a7ea_6da54e33",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-16T18:46:28Z",
+      "side": 1,
+      "message": "nit: USB-A",
+      "range": {
+        "startLine": 234,
+        "startChar": 6,
+        "endLine": 234,
+        "endChar": 8
+      },
+      "revId": "97813711da86b17d15f3e187b362433a8a0f5709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
