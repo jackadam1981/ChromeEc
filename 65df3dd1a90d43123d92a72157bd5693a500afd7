@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a94b3e3e_3f5ec623",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-16T09:34:07Z",
+      "side": 1,
+      "message": "I have already done an updated servo configuration to ensure both slp_ signals are off on all variants of servo.\n\nI\u0027m preparing the test CL with a sanity check.",
+      "parentUuid": "df0cdf96_cf05f79f",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "65df3dd1a90d43123d92a72157bd5693a500afd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87ab413b_9070c896",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-04T01:05:42Z",
       "side": 1,
       "message": "Technically not needed (can be \"none\"). We just merge everything from master into the release branch periodically: http://go/cros-fingerprint-firmware-branching-and-signing",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "revId": "65df3dd1a90d43123d92a72157bd5693a500afd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9364405_998aff07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-16T09:34:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "87ab413b_9070c896",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1829108b_43a473b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-16T09:34:07Z",
+      "side": 1,
+      "message": "Sure when this one is submitted and we have the official firmware version, I will push the new numbers.",
+      "parentUuid": "0b332f91_ed860f2c",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 74
+      },
+      "revId": "65df3dd1a90d43123d92a72157bd5693a500afd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4bf4d250_b83c7b7f",
@@ -83,6 +155,23 @@
       "writtenOn": "2020-12-03T17:05:02Z",
       "side": 1,
       "message": "the settings to put the power management code in the configuration discussed in b/130561737#comment45 and b/130561737#comment51\nFirst tests on Jinlon(hatch) and Morphius(zork) look positive",
+      "revId": "65df3dd1a90d43123d92a72157bd5693a500afd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83471a8c_66ffb1a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-12-16T09:34:07Z",
+      "side": 1,
+      "message": "the results of the long-term testing on Morphius (Zork) and Jinlon (Hatch) looks fine",
       "revId": "65df3dd1a90d43123d92a72157bd5693a500afd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
