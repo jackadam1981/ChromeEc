@@ -40,7 +40,7 @@ GPIO(EN_PP5000_HSPORT,              PIN(D,  0), GPIO_OUT_LOW)
 GPIO(MST_LP_CTL_L,                  PIN(D, 10), GPIO_ODR_LOW)
 GPIO(MST_RST_L,                     PIN(E, 14), GPIO_ODR_LOW)
 #ifdef BOARD_P1
-GPIO(MST_HUB_LANE_SWITCH,           PIN(C, 15), GPIO_OUT_HIGH)
+GPIO(MST_HUB_LANE_SWITCH,           PIN(C, 15), GPIO_OUT_LOW)
 #endif
 
 /* Display Demux signals */
