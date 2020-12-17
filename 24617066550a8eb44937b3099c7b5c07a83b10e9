@@ -63,6 +63,30 @@
       },
       "revId": "24617066550a8eb44937b3099c7b5c07a83b10e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "636f59ad_baa3b090",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-17T03:40:57Z",
+      "side": 1,
+      "message": "I\u0027m not following what you tested.\n\nI\u0027m suggesting the following (pseudo-code)\n\n    if (entering_safe_mode || exiting_safe mode) {\n        assert(pd_task);\n        task_wait();\n        usleep();\n    }\n\nThis matches what you had in the previous CL on the 2nd to last patchset.  Does this still cause a boot loop?\n\nIf you\u0027re tripping the assert with the above code, then the suggested fix in this CL will fail to wait for ACKs from the AP when booting with a device connected.  The solution is to identify the callers to mux set that happen outside the PD task and evaluate whether they are needed or can be moved to the PD task.",
+      "parentUuid": "07e6c2d2_117026c3",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "24617066550a8eb44937b3099c7b5c07a83b10e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
