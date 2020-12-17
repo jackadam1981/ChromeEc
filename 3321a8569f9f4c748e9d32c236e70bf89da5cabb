@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0887984_03e771b1",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-12-17T06:07:35Z",
+      "side": 1,
+      "message": "Seems like IS_ENABLED(CONFIG_ACCEL_FIFO) always return 0.\nIf use this, we can\u0027t get data.\nIf need to follow master branch, we need few patch to compatible master branch.",
+      "parentUuid": "8c017a91_8bfeec33",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 24
+      },
+      "revId": "3321a8569f9f4c748e9d32c236e70bf89da5cabb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0cc65433_89cb438a",
         "filename": "driver/accelgyro_icm426xx.c",
         "patchSetId": 2
@@ -72,6 +96,30 @@
       "writtenOn": "2020-12-16T11:10:18Z",
       "side": 1,
       "message": "Do you use this? If not, maybe we can remove this.",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 35
+      },
+      "revId": "3321a8569f9f4c748e9d32c236e70bf89da5cabb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc22ee1_7e0f3f65",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-12-17T06:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cc65433_89cb438a",
       "range": {
         "startLine": 286,
         "startChar": 0,
@@ -95,6 +143,30 @@
       "writtenOn": "2020-12-16T11:10:18Z",
       "side": 1,
       "message": "maybe you can remove this since the octopus factory branch doesn\u0027t have this field.",
+      "range": {
+        "startLine": 928,
+        "startChar": 0,
+        "endLine": 930,
+        "endChar": 6
+      },
+      "revId": "3321a8569f9f4c748e9d32c236e70bf89da5cabb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "996e6842_a121ceb6",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-12-17T06:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1f6e9e3_576986c9",
       "range": {
         "startLine": 928,
         "startChar": 0,
