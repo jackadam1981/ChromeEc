@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ca4069_67bd0e87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-17T09:22:02Z",
+      "side": 1,
+      "message": "Added checks to make sure that pd_get_requested_voltage() and pd_get_requested_current() exist.",
+      "revId": "799300107f43853a5635eca5f5f052b34456f09e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
