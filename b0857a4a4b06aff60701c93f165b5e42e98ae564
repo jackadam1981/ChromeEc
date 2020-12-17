@@ -16,6 +16,75 @@
       "message": "This CL is leveraged from CL:2573667. Same as b:174151372 Tx hard signal late because BMC PHY bit0 disable Tx and Rx module. ",
       "revId": "b0857a4a4b06aff60701c93f165b5e42e98ae564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c9d9a5_71ccc5a0",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-17T05:26:03Z",
+      "side": 1,
+      "message": "To save a few bytes, can we change it to uint8_t, int8_t, or just bool?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "b0857a4a4b06aff60701c93f165b5e42e98ae564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d060fc07_7d9f283f",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-17T05:26:03Z",
+      "side": 1,
+      "message": "Let\u0027s have an early return:\n\n  if (!rx_en[port])\n     return EC_SUCCESS;\n\n  if (enable) {\n      ...\n  }",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 13
+      },
+      "revId": "b0857a4a4b06aff60701c93f165b5e42e98ae564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc524749_f055028d",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-17T05:26:03Z",
+      "side": 1,
+      "message": "could we rename it as:\n\n static void it8xxx2_set_pd_sleep_mask(int port) ?",
+      "range": {
+        "startLine": 819,
+        "startChar": 0,
+        "endLine": 819,
+        "endChar": 32
+      },
+      "revId": "b0857a4a4b06aff60701c93f165b5e42e98ae564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
