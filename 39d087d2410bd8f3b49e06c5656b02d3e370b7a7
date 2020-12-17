@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9d53d28_8e4b36a2",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T22:01:17Z",
+      "side": 1,
+      "message": "Yes, so during sink removal any new calls to re-allocate ports would exit early if another port\u0027s sink removal is currently executing.  This seemed like a reasonable approach to me since we\u0027d need to get up to something on the order of 4 ports total with 2 max ports before it could start causing us to not allocate another 3 A port, and we re-evaluate the sink current after things like hard or soft resets at which point a port could see that 3 A is free now.  \n\nIf we\u0027re overly concerned, we can try to synchronize things more (ex. locking when any changes are in progress).  But I hesitate to add slow-down or deadlock risk into the PD tasks.",
+      "parentUuid": "be00e8d5_f784da90",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 46
+      },
+      "revId": "39d087d2410bd8f3b49e06c5656b02d3e370b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a921af71_5b3bf69a",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-17T21:25:34Z",
       "side": 1,
       "message": "Policy outlined in your doc is to allocate 3A to the oldest port.  Need a todo here since this allocates to the lowest port number.",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 68
+      },
+      "revId": "39d087d2410bd8f3b49e06c5656b02d3e370b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "823ba578_58d2e821",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T22:01:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether giving it to the oldest port is a complication that\u0027s worth the effort anymore.  We\u0027d need to maintain 64-bit timestamps for every port\u0027s initial connection time to avoid issues with timestamp rollover, and I\u0027m not sure that either method is really going to be intuitive to a customer.  Really, the most intuitive thing for them would be if/when we can provide APIs so they can select the maximum current partner from the UI.  Thoughts? \n\nI\u0027m updating the doc for FRS soon, and could change it from \"oldest\" pretty easily.",
+      "parentUuid": "a921af71_5b3bf69a",
       "range": {
         "startLine": 426,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c0ad200_0deeaf24",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T22:01:17Z",
+      "side": 1,
+      "message": "Yes, we could end up trying to re-allocate 3A to port 1 when it already snagged it itself (ex. if we were one short of the max number of ports), which should be okay.  We could also allocate to port 1 after its task had exited without allocating if we were at the max, which should also be okay.  We could also try to allocate to port 1 after it had detached, which would be okay in terms of external behavior but could leave us with a stale claimed port.  \n\nWhat are you thinking for solutions?",
+      "parentUuid": "3cd09abb_9b6ee2ac",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 428,
+        "endChar": 19
+      },
+      "revId": "39d087d2410bd8f3b49e06c5656b02d3e370b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7414a8c1_dc2a916b",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-17T21:25:34Z",
       "side": 1,
       "message": "I think it would be good to comment here that we only offer a 7.5W PDO initially, unless the port has already been given a 15W PDO.\n\nPartners are only upgraded to 15W after the PE requests the SNK caps.",
+      "range": {
+        "startLine": 446,
+        "startChar": 4,
+        "endLine": 446,
+        "endChar": 33
+      },
+      "revId": "39d087d2410bd8f3b49e06c5656b02d3e370b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b3ec31_b80a9d2f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T22:01:17Z",
+      "side": 1,
+      "message": "I\u0027ll clarify that in the CL that switches this to a DPM call",
+      "parentUuid": "7414a8c1_dc2a916b",
       "range": {
         "startLine": 446,
         "startChar": 4,
