@@ -22,6 +22,30 @@
       },
       "revId": "fc352260f476ce81b48db7443cc0f12173a0235a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df94aea_b6a466b1",
+        "filename": "test/usb_tcpmv2_td_pd_ll_e4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-17T23:30:45Z",
+      "side": 1,
+      "message": "I am reading what the PRL writes to this register. Since our mock does not simulate the HardReset, I am gathering the information from the mock registers to try to recreate this. I am not sure checking what the PRL actually wrote to this register is a bad thing. I will change this, but I am not sure it makes a difference.",
+      "parentUuid": "f6e152ae_741d42ad",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 20
+      },
+      "revId": "fc352260f476ce81b48db7443cc0f12173a0235a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
