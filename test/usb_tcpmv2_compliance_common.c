@@ -306,6 +306,12 @@ int proc_pd_e3(void)
 	 * the test fails. During this period, the Tester replies any message
 	 * sent from the UUT with a proper response.
 	 */
+	TEST_EQ(verify_tcpci_transmit(TCPC_TX_SOP_PRIME, PD_CTRL_SOFT_RESET, 0),
+		EC_SUCCESS, "%d");
+	mock_set_alert(TCPC_REG_ALERT_TX_SUCCESS);
+	task_wait_event(10 * MSEC);
+	partner_send_msg(PD_MSG_SOP_PRIME, PD_CTRL_NOT_SUPPORTED, 0, 0, NULL);
+
 	TEST_EQ(verify_tcpci_transmit(TCPC_TX_SOP_PRIME, 0, PD_DATA_VENDOR_DEF),
 		EC_SUCCESS, "%d");
 	mock_set_alert(TCPC_REG_ALERT_TX_SUCCESS);
