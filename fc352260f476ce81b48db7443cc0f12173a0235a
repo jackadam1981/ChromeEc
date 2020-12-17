@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e152ae_741d42ad",
+        "filename": "test/usb_tcpmv2_td_pd_ll_e4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-17T23:12:41Z",
+      "side": 1,
+      "message": "This happens to have the right value, but I think it should be TCPC_TX_HARD_RESET.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 20
+      },
+      "revId": "fc352260f476ce81b48db7443cc0f12173a0235a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
