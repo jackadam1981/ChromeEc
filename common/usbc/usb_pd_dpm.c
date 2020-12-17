@@ -363,9 +363,6 @@ uint32_t total_claimed;
 
 #define LOWEST_PORT(p) __builtin_ctz(p)  /* Undefined behavior if p == 0 */
 
-/* TODO(b/141690755): Move to config.h */
-#define CONFIG_USB_PD_3A_PORTS	1
-
 static void allocate_3a_sink(int port)
 {
 	/* Increment guard total before claiming port */
@@ -378,6 +375,9 @@ static void allocate_3a_sink(int port)
 /* Process sink's first Sink_Capabilities PDO for port current consideration */
 void dpm_evaluate_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 {
+	if (CONFIG_USB_PD_3A_PORTS == 0)
+		return;
+
 	/* Verify partner supplied valid vSafe5V fixed object first */
 	if ((vsafe5v_pdo & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
 		return;
@@ -405,6 +405,9 @@ void dpm_remove_sink(int port)
 {
 	uint32_t ports_waiting;
 
+	if (CONFIG_USB_PD_3A_PORTS == 0)
+		return;
+
 	if (!(BIT(port) & max_sink_requested))
 		return;
 
@@ -429,25 +432,16 @@ void dpm_remove_sink(int port)
 	atomic_sub(&total_claimed, 1);
 }
 
-#if defined(CONFIG_USB_PD_DYNAMIC_SRC_CAP) || \
-		defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)
-/*
- * Charge manager APIs
- * TODO(b/141690755): Remove and replace with DPM calls
- */
-void charge_manager_source_port(int port, int enable)
+int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
 {
-	/* No-op present for linking */
-}
-
-int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
-{
+	/* Max PDO may not exist on boards which don't offer 3 A */
+#if CONFIG_USB_PD_3A_PORTS > 0
 	if (max_claimed & BIT(port)) {
 		*src_pdo = pd_src_pdo_max;
 		return pd_src_pdo_max_cnt;
 	}
+#endif
 
 	*src_pdo = pd_src_pdo;
 	return pd_src_pdo_cnt;
 }
-#endif
