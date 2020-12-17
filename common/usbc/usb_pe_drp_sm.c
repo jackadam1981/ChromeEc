@@ -297,6 +297,7 @@ enum usb_pe_state {
 	PE_VCS_TURN_ON_VCONN_SWAP,
 	PE_VCS_TURN_OFF_VCONN_SWAP,
 	PE_VCS_SEND_PS_RDY_SWAP,
+	PE_SEND_CABLE_SOFT_RESET,
 	PE_VDM_IDENTITY_REQUEST_CBL,
 	PE_INIT_PORT_VDM_IDENTITY_REQUEST,
 	PE_INIT_VDM_SVIDS_REQUEST,
@@ -415,6 +416,7 @@ __maybe_unused static const char * const pe_state_names[] = {
 	[PE_VCS_TURN_OFF_VCONN_SWAP] = "PE_VCS_Turn_Off_Vconn_Swap",
 	[PE_VCS_SEND_PS_RDY_SWAP] = "PE_VCS_Send_Ps_Rdy_Swap",
 #endif
+	[PE_SEND_CABLE_SOFT_RESET] = "PE_Send_Cable_Soft_Reset",
 	[PE_VDM_IDENTITY_REQUEST_CBL] = "PE_VDM_Identity_Request_Cbl",
 	[PE_INIT_PORT_VDM_IDENTITY_REQUEST] =
 					   "PE_INIT_PORT_VDM_Identity_Request",
@@ -1173,6 +1175,10 @@ static bool pe_can_send_sop_vdm(int port, int vdm_cmd)
 
 static void pe_send_soft_reset(const int port, enum tcpm_transmit_type type)
 {
+	if (type == TCPC_TX_SOP_PRIME)
+		CPRINTS("C%d: send SOP' soft reset, caller %pP",
+			port, __builtin_return_address(0));
+
 	pe[port].soft_reset_sop = type;
 	set_state_pe(port, PE_SEND_SOFT_RESET);
 }
@@ -1250,6 +1256,7 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 			get_state_pe(port) == PE_PRS_SRC_SNK_WAIT_SOURCE_ON ||
 			get_state_pe(port) == PE_SRC_DISABLED ||
 			get_state_pe(port) == PE_SRC_DISCOVERY ||
+			get_state_pe(port) == PE_SEND_CABLE_SOFT_RESET ||
 			get_state_pe(port) == PE_VDM_IDENTITY_REQUEST_CBL) ||
 			(IS_ENABLED(CONFIG_USBC_VCONN) &&
 				get_state_pe(port) == PE_VCS_SEND_PS_RDY_SWAP)
@@ -1728,6 +1735,11 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 				pe_can_send_sop_vdm(port, CMD_DISCOVER_MODES)) {
 			pe[port].tx_type = TCPC_TX_SOP;
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
+			return true;
+		} else if (pd_get_soft_reset_discovery(port, TCPC_TX_SOP_PRIME)
+				== PD_DISC_NEEDED) {
+			pe[port].tx_type = TCPC_TX_SOP_PRIME;
+			set_state_pe(port, PE_SEND_CABLE_SOFT_RESET);
 			return true;
 		} else if (pd_get_svids_discovery(port, TCPC_TX_SOP_PRIME)
 				== PD_DISC_NEEDED) {
@@ -5054,6 +5066,8 @@ static void pe_vdm_identity_request_cbl_entry(int port)
 		return;
 	}
 
+
+
 	msg[0] = VDO(USB_SID_PD, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
 			CMD_DISCOVER_IDENT);
@@ -5208,6 +5222,7 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 
 	/* Do not attempt further discovery if identity discovery failed. */
 	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL) {
+		pd_set_soft_reset_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 		pe_notify_event(port, pe[port].tx_type == TCPC_TX_SOP ?
 				PD_STATUS_EVENT_SOP_DISC_DONE :
@@ -5295,6 +5310,7 @@ static void pe_init_port_vdm_identity_request_exit(int port)
 
 	/* Do not attempt further discovery if identity discovery failed. */
 	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL) {
+		pd_set_soft_reset_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 		pe_notify_event(port, pe[port].tx_type == TCPC_TX_SOP ?
 				PD_STATUS_EVENT_SOP_DISC_DONE :
@@ -6214,6 +6230,10 @@ static void pe_vcs_send_ps_rdy_swap_run(int port)
 		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED) ||
 		    get_time().val > pe[port].sender_response_timer) {
 			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+			pd_set_soft_reset_discovery(port, TCPC_TX_SOP_PRIME,
+				PD_DISC_COMPLETE);
+
 			/*
 			 * A VCONN Swap Shall reset the
 			 * DiscoverIdentityCounter to zero
@@ -6248,6 +6268,61 @@ static void pe_vcs_send_ps_rdy_swap_run(int port)
 	}
 }
 #endif /* CONFIG_USBC_VCONN */
+
+/*
+ * PE_SEND_CABLE_SOFT_RESET
+ * Note - not a defined state the PD specification.
+ */
+static void pe_send_cable_soft_reset_entry(int port)
+{
+	print_current_state(port);
+
+	if (!pe_can_send_sop_prime(port)) {
+		/*
+		 * The parent state already tried to enable SOP' traffic. If it
+		 * is still disabled, there's nothing left to try.
+		 */
+		pd_set_soft_reset_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		set_state_pe(port, get_last_state_pe(port));
+		return;
+	}
+
+	send_ctrl_msg(port, pe[port].tx_type, PD_CTRL_SOFT_RESET);
+	/*
+	 * Ensures enough time for transmission completion,
+	 * in the case of more delays.
+	 */
+	pe[port].sender_response_timer = get_time().val +
+					PD_T_SENDER_RESPONSE;
+}
+
+static void pe_send_cable_soft_reset_run(int port)
+{
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe[port].sender_response_timer = get_time().val +
+						PD_T_SENDER_RESPONSE;
+	}
+
+	/* Got ACCEPT or REJECT from Cable Plug */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED) ||
+	    get_time().val > pe[port].sender_response_timer) {
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		pd_set_soft_reset_discovery(port, TCPC_TX_SOP_PRIME,
+			PD_DISC_COMPLETE);
+
+		/*
+		 * An SOP' soft reset reset the
+		 * DiscoverIdentityCounter to zero
+		 */
+		pe[port].discover_identity_counter = 0;
+		pe[port].dr_swap_attempt_counter = 0;
+
+		/* Return to calling state (PE_{SRC,SNK}_Ready) */
+		set_state_pe(port, get_last_state_pe(port));
+	}
+}
 
 /*
  * PE_DR_SNK_Get_Sink_Cap and PE_SRC_Get_Sink_Cap State (shared)
@@ -6760,6 +6835,11 @@ static const struct usb_state pe_states[] = {
 		.run   = pe_vcs_send_ps_rdy_swap_run,
 	},
 #endif /* CONFIG_USBC_VCONN */
+	[PE_SEND_CABLE_SOFT_RESET] = {
+		.entry  = pe_send_cable_soft_reset_entry,
+		.run    = pe_send_cable_soft_reset_run,
+		.parent = &pe_states[PE_VDM_SEND_REQUEST],
+	},
 	[PE_VDM_IDENTITY_REQUEST_CBL] = {
 		.entry  = pe_vdm_identity_request_cbl_entry,
 		.run    = pe_vdm_identity_request_cbl_run,

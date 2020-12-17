@@ -504,6 +504,22 @@ uint8_t pd_get_product_type(int port)
 	return resp->idh.product_type;
 }
 
+void pd_set_soft_reset_discovery(int port, enum tcpm_transmit_type type,
+			       enum pd_discovery_state disc)
+{
+	struct pd_discovery *pd = pd_get_am_discovery(port, type);
+
+	pd->soft_reset = disc;
+}
+
+enum pd_discovery_state pd_get_soft_reset_discovery(int port,
+		enum tcpm_transmit_type type)
+{
+	struct pd_discovery *disc = pd_get_am_discovery(port, type);
+
+	return disc->soft_reset;
+}
+
 void pd_set_svids_discovery(int port, enum tcpm_transmit_type type,
 			       enum pd_discovery_state disc)
 {

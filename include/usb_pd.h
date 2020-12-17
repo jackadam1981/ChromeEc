@@ -411,6 +411,8 @@ struct pd_discovery {
 	int svid_cnt;
 	/* Identity discovery state */
 	enum pd_discovery_state identity_discovery;
+	/* Soft reset discovery state */
+	enum pd_discovery_state soft_reset;
 	/* SVID discovery state */
 	enum pd_discovery_state svids_discovery;
 };
@@ -1789,6 +1791,11 @@ void pd_set_identity_discovery(int port, enum tcpm_transmit_type type,
  */
 enum pd_discovery_state pd_get_identity_discovery(int port,
 						enum tcpm_transmit_type type);
+
+void pd_set_soft_reset_discovery(int port, enum tcpm_transmit_type type,
+			       enum pd_discovery_state disc);
+enum pd_discovery_state pd_get_soft_reset_discovery(int port,
+	enum tcpm_transmit_type type);
 
 /**
  * Set SVID discovery state for this type and port.
