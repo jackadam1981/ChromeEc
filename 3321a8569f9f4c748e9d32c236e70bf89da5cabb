@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3d1df66_5e02c727",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-12-17T08:06:42Z",
+      "side": 1,
+      "message": "The IS_ENABLED is defined in the common.h and i think it should be working. Could you please try to print out the IS_ENABLED(CONFIG_ACCEL_FIFO) value to confirm it? Besides, you also can add a define in the file like #define CONFIG_TESTING and print the value IS_ENABLED(CONFIG_TESTING) to see if there is any different?",
+      "parentUuid": "b0887984_03e771b1",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 24
+      },
+      "revId": "3321a8569f9f4c748e9d32c236e70bf89da5cabb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0cc65433_89cb438a",
         "filename": "driver/accelgyro_icm426xx.c",
         "patchSetId": 2
