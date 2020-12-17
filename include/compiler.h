@@ -12,4 +12,7 @@
 #define GCC_VERSION \
 	(__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
+/* The EC codebase assumes that typeof() is available but it is not in Zephyr */
+#define typeof(x)	__typeof__(x)
+
 #endif /* __CROS_EC_COMPILER_H */
