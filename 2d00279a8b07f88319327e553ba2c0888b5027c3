@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "936b78f3_cd7ad250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2020-12-17T01:03:05Z",
+      "side": 1,
+      "message": "This is better done by simply running firmware-zephyr-cq as a verifier for platform/ec.  No code change should be needed here for that.",
+      "revId": "2d00279a8b07f88319327e553ba2c0888b5027c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
