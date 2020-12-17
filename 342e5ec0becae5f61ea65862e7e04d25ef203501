@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f066abb8_6b2ca680",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-17T21:50:28Z",
+      "side": 0,
+      "message": "Hatch is TCPMV1. Isn\u0027t this config still valid?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 60
+      },
+      "revId": "342e5ec0becae5f61ea65862e7e04d25ef203501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9429b6d_a7027348",
         "filename": "board/adlrvpp_ite/board.h",
         "patchSetId": 1
@@ -14,6 +37,24 @@
       "writtenOn": "2020-12-17T17:51:07Z",
       "side": 0,
       "message": "Keith, should config.h require at least one 3.0 A port when USB4 is defined?",
+      "revId": "342e5ec0becae5f61ea65862e7e04d25ef203501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bca7dfe_84e390c1",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-17T21:50:28Z",
+      "side": 0,
+      "message": "Yes - it\u0027s a requirement of USB4.",
+      "parentUuid": "d9429b6d_a7027348",
       "revId": "342e5ec0becae5f61ea65862e7e04d25ef203501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
