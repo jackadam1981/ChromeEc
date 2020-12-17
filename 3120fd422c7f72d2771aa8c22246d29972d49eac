@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82879bbf_a35c6b38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2020-12-17T02:50:05Z",
+      "side": 1,
+      "message": "Please add commit message.",
+      "revId": "3120fd422c7f72d2771aa8c22246d29972d49eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4682152d_9f4249f0",
+        "filename": "zephyr/shim/include/zephyr_espi_shim.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2020-12-17T02:50:05Z",
+      "side": 1,
+      "message": "Please add more descriptions for these definitions. For example, you can mentioned they are from \"Embedded Controller Status\", EC_SC in ACPI spec.",
+      "revId": "3120fd422c7f72d2771aa8c22246d29972d49eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
