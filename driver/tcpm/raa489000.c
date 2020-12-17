@@ -12,7 +12,7 @@
 #include "i2c.h"
 #include "raa489000.h"
 #include "tcpci.h"
-#include "tcpm.h"
+#include "tcpm/tcpm.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
