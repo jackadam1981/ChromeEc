@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7de9da_7baed7fe",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-17T15:55:45Z",
+      "side": 1,
+      "message": "The PD2 compliance indicates 3.0A, so may want to qualify this with the PD Rev being tested.",
+      "range": {
+        "startLine": 193,
+        "startChar": 7,
+        "endLine": 193,
+        "endChar": 25
+      },
+      "revId": "590c27df3c3291dde54a4dfe909ef866e517b1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11535c6c_9294c897",
+        "filename": "test/usb_tcpmv2_td_pd_snk3_e12.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-17T15:55:45Z",
+      "side": 1,
+      "message": "why 10 seconds? are you allowing messages sent by DUT to timeout?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "590c27df3c3291dde54a4dfe909ef866e517b1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5945bdd3_97be6a7a",
+        "filename": "test/usb_tcpmv2_td_pd_snk3_e12.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-17T15:55:45Z",
+      "side": 1,
+      "message": "tReceive max 1.1ms and tSoftReset max is 15ms. Is 15ms selected due to simulation timing granularity?",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "590c27df3c3291dde54a4dfe909ef866e517b1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
