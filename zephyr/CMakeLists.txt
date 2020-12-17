@@ -25,9 +25,11 @@ if(NOT EXISTS "${PLATFORM_EC}/zephyr/module.yml")
   assert_exists("${PLATFORM_EC}/zephyr/module.yml")
 endif()
 
+# driver/tcpm is here to make #include "tcpm.h" work as expected
 zephyr_include_directories_ifdef(
   CONFIG_PLATFORM_EC
   "${PLATFORM_EC}/zephyr/shim/include"
+  "${PLATFORM_EC}/driver/tcpm"
   "${PLATFORM_EC}/fuzz"
   "${PLATFORM_EC}/test"
   "${PLATFORM_EC}/include")
