@@ -39,6 +39,30 @@
       },
       "revId": "24617066550a8eb44937b3099c7b5c07a83b10e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07e6c2d2_117026c3",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-17T03:15:40Z",
+      "side": 1,
+      "message": "So I did:\ntask_wait_event_mask(PD_PORT_TO_TASK_ID(port), -1);\nassert(port \u003d\u003d TASK_ID_TO_PD_PORT(task_get_current()));\nBut that puts mux to safe mode - we don\u0027t enter tbt as it will wait on task_wait for second time. This might also affect hotplug.\n\nDoing the assert first as you mentioned cause reboots.\n\nShould we maybe add if() and the add a task_wait_event()?",
+      "parentUuid": "812e1a12_6844b118",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "24617066550a8eb44937b3099c7b5c07a83b10e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
