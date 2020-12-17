@@ -372,10 +372,7 @@ static void allocate_3a_sink(int port)
 	atomic_add(&total_claimed, 1);
 	atomic_or(&max_claimed, BIT(port));
 
-	typec_set_source_current_limit(port, TYPEC_RP_3A0);
 	typec_select_src_current_limit_rp(port, TYPEC_RP_3A0);
-	pd_update_contract(port);
-
 }
 
 /* Process sink's first Sink_Capabilities PDO for port current consideration */
