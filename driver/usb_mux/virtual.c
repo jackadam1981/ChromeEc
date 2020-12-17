@@ -37,11 +37,9 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
 
-	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
+	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST) ||
+	    port != TASK_ID_TO_PD_PORT(task_get_current()))
 		return;
-
-	/* This should only be called from the PD task */
-	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
 	/*
 	 * EC waits for the ACK from kernel indicating that TCSS Mux
