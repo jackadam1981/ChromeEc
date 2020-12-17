@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec13d071_40cd8ee7",
+        "filename": "board/copano/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-17T17:06:53Z",
+      "side": 1,
+      "message": "Note - the reg_addr field is not used when mfgacc_support is enabled.  The common battery fuel gauge code always accesses address 0x44 when mfgacc_support is used.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 21
+      },
+      "revId": "1e8ba19e27b242f076e3299fbcfb4e5ead4c930e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
