@@ -16,6 +16,29 @@
       "message": "@keith, we need to merge this soon. EC is rebooting continuously if USB4/TBT connected and booted and is impacting many platforms.",
       "revId": "24617066550a8eb44937b3099c7b5c07a83b10e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "812e1a12_6844b118",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-17T02:22:11Z",
+      "side": 1,
+      "message": "With this check here, if a non PD task tries to transition the mux into our out of safe mode, then the EC won\u0027t be doing the proper sequencing with the TCSS.\n\nIf you put the assert() call back in,, but add it just before the task_wait_event_mask() - does that work if a TBT device is connected at boot?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "24617066550a8eb44937b3099c7b5c07a83b10e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
