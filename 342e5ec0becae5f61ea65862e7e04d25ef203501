@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65fa653c_c6a90722",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T22:28:55Z",
+      "side": 0,
+      "message": "Indeed it is.  I must have gotten mixed up when mushu\u0027s build failed.",
+      "parentUuid": "f066abb8_6b2ca680",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 60
+      },
+      "revId": "342e5ec0becae5f61ea65862e7e04d25ef203501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9429b6d_a7027348",
@@ -55,6 +79,24 @@
       "side": 0,
       "message": "Yes - it\u0027s a requirement of USB4.",
       "parentUuid": "d9429b6d_a7027348",
+      "revId": "342e5ec0becae5f61ea65862e7e04d25ef203501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d399ade_4ef71c38",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T22:28:55Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "0bca7dfe_84e390c1",
       "revId": "342e5ec0becae5f61ea65862e7e04d25ef203501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
