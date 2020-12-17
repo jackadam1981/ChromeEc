@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be00e8d5_f784da90",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-17T21:25:34Z",
+      "side": 1,
+      "message": "This condition briefly happens every time a sink is removed.  The counter is incremented at line 429, but decremented at line 431.",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 46
+      },
+      "revId": "39d087d2410bd8f3b49e06c5656b02d3e370b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a921af71_5b3bf69a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-17T21:25:34Z",
+      "side": 1,
+      "message": "Policy outlined in your doc is to allocate 3A to the oldest port.  Need a todo here since this allocates to the lowest port number.",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 68
+      },
+      "revId": "39d087d2410bd8f3b49e06c5656b02d3e370b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cd09abb_9b6ee2ac",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-17T21:25:34Z",
+      "side": 1,
+      "message": "Is a race condition possible here? Say PD port 0 executes line 427, but then gets preempted by PD port 1.  When control comes back to PD port 0, ports_waiting will be stale.",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 428,
+        "endChar": 19
+      },
+      "revId": "39d087d2410bd8f3b49e06c5656b02d3e370b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7414a8c1_dc2a916b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-17T21:25:34Z",
+      "side": 1,
+      "message": "I think it would be good to comment here that we only offer a 7.5W PDO initially, unless the port has already been given a 15W PDO.\n\nPartners are only upgraded to 15W after the PE requests the SNK caps.",
+      "range": {
+        "startLine": 446,
+        "startChar": 4,
+        "endLine": 446,
+        "endChar": 33
+      },
+      "revId": "39d087d2410bd8f3b49e06c5656b02d3e370b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
