@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4cd71b_ec050e9a",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-12-17T02:31:41Z",
+      "side": 1,
+      "message": "do we still want to check CCR_EN in this case? (e.g., not clearing CCR_TCIE if CCR_EN is not set)",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "20e6a1eae6037b1d1aa9ae96683cfb6a06759713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
