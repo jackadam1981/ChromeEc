@@ -22,6 +22,30 @@
       },
       "revId": "f51c1d60505e309f55f0be845e09e09109b169eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886237af_2dc38929",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-12-17T16:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b94bc5d_58adad9f",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 29
+      },
+      "revId": "f51c1d60505e309f55f0be845e09e09109b169eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
