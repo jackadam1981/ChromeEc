@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e19dc0fa_ec7c8548",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-17T22:43:40Z",
+      "side": 1,
+      "message": "Because you need to access 2 different variables, I think a mutex is needed.  A mutex also solves the overflow issue of total_claimed.\n\nThere\u0027s another race condition where we could overallocate 3A ports.  A premption that happens after total_claimed check at line 401, but before the atomic increment would cause the code to blow past the 3A port limit.\n\nSo a mutex, I think you leave max_sink_requested as updated atomically, while max_claimed and total_claimed are updated under the guard of a mutex.  It probably makes sense to do this with the next CL, so the pd_update_contract() call isn\u0027t done under a mutex.",
+      "parentUuid": "5c0ad200_0deeaf24",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 428,
+        "endChar": 19
+      },
+      "revId": "39d087d2410bd8f3b49e06c5656b02d3e370b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7414a8c1_dc2a916b",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 1
