@@ -46,6 +46,30 @@
       },
       "revId": "a1df12f06f2343ddbdeb10793224efe4a5820d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29423da4_784b36ef",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-17T17:48:22Z",
+      "side": 1,
+      "message": "That seems reasonable. I still don\u0027t get the logic around Connector Type or supported power role in the spec, but it\u0027s out of scope for Type C testing.",
+      "parentUuid": "d0fffbf5_cad8e32b",
+      "range": {
+        "startLine": 726,
+        "startChar": 4,
+        "endLine": 727,
+        "endChar": 33
+      },
+      "revId": "a1df12f06f2343ddbdeb10793224efe4a5820d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
