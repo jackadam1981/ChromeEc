@@ -731,6 +731,22 @@ enum pd_dual_role_states pd_get_dual_role(int port)
 	return drp_state[port];
 }
 
+static void pd_disable_toggle_in_s3(void)
+{
+	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i) {
+		pd_set_dual_role(i, PD_DRP_TOGGLE_ON);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_disable_toggle_in_s3, HOOK_PRIO_DEFAULT);
+
+static void pd_enable_toggle_in_s0(void)
+{
+	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i) {
+		pd_set_dual_role(i, PD_DRP_TOGGLE_OFF);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_enable_toggle_in_s0, HOOK_PRIO_DEFAULT);
+
 #ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
 static inline void pd_dev_dump_info(uint16_t dev_id, uint32_t *hash)
 {
