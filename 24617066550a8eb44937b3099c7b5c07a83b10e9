@@ -87,6 +87,30 @@
       },
       "revId": "24617066550a8eb44937b3099c7b5c07a83b10e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22ff181c_e9bc7b51",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-12-17T04:04:49Z",
+      "side": 1,
+      "message": "The pesudo code isn\u0027t causing reboot - uploaded a new patchset",
+      "parentUuid": "636f59ad_baa3b090",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "24617066550a8eb44937b3099c7b5c07a83b10e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
