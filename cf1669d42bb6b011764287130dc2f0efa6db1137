@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab368498_86663f5c",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-17T01:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74afc117_6aa6ec14",
+      "range": {
+        "startLine": 311,
+        "startChar": 34,
+        "endLine": 311,
+        "endChar": 36
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "057d4774_fb88a7d7",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-16T20:12:39Z",
       "side": 1,
       "message": "Why not use i2c_xfer() instead, which does i2c_lock()?",
+      "range": {
+        "startLine": 534,
+        "startChar": 1,
+        "endLine": 534,
+        "endChar": 9
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d7e8d9_24043baa",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-17T01:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "057d4774_fb88a7d7",
       "range": {
         "startLine": 534,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf17fa4_e9839169",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-17T01:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6948c0ee_bf030848",
+      "range": {
+        "startLine": 536,
+        "startChar": 2,
+        "endLine": 536,
+        "endChar": 19
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7642f734_14063d3b",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-16T20:12:39Z",
       "side": 1,
       "message": "Please make sure if this works. Some motion sensor takes longer time to boot up. The I2C xfer may not be responded.",
+      "range": {
+        "startLine": 537,
+        "startChar": 5,
+        "endLine": 537,
+        "endChar": 9
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24891941_56c01217",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-17T01:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7642f734_14063d3b",
       "range": {
         "startLine": 537,
         "startChar": 5,
