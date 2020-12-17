@@ -152,6 +152,7 @@ static int verify_transmit(enum tcpm_transmit_type want_tx_type,
 {
 	uint64_t end_time = get_time().val + timeout;
 
+	TEST_EQ(tcpci_regs[TCPC_REG_TRANSMIT].value, 0, "%d");
 	while (get_time().val < end_time) {
 		if (tcpci_regs[TCPC_REG_TRANSMIT].value != 0) {
 			int tx_type = TCPC_REG_TRANSMIT_TYPE(
