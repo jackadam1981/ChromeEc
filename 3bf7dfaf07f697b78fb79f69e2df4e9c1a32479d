@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b74c155_70ccdc56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-17T21:03:04Z",
+      "side": 1,
+      "message": "why not just move driver/tcpm/*.h to include/driver/tcpm/?\n\nwould help cleanup current EC usage as well\n\nwe did this for power headers already",
+      "revId": "3bf7dfaf07f697b78fb79f69e2df4e9c1a32479d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
