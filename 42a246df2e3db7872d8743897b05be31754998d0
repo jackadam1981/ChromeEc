@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ad9478_58ca9ec4",
+        "filename": "include/adc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-12-17T21:02:16Z",
+      "side": 1,
+      "message": "any reason we need to guard these out? or can we just keep em?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "42a246df2e3db7872d8743897b05be31754998d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
