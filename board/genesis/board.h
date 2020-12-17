@@ -87,11 +87,6 @@
 #define CONFIG_CHIPSET_RESET_HOOK
 #define CONFIG_CPU_PROCHOT_ACTIVE_LOW
 
-/* Dedicated barreljack charger port */
-#undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
-#define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
-#define DEDICATED_CHARGE_PORT 1
-
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_IGNORE_LID
 #define CONFIG_POWER_BUTTON_X86
@@ -106,19 +101,6 @@
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 #define CONFIG_INA3221
 
-/* b/143501304 */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY	4000	/* us */
-#define PD_POWER_SUPPLY_TURN_OFF_DELAY	2000	/* us */
-#define PD_VCONN_SWAP_DELAY		8000	/* us */
-
-#undef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
-#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 0
-
-#define PD_OPERATING_POWER_MW	CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
-#define PD_MAX_POWER_MW		100000
-#define PD_MAX_CURRENT_MA	5000
-#define PD_MAX_VOLTAGE_MV	20000
-
 /* Fan and temp. */
 #define CONFIG_FANS 1
 #undef CONFIG_FAN_INIT_SPEED
@@ -128,10 +110,6 @@
 #define CONFIG_THERMISTOR
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 #define CONFIG_THROTTLE_AP
-
-/* Charger */
-#define CONFIG_CHARGE_MANAGER
-#undef CONFIG_CHARGE_MANAGER_SAFE_MODE
 
 #define CONFIG_USB_PD_PORT_MAX_COUNT 0
 
@@ -156,11 +134,6 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
-
-enum charge_port {
-	CHARGE_PORT_TYPEC0,
-	CHARGE_PORT_BARRELJACK,
-};
 
 enum adc_channel {
 	ADC_SNS_PP3300,     /* ADC2 */
@@ -226,7 +199,6 @@ void show_critical_error(void);
 #define EC_CFG_THERMAL_H		7
 #define EC_CFG_THERMAL_MASK GENMASK(EC_CFG_THERMAL_H, EC_CFG_THERMAL_L)
 
-unsigned int ec_config_get_bj_power(void);
 int ec_config_get_usb4_present(void);
 unsigned int ec_config_get_thermal_solution(void);
 

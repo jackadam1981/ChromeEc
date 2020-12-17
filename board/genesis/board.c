@@ -8,8 +8,6 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "button.h"
-#include "charge_manager.h"
-#include "charge_state_v2.h"
 #include "chipset.h"
 #include "common.h"
 #include "core/cortex-m/cpu.h"
@@ -36,26 +34,14 @@
 #include "thermal.h"
 #include "thermistor.h"
 #include "uart.h"
-#include "usb_charge.h"
 #include "usb_common.h"
 #include "util.h"
 
-#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
-
-/* Called when the charge manager has switched to a new port. */
-void board_set_charge_limit(int port, int supplier, int charge_ma,
-			    int max_ma, int charge_mv)
-{
-	/* Blink alert if insufficient power per system_can_boot_ap(). */
-	int insufficient_power =
-		(charge_ma * charge_mv) <
-		(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON * 1000);
-	led_alert(insufficient_power);
-}
 
 static uint8_t usbc_overcurrent;
 static int32_t base_5v_power;
@@ -126,86 +112,6 @@ static void port_ocp_interrupt(enum gpio_signal signal)
 }
 
 /******************************************************************************/
-/*
- * Barrel jack power supply handling
- *
- * EN_PPVAR_BJ_ADP_L must default active to ensure we can power on when the
- * barrel jack is connected, and the USB-C port can bring the EC up fine in
- * dead-battery mode. Both the USB-C and barrel jack switches do reverse
- * protection, so we're safe to turn one on then the other off- but we should
- * only do that if the system is off since it might still brown out.
- */
-
-/*
- * Barrel-jack power adapter ratings.
- */
-static const struct {
-	int voltage;
-	int current;
-} bj_power[] = {
-	{ /* 0 - 65W (also default) */
-	.voltage = 19000,
-	.current = 3420
-	},
-	{ /* 1 - 90W */
-	.voltage = 19000,
-	.current = 4740
-	},
-	{ /* 2 - 240W */
-	.voltage = 19000,
-	.current = 4740
-	},
-};
-
-#define ADP_DEBOUNCE_MS		1000  /* Debounce time for BJ plug/unplug */
-/* Debounced connection state of the barrel jack */
-static int8_t adp_connected = -1;
-static void adp_connect_deferred(void)
-{
-	struct charge_port_info pi = { 0 };
-	unsigned int bj = ec_config_get_bj_power();
-
-	pi.voltage = bj_power[bj].voltage;
-	pi.current = bj_power[bj].current;
-
-	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
-				     DEDICATED_CHARGE_PORT, &pi);
-	adp_connected = 1;
-}
-DECLARE_DEFERRED(adp_connect_deferred);
-
-/* IRQ for BJ plug/unplug. It shouldn't be called if BJ is the power source. */
-void adp_connect_interrupt(enum gpio_signal signal)
-{
-	hook_call_deferred(&adp_connect_deferred_data, ADP_DEBOUNCE_MS * MSEC);
-}
-
-static void adp_state_init(void)
-{
-	struct charge_port_info pi = { 0 };
-	unsigned int bj = ec_config_get_bj_power();
-
-	/*
-	 * Initialize all charge suppliers to 0. The charge manager waits until
-	 * all ports have reported in before doing anything.
-	 */
-	for (int i = 0; i < CHARGE_PORT_COUNT; i++) {
-		for (int j = 0; j < CHARGE_SUPPLIER_COUNT; j++)
-			charge_manager_update_charge(j, i, NULL);
-	}
-
-	/* Report charge state from the barrel jack. */
-	adp_connect_deferred();
-
-	pi.voltage = bj_power[bj].voltage;
-	pi.current = bj_power[bj].current;
-
-	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
-				     DEDICATED_CHARGE_PORT, &pi);
-	adp_connected = 1;
-}
-DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
-
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -415,8 +321,6 @@ static void board_init(void)
 	 */
 	cpu_set_interrupt_priority(NPCX_IRQ_WKINTC_0, 2);
 
-	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_L);
-
 	/* Always claim AC is online, because we don't have a battery. */
 	memmap_batt_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
 	*memmap_batt_flags |= EC_BATT_FLAG_AC_PRESENT;
@@ -441,69 +345,10 @@ int64_t get_time_dsw_pwrok(void)
 	return -20 * MSEC;
 }
 
-int board_set_active_charge_port(int port)
-{
-	CPRINTS("Requested charge port change to %d", port);
-
-	/*
-	 * The charge manager may ask us to switch to no charger if we're
-	 * running off USB-C only but upstream doesn't support PD. It requires
-	 * that we accept this switch otherwise it triggers an assert and EC
-	 * reset; it's not possible to boot the AP anyway, but we want to avoid
-	 * resetting the EC so we can continue to do the "low power" LED blink.
-	 */
-	if (port == CHARGE_PORT_NONE)
-		return EC_SUCCESS;
-
-	if (port < 0 || CHARGE_PORT_COUNT <= port)
-		return EC_ERROR_INVAL;
-
-	if (port == charge_manager_get_active_charge_port())
-		return EC_SUCCESS;
-
-	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
-		int bj_active, bj_requested;
-
-		if (charge_manager_get_active_charge_port() != CHARGE_PORT_NONE)
-			/* Change is only permitted while the system is off */
-			return EC_ERROR_INVAL;
-
-		/*
-		 * Current setting is no charge port but the AP is on, so the
-		 * charge manager is out of sync (probably because we're
-		 * reinitializing after sysjump). Reject requests that aren't
-		 * in sync with our outputs.
-		 */
-		bj_active = !gpio_get_level(GPIO_EN_PPVAR_BJ_ADP_L);
-		bj_requested = port == CHARGE_PORT_BARRELJACK;
-		if (bj_active != bj_requested)
-			return EC_ERROR_INVAL;
-	}
-
-	CPRINTS("New charger p%d", port);
-
-	switch (port) {
-	case CHARGE_PORT_TYPEC0:
-		/* Genesis doesn't support power over Type-C */
-		return EC_ERROR_INVAL;
-		break;
-	case CHARGE_PORT_BARRELJACK:
-		/*
-		 * No need to check GPIO_ADP_PRESENT_L before pulling this
-		 * low as the only power source available on Genesis is BJ.
-		 */
-		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
-		break;
-	default:
-		return EC_ERROR_INVAL;
-	}
-
-	return EC_SUCCESS;
-}
-
 int extpower_is_present(void)
 {
-	return adp_connected;
+	/* genesis: If the EC is running, then there is external power */
+	return 1;
 }
 
 int board_is_c10_gate_enabled(void)
@@ -520,16 +365,6 @@ void board_enable_s0_rails(int enable)
 {
 	/* This output isn't connected on protos; safe to set anyway. */
 	gpio_set_level(GPIO_EN_PP5000_HDMI, enable);
-}
-
-unsigned int ec_config_get_bj_power(void)
-{
-	unsigned int bj =
-		(fw_config & EC_CFG_BJ_POWER_MASK) >> EC_CFG_BJ_POWER_L;
-	/* Out of range value defaults to 0 */
-	if (bj >= ARRAY_SIZE(bj_power))
-		bj = 0;
-	return bj;
 }
 
 int ec_config_get_usb4_present(void)
@@ -621,8 +456,6 @@ DECLARE_HOOK(HOOK_INIT, setup_thermal, HOOK_PRIO_DEFAULT - 1);
 static void power_monitor(void)
 {
 	static uint32_t current_state;
-	static uint32_t history[POWER_READINGS];
-	static uint8_t index;
 	int32_t delay;
 	uint32_t new_state = 0, diff;
 	int32_t headroom_5v = PWR_MAX - base_5v_power;
@@ -637,83 +470,8 @@ static void power_monitor(void)
 		 * Slow down monitoring, assume no throttling required.
 		 */
 		delay = 20 * MSEC;
-		/*
-		 * Clear the first entry of the power table so that
-		 * it is re-initilalised when the CPU starts.
-		 */
-		history[0] = 0;
 	} else {
-		int32_t charger_mw;
-
 		delay = POWER_DELAY_MS * MSEC;
-		/*
-		 * Get current charger limit (in mw).
-		 * If not configured yet, skip.
-		 */
-		charger_mw = charge_manager_get_power_limit_uw() / 1000;
-		if (charger_mw != 0) {
-			int32_t gap, total, max, power;
-			int i;
-
-			/*
-			 * Read power usage.
-			 */
-			power = (adc_read_channel(ADC_VBUS) *
-				 adc_read_channel(ADC_PPVAR_IMON)) /
-				 1000;
-			/* Init power table */
-			if (history[0] == 0) {
-				for (i = 0; i < POWER_READINGS; i++)
-					history[i] = power;
-			}
-			/*
-			 * Update the power readings and
-			 * calculate the average and max.
-			 */
-			history[index] = power;
-			index = (index + 1) % POWER_READINGS;
-			total = 0;
-			max = history[0];
-			for (i = 0; i < POWER_READINGS; i++) {
-				total += history[i];
-				if (history[i] > max)
-					max = history[i];
-			}
-			/*
-			 * For Type-C power supplies, there is
-			 * less tolerance for exceeding the rating,
-			 * so use the max power that has been measured
-			 * over the measuring period.
-			 * For barrel-jack supplies, the rating can be
-			 * exceeded briefly, so use the average.
-			 */
-			if (charge_manager_get_supplier() ==
-			    CHARGE_SUPPLIER_PD)
-				power = max;
-			else
-				power = total / POWER_READINGS;
-			/*
-			 * Calculate gap, and if negative, power
-			 * demand is exceeding configured power budget, so
-			 * throttling is required to reduce the demand.
-			 */
-			gap = charger_mw - power;
-			/*
-			 * Limiting type-A power.
-			 */
-			if (gap <= 0) {
-				new_state |= THROT_TYPE_A;
-				headroom_5v += PWR_FRONT_HIGH - PWR_FRONT_LOW;
-				if (!(current_state & THROT_TYPE_A))
-					gap += POWER_GAIN_TYPE_A;
-			}
-			/*
-			 * As a last resort, turn on PROCHOT to
-			 * throttle the CPU.
-			 */
-			if (gap <= 0)
-				new_state |= THROT_PROCHOT;
-		}
 	}
 	/*
 	 * Check the 5v power usage and if necessary,
