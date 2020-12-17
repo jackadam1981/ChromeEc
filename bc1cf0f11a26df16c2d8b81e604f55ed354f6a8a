@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6906c58e_c7f0d3b0",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T20:49:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4ce332ac_802f5efc",
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d529c531_a5c6ec64",
@@ -178,6 +196,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7200ea25_bf18a44d",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T20:49:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41006c21_9bdb5a06",
+      "range": {
+        "startLine": 260,
+        "startChar": 12,
+        "endLine": 260,
+        "endChar": 34
+      },
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e115109f_f040a1bd",
@@ -272,6 +314,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c421d9ad_3101a7b1",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T20:49:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b34a9fcd_ba6bcc03",
+      "range": {
+        "startLine": 313,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 33
+      },
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14cea3e3_ef45582a",
@@ -307,6 +373,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4daeb1_44e84967",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T20:49:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990e1d2c_b3a6bbed",
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ad4b9ae_8a86ec20",
@@ -338,6 +422,24 @@
       "side": 1,
       "message": "I did have this table more complete. I found that code in subsequent CL",
       "parentUuid": "7ad4b9ae_8a86ec20",
+      "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e1a068_18467e9c",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-17T20:49:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe6e7232_c76a1f38",
       "revId": "bc1cf0f11a26df16c2d8b81e604f55ed354f6a8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
