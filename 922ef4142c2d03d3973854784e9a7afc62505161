@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "879657c1_d0b3826b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-17T09:18:29Z",
+      "side": 1,
+      "message": "Fix build issue. It turned out that CONFIG_USB_PD_DUAL_ROLE is not defined for zinger board.",
+      "revId": "922ef4142c2d03d3973854784e9a7afc62505161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
