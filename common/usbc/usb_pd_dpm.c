@@ -401,11 +401,8 @@ static void update_ports(int port, enum port_update_action action)
 			    CONFIG_USB_PD_3A_PORTS) {
 				atomic_or(&max_claimed, BIT(port));
 
-				typec_set_source_current_limit(port,
-							       TYPEC_RP_3A0);
 				typec_select_src_current_limit_rp(port,
 								  TYPEC_RP_3A0);
-				pd_update_contract(port);
 			}
 			/* TODO(b/141690755): Check lower priority claims */
 		}
@@ -425,11 +422,8 @@ static void update_ports(int port, enum port_update_action action)
 
 				atomic_or(&max_claimed, BIT(new_port));
 
-				typec_set_source_current_limit(new_port,
-							       TYPEC_RP_3A0);
 				typec_select_src_current_limit_rp(new_port,
 								  TYPEC_RP_3A0);
-				pd_update_contract(new_port);
 			}
 			/* TODO(b/141690755): Check lower priority ports */
 		}
