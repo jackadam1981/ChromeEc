@@ -16,6 +16,24 @@
       "message": "why not just move driver/tcpm/*.h to include/driver/tcpm/?\n\nwould help cleanup current EC usage as well\n\nwe did this for power headers already",
       "revId": "3bf7dfaf07f697b78fb79f69e2df4e9c1a32479d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1867ef13_1065b34b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-17T21:31:34Z",
+      "side": 1,
+      "message": "There is no include/driver in the EC. Do you mean I should create it? Can you point me to the previous CL?",
+      "parentUuid": "9b74c155_70ccdc56",
+      "revId": "3bf7dfaf07f697b78fb79f69e2df4e9c1a32479d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
