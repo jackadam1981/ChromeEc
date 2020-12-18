@@ -86,6 +86,24 @@
       "message": "Have we come to a conclusion on this one?",
       "revId": "879187637aa533316eab024356c05da37b747cae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1ab8a7_462ce573",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330491
+      },
+      "writtenOn": "2020-12-18T12:53:30Z",
+      "side": 1,
+      "message": "we have discussed at issuetracker: b/175747582 and changed the detect method to polling mode, re-submitted CL as 2597133",
+      "parentUuid": "1d722186_752aa02f",
+      "revId": "879187637aa533316eab024356c05da37b747cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
