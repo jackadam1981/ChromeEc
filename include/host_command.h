@@ -244,7 +244,9 @@ int host_request_expected_size(const struct ec_host_request *r);
  */
 void host_packet_receive(struct host_packet *pkt);
 
-#ifdef HAS_TASK_HOSTCMD
+#if defined(CONFIG_PLATFORM_EC_HOSTCMD)
+#include "zephyr_host_commands_shim.h"
+#elif defined(HAS_TASK_HOSTCMD)
 #define EXPAND(off, cmd) __host_cmd_(off, cmd)
 #define __host_cmd_(off, cmd) __host_cmd_##off##cmd
 #define EXPANDSTR(off, cmd) "__host_cmd_"#off#cmd
