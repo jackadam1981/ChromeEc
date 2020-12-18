@@ -71,6 +71,7 @@ static int bb_retimer_write(const struct usb_mux *me,
 			    const uint8_t offset, uint32_t data)
 {
 	uint8_t buf[BB_RETIMER_WRITE_SIZE];
+	int val;
 
 	/*
 	 * Write sequence
@@ -87,9 +88,13 @@ static int bb_retimer_write(const struct usb_mux *me,
 	buf[4] = (data >> 16) & 0xFF;
 	buf[5] = (data >> 24) & 0xFF;
 
-	return i2c_xfer(me->i2c_port,
+	val = i2c_xfer(me->i2c_port,
 			me->i2c_addr_flags,
 			buf, BB_RETIMER_WRITE_SIZE, NULL, 0);
+	if (val)
+		CPRINTS("\nC%d: *** BB write I2C error %d *** \n", me->usb_port, val);
+
+	return val;
 }
 
 __overridable void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
@@ -105,7 +110,7 @@ __overridable void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 		 * is complete.
 		 */
 		mutex_lock(&bb_nvm_mutex);
-
+		gpio_set_level(control->retimer_rst_gpio, 0);
 		gpio_set_level(control->usb_ls_en_gpio, 1);
 		/*
 		 * Tpw, minimum time from VCC to RESET_N de-assertion is 100us.
@@ -113,16 +118,12 @@ __overridable void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 		 * retimer_init() function ensures power is up before calling
 		 * this function.
 		 */
-		msleep(1);
+		msleep(4);
 		gpio_set_level(control->retimer_rst_gpio, 1);
-
-		/* Allow 20ms time for the retimer to be initialized. */
-		msleep(20);
-
+		msleep(40);
 		mutex_unlock(&bb_nvm_mutex);
 	} else {
 		gpio_set_level(control->retimer_rst_gpio, 0);
-		msleep(1);
 		gpio_set_level(control->usb_ls_en_gpio, 0);
 	}
 }
@@ -429,30 +430,41 @@ static int retimer_init(const struct usb_mux *me)
 {
 	int rv;
 	uint32_t data;
+	uint32_t trails = 0;
 
 	/* Burnside Bridge is powered by main AP rail */
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
-		/* Ensure reset is asserted while chip is not powered */
-		bb_retimer_power_handle(me, 0);
-		return EC_ERROR_NOT_POWERED;
+		rv = EC_ERROR_NOT_POWERED;
+		goto error_out;
 	}
 
 	bb_retimer_power_handle(me, 1);
 
-	rv = bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
-	if (rv)
-		return rv;
-	if (data != BB_RETIMER_VENDOR_ID)
-		return EC_ERROR_UNKNOWN;
+	/* This I2C message will trigger retimer's internal init sequence */
+	bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
+	msleep(20);
 
-	rv = bb_retimer_read(me, BB_RETIMER_REG_DEVICE_ID, &data);
-	if (rv)
-		return rv;
+	do {
+		rv = bb_retimer_read(me, BB_RETIMER_REG_DEVICE_ID, &data);
+		if (rv)
+		    msleep(10);
+		else {
+		     if (data == BB_RETIMER_DEVICE_ID)
+			 return EC_SUCCESS;
+		     else {
+			 rv = EC_ERROR_UNKNOWN;
+			 goto error_out;
+		     }
+		}
+	} while (++trails <= 10);
 
-	if (data != BB_RETIMER_DEVICE_ID)
-		return EC_ERROR_UNKNOWN;
+	rv = EC_ERROR_TIMEOUT;
 
-	return EC_SUCCESS;
+error_out:
+	/* Ensure reset is asserted while chip is not powered */
+	bb_retimer_power_handle(me, 0);
+	CPRINTS("\n%d: *** retimer_init() error: %d *** \n", me->usb_port, rv);
+	return rv;
 }
 
 const struct usb_mux_driver bb_usb_retimer = {
