@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "573870c4_d427fbe1",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-18T08:33:28Z",
+      "side": 1,
+      "message": "Reading KX022_WHOAMI also works. I haven\u0027t seen wrong detection on my rework board.",
+      "parentUuid": "3f58a760_3bf634b3",
+      "range": {
+        "startLine": 536,
+        "startChar": 2,
+        "endLine": 536,
+        "endChar": 19
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7642f734_14063d3b",
         "filename": "board/lazor/board.c",
         "patchSetId": 5
