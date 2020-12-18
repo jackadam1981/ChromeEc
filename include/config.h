@@ -3990,6 +3990,9 @@
 /* Support for USB PD alternate mode of Downward Facing Port */
 #undef CONFIG_USB_PD_ALT_MODE_DFP
 
+/* Support for USB PD alternate mode of Upward Facing Port */
+#undef CONFIG_USB_PD_ALT_MODE_UFP
+
 /*
  * Do not enter USB PD alternate modes or USB4 automatically. Wait for the AP to
  * direct the EC to enter a mode. This requires AP software support.
