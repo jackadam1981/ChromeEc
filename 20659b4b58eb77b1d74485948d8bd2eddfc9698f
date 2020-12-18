@@ -16,6 +16,23 @@
       "message": "Ready to review, thanks.",
       "revId": "20659b4b58eb77b1d74485948d8bd2eddfc9698f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33445d67_73841e17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-12-18T08:31:35Z",
+      "side": 1,
+      "message": "Ping, we need disable Rx decode when pd init.",
+      "revId": "20659b4b58eb77b1d74485948d8bd2eddfc9698f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
