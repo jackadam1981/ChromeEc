@@ -134,6 +134,8 @@ static void base_detect_deferred(void)
 	hook_call_deferred(&base_detect_deferred_data, BASE_DETECT_RETRY_US);
 }
 
+DECLARE_HOOK(HOOK_TICK, base_detect_deferred, HOOK_PRIO_DEFAULT);
+
 static inline int detect_pin_connected(enum gpio_signal det_pin)
 {
 	return gpio_get_level(det_pin) == 0;
