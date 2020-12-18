@@ -16,6 +16,24 @@
       "message": "The change looks good but I will look into why the charge manager even needs to call pd_set_new_power_request in the first place. Thanks for patience.",
       "revId": "9429ac939bbd47059e39ece0391df26cba141d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2260c73c_f87c7f84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-18T01:56:17Z",
+      "side": 1,
+      "message": "IIUC, TCPMv1 registers the max voltage and current from the source caps and again from the PDO it already requested. TCPMv2 calls pd_set_input_current_limit only after PE_SNK_TRANSITION_SINK (for what\u0027s already negotiated). So, I\u0027m wondering in TCPMv2, the charge manager doesn\u0027t need to call pd_set_new_power_request at all (because basically the added conditions are always true).\n\nThoughts?",
+      "parentUuid": "a73cb19b_06fcf29e",
+      "revId": "9429ac939bbd47059e39ece0391df26cba141d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
