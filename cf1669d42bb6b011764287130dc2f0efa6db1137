@@ -240,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa84106c_1a5c5162",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-12-18T17:29:39Z",
+      "side": 1,
+      "message": "Thanks. A minor nit, use i2c_read8() instead of i2c_xfer().",
+      "parentUuid": "573870c4_d427fbe1",
+      "range": {
+        "startLine": 536,
+        "startChar": 2,
+        "endLine": 536,
+        "endChar": 19
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7642f734_14063d3b",
         "filename": "board/lazor/board.c",
         "patchSetId": 5
