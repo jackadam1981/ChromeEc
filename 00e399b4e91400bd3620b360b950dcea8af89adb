@@ -16,6 +16,23 @@
       "message": "need to allow AP to go down to .1Hz (for power consumption issue).",
       "revId": "00e399b4e91400bd3620b360b950dcea8af89adb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f24b9972_e2b2099d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-12-18T23:06:41Z",
+      "side": 1,
+      "message": "Fixed min frequency.",
+      "revId": "00e399b4e91400bd3620b360b950dcea8af89adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
