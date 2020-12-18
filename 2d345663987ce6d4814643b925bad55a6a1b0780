@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97dc7236_6daa8720",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2020-12-18T15:39:11Z",
+      "side": 1,
+      "message": "Perfect.\nFor full correctness, you can also initialize saved_data-\u003erange with the chip power-on values (different for accel and gyro).\nAt chip power-on, accel range is 16 and gyro 2000.\nBut this shouldn\u0027t be an issue because I think range is always set just after init.",
+      "revId": "2d345663987ce6d4814643b925bad55a6a1b0780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
