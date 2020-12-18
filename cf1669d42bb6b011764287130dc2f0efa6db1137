@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "598f8d79_4d5b723b",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-18T01:39:07Z",
+      "side": 1,
+      "message": "Here is copied from scan_bus(). Maybe it just want to receive ACK from the address no matter what register offset is.",
+      "parentUuid": "5962430a_d226cc81",
+      "range": {
+        "startLine": 536,
+        "startChar": 2,
+        "endLine": 536,
+        "endChar": 19
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7642f734_14063d3b",
         "filename": "board/lazor/board.c",
         "patchSetId": 5
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "Did you verify it?",
       "parentUuid": "24891941_56c01217",
+      "range": {
+        "startLine": 537,
+        "startChar": 5,
+        "endLine": 537,
+        "endChar": 9
+      },
+      "revId": "cf1669d42bb6b011764287130dc2f0efa6db1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec26847_9cb0b575",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-18T01:39:07Z",
+      "side": 1,
+      "message": "Yes, I got a rework board with both KX022 and ICM40608. I haven\u0027t met the detection missing. I also tried it on the board with BMA255 and BMI160. It looks good.",
+      "parentUuid": "1c2e6d64_9bf75928",
       "range": {
         "startLine": 537,
         "startChar": 5,
