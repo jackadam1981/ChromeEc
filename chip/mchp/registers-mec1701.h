@@ -761,7 +761,7 @@
 
 /* MCHP implements 6 GPIO ports */
 #define MCHP_GPIO_MAX_PORT 6
-
+#define UNIMPLEMENTED_GPIO_BANK MCHP_GPIO_MAX_PORT
 /*
  * In MECxxxx documentation GPIO numbers are octal, each control
  * register is located on a 32-bit boundary.
