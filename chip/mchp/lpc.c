@@ -282,35 +282,41 @@ void lpc_mem_mapped_init(void)
 		EC_HOST_CMD_FLAG_VERSION_3;
 }
 
-const int acpi_ec_pcr_slp[MCHP_ACPI_EC_MAX] = {
+const int acpi_ec_pcr_slp[MCHP_ACPI_EC_INSTANCES] = {
 	MCHP_PCR_ACPI_EC0,
 	MCHP_PCR_ACPI_EC1,
 	MCHP_PCR_ACPI_EC2,
 	MCHP_PCR_ACPI_EC3,
+#ifdef CHIP_FAMILY_MEC17XX
 	MCHP_PCR_ACPI_EC4,
+#endif
 };
 
-const int acpi_ec_nvic_ibf[MCHP_ACPI_EC_MAX] = {
+const int acpi_ec_nvic_ibf[MCHP_ACPI_EC_INSTANCES] = {
 	MCHP_IRQ_ACPIEC0_IBF,
 	MCHP_IRQ_ACPIEC1_IBF,
 	MCHP_IRQ_ACPIEC2_IBF,
 	MCHP_IRQ_ACPIEC3_IBF,
+#ifdef CHIP_FAMILY_MEC17XX
 	MCHP_IRQ_ACPIEC4_IBF,
+#endif
 };
 
 #ifdef CONFIG_HOSTCMD_ESPI
-const int acpi_ec_espi_bar_id[MCHP_ACPI_EC_MAX] = {
+const int acpi_ec_espi_bar_id[MCHP_ACPI_EC_INSTANCES] = {
 	MCHP_ESPI_IO_BAR_ID_ACPI_EC0,
 	MCHP_ESPI_IO_BAR_ID_ACPI_EC1,
 	MCHP_ESPI_IO_BAR_ID_ACPI_EC2,
 	MCHP_ESPI_IO_BAR_ID_ACPI_EC3,
+#ifdef CHIP_FAMILY_MEC17XX
 	MCHP_ESPI_IO_BAR_ID_ACPI_EC4,
+#endif
 };
 #endif
 
 void chip_acpi_ec_config(int instance, uint32_t io_base, uint8_t mask)
 {
-	if (instance >= MCHP_ACPI_EC_MAX)
+	if (instance >= MCHP_ACPI_EC_INSTANCES)
 		CPUTS("ACPI EC CFG invalid");
 
 	MCHP_PCR_SLP_DIS_DEV(acpi_ec_pcr_slp[instance]);
@@ -361,7 +367,12 @@ void chip_8042_config(uint32_t io_base)
 #ifndef CONFIG_KEYBOARD_IRQ_GPIO
 	/* Set up SERIRQ for keyboard */
 	MCHP_8042_KB_CTRL |= BIT(5);
+#ifdef CONFIG_HOSTCMD_ESPI
+	/* Delivery 8042 keyboard interrupt as IRQ1 using eSPI SERIRQ */
+	MCHP_ESPI_IO_SERIRQ_REG(MCHP_ESPI_SIRQ_8042_KB) = 1;
+#else
 	MCHP_LPC_SIRQ(1) = 0x01;
+#endif
 #endif
 }
 
@@ -418,8 +429,8 @@ void chip_port80_config(uint32_t io_base)
 
 	MCHP_P80_ACTIVATE(0) = 1;
 
-	MCHP_INT_SOURCE(15) = MCHP_INT15_P80(0);
-	MCHP_INT_ENABLE(15) = MCHP_INT15_P80(0);
+	MCHP_INT_SOURCE(15) = MCHP_P80_GIRQ_BIT(0);
+	MCHP_INT_ENABLE(15) = MCHP_P80_GIRQ_BIT(0);
 	task_enable_irq(MCHP_IRQ_PORT80DBG0);
 }
 
@@ -449,8 +460,6 @@ static void chip_lpc_iobar_debug(void)
 #ifndef CONFIG_HOSTCMD_ESPI
 static void setup_lpc(void)
 {
-	TRACE0(55, LPC, 0, "setup_lpc");
-
 	MCHP_LPC_CFG_BAR |= (1ul << 15);
 
 	/* Set up ACPI0 for 0x62/0x66 */
