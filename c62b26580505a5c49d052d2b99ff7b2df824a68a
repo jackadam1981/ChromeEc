@@ -16,6 +16,23 @@
       "message": "Generally looks good. Please remove the interrupt too.\n\nI will OOO the next 2 weeks. +Ting to review instead",
       "revId": "c62b26580505a5c49d052d2b99ff7b2df824a68a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec68f2d4_5cd51d27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-19T06:47:22Z",
+      "side": 1,
+      "message": "That looks like a hack that will have consequences on power consumption.\n\nInstead, please add a hook on power transitions.",
+      "revId": "c62b26580505a5c49d052d2b99ff7b2df824a68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
