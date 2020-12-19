@@ -94,32 +94,25 @@ int clock_get_freq(void)
  */
 void clock_init(void)
 {
-	int __attribute__((unused)) unused;
-
-	trace0(0, MEC, 0, "Clock Init");
-
+#ifdef CONFIG_CLOCK_SRC_EXTERNAL
 #ifdef CONFIG_CLOCK_CRYSTAL
-	/* XOSEL: 0 = Parallel resonant crystal */
-	MCHP_VBAT_CE &= ~(1ul << 3);
+	MCHP_VBAT_CE = MCHP_VBAT_CE_XOSEL_PAR
+			| MCHP_VBAT_CE_ALWAYS_ON_32K_SRC_CRYSTAL;
+#else
+	/* 32KHz 50% duty waveform on 32KHZ_IN pin */
+	MCHP_VBAT_CE = MCHP_VBAT_CE_32K_DOMAIN_32KHZ_IN_PIN
+			| MCHP_VBAT_CE_ALWAYS_ON_32K_SRC_INT;
+#endif
 
 #else
-	/* XOSEL: 1 = Single ended clock source */
-	MCHP_VBAT_CE |= (1ul << 3);
+	/* Use internal silicon 32KHz OSC */
+	MCHP_VBAT_CE = MCHP_VBAT_CE_32K_DOMAIN_ALWAYS_ON
+			| MCHP_VBAT_CE_ALWAYS_ON_32K_SRC_INT;
 #endif
 
-	/* 32K clock enable */
-	MCHP_VBAT_CE = (MCHP_VBAT_CE & ~(0x03)) | (1ul << 2);
-
-#ifdef CONFIG_CLOCK_CRYSTAL
-	/* Wait for crystal to stabilize (OSC_LOCK == 1) */
+	/* Wait for PLL to lock onto 32KHz source (OSC_LOCK == 1) */
 	while (!(MCHP_PCR_CHIP_OSC_ID & 0x100))
 		;
-#endif
-	trace0(0, MEC, 0, "PLL OSC is Locked");
-#ifndef LFW
-	unused = shared_mem_size();
-	trace11(0, MEC, 0, "Shared Memory size = 0x%08x", (uint32_t)unused);
-#endif
 }
 
 /**
@@ -155,10 +148,8 @@ void htimer_init(void)
 {
 	MCHP_PCR_SLP_DIS_DEV(MCHP_PCR_HTMR0);
 	MCHP_HTIMER_PRELOAD(0) = 0; /* disable at beginning */
-	MCHP_INT_SOURCE(MCHP_HTIMER_GIRQ) =
-			MCHP_HTIMER_GIRQ_BIT(0);
-	MCHP_INT_ENABLE(MCHP_HTIMER_GIRQ) =
-			MCHP_HTIMER_GIRQ_BIT(0);
+	MCHP_INT_SOURCE(MCHP_HTIMER_GIRQ) = MCHP_HTIMER_GIRQ_BIT(0);
+	MCHP_INT_ENABLE(MCHP_HTIMER_GIRQ) = MCHP_HTIMER_GIRQ_BIT(0);
 
 	task_enable_irq(MCHP_IRQ_HTIMER0);
 }
@@ -184,9 +175,6 @@ void system_set_htimer_alarm(uint32_t seconds,
 
 	MCHP_HTIMER_PRELOAD(0) = 0; /* disable */
 
-	trace12(0, SLP, 0, "sys set htimer: sec=%d us=%d",
-		seconds, microseconds);
-
 	if (microseconds > 1000000ul) {
 		ns = (microseconds / 1000000ul);
 		microseconds %= 1000000ul;
@@ -211,9 +199,6 @@ void system_set_htimer_alarm(uint32_t seconds,
 		hctrl = 0;
 	}
 
-	trace12(0, SLP, 0,
-		"sys set htimer: ctrl=0x%0x preload=0x%0x",
-		hctrl, hcnt);
 	MCHP_HTIMER_CONTROL(0) = hctrl;
 	MCHP_HTIMER_PRELOAD(0) = hcnt;
 }
@@ -330,8 +315,6 @@ static void print_saved_regs(void)
  */
 static void prepare_for_deep_sleep(void)
 {
-	trace0(0, MEC, 0, "Prepare for Deep Sleep");
-
 	/* sysTick timer */
 	CPU_NVIC_ST_CTRL &= ~ST_ENABLE;
 	CPU_NVIC_ST_CTRL &= ~ST_COUNTFLAG;
@@ -417,8 +400,6 @@ static void prepare_for_deep_sleep(void)
 
 static void resume_from_deep_sleep(void)
 {
-	trace0(0, MEC, 0, "resume_from_deep_sleep");
-
 	MCHP_PCR_SYS_SLP_CTL = 0x00;  /* default */
 
 	/* Disable assertion of DeepSleep signal when core executes WFI */
@@ -523,9 +504,9 @@ void __idle(void)
 	/*
 	 * Print when the idle task starts. This is the lowest priority
 	 * task, so this only starts once all other tasks have gotten a
-	 * chance to do their task inits and have gone to sleep.
+	 * chance to do their task initializations and have gone to sleep.
 	 */
-	CPRINTS("MEC1701 low power idle task started");
+	CPRINTS("MEC low power idle task started");
 
 	while (1) {
 		/* Disable interrupts */
@@ -545,7 +526,6 @@ void __idle(void)
 
 		/* check if there enough time for deep sleep */
 		if (DEEP_SLEEP_ALLOWED && time_for_dsleep) {
-			trace0(0, MEC, 0, "Enough time for Deep Sleep");
 			/*
 			 * Check if the console use has expired and
 			 * console sleep is masked by GPIO(UART-RX)
@@ -564,7 +544,7 @@ void __idle(void)
 				clock_wait_cycles(1);
 
 				if (LOW_SPEED_DEEP_SLEEP_ALLOWED)
-					CPRINTS("MEC1701 Disable console "
+					CPRINTS("MEC Disable console "
 						"in deepsleep");
 			}
 
@@ -598,7 +578,7 @@ void __idle(void)
 				 * 'max_sleep_time' value should be big
 				 * enough so that hibernation timer's
 				 * interrupt triggers only after 'wfi'
-				 * completes its excution.
+				 * completes its execution.
 				 */
 				max_sleep_time -=
 					(get_time().le.lo - t0.le.lo);
@@ -675,19 +655,6 @@ void __idle(void)
  * Print low power idle statistics
  */
 
-#ifdef CONFIG_MCHP_DEEP_SLP_DEBUG
-static void print_pcr_regs(void)
-{
-	int i;
-
-	ccprintf("PCR regs before WFI\n");
-	for (i = 0; i < 5; i++) {
-		ccprintf("PCR SLP_EN[%d]  = 0x%08X\n", pcr_slp_en[i]);
-		ccprintf("PCR CLK_REQ[%d] = 0x%08X\n", pcr_clk_req[i]);
-	}
-}
-#endif
-
 static int command_idle_stats(int argc, char **argv)
 {
 	timestamp_t ts = get_time();
@@ -702,7 +669,7 @@ static int command_idle_stats(int argc, char **argv)
 	ccprintf("Total time on:                       %.6llds\n\n",
 			ts.val);
 
-#ifdef CONFIG_MCHP_DEEP_SLP_DEBUG
+#if defined(CONFIG_LOW_POWER_IDLE) && defined(CONFIG_MCHP_DEEP_SLP_DEBUG)
 	print_pcr_regs();	/* debug */
 #endif
 	return EC_SUCCESS;
