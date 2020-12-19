@@ -33,6 +33,24 @@
       "message": "That looks like a hack that will have consequences on power consumption.\n\nInstead, please add a hook on power transitions.",
       "revId": "c62b26580505a5c49d052d2b99ff7b2df824a68a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a1a1486_6d190bc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-19T06:55:05Z",
+      "side": 1,
+      "message": "Oh, I\u0027m actually not sure what this is about? Is the interrupt broken? Why? We carefully design the resistor pull up/down to make sure we receive interrupts.\n\n(the comment about power consumption still stands)\n\nThis will also have UX consequences, as the base detection will take a bit longer on average.",
+      "parentUuid": "ec68f2d4_5cd51d27",
+      "revId": "c62b26580505a5c49d052d2b99ff7b2df824a68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
