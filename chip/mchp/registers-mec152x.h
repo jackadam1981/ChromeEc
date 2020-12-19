@@ -476,8 +476,6 @@
 #define MCHP_PWR_RST_STS_WDT BIT(8) /* R/WC */
 #define MCHP_PWR_RST_STS_JTAG_RSTN BIT(7) /* RO */
 #define MCHP_PWR_RST_STS_SYS BIT(6) /* R/WC */
-/* same function, old bit name */
-#define MCHP_PWR_RST_STS_VTR BIT(6)
 #define MCHP_PWR_RST_STS_VBAT BIT(5) /* R/WC */
 #define MCHP_PWR_RST_STS_VTR BIT(4) /* R/WC */
 #define MCHP_PWR_RST_STS_HOST BIT(3) /* RO */
