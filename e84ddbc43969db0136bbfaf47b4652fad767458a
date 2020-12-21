@@ -16,6 +16,24 @@
       "message": "Should we move this to include/driver/tcpm/tcpm.h so that it mirrors the source module location?",
       "revId": "e84ddbc43969db0136bbfaf47b4652fad767458a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2efc94a9_6462dcd8",
+        "filename": "include/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-21T20:09:44Z",
+      "side": 1,
+      "message": "I don\u0027t see include/driver at present and others don\u0027t seem to do it that way - see for example include/power. But I can certainly do that...just let me know.",
+      "parentUuid": "914bd966_5ae5d38f",
+      "revId": "e84ddbc43969db0136bbfaf47b4652fad767458a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
