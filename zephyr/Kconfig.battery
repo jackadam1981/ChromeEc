@@ -81,4 +81,12 @@ config PLATFORM_EC_CHARGER_ISL9241
 
 endchoice
 
+config PLATFORM_EC_BATTERY_FUEL_GAUGE
+	bool "Board supplies battery info"
+	help
+	  Select this when the board supplies the fuel gauge and battery
+	  information for each supported battery. This information is then used
+	  for battery cut off and to check the charge/discharge FET status.
+	  The board should provide board_battery_info[] for this purpose.
+
 endif # PLATFORM_EC_BATTERY
