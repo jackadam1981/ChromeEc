@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c652076_76d8b91c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-12-21T21:06:00Z",
+      "side": 1,
+      "message": "I like that, this is getting a bit messy and that\u0027s cleaner.",
+      "parentUuid": "f292a8a5_08043da0",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 460,
+        "endChar": 35
+      },
+      "revId": "86f403456350c0100f5afe55c5f90feffdf411bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed829bb3_6dddfadd",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-21T18:17:34Z",
       "side": 1,
       "message": "Should this also exit early on VBAT OVP?",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 52
+      },
+      "revId": "86f403456350c0100f5afe55c5f90feffdf411bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed23271_4a99d987",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-12-21T21:06:00Z",
+      "side": 1,
+      "message": "I don\u0027t think so. The PPC will be re-inited, but if the alert is never cleared (say there is an alert in the status register as well), ALERT_L will never de-assert. So we still need to do the check on line 525, even if we don\u0027t technically need to check the status register. What do you think?",
+      "parentUuid": "ed829bb3_6dddfadd",
       "range": {
         "startLine": 514,
         "startChar": 0,
