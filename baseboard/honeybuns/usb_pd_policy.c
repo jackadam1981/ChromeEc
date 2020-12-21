@@ -15,6 +15,7 @@
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_dp_ufp.h"
 #include "usbc_ppc.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -52,16 +53,6 @@ const uint32_t pd_snk_pdo[] = {
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
 int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
-{
-	int pdo_cnt = 0;
-
-	*src_pdo =  pd_src_host_pdo;
-	pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
-
-	return pdo_cnt;
-}
-
-int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 {
 	int pdo_cnt = 0;
 
@@ -384,7 +375,7 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 #endif
 		rv = 1;
 		pd_log_event(PD_EVENT_VIDEO_DP_MODE, 0, 1, NULL);
-		baseboard_hpd_converter_enable(1);
+		usb_pd_hpd_converter_enable(1);
 	} else if ((PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) &&
 		   (PD_VDO_OPOS(payload[0]) == OPOS_GFU)) {
 #ifndef TCPM_V2_ALT_MODE
@@ -436,7 +427,7 @@ static int svdm_exit_mode(int port, uint32_t *payload)
 #endif
 		/* Configure demux to disable DP mode */
 		svdm_configure_demux(port, 0, 0);
-		baseboard_hpd_converter_enable(0);
+		usb_pd_hpd_converter_enable(0);
 		pd_log_event(PD_EVENT_VIDEO_DP_MODE, 0, 0, NULL);
 	} else if (PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) {
 #ifndef TCPM_V2_ALT_MODE
