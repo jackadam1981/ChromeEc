@@ -157,6 +157,7 @@ enum usb_strings {
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_CUSTOM_PDO
+#define CONFIG_USB_PD_ALT_MODE_UFP
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DYNAMIC_SRC_CAP
 #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
@@ -260,8 +261,6 @@ enum adc_channel {
 
 extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
-extern void baseboard_hpd_converter_enable(int enable);
-extern void baseboard_manage_hpd_event(int signal);
 
 #endif /* !__ASSEMBLER__ */
 
