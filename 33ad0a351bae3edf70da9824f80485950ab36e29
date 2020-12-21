@@ -16,6 +16,40 @@
       "message": "Add EC owners for review. thanks ",
       "revId": "33ad0a351bae3edf70da9824f80485950ab36e29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7ae5fd_793eed6b",
+        "filename": "board/galtic/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-21T17:37:03Z",
+      "side": 1,
+      "message": "Are these GPIOs misnamed, or are the colors incorrect?  From the GPIO names, I\u0027d assume the colors available are red and green",
+      "revId": "33ad0a351bae3edf70da9824f80485950ab36e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72297f18_814e12e1",
+        "filename": "board/galtic/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-21T17:37:03Z",
+      "side": 1,
+      "message": "nit: could use a comment for why it is you\u0027d like to override the error state behavior",
+      "revId": "33ad0a351bae3edf70da9824f80485950ab36e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
