@@ -93,6 +93,30 @@
       },
       "revId": "86f403456350c0100f5afe55c5f90feffdf411bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "268937d6_2ef5392d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-21T21:38:47Z",
+      "side": 1,
+      "message": "I think you\u0027re correct - because this path isn\u0027t writing any registers, it will just keep trying to process until all interrupts are cleared.",
+      "parentUuid": "6ed23271_4a99d987",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 52
+      },
+      "revId": "86f403456350c0100f5afe55c5f90feffdf411bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
