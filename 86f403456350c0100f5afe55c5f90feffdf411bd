@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f292a8a5_08043da0",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-21T18:17:34Z",
+      "side": 1,
+      "message": "What do you think about changing this function to return an error when there is an unrecoverable error detected.  This way the logic is contained within this function.",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 460,
+        "endChar": 35
+      },
+      "revId": "86f403456350c0100f5afe55c5f90feffdf411bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed829bb3_6dddfadd",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-21T18:17:34Z",
+      "side": 1,
+      "message": "Should this also exit early on VBAT OVP?",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 52
+      },
+      "revId": "86f403456350c0100f5afe55c5f90feffdf411bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
