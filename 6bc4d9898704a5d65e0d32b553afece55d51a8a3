@@ -16,6 +16,52 @@
       "message": "LGTM. Keith, do you have any concern for this patch?",
       "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "987a7f3a_afb280c1",
+        "filename": "board/drobit/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-21T19:16:53Z",
+      "side": 1,
+      "message": "Nit - assign to zero so it\u0027s clear your intent is to disable the level 1 charging state.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ac2ecc_c436586e",
+        "filename": "board/drobit/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-21T19:16:53Z",
+      "side": 1,
+      "message": "This should be STATE_DISCHARGE_S0_BAT_LOW to match he marketing spec.\n\nBattery error should be blinking amber 1 second on, 1 second off in all power states.",
+      "range": {
+        "startLine": 82,
+        "startChar": 22,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
