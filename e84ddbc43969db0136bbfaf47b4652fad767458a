@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914bd966_5ae5d38f",
+        "filename": "include/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-21T18:05:42Z",
+      "side": 1,
+      "message": "Should we move this to include/driver/tcpm/tcpm.h so that it mirrors the source module location?",
+      "revId": "e84ddbc43969db0136bbfaf47b4652fad767458a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
