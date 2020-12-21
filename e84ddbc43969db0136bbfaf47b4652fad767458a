@@ -34,6 +34,24 @@
       "parentUuid": "914bd966_5ae5d38f",
       "revId": "e84ddbc43969db0136bbfaf47b4652fad767458a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b4a5459_1e019e14",
+        "filename": "include/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-21T21:30:03Z",
+      "side": 1,
+      "message": "See CL:2571897.  power/*.h was moved to include/power/*.h, So moving driver/tpcm/tcpm.h to include/driver/tcpm/tcpm.h would follow this model.  \n\nThe zephyr upstream also seems to follow this model.",
+      "parentUuid": "2efc94a9_6462dcd8",
+      "revId": "e84ddbc43969db0136bbfaf47b4652fad767458a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
