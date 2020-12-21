@@ -133,6 +133,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5d38efd_82d1f304",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-12-21T04:19:10Z",
+      "side": 1,
+      "message": "Thanks. LGTM.",
+      "parentUuid": "a89b2e4d_3e585ae3",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 24
+      },
+      "revId": "3321a8569f9f4c748e9d32c236e70bf89da5cabb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0cc65433_89cb438a",
         "filename": "driver/accelgyro_icm426xx.c",
         "patchSetId": 2
