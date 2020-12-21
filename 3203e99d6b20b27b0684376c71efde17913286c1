@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c25500_4a5295a0",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-12-21T19:42:33Z",
+      "side": 1,
+      "message": "Is it better to use \u003d instead of ?\u003d to catch errors early?",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "3203e99d6b20b27b0684376c71efde17913286c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
