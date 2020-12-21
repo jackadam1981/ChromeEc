@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb11221_9dbc4e91",
+        "filename": "include/compiler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-21T17:59:55Z",
+      "side": 1,
+      "message": "Guard this with #ifndef typeof().  The same macro is defined in Zephyr for the cortex-m architecture.\n\nhttps://chromium.googlesource.com/chromiumos/third_party/zephyr/+/b30ae97f/arch/arm/include/aarch32/cortex_m/cmse.h#142",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "76306a23ddc724031e44e30a2b4f561c4c21bef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
