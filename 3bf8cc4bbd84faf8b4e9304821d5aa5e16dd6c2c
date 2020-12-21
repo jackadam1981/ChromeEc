@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73cd5547_8436cd26",
+        "filename": "baseboard/dedede/cbi_fw_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-21T22:47:06Z",
+      "side": 1,
+      "message": "Maybe absent vs present would be better similar to above?",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "3bf8cc4bbd84faf8b4e9304821d5aa5e16dd6c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
