@@ -16,6 +16,24 @@
       "message": "More description?",
       "revId": "f85a6f4ede9991820f51ec8de988b592ba155980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6020ab5_c62d196c",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-22T03:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840004eb_a606f9e1",
+      "revId": "f85a6f4ede9991820f51ec8de988b592ba155980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
