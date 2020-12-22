@@ -30,15 +30,18 @@
  */
 static uint32_t pwm_keep_awake_mask;
 
-const uint8_t pwm_slp_bitpos[12] = {
-	4, 20, 21, 22, 23, 24, 25, 26, 27, 31, 0, 1
+const uint8_t pwm_slp_bitpos[MCHP_PWM_ID_MAX] = {
+	4, 20, 21, 22, 23, 24, 25, 26, 27,
+#if defined(CHIP_FAMILY_MEC170X)
+	31, 0, 1
+#endif
 };
 
 static uint32_t pwm_get_sleep_mask(int id)
 {
 	uint32_t bitpos = 32;
 
-	if (id < 12)
+	if (id < MCHP_PWM_ID_MAX)
 		bitpos = (uint32_t)pwm_slp_bitpos[id];
 
 	return (1ul << bitpos);
@@ -124,9 +127,11 @@ static const uint16_t pwm_pcr[MCHP_PWM_ID_MAX] = {
 	MCHP_PCR_PWM6,
 	MCHP_PCR_PWM7,
 	MCHP_PCR_PWM8,
+#if defined(CHIP_FAMILY_MEC170X)
 	MCHP_PCR_PWM9,
 	MCHP_PCR_PWM10,
 	MCHP_PCR_PWM11,
+#endif
 };
 
 static void pwm_slp_en(int pwm_id, int sleep_en)
