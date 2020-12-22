@@ -104,6 +104,30 @@
       },
       "revId": "8bfed2c17eaf8c28c5e53536a294bf1bad184c8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aca74d1_5f0bdba9",
+        "filename": "board/lindar/lindar_lightbar.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2020-12-22T10:43:01Z",
+      "side": 1,
+      "message": "Use the ectool lightbar architecture to adjust the brightness and numbers of LED. Or do you have better suggestions for me to refer to?",
+      "parentUuid": "c112da09_41a8f866",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 0
+      },
+      "revId": "8bfed2c17eaf8c28c5e53536a294bf1bad184c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
