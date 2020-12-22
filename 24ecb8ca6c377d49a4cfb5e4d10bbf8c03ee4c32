@@ -16,6 +16,75 @@
       "message": "hi chenTsung: please help to reviewer this CL for quick charge",
       "revId": "24ecb8ca6c377d49a4cfb5e4d10bbf8c03ee4c32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4bfb4c9_e78f218f",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-12-22T02:13:07Z",
+      "side": 1,
+      "message": "What is \u0027optional mfg function2\u0027? We only check/set/clear bits in SB_SMARTCHANGE, not SB_OPTIONALMFG_FUNCTION2.",
+      "range": {
+        "startLine": 451,
+        "startChar": 3,
+        "endLine": 451,
+        "endChar": 25
+      },
+      "revId": "24ecb8ca6c377d49a4cfb5e4d10bbf8c03ee4c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645faffe_1c01dc6d",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-12-22T02:13:07Z",
+      "side": 1,
+      "message": "Do we have to read SB_SMARTCHARGE twice?",
+      "range": {
+        "startLine": 464,
+        "startChar": 14,
+        "endLine": 464,
+        "endChar": 28
+      },
+      "revId": "24ecb8ca6c377d49a4cfb5e4d10bbf8c03ee4c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af2ed7aa_320faa96",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-12-22T02:13:07Z",
+      "side": 1,
+      "message": "Should we use \"if (!IS_ENABLED(VARIANT_KUKUI_NO_SENSORS))\" in functions?",
+      "range": {
+        "startLine": 479,
+        "startChar": 1,
+        "endLine": 479,
+        "endChar": 33
+      },
+      "revId": "24ecb8ca6c377d49a4cfb5e4d10bbf8c03ee4c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
