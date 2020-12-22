@@ -285,6 +285,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14f1ff90_35f746f7",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Addressed after a fashion in https://crrev.com/c/2599786/2 (barely)",
+      "parentUuid": "e0057c3a_888967e1",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8815bbd6_eea1c3d7",
@@ -298,6 +322,30 @@
       "writtenOn": "2020-12-10T17:30:23Z",
       "side": 1,
       "message": "Please document that this register write is doing.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 51
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e876db_fbee028e",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Addressed after a fashion in https://crrev.com/c/2599786/2",
+      "parentUuid": "8815bbd6_eea1c3d7",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -521,6 +569,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caf9da58_fe253837",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "This thread is obviated by the use of the tcpci.c implementation in https://crrev.com/c/2599786/2.",
+      "parentUuid": "611f5f91_0fb4297d",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 64
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91327bef_889c2b2c",
@@ -710,6 +782,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a88c14_79e87ffd",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4f6eec1_aab001a1",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6aa8e25b_2f35c01e",
@@ -829,6 +925,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "554f436a_69e4ff5e",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Copied to https://crrev.com/c/2599786/2.",
+      "parentUuid": "fefa9236_b9249c02",
+      "range": {
+        "startLine": 148,
+        "startChar": 34,
+        "endLine": 148,
+        "endChar": 68
+      },
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53801f59_25aa9af4",
@@ -842,6 +962,24 @@
       "writtenOn": "2020-12-10T22:45:46Z",
       "side": 1,
       "message": "Why is this being done here? cc1 and cc2 are not subsequently used. If the goal is to obtain the side effects of rt1715_get_cc, then those side effects should be encapsulated in their own function.",
+      "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9460c4a2_06b32146",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Commented on https://crrev.com/c/2599786/2.",
+      "parentUuid": "53801f59_25aa9af4",
       "revId": "712b9438a9c6774cc98250678091dcb7926cc2ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

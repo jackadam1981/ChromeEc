@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66e6d702_7b6c4797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Reproduced in https://crrev.com/c/2599786/2.",
+      "parentUuid": "04e03ad7_bf928151",
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84d52877_6723a5aa",
@@ -88,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4032e613_c7c3ee9a",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "786638a5_a9d8f6f2",
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68c3baf7_3b2d0618",
@@ -101,6 +137,30 @@
       "writtenOn": "2020-12-16T17:16:21Z",
       "side": 1,
       "message": "Both PHY control updates need some documentation.  Ideally, the comment would provide the rationale for setting the PHY registers to something besides the default.\n\nAt a bare minimum, add a comment indicating \"Set PHY control registers to Richtek recommended values\".",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 51
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "701feeda_bf56bd65",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/2599786/2 (bare minimum)",
+      "parentUuid": "68c3baf7_3b2d0618",
       "range": {
         "startLine": 72,
         "startChar": 0,
@@ -148,6 +208,30 @@
       "side": 1,
       "message": "update to this CLs:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2599786",
       "parentUuid": "f9d560cc_d7c4986f",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de45072_b4a67c4a",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b00c1cb_13d7fc2e",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -300,6 +384,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b523386_741b990b",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e02c057_268db520",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 2
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df2e9d3b_594d0420",
@@ -337,6 +445,30 @@
       "side": 1,
       "message": "update to this CLs:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2599786",
       "parentUuid": "df2e9d3b_594d0420",
+      "range": {
+        "startLine": 23,
+        "startChar": 32,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f65692c_13dcdde3",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:30:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48ce18ef_54b86d3b",
       "range": {
         "startLine": 23,
         "startChar": 32,
