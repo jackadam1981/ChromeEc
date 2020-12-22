@@ -37,7 +37,8 @@
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 /* Mutex for shared NVM access */
-static struct mutex bb_nvm_mutex;
+/* TODO(sjg): init this mutex */
+static mutex_t bb_nvm_mutex;
 
 /**
  * Utility functions
