@@ -488,8 +488,11 @@ static void sm5803_init(int chgnum)
 			rv |= chg_write8(chgnum, 0x52, 0x77);
 			rv |= chg_write8(chgnum, 0x53, 0xD2);
 			rv |= chg_write8(chgnum, 0x54, 0x02);
-			rv |= chg_write8(chgnum, 0x55, 0xD1);
-			rv |= chg_write8(chgnum, 0x56, 0x7F);
+			rv |= chg_read8(chgnum, 0x23, &reg);
+			reg |= BIT(2);
+			rv |= chg_write8(chgnum, 0x23, reg);
+			rv |= chg_write8(chgnum, 0x55, 0x50);
+			rv |= chg_write8(chgnum, 0x56, 0xFF);
 			rv |= chg_write8(chgnum, 0x57, 0x01);
 			rv |= chg_write8(chgnum, 0x58, 0x50);
 			rv |= chg_write8(chgnum, 0x59, 0x7F);
@@ -526,8 +529,11 @@ static void sm5803_init(int chgnum)
 			rv |= chg_write8(chgnum, 0x52, 0x77);
 			rv |= chg_write8(chgnum, 0x53, 0xD2);
 			rv |= chg_write8(chgnum, 0x54, 0x02);
-			rv |= chg_write8(chgnum, 0x55, 0xD1);
-			rv |= chg_write8(chgnum, 0x56, 0x7F);
+			rv |= chg_read8(chgnum, 0x23, &reg);
+			reg |= BIT(2);
+			rv |= chg_write8(chgnum, 0x23, reg);
+			rv |= chg_write8(chgnum, 0x55, 0x50);
+			rv |= chg_write8(chgnum, 0x56, 0xFF);
 			rv |= chg_write8(chgnum, 0x57, 0x01);
 			rv |= chg_write8(chgnum, 0x58, 0x50);
 			rv |= chg_write8(chgnum, 0x59, 0x7F);
