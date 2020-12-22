@@ -16,6 +16,24 @@
       "message": "What kind of testing has been done with kindred and the new motion sensors?",
       "revId": "6989ba65da251983cf802501e169b966d557493b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3950391_783bf17a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-12-22T05:24:32Z",
+      "side": 1,
+      "message": "Yes,EE has re-work on kindred DVT machine with new sensors.\nSIT has test on new config with loccal build EC, The result is PASS",
+      "parentUuid": "8dd0f664_2c5d2f9e",
+      "revId": "6989ba65da251983cf802501e169b966d557493b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
