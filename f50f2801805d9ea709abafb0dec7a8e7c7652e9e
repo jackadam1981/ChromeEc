@@ -16,6 +16,24 @@
       "message": "Hi,\nI submit the following together:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2597124/2\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2597125/2\n\nThe npcx9_evb should build PASS at 3f9e0a2ebb45d4b610ec770d0d2d3c6d455625c9.\nIf you only revert one, it should have the build error message.",
       "revId": "f50f2801805d9ea709abafb0dec7a8e7c7652e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710f4c79_54fd98b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-12-22T13:23:33Z",
+      "side": 1,
+      "message": "I\u0027m fine to revert both. In the meantime, do you want to create a correct fix?",
+      "parentUuid": "1f60f369_9f8b6d4e",
+      "revId": "f50f2801805d9ea709abafb0dec7a8e7c7652e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
