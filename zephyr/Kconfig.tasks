@@ -162,7 +162,7 @@ config TASK_PD_STACK_SIZE
 	hex "Stack size"
 	default 0x400	# EC uses VENTI_TASK_STACK_SIZE which is 896
 	help
-	  The stack size of the PD_Cx tasks.
+	  The stack size of the PD_C0 and PD_C1 tasks.
 
 endif # HAS_TASK_PD_C0
 
@@ -196,7 +196,7 @@ config HAS_TASK_PD_INT_C0
 
 if HAS_TASK_PD_INT_C0
 
-config TASK_PD_INT_STACK_SIZE
+config TASK_PD_STACK_SIZE
 	hex "Stack size"
 	default 0x200
 	help
