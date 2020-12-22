@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72264eac_65ddc2b5",
+        "filename": "board/galtic/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-22T01:49:04Z",
+      "side": 1,
+      "message": "These GPIO names is defined as you see. LED_R_ODL control amber LED and LED_G_ODL control white LED. I will ask EE to modify name for clearly.\nThanks.",
+      "parentUuid": "1d7ae5fd_793eed6b",
+      "revId": "33ad0a351bae3edf70da9824f80485950ab36e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72297f18_814e12e1",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-21T17:37:03Z",
       "side": 1,
       "message": "nit: could use a comment for why it is you\u0027d like to override the error state behavior",
+      "revId": "33ad0a351bae3edf70da9824f80485950ab36e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0fbf45_2aebed52",
+        "filename": "board/galtic/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-22T01:49:04Z",
+      "side": 1,
+      "message": "I will add a comment for why override the error state behavior.\nThanks.",
+      "parentUuid": "72297f18_814e12e1",
       "revId": "33ad0a351bae3edf70da9824f80485950ab36e29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
