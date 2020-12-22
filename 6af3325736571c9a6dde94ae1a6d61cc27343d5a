@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3435727b_cdf3cca0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:29:51Z",
+      "side": 1,
+      "message": "How about \"rt1715: Improve noise rejection\"?",
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "317d7908_9347c331",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:29:51Z",
+      "side": 1,
+      "message": "Please summarize the high-level changes. Perhaps something like,\n\u003e Adjust CC noise rejection parameters based on CC voltage after getting CC levels and before setting polarity. Adjust electrical parameters to Richtek-recommended values.",
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "68958e32_b33e2b6f",
