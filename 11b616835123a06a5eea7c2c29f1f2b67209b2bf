@@ -16,6 +16,23 @@
       "message": "There was still one missing call, that I had in a later CL which I have now pulled back here.",
       "revId": "11b616835123a06a5eea7c2c29f1f2b67209b2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74047c94_9076a18a",
+        "filename": "driver/tcpm/stm32gx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-22T16:14:33Z",
+      "side": 1,
+      "message": "Does this need a board Vconn control to ensure Vconn is turned on after Rp is disconnected?",
+      "revId": "11b616835123a06a5eea7c2c29f1f2b67209b2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
