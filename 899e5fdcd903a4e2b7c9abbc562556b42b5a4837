@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b5aafbf_50ccd877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-22T03:21:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c924c04_044f07df",
+      "revId": "899e5fdcd903a4e2b7c9abbc562556b42b5a4837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10f33109_b898f51e",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-17T03:04:34Z",
       "side": 1,
       "message": "How about ~BIT(NPCX_HIPMST_F0)",
+      "revId": "899e5fdcd903a4e2b7c9abbc562556b42b5a4837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe7e8d6_7f66a11f",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-22T03:21:47Z",
+      "side": 1,
+      "message": "I change to use EC_LPC_STATUS_PROCESSING macro in ec_commands.h.",
+      "parentUuid": "10f33109_b898f51e",
       "revId": "899e5fdcd903a4e2b7c9abbc562556b42b5a4837",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
