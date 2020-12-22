@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e331b18a_3e2038bc",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-22T20:44:56Z",
+      "side": 1,
+      "message": "Suggested enhancement over config.h\n\n\"The fuel gauge information is used to cut off the battery for shipping mode and to check the charge/discharge FET status.  The battery information  is used set voltage, current, and temperature operating limits for the battery.\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 43,
+        "endLine": 89,
+        "endChar": 67
+      },
+      "revId": "efe3af7d28dcee68b1ba80ef5a829696c976e30d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
