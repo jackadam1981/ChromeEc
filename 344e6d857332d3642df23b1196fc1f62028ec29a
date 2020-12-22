@@ -22,6 +22,30 @@
       },
       "revId": "344e6d857332d3642df23b1196fc1f62028ec29a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80f7714c_c23e28ad",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T20:59:43Z",
+      "side": 1,
+      "message": "See commit message, but I\u0027ll add a comment here too  \n\n * When building Zephyr, this file ends up being included before Zephyr\u0027s\n * include/sys/util.h so causes a warning there. We don\u0027t want to add an #ifdef\n * in that file since it won\u0027t be accepted upstream. So work around it here.",
+      "parentUuid": "cb808e16_115f8827",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "344e6d857332d3642df23b1196fc1f62028ec29a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
