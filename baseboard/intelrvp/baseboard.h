@@ -14,6 +14,10 @@
 	#include "ite_ec.h"
 #endif /* VARIANT_INTELRVP_EC_IT8320 */
 
+#ifdef VARIANT_INTELRVP_EC_MCHP
+	#include "mchp_ec.h"
+#endif /* VARIANT_INTELRVP_EC_MCHP */
+
 /*
  * Allow dangerous commands.
  * TODO: Remove this config before production.
