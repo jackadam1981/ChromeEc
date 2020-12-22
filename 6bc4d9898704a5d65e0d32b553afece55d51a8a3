@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97aaa6db_b5fce29d",
+        "filename": "board/drobit/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-22T02:43:06Z",
+      "side": 1,
+      "message": "Dear Keith\nI meet a style problems with \"ERROR: do not initialise globals to 0\" after repo upload .\nIt seems that I can\u0027t write as const int led_charge_lvl_1 \u003d 0;\nCan you help to check it?\nThanks.",
+      "parentUuid": "8b4a8efc_8633c097",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56ac2ecc_c436586e",
         "filename": "board/drobit/led.c",
         "patchSetId": 2
