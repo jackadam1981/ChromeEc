@@ -281,7 +281,9 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 				rv |= test_write8(chgnum, 0x44, 0x2);
 				rv |= main_write8(chgnum, 0x1F, 0);
 			}
-			rv = sm5803_flow2_update(chgnum,
+			if (battery_get_disconnect_state() ==
+			    BATTERY_NOT_DISCONNECTED)
+				rv = sm5803_flow2_update(chgnum,
 						 SM5803_FLOW2_AUTO_ENABLED,
 						 MASK_SET);
 		} else {
