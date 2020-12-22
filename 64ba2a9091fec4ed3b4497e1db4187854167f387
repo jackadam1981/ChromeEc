@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f25e0f5_083b2282",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-12-22T05:52:47Z",
+      "side": 1,
+      "message": "static void sb_quick_charge_mode(int enable)\n{\n\tint val, rv;\n\n\trv \u003d sb_read(SB_SMARTCHARGE, \u0026val);\n\tif (rv || !(val \u0026 MODE_QUICK_CHARGE_SUPPORT))\n\t\treturn;\n\n\tif (enable)\n\t\tval |\u003d SMART_QUICK_CHARGE;\n\telse\n\t\tval \u0026\u003d ~SMART_QUICK_CHARGE;\n\n\tsb_write(SB_SMARTCHARGE, val);\n}",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 1
+      },
+      "revId": "64ba2a9091fec4ed3b4497e1db4187854167f387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
