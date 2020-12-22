@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a2b0291_6aee9497",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "428ffe34_0079de2b",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d6f78b0_f6145bd3",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-12-14T20:02:04Z",
       "side": 1,
       "message": "Needs a bug.",
+      "range": {
+        "startLine": 694,
+        "startChar": 26,
+        "endLine": 694,
+        "endChar": 30
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c436fa_70071f91",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d6f78b0_f6145bd3",
       "range": {
         "startLine": 694,
         "startChar": 26,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3339c2b_4c4d297b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4187215d_c006a654",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 21
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2919862e_da8ea516",
@@ -117,6 +189,30 @@
       "writtenOn": "2020-12-14T20:02:04Z",
       "side": 1,
       "message": "Needs bug#.",
+      "range": {
+        "startLine": 448,
+        "startChar": 26,
+        "endLine": 448,
+        "endChar": 30
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7bbce47_6d5abd0e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2919862e_da8ea516",
       "range": {
         "startLine": 448,
         "startChar": 26,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "862b6d2b_08fb563a",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5468ad67_604e83b5",
+      "range": {
+        "startLine": 307,
+        "startChar": 25,
+        "endLine": 307,
+        "endChar": 29
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70f29f9e_103d36e1",
@@ -163,6 +283,30 @@
       "writtenOn": "2020-12-14T20:02:04Z",
       "side": 1,
       "message": "TODO: b/",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 21
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ef7b08_648b62a4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70f29f9e_103d36e1",
       "range": {
         "startLine": 188,
         "startChar": 0,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8515fb29_dfd22e26",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2215,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f3751b5_e4191593",
+      "range": {
+        "startLine": 2215,
+        "startChar": 25,
+        "endLine": 2215,
+        "endChar": 29
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d36aef21_1ebb74f9",
@@ -209,6 +377,30 @@
       "writtenOn": "2020-12-14T20:02:04Z",
       "side": 1,
       "message": "TODO bug#",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39c5da71_61563686",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d36aef21_1ebb74f9",
       "range": {
         "startLine": 8,
         "startChar": 8,
@@ -242,6 +434,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d90c3006_e87af354",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98fca85c_fb9dc6cc",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3cd2056_50098689",
@@ -259,6 +475,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7d09a81_f29bdd56",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2361,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3cd2056_50098689",
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83108cf4_8d4f2339",
@@ -272,6 +506,30 @@
       "writtenOn": "2020-12-14T20:02:04Z",
       "side": 1,
       "message": "Redundant with previous entry - needs to be fixed in the KConfig definition?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 80
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff292822_c76f1337",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83108cf4_8d4f2339",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -305,6 +563,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5cdffb_cd12b927",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "It should be in a separate CL. I\u0027ll move it",
+      "parentUuid": "cb4685d1_223bc141",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79867c68_2bc2a838",
@@ -318,6 +600,30 @@
       "writtenOn": "2020-12-14T20:02:04Z",
       "side": 1,
       "message": "Type-C",
+      "range": {
+        "startLine": 11,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ae6ee7_20623094",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79867c68_2bc2a838",
       "range": {
         "startLine": 11,
         "startChar": 38,
@@ -351,6 +657,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45dbcbf4_ed157e40",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a28bdae2_25c6c8e9",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3691b46_dcbd17cb",
@@ -364,6 +694,30 @@
       "writtenOn": "2020-12-14T20:02:04Z",
       "side": 1,
       "message": "Note - the EC charge manager isn\u0027t dependent on USB-C.\n\nThe EC charge manager manages charging the battery from all supported power sources.  This includes dedicated charge ports (such as a barrel jack connector), BC1.2 (Battery Charging 1.2) sources, and USB-C sources. When multiple charge sources are connected to a Chromebook simultaneously, the charge manager is responsible for picking the best source.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f307a2_5b89fa88",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3691b46_dcbd17cb",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -397,6 +751,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b72bab_1a28c990",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e77c65b6_ee89aff7",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be73124f_50dbf52a",
@@ -410,6 +788,30 @@
       "writtenOn": "2020-12-14T20:02:04Z",
       "side": 1,
       "message": "\"USB-C overcurrent protection: Enable this detect when a connect USB-C partner draws too much power from the Chromebook and automatically shut off power to the USB-C partner.\"\n\nSide note - there are a lot acronyms in the USB-C config options.  It would be helpful if we spell out the acronyms when we can.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "a385da41bbfa5570959622424918a6e5571ab9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d82984f_bc19ec2b",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be73124f_50dbf52a",
       "range": {
         "startLine": 50,
         "startChar": 0,
