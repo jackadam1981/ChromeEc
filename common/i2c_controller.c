@@ -736,9 +736,24 @@ int i2c_read_string(const int port,
 			if (pec != pec_remote)
 				rv = EC_ERROR_CRC;
 		} else {
+#ifdef CONFIG_ZEPHYR
+			/*
+			 * Work around the inability (so far) to do a repeated
+			 * start to read this follow-on data. We need an extra
+			 * byte so we can read the length again
+			 */
+			if (data_length == len)
+				return EC_ERROR_UNIMPLEMENTED;
+			rv = i2c_xfer_unlocked(port, addr_flags,
+					       0, 0, data, data_length + 1,
+					       I2C_XFER_STOP);
+			if (!rv)
+				memmove(data, data + 1, data_length);
+#else
 			rv = i2c_xfer_unlocked(port, addr_flags,
 					       0, 0, data, data_length,
 					       I2C_XFER_STOP);
+#endif
 			data[data_length] = 0;
 			if (rv)
 				continue;
