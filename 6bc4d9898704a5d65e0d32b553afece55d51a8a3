@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4a8efc_8633c097",
+        "filename": "board/drobit/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-22T01:57:19Z",
+      "side": 1,
+      "message": "Understood. I will assign it to zero.\nThanks.",
+      "parentUuid": "987a7f3a_afb280c1",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56ac2ecc_c436586e",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-21T19:16:53Z",
       "side": 1,
       "message": "This should be STATE_DISCHARGE_S0_BAT_LOW to match he marketing spec.\n\nBattery error should be blinking amber 1 second on, 1 second off in all power states.",
+      "range": {
+        "startLine": 82,
+        "startChar": 22,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "522c4e2e_1943137e",
+        "filename": "board/drobit/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-22T01:57:19Z",
+      "side": 1,
+      "message": "The STATE_DISCHARGE_S0_BAT_LOW state will check system state. It will follow S3/S5 behavior in S3/S5.\nBattery error LED behavior defined in marketing spec as below:\nS0: Blinking Amber LED, 1s on/ 1s off\nS3/S5: following S3/S5 behavior\nWe add this function to let battery error LED follow S3/S5 behavior in S3/S5.\nThanks.",
+      "parentUuid": "56ac2ecc_c436586e",
       "range": {
         "startLine": 82,
         "startChar": 22,
