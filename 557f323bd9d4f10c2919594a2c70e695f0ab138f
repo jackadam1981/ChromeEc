@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f23d82d_a2778b82",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-22T22:44:11Z",
+      "side": 1,
+      "message": "Any idea what you\u0027d be expecting this config to do?  I haven\u0027t been completely certain of its purpose as I\u0027m working on the source-out policy.  It seems like it gates asking the charge manager for our PDOs, but the charge manager itself doesn\u0027t use it.",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef4b684_561a4128",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-22T22:44:11Z",
+      "side": 1,
+      "message": "Unused?",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e98f4891_78a9b8fa",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-22T22:44:11Z",
+      "side": 1,
+      "message": "Does honeybuns support USB suspend?",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9bfa5ec_e4fe3da1",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-22T22:44:11Z",
+      "side": 1,
+      "message": "nit: add a note that this ordering is required in the spec",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e3ace59_11e4c66a",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-22T22:44:11Z",
+      "side": 1,
+      "message": "That\u0027s quite the TODO :)  Create a bug for it if we\u0027re adding PPS to TCPMv2.",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b1e99f9_f0656228",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-22T22:44:11Z",
+      "side": 1,
+      "message": "I think this is something we do incorrectly on servo_v4 as well.  Everything past 5 shouldn\u0027t have any flags set.\n\n\"Since all USB Providers support vSafe5V, the required vSafe5V Fixed Supply Power Data Object is also used to convey\nadditional information that is returned in bits 29 through 25. All other Fixed Supply Power Data Objects Shall set bits\n29…22 to zero.\"",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d1c49d7_c088acd0",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-22T22:44:11Z",
+      "side": 1,
+      "message": "I\u0027m in the process of moving this to the DPM, if you want to take a look: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2597429\n\nI\u0027d think we could let the 3A port config be \u003d\u003d to your number of ports if they all can give 3A.  And then it would expect a max PDO definition, which could be set to the same as your non-max if you\u0027re never offering 1.5 A.",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
