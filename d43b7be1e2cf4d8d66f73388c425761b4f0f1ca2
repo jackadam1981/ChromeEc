@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "786638a5_a9d8f6f2",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-22T11:34:06Z",
+      "side": 1,
+      "message": "update to this CLs:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2599786",
+      "parentUuid": "84d52877_6723a5aa",
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68c3baf7_3b2d0618",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 6
@@ -106,6 +124,30 @@
       "writtenOn": "2020-12-16T17:16:21Z",
       "side": 1,
       "message": "Can you add a bit definition for this in the rt1715.h?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "d43b7be1e2cf4d8d66f73388c425761b4f0f1ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b00c1cb_13d7fc2e",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-22T11:34:06Z",
+      "side": 1,
+      "message": "update to this CLs:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2599786",
+      "parentUuid": "f9d560cc_d7c4986f",
       "range": {
         "startLine": 103,
         "startChar": 0,
