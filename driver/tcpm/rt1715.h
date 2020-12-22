@@ -20,7 +20,7 @@
 
 #define RT1715_REG_BMCIO_RXDZSEL                0x93
 #define RT1715_REG_BMCIO_RXDZSEL_OCCTRL_600MA   BIT(7)
-#define RT1715_REG_BMCIO_RXDZSEL_MASK           BIT(0)
+#define RT1715_REG_BMCIO_RXDZSEL_SEL            BIT(0)
 
 #define RT1715_REG_VENDOR_5                     0x9B
 #define RT1715_REG_VENDOR_5_SHUTDOWN_OFF        BIT(5)
@@ -38,12 +38,15 @@
 #define RT1715_REG_TTCPC_FILTER_400US           0x0F
 
 #define RT1715_REG_DRP_TOGGLE_CYCLE             0xA2
+/* DRP Duty : (51.2 + 6.4 * val) ms */
 #define RT1715_REG_DRP_TOGGLE_CYCLE_76MS        0x04
 
 #define RT1715_REG_DRP_DUTY_CTRL                0xA3
 #define RT1715_REG_DRP_DUTY_CTRL_40PERCENT      400
 
 #define RT1715_REG_BMCIO_RXDZEN                 0xAF
+#define RT1715_REG_BMCIO_RXDZEN_ENABLE          0x01
+#define RT1715_REG_BMCIO_RXDZEN_DISABLE         0x00
 
 
 extern const struct tcpm_drv rt1715_tcpm_drv;

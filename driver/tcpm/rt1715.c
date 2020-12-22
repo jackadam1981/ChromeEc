@@ -57,7 +57,6 @@ static int rt1715_tcpci_tcpm_init(int port)
 	if (rv)
 		return rv;
 
-	/* DRP Duty : (51.2 + 6.4 * val) ms */
 	rv = tcpc_write(port, RT1715_REG_DRP_TOGGLE_CYCLE,
 		  RT1715_REG_DRP_TOGGLE_CYCLE_76MS);
 	if (rv)
@@ -70,10 +69,12 @@ static int rt1715_tcpci_tcpm_init(int port)
 		return rv;
 
 	/* PHY control */
+	/* Set PHY control registers to Richtek recommended values */
 	rv = tcpc_write(port, RT1715_REG_PHY_CTRL1, 0xF1);
 	if (rv)
 		return rv;
 
+	/* Set PHY control registers to Richtek recommended values */
 	rv = tcpc_write(port, RT1715_REG_PHY_CTRL2, 0x36);
 	if (rv)
 		return rv;
@@ -94,16 +95,16 @@ static inline int rt1715_init_cc_params(int port, int cc_level)
 
 	if (cc_level == TYPEC_CC_VOLT_RP_DEF) {
 		/* RXCC threshold : 0.55V */
-		en = 0;
+		en = RT1715_REG_BMCIO_RXDZEN_DISABLE;
 
 		sel = RT1715_REG_BMCIO_RXDZSEL_OCCTRL_600MA
-		  | RT1715_REG_BMCIO_RXDZSEL_MASK;
+		  | RT1715_REG_BMCIO_RXDZSEL_SEL;
 	} else {
 		/* RD threshold : 0.35V & RP threshold : 0.75V */
-		en = 1;
+		en = RT1715_REG_BMCIO_RXDZEN_ENABLE;
 
 		sel = RT1715_REG_BMCIO_RXDZSEL_OCCTRL_600MA
-				  | RT1715_REG_BMCIO_RXDZSEL_MASK;
+				  | RT1715_REG_BMCIO_RXDZSEL_SEL;
 	}
 
 	rv = tcpc_write(port, RT1715_REG_BMCIO_RXDZEN, en);
@@ -116,51 +117,13 @@ static inline int rt1715_init_cc_params(int port, int cc_level)
 static int rt1715_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2)
 {
-	int status;
 	int rv;
-	int role, is_snk;
 
-	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
-	/* If tcpc read fails, return error and CC as open */
-	if (rv) {
-		*cc1 = TYPEC_CC_VOLT_OPEN;
-
-		*cc2 = TYPEC_CC_VOLT_OPEN;
-
-		return rv;
-	}
-	*cc1 = TCPC_REG_CC_STATUS_CC1(status);
-
-	*cc2 = TCPC_REG_CC_STATUS_CC2(status);
-
-	/*
-	 * If status is not open, then OR in termination to convert to
-	 * enum tcpc_cc_voltage_status.
-	 *
-	 * RT1715 TCPC follows TCPCI 0.6 protocol. When DRP not auto-toggling,
-	 * it will not update the DRP_RESULT bits in TCPC_REG_CC_STATUS,
-	 * instead, we should check CC1/CC2 bits in TCPC_REG_ROLE_CTRL.
-	 */
-	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
+	rv = tcpci_tcpm_get_cc(port, cc1, cc2);
 	if (rv)
 		return rv;
 
-	if (TCPC_REG_ROLE_CTRL_DRP(role))
-		is_snk = TCPC_REG_CC_STATUS_TERM(status);
-	else
-		/* CC1/CC2 states are the same, checking one-side is enough. */
-		is_snk = TCPC_REG_ROLE_CTRL_CC1(role) == TYPEC_CC_RD;
-
-	if (is_snk) {
-		if (*cc1 != TYPEC_CC_VOLT_OPEN)
-			*cc1 |= 0x04;
-
-		if (*cc2 != TYPEC_CC_VOLT_OPEN)
-			*cc2 |= 0x04;
-	}
-	rv = rt1715_init_cc_params(port, rt1715_polarity[port] ? *cc2 : *cc1);
-
-	return rv;
+	return rt1715_init_cc_params(port, rt1715_polarity[port] ? *cc2 : *cc1);
 }
 
 static int rt1715_set_cc(int port, int pull)
@@ -173,11 +136,18 @@ static int rt1715_set_cc(int port, int pull)
 
 static int rt1715_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
+	int rv;
 	enum tcpc_cc_voltage_status cc1, cc2;
 
 	rt1715_polarity[port] = polarity;
 
-	rt1715_get_cc(port, &cc1, &cc2);
+	rv = tcpci_tcpm_get_cc(port, &cc1, &cc2);
+	if (rv)
+		return rv;
+
+	rv = rt1715_init_cc_params(port, polarity ? cc2 : cc1);
+	if (rv)
+		return rv;
 
 	return tcpci_tcpm_set_polarity(port, polarity);
 }
