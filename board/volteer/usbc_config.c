@@ -11,6 +11,7 @@
 #include "usb_mux.h"
 #include "driver/ppc/sn5s330_public.h"
 #include "driver/ppc/syv682x_public.h"
+#include "driver/retimer/bb_retimer_public.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "driver/tcpm/rt1715_public.h"
 #include "driver/tcpm/tusb422_public.h"
@@ -191,3 +192,53 @@ struct tcpc_config_t tcpc_config[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
 BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
+
+/******************************************************************************/
+/* USB-A charging control */
+
+const int usb_port_enable[USB_PORT_COUNT] = {
+	GPIO_EN_PP5000_USBA,
+};
+
+/******************************************************************************/
+/* USBC mux configuration - Tiger Lake includes internal mux */
+struct usb_mux usbc1_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+
+struct usb_mux usb_muxes[] = {
+	[USBC_PORT_C0] = {
+		.usb_port = USBC_PORT_C0,
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+	},
+	[USBC_PORT_C1] = {
+		.usb_port = USBC_PORT_C1,
+		.driver = &bb_usb_retimer,
+		.next_mux = &usbc1_tcss_usb_mux,
+		.i2c_port = I2C_PORT_USB_1_MIX,
+		.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
+
+struct bb_usb_control bb_controls[] = {
+	[USBC_PORT_C0] = {
+		/* USB-C port 0 doesn't have a retimer */
+	},
+	[USBC_PORT_C1] = {
+		.usb_ls_en_gpio = GPIO_USB_C1_LS_EN,
+		.retimer_rst_gpio = GPIO_USB_C1_RT_RST_ODL,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
+
+int ppc_get_alert_status(int port)
+{
+	if (port == USBC_PORT_C0)
+		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
+	else
+		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
+}
