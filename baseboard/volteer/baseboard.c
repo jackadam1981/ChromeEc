@@ -6,15 +6,11 @@
 /* Volteer family-specific configuration */
 #include "adc_chip.h"
 #include "button.h"
-#include "cbi_ec_fw_config.h"
 #include "charger.h"
-#include "charge_ramp.h"
-#include "cros_board_info.h"
 #include "driver/charger/isl9241.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "gpio.h"
-#include "hooks.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "power/icelake.h"
@@ -24,9 +20,6 @@
 #ifdef CONFIG_ZEPHYR
 #include "usbc_config.h"
 #endif
-
-#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
 
 /******************************************************************************/
 /* ADC configuration */
@@ -142,42 +135,3 @@ static void baseboard_init(void)
 	gpio_enable_interrupt(GPIO_EC_PROCHOT_IN_L);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
-
-static uint8_t board_id;
-
-uint8_t get_board_id(void)
-{
-	return board_id;
-}
-
-__overridable void board_cbi_init(void)
-{
-}
-
-/*
- * Read CBI from i2c eeprom and initialize variables for board variants
- *
- * Example for configuring for a USB3 DB:
- *   ectool cbi set 6 2 4 10
- */
-static void cbi_init(void)
-{
-	uint32_t cbi_val;
-
-	/* Board ID */
-	if (cbi_get_board_version(&cbi_val) != EC_SUCCESS ||
-	    cbi_val > UINT8_MAX)
-		CPRINTS("CBI: Read Board ID failed");
-	else
-		board_id = cbi_val;
-
-	CPRINTS("Board ID: %d", board_id);
-
-	/* FW config */
-	init_fw_config();
-
-	/* Allow the board project to make runtime changes based on CBI data */
-	board_cbi_init();
-}
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_FIRST);
-

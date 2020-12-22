@@ -97,18 +97,24 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_TIMER   "${PLATFORM_EC}/common/timer.c")
 
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_CHARGER
                                                 "${PLATFORM_EC}/common/usb_charger.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PORT_POWER_DUMB
+                                                "${PLATFORM_EC}/common/usb_port_power_dumb.c")
 
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_POWER_DELIVERY
                                                 "${PLATFORM_EC}/common/usb_common.c"
                                                 "${PLATFORM_EC}/common/usbc/usb_sm.c")
 
-zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC_RETIMER_INTEL_BB
-                                                "${PLATFORM_EC}/driver/retimer/bb_retimer.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC_SS_MUX
                                                 "${PLATFORM_EC}/driver/usb_mux/usb_mux.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_MUX_VIRTUAL
                                                 "${PLATFORM_EC}/driver/usb_mux/virtual.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC_RETIMER_INTEL_BB
+                                                "${PLATFORM_EC}/driver/retimer/bb_retimer.c")
 
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TBT_COMPAT_MODE
+                                                "${PLATFORM_EC}/common/usbc/tbt_alt_mode.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_USB4
+                                                "${PLATFORM_EC}/common/usbc/usb_mode.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC_OCP
                                                 "${PLATFORM_EC}/common/usbc_ocp.c")
 
@@ -119,7 +125,7 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_DUAL_ROLE
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_HOST_CMD
                                                 "${PLATFORM_EC}/common/usb_pd_host_cmd.c")
 
-zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TCPMV2
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC
                                                 "${PLATFORM_EC}/common/usbc/usb_sm.c"
                                                 "${PLATFORM_EC}/common/usbc/usbc_task.c")
 
