@@ -5070,6 +5070,10 @@
 #endif
 #endif
 
+#ifdef CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT
+oijwerf
+#endif
+
 /******************************************************************************/
 /*
  * Ensure that CONFIG_USB_PD_TCPMV2 is not being used with charge_manager source
