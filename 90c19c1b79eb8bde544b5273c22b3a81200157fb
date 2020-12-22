@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80fb4f51_469f5baa",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-22T22:41:32Z",
+      "side": 1,
+      "message": "Now that I\u0027ve seen this in use and noticed it\u0027ll be defined in a board file, how would you feel about a board_ prefix for it?",
+      "revId": "90c19c1b79eb8bde544b5273c22b3a81200157fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
