@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1eb3e16_6c156212",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2020-12-22T03:04:32Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "d4bfb4c9_e78f218f",
+      "range": {
+        "startLine": 451,
+        "startChar": 3,
+        "endLine": 451,
+        "endChar": 25
+      },
+      "revId": "24ecb8ca6c377d49a4cfb5e4d10bbf8c03ee4c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "645faffe_1c01dc6d",
         "filename": "board/fennel/board.c",
         "patchSetId": 2
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50f237b7_f40ad0f4",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2020-12-22T03:04:32Z",
+      "side": 1,
+      "message": "Oh,we don\u0027t need read twice. I will change it",
+      "parentUuid": "645faffe_1c01dc6d",
+      "range": {
+        "startLine": 464,
+        "startChar": 14,
+        "endLine": 464,
+        "endChar": 28
+      },
+      "revId": "24ecb8ca6c377d49a4cfb5e4d10bbf8c03ee4c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af2ed7aa_320faa96",
         "filename": "board/fennel/board.c",
         "patchSetId": 2
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-22T02:13:07Z",
       "side": 1,
       "message": "Should we use \"if (!IS_ENABLED(VARIANT_KUKUI_NO_SENSORS))\" in functions?",
+      "range": {
+        "startLine": 479,
+        "startChar": 1,
+        "endLine": 479,
+        "endChar": 33
+      },
+      "revId": "24ecb8ca6c377d49a4cfb5e4d10bbf8c03ee4c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e1ef05_388ac5f2",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2020-12-22T03:04:32Z",
+      "side": 1,
+      "message": "ok, I will try it",
+      "parentUuid": "af2ed7aa_320faa96",
       "range": {
         "startLine": 479,
         "startChar": 1,
