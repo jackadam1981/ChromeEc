@@ -15,6 +15,7 @@
 #include "driver/accel_kx022.h"
 #include "driver/retimer/pi3dpx1207.h"
 #include "driver/retimer/pi3hdx1204.h"
+#include "driver/retimer/ps8802.h"
 #include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818.h"
 #include "driver/temp_sensor/sb_tsi.h"
@@ -343,6 +344,58 @@ static int woomax_ps8818_mux_set(const struct usb_mux *me,
 	return rv;
 }
 
+static int woomax_ps8802_mux_set(const struct usb_mux *me,
+				 mux_state_t mux_state)
+{
+	int rv = EC_SUCCESS;
+	int val;
+
+	/* Make sure the PS8802 is awake */
+	rv = ps8802_i2c_wake(me);
+	if (rv)
+		return rv;
+
+	/* USB specific config */
+	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+		/* Boost the USB gain */
+		rv = ps8802_i2c_field_update16(me,
+					PS8802_REG_PAGE2,
+					PS8802_REG2_USB_SSEQ_LEVEL,
+					PS8802_USBEQ_LEVEL_UP_MASK,
+					PS8802_USBEQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+	}
+
+	/* DP specific config */
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		/*Boost the DP gain */
+		rv = ps8802_i2c_field_update16(me,
+					PS8802_REG_PAGE2,
+					PS8802_REG2_DPEQ_LEVEL,
+					PS8802_DPEQ_LEVEL_UP_MASK,
+					PS8802_DPEQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+
+		/* Enable IN_HPD on the DB */
+		gpio_or_ioex_set_level(board_usbc1_retimer_inhpd, 1);
+	} else {
+		/* Disable IN_HPD on the DB */
+		gpio_or_ioex_set_level(board_usbc1_retimer_inhpd, 0);
+	}
+
+	/* Set extra swing level tuning at 800mV/P0 */
+	rv = ps8818_i2c_read(me, PS8802_REG_PAGE1, 0x8A, &val);
+	if (rv)
+		return rv;
+	val &= 0x07;
+	val |= 0x05;
+	rv = ps8818_i2c_write(me, PS8802_REG_PAGE1, 0x8A, val);
+
+	return rv;
+}
+
 const struct usb_mux usbc1_woomax_ps8818 = {
 	.usb_port = USBC_PORT_C1,
 	.i2c_port = I2C_PORT_TCPC1,
@@ -368,6 +421,7 @@ static void setup_mux(void)
 
 		/* Set the AMD FP5 as the secondary MUX */
 		usb_muxes[USBC_PORT_C1].next_mux = &usbc1_amd_fp5_usb_mux;
+		usb_muxes[USBC_PORT_C1].board_set = &woomax_ps8802_mux_set;
 
 		/* Don't have the AMD FP5 flip */
 		usbc1_amd_fp5_usb_mux.flags = USB_MUX_FLAG_SET_WITHOUT_FLIP;

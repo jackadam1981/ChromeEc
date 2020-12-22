@@ -32,6 +32,11 @@
 #define PS8802_STATUS_10_GBPS			BIT(5)
 
 /*
+ * PAGE 1 Register Definitions
+ */
+#define PS8802_REG_PAGE1	0x01
+
+/*
  * PAGE 2 Register Definitions
  */
 #define PS8802_REG_PAGE2	0x02
