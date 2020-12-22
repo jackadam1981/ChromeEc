@@ -3,7 +3,9 @@
  * found in the LICENSE file.
  */
 /* Shared USB-C policy for Volteer boards */
+#include "common.h"
 #include "charge_manager.h"
+#include "charge_ramp.h"
 #include "chipset.h"
 #include "compile_time_macros.h"
 #include "console.h"
