@@ -22,6 +22,30 @@
       },
       "revId": "efe3af7d28dcee68b1ba80ef5a829696c976e30d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0033f116_7e9c313f",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-22T21:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e331b18a_3e2038bc",
+      "range": {
+        "startLine": 88,
+        "startChar": 43,
+        "endLine": 89,
+        "endChar": 67
+      },
+      "revId": "efe3af7d28dcee68b1ba80ef5a829696c976e30d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
