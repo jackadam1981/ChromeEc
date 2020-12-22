@@ -12,7 +12,6 @@
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi260.h"
 #include "driver/als_tcs3400.h"
-#include "driver/retimer/bb_retimer.h"
 #include "driver/sync.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "extpower.h"
@@ -20,7 +19,6 @@
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -58,8 +56,6 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
-/******************************************************************************/
-
 static void board_init(void)
 {
 	/* Illuminate motherboard and daughter board LEDs equally to start. */
@@ -67,47 +63,6 @@ static void board_init(void)
 	pwm_set_duty(PWM_CH_LED4_SIDESEL, 50);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
-__override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
-{
-	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
-
-	if (port == USBC_PORT_C1) {
-		if (usb_db == DB_USB4_GEN2) {
-			/*
-			 * Older boards violate 205mm trace length prior
-			 * to connection to the re-timer and only support up
-			 * to GEN2 speeds.
-			 */
-			return TBT_SS_U32_GEN1_GEN2;
-		} else if (usb_db == DB_USB4_GEN3) {
-			return TBT_SS_TBT_GEN3;
-		}
-	}
-
-	/*
-	 * Thunderbolt-compatible mode not supported
-	 *
-	 * TODO (b/147726366): All the USB-C ports need to support same speed.
-	 * Need to fix once USB-C feature set is known for Volteer.
-	 */
-	return TBT_SS_RES_0;
-}
-
-__override bool board_is_tbt_usb4_port(int port)
-{
-	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
-
-	/*
-	 * Volteer reference design only supports TBT & USB4 on port 1
-	 * if the USB4 DB is present.
-	 *
-	 * TODO (b/147732807): All the USB-C ports need to support same
-	 * features. Need to fix once USB-C feature set is known for Volteer.
-	 */
-	return ((port == USBC_PORT_C1)
-		&& ((usb_db == DB_USB4_GEN2) || (usb_db == DB_USB4_GEN3)));
-}
 
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
@@ -296,10 +251,3 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
-
-/******************************************************************************/
-/* USB-A charging control */
-
-const int usb_port_enable[USB_PORT_COUNT] = {
-	GPIO_EN_PP5000_USBA,
-};
