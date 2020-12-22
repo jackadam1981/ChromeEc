@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68958e32_b33e2b6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:24:28Z",
+      "side": 1,
+      "message": "Reproduced outstanding comments from https://crrev.com/c/2583884.",
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f97aa6d_144f8ccc",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:24:28Z",
+      "side": 1,
+      "message": "The comments in this function describe (at most) what values are being set without explaining why. Can you provide more detail and reasoning?\n\nFor instance\n* Why is tTCPCFilter being set to 400 us?\n* Why is the DRP duty cycle being set to 40%?\n* What settings are being configured in the PHY_CTRL registers, and why are they being set that way?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a687a1e_9f696133",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:24:28Z",
+      "side": 1,
+      "message": "From the previous CL: Changing which CC value rt1715_init_cc_params is called with does not change the apparent behavior? Does Richtek have an explanation for that?",
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "010b29be_b247804c",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-22T17:24:28Z",
+      "side": 1,
+      "message": "Why is this being done here?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 12
+      },
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
