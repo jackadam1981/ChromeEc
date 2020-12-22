@@ -780,6 +780,9 @@ int i2c_read_string(const int port,
 			if (rv)
 				continue;
 		}
+// 		printf("data: ");
+// 		for (int j = 0; j < data_length; j++)
+// 			printf("%02x ", data[j]);
 
 		/* execution reaches here implies rv=0, so we can exit now */
 		break;

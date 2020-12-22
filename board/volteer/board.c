@@ -13,7 +13,6 @@
 #include "driver/accelgyro_bmi260.h"
 #include "driver/als_tcs3400.h"
 #include "driver/bc12/pi3usb9201.h"
-#include "driver/retimer/bb_retimer.h"
 #include "driver/sync.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "extpower.h"
@@ -304,13 +303,6 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
-/******************************************************************************/
-/* USB-A charging control */
-
-const int usb_port_enable[USB_PORT_COUNT] = {
-	GPIO_EN_PP5000_USBA,
-};
-
 static void ps8815_reset(void)
 {
 	int val;
@@ -375,41 +367,6 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
 
-/******************************************************************************/
-/* USBC mux configuration - Tiger Lake includes internal mux */
-struct usb_mux usbc1_tcss_usb_mux = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
-};
-
-struct usb_mux usb_muxes[] = {
-	[USBC_PORT_C0] = {
-		.usb_port = USBC_PORT_C0,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
-	},
-	[USBC_PORT_C1] = {
-		.usb_port = USBC_PORT_C1,
-		.driver = &bb_usb_retimer,
-		.next_mux = &usbc1_tcss_usb_mux,
-		.i2c_port = I2C_PORT_USB_1_MIX,
-		.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
-
-struct bb_usb_control bb_controls[] = {
-	[USBC_PORT_C0] = {
-		/* USB-C port 0 doesn't have a retimer */
-	},
-	[USBC_PORT_C1] = {
-		.usb_ls_en_gpio = GPIO_USB_C1_LS_EN,
-		.retimer_rst_gpio = GPIO_USB_C1_RT_RST_ODL,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
-
 static void board_tcpc_init(void)
 {
 	/* Don't reset TCPCs after initial reset */
@@ -445,12 +402,4 @@ uint16_t tcpc_get_alert_status(void)
 		status |= PD_STATUS_TCPC_ALERT_1;
 
 	return status;
-}
-
-int ppc_get_alert_status(int port)
-{
-	if (port == USBC_PORT_C0)
-		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
-	else
-		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
