@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af9ab1f_2d490299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-22T16:17:32Z",
+      "side": 1,
+      "message": "Wealian - this CL:2597124 and the next CL:2597125 caused a build error in the commit queue, so both CLs were reverted.\n\nThe problem is that this CL:2597124 does not build on it\u0027s own - it requires the changes in CL:2597125.\n\nTo fix this you can do one of the following.\n1. Squash the CLs into one and resubmit.\n2. Submit the CLs in the opposite order.  Remove CONFIG_SPI_FLASH from the npcx9_evb board first, then remove CONFIG_SPI_FLASH from the NPCX9 config_chip.\n\n",
+      "revId": "a3dd3c3a941794bd6efcdfac0b70bfae7441ed29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
