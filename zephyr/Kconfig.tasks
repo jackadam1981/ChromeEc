@@ -27,6 +27,27 @@ config TASK_CHARGER_STACK_SIZE
 
 endif # HAS_TASK_CHARGER
 
+config HAS_TASK_CHG_RAMP
+	bool "Charger-ramp task"
+	depends on PLATFORM_EC_BATTERY
+	help
+	  This turns on the charger ramp task. This attempts to ramp up the
+	  current from an attached charger to the maximum available current.
+	  It handles the incoming VBUS voltage sagging as well as the user
+	  attaching different chargers.
+
+if HAS_TASK_CHG_RAMP
+
+config TASK_CHG_RAMP_STACK_SIZE
+	hex "Stack size"
+	default 0x200	# EC uses TASK_STACK_SIZE which is 512 for npcx
+	help
+	  The stack size of the charger task.
+
+	  See b/176180736 for checking these stack sizes.
+
+endif # HAS_TASK_CHG_RAMP
+
 config HAS_TASK_CHIPSET
 	bool "Chipset task"
 	depends on PLATFORM_EC_POWERSEQ
@@ -127,7 +148,6 @@ endif # HAS_TASK_POWERBTN
 
 config HAS_TASK_USB_CHG_P0
 	bool "USB Charger (port 0)"
-	depends on PLATFORM_EC_USB_CHARGER
 	help
 	  This turns on the USB charger task for port 0. This handles
 	  negotiating power from an attached charger, trying to get the maximum
@@ -150,7 +170,6 @@ endif # HAS_TASK_USB_CHG_P0
 
 config HAS_TASK_USB_CHG_P1
 	bool "USB Charger (port 1)"
-	depends on PLATFORM_EC_USB_CHARGER
 	help
 	  This turns on the USB charger task for port 1. This handles
 	  negotiating power from an attached charger, trying to get the maximum
@@ -160,7 +179,6 @@ config HAS_TASK_USB_CHG_P1
 
 config HAS_TASK_USB_CHG_P2
 	bool "USB Charger (port 2)"
-	depends on PLATFORM_EC_USB_CHARGER
 	help
 	  This turns on the USB charger task for port 2. This handles
 	  negotiating power from an attached charger, trying to get the maximum
