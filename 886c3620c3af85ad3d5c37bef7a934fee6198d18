@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "540a9c78_f68da328",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-23T23:53:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "305a2b15_4b9fdcba",
+      "range": {
+        "startLine": 906,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 21
+      },
+      "revId": "886c3620c3af85ad3d5c37bef7a934fee6198d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b127d85c_9dd7cf1b",
@@ -61,6 +85,30 @@
       "writtenOn": "2020-12-01T21:22:52Z",
       "side": 1,
       "message": "This is redundant with disabling the Rx interrupt, and just doing this doesn\u0027t always keep using from watchdog timeouts during long BIST tests.\n\nNathan: Is it OK for us to just disable interrupts and exclude this part?",
+      "range": {
+        "startLine": 935,
+        "startChar": 1,
+        "endLine": 943,
+        "endChar": 2
+      },
+      "revId": "886c3620c3af85ad3d5c37bef7a934fee6198d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4243b903_4f4d3dff",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-23T23:53:33Z",
+      "side": 1,
+      "message": "I just disabled interrupts and excluded this part.",
+      "parentUuid": "b127d85c_9dd7cf1b",
       "range": {
         "startLine": 935,
         "startChar": 1,

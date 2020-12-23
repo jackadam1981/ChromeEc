@@ -123,6 +123,30 @@
       },
       "revId": "b0172220080924a9817e6dfc1dbb8e23653dc459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876a4114_41b46986",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-23T23:53:33Z",
+      "side": 1,
+      "message": "Done. I\u0027m still only implementing it for TCPCI right now. To fully encompass how other TCPCs work, the API might need a more general name than I gave it. I\u0027m hoping they have something analogous to BIST Test Mode.",
+      "parentUuid": "f049a143_7f4f9084",
+      "range": {
+        "startLine": 958,
+        "startChar": 0,
+        "endLine": 959,
+        "endChar": 40
+      },
+      "revId": "b0172220080924a9817e6dfc1dbb8e23653dc459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
