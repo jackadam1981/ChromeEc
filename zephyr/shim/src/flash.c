@@ -30,6 +30,9 @@ static uint8_t saved_sr1;
 static uint8_t saved_sr2;
 #endif
 
+#define CMD_READ_STATUS_REG              0x05
+#define CMD_READ_STATUS_REG2             0x35
+
 /*
  * This local buffer is to store the data reading/writing from/to the SPI flash.
  * We need this before fixing the issue of shmem.
