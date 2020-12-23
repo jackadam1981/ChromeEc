@@ -22,6 +22,30 @@
       },
       "revId": "3203e99d6b20b27b0684376c71efde17913286c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7b62a3_0641373f",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-23T20:43:36Z",
+      "side": 1,
+      "message": "I don\u0027t think either syntax actually changes the use case for this variable, but I believe the ?\u003d is more clear what the intentions are. Recall, the intention is to be nothing more than a default value if it is not overridden anywhere.\n\nThis variable is overridden when compiling outside the chroot or when run with the compare_build.sh script (outside the normal ec/ path).\n\nSee https://github.com/coreboot/chrome-ec/blob/master/util/compare_build.sh#L229 .",
+      "parentUuid": "32c25500_4a5295a0",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "3203e99d6b20b27b0684376c71efde17913286c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
