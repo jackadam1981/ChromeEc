@@ -33,6 +33,24 @@
       "message": "nit: we can now just remove this state from the special-casing in the pe_report_error function",
       "revId": "78857470c196733c7dd5f12ebd61ee78d4cf110e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9233c96_a71cfbb1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T22:11:24Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "49f8470c_87ef69c1",
+      "revId": "78857470c196733c7dd5f12ebd61ee78d4cf110e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
