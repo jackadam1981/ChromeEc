@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03d21729_ce405d14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T19:44:58Z",
+      "side": 1,
+      "message": "Zhouhoa - please mark reviewers with the Attention Set feature when you need their attention. Thanks!",
+      "parentUuid": "0f815080_cc520cb7",
+      "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "987a7f3a_afb280c1",
@@ -89,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6039c4f_0712ab3d",
+        "filename": "board/drobit/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T19:44:58Z",
+      "side": 1,
+      "message": "Okay, leave this variable without an assignment.",
+      "parentUuid": "97aaa6db_b5fce29d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56ac2ecc_c436586e",
@@ -126,6 +168,30 @@
       "side": 1,
       "message": "The STATE_DISCHARGE_S0_BAT_LOW state will check system state. It will follow S3/S5 behavior in S3/S5.\nBattery error LED behavior defined in marketing spec as below:\nS0: Blinking Amber LED, 1s on/ 1s off\nS3/S5: following S3/S5 behavior\nWe add this function to let battery error LED follow S3/S5 behavior in S3/S5.\nThanks.",
       "parentUuid": "56ac2ecc_c436586e",
+      "range": {
+        "startLine": 82,
+        "startChar": 22,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "483db583_739230cc",
+        "filename": "board/drobit/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T19:44:58Z",
+      "side": 1,
+      "message": "The marketing spec dates 2020-11-03, only shows this text for Battery Error:\n\n\"S0: Blinking Amper, 1 sec on/ 1 sec off\"\n\nThere isn\u0027t any description of S3/S5 behavior for battery error.",
+      "parentUuid": "522c4e2e_1943137e",
       "range": {
         "startLine": 82,
         "startChar": 22,
