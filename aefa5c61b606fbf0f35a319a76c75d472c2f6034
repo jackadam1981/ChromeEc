@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0e831da_c09b67a0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-23T17:05:03Z",
+      "side": 1,
+      "message": "My thinking was that I\u0027d like us to be ready to consume 2.5 W the instant it\u0027s available.  However, we could set 0/0 here and restore the higher limit in sub-state 2 (or for that matter, later on when the PE is processing source caps again, which is what TCPMv1 appears to do).",
+      "parentUuid": "026f914b_6b59f735",
+      "range": {
+        "startLine": 1284,
+        "startChar": 41,
+        "endLine": 1284,
+        "endChar": 45
+      },
+      "revId": "aefa5c61b606fbf0f35a319a76c75d472c2f6034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0c3a253_2ed3de38",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
