@@ -168,6 +168,7 @@ void board_init(void)
 	int on;
 
 	gpio_enable_interrupt(GPIO_USB_C0_INT_ODL);
+	check_c0_line();
 
 	if (get_cbi_fw_config_db() == DB_1A_HDMI) {
 		/* Disable i2c on HDMI pins */
@@ -194,6 +195,7 @@ void board_init(void)
 
 		/* Enable C1 interrupts */
 		gpio_enable_interrupt(GPIO_SUB_C1_INT_EN_RAILS_ODL);
+		check_c1_line();
 	}
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
