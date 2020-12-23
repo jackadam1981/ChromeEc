@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b46a28_a71106a3",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-23T22:41:20Z",
+      "side": 1,
+      "message": "I went with \"max_current\" since FRS and non-PD ports won\u0027t be claiming via a PDO, though I like the specificity of the sink one so I\u0027ll steal it.",
+      "parentUuid": "8ca94981_52cabb89",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 0
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bc1461e_5811b58e",
@@ -118,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f319015_321cfb7c",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-23T22:41:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cccd9185_3da2fe24",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 0
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37b1d59f_74e5ae32",
@@ -141,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f49cb40_d0c708fc",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-23T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37b1d59f_74e5ae32",
+      "range": {
+        "startLine": 402,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 39
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58101ce3_74b525e2",
@@ -154,6 +226,30 @@
       "writtenOn": "2020-12-23T18:17:16Z",
       "side": 1,
       "message": "You could make helper function here and share this code in both the ADD and REMOVE paths.  Obviously document that the function may only be called under the lock of the mutex.",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 0
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8afcb4_15b3ab09",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-23T22:41:20Z",
+      "side": 1,
+      "message": "New function is down to just a single update point.  If we need helpers, I wonder if we could call mutex_lock() again to ensure the mutex is acquired?  I\u0027d need to test to see how this behaves when a thread re-locks its lock.",
+      "parentUuid": "58101ce3_74b525e2",
       "range": {
         "startLine": 426,
         "startChar": 0,
