@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e31bde79_daf60f04",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T00:03:31Z",
+      "side": 1,
+      "message": "Can this be moved inside #ifndef __CROS_EC_USB_SM_H?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 50
+      },
+      "revId": "cecb6f9d1d60ede667f960ab0189acee5006495d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d53fe57_906d2ca6",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T00:03:31Z",
+      "side": 1,
+      "message": "Should be CONFIG_PLATFORM_EC_USBC",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 34
+      },
+      "revId": "cecb6f9d1d60ede667f960ab0189acee5006495d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
