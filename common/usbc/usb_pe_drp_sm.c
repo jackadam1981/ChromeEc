@@ -4713,6 +4713,12 @@ static void pe_bist_tx_entry(int port)
 
 	print_current_state(port);
 
+	/* Ignore BIST messages when not operating at vSafe5V. */
+	if (!pd_is_vbus_present(port)) {
+		pe_set_ready_state(port);
+		return;
+	}
+
 	if (mode == BIST_CARRIER_MODE_2) {
 		/*
 		 * PE_BIST_Carrier_Mode embedded here.
@@ -4735,6 +4741,11 @@ static void pe_bist_tx_entry(int port)
 		 * sending Hard Reset Signaling to reset the UUT.
 		 */
 		pe[port].bist_cont_mode_timer = TIMER_DISABLED;
+	} else {
+		/* Ignore unsupported BIST messages. */
+		pe_set_ready_state(port);
+		return;
+	}
 }
 
 static void pe_bist_tx_run(int port)
