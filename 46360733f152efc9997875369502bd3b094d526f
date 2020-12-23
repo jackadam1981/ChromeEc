@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5299765f_49107d38",
+        "filename": "board/woomax/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-23T16:25:35Z",
+      "side": 1,
+      "message": "make this a named constant in ps8802 right after the new definition of REG_PAGE1\n\nit also looks like ps8802_i2c_field_update8 would do both the read/modify/write that is being done from lines 389-394.  Make sure to add the PS8802_..._MASK (0x07) define with the PS8802_REG1_... define that covers the 0x8A.  Also the defines to at at least cover the used value (0x05) but would be preferred to include the other values for that field.",
+      "range": {
+        "startLine": 389,
+        "startChar": 44,
+        "endLine": 389,
+        "endChar": 48
+      },
+      "revId": "46360733f152efc9997875369502bd3b094d526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
