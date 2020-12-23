@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9244f915_173e3201",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-23T21:18:30Z",
+      "side": 1,
+      "message": "Yeah, I would set 0/0 here. We can still update the VBUS supplier below prior to processing source caps.",
+      "parentUuid": "a0e831da_c09b67a0",
+      "range": {
+        "startLine": 1284,
+        "startChar": 41,
+        "endLine": 1284,
+        "endChar": 45
+      },
+      "revId": "aefa5c61b606fbf0f35a319a76c75d472c2f6034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0c3a253_2ed3de38",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
