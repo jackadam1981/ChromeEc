@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bad36e_3089781d",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 13
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T19:35:17Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 216,
+        "startChar": 16,
+        "endLine": 216,
+        "endChar": 27
+      },
+      "revId": "b67edfbf868d11b6c661c074074fc04250c8ce42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5cf4b22_870f4826",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 13
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T19:35:17Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 225,
+        "startChar": 16,
+        "endLine": 225,
+        "endChar": 27
+      },
+      "revId": "b67edfbf868d11b6c661c074074fc04250c8ce42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701acbe4_b3f7e045",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 13
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T19:35:17Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 234,
+        "startChar": 16,
+        "endLine": 234,
+        "endChar": 24
+      },
+      "revId": "b67edfbf868d11b6c661c074074fc04250c8ce42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220ffe6c_6d3e5282",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 13
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T19:35:17Z",
+      "side": 1,
+      "message": "Add \u0027.\u0027",
+      "range": {
+        "startLine": 245,
+        "startChar": 21,
+        "endLine": 245,
+        "endChar": 25
+      },
+      "revId": "b67edfbf868d11b6c661c074074fc04250c8ce42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5671eb1_7f4061bd",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 13
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T19:35:17Z",
+      "side": 1,
+      "message": "Missing edit from patchset 11:\n\nThe SYV682A is a 2 to 1 power mux switch for USB PD applications. The SYV682A supports dead battery wake up function and Fast Role Swap features. It provides protection against overcurrent, overvoltage, thermal shutdown, and undervoltage conditions.",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 56
+      },
+      "revId": "b67edfbf868d11b6c661c074074fc04250c8ce42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a418f132_d93fc69d",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 13
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T19:35:17Z",
+      "side": 1,
+      "message": "Let\u0027s get this CL submitted with the other comments addressed and fix up the TCPC selection in another CL.\n\nSome thoughts:\n* Use menu/menuconfig?\n* Use choice with each option as tristate?\n* Initially, maybe the TCPCI option is only enabled via \"select\" keyword from other TCPC drivers.  In theory the TCPCI driver can be used standalone   - maybe we create a TCPCI standalone option that does a select of PLATFORM_EC_USB_PD_TCPM_TCPCI.",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 0
+      },
+      "revId": "b67edfbf868d11b6c661c074074fc04250c8ce42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c66089_baffad71",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T19:35:17Z",
+      "side": 1,
+      "message": "What do you think about splitting this file up to match the organization of the KConfig?  For example:\n    #include \"config_battery.h\"\n    #include \"config.powerseq.h\"\n    #include \"config_usbc.h\"\n\nThis would be done as a separate CL.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 18
+      },
+      "revId": "b67edfbf868d11b6c661c074074fc04250c8ce42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
