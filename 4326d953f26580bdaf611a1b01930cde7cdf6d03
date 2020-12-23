@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72c5b06_f684a870",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b671cff3_5c4bf5de",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 65
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a745f04_5e1a2243",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "Also add:\n\"This option also enables the Type-C Port Manager (TCPM) on the EC. The TCPM deals with the various state changes in the system as devices are plugged and unplugged, as well as changes in power requirements from those devices.\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d711502_3ffeb35f",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a745f04_5e1a2243",
       "range": {
         "startLine": 20,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "390b7dc6_21489408",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "089ea4aa_4ad707d5",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2df1b172_424739bd",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "Line length.",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 77
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f47b53bb_932de7dc",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2df1b172_424739bd",
       "range": {
         "startLine": 49,
         "startChar": 3,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6cb8b5e_eefe7f0c",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d10c0f98_3c6c4cbc",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 11
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bea846b_674d7541",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "Suggested text\n\"Enable this if the board does not provide any mechanism for the EC to read the analog VBUS voltage.\"",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2c86c5_5f99d37a",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bea846b_674d7541",
       "range": {
         "startLine": 75,
         "startChar": 3,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39a0538_19ac8978",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4747475_7b072c57",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 63
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef6a30b7_32d8ed64",
@@ -175,6 +343,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "use",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 96,
+        "endChar": 21
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe7a0c97_5c57f61c",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef6a30b7_32d8ed64",
       "range": {
         "startLine": 96,
         "startChar": 17,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "359deeb2_38b44ce0",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "627fb13c_986dbaca",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad6a78f5_00b22a11",
@@ -221,6 +437,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "Board can discharge VBUS",
+      "range": {
+        "startLine": 106,
+        "startChar": 7,
+        "endLine": 106,
+        "endChar": 38
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddd3acc8_032f1912",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad6a78f5_00b22a11",
       "range": {
         "startLine": 106,
         "startChar": 7,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8303902e_96e91a88",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "109dba13_01333519",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 125,
+        "endChar": 19
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d731d424_0ce89002",
@@ -267,6 +531,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "Discharge circuit is provided by the PPC",
+      "range": {
+        "startLine": 131,
+        "startChar": 7,
+        "endLine": 131,
+        "endChar": 63
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee5e8ec_6adbb685",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d731d424_0ce89002",
       "range": {
         "startLine": 131,
         "startChar": 7,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0344edff_cf10b64f",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a97d61d8_b2f6e286",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47ccd442_9d52d1d5",
@@ -313,6 +625,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "Change this to if PLATFORM_EC_USB_POWER_DELIVERY",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 28
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719f362e_5675bd70",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47ccd442_9d52d1d5",
       "range": {
         "startLine": 150,
         "startChar": 0,
@@ -340,6 +676,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e90087_2d877949",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea13f49_67b25885",
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff74de8c_ac40792f",
@@ -353,6 +707,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "\"Enable this to allow Rev3.0 functionality, including features such as Fast Role Swap, advertising the available power across all ports of a multi-port charger, and USB4.  If disabled, only USB Power Delivery Rev2.0 functionality is supported.\"",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 158,
+        "endChar": 37
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db6a9dc7_37bf61a4",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff74de8c_ac40792f",
       "range": {
         "startLine": 155,
         "startChar": 3,
@@ -386,6 +764,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7ebcc0_bbc599e2",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03947adf_3c63d97f",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f17f24c4_0bd8c2cf",
@@ -399,6 +801,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "PPC",
+      "range": {
+        "startLine": 181,
+        "startChar": 7,
+        "endLine": 181,
+        "endChar": 11
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46661fb3_344842e0",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17f24c4_0bd8c2cf",
       "range": {
         "startLine": 181,
         "startChar": 7,
@@ -432,6 +858,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4944c9d7_c040799d",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5595462_74595fda",
+      "range": {
+        "startLine": 194,
+        "startChar": 7,
+        "endLine": 194,
+        "endChar": 53
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3165df8f_3c06dab9",
@@ -445,6 +895,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "Type-C Port Manager (TCPM)",
+      "range": {
+        "startLine": 197,
+        "startChar": 52,
+        "endLine": 197,
+        "endChar": 58
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2ce1de_9f11a40e",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3165df8f_3c06dab9",
       "range": {
         "startLine": 197,
         "startChar": 52,
@@ -478,6 +952,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f46e69df_7b0b5663",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73f95153_bd10ba29",
+      "range": {
+        "startLine": 203,
+        "startChar": 7,
+        "endLine": 203,
+        "endChar": 64
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7da824fc_03e1d9c6",
@@ -491,6 +989,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "Enable policy engine (PE) state machine",
+      "range": {
+        "startLine": 212,
+        "startChar": 7,
+        "endLine": 212,
+        "endChar": 35
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b1779d6_3c372263",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da824fc_03e1d9c6",
       "range": {
         "startLine": 212,
         "startChar": 7,
@@ -524,6 +1046,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89c77f6e_fc0845a1",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2237da81_f1840b21",
+      "range": {
+        "startLine": 217,
+        "startChar": 40,
+        "endLine": 217,
+        "endChar": 42
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab1d832b_2374ea6d",
@@ -537,6 +1083,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "VCONN-Powered",
+      "range": {
+        "startLine": 233,
+        "startChar": 7,
+        "endLine": 233,
+        "endChar": 20
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba05861_4b1c4ed0",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab1d832b_2374ea6d",
       "range": {
         "startLine": 233,
         "startChar": 7,
@@ -570,6 +1140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab05ed84_43362ef2",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a455ecc2_1564bada",
+      "range": {
+        "startLine": 243,
+        "startChar": 7,
+        "endLine": 243,
+        "endChar": 42
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5438abbe_fe1df860",
@@ -583,6 +1177,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "This belongs under if PLATFORM_EC_USBC.  It isn\u0027t PPC specific.",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 0
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4676772e_40b2ff34",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5438abbe_fe1df860",
       "range": {
         "startLine": 271,
         "startChar": 0,
@@ -616,6 +1234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4e9314_dfac7550",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Thanks...I did add text in the latest version but your\u0027s is better :-)",
+      "parentUuid": "80127150_15c8c767",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 56
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d07138a_f12c2af1",
@@ -629,6 +1271,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "delete \u0027\\\u0027",
+      "range": {
+        "startLine": 303,
+        "startChar": 65,
+        "endLine": 303,
+        "endChar": 66
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "314a83a3_04d7b336",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d07138a_f12c2af1",
       "range": {
         "startLine": 303,
         "startChar": 65,
@@ -664,6 +1330,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d485eb5b_d799a934",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "OK, should I note that somewhere?",
+      "parentUuid": "c94dfb30_9a2bb05c",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 35
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a278025_417b7140",
         "filename": "zephyr/Kconfig.usbc",
         "patchSetId": 11
@@ -675,6 +1365,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "Note - most of the TCPC will depend on PLATFORM_EC_USB_PD_TCPM_TCPCI.",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 36
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e102988_561d393c",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a278025_417b7140",
       "range": {
         "startLine": 314,
         "startChar": 0,
@@ -708,6 +1422,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "695d9b72_9e4eab29",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "881d2d76_f198b923",
+      "range": {
+        "startLine": 315,
+        "startChar": 7,
+        "endLine": 315,
+        "endChar": 16
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "145e6e23_1dd6c70c",
@@ -721,6 +1459,30 @@
       "writtenOn": "2020-12-23T00:03:31Z",
       "side": 1,
       "message": "Enable a TCPC compatible with the Type-C Port Controller Interface (TCPCI) Specification. This driver supports both Rev1 v1.2 and Rev2 v1.0 of the TCPCI specification. Select this driver directly only if your specific TCPC chip is not listed as a separate config option.",
+      "range": {
+        "startLine": 317,
+        "startChar": 3,
+        "endLine": 317,
+        "endChar": 53
+      },
+      "revId": "4326d953f26580bdaf611a1b01930cde7cdf6d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a85b19e_aa530657",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T18:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "145e6e23_1dd6c70c",
       "range": {
         "startLine": 317,
         "startChar": 3,
