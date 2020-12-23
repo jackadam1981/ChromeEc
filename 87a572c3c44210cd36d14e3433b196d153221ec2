@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b901918_f1786567",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-23T00:10:12Z",
+      "side": 1,
+      "message": "We have plenty of asserts that are not in solely in the DEBUG_BRINGUP builds, so I would say that there is still a chance an assert will appear in a corner case in RO. Granted, they seem to be quite rare.\n\nI think removing the guard would be more robust in terms of catching future offenses. It does seem better than getting partial coverage with the DEBUG_BRINGUP unit test approach. It\u0027s also cheaper than introducing a new API and evaluating where to use it. As Daisuke mentioned, it\u0027s a tradeoff.",
+      "parentUuid": "857e40b0_e729f602",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -233,6 +257,23 @@
       "writtenOn": "2020-11-25T00:39:46Z",
       "side": 1,
       "message": "I\u0027m concerned that we\u0027re papering over a subset of failures. However, I think we could address my concern if we can run tests with CONFIG_DEBUG_BRINGUP to catch more callers.",
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd43f12_76fb18ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-12-23T00:10:12Z",
+      "side": 1,
+      "message": "Sorry to revive this right before the holidays and to also take forever to come back to this change. 😞",
       "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
