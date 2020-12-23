@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "108462ed_fb927ebe",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4611,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-23T23:50:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c0b58a9_0abb0ebe",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e6b73433_7cd85d26",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "I suspect this decision would be best left to the PE, given the requirements.  The PE has to be \"in the know\" anyway to get into the right state, and it can boss around the TCPC accordingly while doing so.",
       "parentUuid": "53c495ec_2bd3cd1f",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3695fdb7_97205038",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4618,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-23T23:50:29Z",
+      "side": 1,
+      "message": "See followup CL.",
+      "parentUuid": "7750cca3_19301876",
       "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -141,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3fc91d6_2644a72f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4641,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-23T23:50:29Z",
+      "side": 1,
+      "message": "Fixed in subsequent CL.",
+      "parentUuid": "2c06351e_f9d0de3d",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeed14ad_7feef699",
@@ -190,6 +244,24 @@
       "side": 1,
       "message": "I\u0027m trying to envision what value we could get out of acting as a tester.  It could start a sequence on another Chromebook, but then how on earth would we validate the carrier bits?",
       "parentUuid": "da6bdab3_031bbd74",
+      "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7fe3b6f_3d867c7c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4664,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-23T23:50:29Z",
+      "side": 1,
+      "message": "I just removed this state in a prior CL.",
+      "parentUuid": "28f7c071_aaf277e5",
       "revId": "afd64b291b31b086d841487acbd0c44a287e0c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
