@@ -46,6 +46,30 @@
       },
       "revId": "3203e99d6b20b27b0684376c71efde17913286c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd93854_5b89e99c",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-23T20:58:58Z",
+      "side": 1,
+      "message": "I added a comment in https://crrev.com/c/2602636 about libcryptoc paths.\n\nLet me know if I am missing something!",
+      "parentUuid": "6d7b62a3_0641373f",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "3203e99d6b20b27b0684376c71efde17913286c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
