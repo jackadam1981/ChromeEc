@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3adead_ce6e0f16",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T03:09:18Z",
+      "side": 1,
+      "message": "TODO(b/xxx)\n\nwhere xxx is the bug number.\n\nSee here:\nhttps://b.corp.google.com/issues?q\u003dcomponentid:960650%20status:open\n\nSee if you can create a bug.\n\nIf not, don\u0027t worry about it.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20abb126_580a56f2",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T03:09:18Z",
+      "side": 1,
+      "message": "Please comment these vars",
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "744aa5f1_457cff58",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T03:09:18Z",
+      "side": 1,
+      "message": "Is this an error? How does it get handled?",
+      "range": {
+        "startLine": 375,
+        "startChar": 2,
+        "endLine": 375,
+        "endChar": 8
+      },
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247e160f_33c14f02",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T03:09:18Z",
+      "side": 1,
+      "message": "blank line after this",
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db86dfe5_17120053",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T03:09:18Z",
+      "side": 1,
+      "message": "Is this an error? How does it get handled?",
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
