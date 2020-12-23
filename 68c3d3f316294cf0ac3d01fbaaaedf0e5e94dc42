@@ -33,6 +33,24 @@
       "message": "Would it make more sense to transition to disabled when we find our battery is insufficient for hard resets?  \n\nThat would correctly reflect that we\u0027re not intending to run any PD messaging until we are able to perform our hard reset to trigger new source capabilities.  It\u0027s the route we went with preventing hard resets with no battery (see pe_snk_hard_reset_entry), and is slightly less strange in terms of matching up spec state behavior since we wouldn\u0027t ever expect to hang out in wait_for_capabilities if following spec exactly.",
       "revId": "68c3d3f316294cf0ac3d01fbaaaedf0e5e94dc42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b6f94b_34d42f44",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2955,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-12-23T14:46:40Z",
+      "side": 1,
+      "message": "Yup. Staying in PE_SNK_Wait_For_Capabilities for more than we have to is not the best idea. I just implemented changes found in original fixes for TCPMv1.\n\nAs you mentioned we are already preventing hard reset in pe_snk_hard_reset_entry(), so it is good idea to keep all blockers in one place.",
+      "parentUuid": "79d7409e_6df7351c",
+      "revId": "68c3d3f316294cf0ac3d01fbaaaedf0e5e94dc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
