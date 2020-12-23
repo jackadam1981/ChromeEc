@@ -16,6 +16,24 @@
       "message": "I found leakage on M group pins caused by EC\u0027s VCC is connected to 1.8V but we enabled 3.3V config option on rev1 board. With this change, I got ~7.9mw on rev1 board in s3 state.\n\n@Ayo and Alvis,\nCan you confirm all EC\u0027s VCC of all rev1 board is connected to 1.8V?",
       "revId": "5b8ab52f33ffbab5e218b1b26497c60bef9db66f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a1e5dc_038c1778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2020-12-23T08:29:15Z",
+      "side": 1,
+      "message": "EC\u0027s VCC is connected to 1.8V on all rev1 board.",
+      "parentUuid": "8e89ea8c_a94c4bc6",
+      "revId": "5b8ab52f33ffbab5e218b1b26497c60bef9db66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
