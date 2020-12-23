@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa8e7a3_ee0e6c71",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T03:06:48Z",
+      "side": 1,
+      "message": "Can this call fail?",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 16
+      },
+      "revId": "a8492245a7f6769dd1bb46a0fdcc894dc171a19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb7da29_f74c39f7",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-23T03:06:48Z",
+      "side": 1,
+      "message": "Do we want this? We might need error checking",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 9
+      },
+      "revId": "a8492245a7f6769dd1bb46a0fdcc894dc171a19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
