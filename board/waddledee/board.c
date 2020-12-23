@@ -242,6 +242,8 @@ void board_init(void)
 
 	gpio_enable_interrupt(GPIO_USB_C0_INT_ODL);
 	gpio_enable_interrupt(c1_int_line);
+	check_c0_line();
+	check_c1_line();
 
 	/*
 	 * If interrupt lines are already low, schedule them to be processed
