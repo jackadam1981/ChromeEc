@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1644c4c3_5ea78929",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T18:49:43Z",
+      "side": 1,
+      "message": "Feel free to carry forward +2 if you submit a new patchset.",
+      "revId": "17cc1eb0ab649dca9ff08ad4a063dd82f3bc749b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1110e96_6b228bd5",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T18:49:43Z",
+      "side": 1,
+      "message": "Nit - oxford comma.",
+      "range": {
+        "startLine": 89,
+        "startChar": 46,
+        "endLine": 89,
+        "endChar": 47
+      },
+      "revId": "17cc1eb0ab649dca9ff08ad4a063dd82f3bc749b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
