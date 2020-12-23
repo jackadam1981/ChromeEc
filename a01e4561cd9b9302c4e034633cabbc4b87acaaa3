@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "755ab765_0f1ca5f5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-23T18:44:41Z",
+      "side": 1,
+      "message": "I believe we\u0027d need to put in some assembly or software work to support __builtin_popcount:\n\n/opt/coreboot-sdk/lib/gcc/nds32le-elf/8.3.0/../../../../nds32le-elf/bin/ld: build/drawcia/RW/common/usbc/usb_pd_dpm.o: in function `dpm_evaluate_sink_fixed_pdo\u0027:\nusb_pd_dpm.c:(.text.dpm_evaluate_sink_fixed_pdo+0x52): undefined reference to `__popcountsi2\u0027\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile.rules:524: build/drawcia/RW/ec.RW.elf] Error 1\nmake: *** Waiting for unfinished jobs....\n\nSince we know we have only two (at most 3 on new boards) loop iterations to check on most boards, this seems relatively efficient given the circumstances.\n\nIt looks like __builtin_ctz and __builtin_clz are actually being done in software modules under common/",
+      "parentUuid": "1bc1461e_5811b58e",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 0
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82cfe656_9c64612d",
@@ -60,6 +84,30 @@
       "writtenOn": "2020-12-23T18:17:16Z",
       "side": 1,
       "message": "+1 on the enum - makes it obvious what the code is trying to do.",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 0
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cccd9185_3da2fe24",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-23T18:44:41Z",
+      "side": 1,
+      "message": "Thanks!  Though I realized for the tSinkAdj requirement when bumping non-PD ports it might be easier to have an update function that doesn\u0027t need arguments and can run from HOOKS.  I\u0027m coding it up now so you can see what you think of that approach.",
+      "parentUuid": "82cfe656_9c64612d",
       "range": {
         "startLine": 387,
         "startChar": 0,
