@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ca94981_52cabb89",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T18:17:16Z",
+      "side": 1,
+      "message": "Nit - use more descriptive names. Maybe:\n    src_max_pdo_claimed\n    src_max_pdo_lock\n    snk_max_pdo_requested",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 0
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc1461e_5811b58e",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T18:17:16Z",
+      "side": 1,
+      "message": "I think the GCC builtins will implement the most efficient algorithm supported by the architecture.  So I think you could use __builtin_popcount() here.",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 0
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82cfe656_9c64612d",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T18:17:16Z",
+      "side": 1,
+      "message": "+1 on the enum - makes it obvious what the code is trying to do.",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 0
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b1d59f_74e5ae32",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T18:17:16Z",
+      "side": 1,
+      "message": "Since you only modify this under the mutex, I don\u0027t think the atomic operations are needed for updates to max_claimed.",
+      "range": {
+        "startLine": 402,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 39
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58101ce3_74b525e2",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-23T18:17:16Z",
+      "side": 1,
+      "message": "You could make helper function here and share this code in both the ADD and REMOVE paths.  Obviously document that the function may only be called under the lock of the mutex.",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 0
+      },
+      "revId": "a01e4561cd9b9302c4e034633cabbc4b87acaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
