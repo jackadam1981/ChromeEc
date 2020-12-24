@@ -16,6 +16,24 @@
       "message": "I like the added flexbility of handling multiple ports.",
       "revId": "7b51d17c9abe9e5a91ffc49a826f3c5f7d8144c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f0bc09_bd3ed2c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-12-24T00:02:48Z",
+      "side": 1,
+      "message": "Yeah, I realized that would make the process much easier when we need to hold off for tSinkAdj after removing non-PD ports.",
+      "parentUuid": "0b300b2d_4bfe8aca",
+      "revId": "7b51d17c9abe9e5a91ffc49a826f3c5f7d8144c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
