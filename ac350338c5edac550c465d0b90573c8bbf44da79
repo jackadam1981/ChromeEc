@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af2c7ab_722199ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-12-24T00:03:15Z",
+      "side": 1,
+      "message": "I don\u0027t really have a good way to generate unsupported BIST traffic IRL. I can probably come up with a unit test based around sending traffic after entering BIST mode and not expecting a response.",
+      "revId": "ac350338c5edac550c465d0b90573c8bbf44da79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
