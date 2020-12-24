@@ -78,7 +78,8 @@ void dma_select_channel(enum dma_channel channel, unsigned char stream)
 void dma_disable(enum dma_channel channel)
 {
 	stm32_dma_chan_t *chan = dma_get_channel(channel);
-
+	/* rewind TX buffer */
+	chan->cndtr = 0;
 	chan->ccr &= ~(STM32_DMA_CCR_EN | STM32_DMA_CCR_TCIE);
 }
 
@@ -88,6 +89,8 @@ void dma_disable_all(void)
 
 	for (ch = 0; ch < STM32_DMAC_COUNT; ch++) {
 		stm32_dma_chan_t *chan = dma_get_channel(ch);
+		/* rewind TX buffer */
+		chan->cndtr = 0;
 		chan->ccr &= ~(STM32_DMA_CCR_EN | STM32_DMA_CCR_TCIE);
 	}
 }
