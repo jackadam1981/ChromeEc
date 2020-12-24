@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d48438a_a7ce1cf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-24T02:00:21Z",
+      "side": 1,
+      "message": "Update this message",
+      "parentUuid": "3435727b_cdf3cca0",
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "317d7908_9347c331",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-22T17:29:51Z",
       "side": 1,
       "message": "Please summarize the high-level changes. Perhaps something like,\n\u003e Adjust CC noise rejection parameters based on CC voltage after getting CC levels and before setting polarity. Adjust electrical parameters to Richtek-recommended values.",
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8aab283_10c9fc7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-24T02:00:21Z",
+      "side": 1,
+      "message": "Update this summarize",
+      "parentUuid": "317d7908_9347c331",
       "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
