@@ -218,6 +218,30 @@
       },
       "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2660971a_4bc0d532",
+        "filename": "board/drobit/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2020-12-24T02:09:32Z",
+      "side": 1,
+      "message": "Dear Keith\nI think the format make your misunderstanding.\nIt seems unable to show the content of battery error behavior directly.\nThe content is as follows:\nS0:\nBlinking Amber, 1 sec on / 1 sec off\nS3/S5\nFollow S3/S5 behavior\nPlease click the content of battery Error column to check it.\nThanks.",
+      "parentUuid": "483db583_739230cc",
+      "range": {
+        "startLine": 82,
+        "startChar": 22,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "6bc4d9898704a5d65e0d32b553afece55d51a8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
