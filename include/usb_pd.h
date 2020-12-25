@@ -1641,6 +1641,7 @@ __override_proto void pd_check_pr_role(int port, int pr_role, int flags);
 __override_proto void pd_check_dr_role(int port, int dr_role, int flags);
 
 /**
+<<<<<<< HEAD   (62bab0 hammer: Fix moonball touchpad settings)
  * Check if we should charge from this device. This is
  * basically a white-list for chargers that are dual-role,
  * don't set the externally powered bit, but we should charge
@@ -1652,6 +1653,8 @@ __override_proto void pd_check_dr_role(int port, int dr_role, int flags);
 int pd_charge_from_device(uint16_t vid, uint16_t pid);
 
 /**
+=======
+>>>>>>> CHANGE (a08fad TCPMv1: Replace charging allow list)
  * Execute data swap.
  *
  * @param port USB-C port number
