@@ -164,8 +164,11 @@ cmd_rsasign_rwsig = futility sign --type rwsig \
                                     --prikey $(out)/key.vbprik2 $< $@
 
 # commands to build optional xref files
-cmd_deps_to_list = cat $(deps) | tr -d ':\\' | tr ' ' '\012' \
-	| egrep '\.[chS]$$' | sort | uniq > $@
+cmd_deps_to_list = cat $(deps) | tr -d ':\\' | tr ' ' '\012' | sort -u
+# Use realpath to resolve symbolic links and highlight paths that are outside
+# the main ec directory. This is important for finding modified files for git.
+cmd_deps_to_list_src = $(cmd_deps_to_list) | xargs realpath --relative-to=.
+cmd_cscope = $(cmd_deps_to_list) | egrep '\.[chS]$$' > $@
 cmd_etags = etags -o $@ $(shell cat $<)
 cmd_ctags = ctags -o $@ $(shell cat $<)
 targ_if_prog = $(if $(shell which $(1) 2>/dev/null),$(2),)
@@ -176,6 +179,7 @@ cmd_pretty_print_cmd = @$(1) \
 				| { [ -t 1 ]                         \
 				    && which column 1>/dev/null 2>&1 \
 				    && column || cat ; }
+# Use when pretty printing variables that are space separated.
 cmd_pretty_print_list = $(call cmd_pretty_print_cmd,echo $(1) | tr ' ' '\n')
 
 # By default, the "build_boards" and "try_build_boards" targets will build all
@@ -617,9 +621,8 @@ $(build-utils): $(out)/%:$(build-srcs)
 
 $(host-utils): $(out)/%:$(host-srcs)
 	$(call quiet,c_to_host,HOSTCC )
-
 $(out)/cscope.files: $(out)/$(PROJECT).bin
-	$(call quiet,deps_to_list,SH     )
+	$(call quiet,cscope,SH     )
 
 $(out)/TAGS: $(out)/cscope.files
 	$(call quiet,etags,ETAGS  )
@@ -709,6 +712,25 @@ print-configs:
 		-DSECTION_IS_RW=$(EMPTY) include/config.h | \
 		grep "#define CONFIG_" | cut -c9- | sort
 
+# Print out makefile targets and thier dependencies. This can be used to find
+# all source files that a board/project/test depends on.
+# Although this method is pretty good, is not extremely accurate, since we are
+# only exposing source dependents that are logged from gcc itself. There could
+# be other source dependents that are specified in the actual makefile.
+#
+# NOTE: The dep (.d) files that we use are generated as artifacts from the build
+# itself, so the |all| target must have already been run.
+#
+# Examples:
+# make BOARD=bloonchipper print-depends
+# make BOARD=bloonchipper TEST_BUILD=y PROJECT=rsa3 print-depends
+# make BOARD=bloonchipper print-depends | egrep -v '^(build|\.\.)'
+.PHONY: print-depends
+print-depends:
+	@$(MAKE) all -q || echo "# WARNING: Deps are out of date." \
+		"Run make step without $@ first." >&2
+	$(call cmd_pretty_print_cmd,$(cmd_deps_to_list_src))
+
 .PHONY: print-defines
 print-defines: BLD ?= RW
 print-defines:
@@ -765,6 +787,7 @@ help:
 	@echo "  print-configs   [BOARD=]     - Print CONFIG_* options for the target board"
 	@echo "  print-defines   [BOARD=]     - Print forced defines passed to the compiler"
 	@echo "  print-includes  [BOARD=]     - Print include paths passed to the compiler"
+	@echo "  print-depends   [BOARD=]     - Print files used in the build process for the target board"
 	@echo "  print-baseboard [BOARD=]     - Print include paths passed to the compiler"
 	@echo "  print-make-vars [BOARD=]     - Print chip/core/board make variables for a board"
 	@echo ""
