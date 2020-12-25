@@ -7,5 +7,6 @@
 #
 
 baseboard-y=baseboard.o cbi_fw_config.o
+baseboard-y+=cbi_ssfc.o
 baseboard-$(VARIANT_DEDEDE_EC_NPCX796FC)+=variant_ec_npcx796fc.o
 baseboard-$(VARIANT_DEDEDE_EC_IT8320)+=variant_ec_it8320.o
