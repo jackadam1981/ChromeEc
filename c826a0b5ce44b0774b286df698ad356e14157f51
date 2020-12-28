@@ -16,6 +16,23 @@
       "message": "Hi Ayo and Alvis,\n\nI verified this CL can save 2mw on asurada. But I still need your comment to see if I made correct setting. Can you review this change?",
       "revId": "c826a0b5ce44b0774b286df698ad356e14157f51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "560c802d_5158d0ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-12-28T09:45:59Z",
+      "side": 1,
+      "message": "LGTM, also I can get ~10mW on pp3300_ec_g rail with patchset 6 on my Asurada P1.",
+      "revId": "c826a0b5ce44b0774b286df698ad356e14157f51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
