@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b61c80c_4bb4eea2",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-28T09:05:02Z",
+      "side": 1,
+      "message": "LGTM. just some questions: when does this bit get configured and de-configured.",
+      "range": {
+        "startLine": 241,
+        "startChar": 27,
+        "endLine": 241,
+        "endChar": 45
+      },
+      "revId": "f96f4161bf500f51bfcc87fe0571318b28c2b3a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
