@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17812a15_51266774",
+        "filename": "test/usb_tcpmv2_compliance.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:29:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ac07845_13f0b686",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 65
+      },
+      "revId": "6bce7f0168bd79b0d09e2e72ca0b45e0464eb205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63f69541_accf3fa0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9434303c_5f725a7e",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:29:22Z",
+      "side": 1,
+      "message": "The tests always call with UFP or DFP. I will set the partner power role outside of the switch and use partner_get_power_role so I can avoid the warning for not covering DISCONNECTED case.",
+      "parentUuid": "63f69541_accf3fa0",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 50
+      },
+      "revId": "6bce7f0168bd79b0d09e2e72ca0b45e0464eb205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbee2584_97def0fc",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-28T22:34:54Z",
       "side": 1,
       "message": "Can you use a partner_get_power_role() check here instead?  The message sequences below are really driven by the power role and not the data role, correct?",
+      "range": {
+        "startLine": 248,
+        "startChar": 9,
+        "endLine": 248,
+        "endChar": 18
+      },
+      "revId": "6bce7f0168bd79b0d09e2e72ca0b45e0464eb205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d327e86_a585a0e4",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbee2584_97def0fc",
       "range": {
         "startLine": 248,
         "startChar": 9,
