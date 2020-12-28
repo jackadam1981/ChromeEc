@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac07845_13f0b686",
+        "filename": "test/usb_tcpmv2_compliance.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T22:34:54Z",
+      "side": 1,
+      "message": "+1 on the macros to self document the code.\nYou could also use an enum here, but I don\u0027t have a strong preference.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 65
+      },
+      "revId": "6bce7f0168bd79b0d09e2e72ca0b45e0464eb205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f69541_accf3fa0",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T22:34:54Z",
+      "side": 1,
+      "message": "This test always fails if the passed in data_role is PD_ROLE_DISCONNECTED.  It\u0027s probably better to just move this to the function entry with a comment that PD_ROLE_DISCONNECTED isn\u0027t supported (or isn\u0027t supported yet with a TODO).",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 50
+      },
+      "revId": "6bce7f0168bd79b0d09e2e72ca0b45e0464eb205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbee2584_97def0fc",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T22:34:54Z",
+      "side": 1,
+      "message": "Can you use a partner_get_power_role() check here instead?  The message sequences below are really driven by the power role and not the data role, correct?",
+      "range": {
+        "startLine": 248,
+        "startChar": 9,
+        "endLine": 248,
+        "endChar": 18
+      },
+      "revId": "6bce7f0168bd79b0d09e2e72ca0b45e0464eb205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
