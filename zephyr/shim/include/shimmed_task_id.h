@@ -39,8 +39,8 @@ typedef uint8_t task_id_t;
 				   CONFIG_TASK_KEYSCAN_STACK_SIZE)), ())
 #elif defined(CONFIG_HAS_TEST_TASKS)
 #include "shimmed_test_tasks.h"
-#ifndef CROS_EC_TASK_LIST
-#error "shimmed_test_tasks.h should define CROS_EC_TASK_LIST"
+#if defined(CONFIG_TEST_TASK_LIST) && !defined(CROS_EC_TASK_LIST)
+#define CROS_EC_TASK_LIST CONFIG_TEST_TASK_LIST
 #endif /* !CROS_EC_TASK_LIST */
 #endif /* !CONFIG_ZTEST */
 
@@ -50,6 +50,7 @@ typedef uint8_t task_id_t;
 
 /* Define the task_ids globally for all shimmed platform/ec code to use */
 #define CROS_EC_TASK(name, ...) TASK_ID_##name,
+#define TASK_TEST(name, ...) CROS_EC_TASK(name)
 enum {
 	TASK_ID_IDLE = -1, /* We don't shim the idle task */
 	CROS_EC_TASK_LIST
@@ -57,5 +58,6 @@ enum {
 	TASK_ID_INVALID = 0xff, /* Unable to find the task */
 };
 #undef CROS_EC_TASK
+#undef TASK_TEST
 
 #endif /* __CROS_EC_SHIMMED_TASK_ID_H */
