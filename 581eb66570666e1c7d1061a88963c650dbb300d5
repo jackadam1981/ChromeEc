@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb57499b_e3525b86",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:27:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a68321f_bcca8eb6",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 46
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76ef7a8e_6d0cd8ff",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-28T21:36:55Z",
       "side": 1,
       "message": "The defaults look correct.  Can you use bit definitions from tcpci.h here?",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 0
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49c91a10_1d98c6ac",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:27:02Z",
+      "side": 1,
+      "message": "most don\u0027t exist, but I will add them",
+      "parentUuid": "76ef7a8e_6d0cd8ff",
       "range": {
         "startLine": 264,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1876ea6_d1a081a7",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:27:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d42c5ca_18d3394b",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 47
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b6f567f_622feabf",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae6cba71_af55aa48",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:27:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b6f567f_622feabf",
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83abbcea_a8cfd091",
@@ -100,6 +190,30 @@
       "writtenOn": "2020-12-28T21:36:55Z",
       "side": 1,
       "message": "Create #defines or an enum for the Power Roles Supported.",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 7
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7480c596_29b90b03",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:27:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83abbcea_a8cfd091",
       "range": {
         "startLine": 275,
         "startChar": 1,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d34be4d_7b74d931",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:27:02Z",
+      "side": 1,
+      "message": "Added all of the options and created static functions to give the dead_battery and debug_accessory_indicator_supported values.",
+      "parentUuid": "3b403f1a_b99bc8f2",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 23
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ded507d2_ed7ce53d",
@@ -150,6 +288,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f55a61_588ce062",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:27:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ded507d2_ed7ce53d",
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1ad8337_c9344735",
@@ -163,6 +319,30 @@
       "writtenOn": "2020-12-28T21:36:55Z",
       "side": 1,
       "message": "Why is this public?  Can it be made static?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c657308_fc055949",
+        "filename": "include/mock/tcpci_i2c_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-28T23:27:02Z",
+      "side": 1,
+      "message": "I am not sure yet. The mock should handle all of this but it is lacking a bunch of functionality. I wanted to make sure it was available until it was definitely not needed.\n\nI will make it static for now and if I determine it needs to be made public I will change it back.",
+      "parentUuid": "a1ad8337_c9344735",
       "range": {
         "startLine": 12,
         "startChar": 0,
