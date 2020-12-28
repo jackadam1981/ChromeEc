@@ -365,4 +365,142 @@ uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
  * it calls gpio_get_level function.
  */
 SYS_INIT(flash_dev_init, PRE_KERNEL_1, 51);
+
+static int command_flash_status_reg(int argc, char **argv)
+{
+	ccprintf("Status 1: 0x%02x, Status 2: 0x%02x\n", flash_get_status1(),
+		 flash_get_status2());
+
+	return EC_SUCCESS;
 }
+DECLARE_CONSOLE_COMMAND(flashregs, command_flash_status_reg, NULL,
+			"Print flash chip info");
+
+static int command_flash_write_reg(int argc, char **argv)
+{
+	uint8_t reg[2];
+
+	int val1 = 0;
+	int val2 = 0;
+	int rv = parse_offset_size(argc, argv, 1, &val1, &val2);
+
+	if (rv)
+		return rv;
+
+	reg[0] = val1;
+	reg[1] = val2;
+	ccprintf("Writing 0x%02x to status register 1, ", reg[0]);
+	ccprintf("0x%02x to status register 2...\n", reg[1]);
+	flash_write_status_reg(reg);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(flash_wreg, command_flash_write_reg, "", "");
+
+static int command_flash_setwp(int argc, char **argv)
+{
+	flash_protect_int_flash(1);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(flash_setwp, command_flash_setwp, NULL, "");
+
+static int command_flash_wpst(int argc, char **argv)
+{
+	int wp_status;
+
+	wp_status = is_int_flash_protected();
+	ccprintf("WP status = %d\n", wp_status);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(flash_wpst, command_flash_wpst, NULL, "");
+
+static int command_flash_wr(int argc, char **argv)
+{
+	int offset;
+	int size;
+	int rv;
+	int remaining;
+	int processing;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	rv = parse_offset_size(argc, argv, 1, &offset, &size);
+	if (rv)
+		return rv;
+
+	remaining = size;
+	while (remaining) {
+		processing = remaining > FLASH_BUF_SIZE ? FLASH_BUF_SIZE :
+								remaining;
+		for (int i = 0; i < processing; i++)
+			data[i] = i;
+		flash_physical_write(offset, processing, data);
+		offset += processing;
+		remaining -= processing;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(flashwr, command_flash_wr, "offset size",
+			"Write pattern to flash");
+
+static int command_flash_rd(int argc, char **argv)
+{
+	int offset;
+	int size;
+	int rv;
+	int remaining;
+	int processing;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	rv = parse_offset_size(argc, argv, 1, &offset, &size);
+	if (rv)
+		return rv;
+
+	remaining = size;
+	while (remaining) {
+		processing = remaining > FLASH_BUF_SIZE ? FLASH_BUF_SIZE :
+								remaining;
+		/* Read the data */
+		if (flash_physical_read(offset, processing, data))
+			return EC_ERROR_INVAL;
+
+		/* Dump it */
+		for (int i = 0; i < processing; i++) {
+			if ((offset + i) % 16) {
+				ccprintf(" %02x", data[i]);
+			} else {
+				ccprintf("\n%08x: %02x", offset + i, data[i]);
+				cflush();
+			}
+		}
+		offset += processing;
+		remaining -= processing;
+	};
+	ccprintf("\n");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(flashrd, command_flash_rd, "offset [size]",
+			"Read flash");
+
+static int command_flash_uma_lock(int argc, char **argv)
+{
+	int enable;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (parse_bool(argv[1], &enable))
+		cros_flash_uma_lock(cros_flash_dev, enable);
+	else
+		return EC_ERROR_PARAM1;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(flash_uma_lock, command_flash_uma_lock, "", "");
