@@ -9,6 +9,7 @@
 #define MOCK_TCPCI_I2C_ADDR_FLAGS 0x99
 
 void mock_tcpci_reset(void);
+void mock_tcpci_reset_masks(void);
 
 void mock_tcpci_set_reg(int reg, uint16_t value);
 void mock_tcpci_set_reg_bits(int reg_offset, uint16_t mask);

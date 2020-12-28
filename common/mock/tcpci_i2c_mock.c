@@ -250,9 +250,54 @@ void mock_tcpci_receive(enum pd_msg_type sop, uint16_t header,
 void mock_tcpci_reset(void)
 {
 	int i;
+	int caps;
 
 	for (i = 0; i < ARRAY_SIZE(tcpci_regs); i++)
 		tcpci_regs[i].value = 0;
+
+	tcpci_regs[TCPC_REG_TC_REV].value =			0x0013;
+	tcpci_regs[TCPC_REG_PD_REV].value =			0x3012;
+	tcpci_regs[TCPC_REG_PD_INT_REV].value =			0x2011;
+
+	mock_tcpci_reset_masks();
+
+	tcpci_regs[TCPC_REG_CONFIG_STD_OUTPUT].value =		0x60;
+	tcpci_regs[TCPC_REG_POWER_CTRL].value =			0x60;
+	tcpci_regs[TCPC_REG_FAULT_STATUS].value =		0x80;
+
+	caps = BIT(0) +			/* Source Vbus */
+	       BIT(2) +			/* Sink Vbus */
+	       BIT(6) + BIT(7) +	/* Source, Sink, DRP */
+	       BIT(9);			/* Rp 3.0, 1.5 and default */
+	tcpci_regs[TCPC_REG_DEV_CAP_1].value =			caps;
+
+	switch ((mock_tcpci_get_reg(TCPC_REG_DEV_CAP_1) >> 5) & 7) {
+	case 0: /* Source or Sink, not DRP */
+	case 2: /* Sink only */
+	case 3: /* Sink with accessory support */
+	case 4: /* DRP only */
+		tcpci_regs[TCPC_REG_ROLE_CTRL].value =		0x0A;
+		tcpci_regs[TCPC_REG_MSG_HDR_INFO].value =	0x04;
+		break;
+	case 1: /* Source only */
+		tcpci_regs[TCPC_REG_ROLE_CTRL].value =		0x05;
+		tcpci_regs[TCPC_REG_MSG_HDR_INFO].value =	0x0D;
+		break;
+	case 5: /* Source, Sink, DRP, Adapter/Cable all supported */
+	case 6: /* Source, Sink, DRP */
+		tcpci_regs[TCPC_REG_ROLE_CTRL].value =		0x4A;
+		tcpci_regs[TCPC_REG_MSG_HDR_INFO].value =	0x04;
+		break;
+	}
+}
+
+void mock_tcpci_reset_masks(void)
+{
+	tcpci_regs[TCPC_REG_ALERT_MASK].value =			0x7FFF;
+	tcpci_regs[TCPC_REG_POWER_STATUS_MASK].value =		0xFF;
+	tcpci_regs[TCPC_REG_FAULT_STATUS_MASK].value =		0xFF;
+	tcpci_regs[TCPC_REG_EXT_STATUS_MASK].value =		0x01;
+	tcpci_regs[TCPC_REG_ALERT_EXTENDED_MASK].value =	0x07;
 }
 
 void mock_tcpci_set_reg(int reg_offset, uint16_t value)
