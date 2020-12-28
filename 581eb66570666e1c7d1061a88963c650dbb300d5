@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a68321f_bcca8eb6",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T21:36:55Z",
+      "side": 1,
+      "message": "Add a comment indicating defaults come from the USB TCPCI Specification Rev 2.0, Version 1.2",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 46
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ef7a8e_6d0cd8ff",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T21:36:55Z",
+      "side": 1,
+      "message": "The defaults look correct.  Can you use bit definitions from tcpci.h here?",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 0
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d42c5ca_18d3394b",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T21:36:55Z",
+      "side": 1,
+      "message": "Use \u0027|\u0027 instead of \u0027+\u0027 since this is a bitfield.  Also go ahead and create bit definitions in tcpci.h for this register.  Then the code should be self documenting.",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 47
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6f567f_622feabf",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T21:36:55Z",
+      "side": 1,
+      "message": "Add a comment referencing table 4-17 from the TCPCI Rev2 V1.2 spec.",
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83abbcea_a8cfd091",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T21:36:55Z",
+      "side": 1,
+      "message": "Create #defines or an enum for the Power Roles Supported.",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 7
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b403f1a_b99bc8f2",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T21:36:55Z",
+      "side": 1,
+      "message": "Document whey you\u0027re using the \"Dead battery\" default for DRP, and \"Not dead battery and DebugAccIndicator support\" for case 5 \u0026 6 below.",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 23
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded507d2_ed7ce53d",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T21:36:55Z",
+      "side": 1,
+      "message": "Add a comment referencing Table 4-1.",
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ad8337_c9344735",
+        "filename": "include/mock/tcpci_i2c_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-28T21:36:55Z",
+      "side": 1,
+      "message": "Why is this public?  Can it be made static?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "581eb66570666e1c7d1061a88963c650dbb300d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
