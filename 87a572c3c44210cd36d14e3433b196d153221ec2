@@ -193,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ddde6c6_3f2c0826",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-28T23:18:41Z",
+      "side": 1,
+      "message": "Hmm... If we don\u0027t mind adding a conditional in the critical path, why don\u0027t we do the proper check (i.e. task_start_called() ? current_task - tasks : TASK_ID_INVALID;) like originally done by PS2? \n\nThen, we will be able to detect all bad calls on the callers\u0027 side. The callers of this API are responsible for checking the return value like callers of other API are demanded. It\u0027s cleaner and consistent.\n\nIf we remove the CONFIG_BRINGUP guard, the callers have no choice but crash the EC. In the case of efs2.c, it\u0027s legitimate to call task_disable_task(TASK_ID_CONSOLE) before tasks start.",
+      "parentUuid": "6b901918_f1786567",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
