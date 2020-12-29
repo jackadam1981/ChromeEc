@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1297d40b_78412cd1",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-29T19:29:34Z",
+      "side": 1,
+      "message": "defined but not used",
+      "range": {
+        "startLine": 36,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "4e3647d7c8f58b3b338ecc8e794b44d5618cd958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb5e7d47_2eb4e4f4",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-29T19:29:34Z",
+      "side": 1,
+      "message": "/scratch/sglass/cosarm/src/platform/ec/zephyr/shim/src/espi.c: In function \u0027handle_acpi_write\u0027:\n/scratch/sglass/cosarm/src/platform/ec/zephyr/shim/src/espi.c:376:54: warning: passing argument 3 of \u0027espi_write_lpc_request\u0027 from incompatible pointer type [-Wincompatible-pointer-types]\n 376 |   espi_write_lpc_request(espi_dev, EACPI_WRITE_CHAR, \u0026result);\n     |                                                      ^~~~~~~\n     |                                                      |\n     |                                                      uint8_t * {aka unsigned char *}\nIn file included from /scratch/sglass/cosarm/src/third_party/zephyr/main/v2.4/include/drivers/espi.h:957,\n                from /scratch/sglass/cosarm/src/platform/ec/zephyr/shim/src/espi.c:8:\nzephyr/include/generated/syscalls/espi.h:90:111: note: expected \u0027uint32_t *\u0027 {aka \u0027unsigned int *\u0027} but argument is of type \u0027uint8_t *\u0027 {aka \u0027unsigned char *\u0027}",
+      "revId": "4e3647d7c8f58b3b338ecc8e794b44d5618cd958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
