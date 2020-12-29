@@ -16,6 +16,24 @@
       "message": "What problem is this patch solving? I don\u0027t see cryptoc remade when building Cr50 from cr50_stab branch:\n\n$ make BOARD\u003dcr50 -j -k\n...\n$ make BOARD\u003dcr50 -j -k\nmake obj\u003d/mnt/host/source/src/platform/cr50/build/cr50/cryptoc SUPPORT_UNALIGNED\u003d1 \\\n        CONFIG_UPTO_SHA512\u003dy -C /mnt/host/source/src/third_party/cryptoc\nmake[1]: Entering directory \u0027/mnt/host/source/src/third_party/cryptoc\u0027\nmake[1]: \u0027/mnt/host/source/src/platform/cr50/build/cr50/cryptoc/libcryptoc.a\u0027 is up to date.\n...\n$\n",
       "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c973d3c1_58f77256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-29T18:15:52Z",
+      "side": 1,
+      "message": "It fixes/stops everything that comes after attempting to remake libcryptoc.a.\n\nIn your output it said that nothing needed to be remade for libcryptoc.a. Since the target is always marked as PHONY (and dirty), it will always unnecessarily rebuild of the full image after, as seen in this output:\n\nmake BOARD\u003dcr50\nmake obj\u003d/mnt/host/source/src/platform/cr50/build/cr50/cryptoc SUPPORT_UNALIGNED\u003d1 \\\n\tCONFIG_UPTO_SHA512\u003dy -C /mnt/host/source/src/third_party/cryptoc\nmake[1]: Entering directory \u0027/mnt/host/source/src/third_party/cryptoc\u0027\nmake[1]: \u0027/mnt/host/source/src/platform/cr50/build/cr50/cryptoc/libcryptoc.a\u0027 is up to date.\nmake[1]: Leaving directory \u0027/mnt/host/source/src/third_party/cryptoc\u0027\n  LD      RO/ec.RO.elf\n  NM      RO/ec.RO.smap\n  OBJCOPY RO/ec.RO.hex\nmake obj\u003d/mnt/host/source/src/platform/cr50/build/cr50/tpm2 EMBEDDED_MODE\u003d1 \\\n\t-C /mnt/host/source/src/third_party/tpm2 copied_objs\nmake[1]: Entering directory \u0027/mnt/host/source/src/third_party/tpm2\u0027\nmake[1]: Nothing to be done for \u0027copied_objs\u0027.\nmake[1]: Leaving directory \u0027/mnt/host/source/src/third_party/tpm2\u0027\n  LD      RW/ec.RW.elf\n  NM      RW/ec.RW.smap\n  OBJCOPY RW/ec.RW.hex\n  OBJCOPY RW/ec.RW.flat\n  OBJCOPY RO/ec.RO.flat\n  LD      RW/ec.RW_B.elf\n  NM      RW/ec.RW_B.smap\n  OBJCOPY RW/ec.RW_B.flat\n  CAT     ec.obj\n  OBJCOPY ec.bin\n  COPY_RW ec.bin\n  MV      ec.bin\n  OBJCOPY ec.hex\n  OBJCOPY RW/ec.RW_B.hex\n  *** 8044 bytes in flash and 61564 bytes in RAM still available on cr50 RO ****\n  *** 14128 bytes in flash and 5788 bytes in RAM still available on cr50 RW ****\n\n\n---------------------------------------------------------------------------\nFor bloonchipper\n---------------------------------------------------------------------------\n\nBefore this change it always triggers a new build of ec.bin:\n\n$ make BOARD\u003dbloonchipper\n  MAKE    cryptoc/libcryptoc.a\n  LD      RW/ec.RW.elf\n  NM      RW/ec.RW.smap\n  OBJCOPY RW/ec.RW.flat\n  LD      RO/ec.RO.elf\n  NM      RO/ec.RO.smap\n  OBJCOPY RO/ec.RO.flat\n  SIGN    RW/ec.RW.flat.sig\n  CAT     ec.obj\n  OBJCOPY ec.bin\n  SIGN    ec.bin\n  EXTR_RW ec.bin\n  MV      ec.bin\n  *** 80068 bytes in flash and 242880 bytes in RAM still available on bloonchipper RO ****\n  *** 477576 bytes in flash and 181888 bytes in RAM still available on bloonchipper RW ****\n\n\n\n\nAfter this change:\n\n$ make BOARD\u003dbloonchipper\n  *** 80068 bytes in flash and 242880 bytes in RAM still available on bloonchipper RO ****\n  *** 477576 bytes in flash and 181888 bytes in RAM still available on bloonchipper RW ****",
+      "parentUuid": "904a0563_293ad282",
+      "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
