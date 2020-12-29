@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27f6b11_c3c22d90",
+        "filename": "power/mt8192.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-12-29T10:16:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d44df94_4286537a",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "1c1ce953d6cc50082140053e62815a8f1f4d817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d3809f0_ed98c6ed",
