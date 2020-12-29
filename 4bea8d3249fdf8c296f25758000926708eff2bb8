@@ -183,6 +183,30 @@
       },
       "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8661edf_8f6bbd6a",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-29T20:52:06Z",
+      "side": 1,
+      "message": "you\u0027re right, I did not think it through.",
+      "parentUuid": "ef03812a_b4a75906",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
