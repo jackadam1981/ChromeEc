@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a9770f3_9a0ee07f",
+        "filename": "core/riscv-rv32i/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-29T09:46:05Z",
+      "side": 1,
+      "message": "I\u0027ll measure the performance impact tomorrow.\n\nI suspect that we\u0027ll just want this feature all the time (it\u0027s not like we do very complex computations), and having the option makes it more likely that somebody will forget it.\n\nAlso, longer term, I still think a more proper solution for this is to patch the compiler to generate a simpler DBZ check...",
+      "parentUuid": "d5c7b4d7_b7d27293",
+      "revId": "4da85303c3e0e32c37b562e5de4f84f08f1db520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95f0788b_b27f779f",
         "filename": "core/riscv-rv32i/math.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-29T08:45:16Z",
       "side": 1,
       "message": "I guess it needs:\n\n#ifdef CONFIG_SOFTWARE_PANIC\n  software_panic(...);\n#else\n  panic(...);\n#endif",
+      "revId": "4da85303c3e0e32c37b562e5de4f84f08f1db520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7158dfb_36bf6123",
+        "filename": "core/riscv-rv32i/math.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-29T09:46:05Z",
+      "side": 1,
+      "message": "Done with previous CL.",
+      "parentUuid": "95f0788b_b27f779f",
       "revId": "4da85303c3e0e32c37b562e5de4f84f08f1db520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
