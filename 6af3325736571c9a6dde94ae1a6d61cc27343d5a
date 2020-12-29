@@ -164,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6edcabb_8a52eeb9",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-29T08:02:35Z",
+      "side": 1,
+      "message": "During TDA.2.1.2.1 test, the cc level is not in TYPEC_CC_VOLT_RP_DEF. It means that rt1715_init_cc_params() function will execute the \"else\" case.",
+      "parentUuid": "4a687a1e_9f696133",
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "010b29be_b247804c",
