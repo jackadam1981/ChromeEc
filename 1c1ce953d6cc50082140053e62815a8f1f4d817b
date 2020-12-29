@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d44df94_4286537a",
+        "filename": "power/mt8192.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-29T08:50:40Z",
+      "side": 1,
+      "message": "system_reset and chipset_reset are different things.\n\nchipset_reset resets the AP, but system_reset resets the EC itself.\n\nMT8192 doesn\u0027t need to reset the EC with AP reboot.",
+      "parentUuid": "a1d1e918_bd4035c0",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "1c1ce953d6cc50082140053e62815a8f1f4d817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d3809f0_ed98c6ed",
         "filename": "power/mt8192.c",
         "patchSetId": 39
