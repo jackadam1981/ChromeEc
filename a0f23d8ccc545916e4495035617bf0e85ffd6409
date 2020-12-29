@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "48bb0729_54972adb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-29T16:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba7d8f57_1d616d76",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "80f93c48_98241acd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d633caa_590b5dec",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-29T16:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2f6b33b_dbed8351",
+      "range": {
+        "startLine": 438,
+        "startChar": 47,
+        "endLine": 438,
+        "endChar": 62
+      },
+      "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66e802fc_0293f0a7",
@@ -94,6 +142,30 @@
       "writtenOn": "2020-12-22T02:01:02Z",
       "side": 1,
       "message": "could you put this prototype in a header files with comment?",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e005d05f_ee628157",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-29T16:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66e802fc_0293f0a7",
       "range": {
         "startLine": 10,
         "startChar": 4,
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66e3509_e69f8d17",
+        "filename": "board/servo_v4p1/power_mgmt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-29T16:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b1dfac7_3f67b946",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 27
+      },
+      "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cf3fee1_3519e593",
@@ -140,6 +236,24 @@
       "writtenOn": "2020-12-29T10:36:25Z",
       "side": 1,
       "message": "In the next version, I will move code touching gl3590 to separate driver. This generic chagnes shouldn\u0027t be mixed with servo_v4p1-specific code.",
+      "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4bac5e5_d51ee234",
+        "filename": "driver/gl3590.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-29T16:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cf3fee1_3519e593",
       "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -167,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e725cd17_f0be5aee",
+        "filename": "driver/gl3590.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-29T16:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "831848db_ce403a56",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 51
+      },
+      "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d1cc148_97805fdb",
@@ -180,6 +318,30 @@
       "writtenOn": "2020-12-22T02:01:02Z",
       "side": 1,
       "message": "Add comment please",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffe87ce6_3dfc8776",
+        "filename": "include/pwr_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-29T16:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1cc148_97805fdb",
       "range": {
         "startLine": 11,
         "startChar": 7,
