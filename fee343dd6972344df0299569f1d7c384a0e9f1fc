@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb023684_6b63c98d",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-29T02:06:50Z",
+      "side": 1,
+      "message": "data is bytes type, right?  Document that very clearly e.g:\n\n      data: bytes - string received from MCU\n\n(Since in Python 2.7 bytes is an alias for str, no need to call out str for py2 explicitly IMO.)",
+      "revId": "fee343dd6972344df0299569f1d7c384a0e9f1fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b26e65d_bfec4b13",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-29T02:06:50Z",
+      "side": 1,
+      "message": "nit: I prefer the keys use byte literals.  Could do either:\n\n  ord(b\u0027\\n\u0027)\n\nOr:\n\n  b\u0027\\n\u0027[0]",
+      "range": {
+        "startLine": 230,
+        "startChar": 12,
+        "endLine": 230,
+        "endChar": 21
+      },
+      "revId": "fee343dd6972344df0299569f1d7c384a0e9f1fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3282ad8a_6ccff2b1",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-29T02:06:50Z",
+      "side": 1,
+      "message": "For the values, IMO would be cleaner if they used raw strings rather than double-backslash.\n\nHowever, if this function really does need unicode in py2, then I don\u0027t think there\u0027s a comment py2 and py3 compatible syntax, since py3 seems to have dropped support for ur\u0027\u0027 literals.  If so, just leave a TODO somewhere to, after dropping py2 support, start using r\u0027\u0027 when useful.\n\n(Do we have a bug for tagging post-migration cleanup TODOs?)",
+      "range": {
+        "startLine": 230,
+        "startChar": 23,
+        "endLine": 230,
+        "endChar": 29
+      },
+      "revId": "fee343dd6972344df0299569f1d7c384a0e9f1fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
