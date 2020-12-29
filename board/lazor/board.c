@@ -296,6 +296,12 @@ static struct bmi_drv_data_t g_bmi160_data;
 static struct icm_drv_data_t g_icm426xx_data;
 static struct accelgyro_saved_data_t g_bma255_data;
 
+enum lid_accel_type {
+	LID_ACCEL_NONE = 0,
+	LID_ACCEL_BMA255 = 1,
+	LID_ACCEL_KX022 = 2,
+};
+
 enum base_accelgyro_type {
 	BASE_GYRO_NONE = 0,
 	BASE_GYRO_BMI160 = 1,
@@ -524,6 +530,7 @@ __override int board_get_default_battery_type(void)
 	return DEFAULT_BATTERY_TYPE;
 }
 
+static int lid_accel_config;
 static int base_accelgyro_config;
 
 void motion_interrupt(enum gpio_signal signal)
@@ -539,31 +546,59 @@ void motion_interrupt(enum gpio_signal signal)
 	}
 }
 
-static void board_detect_motionsensor(void)
+static void board_detect_lid_accel(void)
 {
 	int ret;
 	int val;
 
-	/* Check lid accel chip */
+	ret = i2c_read8(I2C_PORT_SENSOR, BMA2x2_I2C_ADDR1_FLAGS,
+		BMA2x2_CHIP_ID_ADDR, &val);
+	if (!ret) {
+		lid_accel_config = LID_ACCEL_BMA255;
+		CPRINTS("Lid Accel: BMA255");
+		return;
+	}
+
 	ret = i2c_read8(I2C_PORT_SENSOR, KX022_ADDR1_FLAGS,
 		KX022_WHOAMI, &val);
-
-	if (!ret)
+	if (!ret) {
+		lid_accel_config = LID_ACCEL_KX022;
 		motion_sensors[LID_ACCEL] = kx022_lid_accel;
+	}
 
-	CPRINTS("Lid Accel: %s", ret ? "BMA255" : "KX022");
+	CPRINTS("Lid Accel: %s", ret ? "Detection Fail" : "KX022");
+}
 
-	/* Check base accelgyro chip */
-	ret = icm_read8(&icm426xx_base_accel, ICM426XX_REG_WHO_AM_I, &val);
+static void board_detect_base_accelgyro(void)
+{
+	int val;
+
+	icm_read8(&icm426xx_base_accel, ICM426XX_REG_WHO_AM_I, &val);
 	if (val == ICM426XX_CHIP_ICM40608) {
 		motion_sensors[BASE_ACCEL] = icm426xx_base_accel;
 		motion_sensors[BASE_GYRO] = icm426xx_base_gyro;
+		base_accelgyro_config = BASE_GYRO_ICM426XX;
+		CPRINTS("Base Accelgyro: ICM40608");
+		return;
 	}
 
-	base_accelgyro_config = (val == ICM426XX_CHIP_ICM40608)
-		 ? BASE_GYRO_ICM426XX : BASE_GYRO_BMI160;
-	CPRINTS("Base Accelgyro: %s", (val == ICM426XX_CHIP_ICM40608)
-		 ? "ICM40608" : "BMI160");
+	bmi_read8(I2C_PORT_SENSOR, BMI160_ADDR0_FLAGS,
+		BMI160_CHIP_ID, &val);
+	base_accelgyro_config = (val == BMI160_CHIP_ID_MAJOR)
+		? BASE_GYRO_BMI160 : BASE_GYRO_NONE;
+	CPRINTS("Base Accelgyro: %s", base_accelgyro_config
+		? "BMI160" : "Detection Fail");
+}
+
+static void board_detect_motionsensor(void)
+{
+	/* Check lid accel chip detection */
+	if (lid_accel_config == LID_ACCEL_NONE)
+		board_detect_lid_accel();
+
+	/* Check base accelgyro chip detection */
+	if (base_accelgyro_config == BASE_GYRO_NONE)
+		board_detect_base_accelgyro();
 }
 
 static void board_update_sensor_config_from_sku(void)
@@ -796,6 +831,10 @@ static void board_chipset_resume(void)
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
 	if (pwm_get_duty(PWM_CH_DISPLIGHT))
 		pwm_enable(PWM_CH_DISPLIGHT, 1);
+
+	/* Check motion sensor detection */
+	if (!board_is_clamshell())
+		board_detect_motionsensor();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
