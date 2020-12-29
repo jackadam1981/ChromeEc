@@ -7,6 +7,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_LTO
+
 /* Chipset config */
 #define CONFIG_BOARD_RESET_AFTER_POWER_ON
 #define CONFIG_BRINGUP
