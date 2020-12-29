@@ -239,4 +239,14 @@ int bb_retimer_fw_update_get_result(void);
  * Called by PD task to process mux operation
  */
 void bb_retimer_fw_update_process_mux_op(int port);
+
+/**
+ * Host Command EC_CMD_USB_PD_MUX_INFO response includes a bit
+ * to notify AP to set TCSS mux even no device attached (NDA) for BB
+ * retimer firmware update. This is for HC version = 1.
+ * @param port USB-C port number
+ * @return 1 - Force AP to set TCSS mux in NDA case
+ *         0 - AP normal (Not set TCSS mux in NDA case)
+ */
+bool bb_retimer_fw_update_get_force_mux(int port);
 #endif /* __CROS_EC_USB_COMMON_H */

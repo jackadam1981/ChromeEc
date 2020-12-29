@@ -10,6 +10,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "task.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -364,6 +365,7 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_mux_info *p = args->params;
 	struct ec_response_usb_pd_mux_info *r = args->response;
+	struct ec_response_usb_pd_mux_info_v1 *r_v1 = args->response;
 	int port = p->port;
 	const struct usb_mux *me = &usb_muxes[port];
 	mux_state_t mux_state;
@@ -374,16 +376,26 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state))
 		return EC_RES_ERROR;
 
-	r->flags = mux_state;
-
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
-	    (r->flags & USB_PD_MUX_HPD_IRQ) &&
+	    (mux_state & USB_PD_MUX_HPD_IRQ) &&
 	    (me->hpd_update == &virtual_hpd_update)) {
 		usb_mux_hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL, 0);
 	}
 
-	args->response_size = sizeof(*r);
+	if (args->version == 1) {
+		r_v1->flags = mux_state;
+		if (bb_retimer_fw_update_get_force_mux(port))
+			r_v1->flags |= USB_PD_MUX_FORCE_SET;
+		args->response_size = sizeof(*r_v1);
+	} else {
+		r->flags = mux_state;
+		args->response_size = sizeof(*r);
+	}
+
+	CPRINTS("---C%d-------usb_mux_info: version: %d, mux flags: 0x%X",
+		port, args->version, args->version? r_v1->flags : r->flags);
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,

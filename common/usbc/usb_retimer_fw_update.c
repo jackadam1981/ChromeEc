@@ -26,6 +26,8 @@
 static int cur_port;
 static int last_op; /* Operation received from AP via ACPI_WRITE */
 static int last_mux_result; /* 1 byte result pass to AP via ACPI_READ */
+/* In no device attached case, force AP to set TCSS mux */
+static int force_mux[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define BB_RETIMER_FW_UPDATE_PORT_INFO		0
 #define BB_RETIMER_FW_UPDATE_PD_SUSPEND		1
@@ -45,6 +47,12 @@ DECLARE_DEFERRED(deferred_pd_suspend);
 __overridable int bb_retimer_fw_update_query_port(void)
 {
 	return 0;
+}
+
+bool bb_retimer_fw_update_get_force_mux(int port)
+{
+	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
+	return force_mux[port];
 }
 
 int bb_retimer_fw_update_get_result(void)
@@ -76,6 +84,12 @@ int bb_retimer_fw_update_get_result(void)
 void bb_retimer_fw_update_process_mux_op(int port)
 {
 	switch (last_op) {
+	case BB_RETIMER_FW_UPDATE_PD_SUSPEND:
+		if (!usb_mux_get(port)) {
+			force_mux[port] = 1;
+			CPRINTS("C%d force_mux=%d", port, force_mux[port]);
+		}
+		break;
 	case BB_RETIMER_FW_UPDATE_GET_MUX:
 		last_mux_result = usb_mux_get(port);
 		break;
@@ -118,9 +132,11 @@ void bb_retimer_fw_update_process_op(int port, int op)
 	switch (op) {
 	case BB_RETIMER_FW_UPDATE_PD_SUSPEND:
 		hook_call_deferred(&deferred_pd_suspend_data, 1);
+		tc_bb_firmware_fw_update_set_flag(port);
 		break;
 	case BB_RETIMER_FW_UPDATE_PD_RESUME:
 		pd_set_suspend(port, 0);
+		force_mux[port] = 0;
 		break;
 	case BB_RETIMER_FW_UPDATE_PORT_INFO:
 		break;
@@ -145,7 +161,7 @@ static int command_bb_update(int argc, char **argv)
 
 	if (argc == 1) {
 		result = bb_retimer_fw_update_query_port();
-		CPRINTS("query result: 0x%x", result);
+		CPRINTS("query port: 0x%x", result);
 		return EC_SUCCESS;
 	} else if (argc == 3) {
 		port = strtoi(argv[1], &e, 10);
@@ -158,9 +174,10 @@ static int command_bb_update(int argc, char **argv)
 		if (op < 8)
 			bb_retimer_fw_update_process_op(port, op);
 		else if (op == 8) {
-			CPRINTS("---------reslut: 0x%x",
-				bb_retimer_fw_update_get_result());
-
+			CPRINTS("--C%d----reslut: 0x%x, force_mux = %d",
+				port,
+				bb_retimer_fw_update_get_result(),
+				bb_retimer_fw_update_get_force_mux(port));
 		}
 		return EC_SUCCESS;
 	}
