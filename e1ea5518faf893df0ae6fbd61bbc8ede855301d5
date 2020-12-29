@@ -121,6 +121,24 @@
       "parentUuid": "dec91098_38498ac3",
       "revId": "e1ea5518faf893df0ae6fbd61bbc8ede855301d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9933492d_902c5c64",
+        "filename": "project.config",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-29T18:44:30Z",
+      "side": 1,
+      "message": "iiuc, the description is used in two places:\n\n* gitiles itself (the index you linked, and the specific-repo page like https://chromium.googlesource.com/chromiumos/platform/ec/)\n* Gerrit admin pages (like https://chromium-review.googlesource.com/admin/repos/q/filter:platform%252Fec)\n\nthe Gerrit admin pages though all seem to include links to gitiles directly already whenever the description is shown.\n\ni\u0027m not aware of any other places in Gerrit where this shows up.  but i also wouldn\u0027t be surprised if it was in other places i hadn\u0027t noticed.",
+      "parentUuid": "dec91098_38498ac3",
+      "revId": "e1ea5518faf893df0ae6fbd61bbc8ede855301d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
