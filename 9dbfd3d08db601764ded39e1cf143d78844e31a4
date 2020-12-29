@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccaa97c7_c1c83648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-29T01:02:53Z",
+      "side": 1,
+      "message": "I\u0027d like to see us never use str % operator without explicitly passing a tuple, since if a tuple ever sneaks in by mistake, we\u0027ll end up with a misleading error or a misleading formatted string.\n\nIn other words, instead of:\n  \u0027foo: %r\u0027 % one_var\nAlways do:\n  \u0027foo: %r\u0027 % (one_var,)\n\nAlternatively, if singleton tuples are too ugly, we could move to the newer string formatting syntax:\n  \u0027foo: {!r}\u0027.format(one_var)\n\nNo action needed in this CL, this CL is a strict improvement even without that additional cleanup.",
+      "revId": "9dbfd3d08db601764ded39e1cf143d78844e31a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc8bbcd_8d1af80e",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-29T01:02:53Z",
+      "side": 1,
+      "message": "Just use \u0027history: %r\u0027",
+      "range": {
+        "startLine": 203,
+        "startChar": 18,
+        "endLine": 203,
+        "endChar": 37
+      },
+      "revId": "9dbfd3d08db601764ded39e1cf143d78844e31a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be88d264_effd9fab",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-29T01:02:53Z",
+      "side": 1,
+      "message": "Calling .strip() only for the debug log line seems wrong to me.  Same issue on line 1045.\n\nI know this isn\u0027t new with this CL, but seems worth fixing while you\u0027re at it.",
+      "range": {
+        "startLine": 1024,
+        "startChar": 39,
+        "endLine": 1024,
+        "endChar": 47
+      },
+      "revId": "9dbfd3d08db601764ded39e1cf143d78844e31a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
