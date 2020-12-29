@@ -16,6 +16,23 @@
       "message": "The current ICM426XX driver doesn\u0027t reset data rate at init. It won\u0027t enable the sensor after the device reboot. We need to merge this CL to the branch.",
       "revId": "1979dd571c921dd8a6f2a817e5b8cdcfb39cc82d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0200bd5b_f4955fee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-12-29T05:58:21Z",
+      "side": 1,
+      "message": "Looks like just a cherry-pick from master so it might be ok. But I\u0027m confused, no trogdor board uses this (via `git grep CONFIG_ACCELGYRO_ICM426XX`). Why are we cherry-picking into trogdor?",
+      "revId": "1979dd571c921dd8a6f2a817e5b8cdcfb39cc82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
