@@ -545,13 +545,13 @@ static void board_detect_motionsensor(void)
 	int val;
 
 	/* Check lid accel chip */
-	ret = i2c_read8(I2C_PORT_SENSOR, KX022_ADDR1_FLAGS,
-		KX022_WHOAMI, &val);
+	ret = i2c_read8(I2C_PORT_SENSOR, BMA2x2_I2C_ADDR1_FLAGS,
+		BMA2x2_CHIP_ID_ADDR, &val);
 
-	if (!ret)
+	if (ret)
 		motion_sensors[LID_ACCEL] = kx022_lid_accel;
 
-	CPRINTS("Lid Accel: %s", ret ? "BMA255" : "KX022");
+	CPRINTS("Lid Accel: %s", ret ? "KX022" : "BMA255");
 
 	/* Check base accelgyro chip */
 	ret = icm_read8(&icm426xx_base_accel, ICM426XX_REG_WHO_AM_I, &val);
