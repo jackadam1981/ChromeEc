@@ -135,6 +135,30 @@
       },
       "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a84e50b_c2cd4a36",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-29T19:53:38Z",
+      "side": 1,
+      "message": "I mean can you put +$(call quiet,libcryptoc,MAKE   ) inside the if clause directly? Just a thought.",
+      "parentUuid": "4edcb039_d9415b8c",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
