@@ -165,6 +165,9 @@ void chipset_reset(enum chipset_reset_reason reason)
 	CPRINTS("%s: %d", __func__, reason);
 	report_ap_reset(reason);
 
+	if (reason == CHIPSET_RESET_AP_WATCHDOG)
+		system_set_reset_flags(EC_RESET_FLAG_AP_WATCHDOG);
+
 	GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
 	usleep(SYS_RST_PULSE_LENGTH);
 	GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
