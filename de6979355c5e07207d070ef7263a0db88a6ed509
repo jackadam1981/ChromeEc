@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "249b9f49_bc39151b",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-12-29T01:05:28Z",
+      "side": 1,
+      "message": "I\u0027ll give that (or a variation of it) a try, thanks for the suggestion",
+      "parentUuid": "4539da67_dc9f8cb6",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "de6979355c5e07207d070ef7263a0db88a6ed509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96fcfb88_1f6e0da7",
         "filename": "zephyr/shim/include/shimmed_task_id.h",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-29T00:03:02Z",
       "side": 1,
       "message": "One thing I\u0027m not sold on is why do we need two different task lists? AFAICT it\u0027s always one or the other so I\u0027m not seeing why tests can\u0027t just use CROS_EC_TASK_LIST.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "de6979355c5e07207d070ef7263a0db88a6ed509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fc7eb65_7f7be256",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-12-29T01:05:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure why, so I\u0027ll just say \"because historical reasons.\"\nThe task lists for unit tests use TASK_TEST instead of just TASK, and by having them in a separate task list, we can guarantee that the tasks in CROS_EC_TASK_LIST all have higher priorities, but other than that, I\u0027m stumped as to why.",
+      "parentUuid": "96fcfb88_1f6e0da7",
       "range": {
         "startLine": 56,
         "startChar": 1,
