@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5c7b4d7_b7d27293",
+        "filename": "core/riscv-rv32i/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-29T08:57:41Z",
+      "side": 1,
+      "message": "Since this is kind of exchanging the performance for the DBZ exception handling, should we make it an optional config on RISC-V",
+      "revId": "4da85303c3e0e32c37b562e5de4f84f08f1db520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95f0788b_b27f779f",
         "filename": "core/riscv-rv32i/math.c",
         "patchSetId": 1
