@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f96d70_560179f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-29T23:10:40Z",
+      "side": 1,
+      "message": "seems like the ec team should handle this in general",
+      "revId": "8ba5d61122565102e2c0cbb5f641a39d01bb3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0f09d9_8563f86a",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-29T23:10:40Z",
+      "side": 1,
+      "message": "this seems like something the build should be handling.  iiuc, the ec repo supports more than arm, so hardcoding this setting will break.",
+      "revId": "8ba5d61122565102e2c0cbb5f641a39d01bb3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79cc41e6_d1ae487e",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-29T23:10:40Z",
+      "side": 1,
+      "message": "this advice is bad and should never be in here.  we should never be telling people to edit the manifest files.\n\none could use local manifests \u0026 extend-project instead, or have people sync both the minilayout \u0026 firmware groups above.",
+      "revId": "8ba5d61122565102e2c0cbb5f641a39d01bb3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
