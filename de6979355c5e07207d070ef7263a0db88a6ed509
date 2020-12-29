@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4539da67_dc9f8cb6",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-29T00:03:02Z",
+      "side": 1,
+      "message": "So what I was thinking here is something along the lines of:\n\n#include \"shimmed_test_tasks.h\"\n#if defined(CONFIG_TEST_TASK_LIST) \u0026\u0026 !defined(CROS_EC_TASK_LIST)\n#define CROS_EC_TASK_LIST CONFIG_TEST_TASK_LIST\n#endif\n\n(This is a part of my next comment in that I don\u0027t really see why the distinction between the two.)",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "de6979355c5e07207d070ef7263a0db88a6ed509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96fcfb88_1f6e0da7",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-29T00:03:02Z",
+      "side": 1,
+      "message": "One thing I\u0027m not sold on is why do we need two different task lists? AFAICT it\u0027s always one or the other so I\u0027m not seeing why tests can\u0027t just use CROS_EC_TASK_LIST.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "de6979355c5e07207d070ef7263a0db88a6ed509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
