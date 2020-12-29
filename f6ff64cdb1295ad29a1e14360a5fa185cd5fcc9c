@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bafdda8_68065eb9",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-29T10:45:58Z",
+      "side": 1,
+      "message": "I couldn\u0027t log in to your link. Did you mean https://partnerissuetracker.corp.google.com/ \u0026 create a bug like other zephyr request issues?",
+      "parentUuid": "5f3adead_ce6e0f16",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20abb126_580a56f2",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-12-23T03:09:18Z",
       "side": 1,
       "message": "Please comment these vars",
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a5e6c9b_5fd8a7aa",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-29T10:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20abb126_580a56f2",
       "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ef47909_ad86b35b",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-29T10:45:58Z",
+      "side": 1,
+      "message": "Those functions are used to handle the old host command version. I removed it in this CL. I think we could check the host command version 3 functionality firstly.",
+      "parentUuid": "744aa5f1_457cff58",
+      "range": {
+        "startLine": 375,
+        "startChar": 2,
+        "endLine": 375,
+        "endChar": 8
+      },
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "247e160f_33c14f02",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ecfc97f_9da0443d",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-29T10:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "247e160f_33c14f02",
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db86dfe5_17120053",
@@ -94,6 +178,24 @@
       "writtenOn": "2020-12-23T03:09:18Z",
       "side": 1,
       "message": "Is this an error? How does it get handled?",
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553da28f_df23c953",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-29T10:45:58Z",
+      "side": 1,
+      "message": "This original from CL:30469. I only saw FLASH_ERASE_SECTOR host command will return this result. How about remove it and left a TODO here for re-visiting?",
+      "parentUuid": "db86dfe5_17120053",
       "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
