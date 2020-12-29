@@ -33,6 +33,23 @@
       "message": "Hi Gwendal, could you help review it?\nThanks.",
       "revId": "dc37ab5e89cf574e45c5e983b0a5e4b3df3053a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2b6749_e1eea3ee",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-12-29T05:30:37Z",
+      "side": 1,
+      "message": "This is the data path. Use a local variable in ..._config_from_sku.\nSee https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2596571",
+      "revId": "dc37ab5e89cf574e45c5e983b0a5e4b3df3053a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
