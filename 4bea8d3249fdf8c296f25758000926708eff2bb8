@@ -111,6 +111,30 @@
       },
       "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4edcb039_d9415b8c",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-29T19:50:32Z",
+      "side": 1,
+      "message": "Not totally sure what you mean.\n\nThe generic goal here is to ensure that the $(out)/cryptoc/libcryptoc.a target is considered dirty/needs-updating if any source files in cryptoc have actually changed. If we never force a PHONY on $(out)/cryptoc/libcryptoc.a, the $(out)/cryptoc/libcryptoc.a file timestamp will appear to always look up-to-date. So, if a cryptoc source file changes, the EC build system will never detect it and rebuild.\n\nWe do something like this for the EC version header: https://github.com/coreboot/chrome-ec/blob/master/Makefile.rules#L593,L595\n\nI\u0027m not familiar with any other way to have the correct subdir Makefile state represented in the parent Makefile. Any ideas?",
+      "parentUuid": "100ac729_dc4f2f5a",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
