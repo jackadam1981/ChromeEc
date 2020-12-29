@@ -93,6 +93,30 @@
       },
       "revId": "de6979355c5e07207d070ef7263a0db88a6ed509",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d2f663_7aed5985",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-29T04:57:04Z",
+      "side": 1,
+      "message": "I\u0027m wondering if this is an opportunity to clean things up. If the test ${PROJECT}.tasklist is only expected to define the test task list, then is anything setting the CROS_EC_TASK_LIST? I can\u0027t find a single test that has both. I also can\u0027t think of any reason we would want a test to run both.\n\nIMO we should bring this up at the next sync and \"vote\" on removing the double list. Though that will be after the holidays. I\u0027m OK with just doing it and adding the CL to the agenda as a potential revert if people have strong objections.",
+      "parentUuid": "1fc7eb65_7f7be256",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "de6979355c5e07207d070ef7263a0db88a6ed509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
