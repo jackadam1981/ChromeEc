@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68b4203b_94af08e8",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-29T22:18:18Z",
+      "side": 1,
+      "message": "The diagram could use information about the conditions that cause entry to \"Balance source ports\".  This includes PD device requires 3A inserted, PD device removed, and non-PD device downgrade.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 86
+      },
+      "revId": "84c22a360e1f744b9df681e76badfe864d136795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
