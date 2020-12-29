@@ -159,6 +159,30 @@
       },
       "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef03812a_b4a75906",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-29T20:05:32Z",
+      "side": 1,
+      "message": "I believe it would need to be in a shell call, like $(shell $(call quiet,libcryptoc,MAKE   ) ), if it is not in the make recipe itself.\n\nBut even then, it would always print MAKE during the build or even when running \"make help\", I guess.\n\n----\n\nI\u0027m sorry, maybe I\u0027m still not totally following.",
+      "parentUuid": "9a84e50b_c2cd4a36",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
