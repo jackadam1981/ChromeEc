@@ -85,11 +85,12 @@ endif # HAS_TASK_KEYSCAN
 
 config HAS_TASK_POWERBTN
 	bool "Power-button task (x86)"
+	depends on PLATFORM_EC_POWER_BUTTON
 	help
 	  This turns on the powerbtn task which handles monitoring the
 	  power button. Normally, x86 machines reset when it is held down for
 	  4 seconds but this tasks adjusts that to 8 seconds, to allow time for
-	  the usual Chrome OS shutdown sequence.
+	  the usual Chromium OS shutdown sequence.
 
 if HAS_TASK_POWERBTN
 
@@ -97,7 +98,7 @@ config TASK_POWERBTN_STACK_SIZE
 	hex "Stack size"
 	default 0x200
 	help
-	  The stack size of the power button task.
+	  The stack size of the power-button task.
 
 endif # HAS_TASK_POWERBTN
 
