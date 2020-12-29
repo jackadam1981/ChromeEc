@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ea5388_545ff59d",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-12-29T15:06:42Z",
+      "side": 1,
+      "message": "phoenixshen@ can add more, but I think we need to keep base IMU interrupt active in S3 for EC to determine the lid angle and whether or not to disable wakeup events from keyboard/touchpad.",
+      "range": {
+        "startLine": 525,
+        "startChar": 1,
+        "endLine": 526,
+        "endChar": 45
+      },
+      "revId": "e79c235216393afd0f9a199ff8a29158d074a8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
