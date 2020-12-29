@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cbc264e_fe03dc40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-29T19:16:55Z",
+      "side": 1,
+      "message": "Some more nits, but LGTM with those addressed",
+      "revId": "d7b6c9b2457107922e6b663de94b98950a5b4792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cec69cb_508feb0f",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-29T19:16:55Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "d7b6c9b2457107922e6b663de94b98950a5b4792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed0ac0a_eeb2df85",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-29T19:16:55Z",
+      "side": 1,
+      "message": "I don\u0027t suppose we have a panic() any in any case this should be obvious to people and won\u0027t happen in the real world...?",
+      "revId": "d7b6c9b2457107922e6b663de94b98950a5b4792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14dfde46_fa15f844",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-29T19:16:55Z",
+      "side": 1,
+      "message": "Can you make 65 a constant at the top of the file (#define SOME_NAME_HERE_US  65), along with why you need it and how come it is 65us?",
+      "revId": "d7b6c9b2457107922e6b663de94b98950a5b4792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
