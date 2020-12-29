@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "904a0563_293ad282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-29T17:57:12Z",
+      "side": 1,
+      "message": "What problem is this patch solving? I don\u0027t see cryptoc remade when building Cr50 from cr50_stab branch:\n\n$ make BOARD\u003dcr50 -j -k\n...\n$ make BOARD\u003dcr50 -j -k\nmake obj\u003d/mnt/host/source/src/platform/cr50/build/cr50/cryptoc SUPPORT_UNALIGNED\u003d1 \\\n        CONFIG_UPTO_SHA512\u003dy -C /mnt/host/source/src/third_party/cryptoc\nmake[1]: Entering directory \u0027/mnt/host/source/src/third_party/cryptoc\u0027\nmake[1]: \u0027/mnt/host/source/src/platform/cr50/build/cr50/cryptoc/libcryptoc.a\u0027 is up to date.\n...\n$\n",
+      "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
