@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba7d8f57_1d616d76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-29T10:36:25Z",
+      "side": 1,
+      "message": "This is not precise, we can also get 5V/3A on USB-C connection. Will update this.",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "80f93c48_98241acd",
@@ -100,6 +123,23 @@
         "endLine": 4,
         "endChar": 27
       },
+      "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf3fee1_3519e593",
+        "filename": "driver/gl3590.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-29T10:36:25Z",
+      "side": 1,
+      "message": "In the next version, I will move code touching gl3590 to separate driver. This generic chagnes shouldn\u0027t be mixed with servo_v4p1-specific code.",
       "revId": "a0f23d8ccc545916e4495035617bf0e85ffd6409",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
