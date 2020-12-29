@@ -231,6 +231,21 @@ int verify_tcpci_tx_retry_count(enum tcpm_transmit_type tx_type,
 			       VERIFY_TIMEOUT);
 }
 
+int verify_tcpci_tx_with_data(enum tcpm_transmit_type tx_type,
+			      enum pd_data_msg_type data_msg,
+			      uint8_t *data)
+{
+	int rv;
+
+	rv = verify_transmit(tx_type, -1,
+			     0, data_msg,
+			     VERIFY_TIMEOUT);
+	if (!rv) {
+		TEST_NE(data, NULL, "%p");
+		memcpy(data, tx_buffer, sizeof(tx_buffer));
+	}
+	return rv;
+}
 void mock_tcpci_receive(enum pd_msg_type sop, uint16_t header,
 			uint32_t *payload)
 {
