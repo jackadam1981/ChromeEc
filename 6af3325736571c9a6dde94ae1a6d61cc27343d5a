@@ -147,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96d9b558_15f1749c",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-29T10:11:55Z",
+      "side": 1,
+      "message": "1. The typical vaule of tTCPCFilter is around 375us.\n   So set tTCPCFilter as 400us around typical value.\n\n2. It is just set this port with larger chance for sink.\n\n3. \na. RT1715_REG_PHY_CTRL1\n   (i)It enables a setting for CTS from Ellisys.\n      RT1715 should not retry PD message for the wrong GoodCRC message from Ellisys \n      until tReceive expires (typical 1ms).\n   (ii)It sets BMC toggle counts in CC for idle condition.\n       Before RT1715 sends TX, RT1715 will check if there is PD commands on the CC line.\n       If the CC transient count is over the setting, RT1715 will recognize that cc is busy \n       and will not send TX.\n\nb. RT1715_REG_PHY_CTRL2\n   It sets the threshold count for BMC signal to recognize \"0\" and \"1\".\n   RT1715 will start to count between two transients.\n   If it counts over than the threshold, RT1715 recognize as BMC \"0\".\n   If it counts less than the threshold, RT1715 recognize as BMC \"1\".",
+      "parentUuid": "3f97aa6d_144f8ccc",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a687a1e_9f696133",
@@ -195,6 +219,30 @@
       "writtenOn": "2020-12-22T17:24:28Z",
       "side": 1,
       "message": "Why is this being done here?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 12
+      },
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67789181_f412733c",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2020-12-29T10:11:55Z",
+      "side": 1,
+      "message": "It sets the RX voltage threshold for BMC toggle. The RX voltage threshold must be different from CC attach level. TCPM must get CC status and then set the RX threshold.",
+      "parentUuid": "010b29be_b247804c",
       "range": {
         "startLine": 144,
         "startChar": 0,
