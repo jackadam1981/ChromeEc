@@ -67,6 +67,24 @@
       "message": "is this useful ?  this is the description for the platform/ec/ repo, so telling people to read the readme in the platform/ec/ repo that they\u0027re already viewing seems redundant.",
       "revId": "e1ea5518faf893df0ae6fbd61bbc8ede855301d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f607c6_66317ecd",
+        "filename": "project.config",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-29T18:36:37Z",
+      "side": 1,
+      "message": "I assumed they would only see this if they navigated to the Gerrit repo page:\n\nhttps://chromium-review.googlesource.com/admin/repos/chromiumos/platform/ec\n\n---\n\nIf so, this is a nice spring board to get them into Gitiles.",
+      "parentUuid": "89be16df_a1edbff4",
+      "revId": "e1ea5518faf893df0ae6fbd61bbc8ede855301d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
