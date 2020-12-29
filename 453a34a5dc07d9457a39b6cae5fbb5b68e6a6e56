@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb659dc9_5e0a19be",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-12-29T05:15:28Z",
+      "side": 1,
+      "message": "board_update_sensor_config_from_sku is called from HOOK_INIT via sku_init.\nIs it guaranteed the sensors are powered up (init can happen in S5, and sensors are only powered in S3).\n\nMoreover, Kionix 022 needs to be reset before read (see https://chromium.googlesource.com/chromiumos/platform/ec/+/master/driver/accel_kionix.c#561 and AN http://kionixfs.kionix.com/en/document/TN014%20KX022,%20KX023%20Accelerometer%20Power-On%20Procedure.pdf)",
+      "revId": "453a34a5dc07d9457a39b6cae5fbb5b68e6a6e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
