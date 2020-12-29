@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "037ce01f_d77e2deb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-29T05:41:15Z",
+      "side": 1,
+      "message": "The current ICM426XX driver doesn\u0027t reset data rate at init. It won\u0027t enable the sensor after the device reboot. We need to merge this CL to the branch.",
+      "revId": "1979dd571c921dd8a6f2a817e5b8cdcfb39cc82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
