@@ -46,6 +46,9 @@ static inline uint32_t get_mcause(void)
 	return ret;
 }
 
+/* Trigger a panic. */
+noreturn void exception_panic(uint32_t reason, uint32_t info);
+
 /* Generic CPU core initialization */
 void cpu_init(void);
 extern uint32_t ec_reset_lp;
