@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea83d9c1_b0b46beb",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-29T19:26:43Z",
+      "side": 1,
+      "message": "Yes that/s right. You should be able to create bugs in the same public component",
+      "parentUuid": "3bafdda8_68065eb9",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20abb126_580a56f2",
@@ -196,6 +220,24 @@
       "side": 1,
       "message": "This original from CL:30469. I only saw FLASH_ERASE_SECTOR host command will return this result. How about remove it and left a TODO here for re-visiting?",
       "parentUuid": "db86dfe5_17120053",
+      "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c305d52_37b0baeb",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-29T19:26:43Z",
+      "side": 1,
+      "message": "Sure, add a bug too",
+      "parentUuid": "553da28f_df23c953",
       "revId": "f6ff64cdb1295ad29a1e14360a5fa185cd5fcc9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
