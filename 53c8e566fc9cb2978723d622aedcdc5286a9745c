@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "425ceb07_d88ed619",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-29T09:43:18Z",
+      "side": 1,
+      "message": "It\u0027s a bit tricky here, but I don\u0027t think we want !CONFIG_SOFTWARE_PANIC to disable the exception handling for div-by-zero.",
+      "revId": "53c8e566fc9cb2978723d622aedcdc5286a9745c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
