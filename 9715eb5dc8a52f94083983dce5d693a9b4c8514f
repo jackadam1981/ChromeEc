@@ -22,6 +22,30 @@
       },
       "revId": "9715eb5dc8a52f94083983dce5d693a9b4c8514f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f8fb55_e913e201",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-29T11:06:52Z",
+      "side": 1,
+      "message": "I only check volteer can build \u0026 boot PASS to guarantee the zephyr upstream API could implement these functions. Could check the ACPI function when the current boot level?",
+      "parentUuid": "10ddeb21_4cf0a7a8",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "9715eb5dc8a52f94083983dce5d693a9b4c8514f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
