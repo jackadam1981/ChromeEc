@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "787d1d26_22219b6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-29T21:48:05Z",
+      "side": 1,
+      "message": "This appears to be a replacement CL for CL:2599786, but has not addressed the comments.\n\nSpecifically, can you add comments to the code to address these questions from Abe?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2599786/2/driver/tcpm/rt1715.c#80\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2599786/2/driver/tcpm/rt1715.c#126\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2599786/2/driver/tcpm/rt1715.c#150\n\n",
+      "revId": "c3e0c1b106efa868572b602490d3ff9c7123402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
