@@ -1,6 +1,30 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1d1e918_bd4035c0",
+        "filename": "power/mt8192.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-12-29T06:51:31Z",
+      "side": 1,
+      "message": "@yllin, I wonder why we can\u0027t simply call system_reset() here.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "1c1ce953d6cc50082140053e62815a8f1f4d817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "5d3809f0_ed98c6ed",
         "filename": "power/mt8192.c",
@@ -20,10 +44,10 @@
         "endChar": 38
       },
       "revId": "1c1ce953d6cc50082140053e62815a8f1f4d817b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "406c48ce_b7373a4c",
         "filename": "power/mt8192.c",
@@ -43,8 +67,7 @@
         "endChar": 38
       },
       "revId": "1c1ce953d6cc50082140053e62815a8f1f4d817b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
