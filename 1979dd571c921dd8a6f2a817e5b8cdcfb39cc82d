@@ -33,6 +33,24 @@
       "message": "Looks like just a cherry-pick from master so it might be ok. But I\u0027m confused, no trogdor board uses this (via `git grep CONFIG_ACCELGYRO_ICM426XX`). Why are we cherry-picking into trogdor?",
       "revId": "1979dd571c921dd8a6f2a817e5b8cdcfb39cc82d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25ae1d0_3a1d68e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-12-29T08:14:35Z",
+      "side": 1,
+      "message": "Lazor uses ICM426XX as 2nd source (b/175663607).",
+      "parentUuid": "0200bd5b_f4955fee",
+      "revId": "1979dd571c921dd8a6f2a817e5b8cdcfb39cc82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
