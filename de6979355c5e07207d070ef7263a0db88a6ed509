@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0befb6cc_6fa3b40e",
+        "filename": "include/util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-12-29T06:46:47Z",
+      "side": 1,
+      "message": "Looks like this was actually causing a build breakage which I just saw after doing a sync. Hope you don\u0027t mind, I pulled this out so I can get that up and running real fast. See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2605331",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "de6979355c5e07207d070ef7263a0db88a6ed509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4539da67_dc9f8cb6",
         "filename": "zephyr/shim/include/shimmed_task_id.h",
         "patchSetId": 2
