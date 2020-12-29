@@ -14,6 +14,8 @@ $(call set-option,CROSS_COMPILE,$(CROSS_COMPILE_riscv),\
 _FPU_EXTENSION=$(if $(CONFIG_FPU),f,)
 # CPU specific compilation flags
 CFLAGS_CPU+=-march=rv32ima$(_FPU_EXTENSION)c -mabi=ilp32$(_FPU_EXTENSION) -Os
+# RISC-V does not trap division by zero, enable the sanitizer to check those.
+CFLAGS_CPU+=-fsanitize=integer-divide-by-zero
 LDFLAGS_EXTRA+=-mrelax
 LDFLAGS_EXTRA+=-static-libgcc -lgcc
 
