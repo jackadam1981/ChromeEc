@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "583bdade_d45b4ff0",
+        "filename": "util/ec3po/__init__.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-29T01:10:27Z",
+      "side": 1,
+      "message": "Are these actually needed, i.e. does anything rely on plain \"import ec3po\" making these available?  If not, just delete these imports.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "9217955ef801769aacb9765cb764fdb229950fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
