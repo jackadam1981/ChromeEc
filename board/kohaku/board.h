@@ -101,6 +101,11 @@
 /* BC 1.2 */
 #define CONFIG_BC12_DETECT_MAX14637
 
+/* The board needs 100ms for VBUS_C[0|1]_BC12 to drop to lower VvbusUVLO */
+#undef CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS
+#define CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS 100
+
+
 /* Charger features */
 /*
  * The IDCHG current limit is set in 512 mA steps. The value set here is
