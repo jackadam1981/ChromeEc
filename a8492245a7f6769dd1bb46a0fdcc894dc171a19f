@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83df2bdb_6ebb1fe0",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-29T10:13:23Z",
+      "side": 1,
+      "message": "I added an error check in espi_vw_set_wire() and changed to use this function.",
+      "parentUuid": "0fa8e7a3_ee0e6c71",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 16
+      },
+      "revId": "a8492245a7f6769dd1bb46a0fdcc894dc171a19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bb7da29_f74c39f7",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-23T03:06:48Z",
       "side": 1,
       "message": "Do we want this? We might need error checking",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 9
+      },
+      "revId": "a8492245a7f6769dd1bb46a0fdcc894dc171a19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "101c0c9c_5d9658a4",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-29T10:13:23Z",
+      "side": 1,
+      "message": "I removed it.",
+      "parentUuid": "3bb7da29_f74c39f7",
       "range": {
         "startLine": 255,
         "startChar": 2,
