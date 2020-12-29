@@ -52,6 +52,47 @@
       "parentUuid": "c973d3c1_58f77256",
       "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f40551c6_077d3c27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-29T18:37:00Z",
+      "side": 1,
+      "message": "oh wow, I have been thinking of looking into why this remake happening for a while, I did not realize it was due to crytptoc.\n\nThis patch description is not very clear though, I understood it such that the cryptoc is not remade any more.\n\nI will cherry pick your changes into cr50_stab, great stuff Craig!",
+      "parentUuid": "07bd2750_14677fa2",
+      "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100ac729_dc4f2f5a",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-29T18:37:00Z",
+      "side": 1,
+      "message": "why not directly invoke cryptolib make here?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "4bea8d3249fdf8c296f25758000926708eff2bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
