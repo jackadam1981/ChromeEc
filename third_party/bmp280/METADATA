@@ -1,0 +1,14 @@
+name: "BMP280 implementation"
+description:
+    "BMP280 sensor driver code"
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://github.com/BoschSensortec/BMP280_driver"
+  }
+  version: "v2.0.4 (682a07ddd3fcc4ff06a090ae23d45ab89d5fbf0c)"
+  last_upgrade_date { year: 2015 month: 05 day: 27 }
+  license_type: NOTICE
+  local_modifications: "Created LICENSE file."
+}
