@@ -22,6 +22,30 @@
       },
       "revId": "e79c235216393afd0f9a199ff8a29158d074a8ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af9f7df_21c65a01",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-12-30T03:22:09Z",
+      "side": 1,
+      "message": "The interrupt of accelerometer is pretty active in S3. I wonder if we do need to keep the sensor active if EC doesn\u0027t need to share raw data with AP in S3 state.",
+      "parentUuid": "99ea5388_545ff59d",
+      "range": {
+        "startLine": 525,
+        "startChar": 1,
+        "endLine": 526,
+        "endChar": 45
+      },
+      "revId": "e79c235216393afd0f9a199ff8a29158d074a8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
