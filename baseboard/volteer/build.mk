@@ -8,5 +8,6 @@
 
 baseboard-y=baseboard.o
 baseboard-y+=battery_presence.o
+baseboard-y+=charger.o
 baseboard-y+=usb_pd_policy.o
 baseboard-y+=cbi_ec_fw_config.o
