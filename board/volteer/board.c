@@ -18,15 +18,12 @@
 #include "driver/retimer/bb_retimer.h"
 #include "driver/sync.h"
 #include "driver/tcpm/ps8xxx.h"
-#include "driver/tcpm/rt1715.h"
-#include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tusb422.h"
 #include "extpower.h"
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -39,7 +36,6 @@
 #include "tablet_mode.h"
 #include "throttle_ap.h"
 #include "uart.h"
-#include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
@@ -312,45 +308,6 @@ const struct pwm_t pwm_channels[] = {
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /******************************************************************************/
-/* Volteer specific USB daughter-board configuration */
-
-/* USBC TCPC configuration for USB3 daughter board */
-static const struct tcpc_config_t tcpc_config_p1_usb3 = {
-	.bus_type = EC_BUS_TYPE_I2C,
-	.i2c_info = {
-		.port = I2C_PORT_USB_C1,
-		.addr_flags = PS8751_I2C_ADDR1_FLAGS,
-	},
-	.flags = TCPC_FLAGS_TCPCI_REV2_0 | TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V,
-	.drv = &ps8xxx_tcpm_drv,
-};
-
-/*
- * USB3 DB mux configuration - the top level mux still needs to be set to the
- * virtual_usb_mux_driver so the AP gets notified of mux changes and updates
- * the TCSS configuration on state changes.
- */
-static const struct usb_mux usbc1_usb3_db_retimer = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &tcpci_tcpm_usb_mux_driver,
-	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
-	.next_mux = NULL,
-};
-
-static const struct usb_mux mux_config_p1_usb3_active = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
-	.next_mux = &usbc1_usb3_db_retimer,
-};
-
-static const struct usb_mux mux_config_p1_usb3_passive = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
-};
-
-/******************************************************************************/
 /* USB-A charging control */
 
 const int usb_port_enable[USB_PORT_COUNT] = {
@@ -397,93 +354,6 @@ void board_reset_pd_mcu(void)
 		ps8815_reset();
 		usb_mux_hpd_update(USBC_PORT_C1, 0, 0);
 	}
-}
-
-/*
- * Set up support for the USB3 daughterboard:
- *   Parade PS8815 TCPC (integrated retimer)
- *   Diodes PI3USB9201 BC 1.2 chip (same as USB4 board)
- *   Silergy SYV682A PPC (same as USB4 board)
- *   Virtual mux with stacked retimer
- */
-static void config_db_usb3_active(void)
-{
-	tcpc_config[USBC_PORT_C1] = tcpc_config_p1_usb3;
-	usb_muxes[USBC_PORT_C1] = mux_config_p1_usb3_active;
-}
-
-/*
- * Set up support for the passive USB3 daughterboard:
- *   TUSB422 TCPC (already the default)
- *   PI3USB9201 BC 1.2 chip (already the default)
- *   Silergy SYV682A PPC (already the default)
- *   Virtual mux without stacked retimer
- */
-
-static void config_db_usb3_passive(void)
-{
-	usb_muxes[USBC_PORT_C1] = mux_config_p1_usb3_passive;
-}
-
-static void config_port_discrete_tcpc(int port)
-{
-	/*
-	 * Support 2 Pin-to-Pin compatible parts: TUSB422 and RT1715, for
-	 * simplicity allow either and decide at runtime which we are using.
-	 * Default to TUSB422, and switch to RT1715 if it is on the I2C bus and
-	 * the VID matches.
-	 */
-
-	int regval;
-
-	if (i2c_read16(port ? I2C_PORT_USB_C1 : I2C_PORT_USB_C0,
-		       RT1715_I2C_ADDR_FLAGS, TCPC_REG_VENDOR_ID,
-		       &regval) == EC_SUCCESS) {
-		if (regval == RT1715_VENDOR_ID) {
-			CPRINTS("C%d: RT1715 detected", port);
-			tcpc_config[port].i2c_info.addr_flags =
-				RT1715_I2C_ADDR_FLAGS;
-			tcpc_config[port].drv = &rt1715_tcpm_drv;
-			return;
-		}
-	}
-	CPRINTS("C%d: Default to TUSB422", port);
-}
-
-static const char *db_type_prefix = "USB DB type: ";
-__override void board_cbi_init(void)
-{
-	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
-
-	config_port_discrete_tcpc(0);
-	switch (usb_db) {
-	case DB_USB_ABSENT:
-		CPRINTS("%sNone", db_type_prefix);
-		break;
-	case DB_USB4_GEN2:
-		config_port_discrete_tcpc(1);
-		CPRINTS("%sUSB4 Gen1/2", db_type_prefix);
-		break;
-	case DB_USB4_GEN3:
-		config_port_discrete_tcpc(1);
-		CPRINTS("%sUSB4 Gen3", db_type_prefix);
-		break;
-	case DB_USB3_ACTIVE:
-		config_db_usb3_active();
-		CPRINTS("%sUSB3 Active", db_type_prefix);
-		break;
-	case DB_USB3_PASSIVE:
-		config_db_usb3_passive();
-		config_port_discrete_tcpc(1);
-		CPRINTS("%sUSB3 Passive", db_type_prefix);
-		break;
-	default:
-		CPRINTS("%sID %d not supported", db_type_prefix, usb_db);
-	}
-
-	if ((!IS_ENABLED(TEST_BUILD) && !ec_cfg_has_numeric_pad()) ||
-	    get_board_id() <= 2)
-		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
 }
 
 /******************************************************************************/
