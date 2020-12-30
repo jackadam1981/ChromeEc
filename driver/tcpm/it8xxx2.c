@@ -8,7 +8,7 @@
 #include "common.h"
 #include "config.h"
 #include "console.h"
-#include "it83xx_pd.h"
+#include "tcpm/it83xx_pd.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"

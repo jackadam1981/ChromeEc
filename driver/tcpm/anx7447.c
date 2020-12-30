@@ -6,10 +6,10 @@
 /* ANX7447 port manager */
 
 #include "common.h"
-#include "anx7447.h"
+#include "tcpm/anx7447.h"
 #include "console.h"
 #include "hooks.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_mux.h"

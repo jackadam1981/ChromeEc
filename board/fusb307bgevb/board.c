@@ -6,7 +6,7 @@
 
 #include "common.h"
 #include "ec_version.h"
-#include "fusb307.h"
+#include "tcpm/fusb307.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"

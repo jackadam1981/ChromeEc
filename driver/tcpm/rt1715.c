@@ -6,8 +6,8 @@
 /* Richtek RT1715 Type-C port controller */
 
 #include "common.h"
-#include "rt1715.h"
-#include "tcpci.h"
+#include "tcpm/rt1715.h"
+#include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_pd.h"

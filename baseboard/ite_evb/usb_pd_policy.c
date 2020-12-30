@@ -11,7 +11,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "it83xx_pd.h"
+#include "tcpm/it83xx_pd.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"

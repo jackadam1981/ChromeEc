@@ -6,7 +6,7 @@
 /* Intel BASEBOARD-RVP ITE EC specific configuration */
 
 #include "common.h"
-#include "it83xx_pd.h"
+#include "tcpm/it83xx_pd.h"
 #include "keyboard_scan.h"
 #include "pwm.h"
 #include "pwm_chip.h"

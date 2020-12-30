@@ -7,7 +7,7 @@
 #include "adc_chip.h"
 #include "battery.h"
 #include "console.h"
-#include "it83xx_pd.h"
+#include "tcpm/it83xx_pd.h"
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "timer.h"

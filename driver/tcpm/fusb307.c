@@ -6,10 +6,10 @@
 /* Type-C port manager for Fairchild's FUSB307 */
 
 #include "console.h"
-#include "fusb307.h"
+#include "tcpm/fusb307.h"
 #include "hooks.h"
 #include "task.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
 #include "util.h"

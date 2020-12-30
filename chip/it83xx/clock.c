@@ -13,7 +13,7 @@
 #include "hwtimer_chip.h"
 #include "intc.h"
 #include "irq_chip.h"
-#include "it83xx_pd.h"
+#include "tcpm/it83xx_pd.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"

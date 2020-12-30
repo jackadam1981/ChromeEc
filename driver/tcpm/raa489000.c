@@ -10,8 +10,8 @@
 #include "console.h"
 #include "driver/charger/isl923x.h"
 #include "i2c.h"
-#include "raa489000.h"
-#include "tcpci.h"
+#include "tcpm/raa489000.h"
+#include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
 
 #define DEFAULT_R_AC 20

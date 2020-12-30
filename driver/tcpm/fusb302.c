@@ -8,10 +8,10 @@
 /* Type-C port manager for Fairchild's FUSB302 */
 
 #include "console.h"
-#include "fusb302.h"
+#include "tcpm/fusb302.h"
 #include "task.h"
 #include "hooks.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_charge.h"

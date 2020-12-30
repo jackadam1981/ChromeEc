@@ -5,7 +5,7 @@
 
 #include "common.h"
 #include "intc.h"
-#include "it83xx_pd.h"
+#include "tcpm/it83xx_pd.h"
 #include "kmsc_chip.h"
 #include "registers.h"
 #include "task.h"

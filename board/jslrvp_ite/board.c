@@ -12,7 +12,7 @@
 #include "extpower.h"
 #include "i2c.h"
 #include "intc.h"
-#include "it83xx_pd.h"
+#include "tcpm/it83xx_pd.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power/icelake.h"

@@ -6,13 +6,13 @@
 /* Type-C port manager */
 
 #include "atomic.h"
-#include "anx74xx.h"
+#include "tcpm/anx74xx.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"
-#include "ps8xxx.h"
+#include "tcpm/ps8xxx.h"
 #include "task.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_charge.h"

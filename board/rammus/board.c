@@ -7,7 +7,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
-#include "anx7447.h"
+#include "tcpm/anx7447.h"
 #include "bd99992gw.h"
 #include "board_config.h"
 #include "button.h"

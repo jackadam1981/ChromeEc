@@ -8,9 +8,9 @@
 /* Type-C port manager for Analogix's anx74xx chips */
 
 #include "console.h"
-#include "anx74xx.h"
+#include "tcpm/anx74xx.h"
 #include "task.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_charge.h"
