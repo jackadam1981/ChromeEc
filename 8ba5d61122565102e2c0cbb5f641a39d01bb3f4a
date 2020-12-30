@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "275021d0_a5817a09",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2020-12-30T13:31:23Z",
+      "side": 1,
+      "message": "Yeah I mean this is just an example for a standalone build (and documented in make help as well). The build files handle these by defaulting to the chroot compilers and I think it\u0027s been split from the more commonly used CROSS_COMPILE to support single run multi arch builds.\n\nEither way, fair comment, I added a note about the other variants.",
+      "parentUuid": "5c0f09d9_8563f86a",
+      "revId": "8ba5d61122565102e2c0cbb5f641a39d01bb3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79cc41e6_d1ae487e",
         "filename": "docs/getting_started_quickly.md",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-29T23:10:40Z",
       "side": 1,
       "message": "this advice is bad and should never be in here.  we should never be telling people to edit the manifest files.\n\none could use local manifests \u0026 extend-project instead, or have people sync both the minilayout \u0026 firmware groups above.",
+      "revId": "8ba5d61122565102e2c0cbb5f641a39d01bb3f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aea45ff_8fb6c4c8",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2020-12-30T13:31:23Z",
+      "side": 1,
+      "message": "Oh cool, sorry I was blindly following the existing procedure and fixing what I found broken but this makes a lot of sense. Changed the line before to sync both minilayout and firmware and dropped this step.",
+      "parentUuid": "79cc41e6_d1ae487e",
       "revId": "8ba5d61122565102e2c0cbb5f641a39d01bb3f4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
