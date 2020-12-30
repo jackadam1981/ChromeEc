@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb680772_7377eb53",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T19:30:14Z",
+      "side": 1,
+      "message": "Add a parameter with the caller\u0027s buffer length and tests if the buffer is too short for the actual transmit data.\n\nIt would also be good to have an output parameter that specifies the size of the data written.",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 22
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f417a2db_7c5713a2",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T19:30:14Z",
+      "side": 1,
+      "message": "Should this copy only tx_pos bytes?",
+      "range": {
+        "startLine": 245,
+        "startChar": 26,
+        "endLine": 245,
+        "endChar": 42
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b95e79_c9c48c1c",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T19:30:14Z",
+      "side": 1,
+      "message": "Wrong description:\n\nAs Consumer (UFP), the Tester waits for a Source Capabilities message from the Provider (DFP, UUT) and verifies correct field values.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d6e3e4_a2091366",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T19:30:14Z",
+      "side": 1,
+      "message": "Is this test ever run with #undef CONFIG_USB_PD_REV30?\n\nDo we need another unit test for TCPMv2 and rev2.0 support?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f57ba8_d330675f",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T19:30:14Z",
+      "side": 1,
+      "message": "Use GENMASK()",
+      "range": {
+        "startLine": 99,
+        "startChar": 15,
+        "endLine": 99,
+        "endChar": 39
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ba30ce_3ed4ed2d",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T19:30:14Z",
+      "side": 1,
+      "message": "This needs tests for (last_variable_voltage \u003d\u003d 0) and (last_battery_voltage \u003d\u003d 0)",
+      "range": {
+        "startLine": 123,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00db428b_be5f4d06",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T19:30:14Z",
+      "side": 1,
+      "message": "Use GENMASK()",
+      "range": {
+        "startLine": 124,
+        "startChar": 18,
+        "endLine": 125,
+        "endChar": 42
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
