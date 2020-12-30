@@ -328,6 +328,8 @@ build-art := $(call objs_from_dir,$(out),build-util-art)
 # Use the util_name with an added .c AND the special <util_name>-objs variable.
 build-srcs := $(foreach u,$(build-util-bin-y),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
 host-srcs := $(foreach u,$(host-util-bin-y),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
+deps-y += $(foreach b,$(build-util-bin-y),$(out)/util/$(b).d)
+deps-y += $(foreach b,$(host-util-bin-y),$(out)/util/$(b).d)
 
 dirs=core/$(CORE) chip/$(CHIP) $(BASEDIR) $(BDIR) common fuzz power test \
 	cts/common cts/$(CTS_MODULE) $(out)/gen
