@@ -13,3 +13,6 @@ BASEBOARD:=octopus
 
 board-y=board.o led.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
+
+# Utilities
+host-util-bin-y=iteflash
