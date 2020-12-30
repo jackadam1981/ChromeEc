@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "825085ad_1580dcc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-12-30T03:01:41Z",
+      "side": 1,
+      "message": "@Ayo, Do we still missing the 1.8v selection for a 1.8v signal after applying this CL?\n\nAs far, these pins have been declared with 1.8v flag:\nAP_EC_WARM_RST_REQ, PIN(D, 3)\nAP_EC_WATCHDOG_L,   PIN(C, 7)\nAP_IN_SLEEP_L,      PIN(F, 2)\nPMIC_EC_PWRGD,      PIN(F, 3)\nBASE_IMU_INT_L,     PIN(J, 2)\nLID_ACCEL_INT_L,    PIN(J, 3)\nEC_PMIC_EN_ODL,     PIN(D, 0)\nEC_PMIC_WATCHDOG_L, PIN(H, 0)\nEC_INT_L,           PIN(E, 6)\nEC_DPBRDG_HPD_ODL,  PIN(J, 0)\nI2C_B_SCL,          PIN(C, 1)\nI2C_B_SDA,          PIN(C, 2)",
+      "revId": "b46092e41198a549764ff7ecf684e40f17db30f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
