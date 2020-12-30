@@ -11,3 +11,6 @@ CHIP_FAMILY:=stm32f0
 CHIP_VARIANT:=stm32f07x
 
 board-y=board.o lcd.o
+
+# Utilities
+host-util-bin-y=stm32mon

@@ -16,3 +16,6 @@ $(call set-option,CROSS_COMPILE_arm,\
 	/opt/coreboot-sdk/bin/arm-eabi-)
 
 board-y=board.o
+
+# Utilities
+host-util-bin-y=stm32mon

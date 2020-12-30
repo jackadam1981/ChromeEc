@@ -15,3 +15,6 @@ test-list-y=entropy rsa3 sha256 sha256_unrolled x25519
 
 board-y=board.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
+
+# Utilities
+host-util-bin-y=stm32mon

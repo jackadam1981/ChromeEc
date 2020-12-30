@@ -12,3 +12,6 @@ CHIP_VARIANT:=stm32f07x
 
 board-y=board.o usb_pd_policy.o injector.o simpletrace.o
 board-$(HAS_TASK_SNIFFER)+=sniffer.o
+
+# Utilities
+host-util-bin-y=stm32mon
