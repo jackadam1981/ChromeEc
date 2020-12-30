@@ -70,6 +70,30 @@
       },
       "revId": "e79c235216393afd0f9a199ff8a29158d074a8ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6648cb85_555326d6",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-12-30T07:08:08Z",
+      "side": 1,
+      "message": "Data rate is configurable in board.c\n(https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/asurada/board.c#761).\nNot sure if we have any requirement for it though.",
+      "parentUuid": "86c2ecd0_2d87e20c",
+      "range": {
+        "startLine": 525,
+        "startChar": 1,
+        "endLine": 526,
+        "endChar": 45
+      },
+      "revId": "e79c235216393afd0f9a199ff8a29158d074a8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
