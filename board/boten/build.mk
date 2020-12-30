@@ -13,3 +13,6 @@ BASEBOARD:=dedede
 
 board-y=board.o led.o usb_pd_policy.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
+
+# Utilities
+host-util-bin-y=iteflash

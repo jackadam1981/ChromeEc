@@ -14,3 +14,6 @@ CHIP_VARIANT:=it8320bx
 board-y=board.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
 board-$(CONFIG_USB_POWER_DELIVERY)+=chg_usb_pd.o usb_pd_policy.o
+
+# Utilities
+host-util-bin-y=iteflash

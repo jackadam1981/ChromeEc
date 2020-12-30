@@ -8,7 +8,7 @@
 
 # See Makefile.rules for description.
 host-util-bin-y += ectool lbplay ec_sb_firmware_update lbcc \
-	ec_parse_panicinfo cbi-util iteflash
+	ec_parse_panicinfo cbi-util
 build-util-art-y += util/export_taskinfo.so
 ifeq ($(CHIP),npcx)
 build-util-bin-y += ecst

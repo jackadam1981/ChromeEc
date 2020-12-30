@@ -13,3 +13,6 @@ BASEBOARD:=intelrvp
 
 board-y=board.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
+
+# Utilities
+host-util-bin-y=iteflash

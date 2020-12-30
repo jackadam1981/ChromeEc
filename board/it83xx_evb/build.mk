@@ -12,3 +12,6 @@ CHIP_VARIANT:=it8320dx
 BASEBOARD:=ite_evb
 
 board-y=board.o
+
+# Utilities
+host-util-bin-y=iteflash
