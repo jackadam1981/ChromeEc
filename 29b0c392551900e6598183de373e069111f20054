@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6800c9d1_6efb3f33",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T20:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb680772_7377eb53",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 22
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f417a2db_7c5713a2",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-30T19:30:14Z",
       "side": 1,
       "message": "Should this copy only tx_pos bytes?",
+      "range": {
+        "startLine": 245,
+        "startChar": 26,
+        "endLine": 245,
+        "endChar": 42
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7e3be3_991a4f73",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T20:23:32Z",
+      "side": 1,
+      "message": "tx_pos gets reset. I will retain it before it is cleared.",
+      "parentUuid": "f417a2db_7c5713a2",
       "range": {
         "startLine": 245,
         "startChar": 26,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da11ca6_65b54014",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T20:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43b95e79_c9c48c1c",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44d6e3e4_a2091366",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-30T19:30:14Z",
       "side": 1,
       "message": "Is this test ever run with #undef CONFIG_USB_PD_REV30?\n\nDo we need another unit test for TCPMv2 and rev2.0 support?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b96025_b06e2d76",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T20:23:32Z",
+      "side": 1,
+      "message": "The CONFIGS can be changed to make this happen. It is here for completeness. The TD.PD.SRC3.E1 test will verify this is working correctly for PD3",
+      "parentUuid": "44d6e3e4_a2091366",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5538d585_c29cc3fc",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T20:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88f57ba8_d330675f",
+      "range": {
+        "startLine": 99,
+        "startChar": 15,
+        "endLine": 99,
+        "endChar": 39
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42ba30ce_3ed4ed2d",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "404b7fcf_8ebc38ed",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T20:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42ba30ce_3ed4ed2d",
+      "range": {
+        "startLine": 123,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00db428b_be5f4d06",
@@ -152,6 +296,30 @@
       "writtenOn": "2020-12-30T19:30:14Z",
       "side": 1,
       "message": "Use GENMASK()",
+      "range": {
+        "startLine": 124,
+        "startChar": 18,
+        "endLine": 125,
+        "endChar": 42
+      },
+      "revId": "29b0c392551900e6598183de373e069111f20054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d171aa80_308d2b67",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T20:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00db428b_be5f4d06",
       "range": {
         "startLine": 124,
         "startChar": 18,
