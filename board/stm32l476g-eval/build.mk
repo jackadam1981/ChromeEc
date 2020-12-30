@@ -10,3 +10,6 @@ CHIP_FAMILY:=stm32l4
 CHIP_VARIANT:=stm32l476
 
 board-y=board.o
+
+# Utilities
+host-util-bin-y=stm32mon
