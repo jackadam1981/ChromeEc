@@ -19,3 +19,6 @@ $(out)/RO/board/$(BOARD)/emmc.o: $(out)/bootblock_data.h
 
 # 21504 bytes plus some extra buffer
 DEFAULT_BOOTBLOCK_SIZE:=23000
+
+# Utilities
+host-util-bin-y=stm32mon

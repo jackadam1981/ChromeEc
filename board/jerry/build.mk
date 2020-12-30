@@ -11,3 +11,6 @@ CHIP_FAMILY:=stm32f0
 CHIP_VARIANT:=stm32f07x
 
 board-y=board.o battery.o
+
+# Utilities
+host-util-bin-y=stm32mon

@@ -11,3 +11,6 @@ CHIP_FAMILY:=stm32g4
 CHIP_VARIANT:=stm32g431xb
 
 board-y=board.o
+
+# Utilities
+host-util-bin-y=stm32mon
