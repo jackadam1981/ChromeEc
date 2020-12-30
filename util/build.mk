@@ -97,10 +97,13 @@ HOST_OPENSSL_LDFLAGS := $(shell $(HOST_PKG_CONFIG) --libs openssl)
 $(out)/util/gen_touchpad_hash: BUILD_CFLAGS += $(HOST_OPENSSL_CFLAGS)
 $(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += $(HOST_OPENSSL_LDFLAGS)
 
-deps-y += $(out)/util/gen_touchpad_hash.d
 endif # CONFIG_TOUCHPAD_VIRTUAL_OFF
 
 cbi-util-objs=../common/crc8.o ../common/cbi.o
+
+deps-y += $(foreach b,$(host-util-bin-y),$(out)/util/$(b).d)
+deps-y += $(foreach b,$(build-util-bin-y),$(out)/util/$(b).d)
+deps-y += $(foreach b,$(build-util-art-y),$(out)/util/$(b).d)
 
 $(out)/util/export_taskinfo.so: $(out)/util/export_taskinfo_ro.o \
 			$(out)/util/export_taskinfo_rw.o
