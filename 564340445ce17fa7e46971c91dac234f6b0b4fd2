@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cea6917_9b69a797",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T18:11:33Z",
+      "side": 1,
+      "message": "not sure why --repo-url is in here ... `repo` already has defaults for it that should work fine",
+      "range": {
+        "startLine": 57,
+        "startChar": 75,
+        "endLine": 57,
+        "endChar": 137
+      },
+      "revId": "564340445ce17fa7e46971c91dac234f6b0b4fd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e79f448_5b556fef",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T18:11:33Z",
+      "side": 1,
+      "message": "if you wanted a slightly shorter recipe to copy \u0026 paste, you can omit the \".git\" here as the server will DTRT w/out it",
+      "range": {
+        "startLine": 57,
+        "startChar": 70,
+        "endLine": 57,
+        "endChar": 74
+      },
+      "revId": "564340445ce17fa7e46971c91dac234f6b0b4fd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
