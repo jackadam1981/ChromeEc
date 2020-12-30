@@ -16,6 +16,23 @@
       "message": "I don\u0027t know if it\u0027s the correct way of doing it, but crash.WatchdogCrash passed.",
       "revId": "2a08d2d9e4c36109d34d4c24b00d352044016c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b068e0e3_2e1b4a5c",
+        "filename": "power/mt8192.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-30T09:46:06Z",
+      "side": 1,
+      "message": "That\u0027s a bit weird, I think those flags are more meant persist value across EC reboots (as is required on kukui as the EC resets everytime the AP reboots). Does this also mean that a subsequent AP non-watchdog reboot will still have the flag set?\n\nFrom https://crrev.com/c/2607204, it does appear that the \"reset: AP watchdog\" is logged in the output of `ectool --name\u003dcros_ec uptimeinfo`. What is the logic in coreboot? Should it check if the last entry is a watchdog? (instead of looking at EC reset flags?)",
+      "revId": "2a08d2d9e4c36109d34d4c24b00d352044016c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
