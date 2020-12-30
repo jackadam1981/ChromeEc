@@ -128,6 +128,7 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
+#include "usbc_config.h"
 
 enum battery_type {
 	BATTERY_SMP,
@@ -148,12 +149,6 @@ enum sensor_id {
 	BASE_ACCEL,
 	BASE_GYRO,
 	SENSOR_COUNT,
-};
-
-enum usbc_port {
-	USBC_PORT_C0 = 0,
-	USBC_PORT_C1,
-	USBC_PORT_COUNT
 };
 
 void board_reset_pd_mcu(void);
