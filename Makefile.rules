@@ -10,11 +10,21 @@
 FLATSIZE_FILE ?= .sizes.txt
 BUILD_DIR := $(firstword $(subst /, ,$(out)))
 
-build-utils := $(foreach u,$(build-util-bin),$(out)/util/$(u))
-host-utils := $(foreach u,$(host-util-bin),$(out)/util/$(u))
-build-art := $(foreach u,$(build-util-art),$(out)/$(u))
-build-srcs := $(foreach u,$(build-util-bin),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
-host-srcs := $(foreach u,$(host-util-bin),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
+# The following variables are meant to be initialized in the baseboard or
+# board's build.mk. They will later be appended to in util/build.mk with
+# utils that should be generated for all boards.
+#
+# build-util-bin-y - Utils for the system doing the "build" (e.g. 64-bit GNU/Linux)
+# host-util-bin-y  - Utils for the target platform on top of the ec (e.g. 32-bit Chromium OS)
+# build-util-art-y - Build ?artifacts? for the system doing the "build"
+#
+# See commit bc4c1b4 for more context.
+build-utils := $(call objs_from_dir,$(out)/util,build-util-bin)
+host-utils := $(call objs_from_dir,$(out)/util,host-util-bin)
+build-art := $(call objs_from_dir,$(out),build-util-art)
+# Use the util_name with an added .c AND the special <util_name>-objs variable.
+build-srcs := $(foreach u,$(build-util-bin-y),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
+host-srcs := $(foreach u,$(host-util-bin-y),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
 
 # Don't do a build test on the following boards:
 skip_boards = OWNERS cr50 host
