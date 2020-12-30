@@ -93,6 +93,30 @@
       },
       "revId": "564340445ce17fa7e46971c91dac234f6b0b4fd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee5e47e_909ed0b1",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T19:06:45Z",
+      "side": 1,
+      "message": "feel free to send CLs to delete the implicit trailing .git and/or slash.  it\u0027ll rubberstamp them.",
+      "parentUuid": "7f9dd3e0_dc658d93",
+      "range": {
+        "startLine": 57,
+        "startChar": 70,
+        "endLine": 57,
+        "endChar": 74
+      },
+      "revId": "564340445ce17fa7e46971c91dac234f6b0b4fd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
