@@ -14,3 +14,6 @@ BASEBOARD:=dragonegg
 board-y=board.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
 board-$(CONFIG_LED_COMMON)+=led.o
+
+# Utilities
+host-util-bin-y=iteflash
