@@ -12,3 +12,6 @@ CHIP_VARIANT:=it81202ax_1024
 BASEBOARD:=ite_evb
 
 board-y=board.o
+
+# Utilities
+host-util-bin-y=iteflash
