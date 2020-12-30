@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18dad35a_68e2ec4c",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T20:36:06Z",
+      "side": 1,
+      "message": "Need to test that pd_cnt matches the number of Src_PDOs.  I think you can now use msg_len to verify this.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 26
+      },
+      "revId": "3c5379ec9b970ff03f9ba0f34e0ae69c9e5ec64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
