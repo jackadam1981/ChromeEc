@@ -58,6 +58,30 @@ static int nb7v904m_enter_low_power_mode(const struct usb_mux *me)
 	return rv;
 }
 
+/* Tune USB Equalization */
+int nb7v904m_tune_usb_eq_rx(const struct usb_mux *me, uint8_t eq_a, uint8_t eq_d)
+{
+        int rv;
+	int regval;
+
+	rv = nb7v904m_read(me, NB7V904M_REG_GEN_DEV_SETTINGS, &regval);
+        if (rv)
+                return rv;
+
+	if((regval & NB7V904M_CHIP_EN) == 0)
+		rv = nb7v904m_write(me, NB7V904M_REG_GEN_DEV_SETTINGS, regval | NB7V904M_CHIP_EN);
+	if (rv)
+		return rv;
+
+        rv = nb7v904m_write(me, NB7V904M_REG_CH_A_EQ_SETTINGS, eq_a);
+        rv |= nb7v904m_write(me, NB7V904M_REG_CH_D_EQ_SETTINGS, eq_d);
+
+        if((regval & NB7V904M_CHIP_EN) == 0)
+                rv |= nb7v904m_write(me, NB7V904M_REG_GEN_DEV_SETTINGS, regval);
+
+        return rv;
+}
+
 static int nb7v904m_init(const struct usb_mux *me)
 {
 	int rv = set_low_power_mode(me, 0);
