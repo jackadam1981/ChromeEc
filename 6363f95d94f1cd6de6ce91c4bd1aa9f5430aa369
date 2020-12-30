@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1594bd01_0110c51b",
+        "filename": "third_party/bmp280/LICENSE",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-30T19:54:05Z",
+      "side": 1,
+      "message": "This file is slightly modified from the original. It\u0027s missing \u0027Copyright ...\u0027 line and \u0027BSD-3-Clause\u0027. Any reason?",
+      "revId": "6363f95d94f1cd6de6ce91c4bd1aa9f5430aa369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a503cd97_14be83df",
+        "filename": "third_party/bmp280/LICENSE",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-30T19:54:05Z",
+      "side": 1,
+      "message": "nit: numbers (1, 2, 3) are removed. Any reason?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 2
+      },
+      "revId": "6363f95d94f1cd6de6ce91c4bd1aa9f5430aa369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
