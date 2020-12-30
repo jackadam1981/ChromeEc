@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51c0ae9a_58c018fd",
+        "filename": "core/riscv-rv32i/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-30T01:49:44Z",
+      "side": 1,
+      "message": "With CL:2606179:\n\nBaseline (no LTO):\nasurada_v2.0.6504-f5d081782643\n1000 iterations (500) in 657234 us\n1000 iterations (500) in 657416 us\n1000 iterations (500) in 657620 us\n1000 iterations (500) in 657208 us\n\nWith LTO:\nasurada_v2.0.6506-aaa5b1bfedbb\n1000 iterations (500) in 647715 us\n1000 iterations (500) in 647509 us\n1000 iterations (500) in 647809 us\n1000 iterations (500) in 647348 us\n\nWith LTO and UBSAN:\nasurada_v2.0.6508-72852665c32e\n1000 iterations (500) in 646862 us\n1000 iterations (500) in 646824 us\n1000 iterations (500) in 647265 us\n1000 iterations (500) in 646780 us\n\nNo measurable performance difference.",
+      "parentUuid": "0a9770f3_9a0ee07f",
+      "revId": "4da85303c3e0e32c37b562e5de4f84f08f1db520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95f0788b_b27f779f",
         "filename": "core/riscv-rv32i/math.c",
         "patchSetId": 1
