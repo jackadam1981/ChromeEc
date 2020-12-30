@@ -22,6 +22,30 @@
       },
       "revId": "3d149751f2b7f99967985fc24d3ee0a9545e522a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feee9d70_1b08e7dc",
+        "filename": "third_party/bmp280/bmp280.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-12-30T15:38:45Z",
+      "side": 1,
+      "message": "I guess it looks changed a lot because we imported the latest version by CL:2606182. \n\n\u003e TEST\u003dmake buildall -j\n\nThen, I think we should test the new driver on at least one device?",
+      "parentUuid": "d4f32f71_763bd90f",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "3d149751f2b7f99967985fc24d3ee0a9545e522a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
