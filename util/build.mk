@@ -8,11 +8,12 @@
 
 # See Makefile for description.
 host-util-bin-y += ectool lbplay ec_sb_firmware_update lbcc \
-	ec_parse_panicinfo cbi-util iteflash
+	ec_parse_panicinfo cbi-util
 build-util-art-y += util/export_taskinfo.so
 
 host-util-bin-$(CHIP_STM32) += stm32mon
 build-util-bin-$(CHIP_NPCX) += ecst
+host-util-bin-$(CHIP_IT83XX) += iteflash
 build-util-bin-$(BOARD_NOCTURNE_FP) += ectool_servo
 
 host-util-bin-y += uartupdatetool
