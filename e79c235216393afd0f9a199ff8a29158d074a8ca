@@ -46,6 +46,30 @@
       },
       "revId": "e79c235216393afd0f9a199ff8a29158d074a8ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c2ecd0_2d87e20c",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-12-30T03:51:46Z",
+      "side": 1,
+      "message": "My wild guess is we can probably switch to polling sensors with relatively slow rate in S3, but it adds SW complexities so I\u0027d defer the question to phoenixshen@ and other SWEs.",
+      "parentUuid": "5af9f7df_21c65a01",
+      "range": {
+        "startLine": 525,
+        "startChar": 1,
+        "endLine": 526,
+        "endChar": 45
+      },
+      "revId": "e79c235216393afd0f9a199ff8a29158d074a8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
