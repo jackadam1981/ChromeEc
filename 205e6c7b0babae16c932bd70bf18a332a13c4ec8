@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b422f5c_8f41e652",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-30T19:14:59Z",
+      "side": 1,
+      "message": "ptal",
+      "parentUuid": "d5ca4c65_31b31370",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 8
+      },
+      "revId": "205e6c7b0babae16c932bd70bf18a332a13c4ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7aae003a_c396f24a",
