@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82418040_e78627c7",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e1.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T21:03:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b583489c_b76ca87e",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "03325be593cd4e6d71127fb2e1e07ef7a9f463e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd4ec3ac_8ce3086d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ac0c65a_4c5eee87",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e1.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T21:03:48Z",
+      "side": 1,
+      "message": "I can see that as possibly useful. The current line when something fails indicates the fail back trace.  The filename missing is inconvenient when you have multiple file tests.\n\n188: ASSERTION failed: pd_type \u003d\u003d want_ctrl_msg\n\t\tEVAL: 0xd \u003d\u003d 0x4\n169: ASSERTION failed: tcpci_regs[0x50].value \u003d\u003d 0\n\t\tEVAL: 32 \u003d\u003d 0\n111: ASSERTION failed: verify_tcpci_tx_with_data(TCPC_TX_SOP, PD_DATA_BATTERY_STATUS, data, (1 * 1000)) \u003d\u003d EC_SUCCESS\n\t\tEVAL: 1 \u003d\u003d 0\nFail",
+      "parentUuid": "dd4ec3ac_8ce3086d",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 8
+      },
+      "revId": "03325be593cd4e6d71127fb2e1e07ef7a9f463e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "494992c1_f562cb77",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-30T20:38:51Z",
       "side": 1,
       "message": "GENMASK()",
+      "range": {
+        "startLine": 94,
+        "startChar": 16,
+        "endLine": 94,
+        "endChar": 31
+      },
+      "revId": "03325be593cd4e6d71127fb2e1e07ef7a9f463e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d831306_3382c734",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e1.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T21:03:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "494992c1_f562cb77",
       "range": {
         "startLine": 94,
         "startChar": 16,
