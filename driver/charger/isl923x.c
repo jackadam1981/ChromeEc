@@ -14,7 +14,7 @@
 #include "common.h"
 #include "hooks.h"
 #include "i2c.h"
-#include "isl923x.h"
+#include "charger/isl923x.h"
 #include "ocpc.h"
 #include "system.h"
 #include "task.h"

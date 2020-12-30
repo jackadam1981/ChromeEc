@@ -34,7 +34,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
-#include "isl923x.h"
+#include "charger/isl923x.h"
 #include "keyboard_8042_sharedlib.h"
 #include "keyboard_backlight.h"
 #include "keyboard_config.h"

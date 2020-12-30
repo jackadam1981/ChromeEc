@@ -8,7 +8,7 @@
  * Drive high in S5-S0 when AC_PRESENT is high, otherwise drive low.
  */
 
-#include "bq24773.h"
+#include "charger/bq24773.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"

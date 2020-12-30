@@ -12,7 +12,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
-#include "sm5803.h"
+#include "charger/sm5803.h"
 #include "system.h"
 #include "stdbool.h"
 #include "throttle_ap.h"

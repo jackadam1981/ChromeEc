@@ -7,7 +7,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
-#include "bd9995x.h"
+#include "charger/bd9995x.h"
 #include "charge_ramp.h"
 #include "charge_state.h"
 #include "console.h"

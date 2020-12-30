@@ -9,7 +9,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "i2c.h"
-#include "sy21612.h"
+#include "charger/sy21612.h"
 #include "task.h"
 #include "util.h"
 

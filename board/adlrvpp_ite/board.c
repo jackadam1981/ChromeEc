@@ -14,7 +14,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
-#include "isl9241.h"
+#include "charger/isl9241.h"
 #include "it83xx_pd.h"
 #include "lid_switch.h"
 #include "pca9675.h"

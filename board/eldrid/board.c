@@ -24,7 +24,7 @@
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "isl9241.h"
+#include "charger/isl9241.h"
 #include "keyboard_8042_sharedlib.h"
 #include "keyboard_raw.h"
 #include "lid_switch.h"

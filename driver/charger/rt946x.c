@@ -18,7 +18,7 @@
 #include "i2c.h"
 #include "printf.h"
 #include "driver/wpc/p9221.h"
-#include "rt946x.h"
+#include "charger/rt946x.h"
 #include "task.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
