@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e09833a_4716df60",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-12-30T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66e22d88_1e56f391",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "775eadff10965189ceebd4312198d3fa9d376b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed8458d4_12d4a908",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-30T17:04:41Z",
       "side": 1,
       "message": "Update please",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "775eadff10965189ceebd4312198d3fa9d376b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f1b37fe_ac658e88",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-12-30T17:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed8458d4_12d4a908",
       "range": {
         "startLine": 44,
         "startChar": 10,
