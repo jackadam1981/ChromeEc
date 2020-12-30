@@ -16,7 +16,7 @@
 #include "common.h"
 #include "hooks.h"
 #include "i2c.h"
-#include "isl9241.h"
+#include "charger/isl9241.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
