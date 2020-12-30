@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b583489c_b76ca87e",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e1.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T20:38:51Z",
+      "side": 1,
+      "message": "There\u0027s no explicit test that the number of Src_PDOs sent matches this count.  \n\nI think this will require that verify_tcpci_tx_with_data() returns the number of data bytes sent.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "03325be593cd4e6d71127fb2e1e07ef7a9f463e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4ec3ac_8ce3086d",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e1.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T20:38:51Z",
+      "side": 1,
+      "message": "Not related to this change, but what do you think about creating some new TEST macros that accept an error reference that is printed when the TEST fails?\n\nFor instance, if this line failed, it would be nice if the test output referenced step b), item #2.\n\nIdeally, the error output would clearly identify the actual test name, the step that failed, and text describing the failed assertion.\n\n    Test failed: TD.PD.SRC3.E1, Step b) 2. Port Power Role is not Source.\n                 Actual Port Power Role is Sink\n\nIn the short term, just adding an identifier like \"TD.PD.SRC3.E1 - step b) 2.\" to the test output would be pretty helpful.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 8
+      },
+      "revId": "03325be593cd4e6d71127fb2e1e07ef7a9f463e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "494992c1_f562cb77",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e1.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T20:38:51Z",
+      "side": 1,
+      "message": "GENMASK()",
+      "range": {
+        "startLine": 94,
+        "startChar": 16,
+        "endLine": 94,
+        "endChar": 31
+      },
+      "revId": "03325be593cd4e6d71127fb2e1e07ef7a9f463e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

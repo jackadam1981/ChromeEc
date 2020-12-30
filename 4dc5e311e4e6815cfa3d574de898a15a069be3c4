@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b0e064_ce3c1f1c",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T20:38:51Z",
+      "side": 1,
+      "message": "Also need to verify pd_cnt matches actual Src_PDO count.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "4dc5e311e4e6815cfa3d574de898a15a069be3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4712ccee_7f23823c",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T20:38:51Z",
+      "side": 1,
+      "message": "Nit - break this out into 4 separate tests to match the test spec.",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "4dc5e311e4e6815cfa3d574de898a15a069be3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
