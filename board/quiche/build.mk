@@ -12,3 +12,6 @@ CHIP_VARIANT:=stm32g431xb
 BASEBOARD:=honeybuns
 
 board-y=board.o
+
+# Utilities
+host-util-bin-y=stm32mon

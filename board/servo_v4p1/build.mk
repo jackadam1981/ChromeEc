@@ -31,3 +31,6 @@ board-ro+=usb_sm.o
 board-ro+=usb_tc_snk_sm.o
 
 all_deps=$(patsubst ro,,$(def_all_deps))
+
+# Utilities
+host-util-bin-y=stm32mon
