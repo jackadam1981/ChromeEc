@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a3d2b4_369137f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-12-30T09:22:22Z",
+      "side": 1,
+      "message": "\u003e Besides the other comments, below two pins are also at 1.8V level but not defined in current gpio.inc\n\u003e USB_C0_MUX_INT_L_D pin(G, 3)\nThis pin is okay with the current setting (output low).\nBecause this pin\u0027s power rail is VFSPI and it is connected to 1.8V.\n\n\u003e EC_FLASH_WP pin(I, 4)\n\u003e \nDone. signal name of this pin is WP in gpio.inc.\n\n\u003e OTOH, does EC have internal pullup enabled on KSO15, which is currently just a testpoint on PCB.\nYes.",
+      "parentUuid": "97344cb7_b0f599d3",
+      "revId": "b46092e41198a549764ff7ecf684e40f17db30f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65ec82bf_8522f486",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-12-30T03:42:49Z",
       "side": 1,
       "message": "This pin is also at 1.8V level (ext. pullup to pp1800_vio18_u).",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 53
+      },
+      "revId": "b46092e41198a549764ff7ecf684e40f17db30f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ecb9588_6e1ec74d",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-12-30T09:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65ec82bf_8522f486",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b06d197_1dbaf073",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-12-30T09:22:22Z",
+      "side": 1,
+      "message": "Yes.\nI still added 1.8v flag for them to remind us they are 1.8v signals.",
+      "parentUuid": "9f6478f8_7d5a4775",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 68
+      },
+      "revId": "b46092e41198a549764ff7ecf684e40f17db30f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bdf62d6_983b7949",
         "filename": "board/asurada/gpio.inc",
         "patchSetId": 1
@@ -94,6 +160,30 @@
       "writtenOn": "2020-12-30T03:42:49Z",
       "side": 1,
       "message": "Same with GPD2 and GPD4.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 68
+      },
+      "revId": "b46092e41198a549764ff7ecf684e40f17db30f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7069a3_129c4ffb",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-12-30T09:22:22Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "4bdf62d6_983b7949",
       "range": {
         "startLine": 145,
         "startChar": 0,
