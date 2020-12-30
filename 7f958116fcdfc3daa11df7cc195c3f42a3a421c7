@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0d1941_fc16bca5",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-30T18:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a19df5c_7c1f9990",
+      "range": {
+        "startLine": 34,
+        "startChar": 27,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "7f958116fcdfc3daa11df7cc195c3f42a3a421c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82bd125d_bd5773a2",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-30T16:57:20Z",
       "side": 1,
       "message": "insert:\n\"and monitoring power good indicators in a sequence...\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 48,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "7f958116fcdfc3daa11df7cc195c3f42a3a421c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9748725c_cb6421b9",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-12-30T18:11:25Z",
+      "side": 1,
+      "message": "I rewrote it a bit to read better with this added",
+      "parentUuid": "82bd125d_bd5773a2",
       "range": {
         "startLine": 35,
         "startChar": 48,
