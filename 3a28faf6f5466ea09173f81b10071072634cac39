@@ -34,6 +34,24 @@
       "parentUuid": "41b234ab_4d941798",
       "revId": "3a28faf6f5466ea09173f81b10071072634cac39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ae7e65_c8a6e02b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-30T22:58:10Z",
+      "side": 1,
+      "message": "Sorry about that. I found a more elegant way to achieve the same function.\n\nIs it okay to reduce the build for iteflash to only boards that have an ITE chip?",
+      "parentUuid": "a96362e4_198cba0f",
+      "revId": "3a28faf6f5466ea09173f81b10071072634cac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
