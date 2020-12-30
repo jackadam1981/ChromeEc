@@ -10,11 +10,15 @@
 FLATSIZE_FILE ?= .sizes.txt
 BUILD_DIR := $(firstword $(subst /, ,$(out)))
 
-build-utils := $(foreach u,$(build-util-bin),$(out)/util/$(u))
-host-utils := $(foreach u,$(host-util-bin),$(out)/util/$(u))
-build-art := $(foreach u,$(build-util-art),$(out)/$(u))
-build-srcs := $(foreach u,$(build-util-bin),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
-host-srcs := $(foreach u,$(host-util-bin),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
+# Build is the system doing the build (e.g. 64-bit linux) and host is the
+# target platform on top of the ec (e.g. 32-bit Chromium OS).
+# The word "art" might stand for "artifacts".
+# See commit bc4c1b4.
+build-utils := $(call objs_from_dir,$(out)/util,build-util-bin-y)
+host-utils := $(call objs_from_dir,$(out)/util,host-util-bin-y)
+build-art := $(call objs_from_dir,$(out),build-util-art-y)
+build-srcs := $(foreach u,$(build-util-bin-y),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
+host-srcs := $(foreach u,$(host-util-bin-y),$(sort $($(u)-objs:%.o=util/%.c) $(wildcard util/$(u).c)))
 
 # Don't do a build test on the following boards:
 skip_boards = OWNERS cr50 host
