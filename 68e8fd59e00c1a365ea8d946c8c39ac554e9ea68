@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac20488_9cdd3364",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T16:50:34Z",
+      "side": 1,
+      "message": "\"When the application processor (AP) is off (S5 or G3 states), this task triggers a power up sequence on a power button press.   When the AP is on (S3 or above state) x86 machines normally reset when the power button is held for 4 seconds but this tasks adjusts that to 8 seconds, to allow time for the usual Chrome OS shutdown sequence.\"",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "68e8fd59e00c1a365ea8d946c8c39ac554e9ea68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
