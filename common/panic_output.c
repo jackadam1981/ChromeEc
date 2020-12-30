@@ -405,3 +405,30 @@ enum ec_status host_command_panic_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GET_PANIC_INFO,
 		     host_command_panic_info,
 		     EC_VER_MASK(0));
+
+static int command_testdiv(int argc, char **argv)
+{
+	const int maxc = 1000;
+	volatile int count = maxc;
+	int maxn = 500;
+	const int base = 1 << 16;
+	volatile int val = -1;
+	uint64_t start, delta;
+
+	start = get_time().val;
+	while (count--) {
+		volatile int i;
+		val = 1;
+		for (i = 1; i < maxn; i++) {
+			val = 1 + (base / val);
+		}
+	}
+	delta = get_time().val - start;
+
+	ccprintf("%d iterations (%d) in %llu us", maxc, maxn, delta);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(testdiv, command_testdiv,
+			NULL,
+			"Test division");
