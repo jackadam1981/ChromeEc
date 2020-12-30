@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cefdad79_e77e06d8",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T16:35:46Z",
+      "side": 1,
+      "message": "Long term, do you think it\u0027s possible for the tasks to automatically get enabled (maybe via select) when the corresponding CONFIG option is enabled?\ne.g. PLATFORM_EC_KEYBOARD selects HAS_TASK_KEYPROTO\n\nI suppose we could also accomplish some checking with the depends keyword.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 55
+      },
+      "revId": "6756f0aa95068a3f453354df8454efde92cbc85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
