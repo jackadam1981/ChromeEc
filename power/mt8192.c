@@ -258,8 +258,10 @@ enum power_state power_handle_state(enum power_state state)
 		/* Forcing shutdown */
 
 		/* Long press has worked, transition to G3. */
-		if (!(power_get_signals() & IN_PGOOD_PMIC))
+		if (!(power_get_signals() & IN_PGOOD_PMIC)) {
+			CPRINTS("\x1b[1;33mLong press has worked, transition to G3\x1b[m");
 			return POWER_S5G3;
+		}
 
 		/*
 		 * Try to force PMIC shutdown with a long press. This takes 8s,
@@ -405,7 +407,6 @@ enum power_state power_handle_state(enum power_state state)
 		 * Assert SYS_RST_ODL, and waits for AP finishing epilogue and
 		 * asserting WDT.
 		 */
-		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
 		if (EC_ERROR_TIMEOUT ==
 		    power_wait_signals_timeout(IN_AP_WDT_ASSERTED,
 					       AP_EC_WDT_TIMEOUT)) {
@@ -422,8 +423,10 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S5G3:
 		/* Release the power button, in case it was long pressed. */
-		if (forcing_shutdown)
+		if (forcing_shutdown) {
 			GPIO_SET_LEVEL(GPIO_EC_PMIC_EN_ODL, 1);
+			GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
+		}
 
 		/* If PMIC is not off, go back to S5 and try again. */
 		if (power_get_signals() & IN_PGOOD_PMIC)
