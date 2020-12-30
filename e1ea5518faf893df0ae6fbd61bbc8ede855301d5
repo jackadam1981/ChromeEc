@@ -139,6 +139,24 @@
       "parentUuid": "dec91098_38498ac3",
       "revId": "e1ea5518faf893df0ae6fbd61bbc8ede855301d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f245a13_44904840",
+        "filename": "project.config",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-30T18:57:41Z",
+      "side": 1,
+      "message": "That agrees with my understanding.\n\nYeah, I\u0027m not totally convinced that we need this link anymore + it makes the Gitiles page look worse (https://chromium.googlesource.com/chromiumos/platform/ec).\n\nI removed it.\n\n@Aseda, what do you think about this?",
+      "parentUuid": "9933492d_902c5c64",
+      "revId": "e1ea5518faf893df0ae6fbd61bbc8ede855301d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
