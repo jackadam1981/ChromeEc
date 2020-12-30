@@ -13,3 +13,6 @@ CHIP_VARIANT:=stm32f09x
 BASEBOARD:=kukui
 
 board-y=board.o led.o
+
+# Utilities
+host-util-bin-y=stm32mon

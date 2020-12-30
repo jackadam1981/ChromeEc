@@ -7,7 +7,7 @@
 #
 
 # See Makefile.rules for description.
-host-util-bin-y += ectool lbplay stm32mon ec_sb_firmware_update lbcc \
+host-util-bin-y += ectool lbplay ec_sb_firmware_update lbcc \
 	ec_parse_panicinfo cbi-util iteflash
 build-util-art-y += util/export_taskinfo.so
 ifeq ($(CHIP),npcx)
