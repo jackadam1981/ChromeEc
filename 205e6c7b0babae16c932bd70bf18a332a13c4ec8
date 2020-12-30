@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb6fb71a_3e2a169f",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-30T06:15:37Z",
+      "side": 1,
+      "message": "If tpm_objs isn\u0027t an actual file, I didn\u0027t think this would work, since a file that doesn\u0027t exist needs remaking (effectively always PHONY).\n\nAlso, I think the behavior would also be slightly off if tpm_objs was a directory.\n\nIs tpm_objs an actual file?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 8
+      },
+      "revId": "205e6c7b0babae16c932bd70bf18a332a13c4ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aae003a_c396f24a",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-12-30T06:15:37Z",
+      "side": 1,
+      "message": "Looks correct.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 0
+      },
+      "revId": "205e6c7b0babae16c932bd70bf18a332a13c4ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
