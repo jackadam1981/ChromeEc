@@ -136,6 +136,7 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
+#include "usbc_config.h"
 
 enum battery_type {
 	BATTERY_AEC,
@@ -157,13 +158,6 @@ enum sensor_id {
 	CLEAR_ALS,
 	RGB_ALS,
 	SENSOR_COUNT,
-};
-
-enum usbc_port {
-	USBC_PORT_C0 = 0,
-	USBC_PORT_C1,
-	USBC_PORT_C2,
-	USBC_PORT_COUNT
 };
 
 /* Definition for Halvor USB PD interrupt handlers. */
