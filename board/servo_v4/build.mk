@@ -17,3 +17,6 @@ board-y=board.o
 board-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o
 
 all_deps=$(patsubst ro,,$(def_all_deps))
+
+# Utilities
+host-util-bin-y=stm32mon

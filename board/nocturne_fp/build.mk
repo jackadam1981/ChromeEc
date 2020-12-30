@@ -12,6 +12,9 @@ CHIP_VARIANT:=stm32h7x3
 board-rw=ro_workarounds.o
 board-y=board.o fpsensor_detect.o
 
+# Utilities
+host-util-bin-y = stm32mon
+
 # Do not build rsa test because this board uses RSA exponent 3 and the rsa test
 # will fail on device.
 test-list-y=\

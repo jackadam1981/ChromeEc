@@ -14,3 +14,6 @@ board-y=board.o vpd_api.o
 #
 # This target builds RW only.  Therefore, remove RO from dependencies.
 all_deps=$(patsubst ro,,$(def_all_deps))
+
+# Utilities
+host-util-bin-y = stm32mon
