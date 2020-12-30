@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "42816f36_996a9f77",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-30T17:37:44Z",
+      "side": 1,
+      "message": "ah, you are right! I do see it invoking the tpm2 make even when there is nothing to rebuild, but not always, just once after unrelated changes, and then the output stays as described, no external make invocations.\n\nThis will require a bit more tweaking of the tpm2 makefile, stat tuned.",
+      "parentUuid": "bb6fb71a_3e2a169f",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 8
+      },
+      "revId": "205e6c7b0babae16c932bd70bf18a332a13c4ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7aae003a_c396f24a",
