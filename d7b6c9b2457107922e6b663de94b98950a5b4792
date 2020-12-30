@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e695d91d_f8344317",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-30T12:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cec69cb_508feb0f",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "d7b6c9b2457107922e6b663de94b98950a5b4792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ed0ac0a_eeb2df85",
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8538bd0_c31967a8",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-30T12:03:05Z",
+      "side": 1,
+      "message": "This is using for the new host command zephyr API when developing the host command API. Did you prefer to remove this?",
+      "parentUuid": "7ed0ac0a_eeb2df85",
+      "revId": "d7b6c9b2457107922e6b663de94b98950a5b4792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14dfde46_fa15f844",
         "filename": "zephyr/shim/src/espi.c",
         "patchSetId": 3
@@ -71,6 +113,24 @@
       "writtenOn": "2020-12-29T19:16:55Z",
       "side": 1,
       "message": "Can you make 65 a constant at the top of the file (#define SOME_NAME_HERE_US  65), along with why you need it and how come it is 65us?",
+      "revId": "d7b6c9b2457107922e6b663de94b98950a5b4792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5fb7469_cabf13a5",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2020-12-30T12:03:05Z",
+      "side": 1,
+      "message": "This is originally from the LPC SMI sample rate(physical I/O pin). If the x86 is in S3, SMI# is sampled at 32.768KHz, so we need pulse length \u003e 61us. And the eSPI SMI/SCI pulse continues using this delay. If the value would like to change, it should guarantee could get the SMI/SCI pulse.",
+      "parentUuid": "14dfde46_fa15f844",
       "revId": "d7b6c9b2457107922e6b663de94b98950a5b4792",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
