@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7dfe42d_517f3039",
+        "filename": "power/mt8192.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-12-30T09:52:07Z",
+      "side": 1,
+      "message": "I think the reset reason has been logged here. You can get it by ectool uptimeinfo.",
+      "revId": "2a08d2d9e4c36109d34d4c24b00d352044016c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b068e0e3_2e1b4a5c",
         "filename": "power/mt8192.c",
         "patchSetId": 1
