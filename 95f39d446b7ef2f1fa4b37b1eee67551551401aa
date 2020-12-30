@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062f6cf1_ee4f4575",
+        "filename": "test/usb_tcpmv2_td_pd_src_e1.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-12-30T19:02:34Z",
+      "side": 1,
+      "message": "Add a comment that the full PROC.PD.E1 sequence automatically sends the source caps, so only the INITIAL_ATTACH is used and the source cap is checked below.",
+      "range": {
+        "startLine": 30,
+        "startChar": 33,
+        "endLine": 30,
+        "endChar": 47
+      },
+      "revId": "95f39d446b7ef2f1fa4b37b1eee67551551401aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
