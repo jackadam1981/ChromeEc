@@ -16,6 +16,24 @@
       "message": "Matthew and Namyoon, are these the only boards that need to have the iteflash util?",
       "revId": "3a28faf6f5466ea09173f81b10071072634cac39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a96362e4_198cba0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-12-30T20:18:41Z",
+      "side": 1,
+      "message": "Looks like the per-board updates got reverted and this CL is WiP now.  Just mark as non-WiP and update attention set when we should take a look.",
+      "parentUuid": "41b234ab_4d941798",
+      "revId": "3a28faf6f5466ea09173f81b10071072634cac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
