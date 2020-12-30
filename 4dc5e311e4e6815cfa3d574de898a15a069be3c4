@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0f90fe_98839d77",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-12-30T21:19:44Z",
+      "side": 1,
+      "message": "Forgot the CRC byte. Changed back to TEST_EQ",
+      "parentUuid": "6a913977_0d930c9b",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "4dc5e311e4e6815cfa3d574de898a15a069be3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4712ccee_7f23823c",
