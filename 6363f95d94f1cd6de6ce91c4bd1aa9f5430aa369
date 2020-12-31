@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dabf596d_d01afbe0",
+        "filename": "third_party/bmp280/LICENSE",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-31T00:32:54Z",
+      "side": 1,
+      "message": "Yeah, I hesitated refreshing the LICENSE to the latest version on github, but wasn\u0027t 100% sure if that\u0027s ok (it should be...), so I used the license as provided in the source code at import time:\nhttps://github.com/BoschSensortec/BMP280_driver/blob/682a07ddd3fcc4ff06a090ae23d45ab89d5fbf0c/bmp280.c",
+      "parentUuid": "1594bd01_0110c51b",
+      "revId": "6363f95d94f1cd6de6ce91c4bd1aa9f5430aa369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a503cd97_14be83df",
         "filename": "third_party/bmp280/LICENSE",
         "patchSetId": 1
