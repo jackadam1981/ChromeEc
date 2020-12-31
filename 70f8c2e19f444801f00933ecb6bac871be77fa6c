@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68d3d7b3_a4f46981",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2020-12-31T11:04:35Z",
+      "side": 1,
+      "message": "If I\u0027m not mistaken, both EVT and Proto versions have ID 0 and we cannot distinguish between them. Only DVT will have updated value here, right?",
+      "revId": "70f8c2e19f444801f00933ecb6bac871be77fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e060119_152e8a27",
         "filename": "board/servo_v4p1/usb_pd_policy.c",
         "patchSetId": 9
