@@ -16,6 +16,23 @@
       "message": "This patch fixes infamous issue with ANX7447 (TCPC have to go to LPM when DRP is enabled) in TCPMv2. It turned out that PD_LPM_DEBOUNCE_US delay is too high to put ANX7447 into LPM. I was not able to find reason why it was increased to 100 ms, so I prepared this patch which decreases it to 35 ms.\n\nIf there is some important reason to keep this at 100 ms, we will discuss the best solution for this issue.",
       "revId": "9054e7d4256d888526e1734cd6faa79d7a8d062a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "648efb81_bbde449b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-12-31T11:02:33Z",
+      "side": 1,
+      "message": "I don\u0027t remember any good reason for making this 100 ms in TCPMv2, and I think 10 ms worked ok in TCPMv1, so I suggest decreasing TCPMv2 to 10 ms for consistency.",
+      "revId": "9054e7d4256d888526e1734cd6faa79d7a8d062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
