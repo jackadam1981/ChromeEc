@@ -410,6 +410,14 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	}
 };
 
+void board_usb_mux_init(void)
+{
+	nb7v904m_tune_usb_eq_rx(&usbc1_retimer,
+				NB7V904M_CH_A_EQ_10_DB,
+				NB7V904M_CH_D_EQ_10_DB);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_usb_mux_init, HOOK_PRIO_DEFAULT);
+
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
