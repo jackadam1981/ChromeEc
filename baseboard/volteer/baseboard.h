@@ -9,6 +9,7 @@
 #define __CROS_EC_BASEBOARD_H
 
 #include <stdbool.h>
+#include "bb_common.h"
 
 /*
  * By default, enable all console messages excepted HC
@@ -266,8 +267,6 @@ enum temp_sensor_id {
 void ppc_interrupt(enum gpio_signal signal);
 void tcpc_alert_event(enum gpio_signal signal);
 void bc12_interrupt(enum gpio_signal signal);
-
-unsigned char get_board_id(void);
 
 /**
  * Configure run-time data structures and operation based on CBI data. This

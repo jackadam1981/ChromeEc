@@ -86,26 +86,6 @@ config PLATFORM_EC_USB_PID
 	  To reserve a new PID within Google, use go/usb and see
 	  http://google3/hardware/standards/usb
 
-config PLATFORM_EC_USBC_SS_MUX
-	bool "SuperSpeed mux"
-	default y
-	help
-	  Enable this to support the USB Type-C SuperSpeed Mux. If enabled,
-	  the USB stack will call usb_mux_set() to change the mux settings.
-	  The board must provide a driver in usb_muxes[] for each port so
-	  that this can work.
-
-	  /* 'Virtual' USB mux under host (not EC) control */
-
-config PLATFORM_EC_USB_MUX_VIRTUAL
-	bool "USB Mux is virtual"
-	depends on PLATFORM_EC_USBC_SS_MUX
-	help
-	  Enable this if a virtual USB mux is supported on the EC, which is
-	  actually handled by the AP. In this case the AP gets an interrupt
-	  and is is informed when status changes, via the
-	  EC_CMD_USB_PD_MUX_INFO host command.
-
 config PLATFORM_EC_USBC_RETIMER_INTEL_BB
 	bool "Support Intel Burnside Bridge retimer"
 	help
@@ -630,6 +610,24 @@ config PLATFORM_EC_USB_MUX_RUNTIME_CONFIG
 	  the configuration, such as Chromium OS Board Info (CBI set in the
 	  factory. Without this, multiple EC images would need to be installed
 	  depending on the board.
+
+config PLATFORM_EC_USBC_SS_MUX
+	bool "SuperSpeed mux"
+	default y
+	help
+	  Enable this to support the USB Type-C SuperSpeed Mux. If enabled,
+	  the USB stack will call usb_mux_set() to change the mux settings.
+	  The board must provide a driver in usb_muxes[] for each port so
+	  that this can work.
+
+config PLATFORM_EC_USB_MUX_VIRTUAL
+	bool "USB Mux is virtual"
+	depends on PLATFORM_EC_USBC_SS_MUX
+	help
+	  Enable this if a virtual USB mux is supported on the EC, which is
+	  actually handled by the AP. In this case the AP gets an interrupt
+	  and is is informed when status changes, via the
+	  EC_CMD_USB_PD_MUX_INFO host command.
 
 endif  # PLATFORM_EC_USB_MUX
 
