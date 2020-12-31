@@ -971,6 +971,10 @@ void before_test(void)
 	memset(&test_control, 0, sizeof(struct control));
 }
 
+void tc_task_wake(int port)
+{
+}
+
 int test_task(void *u)
 {
 	int port = PORT0;

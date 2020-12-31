@@ -554,7 +554,7 @@ void pd_request_source_voltage(int port, int mv)
 		else
 			pd_dpm_request(port, DPM_REQUEST_PR_SWAP);
 
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		tc_task_wake(port);
 	}
 }
 
@@ -567,7 +567,7 @@ void pd_set_external_voltage_limit(int port, int mv)
 		if (get_state_tc(port) == TC_ATTACHED_SNK)
 			pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
 
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		tc_task_wake(port);
 	}
 }
 
@@ -724,7 +724,7 @@ void pd_request_data_swap(int port)
 	 */
 	if (IS_ATTACHED_SRC(port) || IS_ATTACHED_SNK(port)) {
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_DR_SWAP);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		tc_task_wake(port);
 	}
 }
 
@@ -861,7 +861,7 @@ void tc_prs_src_snk_assert_rd(int port)
 		 * DebugAccessory.SNK assert Rd
 		 */
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_PR_SWAP);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		tc_task_wake(port);
 	}
 }
 
@@ -877,7 +877,7 @@ void tc_prs_snk_src_assert_rp(int port)
 		 * UnorientedDebugAccessory.SRC to assert Rp
 		 */
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_PR_SWAP);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		tc_task_wake(port);
 	}
 }
 
@@ -898,7 +898,7 @@ void tc_prs_snk_src_assert_rp(int port)
 void tc_hard_reset_request(int port)
 {
 	TC_SET_FLAG(port, TC_FLAGS_HARD_RESET_REQUESTED);
-	task_wake(PD_PORT_TO_TASK_ID(port));
+	tc_task_wake(port);
 }
 
 void tc_disc_ident_in_progress(int port)
@@ -1017,7 +1017,7 @@ void pd_set_suspend(int port, int suspend)
 		if (PD_PORT_TO_TASK_ID(port) == task_get_current())
 			return;
 
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		tc_task_wake(port);
 
 		/* Sleep this task if we are not suspended */
 		while (pd_is_port_enabled(port)) {
@@ -1030,7 +1030,7 @@ void pd_set_suspend(int port, int suspend)
 		}
 	} else {
 		TC_CLR_FLAG(port, TC_FLAGS_SUSPEND);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		tc_task_wake(port);
 	}
 }
 
@@ -1771,7 +1771,7 @@ void pd_request_vconn_swap_off(int port)
 	if (get_state_tc(port) == TC_ATTACHED_SRC ||
 			get_state_tc(port) == TC_ATTACHED_SNK) {
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_VC_SWAP_OFF);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		tc_task_wake(port);
 	}
 }
 
@@ -1780,7 +1780,7 @@ void pd_request_vconn_swap_on(int port)
 	if (get_state_tc(port) == TC_ATTACHED_SRC ||
 			get_state_tc(port) == TC_ATTACHED_SNK) {
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_VC_SWAP_ON);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		tc_task_wake(port);
 	}
 }
 
