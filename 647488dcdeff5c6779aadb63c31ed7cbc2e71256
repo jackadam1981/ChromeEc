@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0f3b30_ad764745",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-12-31T08:29:49Z",
+      "side": 1,
+      "message": "A big chunk of battery gauges supports SMBUS, which is limited at 100kHz speed per spec.",
+      "range": {
+        "startLine": 236,
+        "startChar": 31,
+        "endLine": 236,
+        "endChar": 34
+      },
+      "revId": "647488dcdeff5c6779aadb63c31ed7cbc2e71256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
