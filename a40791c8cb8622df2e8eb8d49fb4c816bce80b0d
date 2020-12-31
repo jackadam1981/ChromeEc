@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d2038b3_ac126ff5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-12-31T12:01:31Z",
+      "side": 1,
+      "message": "Hi Sam, this is my thought for b/155517411 #33 \"3) We could replace some task_wake calls for PD task with a way to ask the state machines if they have more work to do, and use that in pd_task_loop to choose 0 or 5ms wait.\"",
+      "revId": "a40791c8cb8622df2e8eb8d49fb4c816bce80b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
