@@ -12,7 +12,6 @@
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi260.h"
 #include "driver/als_tcs3400.h"
-#include "driver/bc12/pi3usb9201.h"
 #include "driver/sync.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "extpower.h"
@@ -20,7 +19,6 @@
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -58,14 +56,6 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
-/******************************************************************************/
-/*
- * FW_CONFIG defaults for Volteer if the CBI data is not initialized.
- */
-union volteer_cbi_fw_config fw_config_defaults = {
-	.usb_db = DB_USB4_GEN2,
-};
-
 static void board_init(void)
 {
 	/* Illuminate motherboard and daughter board LEDs equally to start. */
@@ -73,47 +63,6 @@ static void board_init(void)
 	pwm_set_duty(PWM_CH_LED4_SIDESEL, 50);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
-__override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
-{
-	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
-
-	if (port == USBC_PORT_C1) {
-		if (usb_db == DB_USB4_GEN2) {
-			/*
-			 * Older boards violate 205mm trace length prior
-			 * to connection to the re-timer and only support up
-			 * to GEN2 speeds.
-			 */
-			return TBT_SS_U32_GEN1_GEN2;
-		} else if (usb_db == DB_USB4_GEN3) {
-			return TBT_SS_TBT_GEN3;
-		}
-	}
-
-	/*
-	 * Thunderbolt-compatible mode not supported
-	 *
-	 * TODO (b/147726366): All the USB-C ports need to support same speed.
-	 * Need to fix once USB-C feature set is known for Volteer.
-	 */
-	return TBT_SS_RES_0;
-}
-
-__override bool board_is_tbt_usb4_port(int port)
-{
-	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
-
-	/*
-	 * Volteer reference design only supports TBT & USB4 on port 1
-	 * if the USB4 DB is present.
-	 *
-	 * TODO (b/147732807): All the USB-C ports need to support same
-	 * features. Need to fix once USB-C feature set is known for Volteer.
-	 */
-	return ((port == USBC_PORT_C1)
-		&& ((usb_db == DB_USB4_GEN2) || (usb_db == DB_USB4_GEN3)));
-}
 
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
@@ -302,104 +251,3 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
-
-static void ps8815_reset(void)
-{
-	int val;
-
-	gpio_set_level(GPIO_USB_C1_RT_RST_ODL, 0);
-	msleep(GENERIC_MAX(PS8XXX_RESET_DELAY_MS,
-			   PS8815_PWR_H_RST_H_DELAY_MS));
-	gpio_set_level(GPIO_USB_C1_RT_RST_ODL, 1);
-	msleep(PS8815_FW_INIT_DELAY_MS);
-
-	/*
-	 * b/144397088
-	 * ps8815 firmware 0x01 needs special configuration
-	 */
-
-	CPRINTS("%s: patching ps8815 registers", __func__);
-
-	if (i2c_read8(I2C_PORT_USB_C1,
-		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
-		CPRINTS("ps8815: reg 0x0f was %02x", val);
-
-	if (i2c_write8(I2C_PORT_USB_C1,
-		       PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, 0x31) == EC_SUCCESS)
-		CPRINTS("ps8815: reg 0x0f set to 0x31");
-
-	if (i2c_read8(I2C_PORT_USB_C1,
-		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
-		CPRINTS("ps8815: reg 0x0f now %02x", val);
-}
-
-void board_reset_pd_mcu(void)
-{
-	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
-
-	/* No reset available for TCPC on port 0 */
-	/* Daughterboard specific reset for port 1 */
-	if (usb_db == DB_USB3_ACTIVE) {
-		ps8815_reset();
-		usb_mux_hpd_update(USBC_PORT_C1, 0, 0);
-	}
-}
-
-__override void board_cbi_init(void)
-{
-	config_usb3_db_type();
-	if ((!IS_ENABLED(TEST_BUILD) && !ec_cfg_has_numeric_pad()) ||
-	    get_board_id() <= 2)
-		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
-}
-
-/******************************************************************************/
-/* BC1.2 charger detect configuration */
-const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
-	[USBC_PORT_C0] = {
-		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-	},
-	[USBC_PORT_C1] = {
-		.i2c_port = I2C_PORT_USB_C1,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
-
-static void board_tcpc_init(void)
-{
-	/* Don't reset TCPCs after initial reset */
-	if (!system_jumped_late())
-		board_reset_pd_mcu();
-
-	/* Enable PPC interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
-
-	/* Enable TCPC interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
-
-	/* Enable BC1.2 interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
-}
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
-
-/******************************************************************************/
-/* TCPC support routines */
-uint16_t tcpc_get_alert_status(void)
-{
-	uint16_t status = 0;
-
-	/*
-	 * Check which port has the ALERT line set
-	 */
-	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL))
-		status |= PD_STATUS_TCPC_ALERT_0;
-	if (!gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL))
-		status |= PD_STATUS_TCPC_ALERT_1;
-
-	return status;
-}
