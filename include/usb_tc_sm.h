@@ -332,6 +332,13 @@ void tc_start_event_loop(int port);
 void tc_pause_event_loop(int port);
 
 /**
+ * Indicates there is more work to do for the PD task
+ *
+ * @param port USB-C port number
+ */
+void tc_task_wake(int port);
+
+/**
  * Allow system to override the control of TrySrc
  *
  * @param en	TRY_SRC_OVERRIDE_OFF - Force TrySrc OFF

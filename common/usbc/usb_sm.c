@@ -9,6 +9,7 @@
 #include "task.h"
 #include "usb_pd.h"
 #include "usb_sm.h"
+#include "usb_tc_sm.h"
 #include "util.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -166,8 +167,7 @@ void set_state(const int port, struct sm_ctx *const ctx,
 	 * next state's run method as soon as we can to ensure that we don't
 	 * delay important processing until the next task interval.
 	 */
-	if (IS_ENABLED(HAS_TASK_PD_C0))
-		task_wake(PD_PORT_TO_TASK_ID(port));
+	tc_task_wake(port);
 }
 
 /*

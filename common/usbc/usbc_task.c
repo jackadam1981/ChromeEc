@@ -38,6 +38,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 static uint8_t paused[CONFIG_USB_PD_PORT_MAX_COUNT];
+static uint8_t wake[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 void tc_pause_event_loop(int port)
 {
@@ -54,6 +55,15 @@ void tc_start_event_loop(int port)
 		paused[port] = 0;
 		task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE);
 	}
+}
+
+void tc_task_wake(int port)
+{
+	/* Avoid overhead of task re-scheduling when called from PD task. */
+	if (port == TASK_ID_TO_PD_PORT(task_get_current()))
+		wake[port] = 1;
+	else
+		task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
 static void pd_task_init(int port)
@@ -75,9 +85,13 @@ static void pd_task_init(int port)
 
 static bool pd_task_loop(int port)
 {
+	uint32_t evt = 0;
+
 	/* wait for next event/packet or timeout expiration */
-	const uint32_t evt =
-		task_wait_event(paused[port]
+	if (wake[port])
+		wake[port] = 0;
+	else
+		evt = task_wait_event(paused[port]
 					? -1
 					: USBC_EVENT_TIMEOUT);
 
