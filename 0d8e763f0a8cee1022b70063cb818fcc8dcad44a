@@ -16,6 +16,24 @@
       "message": "Should this just be EC_MKBP_EVENT_DP_ALT_MODE_ENTERED?\nI think that is the only thing we want to produce a wake event for.\nWe aren\u0027t using MKBP events for key matrix or fingerprint.\nSensor events I don\u0027t think need to produce wake event (I\u0027m not aware of any previous issue using CONFIG_MKBP_USE_GPIO for sensors).",
       "revId": "0d8e763f0a8cee1022b70063cb818fcc8dcad44a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ff8adb_925bfb73",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-12-31T00:46:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b0ca702_fdefc00d",
+      "revId": "0d8e763f0a8cee1022b70063cb818fcc8dcad44a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
