@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9055ae0_7e3417c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-31T05:28:47Z",
+      "side": 1,
+      "message": "I explained it in the TPM2 patch review.",
+      "parentUuid": "b8e569c4_58b542e6",
+      "revId": "385ede4fb13d450bc6afe13266501dddf5735418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "caada75e_0fe89ffa",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-12-31T04:53:52Z",
       "side": 1,
       "message": "No --no-print-directory, like the tpm2 case?",
+      "range": {
+        "startLine": 260,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 0
+      },
+      "revId": "385ede4fb13d450bc6afe13266501dddf5735418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89750709_4fd73e67",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-31T05:28:47Z",
+      "side": 1,
+      "message": "I actually don\u0027t mind it showing that it it moved to cryptoc. Had to add it for the tpm2 library case to avoid this text printed when make is invoked to report the set of object files to link.",
+      "parentUuid": "caada75e_0fe89ffa",
       "range": {
         "startLine": 260,
         "startChar": 16,
