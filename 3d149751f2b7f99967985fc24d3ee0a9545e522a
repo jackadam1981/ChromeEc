@@ -46,6 +46,30 @@
       },
       "revId": "3d149751f2b7f99967985fc24d3ee0a9545e522a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97ab9a2d_9cac4c17",
+        "filename": "third_party/bmp280/bmp280.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-12-31T00:37:03Z",
+      "side": 1,
+      "message": "This severely changed compared to the imported the code. These are extensive local modifications we did over the year (yes, I agree that the code is modified beyond recognition, but you can still see traces in places).\n\nIt\u0027s exactly the same code as what we currently use: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2606183/1/driver/baro_bmp280.c#b234\n(I know it\u0027s a pain to review...), so I don\u0027t think it\u0027s really necessary to test this.",
+      "parentUuid": "feee9d70_1b08e7dc",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "3d149751f2b7f99967985fc24d3ee0a9545e522a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
