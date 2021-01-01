@@ -43,6 +43,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae87974a_4490f38a",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-01T13:14:49Z",
+      "side": 1,
+      "message": "Here left shift is missing , please take care of adding them similar to below:\nKernel mux driver code refers bit 0 of control flag for the passive/active cable, similarly others also as per following bit0, 1,,2 3 comments. \n   * Bit 0: Active/Passive cable  * Bit 1: Optical/Non-optical cable\n   * Bit 2: Legacy Thunderbolt adapter  * Bit 3: Active Link Uni-Direction/Bi-Direction\n\ncontrol_flags |\u003d (get_lsrx_comm_capability(port) \u003d\u003d UNIDIR_LSRX_COMM) \u003c\u003c 3;\ncontrol_flags |\u003d (device_resp.tbt_adapter \u003d\u003d TBT_ADAPTER_TBT2_LEGACY) \u003c\u003c 2;\ncontrol_flags |\u003d (cable_resp.tbt_cable \u003d\u003d TBT_CABLE_OPTICAL) \u003c\u003c 1;\n\ncontrol_flags |\u003d cable_resp.tbt_active_passive \u003d\u003d TBT_CABLE_ACTIVE;\n\nProbably add macros for the left shifts and please use macros.\n\n\nIssue: Because of this bug, Mux is programmed link training as bi-directional where as retimer is programmed as uni-directional for MBR cables.",
+      "range": {
+        "startLine": 272,
+        "startChar": 15,
+        "endLine": 272,
+        "endChar": 16
+      },
+      "revId": "7875f2aa21f28a59ffd9d7769157e4d289bd01cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e4ec9ef_31743a0f",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-01T13:14:49Z",
+      "side": 1,
+      "message": "What is the use of this flag ? Kernel usb Mux driver is not referring this flag? is retimer configured with this flag ?",
+      "range": {
+        "startLine": 275,
+        "startChar": 49,
+        "endLine": 275,
+        "endChar": 65
+      },
+      "revId": "7875f2aa21f28a59ffd9d7769157e4d289bd01cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bce231d_744e1dcd",
         "filename": "common/usbc/usb_mode.c",
         "patchSetId": 1
