@@ -218,7 +218,7 @@ void usb_mux_set(int port, mux_state_t mux_mode,
 
 	if (enable_debug_prints)
 		CPRINTS(
-		     "usb/dp mux: port(%d) typec_mux(%d) usb2(%d) polarity(%d)",
+		     "usb2/dp mux: port(%d) typec_mux(%d) usb2(%d) polarity(%d)",
 		     port, mux_mode, usb_mode, polarity);
 
 	/*
