@@ -116,8 +116,12 @@ __overridable void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 		msleep(1);
 		gpio_set_level(control->retimer_rst_gpio, 1);
 
-		/* Allow 20ms time for the retimer to be initialized. */
-		msleep(20);
+		/*
+		When the Burnside Bridge NVM is shared between two retimers,
+		Port Controller should allow 40ms time for both to be initialized
+		before performing the configuration access to any one of them
+		*/
+		msleep(40);
 
 		mutex_unlock(&bb_nvm_mutex);
 	} else {
@@ -323,6 +327,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
+	int rv;
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
@@ -415,8 +420,12 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		retimer_set_state_ufp(mux_state, &set_retimer_con);
 
 	/* Writing the register4 */
-	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);
+	if (rv)
+		CPRINTS("BB retimer reg4 config fail");
+
+	return EC_SUCCESS;
 }
 
 static int retimer_low_power_mode(const struct usb_mux *me)
@@ -441,16 +450,20 @@ static int retimer_init(const struct usb_mux *me)
 
 	rv = bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
 	if (rv)
-		return rv;
-	if (data != BB_RETIMER_VENDOR_ID)
-		return EC_ERROR_UNKNOWN;
+		CPRINTS("C%d BB Retimer Vendor ID mismatch", me->usb_port);
+
+	/*
+	 * Allow the retimer to bring up internal power domain
+	 * to fully power up
+	 */
+	msleep(40);
 
 	rv = bb_retimer_read(me, BB_RETIMER_REG_DEVICE_ID, &data);
 	if (rv)
-		return rv;
+		CPRINTS("C%d BB Retimer Device ID mismatch", me->usb_port);
 
-	if (data != BB_RETIMER_DEVICE_ID)
-		return EC_ERROR_UNKNOWN;
+	/* Configure Retimer in Disconnect mode*/
+	rv = retimer_set_state(me, USB_PD_MUX_NONE);
 
 	return EC_SUCCESS;
 }
