@@ -242,16 +242,10 @@ mux_state_t usb_mux_get(int port)
 	/* Store the status of LPM flag (low power mode) */
 	is_low_power_mode = flags[port] & USB_MUX_FLAG_IN_LPM;
 
-	exit_low_power_mode(port);
+	if (is_low_power_mode)
+		return USB_PD_MUX_NONE;
 
 	rv = configure_mux(port, USB_MUX_GET_MODE, &mux_state);
-
-	/*
-	 * If the LPM flag was set prior to reading the mux state, re-enter the
-	 * low power mode.
-	 */
-	if (is_low_power_mode)
-		enter_low_power_mode(port);
 
 	return rv ? USB_PD_MUX_NONE : mux_state;
 }
