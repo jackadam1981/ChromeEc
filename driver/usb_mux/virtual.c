@@ -65,6 +65,7 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 
 static int virtual_init(const struct usb_mux *me)
 {
+	virtual_mux_update_state(me->usb_port, USB_PD_MUX_NONE);
 	return EC_SUCCESS;
 }
 
