@@ -16,6 +16,24 @@
       "message": "Why remove PWM_CONFIG_DSLEEP?",
       "revId": "d3895f56e7e5a7a23e8a2f51fc2ae2a6c0f1af51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ac5e4a_7954d8fc",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2021-01-02T09:14:51Z",
+      "side": 1,
+      "message": "Because use internal 32K(32768) as PWM clock source, but maximum resolution(pwm_res[ch]) for the freq be calculated as 2. So there is no enough resolution to distinguish duty range.\n\n\n32K PWM clock source and device is 15K frequency, the real output PWM duty only can switch 0%/67%/100%, the duty cycle algorithm is:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/factory-zork-13427.B-master/chip/npcx/pwm.c#73\n\n-clock\u003d32768\n-pre\u003d1\n-pwm_res[ch]\u003d2\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/factory-zork-13427.B-master/chip/npcx/pwm.c#145\n\nectool set pwmetkblight 0\n-pwm3, set duty\u003d0\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d0\n-pwm_res[ch]\u003d2\n-sd\u003d0\n\nectool set pwmetkblight 10\n-pwm3, set duty\u003d6553\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d6553\n-pwm_res[ch]\u003d2\n-sd[ch]\u003d0\n\nectool set pwmetkblight 20\n-pwm3, set duty\u003d13107\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d13107\n-pwm_res[ch]\u003d2\n-sd[ch]\u003d0\n\nectool set pwmetkblight 40\n-pwm3, set duty\u003d26214\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d26214\n-pwm_res[ch]\u003d2\n-sd[ch]\u003d1\n\nectool set pwmetkblight 80\n-pwm3, set duty\u003d52428\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d52428\n-pwm_res[ch]\u003d2\n-sd[ch]\u003d2\n\nectool set pwmetkblight 100\n-pwm3, set duty\u003d65535\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d65535\n-pwm_res[ch]\u003d2\n-sd[ch]\u003d2\n\nWhen disable PWM_CONFIG_DSLEEP, can get current APB2 clock freq is 15MHz,so the maximum resolution for freq can be calculated as 1000, there is enough resolution to distinguish duty range.\n\n15MHz PWM clock source and device is 15K frequency.\n\n-clock\u003d15000000\n-pre\u003d1%\n-pwm_res[ch]\u003d1000%\n\nectool set pwmetkblight 0\n-pwm3, set duty\u003d0\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d0\n-pwm_res[ch]\u003d1000\n-sd\u003d0\n\nectool set pwmetkblight 10\n-pwm3, set duty\u003d6553\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d6553\n-pwm_res[ch]\u003d1000\n-sd[ch]\u003d100\n\nectool set pwmetkblight 20\n-pwm3, set duty\u003d13107\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d13107\n-pwm_res[ch]\u003d1000\n-sd[ch]\u003d200\n\nectool set pwmetkblight 40\n-pwm3, set duty\u003d26214\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d26214\n-pwm_res[ch]\u003d1000\n-sd[ch]\u003d400\n\nectool set pwmetkblight 80\n-pwm3, set duty\u003d52428\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d52428\n-pwm_res[ch]\u003d1000\n-sd[ch]\u003d800\n\nectool set pwmetkblight 100\n-pwm3, set duty\u003d65535\n-initial freq\u003d0x3a98\n-duty_cycle_cnt\u003d65535\n-pwm_res[ch]\u003d1000\n-sd[ch]\u003d1000",
+      "parentUuid": "2fc3d743_5bb3753c",
+      "revId": "d3895f56e7e5a7a23e8a2f51fc2ae2a6c0f1af51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
