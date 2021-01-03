@@ -269,10 +269,10 @@ static uint8_t get_pd_control_flags(int port)
 	 * Table F-11 TBT3 Cable Discover Mode VDO Responses
 	 * For Passive cables, Active Cable Plug link training is set to 0
 	 */
-	control_flags |= cable_resp.lsrx_comm == UNIDIR_LSRX_COMM;
-	control_flags |= device_resp.tbt_adapter == TBT_ADAPTER_TBT2_LEGACY;
-	control_flags |= cable_resp.tbt_cable == TBT_CABLE_OPTICAL;
-	control_flags |= get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE;
+	control_flags |= ((cable_resp.lsrx_comm == UNIDIR_LSRX_COMM) << 3);
+	control_flags |=
+		((device_resp.tbt_adapter == TBT_ADAPTER_TBT2_LEGACY) << 2);
+	control_flags |= ((cable_resp.tbt_cable == TBT_CABLE_OPTICAL) << 1);
 	control_flags |= cable_resp.tbt_active_passive == TBT_CABLE_ACTIVE;
 
 	return control_flags;
