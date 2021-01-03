@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03cf1fe5_b3c09d1a",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-03T04:42:08Z",
+      "side": 1,
+      "message": "I think this also needs to update platform/ec/zephyr/shim/include/shimmed_tasks.h\n\n#ifdef CONFIG_PLATFORM_EC_HOSTCMD\n\nshould now be\n\n#ifdef CONFIG_HAS_TASK_HOSTCMD",
+      "range": {
+        "startLine": 217,
+        "startChar": 8,
+        "endLine": 217,
+        "endChar": 24
+      },
+      "revId": "f8cd762cdb3a1cf20a4fcb5ef7a1e240f616f2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
