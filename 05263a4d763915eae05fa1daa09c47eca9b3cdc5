@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a292d4_f837fc64",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-03T04:35:20Z",
+      "side": 1,
+      "message": "Does this change platform/ec/zephyr/shim/include/shimmed_tasks.h? We have some logic there that converts CONFIG_PLATFORM_EC_KEYBOARD to HAS_TASK_KEYSCAN 1.",
+      "range": {
+        "startLine": 142,
+        "startChar": 8,
+        "endLine": 142,
+        "endChar": 24
+      },
+      "revId": "05263a4d763915eae05fa1daa09c47eca9b3cdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
