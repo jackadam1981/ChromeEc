@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84fbd9ed_78da9de1",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-03T04:36:13Z",
+      "side": 1,
+      "message": "Does this change platform/ec/zephyr/shim/include/shimmed_tasks.h? We have some logic there that converts CONFIG_PLATFORM_EC_POWERSEQ to HAS_TASK_CHIPSET 1.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 24
+      },
+      "revId": "76253fbdf6c050689b54a9db6e29f0c65388c430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
