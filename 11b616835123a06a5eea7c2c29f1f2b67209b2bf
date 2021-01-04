@@ -51,6 +51,24 @@
       "parentUuid": "74047c94_9076a18a",
       "revId": "11b616835123a06a5eea7c2c29f1f2b67209b2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c91c3e9_3dd48e95",
+        "filename": "driver/tcpm/stm32gx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-04T21:05:03Z",
+      "side": 1,
+      "message": "I wish coders can imagine that what they are implementing which is so obvious to them might be confusing to someone else looking at their code.\n\nFrom my understanding looking at the tcpci def driver, we want rx_en and sop_prime_en to stay in sync with each other and not depend explicitly on calls to sop_prime_enable from happening. The local cached vars are to deal with timing race conditions due to i2c accesses.\n\nFor stm32gx, the i2c access is not required, but probably still need a sop_prime_en static var to track that sop\u0027 enable is requested if rx_en isn\u0027t yet set.",
+      "parentUuid": "2b0b075c_6772ba1e",
+      "revId": "11b616835123a06a5eea7c2c29f1f2b67209b2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
