@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a9cb93_4514c0b5",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T06:46:09Z",
+      "side": 1,
+      "message": "retain same as its not a new file",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "cb698b854d8249c0cc1ef67d8c4c87df69781966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50cd9dbe_c0e45c3c",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T06:46:09Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 5
+      },
+      "revId": "cb698b854d8249c0cc1ef67d8c4c87df69781966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5390d305_e6c0569f",
+        "filename": "chip/mchp/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T06:46:09Z",
+      "side": 1,
+      "message": "retain original",
+      "range": {
+        "startLine": 1,
+        "startChar": 14,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "cb698b854d8249c0cc1ef67d8c4c87df69781966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d4fff91_2069779b",
+        "filename": "chip/mchp/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T06:46:09Z",
+      "side": 1,
+      "message": "how about elif CHIP_FAMILY_MEC17**",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "cb698b854d8249c0cc1ef67d8c4c87df69781966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
