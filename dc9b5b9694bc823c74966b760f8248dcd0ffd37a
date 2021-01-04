@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05921623_743588c1",
+        "filename": "chip/mchp/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T13:00:04Z",
+      "side": 1,
+      "message": "const uint8_t pwm_slp_bitpos[] \u003d {\n\t4, 20, 21, 22, 23, 24, 25, 26, 27,\n#if defined(CHIP_FAMILY_MEC170X)\n\t31, 0, 1\n#endif\n};\nBUILD_ASSERT(ARRAY_SIZE(pwm_slp_bitpos) \u003d\u003d MCHP_PWM_ID_MAX);",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "dc9b5b9694bc823c74966b760f8248dcd0ffd37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60057ed9_a9d4cd5b",
+        "filename": "chip/mchp/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T13:00:04Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 50
+      },
+      "revId": "dc9b5b9694bc823c74966b760f8248dcd0ffd37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
