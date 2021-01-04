@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6321f6f8_06da6aa9",
+        "filename": "chip/mchp/registers-mec152x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T06:40:03Z",
+      "side": 1,
+      "message": "MEC152x",
+      "range": {
+        "startLine": 5,
+        "startChar": 30,
+        "endLine": 5,
+        "endChar": 34
+      },
+      "revId": "1bc9be05744236b3606b253c790cacff242aea9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4046b89f_6f14287b",
+        "filename": "chip/mchp/registers-mec152x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T06:40:03Z",
+      "side": 1,
+      "message": "controller?",
+      "range": {
+        "startLine": 5,
+        "startChar": 41,
+        "endLine": 5,
+        "endChar": 51
+      },
+      "revId": "1bc9be05744236b3606b253c790cacff242aea9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7add4440_ccb5ccdb",
+        "filename": "chip/mchp/registers-mec152x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T06:40:03Z",
+      "side": 1,
+      "message": "nit: add newline",
+      "range": {
+        "startLine": 701,
+        "startChar": 2,
+        "endLine": 701,
+        "endChar": 3
+      },
+      "revId": "1bc9be05744236b3606b253c790cacff242aea9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feaf81e1_471e05bf",
+        "filename": "chip/mchp/registers-mec152x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T06:40:03Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 727,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 2
+      },
+      "revId": "1bc9be05744236b3606b253c790cacff242aea9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d986e99_5ab3536f",
+        "filename": "chip/mchp/registers-mec152x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T06:40:03Z",
+      "side": 1,
+      "message": "nit: newline",
+      "range": {
+        "startLine": 785,
+        "startChar": 2,
+        "endLine": 785,
+        "endChar": 3
+      },
+      "revId": "1bc9be05744236b3606b253c790cacff242aea9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77647e4_ced0513e",
+        "filename": "chip/mchp/registers-mec152x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T06:40:03Z",
+      "side": 1,
+      "message": "remove explicit number assignment",
+      "range": {
+        "startLine": 1228,
+        "startChar": 0,
+        "endLine": 1240,
+        "endChar": 27
+      },
+      "revId": "1bc9be05744236b3606b253c790cacff242aea9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
