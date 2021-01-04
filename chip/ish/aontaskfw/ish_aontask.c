@@ -670,6 +670,11 @@ static void handle_d0i2(void)
 
 	clear_vnnred_aoncg();
 
+	if (IS_ENABLED(CONFIG_ISH_NEW_PM)) {
+		if (PMU_RST_PREP & PMU_RST_PREP_AVAIL)
+			handle_reset(ISH_PM_STATE_RESET_PREP);
+	}
+
 	/* set main SRAM intto normal mode */
 	PMU_LDO_CTRL = PMU_LDO_ENABLE_BIT;
 
@@ -724,6 +729,11 @@ static void handle_d0i3(void)
 	/* wakeup from PMU interrupt */
 
 	clear_vnnred_aoncg();
+
+	if (IS_ENABLED(CONFIG_ISH_NEW_PM)) {
+		if (PMU_RST_PREP & PMU_RST_PREP_AVAIL)
+			handle_reset(ISH_PM_STATE_RESET_PREP);
+	}
 
 	/* power on main SRAM */
 	sram_power(1);
@@ -801,7 +811,7 @@ static void handle_reset(enum ish_pm_state pm_state)
 		 * Sx for long time.
 		 *
 		 */
-		if (IPC_ISH_RMP2 & DMA_ENABLED_MASK) {
+		if ((IS_ENABLED(CONFIG_ISH_NEW_PM)) || (IPC_ISH_RMP2 & DMA_ENABLED_MASK)) {
 
 			/* clear ISH2HOST doorbell register */
 			*IPC_ISH2HOST_DOORBELL_ADDR = 0;
