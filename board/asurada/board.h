@@ -97,6 +97,10 @@
 
 /* LED */
 #define CONFIG_LED_COMMON
+#ifdef BOARD_HAYATO
+#define CONFIG_LED_POWER_LED
+#define CONFIG_LED_ONOFF_STATES
+#endif
 
 /* PD / USB-C / PPC */
 #define CONFIG_CMD_PPC_DUMP
