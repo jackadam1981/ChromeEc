@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c2942b_d695a9ec",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-04T18:03:41Z",
+      "side": 1,
+      "message": "This may cause issue. Configuring retimer in disconnect mode right after initialization, can put it back in low power mode and retimer will then expect the init sequence of \"dummy I2C transaction\" again.",
+      "revId": "f769376a15634dcb4c2cd82da547bb84c1d4473c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
