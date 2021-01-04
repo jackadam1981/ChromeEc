@@ -87,6 +87,24 @@
       "parentUuid": "6c91c3e9_3dd48e95",
       "revId": "11b616835123a06a5eea7c2c29f1f2b67209b2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff04c511_2ea8571f",
+        "filename": "driver/tcpm/stm32gx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-04T21:55:01Z",
+      "side": 1,
+      "message": "one more thought, I think the issue is that both of these controls exist in the same register. So that\u0027s why both controls have to be written always, to make sure that things don\u0027t get out of sync. like an older version that doesn\u0027t have sop\u0027 enabled getting written when rx gets enable, etc.  But, this issue is not present for stm32g tcpc driver.",
+      "parentUuid": "e38c904e_3a59c01c",
+      "revId": "11b616835123a06a5eea7c2c29f1f2b67209b2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
