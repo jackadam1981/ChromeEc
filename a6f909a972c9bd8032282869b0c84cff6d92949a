@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a70fc4_724f3e32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-04T05:36:35Z",
+      "side": 1,
+      "message": "pls add details for making it to 40ms.\nSpec says 20ms delay \u0026 there is a mutex which prevents shared retimer access",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "a6f909a972c9bd8032282869b0c84cff6d92949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
