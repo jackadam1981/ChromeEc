@@ -114,6 +114,13 @@ int g2f_individual_keypair(p256_int *d, p256_int *pk_x, p256_int *pk_y)
  */
 static uint8_t buffer[512];
 
+static uint8_t kAuthTimeSecretHash[] = {
+	0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
+	0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
+	0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
+	0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
+};
+
 test_static int test_u2f_generate_no_require_presence(void)
 {
 	struct u2f_generate_req *req = (struct u2f_generate_req *)buffer;
@@ -160,10 +167,57 @@ test_static int test_u2f_generate_require_presence(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_u2f_generate_sign_versioned(void)
+{
+	struct u2f_generate_req *generate_req
+		= (struct u2f_generate_req *)buffer;
+	size_t response_size = sizeof(struct u2f_generate_versioned_resp);
+	int ret;
+	struct u2f_generate_versioned_resp *generate_resp
+		= (struct u2f_generate_versioned_resp *)buffer;
+	struct u2f_versioned_key_handle vkh;
+	struct u2f_sign_versioned_req *sign_req
+		= (struct u2f_sign_versioned_req *)buffer;
+
+	/* Generate. */
+	memset(buffer, 0, sizeof(buffer));
+	generate_req->flags = U2F_UV_ENABLED_KH;
+	memcpy(generate_req->authTimeSecretHash, kAuthTimeSecretHash,
+	       sizeof(generate_req->authTimeSecretHash));
+	presence = 0;
+	ret = u2f_generate(
+		VENDOR_CC_U2F_GENERATE, &buffer,
+		sizeof(struct u2f_generate_req),
+		&response_size);
+	TEST_ASSERT(ret == VENDOR_RC_SUCCESS);
+	TEST_ASSERT(generate_resp->keyHandle.header.version == 1);
+	TEST_ASSERT_ARRAY_EQ(
+		generate_resp->keyHandle.authorization_secret_hash,
+		kAuthTimeSecretHash,
+		sizeof(generate_resp->keyHandle.authorization_secret_hash));
+
+	/* Sign. */
+	vkh = generate_resp->keyHandle;
+	memset(buffer, 0, sizeof(buffer));
+	response_size = sizeof(struct u2f_sign_resp);
+	/* Since this is version 1, don't enforce presence. */
+	sign_req->flags = 0;
+	memcpy(&sign_req->keyHandle, &vkh,
+	       sizeof(struct u2f_versioned_key_handle));
+	ret = u2f_sign(
+		VENDOR_CC_U2F_SIGN, &buffer,
+		sizeof(struct u2f_sign_versioned_req),
+		&response_size);
+	TEST_ASSERT(ret == VENDOR_RC_SUCCESS);
+
+	return EC_SUCCESS;
+}
+
 void run_test(void)
 {
 	RUN_TEST(test_u2f_generate_no_require_presence);
 	RUN_TEST(test_u2f_generate_require_presence);
+	RUN_TEST(test_u2f_generate_sign_versioned);
 
 	test_print_result();
 }

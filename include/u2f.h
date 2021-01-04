@@ -65,13 +65,24 @@ struct u2f_key_handle {
 struct u2f_versioned_key_handle_header {
 	uint8_t version;
 	uint8_t origin_seed[U2F_P256_SIZE];
+	/*
+	 * Starting at M89, we always validate "authorization_hmac" in
+	 * u2f_versioned_key_handle, so the kh_hmac field can and should be
+	 * removed in future versions to avoid confusion.
+	 */
 	uint8_t kh_hmac[SHA256_DIGEST_SIZE];
 };
 
 struct u2f_versioned_key_handle {
 	struct u2f_versioned_key_handle_header header;
-	/* Optionally checked in u2f_sign. */
 	uint8_t authorization_salt[U2F_AUTHORIZATION_SALT_SIZE];
+	/*
+	 * In u2f_sign, if presence is waived, then the |authorization_secret|
+	 * supplied in u2f_sign_versioned_req must match
+	 * |authorization_secret_hash|.
+	 */
+	uint8_t authorization_secret_hash[SHA256_DIGEST_SIZE];
+	/* Always checked in u2f_sign. */
 	uint8_t authorization_hmac[SHA256_DIGEST_SIZE];
 };
 

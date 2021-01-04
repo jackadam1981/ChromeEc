@@ -179,6 +179,9 @@ enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 
 		memcpy(&kh_buf.vkh.authorization_salt, authorization_salt,
 		       U2F_AUTHORIZATION_SALT_SIZE);
+		memcpy(&kh_buf.vkh.authorization_secret_hash,
+		       req->authTimeSecretHash,
+		       SHA256_DIGEST_SIZE);
 		copy_versioned_kh_pubkey_out(&opk_x, &opk_y, &kh_buf.vkh, buf);
 		*response_size = sizeof(struct u2f_generate_versioned_resp);
 	}
@@ -235,12 +238,11 @@ static int verify_kh_owned(const uint8_t *user_secret, const uint8_t *app_id,
 
 static int verify_versioned_kh_owned(
 	const uint8_t *user_secret, const uint8_t *app_id,
-	const struct u2f_versioned_key_handle_header *key_handle_header,
+	const struct u2f_versioned_key_handle *given_kh,
 	int *owned)
 {
 	int rc;
-	/* Re-created key handle. */
-	struct u2f_versioned_key_handle_header recreated_kh_header;
+	struct u2f_versioned_key_handle recreated_kh;
 
 	/*
 	 * Re-create the key handle and compare against that which
@@ -248,14 +250,31 @@ static int verify_versioned_kh_owned(
 	 * is owned by this combination of device, current user and app_id.
 	 */
 
+	/* Step 1: recreate key handle header. */
 	rc = u2f_origin_user_versioned_keyhandle(app_id, user_secret,
-						 key_handle_header->origin_seed,
-						 key_handle_header->version,
-						 &recreated_kh_header);
+						 given_kh->header.origin_seed,
+						 given_kh->header.version,
+						 &recreated_kh.header);
 
-	if (rc == EC_SUCCESS)
-		*owned = safe_memcmp(&recreated_kh_header, key_handle_header,
-				     sizeof(recreated_kh_header)) == 0;
+	if (rc != EC_SUCCESS)
+		return rc;
+
+	/* Step 2: recreate the versioned key handle. */
+	rc = u2f_authorization_hmac(given_kh->authorization_salt,
+				    &recreated_kh.header,
+				    given_kh->authorization_secret_hash,
+				    recreated_kh.authorization_hmac);
+
+	if (rc == EC_SUCCESS) {
+		memcpy(&recreated_kh.authorization_salt,
+		       given_kh->authorization_salt,
+		       U2F_AUTHORIZATION_SALT_SIZE);
+		memcpy(&recreated_kh.authorization_secret_hash,
+		       given_kh->authorization_secret_hash,
+		       SHA256_DIGEST_SIZE);
+		*owned = safe_memcmp(&recreated_kh, given_kh,
+				     sizeof(recreated_kh)) == 0;
+	}
 
 	return rc;
 }
@@ -312,7 +331,7 @@ enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 			sizeof(struct u2f_versioned_key_handle_header);
 		verify_owned_rc = verify_versioned_kh_owned(
 			req_versioned->userSecret, req_versioned->appId,
-			&req_versioned->keyHandle.header, &kh_owned);
+			&req_versioned->keyHandle, &kh_owned);
 	} else {
 		return VENDOR_RC_BOGUS_ARGS;
 	}
@@ -337,7 +356,7 @@ enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 			return VENDOR_RC_NOT_ALLOWED;
 		/*
 		 * TODO(yichengli): When auth-time secrets is ready, enforce
-		 * authorization hmac when no power button press.
+		 * authorization secret using authorization_secret_hash.
 		 */
 	}
 
