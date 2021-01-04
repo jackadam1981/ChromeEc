@@ -69,6 +69,24 @@
       "parentUuid": "2b0b075c_6772ba1e",
       "revId": "11b616835123a06a5eea7c2c29f1f2b67209b2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38c904e_3a59c01c",
+        "filename": "driver/tcpm/stm32gx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-04T21:48:07Z",
+      "side": 1,
+      "message": "Looking at this more, I don\u0027t think this logic is required at all for the stm32gx driver.\n\nThe driver function stm32gx_tcpm_sop_prime_enable will set/clear a static variable in the ucpd driver. This static variable is used to allow or ignore rx messages to SOP\u0027 or SOP\u0027\u0027.\n\nThe static variable tracking if SOP\u0027 is enabled is only used if a rx message is received and a rx message can be received if rx is not enabled. \n\nI think the rx_en and sop_prime static vars in the tcpci drivers exist due to i2c access issues. This is not a factor for stm32gx. Maybe i\u0027m missing some subtelty?",
+      "parentUuid": "6c91c3e9_3dd48e95",
+      "revId": "11b616835123a06a5eea7c2c29f1f2b67209b2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
