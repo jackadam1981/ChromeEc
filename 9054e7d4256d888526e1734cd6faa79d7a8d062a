@@ -33,6 +33,24 @@
       "message": "I don\u0027t remember any good reason for making this 100 ms in TCPMv2, and I think 10 ms worked ok in TCPMv1, so I suggest decreasing TCPMv2 to 10 ms for consistency.",
       "revId": "9054e7d4256d888526e1734cd6faa79d7a8d062a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a7a8be_a774134a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-04T08:37:51Z",
+      "side": 1,
+      "message": "Ok. I\u0027ve changed it to 10 ms",
+      "parentUuid": "648efb81_bbde449b",
+      "revId": "9054e7d4256d888526e1734cd6faa79d7a8d062a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
