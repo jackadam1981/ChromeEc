@@ -52,6 +52,24 @@
       "parentUuid": "40ac5e4a_7954d8fc",
       "revId": "d3895f56e7e5a7a23e8a2f51fc2ae2a6c0f1af51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100acaad_3774adc0",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2021-01-04T03:38:13Z",
+      "side": 1,
+      "message": "The APB2 clock(Get from disable PWM_CONFIG_DSLEEP) will be off on deepsleep mode which is different from 32K clock (free run clock).\nBut Zork and Vilboz not enable CONFIG_LOW_POWER_S0, I think there not be a problem with PWM KB light output. Base on previous experience, there is an issue KB light flash happened on Liara(crrev.com/c/1363673).\nWe also test system mode change and S0 idle, the KB light not flash.",
+      "parentUuid": "3ac0bda0_4153eb97",
+      "revId": "d3895f56e7e5a7a23e8a2f51fc2ae2a6c0f1af51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
