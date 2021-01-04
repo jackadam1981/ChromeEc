@@ -13,6 +13,7 @@
 #include "system.h"
 #include "task.h"
 #include "util.h"
+#include "cache.h"
 
 #define CPRINTF(format, args...) cprintf(CC_IPI, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
@@ -97,6 +98,9 @@ int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
 	ipi_send_buf->len = len;
 	memcpy(ipi_send_buf->buffer, buf, len);
 
+	cache_flush_dcache_range((uintptr_t)ipi_send_buf, (len + 8 + 3) & ~3);
+	asm volatile("fence.i":::"memory");
+
 	/* interrupt AP to handle the message */
 	ipi_wake_ap(id);
 	SCP_SCP2APMCU_IPC_SET = IPC_SCP2HOST;
@@ -158,7 +162,7 @@ static void ipi_handler(void)
 		return;
 	}
 
-	CPRINTS("IPI %d", ipi_recv_buf->id);
+	//CPRINTS("IPI %d", ipi_recv_buf->id);
 
 	ipi_handler_table[ipi_recv_buf->id](
 		ipi_recv_buf->id, ipi_recv_buf->buffer, ipi_recv_buf->len);
