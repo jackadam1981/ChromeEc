@@ -6,9 +6,9 @@
 
 /* Interrupts */
 GPIO_INT(FPS_INT,         PIN(A, 0), GPIO_INT_RISING, fps_event)
-GPIO_INT(PCH_SLP_S0_L,    PIN(A, 8), GPIO_INT_BOTH, slp_event)
+GPIO_INT(SLP_L,           PIN(A, 8), GPIO_INT_BOTH, slp_event)
 GPIO_INT(SPI1_NSS,        PIN(A, 4), GPIO_INPUT, spi_event)
-GPIO_INT(PCH_SLP_S3_L,    PIN(B, 6), GPIO_INT_BOTH, slp_event)
+GPIO_INT(SLP_ALT_L,       PIN(B, 6), GPIO_INT_BOTH, slp_event)
 
 /* Inputs */
 GPIO(FP_SENSOR_SEL,       PIN(B, 0), GPIO_INPUT)
