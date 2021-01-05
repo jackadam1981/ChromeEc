@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5189911_968994bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-05T13:19:59Z",
+      "side": 1,
+      "message": "could you use udelay() instead?",
+      "parentUuid": "f6e58378_a3b14a9a",
+      "revId": "372318bd5d8dff0883c15d0973549ce483e7f99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f2ca2e3_23ae0682",
