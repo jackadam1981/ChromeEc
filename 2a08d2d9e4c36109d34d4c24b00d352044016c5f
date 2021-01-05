@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e85e63d3_bb08f858",
+        "filename": "power/mt8192.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-01-05T04:49:05Z",
+      "side": 1,
+      "message": "From the commit message of CL:2607204:\n\n EC reset flags at last EC boot: reset-pin | power-on\n\n\"ap-watchdog\" isn\u0027t contained in ec_reset_flags.",
+      "parentUuid": "d7dfe42d_517f3039",
+      "revId": "2a08d2d9e4c36109d34d4c24b00d352044016c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b068e0e3_2e1b4a5c",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-30T09:46:06Z",
       "side": 1,
       "message": "That\u0027s a bit weird, I think those flags are more meant persist value across EC reboots (as is required on kukui as the EC resets everytime the AP reboots). Does this also mean that a subsequent AP non-watchdog reboot will still have the flag set?\n\nFrom https://crrev.com/c/2607204, it does appear that the \"reset: AP watchdog\" is logged in the output of `ectool --name\u003dcros_ec uptimeinfo`. What is the logic in coreboot? Should it check if the last entry is a watchdog? (instead of looking at EC reset flags?)",
+      "revId": "2a08d2d9e4c36109d34d4c24b00d352044016c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4fa859d_f21421e2",
+        "filename": "power/mt8192.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-01-05T04:49:05Z",
+      "side": 1,
+      "message": "\u003e those flags are more meant persist value across EC reboots\n\nEC reboot with \"reboot\" will reset the flags. However, these flags are persistent with command \"reboot preserve\". Do we care about this?\n\n\u003e Does this also mean that a subsequent AP non-watchdog reboot will still have the flag set?\n\nYes, but this can be solved by adding an \u0027else\u0027 block clearing the watchdog flag.\n\n\u003e What is the logic in coreboot?\n\nIf CHROMEOS_USE_EC_WATCHDOG_FLAG is enabled, coreboot looks for EC_RESET_FLAG_AP_WATCHDOG\u003dBIT(18) in ec_reset_flags. From CL:2607204, ec_reset_flags doesn\u0027t contain this flag. The \"reset: AP watchdog\" output is from field \"recent_ap_reset[i].reset_cause\".",
+      "parentUuid": "b068e0e3_2e1b4a5c",
       "revId": "2a08d2d9e4c36109d34d4c24b00d352044016c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
