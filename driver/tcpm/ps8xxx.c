@@ -684,3 +684,88 @@ struct i2c_stress_test_dev ps8xxx_i2c_stress_test_dev = {
 	.i2c_write = &tcpc_i2c_write,
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_TCPC */
+
+static int ps8xxx_mux_init(const struct usb_mux *me)
+{
+	/* If this MUX is also the TCPC, then skip init */
+	if (!(me->flags & USB_MUX_FLAG_NOT_TCPC))
+		return EC_SUCCESS;
+
+	RETURN_ERROR(tcpci_tcpm_mux_init(me));
+
+	/*
+	 * This TCPC acts as MUX only. Set both CC lines to RP which will
+	 * decrease power consumption
+	 */
+	return mux_write(me, TCPC_REG_ROLE_CTRL,
+			 TCPC_REG_ROLE_CTRL_SET(TYPEC_NO_DRP, TYPEC_RP_USB,
+						TYPEC_CC_RP, TYPEC_CC_RP));
+}
+
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+/*
+ * PS8751 goes to standby mode automatically when both CC lines are set to RP.
+ * In standby mode it doesn't respond to first I2C access, but next
+ * transactions are working fine (until it goes to sleep again).
+ *
+ * To wake device documentation recommends read content of 0xA0 register.
+ */
+static void ps8xxx_wake_from_standby(const struct usb_mux *me)
+{
+	int reg;
+
+	/* Since we are waking up device, this call will most likely fail */
+	mux_read(me, PS8XXX_REG_I2C_DEBUGGING_ENABLE, &reg);
+}
+
+/*
+ * After waking up device, documentation recomends set the PS8751 to standby
+ * mode again.
+ */
+static int ps8xxx_force_sleep(const struct usb_mux *me)
+{
+	return mux_write(me, PS8751_REG_FORCE_CHIP_STANDBY, 0x01);
+}
+
+#endif
+
+static int ps8xxx_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+{
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+	if (me->flags & USB_MUX_FLAG_NOT_TCPC)
+		ps8xxx_wake_from_standby(me);
+#endif
+
+	RETURN_ERROR(tcpci_tcpm_mux_set(me, mux_state));
+
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+	if (me->flags & USB_MUX_FLAG_NOT_TCPC)
+		return ps8xxx_force_sleep(me);
+#endif
+
+	return EC_SUCCESS;
+}
+
+static int ps8xxx_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
+{
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+	if (me->flags & USB_MUX_FLAG_NOT_TCPC)
+		ps8xxx_wake_from_standby(me);
+#endif
+
+	RETURN_ERROR(tcpci_tcpm_mux_get(me, mux_state));
+
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+	if (me->flags & USB_MUX_FLAG_NOT_TCPC)
+		return ps8xxx_force_sleep(me);
+#endif
+
+	return EC_SUCCESS;
+}
+
+const struct usb_mux_driver ps8xxx_usb_mux_driver = {
+	.init = &ps8xxx_mux_init,
+	.set = &ps8xxx_mux_set,
+	.get = &ps8xxx_mux_get,
+	.enter_low_power_mode = &tcpci_tcpm_mux_enter_low_power,
+};
