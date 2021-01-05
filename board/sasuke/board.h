@@ -85,6 +85,9 @@
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	16080	/* us */
 #define PD_VCONN_SWAP_DELAY		787	/* us */
 
+/* USB Type A Features */
+#define USB_PORT_COUNT			1
+#define CONFIG_USB_PORT_POWER_DUMB
 
 /* I2C configuration */
 #define I2C_PORT_EEPROM     NPCX_I2C_PORT7_0
