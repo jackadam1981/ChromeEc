@@ -357,6 +357,13 @@ SECTIONS
 	#define INIT_ROM_LMA	ORIGIN(ROM_RESIDENT_VMA)
 #endif
 
+	.memfault_noinit(NOLOAD): {
+		KEEP(*(*.mflt_coredump))
+		KEEP(*(*.mflt_events))
+		KEEP(*(*.mflt_reboots))
+		KEEP(*(*.mflt_log))
+	} > IRAM
+
 #ifdef CONFIG_PRESERVE_LOGS
 	.preserve_logs(NOLOAD) : {
 		. = ALIGN(8);
@@ -390,6 +397,8 @@ SECTIONS
 		STRINGIFY(OUTDIR/common/tpm_registers.o*)(.bss)
 			*(.bss.Tpm2_common)
 		__bss_libtpm2_end = .;
+
+		__bss_after_system_stack = .;
 
 		*(.bss)
 
