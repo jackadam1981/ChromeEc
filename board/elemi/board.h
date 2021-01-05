@@ -84,6 +84,10 @@
 #undef CONFIG_USBC_RETIMER_INTEL_BB
 #undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
 
+/* Thermal features */
+#undef CONFIG_TEMP_SENSOR_POWER_GPIO
+#define CONFIG_TEMP_SENSOR_POWER_GPIO	GPIO_PCH_DSW_PWROK
+
 /*
  * Macros for GPIO signals used in common code that don't match the
  * schematic names. Signal names in gpio.inc match the schematic and are
