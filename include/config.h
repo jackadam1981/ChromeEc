@@ -4514,6 +4514,11 @@
 /* The delay in ms from power off to power on for MAX14637 */
 #define CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS 1
 
+/*
+ * Use the VBUS supplier as default. This VBUS supplier (5V 0.5A) will be used
+ * before the Type-C detection or the BC 1.2 detection.
+ */
+#define CONFIG_VBUS_SUPPLIER_AS_DEFAULT
 
 /* Enable USB serial console module. */
 #undef CONFIG_USB_CONSOLE
