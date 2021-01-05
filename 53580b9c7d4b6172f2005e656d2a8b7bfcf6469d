@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded5bac0_a9574988",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-01-05T23:40:56Z",
+      "side": 1,
+      "message": "This sure seems like a safe default? no? (well, besides 500mA not being enough)\n\nWhat do you mean by you want to disable it? RW can\u0027t just assume 5V 3A right away, it might not be the case, is there no way to follow what it found out in RO?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
