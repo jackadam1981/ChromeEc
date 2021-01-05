@@ -22,7 +22,7 @@
 /* 0 -> CC1, 1 -> CC2 */
 #define SYV682X_FLAGS_CC_POLARITY	BIT(1)
 #define SYV682X_FLAGS_VBUS_PRESENT	BIT(2)
-#define SYV682X_FLAGS_OCP		BIT(3)
+#define SYV682X_FLAGS_TSD		BIT(3)
 #define SYV682X_FLAGS_OVP		BIT(4)
 #define SYV682X_FLAGS_5V_OC		BIT(5)
 #define SYV682X_FLAGS_RVS		BIT(6)
@@ -30,6 +30,8 @@
 
 static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 static uint8_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+/* Running count of sink ocp events */
+static uint8_t ocp_count[CONFIG_USB_PD_PORT_MAX_COUNT];
 static timestamp_t vbus_oc_timer[CONFIG_USB_PD_PORT_MAX_COUNT];
 static timestamp_t vconn_oc_timer[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -41,6 +43,8 @@ static timestamp_t vconn_oc_timer[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Deglitch in ms of sourcing overcurrent detection */
 #define SOURCE_OC_DEGLITCH_MS 100
 #define VCONN_OC_DEGLITCH_MS 100
+/* Max. number of OC events allowed before disabling port */
+#define OCP_COUNT_LIMIT 3
 
 #if SOURCE_OC_DEGLITCH_MS < INTERRUPT_DELAY_MS
 #error "SOURCE_OC_DEGLITCH_MS should be at least INTERRUPT_DELAY_MS"
@@ -54,6 +58,8 @@ static timestamp_t vconn_oc_timer[CONFIG_USB_PD_PORT_MAX_COUNT];
 #endif
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
+static int syv682x_vbus_sink_enable(int port, int enable);
 
 static int syv682x_init(int port);
 
@@ -257,10 +263,24 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 		pd_handle_overcurrent(port);
 	}
 
-	if (syv682x_interrupt_filter(port, regval,
-				     SYV682X_STATUS_OC_HV | SYV682X_STATUS_TSD,
-				     SYV682X_FLAGS_OCP))
-		pd_handle_overcurrent(port);
+	/*
+	 * HV OC is a hard limit that will disable the sink path (automatically
+	 * removing this alert condition), so try re-enabling if we hit an OCP.
+	 * If we get multiple OCPs, don't re-enable. The OCP counter is reset on
+	 * the sink path being disabled or on a PPC init.
+	 */
+	if (regval & SYV682X_STATUS_OC_HV) {
+		ppc_prints("Sink OCP!", port);
+		ocp_count[port] += 1;
+		if (ocp_count[port] < OCP_COUNT_LIMIT)
+			syv682x_vbus_sink_enable(port, 1);
+		else
+			ppc_prints("Disable sink", port);
+	}
+
+	if (syv682x_interrupt_filter(port, regval, SYV682X_STATUS_TSD,
+				     SYV682X_FLAGS_TSD))
+		ppc_prints("TSD!", port);
 
 	/* No PD handler for VBUS OVP/RVS events */
 
@@ -352,6 +372,7 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 		 * turn both paths off because we are currently a sink.
 		 */
 		regval |= SYV682X_CONTROL_1_PWR_ENB;
+		ocp_count[port] = 0;
 	}
 
 	return write_reg(port, SYV682X_CONTROL_1_REG, regval);
@@ -671,6 +692,7 @@ static int syv682x_init(int port)
 	if (rv)
 		return rv;
 
+	ocp_count[port] = 0;
 	if (!syv682x_is_sink(control_1)
 		|| (status & SYV682X_STATUS_VSAFE_0V)) {
 		/*
