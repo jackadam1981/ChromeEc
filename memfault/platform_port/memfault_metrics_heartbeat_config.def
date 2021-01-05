@@ -1,0 +1,4 @@
+
+MEMFAULT_METRICS_KEY_DEFINE_WITH_RANGE(battery_level, kMemfaultMetricType_Unsigned, 0, 100)
+MEMFAULT_METRICS_KEY_DEFINE(hearbeat, kMemfaultMetricType_Unsigned)
+MEMFAULT_METRICS_KEY_DEFINE(test_metric, kMemfaultMetricType_Unsigned)
