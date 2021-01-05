@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af243baf_b5424fe0",
+        "filename": "zephyr/shim/include/linker.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-05T21:04:52Z",
+      "side": 1,
+      "message": "This symbol is not available for posix-ec",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "0be966a98cd999239152881295acb24e9f4581e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
