@@ -16,6 +16,23 @@
       "message": "Matt and Namyoon, iteflash was originally included with every board, even stm32 or non-ite boards.\n\nThis change will make it only included with boards that have an ite chip. Is this okay?",
       "revId": "9cf6751d05f60ba43b516afaca865345c8a8cfdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63f32c4_8ed4c62d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-05T22:19:42Z",
+      "side": 1,
+      "message": "Same thing here. Our ec-devutils ebuild expects these to be built.",
+      "revId": "9cf6751d05f60ba43b516afaca865345c8a8cfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
