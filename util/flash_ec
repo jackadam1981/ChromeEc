@@ -134,6 +134,10 @@ BOARDS_NPCX_SPI=(
 	glkrvp
 )
 
+BOARDS_NPCX_UUT=(
+	tgly_mecc10_npcx9
+)
+
 BOARDS_SPI_1800MV=(
 	coral
 	reef
@@ -318,6 +322,10 @@ fi
 
 if $(in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}"); then
 	SUPPORTED_CHIPS+=("npcx_spi")
+fi
+
+if $(in_array "${BOARDS_NPCX_UUT[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("npcx_uut")
 fi
 
 if $(in_array "${BOARDS_IT83XX[@]}" "${BOARD}"); then
