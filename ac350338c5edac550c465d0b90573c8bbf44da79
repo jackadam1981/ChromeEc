@@ -16,6 +16,41 @@
       "message": "I don\u0027t really have a good way to generate unsupported BIST traffic IRL. I can probably come up with a unit test based around sending traffic after entering BIST mode and not expecting a response.",
       "revId": "ac350338c5edac550c465d0b90573c8bbf44da79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3404c43_c3fed58c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-05T17:17:00Z",
+      "side": 1,
+      "message": "Sounds like a good case for a unit test.  I\u0027ll leave it up to you whether you\u0027d like to include that here or make a follow-up",
+      "parentUuid": "8af2c7ab_722199ce",
+      "revId": "ac350338c5edac550c465d0b90573c8bbf44da79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f7697c_ced8b8e3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4717,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-05T17:17:00Z",
+      "side": 1,
+      "message": "I would guess this needs a check to either our current Vbus voltage or our last requested voltage when sinking (and last supplied Vbus voltage if sourcing, assuming we want to cover honeybuns).  Otherwise we don\u0027t catch the case of Vbus \u003e 5V",
+      "revId": "ac350338c5edac550c465d0b90573c8bbf44da79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
