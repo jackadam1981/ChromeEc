@@ -26,3 +26,4 @@ else
 	cts-y+=$(CTS_MODULE)/dut.o
 	cts-y+=common/dut_common.o
 endif
+

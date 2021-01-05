@@ -357,6 +357,11 @@ SECTIONS
 	#define INIT_ROM_LMA	ORIGIN(ROM_RESIDENT_VMA)
 #endif
 
+	.memfault_noinit(NOLOAD): {
+		KEEP(*(*.mflt_coredump))
+		KEEP(*(*.mflt_events))
+	} > IRAM
+
 #ifdef CONFIG_PRESERVE_LOGS
 	.preserve_logs(NOLOAD) : {
 		. = ALIGN(8);
