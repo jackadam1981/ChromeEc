@@ -765,7 +765,11 @@ int tcpci_tcpm_mux_init(int port)
 	return error ? EC_ERROR_UNKNOWN : EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (20ccfc garg: Add 2nd base accelerometer)
 int tcpci_tcpm_mux_enter_low_power(int port)
+=======
+int tcpci_tcpm_mux_enter_low_power(const struct usb_mux *me)
+>>>>>>> CHANGE (b7308f ps8xxx: Set RP during LPM enter if TCPC acts as mux only)
 {
 	/* If this MUX is also the TCPC, then skip low power */
 	if (!(usb_muxes[port].flags & USB_MUX_FLAG_NOT_TCPC))

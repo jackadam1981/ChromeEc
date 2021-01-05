@@ -3330,6 +3330,49 @@
 #undef CONFIG_USB_PD_TCPM_PS8815
 
 /*
+<<<<<<< HEAD   (20ccfc garg: Add 2nd base accelerometer)
+=======
+ * Enable PS8751 custom mux driver. It was designed to make use of Low Power
+ * Mode on PS8751 TCPC/MUX chip when running as MUX only (CC lines are not
+ * connected, eg. Ampton).
+ *
+ * If your PS8751 is working in the ordinary way (as TCPC and MUX) or you don't
+ * need to take advantage of Low Power Mode when working as MUX only, standard
+ * TCPC MUX driver (CONFIG_USB_PD_TCPM_MUX) will work fine.
+ */
+#undef CONFIG_USB_PD_TCPM_PS8751_CUSTOM_MUX_DRIVER
+
+/*
+ * Defined automatically by chip and depends on chip. This guards the onboard
+ * TCPM driver, but CONFIG_USB_PD_TCPM_ITE_ON_CHIP needs to be defined in
+ * board.h for either of these driver to actually be included in the final
+ * image.
+ */
+#undef CONFIG_USB_PD_TCPM_DRIVER_IT83XX
+#undef CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2
+
+/*
+ * Type-C retimer drivers to be used.
+ */
+#undef CONFIG_USBC_RETIMER_INTEL_BB
+#undef CONFIG_USBC_RETIMER_NB7V904M
+#undef CONFIG_USBC_RETIMER_PI3DPX1207
+#undef CONFIG_USBC_RETIMER_PI3HDX1204
+#undef CONFIG_USBC_RETIMER_PS8802
+#undef CONFIG_USBC_RETIMER_PS8818
+#undef CONFIG_USBC_RETIMER_TUSB544
+
+/* Enable retimer TUSB544 tune EQ setting by register  */
+#undef CONFIG_TUSB544_EQ_BY_REGISTER
+
+/* Allow run-time configuration of the Burnside Bridge driver structure */
+#undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+
+/* Enables debug console commands for the STM32 UCPD driver */
+#undef CONFIG_STM32G4_UCPD_DEBUG
+
+/*
+>>>>>>> CHANGE (b7308f ps8xxx: Set RP during LPM enter if TCPC acts as mux only)
  * Adds an EC console command to erase the ANX7447 OCM flash.
  * Note: this is intended to be a temporary option and
  * won't be needed when ANX7447 are put on boards with OCM already erased
