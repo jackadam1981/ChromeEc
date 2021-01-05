@@ -141,6 +141,11 @@ static const struct {
 /* Contexts for all tasks */
 static task_ tasks[TASK_ID_COUNT];
 
+#ifdef CONFIG_MEMFAULT_PANICS
+#include "memfault_platform_port.h"
+MEMFAULT_CAPTURE(tasks, sizeof(tasks));
+#endif
+
 /* Reset constants and state for all tasks */
 #define TASK_RESET_SUPPORTED		BIT(31)
 #define TASK_RESET_LOCK			BIT(30)

@@ -20,7 +20,11 @@ extern "C" {
 #ifdef CONFIG_DEBUG_ASSERT
 #ifdef CONFIG_DEBUG_ASSERT_REBOOTS
 
-#ifdef CONFIG_DEBUG_ASSERT_BRIEF
+#ifdef CONFIG_MEMFAULT_PANICS
+#include "memfault/panics/assert.h"
+#define ASSERT(cond) MEMFAULT_ASSERT(cond)
+
+#elif defined(CONFIG_ASSERT_BRIEF)
 extern noreturn void panic_assert_fail(const char *fname, int linenum);
 #define ASSERT(cond)                                           \
 	do {                                                   \

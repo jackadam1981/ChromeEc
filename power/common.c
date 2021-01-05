@@ -66,6 +66,11 @@ static enum power_state state = POWER_G3;  /* Current state */
 static int want_g3_exit;      /* Should we exit the G3 state? */
 static uint64_t last_shutdown_time; /* When did we enter G3? */
 
+#ifdef CONFIG_MEMFAULT_PANICS
+#include "memfault_platform_port.h"
+MEMFAULT_CAPTURE_VALUE(state);
+#endif
+
 #ifdef CONFIG_HIBERNATE
 /* Delay before hibernating, in seconds */
 static uint32_t hibernate_delay = CONFIG_HIBERNATE_DELAY_SEC;
@@ -225,6 +230,8 @@ int power_wait_mask_signals_timeout(uint32_t want, uint32_t mask, int timeout)
 	return EC_SUCCESS;
 }
 
+#include "memfault/core/trace_event.h"
+
 void power_set_state(enum power_state new_state)
 {
 	/* Record the time we go into G3 */
@@ -233,6 +240,8 @@ void power_set_state(enum power_state new_state)
 
 	/* Print out the RTC value to help correlate EC and kernel logs. */
 	print_system_rtc(CC_CHIPSET);
+
+	MEMFAULT_TRACE_EVENT_WITH_LOG(power_state, state_names[new_state]);
 
 	state = new_state;
 

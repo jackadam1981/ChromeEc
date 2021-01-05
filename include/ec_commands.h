@@ -7130,6 +7130,14 @@ struct ec_params_usb_pd_mux_ack {
 
 /*****************************************************************************/
 /*
+ * Memfault commands
+ *
+ */
+
+#define EC_CMD_MEMFAULT_GET_CHUNK 0x0700
+
+/*****************************************************************************/
+/*
  * Reserve a range of host commands for board-specific, experimental, or
  * special purpose features. These can be (re)used without updating this file.
  *
