@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a29fa89b_dfabcd12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-05T19:51:07Z",
+      "side": 1,
+      "message": "My thinking was that with the assert present it would be quite explicit when the function was misused, rather than hope that the garbage task ID causes some other failure. (i.e. a crash with a pointer to the caller)\n\nWhy is it legitimate to disable a task before the tasks have started?",
+      "parentUuid": "0ddde6c6_3f2c0826",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
