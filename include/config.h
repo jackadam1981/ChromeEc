@@ -4954,6 +4954,14 @@
  */
 #undef CONFIG_ZEPHYR
 
+/*
+ * Define the following to include the Memfault tool
+ */
+#undef CONFIG_MEMFAULT
+#undef CONFIG_MEMFAULT_PANICS
+#undef CONFIG_MEMFAULT_METRICS
+#undef CONFIG_MEMFAULT_LOG
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a

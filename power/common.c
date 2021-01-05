@@ -66,6 +66,11 @@ static enum power_state state = POWER_G3;  /* Current state */
 static int want_g3_exit;      /* Should we exit the G3 state? */
 static uint64_t last_shutdown_time; /* When did we enter G3? */
 
+#ifdef CONFIG_MEMFAULT_PANICS
+#include "memfault_platform_port.h"
+MEMFAULT_CAPTURE_VALUE(state);
+#endif
+
 #ifdef CONFIG_HIBERNATE
 /* Delay before hibernating, in seconds */
 static uint32_t hibernate_delay = CONFIG_HIBERNATE_DELAY_SEC;

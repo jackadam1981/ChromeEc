@@ -200,6 +200,8 @@ const char help_str[] =
 	"      Set the color of an LED or query brightness range\n"
 	"  lightbar [CMDS]\n"
 	"      Various lightbar control commands\n"
+	"  memfault\n"
+	"      Get chunk from memfault\n"
 	"  mkbpget <buttons|switches>\n"
 	"      Get MKBP buttons/switches supported mask and current state\n"
 	"  mkbpwakemask <get|set> <event|hostevent> [mask]\n"
@@ -8550,6 +8552,25 @@ int cmd_rtc_get_alarm(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_memfault(int argc, char *argv[])
+{
+	int rv;
+	int i;
+
+	rv = ec_command(EC_CMD_MEMFAULT_GET_CHUNK, 0, NULL, 0, ec_inbuf, ec_max_insize);
+	if (rv < 0) {
+		printf("Get chunk failed with code: 0x%x | %d\n",rv,rv);
+		return rv;
+	}
+
+	for(i=0; i<rv; i++) {
+		printf("%02x", ((uint8_t *)ec_inbuf)[i]);
+	}
+	printf("\n");
+
+	return 0;
+}
+
 int cmd_console(int argc, char *argv[])
 {
 	char *out = (char *)ec_inbuf;
@@ -10358,6 +10379,7 @@ const struct command commands[] = {
 	{"kbpress", cmd_kbpress},
 	{"keyconfig", cmd_keyconfig},
 	{"keyscan", cmd_keyscan},
+	{"memfault", cmd_memfault},
 	{"mkbpget", cmd_mkbp_get},
 	{"mkbpwakemask", cmd_mkbp_wake_mask},
 	{"motionsense", cmd_motionsense},

@@ -122,6 +122,13 @@ extern void *__dram_data_end;
 extern void *__dram_bss_start;
 extern void *__dram_bss_end;
 
+#ifdef CONFIG_MEMFAULT_PANICS
+/* Memfault Coredump Captures */
+#include "memfault/panics/coredump.h"
+extern const struct MfltCoredumpRegion __memfault_capture[];
+extern const struct MfltCoredumpRegion __memfault_capture_end[];
+#endif
+
 /* Helper for special chip-specific memory sections */
 #if defined(CONFIG_CHIP_MEMORY_REGIONS) || defined(CONFIG_DRAM_BASE)
 #define __SECTION(name) __attribute__((section("." STRINGIFY(name) ".50_auto")))
