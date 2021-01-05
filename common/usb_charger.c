@@ -29,6 +29,9 @@ static void update_vbus_supplier(int port, int vbus_level)
 {
 	struct charge_port_info charge = {0};
 
+	if (!IS_ENABLED(CONFIG_VBUS_SUPPLIER_AS_DEFAULT))
+		return;
+
 	if (vbus_level && !usb_charger_port_is_sourcing_vbus(port)) {
 		charge.voltage = USB_CHARGER_VOLTAGE_MV;
 		charge.current = USB_CHARGER_MIN_CURR_MA;
@@ -94,6 +97,8 @@ void usb_charger_reset_charge(int port)
 				     port, NULL);
 	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
 				     port, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS,
+				     port, NULL);
 #if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
 				     port, NULL);
@@ -112,6 +117,7 @@ void usb_charger_reset_charge(int port)
 static void usb_charger_init(void)
 {
 	int i;
+
 	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 		usb_charger_reset_charge(i);
 		/* Initialize VBUS supplier based on whether VBUS is present. */
