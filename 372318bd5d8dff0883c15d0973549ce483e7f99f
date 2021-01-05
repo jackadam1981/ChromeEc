@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6e58378_a3b14a9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-01-05T10:46:08Z",
+      "side": 1,
+      "message": "hi  Eric: this change will cause fail to boot.\n\n21-01-05 18:45:53.865 ASSERTION FAILURE \u0027!in_interrupt_context()\u0027 in __wait_evt9\n21-01-05 18:45:53.872                                                           \n21-01-05 18:45:53.872 \u003d\u003d\u003d PROCESS EXCEPTION: 17 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 81000000 \u003d\u003d\u003d       \n21-01-05 18:45:53.874 r0 :05bc1b2b r1 :cd973064 r2 :200038b0 r3 :49e55e83       \n21-01-05 18:45:53.881 r4 :dead6663 r5 :00000149 r6 :00000096 r7 :20006c20       \n21-01-05 18:45:53.884 r8 :00000000 r9 :00000000 r10:00000000 r11:00000000       \n21-01-05 18:45:53.891 r12:e9591172 sp :200037a0 lr :080041ff pc :080001e4       \n21-01-05 18:45:53.895                                                           \n21-01-05 18:45:53.895                                                           \n�1-01-05 18:45:53.895 Rebooting... ",
+      "revId": "372318bd5d8dff0883c15d0973549ce483e7f99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f2ca2e3_23ae0682",
