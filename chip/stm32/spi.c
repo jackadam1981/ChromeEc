@@ -680,6 +680,9 @@ static void spi_init(void)
 	/* Reset the DMA TX. */
 	dma_disable(STM32_DMAC_SPI1_TX);
 
+	if (TASK_ID_HOOK == task_get_current())
+		usleep(150);
+
 	/* Config SPI GPIO to high speed. This varies from board to board. */
 	board_set_stm32_spi_pin_speed();
 
