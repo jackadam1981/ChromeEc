@@ -39,6 +39,30 @@
       },
       "revId": "a396c4cfaa76db093b3852fcbd1b4fae26a67cbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cefa53e1_3815c9f0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-01-05T23:35:59Z",
+      "side": 1,
+      "message": "Even though you didn\u0027t see it, I locally compiled with another variable name here after I renamed i to sect just to ensure I didn\u0027t miss any \u0027i\u0027s before I did this rename.\n\nI just didn\u0027t feel right about having j being my loop variable name instead of i if I wasn\u0027t using i anymore. Sorry about the churn.",
+      "parentUuid": "0b8fa648_1b514be4",
+      "range": {
+        "startLine": 1375,
+        "startChar": 1,
+        "endLine": 1375,
+        "endChar": 10
+      },
+      "revId": "a396c4cfaa76db093b3852fcbd1b4fae26a67cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
