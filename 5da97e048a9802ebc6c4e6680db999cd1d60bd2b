@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0207754d_f35ac21f",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-05T01:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3c4f50c_7bc441f3",
+      "range": {
+        "startLine": 715,
+        "startChar": 33,
+        "endLine": 715,
+        "endChar": 38
+      },
+      "revId": "5da97e048a9802ebc6c4e6680db999cd1d60bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15e22737_37e35d70",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8bf98f_736c003b",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-05T01:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15e22737_37e35d70",
+      "range": {
+        "startLine": 718,
+        "startChar": 23,
+        "endLine": 718,
+        "endChar": 33
+      },
+      "revId": "5da97e048a9802ebc6c4e6680db999cd1d60bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5653d21e_48c78cf0",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-30T00:16:53Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 719,
+        "startChar": 18,
+        "endLine": 719,
+        "endChar": 28
+      },
+      "revId": "5da97e048a9802ebc6c4e6680db999cd1d60bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "250bd31c_6f1e8ac9",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-05T01:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5653d21e_48c78cf0",
       "range": {
         "startLine": 719,
         "startChar": 18,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8694b06a_4efe06d0",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-05T01:37:33Z",
+      "side": 1,
+      "message": "Yes, I was hoping to keep it generic enough so that it could be used for other purposes, since we already have a ton of phony targets.\n\nOther interesting files:\nDependencies outside the ec root dir (../../third_party/cryptoc/*), intermediate targets like  objects and build/*/firmware_image.lds, and odd files like *.tasklist.\n\n---\n\nMaybe this is too generic for others to understand?",
+      "parentUuid": "5dd1f4df_f9889c81",
+      "range": {
+        "startLine": 725,
+        "startChar": 2,
+        "endLine": 725,
+        "endChar": 39
+      },
+      "revId": "5da97e048a9802ebc6c4e6680db999cd1d60bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93c7c2a4_97f7e386",
         "filename": "Makefile.rules",
         "patchSetId": 3
@@ -106,6 +202,30 @@
       "writtenOn": "2020-12-30T00:16:53Z",
       "side": 1,
       "message": "Add a dependency on \"all\" so the user doesn\u0027t have to do anything?",
+      "range": {
+        "startLine": 730,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 39
+      },
+      "revId": "5da97e048a9802ebc6c4e6680db999cd1d60bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d46cc6_7dc73c9a",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-05T01:37:33Z",
+      "side": 1,
+      "message": "Right, but then the extra build output could confuse/contaminate the stdout/stderr. Even more so run with boards that have broken make rules that always force a rebuild (like bloonchipper before crrev.com/c/2593881).\n\nYes, I could force all the build output to stderr, like I did above, but I was still worried that might be confusing.\n\n---\n\nI would like this to be easy for others to understand and use, sooo I am very open to changes that make this easy for others to understand.",
+      "parentUuid": "93c7c2a4_97f7e386",
       "range": {
         "startLine": 730,
         "startChar": 1,
