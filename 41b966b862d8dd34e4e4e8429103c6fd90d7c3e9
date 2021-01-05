@@ -33,6 +33,23 @@
       "message": "LGTM, waiting EC owners to check and approve. Thanks! ",
       "revId": "41b966b862d8dd34e4e4e8429103c6fd90d7c3e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d8cb83_c8bfba32",
+        "filename": "board/boten/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-05T23:54:14Z",
+      "side": 1,
+      "message": "nit: unnecessary clause since Boten doesn\u0027t have a charger chip on the DB",
+      "revId": "41b966b862d8dd34e4e4e8429103c6fd90d7c3e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
