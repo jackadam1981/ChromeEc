@@ -34,6 +34,29 @@
       "parentUuid": "38c9be5a_ecef7ca5",
       "revId": "372318bd5d8dff0883c15d0973549ce483e7f99f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f2ca2e3_23ae0682",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-01-05T10:10:44Z",
+      "side": 1,
+      "message": "should be \"TASK_ID_HOOKS\"",
+      "range": {
+        "startLine": 683,
+        "startChar": 5,
+        "endLine": 683,
+        "endChar": 17
+      },
+      "revId": "372318bd5d8dff0883c15d0973549ce483e7f99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
