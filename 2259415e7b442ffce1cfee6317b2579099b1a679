@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c2b89a_4fd3431a",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-05T22:27:02Z",
+      "side": 1,
+      "message": "Please add CFET fields. (.cfet_mask and .cfet_off_val)",
+      "revId": "2259415e7b442ffce1cfee6317b2579099b1a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
