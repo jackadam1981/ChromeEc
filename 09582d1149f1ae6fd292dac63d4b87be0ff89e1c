@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d168d5_6a2cb7c7",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-05T19:09:46Z",
+      "side": 1,
+      "message": "nit: \"FLAGS_PRIVATE_DEFAULT\" so that it doesn\u0027t look like it\u0027s an automatically created variable like \"FLAGS_private\"?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "09582d1149f1ae6fd292dac63d4b87be0ff89e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
