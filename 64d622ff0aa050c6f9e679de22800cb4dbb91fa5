@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "331741d5_2cb3f6c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T21:20:42Z",
+      "side": 1,
+      "message": "Can you add a list of commits getting merged?\n\nI was able to do this by running \"git log --oneline \u003cprev-merge-hash\u003e..\u003cnew-merge-hash\u003e.\n\nSee CL:2605265 as an example.",
+      "revId": "64d622ff0aa050c6f9e679de22800cb4dbb91fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8d192d69_33a6abc9",
