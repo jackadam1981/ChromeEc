@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e229c340_3a81e4eb",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-05T23:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3717f35_74c8e1e1",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 36
+      },
+      "revId": "6ff3f74c9bb105e75b5ad98f0cfdf3b2df8f03b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e1c48d0_507bbb01",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-03T04:51:17Z",
       "side": 1,
       "message": "Add closing endif comment please since these are nested.",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 6
+      },
+      "revId": "6ff3f74c9bb105e75b5ad98f0cfdf3b2df8f03b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37c2315_25fbe1dd",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-05T23:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e1c48d0_507bbb01",
       "range": {
         "startLine": 396,
         "startChar": 1,
