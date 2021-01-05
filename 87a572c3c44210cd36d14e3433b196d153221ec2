@@ -241,6 +241,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4290cf2_62f0fbc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-05T21:55:11Z",
+      "side": 1,
+      "message": "efs2 uses one entry point, which is called before and after the tasks start. It was agnostic about the context. It can remain agnostic about the context if task_disable_task returns error or it has to check the context by itself (and decide not to call the API).\n\nInstead of adding checks in every caller, I think it\u0027s cleaner to add a check in one place (\u003d task_disable_task) if we don\u0027t mind adding a conditional.",
+      "parentUuid": "a29fa89b_dfabcd12",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
