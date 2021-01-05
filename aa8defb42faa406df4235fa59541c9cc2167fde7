@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2872b45a_7514722e",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T17:06:47Z",
+      "side": 1,
+      "message": "What do you think about moving this into common/usb_pd_alt_mode_ufp.c?  Only one UFP alternate mode needs to be supported per port at any given time correct?\n\nThen you wouldn\u0027t need to override pd_ufp_get_enter_mode().",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "aa8defb42faa406df4235fa59541c9cc2167fde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e506e3_10d0e505",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T17:06:47Z",
+      "side": 1,
+      "message": "Delete - this CL addresses this.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 50
+      },
+      "revId": "aa8defb42faa406df4235fa59541c9cc2167fde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ece19c_0a3799a0",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T17:06:47Z",
+      "side": 1,
+      "message": "If ufp_enter_mode[] moves to usbpd_alt_mode_ufp.c, then call the appropriate access routine here.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "aa8defb42faa406df4235fa59541c9cc2167fde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535c006e_edb05d6d",
+        "filename": "common/usb_pd_alt_mode_ufp.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T17:06:47Z",
+      "side": 1,
+      "message": "All all enter modes a single 32-bit value?  If so, change this to return uint32_t and have the caller cast to the appropriate struct.",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "aa8defb42faa406df4235fa59541c9cc2167fde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d10f52_810703a2",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T17:06:47Z",
+      "side": 1,
+      "message": "Break this out as a separate guard and early exit if UFP mode not supported.\n\nI assume this function will add a flow to enable UFP for USB4 in a future CL.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 46
+      },
+      "revId": "aa8defb42faa406df4235fa59541c9cc2167fde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "043efce9_9c0352b1",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T17:06:47Z",
+      "side": 1,
+      "message": "Nit: check against enum value USB_RETIMER",
+      "range": {
+        "startLine": 285,
+        "startChar": 6,
+        "endLine": 285,
+        "endChar": 37
+      },
+      "revId": "aa8defb42faa406df4235fa59541c9cc2167fde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a14dfee_d7a4464c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T17:06:47Z",
+      "side": 1,
+      "message": "Nit: check against TBT_CABLE_OPTICAL.",
+      "range": {
+        "startLine": 295,
+        "startChar": 6,
+        "endLine": 295,
+        "endChar": 34
+      },
+      "revId": "aa8defb42faa406df4235fa59541c9cc2167fde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49301921_c5d26b97",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T17:06:47Z",
+      "side": 1,
+      "message": "Check against UNIDIR_LSRX_COMM",
+      "range": {
+        "startLine": 320,
+        "startChar": 6,
+        "endLine": 320,
+        "endChar": 34
+      },
+      "revId": "aa8defb42faa406df4235fa59541c9cc2167fde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4963fe6d_2ac80d1c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T17:06:47Z",
+      "side": 1,
+      "message": "Check against TBT_ENTER_ACTIVE_CABLE",
+      "range": {
+        "startLine": 330,
+        "startChar": 6,
+        "endLine": 330,
+        "endChar": 30
+      },
+      "revId": "aa8defb42faa406df4235fa59541c9cc2167fde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
