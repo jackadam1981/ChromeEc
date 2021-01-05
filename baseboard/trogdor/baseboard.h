@@ -87,6 +87,13 @@
 #define CONFIG_CHARGER_PSYS_READ
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 
+/*
+ * Do not use VBUS supplier as default. Otherwise, this VBUS supplier will be
+ * used after sysjump to RW. It limits the charger input current and makes AP
+ * out of power when the battery doesn't wake up soon enough.
+ */
+#undef CONFIG_VBUS_SUPPLIER_AS_DEFAULT
+
 #define CONFIG_CHARGER_INPUT_CURRENT 512
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 2
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 10000
