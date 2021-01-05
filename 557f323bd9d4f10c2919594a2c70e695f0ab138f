@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31479d0d_c44a6613",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-05T16:40:14Z",
+      "side": 1,
+      "message": "This config option was introduced initially(by me actually) for servo_v4 as that was the first board we had that needed different SRC cap options based on port number and could also change as was was connected to the charge port also changed. So we couldn\u0027t have only have some const table that was assumed.\n\nIt assumes a function exist to return a pointer to the source cap table instead of using a const pointer. For honeybuns this allows different source caps based on port number.",
+      "parentUuid": "4f23d82d_a2778b82",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cef4b684_561a4128",
         "filename": "baseboard/honeybuns/usb_pd_policy.c",
         "patchSetId": 54
@@ -116,6 +134,24 @@
       "writtenOn": "2020-12-22T22:44:11Z",
       "side": 1,
       "message": "I\u0027m in the process of moving this to the DPM, if you want to take a look: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2597429\n\nI\u0027d think we could let the 3A port config be \u003d\u003d to your number of ports if they all can give 3A.  And then it would expect a max PDO definition, which could be set to the same as your non-max if you\u0027re never offering 1.5 A.",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d21286ff_836a6fa7",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-05T16:40:14Z",
+      "side": 1,
+      "message": "To be clear this is not just about a current limit. This is primarily to allow different source cap options for port 0 instead of port 1. Port 0 can supply any vbus level betwen 5 and 20V, but ports 1/2 are only 5V tolerant.",
+      "parentUuid": "3d1c49d7_c088acd0",
       "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
