@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "d9efb4d0_19f3a91c",
         "filename": "board/nucleo-bloonchipper/ec.tasklist",
@@ -20,8 +21,31 @@
         "endChar": 51
       },
       "revId": "2a3d0194cb07a30143d1ae688b0f89cb27e06707",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c95fad2_d610fbd3",
+        "filename": "board/nucleo-bloonchipper/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-05T21:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9efb4d0_19f3a91c",
+      "range": {
+        "startLine": 11,
+        "startChar": 25,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "2a3d0194cb07a30143d1ae688b0f89cb27e06707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
