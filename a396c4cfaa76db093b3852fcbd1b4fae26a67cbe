@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38beb3d7_13958537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-01-05T23:30:05Z",
+      "side": 1,
+      "message": "Works fine with H1, properly handles incomplete images.\n\n",
+      "revId": "a396c4cfaa76db093b3852fcbd1b4fae26a67cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8fa648_1b514be4",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-01-05T23:30:05Z",
+      "side": 1,
+      "message": "not too much of a deal, but it is better to avoid changes like this between patchsets:\n\n- makes the diffs bigger;\n-if you missed replacing i with sect somewhere the compiler would not highlight it;",
+      "range": {
+        "startLine": 1375,
+        "startChar": 1,
+        "endLine": 1375,
+        "endChar": 10
+      },
+      "revId": "a396c4cfaa76db093b3852fcbd1b4fae26a67cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
