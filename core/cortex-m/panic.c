@@ -410,11 +410,13 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 }
 #endif
 
+#ifndef CONFIG_MEMFAULT
 void bus_fault_handler(void)
 {
 	if (!bus_fault_ignored)
 		exception_panic();
 }
+#endif
 
 void ignore_bus_fault(int ignored)
 {

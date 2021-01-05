@@ -10,6 +10,10 @@
 #include "usb_console.h"
 #include "util.h"
 
+#ifdef CONFIG_MEMFAULT_SAVE_LOG
+#include "memfault/core/log.h"
+#endif
+
 #ifdef CONFIG_CONSOLE_CHANNEL
 /* Default to all channels active */
 #ifndef CC_DEFAULT
@@ -78,6 +82,7 @@ int cprintf(enum console_channel channel, const char *format, ...)
 	return rv1 == EC_SUCCESS ? rv2 : rv1;
 }
 
+__attribute__((optimize("O0")))
 int cprints(enum console_channel channel, const char *format, ...)
 {
 	int r, rv;
@@ -96,6 +101,12 @@ int cprints(enum console_channel channel, const char *format, ...)
 	if (r)
 		rv = r;
 	va_end(args);
+
+#ifdef CONFIG_MEMFAULT_SAVE_LOG
+	va_start(args, format);
+	memfault_log_save_args(kMemfaultPlatformLogLevel_Info, format, args);
+	va_end(args);
+#endif
 
 	usb_va_start(args, format);
 	r = usb_vprintf(format, args);

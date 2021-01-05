@@ -260,6 +260,7 @@ include core/$(CORE)/build.mk
 include common/build.mk
 include driver/build.mk
 include fuzz/build.mk
+include memfault/platform_port/build.mk
 include power/build.mk
 -include private/build.mk
 -include private-kandou/build.mk
@@ -296,6 +297,7 @@ endif
 all-obj-$(1)+=$(call objs_from_dir_p,common,common,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,driver,driver,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,power,power,$(1))
+all-obj-$(1)+=$(call objs_from_dir_p,memfault,memfault,$(1))
 ifdef CTS_MODULE
 all-obj-$(1)+=$(call objs_from_dir_p,cts,cts,$(1))
 endif
