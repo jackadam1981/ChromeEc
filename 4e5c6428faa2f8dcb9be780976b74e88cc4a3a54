@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "884b7b91_e722079f",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T16:13:21Z",
+      "side": 1,
+      "message": "Replace with IS_ENABLED(CONFIG_HIBERNATE_PSL_COMPENSATE_RTC)",
+      "range": {
+        "startLine": 627,
+        "startChar": 3,
+        "endLine": 629,
+        "endChar": 32
+      },
+      "revId": "4e5c6428faa2f8dcb9be780976b74e88cc4a3a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a826b762_71f9365b",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T16:13:21Z",
+      "side": 1,
+      "message": "Add an assert to verify that NPCX_LCT_SUPPORT is enabled.",
+      "range": {
+        "startLine": 641,
+        "startChar": 7,
+        "endLine": 641,
+        "endChar": 42
+      },
+      "revId": "4e5c6428faa2f8dcb9be780976b74e88cc4a3a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6515cb1a_27c024eb",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T16:13:21Z",
+      "side": 1,
+      "message": "Use IS_ENABLED() here instead.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 42
+      },
+      "revId": "4e5c6428faa2f8dcb9be780976b74e88cc4a3a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb609485_c769fd8d",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2283,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T16:13:21Z",
+      "side": 1,
+      "message": "Update the comment to indicate conditions which automatically enable this option.",
+      "range": {
+        "startLine": 2283,
+        "startChar": 0,
+        "endLine": 2283,
+        "endChar": 50
+      },
+      "revId": "4e5c6428faa2f8dcb9be780976b74e88cc4a3a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c9dbeb_018d17ad",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5962,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T16:13:21Z",
+      "side": 1,
+      "message": "This is a Nuvoton specific define and shouldn\u0027t be used in config.h.  Add a check in the NPCX code to verify NPCX_LCT_SUPPORT is present if is defined. \nSimilar to https://chromium.googlesource.com/chromiumos/platform/ec/+/1b696564/chip/npcx/system-npcx7.c#78",
+      "range": {
+        "startLine": 5962,
+        "startChar": 37,
+        "endLine": 5962,
+        "endChar": 62
+      },
+      "revId": "4e5c6428faa2f8dcb9be780976b74e88cc4a3a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b4ce5d_09a343cc",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-05T16:13:21Z",
+      "side": 1,
+      "message": "This guard can be removed once you convert the only reference to IS_ENABLED().",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 685,
+        "endChar": 42
+      },
+      "revId": "4e5c6428faa2f8dcb9be780976b74e88cc4a3a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
