@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4cedfe6_c9bced9c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-01-05T22:45:41Z",
+      "side": 1,
+      "message": "It was just me typing poorly. I meant to type \"I changed the code...\".\n\nTo support the use case that Mary brought up for the debug images, we don\u0027t validate the header because it won\u0027t be valid (on purpose).",
+      "parentUuid": "7e4f14ba_6f5ba8e9",
+      "range": {
+        "startLine": 1024,
+        "startChar": 0,
+        "endLine": 1024,
+        "endChar": 55
+      },
+      "revId": "a14a1eb8a1ad9b464f6d96ad2185f79e7f24dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77617c7e_2ba2fbaa",
@@ -220,6 +244,30 @@
       "side": 1,
       "message": "not in line 1387 ;)",
       "parentUuid": "943fb9f4_45c43ca2",
+      "range": {
+        "startLine": 1382,
+        "startChar": 7,
+        "endLine": 1382,
+        "endChar": 13
+      },
+      "revId": "a14a1eb8a1ad9b464f6d96ad2185f79e7f24dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "029b0982_928a107c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-01-05T22:45:41Z",
+      "side": 1,
+      "message": "You got me again! :) Updated.",
+      "parentUuid": "8d1b0331_a1178a04",
       "range": {
         "startLine": 1382,
         "startChar": 7,
