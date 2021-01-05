@@ -2488,6 +2488,13 @@
 #undef CONFIG_IT83XX_FLASH_CLOCK_48MHZ
 
 /*
+ * If this option is enabled, EC will assert GPG1 pin to reset itself instead of
+ * triggering an internal reset while receiving a hard reset request.
+ * IMPORTANT: Don't enable this option if board doesn't support the mechanism.
+ */
+#undef CONFIG_IT83XX_HARD_RESET_BY_GPG1
+
+/*
  * Enable it if EC's VBAT won't go low when system's power isn't
  * presented (no battery and no AC)
  * If EC's VSTBY and VBAT(power source of BRAM) aren't connected to the same
