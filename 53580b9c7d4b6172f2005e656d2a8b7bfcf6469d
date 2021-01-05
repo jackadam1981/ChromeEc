@@ -22,6 +22,30 @@
       },
       "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb62cb4_9969d7c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-01-05T23:46:48Z",
+      "side": 1,
+      "message": "In other words, there should be a TEST\u003d that makes sure there\u0027s no way our dut can use more than 500mA when we\u0027re on a crappy A-\u003eC non BC1.2 situation as a result of this change at RO-\u003eRW time.",
+      "parentUuid": "ded5bac0_a9574988",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
