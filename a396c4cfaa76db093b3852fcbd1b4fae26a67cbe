@@ -63,6 +63,30 @@
       },
       "revId": "a396c4cfaa76db093b3852fcbd1b4fae26a67cbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd260f2_abaf5c3c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-01-05T23:47:43Z",
+      "side": 1,
+      "message": "I understand the angst of using j without i 😊\n\nBut as a reviewer I would really prefer to avoid the churn.",
+      "parentUuid": "cefa53e1_3815c9f0",
+      "range": {
+        "startLine": 1375,
+        "startChar": 1,
+        "endLine": 1375,
+        "endChar": 10
+      },
+      "revId": "a396c4cfaa76db093b3852fcbd1b4fae26a67cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
