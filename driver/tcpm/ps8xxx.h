@@ -80,6 +80,7 @@
 #define PS8XXX_REG_MUX_USB_C2SS_EQ              0xE7
 #define PS8XXX_REG_MUX_USB_C2SS_HS_THRESHOLD    0xE8
 #define PS8751_REG_MUX_USB_DCI_CFG              0xED
+#define PS8751_REG_FORCE_CHIP_STANDBY           0xEE
 #endif
 
 /* Vendor defined registers */
