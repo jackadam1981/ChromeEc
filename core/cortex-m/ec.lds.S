@@ -315,6 +315,13 @@ SECTIONS
 		KEEP(*(.rodata.deferred))
 		__deferred_funcs_end = .;
 
+#ifdef CONFIG_MEMFAULT
+		. = ALIGN(4);
+		__memfault_capture = .;
+		KEEP(*(SORT(.rodata.mflt*)))
+		__memfault_capture_end = .;
+#endif
+
 		__usb_desc = .;
 		KEEP(*(.rodata.usb_desc_conf))
 		KEEP(*(SORT(.rodata.usb_desc*)))
@@ -357,6 +364,14 @@ SECTIONS
 	#define INIT_ROM_LMA	ORIGIN(ROM_RESIDENT_VMA)
 #endif
 
+#ifdef MEMFAULT
+	.memfault_noinit(NOLOAD): {
+		KEEP(*(*.mflt_coredump))
+		KEEP(*(*.mflt_events))
+		KEEP(*(*.mflt_reboots))
+	} > IRAM
+#endif
+
 #ifdef CONFIG_PRESERVE_LOGS
 	.preserve_logs(NOLOAD) : {
 		. = ALIGN(8);
@@ -390,6 +405,8 @@ SECTIONS
 		STRINGIFY(OUTDIR/common/tpm_registers.o*)(.bss)
 			*(.bss.Tpm2_common)
 		__bss_libtpm2_end = .;
+
+		__bss_after_system_stack = .;
 
 		*(.bss)
 

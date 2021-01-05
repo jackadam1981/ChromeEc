@@ -183,9 +183,11 @@ main() {
     # the build version timestamp.
     # shellcheck disable=SC2012
     most_recent_file="$(ls -t "${most_recents[@]}"| head -1)"
-    timestamp="$(stat -c '%y' "${most_recent_file}" | sed 's/\..*//')"
+    date="$(stat -c '%y' "${most_recent_file}" | sed 's/\..*//')"
+    timestamp="$(stat -c '%Y' "${most_recent_file}" | sed 's/\..*//')"
     echo "/* Repo is dirty, using time of most recent file modification. */"
-    echo "#define DATE \"${timestamp}\""
+    echo "#define DATE \"${date}\""
+    echo "#define TIMESTAMP ${timestamp}"
   else
     echo "/* Repo is clean, use the commit date of the last commit. */"
     # If called from an ebuild we won't have a git repo, so redirect stderr
@@ -195,6 +197,13 @@ main() {
         git -C "${git_dir}" log -1 --format='%ct %ci' HEAD 2>/dev/null
       done | sort | tail -1 | cut -d ' ' -f '2 3')"
     echo "#define DATE \"${gitdate}\""
+
+    gittimestamp="$(
+      for git_dir in "${dir_list[@]}"; do
+        git -C "${git_dir}" log -1 --format='%ct' HEAD 2>/dev/null
+      done | sort | tail -1)"
+    echo "#define TIMESTAMP ${gittimestamp}"
+
   fi
 }
 
