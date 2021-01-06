@@ -10,7 +10,9 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#ifndef CONFIG_ZEPHYR
 #include "cpu.h"
+#endif
 #include "cros_board_info.h"
 #include "dma.h"
 #include "flash.h"
