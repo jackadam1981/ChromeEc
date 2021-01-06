@@ -110,6 +110,30 @@
       },
       "revId": "660672aa5427c1e33de000c47ecc5b9e31e89641",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d00a946_1e605ea6",
+        "filename": "core/riscv-rv32i/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-01-06T07:53:59Z",
+      "side": 1,
+      "message": "I believe __ubsan_handle_divrem_overflow does not get called if -fsanitize-undefined-trap-on-error is selected.",
+      "parentUuid": "fc33e32e_c17ac2f5",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "660672aa5427c1e33de000c47ecc5b9e31e89641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
