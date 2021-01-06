@@ -34,6 +34,24 @@
       "parentUuid": "2afe5f44_2dfbf4d1",
       "revId": "4a97fb15288a4b5373480fcd58a652825e13418d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81005f68_5416225e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-01-06T23:09:07Z",
+      "side": 1,
+      "message": "My recommendation will be to still use EC_ error. And if calling function is only checking non-zero then perhaps just if(rv) return EC_ERROR_* is good enough instead of differentiating between VENDOR_ID data failure and i2c read failure. Or we can leave as is and let Google review it.",
+      "parentUuid": "dd3428f5_739043da",
+      "revId": "4a97fb15288a4b5373480fcd58a652825e13418d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
