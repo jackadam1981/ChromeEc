@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c11fd06_6fae3fe8",
+        "filename": "board/sasuke/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-06T22:59:33Z",
+      "side": 1,
+      "message": "Could this use the board_init field of the usb_mux structure instead?",
+      "revId": "1578b26d4e03ecd90d2592419aee1858337f8ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
