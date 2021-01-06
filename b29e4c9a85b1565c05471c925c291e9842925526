@@ -69,6 +69,24 @@
       "parentUuid": "e98bf868_590327a6",
       "revId": "b29e4c9a85b1565c05471c925c291e9842925526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b03bdd_d25e9c72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-06T23:17:36Z",
+      "side": 1,
+      "message": "The public portion of tcpci.h should be the items needed by the board specific files.  Ideally, this would be limited to the tcpci_tcpm_drv and tcpci_tcpm_usb_mux_driver externs.  \n\nEverything else would be private to the tcpc directory (instead of private to tcpci.c only) and available to all the other chip drivers such tusb411 and rt1715, etc.\n\nTaking a quick look, it appears that there quite a few board files that reference TCPC_REG_ definitions directly instead of going through an API.  This will definitely need cleanup before this would be accepted upstream.\n\nFor now, this seems like the least painful way to get USB-C compiling with zephyr-chrome.",
+      "parentUuid": "8f4131ff_f7d811c0",
+      "revId": "b29e4c9a85b1565c05471c925c291e9842925526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
