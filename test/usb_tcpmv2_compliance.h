@@ -23,7 +23,7 @@ enum mock_connect_result {
 };
 
 
-extern int partner_tx_id;
+extern int partner_tx_id[];
 
 extern uint32_t rdo;
 extern uint32_t pdo;
