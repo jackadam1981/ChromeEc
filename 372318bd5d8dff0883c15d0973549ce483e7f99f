@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac9eb8c_fe322fc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-01-06T01:54:30Z",
+      "side": 1,
+      "message": "use udelay() can boot normally, But why does this problem occur? Isn\u0027t usleep also called udelay?",
+      "parentUuid": "b5189911_968994bd",
+      "revId": "372318bd5d8dff0883c15d0973549ce483e7f99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f2ca2e3_23ae0682",
