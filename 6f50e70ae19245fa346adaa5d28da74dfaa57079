@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34edf452_bd57dbb7",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-06T18:37:28Z",
+      "side": 1,
+      "message": "why is this __overridable?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 13
+      },
+      "revId": "6f50e70ae19245fa346adaa5d28da74dfaa57079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec486349_0bfba74b",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-06T18:37:28Z",
+      "side": 1,
+      "message": "should a bogus/valid value be placed in *temp_ptr? This would allow callers to continue correctly instead of having an unknown value to base execution on.",
+      "range": {
+        "startLine": 239,
+        "startChar": 37,
+        "endLine": 239,
+        "endChar": 45
+      },
+      "revId": "6f50e70ae19245fa346adaa5d28da74dfaa57079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
