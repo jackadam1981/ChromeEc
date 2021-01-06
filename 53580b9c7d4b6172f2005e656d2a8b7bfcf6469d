@@ -70,6 +70,23 @@
       },
       "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "962f9330_c1a59eec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-06T09:52:40Z",
+      "side": 1,
+      "message": "LGTM. Seems a valid solution. The only side-effect might be a dut starting to draw non-default input_current until a charger type detected.",
+      "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
