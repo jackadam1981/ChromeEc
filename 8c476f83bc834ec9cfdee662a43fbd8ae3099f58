@@ -22,6 +22,30 @@
       },
       "revId": "8c476f83bc834ec9cfdee662a43fbd8ae3099f58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3679e57e_ce2bfd1d",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-06T22:21:37Z",
+      "side": 1,
+      "message": "This is a good idea, as it then need not be handled separately in board files.",
+      "parentUuid": "daa7868c_4d5e1fa5",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 2
+      },
+      "revId": "8c476f83bc834ec9cfdee662a43fbd8ae3099f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
