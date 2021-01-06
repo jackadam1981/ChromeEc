@@ -147,6 +147,30 @@
       },
       "revId": "b0172220080924a9817e6dfc1dbb8e23653dc459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76c6b6fd_0ebda56f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-06T22:29:00Z",
+      "side": 1,
+      "message": "I think the API name is a good one to clearly reflect the circumstances where we\u0027re using it.  We can always revisit later if needed.",
+      "parentUuid": "876a4114_41b46986",
+      "range": {
+        "startLine": 958,
+        "startChar": 0,
+        "endLine": 959,
+        "endChar": 40
+      },
+      "revId": "b0172220080924a9817e6dfc1dbb8e23653dc459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
