@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec36810_6f4d2c4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-06T23:40:15Z",
+      "side": 1,
+      "message": "Looks like there\u0027s a build failure:\n\n /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/nucleo-bloonchipper/RW/driver/fingerprint/fpc/bep/fpc_private.o: in function `fp_maintenance\u0027:\n/mnt/host/source/src/platform/ec/driver/fingerprint/fpc/bep/fpc_private.c:273: undefined reference to `fpc_fp_maintenance\u0027\ncollect2: error: ld returned 1 exit status\nmake[2]: *** [Makefile.rules:519: build/nucleo-bloonchipper/RW/ec.RW.elf] Error 1\nmake[1]: *** [Makefile.rules:242: proj-nucleo-bloonchipper] Error 2\nmake[1]: *** Waiting for unfinished jobs....",
+      "revId": "1fee831b64fc64f4f3b88a5dd58e6633d3548b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9215dd37_c7cbf098",
+        "filename": "board/nucleo-bloonchipper/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-06T23:40:15Z",
+      "side": 1,
+      "message": "nit: I think the EC style is not to have the indents",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "1fee831b64fc64f4f3b88a5dd58e6633d3548b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ee6a547_a4725d94",
+        "filename": "board/nucleo-bloonchipper/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-06T23:40:15Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "1fee831b64fc64f4f3b88a5dd58e6633d3548b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6ff10c_a9e95b43",
+        "filename": "board/nucleo-bloonchipper/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-06T23:40:15Z",
+      "side": 1,
+      "message": "Add fpsensor test: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2507951",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "1fee831b64fc64f4f3b88a5dd58e6633d3548b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c2e0f4_7e3a2466",
+        "filename": "board/nucleo-bloonchipper/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-06T23:40:15Z",
+      "side": 1,
+      "message": "Remove: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2444455",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "1fee831b64fc64f4f3b88a5dd58e6633d3548b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
