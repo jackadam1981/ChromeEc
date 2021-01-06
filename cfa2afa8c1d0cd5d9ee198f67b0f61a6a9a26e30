@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d0df465_6d82fdbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-06T08:00:12Z",
+      "side": 1,
+      "message": "can you test `make buildall` as well?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "cfa2afa8c1d0cd5d9ee198f67b0f61a6a9a26e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59d50159_ca8ae8c5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -14,6 +37,23 @@
       "writtenOn": "2021-01-05T09:37:34Z",
       "side": 1,
       "message": "Cq-Depend: CB:49113",
+      "revId": "cfa2afa8c1d0cd5d9ee198f67b0f61a6a9a26e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4c0d92_7cecc099",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-06T08:00:12Z",
+      "side": 1,
+      "message": "can you try buil",
       "revId": "cfa2afa8c1d0cd5d9ee198f67b0f61a6a9a26e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
