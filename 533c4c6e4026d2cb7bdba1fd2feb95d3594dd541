@@ -22,6 +22,30 @@
       },
       "revId": "533c4c6e4026d2cb7bdba1fd2feb95d3594dd541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ab1874_1178d38d",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2021-01-06T08:58:44Z",
+      "side": 1,
+      "message": "How about EC_SELF_RST?",
+      "parentUuid": "f36d0410_ebd18e7c",
+      "range": {
+        "startLine": 281,
+        "startChar": 19,
+        "endLine": 281,
+        "endChar": 25
+      },
+      "revId": "533c4c6e4026d2cb7bdba1fd2feb95d3594dd541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
