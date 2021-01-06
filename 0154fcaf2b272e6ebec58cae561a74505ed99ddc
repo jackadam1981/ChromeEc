@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95f02c4_9c6a0be8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1449,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-06T20:25:35Z",
+      "side": 1,
+      "message": "Did you find this was necessary?  We should reassess the charge manager flags as we start up again after the hard reset.  \n\nIf we didn\u0027t get source caps from the partner on startup, then I don\u0027t believe we\u0027d have any way of knowing whether it was dual role at this point.",
+      "revId": "0154fcaf2b272e6ebec58cae561a74505ed99ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef36c35_73d466cb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-06T20:25:35Z",
+      "side": 1,
+      "message": "As a best practice, set_state should only be called from within the PD tasks.  I believe this hook will be running in the context of the charger task.\n\nCould this instead use pd_send_hard_reset()?  That should be task-safe",
+      "revId": "0154fcaf2b272e6ebec58cae561a74505ed99ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
