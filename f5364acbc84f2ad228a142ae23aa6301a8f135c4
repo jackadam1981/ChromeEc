@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "699da6be_7184ee8f",
+        "filename": "driver/fingerprint/elan/build.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2021-01-06T08:45:31Z",
+      "side": 1,
+      "message": "Fixed and moved that part to ec/private/fingerprint/elan/build.mk.",
+      "parentUuid": "0737cd98_a84cbc08",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "f5364acbc84f2ad228a142ae23aa6301a8f135c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10694baa_54909ebb",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-15T00:32:59Z",
       "side": 1,
       "message": "You\u0027ll need to either change this to $(_elan_cur_dir)/../../../private/fingerprint/elan, or move everything after line 17 to ec/private/fingerprint/elan/build.mk.",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "f5364acbc84f2ad228a142ae23aa6301a8f135c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "599ec10d_1b372f48",
+        "filename": "driver/fingerprint/elan/build.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2021-01-06T08:45:31Z",
+      "side": 1,
+      "message": "I moved everything after line 17 to ec/private/fingerprint/elan/build.mk.",
+      "parentUuid": "10694baa_54909ebb",
       "range": {
         "startLine": 26,
         "startChar": 25,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6d81cbf_c673be37",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2021-01-06T08:45:31Z",
+      "side": 1,
+      "message": "Implemented in PS13.",
+      "parentUuid": "3419d763_6d47815f",
+      "revId": "f5364acbc84f2ad228a142ae23aa6301a8f135c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddf298d7_77e71df6",
@@ -94,6 +160,24 @@
       "writtenOn": "2020-12-14T23:30:30Z",
       "side": 1,
       "message": "nit: Newline needed",
+      "revId": "f5364acbc84f2ad228a142ae23aa6301a8f135c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a180ed73_928cb6fb",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2021-01-06T08:45:31Z",
+      "side": 1,
+      "message": "Fixed in PS13",
+      "parentUuid": "ddf298d7_77e71df6",
       "revId": "f5364acbc84f2ad228a142ae23aa6301a8f135c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

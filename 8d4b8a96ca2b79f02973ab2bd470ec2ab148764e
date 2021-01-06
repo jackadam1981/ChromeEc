@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cda1be5_6e11e920",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2021-01-06T08:45:31Z",
+      "side": 1,
+      "message": "I used repohooks/clang-format.py to fix all of these in PS13.",
+      "parentUuid": "b9945526_e5f7d9a5",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 6
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c3576f6_ec714d35",
