@@ -5,3 +5,7 @@
 #
 # Brya baseboard specific files build
 #
+
+baseboard-y=
+baseboard-$(CONFIG_BATTERY)+=battery_presence.o
+baseboard-y+=usb_pd_policy.o
