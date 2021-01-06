@@ -17,6 +17,7 @@
 #include "driver/ppc/aoz1380.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/nct38xx.h"
+#include "driver/temp_sensor/sb_tsi.h"
 #include "gpio.h"
 #include "i2c.h"
 #include "ioexpander.h"
@@ -26,6 +27,7 @@
 #include "power.h"
 #include "temp_sensor.h"
 #include "thermal.h"
+#include "thermistor.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
@@ -160,26 +162,26 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_SOC] = {
 		.name = "SOC",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = baseboard_get_temp,
+		.read = board_get_temp_adc,
 		.idx = TEMP_SENSOR_SOC,
 	},
 	[TEMP_SENSOR_CHARGER] = {
 		.name = "Charger",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = baseboard_get_temp,
+		.read = board_get_temp_adc,
 		.idx = TEMP_SENSOR_CHARGER,
 	},
 	[TEMP_SENSOR_MEMORY] = {
 		.name = "Memory",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = baseboard_get_temp,
+		.read = board_get_temp_adc,
 		.idx = TEMP_SENSOR_MEMORY,
 	},
 	[TEMP_SENSOR_CPU] = {
 		.name = "CPU",
 		.type = TEMP_SENSOR_TYPE_CPU,
-		.read = baseboard_get_temp,
-		.idx = TEMP_SENSOR_CPU,
+		.read = sb_tsi_get_val,
+		.idx = 0,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
@@ -231,6 +233,39 @@ struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+/*
+ * We use 11 as the scaling factor so that the maximum mV value below (2761)
+ * can be compressed to fit in a uint8_t.
+ */
+#define THERMISTOR_SCALING_FACTOR 11
+
+/*
+ * Values are calculated from the "Resistance VS. Temperature" table on the
+ * Murata page for part NCP15WB473F03RC. Vdd=3.3V, R=30.9Kohm.
+ */
+const struct thermistor_data_pair thermistor_data[] = {
+	{ 2761 / THERMISTOR_SCALING_FACTOR, 0},
+	{ 2492 / THERMISTOR_SCALING_FACTOR, 10},
+	{ 2167 / THERMISTOR_SCALING_FACTOR, 20},
+	{ 1812 / THERMISTOR_SCALING_FACTOR, 30},
+	{ 1462 / THERMISTOR_SCALING_FACTOR, 40},
+	{ 1146 / THERMISTOR_SCALING_FACTOR, 50},
+	{ 878 / THERMISTOR_SCALING_FACTOR, 60},
+	{ 665 / THERMISTOR_SCALING_FACTOR, 70},
+	{ 500 / THERMISTOR_SCALING_FACTOR, 80},
+	{ 434 / THERMISTOR_SCALING_FACTOR, 85},
+	{ 376 / THERMISTOR_SCALING_FACTOR, 90},
+	{ 326 / THERMISTOR_SCALING_FACTOR, 95},
+	{ 283 / THERMISTOR_SCALING_FACTOR, 100}
+};
+
+const struct thermistor_info thermistor_info = {
+	.scaling_factor = THERMISTOR_SCALING_FACTOR,
+	.num_pairs = ARRAY_SIZE(thermistor_data),
+	.data = thermistor_data,
+};
+
 
 /*
  * Battery info for all Zork battery types. Note that the fields
@@ -525,10 +560,42 @@ void bc12_interrupt(enum gpio_signal signal)
 	}
 }
 
-int baseboard_get_temp(int idx, int *temp_ptr)
+int board_get_temp_adc(int idx, int *temp_k)
 {
-	/* TODO */
-	return 0;
+	int mv;
+	int temp_c;
+	enum adc_channel channel;
+
+	/* idx is the sensor index set in board temp_sensors[] */
+	switch (idx) {
+	case TEMP_SENSOR_SOC:
+		/* thermistor is not powered in G3 */
+		if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+			return EC_ERROR_NOT_POWERED;
+
+		channel = ADC_TEMP_SENSOR_SOC;
+		break;
+	case TEMP_SENSOR_CHARGER:
+		channel = ADC_TEMP_SENSOR_CHARGER;
+		break;
+	case TEMP_SENSOR_MEMORY:
+		/* thermistor is not powered in G3 */
+		if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+			return EC_ERROR_NOT_POWERED;
+
+		channel = ADC_TEMP_SENSOR_MEMORY;
+		break;
+	default:
+		return EC_ERROR_INVAL;
+	}
+
+	mv = adc_read_channel(channel);
+	if (mv < 0)
+		return EC_ERROR_INVAL;
+
+	temp_c = thermistor_linear_interpolate(mv, &thermistor_info);
+	*temp_k = C_TO_K(temp_c);
+	return EC_SUCCESS;
 }
 
 int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
