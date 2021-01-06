@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b72de9_6fdf0aaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-06T16:03:56Z",
+      "side": 1,
+      "message": "Does this compile if you split tcpci.h as follows?\nprivate: all #define TCPC_REG_* \npublic: everything else (extern const struct tcpm_drv tcpci_tcpm_drv; to end of file)",
+      "revId": "b29e4c9a85b1565c05471c925c291e9842925526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
