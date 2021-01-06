@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
 #include "hooks.h"
 #include "mock/tcpci_i2c_mock.h"
 #include "mock/usb_mux_mock.h"
@@ -415,4 +416,114 @@ int handle_attach_expected_msgs(enum pd_data_role data_role)
 	}
 	task_wait_event(1 * SECOND);
 	return EC_SUCCESS;
+}
+
+
+
+
+/*****************************************************************************
+ * Battery functions needed to enable CONFIG_BATTERY
+ */
+static int batt_soc = 100;
+int board_get_battery_soc(void)
+{
+	return batt_soc;
+}
+
+int battery_status(int *status)
+{
+	*status = 0;
+	return 0;
+}
+
+int battery_serial_number(int *serial)
+{
+	*serial = 0;
+	return 0;
+}
+
+int battery_design_voltage(int *voltage)
+{
+	*voltage = 5000;
+	return 0;
+}
+
+int battery_get_mode(int *mode)
+{
+	*mode = 0;
+	return 0;
+}
+
+int battery_state_of_charge_abs(int *percent)
+{
+	*percent = 100;
+	return 0;
+}
+
+int battery_remaining_capacity(int *capacity)
+{
+	*capacity = 100;
+	return 0;
+}
+
+int battery_full_charge_capacity(int *capacity)
+{
+	*capacity = 100;
+	return 0;
+}
+
+int battery_design_capacity(int *capacity)
+{
+	*capacity = 100;
+	return 0;
+}
+
+int battery_time_to_empty(int *minutes)
+{
+	*minutes = 10;
+	return 0;
+}
+
+int battery_run_time_to_empty(int *minutes)
+{
+	*minutes = 10;
+	return 0;
+}
+
+int battery_time_to_full(int *minutes)
+{
+	*minutes = 0;
+	return 0;
+}
+
+int battery_device_name(char *dest, int size)
+{
+	dest[0] = '?';
+	dest[1] = '\0';
+	return 0;
+}
+
+int battery_device_chemistry(char *dest, int size)
+{
+	dest[0] = '?';
+	dest[1] = '\0';
+	return 0;
+}
+
+void battery_get_params(struct batt_params *batt)
+{
+	struct batt_params batt_new = {0};
+
+	batt_new.temperature = 20;
+	batt_new.state_of_charge = 100;
+	batt_new.voltage = 5000;
+	batt_new.current = 3000;
+	batt_new.desired_voltage = 5000;
+	batt_new.desired_current = 3000;
+	batt_new.remaining_capacity = 100;
+	batt_new.full_capacity = 100;
+	batt_new.status = 0;
+	batt_new.is_present = BP_YES;
+
+	memcpy(batt, &batt_new, sizeof(*batt));
 }

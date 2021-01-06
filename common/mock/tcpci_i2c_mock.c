@@ -282,6 +282,80 @@ int verify_tcpci_tx_with_data(enum tcpm_transmit_type tx_type,
 	}
 	return rv;
 }
+
+static int verify_possible_tx(enum tcpm_transmit_type want_tx_type,
+			      enum pd_ctrl_msg_type want_ctrl_msg,
+			      enum pd_data_msg_type want_data_msg,
+			      int timeout)
+{
+	uint64_t end_time = get_time().val + timeout;
+
+	/* Now wait for the expected message to be transmitted. */
+	while (get_time().val < end_time) {
+		if (tcpci_regs[TCPC_REG_TRANSMIT].value != 0) {
+			int tx_type = TCPC_REG_TRANSMIT_TYPE(
+				tcpci_regs[TCPC_REG_TRANSMIT].value);
+			uint16_t header = UINT16_FROM_BYTE_ARRAY_LE(
+						tx_buffer, 1);
+			int pd_type  = PD_HEADER_TYPE(header);
+			int pd_cnt   = PD_HEADER_CNT(header);
+
+			if (tx_type != want_tx_type)
+				return EC_ERROR_UNKNOWN;
+
+			if (want_ctrl_msg != 0) {
+				if (pd_type != want_ctrl_msg ||
+				    pd_cnt != 0)
+					return EC_ERROR_UNKNOWN;
+			}
+			if (want_data_msg != 0) {
+				if (pd_type != want_data_msg ||
+				    pd_cnt == 0)
+					return EC_ERROR_UNKNOWN;
+			}
+
+			tcpci_regs[TCPC_REG_TRANSMIT].value = 0;
+			return EC_SUCCESS;
+		}
+		task_wait_event(5 * MSEC);
+	}
+	return EC_ERROR_UNKNOWN;
+}
+
+int verify_tcpci_possible_tx(enum tcpm_transmit_type tx_type,
+			     enum pd_ctrl_msg_type ctrl_msg,
+			     enum pd_data_msg_type data_msg)
+{
+	return verify_possible_tx(tx_type,
+				  ctrl_msg, data_msg,
+				  VERIFY_TIMEOUT);
+}
+
+int verify_tcpci_possible_tx_with_data(enum tcpm_transmit_type tx_type,
+				       enum pd_data_msg_type data_msg,
+				       uint8_t *data,
+				       int data_bytes,
+				       int *msg_len,
+				       int timeout)
+{
+	int rv;
+
+	if (timeout <= 0)
+		timeout = VERIFY_TIMEOUT;
+
+	rv = verify_possible_tx(tx_type,
+				0, data_msg,
+				timeout);
+	if (!rv) {
+		TEST_NE(data, NULL, "%p");
+		TEST_GE(data_bytes, tx_msg_cnt, "%d");
+		memcpy(data, tx_buffer, tx_msg_cnt);
+		if (msg_len)
+			*msg_len = tx_msg_cnt;
+	}
+	return rv;
+}
+
 void mock_tcpci_receive(enum pd_msg_type sop, uint16_t header,
 			uint32_t *payload)
 {
