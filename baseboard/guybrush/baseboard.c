@@ -531,8 +531,34 @@ int baseboard_get_temp(int idx, int *temp_ptr)
 	return 0;
 }
 
+/**
+ * Return if VBUS is sagging too low
+ */
 int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 {
-	/* TODO */
-	return false;
+	int voltage = 0;
+	int rv;
+
+	rv = charger_get_vbus_voltage(port, &voltage);
+
+	if (rv) {
+		ccprints("%s rv=%d", __func__, rv);
+		return 0;
+	}
+
+	/*
+	 * b/168569046: The ISL9241 sometimes incorrectly reports 0 for unknown
+	 * reason, causing ramp to stop at 0.5A. Workaround this by ignoring 0.
+	 * This partly defeats the point of ramping, but will still catch
+	 * VBUS below 4.5V and above 0V.
+	 */
+	if (voltage == 0) {
+		ccprints("%s vbus=0", __func__);
+		return 0;
+	}
+
+	if (voltage < BC12_MIN_VOLTAGE)
+		ccprints("%s vbus=%d", __func__, voltage);
+
+	return voltage < BC12_MIN_VOLTAGE;
 }
