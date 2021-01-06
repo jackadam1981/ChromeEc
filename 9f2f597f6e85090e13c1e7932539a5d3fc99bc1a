@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777dfdcc_03ff6537",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-06T23:34:12Z",
+      "side": 1,
+      "message": "What about our stored message ID?  I see the spec says:\n\nOn entry to the PRL_Tx_Layer_Reset_for_Transmit state the Protocol Layer Shall reset the MessageIDCounter. The Protocol Layer Shall transition Protocol Layer Message reception to the PRL_Rx_Wait_for_PHY_Message state (see Section 6.11.2.3.1) in order to reset the stored MessageID.\n\nThough I\u0027m honestly not seeing how that state transition would result in the stored MessageID clearing?  It seems like we\u0027d need to go through the RX layer reset instead.  Or just reset it here, since we have no PRL RX states to speak of in our implementation.",
+      "revId": "9f2f597f6e85090e13c1e7932539a5d3fc99bc1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f229d129_dbc8dd23",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2076,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-06T23:34:12Z",
+      "side": 1,
+      "message": "I thought this type would be stored in \"type\" from the header?",
+      "range": {
+        "startLine": 2076,
+        "startChar": 29,
+        "endLine": 2076,
+        "endChar": 51
+      },
+      "revId": "9f2f597f6e85090e13c1e7932539a5d3fc99bc1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
