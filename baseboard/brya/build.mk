@@ -7,4 +7,5 @@
 #
 
 baseboard-y=
-baseboard-y+=battery_presence.o
+baseboard-$(CONFIG_BATTERY)+=battery_presence.o
+baseboard-y+=usb_pd_policy.o
