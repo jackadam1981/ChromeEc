@@ -51,6 +51,24 @@
       "message": "It may not be worth such fine-grained splitting between public/private if we are carefully selecting constants for the public header file.\n\nWas there a significant reason to not just put all the headers under include/tcpc?",
       "revId": "b29e4c9a85b1565c05471c925c291e9842925526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4131ff_f7d811c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-06T22:56:53Z",
+      "side": 1,
+      "message": "We did that at first, but in general very few of the header contents are used by anything other than the corresponding driver.\n\nThe exception seems to be tcpci.h as mentioned above.",
+      "parentUuid": "e98bf868_590327a6",
+      "revId": "b29e4c9a85b1565c05471c925c291e9842925526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
