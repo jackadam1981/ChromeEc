@@ -14,8 +14,6 @@
 #include "usb_tcpmv2_compliance.h"
 #include "usb_tc_sm.h"
 
-int partner_tx_id;
-
 uint32_t rdo = RDO_FIXED(1, 500, 500, 0);
 uint32_t pdo = PDO_FIXED(5000, 3000,
 			 PDO_FIXED_DUAL_ROLE |
@@ -119,6 +117,7 @@ enum pd_rev_type partner_get_pd_rev(void)
 	return partner_pd_rev;
 }
 
+int partner_tx_id[6];
 void partner_send_msg(enum pd_msg_type sop,
 		      uint16_t type,
 		      uint16_t cnt,
@@ -127,18 +126,18 @@ void partner_send_msg(enum pd_msg_type sop,
 {
 	uint16_t header;
 
-	partner_tx_id &= 7;
+	partner_tx_id[sop] &= 7;
 	header = PD_HEADER(type,
 			sop == PD_MSG_SOP ? partner_get_power_role()
 			: PD_PLUG_FROM_CABLE,
 			partner_get_data_role(),
-			partner_tx_id,
+			partner_tx_id[sop],
 			cnt,
 			partner_get_pd_rev(),
 			ext);
 
 	mock_tcpci_receive(sop, header, payload);
-	partner_tx_id++;
+	++partner_tx_id[sop];
 	mock_set_alert(TCPC_REG_ALERT_RX_STATUS);
 }
 

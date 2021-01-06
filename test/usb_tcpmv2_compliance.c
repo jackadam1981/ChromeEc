@@ -13,7 +13,11 @@
 
 void before_test(void)
 {
-	partner_tx_id = 0;
+	int sop;
+
+	for (sop = PD_MSG_SOP; sop <= PD_MSG_SOP_CBL_RST; ++sop)
+		partner_tx_id[sop] = 0;
+
 	partner_set_pd_rev(PD_REV30);
 
 	mock_usb_mux_reset();
