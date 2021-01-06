@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba0c628_13bbf7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-06T00:01:25Z",
+      "side": 1,
+      "message": "Looks good!  I\u0027d like to request one comment change to avoid confusion with the function",
+      "revId": "4ed12291c677ab5557ac3d1483624ec8331e2c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57676f25_d933aac1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-06T00:01:25Z",
+      "side": 1,
+      "message": "Comment no longer matches code.  This block can likely be deleted since the comments at 1518 are covering the conditions here",
+      "range": {
+        "startLine": 1540,
+        "startChar": 26,
+        "endLine": 1541,
+        "endChar": 44
+      },
+      "revId": "4ed12291c677ab5557ac3d1483624ec8331e2c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
