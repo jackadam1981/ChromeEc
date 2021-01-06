@@ -22,6 +22,30 @@
       },
       "revId": "a8cab170448cdbfb19c92d10acd0d009541ae1f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b74a729_7969be66",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1583,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-01-06T20:31:16Z",
+      "side": 1,
+      "message": "I don\u0027t know if we can change the register names.",
+      "parentUuid": "fe47533b_a0c00781",
+      "range": {
+        "startLine": 1583,
+        "startChar": 37,
+        "endLine": 1583,
+        "endChar": 41
+      },
+      "revId": "a8cab170448cdbfb19c92d10acd0d009541ae1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
