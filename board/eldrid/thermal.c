@@ -152,7 +152,7 @@ int fan_table_to_rpm(int fan, int *temp)
 	CPRINTS("temp: %d, prev_temp: %d", temp[TEMP_SENSOR_3_DDR_SOC],
 		prev_temp[TEMP_SENSOR_3_DDR_SOC]);
 	if (temp[TEMP_SENSOR_3_DDR_SOC] < prev_temp[TEMP_SENSOR_3_DDR_SOC]) {
-		for (i = current_level; i > 0; i--) {
+		for (i = current_level-1; i > 0; i--) {
 			if (temp[TEMP_SENSOR_3_DDR_SOC] <
 				fan_table[i].off[TEMP_SENSOR_3_DDR_SOC])
 				current_level = i - 1;
