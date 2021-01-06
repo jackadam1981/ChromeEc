@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daa7868c_4d5e1fa5",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-06T06:05:12Z",
+      "side": 1,
+      "message": "instead of 40ms delay add a 2-loops with 20ms delay too handle shared retimer init",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 2
+      },
+      "revId": "8c476f83bc834ec9cfdee662a43fbd8ae3099f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
