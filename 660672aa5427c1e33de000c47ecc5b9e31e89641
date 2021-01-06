@@ -16,6 +16,24 @@
       "message": "Does anyone of you know what happens if we call ebreak within an interrupt?",
       "revId": "660672aa5427c1e33de000c47ecc5b9e31e89641",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062c363d_8fd43206",
+        "filename": "core/riscv-rv32i/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-01-06T03:38:50Z",
+      "side": 0,
+      "message": "From RISC-V ISA Privileged Architecture (https://riscv.org/wp-content/uploads/2017/05/riscv-privileged-v1.10.pdf):\n\nMultiple simultaneous interrupts and traps at the same privilege level are handled in the following decreasing priority order: external interrupts, software interrupts, timer interrupts, then finally any synchronous traps.\n\n\nIf in_interrupt_context() \u003d\u003d true, it could be handling \"external interrupts\" or \"software interrupts\".  ebreak generates a new software interrupt which cannot preempt both of the cases.",
+      "parentUuid": "c8a60974_35412829",
+      "revId": "660672aa5427c1e33de000c47ecc5b9e31e89641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
