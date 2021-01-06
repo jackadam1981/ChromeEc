@@ -23,13 +23,17 @@
 
 int pd_check_vconn_swap(int port)
 {
-	/* in G3, do not allow vconn swap since 5V rail is off */
+	/* In G3, do not allow vconn swap since 5V rail is off */
 	return gpio_get_level(GPIO_S5_PGOOD);
 }
 
 void pd_power_supply_reset(int port)
 {
-	/* Don't need to shutoff VBus if we are not sourcing it */
+	/*
+	 * Don't need to shutoff VBus if we are not sourcing it
+	 * TODO: Ensure Vbus sourcing is being disabled appropriately to
+	 *       avoid invalid TC states
+	 */
 	if (ppc_is_sourcing_vbus(port)) {
 		/* Disable VBUS. */
 		ppc_vbus_source_enable(port, 0);
