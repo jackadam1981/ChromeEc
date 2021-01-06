@@ -265,6 +265,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "249a6606_23e7c38d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-06T19:29:33Z",
+      "side": 1,
+      "message": "But either way, the caller will have to perform a check: either checking whether task_start_called() or checking that the task ID is valid.",
+      "parentUuid": "a4290cf2_62f0fbc6",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
