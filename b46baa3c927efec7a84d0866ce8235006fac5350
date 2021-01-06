@@ -16,6 +16,29 @@
       "message": "Hi jack,\n\nI addressed you comments, please help to review.",
       "revId": "b46baa3c927efec7a84d0866ce8235006fac5350",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74c4a546_c795b777",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-06T19:09:20Z",
+      "side": 1,
+      "message": "line exceeds 79 columns?",
+      "range": {
+        "startLine": 810,
+        "startChar": 0,
+        "endLine": 810,
+        "endChar": 75
+      },
+      "revId": "b46baa3c927efec7a84d0866ce8235006fac5350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
