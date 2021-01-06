@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa38d417_22c0d660",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-06T19:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b38d0b5d_6b8e99e4",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 13
+      },
+      "revId": "6f50e70ae19245fa346adaa5d28da74dfaa57079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89f47ffc_cb2eecf8",
@@ -103,6 +127,24 @@
       "side": 1,
       "message": "Just mark it as a TODO and add it in a later CL",
       "parentUuid": "89f47ffc_cb2eecf8",
+      "revId": "6f50e70ae19245fa346adaa5d28da74dfaa57079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "423a7021_ef5cf560",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-06T19:58:17Z",
+      "side": 1,
+      "message": "Added an entries for memory and fan. Values will need to be adjusted later.",
+      "parentUuid": "51e7b073_f6d270d9",
       "revId": "6f50e70ae19245fa346adaa5d28da74dfaa57079",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
