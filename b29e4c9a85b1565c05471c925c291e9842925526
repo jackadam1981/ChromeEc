@@ -34,6 +34,23 @@
       "parentUuid": "56b72de9_6fdf0aaa",
       "revId": "b29e4c9a85b1565c05471c925c291e9842925526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e98bf868_590327a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-06T22:41:28Z",
+      "side": 1,
+      "message": "It may not be worth such fine-grained splitting between public/private if we are carefully selecting constants for the public header file.\n\nWas there a significant reason to not just put all the headers under include/tcpc?",
+      "revId": "b29e4c9a85b1565c05471c925c291e9842925526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
