@@ -16,6 +16,24 @@
       "message": "No cherry-picks please. We will periodically pull the main branch into the firmware branch. If you would like to request an adhoc merge, you may do so.",
       "revId": "30bf907e34f64fb01e47e25003baeccfcf407c11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a3c2e2_07540fa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-06T01:57:36Z",
+      "side": 1,
+      "message": "Yes, I understand, This Cls fix Rotation fail when resume system, because ICM data buffer note clear.",
+      "parentUuid": "d36e2402_0380e570",
+      "revId": "30bf907e34f64fb01e47e25003baeccfcf407c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
