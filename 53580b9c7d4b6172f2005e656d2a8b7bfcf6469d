@@ -46,6 +46,30 @@
       },
       "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19394a92_20d12277",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-06T00:03:14Z",
+      "side": 1,
+      "message": "The EC RO does have the check to make sure the adapter \u003e\u003d15W, for example 5V 3A. The charger input current is then limited to 3A. This check passes and then EC boots AP and EC sysjumps to RW.\n\nThe problem is this default VBUS supplier is used first at the beginning of RW. The Type-C detection or the BC 1.2 detection happens later. As a result, EC limits the charger input current to 0.5A and then brownout.\n\nIf we don\u0027t use the VBUS supplier as default, right after sysjump, the charger input current register will stay the same 3A and wait the Type-C detection logic finished. After redetect the Type-C power, the same 5V 3A will be used.",
+      "parentUuid": "6fb62cb4_9969d7c5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
