@@ -20,7 +20,7 @@
 #define CONFIG_VBOOT_EFS2
 
 /* Chipset */
-#define CONFIG_CHIPSET_TIGERLAKE
+#define CONFIG_CHIPSET_ALDERLAKE
 
 /*
  * Macros for GPIO signals used in common code that don't match the
