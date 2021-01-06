@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3552d248_6879bc72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-01-06T20:26:44Z",
+      "side": 1,
+      "message": "Got it, so you\u0027re saying it\u0027s safe because we would have never sysjumped to RW without having at least 5V 3A, so it\u0027s safe to assume we have at least that much to use when we start RW.",
+      "parentUuid": "19394a92_20d12277",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "962f9330_c1a59eec",
