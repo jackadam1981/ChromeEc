@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
 #include "hooks.h"
 #include "mock/tcpci_i2c_mock.h"
 #include "mock/usb_mux_mock.h"
