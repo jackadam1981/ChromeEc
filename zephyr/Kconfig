@@ -175,6 +175,30 @@ config PLATFORM_EC_FLASH
 
 if PLATFORM_EC_FLASH
 
+config EC_PROTECTED_STORAGE_OFF
+  hex ""
+  default 0x0
+  help
+    Placeholder
+
+config EC_PROTECTED_STORAGE_SIZE
+  hex ""
+  default 0x40000
+  help
+    Placeholder
+
+config EC_WRITABLE_STORAGE_OFF
+  hex ""
+  default 0x40000
+  help
+    Placeholder
+
+config EC_WRITABLE_STORAGE_SIZE
+  hex ""
+  default 0x40000
+  help
+    Placeholder
+
 config PLATFORM_EC_CONSOLE_CMD_FLASH
 	bool "Console commands: flasherase, flashread, flashwp, flashwrite"
 	default y
