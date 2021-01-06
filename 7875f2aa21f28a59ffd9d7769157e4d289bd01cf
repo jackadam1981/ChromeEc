@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "648321dd_1f0f7bc4",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-06T18:40:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8ff9c9fb_c55759bb",
+      "revId": "7875f2aa21f28a59ffd9d7769157e4d289bd01cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0d809d1_a628eb4a",
@@ -190,6 +208,30 @@
       "writtenOn": "2020-12-10T05:13:42Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 194,
+        "startChar": 13,
+        "endLine": 194,
+        "endChar": 16
+      },
+      "revId": "7875f2aa21f28a59ffd9d7769157e4d289bd01cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf89a86_1571b703",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-06T18:40:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bce231d_744e1dcd",
       "range": {
         "startLine": 194,
         "startChar": 13,

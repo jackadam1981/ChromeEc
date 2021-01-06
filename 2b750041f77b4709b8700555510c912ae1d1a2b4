@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87fae87b_1ad3d44c",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-06T18:40:12Z",
+      "side": 1,
+      "message": "This comment implies that cables supporting neither PD 3.0/USB4 nor TBT3 will be treated as unidirectional. I don\u0027t think that would be appropriate, but the actual code on lines 848 and 849 appears to treat them as bidirectional by constructing a 0-valued tbt_mode_resp_cable and then reading the lsrx_comm bit, which happens to indicate bidirectional link training when it\u0027s 0.\n\nIt took me a while to piece that together, and I think that it would be helpful if\n1) this comment accurately reflected what the code was doing,\n2) it was placed right above the corresponding code, and\n3) it explained a little bit how the return value came to be.",
+      "range": {
+        "startLine": 829,
+        "startChar": 0,
+        "endLine": 830,
+        "endChar": 58
+      },
+      "revId": "2b750041f77b4709b8700555510c912ae1d1a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2115f1a_df43e348",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-06T18:40:12Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a new issue in this file, but it should include usb_pd_tbt.h.",
+      "range": {
+        "startLine": 845,
+        "startChar": 10,
+        "endLine": 845,
+        "endChar": 26
+      },
+      "revId": "2b750041f77b4709b8700555510c912ae1d1a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ad6f672_23d5e67c",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-06T18:40:12Z",
+      "side": 1,
+      "message": "Add an \"or\" here and a period at the end.",
+      "range": {
+        "startLine": 191,
+        "startChar": 33,
+        "endLine": 191,
+        "endChar": 34
+      },
+      "revId": "2b750041f77b4709b8700555510c912ae1d1a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd7d4d8_207fceb3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2204,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-06T18:40:12Z",
+      "side": 1,
+      "message": "How about \"Returns the LSRX link-training directionality for Thunderbolt and USB4 cables,\" \"cable_get_lsrx_training_direction,\" and add a blurb in @return about returning BIDIR_LSRX_COMM for non-USB4, non-TBT cables?",
+      "range": {
+        "startLine": 2198,
+        "startChar": 1,
+        "endLine": 2204,
+        "endChar": 55
+      },
+      "revId": "2b750041f77b4709b8700555510c912ae1d1a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
