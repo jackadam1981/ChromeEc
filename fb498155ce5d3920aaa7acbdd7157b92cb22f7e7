@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "991d7dfa_dbfbaa53",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-06T18:46:04Z",
+      "side": 1,
+      "message": "nit: I would suggest keeping this as not overridable until it is required to be so, if ever.",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 13
+      },
+      "revId": "fb498155ce5d3920aaa7acbdd7157b92cb22f7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db04325_bd73d5d7",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-06T18:46:04Z",
+      "side": 1,
+      "message": "nit: newline before.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "fb498155ce5d3920aaa7acbdd7157b92cb22f7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b6da29_f6b0b06b",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-06T18:46:04Z",
+      "side": 1,
+      "message": "I am seeing comments about 45W if a battery is present and 50W if not present. I don\u0027t know if this is differentiated already with/without battery values but looks like this may need to be added. A TODO with a bug number may be in order here.",
+      "range": {
+        "startLine": 97,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "fb498155ce5d3920aaa7acbdd7157b92cb22f7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
