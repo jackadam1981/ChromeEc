@@ -23,13 +23,59 @@
 #define NPCX_UART_MODULE2	1 /* 1:GPIO64/65 for UART1 */
 
 /* EC Defines */
+#define CONFIG_LTO
 #define CONFIG_CROS_BOARD_INFO
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_CRC8
 
+#define CONFIG_FPU
+
+/*
+ *  TODO(b/179648963): do we need PSL?
+ */
+/* #define CONFIG_HIBERNATE_PSL */
+
+#define CONFIG_VBOOT_HASH
+#define CONFIG_VSTORE
+#define CONFIG_VSTORE_SLOT_COUNT 1
+
+/*
+ * TODO(b/181619297): enable low power mode
+ * avoid annoying serial console character drop on wakeup
+ */
+/* #define CONFIG_LOW_POWER_IDLE */
+
+#define CONFIG_BOARD_RESET_AFTER_POWER_ON
+
 /* Host communication */
 #define CONFIG_HOSTCMD_ESPI
 #define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
+
+/* Chipset config */
+#define CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
+
+#define CONFIG_CHIPSET_RESET_HOOK
+#define CONFIG_CPU_PROCHOT_ACTIVE_LOW
+#define CONFIG_EXTPOWER_GPIO
+#define CONFIG_POWER_BUTTON
+#define CONFIG_POWER_BUTTON_X86
+#define CONFIG_POWER_S0IX
+#define CONFIG_POWER_SLEEP_FAILURE_DETECTION
+#define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
+
+#define CONFIG_BOARD_HAS_RTC_RESET
+
+/* Thermal features */
+
+#define CONFIG_THROTTLE_AP
+#define CONFIG_CHIPSET_CAN_THROTTLE
+
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
+
+/* Sensor console commands */
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
 
 /* Common charger defines */
 #define CONFIG_CHARGE_MANAGER
@@ -59,20 +105,6 @@
 #define CONFIG_BATTERY_HW_PRESENT_CUSTOM
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 
-/* Chipset config */
-#define CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
-
-#define CONFIG_CHIPSET_RESET_HOOK
-#define CONFIG_CPU_PROCHOT_ACTIVE_LOW
-#define CONFIG_EXTPOWER_GPIO
-#define CONFIG_POWER_BUTTON
-#define CONFIG_POWER_BUTTON_X86
-#define CONFIG_POWER_S0IX
-#define CONFIG_POWER_SLEEP_FAILURE_DETECTION
-#define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
-
-#define CONFIG_BOARD_HAS_RTC_RESET
-
 /* Physical Volume Buttons */
 #define CONFIG_VOLUME_BUTTONS
 
@@ -88,15 +120,26 @@
 #define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI3
 #endif
 
-/* Thermal features */
-#define CONFIG_THROTTLE_AP
-#define CONFIG_CHIPSET_CAN_THROTTLE
-
 #define CONFIG_PWM
 
 /* Enable I2C Support */
 #define CONFIG_I2C
 #define CONFIG_I2C_CONTROLLER
+
+/* EDP back-light control defines */
+#define CONFIG_BACKLIGHT_LID
+
+/*
+ * Because of the CSE Lite, an extra cold AP reset is needed, and older cr50
+ * firmware will not be able to detect it because of updated cr50 pin straps.
+ * Therefore, the AP will require the EC to reset it so that the proper reset
+ * signal will be read and verstage can execute again.
+ */
+#define CONFIG_CMD_AP_RESET_LOG
+#define CONFIG_HOSTCMD_AP_RESET
+
+/* UART COMMAND */
+#define CONFIG_CMD_CHARGEN
 
 /* USB Type C and USB PD defines */
 /* Enable the new USB-C PD stack */
