@@ -16,6 +16,24 @@
       "message": "Does this compile if you split tcpci.h as follows?\nprivate: all #define TCPC_REG_* \npublic: everything else (extern const struct tcpm_drv tcpci_tcpm_drv; to end of file)",
       "revId": "b29e4c9a85b1565c05471c925c291e9842925526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80555343_78dc86e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-06T22:25:47Z",
+      "side": 1,
+      "message": "This seems to be some sort of standard. The tusb422 driver uses TCPC_REG_ALERT* for example.\n\nI brought over some of these but it seems that half the file needs to be exported, so I don\u0027t think it makes sense to split it that way.",
+      "parentUuid": "56b72de9_6fdf0aaa",
+      "revId": "b29e4c9a85b1565c05471c925c291e9842925526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
