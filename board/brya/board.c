@@ -5,12 +5,17 @@
 
 #include "common.h"
 
+#include "button.h"
 #include "cbi_ec_fw_config.h"
 #include "charge_ramp.h"
 #include "charger.h"
 #include "console.h"
+#include "driver/ppc/nx20p348x.h"
+#include "driver/ppc/syv682x_public.h"
+#include "extpower.h"
 #include "power_button.h"
 #include "power.h"
+#include "registers.h"
 #include "switch.h"
 #include "throttle_ap.h"
 
