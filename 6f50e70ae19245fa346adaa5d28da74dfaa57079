@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b38d0b5d_6b8e99e4",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-06T19:21:21Z",
+      "side": 1,
+      "message": "I only find it in this state when we had the variants and not sure it was needed then. The path with zork was to make everything possible baseboard and then if different boards needed something specific then we moved it completely out of baseboard and added it to all of the board files.  Let\u0027s remove and can discuss if we ever need to add it back in.",
+      "parentUuid": "8b551677_9a1a840a",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 13
+      },
+      "revId": "6f50e70ae19245fa346adaa5d28da74dfaa57079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89f47ffc_cb2eecf8",
         "filename": "baseboard/guybrush/baseboard.c",
         "patchSetId": 5
@@ -61,6 +85,24 @@
       "writtenOn": "2021-01-06T19:13:58Z",
       "side": 1,
       "message": "Configuration for memory thermal sensor is missing and fans is missing.",
+      "revId": "6f50e70ae19245fa346adaa5d28da74dfaa57079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e7b073_f6d270d9",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-06T19:21:21Z",
+      "side": 1,
+      "message": "Just mark it as a TODO and add it in a later CL",
+      "parentUuid": "89f47ffc_cb2eecf8",
       "revId": "6f50e70ae19245fa346adaa5d28da74dfaa57079",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -102,6 +144,30 @@
       "side": 1,
       "message": "It\u0027s implemented in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2611519",
       "parentUuid": "ec486349_0bfba74b",
+      "range": {
+        "startLine": 239,
+        "startChar": 37,
+        "endLine": 239,
+        "endChar": 45
+      },
+      "revId": "6f50e70ae19245fa346adaa5d28da74dfaa57079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e8c683_06df7d31",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-06T19:21:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be9fa435_01092858",
       "range": {
         "startLine": 239,
         "startChar": 37,
