@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a071cba_051052cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-06T23:15:58Z",
+      "side": 1,
+      "message": "Is it possible to keep the oldest port? Without this plugging in your phone to C0 would make your SSD stop working on C1.\n\nThis is a \u0027should\u0027 in the compatibility spec, but I could see the \u0027lowest number\u0027 being a frustrating policy for users.",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "84c22a360e1f744b9df681e76badfe864d136795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c305c3fe_04a27f7a",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-06T23:15:58Z",
+      "side": 1,
+      "message": "This is true but they seem to normally ask for 3A regardless of what they actually need.\n\nAny chance to use the capabilities mismatch bit? The spirit of the tbt3 power distribution was to prioritize tbt3 device over, say, charging your phone. I haven\u0027t done my homework on what that would entail or how the SNK implementation of that bit is looking.",
+      "range": {
+        "startLine": 159,
+        "startChar": 16,
+        "endLine": 161,
+        "endChar": 46
+      },
+      "revId": "84c22a360e1f744b9df681e76badfe864d136795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68b4203b_94af08e8",
         "filename": "docs/usb_power.md",
         "patchSetId": 1
