@@ -87,6 +87,24 @@
       "message": "LGTM. Seems a valid solution. The only side-effect might be a dut starting to draw non-default input_current until a charger type detected.",
       "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f4171d_9f4c91c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-06T18:21:53Z",
+      "side": 1,
+      "message": "The charger driver initializes the input current to a board config CONFIG_CHARGER_INPUT_CURRENT, which is 0.5A. So without the VBUS supplier, it still limits the input current to 0.5A until Type-C or BC 1.2 detection.",
+      "parentUuid": "962f9330_c1a59eec",
+      "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
