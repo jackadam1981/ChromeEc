@@ -16,6 +16,24 @@
       "message": "Everything in this file is related to charging.  Please put this in the baseboard/volteer/charger.c.\n\nNote - the \"bb_\" prefix has only been used for the Burnside Bridge retimer, so I was initially expecting Burnside Bridge configuration.",
       "revId": "76e3d423986998a0809676b483a5f6aaac34ce6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d71a81_2a55cfdc",
+        "filename": "baseboard/volteer/bb_usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-06T22:57:03Z",
+      "side": 1,
+      "message": "Done\n\nI was trying to avoid using the same name for baseboard files, since it looks like we need to include baseboard/ headers from board/ and vice versa.\n\nBut we can cross that bridge when we come to it.\n\nRe the location I was thrown off by USBC_PORT_C0. But suppose that isn\u0027t really related to USB-C?",
+      "parentUuid": "e4b1d09c_89f6d1f7",
+      "revId": "76e3d423986998a0809676b483a5f6aaac34ce6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
