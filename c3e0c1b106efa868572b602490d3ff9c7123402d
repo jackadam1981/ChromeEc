@@ -16,6 +16,23 @@
       "message": "This appears to be a replacement CL for CL:2599786, but has not addressed the comments.\n\nSpecifically, can you add comments to the code to address these questions from Abe?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2599786/2/driver/tcpm/rt1715.c#80\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2599786/2/driver/tcpm/rt1715.c#126\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2599786/2/driver/tcpm/rt1715.c#150\n\n",
       "revId": "c3e0c1b106efa868572b602490d3ff9c7123402d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7663f2ff_2b9f248c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-06T19:25:31Z",
+      "side": 1,
+      "message": "This appears to be a duplicate of CL:2599786. Please upload the contents of this change (which I take to be new) as a new patchset for the old change. Please abandon this change.",
+      "revId": "c3e0c1b106efa868572b602490d3ff9c7123402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
