@@ -16,6 +16,52 @@
       "message": "Please add CFET fields. (.cfet_mask and .cfet_off_val)",
       "revId": "2259415e7b442ffce1cfee6317b2579099b1a679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4b796b_1d2ebc97",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-06T22:37:52Z",
+      "side": 1,
+      "message": "7720 in datasheet",
+      "range": {
+        "startLine": 53,
+        "startChar": 29,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "2259415e7b442ffce1cfee6317b2579099b1a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f50c6e_ed315f74",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-06T22:37:52Z",
+      "side": 1,
+      "message": "60 in datasheet?",
+      "range": {
+        "startLine": 61,
+        "startChar": 29,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "2259415e7b442ffce1cfee6317b2579099b1a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
