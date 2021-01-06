@@ -16,6 +16,24 @@
       "message": "You way want to also add a shutdown hook to disable charging. This would cover the case where the pen was already inserted and charging while the system was on and then shutdown.",
       "revId": "3cb5038a65a1f74a70d329583d6128df241a4615",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a59f4fc_e22b7ca4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-01-06T01:34:17Z",
+      "side": 1,
+      "message": "Done.\nCheck EC console, pen charge is working good when system move between S0/S0ix/S5.",
+      "parentUuid": "2f6dd6fa_96f5fcd3",
+      "revId": "3cb5038a65a1f74a70d329583d6128df241a4615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
