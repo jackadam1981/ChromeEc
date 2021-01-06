@@ -4820,7 +4820,9 @@
  * if the hook task (which is the lowest-priority task on the system) gets
  * starved for CPU time and isn't able to fire its HOOK_TICK event.
  */
+#ifndef CONFIG_ZEPHYR
 #define CONFIG_WATCHDOG
+#endif
 
 /*
  * Try to detect a watchdog that is about to fire, and print a trace.  This is

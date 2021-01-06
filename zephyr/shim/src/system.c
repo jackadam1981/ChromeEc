@@ -278,3 +278,49 @@ int system_is_in_rw(void)
 	/* Return true for now, since that makes more things work */
 	return true;
 }
+static int command_reboot(int argc, char **argv)
+{
+	int flags = SYSTEM_RESET_MANUALLY_TRIGGERED;
+	int i;
+
+	for (i = 1; i < argc; i++) {
+		if (!strcasecmp(argv[i], "hard") ||
+		    !strcasecmp(argv[i], "cold")) {
+			flags |= SYSTEM_RESET_HARD;
+		} else if (!strcasecmp(argv[i], "soft")) {
+			flags &= ~SYSTEM_RESET_HARD;
+		} else if (!strcasecmp(argv[i], "ap-off")) {
+			flags |= SYSTEM_RESET_LEAVE_AP_OFF;
+		} else if (!strcasecmp(argv[i], "ap-off-in-ro")) {
+			flags |= (SYSTEM_RESET_LEAVE_AP_OFF |
+				  SYSTEM_RESET_STAY_IN_RO);
+		} else if (!strcasecmp(argv[i], "ro")) {
+			flags |= SYSTEM_RESET_STAY_IN_RO;
+		} else if (!strcasecmp(argv[i], "cancel")) {
+			reboot_at_shutdown = EC_REBOOT_CANCEL;
+			return EC_SUCCESS;
+		} else if (!strcasecmp(argv[i], "preserve")) {
+			flags |= SYSTEM_RESET_PRESERVE_FLAGS;
+		} else if (!strcasecmp(argv[i], "wait-ext")) {
+			flags |= SYSTEM_RESET_WAIT_EXT;
+		} else
+			return EC_ERROR_PARAM1 + i - 1;
+	}
+
+	if (flags & SYSTEM_RESET_HARD)
+		ccputs("Hard-");
+	if (flags & SYSTEM_RESET_WAIT_EXT)
+		ccputs("Waiting for ext reset!\n\n\n");
+	else
+		ccputs("Rebooting!\n\n\n");
+	cflush();
+
+	system_reset(flags);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(
+	reboot, command_reboot,
+	"[hard|soft] [preserve] [ap-off] [wait-ext] [cancel] [ap-off-in-ro]"
+	" [ro]",
+	"Reboot the EC");
+
