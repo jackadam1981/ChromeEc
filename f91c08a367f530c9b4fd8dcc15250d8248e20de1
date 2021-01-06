@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53aaac94_85bf761a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-06T21:12:12Z",
+      "side": 1,
+      "message": "My interpretation of \"the sideband channel of a router to operate as a USB4\nsideband channel, the link over an active cable should be unidirectional\" was that we should not be entering into USB4 mode if the cable isn\u0027t uni-directional.\n\nBut on discussion with the internal teams - It looks like with bi-directional LSRX cables can train the link in uni-direction as well. So even if the tbt cable supports bi-directional link training, we need to set the retimer and mux to uni-direction for operation in USB4 mode.\n\nSorry about the confusion!",
+      "revId": "f91c08a367f530c9b4fd8dcc15250d8248e20de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

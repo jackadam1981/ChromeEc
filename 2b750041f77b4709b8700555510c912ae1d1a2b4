@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0f8008_5a4c5747",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-06T21:12:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "87fae87b_1ad3d44c",
+      "range": {
+        "startLine": 829,
+        "startChar": 0,
+        "endLine": 830,
+        "endChar": 58
+      },
+      "revId": "2b750041f77b4709b8700555510c912ae1d1a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2115f1a_df43e348",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-06T18:40:12Z",
       "side": 1,
       "message": "I don\u0027t think this is a new issue in this file, but it should include usb_pd_tbt.h.",
+      "range": {
+        "startLine": 845,
+        "startChar": 10,
+        "endLine": 845,
+        "endChar": 26
+      },
+      "revId": "2b750041f77b4709b8700555510c912ae1d1a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea1ff60f_15e91fae",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-06T21:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2115f1a_df43e348",
       "range": {
         "startLine": 845,
         "startChar": 10,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abbdac39_0a12b93a",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-06T21:12:12Z",
+      "side": 1,
+      "message": "Do not need this anymore",
+      "parentUuid": "4ad6f672_23d5e67c",
+      "range": {
+        "startLine": 191,
+        "startChar": 33,
+        "endLine": 191,
+        "endChar": 34
+      },
+      "revId": "2b750041f77b4709b8700555510c912ae1d1a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dd7d4d8_207fceb3",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-06T18:40:12Z",
       "side": 1,
       "message": "How about \"Returns the LSRX link-training directionality for Thunderbolt and USB4 cables,\" \"cable_get_lsrx_training_direction,\" and add a blurb in @return about returning BIDIR_LSRX_COMM for non-USB4, non-TBT cables?",
+      "range": {
+        "startLine": 2198,
+        "startChar": 1,
+        "endLine": 2204,
+        "endChar": 55
+      },
+      "revId": "2b750041f77b4709b8700555510c912ae1d1a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec96aba6_00438f94",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2204,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-06T21:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dd7d4d8_207fceb3",
       "range": {
         "startLine": 2198,
         "startChar": 1,
