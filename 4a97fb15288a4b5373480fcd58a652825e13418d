@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2afe5f44_2dfbf4d1",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-01-06T22:34:06Z",
+      "side": 1,
+      "message": "Is return rv handled in the calling function? Because originally the returns were only EC_*",
+      "revId": "4a97fb15288a4b5373480fcd58a652825e13418d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
