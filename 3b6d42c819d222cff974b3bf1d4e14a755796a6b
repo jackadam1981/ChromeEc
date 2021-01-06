@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2dac288_064f6776",
+        "filename": "common/usb_pd_alt_mode_ufp.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-06T17:49:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "514d36f7_ced33238",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "3b6d42c819d222cff974b3bf1d4e14a755796a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fcec2e0_c1f0ec36",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-06T16:51:13Z",
       "side": 1,
       "message": "Should this bit always be set, even if CONFIG_USB_PD_ALT_MODE_UFP isn\u0027t supported?\n\nThis was the behavior prior to this CL.",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 46
+      },
+      "revId": "3b6d42c819d222cff974b3bf1d4e14a755796a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36f488cd_a35b2db8",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-06T17:49:24Z",
+      "side": 1,
+      "message": "Sorry my bad",
+      "parentUuid": "3fcec2e0_c1f0ec36",
       "range": {
         "startLine": 275,
         "startChar": 0,
