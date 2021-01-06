@@ -51,16 +51,13 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 	 * Note: While the EC waits for the ACK, the value of usb_mux_get
 	 * won't match the most recently set value with usb_mux_set.
 	 */
-	if ((!(previous_mux_state & USB_PD_MUX_SAFE_MODE) &&
-	     (mux_state & USB_PD_MUX_SAFE_MODE)) ||
-	   ((previous_mux_state & USB_PD_MUX_SAFE_MODE) &&
-	    !(mux_state & USB_PD_MUX_SAFE_MODE))) {
+	if ((previous_mux_state & USB_PD_MUX_NONE) &&
+		(mux_state & USB_PD_MUX_USB_ENABLED))
 		/* This should only be called from the PD task */
 		assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
-		task_wait_event_mask(PD_EVENT_AP_MUX_DONE, 100*MSEC);
-		usleep(12.5 * MSEC);
-	}
+	task_wait_event_mask(PD_EVENT_AP_MUX_DONE, 100*MSEC);
+	usleep(12.5 * MSEC);
 }
 
 static int virtual_init(const struct usb_mux *me)
