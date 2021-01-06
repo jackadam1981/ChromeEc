@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba1938d4_2288d0d5",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5962,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-06T17:13:19Z",
+      "side": 1,
+      "message": "Another possibility is don\u0027t automatically enable CONFIG_HIBERNATE_PSL_COMPENSATE_RTC and require NPCX9 boards to enable this option.",
+      "parentUuid": "4955ea09_875cce3a",
+      "range": {
+        "startLine": 5962,
+        "startChar": 37,
+        "endLine": 5962,
+        "endChar": 62
+      },
+      "revId": "4e5c6428faa2f8dcb9be780976b74e88cc4a3a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50b4ce5d_09a343cc",
         "filename": "include/system.h",
         "patchSetId": 2
