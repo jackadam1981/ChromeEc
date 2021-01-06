@@ -22,6 +22,30 @@
       },
       "revId": "2d79222058319decbd0f054859da7ab00274010c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41191390_20294094",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-01-06T21:26:02Z",
+      "side": 0,
+      "message": "Acked about the future plan to remove all unused configs in one patch.",
+      "parentUuid": "0e0c2de5_ecf2e3d9",
+      "range": {
+        "startLine": 103,
+        "startChar": 9,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "2d79222058319decbd0f054859da7ab00274010c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
