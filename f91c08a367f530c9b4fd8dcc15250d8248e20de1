@@ -16,6 +16,41 @@
       "message": "My interpretation of \"the sideband channel of a router to operate as a USB4\nsideband channel, the link over an active cable should be unidirectional\" was that we should not be entering into USB4 mode if the cable isn\u0027t uni-directional.\n\nBut on discussion with the internal teams - It looks like with bi-directional LSRX cables can train the link in uni-direction as well. So even if the tbt cable supports bi-directional link training, we need to set the retimer and mux to uni-direction for operation in USB4 mode.\n\nSorry about the confusion!",
       "revId": "f91c08a367f530c9b4fd8dcc15250d8248e20de1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb356995_6c6128aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-06T21:56:00Z",
+      "side": 1,
+      "message": "\u003e It looks like with bi-directional LSRX cables can train the link in uni-direction as well. So even if the tbt cable supports bi-directional link training, we need to set the retimer and mux to uni-direction for operation in USB4 mode.\nThe main comment cites USB4 table 13-7. If the above statement is accurate, then this statement from the table would be inoperative: \"The Sideband Channel ... shall operate as a USB4 Sideband Channel [if] ... The Link is over either a Passive Cable or an Active Cable with unidirectional Re-timers.\"\n\nIf Intel believes that statement to be inoperative, can you confirm explicitly?",
+      "parentUuid": "53aaac94_85bf761a",
+      "revId": "f91c08a367f530c9b4fd8dcc15250d8248e20de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d180b06_e9e02329",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-06T21:56:00Z",
+      "side": 1,
+      "message": "Can you add a statement like, \"All USB4 active cables are considered to have unidirectional re-timers\"?",
+      "revId": "f91c08a367f530c9b4fd8dcc15250d8248e20de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

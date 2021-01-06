@@ -187,6 +187,30 @@
       },
       "revId": "2b750041f77b4709b8700555510c912ae1d1a2b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec94c8c_9a390167",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2204,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-06T21:56:00Z",
+      "side": 1,
+      "message": "What about the function name and the discussion of non-USB, non-TBT cables?",
+      "parentUuid": "ec96aba6_00438f94",
+      "range": {
+        "startLine": 2198,
+        "startChar": 1,
+        "endLine": 2204,
+        "endChar": 55
+      },
+      "revId": "2b750041f77b4709b8700555510c912ae1d1a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
