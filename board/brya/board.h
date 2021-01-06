@@ -16,12 +16,9 @@
 /* Baseboard features */
 #include "baseboard.h"
 
-/*
- * Disable features enabled by default.
- */
-#undef CONFIG_HIBERNATE
-#undef CONFIG_SPI_FLASH
-#undef CONFIG_SWITCH
+#define CONFIG_BRINGUP
+#define CONFIG_SYSTEM_UNLOCKED
+#define CONFIG_USB_PD_DEBUG_LEVEL 2
 
 /* USB Type A Features */
 #define USB_PORT_COUNT			1
@@ -52,11 +49,20 @@
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
 
+/*
+ * Macros for GPIO signals used in common code that don't match the
+ * schematic names. Signal names in gpio.inc match the schematic and are
+ * then redefined here to so it's more clear which signal is being used for
+ * which purpose.
+ */
 #define GPIO_AC_PRESENT			GPIO_ACOK_EC_OD
 #define GPIO_CPU_PROCHOT		GPIO_EC_PROCHOT_ODL
+#define GPIO_EC_INT_L			GPIO_EC_PCH_INT_ODL
+#define GPIO_ENABLE_BACKLIGHT		GPIO_EC_EN_EDP_BL
 #define GPIO_ENTERING_RW		GPIO_EC_ENTERING_RW
 #define GPIO_KBD_KSO2			GPIO_EC_KSO_02_INV
 #define GPIO_LID_OPEN			GPIO_LID_OPEN_OD
+#define GPIO_PACKET_MODE_EN		GPIO_EC_GSC_PACKET_MODE
 #define GPIO_PCH_PWRBTN_L		GPIO_EC_PCH_PWR_BTN_ODL
 #define GPIO_PCH_RSMRST_L		GPIO_EC_PCH_RSMRST_L
 #define GPIO_PCH_RTCRST			GPIO_EC_PCH_RTCRST
@@ -175,12 +181,6 @@ enum mft_channel {
 	MFT_CH_0 = 0,
 	MFT_CH_COUNT
 };
-
-/*
- * remove when we enable CONFIG_VOLUME_BUTTONS
- */
-
-void button_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
