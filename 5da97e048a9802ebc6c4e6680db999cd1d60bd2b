@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33a3365a_06a6c42e",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-06T22:52:45Z",
+      "side": 1,
+      "message": "I think that printing all source files (including .tasklist and third_party/cryptoc) is what I would expect it to do by default. I\u0027m having a hard time visualizing what the generated object file names would be used for (i.e., anything in the build dir). Did you have something in mind? If not, maybe make the default to exclude the build dir and have another command \"print-depends-all\" (or whatever) for the generic case. Or one could be \"print-sources\" and the other \"print-depends\".",
+      "parentUuid": "8694b06a_4efe06d0",
+      "range": {
+        "startLine": 725,
+        "startChar": 2,
+        "endLine": 725,
+        "endChar": 39
+      },
+      "revId": "5da97e048a9802ebc6c4e6680db999cd1d60bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93c7c2a4_97f7e386",
         "filename": "Makefile.rules",
         "patchSetId": 3
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Right, but then the extra build output could confuse/contaminate the stdout/stderr. Even more so run with boards that have broken make rules that always force a rebuild (like bloonchipper before crrev.com/c/2593881).\n\nYes, I could force all the build output to stderr, like I did above, but I was still worried that might be confusing.\n\n---\n\nI would like this to be easy for others to understand and use, sooo I am very open to changes that make this easy for others to understand.",
       "parentUuid": "93c7c2a4_97f7e386",
+      "range": {
+        "startLine": 730,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 39
+      },
+      "revId": "5da97e048a9802ebc6c4e6680db999cd1d60bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d83b44_98d430e9",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-06T22:52:45Z",
+      "side": 1,
+      "message": "Ok, I think optimizing for the scripted use-case makes the most sense, so fine to leave as is.",
+      "parentUuid": "24d46cc6_7dc73c9a",
       "range": {
         "startLine": 730,
         "startChar": 1,
