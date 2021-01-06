@@ -46,6 +46,30 @@
       },
       "revId": "533c4c6e4026d2cb7bdba1fd2feb95d3594dd541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b3c3fc_7567a419",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-01-06T09:11:51Z",
+      "side": 1,
+      "message": "The GPG1 is very unique and it is the only one pin which have default output low capability on IT81202. (The feature is required for the reset mechanism)\nI didn’t name the pin becuase we might not want developers to touch it unless we do want to reset EC.",
+      "parentUuid": "d6ab1874_1178d38d",
+      "range": {
+        "startLine": 281,
+        "startChar": 19,
+        "endLine": 281,
+        "endChar": 25
+      },
+      "revId": "533c4c6e4026d2cb7bdba1fd2feb95d3594dd541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
