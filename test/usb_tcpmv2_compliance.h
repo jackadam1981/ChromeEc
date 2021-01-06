@@ -43,6 +43,9 @@ int pd_check_vconn_swap(int port);
 void board_reset_pd_mcu(void);
 
 
+void set_unit_test_check_for_regressions(bool check);
+bool get_unit_test_check_for_regressions(void);
+
 int tcpci_startup(void);
 
 void partner_set_data_role(enum pd_data_role data_role);
@@ -84,6 +87,7 @@ int test_td_pd_src_e2(void);
 int test_td_pd_src_e5(void);
 
 int test_td_pd_src3_e1(void);
+int test_td_pd_src3_e7(void);
 int test_td_pd_src3_e26(void);
 
 int test_td_pd_snk3_e12(void);

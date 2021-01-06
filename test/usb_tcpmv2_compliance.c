@@ -34,6 +34,10 @@ void run_test(int argc, char **argv)
 {
 	test_reset();
 
+	/*
+	 * Compliance tests
+	 */
+	set_unit_test_check_for_regressions(false);
 	RUN_TEST(test_td_pd_ll_e3_dfp);
 	RUN_TEST(test_td_pd_ll_e3_ufp);
 	RUN_TEST(test_td_pd_ll_e4_dfp);
@@ -45,8 +49,15 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_td_pd_src_e5);
 
 	RUN_TEST(test_td_pd_src3_e1);
+	RUN_TEST(test_td_pd_src3_e7);
 	RUN_TEST(test_td_pd_src3_e26);
 	RUN_TEST(test_td_pd_snk3_e12);
+
+	/*
+	 * Checking for regressions
+	 */
+	set_unit_test_check_for_regressions(true);
+	RUN_TEST(test_td_pd_src3_e7);
 
 	RUN_TEST(test_connect_as_nonpd_sink);
 	RUN_TEST(test_retry_count_sop);

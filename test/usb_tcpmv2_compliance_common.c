@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
 #include "hooks.h"
 #include "mock/tcpci_i2c_mock.h"
 #include "mock/usb_mux_mock.h"
@@ -84,6 +85,16 @@ int pd_check_vconn_swap(int port)
 
 void board_reset_pd_mcu(void) {}
 
+
+static bool check_for_regressions;
+void set_unit_test_check_for_regressions(bool check)
+{
+	check_for_regressions = check;
+}
+bool get_unit_test_check_for_regressions(void)
+{
+	return check_for_regressions;
+}
 
 /*****************************************************************************
  * Partner utility functions
