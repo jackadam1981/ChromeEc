@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c77bc5b0_bf4378d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-01-06T20:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6c927a3_cf4c136c",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "bd3be952a1b8b6a74925d00b1781f57fe17a3d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c966cacb_bd4b7b57",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-06T19:45:40Z",
       "side": 1,
       "message": "Since we are revising this, can we remove \"is\" in this patch?",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "bd3be952a1b8b6a74925d00b1781f57fe17a3d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc74a29_65938675",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-01-06T20:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c966cacb_bd4b7b57",
       "range": {
         "startLine": 9,
         "startChar": 3,
