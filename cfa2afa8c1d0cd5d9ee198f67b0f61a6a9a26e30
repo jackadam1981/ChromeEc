@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5096a0_8acab398",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-01-06T10:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d0df465_6d82fdbe",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "cfa2afa8c1d0cd5d9ee198f67b0f61a6a9a26e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59d50159_ca8ae8c5",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-01-05T09:37:34Z",
       "side": 1,
       "message": "Cq-Depend: CB:49113",
+      "revId": "cfa2afa8c1d0cd5d9ee198f67b0f61a6a9a26e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4220388_6c1333f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-01-06T10:10:39Z",
+      "side": 1,
+      "message": "CB:49113 depends on this, but not the other way around.",
+      "parentUuid": "59d50159_ca8ae8c5",
       "revId": "cfa2afa8c1d0cd5d9ee198f67b0f61a6a9a26e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
