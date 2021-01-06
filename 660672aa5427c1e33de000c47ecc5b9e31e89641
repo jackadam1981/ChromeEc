@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc33e32e_c17ac2f5",
+        "filename": "core/riscv-rv32i/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-01-06T03:10:22Z",
+      "side": 1,
+      "message": "You need to keep this flag and remove the __ubsan_handle_divrem_overflow() to make it \"undefined\".\n\nIs my understanding correct?",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "660672aa5427c1e33de000c47ecc5b9e31e89641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
