@@ -16,6 +16,24 @@
       "message": "Is return rv handled in the calling function? Because originally the returns were only EC_*",
       "revId": "4a97fb15288a4b5373480fcd58a652825e13418d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3428f5_739043da",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-06T23:01:54Z",
+      "side": 1,
+      "message": "Any non-zero values are treated as same in the caller function. So should be fine. Only reason to add this is to give more clarity on failure condition.",
+      "parentUuid": "2afe5f44_2dfbf4d1",
+      "revId": "4a97fb15288a4b5373480fcd58a652825e13418d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
