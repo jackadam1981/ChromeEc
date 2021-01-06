@@ -5,11 +5,17 @@
 
 #include "common.h"
 
+#include "button.h"
 #include "cbi_ec_fw_config.h"
 #include "charge_ramp.h"
 #include "charger.h"
 #include "console.h"
+#include "driver/ppc/nx20p348x.h"
+#include "driver/ppc/syv682x_public.h"
+#include "extpower.h"
+#include "power_button.h"
 #include "power.h"
+#include "registers.h"
 #include "switch.h"
 #include "throttle_ap.h"
 
@@ -40,22 +46,6 @@ const union brya_cbi_fw_config fw_config_defaults = {
 __override void board_cbi_init(void)
 {
 	config_usb_db_type();
-}
-
-/*
- * remove when we enable CONFIG_POWER_BUTTON
- */
-
-void power_button_interrupt(enum gpio_signal signal)
-{
-}
-
-/*
- * remove when we enable CONFIG_VOLUME_BUTTONS
- */
-
-void button_interrupt(enum gpio_signal signal)
-{
 }
 
 #ifdef CONFIG_CHARGE_RAMP_SW
@@ -99,4 +89,5 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 	 */
 	/* return voltage < ISL9241_BC12_MIN_VOLTAGE; */
 }
+
 #endif /* CONFIG_CHARGE_RAMP_SW */
