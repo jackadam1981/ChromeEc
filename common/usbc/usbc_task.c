@@ -30,7 +30,7 @@
 #include "usb_sm.h"
 #include "usb_tc_sm.h"
 #include "usbc_ppc.h"
-#include "version.h"
+#include "cros_version.h"
 
 #define USBC_EVENT_TIMEOUT (5 * MSEC)
 

@@ -32,7 +32,7 @@
 #include "usb_pd_tcpc.h"
 #include "usbc_ocp.h"
 #include "usbc_ppc.h"
-#include "version.h"
+#include "cros_version.h"
 #include "vboot.h"
 
 /* Flags to clear on a disconnect */

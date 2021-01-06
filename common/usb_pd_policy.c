@@ -26,7 +26,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
-#include "version.h"
+#include "cros_version.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)

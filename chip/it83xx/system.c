@@ -16,7 +16,7 @@
 #include "system.h"
 #include "task.h"
 #include "util.h"
-#include "version.h"
+#include "cros_version.h"
 #include "watchdog.h"
 
 void system_hibernate(uint32_t seconds, uint32_t microseconds)

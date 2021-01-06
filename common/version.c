@@ -12,7 +12,7 @@
 #include "ec_version.h"
 #include "stddef.h"
 #include "system.h"
-#include "version.h"
+#include "cros_version.h"
 
 BUILD_ASSERT(CONFIG_ROLLBACK_VERSION >= 0);
 BUILD_ASSERT(CONFIG_ROLLBACK_VERSION <= INT32_MAX);

@@ -22,7 +22,7 @@
 #include "util.h"
 #include "vb21_struct.h"
 #include "vboot.h"
-#include "version.h"
+#include "cros_version.h"
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)

@@ -15,7 +15,7 @@
 #include "task.h"
 #include "usb_pd.h"
 #include "util.h"
-#include "version.h"
+#include "cros_version.h"
 
 /* Large 768-Byte buffer for RSA computation : could be re-use afterwards... */
 static uint32_t rsa_workbuf[3 * RSANUMWORDS];

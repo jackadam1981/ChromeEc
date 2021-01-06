@@ -30,7 +30,7 @@
 #include "usb_emsg.h"
 #include "usb_sm.h"
 #include "vpd_api.h"
-#include "version.h"
+#include "cros_version.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)

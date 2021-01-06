@@ -19,7 +19,7 @@
 #include "cpu.h"
 #include "clock.h"
 #include "system.h"
-#include "version.h"
+#include "cros_version.h"
 #include "hwtimer.h"
 #include "gpio_list.h"
 #include "tfdp_chip.h"
