@@ -42,6 +42,13 @@ config CROS_EC_ACTIVE_COPY
 	  When the active copy name is output to a console, this
 	  string will be displayed.
 
+config CROS_EC_BOOT_RAM_SIZE
+  hex "The total size required for the booter."
+  default 0x0
+  help
+    This is the size (in bytes) required by the booter. It will count against
+    the data section of the RAM.
+
 config CROS_EC_RAM_SIZE
 	hex "The total available RAM size."
 	help

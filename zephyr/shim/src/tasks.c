@@ -224,3 +224,12 @@ int init_signals(const struct device *unused)
 	return 0;
 }
 SYS_INIT(init_signals, POST_KERNEL, 50);
+
+int task_start_called(void)
+{
+	return 0;
+}
+
+void interrupt_disable(void)
+{
+}
