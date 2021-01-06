@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e503a0a_49efc03b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-06T06:51:28Z",
+      "side": 1,
+      "message": "Would we still",
+      "revId": "660672aa5427c1e33de000c47ecc5b9e31e89641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc33e32e_c17ac2f5",
@@ -19,6 +36,29 @@
         "startChar": 12,
         "endLine": 20,
         "endChar": 45
+      },
+      "revId": "660672aa5427c1e33de000c47ecc5b9e31e89641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2d635c_b27534db",
+        "filename": "core/riscv-rv32i/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-06T06:51:28Z",
+      "side": 1,
+      "message": "Would we still be able to get the crash reason if we are not using the EC\u0027s exception_panic?",
+      "range": {
+        "startLine": 20,
+        "startChar": 46,
+        "endLine": 20,
+        "endChar": 80
       },
       "revId": "660672aa5427c1e33de000c47ecc5b9e31e89641",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
