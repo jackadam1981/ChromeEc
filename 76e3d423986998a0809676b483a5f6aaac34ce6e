@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4b1d09c_89f6d1f7",
+        "filename": "baseboard/volteer/bb_usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-06T16:27:37Z",
+      "side": 1,
+      "message": "Everything in this file is related to charging.  Please put this in the baseboard/volteer/charger.c.\n\nNote - the \"bb_\" prefix has only been used for the Burnside Bridge retimer, so I was initially expecting Burnside Bridge configuration.",
+      "revId": "76e3d423986998a0809676b483a5f6aaac34ce6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
