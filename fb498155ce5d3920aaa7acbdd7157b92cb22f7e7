@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356a5284_97aa6a83",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-06T20:27:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "991d7dfa_dbfbaa53",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 13
+      },
+      "revId": "fb498155ce5d3920aaa7acbdd7157b92cb22f7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8db04325_bd73d5d7",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d2cdb70_f9c85d1f",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-06T20:27:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8db04325_bd73d5d7",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "fb498155ce5d3920aaa7acbdd7157b92cb22f7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2b6da29_f6b0b06b",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-06T18:46:04Z",
       "side": 1,
       "message": "I am seeing comments about 45W if a battery is present and 50W if not present. I don\u0027t know if this is differentiated already with/without battery values but looks like this may need to be added. A TODO with a bug number may be in order here.",
+      "range": {
+        "startLine": 97,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "fb498155ce5d3920aaa7acbdd7157b92cb22f7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94648574_950178eb",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-06T20:27:40Z",
+      "side": 1,
+      "message": "So this is missing the case of 45W charger with a battery below 4%? I expect this is not required, I opened b/176917752 to get clarification.",
+      "parentUuid": "c2b6da29_f6b0b06b",
       "range": {
         "startLine": 97,
         "startChar": 8,
