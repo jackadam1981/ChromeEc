@@ -11,6 +11,8 @@
 /* Select Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_IT83XX_HARD_RESET_BY_GPG1
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
