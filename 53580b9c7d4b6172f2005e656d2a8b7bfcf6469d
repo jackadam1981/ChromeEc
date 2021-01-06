@@ -105,6 +105,24 @@
       "parentUuid": "962f9330_c1a59eec",
       "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78f512c_2514bff8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-06T18:23:36Z",
+      "side": 1,
+      "message": "And this CONFIG_CHARGER_INPUT_CURRENT initialization is skipped on RW.",
+      "parentUuid": "d9f4171d_9f4c91c1",
+      "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
