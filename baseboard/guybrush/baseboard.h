@@ -46,8 +46,10 @@
 
 /* Thermal Config */
 #define CONFIG_ADC
+#define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 #define CONFIG_THROTTLE_AP
 #define CONFIG_TEMP_SENSOR_SB_TSI
+#define CONFIG_THERMISTOR
 #define GPIO_CPU_PROCHOT	GPIO_PROCHOT_ODL
 
 /* Flash Config */
@@ -259,8 +261,6 @@ void tcpc_alert_event(enum gpio_signal signal);
 void bc12_interrupt(enum gpio_signal signal);
 void ppc_interrupt(enum gpio_signal signal);
 void sbu_fault_interrupt(enum ioex_signal signal);
-
-int baseboard_get_temp(int idx, int *temp_ptr);
 
 #endif /* !__ASSEMBLER__ */
 
