@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7f1e9f_99138de0",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-06T15:57:12Z",
+      "side": 1,
+      "message": "The USB mux is independent of TCPCI support, so it shouldn\u0027t be guarded by PLATFORM_EC_USB_PD_TCPM_TCPCI.\n\nWe will need a separate menuconfig for choosing the the USB mux drivers (CONFIG_USB_MUX_*).",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 0
+      },
+      "revId": "e7134067a00f17a10235f20d510e11ce8d8aaf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
