@@ -651,10 +651,21 @@ int chip_i2c_xfer(int port, uint16_t addr_flags,
 	if (out_size == 0 && in_size == 0)
 		return EC_SUCCESS;
 
+#if 0
 	if (pd->i2ccs) {
 		if ((flags & I2C_XFER_SINGLE) == I2C_XFER_SINGLE)
 			flags &= ~I2C_XFER_START;
 	}
+#else
+	/*
+	 * Driver of TCPC FUSB302 uses the bellow I2C sequence:
+	 * I2C_XFER_START
+	 * I2C_XFER_START
+	 * I2C_XFER_STOP
+	 */
+	if (pd->i2ccs)
+		flags &= ~I2C_XFER_START;
+#endif
 
 	/* Copy data to port struct */
 	pd->out = out;
