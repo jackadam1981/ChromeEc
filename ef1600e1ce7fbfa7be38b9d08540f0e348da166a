@@ -16,6 +16,23 @@
       "message": "The 13521 branch is no longer being used and has been replaced by the 13672 branch.\n\nThis change was added to the 13672 branch in this merge commit CL:611019.",
       "revId": "ef1600e1ce7fbfa7be38b9d08540f0e348da166a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e82614f_034b3ca5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-06T16:44:03Z",
+      "side": 1,
+      "message": "This change has been added to the 13672 branch using the merge commit CL:2611019",
+      "revId": "ef1600e1ce7fbfa7be38b9d08540f0e348da166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
