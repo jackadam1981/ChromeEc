@@ -14,8 +14,8 @@
  *     Ports' architecture and programmig is described in "ARM Cortex-M System
  *     Design Kit TRM" DDIO47B.
  *
- *   - a set of peripherals - slave and master SPI and I2C controllers, UARTs,
- *     interrupt controller, etc.
+ *   - a set of peripherals - SPI and I2C controller and peripheral interfaces,
+ *     UARTs,  interrupt controller, etc.
  *
  *   - 28 pins on the package named DIOA0..14, DIOB0..7 and DIOM0..4
  *
