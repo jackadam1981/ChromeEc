@@ -471,4 +471,23 @@ enum battery_type {
 #define CONFIG_USB_PD_TCPM_MUX
 #endif
 
+#define CONFIG_PROGRAM_MEMORY_BASE DT_REG_ADDR(DT_NODELABEL(flash0))
+#define CONFIG_RAM_BASE DT_REG_ADDR(DT_NODELABEL(sram0))
+#define CONFIG_RAM_SIZE DT_REG_SIZE(DT_NODELABEL(sram0))
+#define CONFIG_RO_MEM_OFF CONFIG_CROS_EC_RO_MEM_OFF
+#define CONFIG_RO_MEM_SIZE CONFIG_CROS_EC_RO_MEM_SIZE
+#define CONFIG_RW_MEM_OFF CONFIG_CROS_EC_RW_MEM_OFF
+#define CONFIG_RW_MEM_SIZE CONFIG_CROS_EC_RW_MEM_SIZE
+#define CONFIG_RO_SIZE (44*1024)
+#define CONFIG_RW_SIZE (44*1024)
+
+/*
+ * TODO figure out what the storage offset is (I think it's the offset from
+ * CONFIG_RW_MEM_OFF where storage is located.
+ */
+#define CONFIG_RW_STORAGE_OFF 0
+
+#include "gpio_signal.h"
+#define GPIO_ENTERING_RW NAMED_GPIO(ec_entering_rw)
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
