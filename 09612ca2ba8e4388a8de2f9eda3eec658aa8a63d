@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a146f0bc_dd041a7e",
+        "filename": "board/host/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-01-06T19:07:23Z",
+      "side": 0,
+      "message": "Shall we remove this from include/config.h ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "09612ca2ba8e4388a8de2f9eda3eec658aa8a63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
