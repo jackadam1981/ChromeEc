@@ -22,7 +22,57 @@
  */
 #define NPCX_UART_MODULE2	1 /* 1:GPIO64/65 for UART1 */
 
+/* EC Defines */
+#define CONFIG_LTO
+#define CONFIG_BOARD_VERSION_CBI
+#define CONFIG_CRC8
+#define CONFIG_CROS_BOARD_INFO
+#define CONFIG_DPTF
+#define CONFIG_FPU
+
+/*
+ *  TODO(b/179648963): do we need PSL?
+ */
+/* #define CONFIG_HIBERNATE_PSL */
+
+#define CONFIG_PWM
+#define CONFIG_VBOOT_HASH
+#define CONFIG_VSTORE
+#define CONFIG_VSTORE_SLOT_COUNT 1
+#define CONFIG_VOLUME_BUTTONS
+
+/*
+ * avoid annoying serial console character drop on wakeup
+ */
+/* #define CONFIG_LOW_POWER_IDLE */
+
+#define CONFIG_BOARD_RESET_AFTER_POWER_ON
+
+/* Host communication */
+#define CONFIG_HOSTCMD_ESPI
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
+
+/* Chipset config */
+#define CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
+
+#define CONFIG_CHIPSET_RESET_HOOK
+#define CONFIG_CPU_PROCHOT_ACTIVE_LOW
 #define CONFIG_EXTPOWER_GPIO
+#define CONFIG_POWER_BUTTON
+#define CONFIG_POWER_BUTTON_X86
+#define CONFIG_POWER_PP5000_CONTROL
+#define CONFIG_POWER_S0IX
+#define CONFIG_POWER_SLEEP_FAILURE_DETECTION
+#define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
+
+/*
+ * TODO(b/179737664): disabled for AP power-on debug
+ */
+/* #define CONFIG_BOARD_HAS_RTC_RESET */
+
+/* Enable I2C Support */
+#define CONFIG_I2C
+#define CONFIG_I2C_CONTROLLER
 
 /* Common Keyboard Defines */
 #define CONFIG_CMD_KEYBOARD
@@ -35,6 +85,46 @@
 #else
 #define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI3
 #endif
+
+/* Sensors */
+
+/*
+ * TODO(b/179648721): implement sensors
+ */
+#undef CONFIG_TABLET_MODE
+#undef CONFIG_GMR_TABLET_MODE
+
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
+
+/* Sensor console commands */
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
+
+/* Thermal features */
+
+#define CONFIG_THROTTLE_AP
+#define CONFIG_CHIPSET_CAN_THROTTLE
+
+/* Common charger defines */
+#define CONFIG_CHARGE_MANAGER
+#define CONFIG_CHARGER
+/* #define CONFIG_CHARGER_DISCHARGE_ON_AC */
+#define CONFIG_CHARGER_INPUT_CURRENT		512
+
+#define CONFIG_CMD_CHARGER_DUMP
+
+#define CONFIG_USB_CHARGER
+#define CONFIG_BC12_DETECT_PI3USB9201
+
+/*
+ * Don't allow the system to boot to S0 when the battery is low and unable to
+ * communicate on locked systems (which haven't PD negotiated)
+ */
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT	15000
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON			3
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC		1
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON		15001
 
 /* Host communication */
 #define CONFIG_HOSTCMD_ESPI
@@ -68,18 +158,86 @@
 #define CONFIG_BATTERY_HW_PRESENT_CUSTOM
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 
-/* Chipset config */
-#define CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
-
-/* Thermal features */
-#define CONFIG_THROTTLE_AP
-#define CONFIG_CHIPSET_CAN_THROTTLE
-
 #define CONFIG_PWM
 
-/* Enable I2C Support */
-#define CONFIG_I2C
-#define CONFIG_I2C_CONTROLLER
+/* EDP back-light control defines */
+#define CONFIG_BACKLIGHT_LID
+
+/* USB Type C and USB PD defines */
+/* Enable the new USB-C PD stack */
+#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_DRP_ACC_TRYSRC
+#define CONFIG_USB_PD_REV30
+
+#define CONFIG_CMD_HCDEBUG
+#define CONFIG_CMD_CHARGER_DUMP
+#define CONFIG_CMD_PPC_DUMP
+#define CONFIG_CMD_TCPC_DUMP
+
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_ALT_MODE
+#define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USB_PD_ALT_MODE_UFP
+#define CONFIG_USB_PD_DISCHARGE_PPC
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define CONFIG_USB_PD_TCPC_LOW_POWER
+#define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_TCPM_NCT38XX
+
+#define CONFIG_USB_PD_TCPM_MUX
+#define CONFIG_HOSTCMD_PD_CONTROL		/* Needed for TCPC FW update */
+#define CONFIG_CMD_USB_PD_PE
+
+/*
+ * Because of the CSE Lite, an extra cold AP reset is needed, and older cr50
+ * firmware will not be able to detect it because of updated cr50 pin straps.
+ * Therefore, the AP will require the EC to reset it so that the proper reset
+ * signal will be read and verstage can execute again.
+ */
+#define CONFIG_CMD_AP_RESET_LOG
+#define CONFIG_HOSTCMD_AP_RESET
+
+/*
+ * The PS8815 TCPC was found to require a 50ms delay to consistently work
+ * with non-PD chargers.  Override the default low-power mode exit delay.
+ */
+#undef CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
+#define CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE	(50*MSEC)
+
+/* Enable USB3.2 DRD */
+#define CONFIG_USB_PD_USB32_DRD
+
+#define CONFIG_USB_PD_TRY_SRC
+#define CONFIG_USB_PD_VBUS_DETECT_TCPC
+
+#define CONFIG_USBC_PPC
+/* Note - SN5S330 support automatically adds
+ * CONFIG_USBC_PPC_POLARITY
+ * CONFIG_USBC_PPC_SBU
+ * CONFIG_USBC_PPC_VCONN
+ */
+#define CONFIG_USBC_PPC_DEDICATED_INT
+
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USB_MUX_VIRTUAL
+
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+
+/* Enabling SOP* communication */
+#define CONFIG_CMD_USB_PD_CABLE
+#define CONFIG_USB_PD_DECODE_SOP
+
+/* UART COMMAND */
+#define CONFIG_CMD_CHARGEN
+
+/*
+ * USB ID
+ * This is allocated specifically for Brya
+ * http://google3/hardware/standards/usb/
+ */
+#define CONFIG_USB_PID 0x504F
 
 #ifndef __ASSEMBLER__
 
