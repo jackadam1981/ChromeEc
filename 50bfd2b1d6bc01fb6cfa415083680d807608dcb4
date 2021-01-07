@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7713a8_6043b481",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T23:43:19Z",
+      "side": 1,
+      "message": "I can\u0027t remember if we have a coding standard of minimizing header includes inside other headers, but should this be in our .c file instead?",
+      "revId": "50bfd2b1d6bc01fb6cfa415083680d807608dcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
