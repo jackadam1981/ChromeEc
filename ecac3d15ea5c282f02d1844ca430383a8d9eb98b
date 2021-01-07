@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6931a9c_4403d23e",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-07T14:48:50Z",
+      "side": 0,
+      "message": "removing for Dali with MST hub seems correct. What about other trembyle platforms (PCO and/or non MST hub)?",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 55
+      },
+      "revId": "ecac3d15ea5c282f02d1844ca430383a8d9eb98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
