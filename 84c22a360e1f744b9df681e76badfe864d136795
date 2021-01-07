@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdba9bae_553c7d1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-07T00:31:09Z",
+      "side": 1,
+      "message": "Ah, I see. In that case I misunderstood, the policy you describe is clear from your diagram. And I was thinking of a PD SSD.\n\nNevermind then, and I was talking about Table 4-1 in the USB4 TBT3 Compatibility Requirements Specification.",
+      "parentUuid": "a5fc49c6_a715e64d",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "84c22a360e1f744b9df681e76badfe864d136795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c305c3fe_04a27f7a",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I haven\u0027t found that from my dongle and dock pile so far.  I have several hubs which request very little (500 mA or 100 mA), and several that ask for slightly more (2.4 A), and only one which asks for all of it (3.0 A).  My sampling doesn\u0027t reflect all of the dongles in the ecosystem, I\u0027m sure, but it seems to indicate that a fair number set a reasonable operational current.\n\nI can check out the mismatch bit as well, but so far the sink capability method isn\u0027t overly greedy in my testing at least.  Let me know if your partner sampling is different.",
       "parentUuid": "c305c3fe_04a27f7a",
+      "range": {
+        "startLine": 159,
+        "startChar": 16,
+        "endLine": 161,
+        "endChar": 46
+      },
+      "revId": "84c22a360e1f744b9df681e76badfe864d136795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659379ed_dc4bcb03",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-07T00:31:09Z",
+      "side": 1,
+      "message": "I have an even more limited sample size. I\u0027m not as worried about docks, since they have a fixed maximum power draw by design and could use it based on what its doing, I\u0027m worried about things like phones which can draw a lot of power but don\u0027t really need it to be operational. The phones I\u0027ve checked will have 3A in the sink caps.\n\nI\u0027m not sure how the mismatch bit would work, since IIRC you only learn that after getting a Request. It would get messy I\u0027m sure.\n\nAfter thinking about it, I think this is fine, since it just means you\u0027ll need to remove the phone before plugging in the tbt3 device, which isn\u0027t the end of the world even if it isn\u0027t ideal. Especially since you observe a lot of devices are honest about their power draw.",
+      "parentUuid": "521ce47f_e80a50b2",
       "range": {
         "startLine": 159,
         "startChar": 16,
