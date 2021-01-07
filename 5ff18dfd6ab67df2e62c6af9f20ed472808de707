@@ -141,6 +141,24 @@
       "parentUuid": "bd20c9e8_83c6d9cb",
       "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f84b8f6_3e782c04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-07T17:29:16Z",
+      "side": 1,
+      "message": "Do we know why longer delay helps? Could you provide link to bug created for your issue? Revert it if this is really urgent, but I assume that this will be temporary solution and root cause will be found (or it will be proven that it can be solved only by increasing delay). Remember that changing this value breaks ANX7447 with TCPMv2 on ToT.",
+      "parentUuid": "f9a4bcd9_76cca61f",
+      "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
