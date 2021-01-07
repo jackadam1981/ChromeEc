@@ -16,6 +16,24 @@
       "message": "This commit is causing regression on Voxel. Pen drives cannot be detected. Some docks don\u0027t work.",
       "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe6ddb6_bc8bc8fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-07T16:39:35Z",
+      "side": 1,
+      "message": "Did you try to increase PD_LPM_DEBOUNCE_US value. From my perspective it can be safely increased to around 35ms",
+      "parentUuid": "23de0edf_99e7011f",
+      "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
