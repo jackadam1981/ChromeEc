@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff8c575_45f03607",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-07T00:35:31Z",
+      "side": 1,
+      "message": "We would have to fake out a received message to get prl_rx_wait_for_phy_message() to clear msg_id, so I added it inline with a comment.",
+      "parentUuid": "777dfdcc_03ff6537",
+      "revId": "9f2f597f6e85090e13c1e7932539a5d3fc99bc1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f229d129_dbc8dd23",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-06T23:34:12Z",
       "side": 1,
       "message": "I thought this type would be stored in \"type\" from the header?",
+      "range": {
+        "startLine": 2076,
+        "startChar": 29,
+        "endLine": 2076,
+        "endChar": 51
+      },
+      "revId": "9f2f597f6e85090e13c1e7932539a5d3fc99bc1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c2e0da_65bc913e",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2076,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-07T00:35:31Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "f229d129_dbc8dd23",
       "range": {
         "startLine": 2076,
         "startChar": 29,
