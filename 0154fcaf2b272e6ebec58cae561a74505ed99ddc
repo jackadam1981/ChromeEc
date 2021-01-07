@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf888303_2d118f80",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1449,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-07T11:03:16Z",
+      "side": 1,
+      "message": "I was influenced by tc_attached_snk_entry(). Before starting PE charge manager is informed about port type depending on pd_is_port_partner_dualrole(), but I forgot to check when PE_FLAGS_PORT_PARTNER_IS_DUALROLE is set. It turns out that it is set in pe_snk_evaluate_capability_entry(). In our case, we never entered PE_SNK_Evaluate_Capability, so setting this here doesn\u0027t make sense. I will remove it in next patchset.\n\nThis brings us another question. Do we need to configure this port as CAP_DEDICATED in pe_snk_hard_reset_entry() before going to PE_SRC_Disabled? In my opinion port was configured as CAP_DEDICATED in tc_attached_snk_entry().",
+      "parentUuid": "f95f02c4_9c6a0be8",
+      "revId": "0154fcaf2b272e6ebec58cae561a74505ed99ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ef36c35_73d466cb",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
