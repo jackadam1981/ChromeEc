@@ -52,6 +52,24 @@
       "parentUuid": "efe6ddb6_bc8bc8fe",
       "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2daea747_573d67cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-07T16:49:12Z",
+      "side": 1,
+      "message": "It would be good to understand why 10ms works for TCPMv1 and not for TCPMv2, perhaps there is some underlying issue that should be fixed instead.",
+      "parentUuid": "feedded9_2080062a",
+      "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
