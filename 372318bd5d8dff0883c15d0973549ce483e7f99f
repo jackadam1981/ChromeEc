@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "300ccd8f_b6028093",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-07T12:35:37Z",
+      "side": 1,
+      "message": "usleep would trigger rescheduling and cause issues when it\u0027s called in an interrupt.",
+      "parentUuid": "bac9eb8c_fe322fc7",
+      "revId": "372318bd5d8dff0883c15d0973549ce483e7f99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f2ca2e3_23ae0682",
