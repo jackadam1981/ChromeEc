@@ -22,6 +22,30 @@
       },
       "revId": "999901001150494f97d0bcf5e21d467a7a3306e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c6c43ac_f3df97b2",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-07T20:36:26Z",
+      "side": 1,
+      "message": "I forgot to turn the feature number into a flag. Fixed with the new parent CL.",
+      "parentUuid": "bda79361_8ad316c1",
+      "range": {
+        "startLine": 175,
+        "startChar": 8,
+        "endLine": 175,
+        "endChar": 43
+      },
+      "revId": "999901001150494f97d0bcf5e21d467a7a3306e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
