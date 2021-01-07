@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5fc49c6_a715e64d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T00:01:38Z",
+      "side": 1,
+      "message": "Can you clarify which portion of this is a \"should\" in the compatibility spec? \n\nIs your SSD non-PD or PD for the example?  We\u0027ll bump non-PD in favor of the phone, but not bump it if the SSD is running PD and requested 3 A. \n\nAs it is, once a sink PD port has 3 A allocated, it keeps it until disconnect.  No new PD sink ports can bump it from its level.  The lowest number port criteria is used when that sink is disconnected and we now have 3 A to give someone (or if we end up balancing ports with two new 3 A sinks added near-simultaneously).",
+      "parentUuid": "5a071cba_051052cc",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "84c22a360e1f744b9df681e76badfe864d136795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c305c3fe_04a27f7a",
         "filename": "docs/usb_power.md",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "521ce47f_e80a50b2",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T00:01:38Z",
+      "side": 1,
+      "message": "I haven\u0027t found that from my dongle and dock pile so far.  I have several hubs which request very little (500 mA or 100 mA), and several that ask for slightly more (2.4 A), and only one which asks for all of it (3.0 A).  My sampling doesn\u0027t reflect all of the dongles in the ecosystem, I\u0027m sure, but it seems to indicate that a fair number set a reasonable operational current.\n\nI can check out the mismatch bit as well, but so far the sink capability method isn\u0027t overly greedy in my testing at least.  Let me know if your partner sampling is different.",
+      "parentUuid": "c305c3fe_04a27f7a",
+      "range": {
+        "startLine": 159,
+        "startChar": 16,
+        "endLine": 161,
+        "endChar": 46
+      },
+      "revId": "84c22a360e1f744b9df681e76badfe864d136795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68b4203b_94af08e8",
         "filename": "docs/usb_power.md",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2020-12-29T22:18:18Z",
       "side": 1,
       "message": "The diagram could use information about the conditions that cause entry to \"Balance source ports\".  This includes PD device requires 3A inserted, PD device removed, and non-PD device downgrade.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 86
+      },
+      "revId": "84c22a360e1f744b9df681e76badfe864d136795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a655028_fd4f0e30",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T00:01:38Z",
+      "side": 1,
+      "message": "I\u0027ll add something before hand to explain when the balancing occurs.",
+      "parentUuid": "68b4203b_94af08e8",
       "range": {
         "startLine": 167,
         "startChar": 0,
