@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ecd473_c8da7f89",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-07T19:35:26Z",
+      "side": 1,
+      "message": "Thanks, but I just realized I misread the test earlier: I assumed it was bailing out completely on the PD_CTRL_NOT_SUPPORTED, but now I see it is checking number_of_fixed_batteries() and continues on to send the PD_EXT_GET_BATTERY_STATUS.\nSo if you wanted to revert back to the previous version, that\u0027s good with me.",
+      "parentUuid": "eb1cc47c_764ab234",
+      "revId": "0749aaf95ffc183b9db186506b52f98fd980c5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4e88092_36f3d0ce",
