@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "326f0c4e_a8d2a7a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-07T19:47:03Z",
+      "side": 1,
+      "message": "This patch implements setting Rp on CC lines during muxer init when TCPC part of PS8xxx is not used. This introduces some I2C issues (see b/151155658#comment3)",
+      "revId": "44eb170b3decdbd2a9ff35137ceff2d7a4878ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
