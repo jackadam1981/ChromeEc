@@ -16,6 +16,41 @@
       "message": "Nice catch! Updated the patch",
       "revId": "eff8b224f816e4673dede1204e3575c2e41622ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edfb291a_3abaf26f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-07T17:46:32Z",
+      "side": 1,
+      "message": "Can you do a make buildall at this commit before submitting?",
+      "parentUuid": "9bfc2b53_07098176",
+      "revId": "eff8b224f816e4673dede1204e3575c2e41622ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbbfe9b2_1e4509eb",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-07T17:46:32Z",
+      "side": 1,
+      "message": "I\u0027m assuming you\u0027re going to change this to call the function in the next CL.",
+      "revId": "eff8b224f816e4673dede1204e3575c2e41622ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

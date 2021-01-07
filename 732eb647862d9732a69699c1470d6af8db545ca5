@@ -16,6 +16,24 @@
       "message": "This function isn\u0027t added until the next CL. This line should be moved to that CL.",
       "revId": "732eb647862d9732a69699c1470d6af8db545ca5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd196f0a_b81c8370",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-07T17:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5cd3718_8a14247d",
+      "revId": "732eb647862d9732a69699c1470d6af8db545ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
