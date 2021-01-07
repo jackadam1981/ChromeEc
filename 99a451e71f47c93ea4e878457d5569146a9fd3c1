@@ -34,6 +34,47 @@
       "parentUuid": "7deedd05_999219da",
       "revId": "99a451e71f47c93ea4e878457d5569146a9fd3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2125a396_f25c7ba4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-07T18:24:50Z",
+      "side": 1,
+      "message": "Yes, please see the other comment.",
+      "parentUuid": "170a4819_8dfc4bd8",
+      "revId": "99a451e71f47c93ea4e878457d5569146a9fd3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "463f617d_83a0c021",
+        "filename": "board/elemi/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-07T18:24:50Z",
+      "side": 1,
+      "message": "Move this to baseboard/volteer/baseboard.h\n\nAlso, GPIO_PCH_DSW_PWROK is an output from the EC.  The correct signal to use is GPIO_PG_EC_DSW_PWROK.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 56
+      },
+      "revId": "99a451e71f47c93ea4e878457d5569146a9fd3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
