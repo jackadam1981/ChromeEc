@@ -70,6 +70,23 @@
       },
       "revId": "8f28e15220954aeaf930ebe5a258ffce59c71c01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a858ce34_63e6f953",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-07T20:18:30Z",
+      "side": 1,
+      "message": "nit: partner_tx_msg_id_reset",
+      "revId": "8f28e15220954aeaf930ebe5a258ffce59c71c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
