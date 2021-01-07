@@ -51,6 +51,24 @@
       "message": "As a best practice, set_state should only be called from within the PD tasks.  I believe this hook will be running in the context of the charger task.\n\nCould this instead use pd_send_hard_reset()?  That should be task-safe",
       "revId": "0154fcaf2b272e6ebec58cae561a74505ed99ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2378c645_3bca0e45",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-07T14:02:13Z",
+      "side": 1,
+      "message": "Yes, I noticed that it is strongly preferred to communicate between task using flags.\n\nUnfortunately, pd_send_hard_reset() function can\u0027t be used. Calling pd_send_hard_reset() cause PD_EVENT_SEND_HARD_RESET to be set. When events are checked in tc_event_check() tc_hard_reset_request() is called, which sets TC_FLAGS_HARD_RESET_REQUESTED.\n\nTC is in Attached.SNK state, so tc_perform_snk_hard_reset() will be called repeatedly until true is returned. When tc_perform_snk_hard_reset() notes that VBUS is returned it will call pe_ps_reset_complete(). As a result PE_FLAGS_PS_RESET_COMPLETE flag is set, but PE doesn\u0027t expect this (we are in PE_SRC_Disable, not in PE_SNK_Transition_To_Default). Note that during this, Hard Reset was not sent to charger.\n\nI found two ways to do this. First, we can use tc_policy_pd_enable() to disable PE and enable it later. This will meet our requirements because this function uses atomic_* functions to change flags.\n\nSecond approach is to use pd_dpm_request() to set DPM_REQUEST_HARD_RESET_SEND, but it requires to add pe_src_disabled_run() function which will check if DPM_REQUEST_HARD_RESET_SEND was set and switch to appropriate state. Passing DPM request to PE is a way used in common/usbc/usb_pd_console.c to send hard reset.\n\nI\u0027m in favour of the second one.",
+      "parentUuid": "3ef36c35_73d466cb",
+      "revId": "0154fcaf2b272e6ebec58cae561a74505ed99ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
