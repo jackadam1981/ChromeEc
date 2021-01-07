@@ -16,6 +16,24 @@
       "message": "I thought this was auto-defined in config.h?",
       "revId": "cf1d2449a4d7f21a85ea3e6c5725eaf400bf5ef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ced904_93e785ad",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-07T23:45:37Z",
+      "side": 1,
+      "message": "#if defined(HAS_TASK_PD_INT_C0) || defined(HAS_TASK_PD_INT_C1) || \\\n\tdefined(HAS_TASK_PD_INT_C2) || defined(HAS_TASK_PD_INT_C3)\n#define CONFIG_HAS_TASK_PD_INT\n#endif",
+      "parentUuid": "17b4c45f_ba05bf74",
+      "revId": "cf1d2449a4d7f21a85ea3e6c5725eaf400bf5ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
