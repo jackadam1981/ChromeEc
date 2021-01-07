@@ -188,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3564d8cc_5a6c188c",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T20:58:33Z",
+      "side": 1,
+      "message": "Yes.  Would we be perfectly happy running with 15 W from a charger, or would we prefer to have more power (to charge the battery, for example)?  \n\nThis won\u0027t matter for most chargers/docks, just ones that are trying to ration power out to partners.  Some power schemes won\u0027t offer any more power unless the partner reports a \"mismatch\" with their given power.  We can revisit this later though if we\u0027re not sure since it wouldn\u0027t come into play until we test versus a partner that\u0027s being stingy with its wattage.",
+      "parentUuid": "ebd33ba6_9cb4dd58",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 35
+      },
+      "revId": "08de5e4bc4909f5136651ff2aa801d46afb72165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0910d0bf_8c7d56b0",
