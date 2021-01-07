@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff0a6f2e_3c229cac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-07T17:54:00Z",
+      "side": 1,
+      "message": "It passes now. It used to fail :-)",
+      "parentUuid": "97422f6a_85cecfa7",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "579f7ef571e8dd682e9c85e800eec0e36b69dfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b01ed3b7_d6d5cd3e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-07T16:19:06Z",
       "side": 1,
       "message": "one more space",
+      "range": {
+        "startLine": 42,
+        "startChar": 65,
+        "endLine": 42,
+        "endChar": 66
+      },
+      "revId": "579f7ef571e8dd682e9c85e800eec0e36b69dfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74a3b128_1eaf0963",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-07T17:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6f91189_f30b85f9",
       "range": {
         "startLine": 42,
         "startChar": 65,
