@@ -70,6 +70,23 @@
       "parentUuid": "feedded9_2080062a",
       "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caca2d20_798a6e85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-01-07T16:55:53Z",
+      "side": 1,
+      "message": "This is causing serious regression and blocking multiple activities from running tests on CPFE builds. Gentle request will be to revert this commit until it is well understood.",
+      "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
