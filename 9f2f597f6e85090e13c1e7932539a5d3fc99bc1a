@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25841696_2849a146",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-07T18:25:07Z",
+      "side": 1,
+      "message": "PRL_Rx_Wait_for_PHY_Message transitions to PRL_Rx_Layer_Reset_for_Receive after a Soft Reset.",
+      "parentUuid": "aff8c575_45f03607",
+      "revId": "9f2f597f6e85090e13c1e7932539a5d3fc99bc1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f229d129_dbc8dd23",
