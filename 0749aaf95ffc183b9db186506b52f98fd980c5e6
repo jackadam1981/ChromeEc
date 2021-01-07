@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d8b8be8_0fac584b",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-07T17:11:48Z",
+      "side": 1,
+      "message": "The purpose of this and all of the compliance tests was to verify as close as possible that GRL will pass, this is why I did not like the addition of the additional three tests on the end of compliance. If we need additional non-compliance tests to cover regressions for all of the current functionality and messages possible then I don\u0027t think that should be covered here.",
+      "parentUuid": "26a1f089_574cc021",
+      "revId": "0749aaf95ffc183b9db186506b52f98fd980c5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4e88092_36f3d0ce",
