@@ -16,6 +16,24 @@
       "message": "I dont unterstand it, why merge conflict, I has repo sync ec, and confirm its latest date on  ec / refs/heads/main.",
       "revId": "389f96f1c6999ee6cf255bf7adeca9bcbd08d59b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f1d927_c9cb6ccd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-07T18:04:11Z",
+      "side": 1,
+      "message": "I don\u0027t immediately see a reason for that, although I do see that the \"Parent\" line above shows as \"not current.\" We can figure that out later, once the code review is finished. I\u0027m hoping it will just go away on its own the next time you rebase.",
+      "parentUuid": "bc65afc3_7b4585be",
+      "revId": "389f96f1c6999ee6cf255bf7adeca9bcbd08d59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

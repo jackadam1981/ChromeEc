@@ -173,6 +173,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03ca2e58_0f969b25",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-07T18:04:11Z",
+      "side": 1,
+      "message": "Please explain these things in the code comments, so future readers can understand them.\n\n\u003e The typical value of tTCPCFilter is around 375us. So set tTCPCFilter as 400us around typical value.\nIs 375 us the default value of the register? If so, why is it being increased?\n\n\u003e \u003e Why is the DRP duty cycle being set to 40%?\n\u003e It is just set this port with larger chance for sink.\nIs that necessary to improve noise rejection? It seems like this would contradict our Try.SRC policy.\n\n\u003e a. RT1715_REG_PHY_CTRL1\n\u003e RT1715 should not retry PD message for the wrong GoodCRC message from Ellisys until tReceive expires (typical 1ms).\nTo clarify, if this setting is not changed from the default, how long will the TCPC wait to retry in response to a bad GoodCRC?\n\n\u003e It sets BMC toggle counts in CC for idle condition. Before RT1715 sends TX, RT1715 will check if there is PD commands on the CC line. If the CC transient count is over the setting, RT1715 will recognize that cc is busy and will not send TX.\nIs this increasing the count from the default value?\n\nFor PHY_CTRL_1 and PHY_CTRL_2, can you name the fields that are being set in each register and describe how their values are interpreted?",
+      "parentUuid": "96d9b558_15f1749c",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a687a1e_9f696133",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 2
