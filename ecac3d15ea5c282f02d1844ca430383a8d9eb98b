@@ -22,6 +22,30 @@
       },
       "revId": "ecac3d15ea5c282f02d1844ca430383a8d9eb98b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8651657_7a0d7cfa",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-07T15:53:44Z",
+      "side": 0,
+      "message": "I think this is ok, the only PS8802 DBs we currently support are Dali with MST hub.",
+      "parentUuid": "f6931a9c_4403d23e",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 55
+      },
+      "revId": "ecac3d15ea5c282f02d1844ca430383a8d9eb98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
