@@ -161,3 +161,10 @@ int parse_offset_size(int argc, char **argv, int shift, int *offset, int *size)
 
 	return EC_SUCCESS;
 }
+
+int get_next_bit(uint32_t *mask)
+{
+	int bit = 31 - __builtin_clz(*mask);
+	*mask &= ~BIT(bit);
+	return bit;
+}
