@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8f4d4e_6f39de2b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6183,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T23:25:13Z",
+      "side": 1,
+      "message": "nit: return after setting state, in case the function flow changes later",
+      "revId": "0eff726390bebaf853c5c39b85fd4c2bab5d602b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
