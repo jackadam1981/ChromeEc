@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda79361_8ad316c1",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-01-07T19:36:21Z",
+      "side": 1,
+      "message": "I realize this is a DNS patch, but since I\u0027m using it for local development:\n\nI noticed that this config doesn\u0027t lead to the corresponding feature (42) being enabled, i.e it doesn\u0027t show up in \u0027ectool inventory\u0027. Is this a KI, or perhaps the underlying code has changed a bit since this config was introduced?",
+      "range": {
+        "startLine": 175,
+        "startChar": 8,
+        "endLine": 175,
+        "endChar": 43
+      },
+      "revId": "999901001150494f97d0bcf5e21d467a7a3306e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
