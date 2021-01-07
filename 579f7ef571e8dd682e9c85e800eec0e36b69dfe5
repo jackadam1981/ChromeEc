@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "97422f6a_85cecfa7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-07T16:19:06Z",
+      "side": 1,
+      "message": "i\u0027m confused what this means",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "579f7ef571e8dd682e9c85e800eec0e36b69dfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b01ed3b7_d6d5cd3e",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-01-07T15:39:41Z",
       "side": 1,
       "message": "Marking -verify for now",
+      "revId": "579f7ef571e8dd682e9c85e800eec0e36b69dfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f91189_f30b85f9",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-07T16:19:06Z",
+      "side": 1,
+      "message": "one more space",
+      "range": {
+        "startLine": 42,
+        "startChar": 65,
+        "endLine": 42,
+        "endChar": 66
+      },
       "revId": "579f7ef571e8dd682e9c85e800eec0e36b69dfe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
