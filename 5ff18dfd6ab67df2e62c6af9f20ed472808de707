@@ -105,6 +105,24 @@
       "parentUuid": "2daea747_573d67cf",
       "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd20c9e8_83c6d9cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-07T17:19:24Z",
+      "side": 1,
+      "message": "50ms also fails on Volteer, while 75ms passes.  Volteer was the first platform to use the TUSB422 TCPC, and Voxel is the first to use the RT1715.",
+      "parentUuid": "71e28802_a481dcf1",
+      "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
