@@ -22,6 +22,30 @@
       },
       "revId": "8f28e15220954aeaf930ebe5a258ffce59c71c01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32887fc_b52ca912",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-07T20:05:39Z",
+      "side": 1,
+      "message": ":( The sop_type parameter is of type\n\nenum pd_msg_type {\n\tPD_MSG_SOP,\n\tPD_MSG_SOP_PRIME,\n\tPD_MSG_SOP_PRIME_PRIME,\n\tPD_MSG_SOP_DBG_PRIME,\n\tPD_MSG_SOP_DBG_PRIME_PRIME,\n\tPD_MSG_SOP_CBL_RST,\n};\n\nI don\u0027t think cable reset is treated the same but not sure it matters from a test point of view.  Currently only the SOP and SOP_PRIME are being used but left it open in case the others needed to be used.",
+      "parentUuid": "49bb619f_aafd0274",
+      "range": {
+        "startLine": 85,
+        "startChar": 25,
+        "endLine": 85,
+        "endChar": 26
+      },
+      "revId": "8f28e15220954aeaf930ebe5a258ffce59c71c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
