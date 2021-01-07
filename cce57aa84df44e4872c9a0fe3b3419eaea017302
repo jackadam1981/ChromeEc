@@ -16,6 +16,24 @@
       "message": "If you switch to this assuming it is called from a .board_init field context, then it can be written assuming the chip will always be enabled",
       "revId": "cce57aa84df44e4872c9a0fe3b3419eaea017302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c48d422_30ed9757",
+        "filename": "driver/retimer/nb7v904m.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-01-07T01:33:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d789d061_0a1b1455",
+      "revId": "cce57aa84df44e4872c9a0fe3b3419eaea017302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
