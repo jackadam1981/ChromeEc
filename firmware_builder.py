@@ -3,9 +3,10 @@
 # Copyright 2020 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
-"""Build and test all of the EC boards.
+"""Build, bundle, or test all of the EC boards.
 
-This is the entry point for the custom firmware builder workflow recipe.
+This is the entry point for the custom firmware builder workflow recipe.  It
+gets invoked by chromite/api/controller/firmware.py.
 """
 
 import argparse
@@ -18,6 +19,9 @@ from google.protobuf import json_format
 
 from chromite.api.gen.chromite.api import firmware_pb2
 
+DEFAULT_BUNDLE_DIRECTORY = "/tmp/artifact_bundles"
+
+
 def build(opts):
     """Builds all EC firmware targets"""
     # TODO(b/169178847): Add appropriate metric information
@@ -25,7 +29,29 @@ def build(opts):
     with open(opts.metrics, 'w') as f:
         f.write(json_format.MessageToJson(metrics))
     subprocess.run(['make', 'buildall_only', '-j{}'.format(opts.cpus)],
-                   cwd=os.path.dirname(__file__), check=True)
+                   cwd=os.path.dirname(__file__),
+                   check=True)
+
+
+def bundle(opts):
+    """Bundles the artifacts from each target into its own tarball."""
+    bundle_dir = os.path.join(
+        '/tmp',
+        opts.target_dir) if opts.target_dir else DEFAULT_BUNDLE_DIRECTORY
+    if not os.path.isdir(bundle_dir):
+        os.mkdir(bundle_dir)
+    for build_target in os.listdir(
+            os.path.join(os.path.dirname(__file__), 'build')):
+        subprocess.run([
+            'tar', 'cvfj',
+            os.path.join(
+                bundle_dir, ''.join([
+                    build_target, '.firmware_from_source.tar.bz2'
+                ])), '--exclude=\'*.o\'', '.'
+        ],
+                       cwd=os.path.join(os.path.dirname(__file__), 'build',
+                                        build_target),
+                       check=True)
 
 
 def test(opts):
@@ -37,18 +63,20 @@ def test(opts):
 
     # Verify all posix-based unit tests build and pass
     subprocess.run(['make', 'runtests', '-j{}'.format(opts.cpus)],
-                   cwd=os.path.dirname(__file__), check=True)
+                   cwd=os.path.dirname(__file__),
+                   check=True)
 
     # Verify compilation of the on-device unit test binaries.
     # TODO(b/172501728) These should build  for all boards, but they've bit
     # rotted, so we only build the ones that compile.
     subprocess.run(
         ['make', 'BOARD=bloonchipper', 'tests', '-j{}'.format(opts.cpus)],
-        cwd=os.path.dirname(__file__), check=True)
+        cwd=os.path.dirname(__file__),
+        check=True)
 
 
 def main(args):
-    """Builds and tests all of the EC targets and reports build metrics"""
+    """Builds, bundles, or tests all of the EC targets and reports build metrics."""
     opts = parse_args(args)
 
     if not hasattr(opts, 'func'):
@@ -80,12 +108,23 @@ def parse_args(args):
         help='File to write the json-encoded MetricsList proto message.',
     )
 
+    parser.add_argument(
+        '--target_dir',
+        required=False,
+        help='Directory in which to bundle build artifacts (relative to /tmp).',
+    )
+
     # Would make this required=True, but not available until 3.7
     sub_cmds = parser.add_subparsers()
 
     build_cmd = sub_cmds.add_parser('build',
                                     help='Builds all firmware targets')
     build_cmd.set_defaults(func=build)
+
+    build_cmd = sub_cmds.add_parser('bundle',
+                                    help='Creates a tarball containing build '
+                                    'artifacts from all firmware targets')
+    build_cmd.set_defaults(func=bundle)
 
     test_cmd = sub_cmds.add_parser('test', help='Runs all firmware unit tests')
     test_cmd.set_defaults(func=test)
