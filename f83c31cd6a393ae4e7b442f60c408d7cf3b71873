@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2092ff4_2acf7e49",
+        "filename": "driver/retimer/nb7v904m.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T16:47:54Z",
+      "side": 1,
+      "message": "Add a note that .board_init is the expected calling context",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "f83c31cd6a393ae4e7b442f60c408d7cf3b71873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51fa382_eabba1e2",
+        "filename": "driver/retimer/nb7v904m.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T16:47:54Z",
+      "side": 1,
+      "message": "nit: spaces.  You can use checkpatch.pl to find style issues like this before upload",
+      "revId": "f83c31cd6a393ae4e7b442f60c408d7cf3b71873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
