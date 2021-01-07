@@ -3,9 +3,10 @@
 # Copyright 2020 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
-"""Build and test all of the EC boards.
+"""Build an test all of the EC boards.
 
-This is the entry point for the custom firmware builder workflow recipe.
+This is the entry point for the custom firmware builder workflow recipe.  It
+gets invoked by chromite/api/controller/firmware.py.
 """
 
 import argparse
@@ -19,13 +20,19 @@ from google.protobuf import json_format
 from chromite.api.gen.chromite.api import firmware_pb2
 
 def build(opts):
-    """Builds all EC firmware targets"""
+    """Builds all EC firmware targets and creates a bundle for each one."""
     # TODO(b/169178847): Add appropriate metric information
     metrics = firmware_pb2.FwBuildMetricList()
     with open(opts.metrics, 'w') as f:
         f.write(json_format.MessageToJson(metrics))
-    return subprocess.run(['make', 'buildall_only', '-j{}'.format(opts.cpus)],
+    build_rv = subprocess.run(['make', 'buildall_only', '-j{}'.format(opts.cpus)],
                           cwd=os.path.dirname(__file__)).returncode
+    if not build_rv:
+       # iterate over all builds
+       tar_rv = tar_rv & subprocess.run(['tar', 'cvfj', 'firmware_from_source.tgz', '--exclude=\'*.o\'', '.'],
+                          cwd=os.path.dirname(__file__)).returncode
+    return tar_rv
+
 
 
 def test(opts):
@@ -50,7 +57,7 @@ def test(opts):
 
 
 def main(args):
-    """Builds and tests all of the EC targets and reports build metrics"""
+    """Builds or tests all of the EC targets and reports build metrics."""
     opts = parse_args(args)
 
     if not hasattr(opts, 'func'):
@@ -75,6 +82,12 @@ def parse_args(args):
         dest='metrics',
         required=True,
         help='File to write the json-encoded MetricsList proto message.',
+    )
+
+    parser.add_argument(
+        '--target_dir',
+        required=False,
+        help='Directory relative to ec/build in which to bundle artifacts of a given type.',
     )
 
     # Would make this required=True, but not available until 3.7
