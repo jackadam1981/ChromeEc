@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19592b3_0048c869",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-07T18:38:06Z",
+      "side": 1,
+      "message": "I suspect that is exactly what we\u0027ll eventually do for MI too. Just keeping everything in baseboard until we have board variations.",
+      "parentUuid": "5b4fedde_ce1ba079",
+      "revId": "08de5e4bc4909f5136651ff2aa801d46afb72165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1dda593_208f9fcf",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-07T16:32:09Z",
       "side": 1,
       "message": "Define isn\u0027t used in TCPMv2",
+      "revId": "08de5e4bc4909f5136651ff2aa801d46afb72165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf462de_a4cb1125",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-07T18:38:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1dda593_208f9fcf",
       "revId": "08de5e4bc4909f5136651ff2aa801d46afb72165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed3b169_632bcef9",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-07T18:38:06Z",
+      "side": 1,
+      "message": "Good catch, removed CONFIG_USBC_RETIMER_PS8802. CONFIG_USB_MUX_AMD_FP5 may also be wrong, removing for now. Added CONFIG_USB_MUX_ANX7440. \n\nLooks like in zork just accessed PS8811 with direct i2c_read/write. I created b/176987937 to track creating a driver for PS8811.",
+      "parentUuid": "b905dc31_8ce0d0cd",
+      "revId": "08de5e4bc4909f5136651ff2aa801d46afb72165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17476232_15aca5da",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-01-07T16:32:09Z",
       "side": 1,
       "message": "Should there be a TODO to tune these?",
+      "revId": "08de5e4bc4909f5136651ff2aa801d46afb72165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a2240f_f4d32cf6",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-07T18:38:06Z",
+      "side": 1,
+      "message": "Added TODO and bug b/176988382 to track.",
+      "parentUuid": "17476232_15aca5da",
       "revId": "08de5e4bc4909f5136651ff2aa801d46afb72165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +166,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebd33ba6_9cb4dd58",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-07T18:38:06Z",
+      "side": 1,
+      "message": "Are you referring to the CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON \u003d 50000? There\u0027s a discussion in b/176917752 about this value.\n\n15000 matches the SUSTAINED_POWER_LIMIT in https://b.corp.google.com/issues/169109569#comment35.",
+      "parentUuid": "925e33a8_4590c3f3",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 35
+      },
+      "revId": "08de5e4bc4909f5136651ff2aa801d46afb72165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0910d0bf_8c7d56b0",
         "filename": "baseboard/guybrush/baseboard.h",
         "patchSetId": 6
@@ -105,6 +201,24 @@
       "writtenOn": "2021-01-07T16:32:09Z",
       "side": 1,
       "message": "Should we have google3 links in the public codebase?",
+      "revId": "08de5e4bc4909f5136651ff2aa801d46afb72165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae251489_00f20e4f",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-07T18:38:06Z",
+      "side": 1,
+      "message": "usb-tcpmv2.md says \"new PIDs may be requested by sending an email to the ChromeOS FW Team\". So I guess the comment here can be removed.",
+      "parentUuid": "0910d0bf_8c7d56b0",
       "revId": "08de5e4bc4909f5136651ff2aa801d46afb72165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
