@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3a2e79_897c4362",
+        "filename": "common/usbc/usb_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T20:18:57Z",
+      "side": 0,
+      "message": "Was this check necessary?  Or was it trying to keep the SM framework generic?",
+      "revId": "07f44d01967a536eafe58a06858d39fd2344faaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
