@@ -46,6 +46,30 @@
       },
       "revId": "8f28e15220954aeaf930ebe5a258ffce59c71c01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ccf4c8_05e024a4",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-07T20:16:49Z",
+      "side": 1,
+      "message": "Maybe the parameter type should change to enum tcpm_transmit_type.\nBut doesn\u0027t need to be in this CL.",
+      "parentUuid": "f32887fc_b52ca912",
+      "range": {
+        "startLine": 85,
+        "startChar": 25,
+        "endLine": 85,
+        "endChar": 26
+      },
+      "revId": "8f28e15220954aeaf930ebe5a258ffce59c71c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
