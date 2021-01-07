@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4572af_8b6fb1ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-07T18:16:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f98dfe1d_861b1235",
+      "range": {
+        "startLine": 12,
+        "startChar": 32,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "4a97fb15288a4b5373480fcd58a652825e13418d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d7c09f1_85dbbcd1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-07T04:59:37Z",
       "side": 1,
       "message": "nit: remove this and bring sleep at line 458",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 445,
+        "endChar": 59
+      },
+      "revId": "4a97fb15288a4b5373480fcd58a652825e13418d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b8ca88c_fc2616fe",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-07T18:16:55Z",
+      "side": 1,
+      "message": "Ack. If I simply move it, still there will be a need to move line 445 to outside the loop at 462, to ensure one I2C after the 40ms. So may be we can keep it this way.",
+      "parentUuid": "8d7c09f1_85dbbcd1",
       "range": {
         "startLine": 445,
         "startChar": 1,
