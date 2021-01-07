@@ -88,6 +88,12 @@ SECTIONS
 		OUTDIR/chip/it83xx/hwtimer.o (.text*)
 		OUTDIR/chip/it83xx/hwtimer.o (.rodata)
 		. = ALIGN(16);
+		/*
+		 * Add 2K bytes gap, so compiler will use signed 20-bit
+		 * jump instruction when a ram_code section function is called
+		 * to section of text.
+		 */
+		. += 0x800;
 #endif
 		*(.text*)
 		. = ALIGN(4);
