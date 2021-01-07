@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49bb619f_aafd0274",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-07T19:56:41Z",
+      "side": 1,
+      "message": "Hmm, seems to be some confusion with this, maybe needs a separate CL to clean up.\nPD_MSG_SOP_CBL_RST doesn\u0027t seem to be used anywhere?\nAnd then usb_prl_sm.c has:\n\t/* message id counters for all 6 port partners */\n\tuint32_t msg_id_counter[NUM_SOP_STAR_TYPES];\n\nBut NUM_SOP_STAR_TYPES is 5 (not 6 as in the comment).",
+      "range": {
+        "startLine": 85,
+        "startChar": 25,
+        "endLine": 85,
+        "endChar": 26
+      },
+      "revId": "8f28e15220954aeaf930ebe5a258ffce59c71c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
