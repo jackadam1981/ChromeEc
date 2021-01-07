@@ -16,6 +16,24 @@
       "message": "I think it would be good to make this static, and add a reset function for before_test() to use.",
       "revId": "3222e25f90453e92aa57acdc5d909a0f7af4ebed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ea628e_5f46cc18",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-07T16:44:50Z",
+      "side": 1,
+      "message": "I will add a mock_tcpci_tx_msg_id_reset(sop) function that will allow for single resets or passing TCPC_TX_SOP_ALL to get all of them in one shot.",
+      "parentUuid": "2a6406cd_d2ee887e",
+      "revId": "3222e25f90453e92aa57acdc5d909a0f7af4ebed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
