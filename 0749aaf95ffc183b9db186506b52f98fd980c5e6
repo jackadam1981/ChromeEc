@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26a1f089_574cc021",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-07T17:01:18Z",
+      "side": 1,
+      "message": "If there is a regression that causes our implementation to reply PD_CTRL_NOT_SUPPORTED when it should reply PD_EXT_SOURCE_CAP I think it is good to have a test that checks this and fails.\n\nHow about checking some config variable in the test to decide whether PD_CTRL_NOT_SUPPORTED or PD_EXT_SOURCE_CAP should be expected?",
+      "parentUuid": "52cb16fb_dacd7989",
+      "revId": "0749aaf95ffc183b9db186506b52f98fd980c5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4e88092_36f3d0ce",
