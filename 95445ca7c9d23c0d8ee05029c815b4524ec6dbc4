@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ffd19e6_bcea1f12",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T23:52:16Z",
+      "side": 1,
+      "message": "Any opinion on whether this should be put into driver/temp_sensor/thermistor.c with some of the other thermistor pairs?",
+      "revId": "95445ca7c9d23c0d8ee05029c815b4524ec6dbc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985ca5e4_06975ecc",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T23:52:16Z",
+      "side": 1,
+      "message": "It feels like this function is so very close, but not quite, able to be replaced with thermistor_get_temperature().  It seems like it\u0027s the mix of power state GPIOs that causes the main issue, right?",
+      "revId": "95445ca7c9d23c0d8ee05029c815b4524ec6dbc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b738956_eb0f103f",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-07T23:52:16Z",
+      "side": 1,
+      "message": "I need to remind myself after break.  This one is on PP3300_Z1.  Is that powered in G3?",
+      "range": {
+        "startLine": 583,
+        "startChar": 2,
+        "endLine": 583,
+        "endChar": 39
+      },
+      "revId": "95445ca7c9d23c0d8ee05029c815b4524ec6dbc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
