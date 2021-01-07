@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "79129131_d28dcb7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-07T00:30:19Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused though. The input current limit shouldn\u0027t change until charge manager has seeded/selected a port, correct? Is the 3A advertisement not available following a sysjump because we start off in a \"disconnected\" Type-C state?",
+      "parentUuid": "3552d248_6879bc72",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "53580b9c7d4b6172f2005e656d2a8b7bfcf6469d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "962f9330_c1a59eec",
