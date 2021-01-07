@@ -34,6 +34,24 @@
       "parentUuid": "23de0edf_99e7011f",
       "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feedded9_2080062a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-07T16:46:44Z",
+      "side": 1,
+      "message": "Because TCPMv2 stack has been using 100ms for about 9 months, can we revert this change, and put in an override for the ANX7447 only?",
+      "parentUuid": "efe6ddb6_bc8bc8fe",
+      "revId": "5ff18dfd6ab67df2e62c6af9f20ed472808de707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
