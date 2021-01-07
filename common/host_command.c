@@ -668,6 +668,7 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 		CPRINTS("HC 0x%02x", args->command);
 }
 
+#include "chipset.h"
 uint16_t host_command_process(struct host_cmd_handler_args *args)
 {
 	const struct host_command *cmd;
@@ -717,8 +718,11 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 			rv = cmd->handler(args);
 	}
 
-	if (rv != EC_RES_SUCCESS)
+	if (rv != EC_RES_SUCCESS) {
 		CPRINTS("HC 0x%02x err %d", args->command, rv);
+		if (args->command == 0x18)
+			chipset_reset(CHIPSET_RESET_AP_REQ);
+	}
 
 	if (hcdebug >= HCDEBUG_PARAMS && args->response_size)
 		CPRINTS("HC resp:%ph",
