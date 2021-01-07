@@ -63,6 +63,30 @@
       },
       "revId": "a40791c8cb8622df2e8eb8d49fb4c816bce80b0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d833117_c993865a",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-01-07T16:43:40Z",
+      "side": 1,
+      "message": "Yeah, I guess either way is fine but I lean more towards your latter comment. Overall, I think this will improve things. I\u0027ll +1 and let Diana be the final arbiter.",
+      "parentUuid": "9129e174_ca7559fe",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 36
+      },
+      "revId": "a40791c8cb8622df2e8eb8d49fb4c816bce80b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
