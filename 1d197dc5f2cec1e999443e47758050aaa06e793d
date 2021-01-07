@@ -16,6 +16,24 @@
       "message": "I think this is actually a real failure somehow, even though it looks like an infra problem...I\u0027m taking a look",
       "revId": "1d197dc5f2cec1e999443e47758050aaa06e793d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b3b3d1b_476bf3d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-07T17:32:42Z",
+      "side": 1,
+      "message": "Yes, sadly this CL doesn\u0027t work now.\n\nI\u0027m updating it but unfortunately it won\u0027t be as simple",
+      "parentUuid": "4b2a3417_c7050cd1",
+      "revId": "1d197dc5f2cec1e999443e47758050aaa06e793d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
