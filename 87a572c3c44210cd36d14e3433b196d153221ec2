@@ -289,6 +289,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d250be63_dd45785b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-01-07T02:25:10Z",
+      "side": 1,
+      "message": "Not every caller cares whether it succeeds, and EFS2 is a good example of that. It needs to ensure that a given task isn\u0027t running, but if task_start_called() is false and task_disable_task() returns an error it implies the task is not running because no tasks are, so the EFS code doesn\u0027t need to check for error.\n\nGiven the concern about testing possibly failing to catch configurations that may trigger asserts in the field, I think it makes sense to remove the asserts and only return an error if preconditions are not met (as Daisuke suggests).",
+      "parentUuid": "249a6606_23e7c38d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "87a572c3c44210cd36d14e3433b196d153221ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b54917_376edce5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
