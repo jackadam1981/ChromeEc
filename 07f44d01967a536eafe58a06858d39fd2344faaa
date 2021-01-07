@@ -16,6 +16,24 @@
       "message": "Was this check necessary?  Or was it trying to keep the SM framework generic?",
       "revId": "07f44d01967a536eafe58a06858d39fd2344faaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09260e36_d7a6787b",
+        "filename": "common/usbc/usb_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-07T20:25:55Z",
+      "side": 0,
+      "message": "This was so unit tests would build, replaced by tc_task_wake() stub in test/usb_sm_framework_h3.c",
+      "parentUuid": "9b3a2e79_897c4362",
+      "revId": "07f44d01967a536eafe58a06858d39fd2344faaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
