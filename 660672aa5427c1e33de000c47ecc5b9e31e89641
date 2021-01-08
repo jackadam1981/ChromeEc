@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6af9d7c_9e9b4448",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-01-08T10:30:25Z",
+      "side": 1,
+      "message": "Looks broken...\n\nTraceback (most recent call last):\n   File \"/usr/lib/python-exec/python3.6/zmake\", line 11, in \u003cmodule\u003e\n     load_entry_point(\u0027zephyr-chrome-utils\u003d\u003d0.1\u0027, \u0027console_scripts\u0027, \u0027zmake\u0027)()\n   File \"/usr/lib64/python3.6/site-packages/zmake/__main__.py\", line 116, in main\n     result \u003d call_with_namespace(subcommand_method, opts)\n   File \"/usr/lib64/python3.6/site-packages/zmake/__main__.py\", line 34, in call_with_namespace\n     return func(**kwds)\n   File \"/usr/lib64/python3.6/site-packages/zmake/zmake.py\", line 270, in testall\n     shutil.rmtree(tmpdir)\n   File \"/usr/lib64/python3.6/shutil.py\", line 480, in rmtree\n     _rmtree_safe_fd(fd, path, onerror)\n   File \"/usr/lib64/python3.6/shutil.py\", line 418, in _rmtree_safe_fd\n     _rmtree_safe_fd(dirfd, fullname, onerror)\n   File \"/usr/lib64/python3.6/shutil.py\", line 422, in _rmtree_safe_fd\n     onerror(os.rmdir, fullname, sys.exc_info())\n   File \"/usr/lib64/python3.6/shutil.py\", line 420, in _rmtree_safe_fd\n     os.rmdir(name, dir_fd\u003dtopfd)\n OSError: [Errno 39] Directory not empty: \u0027zephyr\u0027\n 01:35:51: INFO: Endpoint execution completed, return code: ",
+      "revId": "660672aa5427c1e33de000c47ecc5b9e31e89641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc33e32e_c17ac2f5",
