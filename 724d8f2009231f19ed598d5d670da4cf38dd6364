@@ -34,6 +34,24 @@
       "parentUuid": "f5d5a97b_1fa6aa17",
       "revId": "724d8f2009231f19ed598d5d670da4cf38dd6364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d815618d_6225ece7",
+        "filename": "baseboard/guybrush/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T22:21:13Z",
+      "side": 1,
+      "message": "What happens on a zork if you sysjump with a dongle plugged in?  Do we drop Vbus when the TC starts as unattached, or does Vbus stay up the entire time?",
+      "parentUuid": "4b154cfe_1b1dc1be",
+      "revId": "724d8f2009231f19ed598d5d670da4cf38dd6364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
