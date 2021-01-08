@@ -105,6 +105,7 @@ config PLATFORM_EC_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
 menuconfig PLATFORM_EC_USB_POWER_DELIVERY
 	bool "USB Type-C Power Delivery (PD)"
 	default y
+	select HAS_TASK_PD_C0
 	help
 	  USB has always provided basic power to an attached peripheral. USB-C
 	  PD is part of the USB 3.0 standard and allows a lot more functionality
@@ -247,6 +248,15 @@ config PLATFORM_EC_USB_PD_ALT_MODE_DFP
 	default y
 	help
 	  Enable support for USB Power Delivery alternate mode of Downward
+	  Facing Port.
+
+	  TODO: Add more help here
+
+config PLATFORM_EC_USB_PD_ALT_MODE_UFP
+	bool "Upward Facing Port support"
+	default y
+	help
+	  Enable support for USB Power Delivery alternate mode of Upward
 	  Facing Port.
 
 	  TODO: Add more help here
