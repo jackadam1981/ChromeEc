@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f7e2e7_9a23a6d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:34:48Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a123fc68f35767b0df3e35ef7f751c76aaf44012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c47f291_7aebaac0",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:34:48Z",
+      "side": 1,
+      "message": "nit: no need to print the success case.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "a123fc68f35767b0df3e35ef7f751c76aaf44012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
