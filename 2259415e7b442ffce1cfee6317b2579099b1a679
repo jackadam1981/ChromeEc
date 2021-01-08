@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72513080_dce24697",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-01-08T04:25:38Z",
+      "side": 1,
+      "message": "CFET \u0026 DFET is defined as following on MANUFACTURE ACCESS.(BIT15/14)\n b\u002700 - CFET ON, DFET ON\n b\u002701 - CFET OFF, DFET ON\n b\u002710 - CFET OFF, DFET OFF\n b\u002711 - CFET ON, DFET OFF\n\nSo we can\u0027t check CFET with cfet_mask and cfet_off_val.\nDo we add dedicated function for checking cfet?",
+      "parentUuid": "d7c2b89a_4fd3431a",
+      "revId": "2259415e7b442ffce1cfee6317b2579099b1a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e4b796b_1d2ebc97",
         "filename": "board/sasuke/battery.c",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-06T22:37:52Z",
       "side": 1,
       "message": "7720 in datasheet",
+      "range": {
+        "startLine": 53,
+        "startChar": 29,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "2259415e7b442ffce1cfee6317b2579099b1a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b1fbd0_4242b3ad",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-01-08T04:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e4b796b_1d2ebc97",
       "range": {
         "startLine": 53,
         "startChar": 29,
@@ -54,6 +96,30 @@
       "writtenOn": "2021-01-06T22:37:52Z",
       "side": 1,
       "message": "60 in datasheet?",
+      "range": {
+        "startLine": 61,
+        "startChar": 29,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "2259415e7b442ffce1cfee6317b2579099b1a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f1ac20_8c536edc",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-01-08T04:25:38Z",
+      "side": 1,
+      "message": "condition of overheat discharge is 70 in datasheet",
+      "parentUuid": "59f50c6e_ed315f74",
       "range": {
         "startLine": 61,
         "startChar": 29,
