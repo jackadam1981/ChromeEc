@@ -22,6 +22,30 @@
       },
       "revId": "20f67c177b233e4ec3d792ec2d8cb94b29c746d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c1e887_1e0e2375",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-08T21:52:54Z",
+      "side": 1,
+      "message": "Yes, I think this will need a different table. I opened b/177091154 to have EE double check the value.",
+      "parentUuid": "ec947196_e2722d69",
+      "range": {
+        "startLine": 178,
+        "startChar": 10,
+        "endLine": 178,
+        "endChar": 38
+      },
+      "revId": "20f67c177b233e4ec3d792ec2d8cb94b29c746d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
