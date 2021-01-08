@@ -16,6 +16,24 @@
       "message": "Fixed the fuzzing error.  The fuzzing tests force protocol errors where the last_xmit_type will be set to HARD_RESET, which is out of bounds for the msg_id_counter.",
       "revId": "48e2e55e2d1a8621342e9084b6b9adaaf6c6eeec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2caa6baf_36ddd29f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T22:40:40Z",
+      "side": 1,
+      "message": "I\u0027d like to understand this call path better.  So are we trying to send a hard reset through the soft reset path if we hit an error?",
+      "parentUuid": "ca859a91_5208be65",
+      "revId": "48e2e55e2d1a8621342e9084b6b9adaaf6c6eeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
