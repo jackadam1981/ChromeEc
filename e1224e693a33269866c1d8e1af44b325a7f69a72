@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e00ff7_792a0cf6",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-08T08:42:35Z",
+      "side": 1,
+      "message": "This is the culprit to the CQ build break. zmake testall is working fine (the error can be improved). The issue is that adding const here breaks platform/ec/tests/hooks.",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "e1224e693a33269866c1d8e1af44b325a7f69a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
