@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9cc2d6a_ab1c74d8",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T17:12:46Z",
+      "side": 1,
+      "message": "ps8802_i2c_read() appears to be the preferred read function in this file, as it has an integrated debug print",
+      "range": {
+        "startLine": 202,
+        "startChar": 6,
+        "endLine": 202,
+        "endChar": 16
+      },
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c09ade17_99be5117",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T17:12:46Z",
+      "side": 1,
+      "message": "Should init start the mux in low power mode?",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 19
+      },
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "516dadcd_0922c2bb",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T17:12:46Z",
+      "side": 1,
+      "message": "Should this return? Otherwise it seems like we\u0027ll go on to unnecessarily wake the chip and configure it again (though it appears that we should just be re-configuring the exact same value)",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "113f6058_e971947e",
+        "filename": "driver/retimer/ps8802.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T17:12:46Z",
+      "side": 1,
+      "message": "nit: move this next to the register it will be written to (REG2_MODE) and add a comment explaining the mode being set",
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
