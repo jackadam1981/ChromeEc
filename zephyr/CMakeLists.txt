@@ -101,7 +101,8 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_CHARGER
 
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_POWER_DELIVERY
                                                 "${PLATFORM_EC}/common/usb_common.c"
-                                                "${PLATFORM_EC}/common/usbc/usb_sm.c")
+                                                "${PLATFORM_EC}/common/usbc/usb_sm.c"
+                                                "${PLATFORM_EC}/common/usbc_intr_task.c")
 
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC_RETIMER_INTEL_BB
                                                 "${PLATFORM_EC}/driver/retimer/bb_retimer.c")
