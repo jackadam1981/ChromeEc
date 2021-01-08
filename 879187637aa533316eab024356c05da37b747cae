@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc1c9f4_4f565d36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1473047
+      },
+      "writtenOn": "2021-01-08T03:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fb4322c_19b5a15e",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "879187637aa533316eab024356c05da37b747cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a805ae7_755a0939",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3cfffd1_06d93ccb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1473047
+      },
+      "writtenOn": "2021-01-08T03:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a805ae7_755a0939",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "879187637aa533316eab024356c05da37b747cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "476a5532_145b1697",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-06T18:46:45Z",
       "side": 1,
       "message": "State what test you did.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "879187637aa533316eab024356c05da37b747cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b0b8b52_9480d45d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1473047
+      },
+      "writtenOn": "2021-01-08T03:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "476a5532_145b1697",
       "range": {
         "startLine": 13,
         "startChar": 5,
@@ -171,6 +243,24 @@
       "side": 1,
       "message": "we have discussed at issuetracker: b/175747582 and changed the detect method to polling mode, re-submitted CL as 2597133",
       "parentUuid": "1d722186_752aa02f",
+      "revId": "879187637aa533316eab024356c05da37b747cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2952bf68_b0cd08da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1473047
+      },
+      "writtenOn": "2021-01-08T03:04:51Z",
+      "side": 1,
+      "message": "The latest ec not support softkeyboard hot-plug.If we setting the ALT,hot-plug can not trigger the interrupt and detect the adc. If we remove the ALT setting, hot-plug can trigger the pluse interrupt and can detect the adc.We compare the board poppy setting, also not setting the ALT",
+      "parentUuid": "a047d6e4_8014c309",
       "revId": "879187637aa533316eab024356c05da37b747cae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
