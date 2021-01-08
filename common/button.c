@@ -337,6 +337,8 @@ static void button_change_deferred(void)
 	}
 }
 
+static int crashme = 3;
+
 /*
  * Handle a button interrupt.
  */
@@ -356,6 +358,10 @@ void button_interrupt(enum gpio_signal signal)
 			next_deferred_time = state[i].debounce_time;
 			hook_call_deferred(&button_change_deferred_data,
 					   next_deferred_time - time_now);
+			ccprintf("c=%d\n", crashme);
+			ccprintf("1/c=%d\n", 1000/crashme);
+			crashme--;
+			ccprintf("still alive\n");
 		}
 		break;
 	}
