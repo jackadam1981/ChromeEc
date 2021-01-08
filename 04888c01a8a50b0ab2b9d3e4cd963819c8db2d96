@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ddedff4_ec311144",
+        "filename": "baseboard/dedede/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T16:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22a51ec4_e917e6a5",
+      "revId": "04888c01a8a50b0ab2b9d3e4cd963819c8db2d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26744302_db418dc5",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "update to Set3,Thanks",
       "parentUuid": "26744302_db418dc5",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "04888c01a8a50b0ab2b9d3e4cd963819c8db2d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5964d55c_7c01ff5b",
+        "filename": "baseboard/dedede/cbi_ssfc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T16:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80432b4c_2d626de4",
       "range": {
         "startLine": 15,
         "startChar": 13,
@@ -130,6 +172,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c332dca_2a33fef3",
+        "filename": "baseboard/dedede/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T16:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "666ae3ea_fac296fe",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "04888c01a8a50b0ab2b9d3e4cd963819c8db2d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdb6f68d_81a881a6",
@@ -167,6 +233,30 @@
       "side": 1,
       "message": "update to Set3,Thanks",
       "parentUuid": "fdb6f68d_81a881a6",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 14
+      },
+      "revId": "04888c01a8a50b0ab2b9d3e4cd963819c8db2d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa8f4e2d_c7467aea",
+        "filename": "baseboard/dedede/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T16:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4111ad7_4c5202cc",
       "range": {
         "startLine": 33,
         "startChar": 6,
