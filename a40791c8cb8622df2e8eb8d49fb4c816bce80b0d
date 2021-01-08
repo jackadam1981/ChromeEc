@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03ba07d_7fbe8218",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-01-08T20:00:21Z",
+      "side": 1,
+      "message": "In the policy engine, I placed a ccprintf in pe_message_received as the first line in the function that prints the time. I next placed another ccprintf after all the PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) checks. Next I plugged in an unpowered dock and took the difference of the two time measurements and averaged all the differences.\n\nWith this CL, the average time was 1593 ms and without this CL, the average time was about 1740 ms.\n\nI ran the TCPMv2 on Atlas in PD2.0 mode.",
+      "parentUuid": "3291a09a_1641e47c",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "a40791c8cb8622df2e8eb8d49fb4c816bce80b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1d2038b3_ac126ff5",
