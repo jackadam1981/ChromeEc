@@ -105,6 +105,24 @@
       "parentUuid": "2378c645_3bca0e45",
       "revId": "0154fcaf2b272e6ebec58cae561a74505ed99ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e6e68f0_8b25fd62",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-08T09:54:27Z",
+      "side": 1,
+      "message": "When we call tc_policy_pd_enable(port, 0) it will set PD_DISABLED_BY_POLICY flag.\npd_task_loop() in next iteration will call pe_run() with enable set to 0 (because tc_get_pd_enabled() will return that). Calling pe_run() will set state to NULL and set local_state to SM_PAUSED. When PD_DISABLED_BY_POLICY flag is cleared, pe_run() will perform initialization and we will start from PE_SNK_Startup state.\n\nNevertheless, I will try to fix pd_send_hard_reset() and use it.",
+      "parentUuid": "274197ab_9e5f4ef2",
+      "revId": "0154fcaf2b272e6ebec58cae561a74505ed99ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
