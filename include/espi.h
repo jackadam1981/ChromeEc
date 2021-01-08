@@ -99,6 +99,11 @@ int espi_signal_is_vw(int signal);
 enum espi_oob_smbus_command {
 	OOB_SMBUS_GET_TEMP = 1,
 	OOB_SMBUS_GET_RTC,
+	OOB_CRASHLOG_PCH = 0x20,
+	OOB_CRASHLOG_CPU,
+	OOB_CRASHLOG_PCH_CPU,
+	OOB_CRASHLOG_1K_CORE,
+	OOB_CRASHLOG_1K_CRITICAL,
 };
 
 /* OOB channel receive length */
