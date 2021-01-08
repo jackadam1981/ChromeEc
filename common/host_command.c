@@ -498,6 +498,22 @@ int process_espi_oob_cycle_data(void)
 		CPRINTF("\n");
 		break;
 
+	case OOB_CRASHLOG_PCH:
+	case OOB_CRASHLOG_CPU:
+	case OOB_CRASHLOG_PCH_CPU:
+	case OOB_CRASHLOG_1K_CORE:
+	case OOB_CRASHLOG_1K_CRITICAL:
+		/*
+		 * Byte 5 - Byte count (0 to 41)
+		 * Byte 6 - Master address
+		 */
+		if (espi_oob_data[6] != (OOB_SMBUS_DEST_ADDR_PCH_SOC_ME | 0x1))
+			return EC_RES_INVALID_RESPONSE;
+
+		for (i = 7; i < espi_oob_data[5] + 7; i++)
+			ccprintf("[0x%x] = [0x%x]\n", i - 7, espi_oob_data[i]);
+
+		break;
 	default:
 		return EC_ERROR_INVAL;
 	}
@@ -1046,6 +1062,15 @@ static int command_espi_oob(int argc, char **argv)
 		data_len = 0x4;
 		byte_count = 0x1;
 		dst_addr = OOB_SMBUS_DEST_ADDR_PCH_SOC_MC;
+		break;
+	case OOB_CRASHLOG_PCH:
+	case OOB_CRASHLOG_CPU:
+	case OOB_CRASHLOG_PCH_CPU:
+	case OOB_CRASHLOG_1K_CORE:
+	case OOB_CRASHLOG_1K_CRITICAL:
+		data_len = 0x4;
+		byte_count = 0x1;
+		dst_addr = OOB_SMBUS_DEST_ADDR_PCH_SOC_ME;
 		break;
 	default:
 		return EC_ERROR_PARAM1;
