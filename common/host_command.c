@@ -429,6 +429,33 @@ static void host_command_init(void)
 }
 
 #ifdef CONFIG_HOSTCMD_ESPI_OOB
+static uint8_t crash_data[0x1000] __attribute__((section(".crash_log")));
+static int crash_write_offset = 0;
+static int crash_read_offset = 0;
+static int crash_data_size = 0;
+
+static int crashlog_request_next(uint8_t domain)
+{
+	uint8_t data_len = 0x4;
+
+	/* cycle type */
+	espi_oob_data[0] = ESPI_OOB_CYCLE_TYPE;
+	/* tag + len[11:8] */
+	espi_oob_data[1] = ESPI_TAG_LEN_FIELD(0, data_len);
+	/* len[7:0] */
+	espi_oob_data[2] = data_len;
+	/* SMBus destination addr */
+	espi_oob_data[3] = OOB_SMBUS_DEST_ADDR_PCH_SOC_ME;
+	/* SMBus cmd */
+	espi_oob_data[4] = domain; /* pass as */
+	/* SMBus byte count */
+	espi_oob_data[5] = 0x1;
+	/* SMBus source addr (slave request) */
+	espi_oob_data[6] = (OOB_SMBUS_SRC_ADDR_EC << 1) | 0x1;
+
+	return espi_oob_send(espi_oob_data);
+}
+
 int process_espi_oob_cycle_data(void)
 {
 	int oob_len, i;
@@ -497,6 +524,33 @@ int process_espi_oob_cycle_data(void)
 		CPRINTF("\n");
 		break;
 
+	case OOB_CRASHLOG_PCH:
+	case OOB_CRASHLOG_CPU:
+	case OOB_CRASHLOG_PCH_CPU:
+	case OOB_CRASHLOG_1K_CORE:
+	case OOB_CRASHLOG_1K_CRITICAL:
+		/*
+		 * Byte 5 - Byte count (0 to 41)
+		 * Byte 6 - Master address
+		 */
+		if (espi_oob_data[6] != (OOB_SMBUS_DEST_ADDR_PCH_SOC_ME | 0x1))
+			return EC_RES_INVALID_RESPONSE;
+
+
+		crash_data_size += (espi_oob_data[5] - SLAVE_ADDRESS_SIZE);
+		if (crash_data_size > sizeof(crash_data)) {
+			ccprintf("ERROR: crashlog size greater than the buffer allocated\n");
+			return EC_ERROR_INVAL;
+		}
+
+		memcpy(&crash_data[crash_write_offset], &espi_oob_data[7],
+		       espi_oob_data[5] - SLAVE_ADDRESS_SIZE);
+		crash_write_offset += (espi_oob_data[5] - SLAVE_ADDRESS_SIZE);
+
+		if (espi_oob_data[5] == CRASH_CHUNK_SIZE + SLAVE_ADDRESS_SIZE)
+			crashlog_request_next(espi_oob_data[4]);
+
+		break;
 	default:
 		return EC_ERROR_INVAL;
 	}
@@ -1025,6 +1079,49 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 #endif /* CONFIG_CMD_HCDEBUG */
 
 #ifdef CONFIG_HOSTCMD_ESPI_OOB
+static enum ec_status host_command_crashlog_fetch(struct host_cmd_handler_args *args)
+{
+	struct ec_response_crashlog *r = args->response;
+	if (crash_data_size == 0) {
+		r->data_len = 0;
+		args->response_size = sizeof(*r);
+		return EC_RES_SUCCESS;
+	}
+
+	r->data_len = crash_data_size > CRASH_CHUNK_SIZE ? CRASH_CHUNK_SIZE : crash_data_size;
+
+	memcpy(&r->data[0], &crash_data[crash_read_offset], r->data_len);
+	args->response_size = sizeof(*r);
+
+	crash_data_size -= r->data_len;
+	crash_read_offset += r->data_len;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CRASHLOG_FETCH, host_command_crashlog_fetch, EC_VER_MASK(0));
+
+static enum ec_status host_command_crashlog_length(struct host_cmd_handler_args *args)
+{
+	uint32_t *r = args->response;
+	*r = crash_data_size;
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CRASHLOG_LENGTH, host_command_crashlog_length, EC_VER_MASK(0));
+
+static enum ec_status host_command_crashlog_trigger(struct host_cmd_handler_args *args)
+{
+	args->response_size = 0;
+
+	crash_write_offset = 0;
+	crash_read_offset = 0;
+	crash_data_size = 0;
+	crashlog_request_next(OOB_CRASHLOG_PCH);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CRASHLOG_TRIGGER, host_command_crashlog_trigger, EC_VER_MASK(0));
+
 static int command_espi_oob(int argc, char **argv)
 {
 	char *e;
@@ -1046,6 +1143,17 @@ static int command_espi_oob(int argc, char **argv)
 		byte_count = 0x1;
 		dst_addr = OOB_SMBUS_DEST_ADDR_PCH_SOC_MC;
 		break;
+	case OOB_CRASHLOG_PCH:
+	case OOB_CRASHLOG_CPU:
+	case OOB_CRASHLOG_PCH_CPU:
+	case OOB_CRASHLOG_1K_CORE:
+	case OOB_CRASHLOG_1K_CRITICAL:
+		crash_write_offset = 0;
+		crash_read_offset = 0;
+		crash_data_size = 0;
+		crashlog_request_next(cmd);
+
+		return EC_SUCCESS;
 	default:
 		return EC_ERROR_PARAM1;
 	}

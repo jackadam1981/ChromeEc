@@ -7500,6 +7500,17 @@ struct ec_params_usb_pd_mux_ack {
 #define EC_PRIVATE_HOST_COMMAND_VALUE(command) \
 	(EC_CMD_BOARD_SPECIFIC_BASE + (command))
 
+#define CRASH_CHUNK_SIZE 64
+#define SLAVE_ADDRESS_SIZE 1
+
+struct ec_response_crashlog {
+	uint8_t data_len;
+	uint8_t data[CRASH_CHUNK_SIZE];
+} __ec_align4;
+
+#define EC_CMD_CRASHLOG_FETCH 0x0140
+#define EC_CMD_CRASHLOG_TRIGGER 0x0141
+#define EC_CMD_CRASHLOG_LENGTH 0x0142
 /*****************************************************************************/
 /*
  * Passthru commands

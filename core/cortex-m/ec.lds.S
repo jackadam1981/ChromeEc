@@ -540,6 +540,12 @@ SECTIONS
 	       ) >= __flash_used,
 	       "No room left in the flash")
 
+	.flash_logs : {
+		. = ALIGN(0x1000);
+		__crash_log_start = .;
+		KEEP(*(.crash_log));
+		__crash_log_end = .;
+	} > FLASH
 #ifdef CONFIG_CHIP_INIT_ROM_REGION
 	/*
 	 * Image layout when ROM_RESIDENT region is used (lower addresses

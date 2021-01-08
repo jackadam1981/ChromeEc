@@ -103,6 +103,8 @@ const char help_str[] =
 	"      Prints the last output to the EC debug console\n"
 	"  cec\n"
 	"      Read or write CEC messages and settings\n"
+	"  crashlog\n"
+	"      Read crashlog data from the ec\n"
 	"  echash [CMDS]\n"
 	"      Various EC hash commands\n"
 	"  eventclear <mask>\n"
@@ -6370,6 +6372,71 @@ static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
 	printf("\n");
 }
 
+int cmd_crashlog(int argc, char *argv[])
+{
+	struct ec_response_crashlog crash_data;
+	int rv;
+	int crash_size = 0;
+	FILE *fp;
+	uint32_t length;
+
+	if (argc != 2 || !strcmp(argv[1], "help")) {
+		printf("Usage: ectool %s [size|save|trigger]\n", argv[0]);
+	} else if (!strcmp(argv[1], "size")) {
+		rv = ec_command(EC_CMD_CRASHLOG_LENGTH, 0, NULL, 0, (void *)&length, sizeof(length));
+		if (rv < 0) {
+			printf("error: crashlog reading");
+			return rv;
+		}
+
+		printf("crashlog size: %d\n", length);
+	} else if (!strcmp(argv[1], "trigger")) {
+		rv = ec_command(EC_CMD_CRASHLOG_TRIGGER, 0, NULL, 0, NULL, 0);
+		if (rv < 0) {
+			printf("Failed to trigger crashlog");
+			return rv;
+		}
+
+		printf("Manual crashlog triggered successfully!\n");
+	} else if (!strcmp(argv[1], "save")) {
+		rv = ec_command(EC_CMD_CRASHLOG_LENGTH, 0, NULL, 0, (void *)&length, sizeof(length));
+		if (rv < 0) {
+			printf("error: crashlog reading");
+			return rv;
+		}
+		if (length == 0) {
+			printf("No crashlog is saved\n");
+			return -1;
+		}
+
+		fp = fopen("crash.bin", "w");
+		while (true) {
+			rv = ec_command(EC_CMD_CRASHLOG_FETCH, 0, NULL, 0, (void *)&crash_data,
+					sizeof(crash_data));
+			if (rv < 0) {
+				printf("error: reading crashlog");
+				fclose(fp);
+				return rv;
+			}
+
+			fwrite(crash_data.data, sizeof(uint8_t), crash_data.data_len, fp);
+
+			crash_size += crash_data.data_len;
+
+			if (crash_data.data_len < CRASH_CHUNK_SIZE)
+				break;
+		}
+
+		printf("crashlog saved to crash.bin\n");
+		fclose(fp);
+	} else {
+		printf("command %s not supported\n", argv[1]);
+		printf("Usage: ectool %s [size|save|trigger]\n", argv[0]);
+	}
+
+	return 0;
+}
+
 int cmd_usb_pd_mux_info(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_mux_info p;
@@ -10406,6 +10473,7 @@ const struct command commands[] = {
 	{"cmdversions", cmd_cmdversions},
 	{"console", cmd_console},
 	{"cec", cmd_cec},
+	{"crashlog", cmd_crashlog},
 	{"echash", cmd_ec_hash},
 	{"eventclear", cmd_host_event_clear},
 	{"eventclearb", cmd_host_event_clear_b},
