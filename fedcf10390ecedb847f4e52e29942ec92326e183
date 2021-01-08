@@ -16,6 +16,24 @@
       "message": "If you add this code instead of the change at line 155, is the bug fixed?\n\n    if (current_level \u003e\u003d num_fan_levels)\n        current_level \u003d num_fan_levels - 1;",
       "revId": "fedcf10390ecedb847f4e52e29942ec92326e183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913b56d8_c7f64c3f",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-01-08T02:27:42Z",
+      "side": 1,
+      "message": "This change will cause current_level limit at num_fan_levels - 1 and let fan rpm can\u0027t run to top level.",
+      "parentUuid": "f5b9d54c_60bc231e",
+      "revId": "fedcf10390ecedb847f4e52e29942ec92326e183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
