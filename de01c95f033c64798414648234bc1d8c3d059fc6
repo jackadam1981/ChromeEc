@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5eb12d_9fa523ff",
+        "filename": "zephyr/shim/src/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-08T22:52:06Z",
+      "side": 1,
+      "message": "I opened bug b:177096231 to look into de-duplicating the code in both versions of util.c.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 36
+      },
+      "revId": "de01c95f033c64798414648234bc1d8c3d059fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
