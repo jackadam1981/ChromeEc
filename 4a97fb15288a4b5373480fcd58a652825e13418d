@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8488b424_bbb9fd97",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-08T04:27:45Z",
+      "side": 1,
+      "message": "this is what I would do to optimize it.\n\n/*\n * First I2C message will trigger retimer\u0027s internal init sequence\n * if its a NAK, sleep and resend same I2C\n */\nfor (retry \u003d 0; retry \u003c 3; retry++) {\n   rv \u003d bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, \u0026data);\n   if (!rv)\n      break;\n   \n   /*\n    * The maximum time for I2C to be up for shared\n    * NVM will be 40ms and for the single SPI flash\n    * single retimer would be 20ms.\n    */\n   msleep(20);\n}\nif (!rv \u0026\u0026 data !\u003d BB_RETIMER_VENDOR_ID)\n   return EC_ERROR_INVAL;",
+      "parentUuid": "9b8ca88c_fc2616fe",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 445,
+        "endChar": 59
+      },
+      "revId": "4a97fb15288a4b5373480fcd58a652825e13418d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2afe5f44_2dfbf4d1",
