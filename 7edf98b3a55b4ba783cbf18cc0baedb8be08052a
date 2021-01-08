@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b0d11b_775a9194",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T21:42:34Z",
+      "side": 1,
+      "message": "Should CONFIG_POWER_BUTTON_TO_PCH_CUSTOM be defined somewhere to use this?\n\nAlso, I\u0027m guessing that in general we expect to have the same power sequence quirk needed for monkey island as for zork?",
+      "revId": "7edf98b3a55b4ba783cbf18cc0baedb8be08052a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
