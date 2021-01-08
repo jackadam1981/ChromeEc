@@ -16,6 +16,23 @@
       "message": "Tested on Morphius and it seems to work as expected there.",
       "revId": "bec65782b18a28c68cb9ade196ddb72775851874",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366d069a_432a08c2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4677,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-08T00:06:05Z",
+      "side": 1,
+      "message": "nit: always return after set_state, as a general best-practice.  Looks like this function doesn\u0027t always follow that though",
+      "revId": "bec65782b18a28c68cb9ade196ddb72775851874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
