@@ -16,6 +16,24 @@
       "message": "So this was looking at wrong index previously? (2+22 vs 1+2+22)",
       "revId": "16c092f7f9f497089d2341bb14d235291722aae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28925aa2_328ba89b",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-08T23:57:29Z",
+      "side": 1,
+      "message": "that is a true statement. I had not looked closely at the message returned and the first byte is length and other TRANSMIT register information. I thought it was on the end, like maybe the CRC.  I looked closer today and that is what made me want to do the cleanups on all of the data transfer tests... this one passed due to both bytes being 0.",
+      "parentUuid": "a0872416_055bfe77",
+      "revId": "16c092f7f9f497089d2341bb14d235291722aae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
