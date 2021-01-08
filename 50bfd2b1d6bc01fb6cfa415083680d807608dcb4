@@ -34,6 +34,24 @@
       "parentUuid": "cd7713a8_6043b481",
       "revId": "50bfd2b1d6bc01fb6cfa415083680d807608dcb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e44a97_bd1fc706",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-08T19:20:09Z",
+      "side": 1,
+      "message": "I don\u0027t see it covered in chrome ec style guide or linux style guide. IMO, header files should include dependent header files.",
+      "parentUuid": "b9d2de0c_6d756d92",
+      "revId": "50bfd2b1d6bc01fb6cfa415083680d807608dcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
