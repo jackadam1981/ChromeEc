@@ -16,6 +16,24 @@
       "message": "Cleanup some more so it can look like UINT32_FROM_BYTE_ARRAY_LE(data, offset) ?",
       "revId": "8a38052c497d2dc956d380201229367e64511d8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a18c33a_583432f2",
+        "filename": "test/usb_tcpmv2_td_pd_src_e2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-08T23:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "258b4d2a_b232e5c5",
+      "revId": "8a38052c497d2dc956d380201229367e64511d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
