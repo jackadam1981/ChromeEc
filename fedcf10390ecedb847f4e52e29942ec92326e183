@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1ff7809_14e6fa3f",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-08T19:37:38Z",
+      "side": 1,
+      "message": "As I study this code more, I think this is the source of the bug.\n\nIf the current temperature is greater than 60 (level 5 on temp), then this code will set current_level to 6, which is outside the bounds of the fan_table[] array (0-5).\n\nI think you want to change this to:\n    if (temp \u003e fan_table[i].on)\n        current_level \u003d i;",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 26
+      },
+      "revId": "fedcf10390ecedb847f4e52e29942ec92326e183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5b9d54c_60bc231e",
         "filename": "board/eldrid/thermal.c",
         "patchSetId": 3
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "This change will cause current_level limit at num_fan_levels - 1 and let fan rpm can\u0027t run to top level.",
       "parentUuid": "f5b9d54c_60bc231e",
+      "revId": "fedcf10390ecedb847f4e52e29942ec92326e183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ba7d98_1f1a38b6",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-08T19:37:38Z",
+      "side": 1,
+      "message": "See comment above.",
+      "parentUuid": "913b56d8_c7f64c3f",
       "revId": "fedcf10390ecedb847f4e52e29942ec92326e183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
