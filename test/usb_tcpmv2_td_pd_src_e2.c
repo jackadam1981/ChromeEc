@@ -12,6 +12,8 @@
 #include "usb_tc_sm.h"
 
 #define BUFFER_SIZE 100
+
+#define HEADER_BYTE_OFFSET 1
 #define HEADER_BYTE_CNT 2
 #define PDO_BYTE_CNT 4
 
@@ -70,7 +72,7 @@ int test_td_pd_src_e2(void)
 		EC_SUCCESS, "%d");
 	TEST_GE(msg_len, HEADER_BYTE_CNT, "%d");
 
-	header = UINT16_FROM_BYTE_ARRAY_LE(data, 1);
+	header = UINT16_FROM_BYTE_ARRAY_LE(data, HEADER_BYTE_OFFSET);
 	revision = PD_HEADER_REV(header);
 	if (revision == REVISION_3)
 		return EC_SUCCESS;
@@ -101,7 +103,8 @@ int test_td_pd_src_e2(void)
 	 *    2. Voltage field = 100 (5 V)
 	 *    3. Bits 24..22 = 000b (Reserved)
 	 */
-	pdo = UINT32_FROM_BYTE_ARRAY_LE(&data[2], 1);
+	pdo = UINT32_FROM_BYTE_ARRAY_LE(data, HEADER_BYTE_OFFSET +
+					      HEADER_BYTE_CNT);
 
 	type = pdo & PDO_TYPE_MASK;
 	TEST_EQ(type, PDO_TYPE_FIXED, "%d");
@@ -130,7 +133,8 @@ int test_td_pd_src_e2(void)
 		uint32_t voltage;
 
 		offset = HEADER_BYTE_CNT + (i * PDO_BYTE_CNT);
-		pdo = UINT32_FROM_BYTE_ARRAY_LE(&data[offset], 1);
+		pdo = UINT32_FROM_BYTE_ARRAY_LE(data,
+						offset + HEADER_BYTE_OFFSET);
 
 		type = pdo & PDO_TYPE_MASK;
 		TEST_NE(type, PDO_TYPE_AUGMENTED, "%d");
