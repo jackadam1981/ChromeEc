@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f207e98_08b9dc44",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5962,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-01-08T05:30:40Z",
+      "side": 1,
+      "message": "I moved the config to board.h.",
+      "parentUuid": "ba1938d4_2288d0d5",
+      "range": {
+        "startLine": 5962,
+        "startChar": 37,
+        "endLine": 5962,
+        "endChar": 62
+      },
+      "revId": "4e5c6428faa2f8dcb9be780976b74e88cc4a3a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50b4ce5d_09a343cc",
