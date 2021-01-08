@@ -1,0 +1,279 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c42b5ba_07c4907c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "should be an `\u003d` same for branch and test fields.",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f380bda0_fee0fe0d",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "Just use `3 * SECOND`. The definition is in timer.h",
+      "range": {
+        "startLine": 442,
+        "startChar": 47,
+        "endLine": 442,
+        "endChar": 56
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b748476a_3aa834f5",
+        "filename": "board/servo_v4p1/ina231s.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "Can we rename this to `set_chg_power_limit\u0027? I\u0027m confused as to what the \u0027sr\u0027 means.",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "243b1a0c_135d11c0",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "Missing copyright header.",
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c660b0bd_f52c584b",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "Use quotes",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 0
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a51aa2_75459dbf",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "typo: milliwatts",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d5e843_39dadfdc",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "Should this be static?",
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f94a431_a84e18b8",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "A getter with a void return type and no params seems strange. 😊 Perhaps `evaluate_input_power` instead?",
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34d198ab_0dbb0896",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "Use cprintf. ccprintf is reserved for console commands only.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea8b20bd_518f5375",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "How do we know we\u0027re given 1.5A from the result of BC 1.2 detection?",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbca414d_38de3c59",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "Please use braces for this block. One line is split across 3 lines.",
+      "range": {
+        "startLine": 48,
+        "startChar": 41,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f16b84_7ded0265",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8153204a_fd4ea517",
+        "filename": "board/servo_v4p1/usb_tc_snk_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T01:45:27Z",
+      "side": 1,
+      "message": "I know it\u0027s not this CL, but why is this here? I feel that it would be better placed with the other Type-C state machines. Although, perhaps it was moved here to have the \"alternate power stuff\" bolted on.",
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
