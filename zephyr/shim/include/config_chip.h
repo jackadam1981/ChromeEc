@@ -65,6 +65,9 @@ enum battery_type {
 
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_INPUT_CURRENT		512
+
+/* This always needs to be defined */
+#define CONFIG_EXTPOWER
 #endif
 
 /* eSPI configuration */
