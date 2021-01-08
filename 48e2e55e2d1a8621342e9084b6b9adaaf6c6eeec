@@ -34,6 +34,24 @@
       "parentUuid": "ca859a91_5208be65",
       "revId": "48e2e55e2d1a8621342e9084b6b9adaaf6c6eeec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed110308_5dd933c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-08T23:05:51Z",
+      "side": 1,
+      "message": "I trace this as follows: \nPE sends hard reset\nPRL detects transmit error (timeout?) reports ERR_TCH_XMIT back to PE, with type set to HARD_RESET.\nPE generates a soft reset, returning the SOP type (HARD_RESET) back in the PRL.\nSo there\u0027s probably a bug in the PE with the handling of transmit errors, but that\u0027s separate from what\u0027s being fixed here.",
+      "parentUuid": "2caa6baf_36ddd29f",
+      "revId": "48e2e55e2d1a8621342e9084b6b9adaaf6c6eeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
