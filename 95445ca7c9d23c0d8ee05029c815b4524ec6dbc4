@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60b99393_d5fbb4d3",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-08T20:32:48Z",
+      "side": 1,
+      "message": "Looks like thermistor_data_31_47 already covers 3.3V with 31K resistor and 47K thermistor. Switching to that.",
+      "parentUuid": "2ffd19e6_bcea1f12",
+      "revId": "95445ca7c9d23c0d8ee05029c815b4524ec6dbc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "985ca5e4_06975ecc",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69420185_759c37d7",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-08T20:32:48Z",
+      "side": 1,
+      "message": "Yeah, the single CONFIG_TEMP_SENSOR_POWER_GPIO is not flexible. It\u0027d be better if the GPIO was an option on the temp_sensor_t struct. To workaround this I created board_get_soc_temp to guard reading this thermistor.",
+      "parentUuid": "985ca5e4_06975ecc",
+      "revId": "95445ca7c9d23c0d8ee05029c815b4524ec6dbc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b738956_eb0f103f",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-01-07T23:52:16Z",
       "side": 1,
       "message": "I need to remind myself after break.  This one is on PP3300_Z1.  Is that powered in G3?",
+      "range": {
+        "startLine": 583,
+        "startChar": 2,
+        "endLine": 583,
+        "endChar": 39
+      },
+      "revId": "95445ca7c9d23c0d8ee05029c815b4524ec6dbc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8355f51_6a21e9d6",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-08T20:32:48Z",
+      "side": 1,
+      "message": "It is powered. Fixed.",
+      "parentUuid": "3b738956_eb0f103f",
       "range": {
         "startLine": 583,
         "startChar": 2,
