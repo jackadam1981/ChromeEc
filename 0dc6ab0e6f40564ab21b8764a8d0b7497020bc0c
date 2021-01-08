@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74034d40_2d7195c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-08T02:48:48Z",
+      "side": 1,
+      "message": "Gwendal,\n\ncould you take a look if disable the base IMU IRQ in S3 is feasible?\n\nOr, do you suggest we lower the rate in S3?",
+      "revId": "0dc6ab0e6f40564ab21b8764a8d0b7497020bc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
