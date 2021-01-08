@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4baaa1_2e9e7756",
+        "filename": "include/driver/retimer/bb_retimer_public.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-08T17:25:23Z",
+      "side": 1,
+      "message": "indent to opening parenthesis?\n\nclang-format is configured to handle this correctly if you prefer a scripted and automated way to do it",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "76acf8d66f36a131cd0844013feefd6543adb107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
