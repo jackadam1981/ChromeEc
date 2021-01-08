@@ -16,6 +16,24 @@
       "message": "I might beg to differ on this one.  Are we covered in cases where we\u0027re trying to disable Vbus over EC resets or sysjumps (i.e. cases where drivers would have forgotten we were previously sourcing Vbus)?",
       "revId": "724d8f2009231f19ed598d5d670da4cf38dd6364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b154cfe_1b1dc1be",
+        "filename": "baseboard/guybrush/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-08T21:45:21Z",
+      "side": 1,
+      "message": "commit 00d3f2d0d6e864236c217330659dd7801adf8670\nAuthor: Denis Brockus \u003cdbrockus@google.com\u003e\nDate:   Fri Jul 24 12:23:55 2020 -0600\n\n    zork: don\u0027t turn off vbus if we aren\u0027t sourcing vbus\n    \n    Turning off vbus when we are not sourcing vbus causes\n    a bad behavior when we are cold booting in a batterless\n    manner. So made it conditional so we would be able to\n    run correctly with and without battery\n    \n    BUG\u003db:162016100\n    BRANCH\u003dnone\n    TEST\u003dtrembyle cold boot with only AC power\n    \n    Signed-off-by: Denis Brockus \u003cdbrockus@google.com\u003e\n    Change-Id: I77ad0487887078d6dd7514fd375558f10737fccb\n    Reviewed-on: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2317892\n    Tested-by: Denis Brockus \u003cdbrockus@chromium.org\u003e\n    Reviewed-by: Jett Rink \u003cjettrink@chromium.org\u003e\n    Commit-Queue: Denis Brockus \u003cdbrockus@chromium.org\u003e\n    Auto-Submit: Denis Brockus \u003cdbrockus@chromium.org\u003e",
+      "parentUuid": "f5d5a97b_1fa6aa17",
+      "revId": "724d8f2009231f19ed598d5d670da4cf38dd6364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
