@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ac81f3_e8ae2aba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T00:12:55Z",
+      "side": 1,
+      "message": "These should be `\u003d`. Same for the branch and test fields.",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e733a60e_bd0ccda0",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T00:12:55Z",
+      "side": 1,
+      "message": "Please try to keep lines to 80 cols or less.",
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3070440_5c0261de",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T00:12:55Z",
+      "side": 1,
+      "message": "We use #include \"header.h\" notation for our header files.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9bb43ee_d0dd4d7c",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T00:12:55Z",
+      "side": 1,
+      "message": "Prefer to use enum ec_error_list",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 3
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600706a9_3878280a",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T00:12:55Z",
+      "side": 1,
+      "message": "ccprintf is reserved for console commands only. Please use cprintf with an appropriate console channel.",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 10
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da8b638_15e79c03",
+        "filename": "include/pwr_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T00:12:55Z",
+      "side": 1,
+      "message": "2021 now",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e1e30c9_cd5dae81",
+        "filename": "include/pwr_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T00:12:55Z",
+      "side": 1,
+      "message": "Same here, \"system.h\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d9ef2e_8a8e1691",
+        "filename": "include/pwr_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-08T00:12:55Z",
+      "side": 1,
+      "message": "typo: milliwatts",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
