@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa8f186_73cada2a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-08T18:19:05Z",
+      "side": 1,
+      "message": "Sure, will need to add extra check for msleep as we do not want 60ms sleep in case of I2C failure for third try.",
+      "parentUuid": "8488b424_bbb9fd97",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 445,
+        "endChar": 59
+      },
+      "revId": "4a97fb15288a4b5373480fcd58a652825e13418d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2afe5f44_2dfbf4d1",
