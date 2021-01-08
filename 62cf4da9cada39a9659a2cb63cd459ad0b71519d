@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e1a970_53b6a910",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-08T17:33:08Z",
+      "side": 1,
+      "message": "can you comment with  TODO(bug)?",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 13
+      },
+      "revId": "62cf4da9cada39a9659a2cb63cd459ad0b71519d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
