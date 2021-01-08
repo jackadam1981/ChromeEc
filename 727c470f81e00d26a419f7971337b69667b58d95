@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93eae5de_d2fd8cdd",
+        "filename": "baseboard/kukui/emmc_ite.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-01-08T08:46:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9387dfcd_3f2cee65",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 9
+      },
+      "revId": "727c470f81e00d26a419f7971337b69667b58d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e8f21f7_c57e2f6a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-08T05:47:36Z",
       "side": 1,
       "message": "bootblock_raw_data is not guaranteed to be multiple of 128 or 256, so without guarding the remainder content, this would cause out-of-bound access, and transmitting trash contents to the AP.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 49
+      },
+      "revId": "727c470f81e00d26a419f7971337b69667b58d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4086ad98_c2725f25",
+        "filename": "baseboard/kukui/emmc_ite.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-01-08T08:46:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8f21f7_c57e2f6a",
       "range": {
         "startLine": 170,
         "startChar": 0,
