@@ -273,6 +273,8 @@ void bc12_interrupt(enum gpio_signal signal);
 void ppc_interrupt(enum gpio_signal signal);
 void sbu_fault_interrupt(enum ioex_signal signal);
 
+void baseboard_en_pwr_pcore_s0(enum gpio_signal signal);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BASEBOARD_H */
