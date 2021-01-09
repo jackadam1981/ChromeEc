@@ -433,6 +433,9 @@ static void board_init(void)
 	/* Bring atmel part out of reset */
 	atmel_reset_l(1);
 
+	CPRINTS("Board ID is %d",board_id_det());
+	vbus_dischrg_en(0);
+
 #ifdef SECTION_IS_RO
 	init_uservo_port();
 	init_pathsel();
@@ -450,7 +453,9 @@ static void board_init(void)
 	hook_call_deferred(&evaluate_input_power_def_data, 3 * SECOND);
 
 	/* Enable DUT USB2.0 pair. */
-	gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 0);
+	gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 1);
+	//TODO: USB-C this only should be enabled on CONNECT!
+	//TODO: USB-A this needs to be overrided for Type-A servo!
 
 	/* Enable VBUS detection to wake PD tasks fast enough */
 	gpio_enable_interrupt(GPIO_USB_DET_PP_CHG);

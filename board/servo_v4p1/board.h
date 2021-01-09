@@ -195,6 +195,7 @@
 #define CONFIG_USB_PD_TCPM_STUB
 #undef CONFIG_USB_PD_PULLUP
 #define CONFIG_USB_PD_PULLUP TYPEC_RP_USB
+/* Default pull for board should not be Rp3a0 due to Cr50 */
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USBC_SS_MUX
@@ -211,9 +212,31 @@
  * TODO(crosbug.com/p/60792): The delay values are currently just place holders
  * and the delay will need to be relative to the circuitry that allows VBUS to
  * be supplied to the DUT port from the CHG port.
+ *
+ * TODO(V4P1): These values are now set towards maximum spec limit, to give CHG
+ * maximum time to respond. (Even though we don't pay any heed to its PS_RDY.)
+ *
+ * Suggest adding 15ms to allow max tSenderResponse for CHG (crbug.com/925618)
+ * (Note we send ACCEPT within 1ms, without waiting for MITM reply.)
  */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY  50000  /* us */
-#define PD_POWER_SUPPLY_TURN_OFF_DELAY 50000 /* us */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY (161*MSEC) /* us */
+/*
+* ServoV4p1 REV1: tuned with Apple 96w adapter
+* 100000 us gets converted to 379ms => 285-(379-100) => 6ms
+*                <-- causes issue with PR_SWAP
+*                    450-(379-100) => 171ms limit
+* (PD_T_SRC_READY 285ms max)
+* (PD_T_PS_TRANSITION  450-550ms limit)
+*/
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY (461*MSEC) /* us */
+/*
+* ServoV4p1 REV1: tuned with Apple 96w adapter
+* 50000 us gets converted to (???) => 675-(379-100?) => 396ms
+*                 <-- causes issue with PR_SWAP
+*                     750-(379-100?) => 471ms limit
+* (PD_T_PS_HARD_RESET[25-35ms]+PD_T_SAFE_0V[650ms max])
+* (PD_T_PS_SOURCE_OFF 750-920ms limit)
+*/
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
@@ -347,5 +370,6 @@ void ext_hpd_detection_enable(int enable);
  * @param enable Enable CCD if true, otherwise disable
  */
 void ccd_enable(int enable);
+
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
