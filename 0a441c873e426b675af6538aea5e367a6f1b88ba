@@ -22,6 +22,30 @@
       },
       "revId": "0a441c873e426b675af6538aea5e367a6f1b88ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72331e8a_b8cc52f0",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-09T06:16:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f078fbc4_d0f3d799",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 23
+      },
+      "revId": "0a441c873e426b675af6538aea5e367a6f1b88ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
