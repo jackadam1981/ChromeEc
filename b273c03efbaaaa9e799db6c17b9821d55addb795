@@ -22,6 +22,30 @@
       },
       "revId": "b273c03efbaaaa9e799db6c17b9821d55addb795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41624cb7_7acdceaf",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-09T00:24:56Z",
+      "side": 1,
+      "message": "OK I can use the _GPIO setting instead, as that is more direct. I\u0027m not sure if we will support other options with Zephyr but I suppose we can cross that bridge when we come to it.",
+      "parentUuid": "821e62a1_296c3c03",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "b273c03efbaaaa9e799db6c17b9821d55addb795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
