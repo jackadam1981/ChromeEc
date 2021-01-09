@@ -94,6 +94,30 @@
       },
       "revId": "1f6d434286cf2f5a4b9787343f391cd15527351a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a52753_97dd2b25",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-09T18:46:04Z",
+      "side": 1,
+      "message": "It sounds there will be potentially more devices on a single bus (e.g. i2c). There will be more \u0027slaves\u0027, right? Using the proposed naming, we\u0027ll have a single chip called \u0027client\u0027 and multiple chips called \u0027servers\u0027. Isn\u0027t it counter intuitive?",
+      "parentUuid": "4997d13b_4de84faf",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "1f6d434286cf2f5a4b9787343f391cd15527351a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
