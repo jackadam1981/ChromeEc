@@ -22,6 +22,30 @@
       },
       "revId": "62cf4da9cada39a9659a2cb63cd459ad0b71519d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e7ea49_a0392532",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-09T00:17:33Z",
+      "side": 1,
+      "message": "See above system_is_locked()...I can add it here too if you like?",
+      "parentUuid": "73e1a970_53b6a910",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 13
+      },
+      "revId": "62cf4da9cada39a9659a2cb63cd459ad0b71519d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
