@@ -454,7 +454,9 @@ static void board_init(void)
 	hook_call_deferred(&evaluate_input_power_def_data, 3 * SECOND);
 
 	/* Enable DUT USB2.0 pair. */
-	gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 0);
+	gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 1);
+	//TODO: USB-C this only should be enabled on CONNECT!
+	//TODO: USB-A this needs to be overrided for Type-A servo!
 
 	/* Enable VBUS detection to wake PD tasks fast enough */
 	gpio_enable_interrupt(GPIO_USB_DET_PP_CHG);
