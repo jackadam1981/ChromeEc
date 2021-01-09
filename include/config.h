@@ -1158,6 +1158,7 @@
 /* Chipset config */
 
 /* AP chipset support; pick at most one */
+#undef CONFIG_CHIPSET_ALDERLAKE		/* Intel Alderlake (x86) */
 #undef CONFIG_CHIPSET_APOLLOLAKE	/* Intel Apollolake (x86) */
 #undef CONFIG_CHIPSET_BRASWELL		/* Intel Braswell (x86) */
 #undef CONFIG_CHIPSET_CANNONLAKE	/* Intel Cannonlake (x86) */
@@ -5455,6 +5456,7 @@
 
 #ifndef HAS_TASK_CHIPSET
 #undef CONFIG_AP_HANG_DETECT
+#undef CONFIG_CHIPSET_ALDERLAKE
 #undef CONFIG_CHIPSET_APOLLOLAKE
 #undef CONFIG_CHIPSET_BRASWELL
 #undef CONFIG_CHIPSET_CANNONLAKE
@@ -5572,7 +5574,8 @@
 #endif
 
 #if defined(CONFIG_CHIPSET_JASPERLAKE) || \
-	defined(CONFIG_CHIPSET_TIGERLAKE)
+	defined(CONFIG_CHIPSET_TIGERLAKE) || \
+	defined(CONFIG_CHIPSET_ALDERLAKE)
 #define CONFIG_CHIPSET_ICELAKE
 #endif
 
