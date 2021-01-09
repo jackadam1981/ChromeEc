@@ -15,14 +15,14 @@
 #ifndef __CROS_EC_USB_PD_CONFIG_H
 #define __CROS_EC_USB_PD_CONFIG_H
 
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 /* NOTES: Servo V4 and glados equivalents:
  *	Glados		Servo V4
  *	C0		CHG
  *	C1		DUT
- *
  */
-#define CHG 0
-#define DUT 1
 
 /* Timer selection for baseband PD communication */
 #define TIM_CLOCK_PD_TX_CHG 16
@@ -55,17 +55,35 @@
 /* use the hardware accelerator for CRC */
 #define CONFIG_HW_CRC
 
-/* Servo v4 CC configuration */
-#define CC_DETACH	BIT(0)   /* Emulate detach: both CC open */
-#define CC_DISABLE_DTS	BIT(1)   /* Apply resistors to single or both CC? */
-#define CC_ALLOW_SRC	BIT(2)   /* Allow charge through by policy? */
-#define CC_ENABLE_DRP	BIT(3)   /* Enable dual-role port */
-#define CC_SNK_WITH_PD	BIT(4)   /* Force enabling PD comm for sink role */
-#define CC_POLARITY	BIT(5)   /* CC polarity */
-#define CC_EMCA_SERVO	BIT(6)   /*
-				  * Emulate Electronically Marked Cable Assembly
-				  * (EMCA) servo (or non-EMCA)
-				  */
+/* Servo v4p1 CC configuration */
+#define CC_DETACH_FAR	BIT(0)	/* Emulate far-side detach: both CC open */
+#define CC_DISABLE_DTS	BIT(1)	/* Apply resistors to single or both CC? */
+#define CC_ALLOW_SRC	BIT(2)	/* Allow charge through by policy? */
+#define CC_ENABLE_DRP	BIT(3)	/* Enable dual-role port */
+#define CC_SNK_WITH_PD	BIT(4)	/* Force enabling PD comm for sink role */
+#define CC_POLARITY		BIT(5)	/* CC polarity */
+#define CC_EMCA_SERVO	BIT(6)
+		/*
+		* Emulate Electronically Marked Cable Assembly
+		* (EMCA) servo (or non-EMCA)
+		*/
+#define CC_SRC_WITH_PD 	BIT(7)	/* Allow DUT PD comms as SRC*/
+#define CC_WITH_PD_ANY	(CC_SRC_WITH_PD | CC_SNK_WITH_PD)
+		/* Allow any form of PD */
+#define CC_DETACH_NEAR	BIT(8)	/* Emulate near-side detach: leave cable */
+#define CC_DETACH_ANY  (CC_DETACH_NEAR | CC_DETACH_FAR)
+								/* Detach mask for logic statements */
+#define CC_FASTBOOT_DFP	BIT(9)	/* Allow mux uServo->Fastboot on DFP */
+#define CC_PRS_SNK2SRC	BIT(10)	/* Allow Sink-to-Source PR_SWAP */
+#define CC_PRS_SRC2SNK	BIT(11) /* Allow Source-to-Sink PR_SWAP  */
+#define CC_PRS_ANY		(CC_PRS_SRC2SNK | CC_PRS_SNK2SRC)
+		/*
+		* TODO: Strictly speaking, SNK2SRC should also govern the
+		* "Unconstrained Power" flag (per USB-IF Dicta). But leaving
+		* separate as another "non-hidden" knob for user to tweak.
+		*/
+#define CC_UNCONSTRAINED_POWER	BIT(12)	/* Unconstrained Power emulation */
+
 
 /* Servo v4 DP alt-mode configuration */
 #define ALT_DP_ENABLE		BIT(0)   /* Enable DP alt-mode or not */
@@ -80,7 +98,7 @@
 #define SPI_REGS(p) ((p) ? STM32_SPI2_REGS : STM32_SPI1_REGS)
 static inline void spi_enable_clock(int port)
 {
-	if (port == 0)
+	if (port == CHG)
 		STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;
 	else
 		STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
@@ -116,7 +134,7 @@ static inline void spi_enable_clock(int port)
 /* the pins used for communication need to be hi-speed */
 static inline void pd_set_pins_speed(int port)
 {
-	if (port == 0) {
+	if (port == CHG) {
 		/* 40 MHz pin speed on SPI PB3&4,
 		 * (USB_CHG_TX_CLKIN & USB_CHG_CC1_TX_DATA)
 		 */
@@ -138,7 +156,7 @@ static inline void pd_set_pins_speed(int port)
 /* Reset SPI peripheral used for TX */
 static inline void pd_tx_spi_reset(int port)
 {
-	if (port == 0) {
+	if (port == CHG) {
 		/* Reset SPI1 */
 		STM32_RCC_APB2RSTR |= BIT(12);
 		STM32_RCC_APB2RSTR &= ~BIT(12);
@@ -161,28 +179,89 @@ static const uint8_t ref_gpio[2 /* port */][2 /* polarity */] = {
 /* Drive the CC line from the TX block */
 static inline void pd_tx_enable(int port, int polarity)
 {
+
+/*
+* WARNING:
+* Unlike Twinkie, which is hard-coded to transmit on both CC lines,
+* this board attempts to derive polarity. Due to some dubious code
+* commits, polarity is undefined in SNK.DTS.Unoriented state.
+*
+* Copy and paste Twinkie's logic here for reliability and function.
+* Refer to "enum tcpc_cc_polarity" in usb_pd_tcpm.h
+*
+* TODO: Refactor crrev/c/2022914
+*/
+
+#if 0
+	/* Transmit on both CC lines */
+	gpio_set_level(GPIO_CC2_TX_EN, 1);
+	gpio_set_level(GPIO_CC1_TX_EN, 1);
+	/* TX_DATA on PA6 is now connected to SPI1 */
+	gpio_set_alternate_function(GPIO_A, 0x0040, 0);
+	/* TX_DATA on PB4 is now connected to SPI1 */
+	gpio_set_alternate_function(GPIO_B, 0x0010, 0);
+#endif
+
+
 #ifndef VIF_BUILD /* genvif doesn't like tricks with GPIO macros */
-	const struct gpio_info *tx = gpio_list + tx_gpio[port][polarity];
-	const struct gpio_info *ref = gpio_list + ref_gpio[port][polarity];
+	const struct gpio_info *tx, *tx_alt;
+	const struct gpio_info *ref, *ref_alt;
 
-	/* use directly GPIO registers, latency before the PD preamble is key */
+	if (polarity <= POLARITY_CC2) {
+		tx = gpio_list + tx_gpio[port][polarity];
+		ref = gpio_list + ref_gpio[port][polarity];
 
-	/* switch the TX pin Mode from Input (00) to Alternate (10) for SPI */
-	STM32_GPIO_MODER(tx->port) |= 2 << ((31 - __builtin_clz(tx->mask)) * 2);
-	/* switch the ref pin Mode from analog (11) to Out (01) for low level */
-	STM32_GPIO_MODER(ref->port) &=
-		~(2 << ((31 - __builtin_clz(ref->mask)) * 2));
+		/* use directly GPIO registers, latency before the PD preamble is key */
+
+		/* switch the TX pin Mode from Input (00) to Alternate (10) for SPI */
+		STM32_GPIO_MODER(tx->port) |=
+			2 << ((31 - __builtin_clz(tx->mask)) * 2);
+		/* switch the ref pin Mode from analog (11) to Out (01) for low level */
+		STM32_GPIO_MODER(ref->port) &=
+			~(2 << ((31 - __builtin_clz(ref->mask)) * 2));
+	} else {
+		tx = gpio_list + tx_gpio[port][POLARITY_CC1];
+		ref = gpio_list + ref_gpio[port][POLARITY_CC1];
+
+		tx_alt = gpio_list + tx_gpio[port][POLARITY_CC2];
+		ref_alt = gpio_list + ref_gpio[port][POLARITY_CC2];
+
+		STM32_GPIO_MODER(tx->port) |=
+			2 << ((31 - __builtin_clz(tx->mask)) * 2);
+		STM32_GPIO_MODER(tx_alt->port) |=
+			2 << ((31 - __builtin_clz(tx_alt->mask)) * 2);
+		STM32_GPIO_MODER(ref->port) &=
+			~(2 << ((31 - __builtin_clz(ref->mask)) * 2));
+		STM32_GPIO_MODER(ref_alt->port) &=
+			~(2 << ((31 - __builtin_clz(ref_alt->mask)) * 2));
+	}
 #endif /* !VIF_BUILD */
 }
 
 /* Put the TX driver in Hi-Z state */
 static inline void pd_tx_disable(int port, int polarity)
 {
-	const struct gpio_info *tx = gpio_list + tx_gpio[port][polarity];
-	const struct gpio_info *ref = gpio_list + ref_gpio[port][polarity];
+	const struct gpio_info *tx, *tx_alt;
+	const struct gpio_info *ref, *ref_alt;
 
-	gpio_set_flags_by_mask(tx->port, tx->mask, GPIO_INPUT);
-	gpio_set_flags_by_mask(ref->port, ref->mask, GPIO_ANALOG);
+	if (polarity <= POLARITY_CC2) {
+		tx = gpio_list + tx_gpio[port][polarity];
+		ref = gpio_list + ref_gpio[port][polarity];
+
+		gpio_set_flags_by_mask(tx->port, tx->mask, GPIO_INPUT);
+		gpio_set_flags_by_mask(ref->port, ref->mask, GPIO_ANALOG);
+	} else {
+		tx = gpio_list + tx_gpio[port][POLARITY_CC1];
+		ref = gpio_list + ref_gpio[port][POLARITY_CC1];
+
+		tx_alt = gpio_list + tx_gpio[port][POLARITY_CC2];
+		ref_alt = gpio_list + ref_gpio[port][POLARITY_CC2];
+
+		gpio_set_flags_by_mask(tx->port, tx->mask, GPIO_INPUT);
+		gpio_set_flags_by_mask(tx_alt->port, tx_alt->mask, GPIO_INPUT);
+		gpio_set_flags_by_mask(ref->port, ref->mask, GPIO_ANALOG);
+		gpio_set_flags_by_mask(ref_alt->port, ref_alt->mask, GPIO_ANALOG);
+	}
 }
 
 /* we know the plug polarity, do the right configuration */
@@ -193,15 +272,18 @@ static inline void pd_select_polarity(int port, int polarity)
 	/* Use window mode so that COMP1 and COMP2 share non-inverting input */
 	val |= STM32_COMP_CMP1EN | STM32_COMP_CMP2EN | STM32_COMP_WNDWEN;
 
-	if (port == 0) {
+	if (port == CHG) {
 		/* CHG use the right comparator inverted input for COMP2 */
 		STM32_COMP_CSR = (val & ~STM32_COMP_CMP2INSEL_MASK) |
-			(polarity ? STM32_COMP_CMP2INSEL_INM4  /* PA4: C0_CC2 */
+			(polarity_rm_dts(polarity) ? STM32_COMP_CMP2INSEL_INM4  /* PA4: C0_CC2 */
 				  : STM32_COMP_CMP2INSEL_INM6);/* PA2: C0_CC1 */
 	} else {
 		/* DUT use the right comparator inverted input for COMP1 */
+		// THIS RIGHT HERE needs to be fixed. Ignore passed polarity use our own.
+		// ENABLE SINKDTS POLARITY by masking both registers maybe?
+
 		STM32_COMP_CSR = (val & ~STM32_COMP_CMP1INSEL_MASK) |
-			(polarity ? STM32_COMP_CMP1INSEL_INM5  /* PA5: C1_CC2 */
+			(polarity_rm_dts(polarity) ? STM32_COMP_CMP1INSEL_INM5  /* PA5: C1_CC2 */
 			 : STM32_COMP_CMP1INSEL_INM6);/* PA0: C1_CC1 */
 	}
 }
@@ -237,28 +319,37 @@ static inline void pd_set_host_mode(int port, int enable)
 	 * present as a SNK device. If port != DUT (port == 1), then nothing to
 	 * do in this function.
 	 */
-	if (!port)
+	if (port != DUT)
 		return;
 
 	if (enable) {
 		/*
-		 * Servo_v4 in SRC mode acts as a DTS (debug test
-		 * accessory) and needs to present Rp on both CC
-		 * lines. In order to support orientation detection, and
-		 * advertise the correct TypeC current level, the
-		 * values of Rp1/Rp2 need to asymmetric with Rp1 > Rp2. This
-		 * function is called without a specified Rp value so assume the
-		 * servo_v4 default of USB level current. If a higher current
-		 * can be supported, then the Rp value will get adjusted when
-		 * VBUS is enabled.
+		 * Servo_v4p1 (by default) acts as a DTS (debug test accessory)
+		 * and needs to present Rp on both CC lines.
+		 *
+		 * In order to support orientation detection, and advertise the
+		 * correct TypeC current level, the values of Rp1/Rp2 need to
+		 * be asymmetric with Rp1 > Rp2.
+		 *
+		 * This function is called without a specified Rp value so assume
+		 * the default from Servo_V4p1\board.h. If a higher current can
+		 * be supported, then the Rp value will get adjusted when VBUS
+		 * is enabled.
 		 */
-		pd_set_rp_rd(port, TYPEC_CC_RP, TYPEC_RP_USB);
+		pd_set_rp_rd(port, TYPEC_CC_RP, CONFIG_USB_PD_PULLUP);
 
-		gpio_set_flags(GPIO_USB_DUT_CC1_TX_DATA, GPIO_INPUT);
-		gpio_set_flags(GPIO_USB_DUT_CC2_TX_DATA, GPIO_INPUT);
+		// HACKHACKHACK: The below is redundant AND dangerous
+		// (Except it fudges with ADC!)
+		//gpio_set_flags(GPIO_USB_DUT_CC1_TX_DATA, GPIO_INPUT);
+		//gpio_set_flags(GPIO_USB_DUT_CC2_TX_DATA, GPIO_INPUT);
+
 	} else {
-		/* Select Rd, the Rp value is a don't care */
-		pd_set_rp_rd(port, TYPEC_CC_RD, TYPEC_RP_RESERVED);
+		/* Select Rd */
+		pd_set_rp_rd(port, TYPEC_CC_RD, CONFIG_USB_PD_PULLUP);
+
+		//THIS FUDGES WITH ADC
+		//gpio_set_flags(GPIO_USB_DUT_CC1_TX_DATA, GPIO_INPUT);
+		//gpio_set_flags(GPIO_USB_DUT_CC2_TX_DATA, GPIO_INPUT);
 	}
 }
 
