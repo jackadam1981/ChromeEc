@@ -41,4 +41,9 @@ void dut_to_host(void);
  */
 void uservo_to_host(void);
 
+/**
+* Enables port A1 HOST-DUT USB mux
+*/
+void usb3_a1_mux_en_l(int en);
+
 #endif /* __CROS_EC_PATHSEL_H */
