@@ -22,6 +22,52 @@
       },
       "revId": "e520969d2f1921c0f7660eccbfcd0cf4722d9a73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e580761_f2623957",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-09T08:22:40Z",
+      "side": 1,
+      "message": "Please don\u0027t send return as rv. In suspend time when we unplug the device this function throws error, this error causes the parent function not to call the virtual mux config functions. So vitual mux configuration will be missing. In general BB retimer function calls should not return error instead print warning message by sending return as Success.\nEx.: 2 monitor case \nConnect type C port 0 and port 1 with typecDp or HDMI dongles \nCheck display\nEnter S0ix\nunplug the type C above devices\nswap the devices\nwake the system\nDisplay won\u0027t come in one port.",
+      "range": {
+        "startLine": 418,
+        "startChar": 8,
+        "endLine": 418,
+        "endChar": 10
+      },
+      "revId": "e520969d2f1921c0f7660eccbfcd0cf4722d9a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ad25ae_3612c7a3",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-09T08:22:40Z",
+      "side": 1,
+      "message": "In general BB retimer function calls should not return error instead print warning message by sending return as Success. Retimer init we need to add extra delay so that virtual mux get a chance to configure the disconnect mode. Please refer the following scenario:\nEx.: 2 monitor case \nConnect type C port 0 and port 1 with typecDp or HDMI dongles \nCheck display\nEnter S0ix\nunplug the type C above devices\nswap the devices\nwake the system\nDisplay won\u0027t come in one port.",
+      "range": {
+        "startLine": 470,
+        "startChar": 8,
+        "endLine": 470,
+        "endChar": 10
+      },
+      "revId": "e520969d2f1921c0f7660eccbfcd0cf4722d9a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
