@@ -233,10 +233,46 @@ static int ln9310_init_2to1(void)
 	return EC_SUCCESS;
 }
 
+static int ln9310_update_infet(void)
+{
+	CPRINTS("LN9310 update infet configuration");
+
+
+	field_update8(LN9310_REG_LION_CTRL,
+		      0xff,
+		      0xaa);
+
+	/* Update Infet register settings */
+	field_update8(LN9310_REG_CFG_5,
+		      LN9310_CFG_5_INGATE_PD_EN_MASK,
+			  LN9310_CFG_5_INGATE_PD_EN_OFF);
+			  
+	field_update8(LN9310_REG_CFG_5,
+		      LN9310_CFG_5_INFET_CP_PD_BIAS_CFG_MASK,
+			  LN9310_CFG_5_INFET_CP_PD_BIAS_CFG_LOWEST);
+
+	/* enable automatic infet control */
+	field_update8(LN9310_REG_PWR_CTRL,
+				LN9310_PWR_INFET_AUTO_MODE_MASK,
+				LN9310_PWR_INFET_AUTO_MODE_ON);
+
+	field_update8(LN9310_REG_LION_CTRL,
+		      0xff,
+		      0x00);
+
+	return EC_SUCCESS;
+}
+
 void ln9310_init(void)
 {
 	int status, val;
 	enum battery_cell_type batt;
+
+	/* Update INFET configuration  */
+	status = ln9310_update_infet();
+
+	if (status != EC_SUCCESS)
+		return;
 
 	/*
 	 * Set OPERATION_MODE update method
