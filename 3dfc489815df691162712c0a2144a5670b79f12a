@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b6741c6_5e23426c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-09T18:08:23Z",
+      "side": 1,
+      "message": "I still think this MASTER -\u003e CLIENT, SLAVE -\u003e SERVER isn\u0027t best fit for the EC (or embedded in general). Here is the previous discussion: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2586037/comment/b4ba8cff_28418f12/.",
+      "revId": "3dfc489815df691162712c0a2144a5670b79f12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
