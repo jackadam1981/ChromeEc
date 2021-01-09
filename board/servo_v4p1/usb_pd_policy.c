@@ -13,6 +13,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "ioexpanders.h"
+#include "pathsel.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -54,7 +55,8 @@
 #define DUT_PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			     PDO_FIXED_COMM_CAP)
 
-#define CHG_PDO_FIXED_FLAGS (PDO_FIXED_DATA_SWAP)
+#define CHG_PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
+			     PDO_FIXED_COMM_CAP)
 
 #define VBUS_UNCHANGED(curr, pend, new) (curr == new && pend == new)
 
@@ -200,7 +202,7 @@ static int cc_pull_stored = TYPEC_CC_RD;
 
 static int user_limited_max_mv = 20000;
 
-static uint8_t allow_pr_swap = 1;
+/* static uint8_t allow_pr_swap = 1; */
 static uint8_t allow_dr_swap = 1;
 
 static uint32_t max_supported_voltage(void)
@@ -218,46 +220,215 @@ static int is_charge_through_allowed(void)
 	return charge_port_is_active() && cc_config & CC_ALLOW_SRC;
 }
 
-static int get_dual_role_of_src(void)
+static int is_charge_through_enabled(void)
 {
-	return cc_config & CC_ENABLE_DRP ? PD_DRP_TOGGLE_ON :
-					   PD_DRP_FORCE_SOURCE;
+
+	if(	pd_get_dual_role(DUT) == PD_DRP_FORCE_SOURCE ||
+		pd_get_dual_role(DUT) == PD_DRP_TOGGLE_ON ||
+		(pd_get_dual_role(DUT) == PD_DRP_FREEZE &&
+			pd_get_power_role(DUT) == PD_ROLE_SOURCE) ||
+		(pd_get_dual_role(DUT) == PD_DRP_TOGGLE_OFF &&
+			pd_get_power_role(DUT) == PD_ROLE_SOURCE)){
+		return 1;
+	}
+	else
+		// OFF TOGGLE-OFF(SNK)
+		return 0;
 }
 
-static void dut_allow_charge(void)
+static int is_pd_allowed(void)
 {
+
+	//if in doubt, pass pd_get_data_role(port).
+
+	//TODO: HACKHACKHACK fix this
+	int allow_pd=0;
+	enum pd_dual_role_states current_drp;
+
+	//This is dangerous (and not accurate)
+	//Should use "either possible end state" in response
+	enum pd_power_role current_power;
+
+	current_drp = pd_get_dual_role(DUT);
+	current_power = pd_get_power_role(DUT);
+	// NOTE pd_get_data_role() is ABSENT! <Don'tCare>!
+
+	switch(current_drp){
+	case PD_DRP_FORCE_SINK:
+		// If DTS and PD-as-SNK, enable PD
+		if (!(cc_config & CC_DISABLE_DTS) \
+				&& (cc_config & CC_SNK_WITH_PD) \
+				)
+			allow_pd = 1;
+
+		// If DTS is disabled [[and PD-as-SNK]] enable PD
+		if ((cc_config & CC_DISABLE_DTS) \
+				&& (cc_config & CC_SNK_WITH_PD) \
+				)
+			allow_pd = 1;
+	break;
+	case PD_DRP_FORCE_SOURCE:
+		if(cc_config & CC_SRC_WITH_PD)
+			allow_pd = 1;
+	break;
+	case PD_DRP_TOGGLE_ON:
+	case PD_DRP_TOGGLE_OFF:
+	case PD_DRP_FREEZE:
+		if ((current_power == PD_ROLE_SINK && cc_config & CC_SNK_WITH_PD) ||
+			(current_power == PD_ROLE_SOURCE && cc_config & CC_SRC_WITH_PD)	)
+		//if( cc_config & CC_SNK_WITH_PD &&
+		//		cc_config & CC_SRC_WITH_PD)
+			allow_pd = 1;
+	break;
+	}
+
+//	CPRINTS("PD allowed: [%d] Power [%d] DRP [%d] CC_CONFIG [0x%x]", allow_pd, current_power, current_drp, cc_config);
+	return allow_pd;
+}
+
+
+static int get_dual_role_of_src(void)
+{
+
+	enum pd_dual_role_states state;
+
+	// This is to fix broken SNK->SRC PR_SWAP as SRCDTS
+	// old code was intended for ServoV4, not V4p1.
+	// ServoV4p1 has no "always on" VBUS source.
+	// FORCE_SOURCE is inappropriate.
+
+
+	/* While disconnected, toggle between src and sink */
+	//PD_DRP_TOGGLE_ON,
+
+	/* Stay in src until disconnect, then stay in sink forever */
+	//PD_DRP_TOGGLE_OFF,
+
+	/* Stay in current power role, don't switch. No auto-toggle support */
+	//PD_DRP_FREEZE,
+
+	/* Switch to sink */
+	//PD_DRP_FORCE_SINK,
+
+	/* Switch to source */
+	//PD_DRP_FORCE_SOURCE,
+
+	if (cc_config & CC_ENABLE_DRP)
+			state = PD_DRP_TOGGLE_ON;
+	else if (cc_config & CC_ALLOW_SRC)
+			state = PD_DRP_FREEZE;
+			//state = PD_DRP_TOGGLE_OFF;
+	/*
+	else if (charge_port_is_active())
+			state = PD_DRP_FORCE_SOURCE; 	// This could be argued.
+			state = PD_DRP_FREEZE;
+	*/
+	else
+			// NOOP -- should be force sink here
+			// Treat this as "No VBUS SuzyQ"
+			state = PD_DRP_FORCE_SOURCE;
+			//state = PD_DRP_FORCE_SINK;
+
+	return state;
+}
+
+static void dut_activate_charge(void)
+{
+	int allow_pd=0;
 	/*
 	 * Update to charge enable if charger still present and not
 	 * already charging.
 	 */
+
+	// TODO: fix is_charge_through_enabled() detection/logic
 	if (is_charge_through_allowed() &&
-	    pd_get_dual_role(DUT) != PD_DRP_FORCE_SOURCE &&
-	    pd_get_dual_role(DUT) != PD_DRP_TOGGLE_ON) {
-		CPRINTS("Enable DUT charge through");
-		pd_set_dual_role(DUT, get_dual_role_of_src());
+			!is_charge_through_enabled()) {
+
+		CPRINTS("Enable DUT charge through: desired Role %d", get_dual_role_of_src());
+
+
+		// This initial call MUST be DRP_FORCE_SOURCE to trigger clean state transition.
+		//pd_set_dual_role(DUT, get_dual_role_of_src());
+		pd_set_dual_role(DUT, PD_DRP_FORCE_SOURCE);
+		//pd_set_dual_role(DUT, get_dual_role_of_src());
+
+		// task_set_event(PD_PORT_TO_TASK_ID(DUT),
+		//        PD_EVENT_POWER_STATE_CHANGE |
+		// 	       PD_EVENT_UPDATE_DUAL_ROLE,
+		//        0);
+
+		//hook_call_deferred(&fix_role_state_data, 200 * MSEC);
+		//usleep(2000);
+
+
+		//pd_update_contract(DUT);
+
 		/*
 		 * If DRP role, don't set any CC pull resistor, the PD
 		 * state machine will toggle and set the pull resistors
 		 * when needed.
 		 */
+
+		//============ FORCE A DISCONNECT ============
+			pd_power_supply_reset(DUT);
+
+			/* Remove Rp/Rd on both CC lines */
+			/* ROLE_CONTROL  Open (Disconnect or don’t care) */
+			//CPRINTS("dut_activate_charge(1): ALLOW PD IS %d",0);
+			pd_comm_enable(DUT, 0);
+			pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+
+			/*
+			 * If just changing mode (cc keeps enabled), give some
+			 * time for DUT to detach, use tErrorRecovery.
+			 */
+			usleep(PD_T_ERROR_RECOVERY);
+		//============================================
+
+
 		if (!(cc_config & CC_ENABLE_DRP))
 			pd_set_host_mode(DUT, 1);
+
+		#if 0
+		/* Don't do this here, it doesn't work */
+		pd_set_dual_role(DUT, get_dual_role_of_src());
+		#endif
+		// do_cc(cc_config);
+		//We need to use do_cc to get a disconnect here
+		// (Ideally need a cleaner transition)
+		// See BELOW comment.
 
 		/*
 		 * Enable PD comm. The PD comm may be disabled during
 		 * the power charge-through was detached.
 		 */
-		pd_comm_enable(DUT, 1);
+
+		// TODO: We need a more graceful transition here.
+		// PR_SWAP if PD-capable, FORCE_DETACH if not PD-capable
+		// allow_pd
+
+		/*
+		if (cc_config & CC_SRC_WITH_PD)
+			pd_comm_enable(DUT, 1);
+		else
+			pd_comm_enable(DUT, 0);
+		*/
+
+		allow_pd=is_pd_allowed();
+		//CPRINTS("dut_activate_charge(2): ALLOW PD IS %d",allow_pd);
+		pd_comm_enable(DUT,allow_pd);
 
 		pd_update_contract(DUT);
 	}
 }
-DECLARE_DEFERRED(dut_allow_charge);
+DECLARE_DEFERRED(dut_activate_charge);
 
 static void board_manage_dut_port(void)
 {
-	enum pd_dual_role_states allowed_role;
-	enum pd_dual_role_states current_role;
+	enum pd_dual_role_states preferred_drp;
+	enum pd_dual_role_states current_drp;
+	enum pd_power_role current_power;
+	int allow_pd=0;
 
 	/*
 	 * This function is called by the CHG port whenever there has been a
@@ -266,17 +437,23 @@ static void board_manage_dut_port(void)
 	 * contract if it is connected.
 	 */
 
-	/* Assume the default value of Rd */
-	allowed_role = PD_DRP_FORCE_SINK;
+	/* Assume the default value of FREEZE (keep current) */
+	preferred_drp = PD_DRP_FREEZE;
+	// TODO: This should be handled in get_dual_role_of_src()
+
+
+	current_drp = pd_get_dual_role(DUT);
+	current_power = pd_get_power_role(DUT);
 
 	/* If VBUS charge through is available, mark as such. */
 	if (is_charge_through_allowed())
-		allowed_role = get_dual_role_of_src();
+		preferred_drp = get_dual_role_of_src();
+	else if (!charge_port_is_active() && current_power != PD_ROLE_SINK)
+		preferred_drp = PD_DRP_FORCE_SINK;
 
-	current_role = pd_get_dual_role(DUT);
-	if (current_role != allowed_role) {
+	if (current_drp != preferred_drp) {
 		/* Update role. */
-		if (allowed_role == PD_DRP_FORCE_SINK) {
+		if (preferred_drp == PD_DRP_FORCE_SINK) {
 			/* We've lost charge through. Disable VBUS. */
 			chg_power_select(CHG_POWER_OFF);
 			dut_chg_en(0);
@@ -293,10 +470,37 @@ static void board_manage_dut_port(void)
 			 * There is an exception that servo v4 is explicitly set
 			 * to have PD, like the "pnsnk" mode.
 			 */
-			pd_comm_enable(DUT, cc_config & CC_SNK_WITH_PD ? 1 : 0);
+			// The above is incorrect. Depends on CC_DISABLE_DTS.
+			// Does not match my user expectation.
+
+			// Should check for PR_SWAP, if we swapped from PDSRCDTS
+			// Treat this as an abrupt shutoff.
+
+			/*
+			if (!(cc_config & CC_DISABLE_DTS)
+					&& (cc_config & CC_SNK_WITH_PD)
+					)
+				allow_pd = 1;
+
+			// If DTS is disabled [[and PD-as-SNK]] enable PD
+			if ((cc_config & CC_DISABLE_DTS)
+					//&& (cc_config & CC_SNK_WITH_PD)
+					)
+				allow_pd = 1;
+			*/
+
+			allow_pd=is_pd_allowed();
+			//chg_power_select(CHG_POWER_PP5000);
+			CPRINTS("board_manage_dut_port: ALLOW PD IS %d",allow_pd);
+			pd_comm_enable(DUT, allow_pd);
+
+			//pd_comm_enable(DUT, (cc_config & CC_SNK_WITH_PD) ? 1 : 0);
 		} else {
 			/* Allow charge through after PD negotiate. */
-			hook_call_deferred(&dut_allow_charge_data, 2000 * MSEC);
+			/* Cancel any pending function calls */
+			hook_call_deferred(&dut_activate_charge_data, -1);
+			hook_call_deferred(&dut_activate_charge_data, 2000 * MSEC);
+			CPRINTS("board_manage_dut_port: Trying to activate_charge");
 		}
 	}
 
@@ -326,6 +530,7 @@ static void update_ports(void)
 			snk_index = -1;
 
 			for (i = 0; i < ARRAY_SIZE(pd_src_voltages_mv); ++i) {
+
 				/* Adhere to board voltage limits */
 				if (pd_src_voltages_mv[i] >
 				    max_supported_voltage())
@@ -345,20 +550,43 @@ static void update_ports(void)
 
 				snk_index = pdo_index;
 				pd_extract_pdo_power(pdo, &max_ma, &max_mv);
-				pd_src_chg_pdo[src_index++] =
+
+				pd_src_chg_pdo[src_index] =
 					PDO_FIXED_VOLT(max_mv) |
-					PDO_FIXED_CURR(max_ma) |
-					DUT_PDO_FIXED_FLAGS |
-					PDO_FIXED_UNCONSTRAINED;
+					PDO_FIXED_CURR(max_ma) ;
+
+				if (src_index == 0) {
+					// TODO: 1st PDO *should* always be 5V PDO.
+					// But not always with bad DUT. Should re-index and re-map.
+					// TODO: Add variable voltage PDO conversion.
+					pd_src_chg_pdo[src_index] &= ~(DUT_PDO_FIXED_FLAGS | \
+							PDO_FIXED_UNCONSTRAINED);
+
+					pd_src_chg_pdo[src_index] |= DUT_PDO_FIXED_FLAGS | \
+						((cc_config & CC_UNCONSTRAINED_POWER)?PDO_FIXED_UNCONSTRAINED:0);
+
+					//CPRINTS("=====> UP IS [a][%d]",!!(pd_src_chg_pdo[src_index] & PDO_FIXED_UNCONSTRAINED));
+					/*
+					* TODO: Keep knobs exposed and well-defined.
+					*
+					* Don't try to be "too clever by half" and instead use:
+					* (pd_check_power_swap(DUT)?PDO_FIXED_UNCONSTRAINED:0)
+					*/
+				}
+				src_index++;
 			}
 			chg_pdo_cnt = src_index;
 		} else {
-			/* 5V PDO */
+
+			pd_src_chg_pdo[0] &= ~(DUT_PDO_FIXED_FLAGS | \
+				PDO_FIXED_UNCONSTRAINED);
+
+			/* 5V Type-C PDO */
 			pd_src_chg_pdo[0] = PDO_FIXED_VOLT(PD_MIN_MV) |
 				PDO_FIXED_CURR(vbus[CHG].ma) |
 				DUT_PDO_FIXED_FLAGS |
-				PDO_FIXED_UNCONSTRAINED;
-
+				((cc_config & CC_UNCONSTRAINED_POWER)?PDO_FIXED_UNCONSTRAINED:0);
+			//CPRINTS("=====> UP IS [b][%d]",!!(pd_src_chg_pdo[0] & PDO_FIXED_UNCONSTRAINED));
 			chg_pdo_cnt = 1;
 		}
 	}
@@ -402,8 +630,11 @@ __override uint8_t board_get_src_dts_polarity(int port)
 	 * When servo configured as srcdts, the CC polarity is based
 	 * on the flags.
 	 */
-	if (port == DUT)
-		return !!(cc_config & CC_POLARITY);
+	if (port == DUT){
+		/* This is to work around 4-polarity hack */
+		return ( (!(cc_config & CC_DISABLE_DTS))<<1 | !!(cc_config & CC_POLARITY));
+	}
+
 
 	return 0;
 }
@@ -963,14 +1194,23 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 	int pdo_cnt = 0;
 
 	/*
-	 * If CHG is providing VBUS, then advertise what's available on the CHG
-	 * port, otherwise we provide no power.
+	 * If CHG is providing VBUS, then advertise what's available on
+	 *  the CHG port, otherwise we provide no power.
 	 */
 	if (charge_port_is_active()) {
 		*src_pdo =  pd_src_chg_pdo;
 		pdo_cnt = chg_pdo_cnt;
+
+		pd_src_chg_pdo[0] &= ~(DUT_PDO_FIXED_FLAGS | \
+				PDO_FIXED_UNCONSTRAINED);
+
+		pd_src_chg_pdo[0] |= DUT_PDO_FIXED_FLAGS | \
+			((cc_config & CC_UNCONSTRAINED_POWER)?PDO_FIXED_UNCONSTRAINED:0);
+			//CPRINTS("=====> UP IS [c][%d]",!!(pd_src_chg_pdo[0] & PDO_FIXED_UNCONSTRAINED));
 	}
 
+	/* NULL pointer goes weird places! */
+	*src_pdo = pd_src_chg_pdo;
 	return pdo_cnt;
 }
 
@@ -1026,7 +1266,15 @@ int pd_set_power_supply_ready(int port)
 
 		vbus[DUT].mv = vbus[CHG].mv;
 		vbus[DUT].ma = vbus[CHG].mv;
+
+		/*
+		* Hook into VBUS ON activity to switch to Freeze.
+		* This fixes PR_SWAP ability
+		*/
+/*
 		pd_set_dual_role(DUT, get_dual_role_of_src());
+		//NOT NOW, NOT HERE
+*/
 	} else {
 		vbus[DUT].mv = 0;
 		vbus[DUT].ma = 0;
@@ -1036,6 +1284,13 @@ int pd_set_power_supply_ready(int port)
 	}
 
 	return EC_SUCCESS; /* we are ready */
+}
+
+static int pd_get_external_voltage_limit(int port)
+{
+	/* TODO: Do we not have a per-port max voltage? */
+	int max_volt = pd_get_max_voltage();
+	return max_volt;
 }
 
 void pd_power_supply_reset(int port)
@@ -1048,8 +1303,19 @@ void pd_power_supply_reset(int port)
 	chg_power_select(CHG_POWER_OFF);
 	dut_chg_en(0);
 
-	/* DUT is lost, back to 5V limit on CHG */
-	pd_set_external_voltage_limit(CHG, PD_MIN_MV);
+	/* Don't cause a race condition by hammering the PD task. */
+
+	if (pd_get_external_voltage_limit(port) != PD_MIN_MV){
+		CPRINTS("C%d:psu_reset touching PD task",port);
+
+		/* DUT is lost, back to 5V limit on CHG */
+		pd_set_external_voltage_limit(CHG, PD_MIN_MV);
+		msleep(100);
+	}
+	else {
+		CPRINTS("C%d:psu_reset interdicted!",port);
+		msleep(100);
+	}
 }
 
 int pd_snk_is_vbus_provided(int port)
@@ -1060,25 +1326,109 @@ int pd_snk_is_vbus_provided(int port)
 
 __override int pd_check_power_swap(int port)
 {
+	// TODO: Fix this for ServoV4p1
 	/*
-	 * When only host VBUS is available, then servo_v4 is not setting
+	 * [ServoV4p0] When only host VBUS is available, then servo_v4 is not setting
 	 * PDO_FIXED_UNCONSTRAINED in the src_pdo sent to the DUT. When this bit
 	 * is not set, the DUT will always attempt to swap its power role to
 	 * SRC. Let servo_v4 have more control over its power role by always
 	 * rejecting power swap requests from the DUT.
 	 */
+	// DONE.  See new code below.
+
+	int ret=0;
+	int err=0;
+	int chargeable=0;
+	enum pd_power_role current_power;
+	enum pd_dual_role_states current_drp;
 
 	/* Port 0 can never provide vbus. */
 	if (port == CHG)
 		return 0;
 
-	if (pd_get_power_role(port) == PD_ROLE_SINK && !(cc_config & CC_ALLOW_SRC))
-		return 0;
+	/*
+	* Do not use this code.
+	* crrev/c/2471629 doesn't consider edge cases.
 
 	if (pd_snk_is_vbus_provided(CHG))
 		return allow_pr_swap;
+	*/
 
-	return 0;
+	chargeable = is_charge_through_allowed();
+
+	/*
+	*	TODO: Add port==HOST logic, abstract functions.
+	*/
+
+	/* Handle DRP policy options of DUT port */
+
+	current_power = pd_get_power_role(port);
+	current_drp = pd_get_dual_role(port);
+
+	switch(current_power){
+	case PD_ROLE_SOURCE:
+		/*
+		// OBSOLETE -- IGNORE
+		if (pd_get_dual_role(port) != PD_DRP_FORCE_SOURCE)
+			ret=1;
+		*/
+		switch(current_drp){
+		case PD_DRP_FORCE_SOURCE:
+			ret=0;
+		break;
+		case PD_DRP_FORCE_SINK:
+		case PD_DRP_TOGGLE_OFF:
+		case PD_DRP_TOGGLE_ON:
+		case PD_DRP_FREEZE:
+			ret=!!(cc_config & CC_PRS_SRC2SNK);
+		break;
+		default:
+			err=1;
+			ret=0;
+		break;
+		}
+	break;
+	case PD_ROLE_SINK:
+		// TODO: Fix this to match which VBUS provider
+		// (HOST or CHG) based on (HOST_OR_CHG_CTL) GPIO
+
+		// charge_port_is_active() ?
+		// No, that checks active_charge_port
+		// This should probably check port state is SNK_RDY
+
+		/*
+		if (pd_snk_is_vbus_provided(CHG) &&
+				(cc_config & CC_ALLOW_SRC) &&
+				pd_get_dual_role(port) != PD_DRP_FORCE_SINK)
+			ret=1;
+		*/
+
+		switch(current_drp){
+		case PD_DRP_FORCE_SINK:
+		case PD_DRP_TOGGLE_OFF:
+			ret=0;
+		break;
+		case PD_DRP_FORCE_SOURCE:
+		case PD_DRP_TOGGLE_ON:
+		case PD_DRP_FREEZE:
+			ret=!!(cc_config & CC_PRS_SNK2SRC) && chargeable;
+		break;
+		default:
+			err=1;
+			ret=0;
+		break;
+		}
+	break;
+	default:
+		err=1;
+		ret=0;
+	break;
+	}
+	if (err)
+		CPRINTS("C%d: check PR_SWAP invalid power:%d drp:%d",port, current_power, current_drp);
+	else
+		CPRINTS("C%d: check PR_SWAP dictated [%d]", port, ret);
+	return ret;
 }
 
 __override int pd_check_data_swap(int port,
@@ -1101,6 +1451,119 @@ __override void pd_execute_data_swap(int port,
 	 * TODO(b/137887386): Turn on the fastboot/DFU path when data swap to
 	 * DFP?
 	 */
+	// DONE
+
+
+	/*
+	* This is absolutely required to D/C USB2 between roles. If it is not
+	* present, the USB2 switch may remain intact across swaps. This will
+	* allow Try.SRC to break USB3 hub enumeration on some bad DUT.
+	*
+	* (P0)TODO:
+	* 1. Bad DUT don't "unmux" USB during Try.SRC.
+	* 2. This leaves USB data hub in USB3+2 => USB2 => USB3+2 state.
+	* 3. This then causes ServoV4 hub to "get stuck" in USB2 mode.
+	* 4. You are now unable to mount any devices at USB3 anymore.
+	*
+	* Workaround: use a callback + debounce timer between mux events.
+	*
+	* FOLLOWUP: This is a SafeMode mux bug. Not our problem.
+	*/
+	//static enum pd_data_role last_role=PD_ROLE_DISCONNECTED;
+	//static timestamp_t deadline;
+
+	if (port == CHG)
+		return;
+
+	/*
+	*  ServoV4p1 REV1
+	*  (*default init)
+	*
+	*                             HOST HUB
+	*    DUT HUB                     |
+	*       ^                        v
+	*       |             [USERVO_FASTBOOT_MUX_SEL]
+	*       |               1   (EN_L=Gnd*)   0*
+	*       |               |                 |
+	*       |               v                 |
+	*       1*              0                 v
+	*    [FASTBOOT_DUTHUB_MUX_SEL]      uServo Type-A
+	*            (EN_L=1*)
+	*                ^
+	*                |
+	*                v
+	*              DUT CB
+	*/
+
+	/* Handle various mux connect cases */
+	// TODO: Put this in a mux driver (for UFP)!
+	// DONE
+
+
+#if 0
+	if (get_time() < deadline){
+		// We were called again before the deferred call.
+	}
+
+			deadline = get_time() + 200*MSEC;
+
+			/* Pop open, wait a delay, then try agaan. */
+			/* Cancel any pending function calls */
+			hook_call_deferred(&delay_dr_swap_data, -1);
+			hook_call_deferred(&delay_dr_swap_data, 200 * MSEC);
+#endif
+
+#if 0
+	if (last_role != data_role) {
+		last_role=data_role;
+			/* Disable USB3 lines */
+			usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_DISCONNECT,
+			   pd_get_polarity(port));
+			CPRINTS("C%d: Exec_DRS: Debounce Open:%d", port, data_role);
+	}
+#endif
+
+	switch(data_role){
+	case PD_ROLE_DFP:
+		if (cc_config & CC_FASTBOOT_DFP)
+			dut_to_host();
+		else
+			uservo_to_host();
+
+		/* Disable USB3 lines (since Fastboot can't) */
+/*
+		CPRINTS("C%d: Exec_DRS: DFP: Killing USB3, fastboot [%s]", port,
+			(cc_config & CC_FASTBOOT_DFP)?"on":"off");
+*/
+		usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_CONNECT,
+		   pd_get_polarity(port));
+	break;
+	case PD_ROLE_UFP:
+		if (!(cc_config & CC_FASTBOOT_DFP))
+			uservo_to_host();
+
+		/* Enable USB3 lines */
+/*
+		CPRINTS("C%d: Exec_DRS: UFP: Enabling USB3, fastboot [%s]", port,
+			(cc_config & CC_FASTBOOT_DFP)?"on":"off");
+*/
+		usb_mux_set(port, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT,
+			   pd_get_polarity(port));
+	break;
+	case PD_ROLE_DISCONNECTED:
+		if (!(cc_config & CC_FASTBOOT_DFP))
+			uservo_to_host();
+		/* Disable USB3 lines */
+		usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_DISCONNECT,
+		   pd_get_polarity(port));
+/*
+		CPRINTS("C%d: Exec_DRS: D/C: data:%d", port, data_role);
+*/
+		break;
+	default:
+		/* Panic */
+		CPRINTS("C%d: Exec_DRS: Invalid: data:%d",port, data_role);
+	}
 }
 
 __override void pd_check_pr_role(int port,
@@ -1177,7 +1640,17 @@ const uint32_t vdo_ama = VDO_AMA(CONFIG_USB_PD_IDENTITY_HW_VERS,
 
 static int svdm_response_identity(int port, uint32_t *payload)
 {
-	int dp_supported = (alt_dp_config & ALT_DP_ENABLE) != 0;
+	int dp_supported;
+#if 1
+	// TODO: Per USB-IF NAK should not be done here.
+	// "Modes supported" should be a fixed item.
+	// Move this to EnterMode check.
+	dp_supported=true;
+#else
+	//HACKHACKHACK: This is a workaround for DP Compliance SafeMode bug
+	// If SSUSB dies, this is the cause.
+	dp_supported=!!(alt_dp_config & ALT_DP_ENABLE);
+#endif
 
 	if (dp_supported) {
 		payload[VDO_I(IDH)] = vdo_idh;
@@ -1210,14 +1683,19 @@ static int svdm_response_modes(int port, uint32_t *payload)
 	vdo_dp_mode[0] =
 		VDO_MODE_DP(0,             /* UFP pin cfg supported: none */
 			    alt_dp_config_pins(),  /* DFP pin */
-			    1,             /* no usb2.0 signalling in AMode */
+			    0,             /* 1= No usb2.0 signalling in AMode */
 			    alt_dp_config_cable(), /* plug or receptacle */
 			    MODE_DP_V13,   /* DPv1.3 Support, no Gen2 */
 			    MODE_DP_SNK);  /* Its a sink only */
 
+
+#if 1
 	/* CCD uses the SBU lines; don't enable DP when dts-mode enabled */
+	// TODO: This shouldn't be handled here.
+	// It should be handled in EnterMode per USB-IF
 	if (!(cc_config & CC_DISABLE_DTS))
 		return 0; /* NAK */
+#endif
 
 	if (PD_VDO_VID(payload[0]) != USB_SID_DISPLAYPORT)
 		return 0; /* NAK */
@@ -1246,7 +1724,7 @@ static void set_typec_mux(int pin_cfg)
 		CPRINTS("PinCfg not supported: %d", pin_cfg);
 		return;
 	}
-	if (state && cc_config & CC_POLARITY)
+	if (state && (cc_config & CC_POLARITY))
 		state |= USB_PD_MUX_POLARITY_INVERTED;
 
 	usb_muxes[DUT].driver->set(&usb_muxes[DUT], state);
@@ -1301,6 +1779,16 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 	if ((PD_VDO_VID(payload[0]) != USB_SID_DISPLAYPORT) ||
 	    (PD_VDO_OPOS(payload[0]) != OPOS))
 		return 0;  /* NAK */
+
+	/* CCD uses the SBU lines; don't enable DP when dts-mode enabled */
+	if (!(cc_config & CC_DISABLE_DTS)) {
+		CPRINTS("WARNING: Tried to EnterMode DP with [CCD on AUX/SBU]");
+		return 0; /* NAK */
+	}
+	else if (!(alt_dp_config & ALT_DP_ENABLE)) {
+		CPRINTS("WARNING: Tried to EnterMode DP with [usbc dp off]");
+		return 0; /* NAK */
+	}
 
 	alt_mode = OPOS;
 	return 1;
@@ -1370,17 +1858,24 @@ __override const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 static void print_cc_mode(void)
 {
 	/* Get current CCD status */
-	ccprintf("cc: %s\n", cc_config & CC_DETACH_FAR ? "off" : "on");
-	ccprintf("dts mode: %s\n", cc_config & CC_DISABLE_DTS ? "off" : "on");
-	ccprintf("chg mode: %s\n",
-		 get_dut_chg_en() ? "on" : "off");
-	ccprintf("chg allowed: %s\n", cc_config & CC_ALLOW_SRC ? "on" : "off");
-	ccprintf("drp enabled: %s\n", cc_config & CC_ENABLE_DRP ? "on" : "off");
-	ccprintf("cc polarity: %s\n", cc_config & CC_POLARITY ? "cc2" :
-								"cc1");
-	ccprintf("pd enabled: %s\n", pd_comm_is_enabled(DUT) ? "on" : "off");
-	ccprintf("emca: %s\n", cc_config & CC_EMCA_SERVO ?
-					"emarked" : "non-emarked");
+	ccprintf("Policy flags:\n");
+	ccprintf("    cc (@dut):    %s\n", cc_config & CC_DETACH_FAR ? "off" : "on");
+	ccprintf("    cc (@cable):  %s\n", cc_config & CC_DETACH_NEAR ? "off" : "on");
+	ccprintf("    polarity:     %s\n", cc_config & CC_POLARITY ? "cc2" : "cc1");
+	ccprintf("    dts mode:     %s\n", cc_config & CC_DISABLE_DTS ? "off" : "on");
+	ccprintf("    drp enabled:  %s\n", cc_config & CC_ENABLE_DRP ? "on" : "off");
+	ccprintf("    chg allowed:  %s\n", cc_config & CC_ALLOW_SRC ? "on" : "off");
+	ccprintf("    cable-eMark:  %s\n", cc_config & CC_EMCA_SERVO ? "emarked" : "non-emarked");
+	ccprintf("PD power flags:\n");
+	ccprintf("    pd-as-src:    %s\n", cc_config & CC_SRC_WITH_PD ? "on" : "off");
+	ccprintf("    pd-as-snk:    %s\n", cc_config & CC_SNK_WITH_PD  ? "on" : "off");
+	ccprintf("    prs src2snk:  %s\n", cc_config & CC_PRS_SRC2SNK  ? "on" : "off");
+	ccprintf("    prs snk2src:  %s\n", cc_config & CC_PRS_SNK2SRC  ? "on" : "off");
+	ccprintf("    up power:     %s\n", cc_config & CC_UNCONSTRAINED_POWER ? "on" : "off");
+	ccprintf("State:\n");
+	ccprintf("    pd enabled:   %s\n", pd_comm_is_enabled(DUT) ? "on" : "off");
+	ccprintf("    chg mode:     %s\n", get_dut_chg_en() ? "on" : "off");
+	ccprintf("    fastboot-dfp: %s\n", cc_config & CC_FASTBOOT_DFP ? "on" : "off");
 }
 
 
@@ -1388,46 +1883,204 @@ static void do_cc(int cc_config_new)
 {
 	int chargeable;
 	int dualrole;
+	int allow_pd;
+	int cc_config_old=cc_config;
 
-	if (cc_config_new != cc_config) {
-		if (!(cc_config & CC_DETACH_FAR)) {
-			/* Force detach */
-			pd_power_supply_reset(DUT);
-			/* Always set to 0 here so both CC lines are changed */
-			cc_config &= ~(CC_DISABLE_DTS & CC_ALLOW_SRC);
+	/* (1) */
+	if (cc_config_new != cc_config_old) {
 
-			/* Remove Rp/Rd on both CC lines */
-			pd_comm_enable(DUT, 0);
-			pd_set_rp_rd(DUT, TYPEC_CC_RP, TYPEC_RP_RESERVED);
+		/* If we are not [currently] in Detach state, force one briefly */
+		//if (!(cc_config & CC_DETACH_FAR) && !(cc_config & CC_DETACH_NEAR)) {
+
+		/*
+		 * (1) If there is a change in CC config state
+		 *
+		 * (2) And we are going:
+		 *   (a) Non-Detach-->Detach
+		 *   (b) Non-Detach<->Non-Detach
+		 *   (c) DTS<->Non-DTS
+		 *   (d) Detached DTS<->Detached Non-DTS
+		 *   (e) Detached Near<->Detached Far
+		 *   (f) EMCA<->NonEMCA
+		 *
+		 * (3) Simulate a brief Detach event (appropriate the mode)
+		 *   (a) DTS<->[DTS|Non-DTS] gets FAR SIDE detach
+		 *   (b) Non-DTS<->Non-DTS:
+		 *      (i) EMCA<->NonEMCA gets FAR SIDE detach
+		 *     (ii) SameCable<->SameCable CONNECTED gets NEAR SIDE detach
+		 *    (iii) SameCable<->SameCable DETACH gets FAR SIDE detach
+		 *
+		 * (3b) is debatable, but exposes more bugs, so is used.
+		 * User can always manually override by "cc off".
+		 *
+		 */
+
+		/* (2) */
+		if (  ((cc_config_old ^ cc_config_new) & CC_DETACH_ANY) ||
+			  ((cc_config_old ^ cc_config_new) & CC_DISABLE_DTS)||
+			  ((cc_config_old ^ cc_config_new) & CC_EMCA_SERVO) ||
+			  ((cc_config_old ^ cc_config_new) & CC_POLARITY) ) {
 
 			/*
-			 * If just changing mode (cc keeps enabled), give some
-			 * time for DUT to detach, use tErrorRecovery.
+			 * Simulate a physical detach via "faked" ADC reads + Hi-Z
+			 * (To instead force DUT-level Detach, use TCPCM + Rp-Open)
 			 */
-			if (!(cc_config_new & CC_DETACH_FAR))
+
+			/*
+			* TODO: We were encountering a race condition in the
+			* pd_transmit() function in usb_pd_protocol.c file when
+			* we reset PD supply /before/ applying RpOpen.
+			*
+			* (b/170057526) This also stops the "Mystery SRC_CAP"
+			* right before Rp open+open is applied, wedging TCPMv2.
+			*
+			* TODO: maybe actually be the HOOK function doing it!
+			*/
+
+			/* Remove Rp/Rd on appropriate CC lines */
+			/* ROLE_CONTROL  Open (Disconnect or don’t care) */
+			pd_comm_enable(DUT, 0);
+
+
+			/*
+			 * NOTE: Per (2) no Detach flags are set in cc_config_old
+			 * except if we're transitiong into/out of DTS -- in which
+			 * case CC_DETACH_FAR takes priority.
+			 */
+
+
+			/* (3) */
+			cc_config = cc_config_new;
+
+			if ( !(cc_config_old & CC_DISABLE_DTS) ||
+					!(cc_config_new & CC_DISABLE_DTS)  ){
+				/* (a) DTS on either side */
+				cc_config |= CC_DETACH_FAR;
+				CPRINTS("Doing 3a 0x%x", cc_config);
+				pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+			} else  {
+				/* (b) Non-DTS both sides */
+				if ( (cc_config_old ^ cc_config_new) & CC_EMCA_SERVO ||
+					 (cc_config_old ^ cc_config_new) & CC_POLARITY ) {
+					if(!(cc_config_old & CC_DETACH_ANY)) {
+						cc_config |= CC_DETACH_FAR;
+						CPRINTS("Doing 3bi 0x%x", cc_config);
+						pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+					}
+					else {
+						//cc_config &= ~CC_DETACH_FAR;
+						cc_config |= CC_DETACH_NEAR;
+						CPRINTS("Doing 3bii 0x%x", cc_config);
+						pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+					}
+
+				}
+				else {
+					/* (ii) SameCable both sides */
+					if ( (cc_config_new & ~cc_config_old) & CC_DETACH_FAR ) {
+						/* Detach FAR 0->1 */
+						cc_config |= CC_DETACH_FAR;
+						CPRINTS("Doing 3bi1 0x%x", cc_config);
+						pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+					}
+					else if ((cc_config_new & ~cc_config_old) & CC_DETACH_NEAR  ) {
+						/* Detach NEAR 0->1 */
+						cc_config |= CC_DETACH_NEAR;
+						CPRINTS("Doing 3bi2 0x%x", cc_config);
+						pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+					}
+					else if ( (cc_config_old & ~cc_config_new) & CC_DETACH_FAR ) {
+						/* Detach FAR 1->0 */
+						//cc_config &= ~CC_DETACH_FAR;
+						cc_config |= CC_DETACH_NEAR;
+						CPRINTS("Doing 3bi3 0x%x", cc_config);
+						pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+					}
+					else {
+						cc_config |= CC_DETACH_NEAR;
+						CPRINTS("Doing 3bi4 0x%x", cc_config);
+						pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
+					}
+				}
+			}
+
+			/*
+			* Add an arbitrary delay to avoid race condition
+			* Using: 6.3.5.5 Force Detach (S4)
+			*/
+			usleep(PD_T_SRC_DISCONNECT);
+
+
+			// TODO: This should be "Vbus off" only in one spot!
+			#if 1
+			// MAGIC PRINTF! DO NOT REMOVE!
+			CPRINTS("do_cc -> pr_reset");
+			pd_power_supply_reset(DUT);
+			CPRINTS("do_cc -> DONE_reset");
+			#endif
+
+			/*
+			 * If new cc_config is not a Detach state, allow time
+			 * for DUT to recognize the detach. Use tErrorRecovery.
+			 */
+			if (!(cc_config_new & CC_DETACH_ANY))
 				usleep(PD_T_ERROR_RECOVERY);
 		}
 
-		if ((cc_config & ~cc_config_new) & CC_DISABLE_DTS) {
-			/* DTS-disabled -> DTS-enabled */
+#if 0
+/* Servo infinite flappy toggling */
+		if ((cc_config_new  & CC_DETACH_FAR) ||
+			(cc_config_new & CC_DETACH_NEAR)) {
+			/* Detach off -> Detach on */
+			/* If we're "off", re-enable CCD detect by default */
+			CPRINTS("<<CCD ENA by detach");
 			ccd_enable(1);
 			ext_hpd_detection_enable(0);
-		} else if ((cc_config_new & ~cc_config) & CC_DISABLE_DTS) {
+		} else if ((cc_config_old & ~cc_config_new) & CC_DISABLE_DTS) {
+			/* DTS-disabled -> DTS-enabled */
+			CPRINTS("<<CCD ACK by setting");
+			ccd_enable(1);
+			ext_hpd_detection_enable(0);
+		} else if ((cc_config_new & ~cc_config_old) & CC_DISABLE_DTS) {
 			/* DTS-enabled -> DTS-disabled */
+			CPRINTS("<<CCD NAK by setting");
 			ccd_enable(0);
 			if (!(alt_dp_config & ALT_DP_OVERRIDE_HPD))
 				ext_hpd_detection_enable(1);
 		}
+		else if ((cc_config_old & cc_config_new) & CC_DISABLE_DTS) {
+			/* DTS-disabled -> DTS-disabled */
+			CPRINTS("<<CCD NIX by refresh");
+			ccd_enable(0);
+			if (!(alt_dp_config & ALT_DP_OVERRIDE_HPD))
+				ext_hpd_detection_enable(1);
+		}
+#else
+			CPRINTS("<<CCD ENA by HACKHACKHACK");
+			ccd_enable(1);
+			ext_hpd_detection_enable(0);
+#endif
 
 		/* Accept new cc_config value */
 		cc_config = cc_config_new;
 
-		if (!(cc_config & CC_DETACH_FAR)) {
+		if (!(cc_config & CC_DETACH_ANY)) {
 			/* Can we source? */
 			chargeable = is_charge_through_allowed();
 			dualrole = chargeable ? get_dual_role_of_src() :
 						PD_DRP_FORCE_SINK;
-			pd_set_dual_role(DUT, dualrole);
+
+
+			if (is_charge_through_allowed() &&
+				!is_charge_through_enabled()) {
+				pd_set_dual_role(DUT, PD_DRP_FORCE_SOURCE);
+			}
+
+			// This only actually does anything for FORCE_SINK
+			// TODO: Ensure FORCE_SINK transitions to FREEZE
+			// pd_set_dual_role(DUT, dualrole);
+
+
 			/*
 			 * If force_source or force_sink role, explicitly set
 			 * the Rp or Rd resistors on CC lines.
@@ -1445,10 +2098,12 @@ static void do_cc(int cc_config_new)
 			 * need to validate some PD behavior, so a flag
 			 * CC_SNK_WITH_PD to force enabling PD comm.
 			 */
-			if (cc_config & CC_SNK_WITH_PD)
-				pd_comm_enable(DUT, 1);
-			else
-				pd_comm_enable(DUT, chargeable);
+
+			// TODO: Fix this for FREEZE
+			pd_set_dual_role(DUT, dualrole);
+			allow_pd = is_pd_allowed();
+			CPRINTS("do_cc: ALLOW PD IS %d",allow_pd);
+			pd_comm_enable(DUT, allow_pd);
 		}
 	}
 }
@@ -1462,32 +2117,51 @@ static int command_cc(int argc, char **argv)
 		return EC_SUCCESS;
 	}
 
-	if (!strcasecmp(argv[1], "off")) {
+	// Override #define for help strings since we overflow flash
+	if (!strcasecmp(argv[1], "help")){
+		CPRINTS("Usage: cc [off|on] or [unplug|replug] or (pd)(src|snk|drp)(dts) "
+			"or [emca|nonemca] and/or [cc1|cc2]");
+	}
+	else if (!strcasecmp(argv[1], "off")) {
 		cc_config_new |= CC_DETACH_FAR;
 	} else if (!strcasecmp(argv[1], "on")) {
 		cc_config_new &= ~CC_DETACH_FAR;
+	} else if (!strcasecmp(argv[1], "unplug")) {
+		cc_config_new |= CC_DETACH_NEAR;
+	} else if (!strcasecmp(argv[1], "replug")) {
+		cc_config_new &= ~CC_DETACH_NEAR;
+	} else if (!strcasecmp(argv[1], "emca")) {
+		cc_config_new |= CC_EMCA_SERVO;
+	} else if (!strcasecmp(argv[1], "nonemca")) {
+		cc_config_new &= ~CC_EMCA_SERVO;
 	} else {
+		/* Why do we connect by default on CC command? */
 		cc_config_new &= ~CC_DETACH_FAR;
+		cc_config_new &= ~CC_DETACH_NEAR;
 		if (!strcasecmp(argv[1], "src"))
 			cc_config_new = CONF_SRC(cc_config_new);
+		else if (!strcasecmp(argv[1], "pdsrc"))
+			cc_config_new = CONF_PDSRC(cc_config_new);
 		else if (!strcasecmp(argv[1], "snk"))
 			cc_config_new = CONF_SNK(cc_config_new);
 		else if (!strcasecmp(argv[1], "pdsnk"))
 			cc_config_new = CONF_PDSNK(cc_config_new);
 		else if (!strcasecmp(argv[1], "drp"))
 			cc_config_new = CONF_DRP(cc_config_new);
+		else if (!strcasecmp(argv[1], "pddrp"))
+			cc_config_new = CONF_PDDRP(cc_config_new);
 		else if (!strcasecmp(argv[1], "srcdts"))
 			cc_config_new = CONF_SRCDTS(cc_config_new);
+		else if (!strcasecmp(argv[1], "pdsrcdts"))
+			cc_config_new = CONF_PDSRCDTS(cc_config_new);
 		else if (!strcasecmp(argv[1], "snkdts"))
 			cc_config_new = CONF_SNKDTS(cc_config_new);
 		else if (!strcasecmp(argv[1], "pdsnkdts"))
 			cc_config_new = CONF_PDSNKDTS(cc_config_new);
 		else if (!strcasecmp(argv[1], "drpdts"))
 			cc_config_new = CONF_DRPDTS(cc_config_new);
-		else if (!strcasecmp(argv[1], "emca"))
-			cc_config_new |= CC_EMCA_SERVO;
-		else if (!strcasecmp(argv[1], "nonemca"))
-			cc_config_new &= ~CC_EMCA_SERVO;
+		else if (!strcasecmp(argv[1], "pddrpdts"))
+			cc_config_new = CONF_PDDRPDTS(cc_config_new);
 		else
 			return EC_ERROR_PARAM2;
 	}
@@ -1500,7 +2174,9 @@ static int command_cc(int argc, char **argv)
 		return EC_ERROR_PARAM3;
 
 	do_cc(cc_config_new);
+	#if 0
 	print_cc_mode();
+	#endif
 
 	return EC_SUCCESS;
 }
@@ -1594,10 +2270,11 @@ static int cmd_dp_action(int argc, char *argv[])
 		CPRINTS("DP alt-mode: %s",
 			(alt_dp_config & ALT_DP_ENABLE) ? "enable" : "disable");
 	}
-
-	if (!strcasecmp(argv[1], "enable")) {
+	else if (!strcasecmp(argv[1], "enable") ||
+			!strcasecmp(argv[1], "on")) {
 		alt_dp_config |= ALT_DP_ENABLE;
-	} else if (!strcasecmp(argv[1], "disable")) {
+	} else if (!strcasecmp(argv[1], "disable") ||
+			!strcasecmp(argv[1], "off")) {
 		alt_dp_config &= ~ALT_DP_ENABLE;
 	} else if (!strcasecmp(argv[1], "pins")) {
 		if (argc >= 3) {
@@ -1673,8 +2350,10 @@ static int cmd_dp_action(int argc, char *argv[])
 							      : "external");
 		CPRINTS("HPD level: %d", get_hpd_level());
 	}  else if (!strcasecmp(argv[1], "help")) {
-		CPRINTS("Usage: usbc_action dp [enable|disable|hpd|mf|pins|"
+		CPRINTS("Usage: usbc_action dp [enable<on>|disable<off>|hpd|mf|pins|"
 			"plug]");
+	} else {
+		CPRINTS("Bad parameter: [%s]", argv[1]);
 	}
 
 	return EC_SUCCESS;
@@ -1746,15 +2425,75 @@ static int cmd_usbc_action(int argc, char *argv[])
 		allow_dr_swap = !!atoi(argv[2]);
 
 	} else if (!strcasecmp(argv[1], "prswap")) {
+		int prs;
 		if (argc == 2) {
-			CPRINTF("allow_pr_swap = %d\n", allow_pr_swap);
+			CPRINTF("allow_pr_swap = %d%d\n",
+				!!(cc_config & CC_PRS_SRC2SNK),
+				!!(cc_config & CC_PRS_SNK2SRC) );
 			return EC_SUCCESS;
 		}
 
 		if (argc != 3)
 			return EC_ERROR_PARAM2;
 
-		allow_pr_swap = !!atoi(argv[2]);
+		cc_config &= ~CC_PRS_ANY;
+		prs = atoi(argv[2]);
+		if (prs/10 == 1) {
+			cc_config |= CC_PRS_SRC2SNK;
+		}
+		if (prs%10 == 1) {
+			cc_config |= CC_PRS_SNK2SRC;
+		}
+
+	} else if (!strcasecmp(argv[1], "up")) {
+		enum pd_power_role current_power;
+		current_power = pd_get_power_role(DUT);
+
+		if (argc == 2) {
+			CPRINTF("unconstrained power = %d\n",
+					!!(cc_config & CC_UNCONSTRAINED_POWER));
+			return EC_SUCCESS;
+		}
+
+		if (argc != 3)
+			return EC_ERROR_PARAM2;
+
+		if(!!atoi(argv[2])) {
+			cc_config |= CC_UNCONSTRAINED_POWER;
+			/* pd_snk_pdo[0] |= PDO_FIXED_UNCONSTRAINED; */
+			// TODO: Fix TCPMv1 to accept dynamic UP SinkCap
+		}
+		else {
+			cc_config &= ~CC_UNCONSTRAINED_POWER;
+			/* pd_snk_pdo[0] &= ~PDO_FIXED_UNCONSTRAINED; */
+			// TODO: Fix TCPMv1 to accept dynamic UP SinkCap
+		}
+
+		switch(current_power){
+		case PD_ROLE_SOURCE:
+			pd_update_contract(DUT);
+		break;
+		case PD_ROLE_SINK:
+			pd_set_new_power_request(DUT);
+			/* There is no way to "force send" a SinkCap */
+		break;
+		}
+
+	} else if (!strcasecmp(argv[1], "fastboot")) {
+		if (argc == 2) {
+			CPRINTF("fastboot = %d\n",
+					!!(cc_config & CC_FASTBOOT_DFP));
+			return EC_SUCCESS;
+		}
+
+		if (argc != 3)
+			return EC_ERROR_PARAM2;
+
+		if(!!atoi(argv[2]))
+			cc_config |= CC_FASTBOOT_DFP;
+		else
+			cc_config &= ~CC_FASTBOOT_DFP;
+
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -1763,5 +2502,5 @@ static int cmd_usbc_action(int argc, char *argv[])
 }
 DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
 			"5v|12v|20v|dev|pol0|pol1|drp|dp|chg x(x=voltage)|"
-			"drswap [1|0]|prswap [1|0]",
+			"drswap [1|0]|prswap [10|01|11|00]|up [0|1]|fastboot [0|1]",
 			"Set Servo v4 type-C port state");
