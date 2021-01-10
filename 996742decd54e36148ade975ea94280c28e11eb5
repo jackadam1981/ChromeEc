@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "802b1d01_a0a10b09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-01-10T23:56:57Z",
+      "side": 1,
+      "message": "I updated the register settings to reduce the hibernate current for LN9310 https://partnerissuetracker.corp.google.com/issues/176858036?pli\u003d1.  I confirmed these settings on a bench setup using our evaluation board but I haven\u0027t tested it on a Limozeen board yet.  I don\u0027t think my compile setup is working properly so I wasn\u0027t able to confirm that I compiled the firmware correctly and even if I had, we haven\u0027t received a working servo2 cable yet so I couldn\u0027t try a new firmware.",
+      "revId": "996742decd54e36148ade975ea94280c28e11eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
