@@ -22,6 +22,30 @@
       },
       "revId": "4a865ccc7ee929d2b31d49fd0901938116d0c828",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0601643_04b26d61",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1249354
+      },
+      "writtenOn": "2021-01-10T08:46:34Z",
+      "side": 0,
+      "message": "I was told by CH Lin that these are unnecessary default configs and should be removed.\nCH Lin should also push a patch to ToT for it.",
+      "parentUuid": "95902759_e79d685b",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 24
+      },
+      "revId": "4a865ccc7ee929d2b31d49fd0901938116d0c828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
