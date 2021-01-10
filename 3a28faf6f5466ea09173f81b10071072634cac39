@@ -88,6 +88,24 @@
       "parentUuid": "e49bd373_234eb753",
       "revId": "3a28faf6f5466ea09173f81b10071072634cac39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b71da96_c2a2b013",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-10T03:44:37Z",
+      "side": 1,
+      "message": "NOTE: It looks like these tools are being pulled in through the ec-devutils package in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/chromeos-base/ec-devutils/ec-devutils-9999.ebuild;l\u003d39",
+      "parentUuid": "327dca56_b04d04cf",
+      "revId": "3a28faf6f5466ea09173f81b10071072634cac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
