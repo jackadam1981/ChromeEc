@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7e33c4_a20ae99a",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:50:19Z",
+      "side": 1,
+      "message": "Note typo, also note this is the USB PD stack.\n\n\"If this is enabled the USB Power Delivery (PD) stack will call\"",
+      "range": {
+        "startLine": 395,
+        "startChar": 3,
+        "endLine": 395,
+        "endChar": 44
+      },
+      "revId": "c7016700d17064ebe39e672f565359ca6a2a228d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
