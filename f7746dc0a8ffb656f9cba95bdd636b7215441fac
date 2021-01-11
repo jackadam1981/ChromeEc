@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fed8385_20fb0290",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:04:51Z",
+      "side": 1,
+      "message": "Delete this, it will be deprecated soon. Just automically enable the corresponding option in config_chip.h when CONFIG_PLATFORM_EC_USB_PD_TCPM_PS8815 is enabled.",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 0
+      },
+      "revId": "f7746dc0a8ffb656f9cba95bdd636b7215441fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0911672a_ac1fe61a",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:04:51Z",
+      "side": 1,
+      "message": "Move this under CONFIG_USB_PD_TCPM_PS8815 as it will be deprecated/removed soon.",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 43
+      },
+      "revId": "f7746dc0a8ffb656f9cba95bdd636b7215441fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
