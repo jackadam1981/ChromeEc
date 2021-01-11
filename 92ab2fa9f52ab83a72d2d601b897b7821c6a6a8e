@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c402cd2_77e81bc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c42b5ba_07c4907c",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f380bda0_fee0fe0d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-08T01:45:27Z",
       "side": 1,
       "message": "Just use `3 * SECOND`. The definition is in timer.h",
+      "range": {
+        "startLine": 442,
+        "startChar": 47,
+        "endLine": 442,
+        "endChar": 56
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18ff29d_0915c861",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f380bda0_fee0fe0d",
       "range": {
         "startLine": 442,
         "startChar": 47,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd0e227c_542be4fd",
+        "filename": "board/servo_v4p1/ina231s.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "sr_chg means `servo charger` that is INA which measures full power taken by the servo_v4p1. This naming is consistent with the whole file. My proposal is to go with `set_sr_chg_power_limit`. At least this better describes to purpose of this function.",
+      "parentUuid": "b748476a_3aa834f5",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "243b1a0c_135d11c0",
         "filename": "board/servo_v4p1/power_mgmt.c",
         "patchSetId": 4
@@ -83,6 +155,24 @@
       "writtenOn": "2021-01-08T01:45:27Z",
       "side": 1,
       "message": "Missing copyright header.",
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f59ac285_101fc215",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "243b1a0c_135d11c0",
       "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +190,30 @@
       "writtenOn": "2021-01-08T01:45:27Z",
       "side": 1,
       "message": "Use quotes",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 0
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b874d6_10f42c44",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c660b0bd_f52c584b",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eb799d8_98e06ac0",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78a51aa2_75459dbf",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21d5e843_39dadfdc",
@@ -146,6 +284,24 @@
       "writtenOn": "2021-01-08T01:45:27Z",
       "side": 1,
       "message": "Should this be static?",
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe82670_1586c542",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21d5e843_39dadfdc",
       "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -167,6 +323,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6317a32_ea39536d",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "Much better indeed 😊",
+      "parentUuid": "6f94a431_a84e18b8",
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34d198ab_0dbb0896",
@@ -180,6 +354,30 @@
       "writtenOn": "2021-01-08T01:45:27Z",
       "side": 1,
       "message": "Use cprintf. ccprintf is reserved for console commands only.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be9db19b_b1ee30bd",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34d198ab_0dbb0896",
       "range": {
         "startLine": 30,
         "startChar": 2,
@@ -213,6 +411,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fbd7076_22397802",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "BC1.2 detection informs us that there is BC1.2-capable DFP on host side and that it is not SDP. DCP and CDP guarantee up to 1.5A.",
+      "parentUuid": "ea8b20bd_518f5375",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbca414d_38de3c59",
@@ -226,6 +448,30 @@
       "writtenOn": "2021-01-08T01:45:27Z",
       "side": 1,
       "message": "Please use braces for this block. One line is split across 3 lines.",
+      "range": {
+        "startLine": 48,
+        "startChar": 41,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b8a618e_31d223e4",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbca414d_38de3c59",
       "range": {
         "startLine": 48,
         "startChar": 41,
@@ -259,6 +505,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1bcc691_ff81d4fa",
+        "filename": "board/servo_v4p1/power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37f16b84_7ded0265",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8153204a_fd4ea517",
@@ -272,6 +542,24 @@
       "writtenOn": "2021-01-08T01:45:27Z",
       "side": 1,
       "message": "I know it\u0027s not this CL, but why is this here? I feel that it would be better placed with the other Type-C state machines. Although, perhaps it was moved here to have the \"alternate power stuff\" bolted on.",
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb3ac97f_bf2a74a8",
+        "filename": "board/servo_v4p1/usb_tc_snk_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:23:07Z",
+      "side": 1,
+      "message": "This is a good question. Actually a lot of code is placed under board/servo_v4p1 even though eventually it can/should be moved to more generic directories. That being said, Sam made this initial code to make servo working and currently considering very tight schedule I would like to not change this and leave this unit as is.",
+      "parentUuid": "8153204a_fd4ea517",
       "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
