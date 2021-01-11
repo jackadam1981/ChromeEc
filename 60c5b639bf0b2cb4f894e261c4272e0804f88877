@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "846e4b35_8f8f3b92",
+        "filename": "board/servo_v4p1/tusb1064.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-11T13:13:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "326e955b_682e5637",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "60c5b639bf0b2cb4f894e261c4272e0804f88877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13b0b942_0afad924",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-12-11T09:59:55Z",
       "side": 1,
       "message": "Line below assigns 0 to reg variable. Maybe you want to preserve some bits from general regiseter? Otherwise just assingn 0 to reg variable.",
+      "revId": "60c5b639bf0b2cb4f894e261c4272e0804f88877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "208d360a_912656fe",
+        "filename": "board/servo_v4p1/tusb1064.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-11T13:13:58Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "13b0b942_0afad924",
       "revId": "60c5b639bf0b2cb4f894e261c4272e0804f88877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +130,30 @@
       "writtenOn": "2020-12-11T09:59:55Z",
       "side": 1,
       "message": "This is bitwise or with 0. Above line removes selection bits and it\u0027s clear that muxer will be opened.\n\nAnother question. This is init function, what bits we are going to preserve? I think just writing 0 to general register will be enough (set_mux is not preserving bits at all).",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "60c5b639bf0b2cb4f894e261c4272e0804f88877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f72bfba_75f7c7fc",
+        "filename": "board/servo_v4p1/tusb1064.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-11T13:13:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1d6a4b5e_0781f39d",
       "range": {
         "startLine": 89,
         "startChar": 2,
@@ -134,6 +200,24 @@
       "writtenOn": "2020-12-11T09:59:55Z",
       "side": 1,
       "message": "Exporting low-level interface (writing directly to device) is not a good idea. If you need to change some bits (outside usb_mux_driver interface), you should create appropriate function in this driver and use it where needed.",
+      "revId": "60c5b639bf0b2cb4f894e261c4272e0804f88877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75f81ec7_ef1f3aea",
+        "filename": "board/servo_v4p1/tusb1064.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-11T13:13:58Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "7b20c126_93eb36b9",
       "revId": "60c5b639bf0b2cb4f894e261c4272e0804f88877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
