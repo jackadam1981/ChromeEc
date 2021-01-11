@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "332f3a06_e570f31c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-01-11T15:29:50Z",
+      "side": 1,
+      "message": "ACK. This should be a WIP. Marking it as such now.",
+      "parentUuid": "c1b1c020_202e6e4a",
+      "revId": "70f8c2e19f444801f00933ecb6bac871be77fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dceca1c9_2c8d6394",
@@ -54,6 +72,24 @@
       "writtenOn": "2020-12-31T11:04:35Z",
       "side": 1,
       "message": "If I\u0027m not mistaken, both EVT and Proto versions have ID 0 and we cannot distinguish between them. Only DVT will have updated value here, right?",
+      "revId": "70f8c2e19f444801f00933ecb6bac871be77fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb86d1ba_b2ad004b",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-01-11T15:29:50Z",
+      "side": 1,
+      "message": "We try to avoid using build phase names in code. Please consult tech lead for guidance.\n\nRev0 and Rev1 have different strapping resistors, allowing proper differentiation.",
+      "parentUuid": "68d3d7b3_a4f46981",
       "revId": "70f8c2e19f444801f00933ecb6bac871be77fa6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

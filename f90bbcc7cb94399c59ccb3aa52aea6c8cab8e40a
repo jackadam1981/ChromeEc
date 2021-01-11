@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "8fea1f7b_309c206e",
         "filename": "board/servo_v4p1/board.h",
@@ -20,10 +21,34 @@
         "endChar": 30
       },
       "revId": "f90bbcc7cb94399c59ccb3aa52aea6c8cab8e40a",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d8ee51e_80f756c2",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-01-11T15:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fea1f7b_309c206e",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "f90bbcc7cb94399c59ccb3aa52aea6c8cab8e40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "b14795b8_af89f9b5",
         "filename": "board/servo_v4p1/board.h",
@@ -43,8 +68,31 @@
         "endChar": 26
       },
       "revId": "f90bbcc7cb94399c59ccb3aa52aea6c8cab8e40a",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c2099e2_ea97c50b",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-01-11T15:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b14795b8_af89f9b5",
+      "range": {
+        "startLine": 220,
+        "startChar": 18,
+        "endLine": 220,
+        "endChar": 26
+      },
+      "revId": "f90bbcc7cb94399c59ccb3aa52aea6c8cab8e40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
