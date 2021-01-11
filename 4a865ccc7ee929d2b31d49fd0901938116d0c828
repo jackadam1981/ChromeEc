@@ -46,6 +46,30 @@
       },
       "revId": "4a865ccc7ee929d2b31d49fd0901938116d0c828",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16767bc4_53c9e36d",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-01-11T10:35:17Z",
+      "side": 0,
+      "message": "Please refer to the CL to see more detail:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2600807",
+      "parentUuid": "f0601643_04b26d61",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 24
+      },
+      "revId": "4a865ccc7ee929d2b31d49fd0901938116d0c828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
