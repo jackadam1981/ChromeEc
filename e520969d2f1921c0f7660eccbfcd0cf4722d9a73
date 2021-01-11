@@ -68,6 +68,30 @@
       },
       "revId": "e520969d2f1921c0f7660eccbfcd0cf4722d9a73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "590303da_fde6955f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-11T19:54:42Z",
+      "side": 1,
+      "message": "I think we cannot let the TCSS mux get configured if there is retimer write failure. Since retimer and TCSS mux are not in same state, it may not lead to a valid mux configuration. So the current state of code should not change.\nFor S0ix test case failure we should track that in a separate bug, and root cause the I2C error in write.",
+      "parentUuid": "a5ad25ae_3612c7a3",
+      "range": {
+        "startLine": 470,
+        "startChar": 8,
+        "endLine": 470,
+        "endChar": 10
+      },
+      "revId": "e520969d2f1921c0f7660eccbfcd0cf4722d9a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
