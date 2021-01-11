@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ec797e_392e4d84",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:35:20Z",
+      "side": 1,
+      "message": "Move these under CONFIG_PLATFORM_EC_USB_POWER_DELIVERY.  Let\u0027s leave CONFIG_PLATFORM_EC_USBC as a menuconfig enable only.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 88
+      },
+      "revId": "76c4f97092e28f401e7ec207e0dc42e7e2050447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d162d9ff_b305da92",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:35:20Z",
+      "side": 1,
+      "message": "This turns on the PD_INT_C0 task which handles servicing of Power Delivery (PD) message interrupts for port 0.",
+      "range": {
+        "startLine": 192,
+        "startChar": 3,
+        "endLine": 193,
+        "endChar": 37
+      },
+      "revId": "76c4f97092e28f401e7ec207e0dc42e7e2050447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c38abc8_22702918",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:35:20Z",
+      "side": 1,
+      "message": "PD_Cn_INT",
+      "range": {
+        "startLine": 203,
+        "startChar": 25,
+        "endLine": 203,
+        "endChar": 40
+      },
+      "revId": "76c4f97092e28f401e7ec207e0dc42e7e2050447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
