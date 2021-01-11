@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "830125b3_dd55fb7e",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-11T08:33:17Z",
+      "side": 1,
+      "message": "modify ps8802_i2c_write to setting power saving mode.",
+      "parentUuid": "f9cc2d6a_ab1c74d8",
+      "range": {
+        "startLine": 202,
+        "startChar": 6,
+        "endLine": 202,
+        "endChar": 16
+      },
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c09ade17_99be5117",
         "filename": "driver/retimer/ps8802.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-08T17:12:46Z",
       "side": 1,
       "message": "Should init start the mux in low power mode?",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 19
+      },
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00898028_3741c137",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-11T08:33:17Z",
+      "side": 1,
+      "message": "Default is USB mode, It could be change to power saving mode at init.",
+      "parentUuid": "c09ade17_99be5117",
       "range": {
         "startLine": 214,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1f3931c_8fdcc360",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-11T08:33:17Z",
+      "side": 1,
+      "message": "Remove it,",
+      "parentUuid": "516dadcd_0922c2bb",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "113f6058_e971947e",
         "filename": "driver/retimer/ps8802.h",
         "patchSetId": 5
@@ -83,6 +155,24 @@
       "writtenOn": "2021-01-08T17:12:46Z",
       "side": 1,
       "message": "nit: move this next to the register it will be written to (REG2_MODE) and add a comment explaining the mode being set",
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f5dcd2_d52ed16b",
+        "filename": "driver/retimer/ps8802.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-11T08:33:17Z",
+      "side": 1,
+      "message": "move it to up REG2 mode",
+      "parentUuid": "113f6058_e971947e",
       "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
