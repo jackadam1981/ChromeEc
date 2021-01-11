@@ -16,6 +16,41 @@
       "message": "I still think this MASTER -\u003e CLIENT, SLAVE -\u003e SERVER isn\u0027t best fit for the EC (or embedded in general). Here is the previous discussion: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2586037/comment/b4ba8cff_28418f12/.",
       "revId": "3dfc489815df691162712c0a2144a5670b79f12a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07cd7865_4f177d34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2021-01-11T17:31:09Z",
+      "side": 1,
+      "message": "I responded in the same thread. There\u0027s nothing inherently non-embedded in server/client design pattern and this is a fairly clear version of it.",
+      "parentUuid": "0b6741c6_5e23426c",
+      "revId": "3dfc489815df691162712c0a2144a5670b79f12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8500f7_bde9ab00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2021-01-11T17:31:09Z",
+      "side": 1,
+      "message": "Adding drinkcat@ and aaboagye@ since they were on the linked review.",
+      "revId": "3dfc489815df691162712c0a2144a5670b79f12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
