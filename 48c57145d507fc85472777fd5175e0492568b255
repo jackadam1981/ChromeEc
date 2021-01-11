@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e37055_4a694548",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-11T16:36:07Z",
+      "side": 1,
+      "message": "The comments for this function describe the return value as don\u0027t-care for passive or non-TBT, non-USB4 cables. Before this patchset, that was true for this driver, because it only checked the return value if the cable was active. Now, there is no check for an active cable. If bit 20 is a don\u0027t-care for passive/non-TBT/non-USB4 cables, that\u0027s fine, but the comment should be updated here. If this bit actually needs to be 0 for such cables, then the check for active cables should stay.",
+      "revId": "48c57145d507fc85472777fd5175e0492568b255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
