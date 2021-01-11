@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b6bd1a_cdd18fda",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1449,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-11T14:11:03Z",
+      "side": 1,
+      "message": "I tested it and there is no difference in EC logs and behaviour, so configuring port as CAP_DEDICATED in pe_snk_hard_reset_entry() is not necessary. Removed code responsible for this.",
+      "parentUuid": "ac4b65a7_983b621b",
+      "revId": "0154fcaf2b272e6ebec58cae561a74505ed99ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ef36c35_73d466cb",
@@ -121,6 +139,24 @@
       "side": 1,
       "message": "When we call tc_policy_pd_enable(port, 0) it will set PD_DISABLED_BY_POLICY flag.\npd_task_loop() in next iteration will call pe_run() with enable set to 0 (because tc_get_pd_enabled() will return that). Calling pe_run() will set state to NULL and set local_state to SM_PAUSED. When PD_DISABLED_BY_POLICY flag is cleared, pe_run() will perform initialization and we will start from PE_SNK_Startup state.\n\nNevertheless, I will try to fix pd_send_hard_reset() and use it.",
       "parentUuid": "274197ab_9e5f4ef2",
+      "revId": "0154fcaf2b272e6ebec58cae561a74505ed99ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0e7ae0_39bda317",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-11T14:11:03Z",
+      "side": 1,
+      "message": "I fixed pd_send_hard_reset() behaviour in previous commit, but I\u0027m not going to use this function because it makes PE depending on common/usb_common.c and increases overall EC complexity. To trigger Hard Reset, appropriate DPM request is sent.",
+      "parentUuid": "5e6e68f0_8b25fd62",
       "revId": "0154fcaf2b272e6ebec58cae561a74505ed99ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
