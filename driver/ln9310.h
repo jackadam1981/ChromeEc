@@ -146,6 +146,8 @@
 #define LN9310_BC_STS_B_INFET_OUT_SWITCH_OK		BIT(5)
 #define LN9310_BC_STS_B_INFET_OUT_SWITCH_OK_MASK	0x20
 
+#define LN9310_REG_BC_STS_C	0x52
+
 /* LN9310 Timing definition */
 #define LN9310_CDC_DELAY 120	/* 120us */
 
