@@ -215,6 +215,7 @@ class Zmake:
         Returns:
             The status code of pytest.
         """
+        self.logger.info('Running python test %s', directory)
         proc = self.jobserver.popen(
             ['pytest', directory],
             stdout=subprocess.PIPE,
@@ -255,12 +256,14 @@ class Zmake:
                     build_after_configure=True,
                     test_after_configure=is_test))
 
-        # Find all the directories under zephyr-chrome/tests containing a
-        # test_*.py file. We're using a set here to avoid running the same tests
-        # multiple times.
+        # Find all the directories under zephyr-chrome/tests and
+        # platform/ec/zephyr/zmake/tests containing a test_*.py file. We're
+        # using a set here to avoid running the same tests multiple times.
         project_dirs = set()
-        for path in pathlib.Path(modules['zephyr-chrome'] / 'tests').rglob('test_*.py'):
-            project_dirs.add(path.parent)
+        for root_dir in [modules['zephyr-chrome'] / 'tests',
+                         modules['ec-shim'] / 'zephyr'/ 'zmake' / 'tests']:
+            for path in pathlib.Path(root_dir).rglob('test_*.py'):
+                project_dirs.add(path.parent)
 
         for project_dir in project_dirs:
             executor.append(func=lambda: self._run_pytest(directory=project_dir))
