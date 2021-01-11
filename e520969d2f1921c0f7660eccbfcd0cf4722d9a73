@@ -133,6 +133,24 @@
       "message": "@Divya - Why are we removing mutexes?",
       "revId": "e520969d2f1921c0f7660eccbfcd0cf4722d9a73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "327dad7d_f2244838",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-11T20:17:41Z",
+      "side": 1,
+      "message": "So the mutex was introduced to wait for RESET_N to deassert, but we understand that if the RESET_N lines are deasserted at same time this is handled in SPI flash HW logic. Also the mutex was introduced to reduce from 40ms delay to 20ms, but we know that we do not need this delay after RESET_N lines, but after first I2C which is independent logic within bot retimers.",
+      "parentUuid": "86e1eda3_973b051a",
+      "revId": "e520969d2f1921c0f7660eccbfcd0cf4722d9a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
