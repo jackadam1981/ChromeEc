@@ -50,6 +50,11 @@
 #define CC_PRS_SNK2SRC	BIT(10)	/* Allow Sink-to-Source PR_SWAP */
 #define CC_PRS_SRC2SNK	BIT(11) /* Allow Source-to-Sink PR_SWAP  */
 #define CC_PRS_ANY		(CC_PRS_SRC2SNK | CC_PRS_SNK2SRC)
+		/*
+		* TODO: Strictly speaking, SNK2SRC should also govern the
+		* "Unconstrained Power" flag (per USB-IF Dicta). But leaving
+		* separate as another "non-hidden" knob for user to tweak.
+		*/
 #define CC_UNCONSTRAINED_POWER	BIT(12)	/* Unconstrained Power emulation */
 
 
@@ -87,6 +92,12 @@
 #define CONF_PDSRCDTS(c) CONF_SET_CLEAR(CONF_SRCDTS(c), \
 				CC_SRC_WITH_PD, \
 				CC_SNK_WITH_PD)
+/*
+* TODO: PDSRCDTS is a bit weird. We don't have orientation detect.
+* We should add a brief polling autotoggle to automatically detect partner
+* otientation, or add proper compliance with SnkDbgDtsOriented state (Ra+Rd).
+*/
+
 #define CONF_SNKDTS(c) CONF_SET_CLEAR(c, \
 				0, \
 				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SRC_WITH_PD | \
@@ -102,6 +113,34 @@
 				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SRC_WITH_PD | \
 				CC_DISABLE_DTS | CC_SNK_WITH_PD, \
 				0)
+
+// TODO: Add CONF_SUZYQ simulating a VBUS_HOT cable
+// TODO: Add a VBUS-off DTS state
+// TODO: Add Force Drive DTS state
+
+#if 0
+
+#define CONF_PDSRC(c) CONF_SET_CLEAR(c, \
+				CC_DISABLE_DTS | CC_SNK_WITH_PD | CC_SRC_WITH_PD | CC_ALLOW_SRC, \
+				CC_ENABLE_DRP)
+#define CONF_PDSNK(c) CONF_SET_CLEAR(c, \
+				CC_DISABLE_DTS | CC_SNK_WITH_PD | CC_SRC_WITH_PD, \
+				CC_ALLOW_SRC | CC_ENABLE_DRP)
+#define CONF_PDDRP(c) CONF_SET_CLEAR(c, \
+				CC_DISABLE_DTS | CC_ALLOW_SRC | CC_ENABLE_DRP | \
+				CC_SNK_WITH_PD | CC_SRC_WITH_PD, \
+				0)
+#define CONF_PDSRCDTS(c) CONF_SET_CLEAR(c, \
+				CC_SNK_WITH_PD | CC_SRC_WITH_PD | CC_ALLOW_SRC, \
+				CC_ENABLE_DRP | CC_DISABLE_DTS)
+#define CONF_PDSNKDTS(c) CONF_SET_CLEAR(c, \
+				CC_SNK_WITH_PD | CC_SRC_WITH_PD, \
+				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_DISABLE_DTS)
+#define CONF_PDDRPDTS(c) CONF_SET_CLEAR(c, \
+				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SRC_WITH_PD | \
+				CC_DISABLE_DTS | CC_SNK_WITH_PD, \
+				0)
+#endif
 
 /* Macros to apply Rd/Rp to CC lines */
 #define DUT_ACTIVE_CC_SET(r, flags) \
@@ -216,12 +255,12 @@ static uint32_t max_supported_voltage(void)
 
 static int charge_port_is_active(void)
 {
-	return active_charge_port == CHG && vbus[CHG].mv > 0;
+	return (active_charge_port == CHG) && (vbus[CHG].mv > 0);
 }
 
 static int is_charge_through_allowed(void)
 {
-	return charge_port_is_active() && cc_config & CC_ALLOW_SRC;
+	return charge_port_is_active() && (cc_config & CC_ALLOW_SRC);
 }
 
 static int is_charge_through_enabled(void)
@@ -455,6 +494,30 @@ static void board_manage_dut_port(void)
 	else if (!charge_port_is_active() && current_power != PD_ROLE_SINK)
 		preferred_drp = PD_DRP_FORCE_SINK;
 
+#if 0
+enum pd_dual_role_states {
+	/* While disconnected, toggle between src and sink */
+	PD_DRP_TOGGLE_ON,
+	/* Stay in src until disconnect, then stay in sink forever */
+	PD_DRP_TOGGLE_OFF,
+	/* Stay in current power role, don't switch. No auto-toggle support */
+	PD_DRP_FREEZE,
+	/* Switch to sink */
+	PD_DRP_FORCE_SINK,
+	/* Switch to source */
+	PD_DRP_FORCE_SOURCE,
+};
+#endif
+
+/*
+	CPRINTS("board_manage_dut_port:\n" \
+		    "    curr_drp [%d] pref_drp [%d]\n" \
+			"    curr_pow [%d] pref_pow [%d]\n",  \
+			current_drp, preferred_drp, current_power, is_charge_through_allowed());
+*/
+
+	/* WARNING! Do not add  || current_power != is_charge_through_allowed() */
+
 	if (current_drp != preferred_drp) {
 		/* Update role. */
 		if (preferred_drp == PD_DRP_FORCE_SINK) {
@@ -527,15 +590,29 @@ static void update_ports(void)
 	if (!charge_port_is_active()) {
 		/* CHG Vbus has dropped, so become SNK. */
 		chg_pdo_cnt = 0;
+
 	} else {
 		/* Advertise the 'best' PDOs at various discrete voltages */
 		if (active_charge_supplier == CHARGE_SUPPLIER_PD) {
 			src_index = 0;
 			snk_index = -1;
 
+			/*
+			* TODO: This code artificially limits PDO to entries in
+			* pd_src_voltages_mv table defined at top.
+			*
+			* This is artificially incorrect and overconstrainted.
+			*
+			* Allow non-standard PDO objects so long as they are valid.
+			* See: crrev/c/730877 for where this ham started.
+			*
+			* This needs to be rearchitected from scratch. :(
+			* Needs to support Variable PDO conversion.
+			*/
+
 			for (i = 0; i < ARRAY_SIZE(pd_src_voltages_mv); ++i) {
 
-				/* Adhere to board voltage limits */
+				/* Adhere to user-set max voltage limit */
 				if (pd_src_voltages_mv[i] >
 				    max_supported_voltage())
 					break;
@@ -601,16 +678,19 @@ static void update_ports(void)
 
 int board_set_active_charge_port(int charge_port)
 {
+	/* WARNING! Do not change this statement; causes a bootloop */
 	if (charge_port == DUT)
 		return -1;
 
 	active_charge_port = charge_port;
 	update_ports();
 
-	if (!charge_port_is_active())
+	if (!charge_port_is_active()) {
 		/* Don't negotiate > 5V, except in lockstep with DUT */
 		pd_set_external_voltage_limit(CHG, PD_MIN_MV);
 
+		CPRINTS("C%d: board_set_active triggered!",CHG);
+	}
 	return 0;
 }
 
@@ -1654,6 +1734,15 @@ __override void pd_check_dr_role(int port,
 		pd_request_data_swap(port);
 }
 
+#if 0
+__override mux_state_t get_mux_mode_to_set(int port)
+{
+	/* Override improper "DFP-only" logic from usb_common.c */
+
+	mux_state_t temp=0;
+	return temp;
+}
+#endif
 
 /* ----------------- Vendor Defined Messages ------------------ */
 /*
