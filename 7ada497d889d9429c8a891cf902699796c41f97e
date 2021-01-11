@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49251562_68213419",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:09:19Z",
+      "side": 1,
+      "message": "Add \"select PLATFORM_EC_USB_PD_TCPM_MUX\".  This part always requires it for correct operation.",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 5
+      },
+      "revId": "7ada497d889d9429c8a891cf902699796c41f97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
