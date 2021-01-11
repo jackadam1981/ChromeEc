@@ -2930,6 +2930,19 @@ enum pd_cc_states pd_get_cc_state(
  */
 __override_proto uint8_t board_get_src_dts_polarity(int port);
 
+
+/*
+ * Optional, get the board-specific dynamic SNK_CAP
+ *
+ * This function is used for boards with dynamic Unconstrained Power.
+ * We have to change the first 5V PDO as needed to add/remove flags.
+ *
+ * @param snk_pdo pointer to array of PDOs
+ * @param port USB-C port number
+ * @return snk_pdo_cnt count of sink PDO objects
+ */
+__overridable int board_get_snk_cap(const uint32_t **snk_pdo, const int port);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**
