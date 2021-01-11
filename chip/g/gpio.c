@@ -308,7 +308,7 @@ static void connect_pinmux(struct pinmux const *p)
 	if (p->flags & DIO_ENABLE_DIRECT_INPUT) {
 		/* We don't have to setup any muxes for directly connected
 		 * pads. The only ones that we are likely to ever care about
-		 * are tied to the SPS and SPI peripherals, and they're all
+		 * are tied to the SPP and SPI peripherals, and they're all
 		 * inouts, so we can just enable the digital input for them
 		 * regardless. */
 		is_input = 1;
