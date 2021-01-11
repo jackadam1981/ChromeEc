@@ -117,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc55f50_50b726a6",
+        "filename": "board/servo_v4p1/tusb1064.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-01-11T15:17:03Z",
+      "side": 1,
+      "message": "Initial draft of function had blind write.\n\nFurther (test) below moved to a Read-Modify-Write strategy.\n\nCode likely can be removed. Review shows it has been replaced with a blind write once more.\n\nAppears resolved.",
+      "parentUuid": "bf945438_3e00b9a4",
+      "revId": "60c5b639bf0b2cb4f894e261c4272e0804f88877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d6a4b5e_0781f39d",
@@ -177,6 +195,30 @@
       "writtenOn": "2020-12-11T07:41:37Z",
       "side": 1,
       "message": "Please, change the type to int, because i2c_read8 takes int.",
+      "range": {
+        "startLine": 108,
+        "startChar": 44,
+        "endLine": 108,
+        "endChar": 55
+      },
+      "revId": "60c5b639bf0b2cb4f894e261c4272e0804f88877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1fa39e8_1131891a",
+        "filename": "board/servo_v4p1/tusb1064.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-01-11T15:17:03Z",
+      "side": 1,
+      "message": "Will any issues arise from the 2\u0027s complement manner in which signed ints are stored? If not, can be removed.\n\nI copied the format of the pre-existing tusb1064_write_byte(). I felt 8-bit wide I2C binary registers were best stored in 8-bit unsigned variables to remove ambiguity about stored value.\n\nReview shows unsigned int format is used in current patchset.",
+      "parentUuid": "0b6171f4_3a00e64e",
       "range": {
         "startLine": 108,
         "startChar": 44,
