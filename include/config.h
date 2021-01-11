@@ -4088,6 +4088,9 @@
 /* Dynamic USB PD source capability */
 #undef CONFIG_USB_PD_DYNAMIC_SRC_CAP
 
+/* Dynamic USB PD sink capability */
+#undef CONFIG_USB_PD_DYNAMIC_SNK_CAP
+
 /* Support USB PD flash. */
 #undef CONFIG_USB_PD_FLASH
 
