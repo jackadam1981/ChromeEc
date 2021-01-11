@@ -34,6 +34,57 @@
       "parentUuid": "ed582237_1dcd3252",
       "revId": "9ee606cccb0a9ed4d10dd1bcfbcb2eee9169500b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aee424b_9e229676",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T20:56:19Z",
+      "side": 1,
+      "message": "2 minor comments. Let\u0027s merge this soon - the logic is simple and I have (almost) the same code in my patch yet to be send, thus there is a conflict and I want to rebase on top of this commit. ",
+      "revId": "9ee606cccb0a9ed4d10dd1bcfbcb2eee9169500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db1dd39_23649bb7",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T20:56:19Z",
+      "side": 1,
+      "message": "I would recommend to use `servo_v4p1` consistently across the codebase.",
+      "revId": "9ee606cccb0a9ed4d10dd1bcfbcb2eee9169500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5be7d84_19f570e7",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T20:56:19Z",
+      "side": 1,
+      "message": "It\u0027s not for uservo.",
+      "revId": "9ee606cccb0a9ed4d10dd1bcfbcb2eee9169500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
