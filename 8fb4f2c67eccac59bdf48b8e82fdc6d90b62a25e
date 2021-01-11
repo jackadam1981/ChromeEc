@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5c98d1_3e2142f3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-11T23:32:12Z",
+      "side": 1,
+      "message": "Should anything be done with no PE and no PD enabled?  Without PD communication on a port, we can\u0027t send a hard reset, can we?",
+      "revId": "8fb4f2c67eccac59bdf48b8e82fdc6d90b62a25e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
