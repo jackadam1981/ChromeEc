@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4e2970_04bfb85c",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:56:56Z",
+      "side": 1,
+      "message": "This option gets disabled for ISH builds so it needs to be upgraded to a KConfig at some point.  Opened b:177255713",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "bfa561fcbcfe9d49b29faa834b09fa0b5dfcd409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
