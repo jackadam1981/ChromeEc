@@ -16,6 +16,24 @@
       "message": "is it with new F/W?\nwe might have to ask ADL team to adapt too",
       "revId": "08b4fe0e097d53cb00e24075448d729e1fb434a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f50464a5_efde1cd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-11T17:56:41Z",
+      "side": 1,
+      "message": "Not associated with firmware version. This is never changed actually. I don\u0027t know how is this 0x8086 came from. Also confirmed with Pranav Tipnis, it\u0027s 0x8087.",
+      "parentUuid": "0116e40a_d9daed15",
+      "revId": "08b4fe0e097d53cb00e24075448d729e1fb434a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
