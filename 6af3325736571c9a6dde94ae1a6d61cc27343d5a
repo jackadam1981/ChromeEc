@@ -195,6 +195,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d28d501_af518a41",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2021-01-11T09:58:29Z",
+      "side": 1,
+      "message": "Is 375 us the default value of the register? If so, why is it being increased?\nAns:\n  No, the default value is 26.7us.\n  Modify to typical value around 375us in tcpc spec.\n\nIs that necessary to improve noise rejection? It seems like this would contradict our Try.SRC policy.\nAns:\n  No, DRP duty is nothing about noise rejection.\n  Try.SRC still works even if DRP duty is 40%.\n  DRP duty can be modified at 0xA1[7:0](lsb) and 0xA2[1:0](msb.)\n\nTo clarify, if this setting is not changed from the default, how long will the TCPC wait to retry in response to a bad GoodCRC?\nAns :\n  Almost immediately after processing bad \"GoodCRC\".\n  RT1715_REG_PHY_CTRL1[7] is an enable bit. Please refer to the explanation of 0x80[7].\n\nIs this increasing the count from the default value?\nAns:\n  Yes.\n  The defualt value of RT1715_REG_PHY_CTRL1[6:4] is 3 times.\n  It is modified to 7 in initial flow for more detecting BMC transient.\n\nFor PHY_CTRL_1 and PHY_CTRL_2, can you name the fields that are being set in each register and describe how their values are interpreted?\nAns:\n  RT1715_REG_CTRL1 is register 0x80 and the default value is 31h.\n    0x80[7]:\n     0b : RT1715 will retry PD message for the wrong GoodCRC message from Ellisys immediately.\n     1b : RT1715 should not retry PD message for the wrong GoodCRC message from Ellisys until tReceive expires (typical 1ms).\n                                \n    0x80[6:4]: \n      Before RT1715 sends TX, RT1715 will check if there is PD commands on the CC line.\n      If the CC transient count is over the setting, RT1715 will recognize that cc is busy                             and will not send TX.\n\n    0x80[7] and 0x80[6:4] are independent and they are for different PHY setting.    \n                        \n                        \n  RT1715_REG_CTRL2 is register 0x81 and the default value is 3Eh.\n    It sets the threshold count for BMC signal to recognize \"0\" and \"1\".\n    RT1715 will start to count between two transients.\n    If it counts over than the threshold, RT1715 recognize as BMC \"0\".\n    If it counts less than the threshold, RT1715 recognize as BMC \"1\".\n                \n    It is modified from 3Eh to 36h for less threshold.",
+      "parentUuid": "03ca2e58_0f969b25",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "6af3325736571c9a6dde94ae1a6d61cc27343d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a687a1e_9f696133",
