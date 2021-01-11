@@ -46,6 +46,30 @@
       },
       "revId": "97f8a9e545302b0f6e83277ddb518a4ec047d565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a27989_d9133f32",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-11T23:15:28Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t think we\u0027re going to be able to avoid the race condition I\u0027m thinking of (OCP between the adapter removal and the reception of the FRS signal). So we could just use the FRS flag. But including the sink flag is probably better style, so I\u0027ll still do that unless there are objections to adding more flags.",
+      "parentUuid": "89052d42_2705c094",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 36
+      },
+      "revId": "97f8a9e545302b0f6e83277ddb518a4ec047d565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
