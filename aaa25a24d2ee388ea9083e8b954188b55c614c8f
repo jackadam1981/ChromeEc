@@ -33,6 +33,24 @@
       "message": "Why r14?  Does r14 have special usage in cortex-m?",
       "revId": "aaa25a24d2ee388ea9083e8b954188b55c614c8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15df82a3_cd0f485f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-11T05:43:12Z",
+      "side": 1,
+      "message": "It\u0027s BL register. (branch and link)",
+      "parentUuid": "70c6489b_3283ac5b",
+      "revId": "aaa25a24d2ee388ea9083e8b954188b55c614c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
