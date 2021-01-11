@@ -192,6 +192,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "21007531_056d1857",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-11T18:07:40Z",
+      "side": 1,
+      "message": "I wouldn\u0027t expect to see any significant improvement from removing task_wake calls: I believe we are almost always calling from the PD task, so the task_wake function is only one if condition and setting wake[port] \u003d 1.",
+      "parentUuid": "338d7d19_44f305b9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "a40791c8cb8622df2e8eb8d49fb4c816bce80b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1d2038b3_ac126ff5",
