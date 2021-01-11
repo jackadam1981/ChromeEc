@@ -206,8 +206,17 @@ void usb_mux_init(int port);
  * @param usb_config usb2.0 selected function.
  * @param polarity plug polarity (0=CC1, 1=CC2).
  */
+/*
+ * TODO: This guard is for host_command build PASS. The guard can be removed if
+ * the function is implemented in zephyr.
+ */
+#ifndef CONFIG_ZEPHYR
 void usb_mux_set(int port, mux_state_t mux_mode,
 		 enum usb_switch usb_config, int polarity);
+#else
+static inline void usb_mux_set(int port, mux_state_t mux_mode,
+		 enum usb_switch usb_config, int polarity) {}
+#endif
 
 /**
  * Query superspeed mux status on type-C port.
@@ -215,7 +224,15 @@ void usb_mux_set(int port, mux_state_t mux_mode,
  * @param port port number.
  * @return current MUX state (USB_PD_MUX_*).
  */
+/*
+ * TODO: This guard is for host_command build PASS. The guard can be removed if
+ * the function is implemented in zephyr.
+ */
+#ifndef CONFIG_ZEPHYR
 mux_state_t usb_mux_get(int port);
+#else
+static inline mux_state_t usb_mux_get(int port) {}
+#endif
 
 /**
  * Flip the superspeed muxes on type-C port.
@@ -237,6 +254,14 @@ void usb_mux_flip(int port);
  * @param hpd_lvl HPD level.
  * @param hpd_irq HPD IRQ.
  */
+/*
+ * TODO: This guard is for host_command build PASS. The guard can be removed if
+ * the function is implemented in zephyr.
+ */
+#ifndef CONFIG_ZEPHYR
 void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq);
+#else
+static inline void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq) {}
+#endif
 
 #endif
