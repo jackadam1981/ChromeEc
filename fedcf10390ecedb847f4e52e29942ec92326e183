@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ca762e_a62df602",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-01-11T02:06:46Z",
+      "side": 1,
+      "message": "Re-test pass from fan level 0 to 5 and cool down from level 5 to 0.",
+      "parentUuid": "e1ff7809_14e6fa3f",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 26
+      },
+      "revId": "fedcf10390ecedb847f4e52e29942ec92326e183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5b9d54c_60bc231e",
