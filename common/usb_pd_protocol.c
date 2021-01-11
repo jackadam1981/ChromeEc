@@ -1200,11 +1200,20 @@ static int send_battery_status(int port,  uint32_t *payload)
 static void send_sink_cap(int port)
 {
 	int bit_len;
+
+#if defined(CONFIG_USB_PD_DYNAMIC_SNK_CAP)
+	const uint32_t *snk_pdo;
+	const int snk_pdo_cnt = board_get_snk_cap(&snk_pdo, port);
+#else
+	const uint32_t *snk_pdo = pd_snk_pdo;
+	const int snk_pdo_cnt = pd_snk_pdo_cnt;
+#endif
+
 	uint16_t header = PD_HEADER(PD_DATA_SINK_CAP, pd[port].power_role,
-			pd[port].data_role, pd[port].msg_id, pd_snk_pdo_cnt,
+			pd[port].data_role, pd[port].msg_id, snk_pdo_cnt,
 			pd_get_rev(port, TCPC_TX_SOP), 0);
 
-	bit_len = pd_transmit(port, TCPC_TX_SOP, header, pd_snk_pdo,
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, snk_pdo,
 			      AMS_RESPONSE);
 	if (debug_level >= 2)
 		CPRINTF("C%d snkCAP>%d\n", port, bit_len);
@@ -2691,6 +2700,15 @@ __overridable uint8_t board_get_src_dts_polarity(int port)
 	 * If the port in SRC DTS, the polarity is determined by the board,
 	 * i.e. what Rp impedance the CC lines are pulled. If this function
 	 * is not overridden, assume CC1 is primary.
+	 */
+	return 0;
+}
+
+__overridable int board_get_snk_cap(const uint32_t **snk_pdo, const int port)
+{
+	/*
+	 * Override to return dynamic SNK_CAP messages, namely for
+	 * UNCONSTRAINED_POWER bit or other flags based on dynamic state.
 	 */
 	return 0;
 }
