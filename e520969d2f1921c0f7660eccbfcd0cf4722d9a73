@@ -92,6 +92,47 @@
       },
       "revId": "e520969d2f1921c0f7660eccbfcd0cf4722d9a73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a849efbb_2b510d44",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-01-11T20:02:26Z",
+      "side": 1,
+      "message": "Let\u0027s handle S0IX issue as a separate activity. Let\u0027s not combine them.",
+      "parentUuid": "590303da_fde6955f",
+      "range": {
+        "startLine": 470,
+        "startChar": 8,
+        "endLine": 470,
+        "endChar": 10
+      },
+      "revId": "e520969d2f1921c0f7660eccbfcd0cf4722d9a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e1eda3_973b051a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-01-11T20:02:26Z",
+      "side": 1,
+      "message": "@Divya - Why are we removing mutexes?",
+      "revId": "e520969d2f1921c0f7660eccbfcd0cf4722d9a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
