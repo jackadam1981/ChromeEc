@@ -186,24 +186,9 @@ static int sn5s330_init(int port)
 	const int i2c_port  = ppc_chips[port].i2c_port;
 	const uint16_t i2c_addr_flags = ppc_chips[port].i2c_addr_flags;
 
-#ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
-	/* Set the sourcing current limit value. */
-	switch (CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) {
-	case TYPEC_RP_3A0:
-		/* Set current limit to ~3A. */
-		regval = SN5S330_ILIM_3_06;
-		break;
 
-	case TYPEC_RP_1A5:
-	default:
-		/* Set current limit to ~1.5A. */
-		regval = SN5S330_ILIM_1_62;
-		break;
-	}
-#else /* !defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
-	/* Default SRC current limit to ~1.5A. */
-	regval = SN5S330_ILIM_1_62;
-#endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
+	/* Default SRC current limit to ~3.0A. */
+	regval = SN5S330_ILIM_3_06;
 
 	/*
 	 * It seems that sometimes setting the FUNC_SET1 register fails
@@ -519,7 +504,7 @@ static int sn5s330_set_vbus_source_current_limit(int port,
 		break;
 
 	case TYPEC_RP_1A5:
-		regval |= SN5S330_ILIM_1_62;
+		regval |= SN5S330_ILIM_3_06; /*SN5S330_ILIM_1_62;*/
 		break;
 
 	case TYPEC_RP_USB:
@@ -528,6 +513,7 @@ static int sn5s330_set_vbus_source_current_limit(int port,
 		break;
 	};
 
+	CPRINTS("ppc[%d]: set current limit = %d", port, regval);
 	status = write_reg(port, SN5S330_FUNC_SET1, regval);
 
 	return status;
