@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8933e6ed_8e7501f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T21:58:33Z",
+      "side": 1,
+      "message": "BRANCH\u003dTrogdor",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "6e5a9878c4354717fb1f3c6db101c4f77754ace6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5084a520_d3b0afed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T21:58:33Z",
+      "side": 1,
+      "message": "Add a line TEST\u003d and state the test instructions, like checking the hibernate mode current in some level.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "6e5a9878c4354717fb1f3c6db101c4f77754ace6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47effa2_f4c9016e",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T21:58:33Z",
+      "side": 1,
+      "message": "Nit: Use one newline.",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 0
+      },
+      "revId": "6e5a9878c4354717fb1f3c6db101c4f77754ace6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb58405_934c002c",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T21:58:33Z",
+      "side": 1,
+      "message": "Define the bit mask and the following bit value as constants.",
+      "range": {
+        "startLine": 242,
+        "startChar": 8,
+        "endLine": 242,
+        "endChar": 12
+      },
+      "revId": "6e5a9878c4354717fb1f3c6db101c4f77754ace6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff42418d_778fe6ea",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T21:58:33Z",
+      "side": 1,
+      "message": "Nit: remove extra tabs.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 5
+      },
+      "revId": "6e5a9878c4354717fb1f3c6db101c4f77754ace6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43fa45ce_990e307b",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T21:58:33Z",
+      "side": 1,
+      "message": "Nit: remove the extra space.",
+      "range": {
+        "startLine": 262,
+        "startChar": 40,
+        "endLine": 262,
+        "endChar": 41
+      },
+      "revId": "6e5a9878c4354717fb1f3c6db101c4f77754ace6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236d4abd_273ab608",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T21:58:33Z",
+      "side": 1,
+      "message": "Nit: remove the extra spaces.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 2
+      },
+      "revId": "6e5a9878c4354717fb1f3c6db101c4f77754ace6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27afd9fe_908e471d",
+        "filename": "driver/ln9310.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T21:58:33Z",
+      "side": 1,
+      "message": "Nit: remove the extra new line. One new line to separate is enough.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "6e5a9878c4354717fb1f3c6db101c4f77754ace6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
