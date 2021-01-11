@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9326e73_e6b4d113",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:22:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70ac81f3_e8ae2aba",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e733a60e_bd0ccda0",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f87cd2_ec8273e3",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:22:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e733a60e_bd0ccda0",
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3070440_5c0261de",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-01-08T00:12:55Z",
       "side": 1,
       "message": "We use #include \"header.h\" notation for our header files.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5839903d_36a6cc09",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:22:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3070440_5c0261de",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6adc14f_edffb63a",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:22:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9bb43ee_d0dd4d7c",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 3
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "600706a9_3878280a",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-01-08T00:12:55Z",
       "side": 1,
       "message": "ccprintf is reserved for console commands only. Please use cprintf with an appropriate console channel.",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 10
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15dc4833_3774c10a",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:22:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "600706a9_3878280a",
       "range": {
         "startLine": 158,
         "startChar": 2,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e444167_e0221c2a",
+        "filename": "include/pwr_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:22:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4da8b638_15e79c03",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e1e30c9_cd5dae81",
@@ -146,6 +284,30 @@
       "writtenOn": "2021-01-08T00:12:55Z",
       "side": 1,
       "message": "Same here, \"system.h\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1569c630_8051ee2c",
+        "filename": "include/pwr_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:22:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e1e30c9_cd5dae81",
       "range": {
         "startLine": 9,
         "startChar": 9,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9b1817_0b6d28cd",
+        "filename": "include/pwr_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:22:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d9ef2e_8a8e1691",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8add184f_3b8ea087",
@@ -192,6 +378,30 @@
       "writtenOn": "2021-01-08T00:19:25Z",
       "side": 1,
       "message": "Here as well",
+      "range": {
+        "startLine": 20,
+        "startChar": 22,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "f81b3742b4ebaea7ef31a58802ea50f362c41fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad21f55_e88f5fd9",
+        "filename": "include/pwr_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-11T23:22:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8add184f_3b8ea087",
       "range": {
         "startLine": 20,
         "startChar": 22,
