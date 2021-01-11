@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d33e5f7_00a08c9f",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-01-11T21:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7501a903_e1b37418",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 3
+      },
+      "revId": "ce4d6646138554e1809babab369f317b62775604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e2cc746_5aefd8d7",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "240dc03f_36e26e22",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-01-11T21:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e2cc746_5aefd8d7",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 15
+      },
+      "revId": "ce4d6646138554e1809babab369f317b62775604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e20cfd1_ff711bfe",
@@ -84,6 +132,30 @@
       "writtenOn": "2020-12-10T21:46:41Z",
       "side": 1,
       "message": "Similar to unlock_flash_option_bytes, this should be the other way around: lock_flash_option_bytes() should just do \n\n\tSTM32_FLASH_OPTCR(0) |\u003d FLASH_OPTCR_OPTLOCK;\n\nAnd commit_optb() should call lock_flash_option_bytes(). This is because commit_optb() has the extra effect of locking flash control registers, and we want to be able to test just the option bytes behavior.",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 15
+      },
+      "revId": "ce4d6646138554e1809babab369f317b62775604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35858665_d450b566",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-01-11T21:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e20cfd1_ff711bfe",
       "range": {
         "startLine": 213,
         "startChar": 1,

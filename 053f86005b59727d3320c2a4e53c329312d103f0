@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e48300ea_2ebc2a88",
+        "filename": "chip/stm32/flash-stm32h7.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-01-11T21:07:29Z",
+      "side": 1,
+      "message": "\u003e \"scalled\" is a possible misspelling of \"scaled\".\n\nPlease fix.",
+      "parentUuid": "1efd5afe_d2907220",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "053f86005b59727d3320c2a4e53c329312d103f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
