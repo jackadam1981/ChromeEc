@@ -22,6 +22,30 @@
       },
       "revId": "b807464c95d7d940d4112538d7b664b07f80e2c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a40ca3_4bd2206e",
+        "filename": "baseboard/volteer/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-11T23:13:01Z",
+      "side": 1,
+      "message": "No it is not all there yet. See for example:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/zephyr-chrome/+/2618661/3",
+      "parentUuid": "dea7fec1_219c45ac",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "b807464c95d7d940d4112538d7b664b07f80e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
