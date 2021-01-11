@@ -16,6 +16,52 @@
       "message": "Put back +2 after rebase",
       "revId": "f1f65c265589e028ae1b2b854f4a5fda11e104c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f79098e_d742aa86",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T20:51:21Z",
+      "side": 1,
+      "message": "Delete this - the Burnside Bridge is always external to the SoC.",
+      "range": {
+        "startLine": 71,
+        "startChar": 24,
+        "endLine": 71,
+        "endChar": 58
+      },
+      "revId": "f1f65c265589e028ae1b2b854f4a5fda11e104c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "badfc5c6_6a518bf2",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T20:51:21Z",
+      "side": 1,
+      "message": "Delete?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "f1f65c265589e028ae1b2b854f4a5fda11e104c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
