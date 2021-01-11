@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a6c9f01_892b7dac",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:25:00Z",
+      "side": 1,
+      "message": "For now default n.  There are security implications to enabling this feature.",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 10
+      },
+      "revId": "2fd11baa7668f5bb53607019abb05904a50b84db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b4d2a4a_c4e86496",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:25:00Z",
+      "side": 1,
+      "message": "(UFP).",
+      "range": {
+        "startLine": 260,
+        "startChar": 14,
+        "endLine": 260,
+        "endChar": 15
+      },
+      "revId": "2fd11baa7668f5bb53607019abb05904a50b84db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8307ce14_89ee301c",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-11T21:25:00Z",
+      "side": 1,
+      "message": "Suggested text:\nBy default, Chromium OS only enables alternate modes (Display Port, USB4, Thuderbolt, etc) when the USB data role resolves to the Downstream Facing Port (DFP) role.  Enable this option to support USB4 and ThunderBolt operation when the Chromium OS data role resolves to the UFP role.",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 27
+      },
+      "revId": "2fd11baa7668f5bb53607019abb05904a50b84db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
