@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89267c23_1061fd6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T23:57:55Z",
+      "side": 1,
+      "message": "Nit: please change it to \"b:176858036\".",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "9abd555390e734150e667bbbd2918b5be33b3450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce5eb67a_1b14ce1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T23:57:55Z",
+      "side": 1,
+      "message": "Still have some nits.",
+      "revId": "9abd555390e734150e667bbbd2918b5be33b3450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f908a2_19cc5fab",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T23:57:55Z",
+      "side": 1,
+      "message": "These tabs are still there. Please remove them.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 5
+      },
+      "revId": "9abd555390e734150e667bbbd2918b5be33b3450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6588251b_b8dd7d66",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-11T23:57:55Z",
+      "side": 1,
+      "message": "And this tailing space.",
+      "range": {
+        "startLine": 262,
+        "startChar": 40,
+        "endLine": 262,
+        "endChar": 41
+      },
+      "revId": "9abd555390e734150e667bbbd2918b5be33b3450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
