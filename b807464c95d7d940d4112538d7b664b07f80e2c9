@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea7fec1_219c45ac",
+        "filename": "baseboard/volteer/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-11T03:44:45Z",
+      "side": 1,
+      "message": "We have basebard/volteer on the include path? I\u0027m not finding that in the CMakeLists.txt files under platform/ec/zephyr/",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "b807464c95d7d940d4112538d7b664b07f80e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
