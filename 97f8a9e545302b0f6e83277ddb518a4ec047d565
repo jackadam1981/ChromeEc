@@ -22,6 +22,30 @@
       },
       "revId": "97f8a9e545302b0f6e83277ddb518a4ec047d565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89052d42_2705c094",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-11T23:10:07Z",
+      "side": 1,
+      "message": "You mean double-check that we\u0027re a sink before doing this?\n\nThe mechanism to prevent that is that the HV path is always the sink path, so we couldn\u0027t trigger OCP on it unless the sink path is enabled.\n\nBut I think we would want to bypass this in the case of an FRS, since the currents can get kind of crazy during that. There is an FRS flag we could use, but its probably better to include a sink flag to avoid race conditions. Thanks for the suggestion, I\u0027ll add that in.",
+      "parentUuid": "3f9471ed_59ba3dd9",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 36
+      },
+      "revId": "97f8a9e545302b0f6e83277ddb518a4ec047d565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
