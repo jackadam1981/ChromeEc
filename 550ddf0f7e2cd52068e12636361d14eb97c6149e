@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63232d31_07f04b2b",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-11T23:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "830125b3_dd55fb7e",
+      "range": {
+        "startLine": 202,
+        "startChar": 6,
+        "endLine": 202,
+        "endChar": 16
+      },
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c09ade17_99be5117",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Default is USB mode, It could be change to power saving mode at init.",
       "parentUuid": "c09ade17_99be5117",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 19
+      },
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a86340_6329acf0",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-11T23:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00898028_3741c137",
       "range": {
         "startLine": 214,
         "startChar": 1,
@@ -142,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c06d5ff_0ba9a08b",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-11T23:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1f3931c_8fdcc360",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "113f6058_e971947e",
@@ -173,6 +245,24 @@
       "side": 1,
       "message": "move it to up REG2 mode",
       "parentUuid": "113f6058_e971947e",
+      "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f60cec_486199fd",
+        "filename": "driver/retimer/ps8802.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-11T23:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2f5dcd2_d52ed16b",
       "revId": "550ddf0f7e2cd52068e12636361d14eb97c6149e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
