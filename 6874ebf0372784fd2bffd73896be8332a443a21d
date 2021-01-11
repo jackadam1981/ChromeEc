@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca6851de_195bd16d",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-11T17:50:53Z",
+      "side": 1,
+      "message": "pytest will automatically recurse. So you can just do pytest $PATH_TO_ZEPHYR_CHROME and pytest $PATH_TO_EC/zephyr and it will find them all",
+      "range": {
+        "startLine": 265,
+        "startChar": 46,
+        "endLine": 265,
+        "endChar": 66
+      },
+      "revId": "6874ebf0372784fd2bffd73896be8332a443a21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
