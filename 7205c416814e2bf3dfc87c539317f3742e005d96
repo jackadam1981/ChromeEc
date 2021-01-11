@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd9b3f5_8a7a33de",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-11T23:00:08Z",
+      "side": 1,
+      "message": "\u003e Modify to typical value around 375us in tcpc spec.\nIf the typical value is 375 us, wouldn\u0027t be closer to set it to 0x0e for 373.8 us?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd0246e_7577dc84",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-11T23:00:08Z",
+      "side": 1,
+      "message": "\u003e \u003e Why is the DRP duty cycle being set to 40%?\n\u003e It is just set this port with larger chance for sink.\n\u003e \u003e It seems like this would contradict our Try.SRC policy.\n\u003e No, DRP duty is nothing about noise rejection.\n\u003e Try.SRC still works even if DRP duty is 40%.\nThen I think this change should be moved to another CL, if it is needed at all. Looking at the datasheet, it looks like this change would actually increase the chance of becoming SRC and decrease the chance of becoming SNK (SRC duty cycle from ~32% to ~39%).",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7302e5c7_7edde295",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-11T23:00:08Z",
+      "side": 1,
+      "message": "What duration does the TCPC check CC for the configured number of transients to detect whether it\u0027s idle?\nBy \"transient,\" do you mean a high-low or low-high transition on the wire?\n\nComment:\nBit 7 \u003cFIELD NAME\u003e: Wait for tReceive before retrying transmit in response to a bad GoodCRC.\nBit 6:4 \u003cFIELD NAME\u003e: Consider CC to be idle if there are 7 or fewer BMC transients observed in \u003cDURATION\u003e, an increase from the default of 3.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ba9c10_4a28c8cd",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-11T23:00:08Z",
+      "side": 1,
+      "message": "\u003e  RT1715_REG_CTRL2 is register 0x81 and the default value is 3Eh. It sets the threshold count for BMC signal to recognize \"0\" and \"1\". RT1715 will start to count between two transients. If it counts over than the threshold, RT1715 recognize as BMC \"0\". If it counts less than the threshold, RT1715 recognize as BMC \"1\". It is modified from 3Eh to 36h for less threshold.\nIf I understand correctly, this entire register is one field, and the value of that field is the count (of time?) after which the PHY will recognize a BMC 1 if it has seen a second transition and a BMC 0 if it has not seen a second transition.\n* Does the counter represent a duration?\n* If so, how much time is one unit increase/decrease?\n* What is the default duration, and what is the new duration?\n* See above question about your use of the word \"transient.\"",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
