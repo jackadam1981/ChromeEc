@@ -16,6 +16,24 @@
       "message": "Please also enable the CONFIG_USB_PORT_POWER_DUMB option in board.h.  Use the example from Volteer CL:2223823.",
       "revId": "03259be42fcf02244d6ac76b503b063d73fe71de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "647f868f_417a8bbe",
+        "filename": "board/copano/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2021-01-11T02:38:13Z",
+      "side": 1,
+      "message": "Understood. I will modify it. Thanks.",
+      "parentUuid": "89494a1c_c09f15f6",
+      "revId": "03259be42fcf02244d6ac76b503b063d73fe71de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
