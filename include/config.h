@@ -4449,6 +4449,7 @@
 #undef CONFIG_USBC_RETIMER_PS8802
 #undef CONFIG_USBC_RETIMER_PS8818
 #undef CONFIG_USBC_RETIMER_TUSB544
+#undef CONFIG_USBC_RETIMER_KB800X
 
 /*
  * Define this to enable Type-C retimer firmware update. Each Type-C retimer
