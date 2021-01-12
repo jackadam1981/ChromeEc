@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b4fb5d_da47f694",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-12T01:19:01Z",
+      "side": 1,
+      "message": "looking good",
+      "revId": "f72900254ee10d1e712ddb87df309699021dbf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "065e0e11_9ee83409",
+        "filename": "common/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-12T01:19:01Z",
+      "side": 1,
+      "message": "can you add a TODO?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 26
+      },
+      "revId": "f72900254ee10d1e712ddb87df309699021dbf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f16e4c_dfdedbdd",
+        "filename": "zephyr/shim/include/pwm/pwm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-12T01:19:01Z",
+      "side": 1,
+      "message": "Can you fix indentation (you can run clang-format on this file to do automatically)\n\ntrailing comma on PWM_CHANNEL_COUNT?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "f72900254ee10d1e712ddb87df309699021dbf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
