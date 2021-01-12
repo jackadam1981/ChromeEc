@@ -46,6 +46,30 @@
       },
       "revId": "20f67c177b233e4ec3d792ec2d8cb94b29c746d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b5e17bb_6a13ef98",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-12T23:03:10Z",
+      "side": 1,
+      "message": "EE says the pullup will be changed to 30.9K.",
+      "parentUuid": "f1c1e887_1e0e2375",
+      "range": {
+        "startLine": 178,
+        "startChar": 10,
+        "endLine": 178,
+        "endChar": 38
+      },
+      "revId": "20f67c177b233e4ec3d792ec2d8cb94b29c746d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
