@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3629bf97_759d7463",
+        "filename": "zephyr/zmake/zmake/multiproc.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-12T21:09:25Z",
+      "side": 1,
+      "message": "log_level_override_func",
+      "range": {
+        "startLine": 118,
+        "startChar": 8,
+        "endLine": 118,
+        "endChar": 29
+      },
+      "revId": "253b64783032e54415386ce3f96451bdc5e7ba51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e701556c_6e643bea",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 1
@@ -82,6 +105,29 @@
         "startChar": 37,
         "endLine": 25,
         "endChar": 50
+      },
+      "revId": "253b64783032e54415386ce3f96451bdc5e7ba51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21620dd_e0fef94b",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-12T21:09:25Z",
+      "side": 1,
+      "message": "Use chromium docstring style",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 12
       },
       "revId": "253b64783032e54415386ce3f96451bdc5e7ba51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
