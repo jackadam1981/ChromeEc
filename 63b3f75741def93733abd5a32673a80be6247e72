@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "878ea09b_0813ce89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-12T20:10:41Z",
+      "side": 1,
+      "message": "LGTM, just one comment.",
+      "revId": "63b3f75741def93733abd5a32673a80be6247e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c86bf08_6beb3165",
+        "filename": "driver/gl3590.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-12T20:10:41Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to change since the file already existed.",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "63b3f75741def93733abd5a32673a80be6247e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
