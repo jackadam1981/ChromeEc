@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "929a99c7_176df969",
+        "filename": "board/servo_v4p1/ina231s.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-12T20:14:20Z",
+      "side": 1,
+      "message": "Ok. Can you at least add the words \"servo charger\" in the function documentation?",
+      "parentUuid": "bd0e227c_542be4fd",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "243b1a0c_135d11c0",
         "filename": "board/servo_v4p1/power_mgmt.c",
         "patchSetId": 4
@@ -560,6 +584,24 @@
       "side": 1,
       "message": "This is a good question. Actually a lot of code is placed under board/servo_v4p1 even though eventually it can/should be moved to more generic directories. That being said, Sam made this initial code to make servo working and currently considering very tight schedule I would like to not change this and leave this unit as is.",
       "parentUuid": "8153204a_fd4ea517",
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fdcb747_4efcfa5e",
+        "filename": "board/servo_v4p1/usb_tc_snk_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-12T20:14:20Z",
+      "side": 1,
+      "message": "We should file a bug for clean up later on.",
+      "parentUuid": "bb3ac97f_bf2a74a8",
       "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

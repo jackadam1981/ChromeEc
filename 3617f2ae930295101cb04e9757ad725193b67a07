@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66177984_2fd45b3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-12T20:14:20Z",
+      "side": 1,
+      "message": "Nearly there; just a couple comments.",
+      "revId": "3617f2ae930295101cb04e9757ad725193b67a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "341a20f1_8c2a36de",
+        "filename": "board/servo_v4p1/usb_tc_snk_sm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-12T20:14:20Z",
+      "side": 1,
+      "message": "And this one should be 2021.",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3617f2ae930295101cb04e9757ad725193b67a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
