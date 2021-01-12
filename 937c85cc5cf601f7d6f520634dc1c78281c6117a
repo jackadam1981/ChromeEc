@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4755bd30_6b73738d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-12T22:03:58Z",
+      "side": 1,
+      "message": "Is that because of how the flags are used as part of this CL? Or should atomic operations have been used before?",
+      "parentUuid": "cff3d4e4_eba38a7a",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 46
+      },
+      "revId": "937c85cc5cf601f7d6f520634dc1c78281c6117a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8266b3cb_1112152c",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 3
