@@ -187,7 +187,11 @@ static void dut_pwr_evt(enum gpio_signal signal)
 static void init_uservo_port(void)
 {
 	/* Enable USERVO_POWER_EN */
-	uservo_power_en(1);
+	if (board_id_det() <= BOARD_ID_REV1)
+		ec_uservo_power_en(1);
+
+	gl3590_enable_ports(0, GL3590_DFP4, 1);
+
 	/* Connect uservo to host hub */
 	uservo_fastboot_mux_sel(0);
 }
@@ -402,6 +406,9 @@ int board_get_version(void)
 #ifdef SECTION_IS_RO
 static void evaluate_input_power_def(void)
 {
+	init_uservo_port();
+	init_pathsel();
+
 	evaluate_input_power();
 }
 DECLARE_DEFERRED(evaluate_input_power_def);
