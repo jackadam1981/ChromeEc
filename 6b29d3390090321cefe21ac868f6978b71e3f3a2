@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0a3c033c_2124c820",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1471367
+      },
+      "writtenOn": "2021-01-12T20:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "718473b9_d220a7bf",
+      "revId": "6b29d3390090321cefe21ac868f6978b71e3f3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2287b975_3c6ecbb9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2021-01-12T20:35:09Z",
       "side": 1,
       "message": "This is ok for now. PD and Type-C are quite tangled, but I could see us cleaning stuff up in the future to better separate them. Ideally it\u0027d be possible to enable systems to use Type-C without PD.",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "6b29d3390090321cefe21ac868f6978b71e3f3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dec86f7d_dbafa83b",
+        "filename": "common/peripheral.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1471367
+      },
+      "writtenOn": "2021-01-12T20:42:58Z",
+      "side": 1,
+      "message": "Acknowledged. Thanks for the review! Our next few Comet Lake-based boards don\u0027t have batteries and don\u0027t source power over USB-C, so it seems like the safest option is to just disable PD and Charge Manager and this was the minimal set of #ifdef guards that made that possible.",
+      "parentUuid": "0b9c80b5_8c2b3aff",
       "range": {
         "startLine": 33,
         "startChar": 12,
