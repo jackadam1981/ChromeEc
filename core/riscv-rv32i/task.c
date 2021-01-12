@@ -351,6 +351,10 @@ void __ram_code start_irq_handler(void)
 #endif
 
 error:
+	panic_printf("%s: ec_int=%d\n", __func__, ec_int);
+	panic_printf("GIPC_IN_SET=%x\n", (unsigned int)REG32(0x70024098));
+	cflush();
+
 	/* cannot use return statement because a0 has been used */
 	asm volatile ("add t0, zero, %0" :: "r"(ec_int));
 
