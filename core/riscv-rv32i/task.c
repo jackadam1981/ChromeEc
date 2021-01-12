@@ -562,7 +562,7 @@ static void ivic_init_irqs(void)
 
 void __ram_code mutex_lock(struct mutex *mtx)
 {
-	uint32_t locked;
+	uint32_t locked = 2;
 	uint32_t id = 1 << task_get_current();
 
 	ASSERT(id != TASK_ID_INVALID);
@@ -574,7 +574,7 @@ void __ram_code mutex_lock(struct mutex *mtx)
 			"li %0, 2\n\t"
 			/* attempt to acquire lock */
 			"amoswap.w.aq %0, %0, %1\n\t"
-			: "=r" (locked), "+A" (mtx->lock));
+			: "+r" (locked), "+A" (mtx->lock));
 		/* we got it ! */
 		if (!locked)
 			break;
