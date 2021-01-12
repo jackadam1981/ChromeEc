@@ -569,12 +569,12 @@ void __ram_code mutex_lock(struct mutex *mtx)
 	atomic_or(&mtx->waiters, id);
 
 	while (1) {
+		/* set lock value */
+		locked = 2;
 		asm volatile (
-			/* set lock value */
-			"li %0, 2\n\t"
 			/* attempt to acquire lock */
 			"amoswap.w.aq %0, %0, %1\n\t"
-			: "=r" (locked), "+A" (mtx->lock));
+			: "+r" (locked), "+A" (mtx->lock));
 		/* we got it ! */
 		if (!locked)
 			break;
