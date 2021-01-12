@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7b413e_b84c86a1",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-12T20:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2464618f_a18050da",
+      "range": {
+        "startLine": 489,
+        "startChar": 25,
+        "endLine": 489,
+        "endChar": 26
+      },
+      "revId": "2bf0024016e85d590be86e0c6e40a56de52b7418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f06efb14_cfa808b6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df7d955b_14460e20",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-12T20:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f06efb14_cfa808b6",
+      "range": {
+        "startLine": 496,
+        "startChar": 7,
+        "endLine": 496,
+        "endChar": 14
+      },
+      "revId": "2bf0024016e85d590be86e0c6e40a56de52b7418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33fa7a55_009af155",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-12T09:45:19Z",
       "side": 1,
       "message": "BB_RETIMER_I2C_RETRY - 1",
+      "range": {
+        "startLine": 497,
+        "startChar": 22,
+        "endLine": 497,
+        "endChar": 23
+      },
+      "revId": "2bf0024016e85d590be86e0c6e40a56de52b7418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f52b80ab_b265837b",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-12T20:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33fa7a55_009af155",
       "range": {
         "startLine": 497,
         "startChar": 22,
