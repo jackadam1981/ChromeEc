@@ -143,6 +143,30 @@
       },
       "revId": "256fc1d99293ec2e65b5226217b8d28922195676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "545bc61a_08de55f5",
+        "filename": "board/pompom/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-01-12T01:59:50Z",
+      "side": 1,
+      "message": "\u003e Will that actually work?  If the screen refresh isn\u0027t exactly 60 Hz (and usually it isn\u0027t) or if clock division means that we can\u0027t actually make exactly 1400 Hz then maybe it\u0027d actually be worse to try to be divisible by 60 Hz?  I could imagine some bad \"beat\" patterns if you have two rates that are close but not exact and things might actually be better if they were totally not divisible?\n\nOh no! you\u0027re right!\nSo do we just have to live with this? or just hope the beat frequency is high enough to not be noticable? I guess that is the case here (1400-60 is still pretty high)\n\nSo maybe 1400 is fine?\n\n\u003e ...but also: does this matter?  I know for refresh rate and lighting frequency it matters, but for PWM backlight isn\u0027t there smoothing in the system (maybe the natural decay of the LED output?) that means you can\u0027t actually observe this frequency?\n\nIt depends a lot of how the LED is driven. Raw leds are perfectly capable of having really high rising and falling edges (see optoisolators). The drivers in a backlight might have low pass filters, but they\u0027re very rarely documented in a datasheet and it probably needs to be verified experimentally.\n\nBTW: this might come in handy for testing: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/453926",
+      "parentUuid": "45dc6090_dc1974f5",
+      "range": {
+        "startLine": 182,
+        "startChar": 58,
+        "endLine": 182,
+        "endChar": 62
+      },
+      "revId": "256fc1d99293ec2e65b5226217b8d28922195676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
