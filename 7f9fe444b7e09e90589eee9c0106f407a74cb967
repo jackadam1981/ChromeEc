@@ -22,6 +22,30 @@
       },
       "revId": "7f9fe444b7e09e90589eee9c0106f407a74cb967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08950b95_4b65aa4d",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-12T22:21:13Z",
+      "side": 1,
+      "message": "Ack. Will leave to that CL:2594438 to change it.",
+      "parentUuid": "44a74566_1030465e",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 26
+      },
+      "revId": "7f9fe444b7e09e90589eee9c0106f407a74cb967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
