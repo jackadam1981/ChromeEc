@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c04414e2_71259dc1",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-12T22:27:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72fc8ebf_a2f5a9a3",
+      "range": {
+        "startLine": 151,
+        "startChar": 17,
+        "endLine": 151,
+        "endChar": 20
+      },
+      "revId": "1ab861260402448af98a10bd4235af869feae913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b788806a_e26baf34",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-11T23:09:26Z",
       "side": 1,
       "message": "Use 0 to force Try.SRC off, 1 to force Try.SRC on, and 2 to let USB PD stack control the Try.SRC behavior.",
+      "range": {
+        "startLine": 151,
+        "startChar": 61,
+        "endLine": 152,
+        "endChar": 41
+      },
+      "revId": "1ab861260402448af98a10bd4235af869feae913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d69aa0ca_179b7d88",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-12T22:27:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b788806a_e26baf34",
       "range": {
         "startLine": 151,
         "startChar": 61,
