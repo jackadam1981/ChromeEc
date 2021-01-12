@@ -22,6 +22,30 @@
       },
       "revId": "096e43ed7d1bde1dcf7734299fba99ab85268c39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc05ff10_1c64ec11",
+        "filename": "chip/mchp/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-12T19:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c742070e_cfd45cf4",
+      "range": {
+        "startLine": 285,
+        "startChar": 1,
+        "endLine": 314,
+        "endChar": 2
+      },
+      "revId": "096e43ed7d1bde1dcf7734299fba99ab85268c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
