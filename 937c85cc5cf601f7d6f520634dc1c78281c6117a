@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc60d82b_f197097d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-12T22:38:51Z",
+      "side": 1,
+      "message": "Atomic operations should have been used before.  Since we\u0027re expanding the use of flags, there\u0027s greater potential for corrupting the flags state.  I\u0027ll note I think this possibility is low.",
+      "parentUuid": "4755bd30_6b73738d",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 46
+      },
+      "revId": "937c85cc5cf601f7d6f520634dc1c78281c6117a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8266b3cb_1112152c",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 3
