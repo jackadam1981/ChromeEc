@@ -16,6 +16,24 @@
       "message": "Should only re-enable PD if it was enabled before.\nPerhaps we just remove these calls to set tc_policy_pd_enable since adding the return after set_state_tc(port, TC_DISABLED) seems sufficient to solve the issue?",
       "revId": "bd0a9218081323b50d0564b4384c1fc38cab09ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c813ca16_b63cdb16",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1990,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-12T18:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37005cc6_e4c1de1e",
+      "revId": "bd0a9218081323b50d0564b4384c1fc38cab09ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
