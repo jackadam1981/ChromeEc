@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "976c69a6_27d4dce0",
+        "filename": "board/sklrvp_mchp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-12T19:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9721d1f_657155c3",
+      "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2d6961c_cd24e4e2",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-01-04T07:17:43Z",
       "side": 1,
       "message": "nit: change to 2021 in next rev",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2858b521_f0b451da",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-12T19:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2d6961c_cd24e4e2",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa26ad31_ef4fae62",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-12T19:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f056c6fa_7fd7203d",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d420b3fa_fcfa39d0",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-01-04T07:17:43Z",
       "side": 1,
       "message": "CONFIG_USB_PD_PORT_MAX_COUNT",
+      "range": {
+        "startLine": 168,
+        "startChar": 30,
+        "endLine": 168,
+        "endChar": 31
+      },
+      "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c30a5ee_b96f0d89",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-12T19:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d420b3fa_fcfa39d0",
       "range": {
         "startLine": 168,
         "startChar": 30,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "486764a4_90e32ebd",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-12T19:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aed10543_e62f8dbe",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 0
+      },
+      "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bba127e5_ddc0d482",
@@ -140,6 +254,24 @@
       "writtenOn": "2021-01-04T07:17:43Z",
       "side": 1,
       "message": "use same net names as in the schematics and macro the name in header file, easy for review",
+      "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c91ad3d_e714db7d",
+        "filename": "board/sklrvp_mchp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-12T19:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bba127e5_ddc0d482",
       "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
