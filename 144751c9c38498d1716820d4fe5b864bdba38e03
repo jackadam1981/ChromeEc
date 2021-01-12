@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f2962fe_1c6dfa31",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-12T19:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "544b79af_cc6676c3",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "144751c9c38498d1716820d4fe5b864bdba38e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a398199_39615170",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-08T06:54:38Z",
       "side": 1,
       "message": "nit: looked like tabs were better in alignment,",
+      "range": {
+        "startLine": 62,
+        "startChar": 17,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "144751c9c38498d1716820d4fe5b864bdba38e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a403af28_f53f05e5",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-12T19:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a398199_39615170",
       "range": {
         "startLine": 62,
         "startChar": 17,
