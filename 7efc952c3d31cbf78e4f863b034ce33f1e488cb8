@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc64591d_2a6df7a5",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-12T23:55:40Z",
+      "side": 1,
+      "message": "I\u0027m not super familiar with the AMD power sequencing yet.  Does this need to be stored for reference later, or is it sufficient to just pass it through the GPIO?",
+      "revId": "7efc952c3d31cbf78e4f863b034ce33f1e488cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
