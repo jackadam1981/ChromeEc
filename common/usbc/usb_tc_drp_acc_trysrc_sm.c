@@ -3555,11 +3555,16 @@ void tc_run(const int port)
 	 * DISABLED
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_SUSPEND)) {
-		/* Invalidate a contract, if there is one */
-		if (IS_ENABLED(CONFIG_USB_PE_SM))
-			pe_invalidate_explicit_contract(port);
+		/* Do not bother to disable a port that is already disabled */
+		if (get_state_tc(port) != TC_DISABLED) {
+			/* Invalidate a contract, if there is one */
+			if (IS_ENABLED(CONFIG_USB_PE_SM))
+				pe_invalidate_explicit_contract(port);
 
-		set_state_tc(port, TC_DISABLED);
+			/* Disable the port */
+			set_state_tc(port, TC_DISABLED);
+			return;
+		}
 	}
 
 	run_state(port, &tc[port].ctx);
