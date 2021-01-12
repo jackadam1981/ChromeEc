@@ -187,6 +187,30 @@
       },
       "revId": "ce4d6646138554e1809babab369f317b62775604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9dcd7c9_927d58d7",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-12T00:00:04Z",
+      "side": 1,
+      "message": "I just tried, this works, so let\u0027s lock/unlock both bank 0 and bank 1 for flash control register.",
+      "parentUuid": "aed1749f_c38a6238",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 224,
+        "endChar": 46
+      },
+      "revId": "ce4d6646138554e1809babab369f317b62775604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
