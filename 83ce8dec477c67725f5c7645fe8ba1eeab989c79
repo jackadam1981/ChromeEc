@@ -22,6 +22,30 @@
       },
       "revId": "83ce8dec477c67725f5c7645fe8ba1eeab989c79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10344923_5608a9a8",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-12T04:34:06Z",
+      "side": 1,
+      "message": "Yes, technically this will not have any pytests now. Figured leave it in since it doesn\u0027t do any harm, but I don\u0027t mind taking it out.",
+      "parentUuid": "2376ff4e_933a4cdc",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 58
+      },
+      "revId": "83ce8dec477c67725f5c7645fe8ba1eeab989c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
