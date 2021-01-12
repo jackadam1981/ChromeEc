@@ -16,6 +16,29 @@
       "message": "Ownership transfer to vpalatin@.\nCode adaptation +1 LGTM.",
       "revId": "e2afe02cf4aab75345bf93f147a73e3c52e81e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f46cff2_5abf957e",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-12T09:53:06Z",
+      "side": 1,
+      "message": "Why we are setting buffer to 0xee? Checked i2c_read() (common/i2c_controller.c) and this value is unused (i2c_read() has internal buffer inside).",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "e2afe02cf4aab75345bf93f147a73e3c52e81e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
