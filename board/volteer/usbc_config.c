@@ -21,6 +21,7 @@
 #include "driver/tcpm/rt1715_public.h"
 #include "driver/tcpm/tusb422_public.h"
 #include "driver/tcpm/tcpci.h"
+#include "private-kandou/kb8001_b0.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
@@ -60,6 +61,21 @@ static const struct usb_mux mux_config_p1_usb3_passive = {
 	.hpd_update = &virtual_hpd_update,
 };
 
+struct usb_mux usbc1_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+	.next_mux = NULL
+};
+
+static const struct usb_mux usbc1_matterhorn_db_retimer = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &kb8001_usb_mux_driver,
+	.i2c_port = I2C_PORT_USB_1_MIX,
+	.i2c_addr_flags = KB8001_I2C_ADDR0_FLAGS,
+	.next_mux = &usbc1_tcss_usb_mux,
+};
+
 /*
  * Set up support for the USB3 daughterboard:
  *   Parade PS8815 TCPC (integrated retimer)
@@ -71,6 +87,11 @@ static void config_db_usb3_active(void)
 {
 	tcpc_config[USBC_PORT_C1] = tcpc_config_p1_usb3;
 	usb_muxes[USBC_PORT_C1] = mux_config_p1_usb3_active;
+}
+
+static void config_kb8001(void)
+{
+	usb_muxes[USBC_PORT_C1] = usbc1_matterhorn_db_retimer;
 }
 
 /*
@@ -138,6 +159,10 @@ void config_usb3_db_type(void)
 		config_port_discrete_tcpc(1);
 		CPRINTS("%sUSB3 Passive", db_type_prefix);
 		break;
+	case DB_USB4_GEN3_KB8001:
+		config_kb8001();
+		config_port_discrete_tcpc(1);
+		CPRINTS("%sUSB4 Matterhorn", db_type_prefix);
 	default:
 		CPRINTS("%sID %d not supported", db_type_prefix, usb_db);
 	}
@@ -207,11 +232,6 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 
 /******************************************************************************/
 /* USBC mux configuration - Tiger Lake includes internal mux */
-struct usb_mux usbc1_tcss_usb_mux = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
-};
 
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
@@ -252,7 +272,8 @@ __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 			 * to GEN2 speeds.
 			 */
 			return TBT_SS_U32_GEN1_GEN2;
-		} else if (usb_db == DB_USB4_GEN3) {
+		} else if ((usb_db == DB_USB4_GEN3) ||
+			   (usb_db == DB_USB4_GEN3_KB8001)) {
 			return TBT_SS_TBT_GEN3;
 		}
 	}
@@ -277,8 +298,9 @@ __override bool board_is_tbt_usb4_port(int port)
 	 * TODO (b/147732807): All the USB-C ports need to support same
 	 * features. Need to fix once USB-C feature set is known for Volteer.
 	 */
-	return ((port == USBC_PORT_C1)
-		&& ((usb_db == DB_USB4_GEN2) || (usb_db == DB_USB4_GEN3)));
+	return ((port == USBC_PORT_C1) &&
+		((usb_db == DB_USB4_GEN2) || (usb_db == DB_USB4_GEN3) ||
+		 (usb_db == DB_USB4_GEN3_KB8001)));
 }
 
 static void ps8815_reset(void)
@@ -342,6 +364,15 @@ static void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
+struct kb8001_usb_control kb8001_control[] = {
+	[USBC_PORT_C0] = {
+		/* USB-C port 0 doesn't have a retimer */
+	},
+	[USBC_PORT_C1] = {
+		.retimer_rst_gpio = GPIO_USB_C1_RT_RST_ODL,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(kb8001_control) == USBC_PORT_COUNT);
 
 /******************************************************************************/
 /* BC1.2 charger detect configuration */

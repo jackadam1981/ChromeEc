@@ -25,6 +25,10 @@
 /* Remove PRL state names to free flash space */
 #define CONFIG_USB_PD_DEBUG_LEVEL 2
 
+#undef CONFIG_CHIP_INIT_ROM_REGION
+#define CONFIG_KB8001_B0
+#define CONFIG_I2C_DEBUG
+#define CONFIG_CMD_RETIMER
 #define CONFIG_VBOOT_EFS2
 
 #define CONFIG_POWER_BUTTON
