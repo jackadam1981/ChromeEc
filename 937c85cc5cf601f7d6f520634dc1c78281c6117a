@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f1f80a_ebdeccff",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-12T21:47:15Z",
+      "side": 1,
+      "message": "Nothing you need to do for this CL, but it\u0027s cleaner to create a structure to encapsulate all these items.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "937c85cc5cf601f7d6f520634dc1c78281c6117a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff3d4e4_eba38a7a",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-12T21:47:15Z",
+      "side": 1,
+      "message": "Modification to flags[] probably needs to use atomic operations.  These flags are modified by the HOOKS task (via interrupt and deferred call) and the PD task for the port.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 46
+      },
+      "revId": "937c85cc5cf601f7d6f520634dc1c78281c6117a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8266b3cb_1112152c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-12T21:47:15Z",
+      "side": 1,
+      "message": "Combine into a single statement.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 45
+      },
+      "revId": "937c85cc5cf601f7d6f520634dc1c78281c6117a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23dfbed4_b3b35154",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-12T21:47:15Z",
+      "side": 1,
+      "message": "ocp_count[] is also updated from the PD and HOOKS tasks.",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 23
+      },
+      "revId": "937c85cc5cf601f7d6f520634dc1c78281c6117a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
