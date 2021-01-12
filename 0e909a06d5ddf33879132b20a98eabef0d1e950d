@@ -39,6 +39,24 @@
       "message": "Please upload CL to main branch first, then cherry-pick it to firmware branch.",
       "revId": "0e909a06d5ddf33879132b20a98eabef0d1e950d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38aa0351_db2014db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-01-12T07:07:06Z",
+      "side": 1,
+      "message": "\u003e Please upload CL to main branch first, then cherry-pick it to firmware branch.\n\nDone\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2623870",
+      "parentUuid": "3a88ec3a_45ac6a6e",
+      "revId": "0e909a06d5ddf33879132b20a98eabef0d1e950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
