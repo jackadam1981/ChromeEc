@@ -33,6 +33,8 @@
 /* Remove PRL state names to free flash space */
 #define CONFIG_USB_PD_DEBUG_LEVEL 2
 
+#define CONFIG_I2C_DEBUG
+#define CONFIG_CMD_RETIMER
 #define CONFIG_VBOOT_EFS2
 
 #define CONFIG_POWER_BUTTON
@@ -96,6 +98,8 @@
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
 #define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
+#define CONFIG_USBC_RETIMER_KB800X
+#define CONFIG_KB800X_CUSTOM_XBAR
 
 /* USB Type A Features */
 #define USB_PORT_COUNT			1
