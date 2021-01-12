@@ -22,6 +22,7 @@ enum ec_cfg_usb_db_type {
 	DB_USB4_GEN3 = 3,
 	DB_USB3_PASSIVE = 4,
 	DB_USB3_NO_A = 5,
+	DB_USB4_GEN3_KB8001 = 6,
 	DB_USB_COUNT
 };
 
