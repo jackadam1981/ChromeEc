@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be47080f_2d36daca",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-12T08:39:38Z",
+      "side": 1,
+      "message": "nit: how about\n ((id) \u003d\u003d 0x8086 || (id) \u003d\u003d 0x8087) \nor \n#define BB_RETIMER_VENDOR_ID_1\t\t0x8086\n#define BB_RETIMER_VENDOR_ID_2\t\t0x8087\nand comparison in C code?",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "a4d2414c1ac7f2483652c3507f178eb685d37bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
