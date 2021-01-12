@@ -22,6 +22,30 @@
       },
       "revId": "b0f529bb3d034a69c722980896bcd057b48ad64f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f0ac2a_885c495a",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-12T13:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0676982_860c10f4",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "b0f529bb3d034a69c722980896bcd057b48ad64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

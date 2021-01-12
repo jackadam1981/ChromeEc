@@ -87,6 +87,30 @@
       },
       "revId": "e2afe02cf4aab75345bf93f147a73e3c52e81e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78ce8d3_1545b966",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-12T13:00:55Z",
+      "side": 1,
+      "message": "I can let it undefined.\nthen, it will happen exactly what happened in dozens of similar cases in the past:\nsomebody will update the toolchain, the new toolchain will complain about possibly undefined value here, the same person will add \u0027\u003d 0\u0027 which is just less obvious version of the same thing.\n\n\u003e I belive proper error checking and handling is much more clear for developer.\n\nYour belief is duly noted",
+      "parentUuid": "a1b84dbb_202b0b18",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "e2afe02cf4aab75345bf93f147a73e3c52e81e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
