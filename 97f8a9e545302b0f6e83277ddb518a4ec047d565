@@ -70,6 +70,30 @@
       },
       "revId": "97f8a9e545302b0f6e83277ddb518a4ec047d565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b60ad245_f9fe9f25",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-12T15:55:06Z",
+      "side": 1,
+      "message": "I don\u0027t have an objection to adding more flags, but don\u0027t we already have SYV682X_FLAGS_SOURCE_ENABLED?",
+      "parentUuid": "54a27989_d9133f32",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 36
+      },
+      "revId": "97f8a9e545302b0f6e83277ddb518a4ec047d565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
