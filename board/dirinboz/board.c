@@ -6,6 +6,7 @@
 #include "battery_smart.h"
 #include "button.h"
 #include "cros_board_info.h"
+#include "charge_state.h"
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/bc12/pi3usb9201.h"
@@ -29,6 +30,8 @@
 #include "system.h"
 #include "tablet_mode.h"
 #include "task.h"
+#include "temp_sensor.h"
+#include "thermal.h"
 #include "usb_charge.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
@@ -537,3 +540,64 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+#define CHARGING_CURRENT_500mA 500
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	int thermal_sensor;
+	static int limit_charge;
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return 0;
+
+	temp_sensor_read(TEMP_SENSOR_CHARGER, &thermal_sensor);
+
+	if (thermal_sensor > C_TO_K(56)) {
+		if (curr->state == ST_CHARGE)
+			limit_charge = 1;
+
+		ppc_set_vbus_source_current_limit(0, TYPEC_RP_1A5);
+	} else if (thermal_sensor < C_TO_K(53)) {
+		if (curr->state == ST_CHARGE)
+			limit_charge = 0;
+
+		ppc_set_vbus_source_current_limit(0, TYPEC_RP_3A0);
+	}
+
+	if (limit_charge)
+		curr->requested_current = CHARGING_CURRENT_500mA;
+	else
+		curr->requested_current = curr->batt.desired_current;
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+							uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+							uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+const static struct ec_thermal_config thermal_thermistor_charger = {
+	.temp_host = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(56),
+	},
+	.temp_host_release = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(53),
+	},
+};
+
+struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
+
+static void setup_thermal(void)
+{
+	thermal_params[TEMP_SENSOR_CHARGER] = thermal_thermistor_charger;
+}
+DECLARE_HOOK(HOOK_INIT, setup_thermal, HOOK_PRIO_DEFAULT);
