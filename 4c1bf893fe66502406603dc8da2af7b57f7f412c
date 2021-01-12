@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3ee52cc_a87597e6",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-12T21:54:06Z",
+      "side": 1,
+      "message": "The locking code has been removed.  Delete this comment.\nPlease also update the commit message to indicate why the shared NVM doesn\u0027t need exclusive access.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "4c1bf893fe66502406603dc8da2af7b57f7f412c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ebf9f82_36a47c91",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-12T21:54:06Z",
+      "side": 1,
+      "message": "Isn\u0027t this always true?",
+      "range": {
+        "startLine": 498,
+        "startChar": 12,
+        "endLine": 498,
+        "endChar": 44
+      },
+      "revId": "4c1bf893fe66502406603dc8da2af7b57f7f412c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
