@@ -1953,6 +1953,12 @@ static void sink_power_sub_states(int port)
 static void tc_disabled_entry(const int port)
 {
 	print_current_state(port);
+
+	/*
+	 * Indicate the TC is disabling. This could be the only way PE
+	 * will be aware we are no longer connected
+	 */
+	tc_policy_pd_enable(port, 0);
 }
 
 static void tc_disabled_run(const int port)
@@ -1977,6 +1983,11 @@ static void tc_disabled_exit(const int port)
 		}
 	}
 
+	/*
+	 * Indicate the TC is enabled. This will allow the PE to run
+	 * again.
+	 */
+	tc_policy_pd_enable(port, 1);
 	CPRINTS("C%d: TCPC resumed!", port);
 }
 
@@ -3555,11 +3566,16 @@ void tc_run(const int port)
 	 * DISABLED
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_SUSPEND)) {
-		/* Invalidate a contract, if there is one */
-		if (IS_ENABLED(CONFIG_USB_PE_SM))
-			pe_invalidate_explicit_contract(port);
+		/* Do not bother to disable a port that is already disabled */
+		if (get_state_tc(port) != TC_DISABLED) {
+			/* Invalidate a contract, if there is one */
+			if (IS_ENABLED(CONFIG_USB_PE_SM))
+				pe_invalidate_explicit_contract(port);
 
-		set_state_tc(port, TC_DISABLED);
+			/* Disable the port */
+			set_state_tc(port, TC_DISABLED);
+			return;
+		}
 	}
 
 	run_state(port, &tc[port].ctx);
