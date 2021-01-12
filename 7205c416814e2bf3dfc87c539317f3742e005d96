@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de732e01_44738f48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-12T16:45:41Z",
+      "side": 1,
+      "message": "Please upload a new patchset with the requested changes.",
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cd9b3f5_8a7a33de",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "It is only set to a integer value (400us) around 375us.\nThere is no special meaning.",
       "parentUuid": "7cd9b3f5_8a7a33de",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d9f757_f774bd24",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-12T16:45:41Z",
+      "side": 1,
+      "message": "Please replace the current code comment with a comment like, \"Set tTCPCFilter (CC debounce time) to 400 us (min 250 us, max 500 us).\"",
+      "parentUuid": "640586d0_e5bc6b7a",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -97,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c14c1532_6574a4f4",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-12T16:45:41Z",
+      "side": 1,
+      "message": "Please upload a new patchset that removes this part.",
+      "parentUuid": "20e1b364_9f74bb05",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7302e5c7_7edde295",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 7
@@ -144,6 +209,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5899e4cc_df29753c",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-12T16:45:41Z",
+      "side": 1,
+      "message": "Is the duration configurable, or is it a constant?\n\nPlease add the requested comment to the code.",
+      "parentUuid": "5f95cea2_b35cd0df",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5ba9c10_4a28c8cd",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 7
@@ -179,6 +268,30 @@
       "side": 1,
       "message": "If I understand correctly, this entire register is one field, and the value of that field is the count (of time?) after which the PHY will recognize a BMC 1 if it has seen a second transition and a BMC 0 if it has not seen a second transition.\n\tYes. The entire 0x81 is for this setting.\n\nDoes the counter represent a duration?\n\tYes. it present a time duration.\nIf so, how much time is one unit increase/decrease?\n\tThe one unit is 0.04167us.\nWhat is the default duration, and what is the new duration?\n\tThe default duration is 62*0.04167us\u003d2.67us.\n\tThe new duration is 54*0.04167us\u003d2.25us.",
       "parentUuid": "c5ba9c10_4a28c8cd",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6124d977_b77c5065",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-12T16:45:41Z",
+      "side": 1,
+      "message": "Please add a code comment like,\n\"Decrease the time that the PHY will wait for a second transition to detect a BMC-encoded 1 bit from 2.67 us to 2.25 us.\nTimeout \u003d register value * .04167 us.\"\n\nWhat happens if there is a second transition after the time limit? Does the receiver detect a 0 and ignore the transition? Does it detect a 0 and start detecting a new bit based on the second transition?",
+      "parentUuid": "9727f33a_77df2eef",
       "range": {
         "startLine": 77,
         "startChar": 1,
