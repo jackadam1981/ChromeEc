@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1831f6d6_dc99df56",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-12T22:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3ee52cc_a87597e6",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "4c1bf893fe66502406603dc8da2af7b57f7f412c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ebf9f82_36a47c91",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-12T21:54:06Z",
       "side": 1,
       "message": "Isn\u0027t this always true?",
+      "range": {
+        "startLine": 498,
+        "startChar": 12,
+        "endLine": 498,
+        "endChar": 44
+      },
+      "revId": "4c1bf893fe66502406603dc8da2af7b57f7f412c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce0eaa20_496a4258",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-12T22:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ebf9f82_36a47c91",
       "range": {
         "startLine": 498,
         "startChar": 12,
