@@ -63,6 +63,30 @@
       },
       "revId": "e2afe02cf4aab75345bf93f147a73e3c52e81e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b84dbb_202b0b18",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-12T11:30:32Z",
+      "side": 1,
+      "message": "Sounds like debugging feature. When i2c_read8() returns something different than EC_SUCCESS, we already know that data in buffer is undefined. I belive proper error checking and handling is much more clear for developer.\n\nIn usb_mux subsystem all errors returned from driver are printed to user (see configure_mux() function)",
+      "parentUuid": "0e2e6ce0_476cf02b",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "e2afe02cf4aab75345bf93f147a73e3c52e81e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

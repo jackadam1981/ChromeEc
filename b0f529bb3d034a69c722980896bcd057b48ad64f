@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0676982_860c10f4",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-12T11:30:32Z",
+      "side": 1,
+      "message": "We should check value returned form this function call",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "b0f529bb3d034a69c722980896bcd057b48ad64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
