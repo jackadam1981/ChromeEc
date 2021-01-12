@@ -16,6 +16,29 @@
       "message": "Hold for now",
       "revId": "182372109640b3c4ce28e3d424a2789952b176f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e356749_2a5e869f",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-12T17:11:35Z",
+      "side": 1,
+      "message": "Typo - UFP",
+      "range": {
+        "startLine": 256,
+        "startChar": 16,
+        "endLine": 256,
+        "endChar": 19
+      },
+      "revId": "182372109640b3c4ce28e3d424a2789952b176f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
