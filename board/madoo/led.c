@@ -8,6 +8,7 @@
 #include "charge_state.h"
 #include "driver/tcpm/tcpci.h"
 #include "ec_commands.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "led_common.h"
 #include "led_onoff_states.h"
@@ -62,12 +63,28 @@ void led_set_color_power(enum ec_led_colors color)
 		gpio_set_level(GPIO_PWR_LED_WHITE_L, LED_OFF_LVL);
 }
 
+/*
+ * Turn off battery LED, if AC is present but battery is not charging.
+ * It could be caused by battery's protection like OTP.
+ */
+int check_battery_charging(void)
+{
+	int val;
+
+	charger_get_current(0, &val);
+	return extpower_is_present() && val == 0 &&
+		charge_get_state() != PWR_STATE_ERROR ? 1 : 0;
+}
+
 void led_set_color_battery(enum ec_led_colors color)
 {
 	switch (color) {
 	case EC_LED_COLOR_WHITE:
 		/* Ports are controlled by different GPIO */
-		if (charge_manager_get_active_charge_port() == 1 ||
+		if (check_battery_charging()) {
+			gpio_set_level(GPIO_BAT_LED_WHITE_L, LED_OFF_LVL);
+			gpio_set_level(GPIO_EC_CHG_LED_R_W, LED_OFF_LVL);
+		} else if (charge_manager_get_active_charge_port() == 1 ||
 			system_get_board_version() < 3) {
 			gpio_set_level(GPIO_BAT_LED_WHITE_L, LED_ON_LVL);
 			gpio_set_level(GPIO_BAT_LED_AMBER_L, LED_OFF_LVL);
@@ -78,7 +95,10 @@ void led_set_color_battery(enum ec_led_colors color)
 		break;
 	case EC_LED_COLOR_AMBER:
 		/* Ports are controlled by different GPIO */
-		if (charge_get_state() == PWR_STATE_ERROR &&
+		if (check_battery_charging()) {
+			gpio_set_level(GPIO_BAT_LED_AMBER_L, LED_OFF_LVL);
+			gpio_set_level(GPIO_EC_CHG_LED_R_Y, LED_OFF_LVL);
+		} else if (charge_get_state() == PWR_STATE_ERROR &&
 				system_get_board_version() >= 3) {
 			gpio_set_level(GPIO_EC_CHG_LED_R_W, LED_OFF_LVL);
 			gpio_set_level(GPIO_EC_CHG_LED_R_Y, LED_ON_LVL);
@@ -86,6 +106,7 @@ void led_set_color_battery(enum ec_led_colors color)
 				system_get_board_version() < 3) {
 			gpio_set_level(GPIO_BAT_LED_WHITE_L, LED_OFF_LVL);
 			gpio_set_level(GPIO_BAT_LED_AMBER_L, LED_ON_LVL);
+			gpio_set_level(GPIO_EC_CHG_LED_R_Y, LED_OFF_LVL);
 		} else if (charge_manager_get_active_charge_port() == 0) {
 			gpio_set_level(GPIO_EC_CHG_LED_R_W, LED_OFF_LVL);
 			gpio_set_level(GPIO_EC_CHG_LED_R_Y, LED_ON_LVL);
