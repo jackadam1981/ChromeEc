@@ -16,6 +16,23 @@
       "message": "Hi Ben, \n\nPlease help to check https://issuetracker.google.com/155944990#comment5 , ODMs don\u0027t need to do cherry picks on EC related CLs anymore. But do let us know if this is special case. Thanks!",
       "revId": "03d7de285c4f48069f3b3903714a77248f19a79e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5844b1fd_dbfbaba8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-12T19:46:19Z",
+      "side": 1,
+      "message": "no cherry-picks please for this branch.",
+      "revId": "03d7de285c4f48069f3b3903714a77248f19a79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
