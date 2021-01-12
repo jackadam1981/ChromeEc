@@ -43,6 +43,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c5208f9_953dec68",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-12T20:38:31Z",
+      "side": 1,
+      "message": "nit: not needed",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 288,
+        "endChar": 10
+      },
+      "revId": "f72900254ee10d1e712ddb87df309699021dbf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e913896_f02904c0",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-12T20:38:31Z",
+      "side": 1,
+      "message": "nit: hyphen here and variable-speed",
+      "range": {
+        "startLine": 291,
+        "startChar": 19,
+        "endLine": 291,
+        "endChar": 20
+      },
+      "revId": "f72900254ee10d1e712ddb87df309699021dbf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f258295d_aa144e00",
+        "filename": "zephyr/shim/include/pwm/pwm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-12T20:38:31Z",
+      "side": 1,
+      "message": "Do we actually need this #ifdef in the header? I ask because it might make it hard to use the compile-time IS_ENABLED() in the code.",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "f72900254ee10d1e712ddb87df309699021dbf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9f16e4c_dfdedbdd",
         "filename": "zephyr/shim/include/pwm/pwm.h",
         "patchSetId": 1
