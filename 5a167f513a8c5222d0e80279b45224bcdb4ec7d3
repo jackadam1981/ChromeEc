@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d537f8_d2bba7c4",
+        "filename": "board/sasuke/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-12T00:01:59Z",
+      "side": 1,
+      "message": "What should this GPIO be used for?",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "5a167f513a8c5222d0e80279b45224bcdb4ec7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a29a90a_1a66f5d2",
+        "filename": "board/sasuke/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-12T00:01:59Z",
+      "side": 1,
+      "message": "nit: unnecessary, as it\u0027s not currently called in the code",
+      "revId": "5a167f513a8c5222d0e80279b45224bcdb4ec7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
