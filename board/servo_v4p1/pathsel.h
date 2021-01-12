@@ -41,4 +41,28 @@ void dut_to_host(void);
  */
 void uservo_to_host(void);
 
+/**
+ * Controls load switches for 5V to A0 general USB type A.
+ *
+ * @param en	0 - Disable power, 1 - Enable power
+ * @return EC_SUCCESS or EC_xxx on error
+ */
+int usb3_a0_pwr_en(int en);
+
+/**
+ * Controls load switches for 5V to A1 general USB type A port.
+ *
+ * @param en	0 - Disable power, 1 - Enable power
+ * @return EC_SUCCESS or EC_xxx on error
+ */
+int usb3_a1_pwr_en(int en);
+
+/**
+ * Controls load switches for 5V to uservo USB type A port.
+ *
+ * @param en	0 - Disable power, 1 - Enable power
+ * @return EC_SUCCESS or EC_xxx on error
+ */
+int uservo_pwr_en(int en);
+
 #endif /* __CROS_EC_PATHSEL_H */

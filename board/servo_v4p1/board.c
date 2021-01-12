@@ -207,9 +207,7 @@ static void dut_pwr_evt(enum gpio_signal signal)
 static void init_uservo_port(void)
 {
 	/* Enable USERVO_POWER_EN */
-	ec_uservo_power_en(1);
-
-	gl3590_enable_ports(0, GL3590_DFP4, 1);
+	uservo_pwr_en(1);
 
 	/* Connect uservo to host hub */
 	uservo_fastboot_mux_sel(0);
@@ -477,7 +475,12 @@ static void board_init(void)
 #ifdef SECTION_IS_RO
 	init_ioexpanders();
 	CPRINTS("Board ID is %d", board_id_det());
-
+	/*
+	 * For REV2 and newer host hub manages power to USB ports as default.
+	 * For earlier revisions IOEX pins need to be reconfigured.
+	 */
+	if (board_id_det() <= BOARD_ID_REV1)
+		ec_manage_usb_pwr();
 	init_dacs();
 	init_uservo_port();
 	init_pathsel();

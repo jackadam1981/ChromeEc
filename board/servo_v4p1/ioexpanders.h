@@ -27,6 +27,17 @@ int init_ioexpanders(void);
 int irq_ioexpanders(void);
 
 /**
+ * Reconfigure ioexpanders to allow EC manage USB ports power
+ *
+ * In the never servo_v4p1 designs host hub manages USB ports PWREN signals by
+ * default, however electrical design is flexible and allow to return to old
+ * behaviour.
+ *
+ * @return EC_SUCCESS or EC_xxx on error
+ */
+int ec_manage_usb_pwr(void);
+
+/**
  * SBU Crosspoint select
  *
  * @param en	0 - HOST SBU to DUT SBU connected
@@ -73,6 +84,8 @@ int usb3_a0_mux_en_l(int en);
 
 /**
  * Controls load switches for 5V to general USB type A.
+ * Warning: This method works only on REVO & REV1 revisions! For REV2 host hub
+ * manages power to USB ports.
  *
  * @param en	0 - Disable power
  *		1 - Enable power
@@ -91,6 +104,8 @@ int uart_18_sel(int en);
 
 /**
  * Controls load switches for 5V to uservo USB type A port
+ * Warning: This method works only on REVO & REV1 revisions! For REV2 host hub
+ * manages power to USB ports.
  *
  * @param en	0 - Disable power
  *		1 - Enable power
@@ -109,6 +124,8 @@ int uservo_fastboot_mux_sel(enum uservo_fastboot_mux_sel_t sel);
 
 /**
  * Controls load switches for 5V to general USB type A second port
+ * Warning: This method works only on REVO & REV1 revisions! For REV2 host hub
+ * manages power to USB ports.
  *
  * @param en	0 - power off
  *		1 - power enabled

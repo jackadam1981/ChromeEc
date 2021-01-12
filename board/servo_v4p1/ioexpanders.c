@@ -46,17 +46,20 @@ static void ioexpanders_irq(void)
 	fault = read_faults();
 	irqs = read_irqs();
 
-	if (!(fault & USERVO_FAULT_L)) {
+	if (!(fault & USERVO_FAULT_L) &&
+	    (board_id_det() <= BOARD_ID_REV1)) {
 		ec_uservo_power_en(0);
 		CPRINTF("FAULT: Microservo USB A port load switch\n");
 	}
 
-	if (!(fault & USB3_A0_FAULT_L)) {
+	if (!(fault & USB3_A0_FAULT_L) &&
+	    (board_id_det() <= BOARD_ID_REV1)) {
 		ec_usb3_a0_pwr_en(0);
 		CPRINTF("FAULT: USB3 A0 port load switch\n");
 	}
 
-	if (!(fault & USB3_A1_FAULT_L)) {
+	if (!(fault & USB3_A1_FAULT_L) &&
+	    (board_id_det() <= BOARD_ID_REV1)) {
 		ec_usb3_a1_pwr_en(0);
 		CPRINTF("FAULT: USB3 A1 port load switch\n");
 	}
@@ -114,6 +117,27 @@ int irq_ioexpanders(void)
 	return 0;
 }
 
+int ec_manage_usb_pwr(void)
+{
+	int ret;
+
+	/*
+	 * Configure USB3_A0_PWR_EN & USERVO_POWER_EN & USB3_A1_PWR_EN
+	 * as outputs with initial value 0.
+	 */
+	ret = ioex_set_flags(IOEX_USB3_A0_PWR_EN, GPIO_OUT_LOW);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = ioex_set_flags(IOEX_USB3_A1_PWR_EN, GPIO_OUT_LOW);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = ioex_set_flags(IOEX_USERVO_POWER_EN, GPIO_OUT_LOW);
+
+	return ret;
+}
+
 inline int sbu_uart_sel(int en)
 {
 	return ioex_set_level(IOEX_SBU_UART_SEL, en);
@@ -139,6 +163,10 @@ inline int usb3_a0_mux_en_l(int en)
 	return ioex_set_level(IOEX_USB3_A0_MUX_EN_L, en);
 }
 
+/*
+ * Warning: This method works only on REV0 & REV1 revisions! For REV2 host hub
+ * manages power to USB ports.
+ */
 inline int ec_usb3_a0_pwr_en(int en)
 {
 	return ioex_set_level(IOEX_USB3_A0_PWR_EN, en);
@@ -149,6 +177,10 @@ inline int uart_18_sel(int en)
 	return ioex_set_level(IOEX_UART_18_SEL, en);
 }
 
+/*
+ * Warning: This method works only on REV0 & REV1 revisions! For REV2 host hub
+ * manages power to USB ports.
+ */
 inline int ec_uservo_power_en(int en)
 {
 	return ioex_set_level(IOEX_USERVO_POWER_EN, en);
@@ -159,6 +191,10 @@ inline int uservo_fastboot_mux_sel(enum uservo_fastboot_mux_sel_t sel)
 	return ioex_set_level(IOEX_USERVO_FASTBOOT_MUX_SEL, (int)sel);
 }
 
+/*
+ * Warning: This method works only on REV0 & REV1 revisions! For REV2 host hub
+ * manages power to USB ports.
+ */
 inline int ec_usb3_a1_pwr_en(int en)
 {
 	return ioex_set_level(IOEX_USB3_A1_PWR_EN, en);
