@@ -46,6 +46,30 @@
       },
       "revId": "b807464c95d7d940d4112538d7b664b07f80e2c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca1d697_954f71b0",
+        "filename": "baseboard/volteer/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-12T15:37:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "20a40ca3_4bd2206e",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "b807464c95d7d940d4112538d7b664b07f80e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
