@@ -39,6 +39,30 @@
       },
       "revId": "e2afe02cf4aab75345bf93f147a73e3c52e81e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2e6ce0_476cf02b",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-12T10:03:51Z",
+      "side": 1,
+      "message": "it\u0027s the default value returned in val when the I2C transfer fails (rather than keeping it undefined)\nso it\u0027s clearly visible for the developer when it\u0027s propagated somewhere else",
+      "parentUuid": "6f46cff2_5abf957e",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "e2afe02cf4aab75345bf93f147a73e3c52e81e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
