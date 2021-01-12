@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "718473b9_d220a7bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-12T20:35:09Z",
+      "side": 1,
+      "message": "Missing BUG\u003d and TEST\u003d fields. Also, try to wrap at 72 cols. Subject at 50 cols.",
+      "revId": "6b29d3390090321cefe21ac868f6978b71e3f3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2287b975_3c6ecbb9",
@@ -14,6 +31,29 @@
       "writtenOn": "2021-01-12T18:38:55Z",
       "side": 1,
       "message": "Adding Aseda for the change in common/peripheral.c, the changes in genesis are all LGTM",
+      "revId": "6b29d3390090321cefe21ac868f6978b71e3f3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b9c80b5_8c2b3aff",
+        "filename": "common/peripheral.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-12T20:35:09Z",
+      "side": 1,
+      "message": "This is ok for now. PD and Type-C are quite tangled, but I could see us cleaning stuff up in the future to better separate them. Ideally it\u0027d be possible to enable systems to use Type-C without PD.",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 37
+      },
       "revId": "6b29d3390090321cefe21ac868f6978b71e3f3a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
