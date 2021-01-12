@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a74566_1030465e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-12T21:57:32Z",
+      "side": 1,
+      "message": "Note that CL:2594438 changes the return value to EC_ERROR_INVAL for this path.",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 26
+      },
+      "revId": "7f9fe444b7e09e90589eee9c0106f407a74cb967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
