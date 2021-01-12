@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcd22136_18498bcb",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-12T09:31:03Z",
+      "side": 1,
+      "message": "The new version re-enables the fault early (here) rather at line 488,\non top of that, the barrier is now missing (the dsb;isb at line 487)\n\nI doubt this is fully correct, even the barrier was definitely useful, see http://crrev.com/c/1096765",
+      "revId": "8c6a1f6b98ee76c189091375e947bdde6ed947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a1f217e_72167762",
         "filename": "chip/stm32/flash-stm32h7.h",
         "patchSetId": 7
