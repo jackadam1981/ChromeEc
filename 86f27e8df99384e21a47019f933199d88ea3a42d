@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a719db73_bc97dd76",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-13T06:14:36Z",
+      "side": 1,
+      "message": "Yep, you are correct. I might rename this to act_chg as I think I\u0027ve done before.",
+      "parentUuid": "237823de_299d2a31",
+      "revId": "86f27e8df99384e21a47019f933199d88ea3a42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e285704_f2fb25da",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe5fbf6_4edd4eca",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-13T06:14:36Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "1e285704_f2fb25da",
+      "revId": "86f27e8df99384e21a47019f933199d88ea3a42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1154022e_d1ce4fea",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-01-13T05:30:36Z",
       "side": 1,
       "message": "For both this and the DVC_MODE on primary, would they already be covered in the raa489000_set_vsys_compensation() call earlier in ocpc_config_secondary_charger()?",
+      "revId": "86f27e8df99384e21a47019f933199d88ea3a42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2490396_5f1caa61",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-13T06:14:36Z",
+      "side": 1,
+      "message": "In set_vsys_compensation, the CC loop isn\u0027t changed for the primary charger, but DVC_MODE is also enabled there.",
+      "parentUuid": "1154022e_d1ce4fea",
       "revId": "86f27e8df99384e21a47019f933199d88ea3a42d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
