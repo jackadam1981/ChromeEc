@@ -34,6 +34,24 @@
       "parentUuid": "41ae7b4b_f6797e92",
       "revId": "d63ae7d0dd5486ff235e3a5f035076e79c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b3cd2d0_a08b7bb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-13T17:38:49Z",
+      "side": 1,
+      "message": "On the one hand, I should read the bug comments.  On the other, I enjoy trying to imagine what a \"tic-tic-tic hang is on my own :) \n\nIf I understand the code change, are we hitting a flow where we\u0027re disabling a port multiple times?  And is this causing issues?",
+      "parentUuid": "e66ac796_184f9639",
+      "revId": "d63ae7d0dd5486ff235e3a5f035076e79c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
