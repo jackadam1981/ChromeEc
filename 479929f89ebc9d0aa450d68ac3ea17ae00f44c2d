@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769a4e6e_5262f044",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-13T18:06:22Z",
+      "side": 1,
+      "message": "We may not need this check anymore? As all states need to go through ACK",
+      "revId": "479929f89ebc9d0aa450d68ac3ea17ae00f44c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
