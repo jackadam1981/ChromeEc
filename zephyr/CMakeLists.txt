@@ -25,6 +25,8 @@ if(NOT EXISTS "${PLATFORM_EC}/zephyr/module.yml")
   assert_exists("${PLATFORM_EC}/zephyr/module.yml")
 endif()
 
+zephyr_include_directories(include)
+
 zephyr_include_directories_ifdef(
   CONFIG_PLATFORM_EC
   "${PLATFORM_EC}/zephyr/shim/include"
