@@ -139,11 +139,13 @@ static void detect_or_power_down_ic(const int port)
 		/* Turn on the 5V rail to allow the chip to be powered. */
 		power_5v_enable(task_get_current(), 1);
 #endif
-		if (pd_get_power_role(port) == PD_ROLE_SINK)
+		if (pd_get_power_role(port) == PD_ROLE_SINK || 
+			pd_get_power_role(port) == PD_ROLE_SOURCE)
 			bc12_detect(port);
 	} else {
 		/* Let charge manager know there's no more charge available. */
 		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, port, NULL);
+
 #if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
 		/* Issue a request to turn off the rail. */
 		power_5v_enable(task_get_current(), 0);
