@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a184739_801b7ee2",
+        "filename": "board/madoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-13T16:41:30Z",
+      "side": 1,
+      "message": "Please keep all charger chip accesses within the charger driver.  This allows us to centralize things like mutex access if multiple functions and tasks can be read-modify-writing the same registers.  \n\nCreate new interfaces for board files to access the driver function as needed.  This could include, for example, a new parameter into the hibernate function to declare whether the Vbus ADC should be left on",
+      "revId": "6a83d8005575484d1f64a3b16e94dc55fff120d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
