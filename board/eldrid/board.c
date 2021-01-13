@@ -45,10 +45,15 @@
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "i2c.h"
+#include "stddef.h"
+#include "stdbool.h"
+#include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
 
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {
@@ -611,3 +616,120 @@ int ppc_get_alert_status(int port)
 	else
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
+struct i2c_trace_range {
+	bool enabled;
+	int port;
+	int addr_lo; /* Inclusive */
+	int addr_hi; /* Inclusive */
+};
+static struct i2c_trace_range trace_entries[8];
+
+void i2c_trace_notify11(int port, uint16_t addr_flags,
+		      const uint8_t *out_data, size_t out_size,
+		      const uint8_t *in_data, size_t in_size)
+{
+	size_t i;
+	uint16_t addr = I2C_STRIP_FLAGS(addr_flags);
+
+	for (i = 0; i < ARRAY_SIZE(trace_entries); i++)
+		if (trace_entries[i].enabled
+		    && trace_entries[i].port == port
+		    && trace_entries[i].addr_lo <= addr
+		    && trace_entries[i].addr_hi >= addr)
+			goto trace_enabled;
+	return;
+
+trace_enabled:
+	CPRINTF("i2c: %d:0x%X ", port, addr);
+	if (out_size) {
+		CPRINTF("wr ");
+		for (i = 0; i < out_size; i++)
+			CPRINTF("0x%02X ", out_data[i]);
+	}
+	if (in_size) {
+		CPRINTF("  rd ");
+		for (i = 0; i < in_size; i++)
+			CPRINTF("0x%02X ", in_data[i]);
+	}
+	CPRINTF("\n");
+}
+
+static int command_i2ctrace_enable(int port, int addr_lo,
+				   int addr_hi)
+{
+	struct i2c_trace_range *t;
+	struct i2c_trace_range *new_entry = NULL;
+
+	if (!get_i2c_port(port))
+		return EC_ERROR_PARAM2;
+
+	if (addr_lo > addr_hi)
+		return EC_ERROR_PARAM3;
+
+	/*
+	 * Scan thru existing entries to see if there is one we can
+	 * extend instead of making a new entry
+	 */
+	for (t = trace_entries;
+	     t < trace_entries + ARRAY_SIZE(trace_entries);
+	     t++) {
+		if (t->enabled && t->port == port) {
+			/* Subset of existing range, do nothing */
+			if (t->addr_lo <= addr_lo &&
+			    t->addr_hi >= addr_hi)
+				return EC_SUCCESS;
+
+			/* Extends exising range on both directions, replace */
+			if (t->addr_lo >= addr_lo &&
+			    t->addr_hi <= addr_hi) {
+				t->enabled = 0;
+				return command_i2ctrace_enable(
+					port, addr_lo, addr_hi);
+			}
+
+			/* Extends existing range below */
+			if (t->addr_lo - 1 <= addr_hi &&
+			    t->addr_hi >= addr_hi) {
+				t->enabled = 0;
+				return command_i2ctrace_enable(
+					port,
+					addr_lo,
+					t->addr_hi);
+			}
+
+			/* Extends existing range above */
+			if (t->addr_lo <= addr_lo &&
+			    t->addr_hi + 1 >= addr_lo) {
+				t->enabled = 0;
+				return command_i2ctrace_enable(
+					port,
+					t->addr_lo,
+					addr_hi);
+			}
+		} else if (!t->enabled && !new_entry) {
+			new_entry = t;
+		}
+	}
+
+	/* We need to allocate a new entry */
+	if (new_entry) {
+		new_entry->enabled = 1;
+		new_entry->port = port;
+		new_entry->addr_lo = addr_lo;
+		new_entry->addr_hi = addr_hi;
+
+		return EC_SUCCESS;
+	}
+
+	ccprintf("No space to allocate new trace entry. Delete some first.\n");
+	return EC_ERROR_MEMORY_ALLOCATION;
+}
+
+void scott(void)
+{
+	command_i2ctrace_enable(
+			2, 0xB, 0xB);
+	command_i2ctrace_enable(
+			2, 0x40, 0x40);
+}
+DECLARE_HOOK(HOOK_INIT, scott, HOOK_PRIO_DEFAULT);
