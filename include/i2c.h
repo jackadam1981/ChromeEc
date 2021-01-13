@@ -564,7 +564,9 @@ void i2c_end_xfer_notify(const int port,
 void i2c_trace_notify(int port, uint16_t addr_flags,
 		      const uint8_t *out_data, size_t out_size,
 		      const uint8_t *in_data, size_t in_size);
-
+void i2c_trace_notify11(int port, uint16_t addr_flags,
+		      const uint8_t *out_data, size_t out_size,
+		      const uint8_t *in_data, size_t in_size);
 /**
  * Set bus speed. Only support for ports with I2C_PORT_FLAG_DYNAMIC_SPEED
  * flag.

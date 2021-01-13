@@ -21,6 +21,9 @@
 #undef CONFIG_CHIP_INIT_ROM_REGION
 #endif
 
+/* Enable i2ctrace command */
+#define CONFIG_I2C_DEBUG
+
 #define CONFIG_VBOOT_EFS2
 
 #define CONFIG_POWER_BUTTON

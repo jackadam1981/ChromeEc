@@ -133,9 +133,10 @@ __maybe_unused static int chip_i2c_xfer_with_notify(
 
 	if (IS_ENABLED(CONFIG_I2C_XFER_BOARD_CALLBACK))
 		i2c_end_xfer_notify(port, addr_flags);
-
 	if (IS_ENABLED(CONFIG_I2C_DEBUG)) {
 		i2c_trace_notify(port, addr_flags, out, out_size,
+				 in, in_size);
+		i2c_trace_notify11(port, addr_flags, out, out_size,
 				 in, in_size);
 	}
 
