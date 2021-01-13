@@ -16,6 +16,24 @@
       "message": "Can we use git filter-branch or similar so we keep the history? This is a bit of a dump right now",
       "revId": "8d366dea502196643f9bbff8561535c31064611b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f1d815_43cfe2da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-13T22:18:42Z",
+      "side": 1,
+      "message": "Just doing a copy to keep consistent with the other file moves.\n\nThe git history is linked, for preservation sake.",
+      "parentUuid": "b20b954f_b41cbcd2",
+      "revId": "8d366dea502196643f9bbff8561535c31064611b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
