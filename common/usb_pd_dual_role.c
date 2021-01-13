@@ -19,19 +19,36 @@
  * As a sink, this is the max voltage (in millivolts) we can request
  * before getting source caps
  */
-static unsigned int max_request_mv = PD_MAX_VOLTAGE_MV;
+static unsigned int max_request_mv_charger = PD_MAX_VOLTAGE_MV;
+static unsigned int max_request_mv_other[CONFIG_DEDICATED_CHARGE_PORT_COUNT + CONFIG_USB_PD_PORT_MAX_COUNT - CHARGE_PORT_COUNT] = {};
 
 STATIC_IF_NOT(CONFIG_USB_PD_PREFER_MV)
 struct pd_pref_config_t __maybe_unused pd_pref_config;
 
 void pd_set_max_voltage(unsigned int mv)
 {
-	max_request_mv = mv;
+	max_request_mv_charger = mv;
+}
+
+void pd_set_max_voltage_for_port(int port, unsigned int mv)
+{
+	if (port < CHARGE_PORT_COUNT)
+		max_request_mv_charger = mv;
+	else
+		max_request_mv_other[port - CHARGE_PORT_COUNT] = mv;
 }
 
 unsigned int pd_get_max_voltage(void)
 {
-	return max_request_mv;
+	return max_request_mv_charger;
+}
+
+unsigned int pd_get_max_voltage_for_port(int port)
+{
+	if (port < CHARGE_PORT_COUNT)
+		return max_request_mv_charger;
+	else
+		return max_request_mv_other[port - CHARGE_PORT_COUNT];
 }
 
 /*
@@ -191,7 +208,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	const uint32_t * const src_caps = pd_get_src_caps(port);
 	int charging_allowed;
 	int max_request_allowed;
-	uint32_t max_request_mv = pd_get_max_voltage();
+	uint32_t max_request_mv = pd_get_max_voltage_for_port(port);
 
 	/*
 	 * If this port is the current charge port, or if there isn't an active
@@ -201,7 +218,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	 * vSafe5V. This can then lead to a brownout condition when the input
 	 * current limit gets incorrectly set to 0.5A.
 	 */
-	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
+	if (IS_ENABLED(CONFIG_CHARGE_MANAGER) && port < CHARGE_PORT_COUNT) {
 		int chg_port = charge_manager_get_selected_charge_port();
 
 		charging_allowed =

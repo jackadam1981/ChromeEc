@@ -1446,10 +1446,30 @@ void pd_snk_give_back(int port, uint32_t * const ma, uint32_t * const mv);
 void pd_set_max_voltage(unsigned mv);
 
 /**
+ * Put a cap on the max voltage requested as a sink for specific port.
+ * If port is handled by charge manager, limit will be set for all
+ * charging ports and results will be the same as calling pd_set_max_voltage.
+ * This function is added to limit voltage on ports not controlled by
+ * charge manager.
+ * @param port port number to limit voltage on.
+ * @param mv maximum voltage in millivolts.
+ */
+void pd_set_max_voltage_for_port(int port, unsigned mv);
+
+/**
  * Get the max voltage that can be requested as set by pd_set_max_voltage().
  * @return max voltage
  */
 unsigned pd_get_max_voltage(void);
+
+/**
+ * Get the max voltage that can be requested as set by 
+ * pd_set_max_voltage_for_port(). If port is handled by charge manager,
+ * returned value will be the same as from pd_get_max_voltage.
+ * @param port port number which max voltage will be returned.
+ * @return max voltage
+ */
+unsigned pd_get_max_voltage_for_port(int port);
 
 /**
  * Check if this board supports the given input voltage.
