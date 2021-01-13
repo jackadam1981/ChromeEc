@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f01812_0b5fe71f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-01-13T09:04:19Z",
+      "side": 1,
+      "message": "This CL try to isolate incompatible code(CL:2364342) on dood.\nI test 2 dood and that issue become fixed. \nBut I\u0027m not sure if this will create new problems.\nNeed EC owner to review! Thanks. ",
+      "revId": "7b8a4c92f3a0ec5f8ff955682a39587108d66d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
