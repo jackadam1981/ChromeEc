@@ -67,9 +67,9 @@ static void tca_evt(enum gpio_signal signal)
 }
 
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	[CHG] = { /* CHG port connected directly to USB 3.0 hub, no mux */ },
-	[DUT] = { /* DUT port with UFP mux */
-		.usb_port = DUT,
+	[USBC_PORT_CHG] = { /* CHG port connected directly to USB 3.0 hub, no mux */ },
+	[USBC_PORT_DUT] = { /* DUT port with UFP mux */
+		.usb_port = USBC_PORT_DUT,
 		.i2c_port = I2C_PORT_MASTER,
 		.i2c_addr_flags = TUSB1064_ADDR_FLAGS,
 		.driver = &tusb1064_usb_mux_driver,
@@ -106,7 +106,7 @@ void hpd_irq_deferred(void)
 	int dp_mode = pd_alt_mode(1, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
 
 	if (dp_mode) {
-		pd_send_hpd(DUT, hpd_irq);
+		pd_send_hpd(USBC_PORT_DUT, hpd_irq);
 		ccprintf("HPD IRQ");
 	}
 }
@@ -123,7 +123,7 @@ void hpd_lvl_deferred(void)
 	}
 
 	if (dp_mode) {
-		pd_send_hpd(DUT, level ? hpd_high : hpd_low);
+		pd_send_hpd(USBC_PORT_DUT, level ? hpd_high : hpd_low);
 		ccprintf("HPD: %d", level);
 	}
 }

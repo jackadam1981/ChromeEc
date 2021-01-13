@@ -19,9 +19,11 @@
 /* Servo V4.1 Ports:
  *  CHG - port 0
  *  DUT - port 1
+ *  ALT - port 2
  */
-#define CHG 0
-#define DUT 1
+#define USBC_PORT_CHG 0
+#define USBC_PORT_DUT 1
+#define USBC_PORT_ALT 2
 
 /*
  * Flash layout: we redefine the sections offsets and sizes as we want to

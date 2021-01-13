@@ -168,7 +168,8 @@ static uint32_t max_supported_voltage(void)
 
 static int charge_port_is_active(void)
 {
-	return active_charge_port == CHG && vbus[CHG].mv > 0;
+	return active_charge_port == USBC_PORT_CHG
+	       && vbus[USBC_PORT_CHG].mv > 0;
 }
 
 static int is_charge_through_allowed(void)
@@ -189,25 +190,25 @@ static void dut_allow_charge(void)
 	 * already charging.
 	 */
 	if (is_charge_through_allowed() &&
-	    pd_get_dual_role(DUT) != PD_DRP_FORCE_SOURCE &&
-	    pd_get_dual_role(DUT) != PD_DRP_TOGGLE_ON) {
+	    	pd_get_dual_role(USBC_PORT_DUT) != PD_DRP_FORCE_SOURCE &&
+	    	pd_get_dual_role(USBC_PORT_DUT) != PD_DRP_TOGGLE_ON) {
 		CPRINTS("Enable DUT charge through");
-		pd_set_dual_role(DUT, get_dual_role_of_src());
+		pd_set_dual_role(USBC_PORT_DUT, get_dual_role_of_src());
 		/*
 		 * If DRP role, don't set any CC pull resistor, the PD
 		 * state machine will toggle and set the pull resistors
 		 * when needed.
 		 */
 		if (!(cc_config & CC_ENABLE_DRP))
-			pd_set_host_mode(DUT, 1);
+			pd_set_host_mode(USBC_PORT_DUT, 1);
 
 		/*
 		 * Enable PD comm. The PD comm may be disabled during
 		 * the power charge-through was detached.
 		 */
-		pd_comm_enable(DUT, 1);
+		pd_comm_enable(USBC_PORT_DUT, 1);
 
-		pd_update_contract(DUT);
+		pd_update_contract(USBC_PORT_DUT);
 	}
 }
 DECLARE_DEFERRED(dut_allow_charge);
@@ -231,7 +232,7 @@ static void board_manage_dut_port(void)
 	if (is_charge_through_allowed())
 		allowed_role = get_dual_role_of_src();
 
-	current_role = pd_get_dual_role(DUT);
+	current_role = pd_get_dual_role(USBC_PORT_DUT);
 	if (current_role != allowed_role) {
 		/* Update role. */
 		if (allowed_role == PD_DRP_FORCE_SINK) {
@@ -240,8 +241,8 @@ static void board_manage_dut_port(void)
 			dut_chg_en(0);
 
 			/* Mark as SNK only. */
-			pd_set_dual_role(DUT, PD_DRP_FORCE_SINK);
-			pd_set_host_mode(DUT, 0);
+			pd_set_dual_role(USBC_PORT_DUT, PD_DRP_FORCE_SINK);
+			pd_set_host_mode(USBC_PORT_DUT, 0);
 
 			/*
 			 * Disable PD comm. It matches the user expectation that
@@ -251,7 +252,8 @@ static void board_manage_dut_port(void)
 			 * There is an exception that servo v4 is explicitly set
 			 * to have PD, like the "pnsnk" mode.
 			 */
-			pd_comm_enable(DUT, cc_config & CC_SNK_WITH_PD ? 1 : 0);
+			pd_comm_enable(USBC_PORT_DUT,
+				       cc_config & CC_SNK_WITH_PD ? 1 : 0);
 		} else {
 			/* Allow charge through after PD negotiate. */
 			hook_call_deferred(&dut_allow_charge_data, 2000 * MSEC);
@@ -262,7 +264,7 @@ static void board_manage_dut_port(void)
 	 * Update PD contract to reflect new available CHG
 	 * voltage/current values.
 	 */
-	pd_update_contract(DUT);
+	pd_update_contract(USBC_PORT_DUT);
 }
 
 static void update_ports(void)
@@ -291,8 +293,9 @@ static void update_ports(void)
 
 				/* Find the 'best' PDO <= voltage */
 				pdo_index =
-				pd_find_pdo_index(pd_get_src_cap_cnt(CHG),
-					pd_get_src_caps(CHG),
+				pd_find_pdo_index(
+					pd_get_src_cap_cnt(USBC_PORT_CHG),
+					pd_get_src_caps(USBC_PORT_CHG),
 					pd_src_voltages_mv[i], &pdo);
 				/* Don't duplicate PDOs */
 				if (pdo_index == snk_index)
@@ -313,7 +316,7 @@ static void update_ports(void)
 		} else {
 			/* 5V PDO */
 			pd_src_chg_pdo[0] = PDO_FIXED_VOLT(PD_MIN_MV) |
-				PDO_FIXED_CURR(vbus[CHG].ma) |
+				PDO_FIXED_CURR(vbus[USBC_PORT_CHG].ma) |
 				DUT_PDO_FIXED_FLAGS |
 				PDO_FIXED_UNCONSTRAINED;
 
@@ -327,7 +330,7 @@ static void update_ports(void)
 
 int board_set_active_charge_port(int charge_port)
 {
-	if (charge_port == DUT)
+	if (charge_port == USBC_PORT_DUT)
 		return -1;
 
 	active_charge_port = charge_port;
@@ -335,7 +338,7 @@ int board_set_active_charge_port(int charge_port)
 
 	if (!charge_port_is_active())
 		/* Don't negotiate > 5V, except in lockstep with DUT */
-		pd_set_external_voltage_limit(CHG, PD_MIN_MV);
+		pd_set_external_voltage_limit(USBC_PORT_CHG, PD_MIN_MV);
 
 	return 0;
 }
@@ -343,14 +346,14 @@ int board_set_active_charge_port(int charge_port)
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
-	if (port != CHG)
+	if (port != USBC_PORT_CHG)
 		return;
 
 	active_charge_supplier = supplier;
 
 	/* Update the voltage/current values for CHG port */
-	vbus[CHG].ma = charge_ma;
-	vbus[CHG].mv = charge_mv;
+	vbus[USBC_PORT_CHG].ma = charge_ma;
+	vbus[USBC_PORT_CHG].mv = charge_mv;
 	update_ports();
 }
 
@@ -360,7 +363,7 @@ __override uint8_t board_get_src_dts_polarity(int port)
 	 * When servo configured as srcdts, the CC polarity is based
 	 * on the flags.
 	 */
-	if (port == DUT)
+	if (port == USBC_PORT_DUT)
 		return !!(cc_config & CC_POLARITY);
 
 	return 0;
@@ -372,7 +375,7 @@ int pd_tcpc_cc_nc(int port, int cc_volt, int cc_sel)
 	int nc;
 
 	/* Can never be called from CHG port as it's sink only */
-	if (port != DUT)
+	if (port != USBC_PORT_DUT)
 		return 0;
 
 	rp_index = vbus_rp;
@@ -399,7 +402,7 @@ int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel)
 	int ra;
 
 	/* Can never be called from CHG port as it's sink only */
-	if (port != DUT)
+	if (port != USBC_PORT_DUT)
 		return 0;
 
 	rp_index = vbus_rp;
@@ -424,9 +427,9 @@ int pd_adc_read(int port, int cc)
 {
 	int mv = -1;
 
-	if (port == CHG)
+	if (port == USBC_PORT_CHG) {
 		mv = adc_read_channel(cc ? ADC_CHG_CC2_PD : ADC_CHG_CC1_PD);
-	else if (!(cc_config & CC_DETACH)) {
+	} else if (!(cc_config & CC_DETACH)) {
 		/*
 		 * In servo v4 hardware logic, both CC lines are wired directly
 		 * to DUT. When servo v4 as a snk, DUT may source Vconn to CC2
@@ -448,7 +451,7 @@ int pd_adc_read(int port, int cc)
 		 * This is basically a hack faking "vOpen" from TCPCI spec.
 		 */
 		if ((cc_config & CC_DISABLE_DTS) &&
-		    port == DUT &&
+		    port == USBC_PORT_DUT &&
 		    cc == ((cc_config & CC_POLARITY) ? 0 : 1)) {
 
 			if ((cc_pull_stored == TYPEC_CC_RD)  ||
@@ -457,9 +460,10 @@ int pd_adc_read(int port, int cc)
 				mv = -1;
 			else if (cc_pull_stored == TYPEC_CC_RP)
 				mv = 3301;
-		} else
+		} else {
 			mv = adc_read_channel(cc ? ADC_DUT_CC2_PD :
 						   ADC_DUT_CC1_PD);
+		}
 	} else {
 		/*
 		 * When emulating detach, fake the voltage on CC to 0 to avoid
@@ -560,7 +564,7 @@ int pd_set_rp_rd(int port, int cc_pull, int rp_value)
 {
 	int rv = EC_SUCCESS;
 
-	if (port != DUT)
+	if (port != USBC_PORT_DUT)
 		return EC_ERROR_UNIMPLEMENTED;
 
 	/* CC is disabled for emulating detach. Don't change Rd/Rp. */
@@ -637,7 +641,7 @@ int pd_set_rp_rd(int port, int cc_pull, int rp_value)
 
 int board_select_rp_value(int port, int rp)
 {
-	if (port != DUT)
+	if (port != USBC_PORT_DUT)
 		return EC_ERROR_UNIMPLEMENTED;
 
 	/*
@@ -675,38 +679,38 @@ __override void pd_transition_voltage(int idx)
 
 	pd_extract_pdo_power(pd_src_chg_pdo[idx - 1], &ma, &mv);
 	/* Is this a transition to a new voltage? */
-	if (charge_port_is_active() && vbus[CHG].mv != mv) {
+	if (charge_port_is_active() && vbus[USBC_PORT_CHG].mv != mv) {
 		/*
 		 * Alter voltage limit on charge port, this should cause
 		 * the port to select the desired PDO.
 		 */
-		pd_set_external_voltage_limit(CHG, mv);
+		pd_set_external_voltage_limit(USBC_PORT_CHG, mv);
 
 		/* Wait for CHG transition */
 		deadline.val = get_time().val + PD_T_PS_TRANSITION;
 		CPRINTS("Waiting for CHG port transition");
 		while (charge_port_is_active() &&
-		       vbus[CHG].mv != mv &&
+		       vbus[USBC_PORT_CHG].mv != mv &&
 		       get_time().val < deadline.val)
 			msleep(10);
 
-		if (vbus[CHG].mv != mv) {
+		if (vbus[USBC_PORT_CHG].mv != mv) {
 			CPRINTS("Missed CHG transition, resetting DUT");
-			pd_power_supply_reset(DUT);
+			pd_power_supply_reset(USBC_PORT_DUT);
 			return;
 		}
 
 		CPRINTS("CHG transitioned");
 	}
 
-	vbus[DUT].mv = vbus[CHG].mv;
-	vbus[DUT].ma = vbus[CHG].ma;
+	vbus[USBC_PORT_DUT].mv = vbus[USBC_PORT_CHG].mv;
+	vbus[USBC_PORT_DUT].ma = vbus[USBC_PORT_CHG].ma;
 }
 
 int pd_set_power_supply_ready(int port)
 {
 	/* Port 0 can never provide vbus. */
-	if (port == CHG)
+	if (port != USBC_PORT_DUT)
 		return EC_ERROR_INVAL;
 
 	if (charge_port_is_active()) {
@@ -714,18 +718,18 @@ int pd_set_power_supply_ready(int port)
 		chg_power_select(CHG_POWER_VBUS);
 		dut_chg_en(1);
 
-		if (vbus[CHG].mv != PD_MIN_MV)
+		if (vbus[USBC_PORT_CHG].mv != PD_MIN_MV)
 			CPRINTS("ERROR, CHG port voltage %d != PD_MIN_MV",
-				vbus[CHG].mv);
+				vbus[USBC_PORT_CHG].mv);
 
-		vbus[DUT].mv = vbus[CHG].mv;
-		vbus[DUT].ma = vbus[CHG].mv;
-		pd_set_dual_role(DUT, get_dual_role_of_src());
+		vbus[USBC_PORT_DUT].mv = vbus[USBC_PORT_CHG].mv;
+		vbus[USBC_PORT_DUT].ma = vbus[USBC_PORT_CHG].mv;
+		pd_set_dual_role(USBC_PORT_DUT, get_dual_role_of_src());
 	} else {
-		vbus[DUT].mv = 0;
-		vbus[DUT].ma = 0;
+		vbus[USBC_PORT_DUT].mv = 0;
+		vbus[USBC_PORT_DUT].ma = 0;
 		dut_chg_en(0);
-		pd_set_dual_role(DUT, PD_DRP_FORCE_SINK);
+		pd_set_dual_role(USBC_PORT_DUT, PD_DRP_FORCE_SINK);
 		return EC_ERROR_NOT_POWERED;
 	}
 
@@ -735,7 +739,7 @@ int pd_set_power_supply_ready(int port)
 void pd_power_supply_reset(int port)
 {
 	/* Port 0 can never provide vbus. */
-	if (port == CHG)
+	if (port != USBC_PORT_DUT)
 		return;
 
 	/* Disable VBUS */
@@ -743,7 +747,7 @@ void pd_power_supply_reset(int port)
 	dut_chg_en(0);
 
 	/* DUT is lost, back to 5V limit on CHG */
-	pd_set_external_voltage_limit(CHG, PD_MIN_MV);
+	pd_set_external_voltage_limit(USBC_PORT_CHG, PD_MIN_MV);
 }
 
 int pd_snk_is_vbus_provided(int port)
@@ -763,13 +767,15 @@ __override int pd_check_power_swap(int port)
 	 */
 
 	/* Port 0 can never provide vbus. */
-	if (port == CHG)
+	if (port != USBC_PORT_DUT)
 		return 0;
 
-	if (pd_get_power_role(port) == PD_ROLE_SINK && !(cc_config & CC_ALLOW_SRC))
+	if (pd_get_power_role(port) == PD_ROLE_SINK
+	    && !(cc_config & CC_ALLOW_SRC)) {
 		return 0;
+	}
 
-	if (pd_snk_is_vbus_provided(CHG))
+	if (pd_snk_is_vbus_provided(USBC_PORT_CHG))
 		return allow_pr_swap;
 
 	return 0;
@@ -782,7 +788,7 @@ __override int pd_check_data_swap(int port,
 	 * Servo should allow data role swaps to let DUT see the USB hub, but
 	 * doing it on CHG port is a waste as its data lines is unconnected.
 	 */
-	if (port == CHG)
+	if (port != USBC_PORT_DUT)
 		return 0;
 
 	return allow_dr_swap;
@@ -813,7 +819,7 @@ __override void pd_check_dr_role(int port,
 				 enum pd_data_role dr_role,
 				 int flags)
 {
-	if (port == CHG)
+	if (port != USBC_PORT_DUT)
 		return;
 
 	/* If DFP, try to switch to UFP, to let DUT see the USB hub. */
@@ -943,7 +949,7 @@ static void set_typec_mux(int pin_cfg)
 	if (state && cc_config & CC_POLARITY)
 		state |= USB_PD_MUX_POLARITY_INVERTED;
 
-	usb_muxes[DUT].driver->set(&usb_muxes[DUT], state);
+	usb_muxes[USBC_PORT_DUT].driver->set(&usb_muxes[USBC_PORT_DUT], state);
 }
 
 static int get_hpd_level(void)
@@ -959,7 +965,7 @@ static int dp_status(int port, uint32_t *payload)
 	int opos = PD_VDO_OPOS(payload[0]);
 	int hpd = get_hpd_level();
 	mux_state_t state = 0;
-	int res = usb_muxes[DUT].driver->get(&usb_muxes[DUT], &state);
+	int res = usb_muxes[USBC_PORT_DUT].driver->get(&usb_muxes[USBC_PORT_DUT], &state);
 	int dp_enabled = res == EC_SUCCESS && (state & USB_PD_MUX_DP_ENABLED);
 
 	if (opos != OPOS)
@@ -1072,7 +1078,8 @@ static void print_cc_mode(void)
 	ccprintf("drp enabled: %s\n", cc_config & CC_ENABLE_DRP ? "on" : "off");
 	ccprintf("cc polarity: %s\n", cc_config & CC_POLARITY ? "cc2" :
 								"cc1");
-	ccprintf("pd enabled: %s\n", pd_comm_is_enabled(DUT) ? "on" : "off");
+	ccprintf("pd enabled: %s\n",
+		 pd_comm_is_enabled(USBC_PORT_DUT) ? "on" : "off");
 	ccprintf("emca: %s\n", cc_config & CC_EMCA_SERVO ?
 					"emarked" : "non-emarked");
 }
@@ -1086,13 +1093,15 @@ static void do_cc(int cc_config_new)
 	if (cc_config_new != cc_config) {
 		if (!(cc_config & CC_DETACH)) {
 			/* Force detach */
-			pd_power_supply_reset(DUT);
+			pd_power_supply_reset(USBC_PORT_DUT);
 			/* Always set to 0 here so both CC lines are changed */
 			cc_config &= ~(CC_DISABLE_DTS & CC_ALLOW_SRC);
 
 			/* Remove Rp/Rd on both CC lines */
-			pd_comm_enable(DUT, 0);
-			pd_set_rp_rd(DUT, TYPEC_CC_RP, TYPEC_RP_RESERVED);
+			pd_comm_enable(USBC_PORT_DUT, 0);
+			pd_set_rp_rd(USBC_PORT_DUT,
+				     TYPEC_CC_RP,
+				     TYPEC_RP_RESERVED);
 
 			/*
 			 * If just changing mode (cc keeps enabled), give some
@@ -1121,7 +1130,7 @@ static void do_cc(int cc_config_new)
 			chargeable = is_charge_through_allowed();
 			dualrole = chargeable ? get_dual_role_of_src() :
 						PD_DRP_FORCE_SINK;
-			pd_set_dual_role(DUT, dualrole);
+			pd_set_dual_role(USBC_PORT_DUT, dualrole);
 			/*
 			 * If force_source or force_sink role, explicitly set
 			 * the Rp or Rd resistors on CC lines.
@@ -1131,7 +1140,7 @@ static void do_cc(int cc_config_new)
 			 * when needed.
 			 */
 			if (dualrole != PD_DRP_TOGGLE_ON)
-				pd_set_host_mode(DUT, chargeable);
+				pd_set_host_mode(USBC_PORT_DUT, chargeable);
 
 			/*
 			 * For the normal lab use, emulating a sink has no PD
@@ -1140,9 +1149,9 @@ static void do_cc(int cc_config_new)
 			 * CC_SNK_WITH_PD to force enabling PD comm.
 			 */
 			if (cc_config & CC_SNK_WITH_PD)
-				pd_comm_enable(DUT, 1);
+				pd_comm_enable(USBC_PORT_DUT, 1);
 			else
-				pd_comm_enable(DUT, chargeable);
+				pd_comm_enable(USBC_PORT_DUT, chargeable);
 		}
 	}
 }
@@ -1253,9 +1262,9 @@ DECLARE_CONSOLE_COMMAND(fakedisconnect, cmd_fake_disconnect,
 static int cmd_ada_srccaps(int argc, char *argv[])
 {
 	int i;
-	const uint32_t * const ada_srccaps = pd_get_src_caps(CHG);
+	const uint32_t * const ada_srccaps = pd_get_src_caps(USBC_PORT_CHG);
 
-	for (i = 0; i < pd_get_src_cap_cnt(CHG); ++i) {
+	for (i = 0; i < pd_get_src_cap_cnt(USBC_PORT_CHG); ++i) {
 		uint32_t max_ma, max_mv;
 
 		pd_extract_pdo_power(ada_srccaps[i], &max_ma, &max_mv);
@@ -1271,8 +1280,8 @@ DECLARE_CONSOLE_COMMAND(ada_srccaps, cmd_ada_srccaps,
 static void chg_pd_disconnect(void)
 {
 	/* Clear charger PDO on CHG port disconnected. */
-	if (pd_is_disconnected(CHG))
-		pd_set_src_caps(CHG, 0, NULL);
+	if (pd_is_disconnected(USBC_PORT_CHG))
+		pd_set_src_caps(USBC_PORT_CHG, 0, NULL);
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, chg_pd_disconnect, HOOK_PRIO_DEFAULT);
 
@@ -1352,14 +1361,14 @@ static int cmd_dp_action(int argc, char *argv[])
 				 * may send a IRQ at any time to notify DUT.
 				 */
 				ext_hpd_detection_enable(1);
-				pd_send_hpd(DUT, hpd_high);
+				pd_send_hpd(USBC_PORT_DUT, hpd_high);
 			} else if (!strncasecmp(argv[2], "l", 1)) {
 				alt_dp_config |= ALT_DP_OVERRIDE_HPD;
 				alt_dp_config &= ~ALT_DP_HPD_LVL;
 				ext_hpd_detection_enable(0);
-				pd_send_hpd(DUT, hpd_low);
+				pd_send_hpd(USBC_PORT_DUT, hpd_low);
 			} else if (!strcasecmp(argv[2], "irq")) {
-				pd_send_hpd(DUT, hpd_irq);
+				pd_send_hpd(USBC_PORT_DUT, hpd_irq);
 			}
 		}
 		CPRINTS("HPD source: %s",
