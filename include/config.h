@@ -837,6 +837,10 @@
 /* Compile input current ramping support using software control */
 #undef CONFIG_CHARGE_RAMP_SW
 
+/* Number of all charge ports. If not defined manually,
+ * it will be equal to number of USB-C and dedicated charge ports. */
+#undef CHARGE_PORT_COUNT
+
 /*****************************************************************************/
 /* Charger config */
 
