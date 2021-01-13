@@ -12,8 +12,9 @@
 #include "console.h"
 #include "dacs.h"
 #include <driver/gl3590.h>
+#include "driver/tcpm/fusb302.h"
+#include "driver/tcpm/soft.h"
 #include "ec_version.h"
-#include "fusb302b.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -59,6 +60,17 @@ static void vbus0_evt(enum gpio_signal signal)
 static void vbus1_evt(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_PD_C1);
+}
+
+static void tcpc_evt_alert(void)
+{
+	tcpc_config[USBC_PORT_ALT].drv->tcpc_alert(USBC_PORT_ALT);
+}
+DECLARE_DEFERRED(tcpc_evt_alert);
+
+static void tcpc_evt(enum gpio_signal signal)
+{
+	hook_call_deferred(&tcpc_evt_alert_data, 0);
 }
 
 static void tca_evt(enum gpio_signal signal)
@@ -155,11 +167,6 @@ static void dp_evt(enum gpio_signal signal)
 	}
 
 	hpd_prev_level = level;
-}
-
-static void tcpc_evt(enum gpio_signal signal)
-{
-	update_status_fusb302b();
 }
 
 #define HOST_HUB		0
@@ -441,7 +448,6 @@ static void board_init(void)
 	init_uservo_port();
 	init_pathsel();
 	init_ina231s();
-	init_fusb302b(1);
 
 	/*
 	 * Get data about available input power. Add additional check after a
@@ -459,6 +465,7 @@ static void board_init(void)
 	/* Enable VBUS detection to wake PD tasks fast enough */
 	gpio_enable_interrupt(GPIO_USB_DET_PP_CHG);
 	gpio_enable_interrupt(GPIO_USB_DET_PP_DUT);
+	gpio_enable_interrupt(GPIO_CHGSRV_TCPC_INT_ODL);
 
 	gpio_enable_interrupt(GPIO_STM_FAULT_IRQ_L);
 	gpio_enable_interrupt(GPIO_DP_HPD);
@@ -502,3 +509,151 @@ void tick_event(void)
 }
 DECLARE_HOOK(HOOK_TICK, tick_event, HOOK_PRIO_DEFAULT);
 #endif /* SECTION_IS_RO */
+
+#ifdef SECTION_IS_RO
+
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USBC_PORT_CHG] = {
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &soft_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
+	},
+	[USBC_PORT_DUT] = {
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &soft_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
+	},
+	[USBC_PORT_ALT] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = FUSB302_STM32_I2C_PORT,
+			.addr_flags = FUSB302_I2C_SLAVE_ADDR_FLAGS,
+		},
+		.drv = &fusb302_tcpm_drv,
+		.flags = 0,
+	},
+};
+
+/*
+ * From TCPCI
+ */
+
+/* Cache depth needs to be power of 2 */
+/* TODO: Keep track of the high water mark */
+#define CACHE_DEPTH BIT(3)
+#define CACHE_DEPTH_MASK (CACHE_DEPTH - 1)
+
+#define queue queue2
+struct cached_tcpm_message {
+	uint32_t header;
+	uint32_t payload[7];
+};
+struct queue {
+	/*
+	 * Head points to the index of the first empty slot to put a new RX
+	 * message. Must be masked before used in lookup.
+	 */
+	uint32_t head;
+	/*
+	 * Tail points to the index of the first message for the PD task to
+	 * consume. Must be masked before used in lookup.
+	 */
+	uint32_t tail;
+	struct cached_tcpm_message buffer[CACHE_DEPTH];
+};
+static struct queue cached_messages[1];
+
+/* Note this method can be called from an interrupt context. */
+int tcpm_enqueue_message(const int port)
+{
+	int rv;
+	struct queue *q;
+	struct cached_tcpm_message *head;
+
+	if(port < 2)
+		return soft_tcpm_enqueue_message(port);
+
+	q = &cached_messages[port - 2];
+	head = &q->buffer[q->head & CACHE_DEPTH_MASK];
+
+	if (q->head - q->tail == CACHE_DEPTH) {
+		CPRINTS("C%d RX EC Buffer full!", port);
+		return EC_ERROR_OVERFLOW;
+	}
+
+	/* Blank any old message, just in case. */
+	memset(head, 0, sizeof(*head));
+	/* Call the raw driver without caching */
+	rv = tcpc_config[port].drv->get_message_raw(port, head->payload,
+						    &head->header);
+	if (rv) {
+		CPRINTS("C%d: Could not retrieve RX message (%d)", port, rv);
+		return rv;
+	}
+
+	/* Increment atomically to ensure get_message_raw happens-before */
+	atomic_add(&q->head, 1);
+
+	/* Wake PD task up so it can process incoming RX messages */
+	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE);
+
+	return EC_SUCCESS;
+}
+
+int tcpm_has_pending_message(const int port)
+{
+	const struct queue *q;
+
+	if(port < 2)
+		return soft_tcpm_has_pending_message(port);
+
+	q = &cached_messages[port - 2];
+	return q->head != q->tail;
+}
+
+int tcpm_dequeue_message(const int port, uint32_t *const payload,
+			 int *const header)
+{
+	struct queue *q;
+	struct cached_tcpm_message *tail;
+
+	if(port < 2)
+		return soft_tcpm_dequeue_message(port, payload, header);
+
+	q = &cached_messages[port - 2];
+	tail = &q->buffer[q->tail & CACHE_DEPTH_MASK];
+
+	if (!tcpm_has_pending_message(port)) {
+		CPRINTS("C%d No message in RX buffer!", port);
+		return EC_ERROR_BUSY;
+	}
+
+	/* Copy cache data in to parameters */
+	*header = tail->header;
+	memcpy(payload, tail->payload, sizeof(tail->payload));
+
+	/* Increment atomically to ensure memcpy happens-before */
+	atomic_add(&q->tail, 1);
+
+	return EC_SUCCESS;
+}
+
+void tcpm_clear_pending_messages(int port)
+{
+	struct queue *q;
+
+	if(port < 2)
+	{
+		soft_tcpm_clear_pending_messages(port);
+		return;
+	}
+
+	q = &cached_messages[port - 2];
+	q->tail = q->head;
+}
+
+#endif

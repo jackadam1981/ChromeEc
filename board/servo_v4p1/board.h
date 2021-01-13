@@ -25,6 +25,13 @@
 #define USBC_PORT_DUT 1
 #define USBC_PORT_ALT 2
 
+#define CHG_PD_TASK_STACK_SIZE 800
+#define DUT_PD_TASK_STACK_SIZE 800
+#define ALT_PD_TASK_STACK_SIZE 850
+
+#define FUSB302_I2C_SLAVE_ADDR_FLAGS 0x22
+#define FUSB302_STM32_I2C_PORT 1
+
 /*
  * Flash layout: we redefine the sections offsets and sizes as we want to
  * include a pstate region, and will use RO/RW regions of different sizes.
@@ -178,7 +185,10 @@
  */
 #undef CONFIG_TASK_PROFILING
 
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CHARGE_PORT_COUNT 2
+#define CONFIG_USB_PD_PORT_MAX_COUNT 3
+#define CONFIG_USB_PD_TCPM_SOFT_PORTS_COUNT 2
+#define CONFIG_USB_PD_TCPM_SOFT_PORTS_OFFSET 0
 
 #ifdef SECTION_IS_RO
 #define CONFIG_USB_HUB_GL3590
@@ -188,13 +198,14 @@
 #define CONFIG_USB_MUX_TUSB1064
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_TCPMV1
+#define CONFIG_USB_PD_TCPM_FUSB302
+#define CONFIG_USB_PD_TCPM_SOFT
+#define CONFIG_USB_PD_VBUS_DETECT_TCPC
 #define CONFIG_CMD_PD
 #define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DYNAMIC_SRC_CAP
 #define CONFIG_USB_PD_INTERNAL_COMP
-#define CONFIG_USB_PD_TCPC
-#define CONFIG_USB_PD_TCPM_STUB
 #undef CONFIG_USB_PD_PULLUP
 /* Default pull-up should not be Rp3a0 due to Cr50 */
 #define CONFIG_USB_PD_PULLUP TYPEC_RP_USB
