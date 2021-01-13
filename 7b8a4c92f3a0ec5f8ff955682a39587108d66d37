@@ -16,6 +16,23 @@
       "message": "This CL try to isolate incompatible code(CL:2364342) on dood.\nI test 2 dood and that issue become fixed. \nBut I\u0027m not sure if this will create new problems.\nNeed EC owner to review! Thanks. ",
       "revId": "7b8a4c92f3a0ec5f8ff955682a39587108d66d37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "796fc373_8646397f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-13T16:49:00Z",
+      "side": 1,
+      "message": "Please add more context here. It\u0027s not clear from either the bug that\u0027s listed or the comments added what the problem is and why the bc1.2 chip is being disabled.",
+      "revId": "7b8a4c92f3a0ec5f8ff955682a39587108d66d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
