@@ -52,6 +52,24 @@
       "parentUuid": "e66ac796_184f9639",
       "revId": "d63ae7d0dd5486ff235e3a5f035076e79c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ffec46_ec7f4f87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-13T22:05:31Z",
+      "side": 1,
+      "message": "There is a timing issue. I can\u0027t quite put my finger on it. The first round of changes disabled the PE when the TC was disabled in tc_run. The mechanism I used did not make it easy to clear this state unless there was a reset. So it was suggested it be removed.  I am going to upload my current state, which still does not work reliably when powered from a servo_v4.  I am hoping it will continue to add hints.",
+      "parentUuid": "3b3cd2d0_a08b7bb3",
+      "revId": "d63ae7d0dd5486ff235e3a5f035076e79c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
