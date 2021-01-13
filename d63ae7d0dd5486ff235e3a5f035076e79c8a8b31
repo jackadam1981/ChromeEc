@@ -88,6 +88,24 @@
       "parentUuid": "f0ffec46_ec7f4f87",
       "revId": "d63ae7d0dd5486ff235e3a5f035076e79c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9fc812a_8916c927",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-13T22:43:44Z",
+      "side": 1,
+      "message": "Added delay for brownout to be 200ms instead of 20ms. It seems this is getting closer. I did get multiple runs with the servo_v4 that now worked correctly. I also hit a condition that didn\u0027t cause something to be stable. The tic-tic was not present but the PD didn\u0027t seem to want to happen. Almost like the TC_DISABLED state was never exited.",
+      "parentUuid": "48c499d4_6884cabf",
+      "revId": "d63ae7d0dd5486ff235e3a5f035076e79c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
