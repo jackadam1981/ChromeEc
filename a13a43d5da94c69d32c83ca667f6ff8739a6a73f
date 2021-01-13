@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "370cded0_48e9a7b3",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-13T23:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd8252e_a01ded1c",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "a13a43d5da94c69d32c83ca667f6ff8739a6a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08663a11_79a84f0a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-13T23:20:44Z",
       "side": 1,
       "message": "This should be refactored to match bb_retimer_read().",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 39
+      },
+      "revId": "a13a43d5da94c69d32c83ca667f6ff8739a6a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff1eda2_b5a9858e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-13T23:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08663a11_79a84f0a",
       "range": {
         "startLine": 106,
         "startChar": 0,
