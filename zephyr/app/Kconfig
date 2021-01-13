@@ -3,3 +3,13 @@
 # found in the LICENSE file.
 
 rsource "ec/Kconfig"
+
+#
+# These options are used by the EC and by the unit tests
+#
+config CROS_EC_HOOK_TICK_INTERVAL
+	int "The interval time for the HOOK_TICK"
+	default 250000
+	help
+	  Specificies the interval time for the HOOK_TICK, specified in
+	  microseconds.
