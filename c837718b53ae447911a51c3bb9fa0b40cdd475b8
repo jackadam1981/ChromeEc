@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64684d7_a657b17b",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-13T16:51:49Z",
+      "side": 1,
+      "message": "Nit - use a more descriptive name.  I suggest icm426xx_mutex.",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "c837718b53ae447911a51c3bb9fa0b40cdd475b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07ad70a_c20190ae",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-13T16:51:49Z",
+      "side": 1,
+      "message": "Add const.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 10
+      },
+      "revId": "c837718b53ae447911a51c3bb9fa0b40cdd475b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74723029_5968f7a4",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-13T16:51:49Z",
+      "side": 1,
+      "message": "You can delete this cast once the fix the declaration at line 69.",
+      "range": {
+        "startLine": 87,
+        "startChar": 23,
+        "endLine": 87,
+        "endChar": 39
+      },
+      "revId": "c837718b53ae447911a51c3bb9fa0b40cdd475b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c42072_63c09a4c",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-13T16:51:49Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 115,
+        "startChar": 23,
+        "endLine": 115,
+        "endChar": 41
+      },
+      "revId": "c837718b53ae447911a51c3bb9fa0b40cdd475b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df60dac_0a99a47c",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-13T16:51:49Z",
+      "side": 1,
+      "message": "Change to enum base_accelgyro_type",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "c837718b53ae447911a51c3bb9fa0b40cdd475b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1dcb532_8fa0e04b",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-13T16:51:49Z",
+      "side": 1,
+      "message": "This isn\u0027t strictly required as HOOK_CHIPSET_STARTUP should only run once, but it is okay to leave in as defensive code.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 0
+      },
+      "revId": "c837718b53ae447911a51c3bb9fa0b40cdd475b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d48e158_941145a3",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-13T16:51:49Z",
+      "side": 1,
+      "message": "Can you move this into accelgyro_icm426xx.c driver file? \n\nSuggested prototype:\n    bool icm_detected(const struct motion_sensor_t *s);\n\nThe function would only return true if the I2C read is successful, and the WHO_AM_I register has a valid value.  Note that icm426xx_init() checks for two separate chip IDs.\n\nThis should be done as a separate changelist.\n\nThe new routine should be used by icm426xx_init() and by board_detect_motionsensor() in the lazor board file.\n\nThe code here then becomes much clearer:\n\n    if (icm_detected(\u0026icm426xx_base_accel))\n        motion_sensors[BASE_ACCEL] \u003d icm426xx_base_accel;\n        motion_sensors[BASE_GYRO] \u003d icm426xx_base_gyro;\n        base_accelgyro_config \u003d BASE_GYRO_ICM426XX;\n    else\n        base_accelgyro_config \u003d BASE_GYRO_BMI160;",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 0
+      },
+      "revId": "c837718b53ae447911a51c3bb9fa0b40cdd475b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
