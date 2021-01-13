@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "619f1f6c_2bea3e2b",
+        "filename": "board/adlrvpp_ite/adlrvp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-13T19:08:35Z",
+      "side": 1,
+      "message": "separate patch - we should add/use CONFIG_CHIPSET_ALDERLAKE instead.",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "e1be7a0aed75945973570de21f0f9b253f91f888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
