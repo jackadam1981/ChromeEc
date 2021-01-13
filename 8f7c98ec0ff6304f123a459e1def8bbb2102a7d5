@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f23af8_0a792586",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-01-13T23:05:49Z",
+      "side": 1,
+      "message": "Suggest to enable one by one. Not enable all at once.\nLet\u0027s add disconnect and safe first? May be also \"connect\" mode?",
+      "revId": "8f7c98ec0ff6304f123a459e1def8bbb2102a7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
