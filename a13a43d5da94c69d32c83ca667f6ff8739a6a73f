@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd8252e_a01ded1c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-13T23:20:44Z",
+      "side": 1,
+      "message": "There a few issues here:\n* The while() statement at line 54 will never be false because of the check done at line 65.\n* at line 70, buf[0] is uninitialized if the I2C transfer fails\n* If the I2C transfer fails, this function can return success.\n\nMy suggested flow:\n\n    while (1) {\n        rv \u003d i2c_xfer();\n        if (!rv)\n            break;\n        if (++retry \u003e\u003d BB_RETIMER_I2C_RETRY) {\n             CPRINTS(\"error\");\n             return rv;\n        }\n        msleep(20);\n    };\n\n    if (buf[0] !\u003d REG_SIZE)\n         return EC_ERROR_UNKONWN;\n\n    *data \u003d buf;\n    return EC_SUCCESS;",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "a13a43d5da94c69d32c83ca667f6ff8739a6a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08663a11_79a84f0a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-13T23:20:44Z",
+      "side": 1,
+      "message": "This should be refactored to match bb_retimer_read().",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 39
+      },
+      "revId": "a13a43d5da94c69d32c83ca667f6ff8739a6a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
