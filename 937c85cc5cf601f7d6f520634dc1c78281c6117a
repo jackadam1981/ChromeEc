@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34c60689_68cef43d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-13T20:47:36Z",
+      "side": 1,
+      "message": "Got it, thanks. Might as well change them over then.",
+      "parentUuid": "dc60d82b_f197097d",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 46
+      },
+      "revId": "937c85cc5cf601f7d6f520634dc1c78281c6117a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8266b3cb_1112152c",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 3
@@ -108,6 +132,30 @@
       "writtenOn": "2021-01-12T21:47:15Z",
       "side": 1,
       "message": "Combine into a single statement.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 45
+      },
+      "revId": "937c85cc5cf601f7d6f520634dc1c78281c6117a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb446b5_6e73eb99",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-13T20:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8266b3cb_1112152c",
       "range": {
         "startLine": 247,
         "startChar": 0,
@@ -131,6 +179,30 @@
       "writtenOn": "2021-01-12T21:47:15Z",
       "side": 1,
       "message": "ocp_count[] is also updated from the PD and HOOKS tasks.",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 23
+      },
+      "revId": "937c85cc5cf601f7d6f520634dc1c78281c6117a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2329a8_f9adae84",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-13T20:47:36Z",
+      "side": 1,
+      "message": "Alright, I also turned this into an atomic operation.",
+      "parentUuid": "23dfbed4_b3b35154",
       "range": {
         "startLine": 280,
         "startChar": 0,
