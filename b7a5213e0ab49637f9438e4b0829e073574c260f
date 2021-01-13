@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7940b12f_8ba925b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-13T16:45:31Z",
+      "side": 1,
+      "message": "Alright, this is looking pretty good. Thanks for bearing with me. My remaining minor requests pertain to comment clarification, naming, and formatting.\n\n\"Nit\" is Google slang for, \"I would prefer that this be changed, but I won\u0027t stop the CL from being submitted solely on this basis.\"",
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "302ddcad_f4d40ec7",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-13T16:45:31Z",
+      "side": 1,
+      "message": "Nit: I thought the line break between arguments was a little cleaner than the current one in the middle of an argument.",
+      "range": {
+        "startLine": 25,
+        "startChar": 33,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e09fa0_e6aa92ef",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-13T16:45:31Z",
+      "side": 1,
+      "message": "Nit: I would prefer not to put a newline between recording and checking rv, here and below. I think I remember that we already discussed this in the previous code review of this change.",
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b2dc6d_b3ce14cd",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-13T16:45:31Z",
+      "side": 1,
+      "message": "Nit: I meant for the angle brackets in my template to indicate that you should replace the bracketed section with the appropriate value. You don\u0027t need to retain them in the text.",
+      "range": {
+        "startLine": 75,
+        "startChar": 10,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01dd975b_59aecdd5",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-13T16:45:31Z",
+      "side": 1,
+      "message": "Per the below discussion of PHY_CTRL1, please append this line with\n        (default value of \u003cname of register at 0x82\u003e)\n\nUnless I\u0027m mistaken, the code doesn\u0027t otherwise mention the register at 0x82, and it just happens to be structural similar to PHY_CTRL2 at 0x81.",
+      "range": {
+        "startLine": 78,
+        "startChar": 40,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c21af59_ac9fd3fb",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-13T16:45:31Z",
+      "side": 1,
+      "message": "Can you make named constants in the header file for the field values used here, similar to RT1715_REG_TTCPC_FILTER_400US? The function argument would then be something like\n        RT1715_REG_PHY_CTRL1_ENRETRY | RT1715_REG_PHY_CTRL1_TRANSCNT_7\n\nIn this case, move the comments describing the fields to above the named constants.",
+      "range": {
+        "startLine": 80,
+        "startChar": 45,
+        "endLine": 80,
+        "endChar": 49
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21bf669a_b689924c",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-13T16:45:31Z",
+      "side": 1,
+      "message": "Similar request as for PHY_CTRL1. Please define and use a named constant for this register value and place the code comment explaining the interpretation of that value at the definition of the constant.",
+      "range": {
+        "startLine": 91,
+        "startChar": 45,
+        "endLine": 91,
+        "endChar": 49
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
