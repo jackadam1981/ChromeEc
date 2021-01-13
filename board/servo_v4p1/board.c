@@ -412,6 +412,45 @@ static void evaluate_input_power_def(void)
 	evaluate_input_power();
 }
 DECLARE_DEFERRED(evaluate_input_power_def);
+
+void pd_contract_updated(int port)
+{
+	if(port == USBC_PORT_ALT) {
+		hook_call_deferred(&evaluate_input_power_def_data, 3 * SECOND);
+	}
+}
+
+int get_alternate_port_pwr(struct pwr_con_t *pwr)
+{
+	enum tcpc_cc_voltage_status cc;
+	enum tcpc_cc_voltage_status cc1;
+	enum tcpc_cc_voltage_status cc2;
+	uint32_t mv, mc;
+
+	tcpc_config[USBC_PORT_ALT].drv->get_cc(USBC_PORT_ALT, &cc1, &cc2);
+	cc = (cc1 == TYPEC_CC_VOLT_OPEN) ? cc2 : cc1;
+
+	if(pd_get_current_contract(USBC_PORT_ALT, &mv, &mc) == EC_SUCCESS) {
+		pwr->volts = mv / 1000;
+		pwr->milli_amps = mc;
+	} else {
+		pwr->volts = 5;
+		if (cc == TYPEC_CC_VOLT_RP_1_5) {
+			pwr->milli_amps = 1500;
+		} else if (cc == TYPEC_CC_VOLT_RP_3_0) {
+			pwr->milli_amps = 3000;
+		} else if (cc == TYPEC_CC_VOLT_RP_DEF) {
+			pwr->milli_amps = 900;
+		} else {
+			pwr->milli_amps = 0;
+			return -1;
+		}
+	}
+
+	en_pp5000_alt_3p3(1);
+	return 0;
+}
+
 #endif
 
 static void board_init(void)
@@ -474,6 +513,7 @@ static void board_init(void)
 
 	/* Disable power to DUT by default */
 	chg_power_select(CHG_POWER_OFF);
+	pd_set_max_voltage_for_port(USBC_PORT_ALT, 15000);
 
 	/*
 	 * Voltage transition needs to occur in lockstep between the CHG and

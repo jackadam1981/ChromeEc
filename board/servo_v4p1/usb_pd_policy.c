@@ -13,6 +13,8 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "ioexpanders.h"
+#include "power_mgmt.h"
+#include "pwr_defs.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -754,6 +756,28 @@ int pd_snk_is_vbus_provided(int port)
 {
 	return gpio_get_level(port ? GPIO_USB_DET_PP_DUT :
 				     GPIO_USB_DET_PP_CHG);
+}
+
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	if (port == USBC_PORT_ALT
+		&& IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_TCPC)) {
+		
+		static bool last_level = 0;
+
+		bool current_level = 
+			tcpc_config[port].drv->check_vbus_level(port, level);
+		if(level == VBUS_PRESENT && current_level != last_level) {
+			last_level = current_level;
+			pd_contract_updated(port);
+		}
+
+		return (level == VBUS_PRESENT) ? current_level : !current_level;
+	} else if (level == VBUS_PRESENT) {
+		return pd_snk_is_vbus_provided(port);
+	} else {
+		return !pd_snk_is_vbus_provided(port);
+	}
 }
 
 __override int pd_check_power_swap(int port)
