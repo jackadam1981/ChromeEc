@@ -42,6 +42,7 @@ target_sources(app PRIVATE "${PLATFORM_EC_BASEBOARD}/usbc_config.c")
 target_sources(app PRIVATE "${PLATFORM_EC_BOARD}/battery.c")
 target_sources(app PRIVATE "${PLATFORM_EC_BOARD}/cbi.c")
 target_sources(app PRIVATE "${PLATFORM_EC_BOARD}/usbc_config.c")
+target_sources(app PRIVATE "${PLATFORM_EC_BOARD}/led.c")
 
 # Local sources to make things build. These are being removed as we are able
 # to build the EC source instead.

@@ -21,6 +21,8 @@ enum pwm_channel {
 		PWM_CH_COUNT,
 };
 
+#define NAMED_PWM(name) PWM_CHANNEL(DT_PATH(named_pwms, name))
+
 #endif /* named_pwms */
 
 #endif /* CONFIG_PLATFORM_EC_PWM */

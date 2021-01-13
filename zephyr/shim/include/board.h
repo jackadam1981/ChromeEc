@@ -21,4 +21,8 @@
 #include "i2c_map.h"
 #endif
 
+#if defined(CONFIG_PWM)
+#include "pwm_map.h"
+#endif
+
 #endif  /* __BOARD_H */
