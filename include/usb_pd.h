@@ -3211,4 +3211,25 @@ void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp);
 int typec_update_cc(int port);
 /****************************************************************************/
 
+/**
+ * Called to retrieve current PD contract
+ *
+ * @param port The PD port number
+ * @param mv Pointer to variable which will be filled with
+ * 	      voltage in millivolts
+ * @param cur Pointer to variable which will be filled with
+ *        current limit in milliamperes
+ * @return 0 on success else failure
+ */
+int pd_get_current_contract(int port, uint32_t *mv, uint32_t *cur);
+
+#ifdef CONFIG_USB_PD_CALLBACK_ON_CONTRACT_UPDATE
+/**
+ * This function must be implemented if
+ * CONFIG_USB_PD_CALLBACK_ON_CONTRACT_UPDATE is defined.
+ * It is called when USB PD enters SNK_TRANSITION state or soft/hard reset.
+ */
+void pd_contract_updated(int port);
+#endif
+
 #endif  /* __CROS_EC_USB_PD_H */

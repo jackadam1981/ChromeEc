@@ -4150,6 +4150,11 @@
 /* Number of USB PD ports */
 #undef CONFIG_USB_PD_PORT_MAX_COUNT
 
+/* If defined, function 'void pd_contract_updated(int port);' must be implemented
+ * and will be called when USB PD enters SNK_TRANSITION state or soft/hard reset. 
+ */
+#undef CONFIG_USB_PD_CALLBACK_ON_CONTRACT_UPDATE
+
 /*
  * Number of ITE USB PD active ports
  * NOTE: The active port usage should follow the order of ITE TCPC port index.

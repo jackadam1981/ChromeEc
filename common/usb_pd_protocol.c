@@ -4257,11 +4257,17 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SNK_TRANSITION:
 			/* Wait for PS_RDY */
-			if (pd[port].last_state != pd[port].task_state)
+			if (pd[port].last_state != pd[port].task_state) {
 				set_state_timeout(port,
 						  get_time().val +
 						  PD_T_PS_TRANSITION,
 						  PD_STATE_HARD_RESET_SEND);
+
+#ifdef CONFIG_USB_PD_CALLBACK_ON_CONTRACT_UPDATE
+				pd_contract_updated(port);
+#endif
+			}
+
 			break;
 		case PD_STATE_SNK_READY:
 			timeout = 20*MSEC;
@@ -4522,6 +4528,12 @@ void pd_task(void *u)
 					port,
 					get_time().val + PD_T_SENDER_RESPONSE,
 					PD_STATE_HARD_RESET_SEND);
+
+#ifdef CONFIG_USB_PD_CALLBACK_ON_CONTRACT_UPDATE
+				if(pd[port].last_state == PD_STATE_SNK_READY) {
+					pd_contract_updated(port);
+				}
+#endif
 			}
 			break;
 		case PD_STATE_HARD_RESET_SEND:
@@ -4596,6 +4608,13 @@ void pd_task(void *u)
 				set_state(port, PD_STATE_HARD_RESET_EXECUTE);
 				timeout = 10 * MSEC;
 			}
+
+#ifdef CONFIG_USB_PD_CALLBACK_ON_CONTRACT_UPDATE
+			if(pd[port].last_state == PD_STATE_SNK_READY) {
+				pd_contract_updated(port);
+			}
+#endif
+
 			break;
 		case PD_STATE_HARD_RESET_EXECUTE:
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -5417,5 +5436,19 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_FW_UPDATE,
 
 #endif /* HAS_TASK_HOSTCMD */
 
+int pd_get_current_contract(int port, uint32_t *voltage, uint32_t *current)
+{
+	if(pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT) {
+		*voltage = pd[port].supply_voltage;
+		*current = pd[port].curr_limit;
+
+		return EC_SUCCESS;
+	} else {
+		*voltage = 0;
+		*current = 0;
+
+		return EC_ERROR_UNKNOWN;
+	}
+}
 
 #endif /* CONFIG_COMMON_RUNTIME */
