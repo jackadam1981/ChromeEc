@@ -16,6 +16,24 @@
       "message": "Is there any additional preparation needed for Z5?  Or do we plan to work on Z5 entry and exit later?",
       "revId": "a4c775e49ba16dd1c3c04ff193ead25fc00b00f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b14491_1b9e1159",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-13T00:44:33Z",
+      "side": 1,
+      "message": "I\u0027m not aware of other preparation required. I will investigate and followup.",
+      "parentUuid": "6d6c2ec2_563a3668",
+      "revId": "a4c775e49ba16dd1c3c04ff193ead25fc00b00f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
