@@ -16,6 +16,24 @@
       "message": "I\u0027m not super familiar with the AMD power sequencing yet.  Does this need to be stored for reference later, or is it sufficient to just pass it through the GPIO?",
       "revId": "7efc952c3d31cbf78e4f863b034ce33f1e488cb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b47338_da5ce714",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-13T01:07:37Z",
+      "side": 1,
+      "message": "I don\u0027t think so. These signals were previously handled by a discrete AND gate outside the EC. The GPIOs and logic was moved to the EC to reduce BOM. \n\nI\u0027m only calling power_signal_interrupt(signal) here for logging, but none these signals are in the power_signal_list, so this can also be removed.",
+      "parentUuid": "dc64591d_2a6df7a5",
+      "revId": "7efc952c3d31cbf78e4f863b034ce33f1e488cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
