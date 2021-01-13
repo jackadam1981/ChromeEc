@@ -34,6 +34,24 @@
       "parentUuid": "d7868179_4800a929",
       "revId": "291eb6dd4e9a57ac986d04f2a2b47984fd440b38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fcb0f48_17ed9c23",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-13T05:19:47Z",
+      "side": 1,
+      "message": "Yeah, the primary advantage for removal is just the copy/paste clarity in other boards.  Either way works",
+      "parentUuid": "f7150253_17fb9946",
+      "revId": "291eb6dd4e9a57ac986d04f2a2b47984fd440b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
