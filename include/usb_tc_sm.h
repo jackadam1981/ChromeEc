@@ -51,6 +51,14 @@ int tc_is_attached_src(int port);
 int tc_is_attached_snk(int port);
 
 /**
+ * Returns true if TypeC State machine is in disabled state.
+ *
+ * @param port USB-C port number
+ * @return 1 if in disabled state, else 0
+ */
+int tc_is_disabled(int port);
+
+/**
  * Get cable plug setting. This should be constant per build. This replaces
  * the power role bit in PD header for SOP' and SOP" packets.
  *

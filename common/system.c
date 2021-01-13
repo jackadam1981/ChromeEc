@@ -908,7 +908,7 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 			 * Give enough time to apply CC Open and brown out if
 			 * we are running with out a battery.
 			 */
-			msleep(20);
+			msleep(200);
 		}
 
 		/* Reset external PD chips. */

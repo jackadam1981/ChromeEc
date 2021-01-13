@@ -142,14 +142,20 @@ void print_flag(int port, int set_or_clear, int flag);
  * The TypeC state machine uses this bit to disable/enable PD
  * This bit corresponds to bit-0 of pd_disabled_mask
  */
-#define PD_DISABLED_NO_CONNECTION  BIT(0)
+#define PD_DISABLED_NO_CONNECTION	BIT(0)
 /*
  * Console and Host commands use this bit to override the
  * PD_DISABLED_NO_CONNECTION bit that was set by the TypeC
  * state machine.
  * This bit corresponds to bit-1 of pd_disabled_mask
  */
-#define PD_DISABLED_BY_POLICY       BIT(1)
+#define PD_DISABLED_BY_POLICY		BIT(1)
+/*
+ * The TypeC state machine uses this bit to disable/enable PD
+ * for Attached Disable coming out of tc_run
+ * This bit corresponds to bit-2 of pd_disabled_mask
+ */
+#define PD_DISABLED_ATTACHED_DISABLED	BIT(2)
 
 /* Unreachable time in future */
 #define TIMER_DISABLED 0xffffffffffffffff
@@ -234,6 +240,11 @@ GEN_NOT_SUPPORTED(TC_CT_ATTACHED_SNK);
  */
 #define IS_ATTACHED_SNK(port) (get_state_tc(port) == TC_ATTACHED_SNK)
 
+/*
+ * Helper Macro to determine if the machine is in state
+ * TC_DISABLED
+ */
+#define IS_DISABLED(port) (get_state_tc(port) == TC_DISABLED)
 
 /* List of human readable state names for console debugging */
 __maybe_unused static const char * const tc_state_names[] = {
@@ -768,6 +779,11 @@ int tc_is_attached_src(int port)
 int tc_is_attached_snk(int port)
 {
 	return IS_ATTACHED_SNK(port);
+}
+
+int tc_is_disabled(int port)
+{
+	return IS_DISABLED(port);
 }
 
 void tc_pd_connection(int port, int en)
@@ -1979,6 +1995,10 @@ static void tc_disabled_exit(const int port)
 			return;
 		}
 	}
+
+	/* TypeC clear this as disabled for Attached Disabled */
+	atomic_clear_bits(&tc[port].pd_disabled_mask,
+			  PD_DISABLED_ATTACHED_DISABLED);
 
 	CPRINTS("C%d: TCPC resumed!", port);
 }
@@ -3558,11 +3578,19 @@ void tc_run(const int port)
 	 * DISABLED
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_SUSPEND)) {
-		/* Invalidate a contract, if there is one */
-		if (IS_ENABLED(CONFIG_USB_PE_SM))
-			pe_invalidate_explicit_contract(port);
+		/* Do not bother to disable a port that is already disabled */
+		if (get_state_tc(port) != TC_DISABLED) {
+			/* Invalidate a contract, if there is one */
+			if (IS_ENABLED(CONFIG_USB_PE_SM))
+				pe_invalidate_explicit_contract(port);
 
-		set_state_tc(port, TC_DISABLED);
+			/* Disable the port */
+			atomic_or(&tc[port].pd_disabled_mask,
+				  PD_DISABLED_ATTACHED_DISABLED);
+
+			set_state_tc(port, TC_DISABLED);
+			return;
+		}
 	}
 
 	run_state(port, &tc[port].ctx);
