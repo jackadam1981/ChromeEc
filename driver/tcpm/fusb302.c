@@ -353,7 +353,9 @@ static int fusb302_tcpm_select_rp_value(int port, int rp)
 	uint8_t vnc, rd;
 
 	/* Keep track of current RP value */
+#ifdef CONFIG_USB_PD_TCPCI
 	tcpci_set_cached_rp(port, rp);
+#endif
 
 	rv = tcpc_read(port, TCPC_REG_CONTROL0, &reg);
 	if (rv)
