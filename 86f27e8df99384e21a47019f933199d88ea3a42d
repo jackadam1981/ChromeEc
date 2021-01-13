@@ -122,6 +122,24 @@
       "parentUuid": "d2490396_5f1caa61",
       "revId": "86f27e8df99384e21a47019f933199d88ea3a42d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508cc271_190cef4b",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-13T19:10:41Z",
+      "side": 1,
+      "message": "I don\u0027t believe so. This is in accordance with the documentation; it only mentions disabling the CC loop on the auxiliary charger.",
+      "parentUuid": "12833d69_93fe668f",
+      "revId": "86f27e8df99384e21a47019f933199d88ea3a42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
