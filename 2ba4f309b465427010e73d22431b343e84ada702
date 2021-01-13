@@ -16,6 +16,23 @@
       "message": "Ayushee/Divya, I would like to discuss more on this implementation before we merge.",
       "revId": "2ba4f309b465427010e73d22431b343e84ada702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "761f4a03_791ed467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-01-13T00:38:22Z",
+      "side": 1,
+      "message": "I have suggested to wrap the retry logic inside the bbtimer_read and bbtimer_write.\nTwo reasons:\n1. All read and write will go through retry.\n2. Theoretically, This may address the case when Re-timer is in suspend state. First i2c attempt will fail, subsequent attempts may pass as the first failure will bring re-timer out of suspend state. This will address S0IX CTS use cases.",
+      "revId": "2ba4f309b465427010e73d22431b343e84ada702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
