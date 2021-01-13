@@ -115,6 +115,19 @@ static void bc12_detect(const int port)
 	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, port, &new_chg);
 }
 
+#ifdef CONFIG_SUPPORT_TURN_OFF_MAX14637_BC12_DETECTOR
+static void power_down_ic(const int port)
+{
+	const struct max14637_config_t * const cfg = &max14637_config[port];
+
+	/* Turn off the IC. */
+	activate_chip_enable(cfg, 0);
+
+	/* Let charge manager know there's no more charge available. */
+	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, port, NULL);
+}
+#endif
+
 /**
  * If VBUS is present and port power role is sink, then trigger bc1.2 client
  * detection. If VBUS is not present then update charge manager. Note that both
@@ -139,11 +152,17 @@ static void detect_or_power_down_ic(const int port)
 		/* Turn on the 5V rail to allow the chip to be powered. */
 		power_5v_enable(task_get_current(), 1);
 #endif
+#ifndef CONFIG_SUPPORT_TURN_OFF_MAX14637_BC12_DETECTOR
 		if (pd_get_power_role(port) == PD_ROLE_SINK)
+#endif
 			bc12_detect(port);
 	} else {
+#ifdef CONFIG_SUPPORT_TURN_OFF_MAX14637_BC12_DETECTOR
+		power_down_ic(port);
+#else
 		/* Let charge manager know there's no more charge available. */
 		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, port, NULL);
+#endif
 #if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
 		/* Issue a request to turn off the rail. */
 		power_5v_enable(task_get_current(), 0);

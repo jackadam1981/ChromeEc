@@ -4540,6 +4540,8 @@
 /* The delay in ms from power off to power on for MAX14637 */
 #define CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS 1
 
+/* Support turn off MAX14637 BC1.2 Detector */
+#undef CONFIG_SUPPORT_TURN_OFF_MAX14637_BC12_DETECTOR
 
 /* Enable USB serial console module. */
 #undef CONFIG_USB_CONSOLE
