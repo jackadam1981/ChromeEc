@@ -130,6 +130,7 @@ driver-$(CONFIG_THERMISTOR_NCP15WB)+=temp_sensor/thermistor_ncp15wb.o
 
 # Type-C port controller (TCPC) drivers
 driver-$(CONFIG_USB_PD_TCPM_STUB)+=tcpm/stub.o
+driver-$(CONFIG_USB_PD_TCPM_SOFT)+=tcpm/soft.o
 driver-$(CONFIG_USB_PD_TCPM_TCPCI)+=tcpm/tcpci.o
 driver-$(CONFIG_USB_PD_TCPM_FUSB302)+=tcpm/fusb302.o
 driver-$(CONFIG_USB_PD_TCPM_MT6370)+=tcpm/mt6370.o

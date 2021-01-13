@@ -15,6 +15,7 @@ ifndef CONFIG_KEYBOARD_NOT_RAW
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 endif
 chip-$(CONFIG_USB_PD_TCPC)+=usb_pd_phy.o
+chip-$(CONFIG_USB_PD_TCPM_SOFT)+=usb_pd_phy.o
 
 dirs-y += chip/host/dcrypto
 

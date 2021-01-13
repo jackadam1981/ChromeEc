@@ -3086,7 +3086,7 @@ void pd_task(void *u)
 			pd_update_dual_role_config(port);
 #endif
 
-#ifdef CONFIG_USB_PD_TCPC
+#if defined(CONFIG_USB_PD_TCPC) || defined(CONFIG_USB_PD_TCPM_SOFT)
 		/*
 		 * run port controller task to check CC and/or read incoming
 		 * messages

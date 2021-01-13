@@ -4288,6 +4288,20 @@
 #undef CONFIG_USB_PD_TCPM_FUSB307
 #undef CONFIG_USB_PD_TCPM_STM32GX
 
+/* Enables software TCPC driver */
+#undef CONFIG_USB_PD_TCPM_SOFT
+
+/* Defines count of software TCPC controlled ports. If it is not defined,
+ * it will be equal to total USB PD ports 
+ */
+#undef CONFIG_USB_PD_TCPM_SOFT_PORTS_COUNT
+
+/* Defines which port number is first one controlled by software TCPC.
+ * At this time, all ports must be next to each other and index should
+ * start at 0. 
+ */
+#undef CONFIG_USB_PD_TCPM_SOFT_PORTS_OFFSET
+
 /* PS8XXX series are all supported by a single driver with a build time config
  * listed below (CONFIG_USB_PD_TCPM_PS*) defined to enable the specific product.
  *
