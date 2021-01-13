@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ece3621_dac51d2f",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2021-01-13T06:48:13Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "a5d9f757_f774bd24",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fd0246e_7577dc84",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "Please upload a new patchset that removes this part.",
       "parentUuid": "20e1b364_9f74bb05",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d529e3_216e381c",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2021-01-13T06:48:13Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "c14c1532_6574a4f4",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -231,6 +279,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18bcbc80_2b93b892",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2021-01-13T06:48:13Z",
+      "side": 1,
+      "message": "Yes, it is configurable.\nIt is configured in entire register 0x82.\nThe default value is 70h.\nThe step is 0.4167us.",
+      "parentUuid": "5899e4cc_df29753c",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5ba9c10_4a28c8cd",
@@ -292,6 +364,30 @@
       "side": 1,
       "message": "Please add a code comment like,\n\"Decrease the time that the PHY will wait for a second transition to detect a BMC-encoded 1 bit from 2.67 us to 2.25 us.\nTimeout \u003d register value * .04167 us.\"\n\nWhat happens if there is a second transition after the time limit? Does the receiver detect a 0 and ignore the transition? Does it detect a 0 and start detecting a new bit based on the second transition?",
       "parentUuid": "9727f33a_77df2eef",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "7205c416814e2bf3dfc87c539317f3742e005d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe4ca880_1d0b4086",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2021-01-13T06:48:13Z",
+      "side": 1,
+      "message": "It detects a 0 and start detecting a new bit based on the second transition.",
+      "parentUuid": "6124d977_b77c5065",
       "range": {
         "startLine": 77,
         "startChar": 1,
