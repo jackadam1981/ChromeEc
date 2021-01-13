@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6616972e_c2e3b00d",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-01-13T00:30:52Z",
+      "side": 1,
+      "message": "We can use b\u002701 for cfet_off_val because b\u002710 is used for disconnect_val",
+      "parentUuid": "72513080_dce24697",
+      "revId": "2259415e7b442ffce1cfee6317b2579099b1a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e4b796b_1d2ebc97",
