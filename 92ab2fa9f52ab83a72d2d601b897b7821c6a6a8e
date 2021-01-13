@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5cd57a_68c9950d",
+        "filename": "board/servo_v4p1/ina231s.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-13T14:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "929a99c7_176df969",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "243b1a0c_135d11c0",
@@ -602,6 +626,24 @@
       "side": 1,
       "message": "We should file a bug for clean up later on.",
       "parentUuid": "bb3ac97f_bf2a74a8",
+      "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "438a8354_f69e5187",
+        "filename": "board/servo_v4p1/usb_tc_snk_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-13T14:53:24Z",
+      "side": 1,
+      "message": "Sure, I\u0027ve created b/177412115.",
+      "parentUuid": "9fdcb747_4efcfa5e",
       "revId": "92ab2fa9f52ab83a72d2d601b897b7821c6a6a8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
