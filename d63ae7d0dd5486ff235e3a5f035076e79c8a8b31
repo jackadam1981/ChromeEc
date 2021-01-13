@@ -70,6 +70,24 @@
       "parentUuid": "3b3cd2d0_a08b7bb3",
       "revId": "d63ae7d0dd5486ff235e3a5f035076e79c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c499d4_6884cabf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-13T22:10:10Z",
+      "side": 1,
+      "message": "This version continues to avoid re-entering TC_DISABLED if we are already there. It also adds setting a pd_disabled_mask bit when performing an ATTACHED.DISABLE in order to shut the PE off, it is done in a way the existing state mechanism will not be affected. I also added one more Vilboz specific item, since I don\u0027t want to propagate if it is not needed, to not set a charge port if that port is in the disabled state.",
+      "parentUuid": "f0ffec46_ec7f4f87",
+      "revId": "d63ae7d0dd5486ff235e3a5f035076e79c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
