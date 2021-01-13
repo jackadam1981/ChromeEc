@@ -30,6 +30,7 @@
 #include "usb_charge.h"
 #include "usb_pd_tcpm.h"
 #include "usb_mux.h"
+#include "usb_tc_sm.h"
 #include "usbc_ppc.h"
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -264,6 +265,10 @@ int board_set_active_charge_port(int port)
 		if (ppc_vbus_sink_enable(i, 0))
 			CPRINTSUSB("C%d: sink path disable failed.", i);
 	}
+
+	/* Don't enable the port for sinking if it is disabled */
+	if (tc_is_disabled(port))
+		return EC_ERROR_UNKNOWN;
 
 	/* Enable requested charge port. */
 	if (ppc_vbus_sink_enable(port, 1)) {
