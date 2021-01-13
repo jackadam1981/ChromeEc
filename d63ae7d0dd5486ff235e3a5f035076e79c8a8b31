@@ -16,6 +16,24 @@
       "message": "Testing this latest version today, I\u0027m not seeing it fix the issue.\nOn zork branch, TC_DISABLED CC open is often too short (1.1 ms vs 20 ms), with or without this CL.\nOn main, TC_DISABLED CC open is 20 ms (with or without this CL), but I can still hit the tic-tic-tic hang (servo_v4 doesn\u0027t drop VBUS).\n",
       "revId": "d63ae7d0dd5486ff235e3a5f035076e79c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66ac796_184f9639",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-13T16:28:36Z",
+      "side": 1,
+      "message": "That is really odd that it works for me and not for you. I have seen the PE take off and send TC out of DISABLED, so maybe there is a timing issue that some times causes that jump out of DISABLED and sets CC. Not sure, right now, where to go after that.\n\nAre you only replacing the RO EC?",
+      "parentUuid": "41ae7b4b_f6797e92",
+      "revId": "d63ae7d0dd5486ff235e3a5f035076e79c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
