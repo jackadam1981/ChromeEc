@@ -11,7 +11,7 @@
 #ifdef CTS_MODULE
 /* CTS tests are small. We can use smaller size to expedite flash time. */
 #undef  CONFIG_FLASH_SIZE
-#define CONFIG_FLASH_SIZE 0x00040000	/* 256k */
+#define CONFIG_FLASH_SIZE 256	/* 256k */
 #endif
 
 /* Optional features */

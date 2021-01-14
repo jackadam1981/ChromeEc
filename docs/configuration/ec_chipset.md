@@ -17,8 +17,8 @@ by the EC.
 
 ## Feature Parameters
 
-  - `CONFIG_FLASH_SIZE <bytes>` - Set to the size of the internal flash of the
-    EC. Must be defined to link the final image.
+  - `CONFIG_FLASH_SIZE <kbytes>` - Set to the size of the internal flash of the
+    EC (in KiB). Must be defined to link the final image.
   - `CONFIG_SPI_FLASH_PORT <port>` - Only used if your board as an external
     flash.
 

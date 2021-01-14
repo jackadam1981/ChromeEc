@@ -270,10 +270,10 @@
  * Configure for smaller flash is OK for testing except
  * for SPI flash lock bit.
  */
- #define CONFIG_FLASH_SIZE 524288
+ #define CONFIG_FLASH_SIZE 512
  #define CONFIG_SPI_FLASH_W25X40
 /*
- * #define CONFIG_FLASH_SIZE 0x1000000
+ * #define CONFIG_FLASH_SIZE 16384
  * #define CONFIG_SPI_FLASH_W25Q128
  */
 

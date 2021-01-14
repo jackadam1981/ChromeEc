@@ -1824,14 +1824,19 @@
 /* Number of regions of different size/type */
 #undef CONFIG_FLASH_REGION_TYPE_COUNT
 
+/* Keep this value for zephyr builds, it is defined in Kconfig values. */
+#ifndef CONFIG_ZEPHYR
 /* Total size of writable flash */
 #undef CONFIG_FLASH_SIZE
+#endif /* !CONFIG_ZEPHYR */
 
 /* Minimum flash write size (in bytes) */
 #undef CONFIG_FLASH_WRITE_SIZE
 /* Most efficient flash write size (in bytes) */
 #undef CONFIG_FLASH_WRITE_IDEAL_SIZE
 
+/* Keep these values for zephyr builds, they are defined in Kconfig values. */
+#ifndef CONFIG_ZEPHYR
 /* Protected region of storage belonging to EC */
 #undef CONFIG_EC_PROTECTED_STORAGE_OFF
 #undef CONFIG_EC_PROTECTED_STORAGE_SIZE
@@ -1839,6 +1844,7 @@
 /* Writable region of storage belonging to EC */
 #undef CONFIG_EC_WRITABLE_STORAGE_OFF
 #undef CONFIG_EC_WRITABLE_STORAGE_SIZE
+#endif /* !CONFIG_ZEPHYR */
 
 /*****************************************************************************/
 /* Fingerprint Sensor Configuration */
