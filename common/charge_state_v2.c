@@ -2515,11 +2515,7 @@ void charge_set_active_chg_chip(int idx)
 
 	CPRINTS("Act Chg: %d", idx);
 	curr.ocpc.active_chg_chip = idx;
-	if (idx == CHARGE_PORT_NONE) {
-		curr.ocpc.last_error = 0;
-		curr.ocpc.integral = 0;
-		curr.ocpc.last_vsys = OCPC_UNINIT;
-	}
+	ocpc_reset(&curr.ocpc, idx);
 }
 #endif /* CONFIG_OCPC */
 
