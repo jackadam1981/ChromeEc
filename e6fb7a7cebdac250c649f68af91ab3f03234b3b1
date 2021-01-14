@@ -16,6 +16,24 @@
       "message": "The only actual effect of this change will be to change this delay in the ITE TCPC drivers for boards that don\u0027t define a custom config from 500 us to 5000 us. It makes sense to me for this to be a no-op change, and one way to do that would be to use CONFIG_USBC_VCONN_SWAP_DELAY_US in this driver and define it to 500 for the affected configs (of which there are 13, most of them dev boards).\n\nBut before I do something like that, I\u0027d like to know what the rationale was for this indirection. It seems odd.",
       "revId": "e6fb7a7cebdac250c649f68af91ab3f03234b3b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c52ca1c_ac7e0afd",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-14T01:08:24Z",
+      "side": 1,
+      "message": "Actually, the effect described above is of the next CL, which causes CONFIG_USBC_VCONN_SWAP_DELAY_US to always be defined.",
+      "parentUuid": "0e8c4860_74f847aa",
+      "revId": "e6fb7a7cebdac250c649f68af91ab3f03234b3b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
