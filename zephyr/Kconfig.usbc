@@ -212,15 +212,37 @@ config PLATFORM_EC_USB_PD_DUAL_ROLE
 	  up its battery), or send out power to an attached device on the same
 	  port.
 
+if PLATFORM_EC_USB_PD_DUAL_ROLE
+
 config PLATFORM_EC_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	bool "Board can use TCPC-controlled DRP toggle"
-	depends on PLATFORM_EC_USB_PD_DUAL_ROLE
 	default y
 	help
 	  Enable this if the USB Type-C Port Controllers (TCPC) used on the
 	  board supports toggling of the power role autonomously. When this is
 	  disabled, the USB power delivery task is responsible for manually
 	  toggling the power role.
+
+config PLATFORM_EC_USBC_VCONN
+	bool "Support USB Type-C VCONN"
+	depends on PLATFORM_EC_USB_PD_DUAL_ROLE
+	default y
+	help
+	  This enables support for USB Type-C VCONN, so that this device can
+	  become a source if the parter is dual-role (e.g. a cellphone).
+
+	  This is not needed for captive cables.
+
+config PLATFORM_EC_USBC_VCONN_SWAP
+	bool "Support VCONN swap"
+	depends on PLATFORM_EC_USB_PD_DUAL_ROLE
+	default y
+	help
+	  This enables support for USB Type-c VCONN swap, where the device can
+	  swap roles (i.e. source / sink) with the partner in certain
+	  situations.
+
+endif  # PLATFORM_EC_USB_PD_DUAL_ROLE
 
 config PLATFORM_EC_USB_PD_DISCHARGE
 	bool "Board can discharge VBUS"
