@@ -16,6 +16,24 @@
       "message": "Suggest to enable one by one. Not enable all at once.\nLet\u0027s add disconnect and safe first? May be also \"connect\" mode?",
       "revId": "8f7c98ec0ff6304f123a459e1def8bbb2102a7d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac62d512_48a118f8",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-14T00:19:28Z",
+      "side": 1,
+      "message": "So enter + exit disconnect is same as checking for MUX none (enter disconnect) or entering USB_mode (exit disconnect)\n\nEnter + exit safe is same as entering Safe state (enter safe) or entering alt mode/USB mode (exit safe)",
+      "parentUuid": "97f23af8_0a792586",
+      "revId": "8f7c98ec0ff6304f123a459e1def8bbb2102a7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
