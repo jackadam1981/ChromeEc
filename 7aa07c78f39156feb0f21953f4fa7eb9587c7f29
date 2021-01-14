@@ -22,6 +22,30 @@
       },
       "revId": "7aa07c78f39156feb0f21953f4fa7eb9587c7f29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d27f1e_02489da5",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-01-14T05:43:12Z",
+      "side": 0,
+      "message": "https://gcc.gnu.org/onlinedocs/gcc/Modifiers.html#Modifiers\n\nMeans (in a particular alternative) that this operand is an earlyclobber operand, which is written before the instruction is finished using the input operands. Therefore, this operand may not lie in a register that is read by the instruction or as part of any memory address.\n\n\nIt works.",
+      "parentUuid": "3de075e6_ee65b136",
+      "range": {
+        "startLine": 577,
+        "startChar": 6,
+        "endLine": 577,
+        "endChar": 8
+      },
+      "revId": "7aa07c78f39156feb0f21953f4fa7eb9587c7f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
