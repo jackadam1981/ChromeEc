@@ -125,6 +125,9 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_ICELAKE
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_INTEL
                                                 "${PLATFORM_EC}/common/power_button_x86.c"
                                                 "${PLATFORM_EC}/power/intel_x86.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_THROTTLE_AP
+                                                "${PLATFORM_EC}/common/throttle_ap.c")
+
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_TIMER   "${PLATFORM_EC}/common/timer.c")
 
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_CHARGER
