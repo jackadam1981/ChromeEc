@@ -666,7 +666,6 @@ int stm32gx_ucpd_sop_prime_enable(int port, bool enable)
 	/* Update static varialbe used to filter SOP//SOP'' messages */
 	ucpd_rx_sop_prime_enabled = enable;
 
-	CPRINTS("ucpd: sop_prime_enable = %d", enable);
 	return EC_SUCCESS;
 }
 
