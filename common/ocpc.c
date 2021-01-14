@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "battery_fuel_gauge.h"
+#include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "common.h"
@@ -645,6 +646,26 @@ static enum ec_error_list ocpc_precharge_enable(bool enable)
 			: "dis");
 
 	return rv;
+}
+
+void ocpc_reset(struct ocpc_data *ocpc)
+{
+	struct batt_params batt;
+	int chg;
+
+	battery_get_params(&batt);
+	ocpc->integral = 0;
+	ocpc->last_error = 0;
+	ocpc->last_vsys = OCPC_UNINIT;
+
+	/*
+	 * Initialize the VSYS target on aux chargers to the current battery
+	 * voltage to avoid a large spike.
+	 */
+	if (ocpc->active_chg_chip > CHARGER_PRIMARY)
+		CPRINTS("OCPC: Init VSYS to %dmV", batt.voltage);
+	for (chg = 1; chg < board_get_charger_chip_count(); chg++)
+		charger_set_voltage(chg, batt.voltage);
 }
 
 static void ocpc_set_pid_constants(void)
