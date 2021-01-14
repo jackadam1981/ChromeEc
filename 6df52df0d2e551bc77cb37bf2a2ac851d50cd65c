@@ -16,6 +16,24 @@
       "message": "This is certainly unfortunate.\n\nIMO Zephyr is wrong. Size should mean bytes unless it has a _KB suffix. Perhaps we can change that upstream.\n\nAnyway this should get us going, thank you!",
       "revId": "6df52df0d2e551bc77cb37bf2a2ac851d50cd65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f14567a3_6afea3af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-14T19:06:00Z",
+      "side": 1,
+      "message": "Agreed, the zephyr definition is odd. Added Tom to review for OWNERS.",
+      "parentUuid": "39ffc0b7_97e7ff29",
+      "revId": "6df52df0d2e551bc77cb37bf2a2ac851d50cd65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
