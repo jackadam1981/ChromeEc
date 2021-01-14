@@ -542,4 +542,9 @@ enum battery_type {
 #define CONFIG_USBC_PPC_VCONN
 #endif
 
+#undef CONFIG_USB_PD_USB32_DRD
+#ifdef CONFIG_PLATFORM_EC_USB_PD_USB32_DRD
+#define CONFIG_USB_PD_USB32_DRD
+#endif
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
