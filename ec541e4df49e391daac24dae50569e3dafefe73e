@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb64a9f4_57621a7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-14T15:57:18Z",
+      "side": 1,
+      "message": "Obviously we have a namespace conflict between Zephyr Kconfig and platform/ec config that\u0027s giving us a little greif.\n\nInstead of refactoring platform/ec to align with the way zephyr does things, let\u0027s do it the other way:\n\n1. Make a hidden kconfig CONFIG_FLASH_SIZE_KB, which defaults to FLASH_SIZE * 1000 in platform/ec Kconfig.\n2. In zephyr/shim/include/config_chip.h, undef CONFIG_FLASH_SIZE and def it to CONFIG_FLASH_SIZE_KB.\n\nSeems slightly less risky than this change?",
+      "revId": "ec541e4df49e391daac24dae50569e3dafefe73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
