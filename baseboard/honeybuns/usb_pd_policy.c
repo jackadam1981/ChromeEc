@@ -56,16 +56,6 @@ int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
 {
 	int pdo_cnt = 0;
 
-	*src_pdo =  pd_src_host_pdo;
-	pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
-
-	return pdo_cnt;
-}
-
-int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
-{
-	int pdo_cnt = 0;
-
 	/*
 	 * If CHG is providing VBUS, then advertise what's available on the CHG
 	 * port, otherwise we provide no power.
