@@ -23,6 +23,7 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
 #define CONFIG_OCPC_DEF_RBATT_MOHMS 22 /* R_DS(on) 11.6mOhm + 10mOhm sns rstr */
 #define CONFIG_OCPC
+#define CONFIG_RAA489000_ENABLE_ADC
 #undef  CONFIG_CHARGER_SINGLE_CHIP
 
 /* EC console commands */
