@@ -100,6 +100,10 @@ int fan_table_to_rpm(int fan, int *temp)
 	static int prev_tmp[TEMP_SENSOR_COUNT];
 	int i;
 
+	if (temp[TEMP_SENSOR_CHARGER] > 60 && temp[TEMP_SENSOR_CPU] > 58
+	    && temp[TEMP_SENSOR_SOC] > 60)
+		return 5100;
+
 	/*
 	 * Comopare the current and previous temperature, we have
 	 * the three path:
@@ -136,5 +140,25 @@ void board_override_fan_control(int fan, int *tmp)
 		fan_set_rpm_target(FAN_CH(fan),
 			fan_table_to_rpm(fan, tmp));
 	}
+}
+
+__override int board_max_current_limit(int current_requested)
+{
+	int t, i;
+	int temp[TEMP_SENSOR_COUNT];
+
+	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
+		temp_sensor_read(i, &t);
+		temp[i] = t;
+	}
+
+	if (temp[TEMP_SENSOR_CHARGER] > 333 &&
+	    temp[TEMP_SENSOR_SOC] > 333 &&
+	    temp[TEMP_SENSOR_CPU] > 331) {
+		if (current_requested > 100)
+			return 100;
+	}
+
+	return current_requested;
 }
 
