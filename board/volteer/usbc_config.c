@@ -198,6 +198,13 @@ BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
 BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
 
 /******************************************************************************/
+/* USB-A charging control */
+
+const int usb_port_enable[USB_PORT_COUNT] = {
+	GPIO_EN_PP5000_USBA,
+};
+
+/******************************************************************************/
 /* USBC mux configuration - Tiger Lake includes internal mux */
 struct usb_mux usbc1_tcss_usb_mux = {
 	.usb_port = USBC_PORT_C1,
