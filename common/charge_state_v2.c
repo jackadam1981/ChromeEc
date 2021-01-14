@@ -2515,11 +2515,7 @@ void charge_set_active_chg_chip(int idx)
 
 	CPRINTS("Act Chg: %d", idx);
 	curr.ocpc.active_chg_chip = idx;
-	if (idx == CHARGE_PORT_NONE) {
-		curr.ocpc.last_error = 0;
-		curr.ocpc.integral = 0;
-		curr.ocpc.last_vsys = OCPC_UNINIT;
-	}
+	ocpc_reset(&curr.ocpc);
 }
 #endif /* CONFIG_OCPC */
 
@@ -2574,6 +2570,14 @@ void charge_reset_stable_current(void)
 	/* it takes 8 to 10 seconds to stabilize battery current in practice */
 	charge_reset_stable_current_us(10 * SECOND);
 }
+#endif
+
+#ifdef CONFIG_OCPC
+static void ocpc_reset_hook(void)
+{
+	ocpc_reset(&curr.ocpc);
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, ocpc_reset_hook, HOOK_PRIO_DEFAULT);
 #endif
 
 /*****************************************************************************/
