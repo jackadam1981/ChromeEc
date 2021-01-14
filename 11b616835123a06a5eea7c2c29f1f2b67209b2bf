@@ -105,6 +105,24 @@
       "parentUuid": "e38c904e_3a59c01c",
       "revId": "11b616835123a06a5eea7c2c29f1f2b67209b2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c5617d_16634d1e",
+        "filename": "driver/tcpm/stm32gx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-14T06:30:09Z",
+      "side": 1,
+      "message": "The one piece that was still missing is this call to enable/disable when VCONN is enabled/disabled.",
+      "parentUuid": "ff04c511_2ea8571f",
+      "revId": "11b616835123a06a5eea7c2c29f1f2b67209b2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
