@@ -16,6 +16,23 @@
       "message": "Booted skylake RVP to Chrome OS",
       "revId": "59f26a59c40906d7199917fdc9f0106089246a71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b61a51c8_2e5c18d0",
+        "filename": "chip/mchp/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-14T10:09:38Z",
+      "side": 1,
+      "message": "return without doing anything?",
+      "revId": "59f26a59c40906d7199917fdc9f0106089246a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
