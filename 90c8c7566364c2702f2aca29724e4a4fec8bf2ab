@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b0205c_c42ddc2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1385893
+      },
+      "writtenOn": "2021-01-14T21:37:29Z",
+      "side": 1,
+      "message": "I have tried the patch and I did not observe the issue related to the sensor in my limited testing.\nFYI, I do see another dump.\n\n21-01-14 13:35:47.242 Saved panic data:\n21-01-14 13:35:47.244 \n21-01-14 13:35:47.244 \u003d\u003d\u003d PROCESS EXCEPTION: 09 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: ffffffff \u003d\u003d\u003d\n21-01-14 13:35:47.249 r0 :         r1 :         r2 :         r3 :        \n21-01-14 13:35:47.253 r4 :dead6664 r5 :1008b9e6 r6 :00000000 r7 :00000000\n21-01-14 13:35:47.257 r8 :00000000 r9 :00000000 r10:00000000 r11:00000000\n21-01-14 13:35:47.262 r12:         sp :00000000 lr :         pc :        \n21-01-14 13:35:47.267 \n21-01-14 13:35:47.267 cfsr \u003d 0, shcsr \u003d 0, hfsr \u003d 0, dfsr \u003d 0\n\n\nI can confirm that this is not caused by the change in this commit and it was there prior to this change. I will open another bug for this one.",
+      "revId": "90c8c7566364c2702f2aca29724e4a4fec8bf2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
