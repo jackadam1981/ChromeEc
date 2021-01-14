@@ -16,6 +16,24 @@
       "message": "is board booting with this CL?\nwe will take this as reference for ADL project ",
       "revId": "835c33db57761ab9c7906cfce0e0cf0a3db73512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6751af_6058eabc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1249354
+      },
+      "writtenOn": "2021-01-14T12:48:37Z",
+      "side": 1,
+      "message": "I do not have a screen attached , but according to the FW log I see that it is booting to S0",
+      "parentUuid": "866d11ee_4e42e075",
+      "revId": "835c33db57761ab9c7906cfce0e0cf0a3db73512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
