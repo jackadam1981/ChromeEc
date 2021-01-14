@@ -16,6 +16,23 @@
       "message": "Booted skylake RVP to Chrome OS",
       "revId": "3d2150962d0b37987f453deb253c06ca24f07141",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77250c5_2e55c1e9",
+        "filename": "chip/mchp/registers-mec152x.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-14T08:24:57Z",
+      "side": 1,
+      "message": "nit: add tabs to neatly align all the defines",
+      "revId": "3d2150962d0b37987f453deb253c06ca24f07141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
