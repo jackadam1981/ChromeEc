@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d77bdf_f83f57b8",
+        "filename": "board/madoo/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-14T20:22:34Z",
+      "side": 1,
+      "message": "Can you elaborate on this state?  Is this an error or transient state?  If we\u0027ve fully charged, then I\u0027d expect STATE_CHARGING_FULL_CHARGE state to cover AC present but not charging (currently set to white/indefinite)",
+      "revId": "16e1aafdc37a2c719f7b0d5b4acfb623fb1fabe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
