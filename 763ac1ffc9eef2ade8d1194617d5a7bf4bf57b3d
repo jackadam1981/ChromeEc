@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab1de1a0_0d45a001",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-14T14:46:09Z",
+      "side": 1,
+      "message": "Definitely should add this.",
+      "parentUuid": "cc719643_46e25883",
+      "revId": "763ac1ffc9eef2ade8d1194617d5a7bf4bf57b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8baeb3ec_2560e95c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca27e148_e13c2796",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-14T14:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8baeb3ec_2560e95c",
+      "revId": "763ac1ffc9eef2ade8d1194617d5a7bf4bf57b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ca33a1e_9b44c394",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-01-13T18:58:23Z",
       "side": 1,
       "message": "minor nit: but typically required options are denoted with angle brackets.\n    \ne.g. \u003cenable | disable\u003e \u003cport_bitmask\u003e",
+      "range": {
+        "startLine": 238,
+        "startChar": 11,
+        "endLine": 238,
+        "endChar": 38
+      },
+      "revId": "763ac1ffc9eef2ade8d1194617d5a7bf4bf57b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "815db3ed_0df69d1b",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-14T14:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ca33a1e_9b44c394",
       "range": {
         "startLine": 238,
         "startChar": 11,
