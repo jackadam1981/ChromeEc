@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7008a95_3b01ffb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-14T04:17:06Z",
+      "side": 1,
+      "message": "Hi Ravin, looks like you found out.\npls add same bug ID for all the CLs.\nAdd details in TEST field for rest of the CLs",
+      "parentUuid": "4b48d2e4_a594ce01",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "1bc9be05744236b3606b253c790cacff242aea9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6321f6f8_06da6aa9",
