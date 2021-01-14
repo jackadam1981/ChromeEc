@@ -22,6 +22,30 @@
       },
       "revId": "8bbbaf31b016d0c622acad58aa2d765d42f894ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87aa5afd_98435d0a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-14T00:05:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b44c4593_351216e2",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 8
+      },
+      "revId": "8bbbaf31b016d0c622acad58aa2d765d42f894ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
