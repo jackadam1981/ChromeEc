@@ -22,6 +22,30 @@
       },
       "revId": "e1be7a0aed75945973570de21f0f9b253f91f888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe4ad8f_6c1140d1",
+        "filename": "board/adlrvpp_ite/adlrvp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-14T23:53:05Z",
+      "side": 1,
+      "message": "adding CHIPSET_ALDERLAKE with chromium:2631345.\nwe should change this line when that patch lands.\nfollow-up patch would be fine.",
+      "parentUuid": "619f1f6c_2bea3e2b",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "e1be7a0aed75945973570de21f0f9b253f91f888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
