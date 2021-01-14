@@ -22,6 +22,30 @@
       },
       "revId": "9217955ef801769aacb9765cb764fdb229950fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5babe251_f81ea5e3",
+        "filename": "util/ec3po/__init__.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2021-01-14T02:25:36Z",
+      "side": 1,
+      "message": "looking now it doesn\u0027t seem like anything relies on this so it should be safe to remove",
+      "parentUuid": "583bdade_d45b4ff0",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "9217955ef801769aacb9765cb764fdb229950fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
