@@ -5379,6 +5379,7 @@
 	defined(CONFIG_CHARGER_ISL9238C) || defined(CONFIG_CHARGER_ISL9241) || \
 	defined(CONFIG_CHARGER_RAA489000) || defined(CONFIG_CHARGER_SM5803)
 #define CONFIG_CHARGER_NARROW_VDC
+#undef CONFIG_RAA489000_ENABLE_ADC
 #endif
 
 /*****************************************************************************/

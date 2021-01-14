@@ -812,8 +812,10 @@ void raa489000_hibernate(int chgnum)
 
 	rv = raw_read16(chgnum, ISL9238_REG_CONTROL3, &regval);
 	if (!rv) {
+#ifndef CONFIG_RAA489000_ENABLE_ADC
 		/* ADC is active only when adapter plugged in */
 		regval &= ~RAA489000_ENABLE_ADC;
+#endif
 
 		rv = raw_write16(chgnum, ISL9238_REG_CONTROL3, regval);
 	}
