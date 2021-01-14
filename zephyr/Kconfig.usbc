@@ -390,6 +390,14 @@ config PLATFORM_EC_USB_PD_DECODE_SOP
 	  (SOP, SOP' and SOP'', collectively called SOP*) in bits 31-28 of the
 	  32-bit msg header type.
 
+config PLATFORM_EC_HOSTCMD_PD_CONTROL
+	bool "Enable the host command to control the USB-PD chip"
+	default y
+	help
+	  Enable the EC_CMD_PD_CONTROL host command. This allows control
+	  of the USB-PD chip from the AP, including reset, suspend/resume
+	  and enabling power.
+
 choice "USB-C device type"
 	prompt "Select the USB-C device type"
 	default PLATFORM_EC_USB_DRP_ACC_TRYSRC
