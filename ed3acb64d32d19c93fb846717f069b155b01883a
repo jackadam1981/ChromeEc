@@ -16,6 +16,29 @@
       "message": "Booted skylake RVP to Chrome OS",
       "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71a74ef_926ff96f",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-14T08:17:43Z",
+      "side": 1,
+      "message": "is the plan to use internal clock for Chrome?\nboth seems to be 0 in registers-mec152x.h.\nwhich section of the datasheet reflects these registers \u0026 values?",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
