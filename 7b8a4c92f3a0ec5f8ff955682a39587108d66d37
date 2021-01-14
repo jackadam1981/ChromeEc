@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda64134_5722a5dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-01-14T02:41:17Z",
+      "side": 1,
+      "message": "Hi Dzigterman \nI don\u0027t know root cause..\n\nI only know if dood include CL:2364342 ,this issue will happen.\nso I try to isolate incompatible code on dood.\nThat\u0027s it.",
+      "revId": "7b8a4c92f3a0ec5f8ff955682a39587108d66d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1f2f14d_2f8f0fae",
