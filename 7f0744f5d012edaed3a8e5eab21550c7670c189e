@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dae09115_51ce96cd",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-14T23:39:59Z",
+      "side": 1,
+      "message": "Did the pre-upload hook allow this?\n\nYou can split the line using \\\n\n    #error \"first part \" \\\n        \"second part\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 111
+      },
+      "revId": "7f0744f5d012edaed3a8e5eab21550c7670c189e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
