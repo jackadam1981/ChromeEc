@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d5e24f_bc933f12",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2021-01-14T02:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb023684_6b63c98d",
+      "revId": "fee343dd6972344df0299569f1d7c384a0e9f1fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b26e65d_bfec4b13",
@@ -59,6 +77,54 @@
         "startChar": 23,
         "endLine": 230,
         "endChar": 29
+      },
+      "revId": "fee343dd6972344df0299569f1d7c384a0e9f1fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2535c15d_8a1acd12",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2021-01-14T02:43:11Z",
+      "side": 1,
+      "message": "now we do :) good idea! b/177480273",
+      "parentUuid": "3282ad8a_6ccff2b1",
+      "range": {
+        "startLine": 230,
+        "startChar": 23,
+        "endLine": 230,
+        "endChar": 29
+      },
+      "revId": "fee343dd6972344df0299569f1d7c384a0e9f1fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "084895ef_6123cdda",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2021-01-14T02:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b26e65d_bfec4b13",
+      "range": {
+        "startLine": 230,
+        "startChar": 12,
+        "endLine": 230,
+        "endChar": 21
       },
       "revId": "fee343dd6972344df0299569f1d7c384a0e9f1fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
