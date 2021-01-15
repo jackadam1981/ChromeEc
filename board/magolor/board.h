@@ -13,17 +13,11 @@
 
 #define CONFIG_USB_PD_DEBUG_LEVEL 2
 
-#ifdef BOARD_MAGOLOR_LEGACY
-/* this change saves 1656 bytes of RW flash space */
-#define CONFIG_CHIP_INIT_ROM_REGION
-#define CONFIG_DEBUG_ASSERT_BRIEF
-#else
 /*
  * The RAM and flash size combination on the the NPCX797FC does not leave
  * any unused flash space that can be used to store the .init_rom section.
  */
 #undef CONFIG_CHIP_INIT_ROM_REGION
-#endif
 
 /*
  * Keep the system unlocked in early development.
@@ -113,7 +107,9 @@
 #define CONFIG_CMD_ACCEL_INFO
 
 #define CONFIG_ACCEL_BMA255		/* Lid accel */
+#define CONFIG_ACCEL_KX022 		/* Lid accel */
 #define CONFIG_ACCELGYRO_BMI160		/* Base accel */
+#define CONFIG_ACCELGYRO_ICM426XX	/* Base accel second source*/
 
 /* Lid operates in forced mode, base in FIFO */
 #define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
@@ -123,6 +119,8 @@
 
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+#define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 
 #define CONFIG_LID_ANGLE
@@ -187,5 +185,6 @@ enum battery_type {
 };
 
 int board_is_sourcing_vbus(int port);
+void motion_interrupt(enum gpio_signal signal);
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
