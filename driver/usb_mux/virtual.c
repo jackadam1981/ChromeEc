@@ -35,6 +35,9 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 	if (!IS_ENABLED(CONFIG_HOSTCMD_EVENTS))
 		return;
 
+	if (mux_state & USB_PD_MUX_NONE)
+		usb_mux_set_disconnect_latch_flag(port, true);
+
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
 
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
@@ -65,6 +68,8 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 
 static int virtual_init(const struct usb_mux *me)
 {
+	usb_mux_set_disconnect_latch_flag(me->usb_port, true);
+
 	return EC_SUCCESS;
 }
 
