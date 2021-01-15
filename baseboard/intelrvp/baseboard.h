@@ -12,10 +12,12 @@
 
 #ifdef VARIANT_INTELRVP_EC_IT8320
 	#include "ite_ec.h"
-/* VARIANT_INTELRVP_EC_IT8320 */
 #elif defined(VARIANT_INTELRVP_EC_MCHP)
 	#include "mchp_ec.h"
-/* VARIANT_INTELRVP_EC_MCHP */
+#elif defined(VARIANT_INTELRVP_EC_NPCX)
+	#include "npcx_ec.h"
+#else
+	#error "Define EC chip variant"
 #endif
 
 /*
@@ -188,6 +190,12 @@ enum pwm_channel {
 enum fan_channel {
 	FAN_CH_0,
 	FAN_CH_COUNT,
+};
+
+enum mft_channel {
+	MFT_CH_0 = 0,
+	/* Number of MFT channels */
+	MFT_CH_COUNT,
 };
 
 /* ADC channels */
