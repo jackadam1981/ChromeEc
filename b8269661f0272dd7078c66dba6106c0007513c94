@@ -22,6 +22,30 @@
       },
       "revId": "b8269661f0272dd7078c66dba6106c0007513c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db357b3_55cee368",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T17:10:16Z",
+      "side": 1,
+      "message": "Never mind - this is handled with the depends on statement.",
+      "parentUuid": "1b300c05_371166f9",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 0
+      },
+      "revId": "b8269661f0272dd7078c66dba6106c0007513c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
