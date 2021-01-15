@@ -372,6 +372,10 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		r_v2->control_flags = get_pd_control_flags(p->port);
 		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 			r_v2->dp_mode = get_dp_pin_mode(p->port);
+
+			if (usb_mux_get_disc_flag(p->port))
+				r_v2->enabled = 0;
+
 			mux_state = usb_mux_get(p->port);
 			if (mux_state & USB_PD_MUX_USB4_ENABLED) {
 				r_v2->cable_speed =
