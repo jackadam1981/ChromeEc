@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64736b2_a85a2aab",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T17:12:36Z",
+      "side": 1,
+      "message": "Actually - this should go under #ifdef CONFIG_PLATFORM_EC_USB_PD_TCPC_LOW_POWER",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 0
+      },
+      "revId": "b21e169ef918c7f6bf089122ba1fd3d6e5e25fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
