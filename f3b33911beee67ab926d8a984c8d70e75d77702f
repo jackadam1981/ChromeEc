@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae06d24_6bdd2b9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-15T22:21:56Z",
+      "side": 1,
+      "message": "looks good to be submitting for now ...\n\nI think there\u0027s things that can be improved upon later",
+      "revId": "f3b33911beee67ab926d8a984c8d70e75d77702f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b104ed57_6bd702dd",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-15T22:21:56Z",
+      "side": 1,
+      "message": "indentation is rather funky, how does clang-format handle this?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "f3b33911beee67ab926d8a984c8d70e75d77702f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17158aa_9ac47529",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-15T22:21:56Z",
+      "side": 1,
+      "message": "while we can\u0027t play linker tricks to sort the host commands at compile time, I wonder if we can store in a little more optimal format... i.e., fracturing this linked list into 16 parts based on 4 lsb, keeping the lists nice and small?\n\nanyway ... this seems fine to submit. I may play around with the storage format a little later",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "f3b33911beee67ab926d8a984c8d70e75d77702f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e685d5da_3a3a94d7",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-15T22:21:56Z",
+      "side": 1,
+      "message": "align backslashes",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 60
+      },
+      "revId": "f3b33911beee67ab926d8a984c8d70e75d77702f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
