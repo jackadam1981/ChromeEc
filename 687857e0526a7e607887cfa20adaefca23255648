@@ -39,6 +39,30 @@
       },
       "revId": "687857e0526a7e607887cfa20adaefca23255648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6b4e55_8ccea6d9",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-15T03:15:46Z",
+      "side": 1,
+      "message": "Filling the PREAMBLE gap to 0x0 (or any other value) may a chance to race, as DMA reads it simultaneously.",
+      "parentUuid": "cc60d54e_4819438a",
+      "range": {
+        "startLine": 369,
+        "startChar": 64,
+        "endLine": 369,
+        "endChar": 72
+      },
+      "revId": "687857e0526a7e607887cfa20adaefca23255648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
