@@ -16,6 +16,29 @@
       "message": "Fixed some corner cases that the -2 or -1 crosses the buffer boundary.",
       "revId": "687857e0526a7e607887cfa20adaefca23255648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc60d54e_4819438a",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-15T02:11:04Z",
+      "side": 1,
+      "message": "Does the PREAMBLE need to fill with 0x0?",
+      "range": {
+        "startLine": 369,
+        "startChar": 64,
+        "endLine": 369,
+        "endChar": 72
+      },
+      "revId": "687857e0526a7e607887cfa20adaefca23255648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
