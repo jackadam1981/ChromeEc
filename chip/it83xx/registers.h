@@ -1455,14 +1455,28 @@ enum bram_indices {
 	BRAM_IDX_NVCONTEXT     = 0x10,
 	BRAM_IDX_NVCONTEXT_END = 0x1F,
 
+#if defined(CONFIG_HOSTCMD_LPC) || defined(CONFIG_HOSTCMD_ESPI)
 	/* offset 0x20 ~ 0x7b are reserved for future use. */
 
 	/* This field is used to indicate BRAM is valid or not. */
 	BRAM_IDX_VALID_FLAGS0  = 0x7c,
 	BRAM_IDX_VALID_FLAGS1  = 0x7d,
 	BRAM_IDX_VALID_FLAGS2  = 0x7e,
-	BRAM_IDX_VALID_FLAGS3  = 0x7f
+	BRAM_IDX_VALID_FLAGS3  = 0x7f,
 	/* offset 0x7f is the end of BRAM bank 0. */
+#else
+	/* Reserve space for panic data (144 bytes) */
+	BRAM_PANIC_DATA_START  = 0x20,
+	BRAM_PANIC_DATA_END    = 0xaf,
+	BRAM_PANIC_LEN         =
+		BRAM_PANIC_DATA_END - BRAM_PANIC_DATA_START + 1,
+	/* This field is used to indicate BRAM is valid or not. */
+	BRAM_IDX_VALID_FLAGS0  = 0xbc,
+	BRAM_IDX_VALID_FLAGS1  = 0xbd,
+	BRAM_IDX_VALID_FLAGS2  = 0xbe,
+	BRAM_IDX_VALID_FLAGS3  = 0xbf,
+	/* offset 0xbf is the end of BRAM bank 1. */
+#endif
 };
 #define BRAM_RESET_FLAGS0       IT83XX_BRAM_BANK0(BRAM_IDX_RESET_FLAGS0)
 #define BRAM_RESET_FLAGS1       IT83XX_BRAM_BANK0(BRAM_IDX_RESET_FLAGS1)
@@ -1479,7 +1493,9 @@ enum bram_indices {
 #define BRAM_VALID_FLAGS2       IT83XX_BRAM_BANK0(BRAM_IDX_VALID_FLAGS2)
 #define BRAM_VALID_FLAGS3       IT83XX_BRAM_BANK0(BRAM_IDX_VALID_FLAGS3)
 
+#if defined(CONFIG_HOSTCMD_LPC) || defined(CONFIG_HOSTCMD_ESPI)
 #define IT83XX_BRAM_BANK1(i)    REG8(IT83XX_BRAM_BASE + 0x80 + i)
+#endif
 
 /*
  * Enhanced SMBus/I2C Interface
