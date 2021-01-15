@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc268ad_a92908f2",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:08:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c3b80a4_84f4a30d",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 10
+      },
+      "revId": "6ffa0275319dc6d97e163ee6caf5c7ae40491668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15446f2e_a26ea8f7",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe0081c_bc449d07",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:08:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15446f2e_a26ea8f7",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 35
+      },
+      "revId": "6ffa0275319dc6d97e163ee6caf5c7ae40491668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae9f1567_4ede9ebe",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-15T18:49:20Z",
       "side": 1,
       "message": "Probably should remove this, since it\u0027s not required by our PD stack.  You can enable TBT mode ad have USB4 mode disabled.",
+      "range": {
+        "startLine": 489,
+        "startChar": 3,
+        "endLine": 490,
+        "endChar": 60
+      },
+      "revId": "6ffa0275319dc6d97e163ee6caf5c7ae40491668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1948c0b6_602d2eb2",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:08:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae9f1567_4ede9ebe",
       "range": {
         "startLine": 489,
         "startChar": 3,
