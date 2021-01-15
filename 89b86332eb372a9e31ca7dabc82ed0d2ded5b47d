@@ -74,6 +74,29 @@
       "parentUuid": "847172cd_7918dfdd",
       "revId": "89b86332eb372a9e31ca7dabc82ed0d2ded5b47d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b9e283_962768a9",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-15T20:50:29Z",
+      "side": 1,
+      "message": "Nit: remove this space.",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 1
+      },
+      "revId": "89b86332eb372a9e31ca7dabc82ed0d2ded5b47d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
