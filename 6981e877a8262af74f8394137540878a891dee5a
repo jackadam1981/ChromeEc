@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ddc2ee_43a789d1",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:06:39Z",
+      "side": 1,
+      "message": "Added, thanks",
+      "parentUuid": "74042345_2eaa6454",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 0
+      },
+      "revId": "6981e877a8262af74f8394137540878a891dee5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "557a99a9_230a258e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-15T17:39:47Z",
       "side": 1,
       "message": "Does KCconfig support selecting this only if PLATFORM_EC_USBC_VCONN is enabled?",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 34
+      },
+      "revId": "6981e877a8262af74f8394137540878a891dee5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de28cf4_3a73b485",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:06:39Z",
+      "side": 1,
+      "message": "Yes. I added that condition. It is a little wonky to depend on another option\u0027s dependency, but it seems to be happy.",
+      "parentUuid": "557a99a9_230a258e",
       "range": {
         "startLine": 470,
         "startChar": 0,
