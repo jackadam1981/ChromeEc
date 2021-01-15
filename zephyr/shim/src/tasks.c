@@ -224,3 +224,15 @@ int init_signals(const struct device *unused)
 	return 0;
 }
 SYS_INIT(init_signals, POST_KERNEL, 50);
+
+int task_start_called(void)
+{
+	return 1;
+}
+
+void interrupt_disable(void)
+{
+	/*
+	 * I'm fairly certain this is why the EC isn't booting.
+	 */
+}
