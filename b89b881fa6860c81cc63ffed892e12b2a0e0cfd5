@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a42a380_1a30842f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-01-15T17:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6354a6e8_c9601902",
+      "revId": "b89b881fa6860c81cc63ffed892e12b2a0e0cfd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d68e968_ca07b881",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-15T16:57:13Z",
       "side": 1,
       "message": "This can be deleted.  This is already done in led_common.c\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/a0417d4c/common/led_common.c#75",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 30
+      },
+      "revId": "b89b881fa6860c81cc63ffed892e12b2a0e0cfd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "514fd626_6ec5e611",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-01-15T17:34:44Z",
+      "side": 1,
+      "message": "I add this due to \u0027ectool led battery\u0027 won\u0027t work at first time, I need to type it twice to turn on the led. Because led_common.c#75 clear auto control bit after led_set_brightness().",
+      "parentUuid": "5d68e968_ca07b881",
       "range": {
         "startLine": 131,
         "startChar": 0,
