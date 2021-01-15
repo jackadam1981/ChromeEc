@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a96cfbf_9cf85b0f",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:21:54Z",
+      "side": 1,
+      "message": "This does not seem to be enabled always, although it is for hatch.\n\nI suspect this should be a separate Kconfig?",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "bd0b25225e43ab991decefd126c65c9d873498cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
