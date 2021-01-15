@@ -16,6 +16,24 @@
       "message": "You don\u0027t really need to test this again, right?",
       "revId": "b315de66bfca4352a82f2679b683b42f25888817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff339dc_ac413a91",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-01-15T02:32:19Z",
+      "side": 1,
+      "message": "Yes. Let\u0027s remove it.",
+      "parentUuid": "30c8ed71_b427ce16",
+      "revId": "b315de66bfca4352a82f2679b683b42f25888817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
