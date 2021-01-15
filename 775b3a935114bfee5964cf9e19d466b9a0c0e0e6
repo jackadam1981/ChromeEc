@@ -34,6 +34,23 @@
       "parentUuid": "9974b055_3a68bff9",
       "revId": "775b3a935114bfee5964cf9e19d466b9a0c0e0e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9eafb45_f20164a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-15T18:46:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure there\u0027s a good way to recover the commit history from zephyr-chrome here. +1 from my end, but I\u0027ll let you guys figure out how exactly to get these files added.",
+      "revId": "775b3a935114bfee5964cf9e19d466b9a0c0e0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
