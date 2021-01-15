@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0160adf_a44779b9",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-15T09:04:13Z",
+      "side": 1,
+      "message": "Oh.. yes. Actually I\u0027ve tested building this patchset without top patch applied, thus haven\u0027t seen compilation error. Thanks! Corrected in next version.",
+      "parentUuid": "e47c08b7_f1a9cc81",
+      "range": {
+        "startLine": 228,
+        "startChar": 39,
+        "endLine": 228,
+        "endChar": 40
+      },
+      "revId": "a2aedf40b319e58cfde9fe10411439b958f5ca2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e28a6be2_af998fea",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-14T20:03:54Z",
       "side": 1,
       "message": "Here too",
+      "range": {
+        "startLine": 233,
+        "startChar": 39,
+        "endLine": 233,
+        "endChar": 40
+      },
+      "revId": "a2aedf40b319e58cfde9fe10411439b958f5ca2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa184df_1ce41208",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-15T09:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e28a6be2_af998fea",
       "range": {
         "startLine": 233,
         "startChar": 39,
