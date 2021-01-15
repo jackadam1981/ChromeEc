@@ -25,6 +25,22 @@
 			USB_PD_MUX_USB4_ENABLED)
 
 static mux_state_t virtual_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+static bool virtual_mux_disconnect_flag[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+/*
+ * Set disconnect flag if the BB retimer is powered OFF followed by ON.
+ * This flag helps to send disconnect mode configuration to virtual mux
+ */
+static void virtual_set_disconnect_flag(int port, bool flag)
+{
+	virtual_mux_disconnect_flag[port] = flag;
+}
+
+/* Get disconnect mode flag used for sending host event */
+static bool virtual_get_disconnect_flag(int port)
+{
+	return (virtual_mux_disconnect_flag[port]);
+}
 
 static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 {
@@ -65,6 +81,8 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 
 static int virtual_init(const struct usb_mux *me)
 {
+	virtual_set_disconnect_flag(me->usb_port, true);
+
 	return EC_SUCCESS;
 }
 
@@ -111,8 +129,11 @@ void virtual_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
 	virtual_mux_update_state(port, new_mux_state);
 }
 
+
 const struct usb_mux_driver virtual_usb_mux_driver = {
 	.init = virtual_init,
 	.set = virtual_set_mux,
 	.get = virtual_get_mux,
+	.set_disc_flag = virtual_set_disconnect_flag,
+	.get_disc_flag = virtual_get_disconnect_flag,
 };
