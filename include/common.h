@@ -472,8 +472,23 @@ enum ec_error_list {
  * This follows the same constraints as IS_ENABLED, the config option
  * should be defined to nothing or undefined.
  */
+#ifndef CONFIG_ZEPHYR
 #define STATIC_IF(option)						\
 	__cfg_select_build_assert(#option, option, static, extern)
+#else
+/*
+ * For Zephyr, we must create a new version of STATIC_IF which is compatible
+ * with both Zephyr Kconfig enables (which use a value of 1 for enabled) and
+ * CrOS EC defines (which are defined to the empty string).
+ *
+ * To do this, we use __cfg_select from this codebase to determine if the option
+ * was defined to nothin ("enabled" in CrOS EC terms). If not, then we check
+ * using Zephyr's COND_CODE_1 macro to determine if the config option is enabled
+ * by Zephyr's definition.
+ */
+#define STATIC_IF(option) \
+	__cfg_select(option, static, COND_CODE_1(option, (static), (extern)))
+#endif /* CONFIG_ZEPHYR */
 
 /**
  * STATIC_IF_NOT is just like STATIC_IF, but makes the variable static
@@ -482,7 +497,22 @@ enum ec_error_list {
  * This is to assert that a variable will go unused with a certain
  * config option.
  */
+#ifndef CONFIG_ZEPHYR
 #define STATIC_IF_NOT(option)						\
 	__cfg_select_build_assert(#option, option, extern, static)
+#else
+/*
+ * For Zephyr, we must create a new version of STATIC_IF which is compatible
+ * with both Zephyr Kconfig enables (which use a value of 1 for enabled) and
+ * CrOS EC defines (which are defined to the empty string).
+ *
+ * To do this, we use __cfg_select from this codebase to determine if the option
+ * was defined to nothin ("enabled" in CrOS EC terms). If not, then we check
+ * using Zephyr's COND_CODE_1 macro to determine if the config option is enabled
+ * by Zephyr's definition.
+ */
+#define STATIC_IF_NOT(option) \
+	__cfg_select(option, extern, COND_CODE_1(option, (extern), (static)))
+#endif /* CONFIG_ZEPHYR */
 
 #endif  /* __CROS_EC_COMMON_H */
