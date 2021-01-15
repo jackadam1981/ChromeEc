@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc9d009_b2e11a9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-15T18:53:16Z",
+      "side": 1,
+      "message": "Ah, it\u0027s grown up into a real driver. This LGTM. Although, I might split it into two CLs: one adding the driver, and the other enabling it for servo_v4p1.",
+      "revId": "6f4be32e5ae96edd245f63ca37820df115c801b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b08b64_25524076",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-15T18:53:16Z",
+      "side": 1,
+      "message": "What\u0027s this about? It seems like `set_usb_mux_with_current_data_role()` would do the right thing?",
+      "revId": "6f4be32e5ae96edd245f63ca37820df115c801b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
