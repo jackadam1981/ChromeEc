@@ -16,6 +16,24 @@
       "message": "Doesn\u0027t this need to be aligned with what we are advertising via our Rp setting?",
       "revId": "e6bb5c0dc890c6ac716737bd9a53107de73676c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a785bd_a4ff921e",
+        "filename": "board/dirinboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-01-15T01:36:36Z",
+      "side": 1,
+      "message": "Hi Edward\nIn the bug, our thermal guy have some test that user will not trigger this condition in daily use .",
+      "parentUuid": "a2048073_36f3cd56",
+      "revId": "e6bb5c0dc890c6ac716737bd9a53107de73676c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
