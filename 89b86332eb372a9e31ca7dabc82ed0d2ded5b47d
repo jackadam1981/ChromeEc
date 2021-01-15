@@ -16,6 +16,23 @@
       "message": "We got a report that the IDLE mode switching frequency of ln9310 was around 15 kHz and that this was causing audible noise from resonance in the MLCC.  They requested to adjust the frequency of light load so this CL sets the LB_MIN_FREQ_SEL bit to 1 which enforces a 25 kHz minimum switching frequency.  I haven\u0027t found a bug report in the tracker yet but am checking to see if they created one.",
       "revId": "89b86332eb372a9e31ca7dabc82ed0d2ded5b47d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6828294_e6dcb2ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1482710
+      },
+      "writtenOn": "2021-01-15T19:33:10Z",
+      "side": 1,
+      "message": "Looks good",
+      "revId": "89b86332eb372a9e31ca7dabc82ed0d2ded5b47d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
