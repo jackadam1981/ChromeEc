@@ -1957,7 +1957,7 @@ static void pe_src_startup_entry(int port)
 
 	/* Set initial power role */
 	pe[port].power_role = PD_ROLE_SOURCE;
-
+	gpio_set_level(GPIO_USB_A_LOW_PWR_OD, 1);
 	/* Clear explicit contract. */
 	pe_invalidate_explicit_contract(port);
 
@@ -2831,7 +2831,7 @@ static void pe_snk_startup_entry(int port)
 
 	/* Set initial power role */
 	pe[port].power_role = PD_ROLE_SINK;
-
+	gpio_set_level(GPIO_USB_A_LOW_PWR_OD, 0);
 	/* Invalidate explicit contract */
 	pe_invalidate_explicit_contract(port);
 
