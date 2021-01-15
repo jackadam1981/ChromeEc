@@ -194,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "912238cd_36282410",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2021-01-15T03:31:03Z",
+      "side": 1,
+      "message": "0x82 is related to 0x81[6:4]. However, 0x82 is not modified in initial flow so it is not shown.",
+      "parentUuid": "01dd975b_59aecdd5",
+      "range": {
+        "startLine": 78,
+        "startChar": 40,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c21af59_ac9fd3fb",
