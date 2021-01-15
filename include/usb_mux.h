@@ -76,6 +76,23 @@ struct usb_mux_driver {
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
 	int (*chipset_reset)(const struct usb_mux *me);
+
+	/**
+	 * Set the disconnection flag if the Type-C devices are disconnected and
+	 * the information is not yet updated to Kernel Mux driver.
+	 *
+	 * @param port port number
+	 * @param flag true or false
+	 */
+	void (*set_disc_flag)(int port, bool flag);
+
+	/**
+	 * Get the disconnection flag so that the Kernel Mux driver doesn't
+	 * miss the unnoticed disconnection status.
+	 *
+	 * @param port port number.
+	 */
+	bool (*get_disc_flag)(int port);
 };
 
 /* Describes a USB mux present in the system */
@@ -239,5 +256,23 @@ void usb_mux_flip(int port);
  * @param hpd_irq HPD IRQ.
  */
 void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq);
+
+/**
+ * Get the disconnect latch flag so that the Kernel Mux driver doesn't
+ * miss the unnoticed disconnection status.
+ *
+ * @param port port number.
+ * @return status of disconnect latch flag
+ */
+bool usb_mux_get_disconnect_latch_flag(int port);
+
+/**
+ * Set the disconnect latch flag if the Type-C devices are disconnected and
+ * the information is not yet updated to Kernel Mux driver.
+ *
+ * @param port port number
+ * @param enable whether to enable or disable the disconnect latch flag
+ */
+void usb_mux_set_disconnect_latch_flag(int port, bool enable);
 
 #endif
