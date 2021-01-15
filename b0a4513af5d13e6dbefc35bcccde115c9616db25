@@ -16,6 +16,24 @@
       "message": "Can this be a boolean function argument to the hibernate function rather than a CONFIG?\n\nEx.bool disable_adc\n\nThen madoo can disable the ADC on the secondary charger, but not the primary with the argument from its board file",
       "revId": "b0a4513af5d13e6dbefc35bcccde115c9616db25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78bb2d71_9b565b2c",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2021-01-15T09:52:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339a570b_eaccaf49",
+      "revId": "b0a4513af5d13e6dbefc35bcccde115c9616db25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
