@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fb4993_d589ee39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-15T17:07:02Z",
+      "side": 1,
+      "message": "Summarizing out-of-band discussion with Eric:\n\u003e PD 3.0, section 5.8.6 contains the requirements for detecting non-idle. The receiver must detect nTransitionCount transitions within tTransitionWindow, where nTransitionCount is at least 3, and tTransitionWindow is 12-20 us. Although no maximum is listed for nTransitionCount, an arbitrarily high value would prevent any non-idle detection. It seems reasonable to interpret Table 5-19 to mean that nTransitionCount should be 3.\n\n\u003e The default behavior of the RT1715 sets nTransitionCount \u003d 3 (CTRL1[TRANSCNT]) and tTransitionWindow \u003d 46.67 us (unnamed register at 0x82). This value of tTransitionWindow is non-compliant.\n\n\u003e This CL changes nTransitionCount to 7 and leaves tTransitionWindow at 46.67 us, approximately doubling the threshold for non-idle detection within this approximately double-spec-size window.\n\nFor improving noise rejection, would it be as effective to leave nTransitionCount \u003d 3 and set tTransitionWindow to 20 us? That seems like a more compliant solution.\n\nIf this discussion is non-trivial, we can revisit it in a future CL. I\u0027m OK with finishing up this one, because it seems to improve test results.",
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c43a8708_3eb52448",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-15T17:07:02Z",
+      "side": 1,
+      "message": "Comment what this field does.",
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1bc1d6_d096f381",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-15T17:07:02Z",
+      "side": 1,
+      "message": "If it\u0027s 2.25 us, shouldn\u0027t the name be ..._2_25US instead of ..._22_5US?",
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed12f486_abcc9974",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-15T17:07:02Z",
+      "side": 1,
+      "message": "Nit: Decimal (54) would be slightly more expressive for the value, since it\u0027s just being used as number.",
+      "range": {
+        "startLine": 33,
+        "startChar": 48,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

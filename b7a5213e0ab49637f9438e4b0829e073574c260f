@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7cf97ba_1edafe65",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-15T17:07:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "77c734b2_79f9a3b2",
+      "range": {
+        "startLine": 25,
+        "startChar": 33,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1e09fa0_e6aa92ef",
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "update to Set10",
       "parentUuid": "d1e09fa0_e6aa92ef",
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a41c568_6bf6259a",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-15T17:07:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b0b0883_87984968",
       "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +179,30 @@
       "side": 1,
       "message": "update to Set10",
       "parentUuid": "b4b2dc6d_b3ce14cd",
+      "range": {
+        "startLine": 75,
+        "startChar": 10,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f47ca0f_6eca72de",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-15T17:07:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3787114e_548e0693",
       "range": {
         "startLine": 75,
         "startChar": 10,
@@ -220,6 +286,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1856696e_d99a7146",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-15T17:07:02Z",
+      "side": 1,
+      "message": "See discussion of nTransitionCount and tTransitionWindow on entire CL. I\u0027m interested in the possibility of changing this register value and would like it to be documented for that reason.",
+      "parentUuid": "912238cd_36282410",
+      "range": {
+        "startLine": 78,
+        "startChar": 40,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c21af59_ac9fd3fb",
         "filename": "driver/tcpm/rt1715.c",
         "patchSetId": 8
@@ -255,6 +345,30 @@
       "side": 1,
       "message": "update to Set10",
       "parentUuid": "8c21af59_ac9fd3fb",
+      "range": {
+        "startLine": 80,
+        "startChar": 45,
+        "endLine": 80,
+        "endChar": 49
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfdf494_b96e2320",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-15T17:07:02Z",
+      "side": 1,
+      "message": "Done, but see discussion of TRXFILTER in header file.",
+      "parentUuid": "0013fb32_5e6b327b",
       "range": {
         "startLine": 80,
         "startChar": 45,
@@ -302,6 +416,30 @@
       "side": 1,
       "message": "update to Set10",
       "parentUuid": "21bf669a_b689924c",
+      "range": {
+        "startLine": 91,
+        "startChar": 45,
+        "endLine": 91,
+        "endChar": 49
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb41ef26_86ef20ee",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-15T17:07:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6597388_e56d1375",
       "range": {
         "startLine": 91,
         "startChar": 45,
