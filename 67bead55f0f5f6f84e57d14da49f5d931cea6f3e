@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ef870c_81badcd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T18:54:11Z",
+      "side": 1,
+      "message": "You need to delete zephyr/projects/volteer/src/pwr_ok_signals.c and update the CMakeLists to point to the baseboard/power.c",
+      "revId": "67bead55f0f5f6f84e57d14da49f5d931cea6f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
