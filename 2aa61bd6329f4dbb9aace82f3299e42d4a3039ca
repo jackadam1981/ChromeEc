@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4921dd90_b0432495",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T17:29:28Z",
+      "side": 1,
+      "message": "This enables support for USB Type-C connector voltage (VCONN). This is option must be enabled communicate with electronically marked (E-Mark) cables. This option is required for operation with USB4 and Thunderbolt devices.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 0
+      },
+      "revId": "2aa61bd6329f4dbb9aace82f3299e42d4a3039ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c44bc9_0704b12b",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T17:29:28Z",
+      "side": 1,
+      "message": "I think the CONFIG_USBC_VCONN an CONFIG_USBC_VCONN_SWAP options are redundant.  I don\u0027t think it\u0027s actually possible to run with only one of these defined.\n\nFor now let\u0027s skip a KConfig for VCONN_SWAP and enable CONFIG_USBC_VCONN_SWAP in config_chip.h if CONFIG_PLATFORM_EC_USBC_VCONN is enabled. \n\nI\u0027ll check with Diana on this and open a bug.",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 0
+      },
+      "revId": "2aa61bd6329f4dbb9aace82f3299e42d4a3039ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba4459a_1c30c216",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T17:29:28Z",
+      "side": 1,
+      "message": "Move this under #ifdef CONFIG_PLATFORM_EC_USBC_VCONN for now.",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 30
+      },
+      "revId": "2aa61bd6329f4dbb9aace82f3299e42d4a3039ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
