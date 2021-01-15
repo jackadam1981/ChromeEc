@@ -52,6 +52,23 @@
       "parentUuid": "80a785bd_a4ff921e",
       "revId": "e6bb5c0dc890c6ac716737bd9a53107de73676c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c3d3ec_112276be",
+        "filename": "board/dirinboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-01-15T03:25:58Z",
+      "side": 1,
+      "message": "This will replace the baseboard defaults, which is probably not what you want. Copy from variant_dalboz.c and modify TEMP_SENSOR_CHARGER.",
+      "revId": "e6bb5c0dc890c6ac716737bd9a53107de73676c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
