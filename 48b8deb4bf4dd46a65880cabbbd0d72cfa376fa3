@@ -16,6 +16,23 @@
       "message": "second path will be with more comments",
       "revId": "48b8deb4bf4dd46a65880cabbbd0d72cfa376fa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b11c6e45_0769a7d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-15T17:34:11Z",
+      "side": 1,
+      "message": "Could you briefly describe why this is needed?\n\n1. Whenever there is a change in the mux state, EC_HOST_EVENT_USB_MUX and hc_usb_pd_mux_info() will get triggered.\n2. We are already stuffing the enabled bit in the host command. In case of disconnect, shouldn\u0027t this\nalready be 0 since we are checking for communication enabled, device connected and partner is PD capable?\n3. This patch might not work for boards not supporting virtual mux",
+      "revId": "48b8deb4bf4dd46a65880cabbbd0d72cfa376fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
