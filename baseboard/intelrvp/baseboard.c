@@ -25,6 +25,10 @@ const enum gpio_signal hibernate_wake_pins[] = {
 };
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
+#if defined(VARIANT_INTELRVP_EC_NPCX)
+	#define channel input_ch
+#endif
+
 /* ADC channels */
 const struct adc_t adc_channels[] = {
 	[ADC_TEMP_SNS_AMBIENT] = {
