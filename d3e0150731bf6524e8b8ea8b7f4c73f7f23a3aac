@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ad0027_26a3de17",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2509,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-15T17:27:11Z",
+      "side": 1,
+      "message": "Ideally it would be good to set Vsys right before enabling sinking.  Could/should it happen in our board pd_set_power_supply_ready() calls?",
+      "revId": "d3e0150731bf6524e8b8ea8b7f4c73f7f23a3aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
