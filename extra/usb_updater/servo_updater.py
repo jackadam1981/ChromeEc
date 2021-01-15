@@ -82,8 +82,43 @@ def flash2(vidpid, serialno, binfile):
   else:
     raise ServoUpdaterException("%s exit with res = %d" % (cmd, res))
 
+def require_region(tinys, req_region):
+  """
+  Ensure the servo is in the expected ro/rw region.
+  This function calls 'select' to the required region and verify if jump was
+  successful by executing 'sysinfo' command and reading current region.
+  If response was not received or region was different, it will retry up
+  to 10 times.
+  """
+
+  retry = 0
+  while True:
+      try:
+        select(tinys, req_region)
+
+        tinys.close()
+        tinys.reinitialize()
+        
+        res = tinys.pty._issue_cmd_get_results("sysinfo", ["Copy:[\s]+([ROW]{2})"])
+        region = res[0][1].lower()
+        if region != req_region:
+          raise Exception("Invalid region: %s/%s" % (region, req_region))
+      except Exception as e:
+        if retry < 10:
+          print("Retrying to get region...: %s" % e)
+          retry = retry + 1
+          time.sleep(1)
+          continue
+        else:
+          break
+      break
+  
+  if req_region != region:
+    print("\nInvalid region!\n")
+    exit()
+
 def select(tinys, region):
-  """Ensure the servo is in the expected ro/rw partition."""
+  """Execute sysjump or reboot to the expected ro/rw partition."""
 
   if region not in ["rw", "ro"]:
     raise Exception("Region must be ro or rw")
@@ -92,9 +127,22 @@ def select(tinys, region):
     cmd = "reboot"
   else:
     cmd = "sysjump %s" % region
-  tinys.pty._issue_cmd(cmd)
+
+  retry = 0
+  while True:
+    try:
+      res = tinys.pty._issue_cmd(cmd)
+    except Exception as e:
+      if retry < 3:
+        print("Retrying to change region - {}".format(e))
+        retry = retry + 1
+        time.sleep(1)
+        continue
+      else:
+        raise
+    break
+
   time.sleep(2)
-  tinys.reinitialize()
 
 def do_version(tinys):
   """Check version via ec console 'pty'.
@@ -113,7 +161,17 @@ def do_version(tinys):
   cmd = '\r\nversion\r\n'
   regex = 'Build:\s+(\S+)[\r\n]+'
 
-  results = tinys.pty._issue_cmd_get_results(cmd, [regex])[0]
+  retry = 0
+  while True:
+    try:
+      results = tinys.pty._issue_cmd_get_results(cmd, [regex])[0]
+    except:
+      if retry < 3:
+        print("Retrying to get version...")
+        retry = retry + 1
+        time.sleep(1)
+        continue
+    break
 
   return results[1].strip(' \t\r\n\0')
 
@@ -273,14 +331,16 @@ def main():
     else:
       print("Updating to recommended version.")
 
-
   # Make sure the servo MCU is in RO
-  select(tinys, 'ro')
-
+  print("===== Jumping to RO =====")
+  require_region(tinys, 'ro')
+  
+  print("===== Flashing RW =====")
   vers = do_updater_version(tinys)
   # To make sure that the tiny_servod here does not interfere with other
   # processes, close it out.
   tinys.close()
+
   if vers == 2:
     flash(brdfile, serialno, binfile)
   elif vers == 6:
@@ -294,9 +354,12 @@ def main():
   tinys.reinitialize()
 
   # Make sure the servo MCU is in RW
-  select(tinys, 'rw')
-
+  print("===== Jumping to RW =====")
+  require_region(tinys, 'rw')
+  
+  print("===== Flashing RO =====")
   vers = do_updater_version(tinys)
+
   if vers == 2:
     flash(brdfile, serialno, binfile)
   elif vers == 6:
@@ -305,7 +368,8 @@ def main():
     raise ServoUpdaterException("Can't detect updater version")
 
   # Make sure the servo MCU is in RO
-  select(tinys, 'ro')
+  print("===== Rebooting =====")
+  require_region(tinys, 'ro')
 
 if __name__ == "__main__":
   main()
