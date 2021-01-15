@@ -16,6 +16,24 @@
       "message": "Which board are we working on, Jack? :-)",
       "revId": "49357d95beeaef1c015067d169b784682dbb24f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2ab687a_707b2603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-15T20:33:11Z",
+      "side": 1,
+      "message": "good to have variety. also kohaku is a publicly-launched device, so easier for an external contributor to obtain if they wanted\n\nactually with this kohaku port I may have caught a bug with host commands I didn\u0027t notice with volteer, so it\u0027s giving us some value ;)",
+      "parentUuid": "f3cff7d5_7d21ae6a",
+      "revId": "49357d95beeaef1c015067d169b784682dbb24f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
