@@ -76,6 +76,25 @@ struct usb_mux_driver {
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
 	int (*chipset_reset)(const struct usb_mux *me);
+
+	/**
+	 * If the BB retimer is powered OFF followed by ON then virtual mux should
+	 * be configured to disconnect mode.
+	 * Set disconnect flag to true if retimer is powerd OFF followed by ON
+	 *
+	 * @param port port number
+	 * @param flag true or false
+	 */
+	void (*set_disc_flag)(int port, bool flag);
+
+	/**
+	 * Get Virtual Mux Disconnect Flag. If the flag is set send disconnect
+	 * mode first to virtual mux before sending any other modes. Missing
+	 * disconnect mode in virtual mux leads to display issues.
+	 *
+	 * @param port port number.
+	 */
+	bool (*get_disc_flag)(int port);
 };
 
 /* Describes a USB mux present in the system */
@@ -238,5 +257,24 @@ void usb_mux_flip(int port);
  * @param hpd_irq HPD IRQ.
  */
 void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq);
+
+/**
+ * Get Virtual Mux Disconnect Flag. If the flag is set send disconnect
+ * mode first to virtual mux before sending any other modes. Missing
+ * disconnect mode in virtual mux leads to display issues.
+ *
+ * @param port port number.
+ */
+bool usb_mux_get_disc_flag(int port);
+
+/**
+ * If the BB retimer is powered OFF followed by ON then virtual mux should
+ * be configured to disconnect mode.
+ * Set disconnect flag to true if retimer is powerd OFF followed by ON
+ *
+ * @param port port number
+ * @param flag true or false
+ */
+void usb_mux_set_disc_flag(int port, bool flag);
 
 #endif

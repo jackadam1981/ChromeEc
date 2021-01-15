@@ -246,6 +246,47 @@ mux_state_t usb_mux_get(int port)
 	return rv ? USB_PD_MUX_NONE : mux_state;
 }
 
+/* Get USB MUX (virtual MUX) disconnect flag */
+bool usb_mux_get_disc_flag(int port)
+{
+	const struct usb_mux *me = &usb_muxes[port];
+	bool rv = false;
+
+	if (port >= board_get_usb_pd_port_count())
+		return rv;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return rv;
+
+	for (; me; me = me->next_mux) {
+		const struct usb_mux_driver *drv = me->driver;
+
+		if (drv && drv->get_disc_flag)
+			rv= drv->get_disc_flag(me->usb_port);
+	}
+
+	return rv;
+}
+
+/* Set USB MUX (virtual MUX) disconnect flag */
+void usb_mux_set_disc_flag(int port, bool flag)
+{
+	const struct usb_mux *me = &usb_muxes[port];
+
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return;
+
+	for (; me; me = me->next_mux) {
+		const struct usb_mux_driver *drv = me->driver;
+
+		if (drv && drv->set_disc_flag)
+			drv->set_disc_flag(me->usb_port, flag);
+	}
+}
+
 void usb_mux_flip(int port)
 {
 	mux_state_t mux_state;
@@ -365,6 +406,20 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 
 	r->flags = mux_state;
+
+	/*
+         * Force disconnect mode if disconnect flag is set
+         * Send host event for configuring the latest mux state
+         */
+	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL)) {
+		if (usb_mux_get_disc_flag(port)) {
+			r->flags = USB_PD_MUX_NONE;
+			usb_mux_set_disc_flag(port, false);
+			args->response_size = sizeof(*r);
+			host_set_single_event(EC_HOST_EVENT_USB_MUX);
+			return EC_RES_SUCCESS;
+		}
+	}
 
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
