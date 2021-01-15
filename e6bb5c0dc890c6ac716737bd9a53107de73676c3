@@ -34,6 +34,24 @@
       "parentUuid": "a2048073_36f3cd56",
       "revId": "e6bb5c0dc890c6ac716737bd9a53107de73676c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b18c0f79_a4267dad",
+        "filename": "board/dirinboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1451625
+      },
+      "writtenOn": "2021-01-15T02:06:12Z",
+      "side": 1,
+      "message": "Hi Edward,\n    From dogfooder scenario verified, which wound not trigger this condition.",
+      "parentUuid": "80a785bd_a4ff921e",
+      "revId": "e6bb5c0dc890c6ac716737bd9a53107de73676c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
