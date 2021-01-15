@@ -181,7 +181,7 @@ int watchdog_init(void)
 	 * 3. Set RST to upload TWDT0 & WDCNT
 	 */
 	/* Set WDCNT --> WDCNT=0 will generate watchdog reset */
-	NPCX_WDCNT = WDCNT_VALUE + WDCNT_DELAY;
+	NPCX_WDCNT = MIN(WDCNT_VALUE + WDCNT_DELAY, INT8_MAX);
 
 	/* Disable interrupt */
 	interrupt_disable();
