@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e24e736_644580a3",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:09:04Z",
+      "side": 1,
+      "message": "That sounds good, I\u0027ve been wondering what we could do about it. I\u0027ll write a bug and assign to Jack :-)",
+      "parentUuid": "791b2f09_5c85d78a",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "1a3cfc106a82b65fe4236f09cb2426e01f9e6be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37f2b320_f7e6eed2",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-01-15T19:02:48Z",
       "side": 1,
       "message": "Add a TODO for CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT and CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE",
+      "revId": "1a3cfc106a82b65fe4236f09cb2426e01f9e6be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "360117c6_d3b434c6",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37f2b320_f7e6eed2",
       "revId": "1a3cfc106a82b65fe4236f09cb2426e01f9e6be5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
