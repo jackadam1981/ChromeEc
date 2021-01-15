@@ -16,6 +16,7 @@
 #include "i2c.h"
 #include "isl923x.h"
 #include "ocpc.h"
+#include "stdbool.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -766,6 +767,11 @@ out:
 }
 
 #ifdef CONFIG_CHARGER_RAA489000
+__overridable bool raa489000_disable_adc(int port)
+{
+	return true;
+}
+
 void raa489000_hibernate(int chgnum)
 {
 	int rv, regval;
@@ -812,10 +818,12 @@ void raa489000_hibernate(int chgnum)
 
 	rv = raw_read16(chgnum, ISL9238_REG_CONTROL3, &regval);
 	if (!rv) {
-		/* ADC is active only when adapter plugged in */
-		regval &= ~RAA489000_ENABLE_ADC;
+		if (raa489000_disable_adc(chgnum)) {
+			/* ADC is active only when adapter plugged in */
+			regval &= ~RAA489000_ENABLE_ADC;
 
-		rv = raw_write16(chgnum, ISL9238_REG_CONTROL3, regval);
+			rv = raw_write16(chgnum, ISL9238_REG_CONTROL3, regval);
+		}
 	}
 	if (rv)
 		CPRINTS("%s(%d): Failed to set Control3!", __func__, chgnum);
