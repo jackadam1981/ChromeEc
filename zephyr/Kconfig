@@ -64,6 +64,21 @@ config PLATFORM_EC_ACPI
 	  Enable shimming the ACPI handler, which will handle the Host data from
 	  the ACPI I/O port for X86 AP.
 
+config PLATFORM_EC_BRINGUP
+	bool "Enable early bringup debugging features"
+	help
+	  Enable the CONFIG_BRINGUP platform/ec configuration option,
+	  turning on a variety of miscellaneous early bringup
+	  debugging features.
+
+	  These features include:
+	  - The device will not power on when the EC starts.  The
+	    power button will need to be pressed, or the "powerbtn"
+	    command issued.
+	  - Enable power signal logging, showing relative timestamps
+	    for each power signal change.
+	  - And more!
+
 config PLATFORM_EC_CBI
 	bool "CBI EEPROM support"
 	depends on PLATFORM_EC_I2C
