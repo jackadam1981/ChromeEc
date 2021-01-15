@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791b2f09_5c85d78a",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T19:02:48Z",
+      "side": 1,
+      "message": "This seems to be a common change we\u0027re making for all mutexes.\n\nWhat do think about moving the inited flag into task.h?\n\n#ifdef CONFIG_ZEPHYR\nstruct mutex {\n     struct k_mutex kmutex;\n     bool initialied;\n}\n\nmutex_lock(struct mutex *mutex)\n{\n    if (!mutex-\u003einitialized)\n        k_mutex_init(\u0026mutex-\u003ekmutex);\n        mutex-\u003einitialized \u003d true;\n\n    k_mutex_lock(\u0026mutex-\u003ekmutex):\n}",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "1a3cfc106a82b65fe4236f09cb2426e01f9e6be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f2b320_f7e6eed2",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T19:02:48Z",
+      "side": 1,
+      "message": "Add a TODO for CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT and CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE",
+      "revId": "1a3cfc106a82b65fe4236f09cb2426e01f9e6be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
