@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6354a6e8_c9601902",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T16:57:13Z",
+      "side": 1,
+      "message": "Please add a more detailed description here.\n\n\"The \u0027ectool\u0027 command was not able to set the battery LED color.\nWhen no AC adapter is connected, that battery LED code temporarily turns of all LEDs until the next HOST_TICK.  Bypass this check if the host has disabled LED auto control.\"",
+      "revId": "b89b881fa6860c81cc63ffed892e12b2a0e0cfd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d68e968_ca07b881",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T16:57:13Z",
+      "side": 1,
+      "message": "This can be deleted.  This is already done in led_common.c\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/a0417d4c/common/led_common.c#75",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 30
+      },
+      "revId": "b89b881fa6860c81cc63ffed892e12b2a0e0cfd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
