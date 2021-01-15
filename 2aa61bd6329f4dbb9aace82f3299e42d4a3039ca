@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb92b3d_50ddf525",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4921dd90_b0432495",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 0
+      },
+      "revId": "2aa61bd6329f4dbb9aace82f3299e42d4a3039ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2c44bc9_0704b12b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe5e35a_a8a0e806",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2c44bc9_0704b12b",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 0
+      },
+      "revId": "2aa61bd6329f4dbb9aace82f3299e42d4a3039ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ba4459a_1c30c216",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-15T17:29:28Z",
       "side": 1,
       "message": "Move this under #ifdef CONFIG_PLATFORM_EC_USBC_VCONN for now.",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 30
+      },
+      "revId": "2aa61bd6329f4dbb9aace82f3299e42d4a3039ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7308686b_d3e278dd",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ba4459a_1c30c216",
       "range": {
         "startLine": 527,
         "startChar": 0,
