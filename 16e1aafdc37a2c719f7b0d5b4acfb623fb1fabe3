@@ -16,6 +16,24 @@
       "message": "Can you elaborate on this state?  Is this an error or transient state?  If we\u0027ve fully charged, then I\u0027d expect STATE_CHARGING_FULL_CHARGE state to cover AC present but not charging (currently set to white/indefinite)",
       "revId": "16e1aafdc37a2c719f7b0d5b4acfb623fb1fabe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ed2a04_82823fd5",
+        "filename": "board/madoo/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2021-01-15T09:51:23Z",
+      "side": 1,
+      "message": "The intended behavior is to turn off LED when battery(gauge) triggers the protection itself, like OTP, OCP, etc. \nTherefore, when AC is present, I used \"charging current\" as condition to achieve this feature.\nYet you were right, I didn\u0027t notice the condition that when battery is fully charged, the LED should keep white.\nI\u0027ll think of something to cover the corner case, or do you have any suggestion on this?",
+      "parentUuid": "02d77bdf_f83f57b8",
+      "revId": "16e1aafdc37a2c719f7b0d5b4acfb623fb1fabe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
