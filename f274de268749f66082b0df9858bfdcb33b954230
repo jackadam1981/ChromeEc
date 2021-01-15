@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa34dea_7617170a",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:25:13Z",
+      "side": 1,
+      "message": "This must be defined if S0IX is enabled...but I suspect it would be better to add a Kconfig for this, with a \u0027select\u0027 for it in PLATFORM_EC_POWERSEQ_S0IX ?\n\nUp until now we have tried to use the same name for the Kconfig as the CONFIG and have a 1:1 correspondence. I worry that this might get confusing.",
+      "range": {
+        "startLine": 189,
+        "startChar": 8,
+        "endLine": 189,
+        "endChar": 43
+      },
+      "revId": "f274de268749f66082b0df9858bfdcb33b954230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
