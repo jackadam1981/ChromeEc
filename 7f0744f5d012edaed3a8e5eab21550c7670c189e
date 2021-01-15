@@ -22,6 +22,30 @@
       },
       "revId": "7f0744f5d012edaed3a8e5eab21550c7670c189e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c618bfe6_66dfb588",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T16:57:11Z",
+      "side": 1,
+      "message": "done\n\nThe pre-upload hook complained about the long line\n\nI am not used to splitting strings across lines since people search for them...\n\nbut I suppose people are most likely to search for the first part.",
+      "parentUuid": "dae09115_51ce96cd",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 111
+      },
+      "revId": "7f0744f5d012edaed3a8e5eab21550c7670c189e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
