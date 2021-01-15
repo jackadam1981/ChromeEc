@@ -16,6 +16,24 @@
       "message": "Ideally it would be good to set Vsys right before enabling sinking.  Could/should it happen in our board pd_set_power_supply_ready() calls?",
       "revId": "d3e0150731bf6524e8b8ea8b7f4c73f7f23a3aac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3c2373a_04a6ad98",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2509,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-15T20:09:08Z",
+      "side": 1,
+      "message": "set power supply ready is for sourcing right?\n\nSo initially, I thought about using the PD connect hook, but from that point it\u0027s hard to determine if the port is a sink or not. Although, perhaps I could use pd_get_power_role()...",
+      "parentUuid": "d4ad0027_26a3de17",
+      "revId": "d3e0150731bf6524e8b8ea8b7f4c73f7f23a3aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
