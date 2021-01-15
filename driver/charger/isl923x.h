@@ -6,6 +6,7 @@
  * Also supports Renesas RAA489000 battery charger.
  */
 
+
 #ifndef __CROS_EC_ISL923X_H
 #define __CROS_EC_ISL923X_H
 

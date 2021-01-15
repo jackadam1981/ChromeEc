@@ -204,6 +204,11 @@ void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+__override bool raa489000_disable_adc(int port)
+{
+	return (port == CHARGER_PRIMARY) ? 0 : 1;
+}
+
 void board_hibernate(void)
 {
 	/*
