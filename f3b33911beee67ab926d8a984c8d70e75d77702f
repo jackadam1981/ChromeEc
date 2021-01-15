@@ -67,6 +67,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b143457c_7411df17",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T22:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08af8900_31902546",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "f3b33911beee67ab926d8a984c8d70e75d77702f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b17158aa_9ac47529",
         "filename": "zephyr/shim/include/zephyr_host_command.h",
         "patchSetId": 2
