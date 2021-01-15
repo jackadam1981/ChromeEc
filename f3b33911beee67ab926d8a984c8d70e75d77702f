@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d035df_2029bc93",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-15T22:38:05Z",
+      "side": 1,
+      "message": "would need something along those lines from zephyr\n\n... regardless, this impl is sufficient for now... land now, optimize later",
+      "parentUuid": "e8bfe76f_1e156e00",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "f3b33911beee67ab926d8a984c8d70e75d77702f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e685d5da_3a3a94d7",
