@@ -125,6 +125,7 @@ config PLATFORM_EC_EXTPOWER_GPIO
 # TODO(b/176828988): enable by default once the code can compile
 config PLATFORM_EC_FLASH
 	bool "Enable flash support"
+	default y
 	help
 	  Enables access to the device's flash through a simple API. With
 	  this is it possible for the EC to update its flash while running,
