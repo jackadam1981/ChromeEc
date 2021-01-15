@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0664c9ef_c8b13145",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T20:30:40Z",
+      "side": 1,
+      "message": "Is this needed? Won\u0027t the depends on in KConfig guarantee this is defined when CONFIG_PLATFORM_EC_USB_PD_TCPC_LOW_POWER is enabled?",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 509,
+        "endChar": 58
+      },
+      "revId": "c0470e260cff93145b4de43c507ee7f9b4d84ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
