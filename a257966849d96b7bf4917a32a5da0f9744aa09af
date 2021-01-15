@@ -16,6 +16,23 @@
       "message": "The error message in the latest version as follow.\nIn file included from driver/fingerprint/elan/elan_private.c:23:\ndriver/fingerprint/elan/elan_sensor_pal.h:129:27: error: unknown type name \u0027fp_sensor_info_t\u0027\n int fp_sensor_maintenance(fp_sensor_info_t *fp_sensor_info);\n                           ^~~~~~~~~~~~~~~~\ncc1: error: unrecognized command line option \u0027-Wno-address-of-packed-member\u0027 [-Werror]\ncc1: all warnings being treated as errors\nmake: *** [Makefile.rules:552: build/dartmonkey/RW/driver/fingerprint/elan/elan_private.o] Error 1\n",
       "revId": "a257966849d96b7bf4917a32a5da0f9744aa09af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd4ea579_b1324862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2021-01-15T07:40:53Z",
+      "side": 1,
+      "message": "Fixed error of \"unknown type name\".",
+      "revId": "a257966849d96b7bf4917a32a5da0f9744aa09af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
