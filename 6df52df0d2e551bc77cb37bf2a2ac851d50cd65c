@@ -34,6 +34,23 @@
       "parentUuid": "39ffc0b7_97e7ff29",
       "revId": "6df52df0d2e551bc77cb37bf2a2ac851d50cd65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf82b082_fef6b830",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-15T00:19:59Z",
+      "side": 1,
+      "message": "LGTM, for FP boards.\n\nFWIW, I like to be explicit on variables representing size, so even without Zephyr, I prefer CONFIG_FLASH_SIZE_BYTES over CONFIG_FLASH_SIZE.",
+      "revId": "6df52df0d2e551bc77cb37bf2a2ac851d50cd65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
