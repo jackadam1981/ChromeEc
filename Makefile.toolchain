@@ -102,7 +102,7 @@ else
 CPPFLAGS+=-Og
 endif
 CPPFLAGS+= -DCHROMIUM_EC=$(EMPTY)
-CFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(COMMON_WARN) $(CFLAGS_y)
+CFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(COMMON_WARN) $(CFLAGS_y) -DHAVE_PRIVATE
 CFLAGS+= -ffunction-sections -fshort-wchar
 CFLAGS+= -fno-delete-null-pointer-checks
 ifneq ($(cc-name),clang)
