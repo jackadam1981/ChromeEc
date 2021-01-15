@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74042345_2eaa6454",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T17:39:47Z",
+      "side": 1,
+      "message": "This may not be true - as there may be scenarios in which the board might need to disable this feature  (for instance when both the PPC and TCPC can supply VCONN).  \n\nHowever, this is good for now.  Its better to force this setting until we come across a true need to override it.",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 0
+      },
+      "revId": "6981e877a8262af74f8394137540878a891dee5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "557a99a9_230a258e",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T17:39:47Z",
+      "side": 1,
+      "message": "Does KCconfig support selecting this only if PLATFORM_EC_USBC_VCONN is enabled?",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 34
+      },
+      "revId": "6981e877a8262af74f8394137540878a891dee5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
