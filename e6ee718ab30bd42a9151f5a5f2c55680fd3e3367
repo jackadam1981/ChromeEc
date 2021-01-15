@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e214fac9_567eaec2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-15T00:30:28Z",
+      "side": 1,
+      "message": "I added an option in CL:2631353 which allows you to disable instant power-on via a command line flag (--bringup). Hopefully that makes doing this easier for you ;)",
+      "revId": "e6ee718ab30bd42a9151f5a5f2c55680fd3e3367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
