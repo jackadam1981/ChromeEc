@@ -351,4 +351,8 @@ config PLATFORM_EC_CONSOLE_CMD_WAITMS
 
 endif # PLATFORM_EC_TIMER
 
+config PLATFORM_EC_VSTORE
+	bool "Secure temporary storage for verified boot"
+
+
 endif # PLATFORM_EC
