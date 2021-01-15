@@ -46,6 +46,30 @@
       },
       "revId": "7f0744f5d012edaed3a8e5eab21550c7670c189e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c87fdaf_6c41bd6d",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T17:01:21Z",
+      "side": 1,
+      "message": "The #error should point directly to the file and line with the error, so wrapped strings isn\u0027t a concern in this use case.",
+      "parentUuid": "c618bfe6_66dfb588",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 111
+      },
+      "revId": "7f0744f5d012edaed3a8e5eab21550c7670c189e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

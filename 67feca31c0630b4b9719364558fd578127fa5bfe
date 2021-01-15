@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17fadb48_d80e4730",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T17:01:21Z",
+      "side": 1,
+      "message": "Nit - need a space before the \" here.",
+      "range": {
+        "startLine": 23,
+        "startChar": 61,
+        "endLine": 23,
+        "endChar": 64
+      },
+      "revId": "67feca31c0630b4b9719364558fd578127fa5bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5966f2_c961d1b5",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-15T17:01:21Z",
+      "side": 1,
+      "message": "Nit - line length and needs a space before the \".",
+      "range": {
+        "startLine": 29,
+        "startChar": 69,
+        "endLine": 29,
+        "endChar": 79
+      },
+      "revId": "67feca31c0630b4b9719364558fd578127fa5bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
