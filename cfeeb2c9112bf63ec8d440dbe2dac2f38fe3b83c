@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "042f81a8_c89fed3f",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "239744b6_585c7e23",
+      "range": {
+        "startLine": 421,
+        "startChar": 7,
+        "endLine": 421,
+        "endChar": 26
+      },
+      "revId": "cfeeb2c9112bf63ec8d440dbe2dac2f38fe3b83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75ea4827_6f89d0bf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-15T18:39:03Z",
       "side": 1,
       "message": "\"USB PD alternate mode options discovered from the partner device.\"",
+      "range": {
+        "startLine": 423,
+        "startChar": 44,
+        "endLine": 424,
+        "endChar": 12
+      },
+      "revId": "cfeeb2c9112bf63ec8d440dbe2dac2f38fe3b83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53d60a53_4e76e85c",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75ea4827_6f89d0bf",
       "range": {
         "startLine": 423,
         "startChar": 44,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0392f4d2_6ae57476",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a4b358_0a7f4a52",
+      "range": {
+        "startLine": 426,
+        "startChar": 3,
+        "endLine": 426,
+        "endChar": 35
+      },
+      "revId": "cfeeb2c9112bf63ec8d440dbe2dac2f38fe3b83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e275acd2_75438dcd",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b444e7_99cd8f58",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e275acd2_75438dcd",
+      "range": {
+        "startLine": 429,
+        "startChar": 7,
+        "endLine": 429,
+        "endChar": 31
+      },
+      "revId": "cfeeb2c9112bf63ec8d440dbe2dac2f38fe3b83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9fda91d_a352007b",
@@ -106,6 +202,24 @@
       "writtenOn": "2021-01-15T18:39:03Z",
       "side": 1,
       "message": "Example: pdcable 1\nCable Type: Passive\nCable Rev: 1.0\nConnector Type: 2\nCable Current: 5A\nUSB Superspeed Signaling support: 1\nRounded support: No\nOptical cable: No\nRetimer support: No\nLink training: Bi-directional\nThunderbolt cable type: Passive",
+      "revId": "cfeeb2c9112bf63ec8d440dbe2dac2f38fe3b83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "940b3df5_f64ea4d7",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-15T20:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9fda91d_a352007b",
       "revId": "cfeeb2c9112bf63ec8d440dbe2dac2f38fe3b83c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
