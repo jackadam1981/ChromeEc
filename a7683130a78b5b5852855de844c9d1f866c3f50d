@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd464d7_3d468fc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-16T06:18:47Z",
+      "side": 1,
+      "message": "i don\u0027t have the full background here. does the BB driver in the EC codebase retry I2C transactions with the BB to handle the case\nwhere the BB hasn\u0027t initialized far enough to talk I2C?",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 66
+      },
+      "revId": "a7683130a78b5b5852855de844c9d1f866c3f50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
