@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced677d8_ca3d9f72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-16T01:58:39Z",
+      "side": 1,
+      "message": "-1 to at least change to STATIC_IF/IS_ENABLED (or init hook) before submitting...",
+      "revId": "ba4b7c908b565cafc6c4bf93c0309b142867df28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77326f06_869ca449",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-16T01:58:39Z",
+      "side": 1,
+      "message": "should use STATIC_IF....\n\nbut better to just use an init function to handle the init if we can\n\nyes ... there\u0027s the bug out there to do this automatically",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "ba4b7c908b565cafc6c4bf93c0309b142867df28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7431bf1f_05aaa794",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-16T01:58:39Z",
+      "side": 1,
+      "message": "with STATIC_IF above, you can use IS_ENABLED here",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "ba4b7c908b565cafc6c4bf93c0309b142867df28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
