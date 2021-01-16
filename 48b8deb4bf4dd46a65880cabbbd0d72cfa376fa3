@@ -33,6 +33,24 @@
       "message": "Could you briefly describe why this is needed?\n\n1. Whenever there is a change in the mux state, EC_HOST_EVENT_USB_MUX and hc_usb_pd_mux_info() will get triggered.\n2. We are already stuffing the enabled bit in the host command. In case of disconnect, shouldn\u0027t this\nalready be 0 since we are checking for communication enabled, device connected and partner is PD capable?\n3. This patch might not work for boards not supporting virtual mux",
       "revId": "48b8deb4bf4dd46a65880cabbbd0d72cfa376fa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2ed943_de086c9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-16T08:28:46Z",
+      "side": 1,
+      "message": "Thanks Ayushee for the queries and for the quick response.\n[1]. Yes, we are sending the host event whenever there is a change in Mux state. The current design works if the PD, MUX EC commands from AP comes before EC updates the current Mux state to next state.\n\n[2]. I think second query also same as first one. \n\n[3]. This patch will work for all boards. The main function calls have check that checks virtual mux is enabled or not. if not enabled it will send false.\n\nIf my responses are not answered to your queries we can have meeting for discussing more and lets target for better code",
+      "parentUuid": "b11c6e45_0769a7d2",
+      "revId": "48b8deb4bf4dd46a65880cabbbd0d72cfa376fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
