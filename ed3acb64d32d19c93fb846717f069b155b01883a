@@ -39,6 +39,30 @@
       },
       "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a99d26_3c9fbaf4",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-16T07:24:08Z",
+      "side": 1,
+      "message": "for above comment; to reduce BOM internal osc is preferable correct? Is any other reason customer will put external OSC? what action you are asking to perform?",
+      "parentUuid": "e71a74ef_926ff96f",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
