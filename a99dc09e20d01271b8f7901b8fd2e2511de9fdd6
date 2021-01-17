@@ -16,6 +16,23 @@
       "message": "Could help review?",
       "revId": "a99dc09e20d01271b8f7901b8fd2e2511de9fdd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22a75bd_6bb9ae2d",
+        "filename": "board/dirinboz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-01-17T23:39:20Z",
+      "side": 1,
+      "message": "This still needs to copy the other values defined in variant_dalboz.c (TEMP_SENSOR_SOC, TEMP_SENSOR_CPU); this definition completely replaces the one it overrides.",
+      "revId": "a99dc09e20d01271b8f7901b8fd2e2511de9fdd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
