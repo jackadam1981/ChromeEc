@@ -73,6 +73,48 @@
       },
       "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718c2f9e_8972d788",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2021-01-18T02:25:37Z",
+      "side": 1,
+      "message": "Ok, I will modify at next patch",
+      "parentUuid": "ed12f486_abcc9974",
+      "range": {
+        "startLine": 33,
+        "startChar": 48,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc16c66e_ac7743de",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2021-01-18T02:25:37Z",
+      "side": 1,
+      "message": "It is a typo. I will fix it at next patch",
+      "parentUuid": "de1bc1d6_d096f381",
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
