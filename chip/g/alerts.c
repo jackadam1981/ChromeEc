@@ -91,6 +91,9 @@ static void alerts_init(void)
 	for (irq = GC_IRQNUM_GLOBALSEC_CAMO0_BREACH_ALERT_INT;
 		irq <= GC_IRQNUM_GLOBALSEC_XO0_JITTERY_TRIM_DIS_ALERT_INT;
 		irq++) {
+		if (irq == GC_IRQNUM_GLOBALSEC_TEMP0_MAX_TEMP_ALERT_INT) continue;
+		if (irq == GC_IRQNUM_GLOBALSEC_TEMP0_MAX_TEMP_DIFF_ALERT_INT) continue;
+		if (irq == GC_IRQNUM_GLOBALSEC_TEMP0_MIN_TEMP_ALERT_INT) continue;
 		task_enable_irq(irq);
 	}
 }
