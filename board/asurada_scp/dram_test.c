@@ -15,6 +15,7 @@
 
 __SECTION(dram.bss) static int8_t bss_array[4];
 __SECTION(dram.data) static int8_t data_array[4] = { 0xde, 0xad, 0xbe, 0xef };
+__SECTION(dram.data) static int8_t data_array2[4] = { 0xde, 0xad, 0xbe, 0xef };
 
 __SECTION(dram.rodata) static const int8_t const_data_array[4] = { 5, 5, 6, 6 };
 
@@ -33,6 +34,9 @@ static void print_array(const char *name, int8_t *array, size_t size)
 
 __SECTION(dram.text) int command_dram_test(int argc, char **argv)
 {
+    unsigned int *addr;
+    (void)addr;
+
 	ccprintf("self %x bss %x data %x const %x counter %x\n",
 			(unsigned int)&command_dram_test,
 			(unsigned int)bss_array,
@@ -43,7 +47,14 @@ __SECTION(dram.text) int command_dram_test(int argc, char **argv)
 	msleep(100);
 
 	ccprintf("original:\n");
+    cflush();
+
+    memset(bss_array, 0, sizeof(bss_array));
+	memcpy(data_array, data_array2, sizeof(data_array));
+
 	print_array("  bss_array", bss_array, ARRAY_SIZE(bss_array));
+    cflush();
+
 	print_array("  data_array", data_array, ARRAY_SIZE(data_array));
 
 	ccprintf("copying data_array to bss_array:\n");
@@ -55,6 +66,12 @@ __SECTION(dram.text) int command_dram_test(int argc, char **argv)
 	print_array("  data_array", data_array, ARRAY_SIZE(data_array));
 
 	ccprintf("counter: %d\n", counter++);
+
+	cflush();
+
+    addr = (unsigned int *)0x700A5080;
+	ccprintf("R_DOMAIN_SEC: %x %x\n", (unsigned int)addr, *addr);
+
 
 	cflush();
 
