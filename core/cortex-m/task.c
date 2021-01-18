@@ -1065,3 +1065,8 @@ DECLARE_CONSOLE_COMMAND(taskreset, command_task_reset,
 			"task_id",
 			"Reset a task");
 #endif  /* CONFIG_CMD_TASK_RESET */
+
+const char *task_get_name(task_id_t tskid)
+{
+	return task_names[tskid];
+}
