@@ -101,32 +101,6 @@ const struct temp_sensor_t temp_sensors[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
-#endif /* CONFIG_TEMP_SENSOR */
-
-#ifdef CONFIG_FANS
-/* Physical fan config */
-const struct fan_conf fan_conf_0 = {
-	.flags = FAN_USE_RPM_MODE,
-	.ch = 0,
-	.pgood_gpio = GPIO_ALL_SYS_PWRGD,
-	.enable_gpio = GPIO_FAN_POWER_EN,
-};
-
-/* Physical fan rpm config */
-const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = BOARD_FAN_MIN_RPM,
-	.rpm_start = BOARD_FAN_MIN_RPM,
-	.rpm_max = BOARD_FAN_MAX_RPM,
-};
-
-/* FAN channels */
-const struct fan_t fans[] = {
-	[FAN_CH_0] = {
-		.conf = &fan_conf_0,
-		.rpm = &fan_rpm_0,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
 
 const static struct ec_thermal_config thermal_a = {
 	.temp_host = {
@@ -154,7 +128,33 @@ struct ec_thermal_config thermal_params[] = {
 	[TEMP_SNS_VR] = thermal_a,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
-#endif /* CONFIG_FANS */
+#endif /* CONFIG_TEMP_SENSOR */
+
+#ifdef CONFIG_FANS
+/* Physical fan config */
+const struct fan_conf fan_conf_0 = {
+	.flags = FAN_USE_RPM_MODE,
+	.ch = 0,
+	.pgood_gpio = GPIO_ALL_SYS_PWRGD,
+	.enable_gpio = GPIO_FAN_POWER_EN,
+};
+
+/* Physical fan rpm config */
+const struct fan_rpm fan_rpm_0 = {
+	.rpm_min = BOARD_FAN_MIN_RPM,
+	.rpm_start = BOARD_FAN_MIN_RPM,
+	.rpm_max = BOARD_FAN_MAX_RPM,
+};
+
+/* FAN channels */
+const struct fan_t fans[] = {
+	[FAN_CH_0] = {
+		.conf = &fan_conf_0,
+		.rpm = &fan_rpm_0,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
+#endif/* CONFIG_FANS */
 
 static void board_init(void)
 {
