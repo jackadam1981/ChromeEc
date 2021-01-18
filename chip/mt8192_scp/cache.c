@@ -218,3 +218,155 @@ int command_show_pmu(int argc, char **argv)
 }
 DECLARE_SAFE_CONSOLE_COMMAND(show_pmu, command_show_pmu, NULL, "Show PMU");
 #endif
+
+
+#ifdef MTK_DEBUG
+static enum pmu_type pmu_select;
+
+void pmu_enable(enum pmu_type select)
+{
+	static const char * const selectors[] = {
+		[PMU_SELECT_I] = "I",
+		[PMU_SELECT_D] = "D",
+		[PMU_SELECT_C] = "C",
+	};
+
+	pmu_select = select;
+	ccprintf("select \"%s\"\n", selectors[pmu_select]);
+
+	/* disable all PMU */
+	clear_csr(CSR_PMU_MPMUCTR,
+		  CSR_PMU_MPMUCTR_C | CSR_PMU_MPMUCTR_I |
+		  CSR_PMU_MPMUCTR_H3 | CSR_PMU_MPMUCTR_H4 |
+		  CSR_PMU_MPMUCTR_H5);
+
+	/* reset cycle count */
+	write_csr(CSR_PMU_MCYCLE, 0);
+	write_csr(CSR_PMU_MCYCLEH, 0);
+	/* reset retired-instruction count */
+	write_csr(CSR_PMU_MINSTRET, 0);
+	write_csr(CSR_PMU_MINSTRETH, 0);
+	/* reset counter{3,4,5} */
+	write_csr(CSR_PMU_MHPMCOUNTER3, 0);
+	write_csr(CSR_PMU_MHPMCOUNTER3H, 0);
+	write_csr(CSR_PMU_MHPMCOUNTER4, 0);
+	write_csr(CSR_PMU_MHPMCOUNTER4H, 0);
+	write_csr(CSR_PMU_MHPMCOUNTER5, 0);
+	write_csr(CSR_PMU_MHPMCOUNTER5H, 0);
+
+	/* select different event IDs for counter{3,4,5} */
+	switch (pmu_select) {
+	case PMU_SELECT_I:
+		/* I-cache access count */
+		write_csr(CSR_PMU_MHPMEVENT3, 1);
+		/* I-cache miss count */
+		write_csr(CSR_PMU_MHPMEVENT4, 3);
+		/* noncacheable I-AXI access count */
+		write_csr(CSR_PMU_MHPMEVENT5, 5);
+		break;
+	case PMU_SELECT_D:
+		/* D-cache access count */
+		write_csr(CSR_PMU_MHPMEVENT3, 11);
+		/* D-cache miss count */
+		write_csr(CSR_PMU_MHPMEVENT4, 12);
+		/* noncacheable D-AXI access count */
+		write_csr(CSR_PMU_MHPMEVENT5, 14);
+		break;
+	case PMU_SELECT_C:
+		/* control transfer instruction count */
+		write_csr(CSR_PMU_MHPMEVENT3, 27);
+		/* control transfer miss-predict count */
+		write_csr(CSR_PMU_MHPMEVENT4, 28);
+		/* interrupt count */
+		write_csr(CSR_PMU_MHPMEVENT5, 29);
+		break;
+	}
+
+	/* enable all PMU */
+	set_csr(CSR_PMU_MPMUCTR,
+		CSR_PMU_MPMUCTR_C | CSR_PMU_MPMUCTR_I |
+		CSR_PMU_MPMUCTR_H3 | CSR_PMU_MPMUCTR_H4 |
+		CSR_PMU_MPMUCTR_H5);
+}
+
+void pmu_disable(void)
+{
+	clear_csr(CSR_PMU_MPMUCTR,
+		  CSR_PMU_MPMUCTR_C | CSR_PMU_MPMUCTR_I |
+		  CSR_PMU_MPMUCTR_H3 | CSR_PMU_MPMUCTR_H4 |
+		  CSR_PMU_MPMUCTR_H5);
+}
+
+void pmu_show(void)
+{
+	struct pmu_status st;
+
+	pmu_status_get(&st);
+	pmu_status_show(&st);
+}
+
+void pmu_status_get(struct pmu_status *st)
+{
+	if (st == NULL)
+		return;
+
+	st->select = pmu_select;
+
+	st->cycle = ((uint64_t)read_csr(CSR_PMU_MCYCLEH) << 32) |
+			read_csr(CSR_PMU_MCYCLE);
+
+	st->retired_ins = ((uint64_t)read_csr(CSR_PMU_MINSTRETH) << 32) |
+			read_csr(CSR_PMU_MINSTRET);
+
+	st->cnt3 = ((uint64_t)read_csr(CSR_PMU_MHPMCOUNTER3H) << 32) |
+			read_csr(CSR_PMU_MHPMCOUNTER3);
+	st->cnt4 = ((uint64_t)read_csr(CSR_PMU_MHPMCOUNTER4H) << 32) |
+			read_csr(CSR_PMU_MHPMCOUNTER4);
+	st->cnt5 = ((uint64_t)read_csr(CSR_PMU_MHPMCOUNTER5H) << 32) |
+			read_csr(CSR_PMU_MHPMCOUNTER5);
+}
+
+void pmu_status_show(struct pmu_status *st)
+{
+	uint64_t val3, val4, val5;
+	uint32_t p;
+
+	if (st == NULL)
+		return;
+
+	ccprintf("cycles: %lld\n", st->cycle);
+	ccprintf("retired instructions: %lld\n", st->retired_ins);
+
+	val3 = st->cnt3;
+	val4 = st->cnt4;
+	val5 = st->cnt5;
+
+	if (val3)
+		p = val4 * 10000 / val3;
+	else
+		p = 0;
+
+	switch (pmu_select) {
+	case PMU_SELECT_I:
+		ccprintf("I-cache:\n");
+		ccprintf("  access: %lld\n", val3);
+		ccprintf("  miss: %lld (%d.%d%%)\n", val4, p / 100, p % 100);
+		ccprintf("non-cacheable I: %lld\n", val5);
+		break;
+	case PMU_SELECT_D:
+		ccprintf("D-cache:\n");
+		ccprintf("  access: %lld\n", val3);
+		ccprintf("  miss: %lld (%d.%d%%)\n", val4, p / 100, p % 100);
+		ccprintf("non-cacheable D: %lld\n", val5);
+		break;
+	case PMU_SELECT_C:
+		ccprintf("control transfer instruction:\n");
+		ccprintf("  total: %lld\n", val3);
+		ccprintf("  miss-predict: %lld (%d.%d%%)\n",
+			 val4, p / 100, p % 100);
+		ccprintf("interrupts: %lld\n", val5);
+		break;
+	}
+}
+
+#endif
