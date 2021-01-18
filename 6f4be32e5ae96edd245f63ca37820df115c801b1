@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d8192b8_b1ff11d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-18T08:54:05Z",
+      "side": 1,
+      "message": "Sure, done\nthis was actually the previous version but this means adding the driver in one CL and removing the board driver code in another one, while here I tried to show the code moving (but Gerrit doesn\u0027t really show it)",
+      "parentUuid": "5fc9d009_b2e11a9d",
+      "revId": "6f4be32e5ae96edd245f63ca37820df115c801b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09b08b64_25524076",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-15T18:53:16Z",
       "side": 1,
       "message": "What\u0027s this about? It seems like `set_usb_mux_with_current_data_role()` would do the right thing?",
+      "revId": "6f4be32e5ae96edd245f63ca37820df115c801b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "674a9140_1fd71fc6",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-18T08:54:05Z",
+      "side": 1,
+      "message": "I think so for this one, let\u0027s say old Nathan\u0027s rant ;-)",
+      "parentUuid": "09b08b64_25524076",
       "revId": "6f4be32e5ae96edd245f63ca37820df115c801b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
