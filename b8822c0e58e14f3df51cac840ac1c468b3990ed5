@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a9653ec_11d006dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-01-18T04:13:35Z",
+      "side": 1,
+      "message": "There is another CL needed to be cherry-picked first. See crrev.com/c/2634884.",
+      "revId": "b8822c0e58e14f3df51cac840ac1c468b3990ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0deca343_fe6207c4",
