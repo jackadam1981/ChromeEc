@@ -137,4 +137,22 @@ int command_disable_pmu(int argc, char **argv);
 int command_show_pmu(int argc, char **argv);
 #endif
 
+#define MTK_DEBUG
+#ifdef MTK_DEBUG
+/*
+ * I for I-cache
+ * D for D-cache
+ * C for control transfer instructions (branch, jump, ret, interrupt, ...)
+ */
+enum pmu_type {
+	PMU_SELECT_I = 0,
+	PMU_SELECT_D,
+	PMU_SELECT_C
+};
+
+void pmu_enable(enum pmu_type select);
+void pmu_disable(void);
+void pmu_show(void);
+#endif
+
 #endif /* #ifndef __CROS_EC_CACHE_H */
