@@ -8,6 +8,9 @@
 #ifndef __ADLRVP_BOARD_H
 #define __ADLRVP_BOARD_H
 
+/* Temperature sensor */
+#define CONFIG_TEMP_SENSOR
+
 #include "baseboard.h"
 
 /* MECC config */
@@ -101,6 +104,15 @@
 
 /* Board Id */
 #define I2C_ADDR_PCA9555_BOARD_ID_GPIO	0x22
+
+/*
+ * Don't allow the system to boot to S0 when the battery is low and unable to
+ * communicate on locked systems (which haven't PD negotiated)
+ */
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT	15000
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON			3
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC		1
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON		15001
 
 #ifndef __ASSEMBLER__
 
