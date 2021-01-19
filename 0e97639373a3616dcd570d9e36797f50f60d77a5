@@ -16,6 +16,24 @@
       "message": "I think the ec-devutils ebuild expects stm32mon to be there.",
       "revId": "0e97639373a3616dcd570d9e36797f50f60d77a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5ae32d_1f1edc23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-19T20:11:38Z",
+      "side": 1,
+      "message": "Looks like we use \"bds\" for all tool creation.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/chromeos-base/ec-devutils/ec-devutils-9999.ebuild;l\u003d39\n\nI think the way forward is to ensure that \"bds\" builds all utils and selectivity build tools for other boards.",
+      "parentUuid": "e7491957_a7b66623",
+      "revId": "0e97639373a3616dcd570d9e36797f50f60d77a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
