@@ -378,5 +378,17 @@ static inline void pd_config_init(int port, uint8_t power_role)
 
 int pd_adc_read(int port, int cc);
 
+
+static inline void pd_set_vconn(int port, int polarity, int enable)
+{
+	/* Set VCONN on the opposite CC line from the polarity */
+	if (port == CHG)
+		return; /* EC_ERROR_UNIMPLEMENTED */
+
+	if (port == DUT)
+		return;
+		/* TODO: See if we can enable VCONN on ServoV4p1 */
+}
+
 #endif /* __CROS_EC_USB_PD_CONFIG_H */
 
