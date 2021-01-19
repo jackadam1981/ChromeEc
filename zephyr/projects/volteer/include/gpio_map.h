@@ -65,6 +65,9 @@
 #define GPIO_EN_PP5000_USBA        NAMED_GPIO(en_pp5000_usba)
 #define GPIO_USB_C1_RT_RST_ODL     NAMED_GPIO(usb_c1_rt_rst_odl_boardid_0)
 
+/* Fan control */
+#define GPIO_EN_PP5000_FAN         NAMED_GPIO(en_pp5000_fan)
+
 /* Don't have a load switch for retimer */
 /* TODO(b/176559881): How to do unimplemented GPIOs? */
 #define GPIO_USB_C1_LS_EN          NAMED_GPIO(unused_gpio41)
