@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b33f754_238277aa",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2021-01-19T03:50:40Z",
+      "side": 1,
+      "message": "/*\n * Bit 1:0 \u003cTRXFilter\u003e: RX filter to make sure the stable received PD message.\n * default value is 01b\n * The debounce time is (register value + 2) * 41.67ns\n */\nI will add those comment at next patch",
+      "parentUuid": "c43a8708_3eb52448",
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de1bc1d6_d096f381",
