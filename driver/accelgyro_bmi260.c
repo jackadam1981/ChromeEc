@@ -12,7 +12,6 @@
 #include "console.h"
 #include "accelgyro_bmi_common.h"
 #include "accelgyro_bmi260.h"
-#include "builtin/endian.h"
 #include "hwtimer.h"
 #include "i2c.h"
 #include "init_rom.h"
@@ -20,7 +19,7 @@
 #include "motion_sense_fifo.h"
 #include "spi.h"
 #include "task.h"
-#include "third_party/bmi260/accelgyro_bmi260_config_tbin.h"
+#include "bmi260/accelgyro_bmi260_config_tbin.h"
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
@@ -378,7 +377,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
  * If the .init_rom section is not memory mapped, we need a static
  * buffer in RAM to access the BMI configuration data.
  */
-#ifdef CONFIG_CHIP_INIT_ROM_REGION
+#if !defined(CONFIG_ZEPHYR) && defined(CONFIG_CHIP_INIT_ROM_REGION)
 #define BMI_RAM_BUFFER_SIZE		256
 static uint8_t bmi_ram_buffer[BMI_RAM_BUFFER_SIZE];
 #else
