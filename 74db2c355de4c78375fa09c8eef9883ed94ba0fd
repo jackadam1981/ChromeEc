@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65662a7_9771cf7a",
+        "filename": "zephyr/app/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-19T21:37:25Z",
+      "side": 1,
+      "message": "This should be a PLATFORM_EC configuration option, not in the app/ directory...\n\nThe original intention of the app directory was supposed to be for native zephyr features only, not sure how well that still holds true.",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "74db2c355de4c78375fa09c8eef9883ed94ba0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
