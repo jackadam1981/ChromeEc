@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bfef022_a2a87828",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2021-01-19T23:51:32Z",
+      "side": 1,
+      "message": "nit: Can we be consistent with the naming of these defines (e.g as below)?\nThese will be added to the cros_ec_commands.h in the kernel header.\n\n#define BB_RETIMER_FW_UPDATE_GET_PORT_INFO  0 /* Which ports has BB retimer */\n#define BB_RETIMER_FW_UPDATE_SUSPEND_PD 1 /* Suspend PD port */\n#define BB_RETIMER_FW_UPDATE_RESUME_PD  2 /* Resume PD port  */",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 63
+      },
+      "revId": "54f6f4e08df8595b7ff786bd3cd42398de0c6dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832a7021_fb75e838",
+        "filename": "include/usb_common.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2021-01-19T23:51:32Z",
+      "side": 1,
+      "message": "These should be changed per the comments in the other file.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 43
+      },
+      "revId": "54f6f4e08df8595b7ff786bd3cd42398de0c6dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
