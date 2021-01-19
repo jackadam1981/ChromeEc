@@ -52,6 +52,8 @@
 
 /* Keyboard */
 #define CONFIG_PWM_KBLIGHT
+#define CONFIG_KEYBOARD_BOARD_CONFIG
+#define CONFIG_KEYBOARD_KEYPAD
 
 /* LED defines */
 #define CONFIG_LED_ONOFF_STATES
