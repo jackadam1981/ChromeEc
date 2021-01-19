@@ -2795,13 +2795,6 @@ uint8_t pd_get_snk_cap_cnt(int port);
 bool pd_get_partner_usb_comm_capable(int port);
 
 /**
- * Return true if partner port is in explicit USB-PD contract.
- *
- * @param port USB-C port number
- */
-bool pd_get_partner_explicit_contract(int port);
-
-/**
  * Return true if PD is in disconnect state
  *
  * @param port USB-C port number
