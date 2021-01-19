@@ -16,6 +16,29 @@
       "message": "Updated to rename the label as well, figure we\u0027ll eventually want to use that rather than the named node to find the driver so it makes sense that we have the usb port identification there as well.",
       "revId": "6ac7f26793468af15ab72874a2cbf50ccd3537ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb74ba8a_d69cfc41",
+        "filename": "zephyr/dts/bindings/misc/intel,jhl8040r.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-19T21:11:09Z",
+      "side": 1,
+      "message": "Let\u0027s put this file under zephuyr/dts/bindings/retimer since to mirror the platform/ec driver location.\n\nThis matches with the Zephyr upstream organization.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "6ac7f26793468af15ab72874a2cbf50ccd3537ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
