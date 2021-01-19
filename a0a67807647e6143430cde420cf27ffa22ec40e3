@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0e4ef2a_93e52542",
+        "filename": "include/usb_common.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-19T23:38:58Z",
+      "side": 1,
+      "message": "\u003e \"requsted\" is a possible misspelling of \"requested\".\n\nPlease fix.",
+      "parentUuid": "e0d57f2a_a5e5147b",
+      "range": {
+        "startLine": 233,
+        "startChar": 55,
+        "endLine": 233,
+        "endChar": 63
+      },
+      "revId": "a0a67807647e6143430cde420cf27ffa22ec40e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
