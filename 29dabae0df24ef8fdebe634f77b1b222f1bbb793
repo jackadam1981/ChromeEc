@@ -16,6 +16,24 @@
       "message": "Not sure what the deal is with the devicetree compiler not taking the default for #gpio-cells, may have to peak at the compiler as I suspect it\u0027s not processing the default for \"#\" properties but it may be intentional.",
       "revId": "29dabae0df24ef8fdebe634f77b1b222f1bbb793",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc8a3641_2497be4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-19T21:58:29Z",
+      "side": 1,
+      "message": "That seems to be the model for other const properties used in Zephyr.",
+      "parentUuid": "2ec2d2df_5ad72b50",
+      "revId": "29dabae0df24ef8fdebe634f77b1b222f1bbb793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
