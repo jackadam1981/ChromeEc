@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf15a962_2c639063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-01-19T14:03:25Z",
+      "side": 1,
+      "message": "Updated to rename the label as well, figure we\u0027ll eventually want to use that rather than the named node to find the driver so it makes sense that we have the usb port identification there as well.",
+      "revId": "6ac7f26793468af15ab72874a2cbf50ccd3537ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
