@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37f59dc_b7960569",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-19T07:44:06Z",
+      "side": 1,
+      "message": "if the case you are trying to solve is the sysjump, you should put it in the HOOK_SYSJUMP (of the RO) by the time you are reached the HOOK_INIT of the RW you might already have corrupted data.",
+      "revId": "568723d887b2c3e904a23d5a9a4110fd50d89344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
