@@ -725,6 +725,26 @@ static void spi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_INIT_SPI);
 
+/* Ensure the SPI DMA TX buffer is cleared on booting. */
+static void spi_pre_init(void)
+{
+	stm32_spi_regs_t *spi __attribute__((unused)) = STM32_SPI1_REGS;
+
+	/* disable DMA streams */
+	dma_disable(dma_tx_option.channel);
+
+	/* disable SPI */
+	spi->cr1 &= ~STM32_SPI_CR1_SPE;
+
+	/* disable DMA buffer */
+#ifdef CHIP_FAMILY_STM32H7
+	spi->cfg1 &= ~STM32_SPI_CFG1_TXDMAEN;
+#else
+	spi->cr2 &= ~STM32_SPI_CR2_TXDMAEN;
+#endif /* !CHIP_FAMILY_STM32H7 */
+}
+DECLARE_HOOK(HOOK_INIT, spi_pre_init, HOOK_PRIO_INIT_SPI - 1);
+
 /**
  * Get protocol information
  */
