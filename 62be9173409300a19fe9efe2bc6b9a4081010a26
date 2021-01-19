@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4b09ec_edd7bf18",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-19T21:42:01Z",
+      "side": 1,
+      "message": "can you move to a separate file in it\u0027s own CL? Just keep the diff down a bit...",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 28
+      },
+      "revId": "62be9173409300a19fe9efe2bc6b9a4081010a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f32603e_a62f7aee",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-19T21:42:01Z",
+      "side": 1,
+      "message": "symbol should be visible",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "62be9173409300a19fe9efe2bc6b9a4081010a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53d28dd1_d47b4efd",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-19T21:42:01Z",
+      "side": 1,
+      "message": "should go the other way ... this should depend on, not select\n\nshould we have this be a choice symbol?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "62be9173409300a19fe9efe2bc6b9a4081010a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
