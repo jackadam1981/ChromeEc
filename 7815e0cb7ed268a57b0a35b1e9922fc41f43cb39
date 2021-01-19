@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7aaa31_82fb4b32",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-19T08:57:20Z",
+      "side": 1,
+      "message": "how about removing this and do mux config in Kernel only if mux bits are set.\n\nas at line 354 we have some other conditions too",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 22
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c0e514_fe632f68",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-19T08:57:20Z",
+      "side": 1,
+      "message": "from the logic it looks like virtual mux needs an extra event when mux init happens.\n\nhow about calling virtual_mux_update_state() from virtual_init(USB_PD_MUX_NONE) and removing these additional logic?",
+      "range": {
+        "startLine": 419,
+        "startChar": 3,
+        "endLine": 419,
+        "endChar": 24
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
