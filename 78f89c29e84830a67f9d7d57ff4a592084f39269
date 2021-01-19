@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc02e746_49d5bc12",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-19T20:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc7909b8_4af8a5c7",
+      "range": {
+        "startLine": 336,
+        "startChar": 12,
+        "endLine": 336,
+        "endChar": 14
+      },
+      "revId": "78f89c29e84830a67f9d7d57ff4a592084f39269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ac1c67b_5a920f28",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-19T19:09:21Z",
       "side": 1,
       "message": "many editors do poorly with indenting the brace after following if you don\u0027t have () (as does not look like function call)\n\n\ncan we at least make it look function-call like by adding ()?\n\nor better yet to make this a registration-style macro (just pass a function that was written earlier)",
+      "range": {
+        "startLine": 370,
+        "startChar": 8,
+        "endLine": 370,
+        "endChar": 17
+      },
+      "revId": "78f89c29e84830a67f9d7d57ff4a592084f39269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d369c2ab_76140245",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-19T20:20:52Z",
+      "side": 1,
+      "message": "Added () to keep more consistent with DECLARE_EC_TEST which takes in a body right after.",
+      "parentUuid": "1ac1c67b_5a920f28",
       "range": {
         "startLine": 370,
         "startChar": 8,
