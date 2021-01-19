@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f83879f_ee867dad",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-19T22:41:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1352cad2_f411690a",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "c7d1a41c9c81f11e5bd0b45c72628e53d9663a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dce95cf6_13a930ea",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-19T21:46:18Z",
       "side": 1,
       "message": "no reason to make compact and squeeze on a single line ... follow linux kernel styling guidelines",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 78
+      },
+      "revId": "c7d1a41c9c81f11e5bd0b45c72628e53d9663a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1206e5b0_440cff14",
+        "filename": "include/init_rom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-19T22:41:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dce95cf6_13a930ea",
       "range": {
         "startLine": 54,
         "startChar": 0,
