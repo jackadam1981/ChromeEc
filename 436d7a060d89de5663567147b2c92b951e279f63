@@ -52,6 +52,24 @@
       "parentUuid": "f83abb16_7cc5ee14",
       "revId": "436d7a060d89de5663567147b2c92b951e279f63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05297e5_9c019bf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-01-19T20:23:59Z",
+      "side": 1,
+      "message": "Some boards seem to have multiple TCPC. Since the delays won\u0027t change at runtime I guess we could add them to the struct as an integer in place of that function, taking the same space (or less when packing) than Patryk\u0027s approach (1-4 bytes extra per tcpc_config_t), but with one indirection less which might spare some miniscule amount of code for the indirection?",
+      "parentUuid": "d92ceb23_e98b6abf",
+      "revId": "436d7a060d89de5663567147b2c92b951e279f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
