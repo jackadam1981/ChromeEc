@@ -165,7 +165,7 @@ class AllTests:
 
 BLOONCHIPPER_CONFIG = BoardConfig(
     name=BLOONCHIPPER,
-    servo_uart_name='raw_fpmcu_uart_pty',
+    servo_uart_name='raw_fpmcu_console_uart_pty',
     servo_power_enable='spi1_vref',
     rollback_region0_regex=DATA_ACCESS_VIOLATION_8020000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_8040000_REGEX,
@@ -173,7 +173,7 @@ BLOONCHIPPER_CONFIG = BoardConfig(
 
 DARTMONKEY_CONFIG = BoardConfig(
     name=DARTMONKEY,
-    servo_uart_name='raw_fpmcu_uart_pty',
+    servo_uart_name='raw_fpmcu_console_uart_pty',
     servo_power_enable='spi1_vref',
     rollback_region0_regex=DATA_ACCESS_VIOLATION_80C0000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_80E0000_REGEX,
