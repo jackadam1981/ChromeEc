@@ -16,6 +16,69 @@
       "message": "Booted skylake RVP to Chrome OS",
       "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3aa12a7_fc27e44f",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-19T05:33:13Z",
+      "side": 1,
+      "message": "directly use CONFIG_UART_CONSOLE in this file too",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d65e2590_852ad4c4",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-19T05:33:13Z",
+      "side": 1,
+      "message": "build assert",
+      "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0ab265_a90f989f",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-19T05:33:13Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
