@@ -33,6 +33,23 @@
       "message": "flash code and make sure ac in can wake system from hibernation",
       "revId": "627972ee308b9795588506ff2d96baac550c083a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10248d2b_b258f49d",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-19T20:17:06Z",
+      "side": 1,
+      "message": "Instead of adding a new function, it seems more straightforward to simply have raa489000_hibernate take a disable_adc argument as Diana suggested.",
+      "revId": "627972ee308b9795588506ff2d96baac550c083a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
