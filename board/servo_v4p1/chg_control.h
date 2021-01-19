@@ -21,6 +21,17 @@ enum chg_power_select_t {
 };
 
 /*
+* ServoV4p1 supports multiple power sources for HOST.
+* TODO: Clearly report which source we are using.
+*/
+
+enum host_power_select_t {
+	HOST_POWER_OFF,
+	HOST_POWER_PP5000,
+	HOST_POWER_VBUS,
+};
+
+/*
  * Triggers a disconnect and reconnect on the DUT Charger port
  */
 void chg_reset(void);
@@ -31,6 +42,23 @@ void chg_reset(void);
  * @param type Power source used for DUT
  */
 void chg_power_select(enum chg_power_select_t type);
+
+/*
+ * Reports the DUT Charger Power source
+ */
+enum chg_power_select_t chg_power_get(void);
+
+/*
+ * Disables or selects the HOST Charger Power source
+ *
+ * @param type Power source used for HOST
+ */
+void host_power_select(enum host_power_select_t type);
+
+/*
+ * Reports the HOST Charger Power source
+ */
+enum host_power_select_t host_power_get(void);
 
 /*
  * Attaches or Removes the DUT Charger Ports CC1 and CC2 Rd resistors
