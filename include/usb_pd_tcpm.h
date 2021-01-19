@@ -453,6 +453,15 @@ struct tcpm_drv {
 	 */
 	 void (*dump_registers)(int port);
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
+
+	/**
+	 * Obtain Low Power Mode debounce delay
+	 *
+	 * @param port Type-C port number
+	 *
+	 * @return Low Power Mode debounce delay in microseconds
+	 */
+	int (*get_lpm_debounce_delay)(int port);
 };
 
 /*

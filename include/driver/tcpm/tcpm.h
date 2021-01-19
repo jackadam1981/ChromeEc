@@ -12,6 +12,7 @@
 #include "ec_commands.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "timer.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
@@ -20,6 +21,9 @@
 #error "DRP auto toggle requires board to have DRP support"
 #error "Please upgrade your board configuration"
 #endif
+
+/* 100 ms is enough time for any TCPC transaction to complete. */
+#define PD_LPM_DEBOUNCE_US (100 * MSEC)
 
 #ifndef CONFIG_USB_PD_TCPC
 
@@ -370,6 +374,13 @@ static inline int tcpm_set_frs_enable(int port, int enable)
 }
 #endif /* defined(CONFIG_USB_PD_FRS_TCPC) */
 
+static inline int tcpm_get_lpm_debounce_delay(int port)
+{
+	if (tcpc_config[port].drv->get_lpm_debounce_delay != NULL)
+		return tcpc_config[port].drv->get_lpm_debounce_delay(port);
+	else
+		return PD_LPM_DEBOUNCE_US;
+}
 #else
 
 /**
