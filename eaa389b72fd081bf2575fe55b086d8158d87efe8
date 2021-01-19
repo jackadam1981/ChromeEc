@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2a63c9eb_08c3e55c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-19T04:09:03Z",
+      "side": 1,
+      "message": "we have tested both exteranl and internal clock working on our evb",
+      "parentUuid": "9d29f988_281b7332",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "eaa389b72fd081bf2575fe55b086d8158d87efe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "01160622_5d7e832c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2

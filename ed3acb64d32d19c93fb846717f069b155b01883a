@@ -87,6 +87,30 @@
       },
       "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e6c567_d842f59b",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-19T04:09:03Z",
+      "side": 1,
+      "message": "ok; make sense; now due to some communication mismatch we changed to External clock; if you like to revert back let us know ; we can revert back; \nexternal osc could be used for more accurate clocks; internal osc has 2% error; mostly internal osc should sathisfy all use case;",
+      "parentUuid": "cac1f80c_af4c2a4b",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
