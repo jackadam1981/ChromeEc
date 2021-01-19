@@ -3134,12 +3134,18 @@ void pd_task(void *u)
 				/* Determine the polarity. */
 				tcpm_get_cc(port, &cc1, &cc2);
 				if (pd[port].power_role == PD_ROLE_SINK) {
-					pd[port].polarity =
-						get_snk_polarity(cc1, cc2);
+					// TODO: Fix this for SnkDTS ServoV4p1
+					// Below is a hack just to move ball forward
+					if (cc_is_src_dbg_acc(cc1,cc2)){
+						pd[port].polarity =
+							board_get_src_dts_polarity(port);
+					} else {
+						pd[port].polarity =
+							get_snk_polarity(cc1, cc2);
+					}
 				} else if (cc_is_snk_dbg_acc(cc1, cc2)) {
 					pd[port].polarity =
-						board_get_src_dts_polarity(
-								port);
+						board_get_src_dts_polarity(port);
 				} else {
 					pd[port].polarity =
 						get_src_polarity(cc1, cc2);
@@ -4050,8 +4056,29 @@ void pd_task(void *u)
 			/* We are attached */
 			if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
 				hook_notify(HOOK_USB_PD_CONNECT);
-			pd[port].polarity = get_snk_polarity(cc1, cc2);
+
+			/*
+			* ========================
+			* THIS IS THE BROKEN PART
+			* pd 1 state in snkdts mode
+			* =======================
+			*/
+
+			// TODO: Fix this for SnkDTS ServoV4p1
+			// Below is a hack just to move ball forward
+			// Should be get_snk_dts polarity
+			if (cc_is_src_dbg_acc(cc1,cc2)){
+				pd[port].polarity =
+					board_get_src_dts_polarity(port);
+			} else {
+				pd[port].polarity =
+					get_snk_polarity(cc1, cc2);
+			}
+			//pd[port].polarity = get_snk_polarity(cc1, cc2);
+
 			pd_set_polarity(port, pd[port].polarity);
+
+			CPRINTS("C%d: I SAW POLARITY [%d]",port, pd[port].polarity);
 			/* reset message ID  on connection */
 			pd[port].msg_id = 0;
 			/* initial data role for sink is UFP */
