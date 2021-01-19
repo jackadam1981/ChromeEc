@@ -22,6 +22,30 @@
       },
       "revId": "e14516d9b9ed76681d389b7eaa8b7fcd45e155f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a842bc73_57d506a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-01-19T22:22:41Z",
+      "side": 1,
+      "message": "The device tree compiler needs to know how many values go after the phandle so that in can understand multiple handles (like multiple pins in the same property). As for the naming itself, it was surprising to me as well, turns out that dtc has a special case for phandle-array properties that are named \u003csomething\u003e-gpios, and explicitly looks for #gpio-cells. For other types the lookup is different, I found it documented here: https://docs.zephyrproject.org/latest/guides/dts/bindings.html#bindings-file-syntax.\n\nSo if you try to use it without it, it does not build. I think that in this case we could use type phandles (since we have no values anyway), but then we would have to change the type to switch it to actual gpio controller.",
+      "parentUuid": "ccbb5b57_a85deb51",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "e14516d9b9ed76681d389b7eaa8b7fcd45e155f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
