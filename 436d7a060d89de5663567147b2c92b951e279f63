@@ -70,6 +70,24 @@
       "parentUuid": "d92ceb23_e98b6abf",
       "revId": "436d7a060d89de5663567147b2c92b951e279f63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d35c50_8439d6d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-19T20:31:15Z",
+      "side": 1,
+      "message": "+1 on Patrick\u0027s comment.  The Elemi board for example uses a different TCPC for the left port and for the right port (because the right port is on a daughter board it needs an integrated retimer).\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/409116ad/board/elemi/board.c#350",
+      "parentUuid": "c05297e5_9c019bf9",
+      "revId": "436d7a060d89de5663567147b2c92b951e279f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
