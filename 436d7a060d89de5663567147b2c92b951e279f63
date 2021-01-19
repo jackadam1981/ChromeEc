@@ -34,6 +34,24 @@
       "parentUuid": "8c05a66d_41bfd936",
       "revId": "436d7a060d89de5663567147b2c92b951e279f63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92ceb23_e98b6abf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-19T20:07:35Z",
+      "side": 1,
+      "message": "Can\u0027t the board.h file be used to #undef and #define the correct value per board?",
+      "parentUuid": "f83abb16_7cc5ee14",
+      "revId": "436d7a060d89de5663567147b2c92b951e279f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
