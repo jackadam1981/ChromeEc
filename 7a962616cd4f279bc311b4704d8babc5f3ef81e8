@@ -52,6 +52,24 @@
       "parentUuid": "04449e30_61b79127",
       "revId": "7a962616cd4f279bc311b4704d8babc5f3ef81e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d0e50b_d6e7dbe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-19T21:05:12Z",
+      "side": 1,
+      "message": "Okay.  I could see some argument for it belonging the board level (ex. the board knows that it has OCPC and needs to enable sinking), but putting it at the board level risks it being forgotten in new boards.  So a central approach in the charge_manager makes sense.",
+      "parentUuid": "d6667e76_acdb590a",
+      "revId": "7a962616cd4f279bc311b4704d8babc5f3ef81e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
