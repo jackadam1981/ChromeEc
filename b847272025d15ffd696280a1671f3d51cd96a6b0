@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06eca1c1_5dc507fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-19T17:24:33Z",
+      "side": 1,
+      "message": "This is implementation of workaround for issue with Low Power Mode debounce delay.\nANX7447 requires delay \u003c\u003d 39ms\nTUSB422 and RT1715 require delay \u003e\u003d 75ms\n\nFor TCPMv2 current delay is 100ms. There was attempt to change it back to 10ms CL:2606235",
+      "revId": "b847272025d15ffd696280a1671f3d51cd96a6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
