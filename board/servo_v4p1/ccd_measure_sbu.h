@@ -19,4 +19,14 @@ void ccd_enable(int enable);
  */
 void start_ccd_meas_sbu_cycle(void);
 
+/**
+ * Gets polling state 0/1
+ */
+int is_ccd_polling(void);
+
+/**
+ * Gets CCD mux state 0/1
+ */
+int is_ccd_connected(void);
+
 #endif /* __CROS_EC_CCD_MEASURE_SBU_H */
