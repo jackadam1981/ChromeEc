@@ -16,6 +16,24 @@
       "message": "if the case you are trying to solve is the sysjump, you should put it in the HOOK_SYSJUMP (of the RO) by the time you are reached the HOOK_INIT of the RW you might already have corrupted data.",
       "revId": "568723d887b2c3e904a23d5a9a4110fd50d89344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38378873_638b53aa",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-19T07:47:38Z",
+      "side": 1,
+      "message": "We tested on Cersie and Burnet, and it seems clear the DMA with SYSJUMP hook doesn\u0027t solve the issue perfectly. (b/173732816#comment66, b/173732816#comment68, 173732816#comment70) \n\nAnd we move this to HOOK_INIT, and it rarely fail. So, we think clear the DMA at HOOK_INIT might be a better idea.",
+      "parentUuid": "e37f59dc_b7960569",
+      "revId": "568723d887b2c3e904a23d5a9a4110fd50d89344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
