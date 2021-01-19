@@ -30,6 +30,8 @@
 #define MODE_SBU_FLIP           2
 #define MODE_SBU_OTHER          3
 
+static int mon_enabled=0;
+
 static void ccd_measure_sbu(void);
 DECLARE_DEFERRED(ccd_measure_sbu);
 static void ccd_measure_sbu(void)
@@ -40,6 +42,8 @@ static void ccd_measure_sbu(void)
 	static int count /* = 0 */;
 	static int last /* = 0 */;
 	static int polarity /* = 0 */;
+	static int lasttoggle = 6;
+	static int warncount = 0;
 
 	/* Read sbu voltage levels */
 	sbu1 = adc_read_channel(ADC_SBU1_DET);
@@ -97,29 +101,64 @@ static void ccd_measure_sbu(void)
 	 */
 	if (count > 5) {
 		if (mux_en) {
+			if(lasttoggle>12)
+				warncount++;
+
 			/* Disable mux as it's disconnected now. */
 			gpio_set_level(GPIO_SBU_MUX_EN, 0);
 			msleep(10);
 			CPRINTS("CCD: disconnected.");
+			lasttoggle=20;
+
 		} else {
+			if(lasttoggle>12)
+				warncount++;
+
 			/* SBU flip = polarity */
 			sbu_flip_sel(polarity);
 			gpio_set_level(GPIO_SBU_MUX_EN, 1);
 			msleep(10);
 			CPRINTS("CCD: connected %s",
 				polarity ? "flip" : "noflip");
+			lasttoggle=20;
 		}
+	}
+
+	if (lasttoggle>0)
+		lasttoggle--;
+	else
+		lasttoggle=0;
+
+	if (warncount > 10){
+		CPRINTS("WARNING: Repeated CCD toggles detected. Check SBU leakage!");
+		CPRINTS("WARNING: Aborting CCD detection!");
+		warncount=0;
+		mon_enabled=0;
+		hook_call_deferred(&ccd_measure_sbu_data, -1);
+		return;
 	}
 
 	/* Measure every 100ms, forever. */
 	hook_call_deferred(&ccd_measure_sbu_data, 100 * MSEC);
 }
 
+int is_ccd_polling(void)
+{
+	return mon_enabled;
+}
+
+int is_ccd_connected(void)
+{
+	return (gpio_get_level(GPIO_SBU_MUX_EN))?1:0;
+}
+
 void ccd_enable(int enable)
 {
 	if (enable) {
+		mon_enabled=1;
 		hook_call_deferred(&ccd_measure_sbu_data, 0);
 	} else {
+		mon_enabled=0;
 		gpio_set_level(GPIO_SBU_MUX_EN, 0);
 		hook_call_deferred(&ccd_measure_sbu_data, -1);
 	}
@@ -127,5 +166,6 @@ void ccd_enable(int enable)
 
 void start_ccd_meas_sbu_cycle(void)
 {
+	mon_enabled=1;
 	hook_call_deferred(&ccd_measure_sbu_data, 1000 * MSEC);
 }
