@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c2807c5_1c933946",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-19T11:08:45Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "a6391fe5_30223598",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 22
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87c0e514_fe632f68",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "virtual_mux_update_state sends only host event, that won\u0027t resolve the issue. whenever AP send MUX command EC has to send disconnect request first that is required in the above mentioned scenarios.",
       "parentUuid": "87c0e514_fe632f68",
+      "range": {
+        "startLine": 419,
+        "startChar": 3,
+        "endLine": 419,
+        "endChar": 24
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e47fd8a_238f21da",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-19T11:08:45Z",
+      "side": 1,
+      "message": "can the same be handled in Kernel? first send disconnect and then EC\u0027s exact state?\nin the logic we are just caching the state not updating anything.",
+      "parentUuid": "3bb6e444_264b42af",
       "range": {
         "startLine": 419,
         "startChar": 3,
