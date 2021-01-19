@@ -16,6 +16,24 @@
       "message": "Please add BUG\u003d and TEST\u003d stanzas",
       "revId": "66e7d298e47243f9a122236bed485e3c47f1666c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7c59cb_b42c04b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-01-19T23:29:53Z",
+      "side": 1,
+      "message": "Hi Todd, this is still under testing by thermal. I will create another bug and test status once I get a final version.",
+      "parentUuid": "9d42ea1e_b05a3805",
+      "revId": "66e7d298e47243f9a122236bed485e3c47f1666c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
