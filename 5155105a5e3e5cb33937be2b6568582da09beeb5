@@ -45,6 +45,46 @@
       },
       "revId": "5155105a5e3e5cb33937be2b6568582da09beeb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a5df0a_782365c5",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-19T21:39:53Z",
+      "side": 1,
+      "message": "indentation is funky .... you can run clang-format to fix",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 18
+      },
+      "revId": "5155105a5e3e5cb33937be2b6568582da09beeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43375aa7_dee23893",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-19T21:39:53Z",
+      "side": 1,
+      "message": "one too many blank lines at end of file?",
+      "revId": "5155105a5e3e5cb33937be2b6568582da09beeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
