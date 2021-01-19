@@ -8,6 +8,7 @@
 #include "adc_chip.h"
 #include "button.h"
 #include "cbi_ssfc.h"
+#include "cbi_fw_config.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "charger.h"
@@ -31,6 +32,8 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "keyboard_config.h"
+#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "motion_sense.h"
@@ -67,6 +70,27 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_USB_A1_VBUS,
 };
 
+#ifdef BOARD_MAGOLOR
+/* Keyboard scan setting */
+struct keyboard_scan_config keyscan_config = {
+	/*
+	 * F3 key scan cycle completed but scan input is not
+	 * charging to logic high when EC start scan next
+	 * column for "T" key, so we set .output_settle_us
+	 * to 80us from 50us.
+	 */
+	.output_settle_us = 80,
+	.debounce_down_us = 9 * MSEC,
+	.debounce_up_us = 30 * MSEC,
+	.scan_period_us = 3 * MSEC,
+	.min_post_scan_delay_us = 1000,
+	.poll_timeout_us = 100 * MSEC,
+	.actual_key_mask = {
+		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0xa4, 0xff, 0xfe, 0x55, 0xfe, 0xff, 0xff, 0xff,  /* full set */
+	},
+};
+#endif
 
 /* C0 interrupt line shared by BC 1.2 and charger */
 static void check_c0_line(void);
@@ -189,7 +213,6 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-
 const static struct ec_thermal_config thermal_a = {
 	.temp_host = {
 		[EC_TEMP_THRESH_WARN] = 0,
@@ -223,6 +246,24 @@ static void setup_thermal(void)
 	thermal_params[TEMP_SENSOR_1] = thermal_a;
 	thermal_params[TEMP_SENSOR_2] = thermal_b;
 }
+
+#ifdef BOARD_MAGOLOR
+static void board_update_no_keypad_by_fwconfig(void)
+{
+	if (!get_cbi_fw_config_numeric_pad()) {
+#ifndef TEST_BUILD
+		/* Disable scanning KSO13 & 14 if keypad isn't present. */
+		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
+		keyscan_config.actual_key_mask[11] = 0xfa;
+		keyscan_config.actual_key_mask[12] = 0xca;
+
+		/* Search key is moved back to col=1,row=0 */
+		keyscan_config.actual_key_mask[0] = 0x14;
+		keyscan_config.actual_key_mask[1] = 0xff;
+#endif
+	}
+}
+#endif
 
 void board_hibernate(void)
 {
@@ -611,6 +652,11 @@ void board_init(void)
 			ccprints("LID_ACCEL is KX022");
 		} else
 			ccprints("LID_ACCEL is BMA253");
+	#endif
+
+	#ifdef BOARD_MAGOLOR
+		/* Support Keyboard Pad */
+	board_update_no_keypad_by_fwconfig();
 	#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
