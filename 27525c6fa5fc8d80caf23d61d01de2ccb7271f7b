@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7818170b_09c772a9",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-19T06:03:21Z",
+      "side": 1,
+      "message": "where is the IRQ cleared with this approach?",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 66
+      },
+      "revId": "27525c6fa5fc8d80caf23d61d01de2ccb7271f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
