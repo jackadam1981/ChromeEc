@@ -4,6 +4,7 @@
  */
 
 #include "atomic.h"
+#include "ccd_measure_sbu.h"
 #include "chg_control.h"
 #include "charge_manager.h"
 #include "common.h"
@@ -1790,6 +1791,14 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 		return 0; /* NAK */
 	}
 
+	/* Override if we enabled CCD by nonstandard means */
+	if (is_ccd_polling()) {
+		CPRINTS("WARNING: CCD polling at DP entry; forcing [ccd_enable(0)]");
+		ccd_enable(0);
+		if (!(alt_dp_config & ALT_DP_OVERRIDE_HPD))
+			ext_hpd_detection_enable(1);
+	}
+
 	alt_mode = OPOS;
 	return 1;
 }
@@ -1876,6 +1885,8 @@ static void print_cc_mode(void)
 	ccprintf("    pd enabled:   %s\n", pd_comm_is_enabled(DUT) ? "on" : "off");
 	ccprintf("    chg mode:     %s\n", get_dut_chg_en() ? "on" : "off");
 	ccprintf("    fastboot-dfp: %s\n", cc_config & CC_FASTBOOT_DFP ? "on" : "off");
+	ccprintf("    ccd polling:  %s\n", is_ccd_polling() ? "on" : "off");
+	ccprintf("    ccd engaged:  %s\n", is_ccd_connected() ? "on" : "off");
 }
 
 
