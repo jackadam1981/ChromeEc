@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e170bd4_69800317",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-01-19T16:40:06Z",
+      "side": 1,
+      "message": "hey I sent a change to rename the i2c-keys and gpio-keys to named-i2c-ports and named-gpio-ports. Should we use named-pwms here? The original \"gpio-keys\" was used in reference to physical switches, think we are using it as a \"key-value\" concept here but I find that calling these \"named-\" would be more intuitive.",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 24
+      },
+      "revId": "5155105a5e3e5cb33937be2b6568582da09beeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cceea391_d897dcc5",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-01-19T16:40:06Z",
+      "side": 1,
+      "message": "I think that frequency makes more sense in the pwm controller node, since a pwm controller can have multiple channels (the \"0\" after the phandle is the channel number), and I imagine that the channels have to run at the same frequency.\n\nAlternatively, few other bindings (stm32...) seems to specify the period in the pwm-cells, though that makes even less sense to me.",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 12
+      },
+      "revId": "5155105a5e3e5cb33937be2b6568582da09beeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
