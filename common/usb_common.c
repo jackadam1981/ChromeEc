@@ -435,6 +435,7 @@ mux_state_t get_mux_mode_to_set(int port)
 	 */
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
 	    pd_get_power_role(port) == PD_ROLE_SINK &&
+	    pd_capable(port) &&
 	    !pd_get_partner_usb_comm_capable(port))
 		return USB_PD_MUX_NONE;
 
