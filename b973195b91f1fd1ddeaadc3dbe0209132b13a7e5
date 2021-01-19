@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d79746f_cd0f752d",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-19T04:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b48bc8f2_e0c3876c",
+      "revId": "b973195b91f1fd1ddeaadc3dbe0209132b13a7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40b36d1e_71a225e5",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-01-14T10:00:57Z",
       "side": 1,
       "message": "do a build assert for all than array size",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "b973195b91f1fd1ddeaadc3dbe0209132b13a7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3f5de0_e46b97ee",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-19T04:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40b36d1e_71a225e5",
       "range": {
         "startLine": 144,
         "startChar": 1,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc348e8_87810331",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-19T04:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7401507e_62a55dbd",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 11
+      },
+      "revId": "b973195b91f1fd1ddeaadc3dbe0209132b13a7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75040f5c_ce4839cd",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84cf617f_ae5f3cf3",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-19T04:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75040f5c_ce4839cd",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 11
+      },
+      "revId": "b973195b91f1fd1ddeaadc3dbe0209132b13a7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "175034f8_5d029a1b",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-01-14T10:00:57Z",
       "side": 1,
       "message": "any reason to change ?",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 0
+      },
+      "revId": "b973195b91f1fd1ddeaadc3dbe0209132b13a7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf7ce27e_89335efe",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-19T04:03:21Z",
+      "side": 1,
+      "message": "added to support ease or porting with DEFINES; all are same and valid as before",
+      "parentUuid": "175034f8_5d029a1b",
       "range": {
         "startLine": 219,
         "startChar": 0,
