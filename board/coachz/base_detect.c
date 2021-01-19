@@ -23,7 +23,8 @@
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
 /* Base detection and debouncing */
-#define BASE_DETECT_DEBOUNCE_US (20 * MSEC)
+#define BASE_DETECT_EN_DEBOUNCE_US (350 * MSEC)
+#define BASE_DETECT_DIS_DEBOUNCE_US (20 * MSEC)
 
 /*
  * If the base status is unclear (i.e. not within expected ranges, read
@@ -158,8 +159,12 @@ void base_detect_interrupt(enum gpio_signal signal)
 		}
 		pulse_width = 0;
 
-		hook_call_deferred(&base_detect_deferred_data,
-				   BASE_DETECT_DEBOUNCE_US);
+		if (detect_pin_connected(signal))
+			hook_call_deferred(&base_detect_deferred_data,
+					   BASE_DETECT_EN_DEBOUNCE_US);
+		else
+			hook_call_deferred(&base_detect_deferred_data,
+					   BASE_DETECT_DIS_DEBOUNCE_US);
 	} else {
 		if (current_base_status == BASE_CONNECTED &&
 		    detect_pin_connected(signal) && !pulse_width &&
@@ -172,7 +177,12 @@ void base_detect_interrupt(enum gpio_signal signal)
 		}
 	}
 
-	base_detect_debounce_time = time_now + BASE_DETECT_DEBOUNCE_US;
+	if (detect_pin_connected(signal))
+		base_detect_debounce_time = time_now +
+				   BASE_DETECT_EN_DEBOUNCE_US;
+	else
+		base_detect_debounce_time = time_now +
+				   BASE_DETECT_DIS_DEBOUNCE_US;
 }
 
 static void base_enable(void)
