@@ -16,6 +16,86 @@
       "message": "mruthven@, can you check that this doesn\u0027t cause any issues with Cr50? It shouldn\u0027t, but I don\u0027t have a way to test it.",
       "revId": "b70370460bc42ebe5980b506f9b671162c97ba86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02644f14_230e1055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-19T20:04:24Z",
+      "side": 1,
+      "message": "This script really should be refactored at some point OR rewritten.",
+      "revId": "b70370460bc42ebe5980b506f9b671162c97ba86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0158fb07_e00552d1",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-19T20:04:24Z",
+      "side": 1,
+      "message": "Any chance you could add little comment for this function to separate it from servo_ec_uart?\n\nLike:\n\n# Get servo uart prefix for finding uart parameters like {uart_prefix}_baudrate and {uart_prefix}_parity.",
+      "revId": "b70370460bc42ebe5980b506f9b671162c97ba86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe17dc3_e51f1124",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-19T20:04:24Z",
+      "side": 1,
+      "message": "Should be local also...but I guess we shouldn\u0027t contaminate this CL.",
+      "range": {
+        "startLine": 730,
+        "startChar": 1,
+        "endLine": 730,
+        "endChar": 12
+      },
+      "revId": "b70370460bc42ebe5980b506f9b671162c97ba86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6caaec0d_2b0cd814",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-19T20:04:24Z",
+      "side": 1,
+      "message": "\"local\" to be less confusing (since this is always subshelled).",
+      "range": {
+        "startLine": 731,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 15
+      },
+      "revId": "b70370460bc42ebe5980b506f9b671162c97ba86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
