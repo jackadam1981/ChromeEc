@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c05a66d_41bfd936",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-19T19:17:27Z",
+      "side": 1,
+      "message": "In general, I tend to like the path of adding interfaces to the TCPM structure but this one feels more like something that could be handled with a more simple generic CONFIG_PD_LPM_DEBOUNCE_US that gets set in config.h to 100MS unless ANX7447 is being used and in that case set it to 10MS.  Doing it this way would give the same outcome without using any additional memory.",
+      "revId": "436d7a060d89de5663567147b2c92b951e279f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
