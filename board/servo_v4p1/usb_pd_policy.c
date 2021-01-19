@@ -1353,6 +1353,12 @@ int pd_snk_is_vbus_provided(int port)
 				     GPIO_USB_DET_PP_CHG);
 }
 
+__override int pd_check_vconn_swap(int port)
+{
+	/* TODO: Check to see if we can enable VCONN on ServoV4p1 */
+	return 0;
+}
+
 __override int pd_check_power_swap(int port)
 {
 	// TODO: Fix this for ServoV4p1
