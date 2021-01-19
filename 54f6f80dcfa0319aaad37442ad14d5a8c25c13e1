@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a4af71_79cf5f7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-01-19T15:14:51Z",
+      "side": 1,
+      "message": "With this one the gpio enum is derived from the actual device node rather than the label in the named gpios. Still far from something that complies with the Zephyr driver model but at least this allows having the nodes in the proper layout. Once a driver gets ported to use the \"compatible\" property and device_get_binding, we should be able to drop the labels and named gpios entirely.",
+      "revId": "54f6f80dcfa0319aaad37442ad14d5a8c25c13e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
