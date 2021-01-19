@@ -48,6 +48,28 @@ void chg_power_select(enum chg_power_select_t type)
 	}
 }
 
+enum chg_power_select_t chg_power_get(void)
+{
+	//HACKHACKHACK
+	// FILL ME IN
+	return 0;
+}
+
+void host_power_select(enum host_power_select_t type)
+{
+	//HACKHACKHACK
+	// FILL ME IN
+}
+
+
+enum host_power_select_t host_power_get(void)
+{
+	//HACKHACKHACK
+	// FILL ME IN
+	return 0;
+}
+
+
 void chg_attach_cc_rds(bool en)
 {
 	if (en) {
