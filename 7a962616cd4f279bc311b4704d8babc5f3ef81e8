@@ -34,6 +34,24 @@
       "parentUuid": "cbc98ab4_2c8b67d7",
       "revId": "7a962616cd4f279bc311b4704d8babc5f3ef81e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6667e76_acdb590a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-19T20:12:10Z",
+      "side": 1,
+      "message": "That is the point where we want to do this, but it shouldn\u0027t be board specific though. I may just have to splice charge_manager_refresh().",
+      "parentUuid": "04449e30_61b79127",
+      "revId": "7a962616cd4f279bc311b4704d8babc5f3ef81e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
