@@ -793,6 +793,17 @@ static void anx7447_dump_registers(int port)
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
 
 /*
+ * This value must be below ~39.7 ms to put ANX7447 into LPM due to
+ * bug in silicon (see b/77544959 and b/149761477 for more details).
+ * 10 ms was choosen because this is Low Power Mode debounce delay
+ * used in TCPMv1.
+ */
+static int anx7447_get_lpm_debounce_delay(int port)
+{
+	return 10 * MSEC;
+}
+
+/*
  * ANX7447 is a TCPCI compatible port controller, with some caveats.
  * It seems to require both CC lines to be set always, instead of just
  * one at a time, according to TCPCI spec.  Thus, now that the TCPCI
@@ -835,6 +846,7 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 #ifdef CONFIG_CMD_TCPC_DUMP
 	.dump_registers		= &anx7447_dump_registers,
 #endif
+	.get_lpm_debounce_delay = &anx7447_get_lpm_debounce_delay,
 };
 
 #ifdef CONFIG_USB_PD_TCPM_MUX
