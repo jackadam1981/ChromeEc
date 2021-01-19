@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "728118e7_4c1910f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-19T19:00:05Z",
+      "side": 1,
+      "message": "This is the simplest of the two solutions. The other is to actually create both __shared_mem_buf normally in zephyr builds but then set the pointer over to _image_ram_end (in Zephyr). This would allow us to keep the types. This approach is cleaner and will be easier to remove when migrating off shims later on.",
+      "revId": "3d86656df67ec3d04d76e3df2b3f8521a732796e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
