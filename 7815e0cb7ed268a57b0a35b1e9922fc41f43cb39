@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6391fe5_30223598",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-19T10:46:29Z",
+      "side": 1,
+      "message": "Discussed, kernel expects PD and Mux flag to be 0. PD flag is used for disconnect in the kernel code. if we send PD flag enabled \u003d1 and mux \u003d0 kernel driver code is not configuring the mux in disconnect mode.",
+      "parentUuid": "1d7aaa31_82fb4b32",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 22
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87c0e514_fe632f68",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-19T08:57:20Z",
       "side": 1,
       "message": "from the logic it looks like virtual mux needs an extra event when mux init happens.\n\nhow about calling virtual_mux_update_state() from virtual_init(USB_PD_MUX_NONE) and removing these additional logic?",
+      "range": {
+        "startLine": 419,
+        "startChar": 3,
+        "endLine": 419,
+        "endChar": 24
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb6e444_264b42af",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-19T10:46:29Z",
+      "side": 1,
+      "message": "virtual_mux_update_state sends only host event, that won\u0027t resolve the issue. whenever AP send MUX command EC has to send disconnect request first that is required in the above mentioned scenarios.",
+      "parentUuid": "87c0e514_fe632f68",
       "range": {
         "startLine": 419,
         "startChar": 3,
