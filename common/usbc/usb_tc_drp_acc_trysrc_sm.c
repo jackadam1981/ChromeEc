@@ -123,9 +123,6 @@ void print_flag(int port, int set_or_clear, int flag);
 #define CLR_ALL_BUT_LPM_FLAGS(port) TC_CLR_FLAG(port, \
 	~(TC_FLAGS_LPM_ENGAGED | TC_FLAGS_SUSPEND))
 
-/* 100 ms is enough time for any TCPC transaction to complete. */
-#define PD_LPM_DEBOUNCE_US (100 * MSEC)
-
 /*
  * This delay is not part of the USB Type-C specification or the USB port
  * controller specification. Some TCPCs require extra time before the CC_STATUS
@@ -1547,7 +1544,8 @@ static void print_current_state(const int port)
 
 static void handle_device_access(int port)
 {
-	tc[port].low_power_time = get_time().val + PD_LPM_DEBOUNCE_US;
+	tc[port].low_power_time = get_time().val +
+	    tcpm_get_lpm_debounce_delay(port);
 }
 
 void tc_event_check(int port, int evt)
@@ -3132,7 +3130,8 @@ __maybe_unused static void tc_low_power_mode_entry(const int port)
 		assert(0);
 
 	print_current_state(port);
-	tc[port].low_power_time = get_time().val + PD_LPM_DEBOUNCE_US;
+	tc[port].low_power_time = get_time().val +
+	    tcpm_get_lpm_debounce_delay(port);
 	tc[port].low_power_exit_time = 0;
 }
 
@@ -3156,7 +3155,8 @@ __maybe_unused static void tc_low_power_mode_run(const int port)
 	}
 
 	if (tc[port].tasks_preventing_lpm)
-		tc[port].low_power_time = get_time().val + PD_LPM_DEBOUNCE_US;
+		tc[port].low_power_time = get_time().val +
+		    tcpm_get_lpm_debounce_delay(port);
 
 	if (get_time().val > tc[port].low_power_time) {
 		CPRINTS("C%d: TCPC Enter Low Power Mode", port);
