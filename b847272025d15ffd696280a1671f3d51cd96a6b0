@@ -33,6 +33,29 @@
       "message": "Adding the folks who requested the revert of the original change to the delay for their opinion.",
       "revId": "b847272025d15ffd696280a1671f3d51cd96a6b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b196c1_97174149",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-19T19:19:40Z",
+      "side": 1,
+      "message": "I made a generic comment in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2637770 as to an alternative implementation using no additional memory.",
+      "range": {
+        "startLine": 849,
+        "startChar": 1,
+        "endLine": 849,
+        "endChar": 59
+      },
+      "revId": "b847272025d15ffd696280a1671f3d51cd96a6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
