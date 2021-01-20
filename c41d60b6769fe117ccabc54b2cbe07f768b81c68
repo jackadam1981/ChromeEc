@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe4a56c_fee73fb6",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-20T20:36:54Z",
+      "side": 1,
+      "message": "Comment added... hopefully it is clear enough that the idea of making the timer longer will not be considered in the future.",
+      "parentUuid": "bf414827_7d850b4a",
+      "revId": "c41d60b6769fe117ccabc54b2cbe07f768b81c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9d997a0_9bdd19cc",
