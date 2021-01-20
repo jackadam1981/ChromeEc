@@ -34,6 +34,24 @@
       "parentUuid": "b9d997a0_9bdd19cc",
       "revId": "c41d60b6769fe117ccabc54b2cbe07f768b81c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b705f2_0badd03a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-20T19:09:46Z",
+      "side": 1,
+      "message": "I\u0027m surprised/impressed TCPMv1 has a unit test that notices!\nThe #ifndef makes me sad, but I won\u0027t hold up the fix for TCPMv2.",
+      "parentUuid": "3938d807_18576cf7",
+      "revId": "c41d60b6769fe117ccabc54b2cbe07f768b81c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
