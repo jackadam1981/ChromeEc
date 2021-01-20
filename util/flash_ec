@@ -1078,6 +1078,7 @@ function flash_flashrom() {
 function flash_stm32() {
 	local STM32MON
 	local STM32MON_OPT
+	local BAUDRATE
 
 	if ! servo_has_cold_reset; then
 		die "Cold reset must be available for STM32 programming"
@@ -1127,10 +1128,13 @@ function flash_stm32() {
 
 		dut_control "${EC_UART_PREFIX}_baudrate:${FLAGS_bitbang_rate}"
 		dut_control "${EC_UART_PREFIX}_bitbang_en:on"
+		# No need to pass baud rate when flashing Cr50, since it's ignored in
+		# stm32mon.
 	else
+		BAUDRATE="115200"
 		servo_save_add "${EC_UART_PREFIX}_baudrate"
-
-		dut_control "${EC_UART_PREFIX}_baudrate:115200"
+		dut_control "${EC_UART_PREFIX}_baudrate:${BAUDRATE}"
+		STM32MON_OPT+=" -b ${BAUDRATE}"
 	fi
 
 	# Add a delay long enough for cr50 to update the ccdstate. Cr50 updates
