@@ -22,6 +22,9 @@ void init_pathsel(void)
 	gpio_set_level(GPIO_USB3_A1_MUX_EN_L, 0);
 	/* Enable power */
 	usb3_a1_pwr_en(1);
+
+	/* Disable USB2 lines */
+	gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 1);
 }
 
 void usb3_a0_to_dut(void)
