@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46537b5b_8ce31bf2",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-01-20T23:09:23Z",
+      "side": 1,
+      "message": "I understand that it is paired with the patch, http://crrev.com/c/2637968.\nCan we have two aliases for each fpmcu control?\nFor example, \n \u003ccontrol\u003e\n    \u003cname\u003euart2_pty\u003c/name\u003e\n    \u003calias\u003eraw_fpmcu_uart_pty, raw_fpmcu_platform_uart_pty\u003c/alias\u003e\n    \u003cdoc\u003ePseudo-terminal (pty) that\u0027s connected to FP MCU\u0027s AP UART\u003c/doc\u003e\n    \u003cparams cmd\u003d\"get\" subtype\u003d\"pty\" interface\u003d\"8\" drv\u003d\"uart\"\n        clobber_ok\u003d\"\"\u003e\u003c/params\u003e\n  \u003c/control\u003e\n\nWith these two aliases, this patch can go without servo_ec_uart_prefix().",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 731,
+        "endChar": 1
+      },
+      "revId": "b99232ce618eb2e77afb18e9c22e26a51cdfb737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
