@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b0a85b_664f0b6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-20T23:29:32Z",
+      "side": 1,
+      "message": "I realized that the previous approach was too extreme. We shouldn\u0027t just be exiting for any failed VDM REQ. See b:178035841. I\u0027ve changed it to just treat Exit Mode NAK like Exit Mode ACK.",
+      "revId": "cab3ec69cd2e2f0a6297564d86bbb40804f329c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

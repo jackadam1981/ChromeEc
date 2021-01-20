@@ -39,6 +39,30 @@
       },
       "revId": "dd4910079183907f59289199d42caab53f502daf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b3a3831_e9972d95",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-20T23:29:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0a25be3_8455981b",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "dd4910079183907f59289199d42caab53f502daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
