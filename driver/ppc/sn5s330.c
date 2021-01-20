@@ -504,7 +504,7 @@ static int sn5s330_set_vbus_source_current_limit(int port,
 		break;
 
 	case TYPEC_RP_1A5:
-		regval |= SN5S330_ILIM_1_62;
+		regval |= SN5S330_ILIM_3_06; /*SN5S330_ILIM_1_62;*/
 		break;
 
 	case TYPEC_RP_USB:

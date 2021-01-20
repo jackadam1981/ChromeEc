@@ -439,7 +439,7 @@ test_export_static enum usb_prl_tx_state prl_tx_get_state(const int port)
 /* Print the protocol transmit statemachine's current state. */
 static void print_current_prl_tx_state(const int port)
 {
-	if (prl_debug_level >= DEBUG_LEVEL_3)
+	if (prl_debug_level >= DEBUG_LEVEL_2)
 		CPRINTS("C%d: %s", port,
 				prl_tx_state_names[prl_tx_get_state(port)]);
 }
@@ -482,7 +482,7 @@ test_export_static enum usb_rch_state rch_get_state(const int port)
 /* Print the chunked Rx statemachine's current state. */
 static void print_current_rch_state(const int port)
 {
-	if (prl_debug_level >= DEBUG_LEVEL_3)
+	if (prl_debug_level >= DEBUG_LEVEL_2)
 		CPRINTS("C%d: %s", port,
 				rch_state_names[rch_get_state(port)]);
 }
@@ -1033,7 +1033,6 @@ static void prl_tx_layer_reset_for_transmit_run(const int port)
 {
 	/* NOTE: PRL_Tx_Construct_Message State embedded here */
 	prl_tx_construct_message(port);
-	CPRINTS("prl_tx: go wait_phy_resp 2");
 	set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 }
 
@@ -1196,7 +1195,6 @@ static void prl_tx_src_pending_run(const int port)
 		 */
 		else {
 			prl_tx_construct_message(port);
-			CPRINTS("prl_tx: go wait_phy_resp 3");
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 		}
 
