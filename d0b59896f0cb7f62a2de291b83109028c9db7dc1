@@ -16,6 +16,40 @@
       "message": "flash on DVT board and verify LED functions",
       "revId": "d0b59896f0cb7f62a2de291b83109028c9db7dc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5bb34b_e75ab257",
+        "filename": "board/madoo/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-20T19:53:21Z",
+      "side": 1,
+      "message": "Function returns half bool, half int returns.  Please standardize to one or the other",
+      "revId": "d0b59896f0cb7f62a2de291b83109028c9db7dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915bd2f9_cb0ad27a",
+        "filename": "board/madoo/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-20T19:53:21Z",
+      "side": 1,
+      "message": "nit: could be useful to note what values these represent for documentation",
+      "revId": "d0b59896f0cb7f62a2de291b83109028c9db7dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
