@@ -310,6 +310,28 @@ static enum charge_supplier find_supplier(int port, enum charge_supplier sup,
 	return sup;
 }
 
+int charge_manager_get_vbus_voltage(const int port)
+{
+#if defined(CONFIG_USB_PD_VBUS_MEASURE_CHARGER)
+	int voltage;
+
+	if (charger_get_vbus_voltage(port, &voltage))
+		return 0;
+	else
+		return voltage;
+#elif defined(CONFIG_USB_PD_VBUS_MEASURE_TCPC)
+	return tcpc_get_vbus_voltage(port);
+#elif defined(CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT)
+	return adc_read_channel(board_get_vbus_adc(port));
+#elif defined(CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT)
+	/* No VBUS ADC channel - voltage is unknown */
+	return 0;
+#else
+	/* There is a single ADC that measures joint Vbus */
+	return adc_read_channel(ADC_VBUS);
+#endif
+}
+
 /**
  * Fills passed power_info structure with current info about the passed port.
  *
@@ -466,27 +488,9 @@ static void charge_manager_fill_power_info(int port,
 		 */
 		if (r->role == USB_PD_PORT_POWER_SINK_NOT_CHARGING)
 			r->meas.voltage_now = 5000;
-		else {
-#if defined(CONFIG_USB_PD_VBUS_MEASURE_CHARGER)
-			int voltage;
-
-			if (charger_get_vbus_voltage(port, &voltage))
-				r->meas.voltage_now = 0;
-			else
-				r->meas.voltage_now = voltage;
-#elif defined(CONFIG_USB_PD_VBUS_MEASURE_TCPC)
-			r->meas.voltage_now = tcpc_get_vbus_voltage(port);
-#elif defined(CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT)
+		else
 			r->meas.voltage_now =
-				adc_read_channel(board_get_vbus_adc(port));
-#elif defined(CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT)
-			/* No VBUS ADC channel - voltage is unknown */
-			r->meas.voltage_now = 0;
-#else
-			/* There is a single ADC that measures joint Vbus */
-			r->meas.voltage_now = adc_read_channel(ADC_VBUS);
-#endif
-		}
+				charge_manager_get_vbus_voltage(port);
 	}
 }
 #endif /* TEST_BUILD */
