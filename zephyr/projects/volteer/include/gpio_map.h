@@ -26,6 +26,7 @@
 #define GPIO_EC_ALS_RGB_INT_L      NAMED_GPIO(ec_als_rgb_int_l)
 #define GPIO_EC_BATT_PRES_ODL      NAMED_GPIO(ec_batt_pres_odl)
 #define GPIO_EC_IMU_INT_L          NAMED_GPIO(ec_imu_int_l)
+#define GPIO_EC_INT_L              NAMED_GPIO(ec_pch_int_odl)
 #define GPIO_EC_PCH_SYS_PWROK      NAMED_GPIO(ec_pch_sys_pwrok)
 #define GPIO_EC_PCH_WAKE_ODL       NAMED_GPIO(ec_pch_wake_odl)
 #define GPIO_EN_PP3300_A           NAMED_GPIO(en_pp3300_a)
