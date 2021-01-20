@@ -114,11 +114,10 @@
 	 * 2. 256KB program RAM, but only 512K of Flash (vs 1M for the
 	 * -WB). After the boot header is added, a 256K image would be
 	 * too large to fit in either RO or RW sections of Flash (each
-	 * of which is half of it). Because other code assumes that
-	 * image size is a multiple of Flash erase granularity, we
-	 * sacrifice a whole sector.
+	 * of which is half of it). The linker script handles reserving
+	 * this space, so the program memory size is set to 256 KiB.
 	 */
-#	define NPCX_PROGRAM_MEMORY_SIZE (CONFIG_CODE_RAM_SIZE - 0x1000)
+#	define NPCX_PROGRAM_MEMORY_SIZE CONFIG_CODE_RAM_SIZE
 	/* program memory base address for Code RAM (0x100B0000 - 256KB) */
 #	define CONFIG_PROGRAM_MEMORY_BASE 0x10070000
 #	define CONFIG_RAM_BASE    0x200B0000 /* memory address of data ram */
