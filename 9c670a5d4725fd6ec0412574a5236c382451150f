@@ -22,6 +22,29 @@
       },
       "revId": "9c670a5d4725fd6ec0412574a5236c382451150f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58035b6_e40fbac8",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-20T18:42:38Z",
+      "side": 1,
+      "message": "I am not sure if the original 5ms polling time preempts the deferred interrupt handler. If it is the case, better to change it to 10ms to leave larger margin.",
+      "range": {
+        "startLine": 86,
+        "startChar": 34,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "9c670a5d4725fd6ec0412574a5236c382451150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
