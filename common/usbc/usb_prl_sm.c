@@ -439,7 +439,7 @@ test_export_static enum usb_prl_tx_state prl_tx_get_state(const int port)
 /* Print the protocol transmit statemachine's current state. */
 static void print_current_prl_tx_state(const int port)
 {
-	if (prl_debug_level >= DEBUG_LEVEL_3)
+	if (prl_debug_level >= DEBUG_LEVEL_2)
 		CPRINTS("C%d: %s", port,
 				prl_tx_state_names[prl_tx_get_state(port)]);
 }
@@ -482,7 +482,7 @@ test_export_static enum usb_rch_state rch_get_state(const int port)
 /* Print the chunked Rx statemachine's current state. */
 static void print_current_rch_state(const int port)
 {
-	if (prl_debug_level >= DEBUG_LEVEL_3)
+	if (prl_debug_level >= DEBUG_LEVEL_2)
 		CPRINTS("C%d: %s", port,
 				rch_state_names[rch_get_state(port)]);
 }
