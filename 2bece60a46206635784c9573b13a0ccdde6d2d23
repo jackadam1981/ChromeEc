@@ -16,6 +16,24 @@
       "message": "nit: note the overwrite of PIN_E is intentional\n\nAlso, I\u0027m unclear from the datasheet: do you need to set OperationMode Selection?",
       "revId": "2bece60a46206635784c9573b13a0ccdde6d2d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382c175d_37fe8e4c",
+        "filename": "driver/usb_mux/ps8822.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-20T18:48:02Z",
+      "side": 1,
+      "message": "The driver is not overwriting PIN_E, but just leaving it at whatever it is set to.",
+      "parentUuid": "2ce1a7f9_302b2165",
+      "revId": "2bece60a46206635784c9573b13a0ccdde6d2d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
