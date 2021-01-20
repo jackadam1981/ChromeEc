@@ -347,6 +347,12 @@ excep_handler:
         lw ra, 1*4(t2)
         lw t0, 2*4(t2)
         lw t1, 3*4(t2)
+
+        la t2, ec_int_group
+        lw t0, 0(t2)
+        la t2, ec_int
+        lw t1, 0(t2)
+
         /* restore t2 */
         csrr t2, mscratch
         /* save sp to scratch register */

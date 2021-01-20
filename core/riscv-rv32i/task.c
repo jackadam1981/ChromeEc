@@ -336,6 +336,12 @@ void __ram_code start_irq_handler(void)
 		ec_int_group = chip_get_intc_group(ec_int);
 	}
 
+	if (ec_int_group > 16) {
+		panic_printf("\nUnsupported ec irq! irq=%d, group=%d\n\n",
+				ec_int, ec_int_group);
+		ec_int_group = 0;
+	}
+
 #if defined(CONFIG_LOW_POWER_IDLE) && defined(CHIP_FAMILY_IT83XX)
 	clock_sleep_mode_wakeup_isr();
 #endif
@@ -408,18 +414,6 @@ static uint32_t __ram_code __wait_evt(int timeout_us, task_id_t resched)
 		atomic_clear_bits(&tsk->events, TASK_EVENT_TIMER);
 	}
 	return evt;
-}
-
-/* TODO: Remove the remove_me function.
- * At the moment "make BOARD=it8xxx2_evb" returns an error
- * "relocation truncated to fit" without it.
- */
-uint32_t __ram_code remove_me(task_id_t tskid)
-{
-	task_ *receiver = __task_id_to_ptr(tskid);
-
-	ASSERT(receiver);
-	return 0;
 }
 
 uint32_t __ram_code task_set_event(task_id_t tskid, uint32_t event)
