@@ -16,6 +16,24 @@
       "message": "Instead of polling faster, I\u0027d prefer to use task_wake to avoid the 5ms delay.\nThis has the advantage that it is even faster than a 1ms delay, and avoids running the task loop more often than necessary, and will potentially speed up other HardResets in addition to this Send_Caps case.\nThe tricky part is finding the right place that needs to call task_wake.",
       "revId": "18ab5cc8d4f0fa229ebcd1b94149f8dd005ac964",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a2fd561_abe5c48a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-20T21:52:14Z",
+      "side": 1,
+      "message": "Created b/178029034 to try to make the event loop more reactive.",
+      "parentUuid": "baf199e8_3dbdadf5",
+      "revId": "18ab5cc8d4f0fa229ebcd1b94149f8dd005ac964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
