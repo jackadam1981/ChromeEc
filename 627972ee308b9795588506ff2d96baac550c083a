@@ -50,6 +50,24 @@
       "message": "Instead of adding a new function, it seems more straightforward to simply have raa489000_hibernate take a disable_adc argument as Diana suggested.",
       "revId": "627972ee308b9795588506ff2d96baac550c083a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f7e20c_df0cafa8",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2021-01-20T02:21:23Z",
+      "side": 1,
+      "message": "I am not too sure what do you mean by using argument/parameter instead. Could you please elaborate more. If I purely use a \"bool disable_adc \u003d false\" in raa489000_hibernate, I couldn\u0027t  modify bool value(by board) without a function.\n\nThere are two reasons that I created raa489000_disable_adc\n1. We want to disable ADC only on main board\u0027s IC, and not the sub board\u0027s. Therefore, we need to do the conditional check in board layer.\n2. If we do not add the default raa489000_disable_adc function, we might overwrite other boards like waddledoo.",
+      "parentUuid": "10248d2b_b258f49d",
+      "revId": "627972ee308b9795588506ff2d96baac550c083a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
