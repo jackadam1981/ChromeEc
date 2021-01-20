@@ -53,7 +53,7 @@ STATIC_IF(CONFIG_CMD_ACCEL_INFO) int accel_disp;
  */
 #define MOTION_SENSOR_INT_ADJUSTMENT_US 10
 
-struct mutex g_sensor_mutex;
+mutex_t g_sensor_mutex;
 
 /*
  * Current power level (S0, S3, S5, ...)
@@ -77,6 +77,18 @@ static uint32_t odr_event_required;
 
 /* Whether or not the FIFO interrupt should be enabled (set from the AP). */
 __maybe_unused static int fifo_int_enabled;
+
+#ifdef CONFIG_ZEPHYR
+static int init_sensor_mutex(const struct device *dev)
+{
+	ARG_UNUSED(dev);
+
+	k_mutex_init(&g_sensor_mutex);
+
+	return 0;
+}
+SYS_INIT(init_sensor_mutex, POST_KERNEL, 50);
+#endif /* CONFIG_ZEPHYR */
 
 static inline int motion_sensor_in_forced_mode(
 		const struct motion_sensor_t *sensor)
@@ -157,13 +169,13 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 		return ret;
 
 	if (IS_ENABLED(CONFIG_CONSOLE_VERBOSE))
-		CPRINTS("%s ODR: %d - roundup %d from config %d [AP %d]",
-			sensor->name, odr, roundup, config_id,
-			BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr));
+		CPRINTS("%s ODR: %d - roundup %d from config %d [AP %u]",
+		    sensor->name, odr, roundup, config_id,
+		    (uint32_t)BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr));
 	else
-		CPRINTS("%c%d ODR %d rup %d cfg %d AP %d",
-			sensor->name[0], sensor->type, odr, roundup, config_id,
-			BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr));
+		CPRINTS("%c%d ODR %d rup %d cfg %d AP %u",
+		    sensor->name[0], sensor->type, odr, roundup, config_id,
+		    (uint32_t)BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr));
 
 	mutex_lock(&g_sensor_mutex);
 	odr = sensor->drv->get_data_rate(sensor);
@@ -1776,8 +1788,8 @@ static int command_display_accel_info(int argc, char **argv)
 		ccprintf("config:\n");
 		for (j = 0; j < SENSOR_CONFIG_MAX; j++) {
 			ccprintf("%d - odr: %umHz, ec_rate: %uus\n", j,
-				motion_sensors[i].config[j].odr &
-				~ROUND_UP_FLAG,
+				(uint32_t)(motion_sensors[i].config[j].odr &
+				~ROUND_UP_FLAG),
 				motion_sensors[i].config[j].ec_rate);
 		}
 	}

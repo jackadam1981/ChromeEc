@@ -15,6 +15,7 @@
 #include "i2c.h"
 #include "math_util.h"
 #include "queue.h"
+#include "task.h"
 #include "timer.h"
 #include "util.h"
 
@@ -160,7 +161,7 @@ struct motion_sensor_t {
 	enum motionsensor_location location;
 	const struct accelgyro_drv *drv;
 	/* One mutex per physical chip. */
-	struct mutex *mutex;
+	mutex_t *mutex;
 	void *drv_data;
 	/* Only valid if flags & MOTIONSENSE_FLAG_INT_SIGNAL is true. */
 	enum gpio_signal int_signal;
@@ -256,7 +257,7 @@ struct motion_sensor_t {
  * When we process CMD_DUMP, we want to be sure the motion sense
  * task is not updating the sensor values at the same time.
  */
-extern struct mutex g_sensor_mutex;
+extern mutex_t g_sensor_mutex;
 
 /* Defined at board level. */
 extern struct motion_sensor_t motion_sensors[];

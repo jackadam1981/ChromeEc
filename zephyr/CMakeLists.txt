@@ -75,6 +75,8 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC         "${PLATFORM_EC}/common/base32.c"
 
 # Now include files that depend on or relate to other CONFIG options, sorted by
 # CONFIG
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_FIFO
+                                                "${PLATFORM_EC}/common/motion_sense_fifo.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_ACPI    "${PLATFORM_EC}/common/acpi.c"
                                                 "${PLATFORM_EC}/common/ec_features.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY "${PLATFORM_EC}/common/battery.c")
@@ -111,8 +113,14 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_8042
                                                 "${PLATFORM_EC}/common/keyboard_8042.c"
                                                 "${PLATFORM_EC}/common/keyboard_8042_sharedlib.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_LID_ANGLE
+                                                "${PLATFORM_EC}/common/lid_angle.c"
+                                                "${PLATFORM_EC}/common/motion_lid.c"
+                                                "${PLATFORM_EC}/common/math_util.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_LID_SWITCH
                                                 "${PLATFORM_EC}/common/lid_switch.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_MOTIONSENSE
+                                                "${PLATFORM_EC}/common/motion_sense.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_PORT80  "${PLATFORM_EC}/common/port80.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_POWER_BUTTON
                                                 "${PLATFORM_EC}/common/power_button.c")
@@ -125,6 +133,8 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_ICELAKE
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_INTEL
                                                 "${PLATFORM_EC}/common/power_button_x86.c"
                                                 "${PLATFORM_EC}/power/intel_x86.c")
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_TABLET_MODE
+                                                "${PLATFORM_EC}/common/tablet_mode.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_TIMER   "${PLATFORM_EC}/common/timer.c")
 
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_CHARGER
