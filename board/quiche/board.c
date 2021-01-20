@@ -31,7 +31,7 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
-#define QUICHE_PD_DEBUG_LVL 1
+#define QUICHE_PD_DEBUG_LVL 2
 
 #ifdef SECTION_IS_RW
 #define CROS_EC_SECTION "RW"
