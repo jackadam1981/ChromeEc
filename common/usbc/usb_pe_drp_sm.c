@@ -321,6 +321,7 @@ enum usb_pe_state {
 	PE_GIVE_BATTERY_CAP,
 	PE_GIVE_BATTERY_STATUS,
 	PE_SEND_ALERT,
+	PE_SEND_EXT_TEST,
 	PE_SRC_CHUNK_RECEIVED,
 	PE_SNK_CHUNK_RECEIVED,
 };
@@ -442,6 +443,7 @@ __maybe_unused static __const_data const char * const pe_state_names[] = {
 	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
 	[PE_SEND_ALERT] = "PE_Send_Alert",
+	[PE_SEND_EXT_TEST] = "PE_Send_Test",
 #else
 	[PE_SRC_CHUNK_RECEIVED] = "PE_SRC_Chunk_Received",
 	[PE_SNK_CHUNK_RECEIVED] = "PE_SNK_Chunk_Received",
@@ -1655,6 +1657,10 @@ static bool common_src_snk_dpm_requests(int port)
 		pe[port].tx_type = TCPC_TX_SOP;
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return true;
+	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_EXT_TEST_MSG)) {
+		pe_set_dpm_curr_request(port, DPM_REQUEST_EXT_TEST_MSG);
+		set_state_pe(port, PE_SEND_EXT_TEST);
+		CPRINTS("about to send me some extended messages");
 	}
 
 	return false;
@@ -4175,6 +4181,29 @@ static void pe_send_alert_entry(int port)
 }
 
 static void pe_send_alert_run(int port)
+{
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe_set_ready_state(port);
+	}
+}
+
+static void pe_send_ext_test_entry(int port)
+{
+	uint8_t *data = tx_emsg[port].buf;
+	int i;
+
+	print_current_state(port);
+
+	for(i = 0; i < 260; i++)
+		data[i] = i;
+	tx_emsg[port].len = i;
+
+	/* Request the Protocol Layer to send Alert Message. */
+	send_ext_data_msg(port, TCPC_TX_SOP, 0x1f);
+}
+
+static void pe_send_ext_test_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
@@ -7107,6 +7136,10 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_SEND_ALERT] = {
 		.entry = pe_send_alert_entry,
 		.run   = pe_send_alert_run,
+	},
+	[PE_SEND_EXT_TEST] = {
+		.entry = pe_send_ext_test_entry,
+		.run   = pe_send_ext_test_run,
 	},
 #else
 	[PE_SRC_CHUNK_RECEIVED] = {
