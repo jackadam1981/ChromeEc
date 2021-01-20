@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "625d8566_d554df15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-20T22:36:07Z",
+      "side": 1,
+      "message": "Yes, this is a good candidate to rewrite in python.",
+      "parentUuid": "02644f14_230e1055",
+      "revId": "b70370460bc42ebe5980b506f9b671162c97ba86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0158fb07_e00552d1",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-01-19T20:04:24Z",
       "side": 1,
       "message": "Any chance you could add little comment for this function to separate it from servo_ec_uart?\n\nLike:\n\n# Get servo uart prefix for finding uart parameters like {uart_prefix}_baudrate and {uart_prefix}_parity.",
+      "revId": "b70370460bc42ebe5980b506f9b671162c97ba86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6100ff46_a8d4afea",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-20T22:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0158fb07_e00552d1",
       "revId": "b70370460bc42ebe5980b506f9b671162c97ba86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +124,30 @@
       "writtenOn": "2021-01-19T20:04:24Z",
       "side": 1,
       "message": "\"local\" to be less confusing (since this is always subshelled).",
+      "range": {
+        "startLine": 731,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 15
+      },
+      "revId": "b70370460bc42ebe5980b506f9b671162c97ba86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "237b6265_75fe480c",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-20T22:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6caaec0d_2b0cd814",
       "range": {
         "startLine": 731,
         "startChar": 1,
