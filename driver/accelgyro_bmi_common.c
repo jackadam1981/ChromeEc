@@ -507,9 +507,9 @@ int bmi_load_fifo(struct motion_sensor_t *s, uint32_t last_ts)
 	if (beginning == 0x84848484 ||
 			(beginning & 0xdcdcdcdc) == 0x40404040) {
 		CPRINTS("Suspended FIFO: accel ODR/rate: %d/%d: 0x%08x",
-				BASE_ODR(s->config[SENSOR_CONFIG_AP].odr),
-				BMI_GET_SAVED_DATA(s)->odr,
-				beginning);
+			(uint32_t)BASE_ODR(s->config[SENSOR_CONFIG_AP].odr),
+			BMI_GET_SAVED_DATA(s)->odr,
+			beginning);
 		return EC_SUCCESS;
 	}
 
