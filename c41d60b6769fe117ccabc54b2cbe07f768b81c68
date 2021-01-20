@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf414827_7d850b4a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-20T20:02:36Z",
+      "side": 1,
+      "message": "Note that we\u0027re going to the smaller end of the spectrum to meet compliance timing when running with TCPCs, in case someone in the future looks at this and thinks \"you know, this timer could be longer\"",
+      "revId": "c41d60b6769fe117ccabc54b2cbe07f768b81c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9d997a0_9bdd19cc",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
