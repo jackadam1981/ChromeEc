@@ -67,11 +67,10 @@ int cpu_int_entry_number;
 int chip_get_ec_int(void)
 {
 	extern volatile int ec_int;
-
-#if defined(CHIP_FAMILY_IT8320)    /* N8 core */
 	int i;
 
 	for (i = 0; i < IT83XX_IRQ_COUNT; i++) {
+#if defined(CHIP_FAMILY_IT8320)    /* N8 core */
 		ec_int = IT83XX_INTC_IVCT(cpu_int_entry_number);
 		/*
 		 * WORKAROUND: when the interrupt vector register isn't
@@ -81,12 +80,15 @@ int chip_get_ec_int(void)
 		 */
 		if (ec_int == IT83XX_INTC_IVCT(cpu_int_entry_number))
 			break;
+#else /* defined(CHIP_FAMILY_IT8XXX2) RISCV core */
+		ec_int = IT83XX_INTC_AIVCT;
+		if (ec_int == IT83XX_INTC_AIVCT)
+			break;
+#endif
 	}
 	/* Determine interrupt number */
 	ec_int -= 16;
-#else /* defined(CHIP_FAMILY_IT8XXX2) RISCV core */
-	ec_int = IT83XX_INTC_AIVCT - 0x10;
-#endif
+
 	return ec_int;
 }
 
