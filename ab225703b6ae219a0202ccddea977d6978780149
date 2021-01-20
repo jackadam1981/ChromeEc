@@ -39,6 +39,30 @@
       },
       "revId": "ab225703b6ae219a0202ccddea977d6978780149",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f41c0ee_a6050f29",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-20T18:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa637b48_f059ae15",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "ab225703b6ae219a0202ccddea977d6978780149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
