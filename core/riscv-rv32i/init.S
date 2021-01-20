@@ -332,10 +332,11 @@ unhandled_ec_irq:
 unhandled_interrupt:
         li tp, 0xBAD0
 __unhandled_irq:
-        slli tp, tp, 8
-        csrr t0, mcause
+        slli tp, tp, 16
+        la t0, ec_int
+        lw t0, 0(t0)
         add tp, tp, t0
-        j excep_handler /* display exception with TP 80bad[0|1]<irq> */
+        j excep_handler /* display exception with TP bad[0|1]<ec irq> */
 
 .global excep_handler
 excep_handler:

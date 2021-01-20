@@ -313,6 +313,8 @@ void __ram_code update_exc_start_time(void)
 
 void __ram_code start_irq_handler(void)
 {
+	int irq_valid = 1;
+
 	/* save a0, a1, and a2 for syscall */
 	asm volatile ("addi sp, sp, -4*3");
 	asm volatile ("sw a0, 0(sp)");
@@ -330,9 +332,10 @@ void __ram_code start_irq_handler(void)
 		 * Determine interrupt number.
 		 * -1 if it cannot find the corresponding interrupt source.
 		 */
-		ec_int = chip_get_ec_int();
-		if (ec_int == -1)
+		if (chip_get_ec_int() == -1) {
+			irq_valid = -1;
 			goto error;
+		}
 		ec_int_group = chip_get_intc_group(ec_int);
 	}
 
@@ -352,7 +355,7 @@ void __ram_code start_irq_handler(void)
 
 error:
 	/* cannot use return statement because a0 has been used */
-	asm volatile ("add t0, zero, %0" :: "r"(ec_int));
+	asm volatile ("add t0, zero, %0" :: "r"(irq_valid));
 
 	/* restore a0, a1, and a2 */
 	asm volatile ("lw a0, 0(sp)");
