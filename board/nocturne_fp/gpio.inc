@@ -9,7 +9,8 @@ GPIO_INT(FPS_INT,         PIN(A, 0), GPIO_INT_RISING, fps_event)
 GPIO_INT(SPI1_NSS,        PIN(A, 4), GPIO_INPUT, spi_event)
 
 GPIO_INT(PCH_SLP_S0_L,    PIN(D,13), GPIO_INT_BOTH, slp_event)
-GPIO_INT(PCH_SLP_S3_L,    PIN(A,11), GPIO_INT_BOTH, slp_event)
+GPIO_INT(PCH_SLP_S3_L,    PIN(D,14), GPIO_INT_BOTH, slp_event)
+
 /*
  * The S4 and SUS sleep lines are unused in code, but are maintained in this
  * gpio list to ensure that they are not repurposed. This is because these
@@ -23,10 +24,13 @@ GPIO_INT(WP,              PIN(B, 7), GPIO_INT_BOTH, wp_event)
 GPIO(WP,                  PIN(B, 7), GPIO_INPUT)
 #endif
 
+GPIO(FP_SPI_SEL, PIN(E, 1), GPIO_INPUT | GPIO_PULL_UP)
+
 /* Outputs */
 GPIO(EC_INT_L,            PIN(A, 1),  GPIO_OUT_HIGH)
 GPIO(FP_RST_ODL,          PIN(E, 0),  GPIO_OUT_HIGH)
 GPIO(SPI4_NSS,            PIN(E, 4),  GPIO_OUT_HIGH)
+GPIO(SPI4_ALT_NSS,            PIN(E, 11), GPIO_OUT_HIGH)
 GPIO(USER_PRES_L,         PIN(C, 5),  GPIO_ODR_HIGH)
 
 UNIMPLEMENTED(ENTERING_RW)
@@ -37,3 +41,7 @@ ALTERNATE(PIN_MASK(A, 0x0600), GPIO_ALT_USART,  MODULE_UART, GPIO_PULL_UP)
 ALTERNATE(PIN_MASK(A, 0x00f0), GPIO_ALT_SPI, MODULE_SPI,  0)
 /* SPI4 master to sensor: PE2/5/6 (CLK/MISO/MOSI) */
 ALTERNATE(PIN_MASK(E, 0x0064), GPIO_ALT_SPI, MODULE_SPI_MASTER,  0)
+
+/* SPI4 master to sensor: PE12/13/14 (CLK/MISO/MOSI) */
+/* (pinmask, function, module, flags) */
+// ALTERNATE(PIN_MASK(E, 0x7000), GPIO_ALT_SPI, MODULE_SPI_MASTER,  0)
