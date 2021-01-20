@@ -46,6 +46,30 @@
       },
       "revId": "742c533e56de9c6693314fe69333929269444a00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c2f0fd_fffc49f5",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-20T01:53:02Z",
+      "side": 1,
+      "message": "double check the b:167523658#39 thermal table for Thermal team",
+      "parentUuid": "d0ad62f1_116cc034",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 42
+      },
+      "revId": "742c533e56de9c6693314fe69333929269444a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
