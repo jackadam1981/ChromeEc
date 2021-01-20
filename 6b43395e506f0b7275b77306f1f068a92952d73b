@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6680f78_7a138972",
+        "filename": "zephyr/projects/volteer/include/sensor_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-20T23:17:12Z",
+      "side": 1,
+      "message": "part of me wonders if we can make this sensor_id list kconfig driven (instead of dts) by making the enum sensor_id common to all zephyr devices, and ifdef each of the entries based on kconfig options....\n\ni.e., if we have a lid accerometer enabled, then add LID_ACCEL to the list",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "6b43395e506f0b7275b77306f1f068a92952d73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddaf280f_ac9ca0bb",
+        "filename": "zephyr/projects/volteer/include/sensor_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-20T23:17:12Z",
+      "side": 1,
+      "message": "we probably don\u0027t want to be defining config options here as config.h won\u0027t hit this\n\nany way you can think of to make this Kconfig+config_chip.h driven?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "6b43395e506f0b7275b77306f1f068a92952d73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62335023_c2f46dbf",
+        "filename": "zephyr/projects/volteer/include/sensor_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-20T23:17:12Z",
+      "side": 1,
+      "message": "should probably go in gpio_map.h",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 6
+      },
+      "revId": "6b43395e506f0b7275b77306f1f068a92952d73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
