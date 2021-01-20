@@ -226,6 +226,14 @@ static inline void tcpm_enable_auto_discharge_disconnect(int port, int enable)
 		tcpc->tcpc_enable_auto_discharge_disconnect(port, enable);
 }
 
+static inline int tcpm_reset_bist_type_2(int port)
+{
+	if (tcpc_config[port].drv->reset_bist_type_2 != NULL)
+		return tcpc_config[port].drv->reset_bist_type_2(port);
+	else
+		return EC_SUCCESS;
+}
+
 /**
  * Reads a message using get_message_raw driver method and puts it into EC's
  * cache.
@@ -549,5 +557,7 @@ static inline void tcpm_dump_registers(int port)
 		tcpc_dump_std_registers(port);
 }
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
+
+int tcpm_reset_bist_type_2(int port);
 
 #endif
