@@ -33,6 +33,24 @@
       "message": "+John, he probably knows more about this than me (I will follow with a +2 after he reviews).",
       "revId": "cbb7df35484276f1fad0555918fe170ec48fe361",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aef5eb5_89abe658",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-01-20T20:30:21Z",
+      "side": 1,
+      "message": "I don\u0027t see any risk with these changes and it seems like a safe way to try to get past the issue.\n\nHowever, I don\u0027t understand why the LN9310 would need more than 50ms to report power good. It should take much less than that for the switching to actually start.  The LN9310 power good signal not read directly from a GPIO pin though, it is read via an I2C register read-operation from the ln9310_irq_deferred interrupt handler.  If the delay of this interrupt handler + I2C read operation is variable, perhaps it sometimes causes the delay of power_good to be more than 50 ms?  \n\nIt is also possible that the initial startup triggers a protection comparator which then requires a longer qualification time before restarting which would also delay the power good signal reporting.",
+      "parentUuid": "91594299_61294e8a",
+      "revId": "cbb7df35484276f1fad0555918fe170ec48fe361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
