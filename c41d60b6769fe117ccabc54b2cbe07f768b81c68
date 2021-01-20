@@ -16,6 +16,24 @@
       "message": "I vote for changing this to 24ms universally (ie TCPMv1 and TCPMv2), to avoid adding the #ifndef that makes this harder to read.",
       "revId": "c41d60b6769fe117ccabc54b2cbe07f768b81c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3938d807_18576cf7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-20T19:05:47Z",
+      "side": 1,
+      "message": "TCPMv1 seems to be using this value differently and causes Unit Test failures. I feel safer just making the change to TCPMv2.",
+      "parentUuid": "b9d997a0_9bdd19cc",
+      "revId": "c41d60b6769fe117ccabc54b2cbe07f768b81c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
