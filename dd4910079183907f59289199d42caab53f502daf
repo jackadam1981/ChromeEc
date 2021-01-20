@@ -16,6 +16,29 @@
       "message": "Keith to review. Madhusudanarao to verify.",
       "revId": "dd4910079183907f59289199d42caab53f502daf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0a25be3_8455981b",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-20T22:53:10Z",
+      "side": 1,
+      "message": "Create a helper routine for this sequence and use in the Exit Mode ACK flow too.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "dd4910079183907f59289199d42caab53f502daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
