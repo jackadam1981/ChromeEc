@@ -104,6 +104,24 @@
       "parentUuid": "5a71faee_a87503f0",
       "revId": "627972ee308b9795588506ff2d96baac550c083a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a5b308c_9fae4ac3",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-20T17:40:22Z",
+      "side": 1,
+      "message": "Correct, you\u0027d have to set the other boards as you\u0027ve done. I personally don\u0027t find it confusing.\n\nRegarding #2, I don\u0027t anticipate any more changes, so we shouldn\u0027t worry too much about that right now.",
+      "parentUuid": "c88240a3_6af0ce22",
+      "revId": "627972ee308b9795588506ff2d96baac550c083a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
