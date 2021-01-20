@@ -4979,6 +4979,8 @@ static void pe_bist_tx_run(int port)
 {
 	if (get_time().val > pe[port].bist_cont_mode_timer) {
 
+		tcpm_reset_bist_type_2(port);
+
 		if (pe[port].power_role == PD_ROLE_SOURCE)
 			set_state_pe(port, PE_SRC_TRANSITION_TO_DEFAULT);
 		else
