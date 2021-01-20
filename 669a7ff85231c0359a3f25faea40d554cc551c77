@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7817e8f8_f08cf4b7",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-20T19:39:00Z",
+      "side": 1,
+      "message": "Will these always be powered, or will they need CONFIG_TEMP_SENSOR_POWER_GPIO?",
+      "revId": "669a7ff85231c0359a3f25faea40d554cc551c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
