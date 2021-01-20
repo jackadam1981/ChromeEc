@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb4ac4ad_854ac03d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-20T22:36:50Z",
+      "side": 1,
+      "message": "BIT() operation in ECOS result in unsigned int but unsigned long int in Zephyr. so if one is OK then the other one produced warning or compile error.\nWanted to use typeof() in the macro but it looks like it\u0027s too much and zephyr doesn\u0027t have it(still can use __typeof__).\nAnyway, I think it\u0027s better to move it into the macro.",
+      "parentUuid": "a69d9d45_0161328b",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33523523_cf3195ef",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-20T20:51:49Z",
       "side": 1,
       "message": "indent to align with (",
+      "range": {
+        "startLine": 1792,
+        "startChar": 4,
+        "endLine": 1792,
+        "endChar": 20
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90254b78_9f4bbb8f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1792,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-20T22:36:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33523523_cf3195ef",
       "range": {
         "startLine": 1792,
         "startChar": 4,
