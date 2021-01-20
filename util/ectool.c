@@ -8106,6 +8106,7 @@ static void cmd_cbi_help(char *cmd)
 	"      6: FW_CONFIG\n"
 	"      7: PCB_VENDOR\n"
 	"      8: SSFC\n"
+	"      9: REWORK_ID\n"
 	"    <size> is the size of the data in byte. It should be zero for\n"
 	"      string types.\n"
 	"    <value/string> is an integer or a string to be set\n"
@@ -8119,6 +8120,11 @@ static void cmd_cbi_help(char *cmd)
 static int cmd_cbi_is_string_field(enum cbi_data_tag tag)
 {
 	return tag == CBI_TAG_DRAM_PART_NUM || tag == CBI_TAG_OEM_NAME;
+}
+
+static int cmd_cbi_is_uint64_field(enum cbi_data_tag tag)
+{
+	return tag == CBI_TAG_REWORK_ID;
 }
 
 /*
@@ -8171,16 +8177,12 @@ static int cmd_cbi(int argc, char *argv[])
 			printf("%.*s", rv, (const char *)ec_inbuf);
 		} else {
 			const uint8_t * const buffer = ec_inbuf;
+			uint64_t int_value = 0;
+                        for(i = 0; i < rv; i++)
+				int_value |= (uint64_t)buffer[i] << (i * 8);
 
-			if (rv <= sizeof(uint32_t)) {
-				uint32_t int_value = 0;
-
-				for (i = 0; i < rv; i++)
-					int_value |= buffer[i] << (i * 8);
-
-				printf("As uint: %u (0x%x)\n", int_value,
-				       int_value);
-			}
+                        printf("As uint: %lu (0x%lx)\n", int_value,
+                                       int_value);
 			printf("As binary:");
 			for (i = 0; i < rv; i++) {
 				if (i % 32 == 31)
@@ -8194,7 +8196,7 @@ static int cmd_cbi(int argc, char *argv[])
 		struct ec_params_set_cbi *p =
 				(struct ec_params_set_cbi *)ec_outbuf;
 		void *val_ptr;
-		uint32_t val;
+		uint64_t val = 0;
 		uint8_t size;
 		if (argc < 5) {
 			fprintf(stderr, "Invalid number of params\n");
@@ -8208,16 +8210,29 @@ static int cmd_cbi(int argc, char *argv[])
 			val_ptr = argv[3];
 			size = strlen(val_ptr) + 1;
 		} else {
-			val = strtol(argv[3], &e, 0);
-			if (e && *e) {
+			val = strtoul(argv[3], &e, 0);
+			/* strtoul sets an errno for invalid input. If the value
+			 * read is out of range of representable values by an
+			 * unsigned long int, the function returns ULONG_MAX
+			 * or ULONG_MIN and the errno is set to ERANGE.
+			 */
+			if ((e && *e) || errno == ERANGE) {
 				fprintf(stderr, "Bad value\n");
 				return -1;
 			}
 			size = strtol(argv[4], &e, 0);
-			if ((e && *e) || size < 1 || 4 < size ||
-					val >= (1ull << size*8)) {
-				fprintf(stderr, "Bad size: %d\n", size);
-				return -1;
+			if (cmd_cbi_is_uint64_field(tag)) {
+				if ((e && *e) || size < 1 || size > 8 ||
+				     (size < 8 && val >= (1ull << size*8))) {
+					fprintf(stderr, " Bad size: %d\n", size);
+					return -1;
+				}
+			} else {
+				if ((e && *e) || size < 1 || 4 < size ||
+						 val >= (1ull << size*8)) {
+					fprintf(stderr, "Bad size: %d\n", size);
+					return -1;
+				}
 			}
 			val_ptr = &val;
 		}
