@@ -61,21 +61,31 @@ void slp_event(enum gpio_signal signal)
 #include "gpio_list.h"
 
 /* SPI devices */
-const struct spi_device_t spi_devices[] = {
+struct spi_device_t spi_devices[] = {
 	/* Fingerprint sensor (SCLK at 4Mhz) */
 	{ .port = CONFIG_SPI_FP_PORT, .div = 3, .gpio_cs = GPIO_SPI4_NSS }
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
-static void spi_configure(void)
+static void spi_configure(enum fp_sensor_spi_select spi_select)
 {
-	/* Configure SPI GPIOs */
-	gpio_config_module(MODULE_SPI_MASTER, 1);
+	if (spi_select == FP_SENSOR_SPI_SELECT_DEVELOPMENT) {
+		/* Configure SPI GPIOs */
+		gpio_set_flags_by_mask(GPIO_E, 0x7000, 0);
+		/* port, mask, function */
+		gpio_set_alternate_function(GPIO_E, 0x7000, GPIO_ALT_SPI);
+	} else {
+		gpio_config_module(MODULE_SPI_MASTER, 1);
+	}
+
 	/* Set all SPI master signal pins to very high speed: pins E2/4/5/6 */
 	STM32_GPIO_OSPEEDR(GPIO_E) |= 0x00003f30;
 	/* Enable clocks to SPI4 module (master) */
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI4;
 
+	if (spi_select == FP_SENSOR_SPI_SELECT_DEVELOPMENT) {
+		spi_devices[0].gpio_cs = GPIO_SPI4_ALT_NSS;
+	}
 	spi_enable(CONFIG_SPI_FP_PORT, 1);
 }
 
@@ -86,10 +96,10 @@ static void board_init(void)
 
 	ccprints("FP_SPI_SEL: %s", fp_sensor_spi_select_to_str(spi_select));
 
-	spi_configure();
+	spi_configure(spi_select);
 
 	ccprints("TRANSPORT_SEL: %s",
-		fp_transport_type_to_str(get_fp_transport_type()));
+		 fp_transport_type_to_str(get_fp_transport_type()));
 
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
