@@ -1624,6 +1624,8 @@ __override void pd_execute_data_swap(int port,
 #if 0
 	if (last_role != data_role) {
 		last_role=data_role;
+			/* Disable USB2 lines */
+			gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 1);
 			/* Disable USB3 lines */
 			usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_DISCONNECT,
 			   pd_get_polarity(port));
@@ -1633,6 +1635,9 @@ __override void pd_execute_data_swap(int port,
 
 	switch(data_role){
 	case PD_ROLE_DFP:
+		/* Enable USB2 lines */
+		gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 0);
+
 		if (cc_config & CC_FASTBOOT_DFP)
 			dut_to_host();
 		else
@@ -1647,6 +1652,9 @@ __override void pd_execute_data_swap(int port,
 		   pd_get_polarity(port));
 	break;
 	case PD_ROLE_UFP:
+		/* Enable USB2 lines */
+		gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 0);
+
 		if (!(cc_config & CC_FASTBOOT_DFP))
 			uservo_to_host();
 
@@ -1659,6 +1667,8 @@ __override void pd_execute_data_swap(int port,
 			   pd_get_polarity(port));
 	break;
 	case PD_ROLE_DISCONNECTED:
+		/* Disable USB2 lines */
+		gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 1);
 		if (!(cc_config & CC_FASTBOOT_DFP))
 			uservo_to_host();
 		/* Disable USB3 lines */
