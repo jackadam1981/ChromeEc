@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e22cc0a8_901d9748",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-20T23:26:57Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed here since Zephyr will not enable CONFIG_CHIP_INIT_ROM_REGION.",
+      "range": {
+        "startLine": 380,
+        "startChar": 5,
+        "endLine": 380,
+        "endChar": 26
+      },
+      "revId": "22e11dd810f50da5b2913b544a3204b4cd10d9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be4ccbc_23d7fc11",
+        "filename": "include/init_rom.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-20T23:26:57Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me why you need these stubs.  If CONFIG_CHIP_INIT_ROM_REGION is not enabled, then functions in init_rom.c should do the correct thing.  Specifically init_rom_map() will return non-NULL, indicating to the caller the object is memory mapped and they don\u0027t need to use init_rom_copy().",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "22e11dd810f50da5b2913b544a3204b4cd10d9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
