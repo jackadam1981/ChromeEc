@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "252aa74b_a52fef3c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1185694
+      },
+      "writtenOn": "2021-01-20T13:07:51Z",
+      "side": 1,
+      "message": "Running checkpatch.pl script with --strict option gives the following CHECKs. Please consider fixing these.\n\nCHECK: Macro argument \u0027x\u0027 may be better as \u0027(x)\u0027 to avoid precedence issues\n#68: FILE: include/linux/platform_data/cros_ec_commands.h:415:\n+#define EC_ACPI_MEM_BB_RETIMER_PORT(x)   (x \u0026 0x0f)\n\nCHECK: Macro argument \u0027x\u0027 may be better as \u0027(x)\u0027 to avoid precedence issues\n#69: FILE: include/linux/platform_data/cros_ec_commands.h:416:\n+#define EC_ACPI_MEM_BB_RETIMER_OP(x) \\\n+\t((x \u0026 0xf0) \u003e\u003e BB_RETIMER_FW_UPDATE_OP_SHIFT)",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 46
+      },
+      "revId": "54f6f4e08df8595b7ff786bd3cd42398de0c6dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "832a7021_fb75e838",
         "filename": "include/usb_common.h",
         "patchSetId": 22
