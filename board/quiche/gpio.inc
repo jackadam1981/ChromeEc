@@ -66,7 +66,7 @@ GPIO(EC_HUB3_RESET_L,               PIN(C, 10), GPIO_ODR_LOW)
 
 /* USB-A Current limit switches, set default to 1.5A */
 #ifdef BOARD_P1
-GPIO(TP73,                          PIN(C,  0), GPIO_OUT_HIGH)
+GPIO(TP73,                          PIN(C,  0), GPIO_OUT_LOW)
 GPIO(EC_DFU_MUX_CTRL,               PIN(C,  3), GPIO_OUT_HIGH)
 GPIO(EC_STATUS_LED1,                PIN(C,  1), GPIO_OUT_HIGH)
 GPIO(EC_STATUS_LED2,                PIN(C,  2), GPIO_OUT_HIGH)
