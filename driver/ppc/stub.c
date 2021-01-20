@@ -15,7 +15,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "system.h"
-#include "tcpm.h"
+#include "driver/tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
