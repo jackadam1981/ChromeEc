@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af466b59_2ce8de46",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-20T18:38:23Z",
+      "side": 1,
+      "message": "Changing the below SWITCHCAP_PG_CHECK_WAIT just makes the polling frequency lower. I don\u0027t think it really helps. You can keep the change to 6ms as it doesn\u0027t hurt.\n\nAnd you should change this SWITCHCAP_PG_CHECK_TIMEOUT, like double it to 100ms, that is what you want to allow the late PG raising time.",
+      "range": {
+        "startLine": 83,
+        "startChar": 36,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "9c670a5d4725fd6ec0412574a5236c382451150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
