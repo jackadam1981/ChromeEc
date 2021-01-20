@@ -111,6 +111,30 @@
       },
       "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cefe2db_a47116af",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-20T19:06:17Z",
+      "side": 1,
+      "message": "for internal silicon oscillator \"zero\" is valid values; it\u0027s been defined with \nreadable format; section 44.7.2 of datasheet refers mec152x",
+      "parentUuid": "51e6c567_d842f59b",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
