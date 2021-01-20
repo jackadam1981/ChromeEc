@@ -37,7 +37,7 @@ all-obj-$(CONFIG_USB_PD_HOST_CMD)+=$(_usbc_dir)usb_pd_host.o
 endif # CONFIG_USB_PE_SM
 
 # ALT-DP mode for UFP ports
-all-obj-$(CONFIG_USB_PD_ALT_MODE_DFP)+=$(_usbc_dir)usb_pd_dp_ufp.o
+all-obj-$(CONFIG_USB_PD_ALT_MODE_UFP)+=$(_usbc_dir)usb_pd_dp_ufp.o
 
 endif # CONFIG_USB_PD_TCPMV2
 
