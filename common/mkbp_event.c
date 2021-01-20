@@ -48,7 +48,7 @@ enum interrupt_state {
 };
 
 struct mkbp_state {
-	struct mutex lock;
+	mutex_t lock;
 	uint32_t events;
 	enum interrupt_state interrupt;
 	/*
@@ -76,10 +76,23 @@ static uint32_t mkbp_event_wake_mask = CONFIG_MKBP_EVENT_WAKEUP_MASK;
 static uint32_t mkbp_host_event_wake_mask = CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK;
 #endif /* CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK */
 
+#ifdef CONFIG_ZEPHYR
+static int init_sensor_mutex(const struct device *dev)
+{
+	ARG_UNUSED(dev);
+
+	k_mutex_init(&state.lock);
+
+	return 0;
+}
+SYS_INIT(init_sensor_mutex, POST_KERNEL, 50);
+#endif /* CONFIG_ZEPHYR */
+
 #if defined(CONFIG_MKBP_USE_GPIO) || \
 	defined(CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT)
 static int mkbp_set_host_active_via_gpio(int active, uint32_t *timestamp)
 {
+	uint32_t lock_key;
 	/*
 	 * If we want to take a timestamp, then disable interrupts temporarily
 	 * to ensure that the timestamp is as close as possible to the setting
@@ -87,14 +100,14 @@ static int mkbp_set_host_active_via_gpio(int active, uint32_t *timestamp)
 	 * taking the timestamp and setting the gpio)
 	 */
 	if (timestamp) {
-		interrupt_disable();
+		lock_key = irq_lock();
 		*timestamp = __hw_clock_source_read();
 	}
 
 	gpio_set_level(GPIO_EC_INT_L, !active);
 
 	if (timestamp)
-		interrupt_enable();
+		irq_unlock(lock_key);
 
 #ifdef CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT
 	/*
