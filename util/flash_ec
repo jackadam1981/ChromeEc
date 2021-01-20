@@ -1135,6 +1135,18 @@ function flash_stm32() {
 		servo_save_add "${EC_UART_PREFIX}_baudrate"
 		dut_control "${EC_UART_PREFIX}_baudrate:${BAUDRATE}"
 		STM32MON_OPT+=" -b ${BAUDRATE}"
+
+		# Set the UART configuration as described in
+		# http://www.st.com/st-web-ui/static/active/en/resource/technical/document/application_note/CD00264342.pdf
+		# Section 1 "USART bootloader code sequence".
+		servo_save_add "${EC_UART_PREFIX}_parity:even"
+		dut_control "${EC_UART_PREFIX}_parity:even"
+
+		servo_save_add "${EC_UART_PREFIX}_bits:eight"
+		dut_control "${EC_UART_PREFIX}_bits:eight"
+
+		servo_save_add "${EC_UART_PREFIX}_sbits:one"
+		dut_control "${EC_UART_PREFIX}_sbits:one"
 	fi
 
 	# Add a delay long enough for cr50 to update the ccdstate. Cr50 updates
