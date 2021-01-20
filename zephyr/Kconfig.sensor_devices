@@ -1,0 +1,22 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menu "Sensor devices"
+
+config PLATFORM_EC_ACCEL_BMA255
+    bool "Enable BMA2X2 accelerometer"
+    help
+      Enables BMA2X2 accelerometer support on the board.
+
+config PLATFORM_EC_ACCELGYRO_BMI260
+    bool "Enable BMI260 accelgyrometer"
+    help
+      Enables BMI260 accelgyrometer support on the board.
+
+config PLATFORM_EC_ALS_TCS3400
+    bool "Enable TCS3400 ambient light senseor support on the board"
+    help
+      Enables BMA2X2 accelerometer support on the board.
+
+endmenu # Sensor devices
