@@ -66,7 +66,7 @@ GPIO_INT(WP,                 PIN(I, 4), GPIO_INT_BOTH | GPIO_SEL_1P8V,
          switch_interrupt) /* EC_FLASH_WP_OD */
 GPIO_INT(SPI0_CS,            PIN(M, 5), GPIO_INT_FALLING,
          spi_event)        /* SPI slave Chip Select -- AP_SPI_EC_CS_L */
-GPIO_INT(X_EC_GPIO2,         PIN(B, 2), GPIO_ODR_HIGH, x_ec_interrupt)
+GPIO_INT(X_EC_GPIO2,         PIN(B, 2), GPIO_INT_BOTH, tcpc_alert_event)
 
 /* Power Sequencing Signals */
 GPIO(EC_PMIC_EN_ODL,         PIN(D, 0), GPIO_ODR_HIGH | GPIO_SEL_1P8V)
