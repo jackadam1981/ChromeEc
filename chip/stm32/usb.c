@@ -374,7 +374,7 @@ static void usb_reset(void)
 	 * as we are not configured yet
 	 */
 	STM32_USB_DADDR = 0 | 0x80;
-	CPRINTF("RST EP0 %04x\n", STM32_USB_EP(0));
+	/* CPRINTF("RST EP0 %04x\n", STM32_USB_EP(0)); */
 }
 
 #ifdef CONFIG_USB_SUSPEND
