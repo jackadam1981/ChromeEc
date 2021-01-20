@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9753452_1387f4e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-20T18:41:02Z",
+      "side": 1,
+      "message": "working on the code review comments",
+      "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3aa12a7_fc27e44f",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-01-19T05:33:13Z",
       "side": 1,
       "message": "directly use CONFIG_UART_CONSOLE in this file too",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e287470c_4224f467",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-20T18:41:02Z",
+      "side": 1,
+      "message": "in works",
+      "parentUuid": "d3aa12a7_fc27e44f",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -60,6 +101,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc6ebc71_8913d44b",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-20T18:41:02Z",
+      "side": 1,
+      "message": "in works",
+      "parentUuid": "d65e2590_852ad4c4",
+      "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc0ab265_a90f989f",
         "filename": "chip/mchp/uart.c",
         "patchSetId": 5
@@ -71,6 +130,30 @@
       "writtenOn": "2021-01-19T05:33:13Z",
       "side": 1,
       "message": "needed?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e3df22_00f257da",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-20T18:41:02Z",
+      "side": 1,
+      "message": "this is just a extra defensive coding; no harm; either way",
+      "parentUuid": "bc0ab265_a90f989f",
       "range": {
         "startLine": 88,
         "startChar": 0,
