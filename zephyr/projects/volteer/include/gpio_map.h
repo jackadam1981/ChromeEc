@@ -23,7 +23,9 @@
  */
 #define GPIO_AC_PRESENT            NAMED_GPIO(acok_od)
 #define GPIO_CPU_PROCHOT           NAMED_GPIO(ec_prochot_odl)
+#define GPIO_EC_ALS_RGB_INT_L      NAMED_GPIO(ec_als_rgb_int_l)
 #define GPIO_EC_BATT_PRES_ODL      NAMED_GPIO(ec_batt_pres_odl)
+#define GPIO_EC_IMU_INT_L          NAMED_GPIO(ec_imu_int_l)
 #define GPIO_EC_PCH_SYS_PWROK      NAMED_GPIO(ec_pch_sys_pwrok)
 #define GPIO_EC_PCH_WAKE_ODL       NAMED_GPIO(ec_pch_wake_odl)
 #define GPIO_EN_PP3300_A           NAMED_GPIO(en_pp3300_a)
@@ -46,6 +48,7 @@
 #define GPIO_RSMRST_L_PGOOD        NAMED_GPIO(pg_ec_rsmrst_odl)
 #define GPIO_SLP_SUS_L             NAMED_GPIO(slp_sus_l)
 #define GPIO_SYS_RESET_L           NAMED_GPIO(sys_rst_odl)
+#define GPIO_TABLET_MODE_L         NAMED_GPIO(tablet_mode_l)
 #define GPIO_WP_L                  NAMED_GPIO(ec_wp_l)
 
 /* USB-C interrupts */
@@ -93,6 +96,10 @@
 #define EC_CROS_GPIO_INTERRUPTS                                           \
 	GPIO_INT(GPIO_AC_PRESENT, GPIO_INT_EDGE_BOTH, extpower_interrupt) \
 	GPIO_INT(GPIO_LID_OPEN, GPIO_INT_EDGE_BOTH, lid_interrupt)        \
+	GPIO_INT(GPIO_EC_ALS_RGB_INT_L, GPIO_INT_EDGE_FALLING,            \
+		 tcs3400_interrupt)                                       \
+	GPIO_INT(GPIO_EC_IMU_INT_L, GPIO_INT_EDGE_FALLING,                \
+		 bmi260_interrupt)                                        \
 	GPIO_INT(GPIO_PCH_SLP_S0_L, GPIO_INT_EDGE_BOTH,                   \
 		 power_signal_interrupt)                                  \
 	GPIO_INT(GPIO_PCH_SLP_S3_L, GPIO_INT_EDGE_BOTH,                   \
@@ -107,6 +114,8 @@
 		 power_signal_interrupt)                                  \
 	GPIO_INT(GPIO_POWER_BUTTON_L, GPIO_INT_EDGE_BOTH,                 \
 		 power_button_interrupt)                                  \
+	GPIO_INT(GPIO_TABLET_MODE_L, GPIO_INT_EDGE_BOTH,                  \
+		 gmr_tablet_switch_isr)                                   \
 	GPIO_INT(GPIO_USB_C0_TCPC_INT_ODL, GPIO_INT_EDGE_BOTH,            \
 		 tcpc_alert_event)                                        \
 	GPIO_INT(GPIO_USB_C1_TCPC_INT_ODL, GPIO_INT_EDGE_BOTH,            \
