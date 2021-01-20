@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b86bccf_7dc0330e",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-20T19:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b122ad8f_a4567277",
+      "revId": "c93ba99d5e6cd9775dab3093c616a44c05ee78f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "934384ae_49566da4",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47024724_55252ac9",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-20T19:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934384ae_49566da4",
+      "range": {
+        "startLine": 625,
+        "startChar": 55,
+        "endLine": 625,
+        "endChar": 56
+      },
+      "revId": "c93ba99d5e6cd9775dab3093c616a44c05ee78f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdece779_753a0a9c",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-01-20T17:03:42Z",
       "side": 1,
       "message": "Nit: Line this up with the other values. (Are you using a tabstop value other than 8?)",
+      "revId": "c93ba99d5e6cd9775dab3093c616a44c05ee78f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a294dc_7e9c1ed1",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-20T19:27:38Z",
+      "side": 1,
+      "message": "Not really sure what happened here, it was indenting with spaces. I must have changed the editor settings somehow.\n\nWell anyway, fixed now.",
+      "parentUuid": "fdece779_753a0a9c",
       "revId": "c93ba99d5e6cd9775dab3093c616a44c05ee78f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
