@@ -39,6 +39,30 @@
       },
       "revId": "9536c3341d4276c809abaaa36536ee8558d75106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30911b90_df9cde17",
+        "filename": "include/test_util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-20T05:10:27Z",
+      "side": 1,
+      "message": "clang-format gone awry",
+      "parentUuid": "a272969e_7ab69096",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 45
+      },
+      "revId": "9536c3341d4276c809abaaa36536ee8558d75106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
