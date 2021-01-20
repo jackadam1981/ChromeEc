@@ -77,3 +77,5 @@ config PLATFORM_EC_GMR_TABLET_MODE
       Enable this to use GMR sensor to detect tablet mode.
       It also needs to provide GMR_TABLET_MODE_GPIO_L and direct its
       interrupt to to gmr_tablet_switch_isr.
+
+rsource "Kconfig.sensor_devices"
