@@ -70,6 +70,24 @@
       "parentUuid": "6df8c301_7b05dc65",
       "revId": "9429ac939bbd47059e39ece0391df26cba141d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d94d2c33_3d7a332d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-20T22:40:32Z",
+      "side": 1,
+      "message": "Maybe there are other cases where a previously offered power was unused but becomes needed (because the active/better supplier was removed). In such cases, we need to trigger negotiation.",
+      "parentUuid": "d84714a6_4f80a893",
+      "revId": "9429ac939bbd47059e39ece0391df26cba141d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
