@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "ba05b4b5_4d58f6c9",
         "filename": "board/volteer/gpio.inc",
@@ -20,8 +21,31 @@
         "endChar": 57
       },
       "revId": "3df55fabd794c00b16e972fdab442e30e213da46",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "461f4507_f367c73c",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-20T23:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba05b4b5_4d58f6c9",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 57
+      },
+      "revId": "3df55fabd794c00b16e972fdab442e30e213da46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
