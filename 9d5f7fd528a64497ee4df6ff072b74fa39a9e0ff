@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56593b33_b593a8eb",
+        "filename": "zephyr/projects/kohaku/include/gpio_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-20T20:55:27Z",
+      "side": 1,
+      "message": "Nit - this isn\u0027t part of power sequencing.  But no need to break out into a separate CL.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 72
+      },
+      "revId": "9d5f7fd528a64497ee4df6ff072b74fa39a9e0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
