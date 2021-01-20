@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018c2e55_dce6b58e",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-20T20:32:37Z",
+      "side": 1,
+      "message": "Can be a return after this? Also move it to line 354.",
+      "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f8edfff_2a0a04a0",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-20T20:32:37Z",
+      "side": 1,
+      "message": "Latest rv value will be stored, this should be rv !\u003d drv-\u003eget_disc_flag(me-\u003eusb_port); ?",
+      "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9890160_c6524036",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-20T20:32:37Z",
+      "side": 1,
+      "message": "Here now disconnect will be received by kernel and it will read all the mux data to configure TCSS mux in disconnect mode. What happens to the connect mode which follows after? Since EC is overriding the flag information here. \nAre we missing the connect HOST_EVENT now?",
+      "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
