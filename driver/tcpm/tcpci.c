@@ -366,7 +366,9 @@ static int clear_power_status_mask(int port)
 
 static int tcpci_tcpm_get_power_status(int port, int *status)
 {
-	return tcpc_read(port, TCPC_REG_POWER_STATUS, status);
+	int ret = tcpc_read(port, TCPC_REG_POWER_STATUS, status);
+	CPRINTS("%s: ret=%d, stat=%02x", __func__, ret, *status);
+	return ret;
 }
 
 int tcpci_tcpm_select_rp_value(int port, int rp)
@@ -1363,8 +1365,10 @@ int tcpci_tcpm_init(int port)
 	int tries = TCPM_INIT_TRIES;
 	int tcpc_ctrl;
 
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= board_get_usb_pd_port_count()) {
+		CPRINTS("\x1b[1;31merror %d\x1b[m", __LINE__);
 		return EC_ERROR_INVAL;
+	}
 
 	while (1) {
 		error = tcpci_tcpm_get_power_status(port, &power_status);
@@ -1375,8 +1379,10 @@ int tcpci_tcpm_init(int port)
 		 */
 		if (!error && !(power_status & TCPC_REG_POWER_STATUS_UNINIT))
 			break;
-		if (--tries <= 0)
+		if (--tries <= 0) {
+			CPRINTS("\x1b[1;31merror %d\x1b[m", __LINE__);
 			return error ? error : EC_ERROR_TIMEOUT;
+		}
 		msleep(10);
 	}
 
@@ -1436,8 +1442,10 @@ int tcpci_tcpm_init(int port)
 		NULL);
 
 	error = init_alert_mask(port);
-	if (error)
+	if (error) {
+		CPRINTS("\x1b[1;31merror %d\x1b[m", __LINE__);
 		return error;
+	}
 
 	/* Read chip info here when we know the chip is awake. */
 	tcpm_get_chip_info(port, 1, NULL);

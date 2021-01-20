@@ -20,8 +20,8 @@
 #include "driver/bc12/mt6360.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
-#include "driver/ppc/syv682x.h"
-#include "driver/tcpm/it83xx_pd.h"
+#include "driver/ppc/rt1718s.h"
+#include "driver/tcpm/rt1718s.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "driver/usb_mux/it5205.h"
 #include "driver/usb_mux/ps8743.h"
@@ -154,10 +154,6 @@ static void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
 	/* C1: GPIO_USB_C1_PPC_INT_ODL & HDMI: GPIO_PS185_EC_DP_HPD */
 	gpio_enable_interrupt(GPIO_X_EC_GPIO2);
-
-	/* If this is not a Type-C subboard, disable the task. */
-	if (board_get_sub_board() != SUB_BOARD_TYPEC)
-		task_disable_task(TASK_ID_PD_C1);
 }
 /* Must be done after I2C and subboard */
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
@@ -183,33 +179,22 @@ const struct mt6360_config_t mt6360_config = {
 
 const struct pi3usb9201_config_t
 		pi3usb9201_bc12_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	/* [0]: unused */
-	[1] = {
-		.i2c_port = 4,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-	}
 };
 
 struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{ .drv = &mt6360_drv },
-	{ .drv = &pi3usb9201_drv },
 };
 
 static void bc12_interrupt(enum gpio_signal signal)
 {
 	if (signal == GPIO_USB_C0_BC12_INT_ODL)
 		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
-	else
-		task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
 }
 
 static void board_sub_bc12_init(void)
 {
 	if (board_get_sub_board() == SUB_BOARD_TYPEC)
 		gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
-	else
-		/* If this is not a Type-C subboard, disable the task. */
-		task_disable_task(TASK_ID_USB_CHG_P1);
 }
 /* Must be done after I2C and subboard */
 DECLARE_HOOK(HOOK_INIT, board_sub_bc12_init, HOOK_PRIO_INIT_I2C + 1);
@@ -237,6 +222,7 @@ const struct i2c_port_t i2c_ports[] = {
 	{"sensor",   IT83XX_I2C_CH_B, 400, GPIO_I2C_B_SCL, GPIO_I2C_B_SDA},
 	{"usb0",     IT83XX_I2C_CH_C, 400, GPIO_I2C_C_SCL, GPIO_I2C_C_SDA},
 	{"usb1",     IT83XX_I2C_CH_E, 400, GPIO_I2C_E_SCL, GPIO_I2C_E_SDA},
+	{"RT1718S",     IT83XX_I2C_CH_F, 400, GPIO_I2C_F_SCL, GPIO_I2C_F_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -248,16 +234,10 @@ int board_allow_i2c_passthru(int port)
 /* PPC */
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.i2c_port = I2C_PORT_PPC0,
-		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
-		.drv = &syv682x_drv,
+		.i2c_port = IT83XX_I2C_CH_F,
+		.i2c_addr_flags = RT1718S_ADDR0_FLAGS,
+		.drv = &rt1718s_ppc_drv,
 		.frs_en = GPIO_USB_C0_FRS_EN,
-	},
-	{
-		.i2c_port = I2C_PORT_PPC1,
-		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
-		.drv = &syv682x_drv,
-		.frs_en = GPIO_USB_C1_FRS_EN,
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
@@ -266,7 +246,7 @@ static void ppc_interrupt(enum gpio_signal signal)
 {
 	if (signal == GPIO_USB_C0_PPC_INT_ODL)
 		/* C0: PPC interrupt */
-		syv682x_interrupt(0);
+		rt1718s_interrupt(0);
 }
 
 int debounced_hpd;
@@ -303,7 +283,7 @@ static void x_ec_interrupt(enum gpio_signal signal)
 
 	if (sub == SUB_BOARD_TYPEC)
 		/* C1: PPC interrupt */
-		syv682x_interrupt(1);
+		;
 	else if (sub == SUB_BOARD_HDMI)
 		hdmi_hpd_interrupt(signal);
 	else
@@ -328,37 +308,17 @@ void board_overcurrent_event(int port, int is_overcurrented)
 /* TCPC */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		.bus_type = EC_BUS_TYPE_I2C,
 		/* TCPC is embedded within EC so no i2c config needed */
-		.drv = &it83xx_tcpm_drv,
+		.drv = &rt1718s_tcpm_drv,
 		/* Alert is active-low, push-pull */
 		.flags = 0,
-	},
-	{
-		.bus_type = EC_BUS_TYPE_EMBEDDED,
-		/* TCPC is embedded within EC so no i2c config needed */
-		.drv = &it83xx_tcpm_drv,
-		/* Alert is active-low, push-pull */
-		.flags = 0,
+		.i2c_info = {
+			.port = IT83XX_I2C_CH_F,
+			.addr_flags = RT1718S_ADDR0_FLAGS,
+		},
 	},
 };
-
-const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
-{
-	const static struct cc_para_t
-		cc_parameter[CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT] = {
-		{
-			.rising_time = IT83XX_TX_PRE_DRIVING_TIME_1_UNIT,
-			.falling_time = IT83XX_TX_PRE_DRIVING_TIME_2_UNIT,
-		},
-		{
-			.rising_time = IT83XX_TX_PRE_DRIVING_TIME_1_UNIT,
-			.falling_time = IT83XX_TX_PRE_DRIVING_TIME_2_UNIT,
-		},
-	};
-
-	return &cc_parameter[port];
-}
 
 uint16_t tcpc_get_alert_status(void)
 {
@@ -384,47 +344,12 @@ const int usb_port_enable[] = {
 BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 
 /* USB Mux */
-static int board_ps8743_mux_set(const struct usb_mux *me,
-				mux_state_t mux_state)
-{
-	int rv = EC_SUCCESS;
-	int reg = 0;
-
-	rv = ps8743_read(me, PS8743_REG_MODE, &reg);
-	if (rv)
-		return rv;
-
-	/* Disable FLIP pin, enable I2C control. */
-	reg |= PS8743_MODE_FLIP_REG_CONTROL;
-	/* Disable CE_USB pin, enable I2C control. */
-	reg |= PS8743_MODE_USB_REG_CONTROL;
-	/* Disable CE_DP pin, enable I2C control. */
-	reg |= PS8743_MODE_DP_REG_CONTROL;
-
-	/*
-	 * DP specific config
-	 *
-	 * Enable/Disable IN_HPD on the DB.
-	 */
-	gpio_set_level(GPIO_USB_C1_DP_IN_HPD,
-		       mux_state & USB_PD_MUX_DP_ENABLED);
-
-	return ps8743_write(me, PS8743_REG_MODE, reg);
-}
-
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
 		.i2c_port = I2C_PORT_USB_MUX0,
 		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
 		.driver = &it5205_usb_mux_driver,
-	},
-	{
-		.usb_port = 1,
-		.i2c_port = I2C_PORT_USB_MUX1,
-		.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
-		.driver = &ps8743_usb_mux_driver,
-		.board_set = &board_ps8743_mux_set,
 	},
 };
 

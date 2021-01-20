@@ -104,6 +104,8 @@ GPIO(I2C_C_SCL,              PIN(F, 6), GPIO_INPUT) /* I2C_USB_C0_SCL */
 GPIO(I2C_C_SDA,              PIN(F, 7), GPIO_INPUT) /* I2C_USB_C0_SCL */
 GPIO(I2C_E_SCL,              PIN(E, 0), GPIO_INPUT) /* I2C_USB_C1_SCL */
 GPIO(I2C_E_SDA,              PIN(E, 7), GPIO_INPUT) /* I2C_USB_C1_SDA */
+GPIO(I2C_F_SCL,              PIN(A, 4), GPIO_INPUT) /* I2C_USB_C1_SCL */
+GPIO(I2C_F_SDA,              PIN(A, 5), GPIO_INPUT) /* I2C_USB_C1_SDA */
 
 /* SPI pins - Alternate function below configures SPI module on these pins */
 
@@ -116,6 +118,7 @@ GPIO(EC_X_GPIO1,             PIN(H, 4), GPIO_OUT_LOW)
 GPIO(EC_X_GPIO3,             PIN(J, 1), GPIO_INPUT)
 
 /* Alternate functions GPIO definitions */
+ALTERNATE(PIN_MASK(A, 0x30), 1, MODULE_I2C, 0) /* I2C ? */
 ALTERNATE(PIN_MASK(B, 0x18), 1, MODULE_I2C, 0) /* I2C A */
 ALTERNATE(PIN_MASK(C, 0x06), 1, MODULE_I2C, GPIO_SEL_1P8V) /* I2C B */
 ALTERNATE(PIN_MASK(F, 0xC0), 1, MODULE_I2C, 0) /* I2C C */
