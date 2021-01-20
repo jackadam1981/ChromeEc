@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd317b9_9df25694",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-20T18:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cef4b684_561a4128",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e98f4891_78a9b8fa",
@@ -66,6 +84,24 @@
       "writtenOn": "2020-12-22T22:44:11Z",
       "side": 1,
       "message": "Does honeybuns support USB suspend?",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70813ff1_01e0d7eb",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-20T18:40:08Z",
+      "side": 1,
+      "message": "I should ask Uday. I know we aren\u0027t doing any low power modes for honeybuns.",
+      "parentUuid": "e98f4891_78a9b8fa",
       "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5cce516_06cdc4ad",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-20T18:40:08Z",
+      "side": 1,
+      "message": "I think this is will be a feature in a follow on version. Uday had added this TODO, but we do not need to solve this for honeybuns as it has power supplies that can handle fixed PDOs",
+      "parentUuid": "9e3ace59_11e4c66a",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b1e99f9_f0656228",
         "filename": "baseboard/honeybuns/usb_pd_policy.c",
         "patchSetId": 54
@@ -117,6 +171,24 @@
       "writtenOn": "2020-12-22T22:44:11Z",
       "side": 1,
       "message": "I think this is something we do incorrectly on servo_v4 as well.  Everything past 5 shouldn\u0027t have any flags set.\n\n\"Since all USB Providers support vSafe5V, the required vSafe5V Fixed Supply Power Data Object is also used to convey\nadditional information that is returned in bits 29 through 25. All other Fixed Supply Power Data Objects Shall set bits\n29…22 to zero.\"",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29178675_ee6b925b",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-20T18:40:08Z",
+      "side": 1,
+      "message": "Yes, you are correct here. We (I guess that\u0027s me) did this incorrect for servo_v4 as well.",
+      "parentUuid": "9b1e99f9_f0656228",
       "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
