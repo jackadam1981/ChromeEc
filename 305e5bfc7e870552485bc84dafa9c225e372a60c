@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "add173d3_b822165e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-20T23:25:42Z",
+      "side": 1,
+      "message": "OK keep the indentation aligned with the ( in \"CPRINTS(\" and we\u0027re good ;)",
+      "parentUuid": "bb4ac4ad_854ac03d",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33523523_cf3195ef",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
