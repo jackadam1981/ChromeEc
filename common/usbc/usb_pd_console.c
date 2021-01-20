@@ -153,6 +153,10 @@ test_export_static int command_pd(int argc, char **argv)
 		}
 	}
 
+	if (!strcasecmp(argv[2], "ext")) {
+			pd_dpm_request(port, DPM_REQUEST_EXT_TEST_MSG);
+	}
+
 	if (!strcasecmp(argv[2], "state")) {
 		ccprintf("Port C%d CC%d, %s - Role: %s-%s",
 		port, pd_get_polarity(port) + 1,
