@@ -110,3 +110,5 @@ config PLATFORM_EC_GMR_TABLET_MODE
       interrupt to to gmr_tablet_switch_isr.
 
 endif # PLATFORM_EC_LID_ANGLE
+
+rsource "Kconfig.sensor_devices"
