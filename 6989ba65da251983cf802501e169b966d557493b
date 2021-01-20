@@ -68,6 +68,52 @@
       "message": "Yuval, I haven\u0027t been in the EC code for a while, esp. sensors, do you have time to look at this?",
       "revId": "6989ba65da251983cf802501e169b966d557493b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b25e8e4_6e80b710",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-01-20T18:48:45Z",
+      "side": 1,
+      "message": "suggestion: `determine_accel_devices` or similar",
+      "range": {
+        "startLine": 546,
+        "startChar": 12,
+        "endLine": 546,
+        "endChar": 32
+      },
+      "revId": "6989ba65da251983cf802501e169b966d557493b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347204d6_ea6daee4",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-01-20T18:48:45Z",
+      "side": 1,
+      "message": "Why run this on S0ix resume? Couldn\u0027t this be run just once at startup to determine which chips are on the board? e.g.\n\n`DECLARE_HOOK(HOOK_INIT, determine_accel_devices, HOOK_PRIO_INIT_I2C + 1);`",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 75
+      },
+      "revId": "6989ba65da251983cf802501e169b966d557493b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
