@@ -16,6 +16,23 @@
       "message": "Quatna needs to get this change landed as this needs an offical image to test over on Allion lab by this Friday.",
       "revId": "d13e44a34813957496ca773978187dc7592b2697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f35e4bf7_e89055df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-20T16:47:38Z",
+      "side": 1,
+      "message": "Code style now looks good, but patchset 11 makes a significant functional change, removing the custom set_cc implementation.\n\nIf adding the custom set_cc does not make compliance worse, please leave it in, so we can submit this patchset. If it shouldn\u0027t be there, we can remove it in another CL.",
+      "revId": "d13e44a34813957496ca773978187dc7592b2697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
