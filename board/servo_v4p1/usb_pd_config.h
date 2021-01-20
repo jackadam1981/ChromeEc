@@ -152,28 +152,66 @@ static const uint8_t ref_gpio[2 /* port */][2 /* polarity */] = {
 /* Drive the CC line from the TX block */
 static inline void pd_tx_enable(int port, int polarity)
 {
+
 #ifndef VIF_BUILD /* genvif doesn't like tricks with GPIO macros */
-	const struct gpio_info *tx = gpio_list + tx_gpio[port][polarity];
-	const struct gpio_info *ref = gpio_list + ref_gpio[port][polarity];
+	const struct gpio_info *tx, *tx_alt;
+	const struct gpio_info *ref, *ref_alt;
 
-	/* use directly GPIO registers, latency before the PD preamble is key */
+	if (polarity <= POLARITY_CC2) {
+		tx = gpio_list + tx_gpio[port][polarity];
+		ref = gpio_list + ref_gpio[port][polarity];
 
-	/* switch the TX pin Mode from Input (00) to Alternate (10) for SPI */
-	STM32_GPIO_MODER(tx->port) |= 2 << ((31 - __builtin_clz(tx->mask)) * 2);
-	/* switch the ref pin Mode from analog (11) to Out (01) for low level */
-	STM32_GPIO_MODER(ref->port) &=
-		~(2 << ((31 - __builtin_clz(ref->mask)) * 2));
+		/* use directly GPIO registers, latency before the PD preamble is key */
+
+		/* switch the TX pin Mode from Input (00) to Alternate (10) for SPI */
+		STM32_GPIO_MODER(tx->port) |=
+			2 << ((31 - __builtin_clz(tx->mask)) * 2);
+		/* switch the ref pin Mode from analog (11) to Out (01) for low level */
+		STM32_GPIO_MODER(ref->port) &=
+			~(2 << ((31 - __builtin_clz(ref->mask)) * 2));
+	} else {
+		tx = gpio_list + tx_gpio[port][POLARITY_CC1];
+		ref = gpio_list + ref_gpio[port][POLARITY_CC1];
+
+		tx_alt = gpio_list + tx_gpio[port][POLARITY_CC2];
+		ref_alt = gpio_list + ref_gpio[port][POLARITY_CC2];
+
+		STM32_GPIO_MODER(tx->port) |=
+			2 << ((31 - __builtin_clz(tx->mask)) * 2);
+		STM32_GPIO_MODER(tx_alt->port) |=
+			2 << ((31 - __builtin_clz(tx_alt->mask)) * 2);
+		STM32_GPIO_MODER(ref->port) &=
+			~(2 << ((31 - __builtin_clz(ref->mask)) * 2));
+		STM32_GPIO_MODER(ref_alt->port) &=
+			~(2 << ((31 - __builtin_clz(ref_alt->mask)) * 2));
+	}
 #endif /* !VIF_BUILD */
 }
 
 /* Put the TX driver in Hi-Z state */
 static inline void pd_tx_disable(int port, int polarity)
 {
-	const struct gpio_info *tx = gpio_list + tx_gpio[port][polarity];
-	const struct gpio_info *ref = gpio_list + ref_gpio[port][polarity];
+	const struct gpio_info *tx, *tx_alt;
+	const struct gpio_info *ref, *ref_alt;
 
-	gpio_set_flags_by_mask(tx->port, tx->mask, GPIO_INPUT);
-	gpio_set_flags_by_mask(ref->port, ref->mask, GPIO_ANALOG);
+	if (polarity <= POLARITY_CC2) {
+		tx = gpio_list + tx_gpio[port][polarity];
+		ref = gpio_list + ref_gpio[port][polarity];
+
+		gpio_set_flags_by_mask(tx->port, tx->mask, GPIO_INPUT);
+		gpio_set_flags_by_mask(ref->port, ref->mask, GPIO_ANALOG);
+	} else {
+		tx = gpio_list + tx_gpio[port][POLARITY_CC1];
+		ref = gpio_list + ref_gpio[port][POLARITY_CC1];
+
+		tx_alt = gpio_list + tx_gpio[port][POLARITY_CC2];
+		ref_alt = gpio_list + ref_gpio[port][POLARITY_CC2];
+
+		gpio_set_flags_by_mask(tx->port, tx->mask, GPIO_INPUT);
+		gpio_set_flags_by_mask(tx_alt->port, tx_alt->mask, GPIO_INPUT);
+		gpio_set_flags_by_mask(ref->port, ref->mask, GPIO_ANALOG);
+		gpio_set_flags_by_mask(ref_alt->port, ref_alt->mask, GPIO_ANALOG);
+	}
 }
 
 /* we know the plug polarity, do the right configuration */
@@ -187,12 +225,15 @@ static inline void pd_select_polarity(int port, int polarity)
 	if (port == CHG) {
 		/* CHG use the right comparator inverted input for COMP2 */
 		STM32_COMP_CSR = (val & ~STM32_COMP_CMP2INSEL_MASK) |
-			(polarity ? STM32_COMP_CMP2INSEL_INM4  /* PA4: C0_CC2 */
+			(polarity_rm_dts(polarity) ? STM32_COMP_CMP2INSEL_INM4  /* PA4: C0_CC2 */
 				  : STM32_COMP_CMP2INSEL_INM6);/* PA2: C0_CC1 */
 	} else {
 		/* DUT use the right comparator inverted input for COMP1 */
+		// THIS RIGHT HERE needs to be fixed. Ignore passed polarity use our own.
+		// ENABLE SINKDTS POLARITY by masking both registers maybe?
+
 		STM32_COMP_CSR = (val & ~STM32_COMP_CMP1INSEL_MASK) |
-			(polarity ? STM32_COMP_CMP1INSEL_INM5  /* PA5: C1_CC2 */
+			(polarity_rm_dts(polarity) ? STM32_COMP_CMP1INSEL_INM5  /* PA5: C1_CC2 */
 			 : STM32_COMP_CMP1INSEL_INM6);/* PA0: C1_CC1 */
 	}
 }
