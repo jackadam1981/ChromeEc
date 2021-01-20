@@ -16,6 +16,24 @@
       "message": "Can we confirm what results look like on an actual test run with the previous CL in place?",
       "revId": "3bb2d20932a6a55644a3a777ffdcfee7c3fea99c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01039999_c8f11282",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-20T22:44:34Z",
+      "side": 1,
+      "message": "Let me see if Abe has some spare time to run this.  The window for the hard reset is \u003e24ms and \u003c30ms.  The previous CL (crrev/c/2640228) would have trimmed ~6ms. The tester indicated closer to 10ms over the 30ms limit. If this allows a pass due to the lack of timer granularity, it could be close enough that it could become a flaky compliance test result.",
+      "parentUuid": "ed648e93_cce83acd",
+      "revId": "3bb2d20932a6a55644a3a777ffdcfee7c3fea99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
