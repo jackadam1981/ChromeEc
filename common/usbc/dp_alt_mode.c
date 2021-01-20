@@ -69,9 +69,21 @@ bool dp_entry_is_done(int port)
 
 static void dp_entry_failed(int port)
 {
+	int opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+
 	CPRINTS("C%d: DP alt mode protocol failed!", port);
 	dp_state[port] = IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY)
 		? DP_START : DP_INACTIVE;
+
+	/*
+	 * If the port previously entered DP mode, return to USB mode. In
+	 * particular, treat Exit Mode NAK the same way as Exit Mode ACK.
+	 */
+	if (opos != -1) {
+		pd_dfp_exit_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT,
+				     opos);
+		set_usb_mux_with_current_data_role(port);
+	}
 }
 
 static bool dp_response_valid(int port, enum tcpm_transmit_type type,
