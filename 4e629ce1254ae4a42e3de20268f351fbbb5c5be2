@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2623e9f8_edf7c3fd",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-20T20:49:30Z",
+      "side": 1,
+      "message": "\"S0ix sleep states\"\n\nWe\u0027ve been trying to avoid using \"Enable...\" in the summary text.",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "4e629ce1254ae4a42e3de20268f351fbbb5c5be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29108f5a_0c56fb82",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-20T20:49:30Z",
+      "side": 1,
+      "message": "Noting which platform/ec option gets turned on doesn\u0027t really help the user. Lets write the help text inform what the config option does.\n\nSuggested text:\n\"Enables support for the S0ix sleep states, Intel\u0027s modern idle standby sleep states. When this option is disabled, only standby into the S3 sleep state is supported.\"",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 9
+      },
+      "revId": "4e629ce1254ae4a42e3de20268f351fbbb5c5be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6377d06_8a5de741",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 3
@@ -14,6 +60,30 @@
       "writtenOn": "2021-01-20T16:15:01Z",
       "side": 1,
       "message": "I have been added an #undef above each #ifdef, following the pattern set by whoever set up this file.\n\nIs that not needed?",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "4e629ce1254ae4a42e3de20268f351fbbb5c5be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a04713b8_b07c95a6",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-20T20:49:30Z",
+      "side": 1,
+      "message": "The #undef is a good guard in case the default value in config.h changes.",
+      "parentUuid": "e6377d06_8a5de741",
       "range": {
         "startLine": 168,
         "startChar": 8,
