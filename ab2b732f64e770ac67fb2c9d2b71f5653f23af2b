@@ -16,6 +16,24 @@
       "message": "this version fails the test_mux_con_dis_as_snk.\nin the \u0027usb_typec_drp_acc_trysrc\u0027 test",
       "revId": "ab2b732f64e770ac67fb2c9d2b71f5653f23af2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2ed48a_ddede5f3",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-20T14:20:47Z",
+      "side": 1,
+      "message": "it fails on:\n/*\n * We are in Attached.SNK now, but the port partner isn\u0027t data capable\n * so we should not connect the USB data mux.\n */\nTEST_EQ(mock_usb_mux.state, USB_PD_MUX_NONE, \"%d\");\n\ne.g.\nRunning test_mux_con_dis_as_snk...\n[25.272088 C0: PD comm policy disabled]\n[25.272089 C0: TCPC init ready]\n[25.272090 C0: Unattached.SNK]\n[26.272090 C0: AttachWait.SNK]\n[26.372156 C0: Attached.SNK]\n[26.372157 [MUX] Set to 0x01]\ntest/usb_typec_drp_acc_trysrc.c:103: ASSERTION failed: mock_usb_mux.state \u003d\u003d 0\n                EVAL: 1 \u003d\u003d 0\nFail\n\nThe statement above about being data-capable remains true only if the partner is PD-capable.\nMaybe we want to add \u0027tc_pd_connection(0, 1);\u0027 in the test, so it behaves as expected ?",
+      "parentUuid": "1b170649_c32721cf",
+      "revId": "ab2b732f64e770ac67fb2c9d2b71f5653f23af2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
