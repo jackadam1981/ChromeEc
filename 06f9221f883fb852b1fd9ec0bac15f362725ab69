@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b74e3f1_c81399e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-20T20:57:47Z",
+      "side": 1,
+      "message": "Do you think we can implement this in the Kernel? We can add a new version in the hc_usb_pd_mux_info host command to indicate if there was a disconnect in s0ix/s3 and if the kernel sees this flag set, it can go ahead and do a disconnect and then a connect to the new mux state?",
+      "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "018c2e55_dce6b58e",
