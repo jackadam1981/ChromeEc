@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4706216_6880e622",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-20T17:03:42Z",
+      "side": 1,
+      "message": "LGTM. Minor grammos.",
+      "revId": "c93ba99d5e6cd9775dab3093c616a44c05ee78f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b122ad8f_a4567277",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-20T17:03:42Z",
+      "side": 1,
+      "message": "Nit: Unusual indentation",
+      "revId": "c93ba99d5e6cd9775dab3093c616a44c05ee78f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "934384ae_49566da4",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-20T17:03:42Z",
+      "side": 1,
+      "message": "Nit: Period",
+      "range": {
+        "startLine": 625,
+        "startChar": 55,
+        "endLine": 625,
+        "endChar": 56
+      },
+      "revId": "c93ba99d5e6cd9775dab3093c616a44c05ee78f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdece779_753a0a9c",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-20T17:03:42Z",
+      "side": 1,
+      "message": "Nit: Line this up with the other values. (Are you using a tabstop value other than 8?)",
+      "revId": "c93ba99d5e6cd9775dab3093c616a44c05ee78f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
