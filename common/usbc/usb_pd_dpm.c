@@ -93,6 +93,7 @@ static void dpm_set_mode_entry_done(int port)
 
 void dpm_set_mode_exit_request(int port)
 {
+	CPRINTS("Exit mode request");
 	DPM_SET_FLAG(port, DPM_FLAG_EXIT_REQUEST);
 }
 
@@ -128,12 +129,20 @@ void dpm_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		uint32_t *vdm)
 {
 	const uint16_t svid = PD_VDO_VID(vdm[0]);
+	static int exit_mode_ack_count;
 
 	assert(vdo_count >= 1);
 
 	switch (svid) {
 	case USB_SID_DISPLAYPORT:
-		dp_vdm_acked(port, type, vdo_count, vdm);
+		if (PD_VDO_CMD(*vdm) == CMD_EXIT_MODE &&
+				++exit_mode_ack_count == 3) {
+			exit_mode_ack_count = 0;
+			/* Fake an Exit Mode NAK every few times. */
+			CPRINTS("Fake exit NAK");
+			dp_vdm_naked(port, type, PD_VDO_CMD(*vdm));
+		} else
+			dp_vdm_acked(port, type, vdo_count, vdm);
 		break;
 	case USB_VID_INTEL:
 		if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)) {
