@@ -68,6 +68,24 @@
       "parentUuid": "10248d2b_b258f49d",
       "revId": "627972ee308b9795588506ff2d96baac550c083a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a71faee_a87503f0",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-20T02:43:18Z",
+      "side": 1,
+      "message": "It would look something like the following:\n\n    \nvoid raa489000_hibernate(int chg, bool disable_adc)\n{\n    do_hibernation_items();\n    if (disable_adc)\n        disable_adc_items();\n    do_rest_of_hibernation_items();\n}\n\nThen in the board_hibernate() for madoo:\n    \nraa489000_hibernate(0, true);\nraa489000_hiberante(1, false);\n\n\nFor the other boards, you may leave their argument as false as to not change the behaviour.\n\nDoes that make sense?",
+      "parentUuid": "82f7e20c_df0cafa8",
+      "revId": "627972ee308b9795588506ff2d96baac550c083a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
