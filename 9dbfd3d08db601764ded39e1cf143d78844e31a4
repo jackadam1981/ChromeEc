@@ -127,6 +127,30 @@
       },
       "revId": "9dbfd3d08db601764ded39e1cf143d78844e31a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a78b69ef_67b7c7d4",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2021-01-20T19:41:44Z",
+      "side": 1,
+      "message": "The data value gets formatted with %r, so \\r\\n etc will be escaped as such, they won\u0027t mess up the log line formatting.\n\nThat said, I guess it depends what these logs lines are for.  I was approaching from the perspective of troubleshooting ec3po itself, for which having the exact, complete data value is relevant and useful.\n\nHowever from the perspective of just having a log of the commands run, to troubleshoot something higher up in the stack, stripping the trailing whitespace makes sense.\n\nConsider this resolved, since the latter need is probably more common, and someone troubleshooting ec3po itself can reasonable add/expand/edit the logging as needed.",
+      "parentUuid": "17ff2c68_4333bfb1",
+      "range": {
+        "startLine": 1024,
+        "startChar": 39,
+        "endLine": 1024,
+        "endChar": 47
+      },
+      "revId": "9dbfd3d08db601764ded39e1cf143d78844e31a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
