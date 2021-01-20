@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6590f139_d910eb00",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4820,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-20T22:14:05Z",
+      "side": 1,
+      "message": "One hiccup here: we apparently have a number of boards currently using CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT.  Notably, the volteer family.  We could give a Vbus of 0 a free pass?  Or use requested_idx and the stored source PDOs for that scenario?",
+      "revId": "ebc4a354131a18f5d4a3ed439a3bb840187a66e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
