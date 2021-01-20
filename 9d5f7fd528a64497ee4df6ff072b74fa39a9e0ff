@@ -22,6 +22,30 @@
       },
       "revId": "9d5f7fd528a64497ee4df6ff072b74fa39a9e0ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0401a74_c640c7da",
+        "filename": "zephyr/projects/kohaku/include/gpio_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-20T21:00:52Z",
+      "side": 1,
+      "message": "Ack ... lid switch is required as a part of power code",
+      "parentUuid": "56593b33_b593a8eb",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 72
+      },
+      "revId": "9d5f7fd528a64497ee4df6ff072b74fa39a9e0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
