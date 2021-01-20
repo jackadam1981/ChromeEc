@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "afd508ed_f41bdb96",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-20T06:58:05Z",
+      "side": 1,
+      "message": "Thanks for suggestion. Looking good for me.",
+      "parentUuid": "7cd4921d_133e1fc0",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 48
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87c0e514_fe632f68",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 3
@@ -208,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9acc02a_dd720060",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-20T06:58:05Z",
+      "side": 1,
+      "message": "Discussed this one. The Changes are fine",
+      "parentUuid": "0e47fd8a_238f21da",
+      "range": {
+        "startLine": 419,
+        "startChar": 3,
+        "endLine": 419,
+        "endChar": 24
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7968113_9aadef9f",
         "filename": "driver/usb_mux/virtual.c",
         "patchSetId": 3
@@ -219,6 +267,30 @@
       "writtenOn": "2021-01-20T05:05:36Z",
       "side": 1,
       "message": "nit: remove (",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dab1316_6848856a",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-20T06:58:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e7968113_9aadef9f",
       "range": {
         "startLine": 42,
         "startChar": 8,
@@ -246,6 +318,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3008e365_1ed06742",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-20T06:58:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c1387b7_db0b7064",
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92080955_66a1465d",
@@ -259,6 +349,30 @@
       "writtenOn": "2021-01-20T05:05:36Z",
       "side": 1,
       "message": "Set the disconnection flag if the Type-C devices are disconnected and the information is not yet updated to Kernel.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0fbe26b_f8b56e4a",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-20T06:58:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92080955_66a1465d",
       "range": {
         "startLine": 81,
         "startChar": 1,
@@ -292,6 +406,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb108498_41a05218",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-20T06:58:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8465519c_58e73802",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 3
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cf4575b_7927ba34",
@@ -305,6 +443,30 @@
       "writtenOn": "2021-01-20T05:05:36Z",
       "side": 1,
       "message": "update the same info as above, its not BB retimer specific",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 48
+      },
+      "revId": "7815e0cb7ed268a57b0a35b1e9922fc41f43cb39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73840c9_fff00bec",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-20T06:58:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1cf4575b_7927ba34",
       "range": {
         "startLine": 260,
         "startChar": 0,
