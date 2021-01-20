@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c2b275e5_3467a0fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-20T18:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1561e90c_061f5bb4",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "dfc684cb5c2513b30c840837071e76245c3d348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "66f80ec6_50b00f42",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,24 @@
       "writtenOn": "2021-01-14T09:46:45Z",
       "side": 1,
       "message": "nit: add a build assert instead of array size",
+      "revId": "dfc684cb5c2513b30c840837071e76245c3d348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7a5ec5_3550ee77",
+        "filename": "chip/mchp/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-20T18:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4afcaa3b_271cb889",
       "revId": "dfc684cb5c2513b30c840837071e76245c3d348b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
