@@ -34,6 +34,41 @@
       "parentUuid": "f38e3b2c_3a8f5198",
       "revId": "04c3dc94579047c50ee452809522ed2be71ea79f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2186f090_9f43da44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-20T22:13:56Z",
+      "side": 1,
+      "message": "... just being cautious about the intended bits getting submitted.",
+      "parentUuid": "4c6cd2b6_9ec911df",
+      "revId": "04c3dc94579047c50ee452809522ed2be71ea79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e6acbe_4585bae0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-20T22:13:56Z",
+      "side": 1,
+      "message": "i had \"ignore whitespace: all\" set.\ngerrit won\u0027t show you the diff (sort of expected),\nbut it also won\u0027t show you the file (common lines)\nwhen you click on it which made me suspicious\nabout what its view of the file was.\n\n",
+      "revId": "04c3dc94579047c50ee452809522ed2be71ea79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
