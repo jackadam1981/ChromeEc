@@ -86,6 +86,24 @@
       "parentUuid": "82f7e20c_df0cafa8",
       "revId": "627972ee308b9795588506ff2d96baac550c083a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88240a3_6af0ce22",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2021-01-20T06:31:24Z",
+      "side": 1,
+      "message": "I think this change might cause some kind of confusion. \n\n1. I will have to set other boards as \"true\" in order to make them as they are now. Or I will have to do the following: \n\n    if (dont_disable_adc)\n    else        \n        disable_adc_items();\n    do_rest_of_hibernation_items();\n\ndont_disable_adc only set \"true\" on madoo\u0027s main board.\n\n2. What if there are more conditions that need to add for other boards like for example bgate_force_on or something else, the function will eventually looks like void raa489000_hibernate(int chg, bool x, bool y, bool z). It will become relatively long but unclear. And each time we add a parameter, we will have to go to every board to fix this.",
+      "parentUuid": "5a71faee_a87503f0",
+      "revId": "627972ee308b9795588506ff2d96baac550c083a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
