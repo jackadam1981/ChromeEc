@@ -66,7 +66,7 @@ GPIO_INT(WP,                 PIN(I, 4), GPIO_INT_BOTH | GPIO_SEL_1P8V,
          switch_interrupt) /* EC_FLASH_WP_OD */
 GPIO_INT(SPI0_CS,            PIN(M, 5), GPIO_INT_FALLING,
          spi_event)        /* SPI slave Chip Select -- AP_SPI_EC_CS_L */
-GPIO_INT(X_EC_GPIO2,         PIN(B, 2), GPIO_ODR_HIGH, x_ec_interrupt)
+GPIO_INT(X_EC_GPIO2,         PIN(B, 2), GPIO_INT_BOTH, tcpc_alert_event)
 
 /* Power Sequencing Signals */
 GPIO(EC_PMIC_EN_ODL,         PIN(D, 0), GPIO_ODR_HIGH | GPIO_SEL_1P8V)
@@ -94,6 +94,9 @@ GPIO(BC12_DET_EN,            PIN(J, 5), GPIO_OUT_LOW) /* EN_USB_C0_BC12_DET */
 GPIO(EN_EC_ID_ODL,           PIN(H, 5), GPIO_ODR_LOW)
 GPIO(ENTERING_RW,            PIN(C, 5), GPIO_OUT_LOW) /* EC_ENTERING_RW */
 GPIO(EC_USB_C0_MUX_RESET_L,  PIN(D, 7), GPIO_OUT_HIGH)
+
+GPIO(RT_1,                   PIN(G, 3), GPIO_INPUT)
+GPIO(RT_2,                   PIN(I, 7), GPIO_INPUT)
 
 /* I2C pins - Alternate function below configures I2C module on these pins */
 GPIO(I2C_A_SCL,              PIN(B, 3), GPIO_INPUT) /* I2C_CHG_BATT_SCL */
@@ -150,7 +153,6 @@ GPIO(CCD_MODE_ODL,           PIN(C, 4), GPIO_INPUT)
  * so we set them as output low.
  */
 GPIO(NC_GPI5,                PIN(I, 5), GPIO_OUT_LOW)
-GPIO(NC_GPI7,                PIN(I, 7), GPIO_OUT_LOW)
 /* NC pins, enable internal pull-up/down to avoid floating state. */
 #ifdef BOARD_ASURADA_REV0
 GPIO(NC_GPE5,                PIN(E, 5), GPIO_INPUT | GPIO_PULL_UP)
@@ -164,7 +166,6 @@ GPIO(SPI_CLK_GPG6,           PIN(G, 6), GPIO_INPUT | GPIO_PULL_UP)
  * These 4 pins don't have internal pull-down capability,
  * so we set them as output low.
  */
-GPIO(NC_GPG3,                PIN(G, 3), GPIO_OUT_LOW)
 GPIO(SPI_MOSI_GPG4,          PIN(G, 4), GPIO_OUT_LOW)
 GPIO(SPI_MISO_GPG5,          PIN(G, 5), GPIO_OUT_LOW)
 GPIO(SPI_CS_GPG7,            PIN(G, 7), GPIO_OUT_LOW)
