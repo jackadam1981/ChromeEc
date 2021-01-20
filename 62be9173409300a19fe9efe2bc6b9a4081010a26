@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b89169f_e5160375",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-20T16:22:00Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "dd4b09ec_edd7bf18",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 28
+      },
+      "revId": "62be9173409300a19fe9efe2bc6b9a4081010a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f32603e_a62f7aee",
         "filename": "zephyr/Kconfig.keyboard",
         "patchSetId": 2
