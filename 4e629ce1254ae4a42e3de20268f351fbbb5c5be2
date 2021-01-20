@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6377d06_8a5de741",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-20T16:15:01Z",
+      "side": 1,
+      "message": "I have been added an #undef above each #ifdef, following the pattern set by whoever set up this file.\n\nIs that not needed?",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "4e629ce1254ae4a42e3de20268f351fbbb5c5be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
