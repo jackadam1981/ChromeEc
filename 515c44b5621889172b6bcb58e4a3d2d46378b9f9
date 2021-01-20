@@ -16,6 +16,24 @@
       "message": "Would you also want to add this to TCPC drivers that nearly always call tcpci functions?  Or is it left as an exercise for the board owners?",
       "revId": "515c44b5621889172b6bcb58e4a3d2d46378b9f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "742775b6_0f99f43b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1796,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-20T21:46:59Z",
+      "side": 1,
+      "message": "Yes, I would. I naively thought that there was some implicit mechanism for TCPCI drivers to default to TCPCI functions.",
+      "parentUuid": "87aac570_b976d062",
+      "revId": "515c44b5621889172b6bcb58e4a3d2d46378b9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
