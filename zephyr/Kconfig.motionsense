@@ -1,0 +1,79 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menuconfig PLATFORM_EC_MOTIONSENSE
+    bool "Enable motionsense task"
+    select HAS_TASK_MOTIONSENSE
+    help
+      Enable motion sense task.
+
+config PLATFORM_EC_ACCEL_FIFO
+    bool "Add support for sensor FIFO"
+    help
+      Enable this to add sensor FIFO used by sensor device drivers to fill.
+
+if PLATFORM_EC_ACCEL_FIFO
+
+config PLATFORM_EC_ACCEL_FIFO_SIZE
+    int "Motion sense FIFO size"
+    default 256
+    help
+      This sets the size of the global FIFO, must be a power of 2.
+
+config PLATFORM_EC_ACCEL_FIFO_THRES
+    int "Set FIFO threshold to interrupt to the AP."
+    default 85      # (PLATFORM_EC_ACCEL_FIFO_SIZE / 3)
+    help
+      This sets the amount of free entries that trigger an interrupt to the AP.
+
+config PLATFORM_EC_SENSOR_TIGHT_TIMESTAMPS
+    bool "Enable tight timestamp"
+    help
+      Enable this to use tight timestamps. This adds per-data timestamp.
+
+endif # PLATFORM_EC_ACCEL_FIFO
+
+config PLATFORM_EC_ACCEL_INTERRUPTS
+    bool "Enable accelerometer interrupts"
+    help
+      Enable accelelermeter interrupts
+
+config PLATFORM_EC_ALS
+    bool "Enable ALS data upate"
+    help
+      Enable this to update ALS field in EC memmap.
+
+if PLATFORM_EC_ALS
+
+config PLATFORM_EC_ALS_COUNT
+    int "Number of ALS devices"
+    default 1
+    help
+      This sets number of ALS device available.
+
+endif # PLATFORM_EC_ALS
+
+config PLATFORM_EC_DYNAMIC_MOTION_SENSOR_COUNT
+    bool "Enable dynamic motion sensor count"
+    help
+      Enable this to allow dynamic motion sensor count.
+
+config PLATFORM_EC_LID_ANGLE
+    bool "Enable lid angle sensor"
+    help
+      Enable this to calculate lid angle. It also needs to provide
+      which sensor is located in base and in lid.
+      # TODO(b/173507858): add more detail after .dts change
+
+config PLATFORM_EC_TABLET_MODE
+    bool "Enable tablet mode"
+    help
+      Enable this to detect tablet mode using lid angle.
+
+config PLATFORM_EC_GMR_TABLET_MODE
+    bool "Use GMR sensor to detect tablet mode"
+    help
+      Enable this to use GMR sensor to detect tablet mode.
+      It also needs to provide GMR_TABLET_MODE_GPIO_L and direct its
+      interrupt to to gmr_tablet_switch_isr.
