@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9888baef_a85d9183",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-20T21:44:34Z",
+      "side": 1,
+      "message": "Added a follow-up",
+      "parentUuid": "c3404c43_c3fed58c",
+      "revId": "ac350338c5edac550c465d0b90573c8bbf44da79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82f7697c_ced8b8e3",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-01-05T17:17:00Z",
       "side": 1,
       "message": "I would guess this needs a check to either our current Vbus voltage or our last requested voltage when sinking (and last supplied Vbus voltage if sourcing, assuming we want to cover honeybuns).  Otherwise we don\u0027t catch the case of Vbus \u003e 5V",
+      "revId": "ac350338c5edac550c465d0b90573c8bbf44da79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f208d0_6085c894",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4717,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-20T21:44:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82f7697c_ced8b8e3",
       "revId": "ac350338c5edac550c465d0b90573c8bbf44da79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
