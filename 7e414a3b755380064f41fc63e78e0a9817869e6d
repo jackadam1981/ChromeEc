@@ -1,0 +1,434 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2eb856b_47de0271",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "-",
+      "range": {
+        "startLine": 11,
+        "startChar": 58,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dce6f97_b1e7a2d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "These can be done in a follow-up CL if you like",
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72f9e88_b1b6737d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1791,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "Why is this cast needed? The odr field is an unsigned int anyway.",
+      "range": {
+        "startLine": 1791,
+        "startChar": 6,
+        "endLine": 1791,
+        "endChar": 14
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7cc8fb2_f81bcc22",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "This file needs a lot more detail. I\u0027ve tried to give some ideas. Every option should be at least 3 lines unless it really is trivial.",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 34
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f1050e_f3782ec5",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "Please describe what this is for and what it does",
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e572e5_344dd217",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "add the sensor\n\nNeeds more info about what this is for and why it would be enabled",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e7de77_0b7e41cc",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "What is the global FIFO? Is this the same as the sensor FIFO? If so please use the same name. If not, then please explain what it is here.",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "558dd96d_a8d8dac3",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "Drop .",
+      "range": {
+        "startLine": 25,
+        "startChar": 50,
+        "endLine": 25,
+        "endChar": 52
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70afec1_b393ab9e",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "Please copy in the help from CONFIG_SENSOR_TIGHT_TIMESTAMPS in config,h",
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13efc23b_b67d6464",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "spelling\n\nmore info needed...why would you enable this or not enable it?",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f0642cc_df21e718",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "ALS needs to be spelled out\n\nAmbient Light Sensor (ALS)",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5185736b_f876aa69",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "Need more detail\n\nThis allows ALS data to be reported to the AP...?",
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55fe93fe_5ba1c5b9",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "sets the number\n\nTODO(b/file a bug): This should use the devicetree",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 15
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "251d3bb2_32b53f6f",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "What does this mean? Needs a lot more deteail",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 55
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24241ac7_df2807ef",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "How is this reported and what is the actual effect of this?",
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f3231a_89cc9e8e",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "spell...out (GMR)",
+      "range": {
+        "startLine": 75,
+        "startChar": 14,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c138b0f_6c4a5a1c",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "Do you mean the GPIO map?",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 8
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54544019_a1d90a6f",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "Do you mean that the board must provide a gmr_tablet_switch_isr() function to call?",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 43
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21c23ac_e49c19ac",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "which does what?",
+      "range": {
+        "startLine": 131,
+        "startChar": 23,
+        "endLine": 131,
+        "endChar": 27
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37548c2d_3b6212cc",
+        "filename": "zephyr/shim/include/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:38:23Z",
+      "side": 1,
+      "message": "#ifdef ?",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
