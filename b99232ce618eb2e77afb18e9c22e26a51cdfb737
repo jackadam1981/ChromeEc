@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69723d3c_40527989",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-21T21:13:32Z",
+      "side": 1,
+      "message": "Unfortunately those names don\u0027t make sense. \"fpmcu_platform_boot_mode\" doesn\u0027t mean anything and is confusing.\n\nWe shouldn\u0027t be adding a bunch of aliases to try to work around a script. This script is mostly unreadable, but I don\u0027t think my change is making it much worse. It just needs to be rewritten in a more straightforward manner in a language we can test, such as python: go/deshell",
+      "parentUuid": "49826b08_31be5902",
+      "range": {
+        "startLine": 380,
+        "startChar": 61,
+        "endLine": 380,
+        "endChar": 66
+      },
+      "revId": "b99232ce618eb2e77afb18e9c22e26a51cdfb737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46537b5b_8ce31bf2",
