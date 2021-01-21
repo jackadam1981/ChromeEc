@@ -34,6 +34,24 @@
       "parentUuid": "0e8c4860_74f847aa",
       "revId": "e6fb7a7cebdac250c649f68af91ab3f03234b3b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df4bd98_2b5d885b",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-21T22:32:00Z",
+      "side": 1,
+      "message": "Moved discussion to its proper location in next CL.",
+      "parentUuid": "2c52ca1c_ac7e0afd",
+      "revId": "e6fb7a7cebdac250c649f68af91ab3f03234b3b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
