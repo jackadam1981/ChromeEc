@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35099102_3c6ce56b",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:44:41Z",
+      "side": 1,
+      "message": "How does this work? Does it call a function? Needs more detail here.",
+      "range": {
+        "startLine": 309,
+        "startChar": 39,
+        "endLine": 309,
+        "endChar": 45
+      },
+      "revId": "4186f6d8cc5381177fde91c4da24fe3d3cbe38e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9caa8e_dbc7fa3e",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:44:41Z",
+      "side": 1,
+      "message": "IMO we won\u0027t need this sort of thing. The Kconfig takes care of it.\n\nSo we should just be able to do:\n\n#ifdef CONFIG_PLATFORM_EC_MKBP_USE_GPIO\n@define CONFIG_MKBP_USE_GPIO\n#endif\n\netc.\n\nwith all the #undefs at the top",
+      "range": {
+        "startLine": 526,
+        "startChar": 1,
+        "endLine": 526,
+        "endChar": 6
+      },
+      "revId": "4186f6d8cc5381177fde91c4da24fe3d3cbe38e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
