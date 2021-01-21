@@ -266,7 +266,7 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 
 		/* Clear Thunderbolt related signals */
 		pd_dfp_exit_mode(port, TCPC_TX_SOP, USB_VID_INTEL, opos_sop);
-		set_usb_mux_with_current_data_role(port);
+		usb_mux_set_alt_usb_mode(port);
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
 			tbt_active_cable_exit_mode(port);
 		} else {
@@ -277,7 +277,7 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		}
 		break;
 	case TBT_EXIT_SOP:
-		set_usb_mux_with_current_data_role(port);
+		usb_mux_set_alt_usb_mode(port);
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
 			tbt_active_cable_exit_mode(port);
 		else {
@@ -291,7 +291,7 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 	case TBT_EXIT_SOP_PRIME_PRIME:
 		tbt_prints("exit mode SOP''", port);
 		tbt_state[port] = TBT_EXIT_SOP_PRIME;
-		set_usb_mux_with_current_data_role(port);
+		usb_mux_set_alt_usb_mode(port);
 		break;
 	case TBT_EXIT_SOP_PRIME:
 		tbt_prints("exit mode SOP'", port);
@@ -307,7 +307,7 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 			/* Clear Thunderbolt related signals */
 			pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, USB_VID_INTEL,
 				     opos_sop_prime);
-			set_usb_mux_with_current_data_role(port);
+			usb_mux_set_alt_usb_mode(port);
 		} else {
 			tbt_retry_enter_mode(port);
 		}
@@ -347,7 +347,7 @@ void intel_vdm_naked(int port, enum tcpm_transmit_type type, uint8_t vdm_cmd)
 		break;
 	case TBT_ACTIVE:
 		/* Exit SOP got NAK'ed */
-		set_usb_mux_with_current_data_role(port);
+		usb_mux_set_alt_usb_mode(port);
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
 			tbt_active_cable_exit_mode(port);
 		else {
@@ -361,7 +361,7 @@ void intel_vdm_naked(int port, enum tcpm_transmit_type type, uint8_t vdm_cmd)
 	case TBT_EXIT_SOP:
 		/* Exit SOP got NAK'ed */
 		tbt_prints("exit mode SOP failed", port);
-		set_usb_mux_with_current_data_role(port);
+		usb_mux_set_alt_usb_mode(port);
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
 			tbt_active_cable_exit_mode(port);
 		else {
@@ -378,7 +378,7 @@ void intel_vdm_naked(int port, enum tcpm_transmit_type type, uint8_t vdm_cmd)
 		tbt_state[port] = TBT_EXIT_SOP_PRIME;
 		break;
 	case TBT_EXIT_SOP_PRIME:
-		set_usb_mux_with_current_data_role(port);
+		usb_mux_set_alt_usb_mode(port);
 		if (TBT_CHK_FLAG(port, TBT_FLAG_RETRY_DONE)) {
 			/*
 			 * Exit mode process is complete; go to inactive state.

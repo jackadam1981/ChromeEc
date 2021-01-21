@@ -22,12 +22,14 @@
 				| USB_PD_MUX_DP_ENABLED \
 				| USB_PD_MUX_SAFE_MODE \
 				| USB_PD_MUX_TBT_COMPAT_ENABLED \
-				| USB_PD_MUX_USB4_ENABLED)
+				| USB_PD_MUX_USB4_ENABLED \
+				| USB_PD_MUX_USB_ALT_ENABLED)
 
 #define BB_RETIMER_MUX_USB_ALT_MODE (USB_PD_MUX_USB_ENABLED\
 				| USB_PD_MUX_DP_ENABLED \
 				| USB_PD_MUX_TBT_COMPAT_ENABLED \
-				| USB_PD_MUX_USB4_ENABLED)
+				| USB_PD_MUX_USB4_ENABLED \
+				| USB_PD_MUX_USB_ALT_ENABLED)
 
 #define BB_RETIMER_MUX_USB_DP_MODE (USB_PD_MUX_USB_ENABLED \
 				| USB_PD_MUX_DP_ENABLED \
@@ -413,7 +415,8 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	 * 0 - No USB3.1 Connection
 	 * 1 - USB3.1 connection
 	 */
-	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+	if (mux_state & USB_PD_MUX_USB_ENABLED ||
+	    mux_state & USB_PD_MUX_USB_ALT_ENABLED) {
 		set_retimer_con |= BB_RETIMER_USB_3_CONNECTION;
 
 		/*

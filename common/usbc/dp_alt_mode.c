@@ -137,7 +137,7 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		/* Clear DisplayPort related signals */
 		pd_dfp_exit_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT,
 				     opos);
-		set_usb_mux_with_current_data_role(port);
+		usb_mux_set_alt_usb_mode(port);
 		break;
 	case DP_ENTER_NAKED:
 		/*

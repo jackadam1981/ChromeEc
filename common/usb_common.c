@@ -469,6 +469,22 @@ void usb_mux_set_safe_mode(int port)
 		ppc_set_sbu(port, 0);
 }
 
+void usb_mux_set_alt_usb_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		mux_state_t mux_mode =
+			get_mux_mode_to_set(port) == USB_PD_MUX_USB_ENABLED ?
+				USB_PD_MUX_USB_ALT_ENABLED : USB_PD_MUX_NONE;
+
+		enum usb_switch usb_switch_mode =
+				(mux_mode == USB_PD_MUX_NONE) ?
+				USB_SWITCH_DISCONNECT : USB_SWITCH_CONNECT;
+
+		usb_mux_set(port, mux_mode, usb_switch_mode,
+				polarity_rm_dts(pd_get_polarity(port)));
+	}
+}
+
 static void pd_send_hard_reset(int port)
 {
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SEND_HARD_RESET);

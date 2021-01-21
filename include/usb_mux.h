@@ -24,7 +24,7 @@
  * A bitwise combination of the USB_PD_MUX_* flags.
  * Note: this is 8 bits right now to make ec_response_usb_pd_mux_info size.
  */
-typedef uint8_t mux_state_t;
+typedef uint16_t mux_state_t;
 
 /* Mux driver function pointers */
 struct usb_mux;
