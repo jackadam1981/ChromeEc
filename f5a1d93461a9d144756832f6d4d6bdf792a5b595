@@ -22,6 +22,53 @@
       },
       "revId": "f5a1d93461a9d144756832f6d4d6bdf792a5b595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38800dc9_9e2ddbb8",
+        "filename": "baseboard/zork/cbi_ssfc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-21T20:04:03Z",
+      "side": 1,
+      "message": "I think 3 bits should be large enough, and having this list be shared for all Zork devices is ok.\nI think the initial list here should match what is already in FW_CONFIG:\n\nenum ec_ssfc_base_gyro_sensor {\n\tSSFC_BASE_GYRO_NONE \u003d 0,\n\tSSFC_BASE_GYRO_BMI160 \u003d 1,\n\tSSFC_BASE_GYRO_LSM6DSM \u003d 2,\n\tSSFC_BASE_GYRO_ICM426XX \u003d 3,\n};",
+      "parentUuid": "cb15eb11_5fc20eac",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "f5a1d93461a9d144756832f6d4d6bdf792a5b595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46d7f14e_5e0ab147",
+        "filename": "baseboard/zork/cbi_ssfc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-21T20:04:03Z",
+      "side": 1,
+      "message": "Why \"_2\" ?",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "f5a1d93461a9d144756832f6d4d6bdf792a5b595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
