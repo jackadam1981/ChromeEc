@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b3c0ae_73ce2865",
+        "filename": "board/woomax/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-21T17:46:30Z",
+      "side": 1,
+      "message": "what does 0x16 mean?  can you clean up the magic numbers in this function so it is better documented",
+      "range": {
+        "startLine": 337,
+        "startChar": 36,
+        "endLine": 337,
+        "endChar": 40
+      },
+      "revId": "eb7ada4d927de467b2edfe0f4510c817474aae34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
