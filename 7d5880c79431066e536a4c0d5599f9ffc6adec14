@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c167cb_91174edf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-21T02:17:22Z",
+      "side": 1,
+      "message": "LGTM, just one nit",
+      "revId": "7d5880c79431066e536a4c0d5599f9ffc6adec14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77c7509_2209c212",
+        "filename": "board/madoo/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-21T02:17:22Z",
+      "side": 1,
+      "message": "nit:\n    \n/*\n * nothing on the first line\n * in multi-line comments.\n */",
+      "revId": "7d5880c79431066e536a4c0d5599f9ffc6adec14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
