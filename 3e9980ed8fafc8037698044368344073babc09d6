@@ -237,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "192b63a9_f80545d5",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-21T23:21:58Z",
+      "side": 1,
+      "message": "Moved \"op resume\" to above. \"op suspend\" is the one that sets \"TC_FLAGS_SUSPEND\", and inside tc_run() only this flag is true then usb_retimer_fw_update_process_mux_op() could be called. Is it OK to keep this in ISR?",
+      "parentUuid": "80eba458_5f36bcf1",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 8
+      },
+      "revId": "3e9980ed8fafc8037698044368344073babc09d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30d4acc3_877f37cf",
         "filename": "include/ec_commands.h",
         "patchSetId": 23
