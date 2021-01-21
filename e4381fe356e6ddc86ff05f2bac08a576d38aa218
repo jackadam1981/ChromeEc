@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "616b0979_d0981625",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-21T21:04:35Z",
+      "side": 1,
+      "message": "OK, let\u0027s leave it as is for this CL. I created b:178093557 for further discussion.",
+      "parentUuid": "bc9ac694_197a70f6",
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00f128be_e073c2fe",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-01-20T16:47:38Z",
       "side": 1,
       "message": "Why is this being deleted?",
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a247d6f1_9d59636a",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-21T21:04:35Z",
+      "side": 1,
+      "message": "See other comment thread.",
+      "parentUuid": "00f128be_e073c2fe",
       "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

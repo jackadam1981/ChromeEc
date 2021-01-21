@@ -51,6 +51,41 @@
       "parentUuid": "f35e4bf7_e89055df",
       "revId": "d13e44a34813957496ca773978187dc7592b2697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b238437_e295adea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-21T21:04:35Z",
+      "side": 1,
+      "message": "Please fix the number format regression between patchsets 11 and 12. Otherwise, I think this is ready to submit.",
+      "revId": "d13e44a34813957496ca773978187dc7592b2697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f8ca3b_8d0e6019",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-21T21:04:35Z",
+      "side": 1,
+      "message": "When I run with patchset 12, Volteer still passes TDA.2.1.2.1, so I\u0027m OK with submitting this without the custom set_cc. I would be interested to discuss later why this change was made after a month of code review.",
+      "parentUuid": "624ecf8b_3bbc1cb5",
+      "revId": "d13e44a34813957496ca773978187dc7592b2697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

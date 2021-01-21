@@ -308,6 +308,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4d00df_c6c25cb2",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-21T21:04:35Z",
+      "side": 1,
+      "message": "I\u0027ve moved discussion of this issue to b:178093557.",
+      "parentUuid": "1856696e_d99a7146",
+      "range": {
+        "startLine": 78,
+        "startChar": 40,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "b7a5213e0ab49637f9438e4b0829e073574c260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c21af59_ac9fd3fb",
