@@ -4,6 +4,7 @@
  */
 
 #include "atomic.h"
+#include "chipset.h"
 #include "common.h"
 #include "device_event.h"
 #include "hooks.h"
@@ -297,14 +298,12 @@ void pchg_irq(enum gpio_signal signal)
 	}
 }
 
-void pchg_task(void *u)
+static void pchg_startup(void)
 {
 	struct pchg *ctx;
 	int p;
-	int rv;
 
-	/* TODO: i2c is wedged for a while after reset. investigate. */
-	msleep(500);
+	CPRINTS("%s", __func__);
 
 	for (p = 0; p < pchg_count; p++) {
 		ctx = &pchgs[p];
@@ -313,6 +312,35 @@ void pchg_task(void *u)
 		pchg_queue_event(ctx, PCHG_EVENT_INITIALIZE);
 		gpio_enable_interrupt(ctx->cfg->irq_pin);
 	}
+
+	task_wake(TASK_ID_PCHG);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pchg_startup, HOOK_PRIO_DEFAULT);
+
+static void pchg_shutdown(void)
+{
+	struct pchg *ctx;
+	int p;
+
+	for (p = 0; p < pchg_count; p++) {
+		ctx = &pchgs[0];
+		gpio_disable_interrupt(ctx->cfg->irq_pin);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pchg_shutdown, HOOK_PRIO_DEFAULT);
+
+void pchg_task(void *u)
+{
+	struct pchg *ctx;
+	int p;
+	int rv;
+
+	/*
+	 * Re-initialize chips if we do late-jump. If we do early-jump (by efs),
+	 * the system should be still off when we get here.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		pchg_startup();
 
 	while (true) {
 		/* Process pending events for all ports. */
