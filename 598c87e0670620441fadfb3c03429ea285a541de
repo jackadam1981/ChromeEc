@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ab08d3_511c5090",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-21T17:24:04Z",
+      "side": 1,
+      "message": "where does this get set to true?\n\na bit racy ... but I have a change in the pipeline to make this mutex initilization thing better, so don\u0027t worry about it",
+      "range": {
+        "startLine": 39,
+        "startChar": 35,
+        "endLine": 39,
+        "endChar": 56
+      },
+      "revId": "598c87e0670620441fadfb3c03429ea285a541de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
