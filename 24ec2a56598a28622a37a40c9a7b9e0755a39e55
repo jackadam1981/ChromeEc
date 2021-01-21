@@ -16,6 +16,29 @@
       "message": "added new line at the end of the file",
       "revId": "24ec2a56598a28622a37a40c9a7b9e0755a39e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb62a3f_d352b2f5",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-21T04:44:31Z",
+      "side": 1,
+      "message": "I mean replace UART_ID with CONFIG_UART_CONSOLE everywhere, we can avoid re-macro",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "24ec2a56598a28622a37a40c9a7b9e0755a39e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
