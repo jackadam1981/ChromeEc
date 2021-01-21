@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb338c63_e8b37427",
+        "filename": "board/volteer/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T00:08:50Z",
+      "side": 1,
+      "message": "Jack have you looked at b:177677037?  We\u0027re duplicating a lot of code to handle Zephyr mutex init.",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 54
+      },
+      "revId": "296b4ca4af626e408a00d46aa24d396f45baae8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
