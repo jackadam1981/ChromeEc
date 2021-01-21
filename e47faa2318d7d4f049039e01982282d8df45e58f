@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d5352e_dfcc26dd",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-21T21:08:12Z",
+      "side": 1,
+      "message": "AP chipset",
+      "range": {
+        "startLine": 93,
+        "startChar": 35,
+        "endLine": 93,
+        "endChar": 37
+      },
+      "revId": "e47faa2318d7d4f049039e01982282d8df45e58f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe2dd52_4bada1a0",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-21T21:08:12Z",
+      "side": 1,
+      "message": "this is part of power sequencing, when we reset the AP I believe. EC stays alive",
+      "range": {
+        "startLine": 98,
+        "startChar": 54,
+        "endLine": 99,
+        "endChar": 26
+      },
+      "revId": "e47faa2318d7d4f049039e01982282d8df45e58f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
