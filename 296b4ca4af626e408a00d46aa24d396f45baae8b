@@ -46,6 +46,30 @@
       },
       "revId": "296b4ca4af626e408a00d46aa24d396f45baae8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "816e4024_33ca6dae",
+        "filename": "board/volteer/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T05:12:05Z",
+      "side": 1,
+      "message": "It was too much. let\u0027s just put all into a section(like ec_mutex) and run one time initialization for all in SYS_INT like all other OSes does.\ntypedef struct k_mutex mutex_t; \u003d\u003e \n#define mutex_t __attribute__((section(\".ec_mutex\"))) struct k_mutex",
+      "parentUuid": "56dbd9aa_77ab639d",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 54
+      },
+      "revId": "296b4ca4af626e408a00d46aa24d396f45baae8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
