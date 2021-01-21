@@ -33,6 +33,23 @@
       "message": "The reason for the failure is that this pushes magolor_legacy to become out of space.",
       "revId": "233848bdfa818897ab3b693af8e83e0218afb777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "837a05b0_787ca2fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-21T20:23:47Z",
+      "side": 1,
+      "message": "Perhaps we can surround it with #ifdef BOARD_MAGOLOR ?",
+      "revId": "233848bdfa818897ab3b693af8e83e0218afb777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
