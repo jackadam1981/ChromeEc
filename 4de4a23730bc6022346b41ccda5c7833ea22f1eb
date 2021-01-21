@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "949bccd2_38753653",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T16:18:02Z",
+      "side": 1,
+      "message": "I don\u0027t think there is any value in storing the disconnect flag at the usb_mux_driver level.  Instead just add another flag that is manged here.\n\nThe usb_mux code is called from two different tasks, so you should use atomic operations for all bit sets and clears.\n\nI also suggest naming the new flag \"USB_MUX_FLAG_DISCONNECT_LATCH\", as that more accurately describes the purpose.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 69
+      },
+      "revId": "4de4a23730bc6022346b41ccda5c7833ea22f1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d29b0f_f5b0993f",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T16:18:02Z",
+      "side": 1,
+      "message": "See above - just read the disconnect state in the local flags[] instead of calling into the chip drivers.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 0
+      },
+      "revId": "4de4a23730bc6022346b41ccda5c7833ea22f1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ebae8b1_5222e5d6",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T16:18:02Z",
+      "side": 1,
+      "message": "Store the disconnect directly into flags[].",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 2
+      },
+      "revId": "4de4a23730bc6022346b41ccda5c7833ea22f1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
