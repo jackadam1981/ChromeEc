@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11d3d8b8_44cae9fa",
+        "filename": "zephyr/projects/volteer/include/sensor_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T19:42:39Z",
+      "side": 1,
+      "message": "Related, it would be nice to make this common across all boards, but I don\u0027t think we can do that at present",
+      "parentUuid": "d6680f78_7a138972",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "6b43395e506f0b7275b77306f1f068a92952d73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddaf280f_ac9ca0bb",
         "filename": "zephyr/projects/volteer/include/sensor_map.h",
         "patchSetId": 3
