@@ -16,6 +16,24 @@
       "message": "Will these always be powered, or will they need CONFIG_TEMP_SENSOR_POWER_GPIO?",
       "revId": "669a7ff85231c0359a3f25faea40d554cc551c77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "567718dc_5a35d348",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-01-21T01:30:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7817e8f8_f08cf4b7",
+      "revId": "669a7ff85231c0359a3f25faea40d554cc551c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
