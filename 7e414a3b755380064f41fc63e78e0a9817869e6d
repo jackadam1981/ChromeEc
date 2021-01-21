@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9add6a9a_e2a0994c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1791,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Good catch.. it\u0027s due to BIT() in Zephyr result in 64 bits but no need any more.. since I changed in motion_sense.h",
+      "parentUuid": "e72f9e88_b1b6737d",
+      "range": {
+        "startLine": 1791,
+        "startChar": 6,
+        "endLine": 1791,
+        "endChar": 14
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7cc8fb2_f81bcc22",
@@ -94,6 +118,30 @@
       "writtenOn": "2021-01-21T19:38:23Z",
       "side": 1,
       "message": "This file needs a lot more detail. I\u0027ve tried to give some ideas. Every option should be at least 3 lines unless it really is trivial.",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 34
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f89f0b_3d112cb7",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b7cc8fb2_f81bcc22",
       "range": {
         "startLine": 5,
         "startChar": 11,
@@ -121,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b7dd92_ff502068",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29f1050e_f3782ec5",
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15e572e5_344dd217",
@@ -134,6 +200,30 @@
       "writtenOn": "2021-01-21T19:38:23Z",
       "side": 1,
       "message": "add the sensor\n\nNeeds more info about what this is for and why it would be enabled",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8627591_8a414b80",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15e572e5_344dd217",
       "range": {
         "startLine": 14,
         "startChar": 21,
@@ -167,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11da9aed_0617f930",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f8e7de77_0b7e41cc",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "558dd96d_a8d8dac3",
@@ -180,6 +294,30 @@
       "writtenOn": "2021-01-21T19:38:23Z",
       "side": 1,
       "message": "Drop .",
+      "range": {
+        "startLine": 25,
+        "startChar": 50,
+        "endLine": 25,
+        "endChar": 52
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f10cb9b_cdc88dcb",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "558dd96d_a8d8dac3",
       "range": {
         "startLine": 25,
         "startChar": 50,
@@ -207,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed5a481_bba04f47",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b70afec1_b393ab9e",
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13efc23b_b67d6464",
@@ -220,6 +376,30 @@
       "writtenOn": "2021-01-21T19:38:23Z",
       "side": 1,
       "message": "spelling\n\nmore info needed...why would you enable this or not enable it?",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eea312af_edb9f450",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "13efc23b_b67d6464",
       "range": {
         "startLine": 40,
         "startChar": 13,
@@ -253,6 +433,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87981144_fc2fe731",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f0642cc_df21e718",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5185736b_f876aa69",
@@ -270,6 +474,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24783c93_6a4281dd",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5185736b_f876aa69",
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55fe93fe_5ba1c5b9",
@@ -283,6 +505,30 @@
       "writtenOn": "2021-01-21T19:38:23Z",
       "side": 1,
       "message": "sets the number\n\nTODO(b/file a bug): This should use the devicetree",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 15
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba1df2c_8f03c37c",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "55fe93fe_5ba1c5b9",
       "range": {
         "startLine": 53,
         "startChar": 11,
@@ -316,6 +562,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d3f72a9_4ea72621",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "251d3bb2_32b53f6f",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 55
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24241ac7_df2807ef",
@@ -333,6 +603,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a540612_d49b59ea",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24241ac7_df2807ef",
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35f3231a_89cc9e8e",
@@ -346,6 +634,30 @@
       "writtenOn": "2021-01-21T19:38:23Z",
       "side": 1,
       "message": "spell...out (GMR)",
+      "range": {
+        "startLine": 75,
+        "startChar": 14,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d3c00e_902c41ba",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35f3231a_89cc9e8e",
       "range": {
         "startLine": 75,
         "startChar": 14,
@@ -379,6 +691,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6370c26_c0482c59",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c138b0f_6c4a5a1c",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 8
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54544019_a1d90a6f",
@@ -392,6 +728,30 @@
       "writtenOn": "2021-01-21T19:38:23Z",
       "side": 1,
       "message": "Do you mean that the board must provide a gmr_tablet_switch_isr() function to call?",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 43
+      },
+      "revId": "7e414a3b755380064f41fc63e78e0a9817869e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "931f14b3_4df550b1",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T21:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54544019_a1d90a6f",
       "range": {
         "startLine": 79,
         "startChar": 22,
