@@ -32,7 +32,7 @@ used for JTAG and SWD for ARM devices.
     [CLion] and was tested with `JLink_Linux_V684a_x86_64`.
 *   Alternatively, you can use [Ozone] a standalone debugger from Segger.
 
-## Connecting SWD
+## 1. Connecting SWD
 
 The connector for SWD is `J4` on Dragonclaw v0.2.
 
@@ -56,29 +56,51 @@ Dragonclaw v0.2 with 10-pin SWD (0.05" / 1.27mm) on J4. |
 ------------------------------------------------------- |
 ![Dragonclaw with 10-pin SWD]                           |
 
-## Powering the Board
+## 2. Powering the Board via Servo Micro
 
 [Servo Micro] can provide both the 3.3V for the MCU and 1.8V for the sensor.
+J-Trace can supply only the MCU with power, not a sensor.
 
-Run the following to start `servod`, which will enable power to these rails by
-default:
+To power the board with a Servo Micro, run the following to start `servod`,
+which will enable power to these rails by default:
 
 ```bash
 (chroot) $ sudo servod --board=dragonclaw
 ```
 
-It's also possible to power through J-Trace, though this can only supply the MCU
-with power (3.3V), not a sensor using 1.8V.
+## 3. Setting up JLink
 
-## Using JLink gdbserver
+A simple way to install JLink software to be run in the chroot is to download
+the [64-bit TGZ archive], extract it in a chroot library, and add the path to
+your chroot .bashrc. Assuming you have a copy of the TGZ in a `~/lib/`
+directory in your chroot:
+
+```bash
+(chroot) $ tar xvf ./JLink_Linux_V694a_x86_64.tgz
+		 $ echo export
+		 $ PATH=$PATH:$PWD >> ~/.bashrc
+		 $ source ~/.bashrc
+```
+
+This should allow you to run the JLink commands from the chroot. Next, you will
+need to set up the JLink Remote Server to connect via IP address. With the
+command `JLinkRemoteServer` running in one chroot terminal, connect to the
+device via IP in a second chroot terminal by running
+
+```bash
+(chroot) $ JLinkExe -ip "127.0.0.1:2551"
+```
+
+
+## 4. Using JLink gdbserver
 
 Start the JLink gdbserver for the appropriate MCU type:
 
 *   Dragonclaw / [Nucleo STM32F412ZG]: `STM32F412CG`
-*   Dragontalon / [Nucleo STM32H743ZI]: `STM32H743ZI`
+*   Icetower / [Nucleo STM32H743ZI2]: `STM32H743ZI2`
 
 ```bash
-(outside) $ ./JLink_Linux_V684a_x86_64/JLinkGDBServerCLExe -select USB -device STM32F412CG -endian little -if SWD -speed auto -noir -noLocalhostOnly
+(outside) $ JLinkGDBServerCLExe -select USB -device STM32F412CG -endian little -if SWD -speed auto -noir -noLocalhostOnly
 ```
 
 You should see the port that gdbserver is running on in the output:
@@ -98,7 +120,8 @@ Connected to target
 Waiting for GDB connection...
 ```
 
-Configure your editor to use this [`.gdbinit`], taking care to set the correct
+## 5. Connect to your editor
+An editor is required to step through code while debugging. Configure your editor to use this [`.gdbinit`], taking care to set the correct
 environment variables for the `BOARD` and `GDBSERVER` being used. For CLion, if
 you want to use a `.gdbinit` outside of your `HOME` directory, you'll need to
 [configure `~/.gdbinit`].
@@ -157,7 +180,8 @@ STM32F412 package that does not have the synchronous trace pins, but the
 [JTAG to SWD Adapter]: https://www.adafruit.com/product/2094
 [SWD Cable]: https://www.adafruit.com/product/1675
 [Ozone]: https://www.segger.com/products/development-tools/ozone-j-link-debugger/
-[CLion]: https://www.jetbrains.com/clion/
+[CLion]: go/clion-for-chromeos
+[64-bit TGZ archive]:https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack
 [GDB Remote Debug Configuration]: https://www.jetbrains.com/help/clion/remote-debug.html#remote-config
 [CLion Start Remote Debug]: https://www.jetbrains.com/help/clion/remote-debug.html#start-remote-debug
 [Nucleo STM32F412ZG]: https://www.st.com/en/evaluation-tools/nucleo-f412zg.html
