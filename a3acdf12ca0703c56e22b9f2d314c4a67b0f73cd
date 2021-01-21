@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb6e5f15_38f0ddd0",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T19:49:52Z",
+      "side": 1,
+      "message": "Ah... Good catch.. BIT() in ECOS result in 32bit but it\u0027s 64 bit in Zephyr. so cast needed but now I have change it in motion_sense.h in previous patch. It\u0027s not needed. I\u0027ll remove this.anymore.",
+      "parentUuid": "32caf64b_2f39b620",
+      "range": {
+        "startLine": 510,
+        "startChar": 4,
+        "endLine": 510,
+        "endChar": 12
+      },
+      "revId": "a3acdf12ca0703c56e22b9f2d314c4a67b0f73cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f8b89e8_26618eae",
         "filename": "zephyr/Kconfig.sensor_devices",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-21T19:39:33Z",
       "side": 1,
       "message": "Each of these needs a little detail from the datasheet",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "a3acdf12ca0703c56e22b9f2d314c4a67b0f73cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8cf4018_c18d8f29",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T19:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f8b89e8_26618eae",
       "range": {
         "startLine": 10,
         "startChar": 21,

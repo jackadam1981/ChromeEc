@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49fe3baf_fc93dc14",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T19:49:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f93ac74_d2881215",
+      "range": {
+        "startLine": 8,
+        "startChar": 10,
+        "endLine": 8,
+        "endChar": 16
+      },
+      "revId": "c3551ae5f509b15b1c98c859a12d111a30c59509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "326e559a_4be09aa8",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-21T00:06:51Z",
       "side": 1,
       "message": "Each sensor needs a longer description.  You can add information from the datasheet  fill this out.  Look at KConfig.USBC for examples.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "c3551ae5f509b15b1c98c859a12d111a30c59509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d571fd_f77421bd",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T19:49:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "326e559a_4be09aa8",
       "range": {
         "startLine": 10,
         "startChar": 0,
