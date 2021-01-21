@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b7f10a_ae2deb11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-21T11:09:53Z",
+      "side": 1,
+      "message": "Thanks for suggestion. The current patch is simple can be managed by EC code alone.",
+      "parentUuid": "7b74e3f1_c81399e3",
+      "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "018c2e55_dce6b58e",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-20T20:32:37Z",
       "side": 1,
       "message": "Can be a return after this? Also move it to line 354.",
+      "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47af4b3b_c5686382",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-21T11:09:53Z",
+      "side": 1,
+      "message": "I will check this",
+      "parentUuid": "018c2e55_dce6b58e",
       "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "465170a1_0fed4758",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-21T11:09:53Z",
+      "side": 1,
+      "message": "rv value is true or false, and it has this info only the virtual mux. so the code is fine.",
+      "parentUuid": "6f8edfff_2a0a04a0",
+      "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9890160_c6524036",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 4
@@ -65,6 +119,24 @@
       "writtenOn": "2021-01-20T20:32:37Z",
       "side": 1,
       "message": "Here now disconnect will be received by kernel and it will read all the mux data to configure TCSS mux in disconnect mode. What happens to the connect mode which follows after? Since EC is overriding the flag information here. \nAre we missing the connect HOST_EVENT now?",
+      "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610e20e9_1a245dac",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-21T11:09:53Z",
+      "side": 1,
+      "message": "We are not missing any host event. line number 419 host_set_single_event(EC_HOST_EVENT_USB_MUX); is sending new host event after sending the disconnect mode.",
+      "parentUuid": "d9890160_c6524036",
       "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
