@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cabd3c8_43a37873",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T01:46:16Z",
+      "side": 1,
+      "message": "How about print_uint64 (or print_uint64_tag)? \u0027long\u0027 is ambiguous.",
+      "range": {
+        "startLine": 450,
+        "startChar": 12,
+        "endLine": 450,
+        "endChar": 26
+      },
+      "revId": "77099fbaa6f40a78acf878ccdb8af9566c24e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "127ff4a5_9ac8ec13",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T01:46:16Z",
+      "side": 1,
+      "message": "nit: space",
+      "range": {
+        "startLine": 483,
+        "startChar": 27,
+        "endLine": 483,
+        "endChar": 28
+      },
+      "revId": "77099fbaa6f40a78acf878ccdb8af9566c24e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec7bb4b_1156e77a",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T01:46:16Z",
+      "side": 1,
+      "message": "How about \"--rework_id \u003clvalue\u003e ...\", then followed by \"\u003clvalue\u003e must be a positive integer ...\"?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 69
+      },
+      "revId": "77099fbaa6f40a78acf878ccdb8af9566c24e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a15fab_eaa15a58",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T01:46:16Z",
+      "side": 1,
+      "message": "nit: How about parse_uin64_field?",
+      "range": {
+        "startLine": 264,
+        "startChar": 17,
+        "endLine": 264,
+        "endChar": 29
+      },
+      "revId": "77099fbaa6f40a78acf878ccdb8af9566c24e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4370ff7_bbdbc527",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T01:46:16Z",
+      "side": 1,
+      "message": "nit: blank line",
+      "revId": "77099fbaa6f40a78acf878ccdb8af9566c24e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74486db4_7d3bd474",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T01:46:16Z",
+      "side": 1,
+      "message": "nit: +80?",
+      "range": {
+        "startLine": 501,
+        "startChar": 66,
+        "endLine": 501,
+        "endChar": 73
+      },
+      "revId": "77099fbaa6f40a78acf878ccdb8af9566c24e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b1aaca_fa51973d",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T01:46:16Z",
+      "side": 1,
+      "message": "Can we put uint32_t, uint16_t, uint8_t in lv and use a single printf with %lu (%lx)?",
+      "range": {
+        "startLine": 501,
+        "startChar": 18,
+        "endLine": 501,
+        "endChar": 21
+      },
+      "revId": "77099fbaa6f40a78acf878ccdb8af9566c24e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c848cfe2_162fa36d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8189,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T01:46:16Z",
+      "side": 1,
+      "message": "nit: Please join this line above.",
+      "range": {
+        "startLine": 8189,
+        "startChar": 3,
+        "endLine": 8189,
+        "endChar": 9
+      },
+      "revId": "77099fbaa6f40a78acf878ccdb8af9566c24e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6df513_d9f359f6",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8191,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T01:46:16Z",
+      "side": 1,
+      "message": "nit: i \u003d 0",
+      "range": {
+        "startLine": 8191,
+        "startChar": 8,
+        "endLine": 8191,
+        "endChar": 11
+      },
+      "revId": "77099fbaa6f40a78acf878ccdb8af9566c24e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03c1efd_ac58f1d2",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8231,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T01:46:16Z",
+      "side": 1,
+      "message": "+80",
+      "range": {
+        "startLine": 8229,
+        "startChar": 0,
+        "endLine": 8231,
+        "endChar": 75
+      },
+      "revId": "77099fbaa6f40a78acf878ccdb8af9566c24e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
