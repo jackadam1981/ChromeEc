@@ -538,12 +538,45 @@ int isl923x_set_comparator_inversion(int chgnum, int invert)
 	return rv;
 }
 
+/*
+ * Track and store whether we've initialized the charger chips already on this
+ * boot.  This should prevent us from re-running inits after sysjumps.
+ */
+static bool chip_inited[CHARGER_NUM];
+#define ISL9238_SYSJUMP_TAG	0x4953 /* IS */
+#define ISL9238_HOOK_VERSION	1
+
+static void init_status_preserve(void)
+{
+	system_add_jump_tag(ISL9238_SYSJUMP_TAG, ISL9238_HOOK_VERSION,
+			    sizeof(chip_inited), &chip_inited);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, init_status_preserve, HOOK_PRIO_DEFAULT);
+
+static void init_status_retrieve(void)
+{
+	const uint8_t *tag_contents;
+	int version, size;
+
+	tag_contents = system_get_jump_tag(ISL9238_SYSJUMP_TAG,
+						  &version, &size);
+	if (tag_contents && (version == ISL9238_HOOK_VERSION) &&
+					(size == sizeof(chip_inited)))
+		/* Valid init status found, restore before charger chip init */
+		memcpy(&chip_inited, tag_contents, size);
+}
+DECLARE_HOOK(HOOK_INIT, init_status_retrieve, HOOK_PRIO_FIRST);
+
 static void isl923x_init(int chgnum)
 {
 	int reg;
 	const struct battery_info *bi = battery_get_info();
 	int precharge_voltage = bi->precharge_voltage ?
 		bi->precharge_voltage : bi->voltage_min;
+
+	/* Only initialize the chip once per EC boot */
+	if (chip_inited[chgnum])
+		return;
 
 	if (IS_ENABLED(CONFIG_CHARGER_RAA489000)) {
 		if (CONFIG_CHARGER_SENSE_RESISTOR ==
@@ -735,9 +768,10 @@ static void isl923x_init(int chgnum)
 	}
 #endif /* CONFIG_OCPC */
 
+	chip_inited[chgnum] = true;
 	return;
 init_fail:
-	CPRINTS("%s init failed!", CHARGER_NAME);
+	CPRINTS("%s:%d init failed!", CHARGER_NAME, chgnum);
 }
 
 static enum ec_error_list isl923x_discharge_on_ac(int chgnum, int enable)
