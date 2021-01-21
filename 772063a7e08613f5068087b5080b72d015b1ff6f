@@ -16,6 +16,23 @@
       "message": "directly used CONFIG_UART_CONSOLE in this file \u0026 build assert",
       "revId": "772063a7e08613f5068087b5080b72d015b1ff6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a20c0c1_892c87a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-21T04:35:54Z",
+      "side": 1,
+      "message": "directly used CONFIG_UART_CONSOLE in this file \u0026 added build assert",
+      "revId": "772063a7e08613f5068087b5080b72d015b1ff6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

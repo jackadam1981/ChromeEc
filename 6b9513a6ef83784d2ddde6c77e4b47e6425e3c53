@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd1bf81_527dbed6",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-21T04:35:54Z",
+      "side": 1,
+      "message": "added and uploaded",
+      "parentUuid": "e287470c_4224f467",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d65e2590_852ad4c4",
@@ -113,6 +137,24 @@
       "side": 1,
       "message": "in works",
       "parentUuid": "d65e2590_852ad4c4",
+      "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db01ccfb_45326a9d",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-21T04:35:54Z",
+      "side": 1,
+      "message": "added and uploaded",
+      "parentUuid": "fc6ebc71_8913d44b",
       "revId": "6b9513a6ef83784d2ddde6c77e4b47e6425e3c53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
