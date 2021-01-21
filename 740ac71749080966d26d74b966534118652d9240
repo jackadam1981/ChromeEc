@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd500256_3c3b088f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-21T22:36:52Z",
+      "side": 1,
+      "message": "Thanks, if you want to do this from the chroot over a servo, it is doable:\n\n```\nsudo flashrom -p raiden_debug_spi:target\u003dAP -r -i GBB:/tmp/gbb.bin\nfutility gbb -s --flags\u003d... /tmp/gbb.bin /tmp/gbb2.bin\nsudo flashrom -p raiden_debug_spi:target\u003dAP -w -i GBB:/tmp/gbb2.bin\n```\n\nThis is something I find myself doing often enough that I have a script for it ( https://git.sr.ht/~jmr/dotfiles/tree/master/item/bin/gbb_servo )",
+      "revId": "740ac71749080966d26d74b966534118652d9240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
