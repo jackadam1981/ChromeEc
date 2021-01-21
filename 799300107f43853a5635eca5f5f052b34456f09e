@@ -39,6 +39,30 @@
       },
       "revId": "799300107f43853a5635eca5f5f052b34456f09e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3310e4cf_72bbc05f",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-21T13:40:55Z",
+      "side": 1,
+      "message": "Done, though I had to split it into three if statements",
+      "parentUuid": "3be9521c_b93d9994",
+      "range": {
+        "startLine": 838,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 64
+      },
+      "revId": "799300107f43853a5635eca5f5f052b34456f09e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
