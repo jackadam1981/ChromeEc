@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d6823ec0_0130f35d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-21T20:04:47Z",
+      "side": 1,
+      "message": "Answered on Ed\u0027s comment",
+      "parentUuid": "01039999_c8f11282",
+      "revId": "3bb2d20932a6a55644a3a777ffdcfee7c3fea99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "44c92520_f8f7eb7f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Abe said he had some spare cycles to give TD.PD.SRC.E5 a go to see where we stand with just the previous CL and hopefully he will have time to give this CL a try to see how it affects the Compliance test as well.",
       "parentUuid": "44c92520_f8f7eb7f",
+      "revId": "3bb2d20932a6a55644a3a777ffdcfee7c3fea99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac3f624_28084c31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-21T20:04:47Z",
+      "side": 1,
+      "message": "The single CL was still too long. It did as I anticipated with the reduction of time by about the 6ms that the timer value was reduced by.  Adding this CL caused the test to pass. Abe looked at the log and thought it was showing the response was 19ms instead of between 24 and 30ms.  He did state the test passed and I have a hard time with a specific though shall not send the HardReset before 24ms that the test would have failed if we were not in the right range.",
+      "parentUuid": "d61cfbc9_2cdd55b8",
       "revId": "3bb2d20932a6a55644a3a777ffdcfee7c3fea99c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
