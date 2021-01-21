@@ -330,6 +330,11 @@ static int woomax_ps8818_mux_set(const struct usb_mux *me,
 					PS8818_EQ_LEVEL_UP_19DB);
 		rv |= ps8818_i2c_write(me, PS8818_REG_PAGE1,
 					PS8818_REG1_APRX1_DE_LEVEL, 0x02);
+		rv |= ps8818_i2c_write(me, PS8818_REG_PAGE1,
+					PS8818_REG1_APTX1EQ_10G_LEVEL, 0x16);
+	} else {
+		rv = ps8818_i2c_write(me, PS8818_REG_PAGE1,
+					PS8818_REG1_APTX2EQ_10G_LEVEL, 0x16);
 	}
 
 	/* set the RX input termination */
