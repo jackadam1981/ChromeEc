@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a682daa_ed6ab652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-01-21T02:10:29Z",
+      "side": 1,
+      "message": "I uploaded two patches to main and firmware-octopus-11297.B respectively.\nBecause the name of pd_get_role function is different in the two branches.",
+      "parentUuid": "13cf040e_60d25008",
+      "revId": "6b80e87f9941fa94ec8f1bdf54f23fc21371ab94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7931238_4862efea",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-20T20:26:08Z",
       "side": 1,
       "message": "Is this logically the same as always calling bc12_detect()?  Since we\u0027ll always be either a sink or source?",
+      "revId": "6b80e87f9941fa94ec8f1bdf54f23fc21371ab94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff6e603_3e1bcaef",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-01-21T02:10:29Z",
+      "side": 1,
+      "message": "yes.\nIf only run bc12_detect when PD in PD_ROLE_SINK state, BC1.2 state will keep DCP at all time. So the solution is do bc12_detect when dock plug-in.",
+      "parentUuid": "f7931238_4862efea",
       "revId": "6b80e87f9941fa94ec8f1bdf54f23fc21371ab94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
