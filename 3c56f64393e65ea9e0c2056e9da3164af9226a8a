@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e3b31a_9f180103",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T22:47:43Z",
+      "side": 1,
+      "message": "nit: This can be just v to reduce the diff.",
+      "range": {
+        "startLine": 468,
+        "startChar": 10,
+        "endLine": 468,
+        "endChar": 12
+      },
+      "revId": "3c56f64393e65ea9e0c2056e9da3164af9226a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad2cd8c4_05080e77",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8125,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T22:47:43Z",
+      "side": 1,
+      "message": "I think you meant \u0027uint64\u0027.",
+      "range": {
+        "startLine": 8125,
+        "startChar": 22,
+        "endLine": 8125,
+        "endChar": 31
+      },
+      "revId": "3c56f64393e65ea9e0c2056e9da3164af9226a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f746ea_c53da59f",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8239,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T22:47:43Z",
+      "side": 1,
+      "message": "Doesn\u0027t this reject lval when it\u0027s legally 0? I guess we can process \u0027--size\u0027 first then do the rest in \u0027if (cmd_cbi_is_uint64_field(tag)) ... else ...\u0027.",
+      "range": {
+        "startLine": 8239,
+        "startChar": 7,
+        "endLine": 8239,
+        "endChar": 11
+      },
+      "revId": "3c56f64393e65ea9e0c2056e9da3164af9226a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f481359d_d8060087",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8247,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-21T22:47:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 8247,
+        "startChar": 7,
+        "endLine": 8247,
+        "endChar": 10
+      },
+      "revId": "3c56f64393e65ea9e0c2056e9da3164af9226a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
