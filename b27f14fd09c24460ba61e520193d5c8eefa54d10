@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc68196_41ceab3d",
+        "filename": "include/init_rom.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T21:46:09Z",
+      "side": 1,
+      "message": "If we\u0027re going to exclude this, then platform/ec should also remove init_rom.o from the compile in common/build.mk\n    common-$(CONFIG_CHIP_INIT_ROM_REGION)+\u003dinit_rom.o",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "b27f14fd09c24460ba61e520193d5c8eefa54d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
