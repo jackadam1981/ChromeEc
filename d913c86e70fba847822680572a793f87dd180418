@@ -16,6 +16,24 @@
       "message": "FYI, there should be a periodic print (60sec) of the temp sensors in syslog already ... look for temp_logger\n",
       "revId": "d913c86e70fba847822680572a793f87dd180418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22d9da9f_7a066945",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-21T07:09:31Z",
+      "side": 1,
+      "message": "Thanks for the suggestion Todd. I couldn\u0027t find it in EC. Is it in FAFT test scripts?",
+      "parentUuid": "2225b07b_1db6ce48",
+      "revId": "d913c86e70fba847822680572a793f87dd180418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
