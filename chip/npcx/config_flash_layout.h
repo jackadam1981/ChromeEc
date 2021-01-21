@@ -91,19 +91,24 @@
 #endif
 
 /*
- * CONFIG_FLASH_ERASE_SIZE is set to maximum possible out of 64k, 32k and 4k
- * depending upon alignment of CONFIG_RO_SIZE. There are two assumptions here:
- * 1. CONFIG_RO_MEM_OFF is always 0 i.e. RO starts at 0.
- * 2. CONFIG_RO_SIZE and CONFIG_RW_SIZE are the same.
+ * CONFIG_FLASH_ERASE_SIZE is set to maximum possible out of 64k, 32k and 4k.
+ * The common flash code allows programming up to CONFIG_WP_STORAGE_SIZE
+ * size for the RO image and up to CONFIG_EC_WRITABLE_STORAGE_SIZE for the
+ * RW image.
  *
- * If above assumptions are not true, then additional checks would be required
- * to ensure that erase block size is selected based on the alignment of both
- * CONFIG_RO_SIZE and CONFIG_RW_SIZE and the offset of RO.
+ * Because CONFIG_WP_STORAGE_SIZE and CONFIG_EC_WRITABLE_STORAGE_SIZE are
+ * equal on NPCX, set the CONFIG_FLASH_ERASE_SIZE based on the
+ * CONFIG_WP_STORAGE_SIZE only.
  */
-#if ((CONFIG_RO_SIZE & (0x10000 - 1)) == 0)
+#if (CONFIG_WP_STORAGE_SIZE != CONFIG_EC_WRITABLE_STORAGE_SIZE)
+#error "NPCX flash support assumes CONFIG_WP_STORAGE_SIZE and " \
+	"CONFIG_EC_WRITABLE_STORAGE_SIZE are the same."
+#endif
+
+#if ((CONFIG_WP_STORAGE_SIZE & (0x10000 - 1)) == 0)
 #define CONFIG_FLASH_ERASE_SIZE	0x10000
 #define NPCX_ERASE_COMMAND		CMD_BLOCK_64K_ERASE
-#elif ((CONFIG_RO_SIZE & (0x8000 - 1)) == 0)
+#elif ((CONFIG_WP_STORAGE_SIZE & (0x8000 - 1)) == 0)
 #define CONFIG_FLASH_ERASE_SIZE	0x8000
 #define NPCX_ERASE_COMMAND		CMD_BLOCK_32K_ERASE
 #else
