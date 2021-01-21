@@ -183,6 +183,30 @@
       },
       "revId": "3e9980ed8fafc8037698044368344073babc09d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80fd6b6_38a4385b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-21T19:09:09Z",
+      "side": 1,
+      "message": "The update flow has two parts, 1. AP scan retimers during boot up, flow is suspend-\u003e...resume. 2. if user decides doing firmware update, AP will start the flow suspend-\u003e...-\u003eresume again. Yes, it\u0027s possible PD is suspended but AP has problem and couldn\u0027t tell EC to resume. To have recovery process, how about if EC receives Operation SUSPEND_PD, internally EC set the flag RETIMER_FW_UPDATE_START, and once receives resume, set the flag RETIMER_FW_UPDATE_END for EC can track timeout?",
+      "parentUuid": "212637de_9164adb2",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 63
+      },
+      "revId": "3e9980ed8fafc8037698044368344073babc09d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
