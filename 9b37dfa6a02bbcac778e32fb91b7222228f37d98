@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cacba510_16363419",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-01-21T14:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3eda78a_3c18dfc2",
+      "range": {
+        "startLine": 67,
+        "startChar": 17,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "9b37dfa6a02bbcac778e32fb91b7222228f37d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4aaab2f9_e3557946",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-21T01:40:49Z",
       "side": 1,
       "message": "print how many counts we did",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 32
+      },
+      "revId": "9b37dfa6a02bbcac778e32fb91b7222228f37d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9651bddb_f40e500e",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-01-21T14:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aaab2f9_e3557946",
       "range": {
         "startLine": 70,
         "startChar": 27,
