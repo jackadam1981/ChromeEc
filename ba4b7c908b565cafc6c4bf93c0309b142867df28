@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bcfbd2_431cf842",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T17:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced677d8_ca3d9f72",
+      "revId": "ba4b7c908b565cafc6c4bf93c0309b142867df28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77326f06_869ca449",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aaf1641_9cd72af7",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T17:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77326f06_869ca449",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "ba4b7c908b565cafc6c4bf93c0309b142867df28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7431bf1f_05aaa794",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-01-16T01:58:39Z",
       "side": 1,
       "message": "with STATIC_IF above, you can use IS_ENABLED here",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "ba4b7c908b565cafc6c4bf93c0309b142867df28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca5d707a_d2317f3c",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-21T17:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7431bf1f_05aaa794",
       "range": {
         "startLine": 41,
         "startChar": 0,
