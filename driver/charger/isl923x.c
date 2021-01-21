@@ -545,6 +545,9 @@ static void isl923x_init(int chgnum)
 	int precharge_voltage = bi->precharge_voltage ?
 		bi->precharge_voltage : bi->voltage_min;
 
+	if (system_jumped_late())
+		return;
+
 	if (IS_ENABLED(CONFIG_CHARGER_RAA489000)) {
 		if (CONFIG_CHARGER_SENSE_RESISTOR ==
 		    CONFIG_CHARGER_SENSE_RESISTOR_AC) {
@@ -742,7 +745,7 @@ static void isl923x_init(int chgnum)
 
 	return;
 init_fail:
-	CPRINTS("%s init failed!", CHARGER_NAME);
+	CPRINTS("%s:%d init failed!", CHARGER_NAME, chgnum);
 }
 
 static enum ec_error_list isl923x_discharge_on_ac(int chgnum, int enable)
