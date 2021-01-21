@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc9ac694_197a70f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1476372
+      },
+      "writtenOn": "2021-01-21T07:49:21Z",
+      "side": 1,
+      "message": "There is a bug while transition window is too low in RT1715.\nSo transition window is set as 46.67us.\nWith 7 counts in 46.67us, there is no compliance issue with USB testers and other devices so far.",
+      "parentUuid": "03fb4993_d589ee39",
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00f128be_e073c2fe",
