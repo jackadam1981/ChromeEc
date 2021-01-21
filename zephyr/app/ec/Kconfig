@@ -17,6 +17,13 @@ if CROS_EC
 
 rsource "soc/Kconfig"
 
+config CROS_EC_CRASH_HANDLER
+	bool "Enable crash handler"
+	default y
+	help
+	  Enabling this option will print a helpful error message to
+	  the console when the system encounters a fatal error.
+
 choice
 	prompt "Chromium OS EC firmware section"
 

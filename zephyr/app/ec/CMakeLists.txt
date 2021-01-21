@@ -5,3 +5,5 @@
 if(NOT DEFINED CONFIG_ZTEST)
     target_sources(app PRIVATE main.c)
 endif()
+
+zephyr_sources_ifdef(CONFIG_CROS_EC_CRASH_HANDLER crash_handler.c)
