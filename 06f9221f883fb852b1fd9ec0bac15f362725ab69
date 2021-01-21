@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f68bbb8c_afab7954",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-21T13:57:27Z",
+      "side": 1,
+      "message": "the condition check is moved to above, return is required",
+      "parentUuid": "47af4b3b_c5686382",
+      "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f8edfff_2a0a04a0",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 4
