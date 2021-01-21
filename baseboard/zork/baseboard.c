@@ -246,11 +246,14 @@ __overridable int check_hdmi_hpd_status(void)
 	return 1;
 }
 
-void sbu_fault_interrupt(enum ioex_signal signal)
+void sbu_fault_c0_interrupt(enum ioex_signal signal)
 {
-	int port = (signal == IOEX_USB_C0_SBU_FAULT_ODL) ? 0 : 1;
+	pd_handle_overcurrent(0);
+}
 
-	pd_handle_overcurrent(port);
+void sbu_fault_c1_interrupt(enum ioex_signal signal)
+{
+	pd_handle_overcurrent(1);
 }
 
 static void set_ac_prochot(void)
