@@ -16,6 +16,41 @@
       "message": "This includes https://crrev.com/c/2576140, which appears to have broken util/ec3p0/run_tests.sh. I gather that this is just a question of log formatting, but I\u0027d be open to holding off on merging until that\u0027s resolved.",
       "revId": "6b10790e42afbac9e39118e9c362edd64bf4d3c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f55d2641_254612c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T20:15:51Z",
+      "side": 1,
+      "message": "Added Ruben for his take on the ec3p0 regression.",
+      "revId": "6b10790e42afbac9e39118e9c362edd64bf4d3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd6e3ec_e8d061ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T20:15:51Z",
+      "side": 1,
+      "message": "Ruben - will the ec3p0 change break any FAFT tests?",
+      "parentUuid": "7cb918ab_43f24643",
+      "revId": "6b10790e42afbac9e39118e9c362edd64bf4d3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
