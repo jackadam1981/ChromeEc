@@ -16,6 +16,23 @@
       "message": "i\u0027ll +2 after nuvoton has had a chance to review.",
       "revId": "fc22ceb2685f804059b47394653c32962b93fa03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce69462_a0823f42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-01-21T05:56:11Z",
+      "side": 1,
+      "message": "The original CL:2417788 is to resolve the issue in b:158052612. This CL seems have the issue occur again:\n\u003e\u003e\u003e\ndump_fmap -hh build/delbin/ec.bin\nERROR: EC_RO and EC_RW overlap\n  EC_RO: 0 - 0x40040\n  EC_RW: 0x40000 - 0x80000\nERROR: FR_MAIN and EC_RW overlap\n  FR_MAIN: 0x40 - 0x40040\n  EC_RW: 0x40000 - 0x80000\nERROR: WP_RO and FR_MAIN overlap\n\u003e\u003e\u003e\nIf the granularity of CONFIG_RO_SIZE is significant to the erase time and make this CL necessary.\nAn simpler bypass for the issue above is to separate the setting of the EC_RO and FR_MIAN region size in comman/fmap.c and guarded by NPCX chip variant.\nEx: \n/* For EC_RO */\n#if defined(CHIP_VARIANT_NPCX7M7FC) || defined(CHIP_VARIANT_NPCX7M7WC)\n.area_size \u003d CONFIG_RO_SIZE,\n#else \n.area_size \u003d CONFIG_RO_SIZE + CONFIG_RO_STORAGE_OFF,\n#endif\n/* For FR_MAIN */\n#if defined(CHIP_VARIANT_NPCX7M7FC) || defined(CHIP_VARIANT_NPCX7M7WC)\n.area_size \u003d CONFIG_RO_SIZE - CONFIG_RO_STORAGE_OFF,\n#else \n.area_size \u003d CONFIG_RO_SIZE,\n#endif\nWhat do you think?",
+      "revId": "fc22ceb2685f804059b47394653c32962b93fa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
