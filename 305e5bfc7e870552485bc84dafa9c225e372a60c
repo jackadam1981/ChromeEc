@@ -117,6 +117,213 @@
       },
       "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d0b5ced_8533ed2e",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T00:00:38Z",
+      "side": 1,
+      "message": "The help description for all these options need a longer description.  I realize that the descriptions current descriptions in platform/ec/config.h are short, but we\u0027re trying improve this as we migrate to Zephyr.\n\nThis should be rejected by the pre-upload check.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/README.md#submitting-changes",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 75
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "931453f6_2975f61d",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T00:00:38Z",
+      "side": 1,
+      "message": "This option needs to be outside if PLATFORM_EC_ACCEL_FIFO.  This option is only dependent on MOTIONSENSE.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503637eb_e1303bd6",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T00:00:38Z",
+      "side": 1,
+      "message": "Avoid using \"Enable\" at start of every KConfig option.  See the main KConfig for examples.\n\nHere this could be \"Extra Sensor Timestamps\".",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 16
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c49d4dc_5eb0a04b",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T00:00:38Z",
+      "side": 1,
+      "message": "Include all the comment text found in config.h for CONFIG_SENSOR_TIGHT_TIMESTAMPS here.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 72
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569d1057_01b7fb61",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T00:00:38Z",
+      "side": 1,
+      "message": "Spell out the acronym the first time it is used.",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bbdcdb6_56843501",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T00:00:38Z",
+      "side": 1,
+      "message": "More detail needed.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 28
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d49b086_87368d0d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T00:00:38Z",
+      "side": 1,
+      "message": "This should be outside the #ifdef CONFIG_PLATFORM_EC_ACCEL_FIFO, grouped with #undef CONFIG_ACCEL_FIFO.",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 29
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3671c75c_3a7492b7",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T00:00:38Z",
+      "side": 1,
+      "message": "Also move next to #undef CONFIG_ACCEL_FIFO",
+      "range": {
+        "startLine": 606,
+        "startChar": 0,
+        "endLine": 606,
+        "endChar": 30
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d7d7f7_10e9901a",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-21T00:00:38Z",
+      "side": 1,
+      "message": "Move outside #if CONFIG_PLATFORM_EC_ACCEL_FIFO.",
+      "range": {
+        "startLine": 609,
+        "startChar": 0,
+        "endLine": 612,
+        "endChar": 6
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
