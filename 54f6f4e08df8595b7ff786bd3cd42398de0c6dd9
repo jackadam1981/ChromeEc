@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f55d158_77712fb3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-21T23:19:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bddee832_77ae92de",
+      "range": {
+        "startLine": 446,
+        "startChar": 6,
+        "endLine": 446,
+        "endChar": 8
+      },
+      "revId": "54f6f4e08df8595b7ff786bd3cd42398de0c6dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bfef022_a2a87828",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb392091_aeba3f72",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-21T23:19:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6bfef022_a2a87828",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 63
+      },
+      "revId": "54f6f4e08df8595b7ff786bd3cd42398de0c6dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "252aa74b_a52fef3c",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-20T13:07:51Z",
       "side": 1,
       "message": "Running checkpatch.pl script with --strict option gives the following CHECKs. Please consider fixing these.\n\nCHECK: Macro argument \u0027x\u0027 may be better as \u0027(x)\u0027 to avoid precedence issues\n#68: FILE: include/linux/platform_data/cros_ec_commands.h:415:\n+#define EC_ACPI_MEM_BB_RETIMER_PORT(x)   (x \u0026 0x0f)\n\nCHECK: Macro argument \u0027x\u0027 may be better as \u0027(x)\u0027 to avoid precedence issues\n#69: FILE: include/linux/platform_data/cros_ec_commands.h:416:\n+#define EC_ACPI_MEM_BB_RETIMER_OP(x) \\\n+\t((x \u0026 0xf0) \u003e\u003e BB_RETIMER_FW_UPDATE_OP_SHIFT)",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 46
+      },
+      "revId": "54f6f4e08df8595b7ff786bd3cd42398de0c6dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e245022_8eb5b27c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-21T23:19:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "252aa74b_a52fef3c",
       "range": {
         "startLine": 470,
         "startChar": 0,

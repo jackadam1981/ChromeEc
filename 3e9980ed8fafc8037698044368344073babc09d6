@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0696e4a5_02b9e6cf",
+        "filename": "board/volteer/usbc_config.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-21T23:19:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "75ee4696_5c0ae379",
+      "range": {
+        "startLine": 246,
+        "startChar": 9,
+        "endLine": 246,
+        "endChar": 13
+      },
+      "revId": "3e9980ed8fafc8037698044368344073babc09d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dc58b7b_d295a2ef",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5460f6bf_19dcade9",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-21T23:19:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9dc58b7b_d295a2ef",
+      "range": {
+        "startLine": 405,
+        "startChar": 8,
+        "endLine": 405,
+        "endChar": 12
+      },
+      "revId": "3e9980ed8fafc8037698044368344073babc09d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0da2567a_8db2c917",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-21T15:04:52Z",
       "side": 1,
       "message": "See the comment in ec_commands.h.\n\nThe naming convention is not consistent here.  The file is called \"usb_retimer\", but all the functions are \"bb_retimer\".  I think you should go with \"usb_retimer\", as this module only interfaces with the usb_mux layer and not with the bb_retimer driver directly.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 35
+      },
+      "revId": "3e9980ed8fafc8037698044368344073babc09d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16b127f6_0c898c9c",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-21T23:19:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0da2567a_8db2c917",
       "range": {
         "startLine": 42,
         "startChar": 4,
@@ -116,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2a5faa_b0cc6fa2",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-21T23:19:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc4cc4ef_959581f9",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 61
+      },
+      "revId": "3e9980ed8fafc8037698044368344073babc09d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80eba458_5f36bcf1",
@@ -152,6 +248,30 @@
       "writtenOn": "2021-01-21T15:04:52Z",
       "side": 1,
       "message": "Even if this is only going to support BB for now, lets make the naming more generic so this ACPI hook could be used for other retimers in the future.  I suggest replacing \"BB_RETIMER\" with \"USB_RETIMER\" throughout.",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 45
+      },
+      "revId": "3e9980ed8fafc8037698044368344073babc09d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "927263bd_50fafb1e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-21T23:19:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "30d4acc3_877f37cf",
       "range": {
         "startLine": 457,
         "startChar": 0,
