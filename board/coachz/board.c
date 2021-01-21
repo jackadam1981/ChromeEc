@@ -472,6 +472,21 @@ static void board_chipset_resume(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
+static void pchg_reinitialize(void)
+{
+	struct pchg *ctx;
+
+	ctx = &pchgs[0];
+	ctx->state = PCHG_STATE_RESET;
+	ctx->event = PCHG_EVENT_INITIALIZE;
+	mutex_lock(&ctx->mtx);
+	if (queue_add_unit(&ctx->events, &ctx->event) == 0)
+		CPRINTS("ERR: Queue is full");
+	mutex_unlock(&ctx->mtx);
+	task_wake(TASK_ID_PCHG);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pchg_reinitialize, HOOK_PRIO_DEFAULT);
+
 void board_set_switchcap_power(int enable)
 {
 	gpio_set_level(GPIO_SWITCHCAP_ON, enable);
