@@ -390,6 +390,10 @@ static int board_ps8743_mux_set(const struct usb_mux *me,
 	int rv = EC_SUCCESS;
 	int reg = 0;
 
+#if 0
+	ps8743_write(me, PS8743_REG_HS_DET_THRESHOLD,
+			 PS8743_USB_HS_THRESH_NEG_45);
+#endif
 	rv = ps8743_read(me, PS8743_REG_MODE, &reg);
 	if (rv)
 		return rv;
@@ -430,10 +434,16 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 
 void board_usb_mux_init(void)
 {
-	if (board_get_sub_board() == SUB_BOARD_TYPEC)
+	if (board_get_sub_board() == SUB_BOARD_TYPEC) {
 		ps8743_tune_usb_eq(&usb_muxes[1],
 				   PS8743_USB_EQ_TX_12_8_DB,
 				   PS8743_USB_EQ_RX_12_8_DB);
+#ifdef BOARD_HAYATO
+		ps8743_write(&usb_muxes[1],
+			     PS8743_REG_HS_DET_THRESHOLD,
+			     PS8743_USB_HS_THRESH_NEG_45);
+#endif
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);
 
