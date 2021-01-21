@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3220b88c_893e7421",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T07:11:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "add173d3_b822165e",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33523523_cf3195ef",
@@ -142,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ecf15ab_e0a3f7cc",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T07:11:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d0b5ced_8533ed2e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 75
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "931453f6_2975f61d",
@@ -155,6 +203,30 @@
       "writtenOn": "2021-01-21T00:00:38Z",
       "side": 1,
       "message": "This option needs to be outside if PLATFORM_EC_ACCEL_FIFO.  This option is only dependent on MOTIONSENSE.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35edb191_7f98b5fe",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T07:11:36Z",
+      "side": 1,
+      "message": "Hm.... I did some EC work on ISH more than a year ago but this is my first time looking into sensor task. When I checked the source code, TIGHT_TIMESTAMP is only valid when FIFO is enabled. I even checked Linux code and found Linux also uses this feature only when FIFO is enabled.\n\nMaybe I missed something? Since you\u0027re the expert, I\u0027ll move out.",
+      "parentUuid": "931453f6_2975f61d",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -188,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b329974b_98de0b96",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T07:11:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "503637eb_e1303bd6",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 16
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c49d4dc_5eb0a04b",
@@ -201,6 +297,30 @@
       "writtenOn": "2021-01-21T00:00:38Z",
       "side": 1,
       "message": "Include all the comment text found in config.h for CONFIG_SENSOR_TIGHT_TIMESTAMPS here.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 72
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff87be7_2be02074",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T07:11:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c49d4dc_5eb0a04b",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -234,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55add56_8ab3ffd6",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T07:11:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "569d1057_01b7fb61",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bbdcdb6_56843501",
@@ -247,6 +391,30 @@
       "writtenOn": "2021-01-21T00:00:38Z",
       "side": 1,
       "message": "More detail needed.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 28
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89e8c85_e5b4c147",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T07:11:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9bbdcdb6_56843501",
       "range": {
         "startLine": 131,
         "startChar": 0,
@@ -280,6 +448,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b3ab2cb_75c6c1d6",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T07:11:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d49b086_87368d0d",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 29
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3671c75c_3a7492b7",
@@ -303,6 +495,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fbb2834_e9b60733",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T07:11:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3671c75c_3a7492b7",
+      "range": {
+        "startLine": 606,
+        "startChar": 0,
+        "endLine": 606,
+        "endChar": 30
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3d7d7f7_10e9901a",
@@ -316,6 +532,30 @@
       "writtenOn": "2021-01-21T00:00:38Z",
       "side": 1,
       "message": "Move outside #if CONFIG_PLATFORM_EC_ACCEL_FIFO.",
+      "range": {
+        "startLine": 609,
+        "startChar": 0,
+        "endLine": 612,
+        "endChar": 6
+      },
+      "revId": "305e5bfc7e870552485bc84dafa9c225e372a60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d38a703_5397165c",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-21T07:11:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3d7d7f7_10e9901a",
       "range": {
         "startLine": 609,
         "startChar": 0,
