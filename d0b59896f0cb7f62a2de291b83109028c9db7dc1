@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72c426ba_dd7fef09",
+        "filename": "board/madoo/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2021-01-21T01:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf5bb34b_e75ab257",
+      "revId": "d0b59896f0cb7f62a2de291b83109028c9db7dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "915bd2f9_cb0ad27a",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-01-20T19:53:21Z",
       "side": 1,
       "message": "nit: could be useful to note what values these represent for documentation",
+      "revId": "d0b59896f0cb7f62a2de291b83109028c9db7dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be148894_6182e7f2",
+        "filename": "board/madoo/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2021-01-21T01:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "915bd2f9_cb0ad27a",
       "revId": "d0b59896f0cb7f62a2de291b83109028c9db7dc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
