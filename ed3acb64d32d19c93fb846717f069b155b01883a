@@ -159,6 +159,30 @@
       },
       "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "919107c9_5e3f2e6a",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-21T05:05:37Z",
+      "side": 1,
+      "message": "ACK\nAh..! bit clear would have been more explicit\n\nMCHP_VBAT_CE \u0026\u003d ~(MCHP_VBAT_CE_32K_DOMAIN_32KHZ_IN_PIN | MCHP_VBAT_CE_ALWAYS_ON_32K_SRC_CRYSTAL)",
+      "parentUuid": "a2ad3823_c61bd6a5",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
