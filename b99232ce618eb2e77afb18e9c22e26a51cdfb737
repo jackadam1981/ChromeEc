@@ -22,6 +22,30 @@
       },
       "revId": "b99232ce618eb2e77afb18e9c22e26a51cdfb737",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a84eef_affeec39",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-21T19:41:04Z",
+      "side": 1,
+      "message": "Commented in other CL. I want to be explicit about which of the two UARTs we are using on the FPMCU dev boards. On one of the boards only one of them can be used for flashing. It\u0027s really hard to debug when it\u0027s not clear which one is being used.",
+      "parentUuid": "46537b5b_8ce31bf2",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 731,
+        "endChar": 1
+      },
+      "revId": "b99232ce618eb2e77afb18e9c22e26a51cdfb737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
