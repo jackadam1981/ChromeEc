@@ -221,23 +221,17 @@ static inline void pd_set_host_mode(int port, int enable)
 
 	if (enable) {
 		/*
-		 * Servo_v4 in SRC mode acts as a DTS (debug test
-		 * accessory) and needs to present Rp on both CC
-		 * lines. In order to support orientation detection, and
-		 * advertise the correct TypeC current level, the
-		 * values of Rp1/Rp2 need to asymmetric with Rp1 > Rp2. This
-		 * function is called without a specified Rp value so assume the
-		 * servo_v4 default of USB level current. If a higher current
-		 * can be supported, then the Rp value will get adjusted when
-		 * VBUS is enabled.
+		 * Servo v4.1 (by default) acts as a DTS (debug test accessory)
+		 * and needs to present Rp on both CC lines.
+		 *
+		 * In order to support orientation detection, and advertise the
+		 * correct TypeC current level, the values of Rp1/Rp2 need to
+		 * be asymmetric with Rp1 > Rp2.
 		 */
-		pd_set_rp_rd(port, TYPEC_CC_RP, TYPEC_RP_USB);
-
-		gpio_set_flags(GPIO_USB_DUT_CC1_TX_DATA, GPIO_INPUT);
-		gpio_set_flags(GPIO_USB_DUT_CC2_TX_DATA, GPIO_INPUT);
+		pd_set_rp_rd(port, TYPEC_CC_RP, CONFIG_USB_PD_PULLUP);
 	} else {
-		/* Select Rd, the Rp value is a don't care */
-		pd_set_rp_rd(port, TYPEC_CC_RD, TYPEC_RP_RESERVED);
+		/* Select Rd */
+		pd_set_rp_rd(port, TYPEC_CC_RD, CONFIG_USB_PD_PULLUP);
 	}
 }
 
