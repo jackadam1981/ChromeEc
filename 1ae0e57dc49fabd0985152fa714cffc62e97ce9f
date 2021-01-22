@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c93cd4e1_d6f5baec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-01-22T03:18:33Z",
+      "side": 1,
+      "message": "The sensors is powered by pp1800_sensors which is powered by EN_EC_PWR (GPIO85). I think the sensors would be powered while the EC is powered.",
+      "parentUuid": "27ebc3c0_1975e17a",
+      "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "33ee8bcc_af05cd03",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-22T01:32:55Z",
       "side": 1,
       "message": "Once again, I would preferred the detection not to be based on scanning the i2c bus but on EC retrieving board revision/rom configuration to know which sensors are present. See https://buganizer.corp.google.com/issues/175663607#comment9.",
+      "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fc499f_8dd0cd92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-01-22T03:18:33Z",
+      "side": 1,
+      "message": "Lazor doesn\u0027t have CBI so it needs to detect by scanning the i2c bus.",
+      "parentUuid": "33ee8bcc_af05cd03",
       "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "217abba5_cf570c33",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-01-22T03:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339f2f8d_2d631cb6",
+      "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "504e5dda_50cdd92f",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-01-22T01:32:55Z",
       "side": 1,
       "message": "If the accelerometer is powered up at S5, active_mask should be SENSOR_ACTIVE_S0_S3_S5.",
+      "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf12975_dffdd414",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-01-22T03:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "504e5dda_50cdd92f",
       "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a63798_34d17d58",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-01-22T03:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1799b750_2541811e",
+      "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c03aadbd_b0479275",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-01-22T01:32:55Z",
       "side": 1,
       "message": "If the accelerometer is powered up at S5, active_mask should be SENSOR_ACTIVE_S0_S3_S5.",
+      "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "311ee93d_d07ac6a9",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-01-22T03:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c03aadbd_b0479275",
       "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a754c6d_c43fe8e7",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-01-22T03:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70f9990f_7e781489",
+      "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52bb1a9d_55a90191",
@@ -133,6 +259,24 @@
       "writtenOn": "2021-01-22T01:32:55Z",
       "side": 1,
       "message": "not needed. We only expect ICM or BMI sensors. If the sensor does not respond, it is not different from \"Detection fail\".",
+      "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3081aef7_510f8575",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-01-22T03:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52bb1a9d_55a90191",
       "revId": "1ae0e57dc49fabd0985152fa714cffc62e97ce9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
