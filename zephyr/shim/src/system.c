@@ -10,6 +10,7 @@
 #include "chipset.h"
 #include "config.h"
 #include "ec_commands.h"
+#include "panic.h"
 #include "sysjump.h"
 #include "system.h"
 
@@ -50,12 +51,6 @@ static uint32_t reset_flags;
 static bool jumped_to_image;
 
 /* static void jump_to_image */
-
-/* TODO(b/171407461) implement components/panic */
-static uintptr_t get_panic_data_start(void)
-{
-	return 0;
-}
 
 void system_common_pre_init(void)
 {
@@ -282,4 +277,27 @@ int system_is_in_rw(void)
 {
 	/* Return true for now, since that makes more things work */
 	return true;
+}
+
+void panic_printf(const char *format, ...)
+{
+	va_list args;
+
+	va_start(args, format);
+	vprintf(format, args);
+	va_end(args);
+
+	cflush();
+}
+
+void panic_data_print(const struct panic_data *pdata)
+{
+	const uint32_t *lregs = pdata->cm.regs;
+	const uint32_t *sregs = NULL;
+	bool in_handler = false;
+
+	/* TODO(b/178236610): Implement this fully */
+	panic_printf("\n=== %s EXCEPTION: %02x ====== xPSR: %08x ===\n",
+		     in_handler ? "HANDLER" : "PROCESS",
+		     lregs[1] & 0xff, sregs ? sregs[7] : -1);
 }

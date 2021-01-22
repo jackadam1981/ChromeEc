@@ -736,4 +736,32 @@ enum battery_type {
 #define CONFIG_HOSTCMD_RTC
 #endif
 
+#undef CONFIG_COMMON_PANIC_OUTPUT
+#ifdef CONFIG_PLATFORM_EC_PANIC_OUTPUT
+#define CONFIG_COMMON_PANIC_OUTPUT
+
+/* Define this since we don't have the direct UART interface at present */
+#define CONFIG_DEBUG_PRINTF
+
+/* These are needed by the panic code. Perhaps define them always? */
+#define CONFIG_RAM_BASE		CONFIG_CROS_EC_RAM_BASE
+#define CONFIG_RAM_SIZE		CONFIG_CROS_EC_RAM_SIZE
+#endif
+
+#undef CONFIG_SOFTWARE_PANIC
+#ifdef CONFIG_PLATFORM_EC_SOFTWARE_PANIC
+#define CONFIG_SOFTWARE_PANIC
+#endif
+
+#undef CONFIG_CMD_CRASH
+#ifdef CONFIG_PLATFORM_EC_CONSOLE_CMD_CRASH
+#define CONFIG_CMD_CRASH
+#endif
+
+#undef CONFIG_CMD_STACKOVERFLOW
+#ifdef CONFIG_PLATFORM_EC_STACKOVERFLOW
+#define CONFIG_CMD_STACKOVERFLOW
+#endif
+
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */

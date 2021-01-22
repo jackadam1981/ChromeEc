@@ -5,7 +5,9 @@
 
 #include "common.h"
 #include "console.h"
+#ifndef CONFIG_ZEPHYR
 #include "cpu.h"
+#endif
 #include "hooks.h"
 #include "host_command.h"
 #include "panic.h"
@@ -354,7 +356,7 @@ DECLARE_CONSOLE_COMMAND(crash, command_crash,
 #endif
 			" | unaligned | watchdog | hang]",
 		"Crash the system (for testing)");
-#endif
+#endif /* CONFIG_CMD_CRASH */
 
 static int command_panicinfo(int argc, char **argv)
 {
