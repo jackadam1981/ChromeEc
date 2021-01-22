@@ -62,13 +62,28 @@
 #define GPIO_WP_L			GPIO_EC_WP_L
 
 /* Host communication */
+#define CONFIG_HOSTCMD_ESPI
+#define GPIO_EC_INT_L		GPIO_EC_SOC_INT_L
 
 /* Chipset config */
 #define CONFIG_CHIPSET_STONEY
 #define CONFIG_CHIPSET_CAN_THROTTLE
 #define CONFIG_CHIPSET_RESET_HOOK
 
-/* Common Keyboard Defines */
+/* Keyboard Config */
+#define CONFIG_8042_AUX
+#define CONFIG_CMD_PS2
+#define CONFIG_KEYBOARD_BACKLIGHT
+#define CONFIG_KEYBOARD_BOARD_CONFIG
+#define CONFIG_KEYBOARD_COL2_INVERTED
+#define CONFIG_KEYBOARD_PROTOCOL_8042
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT
+#define CONFIG_PS2
+#define CONFIG_PWM
+#define CONFIG_PWM_KBLIGHT
+#define GPIO_KBD_KSO2		GPIO_EC_KSO_02_INV
+#undef  CONFIG_KEYBOARD_VIVALDI
 
 /* Sensors */
 #define CONFIG_TABLET_MODE
@@ -266,6 +281,14 @@ enum temp_sensor_id {
 enum battery_type {
 	BATTERY_AP18F4M,
 	BATTERY_TYPE_COUNT,
+};
+
+/* PWM Channels */
+enum pwm_channel {
+	PWM_CH_LID_LED = 0,
+	PWM_CH_FAN,
+	PWM_CH_KBLIGHT,
+	PWM_CH_COUNT
 };
 
 /* Common definition for the USB PD interrupt handlers. */
