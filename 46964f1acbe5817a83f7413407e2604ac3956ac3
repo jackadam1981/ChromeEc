@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31039390_dc2322c8",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-22T22:07:56Z",
+      "side": 1,
+      "message": "I was in the process of adding it to zephyr/CMakeLists.txt, but it\u0027s already there unconditionally, see lines 56-57 in ToT",
+      "parentUuid": "8c4bd820_fa98deba",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "46964f1acbe5817a83f7413407e2604ac3956ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67418fe7_65fa3f7d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-22T22:02:20Z",
       "side": 1,
       "message": "also automatic",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "46964f1acbe5817a83f7413407e2604ac3956ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d812156f_bb279001",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-22T22:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67418fe7_65fa3f7d",
       "range": {
         "startLine": 18,
         "startChar": 0,
