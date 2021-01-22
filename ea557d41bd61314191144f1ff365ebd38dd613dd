@@ -16,6 +16,23 @@
       "message": "With this patch - After giving the exit mode command from AP, I see the Enter TBT command(without giving the enter mode command from the AP console) but I see the 2nd enumeration come up fine.\n\n**Both the parent and this patch is required for enumeration.",
       "revId": "ea557d41bd61314191144f1ff365ebd38dd613dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0505c831_6e4fc6a4",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-22T06:28:28Z",
+      "side": 1,
+      "message": "Need to add usb_mux.h?",
+      "revId": "ea557d41bd61314191144f1ff365ebd38dd613dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
