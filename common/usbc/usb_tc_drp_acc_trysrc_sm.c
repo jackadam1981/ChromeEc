@@ -2137,6 +2137,7 @@ static void tc_unattached_snk_run(const int port)
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&
 	    drp_state[port] == PD_DRP_TOGGLE_ON &&
 	    tcpm_auto_toggle_supported(port)) {
+		host_set_single_event(EC_HOST_EVENT_PD_MCU);
 		set_state_tc(port, TC_DRP_AUTO_TOGGLE);
 	} else if (drp_state[port] == PD_DRP_TOGGLE_ON) {
 		/* DRP Toggle. The timer was checked above. */
