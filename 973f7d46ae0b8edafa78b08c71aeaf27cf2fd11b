@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28af0454_45f72c47",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-22T13:39:52Z",
+      "side": 1,
+      "message": "This code in current form will need to be slightly modified anyway - see b/178125550. Still we need to move port initialisation here.\n\nThe idea is to move USB ports power mgmt from STM to host hub. This host hub needs some time (currently set to 3s) to get I2C interface running. That\u0027s why I put this in the deferred function.",
+      "parentUuid": "6e749ad9_34dafa15",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 0
+      },
+      "revId": "973f7d46ae0b8edafa78b08c71aeaf27cf2fd11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "469c09c0_22f3024e",
         "filename": "board/servo_v4p1/ioexpanders.c",
         "patchSetId": 6
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02618cec_304e5003",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-22T13:39:52Z",
+      "side": 1,
+      "message": "As in above comment - for REV2 and later revision, there is a plan to allow for the host hub to manage usb_pwr. We need to distinguish between STM (which I\u0027m naming here as EC - at the end of the day it is runnning ECOS..:)) and HostHub playing with USB power.",
+      "parentUuid": "469c09c0_22f3024e",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 21
+      },
+      "revId": "973f7d46ae0b8edafa78b08c71aeaf27cf2fd11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acfe5a5d_155a22b1",
         "filename": "board/servo_v4p1/ioexpanders.c",
         "patchSetId": 6
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-22T03:19:48Z",
       "side": 1,
       "message": "Instead of renaming these, what do you think about dispatching accordingly based upon the board ID?",
+      "range": {
+        "startLine": 256,
+        "startChar": 11,
+        "endLine": 256,
+        "endChar": 14
+      },
+      "revId": "973f7d46ae0b8edafa78b08c71aeaf27cf2fd11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d2e74f_1eac260f",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-01-22T13:39:52Z",
+      "side": 1,
+      "message": "The issue is that for REV2 we will have hardware which supports both STM and HostHub to manage port power. Even though we will go with default option of HH configuring this, some time later we may want to switch to STM. That\u0027s why I would like to keep these methods.",
+      "parentUuid": "acfe5a5d_155a22b1",
       "range": {
         "startLine": 256,
         "startChar": 11,
