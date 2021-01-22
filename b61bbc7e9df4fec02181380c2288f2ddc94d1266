@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8ec78c3c_1cf5af12",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-22T18:05:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "033d5613_2bf4a637",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 20
+      },
+      "revId": "b61bbc7e9df4fec02181380c2288f2ddc94d1266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bc342849_6a4c1bbf",
         "filename": "zephyr/Kconfig",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-22T17:24:23Z",
       "side": 1,
       "message": "gee do we still do this? OK",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 69
+      },
+      "revId": "b61bbc7e9df4fec02181380c2288f2ddc94d1266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aecc83b_8ca02ad2",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-22T18:05:57Z",
+      "side": 1,
+      "message": "I\u0027m not sure we do, but it seems better to have it so the code is built.",
+      "parentUuid": "bc342849_6a4c1bbf",
       "range": {
         "startLine": 102,
         "startChar": 0,
