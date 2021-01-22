@@ -96,6 +96,11 @@ void dpm_set_mode_exit_request(int port)
 	DPM_SET_FLAG(port, DPM_FLAG_EXIT_REQUEST);
 }
 
+bool dpm_is_mode_exit_request(int port)
+{
+	return !!(dpm[port].flags & DPM_FLAG_EXIT_REQUEST);
+}
+
 static void dpm_clear_mode_exit_request(int port)
 {
 	DPM_CLR_FLAG(port, DPM_FLAG_EXIT_REQUEST);
