@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c8cc37_de668b36",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-22T16:04:34Z",
+      "side": 1,
+      "message": "metaknight",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "53cfc85670bfd11a2b319b6a08322a9ddb503736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "615a25f9_0b54c1b6",
+        "filename": "board/metaknight/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-22T16:04:34Z",
+      "side": 1,
+      "message": "nit: if metaknight isn\u0027t using the sub-board i2c lines at all, you may consider cleaning up the GPIO definitions and board init to just represent the DB configuration that\u0027s being used.",
+      "revId": "53cfc85670bfd11a2b319b6a08322a9ddb503736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
