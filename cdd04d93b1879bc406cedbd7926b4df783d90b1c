@@ -22,6 +22,30 @@
       },
       "revId": "cdd04d93b1879bc406cedbd7926b4df783d90b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "084c5baa_82cb0b9a",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8236,
+      "author": {
+        "id": 1311438
+      },
+      "writtenOn": "2021-01-22T05:58:25Z",
+      "side": 1,
+      "message": "This looks more clean. Though the max rework_id size is 8 bytes, it still accepts data of less size anywhere from 1 to 8 bytes based on the list of reworks the board underwent. Hence added the condition this way.\nI have updated the patch, please let me know if it looks good.",
+      "parentUuid": "16464086_c793cfd0",
+      "range": {
+        "startLine": 8224,
+        "startChar": 0,
+        "endLine": 8236,
+        "endChar": 4
+      },
+      "revId": "cdd04d93b1879bc406cedbd7926b4df783d90b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
