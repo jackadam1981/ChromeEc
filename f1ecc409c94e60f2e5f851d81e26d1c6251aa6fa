@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08b3ddc_31c373ba",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-22T21:58:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95e9cadb_f27c3d8f",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "f1ecc409c94e60f2e5f851d81e26d1c6251aa6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aedb63f5_6e65b00a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30b0b650_6f23a1e3",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-22T21:58:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aedb63f5_6e65b00a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "f1ecc409c94e60f2e5f851d81e26d1c6251aa6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2c468ab_843ba69b",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-22T21:53:28Z",
       "side": 1,
       "message": "missing line terminator according to gerrit",
+      "range": {
+        "startLine": 31,
+        "startChar": 31,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "f1ecc409c94e60f2e5f851d81e26d1c6251aa6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff471ee5_c9195f99",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-22T21:58:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2c468ab_843ba69b",
       "range": {
         "startLine": 31,
         "startChar": 31,
