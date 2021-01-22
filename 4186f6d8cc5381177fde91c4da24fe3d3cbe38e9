@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "036fd488_728fa6e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-22T17:36:16Z",
+      "side": 1,
+      "message": "Can this CL and the other MKBP thing be in a separate stack from the sensor ones?\n\nIt might go in faster",
+      "revId": "4186f6d8cc5381177fde91c4da24fe3d3cbe38e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35099102_3c6ce56b",
