@@ -22,6 +22,30 @@
       },
       "revId": "e67f0cd7000d82b1818a3a60b2cef66f629c77fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2005773_2b0ebeab",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-01-22T20:06:10Z",
+      "side": 1,
+      "message": "The TUSB1064 may be configured either via hardware pin straps, or software register setting.\n\nIn ServoV4p1, the chip is left in hardware-managed floating mode. This code was intended to remove that ambiguity and place the chip in a software-known state explicitly. Not just at boot, but at any re-init.\n\nI agree this could be split into a separate call if a hypothetical hardware engineer resistor straps the pins to another value intentionally, and ignores the software. However -- HW changes still requires SW review; SW changes may be HW agnostic (or infeasible to review).\n\nI defer to more experienced bringup and maintenance experts regarding proper approach.",
+      "parentUuid": "97220247_e9a34aea",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 58
+      },
+      "revId": "e67f0cd7000d82b1818a3a60b2cef66f629c77fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
