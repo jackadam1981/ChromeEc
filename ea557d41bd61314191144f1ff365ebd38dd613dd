@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbdb1650_2bffcdb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-22T04:56:35Z",
+      "side": 1,
+      "message": "With this patch - After giving the exit mode command from AP, I see the Enter TBT command(without giving the enter mode command from the AP console) but I see the 2nd enumeration come up fine.\n\n**Both the parent and this patch is required for enumeration.",
+      "revId": "ea557d41bd61314191144f1ff365ebd38dd613dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
