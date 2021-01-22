@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dddaf34_85b77cab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-22T08:49:56Z",
+      "side": 1,
+      "message": "code is already using baseboard intelrvp, it should be fairly simple to move things. Let me know if you need help",
+      "parentUuid": "625d4452_68a4a857",
+      "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9721d1f_657155c3",
@@ -290,6 +308,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "bba127e5_ddc0d482",
+      "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13c467d_7164b08a",
+        "filename": "board/sklrvp_mchp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-22T08:49:56Z",
+      "side": 1,
+      "message": "this isn\u0027t fixed, netnames in mecc differ from what is added in gpio.inc",
+      "parentUuid": "6c91ad3d_e714db7d",
       "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
