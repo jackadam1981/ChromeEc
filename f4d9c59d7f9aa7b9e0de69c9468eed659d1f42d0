@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dbdbd5b_3eff4241",
+        "filename": "common/chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-22T17:45:59Z",
+      "side": 1,
+      "message": "unnecessary but does not matter as mutex situation getting a bit better",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "f4d9c59d7f9aa7b9e0de69c9468eed659d1f42d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
