@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e9cadb_f27c3d8f",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-22T21:53:28Z",
+      "side": 1,
+      "message": "not necessary as zmake sets this already\n\n(probably one of those pre-zmake things)",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "f1ecc409c94e60f2e5f851d81e26d1c6251aa6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aedb63f5_6e65b00a",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-22T21:53:28Z",
+      "side": 1,
+      "message": "should be automatic, don\u0027t think you need to list it",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "f1ecc409c94e60f2e5f851d81e26d1c6251aa6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c468ab_843ba69b",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-22T21:53:28Z",
+      "side": 1,
+      "message": "missing line terminator according to gerrit",
+      "range": {
+        "startLine": 31,
+        "startChar": 31,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "f1ecc409c94e60f2e5f851d81e26d1c6251aa6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
