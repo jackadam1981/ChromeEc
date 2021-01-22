@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "942a1eba_fdd8676a",
+        "filename": "baseboard/guybrush/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-22T23:57:53Z",
+      "side": 1,
+      "message": "So chipset_in_state(CHIPSET_STATE_SOFT_OFF | CHIPSET_STATE_SUSPEND | CHIPSET_STATE_ON | CHIPSET_STATE_STANDBY). That feels more cumbersome IMO.",
+      "parentUuid": "99bb2290_5bfc82e6",
+      "revId": "2920d477bb4a6a677a5e55c75af59250e1634f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0cf3f70_ae77a1ca",
         "filename": "baseboard/guybrush/usb_pd_policy.c",
         "patchSetId": 12

@@ -52,6 +52,24 @@
       "parentUuid": "4b154cfe_1b1dc1be",
       "revId": "724d8f2009231f19ed598d5d670da4cf38dd6364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861aed09_3383a216",
+        "filename": "baseboard/guybrush/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-22T23:57:53Z",
+      "side": 1,
+      "message": "I don\u0027t know the answer. Perhaps Ed or Denis do. If not, I can try testing this on Zork.",
+      "parentUuid": "d815618d_6225ece7",
+      "revId": "724d8f2009231f19ed598d5d670da4cf38dd6364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
