@@ -28,6 +28,29 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+/* Servo user-controllable CC configuration */
+#define CC_DETACH_FAR	BIT(0)	/* Emulate far-side detach: both CC open */
+#define CC_DISABLE_DTS	BIT(1)	/* Apply resistors to single or both CC? */
+#define CC_ALLOW_SRC	BIT(2)	/* Allow charge through by policy? */
+#define CC_ENABLE_DRP	BIT(3)	/* Enable dual-role port */
+#define CC_SNK_WITH_PD	BIT(4)	/* Force enabling PD comm for sink role */
+#define CC_POLARITY	BIT(5)	/* CC polarity */
+#define CC_EMCA_SERVO	BIT(6)	/* Emulate Electronically Marked Cable Assembly
+				 * (EMCA) servo.
+				 */
+#define CC_SRC_WITH_PD 	BIT(7)	/* Allow DUT PD comms as SRC*/
+#define CC_WITH_PD_ANY	(CC_SRC_WITH_PD | CC_SNK_WITH_PD)
+				/* Allow any form of PD */
+#define CC_DETACH_NEAR	BIT(8)	/* Emulate near-side detach: leave cable */
+#define CC_DETACH_ANY  (CC_DETACH_NEAR | CC_DETACH_FAR)
+				/* Detach mask for logic statements */
+#define CC_FASTBOOT_DFP	BIT(9)	/* Allow mux uServo->Fastboot on DFP */
+#define CC_PRS_SNK2SRC	BIT(10)	/* Allow Sink-to-Source PR_SWAP */
+#define CC_PRS_SRC2SNK	BIT(11) /* Allow Source-to-Sink PR_SWAP  */
+#define CC_PRS_ANY		(CC_PRS_SRC2SNK | CC_PRS_SNK2SRC)
+#define CC_UNCONSTRAINED_POWER	BIT(12)	/* Unconstrained Power emulation */
+
+
 #define DUT_PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			     PDO_FIXED_COMM_CAP)
 
@@ -39,29 +62,43 @@
 #define CONF_SET_CLEAR(c, set, clear) ((c | (set)) & ~(clear))
 #define CONF_SRC(c) CONF_SET_CLEAR(c, \
 				CC_DISABLE_DTS | CC_ALLOW_SRC, \
-				CC_ENABLE_DRP | CC_SNK_WITH_PD)
+				CC_ENABLE_DRP | CC_SNK_WITH_PD | CC_SRC_WITH_PD)
+#define CONF_PDSRC(c) CONF_SET_CLEAR(CONF_SRC(c), \
+				CC_SNK_WITH_PD | CC_SRC_WITH_PD, \
+				0)
 #define CONF_SNK(c) CONF_SET_CLEAR(c, \
 				CC_DISABLE_DTS, \
-				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SNK_WITH_PD)
-#define CONF_PDSNK(c) CONF_SET_CLEAR(c, \
-				CC_DISABLE_DTS | CC_SNK_WITH_PD, \
-				CC_ALLOW_SRC | CC_ENABLE_DRP)
+				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SNK_WITH_PD | CC_SRC_WITH_PD)
+#define CONF_PDSNK(c) CONF_SET_CLEAR(CONF_SNK(c), \
+				CC_SNK_WITH_PD | CC_SRC_WITH_PD, \
+				0)
 #define CONF_DRP(c) CONF_SET_CLEAR(c, \
 				CC_DISABLE_DTS | CC_ALLOW_SRC | CC_ENABLE_DRP, \
-				CC_SNK_WITH_PD)
+				CC_SNK_WITH_PD | CC_SRC_WITH_PD )
+#define CONF_PDDRP(c) CONF_SET_CLEAR(CONF_DRP(c), \
+				CC_SNK_WITH_PD | CC_SRC_WITH_PD, \
+				0)
 #define CONF_SRCDTS(c) CONF_SET_CLEAR(c, \
 				CC_ALLOW_SRC, \
-				CC_ENABLE_DRP | CC_DISABLE_DTS | CC_SNK_WITH_PD)
+				CC_ENABLE_DRP | CC_DISABLE_DTS | CC_SRC_WITH_PD | CC_SNK_WITH_PD )
+#define CONF_PDSRCDTS(c) CONF_SET_CLEAR(CONF_SRCDTS(c), \
+				CC_SRC_WITH_PD, \
+				CC_SNK_WITH_PD)
 #define CONF_SNKDTS(c) CONF_SET_CLEAR(c, \
 				0, \
-				CC_ALLOW_SRC | CC_ENABLE_DRP | \
-				CC_DISABLE_DTS | CC_SNK_WITH_PD)
-#define CONF_PDSNKDTS(c) CONF_SET_CLEAR(c, \
-				CC_SNK_WITH_PD, \
-				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_DISABLE_DTS)
+				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SRC_WITH_PD | \
+				CC_DISABLE_DTS | CC_SNK_WITH_PD )
+#define CONF_PDSNKDTS(c) CONF_SET_CLEAR(CONF_SNKDTS(c), \
+				CC_SNK_WITH_PD | CC_SRC_WITH_PD, \
+				0)
+
 #define CONF_DRPDTS(c) CONF_SET_CLEAR(c, \
-				CC_ALLOW_SRC | CC_ENABLE_DRP, \
-				CC_DISABLE_DTS | CC_SNK_WITH_PD)
+				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SRC_WITH_PD, \
+				CC_DISABLE_DTS | CC_SNK_WITH_PD )
+#define CONF_PDDRPDTS(c) CONF_SET_CLEAR(c, \
+				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SRC_WITH_PD | \
+				CC_DISABLE_DTS | CC_SNK_WITH_PD, \
+				0)
 
 /* Macros to apply Rd/Rp to CC lines */
 #define DUT_ACTIVE_CC_SET(r, flags) \
@@ -88,6 +125,8 @@
 #define DUT_BOTH_CC_OPEN(r) DUT_BOTH_CC_SET(r, GPIO_INPUT)
 #define DUT_ACTIVE_CC_OPEN(r) DUT_ACTIVE_CC_SET(r, GPIO_INPUT)
 #define DUT_INACTIVE_CC_OPEN(r) DUT_INACTIVE_CC_SET(r, GPIO_INPUT)
+
+#define SERVO_DEFAULT_CONFIG  CONF_PDSRCDTS(CC_UNCONSTRAINED_POWER | CC_PRS_ANY | CC_EMCA_SERVO)
 
 /*
  * Dynamic PDO that reflects capabilities present on the CHG port. Allow for
@@ -118,7 +157,7 @@ static int active_charge_port = CHARGE_PORT_NONE;
 static enum charge_supplier active_charge_supplier;
 static uint8_t vbus_rp = TYPEC_RP_RESERVED;
 
-static int cc_config = CC_ALLOW_SRC | CC_EMCA_SERVO;
+static int cc_config = SERVO_DEFAULT_CONFIG;
 
 /* Voltage thresholds for no connect in DTS mode */
 static int pd_src_vnc_dts[TYPEC_RP_RESERVED][2] = {
@@ -426,7 +465,7 @@ int pd_adc_read(int port, int cc)
 
 	if (port == CHG)
 		mv = adc_read_channel(cc ? ADC_CHG_CC2_PD : ADC_CHG_CC1_PD);
-	else if (!(cc_config & CC_DETACH)) {
+	else if (!(cc_config & CC_DETACH_FAR)) {
 		/*
 		 * In servo v4 hardware logic, both CC lines are wired directly
 		 * to DUT. When servo v4 as a snk, DUT may source Vconn to CC2
@@ -564,7 +603,7 @@ int pd_set_rp_rd(int port, int cc_pull, int rp_value)
 		return EC_ERROR_UNIMPLEMENTED;
 
 	/* CC is disabled for emulating detach. Don't change Rd/Rp. */
-	if (cc_config & CC_DETACH)
+	if (cc_config & CC_DETACH_FAR)
 		return EC_SUCCESS;
 
 	/* By default disconnect all Rp/Rd resistors from both CC lines */
@@ -1064,7 +1103,7 @@ __override const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 static void print_cc_mode(void)
 {
 	/* Get current CCD status */
-	ccprintf("cc: %s\n", cc_config & CC_DETACH ? "off" : "on");
+	ccprintf("cc: %s\n", cc_config & CC_DETACH_FAR ? "off" : "on");
 	ccprintf("dts mode: %s\n", cc_config & CC_DISABLE_DTS ? "off" : "on");
 	ccprintf("chg mode: %s\n",
 		 get_dut_chg_en() ? "on" : "off");
@@ -1084,7 +1123,7 @@ static void do_cc(int cc_config_new)
 	int dualrole;
 
 	if (cc_config_new != cc_config) {
-		if (!(cc_config & CC_DETACH)) {
+		if (!(cc_config & CC_DETACH_FAR)) {
 			/* Force detach */
 			pd_power_supply_reset(DUT);
 			/* Always set to 0 here so both CC lines are changed */
@@ -1098,7 +1137,7 @@ static void do_cc(int cc_config_new)
 			 * If just changing mode (cc keeps enabled), give some
 			 * time for DUT to detach, use tErrorRecovery.
 			 */
-			if (!(cc_config_new & CC_DETACH))
+			if (!(cc_config_new & CC_DETACH_FAR))
 				usleep(PD_T_ERROR_RECOVERY);
 		}
 
@@ -1116,7 +1155,7 @@ static void do_cc(int cc_config_new)
 		/* Accept new cc_config value */
 		cc_config = cc_config_new;
 
-		if (!(cc_config & CC_DETACH)) {
+		if (!(cc_config & CC_DETACH_FAR)) {
 			/* Can we source? */
 			chargeable = is_charge_through_allowed();
 			dualrole = chargeable ? get_dual_role_of_src() :
@@ -1157,11 +1196,11 @@ static int command_cc(int argc, char **argv)
 	}
 
 	if (!strcasecmp(argv[1], "off")) {
-		cc_config_new |= CC_DETACH;
+		cc_config_new |= CC_DETACH_FAR;
 	} else if (!strcasecmp(argv[1], "on")) {
-		cc_config_new &= ~CC_DETACH;
+		cc_config_new &= ~CC_DETACH_FAR;
 	} else {
-		cc_config_new &= ~CC_DETACH;
+		cc_config_new &= ~CC_DETACH_FAR;
 		if (!strcasecmp(argv[1], "src"))
 			cc_config_new = CONF_SRC(cc_config_new);
 		else if (!strcasecmp(argv[1], "snk"))
@@ -1206,14 +1245,14 @@ DECLARE_CONSOLE_COMMAND(cc, command_cc,
 static void fake_disconnect_end(void)
 {
 	/* Reenable CC lines with previous dts and src modes */
-	do_cc(cc_config & ~CC_DETACH);
+	do_cc(cc_config & ~CC_DETACH_FAR);
 }
 DECLARE_DEFERRED(fake_disconnect_end);
 
 static void fake_disconnect_start(void)
 {
 	/* Disable CC lines */
-	do_cc(cc_config | CC_DETACH);
+	do_cc(cc_config | CC_DETACH_FAR);
 
 	hook_call_deferred(&fake_disconnect_end_data,
 			   fake_pd_disconnect_duration_us);
