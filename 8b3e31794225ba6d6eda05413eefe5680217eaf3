@@ -16,6 +16,23 @@
       "message": "Can you please check if this needs to be cherry-picked to any release branch? R89 branched sometime around when this merged.",
       "revId": "8b3e31794225ba6d6eda05413eefe5680217eaf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29682044_2af6baa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-01-22T00:04:59Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2638080 has the change.",
+      "revId": "8b3e31794225ba6d6eda05413eefe5680217eaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
