@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16464086_c793cfd0",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8236,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-22T02:42:00Z",
+      "side": 1,
+      "message": "How about the following?\n\n  if ((e \u0026\u0026 *e) || size \u003c 1 || size \u003e 8)\n    bad \u003d 1;\n  else\n    bad \u003d val \u003e\u003d (1ull \u003c\u003c size * 8);\n\nAlso, since we define rework_id as a 64-bit field, we don\u0027t need to (or shouldn\u0027t) read \u0027--size\u0027. We can probably add the following:\n\n  if (tag \u003d\u003d CBI_TAG_REWORK_ID)\n    bad \u003d size !\u003d 8;",
+      "range": {
+        "startLine": 8224,
+        "startChar": 0,
+        "endLine": 8236,
+        "endChar": 4
+      },
+      "revId": "cdd04d93b1879bc406cedbd7926b4df783d90b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
