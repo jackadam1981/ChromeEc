@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "295425fb_a67fd7aa",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-22T02:13:22Z",
+      "side": 1,
+      "message": "update to Set5",
+      "parentUuid": "3b25e8e4_6e80b710",
+      "range": {
+        "startLine": 546,
+        "startChar": 12,
+        "endLine": 546,
+        "endChar": 32
+      },
+      "revId": "6989ba65da251983cf802501e169b966d557493b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "347204d6_ea6daee4",
         "filename": "board/kindred/board.c",
         "patchSetId": 4
@@ -106,6 +130,30 @@
       "writtenOn": "2021-01-20T18:48:45Z",
       "side": 1,
       "message": "Why run this on S0ix resume? Couldn\u0027t this be run just once at startup to determine which chips are on the board? e.g.\n\n`DECLARE_HOOK(HOOK_INIT, determine_accel_devices, HOOK_PRIO_INIT_I2C + 1);`",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 75
+      },
+      "revId": "6989ba65da251983cf802501e169b966d557493b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806fd582_11bf62b0",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-22T02:13:22Z",
+      "side": 1,
+      "message": "The Sensor has not working in this INIT state,",
+      "parentUuid": "347204d6_ea6daee4",
       "range": {
         "startLine": 578,
         "startChar": 0,
