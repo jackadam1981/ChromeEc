@@ -50,6 +50,24 @@
       "message": "Perhaps we can surround it with #ifdef BOARD_MAGOLOR ?",
       "revId": "233848bdfa818897ab3b693af8e83e0218afb777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "725f0ace_6fa59253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-22T00:13:15Z",
+      "side": 1,
+      "message": "Could remove magolor_legacy build,I think npcx7m6fc don\u0027t be used.",
+      "parentUuid": "91e52f32_fc6cad10",
+      "revId": "233848bdfa818897ab3b693af8e83e0218afb777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
