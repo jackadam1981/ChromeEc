@@ -62,6 +62,7 @@
 #define GPIO_WP_L			GPIO_EC_WP_L
 
 /* Host communication */
+#define CONFIG_HOSTCMD_ESPI
 
 /* Chipset config */
 #define CONFIG_CHIPSET_STONEY
@@ -69,6 +70,14 @@
 #define CONFIG_CHIPSET_RESET_HOOK
 
 /* Common Keyboard Defines */
+#define CONFIG_KEYBOARD_BOARD_CONFIG
+#define CONFIG_KEYBOARD_COL2_INVERTED
+#define CONFIG_KEYBOARD_PROTOCOL_8042
+#define CONFIG_8042_AUX
+#define CONFIG_PS2
+#define CONFIG_CMD_PS2
+#define GPIO_KBD_KSO2		GPIO_EC_KSO_02_INV
+#undef  CONFIG_KEYBOARD_VIVALDI
 
 /* Sensors */
 #define CONFIG_TABLET_MODE

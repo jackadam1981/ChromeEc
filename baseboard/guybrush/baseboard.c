@@ -8,12 +8,13 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "battery_fuel_gauge.h"
-#include "chipset.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
 #include "charge_state.h"
 #include "charge_state_v2.h"
 #include "charger.h"
+#include "chip/npcx/ps2_chip.h"
+#include "chipset.h"
 #include "driver/ppc/aoz1380.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/nct38xx.h"
@@ -23,6 +24,7 @@
 #include "i2c.h"
 #include "ioexpander.h"
 #include "isl9241.h"
+#include "keyboard_scan.h"
 #include "nct38xx.h"
 #include "pi3usb9201.h"
 #include "power.h"
@@ -701,6 +703,31 @@ static void baseboard_chipset_resume(void)
 	ioex_set_level(GPIO_EN_KB_BL, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
+
+/* Keyboard scan setting */
+struct keyboard_scan_config keyscan_config = {
+	/*
+	 * F3 key scan cycle completed but scan input is not
+	 * charging to logic high when EC start scan next
+	 * column for "T" key, so we set .output_settle_us
+	 * to 80us
+	 */
+	.output_settle_us = 80,
+	.debounce_down_us = 6 * MSEC,
+	.debounce_up_us = 30 * MSEC,
+	.scan_period_us = 1500,
+	.min_post_scan_delay_us = 1000,
+	.poll_timeout_us = SECOND,
+	.actual_key_mask = {
+		0x3c, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
+	},
+};
+
+void send_aux_data_to_device(uint8_t data)
+{
+	ps2_transmit_byte(NPCX_PS2_CH0, data);
+}
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
