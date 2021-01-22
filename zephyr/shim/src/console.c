@@ -97,9 +97,14 @@ int zshim_run_ec_console_command(int (*handler)(int argc, char **argv),
  * TODO(b/178033156): probably need to swap this for something more
  * robust in order to handle UART buffering.
  */
+int uart_tx_ready(void)
+{
+	return 1;
+}
+
 void uart_write_char(char c)
 {
-	printk_putchar(c);
+	printk_putchar(NULL, c);
 }
 
 void uart_flush_output(void)
