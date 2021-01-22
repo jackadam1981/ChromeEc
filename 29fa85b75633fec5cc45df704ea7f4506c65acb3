@@ -22,6 +22,30 @@
       },
       "revId": "29fa85b75633fec5cc45df704ea7f4506c65acb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab77d584_81c56dc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-22T21:39:02Z",
+      "side": 1,
+      "message": "I\u0027ll leave it as is for now. There are a lot of #ifdefs in the code and I suppose we could come up with strategies and decide the trade-offs, then have a fixit?",
+      "parentUuid": "9bbc5f7d_f79018cb",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "29fa85b75633fec5cc45df704ea7f4506c65acb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
