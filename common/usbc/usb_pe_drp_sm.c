@@ -706,6 +706,13 @@ static struct policy_engine {
 	 */
 	uint64_t chunking_not_supported_timer;
 
+	/*
+	 * Used to wait for tSrcTransition between sending an Accept for a
+	 * Request and transitioning the power supply. See PD 3.0, table 7-22.
+	 * This is not a named timer in the spec.
+	 */
+	uint64_t src_transition_timer;
+
 	/* Counters */
 
 	/*
@@ -2306,12 +2313,10 @@ static void pe_src_transition_supply_entry(int port)
 {
 	print_current_state(port);
 
-	/* Transition Power Supply */
-	pd_transition_voltage(pe[port].requested_idx);
-
 	/* Send a GotoMin Message or otherwise an Accept Message */
 	if (PE_CHK_FLAG(port, PE_FLAGS_ACCEPT)) {
 		PE_CLR_FLAG(port, PE_FLAGS_ACCEPT);
+		pe[port].src_transition_timer = TIMER_DISABLED;
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
 	} else {
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_GOTO_MIN);
@@ -2377,12 +2382,20 @@ static void pe_src_transition_supply_run(int port)
 			set_state_pe(port, PE_SRC_READY);
 		} else {
 			/* NOTE: First pass through this code block */
-			/* Send PS_RDY message */
-			send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
-			PE_SET_FLAG(port, PE_FLAGS_PS_READY);
+			/* Wait for tSrcTransition before changing supply. */
+			pe[port].src_transition_timer =
+				get_time().val + PD_T_SRC_TRANSITION;
 		}
 
 		return;
+	}
+
+	if (get_time().val > pe[port].src_transition_timer) {
+		pe[port].src_transition_timer = TIMER_DISABLED;
+		/* Transition power supply and send PS_RDY. */
+		pd_transition_voltage(pe[port].requested_idx);
+		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+		PE_SET_FLAG(port, PE_FLAGS_PS_READY);
 	}
 
 	/*
