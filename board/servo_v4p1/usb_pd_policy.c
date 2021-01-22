@@ -155,7 +155,6 @@ struct vbus_prop {
 static struct vbus_prop vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int active_charge_port = CHARGE_PORT_NONE;
 static enum charge_supplier active_charge_supplier;
-static uint8_t vbus_rp = TYPEC_RP_RESERVED;
 
 static int cc_config = SERVO_DEFAULT_CONFIG;
 
@@ -188,10 +187,10 @@ static int pd_src_rd_threshold[TYPEC_RP_RESERVED] = {
 static int fake_pd_disconnect_duration_us;
 
 /* Shadow what would be in TCPC register state. */
-static int rp_value_stored = TYPEC_RP_USB;
+static int rp_value_stored = CONFIG_USB_PD_PULLUP;
 /*
- * Make sure the below matches CC_EMCA_SERVO
- * otherwise you'll have a bad time.
+ * Make sure the below matches the Servo initial state
+ * otherwise you'll have a bad time (de-sync).
  */
 static int cc_pull_stored = TYPEC_CC_RD;
 
@@ -410,24 +409,61 @@ int pd_tcpc_cc_nc(int port, int cc_volt, int cc_sel)
 	int rp_index;
 	int nc;
 
+	rp_index = rp_value_stored;
+
 	/* Can never be called from CHG port as it's sink only */
-	if (port != DUT)
-		return 0;
+	// TODO: Above statement is not true. SNK can still be NC.
+	// PD_SNK_VA_MV (250mV) indicates vRd-Connect(min)
+	// Use PD_SRC_DEF_RD_THRESH_MV (200mV) to be "easy in, hard out"
+	if (port == CHG){
+		if (cc_volt < PD_SRC_DEF_RD_THRESH_MV)
+		//if (cc_volt < PD_SNK_VA_MV)
+			return 1;
+		else
+			return 0;
+	}
 
-	rp_index = vbus_rp;
-	/*
-	 * If rp_index > 2, then always return not connected. This case should
-	 * only happen when all Rp GPIO controls are tri-stated.
-	 */
-	if (rp_index >= TYPEC_RP_RESERVED)
-		return 1;
+	//TODO: this should be hypothetical "cc_pull_applied()"
+	// Use ACTUAL non-atomic state, rather than atomic variable
+	switch(cc_pull_stored){
+	case TYPEC_CC_OPEN:
+		/*
+		 * If cc_pull_stored is "OPEN", then always return not connected. This
+		 * case should ONLY be called after all Rp GPIO controls are Hi-Z'ed.
+		 */
+		nc = 1;
+		break;
+	case TYPEC_CC_RP:
+		/*
+		* If DTS & RD, use special override mappings in pd_set_rp_rd
+		* In this case, DTS SRC has 3x polarity-dependent states.
+		*/
+		if(!(cc_config & CC_DISABLE_DTS))
+			nc = cc_volt >= pd_src_vnc_dts[rp_index][
+			cc_config & CC_POLARITY ? !cc_sel : cc_sel];
+		else
+			nc = cc_volt >= pd_src_vnc[rp_index];
 
-	/* Select the correct voltage threshold for current Rp and DTS mode */
-	if (cc_config & CC_DISABLE_DTS)
-		nc = cc_volt >= pd_src_vnc[rp_index];
-	else
-		nc = cc_volt >= pd_src_vnc_dts[rp_index][
-				cc_config & CC_POLARITY ? !cc_sel : cc_sel];
+			//TODO: This logic is confusing.
+			// Basically, if POLARITY, invert selected CC.
+		break;
+	case TYPEC_CC_RD:
+	case TYPEC_CC_RA:
+	case TYPEC_CC_RA_RD:
+		// TODO: This is messy and needs cleanup
+		/*
+		* If DTS & RD, use special override mappings in pd_set_rp_rd
+		* In this case, DTS SNK forces Rd+Rd state.
+		*/
+		// TODO: WARNING this may break PR_SWAPs
+		// TODO: Check this for Ra.
+		nc = cc_volt < PD_SRC_DEF_RD_THRESH_MV;
+		break;
+	default:
+		CPRINTS("C%d: cc_nc invalid pull [%d]",port,cc_pull_stored);
+		nc = 0;
+		break;
+	}
 
 	return nc;
 }
@@ -437,90 +473,215 @@ int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel)
 	int rp_index;
 	int ra;
 
+	rp_index = rp_value_stored;
+
 	/* Can never be called from CHG port as it's sink only */
-	if (port != DUT)
-		return 0;
+	// TODO: Above statement is not true. SNK can still be NC.
+	// PD_SRC_DEF_RD_THRESH_MV indicates Ra threshold (SNK)
+	if (port == CHG){
+		if (cc_volt < PD_SRC_DEF_RD_THRESH_MV)
+			return 1;
+		else
+			return 0;
+	}
 
-	rp_index = vbus_rp;
-	/*
-	 * If rp_index > 2, then can't be Ra. This case should
-	 * only happen when all Rp GPIO controls are tri-stated.
-	 */
-	if (rp_index >= TYPEC_RP_RESERVED)
-		return 0;
-
-	/* Select the correct voltage threshold for current Rp and DTS mode */
-	if (cc_config & CC_DISABLE_DTS)
-		ra = cc_volt < pd_src_rd_threshold[rp_index];
-	else
-		ra = cc_volt < pd_src_rd_threshold_dts[rp_index][
-				cc_config & CC_POLARITY ? !cc_sel : cc_sel];
+	switch(cc_pull_stored){
+	case TYPEC_CC_OPEN:
+		/*
+		 * If cc_pull_stored is "OPEN", then always return not Ra. This
+		 * case should only happen after all Rp GPIO controls are tri-stated.
+		 */
+		ra = 0;
+		break;
+	case TYPEC_CC_RP:
+		/*
+		* If DTS & RD, use special override mappings in pd_set_rp_rd
+		* In this case, DTS SRC has three polarity-dependent states.
+		*/
+		if(!(cc_config & CC_DISABLE_DTS))
+			ra = cc_volt < pd_src_rd_threshold_dts[rp_index][
+					cc_config & CC_POLARITY ? !cc_sel : cc_sel];
+		else
+			ra = cc_volt < pd_src_rd_threshold[rp_index];
+		break;
+	case TYPEC_CC_RD:
+	case TYPEC_CC_RA:
+	case TYPEC_CC_RA_RD:
+		/*
+		* If DTS & RD, use special override mappings in pd_set_rp_rd
+		* In this case, DTS SNK forces Rd+Rd state.
+		*/
+		ra = cc_volt < PD_SRC_DEF_RD_THRESH_MV;
+		// SINKs always show vRa if nothing is connected.
+		// This is normal. Just deal with it.
+		break;
+	default:
+		ra = 0;
+		break;
+	}
 
 	return ra;
 }
 
 int pd_adc_read(int port, int cc)
 {
-	int mv = -1;
+	int mv = -6;
+	bool secondary;
+	enum pd_power_role current_power;
 
-	if (port == CHG)
+	if (port == CHG) {
 		mv = adc_read_channel(cc ? ADC_CHG_CC2_PD : ADC_CHG_CC1_PD);
-	else if (!(cc_config & CC_DETACH_FAR)) {
-		/*
-		 * In servo v4 hardware logic, both CC lines are wired directly
-		 * to DUT. When servo v4 as a snk, DUT may source Vconn to CC2
-		 * (CC1 if polarity flip) and make the voltage high as vRd-3.0,
-		 * which makes the PD state mess up. As the PD state machine
-		 * doesn't handle this case. It assumes that CC2 (CC1 if
-		 * polarity flip) is separated by a Type-C cable, resulting a
-		 * voltage lower than the max of vRa.
-		 *
-		 * It fakes the voltage within vRa.
-		 */
-
-		/*
-		 * TODO(b/161260559): Fix this logic because of leakage
-		 * "phantom detects" Or flat-out mis-detects..... talking on
-		 * leaking CC2 line. And Vconn-swap case... and Ra on second
-		 * line (SERVO_EMCA)...
-		 *
-		 * This is basically a hack faking "vOpen" from TCPCI spec.
-		 */
-		if ((cc_config & CC_DISABLE_DTS) &&
-		    port == DUT &&
-		    cc == ((cc_config & CC_POLARITY) ? 0 : 1)) {
-
-			if ((cc_pull_stored == TYPEC_CC_RD)  ||
-				(cc_pull_stored == TYPEC_CC_RA) ||
-				(cc_pull_stored == TYPEC_CC_RA_RD))
-				mv = -1;
-			else if (cc_pull_stored == TYPEC_CC_RP)
-				mv = 3301;
-		} else
-			mv = adc_read_channel(cc ? ADC_DUT_CC2_PD :
-						   ADC_DUT_CC1_PD);
-	} else {
-		/*
-		 * When emulating detach, fake the voltage on CC to 0 to avoid
-		 * triggering some debounce logic.
-		 *
-		 * The servo v4 makes Rd/Rp open but the DUT may present Rd/Rp
-		 * alternatively that makes the voltage on CC falls into some
-		 * unexpected range and triggers the PD state machine switching
-		 * between SNK_DISCONNECTED and SNK_DISCONNECTED_DEBOUNCE.
-		 */
-		mv = -1;
+		return mv;
 	}
 
+	// If [Inverted=1] and [CC1=0] xor [Inverted=0] and [CC2=1]
+	// i.e. If "secondary CC" line
+
+	/*
+	*  inverted (=cc_config & polarity)
+	*         0     1
+	*      ---------------
+	* cc 0 |  pri   s    |
+	*    1 |  s     pri  |
+	*      ---------------
+	*/
+
+	if( !!(cc_config & CC_POLARITY) ^ !!(cc) )
+		secondary = true;
+	else
+		secondary = false;
+
+	mv = adc_read_channel(cc ? ADC_DUT_CC2_PD : ADC_DUT_CC1_PD);
+	current_power = pd_get_power_role(port);
+
+	/* Falsify values as necessary to not break FSM */
+	/* And to emulate various ServoV4p1 functions */
+
+	if (cc_config & CC_DETACH_NEAR ||
+			cc_pull_stored == TYPEC_CC_OPEN ) {
+		/* If simulating a "servo-side cable detach" */
+
+		switch(cc_pull_stored){
+		case TYPEC_CC_OPEN:
+			switch (current_power){
+			case PD_ROLE_SINK:
+				mv=-1;
+			break;
+			case PD_ROLE_SOURCE:
+				mv=3301;
+			break;
+			}
+		case TYPEC_CC_RA_RD:
+		case TYPEC_CC_RD:
+		case TYPEC_CC_RA:
+			mv=-1;
+			break;
+		case TYPEC_CC_RP:
+			mv=3301;
+			break;
+		default:
+			mv=-3;
+			break;
+		}
+		return mv;
+	}
+
+	if (cc_config & CC_DETACH_FAR) {
+		/* If simulating a "DUT-side cable detach" */
+
+		switch(cc_pull_stored){
+		case TYPEC_CC_OPEN:
+			switch (current_power){
+			case PD_ROLE_SINK:
+				mv=-1;
+			break;
+			case PD_ROLE_SOURCE:
+				mv=3301;
+			break;
+			}
+		case TYPEC_CC_RA_RD:
+		case TYPEC_CC_RD:
+		case TYPEC_CC_RA:
+			mv=-1;
+			break;
+		case TYPEC_CC_RP:
+			if (cc_config & CC_DISABLE_DTS &&
+					cc_config & CC_EMCA_SERVO &&
+					secondary)
+				mv=pd_src_rd_threshold[rp_value_stored]/2;
+				//Roughly simulate eMarker vRa @ rp_value
+			else
+				mv=3301;
+			break;
+		default:
+			mv=-3;
+			break;
+		}
+		return mv;
+	}
+
+	if (cc_config & CC_DISABLE_DTS) {
+		/* If DTS is enabled, report normally */
+
+		/*
+		 * Also check for the "Vconn sourcing" bug
+		 * [TCPMv1] b/168859497
+		 * [TCPMv2] b/168940172
+		 * Borrow revised logic from usb_pd_tcpc.c
+		 */
+
+		switch(cc_pull_stored){
+		case TYPEC_CC_OPEN:
+			switch (current_power){
+			case PD_ROLE_SINK:
+				mv=-1;
+			break;
+			case PD_ROLE_SOURCE:
+				mv=3301;
+			break;
+			}
+		break;
+		case TYPEC_CC_RD:
+		case TYPEC_CC_RA_RD:
+			if(secondary)
+				mv=-1;
+		break;
+		case TYPEC_CC_RA:
+			// This is audio accessory
+			// We may not want to fake this.
+		break;
+		case TYPEC_CC_RP:
+			if(secondary){
+				if(cc_config & CC_EMCA_SERVO)
+					mv=pd_src_rd_threshold[rp_value_stored]/2;
+					//Roughly simulate eMarker vRa @ rp_value
+				else
+					mv=3301;
+			}
+		break;
+		default:
+			mv=-3;
+		break;
+		}
+		return mv;
+	}
+
+	/*
+	 * DTS falls through here.
+	 * Report accurately or check for Vconn bug
+	 */
+	// CPRINTS("ADC ERROR! port DUT [%d] cc [%d] mv [%d]",port,cc,mv);
 	return mv;
 }
 
 static int board_set_rp(int rp)
 {
-	if (cc_config & CC_DISABLE_DTS) {
-		/* TODO: Add SRC-EMCA mode (CC_EMCA_SERVO=1) */
-		/* TODO: Add SRC-nonEMCA mode (CC_EMCA_SERVO=0)*/
+	if (cc_config & CC_DETACH_FAR) {
+		rp_value_stored = rp;
+		return EC_SUCCESS;
+	}
 
+	if (cc_config & CC_DISABLE_DTS) {
 		/*
 		 * DTS mode is disabled, so only present the requested Rp value
 		 * on CC1 (active) and leave all Rp/Rd resistors on CC2
@@ -528,13 +689,28 @@ static int board_set_rp(int rp)
 		 */
 		switch (rp) {
 		case TYPEC_RP_USB:
+			DUT_ACTIVE_CC_OPEN(RP1A5);
+			DUT_ACTIVE_CC_OPEN(RP3A0);
 			DUT_ACTIVE_CC_PU(RPUSB);
+
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
 			break;
 		case TYPEC_RP_1A5:
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_ACTIVE_CC_OPEN(RP3A0);
 			DUT_ACTIVE_CC_PU(RP1A5);
+
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
 			break;
 		case TYPEC_RP_3A0:
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_ACTIVE_CC_OPEN(RP1A5);
 			DUT_ACTIVE_CC_PU(RP3A0);
+
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
 			break;
 		case TYPEC_RP_RESERVED:
 			/*
@@ -542,16 +718,30 @@ static int board_set_rp(int rp)
 			 * all values are set to inputs above. Nothing else to
 			 * set.
 			 */
-			break;
+			// The above comment is mistaken.
+			// TYPEC_CC_OPEN = OPEN (with any pull).
+			// TYPEC_RP_RESERVED = Invalid and shall not be used.
 		default:
 			return EC_ERROR_INVAL;
 		}
 
-		/* TODO: Verify this (CC_EMCA_SERVO) statement works */
-		if (cc_config & CC_EMCA_SERVO)
+		/* Handle EMCA case */
+		if (cc_config & CC_EMCA_SERVO) {
 			DUT_INACTIVE_CC_PD(RA);
-		else
+
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RP1A5);
+			DUT_INACTIVE_CC_OPEN(RPUSB);
+			DUT_INACTIVE_CC_OPEN(RD);
+		}
+		else {
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RP1A5);
+			DUT_INACTIVE_CC_OPEN(RPUSB);
+
 			DUT_INACTIVE_CC_OPEN(RA);
+			DUT_INACTIVE_CC_OPEN(RD);
+		}
 	} else {
 		/* DTS mode is enabled. The rp parameter is used to select the
 		 * Type C current limit to advertise. The combinations of Rp on
@@ -567,16 +757,46 @@ static int board_set_rp(int rp)
 		 */
 		switch (rp) {
 		case TYPEC_RP_USB:
+			DUT_ACTIVE_CC_OPEN(RP1A5);
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RPUSB);
+
 			DUT_ACTIVE_CC_PU(RP3A0);
 			DUT_INACTIVE_CC_PU(RP1A5);
+
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
+			DUT_INACTIVE_CC_OPEN(RA);
+			DUT_INACTIVE_CC_OPEN(RD);
 			break;
 		case TYPEC_RP_1A5:
+			DUT_ACTIVE_CC_OPEN(RP3A0);
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RP1A5);
+
 			DUT_ACTIVE_CC_PU(RP1A5);
 			DUT_INACTIVE_CC_PU(RPUSB);
+
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
+			DUT_INACTIVE_CC_OPEN(RA);
+			DUT_INACTIVE_CC_OPEN(RD);
 			break;
 		case TYPEC_RP_3A0:
+			DUT_ACTIVE_CC_OPEN(RP1A5);
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RP1A5);
+
 			DUT_ACTIVE_CC_PU(RP3A0);
 			DUT_INACTIVE_CC_PU(RPUSB);
+
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
+			DUT_INACTIVE_CC_OPEN(RA);
+			DUT_INACTIVE_CC_OPEN(RD);
 			break;
 		case TYPEC_RP_RESERVED:
 			/*
@@ -584,85 +804,127 @@ static int board_set_rp(int rp)
 			 * all values are set to inputs above. Nothing else to
 			 * set.
 			 */
-			break;
+			// The above comment is mistaken.
+			// TYPEC_CC_OPEN = OPEN (with any pull).
+			// TYPEC_RP_RESERVED = Invalid and shall not be used.
+
 		default:
+			CPRINTS("ERR: set_rp called with invalid value [%d]", rp);
 			return EC_ERROR_INVAL;
 		}
 	}
 	/* Save new Rp value for DUT port */
-	vbus_rp = rp;
+	rp_value_stored = rp;
 
 	return EC_SUCCESS;
 }
 
 int pd_set_rp_rd(int port, int cc_pull, int rp_value)
 {
+
+	/*
+	* IMPORTANT NOTE:
+	* Always set lines preferring vRd-Connect state.
+	* This means set Rd before Rp.
+	*
+	* When SRC/Rp: BREAK Rp-Old before APPLY Rp-New
+	* When SNK/Rd: APPLY Rd-New new before BREAK Rd-Old
+	*/
+
 	int rv = EC_SUCCESS;
 
-	if (port != DUT)
+	if (port == CHG)
 		return EC_ERROR_UNIMPLEMENTED;
+
+	#if 1
+		/* By default disconnect all Rp/Rd resistors from both CC lines */
+		/* Set Rd for CC1/CC2 to High-Z. */
+		DUT_BOTH_CC_OPEN(RD);
+		/* Set Ra for CC1/CC2 to High-Z. */
+		DUT_BOTH_CC_OPEN(RA);
+		// Should probably have a "unplug cable" and "unplug far end" option
+		/* Set Rp for CC1/CC2 to High-Z. */
+		DUT_BOTH_CC_OPEN(RP3A0);
+		DUT_BOTH_CC_OPEN(RP1A5);
+		DUT_BOTH_CC_OPEN(RPUSB);
+		/* Set TX Hi-Z */
+		//DUT_BOTH_CC_OPEN(TX_DATA);
+		// TODO: This may kill PD comms inadvertently
+	#endif
 
 	/* CC is disabled for emulating detach. Don't change Rd/Rp. */
 	if (cc_config & CC_DETACH_FAR)
-		return EC_SUCCESS;
-
-	/* By default disconnect all Rp/Rd resistors from both CC lines */
-	/* Set Rd for CC1/CC2 to High-Z. */
-	DUT_BOTH_CC_OPEN(RD);
-	/* Set Ra for CC1/CC2 to High-Z. */
-	DUT_BOTH_CC_OPEN(RA);
-	/* Set Rp for CC1/CC2 to High-Z. */
-	DUT_BOTH_CC_OPEN(RP3A0);
-	DUT_BOTH_CC_OPEN(RP1A5);
-	DUT_BOTH_CC_OPEN(RPUSB);
-	/* Set TX Hi-Z */
-	DUT_BOTH_CC_OPEN(TX_DATA);
-
-	if (cc_pull == TYPEC_CC_RP) {
+	{
+		//This is a "DUT side disconnect"
+		//NOOP, let Rp fall through.
+		rv = EC_SUCCESS;
+	} else if (cc_pull == TYPEC_CC_OPEN || cc_config & CC_DETACH_NEAR) {
+		//This is a "SERVO side disconnect"
+		//TODO: Fix this if it breaks things
+		if ((cc_config & CC_DISABLE_DTS) && (cc_config & CC_EMCA_SERVO))
+				DUT_INACTIVE_CC_PD(RA);
+		rv = EC_SUCCESS;
+	} else if (cc_pull == TYPEC_CC_RP) {
 		rv = board_set_rp(rp_value);
-	} else if ((cc_pull == TYPEC_CC_RD) || (cc_pull == TYPEC_CC_RA_RD) ||
-				(cc_pull == TYPEC_CC_RA)) {
+	} else if ((cc_pull == TYPEC_CC_RD) || \
+		(cc_pull == TYPEC_CC_RA_RD) || (cc_pull == TYPEC_CC_RA)) {
 		/*
-		 * The DUT port uses a captive cable. It can present Rd on both
-		 * CC1 and CC2. If DTS mode is enabled, then present Rd on both
-		 * CC lines. However, if DTS mode is disabled only present Rd on
-		 * CC1 (active).
+		 * The DUT port uses a captive cable. It can present any term
+		 * pullup/down simultaneously on any CC1 and CC2 pin.
 		 *
-		 * TODO: EXCEPT if you have Ra_Rd or are "faking" an EMCA.....
-		 * ... or are applying RA+RA....can't make assumptions with
-		 * test equipment!
+		 * If DTS mode is enabled, then present Rd on both CC lines.
+		 *
+		 * However, if DTS mode is disabled, only present Rd on CC1
+		 * based on polarity. Inactive is set to Ra by fake EMCA bit.
 		 */
-		if (cc_config & CC_DISABLE_DTS) {
-			if (cc_pull == TYPEC_CC_RD) {
+		 if (cc_config & CC_DISABLE_DTS){
+		 /* If DTS is NOT supported */
+			switch(cc_pull) {
+			case TYPEC_CC_RD:
 				DUT_ACTIVE_CC_PD(RD);
+				break;
+			case TYPEC_CC_RA_RD:
 				/*
-				 * TODO: Verify this (CC_EMCA_SERVO)
-				 * statement works
-				 */
-				if (cc_config & CC_EMCA_SERVO)
-					DUT_INACTIVE_CC_PD(RA);
-				else
-					DUT_INACTIVE_CC_OPEN(RA);
-			} else if (cc_pull == TYPEC_CC_RA) {
-				DUT_ACTIVE_CC_PD(RA);
-				/*
-				 * TODO: Verify this (CC_EMCA_SERVO)
-				 * statement works
-				 */
-				if (cc_config & CC_EMCA_SERVO)
-					DUT_INACTIVE_CC_PD(RA);
-				else
-					DUT_INACTIVE_CC_OPEN(RA);
-			} else if (cc_pull == TYPEC_CC_RA_RD) {
-				/*
-				 * TODO: Verify this silly (TYPEC_CC_RA_RD)
-				 * from TCPMv  works
-				 */
+				 * TODO: Verify this EMCA DUT (TYPEC_CC_RA_RD)
+				 * statement  works
+				*/
 				DUT_ACTIVE_CC_PD(RD);
 				DUT_INACTIVE_CC_PD(RA);
+				break;
+			case TYPEC_CC_RA:
+				/*
+				 * TODO: Verify this audio (TYPEC_CC_RA)
+				 * statement works
+				 */
+				DUT_ACTIVE_CC_PD(RA);
+				break;
+			default:
+				return EC_ERROR_UNIMPLEMENTED;
 			}
-		} else
-			DUT_BOTH_CC_PD(RD);
+
+			if ((cc_config & CC_EMCA_SERVO))
+				DUT_INACTIVE_CC_PD(RA);
+
+		}
+		else {
+			/* If DTS IS supported */
+			switch(cc_pull) {
+			case TYPEC_CC_RD:
+				// EMCA is ignored (DTS)
+				DUT_BOTH_CC_PD(RD);
+				break;
+			case TYPEC_CC_RA_RD:
+				// EMCA is ignored (DTS)
+				DUT_BOTH_CC_PD(RD);
+				break;
+			case TYPEC_CC_RA:
+				// EMCA is ignored (DTS)
+				DUT_BOTH_CC_PD(RD);
+				break;
+			default:
+				return EC_ERROR_UNIMPLEMENTED;
+			}
+		}
 
 		rv = EC_SUCCESS;
 	} else
@@ -683,9 +945,10 @@ int board_select_rp_value(int port, int rp)
 	 * Update Rp value to indicate non-pd power available.
 	 * Do not change pull direction though.
 	 */
-	if ((rp != rp_value_stored) && (cc_pull_stored == TYPEC_CC_RP)) {
+	if (cc_pull_stored == TYPEC_CC_RP)
+	{
 		rp_value_stored = rp;
-		return pd_set_rp_rd(port, TYPEC_CC_RP, rp);
+		return pd_set_rp_rd(port, cc_pull_stored, rp);
 	}
 
 	return EC_SUCCESS;
