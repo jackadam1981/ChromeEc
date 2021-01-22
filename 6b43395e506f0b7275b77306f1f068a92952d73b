@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d152e90_d4e6b8f5",
+        "filename": "zephyr/projects/volteer/include/sensor_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-22T00:33:28Z",
+      "side": 1,
+      "message": "Why not \"dts + config_chip\" ?",
+      "parentUuid": "11d3d8b8_44cae9fa",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "6b43395e506f0b7275b77306f1f068a92952d73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddaf280f_ac9ca0bb",
         "filename": "zephyr/projects/volteer/include/sensor_map.h",
         "patchSetId": 3
@@ -73,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "826d451b_244ff93d",
+        "filename": "zephyr/projects/volteer/include/sensor_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-22T00:33:28Z",
+      "side": 1,
+      "message": "It\u0027s my TODO that every configs defined here will move to\ndts + config_chip.h\nor\nKconfig + config_chip.h",
+      "parentUuid": "ddaf280f_ac9ca0bb",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "6b43395e506f0b7275b77306f1f068a92952d73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62335023_c2f46dbf",
         "filename": "zephyr/projects/volteer/include/sensor_map.h",
         "patchSetId": 3
@@ -84,6 +132,30 @@
       "writtenOn": "2021-01-20T23:17:12Z",
       "side": 1,
       "message": "should probably go in gpio_map.h",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 6
+      },
+      "revId": "6b43395e506f0b7275b77306f1f068a92952d73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f3c2577_7d2fe7d7",
+        "filename": "zephyr/projects/volteer/include/sensor_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-22T00:33:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "62335023_c2f46dbf",
       "range": {
         "startLine": 46,
         "startChar": 0,
