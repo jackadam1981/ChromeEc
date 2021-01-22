@@ -406,6 +406,19 @@ int board_get_version(void)
 #ifdef SECTION_IS_RO
 static void evaluate_input_power_def(void)
 {
+	uint8_t a = GL3590_INT_CLEAR;
+
+	gpio_enable_interrupt(GPIO_USBH_I2C_BUSY_INT);
+
+//	gl3590_read(HOST_HUB, 0x1, &data, 1);
+//	ccprintf("On init, INTR# pin status 0x%x\n", data);
+//
+//	gl3590_read(HOST_HUB, 0x0, &data, 1);
+//	ccprintf("On init, HUB_MODE pin status 0x%x\n", data);
+
+	/* Clear interrupt pin status */
+	gl3590_write(HOST_HUB, GL3590_INT_REG, &a, 1);
+
 	evaluate_input_power();
 
 	init_uservo_port();
@@ -449,14 +462,13 @@ static void board_init(void)
 	init_fusb302b(1);
 
 	/*
-	 * Get data about available input power. Add additional check after a
-	 * delay, since we need to wait for USB2/USB3 enumeration on host hub
+	 * Get data about available input power. Add a check after a delay,
+	 * since we need to wait for USB2/USB3 enumeration on host hub
 	 * as well as I2C interface of this hub needs to be initialized.
-	 * 3 seconds is experimentally selected value, by this time hub should
+	 * 1 second is experimentally selected value, by this time hub should
 	 * be up and running.
 	 */
-	evaluate_input_power();
-	hook_call_deferred(&evaluate_input_power_def_data, 3 * SECOND);
+	hook_call_deferred(&evaluate_input_power_def_data, 1 * SECOND);
 
 	/* Enable DUT USB2.0 pair. */
 	gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 0);
@@ -467,7 +479,6 @@ static void board_init(void)
 
 	gpio_enable_interrupt(GPIO_STM_FAULT_IRQ_L);
 	gpio_enable_interrupt(GPIO_DP_HPD);
-	gpio_enable_interrupt(GPIO_USBH_I2C_BUSY_INT);
 	gpio_enable_interrupt(GPIO_DUT_PWR_IRQ_ODL);
 
 	/* Disable power to DUT by default */

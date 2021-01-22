@@ -294,6 +294,9 @@ inline int usb3_a1_mux_sel(int en)
 inline int board_id_det(void)
 {
 	int id;
+
+//	return 2;
+
 	if (board_id_val == BOARD_ID_UNSET) {
 		/* Cache board ID at init */
 		id = tca6416a_read_byte(1, TCA6416A_IN_PORT_1);

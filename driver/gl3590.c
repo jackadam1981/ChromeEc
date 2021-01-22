@@ -194,9 +194,13 @@ enum ec_error_list gl3590_ufp_pwr(int hub, struct pwr_con_t *pwr)
 	}
 }
 
+#define MAX_RETRY_COUNT 10
+
+int tca_gpio_dbg_led_k_odl(int en);
+
 int gl3590_enable_ports(int hub, uint8_t port_mask, bool enable)
 {
-	uint8_t buf[4] = {0};
+	uint8_t buf[4] = {0}, data;
 	uint8_t en_mask = 0;
 	int rv;
 
@@ -206,7 +210,29 @@ int gl3590_enable_ports(int hub, uint8_t port_mask, bool enable)
 	buf[0] = en_mask;
 	buf[2] = port_mask;
 
-	rv = gl3590_write(hub, GL3590_PORT_DISABLED_REG, buf, sizeof(buf));
+	for (int i = 0; i < MAX_RETRY_COUNT; i++) {
+		rv = gl3590_write(hub, GL3590_PORT_DISABLED_REG, buf, sizeof(buf));
+		if (rv)
+			return rv;
+
+		udelay(5 * MSEC);
+
+		/* Verify whether port is enabled/disabled */
+		rv = gl3590_read(hub, 0x8, &data, 1);
+		if (rv)
+			return rv;
+
+		if (enable && ((data & port_mask) == port_mask))
+				break;
+		if (!enable && ((data & port_mask) == 0))
+				break;
+
+		ccprintf("Port enable/disable retrying.. %d/%d"
+			  "Port status is 0x%x\n", i, MAX_RETRY_COUNT, data);
+		tca_gpio_dbg_led_k_odl(1);
+		udelay(5 * MSEC);
+		tca_gpio_dbg_led_k_odl(0);
+	}
 
 	return rv;
 }
