@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "033d5613_2bf4a637",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-22T17:24:23Z",
+      "side": 1,
+      "message": "all of these need to be PLATFORM_EC_BOARD_VERSION, like you have specified below in config_chip.h",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 20
+      },
+      "revId": "b61bbc7e9df4fec02181380c2288f2ddc94d1266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc342849_6a4c1bbf",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-22T17:24:23Z",
+      "side": 1,
+      "message": "gee do we still do this? OK",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 69
+      },
+      "revId": "b61bbc7e9df4fec02181380c2288f2ddc94d1266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
