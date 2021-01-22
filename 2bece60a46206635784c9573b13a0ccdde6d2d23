@@ -34,6 +34,24 @@
       "parentUuid": "2ce1a7f9_302b2165",
       "revId": "2bece60a46206635784c9573b13a0ccdde6d2d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2facd00b_11fd4970",
+        "filename": "driver/usb_mux/ps8822.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-22T16:14:16Z",
+      "side": 1,
+      "message": "Wouldn\u0027t \"reg \u003d\" be overwriting the values preserved previously in line 62?  Is it intentional?",
+      "parentUuid": "382c175d_37fe8e4c",
+      "revId": "2bece60a46206635784c9573b13a0ccdde6d2d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
