@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfcf85ed_bcd2d09e",
+        "filename": "baseboard/guybrush/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-22T18:26:00Z",
+      "side": 1,
+      "message": "GPIO_S5_PGOOD \u003d\u003d PP3300_S5, but PP3300_S5 is enabled sequentially after PP5000_S5 is enabled.\n\nI\u0027m not sure what you mean by \"chipset state check\"?",
+      "parentUuid": "8dccf624_538ffd95",
+      "revId": "2920d477bb4a6a677a5e55c75af59250e1634f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0cf3f70_ae77a1ca",
         "filename": "baseboard/guybrush/usb_pd_policy.c",
         "patchSetId": 12
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-13T18:29:09Z",
       "side": 1,
       "message": "I\u0027d say this is okay for now as long as we set a TODO to ensure we\u0027re setting Vbus to off when appropriate so we can\u0027t get into invalid TC states (ex. having Vbus sourced while presenting Rd or CC open)",
+      "revId": "2920d477bb4a6a677a5e55c75af59250e1634f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c83c24_3727b595",
+        "filename": "baseboard/guybrush/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-22T18:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0cf3f70_ae77a1ca",
       "revId": "2920d477bb4a6a677a5e55c75af59250e1634f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
