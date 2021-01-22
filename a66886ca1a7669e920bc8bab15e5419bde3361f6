@@ -16,6 +16,24 @@
       "message": "For me I get this build error:\n\n /tmp/z/vol/modules/ec-shim/common/mkbp_event.c:442: undefined reference to `__mkbp_evt_srcs_end\u0027\n/opt/zephyr-sdk/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/9.2.0/../../../../arm-zephyr-eabi/bin/ld: /tmp/z/vol/modules/ec-shim/common/mkbp_event.c:442: undefined reference to `__mkbp_evt_srcs\u0027",
       "revId": "a66886ca1a7669e920bc8bab15e5419bde3361f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e08ad74f_57b1ff6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-22T22:18:58Z",
+      "side": 1,
+      "message": "currently is WIP looks like",
+      "parentUuid": "21342862_c4abf31a",
+      "revId": "a66886ca1a7669e920bc8bab15e5419bde3361f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
