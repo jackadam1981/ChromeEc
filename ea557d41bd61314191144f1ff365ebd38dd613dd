@@ -33,6 +33,24 @@
       "message": "Need to add usb_mux.h?",
       "revId": "ea557d41bd61314191144f1ff365ebd38dd613dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95158162_39d7cf9b",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1155964
+      },
+      "writtenOn": "2021-01-22T18:07:20Z",
+      "side": 1,
+      "message": "I second this, compilation fails without adding this include.",
+      "parentUuid": "0505c831_6e4fc6a4",
+      "revId": "ea557d41bd61314191144f1ff365ebd38dd613dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
