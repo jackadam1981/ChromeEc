@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf96fa81_caaed3f0",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-22T18:22:23Z",
+      "side": 1,
+      "message": "Good catch, thanks.",
+      "parentUuid": "dbafbac9_89bc7704",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 15
+      },
+      "revId": "4f74ef315ed27bf6d0ba5cd2036ee2aae303aa44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54459f95_22359cf2",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-22T17:08:59Z",
       "side": 1,
       "message": "go/clion-for-chromeos",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 41
+      },
+      "revId": "4f74ef315ed27bf6d0ba5cd2036ee2aae303aa44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25624dbd_9d71aa5d",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-22T18:22:23Z",
+      "side": 1,
+      "message": "I\u0027ll add both. We want external users/partners to be able to use these instructions too.",
+      "parentUuid": "54459f95_22359cf2",
       "range": {
         "startLine": 236,
         "startChar": 9,
