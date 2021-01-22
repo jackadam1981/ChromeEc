@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2240371c_519386db",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-22T17:11:35Z",
+      "side": 1,
+      "message": "This could be STATIC_IF as well, but really doesn\u0027t matter as will just submit a mutex refactor that deletes this...\n\nso ignore me...",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "893e79450b1f162d2f3473e2996b63129202c92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
