@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "291afa80_d2b3054d",
+        "filename": "zephyr/projects/volteer/include/sensor_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-22T04:54:41Z",
+      "side": 1,
+      "message": "Ah.. right, I see many things are like Linux device tree. Unlike Linux or other device tree dependent OS, We are not enabling things by manipulating device tree. For us, board specific things are already decided by those c files under board\u0026baseboard. like sensors.c decides which sensors\u0026drivers are used  and how they are connected on board. Let me get the \"Kconfig + config_chip\"",
+      "parentUuid": "6d152e90_d4e6b8f5",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "6b43395e506f0b7275b77306f1f068a92952d73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddaf280f_ac9ca0bb",
         "filename": "zephyr/projects/volteer/include/sensor_map.h",
         "patchSetId": 3
