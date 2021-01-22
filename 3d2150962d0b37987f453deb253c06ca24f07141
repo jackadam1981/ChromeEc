@@ -51,6 +51,24 @@
       "parentUuid": "d77250c5_2e55c1e9",
       "revId": "3d2150962d0b37987f453deb253c06ca24f07141",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f56c9a_7f65be1a",
+        "filename": "chip/mchp/registers-mec152x.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-22T08:44:57Z",
+      "side": 1,
+      "message": "nit: still some tabs are missing",
+      "parentUuid": "9e79aef8_142466bd",
+      "revId": "3d2150962d0b37987f453deb253c06ca24f07141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
