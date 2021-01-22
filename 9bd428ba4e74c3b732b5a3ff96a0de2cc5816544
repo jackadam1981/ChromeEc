@@ -16,6 +16,23 @@
       "message": "Finally ready!",
       "revId": "9bd428ba4e74c3b732b5a3ff96a0de2cc5816544",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb833c8a_7aa47d39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-01-22T22:24:06Z",
+      "side": 1,
+      "message": "Looks like volteer is out of space again, I\u0027m not sure how to handle that. It must have gone over the edge since the last patchset. The other boards all moved to the larger part so they shouldn\u0027t have issues.\n\nFor the FRS GPIO, looks like that isn\u0027t currently included in Zephyr; which is why that is failing. Do you want me to include that here Keith?",
+      "revId": "9bd428ba4e74c3b732b5a3ff96a0de2cc5816544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
