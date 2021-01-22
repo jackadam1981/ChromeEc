@@ -16,6 +16,23 @@
       "message": "Hi Reviewers,\n\nPlease refer to b/177265749#comment37 for the root cause we found so far and wait for vendor to confirm. If the root cause is correct then keeping max14637 power-on after \n    1. PD adapter plugged-in then plugged-out\n    2. A USB 2.0 storage is plugged in\n\nwill cause the issue since USB2 switch of bc12 chip was open during PD adapter plugged-in.\n\n* Maybe we can do bc12_detect again when VBUS is off (no charger and no client device plugged) and I expect BC12 will detect it as SDP and close the switch. Then we can keep chip as power on afterward including client device like USB storage or phone is connected?",
       "revId": "ea337bd260d0bd5858cc3b57aebc37496f6b9453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33493549_9cfb2250",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-01-22T01:44:45Z",
+      "side": 1,
+      "message": "The original solution here is to prevent BC12 from triggering the detection which might cause in-compatibility issue for some client devices because the bc12 detect will impact D+/D- signals.\n\nAs the result, I might propose to put additional bc12_detect(port) after line147. Could Yu-An have a try? Thanks.",
+      "revId": "ea337bd260d0bd5858cc3b57aebc37496f6b9453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
