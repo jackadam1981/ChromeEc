@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67f4477d_8b6a1f25",
+        "filename": "board/sklrvp_mchp/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-22T23:44:46Z",
+      "side": 1,
+      "message": "sw please remove this code",
+      "parentUuid": "4d8196b5_b7130cbb",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 6
+      },
+      "revId": "eb9d5892002dc05267ebd55baefbdc1ae779933e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93407adc_2ffaa50d",
         "filename": "board/sklrvp_mchp/board.c",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-22T08:49:56Z",
       "side": 1,
       "message": "use the logic in baseboard",
+      "range": {
+        "startLine": 462,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 62
+      },
+      "revId": "eb9d5892002dc05267ebd55baefbdc1ae779933e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79e03ac_6f14f387",
+        "filename": "board/sklrvp_mchp/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-22T23:44:46Z",
+      "side": 1,
+      "message": "we are undefining Config_fans; do not have fan support yet; we will remove this code snippet; if fan support is required we are doing after phase-1",
+      "parentUuid": "93407adc_2ffaa50d",
       "range": {
         "startLine": 462,
         "startChar": 1,

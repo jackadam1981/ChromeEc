@@ -39,6 +39,30 @@
       },
       "revId": "c58b36d4d4f2bee6c295bb1856bba2f6d5fe1b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "364e8ee7_580a12ac",
+        "filename": "board/sklrvp_mchp/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-22T23:44:46Z",
+      "side": 1,
+      "message": "hi vijay, we did not find \"MODULE_eSPI\" could you point out which file defines in main branch?",
+      "parentUuid": "3be8521e_46d27491",
+      "range": {
+        "startLine": 306,
+        "startChar": 38,
+        "endLine": 306,
+        "endChar": 48
+      },
+      "revId": "c58b36d4d4f2bee6c295bb1856bba2f6d5fe1b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
