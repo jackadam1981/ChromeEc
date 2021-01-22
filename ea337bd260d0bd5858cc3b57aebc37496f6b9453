@@ -33,6 +33,24 @@
       "message": "The original solution here is to prevent BC12 from triggering the detection which might cause in-compatibility issue for some client devices because the bc12 detect will impact D+/D- signals.\n\nAs the result, I might propose to put additional bc12_detect(port) after line147. Could Yu-An have a try? Thanks.",
       "revId": "ea337bd260d0bd5858cc3b57aebc37496f6b9453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9242ba_fe62b95a",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-01-22T03:19:33Z",
+      "side": 1,
+      "message": "Done.\nThat is working in my dood DUT.",
+      "parentUuid": "33493549_9cfb2250",
+      "revId": "ea337bd260d0bd5858cc3b57aebc37496f6b9453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
