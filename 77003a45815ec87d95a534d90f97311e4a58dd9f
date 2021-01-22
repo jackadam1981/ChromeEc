@@ -16,6 +16,23 @@
       "message": "LGTM. Give others a chance to review. Will +2 later.",
       "revId": "77003a45815ec87d95a534d90f97311e4a58dd9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2fab5a_19d6c732",
+        "filename": "include/driver/tcpm/ps8xxx_public.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-22T23:17:18Z",
+      "side": 1,
+      "message": "nit: maybe note what use-case is expected for this driver since some boards will still be using tcpci_tcpm_usb_mux_driver for this chip and I assume that will propagate some as people copy/paste for new boards",
+      "revId": "77003a45815ec87d95a534d90f97311e4a58dd9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
