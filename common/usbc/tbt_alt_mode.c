@@ -152,6 +152,13 @@ static void tbt_exit_done(int port)
 	tbt_prints("alt mode protocol failed!", port);
 }
 
+static void usb_mux_set_disconnect_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+		usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_DISCONNECT,
+			    polarity_rm_dts(pd_get_polarity(port)));
+}
+
 void tbt_exit_mode_request(int port)
 {
 	union tbt_mode_resp_cable cable_mode_resp;
@@ -488,7 +495,8 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 		if (!(modep && modep->opos))
 			return -1;
 
-		usb_mux_set_safe_mode(port);
+		usb_mux_set_disconnect_mode(port);
+
 		vdm[0] = VDO(USB_VID_INTEL, 1, CMD_EXIT_MODE) |
 			VDO_OPOS(modep->opos) |
 			VDO_CMDT(CMDT_INIT) |
@@ -502,7 +510,8 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 		if (!(modep && modep->opos))
 			return -1;
 
-		usb_mux_set_safe_mode(port);
+		usb_mux_set_disconnect_mode(port);
+
 		vdm[0] = VDO(USB_VID_INTEL, 1, CMD_EXIT_MODE) |
 			VDO_OPOS(modep->opos) |
 			VDO_CMDT(CMDT_INIT) |
@@ -517,7 +526,8 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 		if (!(modep && modep->opos))
 			return -1;
 
-		usb_mux_set_safe_mode(port);
+		usb_mux_set_disconnect_mode(port);
+
 		vdm[0] = VDO(USB_VID_INTEL, 1, CMD_EXIT_MODE) |
 			VDO_OPOS(modep->opos) |
 			VDO_CMDT(CMDT_INIT) |

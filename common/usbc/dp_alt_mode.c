@@ -14,6 +14,7 @@
 #include "assert.h"
 #include "usb_common.h"
 #include "usb_dp_alt_mode.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
@@ -254,7 +255,12 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		if (!(modep && modep->opos))
 			return -1;
 
-		svdm_safe_dp_mode(port);
+		if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+			usb_mux_set(port, USB_PD_MUX_NONE,
+				    USB_SWITCH_DISCONNECT,
+				    polarity_rm_dts(pd_get_polarity(port)));
+		}
+
 		vdm[0] = VDO(USB_SID_DISPLAYPORT,
 			     1, /* structured */
 			     CMD_EXIT_MODE);
