@@ -174,6 +174,16 @@ void set_usb_mux_with_current_data_role(int port);
 void usb_mux_set_safe_mode(int port);
 
 /**
+ * Configure the USB MUX to exit an alternate mode
+ * On exiting alternate mode request, state of the TCSS MUX needs to be in
+ * disconnect mode. But, since we are subsequently entering USB mode, do not
+ * set the mux to low power mode.
+ *
+ * @param port The PD port number
+ */
+void usb_mux_set_exit_alt_mode(int port);
+
+/**
  * Get the PD flags stored in BB Ram
  *
  * @param port USB-C port number
