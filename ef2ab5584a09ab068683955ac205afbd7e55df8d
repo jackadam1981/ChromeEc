@@ -33,6 +33,23 @@
       "message": "I had to add more more check in src_attach_wait state",
       "revId": "ef2ab5584a09ab068683955ac205afbd7e55df8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bbbae86_6cb64366",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2038,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-22T18:15:25Z",
+      "side": 1,
+      "message": "Should probably still include the IS_ENABLED check.  is_try_src_enabled() appears to assert if it\u0027s called without that config set",
+      "revId": "ef2ab5584a09ab068683955ac205afbd7e55df8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
