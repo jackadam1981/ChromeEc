@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "455537bd_c0291bc6",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-22T07:58:24Z",
+      "side": 1,
+      "message": "if we arrive here with CHIPSET_STATE_OFF,\nI understand that we don\u0027t want to do :\n pchg_queue_event(ctx, PCHG_EVENT_INITIALIZE);\n gpio_enable_interrupt(ctx-\u003ecfg-\u003eirq_pin);\n\nBut should we really skip setting the ctx-\u003estate and doing the queue_init ?",
+      "revId": "d5e8e09da0b136911b31e803a3755d644458247b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
