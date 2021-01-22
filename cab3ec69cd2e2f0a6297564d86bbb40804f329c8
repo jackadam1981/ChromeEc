@@ -51,6 +51,23 @@
       "parentUuid": "39c97a6e_50c0b754",
       "revId": "cab3ec69cd2e2f0a6297564d86bbb40804f329c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e7bc8d_10a99b1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-22T16:21:03Z",
+      "side": 1,
+      "message": "Issue is not seen in 586 runs, patch seems to be good. Later if we see any new issues we will update. please submit the patch",
+      "revId": "cab3ec69cd2e2f0a6297564d86bbb40804f329c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
