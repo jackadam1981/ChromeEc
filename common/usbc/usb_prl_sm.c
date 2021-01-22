@@ -508,7 +508,7 @@ test_export_static enum usb_tch_state tch_get_state(const int port)
 /* Print the chunked Tx statemachine's current state. */
 static void print_current_tch_state(const int port)
 {
-	if (prl_debug_level >= DEBUG_LEVEL_3)
+	if (prl_debug_level >= DEBUG_LEVEL_2)
 		CPRINTS("C%d: %s", port,
 				tch_state_names[tch_get_state(port)]);
 }
@@ -946,6 +946,7 @@ static void prl_tx_discard_message_entry(const int port)
 	 * incoming SOP' or SOP''.  However this would get the TCH out of sync.
 	 */
 	if (PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT)) {
+		CPRINTS("prl: discarding pending tx message!");
 		PRL_TX_CLR_FLAG(port, PRL_FLAGS_MSG_XMIT);
 		increment_msgid_counter(port);
 		pe_report_discard(port);
@@ -1459,6 +1460,7 @@ static void rch_wait_for_message_from_protocol_layer_run(const int port)
 			 * Chunked != Chunking
 			 */
 			else {
+				CPRINTS("rch: chunked != chunking -> error");
 				set_state_rch(port, RCH_REPORT_ERROR);
 			}
 		}
@@ -1475,6 +1477,7 @@ static void rch_wait_for_message_from_protocol_layer_run(const int port)
 		 * revision lower than PD3.0
 		 */
 		else {
+			CPRINTS("rch: rev 2.0 -> error 1");
 			set_state_rch(port, RCH_REPORT_ERROR);
 		}
 	}
@@ -1510,8 +1513,10 @@ static void rch_processing_extended_message_run(const int port)
 	/*
 	 * Abort Flag Set
 	 */
-	if (PDMSG_CHK_FLAG(port, PRL_FLAGS_ABORT))
+	if (PDMSG_CHK_FLAG(port, PRL_FLAGS_ABORT)) {
+		CPRINTS("rch: abort flag is set!");
 		set_state_rch(port, RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER);
+	}
 
 	/*
 	 * If expected Chunk Number:
@@ -1529,6 +1534,7 @@ static void rch_processing_extended_message_run(const int port)
 		if (pdmsg[port].num_bytes_received +
 					byte_num > EXTENDED_BUFFER_SIZE) {
 			set_state_rch(port, RCH_REPORT_ERROR);
+			CPRINTS("rch: buffer overflow error");
 			return;
 		}
 
@@ -1542,11 +1548,15 @@ static void rch_processing_extended_message_run(const int port)
 		pdmsg[port].chunk_number_expected++;
 		/* adjust num bytes received */
 		pdmsg[port].num_bytes_received += byte_num;
+		CPRINTS("rch: chunk %d, rx_byte = %d",
+			pdmsg[port].chunk_number_expected,
+			pdmsg[port].num_bytes_received);
 
 		/* Was that the last chunk? */
 		if (pdmsg[port].num_bytes_received >= data_size) {
 			rx_emsg[port].len = pdmsg[port].num_bytes_received;
 			 /* Pass Message to Policy Engine */
+			CPRINTS("rch: last message rx'd");
 			set_state_rch(port, RCH_PASS_UP_MESSAGE);
 		}
 		/*
@@ -1558,8 +1568,10 @@ static void rch_processing_extended_message_run(const int port)
 	/*
 	 * Unexpected Chunk Number
 	 */
-	else
+	else {
+		CPRINTS("rch: unexpected chunk number -> error 1");
 		set_state_rch(port, RCH_REPORT_ERROR);
+	}
 }
 
 /*
@@ -1582,6 +1594,9 @@ static void rch_requesting_chunk_entry(const int port)
 	pdmsg[port].data_objs = 1;
 	pdmsg[port].ext = 1;
 	PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
+	CPRINTS("prl: tx request chunk %d: ext_hdr = %x",
+		pdmsg[port].chunk_number_expected,
+		pdmsg[port].tx_chk_buf[0]);
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_TX);
 }
 
@@ -1592,19 +1607,34 @@ static void rch_requesting_chunk_run(const int port)
 	 */
 	if (PDMSG_CHK_FLAG(port, PRL_FLAGS_TX_COMPLETE)) {
 		PDMSG_CLR_FLAG(port, PRL_FLAGS_TX_COMPLETE);
+		CPRINTS("prl: tx chunk req done!");
 		set_state_rch(port, RCH_WAITING_CHUNK);
 	}
 	/*
 	 * Transmission Error from Protocol Layer or
 	 * Message Received From Protocol Layer
 	 */
-	else if (RCH_CHK_FLAG(port, PRL_FLAGS_MSG_RECEIVED) ||
-			PDMSG_CHK_FLAG(port, PRL_FLAGS_TX_ERROR)) {
+	else if (PDMSG_CHK_FLAG(port, PRL_FLAGS_TX_ERROR)) {
 		/*
 		 * Leave PRL_FLAGS_MSG_RECEIVED flag set. It'll be
 		 * cleared in rch_report_error state
 		 */
+		CPRINTS("prl: tx error = %d, rx msg = %d",
+			PDMSG_CHK_FLAG(port, PRL_FLAGS_TX_ERROR),
+			RCH_CHK_FLAG(port, PRL_FLAGS_MSG_RECEIVED));
 		set_state_rch(port, RCH_REPORT_ERROR);
+	} else if (RCH_CHK_FLAG(port, PRL_FLAGS_MSG_RECEIVED)) {
+		/*
+		 * It is possible to have both message received and the chunk
+		 * request transmit complete before a full PRL SM run. But, the
+		 * PRL_RX state machine runs prior to RCH, but before PRL_TX, so
+		 * PRL_FLAGS_MSG_RECEIVED can be set without
+		 * PRL_FLAGS_TX_COMPLETE set at this point (though it will be
+		 * set as soon as PRL_TX is executed next.
+		 */
+		CPRINTS("rch[%d]: waiting for tx done, but rx msg ready!",
+			port);
+		set_state_rch(port, RCH_WAITING_CHUNK);
 	}
 }
 
@@ -1625,6 +1655,11 @@ static void rch_waiting_chunk_entry(const int port)
 static void rch_waiting_chunk_run(const int port)
 {
 	if (RCH_CHK_FLAG(port, PRL_FLAGS_MSG_RECEIVED)) {
+		if (PDMSG_CHK_FLAG(port, PRL_FLAGS_TX_COMPLETE)) {
+			PDMSG_CLR_FLAG(port, PRL_FLAGS_TX_COMPLETE);
+			CPRINTS("rch[%d]: tx comp flag after chunk run!",
+			port);
+		}
 		/*
 		 * Leave PRL_FLAGS_MSG_RECEIVED flag set just in case an error
 		 * is detected. If an error is detected, PRL_FLAGS_MSG_RECEIVED
@@ -1639,6 +1674,7 @@ static void rch_waiting_chunk_run(const int port)
 			 */
 			if (PD_EXT_HEADER_REQ_CHUNK(exhdr) ||
 			    !PD_EXT_HEADER_CHUNKED(exhdr)) {
+				CPRINTS("rch: waiting chunk -> error 1");
 				set_state_rch(port, RCH_REPORT_ERROR);
 			}
 			/*
@@ -1659,6 +1695,7 @@ static void rch_waiting_chunk_run(const int port)
 	 * ChunkSenderResponseTimer Timeout
 	 */
 	else if (get_time().val > rch[port].chunk_sender_response_timer) {
+		CPRINTS("rch: sender response timer -> error 1");
 		set_state_rch(port, RCH_REPORT_ERROR);
 	}
 }
@@ -2070,7 +2107,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		cnt = CHK_BUF_SIZE;
 
 	/* dump received packet content (only dump ping at debug level MAX) */
-	if ((prl_debug_level >= DEBUG_LEVEL_2 && type != PD_CTRL_PING) ||
+	if ((prl_debug_level >= DEBUG_LEVEL_1 && type != PD_CTRL_PING) ||
 		prl_debug_level >= DEBUG_LEVEL_3) {
 		int p;
 

@@ -159,7 +159,7 @@ static bool ucpd_rx_sop_prime_enabled;
 
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
 /* Defines and macros used for ucpd pd message logging */
-#define MSG_LOG_LEN 64
+#define MSG_LOG_LEN 256
 #define MSG_BUF_LEN 10
 
 struct msg_info {
