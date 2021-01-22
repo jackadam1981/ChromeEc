@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e749ad9_34dafa15",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-22T03:19:48Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me why these need to be brought into the deferred function. It seems they should only be called once. Why not just move them to around L458?",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 0
+      },
+      "revId": "973f7d46ae0b8edafa78b08c71aeaf27cf2fd11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469c09c0_22f3024e",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-22T03:19:48Z",
+      "side": 1,
+      "message": "Maybe \u0027configure_usb_pwr_en`? servo_v4.1 isn\u0027t an EC, but nevertheless I don\u0027t think the prefix is necessary.",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 21
+      },
+      "revId": "973f7d46ae0b8edafa78b08c71aeaf27cf2fd11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acfe5a5d_155a22b1",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-22T03:19:48Z",
+      "side": 1,
+      "message": "Instead of renaming these, what do you think about dispatching accordingly based upon the board ID?",
+      "range": {
+        "startLine": 256,
+        "startChar": 11,
+        "endLine": 256,
+        "endChar": 14
+      },
+      "revId": "973f7d46ae0b8edafa78b08c71aeaf27cf2fd11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad0c247_40c34311",
+        "filename": "board/servo_v4p1/pathsel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-22T03:19:48Z",
+      "side": 1,
+      "message": "nit: please keep in alphabetical order",
+      "revId": "973f7d46ae0b8edafa78b08c71aeaf27cf2fd11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
