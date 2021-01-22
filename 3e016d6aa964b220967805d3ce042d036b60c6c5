@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af2fad42_9c0f5c3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-01-22T00:11:42Z",
+      "side": 1,
+      "message": "I switched this to CONFIG_MKBP_USE_GPIO since it seems to match what all the other variants were doing, and it also appeared to work on my board.",
+      "parentUuid": "dea3c79e_7f6a6ee8",
+      "revId": "3e016d6aa964b220967805d3ce042d036b60c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "680540cf_f15632e5",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-20T20:12:05Z",
       "side": 1,
       "message": "Can these two go in our baseboard.h?  I believe every board has them.  The commands are good to keep on a by-board basis since some are really short on flash space",
+      "revId": "3e016d6aa964b220967805d3ce042d036b60c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b59c2059_bec7fbac",
+        "filename": "board/drawcia/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-01-22T00:11:42Z",
+      "side": 1,
+      "message": "Sure. I also removed all the one-off instances a lot of the other boards had added in.",
+      "parentUuid": "680540cf_f15632e5",
       "revId": "3e016d6aa964b220967805d3ce042d036b60c6c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
