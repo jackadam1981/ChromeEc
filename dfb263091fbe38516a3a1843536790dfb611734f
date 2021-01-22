@@ -22,6 +22,30 @@
       },
       "revId": "dfb263091fbe38516a3a1843536790dfb611734f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8927d51_dcd5d5f5",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-22T20:47:05Z",
+      "side": 1,
+      "message": "I probably copy/pasted that from another test project that hadn\u0027t been updated yet. New version incoming",
+      "parentUuid": "dcfccc72_b9619d2c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "dfb263091fbe38516a3a1843536790dfb611734f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
