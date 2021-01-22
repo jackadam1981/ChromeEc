@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be285bf_99765029",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-01-22T06:27:31Z",
+      "side": 1,
+      "message": "Yes, It make sense to add the error message as we see the flash size is always a multiple of 64KB.",
+      "parentUuid": "f21765af_3d930d8e",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 44
+      },
+      "revId": "bc71fe27b93766728ebeb930d9d163aca31079cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "56112171_f28d3163",
