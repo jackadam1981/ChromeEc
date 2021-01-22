@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbad1933_f63f2c69",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-01-22T14:00:15Z",
+      "side": 1,
+      "message": "Hi Reviewers,\n\nThe reason of this change is because\n\n    * Root cause - ODM team confirmed that D+ and D- of PD adapter are shorted so BC12 chip would detect PD adapter as the DCP. As a result, BC12 would set USB 2 switch open based on product spec. Later on once USB 2.0 storage is attached, DUT can\u0027t recognize it because USB 2 data path is blocked by BC12 now.\n\n    * Proposed Solution\n        * Whenever adapter or USB client disconnected from a port of DUT, we re-trigger the bc12_detect() so BC12 chip will be off then on for detecting the status again. In this case, the D+/D- are NC so BC12 chip will detect it as SDP and keep this status. \n        * When USB 2.0 storage is connected later, bc12_detect will not be called again due to DUT is in source role. At this time, USB switch is closed so USB 2.0 path is good. And there is no BC12 detect cycle happened so we will not hit issue resolved in CL:*2364342 as well.\n        * When adapter is connected later, bc12_detect will be triggered again for DCP / SDP / CDP.\n\nAs a result, I would vote +1 here first and wait for your review. On the other hand, due to the urgency for multiple projects, if there is no concern then I will +2 later. Thanks.",
+      "revId": "9688f967118ad0856e4f0c58d238c82e71936c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
