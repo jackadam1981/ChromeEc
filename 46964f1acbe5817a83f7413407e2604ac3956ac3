@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c4bd820_fa98deba",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-22T22:02:20Z",
+      "side": 1,
+      "message": "Should we add this to zephyr/CMakeLists.txt so it\u0027s automatic for all tests?\n\n if(CONFIG_ZTEST)\n   zephyr_include_directories_ifdef(CONFIG_PLATFORM_EC \"${PLATFORM_EC}/fuzz\" \"${PLATFORM_EC}/test\")\n endif()",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "46964f1acbe5817a83f7413407e2604ac3956ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67418fe7_65fa3f7d",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-22T22:02:20Z",
+      "side": 1,
+      "message": "also automatic",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "46964f1acbe5817a83f7413407e2604ac3956ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
