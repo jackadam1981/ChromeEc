@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e521b294_2caf20a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-22T01:21:15Z",
+      "side": 1,
+      "message": "We can\u0027t remove magolor_legacy quite yet. I\u0027ve file b/178141664 to track the work. Unfortunately, the older boards are still in circulation and are actively being used.\n\nI think just ifdef\u0027ing it out would suffice for now. As the older boards have no need for the SSFC seeing as they are already built. 😊",
+      "revId": "c49221f8a48f620aa82abc7fd209b3e9dfc5142f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
