@@ -16,6 +16,7 @@
 #include "mkbp_event.h"
 #include "tcpm/tcpm.h"
 #include "usb_mux.h"
+#include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd.h"
 
@@ -357,7 +358,14 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		 */
 		if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
 		    usb_mux_get_disconnect_latch_flag(p->port)) {
-			r_v2->enabled = 0;
+			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP) &&
+			    IS_ENABLED(CONFIG_USB_PD_TCPMV2) &&
+			    dpm_is_mode_exit_request(p->port)) {
+				r_v2->enabled = pd_is_connected(p->port) ?
+					PD_CTRL_RESP_ENABLED_CONNECTED : 0;
+			} else {
+				r_v2->enabled = 0;
+			}
 		} else {
 			r_v2->enabled =
 				(pd_comm_is_enabled(p->port) ?
