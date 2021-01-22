@@ -157,6 +157,23 @@
       "parentUuid": "d9890160_c6524036",
       "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d3dc61_eacb9794",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-01-22T18:21:03Z",
+      "side": 1,
+      "message": "ACK.",
+      "revId": "06f9221f883fb852b1fd9ec0bac15f362725ab69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
