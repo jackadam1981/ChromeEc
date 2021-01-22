@@ -2113,6 +2113,8 @@ static void tc_unattached_snk_run(const int port)
 		/* Connection Detected */
 		set_state_tc(port, TC_ATTACH_WAIT_SNK);
 		return;
+	} else if(cc_is_open(cc1, cc2)) {
+		pd_send_host_event(PD_EVENT_POWER_CHANGE);
 	}
 
 	/*
