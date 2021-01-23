@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da93ee7e_c3f4039a",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-23T15:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccb0cc57_b0ce2953",
+      "revId": "e687e64f481780752055eac7604ce1a5890ab0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34117f4b_a30bd430",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-22T17:24:41Z",
       "side": 1,
       "message": "and the queue_init ?",
+      "revId": "e687e64f481780752055eac7604ce1a5890ab0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca493ec_37610f5d",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-23T15:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34117f4b_a30bd430",
       "revId": "e687e64f481780752055eac7604ce1a5890ab0c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
