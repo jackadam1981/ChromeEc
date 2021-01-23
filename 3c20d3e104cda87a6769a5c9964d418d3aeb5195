@@ -16,6 +16,98 @@
       "message": "Not yet ready, but this works for configuring SPI to the sensor based on SPI_SEL.",
       "revId": "3c20d3e104cda87a6769a5c9964d418d3aeb5195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db926b03_d4e8fd73",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-23T03:25:25Z",
+      "side": 1,
+      "message": "I don\u0027t think this is compatible with old designs, since this signal is disconnected and could swing low during RW runtime. We could add pull up.\n\nAlso, this means that new HW references running old RO could potentially go into low power idle.\n\nEither way we would need to spin a new RO for references that change this sleep line. I personally think we should remove the concept of low-power-idle and sleep lines from new ROs.\n\nhttps://github.com/coreboot/chrome-ec/blob/master/include/gpio.wrap#L153\nGPIO_INT_RO()",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 62
+      },
+      "revId": "3c20d3e104cda87a6769a5c9964d418d3aeb5195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32811b39_53a56aca",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-23T03:25:25Z",
+      "side": 1,
+      "message": "Just a quick check for posterity:\n\nThe STM32H743 pull-up and pull-down are between 30 to 50 kOhms (https://screenshot.googleplex.com/4FHydn42wwjysdV.png). The icetower pulldown strap is 10kOhms.\n\nThe input pin would see 0.83V for low -- and 3.3V on high",
+      "range": {
+        "startLine": 27,
+        "startChar": 41,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "3c20d3e104cda87a6769a5c9964d418d3aeb5195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6d6205_5c46feb9",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-23T03:25:25Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "3c20d3e104cda87a6769a5c9964d418d3aeb5195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5de927_71900989",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-23T03:25:25Z",
+      "side": 1,
+      "message": "Is there any way to mention these pins, so that we can eventually do https://github.com/coreboot/chrome-ec/blob/HEAD/chip/stm32/gpio-stm32f4.c#L39 for the H7?",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 70
+      },
+      "revId": "3c20d3e104cda87a6769a5c9964d418d3aeb5195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
