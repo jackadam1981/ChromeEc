@@ -39,6 +39,30 @@
       },
       "revId": "8849a83c2a4695649b770aa7c15aa6d599671c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0bce27b_208ae281",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-23T23:34:01Z",
+      "side": 1,
+      "message": "Hmmm, strange, I swapped zephyr/v2.4 over to that branch and now again not getting the binding to work. I\u0027ll take another look today and will update this CL accordingly.",
+      "parentUuid": "a53aaf15_90a26627",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 435,
+        "endChar": 0
+      },
+      "revId": "8849a83c2a4695649b770aa7c15aa6d599671c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
