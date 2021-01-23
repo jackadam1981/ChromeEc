@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8544e6c7_4806afcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-01-23T14:16:25Z",
+      "side": 1,
+      "message": "Maybe I\u0027m missing something. From b/177043612 it looks like it should be used for PVT. But I don\u0027t find the decision to reflect that (perhaps based on board version) in this CL?",
+      "revId": "9e0038f36d0fbf3dac665c7b0ad4ebab0c5524d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76a0052c_354f80f3",
