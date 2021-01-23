@@ -39,6 +39,30 @@
       },
       "revId": "f993abe0269013cb2d776eed3331a88b975b08c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "418dab4d_bef92360",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-23T01:02:25Z",
+      "side": 1,
+      "message": "I think IS_ENABLED() returns 1 and 0. It is used in some runtime code, like\n\n   if (IS_ENABLED(HAS_TASK_KEYSCAN)) {\n      /* Do something */\n   }\n\nThe compiler will be smart to discard the body for the if (0) condition.",
+      "parentUuid": "b4ca9e31_3cdc8477",
+      "range": {
+        "startLine": 206,
+        "startChar": 7,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "f993abe0269013cb2d776eed3331a88b975b08c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
