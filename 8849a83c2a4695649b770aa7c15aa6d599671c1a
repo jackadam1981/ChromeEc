@@ -16,6 +16,29 @@
       "message": "was CQ failing?",
       "revId": "8849a83c2a4695649b770aa7c15aa6d599671c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a53aaf15_90a26627",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-01-23T17:52:21Z",
+      "side": 1,
+      "message": "Hey this should have been set in chip dts file from http://crrev.com/c/2629551. Should I have set cq-depend on the ec ones?",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 435,
+        "endChar": 0
+      },
+      "revId": "8849a83c2a4695649b770aa7c15aa6d599671c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
