@@ -6,9 +6,15 @@ description: Intel JHL8040R Thunderbolt 4 Retimer
 
 compatible: "intel,jhl8040r"
 
-include: i2c-device.yaml
+include: base.yaml
 
 properties:
+    reg:
+      required: true
+
+    label:
+      required: true
+
     reset-gpios:
       type: phandle-array
       required: true
