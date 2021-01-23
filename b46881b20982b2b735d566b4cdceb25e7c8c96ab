@@ -16,6 +16,24 @@
       "message": "Perhaps Move this function to a common file so that is it accessible from dp alt mode also?",
       "revId": "b46881b20982b2b735d566b4cdceb25e7c8c96ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "573a356c_b0c8800f",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-23T01:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6174286_5ff6e15e",
+      "revId": "b46881b20982b2b735d566b4cdceb25e7c8c96ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
