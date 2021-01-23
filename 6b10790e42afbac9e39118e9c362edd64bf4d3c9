@@ -68,6 +68,24 @@
       "message": "I think you can merge without that CL if that helps, we won\u0027t be building ec3po from a volteer branch, but the test is broken it seems so I might have to either revert the CL or fix the test, thanks for flagging",
       "revId": "6b10790e42afbac9e39118e9c362edd64bf4d3c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a2e5171_a316ffde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-23T02:15:07Z",
+      "side": 1,
+      "message": "I\u0027m trying to only do clean merge commits if I can help it. If Keith agrees, I\u0027ll submit this and then pick up the revert/fix when you do that.",
+      "parentUuid": "ee7e6725_0986129f",
+      "revId": "6b10790e42afbac9e39118e9c362edd64bf4d3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
