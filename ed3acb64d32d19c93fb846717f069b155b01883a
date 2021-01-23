@@ -207,6 +207,30 @@
       },
       "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb7e3b67_ac4fec63",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2021-01-23T15:49:45Z",
+      "side": 1,
+      "message": "MEC152x has an RTC that runs off the 32KHz clock. Some customers use the EC RTC and want the better precision a 32K crystal provides.",
+      "parentUuid": "cac1f80c_af4c2a4b",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "ed3acb64d32d19c93fb846717f069b155b01883a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
