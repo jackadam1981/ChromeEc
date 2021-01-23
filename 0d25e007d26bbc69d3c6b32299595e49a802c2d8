@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f88852_962db47d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-01-23T14:24:05Z",
+      "side": 1,
+      "message": "I know this CL is not ready for review yet, but just dropping an observation here since I tried this. Even with this CL, I see the ",
+      "revId": "0d25e007d26bbc69d3c6b32299595e49a802c2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc3c14df_0486dc92",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-01-23T14:24:05Z",
+      "side": 1,
+      "message": "I know this CL is not ready for review yet, but just dropping an observation here since I tried this out today. Even with this CL, I see the PD_CTRL_RESP_ENABLED_CONNECTED being not set, so we still see the partner removal in the kernel driver.\n\nSince there are other PD events which trigger the PD_CTRL command, it is likely getting called before the dpm_is_mode_exit_request() returns true, so r_v2-\u003eenabled gets set to 0.",
+      "range": {
+        "startLine": 363,
+        "startChar": 7,
+        "endLine": 363,
+        "endChar": 31
+      },
+      "revId": "0d25e007d26bbc69d3c6b32299595e49a802c2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
