@@ -46,6 +46,30 @@
       },
       "revId": "cdd04d93b1879bc406cedbd7926b4df783d90b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9564ef75_fd51600e",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8236,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-23T16:21:15Z",
+      "side": 1,
+      "message": "Then, can you submit ps4? I think, in ps5, bad_size will be 1 if tag \u003d\u003d CBI_TAG_REWORK_ID and size \u003d\u003d 7.",
+      "parentUuid": "084c5baa_82cb0b9a",
+      "range": {
+        "startLine": 8224,
+        "startChar": 0,
+        "endLine": 8236,
+        "endChar": 4
+      },
+      "revId": "cdd04d93b1879bc406cedbd7926b4df783d90b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
