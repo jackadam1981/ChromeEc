@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8803a2b5_391b313d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-01-23T00:48:26Z",
+      "side": 1,
+      "message": "Seems OK to me w/ a small question.\n\n...took me a while to figure out how this define is set to confirm it was defined in time for baseboard.h.  I guess there\u0027s a whole bunch of magic that parses ec.tasklist and sets all these HAS_TASK defines.  Crazy.",
+      "revId": "f993abe0269013cb2d776eed3331a88b975b08c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ca9e31_3cdc8477",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-01-23T00:48:26Z",
+      "side": 1,
+      "message": "Should this be using IS_ENABLED?  The EC code base seems inconsistent.",
+      "range": {
+        "startLine": 206,
+        "startChar": 7,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "f993abe0269013cb2d776eed3331a88b975b08c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
