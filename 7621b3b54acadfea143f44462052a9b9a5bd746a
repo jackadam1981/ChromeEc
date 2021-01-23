@@ -328,6 +328,24 @@
       "parentUuid": "6c91ad3d_e714db7d",
       "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "766a8534_609bc588",
+        "filename": "board/sklrvp_mchp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-23T00:08:56Z",
+      "side": 1,
+      "message": "hi Vijay, for skylrvp version we use full form factor evb and very old mecc card together to bring up the code; we will update tho netnames with new mecc card when we are bringing up ADL Platform",
+      "parentUuid": "f13c467d_7164b08a",
+      "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
