@@ -16,6 +16,46 @@
       "message": "Hi Yu-An,\n\nBy the way, it would be good to split dood specific change and max14637 changes to two CLs.",
       "revId": "de0d33b94f25deb97667e9292caa6d51f58adbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b2ad62e_83166838",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-23T07:09:53Z",
+      "side": 1,
+      "message": "Yes, +1 on splitting them.\n\n*sigh*, this is quite the messy situation... My opinion is that this IC needs to not be used in this context, but it\u0027s too late for that.\n\nAs I understand it, the IC performs data contact detection (DCD) when it is powered. However, this occurred regardless of SNK or SRC power roles. This caused issues with particular UFPs that were performing their own BC 1.2 detection. The driver was then modified such that DCD is performed only when the port is in a SNK power role, but additionally, the IC was left powered when the device was removed. If a DCP charger is plugged into the DUT, the IC will leave the data line switches open and they will remain open upon unplug or VBUS removal.\n\nThe solution proposed here simply performs a DCD on VBUS removal such that the switches would be closed for the next UFP device to be plugged in. This would generally work, but I believe is a bit insufficient.\n\nIf during the connection there is a PR_Swap or HardReset that takes away VBUS, I believe that DCD would occur. PD communications should not affect USB 2.0, but perhaps that\u0027s slightly out of scope of this particular bug.\n\nAn alternative to keeping the IC powered the entire time is to perform the DCD in the AttachedWait.SRC state prior to applying VBUS to the port partner. This shouldn\u0027t violate the Type-C spec as the peripheral would be waiting indefinitely for VBUS in the AttachWait.SNK state.",
+      "revId": "de0d33b94f25deb97667e9292caa6d51f58adbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83951f49_54aa5286",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-23T07:09:53Z",
+      "side": 1,
+      "message": "Not you, but it seems like the intent would to be to disable the IC. Issuing the request may leave the power rail on. And if it doesn\u0027t leave it on, then the desired workaround isn\u0027t working...",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 41
+      },
+      "revId": "de0d33b94f25deb97667e9292caa6d51f58adbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
