@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "389ad8ee_4b317cfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2021-01-23T15:51:01Z",
+      "side": 1,
+      "message": "In patch set 8 I added baseboard/intelrvp/mchp_ec.[c, h] and updated build rule in build.mk.  The sklrvp_mchp board files were updated to use the key scan table, etc. from intelrvp.  Note, I removed the fan-tach table from my intelrvp/mchp_ec.c since we have disabled fan and temp control in sklrvp_mchp.",
+      "parentUuid": "4dddaf34_85b77cab",
+      "revId": "7621b3b54acadfea143f44462052a9b9a5bd746a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9721d1f_657155c3",
