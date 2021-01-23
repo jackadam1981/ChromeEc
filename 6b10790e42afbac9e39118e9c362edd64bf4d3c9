@@ -51,6 +51,23 @@
       "parentUuid": "7cb918ab_43f24643",
       "revId": "6b10790e42afbac9e39118e9c362edd64bf4d3c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7e6725_0986129f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2021-01-23T02:06:44Z",
+      "side": 1,
+      "message": "I think you can merge without that CL if that helps, we won\u0027t be building ec3po from a volteer branch, but the test is broken it seems so I might have to either revert the CL or fix the test, thanks for flagging",
+      "revId": "6b10790e42afbac9e39118e9c362edd64bf4d3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
