@@ -63,6 +63,30 @@
       },
       "revId": "8849a83c2a4695649b770aa7c15aa6d599671c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c870c777_a588c33d",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-24T03:34:04Z",
+      "side": 1,
+      "message": "OK, I see now. I was on a strange branch that I\u0027m not really sure where it came from \u0027m/stable\u0027? Swapped over to the chromeos-v2.4 branch and now things are building without this change. Thanks!",
+      "parentUuid": "f0bce27b_208ae281",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 435,
+        "endChar": 0
+      },
+      "revId": "8849a83c2a4695649b770aa7c15aa6d599671c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
