@@ -16,6 +16,23 @@
       "message": "Uploaded 2 times to see if local editor can fix the tab issue and uploaded the one more time directly editing on URL; So if we use edit direct on url we do not see any tab issue; we see tab issue only when we diff; need good suggestion",
       "revId": "046410c3c08467d7f8caf2836028b9bf00faa394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea64130_8a7978d7",
+        "filename": "chip/mchp/registers-mec152x.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-24T07:41:13Z",
+      "side": 1,
+      "message": "Hi Vijay, i have tried to upload 2-3 time with different experiment to clean up Tabs; not successfull on diff view, but edit view is ALL LOOKS GOOD.",
+      "revId": "046410c3c08467d7f8caf2836028b9bf00faa394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
