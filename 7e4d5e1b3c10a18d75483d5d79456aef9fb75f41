@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "844ab55d_affe3c8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-25T17:55:06Z",
+      "side": 1,
+      "message": "Doing slow things such as I2C accesses in a high-priority task is questionable.\nhere maybe we should really study the current timing issues rather than blindly increasing the priority\n",
+      "revId": "7e4d5e1b3c10a18d75483d5d79456aef9fb75f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
