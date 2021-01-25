@@ -16,6 +16,24 @@
       "message": "at least I\u0027m not the only one to mix these up. Should we pick a different prefix for the zmake options?",
       "revId": "b25948857c1e6193def3977ca6bdf77fe3a9a156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "147f7bb7_bffc0509",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-25T18:02:20Z",
+      "side": 1,
+      "message": "I think we might be able to just completely remove CONFIG_SHIMMED_TASKS in a follow-up CL instead. I think it\u0027s 100% redundant now that the HAS_TASK_* gets auto-generated from Kconfig",
+      "parentUuid": "c9c38820_c76dc290",
+      "revId": "b25948857c1e6193def3977ca6bdf77fe3a9a156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
