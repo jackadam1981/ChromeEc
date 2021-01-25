@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41535f47_95d98cf5",
+        "filename": "baseboard/guybrush/base_ec.tasklist",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-25T17:35:45Z",
+      "side": 1,
+      "message": "Increased to \"LARGER_TASK_STACK_SIZE\"",
+      "parentUuid": "41a12799_bdb5f927",
+      "revId": "ae8cd57e76db1d9c5c7254085d5ef41c1c632194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0dc0bde_97b2d393",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6bd2f58_52f4bea5",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-25T17:35:45Z",
+      "side": 1,
+      "message": "Good catch. LID_LED is from trembyle. Fixed.",
+      "parentUuid": "e0dc0bde_97b2d393",
+      "revId": "ae8cd57e76db1d9c5c7254085d5ef41c1c632194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b0b4f4b_9d86fb5f",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-01-25T16:18:09Z",
       "side": 1,
       "message": "I think all new boards need to define use vivaldi, correct?",
+      "revId": "ae8cd57e76db1d9c5c7254085d5ef41c1c632194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c916525_a669892f",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-25T17:35:45Z",
+      "side": 1,
+      "message": "Yep, config.h says \"standard for new chromeos devices\".",
+      "parentUuid": "1b0b4f4b_9d86fb5f",
       "revId": "ae8cd57e76db1d9c5c7254085d5ef41c1c632194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
