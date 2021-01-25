@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00c91e9_4e64ec14",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-25T15:20:01Z",
+      "side": 1,
+      "message": "my Vilboz360 LTE doesn\u0027t answer what I thought it would here,\nelse without this check, this allows the LTE modem to enumerate properly as USB 3.0",
+      "revId": "aaeb40b9a77475d9cd2aba5c380c5fa5dfcfecc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
