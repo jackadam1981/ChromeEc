@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "832389e6_78609b00",
+        "filename": "zephyr/cmake/compiler/gcc/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-01-25T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b3736ad_86434784",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "682acdc40f8b11f88f9dd9192094cd0996f288c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d9bb187_265deed5",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f36d724_e8c6a808",
+        "filename": "zephyr/cmake/compiler/gcc/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-01-25T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d9bb187_265deed5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 3
+      },
+      "revId": "682acdc40f8b11f88f9dd9192094cd0996f288c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19b74dca_5abf4d53",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-25T21:05:11Z",
       "side": 1,
       "message": "can we name it libgcc_arm.S just to make it a bit less ugly?",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "682acdc40f8b11f88f9dd9192094cd0996f288c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f725d420_0d82cd65",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-01-25T21:14:06Z",
+      "side": 1,
+      "message": "Done, and using libgcc_${ARCH} for future proofing.",
+      "parentUuid": "19b74dca_5abf4d53",
       "range": {
         "startLine": 10,
         "startChar": 48,
