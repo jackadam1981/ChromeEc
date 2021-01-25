@@ -51,6 +51,24 @@
       "message": "nit: this is unrelated ? or useless ?",
       "revId": "022057c236f745e16c878ec6ba2e27fbb4e968bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6df96f_0d531e5a",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-25T16:32:26Z",
+      "side": 1,
+      "message": "It\u0027s not related. It should have been added before for gpio_get_level, gpio_enable_interrupt, etc. Do you prefer it in a separate patch?",
+      "parentUuid": "c2574829_e08a07bd",
+      "revId": "022057c236f745e16c878ec6ba2e27fbb4e968bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
