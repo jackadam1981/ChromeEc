@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1fda67e_6729f902",
+        "filename": "zephyr/projects/kohaku/boards/arm/kohaku/kohaku_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-01-25T17:33:45Z",
+      "side": 1,
+      "message": "doesn\u0027t help here, and I don\u0027t see how it could because FPU should default to unselected anyway.",
+      "revId": "a34bf8901577950fcae0569dd66c3b7c4bac1c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
