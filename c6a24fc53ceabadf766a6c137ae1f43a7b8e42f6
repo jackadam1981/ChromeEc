@@ -33,6 +33,24 @@
       "message": "Sorry for the delay in responding to this CL.\n\nFrom my understanding, we have to USE_GPIO_AND_HOST_EVENT as a wake source. Referring to this zork CL here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2610505/2/baseboard/zork/baseboard.h\n\nSimilarly we have to configure AP to wake on MKBP_EVENTS like here: https://review.coreboot.org/c/coreboot/+/48844\n\nThanks to Furquan for Zork pointers. We can also check how Volteer does it.",
       "revId": "c6a24fc53ceabadf766a6c137ae1f43a7b8e42f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1687caea_18fba4f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-25T16:52:53Z",
+      "side": 1,
+      "message": "Thanks, Karthik.  Should it be okay for the EC to commit USE_GPIO_AND_HOST_EVENT before coreboot is ready for it?",
+      "parentUuid": "b0d9f4d2_dcbdfa3d",
+      "revId": "c6a24fc53ceabadf766a6c137ae1f43a7b8e42f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
