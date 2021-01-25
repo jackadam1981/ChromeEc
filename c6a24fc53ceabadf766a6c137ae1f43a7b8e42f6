@@ -51,6 +51,24 @@
       "parentUuid": "b0d9f4d2_dcbdfa3d",
       "revId": "c6a24fc53ceabadf766a6c137ae1f43a7b8e42f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7dfa9d_a21f1437",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-01-25T22:31:32Z",
+      "side": 1,
+      "message": "I updated the patch to put back USE_GPIO_AND_HOST_EVENT.",
+      "parentUuid": "1687caea_18fba4f9",
+      "revId": "c6a24fc53ceabadf766a6c137ae1f43a7b8e42f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
