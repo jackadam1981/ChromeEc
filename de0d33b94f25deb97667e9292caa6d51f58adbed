@@ -74,6 +74,30 @@
       },
       "revId": "de0d33b94f25deb97667e9292caa6d51f58adbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13dec645_0f310359",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-01-25T04:39:23Z",
+      "side": 1,
+      "message": "Yes, I noticed this concern as well. But my decision here is to merge this CL first in order to unblock the device shipment for multiple Octopus devices.\n\nAnd the concern here was left from CL:*2364342 which also expect the timing here is to keep BC12 power on.",
+      "parentUuid": "83951f49_54aa5286",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 41
+      },
+      "revId": "de0d33b94f25deb97667e9292caa6d51f58adbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
