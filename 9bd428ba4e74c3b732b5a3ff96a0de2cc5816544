@@ -33,6 +33,24 @@
       "message": "Looks like volteer is out of space again, I\u0027m not sure how to handle that. It must have gone over the edge since the last patchset. The other boards all moved to the larger part so they shouldn\u0027t have issues.\n\nFor the FRS GPIO, looks like that isn\u0027t currently included in Zephyr; which is why that is failing. Do you want me to include that here Keith?",
       "revId": "9bd428ba4e74c3b732b5a3ff96a0de2cc5816544",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b4b9405_1281d6a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-25T22:41:40Z",
+      "side": 1,
+      "message": "Let me see if I can find some free space.\n\nYes, please add the new GPIO into the Volteer devicetree and the gpio_map.h file.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/d289734a/zephyr/projects/volteer/boards/arm/volteer/volteer.dts#\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/d289734a/zephyr/projects/volteer/include/gpio_map.h#",
+      "parentUuid": "fb833c8a_7aa47d39",
+      "revId": "9bd428ba4e74c3b732b5a3ff96a0de2cc5816544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
