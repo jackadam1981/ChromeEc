@@ -410,6 +410,21 @@ static void setup_fw_config(void)
 		/* Gyro is not present, don't allow line to float */
 		gpio_set_flags(GPIO_6AXIS_INT_L, GPIO_INPUT | GPIO_PULL_DOWN);
 	}
+
+	/*
+	 * the USB_C1 port might be used for the LTE modem if it is not used
+	 * for type-C, we need to keep the superspeed mux in USB 3 position.
+	 */
+	if (!ec_config_has_usbc1()) {
+		const struct usb_mux usb_c1 = {
+			.usb_port = 1 /* USBC_PORT_C1 */,
+			.i2c_port = I2C_PORT_USB_AP_MUX,
+			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
+			.driver = &amd_fp5_usb_mux_driver,
+		};
+		/* steer the mux to connect the USB 3 superspeed pairs */
+		usb_c1.driver->set(&usb_c1, USB_PD_MUX_USB_ENABLED);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
 
