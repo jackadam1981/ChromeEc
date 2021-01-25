@@ -16,6 +16,24 @@
       "message": "are you tracking some special bug which requires printing the buffer in hexa ? \nelse this seems a bit verbose as the default",
       "revId": "022057c236f745e16c878ec6ba2e27fbb4e968bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e69cc01_07b207e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-25T05:48:26Z",
+      "side": 1,
+      "message": "I would like to keep verbose logging until we gain confidence in the hw \u0026 fw. I\u0027m planning to undefine CTN730_DEBUG before we ship firmware.",
+      "parentUuid": "55814a1d_3943d003",
+      "revId": "022057c236f745e16c878ec6ba2e27fbb4e968bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
