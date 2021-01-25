@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4586151_87744dcd",
+        "filename": "zephyr/shim/include/zephyr_mkbp_event.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-25T23:52:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e0aa989_14c17746",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "1fba8a152bd60fe4b019ac85889981bdcb5ef98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec893bc7_3db8c795",
@@ -108,6 +132,30 @@
       "writtenOn": "2021-01-25T23:25:53Z",
       "side": 1,
       "message": "how many event types are there? it may be worth storig in an array instead of linked list",
+      "range": {
+        "startLine": 10,
+        "startChar": 36,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "1fba8a152bd60fe4b019ac85889981bdcb5ef98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "787986c6_641eb7e1",
+        "filename": "zephyr/shim/src/mkbp_event.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-25T23:52:40Z",
+      "side": 1,
+      "message": "There\u0027re like 9 events for now but we only use 1 in Volteer. It grows as it supports more features like fingerprint but we may use only few of them.",
+      "parentUuid": "ec893bc7_3db8c795",
       "range": {
         "startLine": 10,
         "startChar": 36,
