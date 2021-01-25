@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7b9deb_ffd958c5",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-25T19:43:45Z",
+      "side": 1,
+      "message": "If it doesn\u0027t default to n, the unit tests fail to build.",
+      "parentUuid": "a782b57c_78f3ff2a",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 24
+      },
+      "revId": "8273f01556b250a5e316214b1c829e40d4476153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f93dd32b_6ac809e1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ac0f31_1f00558e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-25T19:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f93dd32b_6ac809e1",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 24
+      },
+      "revId": "8273f01556b250a5e316214b1c829e40d4476153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cba688d_49611994",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-25T19:06:33Z",
       "side": 1,
       "message": "posix-ec too...\n\nI would make it cleaner ... when building for the host",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "8273f01556b250a5e316214b1c829e40d4476153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "842682ca_ffdf8d65",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-25T19:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cba688d_49611994",
       "range": {
         "startLine": 45,
         "startChar": 22,
