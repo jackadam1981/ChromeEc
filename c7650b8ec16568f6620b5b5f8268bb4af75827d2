@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "684cc6b3_7dc915ad",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-25T13:12:08Z",
+      "side": 1,
+      "message": "nit: might be a confusing trace for other developers ? maybe __func__ instead ?",
+      "revId": "c7650b8ec16568f6620b5b5f8268bb4af75827d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea39a880_43eea2fc",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-25T13:12:08Z",
+      "side": 1,
+      "message": "the .bss is always cleared and .data initialized (ie both in RO and RW) so when entering this task, you are sure it has been the case ?",
+      "revId": "c7650b8ec16568f6620b5b5f8268bb4af75827d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
