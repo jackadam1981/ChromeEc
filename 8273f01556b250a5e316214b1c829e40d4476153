@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a782b57c_78f3ff2a",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-25T19:06:33Z",
+      "side": 1,
+      "message": "kinda already implied, as ARCH_POSIX has AP\u003dn",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 24
+      },
+      "revId": "8273f01556b250a5e316214b1c829e40d4476153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f93dd32b_6ac809e1",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-25T19:06:33Z",
+      "side": 1,
+      "message": "I don\u0027t see why this can\u0027t be enabled for posix by default...",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 24
+      },
+      "revId": "8273f01556b250a5e316214b1c829e40d4476153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cba688d_49611994",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-25T19:06:33Z",
+      "side": 1,
+      "message": "posix-ec too...\n\nI would make it cleaner ... when building for the host",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "8273f01556b250a5e316214b1c829e40d4476153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
