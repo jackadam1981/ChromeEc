@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "531318f0_be0ea390",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-25T21:01:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cc23012_373bdc0b",
+      "revId": "3364feebf983479d4227510017e4c9cfbf521bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0effe53_2d961ac9",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dda352e_2d7825f3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2319,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-25T21:01:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0effe53_2d961ac9",
+      "revId": "3364feebf983479d4227510017e4c9cfbf521bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "565479f1_6433914f",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-01-22T15:57:30Z",
       "side": 1,
       "message": "nit: doesn\u0027t need to be done now, but it seems like we should consider defining some times for our magic waits in the unit tests",
+      "range": {
+        "startLine": 171,
+        "startChar": 25,
+        "endLine": 171,
+        "endChar": 34
+      },
+      "revId": "3364feebf983479d4227510017e4c9cfbf521bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb1cd6d_60eca9f2",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-25T21:01:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "565479f1_6433914f",
       "range": {
         "startLine": 171,
         "startChar": 25,
