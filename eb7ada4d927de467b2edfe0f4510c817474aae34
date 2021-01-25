@@ -22,6 +22,30 @@
       },
       "revId": "eb7ada4d927de467b2edfe0f4510c817474aae34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9749ba1a_21534db8",
+        "filename": "board/woomax/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-01-25T12:03:41Z",
+      "side": 1,
+      "message": "The bit4 is default value, the register need modify bit range 0x0F only.\nI upload path set 3. Thanks.",
+      "parentUuid": "56b3c0ae_73ce2865",
+      "range": {
+        "startLine": 337,
+        "startChar": 36,
+        "endLine": 337,
+        "endChar": 40
+      },
+      "revId": "eb7ada4d927de467b2edfe0f4510c817474aae34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
