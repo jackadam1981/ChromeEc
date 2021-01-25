@@ -34,6 +34,24 @@
       "parentUuid": "c9c38820_c76dc290",
       "revId": "b25948857c1e6193def3977ca6bdf77fe3a9a156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bbfe77d_18d5a021",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-01-25T18:15:00Z",
+      "side": 1,
+      "message": "erm, I guess I wasn\u0027t clear: how about prefixing zmake related configs with ZMCONFIG_, so it\u0027s clear what\u0027s supposed to end up in prj.conf and what belongs into defconfig?",
+      "parentUuid": "147f7bb7_bffc0509",
+      "revId": "b25948857c1e6193def3977ca6bdf77fe3a9a156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
