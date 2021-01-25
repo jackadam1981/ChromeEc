@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b3736ad_86434784",
+        "filename": "zephyr/cmake/compiler/gcc/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-25T21:05:11Z",
+      "side": 1,
+      "message": "Can we put this in cmake/toolchain/coreboot-sdk/target.cmake instead? should act the same",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "682acdc40f8b11f88f9dd9192094cd0996f288c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9bb187_265deed5",
+        "filename": "zephyr/cmake/compiler/gcc/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-25T21:05:11Z",
+      "side": 1,
+      "message": "indent",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 3
+      },
+      "revId": "682acdc40f8b11f88f9dd9192094cd0996f288c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b74dca_5abf4d53",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-25T21:05:11Z",
+      "side": 1,
+      "message": "can we name it libgcc_arm.S just to make it a bit less ugly?",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "682acdc40f8b11f88f9dd9192094cd0996f288c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
