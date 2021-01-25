@@ -16,6 +16,24 @@
       "message": "Will this apply for monkey island hibernate?  For dedede at least, the EC is totally unpowered in the z-state",
       "revId": "66249b60dd5eb036abe1fe74c6a635c71743f42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb71c143_0692ba40",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-25T18:11:57Z",
+      "side": 1,
+      "message": "So PSL is not used for dedede?\n\nFor guybrush, VSBY is connected to PP3300_Z5 and PSL_OUT is connected to EN_PWR_Z1. So I think CONFIG_HIBERNATE_PSL applies here.",
+      "parentUuid": "20d04176_86a89642",
+      "revId": "66249b60dd5eb036abe1fe74c6a635c71743f42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
