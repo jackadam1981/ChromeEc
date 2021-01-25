@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8705d6_7908e703",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-25T14:27:35Z",
+      "side": 1,
+      "message": "Won\u0027t work because the chipset likely be off here.\nMight need to put it in the HOOK_CHIPSET_STARTUP",
+      "revId": "d2c5f2ca9ab1f259f891f331de326929f3768748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
