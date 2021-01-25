@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98607584_e2807909",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-25T17:05:40Z",
+      "side": 1,
+      "message": "Would motion_sensor_count also be set to 0 here and CONFIG_DYNAMIC_MOTION_SENSOR_COUNT be defined?",
+      "revId": "da448fb44bb255e5bae77c22ddcfd3a9ea875451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
