@@ -16,6 +16,24 @@
       "message": "FYI we may want to back off on porting to ztest ... there was some discussion on zephyr-dev about moving to another framework",
       "revId": "c0f79cb0c5ef294c3d339421acdf1c047267d315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a7fc968_f55e932a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-25T23:24:27Z",
+      "side": 1,
+      "message": "I saw a discussion and thought it was just for the mocking framework.\nThat said, this is documentation for code already merged, so it\u0027s better to have the docs reflect the current state of the code unless/until that changes.",
+      "parentUuid": "f6c21423_4d8364c4",
+      "revId": "c0f79cb0c5ef294c3d339421acdf1c047267d315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
