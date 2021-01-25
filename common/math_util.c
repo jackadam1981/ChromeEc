@@ -97,7 +97,7 @@ static int int_sqrtf(fp_inter_t x)
 
 	/* Short cut if x is 32-bit value */
 	if (x < rmax)
-		rmax = 0x7fff;
+		rmax = 65536;
 
 	/*
 	 * Just binary-search.  There are better algorithms, but we call this
