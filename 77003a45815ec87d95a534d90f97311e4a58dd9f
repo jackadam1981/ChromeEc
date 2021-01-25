@@ -33,6 +33,24 @@
       "message": "nit: maybe note what use-case is expected for this driver since some boards will still be using tcpci_tcpm_usb_mux_driver for this chip and I assume that will propagate some as people copy/paste for new boards",
       "revId": "77003a45815ec87d95a534d90f97311e4a58dd9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67b5f41_036f8a1e",
+        "filename": "include/driver/tcpm/ps8xxx_public.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-25T09:27:22Z",
+      "side": 1,
+      "message": "Done. Please give CR+2. I don\u0027t have permission to do that.",
+      "parentUuid": "3f2fab5a_19d6c732",
+      "revId": "77003a45815ec87d95a534d90f97311e4a58dd9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
