@@ -16,6 +16,24 @@
       "message": "does we need add CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS 100 in baseboard if this is common issue in octopus?",
       "revId": "f51c1e11c632d406705d81062ac7164393ae07a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a910afc2_e8b06cf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-01-25T04:50:13Z",
+      "side": 1,
+      "message": "Yes, please since they share the same design. Thanks.",
+      "parentUuid": "3010fa85_37ba8aa3",
+      "revId": "f51c1e11c632d406705d81062ac7164393ae07a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
