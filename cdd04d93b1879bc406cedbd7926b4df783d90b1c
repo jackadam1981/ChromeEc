@@ -70,6 +70,30 @@
       },
       "revId": "cdd04d93b1879bc406cedbd7926b4df783d90b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48897f0_20506f08",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8236,
+      "author": {
+        "id": 1311438
+      },
+      "writtenOn": "2021-01-25T16:12:06Z",
+      "side": 1,
+      "message": "You are right, thanks for catching. Yes reverted logic back to ps4.",
+      "parentUuid": "9564ef75_fd51600e",
+      "range": {
+        "startLine": 8224,
+        "startChar": 0,
+        "endLine": 8236,
+        "endChar": 4
+      },
+      "revId": "cdd04d93b1879bc406cedbd7926b4df783d90b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
