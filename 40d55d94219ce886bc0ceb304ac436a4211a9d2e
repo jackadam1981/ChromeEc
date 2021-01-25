@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa122ec5_5f4fa095",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-25T20:11:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8076526_95fdca9c",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "40d55d94219ce886bc0ceb304ac436a4211a9d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90cad994_43044a87",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f98a06_1353492c",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-25T20:11:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90cad994_43044a87",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "40d55d94219ce886bc0ceb304ac436a4211a9d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3411f217_df3dbba3",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-25T16:54:21Z",
       "side": 1,
       "message": "This always evaluates to zero.  I think you want (*mux_state \u003d\u003d USB_PD_MUX_NONE).",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 65
+      },
+      "revId": "40d55d94219ce886bc0ceb304ac436a4211a9d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce50032_bfd87c14",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-25T20:11:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3411f217_df3dbba3",
       "range": {
         "startLine": 66,
         "startChar": 37,
