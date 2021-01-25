@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54faa326_a077b30f",
+        "filename": "baseboard/zork/cbi_ssfc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-01-25T02:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38800dc9_9e2ddbb8",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "f5a1d93461a9d144756832f6d4d6bdf792a5b595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46d7f14e_5e0ab147",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-01-21T20:04:03Z",
       "side": 1,
       "message": "Why \"_2\" ?",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "f5a1d93461a9d144756832f6d4d6bdf792a5b595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0a734f8_dca9862b",
+        "filename": "baseboard/zork/cbi_ssfc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-01-25T02:14:20Z",
+      "side": 1,
+      "message": "removed \"_2\"",
+      "parentUuid": "46d7f14e_5e0ab147",
       "range": {
         "startLine": 27,
         "startChar": 21,
