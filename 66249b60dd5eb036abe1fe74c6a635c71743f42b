@@ -34,6 +34,24 @@
       "parentUuid": "20d04176_86a89642",
       "revId": "66249b60dd5eb036abe1fe74c6a635c71743f42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dc94ac6_94a4a2e2",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-25T18:29:10Z",
+      "side": 1,
+      "message": "Correct.  Our PSL_OUT is floating and VSBY is connected a rail which is gone in our z-state.  So I imagine we\u0027ll want to put some focus on validating Z5 since it differs from previous designs.",
+      "parentUuid": "fb71c143_0692ba40",
+      "revId": "66249b60dd5eb036abe1fe74c6a635c71743f42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
