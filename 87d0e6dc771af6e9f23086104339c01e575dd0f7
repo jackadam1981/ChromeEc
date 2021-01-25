@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "100aecb1_4dd18663",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-25T16:09:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4dd07ded_eb16d707",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 24
+      },
+      "revId": "87d0e6dc771af6e9f23086104339c01e575dd0f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3537406f_fe326024",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-21T00:53:32Z",
       "side": 1,
       "message": "Isn\u0027t this checked by KConfig?",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 51
+      },
+      "revId": "87d0e6dc771af6e9f23086104339c01e575dd0f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "532d0839_52656929",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-01-25T16:09:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3537406f_fe326024",
       "range": {
         "startLine": 526,
         "startChar": 0,
