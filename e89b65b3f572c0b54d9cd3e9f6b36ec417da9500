@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8546b41_9e62490e",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T15:25:37Z",
+      "side": 1,
+      "message": "how about getting this info from retimer driver itself so that we dont have to update all the boards and also less error prone",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c468723_d05300bc",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T15:25:37Z",
+      "side": 1,
+      "message": "USB/TBT/USB4",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 28
+      },
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8664a00_7e00304c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T15:25:37Z",
+      "side": 1,
+      "message": "I thing its applicable to all TBT/USB4 retimers.",
+      "range": {
+        "startLine": 429,
+        "startChar": 28,
+        "endLine": 429,
+        "endChar": 56
+      },
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746a9980_98f315b3",
+        "filename": "include/usb_common.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T15:25:37Z",
+      "side": 1,
+      "message": "nit: add param",
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6211310_d6dddfff",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T15:25:37Z",
+      "side": 1,
+      "message": "nit: add param",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 4
+      },
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
