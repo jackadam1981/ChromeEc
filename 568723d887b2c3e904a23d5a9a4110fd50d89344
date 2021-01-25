@@ -52,6 +52,24 @@
       "parentUuid": "38378873_638b53aa",
       "revId": "568723d887b2c3e904a23d5a9a4110fd50d89344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e20232b_e3cd698b",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-01-25T03:54:37Z",
+      "side": 1,
+      "message": "I think disabling SPI MDA in HOOK_SYSJUMP not working as expected could be due to the hook_notify(HOOK_SYSJUMP) is called before interrupt_disable() in common/system.c, and if a NSS pulse happened between these two lines, the SPI and DMA will be enabled again, and cause the issus above.",
+      "parentUuid": "1d476d9f_fd249014",
+      "revId": "568723d887b2c3e904a23d5a9a4110fd50d89344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
