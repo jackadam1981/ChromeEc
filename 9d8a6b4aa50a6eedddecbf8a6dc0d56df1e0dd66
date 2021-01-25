@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba6cb2b_d103cb5d",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-01-25T06:43:55Z",
+      "side": 1,
+      "message": "Please put it under \"#define CONFIG_BC12_DETECT_MAX14637\" so all max14637 configs would be grouped together. Thanks.",
+      "revId": "9d8a6b4aa50a6eedddecbf8a6dc0d56df1e0dd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
