@@ -229,6 +229,9 @@
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
 
+#undef CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS
+#define CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS 100
+
 /*******************************************************************************
  * USB-A Configs
  */
