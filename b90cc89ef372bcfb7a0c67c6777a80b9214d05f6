@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a45fef16_8c7d84ff",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-25T19:03:52Z",
+      "side": 1,
+      "message": "depends on PLATFORM_EC_HOSTCMD",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 30
+      },
+      "revId": "b90cc89ef372bcfb7a0c67c6777a80b9214d05f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
