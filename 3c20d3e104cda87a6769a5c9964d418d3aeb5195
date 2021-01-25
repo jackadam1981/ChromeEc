@@ -61,6 +61,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4610aadf_32d08ff5",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-25T21:56:12Z",
+      "side": 1,
+      "message": "This part of the change wasn\u0027t finished. I was going to make this part configurable as well.",
+      "parentUuid": "db926b03_d4e8fd73",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 62
+      },
+      "revId": "3c20d3e104cda87a6769a5c9964d418d3aeb5195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "32811b39_53a56aca",
         "filename": "board/nocturne_fp/gpio.inc",
         "patchSetId": 1
@@ -72,6 +96,30 @@
       "writtenOn": "2021-01-23T03:25:25Z",
       "side": 1,
       "message": "Just a quick check for posterity:\n\nThe STM32H743 pull-up and pull-down are between 30 to 50 kOhms (https://screenshot.googleplex.com/4FHydn42wwjysdV.png). The icetower pulldown strap is 10kOhms.\n\nThe input pin would see 0.83V for low -- and 3.3V on high",
+      "range": {
+        "startLine": 27,
+        "startChar": 41,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "3c20d3e104cda87a6769a5c9964d418d3aeb5195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b54fb9_97be0e46",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-25T21:56:12Z",
+      "side": 1,
+      "message": "Yeah, I originally told Supa to choose the pulldown resistor to make this work. Looks like 0.83V should be OK when using 3.3V VDD based on V_IL (section 6.3.15: https://www.st.com/resource/en/datasheet/stm32h743bi.pdf#page\u003d139).",
+      "parentUuid": "32811b39_53a56aca",
       "range": {
         "startLine": 27,
         "startChar": 41,
