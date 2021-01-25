@@ -16,6 +16,213 @@
       "message": "Booted skylake RVP to Chrome OS; updated with latest comments",
       "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3605251c_d0f3fd68",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T07:46:26Z",
+      "side": 1,
+      "message": "elif defined",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b270b7da_caacd3bb",
+        "filename": "baseboard/intelrvp/mchp_ec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T07:46:26Z",
+      "side": 1,
+      "message": "move to board.c",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 6
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580a000b_ce1592fa",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T07:46:26Z",
+      "side": 1,
+      "message": "remove, its a dont care if TEMP_SENSOR is disabled",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a515e029_1d25bb82",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T07:46:26Z",
+      "side": 1,
+      "message": "move to board.h",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d68ab9c9_160e6597",
+        "filename": "board/sklrvp_mchp/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T07:46:26Z",
+      "side": 1,
+      "message": "these seems to be generic to MCHP, can you publish a follow on CL to move it to chip/mchp/i2c**?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 1
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec14625_46cebac2",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T07:46:26Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 43
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8cb8cd6_83ed6c18",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T07:46:26Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 38
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14acbe63_2b4f5d36",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T07:46:26Z",
+      "side": 1,
+      "message": "move to mchp_ec.h in baseboard",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 26
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ce5723_6e6e7ecc",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-25T07:46:26Z",
+      "side": 1,
+      "message": "refined here?",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 0
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
