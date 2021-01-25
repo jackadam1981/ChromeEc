@@ -216,6 +216,8 @@
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_BC12_DETECT_MAX14637
+#undef CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS
+#define CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS 100
 #define CONFIG_HOSTCMD_PD_CONTROL
 #define CONFIG_CMD_PPC_DUMP
 
@@ -228,6 +230,7 @@
 #define PD_MAX_POWER_MW		45000
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
+
 
 /*******************************************************************************
  * USB-A Configs
