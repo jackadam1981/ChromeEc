@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df48e24_7ff6b71e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2190,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-25T16:40:06Z",
+      "side": 1,
+      "message": "Move this check into set_cable_rev().",
+      "range": {
+        "startLine": 2190,
+        "startChar": 0,
+        "endLine": 2190,
+        "endChar": 50
+      },
+      "revId": "327539d4b300c23036781a18c17d87cd625b6464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c545299_00f2fd85",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2989,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-25T16:40:06Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 2989,
+        "startChar": 0,
+        "endLine": 2989,
+        "endChar": 48
+      },
+      "revId": "327539d4b300c23036781a18c17d87cd625b6464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
