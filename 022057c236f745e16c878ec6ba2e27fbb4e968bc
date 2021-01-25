@@ -34,6 +34,23 @@
       "parentUuid": "55814a1d_3943d003",
       "revId": "022057c236f745e16c878ec6ba2e27fbb4e968bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2574829_e08a07bd",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-25T13:04:40Z",
+      "side": 1,
+      "message": "nit: this is unrelated ? or useless ?",
+      "revId": "022057c236f745e16c878ec6ba2e27fbb4e968bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
