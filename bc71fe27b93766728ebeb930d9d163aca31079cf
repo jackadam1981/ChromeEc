@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "27ce0a03_dc9795d1",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-26T21:55:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8be285bf_99765029",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 44
+      },
+      "revId": "bc71fe27b93766728ebeb930d9d163aca31079cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "56112171_f28d3163",
         "filename": "chip/npcx/config_flash_layout.h",
         "patchSetId": 1
