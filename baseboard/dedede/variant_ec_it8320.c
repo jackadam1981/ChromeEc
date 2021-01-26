@@ -55,7 +55,7 @@ static void pp3300_a_pgood_high(void)
 const struct vcmp_t vcmp_list[] = {
 	[VCMP_SNS_PP3300_LOW] = {
 		.name = "VCMP_SNS_PP3300_LOW",
-		.threshold = 600, /* mV */
+		.threshold = 1300, /* mV */
 		.flag = LESS_EQUAL_THRESHOLD,
 		.vcmp_thresh_cb = &pp3300_a_pgood_low,
 		.scan_period = VCMP_SCAN_PERIOD_600US,
