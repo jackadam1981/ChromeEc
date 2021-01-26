@@ -51,6 +51,24 @@
       "parentUuid": "f09ef77b_b8848e07",
       "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c37f2f15_f7cb2e09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-26T22:14:55Z",
+      "side": 1,
+      "message": "It\u0027s probably not desired on non-EFS systems as we would never be able to update the charger init after RO lock.\n\nBut for the other systems, I think it should be ok. They\u0027re already running it twice; the most important thing is that the latest initialization code is running.",
+      "parentUuid": "1bc94241_58eb3f74",
+      "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
