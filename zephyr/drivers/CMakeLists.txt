@@ -2,3 +2,4 @@
 
 add_subdirectory(cros_kb_raw)
 add_subdirectory(cros_flash)
+add_subdirectory(cros_bbram)
