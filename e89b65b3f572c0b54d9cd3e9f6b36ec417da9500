@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41eaca1d_bbb46c60",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-26T00:33:43Z",
+      "side": 1,
+      "message": "This is to query which port has retimer, though originally we design to support only BB retimer update, but it will be used for all USB retiemr update later. How to get this information from specific driver? and BB retimer driver seems need port number when calling its functions. could you explain more on this?",
+      "parentUuid": "e8546b41_9e62490e",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c468723_d05300bc",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 24
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-25T15:25:37Z",
       "side": 1,
       "message": "USB/TBT/USB4",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 28
+      },
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58f94d0_514f5262",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-26T00:33:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c468723_d05300bc",
       "range": {
         "startLine": 119,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a767b4_744edff3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-26T00:33:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d8664a00_7e00304c",
+      "range": {
+        "startLine": 429,
+        "startChar": 28,
+        "endLine": 429,
+        "endChar": 56
+      },
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "746a9980_98f315b3",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7cae98b_99a7a91c",
+        "filename": "include/usb_common.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-26T00:33:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "746a9980_98f315b3",
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6211310_d6dddfff",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-01-25T15:25:37Z",
       "side": 1,
       "message": "nit: add param",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 4
+      },
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "067e95ee_ef7c8089",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-26T00:33:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6211310_d6dddfff",
       "range": {
         "startLine": 369,
         "startChar": 0,
