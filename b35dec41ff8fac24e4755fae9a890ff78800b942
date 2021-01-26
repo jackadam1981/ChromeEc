@@ -69,6 +69,24 @@
       "parentUuid": "1bc94241_58eb3f74",
       "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c36e65c5_7ffd7b70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-26T23:18:34Z",
+      "side": 1,
+      "message": "Ah, I hadn\u0027t thought of the RW inits being more recent... would that necessitate changing the sysjump tag version if the inits change too much to ensure they run again? \n\nWhen I started moving the SM driver to common, I realized the other perk of keeping the preservation in the driver is we can still initialize local variables (like the one in the SM driver that keeps the Vbus on status).\n\nIf I had a board to test with, I could switch the design to skip inits on a minimum number of instructions (whatever is causing us to brown out... probably input current limit?).  I could try my other RAA boards to see if they\u0027ll behave the same.",
+      "parentUuid": "c37f2f15_f7cb2e09",
+      "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
