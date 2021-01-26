@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b38ac80_03322ed0",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-26T05:03:34Z",
+      "side": 1,
+      "message": "something like this:\nAdd one more function\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/include/usb_mux.h#31\n\nfor (i \u003c board_get_usb_pd_port_count()) {\n   const struct usb_mux *mux \u003d \u0026usb_muxes[port];\n   while (mux) {\n      if (the new function exists)\n          val |\u003d return val of function\n      mux-\u003eMux_next;\n   }\n}",
+      "parentUuid": "41eaca1d_bbb46c60",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "e89b65b3f572c0b54d9cd3e9f6b36ec417da9500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c468723_d05300bc",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 24
