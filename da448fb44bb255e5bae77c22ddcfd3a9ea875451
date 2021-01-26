@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b374f5a4_6dcdcc97",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-26T03:33:07Z",
+      "side": 1,
+      "message": "upload to Set4",
+      "parentUuid": "75be1e42_1a813a6a",
+      "range": {
+        "startLine": 593,
+        "startChar": 36,
+        "endLine": 593,
+        "endChar": 37
+      },
+      "revId": "da448fb44bb255e5bae77c22ddcfd3a9ea875451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98607584_e2807909",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-01-25T17:05:40Z",
       "side": 1,
       "message": "Would motion_sensor_count also be set to 0 here and CONFIG_DYNAMIC_MOTION_SENSOR_COUNT be defined?",
+      "revId": "da448fb44bb255e5bae77c22ddcfd3a9ea875451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63ebe6f_7d54d2ed",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-26T03:33:07Z",
+      "side": 1,
+      "message": "update to Set4, define it.",
+      "parentUuid": "98607584_e2807909",
       "revId": "da448fb44bb255e5bae77c22ddcfd3a9ea875451",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
