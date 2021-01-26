@@ -85,6 +85,23 @@
       "message": "Fine with the simple cherry-pick patch.",
       "revId": "1979dd571c921dd8a6f2a817e5b8cdcfb39cc82d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e574e29_3a7df366",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-01-26T01:16:30Z",
+      "side": 1,
+      "message": "Seems like we don\u0027t have CQ+2 permission.",
+      "revId": "1979dd571c921dd8a6f2a817e5b8cdcfb39cc82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
