@@ -1765,15 +1765,28 @@ __maybe_unused static void handle_new_power_state(int port)
 void pd_send_hpd(int port, enum hpd_event hpd)
 {
 	uint32_t data[1];
-	int opos = pd_ufp_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+	int opos;
+#ifdef TCPM_V2_ALT_MODE
+	struct svdm_amode_data *modep;
+
+	modep = pd_get_amode_data(port, 0, USB_SID_DISPLAYPORT);
+	if (modep)
+		opos = modep->opos;
+#else
+	 opos = pd_ufp_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+#endif
 
 
 #ifndef TCPM_V2_ALT_MODE
 	if (!opos)
-#else
-	if (opos < 0)
-#endif
 		return;
+#else
+	if (!modep || modep->opos < 0)
+		return;
+	else
+		opos = modep->opos;
+#endif
+
 
 	data[0] = VDO_DP_STATUS((hpd == hpd_irq), /* IRQ_HPD */
 				(hpd != hpd_low), /* HPD_HI|LOW */

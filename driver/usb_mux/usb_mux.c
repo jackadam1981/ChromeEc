@@ -316,7 +316,6 @@ void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
 		return;
 	}
 
-	board_debug_gpio(TRIGGER_1, 1, 100 * MSEC);
 
 	for (; mux_ptr; mux_ptr = mux_ptr->next_mux)
 		if (mux_ptr->hpd_update)
