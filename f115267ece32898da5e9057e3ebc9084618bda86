@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17fbbdd2_42305452",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-26T22:24:45Z",
+      "side": 1,
+      "message": "kconfig should indent by tabs, see other files for examples",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 2
+      },
+      "revId": "f115267ece32898da5e9057e3ebc9084618bda86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43810adc_6c86bf06",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-26T22:24:45Z",
+      "side": 1,
+      "message": "add trailing semicolon (for style)",
+      "range": {
+        "startLine": 130,
+        "startChar": 43,
+        "endLine": 130,
+        "endChar": 44
+      },
+      "revId": "f115267ece32898da5e9057e3ebc9084618bda86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
