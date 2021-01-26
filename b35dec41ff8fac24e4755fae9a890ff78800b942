@@ -87,6 +87,24 @@
       "parentUuid": "c37f2f15_f7cb2e09",
       "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "855e18e9_b5e04a8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-26T23:37:49Z",
+      "side": 1,
+      "message": "Yep, changing the sysjump version is one way around that. Although, as you suggest it may be better to narrow it down to the specific writes that are causing the brownout.\n\nWe may still be able initialize local variables if we can probe for them at init where it makes sense.",
+      "parentUuid": "c36e65c5_7ffd7b70",
+      "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
