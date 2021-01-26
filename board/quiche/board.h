@@ -36,7 +36,7 @@
 #define CONFIG_USB_PD_IDENTITY_SW_VERS 1
 
 /* #define BOARD_ALLOW_HIGH_VBUS */
-#undef TCPM_V2_ALT_MODE
+/* #define TCPM_V2_ALT_MODE */
 
 
 /* USB Type A Features */
