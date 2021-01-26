@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322fd766_10223ad3",
+        "filename": "board/voxel/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-26T17:29:30Z",
+      "side": 1,
+      "message": "Why not a pull-up here?\n\nCH - would it be better for power consumption to set a pull-up on an unused interrupt input (GPIO56 in this case)?",
+      "range": {
+        "startLine": 231,
+        "startChar": 23,
+        "endLine": 231,
+        "endChar": 37
+      },
+      "revId": "9b38ea5022840d74286a9ae0d9b3176f850852a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
