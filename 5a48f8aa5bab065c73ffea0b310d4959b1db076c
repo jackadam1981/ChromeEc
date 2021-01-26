@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90cd308e_047442b2",
+        "filename": "zephyr/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-26T17:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12725965_25f3577a",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 28
+      },
+      "revId": "5a48f8aa5bab065c73ffea0b310d4959b1db076c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0da31dad_7cd569b3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b5c75ac_e7cdb869",
+        "filename": "zephyr/drivers/cros_bbram/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-26T17:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da31dad_7cd569b3",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "5a48f8aa5bab065c73ffea0b310d4959b1db076c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3967119a_c8990fd1",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-26T15:54:34Z",
       "side": 1,
       "message": "prefer BIT(*) macros",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "5a48f8aa5bab065c73ffea0b310d4959b1db076c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "374721b8_bf394bd2",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-26T17:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3967119a_c8990fd1",
       "range": {
         "startLine": 24,
         "startChar": 25,
