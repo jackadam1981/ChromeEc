@@ -7,8 +7,6 @@
 #include "common.h"
 #include "accelgyro.h"
 #include "driver/accel_bma2x2.h"
-#include "driver/accelgyro_bmi_common.h"
-#include "driver/accelgyro_bmi260.h"
 #include "driver/als_tcs3400.h"
 #include "driver/sync.h"
 #include "keyboard_scan.h"
@@ -25,9 +23,6 @@ static struct mutex g_base_mutex;
 
 /* BMA253 private data */
 static struct accelgyro_saved_data_t g_bma253_data;
-
-/* BMI260 private data */
-static struct bmi_drv_data_t g_bmi260_data;
 
 /* TCS3400 private data */
 static struct als_drv_data_t g_tcs3400_data = {
@@ -85,15 +80,15 @@ static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
 
 /* Rotation matrix for the lid accelerometer */
 static const mat33_fp_t lid_standard_ref = {
-	{ FLOAT_TO_FP(1), 0, 0},
+	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0, FLOAT_TO_FP(-1), 0},
-	{ 0, 0, FLOAT_TO_FP(-1)}
+	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
 const mat33_fp_t base_standard_ref = {
 	{ 0, FLOAT_TO_FP(1), 0},
 	{ FLOAT_TO_FP(-1), 0, 0},
-	{ 0, 0, FLOAT_TO_FP(1)}
+	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
 struct motion_sensor_t motion_sensors[] = {
@@ -126,17 +121,17 @@ struct motion_sensor_t motion_sensors[] = {
 	[BASE_ACCEL] = {
 		.name = "Base Accel",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_BMI260,
+		.chip = MOTIONSENSE_CHIP_BMA255,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &bmi260_drv,
+		.drv = &bma2x2_accel_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = &g_bmi260_data,
+		.drv_data = &g_bma253_data,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
+		.i2c_spi_addr_flags = BMA2x2_I2C_ADDR2_FLAGS,
 		.rot_standard_ref = &base_standard_ref,
-		.min_frequency = BMI_ACCEL_MIN_FREQ,
-		.max_frequency = BMI_ACCEL_MAX_FREQ,
+		.min_frequency = BMA255_ACCEL_MIN_FREQ,
+		.max_frequency = BMA255_ACCEL_MAX_FREQ,
 		.default_range = 4, /* g */
 		.config = {
 			/* EC use accel for angle detection */
@@ -150,23 +145,6 @@ struct motion_sensor_t motion_sensors[] = {
 				.ec_rate = 100 * MSEC,
 			},
 		},
-	},
-
-	[BASE_GYRO] = {
-		.name = "Base Gyro",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_BMI260,
-		.type = MOTIONSENSE_TYPE_GYRO,
-		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &bmi260_drv,
-		.mutex = &g_base_mutex,
-		.drv_data = &g_bmi260_data,
-		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
-		.default_range = 1000, /* dps */
-		.rot_standard_ref = &base_standard_ref,
-		.min_frequency = BMI_GYRO_MIN_FREQ,
-		.max_frequency = BMI_GYRO_MAX_FREQ,
 	},
 	[CLEAR_ALS] = {
 		.name = "Clear Light",
