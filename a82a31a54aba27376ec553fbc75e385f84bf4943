@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c952eecf_907ef821",
+        "filename": "board/nucleo-h743zi/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-26T19:14:23Z",
+      "side": 1,
+      "message": "where does this backtick come from?",
+      "range": {
+        "startLine": 80,
+        "startChar": 22,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e1613c4_68ff0a09",
+        "filename": "board/servo_micro/ccd.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-26T19:14:23Z",
+      "side": 1,
+      "message": "no longer aligned?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 33
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f47d1d3_ad77d8c7",
+        "filename": "common/mock/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-26T19:14:23Z",
+      "side": 1,
+      "message": "no longer aligned to \\ above",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c816bdf1_9c3753f5",
+        "filename": "docs/ztest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-26T19:14:23Z",
+      "side": 1,
+      "message": "no longer aligned to ( above?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d3b1c2_c43952e3",
+        "filename": "extra/tigertool/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-26T19:14:23Z",
+      "side": 1,
+      "message": "same question about these backticks?",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a062c43_23e2bb3d",
+        "filename": "third_party/incbin/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-26T19:14:23Z",
+      "side": 1,
+      "message": "do we want to exclude third_party files from mdformat? this may make it easier to rebase on upstream...",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 8
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
