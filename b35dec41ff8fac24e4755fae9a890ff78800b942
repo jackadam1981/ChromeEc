@@ -33,6 +33,24 @@
       "message": "Should we make this generic for all charger drivers then? aka in common/charger.c?",
       "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc94241_58eb3f74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-26T20:36:44Z",
+      "side": 1,
+      "message": "That\u0027s a good question, common code owner :) \n\nDo we think it would be generically safe to do this?  Are there any older boards or other situations that would be dangerous?",
+      "parentUuid": "f09ef77b_b8848e07",
+      "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
