@@ -6,6 +6,7 @@
 #include "common.h"
 #include "console.h"
 #include "usb_common.h"
+#include "usb_pd_dpm.h"
 #include "usb_pe_sm.h"
 #include "usb_prl_sm.h"
 #include "usb_tc_sm.h"
@@ -154,7 +155,8 @@ test_export_static int command_pd(int argc, char **argv)
 	}
 
 	if (!strcasecmp(argv[2], "ext")) {
-			pd_dpm_request(port, DPM_REQUEST_EXT_TEST_MSG);
+		//pd_dpm_request(port, DPM_REQUEST_EXT_TEST_MSG);
+		dpm_set_mode_exit_request(1);
 	}
 
 	if (!strcasecmp(argv[2], "state")) {

@@ -293,6 +293,7 @@ void rwsig_task(void *u)
 
 exit:
 	/* We're done, yield forever. */
+	CPRINTS("rwsig: task is finished!");
 	while (1)
 		task_wait_event(-1);
 }
