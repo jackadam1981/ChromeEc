@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f549cf44_7b00cb63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449272
+      },
+      "writtenOn": "2021-01-26T16:10:10Z",
+      "side": 1,
+      "message": "Use the 2 CL rt1715 : Improve noise rejection and Wait for tSrcTransition after Accept to verify MQP result: 2.1.2.1 and 2.1.2.2 still fail, But TD.PD.SNK3.E12 is PASS.\nplease see Tracker https://partnerissuetracker.corp.google.com/u/1/issues/173023378.",
+      "parentUuid": "e8ce06f1_a9e50d05",
+      "revId": "3364feebf983479d4227510017e4c9cfbf521bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cc23012_373bdc0b",
