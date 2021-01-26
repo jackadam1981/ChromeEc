@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54ea24f2_28a89e4e",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-01-26T19:49:09Z",
+      "side": 1,
+      "message": "for testing maybe we should leave this out. just to ensure ppc_set_sbu gets called.\n\nWe can incorporate CCD once we verify we can fix the leakage with sbu settings.",
+      "range": {
+        "startLine": 825,
+        "startChar": 0,
+        "endLine": 825,
+        "endChar": 39
+      },
+      "revId": "61c6cf77cb60b08c8f38ccf00761a1ce4c149515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b871325_46af64f2",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-01-26T19:49:09Z",
+      "side": 1,
+      "message": "Can we add a print while testing to tell that this is getting called?",
+      "range": {
+        "startLine": 826,
+        "startChar": 2,
+        "endLine": 826,
+        "endChar": 13
+      },
+      "revId": "61c6cf77cb60b08c8f38ccf00761a1ce4c149515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c44893_5d0a98e4",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-01-26T19:49:09Z",
+      "side": 1,
+      "message": "We may also need to set FORCE_OVP_EN_SBU to 0 to  ensure the SBU comparators are disabled.",
+      "revId": "61c6cf77cb60b08c8f38ccf00761a1ce4c149515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
