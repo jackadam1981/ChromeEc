@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "945fc471_bd36d8de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-26T05:25:36Z",
+      "side": 1,
+      "message": "search_blocked_words.sh results before this CL stack:\nslave                     879     160           0\n\nAfter:\nslave                     816     145           0",
+      "revId": "d418e75547c3af824e0264bbddaef03d95b819df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
