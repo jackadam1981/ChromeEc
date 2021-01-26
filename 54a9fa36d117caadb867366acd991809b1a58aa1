@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "594f45f5_2af7be29",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-26T16:49:26Z",
+      "side": 1,
+      "message": "This would be good to have available as help text in the menuconfig tool.\n\nWhat do you think about creating dummy parent config that exposes these three configuration options?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 67
+      },
+      "revId": "54a9fa36d117caadb867366acd991809b1a58aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ad9364_739c9f20",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-26T16:49:26Z",
+      "side": 1,
+      "message": "Suggested edit, especially if the comment above can be added to menuconfig help:\n\nSets the minimum battery capacity, as a percentage, needed to boot the AP when AC power is not supplied.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "54a9fa36d117caadb867366acd991809b1a58aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919884b7_d37d4a1f",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-26T16:49:26Z",
+      "side": 1,
+      "message": "Sets the minimum battery capacity, as a percentage, needed to boot the AP when AC power is supplied.  The AC power supplied must also be greater than CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "54a9fa36d117caadb867366acd991809b1a58aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ccd5e3e_02aa8afc",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-26T16:49:26Z",
+      "side": 1,
+      "message": "Sets the minimum power, in milliwatts, supplied by an external charger required to boot the AP when the battery capacity is also above CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 66
+      },
+      "revId": "54a9fa36d117caadb867366acd991809b1a58aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7049db78_1c1f9ad6",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-26T16:49:26Z",
+      "side": 1,
+      "message": "Add Kconfig for CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON\n\nSets the minimum power, in milliwatts, supplied by an external charger requires to boot the AP when no battery is present or under dead battery conditions. If the AP requires greater than 15W to boot, check the CONFIG_PLATFORM_EC_CHARGER_LIMIT_POWER_THRESH_CHG_MW setting.",
+      "revId": "54a9fa36d117caadb867366acd991809b1a58aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
