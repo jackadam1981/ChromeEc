@@ -51,6 +51,23 @@
       "parentUuid": "7515ef8f_e1d6f29b",
       "revId": "f98fc7b76eb504f6a1000f24924a3731df66bf74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04ed140_43403560",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-26T16:25:23Z",
+      "side": 1,
+      "message": "I\u0027m unclear from the report linked in the bug whether this completely fixes the PS_RDY issue, but I\u0027ll go ahead and submit. I\u0027m pretty sure it doesn\u0027t make things worse.",
+      "revId": "f98fc7b76eb504f6a1000f24924a3731df66bf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
