@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90373b2b_0ce5eedd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-26T14:29:05Z",
+      "side": 1,
+      "message": "Fixed build issue. Looks like compiler is checking if function is declared before removing unreachable code (when IS_ENABLED(CONFIG_USB_PD_TCPM_PS8751) evaluates to 0).\n\nFixed by removing static keyword from ps8xxx_wake_from_standby() and leaving function declaration only.",
+      "revId": "a32de6d02c554d3592f5d2dd2bc96e777b380b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
