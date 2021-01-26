@@ -53,6 +53,7 @@
 #undef CONFIG_KEYBOARD_VIVALDI
 
 /* Sensors */
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 /* BMI160 Base accel/gyro */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCELGYRO_ICM426XX	/* Base accel second source*/
