@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f65ae37_d482b543",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-26T00:32:26Z",
+      "side": 1,
+      "message": "I agree with you; I\u0027m not sure K_MUTEX_DEFINE can init a member of a struct.\nThe code you have is fine as it is.",
+      "parentUuid": "b090fa00_6a095abb",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "1fba8a152bd60fe4b019ac85889981bdcb5ef98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e0aa989_14c17746",
