@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc760e3d_b5ba1a53",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-27T16:41:18Z",
+      "side": 1,
+      "message": "Please do not start new CLs for in-progress reviews. It makes it impossible to compare the most recently uploaded code to the previous patchset. Please upload your latest code as a new patchset to this CL.",
+      "parentUuid": "50295c8c_b5187b59",
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c43a8708_3eb52448",
         "filename": "driver/tcpm/rt1715.h",
         "patchSetId": 10
