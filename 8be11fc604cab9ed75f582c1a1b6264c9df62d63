@@ -16,6 +16,24 @@
       "message": "to avoid board level changes \nadd a function here, get the value from driver itself.\nthis function goes to bb_retimer.c",
       "revId": "8be11fc604cab9ed75f582c1a1b6264c9df62d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177782f8_8df33c0b",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-27T06:36:36Z",
+      "side": 1,
+      "message": "so this function only return if it has retimer? like\nbool (*has_retimer)(void), it will returns true",
+      "parentUuid": "c74494d6_7a86c730",
+      "revId": "8be11fc604cab9ed75f582c1a1b6264c9df62d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
