@@ -8,16 +8,17 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "battery_fuel_gauge.h"
-#include "chipset.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
-#include "charge_state.h"
 #include "charge_state_v2.h"
+#include "charge_state.h"
 #include "charger.h"
+#include "chipset.h"
 #include "driver/ppc/aoz1380.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/temp_sensor/sb_tsi.h"
+#include "driver/usb_mux/amd_fp6.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -29,6 +30,7 @@
 #include "temp_sensor.h"
 #include "thermal.h"
 #include "thermistor.h"
+#include "usb_mux.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
@@ -380,10 +382,16 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
 
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
-		/* TODO: FIll in FP6 USB Mux configuration */
+		.usb_port = USBC_PORT_C0,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = AMD_FP6_C0_MUX_I2C_ADDR,
+		.driver = &amd_fp6_usb_mux_driver
 	},
 	[USBC_PORT_C1] = {
-		/* TODO: Fill in dynamically */
+		.usb_port = USBC_PORT_C1,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = AMD_FP6_C4_MUX_I2C_ADDR,
+		.driver = &amd_fp6_usb_mux_driver
 	}
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
