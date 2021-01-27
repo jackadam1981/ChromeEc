@@ -45,6 +45,30 @@
       },
       "revId": "b90cc89ef372bcfb7a0c67c6777a80b9214d05f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97b54d0_901ea2da",
+        "filename": "zephyr/shim/src/rtc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-27T19:04:38Z",
+      "side": 1,
+      "message": "I suspect so. But when I looked at it, it seemed that would require refactoring of the rtc stuff and perhaps moving the API to a higher level?",
+      "parentUuid": "f584c0b4_a0b806e5",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 0
+      },
+      "revId": "b90cc89ef372bcfb7a0c67c6777a80b9214d05f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
