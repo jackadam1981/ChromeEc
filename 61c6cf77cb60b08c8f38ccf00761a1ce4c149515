@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4dd322_8cbc2e1e",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-27T01:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54ea24f2_28a89e4e",
+      "range": {
+        "startLine": 825,
+        "startChar": 0,
+        "endLine": 825,
+        "endChar": 39
+      },
+      "revId": "61c6cf77cb60b08c8f38ccf00761a1ce4c149515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b871325_46af64f2",
@@ -60,6 +84,48 @@
       "writtenOn": "2021-01-26T19:49:09Z",
       "side": 1,
       "message": "We may also need to set FORCE_OVP_EN_SBU to 0 to  ensure the SBU comparators are disabled.",
+      "revId": "61c6cf77cb60b08c8f38ccf00761a1ce4c149515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad10eedd_574f3ed6",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-27T01:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b871325_46af64f2",
+      "range": {
+        "startLine": 826,
+        "startChar": 2,
+        "endLine": 826,
+        "endChar": 13
+      },
+      "revId": "61c6cf77cb60b08c8f38ccf00761a1ce4c149515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ee113a_87e19004",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-27T01:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0c44893_5d0a98e4",
       "revId": "61c6cf77cb60b08c8f38ccf00761a1ce4c149515",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
