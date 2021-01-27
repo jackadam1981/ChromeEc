@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48021480_09348db3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-01-27T21:28:56Z",
+      "side": 1,
+      "message": "Sorry Ben it took a while 😞 Looks like it\u0027s up to me here, haven\u0027t been in EC code in a while, but this looks good to me. If you wouldn\u0027t mind updating the code to fix Paul\u0027s comments, I\u0027ll give this a +2",
+      "revId": "79916986790a49e631263a737e7b4dbb4c049015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17537427_868caa94",
@@ -36,6 +53,29 @@
         "startChar": 0,
         "endLine": 54,
         "endChar": 19
+      },
+      "revId": "79916986790a49e631263a737e7b4dbb4c049015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a1eb3b0_7c2b9c5c",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-01-27T21:28:56Z",
+      "side": 1,
+      "message": "I took a closer look at the schematic, looks like the sensor is powered by the \"A\" rails, so it won\u0027t be powered until the AP is powering up, so I suppose either CHIPSET_RESUME or CHIPSET_STARTUP would probably work.",
+      "range": {
+        "startLine": 577,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 78
       },
       "revId": "79916986790a49e631263a737e7b4dbb4c049015",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
