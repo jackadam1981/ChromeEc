@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43ac375c_279b66f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-27T21:08:38Z",
+      "side": 1,
+      "message": "Current status: run-charge_manager and probably run-charge_manager_drp_charging fail, I think because I haven\u0027t properly mocked the PD functions they call.",
+      "revId": "73a1a46339ef114ba40a9511fdee4645d41c8a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
