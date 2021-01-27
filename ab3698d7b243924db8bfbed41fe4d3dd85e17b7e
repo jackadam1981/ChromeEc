@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7553cb6f_c5f20886",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T00:17:36Z",
+      "side": 1,
+      "message": "all 11 comments have been taken care",
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3605251c_d0f3fd68",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-01-25T07:46:26Z",
       "side": 1,
       "message": "elif defined",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffaa5712_6cbabb33",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T00:17:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "3605251c_d0f3fd68",
       "range": {
         "startLine": 17,
         "startChar": 1,
@@ -81,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0626369c_0110274c",
+        "filename": "baseboard/intelrvp/mchp_ec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T00:17:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b270b7da_caacd3bb",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 6
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "580a000b_ce1592fa",
@@ -94,6 +159,30 @@
       "writtenOn": "2021-01-25T07:46:26Z",
       "side": 1,
       "message": "remove, its a dont care if TEMP_SENSOR is disabled",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6fe0e8_71cf362b",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T00:17:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "580a000b_ce1592fa",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -127,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf52ccd6_04fb5de8",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T00:17:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "a515e029_1d25bb82",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d68ab9c9_160e6597",
@@ -140,6 +253,30 @@
       "writtenOn": "2021-01-25T07:46:26Z",
       "side": 1,
       "message": "these seems to be generic to MCHP, can you publish a follow on CL to move it to chip/mchp/i2c**?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 1
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6e39ac0_d3b87d1c",
+        "filename": "board/sklrvp_mchp/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T00:17:36Z",
+      "side": 1,
+      "message": "hi Vijay, we may discuss later for this change, for current effort, we will keep it here as it helps deployment at board level how to configure and how many",
+      "parentUuid": "d68ab9c9_160e6597",
       "range": {
         "startLine": 184,
         "startChar": 0,
@@ -173,6 +310,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee43f81_d83208a3",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T00:17:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "3ec14625_46cebac2",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 43
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8cb8cd6_83ed6c18",
@@ -186,6 +347,30 @@
       "writtenOn": "2021-01-25T07:46:26Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 38
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "983731cc_74d29888",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T00:17:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "a8cb8cd6_83ed6c18",
       "range": {
         "startLine": 208,
         "startChar": 0,
@@ -219,6 +404,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0244dcb_3ef6d868",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T00:17:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "14acbe63_2b4f5d36",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 26
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ce5723_6e6e7ecc",
@@ -232,6 +441,30 @@
       "writtenOn": "2021-01-25T07:46:26Z",
       "side": 1,
       "message": "refined here?",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 0
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef3ed4f9_4fdbb785",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T00:17:36Z",
+      "side": 1,
+      "message": "we removed these from mchp_ec.h file; so we will keep it here",
+      "parentUuid": "08ce5723_6e6e7ecc",
       "range": {
         "startLine": 220,
         "startChar": 0,
