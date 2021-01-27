@@ -34,6 +34,24 @@
       "parentUuid": "7eba63ae_01a68da0",
       "revId": "54c1474a0b1d0cac5b30c84d4295a76132cc5f4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b84e98_5be8775d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-27T21:58:58Z",
+      "side": 1,
+      "message": "Right now \"bloonchipper\" means F412 + FPC1025, but that\u0027s mostly artificial. We intentionally added a \"sensor select\" GPIO on the boards so that everything would be the same on the STM32F412 or STM32H743 board and we can determine what sensor we have attached: http://shortn/_T1nM7qVw9Q.\n\nThe piece that is missing is being able to either:\n\n1) build both sensor libraries into the same firmware (I think we have enough space in RW, but the symbol names in the vendor library might collide at the moment -- haven\u0027t tried).\n2) encode the sensor type into the firmware version (and name) so that we can determine which one to use. Something like \"bloonchipper-fpc\" and \"bloonchipper-elan\".",
+      "parentUuid": "45491d98_9980e92b",
+      "revId": "54c1474a0b1d0cac5b30c84d4295a76132cc5f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
