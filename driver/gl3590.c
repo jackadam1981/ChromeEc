@@ -85,6 +85,27 @@ int gl3590_write(int hub, uint8_t reg, uint8_t *data, int count)
 	return rv;
 }
 
+/*
+ * Basic initialization of GL3590 I2C interface.
+ *
+ * Please note, that I2C interface is online not earlier than ~50ms after
+ * RESETJ# is deasserted. Platform should check that PGREEN_A_SMD pin is
+ * asserted. This init function shouldn't be invoked until that time.
+ */
+void gl3590_init(int hub)
+{
+	uint8_t tmp;
+
+	gl3590_read(hub, GL3590_HUB_MODE_REG, &tmp, 1);
+	if ((tmp & GL3590_HUB_MODE_I2C_READY) == 0)
+		CPRINTF("GL3590 interface isn't ready, consider deferring "
+			"this init\n");
+
+	/* Deassert INTR# signal */
+	tmp = GL3590_INT_CLEAR;
+	gl3590_write(hub, GL3590_INT_REG, &tmp, 1);
+}
+
 void gl3590_irq_handler(int hub)
 {
 	uint8_t buf = 0;
