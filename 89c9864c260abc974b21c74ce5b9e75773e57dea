@@ -16,6 +16,23 @@
       "message": "Note - only one of this CL or the alternate fix (CL:2653947) should be merged.",
       "revId": "89c9864c260abc974b21c74ce5b9e75773e57dea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a4735dd_18572f93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1204629
+      },
+      "writtenOn": "2021-01-27T20:53:02Z",
+      "side": 1,
+      "message": "Hi Keith,\nThanks for quick fix. I verified on my DUT, now it is working fine in suspend-resume cycles, device is staying in TBT/USB4 upon resume.\n\nCan you please help to merge this patch to main and to 13672.B? As you know, certification is about to start, we need this fix.",
+      "revId": "89c9864c260abc974b21c74ce5b9e75773e57dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
