@@ -33,6 +33,24 @@
       "message": "In S0ix transition this function set_usb_mux_with_current_data_role is called, this one is configuring the mux in USB/Connect mode. Because of this TBT devices is not enumerated. I think this function call has to be inside the loop.",
       "revId": "24c5daa48c94cdf6160ee111d346690817238413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76387559_a3c58534",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-27T16:14:56Z",
+      "side": 1,
+      "message": "Amara - do you have a proposed fix?  I\u0027m not sure what you mean by calling the function inside the loop.",
+      "parentUuid": "c0d0d6cc_25542aa1",
+      "revId": "24c5daa48c94cdf6160ee111d346690817238413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
