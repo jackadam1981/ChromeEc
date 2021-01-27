@@ -173,6 +173,10 @@ void pd_prepare_sysjump(void)
  * possible pin config depending on whether its a converter DP->(VGA|HDMI) or DP
  * output.  If UFP is a USB-C receptacle it may assert C/D/E/F.  The DFP USB-C
  * receptacle must always choose C/D in those cases.
+ *
+ * TODO(b/178635286): We should add the necessary plumbing to let the AP change
+ * our selected pin mode after selecting our default here.  But for now, let's
+ * default to not preferring multi-function pin modes.
  */
 int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 {
@@ -189,9 +193,8 @@ int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 	/* TODO(crosbug.com/p/39656) revisit with DFP that can be a sink */
 	pin_caps = PD_DP_PIN_CAPS(mode_caps);
 
-	/* if don't want multi-function then ignore those pin configs */
-	if (!PD_VDO_DPSTS_MF_PREF(status))
-		pin_caps &= ~MODE_DP_PIN_MF_MASK;
+	/* We do not prefer multi-function pin modes. */
+	pin_caps &= ~MODE_DP_PIN_MF_MASK;
 
 	/* TODO(crosbug.com/p/39656) revisit if DFP drives USB Gen 2 signals */
 	pin_caps &= ~MODE_DP_PIN_BR2_MASK;
@@ -1081,25 +1084,21 @@ __overridable uint8_t get_dp_pin_mode(int port)
 __overridable int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
-	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
 	uint8_t pin_mode = get_dp_pin_mode(port);
-	mux_state_t mux_mode;
 
 	if (!pin_mode)
 		return 0;
 
 	/*
-	 * Multi-function operation is only allowed if that pin config is
-	 * supported.
+	 * TODO(b/178635286): We should add the necessary plumbing to let the AP
+	 * change this after our default.  But for now, let's default to 4-lanes
+	 * of DP.
 	 */
-	mux_mode = ((pin_mode & MODE_DP_PIN_MF_MASK) && mf_pref) ?
-		USB_PD_MUX_DOCK : USB_PD_MUX_DP_ENABLED;
-	CPRINTS("pin_mode: %x, mf: %d, mux: %d", pin_mode, mf_pref, mux_mode);
 
 	/* Connect the SBU and USB lines to the connector. */
 	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
 		ppc_set_sbu(port, 1);
-	usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT,
+	usb_mux_set(port, USB_PD_MUX_DP_ENABLED, USB_SWITCH_CONNECT,
 		polarity_rm_dts(pd_get_polarity(port)));
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
