@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b483d18d_24461ba4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-27T19:53:15Z",
+      "side": 1,
+      "message": "Issue occurs in multiple tests (eg. flash_write_protect, timer_dos, utils_str, pingpong, timer_calib, etc.). These tests are using normal implementation of charge manager. Should I add function to all tests separately, or to charge manager? What about value returned by this function? When added to tests it could be 0 for example.",
+      "parentUuid": "6def1051_ab46acdd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "794435fc6e622c26d17ce777990b5dc356cc049d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "46bed6ab_128869dd",
