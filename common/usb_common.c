@@ -406,6 +406,8 @@ enum pd_drp_next_states drp_auto_toggle_next_state(
 
 mux_state_t get_mux_mode_to_set(int port)
 {
+	mux_state_t current_mux_mode;
+
 	/*
 	 * If the SoC is down, then we disconnect the MUX to save power since
 	 * no one cares about the data lines.
@@ -439,8 +441,14 @@ mux_state_t get_mux_mode_to_set(int port)
 	    !pd_get_partner_usb_comm_capable(port))
 		return USB_PD_MUX_NONE;
 
+	if (!IS_ENABLED(CONFIG_USBC_SS_MUX))
+		return USB_PD_MUX_USB_ENABLED;
+
+	current_mux_mode = USB_PD_MUX_NONE;
+
 	/* Otherwise connect mux since we are in S3+ */
-	return USB_PD_MUX_USB_ENABLED;
+	return current_mux_mode == USB_PD_MUX_NONE ?
+		USB_PD_MUX_USB_ENABLED : current_mux_mode;
 }
 
 void set_usb_mux_with_current_data_role(int port)
