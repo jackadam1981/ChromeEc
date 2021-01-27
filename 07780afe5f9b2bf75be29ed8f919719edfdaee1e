@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cfaa725_c8edbce1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-27T20:32:59Z",
+      "side": 1,
+      "message": "Great to see this!! Hope we can get it reviewed and in quickly",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61df4c6d_e8df3662",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-27T20:32:59Z",
+      "side": 1,
+      "message": "Can we add the new Kconfig options in a separate CL?",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5890c558_1ae49962",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-27T20:32:59Z",
+      "side": 1,
+      "message": "Can this (and the license change) go in a separate CL?",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1ace04_d1a463c7",
+        "filename": "zephyr/projects/volteer/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-27T20:32:59Z",
+      "side": 1,
+      "message": "Can we update volteer in a separate CL?",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3721fadb_abfa0a8a",
+        "filename": "zephyr/shim/include/bbram.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-27T20:32:59Z",
+      "side": 1,
+      "message": "Is this the layout of the battery-backed RAM region?",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27dbc045_af123c63",
+        "filename": "zephyr/shim/include/bbram.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-27T20:32:59Z",
+      "side": 1,
+      "message": "I think it is better for multi-line comments to go before the item in question",
+      "range": {
+        "startLine": 19,
+        "startChar": 38,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08f5a527_64ba2f85",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-27T20:32:59Z",
+      "side": 1,
+      "message": "Is this not already included where?",
+      "range": {
+        "startLine": 177,
+        "startChar": 10,
+        "endLine": 177,
+        "endChar": 21
+      },
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353e195c_6d15229f",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-27T20:32:59Z",
+      "side": 1,
+      "message": "Can the zmake change be in its own CL?",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
