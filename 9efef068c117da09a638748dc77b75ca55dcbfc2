@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a772e8f_c3f97c10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-27T22:13:50Z",
+      "side": 1,
+      "message": "Build failure was caused by insufficent flash space on bobba board. It uses PS8751 chip in normal configuration (TCPC and MUX) so PS8751 mux driver is not going to be used and it occupies precious space. I added config to control precisely in which boards driver should appear.",
+      "revId": "9efef068c117da09a638748dc77b75ca55dcbfc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
