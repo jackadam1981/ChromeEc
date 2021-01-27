@@ -33,6 +33,24 @@
       "message": "On further inspection, you had problems with detecting the db because the vilboz macros are currently an old copy of those from dalboz and are thus incorrect. I\u0027d rather not allocate a new bit for this since we can instead fix the daughterboard detection and avoid allocating scarce config bits to this.",
       "revId": "30aee59279d1914d666f0ad479b1622f7ad393d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edee43a5_683d9286",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-27T07:44:11Z",
+      "side": 1,
+      "message": "the LTE bit is already allocated and used\n(see src/program/zork/program.star)\n\nSure the constants for the DB / usb C1 are broken but there are still machines without USB C1 *and* without LTE, it\u0027s better to do the mux init only when LTE is actually present.",
+      "parentUuid": "1f01e3e0_84bd5805",
+      "revId": "30aee59279d1914d666f0ad479b1622f7ad393d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
