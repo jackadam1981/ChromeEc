@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e22ea30_ff4d5e24",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-27T21:07:46Z",
+      "side": 1,
+      "message": "When the VBUS measurement config is undefined, it ends up in this branch. I added a check for a non-existent config to get around it. Probably, it makes more sense to set one of the existing VBUS_MEASRE configs in the test config. NOT_PRESENT would result in the simplest test behavior, I think.",
+      "revId": "211d1226532eb6772a4e223ddd0fadd0c4003eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
