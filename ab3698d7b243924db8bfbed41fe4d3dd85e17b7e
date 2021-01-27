@@ -211,6 +211,53 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb232aa5_b03686ca",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-27T04:03:22Z",
+      "side": 1,
+      "message": "i meant , remove only if 0 statement",
+      "parentUuid": "1f6fe0e8_71cf362b",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70dcb8f8_5ee58c83",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-27T04:03:22Z",
+      "side": 1,
+      "message": "retain these here but remove the ones in board.h",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 45
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a515e029_1d25bb82",
@@ -436,6 +483,30 @@
       "side": 1,
       "message": "done",
       "parentUuid": "14acbe63_2b4f5d36",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 26
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd3edfc_ce8288da",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-27T04:03:22Z",
+      "side": 1,
+      "message": "this is not yet done",
+      "parentUuid": "a0244dcb_3ef6d868",
       "range": {
         "startLine": 218,
         "startChar": 0,
