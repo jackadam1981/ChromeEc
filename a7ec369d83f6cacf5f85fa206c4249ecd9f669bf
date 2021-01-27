@@ -16,6 +16,29 @@
       "message": "updated register.h file by confirming it\u0027s tab and indent are as expected as ; \nin mac, linux, windows...etc..",
       "revId": "a7ec369d83f6cacf5f85fa206c4249ecd9f669bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "637c35e0_1ede6e5d",
+        "filename": "chip/mchp/registers.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-27T04:10:07Z",
+      "side": 1,
+      "message": "nit: this file needs similar tab fixes",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 6,
+        "endChar": 3
+      },
+      "revId": "a7ec369d83f6cacf5f85fa206c4249ecd9f669bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
