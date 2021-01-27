@@ -354,6 +354,32 @@ struct motion_sensor_t motion_sensors[] = {
 
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
+/*
+ * Note: 5V on the sub-board should be disabled upon entering S5 with no delay,
+ * and re-enabled when exiting S5.  This prevents issues with leakage into
+ * PP3300 rails.
+ */
+static void power_db_5v_enable(int enable)
+{
+	if (board_get_charger_chip_count() > 1) {
+		if (sm5803_set_gpio0_level(1, !!enable))
+			CPRINTUSB("Failed to %sable sub rails!", enable ?
+								  "en" : "dis");
+	}
+}
+
+static void board_startup(void)
+{
+	power_db_5v_enable(1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_startup, HOOK_PRIO_DEFAULT);
+
+static void board_shutdown(void)
+{
+	power_db_5v_enable(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_shutdown, HOOK_PRIO_DEFAULT);
+
 void board_init(void)
 {
 	int on;
@@ -410,10 +436,14 @@ void board_init(void)
 		sm5803_configure_gpio0(CHARGER_SECONDARY, GPIO0_MODE_OUTPUT, 0);
 	}
 
-	/* Turn on 5V if the system is on, otherwise turn it off */
+	/* Turn on MB 5V if the system is on or in S5, otherwise turn it off */
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
 			      CHIPSET_STATE_SOFT_OFF);
 	board_power_5v_enable(on);
+
+	/* Turn on DB 5V if the system is on, otherwise turn it off */
+	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND);
+	power_db_5v_enable(on);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -456,21 +486,6 @@ void board_reset_pd_mcu(void)
 	 * Nothing to do.  TCPC C0 is internal, TCPC C1 reset pin is not
 	 * connected to the EC.
 	 */
-}
-
-__override void board_power_5v_enable(int enable)
-{
-	/*
-	 * Motherboard has a GPIO to turn on the 5V regulator, but the sub-board
-	 * sets it through the charger GPIO.
-	 */
-	gpio_set_level(GPIO_EN_PP5000, !!enable);
-
-	if (board_get_charger_chip_count() > 1) {
-		if (sm5803_set_gpio0_level(1, !!enable))
-			CPRINTUSB("Failed to %sable sub rails!", enable ?
-								  "en" : "dis");
-	}
 }
 
 __override uint8_t board_get_usb_pd_port_count(void)
