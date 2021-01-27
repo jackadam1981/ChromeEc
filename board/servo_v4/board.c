@@ -224,7 +224,6 @@ USB_STREAM_CONFIG(usart3_usb,
 	usb_to_usart3,
 	usart3_to_usb)
 
-
 /******************************************************************************
  * Forward USART4 as a simple USB serial interface.
  */
@@ -246,6 +245,18 @@ static struct usart_config const usart4 =
 		usart4_to_usb,
 		usb_to_usart4);
 
+/* Support dynamic changes to baud rate only in RW.  (RO has no space.) */
+#ifdef SECTION_IS_RW
+USB_STREAM_CONFIG_USART_IFACE(usart4_usb,
+	USB_IFACE_USART4_STREAM,
+	USB_STR_USART4_STREAM_NAME,
+	USB_EP_USART4_STREAM,
+	USB_STREAM_RX_SIZE,
+	USB_STREAM_TX_SIZE,
+	usb_to_usart4,
+	usart4_to_usb,
+	usart4)
+#else /* SECTION_IS_RW */
 USB_STREAM_CONFIG(usart4_usb,
 	USB_IFACE_USART4_STREAM,
 	USB_STR_USART4_STREAM_NAME,
@@ -254,6 +265,7 @@ USB_STREAM_CONFIG(usart4_usb,
 	USB_STREAM_TX_SIZE,
 	usb_to_usart4,
 	usart4_to_usb)
+#endif /* SECTION_IS_RW */
 
 
 /******************************************************************************
