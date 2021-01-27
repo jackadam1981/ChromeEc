@@ -4866,7 +4866,7 @@ static void pe_bist_tx_entry(int port)
 	 * isn't enabled, but PD has gotten this far, then VBUS should be at
 	 * vSafe5V.
 	 */
-	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
+	if (IS_ENABLED(CONFIG_CHARGE_MANAGER) && !IS_ENABLED(TEST_BUILD)) {
 		int vbus_voltage_mv = charge_manager_get_vbus_voltage(port);
 
 		if (vbus_voltage_mv < PD_V_SAFE5V_MIN ||
