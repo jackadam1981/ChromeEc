@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e464044_460eaca8",
+        "filename": "board/nucleo-h743zi/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-27T21:46:35Z",
+      "side": 1,
+      "message": "Typo. Without the newline, mdformat formats it with single backticks. I manually modified it after that.",
+      "parentUuid": "c952eecf_907ef821",
+      "range": {
+        "startLine": 80,
+        "startChar": 22,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e1613c4_68ff0a09",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-26T19:14:23Z",
       "side": 1,
       "message": "no longer aligned?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 33
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "792de779_fec7f9cc",
+        "filename": "board/servo_micro/ccd.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-27T21:46:35Z",
+      "side": 1,
+      "message": "Looks like it formats it according to Google style (spaces, not tabs).",
+      "parentUuid": "2e1613c4_68ff0a09",
       "range": {
         "startLine": 116,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31be50e7_4781f18a",
+        "filename": "common/mock/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-27T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f47d1d3_ad77d8c7",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c816bdf1_9c3753f5",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-26T19:14:23Z",
       "side": 1,
       "message": "no longer aligned to ( above?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a232373_c545eb58",
+        "filename": "docs/ztest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-27T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c816bdf1_9c3753f5",
       "range": {
         "startLine": 114,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea88300_107abf10",
+        "filename": "extra/tigertool/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-27T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94d3b1c2_c43952e3",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a062c43_23e2bb3d",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-01-26T19:14:23Z",
       "side": 1,
       "message": "do we want to exclude third_party files from mdformat? this may make it easier to rebase on upstream...",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 8
+      },
+      "revId": "a82a31a54aba27376ec553fbc75e385f84bf4943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea347d84_49f5a4a2",
+        "filename": "third_party/incbin/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-27T21:46:35Z",
+      "side": 1,
+      "message": "Since it\u0027s just a text file I\u0027m not too worried. We\u0027re not actually tracking the history of the project, so \"rebasing\" (if ever done) will probably consist of pulling in the latest version (unconditionally, not applying patches).",
+      "parentUuid": "9a062c43_23e2bb3d",
       "range": {
         "startLine": 1,
         "startChar": 0,
