@@ -22,6 +22,54 @@
       },
       "revId": "1ebf3c2e60043c12c25fdaf4163372eee2de309e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "052315ae_debcad93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-01-27T10:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31d63ef4_a00cde33",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "1ebf3c2e60043c12c25fdaf4163372eee2de309e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321aafa9_344bfc78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-01-27T10:48:21Z",
+      "side": 1,
+      "message": "\u003e \"availabel\" is a possible misspelling of \"available\".\n\nPlease fix.",
+      "parentUuid": "99214f18_9fbb68f0",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "1ebf3c2e60043c12c25fdaf4163372eee2de309e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
