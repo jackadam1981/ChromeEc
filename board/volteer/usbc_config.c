@@ -222,6 +222,7 @@ struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C1] = {
 		.usb_port = USBC_PORT_C1,
 		.driver = &bb_usb_retimer,
+		.has_retimer = true,
 		.next_mux = &usbc1_tcss_usb_mux,
 		.i2c_port = I2C_PORT_USB_1_MIX,
 		.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
@@ -239,12 +240,6 @@ struct bb_usb_control bb_controls[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
-
-__override int usb_retimer_fw_update_query_port(void)
-{
-	/* USBC_PORT_C1 has burnside bridge retimer */
-		return BIT(1);
-}
 
 __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 {

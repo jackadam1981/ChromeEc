@@ -34,9 +34,28 @@ static void deferred_pd_suspend(void)
 }
 DECLARE_DEFERRED(deferred_pd_suspend);
 
-__overridable int usb_retimer_fw_update_query_port(void)
+/**
+ * Query USB-C ports state for USB retimer firmware update.
+ * Support up to 8 ports.
+ *
+ * @return Bits[7:0]: represent PD ports 0-7
+ *         1 - This port has retimer;
+ *         0 - No retimer.
+ */
+static int usb_retimer_fw_update_query_port(void)
 {
-	return 0;
+	int i;
+	int port_info = 0;
+	const struct usb_mux *mux_ptr;
+
+	for (i = 0; i < USBC_PORT_COUNT; i++) {
+		mux_ptr = &usb_muxes[i];
+		while (mux_ptr && mux_ptr->has_retimer) {
+			port_info |= BIT(i);
+			mux_ptr = mux_ptr->next_mux;
+		}
+	}
+	return port_info;
 }
 
 int usb_retimer_fw_update_get_result(void)

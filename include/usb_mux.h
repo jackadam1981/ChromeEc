@@ -100,6 +100,9 @@ struct usb_mux {
 	/* Run-time flags with prefix USB_MUX_FLAG_ */
 	uint32_t flags;
 
+	/* For retimer firmware update, true if there is retimer */
+	bool has_retimer;
+
 	/* Mux driver */
 	const struct usb_mux_driver *driver;
 
