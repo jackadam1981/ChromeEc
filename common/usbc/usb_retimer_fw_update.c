@@ -52,9 +52,33 @@ static int last_op; /* Operation received from AP via ACPI_WRITE */
 /* MUX value returned to ACPI_READ */
 static int last_mux_result = USB_RETIMER_FW_UPDATE_INVALID_MUX;
 
-__overridable int usb_retimer_fw_update_query_port(void)
+/**
+ * Query USB-C ports state for USB retimer firmware update.
+ * Support up to 8 ports.
+ *
+ * @return port information
+ * 	   Bits[7:0]: represent PD ports 0-7; each bit
+ *         = 1, this port has retimer;
+ *         = 0, no retimer.
+ */
+static int usb_retimer_fw_update_query_port(void)
 {
-	return 0;
+	int i;
+	int port_info = 0;
+	const struct usb_mux *mux_ptr;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		mux_ptr = &usb_muxes[i];
+		while (mux_ptr) {
+			if (mux_ptr->driver &&
+				mux_ptr->driver->is_retimer_fw_update_capable &&
+				mux_ptr->driver->is_retimer_fw_update_capable())
+				port_info |= BIT(i);
+
+			mux_ptr = mux_ptr->next_mux;
+		}
+	}
+	return port_info;
 }
 
 int usb_retimer_fw_update_get_result(void)

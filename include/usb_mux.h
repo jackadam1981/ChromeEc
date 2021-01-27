@@ -58,6 +58,14 @@ struct usb_mux_driver {
 	int (*get)(const struct usb_mux *me, mux_state_t *mux_state);
 
 	/**
+	 * Return if retimer supports firmware update
+	 *
+	 * @return true  - supported
+	 *         false - not supported
+	 */
+	bool (*is_retimer_fw_update_capable)(void);
+
+	/**
 	 * Optional method that is called after the mux fully disconnects.
 	 *
 	 * Note: this method does not need to be defined for TCPC/MUX combos
