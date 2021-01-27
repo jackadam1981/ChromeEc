@@ -493,6 +493,11 @@ static int retimer_low_power_mode(const struct usb_mux *me)
 	return EC_SUCCESS;
 }
 
+static bool retimer_use_retimer(void)
+{
+	return true;
+}
+
 static int retimer_init(const struct usb_mux *me)
 {
 	int rv;
@@ -527,6 +532,7 @@ const struct usb_mux_driver bb_usb_retimer = {
 	.init = retimer_init,
 	.set = retimer_set_state,
 	.enter_low_power_mode = retimer_low_power_mode,
+	.use_retimer = retimer_use_retimer,
 };
 
 #ifdef CONFIG_CMD_RETIMER
