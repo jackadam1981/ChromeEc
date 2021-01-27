@@ -16,6 +16,29 @@
       "message": "Hi Yuval, could you help review it?",
       "revId": "79916986790a49e631263a737e7b4dbb4c049015",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17537427_868caa94",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-27T14:44:40Z",
+      "side": 1,
+      "message": "consider making these static",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "79916986790a49e631263a737e7b4dbb4c049015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
