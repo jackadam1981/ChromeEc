@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ccc3a6_66f95028",
+        "filename": "board/vilboz/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-27T07:49:13Z",
+      "side": 1,
+      "message": "this is not fully true actually,\nthere are boards with the \u0027USBA_HDMI\u0027 DB (ie no USB-C1) AND without LTE\n(while the turning on the mux for the LTE USB3 might be ok in this case, we might still have leakages/noise issues and the naming here would be misleading.)",
+      "revId": "d4b110e0f9a635466181a8f7d5f576b3aefbb9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
