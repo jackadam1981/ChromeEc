@@ -22,6 +22,30 @@
       },
       "revId": "7bbeda70306ff62d32eb3b2375eb13466fc50c66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d4ebe2b_fad94f99",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1484712
+      },
+      "writtenOn": "2021-01-27T02:36:51Z",
+      "side": 1,
+      "message": "Due to more strict memory space on stm32f4 platform, template size need to be adjusted to execute ELAN algorithm.\nThis change would cause higher FRR, based on internal evaluation:\nstm32f4: 1.1% (v.s M7: 0.9%)",
+      "parentUuid": "4d2485fb_11252356",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "7bbeda70306ff62d32eb3b2375eb13466fc50c66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
