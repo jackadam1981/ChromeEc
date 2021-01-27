@@ -58,6 +58,13 @@ struct usb_mux_driver {
 	int (*get)(const struct usb_mux *me, mux_state_t *mux_state);
 
 	/**
+	 * Return if retimer is used
+	 * @return true  - If retimer is used
+	 *         false - No retimer
+	 */
+	bool (*use_retimer)(void);
+
+	/**
 	 * Optional method that is called after the mux fully disconnects.
 	 *
 	 * Note: this method does not need to be defined for TCPC/MUX combos
