@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29188480_3e7c4f85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-27T21:56:47Z",
+      "side": 1,
+      "message": "Yes we could move gpio_list, gpio_alt_funcs, and sha256_k, to save another 1800 bytes.",
+      "parentUuid": "337bdfe2_3de833f4",
+      "revId": "bd4e6aaac905f6ea02e8cda5ad7f21fbbedbdfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa3625a3_5240a805",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-27T21:47:50Z",
       "side": 1,
       "message": "Does it have to go after the static?",
+      "range": {
+        "startLine": 367,
+        "startChar": 22,
+        "endLine": 367,
+        "endChar": 34
+      },
+      "revId": "bd4e6aaac905f6ea02e8cda5ad7f21fbbedbdfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02beaec4_0af8577a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-27T21:56:47Z",
+      "side": 1,
+      "message": "The presubmit check required it.",
+      "parentUuid": "fa3625a3_5240a805",
       "range": {
         "startLine": 367,
         "startChar": 22,
