@@ -1089,17 +1089,15 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 		return 0;
 
 	/*
-	 * Multi-function operation is only allowed if that pin config is
-	 * supported.
+	 * TODO(b/178635286): We should add the necessary plumbing to let the AP
+	 * change this after our default.  But for now, let's default to 4-lanes
+	 * of DP.
 	 */
-	mux_mode = ((pin_mode & MODE_DP_PIN_MF_MASK) && mf_pref) ?
-		USB_PD_MUX_DOCK : USB_PD_MUX_DP_ENABLED;
-	CPRINTS("pin_mode: %x, mf: %d, mux: %d", pin_mode, mf_pref, mux_mode);
 
 	/* Connect the SBU and USB lines to the connector. */
 	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
 		ppc_set_sbu(port, 1);
-	usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT,
+	usb_mux_set(port, USB_PD_MUX_DP_ENABLED, USB_SWITCH_CONNECT,
 		polarity_rm_dts(pd_get_polarity(port)));
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
