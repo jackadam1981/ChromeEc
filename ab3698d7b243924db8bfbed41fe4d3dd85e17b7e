@@ -235,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb691e67_425d2f95",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T20:00:12Z",
+      "side": 1,
+      "message": "added back and removed if0",
+      "parentUuid": "cb232aa5_b03686ca",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70dcb8f8_5ee58c83",
@@ -248,6 +272,30 @@
       "writtenOn": "2021-01-27T04:03:22Z",
       "side": 1,
       "message": "retain these here but remove the ones in board.h",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 45
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4f42f7_3e74ee90",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T20:00:12Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "70dcb8f8_5ee58c83",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -507,6 +555,30 @@
       "side": 1,
       "message": "this is not yet done",
       "parentUuid": "a0244dcb_3ef6d868",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 26
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d63b0d52_87331ecf",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-01-27T20:00:12Z",
+      "side": 1,
+      "message": "moved in patch set 10",
+      "parentUuid": "2cd3edfc_ce8288da",
       "range": {
         "startLine": 218,
         "startChar": 0,
