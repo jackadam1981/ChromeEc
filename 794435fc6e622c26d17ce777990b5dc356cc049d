@@ -63,6 +63,23 @@
       "message": "Hi!\n\nThis CL fixes errors during EC ToT build with \u0027emerge-octopus chromeos-ec\u0027",
       "revId": "794435fc6e622c26d17ce777990b5dc356cc049d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e14272_e3acf591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-27T21:12:47Z",
+      "side": 1,
+      "message": "I think the root of the problem is that this function is defined in an #ifndef TEST_BUILD section of charge_manager. This section appears to have been created to avoid mocking out some PD functions that charge_manager uses: https://crrev.com/c/297789.\n\nI have started along the path of exposing this section in test builds, which has turned into using mocks in more tests. I think this is basically the right direction to go in, but it looks like the rabbit hole might be pretty deep.\n\nAseda: I\u0027d be interested in your thoughts on this high-level approach.",
+      "revId": "794435fc6e622c26d17ce777990b5dc356cc049d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
