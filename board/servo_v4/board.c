@@ -224,7 +224,6 @@ USB_STREAM_CONFIG(usart3_usb,
 	usb_to_usart3,
 	usart3_to_usb)
 
-
 /******************************************************************************
  * Forward USART4 as a simple USB serial interface.
  */
