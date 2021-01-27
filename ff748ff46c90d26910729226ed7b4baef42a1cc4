@@ -51,6 +51,24 @@
       "parentUuid": "74adf3a2_4952962f",
       "revId": "ff748ff46c90d26910729226ed7b4baef42a1cc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c84c2f33_8508164b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-27T20:16:39Z",
+      "side": 1,
+      "message": "We should chat about structure of zmake to make testing easier...but some ideas in brief\n\n- have a control.py that does the control logic\n- put arg parsing in a separate file\n- have a main program that just runs either tests or real logic\n- write tests for each module with only a few for the overall functionality (since these are easier to write)",
+      "parentUuid": "ed9c2f07_d9c34249",
+      "revId": "ff748ff46c90d26910729226ed7b4baef42a1cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
