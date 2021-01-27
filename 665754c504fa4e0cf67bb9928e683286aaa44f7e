@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a71e59_97dc159c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-01-27T01:30:34Z",
+      "side": 1,
+      "message": "JFYI:\n\nOne thing we will have to consider will be the warm reboot scenario (e.g a kernel panic or just \"reboot\") when we have a USB-only peripheral connected to the type C port, like a Pen drive.\n\nThe intention is for coreboot to call \"exit mode\" for all its ports when it runs through a warm reboot code path.\n\nThen, when typecd eventually decides to pick a mode, it can only pick between DP, TBT and USB4, so it won\u0027t end up picking anything.\n\nAt present, this is fine, since the EC parks the port in USB mode when \"exit\" is called.\n\nThis CL will change that; a USB3 Pen drive will just remain in disconnected state (from the AP mux perspective) so will never enumerate.",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
