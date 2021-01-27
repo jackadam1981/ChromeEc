@@ -34,6 +34,24 @@
       "parentUuid": "91a71e59_97dc159c",
       "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44808bd5_fb9a6a72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-27T23:07:07Z",
+      "side": 1,
+      "message": "Just to clear even for this CL, - On exit mode, EC does a disconnect and USB connect (line 280)\n\nFor panic when in alt mode, I think we need to have a CB code which sends an exit mode request to EC, so EC will be in USB mode when kernel boots up.",
+      "parentUuid": "fa8ec7b2_5f3188ff",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
