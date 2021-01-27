@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa6ee4f_ae23d05f",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-27T19:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53cd05ee_f6532c26",
+      "revId": "834ad8247f9eef24b07784c8a13ac4fad1e051e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57dde029_46265804",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-27T19:03:28Z",
       "side": 1,
       "message": "This will always be true because of 447?",
+      "revId": "834ad8247f9eef24b07784c8a13ac4fad1e051e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3bee927_d8a946ad",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-27T19:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57dde029_46265804",
       "revId": "834ad8247f9eef24b07784c8a13ac4fad1e051e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
