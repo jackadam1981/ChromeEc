@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aab6c73_bab229e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1204629
+      },
+      "writtenOn": "2021-01-27T08:56:05Z",
+      "side": 1,
+      "message": "Hi Keith,\n\nThis is causing a major regression on suspend-resume cycles.\n1. Boot up DUT.\n2. Connect TBT/USB4 device.\n3. suspend_stress_test -c 1\n4. Observer that the device disappears!\n\nCan you help to fix this on priority? Thanks.",
+      "revId": "24c5daa48c94cdf6160ee111d346690817238413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
