@@ -51,6 +51,29 @@
       "parentUuid": "c0d0d6cc_25542aa1",
       "revId": "24c5daa48c94cdf6160ee111d346690817238413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a96746_5d0e0702",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-27T16:36:31Z",
+      "side": 1,
+      "message": "Issue scenario steps:\nConnect TBT device to port 0, TBT will be enumerated. \nPlease check typec 0 here it shows mux is configured as TBT\u003d1\n\nEnter S0ix by the command powerd_dbus_suspend. Now please check the typec 0 here it shows mux is configured as USB\u003d1 TBT\u003d0.\n\nThis one is happening because of this function set_usb_mux_with_current_data_role(port); called in s0-\u003es0ix transition.\n\nWake the DUT, Now please check the typec 0 here it shows mux is configured as USB\u003d1 TBT\u003d0.\n\nExpected Mux configuration is TBT\u003d1.",
+      "range": {
+        "startLine": 1743,
+        "startChar": 1,
+        "endLine": 1743,
+        "endChar": 35
+      },
+      "revId": "24c5daa48c94cdf6160ee111d346690817238413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
