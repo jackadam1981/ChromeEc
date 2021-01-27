@@ -9,6 +9,7 @@
 #include "charge_manager.h"
 #include "common.h"
 #include "ec_commands.h"
+#include "mock/usb_tc_sm_mock.h"
 #include "test_util.h"
 #include "timer.h"
 #include "usb_pd.h"
@@ -87,17 +88,19 @@ static void pd_set_role(int port, int role)
 	power_role[port] = role;
 }
 
+#if 0
 enum pd_power_role pd_get_power_role(int port)
 {
 	return power_role[port];
 }
+#endif
 
 void pd_request_power_swap(int port)
 {
-	if (power_role[port] == PD_ROLE_SINK)
-		power_role[port] = PD_ROLE_SOURCE;
+	if (pd_get_power_role(port) == PD_ROLE_SINK)
+		mock_tc_set_power_role(port, PD_ROLE_SOURCE);
 	else
-		power_role[port] = PD_ROLE_SINK;
+		mock_tc_set_power_role(port, PD_ROLE_SINK);
 }
 
 static void wait_for_charge_manager_refresh(void)

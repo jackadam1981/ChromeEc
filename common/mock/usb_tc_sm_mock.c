@@ -41,6 +41,11 @@ void mock_tc_port_reset(void)
 	}
 }
 
+void mock_tc_set_power_role(int port, enum pd_power_role role)
+{
+	mock_tc_port[port].power_role = role;
+}
+
 enum pd_cable_plug tc_get_cable_plug(int port)
 {
 	return PD_PLUG_FROM_DFP_UFP;

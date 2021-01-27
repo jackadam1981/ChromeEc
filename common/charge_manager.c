@@ -175,7 +175,6 @@ static int is_valid_port(int port)
 	return 1;
 }
 
-#ifndef TEST_BUILD
 static int is_connected(int port)
 {
 	if (!is_pd_port(port))
@@ -183,7 +182,6 @@ static int is_connected(int port)
 
 	return pd_is_connected(port);
 }
-#endif /* !TEST_BUILD */
 
 #ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 /**
@@ -262,7 +260,6 @@ static int charge_manager_is_seeded(void)
 	return 1;
 }
 
-#ifndef TEST_BUILD
 /**
  * Get the maximum charge current for a port.
  *
@@ -371,9 +368,11 @@ static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 #elif defined(CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT)
 		/* No VBUS ADC channel - voltage is unknown */
 		voltage_mv = 0;
-#else
+#elif defined(CONFIG_USB_PD_VBUS_MEASURE_MADE_UP)
 		/* There is a single ADC that measures joint Vbus */
 		voltage_mv = adc_read_channel(ADC_VBUS);
+#else
+		voltage_mv = 0;
 #endif
 	}
 	return voltage_mv;
@@ -520,7 +519,6 @@ static void charge_manager_fill_power_info(int port,
 		r->meas.voltage_now = get_vbus_voltage(port, r->role);
 	}
 }
-#endif /* TEST_BUILD */
 
 #ifdef CONFIG_USB_PD_LOGGING
 /**
@@ -1350,7 +1348,6 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 }
 #endif /* CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT && !CONFIG_USB_PD_TCPMV2 */
 
-#ifndef TEST_BUILD
 static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_power_info *p = args->params;
@@ -1377,7 +1374,6 @@ static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_POWER_INFO,
 		     hc_pd_power_info,
 		     EC_VER_MASK(0));
-#endif /* TEST_BUILD */
 
 static enum ec_status hc_charge_port_count(struct host_cmd_handler_args *args)
 {
