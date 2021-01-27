@@ -52,6 +52,24 @@
       "parentUuid": "fa8ec7b2_5f3188ff",
       "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071d4987_66bf16c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-01-27T23:59:02Z",
+      "side": 1,
+      "message": "\u003e Just to clear even for this CL, - On exit mode, EC does a disconnect and USB connect (line 280)\n\nCan you provide a link? I\u0027m not sure which file you\u0027re referring to.\n\n\u003e For panic when in alt mode, I think we need to have a CB code which sends an exit mode request to EC, so EC will be in USB mode when kernel boots up.\n\nThat\u0027s right. Of course, we can\u0027t submit that until we submit the code that enables AP-driven mode entry, otherwise the device will always be in \"exit mode\".",
+      "parentUuid": "44808bd5_fb9a6a72",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
