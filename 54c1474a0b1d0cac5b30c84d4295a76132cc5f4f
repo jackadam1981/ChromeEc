@@ -16,6 +16,24 @@
       "message": "It would be nice if we could come up with a way to keep the same board, but just specify the sensor. e.g.,:\n\n  make FP_SENSOR\u003delanXYZ BOARD\u003ddartmonkey\n\nI think that will take a bit of work since the EC code doesn\u0027t really have that capability at the moment and we probably want to go ahead and start the testing.\n\nCan you use symlinks for files that haven\u0027t changed? The only thing that should really change is CONFIG_FP_SENSOR_ELAN515 in board.h, right? You could take a look at the \"baseboard\" functionality to see if that\u0027s something that could be used. Worst case you could probably do something like:\n\n  board/pineapple/board.h\n\n  #include \"board/bloonchipper/board.h\"\n  #undef CONFIG_FP_SENSOR_FPC1025\n  #define CONFIG_FP_SENSOR_ELAN515",
       "revId": "54c1474a0b1d0cac5b30c84d4295a76132cc5f4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45491d98_9980e92b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-27T21:32:41Z",
+      "side": 1,
+      "message": "The question with the baseboard (or supplying FP_SENSOR to make) is whether we want to call the baseboard \"bloonchipper\". I think the answer is no. Bloonchipper means F412 + FPC1025. It\u0027s confusing to mention \"bloonchipper with ELANxyz sensor\".\n\nUsing the nucleo-f412 baseboard is also confusing because there are settings specific to the nucleo boards (but not the FPMCU) and we would have to override that in pineapple.\n\nSo I think I\u0027ll do the symlinks. Since we want a different board name + avoid code duplication, the symlinks seem reasonable to me even in the long run.",
+      "parentUuid": "7eba63ae_01a68da0",
+      "revId": "54c1474a0b1d0cac5b30c84d4295a76132cc5f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
