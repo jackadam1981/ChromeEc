@@ -86,6 +86,23 @@
       "message": "firmware-ec-cq failed because Volteer ran out of space.  CL:2651208 has been submitted to address the Volteer flash space.  Once that CL merges, this CL can be re-submitted to the CQ.",
       "revId": "89c9864c260abc974b21c74ce5b9e75773e57dea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aadff5eb_ce2bde64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-27T23:25:42Z",
+      "side": 1,
+      "message": "Just noticed flag_bit_names[] doesn\u0027t have entry for this flag.",
+      "revId": "89c9864c260abc974b21c74ce5b9e75773e57dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
