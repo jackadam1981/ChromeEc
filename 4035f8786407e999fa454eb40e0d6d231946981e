@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68027c0_4ec1971e",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-27T18:49:37Z",
+      "side": 1,
+      "message": "sorry if I am late to this party... shouldn\u0027t cbi_ssfc be an override mechanism?  We should not be calling it out by itself but maybe calling a function that gets the fw_config and then the cbi_ssfc and uses the cbi_ssfc if it is set.",
+      "range": {
+        "startLine": 265,
+        "startChar": 9,
+        "endLine": 265,
+        "endChar": 35
+      },
+      "revId": "4035f8786407e999fa454eb40e0d6d231946981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
