@@ -16,6 +16,24 @@
       "message": "Cherry-picked to octopus firmware branch, test passed with USB2.0 problem and power_supply_info.",
       "revId": "469f6c0dba9a9027e044d6821ab62ca122dd5a97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "065b42d4_5b2e3411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-01-27T14:43:32Z",
+      "side": 1,
+      "message": "Hi Devin,\n\nThank you for the support to double verify this CL.",
+      "parentUuid": "9314b255_b6a363f0",
+      "revId": "469f6c0dba9a9027e044d6821ab62ca122dd5a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
