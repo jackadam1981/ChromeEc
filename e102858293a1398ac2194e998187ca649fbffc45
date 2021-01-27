@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcddc6eb_37f3ce47",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-27T18:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810be934_35097b87",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 14
+      },
+      "revId": "e102858293a1398ac2194e998187ca649fbffc45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14021e00_6d957f79",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-01-15T16:52:46Z",
       "side": 1,
       "message": "Can we have a short flag too?\n\n-D for dev?",
+      "revId": "e102858293a1398ac2194e998187ca649fbffc45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd843b8_d8cd186d",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-27T18:49:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "14021e00_6d957f79",
       "revId": "e102858293a1398ac2194e998187ca649fbffc45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
