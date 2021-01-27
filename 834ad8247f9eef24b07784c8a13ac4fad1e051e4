@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53cd05ee_f6532c26",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-01-27T19:04:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right. we are setting the mux mode and then checking. It was always be PD_MUX_USB_ENABLED",
+      "revId": "834ad8247f9eef24b07784c8a13ac4fad1e051e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57dde029_46265804",
         "filename": "common/usb_common.c",
         "patchSetId": 1
