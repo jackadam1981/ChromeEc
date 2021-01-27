@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b82d15_317b4234",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-27T21:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9244f915_173e3201",
+      "range": {
+        "startLine": 1284,
+        "startChar": 41,
+        "endLine": 1284,
+        "endChar": 45
+      },
+      "revId": "aefa5c61b606fbf0f35a319a76c75d472c2f6034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0c3a253_2ed3de38",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "625fc6a2_19673ada",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-27T21:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0c3a253_2ed3de38",
+      "range": {
+        "startLine": 1286,
+        "startChar": 1,
+        "endLine": 1290,
+        "endChar": 4
+      },
+      "revId": "aefa5c61b606fbf0f35a319a76c75d472c2f6034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f81a26bf_9749333c",
@@ -125,6 +173,24 @@
       "writtenOn": "2020-12-23T00:22:59Z",
       "side": 1,
       "message": "Then around here is where I\u0027d expect us to refill our supplier table.",
+      "revId": "aefa5c61b606fbf0f35a319a76c75d472c2f6034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aa678a8_d29f916a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1320,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-27T21:43:20Z",
+      "side": 1,
+      "message": "Looks like we\u0027ll be doing that a few lines lower in sink_power_sub_states()",
+      "parentUuid": "f81a26bf_9749333c",
       "revId": "aefa5c61b606fbf0f35a319a76c75d472c2f6034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
