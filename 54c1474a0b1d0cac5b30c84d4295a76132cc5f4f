@@ -52,6 +52,24 @@
       "parentUuid": "45491d98_9980e92b",
       "revId": "54c1474a0b1d0cac5b30c84d4295a76132cc5f4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9936dd93_33e63bb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-28T00:22:53Z",
+      "side": 1,
+      "message": "I guess EC won\u0027t like the idea of specifying a CONFIG thing by arguments to the make command. Let\u0027s do this:\n\n1. Bloonchipper will become a baseboard.\n2. The current bloonchipper will be renamed to bloonchipper-fpc.\n3. The new combo will be named bloonchipper-elan.\n\nI wonder if anything will go wrong with 2. E.g. RO doesn\u0027t accept the new RW called bloonchipper-fpc?\n\nAnd note that there\u0027s also the ebuild problem. Do you see a way to reuse the release-firmware-fpmcu-bloonchipper ebuild for two sensors?",
+      "parentUuid": "15b84e98_5be8775d",
+      "revId": "54c1474a0b1d0cac5b30c84d4295a76132cc5f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
