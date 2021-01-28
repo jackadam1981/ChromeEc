@@ -6,7 +6,7 @@
 . /usr/share/misc/shflags
 
 readonly DEFAULT_RETRIES=${DEFAULT_RETRIES:-4}
-readonly STM32MON_CONNECT_RETRIES=${STM32MON_CONNECT_RETRIES:-6}
+readonly STM32MON_CONNECT_RETRIES=${STM32MON_CONNECT_RETRIES:-2}
 readonly STM32MON_SERIAL_BAUDRATE=${STM32MON_SERIAL_BAUDRATE:-115200}
 
 DEFINE_boolean 'read' "${FLAGS_FALSE}" 'Read instead of write' 'r'
@@ -51,6 +51,11 @@ check_hardware_write_protect_disabled() {
 # Get the spiid for the fingerprint sensor based on the modalias
 # string: https://crbug.com/955117
 get_spiid() {
+  if [[ "${PLATFORM_NAME}" == strongbad ]]; then
+    echo spi10.0
+    return 0
+  fi
+
   for dev in /sys/bus/spi/devices/*; do
     if [[ "$(cat "${dev}/modalias")" == "${CROS_EC_SPI_MODALIAS_STR}" ]]; then
       echo "$(basename "${dev}")"
@@ -73,6 +78,60 @@ get_uartid() {
   done
 
   exit 1
+}
+
+gpio() {
+  local action=$1
+
+}
+
+# Usage: gpio_export <unexport|export> <signal_name> [signal_name...]
+gpio_export() {
+  local action=$1
+
+  shift
+  for signal; do
+    case "${GPIOLIB}" in
+      sysfs)
+        echo "${signal}" > "/sys/class/gpio/${action}"
+        ;;
+      chardev)
+        ;;
+    esac
+  done
+}
+
+# Usage: gpio_dir <in|out> <signal_name> [signal_name...]
+gpio_dir() {
+  local direction=$1
+
+  shift
+  for signal; do
+    case "${GPIOLIB}" in
+      sysfs)
+        echo "${direction}" > "/sys/class/gpio/gpio${signal}/direction"
+        ;;
+      chardev)
+        ;;
+    esac
+  done
+}
+
+# Usage: gpio_set <0|1> <signal_name> [signal_name...]
+gpio_set() {
+  local value=$1
+
+  shift
+  for signal; do
+    case "${GPIOLIB}" in
+      sysfs)
+        echo "${value}" > "/sys/class/gpio/gpio${signal}/value"
+        ;;
+      chardev)
+        gpioset $(gpiofind "${signal}")="${value}"
+        ;;
+    esac
+  done
 }
 
 # Taken verbatim from
@@ -115,7 +174,8 @@ get_platform_name() {
   # In all cases we can fall back to /etc/lsb-release. It's not recommended
   # to do this, but we don't have any other options in this case.
   echo "Getting platform name from /etc/lsb-release." 1>&2
-  platform_name="$(lsbval "CHROMEOS_RELEASE_BOARD")"
+  # platform_name="$(lsbval "CHROMEOS_RELEASE_BOARD")"
+  platform_name="$(grep CHROMEOS_RELEASE_BOARD /etc/lsb-release | cut -d= -f2)"
   if [[ -z "${platform_name}" ]]; then
     exit 1
   fi
@@ -195,9 +255,12 @@ flash_fp_mcu_stm32() {
 
   # Ensure the ACPI is not cutting power when unloading cros-ec-spi
   if [[ "${gpio_pwren}" -gt 0 ]]; then
-    echo "${gpio_pwren}" > /sys/class/gpio/export
-    echo "out" > "/sys/class/gpio/gpio${gpio_pwren}/direction"
-    echo 1 > "/sys/class/gpio/gpio${gpio_pwren}/value"
+    gpio_export export "${gpio_pwren}"
+    # echo "${gpio_pwren}" > /sys/class/gpio/export
+    gpio_dir out "${gpio_pwren}"
+    # echo "out" > "/sys/class/gpio/gpio${gpio_pwren}/direction"
+    gpio_set 1 "${gpio_pwren}"
+    # echo 1 > "/sys/class/gpio/gpio${gpio_pwren}/value"
   fi
 
   # Remove cros_fp if present
@@ -208,14 +271,18 @@ flash_fp_mcu_stm32() {
   fi
 
   # Configure the MCU Boot0 and NRST GPIOs
-  echo "${gpio_boot0}" > /sys/class/gpio/export
-  echo "out" > "/sys/class/gpio/gpio${gpio_boot0}/direction"
-  echo "${gpio_nrst}" > /sys/class/gpio/export
-  echo "out" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
+  gpio_export export "${gpio_boot0}" "${gpio_nrst}"
+  gpio_dir    out    "${gpio_boot0}" "${gpio_nrst}"
+  # echo "${gpio_boot0}" > /sys/class/gpio/export
+  # echo "out" > "/sys/class/gpio/gpio${gpio_boot0}/direction"
+  # echo "${gpio_nrst}" > /sys/class/gpio/export
+  # echo "out" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
 
   # Reset sequence to enter bootloader mode
-  echo 1 > "/sys/class/gpio/gpio${gpio_boot0}/value"
-  echo 0 > "/sys/class/gpio/gpio${gpio_nrst}/value"
+  gpio_set 1 "${gpio_boot0}"
+  gpio_set 0 "${gpio_nrst}"
+  # echo 1 > "/sys/class/gpio/gpio${gpio_boot0}/value"
+  # echo 0 > "/sys/class/gpio/gpio${gpio_nrst}/value"
   sleep 0.001
 
   if [[ "${transport}" == "UART" ]]; then
@@ -237,11 +304,13 @@ flash_fp_mcu_stm32() {
 
   for attempt in $(seq ${FLAGS_retries}); do
     # Reset sequence to enter bootloader mode
-    echo 0 > "/sys/class/gpio/gpio${gpio_nrst}/value"
+    gpio_set 0 "${gpio_nrst}"
+    # echo 0 > "/sys/class/gpio/gpio${gpio_nrst}/value"
     sleep 0.01
 
     # Release reset as the SPI bus is now ready
-    echo 1 > "/sys/class/gpio/gpio${gpio_nrst}/value"
+    gpio_set 1 "${gpio_nrst}"
+    # echo 1 > "/sys/class/gpio/gpio${gpio_nrst}/value"
 
     # Print out the actual underlying command we're running and run it
     echo "# ${cmd}"
@@ -262,16 +331,21 @@ flash_fp_mcu_stm32() {
   fi
 
   # Go back to normal mode
-  echo "out" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
-  echo 0 > "/sys/class/gpio/gpio${gpio_boot0}/value"
-  echo 0 > "/sys/class/gpio/gpio${gpio_nrst}/value"
-  echo 1 > "/sys/class/gpio/gpio${gpio_nrst}/value"
+  gpio_dir out "${gpio_nrst}"
+  gpio_set 0   "${gpio_boot0}" "${gpio_nrst}"
+  gpio_set 1   "${gpio_nrst}"
+  # echo "out" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
+  # echo 0 > "/sys/class/gpio/gpio${gpio_boot0}/value"
+  # echo 0 > "/sys/class/gpio/gpio${gpio_nrst}/value"
+  # echo 1 > "/sys/class/gpio/gpio${gpio_nrst}/value"
 
   # Give up GPIO control
-  echo "in" > "/sys/class/gpio/gpio${gpio_boot0}/direction"
-  echo "in" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
-  echo "${gpio_boot0}" > /sys/class/gpio/unexport
-  echo "${gpio_nrst}" > /sys/class/gpio/unexport
+  gpio_dir    in       "${gpio_boot0}" "${gpio_nrst}"
+  gpio_export unexport "${gpio_boot0}" "${gpio_nrst}"
+  # echo "in" > "/sys/class/gpio/gpio${gpio_boot0}/direction"
+  # echo "in" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
+  # echo "${gpio_boot0}" > /sys/class/gpio/unexport
+  # echo "${gpio_nrst}" > /sys/class/gpio/unexport
 
   # wait for FP MCU to come back up (including RWSIG delay)
   sleep 2
@@ -302,6 +376,8 @@ flash_fp_mcu_stm32() {
 
 config_hatch() {
   check_gpio_chip_exists "gpiochip200"
+
+  readonly GPIOLIB=sysfs
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.1"
   # See
@@ -321,6 +397,7 @@ config_hatch() {
 config_nami() {
   check_gpio_chip_exists "gpiochip360"
 
+  readonly GPIOLIB=sysfs
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev32765.0"
 
@@ -335,6 +412,7 @@ config_nami() {
 config_nocturne() {
   check_gpio_chip_exists "gpiochip360"
 
+  readonly GPIOLIB=sysfs
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev32765.0"
 
@@ -349,6 +427,7 @@ config_nocturne() {
 config_volteer() {
   check_gpio_chip_exists "gpiochip152"
 
+  readonly GPIOLIB=sysfs
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.0"
 
@@ -371,8 +450,8 @@ config_volteer() {
 config_zork() {
   check_gpio_chip_exists "gpiochip320"
 
+  readonly GPIOLIB=sysfs
   readonly TRANSPORT="UART"
-
   readonly DEVICE="/dev/ttyS1"
 
   # FPMCU RST_ODL is on AGPIO 11 = 320 + 11 = 331
@@ -381,6 +460,21 @@ config_zork() {
   readonly GPIO_BOOT0=389
   # FPMCU PWR_EN is on AGPIO 32 = 320 + 32 = 352, but should not be
   # necessary for flashing. Set invalid value.
+  readonly GPIO_PWREN=-1
+}
+
+config_strongbad() {
+  # check_gpio_chip_exists "gpiochip0"
+
+  readonly GPIOLIB=chardev
+  readonly TRANSPORT="SPI"
+  readonly DEVICE="/dev/spidev10.0"
+
+  # FPMCU RST_ODL is $(gpiofind FP_RST_L) is gpiochip0 22
+  readonly GPIO_NRST=FP_RST_L
+  # FPMCU BOOT0 is $(gpiofind FPMCU_BOOT0) is gpiochip0 10
+  readonly GPIO_BOOT0=FPMCU_BOOT0
+  # Hardware currently doesn't support PWREN, but the next revision will.
   readonly GPIO_PWREN=-1
 }
 
