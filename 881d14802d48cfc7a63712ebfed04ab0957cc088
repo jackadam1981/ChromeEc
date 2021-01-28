@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3fe79e_748b4086",
+        "filename": "zephyr/dts/bindings/pwm/named-pwms.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T20:32:13Z",
+      "side": 1,
+      "message": "remove (c)\n\nadd \"This code is governed by a BSD-style...\"\n\nyear is 2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 44
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b07a87_fd74ed18",
+        "filename": "zephyr/dts/bindings/pwm/named-pwms.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T20:32:13Z",
+      "side": 1,
+      "message": "need line terminator at end of file",
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092df22a_7449e58f",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T20:32:13Z",
+      "side": 1,
+      "message": "zephyr headers should go before EC headers",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
