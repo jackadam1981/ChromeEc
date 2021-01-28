@@ -50,6 +50,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7a0f0a6_b0d2e46a",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-28T21:54:03Z",
+      "side": 1,
+      "message": "Add a comment that index 1 is unused on FP6.",
+      "revId": "48141c5efb30ab0de338040da213eec3a7f636ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e51fde2_eebf9eca",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-28T21:54:03Z",
+      "side": 1,
+      "message": "I like this better than the queue.",
+      "revId": "48141c5efb30ab0de338040da213eec3a7f636ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4629baf4_56493769",
         "filename": "driver/usb_mux/amd_fp6.h",
         "patchSetId": 2
