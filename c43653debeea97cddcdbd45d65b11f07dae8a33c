@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e89f07_26596677",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-28T17:49:38Z",
+      "side": 1,
+      "message": "nit: push-pull as a verb is a 3rd person here, it deserves the \u0027s\u0027 somewhere ? push-pulls ?",
+      "revId": "c43653debeea97cddcdbd45d65b11f07dae8a33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7d3dbc_500ea879",
+        "filename": "board/coachz/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-01-28T17:49:38Z",
+      "side": 1,
+      "message": "random question: is this OUT_HIGH or more likely ODR_HIGH ? (ie if this was working before there is likely an external pull-up)",
+      "revId": "c43653debeea97cddcdbd45d65b11f07dae8a33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
