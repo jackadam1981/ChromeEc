@@ -288,6 +288,12 @@ static int ctn730_enable(struct pchg *ctx, bool enable)
 		cmd->length = WLC_CHG_CTRL_DISABLE_CMD_SIZE;
 	}
 
+	/*
+	 * ctn730 isn't ready for i2c write after normal mode initialization
+	 * b:178096436.
+	 */
+	msleep(5);
+
 	rv = _send_command(ctx, cmd);
 	if (rv)
 		return rv;
