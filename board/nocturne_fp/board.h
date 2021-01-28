@@ -192,6 +192,8 @@ void fps_event(enum gpio_signal signal);
 /* Defined in ro_workarounds.c */
 void wp_event(enum gpio_signal signal);
 
+void board_init_rw(void);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */
