@@ -16,6 +16,23 @@
       "message": "I\u0027d like to propose about setting Open on the CC\u0027s at init more often.  \n\nThis is due, mostly, to one of our Dedede TCPCs requiring CC Open set when changing source/sink states with debug accessories.  We\u0027ve been able to handle any graceful transitions through a driver quirk, but EC resets can still get the TCPC stuck. Let me know if you have any particular peripheral/reset scenarios you\u0027d worry about with this change. ",
       "revId": "2db38dec08408565a759b6cf080b1e2a69aa5a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54837c89_9a710705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-28T23:22:07Z",
+      "side": 1,
+      "message": "This change LGTM. +1 to give others a chance to digest.",
+      "revId": "2db38dec08408565a759b6cf080b1e2a69aa5a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
