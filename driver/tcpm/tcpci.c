@@ -94,7 +94,7 @@ STATIC_IF(DEBUG_GET_CC)
  * Seeing RoleCtrl updates can help determine why GetCC is not
  * working as it should be.
  */
-#undef DEBUG_ROLE_CTRL_UPDATES
+#define DEBUG_ROLE_CTRL_UPDATES
 
 /****************************************************************************/
 
