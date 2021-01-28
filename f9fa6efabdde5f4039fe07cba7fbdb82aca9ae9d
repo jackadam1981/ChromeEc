@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12439419_226c159a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-01-28T09:18:29Z",
+      "side": 1,
+      "message": "b/145245345",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "f9fa6efabdde5f4039fe07cba7fbdb82aca9ae9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb6e1e0_e62bdd22",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-01-28T09:18:29Z",
+      "side": 1,
+      "message": "You don\u0027t have to use the new gpio fanciness (not yet at least).\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2567038/4/util/flash_fp_mcu#316 was all the was needed in my attempt here.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 4
+      },
+      "revId": "f9fa6efabdde5f4039fe07cba7fbdb82aca9ae9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
