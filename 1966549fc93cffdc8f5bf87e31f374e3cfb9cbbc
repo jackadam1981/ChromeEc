@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "284db9ae_fad6102f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-28T22:20:26Z",
+      "side": 1,
+      "message": "Looks like there was a very minor functional change in the latest patchset, increasing the idle detection timeout from 2.25 us to 2.85 us.\n\nI\u0027m going to assume that this won\u0027t make noise rejection worse and send this to CQ. If any further improvements are needed, we can make them in future CLs.",
+      "revId": "1966549fc93cffdc8f5bf87e31f374e3cfb9cbbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9815a6e2_9c4238eb",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-28T22:20:26Z",
+      "side": 1,
+      "message": "This appears to be another functional change. Given its narrow scope, I\u0027m going to assume that the effect is non-harmful. I would appreciate it if CL authors would avoid making functional changes in new patchsets once the review has reached the point where we\u0027re just talking about code style.",
+      "revId": "1966549fc93cffdc8f5bf87e31f374e3cfb9cbbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

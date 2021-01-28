@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6177329_74d54a52",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-28T22:20:26Z",
+      "side": 1,
+      "message": "Done, I think.",
+      "parentUuid": "fc760e3d_b5ba1a53",
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c43a8708_3eb52448",
@@ -256,6 +274,30 @@
       "side": 1,
       "message": "This was fixed in patchset 11 but regressed in patchset 12.",
       "parentUuid": "718c2f9e_8972d788",
+      "range": {
+        "startLine": 33,
+        "startChar": 48,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "e4381fe356e6ddc86ff05f2bac08a576d38aa218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd2d1a51_10326b4f",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-28T22:20:26Z",
+      "side": 1,
+      "message": "Re-fixed in patchset 16.",
+      "parentUuid": "59d6c7c9_41ac8bb3",
       "range": {
         "startLine": 33,
         "startChar": 48,
