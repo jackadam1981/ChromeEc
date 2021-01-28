@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1130d179_5631d795",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-28T19:04:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82e89f07_26596677",
+      "revId": "c43653debeea97cddcdbd45d65b11f07dae8a33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb7d3dbc_500ea879",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-28T17:49:38Z",
       "side": 1,
       "message": "random question: is this OUT_HIGH or more likely ODR_HIGH ? (ie if this was working before there is likely an external pull-up)",
+      "revId": "c43653debeea97cddcdbd45d65b11f07dae8a33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef84c264_b9c33b73",
+        "filename": "board/coachz/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-28T19:04:04Z",
+      "side": 1,
+      "message": "Done. \n\nThere is an external pull-up, which is driven by 3.3V produced by the chip itself. So, maybe that\u0027s the cause of the noise on the reset line. It didn\u0027t matter because when the chip is off, it doesn\u0027t sense the reset line.",
+      "parentUuid": "cb7d3dbc_500ea879",
       "revId": "c43653debeea97cddcdbd45d65b11f07dae8a33c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
