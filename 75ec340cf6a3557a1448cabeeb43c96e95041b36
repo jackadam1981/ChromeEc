@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2da25f8_e6d92f1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T17:44:25Z",
+      "side": 1,
+      "message": "What is merging?",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "59936ec3_0f617a83",
@@ -14,6 +37,86 @@
       "writtenOn": "2021-01-28T15:26:51Z",
       "side": 1,
       "message": "Simon I think this is what you were looking for w.r.t. unit tests on the other CL. Instead of testing the 3 line change that added a new BuildConfig, just test the BuildConfig module directly to avoid mocking the universe.",
+      "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "404e2261_e6057314",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T17:44:25Z",
+      "side": 1,
+      "message": "While you are here could you please start a README for zmake? We need to make a start on up our docs and tests, although I know most of that work will be done in Feb.",
+      "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e150c645_f33bda30",
+        "filename": "zephyr/zmake/tests/test_build_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T17:44:25Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand this, but can you use the parser from zmake?",
+      "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2e7e76_e46e74c4",
+        "filename": "zephyr/zmake/tests/test_build_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T17:44:25Z",
+      "side": 1,
+      "message": "Can you add a 1-2 line comment about what each test does? It isn\u0027t clear to me...",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57dacac_f488009d",
+        "filename": "zephyr/zmake/tests/test_build_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T17:44:25Z",
+      "side": 1,
+      "message": "Why not put the whole test in the \u0027with\u0027 so it deletes no matter what happens? At the moment it will leave files around on failure, I think.",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 8
+      },
       "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
