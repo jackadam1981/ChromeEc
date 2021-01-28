@@ -266,12 +266,6 @@ static int ctn730_init(struct pchg *ctx)
 	if (rv)
 		return rv;
 
-	/*
-	 * ctn730 isn't immediately ready for i2c write after normal mode
-	 * initialization (b:178096436).
-	 */
-	msleep(5);
-
 	/* WLC-host should send EVT_HOST_CTRL_RESET_EVT shortly. */
 	return EC_SUCCESS_IN_PROGRESS;
 }
@@ -367,12 +361,18 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 
 	switch (res->instruction) {
 	case WLC_HOST_CTRL_RESET:
-		if (buf[0] == WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE)
+		if (buf[0] == WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE) {
 			ctx->event = PCHG_EVENT_INITIALIZED;
-		else if (buf[0] == WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE)
+			/*
+			 * ctn730 isn't immediately ready for i2c write after
+			 * normal mode initialization (b:178096436).
+			 */
+			msleep(5);
+		} else if (buf[0] == WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE) {
 			ctx->event = PCHG_EVENT_NONE;
-		else
+		} else {
 			return EC_ERROR_INVAL;
+		}
 		break;
 	case WLC_HOST_CTRL_GENERIC_ERROR:
 		break;
