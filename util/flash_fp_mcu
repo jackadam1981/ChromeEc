@@ -115,7 +115,8 @@ get_platform_name() {
   # In all cases we can fall back to /etc/lsb-release. It's not recommended
   # to do this, but we don't have any other options in this case.
   echo "Getting platform name from /etc/lsb-release." 1>&2
-  platform_name="$(lsbval "CHROMEOS_RELEASE_BOARD")"
+  # platform_name="$(lsbval "CHROMEOS_RELEASE_BOARD")"
+  platform_name="$(grep CHROMEOS_RELEASE_BOARD /etc/lsb-release | cut -d= -f2)"
   if [[ -z "${platform_name}" ]]; then
     exit 1
   fi
@@ -381,6 +382,20 @@ config_zork() {
   readonly GPIO_BOOT0=389
   # FPMCU PWR_EN is on AGPIO 32 = 320 + 32 = 352, but should not be
   # necessary for flashing. Set invalid value.
+  readonly GPIO_PWREN=-1
+}
+
+config_strongbad() {
+  check_gpio_chip_exists "gpiochip320"
+
+  readonly TRANSPORT="SPI"
+  readonly DEVICE="/dev/spidev10.0"
+
+  # FPMCU RST_ODL is $(gpiofind FP_RST_L) is gpiochip0 22
+  readonly GPIO_NRST=$((0 + 22))
+  # FPMCU BOOT0 is $(gpiofind FPMCU_BOOT0) is gpiochip0 10
+  readonly GPIO_BOOT0=$((0 + 10))
+  # Hardware currently doesn't support PWREN, but the next revision will.
   readonly GPIO_PWREN=-1
 }
 
