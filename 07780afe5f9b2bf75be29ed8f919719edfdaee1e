@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6afa45e_4e4313a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T17:02:08Z",
+      "side": 1,
+      "message": "I\u0027ll take a look for another CL.",
+      "parentUuid": "dbbe9711_c4092ef0",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61df4c6d_e8df3662",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-01-27T20:32:59Z",
       "side": 1,
       "message": "Can we add the new Kconfig options in a separate CL?",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89fe9982_b39a152b",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T17:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61df4c6d_e8df3662",
       "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1defa299_da120dfe",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T17:02:08Z",
+      "side": 1,
+      "message": "License change can, but this cannot, they have to be enabled together.",
+      "parentUuid": "5890c558_1ae49962",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb1ace04_d1a463c7",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-01-27T20:32:59Z",
       "side": 1,
       "message": "Can we update volteer in a separate CL?",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95454580_1ddefb09",
+        "filename": "zephyr/projects/volteer/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T17:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb1ace04_d1a463c7",
       "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e17dd8cb_112fe6c9",
+        "filename": "zephyr/shim/include/bbram.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T17:02:08Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "3721fadb_abfa0a8a",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27dbc045_af123c63",
@@ -116,6 +206,30 @@
       "writtenOn": "2021-01-27T20:32:59Z",
       "side": 1,
       "message": "I think it is better for multi-line comments to go before the item in question",
+      "range": {
+        "startLine": 19,
+        "startChar": 38,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e142e50_fe9e40e8",
+        "filename": "zephyr/shim/include/bbram.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T17:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27dbc045_af123c63",
       "range": {
         "startLine": 19,
         "startChar": 38,
@@ -149,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "576aa538_5528b150",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T17:02:08Z",
+      "side": 1,
+      "message": "Yup, you\u0027re right. Maybe it wasn\u0027t when I first started on this change.",
+      "parentUuid": "08f5a527_64ba2f85",
+      "range": {
+        "startLine": 177,
+        "startChar": 10,
+        "endLine": 177,
+        "endChar": 21
+      },
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "353e195c_6d15229f",
@@ -162,6 +300,24 @@
       "writtenOn": "2021-01-27T20:32:59Z",
       "side": 1,
       "message": "Can the zmake change be in its own CL?",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "765e3844_e3146cf4",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T17:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "353e195c_6d15229f",
       "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
