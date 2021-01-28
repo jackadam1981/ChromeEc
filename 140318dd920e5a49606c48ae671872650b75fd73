@@ -22,6 +22,30 @@
       },
       "revId": "140318dd920e5a49606c48ae671872650b75fd73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f220ae_0ffa9b11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-01-28T22:05:58Z",
+      "side": 1,
+      "message": "These are the ones I changed with system stable in standby:\n\n\n0x200c0a38 PD_INT_C0  (real size 1024): unused 480      usage 544 / 1024 (53 %)\n0x200c0698 POWERBTN   (real size 1024): unused 488      usage 536 / 1024 (52 %)\n0x200c03e0 CHIPSET    (real size 1024): unused 512      usage 512 / 1024 (50 %)\n0x200c02f8 CHARGER    (real size 1024): unused 488      usage 536 / 1024 (52 %)\n\nShould we aim for something lower than 1024?",
+      "parentUuid": "3dcbd627_33bffcb6",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "140318dd920e5a49606c48ae671872650b75fd73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
