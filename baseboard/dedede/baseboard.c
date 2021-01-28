@@ -211,22 +211,37 @@ void baseboard_all_sys_pgood_interrupt(enum gpio_signal signal)
 	power_signal_interrupt(signal);
 }
 
+#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
 void baseboard_chipset_startup(void)
 {
+	int port;
+
 #ifdef CONFIG_PWM_KBLIGHT
 	/* Allow keyboard backlight to be enabled */
 	gpio_set_level(GPIO_EN_KB_BL, 1);
 #endif
+
+	/* Turn on HPD if the port exist HPD event */
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		if (dp_flags[port] & DP_FLAGS_DP_ON)
+			gpio_set_level(PORT_TO_HPD(port), 1);
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, baseboard_chipset_startup,
 	     HOOK_PRIO_DEFAULT);
 
 void baseboard_chipset_shutdown(void)
 {
+	int port;
+
 #ifdef CONFIG_PWM_KBLIGHT
 	/* Turn off the keyboard backlight if it's on. */
 	gpio_set_level(GPIO_EN_KB_BL, 0);
 #endif
+
+	/* Turn off HPD to prevent leakage */
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
+		gpio_set_level(PORT_TO_HPD(port), 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
