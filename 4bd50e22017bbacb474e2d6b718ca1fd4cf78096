@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f29a3c_e2bb0839",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-28T09:56:07Z",
+      "side": 1,
+      "message": "ugh, need to check why this group came back.\nthese are redundant as the ALTERNATE() declarations\nbelow cover these.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 62
+      },
+      "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
