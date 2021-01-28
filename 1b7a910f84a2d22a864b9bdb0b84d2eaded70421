@@ -16,6 +16,69 @@
       "message": "I don\u0027t have a setup that reproduces the bug, so I don\u0027t know if this actually fixes the problem.",
       "revId": "1b7a910f84a2d22a864b9bdb0b84d2eaded70421",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f356654_df8ee17d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-28T19:39:07Z",
+      "side": 1,
+      "message": "Looks like it does what it says it does. Rock to verify if possible.",
+      "revId": "1b7a910f84a2d22a864b9bdb0b84d2eaded70421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c0338e_7fbafef4",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-28T19:39:07Z",
+      "side": 1,
+      "message": "Nit: Choose one",
+      "range": {
+        "startLine": 392,
+        "startChar": 17,
+        "endLine": 392,
+        "endChar": 28
+      },
+      "revId": "1b7a910f84a2d22a864b9bdb0b84d2eaded70421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ac1b9e_d66a901c",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-28T19:39:07Z",
+      "side": 1,
+      "message": "Nit: I\u0027d prefer a named constant, even though I don\u0027t think we know the name of this field right now. Maybe just a function to encapsulate the check and workaround.",
+      "range": {
+        "startLine": 400,
+        "startChar": 49,
+        "endLine": 400,
+        "endChar": 53
+      },
+      "revId": "1b7a910f84a2d22a864b9bdb0b84d2eaded70421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
