@@ -176,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f2a93b0_494a8019",
+        "filename": "zephyr/zmake/tests/test_build_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff2e7e76_e46e74c4",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f57dacac_f488009d",
@@ -189,6 +213,30 @@
       "writtenOn": "2021-01-28T17:44:25Z",
       "side": 1,
       "message": "Why not put the whole test in the \u0027with\u0027 so it deletes no matter what happens? At the moment it will leave files around on failure, I think.",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 8
+      },
+      "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "930bfea7_9a046b35",
+        "filename": "zephyr/zmake/tests/test_build_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f57dacac_f488009d",
       "range": {
         "startLine": 154,
         "startChar": 4,
