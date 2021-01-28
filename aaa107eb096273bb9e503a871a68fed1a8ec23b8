@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a427e6_51cde936",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T22:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3df9074_5ccc60dd",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 82
+      },
+      "revId": "aaa107eb096273bb9e503a871a68fed1a8ec23b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bd19e73_740cfc53",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-28T21:59:08Z",
       "side": 1,
       "message": "we\u0027ve stopped using \"master\" branches... new suggested terminology is \"main\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 57,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "aaa107eb096273bb9e503a871a68fed1a8ec23b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c075e92_2d289788",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T22:39:18Z",
+      "side": 1,
+      "message": "OK I pushed a separate branch called \u0027main\u0027, but I don\u0027t think gitlab does that yet. Let me know if you want to see the flame war",
+      "parentUuid": "2bd19e73_740cfc53",
       "range": {
         "startLine": 7,
         "startChar": 57,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "626c11de_02a8f595",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T22:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40e14a67_f6b73ad4",
+      "range": {
+        "startLine": 26,
+        "startChar": 27,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "aaa107eb096273bb9e503a871a68fed1a8ec23b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bc0125a_82007b50",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-28T21:59:08Z",
       "side": 1,
       "message": "$(mktemp -d)",
+      "range": {
+        "startLine": 27,
+        "startChar": 22,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "aaa107eb096273bb9e503a871a68fed1a8ec23b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d89b70a_035a16c3",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T22:39:18Z",
+      "side": 1,
+      "message": "Well I actually want to use the same dir each time. It is simpler",
+      "parentUuid": "8bc0125a_82007b50",
       "range": {
         "startLine": 27,
         "startChar": 22,
@@ -139,6 +235,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb8fc2e_fda170e3",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T22:39:18Z",
+      "side": 1,
+      "message": "It seems to :-)",
+      "parentUuid": "f7a88deb_4c0c8ff6",
+      "range": {
+        "startLine": 28,
+        "startChar": 22,
+        "endLine": 28,
+        "endChar": 23
+      },
+      "revId": "aaa107eb096273bb9e503a871a68fed1a8ec23b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f875db3a_06348392",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T22:39:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure which shell it uses, but likely bash. No quoting needed that I\u0027m aware of",
+      "parentUuid": "90d7fa6b_1a263bf7",
+      "range": {
+        "startLine": 28,
+        "startChar": 17,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "aaa107eb096273bb9e503a871a68fed1a8ec23b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71516df2_31868b50",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-01-28T21:59:08Z",
       "side": 1,
       "message": "add -t zephyr if you want zephyr-sdk, otherwise it will search for coreboot-sdk",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "revId": "aaa107eb096273bb9e503a871a68fed1a8ec23b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90426151_426a84b6",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T22:39:18Z",
+      "side": 1,
+      "message": "Is it OK to search for coreboot-sdk? So long as it doesn\u0027t fail that is good. I want to keep it simple.\n\nFor the moment it doesn\u0027t actually get this far!",
+      "parentUuid": "71516df2_31868b50",
       "range": {
         "startLine": 36,
         "startChar": 12,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2eab3cc_641ce90e",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T22:39:18Z",
+      "side": 1,
+      "message": "Not yet :-) I can remove this for now",
+      "parentUuid": "c270de99_b615910c",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "aaa107eb096273bb9e503a871a68fed1a8ec23b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e0a163a_081f72ba",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-01-28T21:59:08Z",
       "side": 1,
       "message": "remove non-inclusive term",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "aaa107eb096273bb9e503a871a68fed1a8ec23b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d26fb8_6aaeb917",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T22:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e0a163a_081f72ba",
       "range": {
         "startLine": 51,
         "startChar": 6,
