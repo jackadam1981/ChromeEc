@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f2837f1_a5919ff4",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-28T22:18:11Z",
+      "side": 1,
+      "message": "I think static function optimization does this automatically if it is deemed better.",
+      "parentUuid": "7564d3fd_0c021af7",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "48141c5efb30ab0de338040da213eec3a7f636ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7a0f0a6_b0d2e46a",
         "filename": "driver/usb_mux/amd_fp6.c",
         "patchSetId": 2
