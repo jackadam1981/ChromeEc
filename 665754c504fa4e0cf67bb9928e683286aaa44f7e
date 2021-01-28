@@ -70,6 +70,24 @@
       "parentUuid": "44808bd5_fb9a6a72",
       "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7265fda3_f038f4c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-01-28T18:22:04Z",
+      "side": 1,
+      "message": "On receiving an exit mode request, EC sends\n1. Disconnect mode - https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2643523/8/common/usbc/tbt_alt_mode.c#491\n2. Sends exit mode to port partner. \n3. On Ack/Nack, sets mux to USB mode(same as TOT) - https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2643523/8/common/usbc/tbt_alt_mode.c#269",
+      "parentUuid": "071d4987_66bf16c7",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
