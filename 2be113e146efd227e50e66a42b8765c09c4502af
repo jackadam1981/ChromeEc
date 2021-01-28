@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81be111d_342e3a48",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2021-01-28T15:52:26Z",
+      "side": 1,
+      "message": "This should go into a bundle(opts) method, rather than being part of build().",
+      "revId": "2be113e146efd227e50e66a42b8765c09c4502af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a989209c_7dae3d3e",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2021-01-28T15:52:26Z",
+      "side": 1,
+      "message": "The primary use case will be passing you a path in /tmp, as part of the `bundle` command.",
+      "revId": "2be113e146efd227e50e66a42b8765c09c4502af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
