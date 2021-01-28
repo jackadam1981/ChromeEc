@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d66e23c_b4ba526d",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-28T22:59:26Z",
+      "side": 1,
+      "message": "How? I think we should be ready for partners and other Googlers to make changes to this file. So, it would be good to capture here how this file is expected to be generated.",
+      "range": {
+        "startLine": 2,
+        "startChar": 3,
+        "endLine": 2,
+        "endChar": 32
+      },
+      "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57fbf40c_4dce95bf",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-28T22:59:26Z",
+      "side": 1,
+      "message": "There is already an external pull on this line. Is this still required?",
+      "range": {
+        "startLine": 70,
+        "startChar": 61,
+        "endLine": 70,
+        "endChar": 73
+      },
+      "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55f29a3c_e2bb0839",
         "filename": "board/brya/generated-gpio.inc",
         "patchSetId": 1
@@ -18,6 +64,99 @@
         "startLine": 76,
         "startChar": 0,
         "endLine": 93,
+        "endChar": 62
+      },
+      "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7401f627_49fa63d6",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-28T22:59:26Z",
+      "side": 1,
+      "message": "Same for EC_KSI and EC_KSO above.",
+      "parentUuid": "55f29a3c_e2bb0839",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 62
+      },
+      "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3907f9d_1a10b816",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-28T22:59:26Z",
+      "side": 1,
+      "message": "This needs to be an interrupt.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86a2357_9fda231e",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-28T22:59:26Z",
+      "side": 1,
+      "message": "interrupt?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba192ee_21b6e12e",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-28T22:59:26Z",
+      "side": 1,
+      "message": "Arent\u0027 these already alternate functions?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 99,
         "endChar": 62
       },
       "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
