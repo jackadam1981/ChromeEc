@@ -6,6 +6,7 @@
 /* Type-C port manager for TI TUSB422 Port Controller */
 
 #include "common.h"
+#include "console.h"
 #include "tusb422.h"
 #include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
@@ -30,6 +31,9 @@
 		"Discharge Disconnect all the time."
 #endif
 
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 enum tusb422_reg_addr {
 	TUSB422_REG_VBUS_AND_VCONN_CONTROL = 0x98,
 };
@@ -38,6 +42,9 @@ enum vbus_and_vconn_control_mask {
 	INT_VCONNDIS_DISABLE = BIT(1),
 	INT_VBUSDIS_DISABLE  = BIT(2),
 };
+
+__maybe_unused static bool drp_enabled[CONFIG_USB_PD_PORT_MAX_COUNT];
+__maybe_unused static bool tcpc_in_low_power_mode[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* The TUSB422 cannot drive an FRS GPIO, but can detect FRS */
 static int tusb422_set_frs_enable(int port, int enable)
@@ -82,6 +89,9 @@ static int tusb422_tcpci_tcpm_init(int port)
 		 */
 		tcpc_write(port, TUSB422_REG_VBUS_AND_VCONN_CONTROL,
 				INT_VBUSDIS_DISABLE);
+
+		drp_enabled[port] = false;
+		tcpc_in_low_power_mode[port] = false;
 	}
 	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)) {
 		/* Disable FRS detection, and enable the FRS detection alert */
@@ -108,8 +118,10 @@ static int tusb422_tcpm_set_cc(int port, int pull)
 	 * this transition. Note that the configuration keeps the TCPC from
 	 * actually discharging VBUS in this case.
 	 */
-	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE))
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {
 		tusb422_tcpm_drv.tcpc_enable_auto_discharge_disconnect(port, 1);
+		drp_enabled[port] = false;
+	}
 
 	return tcpci_tcpm_set_cc(port, pull);
 }
@@ -117,6 +129,7 @@ static int tusb422_tcpm_set_cc(int port, int pull)
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 static int tusb422_tcpc_drp_toggle(int port)
 {
+	int rv;
 	/*
 	 * The TUSB422 requires auto discharge disconnect to be enabled for
 	 * active mode (not unattached) operation. Make sure it is disabled
@@ -127,12 +140,40 @@ static int tusb422_tcpc_drp_toggle(int port)
 	 */
 	tusb422_tcpm_drv.tcpc_enable_auto_discharge_disconnect(port, 0);
 
-	return tcpci_tcpc_drp_toggle(port);
+	rv = tcpci_tcpc_drp_toggle(port);
+	if (rv)
+		return rv;
+
+	drp_enabled[port] = true;
+	return EC_SUCCESS;
 }
 #endif
 
 static void tusb422_tcpci_tcpc_alert(int port)
 {
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {
+		if (drp_enabled[port] && tcpc_in_low_power_mode[port]) {
+			int rv;
+			int role_ctrl;
+
+			rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role_ctrl);
+			if (rv) {
+				CPRINTS("C%d: Failed to read register", port);
+				tcpc_in_low_power_mode[port] = false;
+				return;
+			}
+
+			if (!TCPC_REG_ROLE_CTRL_DRP(role_ctrl)) {
+				CPRINTS("C%d: TUSB422 enabling DRP again",
+					port);
+				tusb422_tcpm_drv.drp_toggle(port);
+			}
+
+		}
+
+		tcpc_in_low_power_mode[port] = false;
+	}
+
 	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)) {
 		int regval;
 
@@ -146,6 +187,20 @@ static void tusb422_tcpci_tcpc_alert(int port)
 		}
 	}
 	tcpci_tcpc_alert(port);
+}
+
+__maybe_unused static int tusb422_enter_low_power_mode(int port)
+{
+	int rv;
+
+	rv = tcpci_enter_low_power_mode(port);
+	if (rv)
+		return rv;
+
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE))
+		tcpc_in_low_power_mode[port] = true;
+
+	return EC_SUCCESS;
 }
 
 const struct tcpm_drv tusb422_tcpm_drv = {
@@ -181,7 +236,7 @@ const struct tcpm_drv tusb422_tcpm_drv = {
 #endif
 	.get_chip_info		= &tcpci_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
+	.enter_low_power_mode	= &tusb422_enter_low_power_mode,
 #endif
 	.set_bist_test_mode	= &tcpci_set_bist_test_mode,
 #ifdef CONFIG_USB_PD_FRS_TCPC
