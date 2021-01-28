@@ -1443,24 +1443,42 @@ void tc_state_init(int port)
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		pd_set_dual_role_and_event(port, PD_DRP_FORCE_SINK, 0);
 	else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
-		pd_set_dual_role_and_event(port, pd_get_drp_state_in_suspend(), 0);
+		pd_set_dual_role_and_event(port, pd_get_drp_state_in_suspend(),
+					   0);
 	else /* CHIPSET_STATE_ON */
 		pd_set_dual_role_and_event(port, PD_DRP_TOGGLE_ON, 0);
 
 	/*
-	 * If we just lost power, don't apply CC open. Otherwise we would boot
-	 * loop, and if this is a fresh power on, then we know there isn't any
-	 * stale PD state as well.
+	 * If we just lost power and don't have battery, don't apply CC open.
+	 * Otherwise we would boot loop , and if this is a fresh power on, then
+	 * we know there isn't any stale PD state as well.
+	 *
+	 * If there is a battery, set CC open as often as we can.  The reset
+	 * flag in this case may simply indicate an EC reset through
+	 * refresh+power instead of a fully fresh power on.
 	 */
-	if (system_get_reset_flags() &
-	    (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON)) {
-		first_state = TC_UNATTACHED_SNK;
+	if (!IS_ENABLED(CONFIG_BATTERY)) {
+		if (system_get_reset_flags() &
+		    (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON)) {
+			first_state = TC_UNATTACHED_SNK;
 
-		/* Turn off any previous sourcing */
-		tc_src_power_off(port);
-		set_vconn(port, 0);
+			/* Turn off any previous sourcing */
+			tc_src_power_off(port);
+			set_vconn(port, 0);
+		} else {
+			first_state = TC_ERROR_RECOVERY;
+		}
 	} else {
-		first_state = TC_ERROR_RECOVERY;
+		if ((system_get_reset_flags() & EC_RESET_FLAG_BROWNOUT) ||
+		    !pd_is_battery_capable()) {
+			first_state = TC_UNATTACHED_SNK;
+
+			/* Turn off any previous sourcing */
+			tc_src_power_off(port);
+			set_vconn(port, 0);
+		} else {
+			first_state = TC_ERROR_RECOVERY;
+		}
 	}
 
 #ifdef CONFIG_USB_PD_TCPC_BOARD_INIT
