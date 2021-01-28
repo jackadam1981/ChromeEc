@@ -37,6 +37,9 @@
 	/* Flash is 1MB but reserve half for future use. */
 	#define CONFIG_FLASH_SIZE_BYTES (512 * 1024)
 
+	/* Enable storing .data section in an unused area of flash */
+	#define CONFIG_CHIP_INIT_ROM_REGION
+
 	#define CONFIG_SPI_FLASH_REGS
 	#define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
 
