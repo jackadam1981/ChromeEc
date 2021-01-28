@@ -1,0 +1,33 @@
+#!/bin/bash
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+FPMCU_SPI=10.0
+DEVICE_FOLDER=/sys/devices/platform/soc@0/*/*/spi_master/*/spi${FPMCU_SPI}
+ls $DEVICE_FOLDER
+
+# currently loaded driver
+basename $(readlink $DEVICE_FOLDER/driver)
+
+# swap to spidev
+echo spi${FPMCU_SPI} > /sys/bus/spi/drivers/cros-ec-spi/unbind
+gpioset `gpiofind FPMCU_BOOT0`=1
+gpioset `gpiofind FP_RST_L`=0
+# echo spi${FPMCU_SPI} > /sys/bus/spi/drivers/spidev/bind # this won't work yet
+echo spi${FPMCU_SPI} > /sys/bus/spi/drivers/cros-ec-spi/bind # do this so it gives up and fallsback to spidev
+echo spi${FPMCU_SPI} > /sys/bus/spi/drivers/spidev/bind # now this works
+gpioset `gpiofind FP_RST_L`=1
+gpioset `gpiofind FPMCU_BOOT0`=1 # idk why i have to do these gpios twice
+gpioset `gpiofind FP_RST_L`=0
+gpioset `gpiofind FP_RST_L`=1
+stm32mon -p --retries 6 -s /dev/spidev${FPMCU_SPI}
+stm32mon -p --retries 6 -s /dev/spidev${FPMCU_SPI} -u -U -e -w ec.bin
+
+# swap to cros-ec
+gpioset `gpiofind FPMCU_BOOT0`=0
+gpioset `gpiofind FP_RST_L`=0
+gpioset `gpiofind FP_RST_L`=1
+echo spi${FPMCU_SPI} > /sys/bus/spi/drivers/spidev/unbind
+echo spi${FPMCU_SPI} > /sys/bus/spi/drivers/cros-ec-spi/bind
+ectool --name=cros_fp version
