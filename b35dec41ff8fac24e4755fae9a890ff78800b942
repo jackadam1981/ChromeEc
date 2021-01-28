@@ -105,6 +105,24 @@
       "parentUuid": "c36e65c5_7ffd7b70",
       "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4593b262_5a75973c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-28T04:48:17Z",
+      "side": 1,
+      "message": "Two findings from heading down this path:\n\n1. There is a sysjump check which takes EFS2 into account which we can use in place of the jump tag\n2. It\u0027s already being used on line 709 to avoid re-setting the input current default\n\nSo it\u0027s another init causing the brown out :/",
+      "parentUuid": "855e18e9_b5e04a8a",
+      "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
