@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52cdc595_c1131ea9",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T20:29:28Z",
+      "side": 1,
+      "message": "use default y instead of select",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "a565c0c6317213602c0d925f4325c7f5c021bc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eaf785f_efc82fb5",
+        "filename": "zephyr/app/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T20:29:28Z",
+      "side": 1,
+      "message": "accidentally removed line terminator?",
+      "revId": "a565c0c6317213602c0d925f4325c7f5c021bc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
