@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc14bd0_49d9bbeb",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-28T10:58:19Z",
+      "side": 1,
+      "message": "Please use atomic_or operation here, like below\natomic_or(\u0026flags[port], USB_MUX_FLAG_INIT);",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 7
+      },
+      "revId": "5c6a14e956a2d66ecfa838ff9d7bc27fc0526b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
