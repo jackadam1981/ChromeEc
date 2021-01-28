@@ -33,6 +33,23 @@
       "message": "I will flash this onto a F412 FPMCU and verify the end-to-end flow",
       "revId": "372915f990f777e8ebd8a82bc1a258b8d5612e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "027aedc7_a4b82cf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-01-28T19:33:11Z",
+      "side": 1,
+      "message": "We may not do this. Instead we may put both sensor libraries in the same firmware called bloonchipper, if my experiment proves it works.",
+      "revId": "372915f990f777e8ebd8a82bc1a258b8d5612e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
