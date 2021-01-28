@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbbe9711_c4092ef0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T15:24:05Z",
+      "side": 1,
+      "message": "Can we remove the vbnv stuff? It\u0027s no longer used.\n\nThe last platforms to use it were veyron chromebooks and nyan ... and they\u0027ve both gone AUE.",
+      "revId": "07780afe5f9b2bf75be29ed8f919719edfdaee1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61df4c6d_e8df3662",
