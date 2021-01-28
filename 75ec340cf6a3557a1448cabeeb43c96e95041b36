@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ef241808_911525fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T17:59:14Z",
+      "side": 1,
+      "message": "the definition from english dictionary: \"combine or cause to combine to form a single entity.\"\n\nzmake works by taking build configs from the various aspects of a project (i.e., base configuration, toolchain, RO/RW selection, etc) and progressively merging them together to produce a single configuration, which is what gets used when cmake runs.\n\nThe definition is rather simple: https://chromium.git.corp.google.com/chromiumos/platform/ec/+/4e950b9fde9e5d7197d2558f7a36bc809e193a49/zephyr/zmake/zmake/build_config.py#58",
+      "parentUuid": "c2da25f8_e6d92f1b",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "59936ec3_0f617a83",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -71,6 +95,24 @@
       "writtenOn": "2021-01-28T17:44:25Z",
       "side": 1,
       "message": "I don\u0027t fully understand this, but can you use the parser from zmake?",
+      "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e896f786_c2b665bb",
+        "filename": "zephyr/zmake/tests/test_build_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T17:59:14Z",
+      "side": 1,
+      "message": "This is emulating cmake\u0027s argument parsing, so we can make sure Cmake got passed the correct arguments.",
+      "parentUuid": "e150c645_f33bda30",
       "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
