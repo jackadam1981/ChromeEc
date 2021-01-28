@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece633dd_fd000181",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-28T17:02:38Z",
+      "side": 1,
+      "message": "replace all this with \"return ec_config_has_base_gyro_sensor();\"",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 263,
+        "endChar": 27
+      },
+      "revId": "20df0a5059ef2b88b55d7c7e9d428ee8e411e4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f493d845_9f55d4c9",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-01-28T17:02:38Z",
+      "side": 1,
+      "message": "add:\n\tcase SSFC_BASE_GYRO_BMI160:\n\t\treturn BASE_GYRO_BMI160;",
+      "revId": "20df0a5059ef2b88b55d7c7e9d428ee8e411e4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
