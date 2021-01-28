@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59936ec3_0f617a83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-28T15:26:51Z",
+      "side": 1,
+      "message": "Simon I think this is what you were looking for w.r.t. unit tests on the other CL. Instead of testing the 3 line change that added a new BuildConfig, just test the BuildConfig module directly to avoid mocking the universe.",
+      "revId": "75ec340cf6a3557a1448cabeeb43c96e95041b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
