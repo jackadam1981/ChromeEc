@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db5e6d2b_f6ce2504",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-01-28T01:24:34Z",
+      "side": 1,
+      "message": "The problem I\u0027m having is that `echo spi10.0 \u003e /sys/bus/spi/drivers/{spidev,cros-ec}/bind` only works if I originally booted the device with that driver (eg: first one listed as compatible in the dts). Switching to the other driver (after an implied unbind from the original driver) doesn\u0027t seem possible. Is this an Intel vs ARM dts difference in kernel behavoior?",
+      "revId": "64fd4835968f90e580760f0bdff25a7c0a8e56f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
