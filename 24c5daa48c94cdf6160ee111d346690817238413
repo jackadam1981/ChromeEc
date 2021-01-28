@@ -91,6 +91,30 @@
       },
       "revId": "24c5daa48c94cdf6160ee111d346690817238413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e384ae2_ec5aad11",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-28T15:59:21Z",
+      "side": 1,
+      "message": "CL:https:2653339 merged to fix the regression.",
+      "parentUuid": "95a96746_5d0e0702",
+      "range": {
+        "startLine": 1743,
+        "startChar": 1,
+        "endLine": 1743,
+        "endChar": 35
+      },
+      "revId": "24c5daa48c94cdf6160ee111d346690817238413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
