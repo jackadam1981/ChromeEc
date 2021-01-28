@@ -3,6 +3,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82308497_a011fc59",
+        "filename": "common/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T21:41:52Z",
+      "side": 1,
+      "message": "\u003e \"configuation\" is a possible misspelling of \"configuration\".\n\nPlease fix.",
+      "parentUuid": "a632aaf2_4dedc90b",
+      "range": {
+        "startLine": 172,
+        "startChar": 17,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c3fe79e_748b4086",
         "filename": "zephyr/dts/bindings/pwm/named-pwms.yaml",
         "patchSetId": 4
@@ -59,6 +83,98 @@
         "startChar": 0,
         "endLine": 15,
         "endChar": 24
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e1abc4_e8011478",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T21:41:52Z",
+      "side": 1,
+      "message": "Should return an error here, right?",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 11
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067cc857_9f86a9a4",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T21:41:52Z",
+      "side": 1,
+      "message": "Perhaps use assert or log?",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 8
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91d70e8_55512a37",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T21:41:52Z",
+      "side": 1,
+      "message": "I suggest putting this code in a static function, along with LOG_ERR() or assert, and calling it from each of these functions.",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d38095_d2b9b48e",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T21:41:52Z",
+      "side": 1,
+      "message": "-ENOENT?",
+      "range": {
+        "startLine": 191,
+        "startChar": 9,
+        "endLine": 191,
+        "endChar": 10
       },
       "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
