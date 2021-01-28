@@ -33,6 +33,24 @@
       "message": "Then why we wait here rather than after the ctn730_init ?\n\nOr actually about the EC_SUCCESS_IN_PROGRESS, should we wait for the interrupt or something like this rather than this fixed delay ?",
       "revId": "b9853bd1aae96d66f2d2f758fd3a2e3929a76562",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0649664c_b445ea90",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-28T18:16:51Z",
+      "side": 1,
+      "message": "Done.\n\nWe\u0027re still waiting for confirmation/explanation on this behavior from nxp but I agree with you. If this delay is indeed expected, the chip should issue WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE only after i2c/stand-by is ready (and it should be fixed by firmware update).",
+      "parentUuid": "25269133_9342acb6",
+      "revId": "b9853bd1aae96d66f2d2f758fd3a2e3929a76562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
