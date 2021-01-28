@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9af3d008_199e4e83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T21:37:44Z",
+      "side": 1,
+      "message": "Should we attach this to a bug?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "a565c0c6317213602c0d925f4325c7f5c021bc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52cdc595_c1131ea9",
         "filename": "zephyr/Kconfig",
         "patchSetId": 2
@@ -26,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11fdd466_1841e2a5",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T21:37:44Z",
+      "side": 1,
+      "message": "You can use imply if you want to keep the line in this file",
+      "parentUuid": "52cdc595_c1131ea9",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "a565c0c6317213602c0d925f4325c7f5c021bc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4eaf785f_efc82fb5",
         "filename": "zephyr/app/Kconfig",
         "patchSetId": 2
@@ -37,6 +84,52 @@
       "writtenOn": "2021-01-28T20:29:28Z",
       "side": 1,
       "message": "accidentally removed line terminator?",
+      "revId": "a565c0c6317213602c0d925f4325c7f5c021bc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a728823d_950b11bb",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T21:37:44Z",
+      "side": 1,
+      "message": "I think you should explain what a hook tick is here",
+      "range": {
+        "startLine": 49,
+        "startChar": 41,
+        "endLine": 49,
+        "endChar": 50
+      },
+      "revId": "a565c0c6317213602c0d925f4325c7f5c021bc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19a9936_6df20f9c",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-01-28T21:37:44Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
       "revId": "a565c0c6317213602c0d925f4325c7f5c021bc2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
