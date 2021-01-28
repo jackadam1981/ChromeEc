@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba278ba3_4c881031",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-01-28T01:26:11Z",
+      "side": 1,
+      "message": "Works now!\n\n```\nlocalhost ~ # ./flash_fpmcu_coachz \ncros-ec-dev.14.auto  driver_override  of_node  statistics  uevent\ndriver               modalias         power    subsystem   wakeup\ncros-ec-spi\n[  444.456620] cros-ec-spi spi10.0: EC failed to respond in time\n[  444.663576] cros-ec-spi spi10.0: EC failed to respond in time\n[  444.670706] cros-ec-spi spi10.0: Cannot identify the EC: error -110\n[  444.677231] cros-ec-spi spi10.0: cannot register EC, fallback to spidev\n[  444.685761] cros-ec-spi: probe of spi10.0 failed with error -110\n./flash_fpmcu_coachz: line 14: echo: write error: No such device\nstm32mon version: v2.0.6192-121d24b6b 2020-11-18 18:36:20 @alex-desktop\nWaiting for the monitor startup ...Done.\nChipID 0x450 : STM32H74x\nBootloader v1.1, commands : 00 01 02 11 21 31 44 63 73 82 92 00 00 \nDone.\nstm32mon version: v2.0.6192-121d24b6b 2020-11-18 18:36:20 @alex-desktop\nWaiting for the monitor startup ...NACK\nChipID 0x450 : STM32H74x\nMonitor already started.\nChipID 0x450 : STM32H74x\nBootloader v1.1, commands : 00 01 02 11 21 31 44 63 73 82 92 00 00 \nUnprotecting flash read...\nFlash read unprotected.\nWaiting for the monitor startup ...Done.\nFlash write unprotected.\nWaiting for the monitor startup ...NACK\nChipID 0x450 : STM32H74x\nMonitor already started.\nErasing...\nTimeout\nFlash erased.\nWriting 2096568 bytes at 0x08000000\n   2096568 bytes written.\nDone.\n[  464.020275] cros-ec-dev cros-ec-dev.14.auto: CrOS Fingerprint MCU detected\n[  464.049677] cros-ec-pchg cros-ec-pchg.21.auto: Unable to get number or ports (err:-71)\n[  464.057867] cros-ec-pchg cros-ec-pchg.21.auto: No peripheral charge ports (err:-71)\n[  464.066799] cros-ec-spi spi10.0: Chrome EC device registered\nRO version:    greenfoot_v2.0.5967-cca3a1560\nRW version:    greenfoot_v2.0.5967-cca3a1560\nFirmware copy: RO\nBuild info:    greenfoot_v2.0.5967-cca3a1560 2020-12-04 13:38:24 alex@alex-desktop\nTool version:  v2.0.6192-121d24b6b 2020-11-18 18:36:20 @alex-desktop\nlocalhost ~ # [  465.339471] cros-ec-spi spi10.0: EC failed to respond in time\n```\n",
+      "revId": "7f34d0c19560b9193cab77f5acda25d35888bb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
