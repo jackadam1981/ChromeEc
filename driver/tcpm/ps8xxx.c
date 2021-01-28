@@ -78,6 +78,13 @@ static uint16_t product_id[CONFIG_USB_PD_PORT_MAX_COUNT];
 static bool ps8815_role_control_delay[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /*
+ * b/178664884, on PS8815, firmware revision 0x10 and older can report an
+ * incorrect value on the the CC lines. This flag controls when to apply
+ * the workaround.
+ */
+static bool ps8815_disable_rp_detect[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+/*
  * timestamp of the next possible toggle to ensure the 2-ms spacing
  * between IRQ_HPD.
  */
@@ -381,6 +388,18 @@ static int ps8xxx_set_role_ctrl(int port, enum tcpc_drp drp,
 {
 	int rv;
 
+	/*
+	 * b/178664884: When before presenting Rp, disable internal function
+	 * that checks Rp value to prevent an incorrect value reported
+	 * on the CC lines.
+	 *
+	 * TODO: should this register be written back to a default value?
+	 */
+	if (ps8815_disable_rp_detect[port] && pull == TYPEC_CC_RP) {
+		CPRINTS("TCPC%d: disable chip based  Rp detect", port);
+		tcpc_write(port, PS8XXX_REG_RP_DETECT_CONTROL, 0x30);
+	}
+
 	rv = tcpci_set_role_ctrl(port, drp, rp, pull);
 
 	/*
@@ -531,14 +550,44 @@ __maybe_unused static void ps8815_transmit_buffer_workaround_check(int port)
 	}
 }
 
+__maybe_unused static int ps8815_get_fw_version(int port, int *val)
+{
+	int rv;
+	int reg;
+
+	reg = get_reg_by_product(port, REG_FW_VER);
+	rv = tcpc_read(port, reg, val);
+
+	return rv;
+}
+
+__maybe_unused static void ps8815_disable_rp_detect_workaround_check(int port)
+{
+	int val;
+	int rv;
+
+	ps8815_disable_rp_detect[port] = false;
+	rv = ps8815_get_fw_version(port, &val);
+	if (rv != EC_SUCCESS)
+		return;
+
+	/*
+	 * RP detect is a problem in firmware version 0x10 and older.
+	 */
+	if (val <= 0x10)
+		ps8815_disable_rp_detect[port] = true;
+}
+
 static int ps8xxx_tcpm_init(int port)
 {
 	int status;
 
 	product_id[port] = board_get_ps8xxx_product_id(port);
 
-	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815))
+	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815)) {
 		ps8815_transmit_buffer_workaround_check(port);
+		ps8815_disable_rp_detect_workaround_check(port);
+	}
 
 	status = tcpci_tcpm_init(port);
 	if (status != EC_SUCCESS)
@@ -584,6 +633,18 @@ static int ps8xxx_tcpm_set_cc(int port, int pull)
 {
 	int rv;
 
+	/*
+	 * b/178664884: When before presenting Rp, disable internal function
+	 * that checks Rp value to prevent an incorrect value reported
+	 * on the CC lines.
+	 *
+	 * TODO: should this register be written back to a default value?
+	 */
+	if (ps8815_disable_rp_detect[port] && pull == TYPEC_CC_RP) {
+		CPRINTS("TCPC%d: disable chip based  Rp detect", port);
+		tcpc_write(port, PS8XXX_REG_RP_DETECT_CONTROL, 0x30);
+	}
+
 	rv = tcpci_tcpm_set_cc(port, pull);
 
 	/*
@@ -594,6 +655,39 @@ static int ps8xxx_tcpm_set_cc(int port, int pull)
 		msleep(1);
 
 	return rv;
+}
+
+__maybe_unused static void ps8815_tcpc_alert_workaround(int port)
+{
+	int rv;
+	int status;
+
+	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+	if (rv)
+		return;
+
+	if (!(status & TCPC_REG_CC_STATUS_CONNECT_RESULT_MASK)) {
+		CPRINTS("TCPC%d_alert: disable chip based  Rp detect", port);
+		tcpc_write(port, PS8XXX_REG_RP_DETECT_CONTROL, 0x30);
+	}
+}
+
+static void ps8xxx_tcpci_tcpc_alert(int port)
+{
+	int val;
+	int rv;
+
+	tcpci_tcpc_alert(port);
+
+	rv = ps8815_get_fw_version(port, &val);
+	if (rv != EC_SUCCESS)
+		return;
+
+	/*
+	 * RP detect is a problem in firmware version 0x10 and older.
+	 */
+	if (val <= 0x10)
+		ps8815_tcpc_alert_workaround(port);
 }
 
 static int ps8xxx_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
@@ -625,7 +719,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message_raw	= &tcpci_tcpm_get_message_raw,
 	.transmit		= &ps8xxx_tcpm_transmit,
-	.tcpc_alert		= &tcpci_tcpc_alert,
+	.tcpc_alert		= &ps8xxx_tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
 #endif
