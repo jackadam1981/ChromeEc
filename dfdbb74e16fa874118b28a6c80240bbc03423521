@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54d69c33_43e92f1f",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T18:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30082834_0f04f54f",
+      "range": {
+        "startLine": 63,
+        "startChar": 44,
+        "endLine": 63,
+        "endChar": 45
+      },
+      "revId": "dfdbb74e16fa874118b28a6c80240bbc03423521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c6df2f9_8df7b0c3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-28T17:35:21Z",
       "side": 1,
       "message": "what is a booter? Can you add some explanation here about that?",
+      "range": {
+        "startLine": 66,
+        "startChar": 47,
+        "endLine": 66,
+        "endChar": 53
+      },
+      "revId": "dfdbb74e16fa874118b28a6c80240bbc03423521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58c0ce98_14716a6e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T18:40:28Z",
+      "side": 1,
+      "message": "Added more details, this is effectively to account for http://cs/chromeos_public/src/platform/ec/chip/npcx/config_chip-npcx7.h?l\u003d77",
+      "parentUuid": "2c6df2f9_8df7b0c3",
       "range": {
         "startLine": 66,
         "startChar": 47,
