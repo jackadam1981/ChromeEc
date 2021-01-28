@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "169129eb_f83ccf35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T20:26:13Z",
+      "side": 1,
+      "message": "Blocking CQ to address Jack\u0027s comment",
+      "revId": "2d823fc848eb06eba1c4141914d9b837b2cac34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24ab244f_87969a02",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-01-28T20:19:33Z",
       "side": 1,
       "message": "This should go in gpio_map.h\n\nwe shouldn\u0027t be making assumptions about the gpio names or putting gpios in config.h for that matter",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 51
+      },
+      "revId": "2d823fc848eb06eba1c4141914d9b837b2cac34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6eda15_3d6b310b",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-01-28T20:26:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24ab244f_87969a02",
       "range": {
         "startLine": 170,
         "startChar": 0,
