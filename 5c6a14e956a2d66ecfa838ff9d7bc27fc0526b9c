@@ -22,6 +22,30 @@
       },
       "revId": "5c6a14e956a2d66ecfa838ff9d7bc27fc0526b9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc84d33b_05752db3",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-28T13:42:16Z",
+      "side": 1,
+      "message": "Yes, I missed when setting flag in usb_mux.c was changed to atomic version. Created CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2656035 to fix this.",
+      "parentUuid": "3bc14bd0_49d9bbeb",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 7
+      },
+      "revId": "5c6a14e956a2d66ecfa838ff9d7bc27fc0526b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
