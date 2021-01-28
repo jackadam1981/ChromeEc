@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ceccfe0_afc4ea3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-28T05:31:59Z",
+      "side": 1,
+      "message": "Fix it to set6",
+      "parentUuid": "48021480_09348db3",
+      "revId": "79916986790a49e631263a737e7b4dbb4c049015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17537427_868caa94",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "958f5e34_c0243b83",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-28T05:31:59Z",
+      "side": 1,
+      "message": "Fix it to Set6,\nThanks",
+      "parentUuid": "17537427_868caa94",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "79916986790a49e631263a737e7b4dbb4c049015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2a1eb3b0_7c2b9c5c",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-01-27T21:28:56Z",
       "side": 1,
       "message": "I took a closer look at the schematic, looks like the sensor is powered by the \"A\" rails, so it won\u0027t be powered until the AP is powering up, so I suppose either CHIPSET_RESUME or CHIPSET_STARTUP would probably work.",
+      "range": {
+        "startLine": 577,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 78
+      },
+      "revId": "79916986790a49e631263a737e7b4dbb4c049015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64929645_cf4cf2f4",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-28T05:31:59Z",
+      "side": 1,
+      "message": "Yes,",
+      "parentUuid": "2a1eb3b0_7c2b9c5c",
       "range": {
         "startLine": 577,
         "startChar": 0,
