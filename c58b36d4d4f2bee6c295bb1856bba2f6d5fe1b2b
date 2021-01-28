@@ -135,6 +135,30 @@
       },
       "revId": "c58b36d4d4f2bee6c295bb1856bba2f6d5fe1b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a4c0cb5_c38478bc",
+        "filename": "board/sklrvp_mchp/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-28T04:01:31Z",
+      "side": 1,
+      "message": "ACK. please file crosbug for this",
+      "parentUuid": "1ee77f7c_571a9cc5",
+      "range": {
+        "startLine": 306,
+        "startChar": 38,
+        "endLine": 306,
+        "endChar": 48
+      },
+      "revId": "c58b36d4d4f2bee6c295bb1856bba2f6d5fe1b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

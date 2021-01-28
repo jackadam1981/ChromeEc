@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dbbf106_c7f4d49d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-28T04:01:31Z",
+      "side": 1,
+      "message": "ACK. please file crosbug for this",
+      "parentUuid": "7fedeb84_f2518a03",
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3605251c_d0f3fd68",
@@ -390,6 +408,30 @@
       "side": 1,
       "message": "hi Vijay, we may discuss later for this change, for current effort, we will keep it here as it helps deployment at board level how to configure and how many",
       "parentUuid": "d68ab9c9_160e6597",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 1
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bacb94d_de801df3",
+        "filename": "board/sklrvp_mchp/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-01-28T04:01:31Z",
+      "side": 1,
+      "message": "ACK. please file crosbug for this",
+      "parentUuid": "e6e39ac0_d3b87d1c",
       "range": {
         "startLine": 184,
         "startChar": 0,
