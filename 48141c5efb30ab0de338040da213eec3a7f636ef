@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7564d3fd_0c021af7",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-28T21:54:01Z",
+      "side": 1,
+      "message": "Carry over from amd_fp5.c. Each of these functions are only called once within this file, so in lining should very marginally improve performance.\n\namd_fp6_init is referenced in the driver struct. This should not be inline, will fix.",
+      "parentUuid": "22c64701_5d97c245",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "48141c5efb30ab0de338040da213eec3a7f636ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4629baf4_56493769",
         "filename": "driver/usb_mux/amd_fp6.h",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-28T21:41:30Z",
       "side": 1,
       "message": "nit: 6?",
+      "range": {
+        "startLine": 5,
+        "startChar": 9,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "48141c5efb30ab0de338040da213eec3a7f636ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e62ea7_40d5bfb0",
+        "filename": "driver/usb_mux/amd_fp6.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-28T21:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4629baf4_56493769",
       "range": {
         "startLine": 5,
         "startChar": 9,
