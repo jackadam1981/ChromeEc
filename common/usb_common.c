@@ -244,6 +244,26 @@ bool pd_is_debug_acc(int port)
 		cc_state == PD_CC_DFP_DEBUG_ACC;
 }
 
+#ifdef CONFIG_ASSERT_CCD_ON_DTS_CONNECT
+
+static void assert_ccd_on_dts_connect(void)
+{
+	if (pd_is_debug_acc(CONFIG_CCD_USBC_PORT_NUMBER))
+		gpio_set_level(GPIO_CCD_MODE_ODL, 0);
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, assert_ccd_on_dts_connect,
+	     HOOK_PRIO_DEFAULT);
+
+static void deassert_ccd_on_dts_disconnect(void)
+{
+	if (!pd_is_debug_acc(CONFIG_CCD_USBC_PORT_NUMBER))
+		gpio_set_level(GPIO_CCD_MODE_ODL, 1);
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, deassert_ccd_on_dts_disconnect,
+	     HOOK_PRIO_DEFAULT);
+
+#endif
+
 void pd_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	tcpm_set_polarity(port, polarity);

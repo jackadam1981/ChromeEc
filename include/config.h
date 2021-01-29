@@ -5000,6 +5000,18 @@
  */
 #undef CONFIG_ZEPHYR
 
+/*
+ * Define the following to drive CCD_MODE_ODL when DTS connected to
+ * CCD USB port
+ */
+#undef CONFIG_ASSERT_CCD_ON_DTS_CONNECT
+
+/*
+ * The USB port used for CCD. Defaults to 0/C0.
+ */
+#define CONFIG_CCD_USBC_PORT_NUMBER	0
+
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
@@ -5591,6 +5603,7 @@
 #ifndef CONFIG_ADC
 #undef CONFIG_CMD_ADC
 #endif
+
 
 /*****************************************************************************/
 /* Define derived Chipset configs */
