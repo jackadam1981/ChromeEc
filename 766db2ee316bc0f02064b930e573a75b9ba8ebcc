@@ -16,6 +16,29 @@
       "message": "rebase and fix conflict.",
       "revId": "766db2ee316bc0f02064b930e573a75b9ba8ebcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95fdf1d4_c1787a7d",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-01-29T16:25:01Z",
+      "side": 1,
+      "message": "Does this take away 2KB of our flash space by having this fix?\n\n2KB is a pretty large amount to throw away. Is there another way we can ensure the have the correct jump instructions?",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "766db2ee316bc0f02064b930e573a75b9ba8ebcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
