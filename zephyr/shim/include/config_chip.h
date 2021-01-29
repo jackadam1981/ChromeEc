@@ -20,6 +20,7 @@
 
 #define CONFIG_ZEPHYR
 #define CHROMIUM_EC
+#include "bbram.h"
 
 /* Chipset and power configuration */
 #ifdef CONFIG_AP_X86_INTEL_CML
