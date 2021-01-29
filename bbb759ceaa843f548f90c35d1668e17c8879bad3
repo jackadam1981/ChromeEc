@@ -46,6 +46,30 @@
       },
       "revId": "bbb759ceaa843f548f90c35d1668e17c8879bad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4f2892_f1af2286",
+        "filename": "common/device_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-29T19:29:36Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2659684",
+      "parentUuid": "090648a1_5593f2b4",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "bbb759ceaa843f548f90c35d1668e17c8879bad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
