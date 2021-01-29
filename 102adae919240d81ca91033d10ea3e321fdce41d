@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1564886_1808e4cd",
+        "filename": "driver/retimer/nb7v904m.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-29T16:19:37Z",
+      "side": 1,
+      "message": "Should this function be combined with nb7v904m_tune_usb_set_eq()?",
+      "revId": "102adae919240d81ca91033d10ea3e321fdce41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763a01f6_2a0a8dd3",
+        "filename": "driver/retimer/nb7v904m.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-29T16:19:37Z",
+      "side": 1,
+      "message": "Put this above the tuning function declarations with a note that it\u0027s intended as an argument to those functions when tuning should be skipped",
+      "revId": "102adae919240d81ca91033d10ea3e321fdce41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
