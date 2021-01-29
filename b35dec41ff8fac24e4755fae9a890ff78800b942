@@ -141,6 +141,24 @@
       "parentUuid": "4593b262_5a75973c",
       "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33017733_60d17e20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-29T17:40:56Z",
+      "side": 1,
+      "message": "Yes indeed.  I should hopefully be getting a Galtic soon and want to try a little binary search to see what\u0027s guilty of the brown out, in case we could do a more targeted solution.  \n\nThis is a pretty commonly used charger chip on released boards, and I\u0027m hoping to minimize behavior differences with those boards.  With SM, we had the benefit of knowing and testing all boards using the chip.",
+      "parentUuid": "39af34de_af7abcd8",
+      "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
