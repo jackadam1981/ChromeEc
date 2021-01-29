@@ -264,7 +264,7 @@ static uint32_t normalize_channel_data(struct motion_sensor_t *s,
 }
 
 
-static void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
+__overridable void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
 				     int32_t *crgb_data, int32_t *xyz_data)
 {
 	struct tcs3400_rgb_drv_data_t *rgb_drv_data = TCS3400_RGB_DRV_DATA(s+1);
