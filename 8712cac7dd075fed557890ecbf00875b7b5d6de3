@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f470de2e_36bc5579",
+        "filename": "board/brya/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-29T15:07:30Z",
+      "side": 1,
+      "message": "Why are the pads configured here separately from generated-gpio.inc?",
+      "revId": "8712cac7dd075fed557890ecbf00875b7b5d6de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

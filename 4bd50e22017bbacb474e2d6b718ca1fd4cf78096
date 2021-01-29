@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "717f20fe_c384b5e0",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-29T15:07:30Z",
+      "side": 1,
+      "message": "\u003e step 1 is to update the \"EC Pinmux for Brya-Internal Only\" spreadsheet.\n\nIs this accessible to all partners including Intel and ODM? I am not sure if it is a good idea to have this separate from the EC repo.\n\n\u003e we\u0027ll need to have a separate discussion about which repo should hold the generator script.\n\nProbably platform/dev/contrib/firmware or platform/ec/util/. Also, this will have to be resolved before the bringup so that everyone has access to any required scripts/artifacts.\n\nAnother thing to consider is: Partners usually use the reference board implementation to set up their own boards. Do you want them to use the script for their boards? How flexible is it to accommodate any quirks that a board would require? In any case, you will need a README to ensure that there is proper guidance.",
+      "parentUuid": "043cf0cf_15f05a92",
+      "range": {
+        "startLine": 2,
+        "startChar": 3,
+        "endLine": 2,
+        "endChar": 32
+      },
+      "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57fbf40c_4dce95bf",
         "filename": "board/brya/generated-gpio.inc",
         "patchSetId": 1
