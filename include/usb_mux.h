@@ -258,4 +258,6 @@ bool usb_mux_get_disconnect_latch_flag(int port);
  */
 void usb_mux_set_disconnect_latch_flag(int port, bool enable);
 
+void usb_mux_await_ack(int port);
+
 #endif

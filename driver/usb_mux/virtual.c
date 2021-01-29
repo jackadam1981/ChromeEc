@@ -60,6 +60,7 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 		/* This should only be called from the PD task */
 		assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
+		usb_mux_await_ack(port);
 		if (*task_get_event_bitmap(task_get_current()) &
 				PD_EVENT_AP_MUX_DONE) {
 		}
