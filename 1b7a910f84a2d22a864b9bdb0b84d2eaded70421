@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a13fa7eb_0a374585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-01-29T01:27:37Z",
+      "side": 1,
+      "message": "Just want to double check that we need to revert this patch once we have the new tcpc firmware, right?",
+      "revId": "1b7a910f84a2d22a864b9bdb0b84d2eaded70421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68c0338e_7fbafef4",
