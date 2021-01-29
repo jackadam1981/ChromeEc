@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3e5bbb_24efb7d1",
+        "filename": "zephyr/projects/volteer/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:03:31Z",
+      "side": 1,
+      "message": "Full fan support requires the tachometer driver.  We\u0027ll also need temperature sensors working for automatic fan control. This CL ensures that we provide some active cooling while the AP is powered on to prevent thermal damage.",
+      "parentUuid": "2d8b874e_1400c970",
+      "revId": "6c2bf8a08ba94c8734db91b6e9470ebb80eeba65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7922c837_e874031b",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-01-29T19:29:42Z",
       "side": 1,
       "message": "missing line terminator at end of file",
+      "range": {
+        "startLine": 61,
+        "startChar": 56,
+        "endLine": 61,
+        "endChar": 57
+      },
+      "revId": "6c2bf8a08ba94c8734db91b6e9470ebb80eeba65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1bc5bf8_b288103e",
+        "filename": "zephyr/projects/volteer/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7922c837_e874031b",
       "range": {
         "startLine": 61,
         "startChar": 56,
