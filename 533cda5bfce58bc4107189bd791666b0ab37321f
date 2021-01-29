@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ed31f7e_754ace3d",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T22:19:07Z",
+      "side": 1,
+      "message": "I would like to see some checks that the AP is not overlapping requests and that the AP is not changing the port number.\n\nThis could be done as a separate CL.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "533cda5bfce58bc4107189bd791666b0ab37321f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dc50c1e_adc12900",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T22:19:07Z",
+      "side": 1,
+      "message": "I see you did this is the child CL.",
+      "parentUuid": "175bc426_8b30b73a",
+      "range": {
+        "startLine": 55,
+        "startChar": 18,
+        "endLine": 55,
+        "endChar": 50
+      },
+      "revId": "3db914bc541d6bf651f57f5d81fa8eb717e12e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c02b631b_95155b35",
