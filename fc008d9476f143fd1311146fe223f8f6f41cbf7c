@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47370559_d8b461cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-29T04:04:18Z",
+      "side": 1,
+      "message": "Looks fine.",
+      "revId": "fc008d9476f143fd1311146fe223f8f6f41cbf7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6fe718_83e2d01b",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-29T04:04:18Z",
+      "side": 1,
+      "message": "This is simple enough for now, but we might want to consider enabling the pull_up only in the detection function (momentarily). Or, somehow change DIVIDER_HIGHSIDE to high-z.\n\nRationale: Yes, it is only about a ~100uA leak, but we already went through the effort of having a DIVIDER_HIGHSIDE to not have leaks.",
+      "range": {
+        "startLine": 26,
+        "startChar": 50,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "fc008d9476f143fd1311146fe223f8f6f41cbf7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
