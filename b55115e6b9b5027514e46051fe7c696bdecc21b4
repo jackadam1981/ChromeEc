@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e2472c_5d24ed0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-29T17:55:59Z",
+      "side": 1,
+      "message": "Thanks for sharing the patch. Tested issue is observed. I think ack is not set at correct place.\nAdded one more flag and made the following patch, passed 18 runs 19th run enumeration issue is observed but not downgrade issue. Need to debug is this patch caused the problem or not.\n \nCould you please review the following patch:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2659147\n",
+      "revId": "b55115e6b9b5027514e46051fe7c696bdecc21b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "718cc17f_e5371d7e",
