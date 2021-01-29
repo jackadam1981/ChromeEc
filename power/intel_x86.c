@@ -445,6 +445,10 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		 * to go into deep sleep in S0ix.
 		 */
 		enable_sleep(SLEEP_MASK_AP_RUN);
+
+		/* re-init S0ix flag */
+		power_reset_host_sleep_state();
+
 		return POWER_S0ix;
 
 	case POWER_S0ixS0:
