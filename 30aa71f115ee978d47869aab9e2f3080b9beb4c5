@@ -16,6 +16,29 @@
       "message": "reconfirmed all is ok with sklrvp booting with intel approved CL\u0027s",
       "revId": "30aa71f115ee978d47869aab9e2f3080b9beb4c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bdf1a02_a61b25f8",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T23:27:56Z",
+      "side": 1,
+      "message": "For reef_mchp and the mchpevb1, you\u0027d have to update their GPIO names right?",
+      "range": {
+        "startLine": 233,
+        "startChar": 23,
+        "endLine": 233,
+        "endChar": 35
+      },
+      "revId": "30aa71f115ee978d47869aab9e2f3080b9beb4c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
