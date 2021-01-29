@@ -365,6 +365,8 @@ zero for the sensor.
 
 **Firmware Version**: `dartmonkey_v2.0.4017-9c45fb4b3`
 
+When the MCU is in **low power** mode during the AP suspend (as emulated by `dut-control slp_s3:on`):
+
 ```
 @@            NAME  COUNT  AVERAGE  STDDEV      MAX      MIN
 @@    sample_msecs   1502    39.96   13.14   379.43    22.31
