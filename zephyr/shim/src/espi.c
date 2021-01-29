@@ -17,10 +17,12 @@
 #include "espi.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "keyboard_protocol.h"
 #include "lpc.h"
 #include "port80.h"
 #include "power.h"
 #include "soc_espi.h"
+#include "task.h"
 #include "timer.h"
 #include "zephyr_espi_shim.h"
 
@@ -136,6 +138,7 @@ static void espi_vwire_handler(const struct device *dev,
 
 static void handle_host_write(uint32_t data);
 static void handle_acpi_write(uint32_t data);
+static void kbc_ibf_obe_handler(uint32_t data);
 
 static void espi_peripheral_handler(const struct device *dev,
 				    struct espi_callback *cb,
@@ -156,6 +159,11 @@ static void espi_peripheral_handler(const struct device *dev,
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD) &&
 	    event_type == ESPI_PERIPHERAL_EC_HOST_CMD) {
 		handle_host_write(event.evt_data);
+	}
+
+	if (IS_ENABLED(CONFIG_ESPI_PERIPHERAL_8042_KBC) &&
+	    event_type == ESPI_PERIPHERAL_8042_KBC) {
+		kbc_ibf_obe_handler(event.evt_data);
 	}
 }
 
@@ -491,3 +499,60 @@ static enum ec_status lpc_get_protocol_info(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, lpc_get_protocol_info,
 		     EC_VER_MASK(0));
+
+#if defined(CONFIG_ESPI_PERIPHERAL_8042_KBC)
+/*
+ * This function is needed only for the obsolete platform which uses the GPIO
+ * for KBC's IRQ.
+ */
+void lpc_keyboard_resume_irq(void) {}
+
+void lpc_keyboard_clear_buffer(void)
+{
+	udelay(4);
+	espi_write_lpc_request(espi_dev, E8042_CLEAR_OBF, 0);
+	udelay(4);
+}
+int lpc_keyboard_has_char(void)
+{
+	uint32_t status;
+
+	/* if OBF bit is '1', that mean still have a data in DBBOUT */
+	espi_read_lpc_request(espi_dev, E8042_OBF_HAS_CHAR, &status);
+	return status;
+}
+
+void lpc_keyboard_put_char(uint8_t chr, int send_irq)
+{
+	uint32_t kb_char = chr;
+
+	espi_write_lpc_request(espi_dev, E8042_WRITE_KB_CHAR, &kb_char);
+
+}
+
+static void kbc_ibf_obe_handler(uint32_t data)
+{
+	uint8_t is_ibf = (data >> NPCX_8042_EVT_POS) & NPCX_8042_EVT_IBF;
+
+	if (is_ibf) {
+		uint8_t status;
+		uint8_t in_buf;
+
+		in_buf = data >> NPCX_8042_DATA_POS;
+		status = data >> NPCX_8042_TYPE_POS;
+
+		keyboard_host_write(in_buf, status);
+	}
+	task_wake(TASK_ID_KEYPROTO);
+}
+
+int lpc_keyboard_input_pending(void)
+{
+	uint32_t status;
+
+	/* if IBF bit is '1', that mean still have a data in DBBIN */
+	espi_read_lpc_request(espi_dev, E8042_IBF_HAS_CHAR, &status);
+	return status;
+}
+
+#endif
