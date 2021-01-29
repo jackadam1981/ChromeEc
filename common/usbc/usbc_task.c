@@ -78,6 +78,15 @@ static void pd_task_init(int port)
 	 */
 	if (IS_ENABLED(CONFIG_HAS_TASK_PD_INT))
 		schedule_deferred_pd_interrupt(port);
+
+#ifdef CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT
+	/*
+	 * GPIO_CCD_MODE_ODL must be initialized with GPIO_ODR_HIGH
+	 * when CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT is enabled
+	 */
+	ASSERT(gpio_get_default_flags(GPIO_CCD_MODE_ODL) & GPIO_ODR_HIGH);
+#endif
+
 }
 
 static int pd_task_timeout(int port)
