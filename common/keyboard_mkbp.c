@@ -6,14 +6,11 @@
  */
 
 #include "atomic.h"
-#include "base_state.h"
-#include "button.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
 #include "gpio.h"
-#include "hooks.h"
 #include "host_command.h"
 #include "keyboard_config.h"
 #include "keyboard_mkbp.h"
@@ -21,11 +18,8 @@
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "keyboard_test.h"
-#include "lid_switch.h"
 #include "mkbp_event.h"
-#include "power_button.h"
 #include "system.h"
-#include "tablet_mode.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -67,10 +61,7 @@ static struct mutex fifo_add_mutex;
  */
 static struct mutex fifo_remove_mutex;
 
-/* Button and switch state. */
-static uint32_t mkbp_button_state;
-static uint32_t mkbp_switch_state;
-static bool mkbp_init_done;
+
 #ifndef HAS_TASK_KEYSCAN
 /* Keys simulated-pressed */
 static uint8_t __bss_slow simulated_key[KEYBOARD_COLS_MAX];
@@ -109,8 +100,6 @@ static int get_data_size(enum ec_mkbp_event e)
 #endif
 
 	case EC_MKBP_EVENT_HOST_EVENT:
-	case EC_MKBP_EVENT_BUTTON:
-	case EC_MKBP_EVENT_SWITCH:
 	case EC_MKBP_EVENT_SYSRQ:
 		return sizeof(uint32_t);
 	default:
@@ -265,119 +254,6 @@ test_mockable int mkbp_fifo_add(uint8_t event_type, const uint8_t *buffp)
 	return EC_SUCCESS;
 }
 
-void mkbp_update_switches(uint32_t sw, int state)
-{
-
-	mkbp_switch_state &= ~BIT(sw);
-	mkbp_switch_state |= (!!state << sw);
-
-	/*
-	 * Only inform AP mkbp changes when all switches initialized, in case
-	 * of the middle states causing the weird behaviour in the AP side,
-	 * especially when sysjumped while AP up.
-	 */
-	if (mkbp_init_done)
-		mkbp_fifo_add(EC_MKBP_EVENT_SWITCH,
-			      (const uint8_t *)&mkbp_switch_state);
-}
-
-#ifdef CONFIG_LID_SWITCH
-/**
- * Handle lid changing state.
- */
-static void mkbp_lid_change(void)
-{
-	mkbp_update_switches(EC_MKBP_LID_OPEN, lid_is_open());
-}
-DECLARE_HOOK(HOOK_LID_CHANGE, mkbp_lid_change, HOOK_PRIO_LAST);
-DECLARE_HOOK(HOOK_INIT, mkbp_lid_change, HOOK_PRIO_INIT_LID+1);
-#endif
-
-#ifdef CONFIG_TABLET_MODE_SWITCH
-static void mkbp_tablet_mode_change(void)
-{
-	mkbp_update_switches(EC_MKBP_TABLET_MODE, tablet_get_mode());
-}
-DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, mkbp_tablet_mode_change, HOOK_PRIO_LAST);
-DECLARE_HOOK(HOOK_INIT, mkbp_tablet_mode_change, HOOK_PRIO_INIT_LID+1);
-#endif
-
-#ifdef CONFIG_BASE_ATTACHED_SWITCH
-static void mkbp_base_attached_change(void)
-{
-	mkbp_update_switches(EC_MKBP_BASE_ATTACHED, base_get_state());
-}
-DECLARE_HOOK(HOOK_BASE_ATTACHED_CHANGE, mkbp_base_attached_change,
-	     HOOK_PRIO_LAST);
-DECLARE_HOOK(HOOK_INIT, mkbp_base_attached_change, HOOK_PRIO_INIT_LID+1);
-#endif
-
-static void mkbp_report_switch_on_init(void)
-{
-	/* All switches initialized, report switch state to AP */
-	mkbp_init_done = true;
-	mkbp_fifo_add(EC_MKBP_EVENT_SWITCH,
-		      (const uint8_t *)&mkbp_switch_state);
-}
-DECLARE_HOOK(HOOK_INIT, mkbp_report_switch_on_init, HOOK_PRIO_LAST);
-
-void keyboard_update_button(enum keyboard_button_type button, int is_pressed)
-{
-	switch (button) {
-	case KEYBOARD_BUTTON_POWER:
-		mkbp_button_state &= ~BIT(EC_MKBP_POWER_BUTTON);
-		mkbp_button_state |= (is_pressed << EC_MKBP_POWER_BUTTON);
-		break;
-
-	case KEYBOARD_BUTTON_VOLUME_UP:
-		mkbp_button_state &= ~BIT(EC_MKBP_VOL_UP);
-		mkbp_button_state |= (is_pressed << EC_MKBP_VOL_UP);
-		break;
-
-	case KEYBOARD_BUTTON_VOLUME_DOWN:
-		mkbp_button_state &= ~BIT(EC_MKBP_VOL_DOWN);
-		mkbp_button_state |= (is_pressed << EC_MKBP_VOL_DOWN);
-		break;
-
-	case KEYBOARD_BUTTON_RECOVERY:
-		mkbp_button_state &= ~BIT(EC_MKBP_RECOVERY);
-		mkbp_button_state |= (is_pressed << EC_MKBP_RECOVERY);
-		break;
-
-	default:
-		/* ignored. */
-		return;
-	}
-
-	CPRINTS("buttons: %x", mkbp_button_state);
-
-	/* Add the new state to the FIFO. */
-	mkbp_fifo_add(EC_MKBP_EVENT_BUTTON,
-		      (const uint8_t *)&mkbp_button_state);
-}
-
-#ifdef CONFIG_EMULATED_SYSRQ
-void host_send_sysrq(uint8_t key)
-{
-	uint32_t value = key;
-
-	mkbp_fifo_add(EC_MKBP_EVENT_SYSRQ, (const uint8_t *)&value);
-}
-#endif
-
-#ifdef CONFIG_POWER_BUTTON
-/**
- * Handle power button changing state.
- */
-static void keyboard_power_button(void)
-{
-	keyboard_update_button(KEYBOARD_BUTTON_POWER,
-			       power_button_is_pressed());
-}
-DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, keyboard_power_button,
-	     HOOK_PRIO_DEFAULT);
-#endif /* defined(CONFIG_POWER_BUTTON) */
-
 static int get_next_event(uint8_t *out, enum ec_mkbp_event evt)
 {
 	uint8_t t = fifo[fifo_start].event_type;
@@ -420,25 +296,6 @@ static int keyboard_get_next_event(uint8_t *out)
 }
 DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_KEY_MATRIX, keyboard_get_next_event);
 
-static int button_get_next_event(uint8_t *out)
-{
-	return get_next_event(out, EC_MKBP_EVENT_BUTTON);
-}
-DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_BUTTON, button_get_next_event);
-
-static int switch_get_next_event(uint8_t *out)
-{
-	return get_next_event(out, EC_MKBP_EVENT_SWITCH);
-}
-DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_SWITCH, switch_get_next_event);
-
-#ifdef CONFIG_EMULATED_SYSRQ
-static int sysrq_get_next_event(uint8_t *out)
-{
-	return get_next_event(out, EC_MKBP_EVENT_SYSRQ);
-}
-DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_SYSRQ, sysrq_get_next_event);
-#endif
 
 void keyboard_send_battery_key(void)
 {
@@ -458,127 +315,24 @@ void clear_typematic_key(void)
 
 /*****************************************************************************/
 /* Host commands */
-static uint32_t get_supported_buttons(void)
+
+#ifdef CONFIG_EMULATED_SYSRQ
+void host_send_sysrq(uint8_t key)
 {
-	uint32_t val = 0;
+	uint32_t value = key;
 
-#ifdef CONFIG_VOLUME_BUTTONS
-	val |= BIT(EC_MKBP_VOL_UP) | BIT(EC_MKBP_VOL_DOWN);
-#endif /* defined(CONFIG_VOLUME_BUTTONS) */
-
-#ifdef CONFIG_DEDICATED_RECOVERY_BUTTON
-	val |= BIT(EC_MKBP_RECOVERY);
-#endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
-
-#ifdef CONFIG_POWER_BUTTON
-	val |= BIT(EC_MKBP_POWER_BUTTON);
-#endif /* defined(CONFIG_POWER_BUTTON) */
-
-	return val;
+	mkbp_fifo_add(EC_MKBP_EVENT_SYSRQ, (const uint8_t *)&value);
 }
+#endif
 
-static uint32_t get_supported_switches(void)
+#ifdef CONFIG_EMULATED_SYSRQ
+static int sysrq_get_next_event(uint8_t *out)
 {
-	uint32_t val = 0;
-
-#ifdef CONFIG_LID_SWITCH
-	val |= BIT(EC_MKBP_LID_OPEN);
-#endif
-#ifdef CONFIG_TABLET_MODE_SWITCH
-	val |= BIT(EC_MKBP_TABLET_MODE);
-#endif
-#ifdef CONFIG_BASE_ATTACHED_SWITCH
-	val |= BIT(EC_MKBP_BASE_ATTACHED);
-#endif
-#ifdef CONFIG_FRONT_PROXIMITY_SWITCH
-	val |= BIT(EC_MKBP_FRONT_PROXIMITY);
-#endif
-	return val;
+	return get_next_event(out, EC_MKBP_EVENT_SYSRQ);
 }
-
-static enum ec_status mkbp_get_info(struct host_cmd_handler_args *args)
-{
-	const struct ec_params_mkbp_info *p = args->params;
-
-	if (args->params_size == 0 || p->info_type == EC_MKBP_INFO_KBD) {
-		struct ec_response_mkbp_info *r = args->response;
-
-		/* Version 0 just returns info about the keyboard. */
-		r->rows = KEYBOARD_ROWS;
-		r->cols = keyboard_cols;
-		/* This used to be "switches" which was previously 0. */
-		r->reserved = 0;
-
-		args->response_size = sizeof(struct ec_response_mkbp_info);
-	} else {
-		union ec_response_get_next_data *r = args->response;
-
-		/* Version 1 (other than EC_MKBP_INFO_KBD) */
-		switch (p->info_type) {
-		case EC_MKBP_INFO_SUPPORTED:
-			switch (p->event_type) {
-			case EC_MKBP_EVENT_BUTTON:
-				r->buttons = get_supported_buttons();
-				args->response_size = sizeof(r->buttons);
-				break;
-
-			case EC_MKBP_EVENT_SWITCH:
-				r->switches = get_supported_switches();
-				args->response_size = sizeof(r->switches);
-				break;
-
-			default:
-				/* Don't care for now for other types. */
-				return EC_RES_INVALID_PARAM;
-			}
-			break;
-
-		case EC_MKBP_INFO_CURRENT:
-			switch (p->event_type) {
-#ifdef HAS_TASK_KEYSCAN
-			case EC_MKBP_EVENT_KEY_MATRIX:
-				memcpy(r->key_matrix, keyboard_scan_get_state(),
-				       sizeof(r->key_matrix));
-				args->response_size = sizeof(r->key_matrix);
-				break;
-#endif
-			case EC_MKBP_EVENT_HOST_EVENT:
-				r->host_event = (uint32_t)host_get_events();
-				args->response_size = sizeof(r->host_event);
-				break;
-
-#ifdef CONFIG_HOST_EVENT64
-			case EC_MKBP_EVENT_HOST_EVENT64:
-				r->host_event64 = host_get_events();
-				args->response_size = sizeof(r->host_event64);
-				break;
+DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_SYSRQ, sysrq_get_next_event);
 #endif
 
-			case EC_MKBP_EVENT_BUTTON:
-				r->buttons = mkbp_button_state;
-				args->response_size = sizeof(r->buttons);
-				break;
-
-			case EC_MKBP_EVENT_SWITCH:
-				r->switches = mkbp_switch_state;
-				args->response_size = sizeof(r->switches);
-				break;
-
-			default:
-				/* Doesn't make sense for other event types. */
-				return EC_RES_INVALID_PARAM;
-			}
-			break;
-
-		default:
-			/* Unsupported query. */
-			return EC_RES_ERROR;
-		}
-	}
-	return EC_RES_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_CMD_MKBP_INFO, mkbp_get_info,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 #ifndef HAS_TASK_KEYSCAN
 /* For boards without a keyscan task, try and simulate keyboard presses. */

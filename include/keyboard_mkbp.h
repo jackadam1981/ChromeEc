@@ -41,12 +41,4 @@ void keyboard_send_battery_key(void);
 static inline void keyboard_send_battery_key(void) { }
 #endif
 
-/**
- * Update the state of the switches.
- *
- * @param sw		The switch that changed.
- * @param state		The state of the switch.
- */
-void mkbp_update_switches(uint32_t sw, int state);
-
 #endif  /* __CROS_EC_KEYBOARD_MKBP_H */
