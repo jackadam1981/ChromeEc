@@ -16,6 +16,7 @@
 #include "hooks.h"
 #include "keyboard_protocol.h"
 #include "led_common.h"
+#include "mkbp_input_devices.h"
 #include "power_button.h"
 #include "system.h"
 #include "timer.h"
@@ -310,10 +311,14 @@ static void button_change_deferred(void)
 				CPRINTS("Button '%s' was %s",
 					buttons[i].name, new_pressed ?
 					"pressed" : "released");
-#if defined(HAS_TASK_KEYPROTO) || defined(CONFIG_KEYBOARD_PROTOCOL_MKBP)
+#if defined(CONFIG_MKBP_INPUT_DEVICES)
+				mkbp_button_update(buttons[i].type,
+								new_pressed);
+#elif defined(HAS_TASK_KEYPROTO)
 				keyboard_update_button(buttons[i].type,
-					new_pressed);
+								new_pressed);
 #endif
+
 			}
 
 			/* Clear the debounce time to stop checking it */

@@ -141,6 +141,10 @@
 #define CONFIG_TABLET_MODE_SWITCH
 #define CONFIG_GMR_TABLET_MODE
 
+#define CONFIG_MKBP_INPUT_DEVICES
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
