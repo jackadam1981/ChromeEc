@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7003cd28_e59f2db1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-01-29T09:00:54Z",
+      "side": 1,
+      "message": "This can\u0027t build until zephyr chromeos-v2.4 pick the watchdog patch.",
+      "revId": "1fc7220ca63c536cebbc29a166848d88c63d9ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
