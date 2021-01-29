@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e42b14be_844c6bbf",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-01-29T02:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3feb0cf8_8868b9c0",
+      "range": {
+        "startLine": 254,
+        "startChar": 7,
+        "endLine": 254,
+        "endChar": 10
+      },
+      "revId": "20df0a5059ef2b88b55d7c7e9d428ee8e411e4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d007b5c7_524f5baa",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-28T18:48:25Z",
       "side": 1,
       "message": "seems safer to just check for \"NONE\" and return ec_config_has_base_gyro_sensor value instead.  Otherwise, to accommodate for any possible additions to the list, just return the value returned from get_cbi_ssfc_base_sensor.  The two return values should mirror each other or at least map over the union of the two.",
+      "range": {
+        "startLine": 258,
+        "startChar": 9,
+        "endLine": 258,
+        "endChar": 33
+      },
+      "revId": "20df0a5059ef2b88b55d7c7e9d428ee8e411e4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38924e5_445f93f8",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-01-29T02:41:38Z",
+      "side": 1,
+      "message": "Ssfc and fw_config base sensor enum mirror to each other, return get_cbi_ssfc_base_sensor() when get non-zero value from ssfc.",
+      "parentUuid": "d007b5c7_524f5baa",
       "range": {
         "startLine": 258,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83cced3c_5fae8842",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-01-29T02:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ece633dd_fd000181",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 263,
+        "endChar": 27
+      },
+      "revId": "20df0a5059ef2b88b55d7c7e9d428ee8e411e4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f493d845_9f55d4c9",
@@ -89,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c85c75a_9db1f7dc",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-01-29T02:41:38Z",
+      "side": 1,
+      "message": "Modified to\"return get_cbi_ssfc_base_sensor();\" ssfc and fw_config base sensor enum map to each other.",
+      "parentUuid": "f493d845_9f55d4c9",
+      "revId": "20df0a5059ef2b88b55d7c7e9d428ee8e411e4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84524fba_45b917ed",
         "filename": "board/morphius/board.c",
         "patchSetId": 6
@@ -100,6 +190,30 @@
       "writtenOn": "2021-01-28T18:48:25Z",
       "side": 1,
       "message": "nit: remove extra tab",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 277,
+        "endChar": 3
+      },
+      "revId": "20df0a5059ef2b88b55d7c7e9d428ee8e411e4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c212ba32_9e5e1954",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-01-29T02:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84524fba_45b917ed",
       "range": {
         "startLine": 277,
         "startChar": 2,
