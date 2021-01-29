@@ -16,6 +16,24 @@
       "message": "Craig, it looks like I can limit FP_SPI_SEL to RW, but there\u0027s some additional refactoring to limit the GPIOs that we use in RW. Let\u0027s do that in a followup CL since otherwise it makes this change too large.",
       "revId": "e79a421ead6a13d2a1c91cb5713d8b6255c4a5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c40edf3_699a5491",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-29T01:10:35Z",
+      "side": 1,
+      "message": "CL: https://crrev.com/c/2657778 (still needs a few tweaks, but idea is there)",
+      "parentUuid": "a616632f_3fef6dd9",
+      "revId": "e79a421ead6a13d2a1c91cb5713d8b6255c4a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
