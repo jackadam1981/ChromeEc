@@ -6,7 +6,7 @@
 . /usr/share/misc/shflags
 
 readonly DEFAULT_RETRIES=${DEFAULT_RETRIES:-4}
-readonly STM32MON_CONNECT_RETRIES=${STM32MON_CONNECT_RETRIES:-6}
+readonly STM32MON_CONNECT_RETRIES=${STM32MON_CONNECT_RETRIES:-2}
 readonly STM32MON_SERIAL_BAUDRATE=${STM32MON_SERIAL_BAUDRATE:-115200}
 
 DEFINE_boolean 'read' "${FLAGS_FALSE}" 'Read instead of write' 'r'
@@ -51,6 +51,11 @@ check_hardware_write_protect_disabled() {
 # Get the spiid for the fingerprint sensor based on the modalias
 # string: https://crbug.com/955117
 get_spiid() {
+  if [[ "${PLATFORM_NAME}" == strongbad ]]; then
+    echo spi10.0
+    return 0
+  fi
+
   for dev in /sys/bus/spi/devices/*; do
     if [[ "$(cat "${dev}/modalias")" == "${CROS_EC_SPI_MODALIAS_STR}" ]]; then
       echo "$(basename "${dev}")"
@@ -81,17 +86,21 @@ gpio() {
   shift
 
   for signal; do
-    case "${cmd}" in
-      unexport|export)
+    case "${cmd}_${GPIOLIB}" in
+      unexport_sysfs|export_sysfs)
         echo "${signal}" > "/sys/class/gpio/${cmd}"
         ;;
-      in|out)
+      in_sysfs|out_sysfs)
         local direction="${cmd}"
         echo "${direction}" > "/sys/class/gpio/gpio${signal}/direction"
         ;;
-      0|1)
+      0_sysfs|1_sysfs)
         local value="${cmd}"
         echo "${value}" > "/sys/class/gpio/gpio${signal}/value"
+        ;;
+      0_chardev|1_chardev)
+        local value="${cmd}"
+        gpioset $(gpiofind "${signal}")="${value}"
         ;;
       *)
         ;;
@@ -259,6 +268,7 @@ flash_fp_mcu_stm32() {
 
   for attempt in $(seq ${FLAGS_retries}); do
     # Reset sequence to enter bootloader mode
+    gpio 1 "${gpio_boot0}" # Why do we need to assert boot1 again for strongbad?
     gpio 0 "${gpio_nrst}"
     sleep 0.01
 
@@ -321,6 +331,8 @@ flash_fp_mcu_stm32() {
 
 config_hatch() {
   check_gpio_chip_exists "gpiochip200"
+
+  readonly GPIOLIB=sysfs
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.1"
   # See
@@ -340,6 +352,7 @@ config_hatch() {
 config_nami() {
   check_gpio_chip_exists "gpiochip360"
 
+  readonly GPIOLIB=sysfs
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev32765.0"
 
@@ -354,6 +367,7 @@ config_nami() {
 config_nocturne() {
   check_gpio_chip_exists "gpiochip360"
 
+  readonly GPIOLIB=sysfs
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev32765.0"
 
@@ -368,6 +382,7 @@ config_nocturne() {
 config_volteer() {
   check_gpio_chip_exists "gpiochip152"
 
+  readonly GPIOLIB=sysfs
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.0"
 
@@ -390,8 +405,8 @@ config_volteer() {
 config_zork() {
   check_gpio_chip_exists "gpiochip320"
 
+  readonly GPIOLIB=sysfs
   readonly TRANSPORT="UART"
-
   readonly DEVICE="/dev/ttyS1"
 
   # FPMCU RST_ODL is on AGPIO 11 = 320 + 11 = 331
@@ -400,6 +415,21 @@ config_zork() {
   readonly GPIO_BOOT0=389
   # FPMCU PWR_EN is on AGPIO 32 = 320 + 32 = 352, but should not be
   # necessary for flashing. Set invalid value.
+  readonly GPIO_PWREN=-1
+}
+
+config_strongbad() {
+  # check_gpio_chip_exists "gpiochip0"
+
+  readonly GPIOLIB=chardev
+  readonly TRANSPORT="SPI"
+  readonly DEVICE="/dev/spidev10.0"
+
+  # FPMCU RST_ODL is $(gpiofind FP_RST_L) is gpiochip0 22
+  readonly GPIO_NRST=FP_RST_L
+  # FPMCU BOOT0 is $(gpiofind FPMCU_BOOT0) is gpiochip0 10
+  readonly GPIO_BOOT0=FPMCU_BOOT0
+  # Hardware currently doesn't support PWREN, but the next revision will.
   readonly GPIO_PWREN=-1
 }
 
