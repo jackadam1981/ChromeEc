@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86b61ec_a329cdf0",
+        "filename": "common/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82308497_a011fc59",
+      "range": {
+        "startLine": 172,
+        "startChar": 17,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c3fe79e_748b4086",
@@ -38,6 +62,30 @@
       "writtenOn": "2021-01-28T20:32:13Z",
       "side": 1,
       "message": "remove (c)\n\nadd \"This code is governed by a BSD-style...\"\n\nyear is 2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 44
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c674ac8c_7f620468",
+        "filename": "zephyr/dts/bindings/pwm/named-pwms.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c3fe79e_748b4086",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -65,6 +113,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1ed785_7e159a3b",
+        "filename": "zephyr/dts/bindings/pwm/named-pwms.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b07a87_fd74ed18",
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "092df22a_7449e58f",
@@ -78,6 +144,30 @@
       "writtenOn": "2021-01-28T20:32:13Z",
       "side": 1,
       "message": "zephyr headers should go before EC headers",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ccfa4b_8f5f12ad",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "092df22a_7449e58f",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -111,6 +201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5353c5e0_d148de5d",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48e1abc4_e8011478",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 11
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "067cc857_9f86a9a4",
@@ -124,6 +238,30 @@
       "writtenOn": "2021-01-28T21:41:52Z",
       "side": 1,
       "message": "Perhaps use assert or log?",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 8
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ecd43c9_aaa143f9",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "067cc857_9f86a9a4",
       "range": {
         "startLine": 95,
         "startChar": 2,
@@ -157,6 +295,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a68de8b0_399161b4",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e91d70e8_55512a37",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0d38095_d2b9b48e",
@@ -170,6 +332,30 @@
       "writtenOn": "2021-01-28T21:41:52Z",
       "side": 1,
       "message": "-ENOENT?",
+      "range": {
+        "startLine": 191,
+        "startChar": 9,
+        "endLine": 191,
+        "endChar": 10
+      },
+      "revId": "881d14802d48cfc7a63712ebfed04ab0957cc088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f626d42e_32102813",
+        "filename": "zephyr/shim/src/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:02:13Z",
+      "side": 1,
+      "message": "Replaced with assert in static function.",
+      "parentUuid": "d0d38095_d2b9b48e",
       "range": {
         "startLine": 191,
         "startChar": 9,
