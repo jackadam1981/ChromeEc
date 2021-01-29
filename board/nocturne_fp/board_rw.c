@@ -52,15 +52,25 @@ void slp_event(enum gpio_signal signal)
 	hook_call_deferred(&ap_deferred_data, 0);
 }
 
-static void spi_configure(void)
+static void spi_configure(enum fp_sensor_spi_select spi_select)
 {
-	gpio_config_module(MODULE_SPI_MASTER, 1);
+	if (spi_select == FP_SENSOR_SPI_SELECT_DEVELOPMENT) {
+		/* Configure SPI GPIOs */
+		gpio_set_flags_by_mask(GPIO_E, 0x7000, 0);
+		/* port, mask, function */
+		gpio_set_alternate_function(GPIO_E, 0x7000, GPIO_ALT_SPI);
+	} else {
+		gpio_config_module(MODULE_SPI_MASTER, 1);
+	}
 
 	/* Set all SPI master signal pins to very high speed: pins E2/4/5/6 */
 	STM32_GPIO_OSPEEDR(GPIO_E) |= 0x00003f30;
 	/* Enable clocks to SPI4 module (master) */
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI4;
 
+	if (spi_select == FP_SENSOR_SPI_SELECT_DEVELOPMENT) {
+		spi_devices[0].gpio_cs = GPIO_SPI4_ALT_NSS;
+	}
 	spi_enable(&spi_devices[0], 1);
 }
 
@@ -70,7 +80,7 @@ void board_init_rw(void)
 
 	ccprints("FP_SPI_SEL: %s", fp_sensor_spi_select_to_str(spi_select));
 
-	spi_configure();
+	spi_configure(spi_select);
 
 	ccprints("TRANSPORT_SEL: %s",
 		 fp_transport_type_to_str(get_fp_transport_type()));
