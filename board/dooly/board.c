@@ -184,6 +184,96 @@ BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
 
+/* convert ATIME register to integration time, in microseconds */
+static int tcs3400_get_integration_time(int atime)
+{
+	return 2780 * (256 - atime);
+}
+
+__override void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
+				     int32_t *crgb_data, int32_t *xyz_data)
+{
+	int n, cur_gain, atime;
+	fp_t irc;
+	struct tcs_saturation_t *sat_p =
+				&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
+	const uint16_t cal_again = (1 << (2 * TCS_CALIBRATION_AGAIN));
+
+	ccprintf("C:%d\n", crgb_data[0]);
+	ccprintf("R:%d\n", crgb_data[1]);
+	ccprintf("G:%d\n", crgb_data[2]);
+	ccprintf("B:%d\n", crgb_data[3]);
+	ccprintf("-------------------------------\n");
+
+	cur_gain = (1 << (2 * sat_p->again));
+
+	atime = sat_p->atime;
+	atime = tcs3400_get_integration_time(atime)/1000;
+
+	irc = fp_div(INT_TO_FP(crgb_data[2]+crgb_data[3])
+		, INT_TO_FP(crgb_data[0]));
+
+	if (irc < FLOAT_TO_FP(0.514))
+		n = 1;
+	else if (irc >= FLOAT_TO_FP(0.514) && irc < FLOAT_TO_FP(0.66))
+		n = 2;
+	else if (irc >= FLOAT_TO_FP(0.66) && irc < FLOAT_TO_FP(1.012))
+		n = 3;
+	else
+		n = 4;
+
+	ccprintf("n:%d\n", n);
+
+	switch (n) {
+	case 1:
+		xyz_data[1] = FP_TO_INT(993 *
+		(crgb_data[0]*(fp_inter_t)FLOAT_TO_FP(3.8) +
+		 crgb_data[1]*(fp_inter_t)FLOAT_TO_FP(3.956) +
+		 crgb_data[2]*(fp_inter_t)FLOAT_TO_FP(-20.915) +
+		 crgb_data[3]*(fp_inter_t)FLOAT_TO_FP(3.281)) /
+		 (atime*cur_gain));
+	break;
+	case 2:
+		xyz_data[1] = FP_TO_INT(993 *
+		(crgb_data[0]*(fp_inter_t)FLOAT_TO_FP(-17.436) +
+		 crgb_data[1]*(fp_inter_t)FLOAT_TO_FP(14.535) +
+		 crgb_data[2]*(fp_inter_t)FLOAT_TO_FP(32.07) +
+		 crgb_data[3]*(fp_inter_t)FLOAT_TO_FP(2.43)) /
+		 (atime*cur_gain));
+	break;
+	case 3:
+		xyz_data[1] = FP_TO_INT(993 *
+		(crgb_data[0]*(fp_inter_t)FLOAT_TO_FP(0.08) +
+		 crgb_data[1]*(fp_inter_t)FLOAT_TO_FP(-0.89) +
+		 crgb_data[2]*(fp_inter_t)FLOAT_TO_FP(7.096) +
+		 crgb_data[3]*(fp_inter_t)FLOAT_TO_FP(-5.603)) /
+		 (atime*cur_gain));
+	break;
+	case 4:
+		xyz_data[1] = FP_TO_INT(993 *
+		(crgb_data[0]*(fp_inter_t)FLOAT_TO_FP(-0.686) +
+		 crgb_data[1]*(fp_inter_t)FLOAT_TO_FP(1.224) +
+		 crgb_data[2]*(fp_inter_t)FLOAT_TO_FP(4.043) +
+		 crgb_data[3]*(fp_inter_t)FLOAT_TO_FP(-4.584)) /
+		 (atime*cur_gain));
+	break;
+	default:
+	break;
+	}
+
+	if (xyz_data[1] < 0)
+		xyz_data[1] = 0;
+
+	xyz_data[1] = xyz_data[1] *
+		(((TCS_ATIME_GRANULARITY - sat_p->atime) * cur_gain)
+		 /((TCS_ATIME_GRANULARITY - TCS_CALIBRATION_ATIME)
+		* cal_again));
+
+	ccprintf("lux: %d\n", xyz_data[1]);
+	ccprintf("+++++++++++++++++++++++++++\n");
+
+}
+
 static void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
