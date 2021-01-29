@@ -5,6 +5,7 @@
  * Virtual USB mux driver for host-controlled USB muxes.
  */
 
+#include "atomic.h"
 #include "common.h"
 #include "console.h"
 #include "host_command.h"
@@ -34,6 +35,10 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 
 	if (!IS_ENABLED(CONFIG_HOSTCMD_EVENTS))
 		return;
+
+	if (mux_state & USB_PD_MUX_USB_ENABLED)
+		atomic_clear_bits(task_get_event_bitmap(task_get_current()),
+				  PD_EVENT_AP_MUX_DONE);
 
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
 
