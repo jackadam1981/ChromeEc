@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb7a66d3_9f8da370",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-29T20:03:12Z",
+      "side": 1,
+      "message": "It is not proper fix. Block it first.\n\nPlease do the investigation to find out the root cause, per my comment in the bug.",
+      "revId": "8604c3ab69acc8df31638f62c0048b7ad074040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d72ca9_85114c77",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-01-29T20:03:12Z",
+      "side": 1,
+      "message": "This function is supposed be called in AP \"reset\" or some similar cases like \"reset\" (S0S3, S5S3) to clear all the states of the hang detection.\n\nS3 doesn\u0027t enable the hang detection. Clearing the states make it. But S0ix enables the hang detection. You can\u0027t simply copy it from S0S3.",
+      "range": {
+        "startLine": 450,
+        "startChar": 2,
+        "endLine": 450,
+        "endChar": 33
+      },
+      "revId": "8604c3ab69acc8df31638f62c0048b7ad074040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
