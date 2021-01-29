@@ -40,6 +40,8 @@ static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Device initialized at least once */
 #define USB_MUX_FLAG_INIT		BIT(2)
 
+#define USB_MUX_FLAG_AWAITING_ACK       BIT(3)
+
 enum mux_config_type {
 	USB_MUX_INIT,
 	USB_MUX_LOW_POWER,
@@ -452,6 +454,11 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,
 		     hc_usb_pd_mux_info,
 		     EC_VER_MASK(0));
 
+void usb_mux_await_ack(int port)
+{
+	atomic_or(&flags[port], USB_MUX_FLAG_AWAITING_ACK);
+}
+
 static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 {
 	__maybe_unused const struct ec_params_usb_pd_mux_ack *p = args->params;
@@ -459,7 +466,13 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
 		return EC_RES_INVALID_COMMAND;
 
-	task_set_event(PD_PORT_TO_TASK_ID(p->port), PD_EVENT_AP_MUX_DONE);
+	if (flags[p->port] & USB_MUX_FLAG_AWAITING_ACK) {
+		task_set_event(PD_PORT_TO_TASK_ID(p->port),
+				PD_EVENT_AP_MUX_DONE);
+		atomic_clear_bits(&flags[p->port], USB_MUX_FLAG_AWAITING_ACK);
+	} else {
+		CPRINTS("C%d: Ignoring unexpected mux ACK", p->port);
+	}
 
 	return EC_RES_SUCCESS;
 }
