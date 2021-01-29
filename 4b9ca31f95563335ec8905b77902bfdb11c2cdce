@@ -16,6 +16,29 @@
       "message": "Adding back +2 after rebase",
       "revId": "4b9ca31f95563335ec8905b77902bfdb11c2cdce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943d9be3_7d2db80b",
+        "filename": "zephyr/projects/volteer/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-29T18:07:31Z",
+      "side": 1,
+      "message": "This is already selected by CONFIG_PLATFORM_EC_POWERSEQ_S0IX",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "4b9ca31f95563335ec8905b77902bfdb11c2cdce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
