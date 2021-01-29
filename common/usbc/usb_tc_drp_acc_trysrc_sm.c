@@ -433,6 +433,7 @@ static void set_vconn(int port, int enable);
 static __maybe_unused int reset_device_and_notify(int port);
 static __maybe_unused void check_drp_connection(const int port);
 static void sink_power_sub_states(int port);
+static void set_ccd_mode(int port, bool enable);
 
 __maybe_unused static void handle_new_power_state(int port);
 
@@ -706,6 +707,7 @@ static void tc_detached(int port)
 	hook_notify(HOOK_USB_PD_DISCONNECT);
 	tc_pd_connection(port, 0);
 	tcpm_debug_accessory(port, 0);
+	set_ccd_mode(port, 0);
 	tc_set_modes_exit(port);
 	if (IS_ENABLED(CONFIG_USB_PRL_SM))
 		prl_set_default_pd_revision(port);
@@ -1591,6 +1593,17 @@ void tc_set_power_role(int port, enum pd_power_role role)
  * Private Functions
  */
 
+/* Set GPIO_CCD_MODE_ODL gpio */
+static void set_ccd_mode(const int port, const bool enable)
+{
+	if (IS_ENABLED(CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT) &&
+	    port == CONFIG_CCD_USBC_PORT_NUMBER) {
+		if (enable)
+			CPRINTS("Asserting GPIO_CCD_MODE_ODL");
+		gpio_set_level(GPIO_CCD_MODE_ODL, !enable);
+	}
+}
+
 /* Set the TypeC state machine to a new state. */
 static void set_state_tc(const int port, const enum usb_tc_state new_state)
 {
@@ -2413,8 +2426,10 @@ static void tc_attached_snk_entry(const int port)
 	if (IS_ENABLED(CONFIG_USB_PE_SM))
 		tc_enable_pd(port, 1);
 
-	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER))
+	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER)) {
 		tcpm_debug_accessory(port, 1);
+		set_ccd_mode(port, 1);
+	}
 }
 
 static void tc_attached_snk_run(const int port)
@@ -2937,8 +2952,10 @@ static void tc_attached_src_entry(const int port)
 		hook_notify(HOOK_USB_PD_CONNECT);
 	}
 
-	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER))
+	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER)) {
 		tcpm_debug_accessory(port, 1);
+		set_ccd_mode(port, 1);
+	}
 }
 
 static void tc_attached_src_run(const int port)
