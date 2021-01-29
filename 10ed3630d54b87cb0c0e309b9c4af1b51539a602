@@ -33,6 +33,23 @@
       "message": "Looks good to me once verified",
       "revId": "10ed3630d54b87cb0c0e309b9c4af1b51539a602",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbfb3e27_4efa26c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-29T14:05:25Z",
+      "side": 1,
+      "message": "Doesn\u0027t work on casta and bobba. After flashing AP firmware, prepared using \u0027emerge-octopus chromeos-ec chromeos-bootimage\u0027 there is \"Chrome OS is missing or damaged\" screen. Recovery reason is \"EC software sync error updating EC\".\n\nCPU console:\n```\nConnected to device vid:did:rid of 1ae0:0028:00\ntpm_get_response: command 0x14e, return code 0x0\nRollbackKernelRead: TPM: RollbackKernelRead 10001\ntpm_get_response: command 0x14e, return code 0x28b\nRollbackFwmpRead: TPM: no FWMP space\nec_init(0): CrosEC protocol v3 supported (256, 256)\nGoogle ChromeOS EC driver ready, id \u0027casta_v2.0.623-08a567f57\u0027\nClearing the recovery request.\nprint_hash: RW(active) hash: 5ca432695f593da83358139941b07e34df3d9dcca48d160060aeb397bb206f7c\nTrying to locate \u0027ecrw.hash\u0027 in CBFS\nprint_hash: Expected hash: 808c2de362dc579ca26047650175f602ca1fa83b7fd85619da39f3bc831e9746\nsync_one_ec: devidx\u003d0 select_rw\u003d4\nupdate_ec: Updating RW(active)...\nTrying to locate \u0027ecrw\u0027 in CBFS\nupdate_ec: image len \u003d 198752\nupdate_ec: VbExEcUpdateImage() returned 65559\nrequest_recovery: request_recovery(38)\nVbSelectAndLoadKernel: Returning 65570\nEC Reboot requested. Doing cold reboot.\n```",
+      "revId": "10ed3630d54b87cb0c0e309b9c4af1b51539a602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
