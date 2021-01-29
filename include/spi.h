@@ -47,7 +47,7 @@ struct spi_device_t {
 	enum gpio_signal gpio_cs;
 };
 
-extern const struct spi_device_t spi_devices[];
+extern struct spi_device_t spi_devices[];
 extern const unsigned int spi_devices_used;
 
 /*
