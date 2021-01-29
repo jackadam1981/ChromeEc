@@ -32,6 +32,7 @@
 #define TCS_CALIBRATION_AGAIN   0x02            /* 16x gain */
 #define TCS_DEFAULT_AGAIN       TCS_CALIBRATION_AGAIN
 
+#define TCS_MAX_INTEGRATION_TIME 2.78 /* 2.78ms */
 #define TCS_ATIME_DEC_STEP      5
 #define TCS_ATIME_INC_STEP      TCS_GAIN_UPSHIFT_ATIME
 
