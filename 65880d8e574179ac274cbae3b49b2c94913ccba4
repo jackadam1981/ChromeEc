@@ -16,6 +16,24 @@
       "message": "I\u0027d prefer to just #include usb_mux.h",
       "revId": "65880d8e574179ac274cbae3b49b2c94913ccba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "980620ed_bd9003ab",
+        "filename": "include/driver/tcpm/ps8xxx_public.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-29T01:30:29Z",
+      "side": 1,
+      "message": "usb_mux.h includes many other unrelated headers which i think defeats\nthe intent of this file.\nsimple forward declaration is sufficient here.",
+      "parentUuid": "844d32d2_fdc85af5",
+      "revId": "65880d8e574179ac274cbae3b49b2c94913ccba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
