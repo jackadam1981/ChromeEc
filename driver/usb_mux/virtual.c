@@ -38,6 +38,7 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 		return;
 
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
+	usb_mux_await_ack(port);
 
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
 		return;
