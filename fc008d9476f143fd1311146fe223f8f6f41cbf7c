@@ -39,6 +39,30 @@
       },
       "revId": "fc008d9476f143fd1311146fe223f8f6f41cbf7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01555052_e71454f9",
+        "filename": "board/nocturne_fp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-29T17:40:06Z",
+      "side": 1,
+      "message": "Added a TODO for this.",
+      "parentUuid": "4e6fe718_83e2d01b",
+      "range": {
+        "startLine": 26,
+        "startChar": 50,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "fc008d9476f143fd1311146fe223f8f6f41cbf7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
