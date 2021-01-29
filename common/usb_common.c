@@ -240,9 +240,45 @@ bool pd_is_debug_acc(int port)
 {
 	enum pd_cc_states cc_state = pd_get_task_cc_state(port);
 
-	return cc_state == PD_CC_UFP_DEBUG_ACC ||
-		cc_state == PD_CC_DFP_DEBUG_ACC;
+	return pd_is_connected(port) && (
+		cc_state == PD_CC_UFP_DEBUG_ACC ||
+		cc_state == PD_CC_DFP_DEBUG_ACC);
 }
+
+#ifdef CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT
+
+static void init_ccd_mode_on_dts_connect(void)
+{
+	if (!(gpio_get_default_flags(GPIO_CCD_MODE_ODL) & GPIO_ODR_HIGH))
+		ccprintf("ERROR: GPIO_CCD_MODE_ODL should be initialized "
+			 "with GPIO_ODR_HIGH flag\n");
+}
+DECLARE_HOOK(HOOK_INIT, init_ccd_mode_on_dts_connect, HOOK_PRIO_DEFAULT);
+
+static void assert_ccd_mode_on_dts_connect(void)
+{
+	if (pd_is_debug_acc(CONFIG_CCD_USBC_PORT_NUMBER)) {
+		ccprints("Asserting CCD_MODE_ODL because a debug accessory is "
+			 "attached to the CCD port");
+		gpio_set_level(GPIO_CCD_MODE_ODL, 0);
+	}
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, assert_ccd_mode_on_dts_connect,
+	     HOOK_PRIO_DEFAULT);
+
+static void unassert_ccd_mode_on_dts_disconnect(void)
+{
+	if (pd_is_disconnected(CONFIG_CCD_USBC_PORT_NUMBER)) {
+		if (gpio_get_level(GPIO_CCD_MODE_ODL) == 0)
+			ccprints("Unasserting CCD_MODE_ODL because no debug "
+				 "accessory is attached to the CCD port");
+		gpio_set_level(GPIO_CCD_MODE_ODL, 1);
+	}
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, unassert_ccd_mode_on_dts_disconnect,
+	     HOOK_PRIO_DEFAULT);
+
+#endif /* CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT */
 
 void pd_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
