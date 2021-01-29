@@ -16,6 +16,74 @@
       "message": "reconfirmed all is ok with sklrvp booting with intel approved CL\u0027s",
       "revId": "063559d2aaf4e0bd0fbe6ee18cddc3fe064d5454",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "032cb38c_f99f86e7",
+        "filename": "chip/mchp/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T22:12:07Z",
+      "side": 1,
+      "message": "use IS_ENABLED(...)",
+      "revId": "063559d2aaf4e0bd0fbe6ee18cddc3fe064d5454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e49003_513e715b",
+        "filename": "chip/mchp/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T22:12:07Z",
+      "side": 1,
+      "message": "Here as well.",
+      "revId": "063559d2aaf4e0bd0fbe6ee18cddc3fe064d5454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f9976b_9f6c9cc3",
+        "filename": "chip/mchp/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T22:12:07Z",
+      "side": 1,
+      "message": "here as well",
+      "revId": "063559d2aaf4e0bd0fbe6ee18cddc3fe064d5454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18c05a48_c7923ac1",
+        "filename": "chip/mchp/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T22:12:07Z",
+      "side": 1,
+      "message": "here as well",
+      "revId": "063559d2aaf4e0bd0fbe6ee18cddc3fe064d5454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
