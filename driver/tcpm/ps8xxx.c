@@ -83,7 +83,7 @@ static bool ps8815_role_control_delay[CONFIG_USB_PD_PORT_MAX_COUNT];
  * the workaround.
  */
 static bool ps8815_disable_rp_detect[CONFIG_USB_PD_PORT_MAX_COUNT];
-
+static bool ps8815_rp_detect_flag[CONFIG_USB_PD_PORT_MAX_COUNT];
 /*
  * timestamp of the next possible toggle to ensure the 2-ms spacing
  * between IRQ_HPD.
@@ -96,6 +96,7 @@ void ps8xxx_wake_from_standby(const struct usb_mux *me);
 	defined(CONFIG_USB_PD_TCPM_PS8751) || \
 	defined(CONFIG_USB_PD_TCPM_PS8755) || \
 	defined(CONFIG_USB_PD_TCPM_PS8805)
+
 /*
  * DCI is enabled by default and burns about 40 mW when the port is in
  * USB2 mode or when a C-to-A dongle is attached, so force it off.
@@ -396,8 +397,8 @@ static int ps8xxx_set_role_ctrl(int port, enum tcpc_drp drp,
 	 * TODO: should this register be written back to a default value?
 	 */
 	if (ps8815_disable_rp_detect[port] && pull == TYPEC_CC_RP) {
-		CPRINTS("TCPC%d: disable chip based  Rp detect", port);
-		tcpc_write(port, PS8XXX_REG_RP_DETECT_CONTROL, 0x30);
+		CPRINTS("TCPC%d: disable chip based  Rp detect 0", port);
+		ps8815_rp_detect_flag[port] = true;
 	}
 
 	rv = tcpci_set_role_ctrl(port, drp, rp, pull);
@@ -557,6 +558,7 @@ __maybe_unused static void ps8815_disable_rp_detect_workaround_check(int port)
 	int reg;
 
 	ps8815_disable_rp_detect[port] = false;
+	ps8815_rp_detect_flag[port] = true;
 
 	reg = get_reg_by_product(port, REG_FW_VER);
 	rv = tcpc_read(port, reg, &val);
@@ -625,6 +627,7 @@ static int ps8xxx_tcpm_set_cc(int port, int pull)
 {
 	int rv;
 
+#if 1
 	/*
 	 * b/178664884: When before presenting Rp, disable internal function
 	 * that checks Rp value to prevent an incorrect value reported
@@ -632,10 +635,13 @@ static int ps8xxx_tcpm_set_cc(int port, int pull)
 	 *
 	 * TODO: should this register be written back to a default value?
 	 */
-	if (ps8815_disable_rp_detect[port] && pull == TYPEC_CC_RP) {
-		CPRINTS("TCPC%d: disable chip based  Rp detect", port);
+	if (ps8815_disable_rp_detect[port] &&
+	    ps8815_rp_detect_flag[port] && pull == TYPEC_CC_RP) {
+		CPRINTS("TCPC%d: disable chip based  Rp detect 1", port);
 		tcpc_write(port, PS8XXX_REG_RP_DETECT_CONTROL, 0x30);
+		ps8815_rp_detect_flag[port] = false;
 	}
+#endif
 
 	rv = tcpci_tcpm_set_cc(port, pull);
 
