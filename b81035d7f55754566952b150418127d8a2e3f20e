@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6624a3_7d77e02a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-29T16:44:12Z",
+      "side": 1,
+      "message": "I think since we\u0027re using the default CONFIG_USB_PD_PULLUP and chromebooks are required to offer 1.5A on all ports, we won\u0027t need Rp-USB here. But I can note it in the function documentation for posterity if anyone needs it.",
+      "parentUuid": "5f699027_2add6eca",
+      "revId": "b81035d7f55754566952b150418127d8a2e3f20e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "572a2ea6_ce89b350",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-29T00:07:12Z",
       "side": 1,
       "message": "nit: move/add function documentation here",
+      "revId": "b81035d7f55754566952b150418127d8a2e3f20e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5bd1c1_105fcdfa",
+        "filename": "driver/tcpm/raa489000.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-01-29T16:44:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "572a2ea6_ce89b350",
       "revId": "b81035d7f55754566952b150418127d8a2e3f20e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
