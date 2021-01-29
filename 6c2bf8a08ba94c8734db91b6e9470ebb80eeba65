@@ -33,6 +33,29 @@
       "message": "So we don\u0027t have enough?",
       "revId": "6c2bf8a08ba94c8734db91b6e9470ebb80eeba65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7922c837_e874031b",
+        "filename": "zephyr/projects/volteer/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-29T19:29:42Z",
+      "side": 1,
+      "message": "missing line terminator at end of file",
+      "range": {
+        "startLine": 61,
+        "startChar": 56,
+        "endLine": 61,
+        "endChar": 57
+      },
+      "revId": "6c2bf8a08ba94c8734db91b6e9470ebb80eeba65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
