@@ -184,6 +184,91 @@ BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
 
+/* convert ATIME register to integration time, in FP */
+static fp_t tcs3400_get_integration_time(int atime)
+{
+	return fp_mul(FLOAT_TO_FP(TCS_MAX_INTEGRATION_TIME),
+			INT_TO_FP(TCS_ATIME_GRANULARITY - atime));
+}
+
+__override void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
+				     int32_t *crgb_data, int32_t *xyz_data)
+{
+	int n, cur_gain, dgf;
+	fp_t n_interval;
+	fp_inter_t integration_time_ms;
+	struct tcs_saturation_t *sat_p =
+				&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
+	const uint16_t cal_again = (1 << (2 * TCS_CALIBRATION_AGAIN));
+
+	cur_gain = (1 << (2 * sat_p->again));
+
+	integration_time_ms = tcs3400_get_integration_time(sat_p->atime);
+
+	/* n_interval = (G+B)/C, to use different coefficient*/
+	n_interval = fp_div(INT_TO_FP(crgb_data[2]+crgb_data[3])
+		, INT_TO_FP(crgb_data[0]));
+
+	dgf = 993; /* Device and Glass Factor */
+
+	if (n_interval < FLOAT_TO_FP(0.514))
+		n = 1;
+	else if (n_interval >= FLOAT_TO_FP(0.514) &&
+			 n_interval < FLOAT_TO_FP(0.66))
+		n = 2;
+	else if (n_interval >= FLOAT_TO_FP(0.66) &&
+			 n_interval < FLOAT_TO_FP(1.012))
+		n = 3;
+	else
+		n = 4;
+
+	switch (n) {
+	case 1:
+		xyz_data[1] = FP_TO_INT(dgf *
+		(crgb_data[0]*(fp_inter_t)FLOAT_TO_FP(3.8) +
+		 crgb_data[1]*(fp_inter_t)FLOAT_TO_FP(3.956) +
+		 crgb_data[2]*(fp_inter_t)FLOAT_TO_FP(-20.915) +
+		 crgb_data[3]*(fp_inter_t)FLOAT_TO_FP(3.281)) /
+		 FP_TO_INT(integration_time_ms*cur_gain));
+	break;
+	case 2:
+		xyz_data[1] = FP_TO_INT(dgf *
+		(crgb_data[0]*(fp_inter_t)FLOAT_TO_FP(-17.436) +
+		 crgb_data[1]*(fp_inter_t)FLOAT_TO_FP(14.535) +
+		 crgb_data[2]*(fp_inter_t)FLOAT_TO_FP(32.07) +
+		 crgb_data[3]*(fp_inter_t)FLOAT_TO_FP(2.43)) /
+		 FP_TO_INT(integration_time_ms*cur_gain));
+	break;
+	case 3:
+		xyz_data[1] = FP_TO_INT(dgf *
+		(crgb_data[0]*(fp_inter_t)FLOAT_TO_FP(0.08) +
+		 crgb_data[1]*(fp_inter_t)FLOAT_TO_FP(-0.89) +
+		 crgb_data[2]*(fp_inter_t)FLOAT_TO_FP(7.096) +
+		 crgb_data[3]*(fp_inter_t)FLOAT_TO_FP(-5.603)) /
+		 FP_TO_INT(integration_time_ms*cur_gain));
+	break;
+	case 4:
+		xyz_data[1] = FP_TO_INT(dgf *
+		(crgb_data[0]*(fp_inter_t)FLOAT_TO_FP(-0.686) +
+		 crgb_data[1]*(fp_inter_t)FLOAT_TO_FP(1.224) +
+		 crgb_data[2]*(fp_inter_t)FLOAT_TO_FP(4.043) +
+		 crgb_data[3]*(fp_inter_t)FLOAT_TO_FP(-4.584)) /
+		 FP_TO_INT(integration_time_ms*cur_gain));
+	break;
+	default:
+	break;
+	}
+
+	if (xyz_data[1] < 0)
+		xyz_data[1] = 0;
+
+	/* reverse lux data affect by normalize_channel_data() */
+	xyz_data[1] = xyz_data[1] *
+		(((TCS_ATIME_GRANULARITY - sat_p->atime) * cur_gain)
+		 /((TCS_ATIME_GRANULARITY - TCS_CALIBRATION_ATIME)
+		* cal_again));
+}
+
 static void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
