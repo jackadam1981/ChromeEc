@@ -355,6 +355,12 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		 * Set enabled to 0 if disconnect latch flag=true, needed this
 		 * to configure Virtual mux in disconnect mode.
 		 */
+
+		if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
+		    usb_mux_get_pd_assert_flag(p->port)) {
+			usb_mux_set_pd_cmd_rcvd_flag(p->port, true);
+		}
+
 		if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
 		    usb_mux_get_disconnect_latch_flag(p->port)) {
 			r_v2->enabled = 0;
@@ -382,6 +388,7 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 			r_v2->dp_mode = get_dp_pin_mode(p->port);
 			mux_state = usb_mux_get(p->port);
+			CPRINTS("C%d ----=PD CMD: AP to EC mux_state = 0x%x, pd_enable = 0x%x task = 0x%x", p->port, mux_state, r_v2->enabled, task_get_current());
 			if (mux_state & USB_PD_MUX_USB4_ENABLED) {
 				r_v2->cable_speed =
 					get_usb4_cable_speed(p->port);

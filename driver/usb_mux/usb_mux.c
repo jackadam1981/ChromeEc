@@ -30,7 +30,7 @@ static int enable_debug_prints;
  * get reset in the init method which is called during PD task startup.
  */
 static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
-
+static mux_state_t virtual_mux_previous_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Device is in low power mode. */
 #define USB_MUX_FLAG_IN_LPM		BIT(0)
 
@@ -39,6 +39,11 @@ static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Device initialized at least once */
 #define USB_MUX_FLAG_INIT		BIT(2)
+
+#define USB_MUX_FLAG_PD_ASSERT		BIT(3)
+
+#define USB_MUX_FLAG_RCVD_PD_CMD	BIT(4)
+
 
 enum mux_config_type {
 	USB_MUX_INIT,
@@ -68,6 +73,8 @@ static int configure_mux(int port,
 	if ((config == USB_MUX_SET_MODE && *mux_state == USB_PD_MUX_NONE) ||
 	      config == USB_MUX_INIT) {
 		usb_mux_set_disconnect_latch_flag(port, true);
+		usb_mux_set_pd_assert_flag(port, false);
+		usb_mux_set_pd_cmd_rcvd_flag(port, false);
 	}
 
 	/*
@@ -299,6 +306,62 @@ void usb_mux_set_disconnect_latch_flag(int port, bool enable)
 		atomic_clear_bits(&flags[port], USB_MUX_FLAG_DISCONNECT_LATCH);
 }
 
+bool usb_mux_get_pd_assert_flag(int port)
+{
+	bool rv = false;
+
+	if (port >= board_get_usb_pd_port_count())
+		return rv;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return rv;
+
+	return !!(flags[port] & USB_MUX_FLAG_PD_ASSERT);
+}
+
+void usb_mux_set_pd_assert_flag(int port, bool enable)
+{
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return;
+
+	if (enable)
+		atomic_or(&flags[port], USB_MUX_FLAG_PD_ASSERT);
+	else
+		atomic_clear_bits(&flags[port], USB_MUX_FLAG_PD_ASSERT);
+
+}
+
+bool usb_mux_get_pd_cmd_rcvd_flag(int port)
+{
+	bool rv = false;
+
+	if (port >= board_get_usb_pd_port_count())
+		return rv;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return rv;
+
+	return !!(flags[port] & USB_MUX_FLAG_RCVD_PD_CMD);
+}
+
+void usb_mux_set_pd_cmd_rcvd_flag(int port, bool enable)
+{
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return;
+
+	if (enable)
+		atomic_or(&flags[port], USB_MUX_FLAG_RCVD_PD_CMD);
+	else
+		atomic_clear_bits(&flags[port], USB_MUX_FLAG_RCVD_PD_CMD);
+
+}
+
 void usb_mux_flip(int port)
 {
 	mux_state_t mux_state;
@@ -411,12 +474,26 @@ DECLARE_CONSOLE_COMMAND(typec, command_typec,
 			"Control type-C connector muxing");
 #endif
 
+int usb_mux_set_prev_state(int port, mux_state_t previous_mux_state)
+{
+	virtual_mux_previous_state[port] = previous_mux_state;
+
+	return EC_SUCCESS;
+}
+
+int usb_mux_get_prev_state(int port, mux_state_t *previous_mux_state)
+{
+	*previous_mux_state = virtual_mux_previous_state[port];
+
+	return EC_SUCCESS;
+}
+
 static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_mux_info *p = args->params;
 	struct ec_response_usb_pd_mux_info *r = args->response;
 	int port = p->port;
-	mux_state_t mux_state;
+	mux_state_t mux_state, previous_mux_state;
 
 	if (port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
@@ -424,7 +501,14 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state))
 		return EC_RES_ERROR;
 
-	r->flags = mux_state;
+	if (usb_mux_get_pd_assert_flag(port) && (usb_mux_get_pd_cmd_rcvd_flag(port) == 0))
+	{
+		usb_mux_get_prev_state(port, &previous_mux_state);
+		r->flags = previous_mux_state;
+	} else {
+		r->flags = mux_state;
+	}
+
 
 	/*
 	 * Force disconnect mode if disconnect latch flag is set.
@@ -436,6 +520,7 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 		usb_mux_set_disconnect_latch_flag(port, false);
 		args->response_size = sizeof(*r);
 		host_set_single_event(EC_HOST_EVENT_USB_MUX);
+		CPRINTS("C%d ----=Mux CMD: AP to EC force disconnect task = 0x%x", port, task_get_current());
 		return EC_RES_SUCCESS;
 	}
 
@@ -444,7 +529,7 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	    (r->flags & USB_PD_MUX_HPD_IRQ)) {
 		usb_mux_hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL, 0);
 	}
-
+	CPRINTS("C%d ----=Mux CMD: AP to EC mux_state = 0x%x task = 0x%x", port, mux_state, task_get_current());
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
@@ -459,7 +544,12 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
 		return EC_RES_INVALID_COMMAND;
 
-	task_set_event(PD_PORT_TO_TASK_ID(p->port), PD_EVENT_AP_MUX_DONE);
+	if (usb_mux_get_pd_cmd_rcvd_flag(p->port)) {
+		task_set_event(PD_PORT_TO_TASK_ID(p->port), PD_EVENT_AP_MUX_DONE);
+		usb_mux_set_pd_assert_flag(p->port, false);
+		usb_mux_set_pd_cmd_rcvd_flag(p->port, false);
+		CPRINTS("C%d ----=func: %s ACK done", p->port, __func__);
+	}
 
 	return EC_RES_SUCCESS;
 }
