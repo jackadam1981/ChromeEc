@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52b2927_83417ff6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-29T19:25:08Z",
+      "side": 1,
+      "message": "The missing mux state part added. It is working tested more than 32 hot plug-ins with Gatex card. All the time enumerated with tx speed as 20Gbps and rx speed as 20Gbps.\n\nTypeC devices need to test.\n\n",
+      "revId": "7fdc0a55031f161f46005daa6e01a19cb862bf6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
