@@ -106,6 +106,24 @@
       "parentUuid": "327dca56_b04d04cf",
       "revId": "3a28faf6f5466ea09173f81b10071072634cac39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7896cda0_ccd25cb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-29T10:18:42Z",
+      "side": 1,
+      "message": "Matthew, PTAL.\n\nI have forced the install of all utils when the board is bds and host (crrev.com/c/2658950), since that is what ec-utils and ec-devutils use to build the utils.",
+      "parentUuid": "4b71da96_c2a2b013",
+      "revId": "3a28faf6f5466ea09173f81b10071072634cac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
