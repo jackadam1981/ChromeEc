@@ -16,6 +16,40 @@
       "message": "reconfirmed all is ok with sklrvp booting with intel approved CL\u0027s",
       "revId": "2827c02b0ef27033b807aa0aec661ee9cff15ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ae5a23_57def784",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T22:41:38Z",
+      "side": 1,
+      "message": "1 nit, but LGTM",
+      "revId": "2827c02b0ef27033b807aa0aec661ee9cff15ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c6744c_c1f85e24",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T22:41:38Z",
+      "side": 1,
+      "message": "nit: please keep in alphabetical order.",
+      "revId": "2827c02b0ef27033b807aa0aec661ee9cff15ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
