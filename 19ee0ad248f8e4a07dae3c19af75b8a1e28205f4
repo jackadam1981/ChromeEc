@@ -16,6 +16,23 @@
       "message": "reconfirmed all is ok with sklrvp booting with intel approved CL\u0027s",
       "revId": "19ee0ad248f8e4a07dae3c19af75b8a1e28205f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791873a4_6e129def",
+        "filename": "chip/mchp/util/pack_ec_mec152x.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T23:43:56Z",
+      "side": 1,
+      "message": "still needed?",
+      "revId": "19ee0ad248f8e4a07dae3c19af75b8a1e28205f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
