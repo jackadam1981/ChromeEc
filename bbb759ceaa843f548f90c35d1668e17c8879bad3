@@ -22,6 +22,30 @@
       },
       "revId": "bbb759ceaa843f548f90c35d1668e17c8879bad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "090648a1_5593f2b4",
+        "filename": "common/device_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2021-01-29T18:01:23Z",
+      "side": 1,
+      "message": "sure ya it could check for non-zero device_current_events before setting the host event.  didn\u0027t impact eve (which was the only user until more recently) because the events were only enabled on the way into suspend and only sent while in suspend.",
+      "parentUuid": "5bff5b4e_aff5561a",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "bbb759ceaa843f548f90c35d1668e17c8879bad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
