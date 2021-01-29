@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "383fcae2_5288dcb4",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-01-29T18:35:16Z",
+      "side": 1,
+      "message": "don\u0027t think these will be needed any more",
+      "range": {
+        "startLine": 1098,
+        "startChar": 0,
+        "endLine": 1100,
+        "endChar": 0
+      },
+      "revId": "b7e06a4b9907a70a9b244eb30284a125210936e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fa1d467_ecab9830",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 1
