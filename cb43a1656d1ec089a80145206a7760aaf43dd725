@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b03c887c_474825f0",
+        "filename": "board/nocturne_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-29T19:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f555a365_28eb1d6c",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bba873a_c13767b1",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-01-29T03:45:40Z",
       "side": 1,
       "message": "I don\u0027t think this is needed anymore.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e521fe_73e19f98",
+        "filename": "board/nocturne_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-29T19:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bba873a_c13767b1",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "143577ab_cab6524e",
+        "filename": "board/nocturne_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-29T19:06:36Z",
+      "side": 1,
+      "message": "spi.h needed for spi_event in gpio.inc (gpio_list.h)\n\nregisters.h needed for GPIO_* declarations used by gpio.inc (gpio_list.h)",
+      "parentUuid": "8a0cf56e_39c53e7d",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7197816_cab1b346",
@@ -118,6 +190,30 @@
       "writtenOn": "2021-01-29T03:45:40Z",
       "side": 1,
       "message": "I think this was for ARRAY_SIZE(spi_devices) and can be removed.\n\nutil.h --\u003e compile_time_macros.h",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf5c114_860bcbd6",
+        "filename": "board/nocturne_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-29T19:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7197816_cab1b346",
       "range": {
         "startLine": 16,
         "startChar": 0,
