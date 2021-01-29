@@ -23,6 +23,7 @@
 			USB_PD_MUX_DP_ENABLED | USB_PD_MUX_POLARITY_INVERTED | \
 			USB_PD_MUX_SAFE_MODE | USB_PD_MUX_TBT_COMPAT_ENABLED | \
 			USB_PD_MUX_USB4_ENABLED)
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
 static mux_state_t virtual_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -37,6 +38,7 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
 
+	CPRINTS("C%d ----=HostEvent:EC to AP mux_state = 0x%x task = 0x%x", port, mux_state, task_get_current());
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
 		return;
 
@@ -55,11 +57,17 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 	     (mux_state & USB_PD_MUX_SAFE_MODE)) ||
 	   ((previous_mux_state & USB_PD_MUX_SAFE_MODE) &&
 	    !(mux_state & USB_PD_MUX_SAFE_MODE))) {
+		CPRINTS("C%d ----=HostEvent:EC to AP ack loop mux_state = 0x%x/0x%x task = 0x%x", port, previous_mux_state, mux_state, task_get_current());
 		/* This should only be called from the PD task */
 		assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
+		usb_mux_set_pd_cmd_rcvd_flag(port, false);
+		usb_mux_set_pd_assert_flag(port, true);
 		task_wait_event_mask(PD_EVENT_AP_MUX_DONE, 100*MSEC);
 		usleep(12.5 * MSEC);
+	} else {
+		usb_mux_set_pd_cmd_rcvd_flag(port, true);
+		usb_mux_set_pd_assert_flag(port, false);
 	}
 }
 

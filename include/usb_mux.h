@@ -258,4 +258,9 @@ bool usb_mux_get_disconnect_latch_flag(int port);
  */
 void usb_mux_set_disconnect_latch_flag(int port, bool enable);
 
+void usb_mux_set_pd_assert_flag(int port, bool enable);
+bool usb_mux_get_pd_assert_flag(int port);
+void usb_mux_set_pd_cmd_rcvd_flag(int port, bool enable);
+bool usb_mux_get_pd_cmd_rcvd_flag(int port);
+
 #endif
