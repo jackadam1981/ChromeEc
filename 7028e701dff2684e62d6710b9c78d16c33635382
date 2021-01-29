@@ -16,6 +16,46 @@
       "message": "Tom, does this seem more correct than not correct?",
       "revId": "7028e701dff2684e62d6710b9c78d16c33635382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41fd298b_72a2dd7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-29T17:50:18Z",
+      "side": 1,
+      "message": "We should be able to change this ",
+      "revId": "7028e701dff2684e62d6710b9c78d16c33635382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9983eb_419ee3ad",
+        "filename": "docs/fingerprint/fingerprint.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-01-29T17:50:18Z",
+      "side": 1,
+      "message": "We should probably just change this to \"Icetower v0.1\" and re-measure with the latest released firmware.",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 20
+      },
+      "revId": "7028e701dff2684e62d6710b9c78d16c33635382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
