@@ -69,6 +69,30 @@
       },
       "revId": "b90cc89ef372bcfb7a0c67c6777a80b9214d05f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c0ccc6_90e527ca",
+        "filename": "zephyr/shim/src/rtc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T22:20:55Z",
+      "side": 1,
+      "message": "Okay - please create a but to address the tech debt.",
+      "parentUuid": "b97b54d0_901ea2da",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 0
+      },
+      "revId": "b90cc89ef372bcfb7a0c67c6777a80b9214d05f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
