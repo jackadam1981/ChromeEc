@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34ccd54b_018ffeeb",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-29T17:36:57Z",
+      "side": 1,
+      "message": "If the current time is greater than (last_collection + collection_rate - 3ms), \nwe enter this function\nWhen the current time is greater than (2 * last_collection + collection_rate - 3ms)\nwe enter this error path.\n\nUsing \u003e or \u003e\u003d does not make much difference, we are already way too late.",
+      "parentUuid": "34f9e8c7_3d85dd48",
+      "range": {
+        "startLine": 630,
+        "startChar": 27,
+        "endLine": 630,
+        "endChar": 50
+      },
+      "revId": "90c8c7566364c2702f2aca29724e4a4fec8bf2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e421de34_59a5e473",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -72,6 +96,24 @@
       "writtenOn": "2021-01-29T06:33:46Z",
       "side": 1,
       "message": "Seems that you could potentially have a division by zero here?",
+      "revId": "90c8c7566364c2702f2aca29724e4a4fec8bf2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cc75d79_5d3dcddd",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-01-29T17:36:57Z",
+      "side": 1,
+      "message": "Potientially. But increment_sensor_collection is called only if \n1 - sensor in forced mode\n2 - motion_sensor_time_to_read is true, which return false when sensor-\u003ecollection_rate \u003d\u003d 0.",
+      "parentUuid": "e421de34_59a5e473",
       "revId": "90c8c7566364c2702f2aca29724e4a4fec8bf2ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
