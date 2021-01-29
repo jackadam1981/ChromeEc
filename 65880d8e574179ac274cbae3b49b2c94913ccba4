@@ -52,6 +52,24 @@
       "parentUuid": "980620ed_bd9003ab",
       "revId": "65880d8e574179ac274cbae3b49b2c94913ccba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5212ce4a_49589839",
+        "filename": "include/driver/tcpm/ps8xxx_public.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-29T22:53:31Z",
+      "side": 1,
+      "message": "a lot of header files would benefit from an include-what-you-use scrub\nas the current state is to one way or another include the entire world.\nthat cleanup is beyond the scope of what i\u0027m fixing here.\n\nwhat i\u0027m fixing here is simple. one should be able to include this header\nfile without having to examine it to determine what other header files\nneed to be included before it so that it will compile.\n\nlooking back at the original patch from sjg@ that introduced this file,\nincluding more nested headers defeats the purpose of this file.",
+      "parentUuid": "4531f9f3_5bcb3be3",
+      "revId": "65880d8e574179ac274cbae3b49b2c94913ccba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
