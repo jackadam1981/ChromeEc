@@ -52,6 +52,24 @@
       "parentUuid": "8a5ae32d_1f1edc23",
       "revId": "0e97639373a3616dcd570d9e36797f50f60d77a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de707d43_e95c60aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-29T10:18:08Z",
+      "side": 1,
+      "message": "Looks like the ebuilds use host and bds, so I forced those boards to have all utils in crrev.com/c/2658950 .\n\nMight change the ec-devutils to use host instead of bds, so that we can reduce this set of board further.",
+      "parentUuid": "2b333917_56046798",
+      "revId": "0e97639373a3616dcd570d9e36797f50f60d77a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
