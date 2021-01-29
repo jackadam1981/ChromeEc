@@ -10,6 +10,7 @@
 #include "button.h"
 #include "charger.h"
 #include "cbi_ec_fw_config.h"
+#include "charge_state_v2.h"
 #include "cros_board_info.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accel_kionix.h"
@@ -655,4 +656,12 @@ enum gpio_signal board_usbc_port_to_hpd_gpio(int port)
 
 	/* USB-C1 OPT1 DB uses DP2_HPD. */
 	return GPIO_DP2_HPD;
+}
+
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	charge_set_input_current_limit(MAX(charge_ma,
+					   CONFIG_CHARGER_INPUT_CURRENT),
+				       charge_mv);
 }
