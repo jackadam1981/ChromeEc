@@ -133,6 +133,24 @@
       "message": "As far as I know, no one really uses those tests ever since I started on the team. So i\u0027m not surprised if they don\u0027t compile.",
       "revId": "794435fc6e622c26d17ce777990b5dc356cc049d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31603013_6aff6f00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-01-29T10:56:32Z",
+      "side": 1,
+      "message": "I\u0027m running these tests often (as part of \u0027emerge-octopus chromeos-ec\u0027)",
+      "parentUuid": "70e76775_53f5213a",
+      "revId": "794435fc6e622c26d17ce777990b5dc356cc049d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
