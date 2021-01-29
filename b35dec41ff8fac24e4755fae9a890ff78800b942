@@ -123,6 +123,24 @@
       "parentUuid": "855e18e9_b5e04a8a",
       "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39af34de_af7abcd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T02:05:10Z",
+      "side": 1,
+      "message": "Hmm, alright. I guess, we could just use that sysjump check for the entire init then?",
+      "parentUuid": "4593b262_5a75973c",
+      "revId": "b35dec41ff8fac24e4755fae9a890ff78800b942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
