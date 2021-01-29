@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "702468d3_09fd81f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T19:22:04Z",
+      "side": 1,
+      "message": "This seems kind of redundant, no? The PGOOD shouldn\u0027t be high if the enable is low. If anything, I\u0027d wager that this might mask some leakage.",
+      "revId": "7cfd6e5676a93c586106b2cfed4d876bc4df491b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
