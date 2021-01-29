@@ -117,6 +117,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6f71d5_23750e45",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-29T00:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "295425fb_a67fd7aa",
+      "range": {
+        "startLine": 546,
+        "startChar": 12,
+        "endLine": 546,
+        "endChar": 32
+      },
+      "revId": "6989ba65da251983cf802501e169b966d557493b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "347204d6_ea6daee4",
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "The Sensor has not working in this INIT state,",
       "parentUuid": "347204d6_ea6daee4",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 75
+      },
+      "revId": "6989ba65da251983cf802501e169b966d557493b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1c0947_6ecb917d",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-01-29T00:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "806fd582_11bf62b0",
       "range": {
         "startLine": 578,
         "startChar": 0,
