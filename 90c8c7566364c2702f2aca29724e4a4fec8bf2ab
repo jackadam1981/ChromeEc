@@ -34,6 +34,23 @@
       "parentUuid": "b6b0205c_c42ddc2f",
       "revId": "90c8c7566364c2702f2aca29724e4a4fec8bf2ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e421de34_59a5e473",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T06:33:46Z",
+      "side": 1,
+      "message": "Seems that you could potentially have a division by zero here?",
+      "revId": "90c8c7566364c2702f2aca29724e4a4fec8bf2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
