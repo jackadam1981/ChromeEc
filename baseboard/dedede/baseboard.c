@@ -119,6 +119,12 @@ uint32_t pp3300_a_pgood;
 __override int intel_x86_get_pg_ec_dsw_pwrok(void)
 {
 	/*
+	 * DPWROK remains LOW during EN_PP3300_A is LOW
+	 */
+	if (!gpio_get_level(GPIO_EN_PP3300_A))
+		return 0;
+
+	/*
 	 * The PP3300_A rail is an input to generate DPWROK.  Assuming that
 	 * power is good if voltage is at least 80% of nominal level.  We cannot
 	 * read the ADC values during an interrupt, therefore, this power good
