@@ -34,6 +34,24 @@
       "parentUuid": "844d32d2_fdc85af5",
       "revId": "65880d8e574179ac274cbae3b49b2c94913ccba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4531f9f3_5bcb3be3",
+        "filename": "include/driver/tcpm/ps8xxx_public.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T18:00:09Z",
+      "side": 1,
+      "message": "What is the change fixing as this isn\u0027t preventing any current boards from compiling?  I agree with Abe it would be better to include usb_mux.h instead.  \n\nIf usb_mux.h includes too many unrelated modules, then we should look at refactoring usb_mux.h as needed.  Specifically everything inside the #ifdef CONFIG_USB_PD_TCPM_MUX could be moved to a new header.",
+      "parentUuid": "980620ed_bd9003ab",
+      "revId": "65880d8e574179ac274cbae3b49b2c94913ccba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
