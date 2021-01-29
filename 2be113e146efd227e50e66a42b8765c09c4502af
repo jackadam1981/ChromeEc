@@ -69,6 +69,24 @@
       "parentUuid": "a989209c_7dae3d3e",
       "revId": "2be113e146efd227e50e66a42b8765c09c4502af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c26f4fcd_8f063609",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2021-01-29T18:25:50Z",
+      "side": 1,
+      "message": "Thus far, it\u0027s been a flat structure in the upload dir.  We\u0027ll want a tarball per build target, and then the metadata will have a list of them (along with attributes)",
+      "parentUuid": "9d9eddbd_ef1fe498",
+      "revId": "2be113e146efd227e50e66a42b8765c09c4502af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
