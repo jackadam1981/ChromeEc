@@ -38,6 +38,13 @@ config PLATFORM_EC_KEYBOARD_PROTOCOL_8042
 
 	  See here for docs: https://wiki.osdev.org/%228042%22_PS/2_Controller
 
+config PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP
+	bool "mkbp"
+	select HAS_TASK_KEYPROTO
+	help
+	  Use the Matrix Keyboard Protocol on ARM devices. This protocol was
+	  developed to replace 8042. It uses FIFO buffer to store events.
+
 endchoice # PLATFORM_EC_KEYBOARD
 
 config PLATFORM_EC_KEYBOARD_BOARD_CONFIG
