@@ -3221,6 +3221,7 @@ static void pe_snk_select_capability_entry(int port)
 	/* Send Request */
 	pe_send_request_msg(port);
 	pe_sender_response_msg_entry(port);
+	tc_high_priority_event(port, true);
 
 	/* We are PD Connected */
 	PE_SET_FLAG(port, PE_FLAGS_PD_CONNECTION);
@@ -3341,6 +3342,11 @@ static void pe_snk_select_capability_run(int port)
 	/* SenderResponsetimer timeout */
 	if (get_time().val > pe[port].sender_response_timer)
 		set_state_pe(port, PE_SNK_HARD_RESET);
+}
+
+static void pe_snk_select_capability_exit(int port)
+{
+	tc_high_priority_event(port, false);
 }
 
 /**
@@ -6955,6 +6961,7 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_SNK_SELECT_CAPABILITY] = {
 		.entry = pe_snk_select_capability_entry,
 		.run = pe_snk_select_capability_run,
+		.exit = pe_snk_select_capability_exit,
 	},
 	[PE_SNK_READY] = {
 		.entry = pe_snk_ready_entry,
