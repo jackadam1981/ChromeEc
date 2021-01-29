@@ -13,6 +13,8 @@
 #include "usb_mux.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 /*
  * USB PD protocol configures the USB & DP mux state and USB PD policy
  * configures the HPD mux state. Both states are independent of each other
@@ -58,6 +60,12 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 		/* This should only be called from the PD task */
 		assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
+		if (*task_get_event_bitmap(task_get_current()) &
+				PD_EVENT_AP_MUX_DONE) {
+			CPRINTS("C%d: Waiting for PD_EVENT_AP_MUX_DONE, but "
+					"it's already set",
+					port);
+		}
 		task_wait_event_mask(PD_EVENT_AP_MUX_DONE, 100*MSEC);
 		usleep(12.5 * MSEC);
 	}
