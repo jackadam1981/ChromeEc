@@ -16,6 +16,93 @@
       "message": "This feature is built when \"defined(CONFIG_USB_PD_TCPMV2) \u0026\u0026 defined(CONFIG_USBC_SS_MUX)\", but still there is build error for board \"hayato\", is it OK to create a config for retimer firmware update exclusively?\n\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: __flash_dma_size \u003c IT83XX_ILM_BLOCK_SIZE\n",
       "revId": "3db914bc541d6bf651f57f5d81fa8eb717e12e56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41dbada9_3361c875",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T22:07:42Z",
+      "side": 1,
+      "message": "The hayato board has over 300K of free flash space and compiles successfully with this change.  However, the it8xxx2_pdevb board has a compile error this this change.",
+      "parentUuid": "6dbf18c9_866c7a05",
+      "revId": "3db914bc541d6bf651f57f5d81fa8eb717e12e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "175bc426_8b30b73a",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T22:07:42Z",
+      "side": 1,
+      "message": "This needs to be added for all Volteer variants that implement USB4.\n\nA better alternative would be to add a field to struct usb_mux_driver. Maybe something like \"bool retimer_fw_update_supported\".  Then add a new function in usb_mux.c that walks the mux_ptr list (like usb_mux_hpd_update) and checks if any mux has this flag set.  Architecturally this is better because it couples the FW update support directly in the USB mux driver and no board overrides are needed.\n\nThis should be added as a separate CL, and as the parent to this CL.",
+      "range": {
+        "startLine": 55,
+        "startChar": 18,
+        "endLine": 55,
+        "endChar": 50
+      },
+      "revId": "3db914bc541d6bf651f57f5d81fa8eb717e12e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c02b631b_95155b35",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 3597,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T22:07:42Z",
+      "side": 1,
+      "message": "What happens if a limited operation is set, but the port is not suspended?\n\nYou could add a check of !TC_FLAGS_SUSPEND \u0026\u0026 TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN and set an error on last_mux_result.    Any result that sets both USB4 and TBT_COMPAT is not a valid mux setting - so you could define 0xFE as an error result.",
+      "range": {
+        "startLine": 3596,
+        "startChar": 0,
+        "endLine": 3597,
+        "endChar": 42
+      },
+      "revId": "3db914bc541d6bf651f57f5d81fa8eb717e12e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5897d82e_4e267395",
+        "filename": "include/usb_common.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T22:07:42Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 215,
+        "startChar": 47,
+        "endLine": 215,
+        "endChar": 57
+      },
+      "revId": "3db914bc541d6bf651f57f5d81fa8eb717e12e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
