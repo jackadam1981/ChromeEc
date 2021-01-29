@@ -16,6 +16,139 @@
       "message": "Still need to tweak, but see if this direction lines up with what you were thinking.",
       "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c98a4196_5e0f9f9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-29T03:45:40Z",
+      "side": 1,
+      "message": "Yes. This seems awesome to me!!!!",
+      "parentUuid": "5a7a0ea1_96f88982",
+      "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f555a365_28eb1d6c",
+        "filename": "board/nocturne_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-29T03:45:40Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed anymore.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bba873a_c13767b1",
+        "filename": "board/nocturne_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-29T03:45:40Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed anymore.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0cf56e_39c53e7d",
+        "filename": "board/nocturne_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-29T03:45:40Z",
+      "side": 1,
+      "message": "I don\u0027t think these are needed anymore.\n\nMaybe others.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7197816_cab1b346",
+        "filename": "board/nocturne_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-29T03:45:40Z",
+      "side": 1,
+      "message": "I think this was for ARRAY_SIZE(spi_devices) and can be removed.\n\nutil.h --\u003e compile_time_macros.h",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b896f8c_a7e1cedb",
+        "filename": "board/nocturne_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-01-29T03:45:40Z",
+      "side": 1,
+      "message": "Weird. I thought this would break during low optimization level compilation, when no stub func was defined...\n\nResults show that this is fine even with \"-O0 -ggdb -Wall -Wextra -pedantic -std\u003dgnu89 -ansi -pg\".",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "cb43a1656d1ec089a80145206a7760aaf43dd725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
