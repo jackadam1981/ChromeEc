@@ -16,6 +16,24 @@
       "message": "Why are the pads configured here separately from generated-gpio.inc?",
       "revId": "8712cac7dd075fed557890ecbf00875b7b5d6de3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f15d0f3_b62e4698",
+        "filename": "board/brya/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-29T23:54:04Z",
+      "side": 1,
+      "message": "this one doesn\u0027t fit the pattern of not explicitly naming the\nKSI/KSO pins in gpio.inc, so it doesn\u0027t lend itself well to\nauto generation.\n\nthe reason we get away with not explicitly defining\nEC_KSO* and EC_KSI* in gpio.inc is because the keyboard driver\n(at least for NPCX) uses these pins without using assigned\nnames. GPIO_KBD_KSO2 (a.k.a. EC_KSO_02_INV) is the exception - it\nit is referenced explicitly.",
+      "parentUuid": "f470de2e_36bc5579",
+      "revId": "8712cac7dd075fed557890ecbf00875b7b5d6de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

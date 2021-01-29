@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5be706d1_3106ef8e",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-29T23:54:04Z",
+      "side": 1,
+      "message": "i\u0027ll check with the doc owner about sharing it with partners. i think\nit\u0027s reasonable for people with schematics access to be included.\n\nthe generator utility will need to go into a private repo as there\nis non-public data (EC chip description) in there. YH is suggesting\nsrc/platform/ec/private.\n\nat a minimum, partners can copy brya\u0027s definitions as the baseline for\ntheir variant and manually customize as they always have. if their\nworkflow includes generating a spreadsheet of their GPIOs, we can\nwork with them to enable them to auto-generate the definitions.",
+      "parentUuid": "717f20fe_c384b5e0",
+      "range": {
+        "startLine": 2,
+        "startChar": 3,
+        "endLine": 2,
+        "endChar": 32
+      },
+      "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57fbf40c_4dce95bf",
         "filename": "board/brya/generated-gpio.inc",
         "patchSetId": 1
