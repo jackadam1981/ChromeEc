@@ -643,6 +643,7 @@ void pd_send_host_event(int mask)
 
 	atomic_or(&pd_host_event_status, mask);
 	/* interrupt the AP */
+	CPRINTS("Setting PD MCU event");
 	host_set_single_event(EC_HOST_EVENT_PD_MCU);
 }
 #endif /* ! CONFIG_USB_PD_TCPM_STUB && ! TEST_BUILD */

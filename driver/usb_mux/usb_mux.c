@@ -181,6 +181,7 @@ void usb_mux_init(int port)
 		return;
 	}
 
+	CPRINTS("C%d: Reinitializing mux", port);
 	rv = configure_mux(port, USB_MUX_INIT, NULL);
 
 	if (rv == EC_SUCCESS)
@@ -423,6 +424,7 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	if (port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
 
+	CPRINTS("C%d: Called EC_CMD_USB_PD_MUX_INFO", port);
 	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state))
 		return EC_RES_ERROR;
 
@@ -466,6 +468,7 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
 		return EC_RES_INVALID_COMMAND;
 
+	CPRINTS("C%d: Received mux ACK", p->port);
 	if (flags[p->port] & USB_MUX_FLAG_AWAITING_ACK) {
 		task_set_event(PD_PORT_TO_TASK_ID(p->port),
 				PD_EVENT_AP_MUX_DONE);
