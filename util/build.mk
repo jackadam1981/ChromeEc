@@ -109,3 +109,12 @@ $(out)/util/export_taskinfo_rw.o: util/export_taskinfo.c
 	$(call quiet,c_to_taskinfo,BUILDCC,RW)
 
 deps-y += $(out)/util/export_taskinfo_ro.o.d $(out)/util/export_taskinfo_rw.o.d
+
+# Ensure that all utils are build for bds and host boards.
+# This is because the Chrome OS ebuilds expect bds and host to have all utils.
+# We use a full ifneq because we do not want to have a variable reference itself
+# when the board is not bds or host. Ex. var-$(or $(BDS),$(HOST)) = $(var-)
+ifneq ($(or $(BOARD_BDS),$(BOARD_HOST)),)
+host-util-bin-y  += $(host-util-bin-)
+build-util-bin-y += $(build-util-bin-)
+endif
