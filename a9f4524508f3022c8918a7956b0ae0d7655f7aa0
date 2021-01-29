@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e72323_2bf7d743",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-29T18:43:21Z",
+      "side": 1,
+      "message": "These should not go in config_chip.h",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 51
+      },
+      "revId": "a9f4524508f3022c8918a7956b0ae0d7655f7aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f29a5f2b_17e5baed",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-29T18:43:21Z",
+      "side": 1,
+      "message": "replace with CONFIG_ARCH_POSIX\n\nThis will let you drop CONFIG_ZTEST as well then",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "a9f4524508f3022c8918a7956b0ae0d7655f7aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae3d7d6_1c9ecfed",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-29T18:43:21Z",
+      "side": 1,
+      "message": "Based on CMakeLists you have, this seems to be never defined, right?",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "a9f4524508f3022c8918a7956b0ae0d7655f7aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "683dc625_383be2c3",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-29T18:43:21Z",
+      "side": 1,
+      "message": "can we remove the references to VBNV?\n\nthere is an open bug to delete it all from the EC code as unused (b/178689388)",
+      "range": {
+        "startLine": 33,
+        "startChar": 18,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "a9f4524508f3022c8918a7956b0ae0d7655f7aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87607287_e70f8736",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-01-29T18:43:21Z",
+      "side": 1,
+      "message": "see panic_output.c, where I replaced a version of interrupt_disable like this with irq_lock",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 58
+      },
+      "revId": "a9f4524508f3022c8918a7956b0ae0d7655f7aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
