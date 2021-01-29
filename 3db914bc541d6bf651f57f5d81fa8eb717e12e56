@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dbf18c9_866c7a05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-01-29T02:04:05Z",
+      "side": 1,
+      "message": "This feature is built when \"defined(CONFIG_USB_PD_TCPMV2) \u0026\u0026 defined(CONFIG_USBC_SS_MUX)\", but still there is build error for board \"hayato\", is it OK to create a config for retimer firmware update exclusively?\n\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: __flash_dma_size \u003c IT83XX_ILM_BLOCK_SIZE\n",
+      "revId": "3db914bc541d6bf651f57f5d81fa8eb717e12e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
