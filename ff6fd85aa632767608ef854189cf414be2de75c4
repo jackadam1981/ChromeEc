@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "869f7fe0_dde49e0c",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:02:22Z",
+      "side": 1,
+      "message": "This is available on the Chrome OS partner site, but requires a login to access.",
+      "parentUuid": "a436d3bb_91928724",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "ff6fd85aa632767608ef854189cf414be2de75c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce58d92d_c7649460",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-28T20:33:01Z",
       "side": 1,
       "message": "empty line after if",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "ff6fd85aa632767608ef854189cf414be2de75c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f07b5ffe_9f167be4",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-01-29T20:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce58d92d_c7649460",
       "range": {
         "startLine": 30,
         "startChar": 0,
