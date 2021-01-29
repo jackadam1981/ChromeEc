@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b50b017_23f3a763",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T06:25:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "28af0454_45f72c47",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 0
+      },
+      "revId": "973f7d46ae0b8edafa78b08c71aeaf27cf2fd11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "469c09c0_22f3024e",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae9bbef_90194b0d",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T06:25:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "02618cec_304e5003",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 21
+      },
+      "revId": "973f7d46ae0b8edafa78b08c71aeaf27cf2fd11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acfe5a5d_155a22b1",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "The issue is that for REV2 we will have hardware which supports both STM and HostHub to manage port power. Even though we will go with default option of HH configuring this, some time later we may want to switch to STM. That\u0027s why I would like to keep these methods.",
       "parentUuid": "acfe5a5d_155a22b1",
+      "range": {
+        "startLine": 256,
+        "startChar": 11,
+        "endLine": 256,
+        "endChar": 14
+      },
+      "revId": "973f7d46ae0b8edafa78b08c71aeaf27cf2fd11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd919300_05824f04",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-01-29T06:25:39Z",
+      "side": 1,
+      "message": "Oh ok, I see.",
+      "parentUuid": "e6d2e74f_1eac260f",
       "range": {
         "startLine": 256,
         "startChar": 11,
