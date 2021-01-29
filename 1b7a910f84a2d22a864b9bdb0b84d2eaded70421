@@ -69,6 +69,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22029d95_6870964b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-29T01:32:41Z",
+      "side": 1,
+      "message": "Zhuohao: Note that I have uploaded a version of this CL with a corrected register offset at https://crrev.com/c/2658607.",
+      "revId": "1b7a910f84a2d22a864b9bdb0b84d2eaded70421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f56be522_8f1b7b7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-01-29T01:32:41Z",
+      "side": 1,
+      "message": "The patch checks for the firmware version, so it should be safe to leave in. But we probably would remove the workaround once the updated firmware was generally available.",
+      "parentUuid": "a13fa7eb_0a374585",
+      "revId": "1b7a910f84a2d22a864b9bdb0b84d2eaded70421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68c0338e_7fbafef4",
