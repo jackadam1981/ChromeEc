@@ -10,6 +10,7 @@
 #include "battery_smart.h"
 #include "button.h"
 #include "charger.h"
+#include "charge_state_v2.h"
 #include "cros_board_info.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_icm_common.h"
@@ -871,4 +872,12 @@ __override void pd_notify_dp_alt_mode_entry(int port)
 		return;
 	cprints(CC_USBPD, "Notifying AP of DP Alt Mode Entry...");
 	mkbp_send_event(EC_MKBP_EVENT_DP_ALT_MODE_ENTERED);
+}
+
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	charge_set_input_current_limit(MAX(charge_ma,
+					   CONFIG_CHARGER_INPUT_CURRENT),
+				       charge_mv);
 }

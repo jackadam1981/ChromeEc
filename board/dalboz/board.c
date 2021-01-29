@@ -5,6 +5,7 @@
 
 #include "battery_smart.h"
 #include "button.h"
+#include "charge_state_v2.h"
 #include "cros_board_info.h"
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_lsm6dsm.h"
@@ -663,3 +664,11 @@ static void check_v0_battery(void)
  * charger_chips_init() want to talk to the battery.
  */
 DECLARE_HOOK(HOOK_INIT, check_v0_battery, HOOK_PRIO_INIT_I2C);
+
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	charge_set_input_current_limit(MAX(charge_ma,
+					   CONFIG_CHARGER_INPUT_CURRENT),
+				       charge_mv);
+}

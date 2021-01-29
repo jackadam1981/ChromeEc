@@ -5,6 +5,7 @@
 
 #include "battery_smart.h"
 #include "button.h"
+#include "charge_state_v2.h"
 #include "cros_board_info.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accel_kionix.h"
@@ -543,3 +544,10 @@ int usb_port_enable[USBA_PORT_COUNT] = {
 	IOEX_EN_USB_A1_5V_DB,
 };
 
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	charge_set_input_current_limit(MAX(charge_ma,
+					   CONFIG_CHARGER_INPUT_CURRENT),
+				       charge_mv);
+}
