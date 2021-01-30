@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd3566d_77cd06e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-01-30T16:01:39Z",
+      "side": 1,
+      "message": "should be dedede, since this will eventually goto dedede FW branch",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "d29d90bd22686e228ad99914f058ff69144eaf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "553613d5_ba1c77b2",
@@ -14,6 +37,46 @@
       "writtenOn": "2021-01-30T10:49:57Z",
       "side": 1,
       "message": "hi Henry: please help to review this CL for first EC version for Sasukette, thanks",
+      "revId": "d29d90bd22686e228ad99914f058ff69144eaf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0be7710_46ac9fe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-01-30T16:01:39Z",
+      "side": 1,
+      "message": "Adding EC owners to help review. ",
+      "revId": "d29d90bd22686e228ad99914f058ff69144eaf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14007d3d_6706faef",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-01-30T16:01:39Z",
+      "side": 1,
+      "message": "sasukette",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 33
+      },
       "revId": "d29d90bd22686e228ad99914f058ff69144eaf46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
