@@ -34,6 +34,24 @@
       "parentUuid": "f470de2e_36bc5579",
       "revId": "8712cac7dd075fed557890ecbf00875b7b5d6de3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca42daf_e9956e47",
+        "filename": "board/brya/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-30T00:06:37Z",
+      "side": 1,
+      "message": "Okay. I think it is just confusing when a pin ends up here v/s auto-generated. Anyways, this should be all documented so that it is easier for others to follow.",
+      "parentUuid": "8f15d0f3_b62e4698",
+      "revId": "8712cac7dd075fed557890ecbf00875b7b5d6de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

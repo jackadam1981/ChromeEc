@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe045f46_5233a22f",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-30T00:06:37Z",
+      "side": 1,
+      "message": "\u003e i\u0027ll check with the doc owner about sharing it with partners. i think\n\u003e it\u0027s reasonable for people with schematics access to be included.\n\nWho is the doc owner? I think the sheet should be converted in a csv format and included in EC repo.\n\n\u003e the generator utility will need to go into a private repo as there\n\u003e is non-public data (EC chip description) in there. YH is suggesting\n\u003e src/platform/ec/private.\n\nWho will have access to this private repo? In general, it would be bad to add layers of ACLs here. I think any tools that we develop should be made easily accessible for any partner working on this. Also, this will live on for at least 8-9 years. So, better to be clear about how any auto-generated files can be worked on later too. BTW, what kind of chip information are we worried about? Is there a bug tracking the details of this tool?\n\n\u003e at a minimum, partners can copy brya\u0027s definitions as the baseline for\n\u003e their variant and manually customize as they always have. \n\nSure. But, we typically use reference as a model for partners to benefit from. If we are developing any tools, I think it makes sense to open it up to others as well.\n\nAnyways, this is beyond the scope of this CL, but I want to highlight these points because:\n1. During brya development phase, it is going to be multiple folks accessing and possibly making changes. So, we need to have the infrastructure ready before that. Else, people will end up manually changing the files you are auto-generating.\n\n2. For partners, it is something we should think about -- what is the long term solution we have in mind. It is best to not have tools/solutions specific to reference design only.",
+      "parentUuid": "5be706d1_3106ef8e",
+      "range": {
+        "startLine": 2,
+        "startChar": 3,
+        "endLine": 2,
+        "endChar": 32
+      },
+      "revId": "4bd50e22017bbacb474e2d6b718ca1fd4cf78096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57fbf40c_4dce95bf",
         "filename": "board/brya/generated-gpio.inc",
         "patchSetId": 1
