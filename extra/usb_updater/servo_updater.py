@@ -227,7 +227,29 @@ def do_updater_version(tinys):
   raise ServoUpdaterException(
       "Can't determine updater target from vers: [%s]" % vers)
 
-def findfiles(cname, fname, channel=DEFAULT_CHANNEL):
+def _extract_version(boardname, binfile):
+  """Find the version string from |binfile|.
+
+  Args:
+    boardname: the name of the board, eg. "servo_micro"
+    binfile: path to the binary to search
+
+  Returns:
+    the version string.
+  """
+  rawstrings = subprocess.check_output(
+      ['cbfstool', binfile, 'read', '-r', 'RO_FRID', '-f', '/dev/stdout'],
+      **c.get_subprocess_args())
+  m = re.match(r'%s_v\S+' % boardname, rawstrings)
+  if m:
+    newvers = m.group(0).strip(' \t\r\n\0')
+  else:
+    raise ServoUpdaterException("Can't find version from file: %s." % binfile)
+
+  return newvers
+
+
+def get_files_and_version(cname, fname, channel=DEFAULT_CHANNEL):
   """Select config and firmware binary files.
 
   This checks default file names and paths.
@@ -238,8 +260,9 @@ def findfiles(cname, fname, channel=DEFAULT_CHANNEL):
     cname: board name, or config name. eg. "servo_v4" or "servo_v4.json"
     fname: firmware binary name. Can be None to try default.
     channel: the channel requested for servo firmware. See |CHANNELS| above.
+
   Returns:
-    cname, fname: validated filenames selected from the path.
+    cname, fname, version: validated filenames selected from the path.
   """
   for p in (DEFAULT_BASE_PATH, TEST_IMAGE_BASE_PATH):
     updater_path = os.path.join(p, COMMON_PATH)
@@ -287,28 +310,11 @@ def findfiles(cname, fname, channel=DEFAULT_CHANNEL):
     else:
       raise ServoUpdaterException("Can't find file: %s." % fname)
 
-  return cname, fname
+  # Lastly, retrieve the version as well for decision making, debug, and
+  # informational purposes.
+  binvers = _extract_version(board, fname)
 
-def find_available_version(boardname, binfile):
-  """Find the version string from the binary file.
-
-  Args:
-    boardname: the name of the board, eg. "servo_micro"
-    binfile: the binary to search
-
-  Returns:
-    the version string.
-  """
-  rawstrings = subprocess.check_output(
-      ['cbfstool', binfile, 'read', '-r', 'RO_FRID', '-f', '/dev/stdout'],
-      **c.get_subprocess_args())
-  m = re.match(r'%s_v\S+' % boardname, rawstrings)
-  if m:
-    newvers = m.group(0).strip(' \t\r\n\0')
-  else:
-    raise ServoUpdaterException("Can't find version from file: %s." % binfile)
-
-  return newvers
+  return cname, fname, binvers
 
 def main():
   parser = argparse.ArgumentParser(description="Image a servo micro device")
@@ -331,7 +337,8 @@ def main():
 
   args = parser.parse_args()
 
-  brdfile, binfile = findfiles(args.board, args.file, args.channel)
+  brdfile, binfile, newvers = get_files_and_version(args.board, args.file,
+                                                    args.channel)
 
   serialno = args.serialno
 
@@ -351,8 +358,6 @@ def main():
   if not args.force:
     vers = do_version(tinys)
     print("Current %s version is   %s" % (boardname, vers))
-
-    newvers = find_available_version(boardname, binfile)
     print("Available %s version is %s" % (boardname, newvers))
 
     if newvers == vers:
