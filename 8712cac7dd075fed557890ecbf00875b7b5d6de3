@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1933b7_2324c8d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-01-30T00:24:14Z",
+      "side": 1,
+      "message": "Sorry, did not mean to generate friction here. I am completely in favor of having smart ways of generating code. But, I want to ensure we set it up such that it can help everybody. And also reduce the overhead for you.\n\nIf there are challenges to make the sheet/tool widely available, it might make sense to at least add a comment in gpio.inc saying that the generated-gpio.inc is something that is generated using a tool currently being used only for brya reference. And be ready to accept changes that might happen manually to gpio.inc or generated-gpio.inc files going forward.",
+      "parentUuid": "feafb105_dde869e5",
+      "revId": "8712cac7dd075fed557890ecbf00875b7b5d6de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f470de2e_36bc5579",
