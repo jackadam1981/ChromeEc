@@ -171,6 +171,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab4859d9_c1001457",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-30T00:16:30Z",
+      "side": 1,
+      "message": "nm, I\u0027m just always deassert on pd_is_disconnected(CONFIG_CCD_USBC_PORT_NUMBER) .",
+      "parentUuid": "853b6d48_b95c8bbe",
+      "revId": "48ad4b06c8b8b279ed17a858ff2078d0b521d408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c90d9907_53b73ad8",
