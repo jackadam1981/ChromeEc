@@ -16,6 +16,24 @@
       "message": "given we are in the else clause,\nthis means (device_current_events \u0026 mask) \u003d\u003d mask\nSo here, it\u0027s equivalent to:\n  if (!mask)\nshoud we use this simpler version ?",
       "revId": "65141676fe71e0afcf3939f93f217ebdc51c60cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71bf43b6_3e831f91",
+        "filename": "common/device_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-01-30T17:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09b888cb_c668894b",
+      "revId": "65141676fe71e0afcf3939f93f217ebdc51c60cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
