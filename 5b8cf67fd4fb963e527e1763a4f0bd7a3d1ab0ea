@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4b55969_7972c631",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-30T00:56:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a588f5f6_a66661c7",
+      "revId": "5b8cf67fd4fb963e527e1763a4f0bd7a3d1ab0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91f714fb_a0e82210",
         "filename": "driver/usb_mux/amd_fp6.c",
         "patchSetId": 6
@@ -48,6 +66,24 @@
       "writtenOn": "2021-01-29T21:17:38Z",
       "side": 1,
       "message": "I feel like I\u0027m missing something here.  Val is a uint8_t, right?  And this is and-ing it with GENMASK(9,8)?  So it would always be 0? \n\nAlso, do you have to check the USB_PD_Port0_Status bits?  It looks like they\u0027ll indicate if the last command worked.  Though I\u0027m also a bit unclear when the control status bits update (on attempting to set the mux, or after success)",
+      "revId": "5b8cf67fd4fb963e527e1763a4f0bd7a3d1ab0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38acb56_9d0dcb7b",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-01-30T00:56:10Z",
+      "side": 1,
+      "message": "You are right. The offsets in the header include the index byte. Working on a fix for here and \n amd_fp6_set_mux. \n\nI will followup with AMD on the behavior of this register. I\u0027m guessing control status bits can\u0027t be considered valid until \"command complete\".",
+      "parentUuid": "91f714fb_a0e82210",
       "revId": "5b8cf67fd4fb963e527e1763a4f0bd7a3d1ab0ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
