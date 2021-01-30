@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feafb105_dde869e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-01-30T00:19:27Z",
+      "side": 1,
+      "message": "i didn\u0027t anticipate the extent of the push-back this has generated.\n\nwould it be better to simply merge generated-gpio.inc into gpio.inc to\nmaintain the status quo and close this discussion?\n",
+      "revId": "8712cac7dd075fed557890ecbf00875b7b5d6de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f470de2e_36bc5579",
