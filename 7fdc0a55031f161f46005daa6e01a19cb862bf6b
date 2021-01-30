@@ -16,6 +16,23 @@
       "message": "The missing mux state part added. It is working tested more than 32 hot plug-ins with Gatex card. All the time enumerated with tx speed as 20Gbps and rx speed as 20Gbps.\n\nTypeC devices need to test.\n\n",
       "revId": "7fdc0a55031f161f46005daa6e01a19cb862bf6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb3cc134_2c07fd21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-01-30T03:26:07Z",
+      "side": 1,
+      "message": "This patch can be simplified further without affecting various boards common code. The issue is maintaining the time gap between the BB retimer configuration to virtual mux configuration. The time gap is coming less in case of failure scenario because of the previous host event.\n\nBased on experiments making this gap more no issues is observed.\n \nNew thought/Solution:\n   whenever BB retimer is configured with safe mode/TBT/DP alt mode\n   wait for 10 to 15 msec in retimer set function, set flag\u003d true   \u003c\u003c\u003d\u003d new code\n   after that send host event, so now PD task will be in wait state\n\nin the wait time if MUX_CMD command comes send the PREVIOUS mux state.  \u003c\u003c\u003d\u003d\u003d new code\n\nSo previous mux states storing is required, one flag has to be added that one is controlled by BB retimer function. whenever that flag is set send previous mux state.\n\nI will make changes if it works fine I will send for review.\n\n",
+      "revId": "7fdc0a55031f161f46005daa6e01a19cb862bf6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
