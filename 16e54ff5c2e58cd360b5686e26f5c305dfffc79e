@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "081d236e_6c4537c2",
+        "filename": "driver/usb_mux/ps8822.c",
+        "patchSetId": 55
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-31T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a7127f1_10bb970f",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "16e54ff5c2e58cd360b5686e26f5c305dfffc79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "072c7c50_c92de8a1",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f295b065_fec56dbc",
+        "filename": "driver/usb_mux/ps8822.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-31T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "072c7c50_c92de8a1",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "16e54ff5c2e58cd360b5686e26f5c305dfffc79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ed5f423_1ea887e8",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-01-26T23:20:57Z",
       "side": 1,
       "message": "nit: missing documentation",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "16e54ff5c2e58cd360b5686e26f5c305dfffc79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791fb4e3_5e9d96c1",
+        "filename": "driver/usb_mux/ps8822.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-01-31T04:44:44Z",
+      "side": 1,
+      "message": "These don\u0027t even need to be in the .h file. so I just made these functions static.",
+      "parentUuid": "9ed5f423_1ea887e8",
       "range": {
         "startLine": 41,
         "startChar": 0,
