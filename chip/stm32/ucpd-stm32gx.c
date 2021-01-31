@@ -163,6 +163,30 @@ static bool ucpd_rx_bist_mode;
 #define MSG_BUF_LEN 10
 #define RX_HR_TYPE 8
 
+#define TX_STATE_LOG_LEN BIT(5)
+#define TX_STATE_LOG_MASK (TX_STATE_LOG_LEN - 1)
+
+struct ucpd_tx_state {
+	uint32_t ts;
+	int tx_request;
+	int timeout_us;
+	enum ucpd_state enter_state;
+	enum ucpd_state exit_state;
+	uint32_t evt;
+};
+
+struct ucpd_tx_state ucpd_tx_statelog[TX_STATE_LOG_LEN];
+int ucpd_tx_state_log_idx;
+int ucpd_tx_state_log_freeze;
+
+static char ucpd_names[][12] = {
+	"TX_IDLE",
+	"ACT_TCPM",
+	"ACT_CRC",
+	"HARD_RST",
+	"CRC_ACK",
+};
+
 enum msg_dir {
 	dir_tx = 0,
 	dir_rx,
@@ -831,13 +855,87 @@ static void ucpd_set_tx_state(enum ucpd_state state)
 	ucpd_tx_state = state;
 }
 
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+static void ucpd_task_log(int timeout, enum ucpd_state enter,
+			  enum ucpd_state exit, int req, uint32_t evt)
+{
+	static int same_count = 0;
+	int idx = ucpd_tx_state_log_idx;
+
+	if (ucpd_tx_state_log_freeze)
+		return;
+
+	ucpd_tx_statelog[idx].ts = get_time().le.lo;
+	ucpd_tx_statelog[idx].tx_request = req;
+	ucpd_tx_statelog[idx].timeout_us = timeout;
+	ucpd_tx_statelog[idx].enter_state = enter;
+	ucpd_tx_statelog[idx].exit_state = exit;
+	ucpd_tx_statelog[idx].evt = evt;
+
+	ucpd_tx_state_log_idx = (idx + 1) & TX_STATE_LOG_MASK;
+
+	if (enter == exit) {
+		same_count++;
+	} else {
+		same_count = 0;
+	}
+
+	/*
+	 * Should not have same enter/exit states. If this happens, then freeze
+	 * state log to help in debugging.
+	 */
+	if (same_count > 5)
+		ucpd_tx_state_log_freeze = 1;
+}
+
+static void ucpd_task_log_dump(void)
+{
+	int n;
+	int idx;
+
+	ucpd_tx_state_log_freeze = 1;
+
+	/* current index will be oldest entry in the log */
+	idx = ucpd_tx_state_log_idx;
+
+	ccprintf("\n\t UCDP Task Log\n");
+	for (n = 0; n < TX_STATE_LOG_LEN; n++) {
+		ccprintf("[%d]:\t\%8s\t%8s\t%02x\t%08x\t%09d\t%d\n",
+			 n,
+			 ucpd_names[ucpd_tx_statelog[idx].enter_state],
+			 ucpd_names[ucpd_tx_statelog[idx].exit_state],
+			 ucpd_tx_statelog[idx].tx_request,
+			 ucpd_tx_statelog[idx].evt,
+			 ucpd_tx_statelog[idx].ts,
+			 ucpd_tx_statelog[idx].timeout_us);
+
+		idx = (idx + 1) & TX_STATE_LOG_MASK;
+		msleep(5);
+	}
+
+	ucpd_tx_state_log_freeze = 0;
+}
+#endif
+
 static void ucpd_manage_tx(int port, int evt)
 {
 	enum ucpd_tx_msg msg_src = TX_MSG_NONE;
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+	enum ucpd_state enter = ucpd_tx_state;
+	int req = ucpd_tx_request;
+#endif
 
 	if (evt & UCPD_EVT_HR_REQ) {
+		/*
+		 * Hard reset control messages are treated as a priority. The
+		 * control message will already be set up as it comes from the
+		 * PRL layer like any other PD ctrl/data message. So just need
+		 * to indicate the correct message source and set the state to
+		 * hard reset here.
+		 */
 		ucpd_set_tx_state(STATE_HARD_RESET);
-		msg_src = MSG_TCPM_MASK;
+		msg_src = TX_MSG_TCPM;
+		ucpd_tx_request &= ~(1 << msg_src);
 	}
 
 	switch (ucpd_tx_state) {
@@ -941,9 +1039,12 @@ static void ucpd_manage_tx(int port, int evt)
 	}
 
 	/* If msg_src is valid, then start transmit */
-	if (msg_src > TX_MSG_NONE) {
+	if (msg_src > TX_MSG_NONE)
 		stm32gx_ucpd_start_transmit(port, msg_src);
-	}
+
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+	ucpd_task_log(ucpd_timeout_us, enter, ucpd_tx_state, req, evt);
+#endif
 }
 
 /*
@@ -1084,8 +1185,15 @@ int stm32gx_ucpd_transmit(int port,
 	memcpy(ucpd_tx_buffers[TX_MSG_TCPM].data.msg + 2, (uint8_t *)data,
 	       len - 2);
 
-	/* Notify ucpd task that a TCPM message tx request is pending */
-	task_set_event(TASK_ID_UCPD, UCPD_EVT_TCPM_MSG_REQ);
+	/*
+	 * Check for hard reset message here. A different event is used for hard
+	 * resets as they are able to interrupt ongoing transmit, and should
+	 * have priority over any pending message.
+	 */
+	if (type == TCPC_TX_HARD_RESET)
+		task_set_event(TASK_ID_UCPD, UCPD_EVT_HR_REQ);
+	else
+		task_set_event(TASK_ID_UCPD, UCPD_EVT_TCPM_MSG_REQ);
 
 	return EC_SUCCESS;
 }
@@ -1421,6 +1529,12 @@ void ucpd_info(int port)
 	ccprintf("\trx_en\t = %d\n\tpol\t = %d\n",
 		 !!(STM32_UCPD_CR(port) & STM32_UCPD_CR_PHYRXEN),
 		 !!(STM32_UCPD_CR(port) & STM32_UCPD_CR_PHYCCSEL));
+
+	/* Dump ucpd task state info */
+	ccprintf("ucpd: tx_state = %s, tx_req = %02x, timeout_us = %d\n",
+		ucpd_names[ucpd_tx_state], ucpd_tx_request, ucpd_timeout_us);
+
+	ucpd_task_log_dump();
 }
 
 static int command_ucpd(int argc, char **argv)
