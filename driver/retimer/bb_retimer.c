@@ -38,6 +38,8 @@
 
 #define BB_RETIMER_I2C_RETRY	3
 
+static mux_state_t retimer_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 /**
  * Utility functions
  */
@@ -392,6 +394,11 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
 
+	/* Don't configure if the previous mode is same as current mode*/
+	if (retimer_mux_state[port] == mux_state) {
+		return EC_SUCCESS;
+	}
+
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
 	 * 0 - No connection present
@@ -481,6 +488,9 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		retimer_set_state_dfp(port, mux_state, &set_retimer_con);
 	else
 		retimer_set_state_ufp(port, mux_state, &set_retimer_con);
+
+	/* Update retimer state with the configured state */
+	retimer_mux_state[port] = mux_state;
 
 	/* Writing the register4 */
 	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
