@@ -993,6 +993,21 @@ static void tc_set_partner_role(int port, enum ppc_device_role role)
 }
 
 /*
+ * Exit all modes due to a detach event
+ * Note: this skips the ExitMode VDM steps in the PE because it is assumed the
+ * partner is not present to receive them, and the PE will no longer be running.
+ */
+static void tc_set_modes_exit(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PE_SM) &&
+			IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
+		pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
+		pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
+		pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME, 0, 0);
+	}
+}
+
+/*
  * Depending on the load on the processor and the tasks running
  * it can take a while for the task associated with this port
  * to run.  So build in 1ms delays, for up to 300ms, to wait for
@@ -2087,6 +2102,9 @@ static void tc_unattached_snk_entry(const int port)
 		usb_mux_set(port, USB_PD_MUX_NONE,
 			USB_SWITCH_DISCONNECT, tc[port].polarity);
 
+	/* Exit any previous alternate modes on detach */
+	tc_set_modes_exit(port);
+
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		CLR_ALL_BUT_LPM_FLAGS(port);
 		tc_enable_pd(port, 0);
@@ -2208,13 +2226,6 @@ static void tc_attach_wait_snk_run(const int port)
 	 */
 	if (new_cc_state == PD_CC_NONE &&
 				get_time().val > tc[port].pd_debounce) {
-		if (IS_ENABLED(CONFIG_USB_PE_SM) &&
-				IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
-			pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
-			pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
-			pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME, 0, 0);
-		}
-
 		/* We are detached */
 		if (drp_state[port] == PD_DRP_TOGGLE_OFF
 		    || drp_state[port] == PD_DRP_FREEZE
@@ -2407,13 +2418,6 @@ static void tc_attached_snk_run(const int port)
 		 * Detach detection
 		 */
 		if (pd_check_vbus_level(port, VBUS_REMOVED)) {
-			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
-				pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
-				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
-				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME,
-						0, 0);
-			}
-
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return;
 		}
@@ -2592,6 +2596,9 @@ static void tc_unattached_src_entry(const int port)
 	}
 
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_SRC;
+
+	/* Exit any previous alternate modes on detach */
+	tc_set_modes_exit(port);
 }
 
 static void tc_unattached_src_run(const int port)
@@ -2896,13 +2903,6 @@ static void tc_attached_src_run(const int port)
 		if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
 			tryWait = is_try_src_enabled(port) &&
 				!TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
-
-		if (IS_ENABLED(CONFIG_USB_PE_SM) &&
-		    IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
-			pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
-			pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
-			pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME, 0, 0);
-		}
 
 		if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
 			set_state_tc(port, tryWait ?
@@ -3285,6 +3285,9 @@ static void tc_try_wait_snk_entry(const int port)
 
 	/* Apply Rd */
 	typec_update_cc(port);
+
+	/* Exit any previous alternate modes on detach */
+	tc_set_modes_exit(port);
 }
 
 static void tc_try_wait_snk_run(const int port)
@@ -3413,13 +3416,6 @@ __maybe_unused static void tc_ct_unattached_snk_run(int port)
 	if (get_time().val > tc[port].cc_debounce) {
 		if (new_cc_state == PD_CC_NONE &&
 		    pd_check_vbus_level(port, VBUS_SAFE0V)) {
-			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
-				pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
-				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
-				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME,
-						0, 0);
-			}
-
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return;
 		}
