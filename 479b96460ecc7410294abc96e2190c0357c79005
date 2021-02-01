@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23a19257_49d6862b",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-01T23:48:32Z",
+      "side": 1,
+      "message": "So 100ms: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/usb_mux/virtual.c;l\u003d61",
+      "parentUuid": "c790af25_4f2662b1",
+      "revId": "479b96460ecc7410294abc96e2190c0357c79005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b7435d5_5676e3a9",
         "filename": "driver/usb_mux/amd_fp6.h",
         "patchSetId": 7
