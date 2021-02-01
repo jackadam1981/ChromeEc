@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "apdo.h"
 #include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
@@ -1344,6 +1345,7 @@ static bool pd_can_source_from_device(const int pdo_cnt, const uint32_t *pdos)
 		 */
 		pd_find_pdo_index(pdo_cnt, pdos,
 				  PD_REV3_MAX_VOLTAGE,
+				  0,
 				  &max_pdo);
 		pd_extract_pdo_power(max_pdo, &max_ma, &max_mv);
 		max_mw = max_ma * max_mv / 1000;
@@ -1605,6 +1607,13 @@ static void send_source_cap(int port)
 	send_data_msg(port, TCPC_TX_SOP, PD_DATA_SOURCE_CAP);
 }
 
+void pe_get_last_request(int port, uint32_t *ma, uint32_t *mv)
+{
+	*ma = pe[port].curr_limit;
+	*mv = pe[port].supply_voltage;
+	return;
+}
+
 /*
  * Request desired charge voltage from source.
  */
@@ -1618,8 +1627,12 @@ static void pe_send_request_msg(int port)
 	pd_build_request(pe[port].vpd_vdo, &rdo, &curr_limit,
 			&supply_voltage, port);
 
-	CPRINTF("C%d: Req [%d] %dmV %dmA", port, RDO_POS(rdo),
+	CPRINTF("\033[35mC%d: Req [%d] %dmV %dmA\033[0m", port, RDO_POS(rdo),
 					supply_voltage, curr_limit);
+
+	/* if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+	 *         apdo_set_request_power(port, supply_voltage, curr_limit); */
+
 	if (rdo & RDO_CAP_MISMATCH)
 		CPRINTF(" Mismatch");
 	CPRINTF("\n");
@@ -3464,6 +3477,11 @@ static void pe_snk_ready_run(int port)
 		dpm_run(port);
 
 	}
+
+	if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO)) {
+		if (apdo_has_new_power_request(port))
+			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+	}
 }
 
 /**
@@ -3476,6 +3494,11 @@ static void pe_snk_hard_reset_entry(int port)
 #endif
 
 	print_current_state(port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO)) {
+		CPRINTS("%s", __func__);
+		apdo_reset(port);
+	}
 
 	/*
 	 * Note: If the SinkWaitCapTimer times out and the HardResetCounter is

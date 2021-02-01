@@ -5,6 +5,7 @@
  * Battery charging task and state machine.
  */
 
+#include "apdo.h"
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_manager.h"
@@ -2179,7 +2180,8 @@ wait_for_it:
 			if (is_pd_supply &&
 			    prev_plt_and_desired_mw !=
 				    charge_get_plt_plus_bat_desired_mw())
-				pd_set_new_power_request(port);
+				port=port;
+				//pd_set_new_power_request(port);
 		}
 
 		/* Adjust for time spent in this loop */
