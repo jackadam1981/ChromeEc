@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef231eb_e42ccf76",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T21:51:55Z",
+      "side": 1,
+      "message": "We can actually change the flags live with gpio_set_flags().  Or is it preferred to enforce that gpio.inc is correct to begin with?",
+      "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "276cc430_7a0eb0e3",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T21:51:55Z",
+      "side": 1,
+      "message": "This feels somewhat inefficient, since this will also be called when the other port(s) connect and disconnect.  Should the TCPMv2 TC layer handle this instead, after debouncing the CC lines?  Or is it needed on TCPMv1 boards as well?",
+      "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a11cfce7_be8856f9",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T21:51:55Z",
+      "side": 1,
+      "message": "Any concerns with unpowered servo_v4 connections when we transition to states where we can\u0027t stay connected (ex. S5)?  Or is it assumed that those connections will always be caught by the security chip?",
+      "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
