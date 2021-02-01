@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcf88948_549bc3db",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-01T23:37:40Z",
+      "side": 1,
+      "message": "Since this timeout is a backup of the internal mux timeout, how about we set it to 500ms here? Although that\u0027s pretty long.",
+      "parentUuid": "4f7ad962_d0ad8b5e",
+      "revId": "479b96460ecc7410294abc96e2190c0357c79005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b7435d5_5676e3a9",
         "filename": "driver/usb_mux/amd_fp6.h",
         "patchSetId": 7
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "the orientation is in bit 2, unless the i2c register view is different?\nport status ready is bit 4.",
       "parentUuid": "3b7435d5_5676e3a9",
+      "revId": "479b96460ecc7410294abc96e2190c0357c79005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa73181f_74b142f9",
+        "filename": "driver/usb_mux/amd_fp6.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-01T23:37:40Z",
+      "side": 1,
+      "message": "Off by 1!",
+      "parentUuid": "65084e62_a14f88a7",
       "revId": "479b96460ecc7410294abc96e2190c0357c79005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
