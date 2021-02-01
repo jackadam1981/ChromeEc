@@ -34,6 +34,24 @@
       "parentUuid": "50e2df53_6b39f058",
       "revId": "afd3ae90bb3194cf73ba76f7e6b81028ef9c06be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "051dabd2_0df0ca19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-01T22:37:36Z",
+      "side": 1,
+      "message": "Maybe at least remove all of CONFIG_HOSTCMD_VBNV_CONTEXT in this CL?",
+      "parentUuid": "c6fb3d28_c030ccac",
+      "revId": "afd3ae90bb3194cf73ba76f7e6b81028ef9c06be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
