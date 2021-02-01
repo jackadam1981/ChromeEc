@@ -268,7 +268,6 @@ static int pchg_run(struct pchg *ctx)
 		rv = ctx->cfg->drv->get_event(ctx);
 		if (rv) {
 			CPRINTS("ERR: get_event (%d)", rv);
-			ctx->event = PCHG_EVENT_NONE;
 			return 0;
 		}
 		CPRINTS("IRQ:EVENT_%s", _text_event(ctx->event));
@@ -298,9 +297,13 @@ static int pchg_run(struct pchg *ctx)
 	if (previous_state != ctx->state)
 		CPRINTS("->STATE_%s", _text_state(ctx->state));
 
-	ctx->event = PCHG_EVENT_NONE;
-
-	return 1;
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		return ctx->event != PCHG_EVENT_NONE;
+	} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+		return (ctx->event == PCHG_EVENT_DEVICE_DETECTED)
+			|| (ctx->event == PCHG_EVENT_DEVICE_LOST);
+	}
+	return 0;
 }
 
 void pchg_irq(enum gpio_signal signal)
@@ -356,7 +359,6 @@ void pchg_task(void *u)
 {
 	struct pchg *ctx;
 	int p;
-	int rv;
 
 	/* In case we arrive here after power-on (for late sysjump) */
 	if (chipset_in_state(CHIPSET_STATE_ON))
@@ -364,22 +366,20 @@ void pchg_task(void *u)
 
 	while (true) {
 		/* Process pending events for all ports. */
-		rv = 0;
+		int rv = 0;
 		for (p = 0; p < pchg_count; p++) {
 			ctx = &pchgs[p];
 			do {
 				if (atomic_clear(&ctx->irq))
 					pchg_queue_event(ctx, PCHG_EVENT_IRQ);
 				rv |= pchg_run(ctx);
+				ctx->event = PCHG_EVENT_NONE;
 			} while (queue_count(&ctx->events));
 		}
-		/*
-		 * Send one host event for all ports. Currently PCHG supports
-		 * only WLC but in the future other types (e.g. WPC Qi) should
-		 * send different device events.
-		 */
+		/* Send one host event for all ports. */
 		if (rv)
 			device_set_single_event(EC_DEVICE_EVENT_WLC);
+
 		task_wait_event(-1);
 	}
 }
