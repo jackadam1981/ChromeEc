@@ -145,3 +145,22 @@ def log_multi_line(logger, level, message):
     for line in message.splitlines():
         if line:
             logger.log(level, line)
+
+def resolve_build_dir(platform_ec_dir, project_dir, build_dir):
+    """Resolve the build directory using platform/ec/build/... as default.
+
+    Args:
+        platform_ec_dir: The path to the chromiumos source's platform/ec
+          directory.
+        project_dir: The directory of the project.
+        build_dir: The directory to build in (may be None).
+    Returns:
+        The resolved build directory (using build_dir if not None).
+    """
+    if build_dir is not None:
+        return build_dir
+
+    # Resolve project_dir to absolute path.
+    project_dir = project_dir.resolve()
+    project_relative_path = os.path.relpath(project_dir, platform_ec_dir)
+    return platform_ec_dir / 'build' / project_relative_path
