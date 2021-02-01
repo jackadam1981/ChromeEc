@@ -2629,6 +2629,8 @@ static void pe_src_ready_run(int port)
 		 * Ignore sink specific request:
 		 *   DPM_REQUEST_NEW_POWER_LEVEL
 		 *   DPM_REQUEST_SOURCE_CAP
+		 *   DPM_REQUEST_FRS_DET_ENABLE
+		 *   DPM_REQURST_FRS_DET_DISABLE
 		 */
 
 		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_NEW_POWER_LEVEL |
@@ -2680,7 +2682,9 @@ static void pe_src_ready_run(int port)
 					PE_FLAGS_LOCALLY_INITIATED_AMS);
 			}
 
-			return;
+			/* If AMS was started, return now */
+			if (PE_CHK_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS))
+				return;
 		}
 
 		/*
@@ -3497,6 +3501,36 @@ static void pe_snk_ready_run(int port)
 				pe_set_dpm_curr_request(port,
 						DPM_REQUEST_NEW_POWER_LEVEL);
 				set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_FRS_DET_ENABLE)) {
+				if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+					IS_ENABLED(CONFIG_USB_PD_FRS)) {
+					int curr_limit = *pd_get_snk_caps(port)
+						& PDO_FIXED_FRS_CURR_MASK;
+
+					typec_set_source_current_limit(port,
+						curr_limit ==
+						PDO_FIXED_FRS_CURR_3A0_AT_5V ?
+						TYPEC_RP_3A0 : TYPEC_RP_1A5);
+					pe_set_frs_enable(port, 1);
+				}
+
+				/* Requires no AMS or state change */
+				PE_CLR_DPM_REQUEST(port,
+						   DPM_REQUEST_FRS_DET_ENABLE);
+				PE_CLR_FLAG(port,
+					PE_FLAGS_LOCALLY_INITIATED_AMS);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_FRS_DET_DISABLE)) {
+				if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+					    IS_ENABLED(CONFIG_USB_PD_FRS))
+					pe_set_frs_enable(port, 0);
+
+				/* Requires no AMS or state change */
+				PE_CLR_DPM_REQUEST(port,
+						DPM_REQUEST_FRS_DET_DISABLE);
+				PE_CLR_FLAG(port,
+					PE_FLAGS_LOCALLY_INITIATED_AMS);
 			} else if (!common_src_snk_dpm_requests(port)) {
 				CPRINTF("Unhandled DPM Request %x received\n",
 					dpm_request);
@@ -3505,7 +3539,9 @@ static void pe_snk_ready_run(int port)
 					PE_FLAGS_LOCALLY_INITIATED_AMS);
 			}
 
-			return;
+			/* If AMS was started, return now */
+			if (PE_CHK_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS))
+				return;
 		}
 
 		/*
