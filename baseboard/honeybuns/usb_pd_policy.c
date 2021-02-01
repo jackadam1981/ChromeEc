@@ -202,10 +202,8 @@ static int vdm_is_dp_enabled(int port)
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */
-#ifndef TCPM_V2_ALT_MODE
 /* Holds valid object position (opos) for entered mode */
 static int alt_mode[PD_AMODE_COUNT];
-#endif
 
 const uint32_t vdo_idh = VDO_IDH(0, /* data caps as USB host */
 				 1, /* data caps as USB device */
@@ -225,23 +223,32 @@ const uint32_t vdo_ama = VDO_AMA(CONFIG_USB_PD_IDENTITY_HW_VERS,
 
 static int svdm_response_identity(int port, uint32_t *payload)
 {
+	/* Verify that SVID is PD SID */
+	if (PD_VDO_VID(payload[0]) != USB_SID_PD) {
+		return 0;
+	}
+
 	payload[VDO_I(IDH)] = vdo_idh;
-	/* TODO(tbroch): Do we plan to obtain TID (test ID) for hoho */
 	payload[VDO_I(CSTAT)] = VDO_CSTAT(0);
 	payload[VDO_I(PRODUCT)] = vdo_product;
 	payload[VDO_I(AMA)] = vdo_ama;
+
 	return VDO_I(AMA) + 1;
 }
 
 static int svdm_response_svids(int port, uint32_t *payload)
 {
+	/* Verify that SVID is PD SID */
+	if (PD_VDO_VID(payload[0]) != USB_SID_PD) {
+		return 0;
+	}
+
 	payload[1] = USB_SID_DISPLAYPORT << 16;
 	/* number of data objects VDO header + 1 SVID for DP */
 	return 2;
 }
 
 #define OPOS_DP 1
-#define OPOS_GFU 1
 
 const uint32_t vdo_dp_modes[1] =  {
 	VDO_MODE_DP(MODE_DP_PIN_C | MODE_DP_PIN_D, /* UFP pin_cfg 2/4 lanes */
@@ -252,18 +259,11 @@ const uint32_t vdo_dp_modes[1] =  {
 		    MODE_DP_SNK)   /* Its a sink only */
 };
 
-const uint32_t vdo_goog_modes[1] =  {
-	VDO_MODE_GOOGLE(MODE_GOOGLE_FU)
-};
-
 static int svdm_response_modes(int port, uint32_t *payload)
 {
 	if (PD_VDO_VID(payload[0]) == USB_SID_DISPLAYPORT) {
 		memcpy(payload + 1, vdo_dp_modes, sizeof(vdo_dp_modes));
 		return ARRAY_SIZE(vdo_dp_modes) + 1;
-	} else if (PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) {
-		memcpy(payload + 1, vdo_goog_modes, sizeof(vdo_goog_modes));
-		return ARRAY_SIZE(vdo_goog_modes) + 1;
 	} else {
 		return 0; /* nak */
 	}
@@ -348,38 +348,19 @@ static int amode_dp_config(int port, uint32_t *payload)
 
 static int svdm_enter_mode(int port, uint32_t *payload)
 {
-#ifdef TCPM_V2_ALT_MODE
-	struct svdm_amode_data *modep;
-#endif
 	int rv = 0; /* will generate a NAK */
 
 	/* SID & mode request is valid */
 	if ((PD_VDO_VID(payload[0]) == USB_SID_DISPLAYPORT) &&
 	    (PD_VDO_OPOS(payload[0]) == OPOS_DP)) {
-#ifdef TCPM_V2_ALT_MODE
-		modep = pd_get_amode_data(port, 0, USB_SID_DISPLAYPORT);
-		if (modep) {
-			CPRINTS("alt-dp: enter: modep = %p, opos = %d",
-				modep, modep->opos);
-			modep->opos = OPOS_DP;
-		} else {
-			CPRINTS("alt-dp: enter: modep is null");
-		}
-#else
+
 		alt_mode[PD_AMODE_DISPLAYPORT] = OPOS_DP;
-#endif
 		rv = 1;
 
 		/* Configure demux to enable DP */
 		svdm_configure_demux(port, 1);
 		/* Entering ALT-DP mode, enable DP connection in demux */
 		usb_pd_hpd_converter_enable(1);
-	} else if ((PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) &&
-		   (PD_VDO_OPOS(payload[0]) == OPOS_GFU)) {
-#ifndef TCPM_V2_ALT_MODE
-		alt_mode[PD_AMODE_GOOGLE] = OPOS_GFU;
-#endif
-		rv = 1;
 	}
 
 	/* if (rv) */
@@ -396,45 +377,29 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 	return rv;
 }
 
-#ifndef TCPM_V2_ALT_MODE
 int pd_ufp_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid)
 {
 	if (svid == USB_SID_DISPLAYPORT)
 		return alt_mode[PD_AMODE_DISPLAYPORT];
-	else if (svid == USB_VID_GOOGLE)
-		return alt_mode[PD_AMODE_GOOGLE];
+
 	return 0;
 }
-#endif
 
 static int svdm_exit_mode(int port, uint32_t *payload)
 {
-#ifdef TCPM_V2_ALT_MODE
-	struct svdm_amode_data *modep;
-#endif
 
-	if (PD_VDO_VID(payload[0]) == USB_SID_DISPLAYPORT) {
-#ifdef TCPM_V2_ALT_MODE
-		modep = pd_get_amode_data(port, 0, USB_SID_DISPLAYPORT);
-		if (modep)
-			modep->opos = OPOS_DP;
-		else
-			CPRINTS("alt-dp: modep is NULL");
-#else
+	if ((PD_VDO_VID(payload[0]) == USB_SID_DISPLAYPORT) &&
+	    (alt_mode[PD_AMODE_DISPLAYPORT] == OPOS_DP)) {
 		alt_mode[PD_AMODE_DISPLAYPORT] = 0;
-#endif
 		/* Configure demux to disable DP mode */
 		svdm_configure_demux(port, 0, 0);
 		usb_pd_hpd_converter_enable(0);
-	} else if (PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) {
-#ifndef TCPM_V2_ALT_MODE
-		alt_mode[PD_AMODE_GOOGLE] = 0;
-#endif
+
+		return 1;
 	} else {
 		CPRINTF("Unknown exit mode req:0x%08x\n", payload[0]);
+		return 0;
 	}
-
-	return 1; /* Must return ACK */
 }
 
 static struct amode_fx dp_fx = {
