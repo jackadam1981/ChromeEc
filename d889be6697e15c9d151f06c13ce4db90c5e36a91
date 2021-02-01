@@ -16,6 +16,125 @@
       "message": "Awaiting EC owners to review the detailed functions. Thanks. ",
       "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4cc1cf_c90c5684",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T17:18:16Z",
+      "side": 1,
+      "message": "Should this match the SDI battery from sasuke?  There are a couple of fields different (voltage_max, voltage_normal, discharging_max_c)",
+      "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d03e836_821fdcad",
+        "filename": "board/sasukette/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T17:18:16Z",
+      "side": 1,
+      "message": "Remove note",
+      "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eef21ee_636e9bb4",
+        "filename": "board/sasukette/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T17:18:16Z",
+      "side": 1,
+      "message": "Update to use the recently added raa489000_set_output_current()",
+      "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b32fe6e_0a2c4d6c",
+        "filename": "board/sasukette/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T17:18:16Z",
+      "side": 1,
+      "message": "unimplemented since there is no C1",
+      "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c521f7_7cacdb89",
+        "filename": "board/sasukette/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T17:18:16Z",
+      "side": 1,
+      "message": "Can be set as UNIMPLEMENTED",
+      "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ec2564c_c878d3b8",
+        "filename": "board/sasukette/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T17:18:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be needed if CONFIG_USB_PD_PORT_MAX_COUNT is set to 1",
+      "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d1e9fc4_08663325",
+        "filename": "board/sasukette/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T17:18:16Z",
+      "side": 1,
+      "message": "We could change the baseboard code here to check for whether \"HAS_TASK_MOTIONSENSE\" is set before trying to set up the sensor i2c",
+      "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
