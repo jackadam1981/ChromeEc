@@ -16,6 +16,24 @@
       "message": "Can more VBNV stuff be removed too?\n\n(cr) ((afd3ae90b...)) ecgh@ecgh2 ~/trunk/src/platform/ec $ git grep VBNV\nchip/it83xx/system.c:\tif (idx \u003e\u003d SYSTEM_BBRAM_IDX_VBNVBLOCK0 \u0026\u0026\nchip/it83xx/system.c:\t    idx \u003c\u003d SYSTEM_BBRAM_IDX_VBNVBLOCK15)\nchip/it83xx/system.c:\t\t       idx - SYSTEM_BBRAM_IDX_VBNVBLOCK0;\nchip/it83xx/system.c:BUILD_ASSERT(EC_VBNV_BLOCK_SIZE \u003c\u003d BRAM_NVCONTEXT_SIZE);\nchip/npcx/system.c:\treturn (index \u003e\u003d BBRM_DATA_INDEX_VBNVCNTXT \u0026\u0026\nchip/npcx/system.c:\tif (idx \u003e\u003d SYSTEM_BBRAM_IDX_VBNVBLOCK0 \u0026\u0026\nchip/npcx/system.c:\t    idx \u003c\u003d SYSTEM_BBRAM_IDX_VBNVBLOCK15)\nchip/npcx/system.c:\t\treturn BBRM_DATA_INDEX_VBNVCNTXT +\nchip/npcx/system.c:\t\t       idx - SYSTEM_BBRAM_IDX_VBNVBLOCK0;\nchip/npcx/system.c:BUILD_ASSERT(BBRM_DATA_INDEX_VBNVCNTXT + EC_VBNV_BLOCK_SIZE \u003c\u003d NPCX_BBRAM_SIZE);\nchip/npcx/system_chip.h:\tBBRM_DATA_INDEX_VBNVCNTXT \u003d 16,\t       /* VbNvContext for ARM arch */\nchip/stm32/bkpdata.c:#ifdef CONFIG_HOSTCMD_VBNV_CONTEXT\nchip/stm32/bkpdata.c:\tif (idx \u003e\u003d SYSTEM_BBRAM_IDX_VBNVBLOCK0 \u0026\u0026\nchip/stm32/bkpdata.c:\t    idx \u003c\u003d SYSTEM_BBRAM_IDX_VBNVBLOCK15) {\nchip/stm32/bkpdata.c:\t\t*msb \u003d (idx - SYSTEM_BBRAM_IDX_VBNVBLOCK0) % 2;\nchip/stm32/bkpdata.c:\t\treturn BKPDATA_INDEX_VBNV_CONTEXT0 +\nchip/stm32/bkpdata.c:\t\t       (idx - SYSTEM_BBRAM_IDX_VBNVBLOCK0) / 2;\nchip/stm32/bkpdata.h: *  - VBNV_CONTEXT requires 8 indexes, so a total of 10 (which is the total\nchip/stm32/bkpdata.h: * if VBNV_CONTEXT is not enabled, or if we have more than 10 entries.\nchip/stm32/bkpdata.h:#if !defined(CONFIG_HOSTCMD_VBNV_CONTEXT) || STM32_BKP_ENTRIES \u003e 10\nextra/ftdi_hostcmd/test_cmds.c:\t{0x17, \"EC_CMD_VBNV_CONTEXT\"},\ninclude/ec_commands.h:#define EC_CMD_VBNV_CONTEXT 0x0017\ninclude/ec_commands.h:#define EC_VER_VBNV_CONTEXT 1\ninclude/ec_commands.h:#define EC_VBNV_BLOCK_SIZE 16\ninclude/ec_commands.h:\tEC_VBNV_CONTEXT_OP_READ,\ninclude/ec_commands.h:\tEC_VBNV_CONTEXT_OP_WRITE,\ninclude/ec_commands.h:\tuint8_t block[EC_VBNV_BLOCK_SIZE];\ninclude/ec_commands.h:\tuint8_t block[EC_VBNV_BLOCK_SIZE];\ninclude/system.h:\tSYSTEM_BBRAM_IDX_VBNVBLOCK0 \u003d 0,\ninclude/system.h:\tSYSTEM_BBRAM_IDX_VBNVBLOCK15 \u003d 15,\n",
       "revId": "afd3ae90bb3194cf73ba76f7e6b81028ef9c06be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6fb3d28_c030ccac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-01T22:23:18Z",
+      "side": 1,
+      "message": "Most likely. Will handle in follow-up CL.",
+      "parentUuid": "50e2df53_6b39f058",
+      "revId": "afd3ae90bb3194cf73ba76f7e6b81028ef9c06be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
