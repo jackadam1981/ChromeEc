@@ -24,6 +24,7 @@
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "usb_descriptor.h"
+#include "usb_pd_dp_ufp.h"
 #include "usb_pe_sm.h"
 #include "usb_prl_sm.h"
 #include "usb_tc_sm.h"
@@ -76,7 +77,7 @@ static void tcpc_alert_event(enum gpio_signal s)
 
 void hpd_interrupt(enum gpio_signal signal)
 {
-	baseboard_manage_hpd_event(signal);
+	usb_pd_hpd_edge_event(signal);
 }
 #endif
 
@@ -194,6 +195,11 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+
+const struct hpd_to_pd_config_t hpd_config = {
+	.port = USB_PD_PORT_HOST,
+	.signal = GPIO_DDI_MST_IN_HPD,
+};
 
 void board_reset_pd_mcu(void)
 {
