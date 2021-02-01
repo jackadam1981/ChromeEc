@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f7ad962_d0ad8b5e",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1432880
+      },
+      "writtenOn": "2021-02-01T23:04:53Z",
+      "side": 1,
+      "message": "the PPR has this:\n\"xa_timeout_val. Read-only. XBar_Assist TCPC Request Timeout value Timeout value for the TCPC request.\nCalculated as tca_clk_period256 FLD_XA_TIMEOUT_VAL. The default timeout value is calculated with\n19.2MHz tca_clk for value of 500ms Reset value:-0927C.\"\n\nAt another place in the PPR is says this values is to be set t0 200ms:\n\n14.4.2.14.2\nProgramming Steps",
+      "parentUuid": "ceb25fe6_d3cf382f",
+      "revId": "479b96460ecc7410294abc96e2190c0357c79005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b7435d5_5676e3a9",
         "filename": "driver/usb_mux/amd_fp6.h",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-01T21:38:30Z",
       "side": 1,
       "message": "BIT(4)?",
+      "revId": "479b96460ecc7410294abc96e2190c0357c79005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65084e62_a14f88a7",
+        "filename": "driver/usb_mux/amd_fp6.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1432880
+      },
+      "writtenOn": "2021-02-01T23:04:53Z",
+      "side": 1,
+      "message": "the orientation is in bit 2, unless the i2c register view is different?\nport status ready is bit 4.",
+      "parentUuid": "3b7435d5_5676e3a9",
       "revId": "479b96460ecc7410294abc96e2190c0357c79005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
