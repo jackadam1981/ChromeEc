@@ -46,6 +46,30 @@
       },
       "revId": "87f393620a47c42064a7b1157b8fa066590afb58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55663189_f510449e",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-01T23:27:31Z",
+      "side": 1,
+      "message": "Look at how IS_ENABLED is implemented for Zephyr, it already handles this:\n\n/*\n * For Zephyr, we must create a new version of IS_ENABLED which is\n * compatible with both Kconfig enables (for Zephyr code), which have\n * the value defined to 1 upon enablement, and CrOS EC defines (which\n * are defined to the empty string).\n *\n * To do this, we use __cfg_select from this codebase to determine if\n * the option was defined to nothing (\"enabled\" in CrOS EC terms).  If\n * not, we then check using Zephyr\u0027s Z_IS_ENABLED1 macro to determine\n * if the config option is enabled by Zephyr\u0027s definition.\n */\n#define IS_ENABLED(option) __cfg_select(option, 1, Z_IS_ENABLED1(option))",
+      "parentUuid": "7a23ab74_b9ec455a",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "87f393620a47c42064a7b1157b8fa066590afb58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
