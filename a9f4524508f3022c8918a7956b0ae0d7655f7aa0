@@ -262,6 +262,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4483774_fc4eacb1",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-01T22:51:23Z",
+      "side": 1,
+      "message": "OK, my mistake, it should just be defined without a value (seems to be working AFAICT)",
+      "parentUuid": "8d140ef0_76382584",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "a9f4524508f3022c8918a7956b0ae0d7655f7aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "683dc625_383be2c3",
