@@ -16,6 +16,29 @@
       "message": "done.",
       "revId": "76c445e2a0f89eb9a35ca6bc17ad857c09106292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1578760_34375bd1",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-02-01T08:44:04Z",
+      "side": 1,
+      "message": "__override",
+      "range": {
+        "startLine": 485,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 13
+      },
+      "revId": "76c445e2a0f89eb9a35ca6bc17ad857c09106292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
