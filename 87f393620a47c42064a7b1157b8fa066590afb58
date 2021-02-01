@@ -22,6 +22,30 @@
       },
       "revId": "87f393620a47c42064a7b1157b8fa066590afb58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a23ab74_b9ec455a",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-01T23:24:36Z",
+      "side": 1,
+      "message": "Looking at the two implementations I\u0027m not sure it\u0027s possible to do this by just \"fixing\" it. Would you be OK to +2 a new ZSTATIC_IF and ZSTATIC_IF_NOT?",
+      "parentUuid": "f18083fe_36d21d6d",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "87f393620a47c42064a7b1157b8fa066590afb58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
