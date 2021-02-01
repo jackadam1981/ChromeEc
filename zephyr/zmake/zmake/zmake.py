@@ -149,6 +149,9 @@ class Zmake:
 
     def build(self, build_dir, output_files_out=None):
         """Build a pre-configured build directory."""
+        build_dir = util.resolve_build_dir(platform_ec_dir=self.platform_ec_dir,
+                                           project_dir=build_dir,
+                                           build_dir=build_dir)
         project = zmake.project.Project(build_dir / 'project')
 
         procs = []
@@ -200,6 +203,9 @@ class Zmake:
         """Test a build directory."""
         procs = []
         output_files = []
+        build_dir = util.resolve_build_dir(platform_ec_dir=self.platform_ec_dir,
+                                           project_dir=build_dir,
+                                           build_dir=build_dir)
         self.build(build_dir, output_files_out=output_files)
 
         # If the project built but isn't a test, just bail.
