@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51dda630_8ce44e3f",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T23:57:25Z",
+      "side": 1,
+      "message": "Agreed, forcing boards over is probably a better approach given that some use it as an interrupt.  I suppose if you wanted to be really pushy, then you could assert rather than print.  But that\u0027s not strictly necessary.",
+      "parentUuid": "5659b5cf_20fcabc4",
+      "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "276cc430_7a0eb0e3",
@@ -73,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a87cfde_9695758b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T23:57:25Z",
+      "side": 1,
+      "message": "Cool.  You should hopefully just be able to follow the current sets/clears to the DTS flag in the TC for call locations",
+      "parentUuid": "f98d9ce2_9507583b",
+      "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a11cfce7_be8856f9",
         "filename": "common/usb_common.c",
         "patchSetId": 5
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "Can a debug accessory be detected when unpowered?",
       "parentUuid": "a11cfce7_be8856f9",
+      "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a7e5ae_cc1c3a5a",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T23:57:25Z",
+      "side": 1,
+      "message": "Not when we\u0027re both trying to be a sink, since we\u0027ll both be presenting Rd and the CC line will be grounded.  I checked on a dedede though and this will be equivalent to our current behavior evidently.\n\n21-02-01 16:46:40.314 +gpioget CCD_MODE_ODL\n21-02-01 16:46:41.072   0  CCD_MODE_ODL\n. . .\n21-02-01 16:46:47.938 [12029.309248 PD:S3-\u003eS5]\n. . .\n21-02-01 16:46:47.960 [12029.317827 C0: Unattached.SNK]\n21-02-01 16:46:47.990 [12029.360666 C0: LowPowerMode]\n. . .\n21-02-01 16:46:58.423 [12039.835982 power state 0 \u003d G3, in 0x0000]\n21-02-01 16:gpioget CCD_MODE_ODL\n21-02-01 16:46:59.304   1* CCD_MODE_ODL",
+      "parentUuid": "c961a69c_da75fead",
       "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
