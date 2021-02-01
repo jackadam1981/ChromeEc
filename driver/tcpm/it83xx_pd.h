@@ -215,6 +215,14 @@
 #define IT83XX_USBPD_CC_PIN_CONFIG  0x86
 #define IT83XX_USBPD_CC_PIN_CONFIG2 0x06
 
+/*
+ * tVconnOff (max 35ms): defined in Type-C spec, if we're supplying Vconn,
+ * then shall cease to supply it within tVconnOff of exiting Attached.SRC/SNK.
+ * NOTE: In USB-PD spec, there are another two tVconnSrcOff (max 25ms) and
+ *       tVconnSrcOn (max 50ms) for turning Vconn on/off during Vconn swap.
+ */
+#define IT83XX_USBPD_T_VCONN_OFF    35000  /* us */
+
 #ifndef CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 #define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT   0
 #endif
