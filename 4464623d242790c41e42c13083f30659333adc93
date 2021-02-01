@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0031b2fc_695dd525",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2021-02-01T20:27:17Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 15,
+        "startChar": 22,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "4464623d242790c41e42c13083f30659333adc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a02566_df3fbbb8",
+        "filename": "firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2021-02-01T20:27:17Z",
+      "side": 1,
+      "message": "Right now crrev.com/c/2654588 will call\n```\n.../firmware_builder.py bundle --output-dir {DIRECTORY} --metadata {FILE}\n```\n\n{DIRECTORY} and {FILE} may (or may not) be under /tmp.  (The current build api means that they generally will be, but it\u0027s not guaranteed.)\n\nThe proto definition for metadata is pending, but should probably go in https://source.corp.google.com/chromeos_public/chromiumos/infra/proto/+/HEAD/src/chromite/api/firmware.proto",
+      "revId": "4464623d242790c41e42c13083f30659333adc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
