@@ -22,6 +22,30 @@
       },
       "revId": "8afe7ae6add2d514af8b888846e97fab91abf2c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f4fa14_9d590434",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2021-02-01T10:50:34Z",
+      "side": 1,
+      "message": "Dear Zhuohao\nSince the placement of GMR has been modified, it will cause EC_LID_OPEN and TABLET_MODE_L function exchange. EE modified the schematics of the netname. Therefore, we swap the GPIO location to follow EE schematics design. \nAfter confirm with EE, the schematic will remain this change in the future. I think there is no need to add board version config. \nThanks.",
+      "parentUuid": "99bfc9eb_77b6a008",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "8afe7ae6add2d514af8b888846e97fab91abf2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
