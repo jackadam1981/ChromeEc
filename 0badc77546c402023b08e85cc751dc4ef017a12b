@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf1bece_3bfd9e89",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-01T19:07:55Z",
+      "side": 1,
+      "message": "Why does the host port DRP toggle? The device requires the barrel jack to function, so I wouldn\u0027t expect that it would plan on operating as a sink (operating current field would agree as well)",
+      "range": {
+        "startLine": 109,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 24
+      },
+      "revId": "0badc77546c402023b08e85cc751dc4ef017a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b08c398_321b0af7",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-01T19:07:55Z",
+      "side": 1,
+      "message": "This bit seems unrelated.",
+      "revId": "0badc77546c402023b08e85cc751dc4ef017a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
