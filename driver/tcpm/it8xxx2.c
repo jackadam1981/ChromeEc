@@ -36,12 +36,13 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-/* Wait time for vconn power switch to turn off. */
-#ifdef CONFIG_USBC_VCONN_SWAP_DELAY_US
-#define PD_IT83XX_VCONN_TURN_OFF_DELAY_US CONFIG_USBC_VCONN_SWAP_DELAY_US
-#else
-#define PD_IT83XX_VCONN_TURN_OFF_DELAY_US 500
-#endif
+/*
+ * tVconnOff (max 35ms): defined in Type-C spec, if we're supplying Vconn,
+ * then shall cease to supply it within tVconnOff of exiting Attached.SRC/SNK.
+ * NOTE: In USB-PD spec, there are another two tVconnSrcOff (max 25ms) and
+ *       tVconnSrcOn (max 50ms) for turning Vconn on/off during Vconn swap.
+ */
+#define CONFIG_USB_PD_T_VCONN_OFF       35000  /* us */
 
 bool rx_en[IT83XX_USBPD_PHY_PORT_COUNT];
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
@@ -543,11 +544,12 @@ static int it8xxx2_tcpm_set_vconn(int port, int enable)
 				it8xxx2_tcpm_decode_sop_prime_enable(port,
 								     false);
 			/*
-			 * We need to make sure cc voltage detector is enabled
-			 * after vconn is turned off to avoid the potential risk
+			 * NOTE: Before disabling cc 5v tolerant, we need to
+			 * make sure cc voltage detector is enabled and Vconn
+			 * is dropped below 3.3v to avoid the potential risk
 			 * of voltage fed back into Vcore.
 			 */
-			usleep(PD_IT83XX_VCONN_TURN_OFF_DELAY_US);
+			usleep(CONFIG_USB_PD_T_VCONN_OFF);
 			/*
 			 * Since our cc are not Vconn SRC, enable cc analog
 			 * module (ex.UP/RD/DET/Tx/Rx) and disable 5v tolerant.
