@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12623321_e7eddb2f",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T21:49:25Z",
+      "side": 1,
+      "message": "You can add a \"-l DEBUG\" to try and figure out why this step is failing.",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "0b78bfae143d165d84b0d8e9db6dec04db54d94c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
