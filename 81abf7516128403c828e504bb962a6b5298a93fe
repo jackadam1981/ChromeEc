@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c80f916_9c6a4336",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-01T16:22:39Z",
+      "side": 1,
+      "message": "Looks right to me with just a couple of nits.\n\nAlso, once we land this, we should push this out to all of the current platforms.",
+      "revId": "81abf7516128403c828e504bb962a6b5298a93fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7772f13_bba99c4d",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-01T16:22:39Z",
+      "side": 1,
+      "message": "we should put this behind the file\u0027s CPRINTS so it can be masked if needed.",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 32
+      },
+      "revId": "81abf7516128403c828e504bb962a6b5298a93fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5920cacd_8343fd56",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-01T16:22:39Z",
+      "side": 1,
+      "message": "We don\u0027t need this check or print, let\u0027s just always set the level to 1.",
+      "range": {
+        "startLine": 272,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 46
+      },
+      "revId": "81abf7516128403c828e504bb962a6b5298a93fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
