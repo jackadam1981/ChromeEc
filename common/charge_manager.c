@@ -4,6 +4,7 @@
  */
 
 #include "adc.h"
+#include "apdo.h"
 #include "atomic.h"
 #include "battery.h"
 #include "charge_manager.h"
@@ -838,10 +839,14 @@ static void charge_manager_refresh(void)
 #endif
 
 	/* New power requests must be set only after updating the globals. */
-	if (is_pd_port(updated_new_port))
+	if (is_pd_port(updated_new_port)) {
+		CPRINTS("SET UPDATNEWPORT");
 		pd_set_new_power_request(updated_new_port);
-	if (is_pd_port(updated_old_port))
+	}
+	if (is_pd_port(updated_old_port)) {
+		CPRINTS("SET UPDATOLDPORT");
 		pd_set_new_power_request(updated_old_port);
+	}
 
 	if (power_changed)
 		/* notify host of power info change */
