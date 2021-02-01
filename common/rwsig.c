@@ -264,7 +264,9 @@ void rwsig_continue(void)
 
 void rwsig_task(void *u)
 {
+#if 0
 	uint32_t evt;
+#endif
 
 	if (system_get_image_copy() != EC_IMAGE_RO)
 		goto exit;
@@ -280,6 +282,9 @@ void rwsig_task(void *u)
 		rwsig_status = RWSIG_INVALID;
 		goto exit;
 	}
+	rwsig_status = RWSIG_ABORTED;
+
+#if 0
 	rwsig_status = RWSIG_VALID;
 
 	/* Jump to RW after a timeout */
@@ -290,6 +295,7 @@ void rwsig_task(void *u)
 		rwsig_jump_now();
 	else
 		rwsig_status = RWSIG_ABORTED;
+#endif
 
 exit:
 	/* We're done, yield forever. */
