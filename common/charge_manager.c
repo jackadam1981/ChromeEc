@@ -18,6 +18,7 @@
 #include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_pd.h"
+#include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
@@ -409,8 +410,13 @@ static void charge_manager_fill_power_info(int port,
 			r->meas.voltage_max = 0;
 			r->meas.voltage_now =
 				r->role == USB_PD_PORT_POWER_SOURCE ? 5000 : 0;
-			r->meas.current_max =
-				charge_manager_get_source_current(port);
+			/* TCPMv2 tracks source-out current in the DPM */
+			if (IS_ENABLED(CONFIG_USB_PD_TCPMV2))
+				r->meas.current_max =
+					dpm_get_source_current(port);
+			else
+				r->meas.current_max =
+					charge_manager_get_source_current(port);
 			r->max_power = 0;
 		} else {
 			r->type = USB_CHG_TYPE_NONE;
