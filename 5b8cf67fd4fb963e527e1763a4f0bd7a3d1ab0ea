@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33705e73_b409918a",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-01T17:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "715eb6a5_5e0341b3",
+      "revId": "5b8cf67fd4fb963e527e1763a4f0bd7a3d1ab0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a588f5f6_a66661c7",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e3165d6_8009a344",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-01T17:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4b55969_7972c631",
+      "revId": "5b8cf67fd4fb963e527e1763a4f0bd7a3d1ab0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91f714fb_a0e82210",
@@ -84,6 +120,24 @@
       "side": 1,
       "message": "You are right. The offsets in the header include the index byte. Working on a fix for here and \n amd_fp6_set_mux. \n\nI will followup with AMD on the behavior of this register. I\u0027m guessing control status bits can\u0027t be considered valid until \"command complete\".",
       "parentUuid": "91f714fb_a0e82210",
+      "revId": "5b8cf67fd4fb963e527e1763a4f0bd7a3d1ab0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f3fcd43_95b304ed",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-01T17:47:09Z",
+      "side": 1,
+      "message": "Refactored to follow the examples in 3.3.7.\n\n1. Check mux ready status\n2. Write\n3. Check port status until complete or error\n\nI\u0027m not checking port status in amd_fp6_get_mux because I assume this will not be called concurrently with amd_fp6_set_mux.",
+      "parentUuid": "e38acb56_9d0dcb7b",
       "revId": "5b8cf67fd4fb963e527e1763a4f0bd7a3d1ab0ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
