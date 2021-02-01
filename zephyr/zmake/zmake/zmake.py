@@ -54,12 +54,22 @@ class Zmake:
 
         self.logger = logging.getLogger(self.__class__.__name__)
 
-    def configure(self, project_dir, build_dir,
+    @property
+    def platform_ec_dir(self):
+        return zmake.modules.locate_modules(
+            checkout_dir=self.checkout,
+            version=None)['ec-shim']
+
+    def configure(self, project_dir, build_dir=None,
                   version=None, zephyr_base=None, module_paths=None,
                   toolchain=None, ignore_unsupported_zephyr_version=False,
                   build_after_configure=False, test_after_configure=False,
                   bringup=False):
         """Set up a build directory to later be built by "zmake build"."""
+        # Resolve build_dir if needed.
+        build_dir = util.resolve_build_dir(platform_ec_dir=self.platform_ec_dir,
+                                           project_dir=project_dir,
+                                           build_dir=build_dir)
         # Make sure the build directory is clean.
         if os.path.exists(build_dir):
             self.logger.info("Clearing old build directory %s", build_dir)
