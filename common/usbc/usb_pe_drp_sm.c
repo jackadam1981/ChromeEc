@@ -5987,6 +5987,7 @@ static void pe_vdm_response_entry(int port)
 		vdo_len = 1;
 	}
 	/* Add structured version */
+	tx_payload[0] &= ~VDO_SVDM_VERS(0x3);
 	tx_payload[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
 
 	/*
