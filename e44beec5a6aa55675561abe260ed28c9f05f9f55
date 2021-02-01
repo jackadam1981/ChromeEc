@@ -16,6 +16,121 @@
       "message": "Hi!\n\nThis is first attempt to fix DRP in Low Power Mode for TUSB422. Let me know what you think about it.",
       "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6934e7f2_0a09588e",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T21:42:36Z",
+      "side": 1,
+      "message": "Delete this guard and used __maybe_unused on the static variables.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fbaac87_8830026b",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T21:42:36Z",
+      "side": 1,
+      "message": "Use bool and true/false.",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060e5d71_8bb8907b",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T21:42:36Z",
+      "side": 1,
+      "message": "Why are you checking the POWER_STATUS interrupt here?  This bit doesn\u0027t indicate anything regarding the ROLE_CONTROL register.\n\nEither eliminate this check, or add an additional read to the POWER_STATUS register to try and qualify the condition described in the datasheet.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 47
+      },
+      "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b64a17a_4e6a0269",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T21:42:36Z",
+      "side": 1,
+      "message": "Use TCPC_REG_ROLE_CTRL_DRP(role_ctrl)",
+      "range": {
+        "startLine": 171,
+        "startChar": 9,
+        "endLine": 171,
+        "endChar": 48
+      },
+      "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e491c0_81afebfe",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T21:42:36Z",
+      "side": 1,
+      "message": "Delete guard and used \"__maybe_unused static\"",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 3
+      },
+      "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
