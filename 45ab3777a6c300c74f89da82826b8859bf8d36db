@@ -16,6 +16,24 @@
       "message": "This is overrideable, so you only need to define a new version for vilboz and don\u0027t need to touch this or any other boards. See ezkinil for an existing example.",
       "revId": "45ab3777a6c300c74f89da82826b8859bf8d36db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c588b70f_3717444d",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2021-02-01T07:22:08Z",
+      "side": 0,
+      "message": "done",
+      "parentUuid": "f485bdbf_2cf97bec",
+      "revId": "45ab3777a6c300c74f89da82826b8859bf8d36db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
