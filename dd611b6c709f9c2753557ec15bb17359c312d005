@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4225bd06_6c74e612",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T22:28:44Z",
+      "side": 1,
+      "message": "You should also add of ec_cfg_has_keyboard_backlight() to the kb_backlight_enable() and kb_backlight_disable() functions.\n\nAlso, when the keyboard backlight is disabled, if the corresponding circuitry is not stuffed, GPIO_EC_KB_BL_EN should be configured as an input with a pull-down to save power.",
+      "revId": "dd611b6c709f9c2753557ec15bb17359c312d005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569dd88e_c51954a9",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T22:28:44Z",
+      "side": 1,
+      "message": "ec_cfg_has_keyboard_backlight returns bool type.\n\nChange to \"if (ec_cfg_has_keyboard_backlight())\".",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 68
+      },
+      "revId": "dd611b6c709f9c2753557ec15bb17359c312d005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
