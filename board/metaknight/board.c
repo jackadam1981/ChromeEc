@@ -609,6 +609,54 @@ struct motion_sensor_t lsm6dsm_base_gyro = {
 
 static int base_gyro_config;
 
+/* detect g-sensor */
+static void sensor_detect_deferred(void)
+{
+	int ret, val;
+
+	/* Check lid accel chip */
+	ret = i2c_read8(I2C_PORT_SENSOR, BMA2x2_I2C_ADDR1_FLAGS,
+		BMA2x2_CHIP_ID_ADDR, &val);
+
+	if(ret == EC_SUCCESS)
+		CPRINTS("g-sensor detect : lid accel is BMA255");
+	else
+	{
+		ret = i2c_read8(I2C_PORT_SENSOR, KX022_ADDR0_FLAGS,
+			KX022_WHOAMI, &val);
+
+		if(ret == EC_SUCCESS)
+			CPRINTS("g-sensor detect : lid accel is KX022");
+		else
+			CPRINTS("g-sensor detect : lid accel detect fail!");
+	}
+
+	/* Check base accel chip */
+	ret = i2c_read8(I2C_PORT_SENSOR, BMI160_ADDR0_FLAGS,
+		BMI160_CHIP_ID, &val);
+
+	if(ret == EC_SUCCESS)
+		CPRINTS("g-sensor detect : base accel is BMI160");
+	else
+	{
+		ret = i2c_read8(I2C_PORT_SENSOR, LSM6DSM_ADDR0_FLAGS,
+			LSM6DSM_WHO_AM_I_REG, &val);
+
+		if(ret == EC_SUCCESS)
+			CPRINTS("g-sensor detect : base accel is LSM6DS3TR-C");
+		else
+			CPRINTS("g-sensor detect : base accel detect fail!");
+	}
+
+}
+DECLARE_DEFERRED(sensor_detect_deferred);
+
+static void sensor_detect(void)
+{
+	hook_call_deferred(&sensor_detect_deferred_data, (3000 * MSEC));
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, sensor_detect, HOOK_PRIO_LAST);
+
 void board_init(void)
 {
 	int on;
