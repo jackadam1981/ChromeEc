@@ -106,6 +106,17 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+__override uint32_t board_override_feature_flags0(uint32_t flags0)
+{
+	/*
+	 * Remove keyboard backlight feature for devices that don't support it.
+	 */
+	if (ec_cfg_has_keyboard_backlight() == KEYBOARD_BACKLIGHT_DISABLED)
+		return (flags0 & ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
+	else
+		return flags0;
+}
+
 /******************************************************************************/
 /*
  * FW_CONFIG defaults for Voxel if the CBI data is not initialized.
