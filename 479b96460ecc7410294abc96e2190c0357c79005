@@ -16,6 +16,23 @@
       "message": "Need AMD to confirm if this timeout is reasonable.",
       "revId": "479b96460ecc7410294abc96e2190c0357c79005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b7435d5_5676e3a9",
+        "filename": "driver/usb_mux/amd_fp6.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T21:38:30Z",
+      "side": 1,
+      "message": "BIT(4)?",
+      "revId": "479b96460ecc7410294abc96e2190c0357c79005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

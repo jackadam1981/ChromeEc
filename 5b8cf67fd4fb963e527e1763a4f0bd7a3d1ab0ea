@@ -140,6 +140,24 @@
       "parentUuid": "e38acb56_9d0dcb7b",
       "revId": "5b8cf67fd4fb963e527e1763a4f0bd7a3d1ab0ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f93c67_2f4613f1",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T21:38:30Z",
+      "side": 1,
+      "message": "Sounds like a safe assumption.",
+      "parentUuid": "3f3fcd43_95b304ed",
+      "revId": "5b8cf67fd4fb963e527e1763a4f0bd7a3d1ab0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
