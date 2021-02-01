@@ -216,4 +216,8 @@ int stm32gx_ucpd_get_chip_info(int port, int live,
  */
 void ucpd_cc_detect_notify_enable(int enable);
 
+
+enum ec_error_list stm32gx_ucpd_set_bist_test_mode(const int port,
+						   const bool enable);
+
 #endif /* __CROS_EC_UCPD_STM32GX_H */
