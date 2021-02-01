@@ -1529,7 +1529,7 @@ static void pd_update_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
 		 * Get max power that the partner offers (not necessarily what
 		 * this board will request)
 		 */
-		pd_find_pdo_index(pdo_cnt, pdos, PD_REV3_MAX_VOLTAGE,
+		pd_find_pdo_index(pdo_cnt, pdos, PD_REV3_MAX_VOLTAGE, 0,
 				  &max_pdo);
 		pd_extract_pdo_power(max_pdo, &max_ma, &max_mv);
 		max_mw = max_ma * max_mv / 1000;
