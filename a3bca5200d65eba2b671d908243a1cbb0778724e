@@ -16,6 +16,132 @@
       "message": "This CL will works only after PR 31818 is merged and picked to chrome-v2.4.",
       "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b480076c_e458e962",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-01T18:02:35Z",
+      "side": 1,
+      "message": "OK I reviewed it",
+      "parentUuid": "7485cf50_3492cdf5",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed922649_53aabbe4",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-01T18:02:35Z",
+      "side": 1,
+      "message": "Can you add a comment as to why the delay? Is this in the spec, or just something we know from experience?",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "649a6cf1_fea93f07",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-01T18:02:35Z",
+      "side": 1,
+      "message": "drop blank line",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a65133_8bc0c32a",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-01T18:02:35Z",
+      "side": 1,
+      "message": "can we use at least 3-char variable names (except for loops)?\nperhaps stat or status?",
+      "range": {
+        "startLine": 539,
+        "startChar": 10,
+        "endLine": 539,
+        "endChar": 12
+      },
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1939e1ca_e0f7b2b6",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-01T18:02:35Z",
+      "side": 1,
+      "message": "drop blank line",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020e4dbb_143a754a",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-01T18:02:35Z",
+      "side": 1,
+      "message": "Do we need these variables? It is just to make the params clearer?",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1cc057d_5acc0622",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-01T18:02:35Z",
+      "side": 1,
+      "message": "drop blank line",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
