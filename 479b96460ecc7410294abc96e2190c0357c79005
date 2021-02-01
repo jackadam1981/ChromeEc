@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c790af25_4f2662b1",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T23:43:48Z",
+      "side": 1,
+      "message": "Yeah, I would hesitate to hold up the PD tasks that long.  We could miss a lot of partner messages during that time frame.  We\u0027re currently allowing some amount of delay for the virtual mux if you wanted to use that as a maximum time wait guide.",
+      "parentUuid": "fcf88948_549bc3db",
+      "revId": "479b96460ecc7410294abc96e2190c0357c79005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b7435d5_5676e3a9",
         "filename": "driver/usb_mux/amd_fp6.h",
         "patchSetId": 7
