@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab1b5f21_ceb99934",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-01T23:59:38Z",
+      "side": 1,
+      "message": "Sounds good.  At some point, we should have the delayed muxes update asynchronously, but that\u0027s definitely more of a long-term issue.",
+      "parentUuid": "23a19257_49d6862b",
+      "revId": "479b96460ecc7410294abc96e2190c0357c79005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b7435d5_5676e3a9",
         "filename": "driver/usb_mux/amd_fp6.h",
         "patchSetId": 7
