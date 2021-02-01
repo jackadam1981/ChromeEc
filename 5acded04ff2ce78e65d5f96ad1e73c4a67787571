@@ -16,6 +16,24 @@
       "message": "When will the pipeline re-run?  Does this have to merge first.",
       "revId": "5acded04ff2ce78e65d5f96ad1e73c4a67787571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a919618_d1c627fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-01T23:08:30Z",
+      "side": 1,
+      "message": "Yes we have to submit this and then (I hope) it will run automatically when the CQ adds a new CL to our tree.",
+      "parentUuid": "e58c2375_b7b0c033",
+      "revId": "5acded04ff2ce78e65d5f96ad1e73c4a67787571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
