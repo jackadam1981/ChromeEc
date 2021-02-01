@@ -16,6 +16,24 @@
       "message": "coachz factory image(13443 branch) ec tool not support commond：ectool pchg 0\nhow can we commit the latest ectool( ectool pchg 0) to factory image",
       "revId": "d9b7ea8ff23a744e7a5e0f28fe7ca0e36ef11a9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f036f83e_5b513177",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-02-01T19:35:11Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2665293",
+      "parentUuid": "37d0481b_d334622b",
+      "revId": "d9b7ea8ff23a744e7a5e0f28fe7ca0e36ef11a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
