@@ -152,6 +152,10 @@ static int battery_was_removed;
 static int problems_exist;
 static int debugging;
 
+__overridable int board_max_current_limit(int current_requested)
+{
+	return current_requested;
+}
 
 /* Track problems in communicating with the battery or charger */
 enum problem_type {
@@ -2039,6 +2043,7 @@ wait_for_it:
 		}
 		prev_full = is_full;
 
+
 #ifndef CONFIG_CHARGER_MAINTAIN_VBAT
 		/* Turn charger off if it's not needed */
 		if (curr.state == ST_IDLE || curr.state == ST_DISCHARGE) {
@@ -2046,6 +2051,9 @@ wait_for_it:
 			curr.requested_current = 0;
 		}
 #endif
+
+		curr.requested_current =
+			board_max_current_limit(curr.requested_current);
 
 		/* Apply external limits */
 		if (curr.requested_current > user_current_limit)
