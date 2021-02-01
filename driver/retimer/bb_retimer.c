@@ -393,6 +393,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
+	int rv;
 	mux_state_t mux_no_flip_state;
 
 	/* Retimer is OFF for NDA, so no disconnect mode config is required */
@@ -501,8 +502,14 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	retimer_mux_state[port] = mux_state;
 
 	/* Writing the register4 */
-	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
-			set_retimer_con);
+	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+			      set_retimer_con);
+
+	if (retimer_mux_state[port] != mux_state) {
+		msleep(10);
+	}
+
+	return rv;
 }
 
 static int retimer_low_power_mode(const struct usb_mux *me)
