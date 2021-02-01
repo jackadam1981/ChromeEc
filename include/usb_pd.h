@@ -1451,6 +1451,9 @@ void pd_set_max_voltage(unsigned mv);
  */
 unsigned pd_get_max_voltage(void);
 
+void pd_set_designated_voltage(unsigned mv);
+unsigned pd_get_designated_voltage(void);
+
 /**
  * Check if this board supports the given input voltage.
  *

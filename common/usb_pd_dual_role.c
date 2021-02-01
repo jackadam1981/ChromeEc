@@ -5,6 +5,7 @@
  * Dual Role (Source & Sink) USB-PD module.
  */
 
+#include "apdo.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "system.h"
@@ -20,7 +21,9 @@
  * before getting source caps
  */
 static unsigned int max_request_mv = PD_MAX_VOLTAGE_MV;
+static unsigned int designated_request_mv;
 
+/* TODO move this out */
 STATIC_IF_NOT(CONFIG_USB_PD_PREFER_MV)
 struct pd_pref_config_t __maybe_unused pd_pref_config;
 
@@ -34,13 +37,24 @@ unsigned int pd_get_max_voltage(void)
 	return max_request_mv;
 }
 
+void pd_set_designated_voltage(unsigned int mv)
+{
+	designated_request_mv = mv;
+}
+
+unsigned int pd_get_designated_voltage(void)
+{
+	return designated_request_mv;
+}
+
+
 /*
  * Zinger implements a board specific usb policy that does not define
  * PD_MAX_VOLTAGE_MV and PD_OPERATING_POWER_MW. And in turn, does not
  * use the following functions.
  */
-int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
-					int max_mv, uint32_t *selected_pdo)
+int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t *const src_caps,
+		      int max_mv, int designated_mv, uint32_t *selected_pdo)
 {
 	int i, uw, mv;
 	int ret = 0;
@@ -84,7 +98,16 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 
 		if (mv > max_mv)
 			continue;
+
 		uw = MIN(uw, PD_MAX_POWER_MW * 1000);
+
+		if (mv == designated_mv) {
+			ret = i;
+			cur_uw = uw;
+			cur_mv = mv;
+			break;
+		}
+
 		prefer_cur = 0;
 
 		/* Apply special rules in favor of voltage  */
@@ -180,7 +203,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 			uint32_t *mv, int port)
 {
 	uint32_t pdo;
-	int pdo_index, flags = 0;
+	int pdo_index = -1, flags = 0;
 	int uw;
 	int max_or_min_ma;
 	int max_or_min_mw;
@@ -192,6 +215,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	int charging_allowed;
 	int max_request_allowed;
 	uint32_t max_request_mv = pd_get_max_voltage();
+	uint32_t designated_mv = pd_get_designated_voltage();
 
 	/*
 	 * If this port is the current charge port, or if there isn't an active
@@ -215,6 +239,9 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	else
 		max_request_allowed = 1;
 
+	if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+		if (apdo_is_enabled())
+			designated_mv = apdo_get_adaptive_voltage(port);
 	/*
 	 * If currently charging on a different port, or we are not allowed to
 	 * request the max voltage, then select vSafe5V
@@ -222,7 +249,8 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	if (charging_allowed && max_request_allowed) {
 		/* find pdo index for max voltage we can request */
 		pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
-						max_request_mv, &pdo);
+					      max_request_mv,
+					      designated_mv, &pdo);
 	} else {
 		/* src cap 0 should be vSafe5V */
 		pdo_index = 0;
@@ -321,11 +349,18 @@ void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 		uint32_t ma, mv, pdo;
+		uint32_t designated_mv = pd_get_designated_voltage();
+
+		if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+			if (apdo_is_enabled())
+				designated_mv =
+					apdo_get_adaptive_voltage(port);
 
 		/* Get max power info that we could request */
+		/* TODO */
 		pd_find_pdo_index(pd_get_src_cap_cnt(port),
-					pd_get_src_caps(port),
-					pd_get_max_voltage(), &pdo);
+				  pd_get_src_caps(port), pd_get_max_voltage(),
+				  designated_mv, &pdo);
 		pd_extract_pdo_power(pdo, &ma, &mv);
 
 		/* Set max. limit, but apply 500mA ceiling */

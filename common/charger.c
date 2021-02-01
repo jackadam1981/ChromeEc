@@ -505,6 +505,16 @@ enum ec_error_list charger_get_input_current(int chgnum, int *input_current)
 	return chg_chips[chgnum].drv->get_input_current(chgnum, input_current);
 }
 
+enum ec_error_list charger_get_input_power(int chgnum, int *input_power)
+{
+	if (chgnum < 0 || chgnum >= board_get_charger_chip_count()) {
+		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+
 enum ec_error_list charger_manufacturer_id(int *id)
 {
 	int chgnum = 0;

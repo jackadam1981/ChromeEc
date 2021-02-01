@@ -3951,6 +3951,12 @@
 #undef CONFIG_USB_PD_TCPMV2
 
 /*
+ * TODO
+ *
+ */
+#undef CONFIG_USB_PD_ADAPTIVE_PDO
+
+/*
  * Device Types for TCPMv2.
  *
  * Exactly one must be defined when CONFIG_USB_PD_TCPMV2 is defined.
