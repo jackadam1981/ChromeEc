@@ -39,6 +39,24 @@
       "message": "Right now crrev.com/c/2654588 will call\n```\n.../firmware_builder.py bundle --output-dir {DIRECTORY} --metadata {FILE}\n```\n\n{DIRECTORY} and {FILE} may (or may not) be under /tmp.  (The current build api means that they generally will be, but it\u0027s not guaranteed.)\n\nThe proto definition for metadata is pending, but should probably go in https://source.corp.google.com/chromeos_public/chromiumos/infra/proto/+/HEAD/src/chromite/api/firmware.proto",
       "revId": "4464623d242790c41e42c13083f30659333adc93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c50ed7_9ce16255",
+        "filename": "firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2021-02-01T20:29:35Z",
+      "side": 1,
+      "message": "Make that https://source.corp.google.com/chromeos_public/infra/proto/src/chromite/api/firmware.proto",
+      "parentUuid": "b1a02566_df3fbbb8",
+      "revId": "4464623d242790c41e42c13083f30659333adc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
