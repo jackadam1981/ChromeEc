@@ -183,5 +183,7 @@ uint32_t pe_get_flags(int port);
  */
 void pe_notify_event(int port, uint32_t event_mask);
 
+void pe_get_last_request(int port, uint32_t *ma, uint32_t *mv);
+
 #endif /* __CROS_EC_USB_PE_H */
 
