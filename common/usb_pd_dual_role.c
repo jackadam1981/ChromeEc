@@ -5,6 +5,7 @@
  * Dual Role (Source & Sink) USB-PD module.
  */
 
+#include "apdo.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "system.h"
@@ -180,7 +181,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 			uint32_t *mv, int port)
 {
 	uint32_t pdo;
-	int pdo_index, flags = 0;
+	int pdo_index = -1, flags = 0;
 	int uw;
 	int max_or_min_ma;
 	int max_or_min_mw;
@@ -220,9 +221,15 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	 * request the max voltage, then select vSafe5V
 	 */
 	if (charging_allowed && max_request_allowed) {
-		/* find pdo index for max voltage we can request */
-		pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
-						max_request_mv, &pdo);
+		if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+			pdo_index = apdo_find_pdo_index(port, src_cap_cnt,
+							src_caps,
+							max_request_mv, &pdo);
+
+		if (pdo_index == -1)
+			/* find pdo index for max voltage we can request */
+			pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
+						      max_request_mv, &pdo);
 	} else {
 		/* src cap 0 should be vSafe5V */
 		pdo_index = 0;

@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "apdo.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
@@ -570,8 +571,11 @@ void pd_set_new_power_request(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		/* Must be in Attached.SNK when this function is called */
-		if (get_state_tc(port) == TC_ATTACHED_SNK)
+		if (get_state_tc(port) == TC_ATTACHED_SNK) {
+			if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+				apdo_reset_timer();
 			pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
+		}
 	}
 }
 

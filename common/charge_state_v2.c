@@ -5,6 +5,7 @@
  * Battery charging task and state machine.
  */
 
+#include "apdo.h"
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_manager.h"
@@ -1712,6 +1713,10 @@ void charger_task(void *u)
 		charge_reset_stable_current();
 	}
 
+	if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO)) {
+		apdo_init();
+	}
+
 	battery_level_shutdown = board_set_battery_level_shutdown();
 
 	while (1) {
@@ -2179,8 +2184,11 @@ wait_for_it:
 			if (is_pd_supply &&
 			    prev_plt_and_desired_mw !=
 				    charge_get_plt_plus_bat_desired_mw())
-				pd_set_new_power_request(port);
+				port=port;
+				//pd_set_new_power_request(port);
 		}
+
+		apdo_try_new_power_request();
 
 		/* Adjust for time spent in this loop */
 		sleep_usec -= (int)(get_time().val - curr.ts.val);

@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "apdo.h"
 #include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
@@ -1620,6 +1621,10 @@ static void pe_send_request_msg(int port)
 
 	CPRINTF("C%d: Req [%d] %dmV %dmA", port, RDO_POS(rdo),
 					supply_voltage, curr_limit);
+
+	if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+		apdo_set_request_power(port, supply_voltage, curr_limit);
+
 	if (rdo & RDO_CAP_MISMATCH)
 		CPRINTF(" Mismatch");
 	CPRINTF("\n");
