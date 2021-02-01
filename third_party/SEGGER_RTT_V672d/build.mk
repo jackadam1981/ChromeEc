@@ -14,6 +14,6 @@ dirs-y+="$(_rtt_cur_dir)"
 dirs-y+="$(_rtt_src_dir)"
 dirs-y+="$(_syscalls_src_dir)"
 
-all-obj-y+=$(_rtt_src_dir)/SEGGER_RTT.o
-all-obj-y+=$(_rtt_src_dir)/SEGGER_RTT_printf.o
-#all-obj-y+=$(_syscalls_src_dir)/SEGGER_RTT_Syscalls_GCC.o
+all-obj-ro+=$(_rtt_src_dir)/SEGGER_RTT.o
+all-obj-ro+=$(_rtt_src_dir)/SEGGER_RTT_printf.o
+#all-obj-ro+=$(_syscalls_src_dir)/SEGGER_RTT_Syscalls_GCC.o

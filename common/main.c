@@ -33,14 +33,29 @@
 #include "vboot.h"
 #include "watchdog.h"
 
+#ifdef SECTION_IS_RO
+#include <third_party/SEGGER_RTT_V672d/RTT/SEGGER_RTT.h>
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
-#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
 test_mockable __keep int main(void)
 {
 	int mpu_pre_init_rv = EC_SUCCESS;
+
+#ifdef SECTION_IS_RO
+	SEGGER_RTT_Init();
+#endif
+#if 0
+	while (1) {
+		SEGGER_RTT_WriteString(0, "Hello World from SEGGER!\n");
+		SEGGER_RTT_printf(0, "Counter: %d\n", counter);
+		counter++;
+	}
+#endif
 
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS)) {
 		/*

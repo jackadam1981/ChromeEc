@@ -15,6 +15,10 @@
 #include "task.h"
 #include "util.h"
 
+#ifdef SECTION_IS_RO
+#include <third_party/SEGGER_RTT_V672d/RTT/SEGGER_RTT.h>
+#endif
+
 /**
  * Disable restricted commands when the system is locked.
  *
@@ -82,14 +86,36 @@ static void spi_configure(void)
 /* Initialize board. */
 static void board_init(void)
 {
+#ifdef SECTION_IS_RO
+	int counter = 0;
+#endif
+
 	enum fp_sensor_spi_select spi_select = get_fp_sensor_spi_select();
 
 	ccprints("FP_SPI_SEL: %s", fp_sensor_spi_select_to_str(spi_select));
 
+#ifdef SECTION_IS_RO
+	SEGGER_RTT_printf(0, "FP_SPI_SEL: %s",
+			  fp_sensor_spi_select_to_str(spi_select));
+#endif
+
 	spi_configure();
 
 	ccprints("TRANSPORT_SEL: %s",
-		fp_transport_type_to_str(get_fp_transport_type()));
+		 fp_transport_type_to_str(get_fp_transport_type()));
+
+#ifdef SECTION_IS_RO
+	SEGGER_RTT_printf(0, "TRANSPORT_SEL: %s",
+			  fp_transport_type_to_str(get_fp_transport_type()));
+#endif
+
+#ifdef SECTION_IS_RO
+	while (1) {
+		SEGGER_RTT_WriteString(0, "Hello World from SEGGER!\n");
+		SEGGER_RTT_printf(0, "Counter: %d\n", counter);
+		counter++;
+	}
+#endif
 
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
