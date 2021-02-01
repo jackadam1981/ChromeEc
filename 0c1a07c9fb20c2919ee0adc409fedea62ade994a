@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5659b5cf_20fcabc4",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-01T23:44:01Z",
+      "side": 1,
+      "message": "Yeah, I thought of that. I prefer gpio.inc just because there\u0027s less surprises. We could override here and still print a warning.\n\nLooks like a few boards configure an interrupt on CCD_MODE_ODL (e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/release-firmware/fpmcu-dartmonkey/board/trogdor/board.c;l\u003d90). I assume we can set the GPIO_ODR_HIGH flag without breaking the interrupt config?",
+      "parentUuid": "2ef231eb_e42ccf76",
+      "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "276cc430_7a0eb0e3",
         "filename": "common/usb_common.c",
         "patchSetId": 5
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f98d9ce2_9507583b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-01T23:44:01Z",
+      "side": 1,
+      "message": "I think it\u0027d be fine to move into TCPMv2 TC layer and just not enable this for TCPMv1 devices since all new devices use TCPMv2.",
+      "parentUuid": "276cc430_7a0eb0e3",
+      "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a11cfce7_be8856f9",
         "filename": "common/usb_common.c",
         "patchSetId": 5
@@ -48,6 +84,24 @@
       "writtenOn": "2021-02-01T21:51:55Z",
       "side": 1,
       "message": "Any concerns with unpowered servo_v4 connections when we transition to states where we can\u0027t stay connected (ex. S5)?  Or is it assumed that those connections will always be caught by the security chip?",
+      "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c961a69c_da75fead",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-01T23:44:01Z",
+      "side": 1,
+      "message": "Can a debug accessory be detected when unpowered?",
+      "parentUuid": "a11cfce7_be8856f9",
       "revId": "0c1a07c9fb20c2919ee0adc409fedea62ade994a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
