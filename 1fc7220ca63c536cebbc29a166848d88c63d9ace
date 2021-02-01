@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d681af_a7c25728",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-02-01T10:27:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f664f1b_28b731da",
+      "revId": "1fc7220ca63c536cebbc29a166848d88c63d9ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76e0a75d_d36f3f06",
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e280bd67_f6f3480e",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-02-01T10:27:35Z",
+      "side": 1,
+      "message": "This is watchdog base address. The reset cause also should check the watchdog register.",
+      "parentUuid": "76e0a75d_d36f3f06",
+      "revId": "1fc7220ca63c536cebbc29a166848d88c63d9ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3735b3da_f03098b5",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 1
@@ -82,6 +118,24 @@
       "writtenOn": "2021-01-29T17:13:56Z",
       "side": 1,
       "message": "comment",
+      "revId": "1fc7220ca63c536cebbc29a166848d88c63d9ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a1a3874_01b2d07c",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-02-01T10:27:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3735b3da_f03098b5",
       "revId": "1fc7220ca63c536cebbc29a166848d88c63d9ace",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
