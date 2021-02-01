@@ -874,6 +874,10 @@ inline void power_set_pause_in_s5(int pause)
 /*****************************************************************************/
 /* Console commands */
 
+/* 5V enable request bitmask from various tasks. */
+static uint32_t pwr_5v_en_req;
+static mutex_t pwr_5v_ctl_mtx;
+
 static int command_powerinfo(int argc, char **argv)
 {
 	/*
@@ -882,6 +886,9 @@ static int command_powerinfo(int argc, char **argv)
 	 */
 	ccprintf("power state %d = %s, in 0x%04x\n",
 		 state, state_names[state], in_signals);
+
+	if (IS_ENABLED(CONFIG_POWER_PP5000_CONTROL))
+		ccprintf("5v_en=0x%x\n", pwr_5v_en_req);
 
 	return EC_SUCCESS;
 }
@@ -1028,10 +1035,6 @@ __overridable void board_power_5v_enable(int enable)
 	else
 		gpio_set_level(GPIO_EN_PP5000, 0);
 }
-
-/* 5V enable request bitmask from various tasks. */
-static uint32_t pwr_5v_en_req;
-static mutex_t pwr_5v_ctl_mtx;
 
 void power_5v_enable(task_id_t tid, int enable)
 {
