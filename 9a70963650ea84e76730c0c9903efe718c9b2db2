@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a58c420d_bd333cc9",
+        "filename": "board/brya/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T20:59:51Z",
+      "side": 1,
+      "message": "DSG indicates when the battery is actively discharging.  I believe this bit will clear when charging is active.\n\nI think the XDSG bit (big 13) is better to check here.  This bit, when set indicates discharging is disabled.  So reg_mask 0x2000 and disconnect_value 0x2000.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "9a70963650ea84e76730c0c9903efe718c9b2db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e2ce57_c81b7919",
+        "filename": "board/brya/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T20:59:51Z",
+      "side": 1,
+      "message": "This is a reasonable value, but I don\u0027t find this specified in the datasheet.",
+      "range": {
+        "startLine": 56,
+        "startChar": 24,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "9a70963650ea84e76730c0c9903efe718c9b2db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc8d144_16e7146b",
+        "filename": "board/brya/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-01T20:59:51Z",
+      "side": 1,
+      "message": "This CL won\u0027t compile on it\u0027s own without enum battery_type.  Move that into this CL.",
+      "range": {
+        "startLine": 66,
+        "startChar": 47,
+        "endLine": 66,
+        "endChar": 65
+      },
+      "revId": "9a70963650ea84e76730c0c9903efe718c9b2db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
