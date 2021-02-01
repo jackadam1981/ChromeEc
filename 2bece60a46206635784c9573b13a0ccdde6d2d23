@@ -52,6 +52,24 @@
       "parentUuid": "382c175d_37fe8e4c",
       "revId": "2bece60a46206635784c9573b13a0ccdde6d2d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73b55ea_0440aae6",
+        "filename": "driver/usb_mux/ps8822.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-01T18:47:48Z",
+      "side": 1,
+      "message": "Looks like this is fixed now.",
+      "parentUuid": "2facd00b_11fd4970",
+      "revId": "2bece60a46206635784c9573b13a0ccdde6d2d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
