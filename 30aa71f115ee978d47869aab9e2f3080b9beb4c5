@@ -63,6 +63,30 @@
       },
       "revId": "30aa71f115ee978d47869aab9e2f3080b9beb4c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85f1760_d5af21bf",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-02T22:01:45Z",
+      "side": 1,
+      "message": "Ah, I missed that bit. Nevermind then, all is well.",
+      "parentUuid": "647d8418_af440c46",
+      "range": {
+        "startLine": 233,
+        "startChar": 23,
+        "endLine": 233,
+        "endChar": 35
+      },
+      "revId": "30aa71f115ee978d47869aab9e2f3080b9beb4c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
