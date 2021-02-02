@@ -131,7 +131,8 @@ struct pchg {
 	/* Error (enum pchg_error). Port is disabled until it's cleared. */
 	uint32_t error;
 	/* Battery percentage (0% ~ 100%) of the connected peripheral device */
-	uint8_t battery_percent;
+	uint8_t batt_percent;
+	uint8_t prev_percent;
 };
 
 /**
