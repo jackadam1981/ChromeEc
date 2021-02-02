@@ -22,6 +22,30 @@
       },
       "revId": "dfe291ae820ae3263f7622a069bc4e48d2cac170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0559b68c_e7ae1e7e",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-02T00:04:31Z",
+      "side": 1,
+      "message": "Moved.",
+      "parentUuid": "0dd84276_43cb16a4",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "dfe291ae820ae3263f7622a069bc4e48d2cac170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
