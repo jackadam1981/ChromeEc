@@ -64,7 +64,6 @@
 
 /* Console commands to remove to save flash spaces */
 #undef CONFIG_CMD_CRASH
-#undef CONFIG_CMD_I2C_SCAN
 #undef CONFIG_CMD_IDLE_STATS
 #undef CONFIG_CMD_PWR_AVG
 #undef CONFIG_CMD_MD
@@ -160,6 +159,7 @@ enum usb_strings {
 #define CONFIG_USB_PD_TCPM_STM32GX
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_DECODE_SOP
+#define CONFIG_HAS_TASK_PD_INT
 
 #define CONFIG_USB_PD_VBUS_DETECT_PPC
 #define CONFIG_USB_PD_DISCHARGE_PPC
