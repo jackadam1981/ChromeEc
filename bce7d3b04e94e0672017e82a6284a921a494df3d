@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b58fa3_0f78bbc7",
+        "filename": "zephyr/zmake/tests/test_util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:15:03Z",
+      "side": 1,
+      "message": "using hypothesis will generate good test cases for you, and hit all the edge cases. would recommend",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c31017c7_7246f1e9",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:15:03Z",
+      "side": 1,
+      "message": "two blank lines required between module-level function definitions\n\nhttps://www.python.org/dev/peps/pep-0008/#blank-lines",
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a5913b2_b79df8ea",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:15:03Z",
+      "side": 1,
+      "message": "you can drop \"is not None\"\n\nhttps://www.python.org/dev/peps/pep-0008/#programming-recommendations",
+      "range": {
+        "startLine": 160,
+        "startChar": 16,
+        "endLine": 160,
+        "endChar": 28
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7014c25c_766705d0",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:15:03Z",
+      "side": 1,
+      "message": "What happens if the project directory is not inside of the platform/ec checkout?",
+      "range": {
+        "startLine": 165,
+        "startChar": 44,
+        "endLine": 165,
+        "endChar": 55
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d58577d9_baa504e7",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:15:03Z",
+      "side": 1,
+      "message": "use pathlib.Path.relative_to instead",
+      "range": {
+        "startLine": 165,
+        "startChar": 28,
+        "endLine": 165,
+        "endChar": 43
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba8d4b7_b126d8c2",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:15:03Z",
+      "side": 1,
+      "message": "if module_paths was passed to configure, we should not be calling locate_modules",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 43
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c09ab6d_2c228ce5",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:15:03Z",
+      "side": 1,
+      "message": "Instead of passing in build_dir, I would bring that check outwards. It\u0027s one less parameter needed for the function, and reduces the \"jumping\" needed to read what\u0027s going on:\n\n    if not build_dir:\n        build_dir \u003d util.resolve_build_dir(platform_ec_dir\u003d..., project_dir\u003d...)",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
