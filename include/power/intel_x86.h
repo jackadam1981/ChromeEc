@@ -84,6 +84,15 @@ enum ec_error_list intel_x86_wait_power_up_ok(void);
 __override_proto int intel_x86_get_pg_ec_dsw_pwrok(void);
 
 /**
+ * Pass through DSW_PWROK
+ *
+ * The Default implementation passes the value of
+ * intel_x86_get_pg_ec_dsw_pwrok() and passes it through to the AP
+ * using GPIO_PCH_DSW_PWROK after a 10ms delay.
+ */
+__override_proto void intel_x86_dsw_pwrok_pass_thru(void);
+
+/**
  * Get the value of PG_EC_ALL_SYS_PWRGD.
  *
  * The default implementation is just to return the GPIO.  But if a
