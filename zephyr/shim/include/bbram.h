@@ -6,11 +6,19 @@
 #ifndef ZEPHYR_SHIM_INCLUDE_BBRAM_H_
 #define ZEPHYR_SHIM_INCLUDE_BBRAM_H_
 
+#include <devicetree.h>
+
+#define BBRAM_ENTRY(id) DT_CAT(BBRM_DATA_INDEX_, DT_LABEL(id))
+#define BBRAM_ENTRY_WITH_COMMA(id) BBRAM_ENTRY(id),
+
 /**
  * Layout of the battery-backed RAM region.
  * TODO (b:178807203) Migrate these values to devicetree registers.
  */
 enum bbram_data_index {
+#if DT_NODE_EXISTS(DT_NODELABEL(bbram))
+DT_FOREACH_CHILD(DT_NODELABEL(bbram), BBRAM_ENTRY_WITH_COMMA)
+#endif
 	/** General-purpose scratchpad */
 	BBRM_DATA_INDEX_SCRATCHPAD = 0,
 	/** Saved reset flags */

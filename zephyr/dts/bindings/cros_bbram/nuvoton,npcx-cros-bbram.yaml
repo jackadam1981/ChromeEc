@@ -8,5 +8,24 @@ compatible: "nuvoton,npcx-cros-bbram"
 include: base.yaml
 
 properties:
+    "#address-cells":
+        type: int
+        required: true
+        const: 1
+    "#size-cells":
+        type: int
+        required: true
+        const: 1
     reg:
         required: true
+
+child-binding:
+    description: Battery-backed RAM region memory, offset by the bbram address.
+    properties:
+        reg:
+            type: array
+            required: true
+        label:
+            required: true
+            type: string
+            description: Human readable string describing the memory region (used as device_get_binding() argument)
