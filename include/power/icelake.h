@@ -74,9 +74,13 @@ struct intel_x86_pwrok_signal {
  * combines the above power good signals. Otherwise your board can override
  * intel_x86_get_pg_ec_all_sys_pwrgd() to check multiple power good signals.
  */
+#ifdef CONFIG_PWRGD_PASS_THROUGH_CUSTOM
+extern void all_sys_pwrgd_pass_thru(void);
+#else
 extern const struct intel_x86_pwrok_signal pwrok_signal_assert_list[];
 extern const int pwrok_signal_assert_count;
 extern const struct intel_x86_pwrok_signal pwrok_signal_deassert_list[];
 extern const int pwrok_signal_deassert_count;
+#endif /* CONFIG_PWRGD_PASS_THROUGH_CUSTOM */
 
 #endif /* __CROS_EC_ICELAKE_H */

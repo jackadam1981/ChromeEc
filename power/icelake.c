@@ -188,6 +188,7 @@ __overridable void intel_x86_dsw_pwrok_pass_thru(void)
 	}
 }
 
+#ifndef CONFIG_PWRGD_PASS_THROUGH_CUSTOM
 /*
  * Return 0 if PWROK signal is deasserted, non-zero if asserted
  */
@@ -246,6 +247,7 @@ static void all_sys_pwrgd_pass_thru(void)
 		pwrok_signal_set(pwrok_signal, all_sys_pwrgd_in);
 	}
 }
+#endif /* CONFIG_PWRGD_PASS_THROUGH_CUSTOM */
 
 enum power_state power_handle_state(enum power_state state)
 {
