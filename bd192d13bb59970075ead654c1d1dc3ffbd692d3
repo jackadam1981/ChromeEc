@@ -33,6 +33,23 @@
       "message": "STM32F0 doesn\u0027t seem to support this\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/bkpdata.h;l\u003d16;drc\u003d3ef4610e2f6fb37e1495d7b35bce807887019f90\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/registers-stm32f0.h;l\u003d426;drc\u003d771dd33b149fb94725edf0e29670207b9a013cb6",
       "revId": "bd192d13bb59970075ead654c1d1dc3ffbd692d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec79d38_a51b7441",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-02T23:59:04Z",
+      "side": 1,
+      "message": "Oops. I see. My apologies.",
+      "revId": "bd192d13bb59970075ead654c1d1dc3ffbd692d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
