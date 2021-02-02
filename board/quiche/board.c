@@ -30,6 +30,8 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#define QUICHE_PD_DEBUG_LVL 1
+
 #ifdef SECTION_IS_RW
 #define CROS_EC_SECTION "RW"
 #else
@@ -96,8 +98,8 @@ const struct power_seq board_power_seq[] = {
 	{GPIO_EN_PP5000_C,              1, 20},
 	{GPIO_EN_PP5000_HSPORT,         1, 31},
 	{GPIO_EN_DP_SINK,               1, 80},
-	{GPIO_MST_RST_L,                1, 20},
 	{GPIO_MST_LP_CTL_L,             1, 41},
+	{GPIO_MST_RST_L,                1, 20},
 	{GPIO_EC_HUB2_RESET_L,          1, 41},
 	{GPIO_EC_HUB3_RESET_L,          1, 33},
 	{GPIO_DP_SINK_RESET,            1, 100},
