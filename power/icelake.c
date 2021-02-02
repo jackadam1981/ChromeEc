@@ -160,7 +160,7 @@ static void enable_pp5000_rail(void)
 
 }
 
-static void dsw_pwrok_pass_thru(void)
+__overridable void intel_x86_dsw_pwrok_pass_thru(void)
 {
 	int dswpwrok_in = intel_x86_get_pg_ec_dsw_pwrok();
 
@@ -253,7 +253,7 @@ enum power_state power_handle_state(enum power_state state)
 	int timeout_ms = 10;
 #endif /* CONFIG_CHIPSET_JASPERLAKE */
 
-	dsw_pwrok_pass_thru();
+	intel_x86_dsw_pwrok_pass_thru();
 
 	all_sys_pwrgd_pass_thru();
 
@@ -288,8 +288,8 @@ enum power_state power_handle_state(enum power_state state)
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))
 			break;
 
-		/* Pass thru DSWPWROK again since we changed it. */
-		dsw_pwrok_pass_thru();
+		/* Pass thru DSW_PWROK again since we changed it. */
+		intel_x86_dsw_pwrok_pass_thru();
 
 		/* Turn on PP5000 after PP3300 and DSW PWROK when enabled */
 		if (IS_ENABLED(CONFIG_CHIPSET_PP3300_RAIL_FIRST))
