@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4f46f6_9a52acfb",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-02T16:00:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f58fbf62_a6968467",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 74
+      },
+      "revId": "5acded04ff2ce78e65d5f96ad1e73c4a67787571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7f7db47_8ed1bde0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-02T06:12:13Z",
       "side": 1,
       "message": "This is probably the more interesting target for -l DEBUG",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "5acded04ff2ce78e65d5f96ad1e73c4a67787571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da90d05_805d8ade",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-02T16:00:00Z",
+      "side": 1,
+      "message": "For now the first one is broken...how about I add it to both!",
+      "parentUuid": "c7f7db47_8ed1bde0",
       "range": {
         "startLine": 38,
         "startChar": 6,
