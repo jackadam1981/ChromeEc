@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "432791ff_fe62fb0f",
+        "filename": "board/sklrvp_mchp/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-02-02T18:23:38Z",
+      "side": 1,
+      "message": "yes, we will remove once we do sanity check;",
+      "parentUuid": "36ce5a20_f83e1a6a",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 42
+      },
+      "revId": "f50b7d18bbfe06af1fd4e62ef9636d1b8c1a4e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b7f9c37_c8706ba0",
         "filename": "chip/mchp/adc_chip.h",
         "patchSetId": 11
@@ -88,6 +112,24 @@
       "writtenOn": "2021-01-29T23:42:16Z",
       "side": 1,
       "message": "I\u0027d split this file out to its own change.",
+      "revId": "f50b7d18bbfe06af1fd4e62ef9636d1b8c1a4e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5aea787_7d07458f",
+        "filename": "chip/mchp/adc_chip.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-02-02T18:23:38Z",
+      "side": 1,
+      "message": "hi Aseda, \nr u ok us to have use one of old / existing CL which has Chip level files? we group this file into that CL",
+      "parentUuid": "8b7f9c37_c8706ba0",
       "revId": "f50b7d18bbfe06af1fd4e62ef9636d1b8c1a4e68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

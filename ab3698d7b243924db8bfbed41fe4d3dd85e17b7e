@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9777b7a0_a5df08e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-02-02T18:23:38Z",
+      "side": 1,
+      "message": "add the info for flash update on same issue tracker https://issuetracker.google.com/177463787",
+      "parentUuid": "7dbbf106_c7f4d49d",
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3605251c_d0f3fd68",
@@ -432,6 +450,30 @@
       "side": 1,
       "message": "ACK. please file crosbug for this",
       "parentUuid": "e6e39ac0_d3b87d1c",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 1
+      },
+      "revId": "ab3698d7b243924db8bfbed41fe4d3dd85e17b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "657aa2b6_e94b554a",
+        "filename": "board/sklrvp_mchp/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-02-02T18:23:38Z",
+      "side": 1,
+      "message": "we can discuss over call to reconfirm your thoughts, as this file already under sklrvp_mchp board level; it helps to configure at board level. we can file crosbug once we are clearify",
+      "parentUuid": "3bacb94d_de801df3",
       "range": {
         "startLine": 184,
         "startChar": 0,
