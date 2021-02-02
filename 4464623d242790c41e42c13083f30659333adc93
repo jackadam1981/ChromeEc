@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d75426bf_ec09fc68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-02-02T18:56:15Z",
+      "side": 1,
+      "message": "D\u0027oh, yes, typo. Done.",
+      "parentUuid": "0031b2fc_695dd525",
+      "range": {
+        "startLine": 15,
+        "startChar": 22,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "4464623d242790c41e42c13083f30659333adc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1a02566_df3fbbb8",
@@ -55,6 +79,42 @@
       "side": 1,
       "message": "Make that https://source.corp.google.com/chromeos_public/infra/proto/src/chromite/api/firmware.proto",
       "parentUuid": "b1a02566_df3fbbb8",
+      "revId": "4464623d242790c41e42c13083f30659333adc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f437ca_b107ba3a",
+        "filename": "firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-02-02T18:56:15Z",
+      "side": 1,
+      "message": "Done, removed assumptions about /tmp.",
+      "parentUuid": "05c50ed7_9ce16255",
+      "revId": "4464623d242790c41e42c13083f30659333adc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5bc7412_617adb26",
+        "filename": "firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-02-02T18:56:15Z",
+      "side": 1,
+      "message": "Done, removed assumptions about /tmp.",
+      "parentUuid": "05c50ed7_9ce16255",
       "revId": "4464623d242790c41e42c13083f30659333adc93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
