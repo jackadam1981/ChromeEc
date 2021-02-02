@@ -1036,9 +1036,12 @@ __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 	 * when the SoC is off as opposed to suspend where adding a display
 	 * could cause a wake up.)
 	 */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+#ifdef HAS_TASK_CHIPSET
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		CPRINTS("dfp[%d]; chipset_in_state OFF", port);
 		return -1;
-
+	}
+#endif
 	/* Only enter mode if device is DFP_D capable */
 	if (mode_caps & MODE_DP_SNK) {
 		svdm_safe_dp_mode(port);
