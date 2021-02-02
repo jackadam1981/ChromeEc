@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32a10885_55ea0afe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-02T17:31:51Z",
+      "side": 1,
+      "message": "Allow",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "5023139293b1e638f3a78fa153788d2c4d3bc2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f23797d7_439c7207",
         "filename": "zephyr/zmake/zmake/util.py",
         "patchSetId": 5
