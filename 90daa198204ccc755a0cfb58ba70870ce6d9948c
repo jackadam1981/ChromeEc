@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe919d9a_07b89a61",
+        "filename": "board/vilboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-02T18:34:15Z",
+      "side": 1,
+      "message": "Should keep 2.8A when below 42",
+      "range": {
+        "startLine": 390,
+        "startChar": 11,
+        "endLine": 390,
+        "endChar": 20
+      },
+      "revId": "90daa198204ccc755a0cfb58ba70870ce6d9948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d427bd_b08c57a8",
+        "filename": "board/vilboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-02T18:34:15Z",
+      "side": 1,
+      "message": "This will index past end of table, max index is NUM_CHG_CURRENT_LEVELS - 1.",
+      "range": {
+        "startLine": 443,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 40
+      },
+      "revId": "90daa198204ccc755a0cfb58ba70870ce6d9948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea67fb4_1aaebdb7",
+        "filename": "board/vilboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-02T18:34:15Z",
+      "side": 1,
+      "message": "Voltage is already limited to voltage_max",
+      "revId": "90daa198204ccc755a0cfb58ba70870ce6d9948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d9852bb_3e19f43a",
+        "filename": "board/vilboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-02T18:34:15Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 451,
+        "startChar": 1,
+        "endLine": 451,
+        "endChar": 51
+      },
+      "revId": "90daa198204ccc755a0cfb58ba70870ce6d9948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0574d8_a29115f8",
+        "filename": "board/vilboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-02T18:34:15Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 58
+      },
+      "revId": "90daa198204ccc755a0cfb58ba70870ce6d9948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
