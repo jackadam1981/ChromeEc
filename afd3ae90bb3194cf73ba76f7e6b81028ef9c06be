@@ -105,6 +105,24 @@
       "parentUuid": "1ce0e553_3a06201d",
       "revId": "afd3ae90bb3194cf73ba76f7e6b81028ef9c06be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6eab37b_787fa290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-02T16:22:36Z",
+      "side": 1,
+      "message": "I don\u0027t think so:\nchip/stm32/bkpdata.c:#ifdef CONFIG_HOSTCMD_VBNV_CONTEXT\nchip/stm32/bkpdata.h:#if !defined(CONFIG_HOSTCMD_VBNV_CONTEXT) || STM32_BKP_ENTRIES \u003e 10",
+      "parentUuid": "303d42d2_c89c24b4",
+      "revId": "afd3ae90bb3194cf73ba76f7e6b81028ef9c06be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
