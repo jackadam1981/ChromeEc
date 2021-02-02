@@ -16,6 +16,23 @@
       "message": "As discussed in b/178487213, with this addition, I would like to open the door for future enhancements to the firmware for the Atmega MCU, such that in addition to simulating a USB keyboard, it would become able to simulate other USB devices.",
       "revId": "e8a2fab345b2c182da6afdeacdfa9ac8a6de54b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a69dce_7a4b9d8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2021-02-02T19:19:38Z",
+      "side": 1,
+      "message": "Adding some people more familiar with the servo v4 code.",
+      "revId": "e8a2fab345b2c182da6afdeacdfa9ac8a6de54b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
