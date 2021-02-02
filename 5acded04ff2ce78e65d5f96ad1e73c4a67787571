@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58fbf62_a6968467",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-02T06:12:13Z",
+      "side": 1,
+      "message": "-l DEBUG needs to come before configure, the argument parser is position sensitive:\n\nzmake -l DEBUG configure -B ${BUILD_DIR}/vol zephyr/projects/volteer",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 74
+      },
+      "revId": "5acded04ff2ce78e65d5f96ad1e73c4a67787571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f7db47_8ed1bde0",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-02T06:12:13Z",
+      "side": 1,
+      "message": "This is probably the more interesting target for -l DEBUG",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "5acded04ff2ce78e65d5f96ad1e73c4a67787571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e58c2375_b7b0c033",
