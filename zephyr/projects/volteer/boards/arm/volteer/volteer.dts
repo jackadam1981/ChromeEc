@@ -434,12 +434,18 @@
 		};
 
 		bbram: bb-ram@400af000 {
+			#address-cells = <1>;
+			#size-cells = <1>;
 			compatible = "nuvoton,npcx-cros-bbram";
 			status = "okay";
 			reg = <0x400af000 0x80
 			       0x400af100 0x1>;
 			reg-names = "memory", "status";
 			label = "BBRAM";
+			scratchpad: region@0 {
+				reg = <0x0 0x4>;
+				label = "SCRATCHPAD";
+			};
 		};
 	};
 
