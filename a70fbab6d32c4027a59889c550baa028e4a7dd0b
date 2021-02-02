@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9540d4f3_bc5b7f34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-02T16:27:16Z",
+      "side": 1,
+      "message": "Change this to:\n\nlindar: change TCPC to RT1715",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "a70fbab6d32c4027a59889c550baa028e4a7dd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef834c4_f4a08e08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-02T16:27:16Z",
+      "side": 1,
+      "message": "You also need to add this line to lindar/board.h\n\n#undef CONFIG_USB_PD_TCPM_TUSB422",
+      "revId": "a70fbab6d32c4027a59889c550baa028e4a7dd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d36f0ea_e76ec58a",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-02T16:27:16Z",
+      "side": 1,
+      "message": "Delete this line.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "a70fbab6d32c4027a59889c550baa028e4a7dd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
