@@ -16,6 +16,41 @@
       "message": "Should we just wait for the new Parade FW to land instead of adding this change?",
       "revId": "39fd4b98d71535ff112c20af959aff296ec215cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8200b166_4ca6ce32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-02-02T05:18:44Z",
+      "side": 1,
+      "message": "Merge it directly per urgent request.",
+      "revId": "39fd4b98d71535ff112c20af959aff296ec215cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40639c0f_a932a437",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-02-02T05:18:44Z",
+      "side": 1,
+      "message": "Per sync with our partner, we would like to merge this patch first for the schedule consideration. If Parade can give us the new firmware solution today, we still have chance to switch to use the new Parade firmware in this factory build. Otherwise, we need this patch for this factory build.",
+      "parentUuid": "69bc97b8_d5a8a8e3",
+      "revId": "39fd4b98d71535ff112c20af959aff296ec215cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
