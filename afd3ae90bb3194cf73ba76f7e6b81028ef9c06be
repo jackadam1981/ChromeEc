@@ -69,6 +69,42 @@
       "message": "Can you mark SYSTEM_BBRAM_IDX_VBNVBLOCK0 as /* deprecated */?",
       "revId": "afd3ae90bb3194cf73ba76f7e6b81028ef9c06be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "303d42d2_c89c24b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T15:59:02Z",
+      "side": 1,
+      "message": "I think I have all of that CONFIG_HOSTCMD_VBNV_CONTEXT.",
+      "parentUuid": "051dabd2_0df0ca19",
+      "revId": "afd3ae90bb3194cf73ba76f7e6b81028ef9c06be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1917e0ef_874c5075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T15:59:02Z",
+      "side": 1,
+      "message": "Will land multiple follow-up CLs. One of which will actually delete those indexes from nds32, npcx chips, etc.\n\nAnother to mark the host command as deprecated in ec_commands.h.",
+      "parentUuid": "1ce0e553_3a06201d",
+      "revId": "afd3ae90bb3194cf73ba76f7e6b81028ef9c06be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
