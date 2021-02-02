@@ -725,8 +725,14 @@ void prl_run(int port, int evt, int en)
 			break;
 		}
 
-		/* Run Protocol Layer Message Reception */
-		prl_rx_wait_for_phy_message(port, evt);
+		/* Run Protocol Layer Hard Reset state machine */
+		run_state(port, &prl_hr[port].ctx);
+
+		if (prl_hr_get_state(port) == PRL_HR_WAIT_FOR_REQUEST) {
+
+			/* Run Protocol Layer Message Reception */
+			prl_rx_wait_for_phy_message(port, evt);
+
 
 		if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
 			/*
@@ -754,9 +760,7 @@ void prl_run(int port, int evt, int en)
 			 * to PE in a single iteration.
 			 */
 			run_state(port, &tch[port].ctx);
-
-		/* Run Protocol Layer Hard Reset state machine */
-		run_state(port, &prl_hr[port].ctx);
+		}
 		break;
 	}
 }
