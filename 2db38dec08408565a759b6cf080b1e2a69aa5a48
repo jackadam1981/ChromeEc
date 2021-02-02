@@ -33,6 +33,23 @@
       "message": "This change LGTM. +1 to give others a chance to digest.",
       "revId": "2db38dec08408565a759b6cf080b1e2a69aa5a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7e2203_f0f12621",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-02T17:47:51Z",
+      "side": 1,
+      "message": "I think the main change here is around EC_RESET_FLAG_POWER_ON but it is a bit hard to spot. Maybe this could be rearranged to make it clearer?\n\nEC_RESET_FLAG_POWER_ON being set for an EC reset doesn\u0027t seem right: would fixing that avoid the need for this change?",
+      "revId": "2db38dec08408565a759b6cf080b1e2a69aa5a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
