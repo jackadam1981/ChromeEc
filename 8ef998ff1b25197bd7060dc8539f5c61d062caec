@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbbeed43_b282ebd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "Thanks; much better to have this in python than shell.",
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "165872d9_78a104d8",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "two blank lines: https://github.com/google/styleguide/blob/gh-pages/pyguide.md#35-blank-lines",
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80bad8c4_c4c647d9",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "May be a little easier to read if you use a format string:\n\nhttps://chromium.googlesource.com/chromiumos/platform/dev-util/+/ce99ad70914cecf901702f1884dc8c41955e3c15/contrib/chromium_metadata/chromium_metadata.py#44\n\nhttps://chromium.googlesource.com/chromiumos/platform/dev-util/+/ce99ad70914cecf901702f1884dc8c41955e3c15/contrib/chromium_metadata/chromium_metadata.py#90",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 36
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab19749_47f8fd2c",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "two blank lines: https://github.com/google/styleguide/blob/gh-pages/pyguide.md#35-blank-lines",
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e2d26e_66f57ec4",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "\u003e \"agruments\" is a possible misspelling of \"arguments\".\n\nPlease fix.",
+      "parentUuid": "c3236275_3e8b7bbb",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cabe0e68_ce6e52ec",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "This is because you are passing globs in \"relevant_paths\" that you want expanded? Might be good to add a comment about specific reason to enable \"shell\u003dTrue\".",
+      "range": {
+        "startLine": 100,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc737048_b3a8b68c",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "two blank lines: https://github.com/google/styleguide/blob/gh-pages/pyguide.md#35-blank-lines",
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aadcf1a_9480222e",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "Indents for new code should be four spaces: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#official-style-guide",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 2
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0df1d5c_5e81fc91",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "Add check\u003dTrue to these?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 43
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b7f7005_407c9983",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "Can you make the merge strategy an option configured by an argument?\n\nI don\u0027t want to use \"-Xtheirs\" for fingerprint code.",
+      "range": {
+        "startLine": 156,
+        "startChar": 73,
+        "endLine": 157,
+        "endChar": 42
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "259e5e4f_416f587f",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "check\u003dTrue?",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 46
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "593e6a71_f3a4618b",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T22:56:20Z",
+      "side": 1,
+      "message": "two blank lines: https://github.com/google/styleguide/blob/gh-pages/pyguide.md#35-blank-lines",
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
