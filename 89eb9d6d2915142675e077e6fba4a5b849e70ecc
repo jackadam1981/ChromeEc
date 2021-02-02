@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b65bd1_2d810abc",
+        "filename": "include/spi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-02T18:16:15Z",
+      "side": 1,
+      "message": "This is ugly, but when I started refactoring this global variable it ended up being a very large change, so I think we\u0027ll have to do that separately.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "89eb9d6d2915142675e077e6fba4a5b849e70ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
