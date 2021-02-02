@@ -6394,6 +6394,11 @@ static void pe_vcs_cbl_send_soft_reset_run(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		cable_soft_reset_complete = true;
+
+		if (prl_get_rev(port, TCPC_TX_SOP) >=
+		    PD_HEADER_REV(rx_emsg[port].header))
+			prl_set_rev(port, TCPC_TX_SOP_PRIME,
+					PD_HEADER_REV(rx_emsg[port].header));
 	}
 
 	/* No GoodCRC received, cable is not present */
