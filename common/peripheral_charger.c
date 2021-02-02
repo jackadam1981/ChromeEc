@@ -162,6 +162,7 @@ static enum pchg_state pchg_state_enabled(struct pchg *ctx)
 		state = PCHG_STATE_DETECTED;
 		break;
 	case PCHG_EVENT_CHARGE_STARTED:
+		ctx->batt_percent = 0;
 		state = PCHG_STATE_CHARGING;
 		break;
 	default:
@@ -192,6 +193,7 @@ static enum pchg_state pchg_state_detected(struct pchg *ctx)
 		state = PCHG_STATE_INITIALIZED;
 		break;
 	case PCHG_EVENT_CHARGE_STARTED:
+		ctx->batt_percent = 0;
 		state = PCHG_STATE_CHARGING;
 		break;
 	case PCHG_EVENT_DEVICE_LOST:
@@ -228,7 +230,8 @@ static enum pchg_state pchg_state_charging(struct pchg *ctx)
 		state = PCHG_STATE_INITIALIZED;
 		break;
 	case PCHG_EVENT_CHARGE_UPDATE:
-		CPRINTS("Battery %d%%", ctx->battery_percent);
+		if (ctx->batt_percent != ctx->prev_percent)
+			CPRINTS("Battery %d%%", ctx->batt_percent);
 		break;
 	case PCHG_EVENT_DEVICE_LOST:
 		state = PCHG_STATE_ENABLED;
@@ -261,17 +264,17 @@ static int pchg_run(struct pchg *ctx)
 	}
 	mutex_unlock(&ctx->mtx);
 
-	CPRINTS("P%d Run in STATE_%s for EVENT_%s", port,
-		_text_state(ctx->state), _text_event(ctx->event));
-
 	if (ctx->event == PCHG_EVENT_IRQ) {
 		rv = ctx->cfg->drv->get_event(ctx);
 		if (rv) {
-			CPRINTS("ERR: get_event (%d)", rv);
+			CPRINTS("ERR: In STATE_%s, get_event failed (%d)",
+				_text_state(ctx->state), rv);
 			return 0;
 		}
-		CPRINTS("IRQ:EVENT_%s", _text_event(ctx->event));
 	}
+
+	CPRINTS("P%d Run in STATE_%s for EVENT_%s", port,
+		_text_state(ctx->state), _text_event(ctx->event));
 
 	switch (ctx->state) {
 	case PCHG_STATE_RESET:
@@ -303,11 +306,14 @@ static int pchg_run(struct pchg *ctx)
 	 * - [S3/S0IX] device attach or detach (for wake-up)
 	 * - [S5/G3] no events.
 	 */
-	if (chipset_in_state(CHIPSET_STATE_ON))
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		if (ctx->event == PCHG_EVENT_CHARGE_UPDATE)
+			return ctx->batt_percent != ctx->prev_percent;
 		return ctx->event != PCHG_EVENT_NONE;
-	else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
+	} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
 		return (ctx->event == PCHG_EVENT_DEVICE_DETECTED)
 			|| (ctx->event == PCHG_EVENT_DEVICE_LOST);
+	}
 
 	return 0;
 }
@@ -415,7 +421,7 @@ static enum ec_status hc_pchg(struct host_cmd_handler_args *args)
 	ctx = &pchgs[port];
 
 	r->state = ctx->state;
-	r->battery_percentage = ctx->battery_percent;
+	r->battery_percentage = ctx->batt_percent;
 	r->error = ctx->error;
 
 	args->response_size = sizeof(*r);

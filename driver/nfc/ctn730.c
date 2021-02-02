@@ -419,7 +419,8 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 		if (len != WLC_CHG_CTRL_CHARGING_INFO_EVT_SIZE || buf[0] > 100)
 			return EC_ERROR_INVAL;
 		ctx->event = PCHG_EVENT_CHARGE_UPDATE;
-		ctx->battery_percent = buf[0];
+		ctx->prev_percent = ctx->batt_percent;
+		ctx->batt_percent = buf[0];
 		break;
 	default:
 		CPRINTS("Received unknown event (%d)", res->instruction);
