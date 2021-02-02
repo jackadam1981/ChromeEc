@@ -108,6 +108,30 @@
       },
       "revId": "1fee831b64fc64f4f3b88a5dd58e6633d3548b20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f24c438_104c9a79",
+        "filename": "board/nucleo-bloonchipper/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-02T18:37:16Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "66c2e0f4_7e3a2466",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "1fee831b64fc64f4f3b88a5dd58e6633d3548b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
