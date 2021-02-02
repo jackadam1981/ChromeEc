@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f23797d7_439c7207",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:18:46Z",
+      "side": 1,
+      "message": "use pathlib.Path.exists instead",
+      "range": {
+        "startLine": 160,
+        "startChar": 33,
+        "endLine": 160,
+        "endChar": 47
+      },
+      "revId": "5023139293b1e638f3a78fa153788d2c4d3bc2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0645da59_5b83801c",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:18:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 164,
+        "startChar": 19,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "5023139293b1e638f3a78fa153788d2c4d3bc2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444ce597_1670c85e",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:18:46Z",
+      "side": 1,
+      "message": "what happens if \"zmake configure\" was not run yet?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 63
+      },
+      "revId": "5023139293b1e638f3a78fa153788d2c4d3bc2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
