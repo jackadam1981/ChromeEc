@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "633f6564_451489a1",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T22:58:22Z",
+      "side": 1,
+      "message": "Probably want to remove vbnv references as this is actively being deprecated right now",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "34656c9700ba8d180fb195d00b7f3b0458b1b6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
