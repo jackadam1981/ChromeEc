@@ -39,6 +39,30 @@
       },
       "revId": "30aa71f115ee978d47869aab9e2f3080b9beb4c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "647d8418_af440c46",
+        "filename": "chip/mchp/uart.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-02-02T18:25:54Z",
+      "side": 1,
+      "message": "hi Aseda, please review line#25 to 55, line#50 will set UART value to appropriate Uart port; let us know if you think still we need to change or we did not understand",
+      "parentUuid": "4bdf1a02_a61b25f8",
+      "range": {
+        "startLine": 233,
+        "startChar": 23,
+        "endLine": 233,
+        "endChar": 35
+      },
+      "revId": "30aa71f115ee978d47869aab9e2f3080b9beb4c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
