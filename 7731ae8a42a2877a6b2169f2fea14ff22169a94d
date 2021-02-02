@@ -16,6 +16,23 @@
       "message": "Please fix in master first, and then cherry-pick the change to the FW branch",
       "revId": "7731ae8a42a2877a6b2169f2fea14ff22169a94d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0eab9b6_98a4b7f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-02-02T16:48:02Z",
+      "side": 1,
+      "message": "Good catch, Tim! I didn\u0027t notice this was on the firmware branch. Removing my code review vote.",
+      "revId": "7731ae8a42a2877a6b2169f2fea14ff22169a94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
