@@ -33,6 +33,24 @@
       "message": "With this change, failure rate is 2/360 on a single DUT.  See http://issuetracker.google.com/178664884#comment27",
       "revId": "365924b78ec3a264bd00309ba322ef95e3ddba4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba15cfd5_3081d516",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-02-02T05:16:03Z",
+      "side": 1,
+      "message": "Per sync up with the partner, i think we can merge this patch for the factory build and wait Parade to release the new TCPC firmware to fix the problem.",
+      "parentUuid": "5b5d3d50_6f7bb623",
+      "revId": "365924b78ec3a264bd00309ba322ef95e3ddba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
