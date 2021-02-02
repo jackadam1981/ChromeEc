@@ -269,8 +269,25 @@ int icm_field_update8(const struct motion_sensor_t *s, const int reg,
 #endif
 	} else {
 #ifdef I2C_PORT_ACCEL
+/*
 		ret = i2c_field_update8(s->port, s->i2c_spi_addr_flags, addr,
 					field_mask, set_value);
+*/
+		int read_val;
+		int write_val;
+
+		ret = i2c_read8(s->port, s->i2c_spi_addr_flags,
+						addr, &read_val);
+		if (ret != EC_SUCCESS)
+			return ret;
+
+		write_val = (read_val & (~field_mask)) | set_value;
+
+		if (read_val == write_val)
+			return EC_SUCCESS;
+
+		ret = i2c_write8(s->port, s->i2c_spi_addr_flags,
+						addr, write_val);
 #endif
 	}
 
