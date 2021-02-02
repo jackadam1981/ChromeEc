@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f373cba_8496a013",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6398,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-02T23:49:45Z",
+      "side": 1,
+      "message": "Nit: This should use the same construct as pe_vdm_identity_request_cbl_run to\n1. Only set the cable rev if the partner rev is not 2.0 and\n2. Just set the cable rev to the returned revision; if it\u0027s not changing the currently stored revision, no harm done.\n\nI\u0027m struggling to think of real cases where that would actually result in setting a different version than your logic here, so this is just a nit.",
+      "revId": "2118a6b413342e408b8f3b939d6489e127aa4f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
