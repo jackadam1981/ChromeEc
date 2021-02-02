@@ -16,6 +16,24 @@
       "message": "Changing the offset of the \"non-volatile\" memory seems a risk business,\nnow a new RW might not be compatible with the RO using the previous numbering\n(how indexes are stored depends on the chip but I think this will still shift them in some cases ?)",
       "revId": "21f36cc59fb97f34a84898cc3af1f8462ec91609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a9a000d_4a6a9cad",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T20:26:13Z",
+      "side": 0,
+      "message": "Chip layer will translate this enum to it\u0027s own indexes. This is just a high level common code. system_get/set_bbram do the translation.",
+      "parentUuid": "5b953cc2_3207787d",
+      "revId": "21f36cc59fb97f34a84898cc3af1f8462ec91609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
