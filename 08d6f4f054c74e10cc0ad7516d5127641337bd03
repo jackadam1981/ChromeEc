@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68d315bc_4fa33dc5",
+        "filename": "include/common.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:39:58Z",
+      "side": 1,
+      "message": "needs to go in a separate CL",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 27
+      },
+      "revId": "08d6f4f054c74e10cc0ad7516d5127641337bd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7b1a77_856345af",
+        "filename": "include/common.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:39:58Z",
+      "side": 1,
+      "message": "values should not be surrounded in parenthesis",
+      "range": {
+        "startLine": 490,
+        "startChar": 50,
+        "endLine": 490,
+        "endChar": 51
+      },
+      "revId": "08d6f4f054c74e10cc0ad7516d5127641337bd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ce98a3_ef0b8888",
+        "filename": "include/common.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:39:58Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 514,
+        "startChar": 8,
+        "endLine": 514,
+        "endChar": 21
+      },
+      "revId": "08d6f4f054c74e10cc0ad7516d5127641337bd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e52b03_de45dbdf",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:39:58Z",
+      "side": 1,
+      "message": "indents style for cmakelists is two spaces (see other files for example)\n\nyou could also use zephyr_sources_ifdef instead",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "08d6f4f054c74e10cc0ad7516d5127641337bd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f151cd_23d83b71",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T17:39:58Z",
+      "side": 1,
+      "message": "According to your changes to cmakelists.txt, this file will not be compiled when CONFIG_ZTEST\u003dy\n\nif (DEFINED CONFIG_ARCH_POSIX)\n    zephyr_sources(ztest_system.c)\nelse()\n    zephyr_sources(system.c\n    zephyr_sources(\"${PLATFORM_EC}/common/system.c\")\n￼endif()",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "08d6f4f054c74e10cc0ad7516d5127641337bd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
