@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea839be_e22a5d14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-02T00:36:57Z",
+      "side": 1,
+      "message": "Regarding the naming, since retimer is a TypeC multi-protocol retimer, a combination of TBT/USB4 retimer, DP retimer and USB retimer; going through EC code, seems the name ...usbc_retimer... is more accurate. But definition in ec_commands.h is used by kernel patch, which are in review and it\u0027s difficult for kernel to apply new change in EC. If we like to use ...usbc_retimer..., I can make changes later working with coreboot(kernel changes will move to coreboot soon).",
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

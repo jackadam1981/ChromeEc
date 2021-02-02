@@ -22,6 +22,30 @@
       },
       "revId": "533cda5bfce58bc4107189bd791666b0ab37321f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a03e20_f5490878",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-02T00:36:57Z",
+      "side": 1,
+      "message": "Sure, I will address this in separate CL. I will add more error handling/recovery in a separate patch.",
+      "parentUuid": "9ed31f7e_754ace3d",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "533cda5bfce58bc4107189bd791666b0ab37321f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
