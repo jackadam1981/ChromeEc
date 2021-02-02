@@ -2381,15 +2381,16 @@ static void pe_src_transition_supply_entry(int port)
 	print_current_state(port);
 
 	pe[port].src_transition_timer = TIMER_DISABLED;
+	//pd_transition_voltage(pe[port].requested_idx);
 
 	/* Send a GotoMin Message or otherwise an Accept Message */
 	if (PE_CHK_FLAG(port, PE_FLAGS_ACCEPT)) {
 		PE_CLR_FLAG(port, PE_FLAGS_ACCEPT);
+		CPRINTS("pe[%d]: sending accept message", port);
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
 	} else {
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_GOTO_MIN);
 	}
-
 }
 
 static void pe_src_transition_supply_run(int port)
@@ -2449,10 +2450,15 @@ static void pe_src_transition_supply_run(int port)
 
 			set_state_pe(port, PE_SRC_READY);
 		} else {
-			/* NOTE: First pass through this code block */
 			/* Wait for tSrcTransition before changing supply. */
 			pe[port].src_transition_timer =
 				get_time().val + PD_T_SRC_TRANSITION;
+
+			/* Send PS_RDY message */
+			/* Transition Power Supply */
+			pd_transition_voltage(pe[port].requested_idx);
+			send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+			PE_SET_FLAG(port, PE_FLAGS_PS_READY);
 		}
 
 		return;
@@ -5908,7 +5914,6 @@ static void pe_vdm_response_entry(int port)
 	 */
 	/* Pass received message to svdm_response function */
 	memcpy(tx_payload, rx_payload, PD_HEADER_CNT(rx_emsg[port].header) * 4);
-	CPRINTS("pe[%d]: svdm_resp copy %d bytes", port, PD_HEADER_CNT(rx_emsg[port].header) * 4);
 
 	if (func) {
 		/*
