@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aed498c_3d970fa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-02-02T01:50:27Z",
+      "side": 1,
+      "message": "I confirm with CH Lin,\npower consumption value \n INPUT PD \u003d OUTPUT low\nSo, \nGPIO_EC_KB_BL_EN default is OUTPUT low",
+      "parentUuid": "4225bd06_6c74e612",
+      "revId": "dd611b6c709f9c2753557ec15bb17359c312d005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "569dd88e_c51954a9",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-01T22:28:44Z",
       "side": 1,
       "message": "ec_cfg_has_keyboard_backlight returns bool type.\n\nChange to \"if (ec_cfg_has_keyboard_backlight())\".",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 68
+      },
+      "revId": "dd611b6c709f9c2753557ec15bb17359c312d005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "337e8172_b6611fe7",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-02-02T01:50:27Z",
+      "side": 1,
+      "message": "update to Set2",
+      "parentUuid": "569dd88e_c51954a9",
       "range": {
         "startLine": 114,
         "startChar": 1,
