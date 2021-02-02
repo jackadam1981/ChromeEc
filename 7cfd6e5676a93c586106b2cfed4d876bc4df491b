@@ -16,6 +16,24 @@
       "message": "This seems kind of redundant, no? The PGOOD shouldn\u0027t be high if the enable is low. If anything, I\u0027d wager that this might mask some leakage.",
       "revId": "7cfd6e5676a93c586106b2cfed4d876bc4df491b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc85ac73_2053dbb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379412
+      },
+      "writtenOn": "2021-02-02T16:58:12Z",
+      "side": 1,
+      "message": "I agree, this is a kind of redundant, if the leakage is fixed. Adding this conditional check, also masking the actual leakage issue. The only reason for this check is, - when VSNS_PP3300_A is around 800mv-1.1v, which is enough to drive DPWROK high, is also not correct.",
+      "parentUuid": "702468d3_09fd81f5",
+      "revId": "7cfd6e5676a93c586106b2cfed4d876bc4df491b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
