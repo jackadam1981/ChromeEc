@@ -77,6 +77,7 @@ int mp3245_get_vbus(int *mv, int *ma)
 	return rv;
 }
 
+#ifdef CONFIG_MP4245_CMD
 struct mp4245_info {
 	uint8_t cmd;
 	uint8_t len;
@@ -211,4 +212,4 @@ static int command_mp4245(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(mp4245, command_mp4245,
 			"<info|dump|vbus|ilim>",
 			"Turn on/off|set vbus.");
-
+#endif
