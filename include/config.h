@@ -1230,6 +1230,14 @@
 /* Redefine when we need a different power-on sequence on the same chipset. */
 #define CONFIG_CHIPSET_POWER_SEQ_VERSION 0
 
+/*
+ * If defined, the board must implement
+ * all_sys_pwrgd_pass_thru(). This is used on boards that utilize a
+ * custom power sequencer chip instead of relying on the regular Ice
+ * Lake style power sequencing logic for sys_pwrgd.
+ */
+#undef CONFIG_PWRGD_PASS_THROUGH_CUSTOM		/* Ice Lake, et. al. */
+
 /*****************************************************************************/
 /*
  * Chip config for clock circuitry
