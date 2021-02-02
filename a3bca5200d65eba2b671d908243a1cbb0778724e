@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "706eafc1_e0719823",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-02-02T11:25:54Z",
+      "side": 1,
+      "message": "The delay is added by following how this API is implemented in the 1 gen. of Chromium EC (i.e. LM4.) Look into the detail of lm4/lpc.c, it seems the serial irq is handled manually so the delay is needed. For npcx, the irq is controlled by HW. I think we don\u0027t need it and it is removed.",
+      "parentUuid": "ed922649_53aabbe4",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "649a6cf1_fea93f07",
@@ -66,6 +84,24 @@
       "writtenOn": "2021-02-01T18:02:35Z",
       "side": 1,
       "message": "drop blank line",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beac1856_fb22f533",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-02-02T11:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "649a6cf1_fea93f07",
       "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -93,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9c7795e_6fecb873",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-02-02T11:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62a65133_8bc0c32a",
+      "range": {
+        "startLine": 539,
+        "startChar": 10,
+        "endLine": 539,
+        "endChar": 12
+      },
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1939e1ca_e0f7b2b6",
@@ -106,6 +166,24 @@
       "writtenOn": "2021-02-01T18:02:35Z",
       "side": 1,
       "message": "drop blank line",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "148c3873_24577cef",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-02-02T11:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1939e1ca_e0f7b2b6",
       "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "747034fe_4f171c66",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-02-02T11:25:54Z",
+      "side": 1,
+      "message": "Indeed. The naming of these two parmas is already very clear in the prototype of function keyboard_host_write. Lets remove it.",
+      "parentUuid": "020e4dbb_143a754a",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1cc057d_5acc0622",
@@ -140,6 +236,24 @@
       "writtenOn": "2021-02-01T18:02:35Z",
       "side": 1,
       "message": "drop blank line",
+      "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf9a4e5_c0da92d7",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-02-02T11:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1cc057d_5acc0622",
       "revId": "a3bca5200d65eba2b671d908243a1cbb0778724e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
