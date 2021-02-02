@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03fb9f46_1ef35d93",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T18:36:32Z",
+      "side": 1,
+      "message": "drop parenthesis, these are keywords",
+      "range": {
+        "startLine": 490,
+        "startChar": 50,
+        "endLine": 490,
+        "endChar": 51
+      },
+      "revId": "88321d8cfb3a8da5b44fdae49d8761e77cc79fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a946adaa_3d4a4e44",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T18:36:32Z",
+      "side": 1,
+      "message": "STATIC_IF_NOT\n\nBut I would just avoid duplicating comments and write something like this:\n\n   /* Version of STATIC_IF_NOT for Zephyr, with similar considerations to STATIC_IF and IS_ENABLED",
+      "range": {
+        "startLine": 505,
+        "startChar": 47,
+        "endLine": 505,
+        "endChar": 56
+      },
+      "revId": "88321d8cfb3a8da5b44fdae49d8761e77cc79fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd29e5fe_f3fa1bdd",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T18:36:32Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 515,
+        "startChar": 50,
+        "endLine": 515,
+        "endChar": 51
+      },
+      "revId": "88321d8cfb3a8da5b44fdae49d8761e77cc79fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
