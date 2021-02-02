@@ -860,6 +860,8 @@
 #undef CONFIG_CHARGER_SM5803
 #undef CONFIG_CHARGER_SY21612
 
+/**/
+#undef CONFIG_CHARGER_PROCHOT_DEBOUNCE
 
 /* Allow run-time completion of the charger driver structure */
 #undef CONFIG_CHARGER_RUNTIME_CONFIG

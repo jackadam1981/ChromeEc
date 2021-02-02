@@ -600,7 +600,11 @@ static void isl923x_init(int chgnum)
 		reg |= ISL923X_C2_OTG_DEBOUNCE_150;
 	if (raw_write16(chgnum, ISL923X_REG_CONTROL2,
 			reg |
+#ifdef CONFIG_CHARGER_PROCHOT_DEBOUNCE
+			CONFIG_CHARGER_PROCHOT_DEBOUNCE |
+#else
 			ISL923X_C2_PROCHOT_DEBOUNCE_1000 |
+#endif
 			ISL923X_C2_ADAPTER_DEBOUNCE_150))
 		goto init_fail;
 
