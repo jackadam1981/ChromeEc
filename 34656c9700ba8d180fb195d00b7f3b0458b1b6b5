@@ -22,6 +22,30 @@
       },
       "revId": "34656c9700ba8d180fb195d00b7f3b0458b1b6b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bccf8ada_b1bcb8ba",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-02T23:40:52Z",
+      "side": 1,
+      "message": "BTW, please feel free to resolve in a follow-up CL... this needs to land",
+      "parentUuid": "633f6564_451489a1",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "34656c9700ba8d180fb195d00b7f3b0458b1b6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
