@@ -86,8 +86,10 @@ static void spi_configure(void)
 /* Initialize board. */
 static void board_init(void)
 {
+#if 0
 #ifdef SECTION_IS_RO
 	int counter = 0;
+#endif
 #endif
 
 	enum fp_sensor_spi_select spi_select = get_fp_sensor_spi_select();
@@ -109,12 +111,14 @@ static void board_init(void)
 			  fp_transport_type_to_str(get_fp_transport_type()));
 #endif
 
+#if 0
 #ifdef SECTION_IS_RO
 	while (1) {
 		SEGGER_RTT_WriteString(0, "Hello World from SEGGER!\n");
 		SEGGER_RTT_printf(0, "Counter: %d\n", counter);
 		counter++;
 	}
+#endif
 #endif
 
 	/* Enable interrupt on PCH power signals */
