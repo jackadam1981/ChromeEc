@@ -364,7 +364,10 @@ static mutex_t		max_current_claimed_lock;
 static bool		dpm_mutex_initialized;
 #endif
 
-static uint32_t sink_max_pdo_requested;	/* Ports with PD sink needing > 1.5A */
+/* Ports with PD sink needing > 1.5 A */
+static uint32_t sink_max_pdo_requested;
+/* Ports with FRS source needing > 1.5 A */
+static uint32_t source_frs_max_requested;
 
 #define LOWEST_PORT(p) __builtin_ctz(p)  /* Undefined behavior if p == 0 */
 
@@ -397,7 +400,8 @@ static void balance_source_ports(void)
 	mutex_lock(&max_current_claimed_lock);
 
 	/* Remove any ports which no longer require 3.0 A */
-	removed_ports = max_current_claimed & ~sink_max_pdo_requested;
+	removed_ports = max_current_claimed & ~(sink_max_pdo_requested |
+						source_frs_max_requested);
 	max_current_claimed &= ~removed_ports;
 
 	/* Allocate 3.0 A to new PD sink ports that need it */
@@ -410,6 +414,16 @@ static void balance_source_ports(void)
 			max_current_claimed |= BIT(new_max_port);
 			typec_select_src_current_limit_rp(new_max_port,
 							  TYPEC_RP_3A0);
+		} else if (source_frs_max_requested & max_current_claimed) {
+			/* Bump lowest FRS port from 3.0 A slot */
+			int rem_frs = LOWEST_PORT(source_frs_max_requested &
+						 max_current_claimed);
+			pd_dpm_request(rem_frs, DPM_REQUEST_FRS_DET_DISABLE);
+			max_current_claimed &= ~BIT(rem_frs);
+
+			max_current_claimed |= BIT(new_max_port);
+			typec_select_src_current_limit_rp(new_max_port,
+							  TYPEC_RP_3A0);
 		} else {
 			/* TODO(b/141690755): Check lower priority claims */
 			goto unlock;
@@ -417,16 +431,29 @@ static void balance_source_ports(void)
 		new_ports &= ~BIT(new_max_port);
 	}
 
+	/* Allocate 3.0 A to any new FRS ports that need it */
+	new_ports = source_frs_max_requested & ~max_current_claimed;
+	while (new_ports) {
+		int new_frs_port = LOWEST_PORT(new_ports);
+
+		if (count_port_bits(max_current_claimed) <
+						CONFIG_USB_PD_3A_PORTS) {
+			max_current_claimed |= BIT(new_frs_port);
+			pd_dpm_request(new_frs_port,
+				       DPM_REQUEST_FRS_DET_ENABLE);
+		} else {
+			/* TODO(b/141690755): Check lower priority claims */
+			goto unlock;
+		}
+	}
+
 unlock:
 	mutex_unlock(&max_current_claimed_lock);
 }
 
-/* Process sink's first Sink_Capabilities PDO for port current consideration */
+/* Process port's first Sink_Capabilities PDO for port current consideration */
 void dpm_evaluate_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 {
-	if (CONFIG_USB_PD_3A_PORTS == 0)
-		return;
-
 	/* Verify partner supplied valid vSafe5V fixed object first */
 	if ((vsafe5v_pdo & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
 		return;
@@ -434,11 +461,42 @@ void dpm_evaluate_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 	if (PDO_FIXED_VOLTAGE(vsafe5v_pdo) != 5000)
 		return;
 
-	/* Valid PDO to process, so evaluate whether > 1.5 A is needed */
-	if (PDO_FIXED_CURRENT(vsafe5v_pdo) <= 1500)
-		return;
+	if (pd_get_power_role(port) == PD_ROLE_SOURCE) {
+		if (CONFIG_USB_PD_3A_PORTS == 0)
+			return;
 
-	atomic_or(&sink_max_pdo_requested, BIT(port));
+		/* Valid PDO to process, so evaluate whether >1.5A is needed */
+		if (PDO_FIXED_CURRENT(vsafe5v_pdo) <= 1500)
+			return;
+
+		atomic_or(&sink_max_pdo_requested, BIT(port));
+	} else {
+		int frs_current = vsafe5v_pdo & PDO_FIXED_FRS_CURR_MASK;
+
+		if (!IS_ENABLED(CONFIG_USB_PD_FRS))
+			return;
+
+		/* FRS is only supported in PD 3.0 and higher */
+		if (pd_get_rev(port, TCPC_TX_SOP) == PD_REV20)
+			return;
+
+		if ((vsafe5v_pdo & PDO_FIXED_DUAL_ROLE) && frs_current) {
+			/* Always enable FRS when 3.0 A is not needed */
+			if (frs_current == PDO_FIXED_FRS_CURR_DFLT_USB_POWER ||
+			    frs_current == PDO_FIXED_FRS_CURR_1A5_AT_5V) {
+				pd_dpm_request(port,
+					       DPM_REQUEST_FRS_DET_ENABLE);
+				return;
+			}
+
+			if (CONFIG_USB_PD_3A_PORTS == 0)
+				return;
+
+			atomic_or(&source_frs_max_requested, BIT(port));
+		} else {
+			return;
+		}
+	}
 
 	balance_source_ports();
 }
@@ -452,6 +510,22 @@ void dpm_remove_sink(int port)
 		return;
 
 	atomic_clear_bits(&sink_max_pdo_requested, BIT(port));
+
+	balance_source_ports();
+}
+
+void dpm_remove_source(int port)
+{
+	if (CONFIG_USB_PD_3A_PORTS == 0)
+		return;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_FRS))
+		return;
+
+	if (!(BIT(port) & source_frs_max_requested))
+		return;
+
+	atomic_clear_bits(&source_frs_max_requested, BIT(port));
 
 	balance_source_ports();
 }
