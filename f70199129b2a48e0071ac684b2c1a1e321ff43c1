@@ -16,6 +16,23 @@
       "message": "please help merge to firmware branch volteer , thanks.",
       "revId": "f70199129b2a48e0071ac684b2c1a1e321ff43c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93f7c88_f60606a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-03T18:47:00Z",
+      "side": 1,
+      "message": "To properly test matrices, open the device at 180 degree and check with ectool the output of the accelerometer are comparable when:\n1 - the device lay flat on a table\n2 - on its lefts side\n3 - upside, sitting on its front ledge.",
+      "revId": "f70199129b2a48e0071ac684b2c1a1e321ff43c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
