@@ -84,6 +84,24 @@
       "message": "Sorry, last flip flop.\n\nDoes it matter is this breaks jerry? Will it ever pull in this change?\n\nSince it has VBNV enabled in its board.h and doesn\u0027t have more than 10 bkp bytes, the BKPDATA_INDEX_SAVED_RESET_FLAGS_2 enum would not have existed in jerry\u0027s RO.\nSo, if a panic happens in a newer RW, the software panic handler in RO would not understand to parse it.",
       "revId": "bd192d13bb59970075ead654c1d1dc3ffbd692d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcfa1530_b7e6bcf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-03T00:19:03Z",
+      "side": 1,
+      "message": "Jerry went AUE with M85, so we will not be doing any more updates on that device.\n\nIt was deleted from platform/ec repo last week.",
+      "parentUuid": "eb036c7c_b6e5c98f",
+      "revId": "bd192d13bb59970075ead654c1d1dc3ffbd692d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
