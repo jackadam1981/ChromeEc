@@ -33,6 +33,24 @@
       "message": "Actually cc\u0027ing more folks this time.",
       "revId": "cddbf692f268d2cb851590567f4a7ef678f8e9fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29fbe4a7_9f308990",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-02-03T22:21:29Z",
+      "side": 1,
+      "message": "icelake is a misnomer at this point, there were changes made to support dedede \u0026 volteer instead of splitting off jasperlake and tigerlake PS modules. I wonder what the downside of creating a per-baseboard power sequencing module isn\u0027t maybe more effective, even if it involves copy and paste? Were there two different chromebook programs using the same Intel CPU that were able to share a PS module without at least some hooks for customization?",
+      "parentUuid": "77e085d8_1cb03aa7",
+      "revId": "cddbf692f268d2cb851590567f4a7ef678f8e9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
