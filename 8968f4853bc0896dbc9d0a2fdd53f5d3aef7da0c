@@ -63,6 +63,30 @@
       },
       "revId": "8968f4853bc0896dbc9d0a2fdd53f5d3aef7da0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec4d0328_a6b1eaf9",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-03T22:25:27Z",
+      "side": 1,
+      "message": "Woops, I didn\u0027t mean to include commas. I meant the newlines:\n\n BUG\u003d1234\n BUG\u003d4567\n\nbut looks like it works based on those CLs.",
+      "parentUuid": "6c230df5_3752d6da",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 41
+      },
+      "revId": "8968f4853bc0896dbc9d0a2fdd53f5d3aef7da0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
