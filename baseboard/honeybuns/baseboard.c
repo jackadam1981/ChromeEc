@@ -10,7 +10,6 @@
 #include "i2c.h"
 #include "usb_pd.h"
 #include "timer.h"
-#include "usb_descriptor.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
