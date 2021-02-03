@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200d1b7d_f86ac797",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-02-03T21:52:01Z",
+      "side": 1,
+      "message": "propagate",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "f0195cd5c4674f4ba730c1b037f83e021ec7d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0261a18_a157318f",
+        "filename": "board/brya/power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-02-03T21:52:01Z",
+      "side": 1,
+      "message": "is there a reason to use this instead of chipset_force_shutdown?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "f0195cd5c4674f4ba730c1b037f83e021ec7d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ad0bfc_e3fd3d54",
+        "filename": "board/brya/power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-02-03T21:52:01Z",
+      "side": 1,
+      "message": "__override ?",
+      "revId": "f0195cd5c4674f4ba730c1b037f83e021ec7d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f5da0c5_10bfd695",
+        "filename": "board/brya/power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-02-03T21:52:01Z",
+      "side": 1,
+      "message": "Thepwrok_signal_{de}assert_list is nice, but the `wait_for_rvrrdy` and check for sys_pg check complicate it. I think it might be interesting to try adding a new field to the lists that is a function pointer (optionally NULL) that returns a bool indicating if the sequencing should be aborted if the check fails, e.g.:\n\n```\ndiff --git a/include/ec_commands.h b/include/ec_commands.h\nindex d42a4e477..a02a35eb6 100644\n--- a/include/ec_commands.h\n+++ b/include/ec_commands.h\n@@ -5979,2 +5979,4 @@ enum chipset_shutdown_reason {\n        CHIPSET_SHUTDOWN_BUTTON,\n+       /* Power sequencing had to be aborted */\n+       CHIPSET_SHUTDOWN_POWER_SEQ_ABORT,\n \ndiff --git a/include/power/icelake.h b/include/power/icelake.h\nindex b198dba8c..34a525727 100644\n--- a/include/power/icelake.h\n+++ b/include/power/icelake.h\n@@ -44,2 +44,4 @@ enum power_signal {\n \n+typedef bool (*power_seq_abort(void));\n+\n struct intel_x86_pwrok_signal {\n@@ -48,2 +50,3 @@ struct intel_x86_pwrok_signal {\n        int delay_ms;\n+       power_seq_abort *abort_func;\n };\ndiff --git a/power/icelake.c b/power/icelake.c\nindex f2e62d981..f6efc9cc6 100644\n--- a/power/icelake.c\n+++ b/power/icelake.c\n@@ -219,3 +219,3 @@ static void pwrok_signal_set(const struct intel_x86_pwrok_signal *signal,\n  */\n-static void all_sys_pwrgd_pass_thru(void)\n+static bool all_sys_pwrgd_pass_thru(void)\n {\n@@ -243,2 +243,5 @@ static void all_sys_pwrgd_pass_thru(void)\n \n+               if (pwrok_signal-\u003eabort_func \u0026\u0026 !pwrok_signal-\u003eabort_func())\n+                       return false;\n+\n                if (pwrok_signal-\u003edelay_ms \u003e 0)\n@@ -248,2 +251,4 @@ static void all_sys_pwrgd_pass_thru(void)\n        }\n+\n+       return true;\n }\n@@ -259,3 +264,6 @@ enum power_state power_handle_state(enum power_state state)\n \n-       all_sys_pwrgd_pass_thru();\n+       if (!all_sys_pwrgd_pass_thru()) {\n+               chipset_force_shutdown(CHIPSET_SHUTDOWN_POWER_SEQ_ABORT);\n+               return POWER_G3;\n+       }\n\n```\n\nand then assign wait_for_vrrdy() and a custom one for GPIO_SEQ_EC_ALL_SYS_PG\n\nWDYT?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 1
+      },
+      "revId": "f0195cd5c4674f4ba730c1b037f83e021ec7d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
