@@ -4351,6 +4351,9 @@
  */
 #undef CONFIG_USB_PD_TCPM_ANX7447_AUX_PU_PD
 
+/* RAA489000 : Set VBUS Target Current */
+#undef CONFIG_RAA489000_VBUS_CURRENT_TARGET
+
 /*
  * Use this option if the TCPC port controller supports the optional register
  * 18h CONFIG_STANDARD_OUTPUT to steer the high-speed muxes.
