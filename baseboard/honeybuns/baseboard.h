@@ -50,6 +50,7 @@
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_CUSTOM_PDO
+#define CONFIG_USB_PD_ALT_MODE_UFP
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DYNAMIC_SRC_CAP
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
@@ -65,12 +66,16 @@
 #define CONFIG_USBC_PPC_VCONN
 #define CONFIG_USBC_PPC_DEDICATED_INT
 #define CONFIG_CMD_PPC_DUMP
-
 #define CONFIG_STM32G4_UCPD_DEBUG
 
-/* TODO(b/167711550): Temporary, will be replaced by correct mux config */
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
 #define CONFIG_USBC_SS_MUX
-#define CONFIG_USB_MUX_VIRTUAL
+#define CONFIG_USBC_SS_MUX_UFP_USB3
+
+#define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
+#define CONFIG_USB_PD_IDENTITY_HW_VERS 1
+#define CONFIG_USB_PD_IDENTITY_SW_VERS 1
 
 /* Define typical operating power and max power. */
 #define PD_MAX_VOLTAGE_MV     20000
@@ -129,5 +134,6 @@ extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
 
 #endif /* !__ASSEMBLER__ */
+
 
 #endif /* __CROS_EC_BASEBOARD_H */
