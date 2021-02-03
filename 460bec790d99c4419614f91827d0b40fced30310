@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6696a39_5168e486",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-02-03T23:12:50Z",
+      "side": 1,
+      "message": "with below comment, try removing this",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 550,
+        "endChar": 9
+      },
+      "revId": "460bec790d99c4419614f91827d0b40fced30310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1b1961_17fccaeb",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-02-03T23:12:50Z",
+      "side": 1,
+      "message": "If this is to fixup after RO-\u003eRW sysjump, does\n```\nDECLARE_HOOK(HOOK_SYSJUMP, determine_accel_devices, HOOK_PRIO_DEFAULT);\n```\n\nand then removing the chipset_in_state() check above still work?\n\nI think that\u0027s really what you want to happen",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 73
+      },
+      "revId": "460bec790d99c4419614f91827d0b40fced30310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
