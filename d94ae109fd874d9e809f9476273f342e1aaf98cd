@@ -51,6 +51,24 @@
       "parentUuid": "618d7799_4f62c358",
       "revId": "d94ae109fd874d9e809f9476273f342e1aaf98cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8206d15f_c2e9212b",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-03T23:48:02Z",
+      "side": 1,
+      "message": "Seems reasonable when you point out that the typical usage is to target board directories.",
+      "parentUuid": "98142b3e_6c1df231",
+      "revId": "d94ae109fd874d9e809f9476273f342e1aaf98cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
