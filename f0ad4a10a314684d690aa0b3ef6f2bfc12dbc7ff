@@ -73,6 +73,30 @@
       },
       "revId": "f0ad4a10a314684d690aa0b3ef6f2bfc12dbc7ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774535f3_8c73e593",
+        "filename": "board/sklrvp_mchp/lfw/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-02-03T20:55:00Z",
+      "side": 1,
+      "message": "thx Aseda, will update soon and upload",
+      "parentUuid": "18fe3ca5_ad97a5ed",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "f0ad4a10a314684d690aa0b3ef6f2bfc12dbc7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
