@@ -45,6 +45,30 @@
       },
       "revId": "25509eded8229d63276b2dcb7197813d2e34205e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f2c7b7_f11240c6",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-02-03T01:15:06Z",
+      "side": 1,
+      "message": "If we use CONFIG_CHARGER_RAA489000 for changing debounce time, it impacts to other variants. Do you want to apply this change to other variants?",
+      "parentUuid": "f83845f3_09a1a2e3",
+      "range": {
+        "startLine": 603,
+        "startChar": 7,
+        "endLine": 603,
+        "endChar": 38
+      },
+      "revId": "25509eded8229d63276b2dcb7197813d2e34205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
