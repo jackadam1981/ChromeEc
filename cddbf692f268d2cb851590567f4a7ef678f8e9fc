@@ -16,6 +16,23 @@
       "message": "Looking at all the changes in this and the previous CL, I wonder if we should just add a new alderlake.c file that handles alderlake specific sequencing instead of adding more configs inside icelake. That would be much cleaner since we are anyways skipping a lot of stuff in icelake.c.\n\n+few other folks to see what they think.",
       "revId": "cddbf692f268d2cb851590567f4a7ef678f8e9fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6087bbad_94088395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-03T19:12:32Z",
+      "side": 1,
+      "message": "Actually cc\u0027ing more folks this time.",
+      "revId": "cddbf692f268d2cb851590567f4a7ef678f8e9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
