@@ -16,6 +16,24 @@
       "message": "Hi CH, can you please take a look at the failed build?\n\n- Simon",
       "revId": "06c4de40661e23dc5385dacc806d6118ba63943a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7161b4_60ace9f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-02-03T06:36:09Z",
+      "side": 1,
+      "message": "Hi,\nThe build failed on building zephyr project Kohaku which not defines CONFIG_PLATFORM_EC_KEYBOARD.\nIn patchset 6, adding guard (#ifdef HAS_TASK_KEYPROTO) to the function kbc_ibf_obe_handler solves the build error.\nIn patchset 6, it also fixes the bug in patchset 5 when passing params to function keyboard_host_write.",
+      "parentUuid": "462ab001_3b3179bf",
+      "revId": "06c4de40661e23dc5385dacc806d6118ba63943a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
