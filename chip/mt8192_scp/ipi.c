@@ -13,6 +13,9 @@
 #include "system.h"
 #include "task.h"
 #include "util.h"
+#include "clock_chip.h"
+#include "clock.h"
+#include "power.h"
 
 #define CPRINTF(format, args...) cprintf(CC_IPI, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
@@ -52,6 +55,36 @@ static void ipi_wake_ap(int32_t id)
 
 	if (*ipi_wakeup_table[id])
 		SCP_SCP2SPM_IPC_SET = IPC_SCP2HOST;
+}
+
+__override void
+power_chipset_handle_host_sleep_event(enum host_sleep_event state,
+				      struct host_sleep_event_context *ctx)
+{
+	int i;
+	const task_id_t s3_suspend_tasks[] = {
+#ifndef S3_SUSPEND_TASK_LIST
+#define S3_SUSPEND_TASK_LIST
+#endif
+#define TASK(n, ...) TASK_ID_##n,
+		S3_SUSPEND_TASK_LIST
+	};
+
+	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
+		ccprints("AP suspend");
+
+		clock_select_clock(SCP_CLK_ULPOSC1);
+
+		for (i = 0; i < ARRAY_SIZE(s3_suspend_tasks); ++i)
+			task_disable_task(s3_suspend_tasks[i]);
+	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
+		ccprints("AP resume");
+
+		clock_select_clock(SCP_CLK_ULPOSC2);
+
+		for (i = 0; i < ARRAY_SIZE(s3_suspend_tasks); ++i)
+			task_enable_task(s3_suspend_tasks[i]);
+	}
 }
 
 int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
