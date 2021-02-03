@@ -30,12 +30,12 @@ static int rt1715_tcpci_tcpm_init(int port)
 {
 	int rv;
 	/* RT1715 has a vendor-defined register reset */
-	rv = tcpc_update8(port, RT1715_REG_VENDOR_7,
+	/*rv = tcpc_update8(port, RT1715_REG_VENDOR_7,
 		  RT1715_REG_VENDOR_7_SOFT_RESET, MASK_SET);
 	if (rv)
 		return rv;
 
-	msleep(10);
+	msleep(10);*/
 
 	rv = tcpc_update8(port, RT1715_REG_VENDOR_5,
 		  RT1715_REG_VENDOR_5_SHUTDOWN_OFF, MASK_SET);
