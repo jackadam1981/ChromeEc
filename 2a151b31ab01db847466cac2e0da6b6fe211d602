@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a66660f_f6337532",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-02-03T04:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24718013_d518fde9",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "2a151b31ab01db847466cac2e0da6b6fe211d602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4106faa_7fc460f1",
@@ -38,6 +62,24 @@
       "writtenOn": "2021-02-03T02:28:01Z",
       "side": 1,
       "message": "Why should this be board specific? Could we not wait a constant time after disabling VCONN?",
+      "revId": "2a151b31ab01db847466cac2e0da6b6fe211d602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c834909c_d86f60aa",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-02-03T04:13:08Z",
+      "side": 1,
+      "message": "Why should this be board specific?\nBecause I found this also happen on board hayato, and hayato needs more delay time.\nThis is compatibility issue for specific HP dock, so I\u0027m not sure whether adding the constant tVconnOff in driver for all project is worth or not. \n\n\nCould we not wait a constant time after disabling VCONN?\nNo, if we don\u0027t wait at least 500us for Vconn dropped below 3.3v after disabling VCONN, then Vconn 5v feds back into Vcore and causes EC crash.",
+      "parentUuid": "b4106faa_7fc460f1",
       "revId": "2a151b31ab01db847466cac2e0da6b6fe211d602",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
