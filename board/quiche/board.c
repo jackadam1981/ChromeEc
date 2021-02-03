@@ -11,6 +11,7 @@
 #include "driver/tcpm/stm32gx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/usb_mux/ps8822.h"
+#include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "switch.h"
@@ -21,6 +22,7 @@
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "usb_pd_dp_ufp.h"
+#include "usb_descriptor.h"
 #include "usb_pe_sm.h"
 #include "usb_prl_sm.h"
 #include "usb_tc_sm.h"
@@ -28,6 +30,12 @@
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
+#ifdef SECTION_IS_RW
+#define CROS_EC_SECTION "RW"
+#else
+#define CROS_EC_SECTION "RO"
+#endif
 
 #ifdef SECTION_IS_RW
 static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
@@ -104,6 +112,21 @@ const struct power_seq board_power_seq[] = {
 };
 
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
+
+/*
+ * Define the strings used in our USB descriptors.
+ */
+const void *const usb_strings[] = {
+	[USB_STR_DESC]         = usb_string_desc,
+	[USB_STR_VENDOR]       = USB_STRING_DESC("Google Inc."),
+	[USB_STR_PRODUCT]      = USB_STRING_DESC("Quiche"),
+	[USB_STR_SERIALNO]     = 0,
+	[USB_STR_VERSION]      =
+			USB_STRING_DESC(CROS_EC_SECTION ":" CROS_EC_VERSION32),
+	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
+};
+
+BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
 #ifdef SECTION_IS_RW
 static void board_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
@@ -183,7 +206,6 @@ enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
 }
 #endif
 
-
 static void board_init(void)
 {
 	usb_mux_hpd_update(1, 0, 0);
@@ -255,4 +277,3 @@ void board_debug_gpio(int trigger, int enable, int pulse_usec)
 		break;
 	}
 }
-
