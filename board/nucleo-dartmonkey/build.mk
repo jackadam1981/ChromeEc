@@ -7,6 +7,7 @@
 BASEBOARD:=nucleo-h743zi
 
 board-y=board.o
+board-rw+=board_rw.o
 board-y+=fpsensor_detect.o
 
 # Enable on device tests
