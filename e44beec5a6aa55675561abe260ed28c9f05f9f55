@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c9adf1_a979e55a",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-02-03T15:07:20Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6934e7f2_0a09588e",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fbaac87_8830026b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-01T21:42:36Z",
       "side": 1,
       "message": "Use bool and true/false.",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d98aad_ca550ec5",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-02-03T15:07:20Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4fbaac87_8830026b",
       "range": {
         "startLine": 47,
         "startChar": 7,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b6fc26_e0e8f6c9",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-02-03T15:07:20Z",
+      "side": 1,
+      "message": "It was check if device wakes from Low Power Mode. Since there is tcpc_in_low_power_mode, it is no longer necessary. Removed.",
+      "parentUuid": "060e5d71_8bb8907b",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 47
+      },
+      "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b64a17a_4e6a0269",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1dac96f_04df3a14",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-02-03T15:07:20Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2b64a17a_4e6a0269",
+      "range": {
+        "startLine": 171,
+        "startChar": 9,
+        "endLine": 171,
+        "endChar": 48
+      },
+      "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13e491c0_81afebfe",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-02-01T21:42:36Z",
       "side": 1,
       "message": "Delete guard and used \"__maybe_unused static\"",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 3
+      },
+      "revId": "e44beec5a6aa55675561abe260ed28c9f05f9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "372455f1_3d18cc00",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-02-03T15:07:20Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "13e491c0_81afebfe",
       "range": {
         "startLine": 197,
         "startChar": 0,
