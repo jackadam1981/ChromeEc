@@ -69,6 +69,30 @@
       },
       "revId": "25509eded8229d63276b2dcb7197813d2e34205e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0696128e_7c5fb7ca",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:41:12Z",
+      "side": 1,
+      "message": "Yes, I think we should. I think it\u0027s reasonable that they would want the same behaviour. Or in other words, I don\u0027t think this should be board specific.",
+      "parentUuid": "f5f2c7b7_f11240c6",
+      "range": {
+        "startLine": 603,
+        "startChar": 7,
+        "endLine": 603,
+        "endChar": 38
+      },
+      "revId": "25509eded8229d63276b2dcb7197813d2e34205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
