@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae213f18_e3392367",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-03T16:59:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "883851e4_13f5fba9",
+      "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d03e836_821fdcad",
@@ -260,6 +278,24 @@
       "side": 1,
       "message": "In file included from baseboard/dedede/baseboard.c:19:\ninclude/usb_pd.h:2989:21: error: \u0027CONFIG_USB_PD_PORT_MAX_COUNT\u0027 undeclared here (not in a function); did you mean \u0027CONFIG_USB_PD_ALT_MODE\u0027?\n extern int dp_flags[CONFIG_USB_PD_PORT_MAX_COUNT];\n                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~\n                     CONFIG_USB_PD_ALT_MODE\nbaseboard/dedede/baseboard.c: In function \u0027board_hibernate_late\u0027:\nbaseboard/dedede/baseboard.c:241:6: error: \"CONFIG_USB_PD_PORT_MAX_COUNT\" is not defined, evaluates to 0 [-Werror\u003dundef]\n  #if CONFIG_USB_PD_PORT_MAX_COUNT \u003e 1\n      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~\nbaseboard/dedede/baseboard.c: At top level:\ncc1: error: unrecognized command line option \u0027-Wno-address-of-packed-member\u0027 [-Werror]\ncc1: all warnings being treated as errors\nmake: *** [Makefile.rules:552: build/sasukette/RW/baseboard/dedede/baseboard.o] Error 1",
       "parentUuid": "5f6d06bd_bd5f825d",
+      "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c6b9c54_95d8fc73",
+        "filename": "board/sasukette/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-03T16:59:27Z",
+      "side": 1,
+      "message": "I downloaded the patch and it seems to build fine without the USB_C1_SCL/SDA gpios defined",
+      "parentUuid": "839ec52d_803b9f52",
       "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
