@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62bf7b8c_09e6bf5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T19:44:50Z",
+      "side": 1,
+      "message": "Please squash this CL with its child. One nit, but change otherwise looks good to me. I\u0027m not sure why the default value is over spec to begin with.",
+      "revId": "25c2c2c52aa92697332ea660255c3b743ff334da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "375c1b07_68d9608e",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T19:44:50Z",
+      "side": 1,
+      "message": "No need to make this a CONFIG_* option.  Let\u0027s do this for all boards.",
+      "revId": "25c2c2c52aa92697332ea660255c3b743ff334da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
