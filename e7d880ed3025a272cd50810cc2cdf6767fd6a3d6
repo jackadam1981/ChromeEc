@@ -16,6 +16,167 @@
       "message": "Regarding the naming, since retimer is a TypeC multi-protocol retimer, a combination of TBT/USB4 retimer, DP retimer and USB retimer; going through EC code, seems the name ...usbc_retimer... is more accurate. But definition in ec_commands.h is used by kernel patch, which are in review and it\u0027s difficult for kernel to apply new change in EC. If we like to use ...usbc_retimer..., I can make changes later working with coreboot(kernel changes will move to coreboot soon).",
       "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba08fbd1_b2aaa3e1",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-03T00:41:34Z",
+      "side": 1,
+      "message": "Add a TODO for checking that an operation is not in progress and that AP didn\u0027t change the port.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63cb1727_26b06e88",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-03T00:41:34Z",
+      "side": 1,
+      "message": "Move this into tc_usb_firmware_fw_update_run().",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 28
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd5bdbc_b3863ef0",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-03T00:41:34Z",
+      "side": 1,
+      "message": "Move into tc_usb_firmware_fw_update_run().",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 28
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cefe80_2bd40407",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 3614,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-03T00:41:34Z",
+      "side": 1,
+      "message": "Use IS_ENABLED here.  Also the #ifdef block crosses a scope boundary (starts inside if block, but ends outside it), so you need two IS_ENABLED checks.",
+      "range": {
+        "startLine": 3614,
+        "startChar": 0,
+        "endLine": 3614,
+        "endChar": 36
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f15503_5b8ecd27",
+        "filename": "include/config.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 4332,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-03T00:41:34Z",
+      "side": 1,
+      "message": "Please add a longer description, a full paragraph would be great.\n\nAs we port code to Zephyr, these configs get converted to KConfig options and require a longer description.  It\u0027s really helpful when we can use the description from config.h as is.",
+      "range": {
+        "startLine": 4332,
+        "startChar": 0,
+        "endLine": 4332,
+        "endChar": 44
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae1abda8_2282373e",
+        "filename": "include/config.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 4333,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-03T00:41:34Z",
+      "side": 1,
+      "message": "Add an error if CONFIG_USBC_RETIMER_FW_UPDATE is defined but CONFIG_USBC_SS_MUX is not defined.",
+      "range": {
+        "startLine": 4333,
+        "startChar": 7,
+        "endLine": 4333,
+        "endChar": 36
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b12785d_89e1fbaf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-03T00:41:34Z",
+      "side": 1,
+      "message": "Nit - line up the error codes",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 46
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
