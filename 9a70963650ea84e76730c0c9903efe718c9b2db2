@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5917ee70_c94b6bd0",
+        "filename": "board/brya/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-03T08:47:02Z",
+      "side": 1,
+      "message": "i found examples of both cases in our code base - maybe\ni picked the wrong example. we\u0027ll find out soon enough 😐",
+      "parentUuid": "a58c420d_bd333cc9",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "9a70963650ea84e76730c0c9903efe718c9b2db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77e2ce57_c81b7919",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1929755_933421c3",
+        "filename": "board/brya/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-03T08:47:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "77e2ce57_c81b7919",
+      "range": {
+        "startLine": 56,
+        "startChar": 24,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "9a70963650ea84e76730c0c9903efe718c9b2db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfc8d144_16e7146b",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-01T20:59:51Z",
       "side": 1,
       "message": "This CL won\u0027t compile on it\u0027s own without enum battery_type.  Move that into this CL.",
+      "range": {
+        "startLine": 66,
+        "startChar": 47,
+        "endLine": 66,
+        "endChar": 65
+      },
+      "revId": "9a70963650ea84e76730c0c9903efe718c9b2db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fde6e63_72e15394",
+        "filename": "board/brya/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-03T08:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfc8d144_16e7146b",
       "range": {
         "startLine": 66,
         "startChar": 47,
