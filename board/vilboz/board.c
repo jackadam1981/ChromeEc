@@ -19,6 +19,8 @@
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "keyboard_scan.h"
+#include "keyboard_8042_sharedlib.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -383,6 +385,15 @@ void bc12_interrupt(enum gpio_signal signal)
 		break;
 	}
 }
+
+static void board_init(void)
+{
+	/* Change mask_bit to support scan key(KSI0/KSO12). */
+	keyscan_config.actual_key_mask[12] = 0xcb;
+	/* Hiragana/Katakana scancode 0x0064(KSI0/KSO12). */
+	set_scancode_set2(0, 12, 0x0064);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 static void setup_fw_config(void)
 {
