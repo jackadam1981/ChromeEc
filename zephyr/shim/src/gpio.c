@@ -12,6 +12,11 @@
 
 LOG_MODULE_REGISTER(gpio_shim, LOG_LEVEL_ERR);
 
+#define GPIO_FLAG_SET_INT_DISABLE(flags) \
+	(((flags) & ~GPIO_INT_ENABLE) | GPIO_INT_DISABLE)
+#define GPIO_FLAG_SET_INT_ENABLE(flags) \
+	(((flags) & ~GPIO_INT_DISABLE) | GPIO_INT_ENABLE)
+
 /*
  * Static information about each GPIO that is configured in the named_gpios
  * device tree node.
@@ -239,8 +244,7 @@ static int init_gpios(const struct device *unused)
 	}
 
 	/*
-	 * Loop through all interrupt pins and set their callback and interrupt-
-	 * related gpio flags.
+	 * Loop through all interrupt pins and set their callback.
 	 */
 	for (size_t i = 0; i < ARRAY_SIZE(gpio_interrupts); ++i) {
 		const enum gpio_signal signal = gpio_interrupts[i].signal;
@@ -255,19 +259,6 @@ static int init_gpios(const struct device *unused)
 			LOG_ERR("Callback reg failed %s (%d)",
 				configs[signal].name, rv);
 			continue;
-		}
-
-		/*
-		 * Reconfigure the GPIO pin with the original device tree
-		 * flags (e.g. INPUT, PULL-UP) combined with the interrupts
-		 * flags (e.g. INT_EDGE_BOTH).
-		 */
-		rv = gpio_pin_configure(data[signal].dev, configs[signal].pin,
-					(configs[signal].init_flags |
-					 gpio_interrupts[i].flags));
-		if (rv < 0) {
-			LOG_ERR("Int config failed %s (%d)",
-				configs[signal].name, rv);
 		}
 	}
 
@@ -285,9 +276,10 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 	if (!interrupt)
 		return -1;
 
-	rv = gpio_pin_interrupt_configure(data[signal].dev, configs[signal].pin,
-					  (interrupt->flags | GPIO_INT_ENABLE) &
-						  ~GPIO_INT_DISABLE);
+	/* Config interrupt & enable together. */
+	rv = gpio_pin_interrupt_configure(
+		data[signal].dev, configs[signal].pin,
+		GPIO_FLAG_SET_INT_ENABLE(interrupt->flags));
 	if (rv < 0) {
 		LOG_ERR("Failed to enable interrupt on %s (%d)",
 			configs[signal].name, rv);
@@ -299,14 +291,19 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 int gpio_disable_interrupt(enum gpio_signal signal)
 {
 	int rv;
+	struct gpio_signal_callback *interrupt;
+
+	interrupt = get_interrupt_from_signal(signal);
 
 	if (signal >= ARRAY_SIZE(configs))
 		return -1;
 
-	rv = gpio_pin_interrupt_configure(data[signal].dev, configs[signal].pin,
-					  GPIO_INT_DISABLE);
+	/* Use the original setting & disable interrupt. */
+	rv = gpio_pin_interrupt_configure(
+		data[signal].dev, configs[signal].pin,
+		GPIO_FLAG_SET_INT_DISABLE(interrupt->flags));
 	if (rv < 0) {
-		LOG_ERR("Failed to enable interrupt on %s (%d)",
+		LOG_ERR("Failed to disable interrupt on %s (%d)",
 			configs[signal].name, rv);
 	}
 
