@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9229b79a_10b72b69",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-02-03T03:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c02de11_ac1d71e7",
+      "revId": "b374356717d57fda0efb01a24035c245f8e85c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3db8a816_43d27485",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-03T00:36:05Z",
       "side": 1,
       "message": "Should be automatically not defined",
+      "revId": "b374356717d57fda0efb01a24035c245f8e85c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46ba529_2545a637",
+        "filename": "board/sasukette/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-02-03T03:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3db8a816_43d27485",
       "revId": "b374356717d57fda0efb01a24035c245f8e85c24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
