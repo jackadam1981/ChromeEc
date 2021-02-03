@@ -88,12 +88,14 @@ def test(opts):
                    check=True)
 
     # Verify compilation of the on-device unit test binaries.
-    # TODO(b/172501728) These should build  for all boards, but they've bit
+    # TODO(b/172501728) These should build for all boards, but they've bit
     # rotted, so we only build the ones that compile.
-    subprocess.run(
-        ['make', 'BOARD=bloonchipper', 'tests', '-j{}'.format(opts.cpus)],
-        cwd=os.path.dirname(__file__),
-        check=True)
+    boards = ['bloonchipper', 'dartmonkey']
+    for board in boards:
+        subprocess.run(
+            ['make', 'BOARD={}', 'tests', '-j{}'.format(board, opts.cpus)],
+            cwd=os.path.dirname(__file__),
+            check=True)
 
 
 def main(args):
