@@ -22,6 +22,10 @@
 
 #define CONFIG_USB_MUX_PS8822
 
+#define CONFIG_USB_PID 0x5048
+#define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
+#define CONFIG_USB_PD_IDENTITY_HW_VERS 1
+#define CONFIG_USB_PD_IDENTITY_SW_VERS 1
 
 /* USB Type A Features */
 
