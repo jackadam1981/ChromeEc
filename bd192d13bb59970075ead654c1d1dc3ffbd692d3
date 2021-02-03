@@ -67,6 +67,23 @@
       "message": "Look good and backwards compatible with old ROs to me.\n\nThanks for the cleanup!",
       "revId": "bd192d13bb59970075ead654c1d1dc3ffbd692d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb036c7c_b6e5c98f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-03T00:18:05Z",
+      "side": 1,
+      "message": "Sorry, last flip flop.\n\nDoes it matter is this breaks jerry? Will it ever pull in this change?\n\nSince it has VBNV enabled in its board.h and doesn\u0027t have more than 10 bkp bytes, the BKPDATA_INDEX_SAVED_RESET_FLAGS_2 enum would not have existed in jerry\u0027s RO.\nSo, if a panic happens in a newer RW, the software panic handler in RO would not understand to parse it.",
+      "revId": "bd192d13bb59970075ead654c1d1dc3ffbd692d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
