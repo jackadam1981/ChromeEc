@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdb81b52_dc098dde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2021-02-03T16:47:36Z",
+      "side": 1,
+      "message": "nit. been",
+      "revId": "bcea4aecb80192fbc76360eb838fe65e2f06e83f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb90a86_26c7e599",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2021-02-03T16:47:36Z",
+      "side": 1,
+      "message": "this is pretty long. What do we expect it to be in normal operation? This impacts overall boot time, right?",
+      "revId": "bcea4aecb80192fbc76360eb838fe65e2f06e83f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe57bdd_6cf19b80",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2021-02-03T16:47:36Z",
+      "side": 1,
+      "message": "is this section something we need to track for overall performance/log? or check perf later?",
+      "revId": "bcea4aecb80192fbc76360eb838fe65e2f06e83f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
