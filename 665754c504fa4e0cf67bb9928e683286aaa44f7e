@@ -141,6 +141,57 @@
       "parentUuid": "81542aa8_453b3c15",
       "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "653552a3_b51ea123",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-03T17:49:05Z",
+      "side": 1,
+      "message": "I feel a bit late to the party, but I\u0027m not following the overall rationale for doing this. More detailed questions below. Code style looks fine.",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a29ce82d_5488b27f",
+        "filename": "common/usb_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-03T17:49:05Z",
+      "side": 1,
+      "message": "It looks like, compared to usb_mux_set_safe_mode, this function will:\n1) Put the mux in low-power mode (by disconnecting USB 2.0 charging),\n2) Set mux mode NONE even if the virtual mux is in use, and\n3) Not do anything with PPC-controlled SBU lines.\n\nWhat is the significance of putting the mux into low-power mode and out of it again during the exit sequence?\n\nThe spec says we should enter Safe Mode before sending Exit Mode. Does this violate that, or is there more nuance to the mux modes?\n\nIt looks like this change will bypass the mux set/ack sequence in the virtual mux driver, where previously that would have happened both when transitioning from DP mode to safe mode and from safe mode to USB mode. What is the significance of that?\n\nWhat is the significance of potentially not isolating the PPC lines?",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85152083_9200122e",
+        "filename": "include/usb_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-03T17:49:05Z",
+      "side": 1,
+      "message": "Update this comment.",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
