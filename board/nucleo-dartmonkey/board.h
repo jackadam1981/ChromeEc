@@ -53,7 +53,7 @@
 #endif /* SECTION_IS_RW */
 
 #ifndef __ASSEMBLER__
-	void fps_event(enum gpio_signal signal);
+#include "board_rw.h"
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */
