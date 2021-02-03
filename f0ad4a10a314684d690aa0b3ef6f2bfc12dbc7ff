@@ -16,6 +16,46 @@
       "message": "Rebased to split the chip level ADC enumerated type addition out into a separate commit.\nNo other changes were made.",
       "revId": "f0ad4a10a314684d690aa0b3ef6f2bfc12dbc7ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c474a7_ff37d8c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T19:53:36Z",
+      "side": 1,
+      "message": "LGTM, just one minor date change. And thanks for placing on top!",
+      "revId": "f0ad4a10a314684d690aa0b3ef6f2bfc12dbc7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18fe3ca5_ad97a5ed",
+        "filename": "board/sklrvp_mchp/lfw/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T19:53:36Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "f0ad4a10a314684d690aa0b3ef6f2bfc12dbc7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
