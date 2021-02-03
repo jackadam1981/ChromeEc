@@ -16,6 +16,24 @@
       "message": "I don\u0027t think that this needs to be board specific. At the very least, the max should be handled in the driver.",
       "revId": "4dc9a7f524295f197f6dfe833028481f5be35d83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c10b860_2ad570c1",
+        "filename": "board/drawcia/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-02-03T04:14:01Z",
+      "side": 1,
+      "message": "Ok, I will abandon this CL.",
+      "parentUuid": "57a21914_47b6970d",
+      "revId": "4dc9a7f524295f197f6dfe833028481f5be35d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
