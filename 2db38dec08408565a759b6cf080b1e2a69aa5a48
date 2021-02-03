@@ -68,6 +68,24 @@
       "parentUuid": "bc7e2203_f0f12621",
       "revId": "2db38dec08408565a759b6cf080b1e2a69aa5a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5928aba_f8952a09",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-03T00:35:35Z",
+      "side": 1,
+      "message": "ITE setting EC_RESET_FLAG_POWER_ON for EC reset seems like a bug (but I\u0027m not familiar with ITE).\n\nOne other thought: does this CL mean that we will no longer apply CC open to clear old contract on EC reset if battery is unplugged?",
+      "parentUuid": "656af2c4_126b058f",
+      "revId": "2db38dec08408565a759b6cf080b1e2a69aa5a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
