@@ -39,6 +39,30 @@
       },
       "revId": "8968f4853bc0896dbc9d0a2fdd53f5d3aef7da0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c230df5_3752d6da",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T20:22:53Z",
+      "side": 1,
+      "message": "Yep, it does. It seems that the commas aren\u0027t necessary.\n\nHere\u0027s a sample run from this patchset:\n            \nMerge remote-tracking branch cros/main into firmware-dedede-13606.B-master\n    \nRelevant changes:\n    \ngit log --oneline 099ebb517..3b7c9893a --\n/w/cros/src/platform/ec/baseboard/dedede board/boten board/drawcia\nboard/galtic board/lantis board/madoo board/magolor board/metaknight\nboard/sasuke board/sasukette board/storo board/waddledee board/waddledoo\nboard/wheelie common/ocpc.c driver/charger/sm5803.*\ndriver/charger/isl923x.* driver/tcpm/raa489000.* driver/tcpm/it83*\nutil/getversion.sh\n    \n3b7c9893a sasuke : set charging current/voltage\n99e746d0c Metaknight: Add thermal table\ndcda84c3f RAA489000 : Change Charge Voltage Step\n869c6c528 sasuke : tune usb_eq and usb_gain on port 1\n113e8ceff nb7v904m : add function to tune eq and gain\na35d37ef3 dedede : adjust PCH_PWROK signal\n130acdf88 Boten: Use cached Vbus presence for Vbus check\n    \nBRANCH\u003dNone\nBUG\u003db:178678269 b:178173274 b:178052179 b:176862264 b:179098188\nBUG\u003db:178565802\nTEST\u003d`make -j buildall`\n    \nSigned-off-by: Aseda Aboagye \u003caaboagye@google.com\u003e\nChange-Id: I411de994cf8f42988275fd57f96dc2e42023279a\n\n------------------------------------------------\nAlso from a prior CL and a bug present on that field. CL:2660181 and http://shortn/_2gEb2ZlU5C",
+      "parentUuid": "cd4e4d19_a51e0c4a",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 41
+      },
+      "revId": "8968f4853bc0896dbc9d0a2fdd53f5d3aef7da0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
