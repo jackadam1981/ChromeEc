@@ -9,6 +9,7 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
+GPIO_INT(DDI_MST_IN_HPD,         PIN(F, 1),       GPIO_INT_BOTH, hpd_interrupt)
 
 /* Power sequencing signals */
 GPIO(PWR_BTN,                       PIN(A,  0), GPIO_INPUT)
@@ -40,8 +41,8 @@ GPIO(USBC_DP_PD_RST_L,              PIN(E,  9), GPIO_ODR_LOW)
 GPIO(USBC_UF_RESET_L,               PIN(D,  2), GPIO_ODR_LOW)
 
 /* USB Hubs signals */
-GPIO(EC_HUB2_RESET_L,               PIN(C,  5), GPIO_ODR_HIGH)
-GPIO(EC_HUB3_RESET_L,               PIN(C, 10), GPIO_ODR_HIGH)
+GPIO(EC_HUB2_RESET_L,               PIN(C,  5), GPIO_ODR_LOW)
+GPIO(EC_HUB3_RESET_L,               PIN(C, 10), GPIO_ODR_LOW)
 
 /* USB-A Current limit switches, set default to 1.5A */
 

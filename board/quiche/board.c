@@ -19,6 +19,10 @@
 #include "uart.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+#include "usb_pd_dp_ufp.h"
+#include "usb_pe_sm.h"
+#include "usb_prl_sm.h"
+#include "usb_tc_sm.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
@@ -34,6 +38,11 @@ static void ppc_interrupt(enum gpio_signal signal)
 	default:
 		break;
 	}
+}
+
+void hpd_interrupt(enum gpio_signal signal)
+{
+	usb_pd_hpd_edge_event(signal);
 }
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -65,7 +74,7 @@ const struct power_seq board_power_seq[] = {
 	{GPIO_DEMUX_DUAL_DP_RESET_N,    1, 100},
 	{GPIO_DEMUX_DP_HDMI_PD_N,       1, 10},
 	{GPIO_DEMUX_DUAL_DP_MODE,       1, 10},
-	{GPIO_DEMUX_DP_HDMI_MODE,       1, 1},
+	{GPIO_DEMUX_DP_HDMI_MODE,       1, 5},
 };
 
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
@@ -86,7 +95,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.usb_port = USB_PD_PORT_HOST,
-		.driver = & ps8822_usb_mux_driver,
+		.i2c_addr_flags = PS8822_I2C_ADDR3_FLAG,
+		.driver = &ps8822_usb_mux_driver,
 		.hpd_update = &board_hpd_update,
 	},
 };
@@ -101,11 +111,21 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+const struct hpd_to_pd_config_t hpd_config = {
+	.port = USB_PD_PORT_HOST,
+	.signal = GPIO_DDI_MST_IN_HPD,
+};
+
 /* Power Delivery and charging functions */
 void board_tcpc_init(void)
 {
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
+
+	/* Enable TCPC interrupts. */
+
+	/* Enable HPD interrupt */
+	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -134,10 +154,35 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* TODO(b/174825406): check correct operation for honeybuns */
 }
 
-void board_debug_gpio(int trigger, int enable)
+static void board_debug_gpio_1_pulse(void)
 {
-	enum gpio_signal signal = (trigger == TRIGGER_1) ?
-		GPIO_TRIGGER_1 : GPIO_TRIGGER_2;
+	gpio_set_level(GPIO_TRIGGER_1, 0);
+}
+DECLARE_DEFERRED(board_debug_gpio_1_pulse);
 
-	gpio_set_level(signal, enable);
+static void board_debug_gpio_2_pulse(void)
+{
+	gpio_set_level(GPIO_TRIGGER_2, 0);
+}
+DECLARE_DEFERRED(board_debug_gpio_2_pulse);
+
+void board_debug_gpio(int trigger, int enable, int pulse_usec)
+{
+	switch (trigger) {
+	case TRIGGER_1:
+		gpio_set_level(GPIO_TRIGGER_1, enable);
+		if (pulse_usec)
+			hook_call_deferred(&board_debug_gpio_1_pulse_data,
+					   pulse_usec);
+		break;
+	case TRIGGER_2:
+		gpio_set_level(GPIO_TRIGGER_2, enable);
+		if (pulse_usec)
+			hook_call_deferred(&board_debug_gpio_2_pulse_data,
+					   pulse_usec);
+		break;
+	default:
+		CPRINTS("bad debug gpio selection");
+		break;
+	}
 }
