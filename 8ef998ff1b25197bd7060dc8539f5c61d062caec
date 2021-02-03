@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51457cb_9cf541b9",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "165872d9_78a104d8",
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80bad8c4_c4c647d9",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-02T22:56:20Z",
       "side": 1,
       "message": "May be a little easier to read if you use a format string:\n\nhttps://chromium.googlesource.com/chromiumos/platform/dev-util/+/ce99ad70914cecf901702f1884dc8c41955e3c15/contrib/chromium_metadata/chromium_metadata.py#44\n\nhttps://chromium.googlesource.com/chromiumos/platform/dev-util/+/ce99ad70914cecf901702f1884dc8c41955e3c15/contrib/chromium_metadata/chromium_metadata.py#90",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 36
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce852bc_5f4492b7",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Thank you for that pointer!",
+      "parentUuid": "80bad8c4_c4c647d9",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f1fb226_7528784c",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab19749_47f8fd2c",
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7e2d26e_66f57ec4",
@@ -89,6 +149,30 @@
       "side": 1,
       "message": "\u003e \"agruments\" is a possible misspelling of \"arguments\".\n\nPlease fix.",
       "parentUuid": "c3236275_3e8b7bbb",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01935540_b7a33d48",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7e2d26e_66f57ec4",
       "range": {
         "startLine": 93,
         "startChar": 27,
@@ -122,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb1f125_e5944a55",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct. Done.",
+      "parentUuid": "cabe0e68_ce6e52ec",
+      "range": {
+        "startLine": 100,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc737048_b3a8b68c",
@@ -139,6 +247,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde49cd5_52963c91",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc737048_b3a8b68c",
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aadcf1a_9480222e",
@@ -152,6 +278,30 @@
       "writtenOn": "2021-02-02T22:56:20Z",
       "side": 1,
       "message": "Indents for new code should be four spaces: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#official-style-guide",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 2
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9149c9_ac555ade",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aadcf1a_9480222e",
       "range": {
         "startLine": 111,
         "startChar": 0,
@@ -208,6 +358,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cafb3ff_7c170679",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Yes, certainly. Done.",
+      "parentUuid": "4b7f7005_407c9983",
+      "range": {
+        "startLine": 156,
+        "startChar": 73,
+        "endLine": 157,
+        "endChar": 42
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ecfd7c9_b623c3bd",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0df1d5c_5e81fc91",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 43
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "259e5e4f_416f587f",
@@ -231,6 +429,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a82a66_35f2b29a",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "259e5e4f_416f587f",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 46
+      },
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "593e6a71_f3a4618b",
@@ -244,6 +466,24 @@
       "writtenOn": "2021-02-02T22:56:20Z",
       "side": 1,
       "message": "two blank lines: https://github.com/google/styleguide/blob/gh-pages/pyguide.md#35-blank-lines",
+      "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f4fe588_121aadb6",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T01:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "593e6a71_f3a4618b",
       "revId": "8ef998ff1b25197bd7060dc8539f5c61d062caec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
