@@ -34,9 +34,9 @@
 
 /* Motion Sensors */
 #ifdef SECTION_IS_RW
-#define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_ACCELGYRO_ICM426XX
 #define CONFIG_ACCEL_INTERRUPTS
-#define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+#define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 
 /* Camera VSYNC */
@@ -119,8 +119,13 @@ int board_discharge_on_ac(int enable);
 
 /* Enable double tap detection */
 #define CONFIG_GESTURE_DETECTION
+<<<<<<< HEAD   (c7e9c2 i2c: add generic read/modify/write operations)
 #define CONFIG_GESTURE_HOST_DETECTION
 #define CONFIG_GESTURE_SENSOR_DOUBLE_TAP 0
+=======
+#define CONFIG_GESTURE_SENSOR_DOUBLE_TAP
+#define CONFIG_GESTURE_TAP_SENSOR 0
+>>>>>>> CHANGE (514f95 Katsu: change the A+G sensor to ICM40608)
 #define CONFIG_GESTURE_SENSOR_DOUBLE_TAP_FOR_HOST
 #define CONFIG_GESTURE_SAMPLING_INTERVAL_MS 5
 #define CONFIG_GESTURE_TAP_THRES_MG 100
