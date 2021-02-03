@@ -44,7 +44,11 @@ int raa489000_set_output_current(int port, enum tcpc_rp_value rp)
 	int regval;
 	int selected_cur = rp == TYPEC_RP_3A0 ?
 				RAA489000_VBUS_CURRENT_TARGET_3A :
+#ifdef CONFIG_RAA489000_VBUS_CURRENT_TARGET
+				CONFIG_RAA489000_VBUS_CURRENT_TARGET;
+#else
 				RAA489000_VBUS_CURRENT_TARGET_1_5A;
+#endif
 
 	regval = AC_CURRENT_TO_REG(selected_cur) +
 				selected_cur % (DEFAULT_R_AC/R_AC);
