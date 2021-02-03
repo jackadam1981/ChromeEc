@@ -43,6 +43,7 @@
 #include "gpio_signal.h"
 #include "registers.h"
 
+void board_debug_gpio(int trigger, int enable, int pulse_usec);
 
 #endif /* !__ASSEMBLER__ */
 
