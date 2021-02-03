@@ -204,6 +204,13 @@ int raa489000_init(int port)
 	if (rv)
 		CPRINTS("c%d: failed to set OCP threshold", port);
 
+#ifdef CONFIG_RAA489000_VBUS_VOLTAGE_TARGET
+	/* Set Vbus Target Voltage */
+	rv = tcpc_write16(port, RAA489000_VBUS_VOLTAGE_TARGET,
+				CONFIG_RAA489000_VBUS_VOLTAGE_TARGET);
+	if (rv)
+		CPRINTS("c%d: failed to set Vbus Target Voltage", port);
+#endif
 	return rv;
 }
 
