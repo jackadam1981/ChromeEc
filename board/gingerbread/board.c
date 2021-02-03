@@ -12,6 +12,7 @@
 #include "driver/tcpm/stm32gx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/usb_mux/tusb1064.h"
+#include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "mp4245.h"
@@ -22,6 +23,7 @@
 #include "uart.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+#include "usb_descriptor.h"
 #include "usb_pe_sm.h"
 #include "usb_prl_sm.h"
 #include "usb_tc_sm.h"
@@ -30,6 +32,11 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#ifdef SECTION_IS_RW
+#define CROS_EC_SECTION "RW"
+#else
+#define CROS_EC_SECTION "RO"
+#endif
 
 #ifdef SECTION_IS_RW
 static void tcpc_alert_event(enum gpio_signal s)
@@ -104,6 +111,20 @@ const struct power_seq board_power_seq[] = {
 };
 
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
+
+/*
+ * Define the strings used in our USB descriptors.
+ */
+const void *const usb_strings[] = {
+	[USB_STR_DESC]         = usb_string_desc,
+	[USB_STR_VENDOR]       = USB_STRING_DESC("Google Inc."),
+	[USB_STR_PRODUCT]      = USB_STRING_DESC("Gingerbread"),
+	[USB_STR_SERIALNO]     = 0,
+	[USB_STR_VERSION]      =
+			USB_STRING_DESC(CROS_EC_SECTION ":" CROS_EC_VERSION32),
+	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
 static void board_manage_led(void)
 {
