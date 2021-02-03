@@ -13,6 +13,7 @@
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_dp_ufp.h"
 #include "usbc_ppc.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -44,22 +45,18 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
-int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
-{
-	int pdo_cnt = 0;
-
-	*src_pdo =  pd_src_host_pdo;
-	pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
-
-	return pdo_cnt;
-}
-
 int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 {
 	int pdo_cnt = 0;
 
-	*src_pdo =  pd_src_host_pdo;
-	pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
+	/*
+	 * If CHG is providing VBUS, then advertise what's available on the CHG
+	 * port, otherwise we provide no power.
+	 */
+	if (port == USB_PD_PORT_HOST) {
+		*src_pdo =  pd_src_host_pdo;
+		pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
+	}
 
 	return pdo_cnt;
 }
@@ -337,10 +334,11 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 		alt_mode[PD_AMODE_DISPLAYPORT] = OPOS_DP;
 #endif
 		rv = 1;
-		pd_log_event(PD_EVENT_VIDEO_DP_MODE, 0, 1, NULL);
+
 		/* Configure demux to enable DP */
 		svdm_configure_demux(port, 1);
 		/* Entering ALT-DP mode, enable DP connection in demux */
+		usb_pd_hpd_converter_enable(1);
 	} else if ((PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) &&
 		   (PD_VDO_OPOS(payload[0]) == OPOS_GFU)) {
 #ifndef TCPM_V2_ALT_MODE
@@ -390,9 +388,9 @@ static int svdm_exit_mode(int port, uint32_t *payload)
 #else
 		alt_mode[PD_AMODE_DISPLAYPORT] = 0;
 #endif
-		/* Configure demux to enable DP */
+		/* Configure demux to disable DP mode */
 		svdm_configure_demux(port, 0);
-		pd_log_event(PD_EVENT_VIDEO_DP_MODE, 0, 0, NULL);
+		usb_pd_hpd_converter_enable(0);
 	} else if (PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) {
 #ifndef TCPM_V2_ALT_MODE
 		alt_mode[PD_AMODE_GOOGLE] = 0;

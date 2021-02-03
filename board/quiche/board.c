@@ -19,6 +19,10 @@
 #include "uart.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+#include "usb_pd_dp_ufp.h"
+#include "usb_pe_sm.h"
+#include "usb_prl_sm.h"
+#include "usb_tc_sm.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
@@ -38,7 +42,7 @@ static void ppc_interrupt(enum gpio_signal signal)
 
 void hpd_interrupt(enum gpio_signal signal)
 {
-	baseboard_manage_hpd_event(signal);
+	usb_pd_hpd_edge_event(signal);
 }
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -70,7 +74,7 @@ const struct power_seq board_power_seq[] = {
 	{GPIO_DEMUX_DUAL_DP_RESET_N,    1, 100},
 	{GPIO_DEMUX_DP_HDMI_PD_N,       1, 10},
 	{GPIO_DEMUX_DUAL_DP_MODE,       1, 10},
-	{GPIO_DEMUX_DP_HDMI_MODE,       1, 1},
+	{GPIO_DEMUX_DP_HDMI_MODE,       1, 5},
 };
 
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
@@ -107,6 +111,11 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+const struct hpd_to_pd_config_t hpd_config = {
+	.port = USB_PD_PORT_HOST,
+	.signal = GPIO_DDI_MST_IN_HPD,
+};
+
 /* Power Delivery and charging functions */
 void board_tcpc_init(void)
 {
@@ -125,20 +134,6 @@ enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
 	/* Only port 0 so far, request DRP toggle */
 	return PD_DRP_TOGGLE_ON;
 }
-
-
-static void square_wave(void);
-DECLARE_DEFERRED(square_wave);
-void square_wave(void)
-{
-	/* static int count; */
-	/* int phase = count++ & 1; */
-
-	/* board_debug_gpio(TRIGGER_1, phase); */
-	/* board_debug_gpio(TRIGGER_2, !phase); */
-	hook_call_deferred(&square_wave_data, 100*MSEC);
-}
-
 
 static void board_init(void)
 {
@@ -159,14 +154,32 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* TODO(b/174825406): check correct operation for honeybuns */
 }
 
-void board_debug_gpio(int trigger, int enable)
+static void board_debug_gpio_1_pulse(void)
+{
+	gpio_set_level(GPIO_TRIGGER_1, 0);
+}
+DECLARE_DEFERRED(board_debug_gpio_1_pulse);
+
+static void board_debug_gpio_2_pulse(void)
+{
+	gpio_set_level(GPIO_TRIGGER_2, 0);
+}
+DECLARE_DEFERRED(board_debug_gpio_2_pulse);
+
+void board_debug_gpio(int trigger, int enable, int pulse_usec)
 {
 	switch (trigger) {
 	case TRIGGER_1:
 		gpio_set_level(GPIO_TRIGGER_1, enable);
+		if (pulse_usec)
+			hook_call_deferred(&board_debug_gpio_1_pulse_data,
+					   pulse_usec);
 		break;
 	case TRIGGER_2:
 		gpio_set_level(GPIO_TRIGGER_2, enable);
+		if (pulse_usec)
+			hook_call_deferred(&board_debug_gpio_2_pulse_data,
+					   pulse_usec);
 		break;
 	default:
 		CPRINTS("bad debug gpio selection");
