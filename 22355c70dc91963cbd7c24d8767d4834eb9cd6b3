@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9b540d_722dba55",
+        "filename": "board/brya/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-03T18:54:26Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be 0x2000 too since XDSG is being used?",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "22355c70dc91963cbd7c24d8767d4834eb9cd6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
