@@ -8,6 +8,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "usb_pd.h"
 #include "timer.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
@@ -50,4 +51,4 @@ static void baseboard_init(void)
 	board_power_sequence();
 	CPRINTS("board: Power rails enabled");
 }
-DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_INIT_I2C + 1);
