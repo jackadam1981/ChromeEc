@@ -38,9 +38,11 @@ static void ap_deferred(void)
 		      gpio_get_level(GPIO_PCH_SLP_S0_L);
 
 	if (running) { /* S0 */
+		ccprintf("Disabling sleep");
 		disable_sleep(SLEEP_MASK_AP_RUN);
 		hook_notify(HOOK_CHIPSET_RESUME);
 	} else { /* S0ix/S3 */
+		ccprintf("Enabling sleep");
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 		enable_sleep(SLEEP_MASK_AP_RUN);
 	}
