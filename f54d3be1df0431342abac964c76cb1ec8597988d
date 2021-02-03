@@ -50,6 +50,29 @@
       "message": "This is a strange failure as it seems to be complaining about i2c",
       "revId": "f54d3be1df0431342abac964c76cb1ec8597988d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c07ae8_0845ae67",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-03T14:03:00Z",
+      "side": 1,
+      "message": "I think the build error you are seeing is because you are forcing CONFIG_PLATFORM_EC_CBI (and in turn, CONFIG_PLATFORM_EC_I2C) to \"y\" for kohaku with this select, but Kohaku doesn\u0027t have support yet.\n\nIt\u0027s non-conventional to use select for dependencies like this. Can you use \"depends on\" instead?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 23
+      },
+      "revId": "f54d3be1df0431342abac964c76cb1ec8597988d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
