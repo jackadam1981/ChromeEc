@@ -82,6 +82,24 @@
       "parentUuid": "b4106faa_7fc460f1",
       "revId": "2a151b31ab01db847466cac2e0da6b6fe211d602",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ffcd1b_8de7398b",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-03T19:29:17Z",
+      "side": 1,
+      "message": "If I understand this correctly, we are ok to start DRP toggling once the Rp and Vconn (supplied by the partner) or VBUS turns off. We\u0027d have to wait tDRPTransition which is only 1ms. And per the provided scope shots in the bug, we are waiting long enough.\n\nTherefore, it seems that this peripheral doesn\u0027t have sufficient discharge circuitry to not present the fake Rd. I don\u0027t think we should wait much longer and just deal with the brokenness. It\u0027s not the end of the world, the user can unplug the peripheral and plug it back it in.",
+      "parentUuid": "c834909c_d86f60aa",
+      "revId": "2a151b31ab01db847466cac2e0da6b6fe211d602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
