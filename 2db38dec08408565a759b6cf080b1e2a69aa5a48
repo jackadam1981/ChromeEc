@@ -50,6 +50,24 @@
       "message": "I think the main change here is around EC_RESET_FLAG_POWER_ON but it is a bit hard to spot. Maybe this could be rearranged to make it clearer?\n\nEC_RESET_FLAG_POWER_ON being set for an EC reset doesn\u0027t seem right: would fixing that avoid the need for this change?",
       "revId": "2db38dec08408565a759b6cf080b1e2a69aa5a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "656af2c4_126b058f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-03T00:02:01Z",
+      "side": 1,
+      "message": "Yup, we\u0027re changing the EC_RESET_FLAG_POWER_ON behavior by and large.  We should keep it for chromeboxes to prevent boot looping, but I\u0027m hoping to exclude it for Chromebooks since we should arguably be safe from boot looping with a connected battery of some minimum percentage.\n\nYes, removing EC_RESET_FLAG_POWER_ON could fix this.  I believe we\u0027d likely need to delve into the ITE chip code to determine if we can report this situation as a reset, rather than a power on.",
+      "parentUuid": "bc7e2203_f0f12621",
+      "revId": "2db38dec08408565a759b6cf080b1e2a69aa5a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
