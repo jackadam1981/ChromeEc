@@ -82,10 +82,15 @@ static void board_charger_config(void)
 	 */
 	int reg;
 
-	/*
+        /*
 	 * Set DCProchot# to 5120mA
 	 */
 	isl9241_set_dc_prochot(CHARGER_SOLO, 5120);
+
+        /*
+	 * Set ACProchot# to 3072mA
+	 */
+	isl9241_set_ac_prochot(CHARGER_SOLO, 3072);
 
 	/*
 	 * Set Control1 bit<3> = 1, PSYS = 1
@@ -173,15 +178,6 @@ __override bool board_is_tbt_usb4_port(int port)
 __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
-	/*
-	 * b/166728543
-	 * Set different AC_PROCHOT value when using different wattage ADT.
-	 */
-	if (max_ma * charge_mv == PD_MAX_POWER_MW * 1000)
-		isl9241_set_ac_prochot(0, 3072);
-	else
-		isl9241_set_ac_prochot(0, 2816);
-
 	/*
 	 * Follow OEM request to limit the input current to
 	 * 90% negotiated limit when S0.
