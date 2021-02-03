@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a491e3_a8c99c20",
+        "filename": "driver/tcpm/raa489000.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-03T17:07:34Z",
+      "side": 1,
+      "message": "We can probably simplify this by just using 0x32 as the default for 1.5A?  Aseda, thoughts?",
+      "revId": "22404a251e163e0c1026aa40db028fa35b17980b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
