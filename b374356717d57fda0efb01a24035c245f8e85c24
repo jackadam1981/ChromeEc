@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c02de11_ac1d71e7",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-03T00:36:05Z",
+      "side": 1,
+      "message": "Should be automatically defined when boards have a motionsense task",
+      "revId": "b374356717d57fda0efb01a24035c245f8e85c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db8a816_43d27485",
+        "filename": "board/sasukette/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-03T00:36:05Z",
+      "side": 1,
+      "message": "Should be automatically not defined",
+      "revId": "b374356717d57fda0efb01a24035c245f8e85c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -230,6 +230,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f6d06bd_bd5f825d",
+        "filename": "board/sasukette/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-03T00:36:05Z",
+      "side": 1,
+      "message": "What fails when this is removed?",
+      "parentUuid": "1d64b4f5_ebabc396",
+      "revId": "d889be6697e15c9d151f06c13ce4db90c5e36a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d1e9fc4_08663325",
         "filename": "board/sasukette/gpio.inc",
         "patchSetId": 6
