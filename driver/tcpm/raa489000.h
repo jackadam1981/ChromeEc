@@ -31,6 +31,7 @@
 /* VBUS_CURRENT_TARGET */
 #define RAA489000_VBUS_CURRENT_TARGET_3A	0x61 /* 3.104A */
 #define RAA489000_VBUS_CURRENT_TARGET_1_5A	0x30 /* 1.535A */
+#define RAA489000_VBUS_CURRENT_TARGET_1_6A	0x32 /* 1.600A */
 
 /* VBUS_OCP_UV_THRESHOLD */
 /* Detect voltage level of overcurrent protection during Sourcing VBUS */
