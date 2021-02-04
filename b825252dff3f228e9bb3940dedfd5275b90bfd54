@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd775ab_f1d7a2ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-04T09:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92283ebf_62bf748a",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "b825252dff3f228e9bb3940dedfd5275b90bfd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a014701f_bf4e01fe",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "530f9a65_2af5b92d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-04T09:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a014701f_bf4e01fe",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "b825252dff3f228e9bb3940dedfd5275b90bfd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "388a9f11_31a4ed5a",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-04T08:43:36Z",
       "side": 1,
       "message": "\u003e\u003d or \u003e ?",
+      "range": {
+        "startLine": 90,
+        "startChar": 33,
+        "endLine": 90,
+        "endChar": 34
+      },
+      "revId": "b825252dff3f228e9bb3940dedfd5275b90bfd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c1a111_8ff9b2e2",
+        "filename": "chip/it83xx/irq.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-04T09:16:17Z",
+      "side": 1,
+      "message": "\u003e\u003d. fixed.",
+      "parentUuid": "388a9f11_31a4ed5a",
       "range": {
         "startLine": 90,
         "startChar": 33,
