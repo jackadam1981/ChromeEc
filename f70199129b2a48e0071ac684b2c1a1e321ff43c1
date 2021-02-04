@@ -33,6 +33,24 @@
       "message": "To properly test matrices, open the device at 180 degree and check with ectool the output of the accelerometer are comparable when:\n1 - the device lay flat on a table\n2 - on its lefts side\n3 - upside, sitting on its front ledge.",
       "revId": "f70199129b2a48e0071ac684b2c1a1e321ff43c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc84f6dd_11764314",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-02-04T01:32:03Z",
+      "side": 1,
+      "message": "Currently SIT team has verify it.",
+      "parentUuid": "f93f7c88_f60606a2",
+      "revId": "f70199129b2a48e0071ac684b2c1a1e321ff43c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
