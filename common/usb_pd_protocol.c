@@ -5419,3 +5419,10 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_FW_UPDATE,
 
 
 #endif /* CONFIG_COMMON_RUNTIME */
+
+/*
+ * Enable PD Compliance functionality on port 1
+ */
+#ifdef CONFIG_USB_PD_COMPLIANCE
+#include "pd_comply/pdc.c"
+#endif
