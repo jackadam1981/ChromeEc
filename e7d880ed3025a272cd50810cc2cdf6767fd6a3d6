@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5620f388_253b589f",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T00:50:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ba08fbd1_b2aaa3e1",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63cb1727_26b06e88",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-03T00:41:34Z",
       "side": 1,
       "message": "Move this into tc_usb_firmware_fw_update_run().",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 28
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c514dd23_8b6deb9e",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T00:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63cb1727_26b06e88",
       "range": {
         "startLine": 134,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "594360c0_50a5eef1",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T00:50:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7bd5bdbc_b3863ef0",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 28
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55cefe80_2bd40407",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-03T00:41:34Z",
       "side": 1,
       "message": "Use IS_ENABLED here.  Also the #ifdef block crosses a scope boundary (starts inside if block, but ends outside it), so you need two IS_ENABLED checks.",
+      "range": {
+        "startLine": 3614,
+        "startChar": 0,
+        "endLine": 3614,
+        "endChar": 36
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e3fdd42_13b08e80",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 3614,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T00:50:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "55cefe80_2bd40407",
       "range": {
         "startLine": 3614,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d332cca_fa6be2f2",
+        "filename": "include/config.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 4332,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T00:50:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "46f15503_5b8ecd27",
+      "range": {
+        "startLine": 4332,
+        "startChar": 0,
+        "endLine": 4332,
+        "endChar": 44
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae1abda8_2282373e",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "820b2740_7750cb67",
+        "filename": "include/config.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 4333,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T00:50:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ae1abda8_2282373e",
+      "range": {
+        "startLine": 4333,
+        "startChar": 7,
+        "endLine": 4333,
+        "endChar": 36
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b12785d_89e1fbaf",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-02-03T00:41:34Z",
       "side": 1,
       "message": "Nit - line up the error codes",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 46
+      },
+      "revId": "e7d880ed3025a272cd50810cc2cdf6767fd6a3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2307d213_a39c6627",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T00:50:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4b12785d_89e1fbaf",
       "range": {
         "startLine": 456,
         "startChar": 0,
