@@ -70,6 +70,24 @@
       "parentUuid": "5eab8282_6bbdbf3f",
       "revId": "c627adc349c55b88ea9721b32b915040adc15f9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c086e7ed_08da3e99",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T20:50:50Z",
+      "side": 1,
+      "message": "I agree with Furquan here. This should still live under power/ directory.\nThere could benefit to nesting the sequencer under the SoC - e.g. power/alderlake/slg4bd44540.c.",
+      "parentUuid": "bd9709d5_c031cdcc",
+      "revId": "c627adc349c55b88ea9721b32b915040adc15f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
