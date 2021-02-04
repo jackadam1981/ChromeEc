@@ -6,6 +6,7 @@
 #include "common.h"
 #include "console.h"
 #include "chip/stm32/ucpd-stm32gx.h"
+#include "cros_board_info.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/mp4245.h"
 #include "task.h"
@@ -237,7 +238,7 @@ static int svdm_response_svids(int port, uint32_t *payload)
 #define OPOS_GFU 1
 
 const uint32_t vdo_dp_modes[1] =  {
-	VDO_MODE_DP(MODE_DP_PIN_C, /* UFP pin cfg supported : none */
+	VDO_MODE_DP(MODE_DP_PIN_C | MODE_DP_PIN_D, /* UFP pin_cfg 2/4 lanes */
 		    0, /* DFP pin cfg supported */
 		    1,		   /* no usb2.0	signalling in AMode */
 		    CABLE_RECEPTACLE,	   /* its a receptacle */
@@ -266,33 +267,41 @@ static int amode_dp_status(int port, uint32_t *payload)
 {
 	int opos = PD_VDO_OPOS(payload[0]);
 	int hpd = gpio_get_level(GPIO_DP_HPD);
+	uint32_t fw_config;
+	int mf = 0;
+	int rv;
+
+	/* MF (multi function) preferece is indicated by bit 0 of the fw_config
+	 * data field. If this data field does not exist, then default to 4 lane
+	 * mode.
+	 */
+	rv = cbi_get_fw_config(&fw_config);
+	if (!rv)
+		mf = fw_config & 1;
+
 	if (opos != OPOS_DP)
 		return 0; /* nak */
 
-	payload[1] = VDO_DP_STATUS(0,                /* IRQ_HPD */
-				   (hpd == 1),       /* HPD_HI|LOW */
-				   0,		     /* request exit DP */
-				   0,		     /* request exit USB */
-				   0,		     /* MF pref */
+	payload[1] = VDO_DP_STATUS(0,		/* IRQ_HPD */
+				   (hpd == 1),	/* HPD_HI|LOW */
+				   0,		/* request exit DP */
+				   0,		/* request exit USB */
+				   mf,		/* MF pref */
 				   vdm_is_dp_enabled(port),
-				   0,		     /* power low */
+				   0,		/* power low */
 				   0x2);
 	return 2;
 }
 
-static int amode_dp_config(int port, uint32_t *payload)
-{
-	/* Called on via alternate mode entry */
-	return 1;
-}
-
-static void svdm_configure_demux(int port, int enable)
+static void svdm_configure_demux(int port, int enable, int mf)
 {
 	mux_state_t demux = usb_mux_get(port);
 
 	if (enable) {
 		demux |= USB_PD_MUX_DP_ENABLED;
-		demux &= ~USB_PD_MUX_USB_ENABLED;
+		/* 4 lane mode if MF is not preferred */
+		if (!mf)
+			demux &= ~USB_PD_MUX_USB_ENABLED;
 	} else {
 		demux &= ~USB_PD_MUX_DP_ENABLED;
 		demux |= USB_PD_MUX_USB_ENABLED;
@@ -309,6 +318,23 @@ static void svdm_configure_demux(int port, int enable)
 	 */
 
 	usb_mux_set(port, demux, USB_SWITCH_CONNECT, pd_get_polarity(port));
+}
+
+static int amode_dp_config(int port, uint32_t *payload)
+{
+	uint32_t dp_config = payload[1];
+	int mf;
+
+	/*
+	 * Check pin assignment selected by DFP_D to determine if 2 lane or 4
+	 * lane DP ALT-MODe is required. (note PIN_C is for 4 lane and PIN_D is
+	 * for 2 lane mode).
+	 */
+	mf = ((dp_config >> 8) & 0xff) == MODE_DP_PIN_D ? 1 : 0;
+	/* Configure demux for DP mode */
+	svdm_configure_demux(port, 1, mf);
+
+	return 1;
 }
 
 static int svdm_enter_mode(int port, uint32_t *payload)
@@ -389,7 +415,7 @@ static int svdm_exit_mode(int port, uint32_t *payload)
 		alt_mode[PD_AMODE_DISPLAYPORT] = 0;
 #endif
 		/* Configure demux to disable DP mode */
-		svdm_configure_demux(port, 0);
+		svdm_configure_demux(port, 0, 0);
 		usb_pd_hpd_converter_enable(0);
 	} else if (PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) {
 #ifndef TCPM_V2_ALT_MODE
