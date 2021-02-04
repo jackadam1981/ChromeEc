@@ -3918,6 +3918,11 @@
 #undef CONFIG_HAS_TASK_PD_INT
 
 /*
+ * Enables USB PD Compliance functionality
+ */
+#undef CONFIG_USB_PD_COMPLIANCE
+
+/*
  * Enables USB Power Delivery
  *
  * When this config option is enabled, one of the following must be enabled:
