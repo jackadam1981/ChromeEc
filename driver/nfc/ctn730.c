@@ -88,6 +88,13 @@ static const int _detection_interval_ms = 100;
 
 /* WLC_HOST_CTRL_DUMP_STATUS constants */
 #define WLC_HOST_CTRL_DUMP_STATUS_CMD_SIZE	1
+#define WLC_HOST_CTRL_DUMP_STATUS_BATT_LEVEL	1
+#define WLC_HOST_CTRL_DUMP_STATUS_LISTENER_TYPE	8
+#define WLC_HOST_CTRL_DUMP_STATUS_LISTENER_TYPE_RSP_SIZE	4
+#define WLC_HOST_CTRL_LISTENER_TYPE_OLD		0x0
+#define WLC_HOST_CTRL_LISTENER_TYPE_NEW		0x1
+#define WLC_HOST_CTRL_LISTENER_NOT_IN_PROXIMITY	0x3
+#define WLC_HOST_CTRL_LISTENER_INFO_NOT_FOUND	0xff
 
 /* WLC_CHG_CTRL_CHARGING_INFO constants */
 #define WLC_CHG_CTRL_CHARGING_INFO_EVT_SIZE	5
@@ -295,6 +302,12 @@ static int ctn730_enable(struct pchg *ctx, bool enable)
 	return EC_SUCCESS_IN_PROGRESS;
 }
 
+static int _listener_in_proximity(uint8_t type)
+{
+	return type != WLC_HOST_CTRL_LISTENER_NOT_IN_PROXIMITY
+			&& type != WLC_HOST_CTRL_LISTENER_INFO_NOT_FOUND;
+}
+
 static int _process_payload_response(struct pchg *ctx, struct ctn730_msg *res)
 {
 	uint8_t len = res->length;
@@ -313,12 +326,25 @@ static int _process_payload_response(struct pchg *ctx, struct ctn730_msg *res)
 	if (IS_ENABLED(CTN730_DEBUG))
 		CPRINTS("Payload: %ph", HEX_BUF(buf, len));
 
+	ctx->event = PCHG_EVENT_NONE;
+
 	switch (res->instruction) {
 	case WLC_HOST_CTRL_RESET:
 		if (len != WLC_HOST_CTRL_RESET_RSP_SIZE
 				|| buf[0] != WLC_HOST_STATUS_OK)
 			return EC_ERROR_UNKNOWN;
-		ctx->event = PCHG_EVENT_NONE;
+		break;
+	case WLC_HOST_CTRL_DUMP_STATUS:
+		if (len < 1 || buf[0] != WLC_HOST_STATUS_OK)
+			return EC_ERROR_UNKNOWN;
+		if (len == WLC_HOST_CTRL_DUMP_STATUS_LISTENER_TYPE_RSP_SIZE
+			    && buf[1] == WLC_HOST_CTRL_DUMP_STATUS_LISTENER_TYPE
+			    && buf[2] == 1) {
+			if (_listener_in_proximity(buf[3]))
+				ctx->event = PCHG_EVENT_DEVICE_IN_PROXIMITY;
+			else
+				ctx->event = PCHG_EVENT_DEVICE_LOST;
+		}
 		break;
 	case WLC_CHG_CTRL_ENABLE:
 		if (len != WLC_CHG_CTRL_ENABLE_RSP_SIZE
@@ -330,11 +356,9 @@ static int _process_payload_response(struct pchg *ctx, struct ctn730_msg *res)
 		if (len != WLC_CHG_CTRL_DISABLE_RSP_SIZE
 				|| buf[0] != WLC_HOST_STATUS_OK)
 			return EC_ERROR_UNKNOWN;
-		ctx->event = PCHG_EVENT_NONE;
 		break;
 	default:
 		CPRINTS("Received unknown response (%d)", res->instruction);
-		ctx->event = PCHG_EVENT_NONE;
 		break;
 	}
 
@@ -454,6 +478,24 @@ static int ctn730_get_event(struct pchg *ctx)
 	return EC_ERROR_UNKNOWN;
 }
 
+static int ctn730_ping(struct pchg *ctx)
+{
+	uint8_t buf[CTN730_MESSAGE_BUFFER_SIZE];
+	struct ctn730_msg *cmd = (void *)buf;
+	int rv;
+
+	cmd->message_type = CTN730_MESSAGE_TYPE_COMMAND;
+	cmd->instruction = WLC_HOST_CTRL_DUMP_STATUS;
+	cmd->length = WLC_HOST_CTRL_DUMP_STATUS_CMD_SIZE;
+	cmd->payload[0] = WLC_HOST_CTRL_DUMP_STATUS_LISTENER_TYPE;
+
+	rv = _send_command(ctx, cmd);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+
 /**
  * Send command in blocking loop
  *
@@ -520,6 +562,7 @@ const struct pchg_drv ctn730_drv = {
 	.init = ctn730_init,
 	.enable = ctn730_enable,
 	.get_event = ctn730_get_event,
+	.ping = ctn730_ping,
 };
 
 static int cc_ctn730(int argc, char **argv)
@@ -543,7 +586,7 @@ static int cc_ctn730(int argc, char **argv)
 	if (!strcasecmp(argv[2], "dump")) {
 		int tag = strtoi(argv[3], &end, 0);
 
-		if (*end || tag < 0 || 0x07 < tag)
+		if (*end || tag < 0 || 0xff < tag)
 			return EC_ERROR_PARAM3;
 
 		cmd->instruction = WLC_HOST_CTRL_DUMP_STATUS;

@@ -20,6 +20,8 @@
 
 #define CPRINTS(fmt, args...) cprints(CC_PCHG, "PCHG: " fmt, ##args)
 
+#define PCHG_PING_FREQUENCY	(1 * SECOND)
+
 static int dropped_event;
 
 static void pchg_queue_event(struct pchg *ctx, enum pchg_event event)
@@ -59,9 +61,11 @@ static const char *_text_event(enum pchg_event event)
 		[PCHG_EVENT_CHARGE_ENDED] = "CHARGE_ENDED",
 		[PCHG_EVENT_CHARGE_STOPPED] = "CHARGE_STOPPED",
 		[PCHG_EVENT_CHARGE_ERROR] = "CHARGE_ERROR",
+		[PCHG_EVENT_DEVICE_IN_PROXIMITY] = "IN_PROXIMITY",
 		[PCHG_EVENT_INITIALIZE] = "INITIALIZE",
 		[PCHG_EVENT_ENABLE] = "ENABLE",
 		[PCHG_EVENT_DISABLE] = "DISABLE",
+		[PCHG_EVENT_PING] = "PING",
 	};
 
 	if (event >= sizeof(event_names))
@@ -165,6 +169,22 @@ static enum pchg_state pchg_state_enabled(struct pchg *ctx)
 		ctx->batt_percent = 0;
 		state = PCHG_STATE_CHARGING;
 		break;
+	case PCHG_EVENT_PING:
+		ctx->cfg->drv->ping(ctx);
+		break;
+	case PCHG_EVENT_DEVICE_IN_PROXIMITY:
+		/*
+		 * A device is in proximity but somehow not able to establish
+		 * charging session. This could happen for example when battery
+		 * is depleted.
+		 *
+		 * We'll move on to DETECTED. Battery percent will be 0. Host
+		 * can sense the issue because this combination is unique. Then,
+		 * it can show a pop-up saying 'Battery could be depleted.
+		 * It may take several minutes before it starts charging.'
+		 */
+		state = PCHG_STATE_DETECTED;
+		break;
 	default:
 		break;
 	}
@@ -201,6 +221,9 @@ static enum pchg_state pchg_state_detected(struct pchg *ctx)
 		break;
 	case PCHG_EVENT_CHARGE_ERROR:
 		state = PCHG_STATE_INITIALIZED;
+		break;
+	case PCHG_EVENT_PING:
+		ctx->cfg->drv->ping(ctx);
 		break;
 	default:
 		break;
@@ -258,9 +281,14 @@ static int pchg_run(struct pchg *ctx)
 
 	mutex_lock(&ctx->mtx);
 	if (!queue_remove_unit(&ctx->events, &ctx->event)) {
-		mutex_unlock(&ctx->mtx);
-		CPRINTS("P%d No event in queue", port);
-		return 0;
+		if (ctx->state == PCHG_STATE_ENABLED
+				|| ctx->state == PCHG_STATE_DETECTED) {
+			ctx->event = PCHG_EVENT_PING;
+		} else {
+			mutex_unlock(&ctx->mtx);
+			CPRINTS("P%d No event in queue", port);
+			return 0;
+		}
 	}
 	mutex_unlock(&ctx->mtx);
 
@@ -393,7 +421,8 @@ void pchg_task(void *u)
 		if (rv)
 			device_set_single_event(EC_DEVICE_EVENT_WLC);
 
-		task_wait_event(-1);
+		/* Send ping every second */
+		task_wait_event(PCHG_PING_FREQUENCY);
 	}
 }
 
