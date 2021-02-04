@@ -44,6 +44,10 @@ def git_commit_msg(branch, head, merge_head, rel_paths):
 
     _, relevant_bugs = get_relevant_commits(head, merge_head, '', rel_paths)
     relevant_bugs = set(re.findall('BUG=(.*)', relevant_bugs))
+    filtered = set()
+    for bug_line in relevant_bugs:
+        filtered.add(re.sub(r'\s*none\s*', ' ', bug_line, flags=re.IGNORECASE))
+    relevant_bugs = filtered
 
     COMMIT_MSG_TEMPLATE = """
 Merge remote-tracking branch cros/main into {BRANCH}
