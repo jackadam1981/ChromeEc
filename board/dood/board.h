@@ -23,8 +23,9 @@
 #define CONFIG_LED_COMMON
 
 /* Sensors */
-#define CONFIG_ACCEL_KX022	/* Lid accel */
-#define CONFIG_ACCELGYRO_BMI160	/* Base accel */
+#define CONFIG_ACCEL_KX022       /* Lid accel */
+#define CONFIG_ACCELGYRO_BMI160	 /* Base accel */
+#define CONFIG_ACCELGYRO_LSM6DSM /* Base accel second source*/
 
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 /* Sensors without hardware FIFO are in forced mode */
@@ -32,6 +33,8 @@
 
 /* Motion Sense Task Events */
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 
 #define CONFIG_SYNC_INT_EVENT	\
@@ -108,6 +111,8 @@ enum battery_type {
 	BATTERY_SMP_PCVPBP136,
 	BATTERY_TYPE_COUNT,
 };
+
+void motion_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
