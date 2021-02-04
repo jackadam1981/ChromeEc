@@ -39,6 +39,30 @@
       },
       "revId": "b88b2de7511d279b8916b670914c7c47177c5a25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a95af62_c54b9e2c",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T22:19:16Z",
+      "side": 1,
+      "message": "I was hoping to explain it a bit as I couldn\u0027t understand it, but let\u0027s just go with this.",
+      "parentUuid": "3cc1579b_1459d03d",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 71
+      },
+      "revId": "b88b2de7511d279b8916b670914c7c47177c5a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
