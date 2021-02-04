@@ -8,7 +8,9 @@
 #include <sys/atomic.h>
 
 #include "common.h"
+#include "console.h"
 #include "task.h"
+#include "util.h"
 
 /* We need to ensure that is one lower priority for the deferred task */
 BUILD_ASSERT(CONFIG_NUM_PREEMPT_PRIORITIES + 1 >= TASK_ID_COUNT,
@@ -204,6 +206,60 @@ void start_ec_tasks(void)
 			K_PRIO_PREEMPT(TASK_ID_COUNT - i - 1), 0, K_NO_WAIT);
 	}
 }
+
+static void dummy_thread_abort(void)
+{
+	ccprintf("Thread aborted! ID = %d\n", task_get_current());
+}
+
+static int command_task(int argc, char **argv)
+{
+	int task;
+	char *e;
+	struct task_ctx *ctx;
+
+	if (argc == 1) {
+		ccprintf("Shimmed Tasks:\n");
+		for (size_t i = 0; i < ARRAY_SIZE(shimmed_tasks); ++i) {
+			struct task_ctx *const ctx = &shimmed_tasks[i];
+			ccprintf("  Task id %d: %s\n", i, ctx->name);
+		}
+		return EC_SUCCESS;
+	}
+
+	if (argc != 3) {
+		return EC_ERROR_INVAL;
+	}
+
+	task = strtoi(argv[1], &e, 10);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	if (task >= ARRAY_SIZE(shimmed_tasks))
+		return EC_ERROR_PARAM1;
+
+	ctx = &shimmed_tasks[task];
+
+	ccprintf("Thread %d: %s\n", task, ctx->name);
+
+	if (!strncasecmp(argv[2], "suspend", 7)) {
+		ccprintf("Suspend thread %s (tid %pP)\n", ctx->name, ctx->zephyr_tid);
+		k_thread_suspend(ctx->zephyr_tid);
+	} else if (!strncasecmp(argv[2], "resume", 6)) {
+		ccprintf("Resume thread %s (tid %pP)\n", ctx->name, ctx->zephyr_tid);
+		k_thread_resume(ctx->zephyr_tid);
+	} else if (!strncasecmp(argv[2], "abort", 5)) {
+		ctx->zephyr_thread.fn_abort = dummy_thread_abort;
+		ccprintf("Abort thread %s (tid %pP)\n", ctx->name, ctx->zephyr_tid);
+		k_thread_abort(ctx->zephyr_tid);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(task, command_task,
+			"[<task_id>] [suspend|resume|abort]",
+			"Show shimmed tasks or suspend/resume/abort a task");
+
 
 /*
  * Initialize all of the kernel objects before application code starts.
