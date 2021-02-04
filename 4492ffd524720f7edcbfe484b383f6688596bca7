@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7903a323_5b465264",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T01:10:19Z",
+      "side": 1,
+      "message": "Why is the deferred call needed?  pd_set_suspend() checks if the caller is running in the PD_TASK already.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6602c76f_4c471253",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 3583,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T01:10:19Z",
+      "side": 1,
+      "message": "I just want to note that the previous patchset was not calling tc_start_event_loop() as part of the \"update limited\".  However, it does make sense that you want it in both locations.",
+      "range": {
+        "startLine": 3583,
+        "startChar": 0,
+        "endLine": 3583,
+        "endChar": 27
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d751407e_dcc82a4c",
+        "filename": "include/config.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 4345,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T01:10:19Z",
+      "side": 1,
+      "message": "This check needs to be added after #include \"board.h\" (line 5042) or it won\u0027t actually fail.",
+      "range": {
+        "startLine": 4341,
+        "startChar": 0,
+        "endLine": 4345,
+        "endChar": 0
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
