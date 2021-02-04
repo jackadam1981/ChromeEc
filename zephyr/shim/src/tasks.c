@@ -238,3 +238,7 @@ void interrupt_disable(void)
 	 * calls should be replaced with irq_lock and irq_unlock.
 	 */
 }
+
+void interrupt_enable(void)
+{
+}
