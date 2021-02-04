@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f400b4d_452a4930",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a10885_55ea0afe",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "5023139293b1e638f3a78fa153788d2c4d3bc2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f23797d7_439c7207",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-02T17:18:46Z",
       "side": 1,
       "message": "use pathlib.Path.exists instead",
+      "range": {
+        "startLine": 160,
+        "startChar": 33,
+        "endLine": 160,
+        "endChar": 47
+      },
+      "revId": "5023139293b1e638f3a78fa153788d2c4d3bc2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "063797bf_ae86d19c",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f23797d7_439c7207",
       "range": {
         "startLine": 160,
         "startChar": 33,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ebb9d2_7d4d72ac",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0645da59_5b83801c",
+      "range": {
+        "startLine": 164,
+        "startChar": 19,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "5023139293b1e638f3a78fa153788d2c4d3bc2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "444ce597_1670c85e",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-02T17:18:46Z",
       "side": 1,
       "message": "what happens if \"zmake configure\" was not run yet?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 63
+      },
+      "revId": "5023139293b1e638f3a78fa153788d2c4d3bc2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a36e5a74_5626e93e",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:15Z",
+      "side": 1,
+      "message": "This will fail, see the check at the beginning of util.resolve_build_dir.\n\nWe first test for `build_dir / \u0027project\u0027 / \u0027zmake.yaml\u0027`. If we find it, then build_dir was pointing to an already configured build. If that fails, we try `project_dir / \u0027zmake.yaml\u0027` to see if the user passed a project name. If this passes (note the user doesn\u0027t have to configure the project yet for this to pass) we return the default build directory platform/ec/build/zephyr/...\n\nThen, the actual build function will fail because the directory wouldn\u0027t exist. This would keep the same behavior as current if you were to run:\n$ zmake build /some/garbage/dir",
+      "parentUuid": "444ce597_1670c85e",
       "range": {
         "startLine": 152,
         "startChar": 0,
