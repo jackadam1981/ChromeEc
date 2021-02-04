@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0515773_74bab497",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-04T16:39:02Z",
+      "side": 1,
+      "message": "Yes, chipset operations are going on in a separate task from this PD task call. The mux configuration will come into play during any type-C connections when we\u0027re setting up for DP or USB operation.  And hopefully it won\u0027t actually need that full timeout.",
+      "parentUuid": "fa3f58eb_855706a9",
+      "revId": "bcea4aecb80192fbc76360eb838fe65e2f06e83f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbe57bdd_6cf19b80",
         "filename": "driver/usb_mux/amd_fp6.c",
         "patchSetId": 12
