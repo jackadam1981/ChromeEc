@@ -40,7 +40,7 @@ if HAS_TASK_CHG_RAMP
 
 config TASK_CHG_RAMP_STACK_SIZE
 	hex "Stack size"
-	default 0x200	# EC uses TASK_STACK_SIZE which is 512 for npcx
+	default 0x300	# EC uses TASK_STACK_SIZE which is 512 for npcx
 	help
 	  The stack size of the charger task.
 
