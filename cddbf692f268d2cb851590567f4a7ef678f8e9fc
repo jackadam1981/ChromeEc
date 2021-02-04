@@ -87,6 +87,24 @@
       "parentUuid": "cf557773_d54acf0a",
       "revId": "cddbf692f268d2cb851590567f4a7ef678f8e9fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5072be61_d7852bcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-04T07:59:59Z",
+      "side": 1,
+      "message": "just keep in mind that none of these power sequencing\nchanges are due to alderlake.\nintel\u0027s adlrvp[mp]_ite use the existing power/icelake.c.\nbrya has a custom power sequencer chip, hence the customizations.\n\nif we were to clone and tweak icelake.c, it would be for brya,\nnot alderlake. the only question in my mind is whether this would\nbe a baseboard or board level customization. if partners decide\nto not follow the reference board style power sequencing, this\nwould be demoted to a board level feature. i\u0027m tending toward\nbaseboard rather than board.\n\ni can give this a try to see how the restructuring ripples through.",
+      "parentUuid": "2f3e040f_ea32e530",
+      "revId": "cddbf692f268d2cb851590567f4a7ef678f8e9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
