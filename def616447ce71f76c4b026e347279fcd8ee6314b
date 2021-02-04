@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb0bc301_641b43a5",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1230,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T18:53:19Z",
+      "side": 1,
+      "message": "Can you add a longer description?  As part of Zephyr, these get converted to KConfig and the pre-submit on KConfig files requires at least a 2 line dscription.",
+      "range": {
+        "startLine": 1230,
+        "startChar": 3,
+        "endLine": 1230,
+        "endChar": 49
+      },
+      "revId": "def616447ce71f76c4b026e347279fcd8ee6314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4d2e81_8a5cc265",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3188,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T18:53:19Z",
+      "side": 1,
+      "message": "Add a note that this config should only be manually enabled if using the CONFIG_CHIPSET_POWER_CUSTOM.  When an Intel chipset is selected this config is automatically enabled.",
+      "range": {
+        "startLine": 3188,
+        "startChar": 0,
+        "endLine": 3188,
+        "endChar": 62
+      },
+      "revId": "def616447ce71f76c4b026e347279fcd8ee6314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca96931a_f48ef47f",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -43,6 +89,23 @@
         "endLine": 5642,
         "endChar": 30
       },
+      "revId": "def616447ce71f76c4b026e347279fcd8ee6314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8814a1a4_78f472cc",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5644,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T18:53:19Z",
+      "side": 1,
+      "message": "Add a check that CONFIG_POWER_INTEL_X86 is only used with Intel or the custom power config.",
       "revId": "def616447ce71f76c4b026e347279fcd8ee6314b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
