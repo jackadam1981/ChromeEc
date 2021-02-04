@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1240ae85_326065bb",
+        "filename": "board/vilboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2021-02-04T03:29:06Z",
+      "side": 1,
+      "message": "Yes, it keep 2.8A, and we need change the value of chg_curr_step chg_curr_table[].\nSee https://partnerissuetracker.corp.google.com/issues/174720890#comment24.",
+      "parentUuid": "fe919d9a_07b89a61",
+      "range": {
+        "startLine": 390,
+        "startChar": 11,
+        "endLine": 390,
+        "endChar": 20
+      },
+      "revId": "90daa198204ccc755a0cfb58ba70870ce6d9948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1d427bd_b08c57a8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-02T18:34:15Z",
       "side": 1,
       "message": "This will index past end of table, max index is NUM_CHG_CURRENT_LEVELS - 1.",
+      "range": {
+        "startLine": 443,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 40
+      },
+      "revId": "90daa198204ccc755a0cfb58ba70870ce6d9948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb7a819_f3df9d2f",
+        "filename": "board/vilboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2021-02-04T03:29:06Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "c1d427bd_b08c57a8",
       "range": {
         "startLine": 443,
         "startChar": 2,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ebc810e_db7fe958",
+        "filename": "board/vilboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2021-02-04T03:29:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ea67fb4_1aaebdb7",
+      "revId": "90daa198204ccc755a0cfb58ba70870ce6d9948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d9852bb_3e19f43a",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a2396f9_fbf05e72",
+        "filename": "board/vilboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2021-02-04T03:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d9852bb_3e19f43a",
+      "range": {
+        "startLine": 451,
+        "startChar": 1,
+        "endLine": 451,
+        "endChar": 51
+      },
+      "revId": "90daa198204ccc755a0cfb58ba70870ce6d9948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b0574d8_a29115f8",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-02-02T18:34:15Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 58
+      },
+      "revId": "90daa198204ccc755a0cfb58ba70870ce6d9948c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "608da396_5eab9a4e",
+        "filename": "board/vilboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2021-02-04T03:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b0574d8_a29115f8",
       "range": {
         "startLine": 457,
         "startChar": 0,
