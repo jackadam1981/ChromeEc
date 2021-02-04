@@ -341,6 +341,8 @@ def get_files_and_version(cname, fname=None, channel=DEFAULT_CHANNEL):
 
 def main():
   parser = argparse.ArgumentParser(description="Image a servo micro device")
+  parser.add_argument('-p', '--print', action='store_true', default=False,
+                      help='only print available firmware for board/channel')
   parser.add_argument('-s', '--serialno', type=str,
                       help="serial number to program", default=None)
   parser.add_argument('-b', '--board', type=str,
@@ -362,6 +364,15 @@ def main():
 
   brdfile, binfile, newvers = get_files_and_version(args.board, args.file,
                                                     args.channel)
+
+  # If the user only cares about the information then just print it here,
+  # and exit.
+  if args.print:
+    output = ('board: %s\n'
+              'channel: %s\n'
+              'firmware: %s') % (args.board, args.channel, newvers)
+    print(output)
+    return
 
   serialno = args.serialno
 
