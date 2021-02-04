@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d88194_fdc493c9",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T22:43:56Z",
+      "side": 1,
+      "message": "Add __maybe_unused",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 60
+      },
+      "revId": "cb3d9a0e38a01681774ae69c4673838d8730af1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e496ac1_3bd4ca1b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T22:43:56Z",
+      "side": 1,
+      "message": "Guard with !TCPMV2",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 0
+      },
+      "revId": "cb3d9a0e38a01681774ae69c4673838d8730af1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b481f8_14c971de",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T22:43:56Z",
+      "side": 1,
+      "message": "Move into the if !TCPMv2 block.",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 0
+      },
+      "revId": "cb3d9a0e38a01681774ae69c4673838d8730af1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
