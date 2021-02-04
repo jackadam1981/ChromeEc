@@ -52,6 +52,23 @@
       "parentUuid": "dc85ac73_2053dbb1",
       "revId": "7cfd6e5676a93c586106b2cfed4d876bc4df491b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8e43a5_c8705872",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1423281
+      },
+      "writtenOn": "2021-02-04T12:02:39Z",
+      "side": 1,
+      "message": "As we are monitoring the voltage rail through ADC, Vil max for voltage rail is 200mv.",
+      "revId": "7cfd6e5676a93c586106b2cfed4d876bc4df491b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
