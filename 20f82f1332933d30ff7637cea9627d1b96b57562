@@ -16,6 +16,24 @@
       "message": "Unlike ToT, Grunt branch still has \"#define HOOK_PRIO_INIT_ADC HOOK_PRIO_DEFAULT\" in adc.h.\nWill that priority work for sensor detection?\nIf not, will need to cherry-pick more HOOK_PRIO_INIT_ADC changes from main.",
       "revId": "20f82f1332933d30ff7637cea9627d1b96b57562",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c1dc413_f2b181e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-02-04T02:09:28Z",
+      "side": 1,
+      "message": "HOOK_PRIO_INIT_ADC + 2 is used for ec can get sku_id from adc.\nAnd need HOOK_INIT here when sysjump to rw.",
+      "parentUuid": "04e2554e_cbe82ff6",
+      "revId": "20f82f1332933d30ff7637cea9627d1b96b57562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
