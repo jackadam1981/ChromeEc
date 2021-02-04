@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f7f58dc_fe567aac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T22:12:56Z",
+      "side": 1,
+      "message": "replaces",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18fcbca8_3f797e1e",
         "filename": "common/adc.c",
         "patchSetId": 1
@@ -19,6 +42,29 @@
         "startChar": 0,
         "endLine": 9,
         "endChar": 21
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f098393_607219bf",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T22:12:56Z",
+      "side": 1,
+      "message": "Move so it alphabetical by the CONFIG_PLATFORM_EC_ name (starting after CONFIG_PLATFORM_EC)",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 78
       },
       "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -111,6 +157,53 @@
         "startChar": 33,
         "endLine": 21,
         "endChar": 43
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3831427_08e6a417",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T22:12:56Z",
+      "side": 1,
+      "message": "How about \"Replaces\"",
+      "parentUuid": "7163f534_da3cea47",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86503bc6_c63e00e6",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T22:12:56Z",
+      "side": 1,
+      "message": "This is the only resolution supported by the NPCX ADC driver.  Is there way to enforce the correct value when CONFIG_SOC_SERIES_NPCX7 is enabled?  I don\u0027t think we want to pollute this file with chip specific checks.  \n\nMaybe assign the next CL should set both these ADC options in volteer_defconfig.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 11
       },
       "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
