@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94f4e818_cdb6155a",
+        "filename": "board/madoo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-04T16:51:13Z",
+      "side": 1,
+      "message": "We actually made this one default behavior for TCPMv2, so it can be left out",
+      "revId": "e2914d8a252a95d91213621d09085e1cd6283409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
