@@ -3854,6 +3854,13 @@ static void pe_send_soft_reset_run(int port)
 
 		/* Initialize and run SenderResponseTimer */
 		pe[port].sender_response_timer =
+					get_time().val + PD_T_SENDER_RESPONSE * 4;
+	}
+
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		/* Initialize and run SenderResponseTimer */
+		pe[port].sender_response_timer =
 					get_time().val + PD_T_SENDER_RESPONSE;
 	}
 
