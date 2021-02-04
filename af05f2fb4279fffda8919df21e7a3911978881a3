@@ -51,6 +51,46 @@
       "parentUuid": "55b3b4bf_a732cf60",
       "revId": "af05f2fb4279fffda8919df21e7a3911978881a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa777d88_24ccfd0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T22:32:02Z",
+      "side": 1,
+      "message": "I\u0027d still like to figure out why the INIT_ROM stuff doesn\u0027t work.",
+      "revId": "af05f2fb4279fffda8919df21e7a3911978881a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa2b578d_1b1730fa",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T22:32:02Z",
+      "side": 1,
+      "message": "Should this get added to the octopus baseboard.h instead under the VARIANT_OCTOPUS_EC_NPCX796FB?  Could be a follow-up CL.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "af05f2fb4279fffda8919df21e7a3911978881a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
