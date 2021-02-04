@@ -127,6 +127,43 @@ static int rt1715_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	return rt1715_init_cc_params(port, rt1715_polarity[port] ? *cc2 : *cc1);
 }
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int rt1715_enter_low_power_mode(int port)
+{
+	int regval;
+	int rv;
+
+	rv = tcpc_read(port, RT1715_REG_PWR, &regval);
+	if (rv)
+		return rv;
+
+	regval |= RT1715_REG_PWR_BMCIO_LPEN;
+	return tcpc_write(port, RT1715_REG_PWR, regval);
+}
+#endif
+
+static int rt1715_set_vconn(int port, int enable)
+{
+	int rv;
+	int regval;
+
+	/* Auto-idle cannot be used while sourcing Vconn */
+	rv = tcpc_read(port, RT1715_REG_VENDOR_5, &regval);
+	if (rv)
+		return rv;
+
+	if (enable)
+		regval &= ~RT1715_REG_VENDOR_5_AUTOIDLE_EN;
+	else
+		regval |= RT1715_REG_VENDOR_5_AUTOIDLE_EN;
+
+	rv = tcpc_write(port, RT1715_REG_VENDOR_5, regval);
+	if (rv)
+		return rv;
+
+	return tcpci_tcpm_set_vconn(port, enable);
+}
+
 static int rt1715_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	int rv;
@@ -158,7 +195,7 @@ const struct tcpm_drv rt1715_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DECODE_SOP
 	.sop_prime_enable   = &tcpci_tcpm_sop_prime_enable,
 #endif
-	.set_vconn = &tcpci_tcpm_set_vconn,
+	.set_vconn = &rt1715_set_vconn,
 	.set_msg_header = &tcpci_tcpm_set_msg_header,
 	.set_rx_enable = &tcpci_tcpm_set_rx_enable,
 	.get_message_raw = &tcpci_tcpm_get_message_raw,
@@ -178,7 +215,7 @@ const struct tcpm_drv rt1715_tcpm_drv = {
 #endif
 	.get_chip_info = &tcpci_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	.enter_low_power_mode = &tcpci_enter_low_power_mode,
+	.enter_low_power_mode = &rt1715_enter_low_power_mode,
 #endif
 	.set_bist_test_mode	= &tcpci_set_bist_test_mode,
 };

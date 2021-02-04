@@ -38,6 +38,11 @@
 #define RT1715_REG_PHY_CTRL2_CDRTHRESH_2_5US	60
 #define RT1715_REG_PHY_CTRL2_CDRTHRESH_2_58US	62
 
+#define RT1715_REG_PWR                          0x90
+#define RT1715_REG_PWR_BMCIO_LPEN               BIT(3)
+
+
+
 #define RT1715_REG_BMCIO_RXDZSEL                0x93
 #define RT1715_REG_BMCIO_RXDZSEL_OCCTRL_600MA   BIT(7)
 #define RT1715_REG_BMCIO_RXDZSEL_SEL            BIT(0)
@@ -45,6 +50,7 @@
 #define RT1715_REG_VENDOR_5                     0x9B
 #define RT1715_REG_VENDOR_5_SHUTDOWN_OFF        BIT(5)
 #define RT1715_REG_VENDOR_5_ENEXTMSG            BIT(4)
+#define RT1715_REG_VENDOR_5_AUTOIDLE_EN         BIT(3)
 
 #define RT1715_REG_I2CRST_CTRL                  0x9E
 /* I2C reset : (val + 1) * 12.5ms */
