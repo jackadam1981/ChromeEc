@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630dbbe0_f9add10b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T18:18:06Z",
+      "side": 1,
+      "message": "In this code, if pd_capable()\u003d0 \u0026\u0026 pd_get_partner_usb_comm_capable()\u003d0, the mux returned is\nUSB_PD_MUX_USB_ENABLED. But right mux value should be USB_PD_MUX_NONE.\nWe run into issue on Voxel when plug in PD charger. Right after Attached.Snk, mux is set to  \nUSB_PD_MUX_USB_ENABLED.\nb:178727224 is the crosbug filed.\n\nif (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) \u0026\u0026\n\t    pd_get_power_role(port) \u003d\u003d PD_ROLE_SINK \u0026\u0026\n\t    pd_capable(port) \u0026\u0026\n\t    !pd_get_partner_usb_comm_capable(port))\n\t\treturn USB_PD_MUX_NONE;\n\n\t/* Otherwise connect mux since we are in S3+ */\n\treturn USB_PD_MUX_USB_ENABLED;\n}",
+      "revId": "fbca51787502977287808d0a8d23fa3d480d8cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
