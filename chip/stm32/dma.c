@@ -85,11 +85,22 @@ void dma_disable(enum dma_channel channel)
 void dma_disable_all(void)
 {
 	int ch;
+	stm32_spi_regs_t *spi __attribute__((unused)) = STM32_SPI1_REGS;
 
 	for (ch = 0; ch < STM32_DMAC_COUNT; ch++) {
 		stm32_dma_chan_t *chan = dma_get_channel(ch);
 		chan->ccr &= ~STM32_DMA_CCR_EN;
 	}
+
+
+	/* disable DMA streams */
+	/* dma_disable(dma_tx_option.channel); */
+
+	/* disable SPI */
+	spi->cr1 &= ~STM32_SPI_CR1_SPE;
+
+	/* disable DMA buffer */
+	spi->cr2 &= ~STM32_SPI_CR2_TXDMAEN;
 }
 
 /**

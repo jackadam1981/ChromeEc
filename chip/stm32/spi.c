@@ -728,20 +728,20 @@ static void spi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_INIT_SPI);
 
-static void spi_pre_init(void)
-{
-	stm32_spi_regs_t *spi __attribute__((unused)) = STM32_SPI1_REGS;
-
-	/* disable DMA streams */
-	dma_disable(dma_tx_option.channel);
-
-	/* disable SPI */
-	spi->cr1 &= ~STM32_SPI_CR1_SPE;
-
-	/* disable DMA buffer */
-	spi->cr2 &= ~STM32_SPI_CR2_TXDMAEN;
-}
-DECLARE_HOOK(HOOK_INIT, spi_pre_init, HOOK_PRIO_INIT_SPI - 1);
+/* static void spi_disable_dma(void)
+ * {
+ *         stm32_spi_regs_t *spi __attribute__((unused)) = STM32_SPI1_REGS;
+ *
+ *         [> disable DMA streams <]
+ *         dma_disable(dma_tx_option.channel);
+ *
+ *         [> disable SPI <]
+ *         spi->cr1 &= ~STM32_SPI_CR1_SPE;
+ *
+ *         [> disable DMA buffer <]
+ *         spi->cr2 &= ~STM32_SPI_CR2_TXDMAEN;
+ * }
+ * DECLARE_HOOK(HOOK_SYSJUMP, spi_sysjump, HOOK_PRIO_INIT_SPI+1); */
 /**
  * Get protocol information
  */
