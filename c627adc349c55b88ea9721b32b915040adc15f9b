@@ -16,6 +16,24 @@
       "message": "As mentioned on previous CL, this can be power/alderlake.c",
       "revId": "c627adc349c55b88ea9721b32b915040adc15f9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf86e68f_30237c79",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-02-04T18:33:14Z",
+      "side": 1,
+      "message": "I had commented on the previous CL to have a baseboard-specific power sequencing module; we may have other ADL platforms later, so rather than go down the route of an ADL specific one, which will probably need customization for any later ADL platforms, my suggestion was to use a baseboard-specific module instead. if there are other adl platforms later, they can borrow the pieces they require from this one. WDYT?",
+      "parentUuid": "239f2698_33f9daf3",
+      "revId": "c627adc349c55b88ea9721b32b915040adc15f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
