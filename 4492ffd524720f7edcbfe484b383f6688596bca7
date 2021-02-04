@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "174ffddf_85981ed3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 38
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T02:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a82efa0_79cef576",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "01965ecf_6cdc1707",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 38
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "016598ea_d90103f6",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T02:07:38Z",
+      "side": 1,
+      "message": "usb_retimer_fw_update_process_op_cb() is called by PD task.\npd_set_suspend() check if current task is PD task, so calling pd_set_suspend() directly from usb_retimer_fw_update_process_op_cb() causes exit early from here. So I added hook deferred call which is in different task and pd_set_suspend can run to end.\n\n/*\n\t\t * Avoid deadlock when running from task\n\t\t * which we are going to suspend\n\t\t */\n\t\tif (PD_PORT_TO_TASK_ID(port) \u003d\u003d task_get_current())\n\t\t\treturn;",
+      "parentUuid": "7903a323_5b465264",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6602c76f_4c471253",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 38
@@ -77,6 +125,30 @@
       "writtenOn": "2021-02-04T01:10:19Z",
       "side": 1,
       "message": "I just want to note that the previous patchset was not calling tc_start_event_loop() as part of the \"update limited\".  However, it does make sense that you want it in both locations.",
+      "range": {
+        "startLine": 3583,
+        "startChar": 0,
+        "endLine": 3583,
+        "endChar": 27
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c6bf7d_6ab180d1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 3583,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T02:07:38Z",
+      "side": 1,
+      "message": "This is because of change made in CL:2666523.\nBefore when PD task is suspended, the task still runs at the frequency of every 6ms and enter code in suspended section. After CL:2666523, suspended PD task no longer runs until explicitly wake it up. So I have to add tc_start_event_loop(port); for \"update limited\".",
+      "parentUuid": "6602c76f_4c471253",
       "range": {
         "startLine": 3583,
         "startChar": 0,
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-04T01:10:19Z",
       "side": 1,
       "message": "This check needs to be added after #include \"board.h\" (line 5042) or it won\u0027t actually fail.",
+      "range": {
+        "startLine": 4341,
+        "startChar": 0,
+        "endLine": 4345,
+        "endChar": 0
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05921a3e_e20e3622",
+        "filename": "include/config.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 4345,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T02:07:38Z",
+      "side": 1,
+      "message": "Oh, right. Moved to after #include \"board.h\".",
+      "parentUuid": "d751407e_dcc82a4c",
       "range": {
         "startLine": 4341,
         "startChar": 0,
