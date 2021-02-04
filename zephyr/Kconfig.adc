@@ -1,0 +1,36 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menuconfig PLATFORM_EC_ADC
+	bool "ADC shim"
+	default n if ARCH_POSIX
+	default y
+	help
+	  Enable compilation of the EC ADC module. Once enabled, it will be
+	  possible to call old platform/ec adc_read_channel function.
+
+if PLATFORM_EC_ADC
+
+config PLATFORM_EC_ADC_CMD
+	bool "ADC host/console command"
+	default y
+	help
+	  Enables support for printing ADC channels state with the "adc"
+	  console command and reading a state of ADC channel with the
+	  EC_CMD_ADC_READ host command. Overwirtes generic Zephyr "adc"
+	  command.
+
+config PLATFORM_EC_ADC_RESOLUTION
+	int "ADC resolution"
+	default 10
+	help
+	  ADC resolution to use for the ADC conversion.
+
+config PLATFORM_EC_ADC_OVERSAMPLING
+	int "ADC oversampling"
+	default 0
+	help
+	  ADC oversampling to use for the ADC conversion.
+
+endif # PLATFORM_EC_ADC

@@ -6,7 +6,9 @@
 /* ADC module for Chrome EC */
 
 #include "adc.h"
+#ifndef CONFIG_ZEPHYR
 #include "adc_chip.h"
+#endif
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
