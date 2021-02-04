@@ -26,6 +26,161 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8a59548_056d3ccc",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T15:50:14Z",
+      "side": 1,
+      "message": "is",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377d3ea8_bebe7a2f",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T15:50:14Z",
+      "side": 1,
+      "message": "adc_read_channel()",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e211e7_119d3af7",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T15:50:14Z",
+      "side": 1,
+      "message": "I don\u0027t think we should say \u0027old\u0027 as it is still in use. Perhaps just omit this word?",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7163f534_da3cea47",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T15:50:14Z",
+      "side": 1,
+      "message": "Would overrides be better? Up to you",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c61513_c13a7c07",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T15:50:14Z",
+      "side": 1,
+      "message": "What units are used for this? Needs more detail",
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad97231c_d5bd0441",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T15:50:14Z",
+      "side": 1,
+      "message": "What is oversampling and how do I select a value?",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7732d6ad_f96433d4",
+        "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T15:50:14Z",
+      "side": 1,
+      "message": "-",
+      "range": {
+        "startLine": 16,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5461f5e2_28731d53",
         "filename": "zephyr/shim/src/CMakeLists.txt",
         "patchSetId": 1
@@ -37,6 +192,30 @@
       "writtenOn": "2021-02-04T14:58:07Z",
       "side": 1,
       "message": "this list should be alphasorted",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f3b0cb4_8d55940e",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T15:50:14Z",
+      "side": 1,
+      "message": "But let\u0027s do in a separate CL before this one",
+      "parentUuid": "5461f5e2_28731d53",
       "range": {
         "startLine": 28,
         "startChar": 21,
