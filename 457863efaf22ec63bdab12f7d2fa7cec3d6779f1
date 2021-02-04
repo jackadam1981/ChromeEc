@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a236cf_bb90f1d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T20:29:11Z",
+      "side": 1,
+      "message": "It boots!",
+      "revId": "457863efaf22ec63bdab12f7d2fa7cec3d6779f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "862376e1_d27a7bcf",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T20:29:11Z",
+      "side": 1,
+      "message": "-",
+      "range": {
+        "startLine": 589,
+        "startChar": 13,
+        "endLine": 589,
+        "endChar": 14
+      },
+      "revId": "457863efaf22ec63bdab12f7d2fa7cec3d6779f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
