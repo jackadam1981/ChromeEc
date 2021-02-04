@@ -81,6 +81,30 @@
       },
       "revId": "1da94bbc85b0e07c2bad4adeb96f2456fae5f5cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e7889d_5fe2bd8e",
+        "filename": "board/copano/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T21:45:18Z",
+      "side": 1,
+      "message": "My mistake - I flipped the bit order.",
+      "parentUuid": "ccd884e3_2eb0a635",
+      "range": {
+        "startLine": 59,
+        "startChar": 32,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "1da94bbc85b0e07c2bad4adeb96f2456fae5f5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
