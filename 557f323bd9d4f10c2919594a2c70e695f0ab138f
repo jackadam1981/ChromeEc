@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aed5af7e_bfdb648c",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-04T17:11:24Z",
+      "side": 1,
+      "message": "If it\u0027s not being used, can we remove it?",
+      "parentUuid": "31479d0d_c44a6613",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cef4b684_561a4128",
@@ -193,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e9b77a_4e474a69",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-04T17:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29178675_ee6b925b",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d1c49d7_c088acd0",
@@ -224,6 +260,24 @@
       "side": 1,
       "message": "To be clear this is not just about a current limit. This is primarily to allow different source cap options for port 0 instead of port 1. Port 0 can supply any vbus level betwen 5 and 20V, but ports 1/2 are only 5V tolerant.",
       "parentUuid": "3d1c49d7_c088acd0",
+      "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231f011a_1cde8d73",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-04T17:11:24Z",
+      "side": 1,
+      "message": "Discussed on chat, and the override of the DPM function seems like a good approach for honeybuns.",
+      "parentUuid": "d21286ff_836a6fa7",
       "revId": "557f323bd9d4f10c2919594a2c70e695f0ab138f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

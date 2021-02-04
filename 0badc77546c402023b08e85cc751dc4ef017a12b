@@ -3,6 +3,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "233540dc_038fb81a",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-04T17:11:24Z",
+      "side": 1,
+      "message": "Mark __override.  Now that I think of it, the proto might need __override_proto.  It\u0027s not functional so much as documenting expectations",
+      "revId": "0badc77546c402023b08e85cc751dc4ef017a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0a28c2_3fa80e93",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-04T17:11:24Z",
+      "side": 1,
+      "message": "Can be removed now?",
+      "revId": "0badc77546c402023b08e85cc751dc4ef017a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa29b6f2_a832d93b",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-04T17:11:24Z",
+      "side": 1,
+      "message": "Is this correct?  I\u0027d assume on disconnect or hard reset we\u0027d be transitioning to 0V and then we\u0027d get a power supply ready when the TC has decided we\u0027re sourcing again",
+      "revId": "0badc77546c402023b08e85cc751dc4ef017a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0bf1bece_3bfd9e89",
         "filename": "board/quiche/board.c",
         "patchSetId": 58
