@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8322db3_5ef842e7",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T20:50:34Z",
+      "side": 1,
+      "message": "I think let\u0027s make a copy of the header file too. We won\u0027t really be using everything from icelake.h",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "43f07ce405bc654e9445eb4d04ed566f2b9837ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b3db5b_f2e5cb5e",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T20:50:34Z",
+      "side": 1,
+      "message": "This is never set to 1.",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "43f07ce405bc654e9445eb4d04ed566f2b9837ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f84920b9_a79e6198",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T20:50:34Z",
+      "side": 1,
+      "message": "Comment is not really correct for brya. This should be EN_S5_RAILS. Also, PP5000_CONTROL can be dropped.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "43f07ce405bc654e9445eb4d04ed566f2b9837ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c577a89_e4aaa020",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T20:50:34Z",
+      "side": 1,
+      "message": "This name is not correct for ADL/brya. Brya uses EN_S5_RAILS which enables PP3300 rails to the SoC. I think we should drop this function and instead just have:\n\nGPIO_SET_LEVEL(GPIO_EN_S5_RAILS, 1);\n\nAlso, the enable pin does not control power to anything else (like it was done with PP5000 on previous platforms). So, we don\u0027t need the power_5v_enable() as well.",
+      "range": {
+        "startLine": 153,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 30
+      },
+      "revId": "43f07ce405bc654e9445eb4d04ed566f2b9837ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43921a71_52e51616",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T20:50:34Z",
+      "side": 1,
+      "message": "Power sequencing diagram from Catherine says that there should be no delay on H-\u003eL transition. Do we want to skip the print here? Or probably print this only during bringup?",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 44
+      },
+      "revId": "43f07ce405bc654e9445eb4d04ed566f2b9837ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36d6a8f_9caa5e84",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T20:50:34Z",
+      "side": 1,
+      "message": "It is not yet clear to me if we need to do anything more than just calling `ap_off()`. Does the power state machine transition back to G3?",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 9
+      },
+      "revId": "43f07ce405bc654e9445eb4d04ed566f2b9837ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e81cf8_a0e0a7b5",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T20:50:34Z",
+      "side": 1,
+      "message": "Where is this delay documented? I couldn\u0027t find it in power sequencing diagram.\n\nIn PDG, tCPU16 is set to min 0.",
+      "range": {
+        "startLine": 232,
+        "startChar": 9,
+        "endLine": 232,
+        "endChar": 27
+      },
+      "revId": "43f07ce405bc654e9445eb4d04ed566f2b9837ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3239ab24_44780122",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T20:50:34Z",
+      "side": 1,
+      "message": "Drop this? I think we can add it later if we determine that it is required for brya.",
+      "range": {
+        "startLine": 263,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 0
+      },
+      "revId": "43f07ce405bc654e9445eb4d04ed566f2b9837ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d343c2_346294ce",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T20:50:34Z",
+      "side": 1,
+      "message": "Does this comment apply to brya too?\n\nAs per PDG, tPCH32 is applicable only to deep-Sx platforms.",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 5
+      },
+      "revId": "43f07ce405bc654e9445eb4d04ed566f2b9837ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
