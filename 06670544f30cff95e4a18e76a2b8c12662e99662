@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119ba690_5be64511",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T21:07:27Z",
+      "side": 1,
+      "message": "Nit - line length.  This should be caught by the pre-upload checks. \"repo upload\" runs this automatically or you can manually run the pre-upload.py script as noted here\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/README.md#submitting-changes\n\nNote - it is no longer required to run \"make buildall\" to pass the pre-upload check.  The commit-queue will run this.  If you have a fast machine, it\u0027s not bad practice to run the buildall step.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 53
+      },
+      "revId": "06670544f30cff95e4a18e76a2b8c12662e99662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
