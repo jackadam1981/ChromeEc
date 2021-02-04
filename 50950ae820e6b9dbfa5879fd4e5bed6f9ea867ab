@@ -86,6 +86,30 @@
       },
       "revId": "50950ae820e6b9dbfa5879fd4e5bed6f9ea867ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeac6833_72f9bfc0",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-02-04T03:25:49Z",
+      "side": 1,
+      "message": "For me, it is a return value (but we cannot use return because a0 is used).\n\nI think irq_valid \u003d -1 is weird for me (I would think it is a boolean by the _valid).",
+      "parentUuid": "7d659ed3_756e722c",
+      "range": {
+        "startLine": 316,
+        "startChar": 5,
+        "endLine": 316,
+        "endChar": 14
+      },
+      "revId": "50950ae820e6b9dbfa5879fd4e5bed6f9ea867ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
