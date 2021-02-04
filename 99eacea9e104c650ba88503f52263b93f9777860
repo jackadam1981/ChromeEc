@@ -16,6 +16,23 @@
       "message": "This was generated using the recently submitted update_release_branch.py with\n--baseboard volteer and additional directories common/usb*. It generated the ",
       "revId": "99eacea9e104c650ba88503f52263b93f9777860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d54960_aa5f0553",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T23:27:56Z",
+      "side": 1,
+      "message": "Approved the full merge CL:2674954 instead of this one.",
+      "revId": "99eacea9e104c650ba88503f52263b93f9777860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
