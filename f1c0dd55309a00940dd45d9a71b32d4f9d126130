@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18fcbca8_3f797e1e",
+        "filename": "common/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-04T14:58:07Z",
+      "side": 1,
+      "message": "would prefer to make an empty header file in shim/include instead of guarding the #include",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5461f5e2_28731d53",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-04T14:58:07Z",
+      "side": 1,
+      "message": "this list should be alphasorted",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85eff276_e557bbc8",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-04T14:58:07Z",
+      "side": 1,
+      "message": "should we use DT_INST(0, named_adc_channels) to look up by dt-compatible instead of path?",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
