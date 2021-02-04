@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "947066b6_4f88e2e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-04T15:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdb81b52_dc098dde",
+      "revId": "bcea4aecb80192fbc76360eb838fe65e2f06e83f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfb90a86_26c7e599",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa3f58eb_855706a9",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-04T15:54:43Z",
+      "side": 1,
+      "message": "As I understand it, this will not block boot. This configuration happens asynchronously based on PD events. 100ms matches the timeout in the virtual usb mux driver.",
+      "parentUuid": "cfb90a86_26c7e599",
+      "revId": "bcea4aecb80192fbc76360eb838fe65e2f06e83f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbe57bdd_6cf19b80",
         "filename": "driver/usb_mux/amd_fp6.c",
         "patchSetId": 12
@@ -48,6 +84,24 @@
       "writtenOn": "2021-02-03T16:47:36Z",
       "side": 1,
       "message": "is this section something we need to track for overall performance/log? or check perf later?",
+      "revId": "bcea4aecb80192fbc76360eb838fe65e2f06e83f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f151c0_7112c895",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-04T15:54:43Z",
+      "side": 1,
+      "message": "Created b/179267079 to track.",
+      "parentUuid": "cbe57bdd_6cf19b80",
       "revId": "bcea4aecb80192fbc76360eb838fe65e2f06e83f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
