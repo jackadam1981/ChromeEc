@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca96931a_f48ef47f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5616,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T18:22:15Z",
+      "side": 1,
+      "message": "I know this is used by adlrvp, but in my opinion all Chrome OS boards based on Brya will be using the same power sequencing as Brya. So, that would be the correct default for Alderlake.\n\nI think what we should do is:\n\n* Remove auto-selection of CONFIG_CHIPSET_ICELAKE when CONFIG_CHIPSET_ALDERLAKE is selected\n* For adlrvp, select CONFIG_CHIPSET_ICELAKE directly with a comment that it uses the same sequencing as icelake.\n* For brya, select CONFIG_CHIPSET_ALDERLAKE and add power/alderlake.c that provides the sequencing as expected by Brya reference.",
+      "range": {
+        "startLine": 5616,
+        "startChar": 1,
+        "endLine": 5616,
+        "endChar": 34
+      },
+      "revId": "def616447ce71f76c4b026e347279fcd8ee6314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec53d528_82de7a1d",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5642,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T18:22:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this go up along with `CONFIG_POWER_COMMON` on line 5632?",
+      "range": {
+        "startLine": 5642,
+        "startChar": 8,
+        "endLine": 5642,
+        "endChar": 30
+      },
+      "revId": "def616447ce71f76c4b026e347279fcd8ee6314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ad88e74_eefae5b4",
+        "filename": "power/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T18:22:15Z",
+      "side": 1,
+      "message": "Why is this config required? All the chipset related sequencing is present in its own file and included based on some CONFIG_CHIPSET_*",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "def616447ce71f76c4b026e347279fcd8ee6314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
