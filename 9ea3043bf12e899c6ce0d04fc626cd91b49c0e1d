@@ -16,6 +16,24 @@
       "message": "Do we have a test for this?",
       "revId": "9ea3043bf12e899c6ce0d04fc626cd91b49c0e1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f96a5f53_dfa9bb70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T16:44:19Z",
+      "side": 1,
+      "message": "Yup, added more tests to the zephyr/zmake/tests/test_util.py",
+      "parentUuid": "8fef78aa_bc86579b",
+      "revId": "9ea3043bf12e899c6ce0d04fc626cd91b49c0e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
