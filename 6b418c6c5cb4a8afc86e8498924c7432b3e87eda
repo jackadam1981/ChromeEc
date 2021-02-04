@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663948e4_59db37da",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-04T22:41:57Z",
+      "side": 1,
+      "message": "you should convert the calls to irq_lock/irq_unlock instead of adding this",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 1
+      },
+      "revId": "6b418c6c5cb4a8afc86e8498924c7432b3e87eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
