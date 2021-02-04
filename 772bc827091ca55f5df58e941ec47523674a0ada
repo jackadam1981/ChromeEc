@@ -16,6 +16,52 @@
       "message": "Eric, I added all the cases I could think of for testing but definitely feel free to test any more you\u0027d like. ",
       "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28147427_0ece0786",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T23:44:09Z",
+      "side": 1,
+      "message": "This is requesting the PE to disable FRS in parallel with asking the TC to update the current on a port. Is it possible that we\u0027ll upgrade the PD port to 3.0 before FRS disable has completed?",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 23
+      },
+      "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc3765e_9aa93074",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T23:44:09Z",
+      "side": 1,
+      "message": "Nit - add a comment that the partner doesn\u0027t need 3A, so FRS can always be enabled.",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 59
+      },
+      "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
