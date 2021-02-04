@@ -22,6 +22,30 @@
       },
       "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d5b2588_51e654f2",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T23:04:27Z",
+      "side": 1,
+      "message": "Interesting idea. I\u0027ll play around with it tonight, what would be the use case? I can see the flexibility but hard coding the compatible string vs the path doesn\u0027t feel all that different to me. Maybe there\u0027s something I\u0027m not seeing?",
+      "parentUuid": "11a9b07d_2f1b9f64",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
