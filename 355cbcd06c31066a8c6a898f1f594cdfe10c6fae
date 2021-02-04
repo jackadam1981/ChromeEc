@@ -22,6 +22,30 @@
       },
       "revId": "355cbcd06c31066a8c6a898f1f594cdfe10c6fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad9eb34_b4ee02d9",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-04T18:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82054681_5354af0a",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "355cbcd06c31066a8c6a898f1f594cdfe10c6fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
