@@ -83,11 +83,13 @@ enum pchg_event {
 	PCHG_EVENT_CHARGE_ENDED,
 	PCHG_EVENT_CHARGE_STOPPED,
 	PCHG_EVENT_CHARGE_ERROR,
+	PCHG_EVENT_LISTENER_IN_PROXIMITY,
 
 	/* Internal (a.k.a. Host) Events */
 	PCHG_EVENT_INITIALIZE,
 	PCHG_EVENT_ENABLE,
 	PCHG_EVENT_DISABLE,
+	PCHG_EVENT_PING,
 };
 
 enum pchg_error {
@@ -145,6 +147,11 @@ struct pchg_drv {
 	int (*enable)(struct pchg *ctx, bool enable);
 	/* Get event info. */
 	int (*get_event)(struct pchg *ctx);
+	/*
+	 * Called every second to ping a device. Used to implement more robust
+	 * detection logic to overcome anomalies (e.g. depleted battery).
+	 */
+	int (*ping)(struct pchg *ctx);
 };
 
 /**
