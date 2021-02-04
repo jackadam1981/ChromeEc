@@ -34,6 +34,24 @@
       "parentUuid": "06a491e3_a8c99c20",
       "revId": "22404a251e163e0c1026aa40db028fa35b17980b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da6eeac_62b53b77",
+        "filename": "driver/tcpm/raa489000.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-04T00:18:47Z",
+      "side": 1,
+      "message": "I commented on the bug. I don\u0027t that we should increase it. We should set this value to the smallest value that guarantees 1.5A.",
+      "parentUuid": "06a491e3_a8c99c20",
+      "revId": "22404a251e163e0c1026aa40db028fa35b17980b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
