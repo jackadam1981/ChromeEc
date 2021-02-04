@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90058cd8_fa5c2bb4",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T23:08:41Z",
+      "side": 1,
+      "message": "Right. PD task just wakes up a few ms later. AP polls result every 25ms, no side effect from early return. Functionality is the same. Just in normal exit flow, by time pd_set_suspend() returns, the caller know port is in TC_FLAGS_SUSPENDED. I felt odd when I saw early return, so I changed to hook call.\nI have changed back to call pd_set_suspend() directly.",
+      "parentUuid": "9d2181fc_5a1361d7",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6602c76f_4c471253",
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "Thanks for the clarification.",
       "parentUuid": "31c6bf7d_6ab180d1",
+      "range": {
+        "startLine": 3583,
+        "startChar": 0,
+        "endLine": 3583,
+        "endChar": 27
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba82736f_0005810b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 3583,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-04T23:08:41Z",
+      "side": 1,
+      "message": "Before this patch, if suspended, PD task still wakes up periodically; I was planning to add timeout check for retimer update(like AP is crashed, PD was left in suspended for too long). But now can\u0027t do this way. It\u0027s a problem where to put the timer.",
+      "parentUuid": "2e9471b6_24389da5",
       "range": {
         "startLine": 3583,
         "startChar": 0,
