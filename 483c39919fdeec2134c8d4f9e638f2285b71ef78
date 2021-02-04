@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b6e69f_7630988c",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-02-04T07:20:25Z",
+      "side": 1,
+      "message": "You need a way to save ec_int (if chip_get_ec_int() !\u003d -1).",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 13
+      },
+      "revId": "483c39919fdeec2134c8d4f9e638f2285b71ef78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
