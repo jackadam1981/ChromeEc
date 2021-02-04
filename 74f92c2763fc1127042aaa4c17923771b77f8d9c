@@ -69,6 +69,23 @@
       "parentUuid": "4f05695d_66be532b",
       "revId": "74f92c2763fc1127042aaa4c17923771b77f8d9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfbd34f_83c11138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-04T20:14:50Z",
+      "side": 1,
+      "message": "Oh, very interesting and worring. It looks like only bloonchipper might use this function:\n\n$ rm -rf build; make proj-bloonchipper proj-dartmonkey\n$ ls build/*/R?/chip/stm32/usart_tx_interrupt.o\n\nbuild/bloonchipper/RO/chip/stm32/usart_tx_interrupt.o  build/bloonchipper/RW/chip/stm32/usart_tx_interrupt.o\n\n$ nm build/bloonchipper/RO/chip/stm32/usart_tx_interrupt.o|grep queue\n00000001 t queue_remove\n         U queue_remove_unit\n         \n         \n@bhanumaiya, do you think this may have been factoring into the uart comms issue?\n(I\u0027m not fully caught up on how that played out)",
+      "revId": "74f92c2763fc1127042aaa4c17923771b77f8d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
