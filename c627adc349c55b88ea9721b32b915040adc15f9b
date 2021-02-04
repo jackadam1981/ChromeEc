@@ -34,6 +34,24 @@
       "parentUuid": "239f2698_33f9daf3",
       "revId": "c627adc349c55b88ea9721b32b915040adc15f9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eab8282_6bbdbf3f",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-04T18:44:51Z",
+      "side": 1,
+      "message": "All OEM/ODM designs copy the exact same power sequencing as the reference board. Thus, all brya-based designs will end up using the same power sequencing chip as brya.\n\nI agree that if we make another reference design, there is a possibility that we might use a different sequencer.\n\nSince everything seems to depend on two attributes: `chipset` and `sequencer`, what do you think about moving this to: power/alderlake_slg4bd44540.c i.e.use the sequencer chip name along with chipset name to differentiate between the designs. It will keep all the power sequencing code under power/ but, each platform can decide what sequencer it is using and hence pick the appropriate sequencer driver.\n\nIf we go down that route, we should also update the config to be something like CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540.",
+      "parentUuid": "bf86e68f_30237c79",
+      "revId": "c627adc349c55b88ea9721b32b915040adc15f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
