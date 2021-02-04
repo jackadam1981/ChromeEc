@@ -34,6 +34,24 @@
       "parentUuid": "2d91e821_f9e98698",
       "revId": "f9f1b5eb3c299d9a16b05bd162ea2c3600570689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "202230b4_8ebd70e4",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-02-04T19:55:02Z",
+      "side": 1,
+      "message": "Yup, that works, I think I may have been mistaken about the different git repos not supporting CQ-depend so this is fine.\n\nI have a personal preference for including the corrective action on the exception message in line 280 just so developers will always know what to do without digging through emails but that\u0027s not a requirement.",
+      "parentUuid": "ecda87ce_2e84d920",
+      "revId": "f9f1b5eb3c299d9a16b05bd162ea2c3600570689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
