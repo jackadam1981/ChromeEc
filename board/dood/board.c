@@ -9,12 +9,14 @@
 #include "adc_chip.h"
 #include "battery.h"
 #include "button.h"
+#include "cbi_ssfc.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
 #include "cros_board_info.h"
 #include "driver/accel_kionix.h"
 #include "driver/accelgyro_bmi_common.h"
+#include "driver/accelgyro_lsm6dsm.h"
 #include "driver/charger/bd9995x.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/syv682x.h"
@@ -154,9 +156,16 @@ const mat33_fp_t base_standard_ref = {
 	{ 0, 0,  FLOAT_TO_FP(1)}
 };
 
+const mat33_fp_t base_lsm6dsm_ref = {
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ 0, 0,  FLOAT_TO_FP(1)}
+};
+
 /* sensor private data */
 static struct kionix_accel_data g_kx022_data;
 static struct bmi_drv_data_t g_bmi160_data;
+static struct lsm6dsm_data lsm6dsm_data;
 
 /* Drivers */
 struct motion_sensor_t motion_sensors[] = {
@@ -234,15 +243,74 @@ struct motion_sensor_t motion_sensors[] = {
 
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
+/* g-sensor 2nd source rrivers */
+struct motion_sensor_t lsm6dsm_base_accel = {
+	.name = "Base Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_LSM6DSM,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &lsm6dsm_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
+			MOTIONSENSE_TYPE_ACCEL),
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
+	.rot_standard_ref = &base_lsm6dsm_ref,
+	.default_range = 2,  /* g */
+	.min_frequency = LSM6DSM_ODR_MIN_VAL,
+	.max_frequency = LSM6DSM_ODR_MAX_VAL,
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 13000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+		/* Sensor on for angle detection */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+	},
+};
+
+struct motion_sensor_t lsm6dsm_base_gyro = {
+	.name = "Base Gyro",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_LSM6DSM,
+	.type = MOTIONSENSE_TYPE_GYRO,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &lsm6dsm_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
+			MOTIONSENSE_TYPE_GYRO),
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
+	.default_range = 1000 | ROUND_UP_FLAG, /* dps */
+	.rot_standard_ref = &base_lsm6dsm_ref,
+	.min_frequency = LSM6DSM_ODR_MIN_VAL,
+	.max_frequency = LSM6DSM_ODR_MAX_VAL,
+};
+
 static int board_is_convertible(void)
 {
 	/* Default supports convertible */
 	return true;
 }
 
+static int base_gyro_config;
+
 static void board_update_sensor_config_from_sku(void)
 {
 	if (board_is_convertible()) {
+		base_gyro_config = get_cbi_ssfc_sensor();
+		if (base_gyro_config == SSFC_SENSOR_LSM6DSM) {
+			motion_sensors[BASE_ACCEL] = lsm6dsm_base_accel;
+			motion_sensors[BASE_GYRO] = lsm6dsm_base_gyro;
+			ccprints("BASE GYRO is LSM6DSM");
+		} else {
+			ccprints("BASE GYRO is BMI160");
+		}
 		motion_sensor_count = ARRAY_SIZE(motion_sensors);
 		/* Enable Base Accel interrupt */
 		gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
@@ -252,6 +320,19 @@ static void board_update_sensor_config_from_sku(void)
 		/* Base accel is not stuffed, don't allow line to float */
 		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
 			       GPIO_INPUT | GPIO_PULL_DOWN);
+	}
+}
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	switch (base_gyro_config) {
+	case SSFC_SENSOR_LSM6DSM:
+		lsm6dsm_interrupt(signal);
+		break;
+	case SSFC_SENSOR_BMI160:
+	default:
+		bmi160_interrupt(signal);
+		break;
 	}
 }
 
