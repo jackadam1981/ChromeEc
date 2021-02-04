@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a82efa0_79cef576",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 38
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1185694
+      },
+      "writtenOn": "2021-02-04T01:12:41Z",
+      "side": 1,
+      "message": "I would rephrase section 3. a) as below, to reflect the flow of events more accurately.\n\n\"3. a) If no device attached, AP requests EC to suspend PD task of the port. Then AP requests EC to set MUX to USB mode,\nSafe mode, TBT mode. After entering TBT mode, the OS can either enumerate the retimers or do firmware update on the enumerated retimers. Once done, AP requests EC to disconnect MUX and resume PD task.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01965ecf_6cdc1707",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1185694
+      },
+      "writtenOn": "2021-02-04T01:12:41Z",
+      "side": 1,
+      "message": "The kernel series used to verify retimer firmware on Voxel are here.\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2670719\n",
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7903a323_5b465264",
         "filename": "common/usbc/usb_retimer_fw_update.c",
         "patchSetId": 38
