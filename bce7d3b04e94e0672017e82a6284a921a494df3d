@@ -77,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e127fd_ddf8a752",
+        "filename": "zephyr/zmake/tests/test_util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6b58fa3_0f78bbc7",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c31017c7_7246f1e9",
@@ -94,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0859db01_254fe589",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31017c7_7246f1e9",
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a5913b2_b79df8ea",
@@ -107,6 +149,30 @@
       "writtenOn": "2021-02-02T17:15:03Z",
       "side": 1,
       "message": "you can drop \"is not None\"\n\nhttps://www.python.org/dev/peps/pep-0008/#programming-recommendations",
+      "range": {
+        "startLine": 160,
+        "startChar": 16,
+        "endLine": 160,
+        "endChar": 28
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db583c6_177432f9",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a5913b2_b79df8ea",
       "range": {
         "startLine": 160,
         "startChar": 16,
@@ -163,6 +229,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "569f86fe_36683b48",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d58577d9_baa504e7",
+      "range": {
+        "startLine": 165,
+        "startChar": 28,
+        "endLine": 165,
+        "endChar": 43
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5637bec4_a575c760",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:02Z",
+      "side": 1,
+      "message": "Good catch (didn\u0027t think of that). Will raise an error for now.",
+      "parentUuid": "7014c25c_766705d0",
+      "range": {
+        "startLine": 165,
+        "startChar": 44,
+        "endLine": 165,
+        "endChar": 55
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ba8d4b7_b126d8c2",
@@ -188,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a047a151_632515d7",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:02Z",
+      "side": 1,
+      "message": "I\u0027m not seeing where module_paths is passed into configure. Also, see the following CL, we\u0027ll be using this in build() and test() which don\u0027t take in the module_paths.",
+      "parentUuid": "8ba8d4b7_b126d8c2",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 43
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c09ab6d_2c228ce5",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 5
@@ -199,6 +337,30 @@
       "writtenOn": "2021-02-02T17:15:03Z",
       "side": 1,
       "message": "Instead of passing in build_dir, I would bring that check outwards. It\u0027s one less parameter needed for the function, and reduces the \"jumping\" needed to read what\u0027s going on:\n\n    if not build_dir:\n        build_dir \u003d util.resolve_build_dir(platform_ec_dir\u003d..., project_dir\u003d...)",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180d7582_01a16a7f",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-04T07:53:02Z",
+      "side": 1,
+      "message": "See the following CL for more use cases (build_dir may not be None in all cases). The idea is that given platform_ec_dir, the project_dir, and an optional build_dir this function will always tell you where to build (no need to think of when the function should be called. (going to leave unresolved to promote discussion, feel free to close if you feel this is sufficient).",
+      "parentUuid": "9c09ab6d_2c228ce5",
       "range": {
         "startLine": 72,
         "startChar": 0,
