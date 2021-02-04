@@ -1227,6 +1227,9 @@
 /* Board requires chipset pre-init callback */
 #undef CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK
 
+/* Board provides custom chipset power sequencing */
+#undef CONFIG_CHIPSET_POWER_CUSTOM
+
 /* Redefine when we need a different power-on sequence on the same chipset. */
 #define CONFIG_CHIPSET_POWER_SEQ_VERSION 0
 
@@ -3181,6 +3184,9 @@
 
 /* Compile common code for AP power state machine */
 #undef CONFIG_POWER_COMMON
+
+/* Compile common code for Intel x86 AP power state machine */
+#undef CONFIG_POWER_INTEL_X86
 
 /* Enable a task-safe way to control the PP5000 rail. */
 #undef CONFIG_POWER_PP5000_CONTROL
@@ -5497,6 +5503,7 @@
 #undef CONFIG_CHIPSET_MT817X
 #undef CONFIG_CHIPSET_MT8183
 #undef CONFIG_CHIPSET_MT8192
+#undef CONFIG_CHIPSET_POWER_CUSTOM
 #undef CONFIG_CHIPSET_RK3399
 #undef CONFIG_CHIPSET_RK3288
 #undef CONFIG_CHIPSET_SDM845
@@ -5504,6 +5511,7 @@
 #undef CONFIG_CHIPSET_STONEY
 #undef CONFIG_CHIPSET_TIGERLAKE
 #undef CONFIG_POWER_COMMON
+#undef CONFIG_POWER_INTEL_X86
 #endif
 
 /*
@@ -5622,6 +5630,16 @@
 	defined(CONFIG_CHIPSET_ICELAKE) || \
 	defined(CONFIG_CHIPSET_SKYLAKE)
 #define CONFIG_POWER_COMMON
+#endif
+
+#if defined(CONFIG_CHIPSET_APOLLOLAKE) || \
+	defined(CONFIG_CHIPSET_CANNONLAKE) || \
+	defined(CONFIG_CHIPSET_COMETLAKE) || \
+	defined(CONFIG_CHIPSET_COMETLAKE_DISCRETE) || \
+	defined(CONFIG_CHIPSET_GEMINILAKE) || \
+	defined(CONFIG_CHIPSET_ICELAKE) || \
+	defined(CONFIG_CHIPSET_SKYLAKE)
+#define CONFIG_POWER_INTEL_X86
 #endif
 
 #if defined(CONFIG_CHIPSET_CANNONLAKE) || \
