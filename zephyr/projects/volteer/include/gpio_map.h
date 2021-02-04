@@ -27,6 +27,7 @@
 #define GPIO_EC_INT_L              NAMED_GPIO(ec_pch_int_odl)
 #define GPIO_EC_PCH_SYS_PWROK      NAMED_GPIO(ec_pch_sys_pwrok)
 #define GPIO_EC_PCH_WAKE_ODL       NAMED_GPIO(ec_pch_wake_odl)
+#define GPIO_EC_WP_L               NAMED_GPIO(ec_wp_l)
 #define GPIO_EN_PP3300_A           NAMED_GPIO(en_pp3300_a)
 #define GPIO_EN_PP5000             NAMED_GPIO(en_pp5000_a)
 #define GPIO_EN_PP5000_A           NAMED_GPIO(en_pp5000_a)
@@ -123,6 +124,7 @@
 #define EC_CROS_GPIO_INTERRUPTS                                           \
 	GPIO_INT(GPIO_AC_PRESENT, GPIO_INT_EDGE_BOTH, extpower_interrupt) \
 	GPIO_INT(GPIO_LID_OPEN, GPIO_INT_EDGE_BOTH, lid_interrupt)        \
+	GPIO_INT(GPIO_EC_WP_L, GPIO_INT_EDGE_BOTH, switch_interrupt)      \
 	POWER_SIGNAL_INT(GPIO_PCH_SLP_S0_L, GPIO_INT_EDGE_BOTH)           \
 	POWER_SIGNAL_INT(GPIO_PCH_SLP_S3_L, GPIO_INT_EDGE_BOTH)           \
 	POWER_SIGNAL_INT(GPIO_PCH_SLP_SUS_L, GPIO_INT_EDGE_BOTH)          \
