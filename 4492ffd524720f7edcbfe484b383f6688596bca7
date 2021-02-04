@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d2181fc_5a1361d7",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T21:19:11Z",
+      "side": 1,
+      "message": "Even with the early return, the PD task should automatically wake up after 5ms and then finish processing TC_FLAGS_REQUEST_SUSPEND. (see https://chromium.googlesource.com/chromiumos/platform/ec/+/9b2452ea/common/usbc/usbc_task.c#94)\n\nThe AP is already polling the actual suspend state using usb_retimer_fw_update_get_result()-\u003epd_is_port_enabled(), so I don\u0027t think the deferred call is needed.  I think the only result of the defer call is the PD task is woken up after 1 ms to process TC_FLAGS_REQUEST_SUSPEND instead of waiting 5 ms.  Is the AP timeout shorter than 5 ms?",
+      "parentUuid": "016598ea_d90103f6",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6602c76f_4c471253",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 38
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "This is because of change made in CL:2666523.\nBefore when PD task is suspended, the task still runs at the frequency of every 6ms and enter code in suspended section. After CL:2666523, suspended PD task no longer runs until explicitly wake it up. So I have to add tc_start_event_loop(port); for \"update limited\".",
       "parentUuid": "6602c76f_4c471253",
+      "range": {
+        "startLine": 3583,
+        "startChar": 0,
+        "endLine": 3583,
+        "endChar": 27
+      },
+      "revId": "4492ffd524720f7edcbfe484b383f6688596bca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e9471b6_24389da5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 3583,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T21:19:11Z",
+      "side": 1,
+      "message": "Thanks for the clarification.",
+      "parentUuid": "31c6bf7d_6ab180d1",
       "range": {
         "startLine": 3583,
         "startChar": 0,
