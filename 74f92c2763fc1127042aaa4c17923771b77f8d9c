@@ -33,6 +33,24 @@
       "message": "Personally I\u0027m a bit puzzled we got this (somewhat common) code wrong while it\u0027s used everyday in other contraptions (e.g. servo_micro)\nAny explanation how other cases were working ? (or are still working after the inversion ?)",
       "revId": "74f92c2763fc1127042aaa4c17923771b77f8d9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f05695d_66be532b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-02-04T16:01:58Z",
+      "side": 1,
+      "message": "I was surprised, too. Current servo_micro firmware is built from commit f1113c92b.\nServo v4 and servo_micro firmwares are built from this branch: firmware-servo-12768.B-master\nThis bug was introduced with commit: 86aacab\nAs you can see, this commit is not merged to above branch, so there was no issue with servos. I am running main firmware on servo_v4p1, and this bug is here.",
+      "parentUuid": "4c3a6187_3530da23",
+      "revId": "74f92c2763fc1127042aaa4c17923771b77f8d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
