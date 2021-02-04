@@ -70,6 +70,24 @@
       "parentUuid": "552d8ea7_65afd57e",
       "revId": "21f36cc59fb97f34a84898cc3af1f8462ec91609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b702c1e_04eeb706",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-04T15:01:44Z",
+      "side": 0,
+      "message": "There is no old fw which is using VBNV in RO still, since all device that ever did are now AUE (we will never ship an OS or firmware update to them ever again)\n\nThis enum is actually the \"high level common functionality\" enumeration. It\u0027s not passed between RO/RW, and the actual indexes used on the chip are decided by the chip code, not by this enum.  So there\u0027s no reason to start counting at 16... nothing cares about the actual values of this enum directly.",
+      "parentUuid": "360f9b3e_97b49700",
+      "revId": "21f36cc59fb97f34a84898cc3af1f8462ec91609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
