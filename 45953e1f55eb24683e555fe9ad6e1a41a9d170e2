@@ -16,6 +16,29 @@
       "message": "I haven\u0027t compared the GPIOs with schematics. I will let others on the CL take a closer look.",
       "revId": "45953e1f55eb24683e555fe9ad6e1a41a9d170e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f4c42f3_04affbe8",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T20:58:24Z",
+      "side": 1,
+      "message": "For Nuvton, unused pins with input capability should be configured as inputs with a pull-up or pull-down.  Floating pins can cause extra power draw.\n\nThe UNUSED() macro is fine for the output only pins.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 41
+      },
+      "revId": "45953e1f55eb24683e555fe9ad6e1a41a9d170e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
