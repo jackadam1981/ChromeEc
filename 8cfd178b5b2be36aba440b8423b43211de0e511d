@@ -16,6 +16,29 @@
       "message": "rebased onto the BOARD series to avoid conflicts",
       "revId": "8cfd178b5b2be36aba440b8423b43211de0e511d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892d157f_b8a5004d",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-04T18:33:36Z",
+      "side": 1,
+      "message": "This lost my edit.  I\u0027ll track it down and post a new comment.",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 0
+      },
+      "revId": "8cfd178b5b2be36aba440b8423b43211de0e511d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
