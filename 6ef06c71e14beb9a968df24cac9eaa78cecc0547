@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb953caa_22cfae5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-04T19:23:00Z",
+      "side": 1,
+      "message": "Things I still need to do:\n1) Make sure that we still reset stored PD revs in the case of Hard Reset and Error Recovery.\n2) Fix unit tests.",
+      "revId": "6ef06c71e14beb9a968df24cac9eaa78cecc0547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
