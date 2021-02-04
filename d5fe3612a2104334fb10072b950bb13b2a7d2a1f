@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a9b07d_2f1b9f64",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-04T21:00:54Z",
+      "side": 1,
+      "message": "It makes most sense to me to look up each region by a compatible string, instead of hard-coding the path.\n\nSorta like this\n\n\n   bbram-regions {\n        pd0 {\n            compatible \u003d \"cros-ec,bbram-region-pd0\";\n            offset \u003d ...;\n            size \u003d ...;\n        };\n        ...\n   };\n\nThen loop up using DT_INST(0, cros_ec_bbram_region_pd0)",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
