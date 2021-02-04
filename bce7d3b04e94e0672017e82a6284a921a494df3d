@@ -326,6 +326,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83343037_25a8ba25",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-04T14:43:16Z",
+      "side": 1,
+      "message": "We still have yet to add an important feature from the design doc (-m flag), which allows the ebuild to specify alternative paths for each module, since cros_workon will check them out to different directories.\n\nbuild and test don\u0027t take these paths since the configure command has already been run (they can be figured out at this point by looking at the module symlinks)",
+      "parentUuid": "a047a151_632515d7",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 43
+      },
+      "revId": "bce7d3b04e94e0672017e82a6284a921a494df3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c09ab6d_2c228ce5",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 5
