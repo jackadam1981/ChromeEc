@@ -45,6 +45,30 @@
       },
       "revId": "460bec790d99c4419614f91827d0b40fced30310",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691fe5cf_e7bb6725",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-02-04T02:19:06Z",
+      "side": 1,
+      "message": "Default set gbb flags to 0x200, \ntype the sysjump rw in ec console,\nTest the comment action, the result is not workable .",
+      "parentUuid": "3f1b1961_17fccaeb",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 73
+      },
+      "revId": "460bec790d99c4419614f91827d0b40fced30310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
