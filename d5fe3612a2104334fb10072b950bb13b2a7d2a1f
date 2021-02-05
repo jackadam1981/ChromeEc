@@ -70,6 +70,30 @@
       },
       "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35d21f5_7965108d",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-05T17:25:57Z",
+      "side": 1,
+      "message": "That\u0027s not entirely true. I tried this approach and I\u0027m not a fan. Here\u0027s what happens. We need a unique `compatible` for each region, the issue is that this overrides the child-binding in named-bbram-regions.yaml. When this happens devicetree no longer generates any properties because there is no binding cros-ec-bbram-region-pd0.yaml thus both offset and size are discarded. I think that having the layout be hardcoded makes the most sense. The alternative is to actually write a driver for these (use the same compatible string for all of them so we don\u0027t have to write the same driver over and over) and identify them by the label, but again, that\u0027s not really any different from hard coding the path. Another alternative is to alias them, but again, just another way to re-name things.\n\nI\u0027m open to doing any of these, but I think that just saying that soc/named-bbram-regions/* is expected to define certain regions is reasonable.",
+      "parentUuid": "9accb5b6_59733fa9",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
