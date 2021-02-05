@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13947505_3bb08cb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-02-05T19:33:16Z",
+      "side": 1,
+      "message": "Thanks Ting! Just a couple of things:",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d23239b_fd8619ff",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-02-05T19:33:16Z",
+      "side": 1,
+      "message": "For completeness, could we also exclude Delete (called \"Delete Forward\" in the usage tables), Page Up, Page Down, Home, and End? (usages 74–78, 0x4A–0x4E in the usage tables [0]) According to our specs [1], those should only be present when there\u0027s a keypad, so it would be nice to exclude them otherwise.\n\n[0]: https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf\n[1]: https://chromeos.google.com/partner/dlm/docs/hardware-specs/keyboardspec.html",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63a4e597_484e664f",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-02-05T19:33:16Z",
+      "side": 1,
+      "message": "Is there any reason to go all the way up to usage 164? It looks to me like the highest-numbered usage that could be present on a Hammer is 152 (Keyboard LANG9).",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
