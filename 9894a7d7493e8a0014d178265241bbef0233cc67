@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898fc8c8_35df916a",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-02-05T22:53:19Z",
+      "side": 1,
+      "message": "I wonder if it\u0027d be safer to raise an exception here.  This seems a reasonable approach, though.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "9894a7d7493e8a0014d178265241bbef0233cc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431ba658_ec6e4a56",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-02-05T22:53:19Z",
+      "side": 1,
+      "message": "builds",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "9894a7d7493e8a0014d178265241bbef0233cc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb8b752_d885d24b",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-02-05T22:53:19Z",
+      "side": 1,
+      "message": "Otherwise,",
+      "range": {
+        "startLine": 75,
+        "startChar": 6,
+        "endLine": 75,
+        "endChar": 15
+      },
+      "revId": "9894a7d7493e8a0014d178265241bbef0233cc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
