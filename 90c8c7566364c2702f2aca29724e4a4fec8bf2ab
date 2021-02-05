@@ -158,6 +158,24 @@
       "parentUuid": "3cc75d79_5d3dcddd",
       "revId": "90c8c7566364c2702f2aca29724e4a4fec8bf2ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a17b56_1cd85ef9",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-05T18:16:37Z",
+      "side": 1,
+      "message": "because motion_sense_read() can sleep, and the hooks can put the device into suspend, changing sensor-\u003ecollection_rate to 0.\nlet me add a comment.",
+      "parentUuid": "d1a37906_b136b68a",
+      "revId": "90c8c7566364c2702f2aca29724e4a4fec8bf2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
