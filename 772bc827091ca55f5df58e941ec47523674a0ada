@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada24731_426f300a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-05T19:19:27Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 27,
+        "startChar": 55,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a3992aa2_701500ad",
@@ -14,6 +37,24 @@
       "writtenOn": "2021-02-04T16:23:04Z",
       "side": 1,
       "message": "Eric, I added all the cases I could think of for testing but definitely feel free to test any more you\u0027d like. ",
+      "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9606cc9_eca9d033",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-05T19:19:27Z",
+      "side": 1,
+      "message": "Looks good, but my FRS devices aren\u0027t behaving the way I remember them behaving. I was almost positive the satachi asked for 1.5A and the CM asked for 3A, now both ask for USB default FRS current. For operational current the satechi says 3A and the CM says 0.5A. So I clearly have no idea what these devices are. I\u0027ll chat with Nathan to see if we have any other 3A sinks.\n\nIs there an easy way to test this with synthetic PDOs? Obviously not ideal...",
+      "parentUuid": "a3992aa2_701500ad",
       "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
