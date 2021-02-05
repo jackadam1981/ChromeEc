@@ -97,6 +97,30 @@
       },
       "revId": "f0ad4a10a314684d690aa0b3ef6f2bfc12dbc7ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdf9705_7a42ba39",
+        "filename": "board/sklrvp_mchp/lfw/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1476483
+      },
+      "writtenOn": "2021-02-05T04:27:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "774535f3_8c73e593",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "f0ad4a10a314684d690aa0b3ef6f2bfc12dbc7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
