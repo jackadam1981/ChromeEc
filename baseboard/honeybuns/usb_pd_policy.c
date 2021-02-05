@@ -63,6 +63,9 @@ int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
 	if (port == USB_PD_PORT_HOST) {
 		*src_pdo =  pd_src_host_pdo;
 		pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
+	} else {
+		*src_pdo =  pd_src_host_pdo;
+		pdo_cnt = ARRAY_SIZE(pd_src_user_pdo);
 	}
 
 	return pdo_cnt;
