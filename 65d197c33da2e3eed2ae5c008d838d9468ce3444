@@ -16,6 +16,24 @@
       "message": "What would you think about rolling the dual role check into pd_can_source_from_device()?  That will cover all the call sites (I assume you haven\u0027t run into other call sites in testing due to not having chipset power transitions or a charge manager)",
       "revId": "65d197c33da2e3eed2ae5c008d838d9468ce3444",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c129cade_311ff621",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6575,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-05T07:31:52Z",
+      "side": 1,
+      "message": "Yes, I think this is a better solution. I have moved this check to the pd_can_source_from_device() funtion",
+      "parentUuid": "2dc8d89d_590934d8",
+      "revId": "65d197c33da2e3eed2ae5c008d838d9468ce3444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
