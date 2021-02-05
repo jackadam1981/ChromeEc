@@ -1,0 +1,29 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menuconfig PLATFORM_EC_TEMP_SENSOR
+	bool "Temperature sensors"
+	default y
+	help
+	  Support for temperature sensors. Once enabled, "temps" console
+	  command and EC_CMD_TEMP_SENSOR_GET_INFO host command are available.
+
+if PLATFORM_EC_TEMP_SENSOR
+
+config PLATFORM_EC_THERMISTOR
+	bool "Thermistor support"
+	depends on PLATFORM_EC_ADC
+	default n
+	help
+	  Enables support for thermistors as temperature-sensor type.
+
+config PLATFORM_EC_STEINHART_HART_3V3_30K9_47K_4050B
+	bool "Steinhart-hart 3V3_30K9_47K_4050B"
+	depends on PLATFORM_EC_THERMISTOR
+	default n
+	help
+	  Enables support for 3V3_30K9_47K_4050B thermistor with
+	  Steinhart–Hart equation.
+
+endif # PLATFORM_EC_TEMP_SENSOR
