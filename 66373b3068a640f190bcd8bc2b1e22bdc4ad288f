@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef12fa3_6f188537",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-05T16:33:52Z",
+      "side": 1,
+      "message": "Should we call gpio_disable_interrupt() here as part of initialization?",
+      "revId": "66373b3068a640f190bcd8bc2b1e22bdc4ad288f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
