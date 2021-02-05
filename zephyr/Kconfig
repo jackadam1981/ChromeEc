@@ -39,6 +39,7 @@ rsource "Kconfig.led"
 rsource "Kconfig.powerseq"
 rsource "Kconfig.motionsense"
 rsource "Kconfig.tasks"
+rsource "Kconfig.temperature"
 rsource "Kconfig.usbc"
 
 # Below is a hack to use CONFIG_ZEPHYR in platform/ec code before

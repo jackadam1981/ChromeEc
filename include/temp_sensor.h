@@ -10,8 +10,20 @@
 
 #include "common.h"
 
+#ifdef CONFIG_ZEPHYR
+#ifdef CONFIG_PLATFORM_EC_TEMP_SENSOR
+#define NODE_ID_AND_COMMA(node_id) node_id,
+enum temp_sensor_id {
+#if DT_NODE_EXISTS(DT_PATH(named_temp_sensors))
+	DT_FOREACH_CHILD(DT_PATH(named_temp_sensors), NODE_ID_AND_COMMA)
+#endif /* named_temp_sensors */
+	TEMP_SENSOR_COUNT
+};
+#endif /* CONFIG_PLATFORM_EC_TEMP_SENSOR */
+#else /* CONFIG_ZEPHYR */
 /* "enum temp_sensor_id" must be defined for each board in board.h. */
 enum temp_sensor_id;
+#endif /* CONFIG_ZEPHYR */
 
 /* Type of temperature sensors. */
 enum temp_sensor_type {
