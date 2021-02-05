@@ -203,6 +203,10 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID_KEYBOARD, 02) = {
 	0x25, 0xa4, /* Logical Maximum (164) */				\
 	0x05, 0x07, /* Usage Page (Key Codes) */			\
 	0x19, 0x00, /* Usage Minimum (0) */				\
+	0x29, 0x15, /* Usage Maximum (164) */				\
+	0x19, 0x17, /* Usage Minimum (0) */				\
+	0x29, 0x52, /* Usage Maximum (164) */				\
+	0x19, 0x64, /* Usage Minimum (0) */				\
 	0x29, 0xa4, /* Usage Maximum (164) */				\
 	0x81, 0x00, /* Input (Data, Array), ;Key arrays (6 bytes) */
 
