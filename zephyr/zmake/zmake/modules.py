@@ -78,3 +78,41 @@ def setup_module_symlinks(output_dir, modules):
             cmake_defs={'ZEPHYR_MODULES': ';'.join(map(str, module_links))})
     else:
         return build_config.BuildConfig()
+
+
+def dts_overlay_name(modpath, board_name):
+    """Given a board name, return the expected DTS overlay path.
+
+    Args:
+        modpath: the module path as a pathlib.Path object
+        board_name: the name of the board
+
+    Returns:
+        A pathlib.Path object to the expected overlay path.
+    """
+    return modpath / 'zephyr' / 'dts' / 'board-overlays' / '{}.dts'.format(
+        board_name)
+
+
+def find_dts_overlays(board_name, modules):
+    """Find appropriate dts overlays from registered modules.
+
+    Args:
+        board_name: The name of the BOARD.
+        modules: A dictionary of module names mapping to paths.
+
+    Returns:
+        A BuildConfig with relevant configurations to enable the found
+        DTS overlay files.
+    """
+    overlays = []
+    for module_path in modules.values():
+        dts_path = dts_overlay_name(module_path, board_name)
+        if dts_path.is_file():
+            overlays.append(dts_path.resolve())
+
+    if overlays:
+        return build_config.BuildConfig(
+            cmake_defs={'DTC_OVERLAY_FILE': ';'.join(map(str, overlays))})
+    else:
+        return build_config.BuildConfig()
