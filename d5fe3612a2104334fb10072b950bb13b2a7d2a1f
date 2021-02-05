@@ -94,6 +94,30 @@
       },
       "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2edd0c1e_9772b1f8",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-05T18:23:18Z",
+      "side": 1,
+      "message": "I like the idea of writing a driver...you might not need to use labels, but instead have properties that tell the driver what to do.\n\nBut I also like the idea of going with what you have, since that seems like it needs more thought and we can always adjust it later.",
+      "parentUuid": "e35d21f5_7965108d",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
