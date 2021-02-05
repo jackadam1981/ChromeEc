@@ -22,6 +22,46 @@
       },
       "revId": "ed1b0a2ad992a1ffcee5e379dffac71c295e9501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a221a6_02b14416",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-05T15:53:52Z",
+      "side": 1,
+      "message": "resolution",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "ed1b0a2ad992a1ffcee5e379dffac71c295e9501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a3746b_5f384987",
+        "filename": "zephyr/shim/include/adc_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-05T15:53:52Z",
+      "side": 1,
+      "message": "drop extra blank line",
+      "revId": "ed1b0a2ad992a1ffcee5e379dffac71c295e9501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
