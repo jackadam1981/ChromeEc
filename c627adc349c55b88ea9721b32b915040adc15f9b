@@ -88,6 +88,24 @@
       "parentUuid": "bd9709d5_c031cdcc",
       "revId": "c627adc349c55b88ea9721b32b915040adc15f9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8137ea29_c65da0d8",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-05T04:00:32Z",
+      "side": 1,
+      "message": "ok, i\u0027m going with the\nCONFIG_CHIPSET_ALDERLAKE_SLG4BD44540\nscheme.",
+      "parentUuid": "c086e7ed_08da3e99",
+      "revId": "c627adc349c55b88ea9721b32b915040adc15f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
