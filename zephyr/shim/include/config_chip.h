@@ -274,6 +274,21 @@ enum battery_type {
 #define CONFIG_CMD_ADC
 #endif
 
+#undef CONFIG_TEMP_SENSOR
+#ifdef CONFIG_PLATFORM_EC_TEMP_SENSOR
+#define CONFIG_TEMP_SENSOR
+#endif
+
+#undef CONFIG_THERMISTOR
+#ifdef CONFIG_PLATFORM_EC_THERMISTOR
+#define CONFIG_THERMISTOR
+#endif
+
+#undef CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
+#ifdef CONFIG_PLATFORM_EC_STEINHART_HART_3V3_30K9_47K_4050B
+#define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
+#endif
+
 #ifdef CONFIG_PLATFORM_EC_I2C
 /* Also see shim/include/i2c/i2c.h which defines the ports enum */
 #define CONFIG_I2C
