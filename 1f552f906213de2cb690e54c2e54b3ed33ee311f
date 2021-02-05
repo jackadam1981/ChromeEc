@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66783fbd_a250e0ca",
+        "filename": "zephyr/projects/volteer/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-05T16:13:28Z",
+      "side": 1,
+      "message": "if we are keeping things alphasorted, then DOWN comes before UP",
+      "range": {
+        "startLine": 56,
+        "startChar": 17,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "1f552f906213de2cb690e54c2e54b3ed33ee311f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
