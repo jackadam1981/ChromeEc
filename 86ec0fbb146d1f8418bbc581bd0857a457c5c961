@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39dc36c8_08738de7",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-05T16:06:39Z",
+      "side": 1,
+      "message": "\"Enable this if the board has physical buttons for the volume controls. These are buttons controlled by GPIOs and are not part of the keyboard matrix.\n\nYour board must define GPIO_VOLUME_UP_L and GPIO_VOLUME_DOWN_L in gpio_map.h.\"",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 89,
+        "endChar": 26
+      },
+      "revId": "86ec0fbb146d1f8418bbc581bd0857a457c5c961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
