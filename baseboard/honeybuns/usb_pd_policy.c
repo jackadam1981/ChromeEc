@@ -52,7 +52,7 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
-int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
+int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
 {
 	int pdo_cnt = 0;
 
@@ -355,12 +355,11 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 	    (PD_VDO_OPOS(payload[0]) == OPOS_DP)) {
 
 		alt_mode[PD_AMODE_DISPLAYPORT] = OPOS_DP;
-		rv = 1;
 
-		/* Configure demux to enable DP */
-		svdm_configure_demux(port, 1);
 		/* Entering ALT-DP mode, enable DP connection in demux */
 		usb_pd_hpd_converter_enable(1);
+
+		rv = 1;
 	}
 
 	/* if (rv) */
