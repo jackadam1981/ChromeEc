@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323e9fda_e9713809",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-05T19:56:51Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be default y, but \"default y if PLATFORM_EC_BRINGUP\" would make sense to me",
+      "range": {
+        "startLine": 739,
+        "startChar": 0,
+        "endLine": 739,
+        "endChar": 10
+      },
+      "revId": "2ba7dfd60e3868959090997913fee1f293195932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
