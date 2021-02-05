@@ -5057,11 +5057,10 @@ static void pe_handle_custom_vdm_request_entry(int port)
 
 	print_current_state(port);
 
-	/* This is an Interruptible AMS */
-	PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
-
 	rlen = pd_custom_vdm(port, cnt, payload, &rdata);
 	if (rlen > 0) {
+		/* This is an Interruptible AMS */
+		PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 		tx_emsg[port].len = rlen * 4;
 		memcpy(tx_emsg[port].buf, (uint8_t *)rdata, tx_emsg[port].len);
 		send_data_msg(port, sop, PD_DATA_VENDOR_DEF);
