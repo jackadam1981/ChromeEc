@@ -1822,16 +1822,15 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	}
 
 	if (pe[port].data_role == PD_ROLE_DFP) {
+		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+		set_state_pe(port, PE_DRS_SEND_SWAP);
+		return true;
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
+	} else {
+		if (pe[port].data_role == PD_ROLE_UFP) {
 			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 			set_state_pe(port, PE_DRS_SEND_SWAP);
 			return true;
-#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
-		else {
-			if (pe[port].data_role == PD_ROLE_UFP) {
-				PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-				set_state_pe(port, PE_DRS_SEND_SWAP);
-				return true;
-			}
 		}
 #endif
 	}
