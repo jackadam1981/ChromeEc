@@ -51,6 +51,24 @@
       "message": "Ayushee, Divya,\n\nCan we submit this ? Sounds like this needs to go in irrespective of the parent change.\n\nWould be good to reduce the number of CLs we have to pick locally.",
       "revId": "ff8f3f751088c41c301b062d207b4d1e220e86d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ed5e0d_7dbfb42c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-02-05T05:56:57Z",
+      "side": 1,
+      "message": "Hi Prashant, This CL is dependent on chromium:2639103 (kernel change)",
+      "parentUuid": "173a4878_1ff62b24",
+      "revId": "ff8f3f751088c41c301b062d207b4d1e220e86d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
