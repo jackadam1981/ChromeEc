@@ -118,6 +118,30 @@
       },
       "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5578a454_eeec0940",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-05T19:20:17Z",
+      "side": 1,
+      "message": "Yes, I think that a driver would require a bit more design than we can/should spare right now.",
+      "parentUuid": "2edd0c1e_9772b1f8",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
