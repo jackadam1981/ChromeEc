@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e50e6633_eb738020",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f7f58dc_fe567aac",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18fcbca8_3f797e1e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-04T14:58:07Z",
       "side": 1,
       "message": "would prefer to make an empty header file in shim/include instead of guarding the #include",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e8e1370_c1acf85d",
+        "filename": "common/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18fcbca8_3f797e1e",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c24cfe1_46d67094",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f098393_607219bf",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 78
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8a59548_056d3ccc",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-04T15:50:14Z",
       "side": 1,
       "message": "is",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1420ddeb_829068f5",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8a59548_056d3ccc",
       "range": {
         "startLine": 10,
         "startChar": 60,
@@ -139,6 +235,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c781ee60_f4950dc7",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e211e7_119d3af7",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a09c26_eaf913b0",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "377d3ea8_bebe7a2f",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7163f534_da3cea47",
@@ -186,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70263932_46efb609",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3831427_08e6a417",
+      "range": {
+        "startLine": 21,
+        "startChar": 33,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86503bc6_c63e00e6",
@@ -199,6 +367,30 @@
       "writtenOn": "2021-02-04T22:12:56Z",
       "side": 1,
       "message": "This is the only resolution supported by the NPCX ADC driver.  Is there way to enforce the correct value when CONFIG_SOC_SERIES_NPCX7 is enabled?  I don\u0027t think we want to pollute this file with chip specific checks.  \n\nMaybe assign the next CL should set both these ADC options in volteer_defconfig.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a8a470_36dd4003",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "I agree, I think it is better to define it explicate in the board config file.\n\nI added these two ones in the next CL for Volteer.",
+      "parentUuid": "86503bc6_c63e00e6",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -228,6 +420,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d989434f_459072ad",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1c61513_c13a7c07",
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad97231c_d5bd0441",
         "filename": "zephyr/Kconfig.adc",
         "patchSetId": 1
@@ -251,6 +461,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9cf28629_6b084329",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad97231c_d5bd0441",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "707820d4_1ff4484c",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad97231c_d5bd0441",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7732d6ad_f96433d4",
         "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
         "patchSetId": 1
@@ -262,6 +520,30 @@
       "writtenOn": "2021-02-04T15:50:14Z",
       "side": 1,
       "message": "-",
+      "range": {
+        "startLine": 16,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97539198_af6b180c",
+        "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7732d6ad_f96433d4",
       "range": {
         "startLine": 16,
         "startChar": 13,
@@ -319,6 +601,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f53d111_f1370845",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f3b0cb4_8d55940e",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85eff276_e557bbc8",
@@ -332,6 +638,30 @@
       "writtenOn": "2021-02-04T14:58:07Z",
       "side": 1,
       "message": "should we use DT_INST(0, named_adc_channels) to look up by dt-compatible instead of path?",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85259821_f70281e6",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-05T09:38:15Z",
+      "side": 1,
+      "message": "I agree. It is better to base on compatible value instead of the path.",
+      "parentUuid": "85eff276_e557bbc8",
       "range": {
         "startLine": 12,
         "startChar": 19,
