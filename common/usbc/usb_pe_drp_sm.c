@@ -1984,23 +1984,34 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP)) {
 		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
 
-		if (pe[port].data_role == PD_ROLE_UFP) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-			set_state_pe(port, PE_DRS_SEND_SWAP);
-			return true;
+		if (port == 0) {
+			if (pe[port].data_role == PD_ROLE_DFP) {
+				PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+				set_state_pe(port, PE_DRS_SEND_SWAP);
+				return true;
+			}
 		}
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
+		else {
+			if (pe[port].data_role == PD_ROLE_UFP) {
+				PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+				set_state_pe(port, PE_DRS_SEND_SWAP);
+				return true;
+			}
+		}
+#endif
 	}
 
-	if (IS_ENABLED(CONFIG_USBC_VCONN) &&
-			PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON)) {
-		PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+	/* if (IS_ENABLED(CONFIG_USBC_VCONN) && */
+	/* 		PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON)) { */
+	/* 	PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON); */
 
-		if (!tc_is_vconn_src(port)) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-			set_state_pe(port, PE_VCS_SEND_SWAP);
-			return true;
-		}
-	}
+	/* 	if (!tc_is_vconn_src(port)) { */
+	/* 		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS); */
+	/* 		set_state_pe(port, PE_VCS_SEND_SWAP); */
+	/* 		return true; */
+	/* 	} */
+	/* } */
 
 	/* If mode entry was successful, disable the timer */
 	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_SETUP_DONE)) {
@@ -2363,7 +2374,7 @@ static void pe_src_send_capabilities_entry(int port)
 	/* Send PD Capabilities message */
 	send_source_cap(port);
 	pe_sender_response_msg_entry(port);
-	tc_high_priority_event(port, true);
+	/* tc_high_priority_event(port, true); */
 
 	/* Increment CapsCounter */
 	pe[port].caps_counter++;
@@ -2377,6 +2388,8 @@ static void pe_src_send_capabilities_run(int port)
 	 * Check the state of the message sent
 	 */
 	msg_check = pe_sender_response_msg_run(port);
+	if (port)
+		CPRINTS("pe[%d]: src caps send run: msg_check = %d", port, msg_check);
 
 	/*
 	 * Handle Discarded message
@@ -2507,15 +2520,17 @@ static void pe_src_send_capabilities_run(int port)
 	 *  1) The SenderResponseTimer times out.
 	 */
 	if (get_time().val > pe[port].sender_response_timer) {
+		if (port)
+			CPRINTS("pe[%d]: send src_cap -> HR!", port);
 		set_state_pe(port, PE_SRC_HARD_RESET);
 		return;
 	}
 }
 
-static void pe_src_send_capabilities_exit(int port)
-{
-	tc_high_priority_event(port, false);
-}
+/* static void pe_src_send_capabilities_exit(int port) */
+/* { */
+/* 	tc_high_priority_event(port, false); */
+/* } */
 
 /**
  * PE_SRC_Negotiate_Capability
@@ -5106,11 +5121,10 @@ static void pe_handle_custom_vdm_request_entry(int port)
 
 	print_current_state(port);
 
-	/* This is an Interruptible AMS */
-	PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
-
 	rlen = pd_custom_vdm(port, cnt, payload, &rdata);
 	if (rlen > 0) {
+		/* This is an Interruptible AMS */
+		PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 		tx_emsg[port].len = rlen * 4;
 		memcpy(tx_emsg[port].buf, (uint8_t *)rdata, tx_emsg[port].len);
 		send_data_msg(port, sop, PD_DATA_VENDOR_DEF);
@@ -6936,7 +6950,7 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_SRC_SEND_CAPABILITIES] = {
 		.entry = pe_src_send_capabilities_entry,
 		.run   = pe_src_send_capabilities_run,
-		.exit  = pe_src_send_capabilities_exit,
+		/* .exit  = pe_src_send_capabilities_exit, */
 	},
 	[PE_SRC_NEGOTIATE_CAPABILITY] = {
 		.entry = pe_src_negotiate_capability_entry,
