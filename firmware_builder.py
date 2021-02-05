@@ -25,6 +25,10 @@ DEFAULT_BUNDLE_METADATA_FILE = '/tmp/artifact_bundle_metadata'
 
 def build(opts):
     """Builds all EC firmware targets"""
+    # For unit test code coverage, build is a no-op.
+    if opts.code_coverage:
+        return
+
     # TODO(b/169178847): Add appropriate metric information
     metrics = firmware_pb2.FwBuildMetricList()
     with open(opts.metrics, 'w') as f:
@@ -64,8 +68,14 @@ def test(opts):
     with open(opts.metrics, 'w') as f:
         f.write(json_format.MessageToJson(metrics))
 
-    # Verify all posix-based unit tests build and pass
-    subprocess.run(['make', 'runtests', '-j{}'.format(opts.cpus)],
+    # If building for code coverage, build the 'coverage' target, which
+    # build the posix-based unit tests for code coverage and assembles
+    # the LCOV information.
+    #
+    # Otherwise build the 'runtests' target, which verifies all
+    # posix-based unit tests build and pass.
+    target = 'coverage' if opts.code_coverage else 'runtests'
+    subprocess.run(['make', target, '-j{}'.format(opts.cpus)],
                    cwd=os.path.dirname(__file__),
                    check=True)
 
@@ -123,6 +133,13 @@ def parse_args(args):
         required=False,
         help=
         'Full pathanme for the directory in which to bundle build artifacts.',
+    )
+
+    parser.add_argument(
+        '--code-coverage',
+        required=False,
+        action='store_true',
+        help='Build host-based unit tests for code coverage.',
     )
 
     # Would make this required=True, but not available until 3.7
