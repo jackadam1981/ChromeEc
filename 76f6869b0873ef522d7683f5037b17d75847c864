@@ -16,6 +16,24 @@
       "message": "If we\u0027re swapping to Vconn off during a connection, will this hold up the PD task for 35 ms? (can test with \"pd 0 swap vconn\" on EC console, or a port partner that swaps to vconn source often)",
       "revId": "76f6869b0873ef522d7683f5037b17d75847c864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e607622_8e256de8",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-02-05T09:06:13Z",
+      "side": 1,
+      "message": "The PD task goes to sleep until the 35ms timer event timeout, then waked up and do it8xxx2_disable_Vconn().",
+      "parentUuid": "04a57626_2c2af522",
+      "revId": "76f6869b0873ef522d7683f5037b17d75847c864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

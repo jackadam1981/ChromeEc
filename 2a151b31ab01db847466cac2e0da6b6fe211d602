@@ -100,6 +100,24 @@
       "parentUuid": "c834909c_d86f60aa",
       "revId": "2a151b31ab01db847466cac2e0da6b6fe211d602",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5773a495_8d50c130",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-02-05T09:06:13Z",
+      "side": 1,
+      "message": "I read the spec. Yes, you\u0027re right.\n\nThe tVconnOff 35ms is totally for this dock Vconn pin to discharge. So is delay time 35ms ok? Or should I change to 500us for not fed to Vcore?",
+      "parentUuid": "72ffcd1b_8de7398b",
+      "revId": "2a151b31ab01db847466cac2e0da6b6fe211d602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
