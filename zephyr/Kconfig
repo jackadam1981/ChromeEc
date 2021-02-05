@@ -256,6 +256,12 @@ config PLATFORM_EC_FLASH
 
 if PLATFORM_EC_FLASH
 
+config PLATFORM_EC_SPI_FLASH_REGS
+	bool "Enable SPI flash registers"
+	default y
+	help
+	  Enables flash registers for SPI flash (both internal and external).
+
 config PLATFORM_EC_PROTECTED_STORAGE_OFF
 	hex "Position of the RO image in Flash memory"
 	default 0x0
