@@ -16,6 +16,24 @@
       "message": "In this code, if pd_capable()\u003d0 \u0026\u0026 pd_get_partner_usb_comm_capable()\u003d0, the mux returned is\nUSB_PD_MUX_USB_ENABLED. But right mux value should be USB_PD_MUX_NONE.\nWe run into issue on Voxel when plug in PD charger. Right after Attached.Snk, mux is set to  \nUSB_PD_MUX_USB_ENABLED.\nb:178727224 is the crosbug filed.\n\nif (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) \u0026\u0026\n\t    pd_get_power_role(port) \u003d\u003d PD_ROLE_SINK \u0026\u0026\n\t    pd_capable(port) \u0026\u0026\n\t    !pd_get_partner_usb_comm_capable(port))\n\t\treturn USB_PD_MUX_NONE;\n\n\t/* Otherwise connect mux since we are in S3+ */\n\treturn USB_PD_MUX_USB_ENABLED;\n}",
       "revId": "fbca51787502977287808d0a8d23fa3d480d8cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "509a85f8_dc957ade",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-02-05T09:53:24Z",
+      "side": 1,
+      "message": "\u003e In this code, if pd_capable()\u003d0 \u0026\u0026 pd_get_partner_usb_comm_capable()\u003d0, the mux returned is\n\u003e USB_PD_MUX_USB_ENABLED. But right mux value should be USB_PD_MUX_NONE.\n\nIf pd_capable()\u003d0, then you cannot communicate over PD with the partner port.\nSo you cannot read the partner USB comm capable bit.\nThen what pd_get_partner_usb_comm_capable()\u003d0 even means in this case ?\nthis value is undefined.\n\n\n\u003e We run into issue on Voxel when plug in PD charger. Right after Attached.Snk, mux is set to  \n\u003e USB_PD_MUX_USB_ENABLED\n\nMy Type-C spec reads in \"4.5.2.2.5.1 Attached.SNK Requirements\":\n\"If the port supports signaling on SuperSpeed USB pairs, it shall functionally connect the SuperSpeed USB pairs\"\n\n\n\u003e b:178727224 is the crosbug filed.\n\u003e \n\u003e if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) \u0026\u0026\n\u003e \t    pd_get_power_role(port) \u003d\u003d PD_ROLE_SINK \u0026\u0026\n\u003e \t    pd_capable(port) \u0026\u0026\n\u003e \t    !pd_get_partner_usb_comm_capable(port))\n\u003e \t\treturn USB_PD_MUX_NONE;\n\u003e \n\u003e \t/* Otherwise connect mux since we are in S3+ */\n\u003e \treturn USB_PD_MUX_USB_ENABLED;\n\u003e }",
+      "parentUuid": "630dbbe0_f9add10b",
+      "revId": "fbca51787502977287808d0a8d23fa3d480d8cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
