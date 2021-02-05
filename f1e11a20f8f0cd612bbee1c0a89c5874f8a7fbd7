@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ec72e3_5897cbe7",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-02-05T19:55:12Z",
+      "side": 1,
+      "message": "Yes, done.",
+      "parentUuid": "21714dc6_72f6b347",
+      "range": {
+        "startLine": 738,
+        "startChar": 61,
+        "endLine": 738,
+        "endChar": 62
+      },
+      "revId": "f1e11a20f8f0cd612bbee1c0a89c5874f8a7fbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ecd4303_af316bb9",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-05T19:31:41Z",
       "side": 1,
       "message": "Can you add the notes from include/config.h too?",
+      "revId": "f1e11a20f8f0cd612bbee1c0a89c5874f8a7fbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1337f30_f9ca9793",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-02-05T19:55:12Z",
+      "side": 1,
+      "message": "Oh cool, missed that bit, copied verbatim here.",
+      "parentUuid": "0ecd4303_af316bb9",
       "revId": "f1e11a20f8f0cd612bbee1c0a89c5874f8a7fbd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
