@@ -3,4 +3,26 @@
  * found in the LICENSE file.
  */
 
-/* TODO(sjg): add things */
+#include <dt-bindings/gpio/gpio.h>
+
+/ {
+	resources {
+		compatible = "test,gpio_basic_api";
+		out-gpios = <&gpio0 0 0>; /* Pin 0 */
+		in-gpios = <&gpio0 1 0>; /* Pin 1 */
+	};
+
+	gpio0: gpio@800 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		ngpios = <2>;
+		label = "GPIO_0";
+		reg = <0x800 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+	};
+};
