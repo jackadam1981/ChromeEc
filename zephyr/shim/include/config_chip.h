@@ -1013,4 +1013,9 @@ enum battery_type {
 #define CONFIG_SHA256_HW_ACCELERATE
 #endif
 
+#undef CONFIG_CMD_CHARGEN
+#ifdef CONFIG_PLATFORM_EC_CONSOLE_CMD_CHARGEN
+#define CONFIG_CMD_CHARGEN
+#endif
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */

@@ -186,6 +186,30 @@ config PLATFORM_EC_CBI
 
 	  https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md
 
+config PLATFORM_EC_CONSOLE_CMD_CHARGEN
+	bool "Console command: chargen"
+	help
+	  For testing purposes it useful to generate a stream of characters on
+	  the EC console (UART or USB). The stream is a repeating  pattern of
+	  characters from the following set: 0..9A..Za..z
+
+	  Press 'x' to stop the generator.
+
+	  An integer counter keeps track of how many character have been
+	  written.
+
+	  chargen <wrap_value> <seq_number> [usb]
+
+	    wrap_value (default 0): reset the pattern after this many characters
+	       have been printed. Setting this value to the width of the
+	       terminal window results in a very regular stream showing on the
+	       terminal, where it is easy to observe disruptions.
+
+            seq_number (default 0): limit number of printed characters to this
+               amount. If 0, it keeps printing indefinitely.
+
+            usb: if present, uses the USB console rather than the UART
+
 config PLATFORM_EC_CHIPSET_RESET_HOOK
 	bool "Provide a hook for when the AP resets"
 	default y
