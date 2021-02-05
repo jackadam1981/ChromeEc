@@ -734,4 +734,11 @@ config PLATFORM_EC_VSTORE_SLOT_COUNT
 	  used only for recording a hash of the read-write AP firmware for
 	  checking on resume. For this, one slot is enough.
 
+config PLATFORM_EC_SYSTEM_UNLOCKED
+	bool "System unlocked: allow dangerous commands while in dev."
+	default y
+	help
+	  Explicitly set the system as unlocked, ignoring the write protect pin
+	  value.
+
 endif # PLATFORM_EC
