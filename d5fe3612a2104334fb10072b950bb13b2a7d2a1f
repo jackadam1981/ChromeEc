@@ -46,6 +46,30 @@
       },
       "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9accb5b6_59733fa9",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-05T15:52:22Z",
+      "side": 1,
+      "message": "It is mostly that the devicetree uses compatible strings to indicate the device driver. It is true that when there is only one device of a particular type actually present, then you could use the path. But it is better to follow the convention where possible.",
+      "parentUuid": "7d5b2588_51e654f2",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "d5fe3612a2104334fb10072b950bb13b2a7d2a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
