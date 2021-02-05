@@ -16,6 +16,23 @@
       "message": "Please split this into multiple CLs so each feature can be reviewed individually.",
       "revId": "617f964dca47821b9bb80002ecb671831e7915c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b782157_2cfbc505",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-02-05T00:05:40Z",
+      "side": 1,
+      "message": "Please update this line",
+      "revId": "617f964dca47821b9bb80002ecb671831e7915c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
