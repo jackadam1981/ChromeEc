@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b3e43bb_0a7e2973",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2021-02-05T23:37:56Z",
+      "side": 1,
+      "message": "I would prefer not to introduce the conditional in the recipe.  That said, having it output something to stdout/stderr indicating that it was skipping the build step because --code-coverage was specified would be a good idea.",
+      "parentUuid": "e90658db_e847b8cf",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "9894a7d7493e8a0014d178265241bbef0233cc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "431ba658_ec6e4a56",
         "filename": "firmware_builder.py",
         "patchSetId": 1
