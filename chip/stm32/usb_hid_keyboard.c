@@ -177,6 +177,19 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID_KEYBOARD, 02) = {
 };
 #endif
 
+#ifdef CONFIG_KEYBOARD_KEYPAD
+#define KEYBOARD_USAGES \
+	0x19, 0x00, /* Usage Minimum (0) */				\
+	0x29, 0xa4, /* Usage Maximum (164) */
+#else
+/* b/177610074: exclude number pad usages 0x53~0x63 */
+#define KEYBOARD_USAGES \
+	0x19, 0x00, /* Usage Minimum (0) */				\
+	0x29, 0x52, /* Usage Maximum (82) */				\
+	0x19, 0x64, /* Usage Minimum (100) */				\
+	0x29, 0xa4, /* Usage Maximum (164) */
+#endif /* CONFIG_KEYBOARD_KEYPAD */
+
 #define KEYBOARD_BASE_DESC						\
 	0x05, 0x01, /* Usage Page (Generic Desktop) */			\
 	0x09, 0x06, /* Usage (Keyboard) */				\
@@ -202,8 +215,7 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID_KEYBOARD, 02) = {
 	0x15, 0x00, /* Logical Minimum (0) */				\
 	0x25, 0xa4, /* Logical Maximum (164) */				\
 	0x05, 0x07, /* Usage Page (Key Codes) */			\
-	0x19, 0x00, /* Usage Minimum (0) */				\
-	0x29, 0xa4, /* Usage Maximum (164) */				\
+	KEYBOARD_USAGES							\
 	0x81, 0x00, /* Input (Data, Array), ;Key arrays (6 bytes) */
 
 #define KEYBOARD_TOP_ROW_DESC						\
