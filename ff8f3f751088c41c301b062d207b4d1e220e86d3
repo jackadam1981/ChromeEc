@@ -69,6 +69,24 @@
       "parentUuid": "173a4878_1ff62b24",
       "revId": "ff8f3f751088c41c301b062d207b4d1e220e86d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9445f52b_965d075d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T06:31:34Z",
+      "side": 1,
+      "message": "\u003e Hi Prashant, This CL is dependent on chromium:2639103 (kernel change)\n\nWhy is that so? This CL just updates the CONNECTED flag appropriately, whereas that CL just allows the handling of MUX_DISCONNECT events. The EC CL shouldn\u0027t be dependent on the kernel one.",
+      "parentUuid": "d2ed5e0d_7dbfb42c",
+      "revId": "ff8f3f751088c41c301b062d207b4d1e220e86d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
