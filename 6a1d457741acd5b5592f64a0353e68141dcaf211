@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6e1641_40a93aaf",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-05T17:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "071bb8d3_6c47168f",
+      "range": {
+        "startLine": 303,
+        "startChar": 46,
+        "endLine": 303,
+        "endChar": 47
+      },
+      "revId": "6a1d457741acd5b5592f64a0353e68141dcaf211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "840e5436_4f2f2e6d",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-05T16:22:07Z",
       "side": 1,
       "message": "Add:\n\n\"FRS differs from the traditional power role swap in that FRS guarantees no interruption of power or disruption of data communication to any downstream devices (such as devices connected to a USB-C hub or dock).\"",
+      "revId": "6a1d457741acd5b5592f64a0353e68141dcaf211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc9de4d_8a10caa6",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-05T17:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840e5436_4f2f2e6d",
       "revId": "6a1d457741acd5b5592f64a0353e68141dcaf211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
