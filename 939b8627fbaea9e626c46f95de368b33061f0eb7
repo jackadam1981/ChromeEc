@@ -16,6 +16,24 @@
       "message": "This looks good. What are your thoughts on extending this behaviour towards VCONN swaps and data role swaps?",
       "revId": "939b8627fbaea9e626c46f95de368b33061f0eb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "513fde0b_d101fce5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-05T16:04:12Z",
+      "side": 1,
+      "message": "That would make sense.  We should filter most requests through the board\u0027s check functions to prevent issues with getting into undesirable roles or trying to source Vconn when we can\u0027t.  \n\nThe only exception I was thinking of keeping was EC console commands, where if the developer says to swap a role the stack should always give it a shot.  Right now, they use the DPM flags directly so that behavior should be the same.",
+      "parentUuid": "5ee2c279_09878e1e",
+      "revId": "939b8627fbaea9e626c46f95de368b33061f0eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
