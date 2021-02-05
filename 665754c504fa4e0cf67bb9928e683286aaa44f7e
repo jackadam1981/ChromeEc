@@ -177,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "553290a4_43b99d44",
+        "filename": "common/usb_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-05T22:26:20Z",
+      "side": 1,
+      "message": "At present, PMC/IPC doesn\u0027t support Alt mode-\u003e safe-\u003e USB. So, the only way to get out of an alt mode is to disconnect -\u003e USB-\u003e safe-\u003e alt mode -- More info about this in comment #45 and #48 of the cross-bug.\n\nI don\u0027t think we are particularly violating the spec - We are using a different path to exit.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2632551 - takes care if we miss the disconnect on AP side - and so, we won\u0027t need ACK for disconnect\n\nAdded a new patch set for not coming in and out of LPM and isolating the PPC lines.",
+      "parentUuid": "a29ce82d_5488b27f",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85152083_9200122e",
@@ -190,6 +208,24 @@
       "writtenOn": "2021-02-03T17:49:05Z",
       "side": 1,
       "message": "Update this comment.",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a68816e_e09ccd36",
+        "filename": "include/usb_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-05T22:26:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85152083_9200122e",
       "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

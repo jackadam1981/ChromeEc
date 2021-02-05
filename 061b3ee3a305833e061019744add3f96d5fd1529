@@ -16,6 +16,24 @@
       "message": "Do we still need to do something to reset dp_flags and dp_status?",
       "revId": "061b3ee3a305833e061019744add3f96d5fd1529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72840067_dd9bd9d6",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-05T22:26:20Z",
+      "side": 0,
+      "message": "Clearing the flags after DP exit mode ACK/NAK",
+      "parentUuid": "d4a48285_f7611248",
+      "revId": "061b3ee3a305833e061019744add3f96d5fd1529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
