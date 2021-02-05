@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "749bd36e_54b4c95b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-05T20:53:18Z",
+      "side": 1,
+      "message": "Actually given it\u0027s danger, I think not.",
+      "parentUuid": "aadee668_786dd911",
+      "revId": "8ae57274ad20375be7e8f1daab344967951a7f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "432b5507_7b1b23e0",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6228775c_5d55feef",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-05T20:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "432b5507_7b1b23e0",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "8ae57274ad20375be7e8f1daab344967951a7f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc1a1429_8b3675eb",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-02-05T20:19:29Z",
       "side": 1,
       "message": "added on accident?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "8ae57274ad20375be7e8f1daab344967951a7f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04646167_862be5be",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-05T20:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc1a1429_8b3675eb",
       "range": {
         "startLine": 52,
         "startChar": 0,
