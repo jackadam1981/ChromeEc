@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2d9b257_bfb29aab",
+        "filename": "firmware_builder.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-02-05T23:53:36Z",
+      "side": 1,
+      "message": "Refer to line 104, where we use `print` to provide the error message that the caller didn\u0027t provide a valid sub command. That\u0027s why I didn\u0027t worry about directing this to stderr",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "df2e8028327357deb80ae66ab4ea7dd9c7d442a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
