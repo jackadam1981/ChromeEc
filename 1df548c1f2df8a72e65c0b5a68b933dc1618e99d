@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54020311_b086167c",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-05T17:39:54Z",
+      "side": 1,
+      "message": "This doesn\u0027t match the latest schematic which shows this pin as TEMP_SENSOR_3_R, but does match the GPIO spreadsheet.  Please update in a follow up CL.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 90
+      },
+      "revId": "1df548c1f2df8a72e65c0b5a68b933dc1618e99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86217aec_9dbd70c7",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-05T17:39:54Z",
+      "side": 1,
+      "message": "I don\u0027t think this section is needed. Looks like the Nuvoton GPIO driver already sets the alternate function for all GPIOs.\nSee: https://chromium.googlesource.com/chromiumos/platform/ec/+/8e3dd199/chip/npcx/gpio.c#600\n\nThis shouldn\u0027t cause any harm, but this could be removed in a future CL.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "1df548c1f2df8a72e65c0b5a68b933dc1618e99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
