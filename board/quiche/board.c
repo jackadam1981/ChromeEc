@@ -92,7 +92,7 @@ static void board_uf_manage_vbus_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&board_uf_manage_vbus_data, 500);
 }
-#endif
+#endif /* SECTION_IS_RW */
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -288,14 +288,6 @@ static void board_ppc_force_detach(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_ppc_force_detach, HOOK_PRIO_INIT_I2C + 1);
-#endif
-
-static void board_init(void)
-{
-	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
-	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
-	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
-}
 
 static void board_config_usbc_uf_ppc(void)
 {
@@ -353,6 +345,10 @@ static void board_init(void)
 #ifdef SECTION_IS_RW
 	usb_mux_hpd_update(1, 0, 0);
 	hook_call_deferred(&board_config_usbc_uf_ppc_data, 10 * MSEC);
+
+	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
