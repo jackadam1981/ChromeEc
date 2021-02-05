@@ -123,6 +123,24 @@
       "parentUuid": "c94b8235_14a53299",
       "revId": "ff8f3f751088c41c301b062d207b4d1e220e86d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa485ca_85b4e817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-05T23:01:24Z",
+      "side": 1,
+      "message": "So a part of that patch i.e. the if condition in the host command was added as a temporary fix till the Kernel change landed in.\n\nSince this patch reverts the temporary fix - I think we need the kernel change to go through.",
+      "parentUuid": "3dfecb11_56b61fec",
+      "revId": "ff8f3f751088c41c301b062d207b4d1e220e86d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
