@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e9ed7ad_e6885e2c",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-05T17:07:14Z",
+      "side": 1,
+      "message": "add \", in bits, \"",
+      "range": {
+        "startLine": 28,
+        "startChar": 17,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "ed1b0a2ad992a1ffcee5e379dffac71c295e9501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6a221a6_02b14416",
         "filename": "zephyr/Kconfig.adc",
         "patchSetId": 3
@@ -60,6 +83,29 @@
       "writtenOn": "2021-02-05T15:53:52Z",
       "side": 1,
       "message": "drop extra blank line",
+      "revId": "ed1b0a2ad992a1ffcee5e379dffac71c295e9501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a589cb1_cd0350f7",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-05T17:07:14Z",
+      "side": 1,
+      "message": "Nit - move to next line.",
+      "range": {
+        "startLine": 19,
+        "startChar": 68,
+        "endLine": 19,
+        "endChar": 71
+      },
       "revId": "ed1b0a2ad992a1ffcee5e379dffac71c295e9501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
