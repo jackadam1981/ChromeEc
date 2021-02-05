@@ -17,19 +17,6 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
-/*
- * Define the strings used in our USB descriptors.
- */
-const void *const usb_strings[] = {
-	[USB_STR_DESC]         = usb_string_desc,
-	[USB_STR_VENDOR]       = USB_STRING_DESC("Google Inc."),
-	[USB_STR_PRODUCT]      = USB_STRING_DESC("Honeybuns"),
-	[USB_STR_SERIALNO]     = 0,
-	[USB_STR_VERSION]      = 0,
-	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
-};
-BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
-
 /******************************************************************************/
 
 static void board_power_sequence(void)
