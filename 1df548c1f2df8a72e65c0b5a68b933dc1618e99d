@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "804b0dd5_4289dcf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T23:48:33Z",
+      "side": 1,
+      "message": "In that case, you cannot Cq+2 until all changes are merged. I think currently this is not used by anyone. So, as long as make -j buildall works, it should be okay to push this without Cq-Depend.",
+      "parentUuid": "b2af8975_e9482e30",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "1df548c1f2df8a72e65c0b5a68b933dc1618e99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54020311_b086167c",
