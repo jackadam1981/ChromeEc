@@ -1805,23 +1805,34 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP)) {
 		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
 
-		if (pe[port].data_role == PD_ROLE_UFP) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-			set_state_pe(port, PE_DRS_SEND_SWAP);
-			return true;
+		if (port == 0) {
+			if (pe[port].data_role == PD_ROLE_DFP) {
+				PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+				set_state_pe(port, PE_DRS_SEND_SWAP);
+				return true;
+			}
 		}
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
+		else {
+			if (pe[port].data_role == PD_ROLE_UFP) {
+				PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+				set_state_pe(port, PE_DRS_SEND_SWAP);
+				return true;
+			}
+		}
+#endif
 	}
 
-	if (IS_ENABLED(CONFIG_USBC_VCONN) &&
-			PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON)) {
-		PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+	/* if (IS_ENABLED(CONFIG_USBC_VCONN) && */
+	/* 		PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON)) { */
+	/* 	PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON); */
 
-		if (!tc_is_vconn_src(port)) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-			set_state_pe(port, PE_VCS_SEND_SWAP);
-			return true;
-		}
-	}
+	/* 	if (!tc_is_vconn_src(port)) { */
+	/* 		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS); */
+	/* 		set_state_pe(port, PE_VCS_SEND_SWAP); */
+	/* 		return true; */
+	/* 	} */
+	/* } */
 
 	/* If mode entry was successful, disable the timer */
 	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_SETUP_DONE)) {
@@ -5047,11 +5058,10 @@ static void pe_handle_custom_vdm_request_entry(int port)
 
 	print_current_state(port);
 
-	/* This is an Interruptible AMS */
-	PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
-
 	rlen = pd_custom_vdm(port, cnt, payload, &rdata);
 	if (rlen > 0) {
+		/* This is an Interruptible AMS */
+		PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 		tx_emsg[port].len = rlen * 4;
 		memcpy(tx_emsg[port].buf, (uint8_t *)rdata, tx_emsg[port].len);
 		send_data_msg(port, sop, PD_DATA_VENDOR_DEF);
