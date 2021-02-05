@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34cb5fb6_34aed91a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T23:36:31Z",
+      "side": 1,
+      "message": "Is this Cq-Depend required?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "1df548c1f2df8a72e65c0b5a68b933dc1618e99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54020311_b086167c",
         "filename": "board/brya/generated-gpio.inc",
         "patchSetId": 10
