@@ -1463,9 +1463,12 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 				| cmd);
 
 	/* Copy Data after VDM Header */
-	memcpy((pe[port].vdm_data + 1), data, count);
+	memcpy((pe[port].vdm_data + 1), data, count << 2);
 
 	pe[port].vdm_cnt = count + 1;
+
+	pe[port].tx_type = TCPC_TX_SOP;
+	pd_dpm_request(port, DPM_REQUEST_VDM);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
@@ -5101,6 +5104,27 @@ static enum vdm_response_result parse_vdm_response_common(int port)
 	uint8_t type;
 	uint8_t cnt;
 	uint8_t ext;
+	uint32_t vdm_hdr;
+
+	/*
+	 * 6.4.4.2.5
+	 * Structured VDM command consists of a command request and a command
+	 * response (ACK, NAK, or BUSY). An exception is made for the Attention
+	 * command which shall have no response.
+	 *
+	 * This function is a helper function for PE states which are sending
+	 * VDM commands and are waiting for VDM responses from the port partner.
+	 * Since attention commands do not have an expected reply, the SVDM
+	 * command is complete once the Attention command transmit is complete.
+	 */
+	vdm_hdr = pe[port].vdm_data[0];
+	if(PD_VDO_SVDM(vdm_hdr) &&
+	   (PD_VDO_CMD(vdm_hdr) == CMD_ATTENTION)) {
+		if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+			return VDM_RESULT_NO_ACTION;
+		}
+	}
 
 	if (!PE_CHK_REPLY(port))
 		return VDM_RESULT_WAITING;
@@ -5771,13 +5795,14 @@ static void pe_vdm_request_dpm_run(int port)
 {
 	switch (parse_vdm_response_common(port)) {
 	case VDM_RESULT_WAITING:
-		/* If common code didn't parse a message, continue waiting. */
+		/* If the parent didn't parse a message, continue waiting. */
 		return;
 	case VDM_RESULT_NO_ACTION:
 		/*
 		 * If the received message doesn't change the discovery state,
 		 * there is nothing to do but return to the previous ready
-		 * state.
+		 * state. This includes Attention commands which have no
+		 * expected SVDM response.
 		 */
 		break;
 	case VDM_RESULT_ACK: {
@@ -5837,12 +5862,10 @@ static void pe_vdm_request_dpm_exit(int port)
  */
 static void pe_vdm_response_entry(int port)
 {
-	int response_size_bytes = 0;
+	int vdo_len = 0;
 	uint32_t *rx_payload;
 	uint32_t *tx_payload;
-	uint16_t vdo_vdm_svid;
 	uint8_t vdo_cmd;
-	uint8_t vdo_opos = 0;
 	int cmd_type;
 	svdm_rsp_func func = NULL;
 
@@ -5854,7 +5877,6 @@ static void pe_vdm_response_entry(int port)
 	/* Get the message */
 	rx_payload = (uint32_t *)rx_emsg[port].buf;
 
-	vdo_vdm_svid = PD_VDO_VID(rx_payload[0]);
 	vdo_cmd = PD_VDO_CMD(rx_payload[0]);
 	cmd_type = PD_VDO_CMDT(rx_payload[0]);
 	rx_payload[0] &= ~VDO_CMDT_MASK;
@@ -5877,7 +5899,6 @@ static void pe_vdm_response_entry(int port)
 		func = svdm_rsp.modes;
 		break;
 	case CMD_ENTER_MODE:
-		vdo_opos = PD_VDO_OPOS(rx_payload[0]);
 		func = svdm_rsp.enter_mode;
 		break;
 	case CMD_DP_STATUS:
@@ -5889,7 +5910,6 @@ static void pe_vdm_response_entry(int port)
 			func = svdm_rsp.amode->config;
 		break;
 	case CMD_EXIT_MODE:
-		vdo_opos = PD_VDO_OPOS(rx_payload[0]);
 		func = svdm_rsp.exit_mode;
 		break;
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
@@ -5907,67 +5927,68 @@ static void pe_vdm_response_entry(int port)
 	}
 
 	tx_payload = (uint32_t *)tx_emsg[port].buf;
+	/*
+	 * Handling VDM response. VDM header is then dependent on VDN command
+	 * that is being replied to. Copy VDM header from VDM command with
+	 * command type field masked out. The masking is done above. The command
+	 * type for the reply is added below.
+	 *
+	 * VDM header
+	 * ----------
+	 * <31:16>  :: SVID
+	 * <15>     :: VDM type ( 1b == structured, 0b == unstructured )
+	 * <14:13>  :: Structured VDM version (00b == Rev 2.0, 01b == Rev 3.0 )
+	 * <12:11>  :: reserved
+	 * <10:8>   :: object position (1-7 valid ... used for enter/exit mode only)
+	 * <7:6>    :: command type (SVDM only?)
+	 * <5>      :: reserved (SVDM), command type (UVDM)
+	 * <4:0>    :: command
+	 *
+	 * SVID                -> reused from init VDO command
+	 * VDM type            -> reused from int VDO command
+	 * Structured VDM vers -> will be updated here
+	 * object position     -> reused from init VDO command
+	 * CMD type            -> added here based on SVID resp return value
+	 * command             -> reused from init VDO command
+	 */
+	/* Pass received message to svdm_response function */
+	memcpy(tx_payload, rx_payload, PD_HEADER_CNT(rx_emsg[port].header) * 4);
+	CPRINTS("pe[%d]: svdm_resp copy %d bytes", port, PD_HEADER_CNT(rx_emsg[port].header) * 4);
 
 	if (func) {
 		/*
-		 * Designed in TCPMv1, svdm_response functions use same
-		 * buffer to take received data and overwrite with response
-		 * data. To work with this interface, here copy rx data to
-		 * tx buffer and pass tx_payload to func.
-		 * TODO(b/166455363): change the interface to pass both rx
-		 * and tx buffer
+
+		 * Call the SVID response handler. The return value 'ret'
+		 * contains number of VDO objects in the reponse. This value
+		 * also encoded whether the VDM command is going to be ack'd,
+		 * nak'd or if VDM state machine is busy.
+		 * Note that ret is number of objects (VDO) where each VDO is 4
+		 * bytes. Minimum VDM message is 1 object (VDO header only).
 		 */
-		memcpy(tx_payload, rx_payload, rx_emsg[port].len);
-		/*
-		 * Return value of func is the data objects count in payload.
-		 * return 1 means only VDM header, no VDO.
-		 */
-		response_size_bytes =
-				func(port, tx_payload) * sizeof(*tx_payload);
-		if (response_size_bytes > 0)
-			/* ACK */
-			tx_payload[0] = VDO(
-				vdo_vdm_svid,
-				1, /* Structured VDM */
-				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
-				| VDO_CMDT(CMDT_RSP_ACK) |
-				VDO_OPOS(vdo_opos) |
-				vdo_cmd);
-		else if (response_size_bytes == 0)
-			/* NAK */
-			tx_payload[0] = VDO(
-				vdo_vdm_svid,
-				1, /* Structured VDM */
-				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
-				| VDO_CMDT(CMDT_RSP_NAK) |
-				VDO_OPOS(vdo_opos) |
-				vdo_cmd);
+		vdo_len = func(port, tx_payload);
+		if (vdo_len)
+			tx_payload[0] |= VDO_CMDT(CMDT_RSP_ACK);
+		else if (!vdo_len)
+			tx_payload[0] |= VDO_CMDT(CMDT_RSP_NAK);
 		else
-			/* BUSY */
-			tx_payload[0] = VDO(
-				vdo_vdm_svid,
-				1, /* Structured VDM */
-				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
-				| VDO_CMDT(CMDT_RSP_BUSY) |
-				VDO_OPOS(vdo_opos) |
-				vdo_cmd);
+			tx_payload[0] |= VDO_CMDT(CMDT_RSP_BUSY);
 
-		if (response_size_bytes <= 0)
-			response_size_bytes = 4;
+		if (vdo_len <= 0)
+			vdo_len = 1;
 	} else {
-		/* not supported : NAK it */
-		tx_payload[0] = VDO(
-			vdo_vdm_svid,
-			1, /* Structured VDM */
-			VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP)) |
-			VDO_CMDT(CMDT_RSP_NAK) |
-			VDO_OPOS(vdo_opos) |
-			vdo_cmd);
-		response_size_bytes = 4;
+		tx_payload[0] |= VDO_CMDT(CMDT_RSP_NAK);
+		vdo_len = 1;
 	}
+	/* Add structured version */
+	tx_payload[0] &= ~VDO_SVDM_VERS(0x3);
+	tx_payload[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
 
-	/* Send ACK, NAK, or BUSY */
-	tx_emsg[port].len = response_size_bytes;
+	/*
+	 * Send ACK, NAK, or BUSY. Note that for tx_emsg, len is number of
+	 * bytes, not not number of VDOs, so need to convert length in bytes
+	 * before saving.
+	 */
+	tx_emsg[port].len = (vdo_len << 2);
 	send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
 }
 
