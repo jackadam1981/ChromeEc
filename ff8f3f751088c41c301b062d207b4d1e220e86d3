@@ -105,6 +105,24 @@
       "parentUuid": "9445f52b_965d075d",
       "revId": "ff8f3f751088c41c301b062d207b4d1e220e86d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dfecb11_56b61fec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T22:45:03Z",
+      "side": 1,
+      "message": "\u003e If we merge this change, we will see S0ix regression b:176604380 without the kernel change -\n\nSorry, I don\u0027t see how the two are related: This specific patch just updates the PD_CTRL response (such that the PD_CTRL_RESP_ENABLED_CONNECTED truly reflects whether the device is connected over PD or not).\n\nIf that causes a regression in that bug, that means the fix for that bug was not correct. I haven\u0027t reviewed that patch nor am I an EC expert so Abe or Keith might be better placed to comment on that.",
+      "parentUuid": "c94b8235_14a53299",
+      "revId": "ff8f3f751088c41c301b062d207b4d1e220e86d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
