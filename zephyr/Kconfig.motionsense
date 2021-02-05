@@ -135,4 +135,20 @@ config PLATFORM_EC_GMR_TABLET_MODE
 endif # PLATFORM_EC_TABLET_MODE
 endif # PLATFORM_EC_LID_ANGLE
 
+config PLATFORM_EC_CMD_ACCELS
+    bool "Console Command Accelerometer"
+    help
+      Enable this to allow using the console commands to read and write
+      accelerometer status and data.
+
+if PLATFORM_EC_CMD_ACCELS
+
+config PLATFORM_EC_CMD_ACCEL_INFO
+    bool "Console Command Accelerometer information"
+    help
+      Enable this to allow using the console commands to print Sensor
+      information.
+
+endif # PLATFORM_EC_CMD_ACCELS
+
 rsource "Kconfig.sensor_devices"
