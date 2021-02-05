@@ -16,6 +16,23 @@
       "message": "Things I still need to do:\n1) Make sure that we still reset stored PD revs in the case of Hard Reset and Error Recovery.\n2) Fix unit tests.",
       "revId": "6ef06c71e14beb9a968df24cac9eaa78cecc0547",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a852edc7_b26744fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-05T17:53:51Z",
+      "side": 1,
+      "message": "Hi Abe,\n\nMe and Divya tried out the patch - For some reason on her setup, the initial PD rev gets set to 1.0. I am not seeing this issue on my end - Should we set the revisions to default somewhere? ",
+      "revId": "6ef06c71e14beb9a968df24cac9eaa78cecc0547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
