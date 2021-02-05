@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93268236_9686da14",
+        "filename": "board/brya/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-05T23:45:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51134b56_9e8a66f0",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "dcd5abce0f94233f4ae7ba0301edf0f08d1b779c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "796f4346_2c479b14",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-05T17:45:47Z",
       "side": 1,
       "message": "Nit - add bug number for adding USB-C support.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 46
+      },
+      "revId": "dcd5abce0f94233f4ae7ba0301edf0f08d1b779c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "738106e7_8d50b45a",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-05T23:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796f4346_2c479b14",
       "range": {
         "startLine": 8,
         "startChar": 0,
