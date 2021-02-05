@@ -10287,8 +10287,40 @@ int cmd_cec(int argc, char *argv[])
 	return -1;
 }
 
+static void dump_reg_range(int chgnum, int low, int high)
+{
+	int reg;
+	int rv;
+	uint8_t *read_buf = NULL;
+	uint8_t write_buf[1];
+
+	for (reg = low; reg <= high; reg++) {
+		printf("[%Xh] = ", reg);
+		write_buf[0] = reg;
+		rv = do_i2c_xfer(9, 9, write_buf, 1, &read_buf, 2);
+		if (!rv)
+			printf("0x%04x\n", *(uint16_t *)read_buf);
+		else
+			printf("ERR (%d)\n", rv);
+	}
+}
+
+int cmd_scott(int argc, char *argv[])
+{
+	dump_reg_range(0, 0x14, 0x15);
+	dump_reg_range(0, 0x38, 0x40);
+	dump_reg_range(0, 0x43, 0x43);
+	dump_reg_range(0, 0x47, 0x4F);
+	dump_reg_range(0, 0x80, 0x87);
+	dump_reg_range(0, 0x90, 0x91);
+	dump_reg_range(0, 0xFE, 0xFF);
+	return 0;
+}
+
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
+	{"scott", cmd_scott},
 	{"adcread", cmd_adc_read},
 	{"addentropy", cmd_add_entropy},
 	{"apreset", cmd_apreset},
