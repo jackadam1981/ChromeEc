@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92af5eb3_7fd5fb74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-05T15:53:43Z",
+      "side": 1,
+      "message": "Just missed your CQ+2, can you create a new CL to address the comments?",
+      "revId": "d0debae121de73341802211c51d1d15c594f0885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfce4221_d565f79a",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-05T15:53:43Z",
+      "side": 1,
+      "message": "Change to just \"Numeric keypad\"",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 31
+      },
+      "revId": "d0debae121de73341802211c51d1d15c594f0885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc55417e_cc3760f3",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-05T15:53:43Z",
+      "side": 1,
+      "message": "typo \"number\"",
+      "range": {
+        "startLine": 57,
+        "startChar": 42,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "d0debae121de73341802211c51d1d15c594f0885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
