@@ -177,6 +177,24 @@
       "parentUuid": "f641120d_9cfcdbe7",
       "revId": "ff8f3f751088c41c301b062d207b4d1e220e86d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00f4aec1_2653cbba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-05T23:12:18Z",
+      "side": 1,
+      "message": "OK, I suppose since Raj has already posted those kernel patches upstream (https://lore.kernel.org/lkml/20210205195113.20277-1-rajmohan.mani@intel.com/) I\u0027m hopeful it\u0027ll be picked soon, and we can just wait for it to land.",
+      "parentUuid": "2c52dbdb_81e8ecae",
+      "revId": "ff8f3f751088c41c301b062d207b4d1e220e86d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
