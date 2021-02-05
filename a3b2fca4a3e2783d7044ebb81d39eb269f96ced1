@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13e457e_ca0c435f",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer_defconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-05T17:09:04Z",
+      "side": 1,
+      "message": "Add comment that these values are fixed by the NPCX ADC driver.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "a3b2fca4a3e2783d7044ebb81d39eb269f96ced1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
