@@ -135,4 +135,24 @@ config PLATFORM_EC_GMR_TABLET_MODE
 endif # PLATFORM_EC_TABLET_MODE
 endif # PLATFORM_EC_LID_ANGLE
 
+config PLATFORM_EC_CMD_ACCELS
+    bool "Console commands: accels, accelrate, accelinfo, etc."
+    help
+      Enables various console commands:
+
+        <sensor id> <data> <roundup> - Read or write accelerometer range/resolution/ODR
+        <sensor id> [n(iteration)] - Read sensor x/y/z
+        <sensor id> - Init sensor
+
+if PLATFORM_EC_CMD_ACCELS
+
+config PLATFORM_EC_CMD_ACCEL_INFO
+    bool "Console Command: accelinfo"
+    help
+      Enable console command:
+        on/off [interval] - Print motion sensor info, lid angle calculations
+        and set calculation frequency.
+
+endif # PLATFORM_EC_CMD_ACCELS
+
 rsource "Kconfig.sensor_devices"
