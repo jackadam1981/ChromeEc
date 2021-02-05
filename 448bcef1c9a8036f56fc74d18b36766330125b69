@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b1f2b1_8cf7296d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T06:48:07Z",
+      "side": 1,
+      "message": "nit: and its",
+      "range": {
+        "startLine": 15,
+        "startChar": 36,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c2a040_c6e73cd6",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T06:48:07Z",
+      "side": 1,
+      "message": "I think we should just deprecate this since it can create confusion later on. Anyways, we should do that in a separate CL.",
+      "range": {
+        "startLine": 1161,
+        "startChar": 7,
+        "endLine": 1161,
+        "endChar": 31
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "281d620c_fccdfb47",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T06:48:07Z",
+      "side": 1,
+      "message": "Do we really need to put the board name in here? I think the commit message is fine?",
+      "range": {
+        "startLine": 8,
+        "startChar": 66,
+        "endLine": 8,
+        "endChar": 70
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a4c2fd_17e27894",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T06:48:07Z",
+      "side": 1,
+      "message": "I think that can be confusing.",
+      "range": {
+        "startLine": 8,
+        "startChar": 3,
+        "endLine": 8,
+        "endChar": 6
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02ee13e_a54d372a",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T06:48:07Z",
+      "side": 1,
+      "message": "Is this required?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fc989f0_8c7aa4d7",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T06:48:07Z",
+      "side": 1,
+      "message": "Rather than brya, I think these are specific to the power sequencer chip for ADL?",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d295ac0_79efa267",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T06:48:07Z",
+      "side": 1,
+      "message": "This bug is marked fixed. If this is something that needs to be addressed for alderlake, I would recommend raising a new bug.",
+      "range": {
+        "startLine": 121,
+        "startChar": 9,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8afe82c1_0653a3e7",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T06:48:07Z",
+      "side": 1,
+      "message": "What needs to happen in this function? Are you planning to add it later? I think there should be a TODO and an associated bug to ensure we don\u0027t forget.",
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

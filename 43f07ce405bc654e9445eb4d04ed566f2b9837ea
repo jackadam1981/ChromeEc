@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edb35893_c1060c4b",
+        "filename": "baseboard/brya/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-05T06:48:07Z",
+      "side": 1,
+      "message": "Do you mean in this file? Or in general the config?",
+      "parentUuid": "fefeb635_15973951",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "43f07ce405bc654e9445eb4d04ed566f2b9837ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c577a89_e4aaa020",
         "filename": "baseboard/brya/power_sequence.c",
         "patchSetId": 2
