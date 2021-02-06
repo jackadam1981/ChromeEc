@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539d7479_06afaf90",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-06T00:23:29Z",
+      "side": 1,
+      "message": "Please don\u0027t nest these.",
+      "range": {
+        "startLine": 859,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 6
+      },
+      "revId": "dff66886830dafc5ed2d1316fcea2bfa1fae8b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
