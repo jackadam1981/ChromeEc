@@ -16,6 +16,23 @@
       "message": "Diana to review.\n\nAyushee and/or Divya to verify that it fixes the cable rev/Enter_USB speed.",
       "revId": "1864169ce3718f26ef758fe605c54e77f56854ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8067dcf5_2ac55b3c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-06T01:26:39Z",
+      "side": 1,
+      "message": "This function is called during the Attach process and also during error recovery, which can result in more than one call to prl_set_default_pd_revision during a detach-attach sequence. I\u0027m pretty sure it\u0027s benign. I think there\u0027s probably a set of locations that I could reset them that would do it exactly once at the right times, if that\u0027s important to you.",
+      "revId": "1864169ce3718f26ef758fe605c54e77f56854ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
