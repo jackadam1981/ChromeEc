@@ -259,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32444d0_0894b376",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-06T01:22:06Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "9f50eb98_a557df8b",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d295ac0_79efa267",
