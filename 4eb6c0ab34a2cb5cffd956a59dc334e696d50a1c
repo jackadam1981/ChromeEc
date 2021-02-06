@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd7fd802_1328cc75",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-06T07:26:22Z",
+      "side": 1,
+      "message": "Raise a bug for the TODO",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 7
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f4ff6d9_d1c183c9",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-06T07:26:22Z",
+      "side": 1,
+      "message": "Raise a bug?",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d629b9_faa30988",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-06T07:26:22Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be EN_S5_RAILS?",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 59
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a0ca00_414a8789",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-06T07:26:22Z",
+      "side": 1,
+      "message": "Just a note: Corresponding support on the AP side is not really enabled for brya. We are currently not using CSE Lite. But this should not be harmful in any way.",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 26
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac51de68_97917629",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-06T07:26:22Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this for brya. On brya, we have CBI provisioned right from the first build. This was used on hatch and volteer because the initial builds happened without CBI being provisioned.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 33
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6cab44c_f2a7b732",
+        "filename": "board/brya/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-06T07:26:22Z",
+      "side": 1,
+      "message": "Without PSL mode enabled, is this really required?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c800aece_b84cc57c",
+        "filename": "board/brya/i2c.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-06T07:26:22Z",
+      "side": 1,
+      "message": "nit: multiple blank lines at the end of file.",
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9571205_710e107b",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-06T07:26:22Z",
+      "side": 1,
+      "message": "Can you please file bug for the TODO?",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 198,
+        "endChar": 8
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
