@@ -22,6 +22,30 @@
       },
       "revId": "da7f67de4cc006ba6372af94639eb29a13aaf226",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28ed124_c8238ce9",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-06T00:06:06Z",
+      "side": 1,
+      "message": "Nope, this is a function parameter, so it should not have spaces.\n\nSee https://www.python.org/dev/peps/pep-0008/#other-recommendations for the definitive reference.",
+      "parentUuid": "1dd9d886_0f18780c",
+      "range": {
+        "startLine": 144,
+        "startChar": 26,
+        "endLine": 144,
+        "endChar": 27
+      },
+      "revId": "da7f67de4cc006ba6372af94639eb29a13aaf226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
