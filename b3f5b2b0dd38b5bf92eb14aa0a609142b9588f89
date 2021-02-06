@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9a5c4c_5abebe96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-02-06T01:23:17Z",
+      "side": 1,
+      "message": "Is there a risk of this breaking FAFT pd testing, or other test protocols, where we manually initiate swaps with `pd 0 swap \u003cpower|vconn|data\u003e`?",
+      "revId": "b3f5b2b0dd38b5bf92eb14aa0a609142b9588f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
