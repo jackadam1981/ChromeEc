@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d7450e8e_9cf02ab0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-06T00:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9b1f2b1_8cf7296d",
+      "range": {
+        "startLine": 15,
+        "startChar": 36,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "34c2a040_c6e73cd6",
         "filename": "include/config.h",
         "patchSetId": 5
@@ -93,6 +117,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a74be8_1bd11f63",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-06T00:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a4c2fd_17e27894",
+      "range": {
+        "startLine": 8,
+        "startChar": 3,
+        "endLine": 8,
+        "endChar": 6
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7305092_46ca5f17",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-06T00:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281d620c_fccdfb47",
+      "range": {
+        "startLine": 8,
+        "startChar": 66,
+        "endLine": 8,
+        "endChar": 70
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e02ee13e_a54d372a",
@@ -106,6 +178,30 @@
       "writtenOn": "2021-02-05T06:48:07Z",
       "side": 1,
       "message": "Is this required?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87515964_5b03cfdd",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-06T00:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e02ee13e_a54d372a",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -139,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f50eb98_a557df8b",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-06T00:34:58Z",
+      "side": 1,
+      "message": "SEQ_EC_ALL_SYS_PG is the final stage output from the sequencer,\nso these delays account for what happens after the sequencer\ndeclares victory. PCH_SYS_PWROK in particular should be delayed\nuntil the rest of the board is ready to be taken out of reset.\n\nit\u0027s conceivable that these constants may need tuning for variants\nusing an identical sequencers.",
+      "parentUuid": "0fc989f0_8c7aa4d7",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d295ac0_79efa267",
@@ -152,6 +272,30 @@
       "writtenOn": "2021-02-05T06:48:07Z",
       "side": 1,
       "message": "This bug is marked fixed. If this is something that needs to be addressed for alderlake, I would recommend raising a new bug.",
+      "range": {
+        "startLine": 121,
+        "startChar": 9,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "448bcef1c9a8036f56fc74d18b36766330125b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11eabcf3_bb31a75f",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-06T00:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d295ac0_79efa267",
       "range": {
         "startLine": 121,
         "startChar": 9,
