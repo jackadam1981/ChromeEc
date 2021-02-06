@@ -3,6 +3,115 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5f37f98_b3bf4cd5",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-06T01:26:35Z",
+      "side": 1,
+      "message": "Console commands: accels, accelrate, accelinfo, etc.",
+      "range": {
+        "startLine": 139,
+        "startChar": 25,
+        "endLine": 139,
+        "endChar": 26
+      },
+      "revId": "dff66886830dafc5ed2d1316fcea2bfa1fae8b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f18be02e_99b2c1ee",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-06T01:26:35Z",
+      "side": 1,
+      "message": "Here you should list the commands along with what they do\n\nSee PLATFORM_EC_CONSOLE_CMD_FLASH for an example",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 6
+      },
+      "revId": "dff66886830dafc5ed2d1316fcea2bfa1fae8b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d273d59_82623542",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-06T01:26:35Z",
+      "side": 1,
+      "message": "Console command: accelinfo",
+      "range": {
+        "startLine": 147,
+        "startChar": 10,
+        "endLine": 147,
+        "endChar": 51
+      },
+      "revId": "dff66886830dafc5ed2d1316fcea2bfa1fae8b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f078bb7f_cc705dcb",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-06T01:26:35Z",
+      "side": 1,
+      "message": "accelerometer?",
+      "range": {
+        "startLine": 149,
+        "startChar": 63,
+        "endLine": 149,
+        "endChar": 69
+      },
+      "revId": "dff66886830dafc5ed2d1316fcea2bfa1fae8b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ca161f_0c799604",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-06T01:26:35Z",
+      "side": 1,
+      "message": "Also please add sample output\n\nSee PLATFORM_EC_CMD_USB_PD_CABLE for an example",
+      "revId": "dff66886830dafc5ed2d1316fcea2bfa1fae8b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "539d7479_06afaf90",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 1
