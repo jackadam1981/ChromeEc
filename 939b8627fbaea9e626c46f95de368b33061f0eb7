@@ -34,6 +34,24 @@
       "parentUuid": "5ee2c279_09878e1e",
       "revId": "939b8627fbaea9e626c46f95de368b33061f0eb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11761afa_057e2a71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-06T01:53:31Z",
+      "side": 1,
+      "message": "That exception is fine; people love their debug hammers. 😊 It might be a good idea to perhaps offer two paths: one \"through the front door\" so to speak and the other which actually forces the desired behaviour.",
+      "parentUuid": "513fde0b_d101fce5",
+      "revId": "939b8627fbaea9e626c46f95de368b33061f0eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
