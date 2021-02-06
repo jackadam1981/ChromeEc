@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79900b1_427553e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-06T01:38:44Z",
+      "side": 1,
+      "message": "spelling",
+      "revId": "e7b367bf8fe13ce037e79e8e6978e2d22b64bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21cf793b_a4a336c8",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-06T01:38:44Z",
+      "side": 1,
+      "message": "s/256/TCS_ATIME_GRANULARITY/\n\nDeclare 2.78ms ( as a constant in include/driver/als_tcs3400_public.h : MAX_INTEGRATION_TIME.",
+      "revId": "e7b367bf8fe13ce037e79e8e6978e2d22b64bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d1ef5a_2f7ca95c",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-06T01:38:44Z",
+      "side": 1,
+      "message": "Can you use normalize_channel_data() from als_tcs3400.c?",
+      "revId": "e7b367bf8fe13ce037e79e8e6978e2d22b64bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc803d6a_b9500f98",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-06T01:38:44Z",
+      "side": 1,
+      "message": "remove printf throughout.",
+      "revId": "e7b367bf8fe13ce037e79e8e6978e2d22b64bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4f0a590_c1a8a552",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-06T01:38:44Z",
+      "side": 1,
+      "message": "Avoid name collision:\nrename aname into integration_time\nand set\nintegration_time_ms \u003d tcs3400_get_integration_time(sat_p-\u003eatime) / 1000.\n\nGiven the loss of precision, should integration_time_ms be a fp_t?",
+      "revId": "e7b367bf8fe13ce037e79e8e6978e2d22b64bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcda2ce4_1ff93f4d",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-06T01:38:44Z",
+      "side": 1,
+      "message": "nit, describe irc and dgf",
+      "revId": "e7b367bf8fe13ce037e79e8e6978e2d22b64bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9c27b6_b2160f7c",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-06T01:38:44Z",
+      "side": 1,
+      "message": "stay in FP mode as long as possible to avoid precission loss.",
+      "revId": "e7b367bf8fe13ce037e79e8e6978e2d22b64bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
