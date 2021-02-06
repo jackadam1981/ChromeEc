@@ -33,6 +33,24 @@
       "message": "Hi Abe,\n\nMe and Divya tried out the patch - For some reason on her setup, the initial PD rev gets set to 1.0. I am not seeing this issue on my end - Should we set the revisions to default somewhere? ",
       "revId": "6ef06c71e14beb9a968df24cac9eaa78cecc0547",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981041da_1035b556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-06T01:23:35Z",
+      "side": 1,
+      "message": "Here\u0027s what I think was happening: The initial value of these fields is 0, meaning PD 1.0. They should have been set to their default values of 2 (PD 3.0) when the PRL starts, when prl_set_default_pd_revision was called in prl_run. However, the PRL state flips from SM_PAUSED to SM_INIT on the same PD task cycle that PD flips from enabled to disabled. As a result, prl_run jumps over this call. Prior to this CL, the Startup states in the PE would reset the stored revs again, so they would be set to 3.0 by the time messaging started.\n\nI\u0027m not sure whether this timing is guaranteed, but I never saw the prl_set_default_pd_revision call in prl_run actually happen across a few runs.",
+      "parentUuid": "a852edc7_b26744fc",
+      "revId": "6ef06c71e14beb9a968df24cac9eaa78cecc0547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
