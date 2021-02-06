@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c265bb32_f7a564d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-06T19:16:22Z",
+      "side": 1,
+      "message": "LGTM, just one question.",
+      "revId": "daa3123ecbadd5f1619eb066193695407113ff93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aee3d9b_3863edfc",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-06T19:16:22Z",
+      "side": 1,
+      "message": "Is this referring to a different i2c interface? It seems strange that it could return a non-ready status for i2c over i2c... Or am I missing something?",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "daa3123ecbadd5f1619eb066193695407113ff93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
