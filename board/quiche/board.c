@@ -42,7 +42,7 @@
 #ifdef SECTION_IS_RW
 static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	PD_DRP_TOGGLE_ON,
-	PD_DRP_TOGGLE_ON,
+	PD_DRP_FORCE_SOURCE,
 };
 
 static void ppc_interrupt(enum gpio_signal signal)
@@ -66,7 +66,6 @@ static void tcpc_alert_event(enum gpio_signal s)
 
 	switch (s) {
 	case GPIO_USBC_DP_MUX_ALERT_ODL:
-		board_debug_gpio(TRIGGER_2, 1);
 		port = USB_PD_PORT_DP;
 		break;
 	default:
@@ -79,7 +78,8 @@ void hpd_interrupt(enum gpio_signal signal)
 {
 	usb_pd_hpd_edge_event(signal);
 }
-#endif
+
+#endif /* SECTION_IS_RW */
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -91,16 +91,16 @@ void hpd_interrupt(enum gpio_signal signal)
 const struct power_seq board_power_seq[] = {
 	{GPIO_EN_AC_JACK,               1, 20},
 	{GPIO_EN_PP5000_A,              1, 31},
-	{GPIO_EN_PP3300_B,              1, 100},
+	{GPIO_MST_LP_CTL_L,             1, 0},
+	{GPIO_EN_PP3300_B,              1, 1},
+	{GPIO_EN_PP1100_A,              1, 100+30},
 	{GPIO_EN_BB,                    1, 30},
-	{GPIO_EN_PP1100_A,              1, 30},
 	{GPIO_EN_PP1050_A,              1, 30},
 	{GPIO_EN_PP1200_A,              1, 20},
 	{GPIO_EN_PP5000_C,              1, 20},
 	{GPIO_EN_PP5000_HSPORT,         1, 31},
 	{GPIO_EN_DP_SINK,               1, 80},
-	{GPIO_MST_LP_CTL_L,             1, 41},
-	{GPIO_MST_RST_L,                1, 20},
+	{GPIO_MST_RST_L,                1, 61},
 	{GPIO_EC_HUB2_RESET_L,          1, 41},
 	{GPIO_EC_HUB3_RESET_L,          1, 33},
 	{GPIO_DP_SINK_RESET,            1, 100},
@@ -112,7 +112,6 @@ const struct power_seq board_power_seq[] = {
 	{GPIO_DEMUX_DUAL_DP_MODE,       1, 10},
 	{GPIO_DEMUX_DP_HDMI_MODE,       1, 5},
 };
-
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
 
 /*
@@ -189,9 +188,23 @@ const struct hpd_to_pd_config_t hpd_config = {
 	.signal = GPIO_DDI_MST_IN_HPD,
 };
 
+void board_reset_pd_mcu(void)
+{
+	cprints(CC_SYSTEM, "Resetting TCPCs...");
+	cflush();
+	gpio_set_level(GPIO_USBC_DP_PD_RST_L, 0);
+	gpio_set_level(GPIO_USBC_UF_RESET_L, 0);
+	msleep(PS8805_FW_INIT_DELAY_MS);
+	gpio_set_level(GPIO_USBC_DP_PD_RST_L, 1);
+	gpio_set_level(GPIO_USBC_UF_RESET_L, 1);
+	msleep(PS8805_FW_INIT_DELAY_MS);
+}
+
 /* Power Delivery and charging functions */
 void board_tcpc_init(void)
 {
+	board_reset_pd_mcu();
+
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USBC_DP_PPC_INT_ODL);
@@ -200,18 +213,24 @@ void board_tcpc_init(void)
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
 }
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
 enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
 {
 	return pd_dual_role_init[port];
 }
-#endif
+#endif /* SECTION_IS_RW */
 
 static void board_init(void)
 {
+#ifdef SECTION_IS_RW
 	usb_mux_hpd_update(1, 0, 0);
+	hook_call_deferred(&board_config_usbc_uf_ppc_data, 10 * MSEC);
 
+	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
