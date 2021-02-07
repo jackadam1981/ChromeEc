@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3588ea20_7592a5bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-07T05:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e348e944_ce03f4e2",
+      "revId": "f373027d1dc10022f5d3940300fcb39e25d16d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "438edcaf_b2dc0547",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-02-05T21:00:16Z",
       "side": 1,
       "message": "Can you expand this a bit? We should have 3-4 lines of help with each option as a goal.\n\nWhat is a flash register? Why would you enable/disable this?",
+      "revId": "f373027d1dc10022f5d3940300fcb39e25d16d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "307641c8_4e66ebf3",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-07T05:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "438edcaf_b2dc0547",
       "revId": "f373027d1dc10022f5d3940300fcb39e25d16d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
