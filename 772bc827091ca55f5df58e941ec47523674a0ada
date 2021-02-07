@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "14927077_7147f6c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-07T00:04:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ada24731_426f300a",
+      "range": {
+        "startLine": 27,
+        "startChar": 55,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a3992aa2_701500ad",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26acc641_fd1f12f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-07T00:04:54Z",
+      "side": 1,
+      "message": "Interesting.  If we can\u0027t get a 3.0 A sink, we can validate most of the flow works with some tweaks to the DPM code.  I tried it on my Drawcia with only USB current auto-enabling and treating 1.5 A as if it were 3.0 A by changing the \"if\" on line 484.  We don\u0027t have FRS tested/enabled though, so I wasn\u0027t able to validate an actual FRS sequence and see that we offer correct power after the FRS completes.\n\nSo I was able to pseudo-validate all the items in this list except for the FRS itself.  You could probably do the same for your system, and then actually test the FRS with satachi and verify it gets an offer of 3.0 A after the FRS when no other 3.0 A sinks are present.",
+      "parentUuid": "b9606cc9_eca9d033",
+      "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28147427_0ece0786",
@@ -84,6 +126,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "469d4606_0117de4e",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-07T00:04:54Z",
+      "side": 1,
+      "message": "It\u0027s unlikely.  The PD sink shouldn\u0027t draw its new current until we complete the new contract negotiation which will be 4 PD messages away (10\u0027s of milliseconds).  That\u0027s a decently generous amount of time for the other task complete any outstanding AMSes and return to ready to disable FRS. \n\nExample from testing on dedede with the FRS config checks commented out, max FRS set to 1.5 A, and the DPM set to just print, we had about 70 ms between new contract completing and FRS disabling:\n21-02-06 16:24:17.455 [191.906236 C1: PE_DR_Get_Sink_Cap]\n21-02-06 16:24:17.484 [191.936245 C1: PE_SRC_Ready]\n21-02-06 16:24:17.487 [191.939658 C1: PE_SRC_Send_Capabilities]\n21-02-06 16:24:17.493 [191.944344 C0: FRS DISABLE] \u003c- FRS port disabled\n21-02-06 16:24:17.517 [191.970396 C1: PE_SRC_Negotiate_Capability]\n21-02-06 16:24:17.523 Requested 5000 mV 3000 mA (for 3000/3000 mA)\n21-02-06 16:24:17.528 [191.971106 C1: PE_SRC_Transition_Supply]\n21-02-06 16:24:17.560 [192.012626 C1: PE_SRC_Ready] \u003c- new contract settled\n\nThe source could be allowed to pull 3.0 A by the hardware before the new contract is in place, but the window between it knowing about the new current from the source caps and FRS disabling is fairly small (5 ms in above example, FRS disable is always first if I swap FRS to the higher-priority C1 task).\n\nFor the non-PD ports, we will have to put in a wait after downgrading them for tSinkAdj.  I picture this coming in the form of a delayed hook call which is why I ultimately structured this function to take no arguments and be able to adjust any number of ports needed at a time (in case multiple things change during that 60 ms).  We could try something similar here if we\u0027re feeling paranoid (wait 10 ms?  20?)",
+      "parentUuid": "28147427_0ece0786",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 23
+      },
+      "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbc3765e_9aa93074",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 1
@@ -95,6 +161,30 @@
       "writtenOn": "2021-02-04T23:44:09Z",
       "side": 1,
       "message": "Nit - add a comment that the partner doesn\u0027t need 3A, so FRS can always be enabled.",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 59
+      },
+      "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c49bc37_d7eae950",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-07T00:04:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc3765e_9aa93074",
       "range": {
         "startLine": 483,
         "startChar": 0,
