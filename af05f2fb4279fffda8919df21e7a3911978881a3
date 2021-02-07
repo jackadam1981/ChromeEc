@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae59ce60_46541ffd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-07T00:00:37Z",
+      "side": 1,
+      "message": "Does it have anything to do with having that option enabled in RW but not RO if we\u0027re thinking of the EC updating via SW sync?",
+      "parentUuid": "fa777d88_24ccfd0f",
+      "revId": "af05f2fb4279fffda8919df21e7a3911978881a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa2b578d_1b1730fa",
@@ -83,6 +101,30 @@
       "writtenOn": "2021-02-04T22:32:02Z",
       "side": 1,
       "message": "Should this get added to the octopus baseboard.h instead under the VARIANT_OCTOPUS_EC_NPCX796FB?  Could be a follow-up CL.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "af05f2fb4279fffda8919df21e7a3911978881a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4adeaef3_5cf95c18",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-07T00:00:37Z",
+      "side": 1,
+      "message": "Right now, it looks like the other NPCX variants are each sitting on a minimum of 6k free flash space so I don\u0027t know that it\u0027s urgent.  Bobba got particularly tight when it second sourced its base gyroscope.\n\nPatryk, any preferences?",
+      "parentUuid": "aa2b578d_1b1730fa",
       "range": {
         "startLine": 24,
         "startChar": 0,
