@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c31743_8ecc6119",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-07T05:48:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c053126e_c61010c3",
+      "revId": "64ddeaebb78fb282170de8d041810db6d2e62c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f13d74c8_8ce8cfda",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-05T20:58:41Z",
       "side": 1,
       "message": "-",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "64ddeaebb78fb282170de8d041810db6d2e62c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc17246_3b335eb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-07T05:48:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f13d74c8_8ce8cfda",
       "range": {
         "startLine": 12,
         "startChar": 20,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "724767da_2b0ec0cf",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-07T05:48:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26e62edd_a872aa63",
+      "range": {
+        "startLine": 9,
+        "startChar": 47,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "64ddeaebb78fb282170de8d041810db6d2e62c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4696475f_0ec7196b",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fdef453_c5873686",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-07T05:48:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4696475f_0ec7196b",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "64ddeaebb78fb282170de8d041810db6d2e62c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaf53fba_85f832a9",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-02-05T20:58:41Z",
       "side": 1,
       "message": "E",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "64ddeaebb78fb282170de8d041810db6d2e62c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58c7269d_65acb3fa",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-07T05:48:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaf53fba_85f832a9",
       "range": {
         "startLine": 26,
         "startChar": 17,
