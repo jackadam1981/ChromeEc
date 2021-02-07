@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8acdbc34_4f37b1b1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2637,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-07T00:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61b36815_e6e8f4bd",
+      "range": {
+        "startLine": 2636,
+        "startChar": 0,
+        "endLine": 2637,
+        "endChar": 29
+      },
+      "revId": "a6f79cbd47423094d5dbed810b9ed4601b4844cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aebb5352_fffcfb37",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09ecf8e_92e1924f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2688,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-07T00:03:49Z",
+      "side": 1,
+      "message": "Just an inefficiency I noticed for the way the states were running when an unhandled request came in.  I added a comment for the commit to the parent CL to explain the change.",
+      "parentUuid": "aebb5352_fffcfb37",
+      "range": {
+        "startLine": 2685,
+        "startChar": 0,
+        "endLine": 2688,
+        "endChar": 0
+      },
+      "revId": "a6f79cbd47423094d5dbed810b9ed4601b4844cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0f66763_e6826476",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-04T22:55:03Z",
       "side": 1,
       "message": "The nesting here is getting pretty deep and affects readability.  Can you move this into a helper function as a parent CL to this one?  You could cleanup the SRC ready run state at the same time.",
+      "range": {
+        "startLine": 3463,
+        "startChar": 0,
+        "endLine": 3477,
+        "endChar": 0
+      },
+      "revId": "a6f79cbd47423094d5dbed810b9ed4601b4844cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515ef60f_b5efb2d8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3477,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-07T00:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0f66763_e6826476",
       "range": {
         "startLine": 3463,
         "startChar": 0,
