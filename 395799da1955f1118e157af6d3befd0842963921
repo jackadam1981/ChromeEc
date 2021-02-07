@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afbd9706_fa97a9e1",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1473047
+      },
+      "writtenOn": "2021-02-07T06:18:12Z",
+      "side": 1,
+      "message": "I verified on coachz unit,system can not resume by this WLC event.\nIf change to:host_set_single_event(EC_HOST_EVENT_DEVICE); can wake up system.",
+      "range": {
+        "startLine": 388,
+        "startChar": 3,
+        "endLine": 388,
+        "endChar": 48
+      },
+      "revId": "395799da1955f1118e157af6d3befd0842963921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
