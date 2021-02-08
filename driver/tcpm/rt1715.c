@@ -80,6 +80,12 @@ static int rt1715_tcpci_tcpm_init(int port)
 	if (rv)
 		return rv;
 
+	/* Choose Low Power Mode instead of Standby Mode */
+	rv = tcpc_update8(port, RT1715_REG_VENDOR_0,
+		RT1715_REG_VENDOR_0_BMCIO_LPEN, MASK_SET);
+	if (rv)
+		return rv;
+
 	return tcpci_tcpm_init(port);
 }
 
