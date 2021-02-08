@@ -676,6 +676,7 @@ void prl_set_default_pd_revision(int port)
 	 * partner doesn't support this revision, the Protocol Engine will
 	 * lower this value to the revision supported by the partner.
 	 */
+	CPRINTS("C%d: Setting default PD rev", port);
 	pdmsg[port].rev[TCPC_TX_SOP] = PD_REVISION;
 	pdmsg[port].rev[TCPC_TX_SOP_PRIME] = PD_REVISION;
 	pdmsg[port].rev[TCPC_TX_SOP_PRIME_PRIME] = PD_REVISION;
@@ -757,6 +758,7 @@ void prl_set_rev(int port, enum tcpm_transmit_type type,
 {
 	/* We only store revisions for SOP* types. */
 	ASSERT(type < NUM_SOP_STAR_TYPES);
+	CPRINTS("C%d: PRL set rev %d", port, rev);
 
 	pdmsg[port].rev[type] = rev;
 }

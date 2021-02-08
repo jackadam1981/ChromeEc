@@ -936,6 +936,7 @@ enum usb_rev30_ss get_usb4_cable_speed(int port)
 		USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
 
 	if (is_pd_rev3(port, TCPC_TX_SOP_PRIME)) {
+		CPRINTS("C%d: USB4 cable rev 3.0", port);
 		disc = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
 
 		return max_usb4_speed <  disc->identity.product_t1.p_rev30.ss ?
