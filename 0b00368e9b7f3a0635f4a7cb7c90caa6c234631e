@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb961eec_522ac918",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-02-08T12:33:36Z",
+      "side": 1,
+      "message": "Why are we using here another Pi3usb920 driver rather than the common one in driver/bc12/ ?",
+      "revId": "0b00368e9b7f3a0635f4a7cb7c90caa6c234631e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
