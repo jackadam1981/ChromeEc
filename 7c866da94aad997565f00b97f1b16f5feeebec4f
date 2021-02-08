@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d861ac0_8b495699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-02-08T18:47:01Z",
+      "side": 1,
+      "message": "Oh good point, ok I\u0027ll split the gpio setup in a separate CL.",
+      "parentUuid": "73e3fcca_1fee8306",
+      "revId": "7c866da94aad997565f00b97f1b16f5feeebec4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fff328b5_21a13fed",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cecd1aba_d9076684",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-02-08T18:47:01Z",
+      "side": 1,
+      "message": "Good point, I also added a depends on PLATFORM_EC_HOSTCMD",
+      "parentUuid": "fff328b5_21a13fed",
+      "revId": "7c866da94aad997565f00b97f1b16f5feeebec4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a12c264_c0d50fe3",
@@ -66,6 +102,30 @@
       "writtenOn": "2021-02-08T17:54:50Z",
       "side": 1,
       "message": "Separate the files that enable the config on Volteer to a separate changelist.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 59
+      },
+      "revId": "7c866da94aad997565f00b97f1b16f5feeebec4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e06a11_a8144686",
+        "filename": "zephyr/projects/volteer/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-02-08T18:47:01Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll do a commit for volteer and one for kohaku.",
+      "parentUuid": "9a12c264_c0d50fe3",
       "range": {
         "startLine": 37,
         "startChar": 0,
