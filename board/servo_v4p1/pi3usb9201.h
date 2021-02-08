@@ -6,6 +6,8 @@
 #ifndef __CROS_EC_PI3USB9201_H
 #define __CROS_EC_PI3USB9201_H
 
+#include "pwr_defs.h"
+
 enum pi3usb9201_reg_t {
 	CTRL_REG1,
 	CTRL_REG2,
@@ -55,5 +57,13 @@ void write_pi3usb9201(enum pi3usb9201_reg_t reg, enum pi3usb9201_dat_t dat);
  * @param return	data byte read from pi3usb9201
  */
 uint8_t read_pi3usb9201(enum pi3usb9201_reg_t reg);
+
+/**
+ * Evaluate max current available in client mode
+ *
+ * @param vbus_pwr	pwr_con_t struct where max current is to be filled
+ * @return		0 on success, error code otherwise
+ */
+int pi3usb9201_get_max_current(struct pwr_con_t *vbus_pwr);
 
 #endif /* __CROS_EC_PI3USB9201_H */

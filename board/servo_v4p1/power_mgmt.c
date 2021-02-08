@@ -10,6 +10,7 @@
 #include "system.h"
 #include "usb_tc_snk_sm.h"
 #include "util.h"
+#include "pi3usb9201.h"
 #include "pwr_defs.h"
 
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
@@ -23,9 +24,25 @@
 /* Cache previous power in milliwatts in order to detect changes */
 static int old_pwr_mw;
 
-static int is_bc12_enabled(void)
+static void get_bc12_info(struct pwr_con_t *vbus_port_extra_pwr)
 {
-	return get_host_chrg_det();
+	int pi3usb9201_current = 0;
+
+	vbus_port_extra_pwr->volts = 5;
+
+	if (board_id_det() <= BOARD_ID_REV1) {
+		if (get_host_chrg_det())
+			vbus_port_extra_pwr->milli_amps = 1500;
+		else
+			vbus_port_extra_pwr->milli_amps = 0;
+	} else {
+		pi3usb9201_get_max_current(vbus_port_extra_pwr);
+		/* pi3usb9201 clears its register on reads, use cached value */
+		if (vbus_port_extra_pwr->milli_amps == 0)
+			vbus_port_extra_pwr->milli_amps = pi3usb9201_current;
+		else
+			pi3usb9201_current = vbus_port_extra_pwr->milli_amps;
+	}
 }
 
 void evaluate_input_power(void)
@@ -40,10 +57,7 @@ void evaluate_input_power(void)
 		host_hub_pwr.milli_amps = 500;
 	}
 
-	if (is_bc12_enabled()) {
-		bc12_pwr.volts = 5;
-		bc12_pwr.milli_amps = 1500;
-	}
+	get_bc12_info(&bc12_pwr);
 
 	/*
 	 * It is possible that we will get less power from servo charger port

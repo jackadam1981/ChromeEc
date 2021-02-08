@@ -6,6 +6,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "ioexpanders.h"
+#include "power_mgmt.h"
 #include "tca6416a.h"
 #include "tca6424a.h"
 
@@ -179,10 +180,22 @@ static void ioexpanders_irq(void)
 		ccprintf("off DAC1 to clear the fault\n");
 	}
 
-	if ((irqs & HOST_CHRG_DET) != bc12_charger) {
-		ccprintf("BC1.2 charger %s\n", (irqs & HOST_CHRG_DET) ?
-			 "plugged" : "unplugged");
-		bc12_charger = irqs & HOST_CHRG_DET;
+	if (board_id_det() <= BOARD_ID_REV1) {
+		if ((irqs & HOST_CHRG_DET) != bc12_charger) {
+			ccprintf("BC1.2 charger %s\n", (irqs & HOST_CHRG_DET) ?
+				 "plugged" : "unplugged");
+			bc12_charger = irqs & HOST_CHRG_DET;
+#ifdef SECTION_IS_RO
+		evaluate_input_power();
+#endif
+		}
+	} else {
+		/* PI3USB9201 chip notified about connection change, reevaluate
+		 * available power */
+#ifdef SECTION_IS_RO
+		if (!(irqs & HOST_CHRG_DET))
+			evaluate_input_power();
+#endif
 	}
 
 	if (!(irqs & SYS_PWR_IRQ_ODL))
