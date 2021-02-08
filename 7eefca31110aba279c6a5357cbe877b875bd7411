@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf27c80_16bc3b66",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-08T20:21:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "652683a1_87d5c18f",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 12
+      },
+      "revId": "7eefca31110aba279c6a5357cbe877b875bd7411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcdce4f3_79cbed5c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-08T19:23:04Z",
       "side": 1,
       "message": "Probably should treat this as error and exit with failure",
+      "range": {
+        "startLine": 96,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 10
+      },
+      "revId": "7eefca31110aba279c6a5357cbe877b875bd7411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3333f8cc_ec8b988c",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-08T20:21:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcdce4f3_79cbed5c",
       "range": {
         "startLine": 96,
         "startChar": 6,
