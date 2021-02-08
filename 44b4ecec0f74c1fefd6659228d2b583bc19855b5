@@ -33,6 +33,24 @@
       "message": "I thought that when I did this you said it would be better to just run pytest on the root directory and it will find all the tests by itself? Does this give us more verbose messages? If so, can you comment to that effect?",
       "revId": "44b4ecec0f74c1fefd6659228d2b583bc19855b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a78378_b150df44",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-08T18:08:44Z",
+      "side": 1,
+      "message": "See commit message, this was to get better parallelization (pytest normally runs in sequence if we just call it on the root directory)",
+      "parentUuid": "0cbad593_90038957",
+      "revId": "44b4ecec0f74c1fefd6659228d2b583bc19855b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
