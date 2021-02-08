@@ -51,6 +51,24 @@
       "parentUuid": "8067dcf5_2ac55b3c",
       "revId": "1864169ce3718f26ef758fe605c54e77f56854ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "144c7bcb_a1a378d2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-08T18:00:07Z",
+      "side": 1,
+      "message": "It might not be, though: b/173725284#comment142\n\nI\u0027m inclined to figure out what\u0027s wrong with this and upload a new patchset before submitting. I could also submit this as an incremental improvement.",
+      "parentUuid": "1f60b048_3bbac67a",
+      "revId": "1864169ce3718f26ef758fe605c54e77f56854ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
