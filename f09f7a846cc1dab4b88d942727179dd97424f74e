@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954faa48_8c8dea8a",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-08T21:44:21Z",
+      "side": 1,
+      "message": "This won\u0027t do anything since we\u0027re not checking it? \"exit\" should kill the script.",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 16
+      },
+      "revId": "f09f7a846cc1dab4b88d942727179dd97424f74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
