@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d42dd953_ff02948c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-02-08T17:37:46Z",
+      "side": 1,
+      "message": "CQ fails on kohaku cause the lid switch pin is not defined. Can\u0027t find a definition in ECOS either, and also realized that most boards don\u0027t set this config, so I dropped the \"default y\" and enabled it explicitly for volteer.\n\nI\u0027m also getting some seemingly unrelated fails in zmake testall, giving it a test run here.",
+      "revId": "7c866da94aad997565f00b97f1b16f5feeebec4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
