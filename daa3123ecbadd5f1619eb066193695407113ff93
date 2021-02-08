@@ -63,6 +63,30 @@
       },
       "revId": "daa3123ecbadd5f1619eb066193695407113ff93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06eb0645_797e0d8d",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-02-08T11:28:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc3a41b6_c0d70d30",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "daa3123ecbadd5f1619eb066193695407113ff93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
