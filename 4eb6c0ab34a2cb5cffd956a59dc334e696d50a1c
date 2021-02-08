@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "520d978b_eceb1e8f",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-08T10:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd7fd802_1328cc75",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 7
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f4ff6d9_d1c183c9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99d435b6_ea0b0010",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-08T10:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f4ff6d9_d1c183c9",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17d629b9_faa30988",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-06T07:26:22Z",
       "side": 1,
       "message": "Shouldn\u0027t this be EN_S5_RAILS?",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 59
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba2fcf8_5382c015",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-08T10:49:18Z",
+      "side": 1,
+      "message": "thermisters are powered by PP3300_S5.\nPG_3300_S5_OD is presented to the EC as DSW_PWROK\nby the sequencer after 11ms, so this seems like\na good choice.",
+      "parentUuid": "17d629b9_faa30988",
       "range": {
         "startLine": 93,
         "startChar": 38,
@@ -116,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d60da1d_2ac69109",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-08T10:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac51de68_97917629",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 33
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6cab44c_f2a7b732",
@@ -129,6 +225,30 @@
       "writtenOn": "2021-02-06T07:26:22Z",
       "side": 1,
       "message": "Without PSL mode enabled, is this really required?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "573c7379_84b95c67",
+        "filename": "board/brya/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-08T10:49:18Z",
+      "side": 1,
+      "message": "ya, this is needed as soon as you turn on\nCONFIG_SUPPORT_CHIP_HIBERNATION",
+      "parentUuid": "d6cab44c_f2a7b732",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -156,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21526c1c_7e767a55",
+        "filename": "board/brya/i2c.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-08T10:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c800aece_b84cc57c",
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9571205_710e107b",
@@ -169,6 +307,30 @@
       "writtenOn": "2021-02-06T07:26:22Z",
       "side": 1,
       "message": "Can you please file bug for the TODO?",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 198,
+        "endChar": 8
+      },
+      "revId": "4eb6c0ab34a2cb5cffd956a59dc334e696d50a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b562a2c6_090270fd",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-08T10:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9571205_710e107b",
       "range": {
         "startLine": 198,
         "startChar": 4,
