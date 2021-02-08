@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25860659_c1d0a6b7",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-08T22:32:10Z",
+      "side": 1,
+      "message": "USB4 speed is being populated on line 279",
+      "parentUuid": "3429a324_910ae989",
+      "range": {
+        "startLine": 244,
+        "startChar": 16,
+        "endLine": 244,
+        "endChar": 19
+      },
+      "revId": "877a24d0b78a3404c757636aaae8986d58c2b5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2706162e_76c7a2fa",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-02-08T22:29:00Z",
       "side": 1,
       "message": "What if it\u0027s mux_state \u0026 USB_PD_MUX_USB4_ENABLED?",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 2
+      },
+      "revId": "877a24d0b78a3404c757636aaae8986d58c2b5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fefb5e38_c8940963",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-08T22:32:10Z",
+      "side": 1,
+      "message": "We are doing it on line 279",
+      "parentUuid": "2706162e_76c7a2fa",
       "range": {
         "startLine": 251,
         "startChar": 1,
