@@ -48,6 +48,44 @@ if(DEFINED CONFIG_PLATFORM_EC)
   zephyr_include_directories("${CMAKE_BINARY_DIR}/ec/include/generated")
 endif()
 
+# If a header is needed (should only be set for npcx) run the ecst.py script to
+# generate it.
+if (DEFINED CONFIG_PLATFORM_EC_RO_HEADER)
+    # Translate the CONFIG_FLASH_SIZE to the correct argument value.
+    if ("${CONFIG_FLASH_SIZE}" STREQUAL "512" OR "${CONFIG_FLASH_SIZE}" STREQUAL "1024")
+        set(flash_size 1)
+    elseif ("${CONFIG_FLASH_SIZE}" STREQUAL "2048")
+        set(flash_size 2)
+    elseif ("${CONFIG_FLASH_SIZE}" STREQUAL "4096")
+        set(flash_size 4)
+    elseif ("${CONFIG_FLASH_SIZE}" STREQUAL "8192")
+        set(flash_size 8)
+    elseif ("${CONFIG_FLASH_SIZE}" STREQUAL "16384")
+        set(flash_size 16)
+    endif()
+
+    # Check for disabling header CRC.
+    if (NOT DEFINED CONFIG_PLATFORM_EC_RO_HEADER_ENABLE_HEADER_CRC)
+        set(hcrc "-nohcrc")
+    endif()
+
+    # Check for disabling firmware CRC.
+    if (NOT DEFINED CONFIG_PLATFORM_EC_RO_HEADER_ENABLE_FIRMWARE_CRC)
+        set(fcrc "-nofcrc")
+    endif()
+
+    # Note, we cannot get the chip from Kconfig because currently Zephyr doesn't
+    # support all the variations we need for NPCX. These values should be set
+    # in each project's board.cmake.
+    set_property(GLOBAL APPEND PROPERTY extra_post_build_commands
+            COMMAND ${PYTHON_EXECUTABLE} ${ZEPHYR_BASE}/boards/arm/npcx7m6fb_evb/support/ecst.py
+            -i ${PROJECT_BINARY_DIR}/${CONFIG_KERNEL_BIN_NAME}.bin
+            -o ${PROJECT_BINARY_DIR}/zephyr.packed.bin ${hcrc} ${fcrc}
+            -chip ${ECST_CHIP_ARG} -flashsize ${flash_size}
+            -spimaxclk ${CONFIG_PLATFORM_EC_RO_HEADER_SPI_MAX_CLOCK}
+            -spireadmode ${CONFIG_PLATFORM_EC_RO_HEADER_SPI_READ_MODE})
+endif()
+
 zephyr_include_directories(include)
 
 zephyr_include_directories_ifdef(
