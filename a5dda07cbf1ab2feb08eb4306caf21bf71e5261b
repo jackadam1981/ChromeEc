@@ -16,6 +16,24 @@
       "message": "The current code keeps the PD task in wait state after configuring the retimer until ACK comes from  USB Mux (Virtual Mux). \nIn the PD transactions observed more than once USB/Safe/USB4 modes. \nRetimer configuring second time Safe mode but not the virtual mux is not expected.\nThe patch avoids configuring the BB retimer with the same mode again.",
       "revId": "a5dda07cbf1ab2feb08eb4306caf21bf71e5261b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da2647c_131073ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-08T17:49:57Z",
+      "side": 1,
+      "message": "oops, i saw this now.\ncan you add the same comment in commit message?",
+      "parentUuid": "59c9fdf1_6b22b706",
+      "revId": "a5dda07cbf1ab2feb08eb4306caf21bf71e5261b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
