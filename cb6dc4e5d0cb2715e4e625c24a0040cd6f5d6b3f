@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4240f5ea_b113e3ef",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-02-08T10:21:25Z",
+      "side": 1,
+      "message": "Fix it to Set3",
+      "parentUuid": "39d492a3_539eae71",
+      "range": {
+        "startLine": 115,
+        "startChar": 21,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "cb6dc4e5d0cb2715e4e625c24a0040cd6f5d6b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84b81a59_d8a5f0c5",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-08T07:25:39Z",
       "side": 1,
       "message": "nit: swap order to avoid the negative check",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "cb6dc4e5d0cb2715e4e625c24a0040cd6f5d6b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa6a3e4d_921cbd7e",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-02-08T10:21:25Z",
+      "side": 1,
+      "message": "Upload to set3",
+      "parentUuid": "84b81a59_d8a5f0c5",
       "range": {
         "startLine": 134,
         "startChar": 0,
