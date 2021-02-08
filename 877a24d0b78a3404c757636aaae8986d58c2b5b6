@@ -16,6 +16,24 @@
       "message": "looks good to me. why was original code overwriting? was there an intention being it? it will be good to look at the history.",
       "revId": "877a24d0b78a3404c757636aaae8986d58c2b5b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a5c96ce_5c991dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-08T22:13:20Z",
+      "side": 1,
+      "message": "I am not sure why we were doing this in the first place",
+      "parentUuid": "8328b436_99d10577",
+      "revId": "877a24d0b78a3404c757636aaae8986d58c2b5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
