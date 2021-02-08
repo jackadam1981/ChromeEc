@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f524aaab_ef7f027b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-08T22:41:40Z",
+      "side": 1,
+      "message": "\u003e At present, PMC/IPC doesn\u0027t support Alt mode-\u003e safe-\u003e USB. So, the only way to get out of an alt mode is to disconnect -\u003e USB-\u003e safe-\u003e alt mode -- More info about this in comment #45 and #48 of the cross-bug.\nIf this is a workaround for a behavior of this mux, it should be specific to the virtual mux driver, not enabled for any mux. It should ideally be specific to the TCSS, but at least right now, there aren\u0027t any other virtual muxes, so that\u0027s a slightly lesser concern.\n\n\n\u003e \u003e The spec says we should enter Safe Mode before sending Exit Mode. Does this violate that, or is there more nuance to the mux modes?\n\u003e I don\u0027t think we are particularly violating the spec - We are using a different path to exit.\nThe spec specifies the mux mode transitions during the Exit Mode AMS in section 8.3.2.13.5.\n\n\n\u003e Added a new patch set for not coming in and out of LPM and isolating the PPC lines.\nAck.",
+      "parentUuid": "553290a4_43b99d44",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85152083_9200122e",
         "filename": "include/usb_common.h",
         "patchSetId": 8
