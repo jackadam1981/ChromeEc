@@ -16,6 +16,24 @@
       "message": "These tests should really run in an instant and I doubt that fuzzing is helping much once you get beyond a few dozen runs. Can we tell hypothesis to speed up?",
       "revId": "d45694d294bcd3a55ba1514c1a22fae74cc27aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6893dc4_4bfb4315",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-08T20:02:21Z",
+      "side": 1,
+      "message": "I suspect the issue is actually due to the CQ having a lot more CPU pressure than other environments (we saw this with the EC unit tests taking up to 60s, whereas we had the deadline set to 10s at most for our gLinux machines)\n\nHypothesis is just rather picky about timing",
+      "parentUuid": "64f1fff1_c60b4b92",
+      "revId": "d45694d294bcd3a55ba1514c1a22fae74cc27aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
