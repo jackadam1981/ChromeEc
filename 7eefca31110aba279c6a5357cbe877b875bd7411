@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652683a1_87d5c18f",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-08T19:23:04Z",
+      "side": 1,
+      "message": "I think it\u0027s clearer if you do:\n\n  for signal in \"$@\"",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 12
+      },
+      "revId": "7eefca31110aba279c6a5357cbe877b875bd7411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcdce4f3_79cbed5c",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-08T19:23:04Z",
+      "side": 1,
+      "message": "Probably should treat this as error and exit with failure",
+      "range": {
+        "startLine": 96,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 10
+      },
+      "revId": "7eefca31110aba279c6a5357cbe877b875bd7411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
