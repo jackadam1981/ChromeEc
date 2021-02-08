@@ -22,6 +22,30 @@
       },
       "revId": "395799da1955f1118e157af6d3befd0842963921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e6d601_176caea7",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-02-08T16:01:46Z",
+      "side": 1,
+      "message": "Yes, EC_DEVICE_EVENT_WLC needs to be enabled and it\u0027s done by powerd: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/2657758. So, it should work after your device is updated to 13771.0.0 (or higher).",
+      "parentUuid": "afbd9706_fa97a9e1",
+      "range": {
+        "startLine": 388,
+        "startChar": 3,
+        "endLine": 388,
+        "endChar": 48
+      },
+      "revId": "395799da1955f1118e157af6d3befd0842963921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
