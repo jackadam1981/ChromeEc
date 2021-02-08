@@ -51,12 +51,6 @@ static int tusb422_tcpci_tcpm_init(int port)
 {
 	int rv;
 
-	/* TUSB422 has a vendor-defined register reset */
-	rv = tcpc_update8(port, TUSB422_REG_CC_GEN_CTRL,
-			  TUSB422_REG_CC_GEN_CTRL_GLOBAL_SW_RST, MASK_SET);
-	if (rv)
-		return rv;
-
 	rv = tcpci_tcpm_init(port);
 	if (rv)
 		return rv;
