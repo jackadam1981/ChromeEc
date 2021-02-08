@@ -33,6 +33,24 @@
       "message": "This function is called during the Attach process and also during error recovery, which can result in more than one call to prl_set_default_pd_revision during a detach-attach sequence. I\u0027m pretty sure it\u0027s benign. I think there\u0027s probably a set of locations that I could reset them that would do it exactly once at the right times, if that\u0027s important to you.",
       "revId": "1864169ce3718f26ef758fe605c54e77f56854ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f60b048_3bbac67a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-08T17:39:02Z",
+      "side": 1,
+      "message": "I think this should be fine",
+      "parentUuid": "8067dcf5_2ac55b3c",
+      "revId": "1864169ce3718f26ef758fe605c54e77f56854ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
