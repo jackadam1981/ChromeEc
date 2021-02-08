@@ -33,6 +33,41 @@
       "message": "The build error on bobba should be fixed by CL:2676082 which has merged.",
       "revId": "c5df4210f693423fcdc9f3bb9f6266b4cdd6c889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f3beca_89cfbe3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-08T21:11:01Z",
+      "side": 1,
+      "message": "We have been performing merges from main to the Volteer FW branch, so this change will be picked up.",
+      "parentUuid": "79482a91_6740cc5d",
+      "revId": "c5df4210f693423fcdc9f3bb9f6266b4cdd6c889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a65122f_9d378304",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-08T21:11:01Z",
+      "side": 1,
+      "message": "Note the bobba board failure has been fixed, but this is now failing the fuzz tests.\n\nRun \"make runfuzztests\" locally and fix the issue.",
+      "revId": "c5df4210f693423fcdc9f3bb9f6266b4cdd6c889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
