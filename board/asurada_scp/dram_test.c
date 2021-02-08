@@ -20,7 +20,7 @@ __SECTION(dram.rodata) static const int8_t const_data_array[4] = { 5, 5, 6, 6 };
 
 __SECTION(dram.bss) static int counter;
 
-/* __SECTION(dram.text) */
+__SECTION(dram.text)
 static void print_array(const char *name, int8_t *array, size_t size)
 {
 	int i;
