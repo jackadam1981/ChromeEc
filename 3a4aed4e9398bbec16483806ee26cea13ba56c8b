@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71596c47_dcbab3d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-08T23:09:31Z",
+      "side": 1,
+      "message": "Commit messages should start with the component and say what they change. Use this:\n\u003e rt1715: Reset properly coming out of LPM\n\u003e \n\u003e After the initial power-on-reset, reset registers by writing to SOFT_RESET. On subsequent register resets after exiting low-power mode, do not write this register.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 131
+      },
+      "revId": "3a4aed4e9398bbec16483806ee26cea13ba56c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a29ccaf_d2babced",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-08T23:09:31Z",
+      "side": 1,
+      "message": "Excessive line length. Are you uploading with `repo upload`?",
+      "revId": "3a4aed4e9398bbec16483806ee26cea13ba56c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df36a8b4_0a4e7466",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-08T23:09:31Z",
+      "side": 1,
+      "message": "I suspect that pre-upload checks may not have run for this CL. Please do that and update the commit message. Otherwise, LGTM as a fix for this specific issue.",
+      "revId": "3a4aed4e9398bbec16483806ee26cea13ba56c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eccd7f5_8dda9bda",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-08T23:09:31Z",
+      "side": 1,
+      "message": "Nit: Odd line break location. Please use 80-column lines here and below.",
+      "revId": "3a4aed4e9398bbec16483806ee26cea13ba56c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
