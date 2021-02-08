@@ -21,6 +21,8 @@ struct icm_drv_data_t {
 	struct accelgyro_saved_data_t saved_data[2];
 	struct motion_sensor_t *accel;
 	struct motion_sensor_t *gyro;
+	uint32_t accel_ts;
+	uint32_t gyro_ts;
 	uint8_t bank;
 	uint8_t fifo_en;
 	uint8_t fifo_buffer[ICM_FIFO_BUFFER] __aligned(sizeof(long));
@@ -97,5 +99,12 @@ int icm_get_scale(const struct motion_sensor_t *s, uint16_t *scale,
 
 ssize_t icm_fifo_decode_packet(const void *packet, const uint8_t **accel,
 		const uint8_t **gyro);
+
+int icm_set_sensor_ts(const struct motion_sensor_t *s);
+
+void icm_reset_sensor_ts(const struct motion_sensor_t *s);
+
+uint32_t icm_get_sensor_stabilized(const struct motion_sensor_t *s,
+				   uint32_t ts, uint32_t delay);
 
 #endif	/* __CROS_EC_ACCELGYRO_ICM_COMMON_H */

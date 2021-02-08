@@ -12,6 +12,7 @@
 #include "console.h"
 #include "i2c.h"
 #include "spi.h"
+#include "hwtimer.h"
 #include "driver/accelgyro_icm_common.h"
 #include "driver/accelgyro_icm426xx.h"
 
@@ -389,4 +390,68 @@ ssize_t icm_fifo_decode_packet(const void *packet, const uint8_t **accel,
 
 	/* invalid packet if here */
 	return -EC_ERROR_INVAL;
+}
+
+static uint32_t *icm_get_sensor_ts(const struct motion_sensor_t *s)
+{
+	struct icm_drv_data_t *st = ICM_GET_DATA(s);
+	uint32_t *sensor_ts;
+
+	switch (s->type) {
+	case MOTIONSENSE_TYPE_ACCEL:
+		sensor_ts = &st->accel_ts;
+		break;
+	case MOTIONSENSE_TYPE_GYRO:
+		sensor_ts = &st->gyro_ts;
+		break;
+	default:
+		sensor_ts = NULL;
+		break;
+	}
+
+	return sensor_ts;
+}
+
+int icm_set_sensor_ts(const struct motion_sensor_t *s)
+{
+	uint32_t *sensor_ts;
+
+	sensor_ts = icm_get_sensor_ts(s);
+	if (sensor_ts == NULL)
+		return EC_ERROR_INVAL;
+
+	*sensor_ts = __hw_clock_source_read();
+	/* prevent 0 value used for disabling time checking */
+	if (*sensor_ts == 0)
+		*sensor_ts = 1;
+
+	return EC_SUCCESS;
+}
+
+void icm_reset_sensor_ts(const struct motion_sensor_t *s)
+{
+	uint32_t *sensor_ts;
+
+	sensor_ts = icm_get_sensor_ts(s);
+	if (sensor_ts != NULL)
+		*sensor_ts = 0;
+}
+
+uint32_t icm_get_sensor_stabilized(const struct motion_sensor_t *s,
+				   uint32_t ts, uint32_t delay)
+{
+	uint32_t *sensor_ts;
+	uint32_t delta, rem;
+
+	sensor_ts = icm_get_sensor_ts(s);
+	if (sensor_ts == NULL || *sensor_ts == 0)
+		return 0;
+
+	/* ts is always > sensor_ts, rollover is correctly handled */
+	delta = ts - *sensor_ts;
+	if (delta > delay)
+		return 0;
+
+	rem = delay - delta;
+	return rem;
 }
