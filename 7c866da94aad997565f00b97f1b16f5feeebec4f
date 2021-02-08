@@ -16,6 +16,64 @@
       "message": "CQ fails on kohaku cause the lid switch pin is not defined. Can\u0027t find a definition in ECOS either, and also realized that most boards don\u0027t set this config, so I dropped the \"default y\" and enabled it explicitly for volteer.\n\nI\u0027m also getting some seemingly unrelated fails in zmake testall, giving it a test run here.",
       "revId": "7c866da94aad997565f00b97f1b16f5feeebec4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73e3fcca_1fee8306",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-08T17:54:50Z",
+      "side": 1,
+      "message": "Kohaku is based on the Hatch baseboard.  baseboard/hatch/baseboard.h defines GPIO_ENABLE_BACKLIGHT as GPIO_EDP_BKLTEN_OD.\n\nI think if you create a CL that updates gpio_map.h for Kohaku and Volteer as parents to this CL, that will fix the build problem.",
+      "parentUuid": "d42dd953_ff02948c",
+      "revId": "7c866da94aad997565f00b97f1b16f5feeebec4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff328b5_21a13fed",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-08T17:54:50Z",
+      "side": 1,
+      "message": "Add:\n\nThis option enables the EC_CMD_SWITCH_ENABLE_BKLIGHT host command, which allows the AP to override the backlight setting until the next change in the lid state.",
+      "revId": "7c866da94aad997565f00b97f1b16f5feeebec4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a12c264_c0d50fe3",
+        "filename": "zephyr/projects/volteer/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-08T17:54:50Z",
+      "side": 1,
+      "message": "Separate the files that enable the config on Volteer to a separate changelist.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 59
+      },
+      "revId": "7c866da94aad997565f00b97f1b16f5feeebec4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
