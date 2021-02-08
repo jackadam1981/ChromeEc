@@ -5,6 +5,7 @@
 
 /* Honeybuns family-specific configuration */
 #include "console.h"
+#include "cros_board_info.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -62,6 +63,11 @@ static void baseboard_set_usbc_sink_mode(void)
 
 static void baseboard_init(void)
 {
+#ifdef SECTION_IS_RW
+	int rv;
+	uint32_t fw_config;
+#endif
+
 	/* Turn on power rails */
 	board_power_sequence();
 	CPRINTS("board: Power rails enabled");
@@ -69,6 +75,20 @@ static void baseboard_init(void)
 #ifdef SECTION_IS_RW
 	system_clear_reset_flags(EC_RESET_FLAG_POWER_ON);
 	system_set_reset_flags(EC_RESET_FLAG_EFS);
+
+	/* Set MST lane control before MST comes out of reset */
+	rv = cbi_get_fw_config(&fw_config);
+	if (!rv) {
+		/* put MST into reset */
+		gpio_set_level(GPIO_MST_RST_L, 0);
+		/* wait 5 msec */
+		msleep(2);
+		gpio_set_level(GPIO_MST_HUB_LANE_SWITCH, fw_config & 1);
+		CPRINTS("MST: Lane Control Init = %d",
+			gpio_get_level(GPIO_MST_HUB_LANE_SWITCH));
+		msleep(2);
+		gpio_set_level(GPIO_MST_RST_L, 1);
+	}
 #else
 	baseboard_set_usbc_sink_mode();
 #endif
