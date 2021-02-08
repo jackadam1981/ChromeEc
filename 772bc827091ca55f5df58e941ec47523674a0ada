@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c1767df_d0b49daf",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-08T18:49:31Z",
+      "side": 1,
+      "message": "I think a follow CL with deferred hook makes sense.   20ms seems good.",
+      "parentUuid": "469d4606_0117de4e",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 23
+      },
+      "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbc3765e_9aa93074",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 1

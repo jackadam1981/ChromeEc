@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0015a0e8_69b68fdb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-08T18:49:31Z",
+      "side": 1,
+      "message": "As a follow on CL, can you move this check into pe_set_frs_enable?\nAdding if (!IS_ENABLED(FRS \u0026 PD30) at the beginning of pe_set_frs_enable() might consume a few extra bytes, but will make the code easier to read.",
+      "range": {
+        "startLine": 1068,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 37
+      },
+      "revId": "63c8dc0835ccfd7637dfa8854354af06f3509488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe0226e_a6358fa2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-08T18:49:31Z",
+      "side": 1,
+      "message": "Move this code into pe_set_frs_enable() in the next CL.",
+      "range": {
+        "startLine": 1718,
+        "startChar": 0,
+        "endLine": 1724,
+        "endChar": 35
+      },
+      "revId": "63c8dc0835ccfd7637dfa8854354af06f3509488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb18ba4c_7038ea2e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2157,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-08T18:49:31Z",
+      "side": 1,
+      "message": "I think you\u0027re trying to avoid temporarily allocating 3A to a non-PD port - correct?\nIf so, note that in the comment instead of \"lower priority\" which isn\u0027t as clear to me.",
+      "range": {
+        "startLine": 2157,
+        "startChar": 40,
+        "endLine": 2157,
+        "endChar": 55
+      },
+      "revId": "63c8dc0835ccfd7637dfa8854354af06f3509488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
