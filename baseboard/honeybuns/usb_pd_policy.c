@@ -311,6 +311,9 @@ static void svdm_configure_demux(int port, int enable, int mf)
 		/* 4 lane mode if MF is not preferred */
 		if (!mf)
 			demux &= ~USB_PD_MUX_USB_ENABLED;
+		/* Set lane config signal for MST */
+		CPRINTS("dp config: mf = %d", mf);
+		gpio_set_level(GPIO_MST_HUB_LANE_SWITCH, mf);
 	} else {
 		demux &= ~USB_PD_MUX_DP_ENABLED;
 		demux |= USB_PD_MUX_USB_ENABLED;
