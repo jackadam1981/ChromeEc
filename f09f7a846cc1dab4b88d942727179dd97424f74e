@@ -22,6 +22,30 @@
       },
       "revId": "f09f7a846cc1dab4b88d942727179dd97424f74e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9459c9_3b400447",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-08T22:49:08Z",
+      "side": 1,
+      "message": "No, I don\u0027t think so. We have \"set -e\" enabled, which would mean that the invocation of \"gpio\" should end the script with status 1.\n(the same way echo 1 \u003e/sys/class/gpio/gpio67/value would fail)",
+      "parentUuid": "954faa48_8c8dea8a",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 16
+      },
+      "revId": "f09f7a846cc1dab4b88d942727179dd97424f74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
