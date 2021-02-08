@@ -382,16 +382,14 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 			r_v2->dp_mode = get_dp_pin_mode(p->port);
 			mux_state = usb_mux_get(p->port);
-			if (mux_state & USB_PD_MUX_USB4_ENABLED) {
-				r_v2->cable_speed =
-					get_usb4_cable_speed(p->port);
-			}
-			if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED ||
-			    mux_state & USB_PD_MUX_USB4_ENABLED) {
-				r_v2->cable_speed =
-					get_tbt_cable_speed(p->port);
+			if (mux_state & USB_PD_MUX_USB4_ENABLED ||
+			    mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
 				r_v2->cable_gen =
 					get_tbt_rounded_support(p->port);
+				r_v2->cable_speed =
+					mux_state & USB_PD_MUX_USB4_ENABLED ?
+					get_usb4_cable_speed(p->port) :
+					get_tbt_cable_speed(p->port);
 			}
 		}
 
