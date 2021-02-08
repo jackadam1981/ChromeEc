@@ -935,11 +935,12 @@ enum usb_rev30_ss get_usb4_cable_speed(int port)
 	max_usb4_speed = tbt_speed == TBT_SS_TBT_GEN3 ?
 		USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
 
-	if (is_pd_rev3(port, TCPC_TX_SOP_PRIME)) {
+	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) &&
+	     is_pd_rev3(port, TCPC_TX_SOP_PRIME)) {
 		disc = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
 
-		return max_usb4_speed <  disc->identity.product_t1.p_rev30.ss ?
-		       max_usb4_speed :  disc->identity.product_t1.p_rev30.ss;
+		return max_usb4_speed <  disc->identity.product_t1.a_rev30.ss ?
+		       max_usb4_speed :  disc->identity.product_t1.a_rev30.ss;
 	}
 
 	return max_usb4_speed;
