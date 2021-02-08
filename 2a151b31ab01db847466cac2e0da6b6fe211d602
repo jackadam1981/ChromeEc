@@ -136,6 +136,24 @@
       "parentUuid": "5773a495_8d50c130",
       "revId": "2a151b31ab01db847466cac2e0da6b6fe211d602",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219a2d80_6abeef32",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-02-08T04:01:46Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "3bbc7077_c63ddb49",
+      "revId": "2a151b31ab01db847466cac2e0da6b6fe211d602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
