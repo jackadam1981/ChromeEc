@@ -237,6 +237,8 @@ struct panic_data *get_panic_data_write(void);
  */
 void chip_panic_data_backup(void);
 
+int in_panic(void);
+
 #ifdef __cplusplus
 }
 #endif

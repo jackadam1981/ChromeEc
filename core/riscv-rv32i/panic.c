@@ -39,6 +39,13 @@ static const char * const exc_type[16] = {
 /* General purpose register (s1) for saving software panic information */
 #define SOFT_PANIC_GPR_INFO   10
 
+static int trigger_panic;
+
+int in_panic(void)
+{
+    return trigger_panic;
+}
+
 void software_panic(uint32_t reason, uint32_t info)
 {
 	asm volatile ("mv s0, %0" : : "r"(reason));
@@ -154,6 +161,7 @@ void report_panic(uint32_t *regs)
 	for (i = 0; i < 31; i++)
 		pdata->riscv.regs[i] = regs[i];
 
+    trigger_panic = 1;
 	print_panic_information(regs, mcause, mepc);
 	panic_reboot();
 }
