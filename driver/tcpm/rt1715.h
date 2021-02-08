@@ -11,9 +11,6 @@
 
 #define RT1715_VENDOR_ID                        0x29CF
 
-#define RT1715_REG_VENDOR_7                     0xA0
-#define RT1715_REG_VENDOR_7_SOFT_RESET          BIT(0)
-
 #define RT1715_REG_PHY_CTRL1                    0x80
 /* Wait for tReceive before retrying transmit in response to a bad GoodCRC */
 #define RT1715_REG_PHY_CTRL1_ENRETRY            BIT(7)
