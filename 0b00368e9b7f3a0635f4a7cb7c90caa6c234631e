@@ -16,6 +16,24 @@
       "message": "Why are we using here another Pi3usb920 driver rather than the common one in driver/bc12/ ?",
       "revId": "0b00368e9b7f3a0635f4a7cb7c90caa6c234631e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a61b436_7f264205",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-02-08T15:21:15Z",
+      "side": 1,
+      "message": "Good question.\n\nFirst of all, this driver (board/servo_v4p1) was used on servo_v4p1 from the very first board revision. Having this in place for REV0 and REV1, I wasn\u0027t even considering using new (from servo_v4p1 perspective) solution. In this patch I\u0027m only improving API of module used previously.\n\nActually looking at the generic module under driver/bc12/, it is much bigger solution with full support (and probably better tested than custom one). We don\u0027t need half (only need client mode) of its features. At the same time, I\u0027m thinking about memory footprint of adding a new task, since bc12 is running as a task there. We already have issues with amount of RAM. Thinking about adding third PD stack, we don\u0027t even have enough.\n\nConsidering above, I\u0027m not an enthusiast of moving to common driver from driver/bc12. That being said, servo_v4p1 duplicates a bunch of common drivers and we need to revisit whether it makes sense to remove custom ones.",
+      "parentUuid": "cb961eec_522ac918",
+      "revId": "0b00368e9b7f3a0635f4a7cb7c90caa6c234631e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
