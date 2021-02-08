@@ -33,6 +33,23 @@
       "message": "Thanks! This all LGTM! ",
       "revId": "c65446cc45c6ece3221b462a11b2f8b5d1d82bb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb600c1b_803f0119",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-08T23:08:07Z",
+      "side": 1,
+      "message": "Looks like a build failure occurred:\n\n    \nboard/sklrvp_mchp/board.c:106:18: error: \u0027FUSB307_I2C_SLAVE_ADDR_FLAGS\u0027 undeclared here (not in a function); did you mean \u0027FUSB307_I2C_ADDR_FLAGS\u0027?\n    .addr_flags \u003d FUSB307_I2C_SLAVE_ADDR_FLAGS,\n                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~\n                  FUSB307_I2C_ADDR_FLAGS\nIn file included from include/common.h:14,\n                 from include/button.h:11,\n                 from board/sklrvp_mchp/board.c:13:\ninclude/compile_time_macros.h:18:2: error: static assertion failed: \"board/sklrvp_mchp/board.c:119: \"\n  _Static_assert(cond, file \":\" #line \": \" msg)\n  ^~~~~~~~~~~~~~\ninclude/compile_time_macros.h:19:29: note: in expansion of macro \u0027_BA1_\u0027\n #define _BA0_(c, f, l, msg) _BA1_(c, f, l, msg)\n                             ^~~~~\ninclude/compile_time_macros.h:23:33: note: in expansion of macro \u0027_BA0_\u0027\n #define BUILD_ASSERT(cond, ...) _BA0_(cond, __FILE__, __LINE__, __VA_ARGS__)\n                                 ^~~~~\nboard/sklrvp_mchp/board.c:119:1: note: in expansion of macro \u0027BUILD_ASSERT\u0027\n BUILD_ASSERT(ARRAY_SIZE(tcpc_config) \u003d\u003d CONFIG_USB_PD_PORT_MAX_COUNT);\n ^~~~~~~~~~~~\ncc1: error: unrecognized command line option \u0027-Wno-address-of-packed-member\u0027 [-Werror]\ncc1: all warnings being treated as errors\nmake[2]: *** [Makefile.rules:546: build/sklrvp_mchp/RW/board/sklrvp_mchp/board.o] Error 1\nmake[1]: *** [Makefile.rules:236: proj-sklrvp_mchp] Error 2",
+      "revId": "c65446cc45c6ece3221b462a11b2f8b5d1d82bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
