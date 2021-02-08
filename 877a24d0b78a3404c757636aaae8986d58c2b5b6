@@ -34,6 +34,52 @@
       "parentUuid": "8328b436_99d10577",
       "revId": "877a24d0b78a3404c757636aaae8986d58c2b5b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3429a324_910ae989",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-08T22:29:00Z",
+      "side": 1,
+      "message": "Datasheet 1.65 it\u0027s USB4/TBT_Cable_Speed_Support",
+      "range": {
+        "startLine": 244,
+        "startChar": 16,
+        "endLine": 244,
+        "endChar": 19
+      },
+      "revId": "877a24d0b78a3404c757636aaae8986d58c2b5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2706162e_76c7a2fa",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-08T22:29:00Z",
+      "side": 1,
+      "message": "What if it\u0027s mux_state \u0026 USB_PD_MUX_USB4_ENABLED?",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 2
+      },
+      "revId": "877a24d0b78a3404c757636aaae8986d58c2b5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
