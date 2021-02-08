@@ -5,6 +5,7 @@
 
 /* Honeybuns family-specific configuration */
 #include "console.h"
+#include "cros_board_info.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -40,6 +41,11 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 static void baseboard_init(void)
 {
+#ifdef SECTION_IS_RW
+	int rv;
+	uint32_t fw_config;
+#endif
+
 	/* Turn on power rails */
 	board_power_sequence();
 	CPRINTS("board: Power rails enabled");
@@ -47,10 +53,28 @@ static void baseboard_init(void)
 #ifdef SECTION_IS_RW
 	system_clear_reset_flags(EC_RESET_FLAG_POWER_ON);
 	system_set_reset_flags(EC_RESET_FLAG_EFS);
+
+	/* Set MST lane control before MST comes out of reset */
+	rv = cbi_get_fw_config(&fw_config);
+	if (!rv) {
+		/* put MST into reset */
+		gpio_set_level(GPIO_MST_RST_L, 0);
+		/* wait 5 msec */
+		msleep(2);
+		gpio_set_level(GPIO_MST_HUB_LANE_SWITCH, fw_config & 1);
+		CPRINTS("MST: Lane Control Init = %d",
+			gpio_get_level(GPIO_MST_HUB_LANE_SWITCH));
+		msleep(2);
+		gpio_set_level(GPIO_MST_RST_L, 1);
+	}
 #else
 	/* Set up host port usbc to present Rd on CC lines */
 	if(baseboard_usbc_init(USB_PD_PORT_HOST))
 		CPRINTS("usbc: Failed to set up sink path");
 #endif
 }
-DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
+/*
+ * Power sequencing must run before any other chip init is attempted, so run
+ * power sequencing as soon as I2C bus is initialized.
+ */
+DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_INIT_I2C + 1);
