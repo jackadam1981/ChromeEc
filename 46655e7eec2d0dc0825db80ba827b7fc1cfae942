@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afbb9128_507611c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-08T17:49:03Z",
+      "side": 1,
+      "message": "does it fix any issues or just a optimization ?",
+      "revId": "46655e7eec2d0dc0825db80ba827b7fc1cfae942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0841e940_d38076a2",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-08T17:49:03Z",
+      "side": 1,
+      "message": "how about update only if write success else retimer_mux_state[port] \u003d 0",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 0
+      },
+      "revId": "46655e7eec2d0dc0825db80ba827b7fc1cfae942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
