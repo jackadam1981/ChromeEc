@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c31b9e_d9575dfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-02-08T11:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdb72ecf_79094622",
+      "revId": "a8b9ab8624510fed98df48c779fb22bafcc8358a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56e7d411_7011a08b",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c637b067_dc318e78",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-02-08T11:27:16Z",
+      "side": 1,
+      "message": "I was thinking about moving this into gl3590 code. However we are mostly playing here with GPIO pin (connection between STM and host hub), so decided that more appropriate place is in platform module instead. Otherwise, we will end up with most of GPIO handling in platform code with only one pin configuration in some external module (still definition of GPIO_USBH_I2C_BUSY_INT will be stored in gpio.inc).\n\nThis deferred function will be invoked only during board init.",
+      "parentUuid": "56e7d411_7011a08b",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 0
+      },
+      "revId": "a8b9ab8624510fed98df48c779fb22bafcc8358a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4737dd4e_e5362229",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-02-06T19:37:02Z",
       "side": 1,
       "message": "This function seems like it can be called multiple times. Is running the init again intended?",
+      "revId": "a8b9ab8624510fed98df48c779fb22bafcc8358a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f6c7e5d_1dffae0d",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-02-08T11:27:16Z",
+      "side": 1,
+      "message": "Thanks for a good point. This init should be only called once per gl3590 instance. I will guard this (in a separate commit) with a global variable - introduce this in earlier commit (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2674001) instead of here.",
+      "parentUuid": "4737dd4e_e5362229",
       "revId": "a8b9ab8624510fed98df48c779fb22bafcc8358a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
