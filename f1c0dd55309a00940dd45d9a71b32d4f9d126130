@@ -460,6 +460,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a7e4512_15907353",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-08T10:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d989434f_459072ad",
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad97231c_d5bd0441",
@@ -521,6 +539,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "ad97231c_d5bd0441",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "f1c0dd55309a00940dd45d9a71b32d4f9d126130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de2deeb4_73ee69c3",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-08T10:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cf28629_6b084329",
       "range": {
         "startLine": 34,
         "startChar": 7,
