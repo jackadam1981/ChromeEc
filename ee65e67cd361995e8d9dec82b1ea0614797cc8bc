@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08cff3c7_0b703995",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-02-08T11:25:37Z",
+      "side": 1,
+      "message": "In this version, I\u0027ve added guards which protect for calling API before hw is ready (init function completed).",
+      "revId": "ee65e67cd361995e8d9dec82b1ea0614797cc8bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

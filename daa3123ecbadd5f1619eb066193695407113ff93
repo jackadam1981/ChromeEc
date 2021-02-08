@@ -39,6 +39,30 @@
       },
       "revId": "daa3123ecbadd5f1619eb066193695407113ff93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc3a41b6_c0d70d30",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-02-08T11:25:37Z",
+      "side": 1,
+      "message": "Your question definitely makes sense, this is the same interface.\n\nSuggestion to check this comes directly from Genesys (hub manufacturer). Actually it is possible for hub to reply to I2C transactions and still not being able to perform some operations requested via the same I2C interface (like writing to port enable/disable register). In other words, hub may respond to I2C query here and reply back that I2C interface is not fully ready (BIT0 in HUB_MODE(0x0) register not set).",
+      "parentUuid": "2aee3d9b_3863edfc",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "daa3123ecbadd5f1619eb066193695407113ff93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
