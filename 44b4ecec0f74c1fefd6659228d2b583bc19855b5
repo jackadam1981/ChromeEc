@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "683518e0_27ed26a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-08T18:07:39Z",
+      "side": 1,
+      "message": "Small question, but overall LG",
+      "revId": "44b4ecec0f74c1fefd6659228d2b583bc19855b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cbad593_90038957",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-08T18:07:39Z",
+      "side": 1,
+      "message": "I thought that when I did this you said it would be better to just run pytest on the root directory and it will find all the tests by itself? Does this give us more verbose messages? If so, can you comment to that effect?",
+      "revId": "44b4ecec0f74c1fefd6659228d2b583bc19855b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
