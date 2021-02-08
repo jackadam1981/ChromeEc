@@ -86,6 +86,24 @@
       "parentUuid": "656af2c4_126b058f",
       "revId": "2db38dec08408565a759b6cf080b1e2a69aa5a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "259c640e_c43330a8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-08T23:39:38Z",
+      "side": 1,
+      "message": "Started a discussion with ITE to see if their reset flags can align to NPCX.  So we\u0027ll table this CL for now and re-visit later.\n\nYou\u0027re correct, that this would change our no- and low-battery behavior.  The reset flag fix would be less disruptive to current behavior.",
+      "parentUuid": "d5928aba_f8952a09",
+      "revId": "2db38dec08408565a759b6cf080b1e2a69aa5a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
