@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51cbf4df_1b13de17",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-09T21:58:45Z",
+      "side": 1,
+      "message": "Since hpd_low always reset\u0027s the queue, then hpd_low can only ever be in the first position. Hpd High can only following hpd_low, and you can\u0027t have hpd_irq without being in hpd_high. So that means in the worst case there can only be 4 events in the queue:\n\nhpd_low -\u003e hpd_high -\u003e hpd_irq -\u003e hpd_irq\n\nIf the queue is full, it must be the situation I just detailed. So that would mean discard. If there are less than 2 events already, then hpd_irq may always be added. The lastly, if there are 2 or more, then don\u0027t add if this would be the 3rd hpd_irq event. That\u0027s what the hpd.queue[hpd.count - 2] \u003d\u003d hpd_irq) is checking for.",
+      "parentUuid": "c6bdbe6c_6f834527",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "432adad5_43569976",
         "filename": "common/usbc/usb_pd_dp_ufp.c",
         "patchSetId": 12
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34021cb3_e61d5405",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-09T21:58:45Z",
+      "side": 1,
+      "message": "The only event that can cause the queue to overflow is hpd_irq. Hpd_low is always in slot 0, and hpd_high has to follow hpd_low, so it can only either be in slot 0 or 1 in the queue. queue overflow is checked specifically for hpd_irq in the \"if\" portion.",
+      "parentUuid": "624bc5aa_e4b5917c",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e001e2b1_65c1f3df",
         "filename": "common/usbc/usb_pd_dp_ufp.c",
         "patchSetId": 12
@@ -71,6 +113,24 @@
       "writtenOn": "2021-02-09T06:29:05Z",
       "side": 1,
       "message": "Does any part of this need a check on the requirement we don\u0027t queue HPD events when DP is disabled?  Or is it assumed we shouldn\u0027t be getting calls in when DP is disabled?",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b159770_f37ab43e",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-09T21:58:45Z",
+      "side": 1,
+      "message": "The hpd converter is enabled as part of the alt-dp enter mode path and similar disabled when that mode is exited. Or at least that\u0027s the intention.",
+      "parentUuid": "e001e2b1_65c1f3df",
       "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3be5fe91_85d72a35",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-09T21:58:45Z",
+      "side": 1,
+      "message": "can only get to this state from low_wait, so when in high_check need to check for the level still being high (this would be when coming back after deglitch timer. The timer is being used to make sure that it\u0027s been at least 250 usec since the low-\u003ehigh transition.",
+      "parentUuid": "f6f0a3d5_6a1ca5fb",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a20655a_2844f3c2",
         "filename": "common/usbc/usb_pd_dp_ufp.c",
         "patchSetId": 12
@@ -111,6 +195,24 @@
       "writtenOn": "2021-02-09T06:29:05Z",
       "side": 1,
       "message": "Is the call from the svdm response function to enable/disable when we enter and exit DP?",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b402aef5_055142b7",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-09T21:58:45Z",
+      "side": 1,
+      "message": "yes, enter mode enables, and exit mode will disable it.",
+      "parentUuid": "6a20655a_2844f3c2",
       "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
