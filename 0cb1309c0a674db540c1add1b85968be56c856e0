@@ -16,6 +16,23 @@
       "message": "Verified that connection stabilizes on both bugs. ",
       "revId": "0cb1309c0a674db540c1add1b85968be56c856e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17e2dce_0d5f478a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-09T21:13:13Z",
+      "side": 1,
+      "message": "This also stabilizes the connection on Volteer with e-mark and non e-mark cables.",
+      "revId": "0cb1309c0a674db540c1add1b85968be56c856e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
