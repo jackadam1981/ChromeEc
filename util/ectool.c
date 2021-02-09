@@ -6186,42 +6186,6 @@ int cmd_usb_pd(int argc, char *argv[])
 					printf("UNKNOWN");
 				printf("\n");
 			}
-
-			printf("Cable type:%s\n",
-				r_v2->control_flags & USB_PD_CTRL_ACTIVE_CABLE ?
-					"Active" : "Passive");
-
-			printf("TBT Adapter type:%s\n",
-				r_v2->control_flags &
-				USB_PD_CTRL_TBT_LEGACY_ADAPTER ?
-					"Legacy" : "Gen3");
-
-			printf("Optical Cable:%s\n",
-				r_v2->control_flags &
-				USB_PD_CTRL_OPTICAL_CABLE ? "True" : "False");
-
-			printf("Link LSRX Communication:%s-directional\n",
-				r_v2->control_flags &
-				USB_PD_CTRL_ACTIVE_LINK_UNIDIR ? "Uni" : "Bi");
-
-			printf("TBT Cable Speed:");
-			switch (r_v2->cable_speed) {
-			case TBT_SS_U31_GEN1:
-				printf("TBT Gen1");
-				break;
-			case TBT_SS_U32_GEN1_GEN2:
-				printf("TBT Gen1 and TBT Gen2");
-				break;
-			case TBT_SS_TBT_GEN3:
-				printf("TBT Gen3");
-				break;
-			default:
-				printf("UNKNOWN");
-			}
-			printf("\n");
-
-			printf("Rounded support: 3rd Gen %srounded support\n",
-				r_v2->cable_gen ? "and 4th Gen " : "");
 		}
 		/* If connected to a PD device, then print port partner info */
 		if ((r_v1->enabled & PD_CTRL_RESP_ENABLED_CONNECTED) &&
@@ -6309,7 +6273,7 @@ static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
 int cmd_usb_pd_mux_info(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_mux_info p;
-	struct ec_response_usb_pd_mux_info r;
+	struct ec_response_usb_pd_mux_info_v1 r;
 	int num_ports, rv, i;
 
 	rv = ec_command(EC_CMD_USB_PD_PORTS, 0, NULL, 0,
@@ -6320,7 +6284,7 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 
 	for (i = 0; i < num_ports; i++) {
 		p.port = i;
-		rv = ec_command(EC_CMD_USB_PD_MUX_INFO, 0,
+		rv = ec_command(EC_CMD_USB_PD_MUX_INFO, 1,
 				&p, sizeof(p),
 				&r, sizeof(r));
 		if (rv < 0)
@@ -6337,6 +6301,42 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 		printf("TBT=%d ", !!(r.flags & USB_PD_MUX_TBT_COMPAT_ENABLED));
 		printf("USB4=%d ", !!(r.flags & USB_PD_MUX_USB4_ENABLED));
 		printf("\n");
+
+		printf("Cable type:%s\n",
+			r.control_flags & USB_PD_CTRL_ACTIVE_CABLE ?
+				"Active" : "Passive");
+
+		printf("TBT Adapter type:%s\n",
+			r.control_flags &
+			USB_PD_CTRL_TBT_LEGACY_ADAPTER ?
+				"Legacy" : "Gen3");
+
+		printf("Optical Cable:%s\n",
+			r.control_flags &
+			USB_PD_CTRL_OPTICAL_CABLE ? "True" : "False");
+
+		printf("Link LSRX Communication:%s-directional\n",
+			r.control_flags &
+			USB_PD_CTRL_ACTIVE_LINK_UNIDIR ? "Uni" : "Bi");
+
+		printf("TBT Cable Speed:");
+		switch (r.cable_speed) {
+		case TBT_SS_U31_GEN1:
+			printf("TBT Gen1");
+			break;
+		case TBT_SS_U32_GEN1_GEN2:
+			printf("TBT Gen1 and TBT Gen2");
+			break;
+		case TBT_SS_TBT_GEN3:
+			printf("TBT Gen3");
+			break;
+		default:
+			printf("UNKNOWN");
+		}
+		printf("\n");
+
+		printf("Rounded support: 3rd Gen %srounded support\n",
+			r.cable_gen ? "and 4th Gen " : "");
 	}
 
 	return 0;
