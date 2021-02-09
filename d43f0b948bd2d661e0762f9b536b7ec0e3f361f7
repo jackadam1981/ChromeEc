@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "662125a4_91151b48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-09T20:32:28Z",
+      "side": 1,
+      "message": "drop this",
+      "range": {
+        "startLine": 28,
+        "startChar": 51,
+        "endLine": 28,
+        "endChar": 84
+      },
+      "revId": "d43f0b948bd2d661e0762f9b536b7ec0e3f361f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bbadb00_27039170",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-09T20:32:28Z",
+      "side": 1,
+      "message": "This should have a comment IMO",
+      "revId": "d43f0b948bd2d661e0762f9b536b7ec0e3f361f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71616dc6_565d7130",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-09T20:32:28Z",
+      "side": 1,
+      "message": "output image",
+      "range": {
+        "startLine": 118,
+        "startChar": 32,
+        "endLine": 118,
+        "endChar": 38
+      },
+      "revId": "d43f0b948bd2d661e0762f9b536b7ec0e3f361f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
