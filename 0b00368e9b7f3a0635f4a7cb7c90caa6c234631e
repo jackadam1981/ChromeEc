@@ -34,6 +34,24 @@
       "parentUuid": "cb961eec_522ac918",
       "revId": "0b00368e9b7f3a0635f4a7cb7c90caa6c234631e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fad01c9_1dedf998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-09T06:48:18Z",
+      "side": 1,
+      "message": "Can\u0027t we just pare down the existing driver using CONFIG_* options if we don\u0027t need the host mode? It\u0027s kind of getting out of hand now. There\u0027s already a separate Type-C stack, a separate TCPC driver, and now this. I understand that the  free space is tight, but if it\u0027s possible to leverage the existing drivers, we should do so.",
+      "parentUuid": "8a61b436_7f264205",
+      "revId": "0b00368e9b7f3a0635f4a7cb7c90caa6c234631e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
