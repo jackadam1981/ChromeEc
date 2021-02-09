@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24e966d_5d89c004",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-09T07:24:54Z",
+      "side": 1,
+      "message": "where is it cleared? It is expected for the command handler to read the command buffer and use it as the response buffer, overwriting its content.",
+      "revId": "dd204c6b52dc742f254ed3587d928766080961ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
