@@ -562,8 +562,12 @@ static void jump_to_image(uintptr_t init_addr)
 	resetvec();
 }
 
+__in_section(fixed_ver, a, b) int this_is_my_special_data[8] = {1, 2, 3};
+
 static int is_rw_image(enum ec_image copy)
 {
+	copy += this_is_my_special_data[0];
+
 	return copy == EC_IMAGE_RW || copy == EC_IMAGE_RW_B;
 }
 

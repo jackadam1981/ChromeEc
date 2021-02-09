@@ -64,6 +64,8 @@ add_subdirectory("drivers")
 
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
 
+zephyr_linker_sources(ROM_START test.ld)
+
 # CONFIG_PLATFORM_EC files that don't relate to something below should be
 # included here, sorted by filename. This is common functionality which is
 # supported by all boards and emulators (including unit tests) using the shim
