@@ -26,6 +26,7 @@
 
 /* Host communication */
 #define CONFIG_HOSTCMD_ESPI
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
 
 /* Common battery defines */
 #define CONFIG_BATTERY_SMART
@@ -34,6 +35,9 @@
 #define CONFIG_BATTERY_PRESENT_CUSTOM
 #define CONFIG_BATTERY_HW_PRESENT_CUSTOM
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
+
+/* Chipset config */
+#define CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
 
 #define CONFIG_PWM
 
