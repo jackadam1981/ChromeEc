@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b00c15b_277d3e84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-09T16:01:02Z",
+      "side": 1,
+      "message": "We can talk about this during today\u0027s meeting, but I think we need to take a different approach on this (run ecst from zmake instead of cmake, and include configurations in zmake.yaml instead of hard-coding in board.cmake).",
+      "revId": "967d492c0034a7745512b6b20d2b4792d8eabbb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
