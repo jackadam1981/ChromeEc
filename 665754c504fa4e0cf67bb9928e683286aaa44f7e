@@ -215,6 +215,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7759b8da_b86c074e",
+        "filename": "common/usb_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-09T00:20:22Z",
+      "side": 1,
+      "message": "usb_mux_set_safe_mode() anyways sets non-virtual muxes to USB_MUX_NONE - So I am not following on what should be done for non-virtual muxes.",
+      "parentUuid": "f524aaab_ef7f027b",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85152083_9200122e",
         "filename": "include/usb_common.h",
         "patchSetId": 8
