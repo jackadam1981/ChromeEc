@@ -245,43 +245,6 @@ static const mux_state_t typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
 	[USB_PD_CTRL_MUX_DOCK] = USB_PD_MUX_DOCK,
 };
 
-/*
- * Combines the following information into a single byte
- * Bit 0: Active/Passive cable
- * Bit 1: Optical/Non-optical cable
- * Bit 2: Legacy Thunderbolt adapter
- * Bit 3: Active Link Uni-Direction/Bi-Direction
- */
-static uint8_t get_pd_control_flags(int port)
-{
-	union tbt_mode_resp_cable cable_resp;
-	union tbt_mode_resp_device device_resp;
-	uint8_t control_flags = 0;
-
-	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
-		return 0;
-
-	cable_resp.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
-	device_resp.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP);
-
-	/*
-	 * Ref: USB Type-C Cable and Connector Specification
-	 * Table F-11 TBT3 Cable Discover Mode VDO Responses
-	 * For Passive cables, Active Cable Plug link training is set to 0
-	 */
-	control_flags |= (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE ||
-			 cable_resp.tbt_active_passive == TBT_CABLE_ACTIVE) ?
-			 USB_PD_CTRL_ACTIVE_CABLE : 0;
-	control_flags |= cable_resp.tbt_cable == TBT_CABLE_OPTICAL ?
-			 USB_PD_CTRL_OPTICAL_CABLE : 0;
-	control_flags |= device_resp.tbt_adapter == TBT_ADAPTER_TBT2_LEGACY ?
-			 USB_PD_CTRL_TBT_LEGACY_ADAPTER : 0;
-	control_flags |= cable_resp.lsrx_comm == UNIDIR_LSRX_COMM ?
-			 USB_PD_CTRL_ACTIVE_LINK_UNIDIR : 0;
-
-	return control_flags;
-}
-
 static uint8_t pd_get_role_flags(int port)
 {
 	return (pd_get_power_role(port) == PD_ROLE_SOURCE ?
@@ -307,7 +270,6 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 	struct ec_response_usb_pd_control_v1 *r_v1 = args->response;
 	struct ec_response_usb_pd_control *r = args->response;
 	const char *task_state_name;
-	mux_state_t mux_state;
 
 	if (p->port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
@@ -369,22 +331,8 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		else
 			r_v2->state[0] = '\0';
 
-		r_v2->control_flags = get_pd_control_flags(p->port);
-		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
+		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 			r_v2->dp_mode = get_dp_pin_mode(p->port);
-			mux_state = usb_mux_get(p->port);
-			if (mux_state & USB_PD_MUX_USB4_ENABLED) {
-				r_v2->cable_speed =
-					get_usb4_cable_speed(p->port);
-			}
-			if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED ||
-			    mux_state & USB_PD_MUX_USB4_ENABLED) {
-				r_v2->cable_speed =
-					get_tbt_cable_speed(p->port);
-				r_v2->cable_gen =
-					get_tbt_rounded_support(p->port);
-			}
-		}
 
 		if (args->version == 1)
 			args->response_size = sizeof(*r_v1);

@@ -430,10 +430,48 @@ DECLARE_CONSOLE_COMMAND(typec, command_typec,
 			"Control type-C connector muxing");
 #endif
 
+/*
+ * Combines the following information into a single byte
+ * Bit 0: Active/Passive cable
+ * Bit 1: Optical/Non-optical cable
+ * Bit 2: Legacy Thunderbolt adapter
+ * Bit 3: Active Link Uni-Direction/Bi-Direction
+ */
+static uint8_t get_pd_control_flags(int port)
+{
+	union tbt_mode_resp_cable cable_resp;
+	union tbt_mode_resp_device device_resp;
+	uint8_t control_flags = 0;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return 0;
+
+	cable_resp.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
+	device_resp.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP);
+
+	/*
+	 * Ref: USB Type-C Cable and Connector Specification
+	 * Table F-11 TBT3 Cable Discover Mode VDO Responses
+	 * For Passive cables, Active Cable Plug link training is set to 0
+	 */
+	control_flags |= (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE ||
+			 cable_resp.tbt_active_passive == TBT_CABLE_ACTIVE) ?
+			 USB_PD_CTRL_ACTIVE_CABLE : 0;
+	control_flags |= cable_resp.tbt_cable == TBT_CABLE_OPTICAL ?
+			 USB_PD_CTRL_OPTICAL_CABLE : 0;
+	control_flags |= device_resp.tbt_adapter == TBT_ADAPTER_TBT2_LEGACY ?
+			 USB_PD_CTRL_TBT_LEGACY_ADAPTER : 0;
+	control_flags |= cable_resp.lsrx_comm == UNIDIR_LSRX_COMM ?
+			 USB_PD_CTRL_ACTIVE_LINK_UNIDIR : 0;
+
+	return control_flags;
+}
+
 static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_mux_info *p = args->params;
 	struct ec_response_usb_pd_mux_info *r = args->response;
+	struct ec_response_usb_pd_mux_info_v1 *r_v1 = args->response;
 	int port = p->port;
 	mux_state_t mux_state;
 
@@ -464,12 +502,23 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 		usb_mux_hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL, 0);
 	}
 
-	args->response_size = sizeof(*r);
+	if (args->version &&
+	   ((mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED ||
+	     mux_state & USB_PD_MUX_USB4_ENABLED))) {
+		r_v1->control_flags = get_pd_control_flags(port);
+		r_v1->cable_speed = mux_state & USB_PD_MUX_USB4_ENABLED ?
+					get_usb4_cable_speed(port) :
+					get_tbt_cable_speed(port);
+		r_v1->cable_gen = get_tbt_rounded_support(port);
+		args->response_size = sizeof(*r_v1);
+	} else
+		args->response_size = sizeof(*r);
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,
 		     hc_usb_pd_mux_info,
-		     EC_VER_MASK(0));
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 {
