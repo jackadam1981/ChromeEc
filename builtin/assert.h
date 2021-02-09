@@ -36,18 +36,21 @@ extern noreturn void panic_assert_fail(const char *msg, const char *func,
 			panic_assert_fail(#cond, __func__, __FILE__, \
 					  __LINE__);                 \
 	} while (0)
-#endif
-#else
+#endif /* CONFIG_DEBUG_ASSERT_BRIEF */
+
+#else /* !CONFIG_DEBUG_ASSERT_REBOOTS */
+
 #define ASSERT(cond)                     \
 	do {                             \
 		if (!(cond))             \
 			__asm("bkpt");   \
 		__builtin_unreachable(); \
 	} while (0)
-#endif
-#else
+#endif /* CONFIG_DEBUG_ASSERT_REBOOTS */
+
+#else /* !CONFIG_DEBUG_ASSERT */
 #define ASSERT(cond)
-#endif
+#endif /* CONFIG_DEBUG_ASSERT */
 
 /* This collides with cstdlib, so exclude it where cstdlib is supported. */
 #ifndef assert
