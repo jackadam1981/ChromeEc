@@ -159,7 +159,7 @@ static bool ucpd_rx_bist_mode;
 
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
 /* Defines and macros used for ucpd pd message logging */
-#define MSG_LOG_LEN 64
+#define MSG_LOG_LEN 256
 #define MSG_BUF_LEN 10
 #define RX_HR_TYPE 8
 
