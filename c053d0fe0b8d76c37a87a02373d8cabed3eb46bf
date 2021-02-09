@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcdad6be_7ffd758e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-09T16:12:10Z",
+      "side": 1,
+      "message": "I\u0027m unclear on the rationale for this, because we are no longer using this part. I see from the bug that the original rationale for performing this register reset no longer applies, but it would be nice to have something like a datasheet citation or vendor statement that the right way to come out of LPM is to _not_ do a register reset.\n\nDoes this fix anything in particular?\n\nLGTM, since we aren\u0027t designing with this part.\n\n",
+      "revId": "c053d0fe0b8d76c37a87a02373d8cabed3eb46bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
