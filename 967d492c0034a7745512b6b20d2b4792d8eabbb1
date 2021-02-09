@@ -52,6 +52,24 @@
       "parentUuid": "d4ed0be7_eebc20bd",
       "revId": "967d492c0034a7745512b6b20d2b4792d8eabbb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11af2a7f_7136055d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-09T17:43:38Z",
+      "side": 1,
+      "message": "zmake is pretty much required to build the code (RO/RW packing being a starting point)",
+      "parentUuid": "fba98c04_dcaf8353",
+      "revId": "967d492c0034a7745512b6b20d2b4792d8eabbb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
