@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d803e3a_cf638192",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-09T06:29:05Z",
+      "side": 1,
+      "message": "2021 :)",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1e03fc6ebd37329e253be624717a9ee23153ffa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e237cc1a_d296a6e4",
+        "filename": "include/usb_pd_dp_ufp.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-09T06:29:05Z",
+      "side": 1,
+      "message": "Comments definitely need an update.\n\nIs this intended to be an alternate DPM, or will the UFP functions be called by the DPM?  Right now, it doesn\u0027t look like policy decisions in the file since it\u0027s just correctly conveying HPD.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "1e03fc6ebd37329e253be624717a9ee23153ffa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

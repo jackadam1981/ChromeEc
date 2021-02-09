@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6bdbe6c_6f834527",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-09T06:29:05Z",
+      "side": 1,
+      "message": "I\u0027m trying to understand the queue check here.  Does the queue end up in the format of: [hpd_low] [hpd_high] n*[hpd_irq] ?  So we\u0027re only expecting hpd_irq events past the first hpd_high until we hit hpd_low again and clear?",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432adad5_43569976",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-09T06:29:05Z",
+      "side": 1,
+      "message": "nit: include comment about the rule that if hpd_low is detected while any previous updates are in the queue they may be discarded",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "624bc5aa_e4b5917c",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-09T06:29:05Z",
+      "side": 1,
+      "message": "My instinct is to say \"shouldn\u0027t this be boundary checked?\" but I\u0027m guessing that\u0027s covered by the hpd_irq check due to the nature of the queue contents?",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e001e2b1_65c1f3df",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-09T06:29:05Z",
+      "side": 1,
+      "message": "Does any part of this need a check on the requirement we don\u0027t queue HPD events when DP is disabled?  Or is it assumed we shouldn\u0027t be getting calls in when DP is disabled?",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f0a3d5_6a1ca5fb",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-09T06:29:05Z",
+      "side": 1,
+      "message": "I\u0027m not totally sure I understand the timer transition here.  Is it possible to get a sequence of a few high levels from the calling function in a row, and return to LOW_WAIT because two of the highs were too closely spaced?  \n\nIf I\u0027m understanding the calling function, it\u0027s a combination of interrupt edges and level checks.  Though I\u0027d suppose our hooks are delayed enough that it\u0027s unlikely we get level checks spaced less than 250 us?",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a20655a_2844f3c2",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-09T06:29:05Z",
+      "side": 1,
+      "message": "Is the call from the svdm response function to enable/disable when we enter and exit DP?",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
