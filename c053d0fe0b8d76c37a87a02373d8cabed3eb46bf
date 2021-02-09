@@ -16,6 +16,24 @@
       "message": "I\u0027m unclear on the rationale for this, because we are no longer using this part. I see from the bug that the original rationale for performing this register reset no longer applies, but it would be nice to have something like a datasheet citation or vendor statement that the right way to come out of LPM is to _not_ do a register reset.\n\nDoes this fix anything in particular?\n\nLGTM, since we aren\u0027t designing with this part.\n\n",
       "revId": "c053d0fe0b8d76c37a87a02373d8cabed3eb46bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfaf1fc6_65862123",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-02-09T16:52:38Z",
+      "side": 1,
+      "message": "Keith reported that PD_LPM_DEBOUNCE_US set to 10ms doesn\u0027t work with TUSB422 (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2606235).\nCurrent debounce delay (100ms) breaks octopus boards eg. bobba.\n\nIn https://issuetracker.google.com/176986511#comment6 I described what happens when soft reset is performed while waking from Low Power Mode. In one sentence, we are losing DRP result and device always sets CC lines to Rd. TUSB422 and RT1715 was working only because PD_LPM_DEBOUNCE_US was long enough (longer than tDRP).\n\nI\u0027m a bit surprised that no one discovered it.\n\nTUSB422 documentation (https://www.ti.com/lit/ds/symlink/tusb422.pdf) page 42 mentions that TCPC will accept I2CIdle command but will do nothing with it. Also searched for information about Low Power Mode or wake and found nothing. I have doubts whether Low Power Mode is implemented in this TCPC.",
+      "parentUuid": "dcdad6be_7ffd758e",
+      "revId": "c053d0fe0b8d76c37a87a02373d8cabed3eb46bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
