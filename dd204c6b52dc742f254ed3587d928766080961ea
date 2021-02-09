@@ -16,6 +16,24 @@
       "message": "where is it cleared? It is expected for the command handler to read the command buffer and use it as the response buffer, overwriting its content.",
       "revId": "dd204c6b52dc742f254ed3587d928766080961ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e16655_39a6119f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-09T10:42:19Z",
+      "side": 1,
+      "message": "In the same file at the beginning of function host_command_process():\n\nuint16_t host_command_process(struct host_cmd_handler_args *args)\n{\n        const struct host_command *cmd;\n        int rv;\n\n        if (hcdebug)\n                host_command_debug_request(args);\n\n        /*\n         * Pre-emptively clear the entire response buffer so we do not\n         * have any left over contents from previous host commands.\n         * For example, this prevents the last portion of a char array buffer\n         * from containing data from the last host command if the string does\n         * not take the entire width of the char array buffer.\n         *\n         * Note that if request and response buffers pointed to the same memory\n         * location, then the chip implementation already needed to provide a\n         * request_temp buffer in which the request data was already copied\n         * by this point (see host_packet_receive function).\n         */\n        memset(args-\u003eresponse, 0, args-\u003eresponse_max);\n\nResponse buffer is cleared before command buffer is parsed. If you use the same buffer you will only parse zeroed values. I have experimented that in my first setting without a host, trying to send manually forged commands.",
+      "parentUuid": "e24e966d_5d89c004",
+      "revId": "dd204c6b52dc742f254ed3587d928766080961ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
