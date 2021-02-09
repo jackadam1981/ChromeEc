@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69721a99_72feb411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-09T16:11:18Z",
+      "side": 1,
+      "message": "Temporary mark V-1, not able to try this patch right now.\nWill finish this after lunar new year.",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d23239b_fd8619ff",
@@ -35,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "848a8c17_8e3dadd1",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-09T16:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d23239b_fd8619ff",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63a4e597_484e664f",
@@ -48,6 +83,24 @@
       "writtenOn": "2021-02-05T19:33:16Z",
       "side": 1,
       "message": "Is there any reason to go all the way up to usage 164? It looks to me like the highest-numbered usage that could be present on a Hammer is 152 (Keyboard LANG9).",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60bcee79_3cc62f38",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-09T16:11:18Z",
+      "side": 1,
+      "message": "Not sure, I think it\u0027s just copied from the boot keyboard example in hid spec...?",
+      "parentUuid": "63a4e597_484e664f",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
