@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a06bdc99_7a08a58f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-09T01:49:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76c933ea_6e669abd",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "fcec90a3a35c6dc8bc6e5533e2ff01453348676a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c77ce677_a83ec72a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-08T21:17:54Z",
       "side": 1,
       "message": "-",
+      "range": {
+        "startLine": 10,
+        "startChar": 57,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "fcec90a3a35c6dc8bc6e5533e2ff01453348676a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c586110_364a8337",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-09T01:49:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c77ce677_a83ec72a",
       "range": {
         "startLine": 10,
         "startChar": 57,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a8f77b2_752208ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-09T01:49:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7119a40_c2c69c7c",
+      "revId": "fcec90a3a35c6dc8bc6e5533e2ff01453348676a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71d7b75d_5ccc1831",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-02-08T21:17:54Z",
       "side": 1,
       "message": "We should be able to make binman do all of this at some point. Can you file a bug?",
+      "revId": "fcec90a3a35c6dc8bc6e5533e2ff01453348676a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "366bd118_2fac98cd",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-09T01:49:15Z",
+      "side": 1,
+      "message": "Done (b:179730563).",
+      "parentUuid": "71d7b75d_5ccc1831",
       "revId": "fcec90a3a35c6dc8bc6e5533e2ff01453348676a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3056806f_0f86be16",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-09T01:49:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f118a998_4000e536",
+      "range": {
+        "startLine": 81,
+        "startChar": 41,
+        "endLine": 81,
+        "endChar": 95
+      },
+      "revId": "fcec90a3a35c6dc8bc6e5533e2ff01453348676a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98cbe006_3f470d85",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-02-08T21:17:54Z",
       "side": 1,
       "message": "So should this be a choice ?",
+      "range": {
+        "startLine": 54,
+        "startChar": 56,
+        "endLine": 54,
+        "endChar": 62
+      },
+      "revId": "fcec90a3a35c6dc8bc6e5533e2ff01453348676a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d980348_58ffe83c",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-09T01:49:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98cbe006_3f470d85",
       "range": {
         "startLine": 54,
         "startChar": 56,
