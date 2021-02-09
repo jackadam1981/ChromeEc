@@ -14,7 +14,6 @@
 /*
  * Disable features enabled by default.
  */
-#undef CONFIG_ADC
 #undef CONFIG_HIBERNATE
 #undef CONFIG_SPI_FLASH
 #undef CONFIG_SWITCH
@@ -37,6 +36,11 @@
 #define GPIO_RSMRST_L_PGOOD		GPIO_SEQ_EC_RSMRST_ODL
 #define GPIO_SYS_RESET_L		GPIO_SYS_RST_ODL
 #define GPIO_WP_L			GPIO_EC_WP_ODL
+
+/* Thermal features */
+#define CONFIG_THERMISTOR
+#define CONFIG_TEMP_SENSOR_POWER_GPIO	GPIO_SEQ_EC_DSW_PWROK
+#define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 
 #define CONFIG_FANS			FAN_CH_COUNT
 
@@ -72,6 +76,18 @@
 
 #include "gpio_signal.h"	/* needed by registers.h */
 #include "registers.h"
+
+enum adc_channel {
+	ADC_TEMP_SENSOR_1_DDR_SOC,
+	ADC_TEMP_SENSOR_2_CHARGER,
+	ADC_CH_COUNT
+};
+
+enum temp_sensor_id {
+	TEMP_SENSOR_1_DDR_SOC,
+	TEMP_SENSOR_2_CHARGER,
+	TEMP_SENSOR_COUNT
+};
 
 enum ioex_port {
 	IOEX_C0_NCT38XX = 0,
@@ -110,12 +126,6 @@ enum mft_channel {
  */
 
 void power_button_interrupt(enum gpio_signal signal);
-
-/*
- * remove when we enable CONFIG_THROTTLE_AP
- */
-
-void throttle_ap_prochot_input_interrupt(enum gpio_signal signal);
 
 /*
  * remove when we enable CONFIG_VOLUME_BUTTONS
