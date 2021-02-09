@@ -16,6 +16,142 @@
       "message": "Fix n°3 for bug #1175757",
       "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "768d2b9b_f28c684b",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-09T07:09:49Z",
+      "side": 1,
+      "message": "do not calculate delay for every sample, we are on the data path. Store in the sensor private structure.",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9c2394_c75d3cf7",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-09T07:09:49Z",
+      "side": 1,
+      "message": "will not happen.",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a236ed_47763bd0",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-09T07:09:49Z",
+      "side": 1,
+      "message": "should not happen. This function can simplified to st-\u003ets[s-\u003etype];",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "315ec2fe_dea31765",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-09T07:09:49Z",
+      "side": 1,
+      "message": "make it void, it can not fail if s is valid.",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8229db2a_576319e5",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-09T07:09:49Z",
+      "side": 1,
+      "message": "This function could be  a one liner if we accept a loss of precision:\nst-\u003ets[s-\u003etype] \u003d (__hw_clock_source_read() | 1)",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e1b9f69_d43bb0da",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-09T07:09:49Z",
+      "side": 1,
+      "message": "always true.",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "848c0468_c132a563",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-09T07:09:49Z",
+      "side": 1,
+      "message": "Use time_after()/ time_until(), more readable.",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff25a00_dbd66b44",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-09T07:09:49Z",
+      "side": 1,
+      "message": "use an array, then use [last_]ts[s-\u003etype]",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
