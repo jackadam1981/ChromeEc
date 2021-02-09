@@ -11,17 +11,20 @@
 #include "ps8822.h"
 #include "usb_mux.h"
 #include "util.h"
+#include "console.h"
 
-static int ps8822_read(const struct usb_mux *me, uint8_t reg, int *val)
+int ps8822_read(const struct usb_mux *me, int page, uint8_t reg,
+		       int *val)
 {
-	return i2c_read8(me->i2c_port, me->i2c_addr_flags,
+	return i2c_read8(me->i2c_port, me->i2c_addr_flags + page,
 			 reg, val);
 }
 
-static int ps8822_write(const struct usb_mux *me, uint8_t reg, uint8_t val)
+int ps8822_write(const struct usb_mux *me, int page, uint8_t reg,
+			int val)
 {
-	return i2c_write8(me->i2c_port, me->i2c_addr_flags,
-			  reg, val);
+	return i2c_write8(me->i2c_port, me->i2c_addr_flags + page,
+			reg, val);
 }
 
 static int ps8822_init(const struct usb_mux *me)
@@ -33,7 +36,8 @@ static int ps8822_init(const struct usb_mux *me)
 
 	/* Read ID registers */
 	for (i = 0; i < PS8822_ID_LEN; i++) {
-		rv |= ps8822_read(me, PS8822_REG_DEV_ID1 + i, &reg);
+		rv |= ps8822_read(me, PS8822_REG_PAGE0, PS8822_REG_DEV_ID1 + i,
+				  &reg);
 		if (!rv)
 			id[i] = reg;
 	}
@@ -41,7 +45,7 @@ static int ps8822_init(const struct usb_mux *me)
 	if (!rv) {
 		id[PS8822_ID_LEN] = '\0';
 		/* Set mode register to default value */
-		rv = ps8822_write(me, PS8822_REG_MODE, 0);
+		rv = ps8822_write(me, PS8822_REG_PAGE0, PS8822_REG_MODE, 0);
 		rv |= strcasecmp("PS8822", id);
 	}
 
@@ -54,7 +58,7 @@ static int ps8822_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 	int reg;
 	int rv;
 
-	rv = ps8822_read(me, PS8822_REG_MODE, &reg);
+	rv = ps8822_read(me, PS8822_REG_PAGE0, PS8822_REG_MODE, &reg);
 	if (rv)
 		return rv;
 
@@ -68,7 +72,7 @@ static int ps8822_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		reg |= PS8822_MODE_FLIP;
 
-	return ps8822_write(me, PS8822_REG_MODE, reg);
+	return ps8822_write(me, PS8822_REG_PAGE0, PS8822_REG_MODE, reg);
 }
 
 /* Reads control register and updates mux_state accordingly */
@@ -77,7 +81,7 @@ static int ps8822_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 	int reg;
 	int res;
 
-	res = ps8822_read(me, PS8822_REG_MODE, &reg);
+	res = ps8822_read(me, PS8822_REG_PAGE0, PS8822_REG_MODE, &reg);
 	if (res)
 		return res;
 
