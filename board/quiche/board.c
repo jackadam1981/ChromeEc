@@ -157,6 +157,47 @@ struct ppc_config_t ppc_chips[] = {
 #endif
 
 #ifdef SECTION_IS_RW
+/*
+ * PS8802 set mux board tuning.
+ * Adds in board specific gain and DP lane count configuration
+ */
+static int board_ps8822_mux_set(const struct usb_mux *me,
+				mux_state_t mux_state)
+{
+	int rv = EC_SUCCESS;
+	int dpeq_reg;
+
+	/* DP specific config */
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+
+		/* Read DP EQ register */
+		rv = ps8822_read(me, PS8822_REG_PAGE1, PS8822_REG_DP_EQ,
+				 &dpeq_reg);
+		if (rv)
+			return rv;
+
+		/* Disable auto eq */
+		dpeq_reg &= ~PS8822_DP_EQ_AUTO_EN;
+
+		/* Set to 20 dB gain */
+		dpeq_reg &= ~(PS8822_DPEQ_LEVEL_UP_MASK <<
+			      PS8822_REG_DP_EQ_SHIFT);
+		dpeq_reg |= (PS8822_DPEQ_LEVEL_UP_20DB <<
+			     PS8822_REG_DP_EQ_SHIFT);
+
+		/* Apply new EQ setting */
+		rv = ps8822_write(me, PS8822_REG_PAGE1, PS8822_REG_DP_EQ,
+				  dpeq_reg);
+		if (rv)
+			return rv;
+
+		rv = ps8822_read(me, PS8822_REG_PAGE1, PS8822_REG_DP_EQ,
+				 &dpeq_reg);
+	}
+
+	return rv;
+}
+
 /* TCPCs */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
@@ -179,6 +220,7 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_port = I2C_PORT_I2C1,
 		.i2c_addr_flags = PS8822_I2C_ADDR3_FLAG,
 		.driver = &ps8822_usb_mux_driver,
+		.board_set = &board_ps8822_mux_set,
 	},
 	[USB_PD_PORT_DP] = {
 		.usb_port = USB_PD_PORT_DP,
