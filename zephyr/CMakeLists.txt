@@ -115,6 +115,9 @@ if (DEFINED CONFIG_PLATFORM_EC_RO_HEADER)
             -spireadmode ${spireadmode})
 endif()
 
+# Add the fixed sections to the linker.
+zephyr_linker_sources(ROM_START SORT_KEY 1 fixed-sections.ld)
+
 zephyr_include_directories(include)
 
 zephyr_include_directories_ifdef(

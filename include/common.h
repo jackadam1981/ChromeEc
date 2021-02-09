@@ -21,6 +21,12 @@
 #endif /* CONFIG_ZTEST */
 #endif /* CONFIG_ZEPHYR */
 
+#ifdef CONFIG_ZEPHYR
+#define FIXED_SECTION(name) section(".fixed." name)
+#else
+#define FIXED_SECTION(name) section(".rodata." name)
+#endif
+
 /*
  * Macros to concatenate 2 - 4 tokens together to form a single token.
  * Multiple levels of nesting are required to convince the preprocessor to
