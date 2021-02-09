@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cdaa70a_7bb31a82",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-09T15:13:05Z",
+      "side": 1,
+      "message": "I will change way of working to avoid that.\nInstead of storing enable timestamp and check against delay, I will directly store enable timestamp + delay. Meaning the timestamp where sensor is stabilized.",
+      "parentUuid": "768d2b9b_f28c684b",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d9c2394_c75d3cf7",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-02-09T07:09:49Z",
       "side": 1,
       "message": "will not happen.",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "202ce53d_d5ea6797",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-09T15:13:05Z",
+      "side": 1,
+      "message": "OK will do.",
+      "parentUuid": "8d9c2394_c75d3cf7",
       "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f20a31c_c8e07d2d",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-09T15:13:05Z",
+      "side": 1,
+      "message": "OK will do.",
+      "parentUuid": "32a236ed_47763bd0",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "315ec2fe_dea31765",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-02-09T07:09:49Z",
       "side": 1,
       "message": "make it void, it can not fail if s is valid.",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fcaf5ab_25608149",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-09T15:13:05Z",
+      "side": 1,
+      "message": "OK will do.\nWill also move the function in header as static inline.",
+      "parentUuid": "315ec2fe_dea31765",
       "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "590d6f33_e608523a",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-09T15:13:05Z",
+      "side": 1,
+      "message": "Good idea, will do.",
+      "parentUuid": "8229db2a_576319e5",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e1b9f69_d43bb0da",
@@ -116,6 +206,24 @@
       "writtenOn": "2021-02-09T07:09:49Z",
       "side": 1,
       "message": "always true.",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbdcc28_bc208447",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-09T15:13:05Z",
+      "side": 1,
+      "message": "OK will do.\nWill also move the function in header as static inline.",
+      "parentUuid": "0e1b9f69_d43bb0da",
       "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c7545aa_5c019ddb",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-09T15:13:05Z",
+      "side": 1,
+      "message": "OK good idea.\nWill rework things to make it more simpler.",
+      "parentUuid": "848c0468_c132a563",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aff25a00_dbd66b44",
@@ -150,6 +276,24 @@
       "writtenOn": "2021-02-09T07:09:49Z",
       "side": 1,
       "message": "use an array, then use [last_]ts[s-\u003etype]",
+      "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae2f60fd_f9ce23fa",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-09T15:13:05Z",
+      "side": 1,
+      "message": "OK will do.",
+      "parentUuid": "aff25a00_dbd66b44",
       "revId": "3fc8345fe8465d2db592ad3282c5195557f0fd5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
