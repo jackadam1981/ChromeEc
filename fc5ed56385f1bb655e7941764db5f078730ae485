@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e56e41a8_e3168cbb",
+        "filename": "board/eldrid/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-09T00:49:23Z",
+      "side": 1,
+      "message": "Please see the comment on the bug b:178869017",
+      "range": {
+        "startLine": 181,
+        "startChar": 28,
+        "endLine": 181,
+        "endChar": 32
+      },
+      "revId": "fc5ed56385f1bb655e7941764db5f078730ae485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a119c236_e0abb757",
+        "filename": "board/eldrid/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-09T00:49:23Z",
+      "side": 1,
+      "message": "This part of the comment no longer applies.  The charge limit is now always set to 90%.",
+      "range": {
+        "startLine": 187,
+        "startChar": 24,
+        "endLine": 187,
+        "endChar": 33
+      },
+      "revId": "fc5ed56385f1bb655e7941764db5f078730ae485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
