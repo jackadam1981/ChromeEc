@@ -5,6 +5,7 @@
 
 #include <kernel.h>
 #include <shell/shell.h>
+#include <stdbool.h>
 #include <string.h>
 #include <sys/printk.h>
 #include <zephyr.h>
@@ -12,63 +13,6 @@
 #include "console.h"
 #include "printf.h"
 #include "uart.h"
-
-int cputs(enum console_channel channel, const char *str)
-{
-	return cprintf(channel, "%s", str);
-}
-
-static int printk_putchar(void *context, int c)
-{
-	printk("%c", c);
-	return 0;
-}
-
-static void console_vprintf(enum console_channel channel, const char *format,
-			    va_list args)
-{
-	/*
-	 * TODO(jrosenth): investigate using the logging subsystem
-	 * and generating modules for the channels instead of printk
-	 *
-	 * TODO(b/170658516): If logging doesn't work, then we should at least
-	 * use shell_ print functions instead of printk function as they could
-	 * be on different uarts (they are not for Chrome OS Apps though).
-	 */
-	vfnprintf(printk_putchar, NULL, format, args);
-}
-
-__attribute__((__format__(__printf__, 2, 3))) int
-cprintf(enum console_channel channel, const char *format, ...)
-{
-	va_list args;
-
-	va_start(args, format);
-	console_vprintf(channel, format, args);
-	va_end(args);
-	return 0;
-}
-
-__attribute__((__format__(__printf__, 2, 3))) int
-cprints(enum console_channel channel, const char *format, ...)
-{
-	va_list args;
-
-	cprintf(channel, "[%pT ", PRINTF_TIMESTAMP_NOW);
-	va_start(args, format);
-	console_vprintf(channel, format, args);
-	va_end(args);
-	cprintf(channel, "]\n");
-	return 0;
-}
-
-void cflush(void)
-{
-	/*
-	 * Do nothing.  Output is sent immediately without buffering
-	 * from a printk() in Zephyr.
-	 */
-}
 
 int zshim_run_ec_console_command(int (*handler)(int argc, char **argv),
 				 const struct shell *shell, size_t argc,
@@ -97,6 +41,29 @@ int zshim_run_ec_console_command(int (*handler)(int argc, char **argv),
  * TODO(b/178033156): probably need to swap this for something more
  * robust in order to handle UART buffering.
  */
+
+static bool uart_started;
+
+int uart_init_done(void)
+{
+	return true;
+}
+
+void uart_tx_start(void)
+{
+	uart_started = true;
+}
+
+void uart_tx_stop(void)
+{
+	uart_started = false;
+}
+
+int uart_tx_stopped(void)
+{
+	return !uart_started;
+}
+
 int uart_tx_ready(void)
 {
 	return 1;
@@ -104,11 +71,7 @@ int uart_tx_ready(void)
 
 void uart_write_char(char c)
 {
-	printk_putchar(NULL, c);
-}
-
-void uart_flush_output(void)
-{
+	printk("%c", c);
 }
 
 void uart_tx_flush(void)

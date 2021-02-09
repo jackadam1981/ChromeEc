@@ -9,6 +9,7 @@
 
 #include "common.h"
 #include "task.h"
+#include "uart.h"
 
 /* We need to ensure that is one lower priority for the deferred task */
 BUILD_ASSERT(CONFIG_NUM_PREEMPT_PRIORITIES + 1 >= TASK_ID_COUNT,
@@ -227,7 +228,14 @@ SYS_INIT(init_signals, POST_KERNEL, 50);
 
 int in_interrupt_context(void)
 {
-	return k_is_in_isr();
+	/*
+	 * We fake the interrupt context gained from starting UART
+	 * transmission, as we are using printk() as the underlying
+	 * backend for the uart.  Eventually, we may wish to use
+	 * Zephyr's UART driver layer instead, and then we could get
+	 * rid of this hack.
+	 */
+	return k_is_in_isr() || !uart_tx_stopped();
 }
 
 int task_start_called(void)
