@@ -159,7 +159,7 @@ static int nb7v904m_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 	} else {
 		/* Disconnect AUX since it's not being used. */
 		rv = nb7v904m_write(me, NB7V904M_REG_AUX_CH_CTRL,
-				    NB7V904M_AUX_CH_HI_Z);
+				    NB7V904M_AUX_CH_FLIPPED);
 
 		/* Disable the unused channels to save power */
 		regval &= ~NB7V904M_CH_EN_MASK;
