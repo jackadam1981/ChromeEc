@@ -21,7 +21,13 @@ elseif("${ARCH}" STREQUAL "x86" AND CONFIG_X86_64)
 endif()
 
 set(CC gcc)
-set(CROSS_COMPILE "/opt/coreboot-sdk/bin/${CROSS_COMPILE_TARGET}-")
+
+if (DEFINED ENV{COREBOOT_SDK_PREFIX})
+  set(COREBOOT_SDK_PREFIX $ENV{COREBOOT_SDK_PREFIX})
+else()
+  set(COREBOOT_SDK_PREFIX "/opt/coreboot-sdk")
+endif()
+set(CROSS_COMPILE "${COREBOOT_SDK_PREFIX}/bin/${CROSS_COMPILE_TARGET}-")
 
 set(CMAKE_AR         "${CROSS_COMPILE}ar")
 set(CMAKE_NM         "${CROSS_COMPILE}nm")

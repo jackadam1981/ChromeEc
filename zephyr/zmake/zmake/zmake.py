@@ -93,6 +93,8 @@ class Zmake:
 
         base_config = zmake.build_config.BuildConfig(
             environ_defs={'ZEPHYR_BASE': str(zephyr_base),
+                          'CC': os.getenv('CC'),
+                          'COREBOOT_SDK_PREFIX': os.getenv('COREBOOT_SDK_PREFIX'),
                           'PATH': '/usr/bin'},
             cmake_defs={
                 'DTS_ROOT': str(module_paths['ec-shim'] / 'zephyr'),

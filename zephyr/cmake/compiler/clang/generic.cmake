@@ -2,4 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-set(CMAKE_C_COMPILER "/usr/bin/x86_64-pc-linux-gnu-clang")
+if (DEFINED ENV{CC})
+  set(CMAKE_C_COMPILER $ENV{CC})
+else()
+  set(CMAKE_C_COMPILER "/usr/bin/x86_64-pc-linux-gnu-clang")
+endif()
