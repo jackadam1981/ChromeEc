@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c7243f3_7448aa11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-02-09T07:11:22Z",
+      "side": 1,
+      "message": "Not fixing any issues. Thanks for the review.\ni will keep this patch some more days, after that i will do abandon if not finding any benefits.",
+      "parentUuid": "afbb9128_507611c2",
+      "revId": "46655e7eec2d0dc0825db80ba827b7fc1cfae942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0841e940_d38076a2",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 3
