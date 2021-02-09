@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2169679b_bf1fac24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-09T10:08:17Z",
+      "side": 1,
+      "message": "hmm... that makes we wonder what\u0027s getting into a tight loop.\ncould you please file a bug with the watchdog backtrace?\nmaybe the last 1000+ lines of EC console output for better context.\nthere should be evidence of a process/task taking up a lot of\nCPU time. we may need a process snapshot just before you issue\nthe shutdown command so it\u0027s obvious which process is\nhogging the cpu.\n\nwe really need to dig deeper into issues like this - i don\u0027t\nthink increasing the watchdog is a solution.\n",
+      "revId": "89b149cc86a9a5a0fa5585f31bf8546f84fed39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
