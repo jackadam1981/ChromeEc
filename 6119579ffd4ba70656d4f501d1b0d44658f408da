@@ -103,6 +103,24 @@
       "parentUuid": "63a4e597_484e664f",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1941a801_647aa121",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-02-09T19:42:30Z",
+      "side": 1,
+      "message": "OK. It would probably be best if we only went up to 152 (as in general we prefer input peripherals to only report keys etc. that they actually have).",
+      "parentUuid": "60bcee79_3cc62f38",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
