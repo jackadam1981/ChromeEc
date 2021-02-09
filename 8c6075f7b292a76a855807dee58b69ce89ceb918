@@ -16,6 +16,24 @@
       "message": "This looks to be duplicating some of the changes from CL:2671265.\n\nAdded Sun Cheng fro MediaTek (Richtek) to comment.",
       "revId": "8c6075f7b292a76a855807dee58b69ce89ceb918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8039779b_e9c475b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-02-09T07:54:37Z",
+      "side": 1,
+      "message": "Yes. CL you provided is very similar to my change. I will abandon this change after I verify that CL:2671265 fixes my issue.",
+      "parentUuid": "c0887365_cbd0b96d",
+      "revId": "8c6075f7b292a76a855807dee58b69ce89ceb918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
