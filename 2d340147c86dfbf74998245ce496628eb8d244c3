@@ -46,6 +46,30 @@
       },
       "revId": "2d340147c86dfbf74998245ce496628eb8d244c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba8214b_26d35169",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-09T19:40:00Z",
+      "side": 1,
+      "message": "I think you should rename the packer if it\u0027s expecting zephyr.packed.bin which only gets generated for nuvoton then.\n\nThe name \"raw\" was because this was intended to be a pure copy of zephyr.bin with no ro/rw packing and no special chip vendor formats.  So it needs renamed.",
+      "parentUuid": "482a3e7f_641ae733",
+      "range": {
+        "startLine": 142,
+        "startChar": 45,
+        "endLine": 142,
+        "endChar": 63
+      },
+      "revId": "2d340147c86dfbf74998245ce496628eb8d244c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
