@@ -9,6 +9,7 @@
 
 #include "common.h"
 #include "task.h"
+#include "uart.h"
 
 /* We need to ensure that is one lower priority for the deferred task */
 BUILD_ASSERT(CONFIG_NUM_PREEMPT_PRIORITIES + 1 >= TASK_ID_COUNT,
