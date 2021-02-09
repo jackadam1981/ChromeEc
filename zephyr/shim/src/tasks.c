@@ -225,6 +225,11 @@ int init_signals(const struct device *unused)
 }
 SYS_INIT(init_signals, POST_KERNEL, 50);
 
+int in_interrupt_context(void)
+{
+	return k_is_in_isr();
+}
+
 int task_start_called(void)
 {
 	return 1;
