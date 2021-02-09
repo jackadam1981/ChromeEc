@@ -22,6 +22,30 @@
       },
       "revId": "01ef4a83838cc43f33ddbb1866ccad3e893fc744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "689a28d5_80018076",
+        "filename": "builtin/assert.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-09T23:14:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26782d3d_e9eadf7c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "01ef4a83838cc43f33ddbb1866ccad3e893fc744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
