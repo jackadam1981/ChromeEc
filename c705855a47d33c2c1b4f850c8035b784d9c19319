@@ -45,6 +45,46 @@
       },
       "revId": "c705855a47d33c2c1b4f850c8035b784d9c19319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ea3637_c711ab71",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-10T17:01:20Z",
+      "side": 1,
+      "message": "nit: slightly differently named than Intel function?  Everything else seems like a straight copy/paste",
+      "revId": "c705855a47d33c2c1b4f850c8035b784d9c19319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "678a17b6_1b863a8a",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-10T17:01:20Z",
+      "side": 1,
+      "message": "I feel like I\u0027m missing where the case for state gets added?  Or do we not need to do anything in that state?",
+      "range": {
+        "startLine": 492,
+        "startChar": 9,
+        "endLine": 492,
+        "endChar": 19
+      },
+      "revId": "c705855a47d33c2c1b4f850c8035b784d9c19319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
