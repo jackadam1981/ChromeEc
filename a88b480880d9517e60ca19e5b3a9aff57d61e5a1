@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e655d27_1aeb21a1",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-10T23:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "345021a3_26241c46",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "a88b480880d9517e60ca19e5b3a9aff57d61e5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df3ee5d8_bb04a4be",
@@ -78,6 +102,30 @@
       "writtenOn": "2021-02-10T00:21:19Z",
       "side": 1,
       "message": "I think this one needs to be declared in a header file",
+      "range": {
+        "startLine": 238,
+        "startChar": 26,
+        "endLine": 238,
+        "endChar": 41
+      },
+      "revId": "a88b480880d9517e60ca19e5b3a9aff57d61e5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32328c29_f97db13e",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-10T23:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df3ee5d8_bb04a4be",
       "range": {
         "startLine": 238,
         "startChar": 26,
