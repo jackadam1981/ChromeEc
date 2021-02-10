@@ -146,6 +146,8 @@
 #define I2C_ADDR_EEPROM_FLAGS	0x50
 #define CONFIG_I2C_CONTROLLER
 
+/* enble volume button feature */
+#define CONFIG_HOSTCMD_BUTTON
 
 #ifndef __ASSEMBLER__
 
