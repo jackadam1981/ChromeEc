@@ -24,6 +24,9 @@
 
 #define CONFIG_EXTPOWER_GPIO
 
+/* Host communication */
+#define CONFIG_HOSTCMD_ESPI
+
 /* Common battery defines */
 #define CONFIG_BATTERY_SMART
 #define CONFIG_BATTERY_FUEL_GAUGE
