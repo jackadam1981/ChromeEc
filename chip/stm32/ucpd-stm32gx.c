@@ -94,10 +94,11 @@ enum ucpd_state {
 #define UCPD_EVT_TCPM_MSG_REQ   BIT(1)
 #define UCPD_EVT_HR_REQ         BIT(2)
 #define UCPD_EVT_TX_MSG_FAIL    BIT(3)
-#define UCPD_EVT_TX_MSG_SUCCESS BIT(4)
-#define UCPD_EVT_HR_DONE        BIT(5)
-#define UCPD_EVT_HR_FAIL        BIT(6)
-#define UCPD_EVT_RX_GOOD_CRC    BIT(7)
+#define UCPD_EVT_TX_MSG_DISC    BIT(4)
+#define UCPD_EVT_TX_MSG_SUCCESS BIT(5)
+#define UCPD_EVT_HR_DONE        BIT(6)
+#define UCPD_EVT_HR_FAIL        BIT(7)
+#define UCPD_EVT_RX_GOOD_CRC    BIT(8)
 
 #define UCPD_T_RECEIVE_US (1 * MSEC)
 
@@ -975,6 +976,13 @@ static void ucpd_manage_tx(int port, int evt)
 		if (evt & UCPD_EVT_TX_MSG_SUCCESS) {
 			ucpd_set_tx_state(STATE_WAIT_CRC_ACK);
 			ucpd_timeout_us = UCPD_T_RECEIVE_US;
+		} else if (evt & UCPD_EVT_TX_MSG_DISC) {
+			/*
+			 * This can happen if tx start is attempted when an
+			 * incoming message is being recieved. For this case,
+			 * don't attempt to retry and return to idle state.
+			 */
+			ucpd_set_tx_state(STATE_IDLE);
 		} else if (evt & UCPD_EVT_TX_MSG_FAIL) {
 			if (tx_retry_count < tx_retry_max) {
 				/*
@@ -985,8 +993,8 @@ static void ucpd_manage_tx(int port, int evt)
 				tx_retry_count++;
 			} else {
 				ucpd_set_tx_state(STATE_IDLE);
-				pd_transmit_complete(
-					port, TCPC_TX_COMPLETE_FAILED);
+				pd_transmit_complete(port,
+						     TCPC_TX_COMPLETE_FAILED);
 			}
 		}
 		break;
@@ -1271,8 +1279,10 @@ void stm32gx_ucpd1_irq(void)
 			ucpd_log_mark_tx_comp();
 #endif
 		} else if (sr & (STM32_UCPD_SR_TXMSGABT |
-			       STM32_UCPD_SR_TXMSGDISC |STM32_UCPD_SR_TXUND)) {
+				 STM32_UCPD_SR_TXUND)) {
 			task_set_event(TASK_ID_UCPD, UCPD_EVT_TX_MSG_FAIL);
+		} else if (sr & STM32_UCPD_SR_TXMSGDISC) {
+			task_set_event(TASK_ID_UCPD, UCPD_EVT_TX_MSG_DISC);
 		} else if (sr & STM32_UCPD_SR_HRSTSENT) {
 			task_set_event(TASK_ID_UCPD, UCPD_EVT_HR_DONE);
 		} else if (sr & STM32_UCPD_SR_HRSTDISC) {
@@ -1448,7 +1458,7 @@ static void ucpd_dump_msg_log(void)
 			len = PD_HEADER_CNT(header);
 			name = len ? data_names[type] : ctrl_names[type];
 
-			ccprintf("[%02d]: %08d\t %s\t %s\t %8s\t %02d %d\t"
+			ccprintf("[%02d]: %08d\t %s\t %s\t %8s\t %02d %d  %d\t"
 				 "%s\t %s",
 				 i,
 				 delta_ts,
@@ -1456,6 +1466,7 @@ static void ucpd_dump_msg_log(void)
 				 type_names[msg_log[i].type],
 				 name,
 				 len,
+				 msg_log[i].comp,
 				 msg_log[i].crc,
 				 PD_HEADER_PROLE(header) ? "SRC" : "SNK",
 				 PD_HEADER_DROLE(header) ? "DFP" : "UFP");
