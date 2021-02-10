@@ -7,11 +7,13 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "ccd_measure_sbu.h"
+#include "charge_manager.h"
 #include "chg_control.h"
 #include "common.h"
 #include "console.h"
 #include "dacs.h"
 #include <driver/gl3590.h>
+#include <driver/bc12/pi3usb9201_public.h>
 #include "ec_version.h"
 #include "fusb302b.h"
 #include "gpio.h"
@@ -74,6 +76,13 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_addr_flags = TUSB1064_ADDR_FLAGS,
 		.driver = &tusb1064_usb_mux_driver,
 	}
+};
+
+const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
+	[HOST_PORT] = {
+		.i2c_port = I2C_PORT_MASTER,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
+	},
 };
 
 static volatile uint64_t hpd_prev_ts;
@@ -433,6 +442,23 @@ static void evaluate_input_power_def(void)
 	init_uservo_port();
 	init_pathsel();
 }
+
+void usb_charger_host_task(void *u)
+{
+	charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
+				     HOST_PORT, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
+				     HOST_PORT, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
+				     HOST_PORT, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
+				     HOST_PORT, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
+				     HOST_PORT, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
+				     HOST_PORT, NULL);
+	pi3usb9201_drv.usb_charger_task(HOST_PORT);
+}
 #endif
 
 static void board_init(void)
@@ -456,7 +482,6 @@ static void board_init(void)
 	vbus_dischrg_en(0);
 
 	init_dacs();
-	init_pi3usb9201();
 
 	/* Clear BBRAM, we don't want any PD state carried over on reset. */
 	system_set_bbram(SYSTEM_BBRAM_IDX_PD0, 0);
