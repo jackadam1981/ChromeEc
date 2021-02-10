@@ -374,6 +374,13 @@ config PLATFORM_EC_CONSOLE_CMD_FLASH
 	     flashwp - change write-protection settings
 	     flashwrite - write memory to flash
 
+config PLATFORM_EC_CONSOLE_CMD_SYSJUMP
+	bool "Console command: sysjump"
+	default y
+	help
+	  Enables the sysjump console command used for testing and verifying
+	  that we're able to jump between images.
+
 config PLATFORM_EC_EXTERNAL_STORAGE
 	bool "Flash is stored external to the EC"
 	default y if SOC_FAMILY_NPCX

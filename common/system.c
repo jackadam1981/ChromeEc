@@ -123,6 +123,9 @@ DECLARE_HOOK(HOOK_INIT, ap_sku_id_restore_state, HOOK_PRIO_DEFAULT);
  */
 uintptr_t get_program_memory_addr(enum ec_image copy)
 {
+	CPRINTS("get_program_memory_add(%d) CONFIG_PROGRAM_MEMORY_BASE=0x%x", copy, CONFIG_PROGRAM_MEMORY_BASE);
+	CPRINTS("get_program_memory_add(%d) CONFIG_RO_MEM_OFF=0x%x", copy, CONFIG_RO_MEM_OFF);
+	CPRINTS("get_program_memory_add(%d) CONFIG_RW_MEM_OFF=0x%x", copy, CONFIG_RW_MEM_OFF);
 	switch (copy) {
 	case EC_IMAGE_RO:
 		return CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RO_MEM_OFF;
@@ -502,6 +505,8 @@ static void jump_to_image(uintptr_t init_addr)
 {
 	void (*resetvec)(void);
 
+	CPRINTS("jump_to_image(0x%x)", init_addr);
+
 	/*
 	 * Jumping to any image asserts the signal to the Silego chip that that
 	 * EC is not in read-only firmware.  (This is not technically true if
@@ -535,6 +540,13 @@ static void jump_to_image(uintptr_t init_addr)
 	i2c_prepare_sysjump();
 #endif
 
+	CPRINTS("Preparing to jump, filling jdata@0x%x", (uintptr_t)jdata);
+	CPRINTS("flash_offset=0x%x + 0x%x=0x%x, flash_used=0x%x",
+		CONFIG_EC_WRITABLE_STORAGE_OFF, CONFIG_RW_STORAGE_OFF,
+		CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF,
+		CONFIG_RW_SIZE);
+	CPRINTS("CONFIG_PROGRAM_MEMORY_BASE=0x%x", CONFIG_PROGRAM_MEMORY_BASE);
+	CPRINTS("CONFIG_MAPPED_STORAGE_BASE=0x%x", CONFIG_MAPPED_STORAGE_BASE);
 	/* Flush UART output */
 	cflush();
 
@@ -585,27 +597,34 @@ static int system_run_image_copy_with_flags(enum ec_image copy,
 	if (system_is_locked()) {
 		/* System is locked, so disallow jumping between images unless
 		 * this is the initial jump from RO to RW code. */
+		CPRINTS("system_is_locked()");
 
 		/* Must currently be running the RO image */
 		if (system_get_image_copy() != EC_IMAGE_RO)
 			return EC_ERROR_ACCESS_DENIED;
+		CPRINTS("    passed check, running RO");
 
 		/* Target image must be RW image */
 		if (!is_rw_image(copy))
 			return EC_ERROR_ACCESS_DENIED;
+		CPRINTS("    passed check, target is RW");
 
 		/* Jumping must still be enabled */
 		if (disable_jump)
 			return EC_ERROR_ACCESS_DENIED;
+		CPRINTS("    passed check, jump is enabled");
 	}
 
 	/* Load the appropriate reset vector */
 	base = get_program_memory_addr(copy);
+	// base=0x10090000
+	CPRINTS("base=0x%x", base);
 	if (base == 0xffffffff)
 		return EC_ERROR_INVAL;
 
 	if (IS_ENABLED(CONFIG_EXTERNAL_STORAGE)) {
 		/* Jump to loader */
+		CPRINTS("jump to loader...");
 		init_addr = system_get_lfw_address();
 		system_set_image_copy(copy);
 	} else if (IS_ENABLED(CONFIG_FW_RESET_VECTOR)) {
@@ -628,7 +647,7 @@ static int system_run_image_copy_with_flags(enum ec_image copy,
 
 	system_set_reset_flags(add_reset_flags);
 
-	CPRINTS("Jumping to image %s", ec_image_to_string(copy));
+	CPRINTS("Jumping to image %s @ 0x%x", ec_image_to_string(copy), init_addr);
 
 	jump_to_image(init_addr);
 

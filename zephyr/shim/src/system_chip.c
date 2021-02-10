@@ -16,6 +16,8 @@
 #error "Must define CONFIG_PLATFORM_EC_EXTERNAL_STORAGE"
 #endif
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
 #define NPCX_MDC_BASE_ADDR                0x4000C000
 #define NPCX_FWCTRL                       REG8(NPCX_MDC_BASE_ADDR + 0x007)
 #define NPCX_FWCTRL_RO_REGION             0
@@ -40,6 +42,9 @@ void system_jump_to_booter(void)
 		flash_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
 				CONFIG_RW_STORAGE_OFF;
 		flash_used = CONFIG_RW_SIZE;
+		CPRINTS("EC_IMAGE_RW, flash_offset=0x%x + 0x%x=0x%x, flash_used=0x%x",
+			CONFIG_EC_WRITABLE_STORAGE_OFF, CONFIG_RW_STORAGE_OFF,
+			flash_offset, flash_used);
 		break;
 #ifdef CONFIG_RW_B
 	case EC_IMAGE_RW_B:
@@ -53,6 +58,9 @@ void system_jump_to_booter(void)
 		flash_offset = CONFIG_EC_PROTECTED_STORAGE_OFF +
 				CONFIG_RO_STORAGE_OFF;
 		flash_used = CONFIG_RO_SIZE;
+		CPRINTS("EC_IMAGE_RO, flash_offset=0x%x + 0x%x=0x%x, flash_used=0x%x",
+			CONFIG_EC_WRITABLE_STORAGE_OFF, CONFIG_RW_STORAGE_OFF,
+			flash_offset, flash_used);
 		break;
 	}
 
