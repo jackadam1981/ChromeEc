@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90574ca0_e163d8e0",
+        "filename": "board/delbin/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-10T23:29:51Z",
+      "side": 1,
+      "message": "CONFIG_CMD_BUTTON is for EC console and\nCONFIG_HOSTCMD_BUTTON is for ectool\n\nhow about defining it in baseboard so that all boards can leverage the test",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 29
+      },
+      "revId": "7d0471a099441c9b8de0eeb616d79f97518abf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
