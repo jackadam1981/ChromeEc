@@ -259,4 +259,77 @@ void system_set_image_copy(enum ec_image copy)
 }
 #endif /* CONFIG_PLATFORM_EC_EXTERNAL_STORAGE */
 
+void system_jump_to_booter(void)
+{
+	enum API_RETURN_STATUS_T status __attribute__((unused));
+	static uint32_t flash_offset;
+	static uint32_t flash_used;
+	static uint32_t addr_entry;
+
+	/*
+	 * Get memory offset and size for RO/RW regions.
+	 * Both of them need 16-bytes alignment since GDMA burst mode.
+	 */
+	switch (system_get_shrspi_image_copy()) {
+	case EC_IMAGE_RW:
+		flash_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
+				CONFIG_RW_STORAGE_OFF;
+		flash_used = CONFIG_RW_SIZE;
+		break;
+#ifdef CONFIG_RW_B
+	case EC_IMAGE_RW_B:
+		flash_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
+				CONFIG_RW_B_STORAGE_OFF;
+		flash_used = CONFIG_RW_SIZE;
+		break;
+#endif
+	case EC_IMAGE_RO:
+	default: /* Jump to RO by default */
+		flash_offset = CONFIG_EC_PROTECTED_STORAGE_OFF +
+				CONFIG_RO_STORAGE_OFF;
+		flash_used = CONFIG_RO_SIZE;
+		break;
+	}
+
+	/* Make sure the reset vector is inside the destination image */
+	addr_entry = *(uintptr_t *)(flash_offset +
+				    CONFIG_MAPPED_STORAGE_BASE + 4);
+
+	/*
+	 * Speed up FW download time by increasing clock freq of EC. It will
+	 * restore to default in clock_init() later.
+	 */
+	clock_turbo();
+
+	download_from_flash(
+		flash_offset,      /* The offset of the data in spi flash */
+		CONFIG_PROGRAM_MEMORY_BASE, /* RAM Addr of downloaded data */
+		flash_used,        /* Number of bytes to download      */
+		SIGN_NO_CHECK,     /* Need CRC check or not               */
+		addr_entry,        /* jump to this address after download */
+		&status            /* Status fo download */
+	);
+}
+
+void system_set_image_copy(enum ec_image copy)
+{
+	switch (copy) {
+	case EC_IMAGE_RW:
+		break;
+#ifdef CONFIG_RW_B
+	case EC_IMAGE_RW_B:
+		break;
+#endif
+	default:
+		/* Fall through to EC_IMAGE_RO */
+	case EC_IMAGE_RO:
+		break;
+	}
+}
+
+uint32_t system_get_lfw_address(void)
+{
+	return (uint32_t)system_jump_to_booter;
+}
+
 const void *__image_size;
