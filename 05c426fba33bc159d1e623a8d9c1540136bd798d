@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b88dd62f_2b7243b3",
+        "filename": "firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1396774
+      },
+      "writtenOn": "2021-02-10T16:21:40Z",
+      "side": 1,
+      "message": "build_target + \".firmware.tbz2\"?",
+      "range": {
+        "startLine": 57,
+        "startChar": 23,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "05c426fba33bc159d1e623a8d9c1540136bd798d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
