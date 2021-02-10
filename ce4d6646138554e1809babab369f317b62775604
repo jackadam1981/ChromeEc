@@ -211,6 +211,30 @@
       },
       "revId": "ce4d6646138554e1809babab369f317b62775604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d07824_fa0fc77a",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-10T23:35:10Z",
+      "side": 1,
+      "message": "Don\u0027t forget to address previous unresolved comments, especially this one :)\n\nI usually click on the \"Comment\" tab to see unresolved comments.",
+      "parentUuid": "e9dcd7c9_927d58d7",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 224,
+        "endChar": 46
+      },
+      "revId": "ce4d6646138554e1809babab369f317b62775604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
