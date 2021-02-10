@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18dc5e28_9bdba7ef",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1292593
+      },
+      "writtenOn": "2021-02-10T20:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21667a98_1e573cc0",
+      "range": {
+        "startLine": 141,
+        "startChar": 14,
+        "endLine": 141,
+        "endChar": 21
+      },
+      "revId": "73188b91ccbc25409ccbf08d0b5c875dc3f4555d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dda867e_0260bd81",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-09T04:13:00Z",
       "side": 1,
       "message": "accelinfo on/off",
+      "range": {
+        "startLine": 153,
+        "startChar": 8,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "73188b91ccbc25409ccbf08d0b5c875dc3f4555d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc4f7a3_6315f7f6",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1292593
+      },
+      "writtenOn": "2021-02-10T20:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dda867e_0260bd81",
       "range": {
         "startLine": 153,
         "startChar": 8,
