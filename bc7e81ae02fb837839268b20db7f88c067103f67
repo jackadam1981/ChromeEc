@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26436c65_d834b6ee",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T17:13:25Z",
+      "side": 1,
+      "message": "space before */",
+      "range": {
+        "startLine": 117,
+        "startChar": 41,
+        "endLine": 117,
+        "endChar": 43
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47549ae5_9bf63a94",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T17:13:25Z",
+      "side": 1,
+      "message": "this is the default anyway so you can omit this",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306c5a29_928ba45c",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T17:13:25Z",
+      "side": 1,
+      "message": "can you mention what this is?",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98cb2808_c0f81c63",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T17:13:25Z",
+      "side": 1,
+      "message": "You have defined one type here but in the .dts you have several...I am just wondering if this should be more generically named?",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78e3fe9_dcfd6c32",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T17:13:25Z",
+      "side": 1,
+      "message": "omit",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b0731f_b9b257b8",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T17:13:25Z",
+      "side": 1,
+      "message": "Can you explain that or somehow expand this a bit?",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceb4a063_4069c61a",
+        "filename": "zephyr/dts/bindings/temp/temp-3v0-22k6-47k-4050b.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T17:13:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it possible to put these in a common file?",
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56f1525_c091f6be",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T17:13:25Z",
+      "side": 1,
+      "message": "does it work without this? I think we added a path",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
