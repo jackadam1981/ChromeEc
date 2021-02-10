@@ -123,6 +123,9 @@ DECLARE_HOOK(HOOK_INIT, ap_sku_id_restore_state, HOOK_PRIO_DEFAULT);
  */
 uintptr_t get_program_memory_addr(enum ec_image copy)
 {
+	CPRINTS("get_program_memory_add(%d) CONFIG_PROGRAM_MEMORY_BASE=0x%x", copy, CONFIG_PROGRAM_MEMORY_BASE);
+	CPRINTS("get_program_memory_add(%d) CONFIG_RO_MEM_OFF=0x%x", copy, CONFIG_RO_MEM_OFF);
+	CPRINTS("get_program_memory_add(%d) CONFIG_RW_MEM_OFF=0x%x", copy, CONFIG_RW_MEM_OFF);
 	switch (copy) {
 	case EC_IMAGE_RO:
 		return CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RO_MEM_OFF;
@@ -585,40 +588,51 @@ static int system_run_image_copy_with_flags(enum ec_image copy,
 	if (system_is_locked()) {
 		/* System is locked, so disallow jumping between images unless
 		 * this is the initial jump from RO to RW code. */
+		CPRINTS("system_is_locked()");
 
 		/* Must currently be running the RO image */
 		if (system_get_image_copy() != EC_IMAGE_RO)
 			return EC_ERROR_ACCESS_DENIED;
+		CPRINTS("    passed check, running RO");
 
 		/* Target image must be RW image */
 		if (!is_rw_image(copy))
 			return EC_ERROR_ACCESS_DENIED;
+		CPRINTS("    passed check, target is RW");
 
 		/* Jumping must still be enabled */
 		if (disable_jump)
 			return EC_ERROR_ACCESS_DENIED;
+		CPRINTS("    passed check, jump is enabled");
 	}
 
 	/* Load the appropriate reset vector */
 	base = get_program_memory_addr(copy);
+	// base=0x10090000
+	CPRINTS("base=0x%x", base);
 	if (base == 0xffffffff)
 		return EC_ERROR_INVAL;
 
 	if (IS_ENABLED(CONFIG_EXTERNAL_STORAGE)) {
 		/* Jump to loader */
+		CPRINTS("jump to loader...");
 		init_addr = system_get_lfw_address();
 		system_set_image_copy(copy);
 	} else if (IS_ENABLED(CONFIG_FW_RESET_VECTOR)) {
 		/* Get reset vector */
+		CPRINTS("get reset vector...");
 		init_addr = system_get_fw_reset_vector(base);
 	} else {
 		uintptr_t init = base + 4;
 
+		CPRINTS("init=0x%x (0x%x)", init, 0x40003);
 		/* Skip any head room in the RO image */
 		if (copy == EC_IMAGE_RO)
 			init += CONFIG_RO_HEAD_ROOM;
 
+		CPRINTS("init=0x%x", init);
 		init_addr = *(uintptr_t *)(init);
+		CPRINTS("init_addr=0x%x, copy.size=0x%x", init_addr, get_size(copy));
 
 		/* Make sure the reset vector is inside the destination image */
 		if (!IS_ENABLED(EMU_BUILD) &&
