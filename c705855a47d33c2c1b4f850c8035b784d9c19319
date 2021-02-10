@@ -22,6 +22,29 @@
       },
       "revId": "c705855a47d33c2c1b4f850c8035b784d9c19319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ff4541_c6f411b4",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-10T16:23:02Z",
+      "side": 1,
+      "message": "nit: the rest look like alphabetic order, except this one",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "c705855a47d33c2c1b4f850c8035b784d9c19319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
