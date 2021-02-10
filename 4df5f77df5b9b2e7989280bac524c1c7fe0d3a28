@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "247adedf_bb83fee6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-02-10T11:47:49Z",
+      "side": 1,
+      "message": "TUSB422 and RT1715 fixes are merged so it\u0027s time to reland fix for ANX7447. Tested this CL on Volteer and Voxel and it works fine. ",
+      "revId": "4df5f77df5b9b2e7989280bac524c1c7fe0d3a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
