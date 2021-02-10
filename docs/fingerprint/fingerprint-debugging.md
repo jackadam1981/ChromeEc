@@ -98,6 +98,17 @@ Theoretically, it's also possible to power through J-Trace, though the
 [power pin] on J-Trace only outputs 5V, whereas the MCU runs at 3.3V and the
 sensor runs at 1.8V. The pin is also not connected on the current designs.
 
+The `dut-control` commands used by many scripts require a `~/.servodrc` which
+should contain the board name and the serial number of the servo micro.
+
+```bash
+dartmonkey, CMO653-00166-040491U01500
+bloonchipper, CMO653-00166-040491U01500
+```
+The serial number can be found in the DeviceWatchdog INFO statement printed
+when `sudo start servod` is run. It should be in the second to last line, and
+should start with CMO.
+
 ## Flashing the FPMCU with JLink {#flash}
 
 *   Install the [JLink Software](#software).
@@ -145,6 +156,26 @@ replacing `<BOARD>` with [`bloonchipper` or `dartmonkey`][fingerprint hardware].
 ```
 
 replacing `<BOARD>` with [`bloonchipper` or `dartmonkey`][fingerprint hardware].
+
+## Using JLink Locally
+If you will only be using JLink to connect to a dev board on your local
+computer, it is easier to connect directly via usb rather than gbdserver
+(described in the next section).
+
+Simply add the option `--ip=""` when running flash_jlink.py script.  For
+example:
+```bash
+./util/flash_jlink.py --ip="" --board dartmonkey --image ./build/dartmonkey/ec.bin
+```
+
+If you will be using a script that calls the jlink flash script, such as
+`run_device_tests.py`, you will need to edit the flash_jlink.py script to
+disclude the ip address:
+```bash
+    #if len(ip) > 0:
+    #    cmd.extend(['-ip', ip])
+```
+Be careful not to unintentionally include this change when pushing code!
 
 ## Using JLink gdbserver {#gdb}
 
