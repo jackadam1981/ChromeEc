@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6277a7_8317db36",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T17:15:06Z",
+      "side": 1,
+      "message": "I think it would be nicer to have DT labels for these and use the labels here (I don\u0027t mean Zephyr labels).\n\nadc \u003d \u003c\u0026temp_charger\u003e;",
+      "range": {
+        "startLine": 121,
+        "startChar": 9,
+        "endLine": 121,
+        "endChar": 42
+      },
+      "revId": "f68d221309835d5e92cacacd026c86d119d4187a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
