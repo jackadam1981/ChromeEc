@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbffb154_a23268fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-10T19:27:20Z",
+      "side": 1,
+      "message": "Could we add a proper API for the force enable part instead of modifying the variable directly?\n\nAlso, maybe guard it with a CONFIG_* that can the be used by a board. CONFIG_NB7V904_LPM_OVERRIDE or similar.\n\n",
+      "revId": "eaf45156828de151a96af6da906602c3a8f1d973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
