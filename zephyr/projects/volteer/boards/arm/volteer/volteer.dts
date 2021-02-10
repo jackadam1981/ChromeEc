@@ -114,6 +114,29 @@
 		};
 	};
 
+	named-temp-sensors {
+		charger {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_CHARGER";
+			adc = <&{/named-adc-channels/charger}>;
+		};
+		pp3300_regulator {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_PP3300_REGULATOR";
+			adc = <&{/named-adc-channels/pp3300_regulator}>;
+		};
+		ddr_soc {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_DDR_SOC";
+			adc = <&{/named-adc-channels/ddr_soc}>;
+		};
+		fan {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_FAN";
+			adc = <&{/named-adc-channels/fan}>;
+		};
+	};
+
 	named-gpios {
 		compatible = "named-gpios";
 
