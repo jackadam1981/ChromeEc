@@ -22,6 +22,30 @@
       },
       "revId": "b4e066cd1e7852ee56f025961219898ebd118584",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0797f3c5_c9e46d9f",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-10T16:17:16Z",
+      "side": 1,
+      "message": "Python style says to leave it below the \"class\" line ;)",
+      "parentUuid": "91e01c0e_410934db",
+      "range": {
+        "startLine": 40,
+        "startChar": 23,
+        "endLine": 40,
+        "endChar": 60
+      },
+      "revId": "b4e066cd1e7852ee56f025961219898ebd118584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
