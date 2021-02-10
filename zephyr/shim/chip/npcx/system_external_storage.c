@@ -16,6 +16,8 @@
 #error "Must define CONFIG_PLATFORM_EC_EXTERNAL_STORAGE"
 #endif
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
 #define NPCX_MDC_BASE_ADDR                0x4000C000
 #define NPCX_FWCTRL                       REG8(NPCX_MDC_BASE_ADDR + 0x007)
 #define NPCX_FWCTRL_RO_REGION             0
@@ -23,6 +25,7 @@
 #define SET_BIT(reg, bit)           ((reg) |= (0x1 << (bit)))
 #define CLEAR_BIT(reg, bit)         ((reg) &= (~(0x1 << (bit))))
 #define IS_BIT_SET(reg, bit)        (((reg) >> (bit)) & (0x1))
+
 
 void system_jump_to_booter(void)
 {
@@ -40,6 +43,9 @@ void system_jump_to_booter(void)
 		flash_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
 				CONFIG_RW_STORAGE_OFF;
 		flash_used = CONFIG_RW_SIZE;
+		CPRINTS("EC_IMAGE_RW, flash_offset=0x%x + 0x%x=0x%x, flash_used=0x%x",
+			CONFIG_EC_WRITABLE_STORAGE_OFF, CONFIG_RW_STORAGE_OFF,
+			flash_offset, flash_used);
 		break;
 #ifdef CONFIG_RW_B
 	case EC_IMAGE_RW_B:
@@ -53,12 +59,17 @@ void system_jump_to_booter(void)
 		flash_offset = CONFIG_EC_PROTECTED_STORAGE_OFF +
 				CONFIG_RO_STORAGE_OFF;
 		flash_used = CONFIG_RO_SIZE;
+		CPRINTS("EC_IMAGE_RO, flash_offset=0x%x + 0x%x=0x%x, flash_used=0x%x",
+			CONFIG_EC_WRITABLE_STORAGE_OFF, CONFIG_RW_STORAGE_OFF,
+			flash_offset, flash_used);
 		break;
 	}
 
 	/* Make sure the reset vector is inside the destination image */
 	addr_entry = *(uintptr_t *)(flash_offset +
 				    CONFIG_MAPPED_STORAGE_BASE + 4);
+
+	CPRINTS("addr_entry=0x%x", addr_entry);
 
 	/*
 	 * Speed up FW download time by increasing clock freq of EC. It will
@@ -73,23 +84,24 @@ void system_jump_to_booter(void)
  * TODO: Removing npcx9 when Rev.2 is available.
  */
 	/* Bypass for GMDA issue of ROM api utilities */
-#if defined(CHIP_FAMILY_NPCX5) || defined(CONFIG_WORKAROUND_FLASH_DOWNLOAD_API)
-	system_download_from_flash(
-		flash_offset,      /* The offset of the data in spi flash */
-		CONFIG_PROGRAM_MEMORY_BASE, /* RAM Addr of downloaded data */
-		flash_used,        /* Number of bytes to download      */
-		addr_entry         /* jump to this address after download */
-	);
-#else
+//#if defined(CHIP_FAMILY_NPCX5) || defined(CONFIG_WORKAROUND_FLASH_DOWNLOAD_API)
+//	system_download_from_flash(
+//		flash_offset,      /* The offset of the data in spi flash */
+//		CONFIG_PROGRAM_MEMORY_BASE, /* RAM Addr of downloaded data */
+//		flash_used,        /* Number of bytes to download      */
+//		addr_entry         /* jump to this address after download */
+//	);
+//#else
 	download_from_flash(
 		flash_offset,      /* The offset of the data in spi flash */
-		CONFIG_PROGRAM_MEMORY_BASE, /* RAM Addr of downloaded data */
+		0x10090000, /* RAM Addr of downloaded data */
 		flash_used,        /* Number of bytes to download      */
 		SIGN_NO_CHECK,     /* Need CRC check or not               */
 		addr_entry,        /* jump to this address after download */
 		&status            /* Status fo download */
 	);
-#endif
+//#endif
+	CPRINTS("status=%d", status);
 }
 
 uint32_t system_get_lfw_address()
