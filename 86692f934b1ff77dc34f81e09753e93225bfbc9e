@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e433920_69ed9266",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T04:56:08Z",
+      "side": 1,
+      "message": "This class should have a docstring with a list of properties",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 25
+      },
+      "revId": "86692f934b1ff77dc34f81e09753e93225bfbc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8392430_4c459b06",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-10T04:56:08Z",
+      "side": 1,
+      "message": "give an example of what this is...a string? What kind of value?",
+      "range": {
+        "startLine": 65,
+        "startChar": 17,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "86692f934b1ff77dc34f81e09753e93225bfbc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
