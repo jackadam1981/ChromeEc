@@ -6040,8 +6040,25 @@ static void pe_vdm_response_entry(int port)
 		else
 			tx_payload[0] |= VDO_CMDT(CMDT_RSP_BUSY);
 
-		if (vdo_len <= 0)
+		/*
+		 * The minimum VDO length is 1 for VDO header. The response
+		 * functions use 0 and -1 to signal NAK or BUSY, so if either of
+		 * those cases are true, need to set VDO length to 1.
+		 */
+		if (vdo_len <= 0) {
 			vdo_len = 1;
+		} else {
+			int cmd = PD_VDO_CMD(tx_payload[0]);
+			/* Response from DPM is ACK. For enter/exit commands,
+			 * need to inform PE layer that modal operation is
+			 * active.
+			 */
+			if (cmd == CMD_ENTER_MODE)
+				PE_SET_FLAG(port, PE_FLAGS_MODAL_OPERATION);
+			else if ((cmd == CMD_EXIT_MODE) ||
+				 (cmd == CMD_DISCOVER_IDENT))
+				PE_SET_FLAG(port, PE_FLAGS_MODAL_OPERATION);
+		}
 	} else {
 		tx_payload[0] |= VDO_CMDT(CMDT_RSP_NAK);
 		vdo_len = 1;
@@ -6062,9 +6079,19 @@ static void pe_vdm_response_entry(int port)
 static void pe_vdm_response_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE) ||
-			PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
+	    PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR) ||
+	    PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+		uint32_t flags = pe[port].flags;
+		/*
+		 * PE_CHK_REPLY will be true if a tx message was discarded or if
+		 * a message was received. Both of those events should cause
+		 * this state to exit, but only PE_FLAGS_MSG_DISCARDED should be
+		 * cleared here as if a message was received, that should still
+		 * be handled in the ready state.
+		 */
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE |
-						PE_FLAGS_PROTOCOL_ERROR);
+			    PE_FLAGS_PROTOCOL_ERROR |
+			    PE_FLAGS_MSG_DISCARDED);
 
 		pe_set_ready_state(port);
 	}
