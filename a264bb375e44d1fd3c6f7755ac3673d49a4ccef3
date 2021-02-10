@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb2f05b9_23049f25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-10T20:48:25Z",
+      "side": 1,
+      "message": "Sorry for the back and forth. I only tested volteer with this assuming that if I have the *(.fixed.*) in the linker script and the section didn\u0027t match anything it would be ignored. This was causing issues if version.c wasn\u0027t included (guarded by CONFIG_PLATFORM_EC) and only for non-posix.\n\nI update the logic in fixed-sections.ld and ran zmake testall",
+      "revId": "a264bb375e44d1fd3c6f7755ac3673d49a4ccef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
