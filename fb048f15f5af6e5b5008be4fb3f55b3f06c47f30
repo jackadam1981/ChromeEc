@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820d60bf_7f24311f",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 22
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-10T18:23:44Z",
+      "side": 1,
+      "message": "nit: unrelated change?",
+      "revId": "fb048f15f5af6e5b5008be4fb3f55b3f06c47f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "499cf863_14c7c95c",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 22
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-10T18:23:44Z",
+      "side": 1,
+      "message": "Should this be a TODO with a bug so we don\u0027t forget it?",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 73
+      },
+      "revId": "fb048f15f5af6e5b5008be4fb3f55b3f06c47f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
