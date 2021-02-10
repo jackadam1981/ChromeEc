@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52635470_e0be7c0e",
+        "filename": "common/version.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-10T18:21:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "164f0a96_3028627e",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "b5f63939c2ca4a61a4af082e71f4694d7bfcd501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ab7c6f0_2d40f817",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-10T17:30:33Z",
       "side": 1,
       "message": "missing line terminator",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "b5f63939c2ca4a61a4af082e71f4694d7bfcd501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a76b373_82ed785a",
+        "filename": "zephyr/linker/fixed-sections.ld",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-10T18:21:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab7c6f0_2d40f817",
       "range": {
         "startLine": 6,
         "startChar": 10,
