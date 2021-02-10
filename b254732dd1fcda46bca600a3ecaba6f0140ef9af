@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b983dbf_15154cdb",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-10T19:02:01Z",
+      "side": 1,
+      "message": "I summarized my comment above and added this to the function.",
+      "parentUuid": "9924fbda_7aa73978",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "432adad5_43569976",
         "filename": "common/usbc/usb_pd_dp_ufp.c",
         "patchSetId": 12
@@ -85,6 +109,24 @@
       "writtenOn": "2021-02-09T06:29:05Z",
       "side": 1,
       "message": "nit: include comment about the rule that if hpd_low is detected while any previous updates are in the queue they may be discarded",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6feeb55f_674f618f",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-10T19:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "432adad5_43569976",
       "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -197,6 +239,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb69a0b4_0c120f57",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-10T19:02:01Z",
+      "side": 1,
+      "message": "I added another paragraph in the comment below that adds context to when this converter is enabled or disabled.",
+      "parentUuid": "4dd76698_dc78a275",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6f0a3d5_6a1ca5fb",
         "filename": "common/usbc/usb_pd_dp_ufp.c",
         "patchSetId": 12
@@ -268,6 +328,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30c8c8e4_669e855c",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-10T19:02:01Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this is correct. I\u0027m trying to find again where I saw that state machine. I think I followed those rules explicitly. I think the logic about this check is that we were in low_wait and now hpd is high, but it\u0027s not been log enough to satisfy the deglitch timer requirements. So the deglitch timer needs to be reset. So we return back to low_wait and that will reset the deglitch timer is hpd remains high. So basically we ignore hpd_high transition that comes too soon after hpd being low.",
+      "parentUuid": "24f033b5_2e3fbcf5",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a20655a_2844f3c2",
         "filename": "common/usbc/usb_pd_dp_ufp.c",
         "patchSetId": 12
@@ -315,6 +399,24 @@
       "side": 1,
       "message": "Excellent.  Clarify intended usage in the comments",
       "parentUuid": "b402aef5_055142b7",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf9193b_638966d9",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-10T19:02:01Z",
+      "side": 1,
+      "message": "I expanded this comment (which was really only a comment about the mutex) to a more general comment about the function usage.",
+      "parentUuid": "a7c6772b_ea6bc054",
       "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

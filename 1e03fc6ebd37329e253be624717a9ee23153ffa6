@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a3157e3_29c594b3",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-10T19:02:01Z",
+      "side": 1,
+      "message": "I updated the dates in both .c/.h files",
+      "parentUuid": "8f209f94_ec0ad294",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1e03fc6ebd37329e253be624717a9ee23153ffa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e237cc1a_d296a6e4",
         "filename": "include/usb_pd_dp_ufp.h",
         "patchSetId": 11
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "I think this will be a good start.  Long-term, I\u0027m hoping we can get our code into a nice modular state for general usage (especially once we\u0027re fully over to zephyr).  But this is a good starting place with common UFP DP code.",
       "parentUuid": "8e0e3971_4b5e4c04",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "1e03fc6ebd37329e253be624717a9ee23153ffa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c271785_b737a93b",
+        "filename": "include/usb_pd_dp_ufp.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-10T19:02:01Z",
+      "side": 1,
+      "message": "I fixed the comments for the 2 function prototypes and removed the evidence that I had started with the dpm module.",
+      "parentUuid": "534ca4b4_e68388dc",
       "range": {
         "startLine": 20,
         "startChar": 0,
