@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6107b4ab_85b417cc",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-10T19:24:45Z",
+      "side": 1,
+      "message": "Still have lingering possible sub-shell error, but this warning would at least be emitted.",
+      "range": {
+        "startLine": 265,
+        "startChar": 10,
+        "endLine": 265,
+        "endChar": 32
+      },
+      "revId": "6e2b38d6e8a75b464b4d68fadabd5ff0497b38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
