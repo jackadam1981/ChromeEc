@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0994cd0_8e45975a",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-10T00:40:37Z",
+      "side": 1,
+      "message": "If I\u0027m follow this correctly, __tx_char_raw() in uart_buffering.c accumulates all the transmit characters.  The chip level UART TX interrupt then works off the queue by calling uart_process_output() which calls uart_write_char().  However, since we don\u0027t have interrupt, uart_process_output() is only called by uart_flush_output().\n\nThis seems like we will accumulate a lot of console output before it\u0027s flushed.  What triggers the flush under Zephyr?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "a88b480880d9517e60ca19e5b3a9aff57d61e5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df3ee5d8_bb04a4be",
         "filename": "zephyr/shim/src/tasks.c",
         "patchSetId": 2
