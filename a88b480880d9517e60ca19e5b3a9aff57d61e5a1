@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "345021a3_26241c46",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-10T17:45:05Z",
+      "side": 1,
+      "message": "You are right, I just observed the uart is only being written when cflush gets called.... re-evaluating...",
+      "parentUuid": "e0994cd0_8e45975a",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "a88b480880d9517e60ca19e5b3a9aff57d61e5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df3ee5d8_bb04a4be",
         "filename": "zephyr/shim/src/tasks.c",
         "patchSetId": 2
