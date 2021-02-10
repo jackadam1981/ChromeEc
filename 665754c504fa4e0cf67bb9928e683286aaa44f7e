@@ -231,6 +231,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "756ac441_17850db3",
+        "filename": "common/usb_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-10T00:58:36Z",
+      "side": 1,
+      "message": "OK, I\u0027m following. I guess the proper way to think about this is as a variation of usb_mux_set_safe_mode, not a fundamentally different operation. Naming it something like usb_mux_set_safe_mode_exit might make that clearer.",
+      "parentUuid": "7759b8da_b86c074e",
+      "revId": "665754c504fa4e0cf67bb9928e683286aaa44f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85152083_9200122e",

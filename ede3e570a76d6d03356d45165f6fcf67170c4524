@@ -34,6 +34,24 @@
       "parentUuid": "6fa62dc9_1ddcabef",
       "revId": "ede3e570a76d6d03356d45165f6fcf67170c4524",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3304da1_5dec9af2",
+        "filename": "include/usb_common.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-10T00:58:36Z",
+      "side": 1,
+      "message": "Per the other comment thread, this is an OK location for this function. However, it will be called on boards that aren\u0027t using the TCSS, and I wouldn\u0027t want the comment to leave the impression that this code is specific to the TCSS or virtual mux. How about a comment like this?\n\n/**\n * Configure the USB MUX in safe mode while exiting an alternate mode.\n * Although the TCSS (virtual mux) has a distinct safe mode state, it\n * needs to be in a disconnected state to properly exit an alternate\n * mode. Therefore, do not treat the virtual mux as a special case, as \n * usb_mux_set_safe_mode does.\n *\n * @param port The PD port number\n */\nvoid usb_mux_set_safe_mode_exit(int port);",
+      "parentUuid": "245204ea_6aaedd1d",
+      "revId": "ede3e570a76d6d03356d45165f6fcf67170c4524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
