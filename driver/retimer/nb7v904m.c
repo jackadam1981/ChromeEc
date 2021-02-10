@@ -100,6 +100,27 @@ int nb7v904m_tune_usb_flat_gain(const struct usb_mux *me, uint8_t gain_a,
 	return rv;
 }
 
+/* Set Loss Profile Matching : This must be called on board_init context */
+int nb7v904m_set_loss_profile_match(const struct usb_mux *me, uint8_t loss_a,
+			uint8_t loss_b, uint8_t loss_c, uint8_t loss_d)
+{
+	int rv = EC_SUCCESS;
+
+	if (loss_a != NB7V904M_CH_ALL_SKIP_LOSS)
+		rv |= nb7v904m_write(me, NB7V904M_REG_CH_A_LOSS_CTRL, loss_a);
+
+	if (loss_b != NB7V904M_CH_ALL_SKIP_LOSS)
+		rv |= nb7v904m_write(me, NB7V904M_REG_CH_B_LOSS_CTRL, loss_b);
+
+	if (loss_c != NB7V904M_CH_ALL_SKIP_LOSS)
+		rv |= nb7v904m_write(me, NB7V904M_REG_CH_C_LOSS_CTRL, loss_c);
+
+	if (loss_d != NB7V904M_CH_ALL_SKIP_LOSS)
+		rv |= nb7v904m_write(me, NB7V904M_REG_CH_D_LOSS_CTRL, loss_d);
+
+	return rv;
+}
+
 static int nb7v904m_init(const struct usb_mux *me)
 {
 	int rv = set_low_power_mode(me, 0);
