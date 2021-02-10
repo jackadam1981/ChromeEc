@@ -468,6 +468,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
+static int board_nb7v904m_mux_set_c0(const struct usb_mux *me,
+						mux_state_t mux_state);
 static int board_nb7v904m_mux_set(const struct usb_mux *me,
 						mux_state_t mux_state);
 const struct usb_mux usbc0_retimer = {
@@ -475,6 +477,7 @@ const struct usb_mux usbc0_retimer = {
 	.i2c_port = I2C_PORT_USB_C0,
 	.i2c_addr_flags = NB7V904M_I2C_ADDR0,
 	.driver = &nb7v904m_usb_redriver_drv,
+	.board_set = &board_nb7v904m_mux_set_c0,
 };
 const struct usb_mux usbc1_retimer = {
 	.usb_port = 1,
@@ -500,6 +503,37 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.next_mux = &usbc1_retimer,
 	}
 };
+
+/* USB Mux C0 */
+static int board_nb7v904m_mux_set_c0(const struct usb_mux *me,
+						mux_state_t mux_state)
+{
+	int rv = EC_SUCCESS;
+	static int board_id = -1;
+
+	if (board_id == -1) {
+		uint32_t val;
+		
+		if (cbi_get_board_version(&val) == EC_SUCCESS)
+			board_id = val;
+	}
+
+	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+		/* USB with DP */
+		if (mux_state & USB_PD_MUX_DP_ENABLED) {
+			/* will be used on future */
+			}
+		} else {
+			/* USB only */
+		}
+
+	} else if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		/* 4 lanes DP */
+		/* will be used on future */
+	}
+
+	return rv;
+}
 
 /* USB Mux */
 static int board_nb7v904m_mux_set(const struct usb_mux *me,
