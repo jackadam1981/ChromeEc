@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+zephyr_sources(clock.c)
 zephyr_sources(console.c)
 zephyr_sources(crc.c)
 zephyr_sources(gpio.c)
@@ -12,6 +13,7 @@ if (DEFINED CONFIG_ARCH_POSIX)
 else()
   zephyr_sources(system.c)
   zephyr_sources("${PLATFORM_EC}/common/system.c")
+  zephyr_sources_ifdef(CONFIG_PLATFORM_EC_EXTERNAL_STORAGE system_chip.c)
 endif()
 zephyr_sources_ifdef(no_libgcc                  libgcc_${ARCH}.S)
 
