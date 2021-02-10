@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9924fbda_7aa73978",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-10T16:19:47Z",
+      "side": 1,
+      "message": "Okay, I believe I understand.  A comment would probably be helpful for future readers",
+      "parentUuid": "51cbf4df_1b13de17",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "432adad5_43569976",
         "filename": "common/usbc/usb_pd_dp_ufp.c",
         "patchSetId": 12
@@ -100,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5964e73_77eca909",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-10T16:19:47Z",
+      "side": 1,
+      "message": "Sounds good",
+      "parentUuid": "34021cb3_e61d5405",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e001e2b1_65c1f3df",
@@ -131,6 +173,24 @@
       "side": 1,
       "message": "The hpd converter is enabled as part of the alt-dp enter mode path and similar disabled when that mode is exited. Or at least that\u0027s the intention.",
       "parentUuid": "e001e2b1_65c1f3df",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dd76698_dc78a275",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-10T16:19:47Z",
+      "side": 1,
+      "message": "Okay, add comments to that effect then :)",
+      "parentUuid": "3b159770_f37ab43e",
       "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +244,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24f033b5_2e3fbcf5",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-10T16:19:47Z",
+      "side": 1,
+      "message": "Yes, I totally get using the deglitch timer to gate going into state HIGH_WAIT.  \n\nI\u0027m less certain why it\u0027s used to go backwards to LOW_WAIT.  If (level \u0026\u0026 ts \u003c\u003d hpd.timer), should we just wait here in HIGH_CHECK? So keep \"if (!level) go to LOW_WAIT\" and add \"else if (ts \u003e hpd.timer) go to HIGH_WAIT\"?   Similar to IRQ_CHECK",
+      "parentUuid": "3be5fe91_85d72a35",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a20655a_2844f3c2",
         "filename": "common/usbc/usb_pd_dp_ufp.c",
         "patchSetId": 12
@@ -213,6 +297,24 @@
       "side": 1,
       "message": "yes, enter mode enables, and exit mode will disable it.",
       "parentUuid": "6a20655a_2844f3c2",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c6772b_ea6bc054",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-10T16:19:47Z",
+      "side": 1,
+      "message": "Excellent.  Clarify intended usage in the comments",
+      "parentUuid": "b402aef5_055142b7",
       "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
