@@ -98,6 +98,7 @@
 #define NB7V904M_CH_D_GAIN_3P5_DB	0x03
 
 extern const struct usb_mux_driver nb7v904m_usb_redriver_drv;
+extern int nb7v904m_forced_enable;
 
 /* Use this value if tuning eq wants to be skipped  */
 #define NB7V904M_CH_ALL_SKIP_EQ	0xff
@@ -107,4 +108,5 @@ int nb7v904m_tune_usb_set_eq(const struct usb_mux *me, uint8_t eq_a,
 #define NB7V904M_CH_ALL_SKIP_GAIN	0xff
 int nb7v904m_tune_usb_flat_gain(const struct usb_mux *me, uint8_t gain_a,
 			uint8_t gain_b, uint8_t gain_c, uint8_t gain_d);
+int nb7v904m_set_aux_ch_switch(const struct usb_mux *me, uint8_t aux_ch);
 #endif /* __CROS_EC_USB_REDRIVER_NB7V904M_H */
