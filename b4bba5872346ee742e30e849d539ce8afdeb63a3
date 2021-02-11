@@ -39,6 +39,30 @@
       },
       "revId": "b4bba5872346ee742e30e849d539ce8afdeb63a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ce4053_d7680a79",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 25
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-11T21:07:17Z",
+      "side": 1,
+      "message": "No. Since we don\u0027t need power enable to operate this script, this is a todo to actually just add a comment that describes what gpio the power enable would be (like Zork).",
+      "parentUuid": "aaf2c164_96aa867d",
+      "range": {
+        "startLine": 415,
+        "startChar": 24,
+        "endLine": 415,
+        "endChar": 71
+      },
+      "revId": "b4bba5872346ee742e30e849d539ce8afdeb63a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
