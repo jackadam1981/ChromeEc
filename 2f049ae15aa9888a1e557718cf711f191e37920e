@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0291c8d6_d138e022",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-11T19:56:48Z",
+      "side": 1,
+      "message": "Does the vendor-specific LPM completely obviate the TCPCI LPM?\n\nWhat events will cause the part to exit the vendor-specific LPM?",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8224166_f103c98b",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-11T19:56:48Z",
+      "side": 1,
+      "message": "Does BMCIO_LPEN auto-clear at some point?",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f71e0e0_d66e8547",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-11T19:56:48Z",
+      "side": 1,
+      "message": "It would be helpful to cite a source for this. I don\u0027t see much explanation about auto-idle in the datasheet. Is this something that Richtek communicated out-of-band?",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7260d354_dd393337",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-11T19:56:48Z",
+      "side": 1,
+      "message": "Nit: Stick this after RT_INT to maintain address order.",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5555ef96_bc5ff94c",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-11T19:56:48Z",
+      "side": 1,
+      "message": "Nit: Looks like this field is called M_WAKEUP.",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
