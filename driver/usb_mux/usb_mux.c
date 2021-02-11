@@ -40,6 +40,8 @@ static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Device initialized at least once */
 #define USB_MUX_FLAG_INIT		BIT(2)
 
+#define USB_MUX_FLAG_LPM_ON_EXIT	BIT(3)
+
 enum mux_config_type {
 	USB_MUX_INIT,
 	USB_MUX_LOW_POWER,
@@ -47,6 +49,12 @@ enum mux_config_type {
 	USB_MUX_GET_MODE,
 	USB_MUX_CHIPSET_RESET,
 };
+
+void usb_mux_set_in_lpm_on_exit(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		atomic_or(&flags[port], USB_MUX_FLAG_LPM_ON_EXIT);
+}
 
 /* Configure the MUX */
 static int configure_mux(int port,
@@ -115,7 +123,8 @@ static int configure_mux(int port,
 
 			if (drv && drv->set) {
 				rv = drv->set(mux_ptr, lcl_state);
-				if (rv)
+				if (rv &&
+				    !(flags[port] & USB_MUX_FLAG_LPM_ON_EXIT))
 					break;
 			}
 
@@ -141,6 +150,8 @@ static int configure_mux(int port,
 			break;
 		}
 	}
+
+	atomic_clear_bits(&flags[port], USB_MUX_FLAG_LPM_ON_EXIT);
 
 	if (rv)
 		CPRINTS("mux config:%d, port:%d, rv:%d",

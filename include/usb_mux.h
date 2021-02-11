@@ -203,6 +203,13 @@ static inline int mux_read16(const struct usb_mux *me, int reg, int *val)
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 
 /**
+ * Sets the low power mode on exit flag
+ *
+ * @param port port number.
+ */
+void usb_mux_set_in_lpm_on_exit(int port);
+
+/**
  * Initialize USB mux to its default state.
  *
  * @param port Port number.
