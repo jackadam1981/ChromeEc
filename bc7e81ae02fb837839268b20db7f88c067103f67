@@ -380,6 +380,30 @@
       },
       "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f612893_2696f08d",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-11T15:05:23Z",
+      "side": 1,
+      "message": "OK Keith might have some advice but this seems OK for now",
+      "parentUuid": "3dcb4ed6_7b46bcc2",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
