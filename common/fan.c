@@ -285,18 +285,19 @@ static int cc_fanduty(int argc, char **argv)
 	}
 
 	if (fan_count > 1) {
-		if (argc < 2) {
+		if (argc < 3) {
 			ccprintf("fan number is required as the first arg\n");
 			return EC_ERROR_PARAM_COUNT;
 		}
+	}
+
+	if (argc == 3) {
 		fan = strtoi(argv[1], &e, 0);
 		if (*e || fan >= fan_count)
 			return EC_ERROR_PARAM1;
 		argc--;
 		argv++;
-	}
-
-	if (argc < 2)
+	} else if (argc != 2)
 		return EC_ERROR_PARAM_COUNT;
 
 	percent = strtoi(argv[1], &e, 0);
