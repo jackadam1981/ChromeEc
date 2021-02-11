@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a4108e1_043cd7de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-11T22:40:21Z",
+      "side": 1,
+      "message": "I commented on the bug, but I\u0027m pretty confused why we are adapting only this one file to be C89 compliant. I believe we assume all of EC is C11/C99 and have many more usages of C11/C99-only features throughout the codebase.",
+      "revId": "5925c1c63f1be19ffc3ec91a9d6c11761f02dcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
