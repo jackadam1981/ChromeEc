@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd9429a_800af52b",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T21:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a3157e3_29c594b3",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1e03fc6ebd37329e253be624717a9ee23153ffa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e237cc1a_d296a6e4",
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "I fixed the comments for the 2 function prototypes and removed the evidence that I had started with the dpm module.",
       "parentUuid": "534ca4b4_e68388dc",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "1e03fc6ebd37329e253be624717a9ee23153ffa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8911152_7e5457b3",
+        "filename": "include/usb_pd_dp_ufp.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T21:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c271785_b737a93b",
       "range": {
         "startLine": 20,
         "startChar": 0,

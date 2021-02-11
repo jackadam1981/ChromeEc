@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b36e18b7_274b0c77",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T21:59:40Z",
+      "side": 1,
+      "message": "It\u0027s beautiful :)",
+      "parentUuid": "2b983dbf_15154cdb",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "432adad5_43569976",
@@ -255,6 +279,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e4fb7a_e8c2aca8",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T21:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb69a0b4_0c120f57",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6f0a3d5_6a1ca5fb",
@@ -350,6 +392,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd9ea31_885c2e51",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T21:59:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "30c8c8e4_669e855c",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a20655a_2844f3c2",
@@ -417,6 +483,24 @@
       "side": 1,
       "message": "I expanded this comment (which was really only a comment about the mutex) to a more general comment about the function usage.",
       "parentUuid": "a7c6772b_ea6bc054",
+      "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "488f2bbe_a9950742",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T21:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abf9193b_638966d9",
       "revId": "b254732dd1fcda46bca600a3ecaba6f0140ef9af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
