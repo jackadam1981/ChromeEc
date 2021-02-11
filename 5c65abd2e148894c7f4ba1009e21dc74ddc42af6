@@ -22,6 +22,30 @@
       },
       "revId": "5c65abd2e148894c7f4ba1009e21dc74ddc42af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74e4e155_564f11c4",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-11T16:37:38Z",
+      "side": 1,
+      "message": "Using the same type as the input for now.\n\nI agree the input parameters could be better. But we\u0027re just providing the same API as ECOS for now.",
+      "parentUuid": "50a746f8_648ef722",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 9
+      },
+      "revId": "5c65abd2e148894c7f4ba1009e21dc74ddc42af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
