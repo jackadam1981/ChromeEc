@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "354442c4_ac86a8a4",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-02-11T20:00:10Z",
+      "side": 1,
+      "message": "args.print won\u0027t work with python2 since print is a keyword, it does work with python3.",
+      "revId": "6cc4be25bdded9ad02f916d3fe6db1df4818c5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbd3598_71a7a92f",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-02-11T20:00:10Z",
+      "side": 1,
+      "message": "Minor thing, this string needs to be updated.",
+      "revId": "6cc4be25bdded9ad02f916d3fe6db1df4818c5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
