@@ -261,8 +261,7 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		if (!(modep && modep->opos))
 			return -1;
 
-		usb_mux_set_safe_mode_exit(port);
-
+		svdm_safe_dp_mode(port);
 		vdm[0] = VDO(USB_SID_DISPLAYPORT,
 			     1, /* structured */
 			     CMD_EXIT_MODE);
