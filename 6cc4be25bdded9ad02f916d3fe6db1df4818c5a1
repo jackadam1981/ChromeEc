@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "054b0055_be5bc3b0",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-02-11T20:05:04Z",
+      "side": 1,
+      "message": "There is an optional \u0027dest\u0027 argument in argsparse\n\n   parser.add_argument(\u0027-p\u0027, \u0027--print\u0027, dest\u003d\u0027print_ver\u0027, action\u003d\u0027store_true\u0027, default\u003dFalse,\n                  help\u003d\u0027only print available firmware for board/channel\u0027)\n   args \u003d parser.parse_args()\n   print(\u0027args.temp\u0027, args.print_ver)\n\nThat above is compatible.",
+      "parentUuid": "354442c4_ac86a8a4",
+      "revId": "6cc4be25bdded9ad02f916d3fe6db1df4818c5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cbd3598_71a7a92f",
         "filename": "extra/usb_updater/servo_updater.py",
         "patchSetId": 5
