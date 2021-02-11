@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b828f25_6dc759d1",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-11T16:28:53Z",
+      "side": 1,
+      "message": "OK but that doesn\u0027t explain how things work in the EC, where I almost never see interleaving. Is that accidental, or is there actually something at the prints() level?",
+      "parentUuid": "b8be5ca0_48b0f129",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "2c329c68200f8e65115d598deeeebbe5d33c5d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a2f2fe8_6929be8c",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Ack, see the if statement above.\n\nThis statement is unreachable in the case that dest_size is zero.",
       "parentUuid": "0a2f2fe8_6929be8c",
+      "range": {
+        "startLine": 91,
+        "startChar": 22,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "2c329c68200f8e65115d598deeeebbe5d33c5d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e378e7_80757cf3",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-11T16:28:53Z",
+      "side": 1,
+      "message": "Ah OK, so 0 is OK if there is no new data, otherwise it is not allow. I suppose that makes sense.",
+      "parentUuid": "61bfe356_3993ccb7",
       "range": {
         "startLine": 91,
         "startChar": 22,
