@@ -89,6 +89,47 @@ int pd_snk_is_vbus_provided(int port)
 
 /* ----------------- Vendor Defined Messages ------------------ */
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
+
+/**
+ * Customize the algorithm to favor the 2-lane DP pin modes.
+ *
+ * In the Trogdor board design, the USB SS/DP topology limits to 2-lane DP.
+ * Should prioritize the 2-lane pin modes, such that the PD partner can match
+ * the pin mode.
+ */
+__override uint8_t get_dp_pin_mode(int port)
+{
+	struct svdm_amode_data *modep =
+		pd_get_amode_data(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+	uint32_t mode_caps;
+	uint32_t pin_caps;
+
+	if (!modep)
+		return 0;
+
+	mode_caps = modep->data->mode_vdo[modep->opos - 1];
+
+	/* TODO(crosbug.com/p/39656) revisit with DFP that can be a sink */
+	pin_caps = PD_DP_PIN_CAPS(mode_caps);
+
+	/* Trogdor-specific: favor the 2-lane pin modes if they are available */
+	if (pin_caps & MODE_DP_PIN_MF_MASK)
+		pin_caps &= MODE_DP_PIN_MF_MASK;
+
+	/* TODO(crosbug.com/p/39656) revisit if DFP drives USB Gen 2 signals */
+	pin_caps &= ~MODE_DP_PIN_BR2_MASK;
+
+	/* if C/D present they have precedence over E/F for USB-C->USB-C */
+	if (pin_caps & (MODE_DP_PIN_C | MODE_DP_PIN_D))
+		pin_caps &= ~(MODE_DP_PIN_E | MODE_DP_PIN_F);
+
+	/* get_next_bit returns undefined for zero */
+	if (!pin_caps)
+		return 0;
+
+	return 1 << get_next_bit(&pin_caps);
+}
+
 __override int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
