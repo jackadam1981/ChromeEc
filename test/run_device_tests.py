@@ -192,7 +192,6 @@ def get_console(board_name: str, board_config: BoardConfig) -> Optional[str]:
     """Get the name of the console for a given board."""
     cmd = [
         'dut-control',
-        '-n', board_name,
         board_config.servo_uart_name,
     ]
     logging.debug('Running command: "%s"', ' '.join(cmd))
@@ -216,7 +215,6 @@ def power(board_name: str, board_config: BoardConfig, on: bool) -> None:
 
     cmd = [
         'dut-control',
-        '-n', board_name,
         board_config.servo_power_enable + ':' + state,
     ]
     logging.debug('Running command: "%s"', ' '.join(cmd))
@@ -232,7 +230,6 @@ def hw_write_protect(board_name: str, enable: bool) -> None:
 
     cmd = [
         'dut-control',
-        '-n', board_name,
         'fw_wp_en' + ':' + state,
         ]
     logging.debug('Running command: "%s"', ' '.join(cmd))
