@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "887a627f_50a7706b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-11T13:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "172c8ce3_a6823c20",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "c705855a47d33c2c1b4f850c8035b784d9c19319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4ff4541_c6f411b4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-10T16:23:02Z",
       "side": 1,
       "message": "nit: the rest look like alphabetic order, except this one",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "c705855a47d33c2c1b4f850c8035b784d9c19319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a295e604_e16c7600",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-11T13:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4ff4541_c6f411b4",
       "range": {
         "startLine": 28,
         "startChar": 8,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0867489_4cf74989",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-11T13:42:43Z",
+      "side": 1,
+      "message": "I prefer _cb for better self documentation, but I guess it may cause confusion when comparing intel_x86.c and amd_x86.c",
+      "parentUuid": "99ea3637_c711ab71",
+      "revId": "c705855a47d33c2c1b4f850c8035b784d9c19319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "678a17b6_1b863a8a",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-02-10T17:01:20Z",
       "side": 1,
       "message": "I feel like I\u0027m missing where the case for state gets added?  Or do we not need to do anything in that state?",
+      "range": {
+        "startLine": 492,
+        "startChar": 9,
+        "endLine": 492,
+        "endChar": 19
+      },
+      "revId": "c705855a47d33c2c1b4f850c8035b784d9c19319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adfde039_a1511f4e",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-02-11T13:42:43Z",
+      "side": 1,
+      "message": "Yes we do, fixed.",
+      "parentUuid": "678a17b6_1b863a8a",
       "range": {
         "startLine": 492,
         "startChar": 9,
