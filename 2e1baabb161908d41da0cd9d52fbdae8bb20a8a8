@@ -22,6 +22,30 @@
       },
       "revId": "2e1baabb161908d41da0cd9d52fbdae8bb20a8a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c9845b_e6503cc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-11T22:42:07Z",
+      "side": 1,
+      "message": "zmake testall in the chroot is happy enough. Should that do it?",
+      "parentUuid": "8a5aa094_c8d22a2c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "2e1baabb161908d41da0cd9d52fbdae8bb20a8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
