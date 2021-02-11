@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5175e97a_2cabaec3",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-11T22:09:45Z",
+      "side": 1,
+      "message": "alphasort (should go before \"sys/...\")",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "18b91c68f9bc3dbf9dd6e92754d8093d7a606a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a45267fb_820cefc7",
+        "filename": "zephyr/shim/include/fpu.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-11T22:09:45Z",
+      "side": 1,
+      "message": "ifdef",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "18b91c68f9bc3dbf9dd6e92754d8093d7a606a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
