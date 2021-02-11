@@ -16,6 +16,7 @@
 #ifdef CONFIG_ZEPHYR
 #include <sys/util.h>
 #include <toolchain.h>
+#include <fpu.h>
 #ifdef CONFIG_ZTEST
 #define TEST_BUILD
 #endif /* CONFIG_ZTEST */
