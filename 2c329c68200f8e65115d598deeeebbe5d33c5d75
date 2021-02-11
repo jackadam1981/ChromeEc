@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8be5ca0_48b0f129",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-11T16:18:55Z",
+      "side": 1,
+      "message": "Yes, there is occasional interleaved output, but it\u0027s not because of anything in this CL.\n\nThis mutex is intended to solve accidental concurrent access to the circular buffer variables (i.e., by both a UART write and a snapshot command running at the same time).\n\nChanging printfs to not interleave would require mutexing at a different level (console_output.c, likely).",
+      "parentUuid": "49dd7d5a_dcd4e8b4",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "2c329c68200f8e65115d598deeeebbe5d33c5d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a2f2fe8_6929be8c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61bfe356_3993ccb7",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-11T16:18:55Z",
+      "side": 1,
+      "message": "Ack, see the if statement above.\n\nThis statement is unreachable in the case that dest_size is zero.",
+      "parentUuid": "0a2f2fe8_6929be8c",
+      "range": {
+        "startLine": 91,
+        "startChar": 22,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "2c329c68200f8e65115d598deeeebbe5d33c5d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4a3af27_1b46e156",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-11T03:24:00Z",
       "side": 1,
       "message": "better to use a local var I think and update *write_count at the end",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "2c329c68200f8e65115d598deeeebbe5d33c5d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a265a445_90df378a",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-11T16:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a3af27_1b46e156",
       "range": {
         "startLine": 101,
         "startChar": 2,
