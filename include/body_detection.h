@@ -14,9 +14,17 @@ enum body_detect_states {
 	BODY_DETECTION_ON_BODY
 };
 
+enum body_detect_change_state_flags {
+	/* When set, change state regardless of spoofing */
+	BODY_DETECTION_SPOOFING = 1 << 0,
+	/* Whether to set the MOTIONSENSE_SENSOR_FLAG_WAKEUP */
+	BODY_DETECTION_WAKEUP = 1 << 1,
+};
+
 /* get/set the state of body detection */
 enum body_detect_states body_detect_get_state(void);
-void body_detect_change_state(enum body_detect_states state, bool spoof);
+void body_detect_change_state(enum body_detect_states state,
+			      enum body_detect_change_state_flags flags);
 
 /* Reset the data. This should be called when ODR is changed*/
 void body_detect_reset(void);

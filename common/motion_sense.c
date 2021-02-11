@@ -1450,7 +1450,9 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 					 */
 					body_detect_set_spoof(true);
 					body_detect_change_state(
-						in->spoof.activity_state, true);
+						in->spoof.activity_state,
+						BODY_DETECTION_SPOOFING |
+						BODY_DETECTION_WAKEUP);
 					break;
 				case MOTIONSENSE_SPOOF_MODE_LOCK_CURRENT:
 					/*
