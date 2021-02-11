@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a1ca72d_2f49ed7f",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-11T19:32:53Z",
+      "side": 1,
+      "message": "Done:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2689320",
+      "parentUuid": "3bdb29eb_ef209e3d",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "4409cec313d82640cbbcc094eb8708803c66768e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a68917ae_e7d37237",
@@ -63,6 +87,29 @@
       "message": "Interesting. I haven\u0027t needed to do this. I assumed that the .servorc was a convenience feature for when you have multiple servos plugged in at once.",
       "range": {
         "startLine": 101,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 22
+      },
+      "revId": "4409cec313d82640cbbcc094eb8708803c66768e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b1cb116_08cea7e1",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-11T19:32:53Z",
+      "side": 1,
+      "message": "Tested with https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2689320 with no ~/servodrc file. I will remove this section.",
+      "range": {
+        "startLine": 104,
         "startChar": 0,
         "endLine": 110,
         "endChar": 22
