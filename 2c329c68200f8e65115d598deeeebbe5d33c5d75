@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49dd7d5a_dcd4e8b4",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-11T03:24:00Z",
+      "side": 1,
+      "message": "Will this happen when multiple threads are writing? I imagine that could be tricky anyway as the text would be interleaved.\n\nHow does this work in practice? Do you see interleaved output?",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "2c329c68200f8e65115d598deeeebbe5d33c5d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a2f2fe8_6929be8c",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-11T03:24:00Z",
+      "side": 1,
+      "message": "dest_size has a weird type. I think that should be int. But in the meantime, I think you need to consider dest_size being 0 here.",
+      "range": {
+        "startLine": 91,
+        "startChar": 22,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "2c329c68200f8e65115d598deeeebbe5d33c5d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a3af27_1b46e156",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-11T03:24:00Z",
+      "side": 1,
+      "message": "better to use a local var I think and update *write_count at the end",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "2c329c68200f8e65115d598deeeebbe5d33c5d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
