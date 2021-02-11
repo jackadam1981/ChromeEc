@@ -228,21 +228,22 @@ static int cc_fanset(int argc, char **argv)
 	}
 
 	if (fan_count > 1) {
-		if (argc < 2) {
+		if (argc < 3) {
 			ccprintf("fan number is required as the first arg\n");
 			return EC_ERROR_PARAM_COUNT;
 		}
+	}
+
+	if (argc == 3) {
 		fan = strtoi(argv[1], &e, 0);
 		if (*e || fan >= fan_count)
 			return EC_ERROR_PARAM1;
 		argc--;
 		argv++;
-	}
-
-	if (argc < 2)
+	} else if (argc != 2)
 		return EC_ERROR_PARAM_COUNT;
 
-	rpm = strtoi(argv[2], &e, 0);
+	rpm = strtoi(argv[1], &e, 0);
 	if (*e == '%') {		/* Wait, that's a percentage */
 		ccprintf("Fan rpm given as %d%%\n", rpm);
 		if (rpm < 0)
