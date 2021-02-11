@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bdb29eb_ef209e3d",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-11T18:51:34Z",
+      "side": 1,
+      "message": "The \".servodrc\" file is used when you pass the \"-n\" flag to \"dut-control\".\n\nI had set this up on my machine since I have a bunch of servos connected and servods running, but it\u0027s probably not the default use case. Can you make a CL to change the \"run_device_tests.py\" script to remove the \"-n\" flag? I think that script is the only place I added the \"-n\" flag, but let me know if there are others.",
+      "parentUuid": "4d8150c6_d07d1d6e",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "4409cec313d82640cbbcc094eb8708803c66768e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a68917ae_e7d37237",
         "filename": "docs/fingerprint/fingerprint-debugging.md",
         "patchSetId": 1
@@ -88,6 +112,30 @@
         "startChar": 0,
         "endLine": 178,
         "endChar": 72
+      },
+      "revId": "4409cec313d82640cbbcc094eb8708803c66768e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cab733da_751fc75b",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-11T18:51:34Z",
+      "side": 1,
+      "message": "Not that I can think of. My setup is probably different from most since I run everything on my work computer with SSH port forwarding to my local devices.\n\nGo ahead and change the default to use local jlink and then I can add a flag to run_device_tests.py to pass the IP flag when I run it.",
+      "parentUuid": "8715827d_82809b0b",
+      "range": {
+        "startLine": 178,
+        "startChar": 19,
+        "endLine": 178,
+        "endChar": 53
       },
       "revId": "4409cec313d82640cbbcc094eb8708803c66768e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
