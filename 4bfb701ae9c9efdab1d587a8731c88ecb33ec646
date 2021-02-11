@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7706abd6_08a2459c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T15:56:32Z",
+      "side": 1,
+      "message": "Should we wait until the SOP\u0027 mode discovery is done to return a cable speed, since that will have all the information we need?",
+      "parentUuid": "bca6b34d_83cedb87",
+      "revId": "4bfb701ae9c9efdab1d587a8731c88ecb33ec646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d1f7ea8_b58febda",
@@ -79,6 +97,30 @@
       "side": 1,
       "message": "So for USB4 active cables with PD gen 3.0 and VDO version \u003e\u003d1.3, we take the USB4 speed from Discover Identity SOP\u0027 B2:0\n\nSo, in situation where an active cable supports USB4 but not tbt, we might have a downgrade - since discover mode SOP\u0027 with intel SVID won\u0027t be present.",
       "parentUuid": "f989ec74_bd677d6c",
+      "range": {
+        "startLine": 374,
+        "startChar": 23,
+        "endLine": 374,
+        "endChar": 52
+      },
+      "revId": "4bfb701ae9c9efdab1d587a8731c88ecb33ec646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb40b41_194a2626",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T15:56:32Z",
+      "side": 1,
+      "message": "The cable speed returned here should be the same value that was returning previously.  If you notice in the current PD_CONTROL code, the USB4 cable speed written in line 377 will immediately be overwritten by the call in line 382 to get the TBT cable speed since both \"if\" statements are true on \"mux_state \u0026 USB_PD_MUX_USB4_ENABLED\".  \n\nIs this current code behavior incorrect?",
+      "parentUuid": "709f20ed_bfffaa09",
       "range": {
         "startLine": 374,
         "startChar": 23,
