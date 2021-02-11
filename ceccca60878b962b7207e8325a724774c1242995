@@ -16,6 +16,24 @@
       "message": "Just a thought: maybe we should disable cutoff for now...",
       "revId": "ceccca60878b962b7207e8325a724774c1242995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4774678b_7c99edf5",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-11T05:55:43Z",
+      "side": 1,
+      "message": "is there a scenario where this would impact us now?\ni don\u0027t think this is going to get invoked unless we do\nit explicitly and deliberately, so i think it\u0027s safe.",
+      "parentUuid": "3084fa6a_4311f00d",
+      "revId": "ceccca60878b962b7207e8325a724774c1242995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
