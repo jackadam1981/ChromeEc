@@ -171,6 +171,30 @@
       },
       "revId": "4bfb701ae9c9efdab1d587a8731c88ecb33ec646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "389c5820_689978a4",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-11T18:25:28Z",
+      "side": 1,
+      "message": "We don\u0027t have those cables in the Market yet and yes, I\u0027ll add a new CL in the future once we have these kinds of cables available - We should be good for now",
+      "parentUuid": "365b683f_67a68f76",
+      "range": {
+        "startLine": 374,
+        "startChar": 23,
+        "endLine": 374,
+        "endChar": 52
+      },
+      "revId": "4bfb701ae9c9efdab1d587a8731c88ecb33ec646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
