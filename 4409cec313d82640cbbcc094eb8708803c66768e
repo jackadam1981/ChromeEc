@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a68917ae_e7d37237",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-11T07:16:23Z",
+      "side": 1,
+      "message": "Interesting. I haven\u0027t needed to do this. I assumed that the .servorc was a convenience feature for when you have multiple servos plugged in at once.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 22
+      },
+      "revId": "4409cec313d82640cbbcc094eb8708803c66768e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8715827d_82809b0b",
         "filename": "docs/fingerprint/fingerprint-debugging.md",
         "patchSetId": 1
@@ -42,6 +65,29 @@
         "startChar": 19,
         "endLine": 178,
         "endChar": 53
+      },
+      "revId": "4409cec313d82640cbbcc094eb8708803c66768e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dac5ca2_afcfc1a1",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-11T07:16:23Z",
+      "side": 1,
+      "message": "I agree that it is simpler to just run jlink directly to USB.\n\nHave you considered changing the default behavior to do USB by default and if a --ip arg is given, try USB?\nMaybe you could change the default value for --ip in flash_jlink.py to \"\", and add a --ip argument passthough to run_device_tests.py.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 72
       },
       "revId": "4409cec313d82640cbbcc094eb8708803c66768e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
