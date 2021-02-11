@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e88fe7_c737259b",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-11T22:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5175e97a_2cabaec3",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "18b91c68f9bc3dbf9dd6e92754d8093d7a606a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a45267fb_820cefc7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-11T22:09:45Z",
       "side": 1,
       "message": "ifdef",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "18b91c68f9bc3dbf9dd6e92754d8093d7a606a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c98ca2d_1c5f72bc",
+        "filename": "zephyr/shim/include/fpu.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-11T22:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a45267fb_820cefc7",
       "range": {
         "startLine": 19,
         "startChar": 1,
