@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd3c2f4_97b52f8a",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-11T16:36:09Z",
+      "side": 1,
+      "message": "ECOS does not have interleaved output as it uses cooperative scheduling, thus allowing the tasks to yield when they want instead of being preempted (and obviously tasks won\u0027t yield during a printf).\n\nWith Zephyr, we\u0027re using preemptive scheduling. So we need to add locking to the printf implementation to get output to not be interleaved.\n\nBut yeah, not related to this CL.",
+      "parentUuid": "7b828f25_6dc759d1",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "2c329c68200f8e65115d598deeeebbe5d33c5d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a2f2fe8_6929be8c",
