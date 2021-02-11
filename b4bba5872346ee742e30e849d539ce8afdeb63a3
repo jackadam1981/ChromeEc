@@ -63,6 +63,30 @@
       },
       "revId": "b4bba5872346ee742e30e849d539ce8afdeb63a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa14780_82ed08a0",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 25
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-02-11T21:24:40Z",
+      "side": 1,
+      "message": "should we perhaps add this in? \"gpiofind EN_FP_RAILS\" @ gpio74\n\nThere\u0027s 3 scenarios:\nrev2: where we plan to have EN_FP_RAILS both in the kernel and in hardware\nrev1: EN_FP_RAILS in the kernel but controlling a NC pin (nbd if we change it)\nrev1: EN_FP_RAILS not in the kernel, this script might have an error (assuming https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2654737 lands, this won\u0027t be the case for much longer), everyone testing right now should already be doing it with kernel support",
+      "parentUuid": "97ce4053_d7680a79",
+      "range": {
+        "startLine": 415,
+        "startChar": 24,
+        "endLine": 415,
+        "endChar": 71
+      },
+      "revId": "b4bba5872346ee742e30e849d539ce8afdeb63a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
