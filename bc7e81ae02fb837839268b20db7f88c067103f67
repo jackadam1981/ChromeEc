@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce9be0df_9d706ccd",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-11T12:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26436c65_d834b6ee",
+      "range": {
+        "startLine": 117,
+        "startChar": 41,
+        "endLine": 117,
+        "endChar": 43
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47549ae5_9bf63a94",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb4e1826_e6aa87c2",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-11T12:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47549ae5_9bf63a94",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "306c5a29_928ba45c",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-02-10T17:13:25Z",
       "side": 1,
       "message": "can you mention what this is?",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "748e6b97_268b7b3e",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-11T12:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "306c5a29_928ba45c",
       "range": {
         "startLine": 19,
         "startChar": 23,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fc68737_ce59655e",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-11T12:06:11Z",
+      "side": 1,
+      "message": "I\u0027ve added configs for other thermistors, but I\u0027m not sure how naming can be changed.",
+      "parentUuid": "98cb2808_c0f81c63",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c78e3fe9_dcfd6c32",
         "filename": "zephyr/Kconfig.temperature",
         "patchSetId": 2
@@ -123,6 +219,30 @@
       "writtenOn": "2021-02-10T17:13:25Z",
       "side": 1,
       "message": "omit",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66cb9ca_56589de1",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-11T12:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c78e3fe9_dcfd6c32",
       "range": {
         "startLine": 24,
         "startChar": 1,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b190994_c51a2206",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-11T12:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50b0731f_b9b257b8",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ceb4a063_4069c61a",
@@ -173,6 +317,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "570eb09d_f4c28a1e",
+        "filename": "zephyr/dts/bindings/temp/temp-3v0-22k6-47k-4050b.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-11T12:06:11Z",
+      "side": 1,
+      "message": "Multiple \"compatible\" fields can\u0027t be placed in one file, but the properties can be included from a common file. Thanks for the advice.",
+      "parentUuid": "ceb4a063_4069c61a",
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f56f1525_c091f6be",
@@ -186,6 +348,30 @@
       "writtenOn": "2021-02-10T17:13:25Z",
       "side": 1,
       "message": "does it work without this? I think we added a path",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dcb4ed6_7b46bcc2",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-11T12:06:11Z",
+      "side": 1,
+      "message": "The path is added for\nec/include/driver but unfortunately the temp sensor headers are under\nec/driver/temp_sensor",
+      "parentUuid": "f56f1525_c091f6be",
       "range": {
         "startLine": 9,
         "startChar": 10,
