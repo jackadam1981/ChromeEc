@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d99d34f_7a5d04bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T22:14:10Z",
+      "side": 1,
+      "message": "Add b:173027965",
+      "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3481f7ce_db4c8e7b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5888,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T22:14:10Z",
+      "side": 1,
+      "message": "I love the elaboration on the very very brief console error message",
+      "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d8526f_6f05f157",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6008,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T22:14:10Z",
+      "side": 1,
+      "message": "Why the clear on discover identity?  I think it would be valid (if very strange) to probe identity while in a mode",
+      "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d5fbd9_45ace819",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6038,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-11T22:14:10Z",
+      "side": 1,
+      "message": "Comment update since it changed to a straight DISCARDED check?  Also note this is an interrupible AMS so it\u0027s fine if we got interrupted and there\u0027s no need to soft reset",
+      "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
