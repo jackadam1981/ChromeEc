@@ -2676,6 +2676,20 @@ uint32_t pd_get_events(int port);
 void pd_clear_events(int port, uint32_t clear_mask);
 
 /*
+ * Requests a VDM Attention message be sent. Attention is the only SVDM message
+ * that does not result in a response from the port partner. In addition, if
+ * it's a DP Attention message, then it will be requested outside of the port's
+ * PD task.
+ *
+ * @param port USB-C port number
+ * @param *data pointer to the VDM Attention message
+ * @param vdo_count number of VDOs (must be 1 or 2)
+ * @return EC_RES_SUCCESS if a VDM message is scheduled.
+ */
+enum ec_status pd_request_vdm_attention(int port, const uint32_t *data,
+				       int vdo_count);
+
+/*
  * Requests that the port enter the specified mode. A successful result just
  * means that the request was received, not that the mode has been entered yet.
  *
