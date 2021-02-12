@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c662d7d_c9781287",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-12T09:22:42Z",
+      "side": 1,
+      "message": "Not quite ready for review, but wanted to get prelim feedback regarding how I am adding the DP Attention message via the DPM module. The goal would be remove both pd_send_hpd and pd_send_vdm as part of this change as well.",
+      "revId": "d963632d305543b28a9acf287b7be2204a824a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
