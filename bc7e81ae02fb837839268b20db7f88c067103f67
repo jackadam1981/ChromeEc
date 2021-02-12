@@ -404,6 +404,30 @@
       },
       "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74c28fe8_c0953d18",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T16:54:16Z",
+      "side": 1,
+      "message": "File a bug to move these files to ec/include/driver/temp_sensor.",
+      "parentUuid": "3f612893_2696f08d",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "bc7e81ae02fb837839268b20db7f88c067103f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
