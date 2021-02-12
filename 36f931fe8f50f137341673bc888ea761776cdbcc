@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "203f0214_ae5600ab",
+        "filename": "board/brya/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T17:50:00Z",
+      "side": 1,
+      "message": "Add a comment indicating that GPIO_EC_PCH_INT_ODL is used for both MKBP events and as a wake interrupt to the PCH.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 45
+      },
+      "revId": "36f931fe8f50f137341673bc888ea761776cdbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
