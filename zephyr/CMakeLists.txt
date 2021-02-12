@@ -59,7 +59,7 @@ endif()
 
 # If a header is needed (should only be set for npcx) run the ecst.py script to
 # generate it.
-if (DEFINED CONFIG_PLATFORM_EC_RO_HEADER)
+#if (DEFINED CONFIG_PLATFORM_EC_RO_HEADER)
     # Translate the CONFIG_FLASH_SIZE to the correct argument value.
     if ("${CONFIG_FLASH_SIZE}" STREQUAL "512" OR "${CONFIG_FLASH_SIZE}" STREQUAL "1024")
         set(flash_size 1)
@@ -122,7 +122,7 @@ if (DEFINED CONFIG_PLATFORM_EC_RO_HEADER)
             -chip ${ECST_CHIP_ARG} -flashsize ${flash_size}
             -spimaxclk ${spimaxclk}
             -spireadmode ${spireadmode})
-endif()
+#endif()
 
 add_subdirectory(linker)
 
