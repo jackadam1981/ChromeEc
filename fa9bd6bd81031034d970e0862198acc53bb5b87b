@@ -22,6 +22,76 @@
       },
       "revId": "fa9bd6bd81031034d970e0862198acc53bb5b87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d935a3_47bee355",
+        "filename": "board/brya/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T18:53:54Z",
+      "side": 1,
+      "message": "Actually, it\u0027s better to use the power good signal from the rail instead of the enable signal. Otherwise the EC can attempt to read sensors before the rail has fully come up and read incorrect temperatures.  See b:176878252 and CL:2607222.",
+      "parentUuid": "07c82dc4_6cca926e",
+      "range": {
+        "startLine": 42,
+        "startChar": 38,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "fa9bd6bd81031034d970e0862198acc53bb5b87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d099f7ef_3e1f2a7e",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T18:53:54Z",
+      "side": 1,
+      "message": "Please create a bug so limits can be discussed with HW team.",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "fa9bd6bd81031034d970e0862198acc53bb5b87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ecdb6bb_7b5bfab5",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T18:53:54Z",
+      "side": 1,
+      "message": "Reference TODO bug here as well.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 63
+      },
+      "revId": "fa9bd6bd81031034d970e0862198acc53bb5b87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
