@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d83dc4_9d7a0bca",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T00:09:08Z",
+      "side": 1,
+      "message": "Just use MIN which is the safe implementation (prevents the arguments from being evaluated multiple times).",
+      "range": {
+        "startLine": 634,
+        "startChar": 4,
+        "endLine": 634,
+        "endChar": 15
+      },
+      "revId": "1a8f3664a6b7ce0ba5ce91f9fc38cf810cd1b11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
