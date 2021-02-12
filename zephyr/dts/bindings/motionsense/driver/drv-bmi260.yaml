@@ -1,0 +1,12 @@
+# Copyright (c) 2021 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+include: motionsense-sensor-base.yaml
+
+properties:
+    i2c-spi-addr-flags:
+        type: string
+        required: true
+        description: i2c address or SPI slave logic GPIO
+        enum:
+            - "BMI260_ADDR0_FLAGS"
