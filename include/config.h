@@ -4331,6 +4331,7 @@
 #undef CONFIG_USB_PD_TCPM_RT1715
 #undef CONFIG_USB_PD_TCPM_FUSB307
 #undef CONFIG_USB_PD_TCPM_STM32GX
+#undef CONFIG_USB_PD_TCPM_PPC_CCGXXF /* CY_UPD */
 
 /* PS8XXX series are all supported by a single driver with a build time config
  * listed below (CONFIG_USB_PD_TCPM_PS*) defined to enable the specific product.
@@ -5096,12 +5097,8 @@
 /*
  * This build is not a complete platform/ec based EC, but instead
  * using the platform/ec zephyr module.
- *
- * Note: this is here purely for stylistic purposes and documentation.
  */
-#ifndef CONFIG_ZEPHYR
 #undef CONFIG_ZEPHYR
-#endif
 
 /*****************************************************************************/
 /*

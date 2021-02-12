@@ -207,13 +207,19 @@
  */
 #define PE_T_DISCOVER_IDENTITY_NO_CONTRACT	(200*MSEC)
 
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+#define N_VCONN_SWAP_COUNT 0 
+#define N_SNK_SRC_PR_SWAP_COUNT 0 
+#define N_DR_SWAP_ATTEMPT_COUNT 0
+#define SRC_SNK_READY_HOLD_OFF_US (20 * MSEC) 
+#else
 /*
  * Only VCONN source can communicate with the cable plug. Hence, try VCONN swap
  * 3 times before giving up.
  *
  * Note: This is not a part of power delivery specification
  */
-#define N_VCONN_SWAP_COUNT 3
+#define N_VCONN_SWAP_COUNT 3 
 
 /*
  * Counter to track how many times to attempt SRC to SNK PR swaps before giving
@@ -232,8 +238,6 @@
  */
 #define N_DR_SWAP_ATTEMPT_COUNT 5
 
-#define TIMER_DISABLED 0xffffffffffffffff /* Unreachable time in future */
-
 /*
  * The time that we allow the port partner to send any messages after an
  * explicit contract is established.  200ms was chosen somewhat arbitrarily as
@@ -242,7 +246,10 @@
  * would be shown in the chrome OS UI. Setting t0o large a delay can cause
  * problems if the PD discovery time exceeds 1s (tAMETimeout)
  */
-#define SRC_SNK_READY_HOLD_OFF_US (200 * MSEC)
+#define SRC_SNK_READY_HOLD_OFF_US (200 * MSEC) 
+#endif
+
+#define TIMER_DISABLED 0xffffffffffffffff /* Unreachable time in future */
 
 /*
  * Function pointer to a Structured Vendor Defined Message (SVDM) response
@@ -2095,9 +2102,10 @@ static void pe_src_startup_entry(int port)
 
 		/* Reset VCONN swap counter */
 		pe[port].vconn_swap_counter = 0;
-
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
 		/* Request partner sink caps */
 		pd_dpm_request(port, DPM_REQUEST_GET_SNK_CAPS);
+#endif
 	}
 }
 
@@ -2454,9 +2462,10 @@ static void pe_src_transition_supply_run(int port)
 			 * Source Capabilities, if needed, for possible
 			 * PR_Swap
 			 */
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
 			if (pd_get_src_cap_cnt(port) == 0)
-				pd_dpm_request(port, DPM_REQUEST_GET_SRC_CAPS);
-
+				pd_dpm_request(port, DPM_REQUEST_GET_SRC_CAPS);   
+#endif
 			set_state_pe(port, PE_SRC_READY);
 		} else {
 			/* NOTE: First pass through this code block */
@@ -2943,8 +2952,10 @@ static void pe_snk_startup_entry(int port)
 		 * TODO: POLICY decision:
 		 * Mark that we'd like to try being Vconn source and DFP
 		 */
-		PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+		PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP); 
 		PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+#endif
 	}
 
 	/* Request sink caps for FRS and PRS evaluation.
@@ -2953,8 +2964,9 @@ static void pe_snk_startup_entry(int port)
 	 * Swap, then the Policy Engine Shall do the following:
 	 * - Send a Get_Sink_Cap Message
 	 */
-	pd_dpm_request(port, DPM_REQUEST_GET_SNK_CAPS);
-
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+	pd_dpm_request(port, DPM_REQUEST_GET_SNK_CAPS); 
+#endif
 }
 
 static void pe_snk_startup_run(int port)
@@ -3463,8 +3475,10 @@ static void pe_snk_ready_run(int port)
 		pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
 
 		if (pd_timer_is_expired(port, PE_TIMER_SINK_REQUEST)) {
-			pd_timer_disable(port, PE_TIMER_SINK_REQUEST);
-			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+		 	pd_timer_disable(port, PE_TIMER_SINK_REQUEST);
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+			set_state_pe(port, PE_SNK_SELECT_CAPABILITY); 
+#endif
 			return;
 		}
 
@@ -3703,7 +3717,7 @@ static void pe_send_soft_reset_run(int port)
 	if (msg_check == PE_MSG_DISCARDED) {
 		pe_set_ready_state(port);
 		return;
-	}
+	}	
 
 	/*
 	 * Transition to the PE_SNK_Send_Capabilities or
@@ -4926,12 +4940,6 @@ static void pe_bist_tx_entry(int port)
 static void pe_bist_tx_run(int port)
 {
 	if (pd_timer_is_expired(port, PE_TIMER_BIST_CONT_MODE)) {
-		/*
-		 * Entry point to disable BIST in TCPC if that's not already
-		 * handled automatically by the TCPC. Unless this method is
-		 * implemented in a TCPM driver, this function does nothing.
-		 */
-		tcpm_reset_bist_type_2(port);
 
 		if (pe[port].power_role == PD_ROLE_SOURCE)
 			set_state_pe(port, PE_SRC_TRANSITION_TO_DEFAULT);
@@ -5898,6 +5906,11 @@ static void pe_vdm_response_entry(int port)
 		CPRINTF("VDO ERR:CMD:%d\n", vdo_cmd);
 	}
 
+	/*
+	 * If the port partner is PD_REV20 and our data role is DFP, we must
+	 * reply to any SVDM command with a NAK. If the SVDM was an Attention
+	 * command, it does not have a response, and exits the function above.
+	 */
 	if (func) {
 		/*
 		 * Execute SVDM response function selected above and set the

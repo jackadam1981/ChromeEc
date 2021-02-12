@@ -3201,8 +3201,17 @@ __maybe_unused static void tc_drp_auto_toggle_entry(const int port)
 	 * for the minimum of DRP SNK or SRC so the first toggle cause by
 	 * transition into auto toggle doesn't violate spec timing.
 	 */
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+	/*
+	 * Below code looks as redundant. This state ca be entered only from 
+	 * UNATTACHED.SRC/SNK states where toggle delay is already applied.
+	 * Causes TD.4.6.2 test failure.
+	 */
+	pd_timer_enable(port, TC_TIMER_TIMEOUT,5);
+#else
 	pd_timer_enable(port, TC_TIMER_TIMEOUT,
-			MAX(PD_T_DRP_SNK, PD_T_DRP_SRC));
+			 MAX(PD_T_DRP_SNK, PD_T_DRP_SRC)); 
+#endif
 }
 
 __maybe_unused static void tc_drp_auto_toggle_run(const int port)
@@ -3673,7 +3682,6 @@ static void tc_cc_open_entry(const int port)
 	typec_update_cc(port);
 
 	tc_set_partner_role(port, PPC_DEV_DISCONNECTED);
-	tc_detached(port);
 }
 
 void tc_set_debug_level(enum debug_level debug_level)
