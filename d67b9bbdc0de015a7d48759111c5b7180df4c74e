@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb14c2f_e2d3eb7e",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T18:35:10Z",
+      "side": 1,
+      "message": "CONFIG_KEYBOARD_VIVALDI is on by default.  Schematics show that the non-Vivaldi keyboard is the default stuff option.  May need to add #undef CONFIG_KEYBOARD_VIVALDI here.\n\nAlso the H1 R8 pin connects to either KSI2 or KSI3 based on Vivaldi option, so change this to:\n#ifdef CONFIG_KEYBOARD_VIVALDI\n#define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI2\n#else\n#define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI3\n#endif",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "d67b9bbdc0de015a7d48759111c5b7180df4c74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50a78c3e_a04a3dca",
+        "filename": "board/brya/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T18:35:10Z",
+      "side": 1,
+      "message": "Other boards have KEYPROTO has a lower priority than HOSTCMD and CONSOLE tasks.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 71
+      },
+      "revId": "d67b9bbdc0de015a7d48759111c5b7180df4c74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb34fbf8_d031c2f4",
+        "filename": "board/brya/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T18:35:10Z",
+      "side": 1,
+      "message": "Nit - add column array designators:\n   .actual_key_mask \u003d {\n      [0] \u003d 0x14, [1] \u003d 0xff, [2] \u003d 0xff,\n\nThe array index makes it easier to check for correctness.",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "d67b9bbdc0de015a7d48759111c5b7180df4c74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387cc6cf_7396533c",
+        "filename": "board/brya/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T18:35:10Z",
+      "side": 1,
+      "message": "Should be 0xC8 - no key ID defined at KSI1/KSO12.",
+      "range": {
+        "startLine": 23,
+        "startChar": 32,
+        "endLine": 23,
+        "endChar": 36
+      },
+      "revId": "d67b9bbdc0de015a7d48759111c5b7180df4c74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
