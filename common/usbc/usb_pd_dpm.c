@@ -29,8 +29,13 @@
 #define CPRINTS(format, args...)
 #endif
 
+/* Max Attention length is header + 1 VDO */
+#define DPM_ATTEN_MAX_VDO 2
+
 static struct {
 	uint32_t flags;
+	uint32_t vdm_attention[DPM_ATTEN_MAX_VDO];
+	int vdm_cnt;
 } dpm[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define DPM_SET_FLAG(port, flag) atomic_or(&dpm[(port)].flags, (flag))
@@ -43,6 +48,22 @@ static struct {
 #define DPM_FLAG_ENTER_DP        BIT(2)
 #define DPM_FLAG_ENTER_TBT       BIT(3)
 #define DPM_FLAG_ENTER_USB4      BIT(4)
+#define DPM_FLAG_SEND_ATTEN      BIT(5)
+
+enum ec_status pd_request_vdm_atten(int port, const uint32_t *data, int count)
+{
+	if (count > DPM_ATTEN_MAX_VDO)
+		return EC_RES_INVALID_PARAM;
+
+	/* Save contents of Attention message */
+	memcpy(dpm[port].vdm_attention, data, count << 2);
+	dpm[port].vdm_cnt = count;
+
+	/* Indicate to DPM that an ATTENTION msg needs to be sent */
+	DPM_SET_FLAG(port, DPM_FLAG_SEND_ATTEN);
+
+	return EC_RES_SUCCESS;
+}
 
 enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 {
@@ -336,12 +357,30 @@ static void dpm_attempt_mode_exit(int port)
 	pd_dpm_request(port, DPM_REQUEST_VDM);
 }
 
+static void dpm_send_attention_vdm(int port)
+{
+	DPM_CLR_FLAG(port, DPM_FLAG_SEND_ATTEN);
+
+	/* Set up VDM ATTEN msg that was passed in previously */
+	pd_setup_vdm_request(port, TCPC_TX_SOP, dpm[port].vdm_attention,
+			     dpm[port].vdm_cnt);
+	/* Trigger PE to start a VDM command run */
+	pd_dpm_request(port, DPM_REQUEST_VDM);
+}
+
 void dpm_run(int port)
 {
-	if (DPM_CHK_FLAG(port, DPM_FLAG_EXIT_REQUEST))
-		dpm_attempt_mode_exit(port);
-	else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE))
-		dpm_attempt_mode_entry(port);
+	if (pd_get_data_role(port) == PD_ROLE_DFP) {
+		/* Run DFP related DPM requests */
+		if (DPM_CHK_FLAG(port, DPM_FLAG_EXIT_REQUEST))
+			dpm_attempt_mode_exit(port);
+		else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE))
+			dpm_attempt_mode_entry(port);
+	} else {
+		/* Run UFP related DPM requests */
+		if (DPM_CHK_FLAG(port, DPM_FLAG_SEND_ATTEN))
+			dpm_send_attention_vdm(port);
+	}
 }
 
 /*
