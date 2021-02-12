@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "412efc0e_ed2cd808",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-12T09:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d99d34f_7a5d04bb",
+      "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3481f7ce_db4c8e7b",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e3dcc14_9646abbc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6008,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-12T09:19:12Z",
+      "side": 1,
+      "message": "I think I was wondering if discovery identity would be similar on the UFP to when discover identity is started on DFP. So my thought was receiving this message would indicate that we are not in modal operation.\n\nvoid pd_dfp_discovery_init(int port)\n{\n\t/*\n\t * Clear the VDM Setup Done and Modal Operation flags so we will\n\t * have a fresh discovery\n\t */\n\tPE_CLR_FLAG(port, PE_FLAGS_VDM_SETUP_DONE |\n\t\t\t  PE_FLAGS_MODAL_OPERATION);",
+      "parentUuid": "f8d8526f_6f05f157",
+      "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84d5fbd9_45ace819",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -65,6 +101,24 @@
       "writtenOn": "2021-02-11T22:14:10Z",
       "side": 1,
       "message": "Comment update since it changed to a straight DISCARDED check?  Also note this is an interrupible AMS so it\u0027s fine if we got interrupted and there\u0027s no need to soft reset",
+      "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff3a7dc_3335bdc4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6038,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-12T09:19:12Z",
+      "side": 1,
+      "message": "I removed that comment entirely as it wasn\u0027t relevant at all any longer. I added a comment about what the function is doing and why this state will exit.",
+      "parentUuid": "84d5fbd9_45ace819",
       "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
