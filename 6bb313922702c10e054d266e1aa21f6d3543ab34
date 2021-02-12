@@ -16,6 +16,29 @@
       "message": "This is the bloonchipper version of https://crrev.com/c/2657778",
       "revId": "6bb313922702c10e054d266e1aa21f6d3543ab34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ac2705_eb0f2af8",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-12T17:22:06Z",
+      "side": 1,
+      "message": "Gotcha.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "6bb313922702c10e054d266e1aa21f6d3543ab34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
