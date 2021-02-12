@@ -2388,6 +2388,16 @@ static inline void pd_send_host_event(int mask) { }
 int pd_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid);
 
 /**
+ * Determine if in alternate mode or not.
+ *
+ * @param port port number.
+ * @param type Transmit type (SOP, SOP', SOP'') for alt mode status
+ * @param svid USB standard or vendor id
+ * @return object position of mode chosen in alternate mode otherwise zero.
+ */
+int pd_ufp_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid);
+
+/**
  * Send hpd over USB PD.
  *
  * @param port port number.
@@ -2674,6 +2684,19 @@ uint32_t pd_get_events(int port);
  * @param clear_mask bitmask of events to clear (PD_STATUS_EVENT_* bitmask)
  */
 void pd_clear_events(int port, uint32_t clear_mask);
+
+/*
+ * Requests a VDM attetnion message be sent. Attention is the only SVDM message
+ * that does not result in a response from the port partner. In addition, if
+ * it's a DP attention message, then it will be requested outside of the port's
+ * PD task.
+ *
+ * @param port USB-C port number
+ * @param *data pointer to the VDM attention message
+ * @param count number of VDOs (must be 1 or 2)
+ * @return EC_RES_SUCCESS if a VDM message is scheduled.
+ */
+enum ec_status pd_request_vdm_atten(int port, const uint32_t *data, int count);
 
 /*
  * Requests that the port enter the specified mode. A successful result just
