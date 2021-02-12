@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66f945e_6e90ed3d",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-12T01:15:21Z",
+      "side": 1,
+      "message": "We should check if this is the 1st init after the EC booted, not if the device was powered off. On an EC reboot, this won\u0027t get called since we didn\u0027t do a power cycle to reset this register.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 49
+      },
+      "revId": "7e2799580813f26f8ab53b56b0f12c8523dbd1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
