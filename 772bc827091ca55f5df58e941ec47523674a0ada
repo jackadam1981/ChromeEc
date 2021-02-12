@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9979555_d85f01a5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-12T04:13:52Z",
+      "side": 1,
+      "message": "Done in this CL",
+      "parentUuid": "3c1767df_d0b49daf",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 23
+      },
+      "revId": "772bc827091ca55f5df58e941ec47523674a0ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc3765e_9aa93074",

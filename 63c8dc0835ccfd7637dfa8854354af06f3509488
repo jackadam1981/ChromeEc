@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1c0e8e_d4aa3c28",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-12T04:13:52Z",
+      "side": 1,
+      "message": "Done in follow-up",
+      "parentUuid": "0015a0e8_69b68fdb",
+      "range": {
+        "startLine": 1068,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 37
+      },
+      "revId": "63c8dc0835ccfd7637dfa8854354af06f3509488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fe0226e_a6358fa2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7b4779_ded02ae0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-12T04:13:52Z",
+      "side": 1,
+      "message": "Done in follow-up",
+      "parentUuid": "4fe0226e_a6358fa2",
+      "range": {
+        "startLine": 1718,
+        "startChar": 0,
+        "endLine": 1724,
+        "endChar": 35
+      },
+      "revId": "63c8dc0835ccfd7637dfa8854354af06f3509488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb18ba4c_7038ea2e",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-08T18:49:31Z",
       "side": 1,
       "message": "I think you\u0027re trying to avoid temporarily allocating 3A to a non-PD port - correct?\nIf so, note that in the comment instead of \"lower priority\" which isn\u0027t as clear to me.",
+      "range": {
+        "startLine": 2157,
+        "startChar": 40,
+        "endLine": 2157,
+        "endChar": 55
+      },
+      "revId": "63c8dc0835ccfd7637dfa8854354af06f3509488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e630a5d5_9488330a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2157,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-12T04:13:52Z",
+      "side": 1,
+      "message": "I believe it can also re-allocate over to another FRS source port if one were present, so it covers both of those cases.  It\u0027s also flexible language, in case we added more priority levels in the future.",
+      "parentUuid": "bb18ba4c_7038ea2e",
       "range": {
         "startLine": 2157,
         "startChar": 40,
