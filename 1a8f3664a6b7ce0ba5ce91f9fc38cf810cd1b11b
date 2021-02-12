@@ -46,6 +46,30 @@
       },
       "revId": "1a8f3664a6b7ce0ba5ce91f9fc38cf810cd1b11b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae965aa1_0c210a86",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T19:09:19Z",
+      "side": 1,
+      "message": "Ack - since this is done at compile time, GENERIC_MIN should be safe.",
+      "parentUuid": "d2f8d938_6825987d",
+      "range": {
+        "startLine": 634,
+        "startChar": 4,
+        "endLine": 634,
+        "endChar": 15
+      },
+      "revId": "1a8f3664a6b7ce0ba5ce91f9fc38cf810cd1b11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
