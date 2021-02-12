@@ -46,6 +46,30 @@
       },
       "revId": "2e1baabb161908d41da0cd9d52fbdae8bb20a8a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673f8f69_74bfc894",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T21:21:28Z",
+      "side": 1,
+      "message": "zmake testall only uses the coreboot-sdk now.  I think you can change the toolchain in zmake.yaml to \"zephyr\" to test this out.",
+      "parentUuid": "32c9845b_e6503cc5",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "2e1baabb161908d41da0cd9d52fbdae8bb20a8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
