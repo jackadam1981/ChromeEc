@@ -22,6 +22,30 @@
       },
       "revId": "1a8f3664a6b7ce0ba5ce91f9fc38cf810cd1b11b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f8d938_6825987d",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-12T03:38:59Z",
+      "side": 1,
+      "message": "I did try MIN on my first pass.  As far as I can tell from attempting to build, MIN is unusable outside of a function since it uses braces.\n\nIn file included from include/usb_common.h:9:0,\n                 from common/usb_common.c:24:\ninclude/util.h:37:2: error: braced-group within expression allowed only inside a function\n  ({      \\\n  ^\ninclude/usb_pd.h:104:32: note: in definition of macro ‘PDO_FIXED_CURR’\n #define PDO_FIXED_CURR(ma)  (((ma)/10) \u003c\u003c 0)  /* Max current in 10mA units */\n                                ^\ncommon/usb_common.c:633:2: note: in expansion of macro ‘PDO_FIXED’\n  PDO_FIXED(5000,\n  ^\ncommon/usb_common.c:634:5: note: in expansion of macro ‘MIN’\n     MIN((PD_OPERATING_POWER_MW / 5), PD_MAX_CURRENT_MA),\n     ^\ncc1: error: unrecognized command line option \"-Wno-address-of-packed-member\" [-Werror]\ncc1: all warnings being treated as errors\nmake: *** [util/build.mk:66: build/madoo/common/usb_common.o] Error 1",
+      "parentUuid": "55d83dc4_9d7a0bca",
+      "range": {
+        "startLine": 634,
+        "startChar": 4,
+        "endLine": 634,
+        "endChar": 15
+      },
+      "revId": "1a8f3664a6b7ce0ba5ce91f9fc38cf810cd1b11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
