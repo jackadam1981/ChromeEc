@@ -2680,6 +2680,9 @@ uint32_t pd_get_events(int port);
  */
 void pd_clear_events(int port, uint32_t clear_mask);
 
+/* Add comment here about what this does */
+enum ec_status pd_request_vdm_atten(int port, const uint32_t *data, int count);
+
 /*
  * Requests that the port enter the specified mode. A successful result just
  * means that the request was received, not that the mode has been entered yet.

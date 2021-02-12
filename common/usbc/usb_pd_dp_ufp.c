@@ -59,13 +59,56 @@ struct hpd_info {
 static struct hpd_info hpd;
 static struct mutex hpd_mutex;
 
-
 static void hpd_to_dp_attention(void)
 {
+	int port = hpd_config.port;
 	int evt_index = hpd.count - 1;
+	uint32_t vdm[2];
+	uint32_t custom;
+	int opos;
+	enum hpd_event evt;
 
+	/*
+	 * VDM header
+	 * ----------
+	 * <31:16>  :: SVID
+	 * <15>     :: VDM type ( 1b == structured, 0b == unstructured )
+	 * <14:13>  :: Structured VDM version (00b == Rev 2.0, 01b == Rev 3.0 )
+	 * <12:11>  :: reserved
+	 * <10:8>   :: object pos (1-7 valid, used for enter/exit mode only)
+	 * <7:6>    :: command type (SVDM only?)
+	 * <5>      :: reserved (SVDM), command type (UVDM)
+	 * <4:0>    :: command
+	 */
+
+	/*
+	 * Construct DP Attention message. This consists of the VDM header and
+	 * the DP_STATUS VDO.
+	 */
+	opos = pd_ufp_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+	if (!opos)
+		return;
+
+	/* Get the next hpd event from the queue */
+	evt = hpd.queue[evt_index];
+	/* Save timestamp of when most recent DP attention message was sent */
 	hpd.last_send_ts = get_time().val;
-	pd_send_hpd(hpd_config.port, hpd.queue[evt_index]);
+
+	custom = VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP)) |
+			       VDO_OPOS(opos) | CMD_ATTENTION;
+	vdm[0] = VDO(USB_SID_DISPLAYPORT, 1, custom);
+
+	vdm[1] = VDO_DP_STATUS((evt == hpd_irq), /* IRQ_HPD */
+				(evt != hpd_low), /* HPD_HI|LOW */
+				0, /* request exit DP */
+				0, /* request exit USB */
+				0, /* MF pref */
+				1, /* enabled */
+				0, /* power low */
+				0x2);
+
+	/* Send request to DPM to send an attention VDM */
+	pd_request_vdm_atten(port, vdm, 2);
 
 	/* If there are still events, need to shift the buffer */
 	if (--hpd.count) {
