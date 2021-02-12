@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf8da8b9_3b48d21f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-12T01:11:45Z",
+      "side": 1,
+      "message": "The TCPCI LPM is just I2CIdle, which is kind of a joke and didn\u0027t save any measurable power from my testing. I can throw it back in there now that we know this is stable.\n\nI don\u0027t know when LPM is exited. We only need it to exit on a CC_STATUS change, which it seems to do from my testing. Let me ask on the bug.",
+      "parentUuid": "0291c8d6_d138e022",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8224166_f103c98b",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-11T19:56:48Z",
       "side": 1,
       "message": "Does BMCIO_LPEN auto-clear at some point?",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7068da48_52534ad1",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-12T01:11:45Z",
+      "side": 1,
+      "message": "Yes, this autoclears on LPM exit. This is anecdotal though, I don\u0027t think this is recorded anywhere",
+      "parentUuid": "b8224166_f103c98b",
       "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d081632_34cd32d9",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-12T01:11:45Z",
+      "side": 1,
+      "message": "Yes, let me post the email response I got from them in the bug. Basically the jist is we can use auto-idle except when sourcing VCONN.",
+      "parentUuid": "5f71e0e0_d66e8547",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7260d354_dd393337",
         "filename": "driver/tcpm/rt1715.h",
         "patchSetId": 5
@@ -65,6 +119,24 @@
       "writtenOn": "2021-02-11T19:56:48Z",
       "side": 1,
       "message": "Nit: Stick this after RT_INT to maintain address order.",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a86866_87274c44",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-12T01:11:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7260d354_dd393337",
       "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +154,24 @@
       "writtenOn": "2021-02-11T19:56:48Z",
       "side": 1,
       "message": "Nit: Looks like this field is called M_WAKEUP.",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cffc6e1_78fbe3b0",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-12T01:11:45Z",
+      "side": 1,
+      "message": "Yeah... the M is mask though, which seemed needlessly verbose to have both.",
+      "parentUuid": "5555ef96_bc5ff94c",
       "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
