@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f43a1d_783ad03b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T17:35:26Z",
+      "side": 1,
+      "message": "The battery_is_present() support really could use de-duplication.  Would you or Boris have time to address b:144119559?",
+      "revId": "23e483d96ee58f6b5359dbbb3ccb6de9a2381fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
