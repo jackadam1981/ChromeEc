@@ -108,6 +108,46 @@
       },
       "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6caaa0_01224749",
+        "filename": "chip/stm32/flash-stm32h7.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-12T07:32:48Z",
+      "side": 1,
+      "message": "blank space",
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8292ed4_bc1df15d",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-12T07:32:48Z",
+      "side": 1,
+      "message": "Why are we data/instruction barricading and ignoring bus faults here?\n\nCall chain here:\nunlock_flash_control_register --\u003e unlock --\u003e [data barrier + ignore bus fault]",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 21
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
