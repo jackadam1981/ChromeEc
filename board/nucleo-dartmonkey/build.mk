@@ -12,6 +12,7 @@ board-y+=fpsensor_detect.o
 # Enable on device tests
 test-list-y=\
        aes \
+       cec \
        compile_time_macros \
        crc \
        flash_physical \
@@ -20,6 +21,8 @@ test-list-y=\
        mpu \
        mutex \
        pingpong \
+       printf \
+       queue \
        rollback \
        rollback_entropy \
        rsa3 \
@@ -27,5 +30,8 @@ test-list-y=\
        scratchpad \
        sha256 \
        sha256_unrolled \
+       static_if \
        stm32f_rtc \
+       timer_dos \
        utils \
+       utils_str \
