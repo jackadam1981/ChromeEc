@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "013d263e_4d565166",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T21:45:40Z",
+      "side": 1,
+      "message": "Needs closing brace.",
+      "range": {
+        "startLine": 520,
+        "startChar": 38,
+        "endLine": 520,
+        "endChar": 42
+      },
+      "revId": "47a95b41840cf4e5cdf1b8362aac0050011b9adf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c292b3d7_809bdcfb",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T21:45:40Z",
+      "side": 1,
+      "message": "More generic version:\nCPU_CORTEX_M \u0026\u0026 CPU_HAS_MPU",
+      "range": {
+        "startLine": 521,
+        "startChar": 12,
+        "endLine": 521,
+        "endChar": 36
+      },
+      "revId": "47a95b41840cf4e5cdf1b8362aac0050011b9adf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
