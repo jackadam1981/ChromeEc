@@ -1,0 +1,8 @@
+# Copyright (c) 2021 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: motion sense sensor node for TCS3400 CLEAR
+
+compatible: "cros-ec,drv-tcs3400-clear"
+
+include: drv-tcs3400.yaml
