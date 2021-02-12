@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28efb8c1_6498ce50",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T00:00:22Z",
+      "side": 1,
+      "message": "The field name in the USB PD spec is \"bcdDevice\".  However the accompanying text doesn\u0027t mention binary-coded decimal.  Here\u0027s the text:\n\n\"Manufacturers Should set the USB Product ID field to a unique value identifying the product and Should set the bcdDevice field to a version number relevant to the release version of the product.\"\n\nSo there\u0027s no requirement that this is a binary-coded decimal value.",
+      "parentUuid": "aaafc1cc_67a4b448",
+      "range": {
+        "startLine": 141,
+        "startChar": 23,
+        "endLine": 141,
+        "endChar": 26
+      },
+      "revId": "df254c1905f9796ab4beaa351b3bfc1278c9446f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9b7fa88_877363dc",
         "filename": "zephyr/Kconfig.usbc",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-11T23:33:30Z",
       "side": 1,
       "message": "repeated word?",
+      "range": {
+        "startLine": 145,
+        "startChar": 33,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "df254c1905f9796ab4beaa351b3bfc1278c9446f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa934c9d_e8827ecd",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T00:00:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b7fa88_877363dc",
       "range": {
         "startLine": 145,
         "startChar": 33,
