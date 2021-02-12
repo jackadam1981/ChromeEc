@@ -272,7 +272,7 @@ static void ucpd_log_add_msg(uint16_t header, int dir, int type)
 	}
 }
 
-static void ucpd_log_mark_tx_comp(void)
+static void ucpd_log_mark_tx_comp(int val)
 {
 	/*
 	 * This msg logging utility function is used to mark when a message was
@@ -283,7 +283,7 @@ static void ucpd_log_mark_tx_comp(void)
 	 */
 	if (msg_log_cnt < MSG_LOG_LEN) {
 		if (msg_log_idx > 0)
-			msg_log[msg_log_idx - 1].comp = 1;
+			msg_log[msg_log_idx - 1].comp = val;
 	}
 }
 
@@ -1276,13 +1276,16 @@ void stm32gx_ucpd1_irq(void)
 		if (sr & STM32_UCPD_SR_TXMSGSENT) {
 			task_set_event(TASK_ID_UCPD, UCPD_EVT_TX_MSG_SUCCESS);
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
-			ucpd_log_mark_tx_comp();
+			ucpd_log_mark_tx_comp(1);
 #endif
 		} else if (sr & (STM32_UCPD_SR_TXMSGABT |
 				 STM32_UCPD_SR_TXUND)) {
 			task_set_event(TASK_ID_UCPD, UCPD_EVT_TX_MSG_FAIL);
 		} else if (sr & STM32_UCPD_SR_TXMSGDISC) {
 			task_set_event(TASK_ID_UCPD, UCPD_EVT_TX_MSG_DISC);
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+			ucpd_log_mark_tx_comp(2);
+#endif
 		} else if (sr & STM32_UCPD_SR_HRSTSENT) {
 			task_set_event(TASK_ID_UCPD, UCPD_EVT_HR_DONE);
 		} else if (sr & STM32_UCPD_SR_HRSTDISC) {
@@ -1458,8 +1461,8 @@ static void ucpd_dump_msg_log(void)
 			len = PD_HEADER_CNT(header);
 			name = len ? data_names[type] : ctrl_names[type];
 
-			ccprintf("[%02d]: %08d\t %s\t %s\t %8s\t %02d %d  %d\t"
-				 "%s\t %s",
+			ccprintf("[%02d]: %08d\t %s\t %s\t %8s\t %02d %d  %d |  "
+				 "%s|%s ",
 				 i,
 				 delta_ts,
 				 dir_string[dir],
