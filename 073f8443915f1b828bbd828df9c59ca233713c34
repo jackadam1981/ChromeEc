@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50aa2abd_28c36624",
+        "filename": "zephyr/shim/chip/npcx/include/rom_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-12T18:38:25Z",
+      "side": 1,
+      "message": "Yup, was just copied directly from platform/ec/chip/npcx/",
+      "parentUuid": "0718f946_95d38705",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7327b916_a3c6f2dd",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b544985f_26218bea",
+        "filename": "zephyr/shim/chip/npcx/system_external_storage.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-12T18:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7327b916_a3c6f2dd",
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f38090c_56ff8b8e",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-02-12T17:59:48Z",
       "side": 1,
       "message": "Can we drop this? It is protected by the CMaksLists.txt thing anyway",
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59635588_1465fb39",
+        "filename": "zephyr/shim/chip/npcx/system_external_storage.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-12T18:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f38090c_56ff8b8e",
       "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bbec312_bbf0cea3",
+        "filename": "zephyr/shim/chip/npcx/system_external_storage.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-12T18:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3de833b_4f190ddb",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 21
+      },
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fadfc99b_71519b8f",
@@ -111,6 +195,24 @@
       "writtenOn": "2021-02-12T17:59:48Z",
       "side": 1,
       "message": "Can the changes in this file go in a separate patch?",
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a94bf9e3_33aa25f8",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-12T18:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fadfc99b_71519b8f",
       "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
