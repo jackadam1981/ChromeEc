@@ -16,6 +16,98 @@
       "message": "Thanks for the introduction to the comment tab- much easier!",
       "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89d5fc6a_dba2a0d0",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-12T07:13:57Z",
+      "side": 1,
+      "message": "Are we sure that we are suppose to unlock/lock both banks. IIRC, the bank locking is not actually separate per bank (even tho there are duplicate regs).\n\nAgain, I\u0027m trying to recall from a while ago....but I think if you actually unlock twice, it re-locks permanently and/or triggers a bus fault. Thus, this might be exploiting the safety check that we have in the lock/unlock functions.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 11
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0506bae_ce208746",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-12T07:13:57Z",
+      "side": 1,
+      "message": "Why are we doing only one bank?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 45
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68daca69_03ffc02d",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-12T07:13:57Z",
+      "side": 1,
+      "message": "Wait. Then we are only addressing one bank here?",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 45
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "727109db_a80601a4",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-12T07:13:57Z",
+      "side": 1,
+      "message": "Is just the optb shared between the banks and CR is not?",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 56
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
