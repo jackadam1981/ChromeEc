@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33d3a018_b5b45640",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-12T17:59:48Z",
+      "side": 1,
+      "message": "I suggest 3 patches with the final one actually fixing the config_chip.h file",
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0718f946_95d38705",
+        "filename": "zephyr/shim/chip/npcx/include/rom_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-12T17:59:48Z",
+      "side": 1,
+      "message": "can we drop these stars?",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7327b916_a3c6f2dd",
+        "filename": "zephyr/shim/chip/npcx/system_external_storage.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-12T17:59:48Z",
+      "side": 1,
+      "message": "Should be single-line comment",
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f38090c_56ff8b8e",
+        "filename": "zephyr/shim/chip/npcx/system_external_storage.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-12T17:59:48Z",
+      "side": 1,
+      "message": "Can we drop this? It is protected by the CMaksLists.txt thing anyway",
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3de833b_4f190ddb",
+        "filename": "zephyr/shim/chip/npcx/system_external_storage.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-12T17:59:48Z",
+      "side": 1,
+      "message": "single-line comment\n\nbelow also",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 21
+      },
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fadfc99b_71519b8f",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-12T17:59:48Z",
+      "side": 1,
+      "message": "Can the changes in this file go in a separate patch?",
+      "revId": "073f8443915f1b828bbd828df9c59ca233713c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
