@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd88d5c7_fda4622f",
+        "filename": "board/brya/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T18:39:36Z",
+      "side": 1,
+      "message": "Note - this should be higher priority than KEYPROTO to match other boards after you fix they keyboard CL and rebase.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "35df7ad6d131a0f3172e7247186c0741d809671b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
