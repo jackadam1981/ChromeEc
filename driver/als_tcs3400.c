@@ -18,6 +18,16 @@
 
 #define CPRINTS(fmt, args...) cprints(CC_ACCEL, "%s "fmt, __func__, ## args)
 
+#if defined(CONFIG_ZEPHYR) && defined(CONFIG_ACCEL_INTERRUPTS)
+/*
+ * Get the sensor ID, from device tree, of the TCS3400 sensor that
+ * generates an interrupt. Then create the corresponding interrupt
+ * event to motion sense task using the ID.
+ */
+#define CONFIG_ALS_TCS3400_INT_EVENT	\
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(SENSOR_ID(DT_ALIAS(tcs3400_int)))
+#endif
+
 STATIC_IF(CONFIG_ACCEL_FIFO) volatile uint32_t last_interrupt_timestamp;
 
 #ifdef CONFIG_TCS_USE_LUX_TABLE
