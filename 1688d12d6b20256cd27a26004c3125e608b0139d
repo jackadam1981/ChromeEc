@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "918d8b1b_3f5a4237",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T21:34:00Z",
+      "side": 1,
+      "message": "You can use the more generic CPU_CORTEX_M here.  The FPU config has the proper dependency to ensure the EC chip does select CPU_HAS_FPU.",
+      "range": {
+        "startLine": 399,
+        "startChar": 19,
+        "endLine": 399,
+        "endChar": 32
+      },
+      "revId": "1688d12d6b20256cd27a26004c3125e608b0139d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02365b73_7940aca1",
+        "filename": "zephyr/shim/include/fpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T21:34:00Z",
+      "side": 1,
+      "message": "While KConfig ensures that CONFIG_CPU_CORTEX_M is enabled, you should explicitly guard against here as well since the assembly below is only valid on Cortex-M.\n\nThis ensures these routines must be added once the PLATFORM_EC_FPU is expanded to more cores.",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "1688d12d6b20256cd27a26004c3125e608b0139d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
