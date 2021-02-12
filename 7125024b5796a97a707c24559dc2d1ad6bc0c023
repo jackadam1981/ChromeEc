@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "185ee6d7_f6ef922e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-12T17:00:34Z",
+      "side": 1,
+      "message": "Need to correct the build error. \n\n2021-02-11 14:56:12,909 - Zmake/CRITICAL: ld.lld: error: undefined symbol: host_get_memmap\n2021-02-11 14:56:12,909 - Zmake/CRITICAL: \u003e\u003e\u003e referenced by temp_sensor.c:32 (/tmp/zbuild/modules/ec-shim/common/temp_sensor.c:32)\n2021-02-11 14:56:12,909 - Zmake/CRITICAL: \u003e\u003e\u003e               temp_sensor.c.obj:(update_mapped_memory) in archive zephyr/libzephyr.a\n2021-02-11 14:56:12,909 - Zmake/CRITICAL: \u003e\u003e\u003e referenced by temp_sensor.c:73 (/tmp/zbuild/modules/ec-shim/common/temp_sensor.c:73)\n\n",
+      "revId": "7125024b5796a97a707c24559dc2d1ad6bc0c023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
