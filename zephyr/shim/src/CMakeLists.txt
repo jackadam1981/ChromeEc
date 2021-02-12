@@ -30,3 +30,5 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_RTC         rtc.c)
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_TIMER       hwtimer.c)
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_I2C         i2c.c)
 zephyr_sources_ifdef(CONFIG_SHIMMED_TASKS           tasks.c)
+# temporary
+zephyr_sources(sensors.c)
