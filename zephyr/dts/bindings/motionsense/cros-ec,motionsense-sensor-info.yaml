@@ -1,0 +1,16 @@
+# Copyright (c) 2021 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: ALS sensor information
+
+compatible: "cros-ec,motionsense-sensor-info"
+
+properties:
+    als-sensors:
+        type: phandles
+        required: false
+        description: list of ALS sensors
+    lid-angle-sensors:
+        type: phandles
+        required: false
+        description: lid accelerometer and base accelerometer. <&lid &base>

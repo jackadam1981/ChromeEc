@@ -32,7 +32,7 @@
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
-		sensor {
+		sensor_i2c: sensor {
 			i2c-port = <&i2c0_0>;
 			label = "SENSOR";
 		};
@@ -555,3 +555,5 @@
 &adc0 {
 	status = "okay";
 };
+
+#include "volteer_sensors.dtsi"
