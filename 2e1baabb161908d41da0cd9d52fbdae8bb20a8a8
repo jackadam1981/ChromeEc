@@ -70,6 +70,30 @@
       },
       "revId": "2e1baabb161908d41da0cd9d52fbdae8bb20a8a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e96239_f60736bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-12T22:38:29Z",
+      "side": 1,
+      "message": "I tested this manually (the first line of my TEST\u003d) so I\u0027ll mention the zephyr toolchain",
+      "parentUuid": "673f8f69_74bfc894",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "2e1baabb161908d41da0cd9d52fbdae8bb20a8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
