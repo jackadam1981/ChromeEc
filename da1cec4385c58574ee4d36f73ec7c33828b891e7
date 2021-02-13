@@ -16,6 +16,24 @@
       "message": "lgtm, but this is pretty noop for the current boards. This change would need to be cherry-picked to each firmware branch, requalled firmware and only then we would be able to reap the benefits.",
       "revId": "da1cec4385c58574ee4d36f73ec7c33828b891e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1184f9e6_e2663e31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-13T00:09:56Z",
+      "side": 1,
+      "message": "You\u0027re right, the train left the station for most of the boards.\nBut I want to avoid anymore cut and paste errors.",
+      "parentUuid": "a5285825_1d7b3e2b",
+      "revId": "da1cec4385c58574ee4d36f73ec7c33828b891e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
