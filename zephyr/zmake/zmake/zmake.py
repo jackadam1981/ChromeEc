@@ -40,9 +40,12 @@ class Zmake:
     def __init__(self, checkout=None, jobserver=None, jobs=0):
         if checkout:
             self.checkout = pathlib.Path(checkout)
+            assert self.checkout.exists()
         else:
-            self.checkout = util.locate_cros_checkout()
-        assert self.checkout.exists()
+            # We don't know the checkout location. We may not need it, if
+            # zephyr_base and modules_base are provided. But if we do, we'll use
+            # util.locate_cros_checkout() to try to find it
+            self.checkout = None
 
         if jobserver:
             self.jobserver = jobserver
@@ -80,7 +83,8 @@ class Zmake:
 
         ec_dir = pathlib.Path(os.getcwd())
         if not modules_base:
-            modules_base = self.checkout / 'src' / 'third_party' / 'zephyr'
+            checkout = self.checkout or util.locate_cros_checkout()
+            modules_base = checkout / 'src' / 'third_party' / 'zephyr'
         module_paths = zmake.modules.locate_modules(modules_base, ec_dir,
                                                     version)
 
@@ -284,10 +288,13 @@ class Zmake:
         for test_file in directory.glob('test_*.py'):
             executor.append(func=lambda: run_test(test_file))
 
-    def testall(self, fail_fast=False):
+    def testall(self, modules_base=None, fail_fast=False):
         """Test all the valid test targets"""
         ec_dir = pathlib.Path(os.getcwd())
-        modules = zmake.modules.locate_modules(self.checkout, ec_dir,
+        if not modules_base:
+            checkout = self.checkout or util.locate_cros_checkout()
+            modules_base = checkout / 'src' / 'third_party' / 'zephyr'
+        modules = zmake.modules.locate_modules(modules_base, ec_dir,
                                                version=None)
         root_dirs = [modules['ec-shim'] / 'zephyr']
         project_dirs = []

@@ -44,6 +44,23 @@ log_level_map = {
 }
 
 
+def add_common(parser):
+    """Add common arguments to a parser
+
+    TODO(sjg@chromium.org): Consider putting these in the main parser so this is
+    not needed
+
+    Args:
+        parser: namespace to add to
+    """
+    parser.add_argument('--zephyr-base', type=pathlib.Path,
+                           help='Path to Zephyr source')
+    parser.add_argument(
+        '--modules-base',
+        type=pathlib.Path,
+        help='Path to Zephyr modules directory, with subdirs for each module')
+
+
 def main(argv=None):
     """The main function.
 
@@ -78,12 +95,6 @@ def main(argv=None):
     configure.add_argument('-v', '--version', type=util.parse_zephyr_version,
                            help='Zephyr RTOS version')
     configure.add_argument('-t', '--toolchain', help='Name of toolchain to use')
-    configure.add_argument('--zephyr-base', type=pathlib.Path,
-                           help='Path to Zephyr source')
-    configure.add_argument(
-        '--modules-base',
-        type=pathlib.Path,
-        help='Path to Zephyr modules directory, with subdirs for each module')
     configure.add_argument('--bringup', action='store_true',
                            dest='bringup',
                            help='Enable bRingup debugging features')
@@ -97,6 +108,7 @@ def main(argv=None):
                            help='Test the .elf file after configuration')
     configure.add_argument('project_dir', type=pathlib.Path,
                            help='Path to the project to build')
+    add_common(configure)
 
     build = sub.add_parser('build')
     build.add_argument('build_dir', type=pathlib.Path,
@@ -105,10 +117,12 @@ def main(argv=None):
     test = sub.add_parser('test')
     test.add_argument('build_dir', type=pathlib.Path,
                       help='The build directory used during configuration')
+    add_common(test)
 
     testall = sub.add_parser('testall')
     testall.add_argument('--fail-fast', action='store_true',
                          help='stop testing after the first error')
+    add_common(testall)
 
     opts = parser.parse_args(argv)
 

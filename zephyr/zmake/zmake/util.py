@@ -44,12 +44,14 @@ def locate_zephyr_base(checkout, version):
     """Locate the path to the Zephyr RTOS in a ChromiumOS checkout.
 
     Args:
-        checkout: The path to the ChromiumOS checkout.
+        checkout: The path to the ChromiumOS checkout (NULL to locate it).
         version: The requested zephyr version, as a tuple of integers.
 
     Returns:
         The path to the Zephyr source.
     """
+    if not checkout:
+        checkout = locate_cros_checkout()
     return (checkout / 'src' / 'third_party' / 'zephyr' / 'main' /
             'v{}.{}'.format(*version[:2]))
 
