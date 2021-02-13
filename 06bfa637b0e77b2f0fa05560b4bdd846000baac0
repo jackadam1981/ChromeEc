@@ -16,6 +16,24 @@
       "message": "is the change conditional on the ap mode entry feature enabled flag?",
       "revId": "06bfa637b0e77b2f0fa05560b4bdd846000baac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65426cb_fbae6801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-02-13T06:23:54Z",
+      "side": 1,
+      "message": "Yes this is enabled only if CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY.",
+      "parentUuid": "0d7cb2aa_431a2c9d",
+      "revId": "06bfa637b0e77b2f0fa05560b4bdd846000baac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
