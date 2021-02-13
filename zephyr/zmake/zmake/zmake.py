@@ -83,7 +83,7 @@ class Zmake:
 
         # Resolve build_dir if needed.
         build_dir = util.resolve_build_dir(
-            platform_ec_dir=module_paths['ec-shim'],
+            ec_dir=module_paths['ec-shim'],
             project_dir=project_dir,
             build_dir=build_dir)
         # Make sure the build directory is clean.
@@ -151,7 +151,7 @@ class Zmake:
 
     def build(self, build_dir, output_files_out=None):
         """Build a pre-configured build directory."""
-        build_dir = util.resolve_build_dir(platform_ec_dir=self.platform_ec_dir,
+        build_dir = util.resolve_build_dir(ec_dir=self.ec_dir,
                                            project_dir=build_dir,
                                            build_dir=build_dir)
         project = zmake.project.Project(build_dir / 'project')
@@ -205,7 +205,7 @@ class Zmake:
         """Test a build directory."""
         procs = []
         output_files = []
-        build_dir = util.resolve_build_dir(platform_ec_dir=self.platform_ec_dir,
+        build_dir = util.resolve_build_dir(ec_dir=self.ec_dir,
                                            project_dir=build_dir,
                                            build_dir=build_dir)
         self.build(build_dir, output_files_out=output_files)
@@ -316,7 +316,7 @@ class Zmake:
         return rv
 
     @property
-    def platform_ec_dir(self):
+    def ec_dir(self):
         return zmake.modules.locate_modules(
             checkout_dir=self.checkout,
             version=None)['ec-shim']
