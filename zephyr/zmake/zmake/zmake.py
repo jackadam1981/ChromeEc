@@ -55,7 +55,7 @@ class Zmake:
         self.logger = logging.getLogger(self.__class__.__name__)
 
     def configure(self, project_dir, build_dir=None,
-                  version=None, zephyr_base=None, module_paths=None,
+                  version=None, zephyr_base=None, modules_base=None,
                   toolchain=None, ignore_unsupported_zephyr_version=False,
                   build_after_configure=False, test_after_configure=False,
                   bringup=False):
@@ -78,12 +78,15 @@ class Zmake:
             zephyr_base = util.locate_zephyr_base(self.checkout, version)
         zephyr_base = zephyr_base.resolve()
 
-        if not module_paths:
-            module_paths = zmake.modules.locate_modules(self.checkout, version)
+        ec_dir = pathlib.Path(os.getcwd())
+        if not modules_base:
+            modules_base = self.checkout / 'src' / 'third_party' / 'zephyr'
+        module_paths = zmake.modules.locate_modules(modules_base, ec_dir,
+                                                    version)
 
         # Resolve build_dir if needed.
         build_dir = util.resolve_build_dir(
-            ec_dir=module_paths['ec-shim'],
+            ec_dir=ec_dir,
             project_dir=project_dir,
             build_dir=build_dir)
         # Make sure the build directory is clean.
@@ -151,7 +154,8 @@ class Zmake:
 
     def build(self, build_dir, output_files_out=None):
         """Build a pre-configured build directory."""
-        build_dir = util.resolve_build_dir(ec_dir=self.ec_dir,
+        ec_dir = pathlib.Path(os.getcwd())
+        build_dir = util.resolve_build_dir(ec_dir=ec_dir,
                                            project_dir=build_dir,
                                            build_dir=build_dir)
         project = zmake.project.Project(build_dir / 'project')
@@ -205,7 +209,7 @@ class Zmake:
         """Test a build directory."""
         procs = []
         output_files = []
-        build_dir = util.resolve_build_dir(ec_dir=self.ec_dir,
+        build_dir = util.resolve_build_dir(ec_dir=pathlib.Path(os.getcwd()),
                                            project_dir=build_dir,
                                            build_dir=build_dir)
         self.build(build_dir, output_files_out=output_files)
@@ -282,7 +286,9 @@ class Zmake:
 
     def testall(self, fail_fast=False):
         """Test all the valid test targets"""
-        modules = zmake.modules.locate_modules(self.checkout, version=None)
+        ec_dir = pathlib.Path(os.getcwd())
+        modules = zmake.modules.locate_modules(self.checkout, ec_dir,
+                                               version=None)
         root_dirs = [modules['ec-shim'] / 'zephyr']
         project_dirs = []
         for root_dir in root_dirs:
@@ -314,9 +320,3 @@ class Zmake:
         for tmpdir in tmp_dirs:
             shutil.rmtree(tmpdir)
         return rv
-
-    @property
-    def ec_dir(self):
-        return zmake.modules.locate_modules(
-            checkout_dir=self.checkout,
-            version=None)['ec-shim']

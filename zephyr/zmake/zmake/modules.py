@@ -10,45 +10,40 @@ import zmake.build_config as build_config
 import zmake.util as util
 
 
-def third_party_module(name, checkout, version):
+def third_party_module(name, modules_dir, version):
     """Common callback in registry for all third_party/zephyr modules.
 
     Args:
         name: The name of the module.
-        checkout: The path to the chromiumos source.
+        modules_dir: The path to the modules directory.
         version: The zephyr version.
 
     Return:
-        The path to the module module.
+        The path to the module.
     """
     if not version or len(version) < 2:
         return None
-    return checkout / 'src' / 'third_party' / 'zephyr' / name / 'v{}.{}'.format(
-        version[0], version[1])
+    return modules_dir / name / 'v{}.{}'.format(version[0], version[1])
 
 
-known_modules = {
-    'hal_stm32': third_party_module,
-    'cmsis': third_party_module,
-    'ec-shim': lambda name, checkout, version: (
-        checkout / 'src' / 'platform' / 'ec'),
-}
+known_modules = ['hal_stm32', 'cmsis']
 
 
-def locate_modules(checkout_dir, version, modules=known_modules):
+def locate_modules(modules_dir, ec_dir, version):
     """Resolve module locations from a known_modules dictionary.
 
     Args:
-        checkout_dir: The path to the chromiumos source.
+        modules_dir: The path to the modules directory
+        ec_dir: The path to the EC directory (e.g. 'src/platform/ec')
         version: The zephyr version, as a two or three tuple of ints.
-        modules: The known_modules dictionary to use for resolution.
 
     Returns:
         A dictionary mapping module names to paths.
     """
     result = {}
-    for name, locator in known_modules.items():
-        result[name] = locator(name, checkout_dir, version)
+    for name in known_modules:
+        result[name] = third_party_module(name, modules_dir, version)
+    result['ec-shim'] = ec_dir
     return result
 
 

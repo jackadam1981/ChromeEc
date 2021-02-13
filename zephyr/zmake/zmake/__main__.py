@@ -80,6 +80,10 @@ def main(argv=None):
     configure.add_argument('-t', '--toolchain', help='Name of toolchain to use')
     configure.add_argument('--zephyr-base', type=pathlib.Path,
                            help='Path to Zephyr source')
+    configure.add_argument(
+        '--modules-base',
+        type=pathlib.Path,
+        help='Path to Zephyr modules directory, with subdirs for each module')
     configure.add_argument('--bringup', action='store_true',
                            dest='bringup',
                            help='Enable bRingup debugging features')
