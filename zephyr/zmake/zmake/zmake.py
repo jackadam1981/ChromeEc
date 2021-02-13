@@ -102,9 +102,9 @@ class Zmake:
             environ_defs={'ZEPHYR_BASE': str(zephyr_base),
                           'PATH': '/usr/bin'},
             cmake_defs={
-                'DTS_ROOT': str(module_paths['ec-shim'] / 'zephyr'),
+                'DTS_ROOT': ec_dir / 'zephyr',
                 'SYSCALL_INCLUDE_DIRS': str(
-                    module_paths['ec-shim'] / 'zephyr' / 'include' / 'drivers'),
+                    ec_dir / 'zephyr' / 'include' / 'drivers'),
             })
         module_config = zmake.modules.setup_module_symlinks(
             build_dir / 'modules', module_paths)
@@ -296,7 +296,7 @@ class Zmake:
             modules_base = checkout / 'src' / 'third_party' / 'zephyr'
         modules = zmake.modules.locate_modules(modules_base, ec_dir,
                                                version=None)
-        root_dirs = [modules['ec-shim'] / 'zephyr']
+        root_dirs = [ec_dir / 'zephyr']
         project_dirs = []
         for root_dir in root_dirs:
             self.logger.info('Finding zmake target under \'%s\'.', root_dir)
@@ -321,7 +321,7 @@ class Zmake:
 
         # Run pytest on platform/ec/zephyr/zmake/tests.
         self._run_pytest(
-            executor, modules['ec-shim'] / 'zephyr' / 'zmake' / 'tests')
+            executor, ec_dir / 'zephyr' / 'zmake' / 'tests')
 
         rv = executor.wait()
         for tmpdir in tmp_dirs:
