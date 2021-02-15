@@ -16,6 +16,24 @@
       "message": "What is this patch for? https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2641127 has been merged.",
       "revId": "7e98a85af29bb348b5b6208bd34cd09481120009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ace745_92db3752",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-02-15T00:07:29Z",
+      "side": 1,
+      "message": "The linked change was reverted because it failed to build on some boards.",
+      "parentUuid": "a6a183cc_3403f79e",
+      "revId": "7e98a85af29bb348b5b6208bd34cd09481120009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
