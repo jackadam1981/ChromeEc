@@ -40,6 +40,11 @@ static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Device initialized at least once */
 #define USB_MUX_FLAG_INIT		BIT(2)
 
+/* Need to send host event to the AP */
+#define USB_MUX_FLAG_SEND_HOST_EVENT	BIT(3)
+
+#define USB_MUX_FLAG_CLEARED_HOST_EVENT BIT(4)
+
 enum mux_config_type {
 	USB_MUX_INIT,
 	USB_MUX_LOW_POWER,
@@ -66,8 +71,13 @@ static int configure_mux(int port,
 	}
 
 	if ((config == USB_MUX_SET_MODE && *mux_state == USB_PD_MUX_NONE) ||
-	      config == USB_MUX_INIT) {
+	     config == USB_MUX_INIT &&
+	     !(flags[port], USB_MUX_FLAG_CLEARED_HOST_EVENT)) {
 		usb_mux_set_disconnect_latch_flag(port, true);
+		usb_mux_set_send_host_event_flag(port, false);
+	} else {
+		atomic_clear_bits(&flags[port],
+				  USB_MUX_FLAG_CLEARED_HOST_EVENT);
 	}
 
 	/*
@@ -299,6 +309,45 @@ void usb_mux_set_disconnect_latch_flag(int port, bool enable)
 		atomic_clear_bits(&flags[port], USB_MUX_FLAG_DISCONNECT_LATCH);
 }
 
+/* Get USB MUX (virtual MUX) send host event flag */
+bool usb_mux_get_send_host_event_flag(int port)
+{
+	bool rv = false;
+
+	if (port >= board_get_usb_pd_port_count())
+		return rv;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return rv;
+
+	return !!(flags[port] & USB_MUX_FLAG_SEND_HOST_EVENT);
+}
+
+/* Set USB MUX (virtual MUX) send host event flag */
+void usb_mux_set_send_host_event_flag(int port, bool enable)
+{
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return;
+
+	if (enable)
+		atomic_or(&flags[port], USB_MUX_FLAG_SEND_HOST_EVENT);
+	else
+		atomic_clear_bits(&flags[port], USB_MUX_FLAG_SEND_HOST_EVENT);
+}
+
+static void usb_mux_clear_host_event_flag(void)
+{
+	for (i < board_get_usb_pd_port_count()) {
+		usb_mux_set_send_host_event_flag(i, false);
+		atomic_or(&flags[port], USB_MUX_FLAG_CLEARED_HOST_EVENT);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_mux_clear_host_event_flag,
+	     HOOK_PRIO_FIRST);
+
 void usb_mux_flip(int port)
 {
 	mux_state_t mux_state;
@@ -453,10 +502,13 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	    usb_mux_get_disconnect_latch_flag(port)) {
 		r->flags = USB_PD_MUX_NONE;
 		usb_mux_set_disconnect_latch_flag(port, false);
+		usb_mux_set_send_host_event_flag(port, true);
 		args->response_size = sizeof(*r);
-		host_set_single_event(EC_HOST_EVENT_USB_MUX);
 		return EC_RES_SUCCESS;
 	}
+
+	/* Set send host flag to false after sending the latest mux state */
+	usb_mux_set_send_host_event_flag(port, false);
 
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
