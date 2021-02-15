@@ -1030,6 +1030,11 @@ static void do_cc(int cc_config_new)
 
 	if (cc_config_new != cc_config) {
 		if (!(cc_config & CC_DETACH)) {
+			/*
+			 * Put UFP_D the USB hub under reset to re-enumerate
+			 * cleanly the USB devices later.
+			 */
+			gpio_set_level(GPIO_HOST_USB_HUB_RESET_L, 0);
 			/* Force detach */
 			gpio_set_level(GPIO_DUT_CHG_EN, 0);
 			/* Always set to 0 here so both CC lines are changed */
@@ -1088,6 +1093,8 @@ static void do_cc(int cc_config_new)
 				pd_comm_enable(DUT, 1);
 			else
 				pd_comm_enable(DUT, chargeable);
+			/* Re-connect downstream USB 3.0 devices */
+			gpio_set_level(GPIO_HOST_USB_HUB_RESET_L, 1);
 		}
 	}
 }
