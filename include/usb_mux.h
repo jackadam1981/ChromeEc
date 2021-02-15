@@ -279,4 +279,19 @@ bool usb_mux_get_disconnect_latch_flag(int port);
  */
 void usb_mux_set_disconnect_latch_flag(int port, bool enable);
 
+/**
+ * Set the USB MUX host event flag for sending the next Mux state.
+ *
+ * @param port port number.
+ * @param enable whether to enable or disable the host event flag.
+ */
+void usb_mux_set_send_host_event_flag(int port, bool enable);
+
+/**
+ * Get the USB MUX host event flag.
+ *
+ * @param port port number.
+ * @return status of host event flag.
+ */
+bool usb_mux_get_send_host_event_flag(int port);
 #endif

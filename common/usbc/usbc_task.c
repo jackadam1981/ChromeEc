@@ -98,6 +98,13 @@ static bool pd_task_loop(int port)
 						: USBC_EVENT_TIMEOUT);
 
 	/*
+	 * Some scenarios in G3 wake the latest Mux state is not sent to AP.
+	 * Send host event for sending the latest Mux state.
+	 */
+	if (usb_mux_get_send_host_event_flag(port))
+		host_set_single_event(EC_HOST_EVENT_USB_MUX);
+
+	/*
 	 * Re-use TASK_EVENT_RESET_DONE in tests to restart the USB task
 	 * if this code is running in a unit test.
 	 */
