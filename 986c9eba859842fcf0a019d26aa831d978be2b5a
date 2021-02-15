@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b5a55df_55d2690e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-02-15T20:57:50Z",
+      "side": 1,
+      "message": "So asked for \"any\" review, so for a start you\u0027ll get mine (US folks have President\u0027s Day, so they won\u0027t be around until Tuesday morning US time), even if I don\u0027t know USB PD a lot ;-)\n\nSome stylistic nits and the cc part looks suspicious to me, although it might just be what the spec requires - in that case, feel free disregard my comment.",
+      "revId": "986c9eba859842fcf0a019d26aa831d978be2b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bceabc6_7e0d69b5",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-02-15T20:57:50Z",
+      "side": 1,
+      "message": "That seems to indicate some precedence, but I don\u0027t see it reflected anywhere else.\n\n(also nit: \"cc\" including its declaration, could be moved into the else-block below to make it clearer that it\u0027s only used there)",
+      "revId": "986c9eba859842fcf0a019d26aa831d978be2b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92f98ae1_0b33c242",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-02-15T20:57:50Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "986c9eba859842fcf0a019d26aa831d978be2b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8131434b_8988f685",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-02-15T20:57:50Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "986c9eba859842fcf0a019d26aa831d978be2b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3227e0b0_f1b8fa80",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-02-15T20:57:50Z",
+      "side": 1,
+      "message": "missing whitespace",
+      "range": {
+        "startLine": 770,
+        "startChar": 4,
+        "endLine": 770,
+        "endChar": 5
+      },
+      "revId": "986c9eba859842fcf0a019d26aa831d978be2b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
