@@ -40,6 +40,8 @@ static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Device initialized at least once */
 #define USB_MUX_FLAG_INIT		BIT(2)
 
+#define USB_MUX_FLAG_CLEARED_HOST_EVENT	BIT(4)
+
 enum mux_config_type {
 	USB_MUX_INIT,
 	USB_MUX_LOW_POWER,
@@ -67,7 +69,11 @@ static int configure_mux(int port,
 
 	if ((config == USB_MUX_SET_MODE && *mux_state == USB_PD_MUX_NONE) ||
 	      config == USB_MUX_INIT) {
-		usb_mux_set_disconnect_latch_flag(port, true);
+		if (flags[port] & USB_MUX_FLAG_CLEARED_HOST_EVENT)
+			atomic_clear_bits(&flags[port],
+					USB_MUX_FLAG_CLEARED_HOST_EVENT);
+		else
+			usb_mux_set_disconnect_latch_flag(port, true);
 	}
 
 	/*
@@ -298,6 +304,18 @@ void usb_mux_set_disconnect_latch_flag(int port, bool enable)
 	else
 		atomic_clear_bits(&flags[port], USB_MUX_FLAG_DISCONNECT_LATCH);
 }
+
+static void usb_mux_clear_host_event_flag(void)
+{
+	int i;
+
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		usb_mux_set_disconnect_latch_flag(i, false);
+		atomic_or(&flags[i], USB_MUX_FLAG_CLEARED_HOST_EVENT);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_mux_clear_host_event_flag,
+		HOOK_PRIO_FIRST);
 
 void usb_mux_flip(int port)
 {
