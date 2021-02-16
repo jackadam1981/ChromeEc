@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e64269_31c79b8c",
+        "filename": "zephyr/shim/core/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-16T20:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d161923_9044bde0",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "57d166ca01c1ae37cd38dcd684959a20c8ef1ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db9fe729_5fbc389c",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d50db99_a0352999",
+        "filename": "zephyr/shim/core/cortex-m/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-16T20:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db9fe729_5fbc389c",
+      "revId": "57d166ca01c1ae37cd38dcd684959a20c8ef1ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70425623_9128e9df",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-02-16T19:29:19Z",
       "side": 1,
       "message": "something tells me we can avoid asm for this if we use zephyr\u0027s common panic functionality",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "57d166ca01c1ae37cd38dcd684959a20c8ef1ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "692e6ab7_e9ac4ba1",
+        "filename": "zephyr/shim/core/cortex-m/software_panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-16T20:59:13Z",
+      "side": 1,
+      "message": "I looked and wasn\u0027t able to find it, for now this seems pretty well encapsulated that we can punt it for the sake of getting sysjump/vboot/efs2 up and running. I filed a tracking bug to do this later at b/180422087",
+      "parentUuid": "70425623_9128e9df",
       "range": {
         "startLine": 11,
         "startChar": 1,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "390366e1_e38be858",
+        "filename": "zephyr/shim/core/cortex-m/software_panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-16T20:59:13Z",
+      "side": 1,
+      "message": "I think this is cleaner no? AFAICT this is architecture specific (the code looks different enough in various core/*/panic.c, so it makes sense to have it under core/cortex-m to match).",
+      "parentUuid": "2640381f_2ddea766",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "57d166ca01c1ae37cd38dcd684959a20c8ef1ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3620532b_3bee25c2",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-02-16T19:29:19Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "57d166ca01c1ae37cd38dcd684959a20c8ef1ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b1d7b5_051b4315",
+        "filename": "zephyr/shim/core/cortex-m/software_panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-16T20:59:13Z",
+      "side": 1,
+      "message": "Merging discussion, feel free to re-open if needed.",
+      "parentUuid": "3620532b_3bee25c2",
       "range": {
         "startLine": 38,
         "startChar": 5,
