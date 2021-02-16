@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd6450a7_263f8d4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-16T17:52:07Z",
+      "side": 1,
+      "message": "line too long?",
+      "range": {
+        "startLine": 10,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 73
+      },
+      "revId": "59305bd52418f6b5cc03eac01ca8695c9fa3666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2049e35f_b0be3d0f",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-16T17:52:07Z",
+      "side": 1,
+      "message": "My worry is that people might call this function in other code and then be confused. For now it is OK as there is no interrupt_enable(), so people will likely figure it out.\n\nBut I wonder if we could adjust the caller instead, and remove interrupt_disable() from the shim?",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 9
+      },
+      "revId": "59305bd52418f6b5cc03eac01ca8695c9fa3666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
