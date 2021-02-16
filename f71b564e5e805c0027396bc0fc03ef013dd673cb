@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7586601_0b14a12b",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-16T23:39:23Z",
+      "side": 1,
+      "message": "Yup, SVDM only.  And Attention will always be a REQ",
+      "range": {
+        "startLine": 79,
+        "startChar": 29,
+        "endLine": 79,
+        "endChar": 41
+      },
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9d1565_99ba3090",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2398,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-16T23:39:23Z",
+      "side": 1,
+      "message": "Is this defined in this CL?",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
