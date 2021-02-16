@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcad51fb_b2debcd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-16T22:59:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22477c67_4a48bcb7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "382513e38c16196f86685bba8145d250d116824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0acbf95a_58bed0f5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-12T17:31:37Z",
       "side": 1,
       "message": "nit: Can you put the exact command you ran here? That makes it easier for others to reproduce it even if they aren\u0027t familiar with the setup (or when we\u0027re browsing the history a few years from now and have forgotten how it works).\n\nExample: https://crrev.com/c/2682780",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "382513e38c16196f86685bba8145d250d116824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5139269_d4d64e73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-16T22:59:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0acbf95a_58bed0f5",
       "range": {
         "startLine": 16,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a88750_befe9cd3",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-16T22:59:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "126602e3_1199735d",
+      "range": {
+        "startLine": 191,
+        "startChar": 16,
+        "endLine": 191,
+        "endChar": 31
+      },
+      "revId": "382513e38c16196f86685bba8145d250d116824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4439ce4_b8e84469",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-12T17:31:37Z",
       "side": 1,
       "message": "This variable is no longer used and can be removed",
+      "range": {
+        "startLine": 209,
+        "startChar": 10,
+        "endLine": 209,
+        "endChar": 25
+      },
+      "revId": "382513e38c16196f86685bba8145d250d116824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9355fec_d13eec22",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-16T22:59:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4439ce4_b8e84469",
       "range": {
         "startLine": 209,
         "startChar": 10,
@@ -111,6 +207,53 @@
         "startChar": 21,
         "endLine": 224,
         "endChar": 36
+      },
+      "revId": "382513e38c16196f86685bba8145d250d116824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fa366cd_3e17a637",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-16T22:59:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d6ac4d6_0cb64fe8",
+      "range": {
+        "startLine": 224,
+        "startChar": 21,
+        "endLine": 224,
+        "endChar": 36
+      },
+      "revId": "382513e38c16196f86685bba8145d250d116824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3121276e_88060230",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-16T22:59:26Z",
+      "side": 1,
+      "message": "should this also be removed?",
+      "range": {
+        "startLine": 239,
+        "startChar": 25,
+        "endLine": 239,
+        "endChar": 41
       },
       "revId": "382513e38c16196f86685bba8145d250d116824f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
