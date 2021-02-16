@@ -10,6 +10,7 @@
 
 #ifdef SECTION_IS_RW
 GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(C, 1),       GPIO_INT_FALLING | GPIO_PULL_UP,  ppc_interrupt)
+GPIO_INT(USBC_DP_MUX_ALERT_ODL,  PIN(C, 12),       GPIO_INT_FALLING | GPIO_PULL_UP,   tcpc_alert_event)
 GPIO_INT(DDI_MST_IN_HPD,         PIN(C, 14),      GPIO_INT_BOTH, hpd_interrupt)
 #endif
 
