@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a953348f_43e7e549",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-16T17:52:07Z",
+      "side": 0,
+      "message": "Board has no C1, can be removed",
+      "revId": "0a36c06ebe9a055b16d3ef6ad46d820cc48f1610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84beda00_18db70c6",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-16T17:52:07Z",
+      "side": 0,
+      "message": "Should it be okay leaving behind the old board versions?  I\u0027d guess so, right?",
+      "revId": "0a36c06ebe9a055b16d3ef6ad46d820cc48f1610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
