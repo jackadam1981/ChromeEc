@@ -201,6 +201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "422a2605_3d18a7f5",
+        "filename": "zephyr/shim/core/cortex-m/software_panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-16T22:29:25Z",
+      "side": 1,
+      "message": "No argument with that, I\u0027m just saying that it looks cleaner to me to have the functions defined in their own file and logically include them in the build instead of wrapping the functions with #ifdef. It also follows the same pattern we have established with chip/ and platform/ec uses for both chip and core. I think that deviating from that is a longer discussion that should involve a larger group.",
+      "parentUuid": "eec911b9_aece8f56",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "57d166ca01c1ae37cd38dcd684959a20c8ef1ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3620532b_3bee25c2",
