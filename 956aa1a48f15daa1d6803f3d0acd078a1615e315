@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e866337_aa063f7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-16T23:43:25Z",
+      "side": 1,
+      "message": "Zephyr\u0027s support of irq_lock() doesn\u0027t disable all interrupts",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "956aa1a48f15daa1d6803f3d0acd078a1615e315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9dc5f90_4866edc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-16T23:43:25Z",
+      "side": 1,
+      "message": "I think you mean include/arch/arm/aarch32/asm_inline_gcc.h here.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "956aa1a48f15daa1d6803f3d0acd078a1615e315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b6b4c0_21256283",
+        "filename": "zephyr/shim/core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-16T23:43:25Z",
+      "side": 1,
+      "message": "Add a comment that should only be called by the system jump code since that is a special case.  Also include the commit message comment here - specifically call out that the Zephyr irq_unlock() leaves some interrupts enabled.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 28
+      },
+      "revId": "956aa1a48f15daa1d6803f3d0acd078a1615e315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69033eff_b3b9dc78",
+        "filename": "zephyr/shim/core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-16T23:43:25Z",
+      "side": 1,
+      "message": "I agree, this isn\u0027t needed and can only lead to coding errors.  You can add a comment that the Zephyr arch_switch_to_main_thread() handles enabling interrupts during bootup.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "956aa1a48f15daa1d6803f3d0acd078a1615e315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
