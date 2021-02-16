@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a2982ff_fa33754c",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-16T23:59:09Z",
+      "side": 1,
+      "message": "From RM0433 sections 4.9.4 and 4.9.25 it seems the bank locking is separate per bank?",
+      "parentUuid": "89d5fc6a_dba2a0d0",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 11
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0506bae_ce208746",
         "filename": "chip/stm32/flash-stm32h7.c",
         "patchSetId": 12
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-12T07:13:57Z",
       "side": 1,
       "message": "Why are we doing only one bank?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 45
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cde3c26_278ba3b3",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-02-16T23:59:09Z",
+      "side": 1,
+      "message": "This is because there\u0027s only one set of option bytes, see original file commens:\n\n\t/*\n\t * Always use bank 0 flash controller as there is only one option bytes\n\t * set for both banks.\n\t */",
+      "parentUuid": "a0506bae_ce208746",
       "range": {
         "startLine": 176,
         "startChar": 0,
