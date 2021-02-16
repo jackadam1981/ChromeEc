@@ -115,6 +115,7 @@ enum usb_strings {
 	USB_STR_PRODUCT,
 	USB_STR_SERIALNO,
 	USB_STR_VERSION,
+	/* USB_STR_I2C_NAME, */
 	USB_STR_UPDATE_NAME,
 	USB_STR_COUNT
 };
@@ -122,6 +123,8 @@ enum usb_strings {
 
 /* RW Specific Config Options */
 #ifdef SECTION_IS_RW
+/* No AP on any honeybuns variants */
+#undef CONFIG_USB_PD_HOST_CMD
 
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_POWER_DELIVERY
@@ -232,5 +235,6 @@ extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
 
 #endif /* !__ASSEMBLER__ */
+
 
 #endif /* __CROS_EC_BASEBOARD_H */
