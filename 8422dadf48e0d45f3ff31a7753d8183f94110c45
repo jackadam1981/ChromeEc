@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49a26e63_e0e4b849",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6008,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-16T23:32:16Z",
+      "side": 1,
+      "message": "I think we\u0027re allowed to send DiscoverIdentity any time we want to. Granted, I don\u0027t know of any partners that would send it in the middle of operation, but I think they could.\n\nWe should be safe to just clear the flag on exit mode, I believe.",
+      "parentUuid": "4e3dcc14_9646abbc",
+      "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84d5fbd9_45ace819",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "I removed that comment entirely as it wasn\u0027t relevant at all any longer. I added a comment about what the function is doing and why this state will exit.",
       "parentUuid": "84d5fbd9_45ace819",
+      "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7895867f_ba03ba80",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6038,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-16T23:32:16Z",
+      "side": 1,
+      "message": "I like the comment :)",
+      "parentUuid": "bff3a7dc_3335bdc4",
       "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
