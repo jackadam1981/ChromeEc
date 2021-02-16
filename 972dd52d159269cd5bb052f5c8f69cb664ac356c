@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0bb575a_fc088e22",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-16T19:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "868bdf2d_05e7a345",
+      "revId": "972dd52d159269cd5bb052f5c8f69cb664ac356c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f20c79f_8e83a218",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-16T16:46:04Z",
       "side": 1,
       "message": "\u0026\u0026 !(flags[port], USB_MUX_FLAG_CLEARED_HOST_EVENT)",
+      "range": {
+        "startLine": 71,
+        "startChar": 29,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "972dd52d159269cd5bb052f5c8f69cb664ac356c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f03f1cd_230efb33",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-16T19:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f20c79f_8e83a218",
       "range": {
         "startLine": 71,
         "startChar": 29,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed42048e_e6eab459",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-16T19:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85061f35_cb004346",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "972dd52d159269cd5bb052f5c8f69cb664ac356c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "724dfcc9_b1471c62",
@@ -94,6 +160,24 @@
       "writtenOn": "2021-02-16T16:46:04Z",
       "side": 1,
       "message": "static void usb_mux_clear_host_event_flag(void)\n{\n      for (i \u003c board_get_usb_pd_port_count()) {\n           usb_mux_set_send_host_event_flag(i, false); \n           atomic_or(\u0026flags[port], USB_MUX_FLAG_CLEARED_HOST_EVENT);\n      }\n}\nDECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_mux_clear_host_event_flag, HOOK_PRIO_FIRST);",
+      "revId": "972dd52d159269cd5bb052f5c8f69cb664ac356c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b43a796_f3bd4585",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-16T19:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "724dfcc9_b1471c62",
       "revId": "972dd52d159269cd5bb052f5c8f69cb664ac356c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
