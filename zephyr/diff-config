@@ -1,0 +1,66 @@
+#!/bin/sh
+
+BOARD=volteer
+BUILD_OUT=$HOME/build-$BOARD
+
+ecos="$( mktemp )"
+zephyr_build="$( mktemp )"
+zephyr_defs="$( mktemp )"
+zephyr_all="$( mktemp )"
+
+make print-configs BOARD=$BOARD | grep "^CONFIG" | awk '{ print $1 }' | sort -u > $ecos
+
+zmake configure -b -B $BUILD_OUT zephyr/projects/volteer -t zephyr
+( cd $BUILD_OUT/build-ro && /opt/coreboot-sdk/bin/arm-eabi-gcc \
+	-DBUILD_VERSION=zephyr-v2.4.0-63-g9f3511cd0509 \
+	-DCHIP_FAMILY_NPCX7 \
+	-DCHIP_VARIANT_NPCX7M6FB \
+	-DCHROMIUM_EC \
+	-DCONFIG_ZEPHYR \
+	-DKERNEL \
+	-D_FORTIFY_SOURCE=2 \
+	-D__PROGRAM_START \
+	-D__ZEPHYR_SUPERVISOR__ \
+	-D__ZEPHYR__=1 \
+	-I/mnt/host/source/src/third_party/zephyr/main/v2.4/kernel/include \
+	-I/mnt/host/source/src/third_party/zephyr/main/v2.4/arch/arm/include \
+	-I/mnt/host/source/src/third_party/zephyr/main/v2.4/include \
+	-Izephyr/include/generated \
+	-I/mnt/host/source/src/third_party/zephyr/main/v2.4/soc/arm/nuvoton_npcx/npcx7 \
+	-I/mnt/host/source/src/third_party/zephyr/main/v2.4/lib/fnmatch/. \
+	-I/mnt/host/source/src/third_party/zephyr/main/v2.4/soc/arm/nuvoton_npcx/common/. \
+	-I/mnt/host/source/src/third_party/zephyr/main/v2.4/drivers \
+	-I/mnt/host/source/src/third_party/zephyr/cmsis/v2.4/CMSIS/Core/Include \
+	-Iec/include/generated \
+	-I/mnt/host/source/src/platform/ec/zephyr/include \
+	-I$BUILD_OUT/modules/ec-shim/zephyr/shim/include \
+	-I$BUILD_OUT/modules/ec-shim/fuzz \
+	-I$BUILD_OUT/modules/ec-shim/test \
+	-I$BUILD_OUT/modules/ec-shim/include \
+	-I$BUILD_OUT/modules/ec-shim/include/driver \
+	-I$BUILD_OUT/modules/ec-shim/third_party \
+	-I/mnt/host/source/src/platform/ec/zephyr/shim/chip/npcx/include \
+	-I/mnt/host/source/src/platform/ec/zephyr/projects/volteer/include \
+	-I$BUILD_OUT/modules/ec-shim/baseboard/volteer \
+	-I$BUILD_OUT/modules/ec-shim/board/volteer \
+	-isystem /mnt/host/source/src/third_party/zephyr/main/v2.4/lib/libc/minimal/include \
+	-isystem /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/include \
+	-isystem /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/include-fixed \
+	-imacros $BUILD_OUT/build-ro/zephyr/include/generated/autoconf.h \
+	-mcpu=cortex-m4 \
+	-mthumb \
+	-mabi=aapcs \
+	-std=c99 \
+	-nostdinc \
+	-E -dM \
+	$BUILD_OUT/modules/ec-shim/include/config.h \
+	) | grep '^#define CONFIG' | awk '{ print $2 }' | sort -u > $zephyr_build
+
+cat zephyr/shim/include/config_chip.h | egrep '^#(define|undef) CONFIG' | awk '{ print $2 }' | sort -u >> $zephyr_defs
+
+cat $zephyr_build $zephyr_defs | sort -u > $zephyr_all
+
+( echo "### missing build configs (board=$BOARD)"; comm -23 $ecos $zephyr_build ) | less
+( echo "### missing define/undef (board=$BOARD)"; comm -23 $ecos $zephyr_all ) | less
+
+rm -f -v $ecos $zephyr_build $zephyr_defs
