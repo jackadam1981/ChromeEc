@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eec911b9_aece8f56",
+        "filename": "zephyr/shim/core/cortex-m/software_panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-16T21:08:52Z",
+      "side": 1,
+      "message": "shim/src/panic.c allows for arch-specific code",
+      "parentUuid": "390366e1_e38be858",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "57d166ca01c1ae37cd38dcd684959a20c8ef1ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3620532b_3bee25c2",
         "filename": "zephyr/shim/core/cortex-m/software_panic.c",
         "patchSetId": 2
