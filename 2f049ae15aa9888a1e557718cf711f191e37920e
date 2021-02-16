@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec73b641_29ce0204",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-16T18:29:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1d081632_34cd32d9",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7260d354_dd393337",
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "Yeah... the M is mask though, which seemed needlessly verbose to have both.",
       "parentUuid": "5555ef96_bc5ff94c",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d484f96_f59c87a5",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-16T18:29:46Z",
+      "side": 1,
+      "message": "I think there is a little bit of value in being able to search for the name from the datasheet, even if that name is redundant, but it\u0027s up to you.",
+      "parentUuid": "6cffc6e1_78fbe3b0",
       "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7272ad_7c1b368a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-16T18:29:46Z",
+      "side": 1,
+      "message": "The code here seems fine, and my main concern is the number of assumptions it makes about how the part works that are not attributable to the datasheet.\n\nSun: I would dearly, dearly love it if Richktek could provide a comprehensive datasheet for this part. Currently, it has numerous undocumented behaviors.\n\nEric: In the absence of a complete datasheet, probably the best thing to do would be to summarize the various behaviors we\u0027re relying on here and why (can\u0027t source VCONN in auto-idle because Richtek said so, exit LPM on CC_STATUS change and clear BMCIO_LPEN based on empirical observation) in a bug comment and then reference that bug comment in code comments at appropriate places in rt1715.c.",
+      "revId": "5e2082758ae2a7c905cfe83b4e354f2c6431bd0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
