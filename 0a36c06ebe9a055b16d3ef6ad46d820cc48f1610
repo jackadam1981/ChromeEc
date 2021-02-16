@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e498c37c_3d6ac747",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-16T23:42:41Z",
+      "side": 0,
+      "message": "Yup, appears so.  I\u0027ll have to keep a better eye on CONFIG_USB_PD_PORT_MAX_COUNT during CLs in the future.  They did remove CONFIG_OCPC and related configs in their board.h, plus the C1 tasks.  Though the C1 interrupt line check is still here",
+      "parentUuid": "9139bbd9_a9018063",
+      "revId": "0a36c06ebe9a055b16d3ef6ad46d820cc48f1610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84beda00_18db70c6",
         "filename": "board/waddledoo/board.c",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 0,
       "message": "Yes. I figured no one would actually use those boards any more. They can\u0027t do the DVC anyways.",
       "parentUuid": "84beda00_18db70c6",
+      "revId": "0a36c06ebe9a055b16d3ef6ad46d820cc48f1610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98192fd5_146eb818",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-16T23:42:41Z",
+      "side": 0,
+      "message": "Sounds good",
+      "parentUuid": "30be12cd_d695e956",
       "revId": "0a36c06ebe9a055b16d3ef6ad46d820cc48f1610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
