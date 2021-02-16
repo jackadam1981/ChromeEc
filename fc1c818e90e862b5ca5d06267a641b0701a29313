@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ddc9950_a5622611",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-16T23:22:13Z",
+      "side": 1,
+      "message": "That is my understanding from RMO433 and this comment: \nhttps://source.corp.google.com/chromeos_public/src/platform/ec/chip/stm32/flash-stm32h7.c;rcl\u003d9e422c3c05fdd324565049b09be27c446f9dc0ca;l\u003d115",
+      "parentUuid": "727109db_a80601a4",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 56
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f6caaa0_01224749",
         "filename": "chip/stm32/flash-stm32h7.h",
         "patchSetId": 12
@@ -140,6 +164,30 @@
       "writtenOn": "2021-02-12T07:32:48Z",
       "side": 1,
       "message": "Why are we data/instruction barricading and ignoring bus faults here?\n\nCall chain here:\nunlock_flash_control_register --\u003e unlock --\u003e [data barrier + ignore bus fault]",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 21
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e0e232e_8dcff15f",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-16T23:22:13Z",
+      "side": 1,
+      "message": "see http://crrev.com/c/1096765 commit message",
+      "parentUuid": "c8292ed4_bc1df15d",
       "range": {
         "startLine": 103,
         "startChar": 0,
