@@ -10,6 +10,7 @@
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/stm32gx.h"
 #include "driver/tcpm/tcpci.h"
+#include "driver/usb_mux/ps8822.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -18,12 +19,19 @@
 #include "task.h"
 #include "uart.h"
 #include "usb_descriptor.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+#include "usb_pd_dp_ufp.h"
+#include "usb_pe_sm.h"
+#include "usb_prl_sm.h"
+#include "usb_tc_sm.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
+#define QUICHE_PD_DEBUG_LVL 1
 
 #ifdef SECTION_IS_RW
 #define CROS_EC_SECTION "RW"
