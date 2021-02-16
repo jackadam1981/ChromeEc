@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5ce6d7_14269b9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-16T21:46:23Z",
+      "side": 1,
+      "message": "nit: remove space",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "5eb64300ab09fbf0cfcb7206d244dbbe9d1606af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3d0151_a43fb255",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-16T21:46:23Z",
+      "side": 1,
+      "message": "Looks correct to me, but will defer to others that use these applications since I haven\u0027t.",
+      "revId": "5eb64300ab09fbf0cfcb7206d244dbbe9d1606af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
