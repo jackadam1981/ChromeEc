@@ -8,7 +8,10 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "usb_pd.h"
+#include "system.h"
 #include "timer.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
@@ -64,7 +67,8 @@ static void baseboard_init(void)
 	CPRINTS("board: Power rails enabled");
 
 #ifdef SECTION_IS_RW
-
+	system_clear_reset_flags(EC_RESET_FLAG_POWER_ON);
+	system_set_reset_flags(EC_RESET_FLAG_EFS);
 #else
 	baseboard_set_usbc_sink_mode();
 #endif
