@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c5e627_a0aa0b49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-16T10:34:52Z",
+      "side": 1,
+      "message": "I had to change the new config option to be DP specific as volteer had added the same config option I was adding in this CL\n\n/* Supports DP as UFP-D and requires HPD to DP_ATTEN converter */\n#undef CONFIG_USB_PD_ALT_MODE_UFP_DP",
+      "revId": "2898923d2f171806a92c9f17f1e8776d6df22b8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
