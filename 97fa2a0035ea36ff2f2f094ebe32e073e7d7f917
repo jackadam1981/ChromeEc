@@ -45,6 +45,54 @@
       },
       "revId": "97fa2a0035ea36ff2f2f094ebe32e073e7d7f917",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6d3c79a_c760aa2d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-02-16T19:44:50Z",
+      "side": 1,
+      "message": "Oh good point, did not realize that they conflicted.",
+      "parentUuid": "5b7bd290_74a10105",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "97fa2a0035ea36ff2f2f094ebe32e073e7d7f917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e98d0c0_b6f9d41e",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-02-16T19:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ab41de_8ffdb8b2",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "97fa2a0035ea36ff2f2f094ebe32e073e7d7f917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
