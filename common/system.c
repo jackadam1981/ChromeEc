@@ -46,6 +46,12 @@
 /* Round up to a multiple of 4 */
 #define ROUNDUP4(x) (((x) + 3) & ~3)
 
+#ifdef CONFIG_ZEPHYR
+#ifdef CONFIG_CPU_CORTEX_M
+#define interrupt_disable() __asm__("cpsid i")
+#endif
+#endif /* CONFIG_ZEPHYR */
+
 /* Data for an individual jump tag */
 struct jump_tag {
 	uint16_t tag;		/* Tag ID */
