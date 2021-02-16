@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea7cbb11_f61f6d92",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-16T17:28:49Z",
+      "side": 1,
+      "message": "How about: read-only and read-write images\n\nAlso some note about how the EC has two images and why would be useful here",
+      "range": {
+        "startLine": 367,
+        "startChar": 35,
+        "endLine": 367,
+        "endChar": 41
+      },
+      "revId": "bfc53db559ded76c58885dfbc4c0d939098543a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
