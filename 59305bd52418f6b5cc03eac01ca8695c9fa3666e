@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7551b44e_e400a7b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-16T18:04:02Z",
+      "side": 1,
+      "message": "Instead of implementing interrupt_enable, why not just move the code to use irq_lock with no corresponding irq_unlock?",
+      "revId": "59305bd52418f6b5cc03eac01ca8695c9fa3666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2049e35f_b0be3d0f",
