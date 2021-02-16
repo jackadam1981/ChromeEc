@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0a3e43_1f50470b",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-16T17:22:32Z",
+      "side": 1,
+      "message": "I filed b:180403276 to move this header to the include/driver/temp_sensor directory.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "d6eaa334df9abe58c0ab23bd5db1a3a876c6b085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
