@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d20b1c_f61cc718",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-02-16T17:16:30Z",
+      "side": 1,
+      "message": "If we decide to go a different route for solving the panic data hand-over, we can still undo this approach without breaking compatibility further than we already did, so getting this in.",
+      "revId": "188665c2d5537c2e3b107a4e4b6dbd29ae03601f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
