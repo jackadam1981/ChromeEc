@@ -46,6 +46,15 @@
 #undef CONFIG_RW_ROM_RESIDENT_SIZE
 
 /*
+ * ECOS specific options, not used in Zephyr.
+ */
+#undef CONFIG_CONSOLE_UART
+#undef CONFIG_I2C_MULTI_PORT_CONTROLLER
+#undef CONFIG_IRQ_COUNT
+#undef CONFIG_LTO
+#undef CONFIG_FPU
+
+/*
  * This not used by the Zephyr code since we always make cros_crc8() available.
  * Define it here to reduce the delta from the ECOS CONFIG.
  */
