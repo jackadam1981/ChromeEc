@@ -29,16 +29,43 @@ static void board_power_sequence(void)
 /******************************************************************************/
 /* I2C port map configuration */
 const struct i2c_port_t i2c_ports[] = {
-	{"usbc",   I2C_PORT_USBC,   400, GPIO_EC_I2C1_SCL, GPIO_EC_I2C1_SDA},
-	{"usb_mst",  I2C_PORT_MST,  400, GPIO_EC_I2C2_SCL, GPIO_EC_I2C2_SDA},
-	{"eeprom",  I2C_PORT_EEPROM,  400, GPIO_EC_I2C3_SCL, GPIO_EC_I2C3_SDA},
+	{"i2c1",  I2C_PORT_I2C1,  400, GPIO_EC_I2C1_SCL, GPIO_EC_I2C1_SDA},
+	{"i2c3",  I2C_PORT_I2C3,  400, GPIO_EC_I2C3_SCL, GPIO_EC_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+#ifndef SECTION_IS_RW
+static void baseboard_set_usbc_sink_mode(void)
+{
+	uint32_t cr;
+
+	/*
+	 * Bare minimum code required to enable UCPD peripheral and apply Rd to
+	 * the CC lines. This is only applied in RO.
+	 */
+	/* Ensure that clock to UCPD is enabled */
+	STM32_RCC_APB1ENR2 |= STM32_RCC_APB1ENR2_UPCD1EN;
+	/* enable the peripheral */
+	STM32_UCPD_CFGR1(0) |= STM32_UCPD_CFGR1_UCPDEN;
+	/* Apply Rd to both CC lines */
+	cr = STM32_UCPD_CR(0);
+	cr |= STM32_UCPD_CR_ANAMODE | STM32_UCPD_CR_CCENABLE_MASK;
+	STM32_UCPD_CR(0) = cr;
+
+	CPRINTS("usbc: CR = 0x%x", STM32_UCPD_CR(0));
+}
+#endif
 
 static void baseboard_init(void)
 {
 	/* Turn on power rails */
 	board_power_sequence();
 	CPRINTS("board: Power rails enabled");
+
+#ifdef SECTION_IS_RW
+
+#else
+	baseboard_set_usbc_sink_mode();
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
