@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d0fe80_a606e24d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-16T17:54:20Z",
+      "side": 1,
+      "message": "I believe this was done so that we can pass a project dir as a build dir and use the default build dir in that case. peress@ can clarify.",
+      "revId": "cfe7842a61b56fccc2389f21dcc23f7833000165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
