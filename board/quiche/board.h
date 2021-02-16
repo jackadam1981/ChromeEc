@@ -18,6 +18,7 @@
 #define USB_PD_PORT_HOST   0
 #define USB_PD_PORT_DP   1
 
+#define CONFIG_USB_MUX_PS8822
 
 #define CONFIG_USB_PID 0x5048
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
@@ -40,8 +41,10 @@
 
 #include "registers.h"
 
-#define GPIO_TRIGGER_1 GPIO_USB3_A1_CDP_EN
-#define GPIO_TRIGGER_2 GPIO_USB3_A2_CDP_EN
+#define GPIO_DP_HPD GPIO_DDI_MST_IN_HPD
+
+#define GPIO_TRIGGER_1 GPIO_TP41
+#define GPIO_TRIGGER_2 GPIO_TP73
 
 enum  debug_gpio {
 	TRIGGER_1 = 0,

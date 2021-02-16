@@ -20,7 +20,9 @@
 /* USB Type C and USB PD defines */
 #define USB_PD_PORT_HOST   0
 #define USB_PD_PORT_DP   1
+
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_MUX_TUSB1064
 
 #define CONFIG_USB_PID 0x5049
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
@@ -49,6 +51,8 @@
 #ifndef __ASSEMBLER__
 
 #include "registers.h"
+
+#define GPIO_DP_HPD GPIO_DDI_MST_IN_HPD
 
 #define GPIO_TRIGGER_1 GPIO_EC_HUB1_RESET_L
 #define GPIO_TRIGGER_2 GPIO_EC_HUB2_RESET_L
