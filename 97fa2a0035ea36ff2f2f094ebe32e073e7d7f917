@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ab41de_8ffdb8b2",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-16T19:35:51Z",
+      "side": 1,
+      "message": "Add comments justifying why these are not needed for Zephyr.\n\nCONFIG_CONSOLE_UART - only used by the Chromium EC chip drivers\nCONFIG_I2C_MULTI_PORT_CONTROLLER - not required by I2C shim\nCONFIG_IRQ_COUNT - only used by Chromium EC core drivers\nCONFIG_LTO - link time optimization enabled by Zephyr build system",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "97fa2a0035ea36ff2f2f094ebe32e073e7d7f917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7bd290_74a10105",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-16T19:35:51Z",
+      "side": 1,
+      "message": "Both platform/ec and Zephyr upstream provide CONFIG_FPU which has been enabled here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2691415/6/zephyr/projects/volteer/prj.conf\n\nDue to the name conflict, it might make sense to add:\n\n#ifndef CONFIG_FPU\n#undef CONFIG_FPU\n\nWhich looks a little weird, but can be commented to note this is to satisfy a test for the duplicated CONFIG name.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "97fa2a0035ea36ff2f2f094ebe32e073e7d7f917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
