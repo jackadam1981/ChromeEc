@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cedeb3e_f48c65d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-16T17:24:40Z",
+      "side": 1,
+      "message": "Yup.  I\u0027ll clarify in the message.",
+      "parentUuid": "a9facd8f_fc9e7648",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "8bb0cf0a39ce68a74c4005d234d5ff406444f8cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df4ff87f_9a2581af",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-16T16:17:54Z",
       "side": 1,
       "message": "You should add a check that prevents CONFIG_USB_PD_PULLUP from getting set to TYPEC_RP_3A0.  Otherwise this path could overload the board.  Probably should be a standalone CL.\n\nOnly servos set to this something other than TYPEC_RP_1A5.",
+      "range": {
+        "startLine": 440,
+        "startChar": 9,
+        "endLine": 440,
+        "endChar": 29
+      },
+      "revId": "8bb0cf0a39ce68a74c4005d234d5ff406444f8cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffe6b05b_58408b09",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-16T17:24:40Z",
+      "side": 1,
+      "message": "Since CONFIG_USB_PD_PULLUP is used in the TC attaches, I could envision valid scenarios for it to be set to TYPEC_RP_3A0 in general (ex. honeybuns).  Would we only disallow it if a board is defining CONFIG_USB_PD_3A_PORTS \u003e 0?   \n\nI believe the route we\u0027re going so far for honeybuns is to have dpm_get_source_pdo() overridden in the board to allow it to pick power per-port, and it won\u0027t be using our source-out allocation since both ports can always source 3A (at different voltages based on port).  So it could use CONFIG_USB_PD_3A_PORTS \u003d\u003d 0, and I could add a note in the config.h definition that this disables the DPM source-out policy.",
+      "parentUuid": "df4ff87f_9a2581af",
       "range": {
         "startLine": 440,
         "startChar": 9,
