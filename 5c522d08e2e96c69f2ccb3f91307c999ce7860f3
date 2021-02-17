@@ -16,6 +16,24 @@
       "message": "Are we running in THUMB mode? If not, it seems like the appropriate replacement would be the \"r\" constraint.\n\nI will note that this type of CL is probably not a great candidate for the general cros-ec-reviewers rotation. To review it properly requires specialized knowledge that is pretty hard to look up with Google. You might consider seeking out a reviewer with more direct experience.",
       "revId": "5c522d08e2e96c69f2ccb3f91307c999ce7860f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc730993_4c5221c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-02-17T01:32:35Z",
+      "side": 1,
+      "message": "Cortex-M0 is Thumb-only, so it will always be running in the appropriate mode.",
+      "parentUuid": "457c592c_4bfcfb98",
+      "revId": "5c522d08e2e96c69f2ccb3f91307c999ce7860f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
