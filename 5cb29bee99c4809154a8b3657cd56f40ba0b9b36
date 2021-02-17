@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b71e23b_4fa77370",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T19:57:00Z",
+      "side": 1,
+      "message": "?",
+      "parentUuid": "0c23ad4c_4311f4a7",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "5cb29bee99c4809154a8b3657cd56f40ba0b9b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90f20d3b_2fca2335",
         "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin.dts",
         "patchSetId": 1
