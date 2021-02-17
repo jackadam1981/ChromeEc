@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39afff94_ec7a48f8",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/Kconfig.defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T00:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaca4e05_6cd8ec98",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "61cb6a9c9ec9eb573d65af1ac0a12658962babf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c45be17e_18a425bc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-16T21:40:08Z",
       "side": 1,
       "message": "Should be npcx7m7 for the latest boards.",
+      "range": {
+        "startLine": 5,
+        "startChar": 18,
+        "endLine": 5,
+        "endChar": 25
+      },
+      "revId": "61cb6a9c9ec9eb573d65af1ac0a12658962babf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "180b686a_a95cf19e",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/board.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T00:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c45be17e_18a425bc",
       "range": {
         "startLine": 5,
         "startChar": 18,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3cd0989_876676eb",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T00:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1d0f51c_45f3406b",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 38
+      },
+      "revId": "61cb6a9c9ec9eb573d65af1ac0a12658962babf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ace1c32a_b835c7c4",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-16T21:40:08Z",
       "side": 1,
       "message": "The flash node is used to specify the code RAM location and size.  So this should be \u003c0x10070000 0x40000\u003e.",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "61cb6a9c9ec9eb573d65af1ac0a12658962babf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d59136_605c2142",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T00:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace1c32a_b835c7c4",
       "range": {
         "startLine": 59,
         "startChar": 8,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06296a93_9a8a5294",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T00:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f773a858_a27dff20",
+      "range": {
+        "startLine": 40,
+        "startChar": 35,
+        "endLine": 40,
+        "endChar": 45
+      },
+      "revId": "61cb6a9c9ec9eb573d65af1ac0a12658962babf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1c485be_e67dcc78",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-02-16T21:40:08Z",
       "side": 1,
       "message": "0x40000",
+      "range": {
+        "startLine": 48,
+        "startChar": 23,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "61cb6a9c9ec9eb573d65af1ac0a12658962babf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e45e28_b7aa7a90",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T00:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c485be_e67dcc78",
       "range": {
         "startLine": 48,
         "startChar": 23,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "811491b1_cc12af93",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T00:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f6c75a0_f83dc651",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "61cb6a9c9ec9eb573d65af1ac0a12658962babf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57376109_84bd0dc8",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-02-16T21:40:08Z",
       "side": 1,
       "message": "0x40000",
+      "range": {
+        "startLine": 53,
+        "startChar": 23,
+        "endLine": 53,
+        "endChar": 30
+      },
+      "revId": "61cb6a9c9ec9eb573d65af1ac0a12658962babf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f575f18e_aca0c517",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T00:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57376109_84bd0dc8",
       "range": {
         "startLine": 53,
         "startChar": 23,
