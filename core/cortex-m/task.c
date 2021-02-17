@@ -105,7 +105,7 @@ void __idle(void)
 		 * Wait for the next irq event.  This stops the CPU clock
 		 * (sleep / deep sleep, depending on chip config).
 		 */
-		asm("wfi");
+		// asm("wfi");
 #endif
 	}
 }
