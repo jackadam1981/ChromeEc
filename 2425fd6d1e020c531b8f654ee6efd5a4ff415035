@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bfc0ac6_ff0ad9c2",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-17T21:36:16Z",
+      "side": 0,
+      "message": "I can break this out into a separate change, but we didn\u0027t need to extend the image to this point. We remove all of the trailing 0xFFs anyway.",
+      "range": {
+        "startLine": 1067,
+        "startChar": 2,
+        "endLine": 1067,
+        "endChar": 57
+      },
+      "revId": "2425fd6d1e020c531b8f654ee6efd5a4ff415035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
