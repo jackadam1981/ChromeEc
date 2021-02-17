@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f964a6d0_d1ccd200",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-17T19:54:59Z",
+      "side": 1,
+      "message": "We can clean this up later, but as a follow-on, please look at creating a VOLTEER Kconfig and using \u0027select\u0027 in that to enable the things are are common.\n\nWith Kconfig, *this* file should be to have this file be as small as possible.",
+      "revId": "679f7c6ffd05134474245cd023a8233439dbaac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da1162e_081e8bcb",
+        "filename": "zephyr/projects/delbin/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-17T19:54:59Z",
+      "side": 1,
+      "message": "technically we should have brackets around -ve numbers although I agree it rarely matters",
+      "range": {
+        "startLine": 16,
+        "startChar": 25,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "679f7c6ffd05134474245cd023a8233439dbaac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ebc9c9_5ccaf14e",
+        "filename": "zephyr/projects/delbin/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-17T19:54:59Z",
+      "side": 1,
+      "message": "Again, most of these should go away with CONFIG_VOLTEER",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "679f7c6ffd05134474245cd023a8233439dbaac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
