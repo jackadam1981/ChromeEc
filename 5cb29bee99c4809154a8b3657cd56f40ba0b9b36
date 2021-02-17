@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f20d3b_2fca2335",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-17T19:33:20Z",
+      "side": 1,
+      "message": "Do we have support for enabling wake interrupts?  e.g. GPIO_HIB_WAKE_HIGH/GPIO_HIB_WAKE_LOW?",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "5cb29bee99c4809154a8b3657cd56f40ba0b9b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
