@@ -135,8 +135,8 @@ in-depth information can be found in the [USB Type-C Specification] \(section
 
 ### ChromeOS as Source - Policy for Type-C
 
-**Note:** Behavior outlined in this .md file reflects future-planned behavior,
-and is not present in the codebase currently.
+**Note:** Behavior outlined here is only implemented in the TCPMv2 Device
+Policy Manager (DPM).
 
 ChromeOS devices currently source power to external USB devices at 5V with a
 typical current of 1.5A for each Type-C port. In certain scenarios, a Type-C
