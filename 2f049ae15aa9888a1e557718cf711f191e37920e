@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f6e1313_79e23916",
+        "filename": "driver/tcpm/rt1715.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-17T20:48:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7068da48_52534ad1",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f71e0e0_d66e8547",
@@ -208,6 +226,24 @@
       "side": 1,
       "message": "I think there is a little bit of value in being able to search for the name from the datasheet, even if that name is redundant, but it\u0027s up to you.",
       "parentUuid": "6cffc6e1_78fbe3b0",
+      "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70fa1d7b_74c88c1a",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-17T20:48:34Z",
+      "side": 1,
+      "message": "Good point. Done",
+      "parentUuid": "6d484f96_f59c87a5",
       "revId": "2f049ae15aa9888a1e557718cf711f191e37920e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
