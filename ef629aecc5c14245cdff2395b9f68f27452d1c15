@@ -34,6 +34,24 @@
       "parentUuid": "4660a93f_3cf6bd26",
       "revId": "ef629aecc5c14245cdff2395b9f68f27452d1c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b776507d_7e8236a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-02-17T01:36:38Z",
+      "side": 1,
+      "message": "I\u0027m on 13.0 (that\u0027s what the sysfs node for the retimer tells me), and I\u0027ve seen sporadic issues entering TBT without this patch.\n\nI don\u0027t know what 13.0 translates to in the 2_xx scheme, but it\u0027s fair to assume our Dogfooders have what I have.",
+      "parentUuid": "87cf2aa6_b4cb919e",
+      "revId": "ef629aecc5c14245cdff2395b9f68f27452d1c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
