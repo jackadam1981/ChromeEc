@@ -273,6 +273,8 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_POWER_DELIVERY
                                                 "${PLATFORM_EC}/common/usbc/usb_sm.c"
                                                 "${PLATFORM_EC}/common/usbc_intr_task.c")
 
+zephyr_sources_ifdef(CONFIG_HAS_TASK_CONSOLE    "${PLATFORM_EC}/common/console.c")
+
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_CONSOLE_CMD_PD
                                                 "${PLATFORM_EC}/common/usbc/usb_pd_console.c")
 
@@ -338,6 +340,8 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_VBOOT_HASH
                                                 "${PLATFORM_EC}/common/vboot_hash.c")
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_VOLUME_BUTTONS
                                                 "${PLATFORM_EC}/common/button.c")
+
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_VBOOT   "${PLATFORM_EC}/common/vboot/efs2.c")
 
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_VSTORE  "${PLATFORM_EC}/common/vstore.c")
 

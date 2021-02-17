@@ -103,3 +103,12 @@ int uart_console_read_buffer(uint8_t type, char *dest, uint16_t dest_size,
 
 	return EC_RES_SUCCESS;
 }
+
+int uart_getc(void)
+{
+	return -1;
+}
+
+void uart_clear_input(void)
+{
+}
