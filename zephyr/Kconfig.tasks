@@ -107,6 +107,22 @@ config TASK_HOSTCMD_STACK_SIZE
 
 endif # HAS_TASK_HOSTCMD
 
+config HAS_TASK_CONSOLE
+	bool "Console task"
+	default y if PLATFORM_EC_VBOOT
+	help
+	  This turns on the console task.
+
+if HAS_TASK_CONSOLE
+
+config TASK_CONSOLE_STACK_SIZE
+	hex "Stack size"
+	default 0x400
+	help
+	  The size of the console task stack.
+
+endif # HAS_TASK_CONSOLE
+
 config HAS_TASK_KEYPROTO
 	bool "Keyboard-protocol task (x86)"
 	depends on PLATFORM_EC_KEYBOARD_PROTOCOL_8042

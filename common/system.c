@@ -762,6 +762,8 @@ int system_get_image_used(enum ec_image copy)
 {
 	const struct image_data *data = system_get_image_data(copy);
 
+	CPRINTS("system_get_image_used(%d): data=0x%x", copy, (uint32_t)data);
+	CPRINTS("                           data->size=0x%x", data->size);
 	return data ? MAX((int)data->size, 0) : 0;
 }
 
