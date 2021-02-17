@@ -257,6 +257,30 @@
       },
       "revId": "382513e38c16196f86685bba8145d250d116824f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91e499f_e7026441",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-17T21:25:17Z",
+      "side": 1,
+      "message": "No, that one is still used on line 243.",
+      "parentUuid": "3121276e_88060230",
+      "range": {
+        "startLine": 239,
+        "startChar": 25,
+        "endLine": 239,
+        "endChar": 41
+      },
+      "revId": "382513e38c16196f86685bba8145d250d116824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
