@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d4ae9d_072664db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2021-02-17T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73125a1b_f10231e5",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "5eb64300ab09fbf0cfcb7206d244dbbe9d1606af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f5ce6d7_14269b9b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b66073_0fc11e11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2021-02-17T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f5ce6d7_14269b9b",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "5eb64300ab09fbf0cfcb7206d244dbbe9d1606af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "043de3c1_ad08095a",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-16T22:29:39Z",
       "side": 1,
       "message": "a better test would be to trigger a condition and observe the expected error message.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "5eb64300ab09fbf0cfcb7206d244dbbe9d1606af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8415ecb5_01ad1258",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2021-02-17T17:35:15Z",
+      "side": 1,
+      "message": "Simplest way to test I could come up with was to open my modified iteflash in gdb, step past the point where the sig handlers are registered in main() then signal and the error message looks as expected.\n\n(eve-gdb) signal SIGINT\nContinuing with signal SIGINT.\n\nCaught signal 2: Interrupt\nExiting...",
+      "parentUuid": "043de3c1_ad08095a",
       "range": {
         "startLine": 21,
         "startChar": 0,
