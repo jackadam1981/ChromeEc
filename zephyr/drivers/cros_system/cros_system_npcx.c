@@ -4,10 +4,19 @@
  */
 
 #include <drivers/cros_system.h>
+#include <drivers/watchdog.h>
 #include <logging/log.h>
 #include <soc.h>
 
 LOG_MODULE_REGISTER(cros_system, LOG_LEVEL_ERR);
+
+#ifdef CONFIG_CPU_CORTEX_M
+/*
+ * For cortex-m we cannot use irq_lock() for disabling all the interrupts
+ * because it leaves some (NMI and faults) still enabled.
+ */
+#define interrupt_disable_all() __asm__("cpsid i")
+#endif
 
 /* Driver config */
 struct cros_system_npcx_config {
@@ -58,6 +67,52 @@ static int cros_system_npcx_init(const struct device *dev)
 	return 0;
 }
 
+static int cros_system_npcx_soc_reset(const struct device *dev)
+{
+	struct twd_reg *const inst_twd = HAL_TWD_INST(dev);
+
+	/* Disable interrupts to avoid task swaps during reboot */
+	interrupt_disable_all();
+
+	/*
+	 * NPCX chip doesn't have the specific system reset functionality. Use
+	 * watchdog reset as a system reset.
+	 */
+
+	/* Stop the watchdog */
+	if (IS_ENABLED(CONFIG_WATCHDOG)) {
+		const struct device *wdt_dev = device_get_binding(
+			DT_LABEL(DT_INST(0, nuvoton_npcx_watchdog)));
+
+		if (!wdt_dev) {
+			LOG_ERR("wdt_dev get binding failed");
+			return -ENODEV;
+		}
+
+		wdt_disable(wdt_dev);
+	}
+
+	/* Enable early touch */
+	inst_twd->T0CSR &= ~BIT(NPCX_T0CSR_TESDIS);
+	inst_twd->TWCFG |= BIT(NPCX_TWCFG_WDSDME);
+
+	/*
+	 * The trigger of a watchdog event by a "too early service" condition.
+	 * When the watchdog is written more than once during three watchdog
+	 * clock cycle.
+	 */
+	inst_twd->WDSDM = 0x5C;
+	inst_twd->WDSDM = 0x5C;
+
+	/* Wait for the soc reset. */
+	while (1) {
+		;
+	}
+
+	/* should never return */
+	return 0;
+}
+
 static struct cros_system_npcx_data cros_system_npcx_dev_data;
 
 static const struct cros_system_npcx_config cros_system_dev_cfg = {
@@ -67,6 +122,7 @@ static const struct cros_system_npcx_config cros_system_dev_cfg = {
 
 static const struct cros_system_driver_api cros_system_driver_npcx_api = {
 	.get_reset_cause = cros_system_npcx_get_reset_cause,
+	.soc_reset = cros_system_npcx_soc_reset,
 };
 
 /*
