@@ -419,8 +419,6 @@ static struct type_c {
 #endif
 	/* The cc state */
 	enum pd_cc_states cc_state;
-	/* Role toggle timer */
-	uint64_t next_role_swap;
 	/* Generic timer */
 	uint64_t timeout;
 	/* Tasks to notify after TCPC has been reset */
@@ -2172,7 +2170,7 @@ static void tc_unattached_snk_entry(const int port)
 	 * can restore state from any previous data swap.
 	 */
 	pd_execute_data_swap(port, PD_ROLE_DISCONNECTED);
-	tc[port].next_role_swap = get_time().val + PD_T_DRP_SNK;
+	pd_timer_active(port, TC_TIMER_NEXT_ROLE_SWAP, PD_T_DRP_SNK);
 
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
 		usb_mux_set(port, USB_PD_MUX_NONE,
@@ -2225,8 +2223,9 @@ static void tc_unattached_snk_run(const int port)
 	 * status valid. Before that, CC open is reported by default. Wait
 	 * to make sure the CC is really open. Reuse the role toggle timer.
 	 */
-	if (get_time().val < tc[port].next_role_swap)
+	if (!pd_timer_is_expired(port, TC_TIMER_NEXT_ROLE_SWAP))
 		return;
+	pd_timer_inactive(port, TC_TIMER_NEXT_ROLE_SWAP);
 
 	/*
 	 * Initialize type-C supplier current limits to 0. The charge
@@ -2251,6 +2250,11 @@ static void tc_unattached_snk_run(const int port)
 		    drp_state[port] == PD_DRP_TOGGLE_OFF)) {
 		set_state_tc(port, TC_LOW_POWER_MODE);
 	}
+}
+
+static void tc_unattached_snk_exit(const int port)
+{
+	pd_timer_disable(port, TC_TIMER_NEXT_ROLE_SWAP);
 }
 
 /**
@@ -2677,12 +2681,19 @@ static void tc_unattached_src_entry(const int port)
 		tc_enable_pd(port, 0);
 	}
 
-	tc[port].next_role_swap = get_time().val + PD_T_DRP_SRC;
+	pd_timer_active(port, TC_TIMER_NEXT_ROLE_SWAP, PD_T_DRP_SRC);
 }
 
 static void tc_unattached_src_run(const int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
+
+	/*
+	 * Convert active/expired to be inactive/expired, if applicable, to
+	 * not speed up timer tick in the possible case the timer expired
+	 * but we leave the state before handling it.
+	 */
+	pd_timer_expired_to_inactive(port, TC_TIMER_NEXT_ROLE_SWAP);
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET_REQUESTED)) {
@@ -2715,7 +2726,7 @@ static void tc_unattached_src_run(const int port)
 	 */
 	if (cc_is_at_least_one_rd(cc1, cc2) || cc_is_audio_acc(cc1, cc2))
 		set_state_tc(port, TC_ATTACH_WAIT_SRC);
-	else if (get_time().val > tc[port].next_role_swap &&
+	else if (pd_timer_is_expired(port, TC_TIMER_NEXT_ROLE_SWAP) &&
 		 drp_state[port] != PD_DRP_FORCE_SOURCE &&
 		 drp_state[port] != PD_DRP_FREEZE)
 		set_state_tc(port, TC_UNATTACHED_SNK);
@@ -2730,6 +2741,11 @@ static void tc_unattached_src_run(const int port)
 		 (drp_state[port] == PD_DRP_FORCE_SOURCE ||
 		  drp_state[port] == PD_DRP_TOGGLE_OFF))
 		set_state_tc(port, TC_LOW_POWER_MODE);
+}
+
+static void tc_unattached_src_exit(const int port)
+{
+	pd_timer_disable(port, TC_TIMER_NEXT_ROLE_SWAP);
 }
 
 /**
@@ -3833,6 +3849,7 @@ static __const_data const struct usb_state tc_states[] = {
 	[TC_UNATTACHED_SNK] = {
 		.entry	= tc_unattached_snk_entry,
 		.run	= tc_unattached_snk_run,
+		.exit	= tc_unattached_snk_exit,
 		.parent = &tc_states[TC_CC_RD],
 	},
 	[TC_ATTACH_WAIT_SNK] = {
@@ -3848,6 +3865,7 @@ static __const_data const struct usb_state tc_states[] = {
 	[TC_UNATTACHED_SRC] = {
 		.entry	= tc_unattached_src_entry,
 		.run	= tc_unattached_src_run,
+		.exit	= tc_unattached_src_exit,
 		.parent = &tc_states[TC_CC_RP],
 	},
 	[TC_ATTACH_WAIT_SRC] = {
