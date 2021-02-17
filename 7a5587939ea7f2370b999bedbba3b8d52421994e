@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abaf14d8_48aeed3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-17T20:15:39Z",
+      "side": 1,
+      "message": "OK...in that case my reading of the guidelines is the opposite:\n\nIn short:\n\nUse devicetree to describe hardware and its boot-time configuration. Examples include peripherals on a board, boot-time clock frequencies, interrupt lines, etc.\n\nUse Kconfig to configure software support to build into the final image. Examples include whether to add networking support, which drivers are needed by the application, etc.\n\n\n\nSo I think this is clearly boot-time config and not software support.",
+      "parentUuid": "d6eed96f_16863b02",
+      "revId": "7a5587939ea7f2370b999bedbba3b8d52421994e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a3bb0a9_52a2f445",
