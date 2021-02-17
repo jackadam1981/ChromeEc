@@ -96,6 +96,12 @@ class ElfPacker(BasePacker):
         yield singleimage / 'zephyr' / 'zephyr.elf', 'zephyr.elf'
 
 
+class ChameleonPacker(BasePacker):
+    """chameleon hack"""
+    def pack_firmware(self, work_dir, jobclient, singleimage):
+        yield singleimage / 'zephyr' / 'zephyr.bin', 'zephyr.bin'
+
+
 class RawBinPacker(BasePacker):
     """Packer for RO/RW image to generate a .bin build using FMAP."""
     def __init__(self, project):
@@ -160,6 +166,7 @@ class RawBinPacker(BasePacker):
 
 # A dictionary mapping packer config names to classes.
 packer_registry = {
+    'chameleon': ChameleonPacker,
     'elf': ElfPacker,
     'raw': RawBinPacker,
 }
