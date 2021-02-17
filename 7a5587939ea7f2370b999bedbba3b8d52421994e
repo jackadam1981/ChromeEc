@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "672ab086_578cf143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T20:19:06Z",
+      "side": 1,
+      "message": "The EC and it\u0027s console channel system is entirely software.\n\nJust because this describes the way those console channels are at boot does not make it hardware configuration.\n\nThe console channels enabled by default is by no means a property of the mainboard and it\u0027s layout...",
+      "parentUuid": "abaf14d8_48aeed3b",
+      "revId": "7a5587939ea7f2370b999bedbba3b8d52421994e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a3bb0a9_52a2f445",
         "filename": "zephyr/shim/src/console.c",
         "patchSetId": 1
