@@ -24,6 +24,9 @@
 #undef CONFIG_SWITCH
 
 /* USB Type C and USB PD defines */
+
+#define CONFIG_IO_EXPANDER
+#define CONFIG_IO_EXPANDER_NCT38XX
 #define CONFIG_IO_EXPANDER_PORT_COUNT		2
 
 #define GPIO_AC_PRESENT			GPIO_ACOK_EC_OD
@@ -75,6 +78,12 @@
 #define I2C_PORT_CHARGER	NPCX_I2C_PORT7_0
 #define I2C_PORT_EEPROM		NPCX_I2C_PORT7_0
 
+/*
+ * see b/174768555#comment22
+ */
+#define USBC_PORT_C0_BB_RETIMER_I2C_ADDR	0x56
+#define USBC_PORT_C2_BB_RETIMER_I2C_ADDR	0x57
+
 /* Thermal features */
 #define CONFIG_THERMISTOR
 #define CONFIG_TEMP_SENSOR
@@ -85,6 +94,7 @@
 
 #include "gpio_signal.h"	/* needed by registers.h */
 #include "registers.h"
+#include "usbc_config.h"
 
 enum adc_channel {
 	ADC_TEMP_SENSOR_1_DDR_SOC,
