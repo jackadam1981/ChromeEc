@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f85fb63_6f546806",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-17T19:48:10Z",
+      "side": 1,
+      "message": "Sorry to keep banging on about commit messages (motivation, action), but I think something like this is better:\n\n\n...\n\nAt present the data pointer is not valid and we\u0027re not able\nto store any data between jumps.\n\nFix this by adding a call to system_common_pre_init(). Add an empty test implementation so that tests still pass",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "bb043d5827ef42ec7cf725c5777442d9aeb79e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
