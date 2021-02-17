@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f882656a_ffe90383",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-17T02:16:56Z",
+      "side": 1,
+      "message": "LGTM, just missing documentation",
+      "revId": "7397ed16ae8dce62e5c1aeaac829e57f6b888df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd162354_f0245676",
+        "filename": "driver/retimer/nb7v904m.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-17T02:16:56Z",
+      "side": 1,
+      "message": "nit: Please add header documentation.",
+      "revId": "7397ed16ae8dce62e5c1aeaac829e57f6b888df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
