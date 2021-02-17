@@ -275,6 +275,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f56da93d_24c1c6da",
+        "filename": "zephyr/shim/core/cortex-m/software_panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T17:41:03Z",
+      "side": 1,
+      "message": "If you implement in shim/src/panic.c, you do not need to make architecture-specific implementations of these three functions.\n\nThey can be made generic, as there is already the architecture enum and register lists defined in that file per architecture.",
+      "parentUuid": "dc18358f_e875cc75",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "57d166ca01c1ae37cd38dcd684959a20c8ef1ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3620532b_3bee25c2",
         "filename": "zephyr/shim/core/cortex-m/software_panic.c",
         "patchSetId": 2
