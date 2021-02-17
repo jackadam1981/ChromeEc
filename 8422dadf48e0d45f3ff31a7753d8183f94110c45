@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99df61a3_ce96d824",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6008,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "+1. We could receive Discover Identity REQ whenever. If we\u0027re in a mode, we should be waiting for the Exit Mode operation to complete before clearing the flag. I think the snippet you quoted from pd_dfp_discovery_init comes from when the PE had a broader, less correct definition of \"discovery\" as \"anything we do with VDMs.\" Consequently, there are various situations that will cause us to reset our state WRT VDMs. That function may need to be renamed.",
+      "parentUuid": "49a26e63_e0e4b849",
+      "revId": "8422dadf48e0d45f3ff31a7753d8183f94110c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84d5fbd9_45ace819",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6

@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e77ed8_16a2beed",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5859,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 0,
+      "message": "Why remove this variable?",
+      "range": {
+        "startLine": 5859,
+        "startChar": 1,
+        "endLine": 5859,
+        "endChar": 9
+      },
+      "revId": "2898923d2f171806a92c9f17f1e8776d6df22b8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a4fd03c_98587ebb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5947,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 0,
+      "message": "I kind of prefer the call to VDO(), because that makes it more obvious that all the header fields are getting values. But I see that it\u0027s pretty redundant. What if just the command type field were set in the if/else if/else, and then there were a single invocation of VDO() using that variable, along with the other stuff that is common to all the command types?",
+      "revId": "2898923d2f171806a92c9f17f1e8776d6df22b8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a7151be_3db5770e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "General comment: I see a number of expository comments about how different APIs work at the points where those APIs are called. I think they\u0027re a little verbose, but if you think they add to the clarity of the call site, then maybe some clarity was needed. In that case, it would probably be better to change the API to be more explicit with, e.g. parameter names, returning a more meaningful type, etc.",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40de631b_331a43f5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "Nit: You could obviate this comment by changing the parameter name to something like payload_vdm_count. But I\u0027d understand if you didn\u0027t want to mess with the interface of a function that is on its way out.",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb07ba6a_80762c29",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "I think * 4 would be more expressive.",
+      "range": {
+        "startLine": 1469,
+        "startChar": 44,
+        "endLine": 1469,
+        "endChar": 49
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01bb913_0f6ff750",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "Nit: If you have a bug for getting rid of this function, this would be a good place to mention it.",
+      "range": {
+        "startLine": 1474,
+        "startChar": 66,
+        "endLine": 1474,
+        "endChar": 70
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b681b0c_58a17142",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5117,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "Nit: Also cite spec version",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fbeba10_f75adef7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5124,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "Nit: Attention",
+      "range": {
+        "startLine": 5124,
+        "startChar": 10,
+        "endLine": 5124,
+        "endChar": 19
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d66115f_dced5056",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5972,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "The header structure should be commented in usb_pd.h, where our macros to access it are defined, if it isn\u0027t already. If the code that uses those macros remains unclear without such a comment, we should probably have better macro names.",
+      "range": {
+        "startLine": 5963,
+        "startChar": 0,
+        "endLine": 5972,
+        "endChar": 23
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d0052ea_90ad8ec3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5975,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "Spelling",
+      "range": {
+        "startLine": 5975,
+        "startChar": 39,
+        "endLine": 5975,
+        "endChar": 42
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c3abfa_70ec325c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5976,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "I initially missed this, because it happens back on line 5915. Currently, some of the logic described in this comment takes place above, and I think it should move up.",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "174743e9_7153d2ec",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5987,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "Nit: \"the TCPM\"\nI don\u0027t think the spec says what component is considered to be busy when we send a BUSY response.",
+      "range": {
+        "startLine": 5987,
+        "startChar": 17,
+        "endLine": 5987,
+        "endChar": 34
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "010ad943_64c38804",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5997,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "This should be vdo_len \u003e 0. As written, the else branch will never happen.",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8482b7_250a8074",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6006,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "Nit: Only one of these ifs can be true, so the else isn\u0027t necessary.",
+      "range": {
+        "startLine": 6006,
+        "startChar": 3,
+        "endLine": 6006,
+        "endChar": 7
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa53a94_eb0baa23",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6027,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "I think * 4 or * sizeof(uint32_t) would be more expressive.",
+      "range": {
+        "startLine": 6027,
+        "startChar": 30,
+        "endLine": 6027,
+        "endChar": 34
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc8282d5_bdc5b554",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6037,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:13:55Z",
+      "side": 1,
+      "message": "Spelling",
+      "range": {
+        "startLine": 6037,
+        "startChar": 4,
+        "endLine": 6037,
+        "endChar": 14
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
