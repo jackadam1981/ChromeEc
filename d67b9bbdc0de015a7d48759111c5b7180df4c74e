@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80ace3bf_b28eb1de",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-17T03:58:36Z",
+      "side": 1,
+      "message": "Humm.. I think we should have VIVALDI as the default stuffing option. Caveh - can you please follow up on this to see why it is kept disabled as default in hardware?",
+      "parentUuid": "9fb14c2f_e2d3eb7e",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "d67b9bbdc0de015a7d48759111c5b7180df4c74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50a78c3e_a04a3dca",
         "filename": "board/brya/ec.tasklist",
         "patchSetId": 2
