@@ -1546,12 +1546,6 @@ static void process_erase_ap_ro_hash(struct transfer_descriptor *td)
 	exit(update_error);
 }
 
-static struct signed_header_version ver19 = {
-	.epoch = 0,
-	.major = 0,
-	.minor = 19,
-};
-
 static void generate_reset_request(struct transfer_descriptor *td)
 {
 	size_t response_size;
@@ -1559,7 +1553,6 @@ static void generate_reset_request(struct transfer_descriptor *td)
 	uint16_t subcommand;
 	uint8_t command_body[2]; /* Max command body size. */
 	size_t command_body_size;
-	uint32_t background_update_supported;
 	const char *reset_type;
 	int rv;
 
@@ -1575,16 +1568,12 @@ static void generate_reset_request(struct transfer_descriptor *td)
 		return;
 	}
 
-	/* RW version 0.0.19 and above has support for background updates. */
-	background_update_supported = td->background_update_supported ||
-				!a_newer_than_b(&ver19, &targ.shv[1]);
-
 	/*
 	 * If this is an upstart request and there is support for background
 	 * updates, don't post a request now. The target should handle it on
 	 * the next reboot.
 	 */
-	if (td->upstart_mode && background_update_supported)
+	if (td->upstart_mode && td->background_update_supported)
 		return;
 
 	/*
@@ -1605,7 +1594,7 @@ static void generate_reset_request(struct transfer_descriptor *td)
 	if (td->post_reset || td->upstart_mode) {
 		subcommand = EXTENSION_POST_RESET;
 		reset_type = "posted";
-	} else if (background_update_supported) {
+	} else if (td->background_update_supported) {
 		subcommand = VENDOR_CC_TURN_UPDATE_ON;
 		command_body_size = sizeof(command_body);
 		command_body[0] = 0;
