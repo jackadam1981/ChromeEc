@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6eed96f_16863b02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T20:11:48Z",
+      "side": 1,
+      "message": "In theory we could do this, however, I think faft requires that we are able to enable certain console channels that were disabled at build-time using the \"chan\" command.\n\nSo rather sadly, these strings/prints need to stay :(",
+      "parentUuid": "d5d36ea2_b7a66e59",
+      "revId": "7a5587939ea7f2370b999bedbba3b8d52421994e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a3bb0a9_52a2f445",
