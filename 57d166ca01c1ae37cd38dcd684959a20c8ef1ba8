@@ -251,6 +251,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc18358f_e875cc75",
+        "filename": "zephyr/shim/core/cortex-m/software_panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-17T17:38:14Z",
+      "side": 1,
+      "message": "I\u0027m sorry, I\u0027m not seeing how the code won\u0027t look like the following. Keep in mind also that different cores will need different implementations and I\u0027m not sure what the timeline would be for getting this upstreamed (if at all). If you see a cleaner way to do it that what I\u0027ve added below I\u0027m open to it.\n\n#ifdef CONFIG_PLATFORM_EC_SOFTWARE_PANIC\n#ifdef CONFIG_CPU_CORTEX_M\nvoid software_panic(uint32_t reason, uint32_t info)\n{\n  ...\n}\n\nvoid panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)\n{\n  ...\n}\n\nvoid panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)\n{\n  ..\n}\n#endif /* CONFIG_CPU_CORTEX_M */\n#endif /* CONFIG_PLATFORM_EC_SOFTWARE_PANIC */",
+      "parentUuid": "c8a54476_ac66c10a",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "57d166ca01c1ae37cd38dcd684959a20c8ef1ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3620532b_3bee25c2",
         "filename": "zephyr/shim/core/cortex-m/software_panic.c",
         "patchSetId": 2
