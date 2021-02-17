@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c33a40_ebf81a90",
+        "filename": "include/panic.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-17T20:42:18Z",
+      "side": 1,
+      "message": "Use __override_proto here, and then provide a default implementation in zephyr/shim/src/panic.c.  This can be done as a follow on CL so we can get this in.",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 78
+      },
+      "revId": "38fd5a13a339c43dfc10947770e69510f1ecc10f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
