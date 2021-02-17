@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50116a48_32e6d9d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-17T20:25:21Z",
+      "side": 1,
+      "message": "Sorry I stand by this...we can chat about it later if time.\n\nThe doc is silent on this case, in fact. It says what devicetree is for and what Kconfig is for (selecting which code is built), but not how to deal with something which does not affect which code is built and is not config for a physical hardware device.\n\nAnyway, arguably the console is a mux device with virtual channels, which could be implemented in s/w or h/w...\n\nI think there is pollution coming over from Linux here, where they try very hard to have static data tables in the image instead of using devicetree for config. In U-Boot, devicetree is used for config.",
+      "parentUuid": "11507122_768fc3e7",
+      "revId": "7a5587939ea7f2370b999bedbba3b8d52421994e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a3bb0a9_52a2f445",
         "filename": "zephyr/shim/src/console.c",
         "patchSetId": 1
