@@ -8,12 +8,17 @@
 #include "cbi_ec_fw_config.h"
 #include "charge_ramp.h"
 #include "charger.h"
+#include "console.h"
 #include "power_button.h"
 #include "power.h"
 #include "switch.h"
 #include "throttle_ap.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
+
+/* Console output macros */
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 /******************************************************************************/
 /* USB-A charging control */
