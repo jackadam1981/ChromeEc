@@ -404,12 +404,6 @@ static struct type_c {
 	uint32_t flags;
 	/* Time a port shall wait before it can determine it is attached */
 	uint64_t cc_debounce;
-	/*
-	 * Time a Sink port shall wait before it can determine it is detached
-	 * due to the potential for USB PD signaling on CC as described in
-	 * the state definitions.
-	 */
-	uint64_t pd_debounce;
 #ifdef CONFIG_USB_PD_TRY_SRC
 	/*
 	 * Time a port shall wait before it can determine it is
@@ -2290,10 +2284,17 @@ static void tc_attach_wait_snk_run(const int port)
 	/* Debounce the cc state */
 	if (new_cc_state != tc[port].cc_state) {
 		tc[port].cc_debounce = get_time().val + PD_T_CC_DEBOUNCE;
-		tc[port].pd_debounce = get_time().val + PD_T_PD_DEBOUNCE;
+		pd_timer_active(port, TC_TIMER_PD_DEBOUNCE, PD_T_PD_DEBOUNCE);
 		tc[port].cc_state = new_cc_state;
 		return;
 	}
+
+	/*
+	 * Convert active/expired to be inactive/expired, if applicable, to
+	 * not speed up timer tick in the possible case the timer expired
+	 * but we leave the state before handling it.
+	 */
+	pd_timer_expired_to_inactive(port, TC_TIMER_PD_DEBOUNCE);
 
 	/*
 	 * A DRP shall transition to Unattached.SRC when the state of both
@@ -2302,7 +2303,7 @@ static void tc_attach_wait_snk_run(const int port)
 	 * Unattached.SNK.
 	 */
 	if (new_cc_state == PD_CC_NONE &&
-				get_time().val > tc[port].pd_debounce) {
+	    pd_timer_is_expired(port, TC_TIMER_PD_DEBOUNCE)) {
 		/* We are detached */
 		if (drp_state[port] == PD_DRP_TOGGLE_OFF
 		    || drp_state[port] == PD_DRP_FREEZE
@@ -2351,6 +2352,11 @@ static void tc_attach_wait_snk_run(const int port)
 								PD_T_AME);
 		}
 	}
+}
+
+static void tc_attach_wait_snk_exit(const int port)
+{
+	pd_timer_disable(port, TC_TIMER_PD_DEBOUNCE);
 }
 
 /**
@@ -3417,15 +3423,22 @@ static void tc_try_wait_snk_run(const int port)
 	/* Debounce the cc state */
 	if (new_cc_state != tc[port].cc_state) {
 		tc[port].cc_state = new_cc_state;
-		tc[port].pd_debounce = get_time().val + PD_T_PD_DEBOUNCE;
+		pd_timer_active(port, TC_TIMER_PD_DEBOUNCE, PD_T_PD_DEBOUNCE);
 	}
+
+	/*
+	 * Convert active/expired to be inactive/expired, if applicable, to
+	 * not speed up timer tick in the possible case the timer expired
+	 * but we leave the state before handling it.
+	 */
+	pd_timer_expired_to_inactive(port, TC_TIMER_PD_DEBOUNCE);
 
 	/*
 	 * The port shall transition to Unattached.SNK when the state of both
 	 * of the CC1 and CC2 pins is SNK.Open for at least tPDDebounce.
 	 */
-	if ((get_time().val > tc[port].pd_debounce) &&
-						(new_cc_state == PD_CC_NONE)) {
+	if (new_cc_state == PD_CC_NONE &&
+	    pd_timer_is_expired(port, TC_TIMER_PD_DEBOUNCE)) {
 		set_state_tc(port, TC_UNATTACHED_SNK);
 		return;
 	}
@@ -3437,6 +3450,11 @@ static void tc_try_wait_snk_run(const int port)
 	if (get_time().val > tc[port].try_wait_debounce &&
 	    pd_is_vbus_present(port))
 		set_state_tc(port, TC_ATTACHED_SNK);
+}
+
+static void tc_try_wait_snk_exit(const int port)
+{
+	pd_timer_disable(port, TC_TIMER_PD_DEBOUNCE);
 }
 #endif
 
@@ -3851,6 +3869,7 @@ static __const_data const struct usb_state tc_states[] = {
 	[TC_ATTACH_WAIT_SNK] = {
 		.entry	= tc_attach_wait_snk_entry,
 		.run	= tc_attach_wait_snk_run,
+		.exit	= tc_attach_wait_snk_exit,
 		.parent = &tc_states[TC_CC_RD],
 	},
 	[TC_ATTACHED_SNK] = {
@@ -3883,6 +3902,7 @@ static __const_data const struct usb_state tc_states[] = {
 	[TC_TRY_WAIT_SNK] = {
 		.entry	= tc_try_wait_snk_entry,
 		.run	= tc_try_wait_snk_run,
+		.exit	= tc_try_wait_snk_exit,
 		.parent = &tc_states[TC_CC_RD],
 	},
 #endif /* CONFIG_USB_PD_TRY_SRC */
