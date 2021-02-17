@@ -53,9 +53,9 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_VBUS_ALERT_L);
 
 	/* Calibrate INA0 (VBUS) with 1mA/LSB scale */
-	ina2xx_init(0, 0x8000, INA2XX_CALIB_1MA(15 /*mOhm*/));
+	ina2xx_init(0, 0x8000, INA2XX_CALIB_1MA(INA_SENSE_MOHMS));
 	/* Disable INA1 (VCONN2) to avoid leaking current */
-	ina2xx_init(1, 0, INA2XX_CALIB_1MA(15 /*mOhm*/));
+	ina2xx_init(1, 0, INA2XX_CALIB_1MA(INA_SENSE_MOHMS));
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

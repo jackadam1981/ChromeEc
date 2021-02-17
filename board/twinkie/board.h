@@ -154,4 +154,10 @@ enum usb_strings {
 #define USB_IFACE_COUNT   2
 #endif
 
+#ifdef BOARD_TWONKIE
+#define INA_SENSE_MOHMS 2   /* that's mOhms not MOhms */
+#else /* Twinkie */
+#define INA_SENSE_MOHMS 15
+#endif
+
 #endif /* __CROS_EC_BOARD_H */
