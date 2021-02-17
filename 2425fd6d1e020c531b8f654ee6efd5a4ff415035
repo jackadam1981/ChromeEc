@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3b58695c_6e854782",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-17T22:56:33Z",
+      "side": 1,
+      "message": "I don\u0027t understand, this is for the cr50 stab branch.\n\nI don\u0027t know what the protocol is for landing code to other branches, but I am happy to cherry-pick this change wherever it is appropriate.",
+      "parentUuid": "e9acef55_f87ee5b4",
+      "revId": "2425fd6d1e020c531b8f654ee6efd5a4ff415035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "38cae9a1_71663cd3",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
