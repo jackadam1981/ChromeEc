@@ -162,6 +162,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15e32d9c_b5ba3a36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-17T20:57:52Z",
+      "side": 1,
+      "message": "I think I agree with Simon here.  The example in the Zephyr documentation talks about setting the UART baud rate, which is pretty analogous to what we\u0027re doing with the default console channels.  We\u0027re defining the boot-time setting, but it can changed at runtime using the \u0027chan\u0027 command.\n\n\"Additionally, the UART boot-time configuration is also described with devicetree. This could include configuration such as the RX IRQ line’s priority and the UART baud rate. These may be modifiable at runtime, but their boot-time configuration is described in devicetree.\"",
+      "parentUuid": "50116a48_32e6d9d0",
+      "revId": "7a5587939ea7f2370b999bedbba3b8d52421994e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a3bb0a9_52a2f445",
