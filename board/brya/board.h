@@ -80,6 +80,14 @@
 #define USBC_PORT_C0_BB_RETIMER_I2C_ADDR	0x56
 #define USBC_PORT_C2_BB_RETIMER_I2C_ADDR	0x57
 
+/* Charger defines */
+/* Brya uses the BQ25720 charger */
+#define CONFIG_CHARGER_BQ25710
+#define CONFIG_CHARGE_RAMP_SW
+#define CONFIG_CHARGER_NARROW_VDC
+#define CONFIG_CHARGER_SENSE_RESISTOR		10
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"	/* needed by registers.h */
