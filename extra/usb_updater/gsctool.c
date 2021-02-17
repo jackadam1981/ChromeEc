@@ -204,6 +204,17 @@ struct option_container {
 	const char *help_text;
 };
 
+/* SHA Context used with our local sha_* abstraction functions */
+union ShaCtx {
+	SHA_CTX sha1;
+	SHA256_CTX sha256;
+};
+
+static int sha_init(union ShaCtx *ctx);
+static int sha_update(union ShaCtx *ctx, const void *data, size_t len);
+static int sha_final_into_block_digest(uint32_t *block_digest,
+				       union ShaCtx *ctx);
+
 /*
  * This by far exceeds the largest vendor command response size we ever
  * expect.
@@ -817,8 +828,7 @@ static void transfer_section(struct transfer_descriptor *td,
 	printf("sending 0x%zx bytes to %#x\n", data_len, section_addr);
 	while (data_len) {
 		size_t payload_size;
-		SHA_CTX ctx;
-		uint8_t digest[SHA_DIGEST_LENGTH];
+		union ShaCtx ctx;
 		int max_retries;
 		struct update_pdu updu;
 
@@ -830,15 +840,12 @@ static void transfer_section(struct transfer_descriptor *td,
 		updu.cmd.block_base = htobe32(section_addr);
 
 		/* Calculate the digest. */
-		SHA1_Init(&ctx);
-		SHA1_Update(&ctx, &updu.cmd.block_base,
+		sha_init(&ctx);
+		sha_update(&ctx, &updu.cmd.block_base,
 			    sizeof(updu.cmd.block_base));
-		SHA1_Update(&ctx, data_ptr, payload_size);
-		SHA1_Final(digest, &ctx);
+		sha_update(&ctx, data_ptr, payload_size);
+		sha_final_into_block_digest(&updu.cmd.block_digest, &ctx);
 
-		/* Copy the first few bytes. */
-		memcpy(&updu.cmd.block_digest, digest,
-		       sizeof(updu.cmd.block_digest));
 		if (td->ep_type == usb_xfer) {
 			for (max_retries = 10; max_retries; max_retries--)
 				if (!transfer_block(&td->uep, &updu,
@@ -1285,8 +1292,7 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 	struct update_frame_header *ufh;
 	uint16_t *frame_ptr;
 	size_t usb_msg_size;
-	SHA_CTX ctx;
-	uint8_t digest[SHA_DIGEST_LENGTH];
+	union ShaCtx ctx;
 
 	usb_msg_size = sizeof(struct update_frame_header) +
 		sizeof(subcommand) + body_size;
@@ -1307,12 +1313,11 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 		memcpy(frame_ptr + 1, cmd_body, body_size);
 
 	/* Calculate the digest. */
-	SHA1_Init(&ctx);
-	SHA1_Update(&ctx, &ufh->cmd.block_base,
+	sha_init(&ctx);
+	sha_update(&ctx, &ufh->cmd.block_base,
 		    usb_msg_size -
 		    offsetof(struct update_frame_header, cmd.block_base));
-	SHA1_Final(digest, &ctx);
-	memcpy(&ufh->cmd.block_digest, digest, sizeof(ufh->cmd.block_digest));
+	sha_final_into_block_digest(&ufh->cmd.block_digest, &ctx);
 
 	do_xfer(uep, ufh, usb_msg_size, resp,
 		resp_size ? *resp_size : 0, 1, resp_size);
@@ -1632,6 +1637,42 @@ static void generate_reset_request(struct transfer_descriptor *td)
 		exit(update_error);
 	}
 	printf("reboot %s\n", reset_type);
+}
+
+/* Forward to correct SHA implementation based on image type */
+static int sha_init(union ShaCtx *ctx)
+{
+	if (image_magic == MAGIC_HAVEN)
+		return SHA1_Init(&ctx->sha1);
+	if (image_magic == MAGIC_DAUNTLESS)
+		return SHA256_Init(&ctx->sha256);
+	return -1;
+}
+
+/* Forward to correct SHA implementation based on image type */
+static int sha_update(union ShaCtx *ctx, const void *data, size_t len)
+{
+	if (image_magic == MAGIC_HAVEN)
+		return SHA1_Update(&ctx->sha1, data, len);
+	if (image_magic == MAGIC_DAUNTLESS)
+		return SHA256_Update(&ctx->sha256, data, len);
+	return -1;
+}
+
+/* Forward to correct SHA implementation based on image type */
+static int sha_final_into_block_digest(uint32_t *block_digest,
+				       union ShaCtx *ctx)
+{
+	int rv = -1;
+	uint8_t full_digest[SHA256_DIGEST_LENGTH]; /* Big enough for either */
+
+	if (image_magic == MAGIC_HAVEN)
+		rv = SHA1_Final(full_digest, &ctx->sha1);
+	else if (image_magic == MAGIC_DAUNTLESS)
+		rv = SHA256_Final(full_digest, &ctx->sha256);
+
+	memcpy(block_digest, full_digest, sizeof(*block_digest));
+	return rv;
 }
 
 /*
