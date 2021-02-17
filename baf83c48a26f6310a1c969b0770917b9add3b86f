@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa39f6de_79cb2f72",
+        "filename": "zephyr/projects/delbin/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-17T19:35:45Z",
+      "side": 1,
+      "message": "Nit - this belongs with the previous CL.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 68
+      },
+      "revId": "baf83c48a26f6310a1c969b0770917b9add3b86f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
