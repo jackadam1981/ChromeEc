@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "524588ea_937979d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-17T02:23:32Z",
+      "side": 1,
+      "message": "code otherwise looks ok",
+      "revId": "36696e395c7a03bc8c16aa8cf9c4817d06a039db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c03612_af074edf",
+        "filename": "driver/retimer/nb7v904m.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-17T02:23:32Z",
+      "side": 1,
+      "message": "please add function documentation.",
+      "revId": "36696e395c7a03bc8c16aa8cf9c4817d06a039db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
