@@ -1063,8 +1063,7 @@ static bool locate_headers(const void *image, const uint32_t size)
 		return false;
 	}
 	sections[RW_A].offset = rw_offset;
-	sections[RW_A].size =
-		round_up_16kb(as_header(image, rw_offset)->image_size);
+	sections[RW_A].size = as_header(image, rw_offset)->image_size;
 
 	/* Validate the RO_B header */
 	h = as_header(image, slot_a_end);
@@ -1083,8 +1082,7 @@ static bool locate_headers(const void *image, const uint32_t size)
 		return false;
 	}
 	sections[RW_B].offset = rw_offset;
-	sections[RW_B].size =
-		round_up_16kb(as_header(image, rw_offset)->image_size);
+	sections[RW_B].size = as_header(image, rw_offset)->image_size;
 
 	/* We found all of the headers and updated offset/size in sections */
 	return true;
@@ -1546,11 +1544,19 @@ static void process_erase_ap_ro_hash(struct transfer_descriptor *td)
 	exit(update_error);
 }
 
-static struct signed_header_version ver19 = {
-	.epoch = 0,
-	.major = 0,
-	.minor = 19,
-};
+/*
+ * H1 support for background update was added in 0.0.19
+ * D2 support exists in all versions.
+ */
+static int
+supports_background_update_supported(struct signed_header_version *rw)
+{
+	if (image_magic == MAGIC_HAVEN)
+		return rw->epoch || rw->major || rw->minor >= 19;
+	if (image_magic == MAGIC_DAUNTLESS)
+		return true;
+	return false;
+}
 
 static void generate_reset_request(struct transfer_descriptor *td)
 {
@@ -1575,9 +1581,10 @@ static void generate_reset_request(struct transfer_descriptor *td)
 		return;
 	}
 
-	/* RW version 0.0.19 and above has support for background updates. */
-	background_update_supported = td->background_update_supported ||
-				!a_newer_than_b(&ver19, &targ.shv[1]);
+	/* Enable background updates if on cmd line or chip supports it */
+	background_update_supported =
+		td->background_update_supported ||
+		supports_background_update_supported(&targ.shv[1]);
 
 	/*
 	 * If this is an upstart request and there is support for background
