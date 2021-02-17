@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d84ff898_6c7855a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T17:36:25Z",
+      "side": 1,
+      "message": "The level of commenting in Patchset 10 seems reasonable.",
+      "parentUuid": "71a8524e_b1593e8a",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40de631b_331a43f5",
@@ -155,6 +173,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "d01bb913_0f6ff750",
+      "range": {
+        "startLine": 1474,
+        "startChar": 66,
+        "endLine": 1474,
+        "endChar": 70
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5311ad08_d080edc9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T17:36:25Z",
+      "side": 1,
+      "message": "Where is the bug mentioned? Or is there not one?",
+      "parentUuid": "ea4d47eb_85b84b39",
       "range": {
         "startLine": 1474,
         "startChar": 66,
@@ -413,6 +455,30 @@
       "side": 1,
       "message": "If we want to change this, I argue it should be replaced with DPM as the spec refers to that.",
       "parentUuid": "174743e9_7153d2ec",
+      "range": {
+        "startLine": 5987,
+        "startChar": 17,
+        "endLine": 5987,
+        "endChar": 34
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229e1560_2925ef9d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5987,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T17:36:25Z",
+      "side": 1,
+      "message": "Sounds good, if this comment ends up being retained in some form.",
+      "parentUuid": "9d9beba1_3b28d746",
       "range": {
         "startLine": 5987,
         "startChar": 17,

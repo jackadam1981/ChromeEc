@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d966dff7_0d40701d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5859,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T17:36:25Z",
+      "side": 0,
+      "message": "FWIW, it was used again on the next line after that. The command-type check is now at a slightly lower level of abstraction than it was, although I\u0027ll concede that the change is marginal.",
+      "parentUuid": "b9952040_894568c9",
+      "range": {
+        "startLine": 5859,
+        "startChar": 1,
+        "endLine": 5859,
+        "endChar": 9
+      },
+      "revId": "2898923d2f171806a92c9f17f1e8776d6df22b8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a4fd03c_98587ebb",
@@ -79,6 +103,24 @@
       "side": 0,
       "message": "I do not like the VDO() macro. It was made to work for both VDM and SVDM as such isn\u0027t even that useful for what\u0027s happening here. The VDO macro encodes the SVID, structured bit, and bits 14:0 as a single field. The work this function is doing is only to form bits 14:0 and so VDO() brings nothing to the table in this instance.",
       "parentUuid": "4a4fd03c_98587ebb",
+      "revId": "2898923d2f171806a92c9f17f1e8776d6df22b8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "101cbb5f_a86fa2c3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5947,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T17:36:25Z",
+      "side": 0,
+      "message": "Ack, WRT the VDO macro being poorly factored. It should take more parameters and probably have structured and unstructured versions with more expressive names.\n\nIf a macro (or function) had those things, I think it would have preferable semantics to setting the fields individually:\n1) Assigning to the entire VDO would make it more obvious that the object was being completely initialized, whereas leaving various fields in their previous states (including reserved fields that technically should be zeroed) prompts some explanation.\n2) Encapsulating the construction of individual fields via, e.g. VDO_CMDT(), would factor it out of this function, which I believe is an appropriate level of abstraction in the PE.\n\nSince, as you point out, the current macro is not fully suited to these benefits, and making it better would be out of scope, I will downgrade this to a nit.",
+      "parentUuid": "deedad98_91e4024c",
       "revId": "2898923d2f171806a92c9f17f1e8776d6df22b8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
