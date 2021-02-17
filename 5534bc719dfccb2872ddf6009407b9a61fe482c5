@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab0c3fec_7cdb09c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-17T19:51:35Z",
+      "side": 1,
+      "message": "It looks like the commit message is too wide but I\u0027m not sure",
+      "revId": "5534bc719dfccb2872ddf6009407b9a61fe482c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd3d6d1_8e74b39e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-17T19:51:35Z",
+      "side": 1,
+      "message": "sometimes",
+      "range": {
+        "startLine": 369,
+        "startChar": 30,
+        "endLine": 369,
+        "endChar": 40
+      },
+      "revId": "5534bc719dfccb2872ddf6009407b9a61fe482c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
