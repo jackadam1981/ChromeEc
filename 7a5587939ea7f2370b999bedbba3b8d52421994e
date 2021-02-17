@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11507122_768fc3e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T20:20:48Z",
+      "side": 1,
+      "message": "I think you are confused by \"boot-time\" here.\n\nThis is referring to *hardware* boot-time properties, such as clock frequencies. EC console channels still aren\u0027t hardware properties.",
+      "parentUuid": "672ab086_578cf143",
+      "revId": "7a5587939ea7f2370b999bedbba3b8d52421994e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a3bb0a9_52a2f445",
         "filename": "zephyr/shim/src/console.c",
         "patchSetId": 1
