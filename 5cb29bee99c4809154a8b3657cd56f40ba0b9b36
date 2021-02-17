@@ -22,6 +22,30 @@
       },
       "revId": "5cb29bee99c4809154a8b3657cd56f40ba0b9b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f55b9f2_b4b43502",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T19:48:41Z",
+      "side": 1,
+      "message": "We have no way to do that in device-tree as of now.",
+      "parentUuid": "90f20d3b_2fca2335",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "5cb29bee99c4809154a8b3657cd56f40ba0b9b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
