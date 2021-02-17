@@ -57,6 +57,11 @@
 #include "baseboard_usbc_config.h"
 #include "extpower.h"
 
+enum ec_cfg_usb_db_type {
+	DB_USB_ABSENT = 0,
+	DB_USB3_PS8815 = 1,
+};
+
 /*
  * Check battery disconnect state.
  * This function will return if battery is initialized or not.
