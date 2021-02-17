@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a8524e_b1593e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "I had ended adding additional comments that make some of my previous comments redundant. I do not agree though that comments should be reserved for .h APIs only, or via naming conventions. Some comments that explain what is happening can be very helpful.",
+      "parentUuid": "4a7151be_3db5770e",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40de631b_331a43f5",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0164cb2c_d3812300",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "I don\u0027t see the value in or need to remove that comment. Maybe it\u0027s obvious that it\u0027s a count of VDOs and VDOs are 4 bytes in length, but I don\u0027t see where this comment makes the function harder to follow.",
+      "parentUuid": "40de631b_331a43f5",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb07ba6a_80762c29",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-02-17T01:13:55Z",
       "side": 1,
       "message": "I think * 4 would be more expressive.",
+      "range": {
+        "startLine": 1469,
+        "startChar": 44,
+        "endLine": 1469,
+        "endChar": 49
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3137490_70e1ee1b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "* 4 and \u003c\u003c 2 are equally expressive. \u003c\u003c 2 as a means to convert between bytes and uint32s is very common. However, I do see that isn\u0027t the common coding style in this module. I have changed this to sizeof(uint32_t).",
+      "parentUuid": "bb07ba6a_80762c29",
       "range": {
         "startLine": 1469,
         "startChar": 44,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea4d47eb_85b84b39",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01bb913_0f6ff750",
+      "range": {
+        "startLine": 1474,
+        "startChar": 66,
+        "endLine": 1474,
+        "endChar": 70
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b681b0c_58a17142",
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42ff538_ca7f508a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5117,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b681b0c_58a17142",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fbeba10_f75adef7",
@@ -111,6 +213,30 @@
       "writtenOn": "2021-02-17T01:13:55Z",
       "side": 1,
       "message": "Nit: Attention",
+      "range": {
+        "startLine": 5124,
+        "startChar": 10,
+        "endLine": 5124,
+        "endChar": 19
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9239eda_95cdbf54",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5124,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fbeba10_f75adef7",
       "range": {
         "startLine": 5124,
         "startChar": 10,
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd99dec_c2017342",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5972,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "The header structure is commented in usb_pd.h. The VDO macros are lacking in explanation in my opinion.\n\nI modified this function before it was refactored for Volteer, when it was functionally broken. I put the SVDM header definition in at that time as I felt it helped explain what was being done. As I mentioned above, I have removed some of the comments as the same things were being said in a couple different places. I removed duplicated the svdm header info here.",
+      "parentUuid": "7d66115f_dced5056",
+      "range": {
+        "startLine": 5963,
+        "startChar": 0,
+        "endLine": 5972,
+        "endChar": 23
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d0052ea_90ad8ec3",
@@ -157,6 +307,30 @@
       "writtenOn": "2021-02-17T01:13:55Z",
       "side": 1,
       "message": "Spelling",
+      "range": {
+        "startLine": 5975,
+        "startChar": 39,
+        "endLine": 5975,
+        "endChar": 42
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad0f49a_328474e2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5975,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "N/A",
+      "parentUuid": "7d0052ea_90ad8ec3",
       "range": {
         "startLine": 5975,
         "startChar": 39,
@@ -184,6 +358,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb687e7b_c8b47572",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5976,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "I will update the comments. I cleaned up some things in my last patchset, including moving up where the Structured version is being set, and I may not have double checked that the comments sill fully applied.",
+      "parentUuid": "87c3abfa_70ec325c",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "174743e9_7153d2ec",
@@ -197,6 +389,30 @@
       "writtenOn": "2021-02-17T01:13:55Z",
       "side": 1,
       "message": "Nit: \"the TCPM\"\nI don\u0027t think the spec says what component is considered to be busy when we send a BUSY response.",
+      "range": {
+        "startLine": 5987,
+        "startChar": 17,
+        "endLine": 5987,
+        "endChar": 34
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d9beba1_3b28d746",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5987,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "If we want to change this, I argue it should be replaced with DPM as the spec refers to that.",
+      "parentUuid": "174743e9_7153d2ec",
       "range": {
         "startLine": 5987,
         "startChar": 17,
@@ -224,6 +440,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abc0a269_826e7cce",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5997,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "010ad943_64c38804",
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf8482b7_250a8074",
@@ -237,6 +471,30 @@
       "writtenOn": "2021-02-17T01:13:55Z",
       "side": 1,
       "message": "Nit: Only one of these ifs can be true, so the else isn\u0027t necessary.",
+      "range": {
+        "startLine": 6006,
+        "startChar": 3,
+        "endLine": 6006,
+        "endChar": 7
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ed6e522_17489771",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6006,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf8482b7_250a8074",
       "range": {
         "startLine": 6006,
         "startChar": 3,
@@ -270,6 +528,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79dc9402_df8c4b80",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6027,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "\u0027\u003c\u003c 2\u0027 and \u0027* 4\u0027 are equally expressive in the embedded world. However, I do feel that sizeof(uint32_t) matches better  with the coding style in other places in this file.",
+      "parentUuid": "3aa53a94_eb0baa23",
+      "range": {
+        "startLine": 6027,
+        "startChar": 30,
+        "endLine": 6027,
+        "endChar": 34
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc8282d5_bdc5b554",
@@ -283,6 +565,30 @@
       "writtenOn": "2021-02-17T01:13:55Z",
       "side": 1,
       "message": "Spelling",
+      "range": {
+        "startLine": 6037,
+        "startChar": 4,
+        "endLine": 6037,
+        "endChar": 14
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "844fdd4c_2a64c16f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6037,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-17T07:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc8282d5_bdc5b554",
       "range": {
         "startLine": 6037,
         "startChar": 4,
