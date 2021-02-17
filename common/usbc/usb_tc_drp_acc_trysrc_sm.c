@@ -404,8 +404,6 @@ static struct type_c {
 	uint32_t flags;
 	/* The cc state */
 	enum pd_cc_states cc_state;
-	/* Generic timer */
-	uint64_t timeout;
 	/* Tasks to notify after TCPC has been reset */
 	int tasks_waiting_on_reset;
 	/* Tasks preventing TCPC from entering low power mode */
@@ -1273,7 +1271,7 @@ static bool tc_perform_src_hard_reset(int port)
 		tc_set_data_role(port, PD_ROLE_DFP);
 
 		tc[port].ps_reset_state = PS_STATE1;
-		tc[port].timeout = get_time().val + PD_T_SRC_RECOVER;
+		pd_timer_enable(port, TC_TIMER_TIMEOUT, PD_T_SRC_RECOVER);
 		return false;
 	case PS_STATE1:
 		/* Enable VBUS */
@@ -1286,14 +1284,15 @@ static bool tc_perform_src_hard_reset(int port)
 		set_vconn(port, 1);
 
 		tc[port].ps_reset_state = PS_STATE2;
-		tc[port].timeout = get_time().val +
-				PD_POWER_SUPPLY_TURN_ON_DELAY;
+		pd_timer_enable(port, TC_TIMER_TIMEOUT,
+				PD_POWER_SUPPLY_TURN_ON_DELAY);
 		return false;
 	case PS_STATE2:
 		/* Tell Policy Engine Hard Reset is complete */
 		pe_ps_reset_complete(port);
 
 		tc[port].ps_reset_state = PS_STATE0;
+		pd_timer_disable(port, TC_TIMER_TIMEOUT);
 		return true;
 	}
 
@@ -1327,7 +1326,7 @@ static bool tc_perform_snk_hard_reset(int port)
 
 		/* Wait up to tVSafe0V for Vbus to disappear */
 		tc[port].ps_reset_state = PS_STATE1;
-		tc[port].timeout = get_time().val + PD_T_SAFE_0V;
+		pd_timer_enable(port, TC_TIMER_TIMEOUT, PD_T_SAFE_0V);
 		return false;
 	case PS_STATE1:
 		if (pd_check_vbus_level(port, VBUS_SAFE0V)) {
@@ -1341,21 +1340,20 @@ static bool tc_perform_snk_hard_reset(int port)
 
 			/* Move on to waiting for the return of Vbus */
 			tc[port].ps_reset_state = PS_STATE2;
-			tc[port].timeout = get_time().val +
-						PD_T_SRC_RECOVER_MAX +
-						PD_T_SRC_TURN_ON;
+			pd_timer_enable(port, TC_TIMER_TIMEOUT,
+					PD_T_SRC_RECOVER_MAX +
+					PD_T_SRC_TURN_ON);
 		}
 
-		if (get_time().val > tc[port].timeout) {
+		if (pd_timer_is_expired(port, TC_TIMER_TIMEOUT)) {
 			/*
 			 * No Vbus drop likely indicates a non-PD port partner,
 			 * move to the next stage anyway.
 			 */
 			tc[port].ps_reset_state = PS_STATE2;
-			tc[port].timeout = get_time().val +
-						PD_T_SRC_RECOVER_MAX +
-						PD_T_SRC_TURN_ON;
-
+			pd_timer_enable(port, TC_TIMER_TIMEOUT,
+					PD_T_SRC_RECOVER_MAX +
+					PD_T_SRC_TURN_ON);
 		}
 		return false;
 	case PS_STATE2:
@@ -1370,6 +1368,7 @@ static bool tc_perform_snk_hard_reset(int port)
 			 * reset is complete
 			 */
 			tc[port].ps_reset_state = PS_STATE0;
+			pd_timer_disable(port, TC_TIMER_TIMEOUT);
 			pe_ps_reset_complete(port);
 
 			/*
@@ -1392,8 +1391,9 @@ static bool tc_perform_snk_hard_reset(int port)
 		/*
 		 * If Vbus isn't back after wait + tSrcTurnOn, go unattached
 		 */
-		if (get_time().val > tc[port].timeout) {
+		if (pd_timer_is_expired(port, TC_TIMER_TIMEOUT)) {
 			tc[port].ps_reset_state = PS_STATE0;
+			pd_timer_disable(port, TC_TIMER_TIMEOUT);
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return true;
 		}
@@ -2077,14 +2077,14 @@ static void tc_error_recovery_entry(const int port)
 {
 	print_current_state(port);
 
-	tc[port].timeout = get_time().val + PD_T_ERROR_RECOVERY;
+	pd_timer_enable(port, TC_TIMER_TIMEOUT, PD_T_ERROR_RECOVERY);
 }
 
 static void tc_error_recovery_run(const int port)
 {
 	enum usb_tc_state start_state;
 
-	if (get_time().val < tc[port].timeout)
+	if (!pd_timer_is_expired(port, TC_TIMER_TIMEOUT))
 		return;
 
 	/*
@@ -2109,6 +2109,11 @@ static void tc_error_recovery_run(const int port)
 			start_state = TC_UNATTACHED_SRC;
 
 	restart_tc_sm(port, start_state);
+}
+
+static void tc_error_recovery_exit(const int port)
+{
+	pd_timer_disable(port, TC_TIMER_TIMEOUT);
 }
 
 /**
@@ -2813,9 +2818,6 @@ static void tc_attached_src_entry(const int port)
 
 	print_current_state(port);
 
-	/* Run function relies on timeout being 0 or meaningful */
-	tc[port].timeout = 0;
-
 	/*
 	 * Known state of attach is SRC.  We need to apply this pull value
 	 * to make it set in hardware at the correct time but set the common
@@ -2889,9 +2891,9 @@ static void tc_attached_src_entry(const int port)
 			typec_update_cc(port);
 
 			tc_enable_pd(port, 0);
-			tc[port].timeout = get_time().val +
-				MAX(PD_POWER_SUPPLY_TURN_ON_DELAY,
-				    PD_T_VCONN_STABLE);
+			pd_timer_enable(port, TC_TIMER_TIMEOUT,
+					MAX(PD_POWER_SUPPLY_TURN_ON_DELAY,
+					    PD_T_VCONN_STABLE));
 		}
 	} else {
 		/* Get connector orientation */
@@ -2998,9 +3000,9 @@ static void tc_attached_src_run(const int port)
 	 * Enable PD communications after power supply has fully
 	 * turned on
 	 */
-	if (tc[port].timeout > 0 && get_time().val > tc[port].timeout) {
+	if (pd_timer_is_expired(port, TC_TIMER_TIMEOUT)) {
 		tc_enable_pd(port, 1);
-		tc[port].timeout = 0;
+		pd_timer_disable(port, TC_TIMER_TIMEOUT);
 	}
 
 	if (!tc_get_pd_enabled(port))
@@ -3011,7 +3013,8 @@ static void tc_attached_src_run(const int port)
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET_REQUESTED)) {
 		/* Ignoring Hard Resets while the power supply is resetting.*/
-		if (get_time().val < tc[port].timeout)
+		if (!pd_timer_is_disabled(port, TC_TIMER_TIMEOUT) &&
+		    !pd_timer_is_expired(port, TC_TIMER_TIMEOUT))
 			return;
 
 		if (tc_perform_src_hard_reset(port))
@@ -3130,6 +3133,8 @@ static void tc_attached_src_exit(const int port)
 
 	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER))
 		tcpm_debug_detach(port);
+
+	pd_timer_disable(port, TC_TIMER_TIMEOUT);
 }
 
 static __maybe_unused void check_drp_connection(const int port)
@@ -3195,7 +3200,8 @@ __maybe_unused static void tc_drp_auto_toggle_entry(const int port)
 	 * for the minimum of DRP SNK or SRC so the first toggle cause by
 	 * transition into auto toggle doesn't violate spec timing.
 	 */
-	tc[port].timeout = get_time().val + MAX(PD_T_DRP_SNK, PD_T_DRP_SRC);
+	pd_timer_enable(port, TC_TIMER_TIMEOUT,
+			MAX(PD_T_DRP_SNK, PD_T_DRP_SRC));
 }
 
 __maybe_unused static void tc_drp_auto_toggle_run(const int port)
@@ -3210,17 +3216,22 @@ __maybe_unused static void tc_drp_auto_toggle_run(const int port)
 	if (TC_CHK_FLAG(port, TC_FLAGS_CHECK_CONNECTION))
 		check_drp_connection(port);
 
-	else if (tc[port].timeout != TIMER_DISABLED) {
-		if (tc[port].timeout > get_time().val)
+	else if (!pd_timer_is_disabled(port, TC_TIMER_TIMEOUT)) {
+		if (!pd_timer_is_expired(port, TC_TIMER_TIMEOUT))
 			return;
 
-		tc[port].timeout = TIMER_DISABLED;
+		pd_timer_disable(port, TC_TIMER_TIMEOUT);
 		tcpm_enable_drp_toggle(port);
 
 		if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER)) {
 			set_state_tc(port, TC_LOW_POWER_MODE);
 		}
 	}
+}
+
+__maybe_unused static void tc_drp_auto_toggle_exit(const int port)
+{
+	pd_timer_disable(port, TC_TIMER_TIMEOUT);
 }
 
 __maybe_unused static void tc_low_power_mode_entry(const int port)
@@ -3287,7 +3298,7 @@ static void tc_try_src_entry(const int port)
 
 	tc[port].cc_state = PD_CC_UNSET;
 	pd_timer_enable(port, TC_TIMER_TRY_WAIT_DEBOUNCE, PD_T_DRP_TRY);
-	tc[port].timeout = get_time().val + PD_T_TRY_TIMEOUT;
+	pd_timer_enable(port, TC_TIMER_TIMEOUT, PD_T_TRY_TIMEOUT);
 
 	/*
 	 * We are a SNK but would prefer to be a SRC.  Set the pull to
@@ -3340,7 +3351,7 @@ static void tc_try_src_run(const int port)
 	if (new_cc_state == PD_CC_NONE) {
 		if ((pd_timer_is_expired(port, TC_TIMER_TRY_WAIT_DEBOUNCE) &&
 		     pd_check_vbus_level(port, VBUS_SAFE0V)) ||
-		    get_time().val > tc[port].timeout) {
+		    pd_timer_is_expired(port, TC_TIMER_TIMEOUT)) {
 			set_state_tc(port, TC_TRY_WAIT_SNK);
 		}
 	}
@@ -3349,6 +3360,7 @@ static void tc_try_src_run(const int port)
 static void tc_try_src_exit(const int port)
 {
 	pd_timer_disable(port, TC_TIMER_CC_DEBOUNCE);
+	pd_timer_disable(port, TC_TIMER_TIMEOUT);
 	pd_timer_disable(port, TC_TIMER_TRY_WAIT_DEBOUNCE);
 }
 
@@ -3458,7 +3470,7 @@ __maybe_unused static void tc_ct_unattached_snk_entry(int port)
 	 */
 	tc_enable_pd(port, 0);
 
-	tc[port].timeout = get_time().val + PD_POWER_SUPPLY_TURN_ON_DELAY;
+	pd_timer_enable(port, TC_TIMER_TIMEOUT, PD_POWER_SUPPLY_TURN_ON_DELAY);
 }
 
 __maybe_unused static void tc_ct_unattached_snk_run(int port)
@@ -3470,13 +3482,14 @@ __maybe_unused static void tc_ct_unattached_snk_run(int port)
 	if (!IS_ENABLED(CONFIG_USB_PE_SM))
 		assert(0);
 
-	if (tc[port].timeout > 0 && get_time().val > tc[port].timeout) {
-		tc_enable_pd(port, 1);
-		tc[port].timeout = 0;
+	if (!pd_timer_is_disabled(port, TC_TIMER_TIMEOUT)) {
+		if (pd_timer_is_expired(port, TC_TIMER_TIMEOUT)) {
+			tc_enable_pd(port, 1);
+			pd_timer_disable(port, TC_TIMER_TIMEOUT);
+		} else {
+			return;
+		}
 	}
-
-	if (tc[port].timeout > 0)
-		return;
 
 	/* Wait until Protocol Layer is ready */
 	if (!prl_is_running(port))
@@ -3529,6 +3542,7 @@ __maybe_unused static void tc_ct_unattached_snk_run(int port)
 __maybe_unused static void tc_ct_unattached_snk_exit(int port)
 {
 	pd_timer_disable(port, TC_TIMER_CC_DEBOUNCE);
+	pd_timer_disable(port, TC_TIMER_TIMEOUT);
 }
 
 /**
@@ -3833,6 +3847,7 @@ static __const_data const struct usb_state tc_states[] = {
 	[TC_ERROR_RECOVERY] = {
 		.entry	= tc_error_recovery_entry,
 		.run	= tc_error_recovery_run,
+		.exit	= tc_error_recovery_exit,
 		.parent = &tc_states[TC_CC_OPEN],
 	},
 	[TC_UNATTACHED_SNK] = {
@@ -3887,6 +3902,7 @@ static __const_data const struct usb_state tc_states[] = {
 	[TC_DRP_AUTO_TOGGLE] = {
 		.entry = tc_drp_auto_toggle_entry,
 		.run   = tc_drp_auto_toggle_run,
+		.exit  = tc_drp_auto_toggle_exit,
 	},
 #endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE */
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
