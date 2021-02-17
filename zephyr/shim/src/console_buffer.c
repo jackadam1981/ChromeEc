@@ -105,3 +105,35 @@ int uart_console_read_buffer(uint8_t type, char *dest, uint16_t dest_size,
 
 	return EC_RES_SUCCESS;
 }
+
+/*
+#include <drivers/console/uart_pipe.h>
+#include <sys/ring_buffer.h>
+
+static K_FIFO_DEFINE(uart_free_queue);
+static struct console_input uart_line_buf;
+
+static int init_uart_rx(const struct device *dev)
+{
+	ARG_UNUSED(dev);
+
+	k_fifo_put(&uart_free_queue, &uart_line_buf);
+	uart_register_input(&uart_free_queue, NULL, NULL);
+
+	return 0;
+}
+SYS_INIT(init_uart_rx_to_ring_buf, PRE_KERNEL_1, 50);
+
+int uart_getc(void)
+{
+	uint8_t c;
+	if (ring_buf_get(&uart_ring_buf, &c, 1)) {
+		return c;
+	}
+	return -1;
+}
+ */
+
+void uart_clear_input(void)
+{
+}
