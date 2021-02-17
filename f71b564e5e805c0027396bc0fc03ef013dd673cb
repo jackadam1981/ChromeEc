@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b064032_61c8d1d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:27:56Z",
+      "side": 1,
+      "message": "My main feedback relates to \n\nSome nits that you\u0027ll probably get from me in various places WRT expressiveness: I think we can afford the last 4 letters in \"attention,\" and I\u0027m not particularly fond of using \u003c\u003c 2 to mean * 4 when there is nothing particularly bit-fieldy about the context.",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c854b1_9c1ad914",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:27:56Z",
+      "side": 1,
+      "message": "This name could be more expressive.",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7586601_0b14a12b",
@@ -26,6 +60,91 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abeef198_3b5739dd",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:27:56Z",
+      "side": 1,
+      "message": "Should any other part of the system be made aware that something went wrong?",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3868912a_1af019c5",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:27:56Z",
+      "side": 1,
+      "message": "Use the constant that you defined in usb_pd.h. Or use that to define vdm[], and use sizeof(vdm) / sizeof(*vdm) here.",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a356255c_9874c29d",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:27:56Z",
+      "side": 1,
+      "message": "Is this going to end up as a host command? It looks like you\u0027re expecting to call it asynchronously.",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4fa8304_f1643ebb",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:27:56Z",
+      "side": 1,
+      "message": "Access to these structures will need to be protected.",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e58330_2099b125",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:27:56Z",
+      "side": 1,
+      "message": "FYI: This can fail",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f9d1565_99ba3090",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -37,6 +156,29 @@
       "writtenOn": "2021-02-16T23:39:23Z",
       "side": 1,
       "message": "Is this defined in this CL?",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f4732a_4b7d2f84",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2691,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-17T01:27:56Z",
+      "side": 1,
+      "message": "from",
+      "range": {
+        "startLine": 2691,
+        "startChar": 57,
+        "endLine": 2691,
+        "endChar": 58
+      },
       "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
