@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e9acef55_f87ee5b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-02-17T21:43:14Z",
+      "side": 1,
+      "message": "this patch begs a question: why do we have a separate instance of gsctool: this problem has been fixed in the cr50_stab branch of the EC tree. Should we bring the ec tree into the ti50 repo?",
+      "revId": "2425fd6d1e020c531b8f654ee6efd5a4ff415035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "38cae9a1_71663cd3",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
