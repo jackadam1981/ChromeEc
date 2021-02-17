@@ -402,8 +402,6 @@ static struct type_c {
 	enum tcpc_cc_polarity polarity;
 	/* port flags, see TC_FLAGS_* */
 	uint32_t flags;
-	/* Time a port shall wait before it can determine it is attached */
-	uint64_t cc_debounce;
 	/* The cc state */
 	enum pd_cc_states cc_state;
 	/* Generic timer */
@@ -1388,7 +1386,7 @@ static bool tc_perform_snk_hard_reset(int port)
 			 * now, such that we'll actually reset the correct input
 			 * current limit.
 			 */
-			tc[port].cc_debounce = get_time().val;
+			pd_timer_enable(port, TC_TIMER_CC_DEBOUNCE, 0);
 			sink_power_sub_states(port);
 
 			/* Power is back, Enable AutoDischargeDisconnect */
@@ -2010,24 +2008,25 @@ static void sink_power_sub_states(int port)
 	/* Debounce the cc state */
 	if (new_cc_voltage != tc[port].cc_voltage) {
 		tc[port].cc_voltage = new_cc_voltage;
-		tc[port].cc_debounce =
-				get_time().val + PD_T_RP_VALUE_CHANGE;
+		pd_timer_enable(port, TC_TIMER_CC_DEBOUNCE,
+				PD_T_RP_VALUE_CHANGE);
 		return;
 	}
 
-	if (tc[port].cc_debounce == 0 ||
-				get_time().val < tc[port].cc_debounce)
-		return;
+	if (!pd_timer_is_disabled(port, TC_TIMER_CC_DEBOUNCE)) {
+		if (!pd_timer_is_expired(port, TC_TIMER_CC_DEBOUNCE))
+			return;
 
-	tc[port].cc_debounce = 0;
+		pd_timer_disable(port, TC_TIMER_CC_DEBOUNCE);
 
-	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
-		tc[port].typec_curr = usb_get_typec_current_limit(
-			tc[port].polarity, cc1, cc2);
+		if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
+			tc[port].typec_curr = usb_get_typec_current_limit(
+				tc[port].polarity, cc1, cc2);
 
-		typec_set_input_current_limit(port,
-			tc[port].typec_curr, TYPE_C_VOLTAGE);
-		charge_manager_update_dualrole(port, CAP_DEDICATED);
+			typec_set_input_current_limit(port,
+				tc[port].typec_curr, TYPE_C_VOLTAGE);
+			charge_manager_update_dualrole(port, CAP_DEDICATED);
+		}
 	}
 }
 
@@ -2279,7 +2278,7 @@ static void tc_attach_wait_snk_run(const int port)
 
 	/* Debounce the cc state */
 	if (new_cc_state != tc[port].cc_state) {
-		tc[port].cc_debounce = get_time().val + PD_T_CC_DEBOUNCE;
+		pd_timer_enable(port, TC_TIMER_CC_DEBOUNCE, PD_T_CC_DEBOUNCE);
 		pd_timer_enable(port, TC_TIMER_PD_DEBOUNCE, PD_T_PD_DEBOUNCE);
 		tc[port].cc_state = new_cc_state;
 		return;
@@ -2304,7 +2303,7 @@ static void tc_attach_wait_snk_run(const int port)
 	}
 
 	/* Wait for CC debounce */
-	if (get_time().val < tc[port].cc_debounce)
+	if (!pd_timer_is_expired(port, TC_TIMER_CC_DEBOUNCE))
 		return;
 
 	/*
@@ -2421,7 +2420,7 @@ static void tc_attached_snk_entry(const int port)
 		tcpm_enable_auto_discharge_disconnect(port, 1);
 	}
 
-	tc[port].cc_debounce = 0;
+	pd_timer_disable(port, TC_TIMER_CC_DEBOUNCE);
 
 	/* Enable PD */
 	if (IS_ENABLED(CONFIG_USB_PE_SM))
@@ -2773,14 +2772,18 @@ static void tc_attach_wait_src_run(const int port)
 
 	/* Debounce the cc state */
 	if (new_cc_state != tc[port].cc_state) {
-		tc[port].cc_debounce = get_time().val + PD_T_CC_DEBOUNCE;
+		pd_timer_enable(port, TC_TIMER_CC_DEBOUNCE, PD_T_CC_DEBOUNCE);
 		tc[port].cc_state = new_cc_state;
 		return;
 	}
 
 	/* Wait for CC debounce */
-	if (get_time().val < tc[port].cc_debounce)
-		return;
+	if (!pd_timer_is_disabled(port, TC_TIMER_CC_DEBOUNCE)) {
+		if (!pd_timer_is_expired(port, TC_TIMER_CC_DEBOUNCE))
+			return;
+
+		pd_timer_disable(port, TC_TIMER_CC_DEBOUNCE);
+	}
 
 	/*
 	 * The port shall transition to Attached.SRC when VBUS is at vSafe0V
@@ -3321,7 +3324,7 @@ static void tc_try_src_run(const int port)
 	/* Debounce the cc state */
 	if (new_cc_state != tc[port].cc_state) {
 		tc[port].cc_state = new_cc_state;
-		tc[port].cc_debounce = get_time().val + PD_T_CC_DEBOUNCE;
+		pd_timer_enable(port, TC_TIMER_CC_DEBOUNCE, PD_T_CC_DEBOUNCE);
 	}
 
 	/*
@@ -3329,8 +3332,8 @@ static void tc_try_src_run(const int port)
 	 * detected on exactly one of the CC1 or CC2 pins for at least
 	 * tTryCCDebounce.
 	 */
-	if (get_time().val > tc[port].cc_debounce &&
-	    new_cc_state == PD_CC_UFP_ATTACHED)
+	if (new_cc_state == PD_CC_UFP_ATTACHED &&
+	    pd_timer_is_expired(port, TC_TIMER_CC_DEBOUNCE))
 		set_state_tc(port, TC_ATTACHED_SRC);
 
 	/*
@@ -3504,14 +3507,14 @@ __maybe_unused static void tc_ct_unattached_snk_run(int port)
 	/* Debounce the cc state */
 	if (new_cc_state != tc[port].cc_state) {
 		tc[port].cc_state = new_cc_state;
-		tc[port].cc_debounce = get_time().val + PD_T_VPDDETACH;
+		pd_timer_enable(port, TC_TIMER_CC_DEBOUNCE, PD_T_VPDDETACH);
 	}
 
 	/*
 	 * The port shall transition to Unattached.SNK if the state of
 	 * the CC pin is SNK.Open for tVPDDetach after VBUS is vSafe0V.
 	 */
-	if (get_time().val > tc[port].cc_debounce) {
+	else if (pd_timer_is_expired(port, TC_TIMER_CC_DEBOUNCE)) {
 		if (new_cc_state == PD_CC_NONE &&
 		    pd_check_vbus_level(port, VBUS_SAFE0V)) {
 			set_state_tc(port, TC_UNATTACHED_SNK);
