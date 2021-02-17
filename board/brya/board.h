@@ -90,6 +90,14 @@
 #define CONFIG_TEMP_SENSOR_POWER_GPIO	GPIO_SEQ_EC_DSW_PWROK
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 
+/* Charger defines */
+/* Brya uses the BQ25720 charger */
+#define CONFIG_CHARGER_BQ25710
+#define CONFIG_CHARGE_RAMP_SW
+#define CONFIG_CHARGER_NARROW_VDC
+#define CONFIG_CHARGER_SENSE_RESISTOR		10
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"	/* needed by registers.h */
