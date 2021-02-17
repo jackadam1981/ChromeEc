@@ -16,6 +16,24 @@
       "message": "(CC+ Abe)\nI\u0027ve not seen any issues with this CL.\n\nIs Intel ready to have it reviewed?",
       "revId": "ef629aecc5c14245cdff2395b9f68f27452d1c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87cf2aa6_b4cb919e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-17T01:26:54Z",
+      "side": 1,
+      "message": "Last Li tried, we were not seeing issues with retimer version 2_19 + tot. I am not sure if we need this in the first place.\n\nPrashant, do you see issues with the older retimer firmware?",
+      "parentUuid": "4660a93f_3cf6bd26",
+      "revId": "ef629aecc5c14245cdff2395b9f68f27452d1c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
