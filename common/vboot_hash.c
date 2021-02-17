@@ -319,7 +319,11 @@ DECLARE_HOOK(HOOK_INIT, vboot_hash_init, HOOK_PRIO_INIT_VBOOT_HASH);
 
 int vboot_get_rw_hash(const uint8_t **dst)
 {
-	int rv = vboot_hash_start(flash_get_rw_offset(system_get_active_copy()),
+	int rv;
+	CPRINTS("system_get_active_copy()=%d", system_get_active_copy());
+	CPRINTS("flash_get_rw_offset()   =0x%x", flash_get_rw_offset(system_get_active_copy()));
+	CPRINTS("get_rw_size()           =0x%x", get_rw_size());
+	rv = vboot_hash_start(flash_get_rw_offset(system_get_active_copy()),
 				  get_rw_size(), NULL, 0, VBOOT_HASH_BLOCKING);
 	*dst = hash;
 	return rv;

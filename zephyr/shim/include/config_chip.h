@@ -1139,4 +1139,10 @@ enum battery_type {
 #define CONFIG_CMD_SYSJUMP
 #endif
 
+#undef CONFIG_VBOOT_EFS
+#undef CONFIG_VBOOT_EFS2
+#ifdef CONFIG_PLATFORM_EC_VBOOT
+#define CONFIG_VBOOT_EFS2
+#endif
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
