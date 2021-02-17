@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03eda234_1e7ec1f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-17T18:35:09Z",
+      "side": 1,
+      "message": "Following Zephyr\u0027s configuration principles, hardware configuration goes in device tree, software configuration goes in kconfig: https://docs.zephyrproject.org/latest/guides/dts/dt-vs-kconfig.html\n\nThis certainly falls in the software realm instead of hardware.\n\nThus, I propose we follow a simpler solution: kconfig booleans to enable/disable console channels.  This can just set CC_DEFAULT in config_chip.h as the translation layer.",
+      "revId": "7a5587939ea7f2370b999bedbba3b8d52421994e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
