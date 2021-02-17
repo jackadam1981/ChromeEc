@@ -299,6 +299,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c914b1c5_d56d5ffa",
+        "filename": "zephyr/shim/core/cortex-m/software_panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-17T19:34:59Z",
+      "side": 1,
+      "message": "I can\u0027t say that I agree, looking at the various implementations of `panic_set_reason` for example (http://source/search?q\u003d%22void%20panic_set_reason%22\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Fec%2F) while there\u0027s some commonality to them, I\u0027m not sure I\u0027m really seeing a good way to create a single function that would capture all of them. At best I can see implementing the common part of the code (setting the pdata-\u003e values) in panic.c then calling an arch_panic_set_reason() function from there to do the architecture specific things such as setting the registers etc.",
+      "parentUuid": "f56da93d_24c1c6da",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "57d166ca01c1ae37cd38dcd684959a20c8ef1ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3620532b_3bee25c2",
         "filename": "zephyr/shim/core/cortex-m/software_panic.c",
         "patchSetId": 2
