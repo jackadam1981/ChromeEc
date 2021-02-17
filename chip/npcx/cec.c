@@ -1003,8 +1003,10 @@ static void cec_init(void)
 	/* Enable capture TCNT1 into TCRA and preset TCNT1. */
 	SET_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TAEN);
 
+#if defined(CEC_GPIO_PULL_UP)
 	/* If RO doesn't set it, RW needs to set it explicitly. */
 	gpio_set_level(CEC_GPIO_PULL_UP, 1);
+#endif
 
 	/* Ensure the CEC bus is not pulled low by default on startup. */
 	gpio_set_level(CEC_GPIO_OUT, 1);
