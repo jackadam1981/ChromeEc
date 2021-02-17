@@ -117,6 +117,30 @@
       },
       "revId": "8bb0cf0a39ce68a74c4005d234d5ff406444f8cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3dfb5a8_066d3206",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-17T20:24:36Z",
+      "side": 1,
+      "message": "Okay, after several attempts here I can\u0027t seem to find a way to check CONFIG_USB_PD_PULLUP at build time without giving config.h an include for our Rp definitions or removing the default pullup from config.h.\n\nI did add a follow-up to clarify that setting 0 turns off our source-out port balancing. \n\nExample failure if we put a check in the DPM code comparing CONFIG_USB_PD_PULLUP:\n\nIn file included from include/common.h:238,\n                 from include/charge_state.h:8,\n                 from common/usbc/usb_pd_dpm.c:11:\ninclude/config.h:4722:30: error: \"TYPEC_RP_1A5\" is not defined, evaluates to 0 [-Werror\u003dundef]\n #define CONFIG_USB_PD_PULLUP TYPEC_RP_1A5\n                              ^~~~~~~~~~~~\ncommon/usbc/usb_pd_dpm.c:377:38: note: in expansion of macro \u0027CONFIG_USB_PD_PULLUP\u0027\n #if (CONFIG_USB_PD_3A_PORTS \u003e 0) \u0026\u0026 (CONFIG_USB_PD_PULLUP \u003d\u003d TYPEC_RP_3A0)",
+      "parentUuid": "427c072f_f957420d",
+      "range": {
+        "startLine": 440,
+        "startChar": 9,
+        "endLine": 440,
+        "endChar": 29
+      },
+      "revId": "8bb0cf0a39ce68a74c4005d234d5ff406444f8cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
