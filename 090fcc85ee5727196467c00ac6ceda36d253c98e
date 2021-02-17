@@ -22,6 +22,30 @@
       },
       "revId": "090fcc85ee5727196467c00ac6ceda36d253c98e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ab332f_888cab3c",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-17T22:08:23Z",
+      "side": 1,
+      "message": "Done, replaced with irq_lock which is the Zephyr parallel to interrupt_disable. Sorry, was trying to get this patch out too quickly.",
+      "parentUuid": "55096582_0bbbfcad",
+      "range": {
+        "startLine": 52,
+        "startChar": 30,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "090fcc85ee5727196467c00ac6ceda36d253c98e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
