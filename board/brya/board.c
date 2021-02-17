@@ -50,3 +50,42 @@ void power_button_interrupt(enum gpio_signal signal)
 void button_interrupt(enum gpio_signal signal)
 {
 }
+
+#ifdef CONFIG_CHARGE_RAMP_SW
+
+#define BC12_MIN_VOLTAGE 4400
+
+/**
+ * Return true if VBUS is too low
+ */
+int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
+{
+	int voltage;
+
+	if (charger_get_vbus_voltage(port, &voltage))
+		voltage = 0;
+
+	CPRINTS("%s: charger reports VBUS %d on port %d", __func__,
+		voltage, port);
+
+	if (voltage == 0) {
+		CPRINTS("%s: must be disconnected", __func__);
+		return 1;
+	}
+
+	if (voltage < BC12_MIN_VOLTAGE) {
+		CPRINTS("%s: lower than %d", __func__,
+			BC12_MIN_VOLTAGE);
+		return 1;
+	}
+
+	return 0;
+
+	/*
+	 * For legacy BC1.2 charging with CONFIG_CHARGE_RAMP_SW, ramp up input
+	 * current until voltage drops to the minimum input voltage of the
+	 * charger, 4.096V.
+	 */
+	/* return voltage < ISL9241_BC12_MIN_VOLTAGE; */
+}
+#endif /* CONFIG_CHARGE_RAMP_SW */
