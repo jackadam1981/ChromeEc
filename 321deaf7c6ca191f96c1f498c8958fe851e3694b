@@ -46,6 +46,30 @@
       },
       "revId": "321deaf7c6ca191f96c1f498c8958fe851e3694b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "762dcdc1_4c66c35e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-02-17T19:42:59Z",
+      "side": 1,
+      "message": "Also, this didn\u0027t help my disconnect problems on hatch sadly. I tried moving both clearing and setting this bit to different places, and changed the usleep to 3 seconds, and still I would get ~1% failures when switching power modes with a hatch DUT.\n\nThanks for the suggestion.",
+      "parentUuid": "269372be_b72cca27",
+      "range": {
+        "startLine": 1037,
+        "startChar": 23,
+        "endLine": 1037,
+        "endChar": 27
+      },
+      "revId": "321deaf7c6ca191f96c1f498c8958fe851e3694b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
