@@ -7,3 +7,6 @@ zephyr_linker_sources(ROM_START SORT_KEY 1 fixed-sections.ld)
 
 # Support protection of part of the internal RAM
 zephyr_linker_sources(RWDATA SORT_KEY 1 iram_text.ld)
+
+# Support console commands
+zephyr_linker_sources(RODATA console-commands.ld)

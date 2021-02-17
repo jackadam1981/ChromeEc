@@ -62,6 +62,7 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 {
 	timestamp_t until;
 	int i, timeout = 0;
+	uint32_t lock_key;
 	struct cr50_comm_response res = {};
 
 	/* This will wake up (if it's sleeping) and interrupt Cr50. */
@@ -78,9 +79,9 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	 * Disable interrupts so that the data frame will be stored in the Tx
 	 * buffer in one piece.
 	 */
-	interrupt_disable();
+	lock_key = irq_lock();
 	uart_put_raw(data, size);
-	interrupt_enable();
+	irq_unlock(lock_key);
 
 	uart_flush_output();
 
@@ -90,8 +91,8 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	 * Make sure console task won't steal the response in case we exchange
 	 * packets after tasks start.
 	 */
-	if (task_start_called())
-		task_disable_task(TASK_ID_CONSOLE);
+//	if (task_start_called())
+//		task_disable_task(TASK_ID_CONSOLE);
 
 	/* Wait for response from Cr50 */
 	for (i = 0; i < sizeof(res); i++) {
@@ -106,8 +107,8 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 		}
 	}
 
-	if (task_start_called())
-		task_enable_task(TASK_ID_CONSOLE);
+//	if (task_start_called())
+//		task_enable_task(TASK_ID_CONSOLE);
 
 	/* Exit packet mode */
 	enable_packet_mode(false);
