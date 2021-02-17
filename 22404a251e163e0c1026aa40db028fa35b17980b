@@ -52,6 +52,24 @@
       "parentUuid": "06a491e3_a8c99c20",
       "revId": "22404a251e163e0c1026aa40db028fa35b17980b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ea2518_02e6d05b",
+        "filename": "driver/tcpm/raa489000.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-17T21:03:24Z",
+      "side": 1,
+      "message": "After some discussion internally, it would be valid for our current limits to always be the promised current level + iOvershoot (230 mA) to cover transient load behavior",
+      "parentUuid": "8da6eeac_62b53b77",
+      "revId": "22404a251e163e0c1026aa40db028fa35b17980b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
