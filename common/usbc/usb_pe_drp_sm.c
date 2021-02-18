@@ -666,13 +666,6 @@ static struct policy_engine {
 	uint64_t vconn_on_timer;
 
 	/*
-	 * For PD2.0, this timer is used to wait 400ms and add some
-	 * jitter of up to 100ms before sending a message.
-	 * NOTE: This timer is not part of the TypeC/PD spec.
-	 */
-	uint64_t wait_and_add_jitter_timer;
-
-	/*
 	 * Used to wait for tSrcTransition between sending an Accept for a
 	 * Request or receiving a GoToMin and transitioning the power supply.
 	 * See PD 3.0, table 7-11 and table 7-22 This is not a named timer in
@@ -2012,9 +2005,9 @@ static void pe_update_wait_and_add_jitter_timer(int port)
 	 */
 	if (prl_get_rev(port, TCPC_TX_SOP) == PD_REV20 &&
 			PE_CHK_FLAG(port, PE_FLAGS_FIRST_MSG)) {
-		pe[port].wait_and_add_jitter_timer = get_time().val +
+		pd_timer_active(port, PE_TIMER_WAIT_AND_ADD_JITTER,
 				SRC_SNK_READY_HOLD_OFF_US +
-				(get_time().le.lo & 0xf) * 23 * MSEC;
+				(get_time().le.lo & 0xf) * 23 * MSEC);
 	}
 }
 
@@ -2619,6 +2612,13 @@ static void pe_src_ready_entry(int port)
 static void pe_src_ready_run(int port)
 {
 	/*
+	 * Convert active/expired to be inactive/expired, if applicable, to
+	 * not speed up timer tick in the possible case the timer expired
+	 * but we leave the state before handling it.
+	 */
+	pd_timer_expired_to_inactive(port, PE_TIMER_WAIT_AND_ADD_JITTER);
+
+	/*
 	 * Handle incoming messages before discovery and DPMs other than hard
 	 * reset
 	 */
@@ -2753,11 +2753,11 @@ static void pe_src_ready_run(int port)
 		PE_SET_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
 	}
 
-	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
-		get_time().val > pe[port].wait_and_add_jitter_timer) {
+	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||
+	    pd_timer_is_expired(port, PE_TIMER_WAIT_AND_ADD_JITTER)) {
 
 		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
-		pe[port].wait_and_add_jitter_timer = TIMER_DISABLED;
+		pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
 
 		/*
 		 * Handle Device Policy Manager Requests
@@ -2775,6 +2775,11 @@ static void pe_src_ready_run(int port)
 		/* No DPM requests; attempt mode entry/exit if needed */
 		dpm_run(port);
 	}
+}
+
+static void pe_src_ready_exit(int port)
+{
+	pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
 }
 
 /**
@@ -3389,6 +3394,13 @@ static void pe_snk_ready_entry(int port)
 static void pe_snk_ready_run(int port)
 {
 	/*
+	 * Convert active/expired to be inactive/expired, if applicable, to
+	 * not speed up timer tick in the possible case the timer expired
+	 * but we leave the state before handling it.
+	 */
+	pd_timer_expired_to_inactive(port, PE_TIMER_WAIT_AND_ADD_JITTER);
+
+	/*
 	 * Handle incoming messages before discovery and DPMs other than hard
 	 * reset
 	 */
@@ -3518,10 +3530,10 @@ static void pe_snk_ready_run(int port)
 		return;
 	}
 
-	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
-		get_time().val > pe[port].wait_and_add_jitter_timer) {
+	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||
+	    pd_timer_is_expired(port, PE_TIMER_WAIT_AND_ADD_JITTER)) {
 		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
-		pe[port].wait_and_add_jitter_timer = TIMER_DISABLED;
+		pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
 
 		if (get_time().val > pe[port].sink_request_timer) {
 			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
@@ -3545,6 +3557,11 @@ static void pe_snk_ready_run(int port)
 		dpm_run(port);
 
 	}
+}
+
+static void pe_snk_ready_exit(int port)
+{
+	pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
 }
 
 /**
@@ -6874,6 +6891,7 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_SRC_READY] = {
 		.entry = pe_src_ready_entry,
 		.run   = pe_src_ready_run,
+		.exit  = pe_src_ready_exit,
 	},
 	[PE_SRC_DISABLED] = {
 		.entry = pe_src_disabled_entry,
@@ -6917,6 +6935,7 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_SNK_READY] = {
 		.entry = pe_snk_ready_entry,
 		.run   = pe_snk_ready_run,
+		.exit  = pe_snk_ready_exit,
 	},
 	[PE_SNK_HARD_RESET] = {
 		.entry = pe_snk_hard_reset_entry,
