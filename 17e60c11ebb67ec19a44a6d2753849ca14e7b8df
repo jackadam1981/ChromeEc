@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57ae86ec_48b435cf",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-18T22:42:25Z",
+      "side": 1,
+      "message": "This needs a more detailed comment.  Specifically describe how these two bits work together.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "17e60c11ebb67ec19a44a6d2753849ca14e7b8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e113f24a_1c4987ae",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 7
@@ -14,6 +37,47 @@
       "writtenOn": "2021-02-18T21:51:54Z",
       "side": 1,
       "message": "do we need to add IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) here also?",
+      "revId": "17e60c11ebb67ec19a44a6d2753849ca14e7b8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "528cd2ef_5896be26",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-18T22:42:25Z",
+      "side": 1,
+      "message": "Agreed, it should be added as to the function entry.\n    if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))\n        return;",
+      "parentUuid": "e113f24a_1c4987ae",
+      "revId": "17e60c11ebb67ec19a44a6d2753849ca14e7b8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cb1a6ad_aa44ec1c",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-18T22:42:25Z",
+      "side": 1,
+      "message": "I think you want to always clear this flag if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL)).  As is, if somehow the disconnect flag isn\u0027t set following entry into G3, then the G3 flag will never be cleared.",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 30
+      },
       "revId": "17e60c11ebb67ec19a44a6d2753849ca14e7b8df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
