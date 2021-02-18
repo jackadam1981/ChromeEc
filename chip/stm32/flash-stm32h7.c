@@ -77,7 +77,7 @@ static inline int calculate_flash_timeout(void)
 		(clock_get_freq() / SECOND) / CYCLE_PER_FLASH_LOOP);
 }
 
-static int unlock(int bank)
+int unlock(int bank)
 {
 	/* unlock CR only if needed */
 	if (STM32_FLASH_CR(bank) & FLASH_CR_LOCK) {
@@ -98,24 +98,24 @@ static int unlock(int bank)
 						      : EC_SUCCESS;
 }
 
-static void lock(int bank)
+void lock(int bank)
 {
 	STM32_FLASH_CR(bank) |= FLASH_CR_LOCK;
 }
 
-static int unlock_optb(void)
+int unlock_optb(int bank)
 {
-	if (option_disabled)
-		return EC_ERROR_ACCESS_DENIED;
+	// if (option_disabled)
+	// 	return EC_ERROR_ACCESS_DENIED;
 
-	if (unlock(0))
-		return EC_ERROR_UNKNOWN;
+	// if (unlock(0))
+	// 	return EC_ERROR_UNKNOWN;
 
 	/*
 	 * Always use bank 0 flash controller as there is only one option bytes
 	 * set for both banks.
 	 */
-	if (STM32_FLASH_OPTCR(0) & FLASH_OPTCR_OPTLOCK) {
+	if (STM32_FLASH_OPTCR(bank) & FLASH_OPTCR_OPTLOCK) {
 		/*
 		 * We may have already locked the flash module and get a bus
 		 * fault in the attempt to unlock. Need to disable bus fault
@@ -123,17 +123,31 @@ static int unlock_optb(void)
 		 */
 		ignore_bus_fault(1);
 
-		STM32_FLASH_OPTKEYR(0) = FLASH_OPTKEYR_KEY1;
-		STM32_FLASH_OPTKEYR(0) = FLASH_OPTKEYR_KEY2;
+		STM32_FLASH_OPTKEYR(bank) = FLASH_OPTKEYR_KEY1;
+		STM32_FLASH_OPTKEYR(bank) = FLASH_OPTKEYR_KEY2;
 		asm volatile("dsb; isb");
 		ignore_bus_fault(0);
 	}
 
-	return STM32_FLASH_OPTCR(0) & FLASH_OPTCR_OPTLOCK ? EC_ERROR_UNKNOWN
+	return STM32_FLASH_OPTCR(bank) & FLASH_OPTCR_OPTLOCK ? EC_ERROR_UNKNOWN
 							  : EC_SUCCESS;
 }
 
-static int commit_optb(void)
+void lock_optb(int bank) {
+	STM32_FLASH_OPTCR(bank) |= FLASH_OPTCR_OPTLOCK;
+}
+
+bool __keep locked(int bank)
+{
+	return !!(STM32_FLASH_CR(bank) & FLASH_CR_LOCK);
+}
+
+bool __keep optb_locked(int bank)
+{
+	return !!(STM32_FLASH_OPTCR(bank) & FLASH_OPTCR_OPTLOCK);
+}
+
+int commit_optb(void)
 {
 	/* might use this before timer_init, cannot use get_time/usleep */
 	int timeout = (FLASH_OPT_PRG_TIMEOUT_US *
@@ -152,12 +166,22 @@ static int commit_optb(void)
 
 static void protect_blocks(uint32_t blocks)
 {
-	if (unlock_optb())
-		return;
+	// if (unlock_optb(0))
+	// 	return;
 	STM32_FLASH_WPSN_PRG(0) &= ~(blocks & BLOCKS_HWBANK_MASK);
 	STM32_FLASH_WPSN_PRG(1) &= ~((blocks >> BLOCKS_PER_HWBANK)
 				& BLOCKS_HWBANK_MASK);
-	commit_optb();
+	// commit_optb();
+}
+
+static void unprotect_blocks(uint32_t blocks)
+{
+	// if (unlock_optb(0))
+	// 	return;
+	STM32_FLASH_WPSN_PRG(0) |= (blocks & BLOCKS_HWBANK_MASK);
+	STM32_FLASH_WPSN_PRG(1) |= ((blocks >> BLOCKS_PER_HWBANK)
+				& BLOCKS_HWBANK_MASK);
+	// commit_optb();
 }
 
 /*
@@ -188,7 +212,7 @@ static int set_wp(int enabled)
 {
 	int rv;
 
-	rv = unlock_optb();
+	rv = unlock_optb(0);
 	if (rv)
 		return rv;
 
@@ -549,6 +573,77 @@ int flash_pre_init(void)
 	/* That doesn't return, so if we're still here that's an error */
 	return EC_ERROR_UNKNOWN;
 }
+/*****************************************************************************/
+const char *bool_str(bool value) {
+	return value ? "true" :"false";
+}
+
+void show_flash_locks(void)
+{
+	ccprintf("STM32_FLASH_CR(0)       = %s\n", bool_str(locked(0)));
+	ccprintf("STM32_FLASH_CR(1)       = %s\n", bool_str(locked(1)));
+	ccprintf("STM32_FLASH_OPTCR(0)    = %s\n", bool_str(optb_locked(0)));
+	ccprintf("STM32_FLASH_OPTCR(1)    = %s\n", bool_str(optb_locked(1)));
+	ccprintf("STM32_FLASH_WPSN_PRG(0) = 0x%X\n", STM32_FLASH_WPSN_PRG(0));
+	ccprintf("STM32_FLASH_WPSN_PRG(1) = 0x%X\n", STM32_FLASH_WPSN_PRG(1));
+	ccprintf("STM32_FLASH_WPSN_CUR(0) = 0x%X\n", STM32_FLASH_WPSN_CUR(0));
+	ccprintf("STM32_FLASH_WPSN_CUR(1) = 0x%X\n", STM32_FLASH_WPSN_CUR(1));
+
+	ccputs("Protected now:");
+	for (int i = 0; i < PHYSICAL_BANKS; i++) {
+		if (!(i & 31))
+			ccputs("\n    ");
+		else if (!(i & 7))
+			ccputs(" ");
+		ccputs(flash_physical_get_protect(i) ? "Y" : ".");
+	}
+	ccputs("\n\n");
+}
+
+static int command_flash_do(int argc, char **argv)
+{
+	int value;
+
+	show_flash_locks();
+
+	if (argc == 1) {
+		return EC_SUCCESS;
+	}
+
+	if (argc != 3) {
+		return EC_ERROR_PARAM2;
+	}
+
+	value = atoi(argv[2]);
+	if (strncmp(argv[1], "unlock", 6+1) == 0) {
+		ccprintf("unlock(%d) returned %d\n", value, unlock(value));
+	} else if (strncmp(argv[1], "lock", 4+1) == 0) {
+		ccprintf("lock(%d)\n", value);
+		lock(value);
+	} else if (strncmp(argv[1], "unlock_optb", 11+1) == 0) {
+		ccprintf("unlock_optb(%d) returned %d\n", value, unlock_optb(value));
+	} else if (strncmp(argv[1], "lock_optb", 9+1) == 0) {
+		ccprintf("lock_optb(%d)\n", value);
+		lock_optb(value);
+	} else if (strncmp(argv[1], "commit_optb", sizeof("commit_optb")) == 0) {
+		ccprintf("commit_optb() returned %s\n", commit_optb() == EC_SUCCESS ? "EC_SUCCESS" : "BAD");
+	} else if (strncmp(argv[1], "protect_blocks", sizeof("protect_blocks")) == 0) {
+		ccprintf("protect_blocks(%d)\n", value);
+		protect_blocks(value);
+	} else if (strncmp(argv[1], "unprotect_blocks", sizeof("unprotect_blocks")) == 0) {
+		ccprintf("unprotect_blocks(%d)\n", value);
+		unprotect_blocks(value);
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	show_flash_locks();
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(flashdo, command_flash_do,
+			     NULL,
+			     "Do flash things");
 
 /*****************************************************************************/
 /* Hooks */
