@@ -16,7 +16,6 @@
 #define NPCX_FWCTRL_FW_SLOT               1
 #define SET_BIT(reg, bit)           ((reg) |= (0x1 << (bit)))
 #define CLEAR_BIT(reg, bit)         ((reg) &= (~(0x1 << (bit))))
-#define IS_BIT_SET(reg, bit)        (((reg) >> (bit)) & (0x1))
 
 void system_jump_to_booter(void)
 {
