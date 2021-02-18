@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21324ab6_49224a2e",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-18T12:52:40Z",
+      "side": 1,
+      "message": "I think we should have --modules-path and require that all modules be in the same dir. It is a pain to specify each of them and I don\u0027t think we have a use case for the separation.",
+      "range": {
+        "startLine": 105,
+        "startChar": 36,
+        "endLine": 105,
+        "endChar": 42
+      },
+      "revId": "0afc8b4b6d9204d5a39d12530159a808097194bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
