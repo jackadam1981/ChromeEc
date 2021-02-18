@@ -22,6 +22,30 @@
       },
       "revId": "50d10250011ea894daf9fe39683f49a0a5addba7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce74cec6_f6a82f9b",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-18T21:43:24Z",
+      "side": 1,
+      "message": "I see that the USB_MUX_FLAG_DISCONNECT_LATCH again gets set after the HOOK_CHIPSET_SHUTDOWN because of mux_init - So removing clearing the USB_MUX_FLAG_DISCONNECT_LATCH on HOOK_CHIPSET_SHUTDOWN",
+      "parentUuid": "eef26c43_d2a3c7c4",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "50d10250011ea894daf9fe39683f49a0a5addba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
