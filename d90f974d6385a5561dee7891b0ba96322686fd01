@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034694d7_d0bcfe99",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-02-18T19:35:40Z",
+      "side": 1,
+      "message": "I think it will be better to remove if (!usb_mux_get_g3_flag(port)) here and let it latch flag regardless.",
+      "revId": "d90f974d6385a5561dee7891b0ba96322686fd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2d35c4_0e6e6db3",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-02-18T19:35:40Z",
+      "side": 1,
+      "message": "Here we can add if (!usb_mux_get_g3_flag(port))",
+      "revId": "d90f974d6385a5561dee7891b0ba96322686fd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73f7174_3d50d7a1",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-02-18T19:35:40Z",
+      "side": 1,
+      "message": "else {\nThis will be cleaner as we will not be clearing the flag unnecessarily (even though harmless)",
+      "revId": "d90f974d6385a5561dee7891b0ba96322686fd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
