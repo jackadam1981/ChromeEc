@@ -231,6 +231,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc77d273_5a0a42b0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-18T18:13:52Z",
+      "side": 1,
+      "message": "I added the bug number in this comment.",
+      "parentUuid": "5069edc5_7c691b5e",
+      "range": {
+        "startLine": 1474,
+        "startChar": 66,
+        "endLine": 1474,
+        "endChar": 70
+      },
+      "revId": "b262db4c7349d5c791365e905cd37535194ecf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b681b0c_58a17142",
