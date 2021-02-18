@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee65e5c_7f5d1c45",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-18T17:35:17Z",
+      "side": 1,
+      "message": "Note that the irq_lock() doesn\u0027t disable NMI and faults. We added an \"interrupt_disable_all()\" to common/system.c to handle this case for our system jump code.\n\nSee https://chromium.googlesource.com/chromiumos/platform/ec/+/00c766d9/common/system.c#55\n\nWe might want to do something similar here.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 18
+      },
+      "revId": "aba061b9270ee0e201be266cc67592028fb88a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
