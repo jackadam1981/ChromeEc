@@ -130,15 +130,15 @@ class Zmake:
                 'SYSCALL_INCLUDE_DIRS': str(
                     module_paths['ec'] / 'zephyr' / 'include' / 'drivers'),
             })
-        module_config = zmake.modules.setup_module_symlinks(
+        base_config |= zmake.modules.setup_module_symlinks(
             build_dir / 'modules', module_paths)
 
-        dts_overlay_config = project.find_dts_overlays(module_paths)
+        base_config |= project.find_dts_overlays(module_paths)
 
         if not toolchain:
             toolchain = project.config.toolchain
 
-        toolchain_config = toolchains.get_toolchain(toolchain, module_paths)
+        base_config |= toolchains.get_toolchain(toolchain, module_paths)
 
         if bringup:
             base_config |= zmake.build_config.BuildConfig(
@@ -150,11 +150,7 @@ class Zmake:
         self.logger.info('Building %s in %s.', project_dir, build_dir)
         for build_name, build_config in project.iter_builds():
             self.logger.info('Configuring %s:%s.', project_dir, build_name)
-            config = (base_config
-                      | toolchain_config
-                      | module_config
-                      | dts_overlay_config
-                      | build_config)
+            config = base_config | build_config
             output_dir = build_dir / 'build-{}'.format(build_name)
             kconfig_file = build_dir / 'kconfig-{}.conf'.format(build_name)
             proc = config.popen_cmake(self.jobserver, project_dir, output_dir,
