@@ -22,6 +22,30 @@
       },
       "revId": "6041ba735c2e6725081f43bdd457fc8b734f46a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe33f6f_eecee591",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-18T16:05:44Z",
+      "side": 1,
+      "message": "Ack... docstring above says it shouldn\u0027t.",
+      "parentUuid": "a8217d56_19457514",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 17
+      },
+      "revId": "6041ba735c2e6725081f43bdd457fc8b734f46a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
