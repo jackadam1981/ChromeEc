@@ -22,6 +22,30 @@
       },
       "revId": "0afc8b4b6d9204d5a39d12530159a808097194bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71c15745_eb11161b",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-02-18T19:07:07Z",
+      "side": 1,
+      "message": "Agreed. If we find a use case later, we can always allow for multiple `--modules-path` options and then pull in every module from every path specified.",
+      "parentUuid": "21324ab6_49224a2e",
+      "range": {
+        "startLine": 105,
+        "startChar": 36,
+        "endLine": 105,
+        "endChar": 42
+      },
+      "revId": "0afc8b4b6d9204d5a39d12530159a808097194bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
