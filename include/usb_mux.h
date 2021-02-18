@@ -279,4 +279,27 @@ bool usb_mux_get_disconnect_latch_flag(int port);
  */
 void usb_mux_set_disconnect_latch_flag(int port, bool enable);
 
+/**
+ * Get the G3 flag
+ * If this flag is set don't send force disconnect Mux mode
+ *
+ * @param port port number
+ * @return status of G3 flag
+ */
+bool usb_mux_get_g3_flag(int port);
+
+/**
+ * Clear the G3 flag
+ * If this flag is set don't send force disconnect Mux mode
+ *
+ * @param port port number
+ */
+void usb_mux_clear_g3_flag(int port);
+
+/**
+ * Set the G3 flag whenever DUT enters G3
+ * If this flag is set don't send force disconnect Mux mode
+ */
+void usb_mux_set_g3_flag(void);
+
 #endif
