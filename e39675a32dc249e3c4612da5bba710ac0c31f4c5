@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "265e377f_afd82c27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T00:41:06Z",
+      "side": 1,
+      "message": "cleanup: Set either USB4 or TBT cable speed",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "e39675a32dc249e3c4612da5bba710ac0c31f4c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd9e3af_4caf2bb8",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T00:41:06Z",
+      "side": 1,
+      "message": "*set_retimer_con |\u003d BB_RETIMER_USB4_TBT_CABLE_SPEED_SUPPORT(\n                 mux_state \u0026 USB_PD_MUX_TBT_COMPAT_ENABLED ?\n                 get_tbt_cable_speed(port) : get_usb4_cable_speed(port));",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 0
+      },
+      "revId": "e39675a32dc249e3c4612da5bba710ac0c31f4c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e01a12f_5ff89e2c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T00:41:06Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 33
+      },
+      "revId": "e39675a32dc249e3c4612da5bba710ac0c31f4c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
