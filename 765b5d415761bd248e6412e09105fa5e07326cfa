@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ebd6bf_d5c0c8c3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-02-18T18:11:24Z",
+      "side": 1,
+      "message": "does this need to check that size is less than SHA256_DIGEST_LENGTH?",
+      "range": {
+        "startLine": 1674,
+        "startChar": 35,
+        "endLine": 1674,
+        "endChar": 39
+      },
+      "revId": "765b5d415761bd248e6412e09105fa5e07326cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
