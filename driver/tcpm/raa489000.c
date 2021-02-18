@@ -79,6 +79,8 @@ int raa489000_init(int port)
 	CPRINTS("%s(%d): DEVICE_ID=%d", __func__, port, device_id);
 	dev_id[port] = device_id;
 
+	tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SNK_CTRL_HIGH);
+
 	if (device_id > 1) {
 		/*
 		 * A1 silicon has a DEVICE_ID of 1.  For B0 and newer, we need
