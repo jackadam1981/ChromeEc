@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a8e6f4_5123fade",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T17:23:39Z",
+      "side": 1,
+      "message": "how about?\n\nWhen the AP comes up after G3 and since the disconnect flag is\nset, EC sends disconnect info to the AP probe functions. But the\nDUT is still in low power mode thus the AP doesn\u0027t receive the current mux state hence enumeration of USB4/TBT device fails when hotplugged at G3. This CL ensures that latest mux state is sent instead of the disconnect mux state.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 70
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6cd0438a_42411d98",
@@ -14,6 +37,52 @@
       "writtenOn": "2021-02-18T16:52:02Z",
       "side": 1,
       "message": "is the CL working?",
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60fc90af_590eaad6",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T17:23:39Z",
+      "side": 1,
+      "message": "This bit is used to set disconnect state of Virtual mux",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf4d86b2_a03010c0",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T17:23:39Z",
+      "side": 1,
+      "message": "how about \nUSB_MUX_FLAG_G3_LATCH",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 23
+      },
       "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -66,6 +135,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe768e93_ba3ef0e7",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T17:23:39Z",
+      "side": 1,
+      "message": "||",
+      "range": {
+        "startLine": 309,
+        "startChar": 42,
+        "endLine": 312,
+        "endChar": 5
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d8e5e19_fc79b6bb",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 2
@@ -89,6 +181,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72d7ab3f_fe4e613a",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T17:23:39Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 319,
+        "startChar": 1,
+        "endLine": 320,
+        "endChar": 16
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6baf04af_68a4a0a5",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T17:23:39Z",
+      "side": 1,
+      "message": "||",
+      "range": {
+        "startLine": 322,
+        "startChar": 42,
+        "endLine": 325,
+        "endChar": 5
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9cf7681_780e8a2c",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T17:23:39Z",
+      "side": 1,
+      "message": "true",
+      "range": {
+        "startLine": 326,
+        "startChar": 9,
+        "endLine": 326,
+        "endChar": 11
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76219a22_0155b739",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 2
@@ -105,6 +266,46 @@
         "startChar": 1,
         "endLine": 331,
         "endChar": 30
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "529f2a35_61c9f3b3",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T17:23:39Z",
+      "side": 1,
+      "message": "add a comment why we are doing this",
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c67b441e_6b528f2d",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-18T17:23:39Z",
+      "side": 1,
+      "message": "update with correct info",
+      "range": {
+        "startLine": 500,
+        "startChar": 34,
+        "endLine": 500,
+        "endChar": 41
       },
       "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
