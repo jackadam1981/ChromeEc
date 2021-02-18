@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b9f7a29_0ceec601",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-18T21:00:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c91ec914_31031d65",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89d5fc6a_dba2a0d0",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Yep, you\u0027re totally right. I manually exercised the flash cr protections.\n\n* Doesn\u0027t matter which bank\u0027s STM32_FLASH_OPTCR/STM32_FLASH_OPTKEYR you lock/unlock. It instantly applies to the other.\n* The STM32_FLASH_CR/STM32_FLASH_KEYR for each bank are separate.\n\n\nIt would be nice to have a bit more clear comment near the functions.",
       "parentUuid": "7a2982ff_fa33754c",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 11
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3450a9b_a54f96b3",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-18T21:00:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f6a16c6_7b57b7ef",
       "range": {
         "startLine": 170,
         "startChar": 0,
@@ -336,6 +384,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7418373b_daa8b78d",
+        "filename": "chip/stm32/flash-stm32h7.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-18T21:00:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0be89cb1_4d5360c0",
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f6caaa0_01224749",
@@ -366,6 +432,30 @@
       "writtenOn": "2021-02-18T17:13:53Z",
       "side": 1,
       "message": "This is not necessarily flash-stm32h7.h. Could you pull out these definitions into a some stm32 unified interface header file?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "662214d4_983dafa7",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-18T21:00:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf62117a_25bde854",
       "range": {
         "startLine": 6,
         "startChar": 0,
