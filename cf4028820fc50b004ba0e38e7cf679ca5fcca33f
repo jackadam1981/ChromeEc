@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4a310a_a510d615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-18T18:32:55Z",
+      "side": 1,
+      "message": "IMO with this sort of thing we shouldn\u0027t instrument the overridable function until we actually have an arch which needs to implement it (YAGNI principle).\n\nBut this is better.",
+      "revId": "cf4028820fc50b004ba0e38e7cf679ca5fcca33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f3fd88_f78b87a8",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-18T18:32:55Z",
+      "side": 1,
+      "message": "thanks for the formatting cleanup, but it should be in another CL?",
+      "range": {
+        "startLine": 97,
+        "startChar": 19,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "cf4028820fc50b004ba0e38e7cf679ca5fcca33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d15beb51_327da0a1",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-18T18:32:55Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 117,
+        "startChar": 19,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "cf4028820fc50b004ba0e38e7cf679ca5fcca33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
