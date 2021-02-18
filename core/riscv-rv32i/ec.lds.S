@@ -48,6 +48,10 @@ MEMORY
 	IRAM (rw) : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
 #endif /* CHIP_FAMILY_IT8XXX2 */
 
+#ifdef CONFIG_L1TCM_BASE
+	L1TCM (rwx) : ORIGIN = CONFIG_L1TCM_BASE, LENGTH = CONFIG_L1TCM_SIZE
+#endif
+
 #ifdef CONFIG_DRAM_BASE
 	DRAM (rwx) : ORIGIN = CONFIG_DRAM_BASE, LENGTH = CONFIG_DRAM_SIZE
 #endif
@@ -366,6 +370,46 @@ SECTIONS
 	       "Not enough space for h2ram section.")
 #endif
 #endif /* CHIP_FAMILY_IT8XXX2 */
+
+#ifdef CONFIG_L1TCM_BASE
+#if 0
+	__l1tcm_base = .;
+#endif
+
+	.l1tcm.text : {
+		. = ALIGN(4);
+		KEEP(*(.ram_code))
+		KEEP(*(.l1tcm.text.*))
+	} > L1TCM
+
+	.l1tcm.rodata : {
+		. = ALIGN(4);
+		KEEP(*(.l1tcm.rodata.*))
+	} > L1TCM
+
+	__l1tcm_data_lma_start = ADDR(.l1tcm.rodata) + SIZEOF(.l1tcm.rodata);
+
+	.l1tcm.data __l1tcm_data_lma_start +
+		(__l1tcm_data_end - __l1tcm_data_start) : {
+		. = ALIGN(4);
+		__l1tcm_data_start = .;
+		*(.l1tcm.data.*)
+		__l1tcm_data_end = .;
+	} > L1TCM AT > L1TCM
+
+	.l1tcm.bss(NOLOAD) : {
+		. = ALIGN(4);
+		__l1tcm_bss_start = .;
+		KEEP(*(.l1tcm.bss.*))
+		__l1tcm_bss_end = .;
+	} > L1TCM
+
+#if 0
+	__l1tcm_size = . - __l1tcm_base;
+	ASSERT((__l1tcm_size <= CONFIG_L1TCM_SIZE),
+	       "__l1tcm_size <= CONFIG_L1TCM_SIZE")
+#endif
+#endif /* CONFIG_L1TCM_BASE */
 
 #ifdef CONFIG_DRAM_BASE
 	/*
