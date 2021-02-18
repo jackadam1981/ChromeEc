@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f7ec962_cc81ed11",
+        "filename": "driver/ioexpander/tca64xxa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-18T06:17:13Z",
+      "side": 1,
+      "message": "move to header file",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "a87f204756d7d4c3335098180d8bae09b1817553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5b0acb4_8361bb60",
+        "filename": "driver/ioexpander/tca64xxa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-18T06:17:13Z",
+      "side": 1,
+      "message": "nit: need space before that open paren",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 5
+      },
+      "revId": "a87f204756d7d4c3335098180d8bae09b1817553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc9815e_cc70ae04",
+        "filename": "driver/ioexpander/tca64xxa.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-18T06:17:13Z",
+      "side": 1,
+      "message": "nit: use GENMASK(...) macro",
+      "range": {
+        "startLine": 11,
+        "startChar": 32,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "a87f204756d7d4c3335098180d8bae09b1817553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
