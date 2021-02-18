@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eb4366c_a79de87a",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-18T23:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57ae86ec_48b435cf",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "17e60c11ebb67ec19a44a6d2753849ca14e7b8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e113f24a_1c4987ae",
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb7c44a_cd03e2b7",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-18T23:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "528cd2ef_5896be26",
+      "revId": "17e60c11ebb67ec19a44a6d2753849ca14e7b8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cb1a6ad_aa44ec1c",
@@ -72,6 +114,30 @@
       "writtenOn": "2021-02-18T22:42:25Z",
       "side": 1,
       "message": "I think you want to always clear this flag if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL)).  As is, if somehow the disconnect flag isn\u0027t set following entry into G3, then the G3 flag will never be cleared.",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 30
+      },
+      "revId": "17e60c11ebb67ec19a44a6d2753849ca14e7b8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "836fa036_931ff7dc",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-18T23:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb1a6ad_aa44ec1c",
       "range": {
         "startLine": 491,
         "startChar": 0,
