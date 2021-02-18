@@ -131,6 +131,7 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 
 int pd_snk_is_vbus_provided(int port)
 {
+	tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SNK_CTRL_HIGH);
 	return pd_check_vbus_level(port, VBUS_PRESENT);
 }
 

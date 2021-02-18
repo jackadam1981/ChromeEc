@@ -62,6 +62,7 @@
 /* USB Mux and Retimer */
 #define CONFIG_USB_MUX_IT5205			/* C1: ITE Mux */
 #define I2C_PORT_USB_MUX I2C_PORT_USB_C0	/* Required for ITE Mux */
+#define CONFIG_CHARGER_MAINTAIN_VBAT
 
 #ifndef __ASSEMBLER__
 
