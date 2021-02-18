@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06de2df5_d6605023",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-18T12:39:52Z",
+      "side": 1,
+      "message": "This is surprising to me. Surely there are Zephyr changes which require updates to the modules?",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 63
+      },
+      "revId": "e0069fef38cec5005463537a4415031dc92f4952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
