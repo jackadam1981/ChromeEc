@@ -22,6 +22,30 @@
       },
       "revId": "6a0e64c7f2e9f189bf37b0dd73a1d66b122315b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fefaa77a_edaa332a",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-18T16:07:02Z",
+      "side": 1,
+      "message": "Agree, but just doing a rename here. Will look at adding as part of b/178642582",
+      "parentUuid": "c2699e25_4224e6ef",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 16
+      },
+      "revId": "6a0e64c7f2e9f189bf37b0dd73a1d66b122315b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
