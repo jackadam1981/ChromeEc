@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae80fe70_cf430b72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-02-18T18:15:15Z",
+      "side": 1,
+      "message": "come to think of it - we are not going to encounter H1s with version below 0.0.22 any more - let\u0027s just get rid of this atavism.",
+      "revId": "1aaacb282ced808e3bdf36d1e66da7226044cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20936af3_157386ae",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-02-18T18:15:15Z",
+      "side": 1,
+      "message": "this and line 1085 don\u0027t seem to belong in this patch.",
+      "range": {
+        "startLine": 1066,
+        "startChar": 1,
+        "endLine": 1066,
+        "endChar": 61
+      },
+      "revId": "1aaacb282ced808e3bdf36d1e66da7226044cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
