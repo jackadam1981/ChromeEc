@@ -22,6 +22,23 @@
       },
       "revId": "27ae43250e3545e0ea0b4fe02e3ae979c91263a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1214334_80f1f235",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-18T12:41:37Z",
+      "side": 1,
+      "message": "Good to have the docs. But actually I would prefer we have explicit calls to each of the function. There are only three. Then we can pass the args that are actually used and avoid the Python equivalent of using \u0027void *\u0027 for every function.",
+      "revId": "27ae43250e3545e0ea0b4fe02e3ae979c91263a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
