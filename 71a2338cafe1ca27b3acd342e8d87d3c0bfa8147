@@ -16,6 +16,121 @@
       "message": "is the CL working?",
       "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6309eb52_af322742",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-18T17:11:25Z",
+      "side": 1,
+      "message": "We can combine all the conditions?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a2a2a7_2f52cf68",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-18T17:11:25Z",
+      "side": 1,
+      "message": "static function should do",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 36
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d8e5e19_fc79b6bb",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-18T17:11:25Z",
+      "side": 1,
+      "message": "static function should do",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 34
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76219a22_0155b739",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-18T17:11:25Z",
+      "side": 1,
+      "message": "static function should do",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 30
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d38e56a_ba0633cf",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-18T17:11:25Z",
+      "side": 1,
+      "message": "don\u0027t need these",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 0
+      },
+      "revId": "71a2338cafe1ca27b3acd342e8d87d3c0bfa8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
