@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f4a4a95_b353891f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-18T22:51:28Z",
+      "side": 1,
+      "message": "I just removed it. Good call",
+      "parentUuid": "ae80fe70_cf430b72",
+      "revId": "1aaacb282ced808e3bdf36d1e66da7226044cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20936af3_157386ae",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-18T18:15:15Z",
       "side": 1,
       "message": "this and line 1085 don\u0027t seem to belong in this patch.",
+      "range": {
+        "startLine": 1066,
+        "startChar": 1,
+        "endLine": 1066,
+        "endChar": 61
+      },
+      "revId": "1aaacb282ced808e3bdf36d1e66da7226044cfb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c9e5c7_96079a42",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-18T22:51:28Z",
+      "side": 1,
+      "message": "Agreed. I made a comment on this initially, but I think it got lost in the patchsets\n\n(https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2702315/1/extra/usb_updater/gsctool.c#1067)\n\nI have move it to a difference CL",
+      "parentUuid": "20936af3_157386ae",
       "range": {
         "startLine": 1066,
         "startChar": 1,
