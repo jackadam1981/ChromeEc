@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fcba867f_63b42d7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-18T17:24:45Z",
+      "side": 1,
+      "message": "Oh weird, I wasn\u0027t up to date. I am surprised that it didn\u0027t give me a merge conflict, I guess this was the exact same diff so it just assumed it was the same patch. Thanks!",
+      "parentUuid": "9133490e_de92ae1e",
+      "revId": "2425fd6d1e020c531b8f654ee6efd5a4ff415035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "38cae9a1_71663cd3",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
