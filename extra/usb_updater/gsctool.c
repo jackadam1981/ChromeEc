@@ -1071,8 +1071,7 @@ static bool locate_headers(const void *image, const uint32_t size)
 		return false;
 	}
 	sections[RW_A].offset = rw_offset;
-	sections[RW_A].size =
-		round_up_16kb(as_header(image, rw_offset)->image_size);
+	sections[RW_A].size = as_header(image, rw_offset)->image_size;
 
 	/* Validate the RO_B header */
 	h = as_header(image, slot_a_end);
@@ -1091,8 +1090,7 @@ static bool locate_headers(const void *image, const uint32_t size)
 		return false;
 	}
 	sections[RW_B].offset = rw_offset;
-	sections[RW_B].size =
-		round_up_16kb(as_header(image, rw_offset)->image_size);
+	sections[RW_B].size = as_header(image, rw_offset)->image_size;
 
 	/* We found all of the headers and updated offset/size in sections */
 	return true;
