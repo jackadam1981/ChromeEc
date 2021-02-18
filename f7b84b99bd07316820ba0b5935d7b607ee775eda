@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9eb771_426b56b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-18T23:59:46Z",
+      "side": 1,
+      "message": "Link to the commits.\nRevert the \"unset\" commmit with \u0027git revert\u0027 if possible.",
+      "revId": "f7b84b99bd07316820ba0b5935d7b607ee775eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24e37d6_e6bbf132",
+        "filename": "include/body_detection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-18T23:59:46Z",
+      "side": 1,
+      "message": "prefer positive logic: \"When set, wakeup\".",
+      "revId": "f7b84b99bd07316820ba0b5935d7b607ee775eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
