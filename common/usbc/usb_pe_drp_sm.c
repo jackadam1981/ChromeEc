@@ -632,19 +632,6 @@ static struct policy_engine {
 	uint64_t pr_swap_wait_timer;
 
 	/*
-	 * This timer combines the PSSourceOffTimer and PSSourceOnTimer timers.
-	 * For PSSourceOffTimer, when this DRP device is currently acting as a
-	 * Sink, this timer times out on a PS_RDY Message during a Power Role
-	 * Swap sequence.
-	 *
-	 * For PSSourceOnTimer, when this DRP device is currently acting as a
-	 * Source that has just stopped sourcing power and is waiting to start
-	 * sinking power to timeout on a PS_RDY Message during a Power Role
-	 * Swap.
-	 */
-	uint64_t ps_source_timer;
-
-	/*
 	 * This timer is used by the new Source, after a Power Role Swap or
 	 * Fast Role Swap, to ensure that it does not send Source_Capabilities
 	 * Message before the new Sink is ready to receive the
@@ -4352,16 +4339,28 @@ static void pe_prs_src_snk_transition_to_off_entry(int port)
 	/* Tell TypeC to power off the source */
 	tc_src_power_off(port);
 
-	pe[port].ps_source_timer =
-			get_time().val + PD_POWER_SUPPLY_TURN_OFF_DELAY;
+	pd_timer_active(port, PE_TIMER_PS_SOURCE,
+			PD_POWER_SUPPLY_TURN_OFF_DELAY);
 }
 
 static void pe_prs_src_snk_transition_to_off_run(int port)
 {
+	/*
+	 * Convert active/expired to be inactive/expired, if applicable, to
+	 * not speed up timer tick in the possible case the timer expired
+	 * but we leave the state before handling it.
+	 */
+	pd_timer_expired_to_inactive(port, PE_TIMER_PS_SOURCE);
+
 	/* Give time for supply to power off */
-	if (get_time().val > pe[port].ps_source_timer &&
+	if (pd_timer_is_expired(port, PE_TIMER_PS_SOURCE) &&
 	    pd_check_vbus_level(port, VBUS_SAFE0V))
 		set_state_pe(port, PE_PRS_SRC_SNK_ASSERT_RD);
+}
+
+static void pe_prs_src_snk_transition_to_off_exit(int port)
+{
+	pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 }
 
 /**
@@ -4389,25 +4388,24 @@ static void pe_prs_src_snk_wait_source_on_entry(int port)
 {
 	print_current_state(port);
 	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
-	pe[port].ps_source_timer = TIMER_DISABLED;
 }
 
 static void pe_prs_src_snk_wait_source_on_run(int port)
 {
-	if (pe[port].ps_source_timer == TIMER_DISABLED &&
-			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (pd_timer_is_disabled(port, PE_TIMER_PS_SOURCE) &&
+	    PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 		/* Update pe power role */
 		pe[port].power_role = pd_get_power_role(port);
-		pe[port].ps_source_timer = get_time().val + PD_T_PS_SOURCE_ON;
+		pd_timer_active(port, PE_TIMER_PS_SOURCE, PD_T_PS_SOURCE_ON);
 	}
 
 	/*
 	 * Transition to PE_SNK_Startup when:
 	 *   1) A PS_RDY Message is received.
 	 */
-	if (pe[port].ps_source_timer != TIMER_DISABLED &&
+	if (!pd_timer_is_disabled(port, PE_TIMER_PS_SOURCE) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		int type = PD_HEADER_TYPE(rx_emsg[port].header);
 		int cnt = PD_HEADER_CNT(rx_emsg[port].header);
@@ -4416,8 +4414,6 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		if ((ext == 0) && (cnt == 0) && (type == PD_CTRL_PS_RDY)) {
-			pe[port].ps_source_timer = TIMER_DISABLED;
-
 			PE_SET_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE);
 			set_state_pe(port, PE_SNK_STARTUP);
 		} else {
@@ -4437,7 +4433,7 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	 *   1) The PSSourceOnTimer times out.
 	 *   2) PS_RDY not sent after retries.
 	 */
-	if (get_time().val > pe[port].ps_source_timer ||
+	if (pd_timer_is_expired(port, PE_TIMER_PS_SOURCE) ||
 	    PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 
@@ -4448,6 +4444,7 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 
 static void pe_prs_src_snk_wait_source_on_exit(int port)
 {
+	pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 	tc_pr_swap_complete(port,
 			    PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE));
 }
@@ -4603,7 +4600,7 @@ static void pe_prs_snk_src_transition_to_off_entry(int port)
 			!pe_in_frs_mode(port))
 		tc_snk_power_off(port);
 
-	pe[port].ps_source_timer = get_time().val + PD_T_PS_SOURCE_OFF;
+	pd_timer_active(port, PE_TIMER_PS_SOURCE, PD_T_PS_SOURCE_OFF);
 }
 
 static void pe_prs_snk_src_transition_to_off_run(int port)
@@ -4616,7 +4613,7 @@ static void pe_prs_snk_src_transition_to_off_run(int port)
 	 * Transition to ErrorRecovery state when:
 	 *   1) The PSSourceOffTimer times out.
 	 */
-	if (get_time().val > pe[port].ps_source_timer)
+	if (pd_timer_is_expired(port, PE_TIMER_PS_SOURCE))
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 
 	/*
@@ -4639,6 +4636,11 @@ static void pe_prs_snk_src_transition_to_off_run(int port)
 			set_state_pe(port, PE_PRS_SNK_SRC_ASSERT_RP);
 		}
 	}
+}
+
+static void pe_prs_snk_src_transition_to_off_exit(int port)
+{
+	pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 }
 
 /**
@@ -4685,22 +4687,22 @@ static void pe_prs_snk_src_source_on_entry(int port)
 	 * VBUS was enabled when the TypeC state machine entered
 	 * Attached.SRC state
 	 */
-	pe[port].ps_source_timer = get_time().val +
-					PD_POWER_SUPPLY_TURN_ON_DELAY;
+	pd_timer_active(port, PE_TIMER_PS_SOURCE,
+			PD_POWER_SUPPLY_TURN_ON_DELAY);
 }
 
 static void pe_prs_snk_src_source_on_run(int port)
 {
 	/* Wait until power supply turns on */
-	if (pe[port].ps_source_timer != TIMER_DISABLED) {
-		if (get_time().val < pe[port].ps_source_timer)
+	if (!pd_timer_is_disabled(port, PE_TIMER_PS_SOURCE)) {
+		if (!pd_timer_is_expired(port, PE_TIMER_PS_SOURCE))
 			return;
 
 		/* update pe power role */
 		pe[port].power_role = pd_get_power_role(port);
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
 		/* reset timer so PD_CTRL_PS_RDY isn't sent again */
-		pe[port].ps_source_timer = TIMER_DISABLED;
+		pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 	}
 
 	/*
@@ -4723,6 +4725,7 @@ static void pe_prs_snk_src_source_on_run(int port)
 
 static void pe_prs_snk_src_source_on_exit(int port)
 {
+	pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 	tc_pr_swap_complete(port,
 			    PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE));
 }
@@ -6984,6 +6987,7 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_PRS_SRC_SNK_TRANSITION_TO_OFF] = {
 		.entry = pe_prs_src_snk_transition_to_off_entry,
 		.run   = pe_prs_src_snk_transition_to_off_run,
+		.exit  = pe_prs_src_snk_transition_to_off_exit,
 	},
 	[PE_PRS_SRC_SNK_ASSERT_RD] = {
 		.entry = pe_prs_src_snk_assert_rd_entry,
@@ -7011,6 +7015,7 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_PRS_SNK_SRC_TRANSITION_TO_OFF] = {
 		.entry = pe_prs_snk_src_transition_to_off_entry,
 		.run   = pe_prs_snk_src_transition_to_off_run,
+		.exit  = pe_prs_snk_src_transition_to_off_exit,
 #ifdef CONFIG_USB_PD_REV30
 		.parent = &pe_states[PE_PRS_FRS_SHARED],
 #endif /* CONFIG_USB_PD_REV30 */
