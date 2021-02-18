@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6db7e9c0_8a1b4bba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-18T17:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d0f03a4_e7090bed",
+      "revId": "a1439bade8111ff88e220da2c005c8bbf962444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ca41a5fe_dfa767e1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f2dfc9_d99ce780",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-18T17:22:28Z",
+      "side": 1,
+      "message": "Removed return values since we aren\u0027t checking them",
+      "parentUuid": "13c66f41_680efcee",
+      "revId": "a1439bade8111ff88e220da2c005c8bbf962444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1cb9219_ac6658f7",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-02-18T15:23:21Z",
       "side": 1,
       "message": "Is there a followup CL that uses these return values? gsctool wasn\u0027t checking them before, so I don\u0027t know if we need to check them now to land this CL, but it\u0027d be good to start using them.\n\nIf they aren\u0027t being used, should we remove them?",
+      "range": {
+        "startLine": 1643,
+        "startChar": 7,
+        "endLine": 1643,
+        "endChar": 10
+      },
+      "revId": "a1439bade8111ff88e220da2c005c8bbf962444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7e59f8_0ea728d7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-18T17:22:28Z",
+      "side": 1,
+      "message": "I just remove them.\n\nWe should probably exit if this fails... however, the update will fail on the first packet, so we will get feedback that it didn\u0027t work (and it will be a data failure which means hash failure).\n\nWe can do it on a future CL, what are your thoughts?",
+      "parentUuid": "d1cb9219_ac6658f7",
       "range": {
         "startLine": 1643,
         "startChar": 7,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b3ac363_7e5e43cc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1646,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-18T17:22:28Z",
+      "side": 1,
+      "message": "Punted for now ;)",
+      "parentUuid": "311036ec_b8fdb0d9",
+      "range": {
+        "startLine": 1646,
+        "startChar": 9,
+        "endLine": 1646,
+        "endChar": 30
+      },
+      "revId": "a1439bade8111ff88e220da2c005c8bbf962444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08182679_5d1e6295",
@@ -111,6 +195,30 @@
       "writtenOn": "2021-02-18T00:53:27Z",
       "side": 1,
       "message": "I think this is a bit brittle: before we used sizeof(cmd.block_digest) as the destination size, now we\u0027re using sizeof(u32). This happens to be the same value presently, but if cmd.block_digest size ever changes this will bet out of sync.\n\nHow about passing the size to copy to this function?",
+      "range": {
+        "startLine": 1674,
+        "startChar": 34,
+        "endLine": 1674,
+        "endChar": 56
+      },
+      "revId": "a1439bade8111ff88e220da2c005c8bbf962444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ea5149_d873486e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-02-18T17:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08182679_5d1e6295",
       "range": {
         "startLine": 1674,
         "startChar": 34,
