@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1800d735_2dda2620",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-02-18T21:25:04Z",
+      "side": 1,
+      "message": "Will this make sense?\n\tif (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) \u0026\u0026\n\t    usb_mux_get_disconnect_latch_flag(port)) {\n\t\tif (!usb_mux_get_g3_flag(port)) {\n\t\t\tr-\u003eflags \u003d USB_PD_MUX_NONE;\n\t\t\tusb_mux_set_disconnect_latch_flag(port, false);\n\t\t\targs-\u003eresponse_size \u003d sizeof(*r);\n\t\t\thost_set_single_event(EC_HOST_EVENT_USB_MUX);\n\t\t\treturn EC_RES_SUCCESS;\n\t\t} else {\n\t\t/* Received AP-\u003eEC command clear USB_MUX_FLAG_G3_LATCH */\n\t\tusb_mux_clear_g3_flag(port);\n                }\n        usb_mux_set_disconnect_latch_flag(port, false);        \n\t}",
+      "revId": "dae437243ccdeed2a6c5c59b933623b901b9faf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
