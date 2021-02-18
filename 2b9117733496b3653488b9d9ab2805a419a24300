@@ -16,6 +16,91 @@
       "message": "Just a gentle reminder to have a look to the reworked version.\n\nMany thanks,\nJB",
       "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40d59a7_d903699e",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-18T23:52:05Z",
+      "side": 1,
+      "message": "now is used once, no need to specify a local variable.",
+      "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c55d972_baae9f43",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-18T23:52:05Z",
+      "side": 1,
+      "message": "now is used once, no need to specify a local variable.",
+      "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8189b58_9315f65f",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-18T23:52:05Z",
+      "side": 1,
+      "message": "to be clearer, s/sensor_ts/stabilize_ts/",
+      "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a45f5ed_00b409b1",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-18T23:52:05Z",
+      "side": 1,
+      "message": "icm_set_stablize_ts() mabye?",
+      "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5db5ac1_ebe3cdec",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-18T23:52:05Z",
+      "side": 1,
+      "message": "given ts is always \"now\", to be symetric with icm_set_sensor_ts, call __hw_clock_source_read here.",
+      "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
