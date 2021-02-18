@@ -34,6 +34,23 @@
       "parentUuid": "e24e966d_5d89c004",
       "revId": "dd204c6b52dc742f254ed3587d928766080961ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdbaab7b_9edb823e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-18T23:27:34Z",
+      "side": 1,
+      "message": "crrev.com/c/1930931 commit 3842121022bc7 (\"host_command: clear any leftover data\") changed the old behavior were command and respond could be the same buffer (as it is in the kernel).",
+      "revId": "dd204c6b52dc742f254ed3587d928766080961ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
