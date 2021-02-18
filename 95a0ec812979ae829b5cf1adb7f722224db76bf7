@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f97fd5cd_8e20e7a9",
+        "filename": "util/gdbinit",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T01:45:19Z",
+      "side": 0,
+      "message": "I didn\u0027t make this clear from the commit msg, but this command fails due to a python indention issue.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 4
+      },
+      "revId": "95a0ec812979ae829b5cf1adb7f722224db76bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
