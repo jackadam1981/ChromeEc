@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef26c43_d2a3c7c4",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-18T21:14:58Z",
+      "side": 1,
+      "message": "Is this bit needed?  Since the HOOK_CHIPSET_SHUTDOWN is clearing USB_MUX_FLAG_DISCONNECT_LATCH, this bit seems redundant.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "50d10250011ea894daf9fe39683f49a0a5addba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
