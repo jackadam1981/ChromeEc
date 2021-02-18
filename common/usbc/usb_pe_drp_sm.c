@@ -556,8 +556,6 @@ static struct policy_engine {
 	/* Device Policy Manager Request */
 	uint32_t dpm_request;
 	uint32_t dpm_curr_request;
-	/* state timeout timer */
-	uint64_t timeout;
 	/* last requested voltage PDO index */
 	int requested_idx;
 
@@ -3011,7 +3009,7 @@ static void pe_snk_wait_for_capabilities_entry(int port)
 	print_current_state(port);
 
 	/* Initialize and start the SinkWaitCapTimer */
-	pe[port].timeout = get_time().val + PD_T_SINK_WAIT_CAP;
+	pd_timer_active(port, PE_TIMER_TIMEOUT, PD_T_SINK_WAIT_CAP);
 }
 
 static void pe_snk_wait_for_capabilities_run(int port)
@@ -3038,10 +3036,15 @@ static void pe_snk_wait_for_capabilities_run(int port)
 	}
 
 	/* When the SinkWaitCapTimer times out, perform a Hard Reset. */
-	if (get_time().val > pe[port].timeout) {
+	if (pd_timer_is_expired(port, PE_TIMER_TIMEOUT)) {
 		PE_SET_FLAG(port, PE_FLAGS_SNK_WAIT_CAP_TIMEOUT);
 		set_state_pe(port, PE_SNK_HARD_RESET);
 	}
+}
+
+static void pe_snk_wait_for_capabilities_exit(int port)
+{
+	pd_timer_disable(port, PE_TIMER_TIMEOUT);
 }
 
 /**
@@ -6285,7 +6288,7 @@ static void pe_vcs_turn_on_vconn_swap_entry(int port)
 
 	/* Request DPM to turn on VCONN */
 	pd_request_vconn_swap_on(port);
-	pe[port].timeout = 0;
+	pd_timer_inactive(port, PE_TIMER_TIMEOUT);
 }
 
 static void pe_vcs_turn_on_vconn_swap_run(int port)
@@ -6295,15 +6298,21 @@ static void pe_vcs_turn_on_vconn_swap_run(int port)
 	 * Transition to the PE_VCS_Send_Ps_Rdy state when:
 	 *  1) The Port’s VCONN is on.
 	 */
-	if (pe[port].timeout == 0 &&
+	if (pd_timer_is_inactive(port, PE_TIMER_TIMEOUT) &&
 			PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE);
-		pe[port].timeout =
-			get_time().val + CONFIG_USBC_VCONN_SWAP_DELAY_US;
+		pd_timer_active(port, PE_TIMER_TIMEOUT,
+				CONFIG_USBC_VCONN_SWAP_DELAY_US);
 	}
 
-	if (pe[port].timeout > 0 && get_time().val > pe[port].timeout)
+	if (pd_timer_is_active(port, PE_TIMER_TIMEOUT) &&
+	    pd_timer_is_expired(port, PE_TIMER_TIMEOUT))
 		set_state_pe(port, PE_VCS_SEND_PS_RDY_SWAP);
+}
+
+static void pe_vcs_turn_on_vconn_swap_exit(int port)
+{
+	pd_timer_disable(port, PE_TIMER_TIMEOUT);
 }
 
 /*
@@ -6315,20 +6324,21 @@ static void pe_vcs_turn_off_vconn_swap_entry(int port)
 
 	/* Request DPM to turn off VCONN */
 	pd_request_vconn_swap_off(port);
-	pe[port].timeout = 0;
+	pd_timer_inactive(port, PE_TIMER_TIMEOUT);
 }
 
 static void pe_vcs_turn_off_vconn_swap_run(int port)
 {
 	/* Wait for VCONN to turn off */
-	if (pe[port].timeout == 0 &&
+	if (pd_timer_is_inactive(port, PE_TIMER_TIMEOUT) &&
 			PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE);
-		pe[port].timeout =
-			get_time().val + CONFIG_USBC_VCONN_SWAP_DELAY_US;
+		pd_timer_active(port, PE_TIMER_TIMEOUT,
+				CONFIG_USBC_VCONN_SWAP_DELAY_US);
 	}
 
-	if (pe[port].timeout > 0 && get_time().val > pe[port].timeout) {
+	if (pd_timer_is_active(port, PE_TIMER_TIMEOUT) &&
+	    pd_timer_is_expired(port, PE_TIMER_TIMEOUT)) {
 		/*
 		 * A VCONN Swap Shall reset the DiscoverIdentityCounter
 		 * to zero
@@ -6341,6 +6351,11 @@ static void pe_vcs_turn_off_vconn_swap_run(int port)
 		else
 			set_state_pe(port, PE_SNK_READY);
 	}
+}
+
+static void pe_vcs_turn_off_vconn_swap_exit(int port)
+{
+	pd_timer_disable(port, PE_TIMER_TIMEOUT);
 }
 
 /*
@@ -6855,6 +6870,7 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_SNK_WAIT_FOR_CAPABILITIES] = {
 		.entry = pe_snk_wait_for_capabilities_entry,
 		.run = pe_snk_wait_for_capabilities_run,
+		.exit = pe_snk_wait_for_capabilities_exit,
 	},
 	[PE_SNK_EVALUATE_CAPABILITY] = {
 		.entry = pe_snk_evaluate_capability_entry,
@@ -7004,10 +7020,12 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_VCS_TURN_ON_VCONN_SWAP] = {
 		.entry = pe_vcs_turn_on_vconn_swap_entry,
 		.run   = pe_vcs_turn_on_vconn_swap_run,
+		.exit  = pe_vcs_turn_on_vconn_swap_exit,
 	},
 	[PE_VCS_TURN_OFF_VCONN_SWAP] = {
 		.entry = pe_vcs_turn_off_vconn_swap_entry,
 		.run   = pe_vcs_turn_off_vconn_swap_run,
+		.exit  = pe_vcs_turn_off_vconn_swap_exit,
 	},
 	[PE_VCS_SEND_PS_RDY_SWAP] = {
 		.entry = pe_vcs_send_ps_rdy_swap_entry,
