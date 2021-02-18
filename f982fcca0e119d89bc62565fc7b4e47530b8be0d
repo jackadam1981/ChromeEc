@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "152e11f7_31d050a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T23:18:02Z",
+      "side": 1,
+      "message": "Any chance you could reference the https://crrev.com/c/1096765 ?",
+      "revId": "f982fcca0e119d89bc62565fc7b4e47530b8be0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d580f6_6782cce3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T23:18:02Z",
+      "side": 1,
+      "message": "Can you be a bit more more clear about which compare build?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "f982fcca0e119d89bc62565fc7b4e47530b8be0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d33f2fc7_0a027d71",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 1
