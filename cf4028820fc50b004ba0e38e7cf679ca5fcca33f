@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e198ec6_4707edb0",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-18T18:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f3fd88_f78b87a8",
+      "range": {
+        "startLine": 97,
+        "startChar": 19,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "cf4028820fc50b004ba0e38e7cf679ca5fcca33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d15beb51_327da0a1",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-18T18:32:55Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 117,
+        "startChar": 19,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "cf4028820fc50b004ba0e38e7cf679ca5fcca33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51d0e057_b71ed2d8",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-18T18:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d15beb51_327da0a1",
       "range": {
         "startLine": 117,
         "startChar": 19,
