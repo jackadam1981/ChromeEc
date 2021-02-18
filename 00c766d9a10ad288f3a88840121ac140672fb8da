@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38e7ff5_51ba8208",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-18T16:46:20Z",
+      "side": 0,
+      "message": "Follow the example of CONFIG_FPU at line 55.  We want this file to reference CONFIG_FPU even when not used so a script can check when new configs are added to the platform/ec code, but not added to Zephyr support.",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 22
+      },
+      "revId": "00c766d9a10ad288f3a88840121ac140672fb8da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
