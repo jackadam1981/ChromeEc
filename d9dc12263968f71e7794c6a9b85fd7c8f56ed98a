@@ -22,6 +22,30 @@
       },
       "revId": "d9dc12263968f71e7794c6a9b85fd7c8f56ed98a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a853f147_285d2379",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-18T20:52:26Z",
+      "side": 1,
+      "message": "Yes I can replace this with a comment.\n\nBut will hold off until you are finished refactoring since the args might change, e.g. v2.4",
+      "parentUuid": "5b3cb1c0_def145f2",
+      "range": {
+        "startLine": 59,
+        "startChar": 6,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "d9dc12263968f71e7794c6a9b85fd7c8f56ed98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
