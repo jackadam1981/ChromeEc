@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9133490e_de92ae1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-02-18T00:02:22Z",
+      "side": 1,
+      "message": "oh, I  did not look a the branch. Have you synced recently? This has been fixed in cr50_stab @8b79ea5638\n\nWe still should have ec/cr50_stab as a component of Ti50 repo I think.",
+      "parentUuid": "3b58695c_6e854782",
+      "revId": "2425fd6d1e020c531b8f654ee6efd5a4ff415035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "38cae9a1_71663cd3",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
