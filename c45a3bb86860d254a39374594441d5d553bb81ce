@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a0972b2_fa7f4965",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-18T16:20:18Z",
+      "side": 1,
+      "message": "Temperatures above the thermal warn threshold generate a request to the AP to throttle itself.",
+      "range": {
+        "startLine": 38,
+        "startChar": 60,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "c45a3bb86860d254a39374594441d5d553bb81ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca1b9881_f1efe756",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-18T16:20:18Z",
+      "side": 1,
+      "message": "high.",
+      "range": {
+        "startLine": 46,
+        "startChar": 54,
+        "endLine": 46,
+        "endChar": 58
+      },
+      "revId": "c45a3bb86860d254a39374594441d5d553bb81ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c1b3a0b_97a5887b",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-18T16:20:18Z",
+      "side": 1,
+      "message": "Temperatures above the thermal high threshold cause the EC to assert a signal (usually PROCHOT) to the AP and force the AP to throttle.",
+      "range": {
+        "startLine": 46,
+        "startChar": 60,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "c45a3bb86860d254a39374594441d5d553bb81ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62cb75d1_7c6517ca",
         "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
         "patchSetId": 1
