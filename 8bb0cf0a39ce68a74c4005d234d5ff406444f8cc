@@ -141,6 +141,30 @@
       },
       "revId": "8bb0cf0a39ce68a74c4005d234d5ff406444f8cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "731e8b69_f464cfef",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-18T16:26:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3dfb5a8_066d3206",
+      "range": {
+        "startLine": 440,
+        "startChar": 9,
+        "endLine": 440,
+        "endChar": 29
+      },
+      "revId": "8bb0cf0a39ce68a74c4005d234d5ff406444f8cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
