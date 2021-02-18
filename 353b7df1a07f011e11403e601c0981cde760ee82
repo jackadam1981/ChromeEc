@@ -22,6 +22,23 @@
       },
       "revId": "353b7df1a07f011e11403e601c0981cde760ee82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d094597b_78e8bc96",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-02-18T04:31:34Z",
+      "side": 1,
+      "message": "How about adding if (usb_mux_get_cleared_host_event) { ignore disconnect latch flag, send latest mux info, clear disconnect latch and clear host_event }",
+      "revId": "353b7df1a07f011e11403e601c0981cde760ee82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
