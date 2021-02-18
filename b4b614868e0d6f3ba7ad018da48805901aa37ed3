@@ -16,6 +16,24 @@
       "message": "As I think about this more, the issue is that the USB_MUX_FLAG_DISCONNECT_LATCH flag is only needed to correct behavior when exiting S3/S0ix.  What about modifying this flag so that it can only be set if the AP is suspended.  For example:\n\n    if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))\n        usb_mux_set_disconnect_latch_flag(port, true);\n\nCan you try that out as a separate CL?  The two co-dependent flags is making this code more complicated harder to maintain.",
       "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68a5ad8a_17bc689e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-02-18T23:48:39Z",
+      "side": 1,
+      "message": "Keith, There may be other cases where this disconnect latch flag may be coming into play. I will suggest to take this CL. and see if it can be simplified later. Amara’s last CL also passed the test so if that is simpler let’s take that one.",
+      "parentUuid": "ec78243a_7ba5d9f4",
+      "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
