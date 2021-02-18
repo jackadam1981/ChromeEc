@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c91ec914_31031d65",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T17:13:53Z",
+      "side": 1,
+      "message": "For posterity:\n\nThis should be unrelated to the option byte.\n\nI confirmed that you can call lock(0), lock(1), unlock_flash_option_bytes(), protect_blocks(1), and then commit_optb().",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89d5fc6a_dba2a0d0",
         "filename": "chip/stm32/flash-stm32h7.c",
         "patchSetId": 12
@@ -55,6 +78,30 @@
       "side": 1,
       "message": "From RM0433 sections 4.9.4 and 4.9.25 it seems the bank locking is separate per bank?",
       "parentUuid": "89d5fc6a_dba2a0d0",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 11
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f6a16c6_7b57b7ef",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T17:13:53Z",
+      "side": 1,
+      "message": "Yep, you\u0027re totally right. I manually exercised the flash cr protections.\n\n* Doesn\u0027t matter which bank\u0027s STM32_FLASH_OPTCR/STM32_FLASH_OPTKEYR you lock/unlock. It instantly applies to the other.\n* The STM32_FLASH_CR/STM32_FLASH_KEYR for each bank are separate.\n\n\nIt would be nice to have a bit more clear comment near the functions.",
+      "parentUuid": "7a2982ff_fa33754c",
       "range": {
         "startLine": 170,
         "startChar": 0,
@@ -112,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98172e21_dcedcc4f",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T17:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cde3c26_278ba3b3",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 45
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68daca69_03ffc02d",
@@ -125,6 +196,30 @@
       "writtenOn": "2021-02-12T07:13:57Z",
       "side": 1,
       "message": "Wait. Then we are only addressing one bank here?",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 45
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d3e6abb_d21d4262",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T17:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68daca69_03ffc02d",
       "range": {
         "startLine": 217,
         "startChar": 1,
@@ -182,6 +277,47 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a39fc5_5ae691bc",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T17:13:53Z",
+      "side": 1,
+      "message": "Yep. Totally right. It would be nice to have a bit better comment around here.",
+      "parentUuid": "4ddc9950_a5622611",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 56
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c01f97e_9095e377",
+        "filename": "chip/stm32/flash-stm32h7.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T17:13:53Z",
+      "side": 1,
+      "message": "All of these are already in flash-f.h, and it looks like the test source is only pulling in prototypes from flash-f.h (which happens to be compatible with these).\n\nInstead of adding a duplicate file, which can get out of sync with flash-f.h, can you pull out the definitions and place them in some stm32 unified header file?",
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f6caaa0_01224749",
@@ -195,6 +331,52 @@
       "writtenOn": "2021-02-12T07:32:48Z",
       "side": 1,
       "message": "blank space",
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf62117a_25bde854",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T17:13:53Z",
+      "side": 1,
+      "message": "This is not necessarily flash-stm32h7.h. Could you pull out these definitions into a some stm32 unified interface header file?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf78379_7750d647",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T17:13:53Z",
+      "side": 1,
+      "message": "Should this just be in the ignore_bus_fault function?\n\nvoid ignore_bus_fault(int ignored)\n{\n\tif (IS_ENABLED(CHIP_FAMILY_STM32H7))\n\t\tasm volatile(\"dsb; isb\");\n        ...",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 26
+      },
       "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -236,6 +418,30 @@
       "side": 1,
       "message": "see http://crrev.com/c/1096765 commit message",
       "parentUuid": "c8292ed4_bc1df15d",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 21
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce3d52a_c37fcd7f",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-18T17:13:53Z",
+      "side": 1,
+      "message": "Right, but for the H7 flow, it seems as though we already mitigate that risk in the unlock function itself. Plus, we would want to test that flow from this test.",
+      "parentUuid": "9e0e232e_8dcff15f",
       "range": {
         "startLine": 103,
         "startChar": 0,
