@@ -40,6 +40,9 @@ static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Device initialized at least once */
 #define USB_MUX_FLAG_INIT		BIT(2)
 
+/* This bit is used to set disconnect state of Virtual mux */
+#define USB_MUX_FLAG_G3_LATCH			BIT(3)
+
 enum mux_config_type {
 	USB_MUX_INIT,
 	USB_MUX_LOW_POWER,
@@ -47,6 +50,8 @@ enum mux_config_type {
 	USB_MUX_GET_MODE,
 	USB_MUX_CHIPSET_RESET,
 };
+
+static bool usb_mux_get_g3_flag(int port);
 
 /* Configure the MUX */
 static int configure_mux(int port,
@@ -67,7 +72,9 @@ static int configure_mux(int port,
 
 	if ((config == USB_MUX_SET_MODE && *mux_state == USB_PD_MUX_NONE) ||
 	      config == USB_MUX_INIT) {
-		usb_mux_set_disconnect_latch_flag(port, true);
+		/* G3 the virtual Mux state is 0, don't send disconnect mode */
+		if (!usb_mux_get_g3_flag(port))
+			usb_mux_set_disconnect_latch_flag(port, true);
 	}
 
 	/*
@@ -299,6 +306,38 @@ void usb_mux_set_disconnect_latch_flag(int port, bool enable)
 		atomic_clear_bits(&flags[port], USB_MUX_FLAG_DISCONNECT_LATCH);
 }
 
+static void usb_mux_clear_g3_flag(int port)
+{
+	if (port >= board_get_usb_pd_port_count() ||
+	    !IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return;
+
+	atomic_clear_bits(&flags[port], USB_MUX_FLAG_G3_LATCH);
+}
+
+static bool usb_mux_get_g3_flag(int port)
+{
+	if (port >= board_get_usb_pd_port_count() ||
+	    !IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return false;
+
+	return !!(flags[port] & USB_MUX_FLAG_G3_LATCH);
+}
+
+static void usb_mux_set_g3_flag(void)
+{
+	/*
+	 * In G3 (s3->s5) to S0 transition no need of sending
+	 * disconnect mode, set disconnect latch flag to false
+	 */
+	for (int i = 0; i < board_get_usb_pd_port_count(); i++) {
+		atomic_or(&flags[i], USB_MUX_FLAG_G3_LATCH);
+		usb_mux_set_disconnect_latch_flag(i, false);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_mux_set_g3_flag,
+	     HOOK_PRIO_FIRST);
+
 void usb_mux_flip(int port)
 {
 	mux_state_t mux_state;
@@ -457,6 +496,9 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 		host_set_single_event(EC_HOST_EVENT_USB_MUX);
 		return EC_RES_SUCCESS;
 	}
+
+	/* Received AP->EC command clear USB_MUX_FLAG_G3_LATCH */
+	usb_mux_clear_g3_flag(port);
 
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
