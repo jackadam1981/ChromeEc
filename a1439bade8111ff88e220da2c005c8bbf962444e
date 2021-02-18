@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d0f03a4_e7090bed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-02-18T00:53:27Z",
+      "side": 1,
+      "message": "this needs to be tested on Cr50 also.",
+      "revId": "a1439bade8111ff88e220da2c005c8bbf962444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ca41a5fe_dfa767e1",
@@ -14,6 +31,29 @@
       "writtenOn": "2021-02-17T22:58:02Z",
       "side": 1,
       "message": "See CL:*3622928 for ti50 changes requires for test",
+      "revId": "a1439bade8111ff88e220da2c005c8bbf962444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08182679_5d1e6295",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-02-18T00:53:27Z",
+      "side": 1,
+      "message": "I think this is a bit brittle: before we used sizeof(cmd.block_digest) as the destination size, now we\u0027re using sizeof(u32). This happens to be the same value presently, but if cmd.block_digest size ever changes this will bet out of sync.\n\nHow about passing the size to copy to this function?",
+      "range": {
+        "startLine": 1674,
+        "startChar": 34,
+        "endLine": 1674,
+        "endChar": 56
+      },
       "revId": "a1439bade8111ff88e220da2c005c8bbf962444e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
