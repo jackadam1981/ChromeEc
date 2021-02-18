@@ -22,6 +22,30 @@
       },
       "revId": "1d503c98f414338d310fb05e1bd11ec2f903e58e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdbabc71_8dce2f48",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-18T20:53:30Z",
+      "side": 1,
+      "message": "Let\u0027s document the cases that we have in the README.\n\n- local dev\n- CQ\n- gitlab",
+      "parentUuid": "1eaacba0_bbcddb69",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 42
+      },
+      "revId": "1d503c98f414338d310fb05e1bd11ec2f903e58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
