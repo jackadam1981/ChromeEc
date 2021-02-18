@@ -106,7 +106,10 @@ class Zmake:
                 'support this version, or pass '
                 '--ignore-unsupported-zephyr-version.'.format(*zephyr_version))
 
-        if not module_paths:
+        if module_paths:
+            # Argparse gave us a list of 2-tuples, but we want a dict.
+            module_paths = dict(module_paths)
+        else:
             module_paths = zmake.modules.locate_modules(self.checkout)
 
         # Resolve build_dir if needed.

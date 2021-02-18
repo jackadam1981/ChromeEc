@@ -33,6 +33,22 @@ def call_with_namespace(func, namespace):
     return func(**kwds)
 
 
+def parse_module_path(arg):
+    """Parse a module path in the format NAME:PATH for the command line.
+
+    Args:
+        arg: A string in the format NAME:PATH from the command line.
+
+    Returns:
+        A 2-tuple of the name and the path.
+    """
+    name, sep, path = arg.partition(':')
+    if not sep:
+        raise argparse.ArgumentTypeError(
+            'Module paths must be in the format NAME:PATH')
+    return name, pathlib.Path(path).resolve()
+
+
 # Dictionary used to map log level strings to their corresponding int values.
 log_level_map = {
     'DEBUG': logging.DEBUG,
@@ -86,6 +102,12 @@ def main(argv=None):
     configure.add_argument('-b', '--build', action='store_true',
                            dest='build_after_configure',
                            help='Run the build after configuration')
+    configure.add_argument('-m', '--module-path',
+                           action='append', dest='module_paths',
+                           type=parse_module_path,
+                           help='Specify the location of a module in the format'
+                           ' NAME:PATH.  This may be specified multiple times '
+                           'to specify multiple modules.')
     configure.add_argument('--test', action='store_true',
                            dest='test_after_configure',
                            help='Test the .elf file after configuration')
