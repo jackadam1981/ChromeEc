@@ -94,7 +94,7 @@ void k_sys_fatal_error_handler(unsigned int reason, const z_arch_esf_t *esf)
 #ifdef CONFIG_PLATFORM_EC_SOFTWARE_PANIC
 void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 {
-	struct panic_data * const pdata = get_panic_data_write();
+	struct panic_data *const pdata = get_panic_data_write();
 
 	/* Setup panic data structure */
 	memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
@@ -114,7 +114,7 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 
 void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 {
-	struct panic_data * const pdata = panic_get_data();
+	struct panic_data *const pdata = panic_get_data();
 
 	if (pdata && pdata->struct_version == 2) {
 		*exception = PANIC_REG_EXCEPTION(pdata);
@@ -123,5 +123,11 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 	} else {
 		*exception = *reason = *info = 0;
 	}
+}
+
+__overridable void arch_panic_set_reason(uint32_t reason, uint32_t info,
+					 uint8_t exception)
+{
+	/* Default implementation, do nothing. */
 }
 #endif /* CONFIG_PLATFORM_EC_SOFTWARE_PANIC */
