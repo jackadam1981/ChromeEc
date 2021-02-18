@@ -2827,9 +2827,12 @@ static void tc_attached_src_entry(const int port)
 	 *
 	 * Both CC1 and CC2 pins shall be independently terminated to
 	 * pulled up through Rp.
+	 *
+	 * We want to keep the current limit the same if doing an FRS.
 	 */
 	typec_select_pull(port, TYPEC_CC_RP);
-	typec_select_src_current_limit_rp(port, CONFIG_USB_PD_PULLUP);
+	if (!pe_in_frs_mode(port))
+		typec_select_src_current_limit_rp(port, CONFIG_USB_PD_PULLUP);
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		if (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {

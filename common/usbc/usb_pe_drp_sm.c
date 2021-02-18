@@ -1050,7 +1050,7 @@ static void pe_set_frs_enable(int port, int enable)
 		int curr_limit = *pd_get_snk_caps(port)
 						& PDO_FIXED_FRS_CURR_MASK;
 
-		typec_set_source_current_limit(port,
+		typec_select_src_current_limit_rp(port,
 					       curr_limit ==
 					       PDO_FIXED_FRS_CURR_3A0_AT_5V ?
 					       TYPEC_RP_3A0 : TYPEC_RP_1A5);
