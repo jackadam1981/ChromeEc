@@ -34,6 +34,24 @@
       "parentUuid": "1127c183_de766de6",
       "revId": "d60ffb52bd055513c36ba8ee1bdbf5f8c76aceaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1383fe13_5985790e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-19T22:07:59Z",
+      "side": 1,
+      "message": "Also the code with all of the extra disables and exit functions is saving over 1500 bytes on the Morphius build.",
+      "parentUuid": "e9872f59_6ee5fa16",
+      "revId": "d60ffb52bd055513c36ba8ee1bdbf5f8c76aceaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
