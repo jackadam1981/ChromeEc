@@ -34,6 +34,24 @@
       "parentUuid": "ec78243a_7ba5d9f4",
       "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90699011_8e02c36c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-19T00:11:15Z",
+      "side": 1,
+      "message": "From the EC perspective, this patch is preferred over Amara\u0027s patch, but it\u0027s still only working around for what looks to be a kernel bug.\n\nHas the kernel patch https://crrev.com/c/2648736 been tested independent of the EC changes?",
+      "parentUuid": "68a5ad8a_17bc689e",
+      "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
