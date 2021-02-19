@@ -243,11 +243,6 @@
 #include "baseboard_usbc_config.h"
 #include "extpower.h"
 
-enum ec_cfg_usb_db_type {
-	DB_USB_ABSENT = 0,
-	DB_USB3_PS8815 = 1,
-};
-
 /**
  * Configure run-time data structures and operation based on CBI data. This
  * typically includes customization for changes in the BOARD_VERSION and
@@ -262,6 +257,11 @@ __override_proto void board_cbi_init(void);
  * @return true - initialized. false - not.
  */
 __override_proto bool board_battery_is_initialized(void);
+
+/*
+ * Return the board revision number.
+ */
+uint8_t get_board_id(void);
 
 #endif /* !__ASSEMBLER__ */
 

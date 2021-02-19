@@ -4,6 +4,7 @@
  */
 
 #include "button.h"
+#include "cbi_ec_fw_config.h"
 #include "charge_ramp.h"
 #include "charger.h"
 #include "common.h"
@@ -16,6 +17,7 @@
 #include "registers.h"
 #include "switch.h"
 #include "throttle_ap.h"
+#include "usbc_config.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -31,6 +33,19 @@ const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN_OD,
 };
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
+
+/*
+ * FW_CONFIG defaults for brya if the CBI.FW_CONFIG data is not
+ * initialized.
+ */
+const union brya_cbi_fw_config fw_config_defaults = {
+	.usb_db = DB_USB3_PS8815,
+};
+
+__override void board_cbi_init(void)
+{
+	config_usb_db_type(ec_cfg_usb_db_type());
+}
 
 #ifdef CONFIG_CHARGE_RAMP_SW
 
