@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49da14b_867c5f4f",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1179294
+      },
+      "writtenOn": "2021-02-19T05:56:12Z",
+      "side": 1,
+      "message": "nit: I would use \"li t0,1\" here for more readable.",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 17
+      },
+      "revId": "dc7a3119e813dfc04b68d1adfca2619be145bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
