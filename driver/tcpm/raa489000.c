@@ -80,6 +80,10 @@ int raa489000_init(int port)
 	dev_id[port] = device_id;
 
 	if (device_id > 1) {
+		rv = tcpc_write(port, TCPC_REG_COMMAND,
+			TCPC_REG_COMMAND_SNK_CTRL_HIGH);
+		if (rv)
+			CPRINTS("C%d: failed to set sinkVBUS", port);
 		/*
 		 * A1 silicon has a DEVICE_ID of 1.  For B0 and newer, we need
 		 * allow the TCPC to control VBUS in order to start VBUS ADC
