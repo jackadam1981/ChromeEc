@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3bba8bc_35745754",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-19T22:07:40Z",
+      "side": 1,
+      "message": "I don\u0027t think the enum names necessarily have to change. I was thinking more of the comments or other things that don\u0027t need to use our typical variable naming conventions. For instance, the comment for PE_TIMER_CHUNKING_NOT_SUPPORTED refers to ChunkingNotSupportedTimer, which is something that the reader can look up exactly in the spec or look up in the code coming from the spec. The comment for PR_TIMER_CHUNK_SENDER_REQUEST refers to \"Chunk Sender Request timer,\" which is very clear once you\u0027ve found it but not searchable from the spec. I think that comment and thus that enum value would be easier to find if it contained the exact string ChunkSenderRequestTimer.",
+      "parentUuid": "f50c6acc_738ab880",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "770beaf6_457d0a6a",
