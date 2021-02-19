@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bac4595_29c1e57e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-19T21:17:01Z",
+      "side": 1,
+      "message": "Sure thing - I already have a WIP patch for it - https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2705561. We are internally doing a smoke test just to make sure it doesn\u0027t cause any regressions - I\u0027ll put it up for review once we have the smoke test results",
+      "parentUuid": "28c8519b_ef4a3c9c",
+      "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "591ec551_839a0a6d",
@@ -102,6 +120,30 @@
       "writtenOn": "2021-02-19T21:05:00Z",
       "side": 1,
       "message": "Update this comment to note that this flag ensures the kernel mux driver is notified that the external mux went through a disconnected state when the AP was S0ix state.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 75
+      },
+      "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c7090d_29ab4965",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-19T21:17:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591ec551_839a0a6d",
       "range": {
         "startLine": 37,
         "startChar": 0,
