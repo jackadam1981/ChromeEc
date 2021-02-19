@@ -16,6 +16,24 @@
       "message": "Where applicable, it would be nice if the timers defined in this CL chain had text to link them back to the named timers in the spec using the spec\u0027s orthography, e.g. SenderResponseTimer. In the existing code, I think we do that for some timers but not every timer that we could. The timer name strings might be a good place to do this, or maybe the comments in the timer enum.",
       "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2a1cd3_2b554a8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-19T21:46:32Z",
+      "side": 1,
+      "message": "To elaborate, you\u0027ve mostly done that in the comments, so I think I\u0027m just asking for changes like Chunk Sender Request \u003d\u003e ChunkSenderRequestTimer.",
+      "parentUuid": "c8176945_bb86ade0",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
