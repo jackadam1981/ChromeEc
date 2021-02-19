@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2dd0833_e4c227f8",
+        "filename": "driver/usb_mux/anx7451.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-19T23:30:09Z",
+      "side": 1,
+      "message": "Also mention that this driver is assuming nothing is connected to USB_EN (which looks like it is internally pulled-up) and that the chip is on the same power rails as the EC",
+      "revId": "f74cea102b02d7374f4ee8929af1b1d1156adcf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e15475a_a7b2ed60",
         "filename": "driver/usb_mux/anx7451.c",
         "patchSetId": 1
@@ -14,6 +31,41 @@
       "writtenOn": "2021-02-17T02:56:15Z",
       "side": 1,
       "message": "Datasheet recommends setting USB enabled on the mux here. I don\u0027t know the value of CC1 or CC2 here so it would be a guess.",
+      "revId": "f74cea102b02d7374f4ee8929af1b1d1156adcf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "013fdf78_e1c26090",
+        "filename": "driver/usb_mux/anx7451.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-19T23:30:09Z",
+      "side": 1,
+      "message": "It seems wrong to set the USB enable bits before we\u0027ve been told we have something plugged in.  We should probably be hanging out in safe state until the task sets us to something on plug-in.  I think a lot of the datasheet is geared towards approaches where USB_EN is only turned on when something is plugged in, based on the power-on sequence and workflow (in the datasheet, as opposed to the programming guide).\n\nIt does look like the TC should set the muxes before we apply Vbus, which should hopefully make the chip happy.",
+      "parentUuid": "1e15475a_a7b2ed60",
+      "revId": "f74cea102b02d7374f4ee8929af1b1d1156adcf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b58c89_b1630b27",
+        "filename": "driver/usb_mux/anx7451.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-19T23:30:09Z",
+      "side": 1,
+      "message": "Probably note this isn\u0027t applicable for the ANX7451, as it should keep 0 always (figure 2-2, family programming guide).  And I guess remove the enable define?",
       "revId": "f74cea102b02d7374f4ee8929af1b1d1156adcf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
