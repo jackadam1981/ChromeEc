@@ -5,6 +5,7 @@
 
 #include "common.h"
 
+#include "cbi_ec_fw_config.h"
 #include "driver/bc12/pi3usb9201_public.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/syv682x_public.h"
@@ -23,15 +24,6 @@
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
-
-/*
- * TODO(b/180434685): add FW_CONFIG support
- */
-
-static enum ec_cfg_usb_db_type ec_cfg_usb_db_type(void)
-{
-	return DB_USB3_PS8815;
-}
 
 /* USBC TCPC configuration */
 const struct tcpc_config_t tcpc_config[] = {
@@ -183,6 +175,15 @@ struct ioexpander_config_t ioex_config[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
+
+__override void config_usb_db_type(enum ec_cfg_usb_db_type db_type)
+{
+	/*
+	 * TODO(b/180434685): implement this
+	 */
+	CPRINTS("Configured USB DB type number is %d", db_type);
+}
+
 
 __override void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 {
@@ -350,6 +351,7 @@ void ppc_interrupt(enum gpio_signal signal)
 	case GPIO_USB_C1_PPC_INT_ODL:
 		switch (ec_cfg_usb_db_type()) {
 		case DB_USB_ABSENT:
+		case DB_USB_ABSENT2:
 			break;
 		case DB_USB3_PS8815:
 			nx20p348x_interrupt(USBC_PORT_C1);

@@ -10,11 +10,15 @@
 
 #define CONFIG_USB_PD_PORT_MAX_COUNT	3
 
+enum ec_cfg_usb_db_type;
+
 enum usbc_port {
 	USBC_PORT_C0 = 0,
 	USBC_PORT_C1,
 	USBC_PORT_C2,
 	USBC_PORT_COUNT
 };
+
+void config_usb_db_type(enum ec_cfg_usb_db_type);
 
 #endif /* __CROS_EC_USBC_CONFIG_H */
