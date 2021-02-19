@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac5f0cda_81713e51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-02-19T07:04:23Z",
+      "side": 1,
+      "message": "From CL:2683615, changing CONFIG_WATCHDOG_PERIOD_MS to 4000 let WDCNT_VALUE \u003d WDCNT_DELAY \u003d 128.\nIt will cause compiler error: unsigned conversion from \u0027int\u0027 to \u0027uint8_t\u0027 {aka \u0027volatile unsigned char\u0027} changes value from \u0027256\u0027 to \u00270\u0027 [-Werror\u003doverflow]\nIt can be fixed by adding the limitation (255) when assigning value to this register.",
+      "revId": "3b013ac145392325205e7c8c6a05484b48585b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
