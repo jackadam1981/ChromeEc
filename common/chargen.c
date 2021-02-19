@@ -13,6 +13,61 @@
 #include "watchdog.h"
 
 #ifndef SECTION_IS_RO
+
+#ifdef CONFIG_ZEPHYR
+#include <drivers/uart.h>
+#include <shell/shell_uart.h>
+#include <kernel.h>
+
+/* The UART device used as output. */
+static const struct device *chargen_uart_dev;
+
+/*
+ * Stop the shell process and block the interrupt to get exclusive access to
+ * the UART port.
+ */
+static void shell_suspend(void)
+{
+	const struct shell *shell;
+
+	shell = shell_backend_uart_get_ptr();
+
+	uart_irq_rx_disable(chargen_uart_dev);
+	uart_irq_tx_disable(chargen_uart_dev);
+	shell_stop(shell);
+}
+
+/* Resume the UART operation. */
+static void shell_resume(void)
+{
+	const struct shell *shell;
+
+	shell = shell_backend_uart_get_ptr();
+
+	shell_start(shell);
+	uart_irq_rx_enable(chargen_uart_dev);
+	uart_irq_tx_enable(chargen_uart_dev);
+}
+
+/* Get one character from the UART port, non blocking. */
+int uart_getc(void)
+{
+	uint8_t c;
+	int ret;
+
+	ret = uart_poll_in(chargen_uart_dev, &c);
+	if (ret < 0)
+		return ret;
+	return c;
+}
+
+/* Check if the output FIFO on the UART port is full. */
+int uart_buffer_full(void)
+{
+	return !uart_irq_tx_ready(chargen_uart_dev);
+}
+#endif  /* CONFIG_ZEPHYR */
+
 /*
  * Microseconds time to drain entire UART_TX console buffer at 115200 b/s, 10
  * bits per character.
@@ -37,7 +92,7 @@
  *
  * Hitting 'x' on the keyboard stops the generator.
  */
-static int command_chargen(int argc, char **argv)
+static int command_chargen_run(int argc, char **argv)
 {
 	int wrap_value = 0;
 	int wrap_counter = 0;
@@ -112,6 +167,30 @@ static int command_chargen(int argc, char **argv)
 	putc_('\n');
 	return EC_SUCCESS;
 }
+
+/*
+ * Wrapper for the actual chargen command to pause the shell and get exclusive
+ * use of the UART when running in Zephyr.
+ */
+static int command_chargen(int argc, char **argv)
+{
+#ifdef CONFIG_ZEPHYR
+	int ret;
+
+	chargen_uart_dev = device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+	if (chargen_uart_dev == NULL)
+		return EC_ERROR_INVAL;
+
+	shell_suspend();
+	ret = command_chargen_run(argc, argv);
+	shell_resume();
+
+	return ret;
+#else
+	return command_chargen_run(argc, argv);
+#endif
+}
+
 DECLARE_SAFE_CONSOLE_COMMAND(chargen, command_chargen,
 #if defined(CONFIG_USB_CONSOLE) || defined(CONFIG_USB_CONSOLE_STREAM)
 			     "[seq_length [num_chars [usb]]]",
