@@ -13,6 +13,15 @@
 #include "watchdog.h"
 
 #ifndef SECTION_IS_RO
+
+#ifdef CONFIG_ZEPHYR
+/* Zephyr does not use the ECOS uart buffer, putc is blocking instead. */
+int uart_buffer_full(void)
+{
+	return false;
+}
+#endif  /* CONFIG_ZEPHYR */
+
 /*
  * Microseconds time to drain entire UART_TX console buffer at 115200 b/s, 10
  * bits per character.
@@ -68,6 +77,8 @@ static int command_chargen(int argc, char **argv)
 	}
 #endif
 
+	uart_shell_stop();
+
 	c = '0';
 	prev_watchdog_time = get_time();
 	while (uart_getc() != 'x' && usb_getc() != 'x') {
@@ -90,6 +101,11 @@ static int command_chargen(int argc, char **argv)
 			prev_watchdog_time.val = current_time.val;
 		}
 
+#ifdef CONFIG_ZEPHYR
+		if (c == '0')
+			watchdog_reload();
+#endif
+
 		putc_(c++);
 
 		if (seq_number && (++seq_counter == seq_number))
@@ -110,8 +126,12 @@ static int command_chargen(int argc, char **argv)
 	}
 
 	putc_('\n');
+
+	uart_shell_start();
+
 	return EC_SUCCESS;
 }
+
 DECLARE_SAFE_CONSOLE_COMMAND(chargen, command_chargen,
 #if defined(CONFIG_USB_CONSOLE) || defined(CONFIG_USB_CONSOLE_STREAM)
 			     "[seq_length [num_chars [usb]]]",
