@@ -34,6 +34,47 @@
       "parentUuid": "c8176945_bb86ade0",
       "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50c6acc_738ab880",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-19T22:00:20Z",
+      "side": 1,
+      "message": "it used to be .chunk_sender_request_timer and I adjusted it to be PR_TIMER_CHUNK_SENDER_REQUEST.  The first two characters tells that this is in PRL and all of them are in \"enum pd_task_timer\" which is why I put the TIMER up front instead. If it would be preferred to move the TIMER to the end instead, I can do that.",
+      "parentUuid": "7f2a1cd3_2b554a8b",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "770beaf6_457d0a6a",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-19T22:00:20Z",
+      "side": 1,
+      "message": "PE_TIMER_FAST_WAKEUP was removed and rebase put it back... I will get it out before this lands.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
