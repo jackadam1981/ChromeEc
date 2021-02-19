@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "810ccb0b_eb30ac64",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2021-02-19T22:14:55Z",
+      "side": 1,
+      "message": "Doesn\u0027t this CL change of not checking to see if interrupt was caused by saturation event cause the saturation sample of -1 to be processed as an actual reading?  The original code could only get here if TCS_I2C_STATUS_RGBC_VALID is true.",
+      "range": {
+        "startLine": 430,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 25
+      },
+      "revId": "6cdb3b16c4b3fe4c0fd1a70578bac299e6f776fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
