@@ -16,6 +16,29 @@
       "message": "I\u0027d guess we want something more similar to the pd_snk_is_vbus_provided() if block currently at the end of the function, if you\u0027d like to test with that and ensure it still boots.",
       "revId": "99212cce79eb7f3de971c7e9e041f3d209152003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8b14a8_711d92be",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-19T18:16:19Z",
+      "side": 1,
+      "message": "Maybe also try moving this entire block.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 0
+      },
+      "revId": "99212cce79eb7f3de971c7e9e041f3d209152003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
