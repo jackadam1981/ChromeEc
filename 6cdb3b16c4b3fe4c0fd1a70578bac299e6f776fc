@@ -22,6 +22,30 @@
       },
       "revId": "6cdb3b16c4b3fe4c0fd1a70578bac299e6f776fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15254df7_1ec48f94",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-19T23:02:16Z",
+      "side": 1,
+      "message": "tcs3400_post_events is called by the irq_handler when:\n\n1 ((status \u0026 TCS_I2C_STATUS_RGBC_VALID) ||\nor\n2 ((status \u0026 TCS_I2C_STATUS_ALS_IRQ) \u0026\u0026 (status \u0026 TCS_I2C_STATUS_ALS_SATURATED)\n3 IS_ENABLED(CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT))\n\n1 is taken care of, as well as 3.\n\nIn case of 2:\nBefore, we would return at line 418. Which mean we could not reach tcs3400_adjust_sensor_for_saturation() when TCS_I2C_STATUS_ALS_SATURATED but data is not valid.\n\nShould we skip line 429 - 486 if AVALID is not set?\n\nAnother possibility - since AVALID will always be raised when the RBGC complete, is to remove 2) as a condition to call tcs3400_post_events, and tcs3400_adjust_sensor_for_saturation will check for ASAT as we do today.",
+      "parentUuid": "810ccb0b_eb30ac64",
+      "range": {
+        "startLine": 430,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 25
+      },
+      "revId": "6cdb3b16c4b3fe4c0fd1a70578bac299e6f776fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
