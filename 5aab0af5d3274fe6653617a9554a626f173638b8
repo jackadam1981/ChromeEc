@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81149cff_8d33550a",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-02-19T07:51:12Z",
+      "side": 1,
+      "message": "you have to use sb instead. also below.",
+      "range": {
+        "startLine": 171,
+        "startChar": 8,
+        "endLine": 171,
+        "endChar": 10
+      },
+      "revId": "5aab0af5d3274fe6653617a9554a626f173638b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
