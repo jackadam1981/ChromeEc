@@ -22,6 +22,30 @@
       },
       "revId": "6ac844dee861455aa3d3d9427a55ecbdf1c5a9cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58cdf1da_54836f25",
+        "filename": "board/twinkie/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1493132
+      },
+      "writtenOn": "2021-02-19T11:33:04Z",
+      "side": 1,
+      "message": "I pondered that too but ended up going for the two separate blocks because\n a) I thought it\u0027s more clearly separated that way and\n b) In case there\u0027s ever a third type of board it\u0027s easy to add a third block as opposed to untangling all the interleaved signals. \n\nThat\u0027s neither here nor there though and I don\u0027t have a strong opinion on it, so if you prefer a minimized variant I can make that change too.",
+      "parentUuid": "35138ea1_adb0f00a",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "6ac844dee861455aa3d3d9427a55ecbdf1c5a9cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
