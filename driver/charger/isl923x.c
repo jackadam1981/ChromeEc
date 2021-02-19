@@ -150,6 +150,12 @@ static enum ec_error_list isl9237_set_current(int chgnum, uint16_t current)
 
 static enum ec_error_list isl9237_set_voltage(int chgnum, uint16_t voltage)
 {
+	if (voltage < 5000) {
+		CPRINTS("%s port=%d volt=%d (ignored) ",
+			__func__, chgnum, voltage);
+			return 0;
+	}
+
 	return raw_write16(chgnum, ISL923X_REG_SYS_VOLTAGE_MAX, voltage);
 }
 
