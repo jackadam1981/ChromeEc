@@ -5,11 +5,26 @@
 
 #include "common.h"
 
+#include "cbi_ec_fw_config.h"
 #include "power.h"
 #include "switch.h"
 #include "throttle_ap.h"
+#include "usbc_config.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
+
+/*
+ * FW_CONFIG defaults for brya if the CBI.FW_CONFIG data is not
+ * initialized.
+ */
+const union brya_cbi_fw_config fw_config_defaults = {
+	.usb_db = DB_USB3_PS8815,
+};
+
+__override void board_cbi_init(void)
+{
+	config_usb_db_type(ec_cfg_usb_db_type());
+}
 
 /*
  * remove when we enable CONFIG_POWER_BUTTON
