@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f43f9d_18f5bbeb",
+        "filename": "board/brya/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-19T08:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d935a3_47bee355",
+      "range": {
+        "startLine": 42,
+        "startChar": 38,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "fa9bd6bd81031034d970e0862198acc53bb5b87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d099f7ef_3e1f2a7e",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac164520_791b6e49",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-19T08:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d099f7ef_3e1f2a7e",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "fa9bd6bd81031034d970e0862198acc53bb5b87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ecdb6bb_7b5bfab5",
@@ -84,6 +132,30 @@
       "writtenOn": "2021-02-12T18:53:54Z",
       "side": 1,
       "message": "Reference TODO bug here as well.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 63
+      },
+      "revId": "fa9bd6bd81031034d970e0862198acc53bb5b87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba7710c_82d1ce7d",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-19T08:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ecdb6bb_7b5bfab5",
       "range": {
         "startLine": 69,
         "startChar": 0,
