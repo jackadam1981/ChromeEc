@@ -70,6 +70,24 @@
       "parentUuid": "1383fe13_5985790e",
       "revId": "d60ffb52bd055513c36ba8ee1bdbf5f8c76aceaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99050fb9_c9b5af67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-19T22:15:43Z",
+      "side": 1,
+      "message": "Expiring means the current time is \u003e than the expire time. The active status and expire time do not change because the timer expired or even that we reported it back as being expired. This causes pd_timer_next_expiration to return 0, meaning to wake now. This will be for a timer that is no longer being used. So it does make a big difference.",
+      "parentUuid": "e58153a6_2e9c6036",
+      "revId": "d60ffb52bd055513c36ba8ee1bdbf5f8c76aceaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
