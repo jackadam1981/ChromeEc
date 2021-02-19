@@ -12,6 +12,48 @@
 #include "util.h"
 #include "watchdog.h"
 
+#include <drivers/uart.h>
+#include <kernel.h>
+
+extern k_tid_t uart_shell_thread;
+void shell_suspend(void)
+{
+	const struct device *uart_dev;
+	uart_dev = device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+	uart_irq_rx_disable(uart_dev);
+	uart_irq_tx_disable(uart_dev);
+	k_thread_suspend(uart_shell_thread);
+	printk("%s\n", __func__);
+}
+
+void shell_resume(void)
+{
+	const struct device *uart_dev;
+	uart_dev = device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+	k_thread_resume(uart_shell_thread);
+	uart_irq_rx_enable(uart_dev);
+	uart_irq_tx_enable(uart_dev);
+	printk("%s\n", __func__);
+}
+
+int uart_getc(void)
+{
+	const struct device *uart_dev;
+	uint8_t c;
+	int ret;
+	uart_dev = device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+	ret = uart_poll_in(uart_dev, &c);
+	if (ret < 0)
+		return ret;
+	return c;
+}
+
+int uart_buffer_full(void) {
+	const struct device *uart_dev;
+	uart_dev = device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+	return !uart_npcx_tx_fifo_ready(uart_dev);
+}
+
 #ifndef SECTION_IS_RO
 /*
  * Microseconds time to drain entire UART_TX console buffer at 115200 b/s, 10
@@ -19,6 +61,26 @@
  */
 #define BUFFER_DRAIN_TIME_US (1000000UL * 10 * CONFIG_UART_TX_BUF_SIZE         \
 				/ CONFIG_UART_BAUD_RATE)
+
+static int save_argc;
+static char **save_argv;
+
+static int delayed_command_chargen(int argc, char **argv);
+static void xxx_h(struct k_work *work)
+{
+	shell_suspend();
+	delayed_command_chargen(save_argc, save_argv);
+	shell_resume();
+}
+
+static int command_chargen(int argc, char **argv)
+{
+	struct k_delayed_work xxx_work;
+	save_argc = argc;
+	save_argv = argv;
+	k_delayed_work_init(&xxx_work, xxx_h);
+	k_delayed_work_submit(&xxx_work, K_NO_WAIT);
+}
 
 /*
  * Generate a stream of characters on the UART (and USB) console.
@@ -37,7 +99,7 @@
  *
  * Hitting 'x' on the keyboard stops the generator.
  */
-static int command_chargen(int argc, char **argv)
+static int delayed_command_chargen(int argc, char **argv)
 {
 	int wrap_value = 0;
 	int wrap_counter = 0;
