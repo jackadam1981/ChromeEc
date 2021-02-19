@@ -52,6 +52,24 @@
       "parentUuid": "68a5ad8a_17bc689e",
       "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "757a87cc_e67756ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-02-19T02:21:48Z",
+      "side": 1,
+      "message": "Thanks Keith for the suggestion, I already have the Kernel side change, issue is observed with that. Basically EC is discarding the USB mux host event if we try to send host event before SCI mask enabled. So the patch is required.\n\nRegarding the suggestion \"chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)\", the disconnect request we needed in case of S0ix if any device is unplugged and connected back or Connected devices swapped in S0ix.\nG3 case disconnect is not required as the virtual Mux is already in disconnect mode (wakes-up from G3).",
+      "parentUuid": "90699011_8e02c36c",
+      "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
