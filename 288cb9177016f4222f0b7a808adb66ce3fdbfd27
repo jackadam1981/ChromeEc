@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0305f52_f2bd77df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-19T04:51:57Z",
+      "side": 1,
+      "message": "Jack as you foretold this file sometimes includes the header and sometimes does not, so I need the #ifdef to avoid an error.\n\nInstead we may be able to include the header, but since this is npcx-specific and there is a clean-up bug anyway...",
+      "revId": "288cb9177016f4222f0b7a808adb66ce3fdbfd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
