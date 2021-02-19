@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1127c183_de766de6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-19T21:56:31Z",
+      "side": 1,
+      "message": "This adds a lot of pd_timer_disable calls (and _exit states for them).\nIt seems like it would save some flash to only use pd_timer_disable where TIMER_DISABLED was being used in the original code.",
+      "revId": "d60ffb52bd055513c36ba8ee1bdbf5f8c76aceaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
