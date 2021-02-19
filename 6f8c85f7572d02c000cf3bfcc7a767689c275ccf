@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a911558_6b9061ea",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-02-19T15:49:51Z",
+      "side": 1,
+      "message": "Because pd_get_requested_voltage() and pd_get_requested_current() are defined in usb_pd_protocol.c only when CONFIG_USB_PD_DUAL_ROLE is defined.",
+      "parentUuid": "3c76860b_985a47c1",
+      "range": {
+        "startLine": 878,
+        "startChar": 17,
+        "endLine": 878,
+        "endChar": 40
+      },
+      "revId": "6f8c85f7572d02c000cf3bfcc7a767689c275ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5480be53_fcbd882c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-19T07:09:51Z",
       "side": 1,
       "message": "If multiple PD ports are populated, the first gets negotiated to the max PDO required and the others remain at 5V. Once the active charger is removed, I believe this conditional will never be true as the data hasn\u0027t changed even though the selected port has changed.\n\nAlso, as an aside, ideally charge manager should keep track of the highest PDO for a given charger even if we don\u0027t negotiate.",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 888,
+        "endChar": 31
+      },
+      "revId": "6f8c85f7572d02c000cf3bfcc7a767689c275ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "427dec2a_200b153a",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-02-19T15:49:51Z",
+      "side": 1,
+      "message": "You are right. I implemented CL:2707105 which fixes that.",
+      "parentUuid": "5480be53_fcbd882c",
       "range": {
         "startLine": 885,
         "startChar": 0,
