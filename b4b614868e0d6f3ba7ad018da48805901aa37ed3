@@ -70,6 +70,46 @@
       "parentUuid": "90699011_8e02c36c",
       "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28c8519b_ef4a3c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-19T21:05:00Z",
+      "side": 1,
+      "message": "Minor update for the comments.  I would still like the experiment run with only setting the disconnect flag when the AP is in a suspended state as is a more targeted fix.",
+      "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591ec551_839a0a6d",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-19T21:05:00Z",
+      "side": 1,
+      "message": "Update this comment to note that this flag ensures the kernel mux driver is notified that the external mux went through a disconnected state when the AP was S0ix state.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 75
+      },
+      "revId": "b4b614868e0d6f3ba7ad018da48805901aa37ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
