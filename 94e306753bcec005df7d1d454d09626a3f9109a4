@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd40b74_f775d666",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-02-19T13:30:21Z",
+      "side": 1,
+      "message": "Caveh, I added you as you\u0027ve been active in util/ somewhat recently and I couldn\u0027t find a current maintainer of iteflash specifically.\n\nThis CL is fixing an issue that\u0027s breaking the build tests we do for EC on qa.coreboot.org (which builds with a newer libftdi than we do) and this is the least intrusive solution to provide compatibility with old and new versions.",
+      "revId": "94e306753bcec005df7d1d454d09626a3f9109a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
