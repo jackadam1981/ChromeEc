@@ -19,9 +19,11 @@
 #include "watchdog.h"
 
 /* WDCNT value for watchdog period */
-#define WDCNT_VALUE   ((CONFIG_WATCHDOG_PERIOD_MS*INT_32K_CLOCK) / (1024*1000))
+#define WDCNT_VALUE	((CONFIG_WATCHDOG_PERIOD_MS*INT_32K_CLOCK) / (1024*1000))
 /* Delay time for warning timer to print watchdog info through UART */
-#define WDCNT_DELAY   WDCNT_VALUE
+#define WDCNT_DELAY	WDCNT_VALUE
+/* Limit WDCNT to 0xFF beacuse its a 8-bit register */
+#define WDCNT_MAX_COUNT	0xFF
 
 void watchdog_init_warning_timer(void)
 {
@@ -181,7 +183,7 @@ int watchdog_init(void)
 	 * 3. Set RST to upload TWDT0 & WDCNT
 	 */
 	/* Set WDCNT --> WDCNT=0 will generate watchdog reset */
-	NPCX_WDCNT = WDCNT_VALUE + WDCNT_DELAY;
+	NPCX_WDCNT = MIN(WDCNT_MAX_COUNT, WDCNT_VALUE + WDCNT_DELAY);
 
 	/* Disable interrupt */
 	interrupt_disable();
