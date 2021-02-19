@@ -121,6 +121,24 @@
       "parentUuid": "60bcee79_3cc62f38",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b37af22_51b76dd9",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-19T09:38:19Z",
+      "side": 1,
+      "message": "Hmmm... this CL doesn\u0027t work. Seems like kernel does not expect to see multiple usage ranges.\n\nShrink the range to 152 is much simpler though.",
+      "parentUuid": "1941a801_647aa121",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
