@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce8a181_53c57c69",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 5933,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-19T19:19:11Z",
+      "side": 1,
+      "message": "nit: technically, we should never allow ourselves to send BUSY for enter or exit mode, but we can cover that in another CL or just assume the called function should know to never return BUSY for those",
+      "revId": "3dcd6cb616e670de47508756b2c7fe07bb38c584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
