@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3bc4009_8940a47a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-02-19T07:45:57Z",
+      "side": 1,
+      "message": "Added link to the commit.\nAlthough the commit is a workaround to fix the suspension issue, but I think it is unnecessary to revert it.",
+      "parentUuid": "2c9eb771_426b56b7",
+      "revId": "f7b84b99bd07316820ba0b5935d7b607ee775eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b24e37d6_e6bbf132",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-18T23:59:46Z",
       "side": 1,
       "message": "prefer positive logic: \"When set, wakeup\".",
+      "revId": "f7b84b99bd07316820ba0b5935d7b607ee775eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93801d04_38a6cb85",
+        "filename": "include/body_detection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-02-19T07:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b24e37d6_e6bbf132",
       "revId": "f7b84b99bd07316820ba0b5935d7b607ee775eda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
