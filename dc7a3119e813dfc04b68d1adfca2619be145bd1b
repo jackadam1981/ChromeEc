@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ec24fb_9373fd2d",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-02-19T06:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a49da14b_867c5f4f",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 17
+      },
+      "revId": "dc7a3119e813dfc04b68d1adfca2619be145bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c07776fc_9263a407",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-19T05:56:44Z",
       "side": 1,
       "message": "since this is accessed as a flag, let\u0027s mark it as a bool or unsigned char?",
+      "range": {
+        "startLine": 168,
+        "startChar": 9,
+        "endLine": 168,
+        "endChar": 12
+      },
+      "revId": "dc7a3119e813dfc04b68d1adfca2619be145bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e6199f8_c1dd2698",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-02-19T06:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c07776fc_9263a407",
       "range": {
         "startLine": 168,
         "startChar": 9,
