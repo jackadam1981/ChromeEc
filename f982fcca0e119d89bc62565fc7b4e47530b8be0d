@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d6ca41_4f8b1e3c",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-02-19T19:23:02Z",
+      "side": 1,
+      "message": "Actually not really, regarding the ARMv7 Cache, this register address space is likely strongly ordered, so it has not much to do with it.\n\nIt\u0027s a peculiarity of the Cortex-M7 core, the TRM says:\n\"External write faults generate an asynchronous exception in the processor.\"\nhttps://developer.arm.com/documentation/ddi0489/b/programmers-model/exceptions/exception-handling\nwhich is what is happening here.",
+      "parentUuid": "1268e660_7b3804d9",
+      "range": {
+        "startLine": 421,
+        "startChar": 16,
+        "endLine": 421,
+        "endChar": 35
+      },
+      "revId": "f982fcca0e119d89bc62565fc7b4e47530b8be0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1e4f469_b937c4f3",
