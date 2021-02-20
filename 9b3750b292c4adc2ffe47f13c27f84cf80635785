@@ -110,6 +110,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "13169aec_101b1f51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-02-20T17:54:57Z",
+      "side": 1,
+      "message": "I think this overall change is something we should go ahead with. The main reason is to increase the accuracy of all TCPMv2 timers from the current 5 ms error to better than 1 ms. Saving 1500 bytes of flash is a secondary benefit that I did not expect.\n\nBut I\u0027d feel much more confident that there are no unexpected changes to behavior if the changes for each timer were purely mechanical (find and replace). I think this might be possible, if the base framework is adjusted to automatically disable the timer after expiration.",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "770beaf6_457d0a6a",
         "filename": "include/usb_pd_timer.h",
         "patchSetId": 1
