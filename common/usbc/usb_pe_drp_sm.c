@@ -1082,9 +1082,6 @@ void pe_invalidate_explicit_contract(int port)
 
 void pe_notify_event(int port, uint32_t event_mask)
 {
-	/* Events may only be set from the PD task */
-	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
-
 	atomic_or(&pe[port].events, event_mask);
 
 	/* Notify the host that new events are available to read */

@@ -3726,12 +3726,33 @@ static void pd_chipset_reset(void)
 {
 	int i;
 
+	if (!IS_ENABLED(CONFIG_USB_PE_SM))
+		return;
+
 	if (IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
-		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 			/* Exit mode. PD can enter mode again after reset */
 			dpm_set_mode_exit_request(i);
 		}
 	}
+
+	/*
+	 * Re-set events for SOP and SOP' discovery complete so the kernel knows
+	 * to consume discovery information for them.
+	 */
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		enum tcpm_transmit_type tx;
+
+		for (tx = TCPC_TX_SOP; tx <= TCPC_TX_SOP_PRIME; tx++) {
+			if (pd_get_identity_discovery(i, tx) != PD_DISC_NEEDED
+			    && pd_get_svids_discovery(i, tx) != PD_DISC_NEEDED
+			    && pd_get_modes_discovery(i, tx) != PD_DISC_NEEDED)
+				pe_notify_event(i, tx == TCPC_TX_SOP ?
+					PD_STATUS_EVENT_SOP_DISC_DONE :
+					PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
+		}
+	}
+
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, pd_chipset_reset, HOOK_PRIO_DEFAULT);
 
