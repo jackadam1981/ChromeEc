@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t `pd_shared_alert_task` be added to tasklist?",
       "revId": "f7f18e20defa7aa0428078adcc62f6a1654d5b25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ad674e_017445f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-20T00:21:05Z",
+      "side": 1,
+      "message": "yes, but it\u0027s done in a later patch. the reason is that as soon as you\nconfigure a task, \"#ifdef HAS_TASK_...\" checks will succeed\nand turn on a bunch of code that doesn\u0027t compile yet at this patch\nlevel.\n\nunfortunately, PD, charging, etc. are fairly interdependent so\ni\u0027ve found it non trivial or even impractical to cleanly split\nthese patches by subsystems.",
+      "parentUuid": "7333b765_1a952948",
+      "revId": "f7f18e20defa7aa0428078adcc62f6a1654d5b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
