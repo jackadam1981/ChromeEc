@@ -78,11 +78,17 @@ int usb_retimer_fw_update_get_result(void)
 	return result;
 }
 
+static void deferred_pd_suspend(void)
+{
+	pd_set_suspend(cur_port, 1);
+}
+DECLARE_DEFERRED(deferred_pd_suspend);
+
 void usb_retimer_fw_update_process_op_cb(int port)
 {
 	switch (last_op) {
 	case USB_RETIMER_FW_UPDATE_SUSPEND_PD:
-		pd_set_suspend(port, 1);
+		hook_call_deferred(&deferred_pd_suspend_data, 1);
 		break;
 	case USB_RETIMER_FW_UPDATE_RESUME_PD:
 		pd_set_suspend(port, 0);
