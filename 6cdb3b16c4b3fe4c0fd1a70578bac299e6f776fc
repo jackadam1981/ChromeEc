@@ -46,6 +46,30 @@
       },
       "revId": "6cdb3b16c4b3fe4c0fd1a70578bac299e6f776fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a9ef55_cccd81c8",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2021-02-20T00:05:31Z",
+      "side": 1,
+      "message": "I unfortunately don\u0027t have a DUT with a TCS3400 to experiment with.  \n\nDo you know whether TCS_I2C_STATUS_RGBC_VALID is set when using irq and ((status \u0026 TCS_I2C_STATUS_ALS_IRQ) \u0026\u0026 (status \u0026 TCS_I2C_STATUS_ALS_SATURATED)) is true?  If the sample data is actually set to 0xffff (TCS_SATURATION_LEVEL), the logic in this routine checking sample against TCS_SATURATION_LEVEL will deal with it correctly and assure a saturation level reading does not get sent outside of the driver, so I don\u0027t think any changes would be necessary.",
+      "parentUuid": "15254df7_1ec48f94",
+      "range": {
+        "startLine": 430,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 25
+      },
+      "revId": "6cdb3b16c4b3fe4c0fd1a70578bac299e6f776fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
