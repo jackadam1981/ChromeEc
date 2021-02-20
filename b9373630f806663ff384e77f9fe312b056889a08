@@ -33,6 +33,24 @@
       "message": "please provide .cfet_mask and .cfet_off_val members.",
       "revId": "b9373630f806663ff384e77f9fe312b056889a08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c24c57_96849e27",
+        "filename": "board/storo/battery.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-02-20T02:24:35Z",
+      "side": 1,
+      "message": "hi Aseda： i have not got the register spec, Can I submit the next CL and then update this variable？",
+      "parentUuid": "b45f72a4_9376f465",
+      "revId": "b9373630f806663ff384e77f9fe312b056889a08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
