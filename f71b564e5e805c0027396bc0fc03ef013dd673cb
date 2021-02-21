@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5a53c72_72340f00",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-21T00:12:37Z",
+      "side": 1,
+      "message": "I have changed this to svdm_header. \u0027custom\u0027 is how that 3rd field in the VDO() macro is defined.",
+      "parentUuid": "c9c854b1_9c1ad914",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7586601_0b14a12b",
         "filename": "common/usbc/usb_pd_dp_ufp.c",
         "patchSetId": 3
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-16T23:39:23Z",
       "side": 1,
       "message": "Yup, SVDM only.  And Attention will always be a REQ",
+      "range": {
+        "startLine": 79,
+        "startChar": 29,
+        "endLine": 79,
+        "endChar": 41
+      },
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a299f5f0_896ba86d",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-21T00:12:37Z",
+      "side": 1,
+      "message": "I have removed the header definition. I didn\u0027t intend to keep this comment.",
+      "parentUuid": "b7586601_0b14a12b",
       "range": {
         "startLine": 79,
         "startChar": 29,
@@ -77,6 +119,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "747bbbe2_8452bbf7",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-21T00:12:37Z",
+      "side": 1,
+      "message": "This function is called when an hpd_event is on the queue. The hpd to DP Attention converter is only enabled when DP mode has been entered, so this check should never go wrong. In addition, the queue is designed to drop hpd_irq events anyway, as only up to 2 need to be queued.",
+      "parentUuid": "abeef198_3b5739dd",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3868912a_1af019c5",
         "filename": "common/usbc/usb_pd_dp_ufp.c",
         "patchSetId": 3
@@ -88,6 +148,24 @@
       "writtenOn": "2021-02-17T01:27:56Z",
       "side": 1,
       "message": "Use the constant that you defined in usb_pd.h. Or use that to define vdm[], and use sizeof(vdm) / sizeof(*vdm) here.",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ad1d19_dddb0567",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-21T00:12:37Z",
+      "side": 1,
+      "message": "I have fixed this up now. I don\u0027t think I made it clear enough in my 1st message about this CL. But, I was looking for feedback about the overall approach to using the DPM module for sending DPM Attention messages. However, I have cleaned this CL up now and addressed comments.",
+      "parentUuid": "3868912a_1af019c5",
       "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cbb5c1a_9cb1bd86",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-21T00:12:37Z",
+      "side": 1,
+      "message": "It\u0027s called asynchronously from the hpd-\u003edp_attention converter whenever a new hpd event is added to the queue. I wouldn\u0027t expect it to be called as a host command. It will be called from outside of the PD task though.",
+      "parentUuid": "a356255c_9874c29d",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4fa8304_f1643ebb",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 3
@@ -122,6 +218,24 @@
       "writtenOn": "2021-02-17T01:27:56Z",
       "side": 1,
       "message": "Access to these structures will need to be protected.",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b644f8_53488381",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-21T00:12:37Z",
+      "side": 1,
+      "message": "I am protecting access to these by making sure there isn\u0027t a pending Attention message prior to saving the VDOs that are passed in.",
+      "parentUuid": "e4fa8304_f1643ebb",
       "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +259,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4129644_908d2a43",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-21T00:12:37Z",
+      "side": 1,
+      "message": "It can only fail if vdm_cnt \u003c 1 or \u003e 7. This function can only get called to send a pending VDM Attention message which has to have either 0 or 1 VDOs + a VDM header. I probably though should make sure the VDM count passed in the function above is not 0.\n\nI do check the return value here, even though it will never fail given that I only a valid length attention message is accepted above, so this function can\u0027t fail, unless the function gets subsequently changed with some additional checking.",
+      "parentUuid": "60e58330_2099b125",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f9d1565_99ba3090",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -156,6 +288,24 @@
       "writtenOn": "2021-02-16T23:39:23Z",
       "side": 1,
       "message": "Is this defined in this CL?",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed53e88_9464fc7f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2398,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-21T00:12:37Z",
+      "side": 1,
+      "message": "No, it wasn\u0027t. I have replaced this function, which was in honeybuns/usb_pd_policy.c with functions to set/get the object position.",
+      "parentUuid": "1f9d1565_99ba3090",
       "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
