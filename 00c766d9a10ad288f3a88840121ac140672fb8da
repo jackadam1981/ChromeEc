@@ -22,6 +22,30 @@
       },
       "revId": "00c766d9a10ad288f3a88840121ac140672fb8da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e8bbd7_708650ae",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-02-22T09:20:18Z",
+      "side": 0,
+      "message": "Done. By the way, I think [1] will undef the FPU config. It seems like the FPU will always show on the config compare script. For the watchdog, CONFIG_WATCHDOG always enables in config.h. The redefined macro will cause a build error so I add a guard in config.h. I think they are similar so they can be discussed together?\n\n[1]https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/include/config.h#1889",
+      "parentUuid": "f38e7ff5_51ba8208",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 22
+      },
+      "revId": "00c766d9a10ad288f3a88840121ac140672fb8da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

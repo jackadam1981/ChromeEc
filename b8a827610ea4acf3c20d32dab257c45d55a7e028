@@ -33,6 +33,42 @@
       "message": "Also please split out the two defconfig changes into a separate commit, so the (common) feature is separated from its (device-specific) enablement\n",
       "revId": "b8a827610ea4acf3c20d32dab257c45d55a7e028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a0ad5c_0561c8a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-02-22T09:20:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b5f6a6e5_e50b5d17",
+      "revId": "b8a827610ea4acf3c20d32dab257c45d55a7e028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2499747f_1aae5231",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-02-22T09:20:18Z",
+      "side": 1,
+      "message": "Done. Please reference to CL:2706666.",
+      "parentUuid": "5fc038f7_7e2cb1cb",
+      "revId": "b8a827610ea4acf3c20d32dab257c45d55a7e028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
