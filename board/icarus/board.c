@@ -398,9 +398,17 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 #endif /* !VARIANT_KUKUI_NO_SENSORS */
 
+/* Vconn control for integrated ITE TCPC */
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
+	/* Vconn control is only for port 0 */
+	if (port)
+		return;
 
+	if (cc_pin == USBPD_CC_PIN_1)
+		gpio_set_level(GPIO_EN_USB_C0_CC1_VCONN, !!enabled);
+	else
+		gpio_set_level(GPIO_EN_USB_C0_CC2_VCONN, !!enabled);
 }
 
 /* Called on AP S5 -> S3 transition */
