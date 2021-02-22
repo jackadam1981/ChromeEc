@@ -649,7 +649,7 @@ void __idle(void)
 
 			/* Wait for interrupt: goes into deep sleep. */
 			asm("dsb");
-			asm("wfi");
+			cpu_enter_suspend_mode();
 			asm("isb");
 			asm("nop");
 
@@ -692,7 +692,7 @@ void __idle(void)
 
 			idle_sleep_cnt++;
 
-			asm("wfi");
+			cpu_enter_suspend_mode();
 
 		}
 
