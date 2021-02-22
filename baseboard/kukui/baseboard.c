@@ -32,6 +32,7 @@ void board_config_pre_init(void)
 	 * Ch4: USART1_TX / Ch5: USART1_RX (1000)
 	 * Ch6: SPI2_RX / Ch7: SPI2_TX (0011)
 	 */
+<<<<<<< HEAD   (b1abb5 munna: munna board with STM32L431 ec)
 	STM32_DMA_CSELR(STM32_DMAC_CH4) = (8 << 12) | (8 << 16) | (3 << 20) |
 					  (3 << 24);
 
@@ -53,6 +54,10 @@ void board_config_pre_init(void)
 
 	STM32_DMA_CSELR(STM32_DMAC_CH4) = (1 << 12) | (1 << 16);
 	STM32_DMA_CSELR(STM32_DMAC_CH14) = (2 << 20) | (2 << 24);
+=======
+	STM32_DMA_CSELR(STM32_DMAC_CH4) = (8 << 12) | (8 << 16) |
+					  (3 << 20) | (3 << 24);
+>>>>>>> CHANGE (0a32e6 baseboard/kukui: add support for EC variant)
 #endif
 }
 
@@ -126,6 +131,7 @@ int board_get_version(void)
 		}
 	}
 
+#ifdef VARIANT_KUKUI_EC_STM32F098
 	/*
 	 * For devices without pogo, Disable ADC module after we detect the
 	 * board version, since this is the only thing ADC module needs to do
@@ -134,15 +140,18 @@ int board_get_version(void)
 	if (CONFIG_DEDICATED_CHARGE_PORT_COUNT == 0 &&
 			version != BOARD_VERSION_UNKNOWN)
 		adc_disable();
+#endif
 
 	return version;
 }
 
 __override void board_set_stm32_spi_pin_speed(void)
 {
+#ifdef VARIANT_KUKUI_EC_STM32F098
 	/* Set SPI PA15,PB3/4/5/13/14/15 pins to high speed */
 	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xc0000000;
 	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xfc000fc0;
+#endif
 }
 
 int board_allow_i2c_passthru(int port)
