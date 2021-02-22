@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314ccb66_9c0cc3f2",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-22T22:42:23Z",
+      "side": 1,
+      "message": "This and line 130 can be replaced with \"flash_option_bytes_locked()\", right?",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98d3083_44c8a3a2",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-22T22:42:23Z",
+      "side": 1,
+      "message": "Can we rename this function to something like \"lock_flash_bank\", since \"lock\" is a bit generic? You can do it in a followup CL to avoid bundling too many changes into this CL.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 5
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7055cb6_78ba5ae3",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-22T22:42:23Z",
+      "side": 1,
+      "message": "There is only one value programmed here? Should it also include STM32_FLASH_OPTCR(1) ?",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539c54d9_64a01cab",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-22T22:42:23Z",
+      "side": 1,
+      "message": "formatting nit:\n\n  \treturn !!(STM32_FLASH_CR(0) \u0026 FLASH_CR_LOCK) \u0026\u0026\n\t       !!(STM32_FLASH_CR(1) \u0026 FLASH_CR_LOCK)\n\nIf you use http://shortn/_nXFEBB5s4Q you can have CLion automatically use clang-format: https://www.jetbrains.com/help/clion/clangformat-as-alternative-formatter.html, since we have a .clang-format file for EC: https://chromium.googlesource.com/chromiumos/platform/ec/+/c9351b7163a997ea91f2ddf2fbc93f4363bc67e2/.clang-format. Other editors usually have clang-format integration as well.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 18
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6213810d_55834568",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-22T22:42:23Z",
+      "side": 1,
+      "message": "would be nice to replace with disable_flash_control_register(), but that calls ignore_bus_fault, and i\u0027m not sure if that nests correctly. Might need to create a helper function that just does this part and both disable_flash_control_register() and this can call it.",
+      "range": {
+        "startLine": 482,
+        "startChar": 2,
+        "endLine": 483,
+        "endChar": 35
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5a05696_7cabef47",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-22T22:42:23Z",
+      "side": 1,
+      "message": "Same as comment above (line 482).",
+      "range": {
+        "startLine": 487,
+        "startChar": 1,
+        "endLine": 487,
+        "endChar": 37
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

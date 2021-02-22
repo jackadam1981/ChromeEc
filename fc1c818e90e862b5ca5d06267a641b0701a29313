@@ -375,6 +375,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69679f30_67433569",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-22T22:42:23Z",
+      "side": 1,
+      "message": "Hmm, this may be worth another look. I see RM0433 4.9.7 shows: Address offset: 0x018 or 0x118, which suggests that there are two registers.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/c9351b7163a997ea91f2ddf2fbc93f4363bc67e2/chip/stm32/registers-stm32h7.h#724 and https://chromium.googlesource.com/chromiumos/platform/ec/+/c9351b7163a997ea91f2ddf2fbc93f4363bc67e2/chip/stm32/registers-stm32h7.h#671 looks like it would expand to those offsets for STM32_FLASH_OPTCR(0) and STM32_FLASH_OPTCR(1).",
+      "parentUuid": "c6a39fc5_5ae691bc",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 56
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c01f97e_9095e377",
         "filename": "chip/stm32/flash-stm32h7.h",
         "patchSetId": 12
