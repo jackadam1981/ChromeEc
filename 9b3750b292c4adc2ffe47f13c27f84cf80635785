@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e76334ad_2b755122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-22T16:49:13Z",
+      "side": 1,
+      "message": "In general, I\u0027m hoping we can be more defensive about our timer coding since we\u0027ve hit issues a couple of times previously with checking expiration on timers which were not yet set.  We can see whether it will be easier to do that defensive coding from the timer helper itself or the calling code.\n\nFor confidence, I was wondering if we\u0027d be able to run PD compliance on voxel with the stack before submitting?  Ideally, it would have the same or fewer failures than the current ToT",
+      "parentUuid": "5f6a34aa_8529949a",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c8f88cd_7d41c3ee",
         "filename": "common/usbc/usb_pd_timer.c",
         "patchSetId": 1
