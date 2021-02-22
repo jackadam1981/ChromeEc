@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "856458c0_6bc874d2",
+        "filename": "driver/ioexpander/tca64xxa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-22T19:50:31Z",
+      "side": 1,
+      "message": "Sorry, you\u0027ll want to use system_jumped_late() to cover the case where EFS boards use this driver.",
+      "range": {
+        "startLine": 97,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "285f11874c6e771bffba173ce978a81b8b1096ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
