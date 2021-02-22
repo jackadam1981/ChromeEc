@@ -16,6 +16,24 @@
       "message": "Is the plan to remove the high priority event setting and switch to setting based on our timers at the end of this stack?",
       "revId": "c48116cc1f801fc0625f592e55e35817451ff07f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "128c9e27_883c4097",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-22T17:50:28Z",
+      "side": 1,
+      "message": "Already queued up\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2707908",
+      "parentUuid": "4021f799_69d186b8",
+      "revId": "c48116cc1f801fc0625f592e55e35817451ff07f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
