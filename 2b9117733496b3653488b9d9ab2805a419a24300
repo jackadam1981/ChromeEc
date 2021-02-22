@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "972f5c26_e3b623aa",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-22T10:53:15Z",
+      "side": 1,
+      "message": "OK will do.",
+      "parentUuid": "a40d59a7_d903699e",
+      "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c55d972_baae9f43",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-02-18T23:52:05Z",
       "side": 1,
       "message": "now is used once, no need to specify a local variable.",
+      "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8068ae65_f3805ec0",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-22T10:53:15Z",
+      "side": 1,
+      "message": "OK will do.",
+      "parentUuid": "6c55d972_baae9f43",
       "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d342fc9_cf89854c",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-22T10:53:15Z",
+      "side": 1,
+      "message": "Yes, will do.",
+      "parentUuid": "b8189b58_9315f65f",
+      "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a45f5ed_00b409b1",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "194be758_86d3c090",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-22T10:53:15Z",
+      "side": 1,
+      "message": "Make sense, will do.",
+      "parentUuid": "0a45f5ed_00b409b1",
+      "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5db5ac1_ebe3cdec",
@@ -99,6 +171,24 @@
       "writtenOn": "2021-02-18T23:52:05Z",
       "side": 1,
       "message": "given ts is always \"now\", to be symetric with icm_set_sensor_ts, call __hw_clock_source_read here.",
+      "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9364d3a9_28f3e6f5",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-02-22T10:53:15Z",
+      "side": 1,
+      "message": "That is not the case.\nWhen getting data from FIFO, we use icm426xx_check_sensor_stabilized that gets the timestamp from the interrupt. And there is a difference that can lead to accepting an invalid sample. Even if the difference should be small usually.",
+      "parentUuid": "f5db5ac1_ebe3cdec",
       "revId": "2b9117733496b3653488b9d9ab2805a419a24300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
