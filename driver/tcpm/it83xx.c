@@ -410,6 +410,14 @@ static void it83xx_init(enum usbpd_port port, int role)
 					((CONFIG_PD_RETRY_COUNT + 1) << 4);
 	/* Disable Rx decode */
 	it83xx_tcpm_set_rx_enable(port, 0);
+#ifdef CONFIG_USB_PD_TCPMV1
+	/*
+	 * If explicit contract is set in bbram when EC boot up, then TCPMv1
+	 * set soft reset as first state instead of unattached.SNK, so we need
+	 * to enable BMC PHY for tx module.
+	 */
+	USBPD_ENABLE_BMC_PHY(port);
+#endif
 	/* W/C status */
 	IT83XX_USBPD_ISR(port) = 0xff;
 	/* enable cc, select cc1 and Rd. */
@@ -767,7 +775,7 @@ void set_pd_sleep_mask(int port)
 	bool prevent_deep_sleep = false;
 
 	/*
-	 * Set SLEEP_MASK_USB_PD for deep sleep mode in TCPMv2:
+	 * Set SLEEP_MASK_USB_PD for deep sleep mode:
 	 * 1.Enable deep sleep mode, when all ITE ports are in Unattach.SRC/SNK
 	 *   state (HOOK_DISCONNECT called) and other ports aren't pd_capable().
 	 * 2.Disable deep sleep mode, when one of ITE port is in Attach.SRC/SNK
@@ -797,11 +805,11 @@ void set_pd_sleep_mask(int port)
 		enable_sleep(SLEEP_MASK_USB_PD);
 }
 
-#ifdef CONFIG_USB_PD_TCPMV2
 static void it83xx_tcpm_hook_connect(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 
+#ifdef CONFIG_USB_PD_TCPMV2
 	/*
 	 * There are five cases that hook_connect() be called by TCPMv2:
 	 * 1)AttachWait.SNK -> Attached.SNK: disable detect interrupt.
@@ -817,17 +825,16 @@ static void it83xx_tcpm_hook_connect(void)
 	 * SRC_DISCONNECT and SNK_DISCONNECT in TCPMv1. Every time we go to
 	 * Try.SRC/TryWait.SNK state, the plug in interrupt will be enabled and
 	 * fire for 3), 4), 5) cases, then set correctly for the SRC detect plug
-	 * out or the SNK disable detect, so TCPMv1 needn't hook connection.
+	 * out or the SNK disable detect, so TCPMv1 needn't this.
 	 */
 	it83xx_tcpm_switch_plug_out_type(port);
-
+#endif
 	/* Enable PD PHY Tx and Rx module since type-c has connected. */
 	USBPD_ENABLE_BMC_PHY(port);
 	set_pd_sleep_mask(port);
 }
 
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, it83xx_tcpm_hook_connect, HOOK_PRIO_DEFAULT);
-#endif
 
 static void it83xx_tcpm_hook_disconnect(void)
 {
