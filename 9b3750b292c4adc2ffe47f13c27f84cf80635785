@@ -197,6 +197,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3370c425_0ab81cde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-22T20:06:05Z",
+      "side": 1,
+      "message": "The refactor in some sections would be more difficult to verify than the sections that are not exactly the same mechanical conversion. I am opting to not making this level of change, unless it is a requirement for this CL chain.",
+      "parentUuid": "b0820f78_1bdc20d7",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c8f88cd_7d41c3ee",
