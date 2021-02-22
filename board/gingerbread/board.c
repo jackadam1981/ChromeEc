@@ -218,7 +218,7 @@ void board_reset_pd_mcu(void)
 
 
 /* Power Delivery and charging functions */
-void board_tcpc_init(void)
+void board_enable_usbc_interrupts(void)
 {
 	board_reset_pd_mcu();
 
@@ -232,7 +232,21 @@ void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
 
 }
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
+DECLARE_HOOK(HOOK_INIT, board_enable_usbc_interrupts, HOOK_PRIO_INIT_I2C + 2);
+
+/* Power Delivery and charging functions */
+void board_disable_usbc_interrupts(void)
+{
+	/* Enable PPC interrupts. */
+	gpio_disable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
+
+	/* Enable TCPC interrupts. */
+	gpio_disable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
+
+	/* Enable HPD interrupt */
+	gpio_disable_interrupt(GPIO_DDI_MST_IN_HPD);
+
+}
 
 enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
 {

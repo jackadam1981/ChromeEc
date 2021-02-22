@@ -97,6 +97,11 @@ static void board_uf_manage_vbus_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&board_uf_manage_vbus_data, 0);
 }
+
+static void board_pwr_btn_interrupt(enum gpio_signal signal)
+{
+	baseboard_power_button_evt(gpio_get_level(signal));
+}
 #endif /* SECTION_IS_RW */
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -268,10 +273,8 @@ void board_reset_pd_mcu(void)
 	msleep(PS8805_FW_INIT_DELAY_MS);
 }
 
-void board_tcpc_init(void)
+void board_enable_usbc_interrupts(void)
 {
-	board_reset_pd_mcu();
-
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USBC_DP_PPC_INT_ODL);
@@ -280,6 +283,27 @@ void board_tcpc_init(void)
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
 }
+
+void board_disable_usbc_interrupts(void)
+{
+	/* Enable PPC interrupts. */
+	gpio_disable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
+	gpio_disable_interrupt(GPIO_USBC_DP_PPC_INT_ODL);
+	/* Enable HPD interrupt */
+	gpio_disable_interrupt(GPIO_DDI_MST_IN_HPD);
+	/* Enable TCPC interrupts. */
+	gpio_disable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
+	/* Enable VBUS control interrupt for C2 */
+	gpio_disable_interrupt(GPIO_USBC_UF_MUX_VBUS_EN);
+}
+
+void board_tcpc_init(void)
+{
+	board_reset_pd_mcu();
+
+	/* Enable board usbc interrupts */
+	board_enable_usbc_interrupts();
+}
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
 enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
@@ -287,12 +311,11 @@ enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
 	return pd_dual_role_init[port];
 }
 
-static int board_ppc_disable_dead_battery(void)
+static int board_ppc_disable_dead_battery(int port)
 {
 	int reg = SN5S330_FUNC_SET4;
 	int regval;
 	int rv;
-	int port = USB_PD_PORT_HOST;
 
 	/* Get Func 4 register to read CC_EN bit */
 	rv = i2c_read8(ppc_chips[port].i2c_port,
@@ -316,7 +339,7 @@ static int board_ppc_disable_dead_battery(void)
 	return rv;
 }
 
-static void board_ppc_force_detach(void)
+static void board_ppc_force_detach(int port)
 {
 	int i;
 
@@ -330,11 +353,19 @@ static void board_ppc_force_detach(void)
 	 * core/i2c interface will respond.
 	 */
 	for (i = 0; i < 10; i++) {
-		if (board_ppc_disable_dead_battery() == EC_SUCCESS)
+		if (board_ppc_disable_dead_battery(port) ==
+		    EC_SUCCESS) {
+			msleep(50);
 			break;
+		}
 	}
 }
-DECLARE_HOOK(HOOK_INIT, board_ppc_force_detach, HOOK_PRIO_INIT_I2C + 1);
+
+static void board_init_remove_ppc_rd(void)
+{
+	board_ppc_force_detach(USB_PD_PORT_HOST);
+}
+DECLARE_HOOK(HOOK_INIT, board_init_remove_ppc_rd, HOOK_PRIO_INIT_I2C + 1);
 
 static void board_config_usbc_uf_ppc(void)
 {
