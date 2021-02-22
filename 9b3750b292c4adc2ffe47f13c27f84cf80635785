@@ -143,6 +143,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c8f88cd_7d41c3ee",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-22T16:44:50Z",
+      "side": 1,
+      "message": "nit: Disabled check unnecessary since we check that in is_active as well?",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff6ffbd_8558244b",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-22T16:44:50Z",
+      "side": 1,
+      "message": "Probably specify the criteria which we should use to decide if timers belong here.  Ex. critical timing checks.  It seems we\u0027re missing things like the PR swap wait timer and our SOP\u0027 discovery spacing, but they\u0027re not particularly critical within a 5ms window",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "770beaf6_457d0a6a",
@@ -162,6 +196,23 @@
         "endLine": 47,
         "endChar": 0
       },
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba20139_7aeff567",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-22T16:44:50Z",
+      "side": 1,
+      "message": "Name NO_TIMEOUT and EXPIRE_NOW as returns to check here",
       "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
