@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1f41466_e8af546d",
+        "filename": "baseboard/asurada/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-22T10:01:28Z",
+      "side": 1,
+      "message": "(comment from alvis)\ncurrently this config is for hayato only, please move the #ifdef to outside of the function:\n\n#ifdef BOARD_HAYATO\nvoid board_usb_mux_init(void)\n{\n  ...\n}\nDECLARE_HOOK(...);\n#endif",
+      "revId": "523360ff7ed88afebb22eca64ca58c1fb7095fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d2efd7d_1d38d615",
         "filename": "baseboard/asurada/baseboard.c",
         "patchSetId": 3
