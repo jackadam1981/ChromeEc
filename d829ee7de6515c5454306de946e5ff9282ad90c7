@@ -33,6 +33,24 @@
       "message": "Li: Will this affect TBT tunneling?",
       "revId": "d829ee7de6515c5454306de946e5ff9282ad90c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f569c75_55128968",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-22T23:46:01Z",
+      "side": 1,
+      "message": "I set the values with reference to UFG setting by Windows team. I have asked them to confirm if this change could affect TBT tunneling, not get response yet. Currently my set up is occupied and couldn\u0027t test those. I think it should be OK. BTW, how come with thois change? Are those values expected by testing?",
+      "parentUuid": "525a7e5e_fe6f075d",
+      "revId": "d829ee7de6515c5454306de946e5ff9282ad90c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
