@@ -181,6 +181,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0820f78_1bdc20d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-22T18:43:21Z",
+      "side": 1,
+      "message": "I think I can make it so most of the active to inactive on expire transitions can be automatically performed by the usb_task on wakeup but it will take quite a bit of change to make that happen and we will still not have the 1:1 mechanical change that was desired.  I prefer not to do this, at least not on this initial CL chain.",
+      "parentUuid": "e7c9b84c_6b8e1820",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c8f88cd_7d41c3ee",
         "filename": "common/usbc/usb_pd_timer.c",
         "patchSetId": 1
