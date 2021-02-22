@@ -399,6 +399,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bae3ad01_67962dec",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-22T22:56:50Z",
+      "side": 1,
+      "message": "I\u0027m willing to suggest that there are two reg locations (ig for symmetry), but I did manually confirm that they seem to be tied to the same register on the backend.\n\nFlash playgournd: crrev.com/c/2704966",
+      "parentUuid": "69679f30_67433569",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 56
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c01f97e_9095e377",
         "filename": "chip/stm32/flash-stm32h7.h",
         "patchSetId": 12
