@@ -226,6 +226,7 @@ enum adc_channel {
 
 extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
+void baseboard_power_button_evt(int level);
 
 int baseboard_usbc_init(int port);
 int baseboard_ppc_enable_sink_path(int port);
