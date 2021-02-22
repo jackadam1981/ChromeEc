@@ -16,6 +16,29 @@
       "message": "Trying to avoid having to do this to debug: https://crrev.com/c/2702313",
       "revId": "6286b560d4492db24374752312bcbe958a6451d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7675fe65_dee1d6bd",
+        "filename": "core/cortex-m/debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-22T20:55:57Z",
+      "side": 1,
+      "message": "need stdbool.h?\n\n(yes, I know it\u0027s in debug.h, but better to have what you\u0027re using right here)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 4
+      },
+      "revId": "6286b560d4492db24374752312bcbe958a6451d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
