@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7c9b84c_6b8e1820",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-22T17:50:03Z",
+      "side": 1,
+      "message": "I think it is safest to do as the CL has it and makes sure to keep PD Timer managed timers in a known state.\n\nI agree that putting one or more platforms through the paces makes a lot of sense before merging this onto ToT",
+      "parentUuid": "e76334ad_2b755122",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c8f88cd_7d41c3ee",
         "filename": "common/usbc/usb_pd_timer.c",
         "patchSetId": 1
@@ -174,6 +192,24 @@
       "writtenOn": "2021-02-22T16:44:50Z",
       "side": 1,
       "message": "nit: Disabled check unnecessary since we check that in is_active as well?",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1e4372_d9a01586",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-22T17:50:03Z",
+      "side": 1,
+      "message": "Good catch. I changed to eliminate inactive at the last minute and forgot to remove the old condition.",
+      "parentUuid": "5c8f88cd_7d41c3ee",
       "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -191,6 +227,24 @@
       "writtenOn": "2021-02-22T16:44:50Z",
       "side": 1,
       "message": "Probably specify the criteria which we should use to decide if timers belong here.  Ex. critical timing checks.  It seems we\u0027re missing things like the PR swap wait timer and our SOP\u0027 discovery spacing, but they\u0027re not particularly critical within a 5ms window",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53d9ffe6_1c9e027c",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-22T17:50:03Z",
+      "side": 1,
+      "message": "They don\u0027t exist here because they don\u0027t have well defined times that they start, like the _entry of the state, and do not have well defined times they stop, like the _exit of the state. The examples you mentioned have helper routines that are called from different states and the need for the timer stops at some other location. If the path is interrupted then the timer would remain active. I chose to limit the PD Timers to just those that had a clear _entry, usage, _exit pattern.  It does not mean these exceptions could not be adjusted to work in this framework but they would be highly susceptible to errors and I didn\u0027t find the risk worth taking.",
+      "parentUuid": "bff6ffbd_8558244b",
       "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -231,6 +285,24 @@
       "writtenOn": "2021-02-22T16:44:50Z",
       "side": 1,
       "message": "Name NO_TIMEOUT and EXPIRE_NOW as returns to check here",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "012294f5_3dffbf51",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-22T17:50:03Z",
+      "side": 1,
+      "message": "NO_TIMEOUT and EXPIRE_NOW were to remove magic numbers from the code. NO_TIMEOUT is -1, so that is mentioned on line 297. EXPIRE_NOW is 0 and is included with all of the other valid timeout values in line 296.",
+      "parentUuid": "7ba20139_7aeff567",
       "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
