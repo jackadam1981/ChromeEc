@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f6a34aa_8529949a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-22T16:41:55Z",
+      "side": 1,
+      "message": "I was not expecting the flash savings either.\n\nI am concerned about changing the timer state meanings. The old code has three expected states; active (timer\u003e0 \u0026\u0026 timer!\u003dDISABLED), inactive (timer\u003d\u003d0) and disabled (timer\u003d\u003dDISABLED). That is why I coded it as I did.  If I make active become inactive because they expire, it could confuse the expected behavior.  I had thought about moving the expired code into one spot and performing this transition and at the last minute convinced myself that I was going to hit a lot of issues due to changing the state meanings.  I will double check to see if I can get it to run this way instead.\n\nThe concept change that I made makes sure that timers are not left in a non-DISABLED state when we are leaving a state machine state and that timer instance is meaningless outside of that state.  This means there is no reason to make a timer DISABLED on entry, as it is already DISABLED.\n\nAn unexpected behavior of leaving the timers as they were but using the active timers as triggers for earlier task waking includes a state that had a timeout timer running but the state accomplished its goal before the timeout and leaves. Although it only hits once, a future early task wake will happen if that timeout timer is allowed to remain active.",
+      "parentUuid": "13169aec_101b1f51",
+      "revId": "9b3750b292c4adc2ffe47f13c27f84cf80635785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "770beaf6_457d0a6a",
