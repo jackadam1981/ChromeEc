@@ -357,7 +357,9 @@ static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 	 * If we are sourcing power or sinking but not charging, then VBUS must
 	 * be 5V. If we are charging, then read VBUS ADC.
 	 */
+	CPRINTS("C%d: Power role %d", port, current_role);
 	if (current_role == USB_PD_PORT_POWER_SINK_NOT_CHARGING) {
+		CPRINTS("Sink not charging");
 		voltage_mv = 5000;
 	} else {
 #if defined(CONFIG_USB_PD_VBUS_MEASURE_CHARGER)
@@ -365,7 +367,10 @@ static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 		 * Try to get VBUS from the charger. If that fails, default to 0
 		 * mV.
 		 */
-		if (charger_get_vbus_voltage(port, &voltage_mv))
+		enum ec_error_list ret = charger_get_vbus_voltage(
+				port, &voltage_mv);
+		CPRINTS("C%d: Ret = %d, voltage = %d", port, ret, voltage_mv);
+		if (ret)
 			voltage_mv = 0;
 #elif defined(CONFIG_USB_PD_VBUS_MEASURE_TCPC)
 		voltage_mv = tcpc_get_vbus_voltage(port);

@@ -41,6 +41,7 @@
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 static int learn_mode;
 
@@ -265,9 +266,11 @@ static enum ec_error_list isl9241_get_vbus_voltage(int chgnum, int port,
 	rv = isl9241_read(chgnum, ISL9241_REG_CONTROL3, &ctl3_val);
 	if (rv)
 		goto error;
+	CPRINTS("CONTROL3 0X%x", ctl3_val);
 
 	/* Enable ADC */
 	if (!(ctl3_val & ISL9241_CONTROL3_ENABLE_ADC)) {
+		CPRINTS("Enabling ADC");
 		rv = isl9241_write(chgnum, ISL9241_REG_CONTROL3,
 				   ctl3_val | ISL9241_CONTROL3_ENABLE_ADC);
 		if (rv)
@@ -278,6 +281,7 @@ static enum ec_error_list isl9241_get_vbus_voltage(int chgnum, int port,
 	rv = isl9241_read(chgnum, ISL9241_REG_VIN_ADC_RESULTS, &adc_val);
 	if (rv)
 		goto error_restore_ctl3;
+	CPRINTS("ADC value 0x%x", adc_val);
 
 	/*
 	 * Adjust adc_val
@@ -289,6 +293,7 @@ static enum ec_error_list isl9241_get_vbus_voltage(int chgnum, int port,
 	adc_val >>= ISL9241_VIN_ADC_BIT_OFFSET;
 	adc_val *= ISL9241_VIN_ADC_STEP_MV;
 	*voltage = adc_val;
+	CPRINTS("Voltage %d", *voltage);
 
 error_restore_ctl3:
 	/* Restore Control3 value */

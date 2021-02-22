@@ -4924,6 +4924,7 @@ static void pe_bist_tx_entry(int port)
 		pe[port].bist_cont_mode_timer = TIMER_DISABLED;
 	} else {
 		/* Ignore unsupported BIST messages. */
+		CPRINTS("C%d: Unsupported BIST mode %d", port, mode);
 		pe_set_ready_state(port);
 		return;
 	}
@@ -4932,7 +4933,7 @@ static void pe_bist_tx_entry(int port)
 static void pe_bist_tx_run(int port)
 {
 	if (get_time().val > pe[port].bist_cont_mode_timer) {
-
+		CPRINTS("C%d: Continuous mode timeout", port);
 		if (pe[port].power_role == PD_ROLE_SOURCE)
 			set_state_pe(port, PE_SRC_TRANSITION_TO_DEFAULT);
 		else
@@ -4943,8 +4944,10 @@ static void pe_bist_tx_run(int port)
 		 * GoodCRC Messages in response to received Messages will
 		 * be sent.
 		 */
-		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED))
+		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+			CPRINTS("C%d: Message received", port);
 			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+		}
 	}
 }
 
