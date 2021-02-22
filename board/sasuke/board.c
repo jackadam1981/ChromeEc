@@ -35,6 +35,7 @@
 #include "switch.h"
 #include "system.h"
 #include "task.h"
+#include "tcpm/tcpci.h"
 #include "temp_sensor.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
@@ -253,6 +254,7 @@ void board_hibernate(void)
 	 * Both charger ICs need to be put into their "low power mode" before
 	 * entering the Z-state.
 	 */
+	tcpc_write(0, TCPC_REG_POWER_STATUS_MASK , 0xff);
 	if (board_get_charger_chip_count() > 1)
 		raa489000_hibernate(1, true);
 	raa489000_hibernate(0, true);
