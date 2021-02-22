@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8520596_0063c5f8",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-02-22T05:56:19Z",
+      "side": 1,
+      "message": "i change tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SNK_CTRL_HIGH); to pd_snk_is_vbus_provided(), it can still boots. but the typeC0 port will keep cycle initial with typeC0 port nothing connected.",
+      "parentUuid": "0d7f2761_d1409a80",
+      "revId": "99212cce79eb7f3de971c7e9e041f3d209152003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb8b14a8_711d92be",
         "filename": "driver/tcpm/raa489000.c",
         "patchSetId": 1
