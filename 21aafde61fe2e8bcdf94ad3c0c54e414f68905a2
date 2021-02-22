@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ffa6246_fc5bb83a",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-22T21:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "941b6923_cdfb9fc4",
+      "revId": "21aafde61fe2e8bcdf94ad3c0c54e414f68905a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e68afcf5_9c31eae2",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-22T19:49:49Z",
       "side": 1,
       "message": "drop this word",
+      "range": {
+        "startLine": 870,
+        "startChar": 23,
+        "endLine": 870,
+        "endChar": 29
+      },
+      "revId": "21aafde61fe2e8bcdf94ad3c0c54e414f68905a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "294a9fdb_442ab210",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-22T21:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e68afcf5_9c31eae2",
       "range": {
         "startLine": 870,
         "startChar": 23,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c83dbc86_2ef22c48",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-22T21:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c611db7e_e34dcfbf",
+      "range": {
+        "startLine": 873,
+        "startChar": 61,
+        "endLine": 873,
+        "endChar": 72
+      },
+      "revId": "21aafde61fe2e8bcdf94ad3c0c54e414f68905a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "621c75b4_9d709fea",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-02-22T19:49:49Z",
       "side": 1,
       "message": "This should follow the pattern used by others",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 22
+      },
+      "revId": "21aafde61fe2e8bcdf94ad3c0c54e414f68905a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b67335_10a8f335",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-22T21:45:40Z",
+      "side": 1,
+      "message": "Actually it cannot...as you mention Zephyr has a CONFIG_WATCHDOG and undefing it would be nasty.",
+      "parentUuid": "621c75b4_9d709fea",
       "range": {
         "startLine": 66,
         "startChar": 7,
