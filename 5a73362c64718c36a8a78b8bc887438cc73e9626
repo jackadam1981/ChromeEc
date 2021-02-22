@@ -16,6 +16,24 @@
       "message": "Ayushee - can you update the bug with the test results?",
       "revId": "5a73362c64718c36a8a78b8bc887438cc73e9626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7196c154_86fc30be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-02-22T18:30:02Z",
+      "side": 1,
+      "message": "The smoke test passed and we didn\u0027t see any regressions with S0ix. And the patch has same results as crrev/c/2703002.\n\nSo either this CL or crrev/c/2703002 should be good",
+      "parentUuid": "86c02186_49202749",
+      "revId": "5a73362c64718c36a8a78b8bc887438cc73e9626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
