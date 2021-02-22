@@ -46,6 +46,30 @@
       },
       "revId": "d974dcd20768fde3514bcc7efd1e26a39115c4b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f959b53_89ee361b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-02-22T22:37:34Z",
+      "side": 1,
+      "message": "When zmake pulled in one of the EC modules, that module wanted a bunch of EC symbols to be defined in Chameleon\u0027s Kconfig, e.g. CROS_EC_RO and CROS_EC_RW.",
+      "parentUuid": "08b21a62_e470824c",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "d974dcd20768fde3514bcc7efd1e26a39115c4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
