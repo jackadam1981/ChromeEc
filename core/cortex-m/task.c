@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
+#include "debug.h"
 #include "link_defs.h"
 #include "panic.h"
 #include "task.h"
@@ -105,7 +106,8 @@ void __idle(void)
 		 * Wait for the next irq event.  This stops the CPU clock
 		 * (sleep / deep sleep, depending on chip config).
 		 */
-		asm("wfi");
+		if (!debugger_is_connected())
+			asm("wfi");
 #endif
 	}
 }
