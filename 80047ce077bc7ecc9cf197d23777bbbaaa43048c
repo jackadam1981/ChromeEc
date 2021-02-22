@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a77836b8_d49084af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2021-02-22T20:07:53Z",
+      "side": 1,
+      "message": "Fix issues in suspending PD task during retimer scan?",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "80047ce077bc7ecc9cf197d23777bbbaaa43048c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33415a92_fac014d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2021-02-22T20:07:53Z",
+      "side": 1,
+      "message": "nit: The highlighted text (including the new line) can be replaced with this text.\n\n\"This is found to be work only when the PD task does not enter low power mode immediately after this flag is set. In cases, where the PD task enters low power mode, PD is not suspended and so AP could not scan the retimer successfully.\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 40,
+        "endLine": 20,
+        "endChar": 71
+      },
+      "revId": "80047ce077bc7ecc9cf197d23777bbbaaa43048c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1d511c7_eec163ee",
         "filename": "common/usbc/usb_retimer_fw_update.c",
         "patchSetId": 1
