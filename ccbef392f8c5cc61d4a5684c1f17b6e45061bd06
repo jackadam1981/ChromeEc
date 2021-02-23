@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbd49f1_2d3f420e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3036,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-23T23:00:13Z",
+      "side": 1,
+      "message": "I used the comments and basic timer names that originally existed in the code before these changes. I am concerned that the already large CL chain will get out of hand if I continue to add more to it.",
+      "parentUuid": "c4fb73c4_6cff2c17",
+      "range": {
+        "startLine": 3036,
+        "startChar": 29,
+        "endLine": 3036,
+        "endChar": 45
+      },
+      "revId": "ccbef392f8c5cc61d4a5684c1f17b6e45061bd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46e1d800_62355ae0",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-02-23T17:58:09Z",
       "side": 1,
       "message": "For this and vconn off, it seems like we could us disabled in the entry, and a disabled check here.  But I\u0027ll check other CLs for a better example of the need for \"inactive\"",
+      "revId": "ccbef392f8c5cc61d4a5684c1f17b6e45061bd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec8546e6_ea728f07",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6363,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-23T23:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46e1d800_62355ae0",
       "revId": "ccbef392f8c5cc61d4a5684c1f17b6e45061bd06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
