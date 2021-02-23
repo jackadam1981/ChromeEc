@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f009905_3d81774b",
+        "filename": "baseboard/brya/cbi_ec_fw_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T21:19:53Z",
+      "side": 1,
+      "message": "The factory should just skip programming the FW_CONFIG completely for early boards.  Then you could delete this entire check.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "f6ec7a2ea622ffc249e46b91575b73c06fcc4c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc38cce_ba1e0eac",
+        "filename": "baseboard/brya/cbi_ec_fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T21:19:53Z",
+      "side": 1,
+      "message": "See comment in init_fw_config().  Hopefully we can eliminate the DB_USB_ABSENT2 dummy value with proper instructions provided to the factory.\n\nIf you\u0027re going to consume a second value here, might as well make 0 an invalid value.\nenum ec_cfg_usb_db_type {\n\tDB_USB_INVALID \u003d 0,\n\tDB_USB_ABSENT \u003d 1,\n\tDB_USB3_PS8815 \u003d 2,\n}",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "f6ec7a2ea622ffc249e46b91575b73c06fcc4c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
