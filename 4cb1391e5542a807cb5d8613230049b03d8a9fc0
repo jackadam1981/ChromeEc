@@ -34,6 +34,24 @@
       "parentUuid": "a632456b_eb7824ce",
       "revId": "4cb1391e5542a807cb5d8613230049b03d8a9fc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c53f2e9b_8e05683b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-23T17:55:18Z",
+      "side": 1,
+      "message": "Well you said that you will get a build error with the CLs in the current order. We need to maintain bisectability.\n\nIf not, then it is fine as it is.",
+      "parentUuid": "ec0a30a6_8eea724e",
+      "revId": "4cb1391e5542a807cb5d8613230049b03d8a9fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
