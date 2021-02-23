@@ -69,6 +69,24 @@
       "parentUuid": "8f569c75_55128968",
       "revId": "d829ee7de6515c5454306de946e5ff9282ad90c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "208bb454_418e7cf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-23T00:38:03Z",
+      "side": 1,
+      "message": "Got the response:\nFor Product Type UFP, change it to Undefined will be a problem. USB4 need UFP VDO; but if send UFP VDO, the it will fail compliance because Undefined requires not to send any UFP/AMA/VPD VDO.\nUSB bit change is fine.",
+      "parentUuid": "9de72050_2754263a",
+      "revId": "d829ee7de6515c5454306de946e5ff9282ad90c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
