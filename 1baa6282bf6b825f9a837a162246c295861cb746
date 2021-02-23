@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e5682d_a71b248a",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-02-23T19:54:56Z",
+      "side": 1,
+      "message": "nit: How about GT7288_I2C_ADDR_FLAGS? ADDR can also mean a register address.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "1baa6282bf6b825f9a837a162246c295861cb746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
