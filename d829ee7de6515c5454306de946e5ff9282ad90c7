@@ -87,6 +87,24 @@
       "parentUuid": "9de72050_2754263a",
       "revId": "d829ee7de6515c5454306de946e5ff9282ad90c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c0d20f_4e8af09d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-23T23:48:21Z",
+      "side": 1,
+      "message": "OOB discussion with Li: PD 3.0 Table 6-30 specifies that we need to have Product Type as PDUSB Hub or PDUSB Peripheral to use the UFP VDO (we\u0027d pick peripheral), and we need the UFP VDO to do TBT tunneling. So we should leave the product type as peripheral and change the VIF.",
+      "parentUuid": "208bb454_418e7cf2",
+      "revId": "d829ee7de6515c5454306de946e5ff9282ad90c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
