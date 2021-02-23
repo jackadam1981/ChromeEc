@@ -46,6 +46,30 @@
       },
       "revId": "6db6f1a16bf9d2e42ba90fd02ef61b6e29a42074",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f5b2a4b_93cb6b22",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-23T06:45:36Z",
+      "side": 0,
+      "message": "for KSO pins, the reset default is HI-Z (ODR) which is what we want.\n\ni agree with your point though - we should keep these consistent with\nother boards.",
+      "parentUuid": "8e395665_89de24c7",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "6db6f1a16bf9d2e42ba90fd02ef61b6e29a42074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
