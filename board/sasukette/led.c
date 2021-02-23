@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "led_common.h"
 #include "led_onoff_states.h"
+#include "pwm.h"
 
 #define LED_OFF_LVL	1
 #define LED_ON_LVL	0
@@ -61,12 +62,12 @@ __override void led_set_color_power(enum ec_led_colors color)
 	}
 
 	if (color == EC_LED_COLOR_BLUE) {
-		gpio_set_level(GPIO_BAT_LED_RED_L, LED_OFF_LVL);
-		gpio_set_level(GPIO_BAT_LED_GREEN_L, LED_OFF_LVL);
-		gpio_set_level(GPIO_PWR_LED_BLUE_L, LED_ON_LVL);
+		pwm_set_duty(PWM_CH_LED_RED, 0);
+		pwm_set_duty(PWM_CH_LED_GREEN, 0);
+		pwm_set_duty(PWM_CH_LED_BLUE, 22);
 	} else {
 		/* LED_OFF and unsupported colors */
-		gpio_set_level(GPIO_PWR_LED_BLUE_L, LED_OFF_LVL);
+		pwm_set_duty(PWM_CH_LED_BLUE, 0);
 	}
 }
 
@@ -77,55 +78,56 @@ __override void led_set_color_battery(enum ec_led_colors color)
 		!led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED)) {
 		return;
 	}
-
-	/* Battery leds must be turn off when blue led is on
-	 * because the led is 3-in-1 led.
-	 */
-	if (!gpio_get_level(GPIO_PWR_LED_BLUE_L)) {
-		gpio_set_level(GPIO_BAT_LED_RED_L, LED_OFF_LVL); /*red*/
-		gpio_set_level(GPIO_BAT_LED_GREEN_L, LED_OFF_LVL); /*green*/
-		return;
+	if (pwm_get_duty(PWM_CH_LED_BLUE) != 0) {
+		pwm_set_duty(PWM_CH_LED_RED, 0);
+		pwm_set_duty(PWM_CH_LED_GREEN, 0);
 	}
 
 	switch (color) {
 	case EC_LED_COLOR_GREEN:
-		gpio_set_level(GPIO_BAT_LED_RED_L, LED_OFF_LVL); /*red*/
-		gpio_set_level(GPIO_BAT_LED_GREEN_L, LED_ON_LVL); /*green*/
+		pwm_set_duty(PWM_CH_LED_RED, 0);
+		pwm_set_duty(PWM_CH_LED_GREEN, 12);
 		break;
 	case EC_LED_COLOR_RED:
-		gpio_set_level(GPIO_BAT_LED_RED_L, LED_ON_LVL); /*red*/
-		gpio_set_level(GPIO_BAT_LED_GREEN_L, LED_OFF_LVL); /*green*/
+		pwm_set_duty(PWM_CH_LED_RED, 10);
+		pwm_set_duty(PWM_CH_LED_GREEN, 0);
 		break;
 	default: /* LED_OFF and other unsupported colors */
-		gpio_set_level(GPIO_BAT_LED_RED_L, LED_OFF_LVL); /*red*/
-		gpio_set_level(GPIO_BAT_LED_GREEN_L, LED_OFF_LVL); /*green*/
+		pwm_set_duty(PWM_CH_LED_RED, 0);
+		pwm_set_duty(PWM_CH_LED_GREEN, 0);
 		break;
 	}
 }
 
+
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	if (led_id == EC_LED_ID_BATTERY_LED) {
-		brightness_range[EC_LED_COLOR_GREEN] = 1;
-		brightness_range[EC_LED_COLOR_RED] = 1;
+		brightness_range[EC_LED_COLOR_GREEN] = 12;
+		brightness_range[EC_LED_COLOR_RED] = 10;
 	} else if (led_id == EC_LED_ID_POWER_LED) {
-		brightness_range[EC_LED_COLOR_BLUE] = 1;
+		brightness_range[EC_LED_COLOR_BLUE] = 22;
 	}
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
-	if (led_id == EC_LED_ID_BATTERY_LED) {
-		gpio_set_level(GPIO_PWR_LED_BLUE_L, LED_OFF_LVL);
-		gpio_set_level(GPIO_BAT_LED_GREEN_L,
-			!brightness[EC_LED_COLOR_GREEN]);
-		gpio_set_level(GPIO_BAT_LED_RED_L,
-			!brightness[EC_LED_COLOR_RED]);
-	} else if (led_id == EC_LED_ID_POWER_LED) {
-		gpio_set_level(GPIO_PWR_LED_BLUE_L,
-			!brightness[EC_LED_COLOR_BLUE]);
-		gpio_set_level(GPIO_BAT_LED_GREEN_L, LED_OFF_LVL);
-		gpio_set_level(GPIO_BAT_LED_RED_L, LED_OFF_LVL);
+	if (brightness[EC_LED_COLOR_RED]) {
+		pwm_set_duty(PWM_CH_LED_RED, brightness[EC_LED_COLOR_RED]);
+		pwm_set_duty(PWM_CH_LED_GREEN, 0);
+		pwm_set_duty(PWM_CH_LED_BLUE, 0);
+	} else if (brightness[EC_LED_COLOR_GREEN]) {
+		pwm_set_duty(PWM_CH_LED_RED, 0);
+		pwm_set_duty(PWM_CH_LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
+		pwm_set_duty(PWM_CH_LED_BLUE, 0);
+	} else if (brightness[EC_LED_COLOR_BLUE]) {
+		pwm_set_duty(PWM_CH_LED_RED, 0);
+		pwm_set_duty(PWM_CH_LED_GREEN, 0);
+		pwm_set_duty(PWM_CH_LED_BLUE, brightness[EC_LED_COLOR_BLUE]);
+	} else {
+		pwm_set_duty(PWM_CH_LED_RED, 0);
+		pwm_set_duty(PWM_CH_LED_GREEN, 0);
+		pwm_set_duty(PWM_CH_LED_BLUE, 0);
 	}
 
 	return EC_SUCCESS;
