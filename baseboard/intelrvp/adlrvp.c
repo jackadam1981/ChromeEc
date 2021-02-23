@@ -107,20 +107,23 @@ struct usb_mux usbc3_tcss_usb_mux = {
 #endif
 
 /* USB muxes Configuration */
-const struct usb_mux usb_muxes[] = {
+/* Default USB muxes Configuration.
+ * Connector side usbmux Configuration of BBRetimer.
+ */
+struct usb_mux usb_muxes[] = {
 	[TYPE_C_PORT_0] = {
 		.usb_port = TYPE_C_PORT_0,
 		.next_mux = &usbc0_tcss_usb_mux,
 		.driver = &bb_usb_retimer,
 		.i2c_port = I2C_PORT_TYPEC_0,
-		.i2c_addr_flags = I2C_PORT0_BB_RETIMER_ADDR,
+		.i2c_addr_flags = I2C_PORT0_BB_RETIMER1_ADDR,
 	},
 	[TYPE_C_PORT_1] = {
 		.usb_port = TYPE_C_PORT_1,
 		.next_mux = &usbc1_tcss_usb_mux,
 		.driver = &bb_usb_retimer,
 		.i2c_port = I2C_PORT_TYPEC_1,
-		.i2c_addr_flags = I2C_PORT1_BB_RETIMER_ADDR,
+		.i2c_addr_flags = I2C_PORT1_BB_RETIMER1_ADDR,
 	},
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
@@ -128,7 +131,7 @@ const struct usb_mux usb_muxes[] = {
 		.next_mux = &usbc2_tcss_usb_mux,
 		.driver = &bb_usb_retimer,
 		.i2c_port = I2C_PORT_TYPEC_2,
-		.i2c_addr_flags = I2C_PORT2_BB_RETIMER_ADDR,
+		.i2c_addr_flags = I2C_PORT2_BB_RETIMER1_ADDR,
 	},
 #endif
 #if defined(HAS_TASK_PD_C3)
@@ -137,7 +140,7 @@ const struct usb_mux usb_muxes[] = {
 		.next_mux = &usbc3_tcss_usb_mux,
 		.driver = &bb_usb_retimer,
 		.i2c_port = I2C_PORT_TYPEC_3,
-		.i2c_addr_flags = I2C_PORT3_BB_RETIMER_ADDR,
+		.i2c_addr_flags = I2C_PORT3_BB_RETIMER1_ADDR,
 	},
 #endif
 };
@@ -171,6 +174,22 @@ const struct pca9675_ioexpander pca9675_iox[] = {
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(pca9675_iox) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+/* USB Mux Configuration for Soc side BBRetimers */
+struct usb_mux soc_side_bb_retimer0_usb_mux = {
+	.usb_port = TYPE_C_PORT_0,
+	.next_mux = &usbc0_tcss_usb_mux,
+	.driver = &bb_usb_retimer,
+	.i2c_port = I2C_PORT_TYPEC_0,
+	.i2c_addr_flags = I2C_PORT0_BB_RETIMER2_ADDR,
+};
+struct usb_mux soc_side_bb_retimer1_usb_mux = {
+	.usb_port = TYPE_C_PORT_1,
+	.next_mux = &usbc1_tcss_usb_mux,
+	.driver = &bb_usb_retimer,
+	.i2c_port = I2C_PORT_TYPEC_1,
+	.i2c_addr_flags = I2C_PORT1_BB_RETIMER2_ADDR,
+};
 
 /* Charger Chips */
 const struct charger_config_t chg_chips[] = {
@@ -258,9 +277,37 @@ static void enable_h1_irq(void)
 }
 DECLARE_HOOK(HOOK_INIT, enable_h1_irq, HOOK_PRIO_LAST);
 
+static void configure_retimer_usbmux(void)
+{
+	switch (board_get_version() & 0xFF) {
+	case ADLP_DDR5_RVP_SKU_BOARD_ID:
+		/* DDR5 has dual retimers for port0 & port1.
+		 * Change the default usb mux config on runtime to support
+		 * dual retimer topology.
+		 */
+		usb_muxes[TYPE_C_PORT_0].next_mux
+			= &soc_side_bb_retimer0_usb_mux;
+		usb_muxes[TYPE_C_PORT_1].next_mux
+			= &soc_side_bb_retimer1_usb_mux;
+		break;
+	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
+		/* LP5 T4 sku has no retimer for port2. */
+		usb_muxes[TYPE_C_PORT_2].next_mux = NULL;
+		break;
+	default:
+		/* No need to change default usb_mux config */
+		break;
+	}
+}
+
 static void tcpc_aic_init(void)
 {
 	int i;
+
+	/* Change the default retimer usb mux config at runtime
+	 * based on board type.
+	 */
+	configure_retimer_usbmux();
 
 	/* Initialize the IOEXPANDER on TCPC-AIC */
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
