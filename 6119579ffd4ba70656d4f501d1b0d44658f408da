@@ -193,6 +193,24 @@
       "parentUuid": "ca142d72_c71452cd",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf67296_4e3af042",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-02-23T19:00:46Z",
+      "side": 1,
+      "message": "Internal keyboards don\u0027t actually use HID, they either use the AT keyboard protocol (on x86) or I2C (on ARM) instead. Sadly neither of those have a way to report what keys are supported, so in those cases we can only determine the presence of number pads etc. by looking up the board name from VPD.",
+      "parentUuid": "4703619b_b57fecdc",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
