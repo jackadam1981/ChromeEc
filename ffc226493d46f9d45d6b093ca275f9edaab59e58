@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563184e0_6a227994",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-02-23T08:31:19Z",
+      "side": 1,
+      "message": "What if we have failure at getting the flag?\n - Should we turn on the BMC PHY by default? \n\nWhat happen if the board doesn\u0027t have a battery connected?\n - If the board had a PD contract, and we reset the EC.",
+      "range": {
+        "startLine": 770,
+        "startChar": 7,
+        "endLine": 770,
+        "endChar": 30
+      },
+      "revId": "ffc226493d46f9d45d6b093ca275f9edaab59e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
