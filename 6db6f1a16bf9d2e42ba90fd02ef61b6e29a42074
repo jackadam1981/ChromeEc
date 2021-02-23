@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e06cb883_957f2d4b",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-23T04:02:33Z",
+      "side": 0,
+      "message": "Looks like all boards in EC codebase using NPCX rely on configuring the KSI/KSO pins as ALTERNATE() even though it is the default. Not sure if there is some background to it. Keith might be able to provide better input on it.",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "6db6f1a16bf9d2e42ba90fd02ef61b6e29a42074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
