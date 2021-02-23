@@ -22,6 +22,30 @@
       },
       "revId": "6db6f1a16bf9d2e42ba90fd02ef61b6e29a42074",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e395665_89de24c7",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-23T04:48:18Z",
+      "side": 0,
+      "message": "one reason i can think of is setting up the internal pullups.\n\nfor KSI, it\u0027s done here by default:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/ec/chip/npcx/keyboard_raw.c;l\u003d37",
+      "parentUuid": "e06cb883_957f2d4b",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "6db6f1a16bf9d2e42ba90fd02ef61b6e29a42074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
