@@ -175,6 +175,24 @@
       "parentUuid": "a5cdf100_ac86a29c",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4703619b_b57fecdc",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-23T13:50:27Z",
+      "side": 1,
+      "message": "by the way, how does internal keyboard on non-tablet devices handle this?",
+      "parentUuid": "ca142d72_c71452cd",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
