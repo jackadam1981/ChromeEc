@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb5fd688_cfd48497",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T18:34:35Z",
+      "side": 1,
+      "message": "Nit - change to match pd_shared_alert_task.\n\n    if ((evt \u0026 PD_PROCESS_INTERRUPT) \u003d\u003d 0)\n        continue;",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e1c9d4_364d9915",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T18:34:35Z",
+      "side": 1,
+      "message": "Nit - name \"sources_mask\" to improve readability.",
+      "range": {
+        "startLine": 135,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 20
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab874473_b77776d1",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T18:34:35Z",
+      "side": 1,
+      "message": "Nit - change to \"port_mask\" to match pd_interrupt_handler_task().",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 7
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "155d4f4c_ce07d771",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T18:34:35Z",
+      "side": 1,
+      "message": "Are there any scenarios in which a bit would be set in source_m, but board_is_usb_pd_port_present() returns false?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 0
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c4075bb_e88d09b2",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T18:34:35Z",
+      "side": 1,
+      "message": "I think you can eliminate the 2nd for loop below by servicing the interrupt here.\n\n   interrupts_still_pending \u003d false;\n   for () {\n       if (have_alerts \u0026 am) \n           if (pd_port_enabled(port))\n               service_one_port(port);\n               interrupts_still_pending \u003d true;\n   }\n   if (!interrupts_still_pending)\n       break.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f5e256_e4d3f7d1",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T18:34:35Z",
+      "side": 1,
+      "message": "Nit - \"nothing more to do\".",
+      "range": {
+        "startLine": 193,
+        "startChar": 7,
+        "endLine": 193,
+        "endChar": 33
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
