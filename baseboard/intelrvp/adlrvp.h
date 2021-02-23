@@ -55,14 +55,25 @@
 
 /* Config BB retimer */
 #define CONFIG_USBC_RETIMER_INTEL_BB
-#define I2C_PORT0_BB_RETIMER_ADDR	0x56
-#define I2C_PORT1_BB_RETIMER_ADDR	0x57
+/* Connector side BB retimers */
+#define I2C_PORT0_BB_RETIMER1_ADDR	0x56
+#define I2C_PORT1_BB_RETIMER1_ADDR	0x57
 #if defined(HAS_TASK_PD_C2)
-#define I2C_PORT2_BB_RETIMER_ADDR	0x58
+#define I2C_PORT2_BB_RETIMER1_ADDR	0x58
 #endif
 #if defined(HAS_TASK_PD_C3)
-#define I2C_PORT3_BB_RETIMER_ADDR	0x59
+#define I2C_PORT3_BB_RETIMER1_ADDR	0x59
 #endif
+/* SOC side BB retimers */
+#define I2C_PORT0_BB_RETIMER2_ADDR	0x54
+#define I2C_PORT1_BB_RETIMER2_ADDR	0x55
+
+/* Configure USB Mux at board level */
+#undef CONFIG_USB_MUX_RUNTIME_CONFIG
+#define CONFIG_USB_MUX_RUNTIME_CONFIG
+
+/* DDR5 Board id is 0x12 */
+#define ADLP_DDR5_RVP_SKU_BOARD_ID	0x12
 
 /* Enable VCONN */
 #define CONFIG_USBC_VCONN
