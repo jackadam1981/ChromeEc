@@ -46,6 +46,30 @@
       },
       "revId": "f00b569f81ef09e83dcb044607be158e2be4f32d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68dad9cb_815c3e00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-23T17:39:50Z",
+      "side": 1,
+      "message": "Please see zephyr/README.md\n\nCan we just add this info for now?...each CL that changes how the project works should update the README. If people get in the habit of that it will keep things more in order.",
+      "parentUuid": "0a02cea9_85e21ef8",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "f00b569f81ef09e83dcb044607be158e2be4f32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
