@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "977aa76e_16f20876",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T21:07:50Z",
+      "side": 1,
+      "message": "Why isn\u0027t VCONN swap enabled? This automatically provided by the SYV682 PPC.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "66b58b7158f15c3b3d0b88a665d4d3b959dbee48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
