@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "568313e8_c5a63f24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T21:02:04Z",
+      "side": 1,
+      "message": "Just 1 nit and 1 out of scope request.",
+      "revId": "bb81506c3b001579322b0046a469662e4bc9551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a165df6c_cb0bac77",
+        "filename": "board/brya/charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T21:02:04Z",
+      "side": 1,
+      "message": "Add BUILD_ASSERT(ARRAY_SIZE(chg_chips) \u003d\u003d CHARGER_NUM);",
+      "revId": "bb81506c3b001579322b0046a469662e4bc9551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e64d6b47_85f29e36",
+        "filename": "board/brya/charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T21:02:04Z",
+      "side": 1,
+      "message": "Can this be moved to a shared file?  Looks like a lot of duplicated code across boards.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "bb81506c3b001579322b0046a469662e4bc9551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
