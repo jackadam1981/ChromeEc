@@ -52,6 +52,24 @@
       "parentUuid": "ec0a30a6_8eea724e",
       "revId": "4cb1391e5542a807cb5d8613230049b03d8a9fc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea5db9a_12ee193f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-02-23T18:33:54Z",
+      "side": 1,
+      "message": "Sorry, I misunderstood the previous question. This CL _needs_ (not needs to come before) the previous one, so the current order is fine.",
+      "parentUuid": "c53f2e9b_8e05683b",
+      "revId": "4cb1391e5542a807cb5d8613230049b03d8a9fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
