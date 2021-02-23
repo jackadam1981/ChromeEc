@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fb73c4_6cff2c17",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3036,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-23T17:58:09Z",
+      "side": 1,
+      "message": "Since this is a named spec timer, should we give it a named timer entry?  Though We could also just call this a \"temp timeout\" with the specification that it only be used for the duration of a single state to save space.",
+      "range": {
+        "startLine": 3036,
+        "startChar": 29,
+        "endLine": 3036,
+        "endChar": 45
+      },
+      "revId": "ccbef392f8c5cc61d4a5684c1f17b6e45061bd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e1d800_62355ae0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6363,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-23T17:58:09Z",
+      "side": 1,
+      "message": "For this and vconn off, it seems like we could us disabled in the entry, and a disabled check here.  But I\u0027ll check other CLs for a better example of the need for \"inactive\"",
+      "revId": "ccbef392f8c5cc61d4a5684c1f17b6e45061bd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
