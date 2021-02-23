@@ -16,6 +16,24 @@
       "message": "Seems to work alright with the upstream kernel CLs for clearing events (I left a Thunderbolt dock, and was able to execute 10 iterations of typec.ModeReboot. I ran 10 iterations of typec.ModeSwitch too for good measure).\n\nIs it possible to pick this to the relevant firmware branches (delbin voxel drobit) ?",
       "revId": "5339a865ad5b7756e206e529a701a77eea07a3eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b06af0_7781d8d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-23T21:17:03Z",
+      "side": 1,
+      "message": "Currently and for the foreseeable future, there is just one firmware branch for the volteer variants. Although I have not looked at this CL closely yet (sorry), it appears to the kind of thing that I would pick to the branch once it lands in main.",
+      "parentUuid": "51e26d56_1f5522e4",
+      "revId": "5339a865ad5b7756e206e529a701a77eea07a3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
