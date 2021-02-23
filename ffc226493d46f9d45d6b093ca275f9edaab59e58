@@ -22,6 +22,30 @@
       },
       "revId": "ffc226493d46f9d45d6b093ca275f9edaab59e58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03af672_f573eb92",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-02-23T09:46:24Z",
+      "side": 1,
+      "message": "What if we have failure at getting the flag?\nIf we have failure at getting the flag, the EC console shows \"PD NVRAM FAIL\", then we turn on the BMC PHY until hook_connect() called. If our Type-c isn\u0027t in attached state, I think we shouldn\u0027t turn on BMC PHY, but this is a special case with TCPMv1 that there was an explicit contract and go to soft reset state (skip Type-c states) for power sync.\n\n\nWhat happen if the board doesn\u0027t have a battery connected?\nWe still can get PD_BBRMFLG_EXPLICIT_CONTRACT in bbram, then enable BMC PHY and go to soft reset state.",
+      "parentUuid": "563184e0_6a227994",
+      "range": {
+        "startLine": 770,
+        "startChar": 7,
+        "endLine": 770,
+        "endChar": 30
+      },
+      "revId": "ffc226493d46f9d45d6b093ca275f9edaab59e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
