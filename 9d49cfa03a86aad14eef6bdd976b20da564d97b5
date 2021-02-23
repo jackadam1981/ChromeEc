@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aa8ac09_15bc3f0a",
+        "filename": "baseboard/kukui/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-23T03:19:39Z",
+      "side": 1,
+      "message": "Why hiding this block? \n\n(Isn\u0027t CONFIG_DEDICATED_CHARGE_PORT_COUNT zero?)",
+      "revId": "9d49cfa03a86aad14eef6bdd976b20da564d97b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
