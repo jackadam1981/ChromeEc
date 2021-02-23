@@ -70,6 +70,30 @@
       },
       "revId": "f00b569f81ef09e83dcb044607be158e2be4f32d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "011f7a62_118fbfff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-23T17:48:05Z",
+      "side": 1,
+      "message": "Added a \"news and breaking changes\" section which documents how zephyr 2.4 is no longer supported, and how to build for it if needed",
+      "parentUuid": "68dad9cb_815c3e00",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "f00b569f81ef09e83dcb044607be158e2be4f32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
