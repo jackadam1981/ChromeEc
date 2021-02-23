@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5487bf_ec5108f2",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-23T18:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a299f5f0_896ba86d",
+      "range": {
+        "startLine": 79,
+        "startChar": 29,
+        "endLine": 79,
+        "endChar": 41
+      },
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abeef198_3b5739dd",
@@ -306,6 +330,24 @@
       "side": 1,
       "message": "No, it wasn\u0027t. I have replaced this function, which was in honeybuns/usb_pd_policy.c with functions to set/get the object position.",
       "parentUuid": "1f9d1565_99ba3090",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "321c753b_c8a12fab",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2398,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-23T18:48:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fed53e88_9464fc7f",
       "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

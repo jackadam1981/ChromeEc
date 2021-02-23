@@ -16,6 +16,23 @@
       "message": "I have addressed the comments and made some other minor changes getting this CL ready for full review.",
       "revId": "6e9df8c836ee4ae83e7e79e9e700b70dc279c5d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22c39d9_bc272f0a",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-23T18:48:44Z",
+      "side": 1,
+      "message": "If we run into this situation (calling attention with no active mode), should we also ensure the queue got purged?",
+      "revId": "6e9df8c836ee4ae83e7e79e9e700b70dc279c5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
