@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e06046_15c67747",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-23T17:04:22Z",
+      "side": 1,
+      "message": "Sorry, I missed this, but we are trying to use \u0027Chromium OS\u0027 so it references the open-source thing.",
+      "range": {
+        "startLine": 65,
+        "startChar": 63,
+        "endLine": 65,
+        "endChar": 71
+      },
+      "revId": "9c2e96d94fddc0fcc92a557439663d7d3a3121c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
