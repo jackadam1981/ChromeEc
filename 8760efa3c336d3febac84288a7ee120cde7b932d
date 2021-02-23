@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4457a842_eaf1391e",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-02-23T07:00:38Z",
+      "side": 1,
+      "message": "Do we need to check if there\u0027s explict contract and then enable BMC PHY?",
+      "range": {
+        "startLine": 768,
+        "startChar": 1,
+        "endLine": 768,
+        "endChar": 21
+      },
+      "revId": "8760efa3c336d3febac84288a7ee120cde7b932d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
