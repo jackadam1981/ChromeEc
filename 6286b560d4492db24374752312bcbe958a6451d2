@@ -39,6 +39,30 @@
       },
       "revId": "6286b560d4492db24374752312bcbe958a6451d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d6e18a_a538bab3",
+        "filename": "core/cortex-m/debug.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-23T19:55:10Z",
+      "side": 1,
+      "message": "Since it\u0027s part of the function signature we\u0027re guaranteed to get it from the header, but it doesn\u0027t hurt to add.",
+      "parentUuid": "7675fe65_dee1d6bd",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 4
+      },
+      "revId": "6286b560d4492db24374752312bcbe958a6451d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
