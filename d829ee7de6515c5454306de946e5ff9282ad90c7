@@ -51,6 +51,24 @@
       "parentUuid": "525a7e5e_fe6f075d",
       "revId": "d829ee7de6515c5454306de946e5ff9282ad90c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de72050_2754263a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-23T00:15:54Z",
+      "side": 1,
+      "message": "The new values are those expected by the GRL-C2 based on what we believe to be a correct VIF.",
+      "parentUuid": "8f569c75_55128968",
+      "revId": "d829ee7de6515c5454306de946e5ff9282ad90c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
