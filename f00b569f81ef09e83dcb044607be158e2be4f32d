@@ -22,6 +22,30 @@
       },
       "revId": "f00b569f81ef09e83dcb044607be158e2be4f32d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a02cea9_85e21ef8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-23T17:29:24Z",
+      "side": 1,
+      "message": "Ack, there is no README.md (yet!) but these flags are documented in the zmake design doc pretty well: go/zmake#heading\u003dh.v68sfw6l7tag\n\nThere\u0027s an open bug for writing the README, in the process, much of what was in the design doc will be moved over.  See b/180609783.",
+      "parentUuid": "2138b0d9_939478d6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "f00b569f81ef09e83dcb044607be158e2be4f32d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
