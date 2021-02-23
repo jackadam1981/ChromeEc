@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c41e02b0_45621ce6",
+        "filename": "driver/mp4245.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-02-23T19:50:32Z",
+      "side": 1,
+      "message": "Where is this defined? How about MP4245_I2C_ADDR_FLAGS? ADDR can also mean a register address.",
+      "range": {
+        "startLine": 17,
+        "startChar": 37,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "11fc3c8840bb3df24698099bcb44e727cab5b600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
