@@ -38,9 +38,7 @@
 #define CONFIG_LED_COMMON
 #define CONFIG_LED_ONOFF_STATES
 #define CONFIG_LED_POWER_LED
-#define GPIO_BAT_LED_RED_L GPIO_LED_R_ODL
-#define GPIO_BAT_LED_GREEN_L GPIO_LED_G_ODL
-#define GPIO_PWR_LED_BLUE_L GPIO_LED_B_ODL
+#define CONFIG_PWM
 
 /* TCPC */
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
@@ -88,6 +86,13 @@ enum temp_sensor_id {
 enum battery_type {
 	BATTERY_SDI,
 	BATTERY_TYPE_COUNT,
+};
+
+enum pwm_channel {
+	PWM_CH_LED_RED,
+	PWM_CH_LED_GREEN,
+	PWM_CH_LED_BLUE,
+	PWM_CH_COUNT,
 };
 
 int board_is_sourcing_vbus(int port);
