@@ -7,10 +7,12 @@
 #include "adc_chip.h"
 #include "battery.h"
 #include "console.h"
+#include "it5205.h"
 #include "it83xx_pd.h"
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "timer.h"
+#include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -112,6 +114,49 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 {
 	CPRINTS("p%d %s", port, __func__);
 }
+
+/* Mux */
+#define USB_PD_PORT_MUX_COUNT 2
+
+static void board_it83xx_hpd_status(const struct usb_mux *me,
+					  int hpd_lvl, int hpd_irq)
+{
+#if 0 /* TODO: Before unmark this, we should add HPD in gpio.inc */
+	enum gpio_signal gpio =
+		me->usb_port ? GPIO_USB_C1_HPD_1P8_ODL
+			     : GPIO_USB_C0_HPD_1P8_ODL;
+
+	hpd_lvl = !hpd_lvl;
+
+	gpio_set_level(gpio, hpd_lvl);
+	if (hpd_irq) {
+		gpio_set_level(gpio, 1);
+		msleep(1);
+		gpio_set_level(gpio, hpd_lvl);
+	}
+#endif
+}
+
+const struct usb_mux usb_muxes[USB_PD_PORT_MUX_COUNT] = {
+	[USB_PD_PORT_ITE_0] = {
+		.usb_port = USB_PD_PORT_ITE_0,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
+		.driver = &it5205_usb_mux_driver,
+		.hpd_update = &board_it83xx_hpd_status,
+	},
+	[USB_PD_PORT_ITE_1] = {
+		.usb_port = USB_PD_PORT_ITE_1,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = IT5205_I2C_ADDR2_FLAGS,
+		.driver = &it5205_usb_mux_driver,
+		.hpd_update = &board_it83xx_hpd_status,
+	},
+	/*
+	 * Port2 doesn't have mux IT5205 on pdevb... So we define
+	 * CONFIG_USB_PD_PORT_MAX_COUNT to 2 instead of USB_PD_PORT_MUX_COUNT...
+	 */
+};
 
 /*
  * PWM channels. Must be in the exactly same order as in enum pwm_channel.

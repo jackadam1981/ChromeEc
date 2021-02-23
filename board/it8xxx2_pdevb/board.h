@@ -60,6 +60,10 @@
 #define CONFIG_USB_PD_DECODE_SOP
 #define CONFIG_VBOOT_HASH
 
+/* Mux */
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USB_MUX_IT5205
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

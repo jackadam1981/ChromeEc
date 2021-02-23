@@ -47,5 +47,6 @@
 /* I2C Bus Configuration */
 #define I2C_PORT_CHARGER IT83XX_I2C_CH_C
 #define I2C_PORT_BATTERY IT83XX_I2C_CH_C
+#define I2C_PORT_USB_MUX IT83XX_I2C_CH_C
 
 #endif /* __CROS_EC_BASEBOARD_H */
