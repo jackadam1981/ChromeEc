@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a57ecd_cdbf59c7",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-23T07:37:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa7c1dd_9e98cd1f",
+      "range": {
+        "startLine": 1471,
+        "startChar": 0,
+        "endLine": 1472,
+        "endChar": 50
+      },
+      "revId": "815c34f318aed346c0a7d07ba8b5e5ed0ab76a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f39bf888_ac66caba",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-23T03:17:48Z",
       "side": 1,
       "message": "this should copy at most CONFIG_PANIC_DATA_SIZE bytes, same thing below",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "815c34f318aed346c0a7d07ba8b5e5ed0ab76a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "441cf3a5_80dc0a6f",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-23T07:37:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f39bf888_ac66caba",
       "range": {
         "startLine": 57,
         "startChar": 21,
