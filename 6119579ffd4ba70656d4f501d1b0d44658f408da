@@ -157,6 +157,24 @@
       "parentUuid": "2b37af22_51b76dd9",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca142d72_c71452cd",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-23T11:12:45Z",
+      "side": 1,
+      "message": "I\u0027m new to this too.\nYeah it\u0027s possible to split the keys array into three parts: 6 byte for key 0x00~0x48, one byte (bit field) for arrow keys, and another 6 bytes for key 0x64~0x98.\nThis requires non-trivial change to split the existing logic into boot protocol and report protocol handler (we have to keep compatible with boot protocol). I will try to make a POC first and see if it works.",
+      "parentUuid": "a5cdf100_ac86a29c",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
