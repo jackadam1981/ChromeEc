@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6726dee_add18510",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-23T00:20:49Z",
+      "side": 1,
+      "message": "This is a short-term fix for TDA.2.1.2.2 on Voxel. I think a more general fix for checking VBUS before entering BIST mode can be done at a later date with lower priority.",
+      "revId": "ae53aaef4e5b66d196956530ebd7b5a5a18b4dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
