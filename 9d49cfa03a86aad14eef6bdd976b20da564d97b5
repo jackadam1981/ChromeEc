@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9176f7c6_fde88e4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-02-23T06:09:48Z",
+      "side": 1,
+      "message": "Could we create a new CONFIG in baseboard/kukui/baseboard.h like:\n\n  VARIANT_KUKUI_EC_STM32F098 and VARIANT_EC_IT81202\n\nand guard them with VARIANT_KUKUI_EC_STM32F098 instead?",
+      "range": {
+        "startLine": 7,
+        "startChar": 53,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "9d49cfa03a86aad14eef6bdd976b20da564d97b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7aa8ac09_15bc3f0a",
         "filename": "baseboard/kukui/baseboard.c",
         "patchSetId": 2
