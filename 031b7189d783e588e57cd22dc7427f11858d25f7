@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d16529_7c70973a",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T19:41:24Z",
+      "side": 1,
+      "message": "Add comment: TODO(b/180434685): add FW_CONFIG support",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f6e0386_d1d539a2",
+        "filename": "board/brya/ec.tasklist",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T19:41:24Z",
+      "side": 1,
+      "message": "Use (BIT(2) | BIT(0)) instead.",
+      "range": {
+        "startLine": 24,
+        "startChar": 46,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe0c344_52de133b",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T19:41:24Z",
+      "side": 1,
+      "message": "Nit - I\u0027d prefer you use the same definition used in the i2c_ports[] array - I2C_PORT_TCPC0_2.  I\u0027d like i2c_ports[] values used throughout this file.",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f09cae_1b2ec1a2",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T19:41:24Z",
+      "side": 1,
+      "message": "USB3 DB schematic shows SLGC55546.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b773e40b_365f3610",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-23T19:41:24Z",
+      "side": 1,
+      "message": "Should this also be guarded with !system_jumped_late()?",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
