@@ -118,6 +118,30 @@
       },
       "revId": "c649efa90113dac9080d64826a6a28a8fc39aec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af77bc89_342eeda4",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-02-24T03:21:11Z",
+      "side": 1,
+      "message": "It was in very early stage when I implement this feature. so no way to go back to find out why. But I did many times test with NDA, DA, charger. seems all good. Also John started to use this code also, he said so far it\u0027s good. use \"0\" is more reasonable then \"1\". I will keep on testing too.",
+      "parentUuid": "77ca3662_d2ca0399",
+      "range": {
+        "startLine": 91,
+        "startChar": 48,
+        "endLine": 91,
+        "endChar": 49
+      },
+      "revId": "c649efa90113dac9080d64826a6a28a8fc39aec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
