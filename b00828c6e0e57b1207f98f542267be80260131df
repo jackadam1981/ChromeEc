@@ -16,6 +16,23 @@
       "message": "Fix n°1 for bug #1175757",
       "revId": "b00828c6e0e57b1207f98f542267be80260131df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c2125d_5816a2e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-24T08:43:53Z",
+      "side": 1,
+      "message": "I assume these changes need to be applied to every branch that could use the invensense IMU.",
+      "revId": "b00828c6e0e57b1207f98f542267be80260131df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
