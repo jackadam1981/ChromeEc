@@ -34,6 +34,24 @@
       "parentUuid": "11108f86_d284caa9",
       "revId": "5b890641d4ba93f0b62419f4d19ef47c1d190fff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf01972_292e5d0d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3042,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-02-24T22:14:53Z",
+      "side": 1,
+      "message": "We\u0027re getting into bug mitigation territory here, as a potential caution.\n\nMany 1st gen PD3 FRS products mis-populate their SnkCap(FRS) field depending on whether or not a PSU is already connected. This field /should/ be static.\n\nThen we get stuck into question of how frequently do we need to re-ask \"Jekyll/Hyde\" devices for their identities, \"voting\" based on multiple datapoints, etc.\n\nSince devices cannot spontaneously generate SinkCap messages (it may only be in response to GetSinkCap request), I think it makes sense to only probe once after any events that may /legitimately/ impact overall power state of the partner.\n\nI\u0027ll research more about the DUT in the b/ in question.",
+      "parentUuid": "5d63ca18_5740fd3e",
+      "revId": "5b890641d4ba93f0b62419f4d19ef47c1d190fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
