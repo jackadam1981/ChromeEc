@@ -1098,7 +1098,7 @@ static void do_cc(int cc_config_new)
 			 * time for DUT to detach, use tErrorRecovery.
 			 */
 			if (!(cc_config_new & CC_DETACH))
-				usleep(PD_T_ERROR_RECOVERY);
+				msleep(500);
 		}
 
 		if ((cc_config & ~cc_config_new) & CC_DISABLE_DTS) {
