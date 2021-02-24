@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c58651c3_1acc6da7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-24T21:49:32Z",
+      "side": 1,
+      "message": "This interface seems easier for consumers to use/understand.  It still seems vulnerable to the coding problems we\u0027ve hit previously, that you can check expiration on a timer you forgot to re-enable (or disable), but I like that the follow-on CLs are coded defensively to disable timers on state exit as much as possible.\n\nEd, any thoughts? ",
+      "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b497c43c_7f7e9561",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-24T21:49:32Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a15ca8f_47b951be",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-24T21:49:32Z",
+      "side": 1,
+      "message": "Add a comment that \"inactive\" is an internal state to this module, for timers which are enabled but already expired",
+      "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f13fc8_d14e12be",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-24T21:49:32Z",
+      "side": 1,
+      "message": "Probably better to refer to it as a temporary timer available? It isn\u0027t really directly linked to state timeouts, at least not the way TCPMv1\u0027s general \"timeout\" was",
+      "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba323e1_7e4482e9",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-24T21:49:32Z",
+      "side": 1,
+      "message": "Probably mention it\u0027s true if the timer is both enabled and expired",
+      "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
