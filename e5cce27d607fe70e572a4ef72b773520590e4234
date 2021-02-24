@@ -51,6 +51,24 @@
       "parentUuid": "c35466e2_7c04817a",
       "revId": "e5cce27d607fe70e572a4ef72b773520590e4234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7764483f_5058e231",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-02-24T20:03:03Z",
+      "side": 1,
+      "message": "Testing with Servo alone may be tricky. You would require Servo to /want/ to recover into \"SNK/DFP role\" from a hard_reset, as previously a SNK.\n\nI don\u0027t think it prefers this normally.\n\nThis may be more easily accomplished by testing on the CB side. Perhaps can be done by using:\n\n* \"pre-patch\" Servo, \"pd dualrole freeze\", in sink state by using \"pd 1 swap power\".\n* \"post-patch\" TCPMv1 CB, \"pd dualrole drp\", in source state.\n* Initiate hard reset \"pd 1 hard\" from the Servo/SRC\n* See if \"post-patch\" CB tries to DR_SWAP back to SNK/DFP.",
+      "parentUuid": "c4330d9f_dbab2248",
+      "revId": "e5cce27d607fe70e572a4ef72b773520590e4234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
