@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3099c74_5318ddee",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T10:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb5fd688_cfd48497",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8e1c9d4_364d9915",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-23T18:34:35Z",
       "side": 1,
       "message": "Nit - name \"sources_mask\" to improve readability.",
+      "range": {
+        "startLine": 135,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 20
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "036e20d5_7c21142c",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T10:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8e1c9d4_364d9915",
       "range": {
         "startLine": 135,
         "startChar": 11,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70c7c338_e299c735",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T10:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab874473_b77776d1",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 7
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "155d4f4c_ce07d771",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-23T18:34:35Z",
       "side": 1,
       "message": "Are there any scenarios in which a bit would be set in source_m, but board_is_usb_pd_port_present() returns false?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 0
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c940bcf_27aea117",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T10:46:01Z",
+      "side": 1,
+      "message": "this is more of a defensive programming feature. imagine a case\nwhere multiple TCPCs share an interrupt but one of them is on\na daughterboard that is not present.\n\nsources_mask is seeded from ec.tasklist which does not take\nFW_CONFIG into account.  board_is_usb_pd_port_present() is\nevaluated at runtime, so it would take FW_CONFIG into account.",
+      "parentUuid": "155d4f4c_ce07d771",
       "range": {
         "startLine": 143,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94691430_474cf22c",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T10:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c4075bb_e88d09b2",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83f5e256_e4d3f7d1",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-02-23T18:34:35Z",
       "side": 1,
       "message": "Nit - \"nothing more to do\".",
+      "range": {
+        "startLine": 193,
+        "startChar": 7,
+        "endLine": 193,
+        "endChar": 33
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff343be_ce637ee1",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T10:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83f5e256_e4d3f7d1",
       "range": {
         "startLine": 193,
         "startChar": 7,
