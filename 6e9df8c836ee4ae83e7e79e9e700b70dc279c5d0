@@ -33,6 +33,24 @@
       "message": "If we run into this situation (calling attention with no active mode), should we also ensure the queue got purged?",
       "revId": "6e9df8c836ee4ae83e7e79e9e700b70dc279c5d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129283ee_8231953b",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-24T02:14:20Z",
+      "side": 1,
+      "message": "That makes sense, but then it can never happen either. The interrupt which generates hpd events is only enabled when the mode is active. So there can\u0027t be Attention messages being sent when the mode is not active.",
+      "parentUuid": "d22c39d9_bc272f0a",
+      "revId": "6e9df8c836ee4ae83e7e79e9e700b70dc279c5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
