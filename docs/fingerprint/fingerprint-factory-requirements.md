@@ -162,29 +162,19 @@ values of the individual pixels do not deviate from the median.
 Use `ectool` to capture the first checkerboard pattern image:
 
 ```bash
-(dut) $ ectool --name=cros_fp fpmode capture pattern0; ectool --name=cros_fp waitevent 5 500
+(dut) $ (ectool --name=cros_fp waitevent 5 500 && ectool --name=cros_fp fpframe > /tmp/pattern0.pnm) & ectool --name=cros_fp fpmode capture pattern0
+[1] <pid>
 FP mode: (0x20000008) capture
-MKBP event 5 data: 00 00 00 80
-```
-
-Copy the first checkerboard image to a file:
-
-```bash
-(dut) $ ectool --name=cros_fp fpframe > /tmp/pattern0.pnm
+(dut) $ MKBP event 5 data: 00 00 00 80
 ```
 
 Use `ectool` to capture the second checkerboard pattern image:
 
 ```bash
-(dut) $ ectool --name=cros_fp fpmode capture pattern1; ectool --name=cros_fp waitevent 5 500
-FP mode: (0x30000008) capture
-MKBP event 5 data: 00 00 00 80
-```
-
-Copy the second checkerboard image to a different file:
-
-```bash
-(dut) $ ectool --name=cros_fp fpframe > /tmp/pattern1.pnm
+(dut) $ (ectool --name=cros_fp waitevent 5 500 && ectool --name=cros_fp fpframe > /tmp/pattern1.pnm) & ectool --name=cros_fp fpmode capture pattern1
+[1] <pid>
+FP mode: (0x20000008) capture
+(dut) $ MKBP event 5 data: 00 00 00 80
 ```
 
 Perform median analysis on the resulting image as described in the `MTS`
