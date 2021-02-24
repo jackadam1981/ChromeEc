@@ -22,6 +22,30 @@
       },
       "revId": "19d8a2ab8df83a613c0819a3deb1cb73e6a362ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b61662_1a130a02",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-24T16:14:33Z",
+      "side": 0,
+      "message": "I think the last upload performs what the current ToT does.",
+      "parentUuid": "60a690bb_bf9e2424",
+      "range": {
+        "startLine": 2014,
+        "startChar": 0,
+        "endLine": 2019,
+        "endChar": 0
+      },
+      "revId": "19d8a2ab8df83a613c0819a3deb1cb73e6a362ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
