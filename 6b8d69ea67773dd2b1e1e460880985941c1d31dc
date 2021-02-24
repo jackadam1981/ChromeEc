@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1900d569_d89590bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-24T23:55:02Z",
+      "side": 1,
+      "message": "Yicheng,\n\nIs it possible some other issue is occurring that fix hides?\n\nOn nocturne:\n\n---\n\n# Normal unloaded cpu\nlocalhost ~ # time  ectool --name\u003dcros_fp fpmode capture pattern0; time ectool --name\u003dcros_fp waitevent 5 5000\nFP mode: (0x20000008) capture \n\nreal\t0m0.020s\nuser\t0m0.003s\nsys\t0m0.002s\nMKBP event 5 data: 00 00 00 80 \n\nreal\t0m0.028s\nuser\t0m0.001s\nsys\t0m0.002s\n\n\n# Loaded cpu:\nlocalhost ~ # ectool --name\u003dcros_fp fpmode capture pattern0; time ectool --name\u003dcros_fp waitevent 5 5000\nFP mode: (0x20000008) capture \nTimeout waiting for MKBP event\n\nreal\t0m5.084s\nuser\t0m0.002s\nsys\t0m0.000s\nlocalhost ~ # (ectool --name\u003dcros_fp waitevent 5 500 \u0026\u0026 ectool --name\u003dcros_fp fpframe \u003e /tmp/pattern0.pnm) \u0026 ectool --name\u003dcros_fp fpmode capture pattern0\n[1] 3996\nFP mode: (0x20000008) capture \nlocalhost ~ # Timeout waiting for MKBP event\n\n[1]+  Exit 1                  ( ectool --name\u003dcros_fp waitevent 5 500 \u0026\u0026 ectool --name\u003dcros_fp fpframe \u003e /tmp/pattern0.pnm )\nlocalhost ~ # \n",
+      "revId": "6b8d69ea67773dd2b1e1e460880985941c1d31dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bcb5d63_fc847406",
