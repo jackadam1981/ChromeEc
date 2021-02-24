@@ -25,6 +25,11 @@
 #include "vboot.h"
 #include "vboot_hash.h"
 
+#ifdef CONFIG_ZEPHYR
+#include <device.h>
+#include <drivers/uart.h>
+#endif
+
 #define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
@@ -58,17 +63,55 @@ static void enable_packet_mode(bool enable)
 	gpio_set_level(GPIO_PACKET_MODE_EN, enable ? 1 : 0);
 }
 
+#include <shell/shell_uart.h>
+
+static struct cr50_comm_response s_res = {};
+static int s_res_i;
+static void irq_callback(const struct device *dev, void *user_data)
+{
+	uint8_t c;
+	ARG_UNUSED(user_data);
+
+	uart_irq_update(dev);
+	if (uart_irq_rx_ready(dev)) {
+		while (uart_fifo_read(dev, &c, 1)) {
+//			s_res.error = s_res.error | c << (s_res_i*8);
+			s_res_i++;
+		}
+	}
+}
+
+#include <kernel.h>
+
 static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 {
+	const struct device *uart_dev = device_get_binding(CONFIG_UART_CONSOLE_ON_DEV_NAME);
 	timestamp_t until;
-	int i, timeout = 0;
+	int i, rc, timeout = 0;
+	uint32_t lock_key;
 	struct cr50_comm_response res = {};
+	uint8_t c;
 
 	/* This will wake up (if it's sleeping) and interrupt Cr50. */
 	enable_packet_mode(true);
 
 	uart_flush_output();
 	uart_clear_input();
+
+	shell_stop(shell_backend_uart_get_ptr());
+	shell_process(shell_backend_uart_get_ptr());
+	uart_irq_rx_disable(uart_dev);
+	uart_irq_tx_disable(uart_dev);
+
+	memset(&s_res, 0, sizeof(s_res));
+	s_res_i = 0;
+	printk("sending(%u)=0x", size);
+	for (s_res_i = 0; s_res_i < size; ++s_res_i) {
+		printk("%02x", data[s_res_i]);
+	}
+	printk("\n");
+
+	while (!uart_poll_in(uart_dev, &c)) {}
 
 	/*
 	 * Send packet. No traffic control, assuming Cr50 consumes stream much
@@ -78,9 +121,9 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	 * Disable interrupts so that the data frame will be stored in the Tx
 	 * buffer in one piece.
 	 */
-	interrupt_disable();
-	uart_put_raw(data, size);
-	interrupt_enable();
+	for (i = 0; i < size; ++i) {
+		uart_poll_out(uart_dev, data[i]);
+	}
 
 	uart_flush_output();
 
@@ -90,27 +133,44 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	 * Make sure console task won't steal the response in case we exchange
 	 * packets after tasks start.
 	 */
-	if (task_start_called())
-		task_disable_task(TASK_ID_CONSOLE);
+//	shell_stop(shell_backend_uart_get_ptr());
+//	uart_irq_callback_user_data_set(uart_dev, irq_callback, NULL);
+//	shell_uart_hijack_rx();
+
+//	uart_irq_rx_disable(uart_dev);
+//	uart_irq_tx_disable(uart_dev);
+
+//	while (true) {
+//		uart_irq_update(uart_dev);
+//		if (uart_irq_rx_ready(uart_dev)) {
+//			uart_fifo_read(uart_dev, &c, 1);
+//			sum += c;
+//		} else {
+//			break;
+//		}
+//	}
 
 	/* Wait for response from Cr50 */
 	for (i = 0; i < sizeof(res); i++) {
 		while (!timeout) {
-			int c = uart_getc();
-			if (c != -1) {
-				res.error = res.error | c << (i*8);
+			rc = uart_poll_in(uart_dev, &c);
+			if (!rc) {
+				res.error = res.error | c << (i * 8);
 				break;
 			}
-			msleep(1);
 			timeout = timestamp_expired(until, NULL);
 		}
 	}
 
-	if (task_start_called())
-		task_enable_task(TASK_ID_CONSOLE);
+	shell_start(shell_backend_uart_get_ptr());
+	uart_irq_rx_enable(uart_dev);
+	uart_irq_tx_enable(uart_dev);
 
 	/* Exit packet mode */
 	enable_packet_mode(false);
+
+	CPRINTS("timeout=%d", timeout);
+	CPRINTS("res.error=0x%04x", res.error);
 
 	if (timeout) {
 		CPRINTS("Timeout");
