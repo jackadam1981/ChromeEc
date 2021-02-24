@@ -69,6 +69,24 @@
       "parentUuid": "c4330d9f_dbab2248",
       "revId": "e5cce27d607fe70e572a4ef72b773520590e4234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f8a1fdb_d3579661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-02-24T22:42:56Z",
+      "side": 1,
+      "message": "I just tried 200 power mode switches with this change flashed unto my servo, and I got 0 errors, this is the first time I\u0027ve had no failures. I\u0027d like to submit this, and leave the SNK hard reset for later.",
+      "parentUuid": "7764483f_5058e231",
+      "revId": "e5cce27d607fe70e572a4ef72b773520590e4234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
