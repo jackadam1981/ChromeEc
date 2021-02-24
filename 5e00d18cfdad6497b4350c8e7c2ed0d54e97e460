@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15571735_23712840",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-24T06:09:01Z",
+      "side": 1,
+      "message": "Ack\n\nHow about removing \n#undef CONFIG_USB_MUX_RUNTIME_CONFIG\n\nand retaining only\n#define CONFIG_USB_MUX_RUNTIME_CONFIG",
+      "parentUuid": "6c790fa9_475d46f8",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "5e00d18cfdad6497b4350c8e7c2ed0d54e97e460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff392b81_0cfc38fb",
