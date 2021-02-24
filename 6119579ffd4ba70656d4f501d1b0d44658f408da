@@ -211,6 +211,24 @@
       "parentUuid": "4703619b_b57fecdc",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ebf9d9_6cde6c55",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-24T04:32:49Z",
+      "side": 1,
+      "message": "That matches my understanding on internal keyboards.\nCan we also hardcode detachable keyboards in the same way?",
+      "parentUuid": "7cf67296_4e3af042",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
