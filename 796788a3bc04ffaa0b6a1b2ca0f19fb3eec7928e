@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c2a086_26b30273",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T19:31:53Z",
+      "side": 1,
+      "message": "This should probably be 0. See https://crrev.com/c/2707252.",
+      "revId": "796788a3bc04ffaa0b6a1b2ca0f19fb3eec7928e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f29fced6_ed76789f",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T19:31:53Z",
+      "side": 1,
+      "message": "This TODO is for a Volteer bug that wouldn\u0027t be appropriate here, but it would probably be easier just to define a macro for bcdDevice, a la https://crrev.com/c/2697851.",
+      "revId": "796788a3bc04ffaa0b6a1b2ca0f19fb3eec7928e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee91e0c3_01dbe3ee",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T19:31:53Z",
+      "side": 1,
+      "message": "This bug is for Volteer (and is closed). The max and min power fields may be different for Brya.",
+      "revId": "796788a3bc04ffaa0b6a1b2ca0f19fb3eec7928e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
