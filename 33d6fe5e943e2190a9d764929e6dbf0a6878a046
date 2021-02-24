@@ -22,6 +22,46 @@
       },
       "revId": "33d6fe5e943e2190a9d764929e6dbf0a6878a046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dcd6f40_01a4a0d9",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-24T06:55:24Z",
+      "side": 1,
+      "message": "configure_board_sku_usb_mux()\n\nswitch (board_get_version() \u0026 0xFF)\n{ \n   case ADLP_DDR5_RVP_SKU_BOARD_ID:\n        usb_muxes[TYPE_C_PORT_0].next_mux \u003d \u0026soc_side_bb_retimer0_usb_mux;\n\tusb_muxes[TYPE_C_PORT_1].next_mux \u003d \u0026soc_side_bb_retimer1_usb_mux;\n        break;\n   case ADLP_LP5_T4_RVP_SKU_BOARD_ID:\n        usb_muxes[TYPE_C_PORT_2].next_mux \u003d NULL\n        break",
+      "range": {
+        "startLine": 280,
+        "startChar": 12,
+        "endLine": 280,
+        "endChar": 41
+      },
+      "revId": "33d6fe5e943e2190a9d764929e6dbf0a6878a046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49cfdcf1_84619b7f",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-24T06:55:24Z",
+      "side": 1,
+      "message": "ADLP_LP5_T4_RVP_SKU_BOARD_ID     0x13",
+      "revId": "33d6fe5e943e2190a9d764929e6dbf0a6878a046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
