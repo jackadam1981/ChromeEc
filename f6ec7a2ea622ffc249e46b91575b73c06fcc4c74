@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "017474cd_177a11ba",
+        "filename": "baseboard/brya/cbi_ec_fw_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T11:18:27Z",
+      "side": 1,
+      "message": "too late for the current batch of boards. the boards were built with\nFW_CONFIG \u003d\u003d 0. we need to define FW_CONFIG and set it to match the\nsystem for the next batch.",
+      "parentUuid": "9f009905_3d81774b",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "f6ec7a2ea622ffc249e46b91575b73c06fcc4c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fc38cce_ba1e0eac",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-23T21:19:53Z",
       "side": 1,
       "message": "See comment in init_fw_config().  Hopefully we can eliminate the DB_USB_ABSENT2 dummy value with proper instructions provided to the factory.\n\nIf you\u0027re going to consume a second value here, might as well make 0 an invalid value.\nenum ec_cfg_usb_db_type {\n\tDB_USB_INVALID \u003d 0,\n\tDB_USB_ABSENT \u003d 1,\n\tDB_USB3_PS8815 \u003d 2,\n}",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "f6ec7a2ea622ffc249e46b91575b73c06fcc4c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23de38fe_e40f22c0",
+        "filename": "baseboard/brya/cbi_ec_fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T11:18:27Z",
+      "side": 1,
+      "message": "we\u0027ll provide the right CBI pre-flash image next time around once we have\nprogram.star updated with the DB info.\n\ni would like to keep \"DB_USB_ABSENT \u003d 0\". it\u0027s what we ultimately\nwant and is the same as volteer.\n\n\"DB_USB_ABSENT2 \u003d 15\" is a temporary hack that can go away when\npeople have had a chance to update their CBI on current boards.\nalso, hopefully the next batch of boards will have FW_CONFIG\nset correctly.",
+      "parentUuid": "9fc38cce_ba1e0eac",
       "range": {
         "startLine": 24,
         "startChar": 0,
