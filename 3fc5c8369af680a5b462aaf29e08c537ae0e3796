@@ -34,6 +34,24 @@
       "parentUuid": "51e461f9_a9cfeb23",
       "revId": "3fc5c8369af680a5b462aaf29e08c537ae0e3796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a060fee_4371a9a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-02-24T18:10:13Z",
+      "side": 1,
+      "message": "This is a reasonable concern, what makes things simpler is that MP and Pre-PVT are pretty much identical, so manual fix could have been verified by comparing across branches.",
+      "parentUuid": "04c0e2ed_4670ae48",
+      "revId": "3fc5c8369af680a5b462aaf29e08c537ae0e3796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
