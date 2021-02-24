@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c580857a_c5eb8c2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-02-24T20:48:27Z",
+      "side": 1,
+      "message": "The issue this avoids is:\n```\nutil/ecst.c: In function \u0027main\u0027:\nutil/ecst.c:365:7: error: \u0027strncpy\u0027 output may be truncated copying 100 bytes from a string of length 9999 [-Werror\u003dstringop-truncation]\n  365 |       strncpy(hdr_args[arg_ind++],\n      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  366 |        tmp_hdr_args[tmp_ind],\n      |        ~~~~~~~~~~~~~~~~~~~~~~\n  367 |        ARG_SIZE);\n      |        ~~~~~~~~~\n```\n\nwhich is bogus: gcc considers tmp_hdr_args[100][100] to be a single 10000 bytes string, and it\u0027s never used that way.",
+      "revId": "76561264f8b308b93ad117f95ca5013070618292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
