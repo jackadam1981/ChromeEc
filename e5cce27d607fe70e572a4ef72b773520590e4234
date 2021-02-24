@@ -16,6 +16,23 @@
       "message": "It makes sense to do the same after hard reset. Let\u0027s others to have eyes on it. Will +2 later.",
       "revId": "e5cce27d607fe70e572a4ef72b773520590e4234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c35466e2_7c04817a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-24T19:06:21Z",
+      "side": 1,
+      "message": "Looks good.  Should the sink hard reset path be updated similarly? ",
+      "revId": "e5cce27d607fe70e572a4ef72b773520590e4234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
