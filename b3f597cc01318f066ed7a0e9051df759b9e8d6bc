@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abd9ce2e_a91b40db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-24T22:15:27Z",
+      "side": 1,
+      "message": "+2 can be carried forward once Abe and my nits are addressed.",
+      "revId": "b3f597cc01318f066ed7a0e9051df759b9e8d6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c48118d3_3b76f767",
@@ -31,6 +48,29 @@
       "writtenOn": "2021-02-24T19:20:05Z",
       "side": 1,
       "message": "Nit: Using port and port_mask as loop variables means that the setup and increment statements have to be written to keep them in sync. They are, but port_mask can be derived from port in any iteration, and it might be more obviously correct to just have\n const int port_mask \u003d PD_STATUS_TCPC_ALERT_0 \u003c\u003c port;\nat the beginning of the loop body.",
+      "revId": "b3f597cc01318f066ed7a0e9051df759b9e8d6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fddaf78_0b237f10",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-24T22:15:27Z",
+      "side": 1,
+      "message": "Nit - Delete \"false alarm\", the code likely handled at least one interrupt, which would not be a false interrupt.",
+      "range": {
+        "startLine": 199,
+        "startChar": 7,
+        "endLine": 199,
+        "endChar": 18
+      },
       "revId": "b3f597cc01318f066ed7a0e9051df759b9e8d6bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69bc838_2f5b9493",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-24T22:15:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c940bcf_27aea117",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 0
+      },
+      "revId": "31f6355313102aedaeda1089bdd315f3219662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c4075bb_e88d09b2",
