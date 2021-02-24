@@ -16,6 +16,24 @@
       "message": "Ideally, it\u0027s preferable to probe sink caps as a sink on non-FRS systems as well (ex. so we already have sink caps banked to know preferred power on a swap), but in those cases we don\u0027t need to re-probe if they\u0027re already present.  I suppose we could have an \"else\" to check if we don\u0027t have sink caps yet for the non-FRS case?",
       "revId": "5b890641d4ba93f0b62419f4d19ef47c1d190fff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d63ca18_5740fd3e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3042,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-24T22:11:03Z",
+      "side": 1,
+      "message": "Alright, I don\u0027t think there is harm in always checking. The spec just says it is a \u0027shall\u0027 for FRS, but of course we \u0027may\u0027 query it as much as we want.\n\nPlus, we have evidence that sink caps may change, its possible they\u0027ll change in the non-FRS case as well so its probably safest to check if we\u0027re relying on this information.",
+      "parentUuid": "11108f86_d284caa9",
+      "revId": "5b890641d4ba93f0b62419f4d19ef47c1d190fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
