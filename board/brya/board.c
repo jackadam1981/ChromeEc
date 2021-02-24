@@ -26,6 +26,16 @@ __override void board_cbi_init(void)
 	config_usb_db_type(ec_cfg_usb_db_type());
 }
 
+/******************************************************************************/
+/* USB-A charging control */
+
+const int usb_port_enable[USB_PORT_COUNT] = {
+	GPIO_EN_PP5000_USBA_R,
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
+
+/******************************************************************************/
+
 /*
  * remove when we enable CONFIG_POWER_BUTTON
  */
