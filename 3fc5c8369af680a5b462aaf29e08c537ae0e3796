@@ -16,6 +16,24 @@
       "message": "was this incorrect order causing merge conflicts?\n\nJust resolving the conflicts would result in much less churn...",
       "revId": "3fc5c8369af680a5b462aaf29e08c537ae0e3796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c0e2ed_4670ae48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-02-24T17:40:18Z",
+      "side": 1,
+      "message": "in this case, if there are conflicts I feel reverting and reapplying is better. I don\u0027t want to make manual changes to the CLs we pick to MP branch if we can avoid it. it\u0027s more churn in terms of the number of CLs, but less churn due to no manual merge, for which there\u0027s always a tiny chance to do something wrong",
+      "parentUuid": "51e461f9_a9cfeb23",
+      "revId": "3fc5c8369af680a5b462aaf29e08c537ae0e3796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
