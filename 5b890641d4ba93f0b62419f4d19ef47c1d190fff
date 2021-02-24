@@ -52,6 +52,24 @@
       "parentUuid": "5d63ca18_5740fd3e",
       "revId": "5b890641d4ba93f0b62419f4d19ef47c1d190fff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da12c620_229f328e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3042,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-02-24T22:20:56Z",
+      "side": 1,
+      "message": "Well, for this specific DUT it doesn\u0027t behave correctly. But since we\u0027re in FRS-land, we **shall** check the sink capabilities upon entry to SNK_Ready, which we don\u0027t do currently. The fact that it ends up fixing this device is a happy coincidence. \n\nBut point noted for the non-FRS case. It doesn\u0027t hurt anything to check after a PR_Swap, which is the only time we\u0027ll be adding it with this CL.",
+      "parentUuid": "adf01972_292e5d0d",
+      "revId": "5b890641d4ba93f0b62419f4d19ef47c1d190fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
