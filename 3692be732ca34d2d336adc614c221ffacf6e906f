@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e0eab2_944cde81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-24T22:17:54Z",
+      "side": 1,
+      "message": "There are a few timers that live beyond the typical _entry(enable)/_run(use and check)/_exit(disable) pattern and those I had left vulnerable. The others should make sure everything is cleaned up on exit from the state they are using the timer. So the CL chain does reduce the vulnerability window.",
+      "parentUuid": "c58651c3_1acc6da7",
+      "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b497c43c_7f7e9561",
