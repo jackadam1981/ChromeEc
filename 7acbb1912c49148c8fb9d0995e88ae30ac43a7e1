@@ -16,6 +16,24 @@
       "message": "You need to add the following fields:\n\nBUG\u003db:\u003cbug number\u003e\nBRANCH\u003dvolteer\nTEST\u003d\u003cdescribe what you did to verify the change\u003e\n\nThese issues are flagged by the pre-submit checks.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/README.md#submitting-changes\n\nNote, you do not need to run \"make buildall\" as documented.  This is handled by the commit-queue.",
       "revId": "7acbb1912c49148c8fb9d0995e88ae30ac43a7e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "147e7a21_d407b1f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-02-24T22:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39fdc5d3_f16abd29",
+      "revId": "7acbb1912c49148c8fb9d0995e88ae30ac43a7e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
