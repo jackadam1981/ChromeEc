@@ -16,6 +16,24 @@
       "message": "I don\u0027t see a main-branch change corresponding to this one. The normal process is to submit changes to main and then merge or cherry-pick them to the appropriate firmware branches.\n\nNote that I update firmware-volteer-13672.B-main on Tuesdays and Thursdays, so partners shouldn\u0027t need to cherry-pick their own changes.",
       "revId": "70df915404c130013cf1ae9211768c0c348a5a2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d6b41cb_be7cbab1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-02-24T18:20:21Z",
+      "side": 1,
+      "message": "Thanks, please refer to: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2715679",
+      "parentUuid": "8c8d7d7c_f40fcb53",
+      "revId": "70df915404c130013cf1ae9211768c0c348a5a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
