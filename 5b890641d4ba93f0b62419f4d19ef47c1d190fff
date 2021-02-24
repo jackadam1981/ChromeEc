@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11108f86_d284caa9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3042,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-24T22:03:32Z",
+      "side": 1,
+      "message": "Ideally, it\u0027s preferable to probe sink caps as a sink on non-FRS systems as well (ex. so we already have sink caps banked to know preferred power on a swap), but in those cases we don\u0027t need to re-probe if they\u0027re already present.  I suppose we could have an \"else\" to check if we don\u0027t have sink caps yet for the non-FRS case?",
+      "revId": "5b890641d4ba93f0b62419f4d19ef47c1d190fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
