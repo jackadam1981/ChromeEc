@@ -54,8 +54,6 @@ __maybe_unused static void board_power_sequence(int enable)
 
 	power_state = enable;
 	CPRINTS("board: Power rails %s", power_state ? "on" : "off");
-	/* Set status LED (set low to turn on) */
-	gpio_set_level(GPIO_EC_STATUS_LED2, !enable);
 }
 
 /******************************************************************************/
