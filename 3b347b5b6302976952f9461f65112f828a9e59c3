@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "120bae5d_60453233",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-02-24T08:29:46Z",
+      "side": 1,
+      "message": "Not in this CL, but just a question here:\n\nDo you think using TCPMv2 would be more reliable than TCPMv1 on it81202 since we have valiadted that on TCPMv2, but TCPMv1 haven\u0027t yet?",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 215,
+        "endChar": 28
+      },
+      "revId": "3b347b5b6302976952f9461f65112f828a9e59c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
