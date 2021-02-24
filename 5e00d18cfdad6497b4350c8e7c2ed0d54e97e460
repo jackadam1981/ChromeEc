@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c790fa9_475d46f8",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-02-24T05:02:37Z",
+      "side": 1,
+      "message": "If not defined, by default, struct usb_mux will become const type \u0026 cannot be updated at runtime later.\n\nIn include/usb_mux.h ,it is as below:\n\n#ifdef CONFIG_USB_MUX_RUNTIME_CONFIG\nextern struct usb_mux usb_muxes[];\n#else\nextern const struct usb_mux usb_muxes[];\n#endif",
+      "parentUuid": "4c9123f5_a9d945be",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "5e00d18cfdad6497b4350c8e7c2ed0d54e97e460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff392b81_0cfc38fb",
         "filename": "baseboard/intelrvp/adlrvp.h",
         "patchSetId": 1
