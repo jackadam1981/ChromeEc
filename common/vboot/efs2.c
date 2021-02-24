@@ -98,6 +98,11 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	uart_flush_output();
 	uart_clear_input();
 
+	shell_stop(shell_backend_uart_get_ptr());
+	shell_process(shell_backend_uart_get_ptr());
+	uart_irq_rx_disable(uart_dev);
+	uart_irq_tx_disable(uart_dev);
+
 	memset(&s_res, 0, sizeof(s_res));
 	s_res_i = 0;
 	printk("sending(%u)=0x", size);
@@ -105,11 +110,6 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 		printk("%02x", data[s_res_i]);
 	}
 	printk("\n");
-
-	uart_irq_rx_disable(uart_dev);
-	uart_irq_tx_disable(uart_dev);
-	shell_stop(shell_backend_uart_get_ptr());
-	shell_process(shell_backend_uart_get_ptr());
 
 	while (!uart_poll_in(uart_dev, &c)) {}
 
@@ -121,15 +121,9 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	 * Disable interrupts so that the data frame will be stored in the Tx
 	 * buffer in one piece.
 	 */
-//	lock_key = irq_lock();
-//	shell_backend_uart_get_ptr()->iface->api->enable(shell_backend_uart_get_ptr()->iface, true);
 	for (i = 0; i < size; ++i) {
 		uart_poll_out(uart_dev, data[i]);
-		msleep(1);
 	}
-//	rc = shell_uart_write(data, size);
-//	shell_backend_uart_get_ptr()->iface->api->enable(shell_backend_uart_get_ptr()->iface, false);
-//	irq_unlock(lock_key);
 
 	uart_flush_output();
 
@@ -156,8 +150,6 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 //		}
 //	}
 
-//	uart_irq_rx_enable(uart_dev);
-
 	/* Wait for response from Cr50 */
 	for (i = 0; i < sizeof(res); i++) {
 		while (!timeout) {
@@ -166,26 +158,13 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 				res.error = res.error | c << (i * 8);
 				break;
 			}
-//			uart_irq_update(uart_dev);
-//			if (uart_irq_rx_ready(uart_dev)) {
-//				if (uart_fifo_read(uart_dev, &c, 1)) {
-//					res.error = res.error | c << (i*8);
-//					break;
-//				}
-//			}
-			msleep(1);
 			timeout = timestamp_expired(until, NULL);
 		}
 	}
 
-//	uart_irq_tx_enable(uart_dev);
-
-//	shell_uart_reset();
 	shell_start(shell_backend_uart_get_ptr());
 	uart_irq_rx_enable(uart_dev);
 	uart_irq_tx_enable(uart_dev);
-
-//	msleep(10);
 
 	/* Exit packet mode */
 	enable_packet_mode(false);
