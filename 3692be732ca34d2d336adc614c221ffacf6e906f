@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2606cf3d_7e2ce15a",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-24T22:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b497c43c_7f7e9561",
+      "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a15ca8f_47b951be",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-02-24T21:49:32Z",
       "side": 1,
       "message": "Add a comment that \"inactive\" is an internal state to this module, for timers which are enabled but already expired",
+      "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5dad1a_2f8fbc29",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-24T22:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a15ca8f_47b951be",
       "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6075555_11f9ae6b",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-24T22:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57f13fc8_d14e12be",
+      "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ba323e1_7e4482e9",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-02-24T21:49:32Z",
       "side": 1,
       "message": "Probably mention it\u0027s true if the timer is both enabled and expired",
+      "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2248f962_eb10623d",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-24T22:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ba323e1_7e4482e9",
       "revId": "3692be732ca34d2d336adc614c221ffacf6e906f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
