@@ -372,7 +372,7 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 			r_v2->dp_mode = get_dp_pin_mode(p->port);
 			r_v2->cable_speed = get_tbt_cable_speed(p->port);
-			r_v2->cable_gen = get_tbt_rounded_support(p->port);
+			r_v2->cable_gen = 1;
 		}
 
 		if (args->version == 1)

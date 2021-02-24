@@ -260,8 +260,7 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		 *                           20.0625Gb/s, 20.000Gb/s)
 		 * 10..11b - Reserved
 		 */
-		*set_retimer_con |= BB_RETIMER_TBT_CABLE_GENERATION(
-				       cable_resp.tbt_rounded);
+		*set_retimer_con |= BB_RETIMER_TBT_CABLE_GENERATION(1);
 	}
 	if (mux_state & USB_PD_MUX_USB4_ENABLED) {
 		disc = pd_get_am_discovery(port, TCPC_TX_SOP);
