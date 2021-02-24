@@ -70,6 +70,30 @@
       },
       "revId": "6cdb3b16c4b3fe4c0fd1a70578bac299e6f776fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c607c782_e458a339",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-02-24T07:41:48Z",
+      "side": 1,
+      "message": "I check by pointing light/blanking the hole where the light sensor is:\nIRQ with TCS_I2C_STATUS_RGBC_VALID is generated every second: value fluctuate for the few samples and then reach a constant, indicating ATIME/AGAIN is modified.\n\nI added the following printf:\ndiff --git a/driver/als_tcs3400.c b/driver/als_tcs3400.c\nindex b75d71e46..151f9c533 100644\n--- a/driver/als_tcs3400.c\n+++ b/driver/als_tcs3400.c\n@@ -177,6 +177,7 @@ tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,\n        /* Don\u0027t process if status isn\u0027t valid yet */\n        if ((status \u0026 TCS_I2C_STATUS_ALS_SATURATED) ||\n                        (max_val \u003e\u003d TCS_SATURATION_LEVEL)) {\n+               CPRINTS(\"saturated status: 0x%x - max_val %d\", status, max_val);\n                /* Saturation occurred, decrease AGAIN if we can */\n                if (sat_p-\u003eagain \u003e TCS_MIN_AGAIN)\n                        sat_p-\u003eagain--;\n\n\nWhen I apply my phone lamp at the right place, I get in cros_ec.log:\n0224/073045.610000 [361725.695051 tcs3400_adjust_sensor_for_saturation saturated status: 0x95 - max_val 65535]\nor\n0224/073112.625000 [361752.821726 tcs3400_adjust_sensor_for_saturation saturated status: 0x15 - max_val 65535]\n\nBit 3:1 are reserved. So AVALID and AINT are set (expected, since we have set APERS to 0, generating an interrupt for every RBGC event.\n\nBit 7 is set (ASAT) indicates saturation, as well as max_val equal to TCS_SATURATION_LEVEL (0xffff).",
+      "parentUuid": "36a9ef55_cccd81c8",
+      "range": {
+        "startLine": 430,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 25
+      },
+      "revId": "6cdb3b16c4b3fe4c0fd1a70578bac299e6f776fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
