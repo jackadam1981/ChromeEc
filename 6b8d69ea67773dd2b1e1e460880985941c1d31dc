@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5757a7f9_f3caaff5",
+        "filename": "docs/fingerprint/fingerprint-factory-requirements.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-02-24T23:27:31Z",
+      "side": 1,
+      "message": "nit: This probably occurred as a race condition and probably shouldn\u0027t be present with this MKBP line after a new PS1.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 8
+      },
+      "revId": "6b8d69ea67773dd2b1e1e460880985941c1d31dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
