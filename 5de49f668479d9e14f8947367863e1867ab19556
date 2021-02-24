@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6917eaa4_33c96fc0",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-24T19:43:47Z",
+      "side": 1,
+      "message": "Is this change needed?  All boards that are using flash_npcx_uut() already set chip\u003dnpcx_uut using the servo overlay files.\n\nSee an example here: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/958ba6aa/servo/data/servo_volteer_overlay.xml#37",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 56
+      },
+      "revId": "5de49f668479d9e14f8947367863e1867ab19556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
