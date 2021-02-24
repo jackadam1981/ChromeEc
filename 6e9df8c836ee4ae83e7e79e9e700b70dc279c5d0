@@ -51,6 +51,24 @@
       "parentUuid": "d22c39d9_bc272f0a",
       "revId": "6e9df8c836ee4ae83e7e79e9e700b70dc279c5d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382e70ff_48a70565",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-24T18:23:03Z",
+      "side": 1,
+      "message": "Discussed out of band, if we had any queued Attention messages at the time we were exiting modes, we will clear out the queue next mode entry.  So this should be safe to just return here without cleaning the queue",
+      "parentUuid": "129283ee_8231953b",
+      "revId": "6e9df8c836ee4ae83e7e79e9e700b70dc279c5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
