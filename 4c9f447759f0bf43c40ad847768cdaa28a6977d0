@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7eac26a1_718e28aa",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-02-24T17:56:44Z",
+      "side": 1,
+      "message": "Update the comment accordingly.",
+      "range": {
+        "startLine": 1050,
+        "startChar": 28,
+        "endLine": 1050,
+        "endChar": 48
+      },
+      "revId": "4c9f447759f0bf43c40ad847768cdaa28a6977d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05902746_a6ad8982",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 2
