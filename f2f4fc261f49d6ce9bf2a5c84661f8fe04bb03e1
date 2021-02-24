@@ -16,6 +16,24 @@
       "message": "I assume you\u0027ll be adding TEST\u003d and BRANCH\u003d.",
       "revId": "f2f4fc261f49d6ce9bf2a5c84661f8fe04bb03e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7fc6fad_30fb60ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-02-24T05:21:24Z",
+      "side": 1,
+      "message": "Yes. I am waiting on Karthik to verify this. Will mark it as WIP until then so that it doesn\u0027t land without verification.",
+      "parentUuid": "a2a811a1_5ad7df58",
+      "revId": "f2f4fc261f49d6ce9bf2a5c84661f8fe04bb03e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
