@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22260184_56bc7201",
+        "filename": "board/brya/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T00:46:22Z",
+      "side": 1,
+      "message": "unknown. filed b/181066918 to track.",
+      "parentUuid": "dfc8d64b_a65e71ce",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "5fcb02b7f5e389887ad53b2faf2c262c7726f9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba6265ea_0fee1a80",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a6b2ae3_f1919e93",
+        "filename": "board/brya/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T00:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba6265ea_0fee1a80",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "5fcb02b7f5e389887ad53b2faf2c262c7726f9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e63870a_f2329223",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-23T17:15:42Z",
       "side": 1,
       "message": "Also shown as ODL signal in schematic.",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "5fcb02b7f5e389887ad53b2faf2c262c7726f9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b81588_fbc32999",
+        "filename": "board/brya/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-24T00:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e63870a_f2329223",
       "range": {
         "startLine": 38,
         "startChar": 5,
