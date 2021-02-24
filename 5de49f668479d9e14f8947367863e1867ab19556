@@ -22,6 +22,30 @@
       },
       "revId": "5de49f668479d9e14f8947367863e1867ab19556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3271031d_97e40d40",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-24T21:32:16Z",
+      "side": 1,
+      "message": "Hi Keith, this is needed for the boards without overlays (RVP or MECC cards)",
+      "parentUuid": "6917eaa4_33c96fc0",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 56
+      },
+      "revId": "5de49f668479d9e14f8947367863e1867ab19556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
