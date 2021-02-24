@@ -33,6 +33,24 @@
       "message": "Looks good.  Should the sink hard reset path be updated similarly? ",
       "revId": "e5cce27d607fe70e572a4ef72b773520590e4234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4330d9f_dbab2248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-02-24T19:50:14Z",
+      "side": 1,
+      "message": "PD_STATE_SNK_DISCONNECTED_DEBOUNCE sets PD_FLAGS_CHECK_PR_ROLE |  PD_FLAGS_CHECK_DR_ROLE | PD_FLAGS_CHECK_IDENTITY and sometimes PD_FLAGS_TS_DTS_PARTNER before switching to PD_STATE_SNK_DISCOVERY.\n\nPD_STATE_SNK_HARD_RESET_RECOVER does not.\n\nSo maybe it should also be changed. I will admit that I don\u0027t understand that code path as well, I\u0027ll add some CPRINTS and do some debugging there.",
+      "parentUuid": "c35466e2_7c04817a",
+      "revId": "e5cce27d607fe70e572a4ef72b773520590e4234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
