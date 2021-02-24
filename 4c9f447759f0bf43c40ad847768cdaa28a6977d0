@@ -45,6 +45,30 @@
       },
       "revId": "4c9f447759f0bf43c40ad847768cdaa28a6977d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86056012_c14d5f6b",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-02-24T18:21:53Z",
+      "side": 1,
+      "message": "USB-IF Type-C R2.0 spec dictates devices /must/ detect a disconnect within tPDDebounce (10-20ms) to remain compliant with spec. More preferably faster.\n\nUSB-IF TCPCI R2.0 v1.2 spec dictates tCCStatusDelay update limits for functional TCPCI implementations. This is indirectly capped by higher protocol limits like tRpValueChange for sub-state transitions.\n\nA USB-C compliant device should be able to abide by the lower bound of tErrorRecovery. May I ask how and why this 500ms value is being derived? I feel the DUT failing tests is indicative of a problem that needs to be resolved with the DUT -- not something to be mitigated by altering (arguably) spec-compliant Servo.",
+      "parentUuid": "05902746_a6ad8982",
+      "range": {
+        "startLine": 1053,
+        "startChar": 11,
+        "endLine": 1053,
+        "endChar": 14
+      },
+      "revId": "4c9f447759f0bf43c40ad847768cdaa28a6977d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
