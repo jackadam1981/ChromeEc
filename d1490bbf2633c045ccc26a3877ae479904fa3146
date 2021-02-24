@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff2d37e_47f2fa9a",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-24T16:15:09Z",
+      "side": 1,
+      "message": "What does alt filed mean?",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "d1490bbf2633c045ccc26a3877ae479904fa3146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08353d8c_b861e870",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-24T16:15:09Z",
+      "side": 1,
+      "message": "Is it possible to use if() instead of #if ?",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "d1490bbf2633c045ccc26a3877ae479904fa3146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9bac51b_713cd661",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-24T16:15:09Z",
+      "side": 1,
+      "message": "Why +1 ?",
+      "range": {
+        "startLine": 167,
+        "startChar": 34,
+        "endLine": 167,
+        "endChar": 73
+      },
+      "revId": "d1490bbf2633c045ccc26a3877ae479904fa3146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
