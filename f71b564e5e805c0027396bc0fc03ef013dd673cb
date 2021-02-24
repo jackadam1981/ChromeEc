@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa3a3bc_de2f48d2",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T23:47:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d5a53c72_72340f00",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7586601_0b14a12b",
@@ -159,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "428ddcaa_cb76715b",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T23:47:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "747bbbe2_8452bbf7",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3868912a_1af019c5",
@@ -194,6 +230,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0e9afc_7ee503fd",
+        "filename": "common/usbc/usb_pd_dp_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T23:47:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "05ad1d19_dddb0567",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a356255c_9874c29d",
@@ -225,6 +279,24 @@
       "side": 1,
       "message": "It\u0027s called asynchronously from the hpd-\u003edp_attention converter whenever a new hpd event is added to the queue. I wouldn\u0027t expect it to be called as a host command. It will be called from outside of the PD task though.",
       "parentUuid": "a356255c_9874c29d",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "533b54fc_96df1351",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T23:47:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5cbb5c1a_9cb1bd86",
       "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -266,6 +338,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35f793e8_9f1e454b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T23:47:44Z",
+      "side": 1,
+      "message": "Is there a way that this function could be called multiple times between when DPM_FLAG_SEND_ATTENTION is checked at the beginning and when it is set at the end?",
+      "parentUuid": "d2b644f8_53488381",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60e58330_2099b125",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 3
@@ -295,6 +385,24 @@
       "side": 1,
       "message": "It can only fail if vdm_cnt \u003c 1 or \u003e 7. This function can only get called to send a pending VDM Attention message which has to have either 0 or 1 VDOs + a VDM header. I probably though should make sure the VDM count passed in the function above is not 0.\n\nI do check the return value here, even though it will never fail given that I only a valid length attention message is accepted above, so this function can\u0027t fail, unless the function gets subsequently changed with some additional checking.",
       "parentUuid": "60e58330_2099b125",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af8b904_4e6f915e",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T23:47:44Z",
+      "side": 1,
+      "message": "Ack. I think making this module more robust to changes in other modules is probably a good thing.",
+      "parentUuid": "a4129644_908d2a43",
       "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

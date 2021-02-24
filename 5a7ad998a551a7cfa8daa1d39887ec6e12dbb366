@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb17fef_1b272ea2",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T23:47:44Z",
+      "side": 1,
+      "message": "Nit: extra space",
+      "range": {
+        "startLine": 66,
+        "startChar": 50,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "5a7ad998a551a7cfa8daa1d39887ec6e12dbb366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d53cde_e404c8dd",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T23:47:44Z",
+      "side": 1,
+      "message": "Unnecessary to explicitly compare to true",
+      "range": {
+        "startLine": 374,
+        "startChar": 23,
+        "endLine": 374,
+        "endChar": 31
+      },
+      "revId": "5a7ad998a551a7cfa8daa1d39887ec6e12dbb366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "327d1f24_bdb2ce11",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2083,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T23:47:44Z",
+      "side": 1,
+      "message": "I think these functions are meant to be called from outside the pd_ task, in which case they would conventionally start with pd_.",
+      "revId": "5a7ad998a551a7cfa8daa1d39887ec6e12dbb366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e491e799_3454663e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2091,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-24T23:47:44Z",
+      "side": 1,
+      "message": "I would prefer that opos be the return value.",
+      "revId": "5a7ad998a551a7cfa8daa1d39887ec6e12dbb366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
