@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05902746_a6ad8982",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-02-24T17:24:40Z",
+      "side": 1,
+      "message": "Define it as a constant and comment it why pick a custom larger value, instead of PD_T_ERROR_RECOVERY.\n\nFurthermore, maybe you can change PD_T_ERROR_RECOVERY directly. For the case the PD partner goes to the ErrorRecovery state, Asurada may not detect the CC status change as the PD_T_ERROR_RECOVERY is too short.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 11,
+        "endLine": 1053,
+        "endChar": 14
+      },
+      "revId": "4c9f447759f0bf43c40ad847768cdaa28a6977d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
