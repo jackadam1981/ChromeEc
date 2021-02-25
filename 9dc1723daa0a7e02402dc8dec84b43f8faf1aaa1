@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c574d21_19c628f7",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-25T05:42:13Z",
+      "side": 1,
+      "message": "check if its 0x3F or 0xFF",
+      "range": {
+        "startLine": 282,
+        "startChar": 31,
+        "endLine": 282,
+        "endChar": 35
+      },
+      "revId": "9dc1723daa0a7e02402dc8dec84b43f8faf1aaa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90437463_95b30c10",
         "filename": "baseboard/intelrvp/adlrvp.c",
         "patchSetId": 3
@@ -14,6 +37,30 @@
       "writtenOn": "2021-02-25T05:37:06Z",
       "side": 1,
       "message": "I am wondering virtual mux is required to be configured here:\nusb_muxes[TYPE_C_PORT_2].driver \u003d \u0026virtual_usb_mux_driver;\nusb_muxes[TYPE_C_PORT_2].hpd_update \u003d \u0026virtual_hpd_update;\nusb_muxes[TYPE_C_PORT_2].i2c_port \u003d NULL;\nusb_muxes[TYPE_C_PORT_2].i2c_addr_flags \u003d NULL; \n\nAnyways need testing.",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 295,
+        "endChar": 43
+      },
+      "revId": "9dc1723daa0a7e02402dc8dec84b43f8faf1aaa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff3cafe_ba37df3a",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-25T05:42:13Z",
+      "side": 1,
+      "message": "i think this line has to be \nusb_muxes[TYPE_C_PORT_2].driver \u003d NULL;",
+      "parentUuid": "90437463_95b30c10",
       "range": {
         "startLine": 295,
         "startChar": 2,
