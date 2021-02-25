@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include <device.h>
+#include <drivers/uart.h>
 #include <kernel.h>
 #include <zephyr.h>
 
@@ -21,6 +23,17 @@ static inline uint32_t next_idx(uint32_t cur_idx)
 }
 
 K_MUTEX_DEFINE(console_write_lock);
+
+const struct device *uart_dev;
+#ifdef CONFIG_UART_CONSOLE
+static int init_uart_dev(const struct device *unused)
+{
+	ARG_UNUSED(unused);
+	uart_dev = device_get_binding(CONFIG_UART_CONSOLE_ON_DEV_NAME);
+	return 0;
+}
+SYS_INIT(init_uart_dev, POST_KERNEL, 50);
+#endif
 
 void console_buf_notify_char(char c)
 {
@@ -104,4 +117,18 @@ int uart_console_read_buffer(uint8_t type, char *dest, uint16_t dest_size,
 	*write_count_out = write_count;
 
 	return EC_RES_SUCCESS;
+}
+
+int uart_getc(void)
+{
+	uint8_t c;
+
+	if (uart_dev && !uart_poll_in(uart_dev, &c))
+		return c;
+	return -1;
+}
+
+void uart_clear_input(void)
+{
+	/* Not needed since we're not stopping the shell. */
 }
