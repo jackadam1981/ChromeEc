@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "805ede25_a78eb981",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-25T11:06:06Z",
+      "side": 1,
+      "message": "this moves to cbi_ec_fw_config.h\nin the \"brya: Add CBI and FW_CONFIG support\" patch\nwhere it has the appropriate TODO. i\u0027ll fix that.\n\nthese usb/pd/charger patches are very interrelated\nand i think they\u0027ll end getting submitted together\nout of necessity.",
+      "parentUuid": "e6d16529_7c70973a",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f6e0386_d1d539a2",
         "filename": "board/brya/ec.tasklist",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-23T19:41:24Z",
       "side": 1,
       "message": "Use (BIT(2) | BIT(0)) instead.",
+      "range": {
+        "startLine": 24,
+        "startChar": 46,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6949190d_fb705b29",
+        "filename": "board/brya/ec.tasklist",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-25T11:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f6e0386_d1d539a2",
       "range": {
         "startLine": 24,
         "startChar": 46,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5936fc3e_b739c310",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-25T11:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abe0c344_52de133b",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58f09cae_1b2ec1a2",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-23T19:41:24Z",
       "side": 1,
       "message": "USB3 DB schematic shows SLGC55546.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a323749d_683a8c18",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-25T11:06:06Z",
+      "side": 1,
+      "message": "on that DB, the type C port uses the pi3usb9201 and type A port uses the SLGC55545.",
+      "parentUuid": "58f09cae_1b2ec1a2",
       "range": {
         "startLine": 151,
         "startChar": 0,
