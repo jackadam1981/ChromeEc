@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9aa2cc_f1c12610",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-25T18:01:58Z",
+      "side": 1,
+      "message": "Logic looks good to me.  I don\u0027t see any issues using hook_call_deferred() with 0 as the delay parameter.  I just want a comment added into the code explaining why the deferred call is needed.",
+      "revId": "4d00d0d650dc94420a3268c3efae275b9b5ffdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f1a2ede_1b622594",
@@ -68,6 +85,29 @@
       "side": 1,
       "message": "b:181156098. Feel free to add your comments there.",
       "parentUuid": "9b2565f0_4f003fd4",
+      "revId": "4d00d0d650dc94420a3268c3efae275b9b5ffdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3d240b_6c53daf6",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-25T18:01:58Z",
+      "side": 1,
+      "message": "Add a comment here.\n\nIf the port has entered low power mode, the PD task is paused and will not complete processing of pd_set_suspend().  Move pd_set_suspend() into a deferred call so that it runs from the HOOKS task and can generate a wake event to the PD task and enter suspended mode.",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 20
+      },
       "revId": "4d00d0d650dc94420a3268c3efae275b9b5ffdbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
