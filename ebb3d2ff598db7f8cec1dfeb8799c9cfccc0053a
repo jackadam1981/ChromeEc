@@ -16,6 +16,24 @@
       "message": "Still disable the timer here?",
       "revId": "ebb3d2ff598db7f8cec1dfeb8799c9cfccc0053a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "496281eb_e632509c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-25T15:20:57Z",
+      "side": 1,
+      "message": "I am 99% sure this is not needed but will add it back in for the 1% uncertainty and knowing adding it back is 100% safe",
+      "parentUuid": "72f44b9f_235a2c4e",
+      "revId": "ebb3d2ff598db7f8cec1dfeb8799c9cfccc0053a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
