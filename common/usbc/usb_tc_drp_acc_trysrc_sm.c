@@ -414,7 +414,8 @@ static struct type_c {
 	uint64_t pd_debounce;
 	/*
 	 * Time to ignore Vbus absence due to external IC debounce detection
-	 * logic immediately after a power role swap.
+	 * logic immediately after a power role swap or on Vbus loss for FRS
+	 * devices.
 	 */
 	uint64_t vbus_debounce_time;
 #ifdef CONFIG_USB_PD_TRY_SRC
@@ -2489,6 +2490,7 @@ static void tc_attached_snk_run(const int port)
 	    tc[port].vbus_debounce_time < get_time().val) {
 		/* PR Swap is no longer in progress */
 		TC_CLR_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
+		tc[port].vbus_debounce_time = TIMER_DISABLED;
 
 		/*
 		 * AutoDischargeDisconnect was turned off when we
@@ -2509,7 +2511,30 @@ static void tc_attached_snk_run(const int port)
 		/*
 		 * Detach detection
 		 */
-		if (pd_check_vbus_level(port, VBUS_REMOVED)) {
+		if (IS_ENABLED(CONFIG_USB_PD_FRS)) {
+			/*
+			 * Debounce Vbus presence when FRS is enabled.
+			 * Note that we may lose Vbus before the FRS
+			 * signal comes in to let us know we're PR
+			 * swapping.
+			 *
+			 * We may safely re-use the Vbus debounce timer here
+			 * since a PR swap would no longer be in progress.
+			 */
+			if (pd_check_vbus_level(port, VBUS_REMOVED)) {
+				if (tc[port].vbus_debounce_time ==
+							TIMER_DISABLED) {
+					tc[port].vbus_debounce_time =
+							get_time().val + 5*MSEC;
+				} else if (tc[port].vbus_debounce_time >=
+							get_time().val) {
+					set_state_tc(port, TC_UNATTACHED_SNK);
+					return;
+				}
+			} else {
+				tc[port].vbus_debounce_time = TIMER_DISABLED;
+			}
+		} else if (pd_check_vbus_level(port, VBUS_REMOVED)) {
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return;
 		}
