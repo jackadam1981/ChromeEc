@@ -69,6 +69,30 @@
       },
       "revId": "4c9f447759f0bf43c40ad847768cdaa28a6977d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b896a9a_9d9e877d",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-25T07:28:55Z",
+      "side": 1,
+      "message": "Quote from USB-IF Type-C R2.0, 4.5.2.2.5.2 Exiting from Attached.SNK State:\n```\nA port that has entered into USB PD communications with the Source and has seen the CC voltage exceed vRd-USB may monitor the CC pin to detect cable disconnect in addition to monitoring VBUS.\nA port that is monitoring the CC voltage for disconnect (but is not in the process of a USB PD PR_Swap or USB PD FR_Swap) shall transition to Unattached.SNK within tSinkDisconnect after the CC voltage remains below vRd-USB for tPDDebounce.\n```\n\nI\u0027m not familiar with the spec, seems like the CC pin monitoring is optional?\n(But in our case, Asurada monitor the CC voltage, it\u0027s just slow)\nThis makes me feels that always fakedisconnect is the correct way.\n\n500ms comes from binary search the interval required to detect disconnect on Asurada, results in between 300~400ms.",
+      "parentUuid": "86056012_c14d5f6b",
+      "range": {
+        "startLine": 1053,
+        "startChar": 11,
+        "endLine": 1053,
+        "endChar": 14
+      },
+      "revId": "4c9f447759f0bf43c40ad847768cdaa28a6977d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
