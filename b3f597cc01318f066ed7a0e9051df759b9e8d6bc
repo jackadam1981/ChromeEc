@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c682d01_18be5988",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-25T10:45:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c48118d3_3b76f767",
+      "revId": "b3f597cc01318f066ed7a0e9051df759b9e8d6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f597fe38_44263469",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "682a5c3c_eaa290a4",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-25T10:45:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f597fe38_44263469",
+      "revId": "b3f597cc01318f066ed7a0e9051df759b9e8d6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fddaf78_0b237f10",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-02-24T22:15:27Z",
       "side": 1,
       "message": "Nit - Delete \"false alarm\", the code likely handled at least one interrupt, which would not be a false interrupt.",
+      "range": {
+        "startLine": 199,
+        "startChar": 7,
+        "endLine": 199,
+        "endChar": 18
+      },
+      "revId": "b3f597cc01318f066ed7a0e9051df759b9e8d6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5e9bf13_0549575a",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-25T10:45:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fddaf78_0b237f10",
       "range": {
         "startLine": 199,
         "startChar": 7,
