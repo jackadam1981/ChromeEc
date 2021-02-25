@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c439d581_18d89a25",
+        "filename": "board/homestar/base_detect.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-02-25T21:56:34Z",
+      "side": 1,
+      "message": "Update all the board names.",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 9
+      },
+      "revId": "bef64ac314a58d9ee62fc56e1736ed95987cb631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4272fd95_43155f4e",
         "filename": "board/homestar/gpio.inc",
         "patchSetId": 6
@@ -42,6 +65,52 @@
         "startChar": 0,
         "endLine": 24,
         "endChar": 112
+      },
+      "revId": "bef64ac314a58d9ee62fc56e1736ed95987cb631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ba50bc_24edfda4",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-02-25T21:56:34Z",
+      "side": 1,
+      "message": "Add all the NC pins here, at least I saw 73, 74, D7 are missing.",
+      "range": {
+        "startLine": 178,
+        "startChar": 16,
+        "endLine": 178,
+        "endChar": 17
+      },
+      "revId": "bef64ac314a58d9ee62fc56e1736ed95987cb631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7891fb3_6390ece6",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-02-25T21:56:34Z",
+      "side": 1,
+      "message": "D0 and D1 is NC. Remove it.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 81
       },
       "revId": "bef64ac314a58d9ee62fc56e1736ed95987cb631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
