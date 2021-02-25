@@ -1,0 +1,76 @@
+#!/bin/sh
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# Adapted from check_allowed.sh in U-Boot
+#
+# Check that the .config file provided does not introduce any new ad-hoc CONFIG
+# options
+#
+# Use util/build_allowed.sh to generate the list of current ad-hoc
+# CONFIG options (those which are not in Kconfig).
+
+# Usage
+#    check_allowed.sh <path to .config> <path to allow file> <source dir>
+#
+# For example:
+#   scripts/check_allowed.sh b/chromebook_link/u-boot.cfg kconfig_allowed.txt .
+
+set -e
+set -u
+
+PROG_NAME="${0##*/}"
+
+usage() {
+	echo "$PROG_NAME <path to .config> <path to allow file> <source dir>"
+	exit 1
+}
+
+[ $# -ge 3 ] || usage
+
+config="$1"
+allow="$2"
+srctree="$3"
+
+tmp=$(mktemp -d)
+
+# Temporary files
+new_configs="${tmp}.configs"
+suspects="${tmp}.suspects"
+ok="${tmp}.ok"
+new_adhoc="${tmp}.adhoc"
+
+export LC_ALL=C
+export LC_COLLATE=C
+
+cat ${config} |sed -n 's/^\(CONFIG_[A-Za-z0-9_]*\).*/\1/p' |sort |uniq \
+	>${new_configs}
+
+comm -23 ${new_configs} ${allow} > ${suspects}
+
+cat `find ${srctree} -name "Kconfig*"` |sed -n \
+	-e 's/^\s*config *\([A-Za-z0-9_]*\).*$/CONFIG_\1/p' \
+	-e 's/^\s*menuconfig \([A-Za-z0-9_]*\).*$/CONFIG_\1/p' \
+	|sort |uniq > ${ok}
+comm -23 ${suspects} ${ok} >${new_adhoc}
+if [ -s ${new_adhoc} ]; then
+	echo >&2 "Error: The EC is in the process of migrating to Zephyr."
+	echo -e >&2 "\tZephyr uses Kconfig for configuration rather than"
+	echo -e >&2 "ad-hoc #defines."
+	echo -e >&2 "\tAny new EC CONFIG options must ALSO be added to Zephyr"
+	echo -e >&2 "\tso that new functionality is available in Zephyr also."
+	echo -e >&2 "\tThe following new ad-hoc CONFIG options were detected:"
+	echo >&2
+	cat >&2 ${new_adhoc}
+	echo >&2
+	echo >&2 "Please add these via Kconfig instead. Find a suitable Kconfig"
+	echo >&2 "file in zephyr/ and add a 'config' or 'menuconfig' option."
+	echo >&2 "Also see details in http://issuetracker.google.com/181253613"
+	echo >&2
+	echo >&2 "To temporarily disable this, use: ALLOW_CONFIG=1 make ..."
+else
+	./util/build_allowed.sh
+fi
+
+rm -rf ${tmp}
