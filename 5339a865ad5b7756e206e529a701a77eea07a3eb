@@ -34,6 +34,40 @@
       "parentUuid": "51e26d56_1f5522e4",
       "revId": "5339a865ad5b7756e206e529a701a77eea07a3eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9811549c_a0ebe9b5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3743,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-25T18:40:39Z",
+      "side": 1,
+      "message": "I don\u0027t think it matters that much, but this could be the same loop as on line 3733. You\u0027d have to pull the config check inside, but it\u0027s a compile-time constant. Whichever you think is more readable.",
+      "revId": "5339a865ad5b7756e206e529a701a77eea07a3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83c9ba4_03818be2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3755,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-25T18:40:39Z",
+      "side": 1,
+      "message": "Nit: Extra line",
+      "revId": "5339a865ad5b7756e206e529a701a77eea07a3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
