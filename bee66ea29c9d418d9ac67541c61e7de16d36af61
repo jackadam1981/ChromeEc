@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efb6684a_cc4fdfab",
+        "filename": "board/icarus/battery.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-25T10:16:49Z",
+      "side": 1,
+      "message": "I believe it works fine since I was able to boot system without connecting battery.\n\nI am not sure that how many batteries will be supported on this board, need Quanta\u0027s comment. @David, can you comment this.",
+      "parentUuid": "2bf6e3ee_7d68350d",
+      "range": {
+        "startLine": 179,
+        "startChar": 47,
+        "endLine": 179,
+        "endChar": 83
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfbff17f_0069b0ad",
         "filename": "board/icarus/board.c",
         "patchSetId": 13
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-25T08:49:00Z",
       "side": 1,
       "message": "Icarus doesn\u0027t need to detect i2c bus number at runtime, remove this",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 73
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfe9442_f2c2454b",
+        "filename": "board/icarus/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-25T10:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfbff17f_0069b0ad",
       "range": {
         "startLine": 140,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2735ba32_f96f4a24",
+        "filename": "board/icarus/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-25T10:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06dfec6b_2a80de26",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 32
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9719bfb8_2a31275e",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-25T09:00:40Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 32
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34c9763_bca4cbb6",
+        "filename": "board/icarus/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-25T10:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9719bfb8_2a31275e",
       "range": {
         "startLine": 245,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb9fb16_d6ed189e",
+        "filename": "board/icarus/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-25T10:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95d3b499_fec1d961",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 1
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e881e07c_40e89159",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-02-25T09:00:40Z",
       "side": 1,
       "message": "We can drop this line now, since it81202 has much more flash.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb0d67d5_9b00cf13",
+        "filename": "board/icarus/board.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-02-25T10:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e881e07c_40e89159",
       "range": {
         "startLine": 16,
         "startChar": 0,
