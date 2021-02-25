@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "659cc885_38e4b93c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-25T22:50:17Z",
+      "side": 1,
+      "message": "This is pretty heavy for a shell script. You should consider doing it in Python instead.",
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbcc78c3_5601402c",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-25T22:50:17Z",
+      "side": 1,
+      "message": "needs quoted ... check with shellcheck",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c4f12c_1cba9575",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-25T22:50:17Z",
+      "side": 1,
+      "message": "need spaces around pipes",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94566e6a_0e3b32ce",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-25T22:50:17Z",
+      "side": 1,
+      "message": "$(...)\n\nBut probably better to use find . -name \"Kconfig*\" -exec cat {} \\; in case we start getting lots of kconfig files and exceed the argv max count",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 5
+      },
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
