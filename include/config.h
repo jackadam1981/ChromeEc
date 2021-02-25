@@ -3580,6 +3580,11 @@
  * Also, this will enable PD in RO for TCPMv2.
  */
 #undef CONFIG_SYSTEM_UNLOCKED
+/*
+ * Some system tweak the CBI eeprom write protection via the hardware
+ * design. Adds this config to bypass the gpio write protection value.
+ */
+#undef CONFIG_BYPASS_CBI_EEPROM_WP_CHECK
 
 /*
  * Device can be a tablet as well as a clamshell.
@@ -6123,5 +6128,11 @@
 #ifndef CONFIG_ALS
 #define ALS_COUNT 0
 #endif /* CONFIG_ALS */
+
+#if defined(CONFIG_BYPASS_CBI_EEPROM_WP_CHECK) && \
+	!defined(CONFIG_SYSTEM_UNLOCKED)
+#error "Only prePVT device can add CONFIG_BYPASS_CBI_EEPROM_WP_CHECK." \
+	"Please add CONFIG_SYSTEM_UNLOCK if the device is in prePVT stage."
+#endif /* CONFIG_BYPASS_CBI_EEPROM_WP_CHECK && !CONFIG_SYSTEM_UNLOCK */
 
 #endif  /* __CROS_EC_CONFIG_H */
