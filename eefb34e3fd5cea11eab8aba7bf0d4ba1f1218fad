@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1704813_9e50db33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-25T19:43:39Z",
+      "side": 1,
+      "message": "Also, we don\u0027t use build phases in commit messages or code as it leaks progress.",
+      "range": {
+        "startLine": 17,
+        "startChar": 33,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "eefb34e3fd5cea11eab8aba7bf0d4ba1f1218fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "440dcaa5_dfb8bda7",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-02-25T19:24:35Z",
       "side": 1,
       "message": "Adding in Asedea for your thoughts on this change.",
+      "revId": "eefb34e3fd5cea11eab8aba7bf0d4ba1f1218fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa0f6a6_3cc14beb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-02-25T19:43:39Z",
+      "side": 1,
+      "message": "Perhaps this is a discussion better had on the bug, but I don\u0027t see why this should exist at all; it almost seems like the design is broken. The EEPROM has a physical write protect pin and the EC write protect should be tied to this. This change makes it sound like that\u0027s not the case...\n\nBecause if it were, then this change might allow the writes, but they would fail since it\u0027s still write protected.\n\nIf developers want to modify the CBI EEPROM, they should disable write protect.\n\nIs there something that I\u0027m missing?",
       "revId": "eefb34e3fd5cea11eab8aba7bf0d4ba1f1218fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
