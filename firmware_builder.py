@@ -15,7 +15,7 @@ import os
 import subprocess
 import sys
 
-from google.protobuf import json_format
+from chromite.third_party.google.protobuf import json_format
 
 from chromite.api.gen.chromite.api import firmware_pb2
 
