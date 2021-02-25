@@ -70,6 +70,30 @@
       },
       "revId": "ffc226493d46f9d45d6b093ca275f9edaab59e58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995b441a_dfee8888",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-02-25T03:15:55Z",
+      "side": 1,
+      "message": "BBRAM needs power, the power may come from battery or adapter.\n\nI tested icarus without battery, but adapter always connected. When I cold reset EC, our Rd is always asserted on cc and adapter keeps providing 5v, so data in BBRAM are still alive.",
+      "parentUuid": "450c3fc6_230c93a8",
+      "range": {
+        "startLine": 770,
+        "startChar": 7,
+        "endLine": 770,
+        "endChar": 30
+      },
+      "revId": "ffc226493d46f9d45d6b093ca275f9edaab59e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
