@@ -93,6 +93,30 @@
       },
       "revId": "4c9f447759f0bf43c40ad847768cdaa28a6977d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce56dd13_7a640c30",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-25T10:05:25Z",
+      "side": 1,
+      "message": "Forked the hayato specific issue to b:181203590.\n\nHowever, my interpretation is that the port is not required to detect cc voltage change, so we should not rely on the sleep(25ms) or whatever interval here..?",
+      "parentUuid": "3b896a9a_9d9e877d",
+      "range": {
+        "startLine": 1053,
+        "startChar": 11,
+        "endLine": 1053,
+        "endChar": 14
+      },
+      "revId": "4c9f447759f0bf43c40ad847768cdaa28a6977d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
