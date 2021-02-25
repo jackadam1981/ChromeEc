@@ -52,8 +52,6 @@
 #define GPIO_SYS_RESET_L		GPIO_SYS_RST_ODL
 #define GPIO_WP_L			GPIO_EC_WP_ODL
 
-#define CONFIG_FANS			FAN_CH_COUNT
-
 /* System has back-lit keyboard */
 #define CONFIG_PWM_KBLIGHT
 
@@ -88,6 +86,8 @@
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_POWER_GPIO	GPIO_SEQ_EC_DSW_PWROK
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
+
+#define CONFIG_FANS			FAN_CH_COUNT
 
 /* Charger defines */
 #define CONFIG_CHARGER_BQ25720
