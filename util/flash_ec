@@ -54,6 +54,17 @@ BOARDS_IT83XX=(
 	reef_it8320
 	tglrvpu_ite
 	tglrvpy_ite
+<<<<<<< HEAD   (6f2369 icarus: Initial EC image)
+=======
+	tglrvpy_ite_tcpmv1
+)
+
+BOARDS_IT83XX_SPI_PROGRAMMING=(
+	TODO: remove me once we have icarus overlay
+	icarus
+	it8xxx2_evb
+	it8xxx2_pdevb
+>>>>>>> CHANGE (090b9d board/icarus: initial it81202 based board)
 )
 
 BOARDS_STM32=(
