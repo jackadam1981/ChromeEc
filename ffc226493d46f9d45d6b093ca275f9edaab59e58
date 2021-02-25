@@ -94,6 +94,30 @@
       },
       "revId": "ffc226493d46f9d45d6b093ca275f9edaab59e58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "356f664b_cffd2d2b",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-02-25T09:02:30Z",
+      "side": 1,
+      "message": "Ack. SG. Can you also comment this information in the code?",
+      "parentUuid": "995b441a_dfee8888",
+      "range": {
+        "startLine": 770,
+        "startChar": 7,
+        "endLine": 770,
+        "endChar": 30
+      },
+      "revId": "ffc226493d46f9d45d6b093ca275f9edaab59e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
