@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f3cfcf_126c97ff",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-25T03:31:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb17fef_1b272ea2",
+      "range": {
+        "startLine": 66,
+        "startChar": 50,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "5a7ad998a551a7cfa8daa1d39887ec6e12dbb366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01d53cde_e404c8dd",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-24T23:47:44Z",
       "side": 1,
       "message": "Unnecessary to explicitly compare to true",
+      "range": {
+        "startLine": 374,
+        "startChar": 23,
+        "endLine": 374,
+        "endChar": 31
+      },
+      "revId": "5a7ad998a551a7cfa8daa1d39887ec6e12dbb366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c36a96f6_ea9a052b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-25T03:31:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01d53cde_e404c8dd",
       "range": {
         "startLine": 374,
         "startChar": 23,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ba19e5_81f7084b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2083,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-25T03:31:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "327d1f24_bdb2ce11",
+      "revId": "5a7ad998a551a7cfa8daa1d39887ec6e12dbb366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e491e799_3454663e",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-02-24T23:47:44Z",
       "side": 1,
       "message": "I would prefer that opos be the return value.",
+      "revId": "5a7ad998a551a7cfa8daa1d39887ec6e12dbb366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb2c613_d32f4112",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2091,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-25T03:31:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e491e799_3454663e",
       "revId": "5a7ad998a551a7cfa8daa1d39887ec6e12dbb366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

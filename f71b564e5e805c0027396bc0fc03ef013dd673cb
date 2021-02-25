@@ -356,6 +356,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8352b4f6_3ef79a0d",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-25T03:31:57Z",
+      "side": 1,
+      "message": "The hpd event to DP Attention queue has a 10 msec time spacing, so this can\u0027t happen from this case. Though, I could move setting the flag up to minimize the possibility.",
+      "parentUuid": "35f793e8_9f1e454b",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60e58330_2099b125",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 3
@@ -473,6 +491,30 @@
       "writtenOn": "2021-02-17T01:27:56Z",
       "side": 1,
       "message": "from",
+      "range": {
+        "startLine": 2691,
+        "startChar": 57,
+        "endLine": 2691,
+        "endChar": 58
+      },
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58aebbdf_ad68be6c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2691,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-25T03:31:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35f4732a_4b7d2f84",
       "range": {
         "startLine": 2691,
         "startChar": 57,
