@@ -56,6 +56,11 @@ BOARDS_IT83XX=(
 	tglrvpy_ite
 )
 
+BOARDS_IT83XX_SPI_PROGRAMMING=(
+	TODO: remove me once we have icarus overlay
+	icarus
+)
+
 BOARDS_STM32=(
 	bloonchipper
 	chell_pd
