@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6beb5a8_efb24cb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-02-25T09:00:40Z",
+      "side": 1,
+      "message": "+kuten to review gpio.inc",
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bf6e3ee_7d68350d",
@@ -49,6 +66,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06dfec6b_2a80de26",
+        "filename": "board/icarus/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-02-25T09:00:40Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 32
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9719bfb8_2a31275e",
+        "filename": "board/icarus/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-02-25T09:00:40Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 32
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95d3b499_fec1d961",
         "filename": "board/icarus/board.c",
         "patchSetId": 13
@@ -65,6 +128,29 @@
         "startChar": 0,
         "endLine": 466,
         "endChar": 1
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e881e07c_40e89159",
+        "filename": "board/icarus/board.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-02-25T09:00:40Z",
+      "side": 1,
+      "message": "We can drop this line now, since it81202 has much more flash.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
       },
       "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
