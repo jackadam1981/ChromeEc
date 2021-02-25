@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f4923b_676e948c",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-02-25T05:29:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dcd6f40_01a4a0d9",
+      "range": {
+        "startLine": 280,
+        "startChar": 12,
+        "endLine": 280,
+        "endChar": 41
+      },
+      "revId": "33d6fe5e943e2190a9d764929e6dbf0a6878a046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49cfdcf1_84619b7f",
@@ -60,6 +84,24 @@
       "writtenOn": "2021-02-24T06:55:24Z",
       "side": 1,
       "message": "ADLP_LP5_T4_RVP_SKU_BOARD_ID     0x13",
+      "revId": "33d6fe5e943e2190a9d764929e6dbf0a6878a046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b30be18e_43687555",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-02-25T05:29:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49cfdcf1_84619b7f",
       "revId": "33d6fe5e943e2190a9d764929e6dbf0a6878a046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
