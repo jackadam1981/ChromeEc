@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51b58e3_76ada474",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-25T16:38:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4576f61d_7e82e9d7",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "d1490bbf2633c045ccc26a3877ae479904fa3146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08353d8c_b861e870",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "In jtag_init, it will call npcx_pinctrl_mux_configure function in the driver pinmux_npcx.c whose priority is CONFIG_KERNEL_INIT_PRIORITY_DEFAULT.\nThe priority of jtag_init should be lower than it.\nhttps://chromium.googlesource.com/chromiumos/third_party/zephyr/+/refs/heads/chromeos-v2.5/drivers/pinmux/pinmux_npcx.c#148",
       "parentUuid": "f9bac51b_713cd661",
+      "range": {
+        "startLine": 167,
+        "startChar": 34,
+        "endLine": 167,
+        "endChar": 73
+      },
+      "revId": "d1490bbf2633c045ccc26a3877ae479904fa3146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad92b8ca_8e313ae0",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-25T16:38:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "38fdda41_eef1f9ec",
       "range": {
         "startLine": 167,
         "startChar": 34,
