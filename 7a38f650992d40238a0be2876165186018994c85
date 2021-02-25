@@ -35,6 +35,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1fc7101_1ab9d111",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2021-02-25T06:43:59Z",
+      "side": 1,
+      "message": "We don\u0027t need this CL anymore, the HW fix works.",
+      "revId": "7a38f650992d40238a0be2876165186018994c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07741d32_6add8403",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2021-02-25T06:43:59Z",
+      "side": 1,
+      "message": "Can we use 90 instead ? It was just over the SPEC very little, we don\u0027t have to half the speed for that little overing.",
+      "parentUuid": "95993333_53202840",
+      "revId": "7a38f650992d40238a0be2876165186018994c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfa1d2e7_ed6d9de6",
