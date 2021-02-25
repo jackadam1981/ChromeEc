@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc70c9e_c4039208",
+        "filename": "board/brya/charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-25T11:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a165df6c_cb0bac77",
+      "revId": "bb81506c3b001579322b0046a469662e4bc9551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e64d6b47_85f29e36",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-02-23T21:02:04Z",
       "side": 1,
       "message": "Can this be moved to a shared file?  Looks like a lot of duplicated code across boards.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "bb81506c3b001579322b0046a469662e4bc9551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b89c377_35e8d149",
+        "filename": "board/brya/charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-02-25T11:20:24Z",
+      "side": 1,
+      "message": "we can move chg_chips[] to board.c and promote the rest of charger.c\nto baseboard/....",
+      "parentUuid": "e64d6b47_85f29e36",
       "range": {
         "startLine": 29,
         "startChar": 0,
