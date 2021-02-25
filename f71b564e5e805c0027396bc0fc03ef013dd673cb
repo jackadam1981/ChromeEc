@@ -374,6 +374,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1afed300_6124e68f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-02-25T18:16:11Z",
+      "side": 1,
+      "message": "In that case, it would probably be good to comment pd_request_vdm_attention with something about how it\u0027s not safe to call reentrantly and comment the call site with a note that it won\u0027t be called reentrantly. Feel free to use a real word instead of \"reentrantly.\" :)\n\nWRT moving the flag setting up, in its new position, if dpm_run interrupts pd_request_vdm_attention at line 67 (patchset 9), would it then queue up the uninitialized (or previously initialized) VDM buffer to be transmitted?",
+      "parentUuid": "8352b4f6_3ef79a0d",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60e58330_2099b125",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 3
