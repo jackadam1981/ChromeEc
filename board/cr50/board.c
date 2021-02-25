@@ -44,6 +44,7 @@
 #include "usb_spi.h"
 #include "util.h"
 #include "wp.h"
+#include "lms.h"
 
 /* Define interrupt and gpio structs */
 #include "gpio_list.h"
@@ -1884,3 +1885,151 @@ uint32_t board_cfg_reg_read(void)
 {
 	return GREG32(PMU, PWRDN_SCRATCH21);
 }
+
+#include "dcrypto.h"
+
+
+#define TREE_HEIGHT 15
+#define CACHE_LEVELS_UP 3
+const ilen_t I = { 3, 1, 4, 1 };
+const struct lmots_params *params;
+
+#define CACHED_SHA_LEN (1 << (TREE_HEIGHT - CACHE_LEVELS_UP))
+
+const uint8_t* get_private_data_at(merkle_index_t q)
+{
+	static uint8_t buffer[26 * 24];
+	buffer[0] = q;;
+	return buffer;
+}
+
+void get_cached_sha(int offset, struct Sha *sha_out)
+{
+	sha_out->value[0] = offset;
+}
+
+void get_leaf_hash(merkle_index_t q, struct Sha *sha_out)
+{
+        struct ots_public_key hash_buf;
+	memcpy(hash_buf.I, I, I_LEN);
+	hash_buf.q = htobe32(q + (1 << TREE_HEIGHT));
+	hash_buf.d = D_LEAF;
+
+	lm_ots_compute_pub_key(params, I, q,
+					get_private_data_at(q), sha_out);
+
+	xx_sha256_2(&hash_buf, PBLC_PREFIX_LEN, sha_out->value, 24,
+		    sha_out->value, 24);
+}
+
+void get_leaf_sig(merkle_index_t q, const struct Sha *digest,
+		  struct LeafSig *leaf_sig_out)
+{
+	lm_ots_compute_sig(params, I, q, get_private_data_at(q), digest,
+			   leaf_sig_out);
+}
+
+void hash_two_nodes(int r, const struct Sha *left, const struct Sha *right,
+		    struct Sha *sha_out)
+{
+	struct ots_public_key hash_buf;
+
+	memcpy(hash_buf.I, I, I_LEN);
+	hash_buf.q = htobe32(r);
+	hash_buf.d = D_INTR;
+
+	xx_sha256_3(&hash_buf, PBLC_PREFIX_LEN, left->value, 24, right->value,
+		    24, sha_out->value, 24);
+}
+
+void calc_sha(int r, struct Sha *sha_out)
+{
+	struct Sha left;
+	struct Sha right;
+
+	if (r >= (1 << TREE_HEIGHT)) {
+		get_leaf_hash(r - (1 << TREE_HEIGHT), sha_out);
+	} else if (r >= CACHED_SHA_LEN && r < (CACHED_SHA_LEN * 2)) {
+		get_cached_sha(r - CACHED_SHA_LEN, sha_out);
+	} else {
+		calc_sha(r << 1, &left);
+		calc_sha((r << 1) + 1, &right);
+		hash_two_nodes(r, &left, &right, sha_out);
+	}
+}
+
+const struct Sha TOP_LEVEL_HASH_CONSTANT_FOR_GNUBBY = {
+	.value = {0, 1, 2, 3},
+};
+
+struct FinalSig {
+  struct LeafSig leaf;
+  struct Sha path[TREE_HEIGHT + 1];
+} __packed __aligned(4);
+
+void get_sign_in_order(struct FinalSig *final, const struct Sha *input_digest,
+                       merkle_index_t q) {
+	uint8_t other[TREE_HEIGHT];
+	size_t j = 0;
+
+
+	memcpy(&final->path[TREE_HEIGHT], &TOP_LEVEL_HASH_CONSTANT_FOR_GNUBBY,
+	       sizeof(TOP_LEVEL_HASH_CONSTANT_FOR_GNUBBY));
+
+	// Do all SHA that use private key index before the specified index
+	for (int i = 1; i <= TREE_HEIGHT; ++i) {
+		int shift = (TREE_HEIGHT - i);
+		int curr_r = (q + (1 << TREE_HEIGHT)) >> shift;
+
+		// If left subtree has sha, then do it now
+		if (curr_r & 0x1) {
+			calc_sha(curr_r ^ 1, &final->path[TREE_HEIGHT - i]);
+		} else {
+			other[j++] = i;
+		}
+	}
+
+	// Access private key index for specified by generating sig
+	get_leaf_sig(q, input_digest, &final->leaf);
+
+	// Access all private keys on right of specified index
+	while (j > 0) {
+		int i = other[--j];
+		int shift = (TREE_HEIGHT - i);
+		int curr_r = (q + (1 << TREE_HEIGHT)) >> shift;
+		calc_sha(curr_r ^ 1, &final->path[TREE_HEIGHT - i]);
+	}
+}
+
+void do_stuff(void) {
+	struct FinalSig final = { };
+	struct Sha digest = { .value = { 0, 1, 2 } };
+	const uint8_t *b;
+	merkle_index_t q = 1;
+	timestamp_t now;
+
+	now = get_time();
+	get_sign_in_order(&final, &digest, q);
+	ccprintf("%d us: 0x", get_time().le.lo - now.le.lo);
+
+	b = (void *) final.path[0].value;
+	for (size_t i = 0; i < params->n; ++i, ++b) {
+		ccprintf("%02x", *b);
+	}
+	ccprintf("\n");
+}
+
+/**
+ * Console command to toggle system (AP) reset
+ */
+static int command_sign(int argc, char **argv)
+{
+	params = lm_ots_look_up_parameter_set(LMOTS_SHA256_N24_W8);
+
+	do_stuff();
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(sign, command_sign,
+	"Sign",
+	"Signed PQ sig");

@@ -40,6 +40,7 @@ dirs-y += $(BDIR)/tpm2
 
 # Objects that we need to build
 board-y =  board.o
+board-y +=  lms.o
 board-y += ap_state.o
 board-y += closed_source_set1.o
 board-y += ec_state.o
