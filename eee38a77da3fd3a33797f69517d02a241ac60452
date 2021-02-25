@@ -39,6 +39,30 @@
       },
       "revId": "eee38a77da3fd3a33797f69517d02a241ac60452",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53de430_da35cbce",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-25T22:19:43Z",
+      "side": 1,
+      "message": "Doing it this way made it easier to adjust the number of timers without having to worry about missing one, if a new one were added.  I can change it to a couple of assignments instead.",
+      "parentUuid": "5079c218_13fa8a77",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "eee38a77da3fd3a33797f69517d02a241ac60452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
