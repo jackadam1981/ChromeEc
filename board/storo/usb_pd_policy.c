@@ -3,7 +3,9 @@
  * found in the LICENSE file.
  */
 
+#include "battery_smart.h"
 #include "charge_manager.h"
+#include "charger.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -15,12 +17,15 @@
 
 int pd_check_vconn_swap(int port)
 {
-	/* Allow VCONN swaps if the AP is on. */
+	/* Allow VCONN swaps if the AP is on */
 	return chipset_in_state(CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_ON);
 }
 
 void pd_power_supply_reset(int port)
 {
+	if (port != 0)
+		return;
+
 	/* Disable VBUS */
 	tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW);
 
@@ -32,7 +37,7 @@ int pd_set_power_supply_ready(int port)
 {
 	int rv;
 
-	if (port >= board_get_usb_pd_port_count())
+	if (port != 0)
 		return EC_ERROR_INVAL;
 
 	/* Disable charging. */
@@ -55,3 +60,7 @@ int pd_set_power_supply_ready(int port)
 	return EC_SUCCESS;
 }
 
+int pd_snk_is_vbus_provided(int port)
+{
+	return pd_check_vbus_level(port, VBUS_PRESENT);
+}
