@@ -1206,7 +1206,7 @@ void pe_got_soft_reset(int port)
 	set_state_pe(port, PE_SOFT_RESET);
 }
 
-static bool pd_can_source_from_device(int port, const int pdo_cnt,
+__overridable bool pd_can_source_from_device(int port, const int pdo_cnt,
 				      const uint32_t *pdos)
 {
 	/*
@@ -1724,6 +1724,21 @@ static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
 			charge_manager_update_dualrole(port, CAP_DUALROLE);
 		}
 	}
+
+	/*
+	 * Check if port partner can supply power. This funtion has a default
+	 * implementation in this file that checks to see if the port partner is
+	 * both dual role capable and has unconstrained power. However, boards
+	 * may override this function to allow for a different port power
+	 * role preference.
+	 */
+	if (!pd_can_source_from_device(port, pdo_cnt, pdos))
+		pd_dpm_request(port, DPM_REQUEST_PR_SWAP);
+}
+
+__overridable bool pd_check_port_requests_source(int port)
+{
+	return false;
 }
 
 void pd_request_power_swap(int port)
