@@ -16,6 +16,24 @@
       "message": "Also disable the timeout timer here since the sink hard reset path uses it too",
       "revId": "ec795c2a5d52387642a9a6e84e909d974ae7bf9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a7bfde_01035fbf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2627,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-26T17:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ac87028_e4363ffd",
+      "revId": "ec795c2a5d52387642a9a6e84e909d974ae7bf9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
