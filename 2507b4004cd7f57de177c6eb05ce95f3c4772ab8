@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b29813_502084a9",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T19:02:47Z",
+      "side": 1,
+      "message": "Does if(IS_ENABLED(CONFIG_ZEPHYR)) compile?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 21
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4889e9ed_7f858b63",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T19:02:47Z",
+      "side": 1,
+      "message": "Please open a bug for this and a TODO",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 57
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdbf6a70_09a3cd5f",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T19:02:47Z",
+      "side": 1,
+      "message": "Same here - use IS_ENABLED() if possible.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ef1351_8fe35084",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T19:02:47Z",
+      "side": 1,
+      "message": "Change to \"Google Security Chip (GSC)\".",
+      "range": {
+        "startLine": 129,
+        "startChar": 10,
+        "endLine": 129,
+        "endChar": 14
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde67029_814400a0",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T19:02:47Z",
+      "side": 1,
+      "message": "GSC",
+      "range": {
+        "startLine": 129,
+        "startChar": 25,
+        "endLine": 129,
+        "endChar": 29
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab59e0f_ca5295d2",
+        "filename": "zephyr/projects/volteer/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T19:02:47Z",
+      "side": 1,
+      "message": "Move to a separate CL.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
