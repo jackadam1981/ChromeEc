@@ -74,6 +74,7 @@ common-$(CONFIG_DEVICE_STATE)+=device_state.o
 common-$(CONFIG_DPTF)+=dptf.o
 common-$(CONFIG_EC_EC_COMM_CLIENT)+=ec_ec_comm_client.o
 common-$(CONFIG_EC_EC_COMM_SERVER)+=ec_ec_comm_server.o
+common-$(CONFIG_FW_CONFIG_UTILS)+=fw_config.o
 common-$(CONFIG_HOSTCMD_ESPI)+=espi.o
 common-$(CONFIG_EXTPOWER_GPIO)+=extpower_gpio.o
 common-$(CONFIG_EXTPOWER)+=extpower_common.o

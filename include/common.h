@@ -52,6 +52,34 @@
 #define CONCAT4(w, x, y, z) CONCAT_STAGE_1(w, x, y, z)
 
 /*
+ * Macros to count the number of __VA_ARGS__ passed to a macro
+ *
+ * Only works up for up to 31 arguments. Add more as needed.
+ */
+
+#define VA_ARGS_COUNT(...) _VA_ARGS_COUNT(-1, ##__VA_ARGS__, \
+			31, 30, 29, 28, 27, 26, 25, 24,      \
+			23, 22, 21, 20, 19, 18, 17, 16,      \
+			15, 14, 13, 12, 11, 10,  9,  8,      \
+			7,  6,  5,  4,  3,  2,  1,   0)
+
+#define _VA_ARGS_COUNT(_31, _30, _29, _28, _27, _26, _25, _24, \
+		       _23, _22, _21, _20, _19, _18, _17, _16, \
+		       _15, _14, _13, _12, _11, _10, _09, _08, \
+		       _07, _06, _05, _04, _03, _02, _01, _00, \
+		       count, ...) count
+
+BUILD_ASSERT(VA_ARGS_COUNT() == 0);
+BUILD_ASSERT(VA_ARGS_COUNT(1) == 1);
+BUILD_ASSERT(VA_ARGS_COUNT(1, 2) == 2);
+BUILD_ASSERT(VA_ARGS_COUNT(1, 2, 3) == 3);
+BUILD_ASSERT(VA_ARGS_COUNT(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, \
+			   13, 14, 15, 16) == 16);
+BUILD_ASSERT(VA_ARGS_COUNT(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, \
+			   13, 14, 15, 16, 17, 18, 19, 20, 21, 22, \
+			   23, 24, 25, 26, 27, 28, 29, 30, 31) == 31);
+
+/*
  * Macros to turn the argument into a string constant.
  *
  * Compared to directly using the preprocessor # operator, this 2-stage macro
