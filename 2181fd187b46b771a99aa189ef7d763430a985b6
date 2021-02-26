@@ -22,6 +22,30 @@
       },
       "revId": "2181fd187b46b771a99aa189ef7d763430a985b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5981c158_598ae1b9",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T08:29:53Z",
+      "side": 0,
+      "message": "Ack, https://crrev.com/c/2721464",
+      "parentUuid": "b05c9dd4_91995796",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "2181fd187b46b771a99aa189ef7d763430a985b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
