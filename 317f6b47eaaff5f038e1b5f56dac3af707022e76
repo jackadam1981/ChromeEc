@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "388fd8df_805e6702",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2702,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-26T16:55:50Z",
+      "side": 1,
+      "message": "Is this usage right?  It seems like we\u0027ll disable for anything making us leave ready, which could be something like a partner-requested AMS beginning.\n\nShould we disable after setting the PR swap DPM request?",
+      "revId": "317f6b47eaaff5f038e1b5f56dac3af707022e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
