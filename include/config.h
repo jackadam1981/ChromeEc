@@ -3480,6 +3480,19 @@
  */
 #define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_3_30
 
+<<<<<<< HEAD   (bf8ab3 it83xx/watchdog: do not lock access to ETWCFG register)
+||||||| BASE
+/* PPC is capable of gating the SBU lines. */
+#undef CONFIG_USBC_PPC_SBU
+
+=======
+/* SYV682 does not pass through CC, instead it bypasses to the TCPC */
+#undef CONFIG_SYV682X_NO_CC
+
+/* PPC is capable of gating the SBU lines. */
+#undef CONFIG_USBC_PPC_SBU
+
+>>>>>>> CHANGE (801ac5 Octopus: Re-enable VCONN sourcing from TCPC)
 /* PPC is capable of providing VCONN */
 #undef CONFIG_USBC_PPC_VCONN
 
@@ -4054,6 +4067,67 @@
 #define CONFIG_USBC_PPC_VCONN
 #endif
 
+<<<<<<< HEAD   (bf8ab3 it83xx/watchdog: do not lock access to ETWCFG register)
+||||||| BASE
+/*
+ * The SYV682X supports VCONN and needs to be informed of CC polarity.
+ * There is a 3.6V limit on the HOST_CC signals, so the TCPC should not source
+ * 5V VCONN.
+ *
+ * For the ITE integrated TCPC, it wants to be notified of VCONN but won't
+ * source VCONN itself, so is safe to keep enabled.
+ */
+#if defined(CONFIG_USBC_PPC_SYV682X)
+#define CONFIG_USBC_PPC_POLARITY
+#define CONFIG_USBC_PPC_VCONN
+#if !defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX) && \
+	!defined(CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2)
+#undef CONFIG_USB_PD_TCPC_VCONN
+#endif
+#endif
+
+/*****************************************************************************/
+/* Define CONFIG_USBC_OCP if a component can detect overcurrent */
+#if defined(CONFIG_USBC_PPC_AOZ1380) || \
+	defined(CONFIG_USBC_PPC_NX20P3481) || \
+	defined(CONFIG_USBC_PPC_NX20P3483) || \
+	defined(CONFIG_USBC_PPC_SN5S330) || \
+	defined(CONFIG_USBC_PPC_SYV682X)  || \
+	defined(CONFIG_CHARGER_SM5803)
+#define CONFIG_USBC_OCP
+#endif
+
+=======
+/*
+ * The SYV682X supports VCONN and needs to be informed of CC polarity.
+ * There is a 3.6V limit on the HOST_CC signals, so the TCPC should not source
+ * 5V VCONN.
+ *
+ * For the ITE integrated TCPC, it wants to be notified of VCONN but won't
+ * source VCONN itself, so is safe to keep enabled.
+ */
+#if defined(CONFIG_USBC_PPC_SYV682X)
+#define CONFIG_USBC_PPC_POLARITY
+#define CONFIG_USBC_PPC_VCONN
+#if !defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX) && \
+	!defined(CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2) && \
+	!defined(CONFIG_SYV682X_NO_CC)
+#undef CONFIG_USB_PD_TCPC_VCONN
+#endif
+#endif
+
+/*****************************************************************************/
+/* Define CONFIG_USBC_OCP if a component can detect overcurrent */
+#if defined(CONFIG_USBC_PPC_AOZ1380) || \
+	defined(CONFIG_USBC_PPC_NX20P3481) || \
+	defined(CONFIG_USBC_PPC_NX20P3483) || \
+	defined(CONFIG_USBC_PPC_SN5S330) || \
+	defined(CONFIG_USBC_PPC_SYV682X)  || \
+	defined(CONFIG_CHARGER_SM5803)
+#define CONFIG_USBC_OCP
+#endif
+
+>>>>>>> CHANGE (801ac5 Octopus: Re-enable VCONN sourcing from TCPC)
 /*****************************************************************************/
 /*
  * Define CONFIG_USB_PD_VBUS_MEASURE_CHARGER if the charger on the board
