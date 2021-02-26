@@ -18,6 +18,47 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c30086_fa8e1f68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T08:41:06Z",
+      "side": 1,
+      "message": "While I agree that Python might have been easier here I don\u0027t think it\u0027s worth rewriting. This seems correct to me, I think we should just move forward with what we have.",
+      "parentUuid": "659cc885_38e4b93c",
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d442befa_7b063f10",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T08:41:06Z",
+      "side": 1,
+      "message": "Since there\u0027s already a script that checks for new CONFIG_ options that haven\u0027t been added to config.h can\u0027t we just check that one file and assume that the other script would have ensured that the CONFIGs were added there?",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 78
+      },
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbcc78c3_5601402c",
