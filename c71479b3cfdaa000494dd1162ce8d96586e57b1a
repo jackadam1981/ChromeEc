@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8802a1a8_c73b46ad",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T21:55:45Z",
+      "side": 1,
+      "message": "Good catch - the NPCX_UUT is the flash interface used through the cr50/suzyq/servov4 interface.",
+      "parentUuid": "1b2e45e6_ccaa42f9",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 15
+      },
+      "revId": "c71479b3cfdaa000494dd1162ce8d96586e57b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "107b89d6_2850ba03",
         "filename": "util/flash_ec",
         "patchSetId": 4
