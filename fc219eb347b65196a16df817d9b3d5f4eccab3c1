@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "436b6c9f_9c6b2faf",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T17:33:29Z",
+      "side": 1,
+      "message": "Didn\u0027t get to it yet, just uploaded the WIP. Done",
+      "parentUuid": "c1d276de_68e7aeb4",
+      "range": {
+        "startLine": 122,
+        "startChar": 14,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "fc219eb347b65196a16df817d9b3d5f4eccab3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b15c52a0_bdbf5ab5",
@@ -89,6 +113,30 @@
       "writtenOn": "2021-02-26T15:23:14Z",
       "side": 1,
       "message": "Needs a description of what this is, including what the 2 means",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 15
+      },
+      "revId": "fc219eb347b65196a16df817d9b3d5f4eccab3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97214ecb_cccab4e3",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T17:33:29Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "b15c52a0_bdbf5ab5",
       "range": {
         "startLine": 125,
         "startChar": 11,
