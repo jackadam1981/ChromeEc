@@ -16,6 +16,92 @@
       "message": "rebased to remove unused CL chain",
       "revId": "c71479b3cfdaa000494dd1162ce8d96586e57b1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a895ef4_bc4b1f6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-26T19:23:58Z",
+      "side": 1,
+      "message": "Hi Amit, i think this needs to internal SPI flash for 9x series too",
+      "revId": "c71479b3cfdaa000494dd1162ce8d96586e57b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b2e45e6_ccaa42f9",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-26T19:23:58Z",
+      "side": 1,
+      "message": "BOARD_NPCX_INT_SPI",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 15
+      },
+      "revId": "c71479b3cfdaa000494dd1162ce8d96586e57b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "107b89d6_2850ba03",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-26T19:23:58Z",
+      "side": 1,
+      "message": "BOARD_NPCX_INT_SPI",
+      "range": {
+        "startLine": 325,
+        "startChar": 17,
+        "endLine": 325,
+        "endChar": 32
+      },
+      "revId": "c71479b3cfdaa000494dd1162ce8d96586e57b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ee1372_93b21b61",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-26T19:23:58Z",
+      "side": 1,
+      "message": "npcx_int_spi",
+      "range": {
+        "startLine": 326,
+        "startChar": 20,
+        "endLine": 326,
+        "endChar": 28
+      },
+      "revId": "c71479b3cfdaa000494dd1162ce8d96586e57b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
