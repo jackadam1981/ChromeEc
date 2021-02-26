@@ -20,6 +20,7 @@
 #include "usb_pd.h"
 #include "usb_pd_dpm.h"
 #include "usb_pe_sm.h"
+#include "usb_tbt_alt_mode.h"
 #include "usbc_ppc.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -133,6 +134,38 @@ void enter_usb_failed(int port)
 
 	usb4_debug_prints(port, USB4_MODE_FAILURE);
 	usb4_state[port] = USB4_INACTIVE;
+}
+
+bool enter_usb_is_valid(int port)
+{
+	struct pd_discovery *disc_sop_prime;
+	union tbt_mode_resp_cable cable_mode_resp = {
+		.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME) };
+
+	/*
+	 * Enter USB mode if -
+	 * 1. It's a passive cable and Thunderbolt Mode SOP' VDO
+	 *    active/passive bit (B25) is TBT_CABLE_PASSIVE or
+	 * 2. It's a active cable with VDM version >= 2.0 and
+	 *    VDO version >= 1.3 or
+	 * 3. The cable has entered Thunderbolt mode.
+	 */
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE &&
+	    cable_mode_resp.tbt_active_passive == TBT_CABLE_PASSIVE)
+		return true;
+
+	disc_sop_prime = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE &&
+	    pd_get_vdo_ver(port, TCPC_TX_SOP_PRIME) >= VDM_VER20 &&
+	    disc_sop_prime->identity.product_t1.a_rev30.vdo_ver >=
+							VDO_VERSION_1_3)
+		return true;
+
+	if (tbt_cable_entry_is_done(port))
+		return true;
+
+	return false;
 }
 
 static bool enter_usb_response_valid(int port, enum tcpm_transmit_type type)
