@@ -1724,6 +1724,21 @@ static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
 			charge_manager_update_dualrole(port, CAP_DUALROLE);
 		}
 	}
+
+	/*
+	 * If we attached in sink power role,  but the port policy preference is
+	 * to be a power role source and the port partner is dual role capable,
+	 * then request a power role swap.
+	 */
+	if (pd_check_port_requests_source(port) &&
+	    (pdos[0] & PDO_FIXED_DUAL_ROLE)) {
+		pd_dpm_request(port, DPM_REQUEST_PR_SWAP);
+	}
+}
+
+__overridable bool pd_check_port_requests_source(int port)
+{
+	return false;
 }
 
 void pd_request_power_swap(int port)
