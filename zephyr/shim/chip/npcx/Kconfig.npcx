@@ -1,0 +1,18 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if PLATFORM_EC
+
+config PLATFORM_EC_CHIP_SYSTEM_PRE_INIT_PRIORITY
+	int "System pre-initialization priority"
+	default 15
+	range 10 19
+	depends on SOC_FAMILY_NPCX
+	help
+	  CROS system uses some critical data (e.g., system reset cause) for
+	  initialization. We define PLATFORM_EC_CHIP_SYSTEM_PRE_INIT_PRIORITY
+	  and initialize at this priority for the following
+	  PLATFORM_EC_SYSTEM_PRE_INIT.
+
+endif # PLATFORM_EC
