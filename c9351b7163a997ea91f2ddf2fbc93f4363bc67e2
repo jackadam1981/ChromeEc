@@ -190,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b444cf7_21b3a0cd",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-02-26T23:58:54Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a good idea. I don\u0027t see an obvious reason why bus faults would need to be ignored across the entire section (this isn\u0027t performance critical code where we care about a few extra function calls).",
+      "parentUuid": "e666bf2f_424109f2",
+      "range": {
+        "startLine": 482,
+        "startChar": 2,
+        "endLine": 483,
+        "endChar": 35
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5a05696_7cabef47",
         "filename": "chip/stm32/flash-stm32h7.c",
         "patchSetId": 17
