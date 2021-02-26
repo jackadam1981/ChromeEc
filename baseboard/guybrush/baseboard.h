@@ -259,6 +259,7 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
+#include "stdbool.h"
 
 /* Power input signals */
 enum power_signal {
