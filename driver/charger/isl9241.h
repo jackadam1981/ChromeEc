@@ -47,6 +47,18 @@
 #define ISL9241_REG_CONTROL1		0x3C
 #define ISL9241_CONTROL1_PSYS		BIT(3)
 #define ISL9241_CONTROL1_LEARN_MODE	BIT(12)
+#define ISL9241_CONTROL1_SWITCHING_FREQ_MASK 0x380
+/*
+ * 9:7 - Switching Frequency
+ * <000> 1420kHz
+ * <001> 1180kHz
+ * <010> 1020kHz
+ * <011> 890kHz
+ * <100> 808kHz
+ * <101> 724kHz
+ * <110> 656kHz
+ * <111> 600kHz
+ */
 
 /* Configures various charger options */
 #define ISL9241_REG_CONTROL2		0x3D
