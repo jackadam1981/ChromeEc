@@ -136,8 +136,7 @@ static int bbram_npcx_init(const struct device *dev)
 	};                                                                   \
 	DEVICE_DEFINE(cros_bbram_npcx_##inst, DT_INST_LABEL(inst),           \
 		      bbram_npcx_init, NULL, &cros_bbram_data_##inst,        \
-		      &cros_bbram_cfg_##inst, PRE_KERNEL_1,                  \
-		      CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,                   \
+		      &cros_bbram_cfg_##inst, PRE_KERNEL_1, 21,              \
 		      &cros_bbram_npcx_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(CROS_BBRAM_INIT);
