@@ -149,6 +149,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2abc34cb_6508e9ee",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T17:21:53Z",
+      "side": 1,
+      "message": "I added my comment to b/181323955",
+      "parentUuid": "8aea3b7a_3c087bff",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 78
+      },
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbcc78c3_5601402c",
