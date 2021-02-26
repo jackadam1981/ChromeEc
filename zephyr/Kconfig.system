@@ -1,0 +1,16 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if PLATFORM_EC
+
+config SYSTEM_PRE_INIT_PRIORITY
+	int "system pre-initialization priority"
+	default 20
+	range 0 99
+	help
+	  This sets the system pre-initialization priority. CROS system
+	  initialize flow is influence by the system reset cause. We put the
+	  system reset cause here and let the priority as higher as we can.
+
+endif # PLATFORM_EC
