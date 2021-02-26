@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b0e3ad1_1d486c51",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T18:08:26Z",
+      "side": 1,
+      "message": "Maybe, maybe not. It\u0027s also possible that another chip will not need the size between rom_start and rodata. I think it\u0027s safer to just have each chip verify this when needed and we can optimize this when we have enough information to go on.\n\nI think that having this set to some number that\u0027s incorrect for an unknown chip will be much harder to track down than seeing a 0.",
+      "parentUuid": "570a2de1_5d13fe17",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "014cc2400097f48c149e0d6d87b913962c47d32b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66b507b7_be2dd738",
