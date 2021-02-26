@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "935493e9_b34c6f3c",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-26T14:59:12Z",
+      "side": 1,
+      "message": "\u003e style: Prefer double quoting even when variables don\u0027t contain special characters.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2248\n\nPlease fix.",
+      "parentUuid": "818027f5_9d28eeee",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "0b971d773514f08131991294bc69a835cbd95db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
