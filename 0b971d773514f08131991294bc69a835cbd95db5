@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "691aad2f_7f197202",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T15:33:55Z",
+      "side": 1,
+      "message": "Done\n\nMust be some missing arg when shellcheck is run locally",
+      "parentUuid": "935493e9_b34c6f3c",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "0b971d773514f08131991294bc69a835cbd95db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51f57bd6_4e4b1ea4",
@@ -39,6 +63,30 @@
       "side": 1,
       "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
       "parentUuid": "e9983178_a2c62e17",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "0b971d773514f08131991294bc69a835cbd95db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f05f84c_cf3a35a9",
+        "filename": "util/check_allowed.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T15:33:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51f57bd6_4e4b1ea4",
       "range": {
         "startLine": 27,
         "startChar": 7,
