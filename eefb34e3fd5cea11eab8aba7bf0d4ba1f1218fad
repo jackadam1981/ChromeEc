@@ -75,6 +75,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8f71e5_c2a52b1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-02-26T00:18:30Z",
+      "side": 1,
+      "message": "This is for the dogfood device. It is hard to ask the dogfooder to disable the write protection. We need to have a way to override the cbi content if we change the fw_config during the development.",
+      "parentUuid": "1aa0f6a6_3cc14beb",
+      "revId": "eefb34e3fd5cea11eab8aba7bf0d4ba1f1218fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbaa3fed_0df0cd69",
