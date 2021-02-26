@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abaca72c_b3a21db2",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T18:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d237eb47_4f7e37f7",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "6ccb38f2a5a81449b258378246c36b2219095011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d77ffaae_307e129b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-26T17:38:46Z",
       "side": 1,
       "message": "Can we use uart_putc() or uart_write_char() here? That plus moving the irq_disable/enable could save us from having to get the uart device here.",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "6ccb38f2a5a81449b258378246c36b2219095011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "465ee211_812759f2",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T18:03:06Z",
+      "side": 1,
+      "message": "Looks like we can 👍\n\nIt fails on the first try, but always passes on the second try (I tried 10 reboots). Since this is a temporary place holder until we can properly fork the shell. I\u0027m happy with just using uart_put_raw() now.",
+      "parentUuid": "d77ffaae_307e129b",
       "range": {
         "startLine": 104,
         "startChar": 2,
