@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "030062b9_adb817f1",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-02-26T17:29:36Z",
+      "side": 1,
+      "message": "this gets unset from include/config.h, maybe check for CONFIG_UART_CONSOLE_ON_DEV_NAME?",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "3eab44140e638cf435beabea96db04a6a126a3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
