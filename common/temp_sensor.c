@@ -62,7 +62,7 @@ static void update_mapped_memory(void)
 	}
 }
 /* Run after other TEMP tasks, so sensors will have updated first. */
-DECLARE_HOOK(HOOK_SECOND, update_mapped_memory, HOOK_PRIO_TEMP_SENSOR_DONE);
+DECLARE_HOOK(HOOK_TICK, update_mapped_memory, HOOK_PRIO_TEMP_SENSOR_DONE);
 
 static void temp_sensor_init(void)
 {
