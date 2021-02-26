@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27ccca8_7304cca2",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1330491
+      },
+      "writtenOn": "2021-02-26T02:10:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4272fd95_43155f4e",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 110
+      },
+      "revId": "bef64ac314a58d9ee62fc56e1736ed95987cb631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "463067b8_7b018a00",
@@ -84,6 +108,30 @@
       "writtenOn": "2021-02-25T12:13:01Z",
       "side": 1,
       "message": "This comment is reversed",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 112
+      },
+      "revId": "bef64ac314a58d9ee62fc56e1736ed95987cb631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ffc3e4_3b214afa",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330491
+      },
+      "writtenOn": "2021-02-26T02:10:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "463067b8_7b018a00",
       "range": {
         "startLine": 24,
         "startChar": 0,
