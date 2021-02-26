@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ca8f50_ed4da6e7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 3751,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-26T17:41:51Z",
+      "side": 1,
+      "message": "Should this be using the pe_sender_response_run to set the timer after TX completes?  We don\u0027t want to start the timer until we\u0027ve actually sent the message",
+      "revId": "93b23da1cc62bbc4de2c769955afdd4fe682d9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
