@@ -70,6 +70,29 @@
       },
       "revId": "014cc2400097f48c149e0d6d87b913962c47d32b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b507b7_be2dd738",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T17:24:56Z",
+      "side": 1,
+      "message": "You should use the #defines from include/linker/sections.h here.\n\ne.g. _RODATA_SECTION_NAME, _DATA_SECTION_NAME\n\nAlso, can you avoid the ADDR() specifiers?  The address of a section isn\u0027t related to it\u0027s size.\n\n__image_size \u003d SIZEOF(_TEXT_SECTION_NAME) + SIZEOF(.ARM.exidx) + SIZEOF(_RODATA_SECTION_NAME) + SIZEOF(_DATA_SECTION_NAME) + SIZEOF(devices)  + SIZEOF(k_mutex_area)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 0
+      },
+      "revId": "014cc2400097f48c149e0d6d87b913962c47d32b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
