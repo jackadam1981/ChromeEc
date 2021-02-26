@@ -16,6 +16,24 @@
       "message": "You don\u0027t need this if you decide to use Gang Program mode to program flash.",
       "revId": "bfeaf1b91eb37ec3dbc1ec0490d5e4ef5c386932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f56eb79_17206576",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-02-26T17:33:08Z",
+      "side": 1,
+      "message": "if not added, need to explicitly pass the image path and add board as volteer or other similar board\n\nthis command seems easy when added\n./util/flash_ec --board\u003dadlrvpp_npcx",
+      "parentUuid": "5c864c41_bca00277",
+      "revId": "bfeaf1b91eb37ec3dbc1ec0490d5e4ef5c386932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
