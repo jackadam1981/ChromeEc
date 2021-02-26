@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8229569_4507fad2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-02-26T18:31:55Z",
+      "side": 1,
+      "message": "Change it to \u0027Trogdor\u0027 which notes this CL should be cherry-picked to the Trogdor firmware branch.",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "0c092f2b59b019714be56e73b5b19044a2976d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f1b78d0_6dce1244",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-02-26T18:31:55Z",
+      "side": 1,
+      "message": "Just a nit. Feel free to carry-forward my CR +2 after fixing it.",
+      "revId": "0c092f2b59b019714be56e73b5b19044a2976d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
