@@ -16,6 +16,24 @@
       "message": "Should this be using the pe_sender_response_run to set the timer after TX completes?  We don\u0027t want to start the timer until we\u0027ve actually sent the message",
       "revId": "93b23da1cc62bbc4de2c769955afdd4fe682d9d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9b5cd1_04f0cefd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 3751,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-26T17:49:12Z",
+      "side": 1,
+      "message": "I am not sure why the original author of this code didn\u0027t follow the pattern of calling pe_sender_response_msg_run.  I changed the pe_sender_response_msg_entry because it was a mechanical 1:1 change. This feels out of scope for this timer refactor CL.",
+      "parentUuid": "c7ca8f50_ed4da6e7",
+      "revId": "93b23da1cc62bbc4de2c769955afdd4fe682d9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
