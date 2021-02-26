@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fbfb78_5bb110d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T16:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10fe4485_b2fc280e",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "fc80ea5b98061c91f4e1c44491bc26a1e9b3ccd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a18fa87a_c3dcf525",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-26T15:19:27Z",
       "side": 1,
       "message": "uart_clear_input()",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "fc80ea5b98061c91f4e1c44491bc26a1e9b3ccd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b26fb9d_943536a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T16:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a18fa87a_c3dcf525",
       "range": {
         "startLine": 12,
         "startChar": 6,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-02-26T14:15:54Z",
       "side": 1,
       "message": "This functionality isn\u0027t related to the console buffer and should not go in this file.\n\nYou\u0027d probably want to pair it with console.c, as that\u0027s where the other uart_* functions are.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 1
+      },
+      "revId": "fc80ea5b98061c91f4e1c44491bc26a1e9b3ccd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dabd9fd2_f3be470f",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T16:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5522c71e_78d5fbbe",
       "range": {
         "startLine": 121,
         "startChar": 0,
