@@ -125,6 +125,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aea3b7a_3c087bff",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T16:43:19Z",
+      "side": 1,
+      "message": "When this is converted to python, I think running this as part of the presubmit check is the right place to run this.  It\u0027s not unusual for a config option as a separate CL before any board uses it.",
+      "parentUuid": "46acbdf6_5f420a39",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 78
+      },
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbcc78c3_5601402c",
