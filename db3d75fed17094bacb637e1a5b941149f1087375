@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc7b1f72_03b4bb5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T16:23:38Z",
+      "side": 1,
+      "message": "Sorry, I got to this VERY late (when updated my chroot and found my workflow is broken). Yes, the goal of this was to keep things simple and using just 1 directory in the commands. Basically being able to replace:\n\n$ zmake configure zephyr/project/volteer\n$ zmake build build/zephyr/project/volteer\n\nwith:\n\n$ zmake configure zephyr/project/volteer\n$ zmake build zephyr/project/volteer\n\nWith using the project directory as the build target (it will resolve to the default configured directory). It\u0027s not a big deal (I can change my workflow), but I did think it was nice that we didn\u0027t have to keep track of the build vs. project directory.",
+      "revId": "db3d75fed17094bacb637e1a5b941149f1087375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
