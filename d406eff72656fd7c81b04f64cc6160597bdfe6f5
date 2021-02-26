@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b7e882_b4a7dbc4",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-02-26T08:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0231c294_e9d7fb15",
+      "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df4e0e03_ff747355",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-25T19:36:11Z",
       "side": 1,
       "message": "I don\u0027t understand how wakeup are prevented when in S3: accel may still collect data and detect a transition. Should the AP disables detection when entering S3?",
+      "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1b30d9_4f0dda79",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-02-26T08:40:54Z",
+      "side": 1,
+      "message": "When motion_sense_suspend(), the body detection is disabled, so this part will not be triggered in S3. If there is any case that we still need to disable this without motion_sense_suspend(), please correct me.",
+      "parentUuid": "df4e0e03_ff747355",
       "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
