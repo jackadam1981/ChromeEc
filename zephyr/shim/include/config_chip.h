@@ -1437,4 +1437,6 @@
 #define CONFIG_MP2964
 #endif
 
+#define CONFIG_LOW_POWER_IDLE
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
