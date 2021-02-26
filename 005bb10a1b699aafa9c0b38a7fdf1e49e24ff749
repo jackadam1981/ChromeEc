@@ -16,6 +16,24 @@
       "message": "Is there a header this needs to be removed from as well?",
       "revId": "005bb10a1b699aafa9c0b38a7fdf1e49e24ff749",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec008afb_a6a3a3ca",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-26T17:36:59Z",
+      "side": 0,
+      "message": "yes, good catch.",
+      "parentUuid": "ac157c22_4f1d992d",
+      "revId": "005bb10a1b699aafa9c0b38a7fdf1e49e24ff749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -16,6 +16,24 @@
       "message": "nit: extra line",
       "revId": "eb41ca21d735ccb3d3c030d99140f396044fc7c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cffe9c4_e782421d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-26T17:36:59Z",
+      "side": 1,
+      "message": "made it consistent with the rest of the struct fields. I did this on purpose. It ends up leaving in a later CL and don\u0027t want to upload the chain again to remove it.",
+      "parentUuid": "cd0863ee_9f4f8d9f",
+      "revId": "eb41ca21d735ccb3d3c030d99140f396044fc7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
