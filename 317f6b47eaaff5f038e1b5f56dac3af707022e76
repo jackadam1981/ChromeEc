@@ -16,6 +16,24 @@
       "message": "Is this usage right?  It seems like we\u0027ll disable for anything making us leave ready, which could be something like a partner-requested AMS beginning.\n\nShould we disable after setting the PR swap DPM request?",
       "revId": "317f6b47eaaff5f038e1b5f56dac3af707022e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b7a712_f23dd399",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2702,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-26T17:35:00Z",
+      "side": 1,
+      "message": "You are right. I will clear it on pe_prs_src_snk_send_swap_entry. There is that chance that we are waiting and don\u0027t end up performing the PR Swap and in this case the timer will remain enabled but will go inactive and not affect anything. This should be safe.",
+      "parentUuid": "388fd8df_805e6702",
+      "revId": "317f6b47eaaff5f038e1b5f56dac3af707022e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
