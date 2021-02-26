@@ -20,6 +20,7 @@
 #include "usb_pd.h"
 #include "usb_pd_dpm.h"
 #include "usb_pe_sm.h"
+#include "usb_tbt_alt_mode.h"
 #include "usbc_ppc.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
