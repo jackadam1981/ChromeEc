@@ -33,6 +33,98 @@
       "message": "LGTM, I\u0027ll let kuten +1 first",
       "revId": "43cadb7b45552e2f5052152decbb488367c14e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18bf0dd1_f9d7e652",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1286980
+      },
+      "writtenOn": "2021-02-26T14:51:53Z",
+      "side": 1,
+      "message": "They are with external pull-up resistors to 1.8V.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "43cadb7b45552e2f5052152decbb488367c14e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7edc35e_a302fcf7",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1286980
+      },
+      "writtenOn": "2021-02-26T14:51:53Z",
+      "side": 1,
+      "message": "IIUC, this pin is not implemented on jacuzzi platform.",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 19
+      },
+      "revId": "43cadb7b45552e2f5052152decbb488367c14e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d62f5b7c_a78c510e",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1286980
+      },
+      "writtenOn": "2021-02-26T14:51:53Z",
+      "side": 1,
+      "message": "This is an output pin. High to turn off PMIC power but not sure if it\u0027s implemented in jacuzzi or not.",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 48
+      },
+      "revId": "43cadb7b45552e2f5052152decbb488367c14e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "393b1dd6_15493d4c",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1286980
+      },
+      "writtenOn": "2021-02-26T14:51:53Z",
+      "side": 1,
+      "message": "IIUC, this pin is not implemented on jacuzzi platform.",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "43cadb7b45552e2f5052152decbb488367c14e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

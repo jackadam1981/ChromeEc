@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b01a1030_671531f1",
+        "filename": "board/icarus/battery.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1286980
+      },
+      "writtenOn": "2021-02-26T14:51:53Z",
+      "side": 1,
+      "message": "Based on the information I got from ODM EE, Icarus use 3S1P battery.",
+      "parentUuid": "67ee4d1d_ab9c8a04",
+      "range": {
+        "startLine": 179,
+        "startChar": 47,
+        "endLine": 179,
+        "endChar": 83
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfbff17f_0069b0ad",
         "filename": "board/icarus/board.c",
         "patchSetId": 13
@@ -319,6 +343,29 @@
         "startChar": 0,
         "endLine": 19,
         "endChar": 0
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba19853_5a2c2ea5",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1286980
+      },
+      "writtenOn": "2021-02-26T14:51:53Z",
+      "side": 1,
+      "message": "Hi Dino, is there any concern to set 1P8V but H1 to EC belongs to the 3.3V power rail with an external pull-up resistor connected to 3.3V? The same question to other similar pins.",
+      "range": {
+        "startLine": 14,
+        "startChar": 55,
+        "endLine": 14,
+        "endChar": 68
       },
       "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
