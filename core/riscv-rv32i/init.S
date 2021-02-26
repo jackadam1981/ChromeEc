@@ -65,6 +65,7 @@ eflash_sig:
 /* flags: internal oscillator + implicit location */
 #endif /* CHIP_FAMILY_IT8XXX2 */
 
+.section .text.vecttable
 .align 2
 __ec_intc:
         vector irq_0    /* INT GROUP  0 */
@@ -86,6 +87,7 @@ __ec_intc:
         vector syscall  /* system call (emulate INT GROUP 16) */
 
 .align 2
+.section .text.vectirq
 __irq_isr:
         /* save t2 to scratch register */
         csrw mscratch, t2
