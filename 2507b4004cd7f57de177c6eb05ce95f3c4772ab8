@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01275097_6819bc08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T21:15:14Z",
+      "side": 1,
+      "message": "If you cherry-pick your patch onto the same commit hash as this one, then it is safe to upload",
+      "parentUuid": "534ab68b_8fa80f1d",
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63b29813_502084a9",
