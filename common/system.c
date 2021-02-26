@@ -738,6 +738,10 @@ const struct image_data *system_get_image_data(enum ec_image copy)
 	    data.cookie2 == current_image_data.cookie2)
 		return &data;
 
+	CPRINTS("\x1b[1;31m%s: cookie not matched\x1b[m", __func__);
+	CPRINTS("\x1b[1;31m addr: %08x\x1b[m", addr);
+	CPRINTS("\x1b[1;31m  data: %08x %08x\x1b[m", data.cookie1, data.cookie2);
+	CPRINTS("\x1b[1;31m  curr: %08x %08x\x1b[m", current_image_data.cookie1, current_image_data.cookie2);
 	return NULL;
 }
 
