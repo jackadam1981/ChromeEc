@@ -16,6 +16,24 @@
       "message": "This timer seems a little weird... are we enabling it on every entry into ready before we send our first message?  So if we received a partner Get_Sink_Caps or similar after going into ready, we\u0027d exit to send our reply, and then come back and set the timer again during entry?  That doesn\u0027t seem quite right. \n\nWhat do you think?",
       "revId": "7df12ca2b5d2f5eaebb24faff18374b75b58e68e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3505f86_9deec3c3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2765,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-02-26T17:43:06Z",
+      "side": 1,
+      "message": "I think you have a point but this code performs as the existing pre-CL code did. Should I change this to act differently or leave it as its original behavior.",
+      "parentUuid": "53b8598d_dd05ba71",
+      "revId": "7df12ca2b5d2f5eaebb24faff18374b75b58e68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
