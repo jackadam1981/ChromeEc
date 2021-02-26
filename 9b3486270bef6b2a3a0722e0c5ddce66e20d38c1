@@ -34,6 +34,24 @@
       "parentUuid": "b76a7ab3_b9487f47",
       "revId": "9b3486270bef6b2a3a0722e0c5ddce66e20d38c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "204c3900_c3408c68",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 3500,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-26T21:07:36Z",
+      "side": 1,
+      "message": "Code is exactly as broken as ToT, so approved with the bug TODO ;)",
+      "parentUuid": "a0ea3925_ac3b6d9a",
+      "revId": "9b3486270bef6b2a3a0722e0c5ddce66e20d38c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
