@@ -7,7 +7,10 @@ if (DEFINED CONFIG_SOC_NPCX7M6FB)
 	set(CHIP_FAMILY "NPCX7")
 	set(CHIP_VARIANT "NPCX7M6FB")
 endif()
-
+if (DEFINED CONFIG_SOC_IT8XXX2)
+	set(CHIP_FAMILY "IT8XXX2")
+	set(CHIP_VARIANT "IT81202AX_1024")
+endif()
 # Add compile definitions for CHIP_FAMILY_ and CHIP_VARIANT_, these are used
 # through the platform/ec code and are often used to branch header definitions
 # which are still being used. It is possible that eventually (when we also no

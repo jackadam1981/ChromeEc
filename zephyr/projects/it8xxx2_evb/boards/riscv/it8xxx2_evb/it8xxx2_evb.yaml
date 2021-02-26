@@ -1,0 +1,18 @@
+#
+# Copyright (c) 2020 Google LLC.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+identifier: it8xxx2_evb
+name: it8xxx2_evb
+type: mcu
+arch: riscv
+toolchain:
+  - zephyr
+ram: 48
+flash: 1024
+testing:
+  ignore_tags:
+    - net
+    - bluetooth
