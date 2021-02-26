@@ -20,14 +20,46 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
-#define POWER_BUTTON_PRESS_USEC (300 * MSEC)
+#define POWER_BUTTON_PRESS_SHORT_USEC (300 * MSEC)
+#define POWER_BUTTON_PRESS_LONG_USEC (5000 * MSEC)
+#define POWER_BUTTON_PRESS_DEBOUNCE_USEC (30)
 
-enum button_state {
-	BUTTON_RELEASE = 0,
-	BUTTON_PRESS,
+#define BUTTON_PRESSED_LEVEL 1
+#define BUTTON_RELEASED_LEVEL 0
+
+enum power {
+	POWER_OFF,
+	POWER_ON
 };
 
-static int power_state;
+enum button {
+	BUTTON_RELEASE,
+	BUTTON_PRESS,
+	BUTTON_PRESS_SHORT,
+	BUTTON_PRESS_LONG,
+};
+
+enum led_color {
+	GREEN,
+	YELLOW,
+	OFF,
+};
+
+static enum power dock_state;
+#ifdef SECTION_IS_RW
+static enum button power_button_state;
+static int button_level;
+static int button_level_pending;
+static int dock_state_change;
+static int dock_mf;
+
+static char press_string[][8] = {
+	"Release",
+	"Press",
+	"Short",
+	"Long",
+};
+#endif
 
 /******************************************************************************/
 
@@ -52,8 +84,8 @@ __maybe_unused static void board_power_sequence(int enable)
 		}
 	}
 
-	power_state = enable;
-	CPRINTS("board: Power rails %s", power_state ? "on" : "off");
+	dock_state = enable;
+	CPRINTS("board: Power rails %s", dock_state ? "on" : "off");
 }
 
 /******************************************************************************/
@@ -65,6 +97,48 @@ const struct i2c_port_t i2c_ports[] = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 #ifdef SECTION_IS_RW
+static void baseboard_set_led(enum led_color color)
+{
+	CPRINTS("led: color = %d", color);
+	if (color == OFF) {
+		gpio_set_level(GPIO_EC_STATUS_LED1, 1);
+		gpio_set_level(GPIO_EC_STATUS_LED2, 1);
+	} else if (color == GREEN) {
+		gpio_set_level(GPIO_EC_STATUS_LED1, 1);
+		gpio_set_level(GPIO_EC_STATUS_LED2, 0);
+	} else if (color == YELLOW) {
+		gpio_set_level(GPIO_EC_STATUS_LED1, 0);
+		gpio_set_level(GPIO_EC_STATUS_LED2, 0);
+	}
+}
+
+static int led_count;
+
+static void baseboard_led_callback(void);
+DECLARE_DEFERRED(baseboard_led_callback);
+
+static void baseboard_led_callback(void)
+{
+	int color = led_count & 0x4 ? dock_mf : dock_mf ^ 1;
+
+	if (led_count & 1) {
+		baseboard_set_led(color);
+	} else {
+		baseboard_set_led(OFF);
+	}
+
+	if (++led_count < 8) {
+		hook_call_deferred(&baseboard_led_callback_data, 150 * MSEC);
+	}
+}
+
+static void baseboard_change_mf_led(int mf)
+{
+	led_count = 0;
+	CPRINTS("baseboard: new mf = %d", dock_mf);
+	baseboard_led_callback();
+}
+
 static void baseboard_set_dp_lane_control(void)
 {
 	int rv;
@@ -77,7 +151,8 @@ static void baseboard_set_dp_lane_control(void)
 		gpio_set_level(GPIO_MST_RST_L, 0);
 		/* wait 5 msec */
 		msleep(2);
-		gpio_set_level(GPIO_MST_HUB_LANE_SWITCH, fw_config & 1);
+		dock_mf = fw_config & 1;
+		gpio_set_level(GPIO_MST_HUB_LANE_SWITCH, dock_mf);
 		CPRINTS("MST: Lane Control Init = %d",
 			gpio_get_level(GPIO_MST_HUB_LANE_SWITCH));
 		msleep(2);
@@ -110,16 +185,22 @@ static void baseboard_set_usbc_sink_mode(void)
 
 static void baseboard_init(void)
 {
-
 #ifdef SECTION_IS_RW
+	uint32_t fw_config;
+
 	system_clear_reset_flags(EC_RESET_FLAG_POWER_ON);
 	system_set_reset_flags(EC_RESET_FLAG_EFS);
+	if (cbi_get_fw_config(&fw_config)) {
+		cbi_set_fw_config(0);
+	} else {
+		CPRINTS("baseboard: mf config = %d", fw_config & 0x1);
+	}
 	baseboard_set_dp_lane_control();
-	/* Enable power button interrupt */
-	power_state = 1;
 	gpio_enable_interrupt(GPIO_PWR_BTN);
-
-
+	/* Enable power button interrupt */
+	dock_state = POWER_ON;
+	dock_state_change = 0;
+	baseboard_set_led(dock_mf);
 #else
 	/* Turn on power rails */
 	board_power_sequence(1);
@@ -174,32 +255,96 @@ static void baseboard_power_off(void)
 	board_power_sequence(0);
 }
 
-
-static void baseboard_power_button_valid(void)
+static void baseboard_toggle_mf(void)
 {
-	/* Sanity check, level should be pressed still */
-	if (gpio_get_level(GPIO_PWR_BTN) == BUTTON_RELEASE)
+	uint32_t fw_config;
+
+	if (!cbi_get_fw_config(&fw_config)) {
+		fw_config ^= 1;
+		cbi_set_fw_config(fw_config);
+		dock_mf = fw_config & 1;
+		baseboard_change_mf_led(dock_mf);
+		baseboard_power_off();
+		baseboard_power_on();
+	}
+}
+
+static void power_button_sm_run(void);
+DECLARE_DEFERRED(power_button_sm_run);
+
+static void power_button_sm_run(void)
+{
+	int callback_time = -1;
+
+	switch (power_button_state) {
+	case BUTTON_RELEASE:
+		dock_state_change = 0;
+		if (button_level == BUTTON_PRESSED_LEVEL) {
+			power_button_state = BUTTON_PRESS;
+			callback_time = (POWER_BUTTON_PRESS_SHORT_USEC -
+				POWER_BUTTON_PRESS_DEBOUNCE_USEC);
+		}
+		break;
+	case BUTTON_PRESS:
+		if (button_level == BUTTON_RELEASED_LEVEL) {
+			power_button_state = BUTTON_RELEASE;
+		} else {
+			power_button_state = BUTTON_PRESS_SHORT;
+			callback_time = POWER_BUTTON_PRESS_LONG_USEC -
+				POWER_BUTTON_PRESS_SHORT_USEC;
+			if (dock_state == POWER_OFF) {
+				baseboard_power_on();
+				dock_state_change = 1;
+			}
+		}
+		break;
+	case BUTTON_PRESS_SHORT:
+		if (button_level == BUTTON_RELEASED_LEVEL) {
+			power_button_state = BUTTON_RELEASE;
+			if (!dock_state_change && dock_state == POWER_ON) {
+				dock_state_change = 1;
+				baseboard_power_off();
+			}
+		} else {
+			power_button_state = BUTTON_PRESS_LONG;
+			baseboard_toggle_mf();
+		}
+		break;
+	case BUTTON_PRESS_LONG:
+		if (button_level == BUTTON_RELEASED_LEVEL) {
+			power_button_state = BUTTON_RELEASE;
+		}
+		break;
+	}
+
+	CPRINTS("power: dock = %s, button = %s, callback = %d",
+		dock_state ? "on" : "off", press_string[power_button_state],
+		callback_time);
+
+	hook_call_deferred(&power_button_sm_run_data, callback_time);
+}
+
+
+
+static void baseboard_power_button_debounce(void)
+{
+	int level = gpio_get_level(GPIO_PWR_BTN);
+
+	/* Sanity check, level should be same after debounce interval */
+	if (level != button_level_pending)
 		return;
 
-	/*
-	 * Button is still pressed and time is > press_threshold. If current
-	 * power state is on, then turn off and vice versus.
-	 */
-	if (power_state)
-		baseboard_power_off();
-	else
-		baseboard_power_on();
-
-	CPRINTS("baseboard: power state = %s", power_state ? "on" : "off");
+	button_level = level;
+        power_button_sm_run();
 }
-DECLARE_DEFERRED(baseboard_power_button_valid);
+DECLARE_DEFERRED(baseboard_power_button_debounce);
 
 void baseboard_power_button_evt(int level)
 {
-	int callback_timer = (level == BUTTON_PRESS) ?
-		POWER_BUTTON_PRESS_USEC : -1;
+	button_level_pending = level;
 
-	hook_call_deferred(&baseboard_power_button_valid_data, callback_timer);
+	hook_call_deferred(&baseboard_power_button_debounce_data,
+			   POWER_BUTTON_PRESS_DEBOUNCE_USEC);
 }
 
 static int command_pwr_btn(int argc, char **argv)
@@ -214,6 +359,8 @@ static int command_pwr_btn(int argc, char **argv)
 		CPRINTS("baseboard: tc state 2 = %s",  tc_get_current_state(0));
 	} else if (!strcasecmp(argv[1], "off")) {
 		baseboard_power_off();
+	} else if (!strcasecmp(argv[1], "mf")) {
+		baseboard_toggle_mf();
 	} else {
 		return EC_ERROR_PARAM1;
 	}
