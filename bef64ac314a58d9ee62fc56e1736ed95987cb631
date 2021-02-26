@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95dd5d18_bbcddd07",
+        "filename": "board/homestar/base_detect.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330491
+      },
+      "writtenOn": "2021-02-26T02:08:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c439d581_18d89a25",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 9
+      },
+      "revId": "bef64ac314a58d9ee62fc56e1736ed95987cb631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4272fd95_43155f4e",
@@ -93,6 +117,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d69e665_ab24ec46",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1330491
+      },
+      "writtenOn": "2021-02-26T02:08:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ba50bc_24edfda4",
+      "range": {
+        "startLine": 178,
+        "startChar": 16,
+        "endLine": 178,
+        "endChar": 17
+      },
+      "revId": "bef64ac314a58d9ee62fc56e1736ed95987cb631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7891fb3_6390ece6",
@@ -106,6 +154,30 @@
       "writtenOn": "2021-02-25T21:56:34Z",
       "side": 1,
       "message": "D0 and D1 is NC. Remove it.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 81
+      },
+      "revId": "bef64ac314a58d9ee62fc56e1736ed95987cb631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50aaee50_1276a704",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1330491
+      },
+      "writtenOn": "2021-02-26T02:08:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7891fb3_6390ece6",
       "range": {
         "startLine": 187,
         "startChar": 0,
