@@ -4,4 +4,5 @@
 
 if(NOT DEFINED CONFIG_ZTEST)
     target_sources(app PRIVATE main.c)
+    zephyr_sources_ifdef(CONFIG_PM_POLICY_APP         power_policy.c)
 endif()
