@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85376e63_e0bf9ea0",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-02-26T11:43:17Z",
+      "side": 1,
+      "message": "I wonder if we can move this to outside of ILM to save some space...",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "3e8a5f11be97c3c7a99e1cb355bc3094dfc9e012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
