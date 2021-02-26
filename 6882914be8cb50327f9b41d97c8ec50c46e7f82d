@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4165e30a_74a8d6e3",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T16:51:57Z",
+      "side": 1,
+      "message": "Also add the following because the TUSB422 driver requires the flags to be 0.  This ensures if the tcpc_config[] array gets modified, this override still sets up correct behavior.\n\n    tcpc_config[USBC_PORT_C0].flags \u003d 0;",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 52
+      },
+      "revId": "6882914be8cb50327f9b41d97c8ec50c46e7f82d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
