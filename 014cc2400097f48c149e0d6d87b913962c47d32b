@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "570a2de1_5d13fe17",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-26T17:43:04Z",
+      "side": 1,
+      "message": "seems to indicate that this is an #ifndef CONFIG_ARCH_POSIX then ;)",
+      "parentUuid": "ef711a25_801a460c",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "014cc2400097f48c149e0d6d87b913962c47d32b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66b507b7_be2dd738",
         "filename": "zephyr/linker/image_size.ld",
         "patchSetId": 1
