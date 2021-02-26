@@ -493,6 +493,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5af26fb9_006fd448",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-26T01:57:00Z",
+      "side": 1,
+      "message": "Confirmed there is a single register mapped onto two addresses: http://b/181130245",
+      "parentUuid": "ebbca2fc_07cff5e5",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 56
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c01f97e_9095e377",
@@ -651,6 +675,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39b022d_563b8b43",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-26T01:57:00Z",
+      "side": 1,
+      "message": "CL to sync before re-enabling bus faults: https://crrev.com/c/2706039",
+      "parentUuid": "edf78379_7750d647",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8292ed4_bc1df15d",
@@ -712,6 +760,30 @@
       "side": 1,
       "message": "Right, but for the H7 flow, it seems as though we already mitigate that risk in the unlock function itself. Plus, we would want to test that flow from this test.",
       "parentUuid": "9e0e232e_8dcff15f",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 21
+      },
+      "revId": "fc1c818e90e862b5ca5d06267a641b0701a29313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d698039d_5d5e7b8a",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-26T01:57:00Z",
+      "side": 1,
+      "message": "CL to sync before re-enabling bus faults: https://crrev.com/c/2706039",
+      "parentUuid": "dce3d52a_c37fcd7f",
       "range": {
         "startLine": 103,
         "startChar": 0,

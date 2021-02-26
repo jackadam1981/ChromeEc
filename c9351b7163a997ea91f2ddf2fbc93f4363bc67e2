@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "885e66d0_73e8b9ef",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-26T01:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "314ccb66_9c0cc3f2",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c98d3083_44c8a3a2",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac662438_bb8ff85e",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-26T01:57:00Z",
+      "side": 1,
+      "message": "Removed comment-- there is only one flash_optcr register.",
+      "parentUuid": "e7055cb6_78ba5ae3",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "539c54d9_64a01cab",
@@ -106,6 +154,30 @@
       "writtenOn": "2021-02-22T22:42:23Z",
       "side": 1,
       "message": "would be nice to replace with disable_flash_control_register(), but that calls ignore_bus_fault, and i\u0027m not sure if that nests correctly. Might need to create a helper function that just does this part and both disable_flash_control_register() and this can call it.",
+      "range": {
+        "startLine": 482,
+        "startChar": 2,
+        "endLine": 483,
+        "endChar": 35
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e666bf2f_424109f2",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-02-26T01:57:00Z",
+      "side": 1,
+      "message": "Or I could remove lines 478 and 489 and let the bus faults be handled in disable_flash_control_register and disable_flash_option_bytes?",
+      "parentUuid": "6213810d_55834568",
       "range": {
         "startLine": 482,
         "startChar": 2,
