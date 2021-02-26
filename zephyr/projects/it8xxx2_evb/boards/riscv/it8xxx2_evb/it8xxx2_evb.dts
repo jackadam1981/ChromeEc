@@ -1,0 +1,47 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/dts-v1/;
+
+#include <cros/ite/it8xxx2.dtsi>
+#include <dt-bindings/gpio_defines.h>
+#include <it8xxx2.dtsi>
+
+/ {
+	model = "IT8XXX2 EV-Board";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,console = &uart1;
+		zephyr,shell-uart = &uart1;
+		zephyr,flash = &flash0;
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+
+		power_button_l {
+			gpios = <&gpioe 4 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+			label = "POWER_BUTTON_L";
+		};
+		lid_open {
+			gpios = <&gpioe 2 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_LID_OPEN";
+			label = "LID_OPEN";
+		};
+	};
+
+};
+
+&gpioe {
+	status = "okay";
+};
+
+&uart1 {
+	status = "okay";
+	current-speed = <115200>;
+	clock-frequency = <1804800>;
+};
