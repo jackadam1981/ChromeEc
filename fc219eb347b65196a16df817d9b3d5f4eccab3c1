@@ -16,6 +16,69 @@
       "message": "I\u0027m no longer able to get this to work after rebasing and using zephyr 2.5. Fabio, any ideas?",
       "revId": "fc219eb347b65196a16df817d9b3d5f4eccab3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bea3e9b5_2f5e280c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T15:23:14Z",
+      "side": 1,
+      "message": "What breaks about it?",
+      "revId": "fc219eb347b65196a16df817d9b3d5f4eccab3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d276de_68e7aeb4",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T15:23:14Z",
+      "side": 1,
+      "message": "Chromium OS verified boot",
+      "range": {
+        "startLine": 122,
+        "startChar": 14,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "fc219eb347b65196a16df817d9b3d5f4eccab3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b15c52a0_bdbf5ab5",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T15:23:14Z",
+      "side": 1,
+      "message": "Needs a description of what this is, including what the 2 means",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 15
+      },
+      "revId": "fc219eb347b65196a16df817d9b3d5f4eccab3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
