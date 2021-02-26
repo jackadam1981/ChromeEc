@@ -53,6 +53,8 @@
 #define CONFIG_USBC_PPC_DEDICATED_INT
 #undef CONFIG_SYV682X_HV_ILIM
 #define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
+/* SYV682 isn't connected to CC, so TCPC must provide VCONN */
+#define CONFIG_SYV682X_NO_CC
 
 /* prevent pd reset when battery soc under 2% */
 #define CONFIG_USB_PD_RESET_MIN_BATT_SOC 2
