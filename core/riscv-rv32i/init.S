@@ -22,7 +22,7 @@ __entry_\()\name:
 .popsection
 .endm
 
-.section .text.vecttable
+.section .text.startup
 .align 2
 __startup:
         j __reset       /* reset */
@@ -65,6 +65,7 @@ eflash_sig:
 /* flags: internal oscillator + implicit location */
 #endif /* CHIP_FAMILY_IT8XXX2 */
 
+.section .text.vecttable
 .align 2
 __ec_intc:
         vector irq_0    /* INT GROUP  0 */
