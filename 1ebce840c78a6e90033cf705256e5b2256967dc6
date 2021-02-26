@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbdd31a_e687ee2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2021-02-26T19:06:57Z",
+      "side": 1,
+      "message": "Great to see twinkie being maintained!",
+      "revId": "1ebce840c78a6e90033cf705256e5b2256967dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e6f262_76f0d042",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2021-02-26T19:06:57Z",
+      "side": 1,
+      "message": "Does this fix a compilation error?",
+      "revId": "1ebce840c78a6e90033cf705256e5b2256967dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
