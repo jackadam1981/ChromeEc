@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6689d35e_de041692",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T17:46:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "805ede25_a78eb981",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f6e0386_d1d539a2",
@@ -202,6 +226,30 @@
       "writtenOn": "2021-02-23T19:41:24Z",
       "side": 1,
       "message": "Should this also be guarded with !system_jumped_late()?",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "031b7189d783e588e57cd22dc7427f11858d25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a1aea0_d58d19b6",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T17:46:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b773e40b_365f3610",
       "range": {
         "startLine": 259,
         "startChar": 0,
