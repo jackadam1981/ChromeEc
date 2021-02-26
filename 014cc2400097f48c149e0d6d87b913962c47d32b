@@ -46,6 +46,30 @@
       },
       "revId": "014cc2400097f48c149e0d6d87b913962c47d32b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef711a25_801a460c",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T16:33:04Z",
+      "side": 1,
+      "message": "I thought so too, but for example include/arch/posix/linker.ld is vastly different from include/arch/arm/aarch32/cortex_m/scripts/linker.ld. Once I saw that this CAN break for a boart, I wanted each new board to have to verify this (very possible that different boards will share the same __image_size.",
+      "parentUuid": "552fd75f_2a7b4c05",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "014cc2400097f48c149e0d6d87b913962c47d32b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
