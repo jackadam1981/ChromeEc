@@ -203,8 +203,17 @@ static int vdm_is_dp_enabled(int port)
 
 const uint32_t vdo_idh = VDO_IDH(0, /* data caps as USB host */
 				 1, /* data caps as USB device */
-				 IDH_PTYPE_AMA, /* Alternate mode */
+				 IDH_PTYPE_HUB, /* UFP product type usbpd hub */
 				 1, /* supports alt modes */
+				 USB_VID_GOOGLE);
+
+static const uint32_t vdo_idh_rev30 = VDO_IDH_REV30(
+				 0, /* Data caps as USB host     */
+				 1, /* Data caps as USB device   */
+				 IDH_PTYPE_HUB,
+				 1, /* Supports alt modes */
+				 IDH_PTYPE_DFP_UNDEFINED,
+				 USB_TYPEC_RECEPTACLE,
 				 USB_VID_GOOGLE);
 
 const uint32_t vdo_product = VDO_PRODUCT(CONFIG_USB_PID, CONFIG_USB_BCD_DEV);
@@ -217,19 +226,39 @@ const uint32_t vdo_ama = VDO_AMA(CONFIG_USB_PD_IDENTITY_HW_VERS,
 				 1, /* Vbus power required */
 				 AMA_USBSS_BBONLY /* USB SS support */);
 
+static const uint32_t vdo_ufp1 = VDO_UFP1(
+				   (VDO_UFP1_CAPABILITY_USB20
+				   | VDO_UFP1_CAPABILITY_USB32),
+				   USB_TYPEC_RECEPTACLE,
+				   VDO_UFP1_ALT_MODE_RECONFIGURE,
+				   USB_R30_SS_U32_U40_GEN2);
+
 static int svdm_response_identity(int port, uint32_t *payload)
 {
+	int vdo_count;
+
 	/* Verify that SVID is PD SID */
 	if (PD_VDO_VID(payload[0]) != USB_SID_PD) {
 		return 0;
 	}
 
-	payload[VDO_I(IDH)] = vdo_idh;
-	payload[VDO_I(CSTAT)] = VDO_CSTAT(0);
-	payload[VDO_I(PRODUCT)] = vdo_product;
-	payload[VDO_I(AMA)] = vdo_ama;
+	/* Cstat and Product VDOs don't depend on spec revision */
+	payload[VDO_INDEX_CSTAT] = VDO_CSTAT(0);
+	payload[VDO_INDEX_PRODUCT] = vdo_product;
 
-	return VDO_I(AMA) + 1;
+	if (pd_get_rev(port, TCPC_TX_SOP) == PD_REV30) {
+		/* PD Revision 3.0 */
+		payload[VDO_INDEX_IDH] = vdo_idh_rev30;
+		payload[VDO_INDEX_PTYPE_UFP1_VDO] = vdo_ufp1;
+		payload[VDO_INDEX_PTYPE_UFP2_VDO] = 0;
+		vdo_count = VDO_INDEX_PTYPE_UFP2_VDO;
+	} else {
+		payload[VDO_INDEX_IDH] = vdo_idh;
+		vdo_count = VDO_INDEX_PRODUCT;
+	}
+
+	/* Adjust VDO count for VDM header */
+	return vdo_count + 1;
 }
 
 static int svdm_response_svids(int port, uint32_t *payload)
