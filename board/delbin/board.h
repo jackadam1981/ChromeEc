@@ -95,6 +95,8 @@
 /* charger defines */
 #define CONFIG_CHARGER_SENSE_RESISTOR		10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+/* Setting ISL9241 Register Control1 switching frequency to 724KHz */
+#define CONFIG_ISL9241_SWITCHING_FREQ		0x5
 
 /* Retimer */
 #undef CONFIG_USBC_RETIMER_INTEL_BB

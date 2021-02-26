@@ -6124,4 +6124,12 @@
 #define ALS_COUNT 0
 #endif /* CONFIG_ALS */
 
+/*
+ * ISL9241 Configures the switching frequence and overrides the default
+ * switching frequency set by PROG pin.
+ */
+#ifndef CONFIG_ISL9241_SWITCHING_FREQ
+#undef CONFIG_ISL9241_SWITCHING_FREQ
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */
