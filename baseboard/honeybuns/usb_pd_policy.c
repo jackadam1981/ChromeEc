@@ -192,6 +192,11 @@ int pd_check_power_swap(int port)
 	return 0;
 }
 
+bool pd_check_port_requests_source(int port)
+{
+	return true;
+}
+
 static int vdm_is_dp_enabled(int port)
 {
 	mux_state_t mux_state = usb_mux_get(port);
