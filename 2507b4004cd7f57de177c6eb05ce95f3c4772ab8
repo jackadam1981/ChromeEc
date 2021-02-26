@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88617e9e_07b2c4e8",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T20:59:43Z",
+      "side": 1,
+      "message": "No, because we don\u0027t want to define the TASK_ID_CONSOLE.",
+      "parentUuid": "63b29813_502084a9",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 21
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4889e9ed_7f858b63",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-26T19:02:47Z",
       "side": 1,
       "message": "Please open a bug for this and a TODO",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 57
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8f90fa_90033931",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T20:59:43Z",
+      "side": 1,
+      "message": "Done (b/181352041)",
+      "parentUuid": "4889e9ed_7f858b63",
       "range": {
         "startLine": 110,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db5a4d7_0f46e850",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T20:59:43Z",
+      "side": 1,
+      "message": "I think to avoid polling too much. What we have in platform/ec is the console_buffer logic is the one that polls the uart then stores things into the buffer. I actually think that in the Zephyr code we could use Zephyr\u0027s event signals to do this a bit better, this way we:\n1. Fork the RX from the shell using a new API we\u0027ll introduce to the shell_uart upstream.\n2. Update our console_buffer to use the forked callback to fill a buffer and signal an event when data is available.\n3. Here instead of waiting, listen for the signal and grab the byte.\n\n* I\u0027ll add this detail to the bug that Keith asked me to open on this.",
+      "parentUuid": "1546c71e_ad739d72",
+      "range": {
+        "startLine": 115,
+        "startChar": 6,
+        "endLine": 115,
+        "endChar": 12
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdbf6a70_09a3cd5f",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-26T19:02:47Z",
       "side": 1,
       "message": "Same here - use IS_ENABLED() if possible.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0dc441c_2d2da3c8",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T20:59:43Z",
+      "side": 1,
+      "message": "Same as above, TASK_ID_CONSOLE isn\u0027t defined.",
+      "parentUuid": "bdbf6a70_09a3cd5f",
       "range": {
         "startLine": 124,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ba1c68_b4f3996d",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T20:59:43Z",
+      "side": 1,
+      "message": "Nope, just much more useful. Since we (in some cases) get partial RX right now this helps find out when we timed out because we got nothing or just a part of the message from the cr50.",
+      "parentUuid": "2484f3ea_5327fa3c",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e7b105d_26d1e97c",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-02-26T20:15:33Z",
       "side": 1,
       "message": "Chromium OS",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 13
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17106b98_1aaf7b3f",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T20:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e7b105d_26d1e97c",
       "range": {
         "startLine": 126,
         "startChar": 5,
@@ -208,6 +352,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef6b398a_a0a4ab9e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T20:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3ef1351_8fe35084",
+      "range": {
+        "startLine": 129,
+        "startChar": 10,
+        "endLine": 129,
+        "endChar": 14
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba6b534_d3bab5d5",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T20:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60576bbe_13780c8e",
+      "range": {
+        "startLine": 129,
+        "startChar": 54,
+        "endLine": 129,
+        "endChar": 64
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a0749c_0aab607c",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T20:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fde67029_814400a0",
+      "range": {
+        "startLine": 129,
+        "startChar": 25,
+        "endLine": 129,
+        "endChar": 29
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eab59e0f_ca5295d2",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-02-26T19:02:47Z",
       "side": 1,
       "message": "Move to a separate CL.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "120c80db_8e621e1c",
+        "filename": "zephyr/projects/volteer/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T20:59:43Z",
+      "side": 1,
+      "message": "Actually I just realized that I can move the watchdog init to after vboot_main() and it works. It\u0027s much better this way.",
+      "parentUuid": "eab59e0f_ca5295d2",
       "range": {
         "startLine": 6,
         "startChar": 0,
