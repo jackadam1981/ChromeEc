@@ -16,6 +16,24 @@
       "message": "Sorry, I got to this VERY late (when updated my chroot and found my workflow is broken). Yes, the goal of this was to keep things simple and using just 1 directory in the commands. Basically being able to replace:\n\n$ zmake configure zephyr/project/volteer\n$ zmake build build/zephyr/project/volteer\n\nwith:\n\n$ zmake configure zephyr/project/volteer\n$ zmake build zephyr/project/volteer\n\nWith using the project directory as the build target (it will resolve to the default configured directory). It\u0027s not a big deal (I can change my workflow), but I did think it was nice that we didn\u0027t have to keep track of the build vs. project directory.",
       "revId": "db3d75fed17094bacb637e1a5b941149f1087375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a66d379_f88cd699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T20:19:52Z",
+      "side": 1,
+      "message": "I agree it is a pain having to specify the target dir, but I think there is ambiguity in this usage so I\u0027m not a big fan.\n\nCould we instead have a \u0027-b volteer\u0027 option, so something like that, so it selects zephyr/project/$board and build/zephyr/project/$board based on that?\n\nzmake -b volteer configure\nzmake -b volteer build",
+      "parentUuid": "fc7b1f72_03b4bb5f",
+      "revId": "db3d75fed17094bacb637e1a5b941149f1087375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
