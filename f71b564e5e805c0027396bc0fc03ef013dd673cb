@@ -392,6 +392,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d15b34db_cc009fb5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-02-26T19:49:41Z",
+      "side": 1,
+      "message": "The flag does need to be set after the message has been copied into the dpm data object. I have added a mutex for this function to remove any other possible race condition.",
+      "parentUuid": "1afed300_6124e68f",
+      "revId": "f71b564e5e805c0027396bc0fc03ef013dd673cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60e58330_2099b125",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 3
