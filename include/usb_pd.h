@@ -1600,6 +1600,14 @@ void pd_vbus_low(int port);
 __override_proto int pd_check_power_swap(int port);
 
 /**
+ * Check if port wants to be a power role source
+ *
+ * @param port USB-C port number
+ * @return True if source power role is desired, False otherwise
+ */
+__override_proto bool pd_check_port_requests_source(int port);
+
+/**
  * Check if data swap is allowed.
  *
  * @param port USB-C port number
