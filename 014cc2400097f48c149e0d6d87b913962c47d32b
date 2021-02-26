@@ -22,6 +22,30 @@
       },
       "revId": "014cc2400097f48c149e0d6d87b913962c47d32b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552fd75f_2a7b4c05",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T15:16:12Z",
+      "side": 1,
+      "message": "+1 we should be able to rely on all images having the same sections.\n\nOn the other hand, perhaps it is good for each new arch to check that this works?",
+      "parentUuid": "189cdae1_e8f99a5f",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "014cc2400097f48c149e0d6d87b913962c47d32b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
