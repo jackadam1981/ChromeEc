@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d4c8d1_e2c5b4b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-26T18:34:29Z",
+      "side": 1,
+      "message": "Also add that it matches the spec states much more closely",
+      "revId": "a0da185817a4da9ccca528c5cb2d15ee8253e207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0614aeb4_d08c5c9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-26T18:34:29Z",
+      "side": 1,
+      "message": "Did this fix any GRL tests as well?  I can\u0027t recall",
+      "revId": "a0da185817a4da9ccca528c5cb2d15ee8253e207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bad9afe_0c9e54e0",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-26T18:34:29Z",
+      "side": 1,
+      "message": "We don\u0027t have a msgid for hard resets, so is this necessary?",
+      "revId": "a0da185817a4da9ccca528c5cb2d15ee8253e207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820d282c_c04581ac",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-26T18:34:29Z",
+      "side": 1,
+      "message": "Note PRL_HR_Request_Hard_Reset state is embedded here",
+      "revId": "a0da185817a4da9ccca528c5cb2d15ee8253e207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
