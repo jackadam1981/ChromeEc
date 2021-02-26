@@ -16,6 +16,24 @@
       "message": "Does this mean the function name should change?",
       "revId": "72ce3ba8b0806cb707358097589080b26f4cef51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a38cb2e9_2c6e1414",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-02-26T00:08:36Z",
+      "side": 0,
+      "message": "Yes, it can.",
+      "parentUuid": "397fab74_066a85e6",
+      "revId": "72ce3ba8b0806cb707358097589080b26f4cef51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
