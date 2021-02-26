@@ -40,6 +40,15 @@ bool enter_usb_entry_is_done(int port);
 void enter_usb_failed(int port);
 
 /*
+ * Returns whether the cable is ready for Enter_USB, applied to the cable or
+ * port partner as appropriate.
+ *
+ * @param port    USB-C port number
+ * @return        True if cable and is ready to enter USB4 mode
+ */
+bool enter_usb_cable_is_ready(int port);
+
+/*
  * Returns True if port partner supports USB4 mode
  *
  * @param port    USB-C port number
