@@ -16,6 +16,23 @@
       "message": "We want to pick the value which achieves a right balance between power consumption and quick detection. Is this studied from the perspective of quick detection? How did you choose 11 mW as a target? Can we go higher or should we go even lower? What\u0027s the power S3 budget?",
       "revId": "d56ee82a798638030ac1797c39feb4e2ad2c5fb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7986071_9c98dd05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-02-26T18:23:44Z",
+      "side": 1,
+      "message": "Defer to Daisuke.",
+      "revId": "d56ee82a798638030ac1797c39feb4e2ad2c5fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
