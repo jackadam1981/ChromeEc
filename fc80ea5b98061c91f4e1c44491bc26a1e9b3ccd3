@@ -16,6 +16,29 @@
       "message": "I wasn\u0027t sure if this should go in console_buffer.c or just console.c. Open to moving it.",
       "revId": "fc80ea5b98061c91f4e1c44491bc26a1e9b3ccd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5522c71e_78d5fbbe",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-26T14:15:54Z",
+      "side": 1,
+      "message": "This functionality isn\u0027t related to the console buffer and should not go in this file.\n\nYou\u0027d probably want to pair it with console.c, as that\u0027s where the other uart_* functions are.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 1
+      },
+      "revId": "fc80ea5b98061c91f4e1c44491bc26a1e9b3ccd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
