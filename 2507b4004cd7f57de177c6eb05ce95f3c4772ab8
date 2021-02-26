@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1546c71e_ad739d72",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T20:15:33Z",
+      "side": 1,
+      "message": "I wonder why we would want to add the sleep back?",
+      "range": {
+        "startLine": 115,
+        "startChar": 6,
+        "endLine": 115,
+        "endChar": 12
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdbf6a70_09a3cd5f",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 7
@@ -95,6 +118,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e7b105d_26d1e97c",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T20:15:33Z",
+      "side": 1,
+      "message": "Chromium OS",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 13
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3ef1351_8fe35084",
         "filename": "zephyr/Kconfig",
         "patchSetId": 7
@@ -134,6 +180,29 @@
         "startChar": 25,
         "endLine": 129,
         "endChar": 29
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60576bbe_13780c8e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T20:15:33Z",
+      "side": 1,
+      "message": "calls",
+      "range": {
+        "startLine": 129,
+        "startChar": 54,
+        "endLine": 129,
+        "endChar": 64
       },
       "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
