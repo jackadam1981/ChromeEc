@@ -1206,7 +1206,7 @@ void pe_got_soft_reset(int port)
 	set_state_pe(port, PE_SOFT_RESET);
 }
 
-static bool pd_can_source_from_device(int port, const int pdo_cnt,
+__overridable bool pd_can_source_from_device(int port, const int pdo_cnt,
 				      const uint32_t *pdos)
 {
 	/*
@@ -1741,6 +1741,18 @@ static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
 			charge_manager_update_dualrole(port, CAP_DUALROLE);
 		}
 	}
+
+	/*
+	 * If port policy preference is to be a power role source, then request
+	 * a power role swap.
+	 */
+	if (!pd_can_source_from_device(port, pdo_cnt, pdos))
+		pd_request_power_swap(port);
+}
+
+__overridable bool pd_check_port_requests_source(int port)
+{
+	return false;
 }
 
 void pd_request_power_swap(int port)
