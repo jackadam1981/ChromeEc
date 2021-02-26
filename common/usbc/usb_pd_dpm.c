@@ -312,7 +312,11 @@ static void dpm_attempt_mode_exit(int port)
 	int vdo_count = 0;
 	enum tcpm_transmit_type tx_type = TCPC_TX_SOP;
 
-	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
+	if (IS_ENABLED(CONFIG_USB_PD_USB4_MODE) &&
+	    enter_usb_entry_is_done(port)) {
+		CPRINTS("C%d: USB4 teardown", port);
+		usb4_exit_mode_request(port);
+	} else if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
 	    tbt_is_active(port)) {
 		/*
 		 * When the port is in USB4 mode and receives an exit request,
