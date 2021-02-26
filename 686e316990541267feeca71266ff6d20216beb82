@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba10f85_d5c0ba82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T14:54:53Z",
+      "side": 1,
+      "message": "It could certainly be written in Python. I think in Python we would probably not use external tools like find, sed and comm but instead completely code it up with glob and sets of strings.\n\nProbably also combine it into one tool.\n\nObviously that is more work though and I am trying to use what has worked for some years in U-Boot, i.e. avoiding unnecessary effort...",
+      "parentUuid": "65c30086_fa8e1f68",
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d442befa_7b063f10",
@@ -49,6 +67,30 @@
       "writtenOn": "2021-02-26T08:41:06Z",
       "side": 1,
       "message": "Since there\u0027s already a script that checks for new CONFIG_ options that haven\u0027t been added to config.h can\u0027t we just check that one file and assume that the other script would have ensured that the CONFIGs were added there?",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 78
+      },
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "493bdaa3_66d9ca90",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T14:54:53Z",
+      "side": 1,
+      "message": "I suppose so. It is chicken-and-egg though, since someone needs to generate the starting list.\n\nAlso this script works on .config but the other one works on the whole source tree.",
+      "parentUuid": "d442befa_7b063f10",
       "range": {
         "startLine": 29,
         "startChar": 2,
@@ -105,6 +147,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a38bf84_84944af7",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T14:54:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19c4f12c_1cba9575",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33572887_2ecde9d1",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T14:54:53Z",
+      "side": 1,
+      "message": "I was expecting it to run here but perhaps it only runs on ebuilds",
+      "parentUuid": "fbcc78c3_5601402c",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94566e6a_0e3b32ce",
@@ -118,6 +208,30 @@
       "writtenOn": "2021-02-25T22:50:17Z",
       "side": 1,
       "message": "$(...)\n\nBut probably better to use find . -name \"Kconfig*\" -exec cat {} \\; in case we start getting lots of kconfig files and exceed the argv max count",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 5
+      },
+      "revId": "686e316990541267feeca71266ff6d20216beb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b405f76_1a12cad2",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-02-26T14:54:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94566e6a_0e3b32ce",
       "range": {
         "startLine": 39,
         "startChar": 4,
