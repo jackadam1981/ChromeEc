@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db06de1_14efaf69",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5432,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-02-26T00:10:39Z",
+      "side": 1,
+      "message": "Add a comment that the IT83xx TCPC cannot source VCONN, so it won\u0027t damage the HOST_CC signals, but the IT83xx must be notified when VCONN is going to be enabled.",
+      "range": {
+        "startLine": 5430,
+        "startChar": 0,
+        "endLine": 5432,
+        "endChar": 0
+      },
+      "revId": "6c16c682c583a10149362bb8f0dd30923a1dc9a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
