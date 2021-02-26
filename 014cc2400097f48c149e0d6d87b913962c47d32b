@@ -93,6 +93,30 @@
       },
       "revId": "014cc2400097f48c149e0d6d87b913962c47d32b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df79d0fc_a6b8af23",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-02-26T17:40:48Z",
+      "side": 1,
+      "message": "The address is important because there are a lot of sections between what I\u0027m doing here is basically taking the end of rodata - start of rom_start which gives me the used size of the FLASH (similar to LENGTH(FLASH) in platform/ec/core/cortex-m/ec.lds.S). We can\u0027t use LENGTH(FLASH) because Zephyr doesn\u0027t assume we\u0027ll stick 2 images in there so LENGTH(FLASH) is the size of the whole flash.\n\nI\u0027ve updated:\nrodata -\u003e _RODATA_SECTION_NAME\ndatas  -\u003e _DATA_SECTION_NAME\n\nThe others don\u0027t have an alias and are specific to the cortex_m from what I can tell.",
+      "parentUuid": "66b507b7_be2dd738",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 0
+      },
+      "revId": "014cc2400097f48c149e0d6d87b913962c47d32b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
