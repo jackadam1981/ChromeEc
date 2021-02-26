@@ -16,6 +16,24 @@
       "message": "If the other builders finish before firmware-ec-cov-cq (experimental) finishes, it will be canceled.\n\nIf that happens too early, you can add the footer `Cq-Include-Tryjobs: chromeos/cq:firmware-ec-cov-cq`, which will cause it to be a non-experimental verifier instead.",
       "revId": "046532dabae36288b3d2fa23b4e4bc38615ebaa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02eadba0_e00ed086",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-02-26T16:03:01Z",
+      "side": 1,
+      "message": "Duly noted, thank you!",
+      "parentUuid": "157f8db4_0a9fd2f6",
+      "revId": "046532dabae36288b3d2fa23b4e4bc38615ebaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
