@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0114749c_43053d7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-02-26T07:21:33Z",
+      "side": 1,
+      "message": "Not sure why exactly you\u0027re backporting it but note that -Wstringop-truncation is back with complaining about that part of the code despite the precaution added in this CL.\n\nSince that warning seems to be rather oversensitive across gcc versions in general, I proposed disabling it entirely in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2718127.",
+      "revId": "4a423fb9cce5ecdd860fdd43df0e679088c42c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
