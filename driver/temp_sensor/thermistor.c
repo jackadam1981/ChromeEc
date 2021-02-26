@@ -86,6 +86,7 @@ static int thermistor_get_temperature(int idx_adc, int *temp_ptr,
 		return EC_ERROR_UNKNOWN;
 
 	*temp_ptr = thermistor_linear_interpolate(mv, info);
+	ccprints("Thermistor%d : %d", idx_adc, *temp_ptr);
 	*temp_ptr = C_TO_K(*temp_ptr);
 	return EC_SUCCESS;
 }
