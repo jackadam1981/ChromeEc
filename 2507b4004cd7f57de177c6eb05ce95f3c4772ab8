@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2484f3ea_5327fa3c",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-02-26T19:04:39Z",
+      "side": 1,
+      "message": "moved on accident?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "2507b4004cd7f57de177c6eb05ce95f3c4772ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3ef1351_8fe35084",
         "filename": "zephyr/Kconfig",
         "patchSetId": 7
