@@ -1,0 +1,188 @@
+/*
+ * Copyright (c) 2021 The Chromium OS Authors
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include <dt-bindings/irq.h>
+#include <dt-bindings/pwm/pwm.h>
+
+/ {
+
+	named-bbram-regions {
+		compatible = "named-bbram-regions";
+
+		scratchpad {
+			offset = <0x08>;
+			size = <0x04>;
+		};
+		saved-reset-flags {
+			offset = <0x00>;
+			size = <0x04>;
+		};
+		wake {
+			offset = <0x08>;
+			size = <0x04>;
+		};
+		pd0 {
+			offset = <0x0c>;
+			size = <0x01>;
+		};
+		pd1 {
+			offset = <0x0d>;
+			size = <0x01>;
+		};
+		try_slot {
+			offset = <0x0e>;
+			size = <0x01>;
+		};
+		pd2 {
+			offset = <0x0f>;
+			size = <0x01>;
+		};
+		ramlog {
+			offset = <0x20>;
+			size = <0x01>;
+		};
+		panic_flags {
+			offset = <0x23>;
+			size = <0x01>;
+		};
+		panic_bkup {
+			offset = <0x24>;
+			size = <0x1c>;
+		};
+		lct_time {
+			offset = <0x40>;
+			size = <0x04>;
+		};
+	};
+
+	soc {
+		adc0: adc@f01900 {
+			compatible = "ite,it8xxx2-adc";
+			reg = <0xf01900 0x45>;
+			interrupts = <8 IRQ_TYPE_NONE>;
+			interrupt-parent = <&intc>;
+			status = "disabled";
+			label = "ADC_0";
+			#io-channel-cells = <1>;
+		};
+
+		bbram: bb-ram@f02200 {
+			#address-cells = <1>;
+			#size-cells = <1>;
+			compatible = "ite,it8xxx2-cros-bbram";
+			status = "okay";
+			reg = <0x00f02200 0xbf>;
+			reg-names = "memory";
+			label = "BBRAM";
+		};
+
+		gpioc: gpio@f01603 {
+			compatible = "ite,it8xxx2-gpio";
+			reg = <0x00f01603 0x0001>;
+			ngpios = <8>;
+			label = "GPDRC";
+			status = "disabled";
+			gpio-controller;
+			interrupt-parent = <&intc>;
+			#gpio-cells = <2>;
+		};
+		gpiod: gpio@f01604 {
+			compatible = "ite,it8xxx2-gpio";
+			reg = <0x00f01604 0x0001>;
+			ngpios = <8>;
+			label = "GPDRD";
+			status = "disabled";
+			gpio-controller;
+			interrupt-parent = <&intc>;
+			#gpio-cells = <2>;
+		};
+		gpioe: gpio@f01605 {
+			compatible = "ite,it8xxx2-gpio";
+			reg = <0x00f01605 0x0001>;
+			ngpios = <8>;
+			label = "GPDRE";
+			status = "disabled";
+			gpio-controller;
+			interrupts = <72 0
+				73 0
+				74 0
+				75 0
+				119 0
+				176 0
+				177 0
+				178 0>;
+			interrupt-parent = <&intc>;
+			#gpio-cells = <2>;
+		};
+		gpioh: gpio@f01608 {
+			compatible = "ite,it8xxx2-gpio";
+			reg = <0x00f01608 0x0001>;
+			ngpios = <8>;
+			label = "GPDRH";
+			status = "disabled";
+			gpio-controller;
+			interrupt-parent = <&intc>;
+			#gpio-cells = <2>;
+		};
+		gpioi: gpio@f01609 {
+			compatible = "ite,it8xxx2-gpio";
+			reg = <0x00f01609 0x0001>;
+			ngpios = <8>;
+			label = "GPDRI";
+			status = "disabled";
+			gpio-controller;
+			interrupts = <124 0
+				125 0
+				126 0
+				127 0
+				76 0
+				77 0
+				78 0
+				79 0>;
+			interrupt-parent = <&intc>;
+			#gpio-cells = <2>;
+		};
+		gpio_ksoh: gpio@f01d01 {
+			compatible = "ite,it8xxx2-gpio";
+			reg = <0x00f01d01 0x0001>;
+			ngpios = <8>;
+			label = "GPDRKSOH";
+			status = "disabled";
+			gpio-controller;
+			interrupts = <101 0
+				102 0
+				103 0
+				104 0
+				52 0
+				53 0
+				54 0
+				55 0>;
+			interrupt-parent = <&intc>;
+			#gpio-cells = <2>;
+		};
+		pwm0: pwm@f01800 {
+			compatible = "ite,it8xxx2-pwm";
+			reg = <0xf01800 0x1>;
+			label = "PWM_0";
+			status = "disabled";
+			#pwm-cells = <2>;
+		};
+		pwm1: pwm@f01807 {
+			compatible = "ite,it8xxx2-pwm";
+			reg = <0xf01807 0x1>;
+			label = "PWM_1";
+			status = "disabled";
+			#pwm-cells = <2>;
+		};
+		fiu0: flash-controller@80000000 {
+			compatible = "ite,it8xxx2-flash-controller";
+			reg = <0x80000000 0x80000>;
+			label = "FLASH";
+		};
+
+	};
+};
+

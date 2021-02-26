@@ -1,0 +1,177 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/dts-v1/;
+
+#include <cros/ite/it8xxx2.dtsi>
+#include <dt-bindings/gpio_defines.h>
+#include <it8xxx2.dtsi>
+
+/ {
+	model = "IT8XXX2 EV-Board";
+	compatible = "riscv, it8xxx2_evb";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,console = &uart1;
+		zephyr,shell-uart = &uart1;
+		zephyr,flash = &flash0;
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+
+		power_button_l {
+			gpios = <&gpioe 4 GPIO_INPUT_PULL_UP>;
+			label = "POWER_BUTTON_L";
+		};
+		lid_open {
+			gpios = <&gpioe 2 GPIO_INPUT_PULL_UP>;
+			label = "LID_OPEN";
+		};
+		wp_l {
+			gpios = <&gpioi 4 GPIO_INPUT_PULL_UP>;
+			label = "WP_L";
+		};
+		board_version1 {
+			gpios = <&gpio_ksoh 5 GPIO_INPUT>;
+			label = "BOARD_VERSION1";
+		};
+		board_version2 {
+			gpios = <&gpio_ksoh 6 GPIO_INPUT>;
+			label = "BOARD_VERSION2";
+		};
+		board_version3 {
+			gpios = <&gpio_ksoh 7 GPIO_INPUT>;
+			label = "BOARD_VERSION3";
+		};
+
+		entering_rw {
+			gpios = <&gpiob 4 GPIO_INPUT>;
+			label = "ENTERING_RW";
+		};
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_vbussa: vbussa {
+			label = "ADC_VBUSSA";
+			channel = <0>;
+		};
+		adc_vbussb: vbussb {
+			label = "ADC_VBUSSB";
+			channel = <1>;
+		};
+		adc_evb_ch_13: evb_ch_13 {
+			label = "ADC_EVB_CH_13";
+			channel = <2>;
+		};
+		adc_evb_ch_14: evb_ch_14 {
+			label = "ADC_EVB_CH_14";
+			channel = <3>;
+		};
+		adc_evb_ch_15: evb_ch_15 {
+			label = "ADC_EVB_CH_15";
+			channel = <4>;
+		};
+		adc_evb_ch_16: evb_ch_16 {
+			label = "ADC_EVB_CH_16";
+			channel = <5>;
+		};
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+		battery {
+			i2c-port = <&i2c2>;
+			label = "BATTERY";
+		};
+		evb-1 {
+			i2c-port = <&i2c0>;
+			label = "EVB_1";
+		};
+		evb-2 {
+			i2c-port = <&i2c1>;
+			label = "EVB_2";
+		};
+		opt-4 {
+			i2c-port = <&i2c4>;
+			label = "OPT_4";
+		};
+	};
+
+	named-pwms {
+		compatible = "named-pwms";
+
+	};
+
+	ec-console {
+		compatible = "ec-console";
+
+		disabled = "hostcmd";
+	};
+};
+
+&gpiob {
+	status = "okay";
+};
+
+&gpiof {
+	status = "okay";
+};
+
+&gpioe {
+	status = "okay";
+};
+
+&gpioi {
+	status = "okay";
+};
+
+&gpio_ksoh {
+	status = "okay";
+};
+
+&uart1 {
+	status = "okay";
+	current-speed = <115200>;
+	clock-frequency = <1804800>;
+};
+
+&i2c0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c1 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c2 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c4 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&adc0 {
+	status = "okay";
+};
+
+/* Sleep flag */
+&pwm0 {
+	status = "okay";
+};
+
+/* Fan control */
+&pwm1 {
+	status = "okay";
+};
+
