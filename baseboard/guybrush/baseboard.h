@@ -16,6 +16,12 @@
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 #define CONFIG_LTO
 
+/* CBI */
+#define CONFIG_CRC8
+#define CONFIG_CROS_BOARD_INFO
+#define CONFIG_BOARD_VERSION_CBI
+#define CONFIG_FW_CONFIG_UTILS
+
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
@@ -242,6 +248,7 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
+#include "stdbool.h"
 
 /* Power input signals */
 enum power_signal {
@@ -301,6 +308,29 @@ enum pwm_channel {
 	PWM_CH_LED_FULL,
 	PWM_CH_COUNT
 };
+
+enum usb_a1_retimer {
+	USB_A1_RETIMER_UNKNOWN,
+	USB_A1_RETIMER_PS8811,
+	USB_A1_RETIMER_ANX7491
+};
+
+enum usb_c1_mux {
+	USB_C1_MUX_UNKNOWN,
+	USB_C1_MUX_PS8818,
+	USB_C1_MUX_ANX7451
+};
+
+enum form_factor {
+	FORM_FACTOR_UNKNOWN,
+	FORM_FACTOR_CLAMSHELL,
+	FORM_FACTOR_CONVERTIBLE
+};
+
+bool board_has_kb_bl(void);
+enum usb_a1_retimer board_usb_a1_retimer(void);
+enum usb_c1_mux board_usb_c1_mux(void);
+enum form_factor board_form_factor(void);
 
 /* Common definition for the USB PD interrupt handlers. */
 void tcpc_alert_event(enum gpio_signal signal);
