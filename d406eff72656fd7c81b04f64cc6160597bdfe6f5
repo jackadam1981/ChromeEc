@@ -69,6 +69,24 @@
       "parentUuid": "df4e0e03_ff747355",
       "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5ce9fa_da891797",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-01T18:34:19Z",
+      "side": 1,
+      "message": "In motion_sense_switch_sensor_rate(), we disable activities in S5 (when doing a full power down), except DOUBLE_TAP (we assume it is for battery check). We are not disabling them in S3. \nThe host could do disable it, but the kernel does not know how the activity is configured.\nbut I think the problem is deeper:\nThe motion sense task sends event to the host when:\n\n- accel fifo is enabled (always true)  and\n  - wake up event or\n  - change in ODR or FLUSH pending (not true in our case)\n  - fifo full (not true in our case)\n  - long time since last interrupt (not true in our case)\n\nwake up event is too strong as it wakes up AP, but we need to send an event when AP is in S0 as soon as there is a gesture event.\nTherefore, we need to add a new condition \n\nin motion_sense_fifo.c, we could set a flag when a event with sensor id MOTION_SENSE_ACTIVITY_SENSOR_ID is set to force the EC to call the AP, but only in S0 (unless the sensor event also contains WAKEUP, but that\u0027s not the case for body dectection).",
+      "parentUuid": "8d1b30d9_4f0dda79",
+      "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
