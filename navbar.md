@@ -1,5 +1,10 @@
 # CrOS EC (Embedded Controller)
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/navbar.md
+***
+
 [logo]: https://chromium-review.googlesource.com/plugins/chromium-style/static/chromium_logo.png
 [home]: /README.md
 

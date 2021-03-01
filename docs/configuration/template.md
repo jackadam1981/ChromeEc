@@ -1,5 +1,10 @@
 # EC Feature Configuration Template
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/configuration/template.md
+***
+
 *Short description of the EC feature and the capabilities provided*
 
 ## Config options

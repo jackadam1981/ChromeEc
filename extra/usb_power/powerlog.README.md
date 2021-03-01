@@ -1,5 +1,10 @@
 # Sweetberry USB power monitoring
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/extra/usb_power/powerlog.README.md
+***
+
 This tool allows high speed monitoring of power rails via a special USB
 endpoint. Currently this is implemented for the Sweetberry board.
 

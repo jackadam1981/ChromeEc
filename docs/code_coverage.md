@@ -1,5 +1,10 @@
 # Code Coverage
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/code_coverage.md
+***
+
 Provides an overview of how to use code coverage tools when running the unit
 tests in the EC codebase.
 

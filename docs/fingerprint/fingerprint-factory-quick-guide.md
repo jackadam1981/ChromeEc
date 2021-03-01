@@ -1,5 +1,10 @@
 # Chrome OS Fingerprint Sensor: Quick Factory Guide
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/fingerprint/fingerprint-factory-quick-guide.md
+***
+
 The goal of this document is to outline how ODM partners can make use of the
 existing Chrome OS factory scripts to meet Chrome OS FPS factory requirements.
 

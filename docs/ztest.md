@@ -1,5 +1,10 @@
 # Porting EC unit tests to Ztest
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/ztest.md
+***
+
 [TOC]
 
 This HOWTO shows the process for porting the EC's `base32` unit test to

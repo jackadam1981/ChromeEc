@@ -1,5 +1,10 @@
 # Configure CrOS Board Information (CBI)
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/configuration/cbi.md
+***
+
 If your board includes an EEPROM to store [CBI], then this feature must be
 enabled and configured. Note that the [I2C buses] must be configured and working
 before enabling CBI.

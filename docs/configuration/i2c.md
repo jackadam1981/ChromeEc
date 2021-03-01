@@ -1,5 +1,10 @@
 # Configure I2C Buses
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/configuration/i2c.md
+***
+
 ## Config options
 
 The I2C options are prefixed with `CONFIG_I2C*`. Evaluate whether each option is

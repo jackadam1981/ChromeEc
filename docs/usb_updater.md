@@ -1,5 +1,10 @@
 EC update over USB
 ==================
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/usb_updater.md
+***
+
 
 chip/g (Cr50) and common code (hammer, servo_micro/v4) update over USB protocols
 share a lot in terms of protocol and ideas, but use different code bases.

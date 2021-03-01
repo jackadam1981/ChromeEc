@@ -1,5 +1,10 @@
 # FPMCU Development for Partners
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 This document is intended to help partners (sensor vendors, MCU vendors, etc)
 that are currently (or interested in) developing fingerprint solutions for
 Chromebooks. The document assumes that you're using Linux to do the development;

@@ -1,5 +1,10 @@
 # Unit Tests
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/unit_tests.md
+***
+
 Provides an overview of how to write and run the unit tests in the EC codebase.
 
 [TOC]

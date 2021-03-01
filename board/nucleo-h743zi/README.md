@@ -1,5 +1,10 @@
 # Nucleo H743ZI
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/board/nucleo-h743zi/README.md
+***
+
 This is a simpler EC example for the ST Nucleo H743ZI
 development board.
 

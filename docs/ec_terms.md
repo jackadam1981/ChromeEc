@@ -1,5 +1,10 @@
 # EC Acronyms and Technologies
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/ec_terms.md
+***
+
 ## Glossary
 *   **8042 Interface**{#8042}
 

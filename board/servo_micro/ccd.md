@@ -1,5 +1,10 @@
 <!--
  Copyright 2018 The Chromium OS Authors. All rights reserved.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/board/servo_micro/ccd.md
+***
+
  Use of this source code is governed by a BSD-style license that can be
  found in the LICENSE file.
 -->

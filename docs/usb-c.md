@@ -1,5 +1,10 @@
 # EC Implementation of USB-C Power Delivery and Alternate Modes
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/usb-c.md
+***
+
 USB-C PD requires a complex state machine as USB-C PD can operate in many
 different modes. This includes but isn't limited to:
 

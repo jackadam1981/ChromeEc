@@ -1,5 +1,10 @@
 # Sitemap
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/sitemap.md
+***
+
 ## Getting Started
 
 *   [Getting Started Quickly](./getting_started_quickly.md)

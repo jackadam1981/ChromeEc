@@ -1,5 +1,10 @@
 # Firmware Write Protection
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/write_protection.md
+***
+
 [TOC]
 
 This is a somewhat tricky topic since write protection implementations can

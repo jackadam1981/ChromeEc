@@ -1,5 +1,10 @@
 # Application Processor to EC communication
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/ap-ec-comm.md
+***
+
 [TOC]
 
 ## Overview

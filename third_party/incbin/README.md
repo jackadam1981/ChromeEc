@@ -1,5 +1,10 @@
 # incbin
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/third_party/incbin/README.md
+***
+
 Include binary files in your C/C++ applications with ease
 
 ## Example

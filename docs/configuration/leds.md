@@ -1,5 +1,10 @@
 # Configure LEDs
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/configuration/leds.md
+***
+
 LEDs provide status about the following:
 
 - Dedicated battery state/charging state

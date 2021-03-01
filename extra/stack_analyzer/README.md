@@ -1,5 +1,10 @@
 Stack Size Analysis Tool for EC Firmware
 ========================================
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/extra/stack_analyzer/README.md
+***
+
 
 This tool does static analysis on EC firmwares to get the maximum stack usage of
 each function and task. The maximum stack usage of a function includes the stack

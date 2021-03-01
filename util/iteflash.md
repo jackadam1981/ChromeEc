@@ -1,5 +1,10 @@
 # Reflashing an ITE EC
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/util/iteflash.md
+***
+
 This doc: [http://go/cros-ite-ec-reflash](https://goto.google.com/cros-ite-ec-reflash)
 <br>
 First written: 2019-04-02

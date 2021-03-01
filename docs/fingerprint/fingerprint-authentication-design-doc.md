@@ -1,5 +1,10 @@
 # Fingerprint Authentication on Chrome OS
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 Authors: norvez@google.com, vpalatin@google.com
 
 Reviewers: kerrnel@google.com, mnissler@google.com

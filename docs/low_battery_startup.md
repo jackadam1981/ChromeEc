@@ -1,5 +1,10 @@
 # Configuring the EC for Low-Battery Startup
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/low_battery_startup.md
+***
+
 Near the bottom of charge, starting up a ChromeOS device can be a tricky
 proposition.  Several features interact to make it difficult to reliably turn on
 the machine without browning out.  Over the years, a variety of configuration
