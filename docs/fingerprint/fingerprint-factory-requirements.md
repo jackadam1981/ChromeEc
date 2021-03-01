@@ -1,5 +1,10 @@
 # Chrome OS Fingerprint Factory Requirements
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 This document provides an overview of factory requirements and testing for the
 fingerprint sensor.
 

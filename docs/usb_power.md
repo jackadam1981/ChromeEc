@@ -1,5 +1,10 @@
 # USB Power Considerations
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 Users want to be able to charge external devices using their Chromebook USB
 ports, e.g. charge a phone from their Chromebook. We want to provide a fast
 charging experience to end-users, so we prefer to offer high power charging when

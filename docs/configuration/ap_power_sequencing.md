@@ -1,5 +1,10 @@
 # Configure AP Power Sequencing
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 This section details the configuration related to managing the system power
 states (G3, S5, S3, S0, S0iX, etc). This includes the following tasks:
 

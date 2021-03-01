@@ -1,5 +1,10 @@
 # Code Reviews
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_reviews.md
+***
+
 The `platform/ec` repository makes use of a code review system that tries to
 evenly distribute code reviews among available reviewers.
 

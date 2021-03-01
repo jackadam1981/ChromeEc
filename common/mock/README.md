@@ -1,5 +1,10 @@
 # Common Mocks
 This directory holds mock implementations for use in fuzzers and tests.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/mock/README.md
+***
+
 
 Each mock is given some friendly build name, like ROLLBACK or FP_SENSOR.
 This name is defined in [common/mock/build.mk](build.mk) and referenced

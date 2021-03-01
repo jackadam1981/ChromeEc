@@ -1,5 +1,10 @@
 # Detachable Base Verified Boot
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 Authors: rspangler@google.com, drinkcat@google.com
 
 Last Updated: 2016-11-16

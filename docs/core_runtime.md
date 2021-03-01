@@ -1,5 +1,10 @@
 # Chromium OS Embedded Controller Runtime
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 ## Design Principles
 
 1.  Never do at runtime what you can do at compile time The goal is saving flash

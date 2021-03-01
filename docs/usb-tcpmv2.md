@@ -1,5 +1,10 @@
 # EC USB-C Power Delivery TCPMv2 Overview
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 As the original USB-C Power Delivery (PD) solution for the ChromeOS Embedded Controller has aged, it has grown to the point where it is difficult to add new features and address bugs.  A new PD stack (generally referred to as TCPMv2) has been introduced to the codebase for use moving forward.  It implements a layered, state-based design which tracks more closely with the USB Type-C and USB PD specifications.
 
 [TOC]
