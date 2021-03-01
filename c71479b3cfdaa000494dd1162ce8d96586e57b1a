@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71dcaa81_eafcd8e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-01T07:10:06Z",
+      "side": 1,
+      "message": "I am able to flash NPCX9 series with npcx_uut but not with npcx_int_spi.\n\nHi Jun - can you please comment on this?",
+      "revId": "c71479b3cfdaa000494dd1162ce8d96586e57b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b2e45e6_ccaa42f9",
