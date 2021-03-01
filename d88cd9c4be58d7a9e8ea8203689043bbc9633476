@@ -70,6 +70,30 @@
       },
       "revId": "d88cd9c4be58d7a9e8ea8203689043bbc9633476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c38bd78f_e7f1ccc9",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-01T21:14:54Z",
+      "side": 1,
+      "message": "Tab completion is such a luxury, I think we should enable it by default.  Platforms that run short on space can disable on an as needed basis.  But let\u0027s get this CL landed to make sure no one is blocked on image size.",
+      "parentUuid": "60179809_93d72abc",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "d88cd9c4be58d7a9e8ea8203689043bbc9633476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
