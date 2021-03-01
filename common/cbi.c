@@ -507,6 +507,21 @@ int cbi_init(void)
 	return EC_SUCCESS;
 }
 
+int cbi_set_fw_config(uint32_t fw_config)
+{
+	if(do_read_board_info())
+		cbi_init();
+
+	cbi_set_board_info(CBI_TAG_FW_CONFIG, (uint8_t *)&fw_config,
+			   sizeof(int));
+
+	head->crc = cbi_crc8(head);
+	if (write_board_info())
+		return EC_RES_ERROR;
+
+	return EC_SUCCESS;
+}
+
 static int cc_cbi_ec(int argc, char **argv)
 {
 	char *e;
