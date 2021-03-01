@@ -1,4 +1,9 @@
 # Porting EC unit tests to Ztest
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 
 [TOC]
 
@@ -6,18 +11,43 @@ This HOWTO shows the process for porting the EC's `base32` unit test to
 Zephyr's Ztest framework. All of the work is done in `src/platform/ec`.
 
 See [Test Framework - Zephyr Project Documentation](https://docs.zephyrproject.org/1.12.0/subsystems/test/ztest.html#quick-start-unit-testing) for details about Zephyr's Ztest framework.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 
 See [chromium:2492527](https://crrev.com/c/2492527) for an example of
 porting an EC unit test to the Ztest API.
 
 ## Determine source files being tested
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 
 Determine which C files the unit test requires by finding the test in
 `test/test_config.h`:
 ```
 #ifdef TEST_BASE32
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 #define CONFIG_BASE32
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 #endif
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 ```
 Locate the `CONFIG` item(s) in `common/build.mk`:
 ```
@@ -30,12 +60,22 @@ section:
 
 ```
 # Shimmed modules
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC "${PLATFORM_EC}/common/base32.c")
 ```
 
 Refer to [zephyr: shim in base32.c](https://crrev.com/c/2468631).
 
 ## Create test directory
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 
 Create a new directory for the unit test in `zephyr/test/base32`.
 
@@ -55,9 +95,24 @@ target_sources(app PRIVATE ${PLATFORM_EC}/test/base32.c)
 ```
 
 ### Modify test source code
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 
 In the unit test, wrap `run_test` in the `#else` portion of an
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 `#ifdef CONFIG_ZEPHYR`. Create `test_main` in the `#ifdef` portion.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 
 Copy the contents of `run_test` into `test_main`. You will need to keep the
 list of test cases in sync between the two functions.
@@ -72,6 +127,11 @@ plus the call to `ztest_run_test_suite`.
  * If you add a test to one of them, make sure to add it to the other.
  */
 #ifdef CONFIG_ZEPHYR
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 void test_main(void)
 {
 	ztest_test_suite(test_base32_lib,
@@ -81,6 +141,11 @@ void test_main(void)
 	ztest_run_test_suite(test_base32_lib);
 }
 #else
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 void run_test(int argc, char **argv)
 {
 	test_reset();
@@ -92,6 +157,11 @@ void run_test(int argc, char **argv)
 	test_print_result();
 }
 #endif /* CONFIG_ZEPHYR */
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 ```
 
 Each function that is called by `ztest_unit_test` needs to change its
@@ -106,12 +176,42 @@ intelligent find-and-replace.
 
 * `TEST_ASSERT(n)` to `zassert_true(n, NULL)`
 * `TEST_EQ(a, b, fmt)` to `zassert_equal(a, b, fmt ## ", " ## fmt, a, b)`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
   * e.g. `TEST_EQ(a, b, "%d")` becomes `zassert_equal(a, b, "%d, %d", a, b)`
 * `TEST_NE(a, b, fmt)` to `zassert_not_equal(a, b, fmt ## ", " ## fmt, a, b)`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 * `TEST_LT(a, b, fmt)` to `zassert_true(a < b, fmt ## ", " ## fmt, a, b)`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 * `TEST_LE(a, b, fmt)` to `zassert_true(a <= b, fmt ## ", " ## fmt, a, b)`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 * `TEST_GT(a, b, fmt)` to `zassert_true(a > b, fmt ## ", " ## fmt, a, b)`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 * `TEST_GE(a, b, fmt)` tp `zassert_true(a >= b, fmt ## ", " ## fmt, a, b)`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 * `TEST_BITS_SET(a, bits)` to `zassert_true(a & (int)bits == (int)bits, "%u, %u", a & (int)bits, (int)bits)`
 * `TEST_BITS_CLEARED(a, bits)` to `zassert_true(a & (int)bits == 0, "%u, 0", a & (int)bits)`
 * `TEST_ASSERT_ARRAY_EQ(s, d, n)` to `zassert_mem_equal(s, d, b, NULL)`
@@ -135,6 +235,11 @@ Refer to
 the changes to the base32.c source code.
 
 ## Build and run
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md
+***
+
 
 Use `cmake` and `ninja` to build the test:
 ```

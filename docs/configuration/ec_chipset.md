@@ -1,6 +1,16 @@
 # Configure EC Chipset
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+
 
 ## Config options
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+
 
 The EC chipset is selected using board specific make file [build.mk]. The
 following configuration options specify the type and size of flash memory used
@@ -16,6 +26,11 @@ by the EC.
     should be evaluated for relevance on your board.
 
 ## Feature Parameters
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+
 
   - `CONFIG_FLASH_SIZE <bytes>` - Set to the size of the internal flash of the
     EC. Must be defined to link the final image.
@@ -23,12 +38,22 @@ by the EC.
     flash.
 
 ## GPIOs and Alternate Pins
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+
 
 Configure the signals which will wakeup the EC from hibernate or deep sleep.
 Typical wakeup sources include:
 
 - `GPIO_LID_OPEN` - An active high signal that indicates the lid has been
   opened. The source of the signal is typically from a [GMR](../ec_terms.md#gmr)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+
   or Hall-Effect sensor. The `GPIO_INT()` entry for this signal should be
   connected to the `lid_interrupt()` routine.
 - `GPIO_AC_PRESENT` - A signal from the battery charger that indicates the
@@ -46,6 +71,11 @@ See the [GPIO](./gpio.md) documentation for additional details on the GPIO
 macros.
 
 ## Data structures
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+
 
 - `const enum gpio_signal hibernate_wake_pins[]` - add all GPIO signals that
   should trigger a wakeup of the EC.
@@ -61,12 +91,27 @@ under the Deep Sleep and Shipping states and include:
 - Lid open
 
 ## Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+
 
 None required by this feature.
 
 ## Testing and Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+
 
 ## Example
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+
 
 For the Volteer reference board, the following wake sources are defined in
 [gpio.inc]. Note that configuration of `GPIO(EC_RST_ODL)` is located after all
@@ -110,4 +155,14 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 [gpio.inc]: ../../board/volteer/gpio.inc
 [baseboard.c]: ../../baseboard/volteer/baseboard.c
 [build.mk]: ../new_board_checklist.md#board_build_mk
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+
 [Wake Sources and Battery Life]: https://chromeos.google.com/partner/dlm/docs/latest-requirements/chromebook.html#wake-sources-and-battery-life
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ec_chipset.md
+***
+

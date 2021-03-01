@@ -3,8 +3,18 @@
  Use of this source code is governed by a BSD-style license that can be
  found in the LICENSE file.
 -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
 
 # Case-Closed Debug in Chromebooks and Servo Micro
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
 
 The Servo debug/test-automation connector has been required on all
 chromebooks. It has proved essential to performing the required testing to meet
@@ -18,6 +28,11 @@ Debug (CCD) but does not address the related security issues.
 
 
 ## Introduction to Case-Closed Debug
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
 
 Case-Closed Debug provides the same set of features as are available on the Servo connector:
 
@@ -45,6 +60,11 @@ cannot be used for video out at the same time as debugging.)
 
 
 ## Servo Micro: Using CCD with existing boards
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
 
 The Servo Micro implements the CCD functions in a way that can connect to
 existing boards and thus can also serve as an easy introduction to the CCD
@@ -111,15 +131,55 @@ endpoints defined in
 [`board.h`](board.h).
 
 <!-- does not work in emacs/markdown preview but should in gitlies -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
 
 ``` c
     #define USB_EP_USART4_STREAM	1
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
     #define USB_EP_UPDATE			2
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
     #define USB_EP_SPI			3
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
     #define USB_EP_CONSOLE		4
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
     #define USB_EP_I2C			5
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
     #define USB_EP_USART3_STREAM	6
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
     #define USB_EP_USART2_STREAM	7
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
 ```
 
 
@@ -159,6 +219,11 @@ directory contains additional scripts.
 
 
 ## Using CCD on new designs
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/servo_micro/ccd.md
+***
+
 
 New chromebook designs implement the CCD in a similar way to Servo Micro. There
 are two changes to the Servo Micro:

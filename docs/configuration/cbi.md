@@ -1,10 +1,20 @@
 # Configure CrOS Board Information (CBI)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/cbi.md
+***
+
 
 If your board includes an EEPROM to store [CBI], then this feature must be
 enabled and configured. Note that the [I2C buses] must be configured and working
 before enabling CBI.
 
 ## Config options
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/cbi.md
+***
+
 
 Add the following config options to `baseboard.h` or `board.h`.
 
@@ -12,27 +22,57 @@ Add the following config options to `baseboard.h` or `board.h`.
 - `CONFIG_CROS_BOARD_INFO`
 
 ## Feature Parameters
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/cbi.md
+***
+
 
 - `I2C_ADDR_EEPROM_FLAGS <7-bit addr>` - Defines the 7-bit slave address for the
   EEPROM containing CBI.
 
 ## GPIOs and Alternate Pins
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/cbi.md
+***
+
 
 None needed - the I2C pins should be configured automatically when initializing
 the I2C buses.
 
 ## Data Structures
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/cbi.md
+***
+
 
 None required by this feature.
 
 ## Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/cbi.md
+***
+
 
 None required by this feature.
 
 ## Testing and Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/cbi.md
+***
+
 
 Refer to the [I2C debugging information] to verify communication with the CBI EEPROM.
 
 [CBI]: https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md
 [I2C buses]: ./i2c.md
 [I2C debugging information]: ./i2c.md#
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/cbi.md
+***
+

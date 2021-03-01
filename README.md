@@ -1,8 +1,18 @@
 # Embedded Controller (EC)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 [TOC]
 
 ## Introduction
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 The Chromium OS project includes open source software for embedded controllers
 (EC) used in recent ARM and x86 based Chromebooks. This software includes a
@@ -19,6 +29,11 @@ and [video](http://youtu.be/Ie7LRGgCXC8) from the
 [2014 Firmware Summit](http://dev.chromium.org/chromium-os/2014-firmware-summit).
 
 ## What you will need
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 1.  A Chromebook with a compatible EC. This includes the Samsung Chromebook
     (XE303C12) and all Chromebooks shipped after the Chromebook Pixel 2013
@@ -32,8 +47,18 @@ and [video](http://youtu.be/Ie7LRGgCXC8) from the
 1.  A sense of adventure!
 
 ## Terminology
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 ### EC
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 EC (aka Embedded Controller) can refer to many things in the Chrome OS
 documentation due to historical reasons. If you just see the term "EC", it
@@ -49,6 +74,11 @@ See the [EC Acronyms and Technologies](./docs/ec_terms.md) for a more complete
 glossary.
 
 ## Getting the EC code
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 The code for the EC is open source and is included in the Chromium OS
 development environment (`~/trunk/src/platform/ec/</code>`).
@@ -66,6 +96,11 @@ The source code can also be browsed on the web at:
 https://chromium.googlesource.com/chromiumos/platform/ec/
 
 ## Code Overview
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 The following is a quick overview of the top-level directories in the EC
 repository:
@@ -114,6 +149,11 @@ I2C/onewire LED controllers, and I2C temperature sensors.
            as unit tests, as thus use the same commands to build and run.
 
 ## Firmware Branches
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 Each Chrome device has a firmware branch created when the read-only firmware is
 locked down prior to launch. This is done so that updates can be made to the
@@ -140,10 +180,20 @@ git checkout firmware-falco_peppy-4389.B
 make clobber
 
 # <make changes, test, and commit them>
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 repo upload --cbr .
 
 # (The --cbr means "upload to the current branch")
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 ```
 
 Here is a useful command to see commit differences between branches (change the
@@ -160,9 +210,19 @@ current branch:
 git log --left-right --graph --cherry-pick --oneline cros/master...HEAD
 
 # Note: Use three dots “...” or it won’t work!
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 ```
 
 ## Building an EC binary
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 Note: The EC is normally built from within the Chromium OS development chroot to
 use the correct toolchain.
@@ -182,6 +242,11 @@ The make command will generate an EC binary at `build/<boardname>/ec.bin`. The
 machine.
 
 ### Building via emerge (the build file used when you build Chrome OS):
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 (optional) Run this command if you want to build from local source instead of
 the most recent stable version:
@@ -214,8 +279,18 @@ The ebuild file used by Chromium OS is found
 ```
 
 ## Flashing an EC binary to a board
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 ### Flashing via the servo debug board
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 If you get an error, you may not have set up the dependencies for servo
 correctly. The EC (on current Chromebooks) must be powered either by external
@@ -250,6 +325,11 @@ Specifying `--image` is optional. If you leave off the `--image` argument, the
 generated by `emerge`.
 
 ### Flashing on-device via flashrom
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 Assuming your devices boots, you can flash it using the `flashrom` utility. Copy
 your binary to the device and run:
@@ -262,6 +342,11 @@ Note: `-p internal:bus=lpc` also works on x86 boards...but why would you want to
 remember and type all that?
 
 ## Preventing the RW EC firmware from being overwritten by Software Sync at boot
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 A feature called "Software Sync" keeps a copy of the read-write (RW) EC firmware
 in the RW part of the system firmware image. At boot, if the RW EC firmware
@@ -295,6 +380,11 @@ A varying subset of these flags are implemented and/or relevant for any
 particular board.
 
 ## Using the EC serial console
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 The EC has an interactive serial console available only through the UART
 connected via servo. This console is essential to developing and debugging the
@@ -316,6 +406,11 @@ Where `XX` is the device number. Use `cu`, `minicom`, or `screen` if you prefer
 them over `socat`.
 
 ### Useful EC console commands:
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 **help** - get a list of commands. help <command> to get help on a specific
 command.
@@ -334,13 +429,28 @@ to the actual value.
 levels of detail (see include/ec_commands.h for the data structures).
 
 ## Host commands
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 The way in which messages are exchanged between the AP and EC is
 [documented separately](./docs/ap-ec-comm.md).
 
 ## Software Features
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 ### Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 Most code run on the EC after initialization is run in the context of a task
 (with the rest in interrupt handlers). Each task has a fixed stack size and
@@ -378,6 +488,11 @@ The `StkUsed` column reports the largest size the stack for each task grew since
 reset (or sysjump).
 
 ### Hooks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 Hooks allow you to register a function to be run when specific events occur;
 such as the host suspending or external power being applied:
@@ -395,6 +510,11 @@ hook_type in
 for a complete list.
 
 ### Deferred Functions
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 Deferred functions allow you to call a function after a delay specified in uSec
 without blocking. Deferred functions run in the HOOKS task. Here is an example
@@ -428,6 +548,11 @@ void some_interrupt(enum gpio_signal signal)
 ```
 
 ### Shared Memory Buffer
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 While there is no heap, there is a shared memory buffer that can be borrowed
 temporarily (ideally before a context switch). The size of the buffer depends on
@@ -437,6 +562,11 @@ for more information. At present (May 2014), this buffer is only used by debug
 commands.
 
 ## Making Code Changes
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 If you see a bug or want to make an improvement to the EC code please file an
 issue at [crbug.com/new](http://crbug.com/new). It's best to discuss the change
@@ -450,6 +580,11 @@ board specific code, please split the shared code change into its own change
 list (CL). The board specific CL can depend on the shared code CL.
 
 ### Coding style
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 The EC code follows the
 [Linux Kernel style guide](https://www.kernel.org/doc/html/latest/process/coding-style.html).
@@ -463,8 +598,18 @@ Other style notes:
     not use globals to pass information between modules without accessors. For
     module scope, accessors are not needed.
 1.  If you add a new `#define` config option to the code, please document it in
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
     [include/config.h](https://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/config.h)
     with an `#undef` statement and descriptive comment.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 1.  The Chromium copyright header must be included at the top of new files in
     all contributions to the Chromium project:
 
@@ -476,6 +621,11 @@ Other style notes:
     ```
 
 ### Submitting changes
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 Prior to uploading a new change for review, please run the EC unit tests with:
 
@@ -508,11 +658,21 @@ commit message. If you have configured git properly, running `git commit` with
 the `-s` argument will add the Signed-off-by line for you.
 
 ## Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 While adding `printf` statements can be handy, there are some other options for
 debugging problems during development.
 
 ### Serial Console
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 There may already be a message on the serial console that indicates your
 problem. If you don’t have a servo connected, the `ectool console` command will
@@ -529,6 +689,11 @@ console to read temperatures, view the state of tasks (taskinfo) which may help.
 Type `help` for a list.
 
 ### Panicinfo
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 The EC may save panic data which persists across resets. Use the “`ectool
 panicinfo`” command or console “`panicinfo`” command to view the saved data:
@@ -553,6 +718,11 @@ disable write buffering (with a performance hit) to get a “Precise bus error�
 with an accurate program counter value.
 
 ### Assembly Code
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 If you have a program counter address you need to make sense of, you can
 generate the assembly code for the EC by checking out the code at the matching
@@ -573,10 +743,20 @@ which (in the case of the LM4 and STM32) are essentially the same, but the RW
 addresses are offset.
 
 ## Write Protect
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 See [Firmware Write Protection].
 
 ## EC Version Strings
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+***
+
 
 The read-only and read-write sections of the EC firmware each have a version
 string. This string tells you the branch and last change at which the firmware

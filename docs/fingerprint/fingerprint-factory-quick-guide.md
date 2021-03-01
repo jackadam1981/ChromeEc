@@ -1,4 +1,9 @@
 # Chrome OS Fingerprint Sensor: Quick Factory Guide
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-quick-guide.md
+***
+
 
 The goal of this document is to outline how ODM partners can make use of the
 existing Chrome OS factory scripts to meet Chrome OS FPS factory requirements.
@@ -6,8 +11,18 @@ existing Chrome OS factory scripts to meet Chrome OS FPS factory requirements.
 [TOC]
 
 ## Factory Requirements
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-quick-guide.md
+***
+
 
 ### Flash firmware for fingerprint sensor microcontroller (FPMCU)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-quick-guide.md
+***
+
 
 FPMCU firmware must be flashed before fingerprint functional test is run. ODM
 partners may work with the module house to preflash FPMCU firmware before
@@ -36,6 +51,11 @@ in the factory flow, the FPMCU firmware should not be overwritten by
 boot-update-firmware service during reboot.
 
 ### Run fingerprint sensor functional test
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-quick-guide.md
+***
+
 
 Please add
 [fingerprint\_mcu.py](https://chromium.git.corp.google.com/chromiumos/platform/factory/+/a283609cd8446ba4a4b75c2e1d84c9ba24ea8422/py/test/pytests/fingerprint_mcu.py)
@@ -44,6 +64,11 @@ found
 [here](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/docs/fingerprint/fingerprint-factory-requirements.md).
 
 ### Initialize FPMCU entropy in factory finalization
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-quick-guide.md
+***
+
 
 The support for FPMCU entropy initialization has been integrated into the
 factory finalization script. So FPMCU entropy should be automatically
@@ -59,6 +84,11 @@ entropy initialization should succeed in factory finalization. So just run
 factory finalization as any other CrOS boards.
 
 ### Enable FPMCU software write protection (SWWP) in factory finalization in PVT/MP
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-quick-guide.md
+***
+
 
 The support for FPMCU SWWP has been integrated into factory finalization script.
 So FPMCU SWWP should be automatically enabled in factory finalization together
@@ -66,6 +96,11 @@ with AP/EC SWWP when write\_protection arg is set to true and a FPMCU is found
 on DUT. Just run factory finalization as any other CrOS boards.
 
 ### Reset entropy for factory re-finalization (in case of RMA or OQC)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-quick-guide.md
+***
+
 
 For the boards that have been finalized, FPMCU entropy has been initialized. So
 running re-finalization for those boards are expected to fail at FPMCU entropy
@@ -76,6 +111,11 @@ to reset rollback\_block\_id and entropy. So the follow-up re-finalization
 (which re-initialize entropy) can succeed.
 
 ## References
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-quick-guide.md
+***
+
 
 *   CrOS fingerprint factory requirements:
     [doc link](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/docs/fingerprint/fingerprint-factory-requirements.md)

@@ -1,4 +1,9 @@
 # Fingerprint Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 This document describes how to attach a debugger with SWD in order to debug the
 FPMCU.
@@ -6,8 +11,18 @@ FPMCU.
 [TOC]
 
 ## Overview
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 ### SWD
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 `SWD` (Single Wire Debug) was introduced by ARM with the Cortex-M family to
 reduce the pin count required by JTAG. JTAG requires 5 pins, but SWD can be done
@@ -18,6 +33,11 @@ See [CoreSight Connectors] for details on the three standard types of connectors
 used for JTAG and SWD for ARM devices.
 
 ## Hardware Required
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 *   JTAG/SWD Debugger Probe: Any debug probe that supports SWD will work, but
     this document assumes that you're using a
@@ -26,6 +46,11 @@ used for JTAG and SWD for ARM devices.
 *   [Servo Micro].
 
 ## Software Required
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 *   [JLink Software] \(when using [J-Trace] or other Segger debug probes).
 *   Any tool that supports connecting `gdbserver`. This document will assume
@@ -33,10 +58,20 @@ used for JTAG and SWD for ARM devices.
 *   Alternatively, you can use [Ozone] a standalone debugger from Segger.
 
 ## Connecting SWD
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 The connector for SWD is `J4` on Dragonclaw v0.2.
 
 <!-- mdformat off(b/139308852) -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 *** note
 **NOTE**: Pay attention to the location of pin 1 (red wire) in the
 photos below so that you connect with the correct orientation.
@@ -47,6 +82,11 @@ If you want to connect a 20-Pin ARM Standard JTAG Connector (0.10" / 2.54 mm),
 you can use the following [adapter][JTAG to SWD Adapter] and [cable][SWD Cable].
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 Dragonclaw v0.2 with 20-pin SWD (0.05" / 1.27mm) on J4. Only half the pins are connected. |
 ----------------------------------------------------------------------------------------- |
@@ -57,6 +97,11 @@ Dragonclaw v0.2 with 10-pin SWD (0.05" / 1.27mm) on J4. |
 ![Dragonclaw with 10-pin SWD]                           |
 
 ## Powering the Board
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 [Servo Micro] can provide both the 3.3V for the MCU and 1.8V for the sensor.
 
@@ -71,6 +116,11 @@ It's also possible to power through J-Trace, though this can only supply the MCU
 with power (3.3V), not a sensor using 1.8V.
 
 ## Using JLink gdbserver
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 Start the JLink gdbserver for the appropriate MCU type:
 
@@ -139,6 +189,11 @@ flash. Note that you still need to recompile after making changes to the source
 code before launching the debugger.
 
 ## Using Ozone
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 Ozone is a free standalone debugger provided by Segger that works with the
 [J-Trace]. You may want to use it if you need more powerful debug features than
@@ -151,21 +206,56 @@ STM32F412 package that does not have the synchronous trace pins, but the
 
 [CoreSight Connectors]: http://www2.keil.com/coresight/coresight-connectors
 [FPMCU dev board]: ./fingerprint-dev-for-partners.md#fpmcu-dev-board
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 [J-Trace]: https://www.segger.com/products/debug-probes/j-trace/models/j-trace/
 [JLink Software]: https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 [Servo Micro]: ./fingerprint-dev-for-partners.md#Servo-Micro
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 [JTAG to SWD Adapter]: https://www.adafruit.com/product/2094
 [SWD Cable]: https://www.adafruit.com/product/1675
 [Ozone]: https://www.segger.com/products/development-tools/ozone-j-link-debugger/
 [CLion]: https://www.jetbrains.com/clion/
 [GDB Remote Debug Configuration]: https://www.jetbrains.com/help/clion/remote-debug.html#remote-config
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 [CLion Start Remote Debug]: https://www.jetbrains.com/help/clion/remote-debug.html#start-remote-debug
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 [Nucleo STM32F412ZG]: https://www.st.com/en/evaluation-tools/nucleo-f412zg.html
 [Nucleo STM32H743ZI]: https://www.st.com/en/evaluation-tools/nucleo-h743zi.html
 [`.gdbinit`]: /util/gdbinit
 [configure `~/.gdbinit`]: https://www.jetbrains.com/help/clion/configuring-debugger-options.html#gdbinit-lldbinit
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 <!-- Images -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md
+***
+
 
 [Dragonclaw with 20-pin SWD]: ../images/dragonclaw_with_20_pin_swd.jpg
 [Dragonclaw with 10-pin SWD]: ../images/dragonclaw_with_10_pin_swd.jpg

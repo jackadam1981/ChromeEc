@@ -1,4 +1,9 @@
 # Configuring the EC for Low-Battery Startup
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Near the bottom of charge, starting up a ChromeOS device can be a tricky
 proposition.  Several features interact to make it difficult to reliably turn on
@@ -22,8 +27,18 @@ Finally, we'll close out with a detailed review of the configuration parameters
 which are available.
 
 ## Interacting Features
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 ### Battery and Charging Circuit
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 For the most part, ChromeOS device power systems are much like other laptop
 battery power systems.  A variable-voltage rail is connected to the battery via
@@ -45,10 +60,20 @@ concerned.  Variables and functions which refer to external supplies all refer
 to them as 'AC', though.
 
 ### Source Current Negotiation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 A device may draw power from an AC adapter via a few methods.
 
 #### USB BC1.2 Current Sources
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 BC1.2 negotiation is usually managed entirely by an external IC.  Once it is
 complete, the EC limits itself to 2.4A max.  Additionally, the charger may be
@@ -66,6 +91,11 @@ of 4.5V, for about 12W of power draw from a BC1.2 source.
 See also `driver/bc12/max14637.c:bc12_detect()`.
 
 #### USB-PD Sources
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 High-current power supplies are negotiated via the USB Type C Current Source and
 USB Power Delivery specifications (PD).  PD sources must support Type-C Current
@@ -86,6 +116,11 @@ scratch, because it is intended to emulate a cable disconnect.  Therefore, a
 hard reset without a connected battery will brownout the Chromebook.
 
 ### Locked and Unlocked Firmware
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 The Verified Boot implementation normally limits the complexity of the code
 which executes in the locked Read-Only firmware package.  The consequences for
@@ -98,6 +133,11 @@ the EC are:
 - On recent systems, write-protect is cleared by removing the system battery.
 
 ### ChromeOS `powerd`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 The power management daemon provided by ChromeOS displays a "low-power charger"
 warning message via the system tray whenever the charger is limited to less than
@@ -113,6 +153,11 @@ the board's filesystem.
 See also `platform2/power_manager/` source code.
 
 ### Cell Imbalance
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Under normal conditions, the battery pack is equipped with a management IC which
 is solely responsible for the safety of the battery, measurement of the state of
@@ -130,6 +175,11 @@ undervoltage cutoff threshold, even though the pack as a whole is considered to
 be at 3% charge or more.
 
 ### Power Profile During Boot
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 The power profile during the boot sequence is substantially different than that
 seen during typical use.  Dynamic voltage and frequency scaling of the AP is
@@ -144,6 +194,11 @@ power drawn during the boot is much higher than that seen during typical
 productivity and entertainment tasks.
 
 ### Depthcharge Power Verification
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 After verification and optional update of the EC's RW firwmare, Depthcharge will
 poll the EC to verify that it is allowed to proceed to boot to the kernel.
@@ -161,10 +216,20 @@ See also vb2ex_ec_vboot_done() in Depthcharge, and option
 is not set, and the EC immediately allows the boot to proceed.
 
 ## Example Low-Battery Boot Sequences and Configurations
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Most ChromeOS devices power needs will be met by one of the following templates.
 
 ### Low-Power Device
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Low-power devices require 15W or less of power to boot the AP.  The battery pack
 is robust enough to support the device during brief intervals of PD negotiation
@@ -172,7 +237,17 @@ without browning out.
 
 ```
 #define CONFIG_CHARGER_INPUT_CURRENT 512
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 1
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 ```
 
 A detailed boot sequence under this configuration, with a low battery and
@@ -199,6 +274,11 @@ available AC power via a USB-PD charger:
         limit to the negotiated limit (45W is typical).
 
 ### Low-Power Device Startup With Marginal Battery Compatibility
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Similar in configuration to the low-power device startup, this system enables
 additional options to maximize its compatibility with marginal batteries near
@@ -209,18 +289,38 @@ to boot the kernel and get to the login screen.
 ```
 /* Limit battery impact during PD voltage changes. */
 #define CONFIG_CHARGER_INPUT_CURRENT 512
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 /* Distrust the battery SOC measurement a bit. */
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 3
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 /*
  * Require PD negotiation to be complete prior to booting Linux, but don't
  * care about how much power we negotiate.
  */
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15001
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 /* Extra paranoia about imbalanced cells. */
 #define CONFIG_BATTERY_MEASURE_IMBALANCE
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 ```
 
 Additionally, in order to take advantage of cell imbalance detection, the system
@@ -252,6 +352,11 @@ available AC power:
 
 
 ### High-Power Boot Device Startup
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 A "high-power device" in this case is one that requires significantly more than
 15W of power to boot the AP.  These devices may complete software sync at 15W or
@@ -262,9 +367,29 @@ Example configuration:
 
 ```
 #define CONFIG_CHARGER_INPUT_CURRENT 512
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 3
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 15000
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 27000
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 ```
 
 Where the low-power device specified a threshold that just barely
@@ -294,6 +419,11 @@ configuration, with a low battery and available AC power:
 
 
 ### High-Power SwSync Device Startup
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Like the high-power boot device startup, these devices draw less than 15W during
 most of the software sync process, but may briefly exceed 15W during short
@@ -308,15 +438,50 @@ Example configuration:
 
 ```
 #define CONFIG_CHARGER_INPUT_CURRENT 512
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC 1
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT 15000
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 3
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 27000
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT 3
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 27000
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 ```
 
 1. EC ROM bootloader loads and jumps to the EC's read-only firmware image.
@@ -343,8 +508,18 @@ Example configuration:
 
 
 ## Configuration Option Details
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 ### `CONFIG_CHARGER_INPUT_CURRENT`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Required.
 
@@ -357,6 +532,11 @@ power supply.  Raising this term above 512 mA is contrary to USB-PD.  It may be
 lowered in order to improve compatibility with marginal BC1.2 chargers.
 
 ### `CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Required.
 
@@ -364,6 +544,11 @@ The minimum battery state of charge to start up the AP, in percent of full
 charge.
 
 #### `CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Default: 15000 (15W)
 
@@ -371,6 +556,11 @@ The minimum charger power level to start the AP even when the battery is less
 than `CHARGER_MIN_BAT_PCT_FOR_POWER_ON`, in milliwatts.
 
 ### `CONFIG_BATTERY_MEASURE_IMBALANCE`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Optional.  Only set this option if one or more batteries shipped with this board
 support per-cell battery voltage measurement.
@@ -380,11 +570,21 @@ If the cell voltage is excessively imbalanced at a low state of charge, the boot
 is inhibited.
 
 #### `CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Default: 5%.  Above this battery state of charge, cell voltage balance is
 ignored.
 
 #### `CONFIG_BATTERY_MAX_IMBALANCE_MV`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Default: 200 mV.  If the difference between the highest and lowest cell exceeds
 this value, then the pack is considered to be imbalanced.
@@ -394,6 +594,11 @@ is only near the top and bottom of charge that the slope of dV/dQ increases
 enough for small cell imbalances to be visible as a voltage difference.
 
 ### `CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Optional.
 
@@ -402,9 +607,19 @@ even when the battery state of charge is less than
 `CHARGER_LIMIT_POWER_THRESH_BAT_PCT`, in milliwatts.
 
 When this term is `#undef`ined (the default), kernel startup is immediately
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 allowed.
 
 #### `CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Optional.
 
@@ -412,6 +627,11 @@ The minimum battery state of charge to allow Depthcharge to start up the kernel.
 When using this feature, start with `CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON`
 
 ### `CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Optional.
 
@@ -419,6 +639,11 @@ Similar to `MIN_BAT_PCT_FOR_POWER_ON`, but used to define a secondary threshold
 for this feature.
 
 #### `CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/low_battery_startup.md
+***
+
 
 Optional.
 

@@ -1,4 +1,9 @@
 # Firmware Write Protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 [TOC]
 
@@ -7,8 +12,18 @@ differ between chips, and the hardware write protection has changed over time,
 so please edit or open a bug if something is not clear.
 
 ## Terminology
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 ## RO and RW
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 MCUs running the EC code have read-only (RO) and read-write (RW) firmware.
 Coming out of reset, the MCU boots into its RO firmware.
@@ -37,6 +52,11 @@ In the case of the FPMCU, the RW region is protected before jumping the RO
 firmware jumps to it.
 
 ## Hardware Write Protect {#hw_wp}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 On modern Chrome OS devices, the Cr50 (aka GSC / TPM) provides a "hardware write
 protect" GPIO that is connected to the AP SPI flash, EC SPI flash, EEPROM, and
@@ -58,32 +78,67 @@ this method is mainly used during bringup.
 
 Additional reference:
 https://www.google.com/chromeos/partner/fe/docs/cpfe/firmwaretestmanual.html#hardware-write-protect
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 ## Changing Hardware Write Protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 Modifying the state of hardware write protection (via Cr50 GPIO) can be done if
 the ["CCD open"] process has been completed.
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
+*** note
 `servod` *must* be running for `dut-control` to work. See the [Servo] page for
 details.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 ### Enable Hardware Write Protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 ```bash
 (chroot)$ dut-control fw_wp_state:force_on
 ```
 
 ### Disable Hardware Write Protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 ```bash
 (chroot)$ dut-control fw_wp_state:force_off
 ```
 
 ### Enable/Disable Hardware Write Protection via Cr50 Console
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 You can use the following commands from the [Cr50 console]:
 
@@ -100,6 +155,11 @@ wp follow_batt_pres
 ```
 
 ## Software Write Protect
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 Software-based write protect state stored in non-volatile memory. If hardware
 write protect is enabled, software write protect can be enabled but can’t be
@@ -114,15 +174,35 @@ must be protected before jumping to RW firmware if protection is enabled.
 
 Additional reference:
 https://www.google.com/chromeos/partner/fe/docs/cpfe/firmwaretestmanual.html#software-write-protect
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 ## Changing Software Write Protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 <!-- mdformat off(b/139308852) -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 *** note
 *NOTE*: You cannot disable software write protect if hardware write protect is
 enabled.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 Software write protection can be toggled with `ectool --name=cros_fp
 flashprotect enable/disable`, which sends the `EC_CMD_FLASH_PROTECT` command
@@ -130,8 +210,18 @@ toggling `EC_FLASH_PROTECT_RO_AT_BOOT` (changing `--name` to target different
 ECs).
 
 ### Changing Software Write Protection with ectool
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 #### ectool flashprotect
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 Print out current flash protection state.
 
@@ -169,16 +259,31 @@ Flags:
     be (should not happen during normal operation. Read only.).
 
 #### ectool flashprotect enable
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 Set `ro_at_boot` flag. The next time the EC is reset it will protect the flash.
 Note that this requires a cold reset.
 
 #### ectool flashprotect enable now
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 Set `ro_at_boot` `ro_now all_now` flags and immediately protect the flash. Note
 that this will fail if hardware write protect is disabled.
 
 #### ectool flashprotect disable
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 Clear `ro_at_boot` flag. This can only be cleared if the EC booted without
 hardware write protect enabled.
@@ -189,8 +294,18 @@ EC will leave the flash unprotected (`ro_now` and `all_now` flags are not set)
 but leave `ro_at_boot` flag set.
 
 ### Changing Software Write Protection with flashrom
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 #### View the current state of software write protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 ```bash
 (chroot) $ flashrom -p ec --wp-status
@@ -204,6 +319,11 @@ WP: write protect range: start=0x00000000, len=0x00000000
 ```
 
 #### Enable software write protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 This is immediate. The protection range indicates the RO region of the firmware.
 
@@ -227,6 +347,11 @@ WP: write protect range: start=0x00000000, len=0x0001f800
 ```
 
 #### Disable software write protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 Disable can only be done with hardware write protect disabled.
 
@@ -240,6 +365,11 @@ FAILED
 ```
 
 Reboot with [hardware write protection](#hw_wp) disabled. Note that protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 is still enabled, but the protection range is zero.
 
 ```bash
@@ -262,6 +392,11 @@ SUCCESS
 ```
 
 ## system_is_locked()
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 The [`system_is_locked()`] function in the EC code returns false if the HW write
 protect GPIO is disabled, or the read-only firmware is not protected.
@@ -274,6 +409,11 @@ tests against the exact same firmware we ship, rather than a different version
 that has test functionality compiled in or out.
 
 ## RDP1 {#rdp1}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 Stands for Readout Protection Level 1.
 
@@ -289,19 +429,54 @@ Note that this completely destroys *all* of the firmware, including the RO
 section.
 
 ### Additional References
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1222094
 
 ## EC Flash Read/Write Command Write Protection Checks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 
 The EC code command handlers (`command_flash_erase`, `command_flash_write`,
 etc.) return an error if `EC_FLASH_PROTECT_ALL_NOW` is set.
 
 ["CCD open"]: https://chromium.googlesource.com/chromiumos/platform/ec/+/cr50_stab/docs/case_closed_debugging_cr50.md#Open-CCD
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 [Cr50 console]: https://chromium.googlesource.com/chromiumos/platform/ec/+/cr50_stab/docs/case_closed_debugging_cr50.md#Consoles
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 [Servo]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/refs/heads/master/README.md
 [`OverrideWP`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/cr50_stab/docs/case_closed_debugging_cr50.md
 [`system_is_locked()`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/aaba1d5efd51082d143ce2ac64e6caf9cb14d5e5/common/system.c#195
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 [wp_screw]: https://www.chromium.org/chromium-os/firmware-porting-guide/firmware-ec-write-protection
 [write_protect_gpio]: https://chromium.googlesource.com/chromiumos/platform/ec/+/aaba1d5efd51082d143ce2ac64e6caf9cb14d5e5/include/ec_commands.h#1599
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+
 [SuzyQ]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/ccd.md#SuzyQ-SuzyQable
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/write_protection.md
+***
+

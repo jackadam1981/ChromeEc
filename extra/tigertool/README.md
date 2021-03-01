@@ -1,10 +1,20 @@
 # tigertool
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/extra/tigertool/README.md
+***
+
 
 tigertool.py is a commandline utility to control the tigertail USB-C mux.
 It supports changing the mux status to port A, B, or off.
 You can set a serial number to use multiple tigertails at once.
 
 ## Usage
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/extra/tigertool/README.md
+***
+
 Typical usage to set the mux port<br>
 ```./tigertail.py -m [A|B|off] -s [serialno]```<br>
 

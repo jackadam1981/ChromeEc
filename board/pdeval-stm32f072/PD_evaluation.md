@@ -4,17 +4,32 @@ USB PD chip evaluation configuration
 This board configuration implements a USB Power Delivery TCPM
 in order to evaluate various TCPC chips.
 The code tries to follow the preliminary USB PD interface standard but for TCPC chip implementing proprietary I2C protocol, a new TCPM file can be implemented as explained in the [Updating the code](#Updating-the-code) section below.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/pdeval-stm32f072/PD_evaluation.md
+***
+
 
 Building
 --------
 
 ### ChromiumOS chroot
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/pdeval-stm32f072/PD_evaluation.md
+***
+
 
 All the following instructions have been verified in a ChromiumOS chroot.
 You can find how to set one up on the Chromium development wiki:
 [http://dev.chromium.org/chromium-os/quick-start-guide](http://dev.chromium.org/chromium-os/quick-start-guide)
 
 ### Build the TCPM code
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/pdeval-stm32f072/PD_evaluation.md
+***
+
 
 `cd src/platform/ec`
 
@@ -25,15 +40,35 @@ Updating the code
 -----------------
 
 ### TCPC Communication code
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/pdeval-stm32f072/PD_evaluation.md
+***
+
 
 Please duplicate [driver/tcpm/tcpci.c](../../driver/tcpm/tcpci.c) into **driver/tcpm/##chip#name##.c**.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/pdeval-stm32f072/PD_evaluation.md
+***
+
 Then update the control logic through I2C there.
 
 In order for your new code to compile, you need to update [driver/build.mk](../../driver/build.mk) with the new file :
 `driver-$(CONFIG_USB_PD_TCPM_##CHIP#NAME##)+=tcpm/##chip#name##.o`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/pdeval-stm32f072/PD_evaluation.md
+***
+
 then document the new `CONFIG_USB_PD_TCPM_` variable in the [include/config.h](../../include/config.h) file and define it in the board configuration in [board/pdeval-stm32f072/board.h](board.h).
 
 ### Board configuration
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/pdeval-stm32f072/PD_evaluation.md
+***
+
 
 In [board/pdeval-stm32f072/board.h](board.h), you can update `CONFIG_USB_PD_PORT_MAX_COUNT` to the actual number of ports on your board.
 You also need to create/delete the corresponding `PD_Cx` tasks in [board/pdeval-stm32f072/ec.tasklist](ec.tasklist).
@@ -50,6 +85,11 @@ Flashing and Running
 --------------------
 
 ### Flashing the firmware binary
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/pdeval-stm32f072/PD_evaluation.md
+***
+
 
 To flash through JTAG with OpenOCD, you can just run:
 
@@ -58,6 +98,11 @@ To flash through JTAG with OpenOCD, you can just run:
 Note: you need to do that with your USB mini-B cable is connected to the **USB ST-LINK** plug on the discovery board.
 
 ### Connecting to the firmware console
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/pdeval-stm32f072/PD_evaluation.md
+***
+
 
 Connect a USB cable to the **USB USER** mini-B receptacle on the board.
 `lsusb` should show you a device with the following ID : 18d1:500f
@@ -144,6 +189,11 @@ Troubleshooting
 
 	1. You might be missing some pull-up resistors on the bus.
 	1. Check the [Board configuration](#Board-configuration) section if you cannot add external pull-ups.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/pdeval-stm32f072/PD_evaluation.md
+***
+
 
 1. You got black smoke
 

@@ -1,4 +1,9 @@
 # EC Implementation of USB-C Power Delivery and Alternate Modes
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 USB-C PD requires a complex state machine as USB-C PD can operate in many
 different modes. This includes but isn't limited to:
@@ -23,13 +28,28 @@ Modes in the EC codebase.
 [TOC]
 
 ## Glossary
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 *   PD {#pd}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Power Delivery. Protocol over USB-C connector that allows up to 100W of
         power. Not supported on USB-A or USB-B connectors. A good overview of
         USB PD is found in the [Introduction to USB Power Delivery] application
         note.
 *   TCPC {#tcpc}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Type-C Port Controller. Typically a separate IC connected through I2C,
         sometimes embedded within the EC as a hardware sub module. The TCPC
         interprets physical layer signals on CC lines and Vbus, and sends that
@@ -39,52 +59,122 @@ Modes in the EC codebase.
         acted as the TCPM. More info in the official
         [TCPC spec][USB TCPM Spec Id].
 *   TCPM {#tcpm}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Type-C Port Manager. Manages the state of the USB-C connection. Makes
         decisions about what state to transition to. This is the code running on
         the EC itself.
 *   PE {#pe}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Policy Engine. According to the [TypeC spec][USB TC Spec Id], the policy
         engine is the state machine that decides how the USB-C connection
         progresses through different states and which USB-C PD features are
         available, such as Try.SRC
 *   TC {#tc}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Type-C physical layer.
 *   PPC {#ppc}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Power Path Controller. An optional, separate IC that isolates various
         USB-C signals from each other and the rest of the board. This IC should
         prevent shorts and over current/voltage scenarios for Vbus. Some PPCs
         will protect signals other than Vbus as well.
 *   SSMUX {#ssmux}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   SuperSpeed Mux. This is typically the same IC as the TCPC; it enables
         the mirrored orientation of the USB-C cable to go to the correct pins on
         SoC. Also, allows the SuperSpeed signal to be used for different
         purposes, such as USB data or DisplayPort.
 *   SVDM {#svdm}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Structured Vendor Defined Messages are a class of [USB PD](#pd) messages
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
         to enable non-power related communication between port partners. SVDMs
         are used to negotiate and set the display port mode on a USB-C
         connection.
 *   DRP {#drp}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Dual Role Power Port. A USB-C port that can act as either a power Source
         or power Sink.
 *   UFP {#ufp}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Upstream Facing Port. The USB data role that is typical for a peripheral
         (e.g. HID keyboard).
 *   DFP {#dfp}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Downstream Facing Port. The USB Data role that is typical for a host
         machine (e.g. device running ChromeOS).
 
 *   E-Mark {#emark}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Electronically marked cable. A USB-C cable that contains an embedded
         chip in the cable, used to identify the capabilities of the cable.
 
 *   VCONN {#vconn}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   Connector Voltage. A dedicated power supply rail for [E-Mark](#emark)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
         cables and other accessory functions (such as display dongles, and
         docks). VCONN re-uses one of the CC1/CC2 signals to provide 5 volt, 1
         watt, of power.
 
 ## Different PD stacks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 Right now platform/ec has two different implementations of USB-C PD stack.
 
@@ -108,18 +198,48 @@ To use the newer USB-C PD stack implementation, see
 [TCPMv2 Overview](usb-tcpmv2.md).
 
 ## Implementation Considerations
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 In both older and newer implementations, the following details apply:
 
 *   For each USB-C port, there must be two tasks: `PD_C#` and `PD_INT_C#`, where
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     `#` is the port number starting from `0`.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
     *   The `PD_C#` task runs the state machine (old or new) for the port and
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
         communicates with the TCPC, MUX, and PPC. This task needs a large task
         stack.
     *   The `PD_INT_C#` tasks run at a higher priority than the state machine
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
         task, and its sole job is to receive interrupts from the TCPC as quickly
         as possible then send appropriate messages to other tasks (including
         `PD_C#`). This task shouldn't need much stack space, but the i2c
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
         recovery code requires a decent amount of stack space so it ends up
         needing a fair amount too.
 *   Saving PD state between EC jumps
@@ -155,11 +275,21 @@ In both older and newer implementations, the following details apply:
             unlocked.
 
 ## Configuration
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 There are many `CONFIG_*` options and driver structs that are needed in the
 board.h and board.c implementation.
 
 ### TCPC Config
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 The `tcpc_config` array of `tcpc_config_t` structs defined in `board.c` (or
 baseboard equivalent) should be defined for every board. The index in the
@@ -169,6 +299,11 @@ used on that port. The i2c port and address for the TCPC are also specified
 here.
 
 ### SSMUX Config
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 The `usb_muxes` array of `usb_mux` structs defined in `board.c` (or baseboard
 equivalent) should be defined for every board. Normally the standard
@@ -181,6 +316,11 @@ every time the mux is woken up from a low power state and should be used for
 setting custom board tuning parameters.
 
 ### PPC Config
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 Some boards have an additional IC that sits between the physical USB-C connector
 and the rest of the board. The PPC IC gates whether the Vbus line is an input or
@@ -192,6 +332,11 @@ baseboard equivalent) sets the appropriate driver and i2c port/address for the
 PPC IC.
 
 ### Useful Config Options
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 Many USB-C policies and features are gated by various `CONFIG_*` options that
 should be defined in `board.h` (or baseboard equivalent).
@@ -200,10 +345,25 @@ Most USB-C options will start with `CONFIG_USB_PD_` or `CONFIG_USBC_`. For their
 full descriptions see [config.h][config header link]
 
 ## Interactions with other tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 TODO(https://crbug.com/974302): mention `USB_CHG_P#` and `CHARGER`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 ## Upgrading FW for TCPCs
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-c.md
+***
+
 
 TODO(https://crbug.com/974302): Mention how this works even though it is in depthcharge.
 Probing now. Need new driver in depthcharge

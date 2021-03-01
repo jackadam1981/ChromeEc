@@ -1,4 +1,9 @@
 # Configure LEDs
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/leds.md
+***
+
 
 LEDs provide status about the following:
 
@@ -14,6 +19,11 @@ LEDs can be configured as simple GPIOs, with on/off control only, or as PWM with
 adjustment brightness and color.
 
 ## Config options
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/leds.md
+***
+
 
 In [config.h], search for options that start with `CONFIG_LED*` and evaluate
 whether each option is appropriate to add to `baseboard.h` or `board.h`.
@@ -24,6 +34,11 @@ whether each option is appropriate to add to `baseboard.h` or `board.h`.
   `CONFIG_PWM` when using PWM controlled LEDs.
 
 ## Feature Parameters
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/leds.md
+***
+
 
 - `CONFIG_LED_PWM_COUNT <count>` - Must be defined when using PWM LEDs
 
@@ -37,6 +52,11 @@ the recommended LED color settings.
 - `CONFIG_LED_PWM_LOW_BATT_COLOR <ec_led_color>`
 
 ## GPIOs and Alternate Pins
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/leds.md
+***
+
 
 For GPIO based LEDs, create `GPIO()` entries for all signals that connect to
 platform LEDs. The default state of the pins should be set so that the LED is
@@ -46,6 +66,11 @@ For PWM LEDs, configure the `ALTERNATE()` macro, setting the module type to
 `MODULE_PWM`.
 
 ## Data structures
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/leds.md
+***
+
 
 For GPIO based LEDs:
 - `struct led_descriptor led_bat_state_table[LED_NUM_STATES][LED_NUM_PHASES]` -
@@ -66,12 +91,27 @@ See the [GPIO](./gpio.md) documentation for additional details on the GPIO
 macros.
 
 ## Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/leds.md
+***
+
 
 None required by this feature.
 
 ## Testing and Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/leds.md
+***
+
 
 ### Console Commands
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/leds.md
+***
+
 
 - `pwmduty` - *TODO* add description.
 - `gpioset` - For GPIO based LEDs, this command lets you directly change the
@@ -84,9 +124,19 @@ If you're having problems with a PWM LED, try reconfiguring the pin as a GPIO to
 verify the board operation independent of the PWM module.
 
 ## LED Driver Chips
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/leds.md
+***
+
 
 LED driver chips are used to control the LCD panel backlight. The backlight
 control is separate from the platform LEDs.
 
 [config.h]: ../new_board_checklist.md#config_h
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/leds.md
+***
+
 [./include/ec_commands.h]: ../../include/ec_commands.h

@@ -1,4 +1,9 @@
 # Sweetberry USB power monitoring
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/extra/usb_power/powerlog.README.md
+***
+
 
 This tool allows high speed monitoring of power rails via a special USB
 endpoint. Currently this is implemented for the Sweetberry board.
@@ -8,6 +13,11 @@ To use on a board, you'll need two config files, one describing the board, a
 this session, a `.scenario` file.
 
 ## Converting from servo_ina configs
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/extra/usb_power/powerlog.README.md
+***
+
 
 - Method 1 (not limited to chroot)
 
@@ -55,6 +65,11 @@ this session, a `.scenario` file.
   `<board>_r0_loc.py`, you need to `sudo emerge dev-util/hdctools` again.
 
 ## Board files
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/extra/usb_power/powerlog.README.md
+***
+
 
 Board files contain a list of rails, supporting 48 channels each on up to two
 Sweetberries. For each rail you must specify a name, sense resistor value, and
@@ -77,6 +92,11 @@ example.board:
 ```
 
 ## Scenario files
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/extra/usb_power/powerlog.README.md
+***
+
 
 Scenario files contain the set of rails to monitor in this session. The file
 format is simply a list of rail names from the board file.
@@ -98,6 +118,11 @@ example.scenario:
 ```
 
 ## Output
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/extra/usb_power/powerlog.README.md
+***
+
 
 `powerlog.py` will output a csv formatted log to stdout, at timing intervals
 specified on the command line. Currently values below `-t 10000` do not work
@@ -142,6 +167,11 @@ The output format is as follows:
   Measurement in uW, mW, mV, uA, uV as per config.
 
 ## Calculate stats and store data and stats
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/extra/usb_power/powerlog.README.md
+***
+
 
 When appropriate flag is set, powerlog.py is capable of calculating statistics
 and storing statistics and raw data.
@@ -198,6 +228,11 @@ and storing statistics and raw data.
   and writing.
 
 ## Making developer changes to `powerlog.py`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/extra/usb_power/powerlog.README.md
+***
+
 
 `powerlog.py` is installed in chroot, and the developer can import `powerlog` or
 use `powerlog` directly anywhere within chroot. Anytime the developer makes a

@@ -1,4 +1,9 @@
 # CrOS EC (Embedded Controller)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/navbar.md
+***
+
 
 [logo]: https://chromium-review.googlesource.com/plugins/chromium-style/static/chromium_logo.png
 [home]: /README.md
@@ -8,4 +13,9 @@
 * [Getting Started Quickly](/docs/getting_started_quickly.md)
 * [File a Bug](https://bugs.chromium.org/p/chromium/issues/entry?components=OS%3EFirmware%3EEC)
 * [Report Security Issue](https://chromium.googlesource.com/chromiumos/docs/+/master/reporting_bugs.md#security)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/navbar.md
+***
+
 * [Chromium OS Docs](https://chromium.googlesource.com/chromiumos/docs/+/master/README.md)

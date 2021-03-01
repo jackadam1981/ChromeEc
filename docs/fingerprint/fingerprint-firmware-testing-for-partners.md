@@ -1,4 +1,9 @@
 # Fingerprint Firmware Testing Instructions for Partners
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 This document is intended to help partners (sensor vendors, MCU vendors, etc)
 run the Chrome OS fingerprint team's firmware tests, as part of the AVL process.
@@ -9,11 +14,21 @@ machine, but that is not a configuration we test.
 [TOC]
 
 ## Hardware Requirements
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 You will need a Chromebook with the fingerprint sensor and fingerprint MCU
 (FPMCU), and a [servo debugger].
 
 ### Chromebook with fingerprint sensor
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 The Chromebook needs to be in [developer mode] and running a test image so that
 the test can ssh into it. The fingerprint firmware tests will run a series of
@@ -22,6 +37,11 @@ Chromebook. You do not need [CCD] because servo will handle the firmware write
 protection for you.
 
 ### Servo
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 Servo is a general purpose debug board used in many automated tests in Chromium
 OS. Among other things, servo enables the tests to toggle hardware write
@@ -32,6 +52,11 @@ recommend [Servo V4] as that's the simplest and most often used in autotests.
 This document will assume you are using Servo V4.
 
 ### Hardware Setup
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 *   Connect the "HOST" side of Servo V4 to your host machine (which should have
     a Chromium OS chroot).
@@ -44,26 +69,61 @@ This document will assume you are using Servo V4.
     machine.
 
 ## Software Setup
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 ### Get the Chromium OS source code.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 *   First, make sure you [have the prerequisites].
 *   Then [get the source].
 
 ### Build the autotest codebase
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 ```bash
 # from a terminal on your machine
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 (outside chroot) $ cd ~/chromiumos/src
 
 # enter the chroot (the flag is important)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 (outside chroot) $ cros_sdk --no-ns-pid
 
 # build autotest for the board to be tested
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 (chroot) $ emerge-<BOARD> autotest
 ```
 
 ### Start servod
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 ```bash
 (chroot) $ sudo servod --board=<BOARD>
@@ -73,6 +133,11 @@ At this point the servod daemon should be running and listening to port 9999 by
 default. If it isn't, check the hardware connection.
 
 ## Run a Single Fingerprint Firmware Test
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 Use another terminal and enter the chroot like before:
 
@@ -94,6 +159,11 @@ test_that --board=nocturne <IP> firmware_Fingerprint.ReadFlash
 ```
 
 ## Run the Entire Fingerprint Firmware Test Suite
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 To run the entire suite, use this command in your chroot:
 
@@ -102,10 +172,25 @@ test_that --board=<BOARD> <IP> suite:fingerprint
 ```
 
 <!-- Links -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 
 [servo debugger]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/docs/servo.md
 [developer mode]: https://chromium.googlesource.com/chromiumos/docs/+/master/developer_mode.md
 [CCD]: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/cr50_stab/docs/case_closed_debugging.md
 [Servo V4]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/docs/servo_v4.md
 [have the prerequisites]: https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#Prerequisites
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 [get the source]: https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#get-the-source
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+

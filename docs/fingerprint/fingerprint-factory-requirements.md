@@ -1,4 +1,9 @@
 # Chrome OS Fingerprint Factory Requirements
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 This document provides an overview of factory requirements and testing for the
 fingerprint sensor.
@@ -6,11 +11,21 @@ fingerprint sensor.
 [TOC]
 
 ## Contact
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 For questions regarding this document, please contact the
 [Chrome OS Fingerprint Team].
 
 ## Terminology
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 *   `AP`: Application Processor.
 *   `FPMCU`: Fingerprint Microcontroller.
@@ -30,6 +45,11 @@ For questions regarding this document, please contact the
 *   `MQT2`: Module Quality Test 2.
 
 ## Documents
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 *   [FPC1025: Module Test Specification]
 *   [FPC1145: Module Test Specification]
@@ -37,6 +57,11 @@ For questions regarding this document, please contact the
 *   [Factory Fingerprint Sensor Testing for `nocturne` ]
 
 ## FPMCU Firmware Location
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 The binaries for the FPMCU firmware are located in `/opt/google/biod/fw`. Now
 that Chrome OS supports unibuild, there may be multiple firmware binaries in the
@@ -63,17 +88,32 @@ The corresponding firmware for the above command would be
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
+*** note
 **NOTE**: If you get an empty response when running the above commands, the
 Chrome OS Config settings may not have been updated for the Chrome OS board.
 See the instructions on [updating Chrome OS Config] for fingerprint.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Note that the fingerprint team continuously releases updates to the firmware, so
 SIEs should watch for version changes in ToT if they are maintaining a separate
 factory branch.
 
 ## Flashing the FPMCU
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 When the FPMCU is completely blank a low-level flashing tool must be used to
 program an initial version of the FPMCU firmware. It’s possible to use the
@@ -92,14 +132,29 @@ latest firmware beforehand.
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
+*** note
 **NOTE**: If the FPMCU is not flashed in the factory as part of development
 builds (EVT, etc.), it's possible for developers (or Chromestop) to manually
 run [`flash_fp_mcu`], as long as they can disable [hardware write protect].
 Obviously this only applies during development, not mass production.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 ## biod and timberslide
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Since `biod` communicates with the FPMCU, it’s best to disable it when running
 the fingerprint factory tests. This can be done with upstart:
@@ -121,8 +176,18 @@ running the [`flash_fp_mcu`] script, since that script erases the entire FPMCU:
 ```
 
 ## Factory Tests
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 ### Fingerprint Sensor (standalone module)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 When using an FPC sensor (e.g., FPC 1025, FPC 1145), the fingerprint sensor
 itself must be tested by the module manufacturer with FPC’s tools. FPC provides
@@ -141,6 +206,11 @@ The module testing procedure is documented in the following:
 [FPC1145: Module Test Specification]
 
 ### Fingerprint Sensor + FPMCU (in device)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 In-device tests are run during the `FATP` process once the device has been fully
 assembled. Google provides source code for these tests in
@@ -151,13 +221,28 @@ Hardware Required: Chrome OS DUT before finalization.
 Documentation: [FPC In-Device Test Specification]
 
 #### Test Image Checkerboard and Inverted Checkerboard Test (CB/ICB)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 ##### Purpose
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Capture a checkerboard (and inverted checkerboard) pattern and verify that the
 values of the individual pixels do not deviate from the median.
 
 ##### Implementation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Use `ectool` to capture the first checkerboard pattern image:
 
@@ -193,12 +278,27 @@ document. The factory toolkit does this in
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
+*** note
 **TIP**: You can view the `.pnm` files generated by the commands below on your
 Linux desktop with ImageMagick: `display /path/to/file.pnm`.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 ##### Success/Failure
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 The median pixel value (type 1 and type 2), pixel errors, finger detect zone
 errors, and pixel error deviation limit must fall within the acceptance criteria
@@ -206,20 +306,40 @@ limits specified in "4.3.5 Acceptance Criteria Test Image CB / iCB" in the `MTS`
 document for the sensor being tested.
 
 #### Hardware Reset Test (aka IRQ test)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 ##### Purpose
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Perform a hardware reset of the sensor and test that the IRQ line is asserted
 after 5 ms. See "Section 4.1 Reset test pattern procedure" and "2.8 HW Reset" in
 the FPC `MTS` document for the sensor being tested.
 
 ##### Implementation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 This is implemented by the FPMCU on every boot. The results can be checked with
 the `ectool` command. The factory toolkit does this in
 [`fpmcu_utils.py`][GetSensorIdErrors].
 
 ##### Success/Failure
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 The `Error flags` line of the `fpinfo` `ectool` command must be empty.
 
@@ -234,19 +354,39 @@ Templates: version 4 size 47616 count 0/5 dirty bitmap 0
 ```
 
 #### Hardware ID (HWID) check
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 ##### Purpose
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Ensure that communications between the sensor and the FPMCU are working and that
 the correct sensor has been assembled.
 
 ##### Implementation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 `ectool` can be used to request the hardware ID, which can be compared with the
 expected hardware ID. The factory toolkit does this in
 [`fpmcu_utils.py`][GetSensorId].
 
 ##### Success/Failure
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 The `Fingerprint sensor` line of the `fpinfo` `ectool` command must show the
 expected ID and the `Error flags` line must be empty:
@@ -255,6 +395,11 @@ expected ID and the `Error flags` line must be empty:
 (dut) $ ectool --name=cros_fp fpinfo
 
 Fingerprint sensor: vendor 20435046 product 9 model 1401 version 1  # FPC 1145
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 Image: size 56x192 8 bpp
 Error flags:
 Dead pixels: UNKNOWN
@@ -262,13 +407,28 @@ Templates: version 4 size 47616 count 0/5 dirty bitmap 0
 ```
 
 #### Reset Pixel (RP)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 ##### Purpose
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Capture a white image, compare the individual pixel values and ensure that the
 deviation to the median is within the specified range.
 
 ##### Implementation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Capture the test image with `ectool` and analyze the output. The factory toolkit
 does this in [`fingerprint_mcu.py`][ProcessResetPixelImage].
@@ -288,6 +448,11 @@ Retrieve the test image:
 ```
 
 ##### Success/Failure
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 A pixel is considered to be a bad pixel ("reset pixel error") if the value read
 out deviates more than a defined value from the median. The median value and the
@@ -295,8 +460,18 @@ max number of pixels that have "reset pixel error" are defined in section "Reset
 Pixel" (4.4 or 4.5) of the MTS for the given sensor.
 
 #### Module Quality Test (or Module Quality Test 2) with Rubber Stamp Zebra (Optional)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 ##### Purpose
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 The Module Quality Test (`MQT`) uses a rubber stamp with a "zebra" pattern to
 characterize module performance and image quality after the top layer (including
@@ -304,6 +479,11 @@ stack-up) is applied. Although this test is optional, OEMs are strongly
 encouraged to perform it.
 
 ##### Implementation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Capture the image when the rubber stamp is applied:
 
@@ -336,11 +516,21 @@ MQT failed (-1)
 The factory toolkit does this in [`fingerprint_mcu.py`][rubber_finger_present].
 
 ##### Success/Failure
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 See "Section 5.1.5" Acceptance Criteria for `MQT2` or "Section 5.2.5 Acceptance
 Criteria" in the MTS for the given sensor.
 
 ## Finalization
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 The finalization process must perform two tasks:
 
@@ -348,6 +538,11 @@ The finalization process must perform two tasks:
 1.  When building for PVT or mass production, enable `software write protect`.
 
 ### Initialize FPMCU Entropy
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 The `bio_wash` tool is intended to support both the first time factory
 initialization and RMA, depending on the flag. When run with the
@@ -363,6 +558,11 @@ Note that for new devices coming out of the factory we expect `rollback_id` to
 be 1, which indicates that the entropy has been set exactly once.
 
 ### Enable Software Write Protect
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 `Software write protect` must be enabled for PVT and mass production devices. It
 ensures that the RO portion of the FPMCU firmware cannot be overwritten, so it
@@ -372,8 +572,18 @@ The following commands will enable software write protection:
 
 ```bash
 (dut) $ ectool --name=cros_fp flashprotect enable    # enable
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 (dut) $ sleep 2
 (dut) $ ectool --name=cros_fp reboot_ec              # reboot so it takes effect
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 (dut) $ sleep 2
 ```
 
@@ -381,8 +591,18 @@ To validate that software write protection has taken effect, run the following:
 
 ```bash
 (dut) $ ectool --name=cros_fp flashprotect   # get flashprotect state
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 # output should match below
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 Flash protect flags: 0x0000000b wp_gpio_asserted ro_at_boot ro_now
 Valid flags:         0x0000003f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT
 Writable flags:      0x00000004 all_now
@@ -392,8 +612,18 @@ If software write protection is not enabled, you will see the following instead:
 
 ```bash
 (dut) $ ectool --name=cros_fp flashprotect  # get flashprotect state
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 # not protected
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 Flash protect flags: 0x00000000
 Valid flags:         0x0000003f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT
 Writable flags:      0x00000001 ro_at_boot
@@ -408,13 +638,28 @@ enabled:
 (dut) $ ectool --name=cros_fp fpframe raw
 
 # write protection disabled, exit code 0 and output will be raw bytes
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 # write protection enabled, exit code 1 and output will be
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 EC result 4 (ACCESS_DENIED)
 Failed to get FP sensor frame
 ```
 
 ## RMA Process
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 As part of the RMA process, the `entropy` needs to be reset so that the new
 device owner has a new unique encryption key.
@@ -428,8 +673,18 @@ the FPMCU firmware and then run `bio_wash --factory_init` to make sure that the
 entropy has been reset.
 
 ## Miscellaneous Commands for Test Implementations
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 ### FPMCU Image Version
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 ```bash
 (dut) $ ectool --name=cros_fp version
@@ -442,6 +697,11 @@ Tool version:  v2.0.2144-1524c164f 2019-09-09 06:50:36 @chromeos-ci-legacy-us-ce
 ```
 
 ### Capture Raw Images
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Put your finger on the sensor, then run:
 
@@ -469,10 +729,20 @@ utilities in `/opt/fpc`.
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
+*** note
 **NOTE**: As of 2019-05-21, the `libfputils` library only works for the FPC 1145
 sensor (in nocturne), not the FPC 1025 sensor (hatch).
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 
 Convert the buffer in proprietary format into png:
 
@@ -484,19 +754,64 @@ Wrote /tmp/fp.1.png (14025 bytes)
 ```
 
 [Software Write Protect]: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/docs/write_protection.md#Software-Write-Protect
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 [hardware write protect]: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/docs/write_protection.md#hw_wp
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 [FPC1025: Module Test Specification]: http://go/cros-fingerprint-fpc1025-module-test-spec
 [FPC1145: Module Test Specification]: http://go/cros-fingerprint-fpc1145-module-test-spec
 [FPC In-Device Test Specification]: http://go/cros-fingerprint-fpc-indevice-test-spec
 [`fingerprint_mcu.py`]: https://chromium.googlesource.com/chromiumos/platform/factory/+/master/py/test/pytests/fingerprint_mcu.py
 [Checkerboard Test]: https://chromium.googlesource.com/chromiumos/platform/factory/+/d23ebc7eeb074760e8a720e3acac4cfe4073b2ae/py/test/pytests/fingerprint_mcu.py#166
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 [GetSensorIdErrors]: https://chromium.googlesource.com/chromiumos/platform/factory/+/d23ebc7eeb074760e8a720e3acac4cfe4073b2ae/py/test/utils/fpmcu_utils.py#73
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 [GetSensorId]: https://chromium.googlesource.com/chromiumos/platform/factory/+/d23ebc7eeb074760e8a720e3acac4cfe4073b2ae/py/test/utils/fpmcu_utils.py#65
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 [ProcessResetPixelImage]: https://chromium.googlesource.com/chromiumos/platform/factory/+/d23ebc7eeb074760e8a720e3acac4cfe4073b2ae/py/test/pytests/fingerprint_mcu.py#268
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 [rubber_finger_present]: https://chromium.googlesource.com/chromiumos/platform/factory/+/d23ebc7eeb074760e8a720e3acac4cfe4073b2ae/py/test/pytests/fingerprint_mcu.py#330
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 [Chrome OS Fingerprint Team]: http://go/cros-fingerprint-docs
 [Factory Fingerprint Sensor Testing for `nocturne`]: http://go/fingerprint-factory-testing-nocturne
 [`flash_fp_mcu`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/util/flash_fp_mcu
 [Fingerprint flashing documentation]: ./fingerprint.md#factory-rma-dev-updates
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+
 [Chrome OS Config]: https://chromium.googlesource.com/chromiumos/platform2/+/master/chromeos-config/README.md
 [updating Chrome OS Config]: ./fingerprint.md#update-chromeos-config
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md
+***
+

@@ -1,6 +1,16 @@
 # Sitemap
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 ## Getting Started
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [Getting Started Quickly](./getting_started_quickly.md)
 *   [Core Runtime](./core_runtime.md)
@@ -8,20 +18,40 @@
 *   [EC Acronyms and Technologies](./ec_terms.md)
 
 ## EC Bringup
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [New Board Checklist](./new_board_checklist.md)
 
 ## Case Closed Debugging (CCD)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [Case Closed Debugging Overview][1]
 *   [Google Security Chip Case Closed Debugging][2]
 *   [Tutorials][3]
 
 ## Verified Boot Troubleshooting
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [Cr50 Verified Boot Troubleshooting][4]
 
 ## Fingerprint MCU (FPMCU)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [Fingerprint MCU (FPMCU)](./fingerprint/fingerprint.md)
 *   [FPMCU Development for Partners](./fingerprint/fingerprint-dev-for-partners.md)
@@ -33,31 +63,61 @@
 *   [Dragonclaw Schematics and Layout](./schematics/dragonclaw)
 
 ## Testing
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [Unit Tests](./unit_tests.md)
   *   [Porting EC unit tests to Ztest](./ztest.md)
 *   [Code Coverage](./code_coverage.md)
 
 ## Updaters
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [USB Updater](./usb_updater.md)
 
 ## USB
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [USB-C Power Delivery and Alternate Modes](./usb-c.md)
 *   [USB-A and USB-C Policies for Sourcing Power](./usb_power.md)
 *   [USB-C Power Delivery TCPMv2](./usb-tcpmv2.md)
 
 ## Verified Boot
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [Detachable Base Verified Boot](./detachable_base_verified_boot.md)
 
 ## EC-3PO
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [EC-3PO overview](./ec-3po.md)
 *   [EC-3PO design doc](./ec-3po-design.md)
 
 ## Miscellaneous
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md
+***
+
 
 *   [Low Battery Startup](./low_battery_startup.md)
 *   [I2C tracing via console commands](./i2c-debugging.md)

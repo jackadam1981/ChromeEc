@@ -1,12 +1,22 @@
 [TOC]
 
 # Objective
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 Allow a subset of the platform/ec code to be built as part of the Zephyr-based
 EC without needing to land code into upstream zephyr, or our zephyr-chrome
 repository.
 
 # Background
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 Now that Google has joined [Zephyr OS](https://www.zephyrproject.org/), the EC
 team is moving toward it instead of platform/ec code on embedded controllers for
@@ -29,6 +39,11 @@ potentially want to ship a product using Zephyr before the migration is
 complete.
 
 # Design ideas
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 In order to reuse `platform/ec` development , we shim "active" `platform/ec`
 code as a
@@ -45,8 +60,18 @@ For platform/ec code that is stable and not under active development, the Zephyr
 team may port that code to Zephyr, thus skipping the shimming process.
 
 ## Subsystems of interest
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 ### With Shim
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 We shim the following subsystems (non-exhaustive).
 
@@ -57,6 +82,11 @@ We shim the following subsystems (non-exhaustive).
     upstream
 
 ### Little-to-No Shim
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 We adopt upstream Zephyr or skip the shimming process (non-exhaustive).
 
@@ -79,10 +109,20 @@ We adopt upstream Zephyr or skip the shimming process (non-exhaustive).
 *   I2C
 
 ## New content in platform/ec
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 Add the `src/platform/ec/zephyr` folder with:
 
 *   [Module integration files](https://docs.zephyrproject.org/latest/guides/modules.html#build-system-integration),
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
     e.g., module.yml, CMakeLists.txt, and KConfig.
     *   **module.yml** is the required entry point (must be located at
         _zephyr/module.yml_ in the repository) for Zephyr modules, and declares
@@ -97,10 +137,20 @@ Add the `src/platform/ec/zephyr` folder with:
         [`DECLARE_HOST_COMMAND`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/ec/include/host_command.h;l=256;drc=514923bc59f5a3435dbb7cbf348735ed41889ffe)
         to map to Zephyr's upstream
         [`EC_HOST_CMD_HANDLER`](https://github.com/zephyrproject-rtos/zephyr/blob/d7468bf836b75c29980441f294a61eae6bf4bc75/include/ec_host_cmd.h#L73)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
         macro. This allows us to compile select platform/ec files in the Zephyr
         build.
 
 ## Namespace Collisions
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 One significant issue of mixing Zephyr headers with our existing EC code is that
 we currently have many names colliding with the Zephyr code. For example,
@@ -123,6 +173,11 @@ collision (e.g., atomics) and continue to improve the naming convention with
 time.
 
 ## New CQ check
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 As long as code from platform/ec is part of the zephyr
 [ebuild](http://cs/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/chromeos-zephyr-2_3/chromeos-zephyr-2_3-9999.ebuild),
@@ -137,8 +192,18 @@ utility to check that an EC CL has not broken anything on the Zephyr side.
 We will work with the CI team to enable this.
 
 # Alternatives Considered
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 ## Translate code and mirror into the zephyr-chrome repository
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 We could potentially write a script which, via a series of find/replace
 operations, translates a platform/ec module to use Zephyr functions, macros, and
@@ -157,6 +222,11 @@ module to ZephyrOS would be significantly easier. Additionally, it would require
 no shim code in platform/ec.
 
 ## Don't do any code sharing
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md
+***
+
 
 One option is to avoid shimming in any platform/ec code and allow the Zephyr
 team to re-implement features in upstream zephyr, or our local zephyr-chrome

@@ -1,10 +1,20 @@
 # EC USB-C Power Delivery TCPMv2 Overview
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 
 As the original USB-C Power Delivery (PD) solution for the ChromeOS Embedded Controller has aged, it has grown to the point where it is difficult to add new features and address bugs.  A new PD stack (generally referred to as TCPMv2) has been introduced to the codebase for use moving forward.  It implements a layered, state-based design which tracks more closely with the USB Type-C and USB PD specifications.
 
 [TOC]
 
 ## Enabling TCPMv2
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 
 Boards may enable TCPMv2 by adding the following defines:
 
@@ -20,6 +30,11 @@ Other configurations to specify behaviors within the task still apply (ex. `CONF
 
 
 ## State Machine Framework
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 
 The basis of the TCPMv2 state machines is a generic state machine framework.  This framework can be found in common/usbc/usb\_sm.c.  For each state, there may be defined:
 
@@ -115,6 +130,11 @@ parent_2_run
 
 
 ## TCPMv2 PD Task
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 
 The TCPMv2 PD task is built upon state machines using the above framework and is located in common/usbc/usbc\_task.c.  It is separated into three layers which track with the USB Type-C and USB PD specification states and run in a loop with 5 ms periods between executions.  A graphical representation of these layers is below.
 
@@ -127,9 +147,19 @@ The task is designed such that the Type-C (TC) layer could run independently for
 
 
 ## TCPMv2 Layers
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 
 
 ### Overview
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 
 The three state machines mentioned above interact with each other and the EC drivers in order to orchestrate all Type-C connection behavior.  Graphically, they are represented below.
 
@@ -152,11 +182,21 @@ Some specific examples of how this communication works between layers is below. 
 
 
 ### Type-C Layer
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 
 Defined in the USB Type-C specification, this layer is responsible for basic connection.  It takes care of setting the CC lines, detecting and debouncing the partner CC lines, and performs most of the interactions needed with the PPC and USB mux.  Once the TC layer has gotten the connection to the point of being Attached.SNK or Attached.SRC, it will enable the PRL and PE layers accordingly.
 
 
 ### Protocol Layer
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 
 A part of the USB PD specification, the protocol layer is responsible for the actual sending and receiving of PD messages with the TCPCs.  The layer is actually composed of 4 separate state machines running one after the other.  These state machines are:
 
@@ -169,11 +209,21 @@ A part of the USB PD specification, the protocol layer is responsible for the ac
 
 
 ### Policy Engine Layer
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 
 The PE layer states are defined as a part of the USB PD specification.  State names are meant to track very closely with the specification so they can be easily searchable and understood.  The PE’s primary responsibility is to send and process PD messages in order to implement the port’s policy.
 
 
 ## Best Practices
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md
+***
+
 
 
 

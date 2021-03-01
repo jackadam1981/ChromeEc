@@ -1,11 +1,26 @@
 # incbin
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 
 Include binary files in your C/C++ applications with ease
 
 ## Example
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 
 ``` c
     #include "incbin.h"
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 
     INCBIN(Icon, "icon.png");
 
@@ -25,6 +40,11 @@ Include binary files in your C/C++ applications with ease
 ```
 
 ## Portability
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 
 Known to work on the following compilers
 
@@ -50,11 +70,21 @@ If your compiler is not listed, as long as it supports GCC inline assembler, thi
 should work.
 
 ## MISRA
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 INCBIN can be used in MISRA C setting. However it should be independently checked
 due to its use of inline assembly to achieve what it does. Independent verification
 of the header has been done several times based on commit: 7e327a28ba5467c4202ec37874beca7084e4b08c
 
 ## Alignment
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 
 The data included by this tool will be aligned on the architectures word boundary
 unless some variant of SIMD is detected, then it's aligned on a byte boundary that
@@ -69,13 +99,28 @@ code. The table of the alignments for SIMD this header recognizes is as follows:
 | AVX512                                  | 64        |
 
 ## Prefix
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 By default, `incbin.h` emits symbols with a `g` prefix. This can be adjusted by
 defining `INCBIN_PREFIX` before including `incbin.h` with a desired prefix. For
 instance
 
 ``` c
     #define INCBIN_PREFIX g_
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
     #include "incbin.h"
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
     INCBIN(test, "test.txt");
 
     // This translation unit now has three symbols
@@ -88,7 +133,17 @@ You can also choose to have no prefix by defining the prefix with nothing, for e
 
 ``` c
     #define INCBIN_PREFIX
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
     #include "incbin.h"
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
     INCBIN(test, "test.txt");
 
     // This translation unit now has three symbols
@@ -98,6 +153,11 @@ You can also choose to have no prefix by defining the prefix with nothing, for e
 ```
 
 ## Style
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 By default, `incbin.h` emits symbols with `CamelCase` style. This can be adjusted
 by defining `INCBIN_STYLE` before including `incbin.h` to change the style. There
 are two possible styles to choose from
@@ -109,7 +169,17 @@ For instance:
 
 ``` c
     #define INCBIN_STYLE INCBIN_STYLE_SNAKE
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
     #include "incbin.h"
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
     INCBIN(test, "test.txt");
 
     // This translation unit now has three symbols
@@ -122,6 +192,11 @@ Combining both the style and prefix allows for you to adjust `incbin.h` to suite
 your existing style and practices.
 
 ## Overriding Linker Output section
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 By default, `incbin.h` emits into the read-only linker output section used on
 the detected platform. If you need to override this for whatever reason, you
 can manually specify the linker output section.
@@ -131,12 +206,27 @@ For example, to emit data into program memory for
 
 ``` c
 #define INCBIN_OUTPUT_SECTION ".irom.text"
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 #include "incbin.h"
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 INCBIN(Foo, "foo.txt");
 // Data is emitted into program memory that never gets copied to RAM
 ```
 
 ## Explanation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 
 `INCBIN` is a macro which uses the inline assembler provided by almost all
 compilers to include binary files. It achieves this by utilizing the `.incbin`
@@ -146,6 +236,11 @@ referenced in other translation units which contain the data and size of the
 included binary data respectively.
 
 ## MSVC
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 
 Supporting MSVC is slightly harder as MSVC lacks an inline assembler which can
 include data. To support this we ship a tool which can process source files
@@ -162,6 +257,11 @@ using a custom style, be sure to specify the style on the command line with
 `-S <style>` as well.
 
 ## Miscellaneous
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/third_party/incbin/README.md
+***
+
 
 Documentation for the API is provided by the header using Doxygen notation.
 For licensing information see UNLICENSE.

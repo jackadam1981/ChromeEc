@@ -1,4 +1,9 @@
 # Fingerprint Authentication on Chrome OS
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Authors: norvez@google.com, vpalatin@google.com
 
@@ -9,8 +14,18 @@ Last Updated: 2019-01-14
 [TOC]
 
 ## Objective
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 ### Goals
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 *   Let users securely unlock their device with just their fingerprint
 *   Reuse the same architecture on all future platforms, don’t be tied to a
@@ -20,6 +35,11 @@ Last Updated: 2019-01-14
     fingerprint implementation needs to comply with Android’s [CDD].
 
 ### Non-goals
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 *   Let users log in with their fingerprint
     *   Users will have to use other authentication methods (e.g. password or
@@ -28,14 +48,29 @@ Last Updated: 2019-01-14
         fingerprint
 
 ## Background
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 To unlock their Chromebook users have to enter their password or a PIN.
 [Windows] and [macOS] let the user authenticate with their fingerprint for
 faster unlocking, we want to bring that capability to Chrome OS.
 
 ### Fingerprint matching basics
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 #### Fingerprint enrollment
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 When a user wants to register their finger for fingerprint authentication, they
 go through the _enrollment_ operation. They are asked to touch the sensor
@@ -44,12 +79,22 @@ multiple times with different parts of their fingerprint. The
 of that fingerprint (known as a _template_).
 
 #### Fingerprint matching
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 When the user puts their finger on the sensor, an image of the fingerprint is
 captured and compared to the fingerprint templates of the enrolled fingerprints
 to determine if the fingerprint matches one of the templates.
 
 #### Template update (TU)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 When the matching algorithm determines that a fingerprint matches a template
 with a high level of certainty, it can (and normally will) use that fingerprint
@@ -57,6 +102,11 @@ image to update the template to improve the accuracy of future matching
 operations.
 
 ### Threat model
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 There are two main objectives for potential attackers:
 
@@ -76,6 +126,11 @@ There are two main objectives for potential attackers:
         victim’s computer).
 
 ### Privacy and security
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 *   Biometric data is particularly sensitive, so all operations on fingerprint
     data must happen in a _Secure Biometric Processor_ (**SBP**). Attackers must
@@ -90,6 +145,11 @@ There are two main objectives for potential attackers:
     be able to use the enrolled fingerprint.
 
 ### Scalability
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 For Eve, we [considered][Old Design Doc] using SGX as the SBP. However the
 complexity of the solution makes that option unattractive, both because of the
@@ -99,6 +159,11 @@ architecture for other platforms, which would add more dev work and increase the
 attack surface again.
 
 ## Overview {#overview}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Devices have a dedicated microcontroller (MCU) running a firmware based on the
 [Chromium OS EC] codebase that is used as the _Secure Biometric Processor_
@@ -121,12 +186,27 @@ On top of that, enrolled templates are also encrypted by a device-specific
 the SBP, which prevents decrypting the templates on another device.
 
 ### Architecture
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 ![Fingerprint Architecture]
 
 ### Typical workflows
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 #### FP enrollment
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 1.  User starts the enrollment flow from the Settings UI.
 1.  SBP starts the enrollment operation.
@@ -141,6 +221,11 @@ the SBP, which prevents decrypting the templates on another device.
     its internal volatile storage at the same time.
 
 #### User login
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 1.  User logs in by typing their password.
 1.  FP templates of that user go through the first level of decryption, with
@@ -152,6 +237,11 @@ the SBP, which prevents decrypting the templates on another device.
     for matching operations.
 
 #### Screen unlocking operation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 1.  User touches the sensor with their finger.
 1.  SBP verifies that the FP image matches one of the user’s templates.
@@ -164,8 +254,18 @@ the SBP, which prevents decrypting the templates on another device.
     storage.
 
 ## Detailed Design {#detailed-design}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 ### FP template encryption {#template-encryption}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 FP templates are encrypted "twice". First, the templates are encrypted by the
 SBP with a hardware-bound key that is unique to this SBP and that only the SBP
@@ -173,6 +273,11 @@ knows. On top of that, the AP also encrypts the FP templates with a key bound to
 the user password.
 
 #### User-bound encryption
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The FP templates are stored in a "[cryptohome daemon store folder]" which is
 encrypted by [cryptohome] with a key tied to the user password. We plan to
@@ -180,6 +285,11 @@ replace this post-launch with a mechanism similar to
 [Authentication-Time User Secrets]. Separate design doc to come.
 
 #### Hardware-bound encryption
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 FP templates are AES-encrypted with `HW_Key`. `HW_Key` is bound to this specific
 SBP so encrypted templates can only be deciphered by this specific SBP. To
@@ -190,6 +300,11 @@ We use an AEAD cipher (AES-GCM) to detect if the encrypted templates have been
 tampered with by an attacker controlling the AP.
 
 ##### SBP secret generation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The SBP generates a new 128-bit random number `SBP_Src_Key` every time the user
 goes through recovery or powerwashes the device. The [clobber-state] script
@@ -200,6 +315,11 @@ immediately after requesting a TPM clear.
 AP.
 
 ##### TPM-held Secret
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 To avoid potential bugs where `SBP_Src_Key` would not always be made
 unrecoverable in some corner cases of recovery or powerwash, we make the
@@ -227,6 +347,11 @@ the attack surface is very small (e.g. no network connections, stateful
 partition not yet mounted) to prevent attackers from accessing it.
 
 ##### `HW_Key` derivation {#hw-key-derivation}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The `HW_Key` 128-bit AES key for every FP template on the device is derived from
 the SBP’s secret and the TPM’s secret to ensure uniqueness. Therefore, even two
@@ -241,6 +366,11 @@ on:
 *   Encryption salt, randomly generated before every encryption
 
 ###### Salt for key derivation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Every time we update a template, we generate a new random 128-bit salt.
 
@@ -256,6 +386,11 @@ HW_Key = HKDF(HMAC-SHA256, SBP_Src_Key, TPM_Seed, User_Salt, User_ID)
 ```
 
 At that point, the SBP [authenticates and deciphers](#aead) the FP templates.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 The SBP then generates a new 128-bit salt `User_Salt_New` randomly and derives a
 new AES key:
 
@@ -273,11 +408,21 @@ gain access to it. After consulting with the security team, using the hwID was
 deemed unnecessary since it wasn’t adding real entropy.
 
 ##### AEAD (AES-GCM) Encryption {#aead}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 To encrypt the FP templates with `HW_Key` we use BoringSSL’s implementation of
 AES-GCM128.
 
 ###### Initialisation Vector
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The encryption operations are done by the R/W firmware that doesn’t have write
 access to the Flash, so it can’t keep track of IVs that could have already been
@@ -294,6 +439,11 @@ The IV will be stored on the host with the salt, the encrypted templates and the
 16-byte tag for authentication.
 
 ###### Authentication Tag
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 To authenticate the encrypted templates, we use a 128-bit tag that we store in
 clear text with the encrypted template.
@@ -304,6 +454,11 @@ the AES-GCM128 implementation. It also prevents attackers from trying to pass
 their own template instead of the user’s FP template.
 
 ###### Encryption Flowchart
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Encryption of the FP template in the SBP before the ciphered data is sent to the
 AP for storage.
@@ -311,12 +466,22 @@ AP for storage.
 ![Encryption Flowchart]
 
 ###### Decryption Flowchart
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Decryption of the ciphered FP template coming from the AP when the user logs in.
 
 ![Decryption Flowchart]
 
 #### FP template disk format
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Encrypted templates are stored in a “[cryptohome daemon store folder]” that is
 only mounted/decrypted when the user has logged in. The templates are stored as
@@ -333,6 +498,11 @@ JSON files with the following fields:
 ```
 
 ##### `HW_Key`-encrypted template format
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The content of the "data" field is the encrypted template that can be deciphered
 by the SBP.
@@ -350,9 +520,19 @@ When the user logs in, the cryptohome daemon store folder of that user is
 mounted and the JSON files become available to biod. For every enrolled finger,
 biod sends the `HW_Key`-encrypted template to the SBP. The SBP
 [derives `HW_Key`](#hw-key-derivation) for that template and deciphers the
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 template.
 
 ### Protection of the SBP
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 To access the unencrypted data and/or `HW_Key`, attackers have 3 main options:
 
@@ -361,17 +541,37 @@ To access the unencrypted data and/or `HW_Key`, attackers have 3 main options:
     *   Would allow an attacker to gain access to the clear text FP data and/or
         the encryption key
     *   Mitigation strategy in [Prevent RW exploits](#prevent-rw-exploits)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 *   Turn a temporary compromise of the SBP’s firmware into a permanent exploit
     by replacing the SBP’s firmware with a firmware controlled by the attacker
     *   Would allow an attacker to gain access to the clear text FP data and/or
         the encryption key
     *   Would allow an attacker to spoof positive FP matches, defeating 2FA
     *   Mitigation in [Verified firmware](#verified-firmware)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 *   Use physical access and control of WP to load a compromised firmware to the
     SBP
     *   Mitigation in [Control WP/BOOT0](#control-wp-boot0)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 #### Verified firmware {#verified-firmware}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 To verify the integrity of the firmware we use a mechanism similar to the one
 used to protect the EC in detachable keyboards as described in
@@ -385,6 +585,11 @@ valid, the RO firmware protects itself by setting the WP bit of the Flash then
 jumps to RW.
 
 ##### Anti-rollback
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 On top of verifying the signature of the RW firmware, the RO firmware must
 verify that the RW firmware is not an outdated version with known
@@ -394,6 +599,11 @@ described in
 [Detachable Base Verified Boot][Detachable Base Verified Boot Anti-Rollback].
 
 ###### Nocturne-specific anti-rollback
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 On nocturne, the SBP is an STM32H7 MCU, with 128K Flash blocks. We still need 2
 pingpong RB blocks to prevent data loss, so the Flash map looks like this:
@@ -429,6 +639,11 @@ ping-pong between them, re-keying should involve updating `SBP_Src_Key` twice,
 so that both blocks are erased, and no remnant of the previous key is left over.
 
 #### Prevent RW exploits {#prevent-rw-exploits}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Even non-persistent exploits in the RW firmware would be problematic if the
 attacker was able to read the content of the memory or the Flash, e.g. via a
@@ -437,6 +652,11 @@ the encryption key. If the attacker was also able to execute code in RW, they
 would be able to spoof positive FP matches.
 
 ##### Attack through host command interface {#attack-host-command}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The AP can send a number of commands to the SBP, for example to wait for a match
 or to update the RW firmware. In case of a vulnerability in the protocol an
@@ -445,11 +665,21 @@ specially crafted commands to the SBP and potentially gain read, write or even
 execute permissions in the SBP.
 
 ###### Mitigation strategies
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 *   Limit the size of the API exposed by the SBP to the AP
 *   Fuzz the host command interface
 
 ##### Attack through crafted templates uploaded to the SBP {#template-attack}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The AP partially deciphers (with `User_Key`) the templates stored on the disk
 then sends the `HW_Key`-encrypted templates to the SBP where they will be
@@ -458,12 +688,22 @@ carefully crafted template to the SBP that would exploit holes in the closed
 source matching algorithm library.
 
 ###### Mitigation strategies
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 We use AEAD to decipher and authenticate the templates received from the AP,
 they are not passed directly to the matching library. Bad templates will be
 intercepted by the decryption code.
 
 ##### RAM noexec
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Even if an attacker gained some level of access to the SBP, the RAM is not
 executable so it would be hard for the attacker to execute compromised code, for
@@ -472,6 +712,11 @@ into a persistent compromission of the SBP by writing a new compromised firmware
 to Flash.
 
 #### Control WP/BOOT0 {#control-wp-boot0}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The BOOT0 pin of the MCU is gated by the WP controlled by Haven. Since toggling
 the WP bit from Haven requires physical access to the device, remote attackers
@@ -482,6 +727,11 @@ However, with physical access (> 5 minutes) an attacker could disable the WP
 signal from Haven and toggle the BOOT0 pin to start the MCU in bootloader mode.
 
 ##### Flash protected with RDP Level 1
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 We will set the Flash in [Global Read-out Protection (RDP) mode Level 1]. This
 means that attackers with physical access who would manage to start the MCU in
@@ -501,6 +751,11 @@ tampered with. This wouldn’t give access to existing FP templates or images to
 the attacker, only future enrollments.
 
 ##### RMA
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 To ensure that a device is clean after e.g. refurbishing, the RMA procedure
 would require that the operator disabled the WP bit from Haven and toggled BOOT0
@@ -508,34 +763,79 @@ to switch to bootloader mode. After that a known good RO and RW firmware can be
 written to the Flash and the operator will reenable the WP bit from Haven.
 
 ## Security Considerations
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 ### Security boundaries
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 #### Chrome to system services
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Biod and Chrome communicate over D-Bus (defined [here][biod D-Bus API]).
 
 *   Chrome lets biod know when the user has signed in, so biod can load the
     templates to the [SBP](#overview).
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 *   Biod lets Chrome know when the SBP has detected a positive or negative match
     so Chrome can unlock the screen.
 *   Chrome tells biod to start/end enrolling a finger.
 *   Chrome tells biod to start/end authentication (matching) mode.
 
 #### Kernel to firmware
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The SBP uses the `cros_ec` interface, same as the EC. There are additional
 SBP-specific host commands that the AP can send to the SBP, see
 [Attack through host command interface](#attack-host-command).
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 ### Privileges
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 #### Sandboxing
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Biod uses Minijail ([upstart script][biod upstart script]) for [sandboxing], and
 has a [seccomp filter].
 
 ### Untrusted input
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Encrypted templates are read from the stateful partition where they could be
 corrupted or tampered with. Biod itself doesn’t parse that input -it’s still
@@ -548,13 +848,33 @@ tampered with. Biod does parse and interpret some fields of those JSON files.
 That input is [fuzzed].
 
 ### Sensitive data
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The SBP handles biometric data, see the [Detailed Design](#detailed-design)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 section that describes how we keep that data protected from attackers.
 
 ### Attack surface
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 #### Libraries
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 *   Biod uses libbrillo and libchrome
 *   The SBP firmware is based on the cros_ec code already used in the EC. Two
@@ -562,14 +882,29 @@ section that describes how we keep that data protected from attackers.
     *   Parts of BoringSSL (AES and AES-GCM) ported to cros_ec
     *   3rd-party proprietary blob used for matching, see
         [Closed source blobs in the SBP](#closed-source-blobs).
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 #### Remote attacks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Neither biod nor the SBP are exposed directly to remote attackers. Since biod
 communicates with Chrome over D-Bus, and attacker who had compromised Chrome
 could start sending D-Bus commands to biod.
 
 #### Closed source blobs in the SBP {#closed-source-blobs}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The enrollment/matching and image capture libraries are provided by a 3rd-party
 vendor in binary form. That proprietary blob went through a security audit by a
@@ -583,17 +918,42 @@ wrappers. For example, we use AEAD to ensure that the encrypted data that is
 deciphered before being passed to the 3rd-party libraries has been generated by
 the SBP itself. For more details, see section
 [Attack through crafted templates uploaded to the SBP](#template-attack).
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 ### Implementation robustness
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 #### biod (userspace daemon)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 ##### Multi-threading/multi-process
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 biod uses `base::MessageLoopForIO`, no custom multi-thread or multi-process
 implementation.
 
 ##### State machine implementation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 biod has 3 main states:
 
@@ -602,29 +962,64 @@ biod has 3 main states:
 *   Enrolling a new fingerprint: controlled by the [EnrollSession] object.
 
 #### cros_fp (SBP firmware)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 ##### Multi-threading/multi-process
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 We use the [primitives][EC primitives] of the Chromium OS EC: tasks, hooks, and
 deferred functions.
 
 ##### Memory allocation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Most buffers (e.g. for FP images and templates) are [statically allocated]. The
 vendor libraries do require some dynamic memory allocation, we provide
 [wrappers functions] that use the [malloc/free memory module for Chrome EC].
 
 ##### State machine implementation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 There is one main [state machine] that configures the matching/enrollment code
 to be ready for a match or to enroll a finger.
 
 ### Cryptography
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 See detailed discussion in the ["FP template encryption"](#template-encryption)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 section.
 
 ### Metrics {#metrics}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Metrics related to security that we’re collecting through UMA:
 
@@ -644,8 +1039,18 @@ Complete list of metrics collected via UMA:
 [New UKM collection review - CrOS FP Unlock]
 
 ### Potential attacks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 #### Enroll a rogue fingerprint
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 An attacker with physical access to the device could enroll their own
 fingerprint under the victim’s account and use it to unlock the device at-will
@@ -662,25 +1067,50 @@ in the future.
 *   The enrollment UI shows how many fingers are enrolled.
 
 ## Privacy Considerations
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 ### Fingerprint data is kept locally on the device
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The raw fingerprint images themselves never leave the SBP. The fingerprint
 templates are kept on the local storage (encrypted both with the `HW_Key` and
 the `User_Key`) of the device and not synced to the cloud, encrypted or not.
 
 ### Fingerprint data decryption requires the user password
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The fingerprint templates are stored in a "[cryptohome daemon store folder]"
 which is only mounted when the user logs in. To do so, they must have entered
 their password.
 
 ### FP matching is not used for login, only unlocking
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Before using their fingerprint to unlock the device the user must have logged
 in, typically with the Google Account password.
 
 ### Lock screen will display a FP icon if enabled
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 If a user has enabled FP unlocking, a FP icon will be associated to that user on
 the lock screen. This potentially lets others know that a user has enabled FP
@@ -688,46 +1118,136 @@ unlocking. This seems reasonable when the small resulting decrease in privacy is
 weighed against the fact that adding an icon greatly improves UX.
 
 ### Metrics collection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 We collect anonymous metrics through [UMA], see section [Metrics](#metrics) for
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 details.
 
 ### Logs
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 Biod, the SBP, and Chrome have logs related to the fingerprint process.
 [Privacy fields for Fingerprints] lists the log entries and their privacy
 implications. Full [PDD is here].
 
 #### Biod
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The log files are in `/var/log/biod/`.
 
 #### SBP
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 The log file is `/var/log/cros_fp.log`.
 
 <!-- Links -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 [2FA]: https://en.wikipedia.org/wiki/Multi-factor_authentication
 [AEAD implementation]: https://chromium.googlesource.com/chromiumos/platform/ec/+/aed008f87c3c880edecf7608ab24eaa4bee1bc46/common/fpsensor.c#574
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [AEAD]: https://en.wikipedia.org/wiki/Authenticated_encryption
 [Arm TrustZone]: https://www.arm.com/products/security-on-arm/trustzone
 [Authentication-Time User Secrets]: http://go/authentication-time-user-secrets
 [AuthSession]: https://chromium.googlesource.com/chromiumos/platform2/+/eae39a9ad1239f8fbfa8164255578b306ff6ba5c/biod/biometrics_manager.h#96
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [biod D-Bus API]: https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/master/system_api/dbus/biod/
 [biod upstart script]: https://chromium.googlesource.com/chromiumos/platform2/+/master/biod/init/biod.conf
 [ccd open]: https://chromium.googlesource.com/chromiumos/platform/ec/+/cr50_stab/docs/case_closed_debugging_cr50.md#Open-CCD
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [CDD]: https://source.android.com/compatibility/android-cdd#7_3_10_fingerprint_sensor
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [Chromium OS EC]: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/README.md
 [clobber-state]: https://chromium.googlesource.com/chromiumos/platform2/+/962ab1bc481db0cf504b5449eb3a3d5008ea7601/init/clobber_state.cc#475
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [cryptohome daemon store folder]: https://chromium.googlesource.com/chromiumos/docs/+/master/sandboxing.md#securely-mounting-cryptohome-daemon-store-folders
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [cryptohome]: https://www.chromium.org/chromium-os/chromiumos-design-docs/protecting-cached-user-data
 [Detachable Base Swap Detection]: https://docs.google.com/document/d/1WYdkkSAL_RHVc5mUXnAvBBfAeM7Wj3ABa1dbeTdvm74/edit#heading=h.g74ijelumqop
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [Detachable Base Verified Boot Anti-Rollback]: http://go/detachable-base-vboot#heading=h.fimcm174ok3
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [Detachable Base Verified Boot]: http://go/detachable-base-vboot#heading=h.dolfbdpggye6
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [EC primitives]: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/README.md#Software-Features
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [EnrollSession]: https://chromium.googlesource.com/chromiumos/platform2/+/eae39a9ad1239f8fbfa8164255578b306ff6ba5c/biod/biometrics_manager.h#92
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [fingerprint authentication framework]: https://developer.android.com/about/versions/marshmallow/android-6.0.html#fingerprint-authentication
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [fuzzed]: https://chromium.googlesource.com/chromiumos/platform2/+/master/biod/biod_storage_fuzzer.cc
 [Global Read-out Protection (RDP) mode Level 1]: https://www.st.com/content/ccc/resource/technical/document/application_note/b4/14/62/81/18/57/48/05/DM00075930.pdf/files/DM00075930.pdf/jcr:content/translations/en.DM00075930.pdf
 [HKDF]: https://tools.ietf.org/html/rfc5869
@@ -736,6 +1256,11 @@ The log file is `/var/log/cros_fp.log`.
 [macOS]: https://support.apple.com/en-us/HT207054
 [malloc/free memory module for Chrome EC]: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/shmalloc.c
 [matching algorithm]: https://en.wikipedia.org/wiki/Fingerprint#Algorithms
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [mount_encrypted]: https://chromium.googlesource.com/chromiumos/platform2/+/master/cryptohome/mount_encrypted
 [New UKM collection review - CrOS FP Unlock]: https://docs.google.com/document/d/1qjDCMcBcrhSeg_uwyEIRsXHKmzUTJahcg6a4YVhkuLo
 [Old Design Doc]: https://docs.google.com/document/d/1MdPRmCDkVg1HO9DdbvPT5fDZS2ICg5ys9_ok_K95EEU
@@ -747,26 +1272,71 @@ The log file is `/var/log/cros_fp.log`.
 [seccomp filter]: https://chromium.googlesource.com/chromiumos/platform2/+/master/biod/init/seccomp/biod-seccomp-amd64.policy
 [Security Audit Report]: https://drive.google.com/a/google.com/file/d/0B1HHKpeDpzYnMDdocGxwWUhpckpWM0hMU0tPa2ZjdEFnLU53/
 [state machine]: https://chromium.googlesource.com/chromiumos/platform/ec/+/90d177e3f0ae729bea7e24934a3c6ef9f2520d45/common/fpsensor.c#252
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [statically allocated]: https://chromium.googlesource.com/chromiumos/platform/ec/+/90d177e3f0ae729bea7e24934a3c6ef9f2520d45/common/fpsensor.c#57
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [system key]: https://chromium.googlesource.com/chromiumos/platform2/+/23b79133514ac2cd986bce21c398fb6658bda248/cryptohome/mount_encrypted/encryption_key.h#125
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [UMA]: http://go/uma
 [Windows]: https://www.microsoft.com/en-us/windows/windows-hello
 [wrappers functions]: https://chrome-internal.googlesource.com/chromeos/platform/ec-private/+/9ebb3f10c611afff695f679aaeed1a35551a116b/fpc_sensor_pal.c#52
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 [“TPM-seed for Fingerprint MCU”]: http://go/bio_tpm_seed
 
 <!-- Images -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 <!-- If you make changes to the docs below make sure to regenerate the PNGs by
      appending "export/png" to the Google Drive link. -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 <!-- https://docs.google.com/drawings/d/1-JUWTF7sUTND29BfhDvIudzX_S6g-iwoxG1InPedmVw -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 [Decryption Flowchart]: ../images/cros_fingerprint_decryption_flowchart.png
 
 <!-- https://drive.google.com/open?id=1uUprgLsTUZZ2G2QWRYcRn6zBAh6ejvJagVRD7eZQv-k -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 [Encryption Flowchart]: ../images/cros_fingerprint_encryption_flowchart.png
 
 <!-- https://docs.google.com/drawings/d/1DFEdxfDXEtYY3LNOOJFAxVw2A7rKouH98tnb1yiXLAA -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md
+***
+
 
 [Fingerprint Architecture]: ../images/cros_fingerprint_architecture_diagram.png

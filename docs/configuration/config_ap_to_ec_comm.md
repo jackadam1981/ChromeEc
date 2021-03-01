@@ -1,27 +1,62 @@
 # Configure AP to EC Communication
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 
 This document provides details on how to configure the AP to EC communication
 channel used on your board.  The [AP to EC Communication] document provides
 details a system level of the operation of this feature.
 
 ## Config options
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 
 Configure the AP to EC communication channel, picking exactly one of the
 following options.
 
 - `CONFIG_HOSTCMD_SPS` - [SPI slave](./ec_terms.md#spi) (SPS) interface
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 - `CONFIG_HOSTCMD_HECI` - HECI interface
 - `CONFIG_HOSTCMD_LPC` - [LPC](./ec_terms.md#lpc) bus
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 - `CONFIG_HOSTCMD_ESPI` - [eSPI](./ec_terms.md#espi) bus
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 
 In [config.h], search for options that start with the same name as your selected
 communication interface.  Override defaults as needed.
 
 ## Feature Parameters
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 
 None needed in this section.
 
 ## GPIOs and Alternate Pins
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 
 The EC code requires the following signals between the AP and the EC to be
 defined by each board variant.
@@ -48,10 +83,20 @@ See the [GPIO](./gpio.md) documentation for additional details on
 the GPIO macros.
 
 ## Data structures
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 
 None needed in this section.
 
 ## Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 
 The `HOSTCMD` task is responsible for processing commands sent by the AP and is
 always required. The typical priority is higher than the `CHIPSET` task, but
@@ -62,6 +107,11 @@ lower than the `CONSOLE` task.
 ```
 
 ## Testing and Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 
 For Nuvoton EC chipsets, the file [./chip/npcx/registers.h] provides a
 collection of `DEBUG_*` macros that can be used to enable extra console messages
@@ -71,3 +121,8 @@ and `DEBUG_ESPI` macros can help troubleshoot communication issues.
 [./chip/npcx/registers.h]: ../../chip/npcx/registers.h
 [AP to EC Communication]: ../ap-ec-comm.md
 [config.h]: ../new_board_checklist.md#config_h
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+

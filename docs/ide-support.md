@@ -1,8 +1,18 @@
 # IDE Support
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ide-support.md
+***
+
 
 [TOC]
 
 ## Odd File Types
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ide-support.md
+***
+
 
 EC uses a few odd file types/names. Some are included from other header files
 and used to generate data structures, thus it is important for your IDE to index
@@ -17,6 +27,11 @@ Patterns                                              | Vague Type
 `*.tasklist`, `*.irqlist`, `*.mocklist`, `*.testlist` | C Header
 
 ## IDE Configuration Primitives
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ide-support.md
+***
+
 
 Due to the way most EC code has been structured, you can typically only safely
 inspect a configuration for a single image (RO or RW) for a single board. Thus,
@@ -29,6 +44,11 @@ Command                                      | Description
 `make print-includes BOARD=$BOARD BLD=RW/RO` | List compiler include paths
 
 ## VSCode
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ide-support.md
+***
+
 
 You can use the `ide-config.sh` tool to generate a VSCode configuration that
 includes selectable sub-configurations for every board/image pair.

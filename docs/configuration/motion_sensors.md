@@ -1,4 +1,9 @@
 # Configure Motion Sensors
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 
 EC sensors are used for the following capabilities:
 
@@ -13,15 +18,30 @@ EC sensors are used for the following capabilities:
 presentation that can be added here.
 
 ## Config options
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 
 *TODO*
 
 ## Feature Parameters
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 
 *TODO*
 
 
 ## GPIOs and Alternate Pins
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 
 *TODO*
 
@@ -29,24 +49,54 @@ presentation that can be added here.
   EC is ready for servicing by the AP.
 
 ## Data Structures
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 
 *TODO*
 
 ## Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 
 *TODO*
 
 ## Testing and Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 
 *TODO*
 
 ### Console Commands
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 
 *TODO*
 
 ## Example
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 
 *TODO*
 
 [Chrome EC]: https://docs.google.com/presentation/d/1Y3PwNSnCQoCqDfL5rYqfaBP_ZqbMOTw_x83_ry4cro8/view#slide=id.g63bdbcea4b_0_27
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 

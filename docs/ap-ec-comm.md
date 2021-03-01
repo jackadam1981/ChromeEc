@@ -1,8 +1,18 @@
 # Application Processor to EC communication
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 [TOC]
 
 ## Overview
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 The Application Processor (sometimes called the host) communicates with the EC
 by issuing *host commands*, which are identified by a command ID and version
@@ -19,12 +29,22 @@ We'll go into detail of each of these, as well as the traffic on the wire, in
 the following sections.
 
 ### `ectool`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 `ectool` contains wrapper functions for the host commands exposed by the EC,
 providing a CLI. They call one of the transport-specific `ec_command`
 implementations in the `util/comm-*.c` files to send and receive from the EC.
 
 ### EC kernel driver
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 In most cases, `ectool` communicates via the [`cros-ec` Kernel driver], rather
 than directly from userspace. It sends raw commands to the Kernel driver, which
@@ -36,6 +56,11 @@ as adapters to existing Linux APIs. For example, sensors from the EC are mapped
 to the Linux [Industrial I/O] system.
 
 ### On the wire
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 Now we come to the protocol itself. All transactions take this general form:
 
@@ -53,6 +78,11 @@ Now we come to the protocol itself. All transactions take this general form:
     command-specific format.
 
 ### On the EC
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 The host packet is received on the EC by some chip-specific code which checks
 its transport-specific header, then passes it on to the common host command code,
@@ -67,11 +97,21 @@ processing and not yet ready to give a response. How it does this depends on the
 transport method used (see [Transport-specific details] below).
 
 ## Versions
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 There are two different concepts of "version" involved in host commands: version
 of the overarching protocol, and versions of individual commands.
 
 ### Protocol versions
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 There have been three protocol versions so far, and this document describes
 version 3. Version 1 was superseded by 2 before it shipped, so no devices use
@@ -84,6 +124,11 @@ command. This was only introduced in version 3, however, so if errors,
 EC speaks version 2.
 
 ### Command versions
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 Individual commands also have versions, independent of the protocol version
 they're being called with. Different versions of a command may have different
@@ -91,12 +136,22 @@ parameter or response formats. `EC_CMD_GET_CMD_VERSIONS` returns the versions of
 the given command supported by the EC. These version numbers start at 0.
 
 ## Transport-specific details
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 Although the command and response formats are the same across all transports,
 some details of how they are transmitted differ, which may be of interest when
 implementing the EC side of the protocol on a new chip.
 
 ### I<sup>2</sup>C
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 I<sup>2</sup>C is very flexible with its timing, so when the EC receives a
 packet from the host, it should stretch the clock, holding it low until it is
@@ -110,6 +165,11 @@ anyway, so the EC should send the 8 bytes of the struct followed by 42 copies of
 the filler byte.
 
 ### SPI
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 The SPI bus is similar to I<sup>2</sup>C, but with two major exceptions. First,
 there's a minimum speed on the SPI bus. If slave devices don't respond quickly
@@ -142,6 +202,11 @@ Once the response packet has been read, any additional reads should return
 `EC_SPI_PAST_END`.
 
 ### LPC or eSPI
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+
 
 The EC should set `EC_LPC_STATUS_PROCESSING` in its command status register
 after receiving a host packet and before it has a response ready.
@@ -151,3 +216,8 @@ after receiving a host packet and before it has a response ready.
 [Industrial I/O]: https://www.kernel.org/doc/html/v4.14/driver-api/iio/index.html
 [host command task]: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/host_command.c
 [Transport-specific details]: #Transport_specific-details
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ap-ec-comm.md
+***
+

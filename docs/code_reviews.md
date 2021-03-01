@@ -1,4 +1,9 @@
 # Code Reviews
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_reviews.md
+***
+
 
 The `platform/ec` repository makes use of a code review system that tries to
 evenly distribute code reviews among available reviewers.
@@ -6,6 +11,11 @@ evenly distribute code reviews among available reviewers.
 [TOC]
 
 ## How to request a review
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_reviews.md
+***
+
 
 Add `cros-ec-reviewers@google.com` to the reviewer line in Gerrit. A background
 job will come around and replace the `cros-ec-reviewers@google.com` address with
@@ -16,6 +26,11 @@ Optionally, you can click the [FIND OWNERS] button in the UI, and select
 `cros-ec-reviewers@google.com`.
 
 ## When to use review system
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_reviews.md
+***
+
 
 If you are modifying code in `common/`, `chip/`, or `core/`, feel free to use
 the `cros-ec-reviewers@google.com` system. It is **never** a requirement to use
@@ -23,6 +38,11 @@ the `cros-ec-reviewers@google.com` system. It is **never** a requirement to use
 person.
 
 ## Responsibilities of reviewers
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_reviews.md
+***
+
 
 If the selected reviewer is unfamiliar with code in a CL, then that reviewer
 should at least ensure that EC style and paradigms are being followed. Once EC
@@ -34,15 +54,30 @@ receiving a review request. Thereafter, they should try to respond to new
 comments by the author within 1 business day.
 
 ## Review guidelines
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_reviews.md
+***
+
 
 Authors and reviewers should follow the Chrome OS firmware review
 [guidelines][2] while publishing and reviewing code.
 
 ## How can I join the rotation?
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_reviews.md
+***
+
 
 Add your name to the [list of reviewers][1].
 
 ## Reference
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_reviews.md
+***
+
 
 * [Chrome OS firmware review guidelines][2]
 * [Coreboot Gerrit Guidelines][3]

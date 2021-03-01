@@ -1,4 +1,9 @@
 # Detachable Base Verified Boot
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 Authors: rspangler@google.com, drinkcat@google.com
 
@@ -9,8 +14,18 @@ Original: http://go/detachable-base-vboot
 [TOC]
 
 ## Introduction
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 ### What's a Base?
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 Detachable Chromebooks such as `Poppy` have a tablet-like `Lid` and a detachable
 keyboard `Base`. Effectively, the `Base` is a USB keyboard+trackpad which plugs
@@ -34,6 +49,11 @@ The `Base` always gets its power from the `Lid` USB port. This means that
 attaching the base always triggers a power-on reset.
 
 ### Verified Boot Requirements
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 The `BaseEC` will be responsible for handling user input from the keyboard and
 touchpad. This means that a compromised `BaseEC` could implement a keylogger. To
@@ -57,6 +77,11 @@ The solution should also have low (or no) BOM cost, and minimal flash size
 requirement.
 
 ## Proposal
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 `BaseEC` RO region includes a public key, whose private counterpart is kept
 safely on our signers. On boot, RO checks RW signature (RW image is signed by
@@ -74,6 +99,11 @@ Note: This proposal is very specific to the STM32 flash architecture. Other ECs
 and/or a I2C EEPROM to hold the rollback info block.
 
 ### Flash
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 STM32F072 has 128KB flash, with 2KB erase sectors and 4KB protection blocks.
 
@@ -105,6 +135,11 @@ Flash protection is a little entertaining on STM32:
     `EC_FLASH_PROTECT_[REGION]_NOW` in the EC code.
 
 ### Rollback Info Block
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 The Rollback Info Block (aka "RB") is a 4KB block of flash.
 
@@ -121,8 +156,18 @@ We will use the RB to hold the following:
 *   A magic signature that indicates that the RB section is valid.
 
 ### RO Verified Boot Flow
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 #### Write-Protect RO think test before this handles corrupt RW.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 Write protect of RO firmware works the same way it does now:
 
@@ -138,6 +183,11 @@ Write protect of RO firmware works the same way it does now:
     all flash and reboot.
 
 #### Check if AP Wants To Update RW
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 Next, RO needs to find out if the AP wants to update RW. RO initializes USB and
 starts a 1 second timer to give the AP an opportunity to send a command before
@@ -162,6 +212,11 @@ the base within ~100 ms of it appearing on USB, so this check should not cause
 any delay to the base's boot process.
 
 #### Verify RW
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 RO calculates the hash of RW.
 
@@ -174,6 +229,11 @@ RO calculates the hash of RW.
     will be protected on the next boot, the reboot.
 
 #### Roll Forward
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 If `EC_FLASH_PROTECT_ROLLBACK_NOW` is set (RB is protected), do not attempt to
 roll forward. We know RW firmware is properly signed, but not if it's
@@ -188,6 +248,11 @@ RW signature is correct, then update RB:
     will be protected on the next boot.
 
 #### Jump to RW
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 If the 1-second timer for the AP to send a command to RO has not expired, RO
 waits for it to expire or the AP to send a command, whichever happens first.
@@ -198,16 +263,31 @@ protect it and reboot (we never want RW to be able to update RB on its own).
 Otherwise, jump to RW firmware.
 
 ### RW Verified Boot Flow
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 RW firmware provides the keyboard and trackpad functionality.
 
 #### AP Wants To Update RW
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 At some point the AP may want to update RW. To do so, it sends `UNLOCK_RW`
 command, to ask RW to unlock itself and reboot, then follow the update steps
 above.
 
 #### AP Wants to Roll Forward RW
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 After the update, the base boots to the new RW firmware. At that point, the AP
 knows the new RW firmware is good enough to talk to, so it tells RW to prepare
@@ -218,6 +298,11 @@ for roll forward.
     according to the steps above.
 
 ### Write Protect GPIO
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 The `BaseEC` needs a write protect (WP) GPIO signal to decide whether to keep RO
 firmware protected or not. This is the same requirement as on existing ECs.
@@ -229,6 +314,11 @@ Typically, the `BaseEC` will apply a weak pull-up to the WP GPIO; the presence
 of the WP screw/flex will short the pin to ground.
 
 #### RO Updates During Development
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 If RO is unprotected (i.e. during development), RW can also update it.
 
@@ -243,6 +333,11 @@ recent enough and stable enough to update RO:
 If the key is the same, we can update RW first.
 
 ### Signer, image format, and verification process
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 Memory map:
 
@@ -275,6 +370,11 @@ increment from dev keys, to premp, and final mp keys. BaseEC will need to report
 the key version, to avoid incorrect updates.
 
 ## Example Boot / Update Flows
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 The base starts in the following state:
 
@@ -295,6 +395,11 @@ require action on the part of the user, and will not be visible to the user
 (other than the previously noted lack of functionality).
 
 ### Power On, No Update
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 Step                                                                                          | RW  | RB contents | `_AT_BOOT` | `_NOW`
 --------------------------------------------------------------------------------------------- | --- | ----------- | ---------- | ------
@@ -305,6 +410,11 @@ Step                                                                            
 4. RO jumps to RW                                                                             |     |             |            |
 
 ### Updating RW
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 Assume AP now has a new `BaseEC`-RW, version N>M. The base is already running RW
 version M. In this card, the rollback version in both version is identical
@@ -334,6 +444,11 @@ RO reboots                                                                      
 The next base boot is where we first run the new RW firmware.
 
 ### Roll forward
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 Now let's assume we followed the steps above, and we now have a RW version O
 that has rollback version 2.
@@ -359,8 +474,18 @@ RO sets `ROLLBACK_AT_BOOT` to protect RB on the next boot.                      
 RO reboots.                                                                                                                               |     |             |              | **RO/RW/RB**
 
 ## Details
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 ### STM32 Flash Protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 At a high level, flash protection works on the STM32F072 chip works in the
 following manner:
@@ -387,6 +512,11 @@ Flash protection works similarly on other STM32F chips, if we need to move to a
 larger or more capable EC for the base to support a more complex base.
 
 ### Flash Contents
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 The 128KB `BaseEC` flash will be divided into three parts.
 
@@ -418,6 +548,11 @@ but doesn't require any additional external components. This is acceptable
 because RO will be smaller (since it only has update/verify functionality).
 
 ### Verification Speed
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/detachable_base_verified_boot.md
+***
+
 
 On a STM32F072 chip running at 48 MHz,
 

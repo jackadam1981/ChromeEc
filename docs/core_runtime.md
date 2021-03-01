@@ -1,6 +1,16 @@
 # Chromium OS Embedded Controller Runtime
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 ## Design Principles
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 1.  Never do at runtime what you can do at compile time The goal is saving flash
     space and computations. Compile-time configuration until you really need to
@@ -14,17 +24,42 @@
     execute-in-place from flash.
 
 ## Execution Contexts
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 This is a pre-emptible runtime with static tasks. It has only 2 possible
 execution contexts:
 
 -   the regular [tasks](#tasks)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 -   the [interrupt handlers](#interrupts)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 The initial startup is an exception as described in the
 [dedicated paragraph](#startup).
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 ### Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 The tasks are statically defined at compile-time. They are described for each
 *board* in the [board/$board/ec.tasklist](../board/host/ec.tasklist) file.
@@ -39,10 +74,25 @@ is defined at compile-time in the [ec.tasklist](../board/host/ec.tasklist) file.
 
 A task can normally be preempted at any time by either interrupts or higher
 priority tasks, see the [preemption section](#scheduling-and-preemption) for
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 details and the [locking section](#locking-and-atomicity) for the few cases
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 where you need to avoid it.
 
 ### Interrupts
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 The hardware interrupt requests are connected to the interruption handling *C*
 routines declared by the `DECLARE_IRQ` macros, through some chip/core specific
@@ -63,11 +113,21 @@ they can interrupt any IRQ handler using the same nesting mechanism. All fatal
 exceptions should ultimately lead to a reboot.
 
 ### Events
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 Each task has a *pending* events bitmap[1] implemented as a 32-bit word. Several
 events are pre-defined for all tasks, the most significant bits on the 32-bit
 bitmap are reserved for them : the timer pending event on bit 31
 ([see the corresponding section](#time)), the requested task wake (bit 29),
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 the event to kick the waiters on a mutex (bit 30), along with a few hardware
 specific events. The 19 least significant bits are available for task-specific
 meanings.
@@ -77,12 +137,22 @@ other tasks **and** interrupt handlers can atomically set them to request
 specific actions from the task. Therefore, the presence of pending events in a
 task bitmap has an impact on its scheduling as described in the
 [scheduling section](#scheduling-and-preemption). These requests are done using
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 the `task_set_event()` and `task_wake()` primitives.
 
 The two typical use-cases are:
 
 -   a task sends a message to another task (simply use some common memory
     structures [see explanation](#single-address-space) and want it to process
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
     it now.
 -   a hardware IRQ occurred, and we need to do some long processing to respond
     to it (e.g. an I2C transaction). The associated interrupt handler cannot do
@@ -92,6 +162,11 @@ The task code chooses to consume them (or a subset of them) when it's running
 through the `task_wait_event()` and `task_wait_event_mask()` primitives.
 
 ### Scheduling and Preemption
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 The system has a global bitmap[1] called `tasks_ready` containing one bit per
 task and indicating whether it is *ready* *to* *run* (ie want/need to be
@@ -134,6 +209,11 @@ newly scheduled task, and restore the registers from the previously saved
 context from there.
 
 ### Hooks and Deferred Functions
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 The lowest priority task (ie Task 1, aka TASK_ID_HOOKS) is reserved to execute
 repetitive actions and future actions deferred in time without blocking the
@@ -159,6 +239,11 @@ up a subsequent call to a deferred function than have a long delay in your
 handler.
 
 ### Watchdog
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 The system is always protected against misbehaving tasks and interrupt handlers
 by a hardware watchdog rebooting the CPU when it is not attended.
@@ -178,6 +263,11 @@ find a stuck task or handler. The normal execution is resumed though after this
 alert.
 
 ### Startup
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 The startup sequence goes through the following steps:
 
@@ -207,6 +297,11 @@ the task start address, and the stack pointer is pointing to its reserved stack
 space.
 
 ### Locking and Atomicity
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 The two main concurrency primitives are lightweight atomic variables and heavier
 mutexes.
@@ -220,6 +315,11 @@ depending on what is available.
 The mutexes are actually statically allocated binary semaphores. In case of
 contention, they will make the waiting task sleep (removing its ready bit) and
 use the [event mechanism](#events) to wake-up the other waiters on unlocking.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 Note: the mutexes are NOT triggering any priority boosting to avoid the priority
 inversion phenomenon.
@@ -229,8 +329,18 @@ to masking interrupts with `interrupt_disable()` spinlocks, but it's strongly
 discouraged to avoid harming the real-time characteristics of the runtime.
 
 ## Time
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 ### Time Keeping
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 In the runtime, the time is accounted everywhere using a **64-bit**
 **microsecond** count since the microcontroller **cold** **boot**.
@@ -251,10 +361,20 @@ in interrupt context in a handler having a higher priority than the timer IRQ
 (which is somewhat rare), the high 32-bit word might be incoherent (off by one).
 
 ### Timer Event
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 The runtime offers *one* (and only one) timer per task. All the task timers are
 multiplexed on a single hardware timer. (can be just a *match* *interrupt* on
 the free running counter mentioned in the [previous paragraph](#time-keeping))
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 Every time a timer is armed or expired, the runtime finds the task timer having
 the closest deadline and programs it in the hardware to get an interrupt. At the
 same time, it sets the TASK_EVENT_TIMER event in all tasks whose timer deadline
@@ -267,8 +387,18 @@ that this timer is still running on the next `task_wait_event()` call, the call
 will fail due to the lack of available timer.
 
 ## Memory
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 ### Single Address Space
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 There is no memory isolation between tasks (ie they all live in the same address
 space). Some architectures implement memory protection mechanism albeit only to
@@ -282,6 +412,11 @@ using events to wake the other task (given we properly thought the concurrent
 accesses on those structures).
 
 ### Heap
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 The data structure should be statically allocated at compile time.
 
@@ -294,6 +429,11 @@ long-tail of failures.
 -   TODO: where/how we store *panic* *memory* and *sysjump* *parameters*.
 
 ### Stacks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 Each task has its own stack, in addition there is a system stack used for
 startup and interrupts/exceptions.
@@ -304,19 +444,39 @@ careful about stack usage when implementing features.
 Note 2: At the same time, the total size of RAM used by stacks is a big chunk of
 the total RAM consumption, so their sizes need to be carefully tuned. (please
 refer to the [debugging paragraph](#debugging) for additional input on this
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 topic.
 
 ## Firmware Code Organization and Multiple Copies
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 -   TODO: Details the classical RO / RW partitions and how we sysjump.
 
 ## Power Management
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 -   TODO: talk about the idle task + WFI (note: interrupts are disabled!)
 -   TODO: more about low power idle and the sleep-disable bitmap
 -   TODO: adjusting the microsecond timer at wake-up
 
 ## Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/core_runtime.md
+***
+
 
 -   TODO: our main tool: serial console ... (but non-blocking / discard
     overflow, cflush DO/DONT)

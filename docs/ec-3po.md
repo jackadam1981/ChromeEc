@@ -1,8 +1,18 @@
 # EC-3PO
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po.md
+***
+
 
 [TOC]
 
 ## What is EC-3PO?
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po.md
+***
+
 
 EC-3PO is the console interpreter that will one day replace the EC console that
 we have today.  EC-3PO aims to migrate our rich debug console from the EC itself
@@ -12,6 +22,11 @@ impacting our EC image sizes while also allowing us to add new features.
 For more information, see [the design doc](./ec-3po-design.md).
 
 ## How do I use EC-3PO?
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po.md
+***
+
 
 If you're using `servod` to connect to your EC, chances are you're already using
 it. EC-3PO was grafted into `servod` on Feb 7th 2016. If you're not running
@@ -47,6 +62,11 @@ created with the `tty` group. If on your machine it's not, then just replace
 1. Rerun `cu` with `sudo` and it should work now.
 
 ## Why does the console seem "laggier" than before?
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po.md
+***
+
 
 This is because there's a ~300ms delay after entering each console command. This
 is due to the interrogation that the console interpreter performs to determine
@@ -69,14 +89,29 @@ command.*
 The interrogation delay should now be gone and you can have your 300ms/cmd back.
 
 ## How do I try out this "enhanced" EC image you speak of?
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po.md
+***
+
 
 You simply add this to your board.h file.
 
 ```c
 #define CONFIG_EXPERIMENTAL_CONSOLE
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po.md
+***
+
 ```
 
 ## I can't open the EC console
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po.md
+***
+
 
 Make sure you try with `sudo`. If you're using `cu`, make sure root is a member
 of the group of the created PTY.

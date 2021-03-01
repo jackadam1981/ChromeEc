@@ -123,6 +123,11 @@ protection status, version string, and a minimum rollback version.
 Details can be found in `include/update_fw.h`.
 
 ### State machine (update over USB)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_updater.md
+***
+
 
 This describes the EC-side state machine for update over USB.
 
@@ -154,6 +159,11 @@ INSIDE_BLOCK (in a middle of a PDU):
   * Else, stay in INSIDE_BLOCK.
 
 ### Vendor commands (channeled TPM command, Cr50)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_updater.md
+***
+
 
 When channeling TPM vendor commands the USB frame looks as follows:
 
@@ -180,6 +190,11 @@ reported by Cr50.
 Again, vendor command responses are subcommand specific.
 
 ### Vendor commands (common code)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_updater.md
+***
+
 
 Vendor commands for command code look very similar to the TPM vendor commands
 above, except that we use `UPDATE_EXTRA_CMD` (`b007ab1f`) instead of `EXT_CMD`,

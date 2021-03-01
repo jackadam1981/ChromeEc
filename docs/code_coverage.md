@@ -1,4 +1,9 @@
 # Code Coverage
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_coverage.md
+***
+
 
 Provides an overview of how to use code coverage tools when running the unit
 tests in the EC codebase.
@@ -6,11 +11,21 @@ tests in the EC codebase.
 [TOC]
 
 ## Availability
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_coverage.md
+***
+
 
 Code coverage is only available for host-based unit tests, as opposed to
 manual tests that run on target hardware.
 
 ## Building for code coverage
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_coverage.md
+***
+
 
 To build host-based unit tests for code coverage, invoke `make` with the
 `coverage` target, as follows:
@@ -24,6 +39,11 @@ data into a code coverage report using the `lcov` and `genhtml` tools.
 The coverage report top-level page is `build/coverage/coverage_rpt/index.html`.
 
 ### Noise in the build output
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/code_coverage.md
+***
+
 
 When building for code coverage, you may see multiple warnings of the form
 `geninfo: WARNING: no data found for /mnt/host/source/src/platform/ec/core/host/cpu.h`

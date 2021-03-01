@@ -1,6 +1,16 @@
 ## Configure Keyboard
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/keyboard.md
+***
+
 
 ## Config options
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/keyboard.md
+***
+
 
 Keyboard options start with `CONFIG_KEYBOARD*`. Evaluate whether each option is
 appropriate to add to `baseboard.h` or `board.h`.
@@ -14,21 +24,41 @@ used to send keyboard events to the AP.
   typically use the MKBP protocol.
 
 ## Feature Parameters
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/keyboard.md
+***
+
 
 - `CONFIG_KEYBOARD_KSO_BASE <pin>` - Evaluate whether this parameter is required
   by your board.
 
 ## GPIOs and Alternate Pins
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/keyboard.md
+***
+
 
 Define `ALTERNATE()` pin entries for all keyboard matrix signals, to connect the
 signals to the keyboard controller of the EC chipset.
 
 Note that KSO_02 is purposely not configured for for alternate mode. See the [H1
 Special Requirements](#H1-Special-Requirements) below for details.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/keyboard.md
+***
+
 
 ```c
 /* Example Keyboard pin setup */
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/keyboard.md
+***
+
 ALTERNATE(PIN_MASK(3, 0x03), 0, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT) /* KSI_00-01 */
 ALTERNATE(PIN_MASK(2, 0xFC), 0, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT) /* KSI_02-07 */
 ALTERNATE(PIN_MASK(2, 0x03), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH) /* KSO_00-01 */
@@ -41,11 +71,21 @@ See the [GPIO](./gpio.md) documentation for additional details on the GPIO
 macros.
 
 ## Data structures
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/keyboard.md
+***
+
 
 - `struct keyboard_scan_config keyscan_config` - This must be defined if the
   `CONFIG_KEYBOARD_BOARD_CONFIG` option is defined.
 
 ## Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/keyboard.md
+***
+
 
 The `KEYSCAN` task monitors the keyboard matrix for new key presses and is
 required by this feature. The priority is set as one of the highest priority
@@ -64,6 +104,11 @@ priority is lower than the `HOSTCMD` task.
 ```
 
 ## Additional Notes
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/keyboard.md
+***
+
 
 - If you're including keyboard support, you should also define
   `CONFIG_CMD_KEYBOARD` to enable keyboard debug commands from the EC console.
@@ -75,6 +120,11 @@ priority is lower than the `HOSTCMD` task.
   information.
 
 ### H1 Special Requirements
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/keyboard.md
+***
+
 On Boards that use the H1 secure microcontroller, one KSI (keyboard scan input)
 signal and one KSO (keyboard scan output) signal are routed through the H1
 microcontroller. There are additional GPIO and configuration options that must

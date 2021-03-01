@@ -1,4 +1,9 @@
 # Configure AP Power Sequencing
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 This section details the configuration related to managing the system power
 states (G3, S5, S3, S0, S0iX, etc). This includes the following tasks:
@@ -12,6 +17,11 @@ states (G3, S5, S3, S0, S0iX, etc). This includes the following tasks:
   delays or other sequencing control.
 
 ## Config options
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 The AP chipset options are grouped together in [config.h]. Select exactly one of
 the available AP chipset options (e.g. `CONFIG_CHIPSET_APOLLOLAKE`,
@@ -30,14 +40,34 @@ defined.
 The `CONFIG_BRINGUP` option is especially useful option during the initial power
 up of a new board. This option is discussed in more detail in the [Testing and
 Debugging](#Testing-and-Debugging) section.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 ## Feature Parameters
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 None needed in this section.
 
 ## GPIOs and Alternate Pins
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 ### EC Outputs to the board
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 The board should connect the enable signal of one or more voltage rails to the
 EC. These enable signals will vary based on the AP type, but are typically
@@ -50,6 +80,11 @@ GPIO(EN_PP5000,   PIN(A, 4), GPIO_OUT_LOW)
 ```
 
 ### EC Outputs to AP
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 For boards with an x86 AP, the following signals can be connected between the EC
 and AP/PCH. Create `GPIO()` entries for any signals used on your board.
@@ -65,6 +100,11 @@ and AP/PCH. Create `GPIO()` entries for any signals used on your board.
 - `GPIO_PCH_WAKE_L` - Output from the EC, driven low when there is a wake event.
 
 ### Power Signal Interrupts
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 For each power signal defined in the `power_signal_list[]` array, define a
 `GPIO_INT()` entry that connects to the `power_signal_interrupt`. The interrupts
@@ -84,6 +124,11 @@ See the [GPIO](./gpio.md) documentation for additional details on the GPIO
 macros.
 
 ## Data structures
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 - `const struct power_signal_info power_signal_list[]` - This array defines the
   signals from the AP and from the power subsystem on the board that control the
@@ -92,6 +137,11 @@ macros.
   the `./power` directory.
 
 ## Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 The `CHIPSET` task monitors and handles the power state changes.  This task
 should always be enabled with a priority higher than the `CHARGER` task, but
@@ -110,6 +160,11 @@ task.
 ```
 
 ## Testing and Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+
 
 During the first power on of prototype devices, it is recommended to enable
 `CONFIG_BRINGUP`. This option prevents the EC from automatically powering on the
@@ -251,3 +306,8 @@ RTC: 0x000067bf (26559.00 s)
 documentation specific to each x86 processor type.*
 
 [config.h]: ../new_board_checklist.md#config_h
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/ap_power_sequencing.md
+***
+

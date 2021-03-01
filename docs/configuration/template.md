@@ -1,8 +1,18 @@
 # EC Feature Configuration Template
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/template.md
+***
+
 
 *Short description of the EC feature and the capabilities provided*
 
 ## Config options
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/template.md
+***
+
 
 In [config.h], search for options that start with `CONFIG_<feature>*` and
 evaluate whether each option is appropriate to add to `baseboard.h` or
@@ -12,11 +22,21 @@ evaluate whether each option is appropriate to add to `baseboard.h` or
 contains the authoritative definition.*
 
 ## Feature Parameters
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/template.md
+***
+
 
 *Detail `CONFIG_*` options that must be assigned to a value for this EC feature
 to compile and operate.*
 
 ## GPIOs and Alternate Pins
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/template.md
+***
+
 
 *Document any hard-coded GPIO enumeration names required by the EC feature.*
 
@@ -24,6 +44,11 @@ to compile and operate.*
 feature.*
 
 ## Data Structures
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/template.md
+***
+
 
 *Document any data structures that must be defined in the board.c or baseboard.c
 files in order for the EC feature to compile and operate.*
@@ -32,20 +57,45 @@ files in order for the EC feature to compile and operate.*
 files.*
 
 ## Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/template.md
+***
+
 
 *Document any EC tasks that must be enabled by the feature.*
 
 ## Testing and Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/template.md
+***
+
 
 *Provide any tips for testing and debugging the EC feature.*
 
 ### Console Commands
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/template.md
+***
+
 
 *Document an EC console commands related to the feature.*
 
 ## Example
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/template.md
+***
+
 
 *Optional - provide code snippets from a working board to walk the user through
 all code that must be created to enable this feature.*
 
 [config.h]: ../new_board_checklist.md#config_h
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/template.md
+***
+

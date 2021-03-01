@@ -1,4 +1,9 @@
 # FPMCU Development for Partners
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 This document is intended to help partners (sensor vendors, MCU vendors, etc)
 that are currently (or interested in) developing fingerprint solutions for
@@ -11,6 +16,11 @@ See the [FPMCU documentation] for additional development information.
 [TOC]
 
 ## Hardware Required for Standalone Development (no Chromebook)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 The following hardware components can be used to set up a standalone development
 environment for FPMCU development (i.e., it does not rely on a Chromebook).
@@ -19,9 +29,24 @@ have their own standalone development or evaluation kits that don't require the
 use of [servo].
 
 You will need an [FPMCU reference board](#fpmcu-dev-board) and a
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 [servo debugger](#servo).
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 ### FPMCU board {#fpmcu-dev-board}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 The Fingerprint MCU (FPMCU) board has the MCU that handles all
 fingerprint-related functionality (matching, encryption, etc). The fingerprint
@@ -35,22 +60,42 @@ Download the [Dragonclaw schematics, layout, and BOM][dragonclaw schematics].
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
+*** note
 **Googlers**: You can pick up the Dragonclaw development board at Chromestop.
 **Partners**: You can request a Dragonclaw development board from Google.
 ***
 
 *** note
 Dragonclaw Rev 0.2 needs a [rework](#dragonclaw-rev-0.2-rework) for the FPC
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 sensor to work while being powered through Servo. All of the boards at Chromestop
 have already been reworked.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 This FPMCU board is the Dartmonkey Rev 0.1. |
 ------------------------------------------- |
 ![Dartmonkey board]                         |
 
 ### Servo
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Servo is a general purpose debug board that connects to a header on the FPMCU
 board. Among other things, the servo supplies power to the FPMCU and can be used
@@ -59,21 +104,51 @@ debug a running program. It supports SPI, UART, I2C, as well as JTAG/SWD.
 
 There are two different servo debugger setups supported, the
 [Servo Micro](#servo-micro) and the [Servo V2 + Yoshi](#servo-v2-yoshi). The
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 servo micro is recommended for its simplicity. It lacks builtin JTAG/SWD support
 for single step debugging, but Dragonclaw v0.2 has an
 [SWD connector](#servo-micro-swd) that can be used.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 [Servo Micro](#servo-micro) | [ServoV2 + Yoshi](#servo-v2-yoshi)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 --------------------------- | ----------------------------------
 ![Servo Micro]              | ServoV2 ![Servo v2] Yoshi Flex ![Standard Yoshi Flex]
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
+*** note
 For more information about both servos, see [servo].
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 ### Servo Micro
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Unlike the Servo V2, the newer servo micro does not require any adapters to
 interface with the FPMCU board.
@@ -85,28 +160,68 @@ to the developer's computer over micro USB.
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
+*** note
 For more information about Servo Micro, see [Servo Micro Info].
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 #### Using SWD (Optional) {#servo-micro-swd}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Instructions for setup are described in [Fingerprint Debugging].
 
 ### Servo V2 + Yoshi
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Servo V2 is the original full featured debugger. It requires a
 [Yoshi Flex Cable](#yoshi-flex-cable) to interface with the FPMCU.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 ![Servo v2]
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
+*** note
 NOTE: More information on servo can be found in the [servo] documentation.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 #### Yoshi Flex Cable
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 The Yoshi Flex cable is used to connect Servo v2 to the FPMCU board. The
 standard cable does not work with SWD, but a simple rework can be performed to
@@ -123,6 +238,11 @@ Rework steps:
 *   Wire from Pin 6 of U21 to right side of R19
 
 #### Micro USB Cable
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 A micro USB cable is needed to connect the the servo v2 board to your host Linux
 development machine.
@@ -130,6 +250,11 @@ development machine.
 *   [Micro USB Cable]
 
 #### Servo V2 Hardware Setup
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 1.  Connect the Yoshi Flex cable to servo, paying attention to the pin
     numbering.
@@ -156,8 +281,18 @@ development machine.
     ![Connect SWD Debugger]
 
 ## Software Setup
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 ### Get the Chromium OS source code
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 *   First, make sure you [have the prerequisites].
 *   Then [get the source].
@@ -165,22 +300,47 @@ development machine.
     *   You can stop after the `enter the chroot` step.
 
 ### Build the [EC]\ (embedded controller) codebase
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Open **two** terminals and enter the chroot in each:
 
 ```bash
 # from a terminal on your machine
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 (outside chroot) $ cd ~/chromiumos/src
 
 # enter the chroot (the flag is important)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 (outside chroot) $ cros_sdk --no-ns-pid
 ```
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
+*** note
 NOTE: More information on servo can be found in the [servo] documentation.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 In one of the terminals, build and start `servod`
 
@@ -192,10 +352,20 @@ Build and install `servod` in the chroot:
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
+*** note
 In all of the following commands, replace `<BOARD>` in the command with
 `bloonchipper` or `dartmonkey` depending on the development board you are using.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Run `servod`:
 
@@ -338,6 +508,11 @@ Start a fingerprint enrollment:
 ```
 
 ### Measuring Power {#measure-power}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 The Dragonclaw reference board has an onboard INA that monitors the voltage and
 power draw of the MCU and FP Sensor independently.
@@ -362,6 +537,11 @@ You can get a summary of the power over `N` seconds with:
 
 <!-- mdformat off(b/139308852) -->
 *** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
+*** note
 The `_mv` suffix denotes millivolt and `_mw` suffix denotes milliwatt.
 ***
 
@@ -369,8 +549,18 @@ The `_mv` suffix denotes millivolt and `_mw` suffix denotes milliwatt.
 See [Power Measurement Documentation] for more information.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 ### Toggling Hardware Write Protect
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 When using a fingerprint development board connected to servo, you can toggle
 hardware write protect for testing.
@@ -396,8 +586,18 @@ Disable hardware write protect:
 ```
 
 ### Contributing Changes
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 #### Using Gerrit and git
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 If you’re not familiar with `git`, Gerrit (code review) and `repo`, here are
 some docs to help you get started:
@@ -420,6 +620,11 @@ you):
 *   [Internal Gerrit]
 
 #### Registering for a chromium.org *Internal* Account
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 If your partnership agreement requires non-public code sharing you will need to
 register for an account on the [Internal Gerrit]. Refer to the
@@ -428,6 +633,11 @@ account, your contact at Google can make sure you have the necessary permissions
 to access the private repository.
 
 <!-- mdformat off(b/139308852) -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 *** note
 **NOTE**: In order to use a private repository you will have to manually add it
 to the repo manifest file before running `repo sync`. Check with your contact
@@ -451,8 +661,18 @@ at Google for the exact values to use below:
 ```
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 ### Tracking Issues and Communication
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Development issue tracking and communication is done through the
 [Partner Issue Tracker]. You will use your [Partner Domain] account to access
@@ -468,15 +688,30 @@ tracked by multiple people and a record is preserved for posterity.
 [Partner Issue Tracker]: https://developers.google.com/issue-tracker/guides/partner-access
 [Partner Domain]: https://developers.google.com/issue-tracker/guides/partner-domains
 [set up email forwarding]: https://developers.google.com/issue-tracker/guides/partner-domains#email_forwarding
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 [notification settings]: https://developers.google.com/issue-tracker/guides/set-notification-preferences
 
 ## Working with Chromebooks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Chromebooks have an FPMCU (e.g., Dragonclaw) board attached to the motherboard.
 You can use the device to run `ectool` commands and test the fingerprint sensor
 from the UI.
 
 ### Developer Mode and Write Protection
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Make sure that your fingerprint-equipped Chrome OS device is in [developer mode]
 with a *test* image flashed and [hardware write protection] disabled. Using the
@@ -487,6 +722,11 @@ See [Installing Chromium] for details on flashing test images and enabling
 [developer mode].
 
 ### Connecting
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 In general, most of our development is done by connecting to the DUT (device
 under test) via SSH. We usually connect the DUT to ethernet (e.g., via USB-C to
@@ -513,6 +753,11 @@ Alternatively, you can access a shell via the UI on device by pressing
 `CTRL+ALT+F2` (third key on top row). Log in with `root` and `test0000`.
 
 ### Flashing FPMCU from DUT
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Copy the firmware to the DUT:
 
@@ -527,19 +772,44 @@ From the DUT, flash the firmware you copied:
 ```
 
 ## Commit-queue Prototype Environment
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 ![Dragonclaw in CQ Prototype Environment]
 
 ## Troubleshooting
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 ### Dragonclaw Rev 0.2 Rework {#dragonclaw-rev-0.2-rework}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 <!-- mdformat off(b/139308852) -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 *** note
 **NOTE**: All Dragonclaw v0.2 boards have been reworked, so it is not necessary
 to perform the rework yourself.
 ***
 <!-- mdformat on -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Dragonclaw **Rev 0.2** has two load switches (`U4` and `U6`) that enable the
 1.8V power rail from the servo connector or motherboard connector. However, this
@@ -549,6 +819,11 @@ The [rework document][Dragonclaw Rev 0.2 1.8V Rework] describes replacing these
 two switches with ones compatible with 1.8V.
 
 ### Dragonclaw Rev 0.1 Servo Fix
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Dragonclaw **Rev 0.1** has a known issue with UART and JTAG. Most notably, this
 issue causes servo micro to fail to program the FPMCU over UART.
@@ -561,6 +836,11 @@ This issue can be fixed with the following rework steps:
 ![Dragonclaw servo fix diagram]
 
 ### Verify that servo and debugger are connected to USB {#servo-connected}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Check whether servo is enumerating on USB. If you are using a debugger
 (Lauterbach, J-Link, etc), also check to make sure it enumerates. Depending on
@@ -571,13 +851,33 @@ supply.
 (chroot) $ lsusb
 
 Bus 002 Device 003: ID 0897:0004 Lauterbach  # ← This is my Lauterbach (debugger)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 Bus 001 Device 013: ID 18d1:5002 Google Inc. # ← This is servo
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 ```
 
 ### "No servos found" when running servod
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 If you get the following message, make sure that
 [servo is connected to USB](#servo-connected). You may also want to try
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 restarting your machine (or VM).
 
 ```bash
@@ -587,6 +887,11 @@ restarting your machine (or VM).
 ```
 
 ### Losing characters in servo UART console
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 Make sure that this interface is disabled:
 
@@ -595,24 +900,64 @@ Make sure that this interface is disabled:
 ```
 
 ### FPMCU console commands
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 *   Once the console is working you can use `help` to see the commands.
 *   There should be fingerprint commands that start with `fp` (see `fpsensor.c`
     in the [EC] code).
 
 <!-- Links -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 [EC]: https://chromium.googlesource.com/chromiumos/platform/ec
 [ectool_servo_spi]: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/util/comm-servo-spi.c#15
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 [servo]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/README.md
 [developer mode]: https://chromium.googlesource.com/chromiumos/docs/+/master/debug_buttons.md#firmware-keyboard-interface
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 [hardware write protection]: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/docs/write_protection.md
 [have the prerequisites]: https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#Prerequisites
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 [get the source]: https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#get-the-source
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 [enter the `chroot`]: https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#building-chromium-os
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 [Chromium OS Contributing Guide]: https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md
 [Servo Micro Info]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/docs/servo_micro.md
 [Set your editor]: https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#Set-your-editor
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 [Life of a patch]: https://source.android.com/setup/contribute/life-of-a-patch
 [Git: Concepts and Workflow]: https://docs.google.com/presentation/d/1IQCRPHEIX-qKo7QFxsD3V62yhyGA9_5YsYXFOiBpgkk/
 [Gerrit: Concepts and Workflow]: https://docs.google.com/presentation/d/1C73UgQdzZDw0gzpaEqIC6SPujZJhqamyqO1XOHjH-uk/
@@ -624,11 +969,21 @@ Make sure that this interface is disabled:
 [PNM]: https://en.wikipedia.org/wiki/Netpbm_format
 [Git and Gerrit Intro for Chromium OS]: https://chromium.googlesource.com/chromiumos/docs/+/master/git_and_gerrit_intro.md
 [Installing Chromium]: https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#installing-chromium-os-on-your-device
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 [FPMCU documentation]: ./fingerprint.md
 [Fingerprint Debugging]: ./fingerprint-debugging.md
 [dragonclaw schematics]: ../schematics/dragonclaw
 
 <!-- Images -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 [Servo Micro]: ../images/servo_micro.jpg
 [Servo Micro with Dragonclaw]: ../images/servomicro_dragonclaw.jpg
@@ -647,11 +1002,26 @@ Make sure that this interface is disabled:
 
 <!-- If you make changes to the docs below make sure to regenerate the JPEGs by
      appending "export/pdf" to the Google Drive link. -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 <!-- https://docs.google.com/drawings/d/1YhOUD-Qf69NUdugT6n0cX7o7CWvb5begcdmJwv7ch6I -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 [Dragonclaw Rev 0.2 1.8V Rework]: https://github.com/coreboot/chrome-ec/blob/master/docs/images/dragonclaw_rev_0.2_1.8v_load_switch_rework.pdf
 
 <!-- https://docs.google.com/drawings/d/1w2qbb4AsSxY-KTK2vXZ6TKeWHveWvS3Dkgh61ocu0wc -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md
+***
+
 
 [Dragonclaw in CQ Prototype Environment]: ../images/Dragonclaw_in_CQ_Prototype_Environment.jpg

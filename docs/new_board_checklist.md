@@ -1,20 +1,50 @@
 # Creating a new EC board
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 
 [TOC]
 
 ## Overview
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 
 This document describes the high-level steps needed to create a new EC board. If
 you're creating a new board based on existing baseboard, you can jump straight
 to the relevant link found under [Configuring EC
 Features](#Configure-EC-Features) and focus on known board changes.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 
 ## Conventions
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 ### Key Files
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 Before you get started, it's important to understand the role of a few key files
 in the EC codebase.
 
 - [`include/config.h`](../include/config.h) {#config_h} - Contains the list of
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
   top-level configuration options for the Chrome EC codebase. Each configuration
   option is documented inline and is considered the authoritative definition.
 
@@ -31,6 +61,11 @@ in the EC codebase.
     - `board.h` - EC configuration options specific to a single board.
     - `board.c` - Code built only on this board.
     - `build.mk` {#board_build_mk} - The board makefile defines the EC chipset family, defines the
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
       baseboard name, and specifies the C source files that are compiled.
     - `gpio.inc` - This C header file defines the interrupts, GPIOs, and
       alternate function selection for all pins on the EC chipset.
@@ -38,12 +73,22 @@ in the EC codebase.
       on the board.  See the main EC documentation more details on [EC tasks].
 
 ### GPIO Naming
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 Many drivers and libraries in the common EC code rely on board variants defining
 an exact GPIO signal name. Examples include the `GPIO_LID_OPEN`,
 `GPIO_ENTERING_RW`, and `GPIO_SYS_RESET_L` signals. The net names in schematics
 often do not match these names exactly. When this occurs, best practice is that
 all the `GPIO_INT()`, `GPIO()`, `ALTERNATE()`, and `UNIMPLEMENTED()` definitions
 in `gpio.inc` use the schematic net name. You then create `#define` macros in
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 `board.h` to map the net names to the EC common names.
 
 Below is an example configuration for the SYS_RESET_L signal.  The schematic net
@@ -57,12 +102,22 @@ GPIO(EC_RST_ODL,  PIN(0, 2), GPIO_ODR_HIGH)
 /* From board.h */
 /* Map the schematic net name to the required EC name */
 #define GPIO_SYS_RESET_L  GPIO_EC_RST_ODL
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 ```
 
 Please see the [GPIO](./configuration/gpio.md) documentation for additional
 details on the GPIO macros.
 
 ## How to use this document
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 Each of the following sections details a single feature set that may need to be
 modified or configured for your new board. The feature sets are organized so
 they can be implemented with a reasonably sized change list, and can be worked
@@ -73,15 +128,35 @@ Each configuration feature document includes the following sub-tasks:
 - **Config Options** - This section details the `CONFIG_*` options relevant to
   the feature. Use the documentation found in [config.h] to determine whether
   each option should be enabled (using #define) or disabled (using #undef) in
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
   the relevant `baseboard.h` or `board.h` file.
 - **Feature Parameters** - This section details parameters that control the
   operation of the feature. Similar to the config options, feature parameters
   are defined in [config.h] and prefixed with `CONFIG_*`.  However, feature
   parameters are assigned a default value, which can be overridden in by
   `baseboard.h` or `board.h` using an `#undef/#define` pair.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
   ```c
   #undef CONFIG_UART_TX_BUF_SIZE
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
   #define CONFIG_UART_TX_BUF_SIZE 4096
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
   ```
 - **GPIOs and Alternate Pins** - This section details signals and pins relevant
   to the feature. Add the required `GPIO_INT()`, `GPIO()`, `ALTERNATE()`, and
@@ -100,6 +175,11 @@ Each configuration feature document includes the following sub-tasks:
   configuring an EC feature based on an existing board implementation.
 
 ## Create the new EC board
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 
 The first step when creating a new EC board, is to create the required files in
 the `./baseboard` and `./board` directories. When adding a new board for an
@@ -121,6 +201,11 @@ modifications to your new board files, test the changes, and upload the changes
 for review.
 
 ### Creating a new reference board
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 
 If you are creating a new reference board, it is recommended that you manually
 create new directories under the `./baseboard` and `./board` directories and
@@ -135,6 +220,11 @@ After submitting the skeleton builds, review the following sections and add each
 feature set as required by your design.
 
 ## Configure EC Features
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 
 The checklist below provides an overview of EC features that must be configured
 for correct operation of a Chromebook. The "Needed for Power On" column
@@ -168,5 +258,20 @@ board. Refer to the [GPIO](./configuration/gpio.md) documentation for details.
 [Volteer EC skeleton build]:https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1758532
 [Hatch EC skeleton build]:https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1377569/
 [config.h]: ./new_board_checklist.md#config_h
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 [EC tasks]: ../README.md#Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+
 [GPIO naming conventions]: ./new_board_checklist.md#GPIO-Naming
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/new_board_checklist.md
+***
+

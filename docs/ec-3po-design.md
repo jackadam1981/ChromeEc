@@ -1,8 +1,18 @@
 # EC-3PO: The EC console interpreter
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 [TOC]
 
 ## Introduction
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 Today, the Chromium OS Embedded Controller (EC) has a very rich debug console
 that is very helpful and has features including command history, editing,
@@ -19,6 +29,11 @@ traditional EC console that we all know and love to host command packets sent
 down to the EC and vice versa.
 
 ## Benefits
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 The benefits to be gained are numerous and can all occur without changing
 people's existing workflow. The only slight impact might be that we instruct
@@ -26,6 +41,11 @@ people to `emerge hdctools` every so often. All people would notice would be
 that the EC images would be getting smaller and/or more console features.
 
 ### Testing & FAFT
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 Currently, [FAFT](https://www.chromium.org/for-testers/faft) runs its tests
 while trying to parse strings from the EC console. This method can be fairly
@@ -52,6 +72,11 @@ With better and more reliable tests, we can improve the quality of our EC
 codebase.
 
 ### Space Savings
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 By moving the console functionality off of the EC, we would be able to shave off
 a considerable amount of bytes from the EC images. People wouldn't have to worry
@@ -62,6 +87,11 @@ savings will come for free as it will apply to every EC with a console. We won't
 be restricted by the type of chip.
 
 ### A richer EC console
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 * We could do things like on-the-fly console channel filtering.
 * Coloring specific channels such as "mark all USB PD messages in green".
@@ -74,6 +104,11 @@ be restricted by the type of chip.
 * Bang commands (`!foo`)
 
 ### Better debuggability
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 Sometimes, there will be an issue with the EC (or believed to be an EC issue)
 such as the keyboard locking up on certain keys or rows. At times like that, it
@@ -85,6 +120,11 @@ having a servo connected might make the issue not present itself.
 * Run `ectool` from the chroot using a PTY interface.
 
 ## Deployment Strategy
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 There are many facets to this feature, but here's a deployment strategy which
 will gradually take us from the current EC console today, to a future where the
@@ -92,6 +132,11 @@ console is completely removed from the EC. The goal will be to make this change
 as transparent as possible to developers.
 
 ### Phase 1: Insertion
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 _[[Merged to ToT](https://crrev.com/c/320629) on 2016-02-07]_
 
@@ -104,6 +149,11 @@ we can replicate the console interface and achieve the following things.
 * Add error checking to the console commands.
 
 ### Phase 2: Assimilation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 Phase 2 will start to introduce the host command packet communication.
 
@@ -113,6 +163,11 @@ Phase 2 will start to introduce the host command packet communication.
 * Add debug output filtering and redirection/logging.
 
 ### Phase 3: Expansion
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 Phase 3 will expand the feature set of EC-3PO.
 
@@ -123,12 +178,22 @@ Phase 3 will expand the feature set of EC-3PO.
 * Bang commands (`!foo`)
 
 ## High Level Design & Highlights
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 ![Diagram with three boxes. EC-3PO with an incoming PTY communicates with the
 Serial Driver over another PTY. The Serial Driver communicates with the EC
 UART.](./images/ec-3po-high-level-design.png)
 
 ### EC Interface
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 Each host command is a 16-bit command value. Commands which take parameters or
 return response data specify `struct`s for that data. See
@@ -149,6 +214,11 @@ By the end of the assimilation (Phase 2), there would be no "normal mode" and
 everything would be in the binary host command mode.
 
 ### Host Interface
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 The host interface is where the bulk of the work will be. This will be
 converting from the received host commands to console prints as well as
@@ -161,10 +231,20 @@ as the `ec_uart_pty`. This is to ensure that the change is as transparent as
 possible to developers.
 
 ### Features
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 The following are an explanation of a few of the planned features.
 
 #### Command Error Checking
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 EC-3PO and the EC can perform error checking when sending the commands to the
 EC. This feature would be implemented prior to switching to the binary format.
@@ -190,6 +270,11 @@ simply retry the console command. This creates a reliable input to the console,
 a great win for FAFT.
 
 #### PTY interface to `ectool`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 Once the UART host command handler is functional, we could add the UART as one
 of the interfaces to `ectool`. This would allow `ectool` to be run from the
@@ -199,6 +284,11 @@ benefits of this include faster development of `ectool` and host commands as
 well as a more robust interface for FAFT.
 
 #### On-device EC console without Servo
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 Once the transition is complete and the console speaks entirely in host
 commands, it's no longer necessary to have the console talk solely over the
@@ -212,6 +302,11 @@ Note for security reasons, this must be locked down to only allow a subset of
 commands and debug output when the system is ready to ship.
 
 #### Replacing `cprintf()`
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 All prints will need to become packets. In these packets will contain the format
 string, but all `cprintf()` has to do is parse to format string to determine how
@@ -224,6 +319,11 @@ We could also have a table of common format strings which the EC could just
 provide an index and the parameters.
 
 ## Internal Design
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 EC-3PO is a Python package which aims to migrate the rich debug console from the
 EC itself to the host. It is composed of two modules: console and interpreter.
@@ -234,6 +334,11 @@ a debug pipe goes from the Interpreter to the
 Console.](./images/ec-3po-internal-design.png)
 
 ### Console module
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 The console module provides the interactive console interface between the user
 and the interpreter. It handles the presentation of the EC console including
@@ -249,6 +354,11 @@ interpreter for command traffic. An example transaction would be a host command
 request and response.
 
 #### Enhanced EC image negotiation
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 When the user transmits a character on the PTY, the console begins to scan every
 byte and perform the appropriate actions. Since not every EC image will support
@@ -275,6 +385,11 @@ never initiate a negotiation, eliminating the delay. See the "interrogate"
 command in the Out of Band Management section for usage.
 
 #### Enhanced vs. Non-Enhanced EC images
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 All EC images which don't explicitly enable the new features (or were built
 before the features were implemented in the code base) are non-enhanced images.
@@ -287,6 +402,11 @@ console. Enhanced EC images will also support all of the other features
 discussed in this document.
 
 #### Out of Band Management
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 The interactive console also has an Out of Band Management (OOBM) interface.
 This allows commands to be entered that can alter the behavior of the console
@@ -294,6 +414,11 @@ and interpreter during runtime. From the console, one can bring up the OOBM
 prompt by pressing ‘%' . These were originally added for debug purposes.
 
 ##### Supported Commands
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 * `loglevel <integer>`
   * Allows setting the effective loglevel of the console and interpreter.
@@ -301,6 +426,11 @@ prompt by pressing ‘%' . These were originally added for debug purposes.
   * Allows control of when and how often interrogation occurs.
 
 ### Interpreter module
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 The interpreter provides the interpretation layer between the EC UART and the
 user. Similar to the console module, the interpreter starts an infinite loop of
@@ -318,6 +448,11 @@ interpreter also supports command retrying by monitoring the response of the EC
 and automatically retrying the command with no input from the user.
 
 ### Other users
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md
+***
+
 
 Since the interpreter communicates using pipes, it's not necessary that the user
 use the console module. For example, FAFT could directly connect to the

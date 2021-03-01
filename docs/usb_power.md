@@ -1,4 +1,9 @@
 # USB Power Considerations
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 
 Users want to be able to charge external devices using their Chromebook USB
 ports, e.g. charge a phone from their Chromebook. We want to provide a fast
@@ -8,10 +13,20 @@ possible.
 [TOC]
 
 ## Summary of Design Requirements
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 
 For explanations of calculations see rest of doc.
 
 ### Total System Power
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 
 Total current needed for external USB devices at 5V:
 
@@ -23,6 +38,11 @@ Total current needed for external USB devices at 5V:
 § The additional 600mA can be omitted if BC1.2 is not supported for Type-A
 
 ### Daughter Board Considerations
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 
 If a daughter board has 1 Type-A (supporting BC 1.2) and 1 Type-C, the max
 potential current load at 5V is `Type-A Vbus (1500mA) + Type-C Vbus (3000mA) +
@@ -36,6 +56,11 @@ Type-C Vconn (300mA) = 4800mA`
     carry enough current to match the power rails.
 
 ## USB Type-A Ports
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 
 For Type-A ports, the [BC 1.2 Specification] adds higher power modes on top of
 the [USB 3.2 Specification]. While BC 1.2 support isn't required, it is
@@ -65,6 +90,11 @@ Downstream Port (SDP) as defined by various specification (e.g.
 [USB 3.2 Specification]).
 
 ### ChromeOS as Source - Policy for Type-A
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 
 If BC 1.2 is supported on a ChromeOS device, then the first Type-A port in use
 will act as a CDP, providing a maximum current of 1.5A while also enabling USB
@@ -121,11 +151,26 @@ The total current needed for all Type-A ports at 5V is:
 ```
 if (BC1.2_Supported)
     (# Type-A Ports)*(900mA) + 600mA
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 else
     (# Type-A Ports)*(900mA)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 ```
 
 ## USB Type-C Ports
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 
 USB Type-C allows for dynamic negotiation of high power contracts; this is
 accomplished through varying CC resistors and/or USB-C Power Delivery (PD). More
@@ -134,6 +179,11 @@ in-depth information can be found in the [USB Type-C Specification] \(section
 500mA/5V to 3A/5V, while PD contracts can range from 0mA/3.3V to 5A/20V.
 
 ### ChromeOS as Source - Policy for Type-C
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb_power.md
+***
+
 
 **Note:** Behavior outlined in this .md file reflects future-planned behavior,
 and is not present in the codebase currently.

@@ -1,4 +1,9 @@
 # GPIO Configuration
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 GPIO setup is done for every board variant, but never for the baseboard, by
 configuring the file `./board/<board>/gpio.inc`. This file configures all the
@@ -15,11 +20,26 @@ the pins on the EC chipset through the following macros.
 The `GPIO()`, `GPIO_INT()`, and `UNIMPLEMENTED()` macros create a C enumeration
 of the form `GPIO_<name>` that can be used in the code. As noted in [GPIO
 Naming](../new_board_checklist.md#GPIO-Naming), the `<name>` parameter should
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 always match the schematic net name.
 
 ## `GPIO()` macro
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 ### Prototype
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 `GPIO(name, pin, flags)`
 
@@ -32,6 +52,11 @@ always match the schematic net name.
   `GPIO_FLAG_NONE` definition in [./include/gpio.h](../../include/gpio.h).
 
 ### Example
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 ![GPIO Example]
 
@@ -44,11 +69,26 @@ should also map the net name to the EC name in the `board.h` file.
 
 ```c
 #define GPIO_ENTERING_RW    GPIO_EC_ENTERING_RW
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 ```
 
 ## `GPIO_INT()` macro
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 ### Prototype
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 `GPIO_INT(name, pin, flags, signal)`
 
 - `name` - Defines the schematic net name, which is expanded to the enumeration
@@ -60,6 +100,11 @@ should also map the net name to the EC name in the `board.h` file.
   the flags set.
 
 ### Example
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 ![GPIO_INT Example]
 
@@ -72,11 +117,26 @@ need to map the net name to the EC name in the `board.h` file.
 
 ```c
 #define GPIO_LID_OPEN       GPIO_EC_LID_OPEN
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 ```
 
 ## `ALTERNATE()` macro
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 ### Prototype
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 `ALTERNATE(pinmask, function, module, flags)`
 
 - `pinmask` - Defines a set of pins in the same GPIO group to assign to a
@@ -96,6 +156,11 @@ need to map the net name to the EC name in the `board.h` file.
 - `flags` - Same definition as `GPIO()` macro.
 
 ### Notes
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 At runtime there are two mechanisms for switching a pin between GPIO mode and
 alternate function mode.
@@ -135,6 +200,11 @@ The general recipe for overriding alternate functions is shown below.
 
 
 ### Example
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 ![ALTERNATE Example]
 
@@ -143,13 +213,38 @@ ALTERNATE(PIN_MASK(B, BIT(4) | BIT(5)), 0, MODULE_I2C, (GPIO_INPUT | GPIO_SEL_1P
 ```
 
 <!-- Images -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 <!-- If you make changes to the docs below make sure to regenerate the PNGs by
      appending "export/png" to the Google Drive link. -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 
 <!-- https://docs.google.com/drawings/d/18cWTYQRRCpypYDOLlvKQJTObwcj6wOjUga02B0oZXBg -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 [GPIO Example]: ../images/gpio_example.png
 <!-- https://docs.google.com/drawings/d/1X6p5XfB6BBmUUKCrwOg56Bz6LZj9P_WPQXsOdk-OIiI -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 [GPIO_INT Example]: ../images/gpio_int_example.png
 <!-- https://docs.google.com/drawings/d/1-kroVezQuA_KdQLzqYPs8u94EBg37z3k6lKzkSLRv-0 -->
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 [ALTERNATE Example]: ../images/alternate_example.png

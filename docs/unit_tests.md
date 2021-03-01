@@ -1,10 +1,20 @@
 # Unit Tests
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 Provides an overview of how to write and run the unit tests in the EC codebase.
 
 [TOC]
 
 ## Running Unit Tests {#running}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 The unit tests run on the host machine using the [`host` board].
 
@@ -27,6 +37,11 @@ Build and run all unit tests:
 ```
 
 ## Writing Unit Tests
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 Unit tests live in the [`test`] subdirectory of the CrOS EC codebase.
 
@@ -40,6 +55,11 @@ the Zephyr project, and reduces the porting work when the EC transitions to
 the Zephyr RTOS.
 
 ### File headers
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 Include [`test_util.h`] and any other required includes. In this example,
 the function being tested is defined in the test, but a real unit test would
@@ -49,7 +69,17 @@ include the header file for the module that defines `some_function`.
 
 ```c
 #include <stdbool.h>
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 #include "test_util.h"
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 static bool some_function(void)
 {
@@ -62,6 +92,11 @@ or defines a mapping from the `zassert` macros to the EC
 `TEST_ASSERT` macros if `CONFIG_ZEPHYR` is not defined.
 
 ### Test cases
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 Define the test cases. Use the `EC_TEST_RETURN` return type on these functions.
 
@@ -106,6 +141,11 @@ versus
 ```
 
 ### Specify the test cases to run
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 The EC test API enumerates the test cases using `RUN_TEST` in the `run_test`
 function, while the Ztest API enumerates the test cases using `ztest_unit_test`
@@ -115,6 +155,11 @@ inside another macro for the test suite, inside of `test_main`.
 
 ```c
 #ifdef CONFIG_ZEPHYR
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 void test_main(void)
 {
     ztest_test_suite(test_my_unit,
@@ -122,6 +167,11 @@ void test_main(void)
     ztest_run_test_suite(test_my_unit);
 }
 #else
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 /* The test framework will call the function named "run_test" */
 void run_test(int argc, char **argv)
 {
@@ -132,9 +182,19 @@ void run_test(int argc, char **argv)
     test_print_result();
 }
 #endif /* CONFIG_ZEPHYR */
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 ```
 
 ### Task List
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 EC unit tests can run additional tasks besides the main test thread. The EC unit
 test implementation provides a phtreads-based implementation of the EC task API.
@@ -150,9 +210,19 @@ the tasks that should run as part of the test:
  * No test task in this case, but you can use `TASK_TEST` macro to specify one.
  */
 #define CONFIG_TEST_TASK_LIST
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 ```
 
 ### Makefile
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 Add the test to the `Makefile` so that it can build as an EC unit test:
 
@@ -177,6 +247,11 @@ run-my_test
 ```
 
 ### Build and Run
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 Build and run the test as an EC unit test:
 
@@ -196,6 +271,11 @@ allows running unit tests in parallel. You can use the
 ***
 
 ## Mocks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 We do not yet support mocks for Zephyr Ztest-based tests.
 [Mocks][`mock`] enable you to simulate behavior for parts of the system that
@@ -205,6 +285,11 @@ cases that are hard to exercise during normal use (e.g., error conditions).
 See the [Mock README] for details.
 
 ### Mock Time
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/unit_tests.md
+***
+
 
 When writing unit tests that rely on a clock, it's best not to rely on a real
 hardware clock. It's very difficult to enforce exact timing with a real clock,

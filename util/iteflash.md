@@ -1,4 +1,9 @@
 # Reflashing an ITE EC
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 This doc: [http://go/cros-ite-ec-reflash](https://goto.google.com/cros-ite-ec-reflash)
 <br>
@@ -11,8 +16,18 @@ Familiarity with [Chromium OS](https://www.chromium.org/chromium-os) [Embedded C
 [TOC]
 
 ## Background
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 ### Terminology
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 **ITE EC** refers to the [ITE](http://www.ite.com.tw/) [IT8320](http://www.ite.com.tw/en/product/view?mid=96) [Embedded Controller (EC)](https://en.wikipedia.org/wiki/Embedded_controller) microcontroller when used as a Chromium OS / Chrome OS EC.
 
@@ -21,6 +36,11 @@ Familiarity with [Chromium OS](https://www.chromium.org/chromium-os) [Embedded C
 **Servo** refers to a debug board providing direct debug access to various circuits on a Chrome OS device motherboard.  As of this writing, the most common [servos](https://www.chromium.org/chromium-os/servo) used by CrOS developers are [CR50 (CCD)](https://www.chromium.org/chromium-os/ccd), [Servo Micro](https://www.chromium.org/chromium-os/servo/servomicro), and [Servo v2](https://www.chromium.org/chromium-os/servo/servo-v2).  (Note that [Servo v4](https://www.chromium.org/chromium-os/servo/servov4) is **not** a Servo in this sense.  It is a USB hub with a microcontroller that proxies Servo functionality from either CR50 or Servo Micro.)  See also [Case-Closed Debug in Chromebooks and Servo Micro](https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/servo_micro/ccd.md).
 
 ### How ITE EC reflashing works
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 An ITE EC is reflashed using a Servo by:
 
@@ -29,12 +49,27 @@ An ITE EC is reflashed using a Servo by:
 1. Communicating with it using I2C, including transferring the actual EC image over I2C.  The ITE EC will only respond over I2C after receiving the special waveforms.
 
 ### Further reading
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 Googlers, and Partners involved in ITE EC projects, see [The State of ITE CrOS EC Reflashing](https://docs.google.com/document/d/1fs29eBvwKrOWYozLZXTg7ObwAO5dyM4Js2Vq301EwAU/preview).  That document is not public, do not request access if you lack it.
 
 ## How to reflash
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 ### Prerequisites for CR50 CCD
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 This section applies whether using CR50 CCD via [Servo v4](https://www.chromium.org/chromium-os/servo/servov4) or [SuzyQ aka SuzyQable](https://www.sparkfun.com/products/14746).
 
@@ -53,8 +88,18 @@ The CR50 CCD capabilities must be set to `always`.  To achieve this:
     * CR50 console: `ccd reset factory`
 
 Reflashing with CR50 also requires the [i2c-pseudo kernel module](#i2c-pseudo), unless using the [CR50 CCD sans servod](#ccd-sans-servod) alternative method.
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 ### Prerequisites for Servo Micro
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 This section applies whether the [Servo Micro](https://www.chromium.org/chromium-os/servo/servomicro) is connected directly to your development host, or through a [Servo v4](https://www.chromium.org/chromium-os/servo/servov4).
 
@@ -70,8 +115,18 @@ To upgrade Servo Micro firmware if needed:
 If that still results in too old of a firmware version, use `repo sync` and `update_chroot` to update your CrOS development environment, then try again.
 
 Reflashing with Servo Micro also requires the [i2c-pseudo kernel module](#i2c-pseudo).
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 ### Installing i2c-pseudo {#i2c-pseudo}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 1. Install the `i2c-pseudo` Linux kernel module.  (Do this **outside** of the chroot!)
     * `$ cd src/platform/ec/extra/i2c_pseudo`
@@ -84,6 +139,11 @@ You will need to reinstall `i2c-pseudo` after each kernel upgrade.
 There is an intention to [upstream i2c-pseudo](https://issuetracker.google.com/129565355), though even if accepted upstream, it may or may not become included with common Linux distribution kernels.
 
 ### Common reflash instructions
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 These instructions apply when using any kind of Servo, including those with no special prerequisites (such as [Servo v2](https://www.chromium.org/chromium-os/servo/servo-v2) with its Yoshi flex cable connected to the DUT).
 
@@ -102,6 +162,11 @@ These instructions apply when using any kind of Servo, including those with no s
     * `$ util/flash_ec --board="$board" --image=build/"$board"/ec.bin`
 
 ## CR50 CCD sans servod alternative {#ccd-sans-servod}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md
+***
+
 
 This section applies whether using CR50 CCD via [Servo v4](https://www.chromium.org/chromium-os/servo/servov4) or [SuzyQ aka SuzyQable](https://www.sparkfun.com/products/14746).
 

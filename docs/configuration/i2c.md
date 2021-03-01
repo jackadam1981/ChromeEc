@@ -1,6 +1,16 @@
 # Configure I2C Buses
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 
 ## Config options
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 
 The I2C options are prefixed with `CONFIG_I2C*`. Evaluate whether each option is
 appropriate to add to your board.
@@ -9,6 +19,11 @@ A typical EC and board should at a minimum set `CONFIG_I2C` and
 `CONFIG_I2C_CONTROLLER`.
 
 ## Feature Parameters
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 
 The following parameters control the behavior of the I2C library. [config.h]
 defines a reasonable default value, but you may need to change the default value
@@ -20,6 +35,11 @@ for your board.
   `CONFIG_HOSTCMD_I2C_ADDR_FLAGS` is defined.
 
 ## GPIOs and Alternate Pins
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 
 In the gpio.inc file, you need to define a GPIO for the clock (SCL) and data
 (SDA) pin used on each active I2C bus. The corresponding GPIOs are then included
@@ -41,6 +61,11 @@ See the [GPIO](./gpio.md) documentation for additional details on the GPIO
 macros.
 
 ## Data Structures
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 
 - `const struct i2c_port_t i2c_ports[]` - This array should be defined in your
   baseboard.c or board.c file.  This array defines the mapping of internal I2C
@@ -50,12 +75,27 @@ macros.
   number of internal I2C ports accessible by the I2C library.
 
 ## Tasks
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 
 None required by this feature.
 
 ## Testing and Debugging
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 
 ### Console Commands
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 
 - `i2cscan` - Provides a quick look of all I2C devices found on all configured
   buses.
@@ -67,6 +107,11 @@ tracing](../i2c-debugging.md) module to log all I2C transactions initiated by
 the EC code.
 
 ## Example
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 
 The image below shows the I2C bus assignment for the Volteer reference board.
 
@@ -106,12 +151,47 @@ from the schematic net name to the NPCx7 I2C bus enumeration.
 
 ```c
 #define CONFIG_I2C
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 #define I2C_PORT_SENSOR		NPCX_I2C_PORT0_0
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 #define I2C_PORT_USB_C0		NPCX_I2C_PORT1_0
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 #define I2C_PORT_USB_C1		NPCX_I2C_PORT2_0
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 #define I2C_PORT_USB_1_MIX	NPCX_I2C_PORT3_0
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 #define I2C_PORT_POWER		NPCX_I2C_PORT5_0
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 #define I2C_PORT_EEPROM		NPCX_I2C_PORT7_0
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 ```
 
 The last piece for I2C configuration is to create the `i2c_ports[]` array using
@@ -198,6 +278,11 @@ DECLARE_HOOK(HOOK_INIT, board_i2c_init, HOOK_PRIO_INIT_I2C);
 
 
 [config.h]: ../new_board_checklist.md#config_h
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/i2c.md
+***
+
 [./chip/npcx/registers.h]: ../../chip/npcx/registers.h
 [./include/i2c.h]: ../../include/i2c.h
 [I2C Example]: ../images/i2c_example.png

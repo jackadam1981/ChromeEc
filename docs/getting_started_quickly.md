@@ -1,4 +1,9 @@
 # Get Started Building EC Images (Quickly)
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/getting_started_quickly.md
+***
+
 
 [TOC]
 
@@ -15,6 +20,11 @@ Werewolf) 64-bit host machine. Other distros / versions may be used, but
 toolchain incompatibilities may require extra debug.
 
 ## Building
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/getting_started_quickly.md
+***
+
 
 1.  Install build / dev tools:
 
@@ -35,9 +45,19 @@ toolchain incompatibilities may require extra debug.
     ```
 
 ## External Dependencies
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/getting_started_quickly.md
+***
+
 
 Most boards are buildable, but some will fail due to dependencies on external
 binaries (such as [`futility`](#building-futility)). Also, some related tools
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/getting_started_quickly.md
+***
+
 (such as `flash_ec` and `servod`) must be run from the Chromium OS chroot. Here
 is a set of steps to setup a minimal development environment to build EC images
 from the Chromium OS chroot:
@@ -94,6 +114,11 @@ from the Chromium OS chroot:
     ```
 
 ## Building `futility` outside the chroot {#building-futility}
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/getting_started_quickly.md
+***
+
 
 If you want to build the `futility` host tool outside the normal Chrome OS
 chroot self-contained environment, you can try the following
