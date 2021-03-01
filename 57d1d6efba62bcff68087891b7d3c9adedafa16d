@@ -16,6 +16,24 @@
       "message": "Prashant or Benson: Can you verify this?",
       "revId": "57d1d6efba62bcff68087891b7d3c9adedafa16d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cff1c3e_ccfc1993",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-01T20:52:20Z",
+      "side": 1,
+      "message": "Checked this on the main branch, with a Voxel EVT with retimer FW 2.19 running the following tests:\n- typec.ModeSwitch : passes 5/5\n- typec.ModeCrash (not submitted yet): passes x/5\n- typec.ModeReboot: passes 5/5\n\nAlso, tried the following manually:\n- using HID (mouse) on login screen\n- log in\n- using HID (mouse) on logged-in active screen\n\nThere will likely be issues associated with outdated retimer FW on dogfood boards; that said, LGTM.",
+      "parentUuid": "4eedaca5_6592fb35",
+      "revId": "57d1d6efba62bcff68087891b7d3c9adedafa16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
