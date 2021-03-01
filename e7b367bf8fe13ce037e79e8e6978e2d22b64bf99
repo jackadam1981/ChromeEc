@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "936334ad_7914c72c",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-01T21:34:40Z",
+      "side": 1,
+      "message": "Undoing the changes line 266 does not look right:\n\nlin 266:\nxyz_data[1] \u003d xyz_data[1] *\n\t\t(((TCS_ATIME_GRANULARITY - sat_p-\u003eatime) * cur_gain)\n\t\t /((TCS_ATIME_GRANULARITY - TCS_CALIBRATION_ATIME) * cal_again));\n\nIn normalize_channel_data() we\u0027ve done:\n\n [...](sample * (TCS_ATIME_GRANULARITY - TCS_CALIBRATION_ATIME) * cal_again) [/]\n        (TCS_ATIME_GRANULARITY - sat_p-\u003eatime) * cur_gain);\n\nWe should change driver/als_tcs3400.c to call normalize_channel_data() in driver tcs3400_translate_to_xyz() only or when in calibration mode. Then you will not need to undo the changes.",
+      "parentUuid": "e839f41f_a5623308",
+      "revId": "e7b367bf8fe13ce037e79e8e6978e2d22b64bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc803d6a_b9500f98",
         "filename": "board/dooly/board.c",
         "patchSetId": 4

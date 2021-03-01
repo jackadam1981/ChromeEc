@@ -16,6 +16,57 @@
       "message": "Friendly ping",
       "revId": "4a0df85a48283043ebd7440f407845750b37e575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c987e6f_77c2fd5a",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-01T21:34:40Z",
+      "side": 1,
+      "message": "tcs3400_get_integration_time is already in the driver code, see crrv.com/c/1621449.\n\nThe change to fp_t can be done in tcs3400_translate_to_xyz.",
+      "revId": "4a0df85a48283043ebd7440f407845750b37e575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca237f50_45addb8a",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-01T21:34:40Z",
+      "side": 1,
+      "message": "fp_inter_t should only be used transitionally. Can fp_t work?",
+      "revId": "4a0df85a48283043ebd7440f407845750b37e575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6f84cf_0a67e63a",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-01T21:34:40Z",
+      "side": 1,
+      "message": "Assuming tcs3400_get_integration_time returns time in us, you can do\nintegration_time_ms \u003d INT_TO_FP(tcs3400_get_integration_time(...))/1000;",
+      "revId": "4a0df85a48283043ebd7440f407845750b37e575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
