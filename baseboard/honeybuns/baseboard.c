@@ -216,6 +216,9 @@ DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_INIT_I2C + 1);
 #ifdef SECTION_IS_RW
 static void baseboard_power_on(void)
 {
+	int port_max = board_get_usb_pd_port_count();
+	int port;
+
 	/* Adjust system flags to full PPC init occurs */
 	system_clear_reset_flags(EC_RESET_FLAG_POWER_ON);
 	system_set_reset_flags(EC_RESET_FLAG_EFS);
@@ -233,20 +236,25 @@ static void baseboard_power_on(void)
 	 * force a detach event with port parter which can be attached as usbc
 	 * source when honeybuns power rails are off.
 	 */
-	ppc_init(USB_PD_PORT_HOST);
-	ppc_init(USB_PD_PORT_DP);
-	/* Inform TC state machine that it can resume */
-	pd_set_suspend(USB_PD_PORT_HOST, 0);
-	pd_set_suspend(USB_PD_PORT_DP, 0);
+	for (port = 0; port < port_max; port++) {
+		ppc_init(port);
+		msleep(1000);
+		/* Inform TC state machine that it can resume */
+		pd_set_suspend(port, 0);
+	}
 	/* Enable usbc interrupts */
 	board_enable_usbc_interrupts();
 }
 
 static void baseboard_power_off(void)
 {
+	int port_max = board_get_usb_pd_port_count();
+	int port;
+
 	/* Put ports in TC suspend state */
-	pd_set_suspend(USB_PD_PORT_HOST, 1);
-	pd_set_suspend(USB_PD_PORT_DP, 1);
+	for (port = 0; port < port_max; port++)
+		pd_set_suspend(port, 1);
+
 	/* Disable ucpd peripheral (prevents interrupts) */
 	tcpm_release(USB_PD_PORT_HOST);
 	/* Disable PPC/TCPC interrupts */
