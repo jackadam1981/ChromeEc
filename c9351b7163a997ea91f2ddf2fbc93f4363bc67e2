@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "762e6eb5_f98db159",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-03-01T16:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b444cf7_21b3a0cd",
+      "range": {
+        "startLine": 482,
+        "startChar": 2,
+        "endLine": 483,
+        "endChar": 35
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5a05696_7cabef47",
@@ -225,6 +249,30 @@
       "writtenOn": "2021-02-22T22:42:23Z",
       "side": 1,
       "message": "Same as comment above (line 482).",
+      "range": {
+        "startLine": 487,
+        "startChar": 1,
+        "endLine": 487,
+        "endChar": 37
+      },
+      "revId": "c9351b7163a997ea91f2ddf2fbc93f4363bc67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718bb4d8_72568372",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-03-01T16:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5a05696_7cabef47",
       "range": {
         "startLine": 487,
         "startChar": 1,
