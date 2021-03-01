@@ -16,6 +16,24 @@
       "message": "You should set its Cq-Depend to the next batch and set the next batch\u0027s Cq-Depend to this one. So these 2 batches will go through the CQ together. Otherwise, it will break a build if this patch submits first, without the next batch.",
       "revId": "52b9167ddccf47e4ebbc44b29d85dc648efad79e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5037f80b_f7bbd14b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-03-01T11:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f03df021_bc7ba3f2",
+      "revId": "52b9167ddccf47e4ebbc44b29d85dc648efad79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
