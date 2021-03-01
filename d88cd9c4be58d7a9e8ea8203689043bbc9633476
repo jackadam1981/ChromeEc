@@ -46,6 +46,30 @@
       },
       "revId": "d88cd9c4be58d7a9e8ea8203689043bbc9633476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60179809_93d72abc",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-01T21:05:27Z",
+      "side": 1,
+      "message": "IMO, this is the sort of thing that could get enabled by default for --bringup builds",
+      "parentUuid": "1d4d9bba_66d3acc7",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "d88cd9c4be58d7a9e8ea8203689043bbc9633476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
