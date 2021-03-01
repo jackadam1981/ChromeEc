@@ -16,6 +16,46 @@
       "message": "Successfully enters USB+DP mode with Zephyr-EC on Volteer.",
       "revId": "d95a6b45c2f7e7cc9f79e9035110a892e40bbc21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f991d0_9f4c35b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-01T19:58:01Z",
+      "side": 1,
+      "message": "fixed the issue with zephyr build regarding mutex and Keith verified zephyr builds with this change.",
+      "revId": "d95a6b45c2f7e7cc9f79e9035110a892e40bbc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ff93fe5_4f0cd281",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-01T19:58:01Z",
+      "side": 1,
+      "message": "Had to change this to mutex_t to not break zephyr builds",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "d95a6b45c2f7e7cc9f79e9035110a892e40bbc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
