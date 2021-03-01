@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5df22f_fa4265ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-03-01T11:03:46Z",
+      "side": 1,
+      "message": "Verified GPIO -101\nIt is getting set high \u0026 low now.\n\n\u003e gpioget PM_PWRBTN_N_R\n 1* PM_PWRBTN_N_R\n",
+      "revId": "20a82bac2d94e6d5ad25d6a89b675e556c2629fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
