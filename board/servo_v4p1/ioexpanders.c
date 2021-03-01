@@ -65,15 +65,29 @@ static void ioexpanders_irq(void)
 		ccprintf("FAULT: Overcurrent on DisplayPort\n");
 
 	if (!(fault & DAC_BUF1_LATCH_FAULT_L)) {
-		ccprintf("FAULT: CC1 drive circuitry has exceeded thermal ");
-		ccprintf("limits or exceeded current limits. Power ");
-		ccprintf("off DAC0 to clear the fault\n");
+		ccprintf("FAULT: CC1 drive circuitry has exceeded thermal "
+			 "or current limits. The CC1 DAC has been disabled "
+			 "and disconnected.\n");
+
+		en_vout_buf_cc1(0);
 	}
 
-	if (!(fault & DAC_BUF1_LATCH_FAULT_L)) {
-		ccprintf("FAULT: CC2 drive circuitry has exceeded thermal ");
-		ccprintf("limits or exceeded current limits. Power ");
-		ccprintf("off DAC1 to clear the fault\n");
+	if (!(fault & DAC_BUF2_LATCH_FAULT_L)) {
+		ccprintf("FAULT: CC2 drive circuitry has exceeded thermal "
+			 "or current limits. The CC2 DAC has been disabled "
+			 "and disconnected.\n");
+
+		en_vout_buf_cc2(0);
+	}
+
+	/*
+	 * In case of both DACs' faults, we should clear them only after
+	 * disabling both DACs.
+	 */
+	if ((fault & (DAC_BUF1_LATCH_FAULT_L | DAC_BUF2_LATCH_FAULT_L)) !=
+	    (DAC_BUF1_LATCH_FAULT_L | DAC_BUF2_LATCH_FAULT_L)) {
+		fault_clear_cc(1);
+		fault_clear_cc(0);
 	}
 
 	if ((!!(irqs & HOST_CHRG_DET) != bc12_charger) &&
