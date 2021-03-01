@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d59bf1_9da8d807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1372328
+      },
+      "writtenOn": "2021-03-01T12:46:19Z",
+      "side": 1,
+      "message": "Build pass now.\n\n(cr) (homestar_ec) simon@simon-ZenBook ~/trunk/src/platform/ec $ make BOARD\u003dhomestar -j8\n  VERSION ec_version.h\n  EXTBIN  chip/npcx/spiflashfw/npcx_monitor.bin\n  EXTBIN  chip/npcx/spiflashfw/monitor_hdr_ro.bin\n  EXTBIN  chip/npcx/spiflashfw/monitor_hdr_rw.bin\n  CC      RW/common/version.o\n  CC      RO/common/version.o\n  LD      RW/ec.RW.elf\n  LD      RO/ec.RO.elf\n  NM      RO/ec.RO.smap\n  NM      RW/ec.RW.smap\n  OBJCOPY RO/ec.RO.flat\n  ECST    RO/ec.RO.flat\n  OBJCOPY RW/ec.RW.flat\n  CAT     ec.obj\n  OBJCOPY ec.bin\n  COPY_RW ec.bin\n  MV      ec.bin\n  *** 18536 bytes in flash and 28000 bytes in RAM still available on homestar RO ****\n  *** 18556 bytes in flash and 28000 bytes in RAM still available on homestar RW ****",
+      "revId": "2a017782d3d6a383615fa770ee16a74076a094a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
