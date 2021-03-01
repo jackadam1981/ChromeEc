@@ -34,6 +34,23 @@
       "parentUuid": "80bc0b06_edc078a5",
       "revId": "ef6a915de0a2b65c18c03074b66717d597675162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a74df52b_5020a24e",
+        "filename": "navbar.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-01T22:29:21Z",
+      "side": 0,
+      "message": "If we are keeping navbar.md, we should replace /master/ here and below with /HEAD/",
+      "revId": "ef6a915de0a2b65c18c03074b66717d597675162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
