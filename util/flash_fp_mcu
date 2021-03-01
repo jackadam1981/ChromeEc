@@ -369,6 +369,29 @@ config_volteer() {
 }
 
 config_zork() {
+  check_gpio_chip_exists "gpiochip256"
+
+  readonly TRANSPORT="UART"
+
+  readonly DEVICE="/dev/ttyS1"
+
+<<<<<<< HEAD   (7b2a5e shuboz: Initial EC image)
+  # FPMCU RST_ODL is on AGPIO 11 = 320 + 11 = 331
+  readonly GPIO_NRST=331
+  # FPMCU BOOT0 is on AGPIO 69 = 320 + 69 = 389
+  readonly GPIO_BOOT0=389
+  # FPMCU PWR_EN is not available on Zork. Set invalid value
+=======
+  # FPMCU RST_ODL is on AGPIO 11 = 256 + 11 = 267
+  readonly GPIO_NRST=267
+  # FPMCU BOOT0 is on AGPIO 69 = 256 + 69 = 325
+  readonly GPIO_BOOT0=325
+  # FPMCU PWR_EN is on AGPIO 32 = 256 + 32 = 288, but should not be
+  # necessary for flashing. Set invalid value.
+  readonly GPIO_PWREN=-1
+}
+
+config_guybrush() {
   check_gpio_chip_exists "gpiochip320"
 
   readonly TRANSPORT="UART"
@@ -377,9 +400,11 @@ config_zork() {
 
   # FPMCU RST_ODL is on AGPIO 11 = 320 + 11 = 331
   readonly GPIO_NRST=331
-  # FPMCU BOOT0 is on AGPIO 69 = 320 + 69 = 389
-  readonly GPIO_BOOT0=389
-  # FPMCU PWR_EN is not available on Zork. Set invalid value
+  # FPMCU BOOT0 is on AGPIO 144 = 320 + 144 = 464
+  readonly GPIO_BOOT0=464
+  # FPMCU PWR_EN is on AGPIO 32 = 320 + 32 = 352, but should not be
+  # necessary for flashing. Set invalid value.
+>>>>>>> CHANGE (2205ca flash_fp_mcu: Fix Zork's gpiochip base from 320 -> 256)
   readonly GPIO_PWREN=-1
 }
 
