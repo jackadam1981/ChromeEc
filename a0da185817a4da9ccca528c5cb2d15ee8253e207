@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "068aee44_0614a2ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-01T20:05:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9d4c8d1_e2c5b4b8",
+      "revId": "a0da185817a4da9ccca528c5cb2d15ee8253e207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0614aeb4_d08c5c9e",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-26T18:34:29Z",
       "side": 1,
       "message": "Did this fix any GRL tests as well?  I can\u0027t recall",
+      "revId": "a0da185817a4da9ccca528c5cb2d15ee8253e207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15bcfec7_e557093b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-01T20:05:54Z",
+      "side": 1,
+      "message": "So this CL is really a two part fix. The 1st part fixed the issue where sending a hard reset would create a burst of hard reset events. But, that fix was incomplete, as the hard reset tx path got broken. With this broken, GRL tests where hard reset should have happened were broken. The 2nd part of the fix was sending hard reset to the phy from the hard reset state machine so the other state machines don\u0027t have to run at all.",
+      "parentUuid": "0614aeb4_d08c5c9e",
       "revId": "a0da185817a4da9ccca528c5cb2d15ee8253e207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a362588d_c058e1e7",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-01T20:05:54Z",
+      "side": 1,
+      "message": "No, I don\u0027t think it\u0027s necessary. I wasn\u0027t sure, but had just copied it from what was happening in the regular transmit path. I will remove it.",
+      "parentUuid": "9bad9afe_0c9e54e0",
+      "revId": "a0da185817a4da9ccca528c5cb2d15ee8253e207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "820d282c_c04581ac",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-02-26T18:34:29Z",
       "side": 1,
       "message": "Note PRL_HR_Request_Hard_Reset state is embedded here",
+      "revId": "a0da185817a4da9ccca528c5cb2d15ee8253e207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a49aca11_b90a7ab3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-01T20:05:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "820d282c_c04581ac",
       "revId": "a0da185817a4da9ccca528c5cb2d15ee8253e207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
