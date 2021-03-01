@@ -51,6 +51,24 @@
       "message": "If we are keeping navbar.md, we should replace /master/ here and below with /HEAD/",
       "revId": "ef6a915de0a2b65c18c03074b66717d597675162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca97313_407f482c",
+        "filename": "navbar.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1318707
+      },
+      "writtenOn": "2021-03-01T22:31:31Z",
+      "side": 0,
+      "message": "that should be fine though..it\u0027ll just redirect the person to the page with another redirect. No need for user friendliness here",
+      "parentUuid": "a74df52b_5020a24e",
+      "revId": "ef6a915de0a2b65c18c03074b66717d597675162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
