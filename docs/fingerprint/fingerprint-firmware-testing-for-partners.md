@@ -1,5 +1,10 @@
 # Fingerprint Firmware Testing Instructions for Partners
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md
+***
+
 This document is intended to help partners (sensor vendors, MCU vendors, etc)
 run the Chrome OS fingerprint team's firmware tests, as part of the AVL process.
 The document assumes that you‘re using Linux to do the development; preferably

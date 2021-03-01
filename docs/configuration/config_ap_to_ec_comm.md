@@ -1,5 +1,10 @@
 # Configure AP to EC Communication
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/config_ap_to_ec_comm.md
+***
+
 This document provides details on how to configure the AP to EC communication
 channel used on your board.  The [AP to EC Communication] document provides
 details a system level of the operation of this feature.

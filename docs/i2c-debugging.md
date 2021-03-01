@@ -1,5 +1,10 @@
 I²C Debugging Tips
 ==================
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/i2c-debugging.md
+***
+
 
 The EC codebase has functionality to help you debug I²C errors without
 pulling out the scope. Some of the debug functionality is disabled by

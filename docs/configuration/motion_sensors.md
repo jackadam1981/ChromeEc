@@ -1,5 +1,10 @@
 # Configure Motion Sensors
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/motion_sensors.md
+***
+
 EC sensors are used for the following capabilities:
 
 - Accelerometers in base and lid measure lid angle to toggle between laptop and

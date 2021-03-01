@@ -1,5 +1,10 @@
 # GPIO Configuration
 
+*** note
+**Warning: This document is old & has moved.  Please update any links:**<br>
+https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/configuration/gpio.md
+***
+
 GPIO setup is done for every board variant, but never for the baseboard, by
 configuring the file `./board/<board>/gpio.inc`. This file configures all the
 the pins on the EC chipset through the following macros.
