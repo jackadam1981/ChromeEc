@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1843f13b_18bb41c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-03-01T23:36:56Z",
+      "side": 1,
+      "message": "interrupt -\u003e  interrupts | an interrupt",
+      "revId": "c08e9ff39332861ca542e824436a285b6cc9f468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39b94937_c48b308c",
+        "filename": "board/dooly/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-03-01T23:36:56Z",
+      "side": 1,
+      "message": "there is no lid sensor in Dooly - is this the screen angle sensor?",
+      "revId": "c08e9ff39332861ca542e824436a285b6cc9f468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
