@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f8cdc02_096e2538",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-01T22:40:26Z",
+      "side": 1,
+      "message": "nit: The comment becomes outdated, for BQ25720 a value below 3.2V can be possibly returned",
+      "revId": "e94a5657a881243bc5dea7ef1f89123f1b8b61ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
