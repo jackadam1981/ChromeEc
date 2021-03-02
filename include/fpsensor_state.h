@@ -26,10 +26,12 @@
 #endif
 
 #define SBP_ENC_KEY_LEN 16
-#define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE \
-	(FP_ALGORITHM_TEMPLATE_SIZE + \
-		FP_POSITIVE_MATCH_SALT_BYTES + \
-		sizeof(struct ec_fp_template_encryption_metadata))
+#define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE_ELAN                         \
+	(FP_ALGORITHM_TEMPLATE_SIZE_ELAN + FP_POSITIVE_MATCH_SALT_BYTES + \
+	 sizeof(struct ec_fp_template_encryption_metadata))
+#define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE_FPC                         \
+	(FP_ALGORITHM_TEMPLATE_SIZE_FPC + FP_POSITIVE_MATCH_SALT_BYTES + \
+	 sizeof(struct ec_fp_template_encryption_metadata))
 
 /* Events for the FPSENSOR task */
 #define TASK_EVENT_SENSOR_IRQ     TASK_EVENT_CUSTOM_BIT(0)
@@ -40,16 +42,64 @@
 /* --- Global variables defined in fpsensor_state.c --- */
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
-extern uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE];
+union fp_buffer_t {
+#if defined(CONFIG_FP_SENSOR_FPC1025) || defined(CONFIG_FP_SENSOR_FPC1035) || \
+	defined(CONFIG_FP_SENSOR_FPC1145)
+	uint8_t fpc[FP_SENSOR_IMAGE_SIZE_FPC];
+#else
+	uint8_t fpc[0];
+#endif
+
+#if defined(CONFIG_FP_SENSOR_ELAN80) || defined(CONFIG_FP_SENSOR_ELAN515)
+	uint8_t elan[FP_SENSOR_IMAGE_SIZE_ELAN];
+#else
+	uint8_t elan[0];
+#endif
+};
+extern union fp_buffer_t fp_buffer;
+extern int fp_buffer_size;
+
 /* Fingers templates for the current user */
-extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
+union fp_template_t {
+#if defined(CONFIG_FP_SENSOR_FPC1025) || defined(CONFIG_FP_SENSOR_FPC1035) || \
+	defined(CONFIG_FP_SENSOR_FPC1145)
+	uint8_t fpc[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE_FPC];
+#else
+	uint8_t fpc[0][0];
+#endif
+
+#if defined(CONFIG_FP_SENSOR_ELAN80) || defined(CONFIG_FP_SENSOR_ELAN515)
+	uint8_t elan[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE_ELAN];
+#else
+	uint8_t elan[0][0];
+#endif
+};
+extern union fp_template_t fp_template;
+extern int fp_algorithm_template_size;
+
 /* Encryption/decryption buffer */
 /* TODO: On-the-fly encryption/decryption without a dedicated buffer */
 /*
  * Store the encryption metadata at the beginning of the buffer containing the
  * ciphered data.
  */
-extern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
+union fp_enc_buffer_t {
+#if defined(CONFIG_FP_SENSOR_FPC1025) || defined(CONFIG_FP_SENSOR_FPC1035) || \
+	defined(CONFIG_FP_SENSOR_FPC1145)
+	uint8_t fpc[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE_FPC];
+#else
+	uint8_t fpc[0];
+#endif
+
+#if defined(CONFIG_FP_SENSOR_ELAN80) || defined(CONFIG_FP_SENSOR_ELAN515)
+	uint8_t elan[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE_ELAN];
+#else
+	uint8_t elan[0];
+#endif
+};
+extern union fp_enc_buffer_t fp_enc_buffer;
+extern int fp_enc_buffer_size;
+
 /* Salt used in derivation of positive match secret. */
 extern uint8_t fp_positive_match_salt
 	[FP_MAX_FINGER_COUNT][FP_POSITIVE_MATCH_SALT_BYTES];

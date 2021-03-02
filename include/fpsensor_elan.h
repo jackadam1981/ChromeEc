@@ -1,38 +1,20 @@
-/* Copyright 2017 The Chromium OS Authors. All rights reserved.
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 /* Fingerprint sensor interface */
 
-#ifndef __CROS_EC_FPSENSOR_H
-#define __CROS_EC_FPSENSOR_H
+#ifndef __CROS_EC_FPSENSOR_ELAN_H
+#define __CROS_EC_FPSENSOR_ELAN_H
 
 #include <stdint.h>
-#include "common.h"
-#include "ec_commands.h"
-
-#ifndef SPI_FP_DEVICE
-#define SPI_FP_DEVICE (&spi_devices[0])
-#endif
-
-/*  Four-character-code */
-#define FOURCC(a, b, c, d) ((uint32_t)(a) | ((uint32_t)(b) << 8) | \
-			   ((uint32_t)(c) << 16) | ((uint32_t)(d) << 24))
-
-/* 8-bit greyscale pixel format as defined by V4L2 headers */
-#define V4L2_PIX_FMT_GREY FOURCC('G', 'R', 'E', 'Y')
-
-/* Whether there is an ELAN fingerprint sensor or FPC sensor. */
-extern int elan;
-
-/* --- functions provided by the sensor-specific driver --- */
 
 /* Initialize the connected sensor hardware and put it in a low power mode. */
-extern int (*fp_sensor_init)(void);
+int fp_sensor_init_elan(void);
 
 /* De-initialize the sensor hardware. */
-extern int (*fp_sensor_deinit)(void);
+int fp_sensor_deinit_elan(void);
 
 /*
  * Fill the 'ec_response_fp_info' buffer with the sensor information
@@ -40,7 +22,7 @@ extern int (*fp_sensor_deinit)(void);
  *
  * Put both the static information and the ones read from the sensor at runtime.
  */
-extern int (*fp_sensor_get_info)(struct ec_response_fp_info *resp);
+int fp_sensor_get_info_elan(struct ec_response_fp_info *resp);
 
 /*
  * Put the sensor in its lowest power state.
@@ -48,7 +30,7 @@ extern int (*fp_sensor_get_info)(struct ec_response_fp_info *resp);
  * fp_sensor_configure_detect needs to be called to restore finger detection
  * functionality.
  */
-extern void (*fp_sensor_low_power)(void);
+void fp_sensor_low_power_elan(void);
 
 /*
  * Configure finger detection.
@@ -56,39 +38,13 @@ extern void (*fp_sensor_low_power)(void);
  * Send the settings to the sensor, so it is properly configured to detect
  * the presence of a finger.
  */
-extern void (*fp_sensor_configure_detect_ptr)(void);
+void fp_sensor_configure_detect_elan(void);
 
 /*
  * Returns the status of the finger on the sensor.
  * (assumes fp_sensor_configure_detect was called before)
  */
-enum finger_state {
-	FINGER_NONE = 0,
-	FINGER_PARTIAL = 1,
-	FINGER_PRESENT = 2,
-};
-extern enum finger_state (*fp_sensor_finger_status_ptr)(void);
-
-/*
- * Acquires a fingerprint image.
- *
- * This function is called once the finger has been detected and cover enough
- * area of the sensor (ie fp_sensor_finger_status returned FINGER_PRESENT).
- * It does the acquisition immediately.
- * The image_data parameter points to an image data buffer of size
- *
- * FP_SENSOR_IMAGE_SIZE allocated by the caller.
- * Returns:
- * - 0 on success
- * - negative value on error
- * - FP_SENSOR_LOW_IMAGE_QUALITY on image captured but quality is too low
- * - FP_SENSOR_TOO_FAST on finger removed before image was captured
- * - FP_SENSOR_LOW_SENSOR_COVERAGE on sensor not fully covered by finger
- */
-#define FP_SENSOR_LOW_IMAGE_QUALITY 1
-#define FP_SENSOR_TOO_FAST 2
-#define FP_SENSOR_LOW_SENSOR_COVERAGE 3
-int fp_sensor_acquire_image(uint8_t *image_data);
+enum finger_state fp_sensor_finger_status_elan(void);
 
 /*
  * Acquires a fingerprint image with specific capture mode.
@@ -97,8 +53,21 @@ int fp_sensor_acquire_image(uint8_t *image_data);
  * excepted 'mode' can be set to one of the FP_CAPTURE_ constants
  * to get a specific image type (e.g. a pattern) rather than the default one.
  */
-extern int (*fp_sensor_acquire_image_with_mode_ptr)(uint8_t *image_data,
-						    int mode);
+int fp_sensor_acquire_image_with_mode_elan(uint8_t *image_data, int mode);
+
+/*
+ * Adds fingerprint image to the current enrollment session.
+ *
+ * @return a negative value on error or one of the following codes:
+ * - EC_MKBP_FP_ERR_ENROLL_OK when image was successfully enrolled
+ * - EC_MKBP_FP_ERR_ENROLL_IMMOBILE when image added, but user should be
+ *   advised to move finger
+ * - EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY when image could not be used due to low
+ *   image quality
+ * - EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE when image could not be used due to
+ *   finger covering too little area of the sensor
+ */
+int fp_finger_enroll_elan(uint8_t *image, int *completion);
 
 /*
  * Compares given finger image against enrolled templates.
@@ -123,7 +92,7 @@ extern int (*fp_sensor_acquire_image_with_mode_ptr)(uint8_t *image_data,
  * - EC_MKBP_FP_ERR_MATCH_LOW_COVERAGE when matching could not be performed
  *   due to finger covering too little area of the sensor
  */
-extern int (*fp_finger_match)(void *templ, uint32_t templ_count, uint8_t *image,
+int fp_finger_match_elan(void *templ, uint32_t templ_count, uint8_t *image,
 			 int32_t *match_index, uint32_t *update_bitmap);
 
 /*
@@ -131,7 +100,7 @@ extern int (*fp_finger_match)(void *templ, uint32_t templ_count, uint8_t *image,
  *
  * @return 0 on success or a negative error code.
  */
-extern int (*fp_enrollment_begin)(void);
+int fp_enrollment_begin_elan(void);
 
 /*
  * Generate a template from the finger whose enrollment has just being
@@ -142,21 +111,7 @@ extern int (*fp_enrollment_begin)(void);
  *
  * @return 0 on success or a negative error code.
  */
-extern int (*fp_enrollment_finish)(void *templ);
-
-/*
- * Adds fingerprint image to the current enrollment session.
- *
- * @return a negative value on error or one of the following codes:
- * - EC_MKBP_FP_ERR_ENROLL_OK when image was successfully enrolled
- * - EC_MKBP_FP_ERR_ENROLL_IMMOBILE when image added, but user should be
- *   advised to move finger
- * - EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY when image could not be used due to low
- *   image quality
- * - EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE when image could not be used due to
- *   finger covering too little area of the sensor
- */
-extern int (*fp_finger_enroll)(uint8_t *image, int *completion);
+int fp_enrollment_finish_elan(void *templ);
 
 /**
  * Runs a test for defective pixels.
@@ -167,6 +122,6 @@ extern int (*fp_finger_enroll)(uint8_t *image, int *completion);
  * @return EC_ERROR_HW_INTERNAL on error (such as finger on sensor)
  * @return EC_SUCCESS on success
  */
-extern int (*fp_maintenance)(void);
+int fp_maintenance_elan(void);
 
-#endif /* __CROS_EC_FPSENSOR_H */
+#endif /* __CROS_EC_FPSENSOR_ELAN_H */
