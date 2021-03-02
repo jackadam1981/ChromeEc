@@ -16,18 +16,22 @@
 #include "util.h"
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
-uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
+union fp_buffer_t fp_buffer FP_FRAME_SECTION __aligned(4);
+
 /* Fingers templates for the current user */
-uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE]
-	FP_TEMPLATE_SECTION;
+union fp_template_t fp_template FP_TEMPLATE_SECTION;
+
 /* Encryption/decryption buffer */
 /* TODO: On-the-fly encryption/decryption without a dedicated buffer */
 /*
  * Store the encryption metadata at the beginning of the buffer containing the
  * ciphered data.
  */
-uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE]
-	FP_TEMPLATE_SECTION;
+union fp_enc_buffer_t fp_enc_buffer FP_TEMPLATE_SECTION;
+
+/* Sensor configuration. Determined at runtime. */
+struct fp_sensor_config_t fp_sensor_config;
+
 /* Salt used in derivation of positive match secret. */
 uint8_t fp_positive_match_salt
 	[FP_MAX_FINGER_COUNT][FP_POSITIVE_MATCH_SALT_BYTES];
@@ -65,7 +69,10 @@ void fp_task_simulate(void)
 
 void fp_clear_finger_context(int idx)
 {
-	always_memset(fp_template[idx], 0, sizeof(fp_template[0]));
+	always_memset((uint8_t *)&fp_template +
+			      idx * fp_sensor_config.algorithm_template_size,
+		      0, fp_sensor_config.algorithm_template_size);
+
 	always_memset(fp_positive_match_salt[idx], 0,
 		      sizeof(fp_positive_match_salt[0]));
 }
@@ -81,8 +88,8 @@ static void _fp_clear_context(void)
 
 	templ_valid = 0;
 	templ_dirty = 0;
-	always_memset(fp_buffer, 0, sizeof(fp_buffer));
-	always_memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
+	always_memset(&fp_buffer, 0, sizeof(fp_buffer));
+	always_memset(&fp_enc_buffer, 0, sizeof(fp_enc_buffer));
 	always_memset(user_id, 0, sizeof(user_id));
 	fp_disable_positive_match_secret(&positive_match_secret_state);
 	for (idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
@@ -91,10 +98,10 @@ static void _fp_clear_context(void)
 
 void fp_reset_and_clear_context(void)
 {
-	if (fp_sensor_deinit() != EC_SUCCESS)
+	if (fp_driver->fp_sensor_deinit() != EC_SUCCESS)
 		CPRINTS("Failed to deinit sensor");
 	_fp_clear_context();
-	if (fp_sensor_init() != EC_SUCCESS)
+	if (fp_driver->fp_sensor_init() != EC_SUCCESS)
 		CPRINTS("Failed to init sensor");
 }
 
