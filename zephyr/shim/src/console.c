@@ -12,6 +12,7 @@
 #include <string.h>
 #include <sys/printk.h>
 #include <zephyr.h>
+#include <shell/shell_uart.h>
 
 #include "console.h"
 #include "printf.h"
