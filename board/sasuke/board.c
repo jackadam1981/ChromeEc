@@ -35,6 +35,7 @@
 #include "switch.h"
 #include "system.h"
 #include "task.h"
+#include "tcpm/tcpci.h"
 #include "temp_sensor.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
@@ -249,6 +250,12 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, hdmi_disable, HOOK_PRIO_DEFAULT);
 
 void board_hibernate(void)
 {
+	/*
+	 * System can't wake from hibernation with C0 pd.
+	 * Unmask CCStatus Alert and VBUS detect event to improve this.
+	 */
+	tcpc_write(0, TCPC_REG_POWER_STATUS_MASK , TCPC_REG_POWER_STATUS_VBUS_DET);
+	tcpc_write(0, TCPC_REG_ALERT_MASK, TCPC_REG_ALERT_CC_STATUS);
 	/*
 	 * Both charger ICs need to be put into their "low power mode" before
 	 * entering the Z-state.
