@@ -51,6 +51,20 @@ static timestamp_t encryption_deadline;
 /* Delay between 2 s of the sensor to detect finger removal */
 #define FINGER_POLLING_DELAY (100*MSEC)
 
+#if !defined(CONFIG_FP_SENSOR_FPC1025) &&     \
+	!defined(CONFIG_FP_SENSOR_FPC1035) && \
+	!defined(CONFIG_FP_SENSOR_FPC1145)
+#define FP_SENSOR_RES_X_FPC 0
+#define FP_SENSOR_RES_Y_FPC 0
+#endif
+#if !defined(CONFIG_FP_SENSOR_ELAN80) && !defined(CONFIG_FP_SENSOR_ELAN515)
+#define FP_SENSOR_RES_X_ELAN 0
+#define FP_SENSOR_RES_Y_ELAN 0
+#endif
+
+/* Fp sensor driver interface. */
+struct fp_sensor_interface_t *fp_driver;
+
 /* Timing statistics. */
 static uint32_t capture_time_us;
 static uint32_t matching_time_us;
@@ -109,14 +123,17 @@ static uint32_t fp_process_enroll(void)
 
 	/* begin/continue enrollment */
 	CPRINTS("[%d]Enrolling ...", templ_valid);
-	res = fp_finger_enroll(fp_buffer, &percent);
+	res = fp_driver->fp_finger_enroll((uint8_t *)&fp_buffer, &percent);
+
 	CPRINTS("[%d]Enroll =>%d (%d%%)", templ_valid, res, percent);
 	if (res < 0)
 		return EC_MKBP_FP_ENROLL
 		     | EC_MKBP_FP_ERRCODE(EC_MKBP_FP_ERR_ENROLL_INTERNAL);
 	templ_dirty |= BIT(templ_valid);
 	if (percent == 100) {
-		res = fp_enrollment_finish(fp_template[templ_valid]);
+		res = fp_driver->fp_enrollment_finish(
+			(uint8_t *)&fp_template +
+			templ_valid * fp_sensor_config.algorithm_template_size);
 		if (res) {
 			res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;
 		} else {
@@ -143,8 +160,10 @@ static uint32_t fp_process_match(void)
 	fp_disable_positive_match_secret(&positive_match_secret_state);
 	CPRINTS("Matching/%d ...", templ_valid);
 	if (templ_valid) {
-		res = fp_finger_match(fp_template[0], templ_valid, fp_buffer,
-				      &fgr, &updated);
+		res = fp_driver->fp_finger_match((uint8_t *)&fp_template,
+						 templ_valid,
+						 (uint8_t *)&fp_buffer, &fgr,
+						 &updated);
 		CPRINTS("Match =>%d (finger %d)", res, fgr);
 		if (res < 0 || fgr < 0 || fgr >= FP_MAX_FINGER_COUNT) {
 			res = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
@@ -168,8 +187,9 @@ static uint32_t fp_process_match(void)
 static void fp_process_finger(void)
 {
 	timestamp_t t0 = get_time();
-	int res = fp_sensor_acquire_image_with_mode(fp_buffer,
-			FP_CAPTURE_TYPE(sensor_mode));
+	int res = fp_driver->fp_sensor_acquire_image_with_mode_ptr(
+		(uint8_t *)&fp_buffer, FP_CAPTURE_TYPE(sensor_mode));
+
 	capture_time_us = time_since32(t0);
 	if (!res) {
 		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
@@ -209,8 +229,29 @@ void fp_task(void)
 		fp_sensor_type_to_str(get_fp_sensor_type()));
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
+	/*
+	 * Initialize variables based on run-time sensor detection. This is
+	 * done here instead of board init because board.c should not see
+	 * driver-related constants.
+	 */
+	if (fp_driver->sensor_type == FP_SENSOR_TYPE_ELAN) {
+		fp_sensor_config.buffer_size = sizeof(fp_buffer.elan);
+		fp_sensor_config.algorithm_template_size =
+			sizeof(fp_template.elan[0]);
+		fp_sensor_config.enc_buffer_size = sizeof(fp_enc_buffer.elan);
+		fp_sensor_config.res_x = FP_SENSOR_RES_X_ELAN;
+		fp_sensor_config.res_y = FP_SENSOR_RES_Y_ELAN;
+	} else {
+		fp_sensor_config.buffer_size = sizeof(fp_buffer.fpc);
+		fp_sensor_config.algorithm_template_size =
+			sizeof(fp_template.fpc[0]);
+		fp_sensor_config.enc_buffer_size = sizeof(fp_enc_buffer.fpc);
+		fp_sensor_config.res_x = FP_SENSOR_RES_X_FPC;
+		fp_sensor_config.res_y = FP_SENSOR_RES_Y_FPC;
+	}
+
 	/* Reset and initialize the sensor IC */
-	fp_sensor_init();
+	fp_driver->fp_sensor_init();
 
 	while (1) {
 		uint32_t evt;
@@ -225,28 +266,30 @@ void fp_task(void)
 			gpio_disable_interrupt(GPIO_FPS_INT);
 			if ((mode ^ enroll_session) & FP_MODE_ENROLL_SESSION) {
 				if (mode & FP_MODE_ENROLL_SESSION) {
-					if (fp_enrollment_begin())
+					if (fp_driver->fp_enrollment_begin())
 						sensor_mode &=
 							~FP_MODE_ENROLL_SESSION;
 				} else {
-					fp_enrollment_finish(NULL);
+					fp_driver->fp_enrollment_finish(NULL);
 				}
 				enroll_session =
 					sensor_mode & FP_MODE_ENROLL_SESSION;
 			}
 			if (is_test_capture(mode)) {
-				fp_sensor_acquire_image_with_mode(fp_buffer,
+				fp_driver->fp_sensor_acquire_image_with_mode_ptr(
+					(uint8_t *)&fp_buffer,
 					FP_CAPTURE_TYPE(mode));
 				sensor_mode &= ~FP_MODE_CAPTURE;
 				send_mkbp_event(EC_MKBP_FP_IMAGE_READY);
 				continue;
 			} else if (sensor_mode & FP_MODE_ANY_DETECT_FINGER) {
 				/* wait for a finger on the sensor */
-				fp_sensor_configure_detect();
+				fp_driver->fp_sensor_configure_detect_ptr();
 			}
-			if (sensor_mode & FP_MODE_DEEPSLEEP)
+			if (sensor_mode & FP_MODE_DEEPSLEEP) {
 				/* Shutdown the sensor */
-				fp_sensor_low_power();
+				fp_driver->fp_sensor_low_power();
+			}
 			if (sensor_mode & FP_MODE_FINGER_UP)
 				/* Poll the sensor to detect finger removal */
 				timeout_us = FINGER_POLLING_DELAY;
@@ -258,17 +301,17 @@ void fp_task(void)
 				fp_reset_and_clear_context();
 				sensor_mode &= ~FP_MODE_RESET_SENSOR;
 			} else if (mode & FP_MODE_SENSOR_MAINTENANCE) {
-				fp_maintenance();
+				fp_driver->fp_maintenance();
 				sensor_mode &= ~FP_MODE_SENSOR_MAINTENANCE;
 			} else {
-				fp_sensor_low_power();
+				fp_driver->fp_sensor_low_power();
 			}
 		} else if (evt & (TASK_EVENT_SENSOR_IRQ | TASK_EVENT_TIMER)) {
 			overall_t0 = get_time();
 			timestamps_invalid = 0;
 			gpio_disable_interrupt(GPIO_FPS_INT);
 			if (sensor_mode & FP_MODE_ANY_DETECT_FINGER) {
-				st = fp_sensor_finger_status();
+				st = fp_driver->fp_sensor_finger_status_ptr();
 				if (st == FINGER_PRESENT &&
 				    sensor_mode & FP_MODE_FINGER_DOWN) {
 					CPRINTS("Finger!");
@@ -284,14 +327,15 @@ void fp_task(void)
 			}
 
 			if (st == FINGER_PRESENT &&
-			    sensor_mode & FP_MODE_ANY_CAPTURE)
+			    sensor_mode & FP_MODE_ANY_CAPTURE) {
 				fp_process_finger();
+			}
 
 			if (sensor_mode & FP_MODE_ANY_WAIT_IRQ) {
-				fp_sensor_configure_detect();
+				fp_driver->fp_sensor_configure_detect_ptr();
 				gpio_enable_interrupt(GPIO_FPS_INT);
 			} else {
-				fp_sensor_low_power();
+				fp_driver->fp_sensor_low_power();
 			}
 		}
 	}
@@ -341,11 +385,10 @@ static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 	struct ec_response_fp_info *r = args->response;
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	if (fp_sensor_get_info(r) < 0)
+	if (fp_driver->fp_sensor_get_info(r) < 0)
 #endif
 		return EC_RES_UNAVAILABLE;
-
-	r->template_size = FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;
+	r->template_size = fp_sensor_config.enc_buffer_size;
 	r->template_max = FP_MAX_FINGER_COUNT;
 	r->template_valid = templ_valid;
 	r->template_dirty = templ_dirty;
@@ -397,12 +440,12 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		if (!is_raw_capture(sensor_mode))
 			offset += FP_SENSOR_IMAGE_OFFSET;
 
-		ret = validate_fp_buffer_offset(sizeof(fp_buffer), offset,
-						size);
+		ret = validate_fp_buffer_offset(fp_sensor_config.buffer_size,
+						offset, size);
 		if (ret != EC_SUCCESS)
 			return EC_RES_INVALID_PARAM;
 
-		memcpy(out, fp_buffer + offset, size);
+		memcpy(out, (uint8_t *)&fp_buffer + offset, size);
 		args->response_size = size;
 		return EC_RES_SUCCESS;
 	}
@@ -416,7 +459,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	if (fgr >= templ_valid)
 		return EC_RES_UNAVAILABLE;
-	ret = validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
+	ret = validate_fp_buffer_offset(fp_sensor_config.enc_buffer_size,
+					offset, size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
 
@@ -424,24 +468,28 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		/* Host has requested the first chunk, do the encryption. */
 		timestamp_t now = get_time();
 		/* Encrypted template is after the metadata. */
-		uint8_t *encrypted_template = fp_enc_buffer + sizeof(*enc_info);
+		uint8_t *encrypted_template =
+			(uint8_t *)&fp_enc_buffer + sizeof(*enc_info);
 		/* Positive match salt is after the template. */
 		uint8_t *positive_match_salt =
-			encrypted_template + sizeof(fp_template[0]);
-		size_t encrypted_blob_size = sizeof(fp_template[0]) +
-					     sizeof(fp_positive_match_salt[0]);
+			encrypted_template +
+			fp_sensor_config.algorithm_template_size;
+		size_t encrypted_blob_size =
+			fp_sensor_config.algorithm_template_size +
+			sizeof(fp_positive_match_salt[0]);
 
 		/* b/114160734: Not more than 1 encrypted message per second. */
 		if (!timestamp_expired(encryption_deadline, &now))
 			return EC_RES_BUSY;
 		encryption_deadline.val = now.val + (1 * SECOND);
 
-		memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
+		memset((uint8_t *)&fp_enc_buffer, 0,
+		       fp_sensor_config.enc_buffer_size);
 		/*
 		 * The beginning of the buffer contains nonce, encryption_salt
 		 * and tag.
 		 */
-		enc_info = (void *)fp_enc_buffer;
+		enc_info = (void *)&fp_enc_buffer;
 		enc_info->struct_version = FP_TEMPLATE_FORMAT_VERSION;
 		init_trng();
 		rand_bytes(enc_info->nonce, FP_CONTEXT_NONCE_BYTES);
@@ -472,8 +520,10 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		 * Copy the payload to |fp_enc_buffer| where it will be
 		 * encrypted in-place.
 		 */
-		memcpy(encrypted_template, fp_template[fgr],
-		       sizeof(fp_template[0]));
+		memcpy(encrypted_template,
+		       (uint8_t *)&fp_template +
+			       fgr * fp_sensor_config.algorithm_template_size,
+		       fp_sensor_config.algorithm_template_size);
 		memcpy(positive_match_salt, fp_positive_match_salt[fgr],
 		       sizeof(fp_positive_match_salt[0]));
 
@@ -490,7 +540,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		}
 		templ_dirty &= ~BIT(fgr);
 	}
-	memcpy(out, fp_enc_buffer + offset, size);
+	memcpy(out, (uint8_t *)&fp_enc_buffer + offset, size);
 	args->response_size = size;
 
 	return EC_RES_SUCCESS;
@@ -557,18 +607,21 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	if (args->params_size !=
 	    size + offsetof(struct ec_params_fp_template, data))
 		return EC_RES_INVALID_PARAM;
-	ret = validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
+	ret = validate_fp_buffer_offset(fp_sensor_config.enc_buffer_size,
+					offset, size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
 
-	memcpy(&fp_enc_buffer[offset], params->data, size);
+	memcpy((uint8_t *)&fp_enc_buffer + offset, params->data, size);
 
 	if (xfer_complete) {
 		/* Encrypted template is after the metadata. */
-		uint8_t *encrypted_template = fp_enc_buffer + sizeof(*enc_info);
+		uint8_t *encrypted_template =
+			(uint8_t *)&fp_enc_buffer + sizeof(*enc_info);
 		/* Positive match salt is after the template. */
 		uint8_t *positive_match_salt =
-			encrypted_template + sizeof(fp_template[0]);
+			encrypted_template +
+			fp_sensor_config.algorithm_template_size;
 		size_t encrypted_blob_size;
 
 		/*
@@ -580,7 +633,7 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 		 * The beginning of the buffer contains nonce, encryption_salt
 		 * and tag.
 		 */
-		enc_info = (void *)fp_enc_buffer;
+		enc_info = (void *)&fp_enc_buffer;
 		ret = validate_template_format(enc_info);
 		if (ret != EC_RES_SUCCESS) {
 			CPRINTS("fgr%d: Template format not supported", idx);
@@ -588,10 +641,11 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 		}
 
 		if (enc_info->struct_version <= 3) {
-			encrypted_blob_size = sizeof(fp_template[0]);
+			encrypted_blob_size =
+				fp_sensor_config.algorithm_template_size;
 		} else {
 			encrypted_blob_size =
-				sizeof(fp_template[0]) +
+				fp_sensor_config.algorithm_template_size +
 				sizeof(fp_positive_match_salt[0]);
 		}
 
@@ -614,8 +668,10 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 			fp_clear_finger_context(idx);
 			return EC_RES_UNAVAILABLE;
 		}
-		memcpy(fp_template[idx], encrypted_template,
-		       sizeof(fp_template[0]));
+		memcpy((uint8_t *)&fp_template +
+			       idx * fp_sensor_config.algorithm_template_size,
+		       encrypted_template,
+		       fp_sensor_config.algorithm_template_size);
 		if (template_needs_validation_value(enc_info)) {
 			CPRINTS("fgr%d: Generating positive match salt.", idx);
 			init_trng();
@@ -626,8 +682,10 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 		if (bytes_are_trivial(positive_match_salt,
 				      sizeof(fp_positive_match_salt[0]))) {
 			CPRINTS("fgr%d: Trivial positive match salt.", idx);
-			always_memset(fp_template[idx], 0,
-				      sizeof(fp_template[0]));
+			always_memset(
+				(uint8_t *)&fp_template +
+				idx * fp_sensor_config.algorithm_template_size,
+				0, fp_sensor_config.algorithm_template_size);
 			return EC_RES_INVALID_PARAM;
 		}
 		memcpy(fp_positive_match_salt[idx], positive_match_salt,
@@ -690,11 +748,12 @@ static void upload_pgm_image(uint8_t *frame)
 	CPRINTF("#IGNORE for ZModem\r**\030B00");
 	msleep(2000); /* let the download program start */
 	/* Print 8-bpp PGM ASCII header */
-	CPRINTF("P2\n%d %d\n255\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
+	CPRINTF("P2\n%d %d\n255\n", fp_sensor_config.res_x,
+		fp_sensor_config.res_y);
 
-	for (y = 0; y < FP_SENSOR_RES_Y; y++) {
+	for (y = 0; y < fp_sensor_config.res_y; y++) {
 		watchdog_reload();
-		for (x = 0; x < FP_SENSOR_RES_X; x++, ptr++)
+		for (x = 0; x < fp_sensor_config.res_x; x++, ptr++)
 			CPRINTF("%d ", *ptr);
 		CPRINTF("\n");
 		cflush();
@@ -756,8 +815,10 @@ int command_fpcapture(int argc, char **argv)
 				  & FP_MODE_CAPTURE_TYPE_MASK);
 
 	rc = fp_console_action(mode);
-	if (rc == EC_SUCCESS)
-		upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+	if (rc == EC_SUCCESS) {
+		upload_pgm_image((uint8_t *)&fp_buffer +
+				 FP_SENSOR_IMAGE_OFFSET);
+	}
 
 	return rc;
 }
@@ -846,7 +907,7 @@ DECLARE_CONSOLE_COMMAND(fpclear, command_fpclear, NULL,
 int command_fpmaintenance(int argc, char **argv)
 {
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	return fp_maintenance();
+	return fp_driver->fp_maintenance();
 #else
 	return EC_SUCCESS;
 #endif /* #ifdef HAVE_FP_PRIVATE_DRIVER */

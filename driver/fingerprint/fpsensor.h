@@ -10,7 +10,9 @@
 #define HAVE_FP_PRIVATE_DRIVER
 #if defined(CONFIG_FP_SENSOR_ELAN80) || defined(CONFIG_FP_SENSOR_ELAN515)
 #include "elan/elan_sensor.h"
-#else
+#endif
+#if defined(CONFIG_FP_SENSOR_FPC1025) || defined(CONFIG_FP_SENSOR_FPC1035) || \
+	defined(CONFIG_FP_SENSOR_FPC1145)
 #include "fpc/fpc_sensor.h"
 #endif
 #else
