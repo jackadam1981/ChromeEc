@@ -34,6 +34,23 @@
       "parentUuid": "4eedaca5_6592fb35",
       "revId": "57d1d6efba62bcff68087891b7d3c9adedafa16d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caaec0a2_09d30d8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T15:26:12Z",
+      "side": 1,
+      "message": "Please also create a CL to remove the voxel_apmodeentry build target.",
+      "revId": "57d1d6efba62bcff68087891b7d3c9adedafa16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
