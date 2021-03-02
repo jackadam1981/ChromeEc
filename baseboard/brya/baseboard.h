@@ -35,6 +35,13 @@
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
 
+#define CONFIG_HIBERNATE_PSL
+/*
+ * This will happen automatically on NPCX9 ES2 and later. Do not remove
+ * until we can confirm all earlier chips are out of service.
+ */
+#define CONFIG_HIBERNATE_PSL_VCC1_RST_WAKEUP
+
 /* Work around double CR50 reset by waiting in initial power on. */
 #define CONFIG_BOARD_RESET_AFTER_POWER_ON
 
