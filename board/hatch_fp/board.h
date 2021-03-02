@@ -193,6 +193,8 @@
 #define CONFIG_FINGERPRINT_MCU
 #ifdef SECTION_IS_RW
 #define CONFIG_FP_SENSOR_FPC1025
+#define CONFIG_FP_SENSOR_ELAN515
+
 /*
  * Use the malloc code only in the RW section (for the private library),
  * we cannot enable it in RO since it is not compatible with the RW verification
@@ -247,6 +249,8 @@
 #define TIM_WATCHDOG 16
 
 #include "gpio_signal.h"
+
+extern int elan;
 
 void fps_event(enum gpio_signal signal);
 

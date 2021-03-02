@@ -21,6 +21,11 @@
  */
 static bool broken_slp_s0;
 
+/*
+ * Whether there's ELAN sensor or FPC sensor.
+ */
+int elan;
+
 /**
  * Disable restricted commands when the system is locked.
  *
@@ -91,6 +96,14 @@ static void configure_fp_sensor_spi(void)
 static void board_init(void)
 {
 	enum fp_transport_type ret_transport = get_fp_transport_type();
+	enum fp_sensor_type sensor_type = get_fp_sensor_type();
+
+	if (sensor_type == FP_SENSOR_TYPE_ELAN)
+		elan = 1;
+	else if (sensor_type == FP_SENSOR_TYPE_FPC)
+		elan = 0;
+	else
+		ccprints("Failed to get sensor type!");
 
 	/* Run until the first S3 entry */
 	disable_sleep(SLEEP_MASK_AP_RUN);

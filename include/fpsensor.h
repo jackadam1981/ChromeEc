@@ -26,10 +26,12 @@
 /* --- functions provided by the sensor-specific driver --- */
 
 /* Initialize the connected sensor hardware and put it in a low power mode. */
-int fp_sensor_init(void);
+int fp_sensor_init_elan(void);
+int fp_sensor_init_fpc(void);
 
 /* De-initialize the sensor hardware. */
-int fp_sensor_deinit(void);
+int fp_sensor_deinit_elan(void);
+int fp_sensor_deinit_fpc(void);
 
 /*
  * Fill the 'ec_response_fp_info' buffer with the sensor information
@@ -37,7 +39,8 @@ int fp_sensor_deinit(void);
  *
  * Put both the static information and the ones read from the sensor at runtime.
  */
-int fp_sensor_get_info(struct ec_response_fp_info *resp);
+int fp_sensor_get_info_elan(struct ec_response_fp_info *resp);
+int fp_sensor_get_info_fpc(struct ec_response_fp_info *resp);
 
 /*
  * Put the sensor in its lowest power state.
@@ -45,7 +48,8 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp);
  * fp_sensor_configure_detect needs to be called to restore finger detection
  * functionality.
  */
-void fp_sensor_low_power(void);
+void fp_sensor_low_power_elan(void);
+void fp_sensor_low_power_fpc(void);
 
 /*
  * Configure finger detection.
@@ -54,6 +58,7 @@ void fp_sensor_low_power(void);
  * the presence of a finger.
  */
 void fp_sensor_configure_detect(void);
+void fp_sensor_configure_detect_elan(void);
 
 /*
  * Returns the status of the finger on the sensor.
@@ -65,6 +70,7 @@ enum finger_state {
 	FINGER_PRESENT = 2,
 };
 enum finger_state fp_sensor_finger_status(void);
+enum finger_state fp_sensor_finger_status_elan(void);
 
 /*
  * Acquires a fingerprint image.
@@ -95,6 +101,7 @@ int fp_sensor_acquire_image(uint8_t *image_data);
  * to get a specific image type (e.g. a pattern) rather than the default one.
  */
 int fp_sensor_acquire_image_with_mode(uint8_t *image_data, int mode);
+int fp_sensor_acquire_image_with_mode_elan(uint8_t *image_data, int mode);
 
 /*
  * Compares given finger image against enrolled templates.
@@ -119,15 +126,18 @@ int fp_sensor_acquire_image_with_mode(uint8_t *image_data, int mode);
  * - EC_MKBP_FP_ERR_MATCH_LOW_COVERAGE when matching could not be performed
  *   due to finger covering too little area of the sensor
  */
-int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
-		    int32_t *match_index, uint32_t *update_bitmap);
+int fp_finger_match_elan(void *templ, uint32_t templ_count, uint8_t *image,
+			 int32_t *match_index, uint32_t *update_bitmap);
+int fp_finger_match_fpc(void *templ, uint32_t templ_count, uint8_t *image,
+			int32_t *match_index, uint32_t *update_bitmap);
 
 /*
  * Start a finger enrollment session.
  *
  * @return 0 on success or a negative error code.
  */
-int fp_enrollment_begin(void);
+int fp_enrollment_begin_elan(void);
+int fp_enrollment_begin_fpc(void);
 
 /*
  * Generate a template from the finger whose enrollment has just being
@@ -138,7 +148,8 @@ int fp_enrollment_begin(void);
  *
  * @return 0 on success or a negative error code.
  */
-int fp_enrollment_finish(void *templ);
+int fp_enrollment_finish_elan(void *templ);
+int fp_enrollment_finish_fpc(void *templ);
 
 /*
  * Adds fingerprint image to the current enrollment session.
@@ -152,7 +163,8 @@ int fp_enrollment_finish(void *templ);
  * - EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE when image could not be used due to
  *   finger covering too little area of the sensor
  */
-int fp_finger_enroll(uint8_t *image, int *completion);
+int fp_finger_enroll_elan(uint8_t *image, int *completion);
+int fp_finger_enroll_fpc(uint8_t *image, int *completion);
 
 /**
  * Runs a test for defective pixels.
@@ -163,6 +175,7 @@ int fp_finger_enroll(uint8_t *image, int *completion);
  * @return EC_ERROR_HW_INTERNAL on error (such as finger on sensor)
  * @return EC_SUCCESS on success
  */
-int fp_maintenance(void);
+int fp_maintenance_elan(void);
+int fp_maintenance_fpc(void);
 
 #endif /* __CROS_EC_FPSENSOR_H */
