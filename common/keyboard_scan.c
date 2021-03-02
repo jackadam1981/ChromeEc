@@ -88,6 +88,7 @@ uint8_t keyboard_cols = KEYBOARD_COLS_MAX;
 
 /* Debounced key matrix */
 static uint8_t __bss_slow debounced_state[KEYBOARD_COLS_MAX];
+static uint8_t __bss_slow temp_state[KEYBOARD_COLS_MAX];
 /* Mask of keys being debounced */
 static uint8_t __bss_slow debouncing[KEYBOARD_COLS_MAX];
 /* Keys simulated-pressed */
@@ -518,16 +519,33 @@ static int check_keys_changed(uint8_t *state)
 	/* Check for changes between previous scan and this one */
 	for (c = 0; c < keyboard_cols; c++) {
 		int diff;
+		int temp_diff;
 
 		/* Clear debouncing flag, if sufficient time has elapsed. */
-		for (i = 0; i < KEYBOARD_ROWS && debouncing[c]; i++) {
+		temp_diff = temp_state[c] ^ new_state[c];
+
+		for (i = 0; i < KEYBOARD_ROWS; i++) {
+			if (temp_diff & BIT(i)) {
+				/* state is changed */
+				temp_state[c] ^= BIT(i);
+				if (debouncing[c] & BIT(i)) {
+					debouncing[c] &= ~BIT(i);
+					ccprints("HYB:in-debounce, cancel key");
+				} else {
+					debouncing[c] |= BIT(i);
+					scan_edge_index[c][i] = scan_time_index;
+					/* ccprints("HYB:start-debounce"); */
+				}
+
+			}
 			if (!(debouncing[c] & BIT(i)))
 				continue;
 			if (tnow - scan_time[scan_edge_index[c][i]] <
-			    (state[c] ? keyscan_config.debounce_down_us :
-					keyscan_config.debounce_up_us))
+			    ((state[c] & BIT(i)) ? keyscan_config.debounce_up_us :
+					keyscan_config.debounce_down_us))
 				continue;  /* Not done debouncing */
 			debouncing[c] &= ~BIT(i);
+			/* ccprints("HYB:complete debounce"); */
 		}
 
 		/* Recognize change in state, unless debounce in effect. */
@@ -537,7 +555,6 @@ static int check_keys_changed(uint8_t *state)
 		for (i = 0; i < KEYBOARD_ROWS; i++) {
 			if (!(diff & BIT(i)))
 				continue;
-			scan_edge_index[c][i] = scan_time_index;
 			any_change = 1;
 
 			/* Inform keyboard module if scanning is enabled */
@@ -551,7 +568,6 @@ static int check_keys_changed(uint8_t *state)
 		}
 
 		/* For any keyboard events just sent, turn on debouncing. */
-		debouncing[c] |= diff;
 		/*
 		 * Note: In order to "remember" what was last reported
 		 * (up or down), the state bits are only updated if the
@@ -568,7 +584,7 @@ static int check_keys_changed(uint8_t *state)
 #endif
 
 		if (print_state_changes)
-			print_state(state, "state");
+			print_state(state, "HYB");
 
 #ifdef CONFIG_KEYBOARD_PRINT_SCAN_TIMES
 		/* Print delta times from now back to each previous scan */
