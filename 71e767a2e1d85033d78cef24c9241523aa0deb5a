@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b160d10_875f08d3",
+        "filename": "zephyr/projects/delbin/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T15:15:44Z",
+      "side": 1,
+      "message": "Nit - the \"edge\" parameter isn\u0027t needed since all power sequence interrupts use GPIO_INT_EDGE_BOTH.\n\nCan you move the POWER_SIGNAL_INT() and AP_PROCHOT_INT() macros into a common location?  That can be a follow on CL.",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "71e767a2e1d85033d78cef24c9241523aa0deb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ac4cd8_0ad596bf",
+        "filename": "zephyr/projects/delbin/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T15:15:44Z",
+      "side": 1,
+      "message": "I filed b:180973460 to cleanup these config options.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "71e767a2e1d85033d78cef24c9241523aa0deb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
