@@ -56,6 +56,30 @@
       },
       "revId": "eeb8a8a57fdbd1f13829eb48b395aebeff4c79ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4628bfae_80cada9d",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-03-02T09:29:21Z",
+      "side": 1,
+      "message": "i find this is used to set fastcharge , i don\u0027t need this setting, so i will update another patch, thanks",
+      "parentUuid": "1dd6e6b2_b259d189",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 58
+      },
+      "revId": "eeb8a8a57fdbd1f13829eb48b395aebeff4c79ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
