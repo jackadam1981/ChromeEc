@@ -70,6 +70,30 @@
       },
       "revId": "fb9dd30962f4809f83b5cd2af7bcd9cf063411f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a4ada6_49d9e427",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-02T08:46:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b13b4c56_0acd3fde",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 64
+      },
+      "revId": "fb9dd30962f4809f83b5cd2af7bcd9cf063411f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
