@@ -105,6 +105,24 @@
       "parentUuid": "ef5ce9fa_da891797",
       "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf062f1_80d611e7",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-02T20:56:54Z",
+      "side": 1,
+      "message": "Sorry, I was not on the right branch.\nSo yes, disabling body_detect at suspend as you wrote works.\nHowever, I feel we are abusing the WAKE_UP flag to force the activity event to the AP. Activity should not be under control of the fifo timeout so we need special handling to send a message as soon as possible.",
+      "parentUuid": "d2ea4c9d_5ca31c7a",
+      "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
