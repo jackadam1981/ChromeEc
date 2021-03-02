@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4691e21e_04f4bed3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T15:59:04Z",
+      "side": 1,
+      "message": "This file is missing from the CL.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "9e84487998b2a87c8d42001d79b219954a89f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff4f7aff_b6aca3d6",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T15:59:04Z",
+      "side": 1,
+      "message": "Please add a longer description here.  Some things to note: \n  enables the periodic thermal task to automatically set the fan speed\n  enables a periodic task to verify fan is running\n  enables console commands fanauto, fanduty, faninfo, fanset\n  enables host command EC_CMD_THERMAL_AUTO_FAN_CTRL.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "9e84487998b2a87c8d42001d79b219954a89f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ff1226_9a5bc47f",
+        "filename": "zephyr/dts/bindings/fan/named-fans.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T15:59:04Z",
+      "side": 1,
+      "message": "\"measure\"",
+      "range": {
+        "startLine": 42,
+        "startChar": 22,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "9e84487998b2a87c8d42001d79b219954a89f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af2e4959_914c2333",
+        "filename": "zephyr/dts/bindings/fan/named-fans.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T15:59:04Z",
+      "side": 1,
+      "message": "Can you set the default value to true?  It looks like this is always enabled for all boards that define a struct fan_conf array.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "9e84487998b2a87c8d42001d79b219954a89f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f7b6a2_c194ed49",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T15:59:04Z",
+      "side": 1,
+      "message": "Alphabetize this entry.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "9e84487998b2a87c8d42001d79b219954a89f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
