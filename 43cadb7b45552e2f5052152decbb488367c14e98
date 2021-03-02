@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1742bc52_a2c210b0",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-03-02T05:39:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18bf0dd1_f9d7e652",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "43cadb7b45552e2f5052152decbb488367c14e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7edc35e_a302fcf7",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-26T14:51:53Z",
       "side": 1,
       "message": "IIUC, this pin is not implemented on jacuzzi platform.",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 19
+      },
+      "revId": "43cadb7b45552e2f5052152decbb488367c14e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9decdbdf_319c4318",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-03-02T05:39:00Z",
+      "side": 1,
+      "message": "Done. Pulled it into group of Unimplemented Pins.",
+      "parentUuid": "f7edc35e_a302fcf7",
       "range": {
         "startLine": 92,
         "startChar": 5,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9307cc15_88391550",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-03-02T05:39:00Z",
+      "side": 1,
+      "message": "This pin is not implemented on jacuzzi\u0027s gpio.inc, so I pulled it into group of Unimplemented Pins as well. Please let me know if I am making wrong setting on icarus.",
+      "parentUuid": "d62f5b7c_a78c510e",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 48
+      },
+      "revId": "43cadb7b45552e2f5052152decbb488367c14e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "393b1dd6_15493d4c",
         "filename": "board/icarus/gpio.inc",
         "patchSetId": 18
@@ -117,6 +189,30 @@
       "writtenOn": "2021-02-26T14:51:53Z",
       "side": 1,
       "message": "IIUC, this pin is not implemented on jacuzzi platform.",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "43cadb7b45552e2f5052152decbb488367c14e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04fd77e8_d11c89e9",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-03-02T05:39:00Z",
+      "side": 1,
+      "message": "Done. Pulled it into group of Unimplemented Pins.",
+      "parentUuid": "393b1dd6_15493d4c",
       "range": {
         "startLine": 94,
         "startChar": 5,

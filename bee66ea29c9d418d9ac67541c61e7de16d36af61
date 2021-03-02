@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b810e61d_a048d697",
+        "filename": "board/icarus/battery.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-03-02T05:39:00Z",
+      "side": 1,
+      "message": "Yes, current voltage settings are apply to 3s battery.",
+      "parentUuid": "b01a1030_671531f1",
+      "range": {
+        "startLine": 179,
+        "startChar": 47,
+        "endLine": 179,
+        "endChar": 83
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfbff17f_0069b0ad",
         "filename": "board/icarus/board.c",
         "patchSetId": 13
@@ -361,6 +385,30 @@
       "writtenOn": "2021-02-26T14:51:53Z",
       "side": 1,
       "message": "Hi Dino, is there any concern to set 1P8V but H1 to EC belongs to the 3.3V power rail with an external pull-up resistor connected to 3.3V? The same question to other similar pins.",
+      "range": {
+        "startLine": 14,
+        "startChar": 55,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4729cf6d_5eba8e66",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-03-02T05:39:00Z",
+      "side": 1,
+      "message": "The 1P8V flag has been removed from these pins.",
+      "parentUuid": "2ba19853_5a2c2ea5",
       "range": {
         "startLine": 14,
         "startChar": 55,
