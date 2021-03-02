@@ -106,7 +106,7 @@ GPIO(M2_SSD_PLA,		PIN(7, 0), GPIO_INPUT)		/* SSD power-loss acknowledgment */
 GPIO(CCD_MODE_ODL,		PIN(E, 5), GPIO_INPUT)		/* Case Closed Debug Mode */
 GPIO(EC_SLP_S0IX,		PIN(7, 2), GPIO_INPUT | GPIO_PULL_UP)
 
-GPIO(USB_C0_RT_RST_ODL,		PIN(4, 1), GPIO_INPUT)		/* RST to Burnside bridge */
+GPIO(USB_C0_RT_RST_ODL,		PIN(4, 1), GPIO_ODR_LOW)	/* RST to Burnside bridge */
 GPIO(USB_C0_RT_INT_ODL,		PIN(F, 2), GPIO_INPUT)
 GPIO(CATERR_L,			PIN(3, 4), GPIO_INPUT)		/* Catastrophic error */
 GPIO(EC_ESPI_ALERT_L,		PIN(5, 7), GPIO_INPUT | GPIO_SEL_1P8V)
