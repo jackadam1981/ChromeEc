@@ -16,6 +16,24 @@
       "message": "Looking at this again, I\u0027m having second thoughts on this being the only if check.  Spec-wise, we should report an error if we received a message with no transmit.  Would it be possible here to verify the transmit was successful before transitioning?  The TX_COMPLETE flag hasn\u0027t set yet, but is there another check we could make to distinguish this case from a true error?",
       "revId": "f49fdfab35e1aa774153186a56cfef6d7795b1b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3f6ded_1404bc4e",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1632,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-02T04:09:03Z",
+      "side": 1,
+      "message": "We don\u0027t have a flag to indicate that we sent a chunk request, or actually any message that we are pending on a tx message to be complete. There are places where we wait for the transmit done flag, but we don\u0027t have a flag to indicate we expect a transmit message to complete. The PRL_FLAGS_MSG_XMIT flag get\u0027s cleared before we send a message, as that\u0027s relative to the PE layer.\n\nI think my thought here was that getting an rx message once in this state is an expected outcome. The flag PRL_FLAGS_TX_COMPLETE won\u0027t be set until the prl_tx state machine can run. My thought was that advancing to rch_waiting_chunk_run doesn\u0027t lead to anything else unless a message is received. It would time out anyway.",
+      "parentUuid": "c3bbc048_e9f50606",
+      "revId": "f49fdfab35e1aa774153186a56cfef6d7795b1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
