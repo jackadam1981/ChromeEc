@@ -1442,6 +1442,7 @@ enum bram_indices {
 	BRAM_IDX_PD0 =           4,
 	BRAM_IDX_PD1 =           5,
 	BRAM_IDX_PD2 =           6,
+	BRAM_IDX_PD3 =           7,
 
 	/* index 7 is reserved */
 

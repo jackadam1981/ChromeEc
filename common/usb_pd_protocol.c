@@ -876,10 +876,11 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 
 #ifdef CONFIG_USB_PD_TCPMV1_DEBUG
-	if (debug_level > 0)
+	if (debug_level > 0) {
 		CPRINTF("C%d st%d %s\n", port, next_state,
 					 pd_state_names[next_state]);
-	else
+		cflush();
+	} else
 #endif
 		CPRINTF("C%d st%d\n", port, next_state);
 }

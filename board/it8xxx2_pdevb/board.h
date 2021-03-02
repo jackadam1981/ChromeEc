@@ -43,16 +43,20 @@
 #define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_3A_PORTS 0
 #define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_PORT_MAX_COUNT    2
+#define CONFIG_USB_PD_PORT_MAX_COUNT    3
 #define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT   2
-#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_PD_TCPMV1
+//define CONFIG_USB_PD_TCPMV2
 #define CONFIG_USB_DRP_ACC_TRYSRC
 #define CONFIG_USB_PD_REV30
-#define CONFIG_USB_PID 0x1234            /* Invalid PID for development board */
+//define CONFIG_USB_PID 0x1234            /* Invalid PID for development board */
 #define CONFIG_USB_PD_DEBUG_LEVEL 2
 #define CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_PD_VBUS_DETECT_GPIO
+#define CONFIG_USB_PD_VBUS_DETECT_TCPC /* Read port2 Vbus by TCPC reg */
+#define CONFIG_USB_PD_DISCHARGE_TCPC
+#define CONFIG_CMD_TCPC_DUMP           /* RW port2 TCPC reg */
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
@@ -98,6 +102,7 @@ enum adc_channel {
 /* delay to turn on/off vconn */
 
 void board_pd_vbus_ctrl(int port, int enabled);
+void usb_c2_interrupt(enum gpio_signal s);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */

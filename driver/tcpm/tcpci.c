@@ -641,6 +641,8 @@ int tcpci_tcpm_set_vconn(int port, int enable)
 {
 	int reg, rv;
 
+	ccprints("p%d TCPC set vconn %d(En/Dis)", port, enable);
+	cflush();
 	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
 	if (rv)
 		return rv;

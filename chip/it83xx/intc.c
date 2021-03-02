@@ -180,7 +180,7 @@ void intc_cpu_int_group_12(void)
 		break;
 #ifdef CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2
 	case IT83XX_IRQ_USBPD2:
-		chip_pd_irq(USBPD_PORT_C);
+		//chip_pd_irq(USBPD_PORT_C); //it81202 only two port pd
 		break;
 #endif
 #endif

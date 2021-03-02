@@ -78,8 +78,8 @@ static void service_one_port(int port)
  */
 void pd_interrupt_handler_task(void *p)
 {
-	const int port = (int) ((intptr_t) p);
-	const int port_mask = (PD_STATUS_TCPC_ALERT_0 << port);
+	const int port = (int) ((intptr_t) p); /* port index start from BIT(0) */
+	const int port_mask = (PD_STATUS_TCPC_ALERT_0 << port); /* port index start from BIT(3) */
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
@@ -91,6 +91,8 @@ void pd_interrupt_handler_task(void *p)
 
 	pd_int_task_id[port] = task_get_current();
 
+	ccprints("p%d In TCPC INT task", port);
+	cflush();
 	while (1) {
 		const int evt = task_wait_event(-1);
 

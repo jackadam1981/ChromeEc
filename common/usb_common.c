@@ -823,12 +823,11 @@ void pd_deferred_resume(int port)
  */
 __overridable bool pd_check_vbus_level(int port, enum vbus_level level)
 {
-	if (IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_TCPC))
-		return tcpm_check_vbus_level(port, level);
-	else if (level == VBUS_PRESENT)
-		return pd_snk_is_vbus_provided(port);
+	/* Read port 0,1 Vbus via ADC; Read port 2 Vbus via TCPC register */
+	if (level == VBUS_PRESENT)
+		return ((port == 0 || port == 1) ? pd_snk_is_vbus_provided(port) : tcpm_check_vbus_level(port, level));
 	else
-		return !pd_snk_is_vbus_provided(port);
+		return ((port == 0 || port == 1) ? !pd_snk_is_vbus_provided(port) : tcpm_check_vbus_level(port, level));
 }
 
 int pd_is_vbus_present(int port)
@@ -902,6 +901,31 @@ static int command_tcpc_dump(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(tcpci_dump, command_tcpc_dump, "<Type-C port>",
 			"dump the TCPC regs");
+
+static int command_tcpc(int argc, char **argv)
+{
+	int port;
+	int reg_addr, reg_val;
+	char *e;
+
+	port = atoi(argv[1]);
+	if (!strcasecmp(argv[2], "r")) {
+		reg_addr = strtoi(argv[3], &e, 16);
+		tcpc_read(port, reg_addr, &reg_val);
+		ccprints("p%d addr 0x%x, val 0x%x", port, reg_addr, reg_val);
+	} else if (!strcasecmp(argv[2], "w")) {
+		reg_addr = strtoi(argv[3], &e, 16);
+		reg_val = strtoi(argv[4], &e, 16);
+		tcpc_write(port, reg_addr, reg_val);
+		tcpc_read(port, reg_addr, &reg_val);
+		ccprints("read verify p%d addr 0x%x, val 0x%x", port, reg_addr, reg_val);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(p, command_tcpc,
+			"\n\t<port> r [reg addr]"
+			"\n\t<port> w [reg addr] [reg val]",
+			"RW TCPC regs");
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
 
 int pd_build_alert_msg(uint32_t *msg, uint32_t *len, enum pd_power_role pr)

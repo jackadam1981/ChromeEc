@@ -12,6 +12,7 @@ GPIO_INT(WP_L,           PIN(I, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   switch_inter
 #ifdef CONFIG_LOW_POWER_IDLE
 GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING | GPIO_PULL_UP, uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
+GPIO_INT(USB_C2_INT_ODL, PIN(B, 2), GPIO_INT_FALLING | GPIO_PULL_UP, usb_c2_interrupt)   /* SMBus Alert = TCPC INT */
 
 /*
  * Because HW port0 and port1 cc pin order invert, FW invert it again.

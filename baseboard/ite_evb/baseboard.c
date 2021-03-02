@@ -187,7 +187,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.sda = GPIO_I2C_B_SDA,
 	},
 	{
-		.name = "opt-4",
+		.name = "TCPC-it8853",
 		.port = IT83XX_I2C_CH_E,
 		.kbps = 100,
 		.scl = GPIO_I2C_E_SCL,

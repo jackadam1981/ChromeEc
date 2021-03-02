@@ -45,7 +45,7 @@ static uint8_t tx_error_status[IT83XX_USBPD_PHY_PORT_COUNT] = {0};
 const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 	{&IT83XX_GPIO_GPCRF4, &IT83XX_GPIO_GPCRF5, IT83XX_IRQ_USBPD0},
 	{&IT83XX_GPIO_GPCRH1, &IT83XX_GPIO_GPCRH2, IT83XX_IRQ_USBPD1},
-	{&IT83XX_GPIO_GPCRP0, &IT83XX_GPIO_GPCRP1, IT83XX_IRQ_USBPD2},
+	//{&IT83XX_GPIO_GPCRP0, &IT83XX_GPIO_GPCRP1, IT83XX_IRQ_USBPD2},
 };
 BUILD_ASSERT(ARRAY_SIZE(usbpd_ctrl_regs) >= IT83XX_USBPD_PHY_PORT_COUNT);
 
@@ -900,6 +900,9 @@ DECLARE_HOOK(HOOK_USB_PD_CONNECT, it8xxx2_tcpm_hook_connect, HOOK_PRIO_DEFAULT);
 static void it8xxx2_tcpm_hook_disconnect(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	if (port >= IT83XX_USBPD_PHY_PORT_COUNT)
+		return;
 
 	if (IS_ENABLED(IT83XX_INTC_PLUG_IN_OUT_SUPPORT))
 		/*
