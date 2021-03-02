@@ -5,7 +5,10 @@
 
 #include "common.h"
 #include "console.h"
+#include "fpsensor.h"
 #include "fpsensor_detect.h"
+#include "fpsensor_elan.h"
+#include "fpsensor_fpc.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
@@ -76,6 +79,20 @@ static void configure_fp_sensor_spi(void)
 void board_init_rw(void)
 {
 	enum fp_transport_type ret_transport = get_fp_transport_type();
+	enum fp_sensor_type sensor_type = get_fp_sensor_type();
+
+	if (sensor_type == FP_SENSOR_TYPE_ELAN) {
+#if defined(CONFIG_FP_SENSOR_ELAN80) || defined(CONFIG_FP_SENSOR_ELAN515)
+		fp_driver = &fp_driver_elan;
+#endif
+	} else if (sensor_type == FP_SENSOR_TYPE_FPC) {
+#if defined(CONFIG_FP_SENSOR_FPC1025) || defined(CONFIG_FP_SENSOR_FPC1035) || \
+	defined(CONFIG_FP_SENSOR_FPC1145)
+		fp_driver = &fp_driver_fpc;
+#endif
+	} else {
+		ccprints("Failed to get sensor type!");
+	}
 
 	if (ret_transport == FP_TRANSPORT_TYPE_UART) {
 		/*
