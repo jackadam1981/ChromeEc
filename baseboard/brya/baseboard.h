@@ -36,6 +36,11 @@
 #define CONFIG_VSTORE_SLOT_COUNT 1
 
 /*
+ *  TODO(b/179648963): do we need PSL?
+ */
+/* #define CONFIG_HIBERNATE_PSL */
+
+/*
  * TODO(b/181619297): enable low power mode
  * avoid annoying serial console character drop on wakeup
  */
