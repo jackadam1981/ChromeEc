@@ -16,6 +16,24 @@
       "message": "nit: The comment becomes outdated, for BQ25720 a value below 3.2V can be possibly returned",
       "revId": "e94a5657a881243bc5dea7ef1f89123f1b8b61ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bee4d64_84af53ac",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-02T04:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8cdc02_096e2538",
+      "revId": "e94a5657a881243bc5dea7ef1f89123f1b8b61ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
