@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c9a9b0_7108e0d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-02T19:32:28Z",
+      "side": 1,
+      "message": "This change is fine, but I\u0027m wondering if it would be better to just enable this by default for everyone.\n\nThoughts Daisuke?",
+      "revId": "acd63e0aef9e9e51a06c581ded036a07292ef9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "420c7a00_291b4a24",
+        "filename": "board/sasuke/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-02T19:32:28Z",
+      "side": 1,
+      "message": "I\u0027m wondering why this isn\u0027t the default. Otherwise, what\u0027s the point in defining the member.",
+      "revId": "acd63e0aef9e9e51a06c581ded036a07292ef9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
