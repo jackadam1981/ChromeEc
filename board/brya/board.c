@@ -19,15 +19,6 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
-/* Wake up pins */
-const enum gpio_signal hibernate_wake_pins[] = {
-	GPIO_ACOK_EC_OD,
-	GPIO_EC_RST_ODL,
-	GPIO_GSC_EC_PWR_BTN_ODL,
-	GPIO_LID_OPEN_OD,
-};
-const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
-
 /******************************************************************************/
 /* USB-A charging control */
 
