@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daebd423_623ffb10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-02T01:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1843f13b_18bb41c4",
+      "revId": "c08e9ff39332861ca542e824436a285b6cc9f468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39b94937_c48b308c",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-01T23:36:56Z",
       "side": 1,
       "message": "there is no lid sensor in Dooly - is this the screen angle sensor?",
+      "revId": "c08e9ff39332861ca542e824436a285b6cc9f468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdd05ce_de965310",
+        "filename": "board/dooly/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-02T01:29:41Z",
+      "side": 1,
+      "message": "It is the accelerometer needed to detect landscape/portrait mode.",
+      "parentUuid": "39b94937_c48b308c",
       "revId": "c08e9ff39332861ca542e824436a285b6cc9f468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
