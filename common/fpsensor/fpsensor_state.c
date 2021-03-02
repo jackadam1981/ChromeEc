@@ -28,6 +28,7 @@ uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE]
  */
 uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE]
 	FP_TEMPLATE_SECTION;
+
 /* Salt used in derivation of positive match secret. */
 uint8_t fp_positive_match_salt
 	[FP_MAX_FINGER_COUNT][FP_POSITIVE_MATCH_SALT_BYTES];
@@ -91,10 +92,10 @@ static void _fp_clear_context(void)
 
 void fp_reset_and_clear_context(void)
 {
-	if (fp_sensor_deinit() != EC_SUCCESS)
+	if (fp_driver->fp_sensor_deinit() != EC_SUCCESS)
 		CPRINTS("Failed to deinit sensor");
 	_fp_clear_context();
-	if (fp_sensor_init() != EC_SUCCESS)
+	if (fp_driver->fp_sensor_init() != EC_SUCCESS)
 		CPRINTS("Failed to init sensor");
 }
 
