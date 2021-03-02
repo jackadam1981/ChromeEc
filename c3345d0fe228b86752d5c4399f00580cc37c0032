@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc843845_67eea65a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-02T05:57:31Z",
+      "side": 1,
+      "message": "This change depends on both:\n- https://github.com/zephyrproject-rtos/zephyr/pull/32760\n- https://github.com/zephyrproject-rtos/zephyr/pull/32764\n\nMarking it with -1s to avoid submitting, but getting the review process started.",
+      "revId": "c3345d0fe228b86752d5c4399f00580cc37c0032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
