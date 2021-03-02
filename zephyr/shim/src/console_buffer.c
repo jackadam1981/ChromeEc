@@ -3,17 +3,58 @@
  * found in the LICENSE file.
  */
 
+#include <device.h>
 #include <kernel.h>
+#include <shell/shell.h>
+#include <shell/shell_uart.h>
 #include <zephyr.h>
 
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "queue.h"
+#include "uart.h"
 
 static char console_buf[CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE_BUF_SIZE];
 static uint32_t previous_snapshot_idx;
 static uint32_t current_snapshot_idx;
 static uint32_t tail_idx;
+
+#define RX_BUFFER_LOCK_TIMEOUT K_MSEC(50)
+K_MUTEX_DEFINE(rx_buffer_lock);
+static struct queue rx_buffer = QUEUE_NULL(CONFIG_UART_RX_BUF_SIZE, uint8_t);
+
+static void fork_rx_callback(const struct device *dev,
+	void *user_data, uint8_t *data, size_t length)
+{
+	uint8_t scratch;
+	int lock_rc = k_mutex_lock(&rx_buffer_lock, RX_BUFFER_LOCK_TIMEOUT);
+
+	if (lock_rc < 0)
+		/* Failed to obtain lock after a reasonable amount of time. */
+		return;
+
+	for (int i = 0; i < length; ++i) {
+		if (queue_is_full(&rx_buffer))
+			queue_remove_unit(&rx_buffer, &scratch);
+		queue_add_unit(&rx_buffer, data + i);
+	}
+	k_mutex_unlock(&rx_buffer_lock);
+}
+
+void uart_shell_stop(void)
+{
+	uart_clear_input();
+	shell_backend_uart_fork_rx(fork_rx_callback, NULL);
+}
+
+void uart_shell_start(void)
+{
+	shell_backend_uart_fork_rx(NULL, NULL);
+
+	/* Clear any remaining shell processing. */
+	shell_process(shell_backend_uart_get_ptr());
+}
 
 static inline uint32_t next_idx(uint32_t cur_idx)
 {
@@ -104,4 +145,28 @@ int uart_console_read_buffer(uint8_t type, char *dest, uint16_t dest_size,
 	*write_count_out = write_count;
 
 	return EC_RES_SUCCESS;
+}
+
+int uart_getc(void)
+{
+	uint8_t c;
+	int rc;
+
+	rc = k_mutex_lock(&rx_buffer_lock, RX_BUFFER_LOCK_TIMEOUT);
+	if (rc)
+		/* Failed to obtain lock after reasonable amount of time. */
+		return rc;
+
+	rc = queue_remove_unit(&rx_buffer, &c);
+	k_mutex_unlock(&rx_buffer_lock);
+
+	return rc ? c : -1;
+}
+
+void uart_clear_input(void)
+{
+	/* Clear any remaining shell processing. */
+	shell_process(shell_backend_uart_get_ptr());
+
+	queue_init(&rx_buffer);
 }
