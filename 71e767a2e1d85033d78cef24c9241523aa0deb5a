@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d637edbd_50b587a0",
+        "filename": "zephyr/projects/delbin/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-02T17:45:45Z",
+      "side": 1,
+      "message": "Ack, good idea. will handle this all in a follow-up CL so I can unify volteer/kohaku in the process.",
+      "parentUuid": "3b160d10_875f08d3",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "71e767a2e1d85033d78cef24c9241523aa0deb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ac4cd8_0ad596bf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-02T15:15:44Z",
       "side": 1,
       "message": "I filed b:180973460 to cleanup these config options.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "71e767a2e1d85033d78cef24c9241523aa0deb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc6c6db_b5f1bfe7",
+        "filename": "zephyr/projects/delbin/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-02T17:45:45Z",
+      "side": 1,
+      "message": "wrong bug?",
+      "parentUuid": "c9ac4cd8_0ad596bf",
       "range": {
         "startLine": 20,
         "startChar": 0,
