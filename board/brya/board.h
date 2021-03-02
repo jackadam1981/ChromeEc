@@ -16,11 +16,6 @@
 /* Baseboard features */
 #include "baseboard.h"
 
-/*
- * Disable features enabled by default.
- */
-#undef CONFIG_HIBERNATE
-
 /* LED */
 #define CONFIG_LED_PWM
 #define CONFIG_LED_PWM_COUNT 2
