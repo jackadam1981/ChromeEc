@@ -33,6 +33,24 @@
       "message": "suggest using\n#define ANX3443_I2C_READY_DELAY (30 * MSEC)\nand replace the ANX3443_I2C_READY_DELAY_MS usage in anx3443.c.",
       "revId": "1c6c1acbef140b052fbbfe5682ecdf8d996e3123",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4ce5059_6dbdaa51",
+        "filename": "driver/usb_mux/anx3443.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-02T10:16:40Z",
+      "side": 1,
+      "message": "Updated as the suggestion. Thanks!",
+      "parentUuid": "547394a4_db013392",
+      "revId": "1c6c1acbef140b052fbbfe5682ecdf8d996e3123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
