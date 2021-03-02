@@ -49,6 +49,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30921285_0f53701f",
+        "filename": "baseboard/intelrvp/npcx_ec.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-02T20:24:11Z",
+      "side": 1,
+      "message": "add: #define NPCX_UART_MODULE2       1",
+      "revId": "bfeaf1b91eb37ec3dbc1ec0490d5e4ef5c386932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c864c41_bca00277",
         "filename": "util/flash_ec",
         "patchSetId": 5
