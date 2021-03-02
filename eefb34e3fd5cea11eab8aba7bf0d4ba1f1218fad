@@ -93,6 +93,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a124bb_c43dbe60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-02T13:59:26Z",
+      "side": 1,
+      "message": "Besides, the hardware has some changes for enabling the CBI EEPROM write protection. With this new config CONFIG_BYPASS_CBI_EEPROM_WP_CHECK, we can change the CBI content.",
+      "parentUuid": "3c8f71e5_c2a52b1b",
+      "revId": "eefb34e3fd5cea11eab8aba7bf0d4ba1f1218fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbaa3fed_0df0cd69",
