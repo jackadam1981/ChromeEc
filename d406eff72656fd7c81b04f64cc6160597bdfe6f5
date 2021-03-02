@@ -87,6 +87,24 @@
       "parentUuid": "8d1b30d9_4f0dda79",
       "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ea4c9d_5ca31c7a",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-03-02T10:15:59Z",
+      "side": 1,
+      "message": "Hmmm, to make sure you know what I mean, in motion_sense_switch_sensor_rate(), actually the body-detection is not affected, because the sensor-\u003edrv-\u003emanage_activity/list_activities is not handle the body-detection.\n\nThe body-detection is disabled by motion_sense_suspend():\n```\nstatic void motion_sense_suspend(void)\n{\n  ...\n  if (IS_ENABLED(CONFIG_BODY_DETECTION))\n    body_detect_set_enable(false);\n  ...\n}\n```\n(I also found that I forgot to re-enable the body-detection after resume. I will fix it later)\n\nHowever, adding the flag you mentioned might be a better solution. I will consider that if you still think my solution might be not working.",
+      "parentUuid": "ef5ce9fa_da891797",
+      "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
