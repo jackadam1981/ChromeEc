@@ -66,3 +66,9 @@ config PLATFORM_EC_STEINHART_HART_3V3_51K1_47K_4050B
 	  -47 kilohm thermistor reference resistance at 25 C
 	  -4050 B-constant (thermistor sensitivity)
 endif # PLATFORM_EC_TEMP_SENSOR
+
+config PLATFORM_EC_FAN
+	bool "Fan support"
+	depends on PLATFORM_EC_PWM
+	help
+	  Enables support for fans.
