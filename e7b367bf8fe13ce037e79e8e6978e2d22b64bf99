@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b472bcc_787ae198",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-03-02T06:11:32Z",
+      "side": 1,
+      "message": "Move normalize_channel_data() into tcs3400_translate_to_xyz(), do we need also add for calibration mode?",
+      "parentUuid": "936334ad_7914c72c",
+      "revId": "e7b367bf8fe13ce037e79e8e6978e2d22b64bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc803d6a_b9500f98",
         "filename": "board/dooly/board.c",
         "patchSetId": 4
