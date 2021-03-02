@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3afd4a8_0b4cc4b2",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T16:09:28Z",
+      "side": 1,
+      "message": "See gpio_usb_c1_rt_rst_odl for an example for avoiding having to include the \"named-gpios\" path specifier.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 49
+      },
+      "revId": "4e41bca6d43bb0e400944601cff6cef5525e103d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba08939_29c3af23",
+        "filename": "zephyr/shim/chip/npcx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T16:09:28Z",
+      "side": 1,
+      "message": "This file belongs with the parent CL.  Also, there doesn\u0027t appear to be anything Nuvoton specific in this file.  I think this can be rolled into the general shim/fan.c driver.",
+      "revId": "4e41bca6d43bb0e400944601cff6cef5525e103d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e1c482f_fbdecf89",
+        "filename": "zephyr/shim/chip/npcx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T16:09:28Z",
+      "side": 1,
+      "message": "Rename MFT instances to \"tach\" or \"tachometer\" to make this generic.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "4e41bca6d43bb0e400944601cff6cef5525e103d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
