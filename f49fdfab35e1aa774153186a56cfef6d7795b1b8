@@ -34,6 +34,24 @@
       "parentUuid": "c3bbc048_e9f50606",
       "revId": "f49fdfab35e1aa774153186a56cfef6d7795b1b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ccb03e_b16e84aa",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1632,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-02T15:37:19Z",
+      "side": 1,
+      "message": "We always expect a message transmit to complete in this state, right?  Since it\u0027s sending a chunk request in the entry function?\n\nI do see that we should expect consistency checking in RCH_WAITING_CHUNK to cover detecting a non-chunked message and error checking in RCH_PROCESSING_EXTENDED_MESSAGE to ensure our chunk number is right.  So I suppose if we have a valid response, it\u0027s okay to assume that our transmit went through.  Even if it didn\u0027t, we\u0027re successfully moving along the chunk requests if those checks pass.",
+      "parentUuid": "5f3f6ded_1404bc4e",
+      "revId": "f49fdfab35e1aa774153186a56cfef6d7795b1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
