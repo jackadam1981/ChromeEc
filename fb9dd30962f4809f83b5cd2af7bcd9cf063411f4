@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd30240_7d4ecf73",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1179294
+      },
+      "writtenOn": "2021-03-02T03:22:31Z",
+      "side": 1,
+      "message": "Can we fix this issue by pulling these vectors into .text.vecttable section (follow with j __irq_isr) and inserting .section .text.vectirq between .align 2 and __irq_isr: ? So we don\u0027t need to change linker script of risv-v core (keeping the same layout description with other cores).",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 64
+      },
+      "revId": "fb9dd30962f4809f83b5cd2af7bcd9cf063411f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
