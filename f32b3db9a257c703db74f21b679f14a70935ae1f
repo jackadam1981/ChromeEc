@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f144d13_91b17543",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-02T15:22:54Z",
+      "side": 1,
+      "message": "Move this to a shared file.  The individual board device trees can override the pinctrl-0 property as needed.\nBecause the cros_kb_raw driver is only used on Chromebooks, we can leave KSO2 pin excluded since this will always be inverted by the Google Security Chip.",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "f32b3db9a257c703db74f21b679f14a70935ae1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
