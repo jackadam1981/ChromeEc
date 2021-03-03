@@ -34,6 +34,24 @@
       "parentUuid": "fe13455c_673a82ce",
       "revId": "592c5320235539c1b96804836a63c0bdff515bf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2b6ab8_b8c5224c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-03T19:23:52Z",
+      "side": 1,
+      "message": "I think tPSSourceOff and tPSSourceOn are analogous, but they don\u0027t operate at the same time, so I don\u0027t think there\u0027s any particular reason they need to be close to each other. E.g. in figure 8-18, the FRS initial source starts PSSourceOffTimer in step 14 and stops it in step 23. The initial sink starts PSSourceOnTimer in step 27 and stops it in step 32. I think the midpoint should be OK.",
+      "parentUuid": "cdd20721_e63d7939",
+      "revId": "592c5320235539c1b96804836a63c0bdff515bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
