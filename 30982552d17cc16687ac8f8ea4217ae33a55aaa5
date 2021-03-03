@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3edaaf2_b3db1019",
+        "filename": "baseboard/mancomb/base_gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T19:20:30Z",
+      "side": 1,
+      "message": "Any idea if these need to be interrupts?  I didn\u0027t see them on the Monkey Island spreadsheet of GPIOs and I wasn\u0027t clear from the schematics",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53236d19_10ba94c3",
+        "filename": "baseboard/mancomb/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T19:20:30Z",
+      "side": 1,
+      "message": "Do we need to enable sinking on the C-ports through a PPC?",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c1eb73_9f65f714",
+        "filename": "baseboard/mancomb/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T19:20:30Z",
+      "side": 1,
+      "message": "Based on puff, we may need a barrel jack section: \n\n/* Dedicated barreljack charger port */\n#undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT\n#define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1\n#define DEDICATED_CHARGE_PORT 1\n\nThey also undef\u0027d the charge manager safe mode, though I\u0027m not sure off the top of my head why.",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479c6a17_83e36379",
+        "filename": "baseboard/mancomb/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T19:20:30Z",
+      "side": 1,
+      "message": "Relevant? We don\u0027t have a charger chip, right?",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321ad864_df4f57fb",
+        "filename": "baseboard/mancomb/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T19:20:30Z",
+      "side": 1,
+      "message": "Were these two also needed in guybrush?",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "585eb064_f5235948",
+        "filename": "baseboard/mancomb/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T19:20:30Z",
+      "side": 1,
+      "message": "Should this be removed if we\u0027re not using it?",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
