@@ -52,6 +52,24 @@
       "parentUuid": "09906272_6ad1cafe",
       "revId": "c30408e97353e5bf2c1a72dbc017b82d661f9790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fa16d5f_66c20057",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-03-03T02:53:15Z",
+      "side": 1,
+      "message": "Debugging the internals of the magic macros is unpleasant but rare.\nI find gpio.inc fairly easy to read in normal use.\nI think fw_config.inc + common code would be better than each board doing something slightly different.\nDid you look at how this might translate into Zephyr? Should we postpone this until it turns into some device tree thing there?",
+      "parentUuid": "cc403f97_9d6f3652",
+      "revId": "c30408e97353e5bf2c1a72dbc017b82d661f9790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
