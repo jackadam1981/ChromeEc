@@ -946,19 +946,7 @@ __overridable enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
  */
 enum usb_rev30_ss get_usb4_cable_speed(int port)
 {
-	enum tbt_compat_cable_speed tbt_speed = get_tbt_cable_speed(port);
-	enum usb_rev30_ss max_usb4_speed;
-
-
-	if (tbt_speed < TBT_SS_U31_GEN1)
-		return USB_R30_SS_U2_ONLY;
-
-	/*
-	 * Converting Thunderbolt-Compatible board speed to equivalent USB4
-	 * speed.
-	 */
-	max_usb4_speed = tbt_speed == TBT_SS_TBT_GEN3 ?
-		USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
+	enum tbt_compat_cable_speed tbt_speed;
 
 	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) &&
 	     is_pd_rev3(port, TCPC_TX_SOP_PRIME)) {
@@ -966,6 +954,9 @@ enum usb_rev30_ss get_usb4_cable_speed(int port)
 			pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
 		union active_cable_vdo1_rev30 a_rev30 =
 			disc->identity.product_t1.a_rev30;
+		enum usb_rev30_ss max_usb4_speed =
+			board_get_max_tbt_speed(port) == TBT_SS_TBT_GEN3 ?
+			USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
 
 		if (a_rev30.vdo_ver >= VDO_VERSION_1_3) {
 			return max_usb4_speed < a_rev30.ss ?
@@ -973,7 +964,16 @@ enum usb_rev30_ss get_usb4_cable_speed(int port)
 		}
 	}
 
-	return max_usb4_speed;
+	tbt_speed = get_tbt_cable_speed(port);
+
+	if (tbt_speed < TBT_SS_U31_GEN1)
+		return USB_R30_SS_U2_ONLY;
+	/*
+	 * Converting Thunderbolt-Compatible board speed to equivalent USB4
+	 * speed.
+	 */
+	return tbt_speed == TBT_SS_TBT_GEN3 ?
+		USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
 }
 
 uint32_t get_enter_usb_msg_payload(int port)
