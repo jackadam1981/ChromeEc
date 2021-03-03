@@ -5,6 +5,7 @@
  * Driver for Intel Burnside Bridge - Thunderbolt/USB/DisplayPort Retimer
  */
 
+#include <stdbool.h>
 #include "bb_retimer.h"
 #include "chipset.h"
 #include "common.h"
@@ -41,6 +42,15 @@
 /**
  * Utility functions
  */
+static bool bb_retimer_is_powered(const struct usb_mux *me)
+{
+	bool bb_off;
+
+	/* Burnside Bridge is powered by main AP rail */
+	bb_off = !!chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF);
+	return !bb_off;
+}
+
 static int bb_retimer_read(const struct usb_mux *me,
 			   const uint8_t offset, uint32_t *data)
 {
@@ -372,6 +382,19 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
 
+	if (!bb_retimer_is_powered(me)) {
+		/*
+		 * when the MUX is unpowered (likely with the AP)
+		 * we can honor a request to turn off the MUX. this
+		 * is part of the clean-up path for AP shutdown.
+		 *
+		 * requesting an operational MUX state is an error.
+		 */
+		if (mux_state == USB_PD_MUX_NONE)
+			return EC_SUCCESS;
+		return EC_ERROR_UNKNOWN;
+	}
+
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
 	 * 0 - No connection present
@@ -483,11 +506,10 @@ static int retimer_init(const struct usb_mux *me)
 	int rv;
 	uint32_t data;
 
-	/* Burnside Bridge is powered by main AP rail */
-	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
+	if (!bb_retimer_is_powered(me)) {
 		/* Ensure reset is asserted while chip is not powered */
 		bb_retimer_power_handle(me, 0);
-		return EC_ERROR_NOT_POWERED;
+		return EC_ERROR_UNKNOWN;
 	}
 
 	bb_retimer_power_handle(me, 1);
