@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae41ae1_c2b4027a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T21:41:08Z",
+      "side": 1,
+      "message": "Rebased to use the new timer framework.  Eric, did you find that this helps with your FRS case where Vbus drops before FRS comes in? ",
+      "revId": "becabb2ab7e20a098ede736f578450d8187b5e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
