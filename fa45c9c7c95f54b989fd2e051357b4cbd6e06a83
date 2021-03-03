@@ -70,6 +70,30 @@
       },
       "revId": "fa45c9c7c95f54b989fd2e051357b4cbd6e06a83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52bee192_43bb8bd7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3660,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-03T17:35:00Z",
+      "side": 1,
+      "message": "Yeah - not really sure how to deal with this since I think the ErrorRecovery and tProtErrHardReset aren\u0027t related at all if you\u0027re just reading the PD spec - only the test spec mentions this. Which seems wrong.",
+      "parentUuid": "1180ddfb_af9eb8fb",
+      "range": {
+        "startLine": 3660,
+        "startChar": 1,
+        "endLine": 3660,
+        "endChar": 11
+      },
+      "revId": "fa45c9c7c95f54b989fd2e051357b4cbd6e06a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
