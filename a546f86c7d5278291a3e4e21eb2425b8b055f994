@@ -16,6 +16,24 @@
       "message": "Right now, the call chain is\n set_vconn\n     CONFIG_USB_PD_TCPC_VCONN? tcpm_set_vconn\n         tcpci_tcpm_set_vconn (via tcpc_config-\u003edrv)\n             CONFIG_USB_PD_DECODE_SOP? tcpci_tcpm_sop_prime_enable\n\nWhat if it was like this instead?\n set_vconn\n     tcpm_set_vconn\n         CONFIG_USB_PD_TCPC_VCONN? tcpc_config-\u003edrv-\u003eset_vconn\n         tcpm_sop_prime_enable (already handles CONFIG_USB_PD_DECODE_SOP check)\n\nCallers outside TCPC code wouldn\u0027t need to worry about whether the TCPC is providing VCONN or about enabling SOP\u0027. We would want to scan through the code looking for instances where the drivers call their set_vconn or sop_prime_enable functions directly, because we would want to change those to go through the tcpm_ wrapper and benefit from the config checks there.\n\nFeel free to disregard if that doesn\u0027t work for some build reason or is more inconvenient than I think. I\u0027m about to try to hack it together.",
       "revId": "a546f86c7d5278291a3e4e21eb2425b8b055f994",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e57cb2e8_e319fa90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-03T21:56:28Z",
+      "side": 1,
+      "message": "I think that would fix the current issue, now I\u0027m having trouble passing the tcpmv2 fuzz test.\n\nBut, tcpm_set_vconn is only really called from set_vconn, so I don\u0027t think what you\u0027re proposing is that different from what we have now. I don\u0027t have a strong opinion. It seems a bit cleaner since then we don\u0027t have to independently manage tcpmv1 and v2.\n\nIs there any reason we would need to enable vconn before enabling SOP\u0027? If so we might need to keep it how it is now, what you\u0027re proposing would move the SOP\u0027 enable prior to the PPC VCONN enable (which I guess it was before disabling TCPC VCONN anyway).",
+      "parentUuid": "59b7e36e_ca284390",
+      "revId": "a546f86c7d5278291a3e4e21eb2425b8b055f994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
