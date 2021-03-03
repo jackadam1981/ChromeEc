@@ -111,6 +111,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9565c5_4d627652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-03T17:23:29Z",
+      "side": 1,
+      "message": "Per bug discussion, please help to review this patch again.",
+      "parentUuid": "f8a124bb_c43dbe60",
+      "revId": "eefb34e3fd5cea11eab8aba7bf0d4ba1f1218fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbaa3fed_0df0cd69",
@@ -134,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b5e3353_7af5025a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3586,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-03T17:23:29Z",
+      "side": 1,
+      "message": "Done. I modified the description. Please help to review again.",
+      "parentUuid": "cbaa3fed_0df0cd69",
+      "range": {
+        "startLine": 3584,
+        "startChar": 0,
+        "endLine": 3586,
+        "endChar": 1
+      },
+      "revId": "eefb34e3fd5cea11eab8aba7bf0d4ba1f1218fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0dc1fdc_f995fc88",
@@ -147,6 +189,30 @@
       "writtenOn": "2021-02-25T19:24:35Z",
       "side": 1,
       "message": "Change the error text to:\n\nCONFIG_BYPASS_CBI_EEPROM_WP_CHECK is only permitted when CONFIG_SYSTEM_UNLOCK is also enabled.",
+      "range": {
+        "startLine": 6133,
+        "startChar": 33,
+        "endLine": 6135,
+        "endChar": 68
+      },
+      "revId": "eefb34e3fd5cea11eab8aba7bf0d4ba1f1218fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ca0ae5_2b301e11",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6135,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-03T17:23:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0dc1fdc_f995fc88",
       "range": {
         "startLine": 6133,
         "startChar": 33,
