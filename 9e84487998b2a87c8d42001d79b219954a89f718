@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dfe44b1_17f40e31",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-03T15:39:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f1b621d_5198b85e",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "9e84487998b2a87c8d42001d79b219954a89f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2ff1226_9a5bc47f",
