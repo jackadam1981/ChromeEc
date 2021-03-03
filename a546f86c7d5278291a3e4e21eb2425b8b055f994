@@ -34,6 +34,24 @@
       "parentUuid": "59b7e36e_ca284390",
       "revId": "a546f86c7d5278291a3e4e21eb2425b8b055f994",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4fefae8_f595324c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-03T23:03:47Z",
+      "side": 1,
+      "message": "\u003e But, tcpm_set_vconn is only really called from set_vconn, so I don\u0027t think what you\u0027re proposing is that different from what we have now. I don\u0027t have a strong opinion. It seems a bit cleaner since then we don\u0027t have to independently manage tcpmv1 and v2.\n\nI\u0027ll concede that structurally they\u0027re pretty similar. Stylistically, I like the idea of checking TCPC-related config items inside TCPC functions and not worrying about them outside.\n\n\u003e Is there any reason we would need to enable vconn before enabling SOP\u0027? If so we might need to keep it how it is now, what you\u0027re proposing would move the SOP\u0027 enable prior to the PPC VCONN enable (which I guess it was before disabling TCPC VCONN anyway).\n\nI don\u0027t think the order makes a difference (since nobody should be trying to talk to the cable during a VCONN transition), but I didn\u0027t notice that. We could adjust tcpm_set_vconn to maintain the same order of operations that tcpci_tcpm_set_vconn already had.\n\nPer OOB conversation, it sounds like you\u0027re close to getting a working version of what I suggested. If it\u0027s easier to go back to patchset 2 and fix the samus build, we can also do that.",
+      "parentUuid": "e57cb2e8_e319fa90",
+      "revId": "a546f86c7d5278291a3e4e21eb2425b8b055f994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
