@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1fea10_18432c49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-03T00:26:20Z",
+      "side": 1,
+      "message": "I\u0027m enabling this for Voxel in the firmware branch. I\u0027ll follow up with a CL to remove the voxel_apmodeentry build and add a voxel_ecmodeentry build for further testing.",
+      "revId": "f4b4115f3d10514fba864a413ce5fbfd743bf931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
