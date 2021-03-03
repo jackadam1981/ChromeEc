@@ -119,6 +119,9 @@ static void board_charger_config(void)
 			    ISL9241_REG_CONTROL4, reg))
 			CPRINTS("Failed to set isl9241");
 	}
+
+	isl9241_set_switching_frequency(0,
+			ISL9241_CONTROL1_SWITCHING_FREQUENCY_724kHz);
 }
 
 static void board_init(void)

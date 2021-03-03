@@ -368,6 +368,23 @@ int isl9241_set_dc_prochot(int chgnum, int ma)
 	return rv;
 }
 
+int isl9241_set_switching_frequency(int chgnum, int frequency)
+{
+	int rv;
+	int reg;
+
+	isl9241_read(chgnum, ISL9241_REG_CONTROL1, &reg);
+
+	reg &= ~ISL9241_CONTROL1_SWITCHING_FREQUENCY_MASK;
+	reg |= frequency;
+
+	rv = isl9241_write(chgnum, ISL9241_REG_CONTROL1, reg);
+	if (rv)
+		CPRINTF("set_switching_frequencyt failed (%d)\n", rv);
+
+	return rv;
+}
+
 /*****************************************************************************/
 /* ISL-9241 initialization */
 static void isl9241_init(int chgnum)
