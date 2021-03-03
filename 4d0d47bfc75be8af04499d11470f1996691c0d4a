@@ -16,6 +16,24 @@
       "message": "Perhaps the topic for a future CL, but is there any time when we would be entering Error Recovery or Disabled and not want to invalidate the explicit contract?",
       "revId": "4d0d47bfc75be8af04499d11470f1996691c0d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6069d849_bcf62563",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3687,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T21:40:02Z",
+      "side": 1,
+      "message": "Nope, in both modes we\u0027ll be setting the CC state to open which should completely break our connection starting at the TC layer",
+      "parentUuid": "c72ca172_214fea81",
+      "revId": "4d0d47bfc75be8af04499d11470f1996691c0d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
