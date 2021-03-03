@@ -182,6 +182,13 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 	else
 		isl9241_set_ac_prochot(0, 3328);
 
+	if (max_ma * charge_mv == 45000 * 1000)
+		isl9241_set_switching_frequency(0,
+			ISL9241_CONTROL1_SWITCHING_FREQUENCY_724kHz);
+	else
+		isl9241_set_switching_frequency(0,
+			ISL9241_CONTROL1_SWITCHING_FREQUENCY_1020kHz);
+
 	/*
 	 * Follow OEM request to limit the input current to
 	 * 90% negotiated limit.
