@@ -16,6 +16,24 @@
       "message": "What would you think of aiming for mid-range?  I\u0027d certainly like compliance to pass but I assume the shorter we make our wait the more likely we are to hit issues with marginal port partners",
       "revId": "592c5320235539c1b96804836a63c0bdff515bf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd20721_e63d7939",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-03T17:30:30Z",
+      "side": 1,
+      "message": "Oh, I realize what i did. originally I had midpoint, then I changed it last night after uploading. \n\nI was thinking midpoint originally, but went with minimum since I think the corresponding time is tpssourceon, which is has a maximum much lower than 750ms (480 IIRC?). If you think the 835 is more robust I think that is also fine. I\u0027ll change it.",
+      "parentUuid": "fe13455c_673a82ce",
+      "revId": "592c5320235539c1b96804836a63c0bdff515bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
