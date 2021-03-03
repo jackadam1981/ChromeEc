@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b1d34f4_9e552b7e",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-03-03T14:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3afd4a8_0b4cc4b2",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 49
+      },
+      "revId": "4e41bca6d43bb0e400944601cff6cef5525e103d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba08939_29c3af23",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d78ab0e_aea3aa1a",
+        "filename": "zephyr/shim/chip/npcx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-03-03T14:30:14Z",
+      "side": 1,
+      "message": "I moved the content to the parent CL.",
+      "parentUuid": "6ba08939_29c3af23",
+      "revId": "4e41bca6d43bb0e400944601cff6cef5525e103d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e1c482f_fbdecf89",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-02T16:09:28Z",
       "side": 1,
       "message": "Rename MFT instances to \"tach\" or \"tachometer\" to make this generic.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "4e41bca6d43bb0e400944601cff6cef5525e103d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40954cdb_78b62615",
+        "filename": "zephyr/shim/chip/npcx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-03-03T14:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e1c482f_fbdecf89",
       "range": {
         "startLine": 13,
         "startChar": 0,
