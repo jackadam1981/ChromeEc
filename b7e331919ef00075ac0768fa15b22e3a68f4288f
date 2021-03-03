@@ -16,6 +16,80 @@
       "message": "hi  Diana: please help to review this CL, thanks",
       "revId": "b7e331919ef00075ac0768fa15b22e3a68f4288f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb614cf_53ab7603",
+        "filename": "board/blipper/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T16:40:39Z",
+      "side": 1,
+      "message": "These all need the cfet fields",
+      "revId": "b7e331919ef00075ac0768fa15b22e3a68f4288f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ce3585_e027595d",
+        "filename": "board/blipper/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T16:40:39Z",
+      "side": 1,
+      "message": "I didn\u0027t notice shipping mode in this datasheet.  Is is using the same commands as the other batteries?",
+      "revId": "b7e331919ef00075ac0768fa15b22e3a68f4288f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7388b9f7_6fb8d30e",
+        "filename": "board/blipper/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T16:40:39Z",
+      "side": 1,
+      "message": "OCPC define shouldn\u0027t be needed",
+      "revId": "b7e331919ef00075ac0768fa15b22e3a68f4288f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89626162_e3a9d2c7",
+        "filename": "board/blipper/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T16:40:39Z",
+      "side": 1,
+      "message": "blipper",
+      "range": {
+        "startLine": 65,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "b7e331919ef00075ac0768fa15b22e3a68f4288f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
