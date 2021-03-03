@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ec0b57a_3d203788",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-03T23:09:37Z",
+      "side": 0,
+      "message": "as this function returns the min of board supported TBT speed, cable speed.\nI think existing logic is more optimized than the proposed one.\nAny thoughts ?",
+      "range": {
+        "startLine": 932,
+        "startChar": 41,
+        "endLine": 932,
+        "endChar": 60
+      },
+      "revId": "76a685899e3c6ede4d4571fc6829e4d9c8ed11e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
