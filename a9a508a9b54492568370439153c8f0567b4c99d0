@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a8e488a_5311aa7e",
+        "filename": "common/chargen.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-03T16:47:53Z",
+      "side": 1,
+      "message": "I think this should go into zephyr/shim/src/console_buffer.c",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "a9a508a9b54492568370439153c8f0567b4c99d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d1f008e_d6aa78bb",
+        "filename": "common/chargen.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-03T16:47:53Z",
+      "side": 1,
+      "message": "Will `if (IS_ENABLED(CONFIG_ZEPHYR) \u0026\u0026 c \u003d\u003d \u00270\u0027)` work instead?",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 21
+      },
+      "revId": "a9a508a9b54492568370439153c8f0567b4c99d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
