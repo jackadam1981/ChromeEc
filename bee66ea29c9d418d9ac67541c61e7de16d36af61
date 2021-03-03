@@ -137,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1440a86f_b3c8f10b",
+        "filename": "board/icarus/battery.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1286980
+      },
+      "writtenOn": "2021-03-03T03:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b810e61d_a048d697",
+      "range": {
+        "startLine": 179,
+        "startChar": 47,
+        "endLine": 179,
+        "endChar": 83
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfbff17f_0069b0ad",
@@ -409,6 +433,54 @@
       "side": 1,
       "message": "The 1P8V flag has been removed from these pins.",
       "parentUuid": "2ba19853_5a2c2ea5",
+      "range": {
+        "startLine": 14,
+        "startChar": 55,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8666ef9b_f83a9e36",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1286980
+      },
+      "writtenOn": "2021-03-03T03:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4729cf6d_5eba8e66",
+      "range": {
+        "startLine": 14,
+        "startChar": 55,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "bee66ea29c9d418d9ac67541c61e7de16d36af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b86d475_667d5bf6",
+        "filename": "board/icarus/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1286980
+      },
+      "writtenOn": "2021-03-03T03:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4729cf6d_5eba8e66",
       "range": {
         "startLine": 14,
         "startChar": 55,
