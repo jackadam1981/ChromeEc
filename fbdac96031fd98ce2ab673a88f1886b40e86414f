@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea3c5ca_1b9c7028",
+        "filename": "chip/mt8192_scp/ipi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1130012
+      },
+      "writtenOn": "2021-03-03T07:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e7e251_e2adc936",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "fbdac96031fd98ce2ab673a88f1886b40e86414f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11b2f90e_3288c3e1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-03T03:46:44Z",
       "side": 1,
       "message": "If you don\u0027t have any task in the suspend list, just drop this off.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "fbdac96031fd98ce2ab673a88f1886b40e86414f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38131b92_c2cda959",
+        "filename": "chip/mt8192_scp/ipi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1130012
+      },
+      "writtenOn": "2021-03-03T07:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b2f90e_3288c3e1",
       "range": {
         "startLine": 65,
         "startChar": 0,
