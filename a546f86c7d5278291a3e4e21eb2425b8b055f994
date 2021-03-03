@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b7e36e_ca284390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-03T21:41:25Z",
+      "side": 1,
+      "message": "Right now, the call chain is\n set_vconn\n     CONFIG_USB_PD_TCPC_VCONN? tcpm_set_vconn\n         tcpci_tcpm_set_vconn (via tcpc_config-\u003edrv)\n             CONFIG_USB_PD_DECODE_SOP? tcpci_tcpm_sop_prime_enable\n\nWhat if it was like this instead?\n set_vconn\n     tcpm_set_vconn\n         CONFIG_USB_PD_TCPC_VCONN? tcpc_config-\u003edrv-\u003eset_vconn\n         tcpm_sop_prime_enable (already handles CONFIG_USB_PD_DECODE_SOP check)\n\nCallers outside TCPC code wouldn\u0027t need to worry about whether the TCPC is providing VCONN or about enabling SOP\u0027. We would want to scan through the code looking for instances where the drivers call their set_vconn or sop_prime_enable functions directly, because we would want to change those to go through the tcpm_ wrapper and benefit from the config checks there.\n\nFeel free to disregard if that doesn\u0027t work for some build reason or is more inconvenient than I think. I\u0027m about to try to hack it together.",
+      "revId": "a546f86c7d5278291a3e4e21eb2425b8b055f994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
