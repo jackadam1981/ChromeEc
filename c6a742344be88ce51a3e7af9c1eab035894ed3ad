@@ -52,6 +52,24 @@
       "parentUuid": "899b8baa_677f06ed",
       "revId": "c6a742344be88ce51a3e7af9c1eab035894ed3ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d4d948e_2d0cebd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T21:07:03Z",
+      "side": 1,
+      "message": "That makes more sense.  I\u0027d guess they need a declaration under the CONFIG_USB_PD_TCPC section of include/driver/tcpm/tcpm.h",
+      "parentUuid": "f8942fbf_7e8b0c36",
+      "revId": "c6a742344be88ce51a3e7af9c1eab035894ed3ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
