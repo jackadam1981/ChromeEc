@@ -33,6 +33,8 @@ int isl9241_set_ac_prochot(int chgnum, int ma);
  */
 int isl9241_set_dc_prochot(int chgnum, int ma);
 
+int isl9241_set_switching_frequency(int chgnum, int ma);
+
 #define ISL9241_AC_PROCHOT_CURRENT_MIN  128     /* mA */
 #define ISL9241_AC_PROCHOT_CURRENT_MAX  6400    /* mA */
 #define ISL9241_DC_PROCHOT_CURRENT_MIN  256     /* mA */

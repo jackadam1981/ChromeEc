@@ -24,7 +24,7 @@
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "isl9241.h"
+#include "driver/charger/isl9241.h"
 #include "keyboard_8042_sharedlib.h"
 #include "keyboard_raw.h"
 #include "lid_switch.h"
@@ -181,6 +181,13 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 		isl9241_set_ac_prochot(0, 3840);
 	else
 		isl9241_set_ac_prochot(0, 3328);
+
+	if (max_ma * charge_mv == 45000 * 1000)
+		isl9241_set_switching_frequency(0,
+			ISL9241_CONTROL1_SWITCHING_FREQUENCY_724kHz);
+	else
+		isl9241_set_switching_frequency(0,
+			ISL9241_CONTROL1_SWITCHING_FREQUENCY_1020kHz);
 
 	/*
 	 * Follow OEM request to limit the input current to
