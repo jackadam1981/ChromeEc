@@ -22,6 +22,30 @@
       },
       "revId": "76a685899e3c6ede4d4571fc6829e4d9c8ed11e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f83e27_b932cddc",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-03T23:12:37Z",
+      "side": 0,
+      "message": "There might be USB4 active cables that wouldn\u0027t support intel SVID - in that case, TBT speed would be \u00270\u0027, but USB4 speed should be 40G",
+      "parentUuid": "9ec0b57a_3d203788",
+      "range": {
+        "startLine": 932,
+        "startChar": 41,
+        "endLine": 932,
+        "endChar": 60
+      },
+      "revId": "76a685899e3c6ede4d4571fc6829e4d9c8ed11e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
