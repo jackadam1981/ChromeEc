@@ -16,6 +16,24 @@
       "message": "Looks good.  There are a few other drivers that could have their set_vconn updated, but they should still work with a double enable/disable.  ",
       "revId": "c6a742344be88ce51a3e7af9c1eab035894ed3ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "899b8baa_677f06ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-03T21:00:27Z",
+      "side": 1,
+      "message": "Looks like Samus doesn\u0027t implement tcpm_set_vconn for some reason, so buildall fails.",
+      "parentUuid": "4020bd29_4a5f6419",
+      "revId": "c6a742344be88ce51a3e7af9c1eab035894ed3ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
