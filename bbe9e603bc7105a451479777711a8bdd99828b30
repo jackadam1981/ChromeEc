@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c799379_c067f66c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T22:57:37Z",
+      "side": 1,
+      "message": "Let me know what you think of this approach.  After staring at all the bc12 drivers, I think the others take care of this condition already, but in slightly less straightforward ways.  This also seems like something we could consider in usb_charger.c similar to when we clear the Vbus supplier? ",
+      "revId": "bbe9e603bc7105a451479777711a8bdd99828b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
