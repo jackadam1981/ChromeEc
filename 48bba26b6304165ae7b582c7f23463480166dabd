@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750793ea_b5693b0b",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-03T21:47:14Z",
+      "side": 1,
+      "message": "Can we add this comment (including a link to http://b/181130245) inside unlock_flash_option_bytes, disable_flash_option_bytes, lock_flash_option_bytes, and flash_option_bytes_locked?\n\nThen we can remove the comment here.",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 23
+      },
+      "revId": "48bba26b6304165ae7b582c7f23463480166dabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
