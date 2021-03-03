@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14bc17cd_5312b2a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-03T00:01:19Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s looking weird. Only Kohaku and nightfury use CONFIG_BATTERY_CHECK_CHARGE_TEMP_LIMITS while most boards define start_charging_max_c. \n\nIt\u0027s confusing. I think we can remove CONFIG_BATTERY_CHECK_CHARGE_TEMP_LIMITS and make chgstv2 call battery_outside_charging_temperature if start_charging_max_c \u003e 0.",
+      "parentUuid": "24c9a9b0_7108e0d8",
+      "revId": "acd63e0aef9e9e51a06c581ded036a07292ef9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "420c7a00_291b4a24",
