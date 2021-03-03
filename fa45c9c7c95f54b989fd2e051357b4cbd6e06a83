@@ -46,6 +46,30 @@
       },
       "revId": "fa45c9c7c95f54b989fd2e051357b4cbd6e06a83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1180ddfb_af9eb8fb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3660,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-03T16:57:39Z",
+      "side": 1,
+      "message": "Okay, found the answer in the compliance spec for the test.  \n\n\"d) The test fails if Error Recovery is not detected within tSenderResponse max +\ntProtErrHardReset max, the delay is measured from the time the last bit of the GoodCRC\nMessage EOP has been sent to the time the Error Recovery starts.\"\n\nI assume this is an area where the spec could stand to be more clear if it applies beyond hard reset signaling.",
+      "parentUuid": "1764082e_df65d6a8",
+      "range": {
+        "startLine": 3660,
+        "startChar": 1,
+        "endLine": 3660,
+        "endChar": 11
+      },
+      "revId": "fa45c9c7c95f54b989fd2e051357b4cbd6e06a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
