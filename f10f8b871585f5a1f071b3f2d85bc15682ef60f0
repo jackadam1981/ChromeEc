@@ -110,6 +110,30 @@
       },
       "revId": "f10f8b871585f5a1f071b3f2d85bc15682ef60f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2428ab2_24f3b378",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-03T18:51:17Z",
+      "side": 1,
+      "message": "Nice. This is looking a lot better.",
+      "parentUuid": "fdbdd5e0_21662320",
+      "range": {
+        "startLine": 234,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 3
+      },
+      "revId": "f10f8b871585f5a1f071b3f2d85bc15682ef60f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
