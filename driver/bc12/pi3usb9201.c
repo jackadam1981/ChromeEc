@@ -297,11 +297,16 @@ static void pi3usb9201_usb_charger_task(const int port)
 			 */
 		}
 
+		if (evt & USB_CHG_EVENT_VBUS) {
 #ifndef CONFIG_USB_PD_VBUS_DETECT_TCPC
-		if (evt & USB_CHG_EVENT_VBUS)
 			CPRINTS("VBUS p%d %d", port,
 				pd_snk_is_vbus_provided(port));
 #endif
+			/* Reset charge suppliers if we're no longer sinking */
+			if (usb_charger_port_is_sourcing_vbus(port)) {
+				usb_charger_reset_charge(port);
+			}
+		}
 
 		if (evt & USB_CHG_EVENT_DR_UFP) {
 			bc12_power_up(port);
