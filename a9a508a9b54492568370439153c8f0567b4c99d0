@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3165fa0_d68931ac",
+        "filename": "common/chargen.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-03-03T18:25:20Z",
+      "side": 1,
+      "message": "yeah good point, moved it there and on a different commit",
+      "parentUuid": "0a8e488a_5311aa7e",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "a9a508a9b54492568370439153c8f0567b4c99d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d1f008e_d6aa78bb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-03T16:47:53Z",
       "side": 1,
       "message": "Will `if (IS_ENABLED(CONFIG_ZEPHYR) \u0026\u0026 c \u003d\u003d \u00270\u0027)` work instead?",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 21
+      },
+      "revId": "a9a508a9b54492568370439153c8f0567b4c99d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "566cdc49_c30ec24f",
+        "filename": "common/chargen.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-03-03T18:25:20Z",
+      "side": 1,
+      "message": "It does indeed, changed.",
+      "parentUuid": "5d1f008e_d6aa78bb",
       "range": {
         "startLine": 105,
         "startChar": 2,
