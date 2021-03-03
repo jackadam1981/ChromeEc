@@ -448,6 +448,16 @@ int tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity);
  * Set Vconn.
  *
  * @param port Type-C port number
+ * @param enable Enable/Disable SOP' and SOP'' messages
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_sop_prime_enable(int port, int enable);
+
+/**
+ * Set Vconn.
+ *
+ * @param port Type-C port number
  * @param enable Enable/Disable Vconn
  *
  * @return EC_SUCCESS or error

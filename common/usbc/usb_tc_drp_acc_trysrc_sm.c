@@ -1783,6 +1783,9 @@ static void set_vconn(int port, int enable)
 
 	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && enable)
 		ppc_set_vconn(port, 1);
+
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+		tcpm_sop_prime_enable(port, enable);
 }
 
 /* This must only be called from the PD task */
