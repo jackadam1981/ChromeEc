@@ -813,6 +813,7 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
 {
 	union tbt_mode_resp_cable cable_mode_resp;
 	enum tbt_compat_cable_speed max_tbt_speed;
+	enum tbt_compat_cable_speed cable_tbt_speed;
 
 	if (!is_tbt_cable_superspeed(port))
 		return TBT_SS_RES_0;
@@ -822,17 +823,25 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
 	max_tbt_speed = board_get_max_tbt_speed(port);
 
 	/*
-	 * Ref: USB Type-C Cable and Connector Specification,
-	 * figure F-1 TBT3 Discovery Flow.
-	 * If cable doesn't have Intel SVID, limit Thunderbolt cable speed to
-	 * Passive Gen 2 cable speed.
+	 * TBT4 PD Discovery Flow Application Notes Revision 0.9:
+	 * Figure 2: for passive cable, if cable doesn't support
+	 * USB_VID_INTEL, enter Thunderbolt alt mode with speed
+	 * from Discover Identity SOP' B2:0
 	 */
-	if (!cable_mode_resp.raw_value)
-		return max_tbt_speed < TBT_SS_U32_GEN1_GEN2 ?
-			max_tbt_speed : TBT_SS_U32_GEN1_GEN2;
+	if (!cable_mode_resp.raw_value) {
+		struct pd_discovery *disc;
 
-	return max_tbt_speed < cable_mode_resp.tbt_cable_speed ?
-		max_tbt_speed : cable_mode_resp.tbt_cable_speed;
+		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
+			return TBT_SS_RES_0;
+
+		disc = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+		cable_tbt_speed = disc->identity.product_t1.p_rev30.ss;
+	} else {
+		cable_tbt_speed = cable_mode_resp.tbt_cable_speed;
+	}
+
+	return max_tbt_speed < cable_tbt_speed ?
+		max_tbt_speed : cable_tbt_speed;
 }
 
 int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
