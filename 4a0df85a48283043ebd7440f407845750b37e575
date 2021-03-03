@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d71c8dcf_46bfca80",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-03-03T03:35:20Z",
+      "side": 1,
+      "message": "Update calculation in each case, use fp_t will not overflow.",
+      "parentUuid": "7e4bb54d_46f9b246",
+      "revId": "4a0df85a48283043ebd7440f407845750b37e575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce6f84cf_0a67e63a",
         "filename": "board/dooly/board.c",
         "patchSetId": 8
