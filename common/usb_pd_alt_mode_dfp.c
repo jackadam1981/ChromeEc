@@ -823,6 +823,17 @@ static enum tbt_compat_cable_speed usb_rev30_to_tbt_speed(enum usb_rev30_ss ss)
 	}
 }
 
+enum usb_rev30_ss get_usb_cable_highest_speed(int port)
+{
+	struct pd_discovery *disc;
+
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
+		return TBT_SS_RES_0;
+
+	disc = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+	return disc->identity.product_t1.p_rev30.ss;
+}
+
 enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
 {
 	union tbt_mode_resp_cable cable_mode_resp;
@@ -844,18 +855,9 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
 	 * For active cable, if the cable doesn't support USB_VID_INTEL, do not
 	 * enter Thunderbolt alternate mode.
 	 */
-	if (!cable_mode_resp.raw_value) {
-		struct pd_discovery *disc;
-
-		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
-			return TBT_SS_RES_0;
-
-		disc = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
-		cable_tbt_speed =
-		   usb_rev30_to_tbt_speed(disc->identity.product_t1.p_rev30.ss);
-	} else {
-		cable_tbt_speed = cable_mode_resp.tbt_cable_speed;
-	}
+	cable_tbt_speed = cable_mode_resp.raw_value ?
+		cable_mode_resp.tbt_cable_speed :
+		usb_rev30_to_tbt_speed(get_usb_cable_highest_speed(port));
 
 	return max_tbt_speed < cable_tbt_speed ?
 		max_tbt_speed : cable_tbt_speed;
@@ -934,31 +936,42 @@ __overridable enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
  *
  * ############################################################################
  */
+static enum usb_rev30_ss tbt_to_usb_rev30_speed(
+		enum tbt_compat_cable_speed tbt_speed)
+{
+	switch (tbt_speed) {
+	case TBT_SS_U31_GEN1:
+		return USB_R30_SS_U32_U40_GEN1;
+	case TBT_SS_U32_GEN1_GEN2:
+		return USB_R30_SS_U32_U40_GEN2;
+	case TBT_SS_TBT_GEN3:
+		return USB_R30_SS_U40_GEN3;
+	default:
+		return USB_R30_SS_U2_ONLY;
+	}
+}
+
+static inline enum usb_rev30_ss board_get_max_usb4_speed(int port)
+{
+	return tbt_to_usb_rev30_speed(board_get_max_tbt_speed(port));
+}
 
 /*
- * For Cable rev 3.0: USB4 cable speed is set according to speed supported by
- * the port and the response received from the cable, whichever is least.
+ * Ref: TBT4 PD Discovery Flow Application Notes Revision 0.9, Figure 1
  *
- * For Cable rev 2.0: If get_tbt_cable_speed() is less than
- * TBT_SS_U31_GEN1, return USB_R30_SS_U2_ONLY speed since the board
- * doesn't support superspeed else the USB4 cable speed is set according to
- * the cable response.
+ * For USB4 active cables or Thunderbolt passive cables without Intel SVID
+ * support - Enter USB4 with minimum of USB Highest Speed field of the
+ * active/passive cable VDO and max USB4 board support speed.
+ *
+ * For Thunderbolt active/passive cable with Intel SVID support - Enter USB4
+ * with USB4 equivalent Thunderbolt speed.
+ *
+ * For Thunderbolt active cable without Intel SVID support - Do not enter USB4.
  */
 enum usb_rev30_ss get_usb4_cable_speed(int port)
 {
-	enum tbt_compat_cable_speed tbt_speed = get_tbt_cable_speed(port);
+	union tbt_mode_resp_cable cable_mode_resp;
 	enum usb_rev30_ss max_usb4_speed;
-
-
-	if (tbt_speed < TBT_SS_U31_GEN1)
-		return USB_R30_SS_U2_ONLY;
-
-	/*
-	 * Converting Thunderbolt-Compatible board speed to equivalent USB4
-	 * speed.
-	 */
-	max_usb4_speed = tbt_speed == TBT_SS_TBT_GEN3 ?
-		USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
 
 	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) &&
 	     is_pd_rev3(port, TCPC_TX_SOP_PRIME)) {
@@ -968,12 +981,28 @@ enum usb_rev30_ss get_usb4_cable_speed(int port)
 			disc->identity.product_t1.a_rev30;
 
 		if (a_rev30.vdo_ver >= VDO_VERSION_1_3) {
+			max_usb4_speed = board_get_max_usb4_speed(port);
+
 			return max_usb4_speed < a_rev30.ss ?
 			       max_usb4_speed : a_rev30.ss;
 		}
 	}
 
-	return max_usb4_speed;
+	cable_mode_resp.raw_value =
+		pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
+
+	if (!cable_mode_resp.raw_value) {
+		max_usb4_speed = board_get_max_usb4_speed(port);
+
+		return max_usb4_speed < get_usb_cable_highest_speed(port) ?
+		       max_usb4_speed : get_usb_cable_highest_speed(port);
+	}
+
+	/*
+	 * Converting Thunderbolt-Compatible board speed to equivalent USB4
+	 * speed.
+	 */
+	return tbt_to_usb_rev30_speed(get_tbt_cable_speed(port));
 }
 
 uint32_t get_enter_usb_msg_payload(int port)
