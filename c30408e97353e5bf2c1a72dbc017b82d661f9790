@@ -34,6 +34,24 @@
       "parentUuid": "cdb68421_5a2b5fcb",
       "revId": "c30408e97353e5bf2c1a72dbc017b82d661f9790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc403f97_9d6f3652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-03T01:57:44Z",
+      "side": 1,
+      "message": "That\u0027s fair. It was my assumption that gpio.inc was useful, so I modeled this after gpio.inc. I found that good IDE that runs the pre-processor makes big difference.",
+      "parentUuid": "09906272_6ad1cafe",
+      "revId": "c30408e97353e5bf2c1a72dbc017b82d661f9790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
