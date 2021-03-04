@@ -70,6 +70,30 @@
       },
       "revId": "76a685899e3c6ede4d4571fc6829e4d9c8ed11e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb01487_8891d075",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-04T21:20:55Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "f1ac8f80_b68c0806",
+      "range": {
+        "startLine": 932,
+        "startChar": 41,
+        "endLine": 932,
+        "endChar": 60
+      },
+      "revId": "76a685899e3c6ede4d4571fc6829e4d9c8ed11e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
