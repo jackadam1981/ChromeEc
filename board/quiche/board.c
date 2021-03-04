@@ -146,6 +146,17 @@ const void *const usb_strings[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
+#ifndef SECTION_IS_RW
+/* USB-C PPC Configuration */
+struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USB_PD_PORT_HOST] = {
+		.i2c_port = I2C_PORT_I2C1,
+		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
+	},
+};
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+#endif
+
 #ifdef SECTION_IS_RW
 /*
  * PS8802 set mux board tuning.
