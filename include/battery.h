@@ -56,7 +56,11 @@ extern struct ec_response_battery_dynamic_info
  * Sometimes we have hardware to detect battery present, sometimes we have to
  * wait until we've been able to talk to the battery.
  */
-enum battery_present {
+enum battery_present
+#ifdef __cplusplus
+	: int
+#endif
+{
 	BP_NOT_INIT = -1,
 	BP_NO = 0,
 	BP_YES = 1,

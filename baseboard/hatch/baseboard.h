@@ -212,6 +212,12 @@ void board_reset_pd_mcu(void);
 void baseboard_mst_enable_control(enum mst_source, int level);
 bool board_is_convertible(void);
 
+enum battery_present
+#ifdef __cplusplus
+	: int
+#endif
+	;
+
 /* Check with variant about battery presence. */
 enum battery_present variant_battery_present(void);
 

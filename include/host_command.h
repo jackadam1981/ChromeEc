@@ -192,6 +192,12 @@ int host_is_event_set(enum host_event_code event);
 
 #ifdef CONFIG_HOSTCMD_X86
 
+enum power_state
+#ifdef __cplusplus
+	: int
+#endif
+	;
+
 /*
  * Get lazy wake masks for the sleep state provided
  *
