@@ -51,6 +51,23 @@
       "message": "Eric has a Drobit and may be able to verify this, although per discussion this morning, he may be thwarted by b:181692098.",
       "revId": "115eaefd8f7c2b0fbb1bd67256cafc35aff3d8d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5a4cb8_0c3062ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-04T17:56:26Z",
+      "side": 1,
+      "message": "This works correctly on Drobit. Logging in and out switches between TBT and DP/USB.",
+      "revId": "115eaefd8f7c2b0fbb1bd67256cafc35aff3d8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
