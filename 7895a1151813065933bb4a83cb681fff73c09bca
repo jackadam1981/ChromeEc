@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602bb3c7_1660f16c",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-04T18:48:51Z",
+      "side": 1,
+      "message": "`make BOARD\u003dbrya` fails for this CL because CC_USBPD is not defined. CC_USBPD gets defined when `CONFIG_USB_POWER_DELIVERY` is defined in a later CL.",
+      "range": {
+        "startLine": 25,
+        "startChar": 41,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "7895a1151813065933bb4a83cb681fff73c09bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
