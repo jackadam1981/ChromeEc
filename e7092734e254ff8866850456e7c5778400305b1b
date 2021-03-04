@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3eb018c9_585ad9e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 42
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-04T20:07:02Z",
+      "side": 1,
+      "message": "yes, this patchset only supports temp sensors.",
+      "parentUuid": "506175bb_5120709b",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "e7092734e254ff8866850456e7c5778400305b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "73c0e958_bc539257",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 42
@@ -37,6 +61,24 @@
       "writtenOn": "2021-03-04T19:48:14Z",
       "side": 1,
       "message": "Are you planning to split this CL further down into smaller CLs?",
+      "revId": "e7092734e254ff8866850456e7c5778400305b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52aeac8_8785a10c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-04T20:07:02Z",
+      "side": 1,
+      "message": "no, unless someone requests something specific to be\nsplit off, this is it.",
+      "parentUuid": "73c0e958_bc539257",
       "revId": "e7092734e254ff8866850456e7c5778400305b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
