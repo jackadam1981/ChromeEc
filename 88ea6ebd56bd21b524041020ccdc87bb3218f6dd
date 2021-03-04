@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b68c9ff_2d1dd274",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "USB-C1 active mux is changed from PS8743 to ANX3443.",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 23
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9166a892_c8fc5791",
+        "filename": "baseboard/cherry/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "ADC2 is defined as SKU ID.\nhttps://docs.google.com/spreadsheets/d/1Hx00NeKzntWUxgnf5og7hNKH-CB1aCkGAqCql3E2G9Y/edit#gid\u003d1953223066\u0026range\u003dV25:AA25",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 15
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f91205db_463a0f65",
+        "filename": "baseboard/cherry/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "Just wonder if DEMUX_EN is set before setting PATH_SEL.",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be9df98_cdc9005c",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "Base IMU part number is changed to ICM-40608.",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1495c381_17afe5f3",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "Lid ACCEL part number is changed to KX022-1020.",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e279dff_048d8a72",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "Is this for output low in default? But USB_C1_INT_ODL is an EC input pin.",
+      "range": {
+        "startLine": 41,
+        "startChar": 40,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a6dd38_36179091",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "Low active for power loss notification to NVME. Sugget to set it as GPIO_ODR_HIGH.",
+      "range": {
+        "startLine": 83,
+        "startChar": 40,
+        "endLine": 83,
+        "endChar": 52
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b685f199_adeaf5f0",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "This is an EC output pin to control external regulator.",
+      "range": {
+        "startLine": 85,
+        "startChar": 40,
+        "endLine": 85,
+        "endChar": 50
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d002775b_66f2fd52",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "This is an EC output pin to control external regulator.",
+      "range": {
+        "startLine": 86,
+        "startChar": 40,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dd0b0d1_907ca161",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "This is an EC output pin to control external regulator.",
+      "range": {
+        "startLine": 87,
+        "startChar": 40,
+        "endLine": 87,
+        "endChar": 50
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f403e29a_fbd49404",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-03-04T03:43:24Z",
+      "side": 1,
+      "message": "This is OD input with external PU, so internal PD is not required",
+      "range": {
+        "startLine": 127,
+        "startChar": 53,
+        "endLine": 127,
+        "endChar": 67
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
