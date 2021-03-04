@@ -70,6 +70,52 @@
       "parentUuid": "2ee2925c_6372d1e7",
       "revId": "76a685899e3c6ede4d4571fc6829e4d9c8ed11e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d39fafeb_477df3ca",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-04T19:41:36Z",
+      "side": 1,
+      "message": "Nit: The struct that we use encapsulates which fields are in which bits, so no need to list the bits here. A more helpful/searchable thing to mention would be the names of the VDO, \"Passive Cable VDO,\" and field, \"USB Highest Speed.\"",
+      "range": {
+        "startLine": 829,
+        "startChar": 31,
+        "endLine": 829,
+        "endChar": 36
+      },
+      "revId": "76a685899e3c6ede4d4571fc6829e4d9c8ed11e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e22c88_8b99e4f8",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-04T19:41:36Z",
+      "side": 1,
+      "message": "This field is an enum usb_rev30_ss, not an enum_tbt_compat_cable_speed. They happen to line up numerically, IIRC, but you should convert explicitly. We do this (or forget to do this) in a few places, and it would probably make sense to have a helper function for that purpose.",
+      "range": {
+        "startLine": 838,
+        "startChar": 54,
+        "endLine": 838,
+        "endChar": 56
+      },
+      "revId": "76a685899e3c6ede4d4571fc6829e4d9c8ed11e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
