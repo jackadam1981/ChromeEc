@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab7ee59c_0c292464",
+        "filename": "chip/stm32/config-stm32g473xc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-04T17:15:22Z",
+      "side": 1,
+      "message": "Yeah, this wasn\u0027t ready for review. I had only focused on the flash size increase when I put this file in.",
+      "parentUuid": "e3c6132f_a7df44ec",
+      "revId": "e0ebda32499684a9eeac42e8e370448221850a89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cfa3ed77_0dd79545",
         "filename": "chip/stm32/config-stm32g473xc.h",
         "patchSetId": 16
