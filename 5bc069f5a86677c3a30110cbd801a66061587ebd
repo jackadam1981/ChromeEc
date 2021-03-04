@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dfcf469_35018629",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 75
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-04T03:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39fad80f_6e435c9f",
+      "range": {
+        "startLine": 15,
+        "startChar": 29,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "5bc069f5a86677c3a30110cbd801a66061587ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "143b8692_1c7ba53f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-02T08:38:30Z",
       "side": 1,
       "message": "used",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "5bc069f5a86677c3a30110cbd801a66061587ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed790c7f_80340339",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 75
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-04T03:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "143b8692_1c7ba53f",
       "range": {
         "startLine": 16,
         "startChar": 7,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-02T08:38:30Z",
       "side": 1,
       "message": "nit: maybe make a macro?",
+      "range": {
+        "startLine": 17,
+        "startChar": 19,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "5bc069f5a86677c3a30110cbd801a66061587ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a6c8d9e_721dc278",
+        "filename": "chip/stm32/usb-stm32g4.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-04T03:19:51Z",
+      "side": 1,
+      "message": "Yeah, I should have put a macro here. I think I copied this from another family (F3?) and forgot to replace that with a macro.",
+      "parentUuid": "64437c26_11d8fc20",
       "range": {
         "startLine": 17,
         "startChar": 19,
