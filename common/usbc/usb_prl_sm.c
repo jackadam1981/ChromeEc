@@ -1735,7 +1735,8 @@ static void rch_report_error_entry(const int port)
 		pe_report_error(port, ERR_RCH_MSG_REC, prl_rx[port].sop);
 	} else {
 		/* Report error */
-		pe_report_error(port, ERR_RCH_CHUNKED, prl_rx[port].sop);
+		CPRINTS("rch[%d]: timeout waiting for next chunk!", port);
+		//pe_report_error(port, ERR_RCH_CHUNKED, prl_rx[port].sop);
 	}
 }
 
