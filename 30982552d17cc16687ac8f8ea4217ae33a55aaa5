@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16b3d19a_45a169bf",
+        "filename": "baseboard/mancomb/base_gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-04T17:47:07Z",
+      "side": 1,
+      "message": "Probably. I left them as input because I\u0027m not sure what to do with the interrupt yet. I added an interrupt stub with a TODO.",
+      "parentUuid": "c3edaaf2_b3db1019",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53236d19_10ba94c3",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-03T19:20:30Z",
       "side": 1,
       "message": "Do we need to enable sinking on the C-ports through a PPC?",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002b9c83_aa576652",
+        "filename": "baseboard/mancomb/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-04T17:47:07Z",
+      "side": 1,
+      "message": "I think TCPC should set sinking.",
+      "parentUuid": "53236d19_10ba94c3",
       "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a36c4994_b52b0618",
+        "filename": "baseboard/mancomb/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-04T17:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48c1eb73_9f65f714",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "479c6a17_83e36379",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-03-03T19:20:30Z",
       "side": 1,
       "message": "Relevant? We don\u0027t have a charger chip, right?",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0588849c_2f167bdb",
+        "filename": "baseboard/mancomb/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-04T17:47:07Z",
+      "side": 1,
+      "message": "Removed CONFIG_CHARGER_SENSE_RESISTOR_AC and CONFIG_CHARGER_INPUT_CURRENT",
+      "parentUuid": "479c6a17_83e36379",
       "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9e48c3_07dc0e55",
+        "filename": "baseboard/mancomb/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-04T17:47:07Z",
+      "side": 1,
+      "message": "Removed. Will consider adding to guybrush first.",
+      "parentUuid": "321ad864_df4f57fb",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "585eb064_f5235948",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-03-03T19:20:30Z",
       "side": 1,
       "message": "Should this be removed if we\u0027re not using it?",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7abe923f_5ecbe4a3",
+        "filename": "baseboard/mancomb/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-04T17:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "585eb064_f5235948",
       "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
