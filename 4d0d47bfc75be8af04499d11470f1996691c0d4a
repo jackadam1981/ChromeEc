@@ -34,6 +34,24 @@
       "parentUuid": "c72ca172_214fea81",
       "revId": "4d0d47bfc75be8af04499d11470f1996691c0d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5b930a_44572d62",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3687,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-04T18:03:47Z",
+      "side": 1,
+      "message": "If that\u0027s true, then it might be more bullet-proof (or at least future-proof) to call pe_invalidate_explicit_contract in tc_error_recovery_entry and tc_disabled_entry.",
+      "parentUuid": "6069d849_bcf62563",
+      "revId": "4d0d47bfc75be8af04499d11470f1996691c0d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
