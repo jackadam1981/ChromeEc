@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95822333_21ec567f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-04T18:56:22Z",
+      "side": 1,
+      "message": "This CL fails with:\n```\nundefined reference to `hibernate_wake_pins\u0027\nundefined reference to `hibernate_wake_pins_used\u0027\n```",
+      "revId": "9635489cd3f54479585424f28dd4a423b5ae7aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
