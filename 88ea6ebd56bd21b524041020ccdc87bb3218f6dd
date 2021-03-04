@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b1c928d_a610818d",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "I will fix usb related things in another CL.",
+      "parentUuid": "0b68c9ff_2d1dd274",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 23
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9166a892_c8fc5791",
         "filename": "baseboard/cherry/baseboard.h",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-04T03:43:24Z",
       "side": 1,
       "message": "ADC2 is defined as SKU ID.\nhttps://docs.google.com/spreadsheets/d/1Hx00NeKzntWUxgnf5og7hNKH-CB1aCkGAqCql3E2G9Y/edit#gid\u003d1953223066\u0026range\u003dV25:AA25",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 15
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0464856_2fab6226",
+        "filename": "baseboard/cherry/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9166a892_c8fc5791",
       "range": {
         "startLine": 187,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "911e8355_33e432ba",
+        "filename": "baseboard/cherry/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "I believe this need lots of revamp (?)\nThe change here is just for modifying the pin names to make it compilable.",
+      "parentUuid": "f91205db_463a0f65",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7be9df98_cdc9005c",
         "filename": "board/cherry/gpio.inc",
         "patchSetId": 3
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-04T03:43:24Z",
       "side": 1,
       "message": "Base IMU part number is changed to ICM-40608.",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b1c514_aeac287b",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "sensor related change will be in https://crrev.com/c/2730519/1",
+      "parentUuid": "7be9df98_cdc9005c",
       "range": {
         "startLine": 33,
         "startChar": 9,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb93e66_47a555ce",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "same above",
+      "parentUuid": "1495c381_17afe5f3",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e279dff_048d8a72",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-03-04T03:43:24Z",
       "side": 1,
       "message": "Is this for output low in default? But USB_C1_INT_ODL is an EC input pin.",
+      "range": {
+        "startLine": 41,
+        "startChar": 40,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda8d7a1_68d24f6b",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e279dff_048d8a72",
       "range": {
         "startLine": 41,
         "startChar": 40,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc0f0a8_c7cc5502",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12a6dd38_36179091",
+      "range": {
+        "startLine": 83,
+        "startChar": 40,
+        "endLine": 83,
+        "endChar": 52
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b685f199_adeaf5f0",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-03-04T03:43:24Z",
       "side": 1,
       "message": "This is an EC output pin to control external regulator.",
+      "range": {
+        "startLine": 85,
+        "startChar": 40,
+        "endLine": 85,
+        "endChar": 50
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e275208_6eb84710",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b685f199_adeaf5f0",
       "range": {
         "startLine": 85,
         "startChar": 40,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "573c01dd_f415abe6",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d002775b_66f2fd52",
+      "range": {
+        "startLine": 86,
+        "startChar": 40,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dd0b0d1_907ca161",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48adadfd_2d8e3742",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dd0b0d1_907ca161",
+      "range": {
+        "startLine": 87,
+        "startChar": 40,
+        "endLine": 87,
+        "endChar": 50
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f403e29a_fbd49404",
@@ -244,6 +484,30 @@
       "writtenOn": "2021-03-04T03:43:24Z",
       "side": 1,
       "message": "This is OD input with external PU, so internal PD is not required",
+      "range": {
+        "startLine": 127,
+        "startChar": 53,
+        "endLine": 127,
+        "endChar": 67
+      },
+      "revId": "88ea6ebd56bd21b524041020ccdc87bb3218f6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "319ab6eb_934f1c50",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-04T05:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f403e29a_fbd49404",
       "range": {
         "startLine": 127,
         "startChar": 53,
