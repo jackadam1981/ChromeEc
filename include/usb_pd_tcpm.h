@@ -41,7 +41,11 @@ enum tcpc_cc_pull {
 };
 
 /* Pull-up values we apply as a SRC to advertise different current limits */
-enum tcpc_rp_value {
+enum tcpc_rp_value
+#ifdef __cplusplus
+	: int
+#endif
+{
 	TYPEC_RP_USB = 0,
 	TYPEC_RP_1A5 = 1,
 	TYPEC_RP_3A0 = 2,
