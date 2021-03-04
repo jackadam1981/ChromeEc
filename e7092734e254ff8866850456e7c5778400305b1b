@@ -124,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de563ea_663ace36",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 42
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-04T22:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9391a3c_158e4a0b",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "e7092734e254ff8866850456e7c5778400305b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81e315bd_4507d69f",
@@ -137,6 +161,30 @@
       "writtenOn": "2021-03-04T21:39:16Z",
       "side": 1,
       "message": "This is being enabled in a follow-up CL. Do you still need this?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "e7092734e254ff8866850456e7c5778400305b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cc61157_c3b47696",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 42
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-04T22:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81e315bd_4507d69f",
       "range": {
         "startLine": 88,
         "startChar": 0,
