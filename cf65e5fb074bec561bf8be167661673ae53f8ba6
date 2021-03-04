@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14841b40_8144a61b",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-04T19:59:19Z",
+      "side": 1,
+      "message": "This is a bit confusing (to me). I would have thought this should be a choice in Kconfig from reading this, maybe change the first sentence to:\n\nSupported debug mode can be set at runtime via `hcdebug [mode]` where mode is one of:",
+      "range": {
+        "startLine": 513,
+        "startChar": 3,
+        "endLine": 521,
+        "endChar": 21
+      },
+      "revId": "cf65e5fb074bec561bf8be167661673ae53f8ba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
