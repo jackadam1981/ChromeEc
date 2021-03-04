@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b33815_4d207284",
+        "filename": "board/brya/board.h",
+        "patchSetId": 42
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-04T21:39:16Z",
+      "side": 0,
+      "message": "Why is this being undef\u0027ed if it can not be tested right now?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "0aa292dbbc4d03bf4681a59f1877b7cdcdfd1a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

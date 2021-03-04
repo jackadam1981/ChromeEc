@@ -81,6 +81,70 @@
       "parentUuid": "73c0e958_bc539257",
       "revId": "e7092734e254ff8866850456e7c5778400305b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86af130c_1479b9e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-04T21:39:16Z",
+      "side": 1,
+      "message": "I think there is value in splitting it up further. It is not only easier to review, but also helps when looking back at why certain changes were made. This code will be used as reference by our partners. So, commit history with appropriate reason behind selecting CONFIGS, etc. will be very helpful.\n\nI see that this change can be split into at least the following logical blocks:\n1. Keyboard enabling\n2. Power/volume button enabling\n3. Add GPIO names that are expected by common code\n4. Chipset enabling",
+      "parentUuid": "b52aeac8_8785a10c",
+      "revId": "e7092734e254ff8866850456e7c5778400305b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9391a3c_158e4a0b",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 42
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-04T21:39:16Z",
+      "side": 1,
+      "message": "I think we should enable this later on. It requires AP changes as well for enabling DPTF.",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "e7092734e254ff8866850456e7c5778400305b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e315bd_4507d69f",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 42
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-04T21:39:16Z",
+      "side": 1,
+      "message": "This is being enabled in a follow-up CL. Do you still need this?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "e7092734e254ff8866850456e7c5778400305b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
