@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b80d8df5_e85b265f",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-04T20:07:08Z",
+      "side": 1,
+      "message": "since this depends on PLATFORM_EC_HOSTCMD, this can just be \"default y\"",
+      "range": {
+        "startLine": 508,
+        "startChar": 9,
+        "endLine": 508,
+        "endChar": 28
+      },
+      "revId": "cf65e5fb074bec561bf8be167661673ae53f8ba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14841b40_8144a61b",
         "filename": "zephyr/Kconfig",
         "patchSetId": 1
