@@ -176,7 +176,11 @@
 #include "module_id.h"
 #include "registers.h"
 
-enum tcpc_rp_value;
+enum tcpc_rp_value
+#ifdef __cplusplus
+	: int
+#endif
+	;
 
 /* PWM channels */
 enum pwm_channel {

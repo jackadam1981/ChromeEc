@@ -12,7 +12,11 @@
 #include "gpio.h"
 #include "task_id.h"
 
-enum power_state {
+enum power_state
+#ifdef __cplusplus
+	:int
+#endif
+{
 	/* Steady states */
 	POWER_G3 = 0,	/*
 			 * System is off (not technically all the way into G3,
