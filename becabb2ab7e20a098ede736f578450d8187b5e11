@@ -34,6 +34,52 @@
       "parentUuid": "4ae41ae1_c2b4027a",
       "revId": "becabb2ab7e20a098ede736f578450d8187b5e11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8745a3a_c142c139",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2454,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-04T15:43:47Z",
+      "side": 1,
+      "message": "Can you name this and add the define to usb_pd.h?",
+      "range": {
+        "startLine": 2454,
+        "startChar": 6,
+        "endLine": 2454,
+        "endChar": 12
+      },
+      "revId": "becabb2ab7e20a098ede736f578450d8187b5e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e987a9e5_f922f97b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-04T15:43:47Z",
+      "side": 1,
+      "message": "Is this in case we were in the middle of PRSwap or for the case of Vbus removed and then it was not?  If it is for PRSwap, then maybe clearing TC_FLAGS_PR_SWAP_IN_PROGRESS is in order",
+      "range": {
+        "startLine": 2460,
+        "startChar": 0,
+        "endLine": 2462,
+        "endChar": 3
+      },
+      "revId": "becabb2ab7e20a098ede736f578450d8187b5e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
