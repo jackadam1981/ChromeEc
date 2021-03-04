@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35d70541_86d31d7e",
+        "filename": "chip/stm32/config-stm32g473xc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-04T18:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfa3ed77_0dd79545",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e0ebda32499684a9eeac42e8e370448221850a89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1abbd45c_cd262a97",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-03-04T05:41:22Z",
       "side": 1,
       "message": "These mentions need to be updated.",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "e0ebda32499684a9eeac42e8e370448221850a89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a8bf79_a0f1a4a3",
+        "filename": "chip/stm32/config-stm32g473xc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-04T18:17:02Z",
+      "side": 1,
+      "message": "I have corrected this comment for the stm32g473xc.h. I had did this CL so long ago that I forgot I didn\u0027t update all this stuff.",
+      "parentUuid": "1abbd45c_cd262a97",
       "range": {
         "startLine": 7,
         "startChar": 22,
@@ -101,6 +149,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4b9172d_215c3d46",
+        "filename": "chip/stm32/config-stm32g473xc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-04T18:17:02Z",
+      "side": 1,
+      "message": "I have updated the SRAM info.",
+      "parentUuid": "bfdbc35c_7a3ef011",
+      "revId": "e0ebda32499684a9eeac42e8e370448221850a89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e0104bc_fd434147",
         "filename": "chip/stm32/config-stm32g473xc.h",
         "patchSetId": 16
@@ -112,6 +178,24 @@
       "writtenOn": "2021-03-04T05:41:22Z",
       "side": 1,
       "message": "datasheet says supports 4?",
+      "revId": "e0ebda32499684a9eeac42e8e370448221850a89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe49aa3_14565962",
+        "filename": "chip/stm32/config-stm32g473xc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-04T18:17:02Z",
+      "side": 1,
+      "message": "It does support 4, but the 4th one is some special use port. But, I think it can be used as a default i2c port too.",
+      "parentUuid": "7e0104bc_fd434147",
       "revId": "e0ebda32499684a9eeac42e8e370448221850a89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
