@@ -1722,7 +1722,10 @@ static void rch_report_error_entry(const int port)
 
 	/*
 	 * If the state was entered because a message was received,
-	 * this message is passed to the Policy Engine.
+	 * this message is passed to the Policy Engine. Note, if an expected
+	 * chunk is never received, we will end up here too. In this timeout
+	 * case, we don't need to report an error to the PE since the full
+	 * message was never received in that case.
 	 */
 	if (RCH_CHK_FLAG(port, PRL_FLAGS_MSG_RECEIVED)) {
 		RCH_CLR_FLAG(port, PRL_FLAGS_MSG_RECEIVED);
@@ -1733,9 +1736,6 @@ static void rch_report_error_entry(const int port)
 		pe_message_received(port);
 		/* Report error */
 		pe_report_error(port, ERR_RCH_MSG_REC, prl_rx[port].sop);
-	} else {
-		/* Report error */
-		pe_report_error(port, ERR_RCH_CHUNKED, prl_rx[port].sop);
 	}
 }
 
