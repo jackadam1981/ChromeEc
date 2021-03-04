@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d1fb33_a65a775f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-04T03:29:05Z",
+      "side": 1,
+      "message": "From Google\u0027s information as below, EC_ENTERING_RW will be rerouted to GPC7 because of security concern.\nBased on it and CL-2719104, we are preparing EC patch for Boten/Botenflex.",
+      "revId": "28fc8e79bcee7ae997f0f638dd0914f5401fa475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
