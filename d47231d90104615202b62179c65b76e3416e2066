@@ -22,6 +22,30 @@
       },
       "revId": "d47231d90104615202b62179c65b76e3416e2066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2271a7aa_0e9c1170",
+        "filename": "board/brya/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-04T19:55:49Z",
+      "side": 0,
+      "message": "unlikely, but we only have one pow-tech battery to support\non this device right now. we need to get the definitive\ndevice_name from the manufacturer.",
+      "parentUuid": "07da9daf_dc1ffd4c",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 24
+      },
+      "revId": "d47231d90104615202b62179c65b76e3416e2066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
