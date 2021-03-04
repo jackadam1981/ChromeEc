@@ -159,27 +159,6 @@ static void baseboard_set_dp_lane_control(void)
 		gpio_set_level(GPIO_MST_RST_L, 1);
 	}
 }
-
-#else
-static void baseboard_set_usbc_sink_mode(void)
-{
-	uint32_t cr;
-
-	/*
-	 * Bare minimum code required to enable UCPD peripheral and apply Rd to
-	 * the CC lines. This is only applied in RO.
-	 */
-	/* Ensure that clock to UCPD is enabled */
-	STM32_RCC_APB1ENR2 |= STM32_RCC_APB1ENR2_UPCD1EN;
-	/* enable the peripheral */
-	STM32_UCPD_CFGR1(0) |= STM32_UCPD_CFGR1_UCPDEN;
-	/* Apply Rd to both CC lines */
-	cr = STM32_UCPD_CR(0);
-	cr |= STM32_UCPD_CR_ANAMODE | STM32_UCPD_CR_CCENABLE_MASK;
-	STM32_UCPD_CR(0) = cr;
-
-	CPRINTS("usbc: CR = 0x%x", STM32_UCPD_CR(0));
-}
 #endif
 
 
@@ -204,7 +183,9 @@ static void baseboard_init(void)
 #else
 	/* Turn on power rails */
 	board_power_sequence(1);
-	baseboard_set_usbc_sink_mode();
+	/* Set up host port usbc to present Rd on CC lines */
+	if(baseboard_usbc_init(USB_PD_PORT_HOST))
+		CPRINTS("usbc: Failed to set up sink path");
 #endif
 }
 /*
