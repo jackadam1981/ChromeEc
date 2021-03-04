@@ -179,6 +179,9 @@ static void baseboard_set_usbc_sink_mode(void)
 	STM32_UCPD_CR(0) = cr;
 
 	CPRINTS("usbc: CR = 0x%x", STM32_UCPD_CR(0));
+
+	/* Disable dead battery resistors in UCPD */
+	STM32_PWR_CR3 |= STM32_PWR_CR3_UCPD1_DBDIS;
 }
 #endif
 
@@ -202,9 +205,13 @@ static void baseboard_init(void)
 	dock_state_change = 0;
 	baseboard_set_led(dock_mf);
 #else
+	int rv;
+
 	/* Turn on power rails */
 	board_power_sequence(1);
 	baseboard_set_usbc_sink_mode();
+	rv = baseboard_ppc_init(0);
+	CPRINTS("ppc init result = %d", rv);
 #endif
 }
 /*
