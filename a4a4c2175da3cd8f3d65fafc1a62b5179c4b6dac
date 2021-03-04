@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c76ec95d_4a1fd4cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-04T01:35:36Z",
+      "side": 1,
+      "message": "i\u0027ve tested this on brya.\n\n@intel, the RVP may be good platform to check since it implements\nseparate power control for the retimers.",
+      "parentUuid": "f8f44501_7c558795",
+      "revId": "a4a4c2175da3cd8f3d65fafc1a62b5179c4b6dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89e51b8b_fcca1d78",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-03T16:09:03Z",
       "side": 1,
       "message": "Use bool",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "a4a4c2175da3cd8f3d65fafc1a62b5179c4b6dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b410770_5bff928c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-04T01:35:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89e51b8b_fcca1d78",
       "range": {
         "startLine": 44,
         "startChar": 7,
