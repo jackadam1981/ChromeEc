@@ -46,6 +46,30 @@
       },
       "revId": "76a685899e3c6ede4d4571fc6829e4d9c8ed11e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ac8f80_b68c0806",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-04T17:35:35Z",
+      "side": 0,
+      "message": "ACK, looks like line 932 through 937 should come after if case ends.\nAlso this CL is not a cleanup then.",
+      "parentUuid": "d3f83e27_b932cddc",
+      "range": {
+        "startLine": 932,
+        "startChar": 41,
+        "endLine": 932,
+        "endChar": 60
+      },
+      "revId": "76a685899e3c6ede4d4571fc6829e4d9c8ed11e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
