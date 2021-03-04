@@ -305,6 +305,8 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
 
 static void board_init(void)
 {
+	int board_version;
+
 	/* If the reset cause is external, pulse PMIC force reset. */
 	if (system_get_reset_flags() == EC_RESET_FLAG_RESET_PIN) {
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 0);
@@ -328,6 +330,10 @@ static void board_init(void)
 
 	/* Enable BC12 interrupt */
 	gpio_enable_interrupt(GPIO_BC12_EC_INT_ODL);
+
+	board_version = board_get_version();
+	if (board_version == 8 || board_version == 9)
+		gmr_tablet_switch_disable();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
