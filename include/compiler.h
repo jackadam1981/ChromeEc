@@ -21,4 +21,20 @@
 #define typeof(x)	__typeof__(x)
 #endif
 
+/**
+ * ISO C forbids forward references to enum types, but gcc allows it as long as
+ * the "-pedantic" flag is not used.
+ *
+ * In C++11 and newer, forward references to enums are only allowed if the
+ * underlying type is specified.
+ *
+ * New uses of this macro are strongly discouraged; instead of forward
+ * declaring the enum, provide the definition.
+ */
+#ifdef __cplusplus
+#define FORWARD_DECLARE_ENUM(x) enum x : int
+#else
+#define FORWARD_DECLARE_ENUM(x) enum x
+#endif /* __cplusplus */
+
 #endif /* __CROS_EC_COMPILER_H */

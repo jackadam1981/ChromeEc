@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_HOST_COMMAND_H
 #define __CROS_EC_HOST_COMMAND_H
 
+#include "compiler.h"
 #include "common.h"
 #include "ec_commands.h"
 enum power_state;
@@ -191,6 +192,8 @@ host_event_t host_get_events(void);
 int host_is_event_set(enum host_event_code event);
 
 #ifdef CONFIG_HOSTCMD_X86
+
+FORWARD_DECLARE_ENUM(power_state);
 
 /*
  * Get lazy wake masks for the sleep state provided
