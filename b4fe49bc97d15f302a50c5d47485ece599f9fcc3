@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "605a1734_ac01e634",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-04T00:17:49Z",
+      "side": 1,
+      "message": "Not really, we still need to do the same for EC mode entry - Just that for EC mode, we jump to the next alt mode (i.e. TBT in this case) entry if all the conditions fail - So we\u0027ll essentially be entering TBT mode",
+      "parentUuid": "2d955f24_ef853903",
+      "revId": "b4fe49bc97d15f302a50c5d47485ece599f9fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cc468f8_63a7991c",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-03T18:51:17Z",
       "side": 1,
       "message": "I see  that enter_usb_cable_is_capable does not contain a check for the TBT_CABLE_PASSIVE case. Should that be changed?\n\n(Related: comment in usb_pd_dpm.c about overlap between this function and other functions)",
+      "revId": "b4fe49bc97d15f302a50c5d47485ece599f9fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a998689c_c54a3087",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-04T00:17:49Z",
+      "side": 1,
+      "message": "I don\u0027t think that needs to be changed - For both TBT_CABLE_PASSIVE and TBT_CABLE_ACTIVE, the cable is capable of entering USB4 mode - Just that with TBT_CABLE_ACTIVE, we need to enter TBT SOP\u0027 -\u003e Enter USB4 while with TBT_CABLE_PASSIVE, we directly enter USB4.",
+      "parentUuid": "6cc468f8_63a7991c",
       "revId": "b4fe49bc97d15f302a50c5d47485ece599f9fcc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b95fcc79_d48e191b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-04T00:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dec51135_9ab9153e",
+      "revId": "b4fe49bc97d15f302a50c5d47485ece599f9fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33ab04f5_d09508b1",
@@ -65,6 +119,30 @@
       "writtenOn": "2021-03-03T18:51:17Z",
       "side": 1,
       "message": "Do you need this enter_usb_is_valid check here, or are all the checks already covered by\n (enter_usb_port_partner_is_capable \u0026\u0026 !tbt_cable_entry_required)\n?",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 231,
+        "endChar": 37
+      },
+      "revId": "b4fe49bc97d15f302a50c5d47485ece599f9fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2223e30_65cbb3f2",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-04T00:17:49Z",
+      "side": 1,
+      "message": "Don\u0027t need the check",
+      "parentUuid": "33ab04f5_d09508b1",
       "range": {
         "startLine": 231,
         "startChar": 8,
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63719a2c_fbdef3e1",
+        "filename": "include/usb_mode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-04T00:17:49Z",
+      "side": 1,
+      "message": "Don\u0027t need the function anymore",
+      "parentUuid": "78faaa9c_b16db172",
+      "range": {
+        "startLine": 43,
+        "startChar": 19,
+        "endLine": 43,
+        "endChar": 43
+      },
+      "revId": "b4fe49bc97d15f302a50c5d47485ece599f9fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2faf2e0d_a79006ae",
@@ -111,6 +213,30 @@
       "writtenOn": "2021-03-03T18:51:17Z",
       "side": 1,
       "message": "All the checks in this function are for the cable. If the port partner supports USB4, then it will be ready when the cable is ready. I would explicitly limit the description (and name, see below) to the cable.",
+      "range": {
+        "startLine": 46,
+        "startChar": 31,
+        "endLine": 46,
+        "endChar": 48
+      },
+      "revId": "b4fe49bc97d15f302a50c5d47485ece599f9fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c713d100_de63fddc",
+        "filename": "include/usb_mode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-04T00:17:49Z",
+      "side": 1,
+      "message": "Don\u0027t need the function anymore",
+      "parentUuid": "2faf2e0d_a79006ae",
       "range": {
         "startLine": 46,
         "startChar": 31,
@@ -138,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ffa660_dcc20d44",
+        "filename": "include/usb_mode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-04T00:17:49Z",
+      "side": 1,
+      "message": "Don\u0027t need the function anymore",
+      "parentUuid": "faa781c0_0d108a64",
+      "revId": "b4fe49bc97d15f302a50c5d47485ece599f9fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60a3335b_9ec7dc75",
@@ -151,6 +295,24 @@
       "writtenOn": "2021-03-03T18:51:17Z",
       "side": 1,
       "message": "I think the name of this function should reflect that it is specific to the USB4 flow, perhaps tbt_cable_entry_required_for_usb4.",
+      "revId": "b4fe49bc97d15f302a50c5d47485ece599f9fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98bce348_16b6b9cb",
+        "filename": "include/usb_tbt_alt_mode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-04T00:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a3335b_9ec7dc75",
       "revId": "b4fe49bc97d15f302a50c5d47485ece599f9fcc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
