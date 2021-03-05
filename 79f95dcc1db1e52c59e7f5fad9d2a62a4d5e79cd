@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ebc6afa_0bb7f07a",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-05T00:39:50Z",
+      "side": 1,
+      "message": "Just a note: We will lose information about the last transition when reporting back to the host in case of the race condition. But that shouldn\u0027t really cause any problem.",
+      "range": {
+        "startLine": 188,
+        "startChar": 26,
+        "endLine": 188,
+        "endChar": 50
+      },
+      "revId": "79f95dcc1db1e52c59e7f5fad9d2a62a4d5e79cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
