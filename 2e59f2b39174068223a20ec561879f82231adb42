@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba60290d_bf1140ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-05T06:42:54Z",
+      "side": 1,
+      "message": "add this def. to your patch, i\u0027m taking it out of mine since it fits better here.\n\nboard.h:\n#define GMR_TABLET_MODE_GPIO_L\t\tGPIO_TABLET_MODE_ODL",
+      "revId": "2e59f2b39174068223a20ec561879f82231adb42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
