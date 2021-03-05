@@ -46,6 +46,30 @@
       },
       "revId": "073e28b3e603cbc0d89f7591595014c91c8ee915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d913fed_25e46f74",
+        "filename": "board/hammer/variants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-05T02:50:24Z",
+      "side": 1,
+      "message": "That\u0027s a good case for ignoring the presubmit ,-P",
+      "parentUuid": "03ab71d6_ac2a9380",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 50
+      },
+      "revId": "073e28b3e603cbc0d89f7591595014c91c8ee915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
