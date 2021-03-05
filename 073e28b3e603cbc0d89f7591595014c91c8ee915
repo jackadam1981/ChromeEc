@@ -22,6 +22,30 @@
       },
       "revId": "073e28b3e603cbc0d89f7591595014c91c8ee915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03ab71d6_ac2a9380",
+        "filename": "board/hammer/variants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2021-03-05T02:47:21Z",
+      "side": 1,
+      "message": "Presubmit requests no leading spaces, otherwise it cannot pass.\n```\n[COMMIT 1/1 36d67409d204] hammer: Add don board\n[FAILED] chromiumos/platform/ec: checkpatch_check       \n    /mnt/host/source/src/repohooks/checkpatch.pl errors/warnings\n    \n    WARNING: please, no spaces at the start of a line\n    #64: FILE: board/hammer/variants.h:139:\n    +   defined(BOARD_MOONBALL) || defined(BOARD_WHISKERS)$\n```",
+      "parentUuid": "02c80749_24ac66f3",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 50
+      },
+      "revId": "073e28b3e603cbc0d89f7591595014c91c8ee915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
