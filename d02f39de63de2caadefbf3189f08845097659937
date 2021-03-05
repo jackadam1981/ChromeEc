@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5991e9_37f65826",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-05T17:21:19Z",
+      "side": 1,
+      "message": "This code is very impressive but also very difficult to review. Overall it seems correct to me but may I suggest breaking this out to different commits? I think it would make this a lot easier. Each of mutex, rotation reference, sensor config, etc can be different changes.\n\nThen each of the drivers can be added separately.\n\nI do like seeing how things are used so I appreciate the changes to the volteer board being in this. I think you can even keep that pattern by adding to the sensors dtsi bit by bit as you add the features.",
+      "revId": "d02f39de63de2caadefbf3189f08845097659937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "928746b0_bd68e82c",
+        "filename": "zephyr/shim/src/motionsense_driver/bma255-drvinfo.inc",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-05T17:21:19Z",
+      "side": 1,
+      "message": "Could you rename the drvinfo files to use drinfo as the prefix instead of suffix? It would align better with the drvdata files and it would allow them to be clustered together when alpha sorted.",
+      "revId": "d02f39de63de2caadefbf3189f08845097659937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
