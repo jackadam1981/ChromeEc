@@ -52,6 +52,24 @@
       "parentUuid": "052f6c61_55a9d99a",
       "revId": "9292a3e32fba55546e72659592b987020b2806c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66021380_f5b4f7e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-05T02:24:13Z",
+      "side": 1,
+      "message": "Scott, it sounds like you\u0027re a couple steps ahead of me on getting PD FAFT set up. I think what you have is pretty good coverage. For the sake of completeness, can you try with .79 in RO and .81 + this patch in RW?",
+      "parentUuid": "1b94e2c0_c2dc8e20",
+      "revId": "9292a3e32fba55546e72659592b987020b2806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
