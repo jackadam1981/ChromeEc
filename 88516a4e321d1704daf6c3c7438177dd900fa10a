@@ -16,6 +16,24 @@
       "message": "Do you see these being cleared somewhere before hibernation?  The only location in the driver where I see us clearing these fields would be in tcpm_release() and I don\u0027t believe we\u0027re calling that function in the TCPMv2 stack",
       "revId": "88516a4e321d1704daf6c3c7438177dd900fa10a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a7bf4c6_0c361c09",
+        "filename": "board/sasuke/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-03-05T00:55:45Z",
+      "side": 1,
+      "message": "Could we apply this?",
+      "parentUuid": "410578ad_2f65e18b",
+      "revId": "88516a4e321d1704daf6c3c7438177dd900fa10a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
