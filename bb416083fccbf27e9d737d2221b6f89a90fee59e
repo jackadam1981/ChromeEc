@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37961262_15d915c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-05T19:47:02Z",
+      "side": 1,
+      "message": "I checked that the FAFT tests don\u0027t use the \"adc\" command so it\u0027s safe to change this.",
+      "revId": "bb416083fccbf27e9d737d2221b6f89a90fee59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
