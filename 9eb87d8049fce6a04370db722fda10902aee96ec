@@ -16,6 +16,23 @@
       "message": "sys integration val team found that with this patch After every warm reboot with USB4 connected via MBR cable is detecting as USB\u003d1 instead of USB4\u003d1.",
       "revId": "9eb87d8049fce6a04370db722fda10902aee96ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4825810_07adcf3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-05T17:16:10Z",
+      "side": 1,
+      "message": "@Kranthi, looks like we have issues with cable detection for MBR cable cross bug - b:181945962. That is out of this patch\u0027s scope",
+      "revId": "9eb87d8049fce6a04370db722fda10902aee96ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
