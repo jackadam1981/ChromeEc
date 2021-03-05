@@ -107,13 +107,13 @@ void chipset_pre_init_callback(void)
 	/* Enable 5.0V and 3.3V rails, and wait for Power Good */
 	power_5v_enable(task_get_current(), 1);
 
+	/* Enable PMIC */
+	gpio_set_level(GPIO_PMIC_EN, 1);
+
 	gpio_set_level(GPIO_EN_PP3300, 1);
 	while (!gpio_get_level(GPIO_PP5000_PG) ||
 	       !gpio_get_level(GPIO_PP3300_PG))
 		;
-
-	/* Enable PMIC */
-	gpio_set_level(GPIO_PMIC_EN, 1);
 }
 
 /* Called on AP S5 -> S3 transition */
