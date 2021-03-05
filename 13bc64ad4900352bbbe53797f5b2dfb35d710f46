@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aacf992a_d95432ef",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-05T09:21:27Z",
+      "side": 1,
+      "message": "oh.. got it.",
+      "parentUuid": "9dff836f_bcbb7297",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 42
+      },
+      "revId": "13bc64ad4900352bbbe53797f5b2dfb35d710f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55516774_a1c3f813",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 2
