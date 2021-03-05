@@ -106,6 +106,24 @@
       "parentUuid": "d60a6a6d_89d711ac",
       "revId": "9292a3e32fba55546e72659592b987020b2806c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "841ef15b_d80d399e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-05T19:15:20Z",
+      "side": 1,
+      "message": "Thanks Scott; this CL wasn\u0027t addressing that issue directly, we can continue tracking on the bug. But this CL doesn\u0027t seem to impact FAFT.",
+      "parentUuid": "5a4dd3f9_b4cafbfb",
+      "revId": "9292a3e32fba55546e72659592b987020b2806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
