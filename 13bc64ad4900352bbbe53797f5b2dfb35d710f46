@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a69facf4_7d9881d8",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-03-05T10:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55516774_a1c3f813",
+      "range": {
+        "startLine": 441,
+        "startChar": 1,
+        "endLine": 441,
+        "endChar": 47
+      },
+      "revId": "13bc64ad4900352bbbe53797f5b2dfb35d710f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e2dc6e0_4e7cd47f",
@@ -132,6 +156,30 @@
       "writtenOn": "2021-03-05T03:15:10Z",
       "side": 1,
       "message": "Create macros for all these settings, for example:\n\n#define ISL9241_CONTROL1_SWITCHING_FREQ_1420KHZ  0\n#define ISL9241_CONTROL1_SWITCHING_FREQ_1180KHZ  1",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "13bc64ad4900352bbbe53797f5b2dfb35d710f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df77fc74_07b3720f",
+        "filename": "driver/charger/isl9241.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-03-05T10:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e2dc6e0_4e7cd47f",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -165,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5602dcad_8c8dec70",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3042,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-03-05T10:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b0b011_c760cbfa",
+      "range": {
+        "startLine": 3042,
+        "startChar": 36,
+        "endLine": 3042,
+        "endChar": 45
+      },
+      "revId": "13bc64ad4900352bbbe53797f5b2dfb35d710f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9525f945_c4976d08",
@@ -178,6 +250,30 @@
       "writtenOn": "2021-03-05T03:15:10Z",
       "side": 1,
       "message": "Add: \"The valid frequency settings are found in driver/charger/isl9241.h.\"",
+      "range": {
+        "startLine": 3043,
+        "startChar": 38,
+        "endLine": 3043,
+        "endChar": 39
+      },
+      "revId": "13bc64ad4900352bbbe53797f5b2dfb35d710f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2344c9c_641cff5f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3043,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-03-05T10:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9525f945_c4976d08",
       "range": {
         "startLine": 3043,
         "startChar": 38,
