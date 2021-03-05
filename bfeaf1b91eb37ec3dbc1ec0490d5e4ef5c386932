@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b205becb_82fb9f69",
+        "filename": "baseboard/intelrvp/npcx_ec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-05T18:54:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe21c556_a597661d",
+      "range": {
+        "startLine": 40,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "bfeaf1b91eb37ec3dbc1ec0490d5e4ef5c386932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f81465fd_4d33ebb1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-02T20:09:09Z",
       "side": 1,
       "message": "NPCX_MFT_MODULE_3",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "bfeaf1b91eb37ec3dbc1ec0490d5e4ef5c386932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5cbd435_560a8004",
+        "filename": "baseboard/intelrvp/npcx_ec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-05T18:54:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f81465fd_4d33ebb1",
       "range": {
         "startLine": 48,
         "startChar": 12,
@@ -78,6 +126,24 @@
       "side": 1,
       "message": "Yes this is the correct change, please do it.",
       "parentUuid": "30921285_0f53701f",
+      "revId": "bfeaf1b91eb37ec3dbc1ec0490d5e4ef5c386932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29dba32_9185b39d",
+        "filename": "baseboard/intelrvp/npcx_ec.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-05T18:54:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80117ceb_a1c429e8",
       "revId": "bfeaf1b91eb37ec3dbc1ec0490d5e4ef5c386932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
