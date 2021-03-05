@@ -145,8 +145,8 @@ static int rt1715_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 
 /*
  * See b/179256608#comment26 for explanation.
- * Disable 24MHz oscillator and enable LPM. Upon exit from LPM, the LPEN will be
- * reset to 0.
+ * Disable 24MHz oscillator and enable LPM, default to Rp. Upon exit from LPM,
+ * the LPEN will be reset to 0.
  *
  * The exit condition for LPM is CC status change, and the wakeup interrupt will
  * be set.
@@ -160,8 +160,10 @@ static int rt1715_enter_low_power_mode(int port)
 	rv = tcpc_read(port, RT1715_REG_PWR, &regval);
 	if (rv)
 		return rv;
-
-	regval |= RT1715_REG_PWR_BMCIO_LPEN;
+	if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
+		regval |= RT1715_REG_PWR_BMCIO_LPEN | RT1715_REG_BMCIO_LPRD;
+	else
+		regval |= RT1715_REG_PWR_BMCIO_LPEN;
 	regval &= ~RT1715_REG_PWR_BMCIO_OSCEN;
 	rv = tcpc_write(port, RT1715_REG_PWR, regval);
 	if (rv)
