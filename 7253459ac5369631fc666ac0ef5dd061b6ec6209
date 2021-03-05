@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20096e5c_691a653d",
+        "filename": "zephyr/projects/volteer/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-05T20:05:38Z",
+      "side": 1,
+      "message": "Reference the device tree name here directly.\n\n#define CONFIG_TEMP_SENSOR_POWER_GPIO NAMED_GPIO(pg_ec_dsw_pwrok)\n\nWe typically expect that we will convert all CONFIG_* options to Kconfig, but that doesn\u0027t make sense for CONFIG_TEMP_SENSOR_POWER_GPIO.  File a P3 bug to refactor/rename CONFIG_TEMP_SENSOR_POWER_GPIO so it can be removed from config.h and doesn\u0027t look so out of place here.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 58
+      },
+      "revId": "7253459ac5369631fc666ac0ef5dd061b6ec6209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
