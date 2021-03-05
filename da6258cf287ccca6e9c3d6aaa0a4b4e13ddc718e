@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba1812fe_604d2dd6",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-05T03:39:13Z",
+      "side": 1,
+      "message": "Just a note: Still need to figure out if SRTCRST# should be asserted or if we need a hardware change (b/174852344)",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "da6258cf287ccca6e9c3d6aaa0a4b4e13ddc718e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
