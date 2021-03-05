@@ -53,11 +53,6 @@
 
 #define CONFIG_BOARD_HAS_RTC_RESET
 
-/* Thermal features */
-
-#define CONFIG_THROTTLE_AP
-#define CONFIG_CHIPSET_CAN_THROTTLE
-
 /* Common Keyboard Defines */
 #define CONFIG_CMD_KEYBOARD
 #define CONFIG_KEYBOARD_BOARD_CONFIG
