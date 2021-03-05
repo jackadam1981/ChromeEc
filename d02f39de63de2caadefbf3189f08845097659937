@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d011022_04cf9063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-05T17:31:21Z",
+      "side": 1,
+      "message": "Hm... Let me try..",
+      "parentUuid": "0d5991e9_37f65826",
+      "revId": "d02f39de63de2caadefbf3189f08845097659937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "928746b0_bd68e82c",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-05T17:21:19Z",
       "side": 1,
       "message": "Could you rename the drvinfo files to use drinfo as the prefix instead of suffix? It would align better with the drvdata files and it would allow them to be clustered together when alpha sorted.",
+      "revId": "d02f39de63de2caadefbf3189f08845097659937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "678a796e_85e3f6a6",
+        "filename": "zephyr/shim/src/motionsense_driver/bma255-drvinfo.inc",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-05T17:31:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "928746b0_bd68e82c",
       "revId": "d02f39de63de2caadefbf3189f08845097659937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
