@@ -22,6 +22,30 @@
       },
       "revId": "13bc64ad4900352bbbe53797f5b2dfb35d710f46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dff836f_bcbb7297",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-05T02:39:26Z",
+      "side": 1,
+      "message": "I asked to move to baseboard; we\u0027re making this change on all devices in HW.",
+      "parentUuid": "d8cb4418_6b45cd44",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 42
+      },
+      "revId": "13bc64ad4900352bbbe53797f5b2dfb35d710f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
