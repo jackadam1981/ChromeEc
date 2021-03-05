@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efffcbb8_1eb96785",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-03-05T22:31:15Z",
+      "side": 1,
+      "message": "Isn\u0027t this part of logic below?",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 2
+      },
+      "revId": "f66e005d1523758f0c9bd47f68c901c9db987697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e835828_5f4bfe97",
         "filename": "include/usb_mode.h",
         "patchSetId": 2
