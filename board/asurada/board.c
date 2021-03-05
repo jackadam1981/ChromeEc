@@ -316,3 +316,9 @@ int board_accel_force_mode_mask(void)
 		return 0;
 	return BIT(LID_ACCEL);
 }
+
+__override int syv682x_board_is_syv682c(int port)
+{
+	return board_get_version() > 2;
+}
+
