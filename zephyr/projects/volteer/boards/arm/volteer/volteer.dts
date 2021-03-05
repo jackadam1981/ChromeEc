@@ -536,6 +536,13 @@
 	flash0: flash@10070000 {
 		reg = <0x10070000 0x40000>;
 	};
+
+	/delete-node/ memory@200c0000;
+	sram0: memory@200b0000 {
+		compatible = "mmio-sram";
+		reg = <0x200B0000 DT_SIZE_K(126)>;
+	};
+
 };
 
 &cpu0 {
