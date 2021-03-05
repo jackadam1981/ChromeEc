@@ -19,7 +19,7 @@
 
 #define TIMER_SYSTEM 5
 #define TIMER_EVENT 3
-#define TIMER_CLOCK_MHZ 26
+#define TIMER_CLOCK_MHZ 32
 #define OVERFLOW_TICKS (TIMER_CLOCK_MHZ * 0x100000000 - 1)
 
 /* High 32-bit for system timer. */
@@ -129,14 +129,14 @@ int __hw_clock_source_init(uint32_t start_t)
 		timer_reset(t);
 
 	/* System timestamp timer */
-	timer_set_clock(TIMER_SYSTEM, TIMER_CLK_SRC_26M);
+	timer_set_clock(TIMER_SYSTEM, TIMER_CLK_SRC_BCLK);
 	sys_high = TIMER_CLOCK_MHZ - 1;
 	timer_set_reset_value(TIMER_SYSTEM, 0xffffffff);
 	task_enable_irq(SCP_IRQ_TIMER(TIMER_SYSTEM));
 	timer_enable(TIMER_SYSTEM);
 
 	/* Event tick timer */
-	timer_set_clock(TIMER_EVENT, TIMER_CLK_SRC_26M);
+	timer_set_clock(TIMER_EVENT, TIMER_CLK_SRC_BCLK);
 	task_enable_irq(SCP_IRQ_TIMER(TIMER_EVENT));
 
 	return SCP_IRQ_TIMER(TIMER_SYSTEM);
@@ -157,7 +157,7 @@ void __hw_clock_event_clear(void)
 {
 	/* c1ea4, magic number for clear state */
 	timer_disable(TIMER_EVENT);
-	timer_set_reset_value(TIMER_EVENT, 0x0000c1ea4);
+    timer_set_reset_value(TIMER_EVENT, 0x0000c1ea4);
 	event_high = 0;
 }
 
