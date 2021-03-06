@@ -49,6 +49,7 @@ static const char *_text_event(enum pchg_event event)
 	static const char * const event_names[] = {
 		[PCHG_EVENT_NONE] = "NONE",
 		[PCHG_EVENT_IRQ] = "IRQ",
+		[PCHG_EVENT_RESET] = "RESET",
 		[PCHG_EVENT_INITIALIZED] = "INITIALIZED",
 		[PCHG_EVENT_ENABLED] = "ENABLED",
 		[PCHG_EVENT_DISABLED] = "DISABLED",
@@ -68,6 +69,18 @@ static const char *_text_event(enum pchg_event event)
 		return "UNDEF";
 
 	return event_names[event];
+}
+
+static enum pchg_state pchg_reset(struct pchg *ctx)
+{
+	mutex_lock(&ctx->mtx);
+	queue_init(&ctx->events);
+	mutex_unlock(&ctx->mtx);
+	atomic_clear(&ctx->irq);
+
+	/* When fw update is implemented, this will be the branch point. */
+	pchg_queue_event(ctx, PCHG_EVENT_INITIALIZE);
+	return PCHG_STATE_RESET;
 }
 
 static enum pchg_state pchg_initialize(struct pchg *ctx, enum pchg_state state)
@@ -94,6 +107,9 @@ static enum pchg_state pchg_state_reset(struct pchg *ctx)
 	enum pchg_state state = PCHG_STATE_RESET;
 
 	switch (ctx->event) {
+	case PCHG_EVENT_RESET:
+		state = pchg_reset(ctx);
+		break;
 	case PCHG_EVENT_INITIALIZE:
 		state = pchg_initialize(ctx, state);
 		break;
@@ -121,6 +137,9 @@ static enum pchg_state pchg_state_initialized(struct pchg *ctx)
 		return state;
 
 	switch (ctx->event) {
+	case PCHG_EVENT_RESET:
+		state = pchg_reset(ctx);
+		break;
 	case PCHG_EVENT_INITIALIZE:
 		state = pchg_initialize(ctx, state);
 		break;
@@ -147,6 +166,9 @@ static enum pchg_state pchg_state_enabled(struct pchg *ctx)
 	int rv;
 
 	switch (ctx->event) {
+	case PCHG_EVENT_RESET:
+		state = pchg_reset(ctx);
+		break;
 	case PCHG_EVENT_INITIALIZE:
 		state = pchg_initialize(ctx, state);
 		break;
@@ -185,6 +207,9 @@ static enum pchg_state pchg_state_detected(struct pchg *ctx)
 	int rv;
 
 	switch (ctx->event) {
+	case PCHG_EVENT_RESET:
+		state = pchg_reset(ctx);
+		break;
 	case PCHG_EVENT_INITIALIZE:
 		state = pchg_initialize(ctx, state);
 		break;
@@ -222,6 +247,9 @@ static enum pchg_state pchg_state_charging(struct pchg *ctx)
 	int rv;
 
 	switch (ctx->event) {
+	case PCHG_EVENT_RESET:
+		pchg_reset(ctx);
+		break;
 	case PCHG_EVENT_INITIALIZE:
 		state = pchg_initialize(ctx, state);
 		break;
@@ -346,7 +374,7 @@ static void pchg_startup(void)
 
 	for (p = 0; p < pchg_count; p++) {
 		ctx = &pchgs[p];
-		pchg_queue_event(ctx, PCHG_EVENT_INITIALIZE);
+		ctx->cfg->drv->reset(ctx);
 		gpio_enable_interrupt(ctx->cfg->irq_pin);
 	}
 
@@ -376,8 +404,8 @@ void pchg_task(void *u)
 	struct pchg *ctx;
 	int p;
 
-	/* In case we arrive here after power-on (for late sysjump) */
 	if (chipset_in_state(CHIPSET_STATE_ON))
+		/* We are here after power-on (because of late sysjump). */
 		pchg_startup();
 
 	while (true) {
