@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daf78cba_1b807947",
+        "filename": "board/blipper/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-03-06T09:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbb614cf_53ab7603",
+      "revId": "b7e331919ef00075ac0768fa15b22e3a68f4288f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2ce3585_e027595d",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-03T16:40:39Z",
       "side": 1,
       "message": "I didn\u0027t notice shipping mode in this datasheet.  Is is using the same commands as the other batteries?",
+      "revId": "b7e331919ef00075ac0768fa15b22e3a68f4288f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2670f6eb_4a9337c4",
+        "filename": "board/blipper/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-03-06T09:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2ce3585_e027595d",
       "revId": "b7e331919ef00075ac0768fa15b22e3a68f4288f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "919ac904_9f9b2845",
+        "filename": "board/blipper/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-03-06T09:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7388b9f7_6fb8d30e",
+      "revId": "b7e331919ef00075ac0768fa15b22e3a68f4288f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89626162_e3a9d2c7",
@@ -82,6 +136,30 @@
       "writtenOn": "2021-03-03T16:40:39Z",
       "side": 1,
       "message": "blipper",
+      "range": {
+        "startLine": 65,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "b7e331919ef00075ac0768fa15b22e3a68f4288f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f417165e_816adb84",
+        "filename": "board/blipper/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-03-06T09:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89626162_e3a9d2c7",
       "range": {
         "startLine": 65,
         "startChar": 56,

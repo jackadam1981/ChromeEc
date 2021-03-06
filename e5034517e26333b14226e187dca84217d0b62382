@@ -16,6 +16,24 @@
       "message": "What are you using to set GPIO_EN_USB_A0_VBUS?",
       "revId": "e5034517e26333b14226e187dca84217d0b62382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d074538_12132e12",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-03-06T09:44:42Z",
+      "side": 0,
+      "message": "set the default setting and the USB has function.",
+      "parentUuid": "095dcfff_8d911bd6",
+      "revId": "e5034517e26333b14226e187dca84217d0b62382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
