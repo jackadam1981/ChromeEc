@@ -264,6 +264,16 @@ static void bq25710_init(int chgnum)
 		raw_write16(chgnum, BQ25710_REG_PROCHOT_OPTION_0, reg);
 	}
 
+	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_AUTO_WAKEUP) &&
+	    (raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_1, &reg) ==
+	     EC_SUCCESS)) {
+		/*
+		 * Auto-wakeup cut-off battery.
+		 */
+		reg |= BQ25710_CHARGE_OPTION_1_AUTO_WAKEUP_EN;
+		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
+	}
+
 	/*
 	 * Reduce peak power mode overload and relax cycle time from default 20
 	 * msec to the minimum of 5 msec.
