@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebae08e_a6c21c3e",
+        "filename": "chip/mt8192_scp/hrtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-08T07:43:05Z",
+      "side": 1,
+      "message": "phoenix wondered that if RV32i can handle floating point division.  The disassemble shows: gcc seems have some magic function to emulate that (i.e. __divdf3).\n\n00000f3c \u003c__hw_clock_source_read\u003e:\n     f3c:       1141                    addi    sp,sp,-16\n     f3e:       c606                    sw      ra,12(sp)\n     f40:       3f6d                    jal     efa \u003ctimer_read_raw_system\u003e\n     f42:       3e3050ef                jal     ra,6b24 \u003c__floatundidf\u003e\n     f46:       67a5                    lui     a5,0x9\n     f48:       b207a603                lw      a2,-1248(a5) # 8b20 \u003cerror_str+0x10\u003e\n     f4c:       b247a683                lw      a3,-1244(a5)\n     f50:       075040ef                jal     ra,57c4 \u003c__divdf3\u003e\n     f54:       261050ef                jal     ra,69b4 \u003c__fixunsdfsi\u003e\n     f58:       40b2                    lw      ra,12(sp)\n     f5a:       0141                    addi    sp,sp,16\n     f5c:       8082                    ret",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 1
+      },
+      "revId": "c9b5cf13ea5a547be3510940778494d190957c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
