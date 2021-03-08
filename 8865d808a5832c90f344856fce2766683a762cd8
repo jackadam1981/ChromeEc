@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c764fde_ee7bfb7b",
+        "filename": "util/ec_panicinfo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-03-08T08:25:10Z",
+      "side": 1,
+      "message": "Since the union may change overtime, can we use something like this:\n\n int hard_coded_struct_size \u003d size - 8;\n int hard_coded_magic_off \u003d size - 4;\n\n if(pdata[hard_coded_magic_off] !\u003d PANIC_DATA_MAGIC)\n   ...",
+      "range": {
+        "startLine": 133,
+        "startChar": 14,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "8865d808a5832c90f344856fce2766683a762cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
