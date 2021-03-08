@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09619f5d_284ce053",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-08T09:54:57Z",
+      "side": 1,
+      "message": "FP_TO_INT will lose sub ms precision. You could do:\n\nintegration_time_us \u003d tcs3400_get_integration_time(sat_p-\u003eatime);\n...\n\nxyz_data[1] \u003d (FP_TO_INT(dgf * .... ) * 1000) / (integration_time_us * cur_gain);",
+      "revId": "04a18189c5af6deac1a061ebf4acd3833d34626a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ae41a0_9be362b3",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-08T09:54:57Z",
+      "side": 1,
+      "message": "what about xyz_data[0] and xyz_data[2] (chromaticity)?",
+      "revId": "04a18189c5af6deac1a061ebf4acd3833d34626a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
