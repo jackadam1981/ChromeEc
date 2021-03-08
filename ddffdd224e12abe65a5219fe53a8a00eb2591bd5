@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c51ef35d_4f6f4248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-08T09:40:05Z",
+      "side": 1,
+      "message": "Trying to clarify with small comment changes, also changed my mind about stderr usage.\n\nI\u0027ll work on:\n - Making sure crash and feedback reporting both pipe stderr into the output.\n - Adding a test to ensure ec_parse_panicinfo works (we do have a tast test already so I can probably just add to it)",
+      "revId": "ddffdd224e12abe65a5219fe53a8a00eb2591bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

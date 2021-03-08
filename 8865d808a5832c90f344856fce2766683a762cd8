@@ -22,6 +22,30 @@
       },
       "revId": "8865d808a5832c90f344856fce2766683a762cd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0acfd5d_1992487f",
+        "filename": "util/ec_panicinfo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-08T09:40:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure to follow. Yes, the union size can change over time and it\u0027s exactly what this is trying to workaround by copying everything up to struct_size, and then copying struct_size/magic (trailer) in the right place.\n\n  /* Data saved across reboots */\n  struct panic_data {\n        uint8_t arch;             /* Architecture (PANIC_ARCH_*) */\n        uint8_t struct_version;   /* Structure version (currently 2) */\n        uint8_t flags;            /* Flags (PANIC_DATA_FLAG_*) */\n        uint8_t reserved;         /* Reserved; set 0 */\n\n        /* core specific panic data */\n        union {\n                struct cortex_panic_data cm;       /* Cortex-Mx registers */\n                struct nds32_n8_panic_data nds_n8; /* NDS32 N8 registers */\n                struct x86_panic_data x86;         /* Intel x86 */\n  #ifndef CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA\n                struct rv32i_panic_data riscv;     /* RISC-V RV32I */\n  #endif\n        };\n\n        /*\n         * These fields go at the END of the struct so we can find it at the\n         * end of memory.\n         */\n        uint32_t struct_size;     /* Size of this struct */\n        uint32_t magic;           /* PANIC_SAVE_MAGIC if valid */\n  };\n\nSo I\u0027m getting the offset of struct_size in the structure to figure out that the trailer is 8 bytes.\n\nIf this changes, then the rest of the logic will break again...\n\nLet me see if/how I could add tests...",
+      "parentUuid": "2c764fde_ee7bfb7b",
+      "range": {
+        "startLine": 133,
+        "startChar": 14,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "8865d808a5832c90f344856fce2766683a762cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
