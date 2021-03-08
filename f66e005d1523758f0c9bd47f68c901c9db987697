@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f1d1858_123d8c10",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-08T17:26:03Z",
+      "side": 1,
+      "message": "When we boot up after warm reboot, we do a re-entry for TBT/USB4 - So keeping it consistent for USB4 as well",
+      "parentUuid": "efffcbb8_1eb96785",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 2
+      },
+      "revId": "f66e005d1523758f0c9bd47f68c901c9db987697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e835828_5f4bfe97",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-05T22:04:23Z",
       "side": 1,
       "message": "nit: need to remove?",
+      "range": {
+        "startLine": 36,
+        "startChar": 54,
+        "endLine": 36,
+        "endChar": 64
+      },
+      "revId": "f66e005d1523758f0c9bd47f68c901c9db987697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "697bc5eb_2ae5c1c8",
+        "filename": "include/usb_mode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-08T17:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e835828_5f4bfe97",
       "range": {
         "startLine": 36,
         "startChar": 54,
