@@ -16,6 +16,24 @@
       "message": "why do we need this?",
       "revId": "8ccd94e5035e2e9b78037aebcc11a68dbbee5cb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a2b1d5_eef8fc9c",
+        "filename": "board/spherion/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-03-08T06:03:30Z",
+      "side": 1,
+      "message": "reserved the feature mask defined in board control.",
+      "parentUuid": "9f23d2c0_0138c3fa",
+      "revId": "8ccd94e5035e2e9b78037aebcc11a68dbbee5cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
