@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2205af62_0f2cefce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-08T21:27:40Z",
+      "side": 1,
+      "message": "b:180530971",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "d56ee82a798638030ac1797c39feb4e2ad2c5fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "80e9d8b8_99c75624",
@@ -31,6 +54,29 @@
       "writtenOn": "2021-02-26T18:23:44Z",
       "side": 1,
       "message": "Defer to Daisuke.",
+      "revId": "d56ee82a798638030ac1797c39feb4e2ad2c5fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4436513_257e28a8",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-08T21:27:40Z",
+      "side": 1,
+      "message": "As discussed on b:180530971, let\u0027s change this to 500 on s3 entry and restore 100 on exit.",
+      "range": {
+        "startLine": 29,
+        "startChar": 42,
+        "endLine": 29,
+        "endChar": 45
+      },
       "revId": "d56ee82a798638030ac1797c39feb4e2ad2c5fb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
