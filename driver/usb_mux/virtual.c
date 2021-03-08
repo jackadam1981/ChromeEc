@@ -103,6 +103,7 @@ void virtual_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
 {
 	int port = me->usb_port;
 
+	CPRINTS("%s(%d, %d)", __func__, hpd_lvl, hpd_irq);
 	/* Current HPD related mux status + existing USB & DP mux status */
 	mux_state_t new_mux_state = (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
 			(hpd_irq ? USB_PD_MUX_HPD_IRQ : 0) |
