@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b3345b_190db2aa",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-08T18:46:50Z",
+      "side": 1,
+      "message": "For MRB and DBR cables, along with USB4, we also enter TBT for the cables. So we don\u0027t have a else if for TBT",
+      "parentUuid": "798b36fd_29d28ecc",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 2
+      },
+      "revId": "f66e005d1523758f0c9bd47f68c901c9db987697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e835828_5f4bfe97",
