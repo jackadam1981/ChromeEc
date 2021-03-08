@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0547fa63_ea4cffe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-08T23:41:12Z",
+      "side": 1,
+      "message": "One nit, but otherwise, change looks good.",
+      "revId": "abaebe626d6e4adfd82fb724ee09112089d8b726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e19135_bb6c8974",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-08T23:41:12Z",
+      "side": 1,
+      "message": "nit: ccprintf/s is only for console command prints. You should use cprintf/s with an appropriate console channel.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "abaebe626d6e4adfd82fb724ee09112089d8b726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
