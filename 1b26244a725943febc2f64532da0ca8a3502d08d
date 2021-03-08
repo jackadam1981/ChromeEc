@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa6e4f0_9bfdc886",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-08T23:59:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef68877a_5e11e8be",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "1b26244a725943febc2f64532da0ca8a3502d08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5379d74c_bc825df5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-08T17:19:12Z",
       "side": 1,
       "message": "Should be 0.  See CL:2707252 and b:173028252",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "revId": "1b26244a725943febc2f64532da0ca8a3502d08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e34620_42d1403d",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-08T23:59:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5379d74c_bc825df5",
       "range": {
         "startLine": 100,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a82ded_8b911ec7",
+        "filename": "board/brya/board.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-08T23:59:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "328b2e4f_de10126b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "1b26244a725943febc2f64532da0ca8a3502d08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f563915d_9104b349",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-08T17:19:12Z",
       "side": 1,
       "message": "Fix this in CL:2700315 (add usb-c support)\nAdd include to usbc_config.c\n#include \"cbi_ec_fw_config.h\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "1b26244a725943febc2f64532da0ca8a3502d08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c57ab4f4_01cc9f84",
+        "filename": "board/brya/usbc_config.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-08T23:59:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f563915d_9104b349",
       "range": {
         "startLine": 13,
         "startChar": 0,
