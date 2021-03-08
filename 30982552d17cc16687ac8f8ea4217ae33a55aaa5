@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9348e23e_f93d7494",
+        "filename": "baseboard/mancomb/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-08T23:22:26Z",
+      "side": 1,
+      "message": "Let\u0027s make sure we clarify the power path with the EEs to ensure we\u0027re driving the right things for the type-c ports.  That can be a follow-on.",
+      "parentUuid": "002b9c83_aa576652",
+      "revId": "30982552d17cc16687ac8f8ea4217ae33a55aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48c1eb73_9f65f714",
         "filename": "baseboard/mancomb/baseboard.h",
         "patchSetId": 2
