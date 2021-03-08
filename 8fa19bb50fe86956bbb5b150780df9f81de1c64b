@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb7bc04_a16ec734",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-03-08T01:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70b2caa9_82aac76a",
+      "revId": "8fa19bb50fe86956bbb5b150780df9f81de1c64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b105a22e_a5a69d7e",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c78b7e4e_49114be0",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-03-08T01:20:24Z",
+      "side": 1,
+      "message": "when the IS_ENABLED option is defined as value, compiler error will be thrown.",
+      "parentUuid": "b105a22e_a5a69d7e",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 12
+      },
+      "revId": "8fa19bb50fe86956bbb5b150780df9f81de1c64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "973e3938_ec6a2661",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-05T19:41:45Z",
       "side": 1,
       "message": "nit: recommend naming `CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS",
+      "range": {
+        "startLine": 3812,
+        "startChar": 7,
+        "endLine": 3812,
+        "endChar": 42
+      },
+      "revId": "8fa19bb50fe86956bbb5b150780df9f81de1c64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59bc9322_52da8393",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3812,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-03-08T01:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "973e3938_ec6a2661",
       "range": {
         "startLine": 3812,
         "startChar": 7,
