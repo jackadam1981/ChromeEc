@@ -36,6 +36,14 @@ void pe_run(int port, int evt, int en);
 void pe_set_debug_level(enum debug_level level);
 
 /**
+ * Sets the VPD VDO
+ *
+ * @param port USB-C port number
+ * @param vdo  VDO returned from VPD
+ */
+void pe_set_vpd_vdo(int port, int32_t vdo);
+
+/**
  * Informs the Policy Engine that a message was successfully sent
  *
  * @param port USB-C port number

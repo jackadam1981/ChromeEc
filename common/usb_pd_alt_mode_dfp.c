@@ -16,6 +16,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "usb_pe_sm.h"
 #include "usb_tbt_alt_mode.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -369,6 +370,12 @@ void dfp_consume_identity(int port, enum tcpm_transmit_type type, int cnt,
 				!PD_VDO_AMA_VBUS_REQ(payload[VDO_I(AMA)]))
 				pd_power_supply_reset(port);
 		}
+		break;
+	case IDH_PTYPE_VPD:
+		/* (CT)VPD detected. */
+		if (IS_ENABLED(CONFIG_USB_PD_TCPMV2) &&
+					IS_ENABLED(CONFIG_USB_PE_SM))
+			pe_set_vpd_vdo(port, payload[4]);
 		break;
 	default:
 		break;

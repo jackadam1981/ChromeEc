@@ -767,6 +767,11 @@ bool pe_in_local_ams(int port)
 	return !!PE_CHK_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 }
 
+void pe_set_vpd_vdo(int port, int32_t vdo)
+{
+	pe[port].vpd_vdo = vdo;
+}
+
 void pe_set_debug_level(enum debug_level debug_level)
 {
 #ifndef CONFIG_USB_PD_DEBUG_LEVEL
