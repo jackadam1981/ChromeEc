@@ -16,6 +16,23 @@
       "message": "Hi Henry Diana: please help to review this CL about led behavior in battery error state ",
       "revId": "0dad7fd5abc09e7b57449ab17744c29224de0036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be1c3928_38fefac0",
+        "filename": "board/storo/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-08T18:21:51Z",
+      "side": 1,
+      "message": "nit: \n/*\n * nothing on the first line\n * in multi-line comments.\n */\n\nI believe the hooks from \"repo upload\" should be catching stylistic issues like this",
+      "revId": "0dad7fd5abc09e7b57449ab17744c29224de0036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
