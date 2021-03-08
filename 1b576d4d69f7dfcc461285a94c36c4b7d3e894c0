@@ -22,6 +22,30 @@
       },
       "revId": "1b576d4d69f7dfcc461285a94c36c4b7d3e894c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf331c7_f689ad1a",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-08T23:56:04Z",
+      "side": 1,
+      "message": "If we\u0027re too liberal with watchdog_reload(), we defeat the purpose of the watchdog timer.  I think avoiding watchdog_reload() if HW acceleration is available is at least worthwhile.  I gated this on both options here to minimize impact to existing implementations.\n\nDiasuke - wdyt?",
+      "parentUuid": "a10b094d_53d014ff",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "1b576d4d69f7dfcc461285a94c36c4b7d3e894c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
