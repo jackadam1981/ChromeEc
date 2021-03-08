@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "798b36fd_29d28ecc",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-03-08T18:42:47Z",
+      "side": 1,
+      "message": "I mean why it\u0027s not if.(USB4). else if (TBT) as below. \nif (IS_ENABLED(CONFIG_USB_PD_USB4) \u0026\u0026\n\t    enter_usb_entry_is_done(port)) {\n\t\tCPRINTS(\"C%d: USB4 teardown\", port);\n\t\tusb4_exit_mode_request(port);\n\t}\nelse if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) \u0026\u0026\n\t    tbt_is_active(port)) {\n\t\t...\n} else if (dp_is_active(port)) {\n...\n}\n\nIn your current logic, after handle USB4 exit, it will go to line 379. Is it what you intended?",
+      "parentUuid": "3f1d1858_123d8c10",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 2
+      },
+      "revId": "f66e005d1523758f0c9bd47f68c901c9db987697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e835828_5f4bfe97",
