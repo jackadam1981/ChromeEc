@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef68877a_5e11e8be",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-08T17:19:12Z",
+      "side": 1,
+      "message": "\"Not a USB device\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "1b26244a725943febc2f64532da0ca8a3502d08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5379d74c_bc825df5",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-08T17:19:12Z",
+      "side": 1,
+      "message": "Should be 0.  See CL:2707252 and b:173028252",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "revId": "1b26244a725943febc2f64532da0ca8a3502d08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328b2e4f_de10126b",
+        "filename": "board/brya/board.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-08T17:19:12Z",
+      "side": 1,
+      "message": "Move to CL:2700316 (enable charger chip)",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "1b26244a725943febc2f64532da0ca8a3502d08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f563915d_9104b349",
+        "filename": "board/brya/usbc_config.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-08T17:19:12Z",
+      "side": 1,
+      "message": "Fix this in CL:2700315 (add usb-c support)\nAdd include to usbc_config.c\n#include \"cbi_ec_fw_config.h\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "1b26244a725943febc2f64532da0ca8a3502d08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
