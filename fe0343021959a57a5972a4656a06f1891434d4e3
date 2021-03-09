@@ -16,6 +16,24 @@
       "message": "I\u0027m not clear from the test results whether this CL is sufficient to fix the issue, but the code looks OK.",
       "revId": "fe0343021959a57a5972a4656a06f1891434d4e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84cbfd6c_1f50f4a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-09T21:22:58Z",
+      "side": 1,
+      "message": "Oh, the conclusion was that this doesn\u0027t affect the FAFT results, only the LPM patch impacts them. I\u0027ve confirmed this passes firmware_PDTrySrc now that I can run this locally (with that servov4 fix).",
+      "parentUuid": "16b4fd9a_de8102ce",
+      "revId": "fe0343021959a57a5972a4656a06f1891434d4e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
