@@ -52,6 +52,24 @@
       "parentUuid": "6069d849_bcf62563",
       "revId": "4d0d47bfc75be8af04499d11470f1996691c0d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bce7eec_33abf7ce",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3687,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-09T22:08:22Z",
+      "side": 1,
+      "message": "Yup, we can move that into the state entries.  Possibly into the OPEN super state entry really.  I\u0027ll hold that for a future CL.",
+      "parentUuid": "3c5b930a_44572d62",
+      "revId": "4d0d47bfc75be8af04499d11470f1996691c0d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
