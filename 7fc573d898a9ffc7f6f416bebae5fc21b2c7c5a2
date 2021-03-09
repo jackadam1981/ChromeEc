@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008806485",
+      "url": "https://android-build.googleplex.com/builds/treetop/chromium-review/2639734?revision\u003d11",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ebad6e1e_da4ce6fa",
+        "filename": "driver/ppc/rt1718s.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1493702
+      },
+      "writtenOn": "2021-03-09T09:55:03Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 188,
+        "startChar": 79,
+        "endLine": 188,
+        "endChar": 80
+      },
+      "revId": "7fc573d898a9ffc7f6f416bebae5fc21b2c7c5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
