@@ -22,6 +22,30 @@
       },
       "revId": "70c050a72a34da949901010cd44570b5e7b69b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5785e67_6e5dea0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-09T11:13:43Z",
+      "side": 1,
+      "message": "I just checked our firmware header in volteer binary. The SPI flash clock ratio \u0026 SPI speed haven\u0027t been set. I think the initialization time could be improved. We will check that \u0026 submit it in another CL. For the bbram_npcx_init(), I think it is much early than main() and vboot_main(). However, npcx_clock_control_init() will change the clock setting. Currently, npcx_clock_control_init() is the second initial function at PRE_KERNEL_1 level which I checked in zephyr.map. The header setting not very useful for SHA calculation \u0026 ML just replied to the issue in the issue track system.",
+      "parentUuid": "373db36d_e225042b",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "70c050a72a34da949901010cd44570b5e7b69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
