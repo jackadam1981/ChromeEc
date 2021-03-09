@@ -68,6 +68,24 @@
       "message": "I think this include is now unnecessary.",
       "revId": "b3d0b02f7949d21236ac0b86923b02ecfcd0da25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e3dbd8_a7433933",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-09T20:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa710ac8_33e9fa78",
+      "revId": "b3d0b02f7949d21236ac0b86923b02ecfcd0da25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
