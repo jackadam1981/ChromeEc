@@ -6799,6 +6799,9 @@ struct ec_response_pchg {
 	uint32_t error;			/* enum pchg_error */
 	uint8_t state;			/* enum pchg_state state */
 	uint8_t battery_percentage;
+	uint8_t unused0;
+	uint8_t unused1;
+	uint32_t fw_version;		/* New in version 1 */
 } __ec_align2;
 
 enum pchg_state {
