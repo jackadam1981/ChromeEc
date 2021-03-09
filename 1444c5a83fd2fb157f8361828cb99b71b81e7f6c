@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc89554a_8380571e",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-09T21:03:30Z",
+      "side": 1,
+      "message": "What effect does this have on the port partner? We should be initiating Data Reset here, but this code unilaterally resets the mux.",
+      "revId": "1444c5a83fd2fb157f8361828cb99b71b81e7f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
