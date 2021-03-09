@@ -46,6 +46,30 @@
       },
       "revId": "1b576d4d69f7dfcc461285a94c36c4b7d3e894c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92466d56_019bcde2",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-09T16:48:20Z",
+      "side": 1,
+      "message": "Hmm... watchdog_reload is negligible for all chips except npcx. It can be called only every 93 ms. So, there is internal time tracking. It should be negligible by nature. I\u0027ll get more info on this from nuvoton.\n\nSo, I think it\u0027s better to guard it for now but please used IS_ENABLED instead. We just need one call inside the loop and it doesn\u0027t look bad in terms of readability.",
+      "parentUuid": "fcf331c7_f689ad1a",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "1b576d4d69f7dfcc461285a94c36c4b7d3e894c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
