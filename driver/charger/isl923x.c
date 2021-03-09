@@ -413,7 +413,8 @@ static enum ec_error_list isl923x_get_current(int chgnum, int *current)
 	int rv;
 	int reg;
 
-	if (IS_ENABLED(CONFIG_CHARGER_RAA489000)) {
+	if (IS_ENABLED(CONFIG_CHARGER_RAA489000)
+			&& chgnum != CHARGER_PRIMARY) {
 		rv = raw_read16(chgnum, RAA489000_REG_ADC_CHARGE_CURRENT, &reg);
 		/* The value is in 22.2mA increments. */
 		reg *= 222;
