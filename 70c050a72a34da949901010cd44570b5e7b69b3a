@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "373db36d_e225042b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T03:09:33Z",
+      "side": 1,
+      "message": "Can this initialization time be improved?  When is bbram_npcx_init() called relative to main() and vboot_main()?  vboot_main() calculates a hash over the RW image using a software SH256 which is slow (about 2 seconds).  We need the HW SHA256 support added in, which will help speed this up.",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "70c050a72a34da949901010cd44570b5e7b69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
