@@ -56,12 +56,17 @@ static const int _detection_interval_ms = 100;
 #define WLC_CHG_CTRL_CHARGING_INFO		0b010101
 
 /* WLC_HOST_CTRL_RESET constants */
-#define WLC_HOST_CTRL_RESET_CMD_SIZE		1
-#define WLC_HOST_CTRL_RESET_RSP_SIZE		1
-#define WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE	0x00
-#define WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE	0x01
-#define WLC_HOST_CTRL_RESET_CMD_MODE_NORMAL	0x00
-#define WLC_HOST_CTRL_RESET_CMD_MODE_DOWNLOAD	0x01
+#define WLC_HOST_CTRL_RESET_CMD_SIZE			1
+#define WLC_HOST_CTRL_RESET_RSP_SIZE			1
+#define WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE		0x00
+#define WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE_SIZE	3
+#define WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE		0x01
+#define WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE_SIZE	2
+#define WLC_HOST_CTRL_RESET_REASON_INTENDED		0x00
+#define WLC_HOST_CTRL_RESET_REASON_CORRUPTED		0x01
+#define WLC_HOST_CTRL_RESET_REASON_UNRECOVERABLE	0x02
+#define WLC_HOST_CTRL_RESET_CMD_MODE_NORMAL		0x00
+#define WLC_HOST_CTRL_RESET_CMD_MODE_DOWNLOAD		0x01
 
 /* WLC_CHG_CTRL_ENABLE constants */
 #define WLC_CHG_CTRL_ENABLE_CMD_SIZE		2
@@ -204,6 +209,20 @@ static const char *_text_status_code(uint8_t code)
 		return "NTAG_READ_ERR";
 	default:
 		return "UNDEF";
+	}
+}
+
+static const char *_text_reset_reason(uint8_t code)
+{
+	switch (code) {
+	case WLC_HOST_CTRL_RESET_REASON_INTENDED:
+		return "intended";
+	case WLC_HOST_CTRL_RESET_REASON_CORRUPTED:
+		return "corrupted";
+	case WLC_HOST_CTRL_RESET_REASON_UNRECOVERABLE:
+		return "unrecoverable";
+	default:
+		return "unknown";
 	}
 }
 
@@ -377,14 +396,23 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 	switch (res->instruction) {
 	case WLC_HOST_CTRL_RESET:
 		if (buf[0] == WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE) {
+			if (len != WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE_SIZE)
+				return EC_ERROR_INVAL;
 			ctx->event = PCHG_EVENT_INITIALIZED;
+			ctx->fw_version = (uint16_t)buf[1] << 8 | buf[2];
+			CPRINTS("Normal Mode (FW=0x%02x.%02x)", buf[1], buf[2]);
 			/*
 			 * ctn730 isn't immediately ready for i2c write after
 			 * normal mode initialization (b:178096436).
 			 */
 			msleep(5);
 		} else if (buf[0] == WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE) {
-			ctx->event = PCHG_EVENT_RESET;
+			if (len != WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE_SIZE)
+				return EC_ERROR_INVAL;
+			CPRINTS("Download Mode (%s)",
+				_text_reset_reason(buf[1]));
+			if (buf[1] == WLC_HOST_CTRL_RESET_REASON_INTENDED)
+				ctx->event = PCHG_EVENT_RESET;
 		} else {
 			return EC_ERROR_INVAL;
 		}
