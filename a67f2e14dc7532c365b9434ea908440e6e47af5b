@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f15e861f_48e93e8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-09T09:35:31Z",
+      "side": 1,
+      "message": " util/ec_panicinfo.c: In function ‘parse_panic_info_rv32i’:\n util/ec_panicinfo.c:104:26: error: ‘const struct panic_data’ has no member named ‘riscv’\n   104 |  regs \u003d (uint32_t *)pdata-\u003eriscv.regs;\n       |                          ^~\n util/ec_panicinfo.c:105:16: error: ‘const struct panic_data’ has no member named ‘riscv’\n   105 |  mcause \u003d pdata-\u003eriscv.mcause;\n       |                ^~\n util/ec_panicinfo.c:106:14: error: ‘const struct panic_data’ has no member named ‘riscv’\n   106 |  mepc \u003d pdata-\u003eriscv.mepc;\n       |              ^~\n util/ec_panicinfo.c: In function ‘parse_panic_info’:\n util/ec_panicinfo.c:181:7: error: ‘PANIC_ARCH_RISCV_RV32I’ undeclared (first use in this function)\n   181 |  case PANIC_ARCH_RISCV_RV32I:\n       |       ^~~~~~~~~~~~~~~~~~~~~~\n util/ec_panicinfo.c:181:7: note: each undeclared identifier is reported only once for each function it appears in\n make[2]: *** [Makefile.rules:611: build/casta/util/ectool] Error 1\n make[1]: *** [Makefile.rules:241: proj-casta] Error 2\n\nWe\u0027ll get there...",
+      "revId": "a67f2e14dc7532c365b9434ea908440e6e47af5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
