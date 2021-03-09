@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34938bee_8763eb12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-09T20:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34842bf9_11fbcc00",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "bfa4a8b35f4006cd8545c8428eb70a2402ab665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a04a666_594be148",
@@ -67,6 +91,23 @@
         "endLine": 15,
         "endChar": 21
       },
+      "revId": "bfa4a8b35f4006cd8545c8428eb70a2402ab665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa7c3f2_57eff544",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-09T20:55:27Z",
+      "side": 1,
+      "message": "I think the logic of this function is getting harder to follow:\n* There are multiple places where we convert from TBT speed to USB speed using similar logic, and I think there should be a helper function to do this (analogous to the USB-to-TBT function added in an earlier CL).\n* On line 973, we\u0027re converting from TBT speed to USB speed, but the TBT speed came from get_tbt_cable_speed, which, per the previous CL in the chain, may actually have been converted from a USB4 speed in the Passive Cable VDO.\n\nIs there a more straightforward way to do this?",
       "revId": "bfa4a8b35f4006cd8545c8428eb70a2402ab665d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c656068_97d12afa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-09T20:55:27Z",
+      "side": 1,
+      "message": "This should say something about the behavior change we expect to observe. If USB4 active cables aren\u0027t available (and even if they are), it should be possible to unit-test our response to discovery from a USB4 active cable.",
+      "revId": "da4a342bc58e210d46ac3be8ad9bba3a7859509b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
