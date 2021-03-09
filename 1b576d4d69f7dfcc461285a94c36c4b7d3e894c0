@@ -70,6 +70,30 @@
       },
       "revId": "1b576d4d69f7dfcc461285a94c36c4b7d3e894c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f1b54d_35332ff0",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-09T19:19:28Z",
+      "side": 1,
+      "message": "Changed this to use IS_ENABLED and also be able to toggle via a config option.  Hopefully that suffices ;)",
+      "parentUuid": "92466d56_019bcde2",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "1b576d4d69f7dfcc461285a94c36c4b7d3e894c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
