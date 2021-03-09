@@ -232,6 +232,7 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		vdo_count_ret = modep->fx->status(port, vdm);
 		if (vdo_count_ret == 0)
 			return -1;
+		pd_set_dfp_enter_mode_flag(port, true);
 		vdm[0] |= PD_VDO_OPOS(modep->opos);
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
