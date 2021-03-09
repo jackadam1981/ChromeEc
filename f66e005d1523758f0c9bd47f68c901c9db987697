@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "082e9b44_f999617b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-03-09T23:33:43Z",
+      "side": 1,
+      "message": "internal intel names for cables - mission bridge. forgot what bridge was DBR.",
+      "parentUuid": "cfb7475b_1a929a40",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 2
+      },
+      "revId": "f66e005d1523758f0c9bd47f68c901c9db987697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e835828_5f4bfe97",
         "filename": "include/usb_mode.h",
         "patchSetId": 2
