@@ -80,6 +80,74 @@ config PLATFORM_EC_CHARGER_ISL9241
 	  control. It supports an input voltage range of 3.9-23.4V and output
 	  of 3.9-18.3V. It provides an I2C interace for configuration.
 
+if PLATFORM_EC_CHARGER_ISL9241
+
+choice "Charger switching frequency"
+	prompt "ISL9241 switching frequency"
+	default ISL9241_SWTICHING_FREQUENCY_PROG_PIN
+	help
+	  The ISL9241 charger switching frequency is normally configured using
+	  the PROG resistor setting in the board design. This option allows
+	  the driver to override the PROG pin setting with a preset frequency.
+
+config ISL9241_SWTICHING_FREQUENCY_PROG_PIN
+	bool "Frequency defined by the PROG pin resistor"
+	help
+	  Use the switching frequency set by the PROG resistor in the board
+	  design.
+
+config ISL9241_SWTICHING_FREQUENCY_1420KHZ
+	bool "1420 kHz"
+	help
+	  Override the PROG resistor setting, forcing the switching frequency to
+	  1420 kHz.
+
+config ISL9241_SWTICHING_FREQUENCY_1180KHZ
+	bool "1180 kHz"
+	help
+	  Override the PROG resistor setting, forcing the switching frequency to
+	  1180 kHz.
+
+config ISL9241_SWTICHING_FREQUENCY_1020KHZ
+	bool "1020 kHz"
+	help
+	  Override the PROG resistor setting, forcing the switching frequency to
+	  1020 kHz.
+
+config ISL9241_SWTICHING_FREQUENCY_890KHZ
+	bool "890 kHz"
+	help
+	  Override the PROG resistor setting, forcing the switching frequency to
+	  890 kHz.
+
+config ISL9241_SWTICHING_FREQUENCY_808KHZ
+	bool "808 kHz"
+	help
+	  Override the PROG resistor setting, forcing the switching frequency to
+	  808 kHz.
+
+config ISL9241_SWTICHING_FREQUENCY_724KHZ
+	bool "724 kHz"
+	help
+	  Override the PROG resistor setting, forcing the switching frequency to
+	  724 kHz.
+
+config ISL9241_SWTICHING_FREQUENCY_656KHZ
+	bool "656 kHz"
+	help
+	  Override the PROG resistor setting, forcing the switching frequency to
+	  656 kHz.
+
+config ISL9241_SWTICHING_FREQUENCY_600KHZ
+	bool "600 kHz"
+	help
+	  Override the PROG resistor setting, forcing the switching frequency to
+	  600 kHz.
+
+endchoice
+
+endif # PLATFORM_EC_CHARGER_ISL9241
+
 endchoice
 
 config PLATFORM_EC_BATTERY_FUEL_GAUGE

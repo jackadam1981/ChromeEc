@@ -76,9 +76,13 @@ if [ -s "${new_adhoc}" ]; then
 	echo >&2 "Also see details in http://issuetracker.google.com/181253613"
 	echo >&2
 	echo >&2 "To temporarily disable this, use: ALLOW_CONFIG=1 make ..."
+	echo >&2 ".config file; ${config}"
+	echo >&2 "New Configs file; ${new_configs}"
+	echo >&2 "Suspects file; ${suspects}"
+	echo >&2 "Kconfig options file; ${ok}"
 else
 	# Check if we can remove some things from the allowed file
 	./util/build_allowed.sh
 fi
 
-rm -rf "${tmp}"
+#rm -rf "${tmp}"
