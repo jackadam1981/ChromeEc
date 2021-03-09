@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e38ac5_15e63ff1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 54
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T03:03:41Z",
+      "side": 1,
+      "message": "Set EC and AP chipset options",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "1fc0403148ab72712db172c0cd121a2e1435c9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f295a7_3c98b765",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 54
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T03:03:41Z",
+      "side": 1,
+      "message": "Update this - it looks like more functionality is working.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "1fc0403148ab72712db172c0cd121a2e1435c9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e5a369_ebb493b2",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T03:03:41Z",
+      "side": 1,
+      "message": "Move to separate CL.  Keep this CL focused on AP and EC chipset configuration.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "1fc0403148ab72712db172c0cd121a2e1435c9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f1daf0_87c4a8be",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T03:03:41Z",
+      "side": 1,
+      "message": "Move to separate CL (with ACCEL commands)",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "1fc0403148ab72712db172c0cd121a2e1435c9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be3c2e59_f2b33071",
+        "filename": "board/brya/board.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T03:03:41Z",
+      "side": 1,
+      "message": "Delete - this prevents changing the TPCMv2 debug level at runtime.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "1fc0403148ab72712db172c0cd121a2e1435c9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
