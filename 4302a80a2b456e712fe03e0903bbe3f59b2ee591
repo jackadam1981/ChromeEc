@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1031c1a_757d31b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-09T17:07:20Z",
+      "side": 1,
+      "message": "temperature sensor: its a relative testing with room temperature. Sensors are using STEINHART-HART equation and are common to all the RVP boards.\n\nType-c: USB3, USB2 \u0026 DP are tested.",
+      "parentUuid": "3c1bec49_c6563e52",
+      "revId": "4302a80a2b456e712fe03e0903bbe3f59b2ee591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b97a2fab_c23f2d8f",
@@ -60,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79328073_0445fedc",
+        "filename": "baseboard/intelrvp/npcx_ec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-09T17:07:20Z",
+      "side": 1,
+      "message": "there is a minor change for MCHP chip hence kept it separate",
+      "parentUuid": "b97a2fab_c23f2d8f",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "4302a80a2b456e712fe03e0903bbe3f59b2ee591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22c67b16_09d1e7c8",
         "filename": "board/adlrvpp_npcx/board.c",
         "patchSetId": 8
@@ -71,6 +113,30 @@
       "writtenOn": "2021-03-09T10:20:41Z",
       "side": 1,
       "message": "nit. \n- Is this include needed here? \n- review other includes",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "4302a80a2b456e712fe03e0903bbe3f59b2ee591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d648857_5721f472",
+        "filename": "board/adlrvpp_npcx/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-09T17:07:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22c67b16_09d1e7c8",
       "range": {
         "startLine": 15,
         "startChar": 0,
