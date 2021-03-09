@@ -110,6 +110,24 @@
       "message": "I think the logic of this function is getting harder to follow:\n* There are multiple places where we convert from TBT speed to USB speed using similar logic, and I think there should be a helper function to do this (analogous to the USB-to-TBT function added in an earlier CL).\n* On line 973, we\u0027re converting from TBT speed to USB speed, but the TBT speed came from get_tbt_cable_speed, which, per the previous CL in the chain, may actually have been converted from a USB4 speed in the Passive Cable VDO.\n\nIs there a more straightforward way to do this?",
       "revId": "bfa4a8b35f4006cd8545c8428eb70a2402ab665d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ecac91e_fa7ac700",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-09T22:38:36Z",
+      "side": 1,
+      "message": "Added a Intel SVID check to avoid double conversion. Also added a helper function",
+      "parentUuid": "6aa7c3f2_57eff544",
+      "revId": "bfa4a8b35f4006cd8545c8428eb70a2402ab665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
