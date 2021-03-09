@@ -16,6 +16,24 @@
       "message": "This commit fails the Zephyr config checker because CONFIG_CCD_USBC_PORT_NUMBER is adhoc. Also CONFIG_USB_PD_TCPC_VCONN was failing before I added it to config_allowed.txt, which seems justified because it\u0027s not a new config.",
       "revId": "abe651cf7f912844a3f0668cbffb66a345766361",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d165374_f7bbc961",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-09T18:28:36Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_TCPC_VCONN missed an update between the Zephyr team adding CONFIG_s and the enabling of the check. I pinged Simon, Jack and the Zephyr team on how to fix this particular config and have not heard back yet. I added Jack as a reviewer to make sure it is corrected or OKed by the zephyr team.",
+      "parentUuid": "ef09737c_1427a523",
+      "revId": "abe651cf7f912844a3f0668cbffb66a345766361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
