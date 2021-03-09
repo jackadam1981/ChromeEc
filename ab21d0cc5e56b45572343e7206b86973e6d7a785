@@ -16,6 +16,23 @@
       "message": "Hi!\n\nThis patch prevents `reduce_input_voltage_when_full()` to remove voltage limit when it wasn\u0027t set by this function.",
       "revId": "ab21d0cc5e56b45572343e7206b86973e6d7a785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "197f25c9_d9593317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-09T00:45:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the issue. It seems that SOC change is the trigger for some failure? Either the SOC becomes 100% and therefore the 5V limit is applied, or otherwise it\u0027s removed. It seems as it\u0027s working as expected?\n\nIs there another bug you can mention in the commit message?",
+      "revId": "ab21d0cc5e56b45572343e7206b86973e6d7a785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
