@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308f4ea4_cb5f0c9b",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:18:22Z",
+      "side": 1,
+      "message": "system.c currently defines this.  Move the definition into system.h and it can be shared by system.c and this file.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "b3cf4ddc196d868d3215d07e6bc759c3e150cd0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
