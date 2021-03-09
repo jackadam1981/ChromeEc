@@ -9388,7 +9388,7 @@ int cmd_pchg(int argc, char *argv[])
 		struct ec_response_pchg *r = ec_inbuf;
 
 		p->port = port;
-		rv = ec_command(EC_CMD_PCHG, 0, ec_outbuf, sizeof(*p),
+		rv = ec_command(EC_CMD_PCHG, 1, ec_outbuf, sizeof(*p),
 				ec_inbuf, ec_max_insize);
 		if (rv < 0) {
 			fprintf(stderr, "Error code: %d\n", rv);
@@ -9401,6 +9401,8 @@ int cmd_pchg(int argc, char *argv[])
 				       r->state);
 		printf("Battery: %d%%\n", r->battery_percentage);
 		printf("Flags: 0x%x\n", r->error);
+		printf("FW Version: 0x%x\n", r->fw_version);
+		printf("Dropped events: %u\n", r->dropped_event_count);
 		return 0;
 	}
 
