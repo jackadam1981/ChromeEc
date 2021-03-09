@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0f679a_39001092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-03-09T21:37:48Z",
+      "side": 1,
+      "message": "This is the offending line. We shouldn\u0027t be using TYPEC_RP_RESERVED.",
+      "revId": "9afa625abfcfe6d7d66508ef2c64e69c3bcd63c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729e12e4_27954544",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-03-09T21:37:48Z",
+      "side": 1,
+      "message": "This is the root cause. TYPEC_RP_RESERVED is an invalid/reserved TCPCI value and shouldn\u0027t be used anywhere, even here.\n\n\u003e TYPEC_CC_OPEN \u003d OPEN (with any pull).\n\u003e TYPEC_RP_RESERVED \u003d Invalid and shall not be used.\n\nSee also:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/02/2486502/4/board/servo_v4p1/usb_pd_policy.c#1372",
+      "revId": "9afa625abfcfe6d7d66508ef2c64e69c3bcd63c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
