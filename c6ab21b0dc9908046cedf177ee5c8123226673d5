@@ -16,6 +16,24 @@
       "message": " In file included from include/util.h:15,\n                  from util/ec_panicinfo.c:11:\n ./builtin/assert.h:24:22: error: conflicting types for ‘panic_assert_fail’\n    24 | extern noreturn void panic_assert_fail(const char *fname, int linenum);\n       |                      ^~~~~~~~~~~~~~~~~\n In file included from util/ec_panicinfo.h:9,\n                  from util/ec_panicinfo.c:10:\n include/panic.h:162:15: note: previous declaration of ‘panic_assert_fail’ was here\n   162 | noreturn void panic_assert_fail(const char *msg, const char *func,\n       |               ^~~~~~~~~~~~~~~~~\n make[2]: *** [Makefile.rules:611: build/metaknight_legacy/util/ectool] Error 1\n make[1]: *** [Makefile.rules:239: proj-metaknight_legacy] Error 2",
       "revId": "c6ab21b0dc9908046cedf177ee5c8123226673d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eff7d57_d4126c9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-09T07:26:05Z",
+      "side": 1,
+      "message": "Huh. Reordered includes to fix this.",
+      "parentUuid": "12c3db5d_668d8927",
+      "revId": "c6ab21b0dc9908046cedf177ee5c8123226673d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
