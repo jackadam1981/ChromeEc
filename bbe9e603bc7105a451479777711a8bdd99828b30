@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2bdd68_b3ead351",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-09T22:47:16Z",
+      "side": 1,
+      "message": "I assume so.  I\u0027ll just leave it as-is now that the fix has relocated.",
+      "parentUuid": "9f7f30cf_354ea722",
+      "revId": "bbe9e603bc7105a451479777711a8bdd99828b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9968698a_fd26f6f8",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-03-03T23:32:43Z",
       "side": 1,
       "message": "Could you place this instead in `usb_charger_vbus_change`? It seems like that would be *the* place.",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 3
+      },
+      "revId": "bbe9e603bc7105a451479777711a8bdd99828b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd209cfd_efd1db96",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-09T22:47:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9968698a_fd26f6f8",
       "range": {
         "startLine": 305,
         "startChar": 0,
