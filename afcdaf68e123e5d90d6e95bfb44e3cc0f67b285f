@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b13e56_5bd72733",
+        "filename": "zephyr/include/drivers/cros_bbram.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:06:36Z",
+      "side": 1,
+      "message": "This should be api-\u003eibbr",
+      "range": {
+        "startLine": 97,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "afcdaf68e123e5d90d6e95bfb44e3cc0f67b285f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c6d3f0_50d2afa9",
+        "filename": "zephyr/include/drivers/cros_bbram.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:06:36Z",
+      "side": 1,
+      "message": "api-\u003evsby",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 14
+      },
+      "revId": "afcdaf68e123e5d90d6e95bfb44e3cc0f67b285f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6d92ac_7eea8842",
+        "filename": "zephyr/include/drivers/cros_bbram.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:06:36Z",
+      "side": 1,
+      "message": "api-\u003ereset_vsby",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "afcdaf68e123e5d90d6e95bfb44e3cc0f67b285f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508185a5_29243940",
+        "filename": "zephyr/include/drivers/cros_bbram.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:06:36Z",
+      "side": 1,
+      "message": "api-\u003evcc1",
+      "range": {
+        "startLine": 139,
+        "startChar": 6,
+        "endLine": 139,
+        "endChar": 14
+      },
+      "revId": "afcdaf68e123e5d90d6e95bfb44e3cc0f67b285f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7712cd8f_4316f38c",
+        "filename": "zephyr/include/drivers/cros_bbram.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:06:36Z",
+      "side": 1,
+      "message": "api-\u003ereset_vcc1",
+      "range": {
+        "startLine": 153,
+        "startChar": 6,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "afcdaf68e123e5d90d6e95bfb44e3cc0f67b285f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746e8fe1_01a23926",
+        "filename": "zephyr/include/drivers/cros_bbram.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:06:36Z",
+      "side": 1,
+      "message": "api-\u003eread",
+      "range": {
+        "startLine": 169,
+        "startChar": 6,
+        "endLine": 169,
+        "endChar": 14
+      },
+      "revId": "afcdaf68e123e5d90d6e95bfb44e3cc0f67b285f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2cddd86_021b4766",
+        "filename": "zephyr/include/drivers/cros_bbram.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:06:36Z",
+      "side": 1,
+      "message": "api-\u003ewrite",
+      "revId": "afcdaf68e123e5d90d6e95bfb44e3cc0f67b285f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
