@@ -462,10 +462,14 @@ static enum ec_status hc_pchg(struct host_cmd_handler_args *args)
 	r->error = ctx->error;
 
 	args->response_size = sizeof(*r);
+	if (args->version > 0)
+		r->fw_version = ctx->fw_version;
+	else
+		args->response_size -= sizeof(r->fw_version);
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PCHG, hc_pchg, EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_PCHG, hc_pchg, EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static int cc_pchg(int argc, char **argv)
 {
