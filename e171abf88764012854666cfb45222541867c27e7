@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b87aedcd_f57ef7e1",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-09T19:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2d9e4b2_8f2061a9",
+      "revId": "e171abf88764012854666cfb45222541867c27e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49f5cc32_d5c466cb",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-09T18:56:46Z",
       "side": 1,
       "message": "It looks like this also changes the behavior for active cables without a TBT VDO from returning min(max_tbt_speed, Gen2) to returning a reserved value. If there is a spec (preferred) or app note citation for the new behavior, please comment it here. Either way, please mention this in the commit message.",
+      "revId": "e171abf88764012854666cfb45222541867c27e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda0247a_f2d8883f",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-09T19:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49f5cc32_d5c466cb",
       "revId": "e171abf88764012854666cfb45222541867c27e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
