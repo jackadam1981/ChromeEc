@@ -33,6 +33,24 @@
       "message": "I\u0027m not sure I understand the issue. It seems that SOC change is the trigger for some failure? Either the SOC becomes 100% and therefore the 5V limit is applied, or otherwise it\u0027s removed. It seems as it\u0027s working as expected?\n\nIs there another bug you can mention in the commit message?",
       "revId": "ab21d0cc5e56b45572343e7206b86973e6d7a785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "241e95f7_38f7f79c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-09T10:41:51Z",
+      "side": 1,
+      "message": "Assume that DUT is in S0 and battery is charging (HOOK_BATTERY_SOC_CHANGE is emitted often).\n\nWhen you limit voltage using pd command eg. \u0027pd 0 dev 9\u0027, DUT will request 9 volts at most. Battery is still charging so when SOC changes, \u0027reduce_input_voltage_when_full()\u0027 function will change voltage limit to PD_MAX_VOLTAGE_MV (\u0027pd_get_max_voltage()\u0027 will return 9000, which is different than PD_MAX_VOLTAGE_MV) as a result 9 volts limit is removed.\n\nThis issue was found when running PDVbusRequest test on Ampton (test requests voltage, but this function overwrites request), as far as I know there is no bug created for this.\n\nMy patch makes this function to change voltage limit to PD_MAX_VOLTAGE_MV only when there was 5 volts limit previously applied by this function. I\u0027m also thinking about modyfying this to save voltage before applying 5V limit and restore it when conditions are not met (DUT not it G3/S5 or battery not full).",
+      "parentUuid": "197f25c9_d9593317",
+      "revId": "ab21d0cc5e56b45572343e7206b86973e6d7a785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
