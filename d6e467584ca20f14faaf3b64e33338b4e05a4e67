@@ -37,6 +37,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2adac9a8_cee28115",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-09T01:13:14Z",
+      "side": 1,
+      "message": "nit: keep in alphabetical order",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001c58cf_260f025b",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-09T01:13:14Z",
+      "side": 1,
+      "message": "Add a newline above",
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35d55229_f47c6804",
         "filename": "board/lindar/led.c",
         "patchSetId": 1
