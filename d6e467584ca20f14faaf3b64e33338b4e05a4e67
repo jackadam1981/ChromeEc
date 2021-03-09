@@ -33,6 +33,259 @@
       "message": "This is going through UX review at the moment. Ok to approve this for early testing.",
       "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d55229_f47c6804",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "Nit - add a blank line after the include statements.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9922852a_f93c5bc1",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "Is this device generally available, or is it proprietary to the Lindar project?\n\nIf the lightbar controller is not proprietary, most of this code should be moved into it\u0027s own driver file.  The file could be added to the driver/ directory.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 47
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d164e1_baa50b9f",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "Spell out the full color name, and use the full percentage number for these values.\n\n    BAR_COLOR_ORANGE_20_PERCENT,\n    ...\n    BAR_COLOR_ORANGE_FULL",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 28
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4ecf5c_7dfbbb20",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "Change to BAR_COLOR_GREEN_FULL",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 16
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8019d889_6f444dc6",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "Nit - rename to ticks.",
+      "range": {
+        "startLine": 174,
+        "startChar": 9,
+        "endLine": 174,
+        "endChar": 13
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd2a478f_c15eb158",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "This state isn\u0027t shown in the Lightbar behavior v7, but it seems reasonable to turn off the lightbar when no battery is present.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 53
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb92745d_55a7c5db",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "This portion should remain in this file, as this describes the lightbar states specific to Lindar.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 0
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc28b01_aa0f73b5",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "The comment block at line 209 suggests there are defines names for these registers.\n\nPlease create #defines for each register offset.  This should be done in a separate header file.",
+      "range": {
+        "startLine": 198,
+        "startChar": 19,
+        "endLine": 198,
+        "endChar": 23
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95719ed4_3ca7df66",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "Change this to \n\n    if (!chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))\n        return LB_STATE_OFF;\n\nYou can then get rid of one nesting level.",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 51
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1d40a4f_188da06b",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "Read the charge percentage into a local variable once and use with each test.  Otherwise the charge percentage could possibly change between tests.",
+      "range": {
+        "startLine": 358,
+        "startChar": 9,
+        "endLine": 358,
+        "endChar": 27
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c69ef3b6_20e4227b",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T01:01:38Z",
+      "side": 1,
+      "message": "Combine these lines.",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 15
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
