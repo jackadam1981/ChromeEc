@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008787809",
+      "url": "https://android-build.googleplex.com/builds/treetop/chromium-review/2739009?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7567f0c2_a7357106",
+        "filename": "board/storo/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1493702
+      },
+      "writtenOn": "2021-03-09T01:16:52Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "3ece848339255271241dbe7163a1fa7b9d83753d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
