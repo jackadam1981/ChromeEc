@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92c7a69f_64e19d11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-09T03:04:11Z",
+      "side": 1,
+      "message": "volteer",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "afcdaf68e123e5d90d6e95bfb44e3cc0f67b285f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4b13e56_5bd72733",
         "filename": "zephyr/include/drivers/cros_bbram.h",
         "patchSetId": 2
