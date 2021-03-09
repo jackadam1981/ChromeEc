@@ -143,6 +143,22 @@ struct usb_mux usb_muxes[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
+/* USB Mux Configuration for Soc side BB-Retimers for Dual retimer config */
+struct usb_mux soc_side_bb_retimer0_usb_mux = {
+	.usb_port = TYPE_C_PORT_0,
+	.next_mux = &usbc0_tcss_usb_mux,
+	.driver = &bb_usb_retimer,
+	.i2c_port = I2C_PORT_TYPEC_0,
+	.i2c_addr_flags = I2C_PORT0_BB_RETIMER_SOC_ADDR,
+};
+struct usb_mux soc_side_bb_retimer1_usb_mux = {
+	.usb_port = TYPE_C_PORT_1,
+	.next_mux = &usbc1_tcss_usb_mux,
+	.driver = &bb_usb_retimer,
+	.i2c_port = I2C_PORT_TYPEC_1,
+	.i2c_addr_flags = I2C_PORT1_BB_RETIMER_SOC_ADDR,
+};
+
 /* Each TCPC have corresponding IO expander */
 const struct pca9675_ioexpander pca9675_iox[] = {
 	[TYPE_C_PORT_0] = {
@@ -261,6 +277,18 @@ DECLARE_HOOK(HOOK_INIT, enable_h1_irq, HOOK_PRIO_LAST);
 static void configure_retimer_usbmux(void)
 {
 	switch (board_get_version() & 0x3F) {
+	case ADLP_DDR5_RVP_SKU_BOARD_ID:
+		/*
+		 * ADL-P-DDR5 RVP has dual BB-retimers for port0 & port1.
+		 * Change the default usb mux config on runtime to support
+		 * dual retimer topology.
+		 */
+		usb_muxes[TYPE_C_PORT_0].next_mux
+			= &soc_side_bb_retimer0_usb_mux;
+		usb_muxes[TYPE_C_PORT_1].next_mux
+			= &soc_side_bb_retimer1_usb_mux;
+		break;
+
 	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
 		/* No retimer on Port-2 */
 #if defined(HAS_TASK_PD_C2)
