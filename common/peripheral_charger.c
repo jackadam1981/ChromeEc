@@ -460,12 +460,13 @@ static enum ec_status hc_pchg(struct host_cmd_handler_args *args)
 
 	r->battery_percentage = ctx->battery_percent;
 	r->error = ctx->error;
+	r->fw_version = ctx->fw_version;
 
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PCHG, hc_pchg, EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_PCHG, hc_pchg, EC_VER_MASK(1));
 
 static int cc_pchg(int argc, char **argv)
 {

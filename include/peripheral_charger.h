@@ -135,6 +135,8 @@ struct pchg {
 	uint32_t error;
 	/* Battery percentage (0% ~ 100%) of the connected peripheral device */
 	uint8_t battery_percent;
+	/* FW version */
+	uint32_t fw_version;
 };
 
 /**
