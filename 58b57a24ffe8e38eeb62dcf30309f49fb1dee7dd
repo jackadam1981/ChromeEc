@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc6ee080_00b2ca12",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-09T18:56:46Z",
+      "side": 1,
+      "message": "Nit: Although this file now has a fair number of functions whose names start with verbs, this is not conventional in the EC codebase. I think something like usb_rev30_to_tbt_speed would be more typical of our naming.",
+      "revId": "58b57a24ffe8e38eeb62dcf30309f49fb1dee7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
