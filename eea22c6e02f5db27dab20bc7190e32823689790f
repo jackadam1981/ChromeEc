@@ -22,6 +22,30 @@
       },
       "revId": "eea22c6e02f5db27dab20bc7190e32823689790f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e4133e3_3c2ccccf",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-09T21:25:52Z",
+      "side": 1,
+      "message": "Don\u0027t we need to worry about the nuvoton case? (limited reload?)",
+      "parentUuid": "a3dc73f9_da7d1b2c",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 48
+      },
+      "revId": "eea22c6e02f5db27dab20bc7190e32823689790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
