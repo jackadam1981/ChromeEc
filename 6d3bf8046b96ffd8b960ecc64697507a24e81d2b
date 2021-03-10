@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d4515c_d9291efa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-10T05:59:37Z",
+      "side": 1,
+      "message": "I tested the initialization time by CL.2747561 \u0026 the firmware size about 241KB on our EVB.\nBefore this CL, the header set to\n- clock SPI ratio 1\n- SPI clock 20MHz\n- SPI read mode - dual\nThe time between power-up \u0026 first initial function about 114.74ms\nafter this CL\n- clock SPI ratio 2\n- SPI clock 50MHz\n- SPI read mode - dual\nThe time between power-up \u0026 first initial function about 61.74ms",
+      "revId": "6d3bf8046b96ffd8b960ecc64697507a24e81d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
