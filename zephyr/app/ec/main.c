@@ -66,3 +66,12 @@ void main(void)
 		start_ec_tasks();
 	}
 }
+
+static int init_time_test(const struct device *dev)
+{
+	/* set GPIO76 to high */
+	(*((volatile uint8_t *)0x4008f000)) = 0x40;
+	(*((volatile uint8_t *)0x4008f002)) = 0x40;
+	return 0;
+}
+SYS_INIT(init_time_test, PRE_KERNEL_1, 0);
