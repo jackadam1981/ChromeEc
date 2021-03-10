@@ -44,6 +44,13 @@ GPIO_INT(BASE_DET_L,        PIN(3, 7), GPIO_INT_BOTH, base_detect_interrupt)  /*
 /* Sensor interrupts */
 GPIO_INT(ACCEL_GYRO_INT_L,  PIN(A, 0), GPIO_INT_FALLING, bmi160_interrupt)  /* Accelerometer/gyro interrupt */
 
+/* Switchcap
+ *
+ * For DA9313 SKUs, it is GPIO0 of DA9313. The GPIO0 is configured as PVC_PG.
+ * For LN9310 SKUs, it is the interrupt line of LN9310.
+ */
+GPIO_INT(DA9313_GPIO0,      PIN(E, 2), GPIO_INT_FALLING, switchcap_interrupt)
+
 /*
  * EC_RST_ODL acts as a wake source from hibernate mode. However, it does not
  * need to be an interrupt for normal EC operations. Simply set it an INPUT.
@@ -120,13 +127,6 @@ GPIO(BRD_ID2,               PIN(6, 3), GPIO_INPUT)
 GPIO(SKU_ID0,               PIN(F, 0), GPIO_INPUT)
 GPIO(SKU_ID1,               PIN(4, 1), GPIO_INPUT)
 GPIO(SKU_ID2,               PIN(D, 4), GPIO_INPUT)
-
-/* Switchcap */
-/*
- * GPIO0 is configured as PVC_PG. When the chip in power down mode, it outputs
- * high-Z. Set pull-down to avoid floating.
- */
-GPIO(DA9313_GPIO0,          PIN(E, 2), GPIO_INPUT | GPIO_PULL_DOWN) /* Switchcap GPIO0 */
 
 /* Special straps */
 GPIO(ARM_X86,               PIN(6, 6), GPIO_OUT_LOW)  /* NC, low for power saving */
