@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28bef4ad_e1c97472",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-10T01:02:51Z",
+      "side": 1,
+      "message": "Agree to check the actual pull; it improves some timing issue.",
+      "revId": "9afa625abfcfe6d7d66508ef2c64e69c3bcd63c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "729e12e4_27954544",
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "This isn\u0027t where we set it to RP_RESERVED, we set it when we go into CONFIG_DETACH.\n\nIts probably most correct to do CC_OPEN instead; but that is a bigger change. I\u0027ll leave it up to the Servo owners to decide if we should do a refactor as part of this.",
       "parentUuid": "729e12e4_27954544",
+      "revId": "9afa625abfcfe6d7d66508ef2c64e69c3bcd63c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6fc50c1_053a120c",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-10T01:02:51Z",
+      "side": 1,
+      "message": "Using the RP_RESERVED is not correct in the TCPCI terminology. But the current implementation treats it the same as CC_OPEN. So it is not the cause of the BUG.\n\nWe can fix it later.",
+      "parentUuid": "970182b7_33f60ca3",
       "revId": "9afa625abfcfe6d7d66508ef2c64e69c3bcd63c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
