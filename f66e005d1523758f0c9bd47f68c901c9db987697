@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3afeb0b_1363f383",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-10T00:28:29Z",
+      "side": 1,
+      "message": "MRB is the special USb4 cable, which shows active in the Discover Mode SOP\u0027 B25 and DBR (delta bridge I think) is TBT active cable with rounded support",
+      "parentUuid": "082e9b44_f999617b",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 2
+      },
+      "revId": "f66e005d1523758f0c9bd47f68c901c9db987697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e835828_5f4bfe97",
