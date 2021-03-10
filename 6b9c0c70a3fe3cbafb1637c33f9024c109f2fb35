@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9001d82_f7d5f089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-10T22:02:13Z",
+      "side": 1,
+      "message": "Minor nit on the SOC config, but looks good on my end.",
+      "revId": "6b9c0c70a3fe3cbafb1637c33f9024c109f2fb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a860f2_e6ce193b",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/Kconfig.board",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-10T22:02:13Z",
+      "side": 1,
+      "message": "Same here, use 7M6FC",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "6b9c0c70a3fe3cbafb1637c33f9024c109f2fb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea509ed_037dfe1a",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-10T22:02:13Z",
+      "side": 1,
+      "message": "Same here, npcx7m6fc is available, we should use it.",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "6b9c0c70a3fe3cbafb1637c33f9024c109f2fb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d21a3b5_a34a3e07",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-10T22:02:13Z",
+      "side": 1,
+      "message": "SOC_NPCX7M6FC was added, we should use it. See: src/third_party/zephyr/main/v2.5/soc/arm/nuvoton_npcx/npcx7/Kconfig.soc",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "6b9c0c70a3fe3cbafb1637c33f9024c109f2fb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
