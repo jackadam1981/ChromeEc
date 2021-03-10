@@ -16,6 +16,24 @@
       "message": "Hm, I see that zork, hatch, volteer, dedede, kukui, trogdor, etc. all still define this (precious wasted flash space!), even though this is probably not required after GSC interface is sufficiently stable?",
       "revId": "c13b8413fe9a2a19db66c890dc58b2c8fa289175",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2be8cb8_f074b8f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T18:24:51Z",
+      "side": 1,
+      "message": "Oh, I thought this is probably something that gets used in some automated testing. But, good point if this is just used for some manual testing, we can drop it later on. +Namyoon - do you know?",
+      "parentUuid": "5bc37ec2_1a7f02c1",
+      "revId": "c13b8413fe9a2a19db66c890dc58b2c8fa289175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
