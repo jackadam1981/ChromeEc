@@ -46,6 +46,30 @@
       },
       "revId": "70c050a72a34da949901010cd44570b5e7b69b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d266c93b_dc8bba33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-10T16:53:01Z",
+      "side": 1,
+      "message": "Let\u0027s see if fixing SPI clock ration and speed avoid the need to create a new reset flag.",
+      "parentUuid": "c5785e67_6e5dea0b",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "70c050a72a34da949901010cd44570b5e7b69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
