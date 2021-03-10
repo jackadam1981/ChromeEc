@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c9e7d5a_9edceae2",
+        "filename": "docs/zephyr_shim.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-10T21:37:32Z",
+      "side": 1,
+      "message": "should be preformatted text (backticks)",
+      "range": {
+        "startLine": 346,
+        "startChar": 14,
+        "endLine": 346,
+        "endChar": 15
+      },
+      "revId": "45d3984798f402480836f31c564991712a2adf5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "000d7f52_f0150c79",
         "filename": "docs/zephyr_shim.md",
         "patchSetId": 3
