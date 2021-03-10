@@ -235,6 +235,18 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 	case SB_CURRENT:
 		memcpy(dest, &(curr_batt->current), bounded_read_len);
 		break;
+	case SB_AVERAGE_CURRENT:
+		/* This may cause an i2c transaction */
+		val = battery_get_avg_voltage();
+		if (val < 0)
+			return val;
+		memcpy(dest, &val, bounded_read_len);
+		break;
+	case SB_MAX_ERROR:
+		/* report as 3% to make kernel happy */
+		val = BATTERY_LEVEL_SHUTDOWN;
+		memcpy(dest, &val, bounded_read_len);
+		break;
 	case SB_FULL_CHARGE_CAPACITY:
 		val = curr_batt->full_capacity;
 		if (batt_mode_cache & MODE_CAPACITY)
@@ -285,6 +297,35 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			return EC_ERROR_INVAL;
 		memcpy(dest, &val, bounded_read_len);
 		break;
+<<<<<<< HEAD   (cf78ee virtual_battery: support reading SpecificationInfo)
+=======
+	case SB_CHARGING_CURRENT:
+		if (curr_batt->flags & BATT_FLAG_BAD_DESIRED_CURRENT)
+			return EC_ERROR_BUSY;
+		val = curr_batt->desired_current;
+		memcpy(dest, &val, bounded_read_len);
+		break;
+	case SB_CHARGING_VOLTAGE:
+		if (curr_batt->flags & BATT_FLAG_BAD_DESIRED_VOLTAGE)
+			return EC_ERROR_BUSY;
+		val = curr_batt->desired_voltage;
+		memcpy(dest, &val, bounded_read_len);
+		break;
+	case SB_MANUFACTURE_DATE:
+		/* This may cause an i2c transaction */
+		if (!battery_manufacture_date(&year, &month, &day)) {
+			/* Encode in Smart Battery Spec format */
+			val = ((year - 1980) << 9) + (month << 5) + day;
+		} else {
+			/*
+			 * Return 0 on error. The kernel is unhappy with
+			 * returning an error code.
+			 */
+			val = 0;
+		}
+		memcpy(dest, &val, bounded_read_len);
+		break;
+>>>>>>> CHANGE (ed5f46 virtual_battery: add a few more properties)
 	case SB_MANUFACTURER_ACCESS:
 		/* No manuf. access reg access allowed over VB interface */
 		return EC_ERROR_INVAL;
