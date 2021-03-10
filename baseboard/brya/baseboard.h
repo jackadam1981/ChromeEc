@@ -40,6 +40,9 @@
 #define CONFIG_HOSTCMD_ESPI
 #define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
 
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
+
 /* Sensor console commands */
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
