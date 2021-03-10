@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b42c7f_024c7b9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-10T23:03:55Z",
+      "side": 1,
+      "message": "It looks like the support for npcx7m6fc was \"not quite ready yet\" (simply enabling it caused compile errors: b/182410932)\n\nHowever, I was able to get it working by adding a quick parent CL to this one, so I did that.",
+      "revId": "6b9c0c70a3fe3cbafb1637c33f9024c109f2fb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60a860f2_e6ce193b",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-03-10T22:02:13Z",
       "side": 1,
       "message": "Same here, use 7M6FC",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "6b9c0c70a3fe3cbafb1637c33f9024c109f2fb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e484a4a6_f4b26f7b",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/Kconfig.board",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-10T23:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a860f2_e6ce193b",
       "range": {
         "startLine": 7,
         "startChar": 12,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cee7bc1_7c60e6de",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-10T23:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea509ed_037dfe1a",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "6b9c0c70a3fe3cbafb1637c33f9024c109f2fb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d21a3b5_a34a3e07",
@@ -77,6 +142,30 @@
       "writtenOn": "2021-03-10T22:02:13Z",
       "side": 1,
       "message": "SOC_NPCX7M6FC was added, we should use it. See: src/third_party/zephyr/main/v2.5/soc/arm/nuvoton_npcx/npcx7/Kconfig.soc",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "6b9c0c70a3fe3cbafb1637c33f9024c109f2fb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dedc66a7_f9e1c226",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-10T23:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d21a3b5_a34a3e07",
       "range": {
         "startLine": 9,
         "startChar": 0,
