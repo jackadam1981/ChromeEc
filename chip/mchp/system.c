@@ -167,7 +167,8 @@ void system_pre_init(void)
 	MCHP_EC_AHB_ERR = 0;	/* write any value to clear */
 	MCHP_EC_AHB_ERR_EN = 0; /* enable capture of address on error */
 
-#ifdef CONFIG_HOSTCMD_ESPI
+	/* Manual voltage selection only required for MEC170x and MEC152x */
+#if defined(CONFIG_HOSTCMD_ESPI) && !defined(CHIP_FAMILY_MEC172X)
 	MCHP_EC_GPIO_BANK_PWR |= MCHP_EC_GPIO_BANK_PWR_VTR3_18;
 #endif
 
@@ -236,7 +237,7 @@ noreturn void _system_reset(int flags, int wake_from_hibernate)
 	/*
 	 * Trigger chip reset
 	 */
-#if defined(CONFIG_CHIPSET_DEBUG)
+#if defined(CONFIG_DEBUG_BRINGUP)
 #else
 	MCHP_PCR_SYS_RST |= MCHP_PCR_SYS_SOFT_RESET;
 #endif
@@ -304,6 +305,39 @@ const char *system_get_chip_name(void)
 	case 0x00237300: /* 128 pin */
 	case 0x00237400: /* 144 pin */
 		return "mec1527";
+	default:
+		return "unknown";
+	}
+}
+#endif
+
+#ifdef CHIP_FAMILY_MEC172X
+/*
+ * MEC152x family implements chip ID as a 32-bit
+ * register where:
+ * b[31:16] = 16-bit Device ID
+ * b[15:8] = 8-bit Sub ID
+ * b[7:0] = Revision
+ *
+ * MEC1723N-B0-I/SZ 144 pin: 0x0022_34_xx
+ * MEC1727N-B0-I/SZ 144 pin: 0x0022_74_xx
+ * MEC1721N-B0-I/LJ 176 pin: 0x0022_27_xx
+ * MEC1723N-B0-I/LJ 176 pin: 0x0022_37_xx
+ * MEC1727N-B0-I/LJ 176 pin: 0x0022_77_xx
+ */
+const char *system_get_chip_name(void)
+{
+	switch (MCHP_CHIP_DEVRID32 & ~(MCHP_CHIP_REV_MASK)) {
+	case 0x00223400:
+		return "MEC1723NSZ";
+	case 0x00227400:
+		return "MEC1727NSZ";
+	case 0x00222700:
+		return "MEC1721NLJ";
+	case 0x00223700:
+		return "MEC1723NLJ";
+	case 0x00227700:
+		return "MEC1727NLJ";
 	default:
 		return "unknown";
 	}
@@ -460,8 +494,11 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 		/*
 		 * Not using hibernation timer.
 		 * Disable external 32KHz clock input.
+		 * MEC172x can auto-switch to internal silicon OSC.
 		 */
+#ifndef CHIP_FAMILY_MEC172X
 		MCHP_VBAT_CE &= ~(MCHP_VBAT_CE_32K_DOMAIN_32KHZ_IN_PIN);
+#endif
 	}
 
 	/*
@@ -477,8 +514,8 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	asm("isb");
 	asm("nop");
 
-	/* Use 48MHz clock to speed through wake-up */
-	MCHP_PCR_PROC_CLK_CTL = 1;
+	/* Use fastest clock to speed through wake-up */
+	MCHP_PCR_PROC_CLK_CTL = MCHP_PCR_CLK_CTL_FASTEST;
 
 	/* Reboot */
 	_system_reset(0, 1);
