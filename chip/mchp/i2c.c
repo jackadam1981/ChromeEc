@@ -147,7 +147,9 @@ static struct {
 
 static const uint16_t i2c_ctrl_nvic_id[] = {
 	MCHP_IRQ_I2C_0, MCHP_IRQ_I2C_1, MCHP_IRQ_I2C_2, MCHP_IRQ_I2C_3,
-#if defined(CHIP_FAMILY_MEC152X)
+#if defined(CHIP_FAMILY_MEC172X)
+	MCHP_IRQ_I2C_4
+#elif defined(CHIP_FAMILY_MEC152X)
 	MCHP_IRQ_I2C_4, MCHP_IRQ_I2C_5, MCHP_IRQ_I2C_6, MCHP_IRQ_I2C_7
 #endif
 };
@@ -155,7 +157,9 @@ BUILD_ASSERT(ARRAY_SIZE(i2c_ctrl_nvic_id) == MCHP_I2C_CTRL_MAX);
 
 static const uint16_t i2c_controller_pcr[] = {
 	MCHP_PCR_I2C0, MCHP_PCR_I2C1, MCHP_PCR_I2C2, MCHP_PCR_I2C3,
-#if defined(CHIP_FAMILY_MEC152X)
+#if defined(CHIP_FAMILY_MEC172X)
+	MCHP_PCR_I2C4
+#elif defined(CHIP_FAMILY_MEC152X)
 	MCHP_PCR_I2C4, MCHP_PCR_I2C5, MCHP_PCR_I2C6, MCHP_PCR_I2C7,
 #endif
 };
@@ -163,7 +167,9 @@ BUILD_ASSERT(ARRAY_SIZE(i2c_controller_pcr) == MCHP_I2C_CTRL_MAX);
 
 static uintptr_t i2c_ctrl_base_addr[] = {
 	MCHP_I2C0_BASE, MCHP_I2C1_BASE, MCHP_I2C2_BASE, MCHP_I2C3_BASE,
-#if defined(CHIP_FAMILY_MEC152X)
+#if defined(CHIP_FAMILY_MEC172X)
+	MCHP_I2C4_BASE
+#elif defined(CHIP_FAMILY_MEC152X)
 	MCHP_I2C4_BASE,
 	/* NOTE: 5-7 do not implement network layer hardware */
 	MCHP_I2C5_BASE, MCHP_I2C6_BASE, MCHP_I2C7_BASE
@@ -540,7 +546,7 @@ static uint32_t get_line_level(int port)
 
 /*
  * Check if I2C port connected to controller has bus error or
- * other signalling issues such as stuck clock/data lines.
+ * other issues such as stuck clock/data lines.
  */
 static int i2c_check_recover(int port, int controller)
 {
@@ -932,7 +938,7 @@ int i2c_port_to_controller(int port)
 
 void i2c_set_timeout(int port, uint32_t timeout)
 {
-	/* Param is port, but timeout is stored by-controller. */
+	/* Parameter is port, but timeout is stored by-controller. */
 	cdata[i2c_port_to_controller(port)].timeout_us =
 		timeout ? timeout : I2C_TIMEOUT_DEFAULT_US;
 }
@@ -1033,6 +1039,12 @@ void i2c3_interrupt(void)
 {
 	handle_interrupt(3);
 }
+#if defined(CHIP_FAMILY_MEC172X)
+void i2c4_interrupt(void)
+{
+	handle_interrupt(4);
+}
+#endif
 #if defined(CHIP_FAMILY_MEC152X)
 void i2c4_interrupt(void)
 {
@@ -1056,6 +1068,9 @@ DECLARE_IRQ(MCHP_IRQ_I2C_0, i2c0_interrupt, 2);
 DECLARE_IRQ(MCHP_IRQ_I2C_1, i2c1_interrupt, 2);
 DECLARE_IRQ(MCHP_IRQ_I2C_2, i2c2_interrupt, 2);
 DECLARE_IRQ(MCHP_IRQ_I2C_3, i2c3_interrupt, 2);
+#if defined(CHIP_FAMILY_MEC172X)
+DECLARE_IRQ(MCHP_IRQ_I2C_4, i2c4_interrupt, 2);
+#endif
 #if defined(CHIP_FAMILY_MEC152X)
 DECLARE_IRQ(MCHP_IRQ_I2C_4, i2c4_interrupt, 2);
 DECLARE_IRQ(MCHP_IRQ_I2C_5, i2c5_interrupt, 2);
