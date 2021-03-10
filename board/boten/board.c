@@ -92,11 +92,24 @@ static void c0_ccsbu_ovp_interrupt(enum gpio_signal s)
 	pd_handle_cc_overvoltage(0);
 }
 
-static void pen_detect_interrupt(enum gpio_signal s)
+/**
+ * Deferred function to handle pen detect change
+ */
+static void pendetect_deferred(void)
 {
 	int pen_detect = !gpio_get_level(GPIO_PEN_DET_ODL);
 
 	gpio_set_level(GPIO_EN_PP5000_PEN, pen_detect);
+	gpio_set_level(GPIO_PEN_DET_PCH, gpio_get_level(GPIO_PEN_DET_ODL));
+}
+DECLARE_DEFERRED(pendetect_deferred);
+
+void pen_detect_interrupt(enum gpio_signal s)
+{
+
+	/* Trigger deferred notification of pen detect change */
+	hook_call_deferred(&pendetect_deferred_data,
+			500 * MSEC);
 }
 
 void board_hibernate(void)
