@@ -70,6 +70,23 @@
       "parentUuid": "cc403f97_9d6f3652",
       "revId": "c30408e97353e5bf2c1a72dbc017b82d661f9790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f766b336_64b59969",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-10T21:48:59Z",
+      "side": 1,
+      "message": "I\u0027m going to attempt to add fw_config to zephyr instead.",
+      "revId": "c30408e97353e5bf2c1a72dbc017b82d661f9790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
