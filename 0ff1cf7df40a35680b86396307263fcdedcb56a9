@@ -52,6 +52,41 @@
       "parentUuid": "183436f4_bf3f7d5d",
       "revId": "0ff1cf7df40a35680b86396307263fcdedcb56a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "921e2e36_e475b9fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-03-10T10:43:40Z",
+      "side": 1,
+      "message": "\u003e Ah I mean override the tablet mode state *after* gmr_tablet_switch_init invoked.\n\u003e Is there any reason it must be done before gmr_tablet_switch_init?\nTablet mode will be set after gmr_tablet_switch_init, and can\u0027t override because line 78.\n\u003e \n\u003e Reading board id needs HOOK_PRIO_INIT_ADC (\u003dHOOK_PRIO_DEFAULT), so a correct priority in general will be\n\u003e   - ADC available at HOOK_PRIO_DEFAULT\n\u003e   - board init at HOOK_PRIO_DEFAULT + 1\n\u003e   - gmr_tablet_switch_init at HOOK_PRIO_DEFAULT + 2\n\u003e \n\u003e I prefer changing board.c, otherwise you have to ensure that things depends on gmr_tablet_switch_init are also ordered correctly.\n\nI think to fix this, we should follow your priority.",
+      "parentUuid": "108d4528_998aa9c7",
+      "revId": "0ff1cf7df40a35680b86396307263fcdedcb56a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929b2bec_5a298106",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-03-10T10:43:40Z",
+      "side": 1,
+      "message": "Can\u0027t override in board_init when tablet mode is already set.",
+      "revId": "0ff1cf7df40a35680b86396307263fcdedcb56a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
