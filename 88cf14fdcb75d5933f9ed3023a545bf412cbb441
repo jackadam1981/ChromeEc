@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "754769bc_ba469fca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-10T22:36:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4ec5841_bd030e82",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "88cf14fdcb75d5933f9ed3023a545bf412cbb441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ff40df1_21c0fe3b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3f5f73_45d765d4",
+        "filename": "util/check_allowed.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-10T22:36:31Z",
+      "side": 1,
+      "message": "Yes that\u0027s right But we can remove it since people hopefully don\u0027t add trailing spaces.",
+      "parentUuid": "5ff40df1_21c0fe3b",
+      "range": {
+        "startLine": 58,
+        "startChar": 48,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "88cf14fdcb75d5933f9ed3023a545bf412cbb441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c58eef6_cace4205",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-03-10T21:37:45Z",
       "side": 1,
       "message": "nit: Could combine into a single regex by adding (?:menu)?",
+      "revId": "88cf14fdcb75d5933f9ed3023a545bf412cbb441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddabf3ed_55b45ee5",
+        "filename": "util/check_allowed.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-10T22:36:31Z",
+      "side": 1,
+      "message": "done, although I spelt out config and menuconfig to avoid confusion",
+      "parentUuid": "9c58eef6_cace4205",
       "revId": "88cf14fdcb75d5933f9ed3023a545bf412cbb441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
