@@ -22,6 +22,30 @@
       },
       "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "072084d1_50230b7e",
+        "filename": "board/brya/board.c",
+        "patchSetId": 55
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T05:57:19Z",
+      "side": 1,
+      "message": "I went through the header files and this change again. These are not even required in this change :(. I will drop those.",
+      "parentUuid": "8b1a4369_ffbd5e8e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
