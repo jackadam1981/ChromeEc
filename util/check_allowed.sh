@@ -55,8 +55,8 @@ comm -23 "${new_configs}" "${allow}" > "${suspects}"
 
 # Find all the Kconfig options so far defined
 find "${srctree}" -name "Kconfig*" -exec cat {} \; | sed -n \
-	-e 's/^\s*config *\([A-Za-z0-9_]*\).*$/CONFIG_\1/p' \
-	-e 's/^\s*menuconfig \([A-Za-z0-9_]*\).*$/CONFIG_\1/p' \
+	-e 's/^\s*config PLATFORM_EC_*\([A-Za-z0-9_]*\).*$/CONFIG_\1/p' \
+	-e 's/^\s*menuconfig PLATFORM_EC_\([A-Za-z0-9_]*\).*$/CONFIG_\1/p' \
 	| sort | uniq > "${ok}"
 
 # Complain about any new ad-hoc CONFIGs
