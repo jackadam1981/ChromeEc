@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59184e0a_c16b5c5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-10T19:25:18Z",
+      "side": 1,
+      "message": "We can\u0027t use ifdef\u0027s here. ec_commands.h is consumed outside of CrOS EC as well and those projects would have no idea about what config_* options are defined or not.\n\nPerhaps we could add a new field in an unused region? BATT_SERIAL_EXTENDED or similar?",
+      "revId": "318dc17eeeda01e3d97204aa2a6a47ce3aadd137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
