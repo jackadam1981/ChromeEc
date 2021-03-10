@@ -51,6 +51,24 @@
       "message": "Looks fine to me.\n\nsjg@ should be able to help you if the config checker is still failing.",
       "revId": "abe651cf7f912844a3f0668cbffb66a345766361",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5022f2b_84a9ec8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-10T16:27:57Z",
+      "side": 1,
+      "message": "When I try this CL (without the config_allowed.txt change!) I get:\n\nCONFIG_CCD_USBC_PORT_NUMBER\nCONFIG_ISL9241_SWITCHING_FREQ\n\nSo they need to be fixed first.\n\nAs to CONFIG_USB_PD_TCPC_VCONN, if this is a new config for this board, then please do add a Kconfig for it. This is how we get to having all Kconfigs done.",
+      "parentUuid": "7d165374_f7bbc961",
+      "revId": "abe651cf7f912844a3f0668cbffb66a345766361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
