@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42851599_c0df89a9",
+        "filename": "baseboard/intelrvp/npcx_ec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1379412
+      },
+      "writtenOn": "2021-03-10T03:22:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "79328073_0445fedc",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "4302a80a2b456e712fe03e0903bbe3f59b2ee591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22c67b16_09d1e7c8",
