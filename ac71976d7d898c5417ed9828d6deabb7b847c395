@@ -16,6 +16,23 @@
       "message": "This is not really required now. ",
       "revId": "ac71976d7d898c5417ed9828d6deabb7b847c395",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e578c1d_f61a0c61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T23:27:22Z",
+      "side": 1,
+      "message": "Sorry about stopping this in middle of CQ. As posted last night, I have fixed the dependency in common code that was forcing brya to add wake source pins. We can wait until we are ready to test hibernate and then push this change in.",
+      "revId": "ac71976d7d898c5417ed9828d6deabb7b847c395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
