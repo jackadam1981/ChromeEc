@@ -16,11 +16,7 @@
 /* Baseboard features */
 #include "baseboard.h"
 
-/*
- * Disable features enabled by default.
- */
 #undef CONFIG_HIBERNATE
-#undef CONFIG_SWITCH
 
 /* USB Type A Features */
 #define USB_PORT_COUNT			1
