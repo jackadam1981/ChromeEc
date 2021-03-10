@@ -16,6 +16,24 @@
       "message": "I wonder if this should still even be optional?",
       "revId": "2107bccd51865364765e46f11958c2ca8567d1a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46e791fa_9b7f1438",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T18:20:52Z",
+      "side": 1,
+      "message": "Yeah, I think this should be something enabled by default for all boards. +Keith/+Aseda - do you know why we require boards to select this individually?",
+      "parentUuid": "309e7deb_e5bc0592",
+      "revId": "2107bccd51865364765e46f11958c2ca8567d1a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
