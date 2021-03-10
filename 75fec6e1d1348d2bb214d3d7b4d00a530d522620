@@ -16,6 +16,24 @@
       "message": "No MOTIONSENSE task defined yet, is that intentional?",
       "revId": "75fec6e1d1348d2bb214d3d7b4d00a530d522620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d4f37c2_099a3e24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T18:26:27Z",
+      "side": 1,
+      "message": "Woops.. Good point. I assumed Caveh already had that set up. I will push this change out of the list for now. We can enable it along with motionsense task.",
+      "parentUuid": "15d3c59d_9e3044e7",
+      "revId": "75fec6e1d1348d2bb214d3d7b4d00a530d522620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
