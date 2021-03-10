@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8066a13_662b6a8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T05:47:04Z",
+      "side": 1,
+      "message": "This is no longer necessary. I have fixed the dependency here: crrev.com/c/2748034. We can wait until we are ready to enable hibernate to pick this change. I will get it removed from the train for now.",
+      "revId": "760972120df510449a2bd450d106ad5de3ebbc94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
