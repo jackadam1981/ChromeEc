@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73da06f7_5e4bbfd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2021-03-10T23:23:07Z",
+      "side": 1,
+      "message": "Looks good.  See also crrev.com/c/2749042 (bcs_version will be getting passed in to the bundle call soon.)",
+      "revId": "e629b9d42830b347d455122f1343d4984e042ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87b823b6_56717751",
