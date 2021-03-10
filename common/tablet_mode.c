@@ -160,7 +160,7 @@ static void gmr_tablet_switch_init(void)
 	 */
 	gmr_tablet_switch_interrupt_debounce();
 }
-DECLARE_HOOK(HOOK_INIT, gmr_tablet_switch_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, gmr_tablet_switch_init, HOOK_PRIO_DEFAULT + 1);
 
 void gmr_tablet_switch_disable(void)
 {
