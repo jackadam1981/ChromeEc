@@ -69,6 +69,24 @@
       "parentUuid": "7d165374_f7bbc961",
       "revId": "abe651cf7f912844a3f0668cbffb66a345766361",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5cf9414_06971e5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-10T17:41:31Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_TCPC_VCONN was recently added generically to all of TCPM\n\n24f065a6b7 (Eric Herrmann 2021-02-25 13:45:53 -0800 4222) #define CONFIG_USB_PD_TCPC_VCONN",
+      "parentUuid": "c5022f2b_84a9ec8a",
+      "revId": "abe651cf7f912844a3f0668cbffb66a345766361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
