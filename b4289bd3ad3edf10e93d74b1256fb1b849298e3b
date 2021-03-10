@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb3f40b_c73bb7b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-10T23:43:56Z",
+      "side": 1,
+      "message": "David, Chocodile_VPDMCU failed when I plugged it into a Voxel first and then plugged in a charger to\nChocodile. Chocodile is detected as a Debug Accessory (CC1 \u003d Rd and CC2 \u003d Rd) and VCONN is never applied. When VBUS and VCONN are absent, shouldn\u0027t the Rd be placed on CC and Ra on VCONN?\n\nPlugging the charger into Chocodile first and then into Voxel works.",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
