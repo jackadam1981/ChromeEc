@@ -22,6 +22,30 @@
       },
       "revId": "727e73030a0527d94f80de57e0014124d1ed1fb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f9e349a_7e0dcb8e",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-10T18:12:51Z",
+      "side": 1,
+      "message": "There are no Kconfig entries for these console commands.",
+      "parentUuid": "d48a1978_b00900af",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "727e73030a0527d94f80de57e0014124d1ed1fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
