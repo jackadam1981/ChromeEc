@@ -152,12 +152,21 @@ extern "C" {
 #define EC_MEMMAP_BATT_LFCC        0x58 /* Battery Last Full Charge Capacity */
 #define EC_MEMMAP_BATT_CCNT        0x5c /* Battery Cycle Count */
 /* Strings are all 8 bytes (EC_MEMMAP_TEXT_MAX) */
+#ifndef CONFIG_MEMMAP_TEXT_MAX_10
 #define EC_MEMMAP_BATT_MFGR        0x60 /* Battery Manufacturer String */
 #define EC_MEMMAP_BATT_MODEL       0x68 /* Battery Model Number String */
 #define EC_MEMMAP_BATT_SERIAL      0x70 /* Battery Serial Number String */
 #define EC_MEMMAP_BATT_TYPE        0x78 /* Battery Type String */
 #define EC_MEMMAP_ALS              0x80 /* ALS readings in lux (2 X 16 bits) */
 /* Unused 0x84 - 0x8f */
+#else
+#define EC_MEMMAP_BATT_MFGR        0x60 /* Battery Manufacturer String */
+#define EC_MEMMAP_BATT_MODEL       0x6A /* Battery Model Number String */
+#define EC_MEMMAP_BATT_SERIAL      0x74 /* Battery Serial Number String */
+#define EC_MEMMAP_BATT_TYPE        0x7E /* Battery Type String */
+#define EC_MEMMAP_ALS              0x88 /* ALS readings in lux (2 X 16 bits) */
+/* Unused 0x8C - 0x8f */
+#endif
 #define EC_MEMMAP_ACC_STATUS       0x90 /* Accelerometer status (8 bits )*/
 /* Unused 0x91 */
 #define EC_MEMMAP_ACC_DATA         0x92 /* Accelerometers data 0x92 - 0x9f */
