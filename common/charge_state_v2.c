@@ -1454,10 +1454,12 @@ static int shutdown_on_critical_battery(void)
 	/* Timer has expired */
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		switch (board_critical_shutdown_check(&curr)) {
+#ifdef CONFIG_HIBERNATE
 		case CRITICAL_SHUTDOWN_HIBERNATE:
 			CPRINTS("Hibernate due to critical battery");
 			system_hibernate(0, 0);
 			break;
+#endif
 		case CRITICAL_SHUTDOWN_CUTOFF:
 			CPRINTS("Cutoff due to critical battery");
 			/* Ensure logs are flushed. */
