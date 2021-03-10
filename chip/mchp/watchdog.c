@@ -60,7 +60,7 @@ int watchdog_init(void)
 
 	val = MCHP_TMR16_CTL(0);
 
-	/* Pre-scale = 48000 -> 1kHz -> Period = 1ms */
+	/* Prescaler = 48000 -> 1kHz -> Period = 1 ms */
 	val = (val & 0xffff) | (47999 << 16);
 
 	/* No auto restart */
@@ -85,10 +85,10 @@ int watchdog_init(void)
 	/* Clear WDT PCR sleep enable */
 	MCHP_PCR_SLP_DIS_DEV(MCHP_PCR_WDT);
 
-	/* Set timeout. It takes 1007us to decrement WDG_CNT by 1. */
+	/* Set timeout. It takes 1007 us to decrement WDG_CNT by 1. */
 	MCHP_WDG_LOAD = CONFIG_WATCHDOG_PERIOD_MS * 1000 / 1007;
 
-#if defined(CHIP_FAMILY_MEC152X)
+#if defined(CHIP_FAMILY_MEC152X) || defined(CHIP_FAMILY_MEC172X)
 	MCHP_WDG_STATUS = MCHP_WDG_STS_IRQ;
 	MCHP_WDG_IEN = MCHP_WDG_IEN_IRQ_EN;
 	MCHP_WDG_CTL |= MCHP_WDG_RESET_IRQ_EN;
@@ -99,7 +99,7 @@ int watchdog_init(void)
 	/* Start watchdog */
 #ifdef CONFIG_CHIPSET_DEBUG
 	/* WDT will not count if JTAG TRST# is pulled high by JTAG cable */
-	MCHP_WDG_CTL = MCHP_WDT_CTL_ENABLE | MCHP_WDT_CTL_JTAG_STALL_EN;
+	MCHP_WDG_CTL |= MCHP_WDT_CTL_ENABLE | MCHP_WDT_CTL_JTAG_STALL_EN;
 #else
 	MCHP_WDG_CTL |= MCHP_WDT_CTL_ENABLE;
 #endif
@@ -108,7 +108,7 @@ int watchdog_init(void)
 }
 
 /* MEC152x Watchdog can fire an interrupt to CPU before system reset */
-#if defined(CHIP_FAMILY_MEC152X)
+#if defined(CHIP_FAMILY_MEC152X) || defined(CHIP_FAMILY_MEC172X)
 
 void __keep watchdog_check(uint32_t excep_lr, uint32_t excep_sp)
 {
@@ -138,7 +138,7 @@ void IRQ_HANDLER(MCHP_IRQ_WDG)(void)
 			"mov r1, sp\n"
 			/*
 			 * Must push registers in pairs to keep 64-bit aligned
-			 * stack for ARM EABI.  This also conveninently saves
+			 * stack for ARM EABI.  This also conveniently saves
 			 * R0=LR so we can pass it to task_resched_if_needed.
 			 */
 			"push {r0, lr}\n"
@@ -177,7 +177,7 @@ void IRQ_HANDLER(MCHP_IRQ_TIMER16_0)(void)
 		     "mov r1, sp\n"
 		     /*
 		      * Must push registers in pairs to keep 64-bit aligned
-		      * stack for ARM EABI.  This also conveninently saves
+		      * stack for ARM EABI.  This also conveniently saves
 		      * R0=LR so we can pass it to task_resched_if_needed.
 		      */
 		     "push {r0, lr}\n"
@@ -192,4 +192,4 @@ const struct irq_priority __keep IRQ_PRIORITY(MCHP_IRQ_TIMER16_0)
 		= {MCHP_IRQ_TIMER16_0, 0};
 
 #endif /* #ifdef CONFIG_WATCHDOG_HELP */
-#endif /* #if defined(CHIP_FAMILY_MEC152X) */
+#endif /* #if defined(CHIP_FAMILY_MEC152X) || defined(CHIP_FAMILY_MEC172X) */
