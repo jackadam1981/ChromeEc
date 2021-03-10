@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff40df1_21c0fe3b",
+        "filename": "util/check_allowed.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-10T21:37:45Z",
+      "side": 1,
+      "message": "What\u0027s the trailing .* for? Trailing whitespace?",
+      "range": {
+        "startLine": 58,
+        "startChar": 48,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "88cf14fdcb75d5933f9ed3023a545bf412cbb441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c58eef6_cace4205",
+        "filename": "util/check_allowed.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-10T21:37:45Z",
+      "side": 1,
+      "message": "nit: Could combine into a single regex by adding (?:menu)?",
+      "revId": "88cf14fdcb75d5933f9ed3023a545bf412cbb441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
