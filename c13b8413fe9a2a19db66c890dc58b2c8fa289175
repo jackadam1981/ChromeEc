@@ -34,6 +34,24 @@
       "parentUuid": "5bc37ec2_1a7f02c1",
       "revId": "c13b8413fe9a2a19db66c890dc58b2c8fa289175",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7cfff6_4af042b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-03-10T19:00:11Z",
+      "side": 1,
+      "message": "We have a Cr50 test that checks UART-USB bridging quality, and it uses chargen command:\nhttps://source.corp.google.com/chromeos_public/src/third_party/labpack/files/server/site_tests/firmware_Cr50CCDUartStress/firmware_Cr50CCDUartStress.py?q\u003duart_stress_tester\u0026sq\u003dpackage:%5Echromeos_public$",
+      "parentUuid": "d2be8cb8_f074b8f1",
+      "revId": "c13b8413fe9a2a19db66c890dc58b2c8fa289175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
