@@ -40,6 +40,10 @@
 #define CONFIG_HOSTCMD_ESPI
 #define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
 
+/* Sensor console commands */
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
+
 /* Common charger defines */
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGER
