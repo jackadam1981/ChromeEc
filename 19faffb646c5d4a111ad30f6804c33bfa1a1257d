@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a55f20_4c5f645a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T06:07:31Z",
+      "side": 1,
+      "message": "Carrying forward earlier +2. No change from earlier patchset #28 that was marked CR+2. I just rebased on ToT and updated Cq-Depend to just include charger and usb_pd_policy.",
+      "revId": "19faffb646c5d4a111ad30f6804c33bfa1a1257d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
