@@ -1,6 +1,322 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5e29b8b_3bec6bfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 55
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "I have split this CL into several tiny logical CLs addressing one specific component/area. This should make it easier to review and land sooner.",
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac7c5a1_ef702432",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Pushed CL:2747419",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69cd062_0c712b51",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "I have no clue if this is required for brya or what impact enabling this config has if it is not really required. I will leave it to Caveh to address this once he is back next week.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deeafac6_36d2bc38",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "This can be added when hibernate is being enabled. No need to have a commented config here.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed61164_48085ab6",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Pushed CL:2747418",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f26810_e57846ec",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "This can be added when enabling the feature. No need to have a commented config here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b35b5f4_cd164633",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Pushed CL:2747706",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f33f6c4b_bfe9356d",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "These are all already defined in this file, but were being moved up. So dropping the change as it is not required.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 34
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96822d0_2dd0627e",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "These are already defined in this file, but were being moved up. So dropping this change as it is not required.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ac6071_e05fa523",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Pushed CL:2747460",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38284859_97cc97f6",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Pushed CL:2747707",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 28
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b5388a_6c465c70",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Dropped this comment because it probably does not apply to brya.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 3
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b216fad0_496a9276",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Pushed CL:2747711",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 31
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74d7253_80de93bd",
+        "filename": "board/brya/board.c",
+        "patchSetId": 55
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Pushed CL:2747756",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b1a4369_ffbd5e8e",
@@ -43,6 +359,138 @@
         "startChar": 0,
         "endLine": 14,
         "endChar": 38
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff776699_ab6a8b37",
+        "filename": "board/brya/board.c",
+        "patchSetId": 55
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Not required. So dropped.",
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf71ffbf_63617645",
+        "filename": "board/brya/board.c",
+        "patchSetId": 55
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Not required. So dropped.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11bab62_fc538736",
+        "filename": "board/brya/board.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Pushed CL:2747705",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e1fa6b_48c31312",
+        "filename": "board/brya/board.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Pushed CL:2747460",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b928f9b4_769a676f",
+        "filename": "board/brya/board.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "Pushed CL:2747707",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 48
+      },
+      "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ff0801_810f9a77",
+        "filename": "board/brya/board.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-10T07:38:58Z",
+      "side": 1,
+      "message": "This is required for EFS2. Let\u0027s enable it when EFS2 is enabled.",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 27
       },
       "revId": "fbb04b74d319699936033d82e6ed0098f632e245",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
