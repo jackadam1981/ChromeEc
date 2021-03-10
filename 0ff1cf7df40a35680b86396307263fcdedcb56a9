@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccae3b65_ab3d846a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-10T04:56:42Z",
+      "side": 1,
+      "message": "If this is for Jacuzzi only, can we disable tablet mode inside board.c at priority HOOK_PRIO_DEFAULT + 1 instead?",
+      "revId": "0ff1cf7df40a35680b86396307263fcdedcb56a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
