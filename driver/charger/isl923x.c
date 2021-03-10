@@ -567,6 +567,9 @@ static void isl923x_init(int chgnum)
 		if (raw_read16(chgnum, ISL9238_REG_CONTROL3, &reg))
 			goto init_fail;
 
+		if (chgnum != 0)
+			reg &= ~RAA489000_ENABLE_ADC;
+
 		if (raw_write16(chgnum, ISL9238_REG_CONTROL3,
 				reg |
 				RAA489000_C3_DCM_CCM_HYSTERESIS_ENABLE))

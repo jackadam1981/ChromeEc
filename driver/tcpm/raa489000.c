@@ -88,7 +88,11 @@ int raa489000_init(int port)
 	i2c_port = tcpc_config[port].i2c_info.port;
 	rv = i2c_read16(i2c_port, ISL923X_ADDR_FLAGS, ISL9238_REG_CONTROL3,
 			&regval);
-	regval |= RAA489000_ENABLE_ADC;
+	if(port == 0)
+		regval |= RAA489000_ENABLE_ADC;
+	else
+		regval &= ~RAA489000_ENABLE_ADC;
+
 	rv |= i2c_write16(i2c_port, ISL923X_ADDR_FLAGS, ISL9238_REG_CONTROL3,
 			  regval);
 	if (rv)
