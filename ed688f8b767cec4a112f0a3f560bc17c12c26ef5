@@ -22,6 +22,30 @@
       },
       "revId": "ed688f8b767cec4a112f0a3f560bc17c12c26ef5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc5b0b9_82d68f27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-10T17:34:07Z",
+      "side": 1,
+      "message": "I was hoping to get this up quick to fix cros EC builds for Volteer built locally.  But since I have to change config_allowed.txt any way.  I could reduce this CL to only config_allowed,txt and a do a follow up CL that adds the device tree hooks. wdyt?",
+      "parentUuid": "be0886b5_f7f3bf78",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "ed688f8b767cec4a112f0a3f560bc17c12c26ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
