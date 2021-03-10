@@ -418,6 +418,22 @@ static void motion_sense_shutdown(void)
 	}
 	motion_sense_switch_sensor_rate();
 
+	/* disable the body detection since AP is suspended */
+	if (IS_ENABLED(CONFIG_BODY_DETECTION)) {
+		static bool was_enabled;
+
+		switch (sensor_active) {
+		case SENSOR_ACTIVE_S3:
+			was_enabled = body_detect_get_enable();
+			body_detect_set_enable(false);
+			break;
+		case SENSOR_ACTIVE_S0:
+			body_detect_set_enable(was_enabled);
+			break;
+		default:
+			break;
+		}
+	}
 	/* Forget activities set by the AP */
 	if (IS_ENABLED(CONFIG_GESTURE_DETECTION)) {
 		uint32_t enabled = 0, disabled, mask;
@@ -461,9 +477,12 @@ static void motion_sense_suspend(void)
 
 	sensor_active = SENSOR_ACTIVE_S3;
 
+<<<<<<< HEAD   (3f1edc common: body_detection: using bypass_fifo flag)
 	/* disable the body detection since motion sensor is suspended */
 	if (IS_ENABLED(CONFIG_BODY_DETECTION))
 		body_detect_set_enable(false);
+=======
+>>>>>>> CHANGE (4adf9a common: body_detection: re-enable body_detection in S0)
 	/*
 	 * During shutdown sequence sensor rails can be powered down
 	 * asynchronously to the EC hence EC cannot interlock the sensor
