@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "093923bf_e6be7b04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-03-11T06:33:02Z",
+      "side": 1,
+      "message": "David,\n\nWe should not land this CL on firmware branch. We aim to do the development on main branch.",
+      "revId": "c28bc45f303f17bd434d7d5c71b9f16cedcd7ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
