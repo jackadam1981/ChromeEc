@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86ca2ec7_da0ac6bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-11T03:23:10Z",
+      "side": 1,
+      "message": "One small nit, but overall looks good to me.",
+      "revId": "43012614524be0320888753f10625bace7ddeb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3edacdf1_04ef7407",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-11T03:23:10Z",
+      "side": 1,
+      "message": "This will only occur in suspend.",
+      "range": {
+        "startLine": 115,
+        "startChar": 36,
+        "endLine": 115,
+        "endChar": 41
+      },
+      "revId": "43012614524be0320888753f10625bace7ddeb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913d2faa_32303d33",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-11T03:23:10Z",
+      "side": 1,
+      "message": "nit: bad whitespace. Align to the open paren with spaces.",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 12
+      },
+      "revId": "43012614524be0320888753f10625bace7ddeb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87fcab00_bc0fe4aa",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-11T03:23:10Z",
+      "side": 1,
+      "message": "I recommend using CHIPSET_STATE_ANY_SUSPEND. This would cover S3 as well in the case of an alternate OS.",
+      "range": {
+        "startLine": 122,
+        "startChar": 29,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "43012614524be0320888753f10625bace7ddeb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
