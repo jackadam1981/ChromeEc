@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218622da_5e2ad37f",
+        "filename": "common/usbc/usb_pe_ctvpd_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T22:38:30Z",
+      "side": 1,
+      "message": "nit: redundant config check?  Looks like this file only builds if CONFIG_USB_CTVPD is true",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 197,
+        "endChar": 32
+      },
+      "revId": "4dac760f4f637a0f2fd55e110b57f92fcdc188dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd490c34_cf4a8029",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T22:38:30Z",
+      "side": 1,
+      "message": "nit: this is totally up to you, but it seems like we could start moving away from macros towards bitfield structs if you feel so inclined.  Or we can stick with the macro approach, which is wildly popular in the VDO code",
+      "revId": "4dac760f4f637a0f2fd55e110b57f92fcdc188dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73db35ef_50936036",
+        "filename": "test/usb_typec_ctvpd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T22:38:30Z",
+      "side": 1,
+      "message": "nit: is this config enabled here as well since it\u0027s the CTVPD test?",
+      "revId": "4dac760f4f637a0f2fd55e110b57f92fcdc188dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
