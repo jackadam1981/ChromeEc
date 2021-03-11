@@ -20,6 +20,7 @@
 #include "comm-host.h"
 #include "chipset.h"
 #include "compile_time_macros.h"
+#include "crc.h"
 #include "cros_ec_dev.h"
 #include "ec_panicinfo.h"
 #include "ec_flash.h"
@@ -443,6 +444,24 @@ static int read_mapped_string(uint8_t offset, char *buffer, int max_size)
 		exit(1);
 	}
 	return ret;
+}
+
+static int wait_event(long event_type,
+		      struct ec_response_get_next_event_v1 *buffer,
+		      size_t buffer_size, long timeout)
+{
+	int rv;
+
+	rv = ec_pollevent(1 << event_type, buffer, buffer_size, timeout);
+	if (rv == 0) {
+		fprintf(stderr, "Timeout waiting for MKBP event\n");
+		return -ETIMEDOUT;
+	} else if (rv < 0) {
+		perror("Error polling for MKBP event\n");
+		return -EIO;
+	}
+
+	return rv;
 }
 
 int cmd_adc_read(int argc, char *argv[])
@@ -9349,29 +9368,166 @@ static void cmd_pchg_help(char *cmd)
 	fprintf(stderr,
 	"  Usage1: %s\n"
 	"  Usage2: %s <port>\n"
+	"  Usage3: %s <port> reset\n"
+	"  Usage4: %s <port> update <address> <version> <file>\n"
 	"\n"
 	"  Usage1 prints the number of ports.\n"
-	"  Usage2 prints the status of a port.\n",
-	cmd, cmd);
+	"  Usage2 prints the status of <port>.\n"
+	"  Usage3 resets <port>.\n"
+	"  Usage4 updates firmware of <port>.\n",
+	cmd, cmd, cmd, cmd);
 }
 
-int cmd_pchg(int argc, char *argv[])
+static int cmd_pchg_info(const struct ec_response_pchg *res)
 {
-	int port, port_count;
-	char *e;
-	int rv;
-	struct ec_response_pchg_count *rsp_count = ec_inbuf;
 	static const char * const pchg_state_text[] = EC_PCHG_STATE_TEXT;
 
-	rv = ec_command(EC_CMD_PCHG_COUNT, 0, NULL, 0, ec_inbuf, ec_max_insize);
+	printf("State: %s (%d)\n", res->state < sizeof(pchg_state_text)
+	       ? pchg_state_text[res->state] : "UNDEF", res->state);
+	printf("Battery: %d%%\n", res->battery_percentage);
+	printf("Flags: 0x%x\n", res->error);
+	printf("FW Version: 0x%x\n", res->fw_version);
+	return 0;
+}
+
+static int cmd_pchg_wait_event(int port, uint32_t expected)
+{
+	struct ec_response_get_next_event_v1 event;
+	const long timeout = 5000;
+	uint32_t *e = &event.data.host_event;
+	int rv;
+
+	rv = wait_event(EC_MKBP_EVENT_PCHG, &event, sizeof(event), timeout);
+	if (rv < 0)
+		return rv;
+
+	if (EC_MKBP_PCHG_EVENT_TO_PORT(*e) == port) {
+		if (*e & EC_MKBP_PCHG_UPDATE_ERROR) {
+			fprintf(stderr, "Received update error");
+			return -1;
+		}
+		if (*e & expected)
+			return 0;
+	}
+
+	fprintf(stderr, "Expected event=0x%x but received 0x%x\n",
+		expected, *e);
+	return -1;
+}
+
+static int cmd_pchg_update(int port, uint32_t address, uint32_t version,
+			   const char *filename)
+{
+	struct ec_params_pchg_update *p = ec_outbuf;
+	struct ec_response_pchg_update *r = ec_inbuf;
+	FILE *fp;
+	size_t len, size;
+	int rv;
+
+	fp = fopen(filename, "rb");
+	if (!fp) {
+		fprintf(stderr, "Can't open %s: %s\n",
+			filename, strerror(errno));
+		return -1;
+	}
+
+	fseek(fp, 0L, SEEK_END);
+	size = ftell(fp);
+	rewind(fp);
+	printf("Update file %s (%zu bytes) is opened.\n", filename, size);
+
+	/* Open session. */
+	p->port = port;
+	p->cmd = EC_PCHG_UPDATE_CMD_OPEN;
+	p->version = version;
+	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), r, sizeof(*r));
+	if (rv < 0) {
+		fprintf(stderr, "Failed to open update session: %d\n", rv);
+		fclose(fp);
+		return rv;
+	}
+
+	if (r->block_size + sizeof(*p) > ec_max_outsize) {
+		fprintf(stderr, "Block size (%d) is too large.\n",
+			r->block_size);
+		fclose(fp);
+		return -1;
+	}
+
+	rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_UPDATE_OPENED);
+	if (rv)
+		return rv;
+
+	printf("FW update session opened for port=%d version=0x%x block=%d.\n",
+	       port, version, r->block_size);
+
+	p->cmd = EC_PCHG_UPDATE_CMD_WRITE;
+	p->addr = address;
+	crc32_init();
+
+	/* Write firmware in blocks. */
+	len = fread(p->data, 1, r->block_size, fp);
+	while (len > 0) {
+		crc32_hash(p->data, len);
+		p->size = len;
+		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p,
+				sizeof(*p) + len, NULL, 0);
+		if (rv < 0) {
+			fprintf(stderr, "Failed to write FW: %d\n", rv);
+			fclose(fp);
+			return rv;
+		}
+
+		rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_WRITE_COMPLETE);
+		if (rv)
+			return rv;
+
+		printf("Written %zu bytes to 0x%x (total=%zu).\n",
+		       len, p->addr, p->addr - address + len);
+		p->addr += len;
+		len = fread(p->data, 1, r->block_size, fp);
+	}
+
+	fclose(fp);
+
+	/* Close session. */
+	p->cmd = EC_PCHG_UPDATE_CMD_CLOSE;
+	p->crc32 = crc32_result();
+	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), NULL, 0);
+
+	if (rv < 0) {
+		fprintf(stderr, "Failed to close update session: %d\n", rv);
+		return rv;
+	}
+
+	rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_UPDATE_CLOSED);
+	if (rv)
+		return rv;
+
+	printf("FW update session closed with CRC32=0x%x.\n", p->crc32);
+
+	return 0;
+}
+
+static int cmd_pchg(int argc, char *argv[])
+{
+	int port, port_count;
+	struct ec_response_pchg_count rcnt;
+	struct ec_params_pchg p;
+	struct ec_response_pchg r;
+	uint32_t address, version;
+	char *e;
+	int rv;
+
+	rv = ec_command(EC_CMD_PCHG_COUNT, 0, NULL, 0, &rcnt, sizeof(rcnt));
 	if (rv < 0) {
 		fprintf(stderr, "Failed to get port count: %d\n", rv);
 		return rv;
 	}
-	port_count = rsp_count->port_count;
+	port_count = rcnt.port_count;
 
 	if (argc == 1) {
-		/* Usage1 */
+		/* Usage.1 */
 		printf("%d\n", port_count);
 		return 0;
 	}
@@ -9382,30 +9538,45 @@ int cmd_pchg(int argc, char *argv[])
 		return -1;
 	}
 
-	if (argc < 3) {
-		/* Usage2 */
-		struct ec_params_pchg *p = ec_outbuf;
-		struct ec_response_pchg *r = ec_inbuf;
-
-		p->port = port;
-		rv = ec_command(EC_CMD_PCHG, 1, ec_outbuf, sizeof(*p),
-				ec_inbuf, ec_max_insize);
-		if (rv < 0) {
-			fprintf(stderr, "Error code: %d\n", rv);
-			return rv;
-		}
-
-		printf("State: %s (%d)\n",
-		       r->state < sizeof(pchg_state_text) ?
-				       pchg_state_text[r->state] : "UNDEF",
-				       r->state);
-		printf("Battery: %d%%\n", r->battery_percentage);
-		printf("Flags: 0x%x\n", r->error);
-		printf("FW Version: 0x%x\n", r->fw_version);
-		return 0;
+	p.port = port;
+	rv = ec_command(EC_CMD_PCHG, 1, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "Error code: %d\n", rv);
+		return rv;
 	}
 
-	fprintf(stderr, "Invalid parameter count\n\n");
+	if (argc == 2) {
+		/* Usage.2 */
+		return cmd_pchg_info(&r);
+	} else if (argc == 3 && !strcmp(argv[2], "reset")) {
+		/* Usage.3 */
+		struct ec_params_pchg_update *u = ec_outbuf;
+
+		u->cmd = EC_PCHG_UPDATE_CMD_RESET_TO_NORMAL;
+		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, u, sizeof(*u), NULL, 0);
+		if (rv < 0) {
+			fprintf(stderr, "Failed to reset port %d: %d\n",
+				port, rv);
+			return rv;
+		}
+		printf("Reset port %d complete\n", port);
+		return 0;
+	} else if (argc == 6 && !strcmp(argv[2], "update")) {
+		/* Usage.4 */
+		address = strtol(argv[3], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad address\n");
+			return -1;
+		}
+		version = strtol(argv[4], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad version\n");
+			return -1;
+		}
+		return cmd_pchg_update(port, address, version, argv[5]);
+	}
+
+	fprintf(stderr, "Invalid parameter\n\n");
 	cmd_pchg_help(argv[0]);
 
 	return -1;
@@ -10042,24 +10213,6 @@ err:
 	free(r);
 
 	return rv < 0;
-}
-
-static int wait_event(long event_type,
-		      struct ec_response_get_next_event_v1 *buffer,
-		      size_t buffer_size, long timeout)
-{
-	int rv;
-
-	rv = ec_pollevent(1 << event_type, buffer, buffer_size, timeout);
-	if (rv == 0) {
-		fprintf(stderr, "Timeout waiting for MKBP event\n");
-		return -ETIMEDOUT;
-	} else if (rv < 0) {
-		perror("Error polling for MKBP event\n");
-		return -EIO;
-	}
-
-	return rv;
 }
 
 int cmd_wait_event(int argc, char *argv[])
