@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7402837c_f1ff7dbc",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T21:28:52Z",
+      "side": 1,
+      "message": "For your testing, does this end up overwriting the WAIT you\u0027re checking for in the PRL?",
+      "revId": "7c3cd627d70b024dccbab856ac54c117960186e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
