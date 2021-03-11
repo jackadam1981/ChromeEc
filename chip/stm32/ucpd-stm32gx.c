@@ -99,6 +99,7 @@ enum ucpd_state {
 #define UCPD_EVT_HR_DONE        BIT(6)
 #define UCPD_EVT_HR_FAIL        BIT(7)
 #define UCPD_EVT_RX_GOOD_CRC    BIT(8)
+#define UCPD_EVT_RX_MSG         BIT(9)
 
 #define UCPD_T_RECEIVE_US (1 * MSEC)
 
@@ -252,6 +253,7 @@ static int ucpd_sr_cc_event;
 static int ucpd_cc_set_save;
 static int ucpd_cc_change_log;
 static uint32_t ucpd_cc_term_ts;
+static int ucpd_tx_msg_discard;
 
 static int ucpd_is_cc_pull_active(int port, enum usbpd_cc_pin cc_line);
 
@@ -498,6 +500,7 @@ static void stm32gx_ucpd_state_init(int port)
 	tx_retry_count = 0;
 	ucpd_tx_state = STATE_IDLE;
 	ucpd_timeout_us = -1;
+	ucpd_tx_msg_discard = 0;
 
 	/* Init variables used to manage rx */
 	ucpd_rx_sop_prime_enabled = 0;
@@ -980,6 +983,14 @@ static void ucpd_manage_tx(int port, int evt)
 		ucpd_set_tx_state(STATE_HARD_RESET);
 		msg_src = TX_MSG_TCPM;
 		ucpd_tx_request &= ~(1 << msg_src);
+	} else if (evt & UCPD_EVT_RX_MSG) {
+		/*
+		 * This check handles the PRL_Tx_Discard_Message state. When a
+		 * message is received with the correct message ID, any pending
+		 * transmit message should be discarded.
+		 */
+		ucpd_tx_state = STATE_IDLE;
+		ucpd_tx_request = 0;
 	}
 
 	switch (ucpd_tx_state) {
@@ -1019,14 +1030,8 @@ static void ucpd_manage_tx(int port, int evt)
 		if (evt & UCPD_EVT_TX_MSG_SUCCESS) {
 			ucpd_set_tx_state(STATE_WAIT_CRC_ACK);
 			ucpd_timeout_us = UCPD_T_RECEIVE_US;
-		} else if (evt & UCPD_EVT_TX_MSG_DISC) {
-			/*
-			 * This can happen if tx start is attempted when an
-			 * incoming message is being recieved. For this case,
-			 * don't attempt to retry and return to idle state.
-			 */
-			ucpd_set_tx_state(STATE_IDLE);
-		} else if (evt & UCPD_EVT_TX_MSG_FAIL) {
+		} else if (evt & UCPD_EVT_TX_MSG_DISC ||
+			   evt & UCPD_EVT_TX_MSG_FAIL) {
 			if (tx_retry_count < tx_retry_max) {
 				/*
 				 * Tx attempt failed. Remain in this
@@ -1035,9 +1040,16 @@ static void ucpd_manage_tx(int port, int evt)
 				msg_src = TX_MSG_TCPM;
 				tx_retry_count++;
 			} else {
+				enum tcpc_transmit_complete status;
+
+				status = (evt & UCPD_EVT_TX_MSG_FAIL) ?
+					TCPC_TX_COMPLETE_FAILED :
+					TCPC_TX_COMPLETE_DISCARDED;
 				ucpd_set_tx_state(STATE_IDLE);
-				pd_transmit_complete(port,
-						     TCPC_TX_COMPLETE_FAILED);
+				pd_transmit_complete(port, status);
+				ucpd_set_tx_state(STATE_IDLE);
+				if (evt & UCPD_EVT_TX_MSG_DISC)
+					CPRINTS("ucpd: tx message discarded!");
 			}
 		}
 		break;
@@ -1220,6 +1232,20 @@ static void ucpd_send_good_crc(int port, uint16_t rx_header)
 	task_set_event(TASK_ID_UCPD, UCPD_EVT_GOOD_CRC_REQ);
 }
 
+static void ucpd_tx_fake_discard(void)
+{
+	pd_transmit_complete(0, TCPC_TX_COMPLETE_DISCARDED);
+	CPRINTS("ucpd: informing PRL of discard event");
+}
+DECLARE_DEFERRED(ucpd_tx_fake_discard);
+
+static int msg_is_sink_cap(uint16_t header)
+{
+	return ((PD_HEADER_CNT(header) > 0) &&
+		(PD_HEADER_TYPE(header) == PD_DATA_SINK_CAP));
+
+}
+
 int stm32gx_ucpd_transmit(int port,
 			  enum tcpm_transmit_type type,
 			  uint16_t header,
@@ -1238,6 +1264,14 @@ int stm32gx_ucpd_transmit(int port,
 	/* Copy msg objects to ucpd data buffer, after 2 header bytes */
 	memcpy(ucpd_tx_buffers[TX_MSG_TCPM].data.msg + 2, (uint8_t *)data,
 	       len - 2);
+
+	if (ucpd_tx_msg_discard && msg_is_sink_cap(header)) {
+		/* Don't transmit message. Set callback to indicate discard */
+		ucpd_tx_msg_discard = 0;
+		hook_call_deferred(&ucpd_tx_fake_discard_data, 1000);
+		CPRINTS("ucpd: tx: intercept sink_cap msg");
+		return EC_SUCCESS;
+	}
 
 	/*
 	 * Check for hard reset message here. A different event is used for hard
@@ -1391,6 +1425,8 @@ void stm32gx_ucpd1_irq(void)
 					if (tcpm_enqueue_message(port))
 						hook_call_deferred(&ucpd_rx_enque_error_data,
 							   0);
+					task_set_event(TASK_ID_UCPD,
+						       UCPD_EVT_RX_MSG);
 				}
 
 				/* Send GoodCRC message (if required) */
@@ -1402,7 +1438,7 @@ void stm32gx_ucpd1_irq(void)
 			}
 		} else {
 			/* Rx message is complete, but there were bit errors */
-			
+			CPRINTS("ucpd: rx message error");
 		}
 	}
 	/* Check for fault conditions */
@@ -1638,6 +1674,8 @@ static int command_ucpd(int argc, char **argv)
 	} else if (!strcasecmp(argv[1], "hard")) {
 		stm32gx_ucpd_transmit(port, TCPC_TX_HARD_RESET, 0,
 				      &tx_data);
+	} else if (!strcasecmp(argv[1], "disc")) {
+		ucpd_tx_msg_discard = 1;
 	} else if (!strcasecmp(argv[1], "pol")) {
 		if (argc < 3)
 			return EC_ERROR_PARAM_COUNT;
