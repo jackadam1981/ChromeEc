@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6cd931_4e008b3c",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-11T21:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6a2bed9_37633337",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 36
+      },
+      "revId": "aecb2b87fe48ee95581df408197e62468cb4c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e2d9b68_8984cd18",
@@ -190,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11257b41_b62dbeda",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-11T21:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee9dc005_7a3372eb",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 10
+      },
+      "revId": "aecb2b87fe48ee95581df408197e62468cb4c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e30386c_6ddda19f",
@@ -203,6 +251,24 @@
       "writtenOn": "2021-03-11T21:27:12Z",
       "side": 1,
       "message": "Needs help text.",
+      "revId": "aecb2b87fe48ee95581df408197e62468cb4c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539d1415_419add96",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-11T21:58:14Z",
+      "side": 1,
+      "message": "Pulled from https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2721086. Eric, please check.",
+      "parentUuid": "6e30386c_6ddda19f",
       "revId": "aecb2b87fe48ee95581df408197e62468cb4c408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
