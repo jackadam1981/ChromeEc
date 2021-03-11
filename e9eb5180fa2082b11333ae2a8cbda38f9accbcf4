@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7111ed1_725ba5a7",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T21:29:33Z",
+      "side": 1,
+      "message": "nit: should this be done in wait_for_message_request since the non-discard path doesn\u0027t go through the phy reset?",
+      "revId": "e9eb5180fa2082b11333ae2a8cbda38f9accbcf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf2e891_59120faf",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T21:29:33Z",
+      "side": 1,
+      "message": "So the PRL is expecting WAIT to be set, but it seems like discard is an option?",
+      "revId": "e9eb5180fa2082b11333ae2a8cbda38f9accbcf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
