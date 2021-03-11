@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27b1dcc_fcaf8875",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:44:33Z",
+      "side": 1,
+      "message": "These binding files don\u0027t give enough information to explain how to do this. \n\nI think it would help to add an example to each one",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119d464e_1cc23e23",
+        "filename": "zephyr/dts/bindings/motionsense/driver/cros-ec,drv-bmi260-accel.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:44:33Z",
+      "side": 1,
+      "message": "What does the drv- prefix mean? Do we need it?",
+      "range": {
+        "startLine": 6,
+        "startChar": 21,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a74858e8_cf17abeb",
+        "filename": "zephyr/dts/bindings/motionsense/driver/drv-bmi260.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:44:33Z",
+      "side": 1,
+      "message": "I wonder if we should instead have separate I2C and SPI bindings here.\n\nThe problem is that when upstreaming it I very much doubt it would make sense like this.\n\nWe can then have some macro stuff in config_chip.h to produce the required thing for ECOS",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd0123c_8ed056ab",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,drvdata-tcs3400-clear.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:44:33Z",
+      "side": 1,
+      "message": "Should this go in some base file, then? It seems to be the only thing that these drivers need",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "385654e2_4275ba6c",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,drvdata-tcs3400-clear.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:44:33Z",
+      "side": 1,
+      "message": "indent two less?",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80783f8e_9200ab5b",
+        "filename": "zephyr/include/dt-bindings/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:44:33Z",
+      "side": 1,
+      "message": "Is this not available in Zephyr already?",
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a188d6d_8e1a718f",
+        "filename": "zephyr/include/dt-bindings/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:44:33Z",
+      "side": 1,
+      "message": "What is MSEC? Is it in certain units?",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
