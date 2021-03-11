@@ -22,6 +22,7 @@
 #include "driver/tcpm/tcpci.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "driver/usb_mux/pi3usb3x532.h"
+#include "driver/usb_mux/ps8743.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -175,6 +176,7 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 
 static int board_id = -1;
+extern const struct usb_mux usbc1_retimer2;
 extern const struct usb_mux usbc0_retimer;
 
 void board_init(void)
@@ -226,6 +228,9 @@ void board_init(void)
 				nb7v904m_lpm_disable = 1;
 				nb7v904m_set_aux_ch_switch(&usbc0_retimer,
 						NB7V904M_AUX_CH_FLIPPED);
+			}
+			if (board_id == 1) {
+				usb_muxes[1].next_mux = &usbc1_retimer2;
 			}
 		}
 	}
@@ -476,6 +481,8 @@ static int board_nb7v904m_mux_set_c0(const struct usb_mux *me,
 						mux_state_t mux_state);
 static int board_nb7v904m_mux_set(const struct usb_mux *me,
 						mux_state_t mux_state);
+static int board_nb7v904m_mux_set2(const struct usb_mux *me,
+						mux_state_t mux_state);
 const struct usb_mux usbc0_retimer = {
 	.usb_port = 0,
 	.i2c_port = I2C_PORT_USB_C0,
@@ -490,8 +497,15 @@ const struct usb_mux usbc1_retimer = {
 	.driver = &nb7v904m_usb_redriver_drv,
 	.board_set = &board_nb7v904m_mux_set,
 };
+const struct usb_mux usbc1_retimer2 = {
+	.usb_port = 1,
+	.i2c_port = I2C_PORT_SUB_USB_C1,
+	.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
+	.driver = &ps8743_usb_mux_driver,
+	.board_set = &board_nb7v904m_mux_set2,
+};
 
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
 		.i2c_port = I2C_PORT_USB_C0,
@@ -608,6 +622,91 @@ static int board_nb7v904m_mux_set_c0(const struct usb_mux *me,
 
 /* USB Mux */
 static int board_nb7v904m_mux_set(const struct usb_mux *me,
+						mux_state_t mux_state)
+{
+	int rv = EC_SUCCESS;
+	int flipped = !!(mux_state & USB_PD_MUX_POLARITY_INVERTED);
+
+	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+		/* USB with DP */
+		if (mux_state & USB_PD_MUX_DP_ENABLED) {
+			if (flipped) {
+				rv |= nb7v904m_tune_usb_set_eq(me,
+							NB7V904M_CH_A_EQ_10_DB,
+							NB7V904M_CH_ALL_SKIP_EQ,
+							NB7V904M_CH_ALL_SKIP_EQ,
+							NB7V904M_CH_D_EQ_4_DB);
+				rv |= nb7v904m_tune_usb_flat_gain(me,
+							NB7V904M_CH_ALL_SKIP_GAIN,
+							NB7V904M_CH_B_GAIN_3P5_DB,
+							NB7V904M_CH_C_GAIN_0_DB,
+							NB7V904M_CH_ALL_SKIP_GAIN);
+				rv |= nb7v904m_set_loss_profile_match(me,
+							NB7V904M_LOSS_PROFILE_A,
+							NB7V904M_LOSS_PROFILE_A,
+							NB7V904M_LOSS_PROFILE_D,
+							NB7V904M_LOSS_PROFILE_D);
+			}
+			else {
+				rv |= nb7v904m_tune_usb_set_eq(me,
+							NB7V904M_CH_A_EQ_4_DB,
+							NB7V904M_CH_ALL_SKIP_EQ,
+							NB7V904M_CH_ALL_SKIP_EQ,
+							NB7V904M_CH_D_EQ_10_DB);
+				rv |= nb7v904m_tune_usb_flat_gain(me,
+							NB7V904M_CH_ALL_SKIP_GAIN,
+							NB7V904M_CH_B_GAIN_0_DB,
+							NB7V904M_CH_C_GAIN_3P5_DB,
+							NB7V904M_CH_ALL_SKIP_GAIN);
+				rv |= nb7v904m_set_loss_profile_match(me,
+							NB7V904M_LOSS_PROFILE_D,
+							NB7V904M_LOSS_PROFILE_D,
+							NB7V904M_LOSS_PROFILE_A,
+							NB7V904M_LOSS_PROFILE_A);
+			}
+		} else {
+			/* USB only */
+			rv |= nb7v904m_tune_usb_set_eq(me,
+						NB7V904M_CH_A_EQ_10_DB,
+						NB7V904M_CH_ALL_SKIP_EQ,
+						NB7V904M_CH_ALL_SKIP_EQ,
+						NB7V904M_CH_D_EQ_10_DB);
+			rv |= nb7v904m_tune_usb_flat_gain(me,
+						NB7V904M_CH_ALL_SKIP_GAIN,
+						NB7V904M_CH_B_GAIN_3P5_DB,
+						NB7V904M_CH_C_GAIN_3P5_DB,
+						NB7V904M_CH_ALL_SKIP_GAIN);
+			rv |= nb7v904m_set_loss_profile_match(me,
+						NB7V904M_LOSS_PROFILE_A,
+						NB7V904M_LOSS_PROFILE_A,
+						NB7V904M_LOSS_PROFILE_A,
+						NB7V904M_LOSS_PROFILE_A);
+		}
+
+	} else if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		/* 4 lanes DP */
+		rv |= nb7v904m_tune_usb_set_eq(me,
+					NB7V904M_CH_A_EQ_4_DB,
+					NB7V904M_CH_ALL_SKIP_EQ,
+					NB7V904M_CH_ALL_SKIP_EQ,
+					NB7V904M_CH_D_EQ_4_DB);
+		rv |= nb7v904m_tune_usb_flat_gain(me,
+					NB7V904M_CH_ALL_SKIP_GAIN,
+					NB7V904M_CH_B_GAIN_0_DB,
+					NB7V904M_CH_C_GAIN_0_DB,
+					NB7V904M_CH_ALL_SKIP_GAIN);
+		rv |= nb7v904m_set_loss_profile_match(me,
+					NB7V904M_LOSS_PROFILE_D,
+					NB7V904M_LOSS_PROFILE_D,
+					NB7V904M_LOSS_PROFILE_D,
+					NB7V904M_LOSS_PROFILE_D);
+	}
+
+	return rv;
+}
+
+/* USB Mux */
+static int board_nb7v904m_mux_set2(const struct usb_mux *me,
 						mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
