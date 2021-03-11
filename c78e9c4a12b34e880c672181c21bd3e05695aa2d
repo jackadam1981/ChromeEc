@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bee1060_c2243ee3",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-11T17:23:39Z",
+      "side": 1,
+      "message": "A common pattern is to create macros for this at the top of the file. See CPRINTF elsewhere.\n\nJust a note for the future; you don\u0027t have to change it now.",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "c78e9c4a12b34e880c672181c21bd3e05695aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
