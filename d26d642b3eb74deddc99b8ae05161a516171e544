@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39de7129_4fdaca40",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-11T23:36:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e27b1dcc_fcaf8875",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "119d464e_1cc23e23",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-11T17:44:33Z",
       "side": 1,
       "message": "What does the drv- prefix mean? Do we need it?",
+      "range": {
+        "startLine": 6,
+        "startChar": 21,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "328997d9_60520e1a",
+        "filename": "zephyr/dts/bindings/motionsense/driver/cros-ec,drv-bmi260-accel.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-11T23:36:31Z",
+      "side": 1,
+      "message": "It\u0027s just there to distinguish between the driver information which is per sensor-type from a chip and the driver data which can be per the sernsor-type or per chip(sharing one data instance for all sensor type from the chip).\n\nFor short, drv prefix is for driver info, drvdata prefix is for driver data.\n\nAnyway, I\u0027ll remove it since we can still have drvdata for driver data.",
+      "parentUuid": "119d464e_1cc23e23",
       "range": {
         "startLine": 6,
         "startChar": 21,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7c1f6c5_f9287d83",
+        "filename": "zephyr/dts/bindings/motionsense/driver/drv-bmi260.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-11T23:36:31Z",
+      "side": 1,
+      "message": "Everything here is ECOS specific things. I believe we can assume ECOS is a kind of virtual device and what we have here is for configuring the device. I mean things here are very ECOS internal specific. When we upstream this, it\u0027s like upstream a driver(and some user space) for a completely new device. So I believe there\u0027s no need to have an extra step.",
+      "parentUuid": "a74858e8_cf17abeb",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efd0123c_8ed056ab",
         "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,drvdata-tcs3400-clear.yaml",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-11T17:44:33Z",
       "side": 1,
       "message": "Should this go in some base file, then? It seems to be the only thing that these drivers need",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc01d483_0707b58a",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,drvdata-tcs3400-clear.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-11T23:36:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "efd0123c_8ed056ab",
       "range": {
         "startLine": 11,
         "startChar": 4,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac4da6c_d983da05",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,drvdata-tcs3400-clear.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-11T23:36:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "385654e2_4275ba6c",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80783f8e_9200ab5b",
@@ -133,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea95a4de_72b3148b",
+        "filename": "zephyr/include/dt-bindings/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-11T23:36:31Z",
+      "side": 1,
+      "message": "It\u0027s not available in dts build.",
+      "parentUuid": "80783f8e_9200ab5b",
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a188d6d_8e1a718f",
@@ -146,6 +284,30 @@
       "writtenOn": "2021-03-11T17:44:33Z",
       "side": 1,
       "message": "What is MSEC? Is it in certain units?",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1576918c_4836251f",
+        "filename": "zephyr/include/dt-bindings/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-11T23:36:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a188d6d_8e1a718f",
       "range": {
         "startLine": 12,
         "startChar": 8,
