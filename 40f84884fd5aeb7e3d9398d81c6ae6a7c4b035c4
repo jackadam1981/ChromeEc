@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a7e404_a156c10b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T21:34:16Z",
+      "side": 1,
+      "message": "nit: would you mind moving this to OPEN entry since this applies to error recovery as well?",
+      "revId": "40f84884fd5aeb7e3d9398d81c6ae6a7c4b035c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
