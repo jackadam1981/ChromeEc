@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc84cd6_cb606fc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-11T05:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e945373_4163f04e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "886dc720d4a4e59e113d167e87c8a38796451bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eb6c038_738d68dd",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-10T17:37:29Z",
       "side": 1,
       "message": "LN9310 and DA9313 are not pin compatible. The layout of Homestar can only choose one and it is LN9310. So remove the DA9313 support and add the LN9310\u0027s. The dynamic detection is unnecessary, just wasting bootup time.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "886dc720d4a4e59e113d167e87c8a38796451bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26dddafa_9e94be5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-11T05:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eb6c038_738d68dd",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c320412_7f91b44f",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-11T05:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad27829_bd0e1b7e",
+      "range": {
+        "startLine": 317,
+        "startChar": 8,
+        "endLine": 317,
+        "endChar": 33
+      },
+      "revId": "886dc720d4a4e59e113d167e87c8a38796451bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "296a5e7a_29a35e7e",
@@ -118,6 +190,30 @@
       "writtenOn": "2021-03-10T17:37:29Z",
       "side": 1,
       "message": "Nit: The netname should be changed. It is not from DA9313.",
+      "range": {
+        "startLine": 52,
+        "startChar": 9,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "886dc720d4a4e59e113d167e87c8a38796451bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03535fd1_7bbc402c",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-11T05:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "296a5e7a_29a35e7e",
       "range": {
         "startLine": 52,
         "startChar": 9,
