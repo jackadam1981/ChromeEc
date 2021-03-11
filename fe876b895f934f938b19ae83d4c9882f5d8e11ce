@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ad28ed4_c66af38e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T22:23:35Z",
+      "side": 1,
+      "message": "A few suggestions, since we have been trying to spell these out in the help, although I see that this is not done consistently",
+      "revId": "fe876b895f934f938b19ae83d4c9882f5d8e11ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a1ec4b_da2e5f1a",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T22:23:35Z",
+      "side": 1,
+      "message": "USB Type-C connector voltage",
+      "range": {
+        "startLine": 742,
+        "startChar": 10,
+        "endLine": 742,
+        "endChar": 15
+      },
+      "revId": "fe876b895f934f938b19ae83d4c9882f5d8e11ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7181f8e9_b7e9c8a4",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T22:23:35Z",
+      "side": 1,
+      "message": "Power Path Controller (PPC)",
+      "range": {
+        "startLine": 742,
+        "startChar": 44,
+        "endLine": 742,
+        "endChar": 47
+      },
+      "revId": "fe876b895f934f938b19ae83d4c9882f5d8e11ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f01b2a3e_ab5206f9",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T22:23:35Z",
+      "side": 1,
+      "message": "Type-C Port Controller (TCPC)",
+      "range": {
+        "startLine": 743,
+        "startChar": 8,
+        "endLine": 743,
+        "endChar": 12
+      },
+      "revId": "fe876b895f934f938b19ae83d4c9882f5d8e11ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
