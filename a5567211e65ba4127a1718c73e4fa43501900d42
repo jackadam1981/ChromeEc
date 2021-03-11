@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6befbdb6_afbe3686",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:37:38Z",
+      "side": 1,
+      "message": "s/This will set/Sets/\n\nThis is a bit vague\n\nPerhaps\n\nclock ratio (core clock / SPI clock)\n\nso we know which way round it is?\n\nOr is it a divider?",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "a5567211e65ba4127a1718c73e4fa43501900d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eec5a77_68956609",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:37:38Z",
+      "side": 1,
+      "message": "Needs help",
+      "revId": "a5567211e65ba4127a1718c73e4fa43501900d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "753b6379_3471e2b4",
         "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin_defconfig",
         "patchSetId": 2
