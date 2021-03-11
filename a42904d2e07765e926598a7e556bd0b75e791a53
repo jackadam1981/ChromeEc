@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1b92c3_50945a28",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T15:14:52Z",
+      "side": 1,
+      "message": "Do have a script that generates this list?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "a42904d2e07765e926598a7e556bd0b75e791a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f055f7e_e0ff6598",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T15:14:52Z",
+      "side": 1,
+      "message": "Add def_lvol_io_list with this change.\n1.8V pins are\n  AP_RST_L: lvol_ioc1\n  DEPRECATED_AP_RST_REQ: lvol_ioc2\n  WARM_RESET_L: lvol_iof4\n  EC_I2C_SENSOR_SCL: lvol_iob3\n  EC_I2C_SENSOR_SDA: lvol_iob2\n  SHI_SDO: lvol_io47\n  SHI_SD1: lvol_io46\n  SHI_SCLK: lvol_io55\n  SHI_CS#: lvol_io53\n\nWe might want to consider creating aliases so the def_lvol_io_list can reference the signal names, instead of the GPIO number.",
+      "revId": "a42904d2e07765e926598a7e556bd0b75e791a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
