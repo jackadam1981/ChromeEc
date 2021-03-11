@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "586da1b7_2fc6fb3f",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-11T23:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86a1ec4b_da2e5f1a",
+      "range": {
+        "startLine": 742,
+        "startChar": 10,
+        "endLine": 742,
+        "endChar": 15
+      },
+      "revId": "fe876b895f934f938b19ae83d4c9882f5d8e11ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce726a4_3bb3fc05",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-11T23:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7181f8e9_b7e9c8a4",
+      "range": {
+        "startLine": 742,
+        "startChar": 44,
+        "endLine": 742,
+        "endChar": 47
+      },
+      "revId": "fe876b895f934f938b19ae83d4c9882f5d8e11ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f01b2a3e_ab5206f9",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-11T22:23:35Z",
       "side": 1,
       "message": "Type-C Port Controller (TCPC)",
+      "range": {
+        "startLine": 743,
+        "startChar": 8,
+        "endLine": 743,
+        "endChar": 12
+      },
+      "revId": "fe876b895f934f938b19ae83d4c9882f5d8e11ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5005969_7df4d1c1",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-11T23:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f01b2a3e_ab5206f9",
       "range": {
         "startLine": 743,
         "startChar": 8,
