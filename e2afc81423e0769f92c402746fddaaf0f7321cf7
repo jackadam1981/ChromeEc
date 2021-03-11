@@ -159,6 +159,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4ed4733_b5c43794",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T17:29:05Z",
+      "side": 1,
+      "message": "Not sure. Copied from volteer.",
+      "parentUuid": "47052f87_d4e32a2e",
+      "range": {
+        "startLine": 46,
+        "startChar": 54,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71f1da9d_22cb63e1",
         "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
         "patchSetId": 3
