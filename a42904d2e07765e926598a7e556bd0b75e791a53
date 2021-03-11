@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a4316f0_8858e8fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:25:16Z",
+      "side": 1,
+      "message": "This should use imperative tense, like \u0027Generate\u0027 instead of \u0027Generated\u0027\n\nE.g.:\n\nAdd named-gpios properties to the dts, taken from ...",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "a42904d2e07765e926598a7e556bd0b75e791a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d1b92c3_50945a28",
         "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
         "patchSetId": 3
