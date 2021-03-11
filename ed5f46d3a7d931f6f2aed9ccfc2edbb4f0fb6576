@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8720fba_38e8357a",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2021-03-11T06:46:15Z",
+      "side": 1,
+      "message": "battery_get_avg_current()",
+      "range": {
+        "startLine": 249,
+        "startChar": 8,
+        "endLine": 249,
+        "endChar": 31
+      },
+      "revId": "ed5f46d3a7d931f6f2aed9ccfc2edbb4f0fb6576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
