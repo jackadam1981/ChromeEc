@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86ab9d88_8798bf87",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T21:33:43Z",
+      "side": 1,
+      "message": "We don\u0027t have the IT8xxx drivers in zephyr or the CONFIG_SYV682X_NO_CC.  Volteer needs this disabled.  So set the default to n, and reference a bug to clean this up.",
+      "parentUuid": "4e2d9b68_8984cd18",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 10
+      },
+      "revId": "aecb2b87fe48ee95581df408197e62468cb4c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e30386c_6ddda19f",
         "filename": "zephyr/Kconfig.usbc",
         "patchSetId": 1
