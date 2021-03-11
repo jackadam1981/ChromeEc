@@ -347,7 +347,7 @@ static void board_init(void)
 			       GPIO_INPUT | GPIO_PULL_UP);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT + 1);
 
 #ifndef VARIANT_KUKUI_NO_SENSORS
 /* Motion sensors */
