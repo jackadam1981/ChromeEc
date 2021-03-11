@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee9dc005_7a3372eb",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T21:38:39Z",
+      "side": 1,
+      "message": "I opened b/182500469 to fix this.\n\nFor now, actually the default should be:\n\n    default if !PLATFORM_EC_USBC_PPC_SYV682X",
+      "parentUuid": "be182943_5cc47dec",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 10
+      },
+      "revId": "aecb2b87fe48ee95581df408197e62468cb4c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e30386c_6ddda19f",
         "filename": "zephyr/Kconfig.usbc",
         "patchSetId": 1
