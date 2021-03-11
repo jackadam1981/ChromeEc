@@ -87,6 +87,24 @@
       "message": "Can\u0027t override in board_init when tablet mode is already set.",
       "revId": "0ff1cf7df40a35680b86396307263fcdedcb56a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffae66c_4dbe5f1e",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-11T07:40:17Z",
+      "side": 1,
+      "message": "found an example here: https://crrev.com/c/2382553\n\ndoes this work on Jacuzzi?",
+      "parentUuid": "929b2bec_5a298106",
+      "revId": "0ff1cf7df40a35680b86396307263fcdedcb56a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
