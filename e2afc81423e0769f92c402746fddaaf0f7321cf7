@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7a1ea9_5fdd3006",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:26:21Z",
+      "side": 1,
+      "message": "Actually can you add a README.md for this baseboard somewhere? Maybe in a follow-up CL. We will need that for any upstreaming effort. It should cover what the board is and what features are supported / not supported",
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81635763_17bdb4b3",
