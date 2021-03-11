@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a56a0d_92ee3ee1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1733,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T22:25:10Z",
+      "side": 1,
+      "message": "On a second look, I\u0027m contemplating whether this is redundant with pd_can_source_from_device().  Would it make more sense to override that for honeybuns?  So then \"if (!can source from device) request swap\"",
+      "revId": "541607d7b1c251616975c372ef74a43dcd765d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee982466_392e6416",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T22:25:10Z",
+      "side": 1,
+      "message": "nit: let\u0027s keep all the DPM sets for PR swap funneled through pd_request_power_swap so we\u0027re always verifying pd_check_power_swap() unless told to set the request from the \"pd\" command",
+      "revId": "541607d7b1c251616975c372ef74a43dcd765d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
