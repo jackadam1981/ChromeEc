@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a0f23584_157220c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T20:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca94e1fa_e14f1bb4",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "be7a1ea9_5fdd3006",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -124,6 +148,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aadeea5c_eaea56ce",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/Kconfig.board",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T20:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eed24ef_62803f45",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a77e15e_a7b8d2f4",
@@ -137,6 +185,30 @@
       "writtenOn": "2021-03-11T15:03:13Z",
       "side": 1,
       "message": "Google Trogdor Baseboard",
+      "range": {
+        "startLine": 6,
+        "startChar": 7,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5848c26f_fd674917",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/Kconfig.board",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T20:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a77e15e_a7b8d2f4",
       "range": {
         "startLine": 6,
         "startChar": 7,
@@ -184,6 +256,30 @@
       "side": 1,
       "message": "We can add them when the driver is enabled",
       "parentUuid": "25fed6ed_ce0f199f",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd653aae_72a68de0",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T20:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0e99d8c_b91d67d5",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -312,6 +408,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe4c62a_cae3cc67",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T20:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71f1da9d_22cb63e1",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 0
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c6a4aa7_51369b84",
@@ -383,6 +503,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2946312f_8fe73466",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T20:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37dd4b3c_b285eccf",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad2ff8e5_401fbbfd",
@@ -396,6 +540,30 @@
       "writtenOn": "2021-03-11T15:03:13Z",
       "side": 1,
       "message": "These don\u0027t match the defines from baseboard/trogdor/baseboard.h.  These shouldn\u0027t be needed yet.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1bafef_37b86919",
+        "filename": "zephyr/projects/trogdor/lazor/include/i2c_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T20:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad2ff8e5_401fbbfd",
       "range": {
         "startLine": 13,
         "startChar": 0,
