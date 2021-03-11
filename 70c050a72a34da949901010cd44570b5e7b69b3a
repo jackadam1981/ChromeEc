@@ -70,6 +70,30 @@
       },
       "revId": "70c050a72a34da949901010cd44570b5e7b69b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8262a1a7_55646aa7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-11T09:37:19Z",
+      "side": 1,
+      "message": "I Apply CL.2747554 \u0026 this CL. Currently, it seems don\u0027t need an extra bit, but I don\u0027t know the specific time that H1 reset the EC. I couldn\u0027t guarantee H1 will not reset EC before EC_RESET_FLAG_INITIAL_PWR flag writes to BBRAM.",
+      "parentUuid": "d266c93b_dc8bba33",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "70c050a72a34da949901010cd44570b5e7b69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
