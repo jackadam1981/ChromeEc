@@ -20,6 +20,7 @@
 #include "comm-host.h"
 #include "chipset.h"
 #include "compile_time_macros.h"
+#include "crc.h"
 #include "cros_ec_dev.h"
 #include "ec_panicinfo.h"
 #include "ec_flash.h"
@@ -9349,26 +9350,114 @@ static void cmd_pchg_help(char *cmd)
 	fprintf(stderr,
 	"  Usage1: %s\n"
 	"  Usage2: %s <port>\n"
+	"  Usage3: %s <port> update <address> <version> <file>\n"
 	"\n"
 	"  Usage1 prints the number of ports.\n"
-	"  Usage2 prints the status of a port.\n",
-	cmd, cmd);
+	"  Usage2 prints the status of <port>.\n"
+	"  Usage3 updates firmware of <port>.\n",
+	cmd, cmd, cmd);
 }
 
-int cmd_pchg(int argc, char *argv[])
+static int cmd_pchg_info(const struct ec_response_pchg *res)
 {
-	int port, port_count;
-	char *e;
-	int rv;
-	struct ec_response_pchg_count *rsp_count = ec_inbuf;
 	static const char * const pchg_state_text[] = EC_PCHG_STATE_TEXT;
 
-	rv = ec_command(EC_CMD_PCHG_COUNT, 0, NULL, 0, ec_inbuf, ec_max_insize);
+	printf("State: %s (%d)\n", res->state < sizeof(pchg_state_text)
+	       ? pchg_state_text[res->state] : "UNDEF", res->state);
+	printf("Battery: %d%%\n", res->battery_percentage);
+	printf("Flags: 0x%x\n", res->error);
+	printf("FW Version: 0x%x\n", res->fw_version);
+	return 0;
+}
+
+static int cmd_pchg_update(int port, uint32_t address, uint32_t version,
+			   const char *filename)
+{
+	struct ec_params_pchg_update *p = ec_outbuf;
+	struct ec_response_pchg_update *r = ec_inbuf;
+	FILE *fp;
+	size_t len;
+	int rv;
+
+	fp = fopen(filename, "rb");
+	if (!fp) {
+		fprintf(stderr, "Can't open %s: %s\n",
+			filename, strerror(errno));
+		return -1;
+	}
+
+	/* Open session. */
+	p->port = port;
+	p->cmd = EC_PCHG_UPDATE_CMD_RESET_TO_DOWNLOAD;
+	p->version = version;
+	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), r, sizeof(*r));
+	if (rv < 0) {
+		fprintf(stderr, "Failed to open update session: %d\n", rv);
+		fclose(fp);
+		return rv;
+	}
+
+	if (r->block_size + sizeof(*p) > ec_max_outsize) {
+		fprintf(stderr, "Block size is too large (%d)\n",
+			r->block_size);
+		fclose(fp);
+		return -1;
+	}
+
+	printf("FW update session opened for port=%d ver.=0x%x.\n",
+	       p->port, p->version);
+
+	p->cmd = EC_PCHG_UPDATE_CMD_WRITE;
+	p->addr = address;
+	crc32_init();
+
+	/* Write firmware in blocks. */
+	len = fread(p->data, 1, r->block_size, fp);
+	while (len > 0) {
+		crc32_hash(p->data, len);
+		p->size = len;
+		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), NULL, 0);
+		if (rv < 0) {
+			fprintf(stderr, "Failed to write fw: %d\n", rv);
+			fclose(fp);
+			return rv;
+		}
+		printf("Written %zu bytes to 0x%x.\n", len, p->addr);
+		p->addr += len;
+		len = fread(p->data, 1, r->block_size, fp);
+	}
+
+	fclose(fp);
+
+	/* Close session. */
+	p->cmd = EC_PCHG_UPDATE_CMD_CLOSE;
+	p->crc32 = crc32_result();
+	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), NULL, 0);
+	if (rv < 0) {
+		fprintf(stderr, "Failed to close update session: %d\n", rv);
+		return rv;
+	}
+	printf("FW update session closed with CRC32=0x%x.\n", p->crc32);
+
+	return 0;
+}
+
+static int cmd_pchg(int argc, char *argv[])
+{
+	int port, port_count;
+	struct ec_response_pchg_count rcnt;
+	struct ec_params_pchg p;
+	struct ec_response_pchg r;
+	uint32_t address, version;
+	char *e;
+	int rv;
+
+	rv = ec_command(EC_CMD_PCHG_COUNT, 0, NULL, 0, &rcnt, sizeof(rcnt));
 	if (rv < 0) {
 		fprintf(stderr, "Failed to get port count: %d\n", rv);
 		return rv;
 	}
-	port_count = rsp_count->port_count;
+	port_count = rcnt.port_count;
 
 	if (argc == 1) {
 		/* Usage1 */
@@ -9382,26 +9471,34 @@ int cmd_pchg(int argc, char *argv[])
 		return -1;
 	}
 
-	if (argc < 3) {
-		/* Usage2 */
-		struct ec_params_pchg *p = ec_outbuf;
-		struct ec_response_pchg *r = ec_inbuf;
+	p.port = port;
+	rv = ec_command(EC_CMD_PCHG, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "Error code: %d\n", rv);
+		return rv;
+	}
 
-		p->port = port;
-		rv = ec_command(EC_CMD_PCHG, 0, ec_outbuf, sizeof(*p),
-				ec_inbuf, ec_max_insize);
-		if (rv < 0) {
-			fprintf(stderr, "Error code: %d\n", rv);
-			return rv;
+	if (argc == 2) {
+		/* Usage2 */
+		return cmd_pchg_info(&r);
+	} else if (argc == 6) {
+		if (!strcmp(argv[2], "update")) {
+			/* Usage3 */
+			address = strtol(argv[3], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad address\n");
+				return -1;
+			}
+			version = strtol(argv[4], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad address\n");
+				return -1;
+			}
+			return cmd_pchg_update(port, address, version, argv[5]);
 		}
 
-		printf("State: %s (%d)\n",
-		       r->state < sizeof(pchg_state_text) ?
-				       pchg_state_text[r->state] : "UNDEF",
-				       r->state);
-		printf("Battery: %d%%\n", r->battery_percentage);
-		printf("Flags: 0x%x\n", r->error);
-		return 0;
+		fprintf(stderr, "Unknown sub-command: %s\n", argv[2]);
+		return -1;
 	}
 
 	fprintf(stderr, "Invalid parameter count\n\n");
