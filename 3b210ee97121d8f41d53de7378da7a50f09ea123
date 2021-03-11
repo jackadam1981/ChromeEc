@@ -56,6 +56,30 @@
       },
       "revId": "3b210ee97121d8f41d53de7378da7a50f09ea123",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d824d3e_ac597eb1",
+        "filename": "chip/mchp/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-11T17:38:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afaf9acf_c972d33c",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "3b210ee97121d8f41d53de7378da7a50f09ea123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
