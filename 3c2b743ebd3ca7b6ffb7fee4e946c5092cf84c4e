@@ -34,6 +34,24 @@
       "parentUuid": "36de9379_58049710",
       "revId": "3c2b743ebd3ca7b6ffb7fee4e946c5092cf84c4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8efe4021_29abe4fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-03-11T07:03:13Z",
+      "side": 1,
+      "message": "I also checked to dump the value in sysfs and got IO error",
+      "parentUuid": "1516ddc2_52deb037",
+      "revId": "3c2b743ebd3ca7b6ffb7fee4e946c5092cf84c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
