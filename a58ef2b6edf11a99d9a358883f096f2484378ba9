@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36008785_aff4a936",
+        "filename": "docs/zephyr_poc_device_bringup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:47:47Z",
+      "side": 1,
+      "message": "That CL does not seem to match, e.g. it does not enable SPI",
+      "range": {
+        "startLine": 30,
+        "startChar": 44,
+        "endLine": 30,
+        "endChar": 71
+      },
+      "revId": "a58ef2b6edf11a99d9a358883f096f2484378ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
