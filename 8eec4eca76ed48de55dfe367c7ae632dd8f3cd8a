@@ -46,6 +46,30 @@
       },
       "revId": "8eec4eca76ed48de55dfe367c7ae632dd8f3cd8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44d3049e_da9d4b82",
+        "filename": "zephyr/app/ec/soc/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T20:18:35Z",
+      "side": 1,
+      "message": "Done.\n\nWe used the meta-symbols with x86 for selecting power sequencing defaults.  It looks like we\u0027ll end up doing something similar with ARM.",
+      "parentUuid": "18298684_b605e38f",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "8eec4eca76ed48de55dfe367c7ae632dd8f3cd8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
