@@ -16,6 +16,69 @@
       "message": "LGTM, adding EC owners to check. Thanks! ",
       "revId": "ae70b33a0104bbafca7fdba73576692724d125a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68fd1f0_99f033d6",
+        "filename": "board/boten/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T18:00:52Z",
+      "side": 1,
+      "message": "To really debounce this signal I think you want to do something like this:\n\n    static int debounced_pen_detect;\n    int pen_detect \u003d !gpio_get_level(GPIO_PEN_DET_ODL);\n\n    if (pen_detect \u003d\u003d debounced_pen_detect)\n        return;\n\n    debounced_pen_detect \u003d pen_detect.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "ae70b33a0104bbafca7fdba73576692724d125a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c88ef26_8272434c",
+        "filename": "board/boten/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T18:00:52Z",
+      "side": 1,
+      "message": "Note, it\u0027s possible the GPIO input level could change between line 100 here.  Use this instead:\n\n    gpio_set_level(GPIO_PEN_DET_PCH, !debounced_pen_detect);",
+      "range": {
+        "startLine": 103,
+        "startChar": 34,
+        "endLine": 103,
+        "endChar": 66
+      },
+      "revId": "ae70b33a0104bbafca7fdba73576692724d125a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d8f008_65fa5e3c",
+        "filename": "board/boten/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T18:00:52Z",
+      "side": 1,
+      "message": "Nit - delete this space.",
+      "revId": "ae70b33a0104bbafca7fdba73576692724d125a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
