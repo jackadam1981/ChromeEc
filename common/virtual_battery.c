@@ -244,6 +244,21 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			return EC_ERROR_BUSY;
 		memcpy(dest, &(curr_batt->current), bounded_read_len);
 		break;
+<<<<<<< HEAD   (128af9 Homestar: Remove CONFIG_DEVICE_EVENT DEFINE)
+=======
+	case SB_AVERAGE_CURRENT:
+		/* This may cause an i2c transaction */
+		if (curr_batt->flags & BATT_FLAG_BAD_AVERAGE_CURRENT)
+			return EC_ERROR_BUSY;
+		val = battery_get_avg_current();
+		memcpy(dest, &val, bounded_read_len);
+		break;
+	case SB_MAX_ERROR:
+		/* report as 3% to make kernel happy */
+		val = BATTERY_LEVEL_SHUTDOWN;
+		memcpy(dest, &val, bounded_read_len);
+		break;
+>>>>>>> CHANGE (ffbc67 virtual_battery: bug fix in reading SB_AVERAGE_CURRENT)
 	case SB_FULL_CHARGE_CAPACITY:
 		if (curr_batt->flags & BATT_FLAG_BAD_FULL_CAPACITY ||
 				curr_batt->flags & BATT_FLAG_BAD_VOLTAGE)
