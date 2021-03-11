@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1479746_8a3af0f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-11T21:31:08Z",
+      "side": 1,
+      "message": "This you also need a change in shim/include/config_chip.h to convert CONFIG_PLATFORM_EC_USB_PD_TCPC_VCONN back to the CONFIG_USB_PD_TCPC_VCONN",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "aecb2b87fe48ee95581df408197e62468cb4c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db0a9f35_3d45b6ca",
         "filename": "zephyr/Kconfig.usbc",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2021-03-11T21:27:12Z",
       "side": 1,
       "message": "Was Denis working on fixing this?  If you need to get unblocked, you also need to add a Zephyr to cros EC translation in config_chip.h.  See example here.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/45c0c5fe/zephyr/shim/include/config_chip.h#899",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 36
+      },
+      "revId": "aecb2b87fe48ee95581df408197e62468cb4c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a2bed9_37633337",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-11T21:31:08Z",
+      "side": 1,
+      "message": "I asked questions of the zephyr team and believe Jack was last working on finding a solution.",
+      "parentUuid": "db0a9f35_3d45b6ca",
       "range": {
         "startLine": 738,
         "startChar": 0,
