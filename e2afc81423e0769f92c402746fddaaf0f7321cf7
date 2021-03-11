@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a26c843_19d164c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T17:33:22Z",
+      "side": 1,
+      "message": "Upstream uses RST/sphinx.  Should we adopt that?\n\nYes, will be follow-up CL.",
+      "parentUuid": "be7a1ea9_5fdd3006",
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81635763_17bdb4b3",
