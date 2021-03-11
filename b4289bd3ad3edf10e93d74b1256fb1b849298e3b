@@ -34,6 +34,74 @@
       "parentUuid": "6fb3f40b_c73bb7b9",
       "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "464fb31d_26f432ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T22:54:12Z",
+      "side": 1,
+      "message": "There were a couple of other issues we discussed with the PD WG that we should make sure work in our code: \n- We should never Vconn swap, but we also shouldn\u0027t consider ourselves the \"vconn source\" of the connection with the port partner\n- We should probably maintain Vconn through hard resets",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93906fe8_908352b4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T22:54:12Z",
+      "side": 1,
+      "message": "This seems redundant with our identity storage.  Can we instead retrieve the VDO from the DiscoverIdentity response?\n\nI have a TODO to remove the AMA VDO as well since it\u0027s also redundant",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b24178d_0cb23a16",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T22:54:12Z",
+      "side": 1,
+      "message": "Should these be considered \"IS_ATTACHED_SNK\" or would not all the cases for that apply?",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4bda0c6_cd30be05",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3095,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T22:54:12Z",
+      "side": 1,
+      "message": "Side question, I\u0027ve never completely understood the TC_FLAGS_DISC_IDENT_IN_PROGRESS indication just from reading the Attached.SRC state in the spec.  Is there a timeframe where we\u0027re presenting the same terminations?",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
