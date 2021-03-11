@@ -142,32 +142,55 @@ static int elan_tp_write_cmd(uint16_t reg, uint16_t val)
 }
 
 /* Power is on by default. */
-static int elan_tp_power = 1;
+enum elan_tp_power_mode {
+	ETP_NORMAL,
+	ETP_SLEEP,
+	ETP_LID_CLOSE,
+};
 
-static int elan_tp_set_power(int enable)
+static int elan_tp_power_control(bool enable)
 {
-	int rv;
 	uint16_t val;
 
-	if ((enable && elan_tp_power) || (!enable && !elan_tp_power))
-		return EC_SUCCESS;
-
-	CPRINTS("elan TP power %s", enable ? "on" : "off");
-
-	rv = elan_tp_read_cmd(ETP_I2C_POWER_CMD, &val);
-	if (rv)
-		goto out;
+	RETURN_ERROR(elan_tp_read_cmd(ETP_I2C_POWER_CMD, &val));
 
 	if (enable)
 		val &= ~ETP_DISABLE_POWER;
 	else
 		val |= ETP_DISABLE_POWER;
+	return elan_tp_write_cmd(ETP_I2C_POWER_CMD, val);
+}
 
-	rv = elan_tp_write_cmd(ETP_I2C_POWER_CMD, val);
+static int elan_tp_sleep_contorl(bool sleep)
+{
+	CPRINTS("tp sleep: %d", sleep);
 
-	elan_tp_power = enable;
-out:
-	return rv;
+	return elan_tp_write_cmd(ETP_I2C_STAND_CMD,
+			         sleep ? ETP_I2C_SLEEP : ETP_I2C_WAKE_UP);
+}
+
+static int elan_tp_set_power(enum elan_tp_power_mode new_mode)
+{
+	static enum elan_tp_power_mode old_mode = ETP_NORMAL;
+
+	if (new_mode == old_mode)
+		return EC_SUCCESS;
+
+	CPRINTS("elan TP power %d -> %d", old_mode, new_mode);
+
+	if (old_mode == ETP_SLEEP)
+		RETURN_ERROR(elan_tp_sleep_contorl(false));
+	else if (old_mode == ETP_LID_CLOSE)
+		RETURN_ERROR(elan_tp_power_control(true));
+
+	if (new_mode == ETP_SLEEP)
+		RETURN_ERROR(elan_tp_sleep_contorl(true));
+	else if (new_mode == ETP_LID_CLOSE)
+		RETURN_ERROR(elan_tp_power_control(false));
+
+	old_mode = new_mode;
+
+	return EC_SUCCESS;
 }
 
 static int finger_status[ETP_MAX_FINGERS] = {0};
@@ -788,24 +811,19 @@ void touchpad_interrupt(enum gpio_signal signal)
 /* Make a decision on touchpad power, based on USB and tablet mode status. */
 static void touchpad_power_control(void)
 {
-	static int enabled = 1;
-	int enable = 1;
+	enum elan_tp_power_mode mode = ETP_NORMAL;
 
 #ifdef CONFIG_USB_SUSPEND
-	enable = enable &&
-		(!usb_is_suspended() || usb_is_remote_wakeup_enabled());
+	if (usb_is_suspended())
+		mode = usb_is_remote_wakeup_enabled() ?
+			ETP_SLEEP : ETP_LID_CLOSE;
 #endif
 
 #ifdef CONFIG_TABLET_MODE
-	enable = enable && !tablet_get_mode();
+	if (tablet_get_mode())
+		mode = ETP_LID_CLOSE;
 #endif
-
-	if (enabled == enable)
-		return;
-
-	elan_tp_set_power(enable);
-
-	enabled = enable;
+	elan_tp_set_power(mode);
 }
 
 void touchpad_task(void *u)
@@ -818,8 +836,10 @@ void touchpad_task(void *u)
 	while (1) {
 		event = task_wait_event(-1);
 
-		if (event & TASK_EVENT_WAKE)
+		if (event & TASK_EVENT_WAKE) {
+			elan_tp_set_power(ETP_NORMAL);
 			elan_tp_read_report_retry();
+		}
 
 		if (event & TASK_EVENT_POWER)
 			touchpad_power_control();

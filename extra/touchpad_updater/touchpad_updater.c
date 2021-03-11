@@ -404,6 +404,7 @@ static void elan_get_ic_page_count(void)
 
 	ic_type = rx_buf[5];
 	printf("ic_type: %02x\n", ic_type);
+	ic_type = 0x14;
 
 	switch (ic_type) {
 	case 0x09:
