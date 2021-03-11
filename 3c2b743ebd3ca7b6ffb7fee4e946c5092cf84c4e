@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36de9379_58049710",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-03-11T05:32:17Z",
+      "side": 1,
+      "message": "Hi Ikjoon, I still see a few following logs when checkout this stack:\n\n[   14.334394] sbs-battery 12-000b: Unknown chemistry: \u003cunkn\u003e\n[   14.350211] power_supply sbs-12-000b: driver failed to report `current_avg\u0027 property: -5\n[   14.455751] sbs-battery 12-000b: Unknown chemistry: \u003cunkn\u003e\n[   14.471229] power_supply sbs-12-000b: driver failed to report `current_avg\u0027 property: -5\n[   14.532542] sbs-battery 12-000b: Unknown chemistry: \u003cunkn\u003e\n[   14.548107] power_supply sbs-12-000b: driver failed to report `current_avg\u0027 property: -5\n[   15.150793] sbs-battery 12-000b: Unknown chemistry: \u003cunkn\u003e\n[   16.240024] sbs-battery 12-000b: Unknown chemistry: \u003cunkn\u003e\n",
+      "revId": "3c2b743ebd3ca7b6ffb7fee4e946c5092cf84c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
