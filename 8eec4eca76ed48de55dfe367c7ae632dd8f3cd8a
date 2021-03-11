@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64ff0bb_7266b322",
+        "filename": "zephyr/app/ec/soc/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T15:35:21Z",
+      "side": 1,
+      "message": "How about AP_AARCH64 here instead?  I\u0027ll note we don\u0027t actually use any of these meta-symbols, but I think they are useful informing the user what AP architecture is, which should aid in selecting the correct AP chipset.",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "8eec4eca76ed48de55dfe367c7ae632dd8f3cd8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
