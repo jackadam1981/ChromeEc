@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d27ef91_e649192b",
+        "filename": "board/shuboz/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-03-11T03:54:19Z",
+      "side": 1,
+      "message": "Change to #define since temp_threshold is constant.",
+      "revId": "2e883be45ee7d0ed4ae8beff21bbbdc1ecd16c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7610b5f_0fd3df41",
+        "filename": "board/shuboz/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-03-11T03:54:19Z",
+      "side": 1,
+      "message": "Check return value, use TEMP_SENSOR_CHARGER instead of 0.",
+      "revId": "2e883be45ee7d0ed4ae8beff21bbbdc1ecd16c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
