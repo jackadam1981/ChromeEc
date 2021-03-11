@@ -735,6 +735,10 @@ config PLATFORM_EC_USB_PD_TCPC_LPM_EXIT_DEBOUNCE_US
 	  is the delay in microseconds to allow before checking the CC line
 	  status in the EC.
 
+config PLATFORM_EC_USB_PD_TCPC_VCONN
+	bool "If VCONN is enabled, the TCPC will provide VCONN"
+	default y
+
 choice "Type-C Port Manager (TCPM)"
 	prompt "Choose a Type-C Port Manager (TCPM) to manage TCPC"
 
