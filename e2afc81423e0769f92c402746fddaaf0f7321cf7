@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4eed24ef_62803f45",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/Kconfig.board",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T17:30:57Z",
+      "side": 1,
+      "message": "trogdor does not use boxster: cs/chromeos_public/src/overlays/overlay-trogdor/chromeos-base/chromeos-config-bsp-trogdor/files/model.yaml\n\nI don\u0027t think we want to tie ourselves to boxster terminologies either.  Baseboards won\u0027t always be 1:1 with Boxster programs (we may need multiple to support multiple EC chips, for example).",
+      "parentUuid": "81635763_17bdb4b3",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a77e15e_a7b8d2f4",
         "filename": "zephyr/projects/trogdor/boards/arm/trogdor/Kconfig.board",
         "patchSetId": 3
