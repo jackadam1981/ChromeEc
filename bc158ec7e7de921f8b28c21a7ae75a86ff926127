@@ -94,6 +94,30 @@
       },
       "revId": "bc158ec7e7de921f8b28c21a7ae75a86ff926127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "165ee69a_b68396b0",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T21:53:33Z",
+      "side": 1,
+      "message": "My mistake - I hadn\u0027t read the latest version of the guide.  It\u0027s fine at the end.",
+      "parentUuid": "2307c13f_545a2c42",
+      "range": {
+        "startLine": 1234,
+        "startChar": 0,
+        "endLine": 1238,
+        "endChar": 0
+      },
+      "revId": "bc158ec7e7de921f8b28c21a7ae75a86ff926127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
