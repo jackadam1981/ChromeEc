@@ -255,8 +255,7 @@ static int svdm_response_identity(int port, uint32_t *payload)
 		/* PD Revision 3.0 */
 		payload[VDO_INDEX_IDH] = vdo_idh_rev30;
 		payload[VDO_INDEX_PTYPE_UFP1_VDO] = vdo_ufp1;
-		payload[VDO_INDEX_PTYPE_UFP2_VDO] = 0;
-		vdo_count = VDO_INDEX_PTYPE_UFP2_VDO;
+		vdo_count = VDO_INDEX_PTYPE_UFP1_VDO;
 	} else {
 		payload[VDO_INDEX_IDH] = vdo_idh;
 		vdo_count = VDO_INDEX_PRODUCT;
