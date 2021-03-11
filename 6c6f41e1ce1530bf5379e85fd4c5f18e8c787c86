@@ -18,6 +18,207 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ee19aa_5ace05b9",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:42:36Z",
+      "side": 1,
+      "message": "We have a dedicated board_rw.c for this type of code now, but I think all of the interface switch logic should probably be inside the common code?\n\nJust some ideas:\nMaybe some function like fp_sensor_setup(enum fp_sensor_type sensor_type) that sets up the interfaces in fpsensor.c?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b77cb25_8749a03e",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:42:36Z",
+      "side": 1,
+      "message": "If we are going ~full polymorphic on this interface~, I think this should be an enum. Actually, don\u0027t we already have an enum that describes if it is FPC or Elan sensor?\n\nIf you make the interfaced functions into a struct, this enum should just be a field in the struct.",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec815812_6e798072",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:42:36Z",
+      "side": 1,
+      "message": "Can these all be in an interface struct that for FPC and Elan?\nThen, you just assign one variable.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 55
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb84e19b_2f4183f4",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:42:36Z",
+      "side": 1,
+      "message": "nit: You shouldn\u0027t need to dereference the function. I think most do not.\n\nSame for others.",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 26
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e4e512_559ba3b1",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:42:36Z",
+      "side": 1,
+      "message": "These could go inside an interface struct too.",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 41
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006ded6a_cd062920",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:42:36Z",
+      "side": 1,
+      "message": "I think if we are turning all of these into variables, we should just change this interface to a single interface struct.\n\nIf this occurs, this should probably be split into at least two CLs.",
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a3af4c0_98bd4cb4",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:42:36Z",
+      "side": 1,
+      "message": "This should probably be the sensor enum",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3c20fab_aa9981da",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:42:36Z",
+      "side": 1,
+      "message": "Why are these changed to _prt?",
+      "range": {
+        "startLine": 59,
+        "startChar": 40,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86461df_ed7cf426",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:42:36Z",
+      "side": 1,
+      "message": "Why are these changed to _prt?",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 54
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ef0ad151_ea5884ea",
@@ -54,6 +255,30 @@
       "writtenOn": "2021-03-11T02:04:38Z",
       "side": 1,
       "message": "maybe I should not copy all the descriptions",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5651ccf_68529da2",
+        "filename": "include/fpsensor_elan.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:42:36Z",
+      "side": 1,
+      "message": "Hmm. Tough call, since they technically different functons.\n\nIf we use doxygen notation here, we can use the \"@see fp_sensor_get_info\" to reference the interface function\u0027s comment.",
+      "parentUuid": "d91658bc_3b97be40",
       "range": {
         "startLine": 18,
         "startChar": 0,
