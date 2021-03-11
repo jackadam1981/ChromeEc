@@ -46,6 +46,30 @@
       },
       "revId": "bc158ec7e7de921f8b28c21a7ae75a86ff926127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c0ce01_77e61503",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-11T21:46:59Z",
+      "side": 1,
+      "message": "Link for reference: https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/zephyr_shim.md",
+      "parentUuid": "90df9e04_5b44c04b",
+      "range": {
+        "startLine": 1234,
+        "startChar": 0,
+        "endLine": 1238,
+        "endChar": 0
+      },
+      "revId": "bc158ec7e7de921f8b28c21a7ae75a86ff926127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
