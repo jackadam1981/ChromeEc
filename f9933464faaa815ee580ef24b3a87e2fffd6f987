@@ -22,6 +22,30 @@
       },
       "revId": "f9933464faaa815ee580ef24b3a87e2fffd6f987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89940839_26ee598a",
+        "filename": "zephyr/projects/trogdor/lazor/include/gpio_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T17:37:17Z",
+      "side": 1,
+      "message": "Even better, let\u0027s delete gpio_map.h and replace with device-tree compatible lookups in the corresponding code.\n\nBut will do that all later, just following the existing gpio_map.h conventions for now.",
+      "parentUuid": "1d5ed50e_e837a08a",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "f9933464faaa815ee580ef24b3a87e2fffd6f987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
