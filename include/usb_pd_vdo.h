@@ -135,7 +135,7 @@ struct product_vdo {
 
 /* UFP VDO Version 1.1; update the value when UFP VDO version changes */
 #define VDO_UFP1(cap, ctype, alt, speed)			\
-	((0x1) << 29 | ((cap) & 0xf) << 24			\
+	((0x2) << 29 | ((cap) & 0xf) << 24			\
 	| ((ctype) & 0x3) << 22 | ((alt) & 0x7) << 3 | ((speed) & 0x7))
 
 /* UFP VDO 1 Alternate Modes */
