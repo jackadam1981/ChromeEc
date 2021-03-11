@@ -2034,6 +2034,7 @@ static void sink_power_sub_states(int port)
 static void tc_disabled_entry(const int port)
 {
 	print_current_state(port);
+	tc_detached(port);
 	/*
 	 * We have completed tc_cc_open_entry (our super state), so set flag
 	 * to indicate to pd_is_port_enabled that we are now suspended.
