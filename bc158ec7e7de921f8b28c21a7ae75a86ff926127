@@ -22,6 +22,30 @@
       },
       "revId": "bc158ec7e7de921f8b28c21a7ae75a86ff926127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90df9e04_5b44c04b",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-11T21:44:29Z",
+      "side": 1,
+      "message": "I agree with this but the instruction doc indicates\n\nAdd to zephyr/shim/include/config_chip.h (put it at the bottom):\n\nSimon, is it OK to put this next to similar CONFIGs?",
+      "parentUuid": "a28d445d_5099094c",
+      "range": {
+        "startLine": 1234,
+        "startChar": 0,
+        "endLine": 1238,
+        "endChar": 0
+      },
+      "revId": "bc158ec7e7de921f8b28c21a7ae75a86ff926127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
