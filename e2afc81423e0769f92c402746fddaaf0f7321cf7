@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca94e1fa_e14f1bb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:23:39Z",
+      "side": 1,
+      "message": "Add support for trogdor/lazor",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81635763_17bdb4b3",
         "filename": "zephyr/projects/trogdor/boards/arm/trogdor/Kconfig.board",
         "patchSetId": 3
@@ -72,6 +95,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0e99d8c_b91d67d5",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:23:39Z",
+      "side": 1,
+      "message": "We can add them when the driver is enabled",
+      "parentUuid": "25fed6ed_ce0f199f",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47052f87_d4e32a2e",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:23:39Z",
+      "side": 1,
+      "message": "What is the 2 ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 54,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71f1da9d_22cb63e1",
         "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
         "patchSetId": 3
@@ -88,6 +158,29 @@
         "startChar": 0,
         "endLine": 94,
         "endChar": 0
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6a4aa7_51369b84",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:23:39Z",
+      "side": 1,
+      "message": "What is this comment for? 0x40000 is 256*1024 I think",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 10
       },
       "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
