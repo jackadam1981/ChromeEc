@@ -46,6 +46,9 @@ static const int _detection_interval_ms = 100;
 
 /* Instruction Codes */
 #define WLC_HOST_CTRL_RESET			0b000000
+#define WLC_HOST_CTRL_DL_OPEN_SESSION		0b000011
+#define WLC_HOST_CTRL_DL_COMMIT_SESSION		0b000100
+#define WLC_HOST_CTRL_DL_WRITE_FLASH		0b000101
 #define WLC_HOST_CTRL_DUMP_STATUS		0b001100
 #define WLC_HOST_CTRL_GENERIC_ERROR		0b001111
 #define WLC_HOST_CTRL_BIST			0b000110
@@ -67,6 +70,16 @@ static const int _detection_interval_ms = 100;
 #define WLC_HOST_CTRL_RESET_REASON_UNRECOVERABLE	0x02
 #define WLC_HOST_CTRL_RESET_CMD_MODE_NORMAL		0x00
 #define WLC_HOST_CTRL_RESET_CMD_MODE_DOWNLOAD		0x01
+
+/* WLC_HOST_CTRL_DL_* constants */
+#define WLC_HOST_CTRL_DL_OPEN_SESSION_CMD_SIZE		2
+#define WLC_HOST_CTRL_DL_OPEN_SESSION_RSP_SIZE		1
+#define WLC_HOST_CTRL_DL_WRITE_FLASH_BLOCK_SIZE		128
+#define WLC_HOST_CTRL_DL_WRITE_FLASH_CMD_SIZE		\
+		(3 + WLC_HOST_CTRL_DL_WRITE_FLASH_BLOCK_SIZE)
+#define WLC_HOST_CTRL_DL_WRITE_FLASH_RSP_SIZE		1
+#define WLC_HOST_CTRL_DL_COMMIT_SESSION_CMD_SIZE	4
+#define WLC_HOST_CTRL_DL_COMMIT_SESSION_RSP_SIZE	1
 
 /* WLC_CHG_CTRL_ENABLE constants */
 #define WLC_CHG_CTRL_ENABLE_CMD_SIZE		2
@@ -137,6 +150,12 @@ static const char *_text_instruction(uint8_t instruction)
 	switch (instruction) {
 	case WLC_HOST_CTRL_RESET:
 		return "RESET";
+	case WLC_HOST_CTRL_DL_OPEN_SESSION:
+		return "DL_OPEN";
+	case WLC_HOST_CTRL_DL_COMMIT_SESSION:
+		return "DL_COMMIT";
+	case WLC_HOST_CTRL_DL_WRITE_FLASH:
+		return "DL_WRITE";
 	case WLC_HOST_CTRL_DUMP_STATUS:
 		return "DUMP_STATUS";
 	case WLC_HOST_CTRL_GENERIC_ERROR:
@@ -288,7 +307,9 @@ static int ctn730_init(struct pchg *ctx)
 	cmd->message_type = CTN730_MESSAGE_TYPE_COMMAND;
 	cmd->instruction = WLC_HOST_CTRL_RESET;
 	cmd->length = WLC_HOST_CTRL_RESET_CMD_SIZE;
-	cmd->payload[0] = WLC_HOST_CTRL_RESET_CMD_MODE_NORMAL;
+	cmd->payload[0] = ctx->mode == PCHG_MODE_NORMAL
+			? WLC_HOST_CTRL_RESET_CMD_MODE_NORMAL
+					: WLC_HOST_CTRL_RESET_CMD_MODE_DOWNLOAD;
 
 	/* TODO: Run 1 sec timeout timer. */
 	rv = _send_command(ctx, cmd);
@@ -350,6 +371,36 @@ static int _process_payload_response(struct pchg *ctx, struct ctn730_msg *res)
 				|| buf[0] != WLC_HOST_STATUS_OK)
 			return EC_ERROR_UNKNOWN;
 		break;
+	case WLC_HOST_CTRL_DL_OPEN_SESSION:
+		if (len != WLC_HOST_CTRL_DL_OPEN_SESSION_RSP_SIZE)
+			return EC_ERROR_UNKNOWN;
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			CPRINTS("FW open session failed (0x%x)", buf[0]);
+			ctx->error = PCHG_ERROR_MASK(PCHG_ERROR_FW_VERSION);
+			return EC_ERROR_UNKNOWN;
+		}
+		ctx->event = PCHG_EVENT_UPDATE_OPENED;
+		break;
+	case WLC_HOST_CTRL_DL_COMMIT_SESSION:
+		if (len != WLC_HOST_CTRL_DL_COMMIT_SESSION_RSP_SIZE)
+			return EC_ERROR_UNKNOWN;
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			CPRINTS("FW commit failed (0x%x)", buf[0]);
+			ctx->error = PCHG_ERROR_MASK(PCHG_ERROR_INVALID_FW);
+			return EC_ERROR_UNKNOWN;
+		}
+		ctx->event = PCHG_EVENT_UPDATE_CLOSED;
+		break;
+	case WLC_HOST_CTRL_DL_WRITE_FLASH:
+		if (len != WLC_HOST_CTRL_DL_WRITE_FLASH_RSP_SIZE)
+			return EC_ERROR_UNKNOWN;
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			CPRINTS("FW write failed (0x%x)", buf[0]);
+			ctx->error = PCHG_ERROR_MASK(PCHG_ERROR_WRITE_FLASH);
+			return EC_ERROR_UNKNOWN;
+		}
+		ctx->event = PCHG_EVENT_UPDATE_WRITTEN;
+		break;
 	case WLC_CHG_CTRL_ENABLE:
 		if (len != WLC_CHG_CTRL_ENABLE_RSP_SIZE
 				|| buf[0] != WLC_HOST_STATUS_OK)
@@ -398,7 +449,7 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 		if (buf[0] == WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE) {
 			if (len != WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE_SIZE)
 				return EC_ERROR_INVAL;
-			ctx->event = PCHG_EVENT_INITIALIZED;
+			ctx->event = PCHG_EVENT_IN_NORMAL;
 			ctx->fw_version = buf[1] << 8 | buf[2];
 			CPRINTS("Normal Mode (FW=0x%02x.%02x)", buf[1], buf[2]);
 			/*
@@ -412,7 +463,7 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 			CPRINTS("Download Mode (%s)",
 				_text_reset_reason(buf[1]));
 			if (buf[1] == WLC_HOST_CTRL_RESET_REASON_INTENDED)
-				ctx->event = PCHG_EVENT_RESET;
+				ctx->event = PCHG_EVENT_IN_DOWNLOAD;
 		} else {
 			return EC_ERROR_INVAL;
 		}
@@ -499,17 +550,68 @@ static int ctn730_get_event(struct pchg *ctx)
 static int ctn730_get_soc(struct pchg *ctx)
 {
 	struct ctn730_msg cmd;
-	int rv;
 
 	cmd.message_type = CTN730_MESSAGE_TYPE_COMMAND;
 	cmd.instruction = WLC_CHG_CTRL_CHARGING_INFO;
 	cmd.length = WLC_CHG_CTRL_CHARGING_INFO_CMD_SIZE;
 
-	rv = _send_command(ctx, &cmd);
-	if (rv)
-		return rv;
+	return _send_command(ctx, &cmd);
+}
 
-	return EC_SUCCESS;
+static int ctn730_update_open(struct pchg *ctx)
+{
+	uint8_t buf[CTN730_MESSAGE_BUFFER_SIZE];
+	struct ctn730_msg *cmd = (void *)buf;
+	uint32_t version = ctx->update.version;
+
+	cmd->message_type = CTN730_MESSAGE_TYPE_COMMAND;
+	cmd->instruction = WLC_HOST_CTRL_DL_OPEN_SESSION;
+	cmd->length = WLC_HOST_CTRL_DL_OPEN_SESSION_CMD_SIZE;
+	cmd->payload[0] = (version >> 8) && 0xff;
+	cmd->payload[1] = version & 0xff;
+
+	return _send_command(ctx, cmd);
+}
+
+static int ctn730_update_write(struct pchg *ctx)
+{
+	uint8_t buf[sizeof(struct ctn730_msg)
+		    + WLC_HOST_CTRL_DL_WRITE_FLASH_CMD_SIZE];
+	struct ctn730_msg *cmd = (void *)buf;
+	uint32_t *a = (void *)cmd->payload;
+	uint8_t *d = (void *)&cmd->payload[3];
+
+	/* Address is 3 bytes. FW size must be a multiple of 128 bytes. */
+	if (ctx->update.addr & GENMASK(31, 24)
+		|| ctx->update.size != WLC_HOST_CTRL_DL_WRITE_FLASH_BLOCK_SIZE)
+		return EC_ERROR_INVAL;
+
+	cmd->message_type = CTN730_MESSAGE_TYPE_COMMAND;
+	cmd->instruction = WLC_HOST_CTRL_DL_WRITE_FLASH;
+	cmd->length = WLC_HOST_CTRL_DL_WRITE_FLASH_CMD_SIZE;
+
+	/* 4th byte will be overwritten by memcpy below. */
+	*a = ctx->update.addr;
+
+	/* Store data in payload with 0-padding for short blocks. */
+	memset(d, 0, WLC_HOST_CTRL_DL_WRITE_FLASH_BLOCK_SIZE);
+	memcpy(d, ctx->update.data, ctx->update.size);
+
+	return _send_command(ctx, cmd);
+}
+
+static int ctn730_update_close(struct pchg *ctx)
+{
+	uint8_t buf[CTN730_MESSAGE_BUFFER_SIZE];
+	struct ctn730_msg *cmd = (void *)buf;
+	uint32_t *crc32 = (void *)cmd->payload;
+
+	cmd->message_type = CTN730_MESSAGE_TYPE_COMMAND;
+	cmd->instruction = WLC_HOST_CTRL_DL_COMMIT_SESSION;
+	cmd->length = WLC_HOST_CTRL_DL_COMMIT_SESSION_CMD_SIZE;
+	*crc32 = ctx->update.crc32;
+
+	return _send_command(ctx, cmd);
 }
 
 /**
@@ -580,6 +682,9 @@ const struct pchg_drv ctn730_drv = {
 	.enable = ctn730_enable,
 	.get_event = ctn730_get_event,
 	.get_soc = ctn730_get_soc,
+	.update_open = ctn730_update_open,
+	.update_write = ctn730_update_write,
+	.update_close = ctn730_update_close,
 };
 
 static int cc_ctn730(int argc, char **argv)
