@@ -133,6 +133,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ca8f8d_8d6143b2",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-11T20:43:53Z",
+      "side": 1,
+      "message": "do appreciate explicit conversions",
+      "range": {
+        "startLine": 297,
+        "startChar": 5,
+        "endLine": 297,
+        "endChar": 17
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "006ded6a_cd062920",
