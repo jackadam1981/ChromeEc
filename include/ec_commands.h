@@ -6815,6 +6815,12 @@ enum pchg_state {
 	PCHG_STATE_CHARGING,
 	/* Device is fully charged. It implies DETECTED (& not charging). */
 	PCHG_STATE_FULL,
+	/* In download (a.k.a. firmware update) mode */
+	PCHG_STATE_DOWNLOAD,
+	/* In download mode. Ready for receiving data. */
+	PCHG_STATE_DOWNLOADING,
+	/* Put no more entry below */
+	PCHG_STATE_COUNT,
 };
 
 #define EC_PCHG_STATE_TEXT { \
@@ -6824,7 +6830,47 @@ enum pchg_state {
 	[PCHG_STATE_DETECTED] = "DETECTED", \
 	[PCHG_STATE_CHARGING] = "CHARGING", \
 	[PCHG_STATE_FULL] = "FULL", \
+	[PCHG_STATE_DOWNLOAD] = "DOWNLOAD", \
+	[PCHG_STATE_DOWNLOADING] = "DOWNLOADING", \
 	}
+
+/**
+ * Update firmware of peripheral chip
+ */
+#define EC_CMD_PCHG_UPDATE 0x0136
+
+enum ec_pchg_update_cmd {
+	EC_PCHG_UPDATE_CMD_RESET_TO_NORMAL = 0,
+	EC_PCHG_UPDATE_CMD_RESET_TO_DOWNLOAD,
+	EC_PCHG_UPDATE_CMD_WRITE,
+	EC_PCHG_UPDATE_CMD_CLOSE,
+	/* End of commands */
+	EC_PCHG_UPDATE_CMD_COUNT,
+};
+
+struct ec_params_pchg_update {
+	uint8_t port;
+	/* enum ec_pchg_update_cmd */
+	uint8_t cmd;
+	/* Version of new firmware to be written */
+	uint32_t version;
+	/* CRC32 of new firmware to be written */
+	uint32_t crc32;
+	/* Address in chip where <data> is written to */
+	uint32_t addr;
+	/* Size of <data> */
+	uint32_t size;
+	/* Firmware data to be written */
+	uint8_t data[];
+} __ec_align1;
+
+BUILD_ASSERT(EC_PCHG_UPDATE_CMD_COUNT
+	     < BIT(sizeof(((struct ec_params_pchg_update *)0)->cmd)*8));
+
+struct ec_response_pchg_update {
+	/* Block size */
+	uint32_t block_size;
+} __ec_align4;
 
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
