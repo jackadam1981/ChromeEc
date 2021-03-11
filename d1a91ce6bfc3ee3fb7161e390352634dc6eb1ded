@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "148ae8f5_c0d0bba1",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1738,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-11T22:05:09Z",
+      "side": 1,
+      "message": "Looking through the locations setting RCH_REPORT_ERROR, I think we need to leave the \"else\" and probably not report the error on timeout specifically in rch_waiting_chunk_run(), possibly with a new specific timeout flag or an error save like the TCH has? \n\nThe RECEIVED flag will help for \"other message received from protocol layer\" (which seems like it should be a soft reset kind of thing), but I think removing this will remove our error report when prl_tx_wait_for_phy_response_run() fails for no GoodCRC during rch_requesting_chunk_run() which is definitely a soft reset scenario.  I suppose as I write this, that adds a point to saving the error like the TCH because that should be treated the way we treat ERR_TCH_XMIT in pe_report_error_now().",
+      "revId": "d1a91ce6bfc3ee3fb7161e390352634dc6eb1ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
