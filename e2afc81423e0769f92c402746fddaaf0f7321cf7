@@ -205,6 +205,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "398d53ce_a9d43137",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-11T17:26:36Z",
+      "side": 1,
+      "message": "copied right out of volteer.... i\u0027m not sure why it\u0027s here\n\nimo, all of this needs to be device tree since it\u0027s hw properties",
+      "parentUuid": "2c6a4aa7_51369b84",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad2ff8e5_401fbbfd",
         "filename": "zephyr/projects/trogdor/lazor/include/i2c_map.h",
         "patchSetId": 3
