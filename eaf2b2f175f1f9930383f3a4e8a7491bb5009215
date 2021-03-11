@@ -16,6 +16,29 @@
       "message": "mec172x related files upload",
       "revId": "eaf2b2f175f1f9930383f3a4e8a7491bb5009215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3cb8b49_d484122c",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-11T18:52:18Z",
+      "side": 1,
+      "message": "nit: do elif everywhere",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 32
+      },
+      "revId": "eaf2b2f175f1f9930383f3a4e8a7491bb5009215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
