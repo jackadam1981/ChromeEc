@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753b6379_3471e2b4",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T16:31:59Z",
+      "side": 1,
+      "message": "Move the board changes (delbin, volteer, kohaku) into a separate change list.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "a5567211e65ba4127a1718c73e4fa43501900d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
