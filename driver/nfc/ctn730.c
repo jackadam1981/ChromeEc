@@ -346,26 +346,36 @@ static int _process_payload_response(struct pchg *ctx, struct ctn730_msg *res)
 
 	switch (res->instruction) {
 	case WLC_HOST_CTRL_RESET:
-		if (len != WLC_HOST_CTRL_RESET_RSP_SIZE
-				|| buf[0] != WLC_HOST_STATUS_OK)
+		if (len != WLC_HOST_CTRL_RESET_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
+		if (buf[0] != WLC_HOST_STATUS_OK)
+			ctx->event = PCHG_EVENT_OTHER_ERROR;
 		break;
 	case WLC_CHG_CTRL_ENABLE:
-		if (len != WLC_CHG_CTRL_ENABLE_RSP_SIZE
-				|| buf[0] != WLC_HOST_STATUS_OK)
+		if (len != WLC_CHG_CTRL_ENABLE_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
-		ctx->event = PCHG_EVENT_ENABLED;
+		if (buf[0] != WLC_HOST_STATUS_OK)
+			ctx->event = PCHG_EVENT_OTHER_ERROR;
+		else
+			ctx->event = PCHG_EVENT_ENABLED;
 		break;
 	case WLC_CHG_CTRL_DISABLE:
-		if (len != WLC_CHG_CTRL_DISABLE_RSP_SIZE
-				|| buf[0] != WLC_HOST_STATUS_OK)
+		if (len != WLC_CHG_CTRL_DISABLE_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
+		if (buf[0] != WLC_HOST_STATUS_OK)
+			ctx->event = PCHG_EVENT_OTHER_ERROR;
+		else
+			ctx->event = PCHG_EVENT_DISABLED;
 		break;
 	case WLC_CHG_CTRL_CHARGING_INFO:
-		if (len != WLC_CHG_CTRL_CHARGING_INFO_RSP_SIZE
-				|| buf[0] != WLC_HOST_STATUS_OK)
+		if (len != WLC_CHG_CTRL_CHARGING_INFO_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
-		ctx->battery_percent = buf[1];
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			ctx->event = PCHG_EVENT_OTHER_ERROR;
+		} else {
+			ctx->battery_percent = buf[1];
+			ctx->event = PCHG_EVENT_CHARGE_UPDATE;
+		}
 		break;
 	default:
 		CPRINTS("Received unknown response (%d)", res->instruction);
@@ -393,12 +403,14 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 	if (IS_ENABLED(CTN730_DEBUG))
 		CPRINTS("Payload: %ph", HEX_BUF(buf, len));
 
+	ctx->event = PCHG_EVENT_NONE;
+
 	switch (res->instruction) {
 	case WLC_HOST_CTRL_RESET:
 		if (buf[0] == WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE) {
 			if (len != WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE_SIZE)
 				return EC_ERROR_INVAL;
-			ctx->event = PCHG_EVENT_INITIALIZED;
+			ctx->event = PCHG_EVENT_IN_NORMAL;
 			ctx->fw_version = (uint16_t)buf[1] << 8 | buf[2];
 			CPRINTS("Normal Mode (FW=0x%02x.%02x)", buf[1], buf[2]);
 			/*
@@ -411,8 +423,7 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 				return EC_ERROR_INVAL;
 			CPRINTS("Download Mode (%s)",
 				_text_reset_reason(buf[1]));
-			if (buf[1] == WLC_HOST_CTRL_RESET_REASON_INTENDED)
-				ctx->event = PCHG_EVENT_RESET;
+			ctx->event = PCHG_EVENT_RESET;
 		} else {
 			return EC_ERROR_INVAL;
 		}
@@ -509,7 +520,7 @@ static int ctn730_get_soc(struct pchg *ctx)
 	if (rv)
 		return rv;
 
-	return EC_SUCCESS;
+	return EC_SUCCESS_IN_PROGRESS;
 }
 
 /**
