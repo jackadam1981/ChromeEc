@@ -274,7 +274,7 @@ static int _send_command(struct pchg *ctx, const struct ctn730_msg *cmd)
 static int ctn730_reset(struct pchg *ctx)
 {
 	gpio_set_level(GPIO_WLC_NRST_CONN, 0);
-	msleep(1);
+	usleep(10);
 	gpio_set_level(GPIO_WLC_NRST_CONN, 1);
 	return EC_SUCCESS_IN_PROGRESS;
 }
