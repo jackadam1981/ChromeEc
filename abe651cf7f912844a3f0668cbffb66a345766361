@@ -87,6 +87,29 @@
       "parentUuid": "c5022f2b_84a9ec8a",
       "revId": "abe651cf7f912844a3f0668cbffb66a345766361",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a14548f_8ab29b51",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:38:22Z",
+      "side": 1,
+      "message": "I hope this can be dropped by adding to the Kconfig somewhere",
+      "range": {
+        "startLine": 1247,
+        "startChar": 0,
+        "endLine": 1247,
+        "endChar": 24
+      },
+      "revId": "abe651cf7f912844a3f0668cbffb66a345766361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
