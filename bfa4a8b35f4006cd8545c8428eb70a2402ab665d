@@ -128,6 +128,24 @@
       "parentUuid": "6aa7c3f2_57eff544",
       "revId": "bfa4a8b35f4006cd8545c8428eb70a2402ab665d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac82cb90_1a30b06c",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-11T21:40:35Z",
+      "side": 1,
+      "message": "Re: avoiding double conversion, my objection was that the logic was convoluted, not that it was inefficient. Unless I\u0027m mistaken, it\u0027s still doing essentially the same thing, and  it\u0027s still pretty complicated to describe.\n\nOverall, this function still seems oddly factored to me, although that might just be because the flowchart is oddly arranged. It seems like the cable speed computations for both USB4 and TBT take the form of\n1. Try to get it the normal way\n2. Try falling back to the equivalent TBT speed (for USB4) or USB speed (for TBT)\n3. Limit the speed based on the maximum that the port supports\n\nWould it be possible to factor out the concepts of trying to get the TBT speed, trying to get the USB speed, and getting the minimum of the cable speed and board speed? Then the TBT cable speed function could look like\n tbt_cable_speed \u003d tbt_cable_get_speed();\n usb_cable_speed \u003d usb_cable_get_speed();\n if (tbt_cable_speed !\u003d UNSUPPORTED) return tbt_cable_speed;\n if (usb_cable_speed !\u003d UNSUPPORTED) return usb_to_tbt(usb_cable_speed);\n return default_slower_speed();\n\nand the USB4 function would be similar but with the opposite order of preference. Then the calls would look like\n enter_usb_speed \u003d board_limit_usb_speed(usb_cable_supported_speed());\n\nThe names would need work, obviously, but would code factored like that align to the flowchart?",
+      "parentUuid": "8ecac91e_fa7ac700",
+      "revId": "bfa4a8b35f4006cd8545c8428eb70a2402ab665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

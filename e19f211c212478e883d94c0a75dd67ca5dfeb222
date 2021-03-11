@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27c59781_c605b66b",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-11T21:40:35Z",
+      "side": 1,
+      "message": "If this is going to be used externally, it should be declared in a header file (probably usb_pd.h). If it is not, it should be declared static here. Either way, it should have a comment explaining what it does.\n\nAs written, it appears to be very specific to its call sites, i.e. it assumes that the cable discovery response is Rev 3.0 (perhaps without consequence, since the 3.0 field is a superset of the 2.0 field), and it does not meaningfully support active cables. As such, it is hard to imagine using this more generally. I would prefer that it have semantics where it just gets the field and allows the caller to do with it what it will, with checks appropriate to the call site.\n\nAs discussed elsewhere, we don\u0027t typically start function names with verbs.",
+      "revId": "e19f211c212478e883d94c0a75dd67ca5dfeb222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04cc30fd_11e0f7b6",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-11T21:40:35Z",
+      "side": 1,
+      "message": "This is the wrong type.",
+      "range": {
+        "startLine": 831,
+        "startChar": 9,
+        "endLine": 831,
+        "endChar": 21
+      },
+      "revId": "e19f211c212478e883d94c0a75dd67ca5dfeb222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f30c7a1_9b5fe2f2",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-11T21:40:35Z",
+      "side": 1,
+      "message": "Since this function is defined in terms of board_get_max_tbt_speed, it wouldn\u0027t make sense for boards to override it, and it\u0027s not currently overrideable, so I don\u0027t think the name should start with \"board_\". As I described in a previous CL, it is also not the convention of this codebase to start names with \"get_\". I\u0027m not immediately sure what the best name for this would be.\n\nAs I note below, this is called twice, but it only needs to be called once. I recommend combining the call sites, explicitly calling the composition of functions below, getting rid of this definition, and avoiding the issue.",
+      "revId": "e19f211c212478e883d94c0a75dd67ca5dfeb222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1372b9a_84abfcb0",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-11T21:40:35Z",
+      "side": 1,
+      "message": "What makes it a \"Thunderbolt passive cable\" if it doesn\u0027t support the Intel SVID? Same question for \"Thunderbolt active cable without Intel SVID support.\"",
+      "range": {
+        "startLine": 962,
+        "startChar": 29,
+        "endLine": 962,
+        "endChar": 74
+      },
+      "revId": "e19f211c212478e883d94c0a75dd67ca5dfeb222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10cb922b_c06379ac",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-11T21:40:35Z",
+      "side": 1,
+      "message": "You can just initialize this once at the beginnning.",
+      "revId": "e19f211c212478e883d94c0a75dd67ca5dfeb222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771ad0d0_ae833b89",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-11T21:40:35Z",
+      "side": 1,
+      "message": "You only need to call get_usb_cable_highest_speed once.",
+      "revId": "e19f211c212478e883d94c0a75dd67ca5dfeb222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
