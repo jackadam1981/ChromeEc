@@ -59,6 +59,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0918f98_fecf1cce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:51:27Z",
+      "side": 1,
+      "message": "I think we should use RST...can you check with Keith? It is somewhat different so we need to make a deliberate decision here.",
+      "parentUuid": "1a26c843_19d164c9",
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81635763_17bdb4b3",
@@ -225,6 +243,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60b77549_31aeafee",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:51:27Z",
+      "side": 1,
+      "message": "Oh OK it is the channel within that clock control register",
+      "parentUuid": "e4ed4733_b5c43794",
+      "range": {
+        "startLine": 46,
+        "startChar": 54,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71f1da9d_22cb63e1",
         "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
         "patchSetId": 3
@@ -283,6 +325,30 @@
       "side": 1,
       "message": "copied right out of volteer.... i\u0027m not sure why it\u0027s here\n\nimo, all of this needs to be device tree since it\u0027s hw properties",
       "parentUuid": "2c6a4aa7_51369b84",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "e2afc81423e0769f92c402746fddaaf0f7321cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37dd4b3c_b285eccf",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:51:27Z",
+      "side": 1,
+      "message": "Let\u0027s delete that line then",
+      "parentUuid": "398d53ce_a9d43137",
       "range": {
         "startLine": 45,
         "startChar": 3,
