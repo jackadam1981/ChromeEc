@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21cd521b_9f016806",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-11T02:04:38Z",
+      "side": 1,
+      "message": "Hey Craig, please provide feedback on this refactoring! Thanks.",
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef0ad151_ea5884ea",
+        "filename": "include/fpsensor_elan.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-11T02:04:38Z",
+      "side": 1,
+      "message": "The purpose of these files is to allow a board to include declarations of the set of functions for only the sensor(s) that the board has. E.g. nocturne_fp can include only \"fpsensor_nocturne.h\"",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91658bc_3b97be40",
+        "filename": "include/fpsensor_elan.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-11T02:04:38Z",
+      "side": 1,
+      "message": "maybe I should not copy all the descriptions",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
