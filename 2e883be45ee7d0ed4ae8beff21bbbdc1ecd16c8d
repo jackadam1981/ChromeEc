@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c4a048_32ac1172",
+        "filename": "board/shuboz/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2021-03-11T09:43:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d27ef91_e649192b",
+      "revId": "2e883be45ee7d0ed4ae8beff21bbbdc1ecd16c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7610b5f_0fd3df41",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-11T03:54:19Z",
       "side": 1,
       "message": "Check return value, use TEMP_SENSOR_CHARGER instead of 0.",
+      "revId": "2e883be45ee7d0ed4ae8beff21bbbdc1ecd16c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31709c2e_5f519f3d",
+        "filename": "board/shuboz/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2021-03-11T09:43:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7610b5f_0fd3df41",
       "revId": "2e883be45ee7d0ed4ae8beff21bbbdc1ecd16c8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
