@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e2d9b68_8984cd18",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-11T21:27:47Z",
+      "side": 1,
+      "message": "does this really represent the CONFIG? My understanding is it follows the following and not just pd_tcpc_vconn_feature \u003d true:\n\npd_tcpc_vconn_feature \u003d true\nif (IS_ENABLED(CONFIG_USBC_PPC_SYV682X))\n        if (NOT IS_ENABLED(CONFIG_USB_PD_TCPM_DRIVER_IT83XX) \u0026\u0026\n            NOT IS_ENABLED(CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2) \u0026\u0026\n            NOT IS_ENABLED(CONFIG_SYV682X_NO_CC))\n                pd_tcpc_vconn_feature \u003d false",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 10
+      },
+      "revId": "aecb2b87fe48ee95581df408197e62468cb4c408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e30386c_6ddda19f",
         "filename": "zephyr/Kconfig.usbc",
         "patchSetId": 1
