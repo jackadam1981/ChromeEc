@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c65d9df3_d5f85f0f",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-03-11T06:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3edacdf1_04ef7407",
+      "range": {
+        "startLine": 115,
+        "startChar": 36,
+        "endLine": 115,
+        "endChar": 41
+      },
+      "revId": "43012614524be0320888753f10625bace7ddeb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "913d2faa_32303d33",
@@ -77,6 +101,54 @@
       "writtenOn": "2021-03-11T03:23:10Z",
       "side": 1,
       "message": "I recommend using CHIPSET_STATE_ANY_SUSPEND. This would cover S3 as well in the case of an alternate OS.",
+      "range": {
+        "startLine": 122,
+        "startChar": 29,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "43012614524be0320888753f10625bace7ddeb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7334c4f0_98e951f8",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-03-11T06:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "913d2faa_32303d33",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 12
+      },
+      "revId": "43012614524be0320888753f10625bace7ddeb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1492efe_9555bf32",
+        "filename": "board/sasuke/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-03-11T06:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87fcab00_bc0fe4aa",
       "range": {
         "startLine": 122,
         "startChar": 29,
