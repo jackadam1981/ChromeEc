@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d5ed50e_e837a08a",
+        "filename": "zephyr/projects/trogdor/lazor/include/gpio_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-11T15:27:16Z",
+      "side": 1,
+      "message": "I think this table would be easier to read if the board\u0027s signal was used here instead of the cros EC name.\n\nWe could do something like\n\n#define GPIO_INT(sig, f, cb)\n     .signal \u003d NAMED_GPIO(sig),\n     .flags \u003d f,\n     .irq_handler \u003d cb,\n\nSo then we have \n#define EC_CROS_GPIO_INTERRUPT\n    GPIO_INT(lid_open_ec, GPIO_INT_EDGE_BOTH, lid_interrupt)\n\nThis should be a follow on CL, but it would be good to establish a cleaner implementation from the start.",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "f9933464faaa815ee580ef24b3a87e2fffd6f987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
