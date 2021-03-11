@@ -16,6 +16,24 @@
       "message": "i tried adding this config to the Kconfig(s) on the zephyr side\nalongside the BQ25710 but that didn\u0027t satisfy the checks. so,\ni added it to the allow list for now.\n\nP.S. building for brya.",
       "revId": "dbe376aff90ca7c6418f4eb0c4ad2bc11513e4e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95bdd72_398c6170",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-11T17:34:06Z",
+      "side": 1,
+      "message": "This might have been due to a bug...can you try again?",
+      "parentUuid": "d1952de9_738727e5",
+      "revId": "dbe376aff90ca7c6418f4eb0c4ad2bc11513e4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
