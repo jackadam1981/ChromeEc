@@ -237,15 +237,27 @@ def power(board_name: str, board_config: BoardConfig, on: bool) -> None:
 
 def hw_write_protect(board_name: str, enable: bool) -> None:
     """Enable/disable hardware write protect."""
+    # fw_wp_en needs to be on to actually toggle the write protect.
+    cmd = [
+        'dut-control',
+        '-n', board_name,
+        'fw_wp_en:on',
+        ]
+    logging.debug('Running command: "%s"', ' '.join(cmd))
+    subprocess.run(cmd).check_returncode()
+
+    # fw_wp_state actually toggles the write protect.
+    # The WP gpio on Dragonclaw and Icetower is inverted: b/182499499.
+    # fw_wp_state:force_off will turn on the WP gpio.
     if enable:
-        state = 'on'
+        state = 'force_off'
     else:
-        state = 'off'
+        state = 'force_on'
 
     cmd = [
         'dut-control',
         '-n', board_name,
-        'fw_wp_en' + ':' + state,
+        'fw_wp_state' + ':' + state,
         ]
     logging.debug('Running command: "%s"', ' '.join(cmd))
     subprocess.run(cmd).check_returncode()
