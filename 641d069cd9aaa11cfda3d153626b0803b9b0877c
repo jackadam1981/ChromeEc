@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30132ca_e4979fbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-12T03:54:49Z",
+      "side": 1,
+      "message": "This one fails because the timeout is sometimes not enough for it to finish all the reboots. It passes if you retry (flaky) or if you change the 10 sec timeout to 20 sec.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "641d069cd9aaa11cfda3d153626b0803b9b0877c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
