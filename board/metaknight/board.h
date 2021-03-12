@@ -11,11 +11,6 @@
 #define VARIANT_DEDEDE_EC_NPCX796FC
 #include "baseboard.h"
 
-/*
- * Keep the system unlocked in early development.
- * TODO(b/151264302): Make sure to remove this before production!
- */
-#define CONFIG_SYSTEM_UNLOCKED
 
 /* Battery */
 #define CONFIG_BATTERY_FUEL_GAUGE
@@ -25,6 +20,8 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
 #undef  CONFIG_CHARGER_SINGLE_CHIP
+#undef CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
+#define CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE (100 * MSEC)
 
 /*
  * GPIO for C1 interrupts, for baseboard use
@@ -50,6 +47,7 @@
 #define CONFIG_THERMISTOR_NCP15WB
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
 #define CONFIG_TEMP_SENSOR_POWER_GPIO GPIO_EN_PP3300_A
+#define CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS 500
 
 /* USB */
 #define CONFIG_BC12_DETECT_PI3USB9201
@@ -65,7 +63,7 @@
 #define GPIO_USB2_ILIM_SEL GPIO_USB_A1_CHARGE_EN_L
 
 /* USB PD */
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_RAA489000
 
 /* USB defines specific to external TCPCs */
@@ -155,7 +153,6 @@
 
 enum chg_id {
 	CHARGER_PRIMARY,
-	CHARGER_SECONDARY,
 	CHARGER_NUM,
 };
 
@@ -168,8 +165,8 @@ enum adc_channel {
 };
 
 enum temp_sensor_id {
-	TEMP_SENSOR_1,
-	TEMP_SENSOR_2,
+	TEMP_SENSOR_MEMORY,
+	TEMP_SENSOR_CPU,
 	TEMP_SENSOR_COUNT
 };
 

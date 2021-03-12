@@ -49,6 +49,7 @@ static const char *_text_event(enum pchg_event event)
 	static const char * const event_names[] = {
 		[PCHG_EVENT_NONE] = "NONE",
 		[PCHG_EVENT_IRQ] = "IRQ",
+		[PCHG_EVENT_RESET] = "RESET",
 		[PCHG_EVENT_INITIALIZED] = "INITIALIZED",
 		[PCHG_EVENT_ENABLED] = "ENABLED",
 		[PCHG_EVENT_DISABLED] = "DISABLED",
@@ -70,6 +71,18 @@ static const char *_text_event(enum pchg_event event)
 	return event_names[event];
 }
 
+static enum pchg_state pchg_reset(struct pchg *ctx)
+{
+	mutex_lock(&ctx->mtx);
+	queue_init(&ctx->events);
+	mutex_unlock(&ctx->mtx);
+	atomic_clear(&ctx->irq);
+
+	/* When fw update is implemented, this will be the branch point. */
+	pchg_queue_event(ctx, PCHG_EVENT_INITIALIZE);
+	return PCHG_STATE_RESET;
+}
+
 static enum pchg_state pchg_initialize(struct pchg *ctx, enum pchg_state state)
 {
 	int rv = ctx->cfg->drv->init(ctx);
@@ -83,6 +96,9 @@ static enum pchg_state pchg_initialize(struct pchg *ctx, enum pchg_state state)
 		CPRINTS("ERR: Failed to initialize");
 	}
 
+	ctx->battery_percent = 0;
+	ctx->error = 0;
+
 	return state;
 }
 
@@ -91,6 +107,9 @@ static enum pchg_state pchg_state_reset(struct pchg *ctx)
 	enum pchg_state state = PCHG_STATE_RESET;
 
 	switch (ctx->event) {
+	case PCHG_EVENT_RESET:
+		state = pchg_reset(ctx);
+		break;
 	case PCHG_EVENT_INITIALIZE:
 		state = pchg_initialize(ctx, state);
 		break;
@@ -118,6 +137,9 @@ static enum pchg_state pchg_state_initialized(struct pchg *ctx)
 		return state;
 
 	switch (ctx->event) {
+	case PCHG_EVENT_RESET:
+		state = pchg_reset(ctx);
+		break;
 	case PCHG_EVENT_INITIALIZE:
 		state = pchg_initialize(ctx, state);
 		break;
@@ -144,6 +166,9 @@ static enum pchg_state pchg_state_enabled(struct pchg *ctx)
 	int rv;
 
 	switch (ctx->event) {
+	case PCHG_EVENT_RESET:
+		state = pchg_reset(ctx);
+		break;
 	case PCHG_EVENT_INITIALIZE:
 		state = pchg_initialize(ctx, state);
 		break;
@@ -159,6 +184,11 @@ static enum pchg_state pchg_state_enabled(struct pchg *ctx)
 		state = PCHG_STATE_INITIALIZED;
 		break;
 	case PCHG_EVENT_DEVICE_DETECTED:
+		/*
+		 * Proactively query SOC in case charging info won't be sent
+		 * because device is already charged.
+		 */
+		ctx->cfg->drv->get_soc(ctx);
 		state = PCHG_STATE_DETECTED;
 		break;
 	case PCHG_EVENT_CHARGE_STARTED:
@@ -177,6 +207,9 @@ static enum pchg_state pchg_state_detected(struct pchg *ctx)
 	int rv;
 
 	switch (ctx->event) {
+	case PCHG_EVENT_RESET:
+		state = pchg_reset(ctx);
+		break;
 	case PCHG_EVENT_INITIALIZE:
 		state = pchg_initialize(ctx, state);
 		break;
@@ -195,6 +228,7 @@ static enum pchg_state pchg_state_detected(struct pchg *ctx)
 		state = PCHG_STATE_CHARGING;
 		break;
 	case PCHG_EVENT_DEVICE_LOST:
+		ctx->battery_percent = 0;
 		state = PCHG_STATE_ENABLED;
 		break;
 	case PCHG_EVENT_CHARGE_ERROR:
@@ -213,6 +247,9 @@ static enum pchg_state pchg_state_charging(struct pchg *ctx)
 	int rv;
 
 	switch (ctx->event) {
+	case PCHG_EVENT_RESET:
+		pchg_reset(ctx);
+		break;
 	case PCHG_EVENT_INITIALIZE:
 		state = pchg_initialize(ctx, state);
 		break;
@@ -231,6 +268,7 @@ static enum pchg_state pchg_state_charging(struct pchg *ctx)
 		CPRINTS("Battery %d%%", ctx->battery_percent);
 		break;
 	case PCHG_EVENT_DEVICE_LOST:
+		ctx->battery_percent = 0;
 		state = PCHG_STATE_ENABLED;
 		break;
 	case PCHG_EVENT_CHARGE_ERROR:
@@ -336,7 +374,7 @@ static void pchg_startup(void)
 
 	for (p = 0; p < pchg_count; p++) {
 		ctx = &pchgs[p];
-		pchg_queue_event(ctx, PCHG_EVENT_INITIALIZE);
+		ctx->cfg->drv->reset(ctx);
 		gpio_enable_interrupt(ctx->cfg->irq_pin);
 	}
 
@@ -366,8 +404,8 @@ void pchg_task(void *u)
 	struct pchg *ctx;
 	int p;
 
-	/* In case we arrive here after power-on (for late sysjump) */
 	if (chipset_in_state(CHIPSET_STATE_ON))
+		/* We are here after power-on (because of late sysjump). */
 		pchg_startup();
 
 	while (true) {
@@ -414,7 +452,12 @@ static enum ec_status hc_pchg(struct host_cmd_handler_args *args)
 
 	ctx = &pchgs[port];
 
-	r->state = ctx->state;
+	if (ctx->state == PCHG_STATE_DETECTED
+			&& ctx->battery_percent >= ctx->cfg->full_percent)
+		r->state = PCHG_STATE_FULL;
+	else
+		r->state = ctx->state;
+
 	r->battery_percentage = ctx->battery_percent;
 	r->error = ctx->error;
 
@@ -435,24 +478,26 @@ static int cc_pchg(int argc, char **argv)
 
 	port = strtoi(argv[1], &end, 0);
 	if (*end || port < 0 || port >= pchg_count)
-		return EC_ERROR_PARAM2;
+		return EC_ERROR_PARAM1;
 	ctx = &pchgs[port];
 
 	if (argc == 2) {
-		ccprintf("P%d STATE_%s EVENT_%s\n", port,
-			 _text_state(ctx->state), _text_event(ctx->event));
+		ccprintf("P%d STATE_%s EVENT_%s SOC=%d%%\n", port,
+			 _text_state(ctx->state), _text_event(ctx->event),
+			 ctx->battery_percent);
 		return EC_SUCCESS;
 	}
 
-	if (!strcasecmp(argv[2], "init")) {
+	if (!strcasecmp(argv[2], "reset"))
+		pchg_queue_event(ctx, PCHG_EVENT_RESET);
+	else if (!strcasecmp(argv[2], "init"))
 		pchg_queue_event(ctx, PCHG_EVENT_INITIALIZE);
-	} else if (!strcasecmp(argv[2], "enable")) {
+	else if (!strcasecmp(argv[2], "enable"))
 		pchg_queue_event(ctx, PCHG_EVENT_ENABLE);
-	} else if (!strcasecmp(argv[2], "disable")) {
+	else if (!strcasecmp(argv[2], "disable"))
 		pchg_queue_event(ctx, PCHG_EVENT_DISABLE);
-	} else {
-		return EC_ERROR_PARAM1;
-	}
+	else
+		return EC_ERROR_PARAM2;
 
 	task_wake(TASK_ID_PCHG);
 
@@ -461,6 +506,7 @@ static int cc_pchg(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(pchg, cc_pchg,
 			"<port> [init/enable/disable]"
 			"\n\t<port>"
+			"\n\t<port> reset"
 			"\n\t<port> init"
 			"\n\t<port> enable"
 			"\n\t<port> disable",

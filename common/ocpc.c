@@ -176,9 +176,12 @@ enum ec_error_list ocpc_calc_resistances(struct ocpc_data *ocpc,
 
 	/*
 	 * In order to actually calculate the resistance, we need to make sure
-	 * we're actually charging the battery at a significant rate.
+	 * we're actually charging the battery at a significant rate.  The LSB
+	 * of a charger IC can be as high as 96mV.  Assuming a resistance of 60
+	 * mOhms, we would need a current of 1666mA to have a voltage delta of
+	 * 100mV.
 	 */
-	if ((battery->current <= 1000) ||
+	if ((battery->current <= 1666) ||
 	    (!(ocpc->chg_flags[act_chg] & OCPC_NO_ISYS_MEAS_CAP) &&
 	     (ocpc->isys_ma <= 0)) ||
 	    (ocpc->vsys_aux_mv < ocpc->vsys_mv)) {
@@ -603,7 +606,7 @@ void ocpc_get_adcs(struct ocpc_data *ocpc)
 		ocpc->primary_ibus_ma = val;
 
 	val = 0;
-	if (!charger_get_voltage(CHARGER_PRIMARY, &val))
+	if (!charger_get_actual_voltage(CHARGER_PRIMARY, &val))
 		ocpc->vsys_mv = val;
 
 	if (board_get_charger_chip_count() <= CHARGER_SECONDARY) {
@@ -623,11 +626,11 @@ void ocpc_get_adcs(struct ocpc_data *ocpc)
 		ocpc->secondary_ibus_ma = val;
 
 	val = 0;
-	if (!charger_get_voltage(CHARGER_SECONDARY, &val))
+	if (!charger_get_actual_voltage(CHARGER_SECONDARY, &val))
 		ocpc->vsys_aux_mv = val;
 
 	val = 0;
-	if (!charger_get_current(CHARGER_SECONDARY, &val))
+	if (!charger_get_actual_current(CHARGER_SECONDARY, &val))
 		ocpc->isys_ma = val;
 }
 
@@ -662,7 +665,7 @@ void ocpc_reset(struct ocpc_data *ocpc)
 	 * Initialize the VSYS target on the aux chargers to the current battery
 	 * voltage to avoid a large spike.
 	 */
-	if (ocpc->active_chg_chip > CHARGER_PRIMARY) {
+	if (ocpc->active_chg_chip > CHARGER_PRIMARY && batt.voltage > 0) {
 		CPRINTS("OCPC: C%d Init VSYS to %dmV", ocpc->active_chg_chip,
 			batt.voltage);
 		charger_set_voltage(ocpc->active_chg_chip, batt.voltage);

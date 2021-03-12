@@ -31,29 +31,17 @@ menuconfig PLATFORM_EC
 
 if PLATFORM_EC
 
+rsource "Kconfig.adc"
 rsource "Kconfig.battery"
+rsource "Kconfig.console"
+rsource "Kconfig.header"
 rsource "Kconfig.keyboard"
 rsource "Kconfig.led"
 rsource "Kconfig.powerseq"
 rsource "Kconfig.motionsense"
 rsource "Kconfig.tasks"
+rsource "Kconfig.temperature"
 rsource "Kconfig.usbc"
-
-# Below is a hack to use CONFIG_ZEPHYR in platform/ec code before
-# config.h has been included.  There is some tricky ordering in some
-# header files that we cannot use config.h (e.g., common.h and
-# compile_time_macros.h), as many board.h and config_chip.h files
-# use these macros, and thus would be included by an include of
-# config.h.  We work around this by initially defining CONFIG_ZEPHYR
-# in Kconfig as an invisible symbol (it should always be enabled).
-# Then, once config.h gets included, it subsequently gets undef'ed by
-# config.h, and then redefined by config_chip.h in the Zephyr shim.
-config ZEPHYR
-	bool
-	default y
-	help
-	  This should always be enabled.  It's a workaround for
-	  config.h not being available in some headers.
 
 # Define PLATFORM_EC_... options to enable EC features. Each Kconfig should be
 # matched by a line in zephyr/shim/include/config_chip.h which #defines the
@@ -61,21 +49,24 @@ config ZEPHYR
 #
 # Please keep these in alphabetical order
 
-config PLATFORM_EC_BOOT_RAM_SIZE
-	hex "The total size required for the boot loader"
-	default 0x0
-	help
-	  This is the size (in bytes) required by the boot loader. It will count
-	  against the data section of the RAM. Not all chips require this value.
-	  See the datasheet for the npcx chip family for example. If not needed,
-	  this can simple be left at 0x0.
-
 config PLATFORM_EC_ACPI
 	bool "Enable the ACPI module"
 	default y if AP_X86 && PLATFORM_EC_ESPI
 	help
 	  Enable shimming the ACPI handler, which will handle the Host data from
 	  the ACPI I/O port for X86 AP.
+
+config PLATFORM_EC_BACKLIGHT_LID
+	bool "Control the display backlight based on the lid switch"
+	depends on PLATFORM_EC_HOSTCMD
+	default y
+	help
+	  Support controlling the display backlight based on the state of the
+	  lid switch. The EC will disable the backlight when the lid is closed.
+
+	  This option enables the EC_CMD_SWITCH_ENABLE_BKLIGHT host command,
+	  which allows the AP to override the backlight setting until the next
+	  change in the lid state.
 
 config PLATFORM_EC_HOSTCMD_GET_UPTIME_INFO
 	bool "Host command: EC_CMD_GET_UPTIME_INFO"
@@ -117,6 +108,17 @@ config PLATFORM_EC_BRINGUP
 	    for each power signal change.
 	  - And more!  You can search the codebase for CONFIG_BRINGUP
             to see all of the features this flag will toggle.
+
+config PLATFORM_EC_VBOOT
+	bool "Enable Chromium OS verified boot"
+	default y if !SOC_POSIX
+	help
+	  Enables Early Firmware Selection v2 (EFS2) verified boot. When booting
+	  a Chromium OS image we're actually packing both an RO image and an RW
+	  image into flash. The RO image is loaded first. EFS2 runs at boot and
+	  verifies the integrity of the RW image by sending a hash of the image
+	  to the Google Security Chip (GSC). Once the GSC verifies the hash,
+	  EFS2 calls sysjump and reboot the EC using the RW image.
 
 config PLATFORM_EC_BOARD_VERSION
 	bool "Support the notion of board version"
@@ -201,6 +203,100 @@ config PLATFORM_EC_CHIPSET_RESET_HOOK
 
 	  Then do_something() will be called just before the reset happens.
 
+config PLATFORM_EC_CONSOLE_CMD_MEM
+	bool "Console command: md, rw"
+	default y
+	help
+	  Enable memory related console commands.
+
+	     md - dump memory values
+	     rw - read or write in memory
+
+if PLATFORM_EC_CONSOLE_CMD_MEM
+
+config PLATFORM_EC_CONSOLE_CMD_MD
+	bool "Console command: md"
+	default y
+	help
+	  Enable the "md" command. This dumps memory value from a specified
+	  address, optionally specifying the format.
+
+	  Example:
+	     md 0x64000000 10
+
+	     64000000: 2a3b4d5e 030054e1 07000000 09297110
+	     64000010: 00000010 03db4f00 03db5000 00000100
+	     64000020: 00000000 00000000
+
+config PLATFORM_EC_CONSOLE_CMD_RW
+	bool "Console command: rw"
+	default y
+	help
+	  Enable the "rw" command. This Read or write in memory optionally
+	  specifying the size.
+
+	  Example:
+	     rw 0x64000000
+
+	     read 0x64000000 = 0x2a3b4d5e
+
+endif # PLATFORM_EC_CONSOLE_CMD_MEM
+
+config PLATFORM_EC_DEBUG_ASSERT
+	bool "Enable assertion failures"
+	default y
+	help
+	  Assertion failures are used to flag conditions which should not occur
+	  and thus indicate the software is unable to continue execution. This
+	  option can be disabled so that the assert() macro becomes a NOP. In
+	  this case, execution will continue but the results are unpredictable.
+
+	  Messages are of the form:
+
+	     ASSERTION FAILURE '<expr>' in function() at file:line
+
+	  Note: There is also ASSERT() which is an alias of assert(), used in
+	  host code where cstdlib is used.
+
+choice "Behaviour on assertion failure"
+	prompt "Select behaviour on assertion failure"
+	help
+	  This selects the action taken when the board hits an assertion
+	  failure in the code. This should not happen in normal operation,
+	  but can appear during development when the code is not yet fully
+	  tested.
+
+config PLATFORM_EC_DEBUG_ASSERT_REBOOTS
+	bool "Reboot"
+	help
+	  Prints a message and reboot if an assert() macro fails at runtime.
+	  If PLATFORM_EC_SOFTWARE_PANIC is enabled then the information is
+	  written to the panic log before rebooting.
+
+config PLATFORM_EC_DEBUG_ASSERT_BREAKPOINT
+	bool "Generate a breakpoint"
+	help
+	  Immediately hits a breakpoint instruction (without printing a message)
+	  so that a connected JTAG debugger can be used to debug the problem
+	  from there. If there is no debugger connected then the breakpoint
+	  instruction will cause the board to reboot immediately.
+
+endchoice # "Behaviour on assertion failure"
+
+config PLATFORM_EC_DEBUG_ASSERT_BRIEF
+	bool "Use brief assertion-failure messages"
+	depends on PLATFORM_EC_DEBUG_ASSERT_REBOOTS
+	help
+	  Normally the assertion-failure messages include the expression that
+	  failed and the function name where the failure occurred. These are
+	  both stored as strings and can add a lot to the size of the image,
+	  since they are generated for every call to assert(). Use this option
+	  to drop them so that only the file and line number are shown.
+
+	  This option is of course not available with
+	  PLATFORM_EC_DEBUG_ASSERT_BREAKPOINT, since that does not print a
+	  message at all.
+
 menuconfig PLATFORM_EC_ESPI
 	bool "eSPI"
 	depends on ESPI && AP
@@ -254,6 +350,16 @@ config PLATFORM_EC_FLASH
 
 if PLATFORM_EC_FLASH
 
+config PLATFORM_EC_SPI_FLASH_REGS
+	bool "Enable SPI flash registers"
+	default y
+	help
+	  Enables flash registers for SPI flash (both internal and external).
+	  When enabled, two new functions will become available: (1) a function
+	  to compute the block write protection range from a set of status
+	  registers, and (2) the inverse function to set the status registers
+	  based on the desired protection offset/length.
+
 config PLATFORM_EC_PROTECTED_STORAGE_OFF
 	hex "Position of the RO image in Flash memory"
 	default 0x0
@@ -284,16 +390,53 @@ config PLATFORM_EC_WRITABLE_STORAGE_SIZE
 	  ending position of the RW image being copied into RAM when combined
 	  with PLATFORM_EC_WRITABLE_STORAGE_OFF.
 
+config PLATFORM_EC_CONSOLE_CMD_CHARGEN
+	bool "Console command: chargen"
+	depends on UART_INTERRUPT_DRIVEN
+	help
+	  Enables the "chargen" console command, which sends a continuous
+	  stream of characters to the EC console.
+
+	  This allows to create tests which validate console output by
+	  verifying that no characters in the received sequence were lost.
+
 config PLATFORM_EC_CONSOLE_CMD_FLASH
-	bool "Console commands: flasherase, flashread, flashwp, flashwrite"
+	bool "Console commands: flasherase, flashread, flashwrite"
 	default y
 	help
 	  Enables various console commands:
 
 	     flasherase - erase flash region
 	     flashread - read from flash to memory
-	     flashwp - change write-protection settings
 	     flashwrite - write memory to flash
+
+config PLATFORM_EC_CONSOLE_CMD_FLASHINFO
+	bool "Console commands: flashinfo"
+	default y
+	help
+	  Enables various console commands:
+
+	     flashinfo - displays information about the flash storage
+
+config PLATFORM_EC_CONSOLE_CMD_FLASH_WP
+	bool "Console commands: flashwp"
+	default y
+	help
+	  Enables various console commands:
+
+	     flashwp - change write-protection settings
+
+config PLATFORM_EC_CONSOLE_CMD_SYSJUMP
+	bool "Console command: sysjump"
+	default y
+	help
+	  Enables the sysjump console command used for testing and verifying
+	  that we're able to jump between images. Normally, in an EC build,
+	  there will exist 2 images (sometimes more): read-only (RO) and
+	  read-write (RW). This console command allows us to manually jump
+	  between the various images (or even to a random starting address) by
+	  copying the image data from flash to ram, then jumping to the image's
+	  entry point.
 
 config PLATFORM_EC_EXTERNAL_STORAGE
 	bool "Flash is stored external to the EC"
@@ -314,6 +457,18 @@ config PLATFORM_EC_MAPPED_STORAGE
 	  flash_physical_read().
 
 endif # PLATFORM_EC_FLASH
+
+config PLATFORM_EC_FPU
+	bool "Support floating point"
+	depends on FPU && CPU_CORTEX_M && !NEWLIB_LIBC
+	default y
+	help
+	  This enables support for floating point. This is generally already
+	  provided in Zephyr, but the EC side expects a few functions to be
+	  available which are not available with Zephyr's minimal lib: sqrtf()
+	  and fabsf(). Enabling this options defines them.
+
+	  For now this is only supported on Cortex-M4.
 
 config PLATFORM_EC_HOOKS
 	bool "Hooks and deferred compatibility shim"
@@ -347,6 +502,25 @@ menuconfig PLATFORM_EC_HOSTCMD
 	  communication with the AP. The AP sends a command to the EC and it
 	  responds when able. An interrupt can be used to indicate to the AP
 	  that the EC has something for it.
+
+config PLATFORM_EC_CONSOLE_CMD_HCDEBUG
+	bool "Console command: hcdebug"
+	default y
+	depends on PLATFORM_EC_HOSTCMD
+	help
+	  Enable the 'hcdebug' console command. This comamnd is used to change,
+	  at runtime, the amount of debug generated by the host command
+	  processing.
+
+	    hcdebug [off | normal | every | params]
+
+	    off    - No host command debug messages are shown.
+	    normal - Display host commands receieved from the AP. Repeated
+	             commands are shown with a "+" and "++" symbol.
+	    every  - Display all host commands received from the AP, including
+	             repeated commands.
+	    params - Display all host commands and the parameters received from
+	             the AP.
 
 config PLATFORM_EC_LID_SWITCH
 	bool "Lid switch"
@@ -425,6 +599,22 @@ config PLATFORM_EC_PANIC
 	  The panic information is made available to the AP via the
 	  EC_CMD_GET_PANIC_INFO host command and a 'panicinfo' console command
 
+config PLATFORM_EC_MPU
+	bool "Support Memory-Protection Unit (MPU)"
+	depends on CPU_CORTEX_M && CPU_HAS_MPU
+	default y
+	help
+	  This enables support a Memory-Protection Unit which can limit access
+	  to certain areas of memory. This can be used to protect code or data
+	  from being written to improve security or to find bugs.
+
+	  It causes any code in the iram.text section to be protected when
+	  system jump is disabled (see system_disable_jump()). It also stops
+	  execution of the image that is not currently being executed (read-only
+	  or read-write). If internal storage is used, this is achieved by not
+	  allowing code execution in that area. For external storage, it
+	  disallows loading any code into RAM.
+
 if PLATFORM_EC_PANIC
 
 config PLATFORM_EC_SOFTWARE_PANIC
@@ -480,7 +670,6 @@ config PLATFORM_EC_PORT80
 
 config PLATFORM_EC_POWER_BUTTON
 	bool "Power-button support"
-	select HAS_TASK_POWERBTN
 	depends on PLATFORM_EC_HOSTCMD
 	help
 	  Enable shimming the power button implementation and related
@@ -733,5 +922,43 @@ config PLATFORM_EC_VSTORE_SLOT_COUNT
 	  number required depends on the AP firmware. Typically the vstore is
 	  used only for recording a hash of the read-write AP firmware for
 	  checking on resume. For this, one slot is enough.
+
+config PLATFORM_EC_SYSTEM_UNLOCKED
+	bool "System unlocked: allow dangerous commands while in development"
+	default y if PLATFORM_EC_BRINGUP
+	help
+	  System should remain unlocked even if write protect is enabled.
+
+	  NOTE: This should ONLY be defined during bringup, and should never be
+	  defined on a shipping / released platform.
+
+	  When defined, CBI allows ectool to reprogram all the fields.
+	  Normally, it refuses to change certain fields. (e.g. board version,
+	  OEM ID)
+
+	  Also, this enables PD in RO for TCPMv2.
+
+menuconfig PLATFORM_EC_WATCHDOG
+	bool "watchdog"
+	depends on WATCHDOG
+	default y
+	help
+	  Enable the watchdog functionality. The watchdog timer will reboot the
+	  system if the hook task (which is the lowest-priority task on the
+	  system) gets starved for CPU time and isn't able to fire its
+	  HOOK_TICK event.
+
+if PLATFORM_EC_WATCHDOG
+
+config PLATFORM_EC_WATCHDOG_PERIOD_MS
+	int "Watchdog timeout in ms"
+	default 1600
+	help
+	  Set the timeout of the watchdog timer. The watchdog timer reboots
+	  the system if no one reloads the watchdog timer before the timeout.
+	  The interval between reloads of the watchdog timer should be less than
+	  half of the watchdog period.
+
+endif # PLATFORM_EC_WATCHDOG
 
 endif # PLATFORM_EC

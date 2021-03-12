@@ -726,7 +726,7 @@
  * On the second reset, the saved flag is used to detect the previous
  * power-on, and treat the second reset as a power-on instead of a reset.
  *
- * NOTE: Implemented only for npcx
+ * NOTE: Implemented only for npcx and ite
  */
 #undef CONFIG_BOARD_RESET_AFTER_POWER_ON
 
@@ -769,6 +769,20 @@
  */
 #undef CONFIG_DEDICATED_RECOVERY_BUTTON
 #undef CONFIG_DEDICATED_RECOVERY_BUTTON_2
+
+/*
+ * RISC-V core specific panic data is bigger than Cortex-M core specific panic
+ * data. Including this into union in panic_data structure causes whole
+ * to grow by 28 bytes. In many boards EC RO is still obtaining pointer to
+ * beginning of panic data by subtracting its panic data structure size from
+ * the end of RAM. When EC RW saves panic data it will be corrupted by EC RO.
+ * Moreover, during next boot EC RW won't be able to find jump data (see
+ * b/165773837 for more details).
+ *
+ * This config allows boards to not include RV32I panic data if their EC RO
+ * doesn't include it to keep panic data structure in sync.
+ */
+#undef CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
 
 /*
  * The board has volume up and volume down buttons.  Note, these are *buttons*
@@ -849,6 +863,7 @@
 #undef CONFIG_CHARGER_BQ24770
 #undef CONFIG_CHARGER_BQ24773
 #undef CONFIG_CHARGER_BQ25710
+#undef CONFIG_CHARGER_BQ25720
 #undef CONFIG_CHARGER_ISL9237
 #undef CONFIG_CHARGER_ISL9238 /* For ISL9238 A/B */
 #undef CONFIG_CHARGER_ISL9238C
@@ -1159,6 +1174,10 @@
 
 /* AP chipset support; pick at most one */
 #undef CONFIG_CHIPSET_ALDERLAKE		/* Intel Alderlake (x86) */
+#undef CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540	/* Intel Alderlake (x86)
+						 * with power sequencer
+						 * chip
+						 */
 #undef CONFIG_CHIPSET_APOLLOLAKE	/* Intel Apollolake (x86) */
 #undef CONFIG_CHIPSET_BRASWELL		/* Intel Braswell (x86) */
 #undef CONFIG_CHIPSET_CANNONLAKE	/* Intel Cannonlake (x86) */
@@ -1173,6 +1192,7 @@
 #undef CONFIG_CHIPSET_MT817X		/* MediaTek MT817x */
 #undef CONFIG_CHIPSET_MT8183		/* MediaTek MT8183 */
 #undef CONFIG_CHIPSET_MT8192		/* MediaTek MT8192 */
+#undef CONFIG_CHIPSET_CEZANNE		/* AMD Cezanne (x86) */
 #undef CONFIG_CHIPSET_RK3288		/* Rockchip rk3288 */
 #undef CONFIG_CHIPSET_RK3399		/* Rockchip rk3399 */
 #undef CONFIG_CHIPSET_SKYLAKE		/* Intel Skylake (x86) */
@@ -1359,6 +1379,7 @@
 #define CONFIG_CMD_PD
 #undef  CONFIG_CMD_PD_DEV_DUMP_INFO
 #undef  CONFIG_CMD_PD_FLASH
+#undef  CONFIG_CMD_PD_TIMER
 #define CONFIG_CMD_PECI
 #undef  CONFIG_CMD_PLL
 #undef  CONFIG_CMD_PMU
@@ -1447,6 +1468,13 @@
  * filed in the crbug.com/985540.
  */
 #undef CONFIG_IO_EXPANDER
+
+/*
+ * Enable reading levels for whole IO expander port with one call.
+ * This adds 'get_port' function pointer to 'ioexpander_drv' structure.
+ * Most drivers don't implement this functionality.
+ */
+#undef CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
 
 /*
  * EC's supporting powering down GPIO pins.
@@ -2486,6 +2514,9 @@
 /* Support NXP PCAL6408 I/O expander. */
 #undef CONFIG_IO_EXPANDER_PCAL6408
 
+/* Support TI TCA64xxA I/O expander. */
+#undef CONFIG_IO_EXPANDER_TCA64XXA
+
 /* Number of IO Expander ports */
 #undef CONFIG_IO_EXPANDER_PORT_COUNT
 
@@ -3008,6 +3039,13 @@
 /* Minute-IA watchdog timer vector number. */
 #define CONFIG_MIA_WDT_VEC 0xFF
 
+/*
+ * ISL9241 Configures the switching frequency and overrides the default
+ * switching frequency set by PROG pin. The valid frequency settings are
+ * find in driver/charger/isl9241.h.
+ */
+#undef CONFIG_ISL9241_SWITCHING_FREQ
+
 /* Support MKBP event */
 #undef CONFIG_MKBP_EVENT
 
@@ -3397,12 +3435,6 @@
 /* Storage  offset of sharedobjects library. */
 #undef CONFIG_SHAREDLIB_STORAGE_OFF
 
-/*
- * If defined, the hash module will save its last computed hash when jumping
- * between EC images.
- */
-#undef CONFIG_SAVE_VBOOT_HASH
-
 /* Allow the board to use a GPIO for the SCI# signal. */
 #undef CONFIG_SCI_GPIO
 
@@ -3557,6 +3589,12 @@
  * Also, this will enable PD in RO for TCPMv2.
  */
 #undef CONFIG_SYSTEM_UNLOCKED
+/*
+ * Some systems decouple the CBI eeprom write protection from the
+ * H1_FLASH_WP_ODL via the hardware change. Adds this config to
+ * bypass the cbi eeprom write protection check.
+ */
+#undef CONFIG_BYPASS_CBI_EEPROM_WP_CHECK
 
 /*
  * Device can be a tablet as well as a clamshell.
@@ -3770,6 +3808,15 @@
  * indicated to the host.
  */
 #undef CONFIG_DPTF_MULTI_PROFILE
+
+/*
+ * Sometime EC was already driver thermal sensor power pin to high, but sensor
+ * power is still not ready. That cause the system will thermal shutdown when
+ * first boot EC.
+ *
+ * This config can be used to delay thermal sensor read in the first time.
+ */
+#undef CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS
 
 /*****************************************************************************/
 /* Touchpad config */
@@ -3986,14 +4033,17 @@
 /* Support for USB PD alternate mode of Downward Facing Port */
 #undef CONFIG_USB_PD_ALT_MODE_DFP
 
+/* Support for USB PD alternate mode of Upward Facing Port */
+#undef CONFIG_USB_PD_ALT_MODE_UFP
+
 /*
  * Do not enter USB PD alternate modes or USB4 automatically. Wait for the AP to
  * direct the EC to enter a mode. This requires AP software support.
  */
 #undef CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
 
-/* Support for USB PD alternate mode of Upward Facing Port */
-#undef CONFIG_USB_PD_ALT_MODE_UFP
+/* Supports DP as UFP-D and requires HPD to DP_ATTEN converter */
+#undef CONFIG_USB_PD_ALT_MODE_UFP_DP
 
 /* HPD is sent to the GPU from the EC via a GPIO */
 #undef CONFIG_USB_PD_DP_HPD_GPIO
@@ -4177,6 +4227,9 @@
 /* Define EC and TCPC modules are in one integrated chip */
 #undef CONFIG_USB_PD_TCPC_ON_CHIP
 
+/* If VCONN is enabled, the TCPC will provide VCONN */
+#define CONFIG_USB_PD_TCPC_VCONN
+
 /* Enable the encoding of msg SOP* in bits 31-28 of 32-bit msg header type */
 #undef CONFIG_USB_PD_DECODE_SOP
 
@@ -4326,6 +4379,22 @@
 #undef CONFIG_USBC_RETIMER_PS8818
 #undef CONFIG_USBC_RETIMER_TUSB544
 
+/*
+ * Define this to enable Type-C retimer firmware update. Each Type-C retimer
+ * indicates its capability of supporting firmware update in usb_mux_driver.
+ * This feature is available to TCPMv2 PD stack, also requires
+ * CONFIG_USBC_SS_MUX is enabled.
+ * This feature includes changes in EC, Coreboot and Kernel. During AP boot
+ * up, AP scans each PD port for retimers if no Type-C device attached;
+ * and firmware update can be performed on retimers showing up in AP
+ * thunderbolt device entries. If PD port has device attached, no retimer
+ * scan on that port.
+ */
+#undef CONFIG_USBC_RETIMER_FW_UPDATE
+
+/* Prevent enabling LPM of NB7V904M */
+#undef CONFIG_NB7V904M_LPM_OVERRIDE
+
 /* Enable retimer TUSB544 tune EQ setting by register  */
 #undef CONFIG_TUSB544_EQ_BY_REGISTER
 
@@ -4469,6 +4538,9 @@
  * 3.3A.  See the syv682x header file for permissible values.
  */
 #define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_3_30
+
+/* SYV682 does not pass through CC, instead it bypasses to the TCPC */
+#undef CONFIG_SYV682X_NO_CC
 
 /* PPC is capable of gating the SBU lines. */
 #undef CONFIG_USBC_PPC_SBU
@@ -4724,6 +4796,12 @@
  */
 #undef CONFIG_USB_MUX_ANX7440
 
+/*
+ * Support the Analogix ANX7451 10G Active Mux (4x4) with
+ * Integrated Re-timers for USB3.2/DisplayPort
+ */
+#undef CONFIG_USB_MUX_ANX7451
+
 /* Support the ITE IT5205 Type-C USB alternate mode mux. */
 #undef CONFIG_USB_MUX_IT5205
 
@@ -4744,6 +4822,9 @@
 
 /* Support the Texas Instrument TUSB1064 Type-C Redriving Switch (UFP) */
 #undef CONFIG_USB_MUX_TUSB1064
+
+/* Support the Parade PS8822 Type-C Redriving Demux Switch */
+#undef CONFIG_USB_MUX_PS8822
 
 /* 'Virtual' USB mux under host (not EC) control */
 #undef CONFIG_USB_MUX_VIRTUAL
@@ -4813,6 +4894,15 @@
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
 
+/*
+ * Reload the watchdog at 1/2 the watchdog period during hash
+ * calculation.  When CONFIG_SHA256_HW_ACCELERATE and
+ * CONFIG_SHA256_UNROLLED are disabled, the hash calculation may trip
+ * the watchdog.  This option becomes enabled by default when both
+ * those options are disabled.
+ */
+#undef CONFIG_VBOOT_HASH_RELOAD_WATCHDOG
+
 /* Support for secure temporary storage for verified boot */
 #undef CONFIG_VSTORE
 
@@ -4827,7 +4917,9 @@
  * if the hook task (which is the lowest-priority task on the system) gets
  * starved for CPU time and isn't able to fire its HOOK_TICK event.
  */
+#ifndef CONFIG_ZEPHYR
 #define CONFIG_WATCHDOG
+#endif
 
 /*
  * Try to detect a watchdog that is about to fire, and print a trace.  This is
@@ -5004,8 +5096,12 @@
 /*
  * This build is not a complete platform/ec based EC, but instead
  * using the platform/ec zephyr module.
+ *
+ * Note: this is here purely for stylistic purposes and documentation.
  */
+#ifndef CONFIG_ZEPHYR
 #undef CONFIG_ZEPHYR
+#endif
 
 /*****************************************************************************/
 /*
@@ -5132,6 +5228,9 @@
  * defines, and define a default number of 3.0 A ports if not selected.  Note
  * that the functionality of this default of 1 is equivalent to both previous
  * defines, which only ever allocated one 3.0 A port.
+ *
+ * To turn off the TCPMv2 3.0 A current allocation from the DPM, set
+ * CONFIG_USB_PD_3A_PORTS to 0.
  */
 #ifdef CONFIG_USB_PD_TCPMV2
 #if defined(CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT) || \
@@ -5145,6 +5244,17 @@
 #if defined(CONFIG_USB_PD_USB4) && CONFIG_USB_PD_3A_PORTS == 0
 #error USB4 support requires at least one 3.0 A port
 #endif
+#endif
+
+
+/******************************************************************************/
+/*
+ * Ensure CONFIG_USB_PD_TCPMV2 and CONFIG_USBC_SS_MUX both are defined. USBC
+ * retimer firmware update feature requires both.
+ */
+#if (defined(CONFIG_USBC_RETIMER_FW_UPDATE) && \
+	(!(defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USBC_SS_MUX))))
+#error Retimer firmware update requires TCPMv2 and USBC_SS_MUX
 #endif
 
 /******************************************************************************/
@@ -5345,10 +5455,22 @@
 #define CONFIG_USBC_PPC_VCONN
 #endif
 
-/* The SYV682X supports VCONN and needs to be informed of CC polarity */
+/*
+ * The SYV682X supports VCONN and needs to be informed of CC polarity.
+ * There is a 3.6V limit on the HOST_CC signals, so the TCPC should not source
+ * 5V VCONN.
+ *
+ * For the ITE integrated TCPC, it wants to be notified of VCONN but won't
+ * source VCONN itself, so is safe to keep enabled.
+ */
 #if defined(CONFIG_USBC_PPC_SYV682X)
 #define CONFIG_USBC_PPC_POLARITY
 #define CONFIG_USBC_PPC_VCONN
+#if !defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX) && \
+	!defined(CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2) && \
+	!defined(CONFIG_SYV682X_NO_CC)
+#undef CONFIG_USB_PD_TCPC_VCONN
+#endif
 #endif
 
 /*****************************************************************************/
@@ -5363,6 +5485,11 @@
 #endif
 
 /*****************************************************************************/
+/* The BQ25720 is supported by the BQ25710 driver */
+#if defined(CONFIG_CHARGER_BQ25720)
+#define CONFIG_CHARGER_BQ25710
+#endif
+
 /*
  * Define CONFIG_USB_PD_VBUS_MEASURE_CHARGER if the charger on the board
  * supports VBUS measurement.
@@ -5490,6 +5617,7 @@
 #ifndef HAS_TASK_CHIPSET
 #undef CONFIG_AP_HANG_DETECT
 #undef CONFIG_CHIPSET_ALDERLAKE
+#undef CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
 #undef CONFIG_CHIPSET_APOLLOLAKE
 #undef CONFIG_CHIPSET_BRASWELL
 #undef CONFIG_CHIPSET_CANNONLAKE
@@ -5500,6 +5628,7 @@
 #undef CONFIG_CHIPSET_MT817X
 #undef CONFIG_CHIPSET_MT8183
 #undef CONFIG_CHIPSET_MT8192
+#undef CONFIG_CHIPSET_CEZANNE
 #undef CONFIG_CHIPSET_RK3399
 #undef CONFIG_CHIPSET_RK3288
 #undef CONFIG_CHIPSET_SDM845
@@ -5616,7 +5745,8 @@
 #define CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK
 #endif
 
-#if defined(CONFIG_CHIPSET_APOLLOLAKE) || \
+#if defined(CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540) || \
+	defined(CONFIG_CHIPSET_APOLLOLAKE) || \
 	defined(CONFIG_CHIPSET_BRASWELL) || \
 	defined(CONFIG_CHIPSET_CANNONLAKE) || \
 	defined(CONFIG_CHIPSET_COMETLAKE) || \
@@ -5627,7 +5757,8 @@
 #define CONFIG_POWER_COMMON
 #endif
 
-#if defined(CONFIG_CHIPSET_CANNONLAKE) || \
+#if defined(CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540) || \
+	defined(CONFIG_CHIPSET_CANNONLAKE) || \
 	defined(CONFIG_CHIPSET_ICELAKE) || \
 	defined(CONFIG_CHIPSET_SKYLAKE)
 #define CONFIG_CHIPSET_X86_RSMRST_DELAY
@@ -5755,8 +5886,15 @@
  * Validity checks to make sure some of the configs above make sense.
  */
 
+/*
+ * Chromium ec uses hook tick to reload the watchdog. The interval between
+ * reloads of the watchdog timer should be less than half of the watchdog
+ * period.
+ */
+#if !defined(CONFIG_ZEPHYR) && defined(CONFIG_WATCHDOG)
 #if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS) * 2)
 #error "CONFIG_AUX_TIMER_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
+#endif
 #endif
 
 #ifdef CONFIG_USB_SERIALNO
@@ -6041,5 +6179,27 @@
 #ifndef CONFIG_ALS
 #define ALS_COUNT 0
 #endif /* CONFIG_ALS */
+
+#if defined(CONFIG_BYPASS_CBI_EEPROM_WP_CHECK) && \
+	!defined(CONFIG_SYSTEM_UNLOCKED)
+#error "CONFIG_BYPASS_CBI_EEPROM_WP_CHECK is only permitted " \
+	"when CONFIG_SYSTEM_UNLOCK is also enabled."
+#endif /* CONFIG_BYPASS_CBI_EEPROM_WP_CHECK && !CONFIG_SYSTEM_UNLOCK */
+
+/*
+ * Enable CONFIG_VBOOT_HASH_RELOAD_WATCHDOG by default when these
+ * conditions are met:
+ * - Watchdog enabled
+ * - No hardware acceleration for SHA256 calculation
+ * - Loops for SHA256 calculation are not unrolled
+ *
+ * See the CONFIG_VBOOT_HASH_RELOAD_WATCHDOG entry in this file for an
+ * explanation as to why this is necessary.
+ */
+#if defined(CONFIG_WATCHDOG) && !defined(CONFIG_SHA256_HW_ACCELERATE) && \
+	!defined(CONFIG_SHA256_UNROLLED) &&                              \
+	!defined(CONFIG_VBOOT_HASH_RELOAD_WATCHDOG)
+#define CONFIG_VBOOT_HASH_RELOAD_WATCHDOG
+#endif
 
 #endif  /* __CROS_EC_CONFIG_H */

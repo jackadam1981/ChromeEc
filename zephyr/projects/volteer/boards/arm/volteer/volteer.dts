@@ -6,6 +6,7 @@
 
 /dts-v1/;
 
+#include <cros/nuvoton/npcx.dtsi>
 #include <dt-bindings/gpio_defines.h>
 #include <nuvoton/npcx7m6fb.dtsi>
 
@@ -26,6 +27,12 @@
 		zephyr,console = &uart1;
 		zephyr,shell-uart = &uart1;
 		zephyr,flash = &flash0;
+	};
+
+	ec-console {
+		compatible = "ec-console";
+
+		disabled = "hostcmd";
 	};
 
 	named-i2c-ports {
@@ -85,10 +92,88 @@
 			label = "KBLIGHT";
 			frequency = <2400>;
 		};
-		fan {
+		pwm_fan: fan {
 			pwms = <&pwm5 0 0>;
 			label = "FAN";
 			frequency = <25000>;
+		};
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_charger: charger {
+			label = "ADC_TEMP_SENSOR_CHARGER";
+			channel = <0>;
+		};
+		adc_pp3300_regulator: pp3300_regulator {
+			label = "ADC_TEMP_SENSOR_PP3300_REGULATOR";
+			channel = <1>;
+		};
+		adc_ddr_soc: ddr_soc {
+			label = "ADC_TEMP_SENSOR_DDR_SOC";
+			channel = <8>;
+		};
+		adc_fan: fan {
+			label = "ADC_TEMP_SENSOR_FAN";
+			channel = <3>;
+		};
+	};
+
+	named-temp-sensors {
+		charger {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_CHARGER";
+			temp_fan_off = <40>;
+			temp_fan_max = <55>;
+			temp_host_high = <75>;
+			temp_host_halt = <80>;
+			temp_host_release_high = <65>;
+			adc = <&adc_charger>;
+		};
+		pp3300_regulator {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_PP3300_REGULATOR";
+			temp_fan_off = <40>;
+			temp_fan_max = <55>;
+			temp_host_high = <75>;
+			temp_host_halt = <80>;
+			temp_host_release_high = <65>;
+			adc = <&adc_pp3300_regulator>;
+		};
+		ddr_soc {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_DDR_SOC";
+			temp_fan_off = <35>;
+			temp_fan_max = <50>;
+			temp_host_high = <70>;
+			temp_host_halt = <80>;
+			temp_host_release_high = <65>;
+			adc = <&adc_ddr_soc>;
+		};
+		fan {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_FAN";
+			temp_fan_off = <35>;
+			temp_fan_max = <50>;
+			temp_host_high = <70>;
+			temp_host_halt = <80>;
+			temp_host_release_high = <65>;
+			adc = <&adc_fan>;
+		};
+	};
+
+	named-fans {
+		compatible = "named-fans";
+
+		fan_0 {
+			label = "FAN_0";
+			pwm = <&pwm_fan>;
+			rpm_min = <1900>;
+			rpm_start = <1900>;
+			rpm_max = <5900>;
+			tach = <&tach1>;
+			enable_gpio = <&gpio_en_pp5000_fan>;
 		};
 	};
 
@@ -261,7 +346,8 @@
 			gpios = <&gpio3 2 GPIO_ODR_LOW>;
 			label = "USB_C1_RT_RST_ODL_BOARDID_0";
 		};
-		usb_c1_rt_rst_odl {
+		gpio_usb_c1_rt_rst_odl: usb_c1_rt_rst_odl {
+			#gpio-cells = <0>;
 			gpios = <&gpio8 3 GPIO_ODR_LOW>;
 			label = "USB_C1_RT_RST_ODL";
 		};
@@ -378,7 +464,7 @@
 			gpios = <&gpioe 1 GPIO_INPUT>;
 			label = "EC_BATT_PRES_ODL";
 		};
-		en_pp5000_fan {
+		gpio_en_pp5000_fan: en_pp5000_fan {
 			gpios = <&gpio6 1 GPIO_OUT_LOW>;
 			label = "EN_PP5000_FAN";
 		};
@@ -386,6 +472,11 @@
 			gpios = <&gpio1 7 GPIO_OUT_LOW>;
 			label = "EC_KSO_02_INV";
 		};
+	};
+
+	def_lvol_io_list {
+		compatible = "nuvoton,npcx-lvolctrl-def";
+		lvol_io_pads = <&lvol_iob4 &lvol_iob5>; /* I2C_SDA0 & SCL0 */
 	};
 
 	soc {
@@ -432,15 +523,6 @@
 			label = "FLASH_INTERFACE_UNIT0";
 			pinctrl-0 = <>;
 		};
-
-		bbram: bb-ram@400af000 {
-			compatible = "nuvoton,npcx-cros-bbram";
-			status = "okay";
-			reg = <0x400af000 0x80
-			       0x400af100 0x1>;
-			reg-names = "memory", "status";
-			label = "BBRAM";
-		};
 	};
 
 	/*
@@ -484,7 +566,7 @@
 		reg = <0x40>;
 		label = "USB_C1_BB_RETIMER";
 		int-gpios = <&gpio_usb_c1_mix_int_odl>;
-		reset-gpios = <&gpio_usb_c1_rt_rst_odl_boardid_0>;
+		reset-gpios = <&gpio_usb_c1_rt_rst_odl>;
 		ls-en-gpios = <&gpio_unused_gpio41>;
 	};
 };
@@ -531,4 +613,17 @@
 /* Side selection LED */
 &pwm7 {
 	status = "okay";
+};
+
+&adc0 {
+	status = "okay";
+};
+
+/* Tachemeter for fan speed measurement */
+&tach1 {
+	status = "okay";
+	pinctrl-0 = <&alt3_ta1_sl1>; /* Use TA1 as input pin */
+	port = <NPCX_TACH_PORT_A>; /* port-A is selected */
+	sample_clk = <NPCX_TACH_FREQ_LFCLK>; /* Use LFCLK as sampling clock */
+	pulses_per_round = <2>; /* number of pulses per round of encoder */
 };

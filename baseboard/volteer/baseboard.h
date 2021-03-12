@@ -111,6 +111,8 @@
  */
 #define CONFIG_CHARGE_RAMP_SW
 #define CONFIG_CHARGER_ISL9241
+/* Setting ISL9241 Register Control1 switching frequency to 724kHz. */
+#define CONFIG_ISL9241_SWITCHING_FREQ	ISL9241_CONTROL1_SWITCHING_FREQ_724KHZ
 
 #define CONFIG_USB_CHARGER
 #define CONFIG_BC12_DETECT_PI3USB9201
@@ -223,10 +225,19 @@
  * http://google3/hardware/standards/usb/
  */
 #define CONFIG_USB_PID 0x503E
+/* Device version of product. */
+#define CONFIG_USB_BCD_DEV 0x0000
 
 /* Retimer */
 #define CONFIG_USBC_RETIMER_INTEL_BB
 #define CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+#define CONFIG_USBC_RETIMER_FW_UPDATE
+
+/* Enable volume button command in EC console */
+#define CONFIG_CMD_BUTTON
+
+/* Enable volume button in ectool */
+#define CONFIG_HOSTCMD_BUTTON
 
 #ifndef __ASSEMBLER__
 

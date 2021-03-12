@@ -34,7 +34,10 @@
 #define CONFIG_OCPC_DEF_RBATT_MOHMS 22 /* R_DS(on) 11.6mOhm + 10mOhm sns rstr */
 #define CONFIG_OCPC
 #define CONFIG_CHARGER_PROFILE_OVERRIDE
+#define CONFIG_CHARGE_RAMP_HW
 #undef  CONFIG_CHARGER_SINGLE_CHIP
+
+#define CONFIG_BATTERY_CHECK_CHARGE_TEMP_LIMITS
 
 /*
  * GPIO for C1 interrupts, for baseboard use
@@ -71,6 +74,8 @@
 /* USB PD */
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_PD_TCPM_RAA489000
+#undef CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
+#define CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE (100 * MSEC)
 
 /* USB defines specific to external TCPCs */
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
@@ -124,6 +129,12 @@
 #define GPIO_EC_I2C_SUB_USB_C1_SDA GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL
 
 #define CONFIG_MATH_UTIL
+
+/*
+ * There is ccd connection issue on board id = 2.
+ * NB7V904M is needed to be active to resolve this.
+ */
+#define CONFIG_NB7V904M_LPM_OVERRIDE
 
 #ifndef __ASSEMBLER__
 

@@ -10,6 +10,9 @@
 #include "ec_tasks.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
+#include "system.h"
+#include "vboot.h"
+#include "watchdog.h"
 #include "zephyr_espi_shim.h"
 
 void main(void)
@@ -17,6 +20,8 @@ void main(void)
 	printk("Hello from a Chrome EC!\n");
 	printk("  BOARD=%s\n", CONFIG_BOARD);
 	printk("  ACTIVE_COPY=%s\n", CONFIG_CROS_EC_ACTIVE_COPY);
+
+	system_common_pre_init();
 
 	/*
 	 * Initialize reset logs. This needs to be done before any updates of
@@ -35,6 +40,20 @@ void main(void)
 		if (zephyr_shim_setup_espi() < 0) {
 			printk("Failed to init eSPI!\n");
 		}
+	}
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG)) {
+		watchdog_init();
+	}
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_VBOOT)) {
+		/*
+		 * For RO, it behaves as follows:
+		 *   In recovery, it enables PD communication and returns.
+		 *   In normal boot, it verifies and jumps to RW.
+		 * For RW, it returns immediately.
+		 */
+		vboot_main();
 	}
 
 	/* Call init hooks before main tasks start */
