@@ -16,6 +16,24 @@
       "message": "nit: would you mind moving this to OPEN entry since this applies to error recovery as well?",
       "revId": "40f84884fd5aeb7e3d9398d81c6ae6a7c4b035c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db1a07e_8102d380",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-12T00:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a7e404_a156c10b",
+      "revId": "40f84884fd5aeb7e3d9398d81c6ae6a7c4b035c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
