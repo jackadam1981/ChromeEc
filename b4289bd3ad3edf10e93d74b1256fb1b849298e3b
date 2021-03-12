@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e174fc40_5b089656",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2021-03-12T21:11:40Z",
+      "side": 1,
+      "message": "Could you please probe both Vconn and CC at the same time?  If the TCPC on Voxel is only applying pull-ups on the two pins sequentially (which IIRC is not allowed by the USB-C spec), then the circuit on Chocodile to advertise the Ra will not work correctly.\n\nAs for filing a bug, just saying something generic like \"Chocodile Ra not being detected correctly when unpowered\" is good enough; it\u0027s better to track this kind of debugging in a bug rather than in CL comments",
+      "parentUuid": "e8a255a4_6411d0dc",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93906fe8_908352b4",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
