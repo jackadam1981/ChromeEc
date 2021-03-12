@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8a255a4_6411d0dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-12T20:35:04Z",
+      "side": 1,
+      "message": "Plugging in an unpowered chocodile and using a scope to measure CC1 and CC2.\n\nOn Voxel, both ports, the VCONN(CC) was 900mV that occasionally bounced to 700mV for about 4s and then started bouncing to 1.1V and the other CC line was 1.3V and changed to 1.9V about the same time VCCON(CC) started bouncing to 1.1V\n\nI tried the same test on a Pantheon and the Ra/Rd were detected properly.\n\nSo, next I tried an EMarker cable on Voxel, and the VCONN(CC) was 700mV that occasionally bounced to 500mV and the CC line was toggling.\n\nI\u0027m not sure how to interpret this in order to file a bug.",
+      "parentUuid": "6163c79a_cdaf6fb1",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93906fe8_908352b4",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
