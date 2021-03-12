@@ -98,6 +98,24 @@
       "parentUuid": "5bf3e238_2e5eef02",
       "revId": "eaf2b2f175f1f9930383f3a4e8a7491bb5009215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ff9521_4782408f",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-12T20:54:57Z",
+      "side": 1,
+      "message": "are you planning to submit a follow up CL to address Aseda\u0027s comments?",
+      "parentUuid": "4e1d2c6b_4fa7b418",
+      "revId": "eaf2b2f175f1f9930383f3a4e8a7491bb5009215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
