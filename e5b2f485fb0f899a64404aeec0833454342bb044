@@ -33,6 +33,29 @@
       "message": "I think the following change to default will help\n\nconfig PLATFORM_EC_USB_PD_TCPC_VCONN\n\tbool \"If VCONN is enabled, the TCPC will provide VCONN\"\n\tdefault y if !PLATFORM_EC_USBC_PPC_SYV682X\n",
       "revId": "e5b2f485fb0f899a64404aeec0833454342bb044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed136080_7f2b33c0",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-12T16:21:00Z",
+      "side": 1,
+      "message": "I believe this is an invalid line.  You have to tell it what the default will be if the condition is true.\n\n\tdefault y if !PLATFORM_EC_USBC_PPC_SYV682X",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 41
+      },
+      "revId": "e5b2f485fb0f899a64404aeec0833454342bb044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
