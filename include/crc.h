@@ -28,6 +28,8 @@ uint32_t crc32_result(void);
 
 void crc32_ctx_init(uint32_t *ctx);
 
+void crc32_hash(const void *buf, int size);
+
 void crc32_ctx_hash32(uint32_t *ctx, uint32_t val);
 
 void crc32_ctx_hash16(uint32_t *ctx, uint16_t val);
