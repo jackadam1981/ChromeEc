@@ -105,6 +105,24 @@
       "parentUuid": "929b2bec_5a298106",
       "revId": "0ff1cf7df40a35680b86396307263fcdedcb56a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c844b032_92fc73dd",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-03-12T06:00:49Z",
+      "side": 1,
+      "message": "I think it should depend on when you get board_version.\nIf we still get board_version in board_init, it will fail due to board_init might be later than board_sensor_at_360.\nIf we get board version in board_sensor_at_360, it will pass but we will do delay in gmr_tablet_switch_interrupt_debounce.",
+      "parentUuid": "4ffae66c_4dbe5f1e",
+      "revId": "0ff1cf7df40a35680b86396307263fcdedcb56a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
