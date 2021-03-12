@@ -52,6 +52,24 @@
       "parentUuid": "1516ddc2_52deb037",
       "revId": "3c2b743ebd3ca7b6ffb7fee4e946c5092cf84c4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7853562_e2ecd0f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2021-03-12T02:45:20Z",
+      "side": 1,
+      "message": "I made a bugfix CL follwing this that will fix the error on krane reading current_avg.\n\nThere could be some errors on reading properties on other platforms but it shouldn\u0027t make system wrong but just annoying, it simply returns an error on i2c transaction for trivial properties read by udev daemon.\n\nfrom krane, I got these without errors,\n`for x in $(find /sys/class/power_supply/sbs-12-000b/ -maxdepth 1 -type f); do echo $x $(cat $x); done`\n./charge_full_design 7000000\n./serial_number ffff\n./technology Li-ion\n./current_now 0\n./charge_now 6817000\n./present 1\n./constant_charge_current_max 3500000\n./manufacturer \u003cunkn\u003e\n./voltage_max_design 3850000\n./energy_now 29660000\n./type Battery\n./charge_full 6854000\n./capacity 99\n./health Unknown\n./time_to_empty_avg 49080\n./cycle_count 11\n./voltage_now 4352000\n./status Full\n./model_name L16D2P3\n./current_avg -2000\n./constant_charge_voltage_max 4400000\n./temp 277\n./voltage_min_design 3850000\n./capacity_error_margin 3\n./capacity_level Unknown\n./energy_full_design 30460000\n./time_to_full_avg 3932100\n./energy_full 29820000",
+      "parentUuid": "8efe4021_29abe4fe",
+      "revId": "3c2b743ebd3ca7b6ffb7fee4e946c5092cf84c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
