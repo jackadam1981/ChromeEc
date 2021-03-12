@@ -22,6 +22,8 @@ void crc32_hash32(uint32_t val);
 
 void crc32_hash16(uint16_t val);
 
+void crc32_hash(const void *buf, int size);
+
 uint32_t crc32_result(void);
 
 /* Provided context variant */
