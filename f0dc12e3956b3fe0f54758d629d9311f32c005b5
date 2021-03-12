@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb127393_9f1d51ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-12T01:11:09Z",
+      "side": 1,
+      "message": "Tom: first, I think your Dragonclaw just happens to be in WP enabled state, and run_device_test never toggled it for you. Second, I haven\u0027t tested this CL in any way.",
+      "revId": "f0dc12e3956b3fe0f54758d629d9311f32c005b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
