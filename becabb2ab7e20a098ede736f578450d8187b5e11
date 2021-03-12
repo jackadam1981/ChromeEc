@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f68f4d2_ce94d163",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2454,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-12T23:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8745a3a_c142c139",
+      "range": {
+        "startLine": 2454,
+        "startChar": 6,
+        "endLine": 2454,
+        "endChar": 12
+      },
+      "revId": "becabb2ab7e20a098ede736f578450d8187b5e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e987a9e5_f922f97b",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-03-04T15:43:47Z",
       "side": 1,
       "message": "Is this in case we were in the middle of PRSwap or for the case of Vbus removed and then it was not?  If it is for PRSwap, then maybe clearing TC_FLAGS_PR_SWAP_IN_PROGRESS is in order",
+      "range": {
+        "startLine": 2460,
+        "startChar": 0,
+        "endLine": 2462,
+        "endChar": 3
+      },
+      "revId": "becabb2ab7e20a098ede736f578450d8187b5e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20680905_5c3ef23a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-12T23:25:54Z",
+      "side": 1,
+      "message": "We\u0027re already disabling the timer after PR_SWAP_IN_PROGRESS, but this would also ensure we are always disabled if we entered through the non-PR swap path.\n\nIt does have the side-effect of remaining connected if we had a Vbus glitch where one reading registered removed and the next did not.  Are we on a short enough time frame that should be alright?",
+      "parentUuid": "e987a9e5_f922f97b",
       "range": {
         "startLine": 2460,
         "startChar": 0,
