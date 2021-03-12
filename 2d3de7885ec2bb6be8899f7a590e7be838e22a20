@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e6a44f_73e29897",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-12T17:22:15Z",
+      "side": 1,
+      "message": "Bypassing CQ because Kconfig checker is failing for configs unrelated to this CL. This CL will unblock some builds. ",
+      "revId": "2d3de7885ec2bb6be8899f7a590e7be838e22a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
