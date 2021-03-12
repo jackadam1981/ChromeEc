@@ -289,6 +289,8 @@ int board_accel_force_mode_mask(void)
 
 __override int syv682x_board_is_syv682c(int port)
 {
-	return board_get_version() > 2;
+	/* return board_get_version() > 2; */
+	/* always assume C version */
+	return 1;
 }
 
