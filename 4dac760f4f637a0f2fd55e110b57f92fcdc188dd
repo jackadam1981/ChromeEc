@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d8f217_86d4c084",
+        "filename": "common/usbc/usb_pe_ctvpd_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-12T18:39:43Z",
+      "side": 1,
+      "message": "This file is also used when building VPD without charge through, so these fields will be 0.",
+      "parentUuid": "218622da_5e2ad37f",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 197,
+        "endChar": 32
+      },
+      "revId": "4dac760f4f637a0f2fd55e110b57f92fcdc188dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd490c34_cf4a8029",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebddc834_2baa569a",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-12T18:39:43Z",
+      "side": 1,
+      "message": "Let\u0027s leave it as is for now and if bitfields are the latest trend, I\u0027ll do the migration in a separate CL.",
+      "parentUuid": "cd490c34_cf4a8029",
+      "revId": "4dac760f4f637a0f2fd55e110b57f92fcdc188dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73db35ef_50936036",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-03-11T22:38:30Z",
       "side": 1,
       "message": "nit: is this config enabled here as well since it\u0027s the CTVPD test?",
+      "revId": "4dac760f4f637a0f2fd55e110b57f92fcdc188dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d8b13ee_a272b99e",
+        "filename": "test/usb_typec_ctvpd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-12T18:39:43Z",
+      "side": 1,
+      "message": "This file is shared with TEST_USB_TYPEC_VPD, where CONFIG_USB_CTVPD isn\u0027t defined and these fields should be 0.",
+      "parentUuid": "73db35ef_50936036",
       "revId": "4dac760f4f637a0f2fd55e110b57f92fcdc188dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
