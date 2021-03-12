@@ -18,12 +18,15 @@ static int test_static_version(void)
 	uint32_t crc;
 	const uint32_t input = 0xdeadbeef;
 
-	crc32_init();
-	crc32_hash32(input);
-
 	crc32_ctx_init(&crc);
 	crc32_ctx_hash32(&crc, input);
 
+	crc32_init();
+	crc32_hash32(input);
+	TEST_ASSERT(crc32_result() == crc32_ctx_result(&crc));
+
+	crc32_init();
+	crc32_hash(&input, sizeof(input));
 	TEST_ASSERT(crc32_result() == crc32_ctx_result(&crc));
 
 	return EC_SUCCESS;
