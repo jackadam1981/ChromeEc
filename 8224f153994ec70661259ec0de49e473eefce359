@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76aec805_b4b488be",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T22:10:10Z",
+      "side": 1,
+      "message": "In NPCX796FC, the code RAM, which the flash maps to, starts at 1009000.",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 23
+      },
+      "revId": "8224f153994ec70661259ec0de49e473eefce359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02206e2c_afe5cda3",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T22:10:10Z",
+      "side": 1,
+      "message": "All Trogdor variants use NPCX796FC, except some early protos, which uses NPCX797WB (check the decision in b/150401868) and no one cares.",
+      "range": {
+        "startLine": 37,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "8224f153994ec70661259ec0de49e473eefce359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "749ce0b7_6181ba4c",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T22:10:10Z",
+      "side": 1,
+      "message": "The code RAM base in NPCX796FC is 0x10090000.",
+      "range": {
+        "startLine": 38,
+        "startChar": 35,
+        "endLine": 38,
+        "endChar": 45
+      },
+      "revId": "8224f153994ec70661259ec0de49e473eefce359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14b478ac_f8df0ad8",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T22:10:10Z",
+      "side": 1,
+      "message": "Its definition is \"the total available RAM size\"; why it is smaller than the data RAM size?\n\nIn NPCX796FC, the total RAM size is 256KB, 0x00040000.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "8224f153994ec70661259ec0de49e473eefce359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28de814_e97bf30a",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T22:10:10Z",
+      "side": 1,
+      "message": "Why the RW does not start at 0x40000?",
+      "range": {
+        "startLine": 47,
+        "startChar": 26,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "8224f153994ec70661259ec0de49e473eefce359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4605c2f_35b4801d",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T22:10:10Z",
+      "side": 1,
+      "message": "I don\u0027t understand this formula. How can a size minus two offsets?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "8224f153994ec70661259ec0de49e473eefce359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
