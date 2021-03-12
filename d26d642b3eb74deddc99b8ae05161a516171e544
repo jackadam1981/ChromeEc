@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f347bae3_d31310e0",
+        "filename": "zephyr/dts/bindings/motionsense/driver/drv-bmi260.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-12T00:40:26Z",
+      "side": 1,
+      "message": "OK, so this is more for shimming, like a halfway house towards upstream?",
+      "parentUuid": "e7c1f6c5_f9287d83",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efd0123c_8ed056ab",
         "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,drvdata-tcs3400-clear.yaml",
         "patchSetId": 2
@@ -308,6 +332,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "0a188d6d_8e1a718f",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "d26d642b3eb74deddc99b8ae05161a516171e544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abbe8bd1_5be71e97",
+        "filename": "zephyr/include/dt-bindings/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-12T00:40:26Z",
+      "side": 1,
+      "message": "As I understand it, ack means that you didn\u0027t do anything, so this one is done",
+      "parentUuid": "1576918c_4836251f",
       "range": {
         "startLine": 12,
         "startChar": 8,
