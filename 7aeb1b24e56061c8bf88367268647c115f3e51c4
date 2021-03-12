@@ -22,6 +22,30 @@
       },
       "revId": "7aeb1b24e56061c8bf88367268647c115f3e51c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16ae0cf_0cd6b0a1",
+        "filename": "chip/mchp/lfw/ec_lfw_416kb.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-12T15:49:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ebad5a8d_a0200ebe",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "7aeb1b24e56061c8bf88367268647c115f3e51c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
