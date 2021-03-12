@@ -69,6 +69,24 @@
       "parentUuid": "b1ae41a0_9be362b3",
       "revId": "04a18189c5af6deac1a061ebf4acd3833d34626a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "febc86d8_e57af1d2",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-12T17:58:33Z",
+      "side": 1,
+      "message": "But we need to report something if other application needs to retrieve light color temperature? \nWhat if we want to support white balance on dooly?\nIf it is not possible, should we present the TCS3400 as a simple ALS sensor, not RGB?",
+      "parentUuid": "160c637f_cd54b325",
+      "revId": "04a18189c5af6deac1a061ebf4acd3833d34626a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
