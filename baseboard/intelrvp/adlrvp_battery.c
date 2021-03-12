@@ -29,9 +29,15 @@ const struct board_batt_params board_battery_info[] = {
 			}
 		},
 		.batt_info = {
+#if defined(BOARD_ADLRVPM_ITE)
+			.voltage_max = 8800,        /* mV */
+			.voltage_normal = 7700,
+			.voltage_min = 6000,
+#else
 			.voltage_max = 13050,        /* mV */
 			.voltage_normal = 11400,
 			.voltage_min = 9000,
+#endif
 			.precharge_current = 256,   /* mA */
 			.start_charging_min_c = 0,
 			.start_charging_max_c = 45,
