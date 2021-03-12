@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87810439_99db7191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-12T18:11:36Z",
+      "side": 1,
+      "message": "LGTM modulo comment cleanup.",
+      "revId": "e5435cf0694a09b6700a4c873a7761d0df8221b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af6dbbb8_74bf49bf",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-12T18:11:36Z",
+      "side": 1,
+      "message": "The TODO is done, so you can get rid of it.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 33
+      },
+      "revId": "e5435cf0694a09b6700a4c873a7761d0df8221b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c48ee28_2764a320",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-12T18:11:36Z",
+      "side": 1,
+      "message": "Nit: \"an alt mode\"; \"modal mode\" sounds weird 😊",
+      "range": {
+        "startLine": 126,
+        "startChar": 26,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "e5435cf0694a09b6700a4c873a7761d0df8221b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
