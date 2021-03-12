@@ -24,6 +24,14 @@
 #define DUT 1
 
 /*
+ * IO expanders I2C addresses and ports
+ */
+#define TCA6416A_PORT 1
+#define TCA6416A_ADDR 0x21
+#define TCA6424A_PORT 1
+#define TCA6424A_ADDR 0x23
+
+/*
  * Flash layout: we redefine the sections offsets and sizes as we want to
  * include a pstate region, and will use RO/RW regions of different sizes.
  * RO has size 92K and usb_updater along with the majority of code is placed
@@ -140,6 +148,14 @@
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
 
+/* Enable I/O expander */
+#ifdef SECTION_IS_RO
+#define CONFIG_IO_EXPANDER
+#define CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
+#define CONFIG_IO_EXPANDER_TCA64XXA
+#define CONFIG_IO_EXPANDER_PORT_COUNT 2
+#endif
+
 /* This is not actually an EC so disable some features. */
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
@@ -219,12 +235,15 @@
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
-#define PD_MAX_POWER_MW       60000
-#define PD_MAX_CURRENT_MA     3000
+#define PD_MAX_POWER_MW       100000
+#define PD_MAX_CURRENT_MA     5000
 #define PD_MAX_VOLTAGE_MV     20000
 
 /* Add the raw option to the i2c_xfer command */
 #define CONFIG_CMD_I2C_XFER_RAW
+
+/* Enable command for managing host hub */
+#define CONFIG_CMD_GL3590
 #else
 #undef CONFIG_CMD_I2C_XFER
 #undef CONFIG_USB_POWER_DELIVERY

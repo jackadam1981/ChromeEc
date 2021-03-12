@@ -62,6 +62,8 @@ BOARDS_IT83XX=(
 )
 
 BOARDS_IT83XX_SPI_PROGRAMMING=(
+	TODO: remove me once we have icarus overlay
+	icarus
 	it8xxx2_evb
 	it8xxx2_pdevb
 )
@@ -73,6 +75,7 @@ BOARDS_STM32=(
 	chocodile_bec
 	chocodile_vpdmcu
 	dartmonkey
+	don
 	glados_pd
 	hatch_fp
 	jerry
@@ -275,7 +278,7 @@ function dut_control_get_or_die {
 	    die "command exited $? (non-zero): dut-control --value_only $*"
 }
 
-BOARD=${FLAGS_board}
+: ${BOARD:=${FLAGS_board}}
 
 in_array() {
 	local n=$#
@@ -1406,6 +1409,7 @@ function flash_npcx_uut() {
 	# the same path as the EC binary.
 	local MON=""
 	for dir in \
+		"$(dirname "$IMG")/chip/npcx/spiflashfw" \
 		"$(dirname "$IMG")" \
 		"${EC_DIR}/build/${BOARD}/chip/npcx/spiflashfw" \
 		"$(dirname "$LOCAL_BUILD")" \

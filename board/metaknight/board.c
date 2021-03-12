@@ -102,41 +102,6 @@ static void usb_c0_interrupt(enum gpio_signal s)
 
 }
 
-/* C1 interrupt line shared by BC 1.2, TCPC, and charger */
-static void check_c1_line(void);
-DECLARE_DEFERRED(check_c1_line);
-
-static void notify_c1_chips(void)
-{
-	schedule_deferred_pd_interrupt(1);
-	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
-}
-
-static void check_c1_line(void)
-{
-	/*
-	 * If line is still being held low, see if there's more to process from
-	 * one of the chips.
-	 */
-	if (!gpio_get_level(GPIO_SUB_C1_INT_EN_RAILS_ODL)) {
-		notify_c1_chips();
-		hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
-	}
-}
-
-static void sub_usb_c1_interrupt(enum gpio_signal s)
-{
-	/* Cancel any previous calls to check the interrupt line */
-	hook_call_deferred(&check_c1_line_data, -1);
-
-	/* Notify all chips using this line that an interrupt came in */
-	notify_c1_chips();
-
-	/* Check the line again in 5ms */
-	hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
-
-}
-
 static void sub_hdmi_hpd_interrupt(enum gpio_signal s)
 {
 	int hdmi_hpd_odl = gpio_get_level(GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL);
@@ -211,18 +176,21 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* Thermistors */
 const struct temp_sensor_t temp_sensors[] = {
-	[TEMP_SENSOR_1] = {.name = "Memory",
-			   .type = TEMP_SENSOR_TYPE_BOARD,
-			   .read = get_temp_3v3_51k1_47k_4050b,
-			   .idx = ADC_TEMP_SENSOR_1},
-	[TEMP_SENSOR_2] = {.name = "Ambient",
-			   .type = TEMP_SENSOR_TYPE_BOARD,
-			   .read = get_temp_3v3_51k1_47k_4050b,
-			   .idx = ADC_TEMP_SENSOR_2},
+
+	[TEMP_SENSOR_MEMORY] = {
+		.name = "Memory",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = get_temp_3v3_51k1_47k_4050b,
+		.idx  = ADC_TEMP_SENSOR_1},
+	[TEMP_SENSOR_CPU] = {
+		.name = "CPU",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = get_temp_3v3_51k1_47k_4050b,
+		.idx  = ADC_TEMP_SENSOR_2},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-const static struct ec_thermal_config thermal_a = {
+const static struct ec_thermal_config thermal_memory = {
 	.temp_host = {
 		[EC_TEMP_THRESH_WARN] = 0,
 		[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
@@ -235,7 +203,7 @@ const static struct ec_thermal_config thermal_a = {
 	},
 };
 
-const static struct ec_thermal_config thermal_b = {
+const static struct ec_thermal_config thermal_cpu = {
 	.temp_host = {
 		[EC_TEMP_THRESH_WARN] = 0,
 		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
@@ -252,8 +220,8 @@ struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
 
 static void setup_thermal(void)
 {
-	thermal_params[TEMP_SENSOR_1] = thermal_a;
-	thermal_params[TEMP_SENSOR_2] = thermal_b;
+	thermal_params[TEMP_SENSOR_MEMORY] = thermal_memory;
+	thermal_params[TEMP_SENSOR_CPU]    = thermal_cpu;
 }
 
 /* Enable HDMI any time the SoC is on */
@@ -346,30 +314,17 @@ __override void board_power_5v_enable(int enable)
 	if (get_cbi_fw_config_db() == DB_1A_HDMI ||
 		get_cbi_fw_config_db() == DB_LTE_HDMI) {
 		gpio_set_level(GPIO_SUB_C1_INT_EN_RAILS_ODL, !enable);
-	} else {
-		if (isl923x_set_comparator_inversion(1, !!enable))
-			CPRINTS("Failed to %sable sub rails!", enable ?
-								"en" : "dis");
 	}
-
 }
 
 __override uint8_t board_get_usb_pd_port_count(void)
 {
-	if (get_cbi_fw_config_db() == DB_1A_HDMI ||
-		get_cbi_fw_config_db() == DB_LTE_HDMI)
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-	else
-		return CONFIG_USB_PD_PORT_MAX_COUNT;
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
 __override uint8_t board_get_charger_chip_count(void)
 {
-	if (get_cbi_fw_config_db() == DB_1A_HDMI ||
-		get_cbi_fw_config_db() == DB_LTE_HDMI)
-		return CHARGER_NUM - 1;
-	else
-		return CHARGER_NUM;
+	return CHARGER_NUM;
 }
 
 int board_is_sourcing_vbus(int port)
@@ -673,10 +628,6 @@ void board_init(void)
 		/* Set SDA as an input */
 		gpio_set_flags(GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL,
 			       GPIO_INPUT);
-
-		/* Enable C1 interrupts */
-		gpio_enable_interrupt(GPIO_SUB_C1_INT_EN_RAILS_ODL);
-		check_c1_line();
 	}
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
@@ -709,31 +660,6 @@ void board_init(void)
 
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
-__override void ocpc_get_pid_constants(int *kp, int *kp_div,
-				       int *ki, int *ki_div,
-				       int *kd, int *kd_div)
-{
-	/*
-	 * Early boards need different constants due to a change in charger IC
-	 * silicon revision.
-	 */
-	if (system_get_board_version() >= 0) {
-		*kp = 1;
-		*kp_div = 128;
-		*ki = 1;
-		*ki_div = 1024;
-		*kd = 0;
-		*kd_div = 1;
-	} else {
-		*kp = 1;
-		*kp_div = 4;
-		*ki = 1;
-		*ki_div = 15;
-		*kd = 1;
-		*kd_div = 10;
-	}
-}
 
 int pd_snk_is_vbus_provided(int port)
 {

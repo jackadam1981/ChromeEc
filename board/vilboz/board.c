@@ -46,8 +46,6 @@ void hdmi_hpd_interrupt(enum gpio_signal signal)
 
 #include "gpio_list.h"
 
-#ifdef HAS_TASK_MOTIONSENSE
-
 /* Motion sensors */
 static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
@@ -112,7 +110,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 	 .port = I2C_PORT_SENSOR,
 	 .i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
-	 .default_range = 4, /* g, enough for laptop */
+	 .default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
 	 .rot_standard_ref = &base_standard_ref,
 	 .min_frequency = LSM6DSM_ODR_MIN_VAL,
 	 .max_frequency = LSM6DSM_ODR_MAX_VAL,
@@ -152,8 +150,6 @@ struct motion_sensor_t motion_sensors[] = {
 };
 
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
-
-#endif /* HAS_TASK_MOTIONSENSE */
 
 /*
  * USB C0 port SBU mux use standalone FSUSB42UMX
@@ -490,7 +486,7 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 struct ioexpander_config_t ioex_config[] = {
 	[IOEX_C0_NCT3807] = {
 		.i2c_host_port = I2C_PORT_TCPC0,
-		.i2c_slave_addr = NCT38XX_I2C_ADDR1_1_FLAGS,
+		.i2c_addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
 		.drv = &nct38xx_ioexpander_drv,
 	},
 };

@@ -103,6 +103,10 @@ void pd_set_suspend(int port, int suspend)
 {
 }
 
+void pd_set_error_recovery(int port)
+{
+}
+
 static struct pd_prl {
 	int rev;
 	int pd_enable;
@@ -806,7 +810,7 @@ static int test_prl_reset(void)
 
 	enable_prl(port, 1);
 
-	prl_reset(port);
+	prl_reset_soft(port);
 
 	TEST_EQ(prl_tx_get_state(port),
 			PRL_TX_WAIT_FOR_MESSAGE_REQUEST, "%u");

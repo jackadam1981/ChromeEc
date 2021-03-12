@@ -108,7 +108,7 @@ struct keyboard_scan_config keyscan_config = {
 struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
 	[0] = {
 		.i2c_host_port = I2C_PORT_IO_EXPANDER_IT8801,
-		.i2c_slave_addr = IT8801_I2C_ADDR,
+		.i2c_addr_flags = IT8801_I2C_ADDR,
 		.drv = &it8801_ioexpander_drv,
 	},
 };
@@ -399,7 +399,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.port = CONFIG_SPI_ACCEL_PORT,
 		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(CONFIG_SPI_ACCEL_PORT),
 		.rot_standard_ref = &base_standard_ref,
-		.default_range = 2,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+		.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
 		.min_frequency = BMI_ACCEL_MIN_FREQ,
 		.max_frequency = BMI_ACCEL_MAX_FREQ,
 		.config = {
