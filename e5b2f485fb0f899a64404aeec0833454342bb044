@@ -56,6 +56,30 @@
       },
       "revId": "e5b2f485fb0f899a64404aeec0833454342bb044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15947c4d_3eb486e9",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-12T16:23:27Z",
+      "side": 1,
+      "message": "Good catch, that fixed it.",
+      "parentUuid": "ed136080_7f2b33c0",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 41
+      },
+      "revId": "e5b2f485fb0f899a64404aeec0833454342bb044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
