@@ -16,6 +16,23 @@
       "message": "Rob, are you able to successfully run \"zmake testall\" in your local chroot with this CL?",
       "revId": "e5b2f485fb0f899a64404aeec0833454342bb044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2770049_6709abf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-12T16:19:01Z",
+      "side": 1,
+      "message": "I think the following change to default will help\n\nconfig PLATFORM_EC_USB_PD_TCPC_VCONN\n\tbool \"If VCONN is enabled, the TCPC will provide VCONN\"\n\tdefault y if !PLATFORM_EC_USBC_PPC_SYV682X\n",
+      "revId": "e5b2f485fb0f899a64404aeec0833454342bb044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
