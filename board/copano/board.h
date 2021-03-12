@@ -19,6 +19,7 @@
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
+#define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK /* bypass cbi wp check in dev. */
 
 #define CONFIG_VBOOT_EFS2
 
@@ -38,6 +39,8 @@
 #define CONFIG_LED_ONOFF_STATES_BAT_LOW	10
 
 /* Keyboard features */
+#define CONFIG_KEYBOARD_VIVALDI
+#define CONFIG_KEYBOARD_REFRESH_ROW3
 
 /* Sensors */
 /* BMA253 accelerometer in base */

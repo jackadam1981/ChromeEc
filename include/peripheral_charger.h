@@ -73,6 +73,7 @@ enum pchg_event {
 	PCHG_EVENT_IRQ,
 
 	/* External Events */
+	PCHG_EVENT_RESET,
 	PCHG_EVENT_INITIALIZED,
 	PCHG_EVENT_ENABLED,
 	PCHG_EVENT_DISABLED,
@@ -109,6 +110,8 @@ struct pchg_config {
 	const int i2c_port;
 	/* GPIO pin used for IRQ */
 	const enum gpio_signal irq_pin;
+	/* Full battery percentage */
+	const uint8_t full_percent;
 };
 
 /**
@@ -138,12 +141,16 @@ struct pchg {
  * Peripheral charger driver
  */
 struct pchg_drv {
+	/* Reset charger chip. */
+	int (*reset)(struct pchg *ctx);
 	/* Initialize the charger. */
 	int (*init)(struct pchg *ctx);
 	/* Enable/disable the charger. */
 	int (*enable)(struct pchg *ctx, bool enable);
 	/* Get event info. */
 	int (*get_event)(struct pchg *ctx);
+	/* Get battery level. */
+	int (*get_soc)(struct pchg *ctx);
 };
 
 /**

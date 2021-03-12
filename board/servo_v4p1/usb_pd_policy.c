@@ -420,13 +420,23 @@ int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel)
 	return ra;
 }
 
+/* DUT CC readings aren't valid if we aren't applying CC pulls */
+bool cc_is_valid(void)
+{
+	if ((cc_config & CC_DETACH) || (cc_pull_stored == TYPEC_CC_OPEN) ||
+	    ((cc_pull_stored == TYPEC_CC_RP) &&
+	     (rp_value_stored == TYPEC_RP_RESERVED)))
+		return false;
+	return true;
+}
+
 int pd_adc_read(int port, int cc)
 {
 	int mv = -1;
 
 	if (port == CHG)
 		mv = adc_read_channel(cc ? ADC_CHG_CC2_PD : ADC_CHG_CC1_PD);
-	else if (!(cc_config & CC_DETACH)) {
+	else if (cc_is_valid()) {
 		/*
 		 * In servo v4 hardware logic, both CC lines are wired directly
 		 * to DUT. When servo v4 as a snk, DUT may source Vconn to CC2
@@ -922,28 +932,28 @@ static int svdm_response_modes(int port, uint32_t *payload)
 
 static void set_typec_mux(int pin_cfg)
 {
-	mux_state_t state = 0;
+	mux_state_t mux_mode = USB_PD_MUX_NONE;
 
 	switch (pin_cfg) {
-	case 0:
+	case 0: /* return to USB3 only */
+		mux_mode = USB_PD_MUX_USB_ENABLED;
 		CPRINTS("PinCfg:off");
 		break;
-	case MODE_DP_PIN_C:
-		state = USB_PD_MUX_DP_ENABLED;
+	case MODE_DP_PIN_C: /* DisplayPort 4 lanes */
+		mux_mode = USB_PD_MUX_DP_ENABLED;
 		CPRINTS("PinCfg:C");
 		break;
-	case MODE_DP_PIN_D:
-		state = USB_PD_MUX_USB_ENABLED;
+	case MODE_DP_PIN_D: /* DP + USB */
+		mux_mode = USB_PD_MUX_DOCK;
 		CPRINTS("PinCfg:D");
 		break;
 	default:
 		CPRINTS("PinCfg not supported: %d", pin_cfg);
 		return;
 	}
-	if (state && cc_config & CC_POLARITY)
-		state |= USB_PD_MUX_POLARITY_INVERTED;
 
-	usb_muxes[DUT].driver->set(&usb_muxes[DUT], state);
+	usb_mux_set(DUT, mux_mode, USB_SWITCH_CONNECT,
+		    !!(cc_config & CC_POLARITY));
 }
 
 static int get_hpd_level(void)
@@ -958,9 +968,8 @@ static int dp_status(int port, uint32_t *payload)
 {
 	int opos = PD_VDO_OPOS(payload[0]);
 	int hpd = get_hpd_level();
-	mux_state_t state = 0;
-	int res = usb_muxes[DUT].driver->get(&usb_muxes[DUT], &state);
-	int dp_enabled = res == EC_SUCCESS && (state & USB_PD_MUX_DP_ENABLED);
+	mux_state_t state = usb_mux_get(DUT);
+	int dp_enabled = !!(state & USB_PD_MUX_DP_ENABLED);
 
 	if (opos != OPOS)
 		return 0;  /* NAK */
@@ -1258,7 +1267,12 @@ static int cmd_ada_srccaps(int argc, char *argv[])
 	for (i = 0; i < pd_get_src_cap_cnt(CHG); ++i) {
 		uint32_t max_ma, max_mv;
 
+		/* It's an supported Augmented PDO (PD3.0) */
+		if ((ada_srccaps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)
+			continue;
+
 		pd_extract_pdo_power(ada_srccaps[i], &max_ma, &max_mv);
+
 		ccprintf("%d: %dmV/%dmA\n", i, max_mv, max_ma);
 	}
 

@@ -174,6 +174,17 @@ void set_usb_mux_with_current_data_role(int port);
 void usb_mux_set_safe_mode(int port);
 
 /**
+ * Configure the USB MUX in safe mode while exiting an alternate mode.
+ * Although the TCSS (virtual mux) has a distinct safe mode state, it
+ * needs to be in a disconnected state to properly exit an alternate
+ * mode. Therefore, do not treat the virtual mux as a special case, as
+ * usb_mux_set_safe_mode does.
+ *
+ * @param port The PD port number
+ */
+void usb_mux_set_safe_mode_exit(int port);
+
+/**
  * Get the PD flags stored in BB Ram
  *
  * @param port USB-C port number
@@ -200,4 +211,45 @@ void pd_update_saved_port_flags(int port, uint8_t flag, uint8_t do_set);
  * @return EC_SUCCESS on success else EC_ERROR_INVAL
  */
 int pd_build_alert_msg(uint32_t *msg, uint32_t *len, enum pd_power_role pr);
+
+/**
+ * During USB retimer firmware update, process operation
+ * requested by AP
+ *
+ * @param port USB-C port number
+ * @param op
+ *       0 - USB_RETIMER_FW_UPDATE_QUERY_PORT
+ *       1 - USB_RETIMER_FW_UPDATE_SUSPEND_PD
+ *       2 - USB_RETIMER_FW_UPDATE_RESUME_PD
+ *       3 - USB_RETIMER_FW_UPDATE_GET_MUX
+ *       4 - USB_RETIMER_FW_UPDATE_SET_USB
+ *       5 - USB_RETIMER_FW_UPDATE_SET_SAFE
+ *       6 - USB_RETIMER_FW_UPDATE_SET_TBT
+ *       7 - USB_RETIMER_FW_UPDATE_DISCONNECT
+ */
+void usb_retimer_fw_update_process_op(int port, int op);
+
+/**
+ * Get result of last USB retimer firmware update operation requested
+ * by AP. Result is passed to AP via EC_CMD_ACPI_READ.
+ *
+ * @return Result of last operation. It's
+ *         which port has retimer if last operation is
+ *         USB_RETIMER_FW_UPDATE_QUERY_PORT;
+ *         PD task is enabled or not if last operations are
+ *         USB_RETIMER_FW_UPDATE_SUSPEND_PD or
+ *         USB_RETIMER_FW_UPDATE_QUERY_PORT;
+ *         current mux if last operations are
+ *         USB_RETIMER_FW_UPDATE_GET_MUX, USB_RETIMER_FW_UPDATE_SET_USB,
+ *         USB_RETIMER_FW_UPDATE_SET_SAFE, USB_RETIMER_FW_UPDATE_SET_TBT,
+ *         or USB_RETIMER_FW_UPDATE_DISCONNECT.
+ */
+int usb_retimer_fw_update_get_result(void);
+
+/**
+ * Process deferred retimer firmware update operations.
+ *
+ * @param port USB-C port number
+ */
+void usb_retimer_fw_update_process_op_cb(int port);
 #endif /* __CROS_EC_USB_COMMON_H */

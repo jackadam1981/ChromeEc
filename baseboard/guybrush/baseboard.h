@@ -14,7 +14,10 @@
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
-#define CONFIG_LTO
+#define CONFIG_LTO /* Link-Time Optimizations to reduce code size */
+#define CONFIG_BRINGUP /* EC will not automatically power on the AP */
+#define CONFIG_I2C_DEBUG /* Print i2c traces */
+#define CONFIG_KEYBOARD_DEBUG /* Print keyboard debug messages */
 
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
@@ -29,7 +32,10 @@
 #define CONFIG_POWER_BUTTON_TO_PCH_CUSTOM
 #define CONFIG_POWER_BUTTON_X86
 #define CONFIG_POWER_COMMON
+#define CONFIG_POWER_S0IX
+#define CONFIG_POWER_SLEEP_FAILURE_DETECTION
 #define CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
+#define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 #define G3_TO_PWRBTN_DELAY_MS 80
 #define GPIO_AC_PRESENT		GPIO_ACOK_OD
 #define GPIO_EN_PWR_A		GPIO_EN_PWR_Z1
@@ -76,7 +82,7 @@
 #define GPIO_EC_INT_L		GPIO_EC_SOC_INT_L
 
 /* Chipset config */
-#define CONFIG_CHIPSET_STONEY
+#define CONFIG_CHIPSET_CEZANNE
 #define CONFIG_CHIPSET_CAN_THROTTLE
 #define CONFIG_CHIPSET_RESET_HOOK
 
@@ -159,7 +165,7 @@
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
-#define CONFIG_USB_MUX_ANX7440
+#define CONFIG_USB_MUX_ANX7451
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USBC_PPC_NX20P3483
 #define CONFIG_USBC_RETIMER_PS8818
@@ -272,6 +278,8 @@ enum adc_channel {
 	ADC_TEMP_SENSOR_SOC = 0,
 	ADC_TEMP_SENSOR_CHARGER,
 	ADC_TEMP_SENSOR_MEMORY,
+	ADC_CORE_IMON1,
+	ADC_SOC_IMON2,
 	ADC_CH_COUNT
 };
 

@@ -11,14 +11,6 @@
 /* Baseboard features */
 #include "baseboard.h"
 
-/*
- * Create an EC build that requires AP-driven mode entry to facilitate debugging
- * b/177105656.
- */
-#ifdef BOARD_VOXEL_APMODEENTRY
-#define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
-#endif
-
 /* Optional features */
 #undef NPCX7_PWM1_SEL
 #define NPCX7_PWM1_SEL    0    /* GPIO C2 is not used as PWM1. */
@@ -84,6 +76,8 @@
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
 
+#define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
+
 /* Enabling Thunderbolt-compatible mode */
 #define CONFIG_USB_PD_TBT_COMPAT_MODE
 
@@ -98,6 +92,7 @@
 
 /* USBC PPC*/
 #define CONFIG_USBC_PPC_SYV682X		/* USBC port C0/C1 */
+#define CONFIG_USB_PD_FRS_PPC
 
 /* BC 1.2 */
 

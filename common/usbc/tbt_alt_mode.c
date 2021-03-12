@@ -222,6 +222,37 @@ static void tbt_active_cable_exit_mode(int port)
 		tbt_state[port] = TBT_EXIT_SOP_PRIME;
 }
 
+bool tbt_cable_entry_required_for_usb4(int port)
+{
+	struct pd_discovery *disc_sop_prime;
+	union tbt_mode_resp_cable cable_mode_resp;
+
+	/* Request to enter Thunderbolt mode for the cable prior to entering
+	 * USB4 mode if -
+	 * 1. Thunderbolt Mode SOP' VDO active/passive bit (B25) is
+	 *    TBT_CABLE_ACTIVE or
+	 * 2. It's an active cable with VDM version < 2.0 or
+	 *    VDO version < 1.3
+	 */
+	if (tbt_cable_entry_is_done(port))
+		return false;
+
+	cable_mode_resp.raw_value =
+			pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
+
+	if (cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE)
+		return true;
+
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
+		disc_sop_prime = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+		if (pd_get_vdo_ver(port, TCPC_TX_SOP_PRIME) < VDM_VER20 ||
+		    disc_sop_prime->identity.product_t1.a_rev30.vdo_ver <
+							VDO_VERSION_1_3)
+			return true;
+	}
+	return false;
+}
+
 void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		uint32_t *vdm)
 {
@@ -488,7 +519,8 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 		if (!(modep && modep->opos))
 			return -1;
 
-		usb_mux_set_safe_mode(port);
+		usb_mux_set_safe_mode_exit(port);
+
 		vdm[0] = VDO(USB_VID_INTEL, 1, CMD_EXIT_MODE) |
 			VDO_OPOS(modep->opos) |
 			VDO_CMDT(CMDT_INIT) |
@@ -502,7 +534,8 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 		if (!(modep && modep->opos))
 			return -1;
 
-		usb_mux_set_safe_mode(port);
+		usb_mux_set_safe_mode_exit(port);
+
 		vdm[0] = VDO(USB_VID_INTEL, 1, CMD_EXIT_MODE) |
 			VDO_OPOS(modep->opos) |
 			VDO_CMDT(CMDT_INIT) |
@@ -517,7 +550,8 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 		if (!(modep && modep->opos))
 			return -1;
 
-		usb_mux_set_safe_mode(port);
+		usb_mux_set_safe_mode_exit(port);
+
 		vdm[0] = VDO(USB_VID_INTEL, 1, CMD_EXIT_MODE) |
 			VDO_OPOS(modep->opos) |
 			VDO_CMDT(CMDT_INIT) |

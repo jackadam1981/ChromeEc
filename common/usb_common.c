@@ -307,6 +307,18 @@ __overridable uint8_t board_get_usb_pd_port_count(void)
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
+__overridable bool board_is_usb_pd_port_present(int port)
+{
+	/*
+	 * Use board_get_usb_pd_port_count() instead of checking
+	 * CONFIG_USB_PD_PORT_MAX_COUNT directly here for legacy boards
+	 * that implement board_get_usb_pd_port_count() but do not
+	 * implement board_is_usb_pd_port_present().
+	 */
+
+	return (port >= 0) && (port < board_get_usb_pd_port_count());
+}
+
 int pd_get_retry_count(int port, enum tcpm_transmit_type type)
 {
 	/* PD 3.0 6.7.7: nRetryCount = 2; PD 2.0 6.6.9: nRetryCount = 3 */
@@ -470,6 +482,17 @@ void usb_mux_set_safe_mode(int port)
 		ppc_set_sbu(port, 0);
 }
 
+void usb_mux_set_safe_mode_exit(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+		usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_CONNECT,
+			    polarity_rm_dts(pd_get_polarity(port)));
+
+	/* Isolate the SBU lines. */
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+		ppc_set_sbu(port, 0);
+}
+
 static void pd_send_hard_reset(int port)
 {
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SEND_HARD_RESET);
@@ -619,7 +642,9 @@ const uint32_t pd_src_pdo_max[] = {
 const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
 
 const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
+	PDO_FIXED(5000,
+		  GENERIC_MIN((PD_OPERATING_POWER_MW / 5), PD_MAX_CURRENT_MA),
+		  PDO_FIXED_FLAGS),
 	PDO_BATT(4750, PD_MAX_VOLTAGE_MV, PD_OPERATING_POWER_MW),
 	PDO_VAR(4750, PD_MAX_VOLTAGE_MV, PD_MAX_CURRENT_MA),
 };

@@ -11,12 +11,6 @@
 #define VARIANT_DEDEDE_EC_NPCX796FC
 #include "baseboard.h"
 
-/*
- * Keep the system unlocked in early development.
- * TODO(b/151264302): Make sure to remove this before production!
- */
-#define CONFIG_SYSTEM_UNLOCKED
-
 /* Charger */
 #define CONFIG_CHARGER_RAA489000
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
@@ -52,6 +46,8 @@
 /* USB PD */
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_PD_TCPM_RAA489000
+#undef CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
+#define CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE (100 * MSEC)
 
 /* USB defines specific to external TCPCs */
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE

@@ -5,6 +5,9 @@
  * ITE83xx SoC in-system programming tool
  */
 
+/* remove when ftdi_usb_purge_buffers has been replaced to follow libftdi */
+#define _FTDI_DISABLE_DEPRECATED
+
 #include <errno.h>
 #include <fcntl.h>
 #include <ftdi.h>
@@ -2249,7 +2252,7 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 static void sighandler(int signum)
 {
 	printf("\nCaught signal %d: %s\nExiting...\n",
-		signum, sys_siglist[signum]);
+		signum, strsignal(signum));
 	exit_requested = 1;
 }
 

@@ -426,11 +426,17 @@ static void set_vconn(int port, int enable)
 		ppc_set_vconn(port, 0);
 
 	/*
-	 * We always need to tell the TCPC to enable Vconn first, otherwise some
-	 * TCPCs get confused when a PPC sets secondary CC line to 5V and TCPC
-	 * immediately disconnect. If there is a PPC, both devices will
-	 * potentially source Vconn, but that should be okay since Vconn has
-	 * "make before break" electrical requirements when swapping anyway.
+	 * Some TCPCs/PPC combinations can trigger OVP if the TCPC doesn't
+	 * source VCONN. This happens if the TCPC will trip OVP with 5V, and the
+	 * PPC doesn't isolate the TCPC from VCONN when sourcing. But, some PPCs
+	 * which do isolate the TCPC can't handle 5V on its host-side CC pins,
+	 * so the TCPC shouldn't source VCONN in those cases.
+	 *
+	 * In the first case, both TCPC and PPC will potentially source Vconn,
+	 * but that should be okay since Vconn has "make before break"
+	 * electrical requirements when swapping anyway.
+	 *
+	 * See b/72961003 and b/180973460
 	 */
 	tcpm_set_vconn(port, enable);
 
@@ -3481,6 +3487,8 @@ void pd_task(void *u)
 				tcpm_set_rx_enable(port, 1);
 #endif /* CONFIG_USB_PD_TCPM_TCPCI  || CONFIG_USB_PD_TCPM_STUB */
 
+			pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
+					  PD_FLAGS_CHECK_DR_ROLE;
 			set_state(port, PD_STATE_SRC_STARTUP);
 			break;
 		case PD_STATE_SRC_STARTUP:
