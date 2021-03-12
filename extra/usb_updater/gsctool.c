@@ -1345,7 +1345,7 @@ static void process_erase_ap_ro_hash(struct transfer_descriptor *td)
 	uint32_t rv;
 	uint8_t response;
 	size_t response_size;
-	char error_details[30];
+	char error_details[70];
 
 	response_size = sizeof(response);
 	rv = send_vendor_command(td, VENDOR_CC_SEED_AP_RO_CHECK,
