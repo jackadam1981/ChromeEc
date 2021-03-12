@@ -428,6 +428,33 @@ static enum ec_error_list bq25710_device_id(int chgnum, int *id)
 }
 
 #ifdef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
+
+#if defined(CONFIG_CHARGER_BQ25720)
+
+static int reg_adc_vbus_to_mv(int reg)
+{
+	/*
+	 * LSB => 96mV, no DC offset.
+	 */
+	return reg * BQ25720_ADC_VBUS_STEP_MV;
+}
+
+#elif defined(CONFIG_CHARGER_BQ25710)
+
+static int reg_adc_vbus_to_mv(int reg)
+{
+	/*
+	 * LSB => 64mV.
+	 * Return 0 when VBUS <= 3.2V as ADC can't measure it.
+	 */
+	return reg ?
+		(reg * BQ25710_ADC_VBUS_STEP_MV + BQ25710_ADC_VBUS_BASE_MV) : 0;
+}
+
+#else
+#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.
+#endif
+
 static enum ec_error_list bq25710_get_vbus_voltage(int chgnum, int port,
 						   int *voltage)
 {
@@ -443,12 +470,7 @@ static enum ec_error_list bq25710_get_vbus_voltage(int chgnum, int port,
 		goto error;
 
 	reg >>= BQ25710_ADC_VBUS_STEP_BIT_OFFSET;
-	/*
-	 * LSB => 64mV.
-	 * Return 0 when VBUS <= 3.2V as ADC can't measure it.
-	 */
-	*voltage = reg ?
-	       (reg * BQ25710_ADC_VBUS_STEP_MV + BQ25710_ADC_VBUS_BASE_MV) : 0;
+	*voltage = reg_adc_vbus_to_mv(reg);
 
 error:
 	if (rv)
@@ -675,7 +697,9 @@ const struct charger_drv bq25710_drv = {
 	.device_id = &bq25710_device_id,
 	.get_option = &bq25710_get_option,
 	.set_option = &bq25710_set_option,
+#ifdef CONFIG_CHARGE_RAMP_HW
 	.set_hw_ramp = &bq25710_set_hw_ramp,
 	.ramp_is_stable = &bq25710_ramp_is_stable,
 	.ramp_get_current_limit = &bq25710_ramp_get_current_limit,
+#endif /* CONFIG_CHARGE_RAMP_HW */
 };

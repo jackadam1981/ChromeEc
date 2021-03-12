@@ -17,7 +17,9 @@
 #include "system.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
+#include "usb_common.h"
 #include "usb_pd.h"
+#include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
@@ -108,7 +110,8 @@ static int override_port = OVERRIDE_OFF;
 static int delayed_override_port = OVERRIDE_OFF;
 static timestamp_t delayed_override_deadline;
 
-static uint8_t source_port_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
+/* Source-out Rp values for TCPMv1 */
+__maybe_unused static uint8_t source_port_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #ifdef CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT
 /* 3A on one port and 1.5A on the rest */
@@ -226,7 +229,7 @@ static void charge_manager_init(void)
 			charge_ceil[i][j] = CHARGE_CEIL_NONE;
 		if (!is_pd_port(i))
 			dualrole_capability[i] = CAP_DEDICATED;
-		if (is_pd_port(i))
+		if (is_pd_port(i) && !IS_ENABLED(CONFIG_USB_PD_TCPMV2))
 			source_port_rp[i] = CONFIG_USB_PD_PULLUP;
 	}
 }
@@ -269,7 +272,7 @@ static int charge_manager_is_seeded(void)
  * @param port	Charge port.
  * @return	Charge current (mA).
  */
-static int charge_manager_get_source_current(int port)
+__maybe_unused static int charge_manager_get_source_current(int port)
 {
 	if (!is_pd_port(port))
 		return 0;
@@ -409,8 +412,13 @@ static void charge_manager_fill_power_info(int port,
 			r->meas.voltage_max = 0;
 			r->meas.voltage_now =
 				r->role == USB_PD_PORT_POWER_SOURCE ? 5000 : 0;
-			r->meas.current_max =
-				charge_manager_get_source_current(port);
+			/* TCPMv2 tracks source-out current in the DPM */
+			if (IS_ENABLED(CONFIG_USB_PD_TCPMV2))
+				r->meas.current_max =
+					dpm_get_source_current(port);
+			else
+				r->meas.current_max =
+					charge_manager_get_source_current(port);
 			r->max_power = 0;
 		} else {
 			r->type = USB_CHG_TYPE_NONE;
@@ -878,6 +886,9 @@ static void charge_manager_refresh(void)
 		    IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE)) ||
 		    (IS_ENABLED(CONFIG_USB_PD_TCPMV2) &&
 		    IS_ENABLED(CONFIG_USB_PE_SM))) {
+			uint32_t pdo;
+			uint32_t max_voltage;
+			uint32_t max_current;
 			/*
 			 * Check if new voltage/current is different
 			 * than requested. If yes, send new power request
@@ -886,6 +897,18 @@ static void charge_manager_refresh(void)
 			    charge_voltage ||
 			    pd_get_requested_current(updated_new_port) !=
 			    charge_current_uncapped)
+				pd_set_new_power_request(updated_new_port);
+
+			/*
+			 * Check if we can get more power from this port.
+			 * If yes, send new power request
+			 */
+			pd_find_pdo_index(pd_get_src_cap_cnt(updated_new_port),
+					  pd_get_src_caps(updated_new_port),
+					  pd_get_max_voltage(), &pdo);
+			pd_extract_pdo_power(pdo, &max_current, &max_voltage);
+			if (charge_voltage != max_voltage ||
+			    charge_current_uncapped != max_current)
 				pd_set_new_power_request(updated_new_port);
 		} else {
 			/*

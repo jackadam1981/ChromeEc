@@ -19,6 +19,7 @@
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
+#define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK /* bypass cbi wp check in dev. */
 
 #define CONFIG_VBOOT_EFS2
 
@@ -79,6 +80,9 @@
 /* Retimer */
 #undef CONFIG_USBC_RETIMER_INTEL_BB
 #undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+
+/* Keyboard feature */
+#define CONFIG_KEYBOARD_FACTORY_TEST
 
 /*
  * Macros for GPIO signals used in common code that don't match the
@@ -146,6 +150,11 @@ enum usbc_port {
 };
 
 void board_reset_pd_mcu(void);
+
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
+#endif
 
 #endif /* !__ASSEMBLER__ */
 

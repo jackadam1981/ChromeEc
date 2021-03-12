@@ -13,6 +13,7 @@
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
+#define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK /* bypass cbi wp check in dev. */
 
 #define CONFIG_VBOOT_EFS2
 
@@ -50,6 +51,7 @@
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
 
+
 /*
  * SN5S30 PPC supports up to 24V VBUS source and sink, however passive USB-C
  * cables only support up to 60W.
@@ -59,7 +61,7 @@
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
 
-#undef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
+
 #undef CONFIG_USB_MUX_RUNTIME_CONFIG
 
 /* USB Type A Features */

@@ -87,10 +87,55 @@ struct keyboard_scan_config keyscan_config = {
 	.min_post_scan_delay_us = 1000,
 	.poll_timeout_us = 100 * MSEC,
 	.actual_key_mask = {
-		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0x1c, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
 		0xa4, 0xff, 0xfe, 0x55, 0xfe, 0xff, 0xff, 0xff,  /* full set */
 	},
 };
+
+static const struct ec_response_keybd_config magolor_keybd = {
+	/* Default Chromeos keyboard config */
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_FORWARD,		/* T2 */
+		TK_REFRESH,		/* T3 */
+		TK_FULLSCREEN,		/* T4 */
+		TK_OVERVIEW,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	/* No function keys, no numeric keypad, has screenlock key */
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
+};
+
+static const struct ec_response_keybd_config magpie_keybd = {
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_FORWARD,		/* T2 */
+		TK_REFRESH,		/* T3 */
+		TK_FULLSCREEN,		/* T4 */
+		TK_OVERVIEW,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY | KEYBD_CAP_NUMERIC_KEYPAD,
+};
+
+__override const struct ec_response_keybd_config
+*board_vivaldi_keybd_config(void)
+{
+	if (get_cbi_fw_config_numeric_pad())
+		return &magpie_keybd;
+	else
+		return &magolor_keybd;
+}
 #endif
 
 /* C0 interrupt line shared by BC 1.2 and charger */
@@ -257,10 +302,6 @@ static void board_update_no_keypad_by_fwconfig(void)
 		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
 		keyscan_config.actual_key_mask[11] = 0xfa;
 		keyscan_config.actual_key_mask[12] = 0xca;
-
-		/* Search key is moved back to col=1,row=0 */
-		keyscan_config.actual_key_mask[0] = 0x14;
-		keyscan_config.actual_key_mask[1] = 0xff;
 #endif
 	}
 }
@@ -473,8 +514,8 @@ static struct bmi_drv_data_t g_bmi160_data;
 
 #ifdef BOARD_MAGOLOR
 static const mat33_fp_t base_icm_ref = {
-	{ 0, FLOAT_TO_FP(-1), 0},
-	{ FLOAT_TO_FP(1), 0, 0},
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
@@ -521,7 +562,7 @@ struct motion_sensor_t icm426xx_base_accel = {
 	.drv_data = &g_icm426xx_data,
 	.port = I2C_PORT_ACCEL,
 	.i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
-	.default_range = 4, /* g, enough for laptop */
+	.default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
 	.rot_standard_ref = &base_icm_ref,
 	.min_frequency = ICM426XX_ACCEL_MIN_FREQ,
 	.max_frequency = ICM426XX_ACCEL_MAX_FREQ,
@@ -702,25 +743,12 @@ __override void ocpc_get_pid_constants(int *kp, int *kp_div,
 				       int *ki, int *ki_div,
 				       int *kd, int *kd_div)
 {
-	/*
-	 * Early boards need different constants due to a change in charger IC
-	 * silicon revision.
-	 */
-	if (system_get_board_version() >= 0) {
-		*kp = 1;
-		*kp_div = 128;
-		*ki = 1;
-		*ki_div = 1024;
-		*kd = 0;
-		*kd_div = 1;
-	} else {
-		*kp = 1;
-		*kp_div = 4;
-		*ki = 1;
-		*ki_div = 15;
-		*kd = 1;
-		*kd_div = 10;
-	}
+	*kp = 1;
+	*kp_div = 20;
+	*ki = 1;
+	*ki_div = 250;
+	*kd = 0;
+	*kd_div = 1;
 }
 
 int pd_snk_is_vbus_provided(int port)
