@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed1ae394_b47b786d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T18:53:51Z",
+      "side": 1,
+      "message": "Tag it \"Trogdor\". You need to cherry-pick this CL to the Trogdor firmware branch.",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d18803eb_847ddd1f",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T18:53:51Z",
+      "side": 1,
+      "message": "You don\u0027t need this as the board only supports LN9310.\n\nSimply change the gpio.inc to set it GPIO_OPEN_DRAIN.",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 40
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25a1b4a_0001fb83",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T18:53:51Z",
+      "side": 1,
+      "message": "Modify the gpio.inc and set it GPIO_OUT_HIGH.",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 41
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca747f98_cfb07953",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T18:53:51Z",
+      "side": 1,
+      "message": "Remove this comment.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 77
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d47e967_3822e7d1",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T18:53:51Z",
+      "side": 1,
+      "message": "Remove this comment.",
+      "range": {
+        "startLine": 70,
+        "startChar": 75,
+        "endLine": 70,
+        "endChar": 114
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf4cdfd_e8bf0693",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T18:53:51Z",
+      "side": 1,
+      "message": "Can you change the netname in the schematic to make it SWITCHCAP_ON_L, such that you don\u0027t need the alias in board.h.",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "109de413_5ffe1bd7",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-12T18:53:51Z",
+      "side": 1,
+      "message": "Change it to GPIO_ODR_HIGH.",
+      "range": {
+        "startLine": 70,
+        "startChar": 39,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
