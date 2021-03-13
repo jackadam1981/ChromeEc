@@ -16,6 +16,24 @@
       "message": "Give this a shot and see how it does with your 3A FRS device.  It\u0027s pretty similar to your CL, just with some extra parts to turn the current limit back down if we disable FRS and then also ensure we\u0027re setting the current limit in hardware when we\u0027re starting as a source.  Let me know what you think.\n\nI\u0027m trying to decide if there\u0027s one more case I need to handle of a 3.0 A PD partner swapping from being a sink to a source and ensuring we cleared their selected Rp there. ",
       "revId": "592fdf3b5292150f1b5f52ab7914603d837cb005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf36b126_e082ec11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-13T01:08:37Z",
+      "side": 1,
+      "message": "This does work for a 3A FRS. \n\nProbably would be fine since FRS wouldn\u0027t be enabled, if I\u0027m thinking of the same case you are. I think we\u0027re safe if we always reset the limit in unattached and always set it when enabling FRS to either 3.0 or 1.5A.",
+      "parentUuid": "d284462d_89792f08",
+      "revId": "592fdf3b5292150f1b5f52ab7914603d837cb005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
