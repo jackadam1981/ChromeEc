@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48411425_aa555b3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-13T09:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed1ae394_b47b786d",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d18803eb_847ddd1f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-12T18:53:51Z",
       "side": 1,
       "message": "You don\u0027t need this as the board only supports LN9310.\n\nSimply change the gpio.inc to set it GPIO_OPEN_DRAIN.",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 40
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db409c3_26029e90",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-13T09:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d18803eb_847ddd1f",
       "range": {
         "startLine": 328,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f5509d8_c0191da8",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-13T09:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f25a1b4a_0001fb83",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 41
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca747f98_cfb07953",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-12T18:53:51Z",
       "side": 1,
       "message": "Remove this comment.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 77
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f73c96_0aca57fb",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-13T09:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca747f98_cfb07953",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -157,6 +253,78 @@
         "startChar": 39,
         "endLine": 70,
         "endChar": 51
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e98cbb_da209235",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-13T09:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "109de413_5ffe1bd7",
+      "range": {
+        "startLine": 70,
+        "startChar": 39,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7931715b_5b017db9",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-13T09:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d47e967_3822e7d1",
+      "range": {
+        "startLine": 70,
+        "startChar": 75,
+        "endLine": 70,
+        "endChar": 114
+      },
+      "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9db8e62_4be27beb",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-13T09:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbf4cdfd_e8bf0693",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 17
       },
       "revId": "78236b95db26aa47334b4720ed8198cf08590c73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
