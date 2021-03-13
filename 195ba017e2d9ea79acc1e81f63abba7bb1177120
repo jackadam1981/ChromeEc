@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a1fb12_f1a0f118",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-03-13T20:44:08Z",
+      "side": 1,
+      "message": "If AP is hung how does waking it up help? I suppose if the AP can wake up and the CPUs running linux are hung it may be able to do some sort of watchdog from AP?",
+      "revId": "195ba017e2d9ea79acc1e81f63abba7bb1177120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
