@@ -240,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e81ff5e_73ea5577",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-03-15T22:39:00Z",
+      "side": 1,
+      "message": "Q\u0027s for Vincent: \n\n1. The reason to use CONFIG_ARMV7M_CACHE would be to keep specific chips out of the general core repo. Is there a different macro that would maintain this separation or should we go with CHIP_FAMILY_STM32H7?\n\n2. For context.. Have we checked that syncing the isb and dsb actually fixes this? Any ideas why this isn\u0027t addressed in the TRM or in the official ST code?",
+      "parentUuid": "a906ad7c_5d697768",
+      "range": {
+        "startLine": 421,
+        "startChar": 16,
+        "endLine": 421,
+        "endChar": 35
+      },
+      "revId": "f982fcca0e119d89bc62565fc7b4e47530b8be0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1e4f469_b937c4f3",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 1
