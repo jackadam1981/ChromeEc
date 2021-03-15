@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cff21de3_cf1bdaae",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-15T18:23:31Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "7c7873b4_adbb07a8",
+      "range": {
+        "startLine": 139,
+        "startChar": 46,
+        "endLine": 139,
+        "endChar": 48
+      },
+      "revId": "cbaf736eabc4d9b12b869184f578bcc4a8ab268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc32f872_516975c9",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 4
