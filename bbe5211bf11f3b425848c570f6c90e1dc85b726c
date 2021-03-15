@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3677953d_aa80463a",
+        "filename": "common/crc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-03-15T17:53:35Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of re-using this symbol name (random terrible things might happen)\nand the other functions are vaguely descriptive about the input:\n what about crc32_hash_buf or crc32_hash_buffer ?\n\nby the way, maybe we want to add the safe variant with the context at the same time ?",
+      "revId": "bbe5211bf11f3b425848c570f6c90e1dc85b726c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
