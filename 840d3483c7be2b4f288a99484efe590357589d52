@@ -16,6 +16,24 @@
       "message": "I think shifting left a uin8t_t by 8 bit is actually undefined in C (but probably works ?)\nmight be better to cast buf[1] before the shift ?",
       "revId": "840d3483c7be2b4f288a99484efe590357589d52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "882e83cf_d4270f4a",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-15T20:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d11adc2b_c5f56c58",
+      "revId": "840d3483c7be2b4f288a99484efe590357589d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
