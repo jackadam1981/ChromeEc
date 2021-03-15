@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a84a61d_f6788d44",
+        "filename": "baseboard/intelrvp/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-15T21:18:56Z",
+      "side": 1,
+      "message": "can this also go into npcx_ec.h?",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "1d7c42378851a1a8609f8daacc66dc88a660bc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0cc57d0_e3bd212d",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-15T21:18:56Z",
+      "side": 1,
+      "message": "should this go into npcx_ec.h?",
+      "range": {
+        "startLine": 195,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 16
+      },
+      "revId": "1d7c42378851a1a8609f8daacc66dc88a660bc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d40e4a02_05975727",
+        "filename": "board/adlrvpp_npcx/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-15T21:18:56Z",
+      "side": 1,
+      "message": "I2C_PORT_CHARGER?",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "1d7c42378851a1a8609f8daacc66dc88a660bc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d721fffa_cb76330b",
+        "filename": "board/adlrvpp_npcx/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-15T21:18:56Z",
+      "side": 1,
+      "message": "I2C_PORT_TYPEC_0 here and similar for rest of entries?",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "1d7c42378851a1a8609f8daacc66dc88a660bc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
