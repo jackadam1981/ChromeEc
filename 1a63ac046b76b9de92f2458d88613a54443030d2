@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2578a5f_3bc9d0d3",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-15T05:38:13Z",
+      "side": 1,
+      "message": "there\u0027s a cache inside board_get_version(). calling board_get_version() is almost free.",
+      "revId": "1a63ac046b76b9de92f2458d88613a54443030d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
