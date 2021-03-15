@@ -95,6 +95,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6875da98_4b6411d2",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-rotation-ref.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-15T18:13:12Z",
+      "side": 1,
+      "message": "I just mean that I don\u0027t know what order to put the numbers, etc.",
+      "parentUuid": "bfd7d2b1_9518e97d",
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c98cde1c_fb040cfe",
         "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml",
         "patchSetId": 3
