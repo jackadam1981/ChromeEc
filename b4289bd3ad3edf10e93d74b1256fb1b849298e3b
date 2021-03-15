@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "510facad_aa847922",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-15T23:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93906fe8_908352b4",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b24178d_0cb23a16",
@@ -161,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2019ffa6_1c56e485",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-15T23:04:49Z",
+      "side": 1,
+      "message": "The TC_CT_UNATTACHED_SNK name is misleading because we are attached and need to do PD in that state. I could add these two checks in the IS_ATTACHED_SNK macro if you think that would be more clear.",
+      "parentUuid": "2b24178d_0cb23a16",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4bda0c6_cd30be05",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -172,6 +208,24 @@
       "writtenOn": "2021-03-11T22:54:12Z",
       "side": 1,
       "message": "Side question, I\u0027ve never completely understood the TC_FLAGS_DISC_IDENT_IN_PROGRESS indication just from reading the Attached.SRC state in the spec.  Is there a timeframe where we\u0027re presenting the same terminations?",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de0cffed_985d0c57",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3095,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-15T23:04:49Z",
+      "side": 1,
+      "message": "Seems like this flag isn\u0027t being used because tc_disc_ident_in_progress is never called.",
+      "parentUuid": "f4bda0c6_cd30be05",
       "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
