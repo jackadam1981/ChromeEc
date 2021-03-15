@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26797989_c2f3bed2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-15T15:46:49Z",
+      "side": 1,
+      "message": "The test I performed in the previous comment measured Vconn and CC at the same time. The bug has been filed b:182794141",
+      "parentUuid": "e174fc40_5b089656",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93906fe8_908352b4",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
