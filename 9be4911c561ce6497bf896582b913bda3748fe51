@@ -16,6 +16,24 @@
       "message": "I saw some GPIO flags haven\u0027t been implemented yet. For example, UNUSED() hints the driver to configure the pin as GPIO input and apply pull-down. If not doing so, it floats and affects the power number. It is not urgent but will need some point later. Do you have a bug to track it?\n\nSome other flags not used in Trogdor but may be used in the future are: GPIO_HIB_WAKE_HIGH/LOW and GPIO_LOCKED.",
       "revId": "9be4911c561ce6497bf896582b913bda3748fe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c1e6d8_12364331",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-15T18:45:50Z",
+      "side": 1,
+      "message": "We have bugs b:173789980 and b:180520914 to track this.  I just assigned b:180520914 to Nuvoton.",
+      "parentUuid": "ffc0f600_e8fbdeaa",
+      "revId": "9be4911c561ce6497bf896582b913bda3748fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
