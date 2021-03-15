@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "693f9109_5f4b0dfe",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-15T19:10:37Z",
+      "side": 1,
+      "message": "Not all boards have defined GPIO_CCD_MODE_ODL. If we want to use IS_ENABLED, we\u0027ll need to require all boards define GPIO_CCD_MODE_ODL.",
+      "parentUuid": "9401293c_235a3c43",
+      "range": {
+        "startLine": 1607,
+        "startChar": 0,
+        "endLine": 1607,
+        "endChar": 44
+      },
+      "revId": "5d747b974101d49ca6641eb79f29a3a4c3bb1217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2979bb93_11969f1b",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 13
