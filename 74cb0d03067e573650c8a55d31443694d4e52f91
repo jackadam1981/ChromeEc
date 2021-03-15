@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a13a12e4_bc061994",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-15T18:03:28Z",
+      "side": 1,
+      "message": "I\u0027m still not thrilled about how big this change is, can we please have 1 feature per change? I think the mutex can be a single change, rotation matrix another, etc.",
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2af8a62_33bd6b26",
@@ -54,6 +71,24 @@
       "writtenOn": "2021-03-12T00:40:26Z",
       "side": 1,
       "message": "Somewhere we need to know the format of this...also perhaps an example?",
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd7d2b1_9518e97d",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-rotation-ref.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-15T18:03:28Z",
+      "side": 1,
+      "message": "I think just calling it a 3x3 rotation matrix is sufficient, it can easily be looked up. The actual description of what the \"format\" of a rotation matrix is actually very complex and we probably don\u0027t actually want to explain it here. (my opinion)",
+      "parentUuid": "475d32d3_5b47e667",
       "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
