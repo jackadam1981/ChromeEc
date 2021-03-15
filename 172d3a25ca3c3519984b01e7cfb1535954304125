@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df7c2ab_81beac24",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-15T18:42:32Z",
+      "side": 1,
+      "message": "as any port can be assigned to any controller why not default assign them in the mchp chip code?\nif specific board wants in certain order then the override function can be used.\nex: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/include/common.h#172",
+      "parentUuid": "848a3a3a_dbd0c9a4",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7b18bbc_7f71f0be",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Will be done in a future CL since the chip config header CL has been merged.",
       "parentUuid": "f7b18bbc_7f71f0be",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 24
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1eda8ba_c63274b1",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-15T18:42:32Z",
+      "side": 1,
+      "message": "does this change need entire chip CL to be reverted?\nwe already have a reference code (1521) so better to clean up before publishing duplicate",
+      "parentUuid": "be2424f7_3bc20c06",
       "range": {
         "startLine": 227,
         "startChar": 0,
@@ -196,6 +244,30 @@
       "side": 1,
       "message": "I thought the two gpio.inc files are used in separate builds. LFW firmware build and EC firmware build. They require duplication of SPI and UART.",
       "parentUuid": "ecbc9223_38f7ea37",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 6
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3afc2cc9_afbd1ee4",
+        "filename": "board/sklrvp_mchp172x/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-15T18:42:32Z",
+      "side": 1,
+      "message": "I mean avoid this duplication, use common file and include it in respective builds",
+      "parentUuid": "b07e4c50_1be83447",
       "range": {
         "startLine": 163,
         "startChar": 0,
