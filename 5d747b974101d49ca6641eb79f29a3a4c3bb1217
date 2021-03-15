@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83f50ae5_f76d4b9f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-15T19:14:09Z",
+      "side": 1,
+      "message": "Add a #ifndef GPIO_CCD_MODE_ODL at the top and set it to a value that will be available for the compiler but is not valid so it can still be caught. Then use IS_ENABLED. See the GEN_NOT_SUPPORTED usage at the top of this file.",
+      "parentUuid": "693f9109_5f4b0dfe",
+      "range": {
+        "startLine": 1607,
+        "startChar": 0,
+        "endLine": 1607,
+        "endChar": 44
+      },
+      "revId": "5d747b974101d49ca6641eb79f29a3a4c3bb1217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2979bb93_11969f1b",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 13
