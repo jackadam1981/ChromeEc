@@ -105,6 +105,24 @@
       "parentUuid": "febc86d8_e57af1d2",
       "revId": "04a18189c5af6deac1a061ebf4acd3833d34626a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b992258_24f3f513",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1415659
+      },
+      "writtenOn": "2021-03-15T06:44:04Z",
+      "side": 1,
+      "message": "This ALS sensor is for auto-brightness modification only. We should present TCS3400 as simple ALS, not RGB. What should we do next to present it as as simple ALS?",
+      "parentUuid": "760b19b0_c2ce6672",
+      "revId": "04a18189c5af6deac1a061ebf4acd3833d34626a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
