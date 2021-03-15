@@ -7,6 +7,7 @@
 #include <drivers/watchdog.h>
 #include <logging/log.h>
 #include <soc.h>
+#include "preprocessor_arithmetic.h"
 
 LOG_MODULE_REGISTER(cros_system, LOG_LEVEL_ERR);
 
@@ -161,4 +162,4 @@ static int jtag_init(const struct device *dev)
 
 	return 0;
 }
-SYS_INIT(jtag_init, PRE_KERNEL_1, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT + 1);
+SYS_INIT(jtag_init, PRE_KERNEL_1, ADD(CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, 1));
