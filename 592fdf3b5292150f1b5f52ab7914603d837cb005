@@ -34,6 +34,24 @@
       "parentUuid": "d284462d_89792f08",
       "revId": "592fdf3b5292150f1b5f52ab7914603d837cb005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b23ebc52_4e4b2e3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-15T23:12:54Z",
+      "side": 1,
+      "message": "I was thinking of a chain of normal PR swaps with the DUT being SRC-\u003eSNK-\u003eSRC, with the partner losing 3.0 A status before the last swap due to another sink being inserted.  \n\nI found none of my hubs would allow that last swap back, but another Chromebook does and validated on that path we set 1.5 A for the chromebook if I inserted another 3.0 A sink before the last swap.",
+      "parentUuid": "cf36b126_e082ec11",
+      "revId": "592fdf3b5292150f1b5f52ab7914603d837cb005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
