@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f82b28f_6d56d279",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-15T21:54:37Z",
+      "side": 1,
+      "message": "Eric, what are your thoughts on testing?  If it\u0027s too difficult to engineer Vbus dropping faster than the FRS comes in, we can change the test line to just ensure it doesn\u0027t appear to regress anything for FRS/charger detach",
+      "revId": "ffa4ca4dc812cc9447e50a5719256d220856fd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
