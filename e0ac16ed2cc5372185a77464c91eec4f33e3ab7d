@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0320a4a2_1ad851d7",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-15T17:58:42Z",
+      "side": 1,
+      "message": "I assume this is meant to parallel https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/system.c? The code path here seems very different and doesn\u0027t take into account a lot of configs that are handled in the referenced file. I think we need more details about what changes here and why (at least I do).",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "e0ac16ed2cc5372185a77464c91eec4f33e3ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad18b399_c16a4973",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-15T17:58:42Z",
+      "side": 1,
+      "message": "Prefer to have these as cases with individual TODOs. This way the code path is already defined. Also, for tracking, ideally file bugs for these.",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 70
+      },
+      "revId": "e0ac16ed2cc5372185a77464c91eec4f33e3ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f545037f_c17fe6a8",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-15T17:58:42Z",
+      "side": 1,
+      "message": "Should probably return after logging here if bbram_dev is NULL.",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 9
+      },
+      "revId": "e0ac16ed2cc5372185a77464c91eec4f33e3ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
