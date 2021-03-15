@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b18ccb_5b32333f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-15T21:54:05Z",
+      "side": 1,
+      "message": "Just nits. Please fix them.",
+      "revId": "df6c04424f916a1e462b852d5fe29b439db659fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0584795_c6ec2d0d",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-15T21:54:05Z",
+      "side": 1,
+      "message": "Remove the extra spaces.",
+      "range": {
+        "startLine": 66,
+        "startChar": 28,
+        "endLine": 66,
+        "endChar": 30
+      },
+      "revId": "df6c04424f916a1e462b852d5fe29b439db659fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e362bd3f_58e4e279",
+        "filename": "board/homestar/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-15T21:54:05Z",
+      "side": 1,
+      "message": "GPIO_ODR_HIGH is the short form.",
+      "range": {
+        "startLine": 66,
+        "startChar": 41,
+        "endLine": 66,
+        "endChar": 72
+      },
+      "revId": "df6c04424f916a1e462b852d5fe29b439db659fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
