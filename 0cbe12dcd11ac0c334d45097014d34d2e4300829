@@ -46,6 +46,30 @@
       },
       "revId": "0cbe12dcd11ac0c334d45097014d34d2e4300829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917bd93f_1098a01b",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2021-03-15T08:10:37Z",
+      "side": 1,
+      "message": "I did `make buildall -j`, uploaded another bugfix here --\u003e CL:2759761",
+      "parentUuid": "59c80136_f3a0b28f",
+      "range": {
+        "startLine": 369,
+        "startChar": 36,
+        "endLine": 369,
+        "endChar": 37
+      },
+      "revId": "0cbe12dcd11ac0c334d45097014d34d2e4300829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
