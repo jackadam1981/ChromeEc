@@ -162,12 +162,6 @@ int adc_read_channel(enum adc_channel ch)
 		adc_raw_data = (*adc_ctrl_regs[adc_ch].adc_datm << 8) +
 			*adc_ctrl_regs[adc_ch].adc_datl;
 
-		/* W/C data valid flag */
-		if (adc_ch <= CHIP_ADC_CH7)
-			IT83XX_ADC_ADCDVSTS = BIT(adc_ch);
-		else
-			IT83XX_ADC_ADCDVSTS2 = (1 << (adc_ch - CHIP_ADC_CH13));
-
 		mv = adc_raw_data * adc_channels[ch].factor_mul /
 			adc_channels[ch].factor_div + adc_channels[ch].shift;
 		valid = 1;
@@ -181,6 +175,11 @@ int adc_read_channel(enum adc_channel ch)
 	}
 
 	adc_disable_channel(adc_ch);
+	/* W/C data valid flag */
+	if (adc_ch <= CHIP_ADC_CH7)
+		IT83XX_ADC_ADCDVSTS = BIT(adc_ch);
+	else
+		IT83XX_ADC_ADCDVSTS2 = (1 << (adc_ch - CHIP_ADC_CH13));
 	enable_sleep(SLEEP_MASK_ADC);
 
 	mutex_unlock(&adc_lock);
@@ -356,6 +355,11 @@ static void adc_init(void)
 	IT83XX_ADC_ADCSTS &= ~BIT(7);
 	IT83XX_ADC_ADCCFG &= ~BIT(5);
 	IT83XX_ADC_ADCCTL = 1;
+	/*
+	 * Enable this bit, and data of VCHxDATL/IT83XX_ADC_VCHxDATM will be
+	 * kept until data valid is cleard.
+	 */
+	IT83XX_ADC_ADCGCR |= IT83XX_ADC_DBKEN;
 
 	task_waiting = TASK_ID_INVALID;
 	/* disable adc interrupt */
