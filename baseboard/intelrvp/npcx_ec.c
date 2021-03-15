@@ -5,6 +5,7 @@
 
 /* Intel BASEBOARD-RVP NPCX EC specific configuration */
 
+#include "adc_chip.h"
 #include "fan_chip.h"
 #include "keyboard_scan.h"
 #include "pwm_chip.h"
@@ -28,6 +29,39 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+
+/* ADC channels */
+const struct adc_t adc_channels[] = {
+	[ADC_TEMP_SNS_AMBIENT] = {
+		.name = "ADC_TEMP_SNS_AMBIENT",
+		.factor_mul = ADC_MAX_MVOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+		.input_ch = ADC_TEMP_SNS_AMBIENT_CHANNEL,
+	},
+	[ADC_TEMP_SNS_DDR] = {
+		.name = "ADC_TEMP_SNS_DDR",
+		.factor_mul = ADC_MAX_MVOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+		.input_ch = ADC_TEMP_SNS_DDR_CHANNEL,
+	},
+	[ADC_TEMP_SNS_SKIN] = {
+		.name = "ADC_TEMP_SNS_SKIN",
+		.factor_mul = ADC_MAX_MVOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+		.input_ch = ADC_TEMP_SNS_SKIN_CHANNEL,
+	},
+	[ADC_TEMP_SNS_VR] = {
+		.name = "ADC_TEMP_SNS_VR",
+		.factor_mul = ADC_MAX_MVOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+		.input_ch = ADC_TEMP_SNS_VR_CHANNEL,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* PWM configuration */
 const struct pwm_t pwm_channels[] = {
