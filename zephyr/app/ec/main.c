@@ -32,6 +32,16 @@ void main(void)
 		init_reset_log();
 	}
 
+	/*
+	 * Keyboard scan init/Button init can set recovery events to
+	 * indicate to host entry into recovery mode. Before this is
+	 * done, lpc always report mask needs to be initialized
+	 * correctly.
+	 */
+	if (IS_ENABLED(CONFIG_HOSTCMD_X86)) {
+		lpc_init_mask();
+	}
+
 	if (IS_ENABLED(HAS_TASK_KEYSCAN)) {
 		keyboard_scan_init();
 	}
