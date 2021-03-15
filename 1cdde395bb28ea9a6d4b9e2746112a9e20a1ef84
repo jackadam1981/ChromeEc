@@ -16,6 +16,24 @@
       "message": "This should be cherry picked to guybrush.",
       "revId": "1cdde395bb28ea9a6d4b9e2746112a9e20a1ef84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c71f98c5_9a2ce05b",
+        "filename": "baseboard/mancomb/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-15T21:29:19Z",
+      "side": 0,
+      "message": "I believe TEMP_SENSOR_CHARGER prevents us from using the common code CONFIG_TEMP_SENSOR_POWER_GPIO for guybrush",
+      "parentUuid": "e7d23dbe_9e2ef60c",
+      "revId": "1cdde395bb28ea9a6d4b9e2746112a9e20a1ef84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
