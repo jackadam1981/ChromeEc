@@ -1,0 +1,1 @@
+cmd_/home/arthurlin/chromiumos/src/platform/ec/extra/usb_serial/raiden.mod := { echo  /home/arthurlin/chromiumos/src/platform/ec/extra/usb_serial/raiden.o; echo; } > /home/arthurlin/chromiumos/src/platform/ec/extra/usb_serial/raiden.mod
