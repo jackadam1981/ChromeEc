@@ -16,6 +16,24 @@
       "message": "there\u0027s a cache inside board_get_version(). calling board_get_version() is almost free.",
       "revId": "1a63ac046b76b9de92f2458d88613a54443030d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8202a2af_b540e6ce",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-03-15T06:00:49Z",
+      "side": 1,
+      "message": "At first I want to use this to avoid calling board_get_version repeatly when tablet mode interrupt trigger.\nI already update it in patch 2.",
+      "parentUuid": "a2578a5f_3bc9d0d3",
+      "revId": "1a63ac046b76b9de92f2458d88613a54443030d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
