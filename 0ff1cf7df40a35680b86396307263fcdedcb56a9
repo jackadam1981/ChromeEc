@@ -123,6 +123,24 @@
       "parentUuid": "4ffae66c_4dbe5f1e",
       "revId": "0ff1cf7df40a35680b86396307263fcdedcb56a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2452900b_13ebf427",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-15T05:36:39Z",
+      "side": 1,
+      "message": "board version is cached (in baseboard.c:board_get_version()), so it\u0027s a one-time ADC read in either gmr_tablet_switch_init or board_init.\n\nAlso if my memory is correct, kukui\u0027s ADC is readable even before HOOK_PRIO_INIT_ADC.\nWe don\u0027t need to worry about the initialization order.\n\nSo I think it\u0027s fine.",
+      "parentUuid": "c844b032_92fc73dd",
+      "revId": "0ff1cf7df40a35680b86396307263fcdedcb56a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
