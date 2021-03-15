@@ -16,6 +16,24 @@
       "message": "If AP is hung how does waking it up help? I suppose if the AP can wake up and the CPUs running linux are hung it may be able to do some sort of watchdog from AP?",
       "revId": "195ba017e2d9ea79acc1e81f63abba7bb1177120",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "191a093e_0a249ccb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112825
+      },
+      "writtenOn": "2021-03-15T13:52:18Z",
+      "side": 1,
+      "message": "It\u0027s not necessarily really hung, it could be that the kernel suspended and the AP is generally in a good shape, but didn\u0027t enter XO-SD (the S3 low power mode) due to a myriad of possible reasons. In this case the AP can be woken up.",
+      "parentUuid": "31a1fb12_f1a0f118",
+      "revId": "195ba017e2d9ea79acc1e81f63abba7bb1177120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
