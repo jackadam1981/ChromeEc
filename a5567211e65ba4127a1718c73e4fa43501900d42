@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ec1601c_c111e252",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-15T09:16:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6befbdb6_afbe3686",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "a5567211e65ba4127a1718c73e4fa43501900d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eec5a77_68956609",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "451fe635_967a9911",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-15T09:16:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eec5a77_68956609",
+      "revId": "a5567211e65ba4127a1718c73e4fa43501900d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "753b6379_3471e2b4",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-11T16:31:59Z",
       "side": 1,
       "message": "Move the board changes (delbin, volteer, kohaku) into a separate change list.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "a5567211e65ba4127a1718c73e4fa43501900d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd144b3_bed5cb33",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-15T09:16:05Z",
+      "side": 1,
+      "message": "Done\nCL.2759763",
+      "parentUuid": "753b6379_3471e2b4",
       "range": {
         "startLine": 12,
         "startChar": 0,
