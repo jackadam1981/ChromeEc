@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cebb02c_76188697",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-15T09:42:13Z",
+      "side": 1,
+      "message": "Zephyr priority couldn\u0027t use symbolic expressions. It direct stringifies the priority to generate the linker symbol. Use \u0027CONFIG_KERNEL_INIT_PRIORITY_OBJECTS - 10\u0027 will generate the following symbol \u0027.init_PRE_KERNEL_130-10 \u0027 which priority is lower than CONFIG_KERNEL_INIT_PRIORITY_OBJECTS. How about adding a preprocessor utility to calculate the priority(CL.2759764) \u0026 define following:\n```\n#define CROS_SYSTEM_NPCX_INIT_PRIORITY \\\n\tSUB(CONFIG_KERNEL_INIT_PRIORITY_OBJECTS, 10)\n\n#define CROS_BBRAM_NPCX_INIT_PRIORITY ADD(CROS_SYSTEM_NPCX_INIT_PRIORITY, 1)\n```\n or just define it without symbolic expressions \u0026 add a guard to check dependency?",
+      "parentUuid": "b6a2d64a_5bdff5e8",
+      "range": {
+        "startLine": 139,
+        "startChar": 46,
+        "endLine": 139,
+        "endChar": 48
+      },
+      "revId": "cbaf736eabc4d9b12b869184f578bcc4a8ab268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc32f872_516975c9",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 4
@@ -83,6 +107,30 @@
       "writtenOn": "2021-03-11T17:35:56Z",
       "side": 1,
       "message": "Return the failure? Otherwise the caller doesn\u0027t know.\n\nThis error should be printed by chip_system_init()",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 9
+      },
+      "revId": "cbaf736eabc4d9b12b869184f578bcc4a8ab268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68981b9f_d76e1001",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-15T09:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "869662f3_c510464d",
       "range": {
         "startLine": 56,
         "startChar": 2,
