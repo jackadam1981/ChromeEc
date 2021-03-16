@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd2460b_8b91e794",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-16T18:01:39Z",
+      "side": 1,
+      "message": "The bug tracker should be public...can you link to the bug you cannot update?",
+      "parentUuid": "f13c2187_5205567f",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 70
+      },
+      "revId": "e0ac16ed2cc5372185a77464c91eec4f33e3ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f545037f_c17fe6a8",
