@@ -195,6 +195,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58974ea3_4e1192e5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-16T21:56:56Z",
+      "side": 1,
+      "message": "I think this is good for now.",
+      "parentUuid": "2019ffa6_1c56e485",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4bda0c6_cd30be05",
@@ -226,6 +244,24 @@
       "side": 1,
       "message": "Seems like this flag isn\u0027t being used because tc_disc_ident_in_progress is never called.",
       "parentUuid": "f4bda0c6_cd30be05",
+      "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc19a018_31690aee",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3095,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-16T21:56:56Z",
+      "side": 1,
+      "message": "Interesting.  Can we safely do a follow-on CL to remove it then?",
+      "parentUuid": "de0cffed_985d0c57",
       "revId": "b4289bd3ad3edf10e93d74b1256fb1b849298e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
