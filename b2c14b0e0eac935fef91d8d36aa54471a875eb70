@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a099803_dc4fdf0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-16T22:46:43Z",
+      "side": 1,
+      "message": "sweet 😊",
+      "revId": "b2c14b0e0eac935fef91d8d36aa54471a875eb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44f750bf_8694b5f3",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-03-16T22:41:55Z",
       "side": 1,
       "message": "These labels don\u0027t work.\n\n  uart:~$ i2c scan POWER\n  I2C: Device driver POWER not found.\n\nNot sure if it is a regression.",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "b2c14b0e0eac935fef91d8d36aa54471a875eb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8336a43d_6796be16",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-16T22:46:43Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s ever been supported :)",
+      "parentUuid": "44f750bf_8694b5f3",
       "range": {
         "startLine": 36,
         "startChar": 3,
