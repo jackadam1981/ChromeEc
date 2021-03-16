@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a290a9d_aa184424",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-16T11:42:39Z",
+      "side": 1,
+      "message": "New config have to be documented in include/config.h.\n\nBut for this case I think you don\u0027t need the config, simply replace all \u003cunkn\u003e\u0027s is fine.",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "1fd090fba27e56e9dd302368d1ec7572e7ea7de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
