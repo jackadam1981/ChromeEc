@@ -20,13 +20,11 @@
 
 #define CPRINTS(fmt, args...) cprints(CC_PCHG, "PCHG: " fmt, ##args)
 
-static int dropped_event;
-
 static void pchg_queue_event(struct pchg *ctx, enum pchg_event event)
 {
 	mutex_lock(&ctx->mtx);
 	if (queue_add_unit(&ctx->events, &event) == 0) {
-		dropped_event++;
+		ctx->dropped_event_count++;
 		CPRINTS("ERR: Queue is full");
 	}
 	mutex_unlock(&ctx->mtx);
@@ -488,8 +486,8 @@ static int cc_pchg(int argc, char **argv)
 		ccprintf("P%d STATE_%s EVENT_%s SOC=%d%%\n",
 			 port, _text_state(ctx->state), _text_event(ctx->event),
 			 ctx->battery_percent);
-		ccprintf("error=0x%x fw_version=0x%x\n",
-			 ctx->error, ctx->fw_version);
+		ccprintf("error=0x%x fw_version=0x%x dropped=%u\n",
+			 ctx->error, ctx->fw_version, ctx->dropped_event_count);
 		return EC_SUCCESS;
 	}
 

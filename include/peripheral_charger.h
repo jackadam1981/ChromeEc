@@ -140,6 +140,8 @@ struct pchg {
 	uint8_t battery_percent;
 	/* FW version */
 	uint32_t fw_version;
+	/* Number of dropped events (due to queue overflow) */
+	uint8_t dropped_event_count;
 };
 
 /**
