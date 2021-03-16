@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b297b76_97d5519a",
+        "filename": "baseboard/intelrvp/adlrvp_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-16T01:59:38Z",
+      "side": 1,
+      "message": "wouldn\u0027t you want to distinguish the batteries by querying them?\n\ncheck the \"battery\" command on the EC console to see if they\nreport different \"Manuf:\" or \"Device:\" fields so they can\nbe distinguished.",
+      "revId": "28926ceb59540dbf66f7587512fbc72a2878dccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
