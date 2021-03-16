@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "514d50d5_608ba548",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Follow Aseda and Keith suggestion to update patch v2.\n\nI also add some condition to block lightbar task. Please check lightbar_is_supported() and lightbar_is_enable() function.\n",
+      "revId": "edc329414ff5077244cf6d935bd77dbc62769a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b1d126_2d25f4cd",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Add some condition to block lightbar task.\n1. Some SKU un-support lightbar but share same ec firmware, so we shouldn\u0027t run it.\n2. Lightbar I2C is powered by PP3300_A. We shouldn\u0027t access I2C bus when system enter S4/S5/G3.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 1
+      },
+      "revId": "edc329414ff5077244cf6d935bd77dbc62769a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

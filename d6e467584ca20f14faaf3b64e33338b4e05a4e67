@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "deac4dbb_fd671645",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2adac9a8_cee28115",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "001c58cf_260f025b",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c015855_55a466c7",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "001c58cf_260f025b",
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35d55229_f47c6804",
@@ -88,6 +130,30 @@
       "writtenOn": "2021-03-09T01:01:38Z",
       "side": 1,
       "message": "Nit - add a blank line after the include statements.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f29f5b_c3a4c5af",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35d55229_f47c6804",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -121,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62ee606_a6fad8d2",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Until now, only lindar\u0027s light bar follow AC/DC, lid and power state\u0027s scenario to behave. That\u0027s the reason I limit it in lindar.",
+      "parentUuid": "9922852a_f93c5bc1",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 47
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20d164e1_baa50b9f",
@@ -134,6 +224,30 @@
       "writtenOn": "2021-03-09T01:01:38Z",
       "side": 1,
       "message": "Spell out the full color name, and use the full percentage number for these values.\n\n    BAR_COLOR_ORANGE_20_PERCENT,\n    ...\n    BAR_COLOR_ORANGE_FULL",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 28
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34baacd6_12861921",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20d164e1_baa50b9f",
       "range": {
         "startLine": 163,
         "startChar": 0,
@@ -167,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa2cf76d_bf826126",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f4ecf5c_7dfbbb20",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 16
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8019d889_6f444dc6",
@@ -180,6 +318,30 @@
       "writtenOn": "2021-03-09T01:01:38Z",
       "side": 1,
       "message": "Nit - rename to ticks.",
+      "range": {
+        "startLine": 174,
+        "startChar": 9,
+        "endLine": 174,
+        "endChar": 13
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df49b748_4f8cb1b1",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8019d889_6f444dc6",
       "range": {
         "startLine": 174,
         "startChar": 9,
@@ -213,6 +375,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53615747_8ed8ffd8",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "That\u0027s used to avoid any abnormal condition for undefined-condition.",
+      "parentUuid": "bd2a478f_c15eb158",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 53
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb92745d_55a7c5db",
@@ -226,6 +412,30 @@
       "writtenOn": "2021-03-09T01:01:38Z",
       "side": 1,
       "message": "This portion should remain in this file, as this describes the lightbar states specific to Lindar.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 0
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f85d85e_171e9bdf",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb92745d_55a7c5db",
       "range": {
         "startLine": 177,
         "startChar": 0,
@@ -259,6 +469,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f8e04f_20653938",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Create #define for each register and put it in board.h because current behavior is lindar unique.\nPlease feel free to let me know if you have any concern.",
+      "parentUuid": "3bc28b01_aa0f73b5",
+      "range": {
+        "startLine": 198,
+        "startChar": 19,
+        "endLine": 198,
+        "endChar": 23
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95719ed4_3ca7df66",
@@ -272,6 +506,30 @@
       "writtenOn": "2021-03-09T01:01:38Z",
       "side": 1,
       "message": "Change this to \n\n    if (!chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))\n        return LB_STATE_OFF;\n\nYou can then get rid of one nesting level.",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 51
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b217522_05607aee",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95719ed4_3ca7df66",
       "range": {
         "startLine": 352,
         "startChar": 0,
@@ -305,6 +563,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "031c399f_71b19d38",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1d40a4f_188da06b",
+      "range": {
+        "startLine": 358,
+        "startChar": 9,
+        "endLine": 358,
+        "endChar": 27
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c69ef3b6_20e4227b",
@@ -318,6 +600,30 @@
       "writtenOn": "2021-03-09T01:01:38Z",
       "side": 1,
       "message": "Combine these lines.",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 15
+      },
+      "revId": "d6e467584ca20f14faaf3b64e33338b4e05a4e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52c426aa_739ee4fa",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c69ef3b6_20e4227b",
       "range": {
         "startLine": 416,
         "startChar": 0,
