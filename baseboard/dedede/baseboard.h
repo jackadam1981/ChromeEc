@@ -145,6 +145,7 @@
 
 /* LED */
 #define CONFIG_LED_COMMON
+#define CONFIG_LED_ONOFF_STATES
 
 /* Sensors */
 #define CONFIG_MKBP_EVENT
