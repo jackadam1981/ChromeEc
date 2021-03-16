@@ -374,6 +374,12 @@ void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* TODO(b/174825406): check correct operation for honeybuns */
 }
+
+
+__overridable int dock_get_mf_preferece(void)
+{
+	return MF_ON;
+}
 #endif /* SECTION_IS_RW */
 
 static void board_init(void)

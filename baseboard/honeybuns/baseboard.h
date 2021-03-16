@@ -216,6 +216,11 @@ struct power_seq {
 	unsigned int delay_ms;   /* delay (in msec) after setting gpio_signal */
 };
 
+enum mf_preference {
+	MF_OFF = 0,
+	MF_ON,
+};
+
 /*
  * This is required as adc_channel is included in adc.h which ends up being
  * included when TCPMv2 functions are included
@@ -228,6 +233,7 @@ extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
 void baseboard_power_button_evt(int level);
 int baseboard_usbc_init(int port);
+int dock_get_mf_preferece(void);
 
 int baseboard_usbc_init(int port);
 int baseboard_ppc_enable_sink_path(int port);
