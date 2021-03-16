@@ -34,6 +34,24 @@
       "parentUuid": "3677953d_aa80463a",
       "revId": "bbe5211bf11f3b425848c570f6c90e1dc85b726c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95d3182_36131f45",
+        "filename": "common/crc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-03-16T08:17:37Z",
+      "side": 1,
+      "message": "\u003e I think a function description (which I will add) and \u0027*buf\u0027 in the prototype is descriptive enough to avoid confusion. So, I don\u0027t think \u0027_buf\u0027 isn\u0027t needed (and I prefer a  concise name).\n\u003e \n\u003e What do you mean by \u0027safe variant\u0027? Do you mean crc32_ctx_hash?\n\nyes",
+      "parentUuid": "56e233ed_24464a1a",
+      "revId": "bbe5211bf11f3b425848c570f6c90e1dc85b726c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
