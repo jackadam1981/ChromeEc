@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0697c36c_6fd631e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-16T05:48:05Z",
+      "side": 1,
+      "message": "I had to remove some debug code to kick of BIST type 2 (directly from the ucpd driver) as Gingerbread isn\u0027t building some file yet.",
+      "revId": "497b64b31e90d2a1fef9bda9ab9a51bf342fd41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
