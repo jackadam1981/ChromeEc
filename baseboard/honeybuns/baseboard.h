@@ -219,6 +219,11 @@ struct power_seq {
 	unsigned int delay_ms;   /* delay (in msec) after setting gpio_signal */
 };
 
+enum mf_preference {
+	MF_OFF = 0,
+	MF_ON,
+};
+
 /*
  * This is required as adc_channel is included in adc.h which ends up being
  * included when TCPMv2 functions are included
@@ -238,6 +243,8 @@ void baseboard_power_button_evt(int level);
  * @return true - initialized. false - not.
  */
 int baseboard_usbc_init(int port);
+
+int dock_get_mf_preferece(void);
 
 /*
  * Set MST_LANE_CONTROL gpio to match the DP pin configuration selected
