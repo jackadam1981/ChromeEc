@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d8cd4c2_75460e99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T00:15:05Z",
+      "side": 1,
+      "message": "LGTM, just a few really small nits.",
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "727e3057_bee6a752",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T00:15:05Z",
+      "side": 1,
+      "message": "super nit: capitalize",
+      "range": {
+        "startLine": 75,
+        "startChar": 15,
+        "endLine": 75,
+        "endChar": 16
+      },
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ad21abb_642f6e5e",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T00:15:05Z",
+      "side": 1,
+      "message": "nit: no need for this part. If you\u0027re going to leave a comment, usually we just have this reflect the original conditional.",
+      "range": {
+        "startLine": 118,
+        "startChar": 9,
+        "endLine": 118,
+        "endChar": 22
+      },
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11b8ce34_b68d3916",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T00:15:05Z",
+      "side": 1,
+      "message": "Please use the IS_ENABLED(...) macro whenever possible.",
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f713528_422be6b8",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T00:15:05Z",
+      "side": 1,
+      "message": "change to\n    \nif (!IS_ENABLED(CONFIG_DEBUG_BRINGUP))",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 5
+      },
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110a1f8e_35bc6158",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T00:15:05Z",
+      "side": 1,
+      "message": "172?",
+      "range": {
+        "startLine": 316,
+        "startChar": 6,
+        "endLine": 316,
+        "endChar": 9
+      },
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
