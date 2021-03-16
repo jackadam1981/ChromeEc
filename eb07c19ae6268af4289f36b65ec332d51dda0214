@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b75bc74_6194a8f7",
+        "filename": "common/uart_printf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-16T17:55:45Z",
+      "side": 1,
+      "message": "Indentation should align to opening parenthesis of the \"if\".\n\nYou can do this automatically using clang-format, which is setup for the Linux Kernel code style in this codebase.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "eb07c19ae6268af4289f36b65ec332d51dda0214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
