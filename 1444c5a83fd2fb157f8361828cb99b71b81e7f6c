@@ -52,6 +52,24 @@
       "parentUuid": "c5471f41_b88aedcf",
       "revId": "1444c5a83fd2fb157f8361828cb99b71b81e7f6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4bcd7e8_e6e10a99",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-03-16T16:03:32Z",
+      "side": 1,
+      "message": "We had no action being taken previously for usb4 reset. Now, we are taking right actions per spec. Remaining part is adding support for usb4 data_reset PD message which can be handled as separate CL.We don’t have usb4 devices in the market but IMHO from port partner perspective, removing terminations should be far better than doing nothing at all.",
+      "parentUuid": "86130911_bcd964c0",
+      "revId": "1444c5a83fd2fb157f8361828cb99b71b81e7f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
