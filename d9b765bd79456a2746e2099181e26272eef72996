@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d13aa01_f9b6791f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-16T22:45:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "193a15be_57504983",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "d9b765bd79456a2746e2099181e26272eef72996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3c94074_159454ea",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7771add_73527893",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-16T22:45:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure how safe that would be.  We always call FRS disable during pe_invalidate_explicit_contract(), which is in turn always called during snk/src startup.  So we could lose our 3.0 A Rp right after a FRS event if the startup isn\u0027t handled carefully.",
+      "parentUuid": "e3c94074_159454ea",
+      "revId": "d9b765bd79456a2746e2099181e26272eef72996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecd41eb0_7c35aa1b",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -54,6 +96,24 @@
       "writtenOn": "2021-03-16T19:28:34Z",
       "side": 1,
       "message": "Nit: Can the arrangement of this code and comment mirror that of tc_unattached_src_entry?",
+      "revId": "d9b765bd79456a2746e2099181e26272eef72996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d782ff23_a33c1c2e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2141,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-16T22:45:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecd41eb0_7c35aa1b",
       "revId": "d9b765bd79456a2746e2099181e26272eef72996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
