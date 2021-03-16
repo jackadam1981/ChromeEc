@@ -153,6 +153,16 @@ config PLATFORM_EC_CHARGER_NARROW_VDC
 	  This should be enabled by charger drivers which need it. It cannot
 	  be set otherwise, even in prj.conf
 
+config PLATFORM_EC_CHARGER_BQ25710_AUTO_WAKEUP
+	depends on PLATFORM_EC_CHARGER_BQ25710 || PLATFORM_EC_CHARGER_BQ25720
+	bool "Enable the BQ257[12]0 battery auto-wakeup feature"
+	default n
+	help
+	  When configured, the BQ257[12]0 charger chip's battery
+	  auto-wakeup feature is enabled when initializing the chip. If
+	  the battery is below VSYS_MIN, a 128mA charging current is
+	  provided for up to 30 minutes.
+
 config PLATFORM_EC_BATTERY_FUEL_GAUGE
 	bool "Board supplies battery info"
 	help
