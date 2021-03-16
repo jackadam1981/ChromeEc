@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059cffee_9b14d27c",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-16T17:49:53Z",
+      "side": 1,
+      "message": "-\n\nAlso can you add more details here? What are the constraints?",
+      "range": {
+        "startLine": 12,
+        "startChar": 27,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "9ee0849f9bdd0bf79dcd8bae4724715640e57f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adda856d_7f322ecd",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-16T17:49:53Z",
+      "side": 1,
+      "message": "# PLATFORM_EC",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "9ee0849f9bdd0bf79dcd8bae4724715640e57f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c0c98c3_88f36403",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-16T17:49:53Z",
+      "side": 1,
+      "message": "Are there any constraints here or other details you can add?",
+      "revId": "9ee0849f9bdd0bf79dcd8bae4724715640e57f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8158290_419ccba2",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-16T17:49:53Z",
+      "side": 1,
+      "message": "This should not happen and it is already reported in chip_system_init() so far as I can see. So can you make this LOG_DBG() ? I think that reduces code size and avoid log spam if it does happen",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 9
+      },
+      "revId": "9ee0849f9bdd0bf79dcd8bae4724715640e57f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7a976e6_f26fa780",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-16T17:49:53Z",
+      "side": 1,
+      "message": "Since this should not happen in normal operation I wish we could have a build-time error, or at least a fatal run-time error. Can you please file a bug to revisit this please, and mention it here?",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 9
+      },
+      "revId": "9ee0849f9bdd0bf79dcd8bae4724715640e57f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
