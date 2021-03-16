@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e95f85_dbb9d178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T00:20:31Z",
+      "side": 1,
+      "message": "LGTM, just 1 nit.",
+      "revId": "d939f48ed0d664d78de575a5ba4498ea3b583376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcc32f54_b3914f3d",
+        "filename": "chip/mchp/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T00:20:31Z",
+      "side": 1,
+      "message": "nit: Use IS_ENABLED(...) macro.",
+      "revId": "d939f48ed0d664d78de575a5ba4498ea3b583376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
