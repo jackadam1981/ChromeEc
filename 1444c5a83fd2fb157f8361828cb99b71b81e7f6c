@@ -70,6 +70,24 @@
       "parentUuid": "86130911_bcd964c0",
       "revId": "1444c5a83fd2fb157f8361828cb99b71b81e7f6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a552704_2cb2be0e",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-16T16:15:34Z",
+      "side": 1,
+      "message": "Instead of setting the state to start, we can also return from the function when we are in USB4 mode - with this, we\u0027ll not exit tbt mode for active thunderbolt cables.\n\nThe problem is, on warm reboot. we are exiting tbt mode for the cable, setting the mux and retimer to USB mode. But EC is still in USB4 mode.\nSo we can either -\n1. Set USB4 to start and set mux and retimer to USB or\n2. Not exit TBT mode for the cable\n\n@Abe which one do you prefer?",
+      "parentUuid": "c4bcd7e8_e6e10a99",
+      "revId": "1444c5a83fd2fb157f8361828cb99b71b81e7f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
