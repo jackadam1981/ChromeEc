@@ -79,6 +79,30 @@
       },
       "revId": "d56ee82a798638030ac1797c39feb4e2ad2c5fb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c286f6_0af1ef15",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1461052
+      },
+      "writtenOn": "2021-03-16T12:41:59Z",
+      "side": 1,
+      "message": "Sorry,what about the time will achieve this?\n\nOr we may first merge this 2721321 CL, and waiting change this to 500 on s3 entry and restore 100 on exit.",
+      "parentUuid": "d4436513_257e28a8",
+      "range": {
+        "startLine": 29,
+        "startChar": 42,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "d56ee82a798638030ac1797c39feb4e2ad2c5fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
