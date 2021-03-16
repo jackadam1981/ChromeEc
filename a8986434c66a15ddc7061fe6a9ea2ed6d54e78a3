@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f1ffcb_ac5db7f4",
+        "filename": "common/uart_printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-16T15:58:54Z",
+      "side": 1,
+      "message": "technically this goes to printk and not the shell",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "a8986434c66a15ddc7061fe6a9ea2ed6d54e78a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9a0d37_324729ba",
+        "filename": "common/uart_printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-16T15:58:54Z",
+      "side": 1,
+      "message": "can drop extra parenthesis",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "a8986434c66a15ddc7061fe6a9ea2ed6d54e78a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd9c509_b46dae8e",
+        "filename": "common/uart_printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-16T15:58:54Z",
+      "side": 1,
+      "message": "can merge into if above",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "a8986434c66a15ddc7061fe6a9ea2ed6d54e78a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
