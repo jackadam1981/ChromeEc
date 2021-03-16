@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70fab556_0360db3a",
+        "filename": "board/lindar/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T23:40:14Z",
+      "side": 1,
+      "message": "Create a new file \"ktd20xx.h\" for these defintions.",
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5cc804b_37036afe",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T23:40:14Z",
+      "side": 1,
+      "message": "The code is a lot easier to follow with these macros added.  Thank you!",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4919b83c_948bea45",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T23:40:14Z",
+      "side": 1,
+      "message": "Return bool",
+      "range": {
+        "startLine": 215,
+        "startChar": 7,
+        "endLine": 215,
+        "endChar": 10
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d64bdb0_0707c894",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T23:40:14Z",
+      "side": 1,
+      "message": "Can lightbar support be checked using a bit in the FW_CONFIG instead of the SKU ID?",
+      "range": {
+        "startLine": 215,
+        "startChar": 11,
+        "endLine": 215,
+        "endChar": 32
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbf5f41_82e0bca9",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T23:40:14Z",
+      "side": 1,
+      "message": "If you stay with skuid instead of FW_CONFIG, make \"skuid\" static instead of \"result\" so that you don\u0027t overload the meaning of \"result\".\n\nstatic uint32_t skuid \u003d SKU_ID_NONE;\n\nif (skuid \u003d\u003d SKU_ID_NONE)\n    if (cbi_get_sku_id(\u0026skuid))\n         /* Print error */\n         skuid \u003d SKU_ID_INVALID;\n\nif (skuid \u003e lower \u0026\u0026 skuid \u003c upper)\n    result \u003d true;\nelse\n    result \u003d false;",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 15
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2163ce9_d5b87128",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T23:40:14Z",
+      "side": 1,
+      "message": "\"does not support\"",
+      "range": {
+        "startLine": 231,
+        "startChar": 24,
+        "endLine": 231,
+        "endChar": 33
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc0d105_215b61c5",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T23:40:14Z",
+      "side": 1,
+      "message": "Create a bug and reference it here.\n\nTODO(b/xxxx): \"bug title\"",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 238,
+        "endChar": 7
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b30d84_90652aa0",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T23:40:14Z",
+      "side": 1,
+      "message": "Use the power good signal GPIO_PG_EC_DSW_PWROK instead of the enable signal.  This ensures you don\u0027t try to read from the lightbar if the PP3300 is slow to turn on.",
+      "range": {
+        "startLine": 251,
+        "startChar": 21,
+        "endLine": 251,
+        "endChar": 37
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5bbc000_91b2520a",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T23:40:14Z",
+      "side": 1,
+      "message": "You might want to also set the A12, A34, etc registers to SEL_OFF here.",
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df864d6b_932857d6",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T23:40:14Z",
+      "side": 1,
+      "message": "Nit - just do \"return LB_STATE_LID_CLOSE;\" here.  Then you can rid of on level of indentation below.",
+      "range": {
+        "startLine": 408,
+        "startChar": 2,
+        "endLine": 408,
+        "endChar": 11
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
