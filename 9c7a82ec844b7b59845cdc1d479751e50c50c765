@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74435dc0_88187d6e",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2021-03-16T15:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "727e3057_bee6a752",
+      "range": {
+        "startLine": 75,
+        "startChar": 15,
+        "endLine": 75,
+        "endChar": 16
+      },
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ad21abb_642f6e5e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-16T00:15:05Z",
       "side": 1,
       "message": "nit: no need for this part. If you\u0027re going to leave a comment, usually we just have this reflect the original conditional.",
+      "range": {
+        "startLine": 118,
+        "startChar": 9,
+        "endLine": 118,
+        "endChar": 22
+      },
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de02cd5_8a59d4f5",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2021-03-16T15:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ad21abb_642f6e5e",
       "range": {
         "startLine": 118,
         "startChar": 9,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "905f672e_0bdee661",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2021-03-16T15:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b8ce34_b68d3916",
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f713528_422be6b8",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91b98c8_de8e7f41",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2021-03-16T15:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f713528_422be6b8",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 5
+      },
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "110a1f8e_35bc6158",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-03-16T00:15:05Z",
       "side": 1,
       "message": "172?",
+      "range": {
+        "startLine": 316,
+        "startChar": 6,
+        "endLine": 316,
+        "endChar": 9
+      },
+      "revId": "9c7a82ec844b7b59845cdc1d479751e50c50c765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d9d1302_325a5de9",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2021-03-16T15:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "110a1f8e_35bc6158",
       "range": {
         "startLine": 316,
         "startChar": 6,
