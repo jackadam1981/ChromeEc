@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4dd2968_dca5f97d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-16T05:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af6dbbb8_74bf49bf",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 33
+      },
+      "revId": "e5435cf0694a09b6700a4c873a7761d0df8221b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c48ee28_2764a320",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-12T18:11:36Z",
       "side": 1,
       "message": "Nit: \"an alt mode\"; \"modal mode\" sounds weird 😊",
+      "range": {
+        "startLine": 126,
+        "startChar": 26,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "e5435cf0694a09b6700a4c873a7761d0df8221b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5391fc83_e76b6672",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-16T05:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c48ee28_2764a320",
       "range": {
         "startLine": 126,
         "startChar": 26,
