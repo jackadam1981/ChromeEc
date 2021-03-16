@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "193a15be_57504983",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-16T19:28:34Z",
+      "side": 1,
+      "message": "Nit: Extra word?",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "d9b765bd79456a2746e2099181e26272eef72996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c94074_159454ea",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-16T19:28:34Z",
+      "side": 1,
+      "message": "Can we do this in the disable branch of pe_set_frs_enable?",
+      "revId": "d9b765bd79456a2746e2099181e26272eef72996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd41eb0_7c35aa1b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2141,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-16T19:28:34Z",
+      "side": 1,
+      "message": "Nit: Can the arrangement of this code and comment mirror that of tc_unattached_src_entry?",
+      "revId": "d9b765bd79456a2746e2099181e26272eef72996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
