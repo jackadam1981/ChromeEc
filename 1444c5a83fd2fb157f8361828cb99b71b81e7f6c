@@ -34,6 +34,24 @@
       "parentUuid": "fc89554a_8380571e",
       "revId": "1444c5a83fd2fb157f8361828cb99b71b81e7f6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86130911_bcd964c0",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-16T15:37:56Z",
+      "side": 1,
+      "message": "What I meant is, \"How does a port partner in USB4 mode react to this?\" \"Do everything as per spec except\" means violating the spec.",
+      "parentUuid": "c5471f41_b88aedcf",
+      "revId": "1444c5a83fd2fb157f8361828cb99b71b81e7f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
