@@ -34,6 +34,24 @@
       "parentUuid": "0b297b76_97d5519a",
       "revId": "28926ceb59540dbf66f7587512fbc72a2878dccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c8bb48_e92db49f",
+        "filename": "baseboard/intelrvp/adlrvp_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-16T15:47:34Z",
+      "side": 1,
+      "message": "looks like same manufacturer, ADL-P has 3S \u0026 ADL-M has 2S",
+      "parentUuid": "aee5aab7_ec948100",
+      "revId": "28926ceb59540dbf66f7587512fbc72a2878dccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
