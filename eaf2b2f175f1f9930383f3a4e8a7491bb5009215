@@ -134,6 +134,24 @@
       "parentUuid": "40ff9521_4782408f",
       "revId": "eaf2b2f175f1f9930383f3a4e8a7491bb5009215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a7a7e4_463527cd",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T18:01:25Z",
+      "side": 1,
+      "message": "In the future, it\u0027d be nice to make the cleanup a separate CL. But as you\u0027ve already done the work, no need to split it up now.",
+      "parentUuid": "2ef81b52_44e2a1c0",
+      "revId": "eaf2b2f175f1f9930383f3a4e8a7491bb5009215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
