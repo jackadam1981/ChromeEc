@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e805d7_9e9bf193",
+        "filename": "extra/usb_serial/.raiden.mod.cmd",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T03:08:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6318ce22_f7e4eb75",
+      "revId": "3d1a83f64dec1423277b88c5df839deec133bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfded109_a0731a02",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-15T23:09:46Z",
       "side": 1,
       "message": "Same here - please remove this file from the CL.",
+      "revId": "3d1a83f64dec1423277b88c5df839deec133bc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da5b98c_134d7ae3",
+        "filename": "extra/usb_serial/raiden.mod",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-16T03:08:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "bfded109_a0731a02",
       "revId": "3d1a83f64dec1423277b88c5df839deec133bc2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
