@@ -51,6 +51,24 @@
       "parentUuid": "f1b53bbb_d14c7afc",
       "revId": "e7abd78af0b8bacfa6f21c2025e0b9369d8dab5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f4ea05_56103a96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-03-16T22:58:10Z",
+      "side": 1,
+      "message": "Checked it, and it\u0027s only showing one set of code coverage information for a CL in platform/ec.",
+      "parentUuid": "cbb95656_77062891",
+      "revId": "e7abd78af0b8bacfa6f21c2025e0b9369d8dab5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
