@@ -33,6 +33,24 @@
       "message": "Hi Elmo, can you please verify these changes and put V+1 on this bug.",
       "revId": "fee001d2d55a0aa633a7f75c4ad534d73f384059",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "657c671c_3b4bab11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2021-03-16T07:52:39Z",
+      "side": 1,
+      "message": "We\u0027ve confirmed with this CL, we can do pd communication on ro. However we can\u0027t confirm whole efs2 work...it need workable ap to see if we can jump rw.",
+      "parentUuid": "61aad172_e6e990a0",
+      "revId": "fee001d2d55a0aa633a7f75c4ad534d73f384059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
