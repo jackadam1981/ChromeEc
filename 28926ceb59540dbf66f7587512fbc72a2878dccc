@@ -16,6 +16,24 @@
       "message": "wouldn\u0027t you want to distinguish the batteries by querying them?\n\ncheck the \"battery\" command on the EC console to see if they\nreport different \"Manuf:\" or \"Device:\" fields so they can\nbe distinguished.",
       "revId": "28926ceb59540dbf66f7587512fbc72a2878dccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee5aab7_ec948100",
+        "filename": "baseboard/intelrvp/adlrvp_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1379412
+      },
+      "writtenOn": "2021-03-16T08:13:18Z",
+      "side": 1,
+      "message": "Hi Caveh,\n\"battery\" command shows same information, for both batteries (adlrvp-m and adlrvp-p) -\n\nBattery information from adlrvp-m:\n21-03-11 20:37:17.967   Manuf:     Getac\n21-03-11 20:37:17.967   Device:    bq40z50-R3\n\nBattery information from adlrvp-p:\n2020-08-27 12:27:28 Manuf: Getac\n2020-08-27 12:27:28 Device: bq40z50-R3",
+      "parentUuid": "0b297b76_97d5519a",
+      "revId": "28926ceb59540dbf66f7587512fbc72a2878dccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
