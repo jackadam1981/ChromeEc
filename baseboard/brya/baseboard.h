@@ -37,6 +37,12 @@
 
 #define CONFIG_HIBERNATE_PSL
 
+/*
+ * TODO(b/181619297): enable low power mode
+ * avoid annoying serial console character drop on wakeup
+ */
+/* #define CONFIG_LOW_POWER_IDLE */
+
 /* Work around double CR50 reset by waiting in initial power on. */
 #define CONFIG_BOARD_RESET_AFTER_POWER_ON
 
