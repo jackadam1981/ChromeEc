@@ -88,6 +88,24 @@
       "parentUuid": "c4bcd7e8_e6e10a99",
       "revId": "1444c5a83fd2fb157f8361828cb99b71b81e7f6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "225858af_daadbe36",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-16T20:07:44Z",
+      "side": 1,
+      "message": "\u003e We had no action being taken previously for usb4 reset. Now, we are taking right actions per spec. Remaining part is adding support for usb4 data_reset PD message which can be handled as separate CL.We don’t have usb4 devices in the market but IMHO from port partner perspective, removing terminations should be far better than doing nothing at all.\n\nThe reset (with no associated action) was being initiated by us, so the other side was simply unaware that it should have happened. We weren\u0027t violating spec. With this CL, we\u0027re disconnecting the SuperSpeed lines without going through the associated PD handshake. I could imagine a partner reacting badly to that. That being said, if there aren\u0027t any available devices that have a problem with this, and it improves behavior with some of them, I\u0027m OK with this as a step towards proper USB4 exit (which is getting near the top of my to do list).\n\n\u003e The problem is, on warm reboot. we are exiting tbt mode for the cable, setting the mux and retimer to USB mode. But EC is still in USB4 mode.\n\u003e So we can either -\n\u003e 1. Set USB4 to start and set mux and retimer to USB or\n\u003e 2. Not exit TBT mode for the cable\n\u003e \n\u003e @Abe which one do you prefer?\n\nWe could probably carve out an exception to only stay in TBT mode for the cable if the port partner was in USB4 mode, but that seems like a step in the wrong direction. I think this CL (option 1 above) takes the best approach for now.",
+      "parentUuid": "4a552704_2cb2be0e",
+      "revId": "1444c5a83fd2fb157f8361828cb99b71b81e7f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
