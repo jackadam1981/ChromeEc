@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b7a40f_1fb87d00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-16T17:56:07Z",
+      "side": 1,
+      "message": "Could you use lazor as a reference? Some bugs were found on lazor and got fixed; but forgot to port back to trogdor for some reasons. Using lazor is preferred.",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "805d4013ac1b416dd224a6da6c3e7bafc42bf7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc7f197c_ee07cfcd",
+        "filename": "board/marzipan/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-16T17:56:07Z",
+      "side": 1,
+      "message": "Update the board name",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "805d4013ac1b416dd224a6da6c3e7bafc42bf7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a04dc350_7c52eed3",
+        "filename": "board/marzipan/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-16T17:56:07Z",
+      "side": 1,
+      "message": "Keep only one. Also do it in board.c.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "805d4013ac1b416dd224a6da6c3e7bafc42bf7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a4b2b9d_35af9526",
+        "filename": "board/marzipan/board_revs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-16T17:56:07Z",
+      "side": 1,
+      "message": "You don\u0027t need this file. Remove it.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "805d4013ac1b416dd224a6da6c3e7bafc42bf7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
