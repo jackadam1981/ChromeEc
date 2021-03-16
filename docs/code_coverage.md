@@ -33,3 +33,16 @@ function data mismatch at
 
 These warnings can be ignored. (FYI, the "function data mismatch" warnings
 appear to be caused in part by using relative paths instead of absolute paths.)
+
+## Zephyr ztest code coverage
+
+This needs some work, but you can generate coverage reports with these commands:
+
+```
+for i in zephyr/test/* ; do
+        builddir="build/ztest/$(basename $i)"
+        zmake configure --test -B ${builddir} $i
+        lcov --gcov-tool $HOME/trunk/src/platform/ec/util/llvm-gcov.sh -q -o ${builddir}.info  -c -d ${builddir} -t "$(basename $i)" --follow
+done
+genhtml -q -o build/ztest/coverage_rpt -t "Zephyr EC Unittest" -p /mnt/host/source/src -s build/ztest/*.info
+```
