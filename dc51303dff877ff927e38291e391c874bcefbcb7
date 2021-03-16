@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f856fce_72d07cb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T00:29:00Z",
+      "side": 1,
+      "message": "Thanks so much! Just one last typo.",
+      "revId": "dc51303dff877ff927e38291e391c874bcefbcb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62c7c67_5b80a7fb",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-16T00:29:00Z",
+      "side": 1,
+      "message": "typo: peripheral",
+      "range": {
+        "startLine": 577,
+        "startChar": 21,
+        "endLine": 577,
+        "endChar": 30
+      },
+      "revId": "dc51303dff877ff927e38291e391c874bcefbcb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
