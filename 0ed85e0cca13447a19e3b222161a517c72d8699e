@@ -22,6 +22,30 @@
       },
       "revId": "0ed85e0cca13447a19e3b222161a517c72d8699e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9e488d_3b261ccd",
+        "filename": "zephyr/app/ec/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-16T15:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d6a9fa6_5814d4eb",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "0ed85e0cca13447a19e3b222161a517c72d8699e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
