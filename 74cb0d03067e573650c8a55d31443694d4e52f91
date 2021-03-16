@@ -71,6 +71,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08bbe3da_f2c1bd6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-16T17:54:58Z",
+      "side": 1,
+      "message": "Please do try to get this in ASAP",
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d7bdc2c_ea30be9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-16T17:54:58Z",
+      "side": 1,
+      "message": "Right, but the problem is that this is somewhere else...at least in Linux the binding files have examples too. Can you copy in a small fragment in each case?",
+      "parentUuid": "5cd43e9a_3a163882",
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2af8a62_33bd6b26",
@@ -302,6 +337,30 @@
       "side": 1,
       "message": "any reason ?",
       "parentUuid": "5af79ba2_39abb56c",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd66d2cd_e31c19ce",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-16T17:54:58Z",
+      "side": 1,
+      "message": "Your CL has all the bindings and this has nothing to do with any particular board. Once it is submitted, people will not change it for each board.\n\nThe volteer CL (once you split it) is what others will create when they want to add support to a particular board.\n\nWe try to have core features separate from the CLs to implement them for a particular board. There are all sorts of reasons for this:\n\n1. Easier to revert the board CL if needed, without removing the core support\n2. Easier to review as you are not trying to think of the generic and the specific at the same time\n3. Better commit history, since we can see the volteer changes using the volteer: tag and don\u0027t need to consider unrelated code.\n\nAss a rule, CLs should just do one thing",
+      "parentUuid": "fc179be4_ea294a87",
       "range": {
         "startLine": 41,
         "startChar": 2,
