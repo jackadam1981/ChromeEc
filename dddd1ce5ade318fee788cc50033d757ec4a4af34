@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "610dca46_d3a73d70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-16T22:47:50Z",
+      "side": 1,
+      "message": "actually, that\u0027s pretty easy to do if you have interest in tacking it.\n\nyou can see the \"--bringup\" flag in zmake as an example, I think it would look pretty similar",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "dddd1ce5ade318fee788cc50033d757ec4a4af34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b4a514e2_84b67e03",
