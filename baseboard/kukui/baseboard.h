@@ -30,6 +30,9 @@
 #error Must define a VARIANT_KUKUI_BATTERY
 #endif /* VARIANT_KUKUI_BATTERY */
 
+/* don't want to see warning messages from kernel */
+#define CONFIG_BATTERY_CHEMISTRY_STR	"LION"
+
 /*
  * Variant charger defines, pick one:
  * VARIANT_KUKUI_CHARGER_MT6370

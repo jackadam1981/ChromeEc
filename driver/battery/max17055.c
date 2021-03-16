@@ -178,7 +178,11 @@ int battery_time_at_rate(int rate, int *minutes)
 
 int battery_device_chemistry(char *dest, int size)
 {
+#ifdef CONFIG_BATTERY_CHEMISTRY_STR
+	strzcpy(dest, CONFIG_BATTERY_CHEMISTRY_STR, size);
+#else
 	strzcpy(dest, "<unkn>", size);
+#endif
 
 	return EC_SUCCESS;
 }
