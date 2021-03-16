@@ -977,6 +977,14 @@
 #undef CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA
 
 /*
+ * When configured, the BQ25710 charger chip's battery auto-wakeup
+ * feature is enabled when initializing the chip. If the battery is
+ * below VSYS_MIN, a 128mA charging current is provided for up to 30
+ * minutes.
+ */
+#undef CONFIG_CHARGER_BQ25710_AUTO_WAKEUP
+
+/*
  * Board specific maximum input current limit, in mA.
  */
 #undef CONFIG_CHARGER_MAX_INPUT_CURRENT
