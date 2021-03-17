@@ -16,6 +16,24 @@
       "message": "We can\u0027t use ifdef\u0027s here. ec_commands.h is consumed outside of CrOS EC as well and those projects would have no idea about what config_* options are defined or not.\n\nPerhaps we could add a new field in an unused region? BATT_SERIAL_EXTENDED or similar?",
       "revId": "318dc17eeeda01e3d97204aa2a6a47ce3aadd137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac466498_4746f9a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-17T08:07:53Z",
+      "side": 1,
+      "message": "We can separate two problems.\n1. ectool utility for vt2\n As stimim mentioned in b/181650356\u0027s comment#14, kernel can handle up to 32 bytes string. So, I suspect we can change EC_COMM_TEXT_MAX to 32. I change this marco only, and it works fine in my side.\n\n2. Extend \"Battery Model string\"\n Now, we need battery model string to report 8-bytes model string. If  can\u0027t use \"ifdef\u0027s\" in ec_commands, that could affect other project. I\u0027m also not clear how to replace EC_MEMMAP_BATT_MODEL with new field. Could you give us some example?",
+      "parentUuid": "59184e0a_c16b5c5d",
+      "revId": "318dc17eeeda01e3d97204aa2a6a47ce3aadd137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

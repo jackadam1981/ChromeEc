@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61218903_93285b07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-17T08:07:53Z",
+      "side": 1,
+      "message": "Follow Diana\u0027s suggestion to enable below token.\n#define CONFIG_BATTERY_V2\n#define CONFIG_BATTERY_COUNT 1\n#define CONFIG_HOSTCMD_BATTERY_V2",
+      "revId": "1839dc7665f6ba3e28fd33a4094677d0709b9b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
