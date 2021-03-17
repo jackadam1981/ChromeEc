@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "465e6dce_7d73789c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-17T22:30:24Z",
+      "side": 1,
+      "message": "new configs now need to also be added to kconfig on the zephyr side\nof the EC tree. i\u0027ll take care of this one as i\u0027m already in the\nmiddle of updating another config option.\n",
+      "revId": "6b035f40d4912f0962b08cfb53681635f865e573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
