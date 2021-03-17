@@ -1523,12 +1523,13 @@ void tc_state_init(int port)
 #endif
 
 	/*
-	 * If we just lost power, don't apply CC open. Otherwise we would boot
-	 * loop, and if this is a fresh power on, then we know there isn't any
-	 * stale PD state as well.
+	 * If we don't have battery or we just lost power, don't apply CC open.
+	 * Otherwise we would boot loop, and if this is a fresh power on,
+	 * then we know there isn't any stale PD state as well.
 	 */
-	if (system_get_reset_flags() &
-	    (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON)) {
+	if ((IS_ENABLED(CONFIG_BATTERY) && (battery_is_present() == BP_NO)) ||
+	    (system_get_reset_flags() &
+	    (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON))) {
 		first_state = TC_UNATTACHED_SNK;
 
 		/* Turn off any previous sourcing */
