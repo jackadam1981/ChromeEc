@@ -22,6 +22,30 @@
       },
       "revId": "43f19b56cb2b6139dd22f6f3e875bedb2ea78dc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8190ef89_95b809b6",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-17T21:31:13Z",
+      "side": 1,
+      "message": "ACK. \nInitially we thought about this, but the code in chip/{EC} has CHIP_FAMILY_** hence planned to add CHIP_FAMILY_** in baseboard/{EC} if needed.\n\nWhen MECC is designed we suggest EC vendors stick to same GPIOs as previous MECC for backward compatibility (at least for booting SOC) on both Windows and Chrome.\n\nLogically even if we use TGL EC code it boots ADL RVP.",
+      "parentUuid": "67529e58_82705a8f",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "43f19b56cb2b6139dd22f6f3e875bedb2ea78dc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
