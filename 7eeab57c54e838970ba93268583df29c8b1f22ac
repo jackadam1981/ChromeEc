@@ -48,6 +48,53 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dabb58ff_e892c51d",
+        "filename": "board/adlrvpp_npcx/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-17T23:30:05Z",
+      "side": 1,
+      "message": "ya, a quirky way of getting symbols defined.",
+      "parentUuid": "9eae6147_6079f0b2",
+      "range": {
+        "startLine": 108,
+        "startChar": 35,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "7eeab57c54e838970ba93268583df29c8b1f22ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c950849d_d57bc051",
+        "filename": "board/adlrvpp_npcx/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-17T23:30:05Z",
+      "side": 1,
+      "message": "i assume these names are from the schematics?\n\nit\u0027s confusing to use the NPCX I2C port number here\neven though the symbol is for TCPC. you end up with\nGPIO_USBC_TCPC_I2C_CLK_P2 used for I2C_PORT_TYPEC_1,\netc. in the i2c_ports array.",
+      "range": {
+        "startLine": 120,
+        "startChar": 22,
+        "endLine": 120,
+        "endChar": 25
+      },
+      "revId": "7eeab57c54e838970ba93268583df29c8b1f22ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "992af561_93fb711a",
@@ -85,6 +132,30 @@
       "side": 1,
       "message": "Ack\nGenerally we don\u0027t do power measurement on MECC due to electrical noise because of long traces and too many stuffing option resistors to support both Windows \u0026 Chrome.\nSome of these pins do other purpose for Windows hence we keep them input.\n\nIs it okay to keep them input?",
       "parentUuid": "992af561_93fb711a",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "7eeab57c54e838970ba93268583df29c8b1f22ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0b8898_3d0e78f1",
+        "filename": "board/adlrvpp_npcx/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-17T23:30:05Z",
+      "side": 1,
+      "message": "NPCX sets them up as input + pullup if you don\u0027t list them here.\nyour choice if you want to set these explicitly.",
+      "parentUuid": "05bbcccc_b57d185f",
       "range": {
         "startLine": 131,
         "startChar": 3,
