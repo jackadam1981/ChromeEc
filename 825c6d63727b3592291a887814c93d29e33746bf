@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "526137d5_eb5a2df7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-17T23:29:32Z",
+      "side": 1,
+      "message": "Eh, not quite necessary here. You are just using a well-tested feature (BuildConfig), so I don\u0027t see how you\u0027re going to test passing the parameter to Zmake.configure without mocking the universe...",
+      "parentUuid": "22df938f_dcf45257",
+      "revId": "825c6d63727b3592291a887814c93d29e33746bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e123b150_b1dc3b75",
@@ -60,6 +78,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2c0f18e_954f68af",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-17T23:29:32Z",
+      "side": 1,
+      "message": "Kconfig",
+      "range": {
+        "startLine": 102,
+        "startChar": 56,
+        "endLine": 102,
+        "endChar": 63
+      },
+      "revId": "825c6d63727b3592291a887814c93d29e33746bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b706870_94793a03",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 1
@@ -71,6 +112,30 @@
       "writtenOn": "2021-03-17T23:15:16Z",
       "side": 1,
       "message": "space around \u003d",
+      "range": {
+        "startLine": 153,
+        "startChar": 28,
+        "endLine": 153,
+        "endChar": 30
+      },
+      "revId": "825c6d63727b3592291a887814c93d29e33746bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adaacad4_03ddbcd0",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-17T23:29:32Z",
+      "side": 1,
+      "message": "Nope, this is a keyword argument, and thus spaces should *not* be placed around the equals.\n\nOfficial style reference: https://www.python.org/dev/peps/pep-0008/#other-recommendations\n\n\"Don\u0027t use spaces around the \u003d sign when used to indicate a keyword argument, or when used to indicate a default value for an unannotated function parameter.\"",
+      "parentUuid": "8b706870_94793a03",
       "range": {
         "startLine": 153,
         "startChar": 28,
