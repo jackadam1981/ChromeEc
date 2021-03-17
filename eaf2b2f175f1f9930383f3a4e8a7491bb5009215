@@ -152,6 +152,24 @@
       "parentUuid": "2ef81b52_44e2a1c0",
       "revId": "eaf2b2f175f1f9930383f3a4e8a7491bb5009215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8449afe_c8b37ce3",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-17T19:07:12Z",
+      "side": 1,
+      "message": "updated \"patch set 3\" to follow OSHWA recommendation, please review it;",
+      "parentUuid": "40ff9521_4782408f",
+      "revId": "eaf2b2f175f1f9930383f3a4e8a7491bb5009215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
