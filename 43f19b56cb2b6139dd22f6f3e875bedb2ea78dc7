@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67529e58_82705a8f",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-17T21:21:29Z",
+      "side": 1,
+      "message": "just a thought:\nwould it make sense to check CHIP_FAMILY_xyz instead here?\nthis is the one set by CHIP_FAMILY:\u003d... in the board\u0027s\nbuild.mk. i\u0027m not sure how tightly coupled your board\ntype is with the EC type.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "43f19b56cb2b6139dd22f6f3e875bedb2ea78dc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
