@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b15069b_a70c9734",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-17T16:09:43Z",
+      "side": 1,
+      "message": "Do you want to test physical disconnect too? It\u0027s something easy to check.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "88d71fa1d6266057ceb2be2a0b78dbb2002613e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5baffaa7_c5b7226a",
+        "filename": "baseboard/brya/battery_presence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-17T16:09:43Z",
+      "side": 1,
+      "message": "nit: You can squeeze these.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "88d71fa1d6266057ceb2be2a0b78dbb2002613e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b03b77_aeebc3f6",
+        "filename": "baseboard/brya/battery_presence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-17T16:09:43Z",
+      "side": 1,
+      "message": "nit: You can squeeze this.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 32
+      },
+      "revId": "88d71fa1d6266057ceb2be2a0b78dbb2002613e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
