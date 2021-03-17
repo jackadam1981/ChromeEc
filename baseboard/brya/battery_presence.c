@@ -24,16 +24,13 @@ static bool battery_init(void)
 {
 	int batt_status;
 
-	return battery_status(&batt_status) ? 0 :
+	return battery_status(&batt_status) != EC_SUCCESS ? false :
 		!!(batt_status & STATUS_INITIALIZED);
 }
 
 __overridable bool board_battery_is_initialized(void)
 {
-	/*
-	 * Set default to return true
-	 */
-	return true;
+	return battery_init();
 }
 
 /*
@@ -44,6 +41,9 @@ static enum battery_present battery_check_present_status(void)
 	enum battery_present batt_pres;
 	bool batt_initialization_state;
 
+	if (battery_is_cut_off())
+		return BP_NO;
+
 	/* Get the physical hardware status */
 	batt_pres = battery_hw_present();
 
@@ -51,15 +51,15 @@ static enum battery_present battery_check_present_status(void)
 	 * If the battery is not physically connected, then no need to perform
 	 * any more checks.
 	 */
-	if (batt_pres != BP_YES)
-		return batt_pres;
+	if (batt_pres == BP_NO)
+		return BP_NO;
 
 	/*
 	 * If the battery is present now and was present last time we checked,
 	 * return early.
 	 */
-	if (batt_pres == batt_pres_prev)
-		return batt_pres;
+	if ((batt_pres == BP_YES) && (batt_pres == batt_pres_prev))
+		return BP_YES;
 
 	/*
 	 * Check battery initialization. If the battery is not initialized,
@@ -71,15 +71,8 @@ static enum battery_present battery_check_present_status(void)
 	batt_initialization_state = board_battery_is_initialized();
 	if (!batt_initialization_state)
 		return BP_NOT_SURE;
-	/*
-	 * Ensure that battery is:
-	 * 1. Not in cutoff
-	 * 2. Initialized
-	 */
-	if (battery_is_cut_off() || !battery_init())
-		batt_pres = BP_NO;
 
-	return batt_pres;
+	return BP_YES;
 }
 
 enum battery_present battery_is_present(void)
