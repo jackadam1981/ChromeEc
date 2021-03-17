@@ -6,6 +6,7 @@
  */
 
 #include "battery.h"
+#include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
 #include "console.h"
@@ -15,6 +16,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "timer.h"
+#include "usb_pd.h"
 #include "util.h"
 #include "watchdog.h"
 
@@ -670,3 +672,68 @@ int battery_manufacturer_name(char *dest, int size)
 {
 	return get_battery_manufacturer_name(dest, size);
 }
+
+#if defined(CONFIG_BATTERY_FULL_CHIPSET_OFF_MV_LIMIT)
+
+#if CONFIG_BATTERY_FULL_CHIPSET_OFF_MV_LIMIT < 5000 || \
+    CONFIG_BATTERY_FULL_CHIPSET_OFF_MV_LIMIT >= PD_MAX_VOLTAGE_MV
+	#error "Voltage limit must be between 5000 and PD_MAX_VOLTAGE_MV"
+#endif
+
+#if !((defined(CONFIG_USB_PD_TCPMV1) && defined(CONFIG_USB_PD_DUAL_ROLE)) || \
+    (defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USB_PE_SM)))
+	#error "Voltage reducing requires TCPM with Policy Engine"
+#endif
+
+static int saved_input_voltage = -1;
+
+/* Lower our input voltage to 5V in S5/G3 when battery is full. */
+static void reduce_input_voltage_when_full(void)
+{
+	int max_pd_voltage_mv = pd_get_max_voltage();
+	struct batt_params batt;
+	int port;
+
+	port = charge_manager_get_active_charge_port();
+	if (port < 0 || port >= board_get_usb_pd_port_count())
+		return;
+
+	battery_get_params(&batt);
+
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF) &&
+	    !(batt.flags & BATT_FLAG_WANT_CHARGE)) {
+		/*
+		 * Chipset is in S5/G3 and battery is full. Apply limit if
+		 * current voltage is different. Save current voltage, it will
+		 * be resotred when chipset leaves S5/G3 or battery wants
+		 * charge.
+		 */
+		if (max_pd_voltage_mv !=
+		    CONFIG_BATTERY_FULL_CHIPSET_OFF_MV_LIMIT) {
+			saved_input_voltage = max_pd_voltage_mv;
+			max_pd_voltage_mv =
+			    CONFIG_BATTERY_FULL_CHIPSET_OFF_MV_LIMIT;
+		}
+	}
+	else if (saved_input_voltage != -1) {
+		/*
+		 * Chipset is not in S5/G3 or battery is not full and input
+		 * voltage is reduced (saved_input_voltage != -1)
+		 */
+		max_pd_voltage_mv = saved_input_voltage;
+		saved_input_voltage = -1;
+	}
+
+	if (pd_get_max_voltage() != max_pd_voltage_mv) {
+		pd_set_external_voltage_limit(port, max_pd_voltage_mv);
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, reduce_input_voltage_when_full,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, reduce_input_voltage_when_full,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, reduce_input_voltage_when_full,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, reduce_input_voltage_when_full,
+	     HOOK_PRIO_DEFAULT);
+#endif
