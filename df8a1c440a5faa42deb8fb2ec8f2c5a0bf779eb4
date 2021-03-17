@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ba3e72_7bb80725",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-17T23:16:24Z",
+      "side": 1,
+      "message": "I suppose this is better as a separate tool since we would hope to drop it one day",
+      "revId": "df8a1c440a5faa42deb8fb2ec8f2c5a0bf779eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c065c8fe_3c718321",
+        "filename": "util/remove_symlinks.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-17T23:16:24Z",
+      "side": 1,
+      "message": "replaces?",
+      "range": {
+        "startLine": 6,
+        "startChar": 39,
+        "endLine": 6,
+        "endChar": 46
+      },
+      "revId": "df8a1c440a5faa42deb8fb2ec8f2c5a0bf779eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
