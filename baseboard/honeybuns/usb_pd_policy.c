@@ -192,9 +192,16 @@ int pd_check_power_swap(int port)
 	return 0;
 }
 
-bool pd_check_port_requests_source(int port)
+__override bool pd_can_source_from_device(int port, const int pdo_cnt,
+				      const uint32_t *pdos)
 {
-	return true;
+	/*
+	 * This function is called to determine if this port can be charged by
+	 * the port partner. We always want to be a power role source, so always
+	 * return false.
+	 */
+
+	return false;
 }
 
 static int vdm_is_dp_enabled(int port)
