@@ -16,6 +16,23 @@
       "message": "Hi LCFC, please click Verified+1 if this CL is able to pass test.",
       "revId": "29cf89a7ce7d4497fb4977c879172ee3bdde692e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523fdb25_abefad23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416787
+      },
+      "writtenOn": "2021-03-17T08:03:17Z",
+      "side": 1,
+      "message": "we\u0027ve verified 20 devices with this CL, the result is pass and didn\u0027t show the wrong ADC value.",
+      "revId": "29cf89a7ce7d4497fb4977c879172ee3bdde692e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
