@@ -2953,6 +2953,9 @@
  */
 #undef CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP
 
+/* Reset SLP_S3/SLP_S4/SLP_S5 virtual wire when eSPI_RST is asserted */
+#undef CONFIG_HOSTCMD_ESPI_RESET_SLP_SX_VW_ON_ESPI_RST
+
 /* Base address of low power RAM. */
 #undef CONFIG_LPRAM_BASE
 
