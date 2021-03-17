@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3defd4_71bf6ca1",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-17T22:38:37Z",
+      "side": 1,
+      "message": "/* Copyright 2021 The Chromium OS Authors. All rights reserved.\n * Use of this source code is governed by a BSD-style license that can be\n * found in the LICENSE file.\n */",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "389fb6dfec0f0e8369caf65151daaed53004bac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b65dc1_0c9802cb",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/it8xxx2_evb.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-17T22:38:37Z",
+      "side": 1,
+      "message": "this yaml file isn\u0027t needed, you can delete it",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "389fb6dfec0f0e8369caf65151daaed53004bac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "973f7941_d9c42bc3",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/it8xxx2_evb_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-17T22:38:37Z",
+      "side": 1,
+      "message": "It\u0027s 2021 😊\n\nUse the standard Chrome OS copyright header, no SPDX.  You can see other files in this repo for an example.",
+      "revId": "389fb6dfec0f0e8369caf65151daaed53004bac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f720460b_0a5a0661",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-17T22:38:37Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "389fb6dfec0f0e8369caf65151daaed53004bac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
