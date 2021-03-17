@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c71ae1b8_fa027a81",
+        "filename": "board/adlrvpp_npcx/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-17T23:50:04Z",
+      "side": 1,
+      "message": "Done\n\nremoved \u0026 added a note in board.h",
+      "parentUuid": "90cfe007_9b8f2f25",
+      "range": {
+        "startLine": 120,
+        "startChar": 22,
+        "endLine": 120,
+        "endChar": 25
+      },
+      "revId": "7eeab57c54e838970ba93268583df29c8b1f22ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "992af561_93fb711a",
