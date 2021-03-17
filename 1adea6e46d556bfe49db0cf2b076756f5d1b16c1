@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844ae930_8fb3b440",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-17T16:40:21Z",
+      "side": 1,
+      "message": "Duplicate this for the BQ25720 option so the user only needs to pick one of  BQ25710 or BQ25720",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 90
+      },
+      "revId": "1adea6e46d556bfe49db0cf2b076756f5d1b16c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30f3322_8065db24",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-17T16:40:21Z",
+      "side": 1,
+      "message": "No need to make the user select both PLATFORM_EC_CHARGER_BQ25710 and PLATFORM_EC_CHARGER_BQ25720. Move the BQ25720 config under \"Charger select\" choice.  In config_chip.h, you can automatically enable both CONFIG_CHARGER_BQ25710 and CONFIG_CHARGER_BQ25720 when the PLATFORM_EC_CHARGER_BQ25720 option is selected.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "1adea6e46d556bfe49db0cf2b076756f5d1b16c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
