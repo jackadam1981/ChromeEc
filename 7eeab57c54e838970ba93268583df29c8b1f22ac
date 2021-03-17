@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90cfe007_9b8f2f25",
+        "filename": "board/adlrvpp_npcx/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-17T23:40:36Z",
+      "side": 1,
+      "message": "ACK, \nYes, I2C port for Type-C port-1 \u0026 port-2 are swapped in the schematics.\nI was done to reduce the BOM stuffing options on the RVP.\nI will remove this Port reference",
+      "parentUuid": "c950849d_d57bc051",
+      "range": {
+        "startLine": 120,
+        "startChar": 22,
+        "endLine": 120,
+        "endChar": 25
+      },
+      "revId": "7eeab57c54e838970ba93268583df29c8b1f22ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "992af561_93fb711a",
         "filename": "board/adlrvpp_npcx/gpio.inc",
         "patchSetId": 12
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "NPCX sets them up as input + pullup if you don\u0027t list them here.\nyour choice if you want to set these explicitly.",
       "parentUuid": "05bbcccc_b57d185f",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "7eeab57c54e838970ba93268583df29c8b1f22ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de614cb_a76d2130",
+        "filename": "board/adlrvpp_npcx/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-17T23:40:36Z",
+      "side": 1,
+      "message": "okay, I will retain them here as input without Pull-up so that we don\u0027t alter windows configs of RVP",
+      "parentUuid": "ea0b8898_3d0e78f1",
       "range": {
         "startLine": 131,
         "startChar": 3,
