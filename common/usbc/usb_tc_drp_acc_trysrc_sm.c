@@ -1523,6 +1523,13 @@ void tc_state_init(int port)
 #endif
 
 	/*
+	 * We are going to apply CC open (start with ErrorRecovery state)
+	 * unless there is something which forbids us to do that (one of
+	 * conditions below is true)
+	 */
+	first_state = TC_ERROR_RECOVERY;
+
+	/*
 	 * If we just lost power, don't apply CC open. Otherwise we would boot
 	 * loop, and if this is a fresh power on, then we know there isn't any
 	 * stale PD state as well.
@@ -1530,12 +1537,21 @@ void tc_state_init(int port)
 	if (system_get_reset_flags() &
 	    (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON)) {
 		first_state = TC_UNATTACHED_SNK;
+	}
 
+	/*
+	 * If this is non-EFS2 device and battery is not present, don't apply
+	 * CC open because it will cause brown out.
+	 */
+	if (!IS_ENABLED(CONFIG_VBOOT_EFS2) && IS_ENABLED(CONFIG_BATTERY) &&
+	    (battery_is_present() == BP_NO)) {
+		first_state = TC_UNATTACHED_SNK;
+	}
+
+	if (first_state == TC_UNATTACHED_SNK) {
 		/* Turn off any previous sourcing */
 		tc_src_power_off(port);
 		set_vconn(port, 0);
-	} else {
-		first_state = TC_ERROR_RECOVERY;
 	}
 
 #ifdef CONFIG_USB_PD_TCPC_BOARD_INIT
