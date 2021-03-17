@@ -16,6 +16,29 @@
       "message": "Thanks!",
       "revId": "c6a2abf4b6514b98e300f92b0d29e7777aa2c968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d57d61e_bfaba391",
+        "filename": "chip/it83xx/adc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-17T06:47:12Z",
+      "side": 1,
+      "message": "typo: cleared",
+      "range": {
+        "startLine": 361,
+        "startChar": 29,
+        "endLine": 361,
+        "endChar": 35
+      },
+      "revId": "c6a2abf4b6514b98e300f92b0d29e7777aa2c968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
