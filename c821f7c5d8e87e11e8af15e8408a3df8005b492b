@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23b9349d_71fd5106",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-17T00:15:13Z",
+      "side": 1,
+      "message": "Remove this tab.",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 3
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec41ce9_6eb745b5",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-17T00:15:13Z",
+      "side": 1,
+      "message": "Could you use the BIT(...) macro for these? (Not SEL_OFF of course)",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 26
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5cc804b_37036afe",
         "filename": "board/lindar/led.c",
         "patchSetId": 3
@@ -158,6 +204,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42cb597c_e391c07e",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-17T00:15:13Z",
+      "side": 1,
+      "message": "nit: nothing on the first line in multi-line comments.",
+      "range": {
+        "startLine": 247,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 64
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe5a3e6_564d6414",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-17T00:15:13Z",
+      "side": 1,
+      "message": "If this is the case, make sure to define CONFIG_I2C_BUS_MAY_BE_UNPOWERED and define board_is_i2c_port_powered().",
+      "range": {
+        "startLine": 248,
+        "startChar": 29,
+        "endLine": 250,
+        "endChar": 0
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32b30d84_90652aa0",
         "filename": "board/lindar/led.c",
         "patchSetId": 3
@@ -198,6 +290,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b141e24c_3288454d",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-17T00:15:13Z",
+      "side": 1,
+      "message": "nit: add newlines in between the different cases.\n    \ncase BAR_COLOR_ORG_20_PERCENT:\n    i2c_lock()\n    ...\n    break;\n    \ncase BAR_COLOR_ORG_40_PERCENT:",
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712a82e4_a5e101a6",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-17T00:15:13Z",
+      "side": 1,
+      "message": "I think it would be better to use charge_get_display_charge() instead since it should match up with what\u0027s being shown in the UI.",
+      "range": {
+        "startLine": 394,
+        "startChar": 19,
+        "endLine": 394,
+        "endChar": 37
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "debc1a01_76606f55",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-17T00:15:13Z",
+      "side": 1,
+      "message": "Nothing on the first line in multi-line comments.",
+      "range": {
+        "startLine": 399,
+        "startChar": 4,
+        "endLine": 402,
+        "endChar": 54
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef1d94d_aad0907c",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-17T00:15:13Z",
+      "side": 1,
+      "message": "Don\u0027t use the sleep signals directly, use chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON).",
+      "range": {
+        "startLine": 404,
+        "startChar": 5,
+        "endLine": 404,
+        "endChar": 71
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df864d6b_932857d6",
         "filename": "board/lindar/led.c",
         "patchSetId": 3
@@ -214,6 +392,29 @@
         "startChar": 2,
         "endLine": 408,
         "endChar": 11
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7917d367_f5629f23",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-17T00:15:13Z",
+      "side": 1,
+      "message": "nit: move these declarations to right after lightbar_init() is defined.",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 69
       },
       "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
