@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3741588c_23457c8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-17T15:45:54Z",
+      "side": 1,
+      "message": "For the flash chip constants, these got blindly copied from volteer... peress@ might need to be the one to explain why the values are the way they are.\n\nIMO, these really need to move to device tree. They are hardware configuration, not software, and that way we don\u0027t need to be copy-pasting these between all the devices like we are now.",
+      "revId": "8224f153994ec70661259ec0de49e473eefce359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76aec805_b4b488be",
@@ -37,6 +54,30 @@
       "writtenOn": "2021-03-12T22:10:10Z",
       "side": 1,
       "message": "All Trogdor variants use NPCX796FC, except some early protos, which uses NPCX797WB (check the decision in b/150401868) and no one cares.",
+      "range": {
+        "startLine": 37,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "8224f153994ec70661259ec0de49e473eefce359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9a457f6_29ba0019",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-17T15:45:54Z",
+      "side": 1,
+      "message": "Ack, we won\u0027t use those early protos for this PoC then ;)",
+      "parentUuid": "02206e2c_afe5cda3",
       "range": {
         "startLine": 37,
         "startChar": 20,
