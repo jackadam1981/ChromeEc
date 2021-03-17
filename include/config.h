@@ -619,6 +619,12 @@
 #undef CONFIG_BATTERY_MEASURE_IMBALANCE
 
 /*
+ * Some boards needs to lower input voltage when battery is full and chipset
+ * is in S5/G3.
+ */
+#undef CONFIG_PLATFORM_EC_BATT_FULL_CHIPSET_OFF_MV_LIMIT
+
+/*
  * If remaining capacity is x% of full capacity, remaining capacity is set
  * equal to full capacity.
  *

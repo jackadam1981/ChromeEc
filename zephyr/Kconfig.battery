@@ -149,4 +149,13 @@ config PLATFORM_EC_BATTERY_REVIVE_DISCONNECT
 	  this state by force-applying a charge current. Once defined,
 	  a battery_get_disconnect_state() function has to be provided.
 
+config PLATFORM_EC_BATT_FULL_CHIPSET_OFF_MV_LIMIT
+	int "Set voltage limit when battery is full and chipset is off"
+	depends on PLATFORM_EC_USB_PE_SM && PLATFORM_EC_CHARGE_MANAGER
+	help
+	  Once defined, input voltage will be reduced to given value when
+	  chipset is in S5/G3 state and battery is fully charged.
+	  This condition is checked on chipset shutdown and startup, AC change
+	  and battery SOC change.
+
 endif # PLATFORM_EC_BATTERY
