@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "672a4960_61d40a51",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1733,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-17T18:45:30Z",
+      "side": 1,
+      "message": "I changed this to use pd_can_source_from_device() as the overridable function",
+      "parentUuid": "36a56a0d_92ee3ee1",
+      "revId": "541607d7b1c251616975c372ef74a43dcd765d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee982466_392e6416",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 8
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-11T22:25:10Z",
       "side": 1,
       "message": "nit: let\u0027s keep all the DPM sets for PR swap funneled through pd_request_power_swap so we\u0027re always verifying pd_check_power_swap() unless told to set the request from the \"pd\" command",
+      "revId": "541607d7b1c251616975c372ef74a43dcd765d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76415cc3_e95acc20",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-17T18:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee982466_392e6416",
       "revId": "541607d7b1c251616975c372ef74a43dcd765d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
