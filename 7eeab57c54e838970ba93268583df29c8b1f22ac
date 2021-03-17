@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e600025_8f1ab9d6",
+        "filename": "board/adlrvpp_npcx/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-17T21:39:59Z",
+      "side": 1,
+      "message": "toward the bottom of chip/npcx/gpio.c:gpio_pre_init(),\nall unused pins are automatically set up for low power.",
+      "range": {
+        "startLine": 108,
+        "startChar": 35,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "7eeab57c54e838970ba93268583df29c8b1f22ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "992af561_93fb711a",
+        "filename": "board/adlrvpp_npcx/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-17T21:39:59Z",
+      "side": 1,
+      "message": "how \"unused\" are these pins?\n\ntoward the bottom of chip/npcx/gpio.c:gpio_pre_init(),\nall unused pins are automatically set up for low power.\n\nyou may be able to drop these altogether if the names\nare not used.",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "7eeab57c54e838970ba93268583df29c8b1f22ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
