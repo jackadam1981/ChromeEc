@@ -45,6 +45,30 @@
       },
       "revId": "1adea6e46d556bfe49db0cf2b076756f5d1b16c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "718d734e_5697c224",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-17T19:43:00Z",
+      "side": 1,
+      "message": "alternatively, just add default y to this option",
+      "parentUuid": "e30f3322_8065db24",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "1adea6e46d556bfe49db0cf2b076756f5d1b16c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
