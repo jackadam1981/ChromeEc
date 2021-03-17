@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb8b97e_230310f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-17T09:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2037e305_9d468e04",
+      "revId": "2c93973ef6d68bd7f1d76a6be1712e88332b102e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d80d6a43_4681913a",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-17T06:02:04Z",
       "side": 1,
       "message": "Can you please add some comments here indicating when this config should be selected? Also, details about why it should not be enabled for platforms supporting deep Sx?",
+      "range": {
+        "startLine": 2956,
+        "startChar": 69,
+        "endLine": 2956,
+        "endChar": 71
+      },
+      "revId": "2c93973ef6d68bd7f1d76a6be1712e88332b102e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "132ecc0c_73dee088",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2956,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-17T09:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d80d6a43_4681913a",
       "range": {
         "startLine": 2956,
         "startChar": 69,
