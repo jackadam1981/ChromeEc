@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4794f45_e7deacd7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1749,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-18T17:05:04Z",
+      "side": 1,
+      "message": "So funny story, my suggestion causes DUT-DUT connections to become a constant stream of PR swaps.  2 thoughts:\n\n1. This seems relatively easy to fix by only calling pe_update_src_pdo_flags() if the ones we received changed since last stored value (compare length and then memcmp them)\n2.  DUT-DUT communication is relatively low priority, so if you\u0027re in a rush then we can break it on ToT and I can implement 1 as soon as I can",
+      "revId": "dfc2745978cbfb6420a30b95818cd4244656ec34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91e5b99_490e44a8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1753,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-18T17:05:04Z",
+      "side": 1,
+      "message": "No longer used?",
+      "revId": "dfc2745978cbfb6420a30b95818cd4244656ec34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e833eeed_9a741bc2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1611,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-18T17:05:04Z",
+      "side": 1,
+      "message": "Check if we are allowed to automatically being charging from port partner",
+      "revId": "dfc2745978cbfb6420a30b95818cd4244656ec34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
