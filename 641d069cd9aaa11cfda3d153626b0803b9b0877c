@@ -70,6 +70,23 @@
       },
       "revId": "641d069cd9aaa11cfda3d153626b0803b9b0877c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3304bbcb_1f170ed6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-18T22:40:36Z",
+      "side": 1,
+      "message": "I think we can abandon this one since we cherry-picked, right?",
+      "revId": "641d069cd9aaa11cfda3d153626b0803b9b0877c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
