@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e6feea_589c71f3",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:54:25Z",
+      "side": 1,
+      "message": "this dependency should be handled in kconfig, not in the preprocessor",
+      "range": {
+        "startLine": 1266,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 6
+      },
+      "revId": "13b339e039eacca8a06d6551384e8a8141f6acce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
