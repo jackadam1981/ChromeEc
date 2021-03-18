@@ -16,6 +16,23 @@
       "message": "Friendly ping.",
       "revId": "113fd2f036bd476e0648365c5591dd3fa8702bfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db9b3b0_317aa4d3",
+        "filename": "board/burnet/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-18T04:39:47Z",
+      "side": 1,
+      "message": "suggest keeping the return value check:\n\nif (rv \u003d\u003d EC_SUCCESS \u0026\u0026 val \u003d\u003d ICM426XX_CHIP_ICM40608)",
+      "revId": "113fd2f036bd476e0648365c5591dd3fa8702bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
