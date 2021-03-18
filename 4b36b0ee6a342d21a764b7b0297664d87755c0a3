@@ -68,6 +68,30 @@
       },
       "revId": "4b36b0ee6a342d21a764b7b0297664d87755c0a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0153a07_d9862207",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1496353
+      },
+      "writtenOn": "2021-03-18T21:31:41Z",
+      "side": 1,
+      "message": "PS_SOURCE_ON - PD.PC.E4 failure (No HR or ER after 480mS, ER at 489mS).Case is the same as described in TCPMv2: Change PD_T_PS_SOURCE_OFF value (Gerrit upd. comment);\n\nPD_T_SENDER_RESPONSE - PD.SRC.E6 (HR detected before 24mS,SenderResp. Timer too short 18.8mS) or PD.SNK.E4(HR after 30m.SenderResp. Timer too long 30,1 mS). Timeout reduction helps to pass PD.SNK.E4. TCPMv2: TD.PD.SRC.E5 Compliance failure tread at Gerrit should fix this issue but rare failures (every 4-5th run) of  PD.SRC.E6 are still seen (with both variants (21 or 24 mS) of timeout settings).\n\nPD_T_PD_DEBOUNCE - clears TD 4.6.4 failure (Entering TrySNK PUT must present Rp within 20mS). It looks as tc proc. uses polling (~5mS) to get CC_STAT in Attached.SRC state instead of alarm(CC_CHANGED) catching so with 15mS PD_DEBOUNCE timeout test fails sometimes.",
+      "parentUuid": "b8b9517b_0e82aeae",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 72
+      },
+      "revId": "4b36b0ee6a342d21a764b7b0297664d87755c0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
