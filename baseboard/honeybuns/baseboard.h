@@ -87,7 +87,7 @@
 #define CONFIG_CROS_BOARD_INFO
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_CMD_CBI
-#define CONFIG_CBI_EC_CONTROL
+#define CONFIG_CMD_CBI_SET
 
 /* USB defines */
 /* USB Configuration */
