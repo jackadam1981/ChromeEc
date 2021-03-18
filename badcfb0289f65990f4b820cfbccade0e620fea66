@@ -181,6 +181,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2a87316_96b355ce",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T15:46:09Z",
+      "side": 1,
+      "message": "+1 - this code will definitely need modification once support for another EC chip is added, but we should move this to zephyr/shim/system.c now.",
+      "parentUuid": "7601e0b0_5cf77c76",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "021ee35b_9761003b",
         "filename": "zephyr/shim/chip/npcx/system.c",
         "patchSetId": 9
