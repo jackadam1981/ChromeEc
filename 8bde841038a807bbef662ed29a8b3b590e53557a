@@ -16,6 +16,24 @@
       "message": "the delay seems a bit short for usleep,\nyou likely want udelay(10) instead.",
       "revId": "8bde841038a807bbef662ed29a8b3b590e53557a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac5bac9_7167200c",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-18T18:00:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "370e9435_772adbb0",
+      "revId": "8bde841038a807bbef662ed29a8b3b590e53557a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
