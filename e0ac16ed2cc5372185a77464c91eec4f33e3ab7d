@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c525c3fa_9fcc955e",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-18T06:31:33Z",
+      "side": 1,
+      "message": "We can create an issue in public ec component. It seem like we can view it and add comment but can\u0027t edit the issue(type, priority, status, assignee) if no one set the assignee to us.",
+      "parentUuid": "4dd2460b_8b91e794",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 70
+      },
+      "revId": "e0ac16ed2cc5372185a77464c91eec4f33e3ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f545037f_c17fe6a8",

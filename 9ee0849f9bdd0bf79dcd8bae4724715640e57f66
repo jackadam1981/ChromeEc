@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3b39d7_79d140e2",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-18T06:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "059cffee_9b14d27c",
+      "range": {
+        "startLine": 12,
+        "startChar": 27,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "9ee0849f9bdd0bf79dcd8bae4724715640e57f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adda856d_7f322ecd",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-16T17:49:53Z",
       "side": 1,
       "message": "# PLATFORM_EC",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "9ee0849f9bdd0bf79dcd8bae4724715640e57f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fea4615_55dd4e21",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-18T06:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adda856d_7f322ecd",
       "range": {
         "startLine": 14,
         "startChar": 6,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07c54360_a3584faa",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-18T06:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c0c98c3_88f36403",
+      "revId": "9ee0849f9bdd0bf79dcd8bae4724715640e57f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8158290_419ccba2",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7d4ebe_f665aeab",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-18T06:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8158290_419ccba2",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 9
+      },
+      "revId": "9ee0849f9bdd0bf79dcd8bae4724715640e57f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7a976e6_f26fa780",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-03-16T17:49:53Z",
       "side": 1,
       "message": "Since this should not happen in normal operation I wish we could have a build-time error, or at least a fatal run-time error. Can you please file a bug to revisit this please, and mention it here?",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 9
+      },
+      "revId": "9ee0849f9bdd0bf79dcd8bae4724715640e57f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f7cf64d_e0001e89",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-18T06:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7a976e6_f26fa780",
       "range": {
         "startLine": 204,
         "startChar": 2,
