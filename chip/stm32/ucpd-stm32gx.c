@@ -106,6 +106,9 @@ struct ucpd_tx_desc {
 	union buffer data;
 };
 
+/* CC detection variables */
+#define UCPD_CC_HOLDOFF_USEC 200
+
 /* Tx message variables */
 struct ucpd_tx_desc ucpd_tx_buffers[TX_MSG_TOTAL];
 struct ucpd_tx_desc *ucpd_tx_active_buffer;
@@ -679,7 +682,11 @@ int stm32gx_ucpd_vconn_disc_rp(int port, int enable)
 
 int stm32gx_ucpd_set_cc(int port, int cc_pull, int rp)
 {
+	/* enum tcpc_cc_voltage_status cc1; */
+	/* enum tcpc_cc_voltage_status cc2; */
 	uint32_t cr = STM32_UCPD_CR(port);
+	int cc_pull_prev = (cr & STM32_UCPD_CR_ANAMODE) ?
+		TYPEC_CC_RD : TYPEC_CC_RP;
 
 	/*
 	 * Always set ANASUBMODE to match desired Rp. TCPM layer has a valid
@@ -702,6 +709,15 @@ int stm32gx_ucpd_set_cc(int port, int cc_pull, int rp)
 
 	/* Update pull values */
 	STM32_UCPD_CR(port) = cr;
+
+	/*
+	 * When changing from sink to source power role, allow a little time
+	 * before returning to avoid getting a false Rp_usb detect. This
+	 * situation can occur if an emark cable is connected, but not attached
+	 * on the other end as the Ra in the cable rounds off the edges.
+	 */
+	if (cc_pull != cc_pull_prev)
+		usleep(UCPD_CC_HOLDOFF_USEC);
 
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
 	ucpd_log_mark_cc_term_change();
@@ -909,7 +925,7 @@ static void ucpd_task_log(int timeout, enum ucpd_state enter,
 		ucpd_tx_state_log_freeze = 1;
 }
 
-static void ucpd_task_log_dump(void)
+__maybe_unused static void ucpd_task_log_dump(void)
 {
 	int n;
 	int idx;
@@ -1283,7 +1299,6 @@ enum ec_error_list stm32gx_ucpd_set_bist_test_mode(const int port,
 						   const bool enable)
 {
 	ucpd_rx_bist_mode = enable;
-	CPRINTS("ucpd: Bist test mode = %d", enable);
 
 	return EC_SUCCESS;
 }
@@ -1615,7 +1630,7 @@ void ucpd_info(int port)
 	ccprintf("ucpd: tx_state = %s, tx_req = %02x, timeout_us = %d\n",
 		ucpd_names[ucpd_tx_state], ucpd_tx_request, ucpd_timeout_us);
 
-	ucpd_task_log_dump();
+	//ucpd_task_log_dump();
 }
 
 static int command_ucpd(int argc, char **argv)
