@@ -123,6 +123,24 @@
       "parentUuid": "760b19b0_c2ce6672",
       "revId": "04a18189c5af6deac1a061ebf4acd3833d34626a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67dee428_31005b19",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-18T02:34:53Z",
+      "side": 1,
+      "message": "I looked into it, and it is not easy to alter the tcs3400 driver to not used the RGB_ALS sensor section.\nTherefore, we will still present the sensor as a RGB sensor, but the chrominance part will be 0.",
+      "parentUuid": "4b992258_24f3f513",
+      "revId": "04a18189c5af6deac1a061ebf4acd3833d34626a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
