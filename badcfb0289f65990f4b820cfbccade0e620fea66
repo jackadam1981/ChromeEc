@@ -135,6 +135,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92b417c1_872ec9f8",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:26:28Z",
+      "side": 1,
+      "message": "be",
+      "range": {
+        "startLine": 24,
+        "startChar": 56,
+        "endLine": 24,
+        "endChar": 58
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d6bc012_26984efa",
         "filename": "zephyr/shim/chip/npcx/system.c",
         "patchSetId": 9
