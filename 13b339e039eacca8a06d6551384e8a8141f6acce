@@ -70,6 +70,30 @@
       },
       "revId": "13b339e039eacca8a06d6551384e8a8141f6acce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7514cb8b_2c176186",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T21:58:50Z",
+      "side": 1,
+      "message": "My thinking is the user needs to select one charger, either the *10 driver or the *20 driver.  The fact that our *20 driver is implemented by the *10 source file shouldn\u0027t be exposed in the Kconfig (and to the user by menuconfig).  Our cmakelist should handle linking in the correct C modules to get things to compile.",
+      "parentUuid": "93232b43_2561bcbd",
+      "range": {
+        "startLine": 1266,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 6
+      },
+      "revId": "13b339e039eacca8a06d6551384e8a8141f6acce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
