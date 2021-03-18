@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "562fb1ed_780926b3",
+        "filename": "board/lindar/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Sure!\nCould I create \"ktd20xx.h\" file in board/boten folder?",
+      "parentUuid": "70fab556_0360db3a",
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23b9349d_71fd5106",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-17T00:15:13Z",
       "side": 1,
       "message": "Remove this tab.",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 3
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96580aba_660a4265",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23b9349d_71fd5106",
       "range": {
         "startLine": 197,
         "startChar": 2,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a389aa43_c5263a8f",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "I_OFF/I_ON is used to set LED\u0027s current.\n\nSEL_OFF is used to tell we don\u0027t select any channel. Do we still need to replace it with 0?",
+      "parentUuid": "7ec41ce9_6eb745b5",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 26
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5cc804b_37036afe",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-03-16T23:40:14Z",
       "side": 1,
       "message": "The code is a lot easier to follow with these macros added.  Thank you!",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31e657a6_f0e4f850",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5cc804b_37036afe",
       "range": {
         "startLine": 205,
         "startChar": 0,
@@ -133,6 +223,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3360603c_cba46eb8",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Per checking with our SWPM, cannot know if sku support lightbar via \"FW_CONFIG\".",
+      "parentUuid": "7d64bdb0_0707c894",
+      "range": {
+        "startLine": 215,
+        "startChar": 11,
+        "endLine": 215,
+        "endChar": 32
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6908b2a4_63e8dc47",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4919b83c_948bea45",
+      "range": {
+        "startLine": 215,
+        "startChar": 7,
+        "endLine": 215,
+        "endChar": 10
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cbf5f41_82e0bca9",
@@ -146,6 +284,30 @@
       "writtenOn": "2021-03-16T23:40:14Z",
       "side": 1,
       "message": "If you stay with skuid instead of FW_CONFIG, make \"skuid\" static instead of \"result\" so that you don\u0027t overload the meaning of \"result\".\n\nstatic uint32_t skuid \u003d SKU_ID_NONE;\n\nif (skuid \u003d\u003d SKU_ID_NONE)\n    if (cbi_get_sku_id(\u0026skuid))\n         /* Print error */\n         skuid \u003d SKU_ID_INVALID;\n\nif (skuid \u003e lower \u0026\u0026 skuid \u003c upper)\n    result \u003d true;\nelse\n    result \u003d false;",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 15
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35b2f426_5c2a1aa9",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cbf5f41_82e0bca9",
       "range": {
         "startLine": 217,
         "startChar": 1,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e01e2891_47a0bc23",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "I remove \"print out\"",
+      "parentUuid": "c2163ce9_d5b87128",
+      "range": {
+        "startLine": 231,
+        "startChar": 24,
+        "endLine": 231,
+        "endChar": 33
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcc0d105_215b61c5",
@@ -192,6 +378,30 @@
       "writtenOn": "2021-03-16T23:40:14Z",
       "side": 1,
       "message": "Create a bug and reference it here.\n\nTODO(b/xxxx): \"bug title\"",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 238,
+        "endChar": 7
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6fe9e04_df8d3686",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "It\u0027s just used to reminder me to check how to handle tool kit.\nIt\u0027s still under discussing internally w/o any issue tracker.",
+      "parentUuid": "dcc0d105_215b61c5",
       "range": {
         "startLine": 238,
         "startChar": 3,
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba2f478_3212f871",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42cb597c_e391c07e",
+      "range": {
+        "startLine": 247,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 64
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfe5a3e6_564d6414",
@@ -238,6 +472,30 @@
       "writtenOn": "2021-03-17T00:15:13Z",
       "side": 1,
       "message": "If this is the case, make sure to define CONFIG_I2C_BUS_MAY_BE_UNPOWERED and define board_is_i2c_port_powered().",
+      "range": {
+        "startLine": 248,
+        "startChar": 29,
+        "endLine": 250,
+        "endChar": 0
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ffd1b29_a752147c",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll change to board_is_i2c_port_powered().",
+      "parentUuid": "cfe5a3e6_564d6414",
       "range": {
         "startLine": 248,
         "startChar": 29,
@@ -271,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f939c4fe_f2eceece",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Keith is right. I\u0027ll also replace \"GPIO_EN_PP3300_A signal with GPIO_PG_EC_DSW_PWROK.\nThat make sense more.",
+      "parentUuid": "32b30d84_90652aa0",
+      "range": {
+        "startLine": 251,
+        "startChar": 21,
+        "endLine": 251,
+        "endChar": 37
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5bbc000_91b2520a",
@@ -288,6 +570,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc40b8f_360fc4e0",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5bbc000_91b2520a",
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b141e24c_3288454d",
@@ -301,6 +601,24 @@
       "writtenOn": "2021-03-17T00:15:13Z",
       "side": 1,
       "message": "nit: add newlines in between the different cases.\n    \ncase BAR_COLOR_ORG_20_PERCENT:\n    i2c_lock()\n    ...\n    break;\n    \ncase BAR_COLOR_ORG_40_PERCENT:",
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0b6e62_4be5f96e",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b141e24c_3288454d",
       "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -328,6 +646,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b25e686_a8509655",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "712a82e4_a5e101a6",
+      "range": {
+        "startLine": 394,
+        "startChar": 19,
+        "endLine": 394,
+        "endChar": 37
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "debc1a01_76606f55",
@@ -341,6 +683,30 @@
       "writtenOn": "2021-03-17T00:15:13Z",
       "side": 1,
       "message": "Nothing on the first line in multi-line comments.",
+      "range": {
+        "startLine": 399,
+        "startChar": 4,
+        "endLine": 402,
+        "endChar": 54
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f03aff4e_b2536c11",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "debc1a01_76606f55",
       "range": {
         "startLine": 399,
         "startChar": 4,
@@ -376,6 +742,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc73433b_b4cbbb2c",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "I try to use \"chipset_in_or_transitionin_to_state(CHIPSET_STATE_ON)\" in lightbar_states(), it still get failure result.\n\nlightbar_states is pushed into HOOK_TICK.\nFrom the below log, it\u0027s late to update power state.\nSo, it may blink a while when plug in AC. Is there any other option to fix this problem? Or, it could add some flag when trigger HOOK_AC_CHANGE but it may not straightforward.\n\n\u003d\u003d\u003d\u003d\n21-03-18 14:18:17.564 [81.749103 CL: p1 s0 i500 v20000]\n21-03-18 14:18:17.567 [81.749906 AC on]\n21-03-18 14:18:17.572 [81.750349 event set 0x0000000000000008]\n21-03-18 14:18:17.574 [81.753996 power state 4 \u003d S0ix, in 0x007f]\n21-03-18 14:18:17.578 [81.755650 Release SLP_S3_L]\n21-03-18 14:18:17.581 [81.756145 Pass thru GPIO_DSW_PWROK: 1]\n[81.780604 chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON) \u003d 0x0, SLP_S3:1;SLP_S0:1.]\n^^^^^^^^\nHere is problem that lightbar blink a while because power state is late to update.\n[81.794101 event clear B 0x0000000000000008]\n[81.807507 event clear 0x0000000000000008]\n21-03-18 14:18:17.622 [81.807826 ACPI query \u003d 4]\n[81.819261 event set 0x0000000008000000]\n21-03-18 14:18:17.635 [81.819962 event clear 0x0000000008000000]\n21-03-18 14:18:17.637 [81.820363 ACPI query \u003d 28]\nRTC: 0x0005c0f3 (377075.00 s)\n21-03-18 14:18:17.662 [81.853835 power state 11 \u003d S0ix-\u003eS0, in 0x007f]\n21-03-18 14:18:17.669 [81.855471 Release SLP_S3_L]\n21-03-18 14:18:17.669 [81.856631 Pass thru GPIO_DSW_PWROK: 1]\nRTC: 0x0005c0f3 (377075.00 s)\n21-03-18 14:18:17.731 [81.919690 power state 3 \u003d S0, in 0x007f]\n21-03-18 14:18:17.733 [81.921272 Release SLP_S3_L]\n21-03-18 14:18:17.737 [81.921845 Pass thru GPIO_DSW_PWROK: 1]\n[81.983378 C1: PE_SNK_Ready]\n21-03-18 14:18:17.793 [81.984331 C1: PE_VDM_Response]\n21-03-18 14:18:17.796 [81.986788 Ramp reset[81.988672 C1: PE_SNK_Ready]\n[81.989149 C1: PE_SNK_Select_Capability]\n\n\u003d\u003d\u003d\u003d",
+      "parentUuid": "eef1d94d_aad0907c",
+      "range": {
+        "startLine": 404,
+        "startChar": 5,
+        "endLine": 404,
+        "endChar": 71
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df864d6b_932857d6",
         "filename": "board/lindar/led.c",
         "patchSetId": 3
@@ -387,6 +777,30 @@
       "writtenOn": "2021-03-16T23:40:14Z",
       "side": 1,
       "message": "Nit - just do \"return LB_STATE_LID_CLOSE;\" here.  Then you can rid of on level of indentation below.",
+      "range": {
+        "startLine": 408,
+        "startChar": 2,
+        "endLine": 408,
+        "endChar": 11
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "723e8f96_a09771b9",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df864d6b_932857d6",
       "range": {
         "startLine": 408,
         "startChar": 2,
@@ -410,6 +824,30 @@
       "writtenOn": "2021-03-17T00:15:13Z",
       "side": 1,
       "message": "nit: move these declarations to right after lightbar_init() is defined.",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 69
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a68abd1_e4d43da4",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7917d367_f5629f23",
       "range": {
         "startLine": 478,
         "startChar": 0,

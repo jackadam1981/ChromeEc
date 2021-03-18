@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf37666_2f66bc1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T07:54:16Z",
+      "side": 1,
+      "message": "Most items are already be resolved. Please check if V4 patch can meet or not.\n\nBut one item may need Aseda\u0027s comment that using chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON) to replace slp signal cannot fix timing issue and it may blink lightbar a while.",
+      "revId": "fd0df0692daa258322d0b941fdc7a6838c7cb3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
