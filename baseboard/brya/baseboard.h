@@ -196,6 +196,15 @@
 /* Device version of product. */
 #define CONFIG_USB_BCD_DEV 0x0000
 
+/* Enabling Thunderbolt-compatible mode */
+#define CONFIG_USB_PD_TBT_COMPAT_MODE
+
+/* Enabling USB4 mode */
+#define CONFIG_USB_PD_USB4
+
+/* Retimer */
+#define CONFIG_USBC_RETIMER_FW_UPDATE
+
 #ifndef __ASSEMBLER__
 
 #include <stdbool.h>
