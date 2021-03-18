@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35403f1d_bf716e6a",
+        "filename": "common/cbi.c",
+        "patchSetId": 88
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T21:41:00Z",
+      "side": 1,
+      "message": "How about \"cbi_set\"?  This is more descriptive IMO.  This will allow you to use CONFIG_CMD_CBI_SET as the config name.",
+      "range": {
+        "startLine": 553,
+        "startChar": 24,
+        "endLine": 553,
+        "endChar": 30
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e196165c_bf321da6",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T21:41:00Z",
+      "side": 1,
+      "message": "Wrap both of these commands under an if block:\n\nif PLATFORM_EC_CBI\nendif",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 33
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf52039_22b461c5",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T21:41:00Z",
+      "side": 1,
+      "message": "The convention we\u0027re for using for all console commands is:\n\n\"Console command: \u003ccommand\u003e\"\n\nHost commands convention:\n\"Host command: EC_CMD_\u003cname\u003e\"",
+      "range": {
+        "startLine": 204,
+        "startChar": 7,
+        "endLine": 204,
+        "endChar": 41
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "077b4f89_4f132353",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T21:41:00Z",
+      "side": 1,
+      "message": "This can be deleted once you wrap with with an if block.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 27
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf386baf_b73f874d",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T21:41:00Z",
+      "side": 1,
+      "message": "Console command: cbi_set",
+      "range": {
+        "startLine": 213,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 43
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37ab027e_7b92cc0b",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T21:41:00Z",
+      "side": 1,
+      "message": "This can also be deleted. The cbi_set command doesn\u0027t actually depend on the cbi command (although it would be odd to do so).",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 38
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ba17be_ae0625de",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 88
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T21:41:00Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_CONFIG_CMD_CBI",
+      "range": {
+        "startLine": 1165,
+        "startChar": 7,
+        "endLine": 1165,
+        "endChar": 33
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
