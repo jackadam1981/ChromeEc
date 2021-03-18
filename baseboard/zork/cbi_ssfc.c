@@ -34,3 +34,10 @@ enum ec_ssfc_spkr_auto_mode get_cbi_ssfc_spkr_auto_mode(void)
 	return (cached_ssfc & SSFC_SPKR_AUTO_MODE_MASK) >>
 	       SSFC_SPKR_AUTO_MODE_OFFSET;
 }
+
+enum ec_ssfc_edp_phy_override get_cbi_ssfc_edp_phy_override(void)
+{
+	return (cached_ssfc & SSFC_EDP_PHY_OVERRIDE_MASK) >>
+		SSFC_EDP_PHY_OVERRIDE_OFFSET;
+}
+

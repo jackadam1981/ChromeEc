@@ -31,6 +31,16 @@ enum ec_ssfc_spkr_auto_mode {
 #define SSFC_SPKR_AUTO_MODE_OFFSET 3
 #define SSFC_SPKR_AUTO_MODE_MASK GENMASK(3, 3)
 
+/*
+ * eDP PHY Override (Bits 4)
+ */
+enum ec_ssfc_edp_phy_override {
+	SSFC_EDP_PHY_OVERRIDE_OFF = 0,
+	SSFC_EDP_PHY_OVERRIDE_ON = 1,
+};
+#define SSFC_EDP_PHY_OVERRIDE_OFFSET 4
+#define SSFC_EDP_PHY_OVERRIDE_MASK GENMASK(4, 4)
+
 /**
  * Get the Base sensor type from SSFC_CONFIG.
  *
@@ -42,5 +52,10 @@ enum ec_ssfc_base_gyro_sensor get_cbi_ssfc_base_sensor(void);
  * Get whether speaker amp auto mode is enabled from SSFC.
  */
 enum ec_ssfc_spkr_auto_mode get_cbi_ssfc_spkr_auto_mode(void);
+
+/**
+ * Get whether eDP PHY Override is enabled from SSFC.
+ */
+enum ec_ssfc_edp_phy_override get_cbi_ssfc_edp_phy_override(void);
 
 #endif /* _ZORK_CBI_SSFC__H_ */
