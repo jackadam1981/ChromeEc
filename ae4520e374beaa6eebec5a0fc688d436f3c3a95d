@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e6256b4_e88e7869",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-18T19:02:20Z",
+      "side": 1,
+      "message": "do is IS_ENABLED so that we can avoid ifdef\nfunction static inline void vtr3_voltage_select(bool use18v)",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "ae4520e374beaa6eebec5a0fc688d436f3c3a95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956ed3f6_60ffee97",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-18T19:02:20Z",
+      "side": 1,
+      "message": "else part needs vtr3_voltage_select(0)",
+      "revId": "ae4520e374beaa6eebec5a0fc688d436f3c3a95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
