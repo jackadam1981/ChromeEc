@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "107f9e5b_9676aceb",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-18T23:48:44Z",
+      "side": 1,
+      "message": "... and that brings us full circle.\nthe inconsistent naming pattern means we\u0027ll have to\nadd this ad-hoc flag to config_allowed.txt after all.",
+      "parentUuid": "35e0bbff_9340d9b4",
+      "range": {
+        "startLine": 343,
+        "startChar": 19,
+        "endLine": 343,
+        "endChar": 27
+      },
+      "revId": "5d8c268361e6a58716b810fc12a21bea7d107d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6acd7547_76122467",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 1
