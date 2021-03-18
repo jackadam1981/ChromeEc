@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d508e5c_dbfac9d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-18T15:49:12Z",
+      "side": 1,
+      "message": "I\u0027ll be fully focused on this today(3/18) and make sure get it done until early tomorrow.",
+      "parentUuid": "08bbe3da_f2c1bd6c",
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2af8a62_33bd6b26",
@@ -220,6 +238,24 @@
       "side": 1,
       "message": "Suggested text:\n\nThe matrix configures how much each axis of the physical sensor data contributes to the standard reference frame. In the standard reference frame, x-axis points to the right, y-axis points up, z-axis points towards the user.\n\nRows in the matrix specify the sensor axis data. Columns specify the standard reference frame axis.",
       "parentUuid": "6875da98_4b6411d2",
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6519d388_471fa3a1",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-rotation-ref.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-18T15:49:12Z",
+      "side": 1,
+      "message": "Still it\u0027s doing rotation to change direction(180 degree) or swap axis(270) and I believe it should \n\nhow about:\n\n3x3 matrix to rotate x, y, and z axes.\nApplications with the sensor API expects sansor data\nbased on the same standard coordinate system.\n- X-axis is horizontal and positive toward the right\n- Y-axis is vertical and positive toward the top\n- Z-axis points toward the user\n\nDepending on how the sensor is mounted on board(PCB), we \nmay need to change the direction of a axis and swap X and\nY-axis.\n\n+-        -+   +-       -+   +-     -+ \n| v1 v2 v3 |   | raw_val |   | std_X |\n| v4 v5 v6 | * | raw_val | \u003d | std_Y |\n| v7 v8 v9 |   | rww_val |   | std_Z |\n+-        -+   +-       -+   +-     -+",
+      "parentUuid": "9d5dda8c_10e318b4",
       "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
