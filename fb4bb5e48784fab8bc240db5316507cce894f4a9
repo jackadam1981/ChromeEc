@@ -39,6 +39,30 @@
       },
       "revId": "fb4bb5e48784fab8bc240db5316507cce894f4a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c65a62_b5a300ae",
+        "filename": "util/normalize_symlinks.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-18T17:51:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ec367fa_54b0efbb",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "fb4bb5e48784fab8bc240db5316507cce894f4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
