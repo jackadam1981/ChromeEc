@@ -1,0 +1,477 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b59aca_47398c90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "asurada_scp",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ee81d9_b0c19d8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "\"Adds venc (video encoder) service.\"",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40788d61_4a5395b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Provide:\nBRANCH\u003dnone\nBUG\u003d\nTEST\u003d",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c49b28_c4062d4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Signed-off.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f09590_d5eeefb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Move the chip/mt8192_scp changes to another CL.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c548ff_6eac5d2f",
+        "filename": "board/asurada_scp/ec.tasklist",
+        "patchSetId": 16
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Is\n#define TRENTA_TASK_STACK_SIZE 1184\napplicable?",
+      "range": {
+        "startLine": 16,
+        "startChar": 52,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1b88c3_2ddc78d9",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d95a66_d67b4074",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4828732e_ec99621c",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3840fc04_b4ae9e52",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Apparently wrong  : P\n\nYou can use CC_IPI.",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c956555a_71a28100",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 17,
+        "startChar": 41,
+        "endLine": 17,
+        "endChar": 47
+      },
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c1bc101_d76f8368",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b7edaa_16e47ecb",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Move to line 22.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c7b86d_8ae35145",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Move function definition at line 39 to here.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3354245_baa31cb8",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Move the definition into function venc_service_task().",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9eb9ba_8f2b262d",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Insert a blank line at line 50.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97e2ceb4_e296d976",
+        "filename": "board/asurada_scp/venc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "No.  I guess you would want to:\n\nmtk_venc_msg_handle[rsv_msg.type](rsv_msg.msg);",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ab1d31d_4384bd02",
+        "filename": "board/asurada_scp/venc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42621e95_1a167abc",
+        "filename": "board/asurada_scp/venc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d27d1a4b_dec313bb",
+        "filename": "board/asurada_scp/venc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c20063_9e4c3e45",
+        "filename": "board/asurada_scp/venc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Move to venc.c.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef3e527_75d6d506",
+        "filename": "board/asurada_scp/venc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Remove the blank line.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5caf48ce_ce110bf4",
+        "filename": "board/asurada_scp/venc.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Exceed col-80.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b35807e_31d2eb46",
+        "filename": "chip/mt8192_scp/ipi.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Move to an independent CL.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f0f6955_4f982ab3",
+        "filename": "chip/mt8192_scp/ipi_chip.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-18T08:37:38Z",
+      "side": 1,
+      "message": "Move to an independent CL.",
+      "revId": "c42b3e6cd5a66a224c908fd173c2febed17c016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
