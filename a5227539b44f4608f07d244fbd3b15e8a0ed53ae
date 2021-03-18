@@ -46,6 +46,30 @@
       },
       "revId": "a5227539b44f4608f07d244fbd3b15e8a0ed53ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f767453_0f12d04d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-18T20:52:42Z",
+      "side": 1,
+      "message": "So, this is required specifically for the brya battery? Is the behavior dependent on the fuel gauge being used? I ask because this config is being enabled for entire brya baseboard. Is that the correct choice or does this need to be in brya board. Are there any downsides of having this enabled for all brya boards?",
+      "parentUuid": "d11eccdb_6871376a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "a5227539b44f4608f07d244fbd3b15e8a0ed53ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
