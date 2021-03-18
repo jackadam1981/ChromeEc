@@ -106,6 +106,10 @@ struct ucpd_tx_desc {
 	union buffer data;
 };
 
+/* CC detection variables */
+#define UCPD_CC_HOLDOFF_USEC 250
+timestamp_t ucpd_cc_change_ts;
+
 /* Tx message variables */
 struct ucpd_tx_desc ucpd_tx_buffers[TX_MSG_TOTAL];
 struct ucpd_tx_desc *ucpd_tx_active_buffer;
@@ -597,6 +601,18 @@ int stm32gx_ucpd_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 			vstate_cc2 = (vstate_cc2 + 1) % 3;
 	}
 
+	/*
+	 * When doing DRP and changing from Rp to Rd, and using an e-mark cable,
+	 * Rp_usb voltage level may be detected. Each time the CC terminations
+	 * are changed, a short holdoff is used to prevent these false detect
+	 * siutaitons which otherwise would case the TC state machine to enter
+	 * attached_wait_snk for each Rp -> Rd transition.
+	 */
+	if (get_time().val < (UCPD_CC_HOLDOFF_USEC + ucpd_cc_change_ts.val)) {
+		vstate_cc1 = TYPEC_CC_VOLT_OPEN;
+		vstate_cc2 = TYPEC_CC_VOLT_OPEN;
+	}
+
 	*cc1 = vstate_cc1;
 	*cc2 = vstate_cc2;
 
@@ -702,6 +718,9 @@ int stm32gx_ucpd_set_cc(int port, int cc_pull, int rp)
 
 	/* Update pull values */
 	STM32_UCPD_CR(port) = cr;
+
+	/* Save time when change is applied to allow for holdoff */
+	ucpd_cc_change_ts = get_time();
 
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
 	ucpd_log_mark_cc_term_change();
@@ -909,7 +928,7 @@ static void ucpd_task_log(int timeout, enum ucpd_state enter,
 		ucpd_tx_state_log_freeze = 1;
 }
 
-static void ucpd_task_log_dump(void)
+__maybe_unused static void ucpd_task_log_dump(void)
 {
 	int n;
 	int idx;
@@ -1286,7 +1305,6 @@ enum ec_error_list stm32gx_ucpd_set_bist_test_mode(const int port,
 						   const bool enable)
 {
 	ucpd_rx_bist_mode = enable;
-	CPRINTS("ucpd: Bist test mode = %d", enable);
 
 	return EC_SUCCESS;
 }
@@ -1618,7 +1636,7 @@ void ucpd_info(int port)
 	ccprintf("ucpd: tx_state = %s, tx_req = %02x, timeout_us = %d\n",
 		ucpd_names[ucpd_tx_state], ucpd_tx_request, ucpd_timeout_us);
 
-	ucpd_task_log_dump();
+	//ucpd_task_log_dump();
 }
 
 static int command_ucpd(int argc, char **argv)
