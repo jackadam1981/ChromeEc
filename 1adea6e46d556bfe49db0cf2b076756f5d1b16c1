@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3555cd30_b66daddd",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-18T05:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "844ae930_8fb3b440",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 90
+      },
+      "revId": "1adea6e46d556bfe49db0cf2b076756f5d1b16c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e30f3322_8065db24",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "alternatively, just add default y to this option",
       "parentUuid": "e30f3322_8065db24",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "1adea6e46d556bfe49db0cf2b076756f5d1b16c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0b168fb_441a6863",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-18T05:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "718d734e_5697c224",
       "range": {
         "startLine": 99,
         "startChar": 0,
