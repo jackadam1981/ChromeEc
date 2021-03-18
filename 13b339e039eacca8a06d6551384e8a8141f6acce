@@ -46,6 +46,30 @@
       },
       "revId": "13b339e039eacca8a06d6551384e8a8141f6acce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93232b43_2561bcbd",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-18T21:34:22Z",
+      "side": 1,
+      "message": "i don\u0027t know how to express this dependency in kconfig when\nusing \u0027choice\u0027 to select this chip. so, BQ25720 was a\nseparate config option under the BQ25710 in the original\nversion of this patch. essentially, a driver option\nstill best represents the relationship.\n\ni\u0027ll post a patch with keith\u0027s suggestion to see how that looks.",
+      "parentUuid": "515a01ea_b2aa7642",
+      "range": {
+        "startLine": 1266,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 6
+      },
+      "revId": "13b339e039eacca8a06d6551384e8a8141f6acce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
