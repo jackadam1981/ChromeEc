@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2c1da8_94cea111",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-03-18T15:10:06Z",
+      "side": 1,
+      "message": "Please update to use the same verb as in the comment in the python code.",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "df8a1c440a5faa42deb8fb2ec8f2c5a0bf779eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e1ba3e72_7bb80725",
@@ -18,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e6fe46b_1dcded47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-03-18T15:10:06Z",
+      "side": 1,
+      "message": "Just minor nits about the choice of verb, but if you want to submit this as-is, that\u0027s OK, too.",
+      "revId": "df8a1c440a5faa42deb8fb2ec8f2c5a0bf779eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c065c8fe_3c718321",
@@ -31,6 +71,30 @@
       "writtenOn": "2021-03-17T23:16:24Z",
       "side": 1,
       "message": "replaces?",
+      "range": {
+        "startLine": 6,
+        "startChar": 39,
+        "endLine": 6,
+        "endChar": 46
+      },
+      "revId": "df8a1c440a5faa42deb8fb2ec8f2c5a0bf779eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce5c41e_ebdd2f19",
+        "filename": "util/remove_symlinks.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-03-18T15:10:06Z",
+      "side": 1,
+      "message": "yeah, I agree. \"remove\" isn\u0027t quite the right semantics.",
+      "parentUuid": "c065c8fe_3c718321",
       "range": {
         "startLine": 6,
         "startChar": 39,
