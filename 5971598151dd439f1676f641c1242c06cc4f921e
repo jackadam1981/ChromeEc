@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b482a6f_a3f2cdf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-18T21:23:09Z",
+      "side": 1,
+      "message": "Please make sure the components are configured correctly, like switchcap, TCPC, sensors, unused GPIO pins, etc.\n\nYou can do it in this CL or some later CLs.",
+      "revId": "5971598151dd439f1676f641c1242c06cc4f921e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66bdb5f_f837beda",
+        "filename": "board/marzipan/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-18T21:23:09Z",
+      "side": 1,
+      "message": "Update the board name",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "5971598151dd439f1676f641c1242c06cc4f921e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
