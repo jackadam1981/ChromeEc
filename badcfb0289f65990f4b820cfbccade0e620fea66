@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeab2345_a0d803ff",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "should start with PLATFORM_EC_",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24efeb3_6b8926f8",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "captialize the prompt",
+      "range": {
+        "startLine": 8,
+        "startChar": 6,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1056cbc_04a43c41",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "What is system pre-initialization? Can you define it here?",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 51
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05389ef5_e8556c14",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "Here\u0027s how you can do the check in kconfig instead of the preprocessor\n\n    range 0 CROS_SYSTEM_NPCX_INIT_PRIORITY",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f6b8bb_3b273d43",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_npcx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "you can do this check in Kconfig instead of the preprocessor (see my comment below)",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d6bc012_26984efa",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7601e0b0_5cf77c76",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "this doesn\u0027t appear to need to be chip-specific code. please don\u0027t implement it here",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021ee35b_9761003b",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "what\u0027s that mean?",
+      "range": {
+        "startLine": 174,
+        "startChar": 21,
+        "endLine": 174,
+        "endChar": 36
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "801a0f27_473f255a",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "!bbram_dev",
+      "range": {
+        "startLine": 197,
+        "startChar": 5,
+        "endLine": 197,
+        "endChar": 22
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c52dcb29_5f6638c1",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "!sys_dev",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 20
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf9cdb3d_c97c41da",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "uuum... there\u0027s an infinite loop above. I don\u0027t think you can \"proceed anyway\"",
+      "range": {
+        "startLine": 236,
+        "startChar": 29,
+        "endLine": 236,
+        "endChar": 49
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c348544_ab791b64",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:16Z",
+      "side": 1,
+      "message": "again, this check should only be done in Kconfig",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 6
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
