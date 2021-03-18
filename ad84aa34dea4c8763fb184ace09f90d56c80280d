@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a9bd08_5657427f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:35:22Z",
+      "side": 1,
+      "message": "This looks good.\n\nCan you please split out the generic stuff (not nuvoton) into a separate CL before this one?\n\nThen this CL can add just the nuvoton driver and bindings",
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "389a43b3_bea9d538",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:35:22Z",
+      "side": 1,
+      "message": "Can you do\n\nGENMASK(24,0)",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4816850_6bef4b4a",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:35:22Z",
+      "side": 1,
+      "message": "I don\u0027t think you need inline on these functions. The compiler will automatically inline static functions if small or only used one.\n\nTo the extent it does force the compiler to inline these functions, it might increase code size.",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb10697_4ec89b8a",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:35:22Z",
+      "side": 1,
+      "message": "Why the second delay?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 12
+      },
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bea10cc_af7f897d",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:35:22Z",
+      "side": 1,
+      "message": "u should line up with c of const",
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff8fad1_3cb717f8",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:35:22Z",
+      "side": 1,
+      "message": "c of counter should line up with d of data",
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a44f6c_3cf7408c",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:35:22Z",
+      "side": 1,
+      "message": "These follow-on line should line up with the 0 of the first line",
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bbc12d9_cb519d0c",
+        "filename": "zephyr/dts/bindings/cros_rtc/nuvoton,npcx-cros-mtc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:35:22Z",
+      "side": 1,
+      "message": "check 80 columns?",
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b777a9_74522d59",
+        "filename": "zephyr/include/cros/nuvoton/npcx.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:35:22Z",
+      "side": 1,
+      "message": "how about MONOCOUNT or something else without a space?",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
