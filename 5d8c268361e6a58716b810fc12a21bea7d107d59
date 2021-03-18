@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e0bbff_9340d9b4",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:46:48Z",
+      "side": 1,
+      "message": "drop \"HOSTCMD_\"\n\nthis doesn\u0027t appear to be for host commands anyway",
+      "range": {
+        "startLine": 343,
+        "startChar": 19,
+        "endLine": 343,
+        "endChar": 27
+      },
+      "revId": "5d8c268361e6a58716b810fc12a21bea7d107d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6acd7547_76122467",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:46:48Z",
+      "side": 1,
+      "message": "afact, this will require chip-layer support that will need implemented in the zephyr shim too:\n\ncs/chromeos_public/src/platform/ec/chip/npcx/espi.c?l\u003d65\n\nCan you either add the support to zephyr/shim/src/espi.c, or alternatively, file a bug and leave a todo?",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 55
+      },
+      "revId": "5d8c268361e6a58716b810fc12a21bea7d107d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
