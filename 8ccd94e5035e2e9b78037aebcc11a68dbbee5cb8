@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b724bd05_e4f5ef46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-03-18T02:38:34Z",
+      "side": 1,
+      "message": "Hi Yilin:\nI upload to Set 2, default supports KB light.",
+      "parentUuid": "bc266526_f94016ad",
+      "revId": "8ccd94e5035e2e9b78037aebcc11a68dbbee5cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f23d2c0_0138c3fa",
         "filename": "board/spherion/board.c",
         "patchSetId": 1
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "But this is same as the default one in common/ec_features.c. Are you planning to add more things to this function in the future?",
       "parentUuid": "09a2b1d5_eef8fc9c",
+      "revId": "8ccd94e5035e2e9b78037aebcc11a68dbbee5cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4492ae88_54dfb5f6",
+        "filename": "board/spherion/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-03-18T02:38:34Z",
+      "side": 1,
+      "message": "Hi Ting:\nI upload to Set 2, default supports KB light.",
+      "parentUuid": "831fb0a8_85525e00",
       "revId": "8ccd94e5035e2e9b78037aebcc11a68dbbee5cb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
