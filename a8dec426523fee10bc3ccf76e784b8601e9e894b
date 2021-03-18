@@ -22,6 +22,30 @@
       },
       "revId": "a8dec426523fee10bc3ccf76e784b8601e9e894b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b9d70da_ea9b0fee",
+        "filename": "board/spherion/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-03-18T12:12:19Z",
+      "side": 1,
+      "message": "Fix to the Set3,\nThanks very much.",
+      "parentUuid": "80fca93f_2b26905b",
+      "range": {
+        "startLine": 86,
+        "startChar": 82,
+        "endLine": 86,
+        "endChar": 84
+      },
+      "revId": "a8dec426523fee10bc3ccf76e784b8601e9e894b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
