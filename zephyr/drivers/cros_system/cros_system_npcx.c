@@ -115,6 +115,24 @@ static int cros_system_npcx_soc_reset(const struct device *dev)
 	return 0;
 }
 
+static int cros_system_npcx_hibernate(const struct device *dev,
+				uint32_t seconds, uint32_t microseconds)
+{
+	/* Disable interrupt first */
+	interrupt_disable_all();
+
+	/* TODO: Unlock & stop watchdog */
+
+	/*
+	 * Set gpios and wake-up input for better power consumption before
+	 * entering hibernate.
+	 */
+	npcx_pinctrl_psl_input_configure();
+
+	/* Enter hibernate mode */
+	npcx_pinctrl_psl_output_set_inactive();
+}
+
 static struct cros_system_npcx_data cros_system_npcx_dev_data;
 
 static const struct cros_system_npcx_config cros_system_dev_cfg = {
@@ -125,6 +143,7 @@ static const struct cros_system_npcx_config cros_system_dev_cfg = {
 static const struct cros_system_driver_api cros_system_driver_npcx_api = {
 	.get_reset_cause = cros_system_npcx_get_reset_cause,
 	.soc_reset = cros_system_npcx_soc_reset,
+	.hibernate = cros_system_npcx_hibernate,
 };
 
 /*

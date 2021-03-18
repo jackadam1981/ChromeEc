@@ -73,14 +73,6 @@ int system_get_bbram(enum system_bbram_idx idx, uint8_t *value)
 	return rc ? EC_ERROR_INVAL : EC_SUCCESS;
 }
 
-void system_hibernate(uint32_t seconds, uint32_t microseconds)
-{
-	/*
-	 * TODO(b:173787365): implement this.  For now, doing nothing
-	 * won't break anything, just will eat power.
-	 */
-}
-
 const char *system_get_chip_vendor(void)
 {
 	return "chromeos";
