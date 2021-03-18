@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "522136a3_dcd03cf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-18T14:42:58Z",
+      "side": 1,
+      "message": "a lot of this code appears to not be chip specific. better yet, if it\u0027s not chip specific, you can write host-based unit tests for it.... i\u0027d like to see this large CL land with unit tests please",
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeab2345_a0d803ff",
