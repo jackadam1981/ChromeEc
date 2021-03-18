@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6827a989_29e6a204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:47:24Z",
+      "side": 1,
+      "message": "I suppose this is better as a separate tool since we would hope to drop it one day",
+      "revId": "fb4bb5e48784fab8bc240db5316507cce894f4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec367fa_54b0efbb",
+        "filename": "util/normalize_symlinks.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:47:24Z",
+      "side": 1,
+      "message": "nit, I think we try to sort these in order",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "fb4bb5e48784fab8bc240db5316507cce894f4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
