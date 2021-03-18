@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f927d3f5_2dfe52a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-18T06:31:13Z",
+      "side": 1,
+      "message": "I think we will need a much detailed explanation here explaining why this change is being done.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd2cf6f7_fc4c8cde",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -60,6 +83,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "958d096f_91356001",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-18T06:31:13Z",
+      "side": 1,
+      "message": "Why are these configs being enabled specifically for coachz and waddledoo?",
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4459b24d_756061b7",
         "filename": "board/waddledoo/board.h",
         "patchSetId": 4
@@ -71,6 +111,29 @@
       "writtenOn": "2021-03-18T02:24:55Z",
       "side": 1,
       "message": "The board specific changes should be split off into their own CL.",
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9abdd9_28ab1603",
+        "filename": "common/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-18T06:31:13Z",
+      "side": 1,
+      "message": "Ummm.. Why add this here? I think it is because you want to ensure that the behavior is unchanged for current boards that select CONFIG_KEYBOARD_PROTOCOL_MKBP. I think it would be better to not add this here, but auto-define CONFIG_MKBP_INPUT_DEVICES when CONFIG_KEYBOARD_PROTOCOL_MKBP is defined. That way if a board ever wants to select CONFIG_KEYBOARD_PROTOCOL_MKBP only, it can undef CONFIG_MKBP_INPUT_DEVICES. See comment in include/config.h",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 21
+      },
       "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -117,6 +180,115 @@
         "endLine": 317,
         "endChar": 13
       },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea0df53_0c3a0042",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3104,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-18T06:31:13Z",
+      "side": 1,
+      "message": "In order to keep the behavior unchanged for boards that are currently using MKBP keyboard protocol, we should auto-define this config whenever CONFIG_KEYBOARD_PROTOCOL_MKBP is defined. Such auto-defined configs are added towards end of the file starting with line 5112.",
+      "range": {
+        "startLine": 3104,
+        "startChar": 7,
+        "endLine": 3104,
+        "endChar": 32
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d7f32be_49385a17",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-18T06:31:13Z",
+      "side": 1,
+      "message": "I think we should rename this to something like `mkbp_keyboard_add()` just to differentiate it from the common fifo functions.",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16759e10_e2dd91d8",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-18T06:31:13Z",
+      "side": 1,
+      "message": "This should be dropped as it is moved to mkbp_fifo.h",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00147c7_970e0395",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-18T06:31:13Z",
+      "side": 1,
+      "message": "Let\u0027s drop this as a separate CL before this change. It is unused.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "340b49de_ad079039",
+        "filename": "include/mkbp_fifo.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-18T06:31:13Z",
+      "side": 1,
+      "message": "I think the fifo stuff should be a separate CL of its own. Basically move the FIFO support to mkbp_fifo.{c,h}. That will make the changes smaller in a single CL.",
       "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
