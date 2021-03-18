@@ -70,6 +70,30 @@
       },
       "revId": "a51c6db79a4ae1321ec32166140a2ad61d851626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b0e006_eebbf094",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-18T18:24:21Z",
+      "side": 1,
+      "message": "Fixed the commit message.",
+      "parentUuid": "3f14ce01_b6928441",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "a51c6db79a4ae1321ec32166140a2ad61d851626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
