@@ -16,6 +16,91 @@
       "message": "This is my mid-term solution. It\u0027s a little hackish but should get the job done. I have not tested this on honeybuns",
       "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91cfc171_d8b3f1da",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-18T23:13:49Z",
+      "side": 1,
+      "message": "__override",
+      "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd29d563_87d70e57",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-18T23:13:49Z",
+      "side": 1,
+      "message": "Since this is setting state, should we guard with a PD task check?",
+      "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d49b268_b2ff76fc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1811,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-18T23:13:49Z",
+      "side": 1,
+      "message": "I recall there being a tricky reason that the AMS flag was set before the set_state calls here... I want to say without it we don\u0027t trigger start of AMS correctly when we send the message in the state entry.  You can verify in a connection where we\u0027re the PD 3.0 source and see if we set Rp accordingly.",
+      "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b42312e_8cb2c839",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-18T23:13:49Z",
+      "side": 1,
+      "message": "__overridable",
+      "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63452e9c_c39854ef",
+        "filename": "include/usbc_pd_policy.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-18T23:13:49Z",
+      "side": 1,
+      "message": "__override_proto",
+      "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
