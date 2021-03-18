@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fb2e9ff_70778631",
+        "filename": "driver/tcpm/ccgxxf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1496353
+      },
+      "writtenOn": "2021-03-18T22:05:56Z",
+      "side": 1,
+      "message": "Yes it\u0027s possible but CCG6 chip processes both of ppc and tcpc calls so both structured were united in one driver file.\nIt is still not very clear for me why TCPCI set_snk/src_ctrl procedures never called directly (as set_vconn etc.) but only through ppc driver calls (vbus_sink/source_enable).",
+      "parentUuid": "66788968_d2ebc90c",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 81
+      },
+      "revId": "4b36b0ee6a342d21a764b7b0297664d87755c0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8b9517b_0e82aeae",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
