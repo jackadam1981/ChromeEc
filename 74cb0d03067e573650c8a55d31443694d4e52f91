@@ -298,6 +298,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "201b0e75_afba2281",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-rotation-ref.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T18:34:53Z",
+      "side": 1,
+      "message": "OK ta",
+      "parentUuid": "0830b85a_861750d7",
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c98cde1c_fb040cfe",
         "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml",
         "patchSetId": 3
