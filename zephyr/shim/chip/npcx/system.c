@@ -83,6 +83,21 @@ void system_reset(int flags)
 		;
 }
 
+void system_hibernate(uint32_t seconds, uint32_t microseconds)
+{
+	const struct device *sys_dev = device_get_binding("CROS_SYSTEM");
+	int err;
+
+	err = cros_system_hibernate(sys_dev, seconds, microseconds);
+
+	if (err < 0)
+		LOG_ERR("soc hibernate failed");
+
+	/* should never return */
+	while (1)
+		;
+}
+
 static int chip_system_init(const struct device *unused)
 {
 	ARG_UNUSED(unused);
