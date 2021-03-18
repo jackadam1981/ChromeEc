@@ -146,7 +146,7 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	},
 	[USBC_PORT_C2] = {
 		.i2c_port = I2C_PORT_USB_C0_C2_BC12,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_1_FLAGS,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_2_FLAGS,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
