@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b20e73f_9b3fc720",
+        "filename": "baseboard/zork/cbi_ssfc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-03-18T22:46:06Z",
+      "side": 1,
+      "message": "Just calling this \"override\" is very unclear- what does it override?\n\nPerhaps \"use_alternate_tuning\"?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "c7ad8ebedb378b8f83c3ef4f21c84746fcb34143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
