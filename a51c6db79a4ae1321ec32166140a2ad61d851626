@@ -22,6 +22,30 @@
       },
       "revId": "a51c6db79a4ae1321ec32166140a2ad61d851626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84cb17ba_a850bc13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-18T17:53:30Z",
+      "side": 1,
+      "message": "The charger task hasn\u0027t been enabled yet. I don\u0027t expect the charger settings are configured correctly. The charger uses some default settings, which can boot the board and do some minimal jobs. So I saw the AMON_BMON channel showed some value.\n\nThe PSYS depends on the power sequence. The PSYS monitoring wastes power, so we only enable it in S0.",
+      "parentUuid": "bff18cb7_9153c7f6",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "a51c6db79a4ae1321ec32166140a2ad61d851626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
