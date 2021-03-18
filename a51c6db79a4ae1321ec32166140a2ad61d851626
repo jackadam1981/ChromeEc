@@ -46,6 +46,30 @@
       },
       "revId": "a51c6db79a4ae1321ec32166140a2ad61d851626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f14ce01_b6928441",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T17:56:15Z",
+      "side": 1,
+      "message": "Thanks, please update the commit message. Something like \"The AMON_BMON voltage is not enabled until the charger driver is setup and the PSYS voltage is not valid unless the process is in S0\"",
+      "parentUuid": "84cb17ba_a850bc13",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "a51c6db79a4ae1321ec32166140a2ad61d851626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
