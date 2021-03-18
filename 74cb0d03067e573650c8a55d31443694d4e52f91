@@ -280,6 +280,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0830b85a_861750d7",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-rotation-ref.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-18T18:08:10Z",
+      "side": 1,
+      "message": "OK, I\u0027ll put some examples like below\n\n-----------------------------------\n3x3 matrix to rotate x, y, and z axes.\nApplications with the sensor API expects sansor data\nbased on the same defined coordinate system.\n- X-axis is horizontal and positive toward the right\n- Y-axis is vertical and positive toward the top\n- Z-axis points toward the user\n\nDepending on how the sensor is mounted on board(PCB), we \nmay need to change the direction of a axis and swap X and\nY-axis. Using the 3x3 matrix, it generates the correct\nX,Y, and Z on the defined coordinate system.\n\n+-        -+   +-        -+   +- -+ \n| v1 v2 v3 |   | sensor_X |   | X |\n| v4 v5 v6 | * | sensor_Y | \u003d | Y |\n| v7 v8 v9 |   | sensor_Z |   | Z |\n+-        -+   +-        -+   +- -+ \n\nex 1) change direction of both Y and Z\nlid-rotation-ref {\n    mat33 \u003d \u003c1 0 0 \n             0 (-1) 0\n             0 0 (-1)\u003e;\n}; \nex 2) swap X and Y-axis and then change direction of Y\nbase-rotation-ref {\n    mat33 \u003d \u003c0 1 0 \n             (-1) 0 0 \n             0 0 1\u003e; \n};",
+      "parentUuid": "82471111_e7ff233f",
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c98cde1c_fb040cfe",
         "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml",
         "patchSetId": 3
