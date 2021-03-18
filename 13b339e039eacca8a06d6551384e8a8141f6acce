@@ -22,6 +22,30 @@
       },
       "revId": "13b339e039eacca8a06d6551384e8a8141f6acce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515a01ea_b2aa7642",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-18T15:21:07Z",
+      "side": 1,
+      "message": "Looking at the bq25710.c driver, I think you can change this to just:\n\n    #undef CONFIG_CHARGER_BQ25720\n    #ifdef CONFIG_PLATFORM_EC_CHARGER_BQ25720\n    #define CONFIG_CHARGER_BQ25720\n    #endif\n\nFor cros EC builds, when using the bq25720 charger, CONFIG_CHARGER_BQ25710 is defined only so the build.mk picks up the bq25710.c driver.  CMakeLists.txt doesn\u0027t have this dependency.\n\nI think if could modify driver/build.mk to add \n\n    driver-$(CONFIG_CHARGER_BQ25720)+\u003dcharger/bq25710.o\n\nthen the dependency in config.h between CONFIG_CHARGER_BQ25720 and CONFIG_CHARGER_BQ25710 can be removed.",
+      "parentUuid": "43e6feea_589c71f3",
+      "range": {
+        "startLine": 1266,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 6
+      },
+      "revId": "13b339e039eacca8a06d6551384e8a8141f6acce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
