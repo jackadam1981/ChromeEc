@@ -70,6 +70,30 @@
       },
       "revId": "a5227539b44f4608f07d244fbd3b15e8a0ed53ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90988c35_fe24b851",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-18T22:34:18Z",
+      "side": 1,
+      "message": "you ask valid questions, but it\u0027s going to take a while to work through\nall the variables. brya battery fuel gauge firmware was scheduled for an\nupdate earlier this week, so it is still a moving part we have not been\nable to test ourselves. charger chip may be a factor as well.\n\ni just went back to check this on the volteer battery. it\u0027s actually worse there.\nthe battery doesn\u0027t clear the XCHG/XDSG bits until about 5.5 secs into the\nboot, so we should really be using 10s there.\n\nthe brya battery takes about 2 seconds to clear XDSG (XCHG is not asserted).\n\nfrankly, if we needed to support the volteer battery, i\u0027d be more comfortable\nsetting the delay to 10 secs in the baseboard until we have some confidence\nthat the batteries we use are willing to provide charge sooner.",
+      "parentUuid": "6f767453_0f12d04d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "a5227539b44f4608f07d244fbd3b15e8a0ed53ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
