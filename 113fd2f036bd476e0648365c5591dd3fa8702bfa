@@ -33,6 +33,24 @@
       "message": "suggest keeping the return value check:\n\nif (rv \u003d\u003d EC_SUCCESS \u0026\u0026 val \u003d\u003d ICM426XX_CHIP_ICM40608)",
       "revId": "113fd2f036bd476e0648365c5591dd3fa8702bfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ebc7d69_1019cde2",
+        "filename": "board/burnet/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-03-18T07:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8db9b3b0_317aa4d3",
+      "revId": "113fd2f036bd476e0648365c5591dd3fa8702bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
