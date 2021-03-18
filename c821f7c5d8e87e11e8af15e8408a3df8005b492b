@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "485a5350_bca52e01",
+        "filename": "board/lindar/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-18T09:00:54Z",
+      "side": 1,
+      "message": "board/boten is typo.\nIt should be board/lindar",
+      "parentUuid": "562fb1ed_780926b3",
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23b9349d_71fd5106",
