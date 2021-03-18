@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9b478b_d63312cf",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-03-18T09:37:52Z",
+      "side": 1,
+      "message": "uint8_t is tiny and the formet counter was 4 bytes.\nwhy not a nice uint32_t ?",
+      "revId": "e53cfd88fed832c9a55721690eefccec5b77af4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
