@@ -16,6 +16,75 @@
       "message": "@intel,\nsince the RVPs use a separate load switch, could you confirm this change is OK on your side?\n",
       "revId": "939b1ba28bb1bd0039c73897c3527e32886f6aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf4d0347_351b365b",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-18T15:54:05Z",
+      "side": 1,
+      "message": "how about:\n\nreturn chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF) ? false : true;",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 16
+      },
+      "revId": "939b1ba28bb1bd0039c73897c3527e32886f6aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c730b47_98ac6434",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-18T15:54:05Z",
+      "side": 1,
+      "message": "here may be EC_ERROR_NOT_POWERED; as algorithm should not call set state if AP is off",
+      "range": {
+        "startLine": 395,
+        "startChar": 9,
+        "endLine": 395,
+        "endChar": 25
+      },
+      "revId": "939b1ba28bb1bd0039c73897c3527e32886f6aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d09a635c_53e74d60",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-18T15:54:05Z",
+      "side": 1,
+      "message": "should we return success as its a intended power off",
+      "range": {
+        "startLine": 512,
+        "startChar": 9,
+        "endLine": 512,
+        "endChar": 25
+      },
+      "revId": "939b1ba28bb1bd0039c73897c3527e32886f6aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
