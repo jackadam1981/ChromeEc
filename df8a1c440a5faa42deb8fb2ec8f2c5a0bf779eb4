@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "464a4858_e0222040",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-18T17:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d2c1da8_94cea111",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "df8a1c440a5faa42deb8fb2ec8f2c5a0bf779eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e1ba3e72_7bb80725",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "yeah, I agree. \"remove\" isn\u0027t quite the right semantics.",
       "parentUuid": "c065c8fe_3c718321",
+      "range": {
+        "startLine": 6,
+        "startChar": 39,
+        "endLine": 6,
+        "endChar": 46
+      },
+      "revId": "df8a1c440a5faa42deb8fb2ec8f2c5a0bf779eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de7836c1_c33145be",
+        "filename": "util/remove_symlinks.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-18T17:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce5c41e_ebdd2f19",
       "range": {
         "startLine": 6,
         "startChar": 39,
