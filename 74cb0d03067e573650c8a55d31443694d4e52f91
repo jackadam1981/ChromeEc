@@ -262,6 +262,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82471111_e7ff233f",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-rotation-ref.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-18T17:48:14Z",
+      "side": 1,
+      "message": "That sounds good to me, then you can add an example too, perhaps taken from volteer",
+      "parentUuid": "6519d388_471fa3a1",
+      "revId": "74cb0d03067e573650c8a55d31443694d4e52f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c98cde1c_fb040cfe",
         "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml",
         "patchSetId": 3
