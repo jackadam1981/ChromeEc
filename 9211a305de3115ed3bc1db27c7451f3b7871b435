@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffacb17_a4590cd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-19T16:14:21Z",
+      "side": 1,
+      "message": "Sorry about that, although I can\u0027t tell from Gerrit how the original CL got on this branch in the first place. I cherry picked to firmware-volteer-13672.B-main. I don\u0027t see a cherry-pick to stabilize-13856.B-main, but maybe I typoed the name somehow?",
+      "revId": "9211a305de3115ed3bc1db27c7451f3b7871b435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
