@@ -7,4 +7,11 @@ cmake_minimum_required(VERSION 3.13.1)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(kohaku)
 
+if (DEFINED CONFIG_PLATFORM_EC)
+  set(ZEPHYR_CURRENT_LIBRARY "${PLATFORM_EC_LIBRARY}")
+endif()
+
+# Include board specific header files in both the library and the
+# main zephyr build
 zephyr_include_directories(include)
+zephyr_library_include_directories(include)

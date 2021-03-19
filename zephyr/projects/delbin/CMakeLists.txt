@@ -12,14 +12,21 @@ set(PLATFORM_EC_BOARD "${PLATFORM_EC}/board/delbin" CACHE PATH
 set(PLATFORM_EC_BASEBOARD "${PLATFORM_EC}/baseboard/volteer" CACHE PATH
   "Path to the platform/ec baseboard directory")
 
-# Include board specific header files
+if (DEFINED CONFIG_PLATFORM_EC)
+  set(ZEPHYR_CURRENT_LIBRARY "${PLATFORM_EC_LIBRARY}")
+endif()
+
+# Include board specific header files in both the library and the
+# main zephyr build
 zephyr_include_directories(
+  include
+  "${PLATFORM_EC_BASEBOARD}"
+  "${PLATFORM_EC_BOARD}")
+zephyr_library_include_directories(
   include
   "${PLATFORM_EC_BASEBOARD}"
   "${PLATFORM_EC_BOARD}")
 
 # Include selected EC source for the baseboard
-zephyr_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ
   "${PLATFORM_EC_BASEBOARD}/power.c")
-
-zephyr_include_directories(include)
