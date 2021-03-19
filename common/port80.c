@@ -34,6 +34,8 @@ static int scroll;
 
 static int print_in_int = CONFIG_PORT80_PRINT_IN_INT;
 
+void insert_port80(int data);
+
 static void port80_dump_buffer(void);
 DECLARE_DEFERRED(port80_dump_buffer);
 
@@ -70,6 +72,7 @@ void port_80_write(int data)
 		if (prev < 0x100)
 			last_boot = prev;
 	}
+	insert_port80(data);
 
 	history[writes % ARRAY_SIZE(history)] = data;
 	writes++;
