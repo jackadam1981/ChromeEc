@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bc3a14_2a07aa79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-19T21:30:20Z",
+      "side": 1,
+      "message": "This should be a refactor CL for ECOS and then a zephyr CL",
+      "revId": "a9bb65d539f92f587e55ae5c3a8e1fc1b5c0e2cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6703dfbb_a43d4873",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-19T21:30:20Z",
+      "side": 1,
+      "message": "It seems odd to put these in the driver header file. Do other drivres do this?",
+      "revId": "a9bb65d539f92f587e55ae5c3a8e1fc1b5c0e2cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
