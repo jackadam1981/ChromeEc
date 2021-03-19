@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3caa1b3b_6bae881d",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2021-03-19T21:20:58Z",
+      "side": 1,
+      "message": "The register being accessed is RESERVED in MEC172x specs. and should not be touched.  VTR3 is fixed at 1.8V for MEC172x.  The older chips allowed it to be changed and defaulted to 3.3V.",
+      "parentUuid": "8e6256b4_e88e7869",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "ae4520e374beaa6eebec5a0fc688d436f3c3a95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "956ed3f6_60ffee97",
         "filename": "chip/mchp/system.c",
         "patchSetId": 4
