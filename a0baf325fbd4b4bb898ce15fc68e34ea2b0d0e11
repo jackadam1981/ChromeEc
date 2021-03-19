@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df727f3_8cf81886",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-19T21:28:09Z",
+      "side": 1,
+      "message": "functoin comment - what does this do?",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 24
+      },
+      "revId": "a0baf325fbd4b4bb898ce15fc68e34ea2b0d0e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b6c133_77cd8e03",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-19T21:28:09Z",
+      "side": 1,
+      "message": "super-duper nit warning\n\nI am not a fan of periods at the end of comments. This one is not even a sentence",
+      "range": {
+        "startLine": 212,
+        "startChar": 60,
+        "endLine": 212,
+        "endChar": 61
+      },
+      "revId": "a0baf325fbd4b4bb898ce15fc68e34ea2b0d0e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769cb251_37a70efd",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-19T21:28:09Z",
+      "side": 1,
+      "message": "comment\n\nblank line after",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "a0baf325fbd4b4bb898ce15fc68e34ea2b0d0e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf9ab08_fa3a256c",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-19T21:28:09Z",
+      "side": 1,
+      "message": "Can you add a comment as to how this test works?",
+      "range": {
+        "startLine": 156,
+        "startChar": 12,
+        "endLine": 156,
+        "endChar": 22
+      },
+      "revId": "a0baf325fbd4b4bb898ce15fc68e34ea2b0d0e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
