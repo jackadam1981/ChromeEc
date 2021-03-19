@@ -16,6 +16,23 @@
       "message": "Changed define name due to CL:2749761",
       "revId": "1c6d8b9051e9fc71b75ceb892905a2e7b874cbda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e089691f_69359fc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-19T15:18:40Z",
+      "side": 1,
+      "message": "Checked on Ampton and it works as it should.\n\nOne minor thing: when voltage is reduced, one can change maximum voltage using `pd 0 dev 12` for example. Voltage will be changed until one of the hooks fires. I don\u0027t think this is a problem since developer is explicitly changing that.",
+      "revId": "1c6d8b9051e9fc71b75ceb892905a2e7b874cbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
