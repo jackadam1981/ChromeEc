@@ -12,9 +12,6 @@
 #define VARIANT_DEDEDE_EC_IT8320
 #include "baseboard.h"
 
-/* System unlocked in early development */
-#define CONFIG_SYSTEM_UNLOCKED
-
 /* Battery */
 #define CONFIG_BATTERY_FUEL_GAUGE
 #define CONFIG_BATTERY_V2
@@ -72,6 +69,7 @@
 #define CONFIG_USB_PD_TCPM_RAA489000
 
 /* USB defines specific to external TCPCs */
+#define CONFIG_USB_PD_COMM_LOCKED
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_VBUS_DETECT_TCPC
 #define CONFIG_USB_PD_DISCHARGE_TCPC
