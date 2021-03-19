@@ -16,6 +16,24 @@
       "message": "Sorry about that, although I can\u0027t tell from Gerrit how the original CL got on this branch in the first place. I cherry picked to firmware-volteer-13672.B-main. I don\u0027t see a cherry-pick to stabilize-13856.B-main, but maybe I typoed the name somehow?",
       "revId": "9211a305de3115ed3bc1db27c7451f3b7871b435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6c15f6_1f944f0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2021-03-19T16:19:22Z",
+      "side": 1,
+      "message": "No problem, as its name tells, stabilize-13856.B was branched from the R91-13856.0.0 build of the main branch, hence it inherently included the original change (landed at 13855.0.0 and reverted at 13857.0.0). It was just an unlucky timing of branch creation.",
+      "parentUuid": "2ffacb17_a4590cd4",
+      "revId": "9211a305de3115ed3bc1db27c7451f3b7871b435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
