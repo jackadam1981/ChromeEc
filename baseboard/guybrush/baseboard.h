@@ -307,6 +307,7 @@ enum temp_sensor_id {
 /* Battery Types */
 enum battery_type {
 	BATTERY_AP18F4M,
+	BATTERY_LGC,
 	BATTERY_TYPE_COUNT,
 };
 
