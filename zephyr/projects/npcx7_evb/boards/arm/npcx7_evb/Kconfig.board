@@ -1,8 +1,8 @@
-# Google Volteer EC
+# Google Npcx7_evb EC
 
 # Copyright 2020 The Chromium OS Authors
 # SPDX-License-Identifier: Apache-2.0
 
-config BOARD_VOLTEER
-	bool "Google Volteer EC"
+config BOARD_NPCX7_EVB
+	bool "Google NPCX7_EVB EC"
 	depends on SOC_NPCX7M6FB # Actually NPCX7M6FC; C has 512K Flash

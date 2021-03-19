@@ -21,7 +21,16 @@
  * Note we only need to create aliases for GPIOs that are referenced in common
  * platform/ec code.
  */
+#define GPIO_WP_L                  NAMED_GPIO(ec_wp_l)
 #define GPIO_AC_PRESENT            NAMED_GPIO(acok_od)
+#define GPIO_POWER_BUTTON_L        NAMED_GPIO(h1_ec_pwr_btn_odl)
+#define GPIO_LID_OPEN              NAMED_GPIO(ec_lid_open)
+#define GPIO_ENTERING_RW           NAMED_GPIO(ec_entering_rw)
+#define GPIO_BOARD_VERSION1        NAMED_GPIO(brd_id0)
+#define GPIO_BOARD_VERSION2        NAMED_GPIO(brd_id1)
+#define GPIO_BOARD_VERSION3        NAMED_GPIO(brd_id2)
+#if 0
+/*--------------------------------------*/
 #define GPIO_CPU_PROCHOT           NAMED_GPIO(ec_prochot_odl)
 #define GPIO_EC_ALS_RGB_INT_L      NAMED_GPIO(ec_als_rgb_int_l)
 #define GPIO_EC_BATT_PRES_ODL      NAMED_GPIO(ec_batt_pres_odl)
@@ -35,9 +44,7 @@
 #define GPIO_EN_PP5000_A           NAMED_GPIO(en_pp5000_a)
 #define GPIO_EN_PPVAR_VCCIN        NAMED_GPIO(en_ppvar_vccin)
 #define GPIO_ENABLE_BACKLIGHT      NAMED_GPIO(ec_edp_bl_en)
-#define GPIO_ENTERING_RW           NAMED_GPIO(ec_entering_rw)
 #define GPIO_KBD_KSO2              NAMED_GPIO(ec_kso_02_inv)
-#define GPIO_LID_OPEN              NAMED_GPIO(ec_lid_open)
 #define GPIO_PACKET_MODE_EN        NAMED_GPIO(ec_h1_packet_mode)
 #define GPIO_PCH_DSW_PWROK         NAMED_GPIO(ec_pch_dsw_pwrok)
 #define GPIO_PCH_PWRBTN_L          NAMED_GPIO(ec_pch_pwr_btn_odl)
@@ -49,14 +56,12 @@
 #define GPIO_PG_EC_ALL_SYS_PWRGD   NAMED_GPIO(pg_ec_all_sys_pwrgd)
 #define GPIO_PG_EC_DSW_PWROK       NAMED_GPIO(pg_ec_dsw_pwrok)
 #define GPIO_PG_EC_RSMRST_ODL      NAMED_GPIO(pg_ec_rsmrst_odl)
-#define GPIO_POWER_BUTTON_L        NAMED_GPIO(h1_ec_pwr_btn_odl)
 #define GPIO_RSMRST_L_PGOOD        NAMED_GPIO(pg_ec_rsmrst_odl)
 #define GPIO_SLP_SUS_L             NAMED_GPIO(slp_sus_l)
 #define GPIO_SYS_RESET_L           NAMED_GPIO(sys_rst_odl)
 #define GPIO_TABLET_MODE_L         NAMED_GPIO(tablet_mode_l)
 #define GPIO_VOLUME_DOWN_L         NAMED_GPIO(ec_voldn_btn_odl)
 #define GPIO_VOLUME_UP_L           NAMED_GPIO(ec_volup_btn_odl)
-#define GPIO_WP_L                  NAMED_GPIO(ec_wp_l)
 #define CONFIG_TEMP_SENSOR_POWER_GPIO NAMED_GPIO(pg_ec_dsw_pwrok)
 
 /* USB-C interrupts */
@@ -89,6 +94,7 @@
 #define GPIO_USB_C1_BC12_INT_ODL   GPIO_USB_C1_MIX_INT_ODL
 
 #define GPIO_EC_PROCHOT_IN_L       NAMED_GPIO(ec_prochot_in_l)
+#endif /* #if 0 */
 
 /* Helper macros for generating CROS_EC_GPIO_INTERRUPTS */
 #ifdef CONFIG_PLATFORM_EC_POWERSEQ
@@ -150,26 +156,8 @@
  *   GPIO_INT(NAMED_GPIO(h1_ec_pwr_btn_odl), GPIO_INT_EDGE_BOTH, button_print)
  */
 #define EC_CROS_GPIO_INTERRUPTS                                           \
-	BMI260_INT(GPIO_EC_IMU_INT_L, GPIO_INT_EDGE_FALLING)              \
-	GMR_TABLET_MODE_INT(GPIO_TABLET_MODE_L, GPIO_INT_EDGE_BOTH)       \
+	GPIO_INT(GPIO_WP_L, GPIO_INT_EDGE_BOTH, switch_interrupt)      \
 	GPIO_INT(GPIO_AC_PRESENT, GPIO_INT_EDGE_BOTH, extpower_interrupt) \
-	GPIO_INT(GPIO_LID_OPEN, GPIO_INT_EDGE_BOTH, lid_interrupt)        \
-	GPIO_INT(GPIO_EC_WP_L, GPIO_INT_EDGE_BOTH, switch_interrupt)      \
-	POWER_SIGNAL_INT(GPIO_PCH_SLP_S0_L, GPIO_INT_EDGE_BOTH)           \
-	POWER_SIGNAL_INT(GPIO_PCH_SLP_S3_L, GPIO_INT_EDGE_BOTH)           \
-	POWER_SIGNAL_INT(GPIO_PCH_SLP_SUS_L, GPIO_INT_EDGE_BOTH)          \
-	POWER_SIGNAL_INT(GPIO_PG_EC_DSW_PWROK, GPIO_INT_EDGE_BOTH)        \
-	POWER_SIGNAL_INT(GPIO_PG_EC_RSMRST_ODL, GPIO_INT_EDGE_BOTH)       \
-	POWER_SIGNAL_INT(GPIO_PCH_DSW_PWROK, GPIO_INT_EDGE_BOTH)          \
-	POWER_SIGNAL_INT(GPIO_PG_EC_ALL_SYS_PWRGD, GPIO_INT_EDGE_BOTH)    \
 	POWER_BUTTON_INT(GPIO_POWER_BUTTON_L, GPIO_INT_EDGE_BOTH)         \
-	TCPC_ALERT_INT(GPIO_USB_C0_TCPC_INT_ODL, GPIO_INT_EDGE_BOTH)      \
-	TCPC_ALERT_INT(GPIO_USB_C1_TCPC_INT_ODL, GPIO_INT_EDGE_BOTH)      \
-	TCS3400_INT(GPIO_EC_ALS_RGB_INT_L, GPIO_INT_EDGE_FALLING)         \
-	PPC_INT(GPIO_USB_C0_PPC_INT_ODL, GPIO_INT_EDGE_BOTH)              \
-	PPC_INT(GPIO_USB_C1_PPC_INT_ODL, GPIO_INT_EDGE_BOTH)              \
-	BC12_INT(GPIO_USB_C0_BC12_INT_ODL, GPIO_INT_EDGE_BOTH)            \
-	BC12_INT(GPIO_USB_C1_MIX_INT_ODL, GPIO_INT_EDGE_BOTH)             \
-	AP_PROCHOT_INT(GPIO_EC_PROCHOT_IN_L, GPIO_INT_EDGE_BOTH)
-
+	GPIO_INT(GPIO_LID_OPEN, GPIO_INT_EDGE_BOTH, lid_interrupt)
 #endif /* __ZEPHYR_GPIO_MAP_H */

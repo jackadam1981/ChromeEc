@@ -1,11 +1,11 @@
-# Google Volteer EC
+# Google Npcx_evb EC
 
 # Copyright 2020 The Chromium OS Authors
 # SPDX-License-Identifier: Apache-2.0
 
-if BOARD_VOLTEER
+if BOARD_NPCX7_EVB
 
 config BOARD
-	default "volteer"
+	default "npcx7_evb"
 
-endif # BOARD_VOLTEER
+endif # BOARD_NPCX7_EVB
