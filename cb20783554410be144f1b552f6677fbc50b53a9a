@@ -16,6 +16,24 @@
       "message": "updates",
       "revId": "cb20783554410be144f1b552f6677fbc50b53a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9fcb88_98cd0b30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-03-19T02:13:16Z",
+      "side": 1,
+      "message": "ACK in CL cherry pick to firmware branch.",
+      "parentUuid": "e7e113e4_86c914ea",
+      "revId": "cb20783554410be144f1b552f6677fbc50b53a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
