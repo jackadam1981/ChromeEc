@@ -16,6 +16,29 @@
       "message": "Most items are already be resolved. Please check if V4 patch can meet or not.\n\nBut one item may need Aseda\u0027s comment that using chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON) to replace slp signal cannot fix timing issue and it may blink lightbar a while.",
       "revId": "fd0df0692daa258322d0b941fdc7a6838c7cb3a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f2336cb_50509493",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-19T16:42:57Z",
+      "side": 1,
+      "message": "maybe you can use the SSFC instead?",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 31
+      },
+      "revId": "fd0df0692daa258322d0b941fdc7a6838c7cb3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
