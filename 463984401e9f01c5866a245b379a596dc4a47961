@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca6d7249_5c3be1e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-19T09:18:10Z",
+      "side": 1,
+      "message": "Boten is closing final firmware.\nFollow Google\u0027s comment that EC should remove CONFIG_SYSTEM_UNLOCKED and enable CONFIG_USB_PD_COMM_LOCKED.",
+      "revId": "463984401e9f01c5866a245b379a596dc4a47961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
