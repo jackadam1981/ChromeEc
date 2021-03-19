@@ -39,6 +39,30 @@
       },
       "revId": "d97c9a57678d34a814a200a2d5f8ef29a2fcc973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12cf0a6f_39a9e77a",
+        "filename": "zephyr/projects/trogdor/lazor/include/gpio_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T23:16:26Z",
+      "side": 1,
+      "message": "Yuppers. I\u0027m not sure where the \"deprecated\" comes from in the name, but it\u0027s used in the SC7180 code...",
+      "parentUuid": "66c30ffa_5680254d",
+      "range": {
+        "startLine": 19,
+        "startChar": 46,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "d97c9a57678d34a814a200a2d5f8ef29a2fcc973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
