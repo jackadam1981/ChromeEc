@@ -86,6 +86,8 @@ static const uint16_t hc_suppressed_cmd[] = { CONFIG_SUPPRESSED_HOST_COMMANDS };
 static uint32_t hc_suppressed_cnt[ARRAY_SIZE(hc_suppressed_cmd)];
 #endif
 
+void insert_host_command(uint32_t command);
+
 uint8_t *host_get_memmap(int offset)
 {
 #ifdef CONFIG_HOSTCMD_X86
@@ -674,6 +676,8 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 
 	if (hcdebug)
 		host_command_debug_request(args);
+
+	insert_host_command(args->command);
 
 	/*
 	 * Pre-emptively clear the entire response buffer so we do not
