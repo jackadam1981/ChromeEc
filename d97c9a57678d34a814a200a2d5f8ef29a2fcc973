@@ -63,6 +63,30 @@
       },
       "revId": "d97c9a57678d34a814a200a2d5f8ef29a2fcc973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b93227e_bc86e875",
+        "filename": "zephyr/projects/trogdor/lazor/include/gpio_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-19T23:21:45Z",
+      "side": 1,
+      "message": "Not used, just informative. It was added as a power signal so it shows some message when the signal changes. It helps us to blame the AP side.",
+      "parentUuid": "66c30ffa_5680254d",
+      "range": {
+        "startLine": 19,
+        "startChar": 46,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "d97c9a57678d34a814a200a2d5f8ef29a2fcc973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
