@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14dfb6d7_db814524",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-19T04:45:12Z",
+      "side": 1,
+      "message": "For other programs, we have typically done this closer to firmware lockdown. I am okay if we do this earlier for brya, but just wanted to make sure there are no problems we anticipate because of this being disabled so early. Adding Keith in case he has some inputs on the timing of this.",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "6a7315e95fa5d9cc05ae9b5987b34961cff9bb36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
