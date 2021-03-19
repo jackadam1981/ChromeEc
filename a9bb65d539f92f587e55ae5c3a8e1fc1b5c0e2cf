@@ -33,6 +33,24 @@
       "message": "It seems odd to put these in the driver header file. Do other drivres do this?",
       "revId": "a9bb65d539f92f587e55ae5c3a8e1fc1b5c0e2cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb18f71_ba908e99",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T22:22:27Z",
+      "side": 1,
+      "message": "LN9310 seems to depend on this enum and the board_get_battery_cell_type function (I\u0027m certain that could be refactored to be better.....)\n\nAnyway, no good to expect that board.h declares these if so... this is at least better.\n\nIdeally I think we could refactor this battery dependency out of the driver. But not going to handle that now.",
+      "parentUuid": "6703dfbb_a43d4873",
+      "revId": "a9bb65d539f92f587e55ae5c3a8e1fc1b5c0e2cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
