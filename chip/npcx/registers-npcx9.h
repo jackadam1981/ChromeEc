@@ -422,16 +422,6 @@ enum {
 	NPCX_ESPI_MAXFREQ_NONE = 0xFF
 };
 
-/* eSPI Operating Frequency */
-enum {
-	NPCX_ESPI_OPFREQ_20 = 0,
-	NPCX_ESPI_OPFREQ_25 = 1,
-	NPCX_ESPI_OPFREQ_33 = 2,
-	NPCX_ESPI_OPFREQ_50 = 3,
-	NPCX_ESPI_OPFREQ_66 = 4,
-	NPCX_ESPI_OPFREQ_NONE = 0xFF
-};
-
 /* eSPI max frequency support per FMCLK */
 #if (FMCLK <= 33000000)
 #define NPCX_ESPI_MAXFREQ_MAX		NPCX_ESPI_MAXFREQ_33
