@@ -46,6 +46,30 @@
       },
       "revId": "6a7315e95fa5d9cc05ae9b5987b34961cff9bb36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6f7b0c3_5e53d396",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-19T22:27:02Z",
+      "side": 1,
+      "message": "yes, that dependency exists, but what would be the use case?\nat this stage, the GSC doesn\u0027t assert WP, so we\u0027re still functionally\nunlocked, just not hard-coded unlocked.\n\ni think we should turn off the hard-coded unlocked behavior as soon\nas possible to reduce the chances of surprises later.",
+      "parentUuid": "b70cb99e_f41ddfe9",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "6a7315e95fa5d9cc05ae9b5987b34961cff9bb36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
