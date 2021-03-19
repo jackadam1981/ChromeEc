@@ -18,6 +18,9 @@
 #include "hooks.h"
 #include "timer.h"
 
+#undef DEBUG_ESPI
+#define DEBUG_ESPI   1
+
 /* Console output macros */
 #if !(DEBUG_ESPI)
 #define CPUTS(...)
@@ -408,7 +411,7 @@ void espi_vw_evt_pltrst(void)
 {
 	int pltrst = espi_vw_get_wire(VW_PLTRST_L);
 
-	CPRINTS("VW PLTRST: %d", pltrst);
+	ccprints("VW PLTRST: %d, CFG 0x%08x", pltrst, NPCX_ESPICFG);
 
 	if (pltrst) {
 		/* PLTRST# deasserted */
@@ -429,6 +432,8 @@ void espi_vw_evt_pltrst(void)
 		hook_call_deferred(&espi_chipset_reset_data, MSEC);
 #endif
 	}
+
+	ccprints("END VW PLTRST: CFG 0x%08x", NPCX_ESPICFG);
 }
 
 /* SLP_Sx event handler */
@@ -529,6 +534,39 @@ void __espi_wk2b_interrupt(void)
 }
 DECLARE_IRQ(NPCX_IRQ_WKINTB_2, __espi_wk2b_interrupt, 3);
 
+void print_espi_bus_error(uint32_t bus_error) {
+	if (!DEBUG_ESPI)
+		return;
+
+	if (bus_error & BIT(NPCX_ESPIERR_INVCMD))
+		ccprintf("INVCMD ");
+	if (bus_error & BIT(NPCX_ESPIERR_INVCYC))
+		ccprintf("INVCYC ");
+	if (bus_error & BIT(NPCX_ESPIERR_CRCERR))
+		ccprintf("CRCERR ");
+	if (bus_error & BIT(NPCX_ESPIERR_ABCOMP))
+		ccprintf("ABCOMP ");
+	if (bus_error & BIT(NPCX_ESPIERR_PROTERR))
+		ccprintf("PROTERR ");
+	if (bus_error & BIT(NPCX_ESPIERR_BADSIZE))
+		ccprintf("BADSIZE ");
+	if (bus_error & BIT(NPCX_ESPIERR_NPBADALN))
+		ccprintf("NPBADALN ");
+	if (bus_error & BIT(NPCX_ESPIERR_PCBADALN))
+		ccprintf("PCBADALN ");
+	if (bus_error & BIT(NPCX_ESPIERR_UNCMD))
+		ccprintf("UNCMD ");
+	if (bus_error & BIT(NPCX_ESPIERR_EXTRACYC))
+		ccprintf("EXTRACYC ");
+	if (bus_error & BIT(NPCX_ESPIERR_VWERR))
+		ccprintf("VWERR ");
+	if (bus_error & BIT(NPCX_ESPIERR_UNPBM))
+		ccprintf("UNPBM ");
+	if (bus_error & BIT(NPCX_ESPIERR_UNFLASH))
+		ccprintf("UNFLASH ");
+	ccprintf("\n");
+}
+
 /* Interrupt handler for eSPI status changed */
 void espi_interrupt(void)
 {
@@ -546,12 +584,18 @@ void espi_interrupt(void)
 #endif
 	status = NPCX_ESPISTS & mask;
 
+	ccprints("eSPI interrupt status 0x%08x cfg 0x%08x", status,
+							    NPCX_ESPICFG);
 	while (status) {
 		/* Clear pending bits first */
 		NPCX_ESPISTS = status;
 
-		if (IS_BIT_SET(status, NPCX_ESPISTS_BERR))
-			CPRINTS("eSPI Bus Error");
+		if (IS_BIT_SET(status, NPCX_ESPISTS_BERR)) {
+			ccprints("eSPI Bus Error, 0x%08x", NPCX_ESPIERR);
+			if(DEBUG_ESPI)
+				print_espi_bus_error(NPCX_ESPIERR);
+			NPCX_ESPIERR = NPCX_ESPIERR;
+		}
 
 		/* eSPI inband reset(from VW) */
 		if (IS_BIT_SET(status, NPCX_ESPISTS_IBRST)) {
@@ -560,7 +604,7 @@ void espi_interrupt(void)
 
 		} /* eSPI reset (from eSPI_rst pin) */
 		else if (IS_BIT_SET(status, NPCX_ESPISTS_ESPIRST)) {
-			CPRINTS("eSPI RST");
+			ccprints("eSPI RST");
 			chipset_handle_espi_reset_assert();
 			espi_reset_recovery();
 		}
@@ -602,6 +646,8 @@ void espi_interrupt(void)
 		/* Get status again */
 		status = NPCX_ESPISTS & mask;
 	}
+
+	ccprints("eSPI interrupt done cfg 0x%08x", NPCX_ESPICFG);
 }
 DECLARE_IRQ(NPCX_IRQ_ESPI, espi_interrupt, 4);
 
@@ -633,6 +679,8 @@ void espi_init(void)
 	/* Configure MIWU for eSPI VW */
 	for (i = 0; i < ARRAY_SIZE(espi_vw_int_list); i++)
 		espi_enable_vw_int(&espi_vw_int_list[i]);
+
+	ccprints("INIT ESPI CONFIG: 0x%08x", NPCX_ESPICFG);
 }
 
 static int command_espi(int argc, char **argv)
