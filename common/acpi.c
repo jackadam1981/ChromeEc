@@ -52,6 +52,9 @@ static int current_dptf_profile = DPTF_PROFILE_DEFAULT;
 
 #endif
 
+void insert_acpi_cmd(uint8_t cmd);
+void insert_acpi_data(uint8_t data);
+
 /*
  * Keep a read cache of four bytes when burst mode is enabled, which is the
  * size of the largest non-string memmap data type.
@@ -183,6 +186,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 	if (is_cmd) {
 		acpi_cmd = value;
 		acpi_data_count = 0;
+		insert_acpi_cmd(acpi_cmd);
 	} else {
 		data = value;
 		/*
@@ -191,6 +195,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		 */
 		if (!acpi_data_count++)
 			acpi_addr = data;
+		insert_acpi_data(data);
 	}
 
 	/* Process complete commands */
