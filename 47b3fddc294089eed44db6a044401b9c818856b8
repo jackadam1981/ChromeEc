@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ec1f10e_ae6447b5",
+        "filename": "common/cbi.c",
+        "patchSetId": 88
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-19T13:41:44Z",
+      "side": 1,
+      "message": "I like your suggestion here. Originally, I had just hijacked the cbi console command, and that\u0027s why I was thinking of EC control of CBI as opposed to the AP. But, as its own command, I agree this is more descriptive.",
+      "parentUuid": "35403f1d_bf716e6a",
+      "range": {
+        "startLine": 553,
+        "startChar": 24,
+        "endLine": 553,
+        "endChar": 30
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e196165c_bf321da6",
         "filename": "zephyr/Kconfig",
         "patchSetId": 88
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-18T21:41:00Z",
       "side": 1,
       "message": "Wrap both of these commands under an if block:\n\nif PLATFORM_EC_CBI\nendif",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 33
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b197d446_eb08867e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-19T13:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e196165c_bf321da6",
       "range": {
         "startLine": 203,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0791337a_c8c4d0d2",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-19T13:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cf52039_22b461c5",
+      "range": {
+        "startLine": 204,
+        "startChar": 7,
+        "endLine": 204,
+        "endChar": 41
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "077b4f89_4f132353",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba135f66_0918ba6d",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-19T13:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "077b4f89_4f132353",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 27
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf386baf_b73f874d",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-03-18T21:41:00Z",
       "side": 1,
       "message": "Console command: cbi_set",
+      "range": {
+        "startLine": 213,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 43
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1609eeff_762d74a0",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-19T13:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf386baf_b73f874d",
       "range": {
         "startLine": 213,
         "startChar": 7,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60744980_7cf168d9",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-19T13:41:44Z",
+      "side": 1,
+      "message": "cbi_set will only be compiled if CONFIG_CMD_CBI is enabled.",
+      "parentUuid": "37ab027e_7b92cc0b",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 38
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11ba17be_ae0625de",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 88
@@ -152,6 +296,30 @@
       "writtenOn": "2021-03-18T21:41:00Z",
       "side": 1,
       "message": "CONFIG_PLATFORM_EC_CONFIG_CMD_CBI",
+      "range": {
+        "startLine": 1165,
+        "startChar": 7,
+        "endLine": 1165,
+        "endChar": 33
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a3f0bf2_6fd7ca97",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 88
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-19T13:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11ba17be_ae0625de",
       "range": {
         "startLine": 1165,
         "startChar": 7,
