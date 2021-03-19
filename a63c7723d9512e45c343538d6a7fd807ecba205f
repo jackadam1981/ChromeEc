@@ -16,6 +16,23 @@
       "message": "Changed define name due to CL:2749761",
       "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63adcbd_b6eccac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-19T15:24:47Z",
+      "side": 1,
+      "message": "Tested on Ampton.\n\nI\u0027m not sure if relationship between config name in Kconfig and define name in include/config.h is correct. There is no warning when compiling EC.",
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
