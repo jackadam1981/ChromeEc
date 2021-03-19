@@ -24,7 +24,6 @@
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
-#include "ln9310.h"
 #include "pi3usb9201.h"
 #include "power.h"
 #include "power_button.h"
@@ -48,11 +47,8 @@ static void usb1_evt(enum gpio_signal signal);
 static void usba_oc_interrupt(enum gpio_signal signal);
 static void ppc_interrupt(enum gpio_signal signal);
 static void board_connect_c0_sbu(enum gpio_signal s);
-static void switchcap_interrupt(enum gpio_signal signal);
 
 #include "gpio_list.h"
-
-static uint8_t sku_id;
 
 /* GPIO Interrupt Handlers */
 static void tcpc_alert_event(enum gpio_signal signal)
@@ -123,11 +119,6 @@ DECLARE_DEFERRED(board_connect_c0_sbu_deferred);
 static void board_connect_c0_sbu(enum gpio_signal s)
 {
 	hook_call_deferred(&board_connect_c0_sbu_deferred_data, 0);
-}
-
-static void switchcap_interrupt(enum gpio_signal signal)
-{
-	ln9310_interrupt(signal);
 }
 
 /* Keyboard scan setting */
@@ -209,12 +200,6 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_DISPLIGHT] = { .channel = 5, .flags = 0, .freq = 4800 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
-
-/* LN9310 switchcap */
-const struct ln9310_config_t ln9310_config = {
-	.i2c_port = I2C_PORT_POWER,
-	.i2c_addr_flags = LN9310_I2C_ADDR_0_FLAGS,
-};
 
 /* Power Path Controller */
 struct ppc_config_t ppc_chips[] = {
@@ -329,30 +314,30 @@ static const mat33_fp_t lid_standard_ref_kx022 = {
 
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
-	 .name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
-	 .chip = MOTIONSENSE_CHIP_BMA255,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bma2x2_accel_drv,
-	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_bma255_data,
-	 .port = I2C_PORT_SENSOR,
-	 .i2c_spi_addr_flags = BMA2x2_I2C_ADDR1_FLAGS,
-	 .rot_standard_ref = &lid_standard_ref_bma255,
-	 .default_range = 2, /* g, to support lid angle calculation. */
-	 .min_frequency = BMA255_ACCEL_MIN_FREQ,
-	 .max_frequency = BMA255_ACCEL_MAX_FREQ,
-	 .config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3_S5,
+		.chip = MOTIONSENSE_CHIP_BMA255,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &bma2x2_accel_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &g_bma255_data,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = BMA2x2_I2C_ADDR1_FLAGS,
+		.rot_standard_ref = &lid_standard_ref_bma255,
+		.default_range = 2, /* g, to support lid angle calculation. */
+		.min_frequency = BMA255_ACCEL_MIN_FREQ,
+		.max_frequency = BMA255_ACCEL_MAX_FREQ,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
+			/* Sensor on for lid angle detection */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
 		},
-		/* Sensor on for lid angle detection */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-		},
-	 },
 	},
 	/*
 	 * Note: bmi160: supports accelerometer and gyro sensor
@@ -360,46 +345,46 @@ struct motion_sensor_t motion_sensors[] = {
 	 * DO NOT change the order of the following table.
 	 */
 	[BASE_ACCEL] = {
-	 .name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .port = I2C_PORT_SENSOR,
-	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
-	 .rot_standard_ref = &base_standard_ref_bmi160,
-	 .default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
-	 .min_frequency = BMI_ACCEL_MIN_FREQ,
-	 .max_frequency = BMI_ACCEL_MAX_FREQ,
-	 .config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3_S5,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+		.rot_standard_ref = &base_standard_ref_bmi160,
+		.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+		.min_frequency = BMI_ACCEL_MIN_FREQ,
+		.max_frequency = BMI_ACCEL_MAX_FREQ,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
+			/* Sensor on for lid angle detection */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
 		},
-		/* Sensor on for lid angle detection */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-		},
-	 },
 	},
 	[BASE_GYRO] = {
-	 .name = "Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_GYRO,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .port = I2C_PORT_SENSOR,
-	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
-	 .default_range = 1000, /* dps */
-	 .rot_standard_ref = &base_standard_ref_bmi160,
-	 .min_frequency = BMI_GYRO_MIN_FREQ,
-	 .max_frequency = BMI_GYRO_MAX_FREQ,
+		.name = "Gyro",
+		.active_mask = SENSOR_ACTIVE_S0_S3_S5,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+		.default_range = 1000, /* dps */
+		.rot_standard_ref = &base_standard_ref_bmi160,
+		.min_frequency = BMI_GYRO_MIN_FREQ,
+		.max_frequency = BMI_GYRO_MAX_FREQ,
 	},
 };
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
@@ -420,10 +405,10 @@ struct motion_sensor_t kx022_lid_accel = {
 	.min_frequency = KX022_ACCEL_MIN_FREQ,
 	.max_frequency = KX022_ACCEL_MAX_FREQ,
 	.config = {
-		 /* EC use accel for angle detection */
-		 [SENSOR_CONFIG_EC_S0] = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-		 },
+		},
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S3] = {
 			.odr = 10000 | ROUND_UP_FLAG,
@@ -495,35 +480,6 @@ void lid_angle_peripheral_enable(int enable)
 }
 #endif
 
-static int board_is_clamshell(void)
-{
-	/* SKU ID of Limozeen: 4, 5, 6 */
-	return sku_id == 4 || sku_id == 5 || sku_id == 6;
-}
-
-enum battery_cell_type board_get_battery_cell_type(void)
-{
-	/* SKU ID of Limozeen: 4, 5, 6 -> 3S battery */
-	if (sku_id == 4 || sku_id == 5 || sku_id == 6)
-		return BATTERY_CELL_TYPE_3S;
-
-	return BATTERY_CELL_TYPE_UNKNOWN;
-}
-
-__override int board_get_default_battery_type(void)
-{
-	/*
-	 * A 2S battery is set as default. If the board is configured to use
-	 * a 3S battery, according to its SKU_ID, return a 3S battery as
-	 * default. It helps to configure the charger to output a correct
-	 * voltage in case the battery is not attached.
-	 */
-	if (board_get_battery_cell_type() == BATTERY_CELL_TYPE_3S)
-		return BATTERY_LGC_AP18C8K;
-
-	return DEFAULT_BATTERY_TYPE;
-}
-
 static int base_accelgyro_config;
 
 void motion_interrupt(enum gpio_signal signal)
@@ -565,123 +521,6 @@ static void board_detect_motionsensor(void)
 		 ? "ICM40608" : "BMI160");
 }
 
-static void board_update_sensor_config_from_sku(void)
-{
-	if (board_is_clamshell()) {
-		motion_sensor_count = 0;
-		gmr_tablet_switch_disable();
-		/* The sensors are not stuffed; don't allow lines to float */
-		gpio_set_flags(GPIO_ACCEL_GYRO_INT_L,
-			       GPIO_INPUT | GPIO_PULL_DOWN);
-		gpio_set_flags(GPIO_LID_ACCEL_INT_L,
-			       GPIO_INPUT | GPIO_PULL_DOWN);
-	} else {
-		board_detect_motionsensor();
-		motion_sensor_count = ARRAY_SIZE(motion_sensors);
-		/* Enable interrupt for the base accel sensor */
-		gpio_enable_interrupt(GPIO_ACCEL_GYRO_INT_L);
-	}
-}
-
-/* Read SKU ID from GPIO and initialize variables for board variants */
-static void sku_init(void)
-{
-	uint8_t val = 0;
-
-	if (gpio_get_level(GPIO_SKU_ID0))
-		val |= 0x01;
-	if (gpio_get_level(GPIO_SKU_ID1))
-		val |= 0x02;
-	if (gpio_get_level(GPIO_SKU_ID2))
-		val |= 0x04;
-
-	sku_id = val;
-	CPRINTS("SKU: %u", sku_id);
-
-	board_update_sensor_config_from_sku();
-}
-DECLARE_HOOK(HOOK_INIT, sku_init, HOOK_PRIO_INIT_I2C + 1);
-
-static int board_has_ln9310(void)
-{
-	static int ln9310_present = -1;
-	int status, val;
-
-	/* Cache the status of LN9310 present or not */
-	if (ln9310_present == -1) {
-		status = i2c_read8(ln9310_config.i2c_port,
-				   ln9310_config.i2c_addr_flags,
-				   LN9310_REG_CHIP_ID,
-				   &val);
-
-		/*
-		 * Any error reading LN9310 CHIP_ID over I2C means the chip
-		 * not present. Fallback to use DA9313 switchcap.
-		 */
-		ln9310_present = !status && val == LN9310_CHIP_ID;
-	}
-
-	return ln9310_present;
-}
-
-static void board_switchcap_init(void)
-{
-	if (board_has_ln9310()) {
-		CPRINTS("Use switchcap: LN9310");
-
-		/* Configure and enable interrupt for LN9310 */
-		gpio_set_flags(GPIO_SWITCHCAP_PG_INT_L, GPIO_INT_FALLING);
-		gpio_enable_interrupt(GPIO_SWITCHCAP_PG_INT_L);
-
-		/*
-		 * Configure LN9310 enable, open-drain output. Don't set the
-		 * level here; otherwise, it will override its value and
-		 * shutdown the switchcap when sysjump to RW.
-		 *
-		 * Note that the gpio.inc configures it GPIO_OUT_LOW. When
-		 * sysjump to RW, will output push-pull a short period of
-		 * time. As it outputs LOW, should be fine.
-		 *
-		 * This GPIO changes like:
-		 * (1) EC boots from RO -> high-Z
-		 * (2) GPIO init according to gpio.inc -> push-pull LOW
-		 * (3) This function configures it -> open-drain HIGH
-		 * (4) Power sequence turns on the switchcap -> open-drain LOW
-		 * (5) EC sysjumps to RW
-		 * (6) GPIO init according to gpio.inc -> push-pull LOW
-		 * (7) This function configures it -> open-drain LOW
-		 */
-		gpio_set_flags(GPIO_SWITCHCAP_ON_L,
-			       GPIO_OUTPUT | GPIO_OPEN_DRAIN);
-
-		/* Only configure the switchcap if not sysjump */
-		if (!system_jumped_late()) {
-			/*
-			 * Deassert the enable pin (set it HIGH), so the
-			 * switchcap won't be enabled after the switchcap is
-			 * configured from standby mode to switching mode.
-			 */
-			gpio_set_level(GPIO_SWITCHCAP_ON_L, 1);
-			ln9310_init();
-		}
-	} else {
-		CPRINTS("Use switchcap: DA9313");
-
-		/*
-		 * When the chip in power down mode, it outputs high-Z.
-		 * Set pull-down to avoid floating.
-		 */
-		gpio_set_flags(GPIO_DA9313_GPIO0, GPIO_INPUT | GPIO_PULL_DOWN);
-
-		/*
-		 * Configure DA9313 enable, push-pull output. Don't set the
-		 * level here; otherwise, it will override its value and
-		 * shutdown the switchcap when sysjump to RW.
-		 */
-		gpio_set_flags(GPIO_SWITCHCAP_ON, GPIO_OUTPUT);
-	}
-}
-
 /* Initialize board. */
 static void board_init(void)
 {
@@ -702,31 +541,13 @@ static void board_init(void)
 	/* Set the backlight duty cycle to 0. AP will override it later. */
 	pwm_set_duty(PWM_CH_DISPLIGHT, 0);
 
-	board_switchcap_init();
+	board_detect_motionsensor();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 void board_hibernate(void)
 {
 	int i;
-
-	if (!board_is_clamshell()) {
-		/*
-		 * Sensors are unpowered in hibernate. Apply PD to the
-		 * interrupt lines such that they don't float.
-		 */
-		gpio_set_flags(GPIO_ACCEL_GYRO_INT_L,
-			       GPIO_INPUT | GPIO_PULL_DOWN);
-		gpio_set_flags(GPIO_LID_ACCEL_INT_L,
-			       GPIO_INPUT | GPIO_PULL_DOWN);
-	}
-
-	/*
-	 * Board rev 5+ has the hardware fix. Don't need the following
-	 * workaround.
-	 */
-	if (system_get_board_version() >= 5)
-		return;
 
 	/*
 	 * Enable the PPC power sink path before EC enters hibernate;
@@ -735,21 +556,6 @@ void board_hibernate(void)
 	 */
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
 		ppc_vbus_sink_enable(i, 1);
-}
-
-__override uint16_t board_get_ps8xxx_product_id(int port)
-{
-	/*
-	 * Lazor (SKU_ID: 0, 1, 2, 3) rev 3+ changes TCPC from PS8751 to
-	 * PS8805.
-	 *
-	 * Limozeen (SKU_ID: 4, 5, 6) all-rev uses PS8805.
-	 */
-	if ((sku_id == 0 || sku_id == 1 || sku_id == 2 || sku_id == 3) &&
-	    system_get_board_version() < 3)
-		return PS8751_PRODUCT_ID;
-
-	return PS8805_PRODUCT_ID;
 }
 
 void board_tcpc_init(void)
@@ -800,26 +606,17 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
 void board_set_switchcap_power(int enable)
 {
-	if (board_has_ln9310())
-		gpio_set_level(GPIO_SWITCHCAP_ON_L, !enable);
-	else
-		gpio_set_level(GPIO_SWITCHCAP_ON, enable);
+	gpio_set_level(GPIO_SWITCHCAP_ON, enable);
 }
 
 int board_is_switchcap_enabled(void)
 {
-	if (board_has_ln9310())
-		return !gpio_get_level(GPIO_SWITCHCAP_ON_L);
-	else
-		return gpio_get_level(GPIO_SWITCHCAP_ON);
+	return gpio_get_level(GPIO_SWITCHCAP_ON);
 }
 
 int board_is_switchcap_power_good(void)
 {
-	if (board_has_ln9310())
-		return ln9310_power_good();
-	else
-		return gpio_get_level(GPIO_DA9313_GPIO0);
+	return gpio_get_level(GPIO_DA9313_GPIO0);
 }
 
 void board_reset_pd_mcu(void)
