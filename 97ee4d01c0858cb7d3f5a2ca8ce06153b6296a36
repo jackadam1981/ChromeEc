@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16877ea9_408e04ab",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-19T21:31:49Z",
+      "side": 1,
+      "message": "the i2c map page of schematics is wrong. the detailed\nschematics page shows the address as 0x5d. confirmed\nwith i2cscan on my board. does your board behave\ndifferently?",
+      "range": {
+        "startLine": 149,
+        "startChar": 20,
+        "endLine": 149,
+        "endChar": 47
+      },
+      "revId": "97ee4d01c0858cb7d3f5a2ca8ce06153b6296a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
