@@ -23,12 +23,26 @@ endif()
 set(CC gcc)
 set(CROSS_COMPILE "/opt/coreboot-sdk/bin/${CROSS_COMPILE_TARGET}-")
 
-set(CMAKE_AR         "${CROSS_COMPILE}ar")
+SET(CMAKE_AR         "${CROSS_COMPILE}gcc-ar")
 set(CMAKE_NM         "${CROSS_COMPILE}nm")
 set(CMAKE_OBJCOPY    "${CROSS_COMPILE}objcopy")
 set(CMAKE_OBJDUMP    "${CROSS_COMPILE}objdump")
 set(CMAKE_RANLIB     "${CROSS_COMPILE}ranlib")
 set(CMAKE_READELF    "${CROSS_COMPILE}readelf")
+
+if (DEFINED CONFIG_LTO)
+  # Enable link time optimization (LTO) by the linker.
+  # LTO must also be enabled by the compiler, however the Zephyr kernel
+  # does not compile with LTO enabled. So LTO is only enabled for the
+  # Chromium OS based sources.
+  # See https://github.com/zephyrproject-rtos/zephyr/issues/2112
+
+  # TODO: Enable LTO for all sources when Zephyr supports it.
+  #SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -flto")
+  SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -flto")
+  SET(CMAKE_C_ARCHIVE_CREATE "<CMAKE_AR> qcs <TARGET> <LINK_FLAGS> <OBJECTS>")
+  SET(CMAKE_C_ARCHIVE_FINISH   true)
+endif()
 
 # On ARM, we don't use libgcc: It's built against a fixed target (e.g.
 # used instruction set, ABI, ISA extensions) and doesn't adapt when
