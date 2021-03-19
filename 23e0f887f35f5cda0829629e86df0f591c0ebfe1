@@ -33,6 +33,24 @@
       "message": "Should this also verify we\u0027re \u003ctChunkingNotSupported from c)?",
       "revId": "23e0f887f35f5cda0829629e86df0f591c0ebfe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "181b9891_44a15399",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-19T21:17:27Z",
+      "side": 1,
+      "message": "It tests tChunkingNotSupportedMax on line 94",
+      "parentUuid": "4a41abf5_24b15553",
+      "revId": "23e0f887f35f5cda0829629e86df0f591c0ebfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
