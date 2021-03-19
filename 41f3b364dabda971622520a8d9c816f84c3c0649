@@ -22,6 +22,30 @@
       },
       "revId": "41f3b364dabda971622520a8d9c816f84c3c0649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f225afe_b2fa4ad4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-03-19T14:00:01Z",
+      "side": 1,
+      "message": "Will this inhibit boot if D2 DB is attached?",
+      "parentUuid": "7b719800_343dda8e",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "41f3b364dabda971622520a8d9c816f84c3c0649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
