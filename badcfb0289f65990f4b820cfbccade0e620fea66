@@ -208,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17bcef07_35080080",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-19T21:20:35Z",
+      "side": 1,
+      "message": "Looks like they might have a fix",
+      "parentUuid": "0b10cddc_e9c8e3e7",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9f6b8bb_3b273d43",
         "filename": "zephyr/drivers/cros_bbram/cros_bbram_npcx.c",
         "patchSetId": 9
