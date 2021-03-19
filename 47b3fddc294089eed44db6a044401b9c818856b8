@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22e3e5c9_332b2cd4",
+        "filename": "common/cbi.c",
+        "patchSetId": 88
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-19T19:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ec1f10e_ae6447b5",
+      "range": {
+        "startLine": 553,
+        "startChar": 24,
+        "endLine": 553,
+        "endChar": 30
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e196165c_bf321da6",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "cbi_set will only be compiled if CONFIG_CMD_CBI is enabled.",
       "parentUuid": "37ab027e_7b92cc0b",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 38
+      },
+      "revId": "47b3fddc294089eed44db6a044401b9c818856b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67075706_2007501f",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 88
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-19T19:59:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60744980_7cf168d9",
       "range": {
         "startLine": 214,
         "startChar": 0,

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e429c7_4e157a23",
+        "filename": "common/cbi.c",
+        "patchSetId": 89
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-19T19:59:16Z",
+      "side": 1,
+      "message": "Change to \"fw_config\" since that\u0027s the actual field name.",
+      "range": {
+        "startLine": 554,
+        "startChar": 30,
+        "endLine": 554,
+        "endChar": 32
+      },
+      "revId": "59cd7d0913913242cd5aa2dc6eace5333ef1edd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
