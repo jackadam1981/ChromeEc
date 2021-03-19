@@ -16,6 +16,23 @@
       "message": "Please cherry-pick it to the Trogdor firmware branch.",
       "revId": "14a2886857d83ef2376706053530b18b83ca8465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab4ccfd9_c3e0ad02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-19T00:40:45Z",
+      "side": 1,
+      "message": "The CQ failed at a recent added check.\n```\nError: The EC is in the process of migrating to Zephyr.\n\tZephyr uses Kconfig for configuration rather than\n\tad-hoc #defines.\n\tAny new EC CONFIG options must ALSO be added to Zephyr\n\tso that new functionality is available in Zephyr also.\n\tThe following new ad-hoc CONFIG options were detected:\n\nCONFIG_CHARGER_BQ25720\n\nPlease add these via Kconfig instead. Find a suitable Kconfig\nfile in zephyr/ and add a \u0027config\u0027 or \u0027menuconfig\u0027 option.\nAlso see details in http://issuetracker.google.com/181253613\n```\n\nAlex, please follow the instruction to add the Kconfig and submit a CL.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md#step_by_step-guide-to-adding-a-kconfig\n\nI know it is not your fault. Since you are the one hits this issue, please fix it. Thanks!",
+      "revId": "14a2886857d83ef2376706053530b18b83ca8465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
