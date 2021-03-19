@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "119ab223_e2801fbb",
+        "filename": "zephyr/test/tasks/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T23:17:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "769cb251_37a70efd",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "a0baf325fbd4b4bb898ce15fc68e34ea2b0d0e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcf9ab08_fa3a256c",
