@@ -1130,8 +1130,16 @@ enum PM_CHANNEL_T {
 #define NPCX_ESPICFG_VWCHANEN            1
 #define NPCX_ESPICFG_OOBCHANEN           2
 #define NPCX_ESPICFG_FLASHCHANEN         3
+#define NPCX_ESPICFG_HPCHANEN            4
+#define NPCX_ESPICFG_HVWCHANEN            5
+#define NPCX_ESPICFG_HOOBCHANEN          6
+#define NPCX_ESPICFG_HFLASHCHANEN        7
 #define NPCX_ESPICFG_IOMODE_FIELD        FIELD(8, 9)
 #define NPCX_ESPICFG_MAXFREQ_FIELD       FIELD(10, 12)
+#define NPCX_ESPICFG_OPFREQ_FIELD        FIELD(17, 19)
+#define NPCX_ESPICFG_IOMODESEL_FIELD     FIELD(20, 21)
+#define NPCX_ESPICFG_ALERT_MODE          22
+#define NPCX_ESPICFG_CRC_CHK             23
 #define NPCX_ESPICFG_PCCHN_SUPP          24
 #define NPCX_ESPICFG_VWCHN_SUPP          25
 #define NPCX_ESPICFG_OOBCHN_SUPP         26
@@ -1171,6 +1179,20 @@ enum PM_CHANNEL_T {
 #define NPCX_ESPISTS_PLTRST              10
 #define NPCX_ESPISTS_AMERR               15
 #define NPCX_ESPISTS_AMDONE              16
+#define NPCX_ESPIERR_INVCMD              0 /* Invalid Command Type */
+#define NPCX_ESPIERR_INVCYC              1 /* Invalid Cycle Type */
+#define NPCX_ESPIERR_CRCERR              2 /* Transaction CRC Error */
+#define NPCX_ESPIERR_ABCOMP              3 /* Abnormal Completion */
+#define NPCX_ESPIERR_PROTERR             4 /* Protcol Error */
+#define NPCX_ESPIERR_BADSIZE             5 /* Bad Size */
+#define NPCX_ESPIERR_NPBADALN		 6 /* NPPC Bad Address Alignment */
+#define NPCX_ESPIERR_PCBADALN            7 /* PPC Bad Address Alignment */
+#define NPCX_ESPIERR_UNCMD               9 /* Unsupported Command */
+#define NPCX_ESPIERR_EXTRACYC            10 /* Extra eSPI Clock Cycles */
+#define NPCX_ESPIERR_VWERR               11 /* Virtual Channel Access Error */
+#define NPCX_ESPIERR_UNPBM               14 /* Unsuccessful Bus Completion */
+#define NPCX_ESPIERR_UNFLASH             15 /* Unsuccessful Flash Completion */
+
 /* eSPI Virtual Wire channel register fields */
 #define NPCX_VWEVSM_WIRE                 FIELD(0, 4)
 #define NPCX_VWEVMS_WIRE                 FIELD(0, 4)
@@ -1284,7 +1306,7 @@ enum {
 	NPCX_ESPI_CH_NONE = 0xFF
 };
 
-/* eSPI IO modes */
+/* eSPI IO modes supported */
 enum {
 	NPCX_ESPI_IO_MODE_SINGLE = 0,
 	NPCX_ESPI_IO_MODE_DUAL   = 1,
@@ -1302,6 +1324,26 @@ enum {
 	ESPI_VW_TYPE_NUM,
 	ESPI_VW_TYPE_NONE = 0xFF
 };
+
+/* Operating Frequency */
+enum {
+	NPCX_ESPI_OPFREQ_20 = 0,
+	NPCX_ESPI_OPFREQ_25 = 1,
+	NPCX_ESPI_OPFREQ_33 = 2,
+	NPCX_ESPI_OPFREQ_50 = 3,
+	NPCX_ESPI_OPFREQ_66 = 4,
+	NPCX_ESPI_OPFREQ_NONE = 0xFF
+};
+
+/* eSPI IO modes selected */
+enum {
+	NPCX_ESPI_IO_MODESEL_SINGLE = 0,
+	NPCX_ESPI_IO_MODESEL_DUAL   = 1,
+	NPCX_ESPI_IO_MODESEL_QUARD  = 2,
+	NPCX_ESPI_IO_MODESEL_NONE   = 0xFF
+};
+
+
 
 /******************************************************************************/
 /* GDMA (General DMA) Registers */

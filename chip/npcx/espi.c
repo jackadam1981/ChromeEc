@@ -18,6 +18,9 @@
 #include "hooks.h"
 #include "timer.h"
 
+#undef DEBUG_ESPI
+#define DEBUG_ESPI   1
+
 /* Console output macros */
 #if !(DEBUG_ESPI)
 #define CPUTS(...)
@@ -139,6 +142,132 @@ static uint8_t boot_load_done;
 
 /*****************************************************************************/
 /* eSPI internal utilities */
+
+static void print_espi_bus_error(uint32_t bus_error) {
+	if (!DEBUG_ESPI)
+		return;
+
+	if (IS_BIT_SET(bus_error, NPCX_ESPIERR_INVCMD))
+		ccprintf("INVCMD ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_INVCYC))
+		ccprintf("INVCYC ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_CRCERR))
+		ccprintf("CRCERR ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_ABCOMP))
+		ccprintf("ABCOMP ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_PROTERR))
+		ccprintf("PROTERR ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_BADSIZE))
+		ccprintf("BADSIZE ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_NPBADALN))
+		ccprintf("NPBADALN ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_PCBADALN))
+		ccprintf("PCBADALN ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_UNCMD))
+		ccprintf("UNCMD ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_EXTRACYC))
+		ccprintf("EXTRACYC ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_VWERR))
+		ccprintf("VWERR ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_UNPBM))
+		ccprintf("UNPBM ");
+	if (IS_BIT_SET(bus_error,NPCX_ESPIERR_UNFLASH))
+		ccprintf("UNFLASH ");
+	ccprintf("\n");
+}
+
+static void print_espi_config(uint32_t config) {
+	uint32_t io_mode;
+	uint32_t io_mode_sel;
+	uint32_t max_freq;
+	uint32_t op_freq;
+
+	if (!DEBUG_ESPI)
+		return;
+
+	if (IS_BIT_SET(config, NPCX_ESPICFG_PCHANEN))
+		ccprintf("PCHANEN ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_VWCHANEN))
+		ccprintf("VWCHANEN ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_OOBCHANEN))
+		ccprintf("OOBCHANEN ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_FLASHCHANEN))
+		ccprintf("FLASHCHANEN ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_HPCHANEN))
+		ccprintf("HPCHANEN ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_HVWCHANEN))
+		ccprintf("HVWCHANEN ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_HOOBCHANEN))
+		ccprintf("HOOBCHANEN ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_HFLASHCHANEN))
+		ccprintf("HFLASHCHANEN ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_PCCHN_SUPP))
+		ccprintf("PCCHN_SUPP ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_VWCHN_SUPP))
+		ccprintf("VWCHN_SUPP ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_OOBCHN_SUPP))
+		ccprintf("OOBCHN_SUPP ");
+	if (IS_BIT_SET(config, NPCX_ESPICFG_FLASHCHN_SUPP))
+		ccprintf("FLASHCHN_SUPP ");
+
+	io_mode = GET_FIELD(config, NPCX_ESPICFG_IOMODE_FIELD);
+	if(io_mode == NPCX_ESPI_IO_MODE_SINGLE)
+		ccprintf("IO_MODE_SINGLE ");
+	else if(io_mode == NPCX_ESPI_IO_MODE_DUAL)
+		ccprintf("IO_MODE_DUAL ");
+	else if(io_mode == NPCX_ESPI_IO_MODE_Quad)
+		ccprintf("IO_MODE_QUAD ");
+	else if(io_mode == NPCX_ESPI_IO_MODE_ALL)
+		ccprintf("IO_MODE_ALL ");
+	else if(io_mode == NPCX_ESPI_IO_MODE_NONE)
+		ccprintf("IO_MODE_NONE ");
+	else
+		ccprintf("IO_MODE_UNKNOWN ");
+
+	max_freq = GET_FIELD(config, NPCX_ESPICFG_MAXFREQ_FIELD);
+	if(max_freq == NPCX_ESPI_MAXFREQ_20)
+		ccprintf("MAXFREQ_20 ");
+	else if(max_freq == NPCX_ESPI_MAXFREQ_25)
+		ccprintf("MAXFREQ_25 ");
+	else if(max_freq == NPCX_ESPI_MAXFREQ_33)
+		ccprintf("MAXFREQ_33 ");
+	else if(max_freq == NPCX_ESPI_MAXFREQ_50)
+		ccprintf("MAXFREQ_50 ");
+	else if(max_freq == NPCX_ESPI_MAXFREQ_NONE)
+		ccprintf("MAXFREQ_NONE ");
+	else
+		ccprintf("MAXFREQ_UNKNOWN ");
+
+	op_freq = GET_FIELD(config, NPCX_ESPICFG_OPFREQ_FIELD);
+	if(op_freq == NPCX_ESPI_OPFREQ_20)
+		ccprintf("OPFREQ_20 ");
+	else if(op_freq == NPCX_ESPI_OPFREQ_25)
+		ccprintf("OPFREQ_25 ");
+	else if(op_freq == NPCX_ESPI_OPFREQ_33)
+		ccprintf("OPFREQ_33 ");
+	else if(op_freq == NPCX_ESPI_OPFREQ_50)
+		ccprintf("OPFREQ_50 ");
+	else if(op_freq == NPCX_ESPI_OPFREQ_66)
+		ccprintf("OPFREQ_66 ");
+	else if(op_freq == NPCX_ESPI_OPFREQ_NONE)
+		ccprintf("OPFREQ_NONE ");
+	else
+		ccprintf("OPFREQ_UNKNOWN ");
+
+	io_mode_sel = GET_FIELD(config, NPCX_ESPICFG_IOMODE_FIELD);
+	if(io_mode_sel == NPCX_ESPI_IO_MODESEL_SINGLE)
+		ccprintf("IO_MODESEL_SINGLE ");
+	else if(io_mode_sel == NPCX_ESPI_IO_MODESEL_DUAL)
+		ccprintf("IO_MODESEL_DUAL ");
+	else if(io_mode_sel == NPCX_ESPI_IO_MODESEL_QUARD)
+		ccprintf("IO_MODESEL_QUAD ");
+	else if(io_mode_sel == NPCX_ESPI_IO_MODESEL_NONE)
+		ccprintf("IO_MODESEL_NONE ");
+	else
+		ccprintf("IO_MODESEL_UNKNOWN ");
+
+	ccprintf("\n");
+}
 
 /* Recovery utility for eSPI reset */
 static void espi_reset_recovery(void)
@@ -408,7 +537,8 @@ void espi_vw_evt_pltrst(void)
 {
 	int pltrst = espi_vw_get_wire(VW_PLTRST_L);
 
-	CPRINTS("VW PLTRST: %d", pltrst);
+	ccprints("VW PLTRST: %d, CFG 0x%08x", pltrst, NPCX_ESPICFG);
+	print_espi_config(NPCX_ESPICFG);
 
 	if (pltrst) {
 		/* PLTRST# deasserted */
@@ -429,6 +559,9 @@ void espi_vw_evt_pltrst(void)
 		hook_call_deferred(&espi_chipset_reset_data, MSEC);
 #endif
 	}
+
+	ccprints("END VW PLTRST: CFG 0x%08x", NPCX_ESPICFG);
+	print_espi_config(NPCX_ESPICFG);
 }
 
 /* SLP_Sx event handler */
@@ -546,12 +679,20 @@ void espi_interrupt(void)
 #endif
 	status = NPCX_ESPISTS & mask;
 
+	ccprints("eSPI interrupt status 0x%08x cfg 0x%08x", status,
+							    NPCX_ESPICFG);
+	print_espi_config(NPCX_ESPICFG);
+
 	while (status) {
 		/* Clear pending bits first */
 		NPCX_ESPISTS = status;
 
-		if (IS_BIT_SET(status, NPCX_ESPISTS_BERR))
-			CPRINTS("eSPI Bus Error");
+		if (IS_BIT_SET(status, NPCX_ESPISTS_BERR)) {
+			ccprints("eSPI Bus Error, 0x%08x", NPCX_ESPIERR);
+			if(DEBUG_ESPI)
+				print_espi_bus_error(NPCX_ESPIERR);
+			NPCX_ESPIERR = NPCX_ESPIERR;
+		}
 
 		/* eSPI inband reset(from VW) */
 		if (IS_BIT_SET(status, NPCX_ESPISTS_IBRST)) {
@@ -560,7 +701,7 @@ void espi_interrupt(void)
 
 		} /* eSPI reset (from eSPI_rst pin) */
 		else if (IS_BIT_SET(status, NPCX_ESPISTS_ESPIRST)) {
-			CPRINTS("eSPI RST");
+			ccprints("eSPI RST");
 			chipset_handle_espi_reset_assert();
 			espi_reset_recovery();
 		}
@@ -602,6 +743,9 @@ void espi_interrupt(void)
 		/* Get status again */
 		status = NPCX_ESPISTS & mask;
 	}
+
+	ccprints("eSPI interrupt done cfg 0x%08x", NPCX_ESPICFG);
+	print_espi_config(NPCX_ESPICFG);
 }
 DECLARE_IRQ(NPCX_IRQ_ESPI, espi_interrupt, 4);
 
@@ -633,6 +777,9 @@ void espi_init(void)
 	/* Configure MIWU for eSPI VW */
 	for (i = 0; i < ARRAY_SIZE(espi_vw_int_list); i++)
 		espi_enable_vw_int(&espi_vw_int_list[i]);
+
+	ccprints("eSPI init config: 0x%08x", NPCX_ESPICFG);
+	print_espi_config(NPCX_ESPICFG);
 }
 
 static int command_espi(int argc, char **argv)
