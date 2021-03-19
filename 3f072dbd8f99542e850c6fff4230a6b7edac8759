@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f3a78e_b31ba618",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T17:02:39Z",
+      "side": 1,
+      "message": "overall this has strong YAGNI smell if we\u0027re adding a config option that is wired up to nothing since it\u0027s not implemented.\n\nI\u0027d much rather land this CL when we actually implement the corresponding option in Zephyr",
+      "revId": "3f072dbd8f99542e850c6fff4230a6b7edac8759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6e5897_2ecd6cbd",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T17:02:39Z",
+      "side": 1,
+      "message": "probably worth mentioning this isn\u0027t actually implemented for Zephyr yet, and link to the bug for the implementation",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 43
+      },
+      "revId": "3f072dbd8f99542e850c6fff4230a6b7edac8759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
