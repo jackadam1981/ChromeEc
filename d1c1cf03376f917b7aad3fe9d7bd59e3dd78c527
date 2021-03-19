@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0fdb13d_a355f316",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-19T17:16:22Z",
+      "side": 1,
+      "message": "Instead of changing the macro name, can you just define CONFIG_USB_PD_VBUS_DETECT_TCPC?",
+      "range": {
+        "startLine": 318,
+        "startChar": 7,
+        "endLine": 318,
+        "endChar": 36
+      },
+      "revId": "d1c1cf03376f917b7aad3fe9d7bd59e3dd78c527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c440f5_a39c907a",
+        "filename": "include/config.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 4493,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-19T17:16:22Z",
+      "side": 1,
+      "message": "I think the comment needs to change but this macro seems to guard similar functionality, so why can we just use CONFIG_USB_PD_VBUS_DETECT_TCPC?",
+      "range": {
+        "startLine": 4492,
+        "startChar": 0,
+        "endLine": 4493,
+        "endChar": 36
+      },
+      "revId": "d1c1cf03376f917b7aad3fe9d7bd59e3dd78c527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ffba63_902dd939",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 3054,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-19T17:16:22Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t seem to go with the prototype.",
+      "range": {
+        "startLine": 3051,
+        "startChar": 2,
+        "endLine": 3054,
+        "endChar": 51
+      },
+      "revId": "d1c1cf03376f917b7aad3fe9d7bd59e3dd78c527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
