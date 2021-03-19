@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d58a14_e69f7ba9",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-19T19:34:07Z",
+      "side": 1,
+      "message": "Most of the cfg prints especially are just me trying to compensate for not knowing the module well, but this one I\u0027d propose actually changing in the codebase long-term.  It seems super useful.",
+      "revId": "401ada330d933cdf37ee6a5b29a108413c1b5fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
