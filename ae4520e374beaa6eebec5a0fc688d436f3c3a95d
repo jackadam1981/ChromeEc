@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "683b24a4_08cf9015",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-19T21:40:39Z",
+      "side": 1,
+      "message": "Ack\nhow about changing the function to\nstatic void vtr3_voltage_select(void) ?",
+      "parentUuid": "3caa1b3b_6bae881d",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "ae4520e374beaa6eebec5a0fc688d436f3c3a95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "956ed3f6_60ffee97",
