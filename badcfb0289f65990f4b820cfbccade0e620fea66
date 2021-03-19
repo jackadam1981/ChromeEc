@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d1104d8_f7d7e21f",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeab2345_a0d803ff",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b24efeb3_6b8926f8",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b7c452_be38fffc",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b24efeb3_6b8926f8",
+      "range": {
+        "startLine": 8,
+        "startChar": 6,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1056cbc_04a43c41",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-18T14:42:16Z",
       "side": 1,
       "message": "What is system pre-initialization? Can you define it here?",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 51
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3970bf28_7728cfa4",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1056cbc_04a43c41",
       "range": {
         "startLine": 12,
         "startChar": 17,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b10cddc_e9c8e3e7",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "The range include `equal to the symbol`. Users have chance to set the same value with this config. I directly set the priority range \u0026 added description for the current initial order in `zephyr_shim.md`. Not sure whether this more easy for the following initial priority change.\n\nBy the way, I file an issue to zephyr github about initial priority order[1]. Do you want check this in your issue tracking system? It seem like it isn\u0027t influence the current projects.\n[1] https://github.com/zephyrproject-rtos/zephyr/issues/33464",
+      "parentUuid": "05389ef5_e8556c14",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9f6b8bb_3b273d43",
         "filename": "zephyr/drivers/cros_bbram/cros_bbram_npcx.c",
         "patchSetId": 9
@@ -123,6 +219,30 @@
       "writtenOn": "2021-03-18T14:42:16Z",
       "side": 1,
       "message": "you can do this check in Kconfig instead of the preprocessor (see my comment below)",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f57fb8_b700a925",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_npcx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "This patch also doesn\u0027t cover this check so it remains.(see my comment below)",
+      "parentUuid": "a9f6b8bb_3b273d43",
       "range": {
         "startLine": 129,
         "startChar": 0,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f62711c9_478deda0",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92b417c1_872ec9f8",
+      "range": {
+        "startLine": 24,
+        "startChar": 56,
+        "endLine": 24,
+        "endChar": 58
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d6bc012_26984efa",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-03-18T14:42:16Z",
       "side": 1,
       "message": "static",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4222948d_7e2cec11",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d6bc012_26984efa",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -226,6 +394,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9338e026_8da4cda2",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "Done. I also move the system_reset() to zephyr/shim/system.c.",
+      "parentUuid": "a2a87316_96b355ce",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "021ee35b_9761003b",
@@ -239,6 +431,30 @@
       "writtenOn": "2021-03-18T14:42:16Z",
       "side": 1,
       "message": "what\u0027s that mean?",
+      "range": {
+        "startLine": 174,
+        "startChar": 21,
+        "endLine": 174,
+        "endChar": 36
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a931ed1_1a5d9718",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "The function could be invoked when the bbram_dev doesn\u0027t init or init failed. The NULL device will let the following system call jump to an unknown address It\u0027s should not happen when the system is correct.",
+      "parentUuid": "021ee35b_9761003b",
       "range": {
         "startLine": 174,
         "startChar": 21,
@@ -272,6 +488,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "085e74d9_5cd5d1e1",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "801a0f27_473f255a",
+      "range": {
+        "startLine": 197,
+        "startChar": 5,
+        "endLine": 197,
+        "endChar": 22
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c52dcb29_5f6638c1",
@@ -285,6 +525,30 @@
       "writtenOn": "2021-03-18T14:42:16Z",
       "side": 1,
       "message": "!sys_dev",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 20
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fda52c2_a2b5ca2b",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c52dcb29_5f6638c1",
       "range": {
         "startLine": 203,
         "startChar": 5,
@@ -318,6 +582,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19de902a_6b1765ba",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "I removed the comment.",
+      "parentUuid": "bf9cdb3d_c97c41da",
+      "range": {
+        "startLine": 236,
+        "startChar": 29,
+        "endLine": 236,
+        "endChar": 49
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c348544_ab791b64",
@@ -331,6 +619,30 @@
       "writtenOn": "2021-03-18T14:42:16Z",
       "side": 1,
       "message": "again, this check should only be done in Kconfig",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 6
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588a1d54_7808a9dc",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-19T11:06:14Z",
+      "side": 1,
+      "message": "This patch also doesn\u0027t cover this check so it remains.(see my comment above)",
+      "parentUuid": "9c348544_ab791b64",
       "range": {
         "startLine": 242,
         "startChar": 0,
