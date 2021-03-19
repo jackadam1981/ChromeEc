@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b7fac00_580066cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2021-03-19T16:43:27Z",
+      "side": 1,
+      "message": "Can you fill in the bug here?\n\nIs this the same as b:180950931 ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "e19f211c212478e883d94c0a75dd67ca5dfeb222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27c59781_c605b66b",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 6
