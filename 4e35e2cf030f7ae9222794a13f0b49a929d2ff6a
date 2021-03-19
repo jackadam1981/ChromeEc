@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d9f5986_a9f5586e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T23:23:46Z",
+      "side": 1,
+      "message": "do we need to use zephyr_library_sources in the project files?",
+      "revId": "4e35e2cf030f7ae9222794a13f0b49a929d2ff6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d67e6c0_a773b788",
@@ -19,6 +36,76 @@
         "startChar": 6,
         "endLine": 66,
         "endChar": 37
+      },
+      "revId": "4e35e2cf030f7ae9222794a13f0b49a929d2ff6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "014b5fd4_8de80e76",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T23:23:46Z",
+      "side": 1,
+      "message": "+1 to this. same for linker flag too",
+      "parentUuid": "3d67e6c0_a773b788",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 66,
+        "endChar": 37
+      },
+      "revId": "4e35e2cf030f7ae9222794a13f0b49a929d2ff6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db95cc11_c9cdfb1b",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T23:23:46Z",
+      "side": 1,
+      "message": "why is this necessary?",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 49
+      },
+      "revId": "4e35e2cf030f7ae9222794a13f0b49a929d2ff6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b15aafb_173b9175",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T23:23:46Z",
+      "side": 1,
+      "message": "this is completely unused if you want to just remove instead\n\n\n... or handle in a separate CL",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 66
       },
       "revId": "4e35e2cf030f7ae9222794a13f0b49a929d2ff6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
