@@ -1192,6 +1192,20 @@ enum PM_CHANNEL_T {
 #define NPCX_ESPISTS_PLTRST              10
 #define NPCX_ESPISTS_AMERR               15
 #define NPCX_ESPISTS_AMDONE              16
+#define NPCX_ESPIERR_INVCMD              0 /* Invalid Command Type */
+#define NPCX_ESPIERR_INVCYC              1 /* Invalid Cycle Type */
+#define NPCX_ESPIERR_CRCERR              2 /* Transaction CRC Error */
+#define NPCX_ESPIERR_ABCOMP              3 /* Abnormal Completion */
+#define NPCX_ESPIERR_PROTERR             4 /* Protocol Error */
+#define NPCX_ESPIERR_BADSIZE             5 /* Bad Size */
+#define NPCX_ESPIERR_NPBADALN		 6 /* NPPC Bad Address Alignment */
+#define NPCX_ESPIERR_PCBADALN            7 /* PPC Bad Address Alignment */
+#define NPCX_ESPIERR_UNCMD               9 /* Unsupported Command */
+#define NPCX_ESPIERR_EXTRACYC            10 /* Extra eSPI Clock Cycles */
+#define NPCX_ESPIERR_VWERR               11 /* Virtual Channel Access Error */
+#define NPCX_ESPIERR_UNPBM               14 /* Unsuccessful Bus Completion */
+#define NPCX_ESPIERR_UNFLASH             15 /* Unsuccessful Flash Completion */
+
 /* eSPI Virtual Wire channel register fields */
 #define NPCX_VWEVSM_WIRE                 FIELD(0, 4)
 #define NPCX_VWEVMS_WIRE                 FIELD(0, 4)
@@ -1305,7 +1319,7 @@ enum {
 	NPCX_ESPI_CH_NONE = 0xFF
 };
 
-/* eSPI IO modes */
+/* eSPI IO modes supported */
 enum {
 	NPCX_ESPI_IO_MODE_SINGLE = 0,
 	NPCX_ESPI_IO_MODE_DUAL   = 1,
@@ -1331,6 +1345,26 @@ enum {
 	ESPI_VW_TYPE_NUM,
 	ESPI_VW_TYPE_NONE = 0xFF
 };
+
+/* Operating Frequency */
+enum {
+	NPCX_ESPI_OPFREQ_20 = 0,
+	NPCX_ESPI_OPFREQ_25 = 1,
+	NPCX_ESPI_OPFREQ_33 = 2,
+	NPCX_ESPI_OPFREQ_50 = 3,
+	NPCX_ESPI_OPFREQ_66 = 4,
+	NPCX_ESPI_OPFREQ_NONE = 0xFF
+};
+
+/* eSPI IO modes selected */
+enum {
+	NPCX_ESPI_IO_MODESEL_SINGLE = 0,
+	NPCX_ESPI_IO_MODESEL_DUAL   = 1,
+	NPCX_ESPI_IO_MODESEL_QUARD  = 2,
+	NPCX_ESPI_IO_MODESEL_NONE   = 0xFF
+};
+
+
 
 /******************************************************************************/
 /* GDMA (General DMA) Registers */
