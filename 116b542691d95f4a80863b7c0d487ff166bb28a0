@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd94273_cbff8bc2",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-19T01:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91cfc171_d8b3f1da",
+      "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd29d563_87d70e57",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-18T23:13:49Z",
       "side": 1,
       "message": "Since this is setting state, should we guard with a PD task check?",
+      "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86434eda_c10f0c31",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-19T01:35:40Z",
+      "side": 1,
+      "message": "I agree",
+      "parentUuid": "cd29d563_87d70e57",
       "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef39e46b_4597d957",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1811,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-19T01:35:40Z",
+      "side": 1,
+      "message": "I\u0027ll move the set_flag to the pe_transition_to_pe_drs_send_swap and pe_transition_to_pe_vcs_send_swap",
+      "parentUuid": "4d49b268_b2ff76fc",
+      "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b42312e_8cb2c839",
         "filename": "common/usbc/usbc_pd_policy.c",
         "patchSetId": 1
@@ -82,6 +136,24 @@
       "writtenOn": "2021-03-18T23:13:49Z",
       "side": 1,
       "message": "__overridable",
+      "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458d259d_c3b5c266",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-19T01:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b42312e_8cb2c839",
       "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +171,24 @@
       "writtenOn": "2021-03-18T23:13:49Z",
       "side": 1,
       "message": "__override_proto",
+      "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e02b25b_893c76d5",
+        "filename": "include/usbc_pd_policy.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-19T01:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63452e9c_c39854ef",
       "revId": "116b542691d95f4a80863b7c0d487ff166bb28a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
