@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9339d24b_7050a1c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-19T23:37:12Z",
+      "side": 1,
+      "message": "I\u0027d say this is 3/4 verified.  I\u0027ve noticed I can crash the console task if I give too long of a string input (ex. for the DRAM part) so I need to double check if it\u0027s an issue with the new command or a general weakness of the console task. ",
+      "revId": "07af50db5eb26a2c5f48ed19513bc4c7e89b31e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
