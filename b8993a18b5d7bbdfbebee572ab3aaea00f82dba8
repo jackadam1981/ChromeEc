@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8e39a3_91b455cc",
+        "filename": "docs/zephyr_shim.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T21:28:09Z",
+      "side": 1,
+      "message": "this document describes the design of the shim layer ... I don\u0027t think this documentation is appropriate here\n\n\nthe text needs cleaned up before it\u0027s worth submitting",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 18
+      },
+      "revId": "b8993a18b5d7bbdfbebee572ab3aaea00f82dba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faf53fe1_9eb915de",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T21:28:09Z",
+      "side": 1,
+      "message": "continue",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 3
+      },
+      "revId": "b8993a18b5d7bbdfbebee572ab3aaea00f82dba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7754667_1bc1757e",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-19T21:28:09Z",
+      "side": 1,
+      "message": "why should this not be run for unit tests?",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 28
+      },
+      "revId": "b8993a18b5d7bbdfbebee572ab3aaea00f82dba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
