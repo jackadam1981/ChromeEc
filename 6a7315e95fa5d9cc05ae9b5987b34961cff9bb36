@@ -70,6 +70,30 @@
       },
       "revId": "6a7315e95fa5d9cc05ae9b5987b34961cff9bb36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2148f8_89466c51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-19T22:30:32Z",
+      "side": 1,
+      "message": "I think GSC will be asserting WP going forward -- not sure about the upcoming build though. Something to check with Zhuohao.",
+      "parentUuid": "b6f7b0c3_5e53d396",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "6a7315e95fa5d9cc05ae9b5987b34961cff9bb36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
