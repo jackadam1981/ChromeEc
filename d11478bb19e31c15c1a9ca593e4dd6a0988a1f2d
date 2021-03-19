@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "091dafe7_c3891c21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-19T17:17:11Z",
+      "side": 1,
+      "message": "Basically looks good. Want to remind you that several other CLs are just merged (or will  be merged) reorganizes the switchcap/power-sequence code and conflicts with your CLs. You may wait 1 or 2 days to let them all merged and resolve the conflicts.",
+      "revId": "d11478bb19e31c15c1a9ca593e4dd6a0988a1f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
