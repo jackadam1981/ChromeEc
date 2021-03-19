@@ -51,6 +51,24 @@
       "parentUuid": "6703dfbb_a43d4873",
       "revId": "a9bb65d539f92f587e55ae5c3a8e1fc1b5c0e2cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef01565_48de0dee",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-19T22:55:12Z",
+      "side": 1,
+      "message": "Do you think we could have a board/lazor/charger.h that is included in board.c and also the zephyr file (but not the driver) ?",
+      "parentUuid": "9fb18f71_ba908e99",
+      "revId": "a9bb65d539f92f587e55ae5c3a8e1fc1b5c0e2cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
