@@ -16,6 +16,29 @@
       "message": "Please start using BRANCH\u003dasurada",
       "revId": "01249524e70803021e81b1934b21609d2c056daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25fe7e1f_590749b6",
+        "filename": "board/spherion/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-03-19T08:10:18Z",
+      "side": 1,
+      "message": "Do we use this battery in spherion? If not, I think we can remove it.",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "01249524e70803021e81b1934b21609d2c056daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
