@@ -565,6 +565,18 @@ __maybe_unused static void ps8815_disable_rp_detect_workaround_check(int port)
 		ps8815_disable_rp_detect[port] = true;
 }
 
+__maybe_unused static void ps8705_force_set_alert_pwr_status(int port)
+{
+	tcpc_update16(port, TCPC_REG_ALERT_MASK,
+			TCPC_REG_ALERT_POWER_STATUS, MASK_SET);
+}
+
+__maybe_unused static void ps8705_force_set_pwr_status_vbus_pres(int port)
+{
+	tcpc_write(port, TCPC_REG_POWER_STATUS_MASK,
+			TCPC_REG_POWER_STATUS_VBUS_PRES);
+}
+
 static int ps8xxx_tcpm_init(int port)
 {
 	int status;
@@ -579,6 +591,11 @@ static int ps8xxx_tcpm_init(int port)
 	status = tcpci_tcpm_init(port);
 	if (status != EC_SUCCESS)
 		return status;
+
+	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8705)) {
+		ps8705_force_set_alert_pwr_status(port);
+		ps8705_force_set_pwr_status_vbus_pres(port);
+	}
 
 	return ps8xxx_dci_disable(port);
 }
