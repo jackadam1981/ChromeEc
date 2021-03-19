@@ -22,6 +22,30 @@
       },
       "revId": "6a7315e95fa5d9cc05ae9b5987b34961cff9bb36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70cb99e_f41ddfe9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-03-19T13:58:49Z",
+      "side": 1,
+      "message": "Do we need this for `CONFIG_BYPASS_CBI_EEPROM_WP_CHECK` ?",
+      "parentUuid": "14dfb6d7_db814524",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "6a7315e95fa5d9cc05ae9b5987b34961cff9bb36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
