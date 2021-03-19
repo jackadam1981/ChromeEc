@@ -38,6 +38,17 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 
 
+static bool mock_can_source_from_device;
+void mock_set_can_source_from_device(bool value)
+{
+	mock_can_source_from_device = value;
+}
+__override bool pd_can_source_from_device(int port, const int pdo_cnt,
+					const uint32_t *pdos)
+{
+	return mock_can_source_from_device;
+}
+
 void mock_set_cc(enum mock_connect_result cr,
 	enum mock_cc_state cc1, enum mock_cc_state cc2)
 {

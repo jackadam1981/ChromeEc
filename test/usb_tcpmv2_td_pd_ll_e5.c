@@ -54,5 +54,6 @@ int test_td_pd_ll_e5_dfp(void)
 }
 int test_td_pd_ll_e5_ufp(void)
 {
+	mock_set_can_source_from_device(true);
 	return td_pd_ll_e5(PD_ROLE_UFP);
 }

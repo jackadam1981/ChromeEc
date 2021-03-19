@@ -79,5 +79,6 @@ int test_td_pd_ll_e3_dfp(void)
 }
 int test_td_pd_ll_e3_ufp(void)
 {
+	mock_set_can_source_from_device(true);
 	return td_pd_ll_e3(PD_ROLE_UFP);
 }
