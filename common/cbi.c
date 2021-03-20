@@ -493,6 +493,21 @@ static void dump_cbi(void)
 	print_uint64_tag("REWORK_ID", cbi_get_rework_id(&lval), &lval);
 }
 
+int cbi_set_fw_config(uint32_t fw_config)
+{
+	if(do_read_board_info())
+		cbi_init();
+
+	cbi_set_board_info(CBI_TAG_FW_CONFIG, (uint8_t *)&fw_config,
+			   sizeof(int));
+
+	head->crc = cbi_crc8(head);
+	if (write_board_info())
+		return EC_RES_ERROR;
+
+	return EC_SUCCESS;
+}
+
 /*
  * Space for the set command (does not include data space) plus maximum
  * possible console input
