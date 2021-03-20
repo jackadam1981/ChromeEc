@@ -1,0 +1,17 @@
+# Copyright (c) 2021 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: BMI260 driver data node
+
+compatible: "cros-ec,drvdata-bmi260"
+
+include: drvdata-base.yaml
+
+#
+# examples:
+#
+# bmi260_data: bmi260-drv-data {
+#        compatible = "cros-ec,drvdata-bmi260";
+#        status = "okay";
+# };
+#
