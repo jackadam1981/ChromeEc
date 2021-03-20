@@ -1,0 +1,10 @@
+# Copyright (c) 2021 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+# common fields for driver data
+
+include: base.yaml
+
+properties:
+  status:
+    required: true
