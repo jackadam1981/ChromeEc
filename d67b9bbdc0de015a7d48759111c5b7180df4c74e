@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd50f2b9_18f1254f",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-20T00:13:29Z",
+      "side": 1,
+      "message": "according to b/180973324, no vivaldi on this board.\nvivaldi is on by default, but disabled explicitly for brya.",
+      "parentUuid": "80ace3bf_b28eb1de",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "d67b9bbdc0de015a7d48759111c5b7180df4c74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50a78c3e_a04a3dca",
