@@ -50,6 +50,24 @@
       "message": "This define is no longer used in TCPMv2.  Henry, is there documentation we need to update to reflect this?",
       "revId": "463984401e9f01c5866a245b379a596dc4a47961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57cc9041_9a05b674",
+        "filename": "board/boten/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-03-20T15:49:11Z",
+      "side": 1,
+      "message": "Sorry Diana, I don\u0027t know this either, if any document stated this, I could help to inform all ODMs about this. \nThe only doc I can find for TCPMv2 is https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/usb-tcpmv2.md\nBut I didn\u0027t find anything related for \"CONFIG_USB_PD_COMM_LOCKED\". Thanks.",
+      "parentUuid": "681bc286_2e701b43",
+      "revId": "463984401e9f01c5866a245b379a596dc4a47961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
