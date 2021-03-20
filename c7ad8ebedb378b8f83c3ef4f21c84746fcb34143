@@ -22,6 +22,30 @@
       },
       "revId": "c7ad8ebedb378b8f83c3ef4f21c84746fcb34143",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2ccba1_73af8b32",
+        "filename": "baseboard/zork/cbi_ssfc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1456082
+      },
+      "writtenOn": "2021-03-20T03:09:47Z",
+      "side": 1,
+      "message": "I change it to edp_phy_alt_tuning, and give it 2 bits for the potential extension.",
+      "parentUuid": "2b20e73f_9b3fc720",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "c7ad8ebedb378b8f83c3ef4f21c84746fcb34143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
