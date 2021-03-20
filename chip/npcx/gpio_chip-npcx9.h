@@ -295,6 +295,7 @@
 #define NPCX_ALT_GPIO_0_1 ALT(0, 1, NPCX_ALT(D, PSL_IN3_SL))      /* PSL_IN3 */
 #define NPCX_ALT_GPIO_0_2 ALT(0, 2, NPCX_ALT(D, PSL_IN4_SL))      /* PSL_IN4 */
 #define NPCX_ALT_GPIO_D_7 ALT(D, 7, NPCX_ALT(G, PSL_GPO_SL))      /* PSL_GPO */
+#define NPCX_ALT_GPIO_8_5 ALT(8, 5, NPCX_ALT(G, PSL_OUT_SL))      /* PSL_OUT */
 
 /* SPI Module */
 #define NPCX_ALT_GPIO_9_5 ALT(9, 5, NPCX_ALT(0, SPIP_SL)) /* SPIP_MISO */
@@ -350,6 +351,7 @@
 	NPCX_ALT_GPIO_8_0 /* PWM3 */                  \
 	NPCX_ALT_GPIO_8_2 /* KSO14 */                 \
 	NPCX_ALT_GPIO_8_3 /* KSO15 */                 \
+	NPCX_ALT_GPIO_8_5 /* GPO85 */		      \
 	NPCX_ALT_GPIO_8_6 /* CR_SOUT2_SL */           \
 	NPCX_ALT_GPIO_8_7 /* SMB1SDA0 */              \
 	NPCX_ALT_GPIO_9_0 /* SMB1SCL0 */              \
