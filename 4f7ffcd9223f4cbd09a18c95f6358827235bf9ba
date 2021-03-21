@@ -16,6 +16,57 @@
       "message": "Okay, actually verified and able to successfully set my Galith\u0027s DRAM ID to \"supercalifragilisticexpealadocious\" ",
       "revId": "4f7ffcd9223f4cbd09a18c95f6358827235bf9ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94726f5d_7e96257f",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-21T22:03:40Z",
+      "side": 1,
+      "message": "static",
+      "revId": "4f7ffcd9223f4cbd09a18c95f6358827235bf9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "770bdc94_80894565",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-21T22:03:40Z",
+      "side": 1,
+      "message": "Can init and skip_write both be set? This just takes which ever is first.",
+      "revId": "4f7ffcd9223f4cbd09a18c95f6358827235bf9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44dfc34d_11402755",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-21T22:03:40Z",
+      "side": 1,
+      "message": "It\u0027s strange to me that init is flag on set and remove instead of a separate command.",
+      "revId": "4f7ffcd9223f4cbd09a18c95f6358827235bf9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
