@@ -63,6 +63,30 @@
       },
       "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9acd2e_cd16e3ca",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-03-21T22:26:15Z",
+      "side": 1,
+      "message": "This logic will not be needed for all SoCs but only for SoCs with integrated Mux.\n@prashant, “AP misses the disconnection” is not accurate statement. In fact EC is unable to send the disconnect event.",
+      "parentUuid": "bdd6ba1a_4bcf0eec",
+      "range": {
+        "startLine": 359,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 48
+      },
+      "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
