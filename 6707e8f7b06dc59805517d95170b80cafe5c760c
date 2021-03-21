@@ -39,6 +39,30 @@
       },
       "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdd6ba1a_4bcf0eec",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-21T04:54:33Z",
+      "side": 1,
+      "message": "Quick q: Is this directly addressing the issue quoted in the comment (\"AP misses the disconnection.\") ?\n\nThis doesn\u0027t look to be the case. It\u0027s just that when the AP next wakes, it\u0027ll call the USB_PD_CONTORL Host Command, since it does that on every device resume, and read this flag and infer that a disconnect happened.\n\nShouldn\u0027t the EC be actually notifying the AP (via PD event that wakes the AP) of the disconnect? I\u0027d imagine dark resume could be utilized so that the screen doesn\u0027t light up...",
+      "parentUuid": "1700034c_36ca6b54",
+      "range": {
+        "startLine": 359,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 48
+      },
+      "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
