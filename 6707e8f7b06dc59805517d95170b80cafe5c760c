@@ -87,6 +87,30 @@
       },
       "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3848e17f_38fba71c",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-03-22T05:01:40Z",
+      "side": 1,
+      "message": "\u003e @prashant, “AP misses the disconnection” is not accurate statement. In fact EC is unable to send the disconnect event.\n\nAlright. Then the right fix is to ensure the EC *can* send the disconnect event. As I mentioned earlier, even devices that don\u0027t use integrated mux still need to correctly report when a new partner is connected (or an old one is disconnected). There are metrics and potentially other non mode-switch features in userspace to consider.",
+      "parentUuid": "ab9acd2e_cd16e3ca",
+      "range": {
+        "startLine": 359,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 48
+      },
+      "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
