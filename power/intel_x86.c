@@ -95,6 +95,16 @@ static void intel_x86_rtc_reset(void)
 	gpio_set_level(GPIO_PCH_RTCRST, 0);
 }
 
+void intel_x86_recovery_mode_rtc_reset(void)
+{
+	/* Assert RTCRST# in recovery mode */
+	if (IS_ENABLED(CONFIG_BOARD_HAS_RTC_RESET) &&
+		(host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY) ||
+		host_is_event_set(
+			EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT)))
+		intel_x86_rtc_reset();
+}
+
 static enum power_state power_wait_s5_rtc_reset(void)
 {
 	static int s5_exit_tries;
@@ -121,6 +131,7 @@ static enum power_state power_wait_s5_rtc_reset(void)
 	}
 
 	s5_exit_tries = 0;
+
 	return POWER_S5S3; /* Power up to next state */
 }
 #endif
