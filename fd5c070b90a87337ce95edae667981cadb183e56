@@ -47,6 +47,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e522d1c0_0e6444b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-22T18:25:58Z",
+      "side": 1,
+      "message": "This CL also needs to be rebased and fixed the conflicts; or simply rerun the create_initial_ec_image.sh again on ToT.",
+      "revId": "fd5c070b90a87337ce95edae667981cadb183e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5674f0d_c69b5184",
