@@ -16,6 +16,125 @@
       "message": "Initially, I had planned to have a separately policy engine for each device that was sufficiently different, for example the chromebook and chocodile policy engines. This was to mitigate the usage of #ifdefs \"is_enabled\". I know it\u0027s to late now but maybe in the future, honeybun should have its own policy engine.",
       "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7995883_28e96422",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-22T23:39:34Z",
+      "side": 1,
+      "message": "This looks workable, and I like the move in the direction of having a file for policy as distinct from the DPM or PE. My main comment would be that I\u0027d like to see a stronger boundary between the policy module and the PE.\n\nIf this is urgent, I\u0027m OK with submitting it with the current architecture, but I think we should then open a bug to revisit the interface.",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c9da1f_ede5f6c8",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-22T23:39:34Z",
+      "side": 1,
+      "message": "Nit: This might make more sense as a separate CL.",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d4742a_660d093b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-22T23:39:34Z",
+      "side": 1,
+      "message": "I think these would be more naturally implemented as DPM requests (which we now handle before attempting discovery).",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66f787d_459a85e6",
+        "filename": "include/usbc_pd_policy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-22T23:39:34Z",
+      "side": 1,
+      "message": "Nit: The other files in this directory omit the \"c\" in \"usbc\" (as does the Honeybuns implementation). Does omitting it here cause conflict with the board\u0027s usb_pd_policy.o file?",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f7326c_a47ac273",
+        "filename": "include/usbc_pd_policy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-22T23:39:34Z",
+      "side": 1,
+      "message": "Note that this is an in/out param. Google C++ style is for those to come last. I don\u0027t know if Linux style has an opinion, but I would find this less surprising at the end of the param list.",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a11b886_72ac5df6",
+        "filename": "include/usbc_pd_policy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-22T23:39:34Z",
+      "side": 1,
+      "message": "I think having a file that contains the policy (as distinct from the PE or DPM) is a good thing.\n\nNits:\n* More stuff will probably end up in here, and it would be good to give the functions in this module a common prefix, similar to what we have for the state machine layers. How about pd_policy_*?\n* Instead of using weak linking, what if we had a structure similar to what we have for TCPC driver interfaces? It would be defined in usb_pd_policy.c as non-const. Boards that wanted to change policy decisions could overwrite the default values in their init code. I think that would make it easier to see what a board\u0027s PD policy (or the default PD policy) is at a glance.",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49dcac09_8d03dd60",
+        "filename": "include/usbc_pd_policy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-22T23:39:34Z",
+      "side": 1,
+      "message": "By passing in the flag values to compare to, this interface doesn\u0027t leak names from the PE into the policy layer, but it does depend on the use of flags for specific state in the PE, and it updates the flags of the PE that calls into it.\n\nI think a more modular and functional interface would be something like this:\n bool usb_policy_should_dr_swap(int port, bool dr_swap_flag) {\n  // Return true if our policy is to swap right now\n }\n // In PE code\n if (usb_policy_should_dr_swap(port, *flags \u0026 PE_FLAGS_DR_SWAP)) {\n   // Clear flag?\n   pe_set_state(port, PE_STATE_DR_SWAP);\n   return;\n }\n\nIt\u0027s a bit more verbose on the PE side, but it would keep a strong layer of abstraction between the PE and the policy.",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
