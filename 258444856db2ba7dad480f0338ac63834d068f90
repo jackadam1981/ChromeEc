@@ -16,6 +16,23 @@
       "message": "Do you think we could have a board/lazor/charger.h that is included in board.c and also the zephyr file (but not the driver) ?",
       "revId": "258444856db2ba7dad480f0338ac63834d068f90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6062ece_54c78df4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-22T04:45:43Z",
+      "side": 1,
+      "message": "Having looked at this in more detail it seems like the best option. I had not understood how generic that ln9310.h header file is.",
+      "revId": "258444856db2ba7dad480f0338ac63834d068f90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
