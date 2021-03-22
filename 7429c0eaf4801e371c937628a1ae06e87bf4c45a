@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c38472e_cdad0d47",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T16:05:40Z",
+      "side": 1,
+      "message": "These are unused too, while you\u0027re here \u003d)\n\n(the lines below were the only usage of these variables)",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "7429c0eaf4801e371c937628a1ae06e87bf4c45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
