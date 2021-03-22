@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3d900b2_77d39518",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T18:28:08Z",
+      "side": 1,
+      "message": "Initially, I had planned to have a separately policy engine for each device that was sufficiently different, for example the chromebook and chocodile policy engines. This was to mitigate the usage of #ifdefs \"is_enabled\". I know it\u0027s to late now but maybe in the future, honeybun should have its own policy engine.",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
