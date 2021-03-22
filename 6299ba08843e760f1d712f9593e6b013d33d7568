@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0222f7a_5308bdfa",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-22T17:42:43Z",
+      "side": 1,
+      "message": "I think \"fw_wp_state\" handles both \"fw_wp_en\" and \"fw_wp\" under the hood, so you only need to use \"fw_wp_state\" and don\u0027t need this:\n\nhttps://chromium.googlesource.com/chromiumos/third_party/hdctools/+/f91f91dea2c532da4fc8de83bab74e44934df258/servo/drv/fw_wp_servoflex.py#38\n\nhttps://chromium.googlesource.com/chromiumos/third_party/hdctools/+/f91f91dea2c532da4fc8de83bab74e44934df258/servo/drv/fw_wp_servoflex.py#47",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 9
+      },
+      "revId": "6299ba08843e760f1d712f9593e6b013d33d7568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbbe7687_1f27164e",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-22T17:42:43Z",
+      "side": 1,
+      "message": "I think there\u0027s a way to invert this in the servo config for the board itself\n\nServo has \"map\u003donoff\" and \"map\u003donoff_i\", which I think is an inverted version\n\nhttps://chromium.googlesource.com/chromiumos/third_party/hdctools/+/f91f91dea2c532da4fc8de83bab74e44934df258/servo/data/servo_micro.xml#182\n\nhttps://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servod.md#terminology\n\nSo we could overwrite the \"fw_wp\" control in the FPMCU dev board overlay and use \"map\u003donoff\" instead of \"map\u003donoff_i\": https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servod_faq.md#reroute-control.",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 26
+      },
+      "revId": "6299ba08843e760f1d712f9593e6b013d33d7568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
