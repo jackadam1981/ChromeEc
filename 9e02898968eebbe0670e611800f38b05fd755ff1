@@ -22,6 +22,30 @@
       },
       "revId": "9e02898968eebbe0670e611800f38b05fd755ff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86b70502_ea4939df",
+        "filename": "baseboard/intelrvp/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-22T20:46:43Z",
+      "side": 1,
+      "message": "ACK.\ninitially we had this approach but it seemed like redundant hence moved them to baseboard CL:2706259\nTo keep same h/w \u0026 s/w setup with everyone we plan to share only ADL-P boards with external teams (EC vendors/TCPC/PD vendors)",
+      "parentUuid": "c5e61f24_0fbfac43",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 5
+      },
+      "revId": "9e02898968eebbe0670e611800f38b05fd755ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
