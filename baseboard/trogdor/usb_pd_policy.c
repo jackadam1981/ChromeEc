@@ -204,13 +204,20 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 			    polarity_rm_dts(pd_get_polarity(port)));
 	}
 
-	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
-	    (irq || lvl))
-		/*
-		 * Wake up the AP.  IRQ or level high indicates a DP sink is now
-		 * present.
-		 */
-		pd_notify_dp_alt_mode_entry(port);
+	/*
+	 * TODO(b/183054226): Allow building this code without AP support on
+	 * Zephyr, to aid bringup
+	 */
+	if (!IS_ENABLED(CONFIG_ZEPHYR) ||
+	    IS_ENABLED(CONFIG_PLATFORM_EC_MKBP_EVENT)) {
+		if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
+		    (irq || lvl))
+			/*
+			* Wake up the AP.  IRQ or level high indicates a DP sink
+			* is now present.
+			*/
+			pd_notify_dp_alt_mode_entry(port);
+	    }
 
 	/* Configure TCPC for the HPD event, for proper muxing */
 	usb_mux_hpd_update(port, lvl, irq);
