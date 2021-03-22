@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8fead0_c2d63315",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-22T10:14:52Z",
+      "side": 1,
+      "message": "It looks like you increase the thermal trip temperature. Do you measure the skip temperate after applying this EC patch? Will it meet the OEM requirement?",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 28
+      },
+      "revId": "e7a6d24d1fd17abdde3b5dee409c5eddba45a8d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
