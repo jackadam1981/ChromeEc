@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b260e03_864369b2",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,accelgyro-als-drv-data.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-22T17:47:31Z",
+      "side": 1,
+      "message": "Please check indentation\n\nAlso can this compatible fit on one line?",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "991dcd98_a29c73bf",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,accelgyro-rgb-calibration.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-22T17:47:31Z",
+      "side": 1,
+      "message": "Is 0 a reasonable value? When it says coefficients it sounds like they are multiplied with something",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfba71a_d8cc07b2",
+        "filename": "zephyr/shim/src/motionsense_driver/sensor_drv_list.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-22T17:47:31Z",
+      "side": 1,
+      "message": "driver-specific",
+      "range": {
+        "startLine": 8,
+        "startChar": 9,
+        "endLine": 8,
+        "endChar": 11
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
