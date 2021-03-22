@@ -2,6 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include "adc.h"
 #include "charge_manager.h"
 #include "chipset.h"
 #include "timer.h"
@@ -166,7 +167,7 @@ __override void svdm_exit_dp_mode(int port)
 
 int pd_snk_is_vbus_provided(int port)
 {
-	return ppc_is_vbus_present(port);
+	return adc_read_channel(ADC_VBUS) >= 3670;
 }
 
 void pd_power_supply_reset(int port)
