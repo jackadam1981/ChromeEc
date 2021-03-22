@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00e4a67_468f2ee8",
+        "filename": "baseboard/honeybuns/baseboard.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T19:16:01Z",
+      "side": 1,
+      "message": "could this be #ifdef SECTION_IS_RO so you don\u0027t have the empty case?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4394b91_d948ffac",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T19:16:01Z",
+      "side": 1,
+      "message": "nit: line up asterisks",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 3
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9fc9f6c_3cbf245f",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T19:16:01Z",
+      "side": 1,
+      "message": "Should you return some error code here if the previous code fails all the retries?",
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3ccf220_e0f14e3b",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T19:16:01Z",
+      "side": 1,
+      "message": "nit: nothing is being guarded",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 6
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18c47be7_0fce6d2d",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T19:16:01Z",
+      "side": 1,
+      "message": "should this debug code be included in the final release?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f66c3fc8_f4535d49",
+        "filename": "board/gingerbread/board.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T19:16:01Z",
+      "side": 1,
+      "message": "nit: extra tabs",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a254025_b9a2bb55",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T19:16:01Z",
+      "side": 1,
+      "message": "I think you can remove this",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 6
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c159c6aa_248a8edf",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T19:16:01Z",
+      "side": 1,
+      "message": "Will this debug code be included in the final release or should it be guarded with a macro to compile it out?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 0
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17ba186_bc6601c5",
+        "filename": "board/quiche/board.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T19:16:01Z",
+      "side": 1,
+      "message": "nit: remove the extra tab",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
