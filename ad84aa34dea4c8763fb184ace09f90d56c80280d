@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f22e26_27fe58da",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-22T11:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "389a43b3_bea9d538",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4816850_6bef4b4a",
@@ -89,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6db71a7f_d8cfa8ff",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-22T11:35:49Z",
+      "side": 1,
+      "message": "It needs a delay for the new value to be readable which descript on the datasheet TTC column.",
+      "parentUuid": "2fb10697_4ec89b8a",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 12
+      },
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6bea10cc_af7f897d",
         "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
         "patchSetId": 2
@@ -100,6 +148,24 @@
       "writtenOn": "2021-03-18T17:35:22Z",
       "side": 1,
       "message": "u should line up with c of const",
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3861dc46_5f576366",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-22T11:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bea10cc_af7f897d",
       "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f4d195_9a6918bc",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-22T11:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff8fad1_3cb717f8",
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3a44f6c_3cf7408c",
@@ -134,6 +218,24 @@
       "writtenOn": "2021-03-18T17:35:22Z",
       "side": 1,
       "message": "These follow-on line should line up with the 0 of the first line",
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35bc6c6a_3083d61e",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-22T11:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3a44f6c_3cf7408c",
       "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +257,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d9475d_3bf95f50",
+        "filename": "zephyr/dts/bindings/cros_rtc/nuvoton,npcx-cros-mtc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-22T11:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bbc12d9_cb519d0c",
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82b777a9_74522d59",
@@ -168,6 +288,30 @@
       "writtenOn": "2021-03-18T17:35:22Z",
       "side": 1,
       "message": "how about MONOCOUNT or something else without a space?",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "ad84aa34dea4c8763fb184ace09f90d56c80280d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f534e922_cd6d52f2",
+        "filename": "zephyr/include/cros/nuvoton/npcx.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-03-22T11:35:49Z",
+      "side": 1,
+      "message": "How about using MTC?",
+      "parentUuid": "82b777a9_74522d59",
       "range": {
         "startLine": 85,
         "startChar": 12,
