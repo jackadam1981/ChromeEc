@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bad4d85_a93df700",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-22T03:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "014b5fd4_8de80e76",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 66,
+        "endChar": 37
+      },
+      "revId": "4e35e2cf030f7ae9222794a13f0b49a929d2ff6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db95cc11_c9cdfb1b",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a94d1b_237aa390",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-22T03:22:22Z",
+      "side": 1,
+      "message": "Turns out this was only needed when the project files were linked into a different library than the common Chromium files.  Now that everything gets linked into the \"app\" library, all CmakeFiles now just add sources and includes into the active library.",
+      "parentUuid": "db95cc11_c9cdfb1b",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 49
+      },
+      "revId": "4e35e2cf030f7ae9222794a13f0b49a929d2ff6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b15aafb_173b9175",
@@ -101,6 +149,30 @@
       "writtenOn": "2021-03-19T23:23:46Z",
       "side": 1,
       "message": "this is completely unused if you want to just remove instead\n\n\n... or handle in a separate CL",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "4e35e2cf030f7ae9222794a13f0b49a929d2ff6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d380443d_dd6821f0",
+        "filename": "zephyr/shim/chip/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-22T03:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b15aafb_173b9175",
       "range": {
         "startLine": 11,
         "startChar": 0,
