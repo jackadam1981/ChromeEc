@@ -1,0 +1,11 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menuconfig CROS_SPI_ITE
+	bool "ITE it81202 spi slave driver for Zephyr"
+	depends on SOC_FAMILY_RISCV_ITE
+	default y
+	help
+		This option enables spi slave driver which is required to
+		communicate with the EC when the CPU is the ARM processor.
