@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ddd820d_b273c8f4",
+        "filename": "chip/stm32/ucpd-stm32gx.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-22T18:45:30Z",
+      "side": 1,
+      "message": "Does this 26 correspond to USB_PD_HBIT_DIV below? If so, this should be 27. It might be clearer to put the macro names here:\n\nhbit_clk \u003d HSI_clk / UCPD_HBIT_DIV \u003d ...",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "02babe7e455f87c504d2a4c17fdeb886b887274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
