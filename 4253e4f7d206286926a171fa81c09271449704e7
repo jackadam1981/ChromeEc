@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b042de9_e90cb4ee",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T18:53:48Z",
+      "side": 1,
+      "message": "indentation is two spaces for cmake",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 8
+      },
+      "revId": "4253e4f7d206286926a171fa81c09271449704e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f3a878f_f8a2b028",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T18:53:48Z",
+      "side": 1,
+      "message": "this no longer aligns with the rest of the file names",
+      "range": {
+        "startLine": 25,
+        "startChar": 52,
+        "endLine": 25,
+        "endChar": 66
+      },
+      "revId": "4253e4f7d206286926a171fa81c09271449704e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d488d976_6b9f28dc",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T18:53:48Z",
+      "side": 1,
+      "message": "this no longer aligns with the filename above",
+      "range": {
+        "startLine": 32,
+        "startChar": 52,
+        "endLine": 32,
+        "endChar": 62
+      },
+      "revId": "4253e4f7d206286926a171fa81c09271449704e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
