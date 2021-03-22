@@ -63,6 +63,30 @@
       },
       "revId": "fd0df0692daa258322d0b941fdc7a6838c7cb3a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ecb8844_ce6edd79",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-22T13:29:02Z",
+      "side": 1,
+      "message": "The SKU_ID shouldn\u0027t be used in the firmware. Instead, you should use SSFC/FW_CONFIG. SSFC is similar to FW_CONFIG which is used to switch the code path in the firmware. You can refer to baseboard/volteer/cbi_ssfc.* for the current definition. In short, we use the SSFC for the second source components which is probe-able. I think this lightbar feature should be able to probe in the factory. So, it should be okay to put it in the SSFC.",
+      "parentUuid": "906901fb_baf7a957",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 31
+      },
+      "revId": "fd0df0692daa258322d0b941fdc7a6838c7cb3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
