@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30a17228_595f10e5",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,accelgyro-als-channel-scale.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:30:07Z",
+      "side": 1,
+      "message": "# Copyright 2021 The Chromium OS Authors. All rights reserved.\n# Use of this source code is governed by a BSD-style license that can be\n# found in the LICENSE file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2927387f_b161e090",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,accelgyro-als-channel-scale.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:30:07Z",
+      "side": 1,
+      "message": "for multiline strings you probably want to use the yaml syntax for that\n\ncheck out https://yaml-multiline.info/",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 70
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4cab097_a68971d9",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,accelgyro-als-drv-data.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:30:07Z",
+      "side": 1,
+      "message": "# Copyright 2021 The Chromium OS Authors. All rights reserved.\n# Use of this source code is governed by a BSD-style license that can be\n# found in the LICENSE file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b260e03_864369b2",
         "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,accelgyro-als-drv-data.yaml",
         "patchSetId": 1
@@ -19,6 +88,29 @@
         "startChar": 17,
         "endLine": 36,
         "endChar": 27
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3b0acd_d3bd2466",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,accelgyro-rgb-calibration.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:30:07Z",
+      "side": 1,
+      "message": "# Copyright 2021 The Chromium OS Authors. All rights reserved.\n# Use of this source code is governed by a BSD-style license that can be\n# found in the LICENSE file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
       },
       "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -49,6 +141,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9400313a_5fca8cdb",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/drvdata-base.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:30:07Z",
+      "side": 1,
+      "message": "# Copyright 2021 The Chromium OS Authors. All rights reserved.\n# Use of this source code is governed by a BSD-style license that can be\n# found in the LICENSE file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6771fd63_83beb8cc",
+        "filename": "zephyr/shim/src/motionsense_driver/drvdata-accelgyro.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:30:07Z",
+      "side": 1,
+      "message": "why can\u0027t we put this directly into ALS_CALIBRATION?\n\nor better yet ACCELGYRO_ALS_DRV_DATA\n\ntrying to reduce the number of macros to understand here",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 63
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21439660_d5d0538c",
+        "filename": "zephyr/shim/src/motionsense_driver/drvdata-accelgyro.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:30:07Z",
+      "side": 1,
+      "message": "lots of macros in this file\n\ncan we please document them thoroughly?",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbfba71a_d8cc07b2",
         "filename": "zephyr/shim/src/motionsense_driver/sensor_drv_list.inc",
         "patchSetId": 1
@@ -65,6 +226,29 @@
         "startChar": 9,
         "endLine": 8,
         "endChar": 11
+      },
+      "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae52a01_c4d1945d",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:30:07Z",
+      "side": 1,
+      "message": "can we use dt-compatible? (DT_INST?)",
+      "range": {
+        "startLine": 71,
+        "startChar": 26,
+        "endLine": 71,
+        "endChar": 33
       },
       "revId": "54d33f1610265f8fefaea91eea78612e4f0b6998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
