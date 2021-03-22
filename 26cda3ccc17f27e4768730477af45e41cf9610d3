@@ -22,6 +22,30 @@
       },
       "revId": "26cda3ccc17f27e4768730477af45e41cf9610d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "677ef594_05ebed78",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-22T17:48:42Z",
+      "side": 1,
+      "message": "You\u0027re right. It\u0027s better to return error if there only node w/o the property.\nI\u0027ll fix it.",
+      "parentUuid": "bf51c014_784bb9be",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "26cda3ccc17f27e4768730477af45e41cf9610d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
