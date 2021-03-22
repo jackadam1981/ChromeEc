@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9c90789_ddbf86e5",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:32:53Z",
+      "side": 1,
+      "message": "use chrome os headers (like other CLs)",
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d628304_f9f7fe15",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:32:53Z",
+      "side": 1,
+      "message": "you\u0027ll want a yaml multiline string for this",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 11
+      },
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fff81cf_b76b9211",
         "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml",
         "patchSetId": 1
@@ -134,6 +174,29 @@
         "startChar": 24,
         "endLine": 108,
         "endChar": 32
+      },
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8717c9a7_27d3734c",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:32:53Z",
+      "side": 1,
+      "message": "these macros need documentation",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 20
       },
       "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
