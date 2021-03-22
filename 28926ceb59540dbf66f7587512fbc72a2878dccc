@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11ba4697_15e4fef7",
+        "filename": "baseboard/intelrvp/adlrvp_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379412
+      },
+      "writtenOn": "2021-03-22T15:22:17Z",
+      "side": 1,
+      "message": "Done. Added separate files for 2s and 3s battery types.",
+      "parentUuid": "2c48b832_08805c5f",
+      "revId": "28926ceb59540dbf66f7587512fbc72a2878dccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b297b76_97d5519a",
         "filename": "baseboard/intelrvp/adlrvp_battery.c",
         "patchSetId": 2
