@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979d84bd_18472564",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-22T01:55:54Z",
+      "side": 1,
+      "message": "Update comment:\n\"Despite their names, M2_SSD_PLN and M2_SSD_PLA are active-low, and M2_SSD_PLN is open-drain.\"",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 0
+      },
+      "revId": "4b4595d43da6db16d9550a17ec8709bccafffe6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
