@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55e7dcfd_88124738",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-rotation-ref.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T20:23:58Z",
+      "side": 1,
+      "message": "Please use the standard chromium os copyright (you don\u0027t need SPDX):\n\n# Copyright 2021 The Chromium OS Authors. All rights reserved.\n# Use of this source code is governed by a BSD-style license that can be\n# found in the LICENSE file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "26cda3ccc17f27e4768730477af45e41cf9610d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6df8948b_c57ab248",
         "filename": "zephyr/shim/src/motionsense_sensors.c",
         "patchSetId": 1
