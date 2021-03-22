@@ -135,6 +135,30 @@
       },
       "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a80bdd10_e561aea5",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-22T17:31:36Z",
+      "side": 1,
+      "message": "Prashant is out of the office today, but we have a internal meeting scheduled to discuss this issue tomorrow (3/23).\n\nThis CL has two issues that make me hesitate to approve.  First - the EC_CMD_USB_PD_CONTROL host command is deprecated, so I don\u0027t like adding more features to this command.  Second - this overloads the disconnect latch flag, the flag is maintained by the usb_mux.c driver, but is getting used by the general PD code.",
+      "parentUuid": "675e7d76_96d1831b",
+      "range": {
+        "startLine": 359,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 48
+      },
+      "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
