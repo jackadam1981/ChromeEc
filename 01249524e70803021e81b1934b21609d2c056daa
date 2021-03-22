@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb239eb3_c8704479",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-03-22T05:02:34Z",
+      "side": 1,
+      "message": "modify it",
+      "parentUuid": "a3aad964_e8284d42",
+      "revId": "01249524e70803021e81b1934b21609d2c056daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25fe7e1f_590749b6",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-19T08:10:18Z",
       "side": 1,
       "message": "Do we use this battery in spherion? If not, I think we can remove it.",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "01249524e70803021e81b1934b21609d2c056daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d3183a_b14d51d6",
+        "filename": "board/spherion/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-03-22T05:02:34Z",
+      "side": 1,
+      "message": "yes, only use it on spherion",
+      "parentUuid": "25fe7e1f_590749b6",
       "range": {
         "startLine": 11,
         "startChar": 2,
