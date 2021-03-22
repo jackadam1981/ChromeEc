@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98151c56_b70442df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2021-03-22T04:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bbbbbaa_3d9b91ed",
+      "revId": "f7bd2efbfcc036b7b750c1ba6252799ba4c613c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d2539b5_b754b39b",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ff7df74_75d62b8d",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2021-03-22T04:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d2539b5_b754b39b",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 0
+      },
+      "revId": "f7bd2efbfcc036b7b750c1ba6252799ba4c613c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "577838b9_f6585606",
         "filename": "board/lindar/board.c",
         "patchSetId": 1
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-22T01:45:33Z",
       "side": 1,
       "message": "Also update this comment to match the code below.",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 0
+      },
+      "revId": "f7bd2efbfcc036b7b750c1ba6252799ba4c613c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f69b6ec_540cea6f",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2021-03-22T04:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "577838b9_f6585606",
       "range": {
         "startLine": 268,
         "startChar": 0,
