@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d98bc597_891ab297",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T15:48:10Z",
+      "side": 1,
+      "message": "mutex needs initialized before it can be used (or use K_MUTEX_DEFINE)",
+      "range": {
+        "startLine": 98,
+        "startChar": 15,
+        "endLine": 98,
+        "endChar": 29
+      },
+      "revId": "f73167a23bf7385fb26b414a793c5872e9f956bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
