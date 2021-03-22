@@ -102,4 +102,9 @@ __override_proto int intel_x86_get_pg_ec_all_sys_pwrgd(void);
  */
 __override_proto void intel_x86_sys_reset_delay(void);
 
+/**
+ * Reset the AP RTCRST# in recovery mode
+ */
+void intel_x86_recovery_mode_rtc_reset(void);
+
 #endif /* __CROS_EC_INTEL_X86_H */
