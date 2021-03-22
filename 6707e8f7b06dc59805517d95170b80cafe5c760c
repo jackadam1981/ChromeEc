@@ -111,6 +111,30 @@
       },
       "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "675e7d76_96d1831b",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-03-22T16:14:41Z",
+      "side": 1,
+      "message": "EC is unable to send because AP is in S0ix. Taking out SoC from S0ix is not the right approach as disconnecting a Type-C device is not a valid wake source and is not supposed to wake up SoC. \nIn this disconnect latch flag logic, we are buffering the disconnect until AP wakes up. In case of discrete mux, EC has a way to communicate to Mux without going through the SoC.\nThis is CTS blocker. My request will be to document any enhancements as a follow up CL.",
+      "parentUuid": "3848e17f_38fba71c",
+      "range": {
+        "startLine": 359,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 48
+      },
+      "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
