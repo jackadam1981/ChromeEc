@@ -199,6 +199,30 @@
       },
       "revId": "d56ee82a798638030ac1797c39feb4e2ad2c5fb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2221409_122da3ae",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-22T15:20:11Z",
+      "side": 1,
+      "message": "Hi Richard, let\u0027s discuss this first on b/181359593.",
+      "parentUuid": "db94c9af_b880a6ee",
+      "range": {
+        "startLine": 29,
+        "startChar": 42,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "d56ee82a798638030ac1797c39feb4e2ad2c5fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
