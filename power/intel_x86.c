@@ -121,6 +121,12 @@ static enum power_state power_wait_s5_rtc_reset(void)
 	}
 
 	s5_exit_tries = 0;
+
+	/* Assert RTCRST# in recovery mode */
+	if (host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY) ||
+		host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT))
+		intel_x86_rtc_reset();
+
 	return POWER_S5S3; /* Power up to next state */
 }
 #endif
