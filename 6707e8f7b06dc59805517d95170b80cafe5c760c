@@ -159,6 +159,30 @@
       },
       "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a2aa7d_06d05a01",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-22T18:52:21Z",
+      "side": 1,
+      "message": "Google is leaning towards the idea that the appropriate way to handle this is to make USB mux events produce dark resumes. I added some details about that on the bug.",
+      "parentUuid": "675e7d76_96d1831b",
+      "range": {
+        "startLine": 359,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 48
+      },
+      "revId": "6707e8f7b06dc59805517d95170b80cafe5c760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
