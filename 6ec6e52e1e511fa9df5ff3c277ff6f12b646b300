@@ -98,6 +98,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f00e82_b2d08f7c",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Waddledoo will be removed (I just tested on it)\nCoachz is the only platform that calls `mkbp_update_switches` directly, so it will not compile without MKBP-input-devices addition",
+      "parentUuid": "958d096f_91356001",
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4459b24d_756061b7",
@@ -138,6 +156,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e80e8353_b97e5e23",
+        "filename": "common/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a9abdd9_28ab1603",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f131890_cd9faf1c",
@@ -151,6 +193,30 @@
       "writtenOn": "2021-03-18T02:24:55Z",
       "side": 1,
       "message": "nit: Use the IS_ENABLED(...) macro.",
+      "range": {
+        "startLine": 314,
+        "startChar": 4,
+        "endLine": 314,
+        "endChar": 11
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803cec87_cb508aa3",
+        "filename": "common/button.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f131890_cd9faf1c",
       "range": {
         "startLine": 314,
         "startChar": 4,
@@ -184,6 +250,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d377670a_dc7a019a",
+        "filename": "common/button.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b313558c_12366333",
+      "range": {
+        "startLine": 317,
+        "startChar": 6,
+        "endLine": 317,
+        "endChar": 13
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bea0df53_0c3a0042",
@@ -197,6 +287,30 @@
       "writtenOn": "2021-03-18T06:31:13Z",
       "side": 1,
       "message": "In order to keep the behavior unchanged for boards that are currently using MKBP keyboard protocol, we should auto-define this config whenever CONFIG_KEYBOARD_PROTOCOL_MKBP is defined. Such auto-defined configs are added towards end of the file starting with line 5112.",
+      "range": {
+        "startLine": 3104,
+        "startChar": 7,
+        "endLine": 3104,
+        "endChar": 32
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1443100_650ef797",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3104,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea0df53_0c3a0042",
       "range": {
         "startLine": 3104,
         "startChar": 7,
@@ -230,6 +344,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3045ab27_df1932b2",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d7f32be_49385a17",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16759e10_e2dd91d8",
@@ -243,6 +381,30 @@
       "writtenOn": "2021-03-18T06:31:13Z",
       "side": 1,
       "message": "This should be dropped as it is moved to mkbp_fifo.h",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d09d909_b1148ed3",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16759e10_e2dd91d8",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -276,6 +438,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f1b50c_83c23538",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "b/183436066",
+      "parentUuid": "a00147c7_970e0395",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "340b49de_ad079039",
@@ -289,6 +475,24 @@
       "writtenOn": "2021-03-18T06:31:13Z",
       "side": 1,
       "message": "I think the fifo stuff should be a separate CL of its own. Basically move the FIFO support to mkbp_fifo.{c,h}. That will make the changes smaller in a single CL.",
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ddb7fd0_51509274",
+        "filename": "include/mkbp_fifo.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "I was thinking how to split it and realized, that this CL actually is the FIFO change. It is mostly moving the code around in such a way that using this FIFO separately would be possible. I\u0027ll change the description to reflect that.",
+      "parentUuid": "340b49de_ad079039",
       "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -310,6 +514,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eaa102d_fc26374e",
+        "filename": "include/mkbp_fifo.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8888bd6a_5ead1f44",
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e10ff792_95053b1c",
@@ -327,6 +549,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a716d7de_1201d843",
+        "filename": "include/mkbp_input_devices.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e10ff792_95053b1c",
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcaaf1a8_b7db223f",
@@ -340,6 +580,24 @@
       "writtenOn": "2021-03-18T02:24:55Z",
       "side": 1,
       "message": "nit: extra newline",
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b134617f_f54ee970",
+        "filename": "include/mkbp_input_devices.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcaaf1a8_b7db223f",
       "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -367,6 +625,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51d10e0_dc6cef1e",
+        "filename": "include/mkbp_input_devices.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f29b4601_306b4bef",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c9a29ec_2dc92b20",
@@ -380,6 +662,30 @@
       "writtenOn": "2021-03-18T02:24:55Z",
       "side": 1,
       "message": "same here as well",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0523a76f_aee2e462",
+        "filename": "include/mkbp_input_devices.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-22T23:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c9a29ec_2dc92b20",
       "range": {
         "startLine": 38,
         "startChar": 9,
