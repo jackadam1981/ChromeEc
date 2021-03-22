@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c2248b_ecaf8854",
+        "filename": "zephyr/projects/volteer/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T15:50:49Z",
+      "side": 1,
+      "message": "perhaps instead of putting this in the prj.conf, we need to instead have the charger select PLATFORM_EC_CHARGER_SUPPORTS_CHGRAMP (or another name), and you can depend on that symbol in your choice above.\n\nThis prevents needing to copy this around on every board that uses ISL9241 chip (or another chip that does not support it).",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "b773ee4e06f55f97be49731c429c655d781cbf2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
