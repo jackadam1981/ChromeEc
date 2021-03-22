@@ -27,7 +27,6 @@
 #define CONFIG_CROS_BOARD_INFO
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_CRC8
-#define CONFIG_FPU
 
 /* Verified boot configs */
 #define CONFIG_VBOOT_HASH
