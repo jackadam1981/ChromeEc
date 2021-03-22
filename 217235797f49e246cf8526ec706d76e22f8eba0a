@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b8a1d2d_c9dddcb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-22T18:52:11Z",
+      "side": 1,
+      "message": "I tried to untangle the forward declarations, so that this wouldn\u0027t be necessary, but it led to a large number of changes. Even then I couldn\u0027t untangle it all.",
+      "revId": "217235797f49e246cf8526ec706d76e22f8eba0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
