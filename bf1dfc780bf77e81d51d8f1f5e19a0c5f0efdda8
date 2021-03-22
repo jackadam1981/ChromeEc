@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "159a5d7c_8fe89010",
+        "filename": "zephyr/projects/trogdor/lazor/include/gpio_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-22T23:32:27Z",
+      "side": 1,
+      "message": "Nit - this could be put into another CL since it is unrelated to anything USB.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "bf1dfc780bf77e81d51d8f1f5e19a0c5f0efdda8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
