@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf8ca66_349370e9",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-22T20:29:03Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "94726f5d_7e96257f",
+      "revId": "4f7ffcd9223f4cbd09a18c95f6358827235bf9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "770bdc94_80894565",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eee807b_d7cc0c18",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-22T20:29:03Z",
+      "side": 1,
+      "message": "Sure, we can support both since ectool does.",
+      "parentUuid": "770bdc94_80894565",
+      "revId": "4f7ffcd9223f4cbd09a18c95f6358827235bf9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44dfc34d_11402755",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-03-21T22:03:40Z",
       "side": 1,
       "message": "It\u0027s strange to me that init is flag on set and remove instead of a separate command.",
+      "revId": "4f7ffcd9223f4cbd09a18c95f6358827235bf9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f26a91_48cedb75",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-22T20:29:03Z",
+      "side": 1,
+      "message": "Agreed that it\u0027s strange, but also what ectool does and that\u0027s generally where I\u0027m aiming for parity.",
+      "parentUuid": "44dfc34d_11402755",
       "revId": "4f7ffcd9223f4cbd09a18c95f6358827235bf9ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
