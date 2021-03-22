@@ -22,6 +22,30 @@
       },
       "revId": "b773ee4e06f55f97be49731c429c655d781cbf2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "facb8801_343f1ae9",
+        "filename": "zephyr/projects/volteer/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-22T17:38:56Z",
+      "side": 1,
+      "message": "That\u0027s a good idea. I\u0027ve gone with a \u0027negative\u0027 config called PLATFORM_EC_CHARGER_CHGRAMP_BROKEN, since this should not need to be selected by many drivers.",
+      "parentUuid": "c1c2248b_ecaf8854",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "b773ee4e06f55f97be49731c429c655d781cbf2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
