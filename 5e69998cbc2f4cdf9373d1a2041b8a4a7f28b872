@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59447b72_989f2ea4",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-22T18:48:39Z",
+      "side": 1,
+      "message": "since this is static, you can use K_MUTEX_DEFINE instead of using an init function",
+      "range": {
+        "startLine": 12,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "5e69998cbc2f4cdf9373d1a2041b8a4a7f28b872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
