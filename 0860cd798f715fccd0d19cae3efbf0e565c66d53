@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a321b49_33a5dd63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-22T20:27:32Z",
+      "side": 1,
+      "message": "I\u0027m currently seeing linker errors from brya like those shown in http://b/173575131#comment14 at ToT. I\u0027m not sure if this is the right CL to revert, but reverting allows me to build cleanly.",
+      "revId": "0860cd798f715fccd0d19cae3efbf0e565c66d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
