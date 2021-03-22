@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71da1914_b6fe71cc",
+        "filename": "zephyr/dts/bindings/battery/named-batteries.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-22T23:19:38Z",
+      "side": 1,
+      "message": "See the other file.  I don\u0027t think there\u0027s any value in having a separate enum-name property.  The battery_tyoe enum can be created using the names of the nodes in \"named-batteries\" parent.\n\nEventually, this binding will add all the battery properties (voltage_max, fuel gauge info, etc).",
+      "range": {
+        "startLine": 8,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "f68e32f9be338cffaa68232de663b6c0047f4962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d19c9f4_5673f23e",
+        "filename": "zephyr/shim/include/battery_enum.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-22T23:19:38Z",
+      "side": 1,
+      "message": "The \"enum_name\" property doesn\u0027t provide any value over the node name.  Change this to match what we do with I2C ports.\n\nBATTERY_TYPE(id) DT_CAT(BATTERY_, id)\nBATTERY_TYPE_WITH_COMMA(id) BATTERY_TYPE(id),",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "f68e32f9be338cffaa68232de663b6c0047f4962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
