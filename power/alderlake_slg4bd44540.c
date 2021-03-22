@@ -247,6 +247,10 @@ enum power_state power_handle_state(enum power_state state)
 	switch (state) {
 
 	case POWER_G3S5:
+		/* Assert RTCRST# in recovery mode */
+		if (IS_ENABLED(CONFIG_BOARD_HAS_RTC_RESET))
+			intel_x86_recovery_mode_rtc_reset();
+
 		GPIO_SET_LEVEL(GPIO_EN_S5_RAILS, 1);
 
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))

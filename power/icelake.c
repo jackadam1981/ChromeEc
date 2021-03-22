@@ -245,6 +245,10 @@ enum power_state power_handle_state(enum power_state state)
 	switch (state) {
 
 	case POWER_G3S5:
+		/* Assert RTCRST# in recovery mode */
+		if (IS_ENABLED(CONFIG_BOARD_HAS_RTC_RESET))
+			intel_x86_recovery_mode_rtc_reset();
+
 		if (IS_ENABLED(CONFIG_CHIPSET_SLP_S3_L_OVERRIDE)) {
 			/*
 			 * Prevent glitches on the SLP_S3_L and PCH_PWROK
