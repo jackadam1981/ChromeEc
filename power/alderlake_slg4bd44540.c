@@ -13,6 +13,7 @@
 #include "chipset.h"
 #include "console.h"
 #include "gpio.h"
+#include "host_command.h"
 #include "power.h"
 #include "power/alderlake_slg4bd44540.h"
 #include "power/intel_x86.h"
@@ -247,6 +248,13 @@ enum power_state power_handle_state(enum power_state state)
 	switch (state) {
 
 	case POWER_G3S5:
+		/* Assert RTCRST# in recovery mode */
+		if (IS_ENABLED(CONFIG_BOARD_HAS_RTC_RESET) &&
+			(host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY) ||
+			host_is_event_set(
+				EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT)))
+			intel_x86_rtc_reset();
+
 		GPIO_SET_LEVEL(GPIO_EN_S5_RAILS, 1);
 
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))

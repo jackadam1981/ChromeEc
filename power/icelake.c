@@ -10,6 +10,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "power.h"
 #include "power/intel_x86.h"
 #include "power_button.h"
@@ -245,6 +246,13 @@ enum power_state power_handle_state(enum power_state state)
 	switch (state) {
 
 	case POWER_G3S5:
+		/* Assert RTCRST# in recovery mode */
+		if (IS_ENABLED(CONFIG_BOARD_HAS_RTC_RESET) &&
+			(host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY) ||
+			host_is_event_set(
+				EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT)))
+			intel_x86_rtc_reset();
+
 		if (IS_ENABLED(CONFIG_CHIPSET_SLP_S3_L_OVERRIDE)) {
 			/*
 			 * Prevent glitches on the SLP_S3_L and PCH_PWROK
