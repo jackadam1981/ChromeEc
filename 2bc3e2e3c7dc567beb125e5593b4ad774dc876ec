@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e4a001c_4066f0d6",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-22T23:07:54Z",
+      "side": 1,
+      "message": "For the gpio.inc file, best practice is that the GPIO name always matches the schematic, we then used the board.h to map the board signal name to the EC common code expected name.  I think it\u0027s worth mentioning here that the node name and label should come from the hardware schematic.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "2bc3e2e3c7dc567beb125e5593b4ad774dc876ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
