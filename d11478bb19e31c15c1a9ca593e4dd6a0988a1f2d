@@ -52,6 +52,23 @@
       "parentUuid": "8d158a7f_56dfd215",
       "revId": "d11478bb19e31c15c1a9ca593e4dd6a0988a1f2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "543d7040_f5fcb279",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-03-22T18:02:11Z",
+      "side": 1,
+      "message": "You may want to factor our some changes to the patch stacked below.\nOtherwise the patch below won\u0027t be able to pass CQ.",
+      "revId": "d11478bb19e31c15c1a9ca593e4dd6a0988a1f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
