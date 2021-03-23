@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13844390_33ac7f35",
+        "filename": "baseboard/honeybuns/baseboard.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-23T19:59:03Z",
+      "side": 1,
+      "message": "There isn\u0027t a SECTION_IS_RO, and the #ifdef case get\u0027s filled out in subsequent CLs.",
+      "parentUuid": "a00e4a67_468f2ee8",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4394b91_d948ffac",
         "filename": "baseboard/honeybuns/usbc_support.c",
         "patchSetId": 24
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-22T19:16:01Z",
       "side": 1,
       "message": "nit: line up asterisks",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 3
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e4a820_9cd9b9a4",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-23T19:59:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4394b91_d948ffac",
       "range": {
         "startLine": 57,
         "startChar": 1,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "687a96b8_dd7aa13f",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-23T19:59:03Z",
+      "side": 1,
+      "message": "We don\u0027t break out early here in our sn5s330 driver, and if i2c accesses aren\u0027t working, we will fail below as well.",
+      "parentUuid": "c9fc9f6c_3cbf245f",
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3ccf220_e0f14e3b",
         "filename": "board/gingerbread/board.c",
         "patchSetId": 24
@@ -77,6 +143,30 @@
       "writtenOn": "2021-03-22T19:16:01Z",
       "side": 1,
       "message": "nit: nothing is being guarded",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 6
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c4c59a_09ffa012",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-23T19:59:03Z",
+      "side": 1,
+      "message": "Some context required here. There are CLs later in the stack which do require a RW only section here. I had taken a number of smaller CLs that weren\u0027t logically consistent and merged/separated changes to make the CLs more logically consistent.",
+      "parentUuid": "e3ccf220_e0f14e3b",
       "range": {
         "startLine": 158,
         "startChar": 0,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "294270e8_528fdcc7",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-23T19:59:03Z",
+      "side": 1,
+      "message": "I would expect to keep this code. I think longer term I want to move this to a util module as it\u0027s very useful. But that wouldn\u0027t be in this CL.",
+      "parentUuid": "18c47be7_0fce6d2d",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f66c3fc8_f4535d49",
         "filename": "board/gingerbread/board.h",
         "patchSetId": 24
@@ -123,6 +237,30 @@
       "writtenOn": "2021-03-22T19:16:01Z",
       "side": 1,
       "message": "nit: extra tabs",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0bf15f5_eaff26fa",
+        "filename": "board/gingerbread/board.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-23T19:59:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f66c3fc8_f4535d49",
       "range": {
         "startLine": 31,
         "startChar": 1,
@@ -158,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58975aad_f4c7dda6",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-23T19:59:03Z",
+      "side": 1,
+      "message": "Some context required here. There are CLs later in the stack which do require a RW only section here. I had taken a number of smaller CLs that weren\u0027t logically consistent and merged/separated changes to make the CLs more logically consistent.",
+      "parentUuid": "0a254025_b9a2bb55",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 6
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c159c6aa_248a8edf",
         "filename": "board/quiche/board.c",
         "patchSetId": 24
@@ -181,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0cebcb8_426ce0cf",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-23T19:59:03Z",
+      "side": 1,
+      "message": "I would expect to keep this code. I think longer term I want to move this to a util module as it\u0027s very useful. But that wouldn\u0027t be in this CL.",
+      "parentUuid": "c159c6aa_248a8edf",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 0
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c17ba186_bc6601c5",
         "filename": "board/quiche/board.h",
         "patchSetId": 24
@@ -192,6 +378,30 @@
       "writtenOn": "2021-03-22T19:16:01Z",
       "side": 1,
       "message": "nit: remove the extra tab",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "34226653f53979136e0cb18e0985490f9070288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9abbea_54ab739a",
+        "filename": "board/quiche/board.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-23T19:59:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c17ba186_bc6601c5",
       "range": {
         "startLine": 31,
         "startChar": 0,
