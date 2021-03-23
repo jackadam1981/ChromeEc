@@ -83,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68bc8968_78a4e569",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-03-23T01:11:51Z",
+      "side": 1,
+      "message": "Re-run create_initial_ec_image.sh and try if it builds.\nIf it does, we can fix things in the follow-up CLs.",
+      "parentUuid": "8de7dd66_2930b3d2",
+      "revId": "fd5c070b90a87337ce95edae667981cadb183e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5674f0d_c69b5184",
         "filename": "board/marzipan/board.c",
         "patchSetId": 3
