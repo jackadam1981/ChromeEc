@@ -22,6 +22,30 @@
       },
       "revId": "02babe7e455f87c504d2a4c17fdeb886b887274f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892b8813_82eccff1",
+        "filename": "chip/stm32/ucpd-stm32gx.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-23T19:58:53Z",
+      "side": 1,
+      "message": "I updated the comment to reflect 27. That\u0027s close than 26 to the desired 26.67 value.",
+      "parentUuid": "0ddd820d_b273c8f4",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "02babe7e455f87c504d2a4c17fdeb886b887274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
