@@ -13,6 +13,43 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 /*
+ * Default Port Discovery DR Swap Policy.
+ *
+ * 1) If port == 0 and dr_swap_to_dfp_flag == true and port data role is DFP,
+ *    transition to pe_drs_send_swap
+ * 2) If port == 1 and dr_swap_to_dfp_flag == true and port data role is UFP,
+ *    transition to pe_drs_send_swap
+ */
+__overridable bool port_discovery_dr_swap_policy(int port,
+			enum pd_data_role dr, bool dr_swap_flag)
+{
+	/*
+	 * Port0: test if role is DFP
+	 * Port1: test if role is UFP
+	 */
+	enum pd_data_role role_test = (port) ? PD_ROLE_UFP : PD_ROLE_DFP;
+
+	if (dr_swap_flag && dr == role_test)
+		return true;
+
+	/* Do not perform a DR swap */
+	return false;
+}
+
+/*
+ * Default Port Discovery VCONN Swap Policy.
+ *
+ * 1) Never perform VCONN swap
+ */
+__overridable bool port_discovery_vconn_swap_policy(int port,
+			bool vconn_swap_flag)
+{
+	/* Do not perform a VCONN swap */
+	return false;
+}
+
+
+/*
  * TODO(b/167711550): These 4 functions need to be implemented for honeybuns
  * and are required to build with TCPMv2 enabled. Currently, they only allow the
  * build to work. They will be implemented in a subsequent CL.
