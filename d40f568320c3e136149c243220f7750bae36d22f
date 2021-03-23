@@ -16,6 +16,23 @@
       "message": "Still need",
       "revId": "d40f568320c3e136149c243220f7750bae36d22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe6d481_9b410a6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-23T22:22:12Z",
+      "side": 1,
+      "message": "If you can wait on crrev.com/c/2782231, you can use K_MUTEX_DEFINE ;)\n\nmaybe you can help review \u003d)",
+      "revId": "d40f568320c3e136149c243220f7750bae36d22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
