@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980ee56a_3e513771",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-23T22:28:15Z",
+      "side": 1,
+      "message": "can you use IS_ENABLED?\n\nalso, I think this will work now ... the AP *will* boot, at least to depthcharge",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 69
+      },
+      "revId": "3f3598c2b6c5e46e85b7b6a827ff0b6cd63a42e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
