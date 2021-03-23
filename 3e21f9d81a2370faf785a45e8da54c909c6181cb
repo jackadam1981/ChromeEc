@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c288563_2b053101",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-23T00:47:30Z",
+      "side": 1,
+      "message": "If I pick up the device while suspended and hold it to press the on button: if detection is disabled in S3, AP will not notice the change.\n\nTo avoid that, the kernel driver should have a resume hook to query the state of the detection, in case it has changed since the device was suspended.",
+      "revId": "3e21f9d81a2370faf785a45e8da54c909c6181cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d85cf4c_06187eef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-23T00:47:30Z",
+      "side": 1,
+      "message": "trogdor, as some code has merged there.",
+      "revId": "3e21f9d81a2370faf785a45e8da54c909c6181cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
