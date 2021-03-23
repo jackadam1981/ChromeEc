@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ebb683d_4532acb5",
+        "filename": "baseboard/honeybuns/baseboard.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-23T15:02:44Z",
+      "side": 1,
+      "message": "Would pd_set_error_recovery() work for your use cases, or is the reset flag fiddling needed?",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf5996a_0f2eb952",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-23T15:02:44Z",
+      "side": 1,
+      "message": "No longer used",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d659b2b_8c671f53",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-23T15:02:44Z",
+      "side": 1,
+      "message": "Lower max power as well?",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ced02be_1a04c65c",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-23T15:02:44Z",
+      "side": 1,
+      "message": "Are we advertising AMA anymore?",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "882ee4f1_6543c47c",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-23T15:02:44Z",
+      "side": 1,
+      "message": "TODO since this appears to be called?",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9e990e_39dd0670",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-23T15:02:44Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
