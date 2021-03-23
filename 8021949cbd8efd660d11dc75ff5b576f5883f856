@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29442f5b_f9dd3038",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f459538_c9fcde26",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbd47fdd_e7265689",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "\"Adds vdec (video decoder) service.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c06c0b_1ce6a1c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbd47fdd_e7265689",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -84,6 +132,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "560f2036_b7bd77fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd107228_c78f8581",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "970e6bf5_a0b491c9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 16
@@ -95,6 +161,23 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "I position this CL as a \"Adds vdec service\" CL.  Thus, it should only change anything inside the board/asurada_scp/ folder.\n\nAnything else should move to other CLs.",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "320c579c_458e3a55",
+        "filename": "board/asurada_scp/build.mk",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Remove.",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -112,6 +195,30 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Is\n#define TRENTA_TASK_STACK_SIZE 1184\napplicable?",
+      "range": {
+        "startLine": 14,
+        "startChar": 52,
+        "endLine": 14,
+        "endChar": 56
+      },
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5444d5f6_d174d328",
+        "filename": "board/asurada_scp/ec.tasklist",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Change to use TRENTA_TASK_STACK_SIZE temporarily.",
+      "parentUuid": "92d95a54_48959054",
       "range": {
         "startLine": 14,
         "startChar": 52,
@@ -145,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00201cc0_a494b185",
+        "filename": "board/asurada_scp/ec.tasklist",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51d4123e_a2865d41",
+      "range": {
+        "startLine": 15,
+        "startChar": 62,
+        "endLine": 15,
+        "endChar": 66
+      },
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "126dc585_0e1178af",
@@ -158,6 +289,30 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7002abf_4a52a75d",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "126dc585_0e1178af",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -191,6 +346,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af7d730_56d55acc",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc0d2c4_40546690",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ca993fc_87dd36ba",
@@ -204,6 +383,30 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Remove.\n\nAnd sort the header inclusion again.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ccaf4a_36a1b6cb",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ca993fc_87dd36ba",
       "range": {
         "startLine": 7,
         "startChar": 10,
@@ -254,6 +457,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "756d525e_cfe82d68",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ba26fcf_aa55ae00",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "173453c7_7b8d263c",
@@ -267,6 +488,24 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Move to line 23.",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ed4036_238584f8",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "173453c7_7b8d263c",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -288,6 +527,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9072d9b_0ad629a0",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad7a95da_d40013fc",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67e6ba69_3a8464d2",
@@ -301,6 +558,24 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Move to line 36.",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6346f3d2_3afe6000",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67e6ba69_3a8464d2",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -322,6 +597,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29971ff_4edf4afb",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec39595e_91581f93",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9cfd7b7_071984af",
@@ -335,6 +628,24 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Exceed col-80.",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f9fc989_455155db",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9cfd7b7_071984af",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -356,6 +667,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9400f86d_7cdbb6d2",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "685ab8cb_56baaadb",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a27a0e5d_7e4212bc",
@@ -369,6 +698,24 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Be symmetric.  See line 68.",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4730f262_96d272e9",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a27a0e5d_7e4212bc",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -390,6 +737,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf91459_f2235d5b",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63209cef_ad3973c4",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40f6b0e4_870b935e",
@@ -403,6 +768,24 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "It is empty.  Or it will init twice.\n\nIf you really need it, use a function and atomic context to make sure it only init once (e.g. atomic_read_add() in core/riscv-rv32i/atomic.h).",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95335d2_406389b3",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40f6b0e4_870b935e",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -424,6 +807,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee8f2d8_ff1246b7",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27313460_41d4fe8a",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "915adf28_48b33a10",
@@ -441,6 +842,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "629fd730_b4dbe8fc",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "915adf28_48b33a10",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa183227_adbe3e80",
@@ -454,6 +873,24 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Remove tailing blank line.",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41d0a706_48ad30cc",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa183227_adbe3e80",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -481,6 +918,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9e7d01_168f6892",
+        "filename": "board/asurada_scp/vdec.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f0353e0_44bdc8b4",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b5410f8_2bc8fc6e",
@@ -498,6 +959,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ff2ddb_5f5e6c62",
+        "filename": "board/asurada_scp/vdec.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5410f8_2bc8fc6e",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "decbdfcb_1b089afa",
@@ -511,6 +990,24 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Remove.  vdec.h doesn\u0027t need anything from queue.h.  If vdec.c needs it, include at vdec.c.",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d37f5972_5bdddb9f",
+        "filename": "board/asurada_scp/vdec.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "decbdfcb_1b089afa",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -538,6 +1035,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "300e9bce_337d1596",
+        "filename": "board/asurada_scp/vdec.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04cf91e4_efef9861",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eebedd4_54ba20f4",
@@ -551,6 +1072,24 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Remove the blank line.",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97128c93_1c9a8918",
+        "filename": "board/asurada_scp/vdec.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eebedd4_54ba20f4",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -572,6 +1111,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a84ce16_181a6c84",
+        "filename": "board/asurada_scp/vdec.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "080b61f5_a9f0244f",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af40a76d_e163340f",
@@ -585,6 +1142,24 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Separate to another CL.  Define them bit-wise in chip/mt8192_scp/ipi_chip.h instead of using literal constants 0x740.",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c89e07_06624030",
+        "filename": "chip/mt8192_scp/ipi.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Move to another CL.  And need MTK help to explain the magic number.",
+      "parentUuid": "af40a76d_e163340f",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -625,6 +1200,24 @@
       "writtenOn": "2021-03-17T06:12:41Z",
       "side": 1,
       "message": "Remove.",
+      "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b704ea3c_fdf36460",
+        "filename": "chip/mt8192_scp/watchdog.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-23T08:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df31afe4_0ee7356e",
       "revId": "8021949cbd8efd660d11dc75ff5b576f5883f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
