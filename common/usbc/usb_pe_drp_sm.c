@@ -1125,6 +1125,8 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
+	CPRINTS("C%d: Error %d on %d", port, e, type);
+
 	/*
 	 * If there is a timeout error while waiting for a chunk of a chunked
 	 * message, there is no requirement to trigger a soft reset.
@@ -6445,6 +6447,22 @@ static void pe_vcs_send_ps_rdy_swap_entry(int port)
 {
 	print_current_state(port);
 
+	/* Error out to Vconn off path if partner sent an unexpected PS_RDY */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		if ((PD_HEADER_CNT(rx_emsg[port].header) == 0) &&
+		    (PD_HEADER_EXT(rx_emsg[port].header) == 0) &&
+				(PD_HEADER_TYPE(rx_emsg[port].header) ==
+						PD_CTRL_PS_RDY)) {
+			set_state_pe(port, PE_VCS_TURN_OFF_VCONN_SWAP);
+			return;
+		}
+		/* Any other unexpected message, soft reset */
+		pe_send_soft_reset(port, TCPC_TX_SOP);
+		return;
+	}
+
 	/* Send a PS_RDY Message */
 	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
 }
@@ -6472,12 +6490,6 @@ static void pe_vcs_send_ps_rdy_swap_run(int port)
 
 	if (pe_check_outgoing_discard(port))
 		return;
-
-	if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
-		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
-		/* PS_RDY didn't send, soft reset */
-		pe_send_soft_reset(port, TCPC_TX_SOP);
-	}
 }
 
 /*
