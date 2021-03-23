@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3039245_dfd3881b",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer_motionsense.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T08:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96a3d272_f71496d5",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "0bbd84fa86b5c51bb221b3d2c6c6dfe43c070e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85be9833_678c800d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddceb1f1_79e4f950",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer_motionsense.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T08:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85be9833_678c800d",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "0bbd84fa86b5c51bb221b3d2c6c6dfe43c070e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db4e171c_eff05852",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-22T18:06:28Z",
       "side": 1,
       "message": "I would expect to be able to put this info in the same node as the device itself. Is that not possible?",
+      "range": {
+        "startLine": 76,
+        "startChar": 18,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "0bbd84fa86b5c51bb221b3d2c6c6dfe43c070e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee651b9_eb4308ac",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer_motionsense.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T08:15:46Z",
+      "side": 1,
+      "message": "Like bmi260 data is used by two motion sensors, a data can be shared among different motion sensor entries in motion_sense_t array. So it cannot be in the same node.",
+      "parentUuid": "db4e171c_eff05852",
       "range": {
         "startLine": 76,
         "startChar": 18,
