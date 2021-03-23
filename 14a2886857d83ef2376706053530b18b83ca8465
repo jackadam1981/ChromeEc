@@ -50,6 +50,24 @@
       "message": "Building the homestar board failed. Some other CLs reorganized the code structure (already merged) and conflicted with this CL. Please rebase and fix the conflicts.",
       "revId": "14a2886857d83ef2376706053530b18b83ca8465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b03a0c5_d95ff44a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-03-23T04:57:08Z",
+      "side": 1,
+      "message": "Hi Tam, thanks for your suggestion. But I found that in the branch firmware-trogdor-13577.B, the zephyr folder miss many kconfig file. I\u0027m afraid the CL can\u0027t be cherry-pick from ToT branch to firmware branch.",
+      "parentUuid": "ab4ccfd9_c3e0ad02",
+      "revId": "14a2886857d83ef2376706053530b18b83ca8465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
