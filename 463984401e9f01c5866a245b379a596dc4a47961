@@ -104,6 +104,24 @@
       "parentUuid": "07e28b70_40181fdf",
       "revId": "463984401e9f01c5866a245b379a596dc4a47961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6a3159_4280fde5",
+        "filename": "board/boten/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-23T18:03:16Z",
+      "side": 1,
+      "message": "Yes, that makes sense. Granted, no new boards should not be using TCPMv1.",
+      "parentUuid": "2eb9102f_9c6fee82",
+      "revId": "463984401e9f01c5866a245b379a596dc4a47961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
