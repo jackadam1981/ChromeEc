@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "908d42db_abcfa6ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-23T07:21:47Z",
+      "side": 1,
+      "message": "Btw, the document of introduction of Sensor Rotation Matrix seem have\nincorrect description as below link.\nhttps://chromeos.google.com/partner/dlm/docs/reference-designs/volteer/volteer_ref_kit/CEP/creating_board_variation.pdf?pli\u003d1\n +X: aligned with the hinge and pointing to the left\n +Y: same plane as the keyboard pointing towards a user typing on the\n     keyboard\n +Z: perpendicular of the keyboard and down through the keyboard\nThe XYZ direction in above link cannot match the document of 27th page of\nODM Technical Summit 2021 as below link.\nhttps://chromeos.google.com/partner/dlm/docs/getting-started/partner_summit_docs/2021-01_Day_2_Module_3_Chrome_EC_Board_Customization.pdf\n x-axis points to the right, in the screen’s natural orientation\n y-axis points up the screen\n z-axis points toward the user\n Lid and base sensors share same reference frame,sensors produce same\n data only if lid is opened 180 degrees",
+      "revId": "82d125595d7596129bfef5b1931054483e124c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
