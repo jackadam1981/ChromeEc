@@ -22,6 +22,30 @@
       },
       "revId": "f189e96027f7c87cbee8e543eaf75d14540549d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a514f72_a8cf6891",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T22:24:31Z",
+      "side": 1,
+      "message": "Approving this CL as is.  Will iterate on a better solution.",
+      "parentUuid": "5b60d9cc_7d56b605",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "f189e96027f7c87cbee8e543eaf75d14540549d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
