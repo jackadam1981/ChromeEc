@@ -4,6 +4,8 @@
 
 #zephyr_include_directories(include)
 
+#zephyr_sources(clock.c)
+zephyr_sources_ifdef(CONFIG_CROS_KB_RAW_ITE   keyboard_raw.c)
 zephyr_sources_ifdef(CONFIG_CROS_EC           system.c)
 zephyr_sources_ifdef(CONFIG_CROS_EC           pinmux.c)
 

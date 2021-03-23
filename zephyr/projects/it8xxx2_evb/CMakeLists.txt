@@ -24,3 +24,7 @@ zephyr_include_directories(
 # Include selected EC source for the baseboard
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USB_POWER_DELIVERY
   "${PLATFORM_EC_BASEBOARD}/usb_pd_policy.c")
+
+# Include selected EC source for the board
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_BOARD_CONFIG
+  "${PLATFORM_EC_BOARD}/keyboard.c")

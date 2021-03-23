@@ -5,6 +5,16 @@
 menuconfig CROS_KB_RAW_NPCX
 	bool "Nuvoton NPCX raw-keyboard-scan driver for the Zephyr shim"
 	depends on SOC_FAMILY_NPCX
+	default n
+	help
+	  This option enables a driver for providing raw access to the
+	  keyboard-scan peripheral in the chip. This is used instead of the
+	  kscan interface so we can continue to use most of the existing
+	  keyboard-scanning code in ECOS.
+
+menuconfig CROS_KB_RAW_ITE
+	bool "ITE raw-keyboard-scan driver for the Zephyr shim"
+	depends on SOC_FAMILY_RISCV_ITE
 	default y
 	help
 	  This option enables a driver for providing raw access to the
