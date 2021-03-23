@@ -14,10 +14,7 @@
 
 /*
  * Video decoder supported capability:
- * BIT(4): 0 enable 4K
- *         1 disable 4K
  */
-#define VCODEC_CAPABILITY_4K_DISABLED BIT(4)
 
 #ifndef SCP_IPI_INIT
 #error If CONFIG_IPI is enabled, SCP_IPI_INIT must be defined.
