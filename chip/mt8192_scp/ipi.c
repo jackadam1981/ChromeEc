@@ -129,7 +129,7 @@ static void ipi_enable_deferred(void)
 	strncpy(scp_run.fw_ver, system_get_version(EC_IMAGE_RW),
 		SCP_FW_VERSION_LEN);
 	scp_run.dec_capability = 0x740;
-	scp_run.enc_capability = 0;
+	scp_run.enc_capability = MTK_VENC_4K_CAPABILITY_ENABLE;
 
 	ret = ipi_send(SCP_IPI_INIT, (void *)&scp_run, sizeof(scp_run), 1);
 	if (ret) {
