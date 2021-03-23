@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e950940_d2d7a1aa",
+        "filename": "board/gingerbread/gpio.inc",
+        "patchSetId": 29
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-23T01:27:13Z",
+      "side": 1,
+      "message": "UART pin now?",
+      "revId": "27d46cd321286a97ee23242ab9402ff3a88389eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "890154ff_b32fd2f9",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 29
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-23T01:27:13Z",
+      "side": 1,
+      "message": "Fun side note I learned recently, we can now order the interrupt handlers however we want.  Woooooo",
+      "revId": "27d46cd321286a97ee23242ab9402ff3a88389eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
