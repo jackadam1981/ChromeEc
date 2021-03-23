@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31dec461_1522aa78",
+        "filename": "zephyr/shim/include/battery_enum.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-23T16:55:34Z",
+      "side": 1,
+      "message": "can we use DT_INST_FOREACH and iterate over all batteries with a compatible string (i.e., cros-ec,battery)?",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "eb615c8047e12dea342c07f840c46f0ae0fa939f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
