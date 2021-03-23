@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1badc154_ce5fee63",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-23T22:09:14Z",
+      "side": 1,
+      "message": "IMO these comments don\u0027t really add much except clutter for a three-line block",
+      "range": {
+        "startLine": 386,
+        "startChar": 10,
+        "endLine": 386,
+        "endChar": 51
+      },
+      "revId": "0ce93d5b066064c7c8c1b106557b7d5e8c1d90b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
