@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38618715_aefb5805",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-rotation-ref.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T06:11:27Z",
+      "side": 1,
+      "message": "Oops. I just copied it from \"zephyr/dts/bindings/i2c/named-i2c-ports.yaml\".\nwill change it.",
+      "parentUuid": "55e7dcfd_88124738",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "26cda3ccc17f27e4768730477af45e41cf9610d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6df8948b_c57ab248",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-22T20:22:17Z",
       "side": 1,
       "message": "can we lookup via dt_compatible string cros-ec,motionsense-rotation-ref instead of a hard-coded path?\n\ncode is pretty similar:\n\n   DT_INST(0, cros_ec_motionsense_rotation_ref)",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "26cda3ccc17f27e4768730477af45e41cf9610d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "140ced33_042f9e6a",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T06:11:27Z",
+      "side": 1,
+      "message": "Currently DT_PATH is used for every motion sensor node that is right under /(root). Some of the nodes doesn\u0027t have .yamal file to just get the node ID. I\u0027m not sure how much using DT_INST() is meaningful but if you want, let\u0027s have it in a separate patch.",
+      "parentUuid": "6df8948b_c57ab248",
       "range": {
         "startLine": 35,
         "startChar": 29,
