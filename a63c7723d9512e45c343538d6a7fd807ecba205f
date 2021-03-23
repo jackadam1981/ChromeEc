@@ -33,6 +33,144 @@
       "message": "Tested on Ampton.\n\nI\u0027m not sure if relationship between config name in Kconfig and define name in include/config.h is correct. There is no warning when compiling EC.",
       "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff59febd_3339428d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-23T03:26:19Z",
+      "side": 1,
+      "message": "+Keith for the zepyhr question.",
+      "parentUuid": "a63adcbd_b6eccac6",
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39de7a2_5408072a",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-23T03:26:19Z",
+      "side": 1,
+      "message": "nit: remove this bit. It might be something different than 5V.",
+      "range": {
+        "startLine": 690,
+        "startChar": 26,
+        "endLine": 690,
+        "endChar": 32
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c776b2_54e025a7",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-23T03:26:19Z",
+      "side": 1,
+      "message": "typo: restored",
+      "range": {
+        "startLine": 708,
+        "startChar": 8,
+        "endLine": 708,
+        "endChar": 16
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef75827_714ba762",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-23T03:26:19Z",
+      "side": 1,
+      "message": "nit: keep on previous line",
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98c9fc9f_7212140e",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-23T03:26:19Z",
+      "side": 1,
+      "message": "nit: no need for braces for just a single line",
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce3b549_40883598",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-23T03:26:19Z",
+      "side": 1,
+      "message": "I think input should be added somewhere, but it is getting kind of long...\n\nWhat do you think about the following?\n    CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV",
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55e250a_720dcac3",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-23T03:26:19Z",
+      "side": 1,
+      "message": "which gets even loooonger here 😄",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 52
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
