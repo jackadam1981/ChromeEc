@@ -37,7 +37,6 @@
 		CONFIG_CHARGER_SENSE_RESISTOR_AC_ISL9238
 #endif
 
-
 #define DEFAULT_R_AC 20
 #define DEFAULT_R_SNS 10
 #define R_AC CONFIG_CHARGER_SENSE_RESISTOR_AC
@@ -506,7 +505,7 @@ int isl923x_set_ac_prochot(int chgnum, uint16_t ma)
 		return EC_ERROR_INVAL;
 	}
 
-	rv = raw_write16(chgnum, ISL923X_REG_PROCHOT_AC, ma);
+	rv = raw_write16(chgnum, ISL923X_REG_PROCHOT_AC, AC_CURRENT_TO_REG(ma));
 	if (rv)
 		CPRINTS("%s set_ac_prochot failed (%d)", CHARGER_NAME, rv);
 	return rv;
@@ -521,7 +520,7 @@ int isl923x_set_dc_prochot(int chgnum, uint16_t ma)
 		return EC_ERROR_INVAL;
 	}
 
-	rv = raw_write16(chgnum, ISL923X_REG_PROCHOT_DC, ma);
+	rv = raw_write16(chgnum, ISL923X_REG_PROCHOT_DC, CURRENT_TO_REG(ma));
 	if (rv)
 		CPRINTS("%s set_dc_prochot failed (%d)", CHARGER_NAME, rv);
 	return rv;
