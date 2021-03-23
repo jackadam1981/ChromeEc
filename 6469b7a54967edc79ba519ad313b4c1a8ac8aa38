@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89ae2224_968739cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-23T18:54:33Z",
+      "side": 1,
+      "message": "mutexes will need initialized using k_mutex_init, or declared using K_MUTEX_DEFINE",
+      "revId": "6469b7a54967edc79ba519ad313b4c1a8ac8aa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
