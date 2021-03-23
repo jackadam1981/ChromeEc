@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59db6842_da0098de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T18:23:45Z",
+      "side": 1,
+      "message": "You can also add the following to the collis/board.h:\n\n#undef CONFIG_USB_MUX_RUNTIME_CONFIG\n#undef CONFIG_USB_PD_TCPM_RT1715\n",
+      "revId": "0e8671fdf7ffdef41505380443d43fef0bcb0f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb87d76a_2f8fbc67",
+        "filename": "board/collis/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T18:23:45Z",
+      "side": 1,
+      "message": "Change this to DB_USB3_ACTIVE.",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "0e8671fdf7ffdef41505380443d43fef0bcb0f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
