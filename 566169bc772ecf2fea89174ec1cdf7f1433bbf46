@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff189d2_4207bf76",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-23T17:50:32Z",
+      "side": 1,
+      "message": "aren\u0027t all letters in a #define supposed to be capital?",
+      "range": {
+        "startLine": 545,
+        "startChar": 8,
+        "endLine": 545,
+        "endChar": 30
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "619d8992_8bf0a817",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-23T17:50:32Z",
+      "side": 1,
+      "message": "should the chipset being off cause limit_charge and possibly other local static variables to go to an initial value?",
+      "range": {
+        "startLine": 556,
+        "startChar": 1,
+        "endLine": 557,
+        "endChar": 11
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167df84a_b40f630b",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-23T17:50:32Z",
+      "side": 1,
+      "message": "not sure it is a good idea to ignore the return error value",
+      "range": {
+        "startLine": 559,
+        "startChar": 1,
+        "endLine": 559,
+        "endChar": 17
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf88293_f6831ead",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-23T17:50:32Z",
+      "side": 1,
+      "message": "\u0027else if\u0027?  Seems this condition will always be true if the temp was already show to be \u003e 63C",
+      "range": {
+        "startLine": 565,
+        "startChar": 2,
+        "endLine": 565,
+        "endChar": 39
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12d83d3_222b3d9d",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-23T17:50:32Z",
+      "side": 1,
+      "message": "another possible place for \u0027else if\u0027?",
+      "range": {
+        "startLine": 573,
+        "startChar": 2,
+        "endLine": 573,
+        "endChar": 4
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d349707_3ee9f2c9",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-23T17:50:32Z",
+      "side": 1,
+      "message": "is there any benefit of coding this as\n    curr-\u003erequested_current \u003d (limit_charge) ? CHARGING_CURRENT_500MA\n                                             : curr-\u003ebatt.desired_current;",
+      "range": {
+        "startLine": 579,
+        "startChar": 1,
+        "endLine": 582,
+        "endChar": 55
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd4152b_1987346d",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-03-23T17:50:32Z",
+      "side": 1,
+      "message": "is there any benefit to coding this as\n    rp \u003d (limit_usbc_power \u003d\u003d 1) ? TYPEC_RP_1A5\n                                 : TYPEC_RP_3A0;",
+      "range": {
+        "startLine": 585,
+        "startChar": 2,
+        "endLine": 588,
+        "endChar": 21
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
