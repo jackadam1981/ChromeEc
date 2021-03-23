@@ -147,6 +147,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "657cb47c_acbd77b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-03-23T01:19:39Z",
+      "side": 1,
+      "message": "Hi Wai-hong,\n\nI will re-run create_initial_ec_image.sh. Since many relation CLs merged to lazor. Run create_initial_ec_image.sh will create another patch instead of this patch.",
+      "revId": "fd5c070b90a87337ce95edae667981cadb183e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5674f0d_c69b5184",
