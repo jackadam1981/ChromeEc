@@ -24,10 +24,26 @@
 
 	};
 
+	soc {
+		cros_kb_raw: cros-kb-raw@f01d00 {
+			compatible = "ite,it8xxx2-cros-kb-raw";
+			reg = <0x00F01D00 0x29>;
+			label = "CROS_KB_RAW_0";
+			interrupt-parent = <&intc>;
+			interrupts = <13 IRQ_TYPE_LEVEL_HIGH>;
+			status = "disabled";
+		};
+
+	};
+
 };
 
 &uart1 {
 	status = "okay";
 	current-speed = <115200>;
 	clock-frequency = <1804800>;
+};
+
+&cros_kb_raw {
+	status = "okay";
 };

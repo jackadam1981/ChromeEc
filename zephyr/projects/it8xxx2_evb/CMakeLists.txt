@@ -7,6 +7,13 @@ cmake_minimum_required(VERSION 3.13.1)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(it8xxx2_evb)
 
-# Include board specific header files
-zephyr_include_directories(include)
+set(PLATFORM_EC_BASEBOARD "${PLATFORM_EC}/baseboard/ite_evb" CACHE PATH "Path to the platform/ec baseboard directory")
 
+# Include board specific header files
+zephyr_include_directories(
+  include
+  ${PLATFORM_EC_BASEBOARD})
+
+# Include selected EC source for the baseboard
+zephyr_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_BOARD_CONFIG
+  "${PLATFORM_EC_BASEBOARD}/keyboard.c")

@@ -7,4 +7,5 @@
 #
 
 baseboard-y=baseboard.o
+baseboard-$(CONFIG_KEYBOARD_BOARD_CONFIG)+=keyboard.o
 baseboard-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o

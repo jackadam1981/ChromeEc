@@ -106,22 +106,6 @@ const struct fan_tach_t fan_tach[] = {
 BUILD_ASSERT(ARRAY_SIZE(fan_tach) == PWM_HW_CH_TOTAL);
 #endif /* defined(CONFIG_FANS) || defined(CONFIG_PWM) */
 
-#if defined(CONFIG_KEYBOARD_BOARD_CONFIG)
-/* Keyboard scan setting */
-struct keyboard_scan_config keyscan_config = {
-	.output_settle_us = 35,
-	.debounce_down_us = 5 * MSEC,
-	.debounce_up_us = 40 * MSEC,
-	.scan_period_us = 3 * MSEC,
-	.min_post_scan_delay_us = 1000,
-	.poll_timeout_us = 100 * MSEC,
-	.actual_key_mask = {
-		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
-		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
-	},
-};
-#endif
-
 #if defined(CONFIG_SPI_FLASH_PORT)
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
