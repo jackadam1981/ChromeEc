@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45f72df5_0c0c62e4",
+        "filename": "zephyr/dts/bindings/battery/named-batteries.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T22:23:39Z",
+      "side": 1,
+      "message": "As discussed, let\u0027s land this as is.  But open a bug to convert board_battery_info[] to a proper device tree driver.",
+      "parentUuid": "71da1914_b6fe71cc",
+      "range": {
+        "startLine": 8,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "f68e32f9be338cffaa68232de663b6c0047f4962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d19c9f4_5673f23e",
         "filename": "zephyr/shim/include/battery_enum.h",
         "patchSetId": 4
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "It provides validation that the battery is known",
       "parentUuid": "5d19c9f4_5673f23e",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "f68e32f9be338cffaa68232de663b6c0047f4962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddda6d01_2676d808",
+        "filename": "zephyr/shim/include/battery_enum.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T22:23:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9690671f_82a87f6d",
       "range": {
         "startLine": 12,
         "startChar": 0,
