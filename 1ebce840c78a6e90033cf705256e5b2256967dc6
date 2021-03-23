@@ -33,6 +33,24 @@
       "message": "Does this fix a compilation error?",
       "revId": "1ebce840c78a6e90033cf705256e5b2256967dc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f800d2_1911937f",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-03-23T13:08:40Z",
+      "side": 1,
+      "message": "Looks to be a cherry-pick mistake: The fixed compilation error in the original CL was due to parity not being initialized in line 129.",
+      "parentUuid": "17e6f262_76f0d042",
+      "revId": "1ebce840c78a6e90033cf705256e5b2256967dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
