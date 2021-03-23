@@ -13,8 +13,16 @@
 #if DT_NODE_EXISTS(DT_PATH(named_i2c_ports))
 #define I2C_PORT(id) DT_CAT(I2C_, id)
 #define I2C_PORT_WITH_COMMA(id) I2C_PORT(id),
+#define I2C_PORT_FROM_COMPAT(compat, name) \
+	COND_CODE_1(DT_HAS_COMPAT_STATUS_OKAY(compat), (name,), ())
+#define I2C_DEV_INIT_FROM_COMPAT(dev_ptr, compat)                             \
+	COND_CODE_1(                                                          \
+		DT_HAS_COMPAT_STATUS_OKAY(compat),                            \
+		(dev_ptr = device_get_binding(DT_LABEL(DT_INST(0, compat)))), \
+		())
 enum i2c_ports {
 DT_FOREACH_CHILD(DT_PATH(named_i2c_ports), I2C_PORT_WITH_COMMA)
+I2C_PORT_FROM_COMPAT(cros_i2c_port_power, I2C_PORT_POWER)
 I2C_PORT_COUNT
 };
 #define NAMED_I2C(name) I2C_PORT(DT_PATH(named_i2c_ports, name))
