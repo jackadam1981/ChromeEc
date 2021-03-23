@@ -16,6 +16,29 @@
       "message": "Just adding configs following the discussion in b/181840109",
       "revId": "b16e12574ceab2ba0021feed8a0ba6755b505680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac031ae_4aff554e",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-23T05:34:09Z",
+      "side": 1,
+      "message": "I think these configs should be defined in board/brya.h. Not all boards under the brya umbrella will have USB4.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 37
+      },
+      "revId": "b16e12574ceab2ba0021feed8a0ba6755b505680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
