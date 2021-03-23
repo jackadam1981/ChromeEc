@@ -230,6 +230,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d25cb7de_eb72d7d5",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-23T20:44:34Z",
+      "side": 1,
+      "message": "Max_request_mv will remain new value until this function is called. When this function is called, max_request_mv will be saved again and changed to appropriate voltage. This is exactly what I observed and described in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2773219 in one of comments.\n\nIf this is a problem I can fix it by eg. calling this function from TCPM on voltage change. In my opinion adding another hook (on voltage change) would be an overkill.",
+      "parentUuid": "8466908f_dd5536eb",
+      "range": {
+        "startLine": 723,
+        "startChar": 22,
+        "endLine": 723,
+        "endChar": 41
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98c9fc9f_7212140e",
         "filename": "common/battery.c",
         "patchSetId": 2
