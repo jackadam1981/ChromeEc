@@ -2663,6 +2663,7 @@ static void pe_src_ready_run(int port)
 				set_state_pe(port, PE_DRS_EVALUATE_SWAP);
 				return;
 			case PD_CTRL_VCONN_SWAP:
+				board_debug_gpio(TRIGGER_1, 1, 1 * MSEC);
 				if (IS_ENABLED(CONFIG_USBC_VCONN))
 					set_state_pe(port,
 							PE_VCS_EVALUATE_SWAP);
@@ -3457,6 +3458,7 @@ static void pe_snk_ready_run(int port)
 							PE_DRS_EVALUATE_SWAP);
 				return;
 			case PD_CTRL_VCONN_SWAP:
+				board_debug_gpio(TRIGGER_1, 1, 1 * MSEC);
 				if (IS_ENABLED(CONFIG_USBC_VCONN))
 					set_state_pe(port,
 							PE_VCS_EVALUATE_SWAP);
