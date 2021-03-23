@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45c56a94_30c86fac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-03-23T03:14:50Z",
+      "side": 1,
+      "message": "When resuming, the EC will re-enable the on-body detection, which means that it will enter on-bdoy states. Then, after 15 seconds on the desk, it will enter off-body states.",
+      "parentUuid": "4c288563_2b053101",
+      "revId": "3e21f9d81a2370faf785a45e8da54c909c6181cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d85cf4c_06187eef",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
