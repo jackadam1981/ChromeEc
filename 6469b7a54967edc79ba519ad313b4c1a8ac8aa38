@@ -16,6 +16,24 @@
       "message": "mutexes will need initialized using k_mutex_init, or declared using K_MUTEX_DEFINE",
       "revId": "6469b7a54967edc79ba519ad313b4c1a8ac8aa38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0bf4ab6_9dcc8326",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-23T19:22:26Z",
+      "side": 1,
+      "message": "Thanks for reminding. It is one of the differences from CrOS EC. Maybe add some check for this use-before-init mistake.",
+      "parentUuid": "89ae2224_968739cf",
+      "revId": "6469b7a54967edc79ba519ad313b4c1a8ac8aa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
