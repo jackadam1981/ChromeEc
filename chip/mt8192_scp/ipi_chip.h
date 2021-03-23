@@ -16,6 +16,12 @@
  * Video decoder supported capability:
  */
 
+/*
+ * Video encoder supported capability:
+ * BIT(0): enable 4K
+ */
+#define MTK_VENC_4K_CAPABILITY_ENABLE BIT(0)
+
 #ifndef SCP_IPI_INIT
 #error If CONFIG_IPI is enabled, SCP_IPI_INIT must be defined.
 #endif
