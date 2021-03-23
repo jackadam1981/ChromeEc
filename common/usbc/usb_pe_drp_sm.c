@@ -1125,6 +1125,8 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
+	CPRINTS("C%d: Error %d on %d", port, e, type);
+
 	/*
 	 * If there is a timeout error while waiting for a chunk of a chunked
 	 * message, there is no requirement to trigger a soft reset.
@@ -6447,6 +6449,39 @@ static void pe_vcs_send_ps_rdy_swap_entry(int port)
 {
 	print_current_state(port);
 
+	/*
+	 * Non-spec state transition
+	 *
+	 * When a partner sends a PS_RDY while we were expecting to be the new
+	 * Vconn source, try to fix the situation by taking the Vconn off path
+	 * and swapping again later.  Note that if the swaps are never
+	 * successful with this partner (i.e. they always send PS_RDY every
+	 * Vconn swap) we will eventaully exhaust our Vconn swap retries and
+	 * avoid attempting any cable probing, as this could cause confusion if
+	 * both partners consider themselves the Vconn source.
+	 */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		enum tcpm_transmit_type sop =
+					PD_HEADER_GET_SOP(rx_emsg[port].header);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+
+		if ((sop == TCPC_TX_SOP) &&
+		    (PD_HEADER_CNT(rx_emsg[port].header) == 0) &&
+		    (PD_HEADER_EXT(rx_emsg[port].header) == 0) &&
+				(PD_HEADER_TYPE(rx_emsg[port].header) ==
+						PD_CTRL_PS_RDY)) {
+			set_state_pe(port, PE_VCS_TURN_OFF_VCONN_SWAP);
+			return;
+		}
+		/*
+		 * Any other unexpected message, soft reset with the SOP* of the
+		 * incoming message
+		 */
+		pe_send_soft_reset(port, sop);
+		return;
+	}
+
 	/* Send a PS_RDY Message */
 	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
 }
@@ -6472,13 +6507,28 @@ static void pe_vcs_send_ps_rdy_swap_run(int port)
 		pe_set_ready_state(port);
 	}
 
-	if (pe_check_outgoing_discard(port))
-		return;
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED) &&
+				PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		enum tcpm_transmit_type sop =
+					PD_HEADER_GET_SOP(rx_emsg[port].header);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_DISCARDED);
 
-	if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
-		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
-		/* PS_RDY didn't send, soft reset */
-		pe_send_soft_reset(port, TCPC_TX_SOP);
+		/* Non-spec state transition */
+		if ((sop == TCPC_TX_SOP) &&
+		    (PD_HEADER_CNT(rx_emsg[port].header) == 0) &&
+		    (PD_HEADER_EXT(rx_emsg[port].header) == 0) &&
+				(PD_HEADER_TYPE(rx_emsg[port].header) ==
+						PD_CTRL_PS_RDY)) {
+			set_state_pe(port, PE_VCS_TURN_OFF_VCONN_SWAP);
+			return;
+		}
+		/*
+		 * Any other unexpected message, soft reset with the SOP* of the
+		 * incoming message
+		 */
+		pe_send_soft_reset(port, sop);
+		return;
 	}
 }
 
