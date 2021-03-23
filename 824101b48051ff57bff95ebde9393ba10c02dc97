@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0120394f_c4b51761",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-23T17:26:58Z",
+      "side": 1,
+      "message": "nit: Change to cprints, and use the CC_SYSTEM channel for all of these prints.",
+      "range": {
+        "startLine": 630,
+        "startChar": 2,
+        "endLine": 630,
+        "endChar": 10
+      },
+      "revId": "824101b48051ff57bff95ebde9393ba10c02dc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
