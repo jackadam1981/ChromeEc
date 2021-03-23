@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c08682_4c1219fc",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1123474
+      },
+      "writtenOn": "2021-03-23T13:01:48Z",
+      "side": 1,
+      "message": "Shouldn\u0027t #RTCRST be asserted when system is in G3 and not S5?",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "a16c2366994537ebcca3bb2931e27f7dcff10141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
