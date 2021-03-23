@@ -51,6 +51,24 @@
       "parentUuid": "209a3978_349e8bf1",
       "revId": "217235797f49e246cf8526ec706d76e22f8eba0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d821a4e9_3b0036ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-23T15:34:03Z",
+      "side": 1,
+      "message": "I was hesitant to add a macro because ideally we shouldn\u0027t be adding any more forward-declared enums, since it\u0027s not standard C or C++. I\u0027m worried that adding a macro just makes it easier to continue the behavior rather than trying to clean it up.",
+      "parentUuid": "3008c4c3_ac72c5d0",
+      "revId": "217235797f49e246cf8526ec706d76e22f8eba0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
