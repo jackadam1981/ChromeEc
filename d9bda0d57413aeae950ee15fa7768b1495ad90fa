@@ -39,6 +39,30 @@
       },
       "revId": "d9bda0d57413aeae950ee15fa7768b1495ad90fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "035fff24_6f94f055",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T23:21:44Z",
+      "side": 1,
+      "message": "As you can see in my comments in DT and some places, A matrix can be shared among drivers. I\u0027m also thinking about a system that has the second sources. So I think it\u0027s better to have as a separate instance.",
+      "parentUuid": "70785d9a_4d64a9dd",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "d9bda0d57413aeae950ee15fa7768b1495ad90fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
