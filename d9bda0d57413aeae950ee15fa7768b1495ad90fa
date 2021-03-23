@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7beb6e6_54220f4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-23T23:09:49Z",
+      "side": 1,
+      "message": "-1 to open discussion. Code is fine overall, I would prefer it to be implemented differently.",
+      "revId": "d9bda0d57413aeae950ee15fa7768b1495ad90fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70785d9a_4d64a9dd",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-23T23:09:49Z",
+      "side": 1,
+      "message": "Can we generalize this into a driver? I\u0027m OOO this week so I\u0027ve attached some details below, feel free to ignore if already familiar with devicetree, I figured this would save some turn around if not.\n\nIt would look something like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/cros_bbram/cros_bbram_npcx.c where you would need to set DT_DRV_COMPAT to cros_ec_motionsense_rotation_ref. Then you\u0027d be able to iterate over each instance of the compatible nodes and create a driver using DT_INST_FOREACH_STATUS_OKAY. You\u0027ll attach the matrix as the driver data using https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/v2.5/include/device.h;l\u003d127;drc\u003d8f8ec5f0d0ca2d62577a1b800618d71866ce1c03.\n\nNext you\u0027ll need to define the API for the rotation matrix which really would just do the vector multiply.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "d9bda0d57413aeae950ee15fa7768b1495ad90fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
