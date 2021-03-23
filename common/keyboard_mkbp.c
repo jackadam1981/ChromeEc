@@ -60,12 +60,12 @@ static struct ec_response_get_next_event fifo[FIFO_DEPTH];
  * Mutex for critical sections of mkbp_fifo_add(), which is called
  * from various tasks.
  */
-static struct mutex fifo_add_mutex;
+static mutex_t fifo_add_mutex;
 /*
  * Mutex for critical sections of fifo_remove(), which is called from the
  * hostcmd task and from keyboard_clear_buffer().
  */
-static struct mutex fifo_remove_mutex;
+static mutex_t fifo_remove_mutex;
 
 /* Button and switch state. */
 static uint32_t mkbp_button_state;
@@ -280,6 +280,19 @@ void mkbp_update_switches(uint32_t sw, int state)
 		mkbp_fifo_add(EC_MKBP_EVENT_SWITCH,
 			      (const uint8_t *)&mkbp_switch_state);
 }
+
+#ifdef CONFIG_ZEPHYR
+static int init_fifo_mutex(const struct device *dev)
+{
+	ARG_UNUSED(dev);
+
+	k_mutex_init(&fifo_add_mutex);
+	k_mutex_init(&fifo_remove_mutex);
+
+	return 0;
+}
+SYS_INIT(init_fifo_mutex, POST_KERNEL, 50);
+#endif /* CONFIG_ZEPHYR */
 
 #ifdef CONFIG_LID_SWITCH
 /**
