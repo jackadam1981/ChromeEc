@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31035754_a6a3f17b",
+        "filename": "docs/zephyr_init.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "Delete all trailing spaces (line 22, 25, 29)",
+      "range": {
+        "startLine": 22,
+        "startChar": 55,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d0b2f6_168ee448",
+        "filename": "docs/zephyr_init.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "Change to \"Reserved for system testability\"\nAlso, remove the backtick and double quotes.  How about just using a dash as a separator between the priority levels and the description.\n\n   * Priority (0-9) - Reserved for system testability:",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e071ba91_95007be8",
+        "filename": "docs/zephyr_init.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "Suggested text:\n\"The highest priority initialization is reserved for testing. Do not use during system development.\"\n\nIf you have any examples of when this priority level could be used, that would be helpful.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 70
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ce5097_3c923613",
+        "filename": "docs/zephyr_init.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "Remove backtick and quotes.",
+      "range": {
+        "startLine": 25,
+        "startChar": 19,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "161c9911_f3c8b816",
+        "filename": "docs/zephyr_init.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "Suggested text:\n\"These priorities in this range are used for critical chip initialization, including determine the reset cause and initializing the battery-backed RAM driver. Most chip drivers should only be initialized after `PLATFORM_EC_SYSTEM_PRE_INIT`.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 50
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf6b473_9892b116",
+        "filename": "docs/zephyr_init.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "Keep the backtick here, but remove the quotes.",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 47
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ed557f_7a73ead1",
+        "filename": "docs/zephyr_init.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "This should describe what happens at this priority level:\n\n\"At this initialization priority, the CROS system checks the reset cause and initializing the system reset flags. Any chip level drivers related to determining the reset type must be at a higher priority.\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2fd2386_45f317e7",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "My suggested text:\nThis defines the initialization priority for the CROS system_pre_init() function. system_pre_init() reads chip level reset cause and stores it into the system reset flags.  All drivers, except those critical to determining the reset type, should be initialized at lower priority so that the system reset flags are valid.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62762446_f08b3ca1",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "You can delete this sentence.",
+      "range": {
+        "startLine": 19,
+        "startChar": 65,
+        "endLine": 20,
+        "endChar": 65
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85aa4f08_2ea6018a",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "\"that persists across chip resets\"",
+      "range": {
+        "startLine": 21,
+        "startChar": 51,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "008e490f_19f5b200",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 13
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "Change to:\nThe cros_system driver provides access to the NPCX reset cause and must be higher priority than CONFIG_SYSTEM_PRE_INIT_PRIORITY.",
+      "range": {
+        "startLine": 22,
+        "startChar": 66,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b17ccb_0b78d2b7",
+        "filename": "zephyr/shim/chip/npcx/Kconfig.npcx",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "This config option should include \"NPCX\" in the name. I suggest calling this CROS_SYSTEM_NPCX_PRE_INIT_PRIORITY.",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0737a8d3_5dc5426f",
+        "filename": "zephyr/shim/chip/npcx/Kconfig.npcx",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-23T03:37:29Z",
+      "side": 1,
+      "message": "This should describe what occurs at this initialization step:\n\nThis sets the priority of the NPCX chip system initialization. The chip system initialization verifies the integrity of the BBRAM and must be a lower priority than CONFIG_CROS_BBRAM_NPCX_INIT_PRIORITY and must be a higher priority than PLATFORM_EC_SYSTEM_PRE_INIT.",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "500829d29acf68cd2e9b153c867132398041a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
