@@ -128,9 +128,15 @@ static void ipi_enable_deferred(void)
 	scp_run.signaled = 1;
 	strncpy(scp_run.fw_ver, system_get_version(EC_IMAGE_RW),
 		SCP_FW_VERSION_LEN);
+<<<<<<< HEAD   (26e2fa asurada: add least to boot AP battery percent)
 	scp_run.dec_capability = VCODEC_CAPABILITY_4K_DISABLED | VDEC_CAP_MM21 | VDEC_CAP_H264_SLICE |
 				 VDEC_CAP_VP8_FRAME | VDEC_CAP_VP9_FRAME;
 	scp_run.enc_capability = VENC_CAP_4K;
+=======
+	scp_run.dec_capability = VDEC_CAP_MT21C | VDEC_CAP_H264_SLICE |
+				 VDEC_CAP_VP8_FRAME | VDEC_CAP_VP9_FRAME;
+	scp_run.enc_capability = 0;
+>>>>>>> CHANGE (9000d8 chip/mt8192_scp: add vdec capability)
 
 	ret = ipi_send(SCP_IPI_INIT, (void *)&scp_run, sizeof(scp_run), 1);
 	if (ret) {
