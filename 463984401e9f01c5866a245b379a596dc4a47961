@@ -86,6 +86,24 @@
       "parentUuid": "57cc9041_9a05b674",
       "revId": "463984401e9f01c5866a245b379a596dc4a47961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb9102f_9c6fee82",
+        "filename": "board/boten/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-03-23T15:09:00Z",
+      "side": 1,
+      "message": "Hi Aseda, one question - only TCPMv2 doesn\u0027t require for \"CONFIG_USB_PD_COMM_LOCKED\", correct?  \n\nWill below comment(proposed changes) in issue template make sense? \n\n3. (Applicable only to USB3.0 platform and platform not with TCPMv2) Make sure CONFIG_USB_PD_COMM_LOCKED is set for EC (typically in board.h).",
+      "parentUuid": "07e28b70_40181fdf",
+      "revId": "463984401e9f01c5866a245b379a596dc4a47961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
