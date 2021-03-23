@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7d5092_ff9fb64f",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-23T09:39:56Z",
+      "side": 1,
+      "message": "for the `else` case, do you need to want until vdec_h264_service_init() done in another thread?",
+      "revId": "93e8a299cf9807fab415ad8e2e74f83710641be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

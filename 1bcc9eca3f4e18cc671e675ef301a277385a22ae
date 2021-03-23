@@ -16,6 +16,23 @@
       "message": "I am taking over the CL from MTK.",
       "revId": "1bcc9eca3f4e18cc671e675ef301a277385a22ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8abb33_6692fb34",
+        "filename": "board/asurada_scp/vdec.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-23T09:39:56Z",
+      "side": 1,
+      "message": "add __packed",
+      "revId": "1bcc9eca3f4e18cc671e675ef301a277385a22ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
