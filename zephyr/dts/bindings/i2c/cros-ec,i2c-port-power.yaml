@@ -1,0 +1,6 @@
+# Copyright (c) 2021 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: I2C port attached to the power button
+
+compatible: "cros-ec,i2c-port-power"
