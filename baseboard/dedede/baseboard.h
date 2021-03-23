@@ -187,6 +187,15 @@
 #define CONFIG_USB_DRP_ACC_TRYSRC
 #define CONFIG_HOSTCMD_PD_CONTROL
 
+/* Enabling Thunderbolt-compatible mode */
+#define CONFIG_USB_PD_TBT_COMPAT_MODE
+
+/* Enabling USB4 mode */
+#define CONFIG_USB_PD_USB4
+
+/* Retimer */
+#define CONFIG_USBC_RETIMER_FW_UPDATE
+
 /* UART COMMAND */
 #define CONFIG_CMD_CHARGEN
 
