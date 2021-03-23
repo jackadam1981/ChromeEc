@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9bc736_367f86f9",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-23T11:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a39de7a2_5408072a",
+      "range": {
+        "startLine": 690,
+        "startChar": 26,
+        "endLine": 690,
+        "endChar": 32
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05c776b2_54e025a7",
@@ -89,6 +113,30 @@
       "writtenOn": "2021-03-23T03:26:19Z",
       "side": 1,
       "message": "typo: restored",
+      "range": {
+        "startLine": 708,
+        "startChar": 8,
+        "endLine": 708,
+        "endChar": 16
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed74e11_fa12f74b",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-23T11:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05c776b2_54e025a7",
       "range": {
         "startLine": 708,
         "startChar": 8,
@@ -116,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bd933e5_6ab1c7c4",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-23T11:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eef75827_714ba762",
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98c9fc9f_7212140e",
@@ -129,6 +195,24 @@
       "writtenOn": "2021-03-23T03:26:19Z",
       "side": 1,
       "message": "nit: no need for braces for just a single line",
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a6fb09_68ffb7cb",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-23T11:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98c9fc9f_7212140e",
       "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cad5194_398cdf2c",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-23T11:53:18Z",
+      "side": 1,
+      "message": "It\u0027s only 3 characters longer, so it\u0027s not a problem. Changed to CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV",
+      "parentUuid": "fce3b549_40883598",
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d55e250a_720dcac3",
@@ -163,6 +265,30 @@
       "writtenOn": "2021-03-23T03:26:19Z",
       "side": 1,
       "message": "which gets even loooonger here 😄",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 52
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "facb6805_6ff69da5",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-23T11:53:18Z",
+      "side": 1,
+      "message": "Yeah. It\u0027s really hard to provide all relevant information in one config name ;D",
+      "parentUuid": "d55e250a_720dcac3",
       "range": {
         "startLine": 152,
         "startChar": 7,

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea1c3ccb_e366b0bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-23T11:53:18Z",
+      "side": 1,
+      "message": "All remarks from Aseda are now fixed. Adding Keith as a reviewer to check whether relationship between config name in Kconfig and define name in include/config.h is correct. There is no warning when compiling EC.",
+      "revId": "976240bc06f1f4eb377bfccf3ec56247bd8653fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
