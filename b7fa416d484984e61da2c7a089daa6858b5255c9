@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a786fcc3_612ef40c",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T07:26:52Z",
+      "side": 1,
+      "message": "Oh.. sorry.. I created my first yaml long ago and it\u0027s from i2c/named-i2c-ports.yaml. I got it.",
+      "parentUuid": "b9c90789_ddbf86e5",
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d628304_f9f7fe15",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-22T20:32:53Z",
       "side": 1,
       "message": "you\u0027ll want a yaml multiline string for this",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 11
+      },
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f8f0ca_5fe0e0c8",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T07:26:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d628304_f9f7fe15",
       "range": {
         "startLine": 4,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7e731c_2b2af966",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T07:26:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fff81cf_b76b9211",
+      "range": {
+        "startLine": 35,
+        "startChar": 24,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "339962fa_c53cdbde",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-03-22T17:54:41Z",
       "side": 1,
       "message": "can you drop these lines?",
+      "range": {
+        "startLine": 71,
+        "startChar": 27,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a7642d_0f68b594",
+        "filename": "zephyr/dts/bindings/motionsense/motionsense-sensor-base.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T07:26:52Z",
+      "side": 1,
+      "message": "I thought it would be nice to show the properties defined here are just a part of actual complete node. But anyway, I\u0027ll remove.",
+      "parentUuid": "339962fa_c53cdbde",
       "range": {
         "startLine": 71,
         "startChar": 27,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07f1ba1_2f5feb9a",
+        "filename": "zephyr/include/dt-bindings/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T07:26:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4de770ce_41162449",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "157ebb1a_556c5ee7",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-03-22T17:54:41Z",
       "side": 1,
       "message": "Can you drop these outer brackets?",
+      "range": {
+        "startLine": 15,
+        "startChar": 42,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a3ffaa_008be24b",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T07:26:52Z",
+      "side": 1,
+      "message": "No, you cannot. if you remove it then it will be recognized as argument separator in IF_ENABLED() macro.",
+      "parentUuid": "157ebb1a_556c5ee7",
       "range": {
         "startLine": 15,
         "startChar": 42,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a9524d_ffa10295",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T07:26:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e8e3fe7_45b7fd3c",
+      "range": {
+        "startLine": 25,
+        "startChar": 31,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc0a742b_4cb522c3",
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2841ba_20fa771e",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T07:26:52Z",
+      "side": 1,
+      "message": "No. It\u0027s trying to say the motion sensor creation macro will be ignored this time.\nsensor_dev_list.inc is included two times\n- first one is to create sensor data : this time, the macro for motion sensor creation should be ignored.\n- second one is to create motion_sensor_t array.\n\nwill change the comments to be clear enough",
+      "parentUuid": "bc0a742b_4cb522c3",
+      "range": {
+        "startLine": 108,
+        "startChar": 24,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8717c9a7_27d3734c",
@@ -192,6 +378,30 @@
       "writtenOn": "2021-03-22T20:32:53Z",
       "side": 1,
       "message": "these macros need documentation",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "b7fa416d484984e61da2c7a089daa6858b5255c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c158f12_beafe7e6",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-23T07:26:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8717c9a7_27d3734c",
       "range": {
         "startLine": 121,
         "startChar": 8,
