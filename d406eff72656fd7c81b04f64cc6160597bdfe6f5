@@ -123,6 +123,24 @@
       "parentUuid": "d2ea4c9d_5ca31c7a",
       "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73115754_e744ca28",
+        "filename": "common/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-23T00:49:18Z",
+      "side": 1,
+      "message": "I really don\u0027t like overloading the wakeup flag (you are not the first one, I did it in the sync driver). Consider crrev.com/c/2780834 \nWe can disable on/off body in S3, to save power as least, as long as we can easily calculate the current state if when the AP resume. If not we need to leave it running.",
+      "parentUuid": "1cf062f1_80d611e7",
+      "revId": "d406eff72656fd7c81b04f64cc6160597bdfe6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
