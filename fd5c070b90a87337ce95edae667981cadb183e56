@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e8927c0_4ededdf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-03-23T01:12:25Z",
+      "side": 1,
+      "message": "This is run with create_initial_ec_image.sh automatically.",
+      "parentUuid": "2a4ca1d3_a9ea6245",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "fd5c070b90a87337ce95edae667981cadb183e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81954544_fb66dd71",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-22T18:00:27Z",
       "side": 1,
       "message": "No, it doesn\u0027t seem to build.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "fd5c070b90a87337ce95edae667981cadb183e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd35ba8c_f692e58e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-03-23T01:12:25Z",
+      "side": 1,
+      "message": "Yes, I have build this.",
+      "parentUuid": "81954544_fb66dd71",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -124,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d462a0a8_f294b82b",
+        "filename": "board/marzipan/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-03-23T01:12:25Z",
+      "side": 1,
+      "message": "please see relation CL:2772407.",
+      "parentUuid": "f5674f0d_c69b5184",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 1
+      },
+      "revId": "fd5c070b90a87337ce95edae667981cadb183e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36e060af_56b5d91b",
         "filename": "board/marzipan/board.c",
         "patchSetId": 3
@@ -135,6 +207,30 @@
       "writtenOn": "2021-03-22T18:00:27Z",
       "side": 1,
       "message": "You don\u0027t need it for marzipan.",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 1
+      },
+      "revId": "fd5c070b90a87337ce95edae667981cadb183e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6da8fdf_45566de7",
+        "filename": "board/marzipan/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-03-23T01:12:25Z",
+      "side": 1,
+      "message": "please see relation CL:2772407.",
+      "parentUuid": "36e060af_56b5d91b",
       "range": {
         "startLine": 504,
         "startChar": 0,
