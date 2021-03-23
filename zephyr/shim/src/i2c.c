@@ -38,6 +38,8 @@ static int init_device_bindings(const struct device *device)
 {
 	ARG_UNUSED(device);
 	DT_FOREACH_CHILD(DT_PATH(named_i2c_ports), INIT_DEV_BINDING)
+	I2C_DEV_INIT_FROM_COMPAT(i2c_devices[I2C_PORT_POWER],
+				 cros_i2c_port_power);
 	return 0;
 }
 SYS_INIT(init_device_bindings, POST_KERNEL, 51);

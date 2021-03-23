@@ -573,6 +573,7 @@
 };
 
 &i2c5_0 {
+	compatible = "nuvoton,npcx-i2c-port", "cros,i2c-port-power";
 	status = "okay";
 	clock-frequency = <I2C_BITRATE_STANDARD>;
 };
