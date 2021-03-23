@@ -22,6 +22,30 @@
       },
       "revId": "555df5bc2a1efeb52dd39536827ca2c47b72b344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ef96b1_c6a99eb6",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-23T19:36:07Z",
+      "side": 1,
+      "message": "Just found that this hook priority, i.e. HOOK_PRIO_LAST, is the lowest. The above higher-priority hooks try to queue the FIFO but are blocked by the mkbp_init_done flag. It is OK but more safe to do it earlier.",
+      "parentUuid": "92fd6aa3_0fef2fb6",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 20
+      },
+      "revId": "555df5bc2a1efeb52dd39536827ca2c47b72b344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
