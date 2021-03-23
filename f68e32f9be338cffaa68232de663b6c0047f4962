@@ -45,6 +45,30 @@
       },
       "revId": "f68e32f9be338cffaa68232de663b6c0047f4962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9690671f_82a87f6d",
+        "filename": "zephyr/shim/include/battery_enum.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-23T22:01:38Z",
+      "side": 1,
+      "message": "It provides validation that the battery is known",
+      "parentUuid": "5d19c9f4_5673f23e",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "f68e32f9be338cffaa68232de663b6c0047f4962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

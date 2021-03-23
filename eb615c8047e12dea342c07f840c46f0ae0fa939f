@@ -46,6 +46,30 @@
       },
       "revId": "eb615c8047e12dea342c07f840c46f0ae0fa939f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b290e02_b2742c66",
+        "filename": "zephyr/shim/include/battery_enum.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-23T22:01:38Z",
+      "side": 1,
+      "message": "I had a bit of a look at that, but it doesn\u0027t seem to work in a header file, since DT_COMPAT has to be set up before including anything.\n\nHave you seen anyone trying to do this sort of thing?",
+      "parentUuid": "f1a874cd_771eb263",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "eb615c8047e12dea342c07f840c46f0ae0fa939f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
