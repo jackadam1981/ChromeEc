@@ -22,6 +22,30 @@
       },
       "revId": "3f3598c2b6c5e46e85b7b6a827ff0b6cd63a42e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64435298_bbc707a7",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-23T22:51:51Z",
+      "side": 1,
+      "message": "done\n\nThe thing is that the pd_notify_dp_alt_mode_entry() function is defined in the MKBP code \n\nSo actually when Tom\u0027s stuff lands I might be able to take this out",
+      "parentUuid": "980ee56a_3e513771",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 69
+      },
+      "revId": "3f3598c2b6c5e46e85b7b6a827ff0b6cd63a42e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

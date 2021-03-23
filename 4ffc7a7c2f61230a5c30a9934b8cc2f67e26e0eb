@@ -22,6 +22,30 @@
       },
       "revId": "4ffc7a7c2f61230a5c30a9934b8cc2f67e26e0eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "502b96c5_ad82c5a6",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-23T22:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3331ad3_ef75448a",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 75
+      },
+      "revId": "4ffc7a7c2f61230a5c30a9934b8cc2f67e26e0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
