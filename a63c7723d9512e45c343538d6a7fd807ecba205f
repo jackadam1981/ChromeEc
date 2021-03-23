@@ -102,6 +102,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ce8badd_4276a0c7",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-23T20:04:11Z",
+      "side": 1,
+      "message": "This isn\u0027t super negligible. Can you call it only when it\u0027s needed?",
+      "range": {
+        "startLine": 701,
+        "startChar": 1,
+        "endLine": 701,
+        "endChar": 19
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05c776b2_54e025a7",
         "filename": "common/battery.c",
         "patchSetId": 2
@@ -184,6 +207,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8466908f_dd5536eb",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-23T20:04:11Z",
+      "side": 1,
+      "message": "What if max_request_mv is updated after we saved saved_input_voltage?",
+      "range": {
+        "startLine": 723,
+        "startChar": 22,
+        "endLine": 723,
+        "endChar": 41
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98c9fc9f_7212140e",
         "filename": "common/battery.c",
         "patchSetId": 2
@@ -213,6 +259,29 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "98c9fc9f_7212140e",
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9e0d8b_14853726",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-23T20:04:11Z",
+      "side": 1,
+      "message": "Can you also mention this is actually an integer value in mV?",
+      "range": {
+        "startLine": 622,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 15
+      },
       "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
