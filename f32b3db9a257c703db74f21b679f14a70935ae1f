@@ -22,6 +22,30 @@
       },
       "revId": "f32b3db9a257c703db74f21b679f14a70935ae1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1e4c5b4_b20e3726",
+        "filename": "zephyr/projects/delbin/boards/arm/delbin/delbin.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-24T21:23:58Z",
+      "side": 1,
+      "message": "This will be resolved with the new baseboard/board overlay as demonstrated for trogdor/lazor",
+      "parentUuid": "2f144d13_91b17543",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "f32b3db9a257c703db74f21b679f14a70935ae1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
