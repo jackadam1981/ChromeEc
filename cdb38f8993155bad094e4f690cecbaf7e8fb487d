@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4fcd55b_8ab0eec9",
+        "filename": "baseboard/honeybuns/baseboard.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T22:19:20Z",
+      "side": 1,
+      "message": "Yes, it\u0027s non-ideal, but for honeybuns, we don\u0027t otherwise look at any of these flags as they are intertwined with chromebook concepts of running in RO and RW and the AP states.",
+      "parentUuid": "caacf58a_fc7fe7e0",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bf5996a_0f2eb952",
         "filename": "baseboard/honeybuns/baseboard.h",
         "patchSetId": 29
