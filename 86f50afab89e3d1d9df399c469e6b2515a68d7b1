@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f814a521_d67d2691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-24T19:44:36Z",
+      "side": 1,
+      "message": "I filed b/159715784 for this back in the day, so you can use it.  There were also a few \"TODO POLICY\" tags added before the bug was filed",
+      "parentUuid": "177ce521_0ece451d",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10c9da1f_ede5f6c8",
         "filename": "baseboard/honeybuns/usb_pd_policy.c",
         "patchSetId": 2
