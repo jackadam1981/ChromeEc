@@ -16,6 +16,52 @@
       "message": "Some cleanup is needed as follow on changes:\nb:183611735\nFix ztest_system.c\n",
       "revId": "9037cb52108fd870d052a52b68c54f4fb2c148cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74eadabe_6c739b78",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T16:37:40Z",
+      "side": 1,
+      "message": "what is stuff?\n\nthis help text is useless",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "9037cb52108fd870d052a52b68c54f4fb2c148cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae230ec_8a7c1526",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T16:37:40Z",
+      "side": 1,
+      "message": "two spaces\n\n(like you have below)",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "9037cb52108fd870d052a52b68c54f4fb2c148cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
