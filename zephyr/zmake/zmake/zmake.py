@@ -188,7 +188,7 @@ class Zmake:
         elif build_after_configure:
             return self.build(build_dir=build_dir)
 
-    def build(self, build_dir, output_files_out=None):
+    def build(self, build_dir, output_files_out=None, targets=[], run_packer=True):
         """Build a pre-configured build directory."""
         project = zmake.project.Project(build_dir / 'project')
 
@@ -198,7 +198,7 @@ class Zmake:
             self.logger.info('Building %s:%s.', build_dir, build_name)
             dirs[build_name] = build_dir / 'build-{}'.format(build_name)
             proc = self.jobserver.popen(
-                ['/usr/bin/ninja', '-C', dirs[build_name]],
+                ['/usr/bin/ninja', '-C', dirs[build_name]] + targets,
                 # Ninja will connect as a job client instead and claim
                 # many jobs.
                 claim_job=False,
@@ -221,19 +221,20 @@ class Zmake:
                         util.repr_command(proc.args), proc.returncode))
 
         # Run the packer.
-        packer_work_dir = build_dir / 'packer'
-        output_dir = build_dir / 'output'
-        for d in output_dir, packer_work_dir:
-            if not d.exists():
-                d.mkdir()
+        if run_packer:
+            packer_work_dir = build_dir / 'packer'
+            output_dir = build_dir / 'output'
+            for d in output_dir, packer_work_dir:
+                if not d.exists():
+                    d.mkdir()
 
-        if output_files_out is None:
-            output_files_out = []
-        for output_file, output_name in project.packer.pack_firmware(
-                packer_work_dir, self.jobserver, **dirs):
-            shutil.copy2(output_file, output_dir / output_name)
-            self.logger.info('Output file \'%r\' created.', output_file)
-            output_files_out.append(output_file)
+            if output_files_out is None:
+                output_files_out = []
+            for output_file, output_name in project.packer.pack_firmware(
+                    packer_work_dir, self.jobserver, **dirs):
+                shutil.copy2(output_file, output_dir / output_name)
+                self.logger.info('Output file \'%r\' created.', output_file)
+                output_files_out.append(output_file)
 
         return 0
 

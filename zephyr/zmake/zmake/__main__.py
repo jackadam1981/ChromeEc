@@ -104,6 +104,13 @@ def main(argv=None):
     build = sub.add_parser('build')
     build.add_argument('build_dir', type=pathlib.Path,
                        help='The build directory used during configuration')
+    build.add_argument('targets', nargs='*',
+                       help='The target(s) to be passed to the ninja ' +
+                       'command. Defaults to all')
+    build.add_argument('--no-packer', action='store_false',
+                       dest='run_packer',
+                       help='Disable the packer step, just build the ninja' +
+                       ' targets.')
 
     test = sub.add_parser('test')
     test.add_argument('build_dir', type=pathlib.Path,
