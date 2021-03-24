@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73112d9_41274d13",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-24T11:38:25Z",
+      "side": 1,
+      "message": "Done, though I had to split it into two functions to avoid code duplication.",
+      "parentUuid": "7ce8badd_4276a0c7",
+      "range": {
+        "startLine": 701,
+        "startChar": 1,
+        "endLine": 701,
+        "endChar": 19
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05c776b2_54e025a7",
@@ -242,6 +266,30 @@
       "side": 1,
       "message": "Max_request_mv will remain new value until this function is called. When this function is called, max_request_mv will be saved again and changed to appropriate voltage. This is exactly what I observed and described in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2773219 in one of comments.\n\nIf this is a problem I can fix it by eg. calling this function from TCPM on voltage change. In my opinion adding another hook (on voltage change) would be an overkill.",
       "parentUuid": "8466908f_dd5536eb",
+      "range": {
+        "startLine": 723,
+        "startChar": 22,
+        "endLine": 723,
+        "endChar": 41
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9902c03f_18dbe44d",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-24T11:38:25Z",
+      "side": 1,
+      "message": "Everywhere in EC we don\u0027t care about situation where max_request_mv was changed after it was reduced to some value.",
+      "parentUuid": "d25cb7de_eb72d7d5",
       "range": {
         "startLine": 723,
         "startChar": 22,
