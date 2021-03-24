@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "caacf58a_fc7fe7e0",
+        "filename": "baseboard/honeybuns/baseboard.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-24T22:16:21Z",
+      "side": 1,
+      "message": "Ah, I\u0027d bet the flag gets dropped when we run restart_tc_sm.  This seems non-ideal but I\u0027m not certain of a better way to force it unless we start passing in our preferred init state (or add special casing for honeybuns\u0027 unique situation).\n\nSame sentiment for the EFS flag to force the PPC init.  Not ideal, but a better solution would take more work (ex. flagging that the TCPC must always run the whole init).",
+      "parentUuid": "c8b480a9_17daf0f4",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bf5996a_0f2eb952",
         "filename": "baseboard/honeybuns/baseboard.h",
         "patchSetId": 29
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "This is required for C1 which uses the PS8805 TCPC and gets populated in the next CL that\u0027s in the stack.",
       "parentUuid": "882ee4f1_6543c47c",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e49453b2_89bf4460",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-24T22:16:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aec12cc7_0b1ad3de",
       "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
