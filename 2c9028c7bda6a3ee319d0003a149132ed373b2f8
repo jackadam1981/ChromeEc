@@ -22,6 +22,30 @@
       },
       "revId": "2c9028c7bda6a3ee319d0003a149132ed373b2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de964f04_67697207",
+        "filename": "board/metaknight/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-03-24T01:56:09Z",
+      "side": 0,
+      "message": "I check schematic of metaknight, that use the EN_PP5000_U(GPIOA4) to control HDMI 1.2V power.",
+      "parentUuid": "6376c0a9_7443c5c4",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "2c9028c7bda6a3ee319d0003a149132ed373b2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
