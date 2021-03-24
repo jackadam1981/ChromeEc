@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8b480a9_17daf0f4",
+        "filename": "baseboard/honeybuns/baseboard.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T21:15:46Z",
+      "side": 1,
+      "message": "It seems like that should work similarly. I replaced changing the system flag with the call suggested, but I don\u0027t see the error path being taken. The reason that I want to take the error path, is to force a detach event for the case where on a power up, the host machine goes into Attached.SRC and has no reason to send SRC CAPs when we jump to RW and set up for full usb-pd on this port. The RWSIG timer is 7 seconds in RO.\n\nWith the flag:\n[9.319569 C0: Applying CC Open!]\n[9.323268 C0: ErrorRecovery]\n\nwith pd_set_error_recovery()\n[9.287188 C0: TCPC init ready]\n[9.288774 C0: Unattached.SNK]",
+      "parentUuid": "2ebb683d_4532acb5",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bf5996a_0f2eb952",
         "filename": "baseboard/honeybuns/baseboard.h",
         "patchSetId": 29
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-23T15:02:44Z",
       "side": 1,
       "message": "No longer used",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "419f7b56_117f31c0",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T21:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bf5996a_0f2eb952",
       "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2021-03-23T15:02:44Z",
       "side": 1,
       "message": "Lower max power as well?",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "372fafed_72846924",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T21:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d659b2b_8c671f53",
       "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2a2b6c4_b9f7b458",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T21:15:46Z",
+      "side": 1,
+      "message": "Good catch, we don\u0027t need this anymore.",
+      "parentUuid": "2ced02be_1a04c65c",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "882ee4f1_6543c47c",
         "filename": "board/gingerbread/board.c",
         "patchSetId": 29
@@ -88,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aec12cc7_0b1ad3de",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T21:15:46Z",
+      "side": 1,
+      "message": "This is required for C1 which uses the PS8805 TCPC and gets populated in the next CL that\u0027s in the stack.",
+      "parentUuid": "882ee4f1_6543c47c",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da9e990e_39dd0670",
         "filename": "board/gingerbread/board.c",
         "patchSetId": 29
@@ -99,6 +189,24 @@
       "writtenOn": "2021-03-23T15:02:44Z",
       "side": 1,
       "message": "nit: extra space",
+      "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef23747e_92542b52",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T21:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da9e990e_39dd0670",
       "revId": "cdb38f8993155bad094e4f690cecbaf7e8fb487d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
