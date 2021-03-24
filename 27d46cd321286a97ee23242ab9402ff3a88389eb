@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d84583e8_29e37923",
+        "filename": "board/gingerbread/gpio.inc",
+        "patchSetId": 29
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T21:15:18Z",
+      "side": 1,
+      "message": "This is still the reset line to the PS8803, which is the TCPC for C2 port which is a type-c only port which doesn\u0027t require EC FW control on gingerbread. The UART is on PB10/PB11.",
+      "parentUuid": "1e950940_d2d7a1aa",
+      "revId": "27d46cd321286a97ee23242ab9402ff3a88389eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "890154ff_b32fd2f9",
