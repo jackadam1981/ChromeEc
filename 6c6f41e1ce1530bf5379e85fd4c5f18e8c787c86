@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fdabae3_80e4ba48",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T20:16:09Z",
+      "side": 1,
+      "message": "Moved to board_rw.c\n\nI don\u0027t want to move these to fpsensor.c, because these require declaration of the ELAN/FPC specific functions, and I don\u0027t want fpsensor.c to include fpsensor_fpc.h and fpsensor_elan.h.",
+      "parentUuid": "57ee19aa_5ace05b9",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b77cb25_8749a03e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-11T20:42:36Z",
       "side": 1,
       "message": "If we are going ~full polymorphic on this interface~, I think this should be an enum. Actually, don\u0027t we already have an enum that describes if it is FPC or Elan sensor?\n\nIf you make the interfaced functions into a struct, this enum should just be a field in the struct.",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0a2fa1_f1c25251",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T20:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b77cb25_8749a03e",
       "range": {
         "startLine": 57,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b12447c6_69d4adae",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T20:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec815812_6e798072",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 55
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb84e19b_2f4183f4",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "305bc42e_16fbb241",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T20:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb84e19b_2f4183f4",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 26
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88e4e512_559ba3b1",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-03-11T20:42:36Z",
       "side": 1,
       "message": "These could go inside an interface struct too.",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 41
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10fa1115_7e3b2b9e",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T20:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e4e512_559ba3b1",
       "range": {
         "startLine": 257,
         "startChar": 2,
@@ -173,6 +293,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab2dd1f5_d0bdbe2f",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T20:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "006ded6a_cd062920",
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a3af4c0_98bd4cb4",
@@ -186,6 +324,30 @@
       "writtenOn": "2021-03-11T20:42:36Z",
       "side": 1,
       "message": "This should probably be the sensor enum",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1017add2_63b5af12",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T20:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a3af4c0_98bd4cb4",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -219,6 +381,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b7f2d7_53b72e22",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T20:16:09Z",
+      "side": 1,
+      "message": "See response below.",
+      "parentUuid": "f3c20fab_aa9981da",
+      "range": {
+        "startLine": 59,
+        "startChar": 40,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f86461df_ed7cf426",
@@ -232,6 +418,30 @@
       "writtenOn": "2021-03-11T20:42:36Z",
       "side": 1,
       "message": "Why are these changed to _prt?",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 54
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23911e4_a51397a1",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T20:16:09Z",
+      "side": 1,
+      "message": "Because FPC defines fp_sensor_finger_status() in their private library, not in their driver, so I cannot rename the FPC variant to fp_sensor_finger_status_fpc(). Unless I use objcopy to redefine syms in the fpc library, but I think that\u0027s more confusing and error-prone.",
+      "parentUuid": "f86461df_ed7cf426",
       "range": {
         "startLine": 70,
         "startChar": 27,
@@ -302,6 +512,30 @@
       "side": 1,
       "message": "Hmm. Tough call, since they technically different functons.\n\nIf we use doxygen notation here, we can use the \"@see fp_sensor_get_info\" to reference the interface function\u0027s comment.",
       "parentUuid": "d91658bc_3b97be40",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "6c6f41e1ce1530bf5379e85fd4c5f18e8c787c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f187005_9fde97c1",
+        "filename": "include/fpsensor_elan.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-24T20:16:09Z",
+      "side": 1,
+      "message": "I think now fpsensor_elan.h and fpsensor_fpc.h should each have the full description, because they really are different functions waiting to be picked at runtime and assigned to the function pointer.",
+      "parentUuid": "c5651ccf_68529da2",
       "range": {
         "startLine": 18,
         "startChar": 0,
