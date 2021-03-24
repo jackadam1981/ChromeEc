@@ -5,3 +5,5 @@
 # Zephyr cmake system looks into ${TOOLCHAIN_ROOT}, but we just send
 # this out to the copy in ${ZEPHYR_BASE}.
 include("${ZEPHYR_BASE}/cmake/linker/ld/linker_flags.cmake")
+
+set_property(TARGET linker PROPERTY coverage --coverage)
