@@ -104,6 +104,30 @@
       },
       "revId": "1c6d8b9051e9fc71b75ceb892905a2e7b874cbda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8017b23_fdb958cc",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-24T17:37:15Z",
+      "side": 1,
+      "message": "Nocturne and Asurada both use 2S batteries whereas most of the others use 3S. (it looks like jinlon also uses 2S).\n\nHaving done the work on nocturne, I remember that the efficiency was better at 9V vs 5V. But this efficiency took into account the efficiency of the inbox charger as well (blackcat). Blackcat was quite inefficient at 5V compared to 9V so I think that was what pushed us to 9V.",
+      "parentUuid": "25686bb9_fca23632",
+      "range": {
+        "startLine": 63,
+        "startChar": 49,
+        "endLine": 63,
+        "endChar": 53
+      },
+      "revId": "1c6d8b9051e9fc71b75ceb892905a2e7b874cbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
