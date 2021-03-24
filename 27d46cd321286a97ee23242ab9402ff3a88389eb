@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5cfdf7d4_3949e142",
+        "filename": "board/gingerbread/gpio.inc",
+        "patchSetId": 29
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-24T22:10:01Z",
+      "side": 1,
+      "message": "Ah, I\u0027d mixed up gpio.inc files.  Looks good.",
+      "parentUuid": "d84583e8_29e37923",
+      "revId": "27d46cd321286a97ee23242ab9402ff3a88389eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "890154ff_b32fd2f9",
         "filename": "board/quiche/gpio.inc",
         "patchSetId": 29
