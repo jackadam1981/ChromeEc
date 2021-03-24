@@ -70,6 +70,7 @@ enum boot_key {
  * refresh is also pressed.
  */
 uint32_t keyboard_scan_get_boot_keys(void);
+__override_proto uint8_t get_keyboard_mask_refresh(void);
 #else
 static inline uint32_t keyboard_scan_get_boot_keys(void)
 {

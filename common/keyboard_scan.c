@@ -611,6 +611,14 @@ static int check_keys_changed(uint8_t *state)
 
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
 /*
+ * Returns the mask of the row of refresh key
+ */
+__overridable uint8_t get_keyboard_mask_refresh(void)
+{
+	return KEYBOARD_ROW_TO_MASK(KEYBOARD_ROW_REFRESH);
+}
+
+/*
  * Returns mask of the boot keys that are pressed, with at most the keys used
  * for keyboard-controlled reset also pressed.
  */
@@ -639,7 +647,7 @@ static uint32_t check_key_list(const uint8_t *state)
 			curr_state[c] &= ~KEYBOARD_MASK_PWRBTN;
 #endif
 
-	curr_state[KEYBOARD_COL_REFRESH] &= ~KEYBOARD_MASK_REFRESH;
+	curr_state[KEYBOARD_COL_REFRESH] &= ~get_keyboard_mask_refresh();
 
 	/* Update mask with all boot keys that were pressed. */
 	k = boot_key_list;
@@ -681,7 +689,7 @@ static uint32_t check_boot_key(const uint8_t *state)
 
 	/* If reset was not caused by reset pin, refresh must be held down */
 	if (!(system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN) &&
-	    !(state[KEYBOARD_COL_REFRESH] & KEYBOARD_MASK_REFRESH))
+	    !(state[KEYBOARD_COL_REFRESH] & get_keyboard_mask_refresh()))
 		return BOOT_KEY_NONE;
 
 	return check_key_list(state);
