@@ -22,6 +22,30 @@
       },
       "revId": "a16c2366994537ebcca3bb2931e27f7dcff10141",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c99d42_9da2d958",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-24T20:25:11Z",
+      "side": 1,
+      "message": "does SOC hardware handle RTCRST, if so we can move to G3.\nIf S/w handle then it has to be in S5",
+      "parentUuid": "55c08682_4c1219fc",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "a16c2366994537ebcca3bb2931e27f7dcff10141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
