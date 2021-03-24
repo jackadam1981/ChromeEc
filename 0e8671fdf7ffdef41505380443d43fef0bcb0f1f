@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92aff07_8cdfa27c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2021-03-24T03:22:17Z",
+      "side": 1,
+      "message": "Got it! Thanks.",
+      "parentUuid": "59db6842_da0098de",
+      "revId": "0e8671fdf7ffdef41505380443d43fef0bcb0f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb87d76a_2f8fbc67",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-23T18:23:45Z",
       "side": 1,
       "message": "Change this to DB_USB3_ACTIVE.",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "0e8671fdf7ffdef41505380443d43fef0bcb0f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e1d44ac_28775770",
+        "filename": "board/collis/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2021-03-24T03:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb87d76a_2f8fbc67",
       "range": {
         "startLine": 92,
         "startChar": 11,
