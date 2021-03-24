@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d6a649_59c6740a",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-24T15:36:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "368ad495_876f1d90",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "e6fda2c7cb9155b9673fede36cedcb2bdbb89878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98804e56_dce7a01c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-24T15:10:39Z",
       "side": 1,
       "message": "seems like it could be device tree in future",
+      "range": {
+        "startLine": 65,
+        "startChar": 20,
+        "endLine": 65,
+        "endChar": 44
+      },
+      "revId": "e6fda2c7cb9155b9673fede36cedcb2bdbb89878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63b8593_6f18d816",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-24T15:36:20Z",
+      "side": 1,
+      "message": "Yes, added a bug",
+      "parentUuid": "98804e56_dce7a01c",
       "range": {
         "startLine": 65,
         "startChar": 20,
