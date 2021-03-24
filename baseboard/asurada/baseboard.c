@@ -81,7 +81,7 @@ const struct charger_config_t chg_chips[] = {
 	},
 };
 
-__override void board_hibernate_late(void)
+__overridable void board_hibernate_late(void)
 {
 	/*
 	 * Turn off PP5000_A. Required for devices without Z-state.

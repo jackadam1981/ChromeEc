@@ -185,7 +185,6 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
-
 static void kb_backlight_enable(void)
 {
 	gpio_set_level(GPIO_EC_KB_BL_EN, 1);
@@ -197,3 +196,19 @@ static void kb_backlight_disable(void)
 	gpio_set_level(GPIO_EC_KB_BL_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kb_backlight_disable, HOOK_PRIO_DEFAULT);
+
+__override void board_hibernate_late(void)
+{
+	/*
+	 * Turn off PP5000_A. Required for devices without Z-state.
+	 * Don't care for devices with Z-state.
+	 */
+	gpio_set_level(GPIO_EN_PP5000_A, 0);
+
+	isl9238c_hibernate(CHARGER_SOLO);
+
+	gpio_set_level(GPIO_EN_SLP_Z, 1);
+
+	/* should not reach here */
+	__builtin_unreachable();
+}
