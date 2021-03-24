@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64ae69e_b610470c",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-24T17:12:16Z",
+      "side": 1,
+      "message": "done, added static, called in this file only.",
+      "parentUuid": "683b24a4_08cf9015",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "ae4520e374beaa6eebec5a0fc688d436f3c3a95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "956ed3f6_60ffee97",
@@ -89,6 +113,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2609c599_d4fcf2ca",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-24T17:12:16Z",
+      "side": 1,
+      "message": "it is default as vtr3_voltage_select(0), i.e. 3.3V as chip POR.\nbut add else to make it explicitly.",
+      "parentUuid": "956ed3f6_60ffee97",
+      "revId": "ae4520e374beaa6eebec5a0fc688d436f3c3a95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f3a0a55_e4d2017a",
@@ -102,6 +144,30 @@
       "writtenOn": "2021-03-18T23:53:42Z",
       "side": 1,
       "message": "same comments as above.",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 0
+      },
+      "revId": "ae4520e374beaa6eebec5a0fc688d436f3c3a95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125395f6_b2f14244",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-24T17:12:16Z",
+      "side": 1,
+      "message": "“MCHP_VBAT_CE_32K_DOMAIN_32KHZ_IN_PIN” bit in clock enable register is obsolete in MEC172x, so IS_ENABLED() logic can not be used.",
+      "parentUuid": "1f3a0a55_e4d2017a",
       "range": {
         "startLine": 449,
         "startChar": 0,
