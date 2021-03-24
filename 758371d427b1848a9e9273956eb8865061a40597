@@ -16,6 +16,24 @@
       "message": "nit: I\u0027m uncertain of the value of None here, since this is a RO field.  But this is also unused, so it doesn\u0027t totally matter",
       "revId": "758371d427b1848a9e9273956eb8865061a40597",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edee95f1_ca6a57c7",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-03-24T19:42:31Z",
+      "side": 1,
+      "message": "Following the pattern IO_MODE. Could be used to indicate an error reading the field.",
+      "parentUuid": "06acd6df_288f6f48",
+      "revId": "758371d427b1848a9e9273956eb8865061a40597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
