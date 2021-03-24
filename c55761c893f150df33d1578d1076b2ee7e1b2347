@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9709571_853e136f",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T21:15:06Z",
+      "side": 1,
+      "message": "Yes, that is a cut and paste error. The had gotten removed in the previous CL, and I didn\u0027t fix it correctly. I like your suggestion about the name. In the schematics the ports were defined as host, user facing diplay (UF display), user facing data. but, just saying \"user\" as opposed to \"host\" leaves out a lot of context.",
+      "parentUuid": "65fa6496_7941fae0",
+      "revId": "c55761c893f150df33d1578d1076b2ee7e1b2347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1434b6a8_6b68ac82",
         "filename": "board/gingerbread/board.c",
         "patchSetId": 31
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14283a32_3fc347cc",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T21:15:06Z",
+      "side": 1,
+      "message": "No, these are the resets to the PS8805 (C1) and PS8803 (C2) TCPCs. I have added a comment here to note this.",
+      "parentUuid": "1434b6a8_6b68ac82",
+      "revId": "c55761c893f150df33d1578d1076b2ee7e1b2347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b93e422_7e84d848",
         "filename": "board/gingerbread/board.c",
         "patchSetId": 31
@@ -48,6 +84,24 @@
       "writtenOn": "2021-03-24T17:53:12Z",
       "side": 1,
       "message": "I\u0027m not totally sure I understand this check.  Do you expect the level to vary on different gingerbread boards? With the \"L\" suffix I\u0027d expected it to be active low",
+      "revId": "c55761c893f150df33d1578d1076b2ee7e1b2347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b282836d_0b2105fb",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-24T21:15:06Z",
+      "side": 1,
+      "message": "I pulled this in from another platform (hatch I think). I think ANX and Parade had different reset active levels. I am not expecting this to change on different honeybuns variants.\n\nI have refactored this here and the equivalent function for quiche.",
+      "parentUuid": "6b93e422_7e84d848",
       "revId": "c55761c893f150df33d1578d1076b2ee7e1b2347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
