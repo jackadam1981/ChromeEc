@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc14ad7c_a8e0b6c9",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-24T22:22:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9709571_853e136f",
+      "revId": "c55761c893f150df33d1578d1076b2ee7e1b2347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1434b6a8_6b68ac82",
@@ -71,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57443d6_81b85e1d",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-24T22:22:32Z",
+      "side": 1,
+      "message": "Perfect comment :)",
+      "parentUuid": "14283a32_3fc347cc",
+      "revId": "c55761c893f150df33d1578d1076b2ee7e1b2347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b93e422_7e84d848",
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "I pulled this in from another platform (hatch I think). I think ANX and Parade had different reset active levels. I am not expecting this to change on different honeybuns variants.\n\nI have refactored this here and the equivalent function for quiche.",
       "parentUuid": "6b93e422_7e84d848",
+      "revId": "c55761c893f150df33d1578d1076b2ee7e1b2347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c13e1827_fb61efbc",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-24T22:22:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b282836d_0b2105fb",
       "revId": "c55761c893f150df33d1578d1076b2ee7e1b2347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
