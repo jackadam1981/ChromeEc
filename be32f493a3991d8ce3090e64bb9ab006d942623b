@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c5b9fa_e73de6cd",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-24T15:52:04Z",
+      "side": 1,
+      "message": "nit: #ifdef",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 11
+      },
+      "revId": "be32f493a3991d8ce3090e64bb9ab006d942623b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "514c0fc5_5cf2b5e9",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-24T15:52:04Z",
+      "side": 1,
+      "message": "Can you put this in reduce_input_voltage_when_full?",
+      "range": {
+        "startLine": 687,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 36
+      },
+      "revId": "be32f493a3991d8ce3090e64bb9ab006d942623b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34cfdd43_0c4b1534",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-24T15:52:04Z",
+      "side": 1,
+      "message": "v",
+      "range": {
+        "startLine": 703,
+        "startChar": 53,
+        "endLine": 703,
+        "endChar": 54
+      },
+      "revId": "be32f493a3991d8ce3090e64bb9ab006d942623b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "026778e7_693fbff6",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-24T15:52:04Z",
+      "side": 1,
+      "message": "Unrelated comment: I wonder why we don\u0027t do this check in pd_set_external_voltage_limit.",
+      "range": {
+        "startLine": 741,
+        "startChar": 5,
+        "endLine": 741,
+        "endChar": 46
+      },
+      "revId": "be32f493a3991d8ce3090e64bb9ab006d942623b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
