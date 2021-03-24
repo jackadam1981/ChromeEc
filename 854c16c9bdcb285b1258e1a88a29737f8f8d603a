@@ -51,6 +51,24 @@
       "message": "Hi Wai-hong,\n\nSince firmware branch is not track, we will meet the same issue with CL:2744126 you submitted.\nShould I directly cherry-picking to firmware branch and manually change into this patch. I will add a note with commit message. Is that ok?",
       "revId": "854c16c9bdcb285b1258e1a88a29737f8f8d603a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64f8a27_dc47e784",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-24T04:18:35Z",
+      "side": 1,
+      "message": "I cherry-picked the depended CLs today. Should be a simple cherry-pick, without any modification. But I need you to do that and make sure any issue I missed.",
+      "parentUuid": "6fb55023_d304d561",
+      "revId": "854c16c9bdcb285b1258e1a88a29737f8f8d603a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
