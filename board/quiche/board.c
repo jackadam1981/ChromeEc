@@ -80,23 +80,9 @@ void hpd_interrupt(enum gpio_signal signal)
 	usb_pd_hpd_edge_event(signal);
 }
 
-void board_uf_manage_vbus(void)
-{
-	int level = gpio_get_level(GPIO_USBC_UF_MUX_VBUS_EN);
-
-	/*
-	 * GPIO_USBC_UF_MUX_VBUS_EN is an output from the PS8803 which tracks if
-	 * C2 is attached. When it's attached, this signal will be high. Use
-	 * this level to control PPC VBUS on/off.
-	 */
-	ppc_vbus_source_enable(USB_PD_PORT_USB3, level);
-	CPRINTS("C2: State = %s", level ? "Attached.SRC " : "Unattached.SRC");
-}
-DECLARE_DEFERRED(board_uf_manage_vbus);
-
 static void board_uf_manage_vbus_interrupt(enum gpio_signal signal)
 {
-	hook_call_deferred(&board_uf_manage_vbus_data, 0);
+	baseboard_uf_check_state();
 }
 
 static void board_pwr_btn_interrupt(enum gpio_signal signal)
