@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7200469b_bf6afa9b",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_it8xxx2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T16:21:43Z",
+      "side": 1,
+      "message": "creating an empty structure here is a bit confusing to me why you\u0027re doing this.  Can you comment here with what\u0027s going on?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a24452_a07306ee",
+        "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T16:21:43Z",
+      "side": 1,
+      "message": "header needs to be chrome os",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 37
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf98a99_e63f8f19",
+        "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T16:21:43Z",
+      "side": 1,
+      "message": "empty lines at end of file need cleaned up\n\njust leave one line terminator on the last line",
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e232b40_84a77281",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/Kconfig.board",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T16:21:43Z",
+      "side": 1,
+      "message": "copyright header needs fixed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c55794_b7958414",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/Kconfig.defconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T16:21:43Z",
+      "side": 1,
+      "message": "copyright header needs fixed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a518549_8e237bcb",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/board.cmake",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T16:21:43Z",
+      "side": 1,
+      "message": "remove this file?\n\nITE does not need ECST, fmu",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 20
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
