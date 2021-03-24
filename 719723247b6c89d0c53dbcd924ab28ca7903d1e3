@@ -33,6 +33,24 @@
       "message": "I think the appropriate change here is to return a different struct ec_response_keybd_config from board_vivaldi_keybd_config based on board version.",
       "revId": "719723247b6c89d0c53dbcd924ab28ca7903d1e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b0b40b6_1cef43f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-03-24T09:07:56Z",
+      "side": 1,
+      "message": "I check this board section, but the result will failed.",
+      "parentUuid": "9e9e5071_f20bfcd6",
+      "revId": "719723247b6c89d0c53dbcd924ab28ca7903d1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
