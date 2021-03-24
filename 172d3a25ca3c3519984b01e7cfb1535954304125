@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eeeee9ee_6eabf76e",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-24T20:38:26Z",
+      "side": 1,
+      "message": "Hi VJ,\n\ni2c_port_to_ctrl[] can not be moved to mchp/i2c.c file, because each chip (mec170x, 152x and 172x) supports different number of i2c ports, there are not constant default ports for all chips, e.g. one chip support port 0, 1,2,3,4; but other chip support 0,2,3…\n\nbut “int board_i2c_p2c()” function can be moved to i2c.c, like this in i2c.c per your suggestion:\n\nextern const uint16_t i2c_port_to_ctrl[I2C_PORT_COUNT];\n__overridable int board_i2c_p2c(int port) {}\n\nIs this moving expected for you?\nneed your confirmation...",
+      "parentUuid": "0df7c2ab_81beac24",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7b18bbc_7f71f0be",
         "filename": "board/sklrvp_mchp172x/board.h",
         "patchSetId": 1
@@ -160,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4086622_cf4056b2",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-24T20:38:26Z",
+      "side": 1,
+      "message": "don\u0027t need to revert entire chip CL, but need one new CL to update chip_config.h which adds:\n#define CONFIG_SPI_FLASH_PORT 0\n#define CONFIG_SPI_FLASH\n\nfrom board.h\n\nneed to add a new CL to update chip_config.h, Will be done in a future CL.",
+      "parentUuid": "a1eda8ba_c63274b1",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 24
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27c384e0_484e9c1d",
@@ -197,6 +245,30 @@
       "side": 1,
       "message": "Same as line 233, future CL since chip config has been merged.",
       "parentUuid": "27c384e0_484e9c1d",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 32
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e93a97_f24d93b7",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-24T20:38:26Z",
+      "side": 1,
+      "message": "can move to chip_config.h\nbut need to add a new CL to update chip_config.h, Will be done in a future CL.",
+      "parentUuid": "979c11ba_1e2936e3",
       "range": {
         "startLine": 234,
         "startChar": 0,
@@ -268,6 +340,30 @@
       "side": 1,
       "message": "I mean avoid this duplication, use common file and include it in respective builds",
       "parentUuid": "b07e4c50_1be83447",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 6
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "109ba5ec_5b6a3a57",
+        "filename": "board/sklrvp_mchp172x/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-24T20:38:26Z",
+      "side": 1,
+      "message": "VJ:\nplan to add a new file called gpio_common.inc, and both gpio.inc files under board \u0026 lfw can include it:\n#include \"gpio_common.inc\"\n\nany suggestion where to place gpio_common.inc?\n\nneed to add a new CL to add gpio_common.inc, Will be done in a future CL.",
+      "parentUuid": "ecbc9223_38f7ea37",
       "range": {
         "startLine": 163,
         "startChar": 0,
@@ -362,6 +458,30 @@
       "side": 1,
       "message": "Do you mean, chip level void uart_init(void)?",
       "parentUuid": "4c596c74_e283daa8",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "265d6acf_b00f806a",
+        "filename": "board/sklrvp_mchp172x/lfw/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-24T20:38:26Z",
+      "side": 1,
+      "message": "VJ:\nplan to add a new file call gpio_common.inc, and both gpio.inc files under board \u0026 lfw can include it:\n#include \"gpio_common.inc\"\n\nany suggestion where to place gpio_common.inc?\n\nneed to add a new CL to add gpio_common.inc, Will be done in a future CL.",
+      "parentUuid": "b244a7be_fb95a3b5",
       "range": {
         "startLine": 32,
         "startChar": 0,
