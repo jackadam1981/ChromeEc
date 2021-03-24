@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b23cf05_e6cf7c09",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-03-24T06:08:51Z",
+      "side": 1,
+      "message": "The naming is a bit confused to me, \"control\" may have multiple meanings. How about using _enable or _en instead? (also for elan_tp_sleep_control).",
+      "range": {
+        "startLine": 147,
+        "startChar": 25,
+        "endLine": 147,
+        "endChar": 32
+      },
+      "revId": "80a74a4c90bb107bb5b1b96e389eceb94073a2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dabc285_1f06e48e",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-03-24T06:08:51Z",
+      "side": 1,
+      "message": "I am unsure if we care about the sleep state if the power is off?",
+      "range": {
+        "startLine": 809,
+        "startChar": 2,
+        "endLine": 809,
+        "endChar": 23
+      },
+      "revId": "80a74a4c90bb107bb5b1b96e389eceb94073a2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
