@@ -90,6 +90,16 @@ const struct ec_response_keybd_config *board_vivaldi_keybd_config(void)
 		return &zbu_old_kb;
 }
 
+__override
+uint8_t get_keyboard_mask_refresh(void)
+{
+	if (get_board_id() > 2)
+		return KEYBOARD_ROW_TO_MASK(3);
+	else
+		return KEYBOARD_ROW_TO_MASK(2);
+}
+
+
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {
 	/* Increase from 50 us, because KSO_02 passes through the H1. */
