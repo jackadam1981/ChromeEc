@@ -16,6 +16,24 @@
       "message": "Why limited to just in the dual role config updates? Wouldn\u0027t the underlying states be more robust?",
       "revId": "98e13d5461860cdeadf7651186c50eb871e52c1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea5e1d5_d6e2d0e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-24T23:04:20Z",
+      "side": 1,
+      "message": "My initial thought was that this is one of the only times we\u0027re brute forcing the states around in ways that don\u0027t match the TC state diagram transitions, but possibly.  Let me stare at the diagrams and think out loud.  \n\nWe have Attached.SRC/SNK exits covered, so the states we worry about are any where we haven\u0027t completed our connection yet.  I assume we should be okay in this TCPC going Unattached.SNK to Unattached.SRC since nothing is detected yet, unless we find further corner cases hiding there.  So then we have transition states like AttachWait.SRC, Try.SRC, TryWait.SNK, AttachWait.SNK.  For each of these, we\u0027d only want to set debug detach if we\u0027re going back to an unattached role, and leave it alone if we\u0027re transitioning further in the attachment sequence.  I\u0027m wondering why we haven\u0027t hit issues with Try.SRC, but perhaps it\u0027s a timing that works better for the TCPC or it\u0027s okay because we don\u0027t successfully attach as source and go back to sink? \n\nSo perhaps we could craft exit state checks based on whether the next state will be untattached and sets the detach accordingly?",
+      "parentUuid": "d4354f5f_4fadc11b",
+      "revId": "98e13d5461860cdeadf7651186c50eb871e52c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
