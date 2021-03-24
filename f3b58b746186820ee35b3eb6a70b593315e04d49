@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c3caf5_32b3f803",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-03-24T22:01:24Z",
+      "side": 1,
+      "message": "This name is unclear- what does it mean to enable a reset? Consider deassert rather than enable, and assert rather than disable.",
+      "revId": "f3b58b746186820ee35b3eb6a70b593315e04d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "812679c1_c10abc6f",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-03-24T22:01:24Z",
+      "side": 1,
+      "message": "HOOK_CHIPSET_STARTUP is called on S5-\u003eS3. Should all of this be turned on in S3? If no, continue using HOOK_CHIPSET_RESUME. If yes, correct this comment.",
+      "revId": "f3b58b746186820ee35b3eb6a70b593315e04d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
