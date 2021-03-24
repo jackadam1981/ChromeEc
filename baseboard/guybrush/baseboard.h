@@ -307,6 +307,12 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
+enum sensor_id {
+	BASE_ACCEL = 0,
+	BASE_GYRO,
+	SENSOR_COUNT,
+};
+
 /* Battery Types */
 enum battery_type {
 	BATTERY_AP18F4M,
@@ -333,7 +339,6 @@ enum mft_channel {
 	/* Number of MFT channels */
 	MFT_CH_COUNT,
 };
-
 
 /* Common definition for the USB PD interrupt handlers. */
 void tcpc_alert_event(enum gpio_signal signal);
