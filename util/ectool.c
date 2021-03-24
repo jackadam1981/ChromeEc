@@ -6462,7 +6462,6 @@ int cmd_panic_info(int argc, char *argv[])
 	return parse_panic_info(ec_inbuf, rv);
 }
 
-
 int cmd_power_info(int argc, char *argv[])
 {
 	struct ec_response_power_info_v1 r;
@@ -6488,9 +6487,11 @@ int cmd_power_info(int argc, char *argv[])
 		break;
 	}
 
+	printf("PD sequence number: 0x%1x\n", r.pd_sequence);
 	printf("Battery state-of-charge: %d%%\n", r.battery_soc);
 	printf("Max AC power: %d Watts\n", r.ac_adapter_100pct);
 	printf("Battery 1Cd rate: %d\n", r.battery_1cd);
+	printf("RoP Worst: %d Watts\n", r.rop_worst);
 	printf("RoP Avg: %d Watts\n", r.rop_avg);
 	printf("RoP Peak: %d Watts\n", r.rop_peak);
 	printf("Battery DBPT support level: %d\n",
