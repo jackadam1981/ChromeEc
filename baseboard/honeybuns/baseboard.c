@@ -11,6 +11,7 @@
 #include "i2c.h"
 #include "usb_pd.h"
 #include "system.h"
+#include "task.h"
 #include "timer.h"
 #include "usb_tc_sm.h"
 #include "usbc_ppc.h"
@@ -27,6 +28,9 @@
 #define BUTTON_PRESSED_LEVEL 1
 #define BUTTON_RELEASED_LEVEL 0
 
+#define BUTTON_EVT_CHANGE   BIT(0)
+#define BUTTON_EVT_INFO     BIT(1)
+
 enum power {
 	POWER_OFF,
 	POWER_ON
@@ -35,6 +39,7 @@ enum power {
 enum button {
 	BUTTON_RELEASE,
 	BUTTON_PRESS,
+	BUTTON_PRESS_POWER_ON,
 	BUTTON_PRESS_SHORT,
 	BUTTON_PRESS_LONG,
 };
@@ -47,15 +52,14 @@ enum led_color {
 
 static enum power dock_state;
 #ifdef SECTION_IS_RW
-static enum button power_button_state;
 static int button_level;
 static int button_level_pending;
-static int dock_state_change;
 static int dock_mf;
 
-static char press_string[][8] = {
+static char press_string[][10] = {
 	"Release",
 	"Press",
+	"Power On",
 	"Short",
 	"Long",
 };
@@ -182,10 +186,8 @@ static void baseboard_init(void)
 		CPRINTS("baseboard: mf config = %d", fw_config & 0x1);
 	}
 	baseboard_set_dp_lane_control();
-	gpio_enable_interrupt(GPIO_PWR_BTN);
 	/* Enable power button interrupt */
-	dock_state = POWER_ON;
-	dock_state_change = 0;
+	gpio_enable_interrupt(GPIO_PWR_BTN);
 	baseboard_set_led(dock_mf);
 #else
 	/* Turn on power rails */
@@ -266,62 +268,86 @@ static void baseboard_toggle_mf(void)
 	}
 }
 
-static void power_button_sm_run(void);
-DECLARE_DEFERRED(power_button_sm_run);
-
-static void power_button_sm_run(void)
+/*
+ * Main task entry point for UCPD task
+ *
+ * @param p The PD port number for which to handle interrupts (pointer is
+ * reinterpreted as an integer directly).
+ */
+void power_button_task(void *u)
 {
-	int callback_time = -1;
+	int timer_us = POWER_BUTTON_PRESS_DEBOUNCE_USEC * 4;
+	enum button state = BUTTON_RELEASE;
+	uint32_t evt;
 
-	switch (power_button_state) {
-	case BUTTON_RELEASE:
-		dock_state_change = 0;
-		if (button_level == BUTTON_PRESSED_LEVEL) {
-			power_button_state = BUTTON_PRESS;
-			callback_time = (POWER_BUTTON_PRESS_SHORT_USEC -
-				POWER_BUTTON_PRESS_DEBOUNCE_USEC);
+	button_level = gpio_get_level(GPIO_PWR_BTN);
+
+	while (1) {
+		evt = task_wait_event(timer_us);
+		timer_us = -1;
+
+		if (evt == BUTTON_EVT_INFO) {
+			CPRINTS("pwrbtn: pwr = %d, state = %s, level = %d",
+				dock_state, press_string[state], button_level);
+			continue;
 		}
-		break;
-	case BUTTON_PRESS:
-		if (button_level == BUTTON_RELEASED_LEVEL) {
-			power_button_state = BUTTON_RELEASE;
-		} else {
-			power_button_state = BUTTON_PRESS_SHORT;
-			callback_time = POWER_BUTTON_PRESS_LONG_USEC -
-				POWER_BUTTON_PRESS_SHORT_USEC;
-			if (dock_state == POWER_OFF) {
-				baseboard_power_on();
-				dock_state_change = 1;
+
+		switch (state) {
+		case BUTTON_RELEASE:
+			if (button_level == BUTTON_PRESSED_LEVEL) {
+				state = BUTTON_PRESS;
+				timer_us = (POWER_BUTTON_PRESS_SHORT_USEC -
+						 POWER_BUTTON_PRESS_DEBOUNCE_USEC);
 			}
-		}
-		break;
-	case BUTTON_PRESS_SHORT:
-		if (button_level == BUTTON_RELEASED_LEVEL) {
-			power_button_state = BUTTON_RELEASE;
-			if (!dock_state_change && dock_state == POWER_ON) {
-				dock_state_change = 1;
+			break;
+		case BUTTON_PRESS:
+			if (button_level == BUTTON_RELEASED_LEVEL) {
+				state = BUTTON_RELEASE;
+			} else {
+				state = BUTTON_PRESS_SHORT;
+				timer_us = POWER_BUTTON_PRESS_LONG_USEC -
+					POWER_BUTTON_PRESS_SHORT_USEC;
+				if (dock_state == POWER_OFF) {
+					baseboard_power_on();
+				        state = BUTTON_PRESS_POWER_ON;
+				}
+			}
+			break;
+		case BUTTON_PRESS_POWER_ON:
+			if (button_level == BUTTON_RELEASED_LEVEL) {
+				state = BUTTON_RELEASE;
+			} else {
+				state = BUTTON_PRESS_LONG;
+				baseboard_toggle_mf();
+			}
+			break;
+		case BUTTON_PRESS_SHORT:
+			CPRINTS("button_short: level = %d, evt = %x",
+				button_level, evt);
+			if (button_level == BUTTON_RELEASED_LEVEL) {
+				CPRINTS("button_short: release, power off!");
+				state = BUTTON_RELEASE;
 				baseboard_power_off();
+			} else {
+				state = BUTTON_PRESS_LONG;
+				CPRINTS("button_short: state -> LONG!");
+				baseboard_toggle_mf();
 			}
-		} else {
-			power_button_state = BUTTON_PRESS_LONG;
-			baseboard_toggle_mf();
-		}
-		break;
-	case BUTTON_PRESS_LONG:
-		if (button_level == BUTTON_RELEASED_LEVEL) {
-			power_button_state = BUTTON_RELEASE;
-		}
-		break;
+			break;
+		case BUTTON_PRESS_LONG:
+			if (button_level == BUTTON_RELEASED_LEVEL) {
+				state = BUTTON_RELEASE;
+			}
+			break;
 	}
 
-	CPRINTS("power: dock = %s, button = %s, callback = %d",
-		dock_state ? "on" : "off", press_string[power_button_state],
-		callback_time);
+	CPRINTS("power: dock = %s, level = %d,  button = %s, evt = %x, timer = %d",
+		dock_state ? "on" : "off", button_level,
+		press_string[state],
+		evt, timer_us);
 
-	hook_call_deferred(&power_button_sm_run_data, callback_time);
+	}
 }
-
-
 
 static void baseboard_power_button_debounce(void)
 {
@@ -332,7 +358,7 @@ static void baseboard_power_button_debounce(void)
 		return;
 
 	button_level = level;
-        power_button_sm_run();
+	task_set_event(TASK_ID_POWER_BUTTON, BUTTON_EVT_CHANGE);
 }
 DECLARE_DEFERRED(baseboard_power_button_debounce);
 
@@ -347,8 +373,10 @@ void baseboard_power_button_evt(int level)
 static int command_pwr_btn(int argc, char **argv)
 {
 
-	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
+	if (argc == 1) {
+		task_set_event(TASK_ID_POWER_BUTTON, BUTTON_EVT_INFO);
+		return EC_SUCCESS;
+	}
 
 	if (!strcasecmp(argv[1], "on")) {
 		CPRINTS("baseboard: tc state 1 = %s",  tc_get_current_state(0));
