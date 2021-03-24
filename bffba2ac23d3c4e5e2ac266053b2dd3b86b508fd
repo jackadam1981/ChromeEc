@@ -33,6 +33,24 @@
       "message": "I think these should be \"__override\" instead of \"__overridable,\" i.e. strongly linked. IDK what happens when you have 2 weakly linked objects with the same name.",
       "revId": "bffba2ac23d3c4e5e2ac266053b2dd3b86b508fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "604975c2_f37a6d5b",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-24T18:26:49Z",
+      "side": 1,
+      "message": "You are correct. I typed the wrong macro.",
+      "parentUuid": "18513c6d_6cd31be0",
+      "revId": "bffba2ac23d3c4e5e2ac266053b2dd3b86b508fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
