@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71aa8b38_63a49aa5",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T13:58:38Z",
+      "side": 1,
+      "message": "cros-ec",
+      "range": {
+        "startLine": 572,
+        "startChar": 40,
+        "endLine": 572,
+        "endChar": 44
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece26707_dd0a423a",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T13:58:38Z",
+      "side": 1,
+      "message": "rename to cros-ec,i2c-port",
+      "range": {
+        "startLine": 572,
+        "startChar": 23,
+        "endLine": 572,
+        "endChar": 27
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19bd912a_b265fd30",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T13:58:38Z",
+      "side": 1,
+      "message": "these macros need documentation",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9783732_e6392bf4",
         "filename": "zephyr/shim/src/i2c.c",
         "patchSetId": 3
@@ -14,6 +83,30 @@
       "writtenOn": "2021-03-24T11:33:34Z",
       "side": 1,
       "message": "I think this is a bit of a misuse of the whole concept of compatible: it\u0027s basically using it as a label (as in: there\u0027s going to be exactly one instance of each). It would certainly work but at this point, would it make more sense to use a label or alias instead? That would also ensure uniqueness and remove the overhead of having to define a bunch of bindings.",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51bfeaca_06d2d4aa",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-24T13:58:38Z",
+      "side": 1,
+      "message": "would it make sense if we used \"nuvoton,npcx-i2c-port\" instead to initialize all of them?\n\nbut should probably remove \"npcx-\" from the name so this can be common code...",
+      "parentUuid": "e9783732_e6392bf4",
       "range": {
         "startLine": 42,
         "startChar": 5,
