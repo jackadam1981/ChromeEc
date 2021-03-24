@@ -33,6 +33,24 @@
       "message": "add __packed",
       "revId": "1bcc9eca3f4e18cc671e675ef301a277385a22ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd65a357_0ca4cf56",
+        "filename": "board/asurada_scp/vdec.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-24T06:10:28Z",
+      "side": 1,
+      "message": "It seems the code copied from board/kukui_scp/ (which also without __packed).\n\nAnd I believe to use __packed, kernel needs to update too.",
+      "parentUuid": "9d8abb33_6692fb34",
+      "revId": "1bcc9eca3f4e18cc671e675ef301a277385a22ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
