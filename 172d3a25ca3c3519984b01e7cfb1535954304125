@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "879f9c05_53ae563b",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-24T21:20:56Z",
+      "side": 1,
+      "message": "this is how  I would do in chp/i2.c\nwe know the number of I2C ports used from i2c_ports_used \u0026 port you can get from i2c_ports[i].port.\n\nat init allocate the each controller to i2c port.\nMay be assign serially or any best method available.\n\nwhen the i2c_port_to_controller() is called take that previously assigned value and return.\n\nif board want to override this default config for any reason allow it by declaring function as overridable",
+      "parentUuid": "eeeee9ee_6eabf76e",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7b18bbc_7f71f0be",
         "filename": "board/sklrvp_mchp172x/board.h",
         "patchSetId": 1
@@ -208,6 +232,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9eaff46_1ff84952",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-24T21:20:56Z",
+      "side": 1,
+      "message": "better to fix before landing this",
+      "parentUuid": "d4086622_cf4056b2",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 24
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27c384e0_484e9c1d",
@@ -269,6 +317,30 @@
       "side": 1,
       "message": "can move to chip_config.h\nbut need to add a new CL to update chip_config.h, Will be done in a future CL.",
       "parentUuid": "979c11ba_1e2936e3",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 32
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a7a1a86_7454c310",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-24T21:20:56Z",
+      "side": 1,
+      "message": "better to fix before landing this",
+      "parentUuid": "51e93a97_f24d93b7",
       "range": {
         "startLine": 234,
         "startChar": 0,
@@ -364,6 +436,30 @@
       "side": 1,
       "message": "VJ:\nplan to add a new file called gpio_common.inc, and both gpio.inc files under board \u0026 lfw can include it:\n#include \"gpio_common.inc\"\n\nany suggestion where to place gpio_common.inc?\n\nneed to add a new CL to add gpio_common.inc, Will be done in a future CL.",
       "parentUuid": "ecbc9223_38f7ea37",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 6
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6761a1c2_0626e434",
+        "filename": "board/sklrvp_mchp172x/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-24T21:20:56Z",
+      "side": 1,
+      "message": "pls add in chip/mchp/lfw\n\nwe already have a code with this logic in sklrvp_1521 better to clean this before we land this CL",
+      "parentUuid": "109ba5ec_5b6a3a57",
       "range": {
         "startLine": 163,
         "startChar": 0,
@@ -482,6 +578,30 @@
       "side": 1,
       "message": "VJ:\nplan to add a new file call gpio_common.inc, and both gpio.inc files under board \u0026 lfw can include it:\n#include \"gpio_common.inc\"\n\nany suggestion where to place gpio_common.inc?\n\nneed to add a new CL to add gpio_common.inc, Will be done in a future CL.",
       "parentUuid": "b244a7be_fb95a3b5",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99cbe8ed_286a4cdb",
+        "filename": "board/sklrvp_mchp172x/lfw/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-24T21:20:56Z",
+      "side": 1,
+      "message": "UART: yes we know which UART is used with CONFIG_UART_CONSOLE so config accordingly.\n\ngpio.inc: refer same comment in gpio.inc",
+      "parentUuid": "265d6acf_b00f806a",
       "range": {
         "startLine": 32,
         "startChar": 0,
