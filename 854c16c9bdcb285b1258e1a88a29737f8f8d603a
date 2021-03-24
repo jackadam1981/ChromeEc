@@ -34,6 +34,23 @@
       "parentUuid": "0d7375f4_37d51048",
       "revId": "854c16c9bdcb285b1258e1a88a29737f8f8d603a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb55023_d304d561",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-03-24T02:57:21Z",
+      "side": 1,
+      "message": "Hi Wai-hong,\n\nSince firmware branch is not track, we will meet the same issue with CL:2744126 you submitted.\nShould I directly cherry-picking to firmware branch and manually change into this patch. I will add a note with commit message. Is that ok?",
+      "revId": "854c16c9bdcb285b1258e1a88a29737f8f8d603a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
