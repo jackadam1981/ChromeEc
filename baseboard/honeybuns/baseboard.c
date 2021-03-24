@@ -186,9 +186,14 @@ static void baseboard_init(void)
 		CPRINTS("baseboard: mf config = %d", fw_config & 0x1);
 	}
 	baseboard_set_dp_lane_control();
+#ifdef GPIO_USBC_UF_ATTACHED_SRC
+	/* Configure UF usbc ppc and check usbc state */
+	baseboard_config_usbc_uf_ppc();
+#endif
 	/* Enable power button interrupt */
 	gpio_enable_interrupt(GPIO_PWR_BTN);
 	baseboard_set_led(dock_mf);
+
 #else
 	/* Turn on power rails */
 	board_power_sequence(1);
@@ -235,6 +240,10 @@ static void baseboard_power_on(void)
 	}
 	/* Enable usbc interrupts */
 	board_enable_usbc_interrupts();
+
+#ifdef GPIO_USBC_UF_ATTACHED_SRC
+	baseboard_config_usbc_uf_ppc();
+#endif
 }
 
 static void baseboard_power_off(void)
