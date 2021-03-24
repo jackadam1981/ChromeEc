@@ -234,6 +234,7 @@ enum adc_channel {
 
 extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
+
 void baseboard_power_button_evt(int level);
 
 /*
@@ -245,6 +246,8 @@ void baseboard_power_button_evt(int level);
 int baseboard_usbc_init(int port);
 
 int dock_get_mf_preferece(void);
+int baseboard_config_usbc_uf_ppc(void);
+void baseboard_uf_check_state(void);
 
 /*
  * Set MST_LANE_CONTROL gpio to match the DP pin configuration selected
