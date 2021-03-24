@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd38890_e305fd2f",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-24T08:04:18Z",
+      "side": 1,
+      "message": "That wakes up the touchpad before powering it off. Are you sure?",
+      "revId": "f81eba6412d78fba6db82af13f35967ca50f3b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5b44ac_c510f9f5",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-03-24T08:04:18Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "f81eba6412d78fba6db82af13f35967ca50f3b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
