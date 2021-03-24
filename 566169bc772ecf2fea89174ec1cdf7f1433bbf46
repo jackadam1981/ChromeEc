@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7f2883_b619f388",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-03-24T03:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ff189d2_4207bf76",
+      "range": {
+        "startLine": 545,
+        "startChar": 8,
+        "endLine": 545,
+        "endChar": 30
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "619d8992_8bf0a817",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-23T17:50:32Z",
       "side": 1,
       "message": "should the chipset being off cause limit_charge and possibly other local static variables to go to an initial value?",
+      "range": {
+        "startLine": 556,
+        "startChar": 1,
+        "endLine": 557,
+        "endChar": 11
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa54e85e_340c24c8",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-03-24T03:41:11Z",
+      "side": 1,
+      "message": "Move down the code.",
+      "parentUuid": "619d8992_8bf0a817",
       "range": {
         "startLine": 556,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48d33879_b25044e1",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-03-24T03:41:11Z",
+      "side": 1,
+      "message": "Yes, it\u0027s a great idea.",
+      "parentUuid": "167df84a_b40f630b",
+      "range": {
+        "startLine": 559,
+        "startChar": 1,
+        "endLine": 559,
+        "endChar": 17
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edf88293_f6831ead",
         "filename": "board/gumboz/board.c",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-23T17:50:32Z",
       "side": 1,
       "message": "\u0027else if\u0027?  Seems this condition will always be true if the temp was already show to be \u003e 63C",
+      "range": {
+        "startLine": 565,
+        "startChar": 2,
+        "endLine": 565,
+        "endChar": 39
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b9280a_42549f7b",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-03-24T03:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edf88293_f6831ead",
       "range": {
         "startLine": 565,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eadd2ca_b1663f93",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-03-24T03:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f12d83d3_222b3d9d",
+      "range": {
+        "startLine": 573,
+        "startChar": 2,
+        "endLine": 573,
+        "endChar": 4
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d349707_3ee9f2c9",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f522f5_6c2aea14",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-03-24T03:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d349707_3ee9f2c9",
+      "range": {
+        "startLine": 579,
+        "startChar": 1,
+        "endLine": 582,
+        "endChar": 55
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bd4152b_1987346d",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-03-23T17:50:32Z",
       "side": 1,
       "message": "is there any benefit to coding this as\n    rp \u003d (limit_usbc_power \u003d\u003d 1) ? TYPEC_RP_1A5\n                                 : TYPEC_RP_3A0;",
+      "range": {
+        "startLine": 585,
+        "startChar": 2,
+        "endLine": 588,
+        "endChar": 21
+      },
+      "revId": "566169bc772ecf2fea89174ec1cdf7f1433bbf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a087a7_b7a90874",
+        "filename": "board/gumboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-03-24T03:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd4152b_1987346d",
       "range": {
         "startLine": 585,
         "startChar": 2,
