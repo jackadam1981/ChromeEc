@@ -784,6 +784,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c5152ce_d53ac4a7",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-24T17:33:17Z",
+      "side": 1,
+      "message": "What about increasing the debounce time for GPIO_AC_PRESENT?  The Icelake power sequencing takes a minimum of of 60 ms from a power signal change to updating the power state because of the requirements to pass through DSW_PWROK (10ms delay) and ALL_SYS_PWRGD (50ms delay).\n\nTry increasing CONFIG_EXTPOWER_DEBOUNCE_MS in the lindar board.h file:\n\n#undef  CONFIG_EXTPOWER_DEBOUNCE_MS\n#define CONFIG_EXTPOWER_DEBOUNCE_MS 100",
+      "parentUuid": "cc73433b_b4cbbb2c",
+      "range": {
+        "startLine": 404,
+        "startChar": 5,
+        "endLine": 404,
+        "endChar": 71
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df864d6b_932857d6",
         "filename": "board/lindar/led.c",
         "patchSetId": 3
