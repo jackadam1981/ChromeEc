@@ -91,6 +91,75 @@
       },
       "revId": "be32f493a3991d8ce3090e64bb9ab006d942623b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f001a4e1_fcb32956",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-24T18:13:17Z",
+      "side": 1,
+      "message": "Integers need a default value. Setting the default value to -1 can then be used to disable CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV in zephyr/shim/include/config_chip.h\n\n#undef CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV\n#if defined(CONFIG_PLATFORM_EC_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV) \u0026\u0026 \\\n    (CONFIG_PLATFORM_EC_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV \u003e 0)\n#define CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV \\\n    CONFIG_PLATFORM_EC_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV\n#endif",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 4
+      },
+      "revId": "be32f493a3991d8ce3090e64bb9ab006d942623b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4910e8c7_6f6ff431",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-24T18:13:17Z",
+      "side": 1,
+      "message": "Change summary to \"Voltage limit in mV when battery is full and AP is off\"",
+      "range": {
+        "startLine": 220,
+        "startChar": 6,
+        "endLine": 220,
+        "endChar": 63
+      },
+      "revId": "be32f493a3991d8ce3090e64bb9ab006d942623b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02198c33_98ef08c9",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-24T18:13:17Z",
+      "side": 1,
+      "message": "Change to \"If set to a non-negative value,\"",
+      "range": {
+        "startLine": 223,
+        "startChar": 3,
+        "endLine": 223,
+        "endChar": 16
+      },
+      "revId": "be32f493a3991d8ce3090e64bb9ab006d942623b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
