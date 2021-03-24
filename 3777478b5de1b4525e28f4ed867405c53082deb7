@@ -22,6 +22,30 @@
       },
       "revId": "3777478b5de1b4525e28f4ed867405c53082deb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8aa031_52b78b27",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-24T06:53:22Z",
+      "side": 0,
+      "message": "No, I don\u0027t think faft reads detachable console output.",
+      "parentUuid": "2c06dc93_4e222642",
+      "range": {
+        "startLine": 155,
+        "startChar": 10,
+        "endLine": 155,
+        "endChar": 26
+      },
+      "revId": "3777478b5de1b4525e28f4ed867405c53082deb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
