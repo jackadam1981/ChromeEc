@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9783732_e6392bf4",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-03-24T11:33:34Z",
+      "side": 1,
+      "message": "I think this is a bit of a misuse of the whole concept of compatible: it\u0027s basically using it as a label (as in: there\u0027s going to be exactly one instance of each). It would certainly work but at this point, would it make more sense to use a label or alias instead? That would also ensure uniqueness and remove the overhead of having to define a bunch of bindings.",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
