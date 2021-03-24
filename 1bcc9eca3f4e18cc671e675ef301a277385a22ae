@@ -51,6 +51,24 @@
       "parentUuid": "9d8abb33_6692fb34",
       "revId": "1bcc9eca3f4e18cc671e675ef301a277385a22ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e428d589_6065a80b",
+        "filename": "board/asurada_scp/vdec.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-24T07:28:52Z",
+      "side": 1,
+      "message": "Misunderstood: only msg[48] will be send via IPI (i.e. the sturct don\u0027t need to pack).",
+      "parentUuid": "fd65a357_0ca4cf56",
+      "revId": "1bcc9eca3f4e18cc671e675ef301a277385a22ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -16,6 +16,24 @@
       "message": "for the `else` case, do you need to want until vdec_h264_service_init() done in another thread?",
       "revId": "93e8a299cf9807fab415ad8e2e74f83710641be6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bed3b46f_5cb4ae92",
+        "filename": "board/asurada_scp/vdec.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-03-24T07:28:52Z",
+      "side": 1,
+      "message": "The function vdec_h264_service_init() is empty.\n\nDiscussed with phoenixshen@ and Yunfei, we can remove it first.",
+      "parentUuid": "1c7d5092_ff9fb64f",
+      "revId": "93e8a299cf9807fab415ad8e2e74f83710641be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
