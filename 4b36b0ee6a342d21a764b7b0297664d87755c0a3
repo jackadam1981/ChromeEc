@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "884b94e5_354e67e6",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-24T00:39:51Z",
+      "side": 1,
+      "message": "Got it, understood.",
+      "parentUuid": "88fa0c85_b38f9b9f",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "4b36b0ee6a342d21a764b7b0297664d87755c0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66788968_d2ebc90c",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd584f8_bd74271f",
+        "filename": "driver/tcpm/ccgxxf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-24T00:39:51Z",
+      "side": 1,
+      "message": "Yes, I think there\u0027s room for improvement here.",
+      "parentUuid": "3fb2e9ff_70778631",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 81
+      },
+      "revId": "4b36b0ee6a342d21a764b7b0297664d87755c0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8b9517b_0e82aeae",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "PS_SOURCE_ON - PD.PC.E4 failure (No HR or ER after 480mS, ER at 489mS).Case is the same as described in TCPMv2: Change PD_T_PS_SOURCE_OFF value (Gerrit upd. comment);\n\nPD_T_SENDER_RESPONSE - PD.SRC.E6 (HR detected before 24mS,SenderResp. Timer too short 18.8mS) or PD.SNK.E4(HR after 30m.SenderResp. Timer too long 30,1 mS). Timeout reduction helps to pass PD.SNK.E4. TCPMv2: TD.PD.SRC.E5 Compliance failure tread at Gerrit should fix this issue but rare failures (every 4-5th run) of  PD.SRC.E6 are still seen (with both variants (21 or 24 mS) of timeout settings).\n\nPD_T_PD_DEBOUNCE - clears TD 4.6.4 failure (Entering TrySNK PUT must present Rp within 20mS). It looks as tc proc. uses polling (~5mS) to get CC_STAT in Attached.SRC state instead of alarm(CC_CHANGED) catching so with 15mS PD_DEBOUNCE timeout test fails sometimes.",
       "parentUuid": "b8b9517b_0e82aeae",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 72
+      },
+      "revId": "4b36b0ee6a342d21a764b7b0297664d87755c0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f40101_0827f958",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-24T00:39:51Z",
+      "side": 1,
+      "message": "okay, seems like it\u0027s a little tweaks here and there. I\u0027m going to check if there are other boards that have run against the same compliance box and see if they needed similar tweaks or not.",
+      "parentUuid": "c0153a07_d9862207",
       "range": {
         "startLine": 209,
         "startChar": 0,
