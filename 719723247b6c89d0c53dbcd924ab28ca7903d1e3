@@ -51,6 +51,24 @@
       "parentUuid": "9e9e5071_f20bfcd6",
       "revId": "719723247b6c89d0c53dbcd924ab28ca7903d1e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91e748d_912b705e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-24T17:55:31Z",
+      "side": 1,
+      "message": "See the comments in b:183353285.  This will require a minor update to keyboard_scan.c",
+      "parentUuid": "6b0b40b6_1cef43f4",
+      "revId": "719723247b6c89d0c53dbcd924ab28ca7903d1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
