@@ -429,51 +429,67 @@ static void lte_usb3_mux_init(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, lte_usb3_mux_init, HOOK_PRIO_DEFAULT);
 
-static void lte_function_resume(void)
+static void lte_reset_deassert(void)
+{
+	gpio_set_level(GPIO_EC_LTE_RST_L, 1);
+}
+DECLARE_DEFERRED(lte_reset_deassert);
+
+static void lte_function_deassert(void)
 {
 	gpio_set_level(GPIO_LTE_FCPO, 1);
+	hook_call_deferred(&lte_reset_deassert_data, 20 * MSEC);
 }
-DECLARE_DEFERRED(lte_function_resume);
+DECLARE_DEFERRED(lte_function_deassert);
 
-static void lte_power_resume(void)
+static void lte_power_deassert(void)
 {
 	gpio_set_level(GPIO_LTE_EN, 1);
 	gpio_set_level(GPIO_LTE_W_DISABLE_L, 1);
 }
-DECLARE_DEFERRED(lte_power_resume);
+DECLARE_DEFERRED(lte_power_deassert);
 
-static void lte_power_suspend(void)
+static void lte_power_assert(void)
 {
 	gpio_set_level(GPIO_LTE_EN, 0);
 	gpio_set_level(GPIO_LTE_W_DISABLE_L, 0);
 }
-DECLARE_DEFERRED(lte_power_suspend);
+DECLARE_DEFERRED(lte_power_assert);
 
-static void lte_function_suspend(void)
+static void lte_function_assert(void)
 {
 	gpio_set_level(GPIO_LTE_FCPO, 0);
-	hook_call_deferred(&lte_power_suspend_data, 100 * MSEC);
+	hook_call_deferred(&lte_power_assert_data, 20 * MSEC);
 }
-DECLARE_DEFERRED(lte_function_suspend);
+DECLARE_DEFERRED(lte_function_assert);
 
-static void wwan_lte_resume_hook(void)
+static void lte_reset_assert(void)
 {
-	/* Turn on WWAN LTE function as we go into S0 from S3/S5. */
-	hook_call_deferred(&lte_function_suspend_data, -1);
-	hook_call_deferred(&lte_power_suspend_data, -1);
-	lte_power_resume();
-	hook_call_deferred(&lte_function_resume_data, 10 * MSEC);
+	gpio_set_level(GPIO_EC_LTE_RST_L, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, wwan_lte_resume_hook, HOOK_PRIO_DEFAULT);
+DECLARE_DEFERRED(lte_reset_assert);
 
-static void wwan_lte_suspend_hook(void)
+static void  wwan_lte_startup(void)
 {
-	/* Turn off WWAN LTE function as we go into S3/S5 from S0. */
-	hook_call_deferred(&lte_power_resume_data, -1);
-	hook_call_deferred(&lte_function_resume_data, -1);
-	hook_call_deferred(&lte_function_suspend_data, 20 * MSEC);
+	/* Turn on WWAN LTE function as we go into S0 from S5. */
+	hook_call_deferred(&lte_reset_assert_data, -1);
+	hook_call_deferred(&lte_function_assert_data, -1);
+	hook_call_deferred(&lte_power_assert_data, -1);
+	lte_power_deassert();
+	hook_call_deferred(&lte_function_deassert_data, 10 * MSEC);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, wwan_lte_suspend_hook, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, wwan_lte_startup, HOOK_PRIO_DEFAULT);
+
+static void wwan_lte_shutdown(void)
+{
+	/* Turn off WWAN LTE function as we go back to S5. */
+	hook_call_deferred(&lte_power_deassert_data, -1);
+	hook_call_deferred(&lte_function_deassert_data, -1);
+	hook_call_deferred(&lte_reset_deassert_data, -1);
+	lte_reset_assert();
+	hook_call_deferred(&lte_function_assert_data, 10 * MSEC);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, wwan_lte_shutdown, HOOK_PRIO_DEFAULT);
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT] = {
 		.channel = 3,
