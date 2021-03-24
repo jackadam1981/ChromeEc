@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f255c9b5_3d12f2b2",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-03-24T10:26:14Z",
+      "side": 1,
+      "message": "OK, will move to board variant.",
+      "parentUuid": "843be2b1_6ce1b291",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 31
+      },
+      "revId": "9d00c8d96c569d61a11b3c1abb3c487f7eec169e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f99879a_ab1b22a0",
         "filename": "board/kracko/gpio.inc",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-24T09:29:14Z",
       "side": 1,
       "message": "Is this power LED?",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "9d00c8d96c569d61a11b3c1abb3c487f7eec169e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd150da1_427dae64",
+        "filename": "board/kracko/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-03-24T10:26:14Z",
+      "side": 1,
+      "message": "NO, this is NC pin, will move to NC pin define.",
+      "parentUuid": "8f99879a_ab1b22a0",
       "range": {
         "startLine": 124,
         "startChar": 5,
