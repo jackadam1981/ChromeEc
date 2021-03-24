@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19c72a7e_ae69a580",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-24T16:13:15Z",
+      "side": 1,
+      "message": "Nit: If there\u0027s a bug for the long-term solution, then a TODO with a bug reference would be good.",
+      "parentUuid": "ec3c7425_4c60abc2",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10c9da1f_ede5f6c8",
         "filename": "baseboard/honeybuns/usb_pd_policy.c",
         "patchSetId": 2
@@ -123,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2638eadf_712fc041",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-24T16:13:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "28b11c58_6f4f35de",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c66f787d_459a85e6",
@@ -154,6 +190,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "c66f787d_459a85e6",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b90dfb_337423e6",
+        "filename": "include/usbc_pd_policy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-24T16:13:15Z",
+      "side": 1,
+      "message": "I think the include guard macro is always supposed to match the filename. The filename still has the \"c\" in it, and that\u0027s what I was referring to.  Sorry for the confusion.",
+      "parentUuid": "c790883e_026f8452",
       "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -224,6 +278,24 @@
       "side": 1,
       "message": "This is just a quick way to get things working. The long turn solution will have better structure.",
       "parentUuid": "3a11b886_72ac5df6",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7493fba3_8a1d4ab8",
+        "filename": "include/usbc_pd_policy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-24T16:13:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "853d2b31_0f85c432",
       "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
