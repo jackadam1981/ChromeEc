@@ -230,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09af0a51_3a717201",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-24T16:28:23Z",
+      "side": 1,
+      "message": "I filed b:183611735 to clean this up once the Zephyr issue is fixed.",
+      "parentUuid": "17bcef07_35080080",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9f6b8bb_3b273d43",
@@ -267,6 +291,30 @@
       "side": 1,
       "message": "This patch also doesn\u0027t cover this check so it remains.(see my comment below)",
       "parentUuid": "a9f6b8bb_3b273d43",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce1bc348_9f511786",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_npcx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-24T16:28:23Z",
+      "side": 1,
+      "message": "Filed b:183611735 to clean this up.",
+      "parentUuid": "05f57fb8_b700a925",
       "range": {
         "startLine": 129,
         "startChar": 0,
@@ -667,6 +715,30 @@
       "side": 1,
       "message": "This patch also doesn\u0027t cover this check so it remains.(see my comment above)",
       "parentUuid": "9c348544_ab791b64",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 6
+      },
+      "revId": "badcfb0289f65990f4b820cfbccade0e620fea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff437520_c63bdb93",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-24T16:28:23Z",
+      "side": 1,
+      "message": "Filed b:183611735 to clean this up.",
+      "parentUuid": "588a1d54_7808a9dc",
       "range": {
         "startLine": 242,
         "startChar": 0,
