@@ -3,6 +3,7 @@
 # found in the LICENSE file.
 """Module for job counters, limiting the amount of concurrent executions."""
 
+import logging
 import multiprocessing
 import os
 import re
@@ -52,6 +53,7 @@ class JobClient:
         kwargs.setdefault('env', os.environ)
         kwargs['env'].update(self.env())
 
+        logging.debug("Running %s", *args)
         return subprocess.Popen(*args, **kwargs)
 
     def run(self, *args, claim_job=True, **kwargs):
