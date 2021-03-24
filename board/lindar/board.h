@@ -11,9 +11,6 @@
 /* Baseboard features */
 #include "baseboard.h"
 
-/* Optional features */
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
-#define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK /* bypass cbi wp check in dev. */
 
 #define CONFIG_VBOOT_EFS2
 
@@ -50,7 +47,7 @@
 
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
-
+#define CONFIG_USB_PD_COMM_LOCKED
 
 /*
  * SN5S30 PPC supports up to 24V VBUS source and sink, however passive USB-C
