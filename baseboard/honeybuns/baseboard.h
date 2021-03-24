@@ -237,8 +237,9 @@ void baseboard_power_button_evt(int level);
 int baseboard_usbc_init(int port);
 int dock_get_mf_preferece(void);
 
-int baseboard_usbc_init(int port);
 int baseboard_ppc_enable_sink_path(int port);
+int baseboard_config_usbc_uf_ppc(void);
+void baseboard_uf_check_state(void);
 
 #endif /* !__ASSEMBLER__ */
 
