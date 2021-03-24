@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "177ce521_0ece451d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-24T18:14:49Z",
+      "side": 1,
+      "message": "Diana, does a bug for the long term solution exist?",
+      "parentUuid": "19c72a7e_ae69a580",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10c9da1f_ede5f6c8",
         "filename": "baseboard/honeybuns/usb_pd_policy.c",
         "patchSetId": 2
@@ -208,6 +226,24 @@
       "side": 1,
       "message": "I think the include guard macro is always supposed to match the filename. The filename still has the \"c\" in it, and that\u0027s what I was referring to.  Sorry for the confusion.",
       "parentUuid": "c790883e_026f8452",
+      "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19f56ae_18097199",
+        "filename": "include/usbc_pd_policy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-03-24T18:14:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62b90dfb_337423e6",
       "revId": "86f50afab89e3d1d9df399c469e6b2515a68d7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
