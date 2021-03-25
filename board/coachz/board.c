@@ -52,6 +52,7 @@ static void ks_interrupt(enum gpio_signal s);
 #include "gpio_list.h"
 
 extern struct pchg_drv ctn730_drv;
+extern int _detection_interval_ms;
 
 struct pchg pchgs[] = {
 	[0] = {
@@ -452,6 +453,36 @@ void board_hibernate(void)
 		ppc_vbus_sink_enable(i, 1);
 }
 
+static void ctn730_change_detection_interval_ms(int status)
+{
+	struct pchg *ctx;
+	int rv;
+	int delay_flag = 0;
+
+	ctx = &pchgs[0];
+
+	/*
+	*After reset CTN730, it need delay time avoid system wake up
+	*from S3 when re-detect stylus.
+	*/
+	if (status == CHIPSET_STATE_SUSPEND) {
+	 if ((ctx->state == PCHG_STATE_DETECTED)
+	    || (ctx->state == PCHG_STATE_CHARGING))
+		delay_flag = 1;
+	}
+
+	rv = ctx->cfg->drv->init(ctx);
+	if (rv == EC_SUCCESS_IN_PROGRESS)
+		ctx->state = PCHG_STATE_RESET;
+	if (rv != EC_SUCCESS_IN_PROGRESS)
+		CPRINTS("ERR: Failed to initialize");
+
+	if (delay_flag) {
+		msleep(CONFIG_CTN730_RESET_DELAY_MS);
+		delay_flag = 0;
+	}
+}
+
 /* Called on AP S0 -> S3 transition */
 static void board_chipset_suspend(void)
 {
@@ -461,6 +492,9 @@ static void board_chipset_suspend(void)
 	 */
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
 	pwm_enable(PWM_CH_DISPLIGHT, 0);
+
+	_detection_interval_ms = CONFIG_CTN730_DETECTION_INTERVAL_MS_S3;
+	ctn730_change_detection_interval_ms(CHIPSET_STATE_SUSPEND);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
@@ -471,6 +505,9 @@ static void board_chipset_resume(void)
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
 	if (pwm_get_duty(PWM_CH_DISPLIGHT))
 		pwm_enable(PWM_CH_DISPLIGHT, 1);
+
+	_detection_interval_ms = CONFIG_CTN730_DETECTION_INTERVAL_MS_S0;
+	ctn730_change_detection_interval_ms(CHIPSET_STATE_ON);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
