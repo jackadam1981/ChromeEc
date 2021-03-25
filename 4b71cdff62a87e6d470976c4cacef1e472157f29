@@ -342,6 +342,30 @@
       },
       "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06ee7aa_3827f295",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-25T17:43:17Z",
+      "side": 1,
+      "message": "Ack, so that basically leaves things like they are no?\n\nIn i2c.h we currently we define I2C_PORT_POWER if there\u0027s an instance of the compatible string. This is basically what you said, we just only add it if the compatible string exists.\n\nIn i2c.c we have the macro to initialize. Since we\u0027re adding the enums manually anyway, I don\u0027t see a need to get the index from the compatible string. If we did it would look something like:\n\n#define I2C_INST_TO_ENUM(inst) \\\n  COND_CODE_1(DT_NODE_HAS_COMPAT(inst, cros_ec_i2c_port_power), (I2C_PORT_POWER), \\\n  (COND_CODE_1(DT_NODE_HAS_COMPAT(inst, cros_ec_i2c_port_one), (I2C_PORT_ONE), \\\n  (COND_CODE_1(DT_NODE_HAS_COMPAT(inst, cros_ec_i2c_port_two), (I2C_PORT_TWO), \\\n  ())))\n\nYou can see how that gets really ugly, so I think the current model is cleanest no?",
+      "parentUuid": "84781d70_760a5ae9",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
