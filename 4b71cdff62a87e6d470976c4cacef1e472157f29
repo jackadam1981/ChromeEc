@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62410052_7c71df2f",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-25T06:57:23Z",
+      "side": 1,
+      "message": "Can\u0027t rename this, this is the upstream compatible string. So I\u0027m really just adding cros,i2c-port-power to the list of compatible strings, but there\u0027s no +\u003d function AFAICT in devicetree.",
+      "parentUuid": "ece26707_dd0a423a",
+      "range": {
+        "startLine": 572,
+        "startChar": 23,
+        "endLine": 572,
+        "endChar": 27
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb3c73e_2f6ec3b7",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-25T06:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71aa8b38_63a49aa5",
+      "range": {
+        "startLine": 572,
+        "startChar": 40,
+        "endLine": 572,
+        "endChar": 44
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19bd912a_b265fd30",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-24T13:58:38Z",
       "side": 1,
       "message": "these macros need documentation",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d4687c9_30fa97c5",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-25T06:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19bd912a_b265fd30",
       "range": {
         "startLine": 18,
         "startChar": 8,
@@ -124,6 +196,30 @@
       "side": 1,
       "message": "would it make sense if we used \"nuvoton,npcx-i2c-port\" instead to initialize all of them?\n\nbut should probably remove \"npcx-\" from the name so this can be common code...",
       "parentUuid": "e9783732_e6392bf4",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311ff78c_57600a39",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-25T06:57:23Z",
+      "side": 1,
+      "message": "Yes, I tried those approaches. I basically created a common compatible string `cros-ec,i2c-port` along with the specific one `cros-ec,i2c-port-power`. I was then looking to do something like DT_FOREACH_* but there doesn\u0027t exist a FOREACH with compatible strings. Not a huge deal, there\u0027s a DT_NUM_INST_STATUS_OKAY(compat) which can tell us how many nodes there are with \u0027okay\u0027 status that match a given compat string. So we could use a for loop to get all of those instances.\n\nThe issue is that we then need to find which sub-compat string exists. This basically boils down to an if...else if... chain of DT_NODE_HAS_COMPAT(inst, compat). This stated to look really ugly and I decided against it.\n\nI\u0027m open to discussion on this, but I feel that the best options are either an alias which we basically say we require an alias of name i2c_port_power, or we use the compatible string approach.\n\nThe up side of the compatible string approach is that if we ever need to write a custom driver for one of these, we can easily add it in. I\u0027m not sure if it\u0027s the best solution, but like Fabio said, it works for now. I\u0027m open to swapping this for a simpler alias for now and seeing if we need to use compatible strings in the future.",
+      "parentUuid": "51bfeaca_06d2d4aa",
       "range": {
         "startLine": 42,
         "startChar": 5,
