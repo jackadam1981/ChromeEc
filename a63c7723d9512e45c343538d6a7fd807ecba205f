@@ -326,6 +326,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "458bd650_da49ed24",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-25T12:37:47Z",
+      "side": 1,
+      "message": "Basically when voltage limit is applied saved_input_voltage !\u003d max_pd_voltage_mv unless max_request_mv was restored manually to saved_input_voltage.\n\nBut I think I understand the idea. We shouldn\u0027t restore previously saved voltage when max_pd_voltage_mv is different than CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV. I implemented that in code, let me know what do you think about it.",
+      "parentUuid": "f288fce9_0a80c091",
+      "range": {
+        "startLine": 723,
+        "startChar": 22,
+        "endLine": 723,
+        "endChar": 41
+      },
+      "revId": "a63c7723d9512e45c343538d6a7fd807ecba205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98c9fc9f_7212140e",
         "filename": "common/battery.c",
         "patchSetId": 2
