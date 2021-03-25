@@ -16,6 +16,24 @@
       "message": "Please add CONFIG_USB_PD_TCPM_PS8815_FORCE_DID to util/config_allowed.txt as a parent CL to this one.  Zephyr requires that we create Kconfig options for any new CONFIG options added to config.h.  However, CONFIG_USB_PD_TCPM_PS8815_FORCE_DID won\u0027t be needed with Zephyr, so we can bypass the check by updating the allow list.",
       "revId": "1c6f6e5d345c550f8babd0ec27f30ced2865e923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a5d389d_41a21ae0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-25T06:25:13Z",
+      "side": 1,
+      "message": "Thanks Keith 😊 I added just now.",
+      "parentUuid": "5ac3a04a_83512be2",
+      "revId": "1c6f6e5d345c550f8babd0ec27f30ced2865e923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
