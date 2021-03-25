@@ -100,6 +100,7 @@ static void board_pwr_btn_interrupt(enum gpio_signal signal)
  */
 const struct power_seq board_power_seq[] = {
 	{GPIO_EN_AC_JACK,               1, 20},
+	{GPIO_EC_DFU_MUX_CTRL,          0, 0},
 	{GPIO_EN_PP5000_A,              1, 31},
 	{GPIO_MST_LP_CTL_L,             1, 0},
 	{GPIO_EN_PP3300_B,              1, 1},
