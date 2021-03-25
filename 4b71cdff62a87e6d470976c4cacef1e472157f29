@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "194aeb84_59ee5869",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-25T22:07:09Z",
+      "side": 1,
+      "message": "The label is technically enough but it makes several assumptions. For example the i2c5_0 port (power) is declared at https://github.com/zephyrproject-rtos/zephyr/blob/master/dts/arm/nuvoton/npcx7.dtsi#L650, there\u0027s no guarantee that this will also be the same label in another board. So using the label forces all the boards to use the same label for all purposes. Especially since we\u0027re working with Zephyr we can\u0027t expect that. So the alternative is for each board to declare their on alias which will replace the map, but then that\u0027s really just moving our map header to devicetree.",
+      "parentUuid": "fca9a88a_bc5fa102",
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71aa8b38_63a49aa5",
