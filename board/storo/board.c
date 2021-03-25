@@ -217,12 +217,95 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
+static int board_tusb544_set(const struct usb_mux *me,
+		mux_state_t mux_state)
+{
+	int rv = EC_SUCCESS;
+	int reg;
+
+	rv = i2c_read8(me->i2c_port, me->i2c_addr_flags,
+			TUSB544_REG_GENERAL6, &reg);
+	if (rv)
+		return rv;
+
+	reg |= TUSB544_VOD_DCGAIN_OVERRIDE;
+	reg &= ~TUSB544_VOD_DCGAIN_SEL;
+	reg |= (TUSB544_VOD_DCGAIN_SETTING_5 << 2);
+
+	rv = i2c_write8(me->i2c_port, me->i2c_addr_flags,
+			TUSB544_REG_GENERAL6, reg);
+	if (rv)
+		return rv;
+
+	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+		rv = tusb544_i2c_field_update8(me,
+					TUSB544_REG_USB3_1_1,
+					TUSB544_EQ_RX_MASK,
+					TUSB544_EQ_RX_DFP_52_UFP_35);
+		if (rv)
+			return rv;
+
+		rv = tusb544_i2c_field_update8(me,
+					TUSB544_REG_USB3_1_1,
+					TUSB544_EQ_TX_MASK,
+					TUSB544_EQ_TX_DFP_52_UFP_35);
+		if (rv)
+			return rv;
+
+		rv = tusb544_i2c_field_update8(me,
+					TUSB544_REG_USB3_1_2,
+					TUSB544_EQ_RX_MASK,
+					TUSB544_EQ_RX_DFP_52_UFP_35);
+		if (rv)
+			return rv;
+
+		rv = tusb544_i2c_field_update8(me,
+					TUSB544_REG_USB3_1_2,
+					TUSB544_EQ_TX_MASK,
+					TUSB544_EQ_TX_DFP_52_UFP_35);
+		if (rv)
+			return rv;
+	}
+
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		rv = tusb544_i2c_field_update8(me,
+					TUSB544_REG_DISPLAYPORT_1,
+					TUSB544_EQ_RX_MASK,
+					TUSB544_EQ_RX_DFP_61_UFP_43);
+		if (rv)
+			return rv;
+
+		rv = tusb544_i2c_field_update8(me,
+					TUSB544_REG_DISPLAYPORT_1,
+					TUSB544_EQ_TX_MASK,
+					TUSB544_EQ_TX_DFP_61_UFP_43);
+		if (rv)
+			return rv;
+
+		rv = tusb544_i2c_field_update8(me,
+					TUSB544_REG_DISPLAYPORT_2,
+					TUSB544_EQ_RX_MASK,
+					TUSB544_EQ_RX_DFP_61_UFP_43);
+		if (rv)
+			return rv;
+
+		rv = tusb544_i2c_field_update8(me,
+					TUSB544_REG_DISPLAYPORT_2,
+					TUSB544_EQ_TX_MASK,
+					TUSB544_EQ_TX_DFP_61_UFP_43);
+		if (rv)
+			return rv;
+	}
+	return EC_SUCCESS;
+}
+
 /* USB Retimer */
 const struct usb_mux usbc1_retimer = {
 	.usb_port = 1,
 	.i2c_port = I2C_PORT_SUB_USB_C1,
 	.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS0,
 	.driver = &tusb544_drv,
+	.board_set = &board_tusb544_set,
 };
 
 /* USB Muxes */
