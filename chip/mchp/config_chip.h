@@ -116,6 +116,22 @@
 /************************************************************************/
 /* Define our flash layout. */
 
+/*
+ * MEC1521H loads firmware using QMSPI controller
+ * CONFIG_SPI_FLASH_PORT is the index into
+ * spi_devices[] in board.c
+ */
+#define CONFIG_SPI_FLASH_PORT 0
+#define CONFIG_SPI_FLASH
+/*
+ * Google uses smaller flashes on chromebook boards
+ * MCHP SPI test dongle for EVB uses 16MB W25Q128F
+ * Configure for smaller flash is OK for testing except
+ * for SPI flash lock bit.
+ */
+ #define CONFIG_FLASH_SIZE_BYTES 524288
+ #define CONFIG_SPI_FLASH_W25X40
+
 /* Protect bank size 4K bytes */
 #define CONFIG_FLASH_BANK_SIZE		0x00001000
 /* Sector erase size 4K bytes */
