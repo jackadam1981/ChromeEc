@@ -102,8 +102,9 @@ main() {
     ver="${CR50_SQA:+SQA/}${CR50_DEV:+DBG/}${CRYPTO_TEST:+CT/}${BOARD}_"
     tool_ver=""
   else
-    ver="STATIC_VERSION"
-    tool_ver="STATIC_VERSION_TOOL"
+    ver="${STATIC_VERSION}"
+    ver_32="${ver:0:31}"
+    tool_ver="${STATIC_VERSION_TOOL}"
   fi
   most_recents=()    # Non empty if any of the component repos is 'dirty'.
   dir_list=( . )   # list of component directories, always includes the EC tree
@@ -177,7 +178,7 @@ main() {
   fi
 
   if [[ -n "${STATIC_VERSION}" ]]; then
-    echo "#define DATE \"STATIC_VERSION_DATE\""
+    echo "#define DATE \"${STATIC_VERSION_DATE}\""
   elif [[ ${#most_recents[@]} != 0  ]]; then
     # There are modified files, use the timestamp of the most recent one as
     # the build version timestamp.
