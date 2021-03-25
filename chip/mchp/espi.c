@@ -43,6 +43,20 @@
 #define CPRINTS(...)
 #endif
 
+/* Default config to use maximum freqeuncy */
+#ifndef CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ
+#define CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ		MCHP_ESPI_CAP1_MAX_FREQ_66M
+#endif
+
+/* Default config to support all modes */
+#ifndef CONFIG_HOSTCMD_ESPI_EC_MODE
+#define CONFIG_HOSTCMD_ESPI_EC_MODE		MCHP_ESPI_CAP1_ALL_MODE
+#endif
+
+/* Default config to support all channels */
+#ifndef CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP
+#define CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP	MCHP_ESPI_CAP0_ALL_CHAN_SUPP
+#endif
 /*
  * eSPI slave to master virtual wire pulse timeout.
  */
@@ -1357,31 +1371,17 @@ void espi_init(void)
 	 */
 	gpio_config_module(MODULE_LPC, 1);
 
-	/* Override Boot-ROM configuration */
-#ifdef CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP
+	/* Config for channel support */
 	MCHP_ESPI_IO_CAP0 = CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP;
-#endif
 
-#ifdef CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ
+	/* Set maximum frequency */
 	MCHP_ESPI_IO_CAP1 &= ~(MCHP_ESPI_CAP1_MAX_FREQ_MASK);
-#if CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ == 25
-	MCHP_ESPI_IO_CAP1 |= MCHP_ESPI_CAP1_MAX_FREQ_25M;
-#elif CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ == 33
-	MCHP_ESPI_IO_CAP1 |= MCHP_ESPI_CAP1_MAX_FREQ_33M;
-#elif CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ == 50
-	MCHP_ESPI_IO_CAP1 |= MCHP_ESPI_CAP1_MAX_FREQ_50M;
-#elif CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ == 66
-	MCHP_ESPI_IO_CAP1 |= MCHP_ESPI_CAP1_MAX_FREQ_66M;
-#else
-	MCHP_ESPI_IO_CAP1 |= MCHP_ESPI_CAP1_MAX_FREQ_20M;
-#endif
-#endif
+	MCHP_ESPI_IO_CAP1 |= CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ;
 
-#ifdef CONFIG_HOSTCMD_ESPI_EC_MODE
+	/* Config for mode support */
 	MCHP_ESPI_IO_CAP1 &= ~(MCHP_ESPI_CAP1_IO_MASK);
 	MCHP_ESPI_IO_CAP1 |= ((CONFIG_HOSTCMD_ESPI_EC_MODE)
-		<< MCHP_ESPI_CAP1_IO_BITPOS);
-#endif
+			<< MCHP_ESPI_CAP1_IO_BITPOS);
 
 #ifdef CONFIG_HOSTCMD_ESPI
 	MCHP_ESPI_IO_PLTRST_SRC = MCHP_ESPI_PLTRST_SRC_VW;
