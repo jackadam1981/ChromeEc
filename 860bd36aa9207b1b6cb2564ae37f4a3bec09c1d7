@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57846da_677f0898",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-03-25T07:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "187598fa_ee48d498",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "860bd36aa9207b1b6cb2564ae37f4a3bec09c1d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "407399f1_7c6f1721",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e9810a_748d255b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-03-25T07:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "407399f1_7c6f1721",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "860bd36aa9207b1b6cb2564ae37f4a3bec09c1d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51ffa30f_0bd1996e",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-25T05:50:02Z",
       "side": 1,
       "message": "Can\u0027t this initialize once, at the beginning?",
+      "range": {
+        "startLine": 1378,
+        "startChar": 0,
+        "endLine": 1384,
+        "endChar": 6
+      },
+      "revId": "860bd36aa9207b1b6cb2564ae37f4a3bec09c1d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ed4f3f_bd51478c",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-03-25T07:17:57Z",
+      "side": 1,
+      "message": "Actually, these are 2 cases: case1:  when Config (CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ ) is defined, but without any corresponding frequency value mentioned.\ncase2: When Config is not defined at all.\nSo can\u0027t be initialized at once in the beginning without checking for config.",
+      "parentUuid": "51ffa30f_0bd1996e",
       "range": {
         "startLine": 1378,
         "startChar": 0,
