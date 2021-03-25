@@ -70,6 +70,24 @@
       "parentUuid": "fa84dfe6_36c77a0d",
       "revId": "e158a5d7892d7e6dd654c30140c9b7da2fff667c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99afa41c_c7afa8d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-25T19:30:01Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to worry about coverage on the actual board, since there are no on-board tests.\n\nI.e., only worrying about native_posix where we have a plethora of \"flash\" and ram is all we need.",
+      "parentUuid": "dae12a72_83ade75f",
+      "revId": "e158a5d7892d7e6dd654c30140c9b7da2fff667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
