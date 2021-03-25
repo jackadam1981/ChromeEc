@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e138f951_8fe3f063",
+        "filename": "baseboard/asurada/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-25T04:26:51Z",
+      "side": 1,
+      "message": "I\u0027m concerned about changing the declaration of board_hibernate_late.\n\nhow about change this to:\n`if (IS_ENABLED(BOARD_ASURADA) \u0026\u0026 board_get_version() \u003c\u003d 1)`, \nand remove __override/__override_proto",
+      "revId": "48711e45225d04159575753cfebda08a4ec07f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
