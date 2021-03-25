@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c04464_bd21d906",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-25T14:27:34Z",
+      "side": 1,
+      "message": "At this point, why wouldn\u0027t you just invoke ninja manually?\n\nI.e., just run \"ninja -C ${BUILD_DIR}/output-...\"",
+      "revId": "e158a5d7892d7e6dd654c30140c9b7da2fff667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
