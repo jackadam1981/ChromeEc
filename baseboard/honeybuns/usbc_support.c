@@ -147,7 +147,7 @@ static void baseboard_uf_manage_vbus(void)
 	 * C2 is attached. When it's attached, this signal will be high. Use
 	 * this level to control PPC VBUS on/off.
 	 */
-	ppc_vbus_source_enable(USB_PD_PORT_UF, level);
+	ppc_vbus_source_enable(USB_PD_PORT_USB3, level);
 	CPRINTS("C2: State = %s", level ? "Attached.SRC " : "Unattached.SRC");
 }
 DECLARE_DEFERRED(baseboard_uf_manage_vbus);
@@ -165,7 +165,7 @@ int baseboard_config_usbc_uf_ppc(void)
 	 * This port is not usb-pd capable, but there is a ppc which must be
 	 * initialized, and keep the VBUS switch enabled.
 	 */
-	rv = ppc_init(USB_PD_PORT_UF);
+	rv = ppc_init(USB_PD_PORT_USB3);
 	if (rv)
 		return rv;
 
