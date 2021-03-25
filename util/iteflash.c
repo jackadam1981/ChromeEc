@@ -15,6 +15,7 @@
 #include <linux/i2c-dev.h>
 #include <linux/i2c.h>
 #include <signal.h>
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -1210,6 +1211,16 @@ failed_read:
 	return res;
 }
 
+static bool is_empty_page(uint8_t *buffer, int size)
+{
+	for (int i = 0; i < size; i++) {
+		if (buffer[i] != 0xFF)
+			return false;
+	}
+
+	return true;
+}
+
 static int command_write_pages(struct common_hnd *chnd, uint32_t address,
 			       uint32_t size, uint8_t *buffer)
 {
@@ -1231,6 +1242,11 @@ static int command_write_pages(struct common_hnd *chnd, uint32_t address,
 		addr_L = address & 0xFF;
 
 		draw_spinner(remaining, size);
+
+		if (is_empty_page(buffer, cnt)) {
+			buffer += cnt;
+			goto skip;
+		}
 
 		/* Write enable */
 		if (spi_flash_command_short(chnd, SPI_CMD_WRITE_ENABLE,
@@ -1288,6 +1304,7 @@ static int command_write_pages(struct common_hnd *chnd, uint32_t address,
 		if (spi_poll_busy(chnd, "write disable for AAI write") < 0)
 			goto failed_write;
 
+skip:
 		address += cnt;
 		remaining -= cnt;
 	}
