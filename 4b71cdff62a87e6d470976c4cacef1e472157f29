@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5dbd856_2bd271bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-25T22:33:10Z",
+      "side": 1,
+      "message": "Oh!! now, I think I know what I missed. I was talking about putting label like cros_ec_i3c_power: power {\n                        i2c-port \u003d \u003c\u0026i2c5_0\u003e;\n                        label \u003d \"POWER\";\n                };\nBut It looks like, I don\u0027t know why, you want to remove named-i2c-ports {} and the child nodes in it.",
+      "parentUuid": "194aeb84_59ee5869",
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71aa8b38_63a49aa5",
