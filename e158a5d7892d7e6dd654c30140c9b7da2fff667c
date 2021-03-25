@@ -16,6 +16,24 @@
       "message": "At this point, why wouldn\u0027t you just invoke ninja manually?\n\nI.e., just run \"ninja -C ${BUILD_DIR}/output-...\"",
       "revId": "e158a5d7892d7e6dd654c30140c9b7da2fff667c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7654b0_6f004bdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-25T15:59:58Z",
+      "side": 1,
+      "message": "Well, because you have to run ninja on several subdirectories. And they aren\u0027t the same for every project. posix-ec for example has build-singleimage, and the others have build-ro and build-rw.  I suppose I could run ninja on build-* if that is dependable.",
+      "parentUuid": "c1c04464_bd21d906",
+      "revId": "e158a5d7892d7e6dd654c30140c9b7da2fff667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
