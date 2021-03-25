@@ -35,7 +35,9 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 	if (!IS_ENABLED(CONFIG_HOSTCMD_EVENTS))
 		return;
 
-	host_set_single_event(EC_HOST_EVENT_USB_MUX);
+	ccprintf("oldmux=0x%x newmux=0x%x", previous_mux_state, mux_state);
+	if (previous_mux_state != mux_state)
+		host_set_single_event(EC_HOST_EVENT_USB_MUX);
 
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
 		return;
