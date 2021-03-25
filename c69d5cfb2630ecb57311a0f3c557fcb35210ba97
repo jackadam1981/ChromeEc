@@ -16,6 +16,24 @@
       "message": "Did you ever write up how we should arrange the files? If so I didn\u0027t see it. If not, I think you should\n\nIs it possible to drop the boards/arm ?\n\nInstead of volteer/volteer, would volteer/ref be possible? (as in reference board)",
       "revId": "c69d5cfb2630ecb57311a0f3c557fcb35210ba97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb09a3a_a69da04e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-25T21:12:53Z",
+      "side": 1,
+      "message": "It\u0027s impossible to drop the boards/arm, Zephyr Cmake system expects this structure.",
+      "parentUuid": "169fbc17_83348355",
+      "revId": "c69d5cfb2630ecb57311a0f3c557fcb35210ba97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
