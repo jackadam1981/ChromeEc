@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2719219_1940db2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 67
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-25T19:55:47Z",
+      "side": 1,
+      "message": "I hadn\u0027t checked this specifically because our ODM partners have been doing USB validation testing. But, I did just check to make sure that  USB device I connect there enumerates.",
+      "parentUuid": "66c5d9dc_dc7283de",
+      "revId": "c38250d1cef7d3fdaeaf01d2460b6b10df735b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ab4f207_7eeaf324",
         "filename": "board/quiche/board.h",
         "patchSetId": 67
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-24T22:39:21Z",
       "side": 1,
       "message": "I\u0027m guessing UF \u003d user facing?  I\u0027m not a huge fan of the name but I\u0027m also blanking on a better one (USB_PD_PORT_TC?  USB_PD_PORT_NO_PD?)",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "c38250d1cef7d3fdaeaf01d2460b6b10df735b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69fe9df8_67c1ee12",
+        "filename": "board/quiche/board.h",
+        "patchSetId": 67
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-25T19:55:47Z",
+      "side": 1,
+      "message": "I changed this from UF to USB3 which to reflect the \"data only\" meaning that was implied with UF.",
+      "parentUuid": "0ab4f207_7eeaf324",
       "range": {
         "startLine": 20,
         "startChar": 8,
