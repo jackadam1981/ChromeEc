@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c9e4e2_0019b62f",
+        "filename": "board/adlrvpp_mchp1521/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-03-25T06:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34cfe17e_d092241d",
+      "range": {
+        "startLine": 47,
+        "startChar": 10,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "0a50f7f48ab9feab4827768327d4baf8607851db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "572f45e7_d1378f32",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "812e0c50_278b42e3",
+        "filename": "board/adlrvpp_mchp1521/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-03-25T06:53:11Z",
+      "side": 1,
+      "message": "When CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ is not defined with any value, code takes default as 20MHZ. In datasheet of MEC1521, there is no info on it\u0027s default value.\nCL is pushed to take  Max  \u0026 all mode support , when no configs are defined - https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2784334",
+      "parentUuid": "572f45e7_d1378f32",
+      "revId": "0a50f7f48ab9feab4827768327d4baf8607851db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "503907ee_0fbb8e28",
         "filename": "board/adlrvpp_mchp1521/gpio.inc",
         "patchSetId": 3
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-19T21:32:42Z",
       "side": 1,
       "message": "these have different meaning on RVP for alternate OS support hence keep them as input",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 25
+      },
+      "revId": "0a50f7f48ab9feab4827768327d4baf8607851db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a52814_3db6a31d",
+        "filename": "board/adlrvpp_mchp1521/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-03-25T06:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "503907ee_0fbb8e28",
       "range": {
         "startLine": 170,
         "startChar": 2,
