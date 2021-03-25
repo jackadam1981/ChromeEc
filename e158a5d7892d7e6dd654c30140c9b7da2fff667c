@@ -52,6 +52,24 @@
       "parentUuid": "cb7654b0_6f004bdc",
       "revId": "e158a5d7892d7e6dd654c30140c9b7da2fff667c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae12a72_83ade75f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-25T16:57:11Z",
+      "side": 1,
+      "message": "Let me try to explain what I am doing.\n\nImagine that our codebase has 3 files. a.c b.c c.c, and 1 test.c, and 2 boards. b1 \u0026 b2.\n\nIf we do a coverage report for test.c, there are 2 ways we can miss lines and make things look better than they really are:\n\n1) test.c might not depend on a.c at all, so the coverage report will be 10% of b.c covered, 90% of c.c covered, but a.c will be missing.\n\n2) test.c might set different #defines than the boards. So if a.c has a #fidef BOARD_B1 in there, those lines will be missing from the report. They won\u0027t show as 0 lines covered, it will just be missing.\n\nlcov will aggregate coverage reports from multiple files into one .info file, and genhtml will take several .info files and combine them into one report.\n\nSo I compile every board with coverage enabled to get all the lines that anyone uses in the report as 0 of x lines covered. However, none of the board will link with coverage enabled, because coverage adds a lot of bloat to the binary and the SOCs are small. But I don\u0027t need the code to run, just compile for this step. Therefore I added a new build target `all.libraries` that only compiles, but doesn\u0027t link. And I need a way to run them. I could do:\nfor i in build/project/*/build-* ; do ninja -C $i all.libraries ; done, or I could use this cl to have zmake find the build dirs for me.\n\nNext I run each test with coverage enabled, and merge the results into the 0 of x lines reports that I got from building the boards. This might bring in some more .c files that don\u0027t matter, if we test things that the boards don\u0027t use, but that doesn\u0027t seem like a big problem.\n\nThen we get a lovely coverage report showing that have 9.5% of lines covered by tests.",
+      "parentUuid": "fa84dfe6_36c77a0d",
+      "revId": "e158a5d7892d7e6dd654c30140c9b7da2fff667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
