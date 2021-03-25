@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbdb46e6_0ac62660",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-25T15:25:16Z",
+      "side": 1,
+      "message": "top of the file do similar things\n#ifndef CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP\n#define CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP MCHP_ESPI_CAP0_ALL_CHAN_SUPP\n#endif",
+      "revId": "c6d6e30db0cc129921fdb347f9d8118062834462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
