@@ -224,21 +224,6 @@
 #undef	CONFIG_CLOCK_SRC_EXTERNAL
 #define	CONFIG_CLOCK_CRYSTAL
 
-/*
- * MEC1521H loads firmware using QMSPI controller
- * CONFIG_SPI_FLASH_PORT is the index into
- * spi_devices[] in board.c
- */
-#define CONFIG_SPI_FLASH_PORT 0
-#define CONFIG_SPI_FLASH
-/*
- * Google uses smaller flashes on chromebook boards
- * MCHP SPI test dongle for EVB uses 16MB W25Q128F
- * Configure for smaller flash is OK for testing except
- * for SPI flash lock bit.
- */
- #define CONFIG_FLASH_SIZE_BYTES 524288
- #define CONFIG_SPI_FLASH_W25X40
 
 /*
  * Enable extra SPI flash and generic SPI
