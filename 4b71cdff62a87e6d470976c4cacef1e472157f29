@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca9a88a_bc5fa102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-03-25T17:48:06Z",
+      "side": 1,
+      "message": "I was talking about \"label:\". I see many usages of DT_NODELABEL in zephyr code(in both core and drivers). I don\u0027t what it is but I think I\u0027m missing something here so that makes me think label is enough ?. something for future ?",
+      "parentUuid": "20fa3c44_a60fa585",
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71aa8b38_63a49aa5",
