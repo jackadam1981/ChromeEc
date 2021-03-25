@@ -126,6 +126,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e211b024_b59f3888",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-25T22:58:39Z",
+      "side": 1,
+      "message": "Yes, we have 3 places when configuring the board. We need to edit the i2c node for the board (1), at the very least setting it\u0027s status to okay, then we have to create the named mapping (2), then we have to map it (per board) in a i2c_map.h (3). These are a lot of steps.\n\nOnce this change gets in I\u0027ll apply it to all the other i2c and gpios to get rid of the named mapping which will remove that node from the dts file AND the *_map.h files per board. The end result is that when enabling the various ports and gpios like we normally would we would just add a new compatible string (though I really wish there was a +\u003d operator for compatibles).",
+      "parentUuid": "43f27c7f_627fefe6",
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71aa8b38_63a49aa5",
