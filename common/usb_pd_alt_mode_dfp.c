@@ -962,12 +962,12 @@ int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 		     VDO_CMDT(CMDT_INIT) |
 		     VDO_SVDM_VERS(pd_get_vdo_ver(port, enter_mode_sop));
 
+	usb_mux_set_safe_mode(port);
+
 	/* For TBT3 Cable Enter Mode Command, number of Objects is 1 */
 	if ((sop == TCPC_TX_SOP_PRIME) ||
 	    (sop == TCPC_TX_SOP_PRIME_PRIME))
 		return 1;
-
-	usb_mux_set_safe_mode(port);
 
 	dev_mode_resp.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP);
 	cable_mode_resp.raw_value =
