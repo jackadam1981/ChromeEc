@@ -87,6 +87,24 @@
       "parentUuid": "a64f8a27_dc47e784",
       "revId": "854c16c9bdcb285b1258e1a88a29737f8f8d603a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e2db9b_3270863a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-03-25T04:29:26Z",
+      "side": 1,
+      "message": "Daisuke has been revert CL:2627638, we still not track with firmware branch.",
+      "parentUuid": "90b54a20_f757b6f6",
+      "revId": "854c16c9bdcb285b1258e1a88a29737f8f8d603a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
