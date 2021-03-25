@@ -270,6 +270,30 @@
       },
       "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "309ef433_e73f2fc3",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-03-25T15:06:04Z",
+      "side": 1,
+      "message": "So if you use DT_INST_FOREACH_STATUS_OKAY to enumerate all the buses with a `cros-ec,i2c-port` compatible, then it should be possible to instantiate the actual devices on the tree with a proper compatible entry (which would be nice cause it means we can start populating the tree and bindings for the actual device nodes in addition to getting rid of named_i2c), and then I think we should be able to refer to the bus using a compatible on the device nodes using DT_INST_BUS_LABEL() (or  DT_BUS_LABEL). Would that work?",
+      "parentUuid": "307d05ff_e32bc7d3",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
