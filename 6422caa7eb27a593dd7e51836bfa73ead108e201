@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9feee7_2fa76f2f",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-25T14:29:57Z",
+      "side": 1,
+      "message": "you should call logging.getLogger first to create a logger associated with this JobClient",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "6422caa7eb27a593dd7e51836bfa73ead108e201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9447706_7ba66bc7",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-25T14:29:57Z",
+      "side": 1,
+      "message": "use zmake.util.repr_command to produce a version of the command which can be copy-pasted into a shell (handles quoting and such)",
+      "range": {
+        "startLine": 56,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 41
+      },
+      "revId": "6422caa7eb27a593dd7e51836bfa73ead108e201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
