@@ -246,6 +246,30 @@
       },
       "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "307d05ff_e32bc7d3",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-25T14:26:13Z",
+      "side": 1,
+      "message": "You\u0027re looking for DT_INST_FOREACH_STATUS_OKAY (https://docs.zephyrproject.org/apidoc/latest/group__devicetree-inst_gaeac7ed0f4a6820a6e5d7dadb6d62d6e7.html#gaeac7ed0f4a6820a6e5d7dadb6d62d6e7)",
+      "parentUuid": "311ff78c_57600a39",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
