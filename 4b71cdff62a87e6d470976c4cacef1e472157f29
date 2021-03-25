@@ -294,6 +294,30 @@
       },
       "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e713a5_2521975f",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-25T15:27:37Z",
+      "side": 1,
+      "message": "Right, so there are a few issues we run into when we do that (left these out at the top because the comment was already getting long).\n\nIn the header (to create the enum) we somehow need to create I2C_PORT_POWER. The common code expects this constant. If we run DT_INST_FOREACH_STATUS_OKAY we need to define DT_DRV_COMPAT. I didn\u0027t explicitly try this, but I believe that I tried this a while back and unsetting it after and setting it to something else breaks things. Even if this works once we iterate through all the cros_ec_i2c_port entries, we still need a macro that would use a very nested COND_CODE_1 to mimic if...else if... to select the right constant to create.\n\nIn the i2c.c, using DT_INST_FOREACH_STATUS_OKAY here is a bit more reasonable with DT_DRV_COMPAT set to `cros_ec_i2c_port`, but then we run into the very long if...else if... chain to find the specific compatible string to map it to I2C_PORT_*.\n\nOverall, these options seemed messy and hard to read. I believe that doing this more explicitly is cleaner (again, open to suggestions and/or corrections).",
+      "parentUuid": "309ef433_e73f2fc3",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
