@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8a6cfe_a701f51b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-25T03:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cf4d6bd_bfb3d2d1",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "f3d09ebe2fef3a52ac34bc0340db6d1344e4b9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ee5786f_62748b33",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-18T17:30:08Z",
       "side": 1,
       "message": "Actually, it can only be enabled on platforms that do not use deep Sx because EC does not need to retain VW_SLP* states across system sleep.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "f3d09ebe2fef3a52ac34bc0340db6d1344e4b9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b65288_a490f4d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-25T03:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ee5786f_62748b33",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7300e3d1_c4aaa9e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-25T03:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a1cd1fa_4c2d306c",
+      "revId": "f3d09ebe2fef3a52ac34bc0340db6d1344e4b9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23ce6540_33113834",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-03-18T17:30:08Z",
       "side": 1,
       "message": "Can you please add details about how `powerinfo` reports incorrect power signal state for SLP_S4 and with this change the correct state is reported. Just helpful for anyone looking at this change in the future.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "f3d09ebe2fef3a52ac34bc0340db6d1344e4b9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b5793b_290be3f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-25T03:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ce6540_33113834",
       "range": {
         "startLine": 15,
         "startChar": 0,
