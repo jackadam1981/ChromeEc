@@ -69,6 +69,24 @@
       "parentUuid": "6fb55023_d304d561",
       "revId": "854c16c9bdcb285b1258e1a88a29737f8f8d603a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b54a20_f757b6f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-03-25T01:18:39Z",
+      "side": 1,
+      "message": "I saw many CLs merged to firmware branch, but look like the firmware branch was broken, I just built lazor board.\nThere is an error:\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld:build/lazor/firmware_image.lds:3340: nonconstant expression for load base\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile.rules:483: build/lazor/ec.obj] Error 1",
+      "parentUuid": "a64f8a27_dc47e784",
+      "revId": "854c16c9bdcb285b1258e1a88a29737f8f8d603a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
