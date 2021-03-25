@@ -43,6 +43,11 @@
 #define CPRINTS(...)
 #endif
 
+/* Default config to use maximum freqeuncy */
+#ifndef CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ
+#define CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ MCHP_ESPI_CAP1_MAX_FREQ_66M
+#endif
+
 /*
  * eSPI slave to master virtual wire pulse timeout.
  */
@@ -1357,36 +1362,43 @@ void espi_init(void)
 	 */
 	gpio_config_module(MODULE_LPC, 1);
 
-	/* Override Boot-ROM configuration */
+/* Default Configuration, when no configs are defined */
+
+/* Support all channels */
+#ifndef CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP
+	MCHP_ESPI_IO_CAP0 = MCHP_ESPI_CAP0_ALL_CHAN_SUPP;
+#endif
+
+/* Override Boot-ROM configuration */
 #ifdef CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP
 	MCHP_ESPI_IO_CAP0 = CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP;
 #endif
 
-#ifdef CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ
+	/* Set maximum frequency */
 	MCHP_ESPI_IO_CAP1 &= ~(MCHP_ESPI_CAP1_MAX_FREQ_MASK);
-#if CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ == 25
-	MCHP_ESPI_IO_CAP1 |= MCHP_ESPI_CAP1_MAX_FREQ_25M;
-#elif CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ == 33
-	MCHP_ESPI_IO_CAP1 |= MCHP_ESPI_CAP1_MAX_FREQ_33M;
-#elif CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ == 50
-	MCHP_ESPI_IO_CAP1 |= MCHP_ESPI_CAP1_MAX_FREQ_50M;
-#elif CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ == 66
-	MCHP_ESPI_IO_CAP1 |= MCHP_ESPI_CAP1_MAX_FREQ_66M;
-#else
-	MCHP_ESPI_IO_CAP1 |= MCHP_ESPI_CAP1_MAX_FREQ_20M;
-#endif
+	MCHP_ESPI_IO_CAP1 |= CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ;
+
+	/* Default config to support all mode */
+	MCHP_ESPI_IO_CAP1 &= ~(MCHP_ESPI_CAP1_IO_MASK);
+#ifndef CONFIG_HOSTCMD_ESPI_EC_MODE
+	MCHP_ESPI_IO_CAP1 |= (MCHP_ESPI_CAP1_ALL_MODE
+			<< MCHP_ESPI_CAP1_IO_BITPOS);
 #endif
 
+/* Default config to set PLT_RST source */
+#ifndef CONFIG_HOSTCMD_ESPI
+	MCHP_ESPI_IO_PLTRST_SRC = MCHP_ESPI_PLTRST_SRC_PIN;
+#endif
+
+/* Support single mode */
 #ifdef CONFIG_HOSTCMD_ESPI_EC_MODE
-	MCHP_ESPI_IO_CAP1 &= ~(MCHP_ESPI_CAP1_IO_MASK);
 	MCHP_ESPI_IO_CAP1 |= ((CONFIG_HOSTCMD_ESPI_EC_MODE)
 		<< MCHP_ESPI_CAP1_IO_BITPOS);
 #endif
 
+/* Config PLTRST Source as Virtual wire */
 #ifdef CONFIG_HOSTCMD_ESPI
 	MCHP_ESPI_IO_PLTRST_SRC = MCHP_ESPI_PLTRST_SRC_VW;
-#else
-	MCHP_ESPI_IO_PLTRST_SRC = MCHP_ESPI_PLTRST_SRC_PIN;
 #endif
 
 	MCHP_PCR_PWR_RST_CTL &=
