@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20fa3c44_a60fa585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-25T07:02:29Z",
+      "side": 1,
+      "message": "Can you elaborate on this? Label is a bit of an overloaded word in devicetree. Do you mean the `label \u003d \"SOME_STRING\"` or the `label:` for the node? Something else?\n\nThe issue with the above 2 labels is that the first (string labels) can\u0027t be de-stringified and used as a variable name (Jett did some work to get that in devicetree but I don\u0027t believe it was ever accepted). The second will be hard to enforce since we don\u0027t want to dictate the node labels. Fabio mentioned using an alias for the node labels which does work, though I personally feel that the compatible string is a bit more future proof. I do agree that for the current use case it isn\u0027t necessary and that an alias will work. Please feel free to chime in on that thread in the i2c.c change.",
+      "parentUuid": "4218b14e_ec5efae8",
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71aa8b38_63a49aa5",
