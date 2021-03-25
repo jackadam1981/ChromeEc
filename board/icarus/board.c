@@ -36,7 +36,6 @@
 #include "registers.h"
 #include "spi.h"
 #include "system.h"
-#include "tablet_mode.h"
 #include "task.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
@@ -382,40 +381,6 @@ struct motion_sensor_t icm426xx_base_gyro = {
 	.min_frequency = ICM426XX_GYRO_MIN_FREQ,
 	.max_frequency = ICM426XX_GYRO_MAX_FREQ,
 };
-
-static int base_accelgyro_config;
-
-void motion_interrupt(enum gpio_signal signal)
-{
-	switch (base_accelgyro_config) {
-	case BASE_GYRO_ICM426XX:
-		icm426xx_interrupt(signal);
-		break;
-	case BASE_GYRO_BMI160:
-	default:
-		bmi160_interrupt(signal);
-		break;
-	}
-}
-
-static void board_detect_motionsensor(void)
-{
-	int val;
-	/* Check base accelgyro chip */
-	if (base_accelgyro_config != BASE_GYRO_NONE)
-		return;
-
-	icm_read8(&icm426xx_base_accel, ICM426XX_REG_WHO_AM_I, &val);
-	if (val == ICM426XX_CHIP_ICM40608) {
-		motion_sensors[BASE_ACCEL] = icm426xx_base_accel;
-		motion_sensors[BASE_GYRO] = icm426xx_base_gyro;
-	}
-	base_accelgyro_config = (val == ICM426XX_CHIP_ICM40608)
-		 ? BASE_GYRO_ICM426XX : BASE_GYRO_BMI160;
-	CPRINTS("Base Accelgyro: %s", (val == ICM426XX_CHIP_ICM40608)
-		 ? "ICM40608" : "BMI160");
-}
-DECLARE_HOOK(HOOK_INIT, board_detect_motionsensor, HOOK_PRIO_DEFAULT);
 
 /* Vconn control for integrated ITE TCPC */
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
