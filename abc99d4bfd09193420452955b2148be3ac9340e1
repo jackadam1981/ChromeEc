@@ -33,6 +33,24 @@
       "message": "CONFIG_KEYBOARD_COL2_INVERTED is always defined for hatch. I think it is safe to use .output_settle_us \u003d 80 for nightfury without #ifdef",
       "revId": "abc99d4bfd09193420452955b2148be3ac9340e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c2458ff_5eb40c10",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-25T08:48:13Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f53f839a_40335d43",
+      "revId": "abc99d4bfd09193420452955b2148be3ac9340e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
