@@ -91,6 +91,7 @@
 #define I2C_PORT_USB_MUX I2C_PORT_USB_C0	/* Required for ITE Mux */
 
 #define CONFIG_USBC_RETIMER_TUSB544		/* C1 Redriver: TUSB544 */
+#define CONFIG_TUSB544_EQ_BY_REGISTER
 
 
 
