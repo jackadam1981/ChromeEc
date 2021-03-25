@@ -194,6 +194,12 @@ const struct pwm_t pwm_channels[] = {
 		.freq_hz = 324, /* maximum supported frequency */
 		.pcfsr_sel = PWM_PRESCALER_C4
 	},
+	[PWM_CH_KBLIGHT] = {
+		.channel = 4,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 324, /* maximum supported frequency */
+		.pcfsr_sel = PWM_PRESCALER_C4
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
