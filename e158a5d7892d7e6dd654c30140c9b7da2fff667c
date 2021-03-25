@@ -88,6 +88,24 @@
       "parentUuid": "dae12a72_83ade75f",
       "revId": "e158a5d7892d7e6dd654c30140c9b7da2fff667c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1258057b_8ff4c6a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-25T20:13:15Z",
+      "side": 1,
+      "message": "But if there is a driver included on some board, and there are zero tests that use it, it won\u0027t be included in the coverage report at all. Look at the --initial flag in `man lcov` for a longer description.",
+      "parentUuid": "99afa41c_c7afa8d6",
+      "revId": "e158a5d7892d7e6dd654c30140c9b7da2fff667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
