@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb68e50a_b0f2b810",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-03-25T16:39:38Z",
+      "side": 1,
+      "message": "\u003e Need careful check\n\nYeah. It takes some consideration about not waking up the system. I think we may issue EVENT_DISABLE then EVENT_ENABLE to update the interval.",
+      "revId": "fc3a7f686908e89c2126ac0fced6d7fae6f00563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
