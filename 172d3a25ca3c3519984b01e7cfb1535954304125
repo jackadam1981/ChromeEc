@@ -706,6 +706,30 @@
       },
       "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09bd529_06485393",
+        "filename": "board/sklrvp_mchp172x/lfw/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-26T17:43:00Z",
+      "side": 1,
+      "message": "fixed in CL:2787050",
+      "parentUuid": "99cbe8ed_286a4cdb",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
