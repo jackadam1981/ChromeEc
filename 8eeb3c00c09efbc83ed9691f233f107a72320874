@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45ea28d1_045aba91",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_it8xxx2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-26T05:25:38Z",
+      "side": 1,
+      "message": "The data structure is not used that it is removed.",
+      "parentUuid": "7200469b_bf6afa9b",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3a24452_a07306ee",
         "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-24T16:21:43Z",
       "side": 1,
       "message": "header needs to be chrome os",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 37
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a3d273_77cf6968",
+        "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-26T05:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3a24452_a07306ee",
       "range": {
         "startLine": 2,
         "startChar": 0,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a3620ec_06de43cf",
+        "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-26T05:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cf98a99_e63f8f19",
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e232b40_84a77281",
         "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/Kconfig.board",
         "patchSetId": 7
@@ -77,6 +143,30 @@
       "writtenOn": "2021-03-24T16:21:43Z",
       "side": 1,
       "message": "copyright header needs fixed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aec270d_610d3633",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/Kconfig.board",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-26T05:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e232b40_84a77281",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80663b6f_e305c015",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/Kconfig.defconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-26T05:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61c55794_b7958414",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a518549_8e237bcb",
         "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/board.cmake",
         "patchSetId": 7
@@ -123,6 +237,30 @@
       "writtenOn": "2021-03-24T16:21:43Z",
       "side": 1,
       "message": "remove this file?\n\nITE does not need ECST, fmu",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 20
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd451894_6890dcf3",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/board.cmake",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-26T05:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a518549_8e237bcb",
       "range": {
         "startLine": 1,
         "startChar": 0,
