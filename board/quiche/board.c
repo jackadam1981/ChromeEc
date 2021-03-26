@@ -97,6 +97,11 @@ static void board_uf_manage_vbus_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&board_uf_manage_vbus_data, 0);
 }
+
+static void board_pwr_btn_interrupt(enum gpio_signal signal)
+{
+	baseboard_power_button_evt(gpio_get_level(signal));
+}
 #endif /* SECTION_IS_RW */
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -243,10 +248,8 @@ void board_reset_pd_mcu(void)
 	msleep(PS8805_FW_INIT_DELAY_MS);
 }
 
-void board_tcpc_init(void)
+void board_enable_usbc_interrupts(void)
 {
-	board_reset_pd_mcu();
-
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USBC_DP_PPC_INT_ODL);
@@ -254,6 +257,27 @@ void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
+}
+
+void board_disable_usbc_interrupts(void)
+{
+	/* Enable PPC interrupts. */
+	gpio_disable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
+	gpio_disable_interrupt(GPIO_USBC_DP_PPC_INT_ODL);
+	/* Enable HPD interrupt */
+	gpio_disable_interrupt(GPIO_DDI_MST_IN_HPD);
+	/* Enable TCPC interrupts. */
+	gpio_disable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
+	/* Enable VBUS control interrupt for C2 */
+	gpio_disable_interrupt(GPIO_USBC_UF_MUX_VBUS_EN);
+}
+
+void board_tcpc_init(void)
+{
+	board_reset_pd_mcu();
+
+	/* Enable board usbc interrupts */
+	board_enable_usbc_interrupts();
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
