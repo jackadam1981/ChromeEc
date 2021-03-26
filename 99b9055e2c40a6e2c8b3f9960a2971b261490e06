@@ -70,6 +70,24 @@
       "parentUuid": "b1484ec2_cef2d7cf",
       "revId": "99b9055e2c40a6e2c8b3f9960a2971b261490e06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "836bf9af_c2c098b5",
+        "filename": "board/sklrvp_mchp172x/lfw/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-26T21:10:56Z",
+      "side": 1,
+      "message": "we did go over this during MEC1521 upload, i think its better to clean up before we merge 1721.\nhow much work are you anticipating ?\nwhat has to be changed in build infra?",
+      "parentUuid": "94abf3c7_d28f7073",
+      "revId": "99b9055e2c40a6e2c8b3f9960a2971b261490e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
