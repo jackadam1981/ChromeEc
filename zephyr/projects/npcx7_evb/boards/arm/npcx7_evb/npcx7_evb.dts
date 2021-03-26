@@ -1,0 +1,339 @@
+/*
+ * Copyright (c) 2020 The Chromium OS Authors
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+
+#include <cros/nuvoton/npcx.dtsi>
+#include <dt-bindings/gpio_defines.h>
+#include <nuvoton/npcx7m6fb.dtsi>
+
+/ {
+	model = "Google npcx7_evb EC";
+
+	aliases {
+		i2c-0 = &i2c0_0;
+		i2c-1 = &i2c1_0;
+		i2c-2 = &i2c2_0;
+		i2c-3 = &i2c3_0;
+		i2c-5 = &i2c5_0;
+		i2c-7 = &i2c7_0;
+	};
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,console = &uart1;
+		zephyr,shell-uart = &uart1;
+		zephyr,flash = &flash0;
+	};
+
+	ec-console {
+		compatible = "ec-console";
+
+		disabled = "hostcmd";
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		sensor {
+			i2c-port = <&i2c0_0>;
+			label = "SENSOR";
+		};
+		usb-c0 {
+			i2c-port = <&i2c1_0>;
+			label = "USB_C0";
+		};
+		usb-c1 {
+			i2c-port = <&i2c2_0>;
+			label = "USB_C1";
+		};
+		usb1-mix {
+			i2c-port = <&i2c3_0>;
+			label = "USB_1_MIX";
+		};
+		power {
+			i2c-port = <&i2c5_0>;
+			label = "POWER";
+		};
+		eeprom {
+			i2c-port = <&i2c7_0>;
+			label = "EEPROM";
+		};
+	};
+
+	named-pwms {
+		compatible = "named-pwms";
+
+		led1_blue {
+			pwms = <&pwm2 0 PWM_POLARITY_INVERTED>;
+			label = "LED1_BLUE";
+			frequency = <4800>;
+		};
+		led2_green  {
+			pwms = <&pwm0 0 PWM_POLARITY_INVERTED>;
+			label = "LED2_GREEN";
+			frequency = <4800>;
+		};
+		led3_red {
+			pwms = <&pwm1 0 PWM_POLARITY_INVERTED>;
+			label = "LED3_RED";
+			frequency = <4800>;
+		};
+		led3_sidesel {
+			pwms = <&pwm7 0 PWM_POLARITY_INVERTED>;
+			label = "LED4_SIDESEL";
+			frequency = <2400>;
+		};
+		kblight {
+			pwms = <&pwm3 0 0>;
+			label = "KBLIGHT";
+			frequency = <2400>;
+		};
+		pwm_fan: fan {
+			pwms = <&pwm5 0 0>;
+			label = "FAN";
+			frequency = <25000>;
+		};
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_charger: charger {
+			label = "ADC_TEMP_SENSOR_CHARGER";
+			channel = <0>;
+		};
+		adc_pp3300_regulator: pp3300_regulator {
+			label = "ADC_TEMP_SENSOR_PP3300_REGULATOR";
+			channel = <1>;
+		};
+		adc_ddr_soc: ddr_soc {
+			label = "ADC_TEMP_SENSOR_DDR_SOC";
+			channel = <8>;
+		};
+		adc_fan: fan {
+			label = "ADC_TEMP_SENSOR_FAN";
+			channel = <3>;
+		};
+	};
+
+	named-temp-sensors {
+		charger {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_CHARGER";
+			temp_fan_off = <40>;
+			temp_fan_max = <55>;
+			temp_host_high = <75>;
+			temp_host_halt = <80>;
+			temp_host_release_high = <65>;
+			adc = <&adc_charger>;
+		};
+		pp3300_regulator {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_PP3300_REGULATOR";
+			temp_fan_off = <40>;
+			temp_fan_max = <55>;
+			temp_host_high = <75>;
+			temp_host_halt = <80>;
+			temp_host_release_high = <65>;
+			adc = <&adc_pp3300_regulator>;
+		};
+		ddr_soc {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_DDR_SOC";
+			temp_fan_off = <35>;
+			temp_fan_max = <50>;
+			temp_host_high = <70>;
+			temp_host_halt = <80>;
+			temp_host_release_high = <65>;
+			adc = <&adc_ddr_soc>;
+		};
+		fan {
+			compatible = "temp-3v3-30k9-47k-4050b";
+			label = "TEMP_SENSOR_FAN";
+			temp_fan_off = <35>;
+			temp_fan_max = <50>;
+			temp_host_high = <70>;
+			temp_host_halt = <80>;
+			temp_host_release_high = <65>;
+			adc = <&adc_fan>;
+		};
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+		ec_wp_l {
+			gpios = <&gpio9 3 GPIO_INPUT>;
+			label = "EC_WP_L";
+		};
+		acok_od {
+			gpios = <&gpio7 4 GPIO_INPUT>;
+			label = "ACOK_OD";
+		};
+		h1_ec_pwr_btn_odl {
+			gpios = <&gpio7 5 GPIO_INPUT>;
+			label = "H1_EC_PWR_BTN_ODL";
+		};
+		ec_lid_open {
+			gpios = <&gpioa 6 GPIO_INPUT>;
+			label = "EC_LID_OPEN";
+		};
+		ec_entering_rw {
+			gpios = <&gpio3 6 GPIO_OUT_LOW>;
+			label = "EC_ENTERING_RW";
+		};
+		brd_id0 {
+			gpios = <&gpio6 7 GPIO_INPUT>;
+			label = "BRD_ID0";
+		};
+		brd_id1 {
+			gpios = <&gpio6 7 GPIO_INPUT>;
+			label = "BRD_ID1";
+		};
+		brd_id2 {
+			gpios = <&gpio6 7 GPIO_INPUT>;
+			label = "BRD_ID2";
+		};
+		shi_cs {
+			gpios = <&gpio5 3 GPIO_INPUT>;
+			label = "EC_SHI_CS";
+		};
+	};
+
+	soc {
+		cros_kb_raw: cros-kb-raw@400a3000 {
+			compatible = "nuvoton,npcx-cros-kb-raw";
+			reg = <0x400a3000 0x2000>;
+			label = "CROS_KB_RAW_0";
+			interrupts = <49 0>;
+			clocks = <&pcc NPCX_CLOCK_BUS_APB1 NPCX_PWDWN_CTL1 0>;
+			/* No KSO2 (it's inverted and implemented by GPIO.) */
+			pinctrl-0 = <&alt7_no_ksi0_sl /* KSI0 PIN31 */
+				     &alt7_no_ksi1_sl /* KSI1 PIN30 */
+				     &alt7_no_ksi2_sl /* KSI2 PIN27 */
+				     &alt7_no_ksi3_sl /* KSI3 PIN26 */
+				     &alt7_no_ksi4_sl /* KSI4 PIN25 */
+				     &alt7_no_ksi5_sl /* KSI5 PIN24 */
+				     &alt7_no_ksi6_sl /* KSI6 PIN23 */
+				     &alt7_no_ksi7_sl /* KSI7 PIN22 */
+				     &alt8_no_kso00_sl /* KSO00 PIN21 */
+				     &alt8_no_kso01_sl /* KSO01 PIN20 */
+				     &alt8_no_kso03_sl /* KSO03 PIN16 */
+				     &alt8_no_kso04_sl /* KSO04 PIN15 */
+				     &alt8_no_kso05_sl /* KSO05 PIN14 */
+				     &alt8_no_kso06_sl /* KSO06 PIN13 */
+				     &alt8_no_kso07_sl /* KSO07 PIN12 */
+				     &alt9_no_kso08_sl /* KSO08 PIN11 */
+				     &alt9_no_kso09_sl /* KSO09 PIN10 */
+				     &alt9_no_kso10_sl /* KSO10 PIN07 */
+				     &alt9_no_kso11_sl /* KSO11 PIN06 */
+				     &alt9_no_kso12_sl /* KSO12 PIN05 */
+				     &alt9_no_kso13_sl /* KSO13 PIN04 */
+				     &alt9_no_kso14_sl /* KSO14 PIN82 */
+				     >;
+			wui_maps = <&wui_io31 &wui_io30 &wui_io27 &wui_io26
+				    &wui_io25 &wui_io24 &wui_io23 &wui_io22>;
+			status = "disabled";
+		};
+
+		fiu0: cros-flash@40020000 {
+			compatible = "nuvoton,npcx-cros-flash";
+			reg = <0x40020000 0x2000>;
+			clocks = <&pcc NPCX_CLOCK_BUS_APB3 NPCX_PWDWN_CTL1 2>;
+			size = <0x80000>;
+			label = "FLASH_INTERFACE_UNIT0";
+			pinctrl-0 = <>;
+		};
+	};
+
+	/*
+	 * The NPCX loader copies our image from ROM to code RAM, so the flash
+	 * node actually represents the code RAM location and size.
+	 * Override the code RAM for the NPCX797FC.
+	 */
+	/delete-node/ flash@10090000;
+	flash0: flash@10070000 {
+		reg = <0x10070000 0x40000>;
+	};
+};
+
+&uart1 {
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&altc_uart1_sl2>; /* Use UART1_SL2 ie. PIN64.65 */
+};
+
+&i2c0_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+};
+
+&i2c1_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+};
+
+&i2c2_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+};
+
+&i2c5_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c7_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+};
+
+&cros_kb_raw {
+	status = "okay";
+};
+
+/* Green LED */
+&pwm0 {
+	status = "okay";
+};
+
+/* Red LED */
+&pwm1 {
+	status = "okay";
+};
+
+/* Blue LED */
+&pwm2 {
+	status = "okay";
+};
+
+/* Keyboard backlight */
+&pwm3 {
+	status = "okay";
+};
+
+/* Fan control */
+&pwm5 {
+	status = "okay";
+};
+
+/* Side selection LED */
+&pwm7 {
+	status = "okay";
+};
+
+&adc0 {
+	status = "okay";
+};
+
+/* Tachemeter for fan speed measurement */
+&tach1 {
+	status = "okay";
+	pinctrl-0 = <&alt3_ta1_sl1>; /* Use TA1 as input pin */
+	port = <NPCX_TACH_PORT_A>; /* port-A is selected */
+	sample_clk = <NPCX_TACH_FREQ_LFCLK>; /* Use LFCLK as sampling clock */
+	pulses_per_round = <2>; /* number of pulses per round of encoder */
+};
