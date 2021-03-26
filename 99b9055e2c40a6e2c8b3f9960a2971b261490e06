@@ -52,6 +52,24 @@
       "parentUuid": "6d73aade_2281c318",
       "revId": "99b9055e2c40a6e2c8b3f9960a2971b261490e06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94abf3c7_d28f7073",
+        "filename": "board/sklrvp_mchp172x/lfw/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-26T20:52:13Z",
+      "side": 1,
+      "message": "understand that, it will need a big surgery, touch other boards\u0027 code and build process.\nsuggest to finish this MEC172x code merging, after that, we can create a new CL based on a new branch, otherwise, different CLs with different boards are interfering each other, make submit process difficult and complicated.",
+      "parentUuid": "b1484ec2_cef2d7cf",
+      "revId": "99b9055e2c40a6e2c8b3f9960a2971b261490e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
