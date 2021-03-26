@@ -163,6 +163,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36690bc7_46210251",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-26T16:39:25Z",
+      "side": 1,
+      "message": "as this function returning the controller for I2C.\n\nwhy not just return mod of MCHP_I2C_CTRL_MAX\n\nint i2c_port_to_controller(int port)\n{\n         if invalid port; return -1;\n\n        return port % MCHP_I2C_CTRL_MAX;\n}\n\nif there is a special assignment let\u0027s do it in board.c with overridable function.",
+      "parentUuid": "c65dc233_a3c8ad34",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7b18bbc_7f71f0be",
         "filename": "board/sklrvp_mchp172x/board.h",
         "patchSetId": 1
