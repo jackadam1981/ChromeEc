@@ -1,0 +1,266 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2ac9cd_b8e3b4d9",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This should be moved to CL#3.",
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0100f6b6_0c65b822",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This should be moved to CL#3.",
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a8b1e9b_9666ef1e",
+        "filename": "common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This should be moved to CL#3.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 69
+      },
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b87816a_bff039b8",
+        "filename": "common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This should be moved to CL#2.",
+      "range": {
+        "startLine": 112,
+        "startChar": 42,
+        "endLine": 112,
+        "endChar": 53
+      },
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e6f127_80a992c0",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This file should be moved to CL#3.",
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f33e11_865b8a6f",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This file should be moved to CL#3.",
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c1a366_f4f3f230",
+        "filename": "common/mkbp_info.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This should be moved to CL#2.",
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c98a607_f5c0a17c",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This should be moved to CL#3.",
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a79daaa_bb8f2d26",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This should be moved to CL#3.",
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd122126_e8143d06",
+        "filename": "include/mkbp_input_devices.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This should be moved to CL#3.",
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ecadd95_d0aa4aff",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This should be moved to CL#3.",
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5acd8e6e_2b41dff8",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "No space before tab.",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 1
+      },
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9bb6194_5b0643bf",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "Use tab instead of spaces.",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 5
+      },
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "275788a1_f6bfcdb4",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "This should be moved to CL#3.",
+      "revId": "ac20c9d01d825e91e5d690c86a1c8b6d89256868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

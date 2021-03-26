@@ -517,6 +517,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efc07c5d_ac3ea017",
+        "filename": "include/mkbp_fifo.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-26T07:10:02Z",
+      "side": 1,
+      "message": "There is actually more than just FIFO. I see at least 3 things which can be organized as follows:\n\nCL#1: MKBP FIFO\nCL#2: MKBP Info\nCL#3: MKBP input devices\n\nI have added comments on each file where I think the changes should go in CL#2 or CL#3. Rest can stay in CL#1.",
+      "parentUuid": "39237a54_36e1d247",
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8888bd6a_5ead1f44",
         "filename": "include/mkbp_fifo.h",
         "patchSetId": 4
