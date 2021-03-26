@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb634ca4_70dfaffc",
+        "filename": "board/sklrvp_mchp172x/lfw/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-26T19:57:41Z",
+      "side": 1,
+      "message": "why is this file needed again?\nautomatically build from chip/mchp/lfw\n\ncombine this CL with CL:2749516",
+      "revId": "99b9055e2c40a6e2c8b3f9960a2971b261490e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
