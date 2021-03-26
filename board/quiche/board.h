@@ -58,6 +58,8 @@ enum  debug_gpio {
 };
 
 void board_debug_gpio(int trigger, int enable, int pulse_usec);
+void board_enable_usbc_interrupts(void);
+void board_disable_usbc_interrupts(void);
 
 #endif /* !__ASSEMBLER__ */
 
