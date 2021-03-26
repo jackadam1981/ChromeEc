@@ -118,6 +118,30 @@
       },
       "revId": "a5227539b44f4608f07d244fbd3b15e8a0ed53ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aed0ae1_11b102a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-03-26T02:38:51Z",
+      "side": 1,
+      "message": "i went back to the volteer battery and it behaves similarly - that\u0027s\nprobably a better test until we have brya batteries with the latest\nfuel gauge firmware. i\u0027ve opened b/183760708 with more details on what\ni\u0027m trying to fix here. one factor to consider is whether we have a spec\nfor how long it should take a battery to come out of cut-off and be\nfully operational.",
+      "parentUuid": "f1cb74fa_f97641ac",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "a5227539b44f4608f07d244fbd3b15e8a0ed53ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
