@@ -228,6 +228,7 @@ enum adc_channel {
 
 extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
+void baseboard_power_button_evt(int level);
 
 /*
  * Configure the host port to present Rd on both CC lines. This function is
