@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c79b9d_90acf2a6",
+        "filename": "common/cbi.c",
+        "patchSetId": 92
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-26T03:55:09Z",
+      "side": 1,
+      "message": "nit: nothing on the first line in multi-line comments.",
+      "range": {
+        "startLine": 497,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 28
+      },
+      "revId": "64af0f7b0f75b17fac95d25e65eb815235014bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9785d141_86902eb7",
+        "filename": "common/cbi.c",
+        "patchSetId": 92
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-26T03:55:09Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 505,
+        "startChar": 9,
+        "endLine": 505,
+        "endChar": 21
+      },
+      "revId": "64af0f7b0f75b17fac95d25e65eb815235014bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bff6f41_c0d2ce05",
+        "filename": "common/cbi.c",
+        "patchSetId": 92
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-26T03:55:09Z",
+      "side": 1,
+      "message": "nit: need a space before this open paren",
+      "range": {
+        "startLine": 519,
+        "startChar": 3,
+        "endLine": 519,
+        "endChar": 4
+      },
+      "revId": "64af0f7b0f75b17fac95d25e65eb815235014bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9472a9_454725a3",
+        "filename": "common/cbi.c",
+        "patchSetId": 92
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-26T03:55:09Z",
+      "side": 1,
+      "message": "Maybe add an else case in case of a typo?",
+      "revId": "64af0f7b0f75b17fac95d25e65eb815235014bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e5ffff_7a004141",
+        "filename": "common/cbi.c",
+        "patchSetId": 92
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-26T03:55:09Z",
+      "side": 1,
+      "message": "The EC_RES_* space is for host command return codes. You should use EC_ERROR_* here instead.",
+      "range": {
+        "startLine": 548,
+        "startChar": 9,
+        "endLine": 548,
+        "endChar": 21
+      },
+      "revId": "64af0f7b0f75b17fac95d25e65eb815235014bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
