@@ -16,6 +16,24 @@
       "message": "What\u0027s the use case for actually specifying the strings?",
       "revId": "b6c31872f29e7ba7eb26d746fc0616ccd4915b09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfec8c22_f352404c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-03-26T12:53:23Z",
+      "side": 1,
+      "message": "I was testing firmware flashing and software sync. Because I had to have firmware built by me, it was easier to build it twice with different static versions to easily check version from EC console.\nI was searching if such feature is available and found this it is, but needed this fix.",
+      "parentUuid": "488d08c8_e01fa171",
+      "revId": "b6c31872f29e7ba7eb26d746fc0616ccd4915b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
