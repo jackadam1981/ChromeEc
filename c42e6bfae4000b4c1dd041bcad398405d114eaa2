@@ -16,6 +16,24 @@
       "message": "can you submit it before CL:2749516 ? ",
       "revId": "c42e6bfae4000b4c1dd041bcad398405d114eaa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbde4a10_83f08824",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-26T17:24:58Z",
+      "side": 1,
+      "message": "I can not move this CL before CL:2749516, as applied \"git rebase -i\" to move CL sequence, git shows:\nCONFLICT (modify/delete): board/sklrvp_mchp172x/lfw/gpio.inc deleted in HEAD and modified in c42e6bfae (mchp: Add gpio_common.inc under chip). Version c42e6bfae (mchp: Add gpio_common.inc under chip) of board/sklrvp_mchp172x/lfw/gpio.inc left in tree.\nCONFLICT (modify/delete): board/sklrvp_mchp172x/gpio.inc deleted in HEAD and modified in c42e6bfae (mchp: Add gpio_common.inc under chip). Version c42e6bfae (mchp: Add gpio_common.inc under chip) of board/sklrvp_mchp172x/gpio.inc left in tree.\nCONFLICT (modify/delete): board/sklrvp_mchp172x/board.h deleted in HEAD and modified in c42e6bfae (mchp: Add gpio_common.inc under chip). Version c42e6bfae (mchp: Add gpio_common.inc under chip) of board/sklrvp_mchp172x/board.h left in tree.\nerror: could not apply c42e6bfae... mchp: Add gpio_common.inc under chip",
+      "parentUuid": "cdebb741_4cc4a012",
+      "revId": "c42e6bfae4000b4c1dd041bcad398405d114eaa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
