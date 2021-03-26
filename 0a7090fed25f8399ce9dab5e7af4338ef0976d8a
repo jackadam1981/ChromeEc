@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da6210f_934a1f3c",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-26T18:51:02Z",
+      "side": 1,
+      "message": "Can you make that a local var in shi_enable ?",
+      "revId": "0a7090fed25f8399ce9dab5e7af4338ef0976d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95dbeb81_c24cee70",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-26T18:51:02Z",
+      "side": 1,
+      "message": "drop ()",
+      "range": {
+        "startLine": 45,
+        "startChar": 6,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "0a7090fed25f8399ce9dab5e7af4338ef0976d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01565592_9db8fc7e",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-26T18:51:02Z",
+      "side": 1,
+      "message": "/* Get protocol information */\n\nYou can use single-line style or multi-line style but not mix them",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "0a7090fed25f8399ce9dab5e7af4338ef0976d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f3d7eea_d1cdf603",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-26T18:51:02Z",
+      "side": 1,
+      "message": "\u0027\\0\u0027",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "0a7090fed25f8399ce9dab5e7af4338ef0976d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
