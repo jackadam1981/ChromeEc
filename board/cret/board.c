@@ -184,9 +184,6 @@ void board_init(void)
 						GPIO_ODR_LOW : GPIO_ODR_HIGH);
 		gpio_set_flags(GPIO_SUB_C1_INT_EN_RAILS_ODL,   GPIO_ODR_HIGH);
 
-		/* Select HDMI option */
-		gpio_set_level(GPIO_HDMI_SEL_L, 0);
-
 		/* Enable interrupt for passing through HPD */
 		gpio_enable_interrupt(GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL);
 	} else {
@@ -198,9 +195,6 @@ void board_init(void)
 		gpio_enable_interrupt(GPIO_SUB_C1_INT_EN_RAILS_ODL);
 		check_c1_line();
 	}
-	/* Enable gpio interrupt for base accelgyro sensor */
-	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
-
 	/* Turn on 5V if the system is on, otherwise turn it off. */
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
 			      CHIPSET_STATE_SOFT_OFF);
