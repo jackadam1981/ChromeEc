@@ -29,3 +29,10 @@ child-binding:
       type: int
       default: 1
       description: Division factor of ADC measurement
+    enum-name:
+      type: string
+      required: true
+      enum:
+      - VBUS
+      - AMON_BMON
+      - PSYS
