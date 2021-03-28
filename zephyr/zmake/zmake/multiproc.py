@@ -1,6 +1,7 @@
 # Copyright 2020 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
+import collections
 import logging
 import os
 import select
@@ -35,11 +36,16 @@ class LogWriter:
         _override_func: A function used to override the log level. The
             function will be called once per line prior to logging and will be
             passed the arguments of the line and the default log level.
+        _written_at_level: dict:
+            key: log_level
+            value: True if output was written at that level
     """
     def __init__(self, logger, log_level, log_level_override_func):
         self._logger = logger
         self._log_level = log_level
         self._override_func = log_level_override_func
+        # A map whether output was printed at each logging level
+        self._written_at_level = collections.defaultdict(lambda: False)
 
     def log_line(self, line):
         """Log a line of output
@@ -58,6 +64,18 @@ class LogWriter:
             # level.
             self._log_level = self._override_func(line, self._log_level)
         self._logger.log(self._log_level, line)
+        self._written_at_level[self._log_level] = True
+
+    def has_writen(self, log_level):
+        """Check if output was written at a certain log level
+
+        Args:
+            log_level: log level to check
+
+        Returns:
+            True if any output was written at that log level, False if not
+        """
+        return self._written_at_level.get(log_level)
 
 
 def _log_fd(fd):
