@@ -87,6 +87,30 @@
       },
       "revId": "fd0df0692daa258322d0b941fdc7a6838c7cb3a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1ac30f_8b404962",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-28T09:37:58Z",
+      "side": 1,
+      "message": "Hi Zhuohao,\n\nAs we talked last week, I create b/183826778 to track \"moving to SSFC/FW_CONFIG for lightbar supporting check\".",
+      "parentUuid": "0ecb8844_ce6edd79",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 31
+      },
+      "revId": "fd0df0692daa258322d0b941fdc7a6838c7cb3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

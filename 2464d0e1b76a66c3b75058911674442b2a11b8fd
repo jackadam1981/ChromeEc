@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11145768_c90fb492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-28T09:37:58Z",
+      "side": 1,
+      "message": "Update patch 5 to solve lightbar flashing a while after plugging AC and resuming from S0ix.\nThis patch add debounce time to replace checking sleep signal.",
+      "revId": "2464d0e1b76a66c3b75058911674442b2a11b8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

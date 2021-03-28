@@ -806,6 +806,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1104e4_79e12b06",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-28T09:37:58Z",
+      "side": 1,
+      "message": "Hi Keith,\nThanks for your comment.\nExtending CONFIG_EXTPOWER_DEBOUNCE_MS is not useful because the wake up source is triggered by EC because EC call extpower_handle_update, then execute host_set_single_event() to wake chipset up.\n\nAs below log, lightbar_update will be called per 200ms. I left timestamp for reference. \nIncreasing CONFIG_EXTPOWER_DEBOUNCE_MS seem just make everything move back.\nEC starts to process power state right after calling extpower_handle_update() as timestamp 201.895551.\nIn timestamp 201.903313, extpower_is_present is already changed to 1 when calling lightbar_update(), but power state keep in S0ix.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n/*Increase CONFIG_EXTPOWER_DEBOUNCE_MS to 100ms)*/\n\n[201.301952  **********lightbar_update (extpower_is_present() \u003d 0)********** ]\n...skip...\n[201.702595  **********lightbar_update (extpower_is_present() \u003d 0)********** ]\n[201.778323 C1: Attached.SNK]\n...skip...\n[201.824933 C1: PE_SNK_Evaluate_Capability]\n[201.825538 C1: PE_SNK_Select_Capability]\n[201.835213 New charge po[201.835576 C1: PE_SNK_Transition_Sink]\n[201.837513 Ramp reset: st1]\n[201.837882 Ramp p1 st1 500mA 3000mA]\n[201.838473 CL: p1 s0 i500 v15000]\n[201.895551  \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003dextpower_handle_update 1\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d ]\n[201.896068 AC on]\n[201.896516 event set 0x0000000000000008]\n[201.900421 power state 4 \u003d S0ix, in 0x007f]\n[201.902032 Release SLP_S3_L]\n[201.902549 Pass thru GPIO_DSW_PWROK: 1]\n[201.903313  **********lightbar_update (extpower_is_present() \u003d 1)********** ]\n[201.941744 event clear B 0x0000000000000008]\n[201.955155 event clear 0x0000000000000008]\n[201.955484 ACPI query \u003d 4]\n[201.965002 event set 0x0000000008000000]\n[201.965677 event clear 0x0000000008000000]\n[201.966019 ACPI query \u003d 28]\n[201.973301 C1: PE_SNK_Ready]\n...skip...\n[201.981367 event clear 0x0000000000200000]\n[201.981707 ACPI query \u003d 22]\n[202.002182 power state 11 \u003d S0ix-\u003eS0, in 0x007f]\n[202.004138 Release SLP_S3_L]\n[202.004586 Pass thru GPIO_DSW_PWROK: 1]\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nI propose another idea that we add a debounce for each lightbar state change.\nThis debounce may delay one HOOK_TICK (200ms). From above log, it takes around 106ms between \"AC on\" and \"power state 11 \u003d S0ix-\u003eS0\"\nThis debounce should be enough for chipset to complete its power state transition.\nRefer Patch 5.",
+      "parentUuid": "6c5152ce_d53ac4a7",
+      "range": {
+        "startLine": 404,
+        "startChar": 5,
+        "endLine": 404,
+        "endChar": 71
+      },
+      "revId": "c821f7c5d8e87e11e8af15e8408a3df8005b492b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df864d6b_932857d6",
