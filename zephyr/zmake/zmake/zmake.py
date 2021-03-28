@@ -254,8 +254,20 @@ class Zmake:
         elif build_after_configure:
             return self.build(build_dir=build_dir)
 
-    def build(self, build_dir, output_files_out=None):
+    def build(self, build_dir, output_files_out=None, fail_on_warnings=False)
         """Build a pre-configured build directory."""
+        def wait_and_check_success():
+            for proc in procs:
+                if proc.wait():
+                    raise OSError(get_failure_msg(proc))
+
+            if (fail_on_warnings and
+                zmake.multiproc.get_output_flag_and_clear(logging.ERROR)):
+                self.logger.warning(
+                    "zmake: Warnings detected in build: aborting")
+                return False
+            return True
+
         project = zmake.project.Project(build_dir / 'project')
 
         procs = []
@@ -286,9 +298,8 @@ class Zmake:
                 log_level_override_func=cmake_log_level_override)
             procs.append(proc)
 
-        for proc in procs:
-            if proc.wait():
-                raise OSError(get_failure_msg(proc))
+        if not wait_and_check_success():
+            return 2
 
         # Run the packer.
         packer_work_dir = build_dir / 'packer'
