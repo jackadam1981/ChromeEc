@@ -69,6 +69,24 @@
       "parentUuid": "812679c1_c10abc6f",
       "revId": "f3b58b746186820ee35b3eb6a70b593315e04d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab101a6_58a4b5f5",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-03-28T22:27:14Z",
+      "side": 1,
+      "message": "Please correct the comment to say S3, then.",
+      "parentUuid": "4f8ddfc5_d281912e",
+      "revId": "f3b58b746186820ee35b3eb6a70b593315e04d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
