@@ -254,7 +254,8 @@ class Zmake:
         elif build_after_configure:
             return self.build(build_dir=build_dir)
 
-    def build(self, build_dir, output_files_out=None, fail_on_warnings=False)
+    def build(self, build_dir, output_files_out=None, fail_on_warnings=False,
+              sequential=False):
         """Build a pre-configured build directory."""
         def wait_and_check_success():
             for proc in procs:
@@ -297,6 +298,10 @@ class Zmake:
                 proc.stderr,
                 log_level_override_func=cmake_log_level_override)
             procs.append(proc)
+
+            if sequential:
+                if not wait_and_check_success():
+                    return 2
 
         if not wait_and_check_success():
             return 2
