@@ -19,6 +19,17 @@ import zmake.toolchains as toolchains
 import zmake.util as util
 
 
+# Output lines from Zephyr that are not normally useful
+# Send any lines that start with these strings to INFO
+ZEPHYR_SUPPRESS = [
+    '-- ',    # device tree messages
+    'Loaded configuration',
+    'Including boilerplate',
+    'Parsing ',
+    'No change to configuration',
+    'No change to Kconfig header',
+    ]
+
 def ninja_log_level_override(line, default_log_level):
     """Update the log level for ninja builds if we hit an error.
 
@@ -48,6 +59,9 @@ def ninja_log_level_override(line, default_log_level):
     # dopey ninja puts errors on stdout, so fix that. It does not look
     # likely that it will be fixed upstream:
     # https://github.com/ninja-build/ninja/issues/1537
+    # Try to drop output about the device tree
+    elif any([line.startswith(x) for x in ZEPHYR_SUPPRESS]):
+        return logging.INFO
     elif line.split()[0] not in ["Memory", "FLASH:", "SRAM:", "IDT_LIST:"]:
         return logging.ERROR
     return default_log_level
