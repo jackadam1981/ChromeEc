@@ -212,10 +212,13 @@ enum pwm_channel {
 	PWM_CH_COUNT
 };
 
+<<<<<<< HEAD   (19cf18 Lazor: support factory keyboard test.)
 /* Custom function to indicate if sourcing VBUS */
 int board_is_sourcing_vbus(int port);
 /* Enable VBUS sink for a given port */
 int board_vbus_sink_enable(int port, int enable);
+=======
+>>>>>>> CHANGE (c8f5bc Add a common header for board_vbus_sink_enable())
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 /* Base detection interrupt handler */

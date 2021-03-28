@@ -182,4 +182,28 @@ static inline int usb_charger_ramp_max(int port, int supplier, int sup_curr)
  */
 void usb_charger_reset_charge(int port);
 
+<<<<<<< HEAD   (19cf18 Lazor: support factory keyboard test.)
+=======
+/**
+ * Check if a particular port is sourcing VBUS
+ *
+ * This function is typically defined in the board file
+ *
+ * @param port port number
+ * @return 0 if not source, non-zero if sourcing
+ */
+int board_is_sourcing_vbus(int port);
+
+/**
+ * Enable VBUS sink for a given port
+ *
+ * This function is typically defined in the board file
+ *
+ * @param port port number
+ * @param enable 0 to disable, 1 to enable
+ * @return EC_SUCCESS if OK, EC_ERROR_INVAL if @port is invalid
+ */
+int board_vbus_sink_enable(int port, int enable);
+
+>>>>>>> CHANGE (c8f5bc Add a common header for board_vbus_sink_enable())
 #endif  /* __CROS_EC_USB_CHARGE_H */
