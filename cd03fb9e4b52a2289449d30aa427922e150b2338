@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a459649_62214dc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T18:16:43Z",
+      "side": 1,
+      "message": "I had to add an override file for a new board. Since the lack of this file broke the builder, I think our dependency handling is at least correct for clean builds. I\u0027m still curious whether it\u0027s doing something weird for incremental builds.",
+      "revId": "cd03fb9e4b52a2289449d30aa427922e150b2338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
