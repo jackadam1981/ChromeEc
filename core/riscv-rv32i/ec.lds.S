@@ -271,6 +271,30 @@ SECTIONS
 
 	__data_lma_start = .;
 
+#if defined(CONFIG_PRESERVE_LOGS) || defined(CONFIG_PRESERVE_LOGS_ON_FLASH)
+	.preserve_logs(NOLOAD) : {
+		/*
+		 * The address of the preserved logs is fixed.
+		 *
+		 * NOTE:
+		 * We sort logs data in this section because we hope RO and RW
+		 * images will always fix the data in the same address.
+		 * But once RO is locked, how can we guarantee developers never
+		 * touch the data in RW (eg. change tx buffer size)?
+		 */
+		. = ALIGN(8);
+		__preserved_logs_start = .;
+		*(SORT(.preserved_logs.*))
+		. = ALIGN(8);
+		__preserved_logs_end = .;
+	} > IRAM
+	__preserved_logs_size = __preserved_logs_end - __preserved_logs_start;
+#ifdef CONFIG_PRESERVE_LOGS_ON_FLASH
+	ASSERT(__preserved_logs_size <= CHIP_FLASH_PRESERVE_LOGS_SIZE,
+	       "Not enough flash space to save EC logs.")
+#endif
+#endif
+
 	.data : {
 		. = ALIGN(4);
 		__data_start = .;

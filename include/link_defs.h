@@ -145,7 +145,13 @@ extern void *__dram_bss_end;
 
 #endif /* __CROS_EC_LINK_DEFS_H */
 
-#ifdef CONFIG_PRESERVE_LOGS
+#ifdef CONFIG_PRESERVE_LOGS_ON_FLASH
+/* preserved_logs section. */
+extern const char __preserved_logs_start[];
+extern const char __preserved_logs_size[];
+#endif
+
+#if defined(CONFIG_PRESERVE_LOGS) || defined(CONFIG_PRESERVE_LOGS_ON_FLASH)
 #define __preserved_logs(name)                                                 \
 	__attribute__((section(".preserved_logs." STRINGIFY(name))))
 #else
