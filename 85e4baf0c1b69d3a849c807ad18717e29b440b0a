@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "93deb8ac_6c015fd5",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-29T22:36:26Z",
+      "side": 0,
+      "message": "Well, this was always a level-triggered interrupt being treated as edge-triggered at the GPIO-level. \n\nBut now, since there is this OC which will de-assert once we read no matter what, and re-assert 10ms later, we can\u0027t rely on this signal (since it will de-assert even if the OC is still present).\n\nBasically we can remove this check since this signal de-asserting doesn\u0027t mean the interrupts are cleared. I suppose this signal would be re-asserted 10ms later though, so we might be able to use that.",
+      "parentUuid": "f4269af4_6a9ea1ac",
+      "revId": "85e4baf0c1b69d3a849c807ad18717e29b440b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fe9ae0da_cca4cd55",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-29T22:21:17Z",
       "side": 0,
       "message": "I think this is the right understanding of removing these reads. Let me know if you had something else in mind.\n\nIn the current code, we reread the registers prior to scheduling the deferred handler. That means that the only bits observed on line 576 would be ones that were reasserted after being read on line 561 (presumably due to not being fully handled). When the deferred function was scheduled, it would reread the registers to see if anything still needed to be handled (had been reasserted between syv682x_handle_interrupt calls). To finish the process, each register was read 2-4 times over 1-2 handler calls, assuming nothing else happened.\n\nIn the new code, we re-read the registers during the deferred handler call, getting the bits that reasserted after the read in the previous handler call. Each register is read 2 times over 2 handler calls.\n\nThis means we\u0027ll almost certainly go through one cycle of deferred call but reduce the overall number of reads.",
+      "revId": "85e4baf0c1b69d3a849c807ad18717e29b440b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4138bf59_3813f8a4",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-29T22:36:26Z",
+      "side": 0,
+      "message": "Yes your understanding is correct. The minimum # of reads was always 2. And it will continue to be, the reads are now just spaced out over 15ms instead of 1ms or whatever. The # of reads will be less than or equal to what it is now\n\nI don\u0027t think there is a way to avoid doing the 1 cycle unless we remove the SW deglitch. We need to wait at least 10ms between reads to make sure the alert is gone.",
+      "parentUuid": "fe9ae0da_cca4cd55",
       "revId": "85e4baf0c1b69d3a849c807ad18717e29b440b0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
