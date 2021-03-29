@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aed5f4f_0a62d28b",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-03-29T17:32:03Z",
+      "side": 1,
+      "message": "As I said in other CL reviews, we should refrain from i2c scanning at boot, esp. for Kionix sensors: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2606166",
+      "revId": "04661a072ecc00ef42112ceb223095808190ff68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
