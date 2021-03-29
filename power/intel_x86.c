@@ -561,6 +561,8 @@ __override void power_chipset_handle_host_sleep_event(
 {
 	power_board_handle_host_sleep_event(state);
 
+	ccprintf("=== %s: state=%d timeout=%d\n", __func__, state, ctx->sleep_timeout_ms);
+
 #ifdef CONFIG_POWER_S0IX
 	if (state == HOST_SLEEP_EVENT_S0IX_SUSPEND) {
 		/*
