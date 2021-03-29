@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6464272f_c30ff165",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-29T22:52:30Z",
+      "side": 1,
+      "message": "We see enumeration issues with coldboot and warmboot for MBR cable without this patch",
+      "parentUuid": "9a329199_3fe5d7e2",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d61b2d6_b3cb02a5",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1261e3d_f2c2c958",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-29T22:52:30Z",
+      "side": 1,
+      "message": "Updated the comment",
+      "parentUuid": "4d61b2d6_b3cb02a5",
+      "range": {
+        "startLine": 966,
+        "startChar": 27,
+        "endLine": 967,
+        "endChar": 23
+      },
+      "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "779350d5_f8a4ce44",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-03-29T21:32:28Z",
       "side": 1,
       "message": "Do you have a spec citation for this, similar to the one for Enter Mode? I know we were already doing it, but I actually don\u0027t see a reference to USB safe state in the Enter USB AMS diagrams.\n\nI\u0027m particularly interested in a citation for which SOPs we should do this for. What I think we were trying to do for TBT (and this CL fixes) is enter safe mode before every Enter Mode REQ and enter TBT mode after every Enter Mode ACK. That sounds kind of silly, but it\u0027s what the spec requires.\n\nThe existing USB code would only enter safe mode prior to the SOP Enter_USB, and the new code will only do it prior to whatever Enter_USB comes first in the sequence (SOP or SOP\u0027). The code will continue to wait to enter USB mode until the SOP ACK. That\u0027s different than what we do for alt modes, and I can\u0027t find where the spec clarifies.",
+      "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e62f740_af108d28",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-29T22:52:30Z",
+      "side": 1,
+      "message": "Added with TODO, with data reset we wouldn\u0027t need usb_mux_set_safe_mode(). But till then, since we are already in USB mode wanting to enter into USB4 mode, we would need to set the mux to safe state (fig7 - SAS document)\n\nWith TOT, we enter TBT SOP\u0027 -\u003e Enter TBT SOP\u0027\u0027-\u003e Enter safe mode -\u003e Enter TBT SOP -\u003eSet mux, retimer to TBT (same for USB4).\n\nWith this patch, we Enter safe mode-\u003e enter TBT SOP\u0027-\u003e enter TBT SOP\u0027\u0027-\u003eEnter TBT SOP-\u003e Set mux and retimer to TBT(same for USB4) -- This flow is mentioned in the TGL PD Controller Interface Requirements for Integrated USB-C spec\n\nI don\u0027t think we every did the enter safe mode before every Enter Mode REQ - We do disconnect mode before every Exit mode Req and enter USB mode after every ack.",
+      "parentUuid": "779350d5_f8a4ce44",
       "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
