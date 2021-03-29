@@ -16,6 +16,24 @@
       "message": "Similar to CL:2789799. board_vbus_sink_enable() is used inside board/ and baseboard/. Moving the definition outside of board/ and baseboard/ weakens the code\u0027s cohesion.",
       "revId": "d638be3e4feac8b57c11d8b8665580b46aab1a1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9534719e_f3331dc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T18:34:56Z",
+      "side": 1,
+      "message": "This is just the declaration, not the definition.  Seems like the right call here as the function should be declared where it ultimately gets used, and an appropriate board-specific definition should be created.",
+      "parentUuid": "5909f2e0_2a1f10d8",
+      "revId": "d638be3e4feac8b57c11d8b8665580b46aab1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
