@@ -16,6 +16,24 @@
       "message": "Let\u0027s just invoke ninja manually if you don\u0027t actually want to do the normal build path\n\nAlternatively, bake all the coverage support in directly so that zmake does the right thing when run with \"zmake coverage\"?",
       "revId": "691597d9eb6be1268ce2537109028727ad9d9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31f4377_ca72a318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-29T21:19:06Z",
+      "side": 1,
+      "message": "Alright, I\u0027ll change the code-coverage.md instructions to run ninja for now, and work on implementing zmake coverage.",
+      "parentUuid": "047bf679_29199847",
+      "revId": "691597d9eb6be1268ce2537109028727ad9d9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
