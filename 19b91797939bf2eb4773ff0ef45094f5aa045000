@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59bbd5a5_06327666",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T15:35:51Z",
+      "side": 1,
+      "message": "ideally this should happen with -j1\n\nthere\u0027s just a slight issue that the jobs get released as soon as the process starts. we should fix that instead by wrapping the complete invocation with .get_job()\n\ni.e., makes no sense for jobclient.popen to have a claim_job parameter, and if we refactor that you\u0027ll get what you want",
+      "revId": "19b91797939bf2eb4773ff0ef45094f5aa045000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
