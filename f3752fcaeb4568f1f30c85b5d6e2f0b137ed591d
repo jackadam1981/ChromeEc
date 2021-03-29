@@ -16,6 +16,24 @@
       "message": "Can we enable this for all boards using 5000 as default?",
       "revId": "f3752fcaeb4568f1f30c85b5d6e2f0b137ed591d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7946cbe0_78ce4726",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-03-29T07:38:47Z",
+      "side": 1,
+      "message": "I don\u0027t think so. First of all enabling this on other boards will break PDVbusRequest.shutdown test (I fixed it only for boards in this commit see CL:2753988, CL:2751523). Furthermore, there are boards (like flapjack, kukui) which are reducing voltage on different conditions, so enabling this as default would result in conflict between these two mechanisms.",
+      "parentUuid": "b5f5b7a4_9ec9fe2d",
+      "revId": "f3752fcaeb4568f1f30c85b5d6e2f0b137ed591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
