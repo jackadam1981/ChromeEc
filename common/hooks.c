@@ -145,12 +145,20 @@ void hook_notify(enum hook_type type)
 #endif
 }
 
+extern const char sleep_transition_timeout_data;
 int hook_call_deferred(const struct deferred_data *data, int us)
 {
 	int i = data - __deferred_funcs;
+	bool deferr_sleep_timeout_func =
+	(data == (const struct deferred_data *)&sleep_transition_timeout_data);
 
 	if (data < __deferred_funcs || data >= __deferred_funcs_end)
 		return EC_ERROR_INVAL;  /* Routine not registered */
+
+	if (deferr_sleep_timeout_func) {
+		if ((us != -1) && (us != CONFIG_SLEEP_TIMEOUT_MS * MSEC))
+			ccprints("!!! Input unexpected deferring time(us): %d !!!", us);
+	}
 
 	if (us == -1) {
 		/* Cancel */
@@ -158,6 +166,18 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 	} else {
 		/* Set alarm */
 		__deferred_until[i] = get_time().val + us;
+
+		if (deferr_sleep_timeout_func) {
+			uint64_t time_now = get_time().val;
+
+			/*
+			 * time deferred should be larger than 9.x seconds
+			 * from current time.
+			 */
+			if (__deferred_until[i] < (time_now + HOOK_TICK_INTERVAL))
+				ccprints("!!! time now/(time deferred) : %.6lld/(%.6lld) !!!",
+				time_now, __deferred_until[i]);
+		}
 		/*
 		 * Flag that hook_call_deferred() has been called.  If the hook
 		 * task is already active, this will allow it to go through the
@@ -195,8 +215,14 @@ void hook_task(void *u)
 		/* Handle deferred routines */
 		for (i = 0; i < DEFERRED_FUNCS_COUNT; i++) {
 			if (__deferred_until[i] && __deferred_until[i] < t) {
+				const struct deferred_data *p =
+					(const struct deferred_data *)&sleep_transition_timeout_data
 				CPRINTS("hook call deferred 0x%pP",
 					__deferred_funcs[i].routine);
+
+				if (__deferred_funcs[i].routine == p->routine)
+					ccprints("!!! on hooks task: time now/(time deferred) : %.6lld/(%.6lld) !!!",
+					t, __deferred_until[i]);
 				/*
 				 * Call deferred function.  Clear timer first,
 				 * so it can request itself be called later.
