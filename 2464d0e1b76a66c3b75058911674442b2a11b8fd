@@ -16,6 +16,52 @@
       "message": "Update patch 5 to solve lightbar flashing a while after plugging AC and resuming from S0ix.\nThis patch add debounce time to replace checking sleep signal.",
       "revId": "2464d0e1b76a66c3b75058911674442b2a11b8fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5243d535_32d77aef",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-29T16:47:53Z",
+      "side": 1,
+      "message": "May i know why this function is needed? Which path will require this?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "2464d0e1b76a66c3b75058911674442b2a11b8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3806d09a_6fe45acb",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-29T16:47:53Z",
+      "side": 1,
+      "message": "Can use `chipset_in_state(CHIPSET_STATE_ANY_OFF) ? 0 : 1;` instead?",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "2464d0e1b76a66c3b75058911674442b2a11b8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
