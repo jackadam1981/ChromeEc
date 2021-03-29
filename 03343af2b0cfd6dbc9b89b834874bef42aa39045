@@ -87,6 +87,30 @@
       },
       "revId": "03343af2b0cfd6dbc9b89b834874bef42aa39045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73bb12ed_474fc8dd",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-03-29T18:40:51Z",
+      "side": 1,
+      "message": "except item 3:\n\ndefine below function in chip/mchp/i2c_chip.h\n__override_proto int board_i2c_p2c(int port);",
+      "parentUuid": "87871ddb_3d1b224c",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 939,
+        "endChar": 0
+      },
+      "revId": "03343af2b0cfd6dbc9b89b834874bef42aa39045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
