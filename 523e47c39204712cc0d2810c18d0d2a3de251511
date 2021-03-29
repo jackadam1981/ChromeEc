@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1d4b19_028844a6",
+        "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-29T20:29:13Z",
+      "side": 1,
+      "message": "Instead of creating this enum, what about creating an \"adc_map.h\" file, similar to the I2C bus names?  This would be temporary until we convert the ADC driver to use real device tree references.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "523e47c39204712cc0d2810c18d0d2a3de251511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
