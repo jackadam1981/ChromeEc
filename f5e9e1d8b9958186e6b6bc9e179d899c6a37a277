@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dcb58b5_1c397641",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T15:02:11Z",
+      "side": 1,
+      "message": "where does this get defined? does it need to go in kconfig?",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "f5e9e1d8b9958186e6b6bc9e179d899c6a37a277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5523227b_580cbc99",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T15:02:11Z",
+      "side": 1,
+      "message": "use IS_ENABLED instead of ifdef, this is very hard to read",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "f5e9e1d8b9958186e6b6bc9e179d899c6a37a277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552b1b56_3bdcfa91",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T15:02:11Z",
+      "side": 1,
+      "message": "line needs indented",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "f5e9e1d8b9958186e6b6bc9e179d899c6a37a277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
