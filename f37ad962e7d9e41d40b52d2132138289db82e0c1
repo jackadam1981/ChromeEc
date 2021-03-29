@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8194dc4e_25bb1119",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T20:09:58Z",
+      "side": 1,
+      "message": "Please comment this with a brief description of the problem and workaround and a reference to the bug that has further details.",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08059e7_f76f9565",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T20:09:58Z",
+      "side": 1,
+      "message": "I don\u0027t know if we have any boards with multiple chargers of different types, but in that case, this would toggle discharge on AC for all chargers, not just ISL9241s. What are the implications of that?",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552251ca_9ecaf8e3",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T20:09:58Z",
+      "side": 1,
+      "message": "I don\u0027t see reference to a 50 ms wait time in the bug. Is there a particular reason you chose that?",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a523e2_7c53607b",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T20:09:58Z",
+      "side": 1,
+      "message": "It sounds from the bug like the root cause of this problem is the charging circuit on the reference design, not the device itself. As such, I think the more appropriate place for this would be in baseboard/volteer/baseboard.c.",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
