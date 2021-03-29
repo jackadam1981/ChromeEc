@@ -16,6 +16,213 @@
       "message": "Jun is taking one day off today. In order to speed up the progress of code review. I have submitted the new patch based on Simon\u0027s comments. There\u0027re few unresolved items and Nuvoton will update them soon. ",
       "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ba3441_d30e0564",
+        "filename": "zephyr/drivers/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T14:59:16Z",
+      "side": 1,
+      "message": "what\u0027s stopping us from sending this driver upstream?",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c36c52d_a4dd256d",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T14:59:16Z",
+      "side": 1,
+      "message": "can we use Zephyr\u0027s logging system instead?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd8b966f_b9757df7",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T14:59:16Z",
+      "side": 1,
+      "message": "afaict, there is no reason that this should be volatile\n\nalso, please make static",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 8
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19b3a40_e267552a",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T14:59:16Z",
+      "side": 1,
+      "message": "line is overindented ... you can try running clang-format to fix this, which is already setup for linux kernel style in this repo",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 6
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe1b01a_34e183a2",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T14:59:16Z",
+      "side": 1,
+      "message": "indent should align with the ( above (again, you can run clang-format to fix this automatically)",
+      "range": {
+        "startLine": 215,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 5
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89f100f_c5c456d7",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T14:59:16Z",
+      "side": 1,
+      "message": "underindented... think it should be one tab",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 8
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7239409d_d7aa9e50",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T14:59:16Z",
+      "side": 1,
+      "message": "use braces as the if above has them",
+      "range": {
+        "startLine": 592,
+        "startChar": 3,
+        "endLine": 593,
+        "endChar": 9
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f18bdd_cef4addc",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T14:59:16Z",
+      "side": 1,
+      "message": "use braces as if above has them",
+      "range": {
+        "startLine": 621,
+        "startChar": 3,
+        "endLine": 623,
+        "endChar": 31
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae558371_0587f94e",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T14:59:16Z",
+      "side": 1,
+      "message": "lines are underindented",
+      "range": {
+        "startLine": 907,
+        "startChar": 0,
+        "endLine": 907,
+        "endChar": 6
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
