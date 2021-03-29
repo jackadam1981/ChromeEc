@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a11ca45c_48159531",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T21:50:38Z",
+      "side": 1,
+      "message": "Nit: If the hook is going to be in this file, I think between the driver functions and console command would be a more natural place for it than after the driver struct.",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8194dc4e_25bb1119",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 3
@@ -83,6 +100,24 @@
       "side": 1,
       "message": "I think this is an IC issue actually; this behavior apparently has some layout dependence which may be why we see it now but didn\u0027t catch it on the reference. But if there is no harm in doing this then we should do it for all devices. \n\nNot going to argue about where it should go, just that the bug could affect all boards, not just Volteer-based ones.\n\nBut, regarding this line, would this only happen when the chipset is shutdown? What if we reach 100% battery after the AP is already off? Also I think we might want this in S0ix as well, but we\u0027d need to test that.",
       "parentUuid": "c2a523e2_7c53607b",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f726ee_5989387a",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T21:50:38Z",
+      "side": 1,
+      "message": "\u003e I think this is an IC issue actually ...\n\nIn that case, this file is probably the right place for it.\n\n\u003e But, regarding this line, would this only happen when the chipset is shutdown? What if we reach 100% battery after the AP is already off? Also I think we might want this in S0ix as well, but we\u0027d need to test that.\n\nI think my understanding of the bug (and this part) is pretty rudimentary. If the battery is fully charged, is it always wrong for the part to be CCM instead of DCM? If so, does it only cause a significant problem in S5 (due to a significant increase in power consumption)?\n\nIf it\u0027s always wrong not to switch when we\u0027re fully charged, and we can get into the bad state by reaching full charge in any power state, then right hook to HOOK is probably HOOK_BATTERY_SOC_CHANGE.",
+      "parentUuid": "8bf9a786_bd2641a4",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
