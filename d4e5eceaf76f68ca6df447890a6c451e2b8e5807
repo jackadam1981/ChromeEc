@@ -16,6 +16,24 @@
       "message": "I would have expected this by itself to break every board before I added the empty vif_override.xml files. However, the rule seemed to treat the non-existent board/foo/vif_override.xml as up-to-date, and therefore, build/foo/foo_vif.xml didn\u0027t need to be updated. Removing the already-built foo_vif.xml files broke the build until I added stub override files.\n\nIn another makefile outside the chroot, if I create a nonexistent dep for an existing target, make gives me an error when I run it.\n\nDo we have something set up to have make treat missing deps as up-to-date? I don\u0027t see anything like that for vif_override.xml.",
       "revId": "d4e5eceaf76f68ca6df447890a6c451e2b8e5807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca7a04c_0fe0efae",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T16:06:20Z",
+      "side": 1,
+      "message": "Aseda, do you know if there\u0027s anything in our build system that would explain this?",
+      "parentUuid": "65bb62c6_278c8d4f",
+      "revId": "d4e5eceaf76f68ca6df447890a6c451e2b8e5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
