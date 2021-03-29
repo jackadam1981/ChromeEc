@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a86bdd43_f38e6fbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6701471f_421e0c1f",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cae3d66c_1b150240",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d53cc3_ce8dab73",
+        "filename": "zephyr/drivers/cros_shi/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd36c3f7_554ca74e",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f805d9d1_a8d6c0bb",
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "087b2c98_8765c072",
+        "filename": "zephyr/drivers/cros_shi/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f805d9d1_a8d6c0bb",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "009ee384_0ed456d6",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "driver",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6c404a_521cf207",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "009ee384_0ed456d6",
       "range": {
         "startLine": 10,
         "startChar": 45,
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "500a7590_37e00fd3",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0912d98b_78e9e520",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "078e8bf0_016be0ac",
@@ -134,6 +242,42 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "Needs help, describing what it means and how to choose the value\nyou have some stuff about this in the .c file",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77686d58_2d3104f4",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "078e8bf0_016be0ac",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f625a35b_c0d8eba7",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "078e8bf0_016be0ac",
       "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +299,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58519165_c68b4159",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2357ba9_b1cb0d71",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f650140b_6e246d4f",
@@ -168,6 +330,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "I don\u0027t think you need the SHI_ suffix for local defines. The lines are getting quite long because of this.",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ffddc6f_e9c9ffcf",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "I have removed lots of definitions with SHI_ prefix. If you think the remaining lines are still too long, we will remove it later.",
+      "parentUuid": "f650140b_6e246d4f",
       "range": {
         "startLine": 41,
         "startChar": 8,
@@ -201,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5972737_f333044b",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "639d823d_e8504b2e",
+      "range": {
+        "startLine": 47,
+        "startChar": 51,
+        "endLine": 47,
+        "endChar": 52
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ca78419_2dd4f747",
@@ -214,6 +424,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "Do you need this?\n\nCan\u0027t you just use something like\n\nstruct shi_reg *regs\n\nregs-\u003eIBUF\n\nin the code?",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10552508_806b95cc",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ca78419_2dd4f747",
       "range": {
         "startLine": 68,
         "startChar": 8,
@@ -249,6 +483,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef6d3771_73c8467a",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "The host determines the SPI speed used for host command. Since the slowest SPI clock used by host is 500 kHz, the timeout of shi driver needs to consider this case.",
+      "parentUuid": "b81937a5_83243edc",
+      "range": {
+        "startLine": 77,
+        "startChar": 33,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abe8b850_00498bf1",
         "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
         "patchSetId": 2
@@ -260,6 +518,24 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "drop line",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ec8ec3_32aa0c7a",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abe8b850_00498bf1",
       "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -277,6 +553,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "NONE ?",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 23
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "929b686e_73137067",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "061bfea9_c1e640e2",
       "range": {
         "startLine": 139,
         "startChar": 11,
@@ -310,6 +610,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e7e800_efb2e40e",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d20a56b_b66c53cd",
+      "range": {
+        "startLine": 152,
+        "startChar": 21,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51d122c8_3fa5ef00",
@@ -323,6 +647,24 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "Is it easy to reorder things to avoid most of these?",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07540039_4b7c8584",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51d122c8_3fa5ef00",
       "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -350,6 +692,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b8ad77_639309a6",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8b24f70_3a9aedbb",
+      "range": {
+        "startLine": 216,
+        "startChar": 14,
+        "endLine": 216,
+        "endChar": 15
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50578b59_4ce16dfe",
@@ -363,6 +729,42 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "drop line\n\nAlso you should mention that this only starts the send process, filling up the FIFOs, and the sending continues later with another function (which one?)",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e44d165_4b7c2ced",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "The remaining response data is handled in shi\u0027s ISR. I will add more description in comment.",
+      "parentUuid": "50578b59_4ce16dfe",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "815f52bb_326f2766",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "The remaining response data is handled in shi\u0027s ISR. I will add more description in comment.",
+      "parentUuid": "50578b59_4ce16dfe",
       "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -413,6 +815,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f18073_a39cd8ab",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99283ceb_7fcb6a7f",
+      "range": {
+        "startLine": 240,
+        "startChar": 49,
+        "endLine": 240,
+        "endChar": 52
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecdeb299_ff9d7cf4",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c128d190_0ccc44e6",
+      "range": {
+        "startLine": 240,
+        "startChar": 14,
+        "endLine": 240,
+        "endChar": 15
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d653de6a_e4abde03",
@@ -426,6 +876,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "why 16-bit? Can we use unsigned int instead? This will be in a 32-bit register anyway",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 9
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09c29d6_ea03aeed",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d653de6a_e4abde03",
       "range": {
         "startLine": 270,
         "startChar": 1,
@@ -453,6 +927,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d710403_0b84ef77",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d27307a_312da7b3",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "522ccfaa_39686e61",
@@ -466,6 +958,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "what does \u0027directly\u0027 mean here? Omit this word?",
+      "range": {
+        "startLine": 279,
+        "startChar": 43,
+        "endLine": 279,
+        "endChar": 51
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f58d77e_8d943453",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "522ccfaa_39686e61",
       "range": {
         "startLine": 279,
         "startChar": 43,
@@ -499,6 +1015,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20271012_4544b949",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "I will remove \u0027immediately\u0027\u0027.",
+      "parentUuid": "14cc5997_b80e771f",
+      "range": {
+        "startLine": 283,
+        "startChar": 29,
+        "endLine": 283,
+        "endChar": 40
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cc73998_08c4a53e",
@@ -512,6 +1052,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "space",
+      "range": {
+        "startLine": 307,
+        "startChar": 16,
+        "endLine": 307,
+        "endChar": 17
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a342a8_158f1d0b",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cc73998_08c4a53e",
       "range": {
         "startLine": 307,
         "startChar": 16,
@@ -545,6 +1109,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c984bea_8c972700",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "The input buffer size of shi v1 module is 32 bytes only. It has be extended to 64 bytes in v2 for npcx7 series. I will replace with \"32 bytes\" with \"half of input buffer\"",
+      "parentUuid": "82b3c5a8_817bc4bd",
+      "range": {
+        "startLine": 329,
+        "startChar": 24,
+        "endLine": 329,
+        "endChar": 26
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22509ff9_3c1f48a9",
@@ -558,6 +1146,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "drop outer brackets",
+      "range": {
+        "startLine": 373,
+        "startChar": 28,
+        "endLine": 373,
+        "endChar": 29
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5781730_cc8db552",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22509ff9_3c1f48a9",
       "range": {
         "startLine": 373,
         "startChar": 28,
@@ -591,6 +1203,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6751d76_bd0d804a",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92bd0c44_ddfd7d7c",
+      "range": {
+        "startLine": 375,
+        "startChar": 23,
+        "endLine": 375,
+        "endChar": 42
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24cd90f1_34825421",
@@ -610,6 +1246,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87972711_f043824b",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "It is 8-bit register write access operation and inst-\u003eOBUF will be cast to \u0027void *\u0027. It\u0027s not proper to put this in memset() since we don\u0027t know how complier deal with void *\u0027",
+      "parentUuid": "24cd90f1_34825421",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca93d0ad_00bb0ba1",
         "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
         "patchSetId": 2
@@ -621,6 +1275,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "But this should be passed into this function. Please fix this globally",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 68
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d82a29e_b2240b24",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca93d0ad_00bb0ba1",
       "range": {
         "startLine": 390,
         "startChar": 0,
@@ -654,6 +1332,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71fde6f1_82d82d7b",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b52ded71_fec115e1",
+      "range": {
+        "startLine": 414,
+        "startChar": 7,
+        "endLine": 414,
+        "endChar": 14
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4df1b8e2_20cea70c",
@@ -667,6 +1369,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "drop the confusing brackets\n\nplease fix globally",
+      "range": {
+        "startLine": 423,
+        "startChar": 3,
+        "endLine": 423,
+        "endChar": 31
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8da6934_633a70e8",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4df1b8e2_20cea70c",
       "range": {
         "startLine": 423,
         "startChar": 3,
@@ -700,6 +1426,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eab1073_9c481a5d",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100fdd3c_0bb6c9f7",
+      "range": {
+        "startLine": 443,
+        "startChar": 23,
+        "endLine": 443,
+        "endChar": 42
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05dfde8f_ec6abe7a",
@@ -713,6 +1463,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "might be worth splitting this into a few more steps, each with a new local variable",
+      "range": {
+        "startLine": 447,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 38
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe1e468_8a252c98",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05dfde8f_ec6abe7a",
       "range": {
         "startLine": 447,
         "startChar": 1,
@@ -746,6 +1520,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0de707e2_b78bde60",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0846cc6_1df5aaf0",
+      "range": {
+        "startLine": 451,
+        "startChar": 3,
+        "endLine": 451,
+        "endChar": 4
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84a57245_1a3c85f2",
@@ -759,6 +1557,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "unsigned int",
+      "range": {
+        "startLine": 491,
+        "startChar": 57,
+        "endLine": 491,
+        "endChar": 65
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad97d15_0b564109",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84a57245_1a3c85f2",
       "range": {
         "startLine": 491,
         "startChar": 57,
@@ -792,6 +1614,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f300dbf7_35cddcf4",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b996b7f3_9ec0d431",
+      "range": {
+        "startLine": 512,
+        "startChar": 7,
+        "endLine": 512,
+        "endChar": 14
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d163f6ae_7e5f3eb4",
@@ -805,6 +1651,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "again should be passed in as a parameter",
+      "range": {
+        "startLine": 515,
+        "startChar": 49,
+        "endLine": 515,
+        "endChar": 61
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e883df_381207ed",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d163f6ae_7e5f3eb4",
       "range": {
         "startLine": 515,
         "startChar": 49,
@@ -840,6 +1710,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd4afcaa_3bb4abd3",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Since we cannot guarantee the data read by the host and written by ec from/to the same output buffer register, it is necessary to disable shi module during preparing the whole output buffer. At this moment, the data read by host is 0xff only. We needn\u0027t to worry the symptom caused by unexpected data 0xfa/0xfa.",
+      "parentUuid": "a0ada98a_15748f79",
+      "range": {
+        "startLine": 541,
+        "startChar": 1,
+        "endLine": 541,
+        "endChar": 28
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bf7d835_d6e9c6e6",
         "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
         "patchSetId": 2
@@ -851,6 +1745,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "add bug number",
+      "range": {
+        "startLine": 587,
+        "startChar": 4,
+        "endLine": 587,
+        "endChar": 8
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9acb6132_e184a13d",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "disable_sleep() is a simple bitwise operation of ram variable. No need to disable it here. I will remove TODO later.",
+      "parentUuid": "7bf7d835_d6e9c6e6",
       "range": {
         "startLine": 587,
         "startChar": 4,
@@ -878,6 +1796,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b27bd2f_abdac04b",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d3c29d7_06a7c31d",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a591270_02dc3d3b",
@@ -891,6 +1827,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "stat\n\n(it isn\u0027t a register, it\u0027s the value of the register)",
+      "range": {
+        "startLine": 595,
+        "startChar": 9,
+        "endLine": 595,
+        "endChar": 17
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac054908_febd704b",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a591270_02dc3d3b",
       "range": {
         "startLine": 595,
         "startChar": 9,
@@ -924,6 +1884,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a81cf2f3_fce9dae2",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "252600fd_94a451a8",
+      "range": {
+        "startLine": 597,
+        "startChar": 23,
+        "endLine": 597,
+        "endChar": 27
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9712fd73_83926d4b",
@@ -937,6 +1921,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "also add why",
+      "range": {
+        "startLine": 606,
+        "startChar": 5,
+        "endLine": 606,
+        "endChar": 20
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "056b0302_fd866cdf",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9712fd73_83926d4b",
       "range": {
         "startLine": 606,
         "startChar": 5,
@@ -970,6 +1978,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b240ae_341127b7",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f75035d1_26ce53ef",
+      "range": {
+        "startLine": 621,
+        "startChar": 44,
+        "endLine": 621,
+        "endChar": 46
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c77911b1_02ac7887",
@@ -983,6 +2015,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "{} around this",
+      "range": {
+        "startLine": 661,
+        "startChar": 3,
+        "endLine": 661,
+        "endChar": 9
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45523376_0646787e",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c77911b1_02ac7887",
       "range": {
         "startLine": 661,
         "startChar": 3,
@@ -1016,6 +2072,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "722ba2cc_2eed8fd8",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a956b1b_a327ec30",
+      "range": {
+        "startLine": 698,
+        "startChar": 8,
+        "endLine": 698,
+        "endChar": 29
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef1fe979_413643b0",
@@ -1029,6 +2109,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "to handle",
+      "range": {
+        "startLine": 729,
+        "startChar": 20,
+        "endLine": 729,
+        "endChar": 27
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db0bf62e_f822462b",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef1fe979_413643b0",
       "range": {
         "startLine": 729,
         "startChar": 20,
@@ -1058,6 +2162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e833eef5_e6a446e0",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "It is 8-bit register write access operation here and inst-\u003eOBUF will be cast to \u0027void *\u0027. It\u0027s not proper to move this loop to memset() since we don\u0027t know how complier deal with void *\u0027.",
+      "parentUuid": "72f59238_d279f227",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed3ec0b1_8c051624",
         "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
         "patchSetId": 2
@@ -1069,6 +2191,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "bug number",
+      "range": {
+        "startLine": 778,
+        "startChar": 3,
+        "endLine": 778,
+        "endChar": 7
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72f3fe6_06030e71",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "enable_sleep() is a simple bitwise operation of ram variable. No need to disable it here. I will remove TODO later.",
+      "parentUuid": "ed3ec0b1_8c051624",
       "range": {
         "startLine": 778,
         "startChar": 3,
@@ -1104,6 +2250,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06e57a67_cb0d44f0",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "clock_control_subsys_t is a data pointer that is opaque (type is void *) and relevant only to the clock controller driver instance. Casting the clock driver data here is necessary or we need many clock_control_on functions with different chip specific clock data type. We can also observe lots of examples use casting in clock_control_on(). (https://github.com/zephyrproject-rtos/zephyr/blob/master/drivers/flash/flash_stm32_qspi.c#L751)",
+      "parentUuid": "fb59d885_10420660",
+      "range": {
+        "startLine": 849,
+        "startChar": 11,
+        "endLine": 849,
+        "endChar": 33
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1394ae08_39d9412c",
         "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
         "patchSetId": 2
@@ -1115,6 +2285,30 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "SHI?",
+      "range": {
+        "startLine": 851,
+        "startChar": 19,
+        "endLine": 851,
+        "endChar": 22
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d973ebb8_a9c75a12",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1394ae08_39d9412c",
       "range": {
         "startLine": 851,
         "startChar": 19,
@@ -1171,6 +2365,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "126caffb_1c706781",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da852ea_1dea082d",
+      "range": {
+        "startLine": 908,
+        "startChar": 16,
+        "endLine": 908,
+        "endChar": 20
+      },
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a76a5281_c2834101",
@@ -1184,6 +2402,24 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "needs more details. What is the version? What is a valid value? Is it like pinctrl?",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c37aaf_767710e3",
+        "filename": "zephyr/dts/bindings/cros_shi/nuvoton,npcx-cros-shi.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "This bit is hidden in our datasheet. We need to discuss with our designer and add proper description later.",
+      "parentUuid": "a76a5281_c2834101",
       "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1205,6 +2441,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f35b374e_7bdfd492",
+        "filename": "zephyr/include/soc/nuvoton_npcx/reg_def_cros.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8f9a558_a68b922c",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef10e394_6ca21ce7",
@@ -1218,6 +2472,24 @@
       "writtenOn": "2021-03-26T18:48:18Z",
       "side": 1,
       "message": "Can you put the two evb files in a separate CL?",
+      "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e203a79a_10a24489",
+        "filename": "zephyr/projects/npcx7_evb/boards/arm/npcx7_evb/npcx7_evb.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-03-29T11:09:03Z",
+      "side": 1,
+      "message": "Sure. I will remove them later.",
+      "parentUuid": "ef10e394_6ca21ce7",
       "revId": "16cb1ceb049c23dda4e4834f558ef426b8b6c0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
