@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "184844aa_a0ea3d25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-29T13:50:47Z",
+      "side": 1,
+      "message": "rename board_i2c_p2c() as i2c_port_to_controller(), make board code can override chip code in i2c.c if needed.",
+      "revId": "77b86d9d62fcd73ed5ba390c7a392b8ecc68a7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
