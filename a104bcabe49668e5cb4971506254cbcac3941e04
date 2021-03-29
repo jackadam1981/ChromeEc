@@ -33,6 +33,52 @@
       "message": "Friendly ping 😊",
       "revId": "a104bcabe49668e5cb4971506254cbcac3941e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08514bda_dafddf7d",
+        "filename": "fuzz/host_command_fuzz.tasklist",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-29T22:44:01Z",
+      "side": 1,
+      "message": "Did you intend to change this?",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "a104bcabe49668e5cb4971506254cbcac3941e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda772d5_c10cadd7",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-29T22:44:01Z",
+      "side": 1,
+      "message": "It looks like we don\u0027t ever access the members and just cast fp_buffer_t into a uint8_t* whenever we use it. It might make the code a little cleaner to do something like:\n\n #define FP_SENSOR_IMAGE_SIZE  GENERIC_MAX(FP_SENSOR_IMAGE_SIZE_FPC, FP_SENSOR_IMAGE_SIZE_ELAN)\n\n uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE];\n\nSame for the template.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 6
+      },
+      "revId": "a104bcabe49668e5cb4971506254cbcac3941e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
