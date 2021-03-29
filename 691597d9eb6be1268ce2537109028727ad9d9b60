@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "047bf679_29199847",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T21:14:07Z",
+      "side": 1,
+      "message": "Let\u0027s just invoke ninja manually if you don\u0027t actually want to do the normal build path\n\nAlternatively, bake all the coverage support in directly so that zmake does the right thing when run with \"zmake coverage\"?",
+      "revId": "691597d9eb6be1268ce2537109028727ad9d9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
