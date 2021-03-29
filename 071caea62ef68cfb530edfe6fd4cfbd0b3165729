@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a329199_3fe5d7e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T21:32:28Z",
+      "side": 1,
+      "message": "Is there a bug for this? Is there a specific misbehavior without this CL that you checked for?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d61b2d6_b3cb02a5",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T21:32:28Z",
+      "side": 1,
+      "message": "What does \"sending the safe mode information\" mean?",
+      "range": {
+        "startLine": 966,
+        "startChar": 27,
+        "endLine": 967,
+        "endChar": 23
+      },
+      "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "779350d5_f8a4ce44",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-29T21:32:28Z",
+      "side": 1,
+      "message": "Do you have a spec citation for this, similar to the one for Enter Mode? I know we were already doing it, but I actually don\u0027t see a reference to USB safe state in the Enter USB AMS diagrams.\n\nI\u0027m particularly interested in a citation for which SOPs we should do this for. What I think we were trying to do for TBT (and this CL fixes) is enter safe mode before every Enter Mode REQ and enter TBT mode after every Enter Mode ACK. That sounds kind of silly, but it\u0027s what the spec requires.\n\nThe existing USB code would only enter safe mode prior to the SOP Enter_USB, and the new code will only do it prior to whatever Enter_USB comes first in the sequence (SOP or SOP\u0027). The code will continue to wait to enter USB mode until the SOP ACK. That\u0027s different than what we do for alt modes, and I can\u0027t find where the spec clarifies.",
+      "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
