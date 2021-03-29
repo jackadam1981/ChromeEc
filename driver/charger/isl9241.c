@@ -12,6 +12,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charger.h"
+#include "charge_state.h"
 #include "console.h"
 #include "common.h"
 #include "hooks.h"
@@ -568,3 +569,15 @@ const struct charger_drv isl9241_drv = {
 	.ramp_get_current_limit = &isl9241_ramp_get_current_limit,
 #endif
 };
+
+static void restart_charge_voltage_when_full(void)
+{
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)
+				&& charge_get_percent() == 100) {
+		charger_discharge_on_ac(1);
+		msleep(50);
+		charger_discharge_on_ac(0);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, restart_charge_voltage_when_full,
+	     HOOK_PRIO_DEFAULT);
