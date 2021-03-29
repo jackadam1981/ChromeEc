@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4a64a7_12dfe52f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 67
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-29T18:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2719219_1940db2f",
+      "revId": "c38250d1cef7d3fdaeaf01d2460b6b10df735b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ab4f207_7eeaf324",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "I changed this from UF to USB3 which to reflect the \"data only\" meaning that was implied with UF.",
       "parentUuid": "0ab4f207_7eeaf324",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "c38250d1cef7d3fdaeaf01d2460b6b10df735b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "418fa19f_a4c5cd72",
+        "filename": "board/quiche/board.h",
+        "patchSetId": 67
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-29T18:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69fe9df8_67c1ee12",
       "range": {
         "startLine": 20,
         "startChar": 8,
