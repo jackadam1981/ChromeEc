@@ -209,6 +209,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7562d3d2_cf87b652",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-29T18:40:13Z",
+      "side": 1,
+      "message": "reverted it back, will submit another CL for this fix.\n\n//\nOk, finally, it is clear,\n\n1: i2c.c\n__overridable int board_i2c_p2c(int port) \n{\n\n    if(port \u003c 0 || port \u003e\u003d I2C_PORT_COUNT)\n        return -1;\n    return port % MCHP_I2C_CTRL_MAX;\n}\n2: in board.c\n__override int board_i2c_p2c(int port)\n\n3: in board.h\n__override_proto int board_i2c_p2c(int port);\n\nThen submit a separate CL which includes 3 files: i2c.c / board.c / board.h, this CL is after CL for sklrvp_mchp172x board.",
+      "parentUuid": "3958d8f3_4b1cd442",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7b18bbc_7f71f0be",
