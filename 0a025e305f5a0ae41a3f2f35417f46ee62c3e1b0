@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86fde44d_838da926",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-29T19:06:56Z",
+      "side": 1,
+      "message": "Could you group the ADC configs together?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "0a025e305f5a0ae41a3f2f35417f46ee62c3e1b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f34b0cc_78cfc485",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-29T19:06:56Z",
+      "side": 1,
+      "message": "Duplicated",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 47
+      },
+      "revId": "0a025e305f5a0ae41a3f2f35417f46ee62c3e1b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
