@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89be0df2_e93930a3",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-29T18:00:56Z",
+      "side": 1,
+      "message": "i2c_unwedge uses this. If we know that the i2c bus is unpowered, it\u0027s meaningless to try to use it at that time.",
+      "parentUuid": "5243d535_32d77aef",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "2464d0e1b76a66c3b75058911674442b2a11b8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3806d09a_6fe45acb",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-29T16:47:53Z",
       "side": 1,
       "message": "Can use `chipset_in_state(CHIPSET_STATE_ANY_OFF) ? 0 : 1;` instead?",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "2464d0e1b76a66c3b75058911674442b2a11b8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0bcd4c_c9c2efde",
+        "filename": "board/lindar/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-29T18:00:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3806d09a_6fe45acb",
       "range": {
         "startLine": 103,
         "startChar": 8,
