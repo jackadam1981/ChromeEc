@@ -67,6 +67,24 @@
       "message": "It sounds from the bug like the root cause of this problem is the charging circuit on the reference design, not the device itself. As such, I think the more appropriate place for this would be in baseboard/volteer/baseboard.c.",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bf9a786_bd2641a4",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-29T20:57:55Z",
+      "side": 1,
+      "message": "I think this is an IC issue actually; this behavior apparently has some layout dependence which may be why we see it now but didn\u0027t catch it on the reference. But if there is no harm in doing this then we should do it for all devices. \n\nNot going to argue about where it should go, just that the bug could affect all boards, not just Volteer-based ones.\n\nBut, regarding this line, would this only happen when the chipset is shutdown? What if we reach 100% battery after the AP is already off? Also I think we might want this in S0ix as well, but we\u0027d need to test that.",
+      "parentUuid": "c2a523e2_7c53607b",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
