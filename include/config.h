@@ -3952,6 +3952,14 @@
 #undef CONFIG_PRESERVE_LOGS
 
 /*
+ * This will only be used for Kukui and it8xxx2 chips.
+ * Assert WRST# to reset it8xxx2 will clear memory content to default value,
+ * this is a HW mechanism. Saving EC logs into flash before reset, and we will
+ * be able to restore logs from flash on the next initialization.
+ */
+#undef CONFIG_PRESERVE_LOGS_ON_FLASH
+
+/*
  * UART receive buffer size in bytes.  Must be a power of 2 for macros in
  * common/uart_buffering.c to work properly.  Must be larger than
  * CONFIG_CONSOLE_INPUT_LINE_SIZE to copy and paste scripts.

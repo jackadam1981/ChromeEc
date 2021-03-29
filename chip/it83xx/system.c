@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "intc.h"
+#include "link_defs.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -207,8 +208,32 @@ int system_is_reboot_warm(void)
 		return 1;
 }
 
+#ifdef CONFIG_PRESERVE_LOGS_ON_FLASH
+static void chip_system_sysjump(void)
+{
+	/* Don't restore logs from flash or clear logs. */
+	BRAM_EC_LOG_STATUS = EC_LOG_SAVED_IN_MEMORY;
+}
+DECLARE_HOOK(HOOK_SYSJUMP, chip_system_sysjump, HOOK_PRIO_DEFAULT);
+#endif
+
 void chip_pre_init(void)
 {
+#ifdef CONFIG_PRESERVE_LOGS_ON_FLASH
+	/* Restore or clear EC logs. */
+	if (!BRAM_EC_LOG_STATUS) {
+		memset((void *)__preserved_logs_start, 0,
+			(uintptr_t)__preserved_logs_size);
+	} else if (BRAM_EC_LOG_STATUS == EC_LOG_SAVED_IN_FLASH) {
+		memcpy((void *)__preserved_logs_start,
+			(const void *)CHIP_FLASH_PRESERVE_LOGS_BASE,
+			(uintptr_t)__preserved_logs_size);
+	}
+	/* It's sysjump, do nothing */
+
+	BRAM_EC_LOG_STATUS = 0;
+#endif
+
 	/* bit0, EC received the special waveform from iteflash */
 	if (IT83XX_GCTRL_DBGROS & IT83XX_SMB_DBGR) {
 		/*
@@ -295,6 +320,15 @@ void system_reset(int flags)
 		ccprintf("!Reset will be failed due to EC is in debug mode!\n");
 		cflush();
 	}
+
+#ifdef CONFIG_PRESERVE_LOGS_ON_FLASH
+	/* Saving EC logs into flash before reset. */
+	flash_physical_erase(CHIP_FLASH_PRESERVE_LOGS_BASE,
+		CHIP_FLASH_PRESERVE_LOGS_SIZE);
+	flash_physical_write(CHIP_FLASH_PRESERVE_LOGS_BASE,
+		(uintptr_t)__preserved_logs_size, __preserved_logs_start);
+	BRAM_EC_LOG_STATUS = EC_LOG_SAVED_IN_FLASH;
+#endif
 
 	/* Disable interrupts to avoid task swaps during reboot. */
 	interrupt_disable();
