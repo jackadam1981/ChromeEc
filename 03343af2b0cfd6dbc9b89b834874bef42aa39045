@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef436965_10f33863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-29T13:43:38Z",
+      "side": 1,
+      "message": "add i2c_port_to_controller() as __overridable, which can be overridden by board code;\nchange to return \"port % MCHP_I2C_CTRL_MAX\"",
+      "revId": "03343af2b0cfd6dbc9b89b834874bef42aa39045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
