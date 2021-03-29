@@ -22,6 +22,30 @@
       },
       "revId": "97ee4d01c0858cb7d3f5a2ca8ce06153b6296a36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e72f448_9b8d37a5",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1379412
+      },
+      "writtenOn": "2021-03-29T09:34:41Z",
+      "side": 1,
+      "message": "Verified through \"i2cscan\", and device detected at 0x5d. So, this CL is not required.",
+      "parentUuid": "16877ea9_408e04ab",
+      "range": {
+        "startLine": 149,
+        "startChar": 20,
+        "endLine": 149,
+        "endChar": 47
+      },
+      "revId": "97ee4d01c0858cb7d3f5a2ca8ce06153b6296a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
