@@ -185,6 +185,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3958d8f3_4b1cd442",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-29T13:53:46Z",
+      "side": 1,
+      "message": "1: add i2c_port_to_controller() as __overridable, which can be overriden by board code; change to return \"port % MCHP_I2C_CTRL_MAX\"\n2: rename board_i2c_p2c() as i2c_port_to_controller(), make board code can override chip code in i2c.c if needed",
+      "parentUuid": "36690bc7_46210251",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7b18bbc_7f71f0be",
