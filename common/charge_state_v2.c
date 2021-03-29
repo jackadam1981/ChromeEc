@@ -882,6 +882,25 @@ static void update_dynamic_battery_info(void)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 }
 #else /* CONFIG_BATTERY_V2 */
+
+#ifdef CONFIG_BATTERY_STATIC_INFO_CHECK
+static int is_battery_string_reliable(const char *buf)
+{
+	/*
+	 * From is_string_printable rule, 0xFF is not printable.
+	 * So, EC should think battery string is unreliable if string
+	 * include 0xFF.
+	 */
+	while (*buf) {
+		if ((*buf) == 0xFF)
+			return 0;
+		buf++;
+	}
+
+	return 1;
+}
+#endif /* CONFIG_BATTERY_STATIC_INFO_CHECK */
+
 static int update_static_battery_info(void)
 {
 	int batt_serial;
@@ -931,6 +950,30 @@ static int update_static_battery_info(void)
 
 	/* Battery Type string */
 	rv |= battery_device_chemistry(bs->type_ext, sizeof(bs->type_ext));
+
+#ifdef CONFIG_BATTERY_STATIC_INFO_CHECK
+	/*
+	 * b/181639264: Battery gauge follow SMBus SPEC and SMBus define
+	 * cumulative clock low extend time for both master and slave.
+	 * However, I2C doesn't.
+	 * Regarding this issue, we observe EC sometimes pull I2C CLK low
+	 * a while after EC start running. Actually, we are not sure the
+	 * reason until now.
+	 * If EC pull I2C CLK low too long, and it may cause battery fw timeout
+	 * because battery count cumulative clock extend time over 25ms.
+	 * When it happended, battery will release both its CLK and DATA and
+	 * reset itself. So, EC may get 0xFF when EC keep reading data from
+	 * battery. Battery static information will be unreliable and need to
+	 * be updated.
+	 * This change is improvement that EC should retry if battery string is
+	 * unreliable.
+	 */
+	if (!is_battery_string_reliable(bs->serial_ext)
+		|| !is_battery_string_reliable(bs->manufacturer_ext)
+		|| !is_battery_string_reliable(bs->model_ext)
+		|| !is_battery_string_reliable(bs->type_ext))
+		rv |= EC_ERROR_UNKNOWN;
+#endif
 
 	/* Zero the dynamic entries. They'll come next. */
 	memset(&battery_dynamic[BATT_IDX_MAIN], 0,
