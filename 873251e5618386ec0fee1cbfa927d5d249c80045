@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f64f9f9_188d2fb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T21:20:42Z",
+      "side": 1,
+      "message": "before any further review, this CL will need split to make it easier to review:\n\n1. add support for ite 8xxx2 cros_bbram driver\n2. add support for ite pinmux driver\n3. add support for ite cros_system driver\n4. initial board support for ite8xxx2_evb (don\u0027t include any GPIOs, USB-C, etc, should only feature UART and basic commands)\n5. further CLs for gpios, etc (you can see https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_poc_device_bringup.md as a rough roadmap for how these need split up)",
+      "revId": "873251e5618386ec0fee1cbfa927d5d249c80045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f68e34bd_b70afe3c",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T21:20:42Z",
+      "side": 1,
+      "message": "this is useless... either remove or write helpful help text?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "873251e5618386ec0fee1cbfa927d5d249c80045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02895543_18912a09",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_it8xxx2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T21:20:42Z",
+      "side": 1,
+      "message": "this line is underindented (should align with left paren above)\n\nyou can run clang-format to automatically correct this",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "873251e5618386ec0fee1cbfa927d5d249c80045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466e52b5_b291b2b3",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_it8xxx2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T21:20:42Z",
+      "side": 1,
+      "message": "ditto, but over-indented",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "873251e5618386ec0fee1cbfa927d5d249c80045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a3af64_e4c5a7ed",
+        "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-29T21:20:42Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "873251e5618386ec0fee1cbfa927d5d249c80045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
