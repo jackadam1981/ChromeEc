@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe669c4b_07775ed7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-03-29T01:50:11Z",
+      "side": 1,
+      "message": "Dino,\n\nWe have to support this flag for RISC-V as well, since icarus loses EC uart logs on every reboot.\n\nSample CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1716671\n",
+      "revId": "fc6df8b8ec70943118c17824fb5869161d303732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
