@@ -39,6 +39,30 @@
       },
       "revId": "03343af2b0cfd6dbc9b89b834874bef42aa39045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3beb6fb_f320b93b",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-29T17:01:12Z",
+      "side": 1,
+      "message": "Ack\nkind of confusion. will send an email to clarify..",
+      "parentUuid": "a4bf72b1_c3109b15",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 939,
+        "endChar": 0
+      },
+      "revId": "03343af2b0cfd6dbc9b89b834874bef42aa39045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
