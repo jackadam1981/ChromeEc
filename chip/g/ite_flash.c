@@ -39,9 +39,6 @@ void generate_ite_sync(void)
 	/* Let's pulse EC reset while preparing to sync up. */
 	assert_ec_rst();
 	msleep(1);
-	deassert_ec_rst();
-	msleep(5);
-
 	/*
 	 * Values to write to set SCL and SDA to various combinations of 0 and
 	 * 1 to be able to generate two necessary waveforms.
@@ -85,6 +82,10 @@ void generate_ite_sync(void)
 	REG32(0x4009A6D0) = saved_setting;
 
 	interrupt_enable();
+
+	msleep(50);
+	deassert_ec_rst();
+	msleep(5);
 
 	/* Restore I2C configuration, re-attach i2c controller to the pads. */
 	REG32(GBASE(PINMUX) + GOFFSET(PINMUX, DIOB0_SEL)) =
