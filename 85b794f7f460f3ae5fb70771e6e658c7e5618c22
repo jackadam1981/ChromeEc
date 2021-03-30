@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b8ca4e_7a82ee06",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T17:32:50Z",
+      "side": 1,
+      "message": "intdentation needs to align with [ since you have at least one item above",
+      "range": {
+        "startLine": 357,
+        "startChar": 8,
+        "endLine": 357,
+        "endChar": 12
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a7d1ba_9990995d",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T17:32:50Z",
+      "side": 1,
+      "message": "is everything outputted on stderr supposed to be an error with lcov?",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 75
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df87ae8_4f2d1bce",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T17:32:50Z",
+      "side": 1,
+      "message": "all of this should be wrapped in \"with self.jobserver.get_job():\"\n\nyou can then pass claim_job\u003dFalse to self.jobserver.popen() (this parameter needs to go away since it makes no sense to claim a job just during popen)",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 67
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07fb43e_b22525ee",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T17:32:50Z",
+      "side": 1,
+      "message": "since we are repeating this pattern twice now, it should be refactored into a generator\n\ni.e. zmake.project.find_projects(root_dir) generates zmake.project.Project objects?",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 67
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358cbb5a_a2a5c37a",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T17:32:50Z",
+      "side": 1,
+      "message": "a lot of this seems duplicate to the testall command. if we can reduce the duplicate code, that would be nice",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 28
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee98ddbe_ff67a55e",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T17:32:50Z",
+      "side": 1,
+      "message": "what is the EC version needed for?\n\nI think we should avoid this crazy invocation of getversion.sh if possible",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 31
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba0a7d8_4c4120f8",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T17:32:50Z",
+      "side": 1,
+      "message": "needs to align with [",
+      "range": {
+        "startLine": 480,
+        "startChar": 8,
+        "endLine": 480,
+        "endChar": 12
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63cf0510_0a75b04c",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T17:32:50Z",
+      "side": 1,
+      "message": "again, alignment needs fixed up",
+      "range": {
+        "startLine": 499,
+        "startChar": 7,
+        "endLine": 499,
+        "endChar": 12
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
