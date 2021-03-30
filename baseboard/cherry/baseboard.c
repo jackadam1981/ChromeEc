@@ -24,8 +24,9 @@
 #include "driver/charger/isl923x.h"
 #include "driver/ppc/syv682x.h"
 #include "driver/tcpm/it83xx_pd.h"
+#include "driver/tcpm/rt1718s.h"
 #include "driver/temp_sensor/thermistor.h"
-#include "driver/usb_mux/it5205.h"
+#include "driver/usb_mux/anx3443.h"
 #include "driver/usb_mux/ps8743.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -203,7 +204,6 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
-
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
@@ -234,7 +234,7 @@ void board_usb_mux_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);
 
-static int board_ps8743_mux_set(const struct usb_mux *me,
+__maybe_unused static int board_ps8743_mux_set(const struct usb_mux *me,
 				mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
@@ -256,7 +256,7 @@ static int board_ps8743_mux_set(const struct usb_mux *me,
 	 *
 	 * Enable/Disable IN_HPD on the DB.
 	 */
-	gpio_set_level(GPIO_USB_C1_DP_IN_HPD,
+	gpio_set_level(GPIO_USB_C0_DP_IN_HPD,
 		       mux_state & USB_PD_MUX_DP_ENABLED);
 
 	return ps8743_write(me, PS8743_REG_MODE, reg);
@@ -266,15 +266,19 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
 		.i2c_port = I2C_PORT_USB_MUX0,
-		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
-		.driver = &it5205_usb_mux_driver,
+		.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
+		/*
+		.driver = &ps8743_usb_mux_driver,
+		.board_set = &board_ps8743_mux_set,
+		*/
 	},
 	{
 		.usb_port = 1,
 		.i2c_port = I2C_PORT_USB_MUX1,
-		.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
-		.driver = &ps8743_usb_mux_driver,
-		.board_set = &board_ps8743_mux_set,
+		.i2c_addr_flags = ANX3443_I2C_ADDR0_FLAGS,
+		/*
+		.driver = &anx3443_usb_mux_driver,
+		*/
 	},
 };
 
@@ -327,7 +331,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.bus_type = EC_BUS_TYPE_EMBEDDED,
 		/* TCPC is embedded within EC so no i2c config needed */
-		.drv = &it8xxx2_tcpm_drv,
+		.drv = &rt1718s_tcpm_drv,
 		/* Alert is active-low, push-pull */
 		.flags = 0,
 	},
@@ -341,13 +345,11 @@ const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 			.rising_time = IT83XX_TX_PRE_DRIVING_TIME_1_UNIT,
 			.falling_time = IT83XX_TX_PRE_DRIVING_TIME_2_UNIT,
 		},
-		{
-			.rising_time = IT83XX_TX_PRE_DRIVING_TIME_1_UNIT,
-			.falling_time = IT83XX_TX_PRE_DRIVING_TIME_2_UNIT,
-		},
 	};
 
-	return &cc_parameter[port];
+	if (port == 0)
+		return &cc_parameter[port];
+	return NULL;
 }
 
 uint16_t tcpc_get_alert_status(void)
