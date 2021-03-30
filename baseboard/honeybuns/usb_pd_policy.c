@@ -10,6 +10,7 @@
 #include "driver/mp4245.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/mp4245.h"
+#include "hooks.h"
 #include "task.h"
 #include "timer.h"
 #include "usb_common.h"
@@ -182,6 +183,32 @@ int pd_check_data_swap(int port,
 
 	return swap;
 }
+
+__override void pd_execute_data_swap(int port,
+				enum pd_data_role data_role)
+{
+
+}
+
+static void usb_tc_connect(void)
+{
+	if (pd_is_connected(0)) {
+			CPRINTS("tc_connect hook");
+		gpio_set_level(GPIO_TP73, 1);
+	}
+
+
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_tc_connect, HOOK_PRIO_DEFAULT);
+
+static void usb_tc_disconnect(void)
+{
+	gpio_set_level(GPIO_TP73, 0);
+
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, usb_tc_disconnect, HOOK_PRIO_DEFAULT);
+
+
 
 int pd_check_power_swap(int port)
 {
