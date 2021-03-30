@@ -1,6 +1,30 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ae67f5a_eef0d450",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-30T01:24:40Z",
+      "side": 1,
+      "message": "\u003e \"happended\" is a possible misspelling of \"happened\".\n\nPlease fix.",
+      "parentUuid": "39730825_9f756cd4",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "4da7c42a5e3e65a2fc9b1bd0f0fe5bb7aeba5e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "05d282b6_990cd448",
@@ -14,6 +38,116 @@
       "writtenOn": "2021-03-29T16:07:45Z",
       "side": 1,
       "message": "This is improvement and do retry if battery static information is unreliable.",
+      "revId": "4da7c42a5e3e65a2fc9b1bd0f0fe5bb7aeba5e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae44dd0_cc760f35",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-30T01:24:40Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to keep this behind a config_* option.",
+      "revId": "4da7c42a5e3e65a2fc9b1bd0f0fe5bb7aeba5e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6101ab1d_95fa4356",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-30T01:24:40Z",
+      "side": 1,
+      "message": "nit: replace with \"peripheral\"",
+      "range": {
+        "startLine": 957,
+        "startChar": 57,
+        "endLine": 957,
+        "endChar": 62
+      },
+      "revId": "4da7c42a5e3e65a2fc9b1bd0f0fe5bb7aeba5e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8afa521_3e3c8564",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-30T01:24:40Z",
+      "side": 1,
+      "message": "nit: replace with \"controller\".",
+      "range": {
+        "startLine": 957,
+        "startChar": 46,
+        "endLine": 957,
+        "endChar": 52
+      },
+      "revId": "4da7c42a5e3e65a2fc9b1bd0f0fe5bb7aeba5e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5135a32_d57fc00a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-30T01:24:40Z",
+      "side": 1,
+      "message": "\u003e \"happended\" is a possible misspelling of \"happened\".\n\nPlease fix.",
+      "parentUuid": "31180dc7_c3cf5b01",
+      "range": {
+        "startLine": 964,
+        "startChar": 12,
+        "endLine": 964,
+        "endChar": 21
+      },
+      "revId": "4da7c42a5e3e65a2fc9b1bd0f0fe5bb7aeba5e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47220614_d2bd37d7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-30T01:24:40Z",
+      "side": 1,
+      "message": "nit: place OR at the end of the line and left-align the other conditions.",
+      "range": {
+        "startLine": 972,
+        "startChar": 2,
+        "endLine": 972,
+        "endChar": 5
+      },
       "revId": "4da7c42a5e3e65a2fc9b1bd0f0fe5bb7aeba5e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
