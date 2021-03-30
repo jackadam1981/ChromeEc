@@ -12,6 +12,7 @@
 #include "keyboard_config.h"
 #include "keyboard_mkbp.h"
 #include "keyboard_scan.h"
+#include "mkbp_input_devices.h"
 #include "util.h"
 
 static uint32_t get_supported_buttons(void)
