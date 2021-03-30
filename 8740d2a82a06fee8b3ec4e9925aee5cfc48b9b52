@@ -16,6 +16,24 @@
       "message": "I just found out about some new macros in v2.5 like DT_ENUM_TO_UPPER_TOKEN in crrev.com/c/2788839\n\nperhaps this will help you?",
       "revId": "8740d2a82a06fee8b3ec4e9925aee5cfc48b9b52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed68ed9_9e5510b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-30T03:23:07Z",
+      "side": 1,
+      "message": "Unfortunately I tried these this morning. The main issue we run into is that (as it turns out) if we want to have multiple compatible strings, they ALL have to match on the properties. What I tried was to add an enum property to cros-ec,i2c-port which had \"power\" as one of the enums. When doing this the devicetree compilation fails saying that the other compatible on the node (\"nuvoton,npcx-i2c-port\") is incompatible because it didn\u0027t have the property in the dts file. Clearly we can\u0027t go to the nuvoton dts file and add it upstream, that wouldn\u0027t make much sense.\n\nWith this latest experiment of adding a property to the compatible string and seeing the build break, I\u0027m no longer happy with the compatible solution. It doesn\u0027t really buy us anything. If we wanted to have a custom driver (still an option) we could create a cros-ec,i2c-port with the enum AND a phandle that would point to the i2c node. This would work to do:\n1) provide the mapping in the dts file.\n2) be extensible if we ever wanted to add an API to it since it\u0027s a driver.\n\nAlternatively, since we\u0027re not currently looking to add any properties, we could just use aliases. I\u0027m happy with either approach, alias is simpler and I\u0027m leaning a bit more toward it until we need custom properties and/or driver APIs.\n\nThoughts?",
+      "parentUuid": "78fdf904_677d8bf7",
+      "revId": "8740d2a82a06fee8b3ec4e9925aee5cfc48b9b52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
