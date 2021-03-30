@@ -21,6 +21,7 @@
 #include "keyboard_mkbp.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "mkbp_input_devices.h"
 #include "peripheral_charger.h"
 #include "pi3usb9201.h"
 #include "power.h"

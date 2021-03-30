@@ -3129,6 +3129,11 @@
  */
 #undef CONFIG_MKBP_EVENT_WAKEUP_MASK
 
+/*
+ * Send button, switch and sysrq events via MKBP protocol to the host.
+ */
+#undef CONFIG_MKBP_INPUT_DEVICES
+
 /* Support memory protection unit (MPU) */
 #undef CONFIG_MPU
 
@@ -5428,6 +5433,7 @@
 /* The Matrix Keyboard Protocol depends on MKBP events. */
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_INPUT_DEVICES
 #endif
 
 /******************************************************************************/
