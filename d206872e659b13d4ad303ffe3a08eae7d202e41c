@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02deca0f_7026d8f5",
+        "filename": "board/cret/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2021-03-30T02:33:21Z",
+      "side": 1,
+      "message": "Done. We remove it first, and then we will be submit a CL to update the G-sensor settings.",
+      "parentUuid": "8f007487_e9394710",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 0
+      },
+      "revId": "d206872e659b13d4ad303ffe3a08eae7d202e41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b9996e1_51e34734",
         "filename": "board/cret/gpio.inc",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-29T17:51:54Z",
       "side": 1,
       "message": "Are these pins no longer used?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 61
+      },
+      "revId": "d206872e659b13d4ad303ffe3a08eae7d202e41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067554f2_d1d601d2",
+        "filename": "board/cret/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2021-03-30T02:33:21Z",
+      "side": 1,
+      "message": "No, these pins will be used. We will be submit a CL to update the G-sensor settings. For proto build, I think we don\u0027t need it.",
+      "parentUuid": "4b9996e1_51e34734",
       "range": {
         "startLine": 42,
         "startChar": 0,
