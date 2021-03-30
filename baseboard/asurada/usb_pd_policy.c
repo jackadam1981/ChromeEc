@@ -39,14 +39,13 @@ void svdm_set_hpd_gpio(int port, int en)
 	gpio_set_level(GPIO_EC_DPBRDG_HPD_ODL, !en);
 }
 
-static void aux_switch_port(int port)
+void aux_switch_port(int port)
 {
-	if (port != AUX_PORT_NONE)
-		gpio_set_level_verbose(CC_USBPD, GPIO_DP_AUX_PATH_SEL, port);
+	gpio_set_level_verbose(CC_USBPD, GPIO_DP_AUX_PATH_SEL, port);
 	aux_port = port;
 }
 
-static void aux_display_disconnected(int port)
+void aux_display_disconnected(int port)
 {
 	/* Gets the other port. C0 -> C1, C1 -> C0. */
 	int other_port = !port;
@@ -62,6 +61,27 @@ static void aux_display_disconnected(int port)
 		aux_switch_port(AUX_PORT_NONE);
 }
 
+/**
+ * Is the port fine to be muxed its DisplayPort lines?
+ *
+ * Only one port can be muxed to DisplayPort at a time.
+ *
+ * @param port	Port number of TCPC.
+ * @return	1 is fine; 0 is bad as other port is already muxed;
+ */
+static int is_dp_muxable(int port)
+{
+	int i;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
+		if (i != port) {
+			if (usb_mux_get(i) & USB_PD_MUX_DP_ENABLED)
+				return 0;
+		}
+
+	return 1;
+}
+
 __override int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
@@ -71,6 +91,15 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
 	dp_status[port] = payload[1];
+
+	if (!is_dp_muxable(port)) {
+		/* TODO(waihong): Info user? */
+		CPRINTS("p%d: The other port is already muxed.", port);
+		return 0;
+	}
+
+	if (lvl)
+		gpio_set_level_verbose(CC_USBPD, GPIO_DP_AUX_PATH_SEL, port);
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
 	    (irq || lvl))
@@ -129,9 +158,9 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 		 * A display is connected, and no display was plugged on either
 		 * port.
 		 */
-		aux_switch_port(port);
+		;//aux_switch_port(port);
 	else if (!lvl)
-		aux_display_disconnected(port);
+		;//aux_display_disconnected(port);
 
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
@@ -156,7 +185,7 @@ __override void svdm_exit_dp_mode(int port)
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 	usb_mux_hpd_update(port, 0, 0);
 
-	aux_display_disconnected(port);
+	/* aux_display_disconnected(port); */
 
 #ifdef USB_PD_PORT_TCPC_MST
 	if (port == USB_PD_PORT_TCPC_MST)
