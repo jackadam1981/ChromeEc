@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff1bc898_2763f3bc",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-30T16:36:03Z",
+      "side": 1,
+      "message": "ACK, cheers.",
+      "parentUuid": "fca16ccc_0e2c57ed",
+      "revId": "1d07086a7dfd062ea192372b45436582f4b0b8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15d6b31f_a7966eba",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-30T16:23:29Z",
       "side": 1,
       "message": "i should probably be 0?",
+      "revId": "1d07086a7dfd062ea192372b45436582f4b0b8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7342cd_fb53e044",
+        "filename": "board/boten/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-30T16:36:03Z",
+      "side": 1,
+      "message": "ACK, cheers.",
+      "parentUuid": "15d6b31f_a7966eba",
       "revId": "1d07086a7dfd062ea192372b45436582f4b0b8bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
