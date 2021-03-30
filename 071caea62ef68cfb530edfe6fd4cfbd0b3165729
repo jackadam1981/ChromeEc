@@ -128,6 +128,24 @@
       "parentUuid": "779350d5_f8a4ce44",
       "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fff0bc8_b6ca7148",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-30T19:48:11Z",
+      "side": 1,
+      "message": "\u003e (fig7 - SAS document)\n\nWhat document is that?\n\n\u003e With this patch, we Enter safe mode-\u003e enter TBT SOP\u0027-\u003e enter TBT SOP\u0027\u0027-\u003eEnter TBT SOP-\u003e Set mux and retimer to TBT\n\nI think your description of the current patchset is accurate, although we now call usb_mux_set_safe_mode before every Enter Mode REQ. This behavior appears to conflict with the PD spec, which says to enter the new mode after receiving the Enter Mode ACK, apparently regardless of SOP.\n\nCan you add appropriate document citations to the code comments?",
+      "parentUuid": "1e62f740_af108d28",
+      "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
