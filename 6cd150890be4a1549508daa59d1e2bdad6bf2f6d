@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c866d62e_309f93a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-30T04:00:58Z",
+      "side": 1,
+      "message": "Replace \"gpio_get_level(GPIO_PG_EC_DSW_PWROK)\" with \"chipset_in_state(CHIPSET_STATE_ANY_OFF) ? 0 : 1\" in board_is_i2c_port_powered().",
+      "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
