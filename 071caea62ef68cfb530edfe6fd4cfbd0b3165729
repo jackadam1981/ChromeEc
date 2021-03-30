@@ -146,6 +146,24 @@
       "parentUuid": "1e62f740_af108d28",
       "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca75f54_d74fe8d3",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-30T22:44:57Z",
+      "side": 1,
+      "message": "614433 - Tiger Lake Platform PD Controller Interface Requirements for Integrated USBC, section A.1.2 and section A.2.2 give a clear flow of cable, port-partner and the mux setting for TBT and USB4 respectively - I have updated the comments as the PD doc doesn\u0027t really give a combined flow for the cable and the port-partner",
+      "parentUuid": "6fff0bc8_b6ca7148",
+      "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
