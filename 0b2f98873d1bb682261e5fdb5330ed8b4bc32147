@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b13e9fec_e293f05a",
+        "filename": "zephyr/drivers/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T15:40:32Z",
+      "side": 1,
+      "message": "Can we add enable and disable APIs upstream?",
+      "parentUuid": "bd0d50b6_0097268c",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c36c52d_a4dd256d",
         "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
         "patchSetId": 3
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "With Zephyr\u0027s log, the debug messages contains the prefix (module_name + function name) which make the message hard to read. Here is the example:\n[00:00:16.233,000] \u003cdbg\u003e cros_shi.cros_shi_npcx_isr: CSNFE-\n[00:00:16.233,000] \u003cdbg\u003e cros_shi.shi_handle_cs_assert: CSL-\n[00:00:16.233,000] \u003cdbg\u003e cros_shi.cros_shi_npcx_isr: HDR-\n[00:00:16.233,000] \u003cdbg\u003e cros_shi.shi_parse_header: RV-\n[00:00:16.233,000] \u003cdbg\u003e cros_shi.shi_handle_host_package: PRC-\n[00:00:16.234,000] \u003cdbg\u003e cros_shi.shi_send_response_packet: SND-\n[00:00:16.234,000] \u003cdbg\u003e cros_shi.cros_shi_npcx_isr: CSH-\n[00:00:16.234,000] \u003cdbg\u003e cros_shi.cros_shi_npcx_reset_prepare: RDY-\n[00:00:16.234,000] \u003cdbg\u003e cros_shi.shi_handle_cs_deassert: END\n\nI\u0027d want to have the message look like this:\nCSNFE-CSL-HDR-RV-PRC-[4.585300 HC 0x102]                                                                                                                                                                                                      \nSND-CSH-RDY-END",
       "parentUuid": "7c36c52d_a4dd256d",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7420ce_cdab8d1d",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T15:40:32Z",
+      "side": 1,
+      "message": "If another task runs inbetween prints, won\u0027t this be very difficult to read?",
+      "parentUuid": "115b952c_4affd97a",
       "range": {
         "startLine": 25,
         "startChar": 0,
