@@ -4,6 +4,7 @@
  */
 #include "charge_manager.h"
 #include "chipset.h"
+#include "driver/tcpm/tcpci.h"
 #include "timer.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
@@ -42,7 +43,7 @@ void svdm_set_hpd_gpio(int port, int en)
 static void aux_switch_port(int port)
 {
 	if (port != AUX_PORT_NONE)
-		gpio_set_level_verbose(CC_USBPD, GPIO_DP_PATH_SEL, port);
+		gpio_set_level_verbose(CC_USBPD, GPIO_DP_PATH_SEL, !port);
 	aux_port = port;
 }
 
@@ -166,7 +167,11 @@ __override void svdm_exit_dp_mode(int port)
 
 int pd_snk_is_vbus_provided(int port)
 {
-	return ppc_is_vbus_present(port);
+	if (port == 0)
+		return ppc_is_vbus_present(port);
+	if (port == 1)
+		return tcpm_check_vbus_level(port, VBUS_PRESENT);
+	return 0;
 }
 
 void pd_power_supply_reset(int port)
@@ -219,3 +224,14 @@ int board_vbus_source_enabled(int port)
 	return ppc_is_sourcing_vbus(port);
 }
 
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	if (port == 1)
+		return tcpm_check_vbus_level(port, level);
+
+	/* port 8 */
+	if (level == VBUS_PRESENT)
+		return ppc_is_vbus_present(port);
+	else
+		return !ppc_is_vbus_present(port);
+}
