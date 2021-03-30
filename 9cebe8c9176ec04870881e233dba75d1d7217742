@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d813965_b1e30dec",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T18:02:13Z",
+      "side": 1,
+      "message": "lowercase.\n\nperhaps rename to cmake_supress?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "9cebe8c9176ec04870881e233dba75d1d7217742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d068c5_48f88878",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T18:02:13Z",
+      "side": 1,
+      "message": "line is over-indented (should just be four spaces)",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "9cebe8c9176ec04870881e233dba75d1d7217742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
