@@ -16,6 +16,23 @@
       "message": "Thought it would be good to enable this based on my suggestion in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2727971/6/include/fpsensor_state.h#57",
       "revId": "5b27749af9b2b7e37faeb34eb32fa8e997c0cb03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ea162b_4e152cd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-03-30T00:31:01Z",
+      "side": 1,
+      "message": "What is the problem with VLAs?\nThey are usually only used in stack frames. Even -Wall I don\u0027t think include vla.",
+      "revId": "5b27749af9b2b7e37faeb34eb32fa8e997c0cb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
