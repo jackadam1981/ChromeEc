@@ -209,14 +209,6 @@ enum power_signal {
 	POWER_SIGNAL_COUNT,
 };
 
-enum board_sub_board {
-	SUB_BOARD_NONE = -1,
-	SUB_BOARD_TYPEC,
-	SUB_BOARD_HDMI,
-
-	SUB_BOARD_COUNT,
-};
-
 int board_get_version(void);
 void board_reset_pd_mcu(void);
 
