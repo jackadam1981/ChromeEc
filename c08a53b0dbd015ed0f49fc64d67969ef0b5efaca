@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1771264f_da72323d",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-30T23:54:55Z",
+      "side": 1,
+      "message": "nit: Can you use the following format for checking the config?\n \n if (IS_ENABLED(CONFIG_FP_SENSOR_ELAN80) || IS_ENABLED(CONFIG_FP_SENSOR_ELAN515))",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "c08a53b0dbd015ed0f49fc64d67969ef0b5efaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9742b2_b73d4393",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-30T23:54:55Z",
+      "side": 1,
+      "message": "How about changing to:\n\n  if (fp_driver \u003d\u003d NULL) {\n    ccprints(\"Failed to get sensor type!\");\n  }\n\nto catch the case where sensor type is configured for ELAN or FPC, but config is not correctly set?",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "c08a53b0dbd015ed0f49fc64d67969ef0b5efaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "470baa8f_adc480ad",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-30T23:54:55Z",
+      "side": 1,
+      "message": "nit: It\u0027s a little redundant, but can we use designated initializers (https://en.cppreference.com/w/c/language/struct_initialization) for this (and the other initializations)?\n\ne.g.,\n\n  struct fp_sensor_interface fp_driver_fpc \u003d {\n    \t.sensor_type \u003d FP_SENSOR_TYPE_FPC,\n\t.fp_sensor_init \u003d \u0026fp_sensor_init_fpc,\n        ...\n  };",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 20
+      },
+      "revId": "c08a53b0dbd015ed0f49fc64d67969ef0b5efaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e39acd6_f87194e6",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-30T23:54:55Z",
+      "side": 1,
+      "message": "Typically the \"_t\" is used for types (usually through typedef). For example:\n\n struct fp_sensor_interface {\n   ...\n }\n typedef struct fp_sensor_interface fp_sensor_interface_t;\n\nSince this isn\u0027t a type, it should probably just be \"struct fp_sensor_interface\".",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "c08a53b0dbd015ed0f49fc64d67969ef0b5efaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858e948c_4977af22",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-30T23:54:55Z",
+      "side": 1,
+      "message": "I think in an earlier comment you said this was due to collision with the \"fp_sensor_configure_detect\" in the FPC library. Can you file a bug to have FPC rename their symbols to \"_fpc\" and put a TODO(bug) on this and the other function pointers we had to rename?\n\nnit: Instead of appending \"_ptr\", let\u0027s just use \"_\": \"fp_sensor_configure_detect_\"",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "c08a53b0dbd015ed0f49fc64d67969ef0b5efaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d022043_c6763e42",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-30T23:54:55Z",
+      "side": 1,
+      "message": "Same as previous comment about \"_t\"",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "c08a53b0dbd015ed0f49fc64d67969ef0b5efaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
