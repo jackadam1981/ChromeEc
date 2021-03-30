@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbb4677b_36046389",
+        "filename": "zephyr/zmake/zmake/multiproc.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-30T19:32:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but will take a look.\n\nThis file does not have a class",
+      "parentUuid": "4227a9e7_198b4067",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 56
+      },
+      "revId": "7055defbfbbaca1089189794590f556286c2e205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1e4a8c0_5020ab88",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-29T15:34:10Z",
       "side": 1,
       "message": "nit, placing the definition so that the first usage comes after the first assignment is clearer",
+      "range": {
+        "startLine": 260,
+        "startChar": 24,
+        "endLine": 260,
+        "endChar": 29
+      },
+      "revId": "7055defbfbbaca1089189794590f556286c2e205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dabbc0dc_bba174db",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-30T19:32:05Z",
+      "side": 1,
+      "message": "You mean put procs \u003d [] above this function?",
+      "parentUuid": "b1e4a8c0_5020ab88",
       "range": {
         "startLine": 260,
         "startChar": 24,
