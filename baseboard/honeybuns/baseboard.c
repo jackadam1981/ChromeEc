@@ -107,6 +107,7 @@ static void baseboard_set_led(enum led_color color)
 	 * associated with a power button press.
 	 */
 	CPRINTS("led: color = %d", color);
+
 	if (color == OFF) {
 		gpio_set_level(GPIO_EC_STATUS_LED1, 1);
 		gpio_set_level(GPIO_EC_STATUS_LED2, 1);
@@ -214,6 +215,8 @@ static void baseboard_init(void)
 	/* Set up host port usbc to present Rd on CC lines */
 	if(baseboard_usbc_init(USB_PD_PORT_HOST))
 		CPRINTS("usbc: Failed to set up sink path");
+	else
+		CPRINTS("usbc: sink path configure success!");
 #endif /* SECTION_IS_RW */
 }
 /*
