@@ -29,10 +29,6 @@
 #endif
 
 #ifdef CONFIG_USB_PD_TCPMV2
-#if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || \
-	defined(CONFIG_USB_PD_DISCHARGE_TCPC)
-#error "Unsupported config options of IT8xxx2 PD driver"
-#endif
 #endif
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -926,10 +922,16 @@ static void it8xxx2_tcpm_hook_disconnect(void)
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, it8xxx2_tcpm_hook_disconnect,
 	     HOOK_PRIO_DEFAULT);
 
+bool it8xxx2_tcpm_check_vbus_level(int port, enum vbus_level level)
+{
+	return false;
+}
+
 const struct tcpm_drv it8xxx2_tcpm_drv = {
 	.init			= &it8xxx2_tcpm_init,
 	.release		= &it8xxx2_tcpm_release,
 	.get_cc			= &it8xxx2_tcpm_get_cc,
+	.check_vbus_level	= &it8xxx2_tcpm_check_vbus_level,
 	.select_rp_value	= &it8xxx2_tcpm_select_rp_value,
 	.set_cc			= &it8xxx2_tcpm_set_cc,
 	.set_polarity		= &it8xxx2_tcpm_set_polarity,

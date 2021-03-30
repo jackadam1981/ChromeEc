@@ -34,8 +34,7 @@ GPIO_INT(BASE_IMU_INT_L,     PIN(M, 3), GPIO_INT_FALLING | GPIO_SEL_1P8V,
 /* USB-C interrupts */
 GPIO_INT(USB_C0_PPC_INT_ODL, PIN(D, 1), GPIO_INT_BOTH, ppc_interrupt)
 GPIO_INT(USB_C0_BC12_INT_ODL,PIN(J, 4), GPIO_INT_FALLING, bc12_interrupt)
-/* TODO: rt1718s interrupt, not implemented */
-GPIO(USB_C1_INT_ODL,         PIN(B, 2), GPIO_INPUT | GPIO_INT_FALLING)
+GPIO_INT(USB_C1_INT_ODL,     PIN(B, 2), GPIO_INT_FALLING, rt1718s_tcpc_interrupt)
 /* TODO: not used in other devices? */
 GPIO(LID_ACCEL_INT_L,        PIN(M, 2), GPIO_INT_FALLING | GPIO_SEL_1P8V)
 
