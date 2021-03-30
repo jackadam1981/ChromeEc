@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78741caf_7f8f2bd3",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-30T19:29:24Z",
+      "side": 1,
+      "message": "Please briefly describe the problem and solution in a comment here, and refer to b/b/180455475.",
+      "revId": "1bd139a28a1c894f7cc52db6b23382c494e5b4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b29bbf1b_c6867330",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-30T19:29:24Z",
+      "side": 1,
+      "message": "Nit: This function could be organized with less nesting using early returns for the checks on lid_angle.",
+      "revId": "1bd139a28a1c894f7cc52db6b23382c494e5b4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0611fe_fa9ae12b",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-30T19:29:24Z",
+      "side": 1,
+      "message": "In this case, this function should just return LID_ANGLE_UNRELIABLE.",
+      "revId": "1bd139a28a1c894f7cc52db6b23382c494e5b4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
