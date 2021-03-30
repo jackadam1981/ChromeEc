@@ -179,6 +179,9 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	.sop_prime_enable	= &tcpci_tcpm_sop_prime_enable,
+#endif
 	.set_vconn		= &tcpci_tcpm_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
@@ -192,7 +195,7 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 	.drp_toggle		= &tcpci_tcpc_drp_toggle,
 #endif
 	.get_chip_info		= &tcpci_get_chip_info,
-#ifdef CONFIG_USBC_PPC
+#ifdef CONFIG_USB_PD_PPC
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #endif
