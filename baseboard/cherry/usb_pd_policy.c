@@ -2,8 +2,12 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include "adc.h"
+#include "atomic.h"
 #include "charge_manager.h"
 #include "chipset.h"
+#include "driver/tcpm/rt1718s.h"
+#include "driver/tcpm/tcpci.h"
 #include "timer.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
@@ -42,7 +46,7 @@ void svdm_set_hpd_gpio(int port, int en)
 static void aux_switch_port(int port)
 {
 	if (port != AUX_PORT_NONE)
-		gpio_set_level_verbose(CC_USBPD, GPIO_DP_PATH_SEL, port);
+		gpio_set_level_verbose(CC_USBPD, GPIO_DP_PATH_SEL, !port);
 	aux_port = port;
 }
 
@@ -166,7 +170,35 @@ __override void svdm_exit_dp_mode(int port)
 
 int pd_snk_is_vbus_provided(int port)
 {
-	return ppc_is_vbus_present(port);
+	static int vbus_prev[CONFIG_USB_PD_PORT_MAX_COUNT];
+	int vbus, adc_val;
+
+	/* TODO: implement rt1718s ADC function */
+	if (port == 0) {
+		adc_val = adc_read_channel(ADC_VBUS);
+	} else {
+		if (rt1718s_get_adc(1, RT1718S_ADC_VBUS1, &adc_val))
+			adc_val = 0;
+	}
+	vbus = (adc_val >= PD_V_SINK_DISCONNECT_MAX);
+
+#ifdef CONFIG_USB_CHARGER
+	/*
+	 * There's no PPC to inform VBUS change for usb_charger, so inform
+	 * the usb_charger now.
+	 */
+	if (!!(vbus_prev[port] != vbus)) {
+		usb_charger_vbus_change(port, vbus);
+		CPRINTS("\x1b[1;31musb_charger_vbus_change %d, %d\x1b[m",
+				port, vbus);
+	}
+
+	if (vbus)
+		atomic_or(&vbus_prev[port], 1);
+	else
+		atomic_clear(&vbus_prev[port]);
+#endif
+	return vbus;
 }
 
 void pd_power_supply_reset(int port)
@@ -181,6 +213,9 @@ void pd_power_supply_reset(int port)
 	/* Enable discharge if we were previously sourcing 5V */
 	if (prev_en)
 		pd_set_vbus_discharge(port, 1);
+
+	if (port == 1)
+		rt1718s_gpio_ctrl(RT1718S_GPIO_DISABLED);
 
 	/* Notify host of power info change. */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -208,6 +243,12 @@ int pd_set_power_supply_ready(int port)
 	if (rv)
 		return rv;
 
+	if (port == 1) {
+		rv = rt1718s_gpio_ctrl(RT1718S_GPIO_ENABLE_SOURCE);
+		if (rv)
+			return rv;
+	}
+
 	/* Notify host of power info change. */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 
@@ -218,4 +259,3 @@ int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
 }
-
