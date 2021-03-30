@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf08fe0_91e1fe19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-30T00:19:06Z",
+      "side": 1,
+      "message": "Removed overrides for boards that do not use PD and thus do not have VIFs generated anyway.",
+      "revId": "4f2cfc39a1fd8ec575df1c40c77b4433395cd269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
