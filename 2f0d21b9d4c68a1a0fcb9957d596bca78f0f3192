@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a79bc54_0332bd48",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-30T18:29:53Z",
+      "side": 1,
+      "message": "Where does the xmit_status get cleared after a successful transmit?  This state would just be for init/soft_reset/discard",
+      "revId": "2f0d21b9d4c68a1a0fcb9957d596bca78f0f3192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

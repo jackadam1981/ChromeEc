@@ -33,6 +33,24 @@
       "message": "So the PRL is expecting WAIT to be set, but it seems like discard is an option?",
       "revId": "e9eb5180fa2082b11333ae2a8cbda38f9accbcf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3742962_f65a049b",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-30T18:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edf2e891_59120faf",
+      "revId": "e9eb5180fa2082b11333ae2a8cbda38f9accbcf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
