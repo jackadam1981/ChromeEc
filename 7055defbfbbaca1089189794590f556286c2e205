@@ -93,6 +93,30 @@
       },
       "revId": "7055defbfbbaca1089189794590f556286c2e205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "945ad57a_b66b2c7e",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T19:33:06Z",
+      "side": 1,
+      "message": "or move the definition after",
+      "parentUuid": "dabbc0dc_bba174db",
+      "range": {
+        "startLine": 260,
+        "startChar": 24,
+        "endLine": 260,
+        "endChar": 29
+      },
+      "revId": "7055defbfbbaca1089189794590f556286c2e205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
