@@ -22,6 +22,30 @@
       },
       "revId": "90a343a13076cd6bedfdbc7e53f1c941ab7cfa53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc5baabc_8e95b8d5",
+        "filename": "docs/code_coverage.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T17:47:01Z",
+      "side": 1,
+      "message": "Yes, but that change is after this one. I can squash them, but it seems clearer to keep them separate.",
+      "parentUuid": "574e8443_d21f7cd1",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "90a343a13076cd6bedfdbc7e53f1c941ab7cfa53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
