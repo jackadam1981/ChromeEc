@@ -22,11 +22,13 @@
 #include "driver/bc12/mt6360.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
+#include "driver/ppc/rt1718s.h"
 #include "driver/ppc/syv682x.h"
+#include "driver/retimer/ps8802.h"
 #include "driver/tcpm/it83xx_pd.h"
+#include "driver/tcpm/rt1718s.h"
 #include "driver/temp_sensor/thermistor.h"
-#include "driver/usb_mux/it5205.h"
-#include "driver/usb_mux/ps8743.h"
+#include "driver/usb_mux/anx3443.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -101,9 +103,15 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 static void board_tcpc_init(void)
 {
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_INT_ODL);
 }
 /* Must be done after I2C */
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+
+void rt1718s_tcpc_interrupt(enum gpio_signal signal)
+{
+	schedule_deferred_pd_interrupt(1);
+}
 
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
@@ -127,7 +135,9 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.frs_en = GPIO_USB_C0_FRS_EN,
 	},
 	{
-		/* TODO: enable rt1718s */
+		.i2c_port = I2C_PORT_PPC1,
+		.i2c_addr_flags = RT1718S_ADDR0_FLAGS,
+		.drv = &rt1718s_ppc_drv,
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
@@ -138,33 +148,39 @@ const struct mt6360_config_t mt6360_config = {
 	.i2c_addr_flags = MT6360_PMU_I2C_ADDR_FLAGS,
 };
 
+static void null_charger_task(const int port) {}
+
+static int no_ramp(int supplier) {
+	return false;
+}
+
 const struct pi3usb9201_config_t
 		pi3usb9201_bc12_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	/* [0]: unused */
-	[1] = {
-		.i2c_port = 4,
+	[0] = {
+		.i2c_port = I2C_PORT_USB0,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 	}
+	/* [1]: unused */
+};
+
+static const struct bc12_drv null_bc12_drv = {
+	.usb_charger_task = null_charger_task,
+	.ramp_allowed = no_ramp,
 };
 
 struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	{ .drv = &mt6360_drv },
 	{ .drv = &pi3usb9201_drv },
+	{ .drv = &null_bc12_drv },
 };
 
 static void bc12_interrupt(enum gpio_signal signal)
 {
-	if (signal == GPIO_USB_C0_BC12_INT_ODL)
-		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
-	else
-		task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
+	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 }
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
-	if (signal == GPIO_USB_C0_PPC_INT_ODL)
-		/* C0: PPC interrupt */
-		syv682x_interrupt(0);
+	syv682x_interrupt(0);
 }
 
 /* PWM */
@@ -203,7 +219,6 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
-
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
@@ -231,55 +246,62 @@ BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 
 /* USB Mux */
 
-void board_usb_mux_init(void)
-{
-	ps8743_tune_usb_eq(&usb_muxes[1],
-			   PS8743_USB_EQ_TX_12_8_DB,
-			   PS8743_USB_EQ_RX_12_8_DB);
-}
-DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);
+const struct usb_mux usbc0_virtual_mux = {
+	.usb_port = 0,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
 
-static int board_ps8743_mux_set(const struct usb_mux *me,
+const struct usb_mux usbc1_virtual_mux = {
+	.usb_port = 1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+
+static int board_ps8802_mux_set(const struct usb_mux *me,
 				mux_state_t mux_state)
 {
-	int rv = EC_SUCCESS;
-	int reg = 0;
+	/* Make sure the PS8802 is awake */
+	RETURN_ERROR(ps8802_i2c_wake(me));
 
-	rv = ps8743_read(me, PS8743_REG_MODE, &reg);
-	if (rv)
-		return rv;
+	/* USB specific config */
+	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+		/* Boost the USB gain */
+		RETURN_ERROR(ps8802_i2c_field_update16(me,
+					PS8802_REG_PAGE2,
+					PS8802_REG2_USB_SSEQ_LEVEL,
+					PS8802_USBEQ_LEVEL_UP_MASK,
+					PS8802_USBEQ_LEVEL_UP_19DB));
+	}
 
-	/* Disable FLIP pin, enable I2C control. */
-	reg |= PS8743_MODE_FLIP_REG_CONTROL;
-	/* Disable CE_USB pin, enable I2C control. */
-	reg |= PS8743_MODE_USB_REG_CONTROL;
-	/* Disable CE_DP pin, enable I2C control. */
-	reg |= PS8743_MODE_DP_REG_CONTROL;
+	/* DP specific config */
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		/* Boost the DP gain */
+		RETURN_ERROR(ps8802_i2c_field_update8(me,
+					PS8802_REG_PAGE2,
+					PS8802_REG2_DPEQ_LEVEL,
+					PS8802_DPEQ_LEVEL_UP_MASK,
+					PS8802_DPEQ_LEVEL_UP_19DB));
+	}
 
-	/*
-	 * DP specific config
-	 *
-	 * Enable/Disable IN_HPD on the DB.
-	 */
-	gpio_set_level(GPIO_USB_C1_DP_IN_HPD,
-		       mux_state & USB_PD_MUX_DP_ENABLED);
-
-	return ps8743_write(me, PS8743_REG_MODE, reg);
+	return EC_SUCCESS;
 }
 
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
 		.i2c_port = I2C_PORT_USB_MUX0,
-		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
-		.driver = &it5205_usb_mux_driver,
+		.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
+		.driver = &ps8802_usb_mux_driver,
+		.next_mux = &usbc0_virtual_mux,
+		.board_set = &board_ps8802_mux_set,
 	},
 	{
 		.usb_port = 1,
 		.i2c_port = I2C_PORT_USB_MUX1,
-		.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
-		.driver = &ps8743_usb_mux_driver,
-		.board_set = &board_ps8743_mux_set,
+		.i2c_addr_flags = ANX3443_I2C_ADDR0_FLAGS,
+		.driver = &anx3443_usb_mux_driver,
+		.next_mux = &usbc1_virtual_mux,
 	},
 };
 
@@ -330,11 +352,12 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = 0,
 	},
 	{
-		.bus_type = EC_BUS_TYPE_EMBEDDED,
-		/* TCPC is embedded within EC so no i2c config needed */
-		.drv = &it8xxx2_tcpm_drv,
-		/* Alert is active-low, push-pull */
-		.flags = 0,
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB1,
+			.addr_flags = RT1718S_SLAVE_ADDR_FLAGS,
+		},
+		.drv = &rt1718s_tcpm_drv,
 	},
 };
 
@@ -346,30 +369,31 @@ const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 			.rising_time = IT83XX_TX_PRE_DRIVING_TIME_1_UNIT,
 			.falling_time = IT83XX_TX_PRE_DRIVING_TIME_2_UNIT,
 		},
-		{
-			.rising_time = IT83XX_TX_PRE_DRIVING_TIME_1_UNIT,
-			.falling_time = IT83XX_TX_PRE_DRIVING_TIME_2_UNIT,
-		},
 	};
 
-	return &cc_parameter[port];
+	if (port == 0)
+		return &cc_parameter[port];
+	return NULL;
 }
 
 uint16_t tcpc_get_alert_status(void)
 {
 	/*
-	 * C0 & C1: TCPC is embedded in the EC and processes interrupts in the
+	 * C0 TCPC is embedded in the EC and processes interrupts in the
 	 * chip code (it83xx/intc.c)
 	 */
+	if (!gpio_get_level(GPIO_USB_C1_INT_ODL))
+		return PD_STATUS_TCPC_ALERT_1;
 	return 0;
 }
 
 void board_reset_pd_mcu(void)
 {
 	/*
-	 * C0 & C1: TCPC is embedded in the EC and processes interrupts in the
-	 * chip code (it83xx/intc.c)
+	 * C0: The internal TCPC on ITE EC does not have a reset signal,
+	 * but it will get reset when the EC gets reset.
 	 */
+	/* C1: Add code if TCPC chips need a reset */
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,
@@ -513,4 +537,4 @@ static void baseboard_init(void)
 {
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 }
-DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT-1);
+DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT - 1);
