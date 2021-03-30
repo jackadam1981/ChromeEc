@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6376692_81535f19",
+        "filename": "baseboard/asurada/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-30T10:29:04Z",
+      "side": 1,
+      "message": "add curly bracket here",
+      "revId": "8c3310b390c419f6d7a2ea3e39a6f68299a79b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed1f2cc8_a826edae",
+        "filename": "baseboard/asurada/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-30T10:29:04Z",
+      "side": 1,
+      "message": "board_get_usb_pd_port_count()",
+      "range": {
+        "startLine": 47,
+        "startChar": 17,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "8c3310b390c419f6d7a2ea3e39a6f68299a79b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
