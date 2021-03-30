@@ -141,10 +141,12 @@ static int rt1718s_dump(int port)
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
-#error rt1718s_is_vbus_present not implemented
 static int rt1718s_is_vbus_present(int port)
 {
-	return EC_ERROR_UNIMPLEMENTED;
+	int status;
+	int rv = read_reg(port, TCPC_REG_POWER_STATUS, &status);
+
+	return (rv == 0) && (status & TCPC_REG_POWER_STATUS_VBUS_PRES);
 }
 #endif
 
