@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fecf07c_658bc0ca",
+        "filename": "include/adc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-30T16:34:25Z",
+      "side": 1,
+      "message": "I had it that way at some point...I did this for consistency since \u0027val\u0027 matches the node name. But I am very much on the fence.\n\nI\u0027ll change it over (when I get to this, likely Thursday)",
+      "parentUuid": "87429d21_63d09dfc",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "523e47c39204712cc0d2810c18d0d2a3de251511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f1d4b19_028844a6",
         "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
         "patchSetId": 3
