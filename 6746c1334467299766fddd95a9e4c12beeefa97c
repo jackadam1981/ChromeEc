@@ -33,6 +33,29 @@
       "message": "Wai-Hong - Are there any other comments other than the cherry-pick to firmware branch that you are waiting on.\n\nAlex - Please cherry-pick this to the firmware branch and resolve any remaining comments.",
       "revId": "6746c1334467299766fddd95a9e4c12beeefa97c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e515c8_e2cb7b4c",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-03-30T18:45:25Z",
+      "side": 1,
+      "message": "It was moved to \"driver/ln9310.h\" in ToT. Please fix it and sort the includes.",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "6746c1334467299766fddd95a9e4c12beeefa97c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
