@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec9b878_0381b9f0",
+        "filename": "fuzz/host_command_fuzz.tasklist",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-30T03:38:32Z",
+      "side": 1,
+      "message": "I intended to change that but then I realized I can do better by assigning the mocked driver to the fp_driver interface.",
+      "parentUuid": "08514bda_dafddf7d",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "a104bcabe49668e5cb4971506254cbcac3941e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eda772d5_c10cadd7",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-29T22:44:01Z",
       "side": 1,
       "message": "It looks like we don\u0027t ever access the members and just cast fp_buffer_t into a uint8_t* whenever we use it. It might make the code a little cleaner to do something like:\n\n #define FP_SENSOR_IMAGE_SIZE  GENERIC_MAX(FP_SENSOR_IMAGE_SIZE_FPC, FP_SENSOR_IMAGE_SIZE_ELAN)\n\n uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE];\n\nSame for the template.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 6
+      },
+      "revId": "a104bcabe49668e5cb4971506254cbcac3941e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65016345_34dbb6a1",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-30T03:38:32Z",
+      "side": 1,
+      "message": "This will work for fp_buffer and fp_enc_buffer. For fp_template, since it\u0027s two-dimensional, we can use the bigger macro to define the array, but when working with template data (e.g. when copying), we still need the runtime algorithm template size. If at runtime we find ourselves using the sensor with smaller template size, then we have some gap in this 2-D array, which is ok.\n\nThis indeed makes code cleaner.",
+      "parentUuid": "eda772d5_c10cadd7",
       "range": {
         "startLine": 46,
         "startChar": 0,
