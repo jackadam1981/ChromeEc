@@ -1842,12 +1842,7 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	 * discovery spacing or BUSY spacing runs out.
 	 */
 	if (pd_timer_is_expired(port, PE_TIMER_DISCOVER_IDENTITY)) {
-		if (pd_get_identity_discovery(port, TCPC_TX_SOP_PRIME) ==
-				PD_DISC_NEEDED) {
-			pe[port].tx_type = TCPC_TX_SOP_PRIME;
-			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
-			return true;
-		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP) ==
+		if (pd_get_identity_discovery(port, TCPC_TX_SOP) ==
 				PD_DISC_NEEDED &&
 				pe_can_send_sop_vdm(port, CMD_DISCOVER_IDENT)) {
 			pe[port].tx_type = TCPC_TX_SOP;
@@ -1865,6 +1860,11 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 				pe_can_send_sop_vdm(port, CMD_DISCOVER_MODES)) {
 			pe[port].tx_type = TCPC_TX_SOP;
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
+			return true;
+		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP_PRIME) ==
+				PD_DISC_NEEDED) {
+			pe[port].tx_type = TCPC_TX_SOP_PRIME;
+			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 			return true;
 		} else if (pd_get_svids_discovery(port, TCPC_TX_SOP_PRIME)
 				== PD_DISC_NEEDED) {
