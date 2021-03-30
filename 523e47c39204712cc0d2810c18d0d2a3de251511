@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87429d21_63d09dfc",
+        "filename": "include/adc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-03-30T09:04:15Z",
+      "side": 1,
+      "message": "How would you feel about dropping this and having the full enum name in the dts files? I\u0027m thinking that having ADC_ added by the macro makes it harder to full string searches across the code base to find what is defined where. We already have to manually strip CONFIG_ prefix for Kconfig options and do the whole - to _ conversion for DT properties, thinking that adding more set of prefixes to strip manually for searching through the code may make the situation even worse, especially for new users.",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "523e47c39204712cc0d2810c18d0d2a3de251511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f1d4b19_028844a6",
         "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
         "patchSetId": 3
