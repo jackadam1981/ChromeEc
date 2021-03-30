@@ -16,6 +16,46 @@
       "message": "Replace \"gpio_get_level(GPIO_PG_EC_DSW_PWROK)\" with \"chipset_in_state(CHIPSET_STATE_ANY_OFF) ? 0 : 1\" in board_is_i2c_port_powered().",
       "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbaab466_7f9012a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-30T10:19:58Z",
+      "side": 1,
+      "message": "Please survey if the comment is reasonable or not. The rest of the code is LGTM.",
+      "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2aea7fc_dce3d826",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-30T10:19:58Z",
+      "side": 1,
+      "message": "It looks like these code can be split to a function + 2D-array. For example:\n\nuint8_t lightbar_ctrl[LIGHTBAR_COLOR_TOTAL-1][12] \u003d {\n    [BAR_COLOR_ORG_20_PERCENT] \u003d {...},\n...\n}\n\nvoid lightbar_ctrl_color(enum ec_lightbar_colors color)\n{\n\ti2c_lock(I2C_PORT_LIGHTBAR, 1);\n\tcontroller_write(KTD20XX_IRED_SET0, lightbar_ctrl[color][0]);\n\tcontroller_write(KTD20XX_IGRN_SET0, lightbar_ctrl[color][1]);\n\t...\n\ti2c_lock(I2C_PORT_LIGHTBAR, 0);\n}\n\nIn the lightbar_set_color(enum ec_lightbar_colors color){\n\tif (color \u003d\u003d BAR_OFF || color \u003e\u003d LIGHTBAR_COLOR_TOTAL) {\n\t\ti2c_lock(I2C_PORT_LIGHTBAR, 1);\n\t\tcontroller_write(KTD20XX_CTRL_CFG, DISABLE_LIGHTBAR);\n\t\ti2c_lock(I2C_PORT_LIGHTBAR, 0);\n\t} else {\n\t\tlightbar_ctrl_color(color)\n\t}\n}",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 33
+      },
+      "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
