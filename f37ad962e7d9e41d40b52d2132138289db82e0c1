@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72f8ecbf_70acd5e4",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1503728
+      },
+      "writtenOn": "2021-03-30T13:08:21Z",
+      "side": 1,
+      "message": "Let the charger IC entry in learn mode and then exit learn mode rapidly is our idea to solve this issue.We suppose to demo the action in cosumer,so we would like to set 500 ms turn off time to solve this issue for you reference.",
+      "parentUuid": "552251ca_9ecaf8e3",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2a523e2_7c53607b",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 3
@@ -118,6 +136,24 @@
       "side": 1,
       "message": "\u003e I think this is an IC issue actually ...\n\nIn that case, this file is probably the right place for it.\n\n\u003e But, regarding this line, would this only happen when the chipset is shutdown? What if we reach 100% battery after the AP is already off? Also I think we might want this in S0ix as well, but we\u0027d need to test that.\n\nI think my understanding of the bug (and this part) is pretty rudimentary. If the battery is fully charged, is it always wrong for the part to be CCM instead of DCM? If so, does it only cause a significant problem in S5 (due to a significant increase in power consumption)?\n\nIf it\u0027s always wrong not to switch when we\u0027re fully charged, and we can get into the bad state by reaching full charge in any power state, then right hook to HOOK is probably HOOK_BATTERY_SOC_CHANGE.",
       "parentUuid": "8bf9a786_bd2641a4",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e338369c_9c895d97",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1503728
+      },
+      "writtenOn": "2021-03-30T13:08:21Z",
+      "side": 1,
+      "message": "I think it\u0027s not an IC issue,it\u0027s an application issue.When system operates in S0ix,charger will always work in CCM mode.Due to the power disipation in S0ix is larger than S5.",
+      "parentUuid": "62f726ee_5989387a",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
