@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc91ae2_89b5c20f",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T14:25:04Z",
+      "side": 1,
+      "message": "can we have a Kconfig option to guard away this code for chips that don\u0027t have hibernate implemented yet?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 11
+      },
+      "revId": "f41c55f11b7affe8de59cb977da8bd6e89dd8f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
