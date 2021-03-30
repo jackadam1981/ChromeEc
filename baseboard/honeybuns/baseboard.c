@@ -103,6 +103,7 @@ static void baseboard_set_led(enum led_color color)
 	 * associated with a power button press.
 	 */
 	CPRINTS("led: color = %d", color);
+#if 0
 	if (color == OFF) {
 		gpio_set_level(GPIO_EC_STATUS_LED1, 1);
 		gpio_set_level(GPIO_EC_STATUS_LED2, 1);
@@ -113,6 +114,7 @@ static void baseboard_set_led(enum led_color color)
 		gpio_set_level(GPIO_EC_STATUS_LED1, 0);
 		gpio_set_level(GPIO_EC_STATUS_LED2, 0);
 	}
+#endif
 }
 
 static void baseboard_led_callback(void);
