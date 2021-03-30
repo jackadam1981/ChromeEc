@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96fe9b90_55aa66a1",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T20:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd1a5e9a_5cd628fe",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "703058974343b77922740e27c76e55ed4121464d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19f1f4c7_de583c5a",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-03-30T18:47:01Z",
       "side": 1,
       "message": "2 blank lines required before/after module level function definitions\n\nhttps://www.python.org/dev/peps/pep-0008/#blank-lines",
+      "revId": "703058974343b77922740e27c76e55ed4121464d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c5c257_23791084",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T20:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f1f4c7_de583c5a",
       "revId": "703058974343b77922740e27c76e55ed4121464d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
