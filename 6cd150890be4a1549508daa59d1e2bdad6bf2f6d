@@ -56,6 +56,30 @@
       },
       "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "003ea687_02c8870b",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-03-30T10:56:20Z",
+      "side": 1,
+      "message": "Hi Zhuohao,\n\nI follow power button/battery led model, ex. led_set_color_battery(), to implement lightbar.\nI have no idea about your comment.\nCould you help to provide whole patch about what you mentioned is?",
+      "parentUuid": "e2aea7fc_dce3d826",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 33
+      },
+      "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
