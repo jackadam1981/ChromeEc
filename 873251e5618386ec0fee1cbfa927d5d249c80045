@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57facba_1eb22f24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-30T09:54:12Z",
+      "side": 1,
+      "message": "Currently pinmux will affect the uart function. After the pinmux is modified, it will be split from this CL.",
+      "parentUuid": "5f64f9f9_188d2fb7",
+      "revId": "873251e5618386ec0fee1cbfa927d5d249c80045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f68e34bd_b70afe3c",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-29T21:20:42Z",
       "side": 1,
       "message": "this is useless... either remove or write helpful help text?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "873251e5618386ec0fee1cbfa927d5d249c80045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655548b6_4138bd0b",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-30T09:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f68e34bd_b70afe3c",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b4b77a6_23c57af2",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_it8xxx2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-30T09:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02895543_18912a09",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "873251e5618386ec0fee1cbfa927d5d249c80045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "466e52b5_b291b2b3",
         "filename": "zephyr/drivers/cros_bbram/cros_bbram_it8xxx2.c",
         "patchSetId": 8
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21110d51_b656206a",
+        "filename": "zephyr/drivers/cros_bbram/cros_bbram_it8xxx2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-30T09:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "466e52b5_b291b2b3",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "873251e5618386ec0fee1cbfa927d5d249c80045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90a3af64_e4c5a7ed",
         "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
         "patchSetId": 8
@@ -100,6 +190,30 @@
       "writtenOn": "2021-03-29T21:20:42Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "873251e5618386ec0fee1cbfa927d5d249c80045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f8fea8_4fe27144",
+        "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-03-30T09:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a3af64_e4c5a7ed",
       "range": {
         "startLine": 5,
         "startChar": 0,
