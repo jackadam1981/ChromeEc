@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be308150_645d0e48",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-30T17:55:31Z",
+      "side": 1,
+      "message": "Well there is some value, since very little output goes to stderr at present, but not zero...and of course we may switch over to use make.",
+      "parentUuid": "80e9f6cd_cf4071bb",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 54
+      },
+      "revId": "b9cd6282e86f7b0e67f1cdb62d282516e2cb2ed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d666551d_7b3254d4",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-29T15:27:07Z",
       "side": 1,
       "message": "you\u0027re confusing me!",
+      "range": {
+        "startLine": 51,
+        "startChar": 25,
+        "endLine": 51,
+        "endChar": 32
+      },
+      "revId": "b9cd6282e86f7b0e67f1cdb62d282516e2cb2ed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc45c870_3a58c0d8",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-30T17:55:31Z",
+      "side": 1,
+      "message": "Me too, done",
+      "parentUuid": "d666551d_7b3254d4",
       "range": {
         "startLine": 51,
         "startChar": 25,
