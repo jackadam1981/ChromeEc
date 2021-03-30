@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd0d50b6_0097268c",
+        "filename": "zephyr/drivers/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:25Z",
+      "side": 1,
+      "message": "The zephyr SPI driver APIs doesn\u0027t support enable/disable function which is required by the common layer of ECOS.",
+      "parentUuid": "d1ba3441_d30e0564",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c36c52d_a4dd256d",
         "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-29T14:59:16Z",
       "side": 1,
       "message": "can we use Zephyr\u0027s logging system instead?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "115b952c_4affd97a",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:25Z",
+      "side": 1,
+      "message": "With Zephyr\u0027s log, the debug messages contains the prefix (module_name + function name) which make the message hard to read. Here is the example:\n[00:00:16.233,000] \u003cdbg\u003e cros_shi.cros_shi_npcx_isr: CSNFE-\n[00:00:16.233,000] \u003cdbg\u003e cros_shi.shi_handle_cs_assert: CSL-\n[00:00:16.233,000] \u003cdbg\u003e cros_shi.cros_shi_npcx_isr: HDR-\n[00:00:16.233,000] \u003cdbg\u003e cros_shi.shi_parse_header: RV-\n[00:00:16.233,000] \u003cdbg\u003e cros_shi.shi_handle_host_package: PRC-\n[00:00:16.234,000] \u003cdbg\u003e cros_shi.shi_send_response_packet: SND-\n[00:00:16.234,000] \u003cdbg\u003e cros_shi.cros_shi_npcx_isr: CSH-\n[00:00:16.234,000] \u003cdbg\u003e cros_shi.cros_shi_npcx_reset_prepare: RDY-\n[00:00:16.234,000] \u003cdbg\u003e cros_shi.shi_handle_cs_deassert: END\n\nI\u0027d want to have the message look like this:\nCSNFE-CSL-HDR-RV-PRC-[4.585300 HC 0x102]                                                                                                                                                                                                      \nSND-CSH-RDY-END",
+      "parentUuid": "7c36c52d_a4dd256d",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1344c9_2b8e44a0",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd8b966f_b9757df7",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 8
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d19b3a40_e267552a",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-29T14:59:16Z",
       "side": 1,
       "message": "line is overindented ... you can try running clang-format to fix this, which is already setup for linux kernel style in this repo",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 6
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c35fbf09_ae00b494",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d19b3a40_e267552a",
       "range": {
         "startLine": 206,
         "startChar": 2,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d8235de_66c5a081",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbe1b01a_34e183a2",
+      "range": {
+        "startLine": 215,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 5
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c89f100f_c5c456d7",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-03-29T14:59:16Z",
       "side": 1,
       "message": "underindented... think it should be one tab",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 8
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c78e249c_1fc209db",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c89f100f_c5c456d7",
       "range": {
         "startLine": 275,
         "startChar": 1,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa780c95_ee33d98b",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7239409d_d7aa9e50",
+      "range": {
+        "startLine": 592,
+        "startChar": 3,
+        "endLine": 593,
+        "endChar": 9
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69f18bdd_cef4addc",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71a2f7e_fc2571d2",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69f18bdd_cef4addc",
+      "range": {
+        "startLine": 621,
+        "startChar": 3,
+        "endLine": 623,
+        "endChar": 31
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae558371_0587f94e",
@@ -215,6 +407,30 @@
       "writtenOn": "2021-03-29T14:59:16Z",
       "side": 1,
       "message": "lines are underindented",
+      "range": {
+        "startLine": 907,
+        "startChar": 0,
+        "endLine": 907,
+        "endChar": 6
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a860b059_1b354492",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae558371_0587f94e",
       "range": {
         "startLine": 907,
         "startChar": 0,
