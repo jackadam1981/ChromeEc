@@ -16,6 +16,23 @@
       "message": "Any update? This CL needs to be updated to address other ToT changes.",
       "revId": "6746c1334467299766fddd95a9e4c12beeefa97c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "146c999d_d55c44cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2021-03-30T18:25:14Z",
+      "side": 1,
+      "message": "Wai-Hong - Are there any other comments other than the cherry-pick to firmware branch that you are waiting on.\n\nAlex - Please cherry-pick this to the firmware branch and resolve any remaining comments.",
+      "revId": "6746c1334467299766fddd95a9e4c12beeefa97c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
