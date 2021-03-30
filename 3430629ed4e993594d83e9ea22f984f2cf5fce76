@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78494ae5_341d32bc",
+        "filename": "util/iteflash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-03-30T21:20:11Z",
+      "side": 1,
+      "message": "I am getting an error while doing a make build (probably the int i needs to be outside the for loop?):\n\nutil/iteflash.c: In function ‘is_empty_page’:\nutil/iteflash.c:1216:2: error: ‘for’ loop initial declarations are only allowed in C99 or C11 mode\n  for (int i \u003d 0; i \u003c size; i++) {\n  ^",
+      "range": {
+        "startLine": 1216,
+        "startChar": 1,
+        "endLine": 1220,
+        "endChar": 0
+      },
+      "revId": "3430629ed4e993594d83e9ea22f984f2cf5fce76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
