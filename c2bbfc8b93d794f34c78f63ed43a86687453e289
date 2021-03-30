@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e38c80f_e644deae",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-30T15:33:08Z",
+      "side": 1,
+      "message": "should be alphabetically sorted with the rest of the includes (between chipset.h and hooks.h)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "c2bbfc8b93d794f34c78f63ed43a86687453e289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
