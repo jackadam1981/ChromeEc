@@ -33,7 +33,6 @@ GPIO_INT(BASE_IMU_INT_L,     PIN(J, 2), GPIO_INT_FALLING | GPIO_SEL_1P8V,
          bmi160_interrupt)
 GPIO_INT(LID_ACCEL_INT_L,    PIN(J, 3), GPIO_INT_FALLING | GPIO_SEL_1P8V,
          lis2dw12_interrupt)
-GPIO(ALS_RGB_INT_ODL,        PIN(F, 0), GPIO_INPUT)
 
 /* USB-C interrupts */
 GPIO_INT(USB_C0_PPC_INT_ODL, PIN(D, 1), GPIO_INT_BOTH, ppc_interrupt)
@@ -127,6 +126,7 @@ GPIO(PACKET_MODE_EN,         PIN(A, 3), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(UNUSED_GPIOA0,          PIN(A, 0), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(UNUSED_GPIOA1,          PIN(A, 1), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(UNUSED_GPIOA2,          PIN(A, 2), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIOF0,          PIN(F, 0), GPIO_INPUT | GPIO_PULL_UP)
 
 /* b/160218054: behavior not defined */
 /* *_ODL pin has external pullup so don't pull it down. */

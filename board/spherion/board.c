@@ -54,9 +54,19 @@
 /* Initialize board. */
 static void board_init(void)
 {
-	/* Enable motion sensor interrupt */
-	gpio_enable_interrupt(GPIO_BASE_IMU_INT_L);
-	gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L);
+	/* Disable motion sense. */
+	motion_sensor_count = 0;
+	gpio_disable_interrupt(GPIO_BASE_IMU_INT_L);
+	gpio_disable_interrupt(GPIO_LID_ACCEL_INT_L);
+	gpio_set_flags(GPIO_BASE_IMU_INT_L,
+		       GPIO_INPUT | GPIO_PULL_UP);
+	gpio_set_flags(GPIO_LID_ACCEL_INT_L,
+		       GPIO_INPUT | GPIO_PULL_UP);
+	/* Disable tablet mode. */
+	tablet_set_mode(0);
+	gmr_tablet_switch_disable();
+	gpio_set_flags(GPIO_TABLET_MODE_L,
+		       GPIO_INPUT | GPIO_PULL_UP);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -165,7 +175,7 @@ struct motion_sensor_t motion_sensors[] = {
 		},
 	},
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* PWM */
 
