@@ -23,6 +23,7 @@
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -410,3 +411,16 @@ static void kb_backlight_disable(void)
 	gpio_set_level(GPIO_EC_KB_BL_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kb_backlight_disable, HOOK_PRIO_DEFAULT);
+
+int board_sensor_at_360(void)
+{
+	int lid_angle = motion_lid_get_angle();
+
+	if (lid_angle != LID_ANGLE_UNRELIABLE) {
+		if (lid_angle <= 300)
+			return 0;
+		else
+			return !gpio_get_level(GMR_TABLET_MODE_GPIO_L);
+	} else
+		return 0;
+}
