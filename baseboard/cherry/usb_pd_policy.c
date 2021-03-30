@@ -166,7 +166,8 @@ __override void svdm_exit_dp_mode(int port)
 
 int pd_snk_is_vbus_provided(int port)
 {
-	return ppc_is_vbus_present(port);
+	/* TODO */
+	return 0;
 }
 
 void pd_power_supply_reset(int port)
