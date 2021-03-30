@@ -16,6 +16,24 @@
       "message": "Should this flag also change the default log level to DEBUG?\n\nOK if follow up CL...",
       "revId": "4cc500ef1919457c7a00d71bd5dba71efd621b7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee4f566_a7d78a2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-30T17:57:52Z",
+      "side": 1,
+      "message": "I suppose it could, although people can do this themselves and they are separate concerns.\n\nHmmm probably we want to use -l debug in the firmware_builder script though",
+      "parentUuid": "080eeda6_a55e7d38",
+      "revId": "4cc500ef1919457c7a00d71bd5dba71efd621b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
