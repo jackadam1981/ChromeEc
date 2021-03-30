@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c313628a_ea760cdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-30T21:58:32Z",
+      "side": 1,
+      "message": "This does feel like something of a data point for perhaps consolidating the RAA related functions into the baseboard somehow.  ",
+      "revId": "e00a5b72b2da5e032091191438e525b0b0ec7bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27621154_1b0d639f",
+        "filename": "board/sasukette/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-30T21:58:32Z",
+      "side": 1,
+      "message": "Does it need disabled here, or are we okay?",
+      "revId": "e00a5b72b2da5e032091191438e525b0b0ec7bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
