@@ -156,6 +156,24 @@
       "parentUuid": "62f726ee_5989387a",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9936704f_b6335636",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-30T16:38:46Z",
+      "side": 1,
+      "message": "We\u0027re arguing semantics. Its not a platform-level issue; its an IC-level issue so should be fixed in the IC driver not the reference baseboard.\n\nFor S0ix, It appears the power is low enough that we should be in DCM mode based on your comments in the bug. A power of \u003e1W would also be unacceptable when the system power is \u003c200mW in S0ix.",
+      "parentUuid": "e338369c_9c895d97",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
