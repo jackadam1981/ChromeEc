@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fdfbec1_0389a44b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-03-30T23:44:24Z",
+      "side": 1,
+      "message": "I think this was the same comment from below.",
+      "parentUuid": "a7111ed1_725ba5a7",
+      "revId": "e9eb5180fa2082b11333ae2a8cbda38f9accbcf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edf2e891_59120faf",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 2
