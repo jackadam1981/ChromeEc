@@ -233,6 +233,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06badba3_0a3daa8a",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-30T18:49:27Z",
+      "side": 1,
+      "message": "// VJ comments:\nexcept item 3:\n\ndefine below function in chip/mchp/i2c_chip.h\n__override_proto int board_i2c_p2c(int port);\n\n// Martin\ncurrently, there is not i2c_chip.h in mchp chip folder, will add a new i2c_chip.h into chip folder.",
+      "parentUuid": "7562d3d2_cf87b652",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7b18bbc_7f71f0be",
