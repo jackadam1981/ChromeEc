@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Brya board configuration */
+/* Brya board configuration -- v1 */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
