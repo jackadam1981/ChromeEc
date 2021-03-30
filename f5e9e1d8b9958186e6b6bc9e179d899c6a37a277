@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b4c0e77_4af5fc2a",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:36Z",
+      "side": 1,
+      "message": "I have add the config \"CROS_SHI_NPCX_DEBUG\" for it in the CL:2786887/4",
+      "parentUuid": "4dcb58b5_1c397641",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "f5e9e1d8b9958186e6b6bc9e179d899c6a37a277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5523227b_580cbc99",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e67a712_059136d8",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5523227b_580cbc99",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "f5e9e1d8b9958186e6b6bc9e179d899c6a37a277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "552b1b56_3bdcfa91",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-29T15:02:11Z",
       "side": 1,
       "message": "line needs indented",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "f5e9e1d8b9958186e6b6bc9e179d899c6a37a277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b3e66f_c889ec39",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-30T10:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "552b1b56_3bdcfa91",
       "range": {
         "startLine": 88,
         "startChar": 0,
