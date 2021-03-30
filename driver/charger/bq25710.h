@@ -102,6 +102,13 @@
 #define BQ25710_IIN_DPM_BIT_SHIFT		8
 #define BQ25710_IIN_DPM_STEP_MA			50
 
+#if defined(CONFIG_CHARGER_BQ25720)
+/* Vmin Active Protection Register */
+#define CONFIG_CHARGER_BQ25720_VSYS_TH2_SHIFT	2
+#define CONFIG_CHARGER_BQ25720_VSYS_TH2_MASK	(0x3f << \
+					CONFIG_CHARGER_BQ25720_VSYS_TH2_SHIFT)
+#endif
+
 extern const struct charger_drv bq25710_drv;
 
 #endif /* __CROS_EC_BQ25710_H */
