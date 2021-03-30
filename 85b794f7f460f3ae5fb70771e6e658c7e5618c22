@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "291f53e8_13beb11a",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T18:41:20Z",
+      "side": 1,
+      "message": "Reformatted with the python formatter in VSCode. Is there some python formatter that will also wrap long lines? VSCode will only fix the lines if they are short, otherwise it leaves them alone.",
+      "parentUuid": "99b8ca4e_7a82ee06",
+      "range": {
+        "startLine": 357,
+        "startChar": 8,
+        "endLine": 357,
+        "endChar": 12
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53a7d1ba_9990995d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-30T17:32:50Z",
       "side": 1,
       "message": "is everything outputted on stderr supposed to be an error with lcov?",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 75
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a7fea3_3f17849f",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T18:41:20Z",
+      "side": 1,
+      "message": "No, there are lots of warnings printed about files with no coverage data, etc.",
+      "parentUuid": "53a7d1ba_9990995d",
       "range": {
         "startLine": 368,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d95c52a_e06f023e",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T18:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5df87ae8_4f2d1bce",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 67
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d07fb43e_b22525ee",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-30T17:32:50Z",
       "side": 1,
       "message": "since we are repeating this pattern twice now, it should be refactored into a generator\n\ni.e. zmake.project.find_projects(root_dir) generates zmake.project.Project objects?",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 67
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b89d846b_2aca3fed",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T18:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07fb43e_b22525ee",
       "range": {
         "startLine": 445,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d6f344_02bdbc75",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T18:41:20Z",
+      "side": 1,
+      "message": "When you actually put them side by side the common bits are:\n\n```\n        executor \u003d zmake.multiproc.Executor(fail_fast\u003dfail_fast)\n        root_dir \u003d self.module_paths[\u0027ec\u0027] / \u0027zephyr\u0027\n        for project in zmake.project.find_projects(root_dir):\n            is_test \u003d project.config.is_test\n            # ... parts that vary\n\n        rv \u003d executor.wait()\n        if rv:\n            return rv\n```",
+      "parentUuid": "358cbb5a_a2a5c37a",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 28
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee98ddbe_ff67a55e",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-03-30T17:32:50Z",
       "side": 1,
       "message": "what is the EC version needed for?\n\nI think we should avoid this crazy invocation of getversion.sh if possible",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 31
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f0ee38_0c4365e5",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T18:41:20Z",
+      "side": 1,
+      "message": "This sets the title in the report, and is to make it match `make -j coverage` in projects/ec.",
+      "parentUuid": "ee98ddbe_ff67a55e",
       "range": {
         "startLine": 478,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d2e2e7d_a02852fe",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T18:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ba0a7d8_4c4120f8",
+      "range": {
+        "startLine": 480,
+        "startChar": 8,
+        "endLine": 480,
+        "endChar": 12
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63cf0510_0a75b04c",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-03-30T17:32:50Z",
       "side": 1,
       "message": "again, alignment needs fixed up",
+      "range": {
+        "startLine": 499,
+        "startChar": 7,
+        "endLine": 499,
+        "endChar": 12
+      },
+      "revId": "85b794f7f460f3ae5fb70771e6e658c7e5618c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00bcb27_0dd973d2",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-03-30T18:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63cf0510_0a75b04c",
       "range": {
         "startLine": 499,
         "startChar": 7,
