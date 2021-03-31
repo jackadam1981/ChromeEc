@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4c4fd8d_b3a12f88",
+        "filename": "include/adc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-31T18:23:25Z",
+      "side": 1,
+      "message": "+1 on dropping DT_CAT",
+      "parentUuid": "7fecf07c_658bc0ca",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "523e47c39204712cc0d2810c18d0d2a3de251511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f1d4b19_028844a6",
         "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "No, these *_map.h files need to stop",
       "parentUuid": "5f1d4b19_028844a6",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "523e47c39204712cc0d2810c18d0d2a3de251511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ddbf33d_f0f90cf3",
+        "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-31T18:23:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ef8e1022_08cc6032",
       "range": {
         "startLine": 36,
         "startChar": 0,
