@@ -371,6 +371,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
+	int ret;
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
@@ -463,8 +464,10 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		retimer_set_state_ufp(port, mux_state, &set_retimer_con);
 
 	/* Writing the register4 */
-	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+	ret = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);
+	msleep(15);
+	return ret;
 }
 
 static int retimer_low_power_mode(const struct usb_mux *me)
