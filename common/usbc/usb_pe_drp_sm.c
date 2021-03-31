@@ -1268,8 +1268,10 @@ void pd_resume_check_pr_swap_needed(int port)
 	    !pd_can_source_from_device(port, pd_get_src_cap_cnt(port),
 				       pd_get_src_caps(port)) &&
 	    (!IS_ENABLED(CONFIG_CHARGE_MANAGER) ||
-	     charge_manager_get_active_charge_port() != port))
+	     charge_manager_get_active_charge_port() != port)) {
+		CPRINTS("pe: request pr swap 2");
 		pd_dpm_request(port, DPM_REQUEST_PR_SWAP);
+	}
 }
 
 void pd_dpm_request(int port, enum pd_dpm_request req)
@@ -1533,6 +1535,7 @@ static bool source_dpm_requests(int port)
 					      DPM_REQUEST_PR_SWAP)) {
 			pe_set_dpm_curr_request(port,
 						DPM_REQUEST_PR_SWAP);
+			CPRINTS("pe: src dpm requests: pr swap set!");
 			set_state_pe(port, PE_PRS_SRC_SNK_SEND_SWAP);
 			return true;
 		} else if (PE_CHK_DPM_REQUEST(port,
@@ -1753,10 +1756,11 @@ static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
 	 * If port policy preference is to be a power role source, then request
 	 * a power role swap.
 	 */
-	if (!pd_can_source_from_device(port, pdo_cnt, pdos))
+	if (!pd_can_source_from_device(port, pdo_cnt, pdos)) {
+		CPRINTS("pe: req pr swap 3");
 		pd_request_power_swap(port);
+	}
 }
-
 void pd_request_power_swap(int port)
 {
 	/* Ignore requests when the board does not wish to swap */
@@ -1768,6 +1772,7 @@ void pd_request_power_swap(int port)
 	 * requested by policy.
 	 */
 	pe[port].src_snk_pr_swap_counter = 0;
+	CPRINTS("pe: pd_req_pr_swap");
 	pd_dpm_request(port, DPM_REQUEST_PR_SWAP);
 }
 
@@ -2561,7 +2566,7 @@ static void pe_src_ready_entry(int port)
 {
 	print_current_state(port);
 
-	/* Ensure any message send flags are cleaned up */
+	/* Ensure any message send flags are cleared up */
 	PE_CLR_FLAG(port, PE_FLAGS_READY_CLR);
 
 	/* Clear DPM Current Request */
@@ -2572,6 +2577,10 @@ static void pe_src_ready_entry(int port)
 	 * have been sent since enter this state.
 	 */
 	pe_update_wait_and_add_jitter_timer(port);
+
+	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP))
+		CPRINTS("pe[%d]: PR_SWAP pending: curr_req = %x, req = %x", port,
+			pe[port].dpm_curr_request, pe[port].dpm_request);
 }
 
 static void pe_src_ready_run(int port)
@@ -2709,6 +2718,7 @@ static void pe_src_ready_run(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_WAITING_PR_SWAP) &&
 	    pd_timer_is_expired(port, PE_TIMER_PR_SWAP_WAIT)) {
 		PE_CLR_FLAG(port, PE_FLAGS_WAITING_PR_SWAP);
+		CPRINTS("pe[%d]: waiting -> req power role swap", port);
 		PE_SET_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
 	}
 
@@ -3124,6 +3134,9 @@ static void pe_snk_select_capability_entry(int port)
 	/* We are PD Connected */
 	PE_SET_FLAG(port, PE_FLAGS_PD_CONNECTION);
 	tc_pd_connection(port, 1);
+
+	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP))
+		CPRINTS("pe[%d]: snk select cap, DPM_REQUEST_PR_SWAP set", port);
 }
 
 static void pe_snk_select_capability_run(int port)
@@ -3363,6 +3376,10 @@ static void pe_snk_ready_entry(int port)
 		pd_timer_enable(port, PE_TIMER_SINK_REQUEST,
 				PD_T_SINK_REQUEST);
 	}
+
+	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP))
+		CPRINTS("pe[%d]: PR_SWAP pending: curr_req = %x, req = %x", port,
+			pe[port].dpm_curr_request, pe[port].dpm_request);
 
 	/*
 	 * Wait and add jitter if we are operating in PD2.0 mode and no messages
@@ -4623,6 +4640,8 @@ static void pe_prs_snk_src_transition_to_off_entry(int port)
 	if (!IS_ENABLED(CONFIG_USB_PD_REV30) ||
 			!pe_in_frs_mode(port))
 		tc_snk_power_off(port);
+
+	PE_CLR_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
 
 	pd_timer_enable(port, PE_TIMER_PS_SOURCE, PD_T_PS_SOURCE_OFF);
 }
@@ -6740,8 +6759,10 @@ static void pe_dr_src_get_source_cap_run(int port)
 
 				pd_set_src_caps(port, cnt, payload);
 				if (pd_can_source_from_device(port, cnt,
-							      payload))
+							      payload)) {
+					CPRINTS("pe: request power swap 1");
 					pd_request_power_swap(port);
+				}
 
 				/*
 				 * Report dual role power capability to the

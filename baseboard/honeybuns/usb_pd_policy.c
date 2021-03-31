@@ -228,6 +228,9 @@ __override bool pd_can_source_from_device(int port, const int pdo_cnt,
 	 * return false.
 	 */
 
+	if (pd_get_power_role(port) == PD_ROLE_SOURCE)
+		return true;
+
 	return false;
 }
 
