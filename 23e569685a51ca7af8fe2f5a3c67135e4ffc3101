@@ -16,6 +16,23 @@
       "message": "hi  Aseda: \nsorry late to modify this cl, please help to check it again, thanks",
       "revId": "23e569685a51ca7af8fe2f5a3c67135e4ffc3101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba5f384_228bc1bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-31T02:16:49Z",
+      "side": 1,
+      "message": "It\u0027s missing the `CURRENT_TO_REG` and `AC_CURRENT_TO_REG` macros in the driver functions now.",
+      "revId": "23e569685a51ca7af8fe2f5a3c67135e4ffc3101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
