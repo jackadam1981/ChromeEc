@@ -1165,6 +1165,12 @@ void sm5803_interrupt(int chgnum)
 	hook_call_deferred(&sm5803_irq_deferred_data, 0);
 }
 
+void sm5803_clear_pending_interrupt(int chgnum)
+{
+	atomic_clear_bits(&irq_pending, BIT(chgnum));
+	hook_call_deferred(&sm5803_irq_deferred_data, -1);
+}
+
 static enum ec_error_list sm5803_get_dev_id(int chgnum, int *id)
 {
 	int rv = EC_SUCCESS;
