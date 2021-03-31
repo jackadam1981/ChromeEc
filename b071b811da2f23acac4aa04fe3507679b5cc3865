@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd722039_313cc2ac",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-31T22:47:17Z",
+      "side": 1,
+      "message": "I didn\u0027t want to change the behaviour, especially since `mkbp_keyboard_add` is called from `keyboard_send_battery_key`, which is not keyboard matrix. I prefer this part to be removed as part of b/183436066, what do you think?",
+      "parentUuid": "fa94123d_cc61f776",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "b071b811da2f23acac4aa04fe3507679b5cc3865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28e52617_4664bc83",
         "filename": "common/mkbp_fifo.c",
         "patchSetId": 6
@@ -77,6 +101,30 @@
       "writtenOn": "2021-03-31T18:27:12Z",
       "side": 1,
       "message": "Not for this change, but I think we should look into moving `ec_mkbp_protocol_config` out of keyboard_mkbp.c. It will require splitting the structure members maybe. That will also allow you to drop FIFO_DEPTH from here so that it doesn\u0027t need to be exposed out of the mkbp_fifo.c driver.",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "b071b811da2f23acac4aa04fe3507679b5cc3865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa4019f9_59797cd5",
+        "filename": "include/mkbp_fifo.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-31T22:47:17Z",
+      "side": 1,
+      "message": "There is a hard limit (16) and a soft limit (less than 16). Do you know why the soft limit is needed, besides tests?",
+      "parentUuid": "fd75dbb2_11f16609",
       "range": {
         "startLine": 15,
         "startChar": 8,
