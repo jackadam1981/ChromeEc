@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a1ce9bb_02b2d335",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-31T17:45:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c70686c1_398bb5e1",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 2
+      },
+      "revId": "905f6abc3baa03ee9e467f11563123049bb6b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8c65405_4b6e9226",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-31T17:15:45Z",
       "side": 1,
       "message": "Should all uses of FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE be a separate constant inside fp_sensor_config? As it stands, the value of this constant is actually the max size, not the actual size?",
+      "range": {
+        "startLine": 382,
+        "startChar": 20,
+        "endLine": 382,
+        "endChar": 56
+      },
+      "revId": "905f6abc3baa03ee9e467f11563123049bb6b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "333a84b5_0692971b",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-31T17:45:53Z",
+      "side": 1,
+      "message": "True, great catch! Done",
+      "parentUuid": "c8c65405_4b6e9226",
       "range": {
         "startLine": 382,
         "startChar": 20,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cebef00_4187bdb0",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-31T17:45:53Z",
+      "side": 1,
+      "message": "Done, also for FP_SENSOR_IMAGE_SIZE",
+      "parentUuid": "95a05ddc_1b8a454a",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "905f6abc3baa03ee9e467f11563123049bb6b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bec1d391_ba9f8d62",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-31T17:15:45Z",
       "side": 1,
       "message": "Can we rename this to something with \"MAX\" in the name to indicate that it\u0027s a maximum and not necessarily the actual size? e.g.,\n\n FP_ALGORITHM_ENCRYPTED_TEMPLATE_MAX_SIZE",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "905f6abc3baa03ee9e467f11563123049bb6b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c57ba160_c27dda72",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-31T17:45:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec1d391_ba9f8d62",
       "range": {
         "startLine": 72,
         "startChar": 8,
