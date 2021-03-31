@@ -52,6 +52,24 @@
       "parentUuid": "881f114a_0a610a7c",
       "revId": "4a1f301514463e882d7a83cbd06b6f767694ac77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a05c88c6_6cf295ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-31T21:09:38Z",
+      "side": 1,
+      "message": "Ok, good to know this CL looks reasonable, since this CL has a change on code structure.\nI will add another new CL with “i2c \u0026 FLASH definition” minor fixes, then move this new CL under CL:2749516. CL:2749516 for board will be last one to be merged, which can be a reference for a new board design (nice to know this point).",
+      "parentUuid": "1b4956a9_1636ac80",
+      "revId": "4a1f301514463e882d7a83cbd06b6f767694ac77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
