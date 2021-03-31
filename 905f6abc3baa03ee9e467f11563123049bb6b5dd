@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70686c1_398bb5e1",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-03-31T16:59:21Z",
+      "side": 1,
+      "message": "Instead of having the fp_sensor_config as a separate variable in fpsensor_state.c, can we add it into the \"struct fp_sensor_interface\"? Then we could set these values in elan_private.c when we initialize fp_driver_elan (and same for fpc).",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 2
+      },
+      "revId": "905f6abc3baa03ee9e467f11563123049bb6b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
