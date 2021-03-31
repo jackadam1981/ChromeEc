@@ -164,6 +164,24 @@
       "parentUuid": "6fff0bc8_b6ca7148",
       "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60234611_38105ba2",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-03-31T18:58:28Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll comment on the bug WRT the deviation from spec.",
+      "parentUuid": "fca75f54_d74fe8d3",
+      "revId": "071caea62ef68cfb530edfe6fd4cfbd0b3165729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
