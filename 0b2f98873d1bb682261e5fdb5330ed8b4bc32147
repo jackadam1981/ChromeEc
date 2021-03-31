@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea1a1044_bb332055",
+        "filename": "zephyr/drivers/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-31T07:10:40Z",
+      "side": 1,
+      "message": "The SHI module for host command operates in slave and simultaneous mode.\nIn the original ECOS, the SHI driver handles almost everything in the SHI interrupt handler because it has critical timing constrain.\nIt includes the data sending/receiving, protocol handshaking, protocol header parsing, and pass packeting to host command task.\nIn Zephyr, The SPI driver interface only provides the spi_transceive API for the low-level data sending/receiving.\nI think it doesn\u0027t meet the use case for the above I mentioned.\nThis is another reason that we don\u0027t implement the SHI driver in upstream.",
+      "parentUuid": "b13e9fec_e293f05a",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c36c52d_a4dd256d",
         "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
         "patchSetId": 3
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "If another task runs inbetween prints, won\u0027t this be very difficult to read?",
       "parentUuid": "115b952c_4affd97a",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "0b2f98873d1bb682261e5fdb5330ed8b4bc32147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "affd4d9e_77f8cdff",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-03-31T07:10:40Z",
+      "side": 1,
+      "message": "it has the chance that some other messages are in between the prints but the probability should be not that much as most of the debug messages are printed in the SHI interrupt handler.\nAnother trouble to use the logging system to me is that the messages will be dropped when the number of messages exceeds the log buffer can afford. \nEx:\n[00:01:31.211,000] \u003cdbg\u003e cros_shi.shi_handle_cs_deassert: END                    \n                                                                                 \n[101.532300 HC 0x97]                                                             \n[101.534100 HC 0x98]                                                             \n[00:01:41.531,000] \u003cdbg\u003e cr+os_shi.cros_shi_npcx_isr: CSNFE-                    \n--- 1 message+s dropped ---                                                      \n[00:01:41.5(++)33,000] \u003cdbg\u003e cros_shi.shi_handle_cs_assert: CSL-                 \n--- 26 messages dropped ---                           \n[00:01:41.545,000] \u003cdbg\u003e cros_shi.shi_handle_cs_assert: CSL-",
+      "parentUuid": "ca7420ce_cdab8d1d",
       "range": {
         "startLine": 25,
         "startChar": 0,
