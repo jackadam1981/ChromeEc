@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ec2d8d_0729af95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2021-03-31T10:54:07Z",
+      "side": 1,
+      "message": "As a hack, can you set GPIO(I, 7) to high when transition to Unattached.SNK For HW varification ?\nAt least we can verify the relationship between Vbus and TCPM status.",
+      "revId": "c685c4380500a22a58614a180f3bbb339ffad965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
