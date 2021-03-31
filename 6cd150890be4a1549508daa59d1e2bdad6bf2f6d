@@ -97,6 +97,30 @@
       },
       "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca3e81c0_26913ed4",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-03-31T06:50:55Z",
+      "side": 1,
+      "message": "For example:\n\nuint8_t lightbar_ctrl[LIGHTBAR_COLOR_TOTAL-1][12] \u003d {\n\n    [BAR_COLOR_ORG_20_PERCENT] \u003d {{I_ON, I_OFF, I_OFF, I_OFF, I_OFF, I_OFF, SEL_BOTH_LED, SEL_OFF, SEL_OFF, SEL_OFF, SEL_OFF, ENABLE_LIGHTBAR}},\n    [BAR_COLOR_ORG_40_PERCENT] \u003d {{}},\n...\n}",
+      "parentUuid": "003ea687_02c8870b",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 33
+      },
+      "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
