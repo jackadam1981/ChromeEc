@@ -62,6 +62,29 @@
       },
       "revId": "50e07397fdbf9d15f3bfc2e35258a740e86dc1ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4d7c53_730c351e",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-31T16:42:30Z",
+      "side": 1,
+      "message": "References to \"master/slave\" should be changed to \"SPI controller/ SPI peripheral\". See https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names/\n\nThis is the only reference in this file.",
+      "range": {
+        "startLine": 52,
+        "startChar": 55,
+        "endLine": 52,
+        "endChar": 61
+      },
+      "revId": "50e07397fdbf9d15f3bfc2e35258a740e86dc1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
