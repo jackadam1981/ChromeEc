@@ -22,6 +22,30 @@
       },
       "revId": "7732cde240d1619bdc6ab26d9578a84c97da4d8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23a9e78_99889c22",
+        "filename": "board/spherion/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2021-03-31T07:03:11Z",
+      "side": 1,
+      "message": "I assume the 3250mA here is to reflect the adapter capability, however as Tony mentioned the real current will still be limited by power switches such as SYV682 on board, which I think it\u0027s likely being set at 3A (ILIM_HV, min).",
+      "parentUuid": "49c65043_e5bb5827",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "7732cde240d1619bdc6ab26d9578a84c97da4d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
