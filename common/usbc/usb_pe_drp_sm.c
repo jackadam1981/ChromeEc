@@ -4347,6 +4347,12 @@ static void pe_prs_src_snk_evaluate_swap_run(int port)
 			 * PE_PRS_SRC_SNK_Transition_to_off
 			 */
 			set_state_pe(port, PE_PRS_SRC_SNK_TRANSITION_TO_OFF);
+			/*
+			 * Clear any pending DPM power role swap request so we
+			 * don't trigger a power role swap request back to src
+			 * power role.
+			 */
+			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
 		} else {
 			/* Message sent, return to PE_SRC_Ready */
 			set_state_pe(port, PE_SRC_READY);
@@ -4590,6 +4596,12 @@ static void pe_prs_snk_src_evaluate_swap_run(int port)
 			 * PE_PRS_SNK_SRC_Transition_to_off
 			 */
 			set_state_pe(port, PE_PRS_SNK_SRC_TRANSITION_TO_OFF);
+			/*
+			 * Clear any pending DPM power role swap request so we
+			 * don't trigger a power role swap request back to sink
+			 * power role.
+			 */
+			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
 		} else {
 			/* Message sent, return to PE_SNK_Ready */
 			set_state_pe(port, PE_SNK_READY);
