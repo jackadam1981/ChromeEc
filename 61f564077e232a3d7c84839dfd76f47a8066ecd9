@@ -154,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c150c2f_ea817f6b",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-03-31T23:18:50Z",
+      "side": 1,
+      "message": "Explicitly emerging zephyr-build-tools got me to a good state.",
+      "parentUuid": "ddbe7c4d_3c3c5ca6",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d374cdb7_c98ccef3",
@@ -309,6 +333,30 @@
       "side": 1,
       "message": "Shoot, I just realized the CL had not landed yet: crrev.com/c/2795931\n\nSent it to the CQ now so you should have it soon! Sorry!",
       "parentUuid": "d098f634_754a0f3a",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b9a646e_253cd8b8",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-03-31T23:18:50Z",
+      "side": 1,
+      "message": "No worries, of course.  What is the definition of board in the zmake context?  Will  project.config.board correspond to all necessary build targets?",
+      "parentUuid": "287f3328_4b6aaf64",
       "range": {
         "startLine": 96,
         "startChar": 1,
