@@ -81,6 +81,30 @@
       },
       "revId": "d5d24b3ec5029fca31bfa4869998279cb6858fba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba90ce5_2b3fe39f",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-03-31T17:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8c6a8fb_9429dfbf",
+      "range": {
+        "startLine": 44,
+        "startChar": 61,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "d5d24b3ec5029fca31bfa4869998279cb6858fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
