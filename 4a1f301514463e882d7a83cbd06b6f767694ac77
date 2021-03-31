@@ -16,6 +16,24 @@
       "message": "you have abandoned all the CLs.\ncan you publish this CL on top of other fixes?",
       "revId": "4a1f301514463e882d7a83cbd06b6f767694ac77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "881f114a_0a610a7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-31T20:35:22Z",
+      "side": 1,
+      "message": "yes, i abandoned other CLs, but will add another new CL to cover:\n1: move CONFIG_SPI_FLASH_PORT \u0026 CONFIG_SPI_FLASH etc. to config_chip.h from board.h: touch files - board.h and config_chip.h\n2: make board_i2c_p2c() __overridable, touch files: board.c, i2c.c and adding i2c_chip.h\n\nthis new CL will be later of CL:2749516.\nlet\u0027s review this CL:2749516 firstly, to see need any big changes or not, if not, then i will add another CL, which will be independent from this CL.",
+      "parentUuid": "9141bd7d_fe8acce3",
+      "revId": "4a1f301514463e882d7a83cbd06b6f767694ac77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
