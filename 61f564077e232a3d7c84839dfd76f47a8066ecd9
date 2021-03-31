@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd06895_e05b4164",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-31T17:17:01Z",
+      "side": 1,
+      "message": "There is no reason to make your own, python already has NotImplementedError",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ed4904_ebfef989",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-31T17:17:01Z",
+      "side": 1,
+      "message": "I\u0027m not able to understand from this bug why you need to drop -D?",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d374cdb7_c98ccef3",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-31T17:17:01Z",
+      "side": 1,
+      "message": "this seems \u003e79... please keep all lines \u003c\u003d79",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 91
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab9f61df_28db17a0",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-31T17:17:01Z",
+      "side": 1,
+      "message": "NotImplementedError",
+      "range": {
+        "startLine": 87,
+        "startChar": 10,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20409084_ed14d04f",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-31T17:17:01Z",
+      "side": 1,
+      "message": "This will skip lazor, volteer, and delbin, since they are located at a different path.\n\nYou can use zmake.project.find_projects(zephyr_dir) to find all of the projects.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a490f530_85ef5299",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-31T17:17:01Z",
+      "side": 1,
+      "message": "comments should not go past column 72 (PEP-8)",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
