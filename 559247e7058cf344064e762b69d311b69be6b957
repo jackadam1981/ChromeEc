@@ -33,6 +33,24 @@
       "message": "Adding a footnote for time travelers as well.\n\nPer go/usbc-task-force-algorithm triage, the peripheral under question would fall under:\n-\u003e Is bug provably a gross spec violation? (Y*)\n-\u003e What is broadness of defect in ecosystem? (Rare/One-off)\n-\u003e Will DUT require \"device specific quirk\"? (N)\n\nThe bottom half of the algorithm is fine -- but should have branched right and terminated at (*).\n\nThere are some USB-PD protocol errors that /must/ result in defined behavior (such as SOFT_RESET). I believe a protocol error during a \"power negotiation\", such as this, may result in a HARD_RESET. (Depends on what improper VCONN power application risk is, state bubble entry/exit implicated.)\n\nSo yes, this DUT will get into a deterministic infinite HARD_RESET loop -- but that is by spec design and proven defective DUT. Thus, I would have suggested following the algorithm, notify DUT vendor to update FW, and move on.\n\n[That is, unless branching path -\u003e Does it \"Work With Apple\"? (??) was triggered.]",
       "revId": "559247e7058cf344064e762b69d311b69be6b957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf50a16_20ce1905",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-03-31T16:40:36Z",
+      "side": 1,
+      "message": "Hard reset is limited to a pretty narrow set of states, according to Table 6-65 note 1, so I\u0027m not sure we could rationalize that one without getting some WG feedback first. \n\nI don\u0027t want to leave us in a state of Vconn on because that gives us the false impression that we are the sole port allowed to initiate SOP\u0027 messages, and will lead to confusion on any SOP\u0027 transactions if the partner also believes as such.  \n\nI am open to any other suggestions that get us into a good state here.  Following spec exactly and soft resetting doesn\u0027t solve the issue unless we add in qualifiers to ensure we\u0027re not going to muddy the SOP\u0027 waters. \n\nDo we have a branching path for \"does it work with TCPMv1\"?  This particular charger was shipped with some TCPMv1 chromebooks from what I gather, which would never have noticed the issue due to never bothering to cable probe/Vconn swap/run PD 3.0.",
+      "parentUuid": "3b910d02_2c70594c",
+      "revId": "559247e7058cf344064e762b69d311b69be6b957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
