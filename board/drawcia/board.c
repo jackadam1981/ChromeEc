@@ -113,6 +113,7 @@ static void usb_c1_interrupt(enum gpio_signal s)
 {
 	/* Cancel any previous calls to check the interrupt line */
 	hook_call_deferred(&check_c1_line_data, -1);
+	sm5803_clear_pending_interrupt(1);
 
 	/* Notify all chips using this line that an interrupt came in */
 	notify_c1_chips();
