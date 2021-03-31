@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e78cf64f_078b8d99",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-31T18:33:29Z",
+      "side": 1,
+      "message": "CONFIG_ADC_SHELL enables the Zephyr \"adc\" command which we don\u0027t use because cros ec has it\u0027s own \"adc\" command enabled by CONFIG_PLATFORM_EC_ADC.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "f303ed6de3dfb4c0772f3ea5c9071047a566249a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
