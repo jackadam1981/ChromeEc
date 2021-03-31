@@ -70,6 +70,30 @@
       },
       "revId": "3430629ed4e993594d83e9ea22f984f2cf5fce76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3ee9f0_d0b266bd",
+        "filename": "util/iteflash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-31T04:07:39Z",
+      "side": 1,
+      "message": "Boten is one example board that failed.",
+      "parentUuid": "b5dfe7ff_b1624e25",
+      "range": {
+        "startLine": 1216,
+        "startChar": 1,
+        "endLine": 1220,
+        "endChar": 0
+      },
+      "revId": "3430629ed4e993594d83e9ea22f984f2cf5fce76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
