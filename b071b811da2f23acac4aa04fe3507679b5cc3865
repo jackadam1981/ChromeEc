@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67aba6f1_bc01a4ed",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-31T23:08:03Z",
+      "side": 1,
+      "message": "But we are dropping the check in this CL: `(event_type \u003d\u003d EC_MKBP_EVENT_KEY_MATRIX)`. Shouldn\u0027t we drop the part of comment that says \"If the data is keyboard matrix\" since it is guaranteed that the data will be key matrix if the user is calling this function.",
+      "parentUuid": "bd722039_313cc2ac",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "b071b811da2f23acac4aa04fe3507679b5cc3865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28e52617_4664bc83",
         "filename": "common/mkbp_fifo.c",
         "patchSetId": 6
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "There is a hard limit (16) and a soft limit (less than 16). Do you know why the soft limit is needed, besides tests?",
       "parentUuid": "fd75dbb2_11f16609",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "b071b811da2f23acac4aa04fe3507679b5cc3865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0130a14c_2f5f2344",
+        "filename": "include/mkbp_fifo.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-03-31T23:08:03Z",
+      "side": 1,
+      "message": "Umm.. not really sure about that. Probably Aseda knows?",
+      "parentUuid": "fa4019f9_59797cd5",
       "range": {
         "startLine": 15,
         "startChar": 8,
