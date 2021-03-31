@@ -369,6 +369,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff2277da_9aab0749",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-31T23:41:09Z",
+      "side": 1,
+      "message": "\"board\" is a zephyr board in this case (different from the chrome os concept).  It roughly corresponds to our existing EC concept of \"baseboard\", in that it\u0027s shared between multiple projects.\n\nWhile we haven\u0027t done it yet, I imagine that some platforms may end up having multiple Zephyr boards, especially if there\u0027s multiple EC types at play.\n\nFor example, suppose that Foo, Bar, Baz, and Bam are all projects being developed from the Foo reference board, Foo and Bar use a nuvoton EC, and Baz and Bam use an ITE EC, then we may have two \"boards\" for these four devices.",
+      "parentUuid": "7b9a646e_253cd8b8",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a490f530_85ef5299",
         "filename": "zephyr/firmware_builder.py",
         "patchSetId": 1
