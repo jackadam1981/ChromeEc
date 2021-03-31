@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43b0fd1_5cca6d7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-31T03:51:20Z",
+      "side": 1,
+      "message": "Reverted the culprit here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2796375.\n\nMerging because boten requested.",
+      "revId": "def6bce8c3176121a26c225cd24ff66f11174543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
