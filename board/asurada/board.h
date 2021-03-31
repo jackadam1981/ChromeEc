@@ -35,6 +35,7 @@
 
 /* PD / USB-C / PPC */
 #define CONFIG_USB_PD_DEBUG_LEVEL 3
+#define CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
 
 /* Optional console commands */
 #define CONFIG_CMD_FLASH
@@ -86,6 +87,18 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
+
+enum adc_channel {
+	ADC_VBUS_C0,             /* ADC 0 */
+	ADC_BOARD_ID_0,          /* ADC 1 */
+	ADC_BOARD_ID_1,          /* ADC 2 */
+	ADC_CHARGER_AMON_R,      /* ADC 3 */
+	ADC_VBUS_C1,             /* ADC 5 */
+	ADC_CHARGER_PMON,        /* ADC 6 */
+
+	/* Number of ADC channels */
+	ADC_CH_COUNT,
+};
 
 enum battery_type {
 	BATTERY_C235,

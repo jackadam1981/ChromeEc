@@ -69,6 +69,17 @@
 #include "gpio_signal.h"
 #include "registers.h"
 
+enum adc_channel {
+	ADC_VBUS,                /* ADC 0 */
+	ADC_BOARD_ID_0,          /* ADC 1 */
+	ADC_BOARD_ID_1,          /* ADC 2 */
+	ADC_CHARGER_AMON_R,      /* ADC 3 */
+	ADC_CHARGER_PMON,        /* ADC 6 */
+
+	/* Number of ADC channels */
+	ADC_CH_COUNT,
+};
+
 enum battery_type {
 	BATTERY_C235,
 	BATTERY_PANASONIC_AP15O5L,
