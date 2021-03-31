@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe72268_bb5d7349",
+        "filename": "zephyr/projects/volteer/volteer/prj.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-31T22:46:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1627ebcb_3d491237",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 42
+      },
+      "revId": "f593dafbb6b573a84e8b8334c6319bb5ee184b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70d30f57_3e03868b",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "In Simon\u0027s implementation CONFIG_PLATFORM_EC_CHARGER_DISCHARGE_ON_AC_CHARGER is just a meta symbol that gets defined in place of CONFIG_CHARGER_DISCHARGE_ON_AC_CUSTOM.  There is no platform/ec equivalent for CONFIG_PLATFORM_EC_CHARGER_DISCHARGE_ON_AC_CHARGER.",
       "parentUuid": "70d30f57_3e03868b",
+      "range": {
+        "startLine": 1363,
+        "startChar": 0,
+        "endLine": 1366,
+        "endChar": 6
+      },
+      "revId": "f593dafbb6b573a84e8b8334c6319bb5ee184b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aae5535c_fb2cf8d2",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-03-31T22:46:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c0b37af_f5ffd6b1",
       "range": {
         "startLine": 1363,
         "startChar": 0,
