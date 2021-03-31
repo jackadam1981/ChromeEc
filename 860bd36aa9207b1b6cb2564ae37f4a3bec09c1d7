@@ -140,6 +140,30 @@
       },
       "revId": "860bd36aa9207b1b6cb2564ae37f4a3bec09c1d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d50c12d_07db3943",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-03-31T18:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1ed4f3f_bd51478c",
+      "range": {
+        "startLine": 1378,
+        "startChar": 0,
+        "endLine": 1384,
+        "endChar": 6
+      },
+      "revId": "860bd36aa9207b1b6cb2564ae37f4a3bec09c1d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

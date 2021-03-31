@@ -16,6 +16,24 @@
       "message": "top of the file do similar things\n#ifndef CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP\n#define CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP MCHP_ESPI_CAP0_ALL_CHAN_SUPP\n#endif",
       "revId": "c6d6e30db0cc129921fdb347f9d8118062834462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb44079_c303ce52",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-03-31T18:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbdb46e6_0ac62660",
+      "revId": "c6d6e30db0cc129921fdb347f9d8118062834462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
