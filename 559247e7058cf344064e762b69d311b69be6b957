@@ -16,6 +16,23 @@
       "message": "The carve-out leaves a taste in my mouth, but oh well.",
       "revId": "559247e7058cf344064e762b69d311b69be6b957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b910d02_2c70594c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-03-31T04:55:31Z",
+      "side": 1,
+      "message": "Adding a footnote for time travelers as well.\n\nPer go/usbc-task-force-algorithm triage, the peripheral under question would fall under:\n-\u003e Is bug provably a gross spec violation? (Y*)\n-\u003e What is broadness of defect in ecosystem? (Rare/One-off)\n-\u003e Will DUT require \"device specific quirk\"? (N)\n\nThe bottom half of the algorithm is fine -- but should have branched right and terminated at (*).\n\nThere are some USB-PD protocol errors that /must/ result in defined behavior (such as SOFT_RESET). I believe a protocol error during a \"power negotiation\", such as this, may result in a HARD_RESET. (Depends on what improper VCONN power application risk is, state bubble entry/exit implicated.)\n\nSo yes, this DUT will get into a deterministic infinite HARD_RESET loop -- but that is by spec design and proven defective DUT. Thus, I would have suggested following the algorithm, notify DUT vendor to update FW, and move on.\n\n[That is, unless branching path -\u003e Does it \"Work With Apple\"? (??) was triggered.]",
+      "revId": "559247e7058cf344064e762b69d311b69be6b957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
