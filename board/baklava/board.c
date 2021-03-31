@@ -80,6 +80,7 @@ static void board_pwr_btn_interrupt(enum gpio_signal signal)
  */
 const struct power_seq board_power_seq[] = {
 	{GPIO_EN_AC_JACK,               1, 20},
+	{GPIO_EC_DFU_MUX_CTRL,          0, 0},
 	{GPIO_EN_PP5000_A,              1, 31},
 	{GPIO_MST_LP_CTL_L,             1, 0},
 	{GPIO_EN_PP3300_B,              1, 1},
@@ -196,7 +197,7 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
 		.drv = &sn5s330_drv
 	},
-	[USB_PD_PORT_UF] = {
+	[USB_PD_PORT_USB3] = {
 		.i2c_port = I2C_PORT_I2C3,
 		.i2c_addr_flags = SN5S330_ADDR1_FLAGS,
 		.drv = &sn5s330_drv
