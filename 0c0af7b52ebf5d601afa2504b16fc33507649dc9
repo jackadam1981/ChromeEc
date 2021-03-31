@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ff6609d_6f158204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2021-03-31T09:58:44Z",
+      "side": 1,
+      "message": "I was able to continuously fulfill data transfer thru dd if\u003d/dev/zero of\u003d/dev/sda to the USB thumb drive behind the hub while plug-in/plug-out the PD adapter attached, \u003e15 times in a row.\n\nSee details in b/182453765#comment24",
+      "revId": "0c0af7b52ebf5d601afa2504b16fc33507649dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
