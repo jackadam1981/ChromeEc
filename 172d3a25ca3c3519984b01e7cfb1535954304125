@@ -614,6 +614,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b822b8_963056ec",
+        "filename": "board/sklrvp_mchp172x/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-31T20:08:45Z",
+      "side": 1,
+      "message": "updated CL:2749516, move lfw/gpio.inc to chip level",
+      "parentUuid": "c0fd3679_38bf59d2",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 6
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2efd2cb3_a651e73d",
@@ -675,6 +699,30 @@
       "side": 1,
       "message": "fixed in CL:2787050",
       "parentUuid": "16fc9627_b5d88eb8",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 6
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99025476_bec7f2ad",
+        "filename": "board/sklrvp_mchp172x/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-31T20:08:45Z",
+      "side": 1,
+      "message": "updated CL:2749516, move lfw/gpio.inc to chip level",
+      "parentUuid": "e8c8bfe6_97c63998",
       "range": {
         "startLine": 258,
         "startChar": 0,
@@ -794,6 +842,30 @@
       "side": 1,
       "message": "fixed in CL:2787050",
       "parentUuid": "99cbe8ed_286a4cdb",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "172d3a25ca3c3519984b01e7cfb1535954304125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "822dd82f_f2a41263",
+        "filename": "board/sklrvp_mchp172x/lfw/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-03-31T20:08:45Z",
+      "side": 1,
+      "message": "updated CL:2749516, move lfw/gpio.inc to chip level",
+      "parentUuid": "c09bd529_06485393",
       "range": {
         "startLine": 32,
         "startChar": 0,
