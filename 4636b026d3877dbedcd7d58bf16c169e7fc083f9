@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "643966ee_9d86d40c",
+        "filename": "common/mkbp_info.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-31T22:48:22Z",
+      "side": 1,
+      "message": "I feel like get/set config are keyboard-oriented, because almost all the params are configuring the keyboard.",
+      "parentUuid": "f817abc4_e8cd9654",
+      "revId": "4636b026d3877dbedcd7d58bf16c169e7fc083f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1495421_e3657aa8",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-31T18:30:47Z",
       "side": 1,
       "message": "This config is added in next CL :). We should add the #ifdef in next CL as well.",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 32
+      },
+      "revId": "4636b026d3877dbedcd7d58bf16c169e7fc083f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a973b7_0ab57e75",
+        "filename": "common/mkbp_info.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-03-31T22:48:22Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "a1495421_e3657aa8",
       "range": {
         "startLine": 119,
         "startChar": 7,
