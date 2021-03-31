@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2001e197_a1f76e46",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-03-31T06:21:11Z",
+      "side": 1,
+      "message": "RE: the concern about making the output flag global\n\nYou could make the key the pipe instead of the log level. That information is there and should remain unique. Then you could check this in the `for proc in procs:` loop and see if any logs were made by proc.stderr.\n\nDoing this, you might even (if you care to) be able to bail early when the first error was logged instead of when all the processes finished.",
+      "range": {
+        "startLine": 299,
+        "startChar": 16,
+        "endLine": 299,
+        "endChar": 27
+      },
+      "revId": "def405cb3243ddbde85e8f8af414176d4cf254e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
