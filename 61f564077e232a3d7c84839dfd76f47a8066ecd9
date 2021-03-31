@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddbe7c4d_3c3c5ca6",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-31T18:54:15Z",
+      "side": 1,
+      "message": "Perhaps your chroot is out of date?",
+      "parentUuid": "2ba8d89a_5239d836",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d374cdb7_c98ccef3",
         "filename": "zephyr/firmware_builder.py",
         "patchSetId": 1
@@ -261,6 +285,30 @@
       "side": 1,
       "message": "Neat, I can\u0027t seem to find the find_projects method, though.  Is there a typo in your example?  I think the build command will also skip the referenced targets: will plan to expand scope from porting bundling to extending build behavior, once I get find_projects working.",
       "parentUuid": "20409084_ed14d04f",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287f3328_4b6aaf64",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-03-31T18:54:15Z",
+      "side": 1,
+      "message": "Shoot, I just realized the CL had not landed yet: crrev.com/c/2795931\n\nSent it to the CQ now so you should have it soon! Sorry!",
+      "parentUuid": "d098f634_754a0f3a",
       "range": {
         "startLine": 96,
         "startChar": 1,
