@@ -16,7 +16,7 @@
 
 /* USB Type C and USB PD defines */
 #define USB_PD_PORT_HOST   0
-#define USB_PD_PORT_UF   1
+#define USB_PD_PORT_USB3   1
 
 /*
  * Only the host and display usbc ports are usb-pd capable. There is a 3rd usbc
@@ -48,7 +48,7 @@
 #define GPIO_USBC_UF_ATTACHED_SRC GPIO_USBC_UF_MUX_VBUS_EN
 
 #define GPIO_TRIGGER_1 GPIO_TP41
-#define GPIO_TRIGGER_2 GPIO_TP73
+#define GPIO_TRIGGER_2 GPIO_EC_STATUS_LED1
 
 enum  debug_gpio {
 	TRIGGER_1 = 0,
