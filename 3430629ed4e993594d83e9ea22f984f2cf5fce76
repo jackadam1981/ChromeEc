@@ -22,6 +22,30 @@
       },
       "revId": "3430629ed4e993594d83e9ea22f984f2cf5fce76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45cdae4d_7d46c4fa",
+        "filename": "util/iteflash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-31T03:36:25Z",
+      "side": 1,
+      "message": "Yep, build is broken. I\u0027m about to revert for now. I\u0027m not sure how it passed the CQ though...",
+      "parentUuid": "78494ae5_341d32bc",
+      "range": {
+        "startLine": 1216,
+        "startChar": 1,
+        "endLine": 1220,
+        "endChar": 0
+      },
+      "revId": "3430629ed4e993594d83e9ea22f984f2cf5fce76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
