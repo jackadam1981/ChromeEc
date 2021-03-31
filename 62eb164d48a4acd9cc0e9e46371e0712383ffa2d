@@ -16,6 +16,24 @@
       "message": "When I try to build with this, it fails with an error about finding the ELAN lib. Can you see if it works for you?",
       "revId": "62eb164d48a4acd9cc0e9e46371e0712383ffa2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6185778_58401c81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-03-31T16:55:00Z",
+      "side": 1,
+      "message": "It needs a tweak in the private build.mk:\n\nhttps://chrome-internal-review.googlesource.com/c/chromeos/vendor/fingerprint/elan/+/3654297\n\nI guess my Cq-Depend was lost, will add back in a sec.",
+      "parentUuid": "2b4e55c1_b735d573",
+      "revId": "62eb164d48a4acd9cc0e9e46371e0712383ffa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
