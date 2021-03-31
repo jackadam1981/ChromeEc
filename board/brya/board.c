@@ -15,6 +15,7 @@
 #include "switch.h"
 #include "tablet_mode.h"
 #include "throttle_ap.h"
+#include "hooks.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -44,6 +45,27 @@ __override void board_cbi_init(void)
 {
 	config_usb_db_type();
 }
+
+void board_chipset_startup(void)
+{
+#ifdef CONFIG_PWM_KBLIGHT
+	/* Allow keyboard backlight to be enabled */
+	gpio_set_level(GPIO_EC_KB_BL_EN, 1);
+#endif
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup,
+	     HOOK_PRIO_DEFAULT);
+
+void board_chipset_shutdown(void)
+{
+#ifdef CONFIG_PWM_KBLIGHT
+	/* Turn off the keyboard backlight if it's on. */
+	gpio_set_level(GPIO_EC_KB_BL_EN, 0);
+#endif
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
+
 
 #ifdef CONFIG_CHARGE_RAMP_SW
 
