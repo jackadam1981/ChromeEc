@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4fe7a79_b20b856c",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 11
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-31T18:17:08Z",
+      "side": 1,
+      "message": "\"charge current to the battery.\"",
+      "range": {
+        "startLine": 224,
+        "startChar": 51,
+        "endLine": 224,
+        "endChar": 65
+      },
+      "revId": "e91074d782c0e1d4aaa671598b0529f9500a1914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36df5d6c_9230476c",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 11
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-03-31T18:17:08Z",
+      "side": 1,
+      "message": "\"input current from the external AC power supply.\"",
+      "range": {
+        "startLine": 231,
+        "startChar": 50,
+        "endLine": 231,
+        "endChar": 63
+      },
+      "revId": "e91074d782c0e1d4aaa671598b0529f9500a1914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
