@@ -16,6 +16,23 @@
       "message": "ToT is currently failing with the following error. Will need to revert the culprit CL first and then update this.",
       "revId": "8e425433978f20ac796c56805a8811a61bb77879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06d1e2b_d039100a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-03-31T03:33:20Z",
+      "side": 1,
+      "message": "I guess it would help to actually say what the error was... 😄\n    \nutil/iteflash.c: In function ‘is_empty_page’:\nutil/iteflash.c:1216:2: error: ‘for’ loop initial declarations are only allowed in C99 or C11 mode\n  for (int i \u003d 0; i \u003c size; i++) {\n  ^\nutil/iteflash.c:1216:2: note: use option -std\u003dc99, -std\u003dgnu99, -std\u003dc11 or -std\u003dgnu11 to compile your code\nutil/iteflash.c: At top level:\ncc1: error: unrecognized command line option \"-Wno-address-of-packed-member\" [-Werror]\ncc1: all warnings being treated as errors\n  OBJCOPY RW/ec.RW.flat\nmake: *** [Makefile.rules:614: build/boten/util/iteflash] Error 1\n",
+      "revId": "8e425433978f20ac796c56805a8811a61bb77879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
