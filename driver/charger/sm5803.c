@@ -51,6 +51,7 @@ static uint32_t irq_pending; /* Bitmask of chips with interrupts pending */
 
 static struct mutex flow1_access_lock[CHARGER_NUM];
 static struct mutex flow2_access_lock[CHARGER_NUM];
+static struct mutex interrupt_lock[CHARGER_NUM];
 
 static int charger_vbus[CHARGER_NUM];
 
@@ -996,20 +997,43 @@ DECLARE_DEFERRED(sm5803_restart_charging);
 void sm5803_handle_interrupt(int chgnum)
 {
 	enum ec_error_list rv;
-	int int_reg, meas_reg;
+	int int_reg1, int_reg2, int_reg3, int_reg4, meas_reg;
 	static bool throttled;
 	struct batt_params bp;
 	int act_chg, val;
 
+	mutex_lock(&interrupt_lock[chgnum]);
 	/* Note: Interrupt registers are clear on read */
-	rv = main_read8(chgnum, SM5803_REG_INT1_REQ, &int_reg);
+	rv = main_read8(chgnum, SM5803_REG_INT1_REQ, &int_reg1);
 	if (rv) {
 		CPRINTS("%s %d: Failed read int1 register", CHARGER_NAME,
 			chgnum);
-		return;
+		goto out;
 	}
 
-	if (int_reg & SM5803_INT1_CHG) {
+	rv = main_read8(chgnum, SM5803_REG_INT2_REQ, &int_reg2);
+	if (rv) {
+		CPRINTS("%s %d: Failed read int2 register", CHARGER_NAME,
+			chgnum);
+		goto out;
+	}
+
+	/* TODO(b/159376384): Take action on fatal BFET power alert. */
+	rv = main_read8(chgnum, SM5803_REG_INT3_REQ, &int_reg3);
+	if (rv) {
+		CPRINTS("%s %d: Failed to read int3 register", CHARGER_NAME,
+			chgnum);
+		goto out;
+	}
+
+	rv = main_read8(chgnum, SM5803_REG_INT4_REQ, &int_reg4);
+	if (rv) {
+		CPRINTS("%s %d: Failed to read int4 register", CHARGER_NAME,
+			chgnum);
+		goto out;
+	}
+
+	if (int_reg1 & SM5803_INT1_CHG) {
 		rv = main_read8(chgnum, SM5803_REG_STATUS1, &meas_reg);
 		if (!(meas_reg & SM5803_STATUS1_CHG_DET)) {
 			charger_vbus[chgnum] = 0;
@@ -1024,14 +1048,7 @@ void sm5803_handle_interrupt(int chgnum)
 		}
 	}
 
-	rv = main_read8(chgnum, SM5803_REG_INT2_REQ, &int_reg);
-	if (rv) {
-		CPRINTS("%s %d: Failed read int2 register", CHARGER_NAME,
-			chgnum);
-		return;
-	}
-
-	if (int_reg & SM5803_INT2_TINT) {
+	if (int_reg2 & SM5803_INT2_TINT) {
 		/*
 		 * Ignore any interrupts from the low threshold when not
 		 * throttled in order to prevent console spam when the
@@ -1054,20 +1071,12 @@ void sm5803_handle_interrupt(int chgnum)
 		 */
 	}
 
-	/* TODO(b/159376384): Take action on fatal BFET power alert. */
-	rv = main_read8(chgnum, SM5803_REG_INT3_REQ, &int_reg);
-	if (rv) {
-		CPRINTS("%s %d: Failed to read int3 register", CHARGER_NAME,
-			chgnum);
-		return;
-	}
-
-	if ((int_reg & SM5803_INT3_BFET_PWR_LIMIT) ||
-	    (int_reg & SM5803_INT3_BFET_PWR_HWSAFE_LIMIT)) {
+	if ((int_reg3 & SM5803_INT3_BFET_PWR_LIMIT) ||
+	    (int_reg3 & SM5803_INT3_BFET_PWR_HWSAFE_LIMIT)) {
 		battery_get_params(&bp);
 		act_chg = charge_manager_get_active_charge_port();
 		CPRINTS("%s BFET power limit reached! (%s)", CHARGER_NAME,
-			(int_reg & SM5803_INT3_BFET_PWR_LIMIT) ? "warn" :
+			(int_reg3 & SM5803_INT3_BFET_PWR_LIMIT) ? "warn" :
 			"FATAL");
 		CPRINTS("\tVbat: %dmV", bp.voltage);
 		CPRINTS("\tIbat: %dmA", bp.current);
@@ -1078,14 +1087,7 @@ void sm5803_handle_interrupt(int chgnum)
 		cflush();
 	}
 
-	rv = main_read8(chgnum, SM5803_REG_INT4_REQ, &int_reg);
-	if (rv) {
-		CPRINTS("%s %d: Failed to read int4 register", CHARGER_NAME,
-			chgnum);
-		return;
-	}
-
-	if (int_reg & SM5803_INT4_CHG_FAIL) {
+	if (int_reg4 & SM5803_INT4_CHG_FAIL) {
 		int status_reg;
 
 		act_chg = charge_manager_get_active_charge_port();
@@ -1112,10 +1114,10 @@ void sm5803_handle_interrupt(int chgnum)
 		}
 	}
 
-	if (int_reg & SM5803_INT4_CHG_DONE)
+	if (int_reg4 & SM5803_INT4_CHG_DONE)
 		CPRINTS("%s %d: CHG_DONE_INT fired!!!", CHARGER_NAME, chgnum);
 
-	if (int_reg & SM5803_INT4_OTG_FAIL) {
+	if (int_reg4 & SM5803_INT4_OTG_FAIL) {
 		int status_reg;
 
 		/*
@@ -1141,6 +1143,9 @@ void sm5803_handle_interrupt(int chgnum)
 						 SM5803_FLOW1_DIRECTCHG_SRC_EN,
 						 MASK_CLR);
 	}
+
+out:
+	mutex_unlock(&interrupt_lock[chgnum]);
 }
 
 static void sm5803_irq_deferred(void)
