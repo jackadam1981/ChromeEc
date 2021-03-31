@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "818288ee_c3cb4e42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-03-31T18:47:30Z",
+      "side": 1,
+      "message": "Yes, of course, thanks for the helpful comments!",
+      "parentUuid": "f7923ba4_e3ea2b4c",
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fd06895_e05b4164",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-31T17:17:01Z",
       "side": 1,
       "message": "There is no reason to make your own, python already has NotImplementedError",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf01e2c_7b95e74d",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-03-31T18:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fd06895_e05b4164",
       "range": {
         "startLine": 28,
         "startChar": 6,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ba8d89a_5239d836",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-03-31T18:47:30Z",
+      "side": 1,
+      "message": "Running firmware_builder\u0027s build command from the ToT version will fail to parse -D.  Created b/184168448 to track.  ...maybe I just need to rebuild my chroot.",
+      "parentUuid": "40ed4904_ebfef989",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d374cdb7_c98ccef3",
         "filename": "zephyr/firmware_builder.py",
         "patchSetId": 1
@@ -77,6 +143,30 @@
       "writtenOn": "2021-03-31T17:17:01Z",
       "side": 1,
       "message": "this seems \u003e79... please keep all lines \u003c\u003d79",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 91
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca5defa_3b3ebc1a",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-03-31T18:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d374cdb7_c98ccef3",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -100,6 +190,30 @@
       "writtenOn": "2021-03-31T17:17:01Z",
       "side": 1,
       "message": "NotImplementedError",
+      "range": {
+        "startLine": 87,
+        "startChar": 10,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c22c96e5_7c30a0dc",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-03-31T18:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab9f61df_28db17a0",
       "range": {
         "startLine": 87,
         "startChar": 10,
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d098f634_754a0f3a",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-03-31T18:47:30Z",
+      "side": 1,
+      "message": "Neat, I can\u0027t seem to find the find_projects method, though.  Is there a typo in your example?  I think the build command will also skip the referenced targets: will plan to expand scope from porting bundling to extending build behavior, once I get find_projects working.",
+      "parentUuid": "20409084_ed14d04f",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a490f530_85ef5299",
         "filename": "zephyr/firmware_builder.py",
         "patchSetId": 1
@@ -146,6 +284,30 @@
       "writtenOn": "2021-03-31T17:17:01Z",
       "side": 1,
       "message": "comments should not go past column 72 (PEP-8)",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c60f84bd_36516365",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-03-31T18:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a490f530_85ef5299",
       "range": {
         "startLine": 108,
         "startChar": 0,
