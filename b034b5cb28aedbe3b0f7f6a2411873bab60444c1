@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8df7cb0_167836bf",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-03-31T04:59:31Z",
+      "side": 1,
+      "message": "Doesn\u0027t this can be a local static variable instead of global for this file, as it is accessed  by only this function?",
+      "range": {
+        "startLine": 337,
+        "startChar": 5,
+        "endLine": 337,
+        "endChar": 20
+      },
+      "revId": "b034b5cb28aedbe3b0f7f6a2411873bab60444c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
