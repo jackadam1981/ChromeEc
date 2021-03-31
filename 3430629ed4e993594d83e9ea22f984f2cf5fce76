@@ -46,6 +46,30 @@
       },
       "revId": "3430629ed4e993594d83e9ea22f984f2cf5fce76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5dfe7ff_b1624e25",
+        "filename": "util/iteflash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-03-31T03:59:48Z",
+      "side": 1,
+      "message": "Thinks, I will fix it later. \n\nWhich board failed? This CL passed `make buildall`, so I thought we are using c99 everywhere now..",
+      "parentUuid": "45cdae4d_7d46c4fa",
+      "range": {
+        "startLine": 1216,
+        "startChar": 1,
+        "endLine": 1220,
+        "endChar": 0
+      },
+      "revId": "3430629ed4e993594d83e9ea22f984f2cf5fce76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
