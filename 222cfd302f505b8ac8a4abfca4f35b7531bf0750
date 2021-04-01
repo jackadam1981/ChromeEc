@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4432a70_3c0e320b",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-04-01T10:59:31Z",
+      "side": 1,
+      "message": "No, because board config is behind chip config.",
+      "parentUuid": "af25e72f_163b01ee",
+      "range": {
+        "startLine": 140,
+        "startChar": 7,
+        "endLine": 140,
+        "endChar": 22
+      },
+      "revId": "222cfd302f505b8ac8a4abfca4f35b7531bf0750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "955fc954_8292b1e6",
         "filename": "chip/it83xx/system.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-01T02:50:33Z",
       "side": 1,
       "message": "If the EC is crashed not through the reset handler, then the logs would be disappear?",
+      "range": {
+        "startLine": 325,
+        "startChar": 4,
+        "endLine": 325,
+        "endChar": 42
+      },
+      "revId": "222cfd302f505b8ac8a4abfca4f35b7531bf0750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7de7a97_b458d780",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-04-01T10:59:31Z",
+      "side": 1,
+      "message": "This case is only for EC watchdog. We won\u0027t loss the logs at other EC crash, because they will display panic message and reboot system (invoke system_reset()).",
+      "parentUuid": "955fc954_8292b1e6",
       "range": {
         "startLine": 325,
         "startChar": 4,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f439df8_c5ca0f1f",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-04-01T10:59:31Z",
+      "side": 1,
+      "message": "I leave a comment there.",
+      "parentUuid": "3f9dca94_f019cee7",
+      "range": {
+        "startLine": 283,
+        "startChar": 31,
+        "endLine": 283,
+        "endChar": 52
+      },
+      "revId": "222cfd302f505b8ac8a4abfca4f35b7531bf0750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7feda6a6_3a0341d8",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-01T02:50:33Z",
       "side": 1,
       "message": "We can combine CONFIG_PRESERVE_LOGS_ON_FLASH into this config and modify the wording above.\n\ne.g. replace SRAM -\u003e SRAM/FLASH",
+      "range": {
+        "startLine": 3952,
+        "startChar": 7,
+        "endLine": 3952,
+        "endChar": 27
+      },
+      "revId": "222cfd302f505b8ac8a4abfca4f35b7531bf0750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e118cd1_d885c5df",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3952,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-04-01T10:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7feda6a6_3a0341d8",
       "range": {
         "startLine": 3952,
         "startChar": 7,
