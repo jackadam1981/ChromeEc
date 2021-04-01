@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf98d6c4_d0cfef01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-01T17:09:04Z",
+      "side": 1,
+      "message": "I\u0027ve tried to read the values via accelread but getting all zeroes. The AP is ON. \nI\u0027ve also tried to check the chips directly via i2cxfer and got valid chip IDs",
+      "revId": "4d15cb4e7475d44df7e4601374391e2eb344d92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
