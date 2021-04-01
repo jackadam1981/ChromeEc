@@ -22,6 +22,99 @@
       },
       "revId": "7db772ef158d19f31372aa7b573b7793af89b11a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f83d86_419f163a",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-01T20:11:17Z",
+      "side": 1,
+      "message": "\"jobs\" is ignored if a jobserver was passed in.",
+      "parentUuid": "7ed798c0_263abe9b",
+      "range": {
+        "startLine": 138,
+        "startChar": 12,
+        "endLine": 138,
+        "endChar": 38
+      },
+      "revId": "7db772ef158d19f31372aa7b573b7793af89b11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b92af1a_bdc63b75",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-01T20:11:17Z",
+      "side": 1,
+      "message": "underindented",
+      "range": {
+        "startLine": 300,
+        "startChar": 31,
+        "endLine": 300,
+        "endChar": 32
+      },
+      "revId": "7db772ef158d19f31372aa7b573b7793af89b11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5fe09b5_4c0ba738",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-01T20:11:17Z",
+      "side": 1,
+      "message": "so the issue you are having here is that we need to keep the job claimed until proc.wait() returns.  Really, we haven\u0027t made the situation any better, as the job gets released after the process starts still.\n\nI think if we claim the job until we wait, this won\u0027t be an issue.  If you use the \"with\" statement to get the job, it turns into a recursive invocation to get the jobs and wait on each, or alternatively make the multiproc an object of the class and add tasks to that.",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 26
+      },
+      "revId": "7db772ef158d19f31372aa7b573b7793af89b11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8b52d9_41eebe4e",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-01T20:11:17Z",
+      "side": 1,
+      "message": "once again, we\u0027re releasing the job here before proc.wait() happens, which is where your problems are happening",
+      "range": {
+        "startLine": 358,
+        "startChar": 11,
+        "endLine": 369,
+        "endChar": 34
+      },
+      "revId": "7db772ef158d19f31372aa7b573b7793af89b11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
