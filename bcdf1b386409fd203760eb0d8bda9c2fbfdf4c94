@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c35daae_b90dca4c",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T15:10:52Z",
+      "side": 1,
+      "message": "Grep for these configs in board files and change those macros to match the config accordingly",
+      "revId": "bcdf1b386409fd203760eb0d8bda9c2fbfdf4c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e1d767_bbf924a6",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T15:10:52Z",
+      "side": 1,
+      "message": "eSPI",
+      "range": {
+        "startLine": 1377,
+        "startChar": 8,
+        "endLine": 1377,
+        "endChar": 15
+      },
+      "revId": "bcdf1b386409fd203760eb0d8bda9c2fbfdf4c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
