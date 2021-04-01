@@ -10,6 +10,8 @@
 #include "charge_ramp.h"
 #include "charger.h"
 #include "console.h"
+#include "driver/als_tcs3400.h"
+#include "driver/accelgyro_lsm6dsm.h"
 #include "power_button.h"
 #include "power.h"
 #include "switch.h"
