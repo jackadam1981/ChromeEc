@@ -28,12 +28,14 @@ GPIO_INT(USB_C2_BC12_INT_ODL,            PIN(8, 3), GPIO_INT_BOTH, bc12_interrup
 GPIO_INT(USB_C2_PPC_INT_ODL,             PIN(7, 0), GPIO_INT_BOTH, ppc_interrupt)
 GPIO_INT(USB_C2_RT_INT_ODL,              PIN(4, 1), GPIO_INT_BOTH, retimer_interrupt)
 
+GPIO_INT(EC_ALS_RGB_INT_L,               PIN(D, 4), GPIO_INT_FALLING, tcs3400_interrupt)
+GPIO_INT(BASE_SIXAXIS_INT_L,             PIN(5, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V, lsm6dsm_interrupt)
+GPIO_INT(EC_ACCEL_INT_R_L,               PIN(8, 1), GPIO_INT_FALLING | GPIO_SEL_1P8V, lis2dw12_interrupt)
+
 /* USED GPIOs: */
 GPIO(CCD_MODE_ODL,                   PIN(E, 5), GPIO_INPUT)
 GPIO(CHARGER_VAP_OTG_EN,             PIN(7, 3), GPIO_OUT_LOW)
 GPIO(CPU_C10_GATE_L,                 PIN(6, 7), GPIO_INPUT)
-GPIO(EC_ACCEL_INT_R_L,               PIN(8, 1), GPIO_INPUT)
-GPIO(EC_ALS_RGB_INT_R_L,             PIN(D, 4), GPIO_INPUT)
 GPIO(EC_BATT_PRES_ODL,               PIN(E, 1), GPIO_INPUT)
 GPIO(EC_ENTERING_RW,                 PIN(0, 3), GPIO_OUT_LOW)
 GPIO(EC_EN_EDP_BL,                   PIN(D, 3), GPIO_OUT_HIGH)
