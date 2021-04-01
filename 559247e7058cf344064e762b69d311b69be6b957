@@ -69,6 +69,24 @@
       "parentUuid": "fcf50a16_20ce1905",
       "revId": "559247e7058cf344064e762b69d311b69be6b957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "884d3cf1_adf7eed2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-04-01T01:29:42Z",
+      "side": 1,
+      "message": "\u003e Do we have a branching path for \"does it work with TCPMv1\"? \n\nNo, we explicitly do not as it is widely acknowledged TCPMv1 is extremely nonconformant. Discussion regarding P+E ecosystems can be done internally.\n\nDiscussion above is intended for other open-source projects adopting out PD stack, who may not/should not have visibility into that.\n\n\u003e This particular charger was shipped with some TCPMv1 chromebooks from what I gather, which would never have noticed the issue due to never bothering to cable probe/Vconn swap/run PD 3.0.\n\nI would like to review the AVL bug and USB-IF Certification test results for this charger. I was unaware it shipped with Chromebooks.\n\nIf there is a compliance problem with it, we should immediately review the test lab results. From my own personal experience compliance-testing the compliance-testers, there are numerous situations Type-II errors have escaped their review.",
+      "parentUuid": "7b2a2289_a3828c0a",
+      "revId": "559247e7058cf344064e762b69d311b69be6b957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
