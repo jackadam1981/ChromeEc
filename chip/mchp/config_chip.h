@@ -116,6 +116,24 @@
 /************************************************************************/
 /* Define our flash layout. */
 
+/*
+ * MEC1521H loads firmware using QMSPI controller
+ * CONFIG_SPI_FLASH_PORT is the index into
+ * spi_devices[] in board.c
+ */
+#define CONFIG_SPI_FLASH_PORT 0
+#define CONFIG_SPI_FLASH
+
+/*
+ * MEC1727 chip has integrated SPI flash with 512KB size
+ * redefine flash size as 512KB
+ */
+#if (defined(CHIP_VARIANT_MEC1727SZ) || defined(CHIP_VARIANT_MEC1727LJ))
+/* Total size of writable flash */
+#undef CONFIG_FLASH_SIZE_BYTES
+#define CONFIG_FLASH_SIZE_BYTES 524288
+#endif
+
 /* Protect bank size 4K bytes */
 #define CONFIG_FLASH_BANK_SIZE		0x00001000
 /* Sector erase size 4K bytes */
