@@ -16,6 +16,23 @@
       "message": "This covers the Hard Reset case. I\u0027m not sure what the exact best time to notify is, but I don\u0027t think it matters that much, and this seemed like the simplest thing to do.\n\nThe case I had hoped to cover generally was, \"PD communication was interrupted, so whatever you had stored is stale.\" I think that would also include detaches and intervals where PD is disabled, but I couldn\u0027t immediately find a single code location that covered all of those cases.",
       "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c974ada_49b06a21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-01T23:26:12Z",
+      "side": 1,
+      "message": "Can we make sure this is cleared on CHIP_RESET?\n\nAlso, cleared if there is a disconnect before the event is cleared by the AP?\n\n\nThe way this would be parse by the AP is :\n1. AP calls TYPEC_STATUS\n2. If AP sees HARD_RESET it does the following:\n  a. send a uevent to let userspace know a hard reset happened.\n  b. unregister the partner \u0026 cable.\n\nI don\u0027t know if we should additionaly do c.) \"re-register partner and cable\" while handling this event itself, or will another PD event come soon after the hard_reset event (and the re-registration can happen then).",
+      "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
