@@ -16,6 +16,24 @@
       "message": "FYI, stack usages on Lazor seem good!\n\n 0x200c0920 PD_INT_C0  (real size 736):\tunused 488\tusage 248 / 736 (33 %)\n 0x200c0800 PD_C0      (real size 1184):\tunused 456\tusage 728 / 1184 (61 %)\n 0x200c06e0 KEYSCAN    (real size 640):\tunused 216\tusage 424 / 640 (66 %)\n 0x200c05c0 HOSTCMD    (real size 672):\tunused 112\tusage 560 / 672 (83 %)\n 0x200c04a0 CHIPSET    (real size 1056):\tunused 600\tusage 456 / 1056 (43 %)\n 0x200c0380 CHARGER    (real size 704):\tunused 184\tusage 520 / 704 (73 %)\n 0x200c0260 USB_CHG_P1 (real size 544):\tunused 152\tusage 392 / 544 (72 %)\n 0x200c0140 USB_CHG_P0 (real size 544):\tunused 152\tusage 392 / 544 (72 %)\n 0x200c0020 HOOKS      (real size 672):\tunused 448\tusage 224 / 672 (33 %)\n 0x200c38f0 workqueue  (real size 1024):\tunused 648\tusage 376 / 1024 (36 %)\n 0x200c55d0 shell_uart (real size 960):\tunused 256\tusage 704 / 960 (73 %)\n 0x200c5690 idle 00    (real size 128):\tunused 56\tusage 72 / 128 (56 %)\n 0x200c8578 IRQ 00     (real size 1024):\tunused 540\tusage 484 / 1024 (47 %)\n",
       "revId": "77d63e7a7097e0f9fb02d33220ce8d5cd24c23ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af8a1226_b58addca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-01T16:08:57Z",
+      "side": 1,
+      "message": "Hostcmd is the only one \u003e75% here. I think 83% is OK but we should continue to monitor it as SHI is going to be a different protocol in use than eSPI.",
+      "parentUuid": "fed39b45_d233810c",
+      "revId": "77d63e7a7097e0f9fb02d33220ce8d5cd24c23ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
