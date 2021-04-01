@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9c6d41_1e7c6905",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-01T20:32:29Z",
+      "side": 1,
+      "message": "so in this case, we\u0027re still releasing the job while the process is running.\n\nif implemented correctly, you won\u0027t need the sequential special case, as the next job will be blocked waiting until the previous one finishes.\n\nI can explain it to you in a call if it helps",
+      "range": {
+        "startLine": 322,
+        "startChar": 20,
+        "endLine": 323,
+        "endChar": 45
+      },
+      "revId": "46a03b0b6887447317a8e6123990d5193199c489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
