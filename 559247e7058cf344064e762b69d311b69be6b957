@@ -51,6 +51,24 @@
       "parentUuid": "3b910d02_2c70594c",
       "revId": "559247e7058cf344064e762b69d311b69be6b957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b2a2289_a3828c0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-04-01T01:26:51Z",
+      "side": 1,
+      "message": "\u003e Hard reset is limited to a pretty narrow set of states, according to Table 6-65 note 1, so I\u0027m not sure we could rationalize that one without getting some WG feedback first.\n\nAssumptions:\n  (a) Spec can only dictate response to how things /should/ behave.\n  (b) It cannot perfectly describe every possible way something /shouldn\u0027t/ behave.\n  (c) Therefore there /will/ be unbounded escapes if a device is extremely nonconformant.\n  (d) Moreso if /both/ partners are nonconformant, as it becomes \"whose line is it anyway\"\n\nCitations* [PD3.0 R2 + ECN]:\n  Table 6-65 Response to an incoming Message (except VDM)\n  Figure 8-126 VCONN Swap State Diagram\n  Figure 8-75 Source Port Policy Engine State Diagram\n  Figure 8-78 Sink Port Soft Reset and Protocol Error Diagram\n  (* per WG, in event of conflict, diagrams trump text)\n\nFacts [concrete known-knowns]:\n  (A1) Table 6-65 [Note 1] dictates a HARD_RESET is used if protocol error in \nPE_SRC_Transition_Supply (others)\n  (A2) This is reflected Figure 8-75 as \"Protocol Error\" left-branching arrow\n  (A3) Please note: \"Actions on exit: Send PS_RDY message\"\n  (A4) This sequence [terminated in PS_RDY] is explicitly defined as a \"transitioning\" state per [Note 1]\n\n  (B1) Figure 8-126 has two paths depending if [we] going [Vconn Off-\u003eOn] or [On-\u003eOff].\n     [a] PE_VCS_Wait_for_VCONN is used for On-\u003eOff\n     [b] PE_VCS_Turn_On_VCONN is used for Off-\u003eOn\n  (B2) Path [a] /clearly/ has HARD_RESET handling for protocol error, failure to \nreceive PS_RDY within \"VCONNOnTimer Timeout\"\n  (B3) Path [b] has /no/ handling for protocol errors at all [CL\u0027s case]\n  (B4) Sequence is [terminated in PS_RDY] sent after successful exit from PE_VCS_Send_PS_Rdy\n\n  (C1) Figure 8-78 shows expected SOFT_RESET sequence for us as SNK with this DUT, \n\"directed from any state\" [including PE_VCS_*]\n  (C2) This is /clearly/ \"Protocol Error2 on SOP during Non-interruptable AMS\"\n  (C3) Exit state from this is is PE_SNK_Wait_for_Capabilities [or HARD_RESET on further error]\n\nArgument [my interpretation]:\nThere are two avenues: one implied, one explicit (assuming spec-perfect instantaneously fast and ideal silicon). Both support each other and I argue should and /are intended/ to result in HARD_RESET, per spec design.\n\n[Implicit argument]\n(B2) /clearly/ shows a VCONN power transition failure is significant enough to warrant a HARD_RESET. (B4) and (A4) share enough similarities I believe both were /intended/ to HARD_RESET. The fact \"PE_VCS_Turn_On_VCONN\" is not called out explicitly in [Note 1] is a clerical oversight, resolved by [Explicit argument] below.\n\n[Explicit argument]\n(B3) path also indirectly results in HARD_RESET.\n\nIf a nonconformant DUT causes an error /before/ we exit PE_VCS_Send_PS_Rdy, we immediately transition to PE_SNK_Send_Soft_Reset. Then per (C3) we exit back into PE_SNK_Wait_for_Capabilities.\n\n* No PS_RDY /should/ be sent by us. If PS_RDY was in the PRL TX buffer, the planned outbound PS_RDY /should/ have been discarded for SOFT_RESET. We /should not/ spontaneously re-enter PE_VCS_Send_PS_Rdy from PE_SNK_Ready to send a PS_RDY after the SOFT_RESET -- there is no such transition \"directed from any state\",\n* Due to this, we do not send a PS_RDY. Due to this, the nonconforming partner in PE_VCS_Wait_for_VCONN state /should/ hit the \"VCONNOnTimerTimeout\", and HARD_RESET /us/.\n\nIf a nonconformant DUT causes an error /after/ we exit PE_VCS_Send_PS_Rdy (and sent PS_RDY), it should be treated as a simple SoftReset. No HARD_RESET occurs.\n\n* We just see a little more SRC_CAP-\u003eRequest-\u003eAccept-\u003ePS_RDY negotiation spam on the bus after the VCS process.\n\nActual errors [my interpretation]:\nThe actual errors here [depending on if we receive spurious PS_RDY \"before\" or \"after\"] are:\n\n  (a) Why are we sending a PS_RDY after Non-Interruptable-AMS disruption through SOFT_RESET nto PE_SNK_Ready? This is an error on us.\n  (a) Why isn\u0027t the nonconforming partner properly HARD_RESET\u0027ing /us/ on VCONNOnTimerTimeout? This is an error on them.\n\nThis circles back to assumption (c) and (d) at the opening.",
+      "parentUuid": "fcf50a16_20ce1905",
+      "revId": "559247e7058cf344064e762b69d311b69be6b957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
