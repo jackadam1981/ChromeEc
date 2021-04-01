@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure why build failed and I can\u0027t reproduce it on my side, so... wait for tryjob first\n\nhttps://ci.chromium.org/b/8851260683711362816\nhttps://ci.chromium.org/b/8851260670593957088",
       "revId": "4d946b57e4bcb78d0707d0a3d0125de389414609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffbaf3c2_24cb8a86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-01T04:50:21Z",
+      "side": 1,
+      "message": "https://ci.chromium.org/b/8851260670593957088 passed.\nFirmware branch builder (\nhttps://ci.chromium.org/b/8851260683711362816) failed because it can\u0027t cherry-pick the CL to firmware branch.",
+      "parentUuid": "2f2c42b6_c69a615e",
+      "revId": "4d946b57e4bcb78d0707d0a3d0125de389414609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
