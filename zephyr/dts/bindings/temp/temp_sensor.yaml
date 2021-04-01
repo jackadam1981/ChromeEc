@@ -14,6 +14,42 @@ properties:
         Human-readable string describing the device (used as
         device_get_binding() argument)
 
+    enum-name:
+      type: string
+      required: true
+      description:
+        Enum values used in the source code to refer to the temperature sensors
+      enum:
+      - TEMP_SENSOR_CHARGER
+      - TEMP_SENSOR_DDR_SOC
+      - TEMP_SENSOR_FAN
+      - TEMP_SENSOR_PP3300_REGULATOR
+
+    get-temp-func:
+      type: string
+      required: true
+      description: >
+        Name of the board-provided function which reads the temperature. If you
+        have different values and need to add a new function, you can add that
+        here.
+
+        The name is get_temp_<v>_<rs>_<rn>_<b>:
+
+        v: voltage of resistor-divider circuit
+        rs: value of the resistor that is in series with the thermistor
+        rn: nominal resistance of thermistor at 25C
+        b: B value for temperature range 25C to 100C
+
+        See https://www.electronics-tutorials.ws/io/thermistors.html for more
+        information.
+
+      enum:
+      - get_temp_3v0_22k6_47k_4050b
+      - get_temp_3v3_13k7_47k_4050b
+      - get_temp_3v3_30k9_47k_4050b
+      - get_temp_3v3_51k1_47k_4050b
+      - get_temp_6v0_51k1_47k_4050b
+
     temp_fan_off:
       required: false
       type: int
