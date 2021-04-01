@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a232bf4_c3e8bfc1",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T20:49:53Z",
+      "side": 1,
+      "message": "remove this line",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "278c4fb61272e58d7fa9e00357e2effe6d3f1cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21bfa62_eef62046",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T20:49:53Z",
+      "side": 1,
+      "message": "nit: remove this as board.h should not define this when 1727 chip is used",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "278c4fb61272e58d7fa9e00357e2effe6d3f1cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
