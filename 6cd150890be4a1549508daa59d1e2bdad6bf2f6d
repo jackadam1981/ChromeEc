@@ -121,6 +121,30 @@
       },
       "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "babb6100_1b94b16a",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-01T05:40:50Z",
+      "side": 1,
+      "message": "Hi Zhuohao,\n\nThank you for sharing example.\nI follow your example, create 2D-array which base on color to configure different KTD20xx setting, and revise lightbar_set_color(). I don\u0027t create lightbar_ctrl_color because it\u0027s unnecessary.\nPlease help to check if it can match your request.",
+      "parentUuid": "ca3e81c0_26913ed4",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 33
+      },
+      "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
