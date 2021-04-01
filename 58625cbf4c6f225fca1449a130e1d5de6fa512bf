@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7de90d_c330df21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-01T19:28:03Z",
+      "side": 1,
+      "message": "This does seem to work, in that it does not appear to limit the jobs available to ninja, although the build is fast enough that I am not sure.\n\nAlso I am not sure why...",
+      "revId": "58625cbf4c6f225fca1449a130e1d5de6fa512bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
