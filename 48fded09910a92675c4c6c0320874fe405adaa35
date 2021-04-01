@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b6453206_d51793ab",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-01T22:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd4f3e5a_00643371",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "48fded09910a92675c4c6c0320874fe405adaa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f778adf2_04918420",
         "filename": "baseboard/dedede/baseboard.h",
         "patchSetId": 3
@@ -54,6 +78,24 @@
       "writtenOn": "2021-04-01T19:50:21Z",
       "side": 1,
       "message": "I\u0027m dense on this. How do we have a USB PID on the EC?",
+      "revId": "48fded09910a92675c4c6c0320874fe405adaa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c422573c_8f467ae1",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-01T22:16:49Z",
+      "side": 1,
+      "message": "The PID is allocated for the platform. The EC needs to know because some USB PD messages have a field for the USB PID. This needs to match what the AP has configured.  (e.g. USB PD BatteryCapability.)\n\nIt\u0027s also used in generating the vendor information file which is used for USB Type-C \u0026 PD compliance testing.",
+      "parentUuid": "f778adf2_04918420",
       "revId": "48fded09910a92675c4c6c0320874fe405adaa35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
