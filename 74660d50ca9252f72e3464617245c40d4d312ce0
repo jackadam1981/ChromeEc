@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d31b4a9_811c670f",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-01T23:26:59Z",
+      "side": 1,
+      "message": "a bit of a hack... ideally it goes the other way (driver code asks for device tree) once we start writing more Zephyr native code, but this seems fine given our current model",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "74660d50ca9252f72e3464617245c40d4d312ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
