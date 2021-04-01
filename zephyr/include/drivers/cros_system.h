@@ -39,6 +39,19 @@ enum system_reset_cause {
 };
 
 /**
+ * @brief system_chip_info enum
+ * Identify the type of chip information.
+ */
+enum system_chip_info {
+	/* the information for chip vendor */
+	CHIP_VENDOR = 0,
+	/* the information for chip name */
+	CHIP_NAME = 1,
+	/* the information for chip revision */
+	CHIP_REVISION = 2
+};
+
+/**
  * @typedef cros_system_get_reset_cause_api
  * @brief Callback API for getting reset cause instance.
  * See cros_system_get_reset_cause() for argument descriptions
@@ -61,11 +74,21 @@ typedef int (*cros_system_hibernate_api)(const struct device *dev,
 					 uint32_t seconds,
 					 uint32_t microseconds);
 
+/**
+ * @typedef cros_system_chip_info_api
+ * @brief Callback API for getting chip information such as its vendor, name,
+ * and revision..
+ * See cros_system_chip_info() for argument descriptions
+ */
+typedef const char *(*cros_system_chip_info_api)(const struct device *dev,
+						 enum system_chip_info type);
+
 /** @brief Driver API structure. */
 __subsystem struct cros_system_driver_api {
 	cros_system_get_reset_cause_api get_reset_cause;
 	cros_system_soc_reset_api soc_reset;
 	cros_system_hibernate_api hibernate;
+	cros_system_chip_info_api chip_info;
 };
 
 /**
@@ -137,6 +160,31 @@ static inline int z_impl_cros_system_hibernate(const struct device *dev,
 	}
 
 	return api->hibernate(dev, seconds, microseconds);
+}
+
+/**
+ * @brief get chip information such as its vendor/name/revision.
+ *
+ * @param dev Pointer to the device structure for the driver instance.
+ * @param type Chip information type.
+ * @retval Chip information string if successful.
+ * @retval Null string if failure.
+ */
+__syscall const char *cros_system_chip_info(const struct device *dev,
+					    enum system_chip_info type);
+
+static inline const char *
+z_impl_cros_system_chip_info(const struct device *dev,
+			     enum system_chip_info type)
+{
+	const struct cros_system_driver_api *api =
+		(const struct cros_system_driver_api *)dev->api;
+
+	if (!api->chip_info) {
+		return "";
+	}
+
+	return api->chip_info(dev, type);
 }
 
 /**
