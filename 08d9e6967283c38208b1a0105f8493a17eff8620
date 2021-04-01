@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a15a524f_aa3bb1dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T01:41:24Z",
+      "side": 1,
+      "message": "do similar changes to rest of the configs ",
+      "revId": "08d9e6967283c38208b1a0105f8493a17eff8620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b793abf_2b7075ac",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T01:41:24Z",
+      "side": 1,
+      "message": "#ifndef CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ\n#define CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ MCHP_ESPI_CAP1_MAX_FREQ_66M\n#define",
+      "revId": "08d9e6967283c38208b1a0105f8493a17eff8620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
