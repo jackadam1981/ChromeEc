@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4faf25a3_d3ec600f",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-01T12:32:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4432a70_3c0e320b",
+      "range": {
+        "startLine": 140,
+        "startChar": 7,
+        "endLine": 140,
+        "endChar": 22
+      },
+      "revId": "222cfd302f505b8ac8a4abfca4f35b7531bf0750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "955fc954_8292b1e6",
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e1c334d_a34edf21",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-01T12:32:27Z",
+      "side": 1,
+      "message": "The case might still be valid if someone (not EC) hold the EC_RESET_L, but... yes, I think we don\u0027t want to copy the logs too often. This is probably a reasonable trade-off.",
+      "parentUuid": "e7de7a97_b458d780",
+      "range": {
+        "startLine": 325,
+        "startChar": 4,
+        "endLine": 325,
+        "endChar": 42
+      },
+      "revId": "222cfd302f505b8ac8a4abfca4f35b7531bf0750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f9dca94_f019cee7",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 3
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "I leave a comment there.",
       "parentUuid": "3f9dca94_f019cee7",
+      "range": {
+        "startLine": 283,
+        "startChar": 31,
+        "endLine": 283,
+        "endChar": 52
+      },
+      "revId": "222cfd302f505b8ac8a4abfca4f35b7531bf0750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dcae0cf_d77bd213",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-01T12:32:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3f439df8_c5ca0f1f",
       "range": {
         "startLine": 283,
         "startChar": 31,
