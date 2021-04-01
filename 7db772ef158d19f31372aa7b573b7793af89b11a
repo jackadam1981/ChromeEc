@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed798c0_263abe9b",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-01T19:35:37Z",
+      "side": 1,
+      "message": "Not totally related to this CL, but looking at this in terms of jobs, couldn\u0027t this be an issue? If the jobserver was passed in, shouldn\u0027t we get the number of jobs from it? What happens if it doesn\u0027t match the argument `jobs`?",
+      "range": {
+        "startLine": 138,
+        "startChar": 12,
+        "endLine": 138,
+        "endChar": 38
+      },
+      "revId": "7db772ef158d19f31372aa7b573b7793af89b11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
