@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbab3fa1_7bea7f0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-04-01T17:53:16Z",
+      "side": 1,
+      "message": "nit: could it say plainly what this patch changed? I understand this as \"EC_PACKET_MODE_EN is set as a wake source during init, so that it can wake up Cr50 always from any sleep.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "3291b272c4074084a733518675fbdfdca8052a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "243a5cbd_23ef9941",
+        "filename": "common/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-04-01T17:53:16Z",
+      "side": 1,
+      "message": "nit: could you add a comment what we intend here, like \"EC_PACKET_MODE_EN should wake up Cr50 from any sleep\" ?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 62
+      },
+      "revId": "3291b272c4074084a733518675fbdfdca8052a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
