@@ -70,6 +70,30 @@
       },
       "revId": "639fe1ed1ee1fe52f0de0f6d890539718121a390",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "832d52e4_07c1f06f",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-01T20:42:58Z",
+      "side": 1,
+      "message": "moved back to board.h\nand redefine  CONFIG_FLASH_SIZE_BYTES 524288 per mec1727",
+      "parentUuid": "1a251a65_eb1f3da6",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "639fe1ed1ee1fe52f0de0f6d890539718121a390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
