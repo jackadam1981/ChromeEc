@@ -46,6 +46,30 @@
       },
       "revId": "639fe1ed1ee1fe52f0de0f6d890539718121a390",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a251a65_eb1f3da6",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T19:24:06Z",
+      "side": 1,
+      "message": "#define CONFIG_FLASH_SIZE_BYTES 524288\n#define CONFIG_SPI_FLASH_W25X40\nmove both to board.h\n\nbut when the chip is 1727 make it a common macro with appropriate info in config_chip.h as 1727 has integrated SPI",
+      "parentUuid": "2102b0ad_bed0753c",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "639fe1ed1ee1fe52f0de0f6d890539718121a390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
