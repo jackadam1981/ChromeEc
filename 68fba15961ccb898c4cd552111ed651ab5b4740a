@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b32675d_7a7a1372",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-04-01T21:45:39Z",
+      "side": 1,
+      "message": "Right, the code that sets the resolution has moved to drivers. Done",
+      "parentUuid": "e4a2fd39_df1d73d9",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 6
+      },
+      "revId": "68fba15961ccb898c4cd552111ed651ab5b4740a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9643bb9c_80c37802",
@@ -128,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd895e3a_aaf9a9b5",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-04-01T21:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8069585c_34cf641e",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 32
+      },
+      "revId": "68fba15961ccb898c4cd552111ed651ab5b4740a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9da9a802_37f427ab",
@@ -141,6 +189,30 @@
       "writtenOn": "2021-04-01T19:58:48Z",
       "side": 1,
       "message": "nit: can you align with the value in the line below like it was before?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "68fba15961ccb898c4cd552111ed651ab5b4740a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d2f6b61_36ca3348",
+        "filename": "driver/fingerprint/fpc/libfp/fpc1145_private.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-04-01T21:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9da9a802_37f427ab",
       "range": {
         "startLine": 24,
         "startChar": 0,
