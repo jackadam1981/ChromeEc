@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "779e0f65_012c3943",
+        "filename": "driver/usb_mux/ps8822.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-01T16:52:18Z",
+      "side": 1,
+      "message": "So the guidance we gave for other drivers on dedede was to keep all reads and writes inside the driver, and make an interface to the driver for board code to use (ex. nb7v904m.h/c)",
+      "revId": "c03c39a2cd12ba74dd261103340e383efbf0dacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
