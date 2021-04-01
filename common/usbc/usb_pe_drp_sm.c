@@ -2904,6 +2904,8 @@ static void pe_src_transition_to_default_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_PS_RESET_COMPLETE);
 		/* Inform the Protocol Layer that the Hard Reset is complete */
 		prl_hard_reset_complete(port);
+		/* Inform the AP of Hard Reset */
+		pd_notify_event(port, PD_STATUS_EVENT_HARD_RESET);
 		set_state_pe(port, PE_SRC_STARTUP);
 	}
 }
@@ -3644,6 +3646,9 @@ static void pe_snk_transition_to_default_entry(int port)
 
 	/* Inform the TC Layer of Hard Reset */
 	tc_hard_reset_request(port);
+
+	/* Inform the AP of Hard Reset */
+	pd_notify_event(port, PD_STATUS_EVENT_HARD_RESET);
 }
 
 static void pe_snk_transition_to_default_run(int port)
