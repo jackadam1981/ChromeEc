@@ -22,6 +22,30 @@
       },
       "revId": "def405cb3243ddbde85e8f8af414176d4cf254e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81646011_3cb1d2f1",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-01T01:45:53Z",
+      "side": 1,
+      "message": "I ended up using a separate list. \n\nThe problem with using the pipe is that the level can be overridden during processing, so knowing the proc does not give you the level.",
+      "parentUuid": "2001e197_a1f76e46",
+      "range": {
+        "startLine": 299,
+        "startChar": 16,
+        "endLine": 299,
+        "endChar": 27
+      },
+      "revId": "def405cb3243ddbde85e8f8af414176d4cf254e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
