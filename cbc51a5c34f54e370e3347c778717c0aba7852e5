@@ -87,6 +87,30 @@
       },
       "revId": "cbc51a5c34f54e370e3347c778717c0aba7852e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4ee163_cd83d9d2",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-01T19:37:40Z",
+      "side": 1,
+      "message": "done.\napply default function in i2c.c",
+      "parentUuid": "9e048fbc_dabb53e6",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "cbc51a5c34f54e370e3347c778717c0aba7852e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
