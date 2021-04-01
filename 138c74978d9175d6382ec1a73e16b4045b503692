@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55caa966_ffbdfce5",
+        "filename": "baseboard/honeybuns/baseboard.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-01T17:18:59Z",
+      "side": 1,
+      "message": "nit: now that we initialize i2c in main, you can sneak in at top priority before most drivers would potentially init since they\u0027re generally running at the old i2c+1 priority.",
+      "range": {
+        "startLine": 62,
+        "startChar": 40,
+        "endLine": 62,
+        "endChar": 58
+      },
+      "revId": "138c74978d9175d6382ec1a73e16b4045b503692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
