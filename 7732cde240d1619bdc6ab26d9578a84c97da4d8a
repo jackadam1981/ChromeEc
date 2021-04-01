@@ -46,6 +46,30 @@
       },
       "revId": "7732cde240d1619bdc6ab26d9578a84c97da4d8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663b21a5_c5f46e96",
+        "filename": "board/spherion/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-01T07:34:30Z",
+      "side": 1,
+      "message": "We have a few boards support 3250 mA input, such as guybrush, mamcomb, zork, voema, and halvor. If the hardware path is acceptable with 3250mA, and OCP setting is 3300mA, this is OK to merge.",
+      "parentUuid": "c23a9e78_99889c22",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "7732cde240d1619bdc6ab26d9578a84c97da4d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
