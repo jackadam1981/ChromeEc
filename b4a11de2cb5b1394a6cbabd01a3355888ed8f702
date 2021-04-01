@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46bb0a02_6b31f9a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T15:16:49Z",
+      "side": 1,
+      "message": "nit: add correct details",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "b4a11de2cb5b1394a6cbabd01a3355888ed8f702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da0090a_4dd186d7",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T15:16:49Z",
+      "side": 1,
+      "message": "publish it in separate CL",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 32
+      },
+      "revId": "b4a11de2cb5b1394a6cbabd01a3355888ed8f702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abd7287_90287f4e",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T15:16:49Z",
+      "side": 1,
+      "message": "returns",
+      "range": {
+        "startLine": 931,
+        "startChar": 17,
+        "endLine": 931,
+        "endChar": 26
+      },
+      "revId": "b4a11de2cb5b1394a6cbabd01a3355888ed8f702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abfd62ad_0d3f6f63",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T15:16:49Z",
+      "side": 1,
+      "message": "move this statement to \"i2c_chip.h\"",
+      "range": {
+        "startLine": 933,
+        "startChar": 3,
+        "endLine": 933,
+        "endChar": 72
+      },
+      "revId": "b4a11de2cb5b1394a6cbabd01a3355888ed8f702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
