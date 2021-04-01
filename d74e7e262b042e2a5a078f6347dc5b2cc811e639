@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "259eaa09_ce985a0a",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-01T13:31:57Z",
+      "side": 1,
+      "message": "Let\u0027s keep this interrupt generic, e.g. motion_interrupt. It can be redirected to bmi160_interrupt in board.c",
+      "revId": "d74e7e262b042e2a5a078f6347dc5b2cc811e639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e6d7c1a_eeacfcbd",
+        "filename": "board/guybrush/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-01T13:31:57Z",
+      "side": 1,
+      "message": "The configs that are not BMI160 specific can be moved to baseboard.h",
+      "revId": "d74e7e262b042e2a5a078f6347dc5b2cc811e639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f62ede_1375f95f",
+        "filename": "board/guybrush/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-01T13:31:57Z",
+      "side": 1,
+      "message": "This enum can be in baseboard.h",
+      "revId": "d74e7e262b042e2a5a078f6347dc5b2cc811e639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
