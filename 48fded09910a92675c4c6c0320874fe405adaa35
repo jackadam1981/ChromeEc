@@ -115,6 +115,24 @@
       "message": "nit: We can probably remove most of this top section, right?  As its life purpose was to reduce flash usage on ye olde boards?  Or I suppose that could be follow-up",
       "revId": "48fded09910a92675c4c6c0320874fe405adaa35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c42854e_16baf335",
+        "filename": "board/lalala/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-01T22:43:35Z",
+      "side": 1,
+      "message": "Sorry, missed this comment earlier. Ah, they weren\u0027t confined to the ye olde boards though. But yes, we\u0027re swimming in FF\u0027s now so I can make those a bit more useful and add them back.",
+      "parentUuid": "db7ec298_ca76fe68",
+      "revId": "48fded09910a92675c4c6c0320874fe405adaa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
