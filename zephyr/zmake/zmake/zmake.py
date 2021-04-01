@@ -68,7 +68,7 @@ def ninja_log_level_override(line, default_log_level):
         return logging.INFO
     # if a particular file fails it shows the build line used, but that is not
     # useful except for debugging.
-    elif line.startswith("ccache"):
+    elif line.startswith("ccache") or line.startswith(': && ccache'):
         return logging.DEBUG
     elif line.split()[0] in ["Memory", "FLASH:", "SRAM:", "IDT_LIST:"]:
         pass
@@ -90,6 +90,11 @@ def cmake_log_level_override(line, default_log_level):
     # Strange output from Zephyr that we normally ignore
     if line.startswith("Including boilerplate"):
         return logging.DEBUG
+    elif line.startswith("devicetree error:"):
+        return logging.ERROR
+    # Error from toolchain
+    elif 'error: ' in line:
+        return logging.ERROR
     return default_log_level
 
 
@@ -289,9 +294,12 @@ class Zmake:
                 log_level_override_func=cmake_log_level_override)
             procs.append(proc)
 
+        bad = False
         for proc in procs:
             if proc.wait():
-                raise OSError(get_process_failure_msg(proc))
+                bad = True
+        if bad:
+            raise OSError(get_process_failure_msg(proc))
 
         # Run the packer.
         packer_work_dir = build_dir / 'packer'
