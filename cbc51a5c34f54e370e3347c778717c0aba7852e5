@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e015088_d2ef3257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T17:28:06Z",
+      "side": 1,
+      "message": "pls publish it on top of gpio.inc and build file fix",
+      "revId": "cbc51a5c34f54e370e3347c778717c0aba7852e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e33a2f11_91a51f82",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T17:28:06Z",
+      "side": 1,
+      "message": "can you add explanation for this board specific change?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "cbc51a5c34f54e370e3347c778717c0aba7852e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
