@@ -39,6 +39,30 @@
       },
       "revId": "cbc51a5c34f54e370e3347c778717c0aba7852e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa2d8ae7_ac3b3fce",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-01T18:27:11Z",
+      "side": 1,
+      "message": "This I2C ports assignment is derived from MEC170x, which doesn’t have I2C port1, so just keep same as MEC170x “mchpevb1” board.\nWe can delete those code if you prefer to?",
+      "parentUuid": "e33a2f11_91a51f82",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "cbc51a5c34f54e370e3347c778717c0aba7852e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
