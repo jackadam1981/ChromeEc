@@ -69,6 +69,8 @@ static void ec_comm_init_(void)
 
 	CPRINTS("Initialization");
 
+	gpio_set_wakepin(GPIO_EC_PACKET_MODE_EN, GPIO_HIB_WAKE_HIGH);
+
 	gpio_enable_interrupt(GPIO_EC_PACKET_MODE_EN);
 	gpio_enable_interrupt(GPIO_EC_PACKET_MODE_DIS);
 
