@@ -145,6 +145,30 @@
       },
       "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c6c4a94_ed3826e9",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-01T06:21:56Z",
+      "side": 1,
+      "message": "Thanks. The code structure and flow are LGTM now.",
+      "parentUuid": "babb6100_1b94b16a",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 33
+      },
+      "revId": "6cd150890be4a1549508daa59d1e2bdad6bf2f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
