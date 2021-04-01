@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f8c4bc_38f15f8a",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-01T17:45:41Z",
+      "side": 1,
+      "message": "sorry for last minute comment:\nlooks like this is board specific except when chip is 1727\nand the size for 1727 is 512KB?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "639fe1ed1ee1fe52f0de0f6d890539718121a390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
