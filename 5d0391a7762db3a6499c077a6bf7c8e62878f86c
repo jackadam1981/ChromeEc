@@ -22,6 +22,30 @@
       },
       "revId": "5d0391a7762db3a6499c077a6bf7c8e62878f86c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9609453b_9342913f",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-01T10:36:00Z",
+      "side": 1,
+      "message": "Fix in CL:2799336",
+      "parentUuid": "e528bbdd_f48ed1a8",
+      "range": {
+        "startLine": 43,
+        "startChar": 44,
+        "endLine": 43,
+        "endChar": 47
+      },
+      "revId": "5d0391a7762db3a6499c077a6bf7c8e62878f86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
