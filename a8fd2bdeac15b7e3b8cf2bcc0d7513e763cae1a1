@@ -16,6 +16,92 @@
       "message": "Aseda/Keith, Do you have still any concern for +2?",
       "revId": "a8fd2bdeac15b7e3b8cf2bcc0d7513e763cae1a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afddf908_b4ab6e98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-01T17:24:12Z",
+      "side": 1,
+      "message": "Only a few minor changes remaining.",
+      "revId": "a8fd2bdeac15b7e3b8cf2bcc0d7513e763cae1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e65ef272_318bf92b",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-01T17:24:12Z",
+      "side": 1,
+      "message": "Add a comment:\n\nTODO(b/183826778): [Lillipup/Lindar] Move to SSFC/FW_CONFIG for lightbar supporting check",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 28
+      },
+      "revId": "a8fd2bdeac15b7e3b8cf2bcc0d7513e763cae1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "373cf161_aac27016",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-01T17:24:12Z",
+      "side": 1,
+      "message": "Nit - change name to LIGHTBAR_DEBOUNCE_TICKS.",
+      "range": {
+        "startLine": 372,
+        "startChar": 8,
+        "endLine": 372,
+        "endChar": 30
+      },
+      "revId": "a8fd2bdeac15b7e3b8cf2bcc0d7513e763cae1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec6484a7_349f7a2a",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-01T17:24:12Z",
+      "side": 1,
+      "message": "\"status\"",
+      "range": {
+        "startLine": 396,
+        "startChar": 37,
+        "endLine": 396,
+        "endChar": 42
+      },
+      "revId": "a8fd2bdeac15b7e3b8cf2bcc0d7513e763cae1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
