@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e0904f9_30acb2a3",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-04-01T06:28:49Z",
+      "side": 1,
+      "message": "\u003e \"freqeuncy\" is a possible misspelling of \"frequency\".\n\nPlease fix.",
+      "parentUuid": "6b1a2b81_a1161f7c",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "cff3faf6db8238a1eb7f6e4bf8e64f0c28a5974e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
