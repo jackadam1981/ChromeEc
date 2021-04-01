@@ -34,6 +34,24 @@
       "parentUuid": "bbdec39e_88508a87",
       "revId": "55ed7aa131518b34c07e631a4760a8feff162e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e44283a_aff08176",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-01T18:21:56Z",
+      "side": 1,
+      "message": "I thought the same but actually int does not seem to like 0x values:\n\nwarning: the int symbol IDLE_STACK_SIZE (defined at /mnt/host/source/src/platform/ec/zephyr/Kconfig.stacks:5, arch/arm/core/aarch64/Kconfig:35, kernel/Kconfig:163) has a non-int default 0x128 (undefined)\n\nSame in Linux... odd.",
+      "parentUuid": "7aa40b03_3372d3b6",
+      "revId": "55ed7aa131518b34c07e631a4760a8feff162e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
