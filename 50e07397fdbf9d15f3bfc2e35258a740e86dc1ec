@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b583e78_67dc5285",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-01T10:35:14Z",
+      "side": 1,
+      "message": "fix in CL:2799333",
+      "parentUuid": "1c6e40e3_52dbc5b6",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "50e07397fdbf9d15f3bfc2e35258a740e86dc1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b16aa9b3_62fba1c0",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d649080_703de393",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-01T10:35:14Z",
+      "side": 1,
+      "message": "fix in CL:2799333",
+      "parentUuid": "b16aa9b3_62fba1c0",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "50e07397fdbf9d15f3bfc2e35258a740e86dc1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c4d7c53_730c351e",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-31T16:42:30Z",
       "side": 1,
       "message": "References to \"master/slave\" should be changed to \"SPI controller/ SPI peripheral\". See https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names/\n\nThis is the only reference in this file.",
+      "range": {
+        "startLine": 52,
+        "startChar": 55,
+        "endLine": 52,
+        "endChar": 61
+      },
+      "revId": "50e07397fdbf9d15f3bfc2e35258a740e86dc1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "240b2702_8172b1fa",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-01T10:35:14Z",
+      "side": 1,
+      "message": "fix in CL:2799334",
+      "parentUuid": "2c4d7c53_730c351e",
       "range": {
         "startLine": 52,
         "startChar": 55,
