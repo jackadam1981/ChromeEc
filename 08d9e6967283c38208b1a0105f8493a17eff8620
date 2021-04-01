@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ecf9fd8_941a0c82",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-04-01T05:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b793abf_2b7075ac",
+      "revId": "08d9e6967283c38208b1a0105f8493a17eff8620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0da74b3c_34c84b01",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-04-01T02:04:17Z",
       "side": 1,
       "message": "MCHP_ESPI_IO_CAP1 |\u003d CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ;\n\nexample: changes in board.h\nexplicitly use the macros like this\n#define CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ MCHP_ESPI_CAP1_MAX_FREQ_20M",
+      "range": {
+        "startLine": 1378,
+        "startChar": 0,
+        "endLine": 1391,
+        "endChar": 6
+      },
+      "revId": "08d9e6967283c38208b1a0105f8493a17eff8620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97163eb9_3d44f08d",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-04-01T05:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da74b3c_34c84b01",
       "range": {
         "startLine": 1378,
         "startChar": 0,
