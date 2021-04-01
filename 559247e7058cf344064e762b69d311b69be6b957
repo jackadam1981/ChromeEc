@@ -87,6 +87,24 @@
       "parentUuid": "7b2a2289_a3828c0a",
       "revId": "559247e7058cf344064e762b69d311b69be6b957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e03957_61f15327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-01T15:06:41Z",
+      "side": 1,
+      "message": "My hesitation on hard reset is two-fold: \n1. If the charger has the same bug after hard reset which it does after initial attach, we\u0027ll be doomed to hard reset after each attempted Vconn swap \n2. I generally prefer not to interrupt our power sourcing unless absolutely necessary\n\nI\u0027ll start a PD WG discussion for this. You\u0027re right that the spec is asymmetric: if both ports think they have Vconn off there\u0027s a clear hard reset path but no path is given if both ports think they\u0027re sourcing Vconn.  \n\nI got the impression the charger had shipped with Chromebooks before from b/183454265 so you might be able to follow details from there.",
+      "parentUuid": "884d3cf1_adf7eed2",
+      "revId": "559247e7058cf344064e762b69d311b69be6b957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
