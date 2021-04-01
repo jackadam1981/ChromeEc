@@ -16,6 +16,46 @@
       "message": "Reworked to leverage the dedede baseboard.",
       "revId": "48fded09910a92675c4c6c0320874fe405adaa35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4f3e5a_00643371",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-01T19:46:48Z",
+      "side": 1,
+      "message": "nit: Probably add a note here what the fundamental implication of being a Keeby versus a Dedede is, for the posterity and all",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "48fded09910a92675c4c6c0320874fe405adaa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db7ec298_ca76fe68",
+        "filename": "board/lalala/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-01T19:46:48Z",
+      "side": 1,
+      "message": "nit: We can probably remove most of this top section, right?  As its life purpose was to reduce flash usage on ye olde boards?  Or I suppose that could be follow-up",
+      "revId": "48fded09910a92675c4c6c0320874fe405adaa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
