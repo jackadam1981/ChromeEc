@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8857c86a_6aa41ae6",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-01T23:52:34Z",
+      "side": 1,
+      "message": "You can use GENMASK(7,2).",
+      "range": {
+        "startLine": 108,
+        "startChar": 46,
+        "endLine": 109,
+        "endChar": 42
+      },
+      "revId": "5425917c953e0e2ee169d212e71e8e934974aa74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414d4e4c_d7dec53c",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-01T23:52:34Z",
+      "side": 1,
+      "message": "int and hex symbols should always have a default, otherwise they implicitly default to an empty string.\n\nhttps://docs.zephyrproject.org/1.14.0/guides/kconfig/index.html#redundant-defaults",
+      "revId": "5425917c953e0e2ee169d212e71e8e934974aa74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85643398_adc2b069",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-01T23:52:34Z",
+      "side": 1,
+      "message": "Follow the battery device chemistry example below.  Use the bool option as the guard for referencing the int option.\n\n#undef CONFIG_CHARGER_BQ25720_VSYS_TH2_DV\n#ifdef CONFIG_PLATFORM_EC_CHARGER_BQ25720_VSYS_TH2_CUSTOM\n#define CONFIG_CHARGER_BQ25720_VSYS_TH2_DV \\\n    CONFIG_PLATFORM_EC_CHARGER_BQ25720_VSYS_TH2_DV\n#endif",
+      "range": {
+        "startLine": 1346,
+        "startChar": 0,
+        "endLine": 1355,
+        "endChar": 0
+      },
+      "revId": "5425917c953e0e2ee169d212e71e8e934974aa74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
