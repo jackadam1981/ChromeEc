@@ -16,6 +16,23 @@
       "message": "This would be simpler if it wasn\u0027t generated.\n\nI filed b/184388037",
       "revId": "a811bfb90b41e09c6eb0b30b081ebee1bfe8b085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49cc8536_c1bbbad8",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-02T22:02:32Z",
+      "side": 1,
+      "message": "not sure if you want alignment for this?\n\nIf you do:\n\nalign \u003d \u003c0x100\u003e;",
+      "revId": "a811bfb90b41e09c6eb0b30b081ebee1bfe8b085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
