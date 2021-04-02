@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a2a28f_e848b8de",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-02T07:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8857c86a_6aa41ae6",
+      "range": {
+        "startLine": 108,
+        "startChar": 46,
+        "endLine": 109,
+        "endChar": 42
+      },
+      "revId": "5425917c953e0e2ee169d212e71e8e934974aa74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "414d4e4c_d7dec53c",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20de83b_d3c70f85",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-02T07:14:38Z",
+      "side": 1,
+      "message": "hmmm... menuconfig picks 32 as the default here when i select\nthis option on volteer. in any case, i\u0027ll make it explicit\neven though i\u0027d actually prefer things to fail if an explicit\nvalue wasn\u0027t specified.",
+      "parentUuid": "414d4e4c_d7dec53c",
+      "revId": "5425917c953e0e2ee169d212e71e8e934974aa74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85643398_adc2b069",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-04-01T23:52:34Z",
       "side": 1,
       "message": "Follow the battery device chemistry example below.  Use the bool option as the guard for referencing the int option.\n\n#undef CONFIG_CHARGER_BQ25720_VSYS_TH2_DV\n#ifdef CONFIG_PLATFORM_EC_CHARGER_BQ25720_VSYS_TH2_CUSTOM\n#define CONFIG_CHARGER_BQ25720_VSYS_TH2_DV \\\n    CONFIG_PLATFORM_EC_CHARGER_BQ25720_VSYS_TH2_DV\n#endif",
+      "range": {
+        "startLine": 1346,
+        "startChar": 0,
+        "endLine": 1355,
+        "endChar": 0
+      },
+      "revId": "5425917c953e0e2ee169d212e71e8e934974aa74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b527f427_798d314d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-02T07:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85643398_adc2b069",
       "range": {
         "startLine": 1346,
         "startChar": 0,
