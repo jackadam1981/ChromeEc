@@ -93,6 +93,30 @@
       },
       "revId": "698116d1450adb4ab5d4420fc7e988c1c164ae9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee37f98_eeea5ba1",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-02T19:33:54Z",
+      "side": 1,
+      "message": "I\u0027ve copied the binding into each one, see what you think of that",
+      "parentUuid": "f3f8e6ed_c0f3ab56",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 49
+      },
+      "revId": "698116d1450adb4ab5d4420fc7e988c1c164ae9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
