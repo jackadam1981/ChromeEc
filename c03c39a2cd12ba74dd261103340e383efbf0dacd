@@ -34,6 +34,24 @@
       "parentUuid": "779e0f65_012c3943",
       "revId": "c03c39a2cd12ba74dd261103340e383efbf0dacd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad73a882_5cabca54",
+        "filename": "driver/usb_mux/ps8822.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-02T05:09:37Z",
+      "side": 1,
+      "message": "I modified the driver to have a method to set the DP Rx EQ gain setting. There are other examples where the writes are done in board/baseboard files (ps8743, ps8802 and ps8818). Those were the first other use cases of board_set that I had looked at.",
+      "parentUuid": "c48df4e8_eecbcb9d",
+      "revId": "c03c39a2cd12ba74dd261103340e383efbf0dacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
