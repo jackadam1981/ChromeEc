@@ -68,6 +68,42 @@
       "message": "I worry about having the ability to name binaries with legitimate previous versions, but perhaps my fear is unfounded. ",
       "revId": "b6c31872f29e7ba7eb26d746fc0616ccd4915b09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "164a4916_6f2e9525",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-04-02T17:45:40Z",
+      "side": 1,
+      "message": "It may be used that way, but it wasn\u0027t my purpose. I just wanted to have different builds without needs to change commit. Nevertheless, it looks like it broke compare_build.sh, so I have to wait for Jack\u0027s opinion.",
+      "parentUuid": "906438b4_82a8bf44",
+      "revId": "b6c31872f29e7ba7eb26d746fc0616ccd4915b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3537ac6c_ca11b280",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-04-02T17:45:40Z",
+      "side": 1,
+      "message": "Ok, it fails:\n# Verdict: FAILURE\n\nIt fails because with this patch, version is \"1\" instead of \"\", which makes sense. And also date and tool version have some default value.\nBut the question is, was it supposed to work as it worked? It took my eyes because without this patch, the version is an empty string and I thought that it lacks variables references.",
+      "parentUuid": "b965df22_86ca1a99",
+      "revId": "b6c31872f29e7ba7eb26d746fc0616ccd4915b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
