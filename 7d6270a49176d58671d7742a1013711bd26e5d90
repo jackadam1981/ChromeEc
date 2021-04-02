@@ -87,6 +87,24 @@
       "parentUuid": "1faac87f_421260a9",
       "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1134ddd8_0a07c741",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-02T21:02:36Z",
+      "side": 1,
+      "message": "We clear all events from a port on physical disconnect during pe_handle_detach() already. \n\nI think it would make sense for pd_dfp_discovery_init() to clear the discovery flags since it\u0027s also clearing out the discovery information itself, though this would be a cycle or two after the HR flag is set unless we added a call to it earlier in the hard reset process.",
+      "parentUuid": "6961b61f_96cafbd7",
+      "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
