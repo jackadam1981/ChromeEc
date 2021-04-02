@@ -73,8 +73,10 @@
 #ifndef CONFIG_FPU
 #undef CONFIG_FPU /* Used in Zephyr as well, enabled in Kconfig directly */
 #endif
-#ifndef CONFIG_WATCHDOG
-#undef CONFIG_WATCHDOG /* Used in Zephyr as well, enabled in Kconfig directly */
+
+#undef CONFIG_WATCHDOG
+#ifdef CONFIG_PLATFORM_EC_WATCHDOG
+#define CONFIG_WATCHDOG /* Used in Zephyr as well, enabled in Kconfig directly */
 #endif
 
 /*
@@ -1326,7 +1328,9 @@
 #if (CONFIG_WATCHDOG_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS) * 2)
 #error "CONFIG_WATCHDOG_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
 #endif
-#endif /* CONFIG_PLATFORM_EC_WATCHDOG_PERIOD_MS */
+#else /* CONFIG_PLATFORM_EC_WATCHDOG_PERIOD_MS */
+#define CONFIG_WATCHDOG_PERIOD_MS 0
+#endif /* !CONFIG_PLATFORM_EC_WATCHDOG_PERIOD_MS */
 
 #undef CONFIG_VBOOT_EFS
 #undef CONFIG_VBOOT_EFS2

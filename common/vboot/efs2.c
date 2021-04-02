@@ -25,6 +25,11 @@
 #include "vboot.h"
 #include "vboot_hash.h"
 
+#ifdef CONFIG_ZEPHYR
+#include <device.h>
+#include <drivers/uart.h>
+#endif
+
 #define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
@@ -68,10 +73,15 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	/* This will wake up (if it's sleeping) and interrupt Cr50. */
 	enable_packet_mode(true);
 
+	CPRINTS("stopping shell...");
+
 	uart_flush_output();
 	uart_clear_input();
 
 	uart_shell_stop();
+//	uart_shell_start();
+	enable_packet_mode(false);
+	return CR50_COMM_SUCCESS;
 
 	/*
 	 * Send packet. No traffic control, assuming Cr50 consumes stream much
@@ -106,18 +116,7 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 				res.error = res.error | c << (i*8);
 				break;
 			}
-			/*
-			 * TODO(b:181352041) Implement proper RX buffering.
-			 * Zephyr's shell (even when "stopped") can steal some
-			 * bytes from the uart RX. Skipping the sleep here
-			 * appears to always let us capture the response. Once
-			 * we're able to fork the shell RX, we'll be able to
-			 * buffer the response and add the sleep back into the
-			 * Zephyr builds here (or alternatively use event
-			 * signals).
-			 */
-			if (!IS_ENABLED(CONFIG_ZEPHYR))
-				msleep(1);
+			msleep(1);
 			timeout = timestamp_expired(until, NULL);
 		}
 	}
@@ -132,13 +131,13 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	enable_packet_mode(false);
 
 	CPRINTS("Received 0x%04x", res.error);
-
-	if (timeout) {
-		CPRINTS("Timeout");
-		return CR50_COMM_ERR_TIMEOUT;
-	}
-
-	return res.error;
+	return CR50_COMM_SUCCESS;
+//	if (timeout) {
+//		CPRINTS("Timeout");
+//		return CR50_COMM_ERR_TIMEOUT;
+//	}
+//
+//	return res.error;
 }
 
 static enum cr50_comm_err cmd_to_cr50(enum cr50_comm_cmd cmd,
