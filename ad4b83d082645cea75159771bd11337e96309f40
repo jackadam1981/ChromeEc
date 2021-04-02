@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb24dc0_522402ec",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T19:48:09Z",
+      "side": 1,
+      "message": "prefer pathlib.Path objects to os.path.join",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236a3144_910e21a6",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T19:48:09Z",
+      "side": 1,
+      "message": "something really funky is going on with the indentation here.\n\nlines 47, 48, 49 are underindented?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 69
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89da2853_4843e72e",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T19:48:09Z",
+      "side": 1,
+      "message": "os.mkdir(..., exist_ok\u003dTrue)",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e53156cf_d5281ff2",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T19:48:09Z",
+      "side": 1,
+      "message": "board will not be unique per-project\n\nfor example, both delbin and volteer share the volteer board",
+      "range": {
+        "startLine": 95,
+        "startChar": 37,
+        "endLine": 95,
+        "endChar": 57
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a0848e1_29daa3e0",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T19:48:09Z",
+      "side": 1,
+      "message": "do this in python instead of running external commands",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 78
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
