@@ -8,6 +8,7 @@
 #include "adc_chip.h"
 #include "button.h"
 #include "cbi_fw_config.h"
+#include "cbi_ssfc.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "charger.h"
@@ -22,6 +23,7 @@
 #include "driver/tcpm/tcpci.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "driver/usb_mux/pi3usb3x532.h"
+#include "driver/usb_mux/ps8743.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -175,7 +177,47 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 
 static int board_id = -1;
+static int mux_c1 = SSFC_USB_SS_MUX_DEFAULT;
+
 extern const struct usb_mux usbc0_retimer;
+extern const struct usb_mux usbmux_ps8743;
+
+/* Probe usb mux through i2c */
+static void probe_usb_mux_c1(int on)
+{
+	int tm_count;
+	/*
+	 * The power of usb_mux is turned on by ALERT_B of charger.
+	 * It need to be turned on before access usb_mux
+	 */
+	if (on == 0) {
+		isl923x_set_comparator_inversion(1, 1);
+		msleep(3);
+	}
+
+	tm_count = 0;
+	while (mux_c1 == SSFC_USB_SS_MUX_DEFAULT) {
+		int val;
+
+		if (ps8743_check_chip_id(&usbmux_ps8743, &val) == EC_SUCCESS) {
+			if (val == 0x8741)
+				mux_c1 = SSFC_USB_SS_MUX_PS8743;
+		}
+		else if (pi3usb3x532_check_vendor(&usb_muxes[1], &val) == EC_SUCCESS) {
+			if (val == PI3USB3X532_VENDOR_ID)
+				mux_c1 = SSFC_USB_SS_MUX_PI3USBX532;
+		}
+
+		if (mux_c1 != SSFC_USB_SS_MUX_DEFAULT || tm_count > 10)
+			break;
+
+		tm_count ++;
+		msleep(1);
+	}
+
+	if (on == 0)
+		isl923x_set_comparator_inversion(1, 0);
+}
 
 void board_init(void)
 {
@@ -229,6 +271,17 @@ void board_init(void)
 			}
 		}
 	}
+
+	mux_c1 = get_cbi_ssfc_usb_ss_mux();
+
+	/* If cbi_ssfc is not set for usb mux, do runtime-probing */
+	if(mux_c1 == SSFC_USB_SS_MUX_DEFAULT)
+		probe_usb_mux_c1(on);
+
+	if(mux_c1 == SSFC_USB_SS_MUX_PS8743)
+		memcpy(&usb_muxes[1],
+				&usbmux_ps8743,
+				sizeof(struct usb_mux));
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -495,7 +548,14 @@ const struct usb_mux usbc1_retimer = {
 	.board_set = &board_nb7v904m_mux_set,
 };
 
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux usbmux_ps8743 = {
+	.usb_port = 1,
+	.i2c_port = I2C_PORT_SUB_USB_C1,
+	.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
+	.driver = &ps8743_usb_mux_driver,
+};
+
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
 		.i2c_port = I2C_PORT_USB_C0,
