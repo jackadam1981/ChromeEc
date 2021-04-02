@@ -16,6 +16,24 @@
       "message": "So the guidance we gave for other drivers on dedede was to keep all reads and writes inside the driver, and make an interface to the driver for board code to use (ex. nb7v904m.h/c)",
       "revId": "c03c39a2cd12ba74dd261103340e383efbf0dacd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48df4e8_eecbcb9d",
+        "filename": "driver/usb_mux/ps8822.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-02T04:08:37Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "779e0f65_012c3943",
+      "revId": "c03c39a2cd12ba74dd261103340e383efbf0dacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
