@@ -33,6 +33,24 @@
       "message": "Can we make sure this is cleared on CHIP_RESET?\n\nAlso, cleared if there is a disconnect before the event is cleared by the AP?\n\n\nThe way this would be parse by the AP is :\n1. AP calls TYPEC_STATUS\n2. If AP sees HARD_RESET it does the following:\n  a. send a uevent to let userspace know a hard reset happened.\n  b. unregister the partner \u0026 cable.\n\nI don\u0027t know if we should additionaly do c.) \"re-register partner and cable\" while handling this event itself, or will another PD event come soon after the hard_reset event (and the re-registration can happen then).",
       "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c118bf4a_4d167e67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-02T16:45:03Z",
+      "side": 1,
+      "message": "Done.\n\nIf things are working normally, there should be a discovery event later that you could re-register on. In the meantime, I think there will be at least one PD_MCU event for VBUS toggling during the Hard Reset, but there won\u0027t be valid discovery info during this interval. If you query discovery info immediately upon the Hard Reset event, we might have to worry about a race between that and the EC clearing the discovery info.",
+      "parentUuid": "6c974ada_49b06a21",
+      "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d7f2392_b110df4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-02T16:45:03Z",
+      "side": 1,
+      "message": "Prashant, if you make a quick-and-dirty CL to reset the stored port/cable state on this event and try issuing a Hard Reset to an alt mode device, that would probably be the quickest way to verify that this CL addresses the bug. If you send me a kernel patch, I can try it.",
+      "revId": "d1dcf43917e2964c517029c2b475bf94f0da358a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
