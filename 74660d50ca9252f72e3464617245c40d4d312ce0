@@ -22,6 +22,30 @@
       },
       "revId": "74660d50ca9252f72e3464617245c40d4d312ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fb75240_0dbc96c2",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-02T00:34:27Z",
+      "side": 1,
+      "message": "Yes, although I\u0027m not 100% sure how this will go. Possible we will have a board driver which handles this sort of thing. We want to avoid having duplicate code in each board though.",
+      "parentUuid": "9d31b4a9_811c670f",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "74660d50ca9252f72e3464617245c40d4d312ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
