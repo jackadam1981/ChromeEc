@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cff8a38_39f75f96",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2021-04-02T22:53:38Z",
+      "side": 1,
+      "message": "yapf put the [ with the (, which means the rest of the arguments are indented to align with the [.\n\nOne way to make both yapf and humans happy is to build the command list separately, and then pass it to subprocess.run.",
+      "parentUuid": "db215562_faa92102",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 69
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89da2853_4843e72e",
