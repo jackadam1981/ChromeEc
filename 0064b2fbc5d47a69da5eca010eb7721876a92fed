@@ -16,6 +16,46 @@
       "message": "Fixed line wrap.",
       "revId": "0064b2fbc5d47a69da5eca010eb7721876a92fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ecb076_8f7dc828",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T15:07:56Z",
+      "side": 1,
+      "message": "Can you link to the upstream PR to cmake/toolchains/zephyr/target.cmake please?",
+      "revId": "0064b2fbc5d47a69da5eca010eb7721876a92fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11342157_59dfe16f",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T15:07:56Z",
+      "side": 1,
+      "message": "STREQUAL",
+      "range": {
+        "startLine": 66,
+        "startChar": 38,
+        "endLine": 66,
+        "endChar": 45
+      },
+      "revId": "0064b2fbc5d47a69da5eca010eb7721876a92fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
