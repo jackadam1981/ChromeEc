@@ -46,6 +46,30 @@
       },
       "revId": "b41dc3cfac4b57423e1390285a68973f22be6853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7adb4c2_f1f3603f",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-04-02T15:35:38Z",
+      "side": 1,
+      "message": "Actually we can use a 1-Dimensional array instead of a union, and be careful when we index into the array. The usage will be the same as in PS15 but the definition can be a 1D array. Will change soon.",
+      "parentUuid": "30999af7_79fea624",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "b41dc3cfac4b57423e1390285a68973f22be6853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
