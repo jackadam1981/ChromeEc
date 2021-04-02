@@ -105,6 +105,24 @@
       "parentUuid": "6961b61f_96cafbd7",
       "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b30697_19f4b43b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-02T22:49:10Z",
+      "side": 1,
+      "message": "\u003e I believe I can avoid the issue by clearing the discovery flags before setting the HR flag. That way, if you see both, you\u0027ll know that the HR flag came first.\n\nI see some other edges cases complicating matters here. For example:\n- What if a Hard reset occurs *during* coldboot, but before the Type C kernel driver has had a chance to run? In that case, IIUC by the time the Type C kernel driver does it\u0027s initial enumeration, all 3 bits would be set (HARD_RESET and *_DISC_DONE).\n- Since the event handling code is the same regardless of enumeration of any other event (the kernel driver just pulls the latest status from the EC and acts accordingly), in this case we would:\n- see the hard reset, and so try de-registering the partner and cable (none exist yet, so this is a no-op).\n- Ideally, next it should exit immediately and a subsequent PD_MCU event should come in which will lead to the partner and cable being registered \"correctly\". This is because the kernel driver was built to re-register a partner in the middle of the status handling. What if this event doesn\u0027t come in though? Since this is during boot time, it could be that the Host events are dropped since they were sent out before the EC kernel driver was initialized.",
+      "parentUuid": "1134ddd8_0a07c741",
+      "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
