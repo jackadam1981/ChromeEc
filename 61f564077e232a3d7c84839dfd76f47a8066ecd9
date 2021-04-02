@@ -391,6 +391,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeaafe9c_0e729664",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-04-02T18:20:47Z",
+      "side": 1,
+      "message": "Done (incorporated find_projects).  Inspected the resultant volteer tarball. \n Avoided looking at lazor, as trogdor is not supported by firmware_builder.py\u0027s  build command yet.",
+      "parentUuid": "ff2277da_9aab0749",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "61f564077e232a3d7c84839dfd76f47a8066ecd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a490f530_85ef5299",
