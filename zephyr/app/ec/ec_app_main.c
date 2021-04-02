@@ -63,10 +63,6 @@ void ec_app_main(void)
 		}
 	}
 
-	if (IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG)) {
-		watchdog_init();
-	}
-
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_VBOOT)) {
 		/*
 		 * For RO, it behaves as follows:
@@ -74,7 +70,13 @@ void ec_app_main(void)
 		 *   In normal boot, it verifies and jumps to RW.
 		 * For RW, it returns immediately.
 		 */
+		printk("Starting vboot_main()\n");
 		vboot_main();
+	}
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG)) {
+		printk("Starting watchdog_init()\n");
+		watchdog_init();
 	}
 
 	/* Call init hooks before main tasks start */
