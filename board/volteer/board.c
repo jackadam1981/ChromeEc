@@ -227,3 +227,30 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+static int send_uart_break(int argc, char **argv)
+{
+	int break_ms = 50;
+	char *e;
+
+	if (argc >= 2) {
+		break_ms = strtoi(argv[1], &e, 10);
+
+		if (*e)
+			return EC_ERROR_PARAM1;
+	}
+	ccprintf("Will send a wake on break signal for %dms ...\n", break_ms);
+	gpio_config_module(MODULE_UART, 0);
+
+	gpio_set_level(GPIO_UART_EC_TX_DEBUG_RX, 0);
+	msleep(break_ms);
+	gpio_set_level(GPIO_UART_EC_TX_DEBUG_RX, 1);
+
+	gpio_config_module(MODULE_UART, 1);
+	ccprintf("UART break done\n");
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(breakms, send_uart_break,
+			"msec",
+			"Send a break on main uart for specified msecs");
