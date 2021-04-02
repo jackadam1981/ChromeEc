@@ -22,6 +22,30 @@
       },
       "revId": "2de6744e3ad2dcc7795fba4549e43c9dd5d6497c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64076827_239f21a2",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-02T18:32:37Z",
+      "side": 1,
+      "message": "Oops yes I lost that change in a rebase :-(",
+      "parentUuid": "680023ef_8e3e73cd",
+      "range": {
+        "startLine": 15,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "2de6744e3ad2dcc7795fba4549e43c9dd5d6497c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
