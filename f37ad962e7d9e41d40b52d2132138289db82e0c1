@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "996a3fc4_5c48badf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-02T16:11:42Z",
+      "side": 1,
+      "message": "Nit: How about this for the commit message\n isl9241: Toggle learning mode when fully charged\n \n In low-power states, the ISL9241 may become stuck in CCM, consuming\n excess power. Toggle learning mode to enter DCM and save power. This\n is a workaround recommended by Renasas.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a11ca45c_48159531",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 3
@@ -31,6 +54,24 @@
       "writtenOn": "2021-03-29T20:09:58Z",
       "side": 1,
       "message": "Please comment this with a brief description of the problem and workaround and a reference to the bug that has further details.",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "152a43bb_f9d55ec9",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-02T16:11:42Z",
+      "side": 1,
+      "message": "How about this?\n\u003e When fully charged in a low-power state, the ISL9241 may get stuck in CCM. Toggle learning mode for 50 ms to enter DCM and save power. This is a workaround provided by Renesas. See b/183771327.",
+      "parentUuid": "8194dc4e_25bb1119",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +124,24 @@
       "side": 1,
       "message": "Let the charger IC entry in learn mode and then exit learn mode rapidly is our idea to solve this issue.We suppose to demo the action in cosumer,so we would like to set 500 ms turn off time to solve this issue for you reference.",
       "parentUuid": "552251ca_9ecaf8e3",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71c6d2d_c9ceba05",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-02T16:11:42Z",
+      "side": 1,
+      "message": "It looks like this value comes from Renesas\u0027 recommendation. Please mention that in a comment for this function (see above thread).",
+      "parentUuid": "72f8ecbf_70acd5e4",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +249,24 @@
       "side": 1,
       "message": "If considering all of the platform-level issue,we have no special concern in S0ix also let the charger IC entry in learn mode and then exit learn mode rapidly.",
       "parentUuid": "9936704f_b6335636",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64105a8_16a6a114",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-02T16:11:42Z",
+      "side": 1,
+      "message": "In that case, I think it would probably be best to\n1. Use HOOK_BATTERY_SOC_CHANGE and\n2. Check against chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF | CHIPSET_STATE_ANY_SUSPEND) instead of chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF). (I would also accept !chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON)).",
+      "parentUuid": "e4373043_2d92173f",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
