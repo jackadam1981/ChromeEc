@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9201694b_87ad24f0",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2021-04-02T01:25:56Z",
+      "side": 1,
+      "message": "THIS DOES NOT WORK!\n\nHaving gaps in the two dimensional array doesn\u0027t work. For example, FPC1025\u0027s template size is smaller than that of ELAN515. When we give this array to fp_finger_match, the FPC matcher will use its template size as the offset, which results in wrong position of the second template. And this is in the private library, so no hacks possible.\n\nA union is required for this 2D array.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "b41dc3cfac4b57423e1390285a68973f22be6853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
