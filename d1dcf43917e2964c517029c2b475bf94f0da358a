@@ -16,6 +16,24 @@
       "message": "Prashant, if you make a quick-and-dirty CL to reset the stored port/cable state on this event and try issuing a Hard Reset to an alt mode device, that would probably be the quickest way to verify that this CL addresses the bug. If you send me a kernel patch, I can try it.",
       "revId": "d1dcf43917e2964c517029c2b475bf94f0da358a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f72179e5_96268d62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-02T18:59:20Z",
+      "side": 1,
+      "message": "I can try to get a CL out to you by the EOD. There is a dependency on a CL I already have in flight that I\u0027d like to land before pushing a patch set on top of it. I\u0027ll reach out to you over IM when I have something for you to try.",
+      "parentUuid": "8d7f2392_b110df4b",
+      "revId": "d1dcf43917e2964c517029c2b475bf94f0da358a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

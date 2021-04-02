@@ -51,6 +51,24 @@
       "parentUuid": "6c974ada_49b06a21",
       "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1faac87f_421260a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-02T18:59:20Z",
+      "side": 1,
+      "message": "\u003e  If you query discovery info immediately upon the Hard Reset event, we might have to worry about a race between that and the EC clearing the discovery info.\n\nThanks for the context. So, the potential issue I see is that by the time the kernel gets around to handling the Hard Reset-PD MCU event, re-discovery might already be complete. Since all these events are returned by the same TYPEC_STATUS host command, we may get into a situation where all the all three events are set.\n\nSo, we should figure out what\u0027s the appropriate way to handle the hard reset event. Is it:\n1. De-register partner and cable, and then exit (and let subsequent events re-register things) regardless of what the SOP_DISC_DONE and SOP_PRIME_DISC_DONE event bits show.\n2. De-register partner and cable, and then if *_DISC_DONE are also set, try re-registering?\n\nPer your comment 2.) might be racy, so if we\u0027re confident that another event is going to come in soon after, we should go with 1.)\n\n\nAlso, will the event be cleared when a physical disconnect occurs (Unattached.*) ?",
+      "parentUuid": "c118bf4a_4d167e67",
+      "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -16,6 +16,24 @@
       "message": "Does the same go for HOOK_CHIPSET_RESUME?  Is the AP uninterested in any hard resets that occurred while the AP was down?",
       "revId": "b477a90aac5442fe5619b542f76d8bf44c9928c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9634d848_64800d99",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3849,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-02T18:59:20Z",
+      "side": 1,
+      "message": "The issue is that the handling gets more complex in the kernel if we have to deal with the hard reset bit being set *and* a registration happening at the same time. Given that there is nothing actionable we can do (no notifications to be sent since the AP is down) and no way to ascertain when the reset happened, I\u0027d stray on the conservative side in the kernel and clear it on reset.",
+      "parentUuid": "62cd2091_74ab1363",
+      "revId": "b477a90aac5442fe5619b542f76d8bf44c9928c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
