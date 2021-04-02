@@ -22,6 +22,30 @@
       },
       "revId": "658193bc460dd1295a8d627dfeca92f75605c817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc437322_a8d974fe",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-02T07:09:47Z",
+      "side": 1,
+      "message": "SLP_SUS is still used to track the AP state here\nand in common code. i can\u0027t tell if it can truly\nbe derived from other pins.",
+      "parentUuid": "733c601e_9a755aae",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 34
+      },
+      "revId": "658193bc460dd1295a8d627dfeca92f75605c817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
