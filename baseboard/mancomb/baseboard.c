@@ -417,6 +417,8 @@ static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 
 int board_set_active_charge_port(int port)
 {
+	int rv;
+
 	CPRINTSUSB("Requested charge port change to %d", port);
 
 	/*
@@ -464,11 +466,34 @@ int board_set_active_charge_port(int port)
 	case CHARGE_PORT_TYPEC0:
 	case CHARGE_PORT_TYPEC1:
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
+		/* Disable the other type-c port's PPC before enabling */
+		rv = ppc_vbus_sink_enable(port == CHARGE_PORT_TYPEC0 ? 1 : 0,
+					  0);
+		if (rv) {
+			CPRINTSUSB("Failed to disable sink path");
+			return EC_ERROR_UNKNOWN;
+		}
+		rv = ppc_vbus_sink_enable(port, 1);
+		if (rv) {
+			CPRINTSUSB("Failed to enable sink path");
+			return EC_ERROR_UNKNOWN;
+		}
 		break;
 	case CHARGE_PORT_BARRELJACK:
 		/* Make sure BJ adapter is sourcing power */
 		if (gpio_get_level(GPIO_BJ_ADP_PRESENT_L))
 			return EC_ERROR_INVAL;
+		/* Ensure Type-C sink paths are disabled before BJ enable */
+		rv = ppc_vbus_sink_enable(0, 0);
+		if (rv) {
+			CPRINTSUSB("Failed to disable C0 sink path");
+			return EC_ERROR_UNKNOWN;
+		}
+		rv = ppc_vbus_sink_enable(1, 0);
+		if (rv) {
+			CPRINTSUSB("Failed to disable C1 sink path");
+			return EC_ERROR_UNKNOWN;
+		}
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 0);
 		break;
 	default:
