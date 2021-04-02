@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f1ab5c_81459ac5",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-02T16:14:27Z",
+      "side": 1,
+      "message": "Should add the other thermistor read functions:\nget_temp_3v3_13k7_47k_4050b\nget_temp_3v3_51k1_47k_4050b\nget_temp_6v0_51k1_47k_4050b\nget_temp_3v0_22k6_47k_4050b",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "698116d1450adb4ab5d4420fc7e988c1c164ae9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b1824f_f0e4ada2",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-02T16:14:27Z",
+      "side": 1,
+      "message": "Can this be added to the temp-3v3-30k9-47k-4050b.yaml file instead?",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 49
+      },
+      "revId": "698116d1450adb4ab5d4420fc7e988c1c164ae9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
