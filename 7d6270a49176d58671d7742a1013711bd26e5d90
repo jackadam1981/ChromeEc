@@ -69,6 +69,24 @@
       "parentUuid": "c118bf4a_4d167e67",
       "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6961b61f_96cafbd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-02T19:59:27Z",
+      "side": 1,
+      "message": "\u003e Also, will the event be cleared when a physical disconnect occurs (Unattached.*) ?\nNot right now, but it probably should be.\n\n\u003e So, we should figure out what\u0027s the appropriate way to handle the hard reset event. Is it:\n\u003e 1. De-register partner and cable, and then exit (and let subsequent events re-register things) regardless of what the SOP_DISC_DONE and SOP_PRIME_DISC_DONE event bits show.\n\u003e 2. De-register partner and cable, and then if *_DISC_DONE are also set, try re-registering?\nI think what you\u0027re pointing out is that, if both bits are set, the correct interpretation depends on which one was set first (which you can\u0027t know as of this patchset). If discovery done was set first, then you should ignore it, unregister, and wait for another discovery done. If HR was set first, you should unregister and reregister.\n\nI believe I can avoid the issue by clearing the discovery flags before setting the HR flag. That way, if you see both, you\u0027ll know that the HR flag came first.\n\nDiana: Does my proposal sound like a maintenance hazard to you? Can you think of a more elegant way to handle this?",
+      "parentUuid": "1faac87f_421260a9",
+      "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
