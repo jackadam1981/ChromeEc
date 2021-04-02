@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd064ac1_8b3a68ce",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T21:51:07Z",
+      "side": 1,
+      "message": "unused, delete",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "2c74a4caee6478382e8e38f79344930b08119fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a1db6d_dd8281ac",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T21:51:07Z",
+      "side": 1,
+      "message": "not sure why it\u0027s worth writing a todo for this, using pathlib.Path is not difficult",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "2c74a4caee6478382e8e38f79344930b08119fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db936bef_915ead0a",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T21:51:07Z",
+      "side": 1,
+      "message": "pathlib.Path(__file__).parent",
+      "range": {
+        "startLine": 95,
+        "startChar": 17,
+        "endLine": 95,
+        "endChar": 42
+      },
+      "revId": "2c74a4caee6478382e8e38f79344930b08119fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d48c1e_86b08ffa",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T21:51:07Z",
+      "side": 1,
+      "message": "platform_ec \u003d zephyr_dir.parent\nbuild_dir \u003d zmake.util.resolve_build_dir(platform_ec, project.project_dir, None)",
+      "range": {
+        "startLine": 99,
+        "startChar": 31,
+        "endLine": 99,
+        "endChar": 70
+      },
+      "revId": "2c74a4caee6478382e8e38f79344930b08119fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c2c471_8713526d",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T21:51:07Z",
+      "side": 1,
+      "message": "build_dir / \u0027output\u0027",
+      "range": {
+        "startLine": 101,
+        "startChar": 24,
+        "endLine": 103,
+        "endChar": 46
+      },
+      "revId": "2c74a4caee6478382e8e38f79344930b08119fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2489f9d0_df451578",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T21:51:07Z",
+      "side": 1,
+      "message": "will this ever happen?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "2c74a4caee6478382e8e38f79344930b08119fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0964ace7_98d90c0d",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T21:51:07Z",
+      "side": 1,
+      "message": "join to previous line?\n\nI don\u0027t think this will put it \u003e79",
+      "range": {
+        "startLine": 110,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 47
+      },
+      "revId": "2c74a4caee6478382e8e38f79344930b08119fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a59a33_085536c3",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-02T21:51:07Z",
+      "side": 1,
+      "message": "backslash is only allowed by the style guide where parenthesis won\u0027t do, like in a with statement (see PEP-8)",
+      "range": {
+        "startLine": 113,
+        "startChar": 33,
+        "endLine": 113,
+        "endChar": 34
+      },
+      "revId": "2c74a4caee6478382e8e38f79344930b08119fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
