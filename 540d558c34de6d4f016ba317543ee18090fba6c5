@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf745a09_a31b58a6",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-02T16:24:35Z",
+      "side": 1,
+      "message": "You need to assign this to CONFIG_PLATFORM_EC_CHARGER_BQ25720_VSYS_TH2_DV.",
+      "range": {
+        "startLine": 1348,
+        "startChar": 8,
+        "endLine": 1348,
+        "endChar": 42
+      },
+      "revId": "540d558c34de6d4f016ba317543ee18090fba6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
