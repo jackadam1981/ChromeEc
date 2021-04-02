@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62cd2091_74ab1363",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3849,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-02T17:54:08Z",
+      "side": 1,
+      "message": "Does the same go for HOOK_CHIPSET_RESUME?  Is the AP uninterested in any hard resets that occurred while the AP was down?",
+      "revId": "b477a90aac5442fe5619b542f76d8bf44c9928c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
