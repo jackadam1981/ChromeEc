@@ -16,6 +16,24 @@
       "message": "nit: not sure what the purpose of the extra read is?",
       "revId": "05daf8e074caba1844d9ac59c9ecfba49394a151",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9c30ecb_3a46c8bb",
+        "filename": "driver/usb_mux/ps8822.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-02T17:26:33Z",
+      "side": 1,
+      "message": "That was only used when I was debugging and should have been removed. I cleaned that part up and submitted a new patchset",
+      "parentUuid": "8d6596da_6fc319d1",
+      "revId": "05daf8e074caba1844d9ac59c9ecfba49394a151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
