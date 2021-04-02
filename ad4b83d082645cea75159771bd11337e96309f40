@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d22d0b1_029ded19",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-04-02T21:36:08Z",
+      "side": 1,
+      "message": "There are quite a few uses of os.path.join, so captured in a TODO.",
+      "parentUuid": "adb24dc0_522402ec",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "236a3144_910e21a6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-02T19:48:09Z",
       "side": 1,
       "message": "something really funky is going on with the indentation here.\n\nlines 47, 48, 49 are underindented?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 69
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db215562_faa92102",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-04-02T21:36:08Z",
+      "side": 1,
+      "message": "Indendented 47,48,49.  The previous iteration is how yapf formats it.",
+      "parentUuid": "236a3144_910e21a6",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f165a4b_27e89d13",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-04-02T21:36:08Z",
+      "side": 1,
+      "message": "exist_ok doesn\u0027t look to be an option for os.mkdir.",
+      "parentUuid": "89da2853_4843e72e",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e53156cf_d5281ff2",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd8e854_6b40a987",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-04-02T21:36:08Z",
+      "side": 1,
+      "message": "Done (will take care of migrating to using pathlib.Path objects throughout with the TODO in l:47).",
+      "parentUuid": "e53156cf_d5281ff2",
+      "range": {
+        "startLine": 95,
+        "startChar": 37,
+        "endLine": 95,
+        "endChar": 57
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a0848e1_29daa3e0",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-04-02T19:48:09Z",
       "side": 1,
       "message": "do this in python instead of running external commands",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 78
+      },
+      "revId": "ad4b83d082645cea75159771bd11337e96309f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc10be73_b7485192",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-04-02T21:36:08Z",
+      "side": 1,
+      "message": "Obsolete now, I think, with use of project_dir.",
+      "parentUuid": "1a0848e1_29daa3e0",
       "range": {
         "startLine": 100,
         "startChar": 8,
