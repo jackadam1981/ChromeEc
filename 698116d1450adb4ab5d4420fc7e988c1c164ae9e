@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff9bc146_489df17d",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-02T18:32:17Z",
+      "side": 1,
+      "message": "Done\n\nI\u0027ve leave out get_temp_R19ME4070() since we may not needed it and it seems to follow a different naming convention",
+      "parentUuid": "d8f1ab5c_81459ac5",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "698116d1450adb4ab5d4420fc7e988c1c164ae9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32b1824f_f0e4ada2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-02T16:14:27Z",
       "side": 1,
       "message": "Can this be added to the temp-3v3-30k9-47k-4050b.yaml file instead?",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 49
+      },
+      "revId": "698116d1450adb4ab5d4420fc7e988c1c164ae9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f8e6ed_c0f3ab56",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-02T18:32:17Z",
+      "side": 1,
+      "message": "We can\u0027t add property values to a binding if that is what you mean.\n\nBut I could repeat the same get-temp-func property in each of the binding files, instead of having it common. Then each one would only have a single valid value for the enum, i.e. the one that matches the compatible string.\n\nThat is nice in that you get an error if it doesn\u0027t match the compatible string.\n\nBut it does mean repeating the same help in every binding file, and it is a bit of a perversion of the purpose of an enum, IMO",
+      "parentUuid": "32b1824f_f0e4ada2",
       "range": {
         "startLine": 103,
         "startChar": 3,
