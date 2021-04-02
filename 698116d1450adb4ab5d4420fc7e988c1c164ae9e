@@ -117,6 +117,30 @@
       },
       "revId": "698116d1450adb4ab5d4420fc7e988c1c164ae9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d784e584_4b552407",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-02T21:37:00Z",
+      "side": 1,
+      "message": "Keith pointed out that default properties *are* supported. It requires copying the binding but it does have the advantage that you cannot get the access function wrong.\n\nWe also have Yuval\u0027s suggestion captured in b/184374937",
+      "parentUuid": "fee37f98_eeea5ba1",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 49
+      },
+      "revId": "698116d1450adb4ab5d4420fc7e988c1c164ae9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
