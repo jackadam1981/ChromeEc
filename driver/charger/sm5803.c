@@ -1152,7 +1152,7 @@ static void sm5803_irq_deferred(void)
 		if (BIT(i) & pending)
 			sm5803_handle_interrupt(i);
 }
-DECLARE_DEFERRED(sm5803_irq_deferred);
+DECLARE_PRIORITY_DEFERRED(0, sm5803_irq_deferred);
 
 void sm5803_interrupt(int chgnum)
 {
