@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7afcb2b3_754666df",
+        "filename": "zephyr/test/ec_app/src/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-02T16:00:07Z",
+      "side": 1,
+      "message": "Nit - add /* CONFIG_PLATFORM_EC_HOOKS */",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "85846e0bf5b882f523678407ef85ed50c8d2528c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
