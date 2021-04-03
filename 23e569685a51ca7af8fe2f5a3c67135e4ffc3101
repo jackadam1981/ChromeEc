@@ -33,6 +33,24 @@
       "message": "It\u0027s missing the `CURRENT_TO_REG` and `AC_CURRENT_TO_REG` macros in the driver functions now.",
       "revId": "23e569685a51ca7af8fe2f5a3c67135e4ffc3101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff49185_3f4ab2ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-04-03T03:31:29Z",
+      "side": 1,
+      "message": "so we need change the CURRENT_TO_REG and AC_CURRENT_TO_REG  from isl923x.c to isl923x.h, so that the board.c can call this define.",
+      "parentUuid": "3ba5f384_228bc1bf",
+      "revId": "23e569685a51ca7af8fe2f5a3c67135e4ffc3101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
