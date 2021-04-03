@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d70b555_f987a51d",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1490292
+      },
+      "writtenOn": "2021-04-03T01:17:45Z",
+      "side": 1,
+      "message": "Here\u0027re the findings with Saleae connected to DIOB2\n1) gpio_set_flags works (gpio_set_level doesn\u0027t)\n2) The spec is right, break length is based on cycle of \"always on clock\" which is 262 kHz, not based on the baud rate.\n3) Max break length is 255 (8-bit unsigned int), so 255/262k is 0.973 ms. Millisecond granularity is too long. Need to use us.\n4) Ti50 is configured to wake up with break length [50 .. 255], which translates to [190 .. 973] us.\n5) I modified the code to do usleep instead of msleep, and it does wake up Ti50 correctly with proper break length value.\n6) There is a little overhead in the code so the actual break length is longer than the parameter specified, e.g. \"breakus 1\" results in actual break of 140 us, and \"breakus 30\" results in actual break of 230 us which will wake up Ti50.",
+      "revId": "c6bf89880583384ec80ae4cde2283584cd520996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
