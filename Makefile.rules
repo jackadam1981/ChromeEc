@@ -225,6 +225,10 @@ print-boards:
 	$(call cmd_pretty_print_list,\
 		$(sort $(boards)))
 
+cmd_check_allowed = test -n "${ALLOW_CONFIG}" || \
+		./util/check_allowed.sh ${config} util/config_allowed.txt .
+quiet_cmd_check_allowed = CHECK_ALLOWED ${config}
+
 # Print any important notices at the end of the build.
 .PHONY: notice
 notice: $(config)
@@ -235,9 +239,7 @@ ifeq ($(TEST_BUILD),)
 	@echo "directory!  Otherwise, you won't be able to enter any commands."
 endif # not a TEST_BUILD
 endif # CONFIG_EXPERIMENTAL_CONSOLE=y
-	@if [ -z "${ALLOW_CONFIG}" ]; then \
-		./util/check_allowed.sh ${config} util/config_allowed.txt .; \
-	fi
+	$(call quiet,check_allowed)
 
 proj-%: | $(FAILED_BOARDS_DIR)
 	@touch $(FAILED_BOARDS_DIR)/$*
