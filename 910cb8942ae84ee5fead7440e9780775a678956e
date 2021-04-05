@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "920bc81d_a61362e5",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-05T20:08:59Z",
+      "side": 1,
+      "message": "ok, move them to spi.c, and delete them from boards and ec_lfw.c\nso this CL will still inlcude,\n    chip/mchp/lfw/ec_lfw.c\n    chip/mchp/spi.c\nand \n\nboard/mchpevb1/board.c\nboard/reef_mchp/board.c\nboard/sklrvp_mchp/board.c\n\nwill be added into this CL:2749516",
+      "parentUuid": "f7fa3de2_2be186e5",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 0
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4138a966_1bb55d0f",
         "filename": "board/sklrvp_mchp172x/board.h",
         "patchSetId": 20
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "this is 1727 series should be part of config_chip.h",
       "parentUuid": "962e7911_82d655b3",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 31
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd32ac09_8033763a",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-05T20:08:59Z",
+      "side": 1,
+      "message": "refer to CL:2799977 - config_chip.h\nwe move both\n#define CONFIG_FLASH_SIZE_BYTES 524288\n#define CONFIG_SPI_FLASH_W25X40\nback to board since those definitions are board specific, except MEC1727 with integrated flash chip.\n\nin fact we need to keep:\n#undef\tCONFIG_CLOCK_SRC_EXTERNAL\n#define\tCONFIG_CLOCK_CRYSTAL\n\nsince this is board specific, using crystal or single pin input on board design. even MEC1727 has crystal or single pin input design option per different board.",
+      "parentUuid": "8cf1f3c3_e0e43f9a",
       "range": {
         "startLine": 210,
         "startChar": 0,
@@ -263,6 +311,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d15d3e6_b4226021",
+        "filename": "board/sklrvp_mchp172x/gpio.inc",
+        "patchSetId": 20
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-05T20:08:59Z",
+      "side": 1,
+      "message": "sorry, not clear what you mean, could you explain more?",
+      "parentUuid": "7f469d68_f34de742",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 0
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9c9bbdf_bca73b1c",
         "filename": "chip/mchp/build.mk",
         "patchSetId": 20
@@ -310,6 +382,24 @@
       "side": 1,
       "message": "on a second though better remove else case and fix the remaining board.\nit will be a cleaner solution",
       "parentUuid": "63e94e8a_7f1b4c43",
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f21c3324_8544e932",
+        "filename": "chip/mchp/build.mk",
+        "patchSetId": 20
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-05T20:08:59Z",
+      "side": 1,
+      "message": "ok, \ncan remove if/else in mk file, and delete gpio.inc under other boards,\nboard/mchpevb1/lfw/...\nboard/reef_mchp/lfw/...\nboard/sklrvp_mchp/lfw/...",
+      "parentUuid": "de4aa0c3_a6cddfbb",
       "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
