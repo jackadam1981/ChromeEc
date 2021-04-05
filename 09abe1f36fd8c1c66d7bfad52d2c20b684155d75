@@ -16,6 +16,24 @@
       "message": "I think `!port` would work",
       "revId": "09abe1f36fd8c1c66d7bfad52d2c20b684155d75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a85b97_a37687bf",
+        "filename": "baseboard/mancomb/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-05T17:54:27Z",
+      "side": 1,
+      "message": "It will.  I was torn about translating the given charge port straight to a USB-C port number, so I guess I did it for the enable but not disable.  It works out that they\u0027re the same for our board, but I wasn\u0027t sure whether we should always assume that.  Though I suppose as long as I\u0027m hopping down that rabbit hole, I should consider writing this more flexibly in case an OEM opts to only have one USB-C port.",
+      "parentUuid": "76461dd6_b7eb094f",
+      "revId": "09abe1f36fd8c1c66d7bfad52d2c20b684155d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
