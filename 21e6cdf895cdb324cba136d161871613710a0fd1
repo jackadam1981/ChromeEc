@@ -33,6 +33,24 @@
       "message": "nit: nothing on the first line in multi-line comments.",
       "revId": "21e6cdf895cdb324cba136d161871613710a0fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ef5ec5_e6666737",
+        "filename": "chip/mchp/i2c_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-05T13:31:22Z",
+      "side": 1,
+      "message": "ack\nfixed it, added first line to follow general format",
+      "parentUuid": "10187760_f2bd9536",
+      "revId": "21e6cdf895cdb324cba136d161871613710a0fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
