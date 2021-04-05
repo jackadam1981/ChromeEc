@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9185746_d17b2085",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-05T18:43:02Z",
+      "side": 1,
+      "message": "if we move these 5 fines code to spi.c, I think spi.c is a proper file to have these code if moving them to chip.\nsince these code is defined in ec_lfw.c, and in other mchp boards (sklrvp_mchp/reef_mchp/mchpevb2) file board.c too, so the solution will be:\n\n1: delete these 5 lines code in sklrvp_mchp172x/board.c\n2: in chip/mchp/spi.c, add,\n#if defined(CHIP_FAMILY_MEC172X)\n/* SPI devices */\nconst struct spi_device_t spi_devices[] \u003d {\n\t{ QMSPI0_PORT, 4, GPIO_QMSPI_CS0},\n};\nconst unsigned int spi_devices_used \u003d ARRAY_SIZE(spi_devices);\n#endif\n\n// only takes effect on MEC172x chip\n\n3: in chip/mchp/lfw/ec_lfw.c, modify,\n#if (defined(CHIP_FAMILY_MEC152X) || defined(CHIP_FAMILY_MEC170X))\n/* SPI devices - from board.c */\nconst struct spi_device_t spi_devices[] \u003d {\n\t{ CONFIG_SPI_FLASH_PORT, 4, GPIO_QMSPI_CS0 },\n};\nconst unsigned int spi_devices_used \u003d ARRAY_SIZE(spi_devices);\n#endif\n\n// still keep this definition on MEC170x and 152x chips, to be compatible with sklrvp_mchp/reef_mchp/mchpevb1 boards.\n\npls confirm if those modifications are good, and one new CL will be created, this CL has,\n    chip/mchp/lfw/ec_lfw.c\n    chip/mchp/spi.c\nbecause this CL needs to modify sklrvp_mchp172x/board.c, so this CL has to merge with 2749516 at the same time.",
+      "parentUuid": "ba9ff477_f7d0808e",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 0
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4138a966_1bb55d0f",
         "filename": "board/sklrvp_mchp172x/board.h",
         "patchSetId": 20
