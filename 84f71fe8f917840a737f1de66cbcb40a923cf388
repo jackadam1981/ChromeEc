@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed375049_78409516",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-05T14:42:42Z",
+      "side": 1,
+      "message": "use string formatting instead of join here: \u0027{}.firmware.tbz2\u0027.format(...)",
+      "range": {
+        "startLine": 95,
+        "startChar": 23,
+        "endLine": 95,
+        "endChar": 30
+      },
+      "revId": "84f71fe8f917840a737f1de66cbcb40a923cf388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa74c081_c903c8f8",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-05T14:42:42Z",
+      "side": 1,
+      "message": "I really don\u0027t think you want this here.  This is the \"zephyr board\", which has absolutely nothing to relate with the chrome os concept of a board.",
+      "range": {
+        "startLine": 95,
+        "startChar": 32,
+        "endLine": 95,
+        "endChar": 52
+      },
+      "revId": "84f71fe8f917840a737f1de66cbcb40a923cf388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
