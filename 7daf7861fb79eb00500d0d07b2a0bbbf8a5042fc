@@ -22,6 +22,29 @@
       },
       "revId": "7daf7861fb79eb00500d0d07b2a0bbbf8a5042fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cda77c8f_80204cfa",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-05T22:05:13Z",
+      "side": 1,
+      "message": "At least in my experience it seems to reboot after about 1500ms...so is this a little short?",
+      "range": {
+        "startLine": 61,
+        "startChar": 29,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "7daf7861fb79eb00500d0d07b2a0bbbf8a5042fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
