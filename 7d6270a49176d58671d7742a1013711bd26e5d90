@@ -141,6 +141,24 @@
       "parentUuid": "79b30697_19f4b43b",
       "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4451438e_1d1bdad8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-05T18:08:32Z",
+      "side": 1,
+      "message": "\u003e Would it be helpful if we only posted the hard reset event when the AP is on, or does that just shuffle around the corner cases?\n\nI think it may not be helpful for case 1.) Hard reset during coldboot, since in that case the AP is considered on.\n\nPerhaps we should try things out as they stand i.e if the AP sees the hard reset flag, it unregisters any partner/cable and does nothing more(crrev.com/c/2805860) . It sounds like a next event should come in after the reset which would set things up again. Would be great if we can simulate a hard reset during coldboot.\n\n\nThis all depends on PD_MCU becoming a wake source (otherwise Hard Resets during S0ix will not be processed immediately, and I\u0027m not sure how the AP will behave when we next resume).",
+      "parentUuid": "8faa09e3_68dcf637",
+      "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
