@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "780a0975_7b360f57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-05T22:40:18Z",
+      "side": 1,
+      "message": "Nice. However, it doesn\u0027t work. It has the similar problem that the shell thread is preempted by other threads.",
+      "parentUuid": "96f75c0f_9440e952",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "7daf7861fb79eb00500d0d07b2a0bbbf8a5042fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cda77c8f_80204cfa",
         "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-05T22:05:13Z",
       "side": 1,
       "message": "At least in my experience it seems to reboot after about 1500ms...so is this a little short?",
+      "range": {
+        "startLine": 61,
+        "startChar": 29,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "7daf7861fb79eb00500d0d07b2a0bbbf8a5042fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b76502e3_5197aeaf",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-05T22:40:18Z",
+      "side": 1,
+      "message": "I copied this value from Volteer.\n\nThe timeout of the watchdog is another config PLATFORM_EC_WATCHDOG_PERIOD_MS, which is 1600ms. I thought this config CONFIG_WDT_NPCX_DELAY_CYCLES means 500ms (16 cycles) before the 1600ms watchdog timeout such that it leaves some time for debug trace to be printed. But I need to check to confirm.",
+      "parentUuid": "cda77c8f_80204cfa",
       "range": {
         "startLine": 61,
         "startChar": 29,
