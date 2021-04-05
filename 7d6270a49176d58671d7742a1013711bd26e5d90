@@ -123,6 +123,24 @@
       "parentUuid": "1134ddd8_0a07c741",
       "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8faa09e3_68dcf637",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-05T17:59:14Z",
+      "side": 1,
+      "message": "Would it be helpful if we only posted the hard reset event when the AP is on, or does that just shuffle around the corner cases?",
+      "parentUuid": "79b30697_19f4b43b",
+      "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
