@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba9ff477_f7d0808e",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-05T15:57:15Z",
+      "side": 1,
+      "message": "move to chip/mchp in a separate CL",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 0
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4138a966_1bb55d0f",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-05T15:57:15Z",
+      "side": 1,
+      "message": "remove, not used",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 31
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363922e4_713f5f62",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-05T15:57:15Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 0
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dde7a3ac_f37a34f6",
+        "filename": "board/sklrvp_mchp172x/gpio.inc",
+        "patchSetId": 20
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-05T15:57:15Z",
+      "side": 1,
+      "message": "do you need it?",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 0
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c9bbdf_bca73b1c",
+        "filename": "chip/mchp/build.mk",
+        "patchSetId": 20
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-05T15:57:15Z",
+      "side": 1,
+      "message": "pls submit a separate CL for this file and chip/mchp/lfw/gpio.inc.\nboard code will look neat for future reference",
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
