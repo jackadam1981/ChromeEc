@@ -204,6 +204,24 @@
       "message": "pls submit a separate CL for this file and chip/mchp/lfw/gpio.inc.\nboard code will look neat for future reference",
       "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e94e8a_7f1b4c43",
+        "filename": "chip/mchp/build.mk",
+        "patchSetId": 20
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-05T18:58:35Z",
+      "side": 1,
+      "message": "ok\nwill submit this mk file and chip/mchp/lfw/gpio.inc in a separate CL, both are under chip...",
+      "parentUuid": "f9c9bbdf_bca73b1c",
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
