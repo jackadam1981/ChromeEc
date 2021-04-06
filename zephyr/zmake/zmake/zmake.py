@@ -460,7 +460,6 @@ class Zmake:
             if initial:
                 cmd += ['-i']
             proc = self.jobserver.popen(cmd,
-                                        claim_job=False,
                                         stdout=subprocess.PIPE,
                                         stderr=subprocess.PIPE,
                                         encoding='utf-8',
@@ -505,7 +504,6 @@ class Zmake:
                 ['/usr/bin/ninja', '-C', dirs[build_name], 'all.libraries'],
                 # Ninja will connect as a job client instead and claim
                 # many jobs.
-                claim_job=False,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 encoding='utf-8',
@@ -573,7 +571,6 @@ class Zmake:
             proc = self.jobserver.popen(
                 [self.module_paths['ec'] /
                  'util/getversion.sh'],
-                claim_job=False,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 encoding='utf-8',
@@ -587,6 +584,23 @@ class Zmake:
             if proc.wait():
                 raise OSError(get_process_failure_msg(proc))
 
+            # Merge info files into a single lcov.info
+            self.logger.info("Merging coverage data into %s.",
+                             build_dir / 'lcov.info')
+            cmd = ['/usr/bin/lcov', '-o', build_dir / 'lcov.info']
+            for info in all_lcov_files:
+                cmd += ['-a', info]
+            proc = self.jobserver.popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                encoding='utf-8',
+                errors='replace')
+            zmake.multiproc.log_output(self.logger, logging.ERROR, proc.stderr)
+            zmake.multiproc.log_output(self.logger, logging.DEBUG, proc.stdout)
+            if proc.wait():
+                raise OSError(get_process_failure_msg(proc))
+
             # Merge into a nice html report
             self.logger.info("Creating coverage report %s.",
                              build_dir / 'coverage_rpt')
@@ -595,7 +609,6 @@ class Zmake:
                  build_dir / 'coverage_rpt', '-t',
                  "Zephyr EC Unittest {}".format(version), '-p',
                  self.checkout / 'src', '-s'] + all_lcov_files,
-                claim_job=False,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 encoding='utf-8',
