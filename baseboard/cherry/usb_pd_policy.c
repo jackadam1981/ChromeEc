@@ -4,6 +4,7 @@
  */
 #include "charge_manager.h"
 #include "chipset.h"
+#include "driver/tcpm/tcpci.h"
 #include "timer.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_mux.h"

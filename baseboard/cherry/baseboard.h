@@ -85,6 +85,7 @@
 #define I2C_PORT_ACCEL    IT83XX_I2C_CH_B
 #define I2C_PORT_PPC0     IT83XX_I2C_CH_C
 #define I2C_PORT_PPC1     IT83XX_I2C_CH_E
+#define I2C_PORT_USB1     IT83XX_I2C_CH_E
 #define I2C_PORT_USB_MUX0 IT83XX_I2C_CH_C
 #define I2C_PORT_USB_MUX1 IT83XX_I2C_CH_E
 #define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
@@ -118,6 +119,7 @@
 #define CONFIG_USB_PD_DP_HPD_GPIO
 #define CONFIG_USB_PD_DP_HPD_GPIO_CUSTOM
 #define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT 1
 #define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
@@ -128,7 +130,7 @@
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TCPMV2
 #define CONFIG_USB_PD_TRY_SRC
-#define CONFIG_USB_PD_VBUS_DETECT_NONE /* TODO: implement vbus detect */
+#define CONFIG_USB_PD_VBUS_DETECT_PPC /* TODO: implement vbus detect */
 #define CONFIG_USB_PID 0x5566  /* TODO: update PID */
 #define CONFIG_USB_POWER_DELIVERY
 
@@ -212,6 +214,7 @@ enum power_signal {
 
 int board_get_version(void);
 void board_reset_pd_mcu(void);
+void rt1718s_tcpc_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BASEBOARD_H */
