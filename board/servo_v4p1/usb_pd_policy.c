@@ -1268,6 +1268,9 @@ static int cmd_ada_srccaps(int argc, char *argv[])
 	for (i = 0; i < pd_get_src_cap_cnt(CHG); ++i) {
 		uint32_t max_ma, max_mv, unused;
 
+		if (IS_ENABLED(CONFIG_USB_PD_ONLY_FIXED_PDOS) &&
+		    (ada_srccaps[i] & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
+			continue;
 		/* It's an supported Augmented PDO (PD3.0) */
 		if ((ada_srccaps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)
 			continue;
