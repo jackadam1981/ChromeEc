@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "83db509c_04c59d1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-04-06T17:20:46Z",
+      "side": 1,
+      "message": "what is the default serial number?\n\nIt would be good to add some explanation why this command is not considered useful.\n\nAlso, maybe we don\u0027t want to set it, but I can imagine it being useful when having more than one CCD device connected and trying to figure out how to address a particular device.",
+      "revId": "358f83240ae92a6869f6a359f89b8078f4c5a037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2161ea9d_885e20d8",
