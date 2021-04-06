@@ -19,7 +19,7 @@
 #include "driver/battery/max17055.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
-#include "driver/tcpm/fusb302.h"
+#include "driver/tcpm/rt1715.h"
 #include "driver/usb_mux/it5205.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -132,9 +132,9 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
-			.addr_flags = FUSB302_I2C_SLAVE_ADDR_FLAGS,
+			.addr_flags = RT1715_I2C_ADDR_FLAGS,
 		},
-		.drv = &fusb302_tcpm_drv,
+		.drv = &rt1715_tcpm_drv,
 	},
 };
 

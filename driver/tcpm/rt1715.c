@@ -195,7 +195,7 @@ static int rt1715_set_vconn(int port, int enable)
 	return tcpci_tcpm_set_vconn(port, enable);
 }
 
-static int rt1715_set_polarity(int port, enum tcpc_cc_polarity polarity)
+static int rt1715_set_polarity(int port, int polarity)
 {
 	int rv;
 	enum tcpc_cc_voltage_status cc1, cc2;
@@ -229,7 +229,7 @@ const struct tcpm_drv rt1715_tcpm_drv = {
 	.release = &tcpci_tcpm_release,
 	.get_cc = &rt1715_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-	.check_vbus_level = &tcpci_tcpm_check_vbus_level,
+	.get_vbus_level = &tcpci_tcpm_get_vbus_level,
 #endif
 	.select_rp_value = &tcpci_tcpm_select_rp_value,
 	.set_cc = &tcpci_tcpm_set_cc,
@@ -259,5 +259,4 @@ const struct tcpm_drv rt1715_tcpm_drv = {
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode = &rt1715_enter_low_power_mode,
 #endif
-	.set_bist_test_mode	= &tcpci_set_bist_test_mode,
 };

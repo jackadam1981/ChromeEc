@@ -28,6 +28,23 @@
 static int vconn_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int rx_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 #endif
+
+struct i2c_wrt_op {
+	int addr;
+	int reg;
+	int val;
+	int mask;
+};
+STATIC_IF(DEBUG_I2C_FAULT_LAST_WRITE_OP)
+	struct i2c_wrt_op last_write_op[CONFIG_USB_PD_PORT_MAX_COUNT];
+struct get_cc_values {
+	int cc1;
+	int cc2;
+	int cc_sts;
+	int role;
+};
+STATIC_IF(DEBUG_GET_CC)
+	struct get_cc_values last_get_cc[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int tcpc_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Save the selected rp value */
@@ -143,6 +160,53 @@ int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size,
 	pd_device_accessed(port);
 	return rv;
 }
+
+int tcpc_update8(int port, int reg,
+		 uint8_t mask,
+		 enum mask_update_action action)
+{
+	int rv;
+	const int i2c_addr = tcpc_config[port].i2c_info.addr_flags;
+
+	pd_wait_exit_low_power(port);
+
+	if (IS_ENABLED(DEBUG_I2C_FAULT_LAST_WRITE_OP)) {
+		last_write_op[port].addr = i2c_addr;
+		last_write_op[port].reg  = reg;
+		last_write_op[port].val  = 0;
+		last_write_op[port].mask = (mask & 0xFF) | (action << 16);
+	}
+
+	rv = i2c_update8(tcpc_config[port].i2c_info.port,
+			 i2c_addr, reg, mask, action);
+
+	pd_device_accessed(port);
+	return rv;
+}
+
+int tcpc_update16(int port, int reg,
+		  uint16_t mask,
+		  enum mask_update_action action)
+{
+	int rv;
+	const int i2c_addr = tcpc_config[port].i2c_info.addr_flags;
+
+	pd_wait_exit_low_power(port);
+
+	if (IS_ENABLED(DEBUG_I2C_FAULT_LAST_WRITE_OP)) {
+		last_write_op[port].addr = i2c_addr;
+		last_write_op[port].reg  = reg;
+		last_write_op[port].val  = 0;
+		last_write_op[port].mask = (mask & 0xFFFF) | (action << 16);
+	}
+
+	rv = i2c_update16(tcpc_config[port].i2c_info.port,
+			  i2c_addr, reg, mask, action);
+
+	pd_device_accessed(port);
+	return rv;
+}
+
 #endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
 
 static int init_alert_mask(int port)
@@ -189,35 +253,94 @@ static int clear_power_status_mask(int port)
 	return tcpc_write(port, TCPC_REG_POWER_STATUS_MASK, 0);
 }
 
+void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
+{
+	if (IS_ENABLED(DEBUG_AUTO_DISCHARGE_DISCONNECT))
+		CPRINTS("C%d: AutoDischargeDisconnect %sABLED",
+			port, enable ? "EN" : "DIS");
+
+	tcpc_update8(port,
+		     TCPC_REG_POWER_CTRL,
+		     TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT,
+		     (enable) ? MASK_SET : MASK_CLR);
+}
 int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2)
 {
+	int role;
 	int status;
+	int cc1_present_rd, cc2_present_rd;
 	int rv;
 
-	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+	/* errors will return CC as open */
+	*cc1 = TYPEC_CC_VOLT_OPEN;
+	*cc2 = TYPEC_CC_VOLT_OPEN;
 
-	/* If tcpc read fails, return error and CC as open */
-	if (rv) {
-		*cc1 = TYPEC_CC_VOLT_OPEN;
-		*cc2 = TYPEC_CC_VOLT_OPEN;
+	/* Get the ROLE CONTROL and CC STATUS values */
+	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
+	if (rv)
 		return rv;
-	}
 
+	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+	if (rv)
+		return rv;
+
+	/* Get the current CC values from the CC STATUS */
 	*cc1 = TCPC_REG_CC_STATUS_CC1(status);
 	*cc2 = TCPC_REG_CC_STATUS_CC2(status);
 
-	/*
-	 * If status is not open, then OR in termination to convert to
-	 * enum tcpc_cc_voltage_status.
-	 */
-	if (*cc1 != TYPEC_CC_VOLT_OPEN)
-		*cc1 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
-	if (*cc2 != TYPEC_CC_VOLT_OPEN)
-		*cc2 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
+	/* Determine if we are presenting Rd */
+	cc1_present_rd = 0;
+	cc2_present_rd = 0;
+	if (role & TCPC_REG_ROLE_CTRL_DRP_MASK) {
+		/*
+		 * We are doing DRP.  We will use the CC STATUS
+		 * ConnectResult to determine if we are presenting
+		 * Rd or Rp.
+		 */
+		int term;
 
+		term = TCPC_REG_CC_STATUS_TERM(status);
+
+		if (*cc1 != TYPEC_CC_VOLT_OPEN)
+			cc1_present_rd = term;
+		if (*cc2 != TYPEC_CC_VOLT_OPEN)
+			cc2_present_rd = term;
+	} else {
+		/*
+		 * We are not doing DRP.  We will use the ROLE CONTROL
+		 * CC values to determine if we are presenting Rd or Rp.
+		 */
+		int role_cc1, role_cc2;
+
+		role_cc1 = TCPC_REG_ROLE_CTRL_CC1(role);
+		role_cc2 = TCPC_REG_ROLE_CTRL_CC2(role);
+
+		if (*cc1 != TYPEC_CC_VOLT_OPEN)
+			cc1_present_rd = !!(role_cc1 == TYPEC_CC_RD);
+		if (*cc2 != TYPEC_CC_VOLT_OPEN)
+			cc2_present_rd = !!(role_cc2 == TYPEC_CC_RD);
+	}
+	*cc1 |= cc1_present_rd << 2;
+	*cc2 |= cc2_present_rd << 2;
+
+	if (IS_ENABLED(DEBUG_GET_CC) &&
+	    (last_get_cc[port].cc1 != *cc1 ||
+	     last_get_cc[port].cc2 != *cc2 ||
+	     last_get_cc[port].cc_sts != status ||
+	     last_get_cc[port].role != role)) {
+
+		CPRINTS("C%d: GET_CC cc1=%d cc2=%d cc_sts=0x%X role=0x%X",
+			port, *cc1, *cc2, status, role);
+
+		last_get_cc[port].cc1 = *cc1;
+		last_get_cc[port].cc2 = *cc2;
+		last_get_cc[port].cc_sts = status;
+		last_get_cc[port].role = role;
+	}
 	return rv;
 }
+
 
 static int tcpci_tcpm_get_power_status(int port, int *status)
 {
