@@ -457,6 +457,9 @@ static void board_init(void)
 	/* Enable DUT USB2.0 pair. */
 	gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 0);
 
+	/* Disable power to DUT by default */
+	chg_power_select(CHG_POWER_OFF);
+
 	/* Enable VBUS detection to wake PD tasks fast enough */
 	gpio_enable_interrupt(GPIO_USB_DET_PP_CHG);
 	gpio_enable_interrupt(GPIO_USB_DET_PP_DUT);
@@ -464,9 +467,6 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_STM_FAULT_IRQ_L);
 	gpio_enable_interrupt(GPIO_DP_HPD);
 	gpio_enable_interrupt(GPIO_DUT_PWR_IRQ_ODL);
-
-	/* Disable power to DUT by default */
-	chg_power_select(CHG_POWER_OFF);
 
 	/*
 	 * Voltage transition needs to occur in lockstep between the CHG and
