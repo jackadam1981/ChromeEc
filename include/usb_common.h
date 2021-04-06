@@ -134,7 +134,7 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
  *
  * @param pdo raw pdo to extract
  * @param ma current of the PDO (output)
- * @param mv voltage of the PDO (output)
+ * @param mv max voltage of the PDO (output)
  */
 void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv);
 
