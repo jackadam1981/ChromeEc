@@ -22,6 +22,7 @@
 #include "driver/bc12/mt6360.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
+#include "driver/ppc/rt1718s.h"
 #include "driver/ppc/syv682x.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/rt1718s.h"
@@ -102,9 +103,15 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 static void board_tcpc_init(void)
 {
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_INT_ODL);
 }
 /* Must be done after I2C */
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+
+void rt1718s_tcpc_interrupt(enum gpio_signal signal)
+{
+	schedule_deferred_pd_interrupt(1);
+}
 
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
@@ -128,7 +135,9 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.frs_en = GPIO_USB_C0_FRS_EN,
 	},
 	{
-		/* TODO: enable rt1718s */
+		.i2c_port = I2C_PORT_PPC1,
+		.i2c_addr_flags = RT1718S_ADDR0_FLAGS,
+		.drv = &rt1718s_ppc_drv,
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
@@ -139,33 +148,30 @@ const struct mt6360_config_t mt6360_config = {
 	.i2c_addr_flags = MT6360_PMU_I2C_ADDR_FLAGS,
 };
 
-const struct pi3usb9201_config_t
-		pi3usb9201_bc12_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	/* [0]: unused */
-	[1] = {
-		.i2c_port = 4,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-	}
+static void null_charger_task(const int port) {}
+
+static int no_ramp(int supplier) {
+	return false;
+}
+
+static const struct bc12_drv null_bc12_drv = {
+	.usb_charger_task = null_charger_task,
+	.ramp_allowed = no_ramp,
 };
 
 struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{ .drv = &mt6360_drv },
-	{ .drv = &pi3usb9201_drv },
+	{ .drv = &null_bc12_drv },
 };
 
 static void bc12_interrupt(enum gpio_signal signal)
 {
-	if (signal == GPIO_USB_C0_BC12_INT_ODL)
-		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
-	else
-		task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
+	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 }
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
-	if (signal == GPIO_USB_C0_PPC_INT_ODL)
-		/* C0: PPC interrupt */
-		syv682x_interrupt(0);
+	syv682x_interrupt(0);
 }
 
 /* PWM */
@@ -331,11 +337,12 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = 0,
 	},
 	{
-		.bus_type = EC_BUS_TYPE_EMBEDDED,
-		/* TCPC is embedded within EC so no i2c config needed */
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB1,
+			.addr_flags = RT1718S_SLAVE_ADDR_FLAGS,
+		},
 		.drv = &rt1718s_tcpm_drv,
-		/* Alert is active-low, push-pull */
-		.flags = 0,
 	},
 };
 
@@ -357,18 +364,21 @@ const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 uint16_t tcpc_get_alert_status(void)
 {
 	/*
-	 * C0 & C1: TCPC is embedded in the EC and processes interrupts in the
+	 * C0 TCPC is embedded in the EC and processes interrupts in the
 	 * chip code (it83xx/intc.c)
 	 */
+	if (!gpio_get_level(GPIO_USB_C1_INT_ODL))
+		return PD_STATUS_TCPC_ALERT_1;
 	return 0;
 }
 
 void board_reset_pd_mcu(void)
 {
 	/*
-	 * C0 & C1: TCPC is embedded in the EC and processes interrupts in the
-	 * chip code (it83xx/intc.c)
+	 * C0: The internal TCPC on ITE EC does not have a reset signal,
+	 * but it will get reset when the EC gets reset.
 	 */
+	/* C1: Add code if TCPC chips need a reset */
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,
