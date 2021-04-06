@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1bd3458_127b6b27",
+        "filename": "baseboard/mancomb/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-06T14:46:43Z",
+      "side": 1,
+      "message": "Thanks, I\"ll fix it. \n\nDo you know why it is that puff\u0027s board_set_active_charge_port() doesn\u0027t have any ppc_vbus_sink_enable() references?  It appears to be using PPCs,and has a reference to disable sinking via the PPC is the pd_set_power_supply_ready() function",
+      "parentUuid": "d928d691_b6926d7b",
+      "revId": "09abe1f36fd8c1c66d7bfad52d2c20b684155d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7de2a650_3bf54608",
         "filename": "baseboard/mancomb/baseboard.c",
         "patchSetId": 1
