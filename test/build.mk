@@ -81,6 +81,7 @@ test-list-host += uptime
 test-list-host += usb_common
 test-list-host += usb_pd_int
 test-list-host += usb_pd
+test-list-host += usb_pd_dual_role
 test-list-host += usb_pd_giveback
 test-list-host += usb_pd_rev30
 test-list-host += usb_ppc
