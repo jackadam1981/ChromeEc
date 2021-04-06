@@ -4,6 +4,7 @@
  */
 #include "charge_manager.h"
 #include "chipset.h"
+#include "driver/tcpm/tcpci.h"
 #include "timer.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
@@ -167,6 +168,8 @@ __override void svdm_exit_dp_mode(int port)
 int pd_snk_is_vbus_provided(int port)
 {
 	/* TODO */
+	if (port == 1)
+		return tcpci_tcpm_check_vbus_level(1, VBUS_PRESENT);
 	return 0;
 }
 

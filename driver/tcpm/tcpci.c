@@ -712,7 +712,6 @@ int tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 }
 #endif
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level)
 {
 	if (level == VBUS_SAFE0V)
@@ -722,7 +721,6 @@ bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level)
 	else
 		return !(tcpc_vbus[port] & BIT(VBUS_PRESENT));
 }
-#endif
 
 struct cached_tcpm_message {
 	uint32_t header;
