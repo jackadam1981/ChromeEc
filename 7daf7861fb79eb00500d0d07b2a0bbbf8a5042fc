@@ -93,6 +93,30 @@
       },
       "revId": "7daf7861fb79eb00500d0d07b2a0bbbf8a5042fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9749f46_7e42b47c",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-06T03:35:05Z",
+      "side": 1,
+      "message": "The watchdog implementation between Zephyr and ECOS is different.\n\nIn short, the PLATFORM_EC_WATCHDOG_PERIOD_MS is to setup the T0 timer. When the T0 timer expires, it prints the debug trace and then does a busy loop, waiting for the real watchdog trigger.\n\nThe actual watchdog timeout is PLATFORM_EC_WATCHDOG_PERIOD_MS + WDT_NPCX_DELAY_CYCLES. So it is 500ms more, not 1600ms. Since the interrupt routine does a busy loop, it actually behaves similarly.\n\nThis Zephyr implementation is different from EC-OS and some comment in Zephyr driver is wrong. I will file a bug to track. It doesn\u0027t affect this CL BTW.",
+      "parentUuid": "b76502e3_5197aeaf",
+      "range": {
+        "startLine": 61,
+        "startChar": 29,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "7daf7861fb79eb00500d0d07b2a0bbbf8a5042fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
