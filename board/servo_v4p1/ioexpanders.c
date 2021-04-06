@@ -244,6 +244,9 @@ int get_dut_chg_en(void)
 
 inline int host_or_chg_ctl(int en)
 {
+	if (en == 0) {
+		ccprintf("HALT!!!!\n\n\n");
+	}
 	return ioex_set_level(IOEX_HOST_OR_CHG_CTL, en);
 }
 
