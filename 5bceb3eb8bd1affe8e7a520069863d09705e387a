@@ -33,6 +33,29 @@
       "message": "Those add debug commands to EC console. Leaving them enabled, because right now that is the only way to read base IMU sensor data.",
       "revId": "5bceb3eb8bd1affe8e7a520069863d09705e387a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ae0b13_0a855fb2",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-06T10:54:28Z",
+      "side": 1,
+      "message": "i could not find a place in the datasheet that lists this pin as configurable for 1.8v. i\u0027m looking at section 4.6.3, p 174 and the referenced LV_GPIO_CTLn registers.\nit seems to be limited to VCC1 (3.3v).\n\nhave i missed something?",
+      "range": {
+        "startLine": 30,
+        "startChar": 71,
+        "endLine": 30,
+        "endChar": 84
+      },
+      "revId": "5bceb3eb8bd1affe8e7a520069863d09705e387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
