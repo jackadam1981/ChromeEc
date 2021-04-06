@@ -1216,6 +1216,9 @@ static int cmd_ada_srccaps(int argc, char *argv[])
 		/* It's an supported Augmented PDO (PD3.0) */
 		if ((ada_srccaps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)
 			continue;
+		if (IS_ENABLED(CONFIG_USB_PD_ONLY_FIXED_PDOS) &&
+		    (ada_srccaps[i] & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
+			continue;
 
 		pd_extract_pdo_power(ada_srccaps[i], &max_ma, &max_mv);
 		ccprintf("%d: %dmV/%dmA\n", i, max_mv, max_ma);
