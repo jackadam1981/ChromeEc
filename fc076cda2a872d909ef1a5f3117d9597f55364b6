@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1259108_7bcd44d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-06T06:48:14Z",
+      "side": 1,
+      "message": "sample ou",
+      "revId": "fc076cda2a872d909ef1a5f3117d9597f55364b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7818e3c1_962c7925",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-06T06:48:14Z",
+      "side": 1,
+      "message": "Use min_mv for augmented PDO, rather than max_mv.",
+      "range": {
+        "startLine": 166,
+        "startChar": 48,
+        "endLine": 166,
+        "endChar": 54
+      },
+      "revId": "fc076cda2a872d909ef1a5f3117d9597f55364b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
