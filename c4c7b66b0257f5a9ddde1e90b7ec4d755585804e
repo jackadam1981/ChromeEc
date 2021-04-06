@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fed487a_0456d325",
+        "filename": "common/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-06T18:04:50Z",
+      "side": 1,
+      "message": "Move this after the below interrupt_enable(). The print takes time. Don\u0027t want to delay any interrupt.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 34
+      },
+      "revId": "c4c7b66b0257f5a9ddde1e90b7ec4d755585804e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
