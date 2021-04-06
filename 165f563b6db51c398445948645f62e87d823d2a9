@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73137843_547ae9df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-06T22:59:42Z",
+      "side": 1,
+      "message": "This CL is missing a motivation...in fact the whole series is IMO. Can you file a bug?\n\nNormally I would expect the Kconfig options to be grouped by function, rather than alpha order, although I suppose this could work.\n\nUnfortunately I cannot make \u0027ninja menuconfig\u0027 work anymore so can\u0027t try this.",
+      "revId": "165f563b6db51c398445948645f62e87d823d2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
