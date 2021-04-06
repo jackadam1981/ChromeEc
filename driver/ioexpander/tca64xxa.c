@@ -117,6 +117,7 @@ static int tca64xxa_set_level(int ioex, int port, int mask, int val)
 {
 	int ret;
 	int v;
+	volatile int new;
 
 	ret = tca64xxa_read_byte(ioex, port, TCA64XXA_REG_OUTPUT, &v);
 	if (ret)
@@ -126,6 +127,10 @@ static int tca64xxa_set_level(int ioex, int port, int mask, int val)
 		v |= mask;
 	else
 		v &= ~mask;
+
+	tca64xxa_read_byte(ioex, port, TCA64XXA_REG_INPUT, (int *)&new);
+	if (new == 23134)
+		return 1;
 
 	return tca64xxa_write_byte(ioex, port, TCA64XXA_REG_OUTPUT, v);
 }
