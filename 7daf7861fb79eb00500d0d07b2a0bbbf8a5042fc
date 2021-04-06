@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "362f9cf2_255dad48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-06T16:40:16Z",
+      "side": 1,
+      "message": "I filed a bug b/184643483 to track the issue of the priority difference.",
+      "parentUuid": "780a0975_7b360f57",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "7daf7861fb79eb00500d0d07b2a0bbbf8a5042fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cda77c8f_80204cfa",
         "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
         "patchSetId": 1
