@@ -269,6 +269,24 @@
       "parentUuid": "e4373043_2d92173f",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eaf9626_a2e0fa6c",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-04-06T14:36:02Z",
+      "side": 1,
+      "message": "Look like HOOK_BATTERY_SOC_CHANGE will not occur with battery fully charged. Should we hook with HOOK_CHIPSET_SHUTDOWN and HOOK_CHIPSET_SUSPEND?",
+      "parentUuid": "f64105a8_16a6a114",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
