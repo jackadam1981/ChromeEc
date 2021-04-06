@@ -20,6 +20,8 @@
 #include "chipset.h"
 #include "driver/ppc/aoz1380.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/retimer/anx7491.h"
+#include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/temp_sensor/sb_tsi.h"
@@ -912,15 +914,77 @@ static void baseboard_chipset_suspend(void)
 	/* Disable display and keyboard backlights. */
 	gpio_set_level(GPIO_EC_DISABLE_DISP_BL, 1);
 	gpio_set_level(GPIO_EN_KB_BL, 0);
+	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, baseboard_chipset_suspend,
 	     HOOK_PRIO_DEFAULT);
+
+
+static int init_ps8811_a1_retimer(void)
+{
+	int rv;
+	int tries = 100;
+
+	/* Enable A1 retimer */
+	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 1);
+
+	do {
+		int val;
+
+		rv = i2c_read8(I2C_PORT_TCPC1,
+				PS8811_I2C_ADDR_FLAGS3 + PS8811_REG_PAGE1,
+				PS8811_REG1_USB_BEQ_LEVEL, &val);
+	} while (rv && --tries);
+
+	if (rv) {
+		CPRINTSUSB("A1: PS8811 not detected, disabling A1 retimer");
+		ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
+		return rv;
+	}
+	CPRINTSUSB("A1: PS8811 retimer detected");
+	return rv;
+}
+
+static int init_anx7491_a1_retimer(void)
+{
+	int rv;
+	int tries = 100;
+
+	/* Enable A1 retimer */
+	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 1);
+
+	do {
+		int val;
+
+		rv = i2c_read8(I2C_PORT_TCPC1, ANX7491_I2C_ADDR0_FLAGS, 0,
+			       &val);
+	} while (rv && --tries);
+
+	if (rv) {
+		CPRINTSUSB("A1: PS8811 not detected, disabling A1 retimer");
+		ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
+		return rv;
+	}
+	CPRINTSUSB("A1: ANX7451 retimer detected");
+	return rv;
+}
 
 static void baseboard_chipset_resume(void)
 {
 	/* Enable display and keyboard backlights. */
 	gpio_set_level(GPIO_EC_DISABLE_DISP_BL, 0);
 	gpio_set_level(GPIO_EN_KB_BL, 1);
+
+	switch (board_get_usb_a1_retimer()) {
+	case USB_A1_RETIMER_ANX7491:
+		init_anx7491_a1_retimer();
+		break;
+	case USB_A1_RETIMER_PS8811:
+		init_ps8811_a1_retimer();
+		break;
+	default:
+		CPRINTSUSB("A1 retimer uknown, not enabling A1 retimer");
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 
