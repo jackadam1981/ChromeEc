@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0589bb_f0ac42ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-06T19:32:45Z",
+      "side": 1,
+      "message": "Add",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5b754d5f_1069100b",
@@ -14,6 +37,103 @@
       "writtenOn": "2021-04-06T15:21:26Z",
       "side": 1,
       "message": "seems like quite the improvement! I\u0027m sheriff this week, so I\u0027ll give you a +1 and let the team review it further.",
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b69a1a_6809fe56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-06T19:32:45Z",
+      "side": 1,
+      "message": "I wonder if it is worth splitting out the dts changes from a smaller CL that actually switches things over?",
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeefb823_ea3ae847",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec,i2c-port-eeprom.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-06T19:32:45Z",
+      "side": 1,
+      "message": "please expand.\n\nIs there a named enum {} or some #defines somewhere?",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845999c3_a8c4e60f",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec-i2c-port-base.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-06T19:32:45Z",
+      "side": 1,
+      "message": "please split the line\n\nAlso, should we document what the different enums mean?",
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3fd60c_60ed14e8",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-06T19:32:45Z",
+      "side": 1,
+      "message": "Can you keep the order the same?",
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f326d7_a7b42c13",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-06T19:32:45Z",
+      "side": 1,
+      "message": "why the dot?",
+      "range": {
+        "startLine": 15,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 16
+      },
       "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
