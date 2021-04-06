@@ -85,6 +85,7 @@
 #define I2C_PORT_ACCEL    IT83XX_I2C_CH_B
 #define I2C_PORT_PPC0     IT83XX_I2C_CH_C
 #define I2C_PORT_PPC1     IT83XX_I2C_CH_E
+#define I2C_PORT_USB1     IT83XX_I2C_CH_E
 #define I2C_PORT_USB_MUX0 IT83XX_I2C_CH_C
 #define I2C_PORT_USB_MUX1 IT83XX_I2C_CH_E
 #define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
@@ -212,6 +213,7 @@ enum power_signal {
 
 int board_get_version(void);
 void board_reset_pd_mcu(void);
+void rt1718s_tcpc_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BASEBOARD_H */

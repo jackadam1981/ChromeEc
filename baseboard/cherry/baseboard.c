@@ -22,6 +22,7 @@
 #include "driver/bc12/mt6360.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
+#include "driver/ppc/rt1718s.h"
 #include "driver/ppc/syv682x.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/rt1718s.h"
@@ -102,9 +103,16 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 static void board_tcpc_init(void)
 {
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_INT_ODL);
 }
 /* Must be done after I2C */
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+
+void rt1718s_tcpc_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("\x1b[1;31mtcpc int\x1b[m");
+	schedule_deferred_pd_interrupt(1);
+}
 
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
@@ -128,7 +136,9 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.frs_en = GPIO_USB_C0_FRS_EN,
 	},
 	{
-		/* TODO: enable rt1718s */
+		.i2c_port = I2C_PORT_PPC1,
+		.i2c_addr_flags = RT1718S_ADDR0_FLAGS,
+		.drv = &rt1718s_ppc_drv,
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
@@ -331,11 +341,12 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = 0,
 	},
 	{
-		.bus_type = EC_BUS_TYPE_EMBEDDED,
-		/* TCPC is embedded within EC so no i2c config needed */
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB1,
+			.addr_flags = RT1718S_SLAVE_ADDR_FLAGS,
+		},
 		.drv = &rt1718s_tcpm_drv,
-		/* Alert is active-low, push-pull */
-		.flags = 0,
 	},
 };
 
