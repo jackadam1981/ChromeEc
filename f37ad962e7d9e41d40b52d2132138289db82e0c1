@@ -287,6 +287,24 @@
       "parentUuid": "f64105a8_16a6a114",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c44b1e_09354e2d",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-06T23:30:30Z",
+      "side": 1,
+      "message": "HOOK_BATTERY_SOC_CHANGE should catch the transition from 99% to 100%, whether the AP is in S0 or a suspend state. If you also want to catch the case where the battery is already at 100%, and the AP goes from S0 to a low-power state, then you should also hook HOOK_CHIPSET_SHUTDOWN and HOOK_CHIPSET_SUSPEND.",
+      "parentUuid": "3eaf9626_a2e0fa6c",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
