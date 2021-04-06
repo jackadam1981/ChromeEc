@@ -156,9 +156,15 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 
 void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 {
-	int max_ma, uw;
+	int max_ma, mw;
 
-	*mv = ((pdo >> 10) & 0x3FF) * 50;
+	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
+		*mv = ((pdo >> 17) & 0xFF) * 100;
+	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_FIXED) {
+		*mv = ((pdo >> 10) & 0x3FF) * 50;
+	} else {
+		*mv = ((pdo >> 20) & 0x3FF) * 50;
+	}
 
 	if (*mv == 0) {
 		*ma = 0;
@@ -166,8 +172,11 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 	}
 
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-		uw = 250000 * (pdo & 0x3FF);
-		max_ma = 1000 * MIN(1000 * uw, PD_MAX_POWER_MW) / *mv;
+		mw = 250 * (pdo & 0x3FF);
+		max_ma = 1000 * MIN(mw, PD_MAX_POWER_MW) / *mv;
+	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
+		max_ma = 50 * (pdo & 0x7f);
+		max_ma = MIN(max_ma, PD_MAX_POWER_MW * 1000 / *mv);
 	} else {
 		max_ma = 10 * (pdo & 0x3FF);
 		max_ma = MIN(max_ma, PD_MAX_POWER_MW * 1000 / *mv);
