@@ -56,6 +56,30 @@
       },
       "revId": "5bceb3eb8bd1affe8e7a520069863d09705e387a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d79061d7_8c0a3328",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-06T17:23:55Z",
+      "side": 1,
+      "message": "You\u0027re absolutely right. I\u0027ll use the generator to create the newer version of this file",
+      "parentUuid": "82ae0b13_0a855fb2",
+      "range": {
+        "startLine": 30,
+        "startChar": 71,
+        "endLine": 30,
+        "endChar": 84
+      },
+      "revId": "5bceb3eb8bd1affe8e7a520069863d09705e387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
