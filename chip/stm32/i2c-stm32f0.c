@@ -456,6 +456,7 @@ int chip_i2c_xfer(const int port, const uint16_t addr_flags,
 	int xfer_start = flags & I2C_XFER_START;
 	int xfer_stop = flags & I2C_XFER_STOP;
 
+
 #if defined(CONFIG_I2C_SCL_GATE_ADDR) && defined(CONFIG_I2C_SCL_GATE_PORT)
 	if (port == CONFIG_I2C_SCL_GATE_PORT &&
 	    addr_flags == CONFIG_I2C_SCL_GATE_ADDR_FLAGS)
@@ -504,6 +505,9 @@ int chip_i2c_xfer(const int port, const uint16_t addr_flags,
 			| (xfer_start ? STM32_I2C_CR2_START : 0);
 
 		for (i = 0; i < out_bytes; i++) {
+			if (addr_8bit == (I2C_STRIP_FLAGS(0x23) << 1))
+				if (out[0] == 0x4 && ((out[1] & 0x8) == 0))
+					usleep(5);
 			rv = wait_isr(port, STM32_I2C_ISR_TXIS);
 			if (rv)
 				goto xfer_exit;
