@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c02b746_4704aa29",
+        "filename": "zephyr/include/drivers/cros_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-06T15:18:43Z",
+      "side": 1,
+      "message": "so instead of making an enum for the function to call (vendor, name, revision), instead you should just add three function pointers to the API",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 35
+      },
+      "revId": "e4d5c58c007d5f8b952f47c33185822eb0940a08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
