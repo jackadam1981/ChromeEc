@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02dea4ab_c0ca1ba2",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-07T00:23:43Z",
+      "side": 1,
+      "message": "There is a small flash size savings to be had by setting the hwinfo_name to a fixed value based on the build info.  A run-time check that verifies probed device_id matches the build info device_id is useful so the user knows if they selected the wrong part.",
+      "parentUuid": "8a7bb91b_f74907d0",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "dd0c7ce115bb767eb34551dc4f3e1fe90c6526f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d378c77c_05e422f6",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 1
