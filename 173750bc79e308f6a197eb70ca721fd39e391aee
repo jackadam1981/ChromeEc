@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d31cdcad_b7d3b6f9",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T16:00:06Z",
+      "side": 1,
+      "message": "Perhaps we should use addr-flags for now, since it is not just \u0027reg\u0027...and using reg will open a separate can of worms to resolve IMO.",
+      "parentUuid": "8433b6ef_f57a0644",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 8
+      },
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5756ad5_19ded6bd",
         "filename": "zephyr/shim/include/i2c/i2c.h",
         "patchSetId": 9
