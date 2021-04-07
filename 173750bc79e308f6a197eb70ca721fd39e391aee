@@ -70,6 +70,30 @@
       },
       "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36a1df4_cd9e4b77",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T15:44:29Z",
+      "side": 1,
+      "message": "Fabio, would you mind if we explore that later? I agree with Simon. The best way to do what you describe is to turn the DT property to a phandle which would point to an EEPROM node which would have a reg address. Alternatively, I think the EEPROM node could be a child node. Either way, I think that would get messy and breaks the containment here (especially since that address never needs to be shared). It would require a closer look.\n\nCreated b/184739382 to track.",
+      "parentUuid": "60489ddf_50c7fb02",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
