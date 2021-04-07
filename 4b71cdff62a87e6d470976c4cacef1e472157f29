@@ -492,6 +492,30 @@
       },
       "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb882de_42b27871",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T20:06:39Z",
+      "side": 1,
+      "message": "Resolved",
+      "parentUuid": "a06ee7aa_3827f295",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4b71cdff62a87e6d470976c4cacef1e472157f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
