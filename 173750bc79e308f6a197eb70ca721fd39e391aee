@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e855ce4c_a6f9f8dc",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-07T21:39:24Z",
+      "side": 1,
+      "message": "Yeah sure thing, definitely needs its own discussion anyway.",
+      "parentUuid": "f36a1df4_cd9e4b77",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd19b7db_07caab18",
