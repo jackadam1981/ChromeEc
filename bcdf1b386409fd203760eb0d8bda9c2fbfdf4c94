@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2a3b3f4_3854c4cb",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-04-07T13:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c35daae_b90dca4c",
+      "revId": "bcdf1b386409fd203760eb0d8bda9c2fbfdf4c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29e1d767_bbf924a6",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-01T15:10:52Z",
       "side": 1,
       "message": "eSPI",
+      "range": {
+        "startLine": 1377,
+        "startChar": 8,
+        "endLine": 1377,
+        "endChar": 15
+      },
+      "revId": "bcdf1b386409fd203760eb0d8bda9c2fbfdf4c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5bdb0a_c4acdbd0",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-04-07T13:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29e1d767_bbf924a6",
       "range": {
         "startLine": 1377,
         "startChar": 8,
