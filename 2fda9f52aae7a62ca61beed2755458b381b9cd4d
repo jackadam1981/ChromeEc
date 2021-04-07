@@ -1,0 +1,273 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5802e409_af78ee1f",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "These will have to be dropped now.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a411235_3fce5183",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "I think there are going to be more boards that will need this selected. It will have to be added to all boards that currently select CONFIG_KEYBOARD_PROTOCOL_MKBP but do not have KEYSCAN task. i.e. replace the selection of CONFIG_KEYBOARD_PROTOCOL_MKBP with CONFIG_MKBP_INPUT_DEVICES.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ff9493_b2d5fd08",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "All these configs need to go into baseboard/trogdor/baseboard.h. CONFIG_MKBP_EVENT and CONFIG_MKBP_USE_GPIO are already selected. You need to replace CONFIG_KEYBOARD_PROTOCOL_MKBP with CONFIG_MKBP_INPUT_DEVICES.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b45b7c0_57a2f4af",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "Note to anyone reading this. This path is still maintained for boards using 8042 driver. Once the button support is dropped from 8042 driver, this path must be dropped as well.",
+      "range": {
+        "startLine": 317,
+        "startChar": 6,
+        "endLine": 317,
+        "endChar": 45
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ac44e7_1350db2c",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "This can be dropped as well?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "073d0b00_75104cc1",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "All these checks for HAS_TASK_KEYSCAN must be dropped as well. If this driver is now selected without HAS_TASK_KEYSCAN then it must error out. You can add a check at the start of this file:\n\n#ifndef HAS_TASK_KEYSCAN\n#error \"MKBP keyboard driver expects KEYSCAN task to be enabled\"\n#endif",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfd45b2a_ba6f7fe2",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "Not all input devices are switches. Should we just use CC_KEYBOARD here? Or we can update CC_SWITCH to CC_INPUT_DEVICES in a follow-up CL. If you plan to do the latter, can you please raise a bug to track it?",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d462f8_58494b1e",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "Extra blank line can be dropped.",
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3894e4ba_953d4697",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "Extra blank line can be dropped.",
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5afdf85c_50871af0",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "Extra blank line can be dropped.",
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729edd3f_473df817",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "Extra blank line can be dropped.",
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f74ab5_7b772ae1",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "Extra blank line can be dropped.",
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd523165_8aeac313",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5435,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:57:32Z",
+      "side": 1,
+      "message": "I think this will have to be select for MKBP_INPUT_DEVICES as well. Probably rearrange this as:\n\n```\n#ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP\n#define CONFIG_MKBP_INPUT_DEVICES\n#endif\n\n#if defined(CONFIG_KEYBOARD_PROTOCOL_MKBP) || defined(CONFIG_MKBP_INPUT_DEVICES)\n#define CONFIG_MKBP_EVENT\n#endif\n```",
+      "range": {
+        "startLine": 5435,
+        "startChar": 0,
+        "endLine": 5435,
+        "endChar": 25
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
