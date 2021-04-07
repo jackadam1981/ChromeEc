@@ -34,6 +34,24 @@
       "parentUuid": "9d6e134d_cdb7b9b0",
       "revId": "34ad5a4f62e719c727993604424ff180a21aefac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88fc478d_dedf2fb3",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T20:45:51Z",
+      "side": 1,
+      "message": "OK ta. We can worry about that (much) later I suppose",
+      "parentUuid": "ba52ef1a_668c5100",
+      "revId": "34ad5a4f62e719c727993604424ff180a21aefac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
