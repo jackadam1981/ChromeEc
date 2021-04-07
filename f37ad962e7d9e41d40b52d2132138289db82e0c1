@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2f3c1f_f1b34f75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-04-07T01:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "996a3fc4_5c48badf",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a11ca45c_48159531",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-03-29T21:50:38Z",
       "side": 1,
       "message": "Nit: If the hook is going to be in this file, I think between the driver functions and console command would be a more natural place for it than after the driver struct.",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a06a28_17e6bc91",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-04-07T01:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a11ca45c_48159531",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -76,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9108cf41_530cb029",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-04-07T01:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "152a43bb_f9d55ec9",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c08059e7_f76f9565",
@@ -89,6 +149,24 @@
       "writtenOn": "2021-03-29T20:09:58Z",
       "side": 1,
       "message": "I don\u0027t know if we have any boards with multiple chargers of different types, but in that case, this would toggle discharge on AC for all chargers, not just ISL9241s. What are the implications of that?",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "955f554e_c5a14b28",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-04-07T01:01:37Z",
+      "side": 1,
+      "message": "Understand your concern, How about this version? with patchset4",
+      "parentUuid": "c08059e7_f76f9565",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -142,6 +220,24 @@
       "side": 1,
       "message": "It looks like this value comes from Renesas\u0027 recommendation. Please mention that in a comment for this function (see above thread).",
       "parentUuid": "72f8ecbf_70acd5e4",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01adcacb_d3adfb6f",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-04-07T01:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b71c6d2d_c9ceba05",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -303,6 +399,24 @@
       "side": 1,
       "message": "HOOK_BATTERY_SOC_CHANGE should catch the transition from 99% to 100%, whether the AP is in S0 or a suspend state. If you also want to catch the case where the battery is already at 100%, and the AP goes from S0 to a low-power state, then you should also hook HOOK_CHIPSET_SHUTDOWN and HOOK_CHIPSET_SUSPEND.",
       "parentUuid": "3eaf9626_a2e0fa6c",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55138dc9_2afaf068",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-04-07T01:01:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "57c44b1e_09354e2d",
       "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
