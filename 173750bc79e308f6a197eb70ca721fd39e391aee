@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5756ad5_19ded6bd",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-07T12:59:39Z",
+      "side": 1,
+      "message": "Oh I only now realized that this is \"address for the EEPROM used to store flags\", not \"flags for the EEPROM device\".\n\nSince it\u0027s an address, I think should use devicetree unit addresses. Could you do something similar to the retimer definition? (look for bb_retimer.dts in volteer), and define the eeprom as an i2c node under the bus? (atmel,at24 should be the right compatible string, the device is a M24C02). That would be the final structure if we were to use the native driver, and in the transition we can refer to it with a nodelabel and get back the address with DT_REG_ADDR(DT_NODELABEL()).",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
