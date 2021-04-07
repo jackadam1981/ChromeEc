@@ -34,6 +34,24 @@
       "parentUuid": "d3a3cfb1_869cc85e",
       "revId": "6a197cdffde451e48a67560ea0617a484bd1bd45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cadf619_15e947a9",
+        "filename": "baseboard/guybrush/base_fw_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-07T16:20:17Z",
+      "side": 1,
+      "message": "Sounds good.  I like that the definitions are staying at the board level so it can be easily changed for follower boards.",
+      "parentUuid": "2293329b_1140610c",
+      "revId": "6a197cdffde451e48a67560ea0617a484bd1bd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
