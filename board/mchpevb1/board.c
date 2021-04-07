@@ -272,15 +272,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 #endif
 
-/* SPI devices */
-const struct spi_device_t spi_devices[] = {
-	{ QMSPI0_PORT, 4, GPIO_QMSPI_CS0},
-#if defined(CONFIG_SPI_ACCEL_PORT)
-	{ GPSPI0_PORT, 2, GPIO_SPI0_CS0 },
-#endif
-};
-const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
-
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_AC_PRESENT,
 	GPIO_LID_OPEN,

@@ -32,6 +32,12 @@
 #error "FORCED BUILD ERROR: MEC152X does not implement GPSPI!"
 #endif
 
+/* SPI devices */
+const struct spi_device_t spi_devices[] = {
+	{ QMSPI0_PORT, 4, GPIO_QMSPI_CS0},
+};
+const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+
 static const struct dma_option spi_rx_option[] = {
 	{
 		MCHP_DMAC_QMSPI0_RX,

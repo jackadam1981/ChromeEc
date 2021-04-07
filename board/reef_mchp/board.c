@@ -161,15 +161,6 @@ void tablet_mode_interrupt(enum gpio_signal signal)
 
 #include "gpio_list.h"
 
-/* SPI devices */
-const struct spi_device_t spi_devices[] = {
-	{ QMSPI0_PORT, 4, GPIO_QMSPI_CS0},
-#if defined(CONFIG_SPI_ACCEL_PORT)
-	{ GPSPI0_PORT, 2, GPIO_SPI0_CS0 },
-#endif
-};
-const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
-
 /* ADC channels */
 /* chip/mchp defined adc_t
  * name, factor_mul, factor_div, shift, channel
