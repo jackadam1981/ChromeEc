@@ -16,6 +16,24 @@
       "message": "Did we settle on using the SSFC for chips or FW_CONFIG?",
       "revId": "6a197cdffde451e48a67560ea0617a484bd1bd45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2293329b_1140610c",
+        "filename": "baseboard/guybrush/base_fw_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-07T02:16:48Z",
+      "side": 1,
+      "message": "No SSFC as of now. The door is still open to add it later.",
+      "parentUuid": "d3a3cfb1_869cc85e",
+      "revId": "6a197cdffde451e48a67560ea0617a484bd1bd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
