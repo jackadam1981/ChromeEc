@@ -16,6 +16,24 @@
       "message": "Looks like the datasheet also has 0x13, 0x15, 0x17, and 0x12?",
       "revId": "8f1c782a08eea138322f618a16bb5f27f8f07328",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a8df4ea_0f66b322",
+        "filename": "driver/retimer/anx7491.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-07T23:47:11Z",
+      "side": 1,
+      "message": "Those require a floating pin to select, I\u0027m not sure we\u0027d ever trust that. I\u0027ll check.",
+      "parentUuid": "880c29cb_c7e042d4",
+      "revId": "8f1c782a08eea138322f618a16bb5f27f8f07328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
