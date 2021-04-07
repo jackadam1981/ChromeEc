@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "920c90d5_58783f46",
+        "filename": "board/cherry/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-07T05:19:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe5f3eb9_6ba466fe",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "dac01ba68ae04be455d51c2b3e4781612dbc5228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9f094a6_81a067a1",
@@ -137,6 +161,30 @@
       "side": 1,
       "message": "undocumented controls\nhttps://b.corp.google.com/issues/130608940#comment6",
       "parentUuid": "b9f094a6_81a067a1",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "dac01ba68ae04be455d51c2b3e4781612dbc5228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c81e099e_a364167e",
+        "filename": "board/cherry/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-07T05:19:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "86c4a7bb_4381a112",
       "range": {
         "startLine": 25,
         "startChar": 16,
