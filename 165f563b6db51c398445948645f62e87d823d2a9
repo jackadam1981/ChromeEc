@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f95b22c6_8610f94f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T00:34:50Z",
+      "side": 1,
+      "message": "Sorry, the motivation is https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig;l\u003d53;drc\u003db02b3dd22d634a5bdd7e2285b5cff6b637989aa7\n\nI had a hard time deciding where to put the new configs, then I noticed that it was supposed to be alphabetic. I agree to keep things by functionality, which is why I first extracted sub-configs to separate files to keep things clean.",
+      "parentUuid": "73137843_547ae9df",
+      "revId": "165f563b6db51c398445948645f62e87d823d2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d42e9b7_55c62782",
