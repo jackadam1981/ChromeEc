@@ -52,6 +52,9 @@
 			i2c-port = <&i2c0_0>;
 			enum-name = "I2C_PORT_SENSOR";
 			label = "SENSOR";
+			kbps = <400>;
+			scl = <&ec_i2c0_sensor_scl>;
+			sda = <&ec_i2c0_sensor_sda>;
 		};
 		i2c-accel {
 			i2c-port = <&i2c0_0>;

@@ -7,6 +7,21 @@ properties:
   i2c-port:
     type: phandle
     required: true
+  kbps:
+    type: int
+    required: false
+    description:
+      Optional transfer data rate in kilobytes per second.
+  scl:
+    type: phandle
+    required: false
+    description:
+      Optional phandle used to point to the named gpio SCL line.
+  sda:
+    type: phandle
+    required: false
+    description:
+      Optional phandle used to point to the named gpio SDA line.
   enum-name:
     type: string
     required: true
