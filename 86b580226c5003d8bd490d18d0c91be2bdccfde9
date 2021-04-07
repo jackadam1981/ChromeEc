@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "322d7cc8_21fb8ebc",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T00:15:14Z",
+      "side": 1,
+      "message": "generator would put this in alphabetical order.",
+      "revId": "86b580226c5003d8bd490d18d0c91be2bdccfde9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac4b53a6_ebd6216b",
         "filename": "board/brya/sensors.c",
         "patchSetId": 1
