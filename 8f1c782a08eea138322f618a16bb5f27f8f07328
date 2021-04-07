@@ -34,6 +34,24 @@
       "parentUuid": "880c29cb_c7e042d4",
       "revId": "8f1c782a08eea138322f618a16bb5f27f8f07328",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "666f62a7_a5acbfed",
+        "filename": "driver/retimer/anx7491.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-07T23:59:59Z",
+      "side": 1,
+      "message": "I\u0027m told we avoid floating pin straps when possible. So I\u0027m inclined to leave these off until someone needs them.",
+      "parentUuid": "8a8df4ea_0f66b322",
+      "revId": "8f1c782a08eea138322f618a16bb5f27f8f07328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
