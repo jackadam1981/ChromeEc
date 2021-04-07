@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90488fea_d084f3da",
+        "filename": "driver/usb_mux/amd_fp6.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-07T23:43:24Z",
+      "side": 0,
+      "message": "ic where the mistake happen. spec  says \"USB_PD_Status[5]: Crossbar State\", but this is bit 5 of the USB_PD_Status field, which starts at bit 1.\n\nI think it will be clearer for future readers to keep this BIT(5) and add AMD_FP6_MUX_USB_PD_STATUS_OFFSET 1",
+      "revId": "0ca1bc44fc5195535ded889f3cfa8ad3e1124aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
