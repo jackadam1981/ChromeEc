@@ -16,6 +16,24 @@
       "message": "No cherry-picks please for EC repo. Currently, merges happen weekly on Wednesdays (US time). If you need an urgent merge, you may request one though.",
       "revId": "37c178a6b872230f43f20616c6d72764fa9807d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2260adc_236bb5d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2021-04-07T02:04:54Z",
+      "side": 1,
+      "message": "Hi Aseda,\nSorry, about merges happen weekly on Wednesdays, is it a new rule?\nWe don\u0027t need to cherry-pick myself ourselves, right?\nIf we have urgent merge, can we request on issue tracker?",
+      "parentUuid": "6f1ff35b_4c65d54b",
+      "revId": "37c178a6b872230f43f20616c6d72764fa9807d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
