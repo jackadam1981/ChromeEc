@@ -191,6 +191,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7386ffe_6335b4c8",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-07T23:22:17Z",
+      "side": 1,
+      "message": "Calling isl9241_discharge_on_ac for non-ISL9241 chargers might do weird things to those chargers. I don\u0027t think we should do that.\n\nIdeally, we\u0027d be able to cycle through the chargers, check which ones were ISL9241, and only toggle those ones. I think we could potentially do that with charger_get_info or charger_get_manufacturer_id and charger_get_device_id. However, the error handling associated with that seems like more trouble than its worth.\n\nI think it\u0027s OK to just call charger_discharge_on_ac like you\u0027re doing in patchset 3. Add a comment noting that this will toggle discharge_on_ac for chargers other than the ISL9241, but that\u0027s acceptable.",
+      "parentUuid": "2a5e3bed_7aac47a9",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "552251ca_9ecaf8e3",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 3
