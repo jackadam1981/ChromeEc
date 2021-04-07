@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "310c947f_31955864",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-04-07T12:06:44Z",
+      "side": 1,
+      "message": "here is the point where THROT_PROCHOT is set.\nSo instead of setting it here, incorporate some check so that it is only if we have\na shortfall (gap \u003c\u003d 0) for a consistent time that THROT_PROCHOT is set.\ne.g:\n\n if (gap \u003c\u003d 0) {\n     /*\n      * Don\u0027t throttle immediately, wait until at least XX ms\n      * before turning on PROCHOT.\n      */\n     if (prochot_delay \u003d\u003d PROCHOT_DELAY) {\n          new_state |\u003d THROT_PROCHOT;\n     } else {\n         prochot_delay++;\n     }\n } else {\n     prochot_delay \u003d 0;  /* Restart delay for throttling */\n }",
+      "revId": "b27e308b2033f77319270d3bc8ff74ded7e530f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3dde5dd_519168ca",
         "filename": "board/dooly/board.c",
         "patchSetId": 1
