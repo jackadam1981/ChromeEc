@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d2ae1b0_1af6be08",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-07T23:11:19Z",
+      "side": 1,
+      "message": "This CL looks good to me as it matches what was implemented for the Chromium EC.\n\nBecause Zephyr EC flash size is still larger than the Chromium EC flash size, I see value in creating a follow up CL to return the chip vendor and name based on the build info.  Your proposal sounds good.",
+      "parentUuid": "c06a6cf3_cd445ef2",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "dd0c7ce115bb767eb34551dc4f3e1fe90c6526f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d378c77c_05e422f6",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 1
