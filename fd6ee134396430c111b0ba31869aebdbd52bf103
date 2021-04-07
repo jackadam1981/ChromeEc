@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07028f97_10f37e32",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T06:08:57Z",
+      "side": 1,
+      "message": "Is this standard for listing a tuple? It threw me off a bit as I thought \"temp\" was wrapped and was a part of the same sentence above. Maybe prefix with \u0027-\u0027?",
+      "range": {
+        "startLine": 68,
+        "startChar": 12,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "fd6ee134396430c111b0ba31869aebdbd52bf103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
