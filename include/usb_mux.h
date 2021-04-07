@@ -112,7 +112,11 @@ struct usb_mux {
 	const struct usb_mux_driver *driver;
 
 	/* Linked list chain of secondary MUXes. NULL terminated */
+#ifdef CONFIG_USB_MUX_RUNTIME_CONFIG
+	struct usb_mux *next_mux;
+#else
 	const struct usb_mux *next_mux;
+#endif
 
 	/**
 	 * Optional method for tuning for USB mux during mux->driver->init().
