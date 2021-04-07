@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad989b7_53eb8298",
+        "filename": "zephyr/projects/kohaku/boards/arm/kohaku/kohaku.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T06:29:22Z",
+      "side": 0,
+      "message": "How come these are removed?\n\nIs it because they don\u0027t have a gpio map at present?\n\nBut it might just be that we haven\u0027t enabled that feature yet",
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
