@@ -34,6 +34,24 @@
       "parentUuid": "d021bea7_c52c7873",
       "revId": "bbd0db3df4f1de6639a190f4796e613f3c9ba2eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af216ac1_f566adfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-04-07T22:21:33Z",
+      "side": 1,
+      "message": "Per [TCPCI R2.0 v1.2] spec, COMMAND.I2CIDLE (the spec superset for \u0027sleep\u0027) has no allowances for abnormal delays waking from sleep.\n\n\u003e COMMAND.I2Cidle is decoupled from other Alert status detection mechanisms (such as CC_STATUS, POWER_STATUS, RECEIVE_DETECT, etc). For example, writing COMMAND.\nI2Cidle has no effect on ALERT.CcStatus, or the CC_STATUS register behavior. CC_STATUS detection may be disabled by writing to the ROLE_CONTROL register, but its behavior is not affected by the COMMAND.I2Cidle.\n\nSo per strict reading, even in sleep RAA needs to detect within [tCcStatusDelay(+modifiers)]. Capped in Type-C land, [tRpValueChange] (20ms max). Otherwise we start impinging on [tOnePortToggleConnect] (80ms max) timings, breaking spec timing variables and assumptions.\n\nA violation of that last case seems to be what is happening here. (RAA autotoggling, ServoV4p1 fixed SrcDTS.)",
+      "parentUuid": "30daae32_a4ac7a77",
+      "revId": "bbd0db3df4f1de6639a190f4796e613f3c9ba2eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
