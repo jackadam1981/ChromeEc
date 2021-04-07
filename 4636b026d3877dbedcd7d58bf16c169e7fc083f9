@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30fdf8ab_8c212041",
+        "filename": "common/mkbp_info.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-07T04:13:03Z",
+      "side": 1,
+      "message": "Humm.. The FIFO depth doesn\u0027t really have to be keyboard specific. But, I think let\u0027s keep it this way for now and we can revisit it later.",
+      "parentUuid": "643966ee_9d86d40c",
+      "revId": "4636b026d3877dbedcd7d58bf16c169e7fc083f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1495421_e3657aa8",
