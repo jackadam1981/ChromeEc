@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86bb544e_abb99efc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T06:18:53Z",
+      "side": 1,
+      "message": "do these sensor readings change with ambient light\nintensity - i.e. do they change with a flashlight\nshining on them?",
+      "revId": "1cea8cc492228bd14ea4241c2204b99819747586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bad86b5_9ba7d37d",
+        "filename": "board/brya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T06:18:53Z",
+      "side": 1,
+      "message": "sort alphabetically when possible.\ni tend to run such include blocks through \"sort -u\" or similar.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "1cea8cc492228bd14ea4241c2204b99819747586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e26936_63ba15ec",
+        "filename": "board/brya/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T06:18:53Z",
+      "side": 1,
+      "message": "intentional blank line?",
+      "revId": "1cea8cc492228bd14ea4241c2204b99819747586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d542997_4eba0a0c",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T06:18:53Z",
+      "side": 1,
+      "message": "did you mean to put 3 blank lines here?",
+      "revId": "1cea8cc492228bd14ea4241c2204b99819747586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
