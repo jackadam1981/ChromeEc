@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5462942_c4abf23b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T06:03:25Z",
+      "side": 1,
+      "message": "Minor nits",
+      "revId": "84d9c2925e0592092e4a89cd75f20081b17dae7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a626cfa8_2912c3e4",
+        "filename": "docs/zephyr_build.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T06:03:25Z",
+      "side": 1,
+      "message": "EC?",
+      "range": {
+        "startLine": 5,
+        "startChar": 9,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "84d9c2925e0592092e4a89cd75f20081b17dae7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccf6e019_894fcd4e",
+        "filename": "docs/zephyr_build.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T06:03:25Z",
+      "side": 1,
+      "message": "I think it\u0027s worth mentioning `zmake help`",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 12
+      },
+      "revId": "84d9c2925e0592092e4a89cd75f20081b17dae7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
