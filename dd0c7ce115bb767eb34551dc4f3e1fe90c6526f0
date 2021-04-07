@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c06a6cf3_cd445ef2",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-07T04:03:08Z",
+      "side": 1,
+      "message": "Chromium doesn\u0027t have an API to check whether the chip \u0026 binary are matched so we put it here to check the chip. The original is put in the getting chip info function. We also can create another cros_system API for chip variant checking and connect it to the shimmed system system_get_chip_name(). Then, directly return the chip vendor and name in cros_system.h. What do you think?",
+      "parentUuid": "c64b0ece_2b4926f3",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "dd0c7ce115bb767eb34551dc4f3e1fe90c6526f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d378c77c_05e422f6",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 1
@@ -106,6 +130,30 @@
         "id": 1165921
       },
       "writtenOn": "2021-04-07T03:38:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d378c77c_05e422f6",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 5
+      },
+      "revId": "dd0c7ce115bb767eb34551dc4f3e1fe90c6526f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcdde3ce_7a6f26eb",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-07T04:03:08Z",
       "side": 1,
       "message": "Ack",
       "parentUuid": "d378c77c_05e422f6",
@@ -153,6 +201,30 @@
         "id": 1165921
       },
       "writtenOn": "2021-04-07T03:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ee31056_99f79c74",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 2
+      },
+      "revId": "dd0c7ce115bb767eb34551dc4f3e1fe90c6526f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f72287d2_710a9133",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-07T04:03:08Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "9ee31056_99f79c74",
