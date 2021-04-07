@@ -34,6 +34,24 @@
       "parentUuid": "2b0f62bb_03c59d22",
       "revId": "9e3ade069964caf0cb1bbd6fa217f32bce097b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573269cd_c50104db",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-07T17:39:10Z",
+      "side": 1,
+      "message": "Do we anticipate that being a problem with this program when we should hopefully already have the CBI information available to tell us which chip is present (or I suppose, /should/ be present)?  Zork had to probe, right?",
+      "parentUuid": "f1a30d64_efd0cb5e",
+      "revId": "9e3ade069964caf0cb1bbd6fa217f32bce097b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
