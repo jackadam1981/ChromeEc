@@ -105,11 +105,14 @@ enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 	if (port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
 
+#if 0
 	/* Only one enter request may be active at a time. */
 	if (DPM_CHK_FLAG(port, DPM_FLAG_ENTER_DP |
 				DPM_FLAG_ENTER_TBT |
 				DPM_FLAG_ENTER_USB4))
 		return EC_RES_BUSY;
+#endif
+	return EC_RES_BUSY;
 
 	switch (mode) {
 	case TYPEC_MODE_DP:
