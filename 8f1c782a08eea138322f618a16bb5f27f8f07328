@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "880c29cb_c7e042d4",
+        "filename": "driver/retimer/anx7491.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-07T16:28:20Z",
+      "side": 1,
+      "message": "Looks like the datasheet also has 0x13, 0x15, 0x17, and 0x12?",
+      "revId": "8f1c782a08eea138322f618a16bb5f27f8f07328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
