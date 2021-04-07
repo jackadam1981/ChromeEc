@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "accc3a20_0f644603",
+        "filename": "board/brya/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T06:13:29Z",
+      "side": 1,
+      "message": "no comma here since this list will never be extended past this point.",
+      "range": {
+        "startLine": 208,
+        "startChar": 13,
+        "endLine": 208,
+        "endChar": 14
+      },
+      "revId": "7feebf1628001f62cbf3a3bb0bd1f1f19f56d6fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
