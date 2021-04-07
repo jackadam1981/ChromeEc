@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcfe7fd6_1fee2302",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T20:25:55Z",
+      "side": 1,
+      "message": "-",
+      "range": {
+        "startLine": 15,
+        "startChar": 23,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "d6aa07c5d5e25e4c3764b658707eb029be2f5c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ed310e_2977d104",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec-i2c-port-base.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T20:25:55Z",
+      "side": 1,
+      "message": "suggest a blank line before this",
+      "revId": "d6aa07c5d5e25e4c3764b658707eb029be2f5c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b69a68c_bd129759",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec-i2c-port-base.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T20:25:55Z",
+      "side": 1,
+      "message": "clock-frequency?",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "d6aa07c5d5e25e4c3764b658707eb029be2f5c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b599fc80_233efd17",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec-i2c-port-base.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T20:25:55Z",
+      "side": 1,
+      "message": "kilobits?\n\nAlso I think Hz is better since it is really just the clock speed. Not every clock transition sends a useful bit, as I understanding it.",
+      "range": {
+        "startLine": 42,
+        "startChar": 39,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "d6aa07c5d5e25e4c3764b658707eb029be2f5c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
