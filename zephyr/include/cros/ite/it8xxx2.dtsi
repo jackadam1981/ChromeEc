@@ -63,5 +63,12 @@
 			reg = <0x80000000 0x80000>;
 			label = "FLASH";
 		};
+
+		pcc: clock-controller@f01e00 {
+			compatible = "ite,it8xxx2-pcc";
+			reg = <0x00F01E00 0x11>;
+			reg-names = "ecpm";
+			label = "EC_PM";
+		};
 	};
 };
