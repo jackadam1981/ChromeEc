@@ -70,6 +70,30 @@
       },
       "revId": "575d7686274bc97f3b7ddae2e3b5f4171290d6fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9f385d_cde0417e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-07T18:41:56Z",
+      "side": 0,
+      "message": "Ack. I guess, I didn\u0027t realize this was targeted for other TCPMv1 devices.",
+      "parentUuid": "2d523fcd_daddc6bf",
+      "range": {
+        "startLine": 1230,
+        "startChar": 0,
+        "endLine": 1237,
+        "endChar": 0
+      },
+      "revId": "575d7686274bc97f3b7ddae2e3b5f4171290d6fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
