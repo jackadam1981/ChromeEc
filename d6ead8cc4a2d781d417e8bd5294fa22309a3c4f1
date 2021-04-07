@@ -46,6 +46,30 @@
       },
       "revId": "d6ead8cc4a2d781d417e8bd5294fa22309a3c4f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "917dd164_3403e0e9",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-07T16:03:43Z",
+      "side": 1,
+      "message": "so maybe these are not being seen due to include/concatenation order?",
+      "parentUuid": "bbde0a4e_9ce23451",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "d6ead8cc4a2d781d417e8bd5294fa22309a3c4f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
