@@ -277,9 +277,13 @@ class Zmake:
                 True if all if OK
                 False if an error was found (so that zmake should exit)
             """
+            # Let all output be produced before exiting
+            bad = False
             for proc in procs:
                 if proc.wait():
-                    raise OSError(get_process_failure_msg(proc))
+                    bad = True
+            if bad:
+                raise OSError(get_process_failure_msg(proc))
 
             if (fail_on_warnings and
                 any(w.has_written(logging.WARNING) or
