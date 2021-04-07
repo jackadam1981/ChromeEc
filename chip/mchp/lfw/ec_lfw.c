@@ -52,12 +52,6 @@ const struct int_vector_t hdr_int_vect = {
 	&fault_handler    /* Bus fault handler */
 };
 
-/* SPI devices - from board.c */
-const struct spi_device_t spi_devices[] = {
-	{ CONFIG_SPI_FLASH_PORT, 4, GPIO_QMSPI_CS0 },
-};
-const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
-
 /*
  * At POR or EC reset MCHP Boot-ROM should only load LFW and jumps
  * into LFW entry point located at offset 0x04 of LFW.

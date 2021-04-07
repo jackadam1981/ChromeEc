@@ -330,12 +330,6 @@ void tablet_mode_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&enable_input_devices_data, 0);
 }
 
-/* SPI devices */
-const struct spi_device_t spi_devices[] = {
-	{ QMSPI0_PORT, 4, GPIO_QMSPI_CS0},
-};
-const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
-
 /*
  * Enable or disable input devices,
  * based upon chipset state and tablet mode
