@@ -16,6 +16,24 @@
       "message": "How can we avoid adding an enum for these ones?",
       "revId": "1ba051f259f298c8d2e3d02b0fdec2e6c2dcf376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c826431_4ecd4825",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T20:04:49Z",
+      "side": 1,
+      "message": "Strange, it was building even though I forgot to remove these, I added another sanity check to only use named gpios that include the enum-name property so that should resolve the issue and we can keep all the nodes.",
+      "parentUuid": "e46e4565_b7099128",
+      "revId": "1ba051f259f298c8d2e3d02b0fdec2e6c2dcf376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
