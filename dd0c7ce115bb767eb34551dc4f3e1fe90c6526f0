@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64b0ece_2b4926f3",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T03:38:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "02dea4ab_c0ca1ba2",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "dd0c7ce115bb767eb34551dc4f3e1fe90c6526f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d378c77c_05e422f6",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "482220e5_1700daab",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T03:38:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d378c77c_05e422f6",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 5
+      },
+      "revId": "dd0c7ce115bb767eb34551dc4f3e1fe90c6526f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ee31056_99f79c74",
@@ -84,6 +132,30 @@
       "writtenOn": "2021-04-06T15:17:59Z",
       "side": 1,
       "message": "the chip info should be three separate functions, not one function and an enum of another function to call",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 2
+      },
+      "revId": "dd0c7ce115bb767eb34551dc4f3e1fe90c6526f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6acd4b69_6e93125a",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T03:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ee31056_99f79c74",
       "range": {
         "startLine": 233,
         "startChar": 0,
