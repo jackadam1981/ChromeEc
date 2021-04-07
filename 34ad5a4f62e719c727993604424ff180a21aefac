@@ -16,6 +16,24 @@
       "message": "Can we just require that it has this property?",
       "revId": "34ad5a4f62e719c727993604424ff180a21aefac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba52ef1a_668c5100",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-07T20:37:56Z",
+      "side": 1,
+      "message": "Their are interrupt GPIOs that exist in the DT that do not need to be mapped here.",
+      "parentUuid": "9d6e134d_cdb7b9b0",
+      "revId": "34ad5a4f62e719c727993604424ff180a21aefac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
