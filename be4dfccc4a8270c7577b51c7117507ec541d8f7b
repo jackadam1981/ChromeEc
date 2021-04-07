@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5ea66b_e972ab72",
+        "filename": "board/brya/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T00:12:50Z",
+      "side": 1,
+      "message": "one more space.\nnot sure you really need to mention LSM6DSO as that\u0027s kind of redundant.",
+      "range": {
+        "startLine": 37,
+        "startChar": 56,
+        "endLine": 37,
+        "endChar": 57
+      },
+      "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf33be4a_2e17a74d",
+        "filename": "board/brya/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T00:12:50Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need the outer () here; if we do, that\u0027s a bug\nin the macro. does this fit on one line?\n\nif you expect CLEAR_ALS to be added here, it\u0027s probably OK",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "199bbd05_5269367c",
+        "filename": "board/brya/ec.tasklist",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T00:12:50Z",
+      "side": 1,
+      "message": "may want to move MOTIONSENSE after CHARGER.\nkeith had a preference for preserving the order used on volteer.\n\nkeith?",
+      "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e5d6ff4_f8cae673",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T00:12:50Z",
+      "side": 1,
+      "message": "this name doesn\u0027t match the schematics.\n\nif you re-run the generator, you should get:\n\nGPIO_INT(EC_IMU_INT_R_L,                 PIN(5, 6), GPIO_SEL_1P8V | GPIO_INT_FALLING, lsm6dso_interrupt)\n\nand it\u0027ll be added in alphabetical order.",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82760c02_ee862823",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-07T00:12:50Z",
+      "side": 1,
+      "message": "same here, generator would add this in alphabetical order.\n\nGPIO_INT(EC_ACCEL_INT_R_L,               PIN(8, 1), GPIO_SEL_1P8V | GPIO_INT_FALLING, lis2dw12_interrupt)",
+      "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
