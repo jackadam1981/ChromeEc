@@ -114,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17057084_51c6d132",
+        "filename": "board/brya/ec.tasklist",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-07T22:59:30Z",
+      "side": 1,
+      "message": "I would recommend keeping the same task list order, unless you\u0027re addressing a known issue.",
+      "parentUuid": "199bbd05_5269367c",
+      "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e5d6ff4_f8cae673",
         "filename": "board/brya/generated-gpio.inc",
         "patchSetId": 10
