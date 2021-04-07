@@ -46,6 +46,30 @@
       },
       "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60489ddf_50c7fb02",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T15:07:35Z",
+      "side": 1,
+      "message": "I suggest we attach that as a separate change as there is too much going on here already!",
+      "parentUuid": "675561e4_289e37d6",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
