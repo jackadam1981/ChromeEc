@@ -209,6 +209,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78310df4_2ffec6d4",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-04-07T23:46:53Z",
+      "side": 1,
+      "message": "I am not understand what is for non-ISL9241 chargers. this patch is only for isl9241 and compiled on any platforms which define this charger. Is posibble call this patch with other chargers?",
+      "parentUuid": "a7386ffe_6335b4c8",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "552251ca_9ecaf8e3",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 3
