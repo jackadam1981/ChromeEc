@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54920fcb_8df70c10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-07T23:11:50Z",
+      "side": 1,
+      "message": "Yes, added the info to commit message",
+      "parentUuid": "86bb544e_abb99efc",
+      "revId": "1cea8cc492228bd14ea4241c2204b99819747586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bad86b5_9ba7d37d",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-07T06:18:53Z",
       "side": 1,
       "message": "sort alphabetically when possible.\ni tend to run such include blocks through \"sort -u\" or similar.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "1cea8cc492228bd14ea4241c2204b99819747586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac9027cb_ea6d0215",
+        "filename": "board/brya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-07T23:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bad86b5_9ba7d37d",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b08e23da_0405d3af",
+        "filename": "board/brya/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-07T23:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26e26936_63ba15ec",
+      "revId": "1cea8cc492228bd14ea4241c2204b99819747586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d542997_4eba0a0c",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-04-07T06:18:53Z",
       "side": 1,
       "message": "did you mean to put 3 blank lines here?",
+      "revId": "1cea8cc492228bd14ea4241c2204b99819747586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cc17d48_948cb7e2",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-07T23:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d542997_4eba0a0c",
       "revId": "1cea8cc492228bd14ea4241c2204b99819747586",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
