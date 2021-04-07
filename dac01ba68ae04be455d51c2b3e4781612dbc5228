@@ -51,6 +51,52 @@
       "parentUuid": "fd5b737c_e923e0c0",
       "revId": "dac01ba68ae04be455d51c2b3e4781612dbc5228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ce14f3_a2ff093a",
+        "filename": "board/cherry/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-07T04:03:21Z",
+      "side": 1,
+      "message": "In P13, it seems one 0xC574 is enough. Do we need the second 0xC574 command?",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "dac01ba68ae04be455d51c2b3e4781612dbc5228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f094a6_81a067a1",
+        "filename": "board/cherry/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-07T04:03:21Z",
+      "side": 1,
+      "message": "not sure where does this value (C-FET off?) come from? I don\u0027t find it in the ds.",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "dac01ba68ae04be455d51c2b3e4781612dbc5228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
