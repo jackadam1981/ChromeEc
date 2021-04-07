@@ -33,6 +33,29 @@
       "message": "cherry-pick the init RT1715 driver from ToT\n\nThen replace it with the latest RT1715 driver from ToT",
       "revId": "e76d00018f7c509fd2621f9a64defb4219034f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85889ff_53feafc3",
+        "filename": "board/makomo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-07T07:15:00Z",
+      "side": 1,
+      "message": "I think factory test needs vbus measurement.\nIf the driver doesn\u0027t support this, you need to find an alternative way.",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 46
+      },
+      "revId": "e76d00018f7c509fd2621f9a64defb4219034f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
