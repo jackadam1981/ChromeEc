@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1d673c7c_904f4d47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T06:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc0589bb_f0ac42ec",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b754d5f_1069100b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f081f012_aa057155",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec,i2c-port-eeprom.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T06:19:06Z",
+      "side": 1,
+      "message": "Looking at platform/ec it doesn\u0027t appear to have any enums defined",
+      "parentUuid": "aeefb823_ea3ae847",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "845999c3_a8c4e60f",
@@ -94,6 +142,24 @@
       "writtenOn": "2021-04-06T19:32:45Z",
       "side": 1,
       "message": "please split the line\n\nAlso, should we document what the different enums mean?",
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8dc9d9_14063ae9",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec-i2c-port-base.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T06:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "845999c3_a8c4e60f",
       "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e4bf63d_de72da15",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T06:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c3fd60c_60ed14e8",
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63f326d7_a7b42c13",
@@ -128,6 +212,30 @@
       "writtenOn": "2021-04-06T19:32:45Z",
       "side": 1,
       "message": "why the dot?",
+      "range": {
+        "startLine": 15,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "3f9d33f45742217c4d1c5bb8bca33c0fe93c4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c82458_8b8e708d",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-07T06:19:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63f326d7_a7b42c13",
       "range": {
         "startLine": 15,
         "startChar": 15,
