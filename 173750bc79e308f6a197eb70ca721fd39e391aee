@@ -22,6 +22,30 @@
       },
       "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "675561e4_289e37d6",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-07T14:47:43Z",
+      "side": 1,
+      "message": "Actually scrape the flags bit - got really confused, Denis explained the _FLAGS history to me, makes more sense now.\n\nEither way, I think we should use the standard i2c device unit address and properties if we need to have extra stuff here.",
+      "parentUuid": "d5756ad5_19ded6bd",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
