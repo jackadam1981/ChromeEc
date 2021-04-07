@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a3424d_f64614af",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-07T10:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93d542ec_cf4b3c4d",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 0
+      },
+      "revId": "c5b6d973edb6c7e7b1c0f27a8999c969cda4e5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a816c52_a1641473",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b583bc42_edeff37f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3215,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-07T10:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a816c52_a1641473",
+      "range": {
+        "startLine": 3215,
+        "startChar": 3,
+        "endLine": 3215,
+        "endChar": 34
+      },
+      "revId": "c5b6d973edb6c7e7b1c0f27a8999c969cda4e5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f850878c_0b436e10",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-06T21:46:15Z",
       "side": 1,
       "message": "It seems weird that `max_mv` is an argument and `min_mv` is a return value. How about make the `min_mv` as an argument too?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 8
+      },
+      "revId": "c5b6d973edb6c7e7b1c0f27a8999c969cda4e5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1cf9efe_b3bd3aa4",
+        "filename": "include/usb_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-07T10:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f850878c_0b436e10",
       "range": {
         "startLine": 140,
         "startChar": 0,

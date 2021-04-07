@@ -39,6 +39,30 @@
       },
       "revId": "fc076cda2a872d909ef1a5f3117d9597f55364b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3400c1b7_e539f906",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-07T10:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7818e3c1_962c7925",
+      "range": {
+        "startLine": 166,
+        "startChar": 48,
+        "endLine": 166,
+        "endChar": 54
+      },
+      "revId": "fc076cda2a872d909ef1a5f3117d9597f55364b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
