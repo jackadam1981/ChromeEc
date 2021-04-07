@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bce8321_aa79d4e7",
+        "filename": "baseboard/asurada/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-07T10:37:52Z",
+      "side": 1,
+      "message": "Will spherion implement this hw change?\n\nIf yes, I think we should list old revisions here\n\n```\nif (BOARD_HAYATO and version \u003c 4 or BOARD_SPHERION and version \u003c ??)\n  return ppc_is_vbus_present(port);\nreturn charge_manager_get_vbus_voltage(port) \u003e\u003d PD_V_SINK_DISCONNECT_MAX;\n```",
+      "revId": "587c0f6584ebc38968042955b993fe48d9ac9f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce0a5c3_55269cc8",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-07T10:37:52Z",
+      "side": 1,
+      "message": "Move into baseboard and undef in spherion/board.h since this should be the default option.",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "587c0f6584ebc38968042955b993fe48d9ac9f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
