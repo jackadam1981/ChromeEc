@@ -22,6 +22,30 @@
       },
       "revId": "fd6ee134396430c111b0ba31869aebdbd52bf103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c47bb4_e75a0033",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T18:45:31Z",
+      "side": 1,
+      "message": "Done, good idea\n\nAt least for the pylint we use in the chroot it seems not to care. I am used to adding type information these days but that doesn\u0027t seem to be used in Chrome OS",
+      "parentUuid": "07028f97_10f37e32",
+      "range": {
+        "startLine": 68,
+        "startChar": 12,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "fd6ee134396430c111b0ba31869aebdbd52bf103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
