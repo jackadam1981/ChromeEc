@@ -961,11 +961,17 @@ unsigned int ec_config_get_thermal_solution(void)
 #define POWER_DELAY_MS		2
 #define POWER_READINGS		(10/POWER_DELAY_MS)
 
+/* PROCHOT_DELAY is for extend CPU prochot longer enough
+ * to pass safety requirement 30 * 2ms = 60 ms
+ */
+#define PROCHOT_DELAY		30
+
 static void power_monitor(void)
 {
 	static uint32_t current_state;
 	static uint32_t history[POWER_READINGS];
 	static uint8_t index;
+	static uint8_t prochot_delay;
 	int32_t delay;
 	uint32_t new_state = 0, diff;
 	int32_t headroom_5v = PWR_MAX - base_5v_power;
@@ -1123,8 +1129,16 @@ static void power_monitor(void)
 	if (diff & THROT_PROCHOT) {
 		int prochot = (new_state & THROT_PROCHOT) ? 0 : 1;
 
-		gpio_set_level(GPIO_EC_PROCHOT_ODL, prochot);
+		if (prochot == 0) {
+			prochot_delay = PROCHOT_DELAY;
+			gpio_set_level(GPIO_EC_PROCHOT_ODL, 0);
+		}
 	}
+
+	if (prochot_delay != 0)
+		if (--prochot_delay == 0)
+			gpio_set_level(GPIO_EC_PROCHOT_ODL, 1);
+
 	if (diff & THROT_TYPE_C) {
 		enum tcpc_rp_value rp = (new_state & THROT_TYPE_C)
 			? TYPEC_RP_1A5 : TYPEC_RP_3A0;
