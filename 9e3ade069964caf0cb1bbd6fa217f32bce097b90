@@ -52,6 +52,24 @@
       "parentUuid": "f1a30d64_efd0cb5e",
       "revId": "9e3ade069964caf0cb1bbd6fa217f32bce097b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1acfdd3a_fcd69136",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-07T17:44:56Z",
+      "side": 1,
+      "message": "We had CBI as well.  It is still possible it will exist and we know it exists and we talk to it but it is not powered and fails out. The retries handled that and it was needed for Zork.",
+      "parentUuid": "573269cd_c50104db",
+      "revId": "9e3ade069964caf0cb1bbd6fa217f32bce097b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
