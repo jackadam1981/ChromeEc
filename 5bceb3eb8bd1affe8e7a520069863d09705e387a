@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeafbbbc_013358bc",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-07T22:50:53Z",
+      "side": 1,
+      "message": "b/184779333\nThe lid angle is not participating in the Tablet Mode decision process now (it is based solely on GMR sensor), so the wrong matrix is not causing any bad behaviour.",
+      "parentUuid": "4734fc1e_0439f69b",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "5bceb3eb8bd1affe8e7a520069863d09705e387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9270ca02_6470ee7c",
@@ -136,6 +160,30 @@
       "writtenOn": "2021-04-07T00:03:33Z",
       "side": 1,
       "message": "Has the base rotation matrix been verified?  If not open a bug to track.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "5bceb3eb8bd1affe8e7a520069863d09705e387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e7e6edd_04b2c7b2",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-07T22:50:53Z",
+      "side": 1,
+      "message": "b/184779743",
+      "parentUuid": "9270ca02_6470ee7c",
       "range": {
         "startLine": 48,
         "startChar": 0,
