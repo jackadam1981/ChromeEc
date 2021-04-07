@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa5c519_86ad65a7",
+        "filename": "board/brya/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-07T00:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf5ea66b_e972ab72",
+      "range": {
+        "startLine": 37,
+        "startChar": 56,
+        "endLine": 37,
+        "endChar": 57
+      },
+      "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf33be4a_2e17a74d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-07T00:12:50Z",
       "side": 1,
       "message": "we shouldn\u0027t need the outer () here; if we do, that\u0027s a bug\nin the macro. does this fit on one line?\n\nif you expect CLEAR_ALS to be added here, it\u0027s probably OK",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2f59d9c_648cce78",
+        "filename": "board/brya/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-07T00:33:45Z",
+      "side": 1,
+      "message": "Yes, that is the placeholder for CLEAR_ALS",
+      "parentUuid": "bf33be4a_2e17a74d",
       "range": {
         "startLine": 50,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "758609f1_724acf6e",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-07T00:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e5d6ff4_f8cae673",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82760c02_ee862823",
@@ -100,6 +172,24 @@
       "writtenOn": "2021-04-07T00:12:50Z",
       "side": 1,
       "message": "same here, generator would add this in alphabetical order.\n\nGPIO_INT(EC_ACCEL_INT_R_L,               PIN(8, 1), GPIO_SEL_1P8V | GPIO_INT_FALLING, lis2dw12_interrupt)",
+      "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a8378f_949cb259",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-07T00:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82760c02_ee862823",
       "revId": "be4dfccc4a8270c7577b51c7117507ec541d8f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
