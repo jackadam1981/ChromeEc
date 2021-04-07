@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0f62bb_03c59d22",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-07T16:44:19Z",
+      "side": 1,
+      "message": "I\u0027m not totally sure I\u0027m understanding the point of the probing and failing out?  Are we mostly anticipating devs setting their FW config wrong and letting them know about it?",
+      "revId": "9e3ade069964caf0cb1bbd6fa217f32bce097b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
