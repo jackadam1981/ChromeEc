@@ -56,6 +56,30 @@
       },
       "revId": "e76d00018f7c509fd2621f9a64defb4219034f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2a125e_811af071",
+        "filename": "board/makomo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2021-04-07T07:20:06Z",
+      "side": 1,
+      "message": "Due to RT1715 does not support this, so we should use ADC or other way you suggest?",
+      "parentUuid": "f85889ff_53feafc3",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 46
+      },
+      "revId": "e76d00018f7c509fd2621f9a64defb4219034f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
