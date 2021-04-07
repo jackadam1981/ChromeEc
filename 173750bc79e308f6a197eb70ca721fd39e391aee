@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8433b6ef_f57a0644",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-07T15:54:00Z",
+      "side": 1,
+      "message": "addr-flags or reg?",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 8
+      },
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5756ad5_19ded6bd",
         "filename": "zephyr/shim/include/i2c/i2c.h",
         "patchSetId": 9
@@ -91,6 +114,75 @@
         "startChar": 8,
         "endLine": 17,
         "endChar": 29
+      },
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd19b7db_07caab18",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-07T15:54:00Z",
+      "side": 1,
+      "message": "addr_flags or reg?",
+      "range": {
+        "startLine": 18,
+        "startChar": 46,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d7f08b8_161033b8",
+        "filename": "zephyr/test/i2c/overlay.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-07T15:54:00Z",
+      "side": 1,
+      "message": "addr_flags or reg? seems like the addr_flags have different names in the DTS descriptions for I2C",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 5
+      },
+      "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689f1b66_357ea1ce",
+        "filename": "zephyr/test/i2c_dts/overlay.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-07T15:54:00Z",
+      "side": 1,
+      "message": "addr_flags or reg? seems like the addr_flags have different names in the DTS descriptions for I2C",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 5
       },
       "revId": "173750bc79e308f6a197eb70ca721fd39e391aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
