@@ -22,6 +22,29 @@
       },
       "revId": "7feebf1628001f62cbf3a3bb0bd1f1f19f56d6fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa480cf6_954e46ba",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-07T17:37:37Z",
+      "side": 1,
+      "message": "Probably needs to be `HOOK_PRIO_INIT_I2C + 1` or similar? As soon as you enable the interrupts, you could start getting them from the devices which would require I2C buses to be up and running before you can talk to them.",
+      "range": {
+        "startLine": 151,
+        "startChar": 48,
+        "endLine": 151,
+        "endChar": 65
+      },
+      "revId": "7feebf1628001f62cbf3a3bb0bd1f1f19f56d6fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
